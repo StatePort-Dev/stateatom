@@ -1,0 +1,1 @@
+import React from'react';import{createRoot}from'react-dom/client';const data=(window as any).cachedData;function Cached(){return <p id="late">{data.rules.quota}</p>;}createRoot(document.getElementById('root')!).render(<Cached/>);

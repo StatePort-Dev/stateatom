@@ -1,0 +1,3 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {config} from '../scripts/vite-config.mjs';
+test('opt-in instrumenter accepts JSX and adds a digest-bound source marker',()=>{const plugin=config('B').plugins.find(p=>p.name==='xray-explicit-instrumentation');const r=plugin.transform('export const X=()=> <p id="x">Hello</p>;','/tmp/X.jsx');assert.match(r.code,/data-xray-source/);assert.match(r.code,/:[0-9]+:[0-9a-f]{12}/);});
+test('instrumenter does not treat arbitrary function results as DOM elements',()=>{const plugin=config('B').plugins.find(p=>p.name==='xray-explicit-instrumentation');const r=plugin.transform('host.attachShadow({mode:"open"}).innerHTML="hello";','/tmp/shadow.js');assert.ok(!r.code.includes('setAttribute'));});

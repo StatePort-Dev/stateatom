@@ -1,0 +1,36 @@
+{
+  "name": "stateatom-dev-helper",
+  "displayName": "StateAtom Development Helper",
+  "version": "0.1.0",
+  "publisher": "local-research",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.cjs",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": "limited",
+      "description": "Pairing requires workspace trust."
+    }
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "xray.pair",
+        "title": "X-Ray: Show local pairing token"
+      }
+    ]
+  },
+  "license": "MIT",
+  "description": "Open local source bridge for the StateAtom experimental inspector",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StatePort-Dev/stateatom.git"
+  }
+}

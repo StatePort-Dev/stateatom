@@ -1,0 +1,1 @@
+export function semanticCheck(){let count=0;const error={same:true};const object={n:4,get hidden(){count++;return false},get value(){count++;return this.n},method(){return this.value}};const a=true||object.hidden;const b=false?object.hidden:3;const c=object.method();let same=false;try{throw error}catch(e){same=e===error}return JSON.stringify({a,b,c,count,same});}

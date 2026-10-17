@@ -1,0 +1,436 @@
+{
+  "stacks": [
+    "react",
+    "vue",
+    "vanilla"
+  ],
+  "cases": [
+    {
+      "id": "direct",
+      "selector": "#plan",
+      "request": "/api/account",
+      "path": "profile.plan",
+      "mutation": "Basic",
+      "baseline": "Premium",
+      "changed": "Basic",
+      "positive": true
+    },
+    {
+      "id": "transformed",
+      "selector": "#total",
+      "request": "/api/account",
+      "path": "invoice.cents",
+      "mutation": 20000,
+      "baseline": "Total $123.45",
+      "changed": "Total $200.00",
+      "positive": true
+    },
+    {
+      "id": "conditional",
+      "selector": "#feature",
+      "request": "/api/account",
+      "path": "flags.enabled",
+      "mutation": false,
+      "baseline": "Enabled",
+      "changed": "Disabled",
+      "positive": true
+    },
+    {
+      "id": "forwarded",
+      "selector": "#forwarded",
+      "request": "/api/account",
+      "path": "profile.name",
+      "mutation": "Grace",
+      "baseline": "Hello Ada",
+      "changed": "Hello Grace",
+      "positive": true
+    },
+    {
+      "id": "async",
+      "selector": "#async",
+      "request": "/api/counter",
+      "path": "counter.value",
+      "mutation": 11,
+      "baseline": "Count 7",
+      "changed": "Count 11",
+      "positive": true,
+      "actions": [
+        "#refresh"
+      ]
+    },
+    {
+      "id": "duplicate",
+      "selector": "#plan",
+      "request": "/api/noise",
+      "path": "profile.plan",
+      "mutation": "Basic",
+      "baseline": "Premium",
+      "positive": false
+    },
+    {
+      "id": "local",
+      "selector": "#local",
+      "request": "/api/noise",
+      "path": "profile.plan",
+      "mutation": "Basic",
+      "baseline": "Local 1",
+      "positive": false,
+      "actions": [
+        "#increment"
+      ]
+    },
+    {
+      "id": "unexecuted",
+      "selector": "#branch",
+      "request": "/api/account",
+      "path": "hidden.label",
+      "mutation": "Spooky",
+      "baseline": "Visible",
+      "positive": false
+    }
+  ],
+  "source": {
+    "react": {
+      "direct": [
+        "App.jsx",
+        10,
+        "data",
+        6,
+        {
+          "file": "fixtures/react/App.jsx",
+          "line": 10,
+          "column": 3,
+          "endLine": 10,
+          "endColumn": 52,
+          "definitionColumn": 9
+        }
+      ],
+      "transformed": [
+        "App.jsx",
+        11,
+        "data",
+        6,
+        {
+          "file": "fixtures/react/App.jsx",
+          "line": 11,
+          "column": 3,
+          "endLine": 11,
+          "endColumn": 65,
+          "definitionColumn": 9
+        }
+      ],
+      "conditional": [
+        "App.jsx",
+        12,
+        "data",
+        6,
+        {
+          "file": "fixtures/react/App.jsx",
+          "line": 12,
+          "column": 3,
+          "endLine": 12,
+          "endColumn": 64,
+          "definitionColumn": 9
+        }
+      ],
+      "forwarded": [
+        "App.jsx",
+        4,
+        "saved",
+        4,
+        {
+          "file": "fixtures/react/App.jsx",
+          "line": 4,
+          "column": 63,
+          "endLine": 4,
+          "endColumn": 98,
+          "definitionColumn": 34
+        }
+      ],
+      "async": [
+        "App.jsx",
+        14,
+        "counter",
+        6,
+        {
+          "file": "fixtures/react/App.jsx",
+          "line": 14,
+          "column": 3,
+          "endLine": 14,
+          "endColumn": 42,
+          "definitionColumn": 39
+        }
+      ],
+      "duplicate": [
+        "App.jsx",
+        10,
+        "data",
+        6,
+        {
+          "file": "fixtures/react/App.jsx",
+          "line": 10,
+          "column": 3,
+          "endLine": 10,
+          "endColumn": 52,
+          "definitionColumn": 9
+        }
+      ],
+      "local": [
+        "App.jsx",
+        15,
+        "local",
+        6,
+        {
+          "file": "fixtures/react/App.jsx",
+          "line": 15,
+          "column": 3,
+          "endLine": 15,
+          "endColumn": 34,
+          "definitionColumn": 75
+        }
+      ],
+      "unexecuted": [
+        "App.jsx",
+        16,
+        "data",
+        6,
+        {
+          "file": "fixtures/react/App.jsx",
+          "line": 16,
+          "column": 3,
+          "endLine": 16,
+          "endColumn": 57,
+          "definitionColumn": 9
+        }
+      ]
+    },
+    "vue": {
+      "direct": [
+        "Dashboard.vue",
+        12,
+        "data",
+        5,
+        {
+          "file": "fixtures/vue/Dashboard.vue",
+          "line": 12,
+          "column": 1,
+          "endLine": 12,
+          "endColumn": 54,
+          "definitionColumn": 7
+        }
+      ],
+      "transformed": [
+        "Dashboard.vue",
+        13,
+        "data",
+        5,
+        {
+          "file": "fixtures/vue/Dashboard.vue",
+          "line": 13,
+          "column": 1,
+          "endLine": 13,
+          "endColumn": 67,
+          "definitionColumn": 7
+        }
+      ],
+      "conditional": [
+        "Dashboard.vue",
+        14,
+        "data",
+        5,
+        {
+          "file": "fixtures/vue/Dashboard.vue",
+          "line": 14,
+          "column": 1,
+          "endLine": 14,
+          "endColumn": 70,
+          "definitionColumn": 7
+        }
+      ],
+      "forwarded": [
+        "Greeting.vue",
+        4,
+        "saved",
+        2,
+        {
+          "file": "fixtures/vue/Greeting.vue",
+          "line": 4,
+          "column": 11,
+          "endLine": 4,
+          "endColumn": 50,
+          "definitionColumn": 70
+        }
+      ],
+      "async": [
+        "Dashboard.vue",
+        16,
+        "counter",
+        5,
+        {
+          "file": "fixtures/vue/Dashboard.vue",
+          "line": 16,
+          "column": 1,
+          "endLine": 16,
+          "endColumn": 44,
+          "definitionColumn": 22
+        }
+      ],
+      "duplicate": [
+        "Dashboard.vue",
+        12,
+        "data",
+        5,
+        {
+          "file": "fixtures/vue/Dashboard.vue",
+          "line": 12,
+          "column": 1,
+          "endLine": 12,
+          "endColumn": 54,
+          "definitionColumn": 7
+        }
+      ],
+      "local": [
+        "Dashboard.vue",
+        17,
+        "local",
+        5,
+        {
+          "file": "fixtures/vue/Dashboard.vue",
+          "line": 17,
+          "column": 1,
+          "endLine": 17,
+          "endColumn": 36,
+          "definitionColumn": 40
+        }
+      ],
+      "unexecuted": [
+        "Dashboard.vue",
+        18,
+        "data",
+        5,
+        {
+          "file": "fixtures/vue/Dashboard.vue",
+          "line": 18,
+          "column": 1,
+          "endLine": 18,
+          "endColumn": 63,
+          "definitionColumn": 7
+        }
+      ]
+    },
+    "vanilla": {
+      "direct": [
+        "main.js",
+        6,
+        "data",
+        5,
+        {
+          "file": "fixtures/vanilla/main.js",
+          "line": 6,
+          "column": 2,
+          "endLine": 6,
+          "endColumn": 63,
+          "definitionColumn": 8
+        }
+      ],
+      "transformed": [
+        "main.js",
+        7,
+        "data",
+        5,
+        {
+          "file": "fixtures/vanilla/main.js",
+          "line": 7,
+          "column": 2,
+          "endLine": 7,
+          "endColumn": 94,
+          "definitionColumn": 8
+        }
+      ],
+      "conditional": [
+        "main.js",
+        8,
+        "data",
+        5,
+        {
+          "file": "fixtures/vanilla/main.js",
+          "line": 8,
+          "column": 2,
+          "endLine": 8,
+          "endColumn": 88,
+          "definitionColumn": 8
+        }
+      ],
+      "forwarded": [
+        "main.js",
+        2,
+        "saved",
+        2,
+        {
+          "file": "fixtures/vanilla/main.js",
+          "line": 2,
+          "column": 40,
+          "endLine": 2,
+          "endColumn": 105,
+          "definitionColumn": 29
+        }
+      ],
+      "async": [
+        "main.js",
+        13,
+        "counter",
+        13,
+        {
+          "file": "fixtures/vanilla/main.js",
+          "line": 13,
+          "column": 64,
+          "endLine": 13,
+          "endColumn": 133,
+          "definitionColumn": 32
+        }
+      ],
+      "duplicate": [
+        "main.js",
+        6,
+        "data",
+        5,
+        {
+          "file": "fixtures/vanilla/main.js",
+          "line": 6,
+          "column": 2,
+          "endLine": 6,
+          "endColumn": 63,
+          "definitionColumn": 8
+        }
+      ],
+      "local": [
+        "main.js",
+        15,
+        "local",
+        3,
+        {
+          "file": "fixtures/vanilla/main.js",
+          "line": 15,
+          "column": 51,
+          "endLine": 15,
+          "endColumn": 114,
+          "definitionColumn": 5
+        }
+      ],
+      "unexecuted": [
+        "main.js",
+        10,
+        "data",
+        5,
+        {
+          "file": "fixtures/vanilla/main.js",
+          "line": 10,
+          "column": 2,
+          "endLine": 10,
+          "endColumn": 81,
+          "definitionColumn": 8
+        }
+      ]
+    }
+  }
+}

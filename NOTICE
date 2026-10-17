@@ -1,0 +1,13 @@
+StateAtom experimental source import
+
+Historical prototype material retains the MIT license and original copyright
+notice in LICENSE and ide-extension/LICENSE. This import does not relicense it.
+
+core/basic-analysis.mjs, core/diagnostic.mjs and browser-extension/reader.mjs
+carry their existing Apache-2.0 SPDX and copyright notices. The complete text
+is in LICENSES/Apache-2.0.txt. This is a mixed-license source tree.
+
+The IDE build bundles third-party dependencies. The build generates their
+actual versions and license notices in dist/ide/THIRD_PARTY_LICENSES.md.
+Host VS Code, Chromium, Peekly and TodoMVC are not distributed here.
+See docs/provenance.md and docs/licensing.md for scope and origin.

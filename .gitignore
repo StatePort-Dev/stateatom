@@ -1,0 +1,16 @@
+node_modules/
+dist/
+dist-fixtures/
+.runtime/
+.browsers/
+**/artifacts/
+*.log
+*.vsix
+*.zip
+*.tar.gz
+ide-extension/extension.cjs
+ide-extension/THIRD_PARTY_LICENSES.md
+.env
+.env.*
+!.env.example
+.DS_Store

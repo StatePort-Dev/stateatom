@@ -1,0 +1,3 @@
+import {runTests} from '@vscode/test-electron';import path from 'node:path';
+const root=path.resolve(import.meta.dirname,'..'),runtime=process.env.XRAY_RUNTIME||root+'/.runtime';
+try{await runTests({vscodeExecutablePath:root+'/scripts/code-sandbox-wrapper.sh',extensionDevelopmentPath:root+'/dist/ide',extensionTestsPath:root+'/tests/ide-host.cjs',launchArgs:[root,'--user-data-dir='+runtime+'/vscode-user','--extensions-dir='+runtime+'/vscode-extensions','--remote-debugging-port=49331','--disable-updates','--skip-welcome','--skip-release-notes'],extensionTestsEnv:{XRAY_RUNTIME:runtime}});}catch(e){console.error(e);process.exitCode=1;}

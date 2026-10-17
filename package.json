@@ -1,0 +1,51 @@
+{
+  "name": "stateatom",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:extensions": "node scripts/build.mjs --extensions-only",
+    "test": "node --test --test-isolation=none tests/*.test.mjs stateatom-phase2/tests/*.test.mjs stateatom-oss-alpha/tests/*.test.mjs stateatom-diagnosis/tests/*.test.mjs",
+    "dev": "node scripts/serve-phase2.mjs",
+    "verify:ide": "node stateatom-phase2/demo.mjs",
+    "verify:browser": "node stateatom-oss-alpha/browser-check.mjs",
+    "sanitize:artifacts": "node stateatom-phase2/sanitize.mjs"
+  },
+  "dependencies": {
+    "@angular/compiler": "20.3.7",
+    "@angular/core": "20.3.7",
+    "@angular/platform-browser": "20.3.7",
+    "@babel/core": "7.28.5",
+    "@babel/generator": "7.28.5",
+    "@babel/parser": "7.28.5",
+    "@babel/plugin-transform-react-jsx": "7.27.1",
+    "@babel/traverse": "7.28.5",
+    "@tanstack/query-core": "5.90.3",
+    "@vitejs/plugin-vue": "6.0.1",
+    "@vscode/test-electron": "2.5.2",
+    "@vscode/vsce": "3.6.2",
+    "@vue/compiler-sfc": "3.5.22",
+    "playwright": "1.63.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "svelte": "5.39.6",
+    "vite": "7.1.9",
+    "vue": "3.5.22",
+    "zone.js": "0.15.1",
+    "esbuild": "0.25.12",
+    "@vue/compiler-dom": "3.5.22",
+    "@babel/types": "7.29.8"
+  },
+  "description": "Experimental local UI inspection and evidence tooling",
+  "license": "(MIT AND Apache-2.0)",
+  "engines": {
+    "node": ">=24.0.0 <25",
+    "npm": ">=11 <12"
+  },
+  "packageManager": "npm@11.17.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StatePort-Dev/stateatom.git"
+  }
+}

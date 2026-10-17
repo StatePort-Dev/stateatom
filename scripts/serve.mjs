@@ -1,0 +1,1 @@
+import {createServer} from 'vite';import {config} from './vite-config.mjs';const s=await createServer(config(process.env.XRAY_MODE||'A'));await s.listen();console.log('Fixtures http://127.0.0.1:4173');

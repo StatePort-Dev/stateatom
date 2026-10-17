@@ -1,0 +1,2 @@
+import React,{useState,useEffect}from'react';import{createRoot}from'react-dom/client';import{routeVote as decide}from'./parts/fold';
+function Candidate(){const[details,setDetails]=useState<any>(null);useEffect(()=>{fetch('/api/account').then(r=>r.json()).then(setDetails)},[]);if(!details)return <p>Loading</p>;return <button id="holdout" disabled={!decide(details)}>Holdout React</button>;}createRoot(document.getElementById('root')!).render(<Candidate/>);

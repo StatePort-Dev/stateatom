@@ -1,0 +1,2 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';import {score} from '../evaluator/evaluate.mjs';
+test('exact source range rejects wrong column or range end',()=>{const expected=['View.jsx',2,'data',1,{file:'fixtures/react/View.jsx',line:2,column:3,endLine:2,endColumn:25,definitionColumn:7}];const state={analysis:{sources:[{file:'fixtures/react/View.jsx',line:2,column:99,endLine:100,endColumn:1,definitions:[]}],fields:[]}};assert.equal(score(state,null,{positive:true},expected).sourceRange,false);});
