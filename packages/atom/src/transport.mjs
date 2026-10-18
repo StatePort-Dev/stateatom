@@ -2,11 +2,11 @@
 import {atomError} from './platform.mjs';
 export const API_VERSION=1;
 const globalOps=new Set(['pair','unpair','tabs','list-diagnostics','delete-diagnostic']);
-const ops=new Set([...globalOps,'save-diagnostic','attach','pick','selected','deep-experiment','restore','property','inspect-selector','state','open','definitions','references','experiment','detach','metrics']);
+const ops=new Set([...globalOps,'save-diagnostic','attach','pick','selected','deep-experiment','restore','property','inspect-selector','state','open','definitions','references','experiment','detach','metrics','source-map-import','source-map-acquire','source-map-lookup','source-map-clear']);
 export function validateRequest(m){
  const bad=()=>{throw atomError('INVALID_MESSAGE');};
  if(!m||m.version!==1||typeof m.id!=='string'||!m.id||m.id.length>100||typeof m.session!=='string'||!m.session||m.session.length>100||!m.payload||typeof m.payload!=='object')bad();
- const p=m.payload;if(!ops.has(p.op)||JSON.stringify(m).length>65536)bad();
+ const p=m.payload;if(!ops.has(p.op)||JSON.stringify(m).length>(p.op==='source-map-import'?11500000:65536))bad();
  if(!globalOps.has(p.op)&&(!Number.isSafeInteger(p.tabId)||p.tabId<1))bad();
  if(['selected','inspect-selector'].includes(p.op)&&(typeof p.selector!=='string'||!p.selector||p.selector.length>1024))bad();
  if(p.op==='property'&&!['text','disabled'].includes(p.property))bad();
@@ -14,6 +14,10 @@ export function validateRequest(m){
  if(['open','definitions','references'].includes(p.op)&&(!p.source||typeof p.source.file!=='string'||!Number.isSafeInteger(p.source.line)||p.source.line<1))bad();
  if(p.op==='deep-experiment'&&!Array.isArray(p.variants))bad();
  if(p.op==='experiment'&&(!p.field||typeof p.field.url!=='string'||typeof p.field.path!=='string'||typeof p.field.requestId!=='string'||!Array.isArray(p.actions)))bad();
+ if(p.op.startsWith('source-map-')&&p.op!=='source-map-clear'&&(typeof p.scriptId!=='string'||p.scriptId.length>128))bad();
+ if(p.op==='source-map-import'&&(typeof p.name!=='string'||p.name.length>512||typeof p.data!=='string'||p.data.length>11200000||p.data.length%4!==0||/[^A-Za-z0-9+/=]/.test(p.data)))bad();
+ if(p.op==='source-map-acquire'&&p.url!==undefined&&(typeof p.url!=='string'||p.url.length>4096))bad();
+ if(p.op==='source-map-lookup'&&(!Number.isSafeInteger(p.line)||p.line<1||!Number.isSafeInteger(p.column)||p.column<0))bad();
  if(p.op==='delete-diagnostic'&&typeof p.id!=='string')bad();
  return m;
 }

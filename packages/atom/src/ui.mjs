@@ -1,3 +1,4 @@
+import {createSourceMapUI} from './source-map-ui.mjs';
 import {createActionUI} from './action-ui.mjs';
 import {parseDiagnostic,serializeDiagnostic,omitDiagnosticContent} from '../../../core/diagnostic.mjs';
 import {inspectionView} from '../../../browser-extension/inspection-view.mjs';
@@ -23,7 +24,7 @@ let analysis,selectedState,loadGeneration=0,selectionGeneration=0,tabGeneration=
 const tab=()=>Number($('tabs').value);
 async function rpc(message){const r=await client.request(message,{signal:controller.signal});if(disposed)throw atomError('DISPOSED');return r;}
 async function action(fn){const id=tab(),epoch=tabGeneration;try{$('status').textContent='Working…';const r=await fn();if(!disposed&&id===tab()&&epoch===tabGeneration)$('status').textContent='OK';return r;}catch(e){if(disposed||id!==tab()||epoch!==tabGeneration)return;$('status').textContent='Error: '+e.message;}}
-async function tabs(){const old=$('tabs').value;const ts=await rpc({op:'tabs'});$('tabs').replaceChildren(...ts.map(t=>{const o=document.createElement('option');o.value=t.id;o.textContent=t.id+' '+t.url;return o;}));if(ts.some(t=>String(t.id)===old))$('tabs').value=old;}
+async function tabs(){const old=$('tabs').value;const ts=await rpc({op:'tabs'});$('tabs').replaceChildren(...ts.map(t=>{const o=document.createElement('option');o.value=t.id;o.setAttribute('data-origin',new URL(t.url).origin);o.textContent=t.id+' '+t.url;return o;}));if(ts.some(t=>String(t.id)===old))$('tabs').value=old;}
 async function load(){
  const id=tab(),generation=++loadGeneration;
  if(!Number.isSafeInteger(id)||id<=0){selectedState=null;analysis=null;renderInspection();return;}
@@ -31,13 +32,15 @@ async function load(){
  if(generation!==loadGeneration||id!==tab())return;
  selectedState=state;analysis=state.analysis;renderInspection();
 }
+const sourceMapUI=createSourceMapUI({document,$,rpc,tab,load,action,requestPermission:options.requestOriginPermission});
 const actionsUI=createActionUI({document,$,rpc,tab,action});
 function renderInspection(){
+ sourceMapUI.render(selectedState);
  actionsUI.render(selectedState);
  $('atom-result').textContent='';
  const view=inspectionView(selectedState||{}),selection=view.target;
  $('mode').textContent=view.mode;
- $('connection-label').textContent=selectedState?.attached?'Attached · this tab':'Not attached';
+ $('connection-label').textContent=selectedState?.attached?(selectedState.readOnly?'Attached · read-only':'Attached · this tab'):'Not attached';
  if(view.observedAt&&view.observedAt!==renderedAt){$('scroll').scrollTop=0;for(const id of ['actions-nav','evidence-nav','diagnostics-nav'])$(id).removeAttribute('aria-current');$('inputs-nav').setAttribute('aria-current','location');}renderedAt=view.observedAt;
  const target=selection||selectedState?.stale?.target;
  const label=target?.tag==='button'&&typeof target.text==='string'?target.text.trim():'';
@@ -83,8 +86,8 @@ function renderInspection(){
  // Keep the existing experiment index contract without mutating the resolver result.
  fields=candidates;
  candidates.forEach((field,i)=>{const option=document.createElement('option');option.value=i;option.textContent=field.status+' '+field.url+' #'+field.path+' = '+JSON.stringify(field.value);$('fields').append(option);});
- const eligible=!!selectedState?.attached&&!!selection&&!!analysis&&!view.stale;
- $('atom-run').disabled=!eligible;$('atom-restore').disabled=!selectedState?.attached||!eligible&&!selectedState?.stale?.target;
+ const eligible=!selectedState?.readOnly&&!!selectedState?.attached&&!!selection&&!!analysis&&!view.stale;
+ $('atom-run').disabled=!eligible;$('atom-restore').disabled=!!selectedState?.readOnly||!selectedState?.attached||!eligible&&!selectedState?.stale?.target;
  $('experiment').disabled=!eligible||selection?.property!=='text'||!candidates.length;
  $('experiment-eligibility').textContent=!eligible?'Inspect a current property on an attached local app first. Stale selections require inspection again.':selection.property==='text'&&candidates.length?'Text response experiment available for a recorded JSON leaf. Response presence alone is not dependency. Trials reset storage/cache and reload; server writes are not undone.':'Controlled property trials require explicit response variants below. The simpler response-field experiment supports text only. Trials reset storage/cache and reload; server writes are not undone.';
  $('evidence').textContent=selectedState?JSON.stringify({analysis,events:selectedState.events,bufferBytes:selectedState.bufferBytes},null,2):'';
@@ -105,7 +108,7 @@ async function inspectAgain(){
 }
 function flatten(v,p='',out=[]){if(v!==null&&typeof v==='object')for(const[k,x]of Object.entries(v))flatten(x,p?p+'.'+k:k,out);else out.push({path:p,value:v});return out;}
 $('pair').onclick=()=>action(()=>rpc({op:'pair',url:$('bridge').value,token:$('token').value,origin:$('origin').value,sourceRoot:$('source-root').value}));
-$('refresh-tabs').onclick=()=>action(async()=>{await tabs();await load();});$('tabs').onchange=()=>{++tabGeneration;return action(async()=>{clearInspection();await load();});};$('attach').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration;await rpc({op:'attach',tabId:id});if(disposed||id!==tab()||epoch!==tabGeneration)return;await load();if(disposed||id!==tab()||epoch!==tabGeneration)return;$('browser-connection').open=false;$('source-connection').open=false;$('scroll').scrollTop=0;});$('pick').onclick=()=>action(async()=>{clearInspection();await rpc({op:'pick',tabId:tab()});});$('inspect-selector').onclick=()=>action(async()=>{const id=tab(),selector=$('selector').value;clearInspection();try{await rpc({op:'inspect-selector',tabId:id,selector});}finally{if(id===tab())await load();}});$('load').onclick=()=>action(inspectAgain);$('detach').onclick=()=>action(async()=>{await rpc({op:'detach',tabId:tab()});await load();});
+$('refresh-tabs').onclick=()=>action(async()=>{await tabs();await load();});$('tabs').onchange=()=>{++tabGeneration;return action(async()=>{clearInspection();await load();});};$('attach').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration,origin=$('tabs').selectedOptions[0]?.dataset.origin;if(origin?.startsWith('https://')&&(!options.requestOriginPermission||!await options.requestOriginPermission(origin)))throw Error('Site origin permission denied');await rpc({op:'attach',tabId:id,readOnly:$('source-map-readonly').checked});if(disposed||id!==tab()||epoch!==tabGeneration)return;await load();if(disposed||id!==tab()||epoch!==tabGeneration)return;$('browser-connection').open=false;$('source-connection').open=false;$('scroll').scrollTop=0;});$('pick').onclick=()=>action(async()=>{clearInspection();await rpc({op:'pick',tabId:tab()});});$('inspect-selector').onclick=()=>action(async()=>{const id=tab(),selector=$('selector').value;clearInspection();try{await rpc({op:'inspect-selector',tabId:id,selector});}finally{if(id===tab())await load();}});$('load').onclick=()=>action(inspectAgain);$('detach').onclick=()=>action(async()=>{await rpc({op:'detach',tabId:tab()});await load();});
 $('experiment').onclick=()=>action(async()=>{const id=tab(),generation=selectionGeneration;const field=fields[Number($('fields').value)];$('experiment-result').textContent='Running…';const result=await rpc({op:'experiment',tabId:tab(),field,value:JSON.parse($('value').value),controlPath:$('control').value,actions:JSON.parse($('actions').value)});if(id!==tab()||generation!==selectionGeneration)return;$('experiment-result').textContent=result.status+': '+result.reason;$('evidence').textContent=JSON.stringify(result,null,2);});
 const unsubscribe=client.subscribe(m=>{if(disposed)return;if(['selection','state-invalidated'].includes(m.event)&&m.tabId===tab())void action(load);});const ready=tabs().then(load).catch(e=>{if(disposed)return;$('status').textContent='Error: '+e.message;});
 
@@ -128,5 +131,5 @@ $('delete-report').onclick=()=>action(async()=>{await rpc({op:'delete-diagnostic
 $('unpair').onclick=()=>action(async()=>{await rpc({op:'unpair'});await load();});
 void savedReports().catch(e=>{if(disposed)return;$('diagnostic-status').textContent='Local reports unavailable: '+e.message;});
 
-return {ready,element:root,dispose(){actionsUI.dispose();if(disposed)return;disposed=true;++loadGeneration;controller.abort();unsubscribe();for(const t of timers)clearTimeout(t);for(const u of urls)URL.revokeObjectURL(u);timers.clear();urls.clear();$('export-review').close();root.remove();mounted.delete(rootElement);}};
+return {ready,element:root,dispose(){sourceMapUI.dispose();actionsUI.dispose();if(disposed)return;disposed=true;++loadGeneration;controller.abort();unsubscribe();for(const t of timers)clearTimeout(t);for(const u of urls)URL.revokeObjectURL(u);timers.clear();urls.clear();$('export-review').close();root.remove();mounted.delete(rootElement);}};
 }

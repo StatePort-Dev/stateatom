@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased — 2026-10-19
+
+- Add source-map discovery/import/URL controls, artifact status, manual original
+  source preview and clearing within the existing inspector disclosure layout.
+  Follow supplied Source maps reference groups and shared native controls; retain
+  Atom's 440px sheet rather than introducing the prototype's 1140px Settings shell.
+  No shared token/primitive or visual-contract change. Screenshots remain candidates.
+- Add bounded offline flat-v3 maps/ZIP, per-script manifest matching, in-memory
+  source retention and safe diagnostic identities. Manual lookup is explicitly
+  not linked to the element; mapped source is never sent to a model.
+- Add host-opt-in read-only HTTPS site access through optional permissions.
+  Embedded default origin scope and existing local experimental controls remain.
+
 ## 0.1.0-candidate.20261018.3
 
 - Recompose the real inspector around the supplied design: selected target/value,

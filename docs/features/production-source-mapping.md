@@ -1,6 +1,6 @@
 # Production Source Mapping
 
-**Status:** Proposed\
+**Status:** Implemented local candidate — mapping/source exploration; see [verification and limits](../testing/production-source-mapping.md)\
 **Scope:** StateAtom browser extension\
 **Target location:** `docs/features/production-source-mapping.md`\
 **Audience:** Developers, QA, and product teams investigating deployed web applications
@@ -247,3 +247,25 @@ Pass of this feature is **not** pass of full provenance, handlers/hooks, general
 - [Chrome: user-approved local file access](https://developer.chrome.com/docs/capabilities/web-apis/file-system-access)
 - [Vite: production source maps and `hidden` mode](https://vite.dev/config/build-options.html)
 - [StateAtom architecture](../architecture.md) · [Evidence model](../evidence-model.md) · [Validation](../validation.md) · [Security](../../SECURITY.md)
+
+
+## Implementation record — 2026-10-19
+
+The candidate uses the shared `packages/atom` runtime/panel, an in-memory
+source-map session, strict flat-v3 validation and pinned trace-mapping 0.3.31.
+Offline `.map`/ZIP and user-initiated URL/manifest retrieval are implemented.
+Exact matching compares the loaded script's UTF-8 text with the selected built
+artifact and verifies both artifact digests from the supplied manifest. The
+manifest is user-supplied provenance, not a signed CI attestation.
+
+The standalone extension now separately opts into optional HTTPS host access
+and read-only inspection. Embedded consumers retain the localhost default unless
+the host opts in. No production mutation/Restore/IDE resolver is enabled by this
+mode. Real corporate SSO, policy and permission-prompt UX remain unverified.
+
+There is currently no independently established production UI/property anchor.
+The delivered path is manual generated-position source exploration, explicitly
+`not linked to element`; it does not show a mapped expression as the selected
+property's producer. This satisfies the explicit source-lookup alternative in
+the minimum completion gate. See the [validation record](../testing/production-source-mapping.md)
+for commands, budgets, supported archive forms, screenshots and remaining gates.

@@ -62,8 +62,10 @@ Start the synthetic React/Vue development project with the existing open instrum
 npm run dev
 ```
 
-Open `http://127.0.0.1:4173/react/` (or `/vue/`). The current extension allows only
-`127.0.0.1` ports **4173–4175** plus the IDE bridge on **47731**.
+Open `http://127.0.0.1:4173/react/` (or `/vue/`). The default local development path allows
+`127.0.0.1` ports **4173–4175** plus the IDE bridge on **47731**. The standalone
+extension also offers explicitly permitted HTTPS sites in a separate read-only
+inspection mode.
 Use disposable synthetic applications: interventions reload the page and clear app storage/cache.
 
 ## Load the browser and connect the IDE
@@ -429,3 +431,18 @@ separate MV3 consumer example. Use `npm run pack:atom` and
 [the official-host integration task](docs/tasks/stateport-host-atom-integration.md).
 The ignored `.artifacts/atom/atom-handoff.json` records the local artifact identity.
 No npm publication or official StatePort/Capture integration is implied.
+
+
+## Production source exploration (local candidate)
+
+Open the panel, choose a tab and Attach. HTTPS tabs request optional site access
+and use read-only inspection. Select Text or Disabled, then select an element.
+Expand **Source maps**: choose a loaded script and import its `.map` or release
+ZIP, load its declared map, or explicitly allow an internal artifact URL. A ZIP
+with root `manifest.json`, built JS and maps can establish an exact artifact
+match. A map alone remains Unverified. Generated line/column lookup shows inert
+original text when available, with **not linked to element** until a separate UI
+anchor exists. No IDE, dev SDK, account or AI is required.
+
+Use `npm run verify:production-source-mapping` for the isolated minified React
+MV3 check. [Verification, limits and bundle format](docs/testing/production-source-mapping.md).

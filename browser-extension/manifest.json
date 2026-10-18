@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "StateAtom",
   "version": "0.1.0",
-  "description": "Local research inspector; synthetic localhost origins only",
+  "description": "Experimental local UI inspection with optional read-only HTTPS source mapping",
   "permissions": [
     "debugger",
     "scripting",
@@ -34,5 +34,8 @@
       ],
       "run_at": "document_idle"
     }
+  ],
+  "optional_host_permissions": [
+    "https://*/*"
   ]
 }

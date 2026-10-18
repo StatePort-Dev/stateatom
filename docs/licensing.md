@@ -49,3 +49,15 @@ Variable font from `rsms/inter`, revision
 Its original license and exact source URLs/SHA-256 digests are stored next to it
 in `Inter-LICENSE.txt` and `provenance.json`. It is not relicensed as Apache-2.0.
 The UI tarball and built browser/reader/embedding hosts carry the font notice.
+
+
+## Source-map implementation — 2026-10-19
+
+The original source-map loader/session/UI/archive/report files carry Apache-2.0
+SPDX notices. `browser-extension/picker.mjs` is an extraction of the historical
+MIT picker and retains that origin. `@jridgewell/trace-mapping` 0.3.31 (MIT) is now
+an explicit pinned dependency, maintained in `jridgewell/sourcemaps`; its bundled
+transitive packages retain their installed versions/licenses. `build:atom` emits
+`dist/THIRD_PARTY_LICENSES.md` from actual browser bundle inputs; the standalone
+browser copies it. Existing historical code and supplied design materials retain
+their previous notices. No release/publication is performed by this change.

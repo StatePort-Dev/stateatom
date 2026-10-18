@@ -35,7 +35,15 @@ register global listeners on import. `contract.json` fixes API/wire version 1,
 UI contract 2.1.0 and the exact peer package version. Styles are scoped, not
 Shadow DOM protection from hostile host CSS.
 
-Only the existing synthetic localhost origins/operations are supported. Browser
+The default embedded host supports the existing synthetic localhost origins/operations.
+A host may explicitly set `readOnlySites:true` on both `createChromePlatform` and
+`createAtomRuntime` and supply `requestOriginPermission` through the `mountAtom`
+options object to enable permission-gated HTTPS inspection. The standalone host
+does so; this does not widen the default. HTTPS leases grant read/inject helpers
+only, and runtime denies experiments, Restore and IDE context transfer.
+Source-map operations add offline import, permitted URL acquisition, manual lookup
+and clearing to wire version 1. Parsed maps/source stay outside storage, expire
+after five minutes and clear on detach/navigation. Diagnostics omit their contents. Browser
 basic/save/export work without IDE; source navigation and supported source-linked
 analysis require the public open IDE helper. Unknown, Unsupported, Stale and
 historical diagnostics keep their original meanings. Export is not a State Card.

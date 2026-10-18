@@ -5,6 +5,14 @@ The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that
 scope, with the following verification and limits.
 
+
+A later **2026-10-19 production source-mapping candidate** adds offline/map URL
+source exploration for scripts loaded in the selected tab, strong per-artifact
+matching, explicit read-only HTTPS site access and private-content-free map
+diagnostics. Manual generated-position lookup is **not linked to the element**;
+no production UI/property producer anchor or runtime lineage is claimed. See the
+[verification record and remaining gates](testing/production-source-mapping.md).
+
 Original P2 and the distinct destructuring P1 now pass a scoped complete HTTP
 exchange/field trace in the controlled first-read configuration. The actual
 installed VSIX passed 17 panel/IDE/export/fresh-reader UI checks. Separate native

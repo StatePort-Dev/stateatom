@@ -96,3 +96,9 @@
 [data-sp-ui][data-atom-root] .sp-atom-action-card button { max-width:100%; overflow-wrap:anywhere; font-size:11px; }
 
 [data-sp-ui][data-atom-root] [data-atom-id^="action-"][hidden] { display:none !important; }
+/* Atom composition using the supplied shared controls; no shared token changes. */
+[data-sp-ui] [data-atom-id="source-map-details"] { border-top: 1px solid var(--sp-color-border); padding-block: 12px; }
+[data-sp-ui] [data-atom-id="source-map-details"] label { display: block; margin-block: 8px; }
+[data-sp-ui] [data-atom-id="source-map-details"] select,
+[data-sp-ui] [data-atom-id="source-map-details"] input { max-width: 100%; min-width: 0; }
+[data-sp-ui] [data-atom-id="source-map-details"] pre { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 260px; overflow: auto; }

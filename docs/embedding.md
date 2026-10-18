@@ -176,3 +176,16 @@ scroll only the inspector, and all actions are type=button to avoid host-form
 submission. Load the optional shared `fonts.css` and serve the exported local
 Inter asset at its relative path to reproduce reference typography. Carry the
 font's OFL license from the UI package; no external font service is required.
+
+
+### Optional production source exploration
+
+The standalone host now opts into `readOnlySites:true` on the platform and runtime,
+with `optional_host_permissions: ["https://*/*"]` and the mount option
+`requestOriginPermission: origin => chrome.permissions.request({origins:[origin+"/*"]})`.
+Call permission requests from a real user gesture. The default embedded origin
+contract stays localhost. An opting-in host must authenticate its exact panel and
+frame-0 selection sender and relay debugger lifecycle events. HTTPS inspection
+uses read/inject helpers only; no reload/cache/override/replay/IDE operation.
+Source maps and excerpts remain local, in memory; manual generated-position lookup
+is not a UI/property anchor. See [production source mapping](testing/production-source-mapping.md).

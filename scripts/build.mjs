@@ -6,6 +6,7 @@ await buildUI();
 await buildAtom();
 const resolveUI = createRequire(import.meta.url);
 await mkdir(root+'/dist/browser',{recursive:true});
+await copyFile(root+'/packages/atom/dist/THIRD_PARTY_LICENSES.md',root+'/dist/browser/THIRD_PARTY_LICENSES.md');
 await copyFile(root+'/packages/atom/dist/atom.css',root+'/dist/browser/atom.css');
 for (const name of ['tokens.css', 'components.css', 'fonts.css', 'contract.json']) {
  await copyFile(resolveUI.resolve('@stateport/extension-ui/'+name), root+'/dist/browser/extension-ui-'+name);
@@ -15,7 +16,8 @@ await copyFile(resolveUI.resolve('@stateport/extension-ui/assets/fonts/InterVari
 await mkdir(root+'/dist/browser/extension-ui-licenses',{recursive:true});
 for (const name of ['LICENSE', 'NOTICE']) await copyFile(root+'/packages/extension-ui/'+name, root+'/dist/browser/extension-ui-licenses/'+name);
 await copyFile(root+'/packages/extension-ui/assets/fonts/Inter-LICENSE.txt',root+'/dist/browser/extension-ui-licenses/Inter-LICENSE.txt');
-for(const name of ['manifest.json','content.js','panel.html','panel.css','reader.html','reader.css'])await copyFile(root+'/browser-extension/'+name,root+'/dist/browser/'+name);
+for(const name of ['manifest.json','panel.html','panel.css','reader.html','reader.css'])await copyFile(root+'/browser-extension/'+name,root+'/dist/browser/'+name);
+await copyFile(root+'/packages/atom/dist/content.js',root+'/dist/browser/content.js');
 await build({entryPoints:[root+'/browser-extension/worker.js'],bundle:true,format:'esm',platform:'browser',outfile:root+'/dist/browser/worker.js'});
 await build({entryPoints:[root+'/browser-extension/panel.js'],bundle:true,format:'esm',platform:'browser',outfile:root+'/dist/browser/panel.js'});
 await build({entryPoints:[root+'/browser-extension/reader.mjs'],bundle:true,format:'iife',platform:'browser',outfile:root+'/dist/browser/reader.js'});

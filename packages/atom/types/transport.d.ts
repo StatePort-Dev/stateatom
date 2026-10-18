@@ -4,7 +4,12 @@ export type AtomOperation=
  |{op:'tabs'|'unpair'|'list-diagnostics'}
  |{op:'pair';url:string;token:string;origin:string;sourceRoot:string}
  |{op:'delete-diagnostic';id:string}
- |{op:'attach'|'detach'|'pick'|'restore'|'metrics';tabId:number}
+ |{op:'attach';tabId:number;readOnly?:boolean}
+ |{op:'source-map-import';tabId:number;scriptId:string;name:string;data:string}
+ |{op:'source-map-acquire';tabId:number;scriptId:string;url?:string}
+ |{op:'source-map-lookup';tabId:number;scriptId:string;line:number;column:number}
+ |{op:'source-map-clear';tabId:number}
+ |{op:'detach'|'pick'|'restore'|'metrics';tabId:number}
  |{op:'state';tabId:number;refreshDeep?:boolean}
  |{op:'inspect-selector';tabId:number;selector:string}
  |{op:'selected';tabId:number;selector:string;token:string;documentId?:string}

@@ -68,7 +68,8 @@
     "build:atom": "node scripts/build-atom.mjs",
     "pack:atom": "node scripts/pack-atom.mjs",
     "verify:atom-contract": "node --test --test-isolation=none tests/atom/*.test.mjs",
-    "verify:embedding": "node tests/integration/embedding.mjs"
+    "verify:embedding": "node tests/integration/embedding.mjs",
+    "verify:production-source-mapping": "node tests/integration/production-source-mapping.mjs"
   },
   "dependencies": {
     "@angular/compiler": "20.3.34",
@@ -95,7 +96,8 @@
     "vue": "3.5.44",
     "zone.js": "0.15.1",
     "@stateport/extension-ui": "file:packages/extension-ui",
-    "@stateport/atom": "file:packages/atom"
+    "@stateport/atom": "file:packages/atom",
+    "@jridgewell/trace-mapping": "0.3.31"
   },
   "description": "Experimental local UI inspection and evidence tooling",
   "license": "(MIT AND Apache-2.0)",
