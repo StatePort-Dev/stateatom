@@ -26,7 +26,7 @@ async function collect(rel) {
     else throw Error('Non-regular package input: ' + file);
   }
 }
-for (const directory of ['tokens', 'styles', 'scripts']) await collect(directory);
+for (const directory of ['tokens', 'styles', 'scripts', 'assets']) await collect(directory);
 sourceFiles.push('package.json', 'contract.json', 'LICENSE', 'NOTICE', 'README.md', 'CHANGELOG.md');
 sourceFiles.sort();
 const sourceManifest = await Promise.all(sourceFiles.map(async file => [file, sha(await readFile(pkgRoot + '/' + file))]));
@@ -86,7 +86,7 @@ for (const manager of ['npm', 'pnpm']) {
   // Resolve exclusively from the clean consumer. No source checkout imports.
   const require = createRequire(temp + '/package.json');
   const resolved = {};
-  for (const name of ['tokens.css', 'components.css', 'contract.json']) {
+  for (const name of ['tokens.css', 'components.css', 'contract.json', 'assets/stateport-mark.svg', 'fonts.css', 'assets/fonts/InterVariable.woff2']) {
     const file = await realpath(require.resolve('@stateport/extension-ui/' + name));
     if (!file.startsWith(temp + '/node_modules/')) throw Error('Consumer resolved outside its installed package: ' + file);
     resolved[name] = file;
@@ -94,8 +94,10 @@ for (const manager of ['npm', 'pnpm']) {
   const installedContract = JSON.parse(await readFile(resolved['contract.json'], 'utf8'));
   if (installedContract.uiContractVersion !== contract.uiContractVersion) throw Error('Consumer contract mismatch');
   const publicDir = temp + '/public'; await mkdir(publicDir);
-  for (const name of ['tokens.css', 'components.css']) await cp(resolved[name], publicDir + '/' + name);
-  await writeFile(publicDir + '/index.html', '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Clean installed extension UI</title><link rel="stylesheet" href="tokens.css"><link rel="stylesheet" href="components.css"></head><body><button id="host">Host</button><main data-sp-ui><h1>Installed package only</h1><section class="sp-panel"><label for="field">Local field</label><input id="field"><button id="action" class="sp-button-primary">Inspect</button><p class="sp-status">Unknown · no observation</p><p class="sp-status">Stale · inspect again</p></section></main></body></html>');
+  for (const name of ['tokens.css', 'components.css', 'fonts.css']) await cp(resolved[name], publicDir + '/' + name);
+  await mkdir(publicDir + '/assets/fonts', {recursive:true});await cp(resolved['assets/fonts/InterVariable.woff2'], publicDir + '/assets/fonts/InterVariable.woff2');
+  await cp(resolved['assets/stateport-mark.svg'], publicDir + '/stateport-mark.svg');
+  await writeFile(publicDir + '/index.html', '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Clean installed extension UI</title><link rel="stylesheet" href="tokens.css"><link rel="stylesheet" href="fonts.css"><link rel="stylesheet" href="components.css"></head><body><button id="host">Host</button><main data-sp-ui><img class="sp-brandmark" src="stateport-mark.svg" alt=""><h1>Installed package only</h1><section class="sp-panel"><label for="field">Local field</label><input id="field"><button id="action" class="sp-button-primary">Inspect</button><p class="sp-status">Unknown · no observation</p><p class="sp-status">Stale · inspect again</p></section></main></body></html>');
   const browserArgs = [root + '/scripts/verify-ui-consumer.mjs', publicDir, temp + '/verification'];
   const browserVerification = JSON.parse(run(process.execPath, browserArgs, root));
   if (browserVerification.status !== 'PASS') throw Error('Installed consumer browser verification failed');
@@ -108,7 +110,7 @@ for (const manager of ['npm', 'pnpm']) {
 }
 const handoff = {packageName: pkg.name, packageVersion: pkg.version, uiContractVersion: contract.uiContractVersion,
   sourceCommit, sourceDirty, sourceTreeDigest,
-  sourceTreeDigestMethod: 'SHA-256 of UTF-8 JSON.stringify(sourceManifest), an array of [package-relative POSIX path, SHA-256 of exact file bytes], sorted by path. Covers tokens/, styles/, scripts/ plus package.json, contract.json, LICENSE, NOTICE, README.md, CHANGELOG.md. Excludes generated dist, showcase, Atom consumers and this handoff; identifies package build and payload inputs, not the entire Atom checkout.',
+  sourceTreeDigestMethod: 'SHA-256 of UTF-8 JSON.stringify(sourceManifest), an array of [package-relative POSIX path, SHA-256 of exact file bytes], sorted by path. Covers tokens/, styles/, scripts/, assets/ plus package.json, contract.json, LICENSE, NOTICE, README.md, CHANGELOG.md. Excludes generated dist, showcase, Atom consumers and this handoff; identifies package build and payload inputs, not the entire Atom checkout.',
   sourceManifest, artifactFile, artifactSha256: sha(tarball), exports: pkg.exports,
   verificationCommands, packageFiles: packedFiles, tarballDeterministic: true,
   consumers, verificationEvidence,

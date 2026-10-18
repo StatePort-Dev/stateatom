@@ -17,7 +17,13 @@ Load `@stateport/extension-ui/tokens.css` followed by
 resolved export files into your extension. Wrap the interface in
 `<div data-sp-ui data-sp-theme="light" data-sp-density="comfortable">`.
 The only supported theme/density is light/comfortable (also the defaults).
-No external font download is needed; Inter is used only if installed locally.
+For consistent reference typography, also load `@stateport/extension-ui/fonts.css`.
+Its optional `@font-face` registers only the distinct `StatePort Inter` family;
+it does not redefine host fonts. When copying files, preserve the relative asset
+path `assets/fonts/InterVariable.woff2` next to that CSS. The font export resolves
+to `@stateport/extension-ui/assets/fonts/InterVariable.woff2`. Preserve the included
+OFL license and provenance under `assets/fonts/`. All font requests are local;
+no CDN or font service is used. Without this opt-in, the system stack still works.
 
 Native buttons, fields, labels, fieldsets and focus states work within the scope,
 including dynamically inserted controls. Classes `sp-button-primary`,
@@ -51,9 +57,26 @@ edited. `npm pack` rebuilds and includes only exported assets, this documentatio
 contract, changelog, license and notice. Showcase/tests/build sources are not
 distributed. Repository showcase: `showcase/index.html` after a standalone build.
 
-Contract `1.0.0` is in `@stateport/extension-ui/contract.json`. Breaking selector,
+Contract `2.1.0` is in `@stateport/extension-ui/contract.json`. Breaking selector,
 export, scope, state or token changes require an incompatible contract version.
 Every visual change requires a changelog entry and consumer visual verification.
 Pin the candidate package version and review its handoff/hash before updating a
 consumer; automated updates may prepare PRs, never update production unchecked.
 First screenshots are candidates for review, not human-approved designs.
+
+The v2 visual base follows the supplied reference: white/graphite/blue palette,
+13px body, 12px controls, 34px buttons, compact neutral statuses, code surfaces
+and data rows. Additional primitives are `sp-brand`, `sp-brandmark`, `sp-title`,
+`sp-section-title`, `sp-code`, `sp-code-location`, `sp-data-row`, `sp-toolbar`,
+`sp-nav` and `sp-button-subtle`. The unchanged supplied brand artwork is exported
+as `@stateport/extension-ui/assets/stateport-mark.svg`; preserve its origin.
+V2 changes default geometry and token values and requires deliberate consumer
+upgrades; the earlier v1 candidate remains unchanged.
+
+
+Inspector composition primitives mirror the supplied reference: `sp-extension-header`,
+`sp-extension-body`, `sp-extension-footer`, `sp-section-row`, `sp-subnav`,
+`sp-disclosure`, `sp-value`, `sp-icon` and `sp-button-secondary`. The consumer
+owns the flex column and its bounded height. Labels, values and navigation remain
+native HTML; styles never make a read-only value editable. The repository showcase
+includes a synthetic example alongside the isolated native controls.

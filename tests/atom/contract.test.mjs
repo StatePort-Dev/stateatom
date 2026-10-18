@@ -1,5 +1,14 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+
+test('Atom public UI compatibility matches its actual peer and shared visual contract',async()=>{
+ const read=async p=>JSON.parse(await readFile(new URL(p,import.meta.url),'utf8'));
+ const atom=await read('../../packages/atom/package.json'),contract=await read('../../packages/atom/contract.json'),ui=await read('../../packages/extension-ui/package.json'),uiContract=await read('../../packages/extension-ui/contract.json');
+ assert.equal(contract.uiContract,uiContract.uiContractVersion);
+ assert.equal(contract.uiPackage,ui.version);
+ assert.equal(atom.peerDependencies['@stateport/extension-ui'],ui.version);
+});
 
 test('browser entrypoints import without Chrome or document and expose factories',async()=>{
  const runtime=await import('../../packages/atom/src/runtime.mjs');

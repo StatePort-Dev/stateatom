@@ -19,14 +19,24 @@ try {
   await page.goto('file://' + publicDir + '/index.html');
   assert.equal(await page.title(), 'Clean installed extension UI');
   assert.equal(await page.locator('h1').textContent(), 'Installed package only');
+  assert(await page.locator('img.sp-brandmark').evaluate(async e => { await e.decode(); return e.naturalWidth > 0; }));
+  result.checks.push('installed supplied brand asset loads without a source-checkout URL');
   const input = page.getByLabel('Local field');
   await input.fill('Installed tarball only');
   assert.equal(await input.inputValue(), 'Installed tarball only');
   const computed = await input.evaluate(e => {
     const s = getComputedStyle(e); return {radius: s.borderRadius, padding: s.paddingTop, font: s.fontSize};
   });
-  assert.deepEqual(computed, {radius: '6px', padding: '8px', font: '14px'});
+  assert.deepEqual(computed, {radius: '6px', padding: '7px', font: '12px'});
   result.checks.push('installed CSS renders native field');
+  await page.evaluate(()=>document.fonts.ready);
+  assert(await page.evaluate(()=>[...document.fonts].some(f=>f.family==='StatePort Inter'&&f.status==='loaded')));
+  const cdp=await context.newCDPSession(page);await cdp.send('DOM.enable');await cdp.send('CSS.enable');
+  const doc=await cdp.send('DOM.getDocument');const node=await cdp.send('DOM.querySelector',{nodeId:doc.root.nodeId,selector:'main h1'});
+  const rendered=await cdp.send('CSS.getPlatformFontsForNode',{nodeId:node.nodeId});await cdp.detach();
+  assert(rendered.fonts.some(f=>f.isCustomFont&&/Inter/.test(f.familyName)),JSON.stringify(rendered));
+  result.fonts=rendered.fonts;result.checks.push('installed Inter file actually renders text, verified by Chromium platform fonts');
+
   await input.focus(); await page.keyboard.press('Tab');
   assert.equal(await page.evaluate(() => document.activeElement.id), 'action');
   assert.equal(await page.locator('#action').evaluate(e => getComputedStyle(e).outlineWidth), '2px');

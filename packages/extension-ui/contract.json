@@ -1,19 +1,91 @@
 {
-  "uiContractVersion": "1.0.0",
+  "uiContractVersion": "2.1.0",
   "exports": {
     "./tokens.css": "./dist/tokens.css",
     "./components.css": "./dist/components.css",
-    "./contract.json": "./contract.json"
+    "./contract.json": "./contract.json",
+    "./assets/stateport-mark.svg": "./assets/stateport-mark.svg",
+    "./fonts.css": "./dist/fonts.css",
+    "./assets/fonts/InterVariable.woff2": "./dist/assets/fonts/InterVariable.woff2"
   },
   "scope": "[data-sp-ui]",
-  "themes": ["light"],
-  "densities": ["comfortable"],
-  "defaults": {"theme": "light", "density": "comfortable"},
-  "attributes": {"data-sp-theme": ["light"], "data-sp-density": ["comfortable"]},
-  "primitives": ["sp-button", "sp-button-primary", "sp-icon-button", "sp-input", "sp-label", "sp-help", "sp-error", "sp-panel", "sp-section", "sp-status"],
-  "states": ["default", "hover", "focus-visible", "disabled", "busy"],
-  "nativeElements": ["button", "input", "select", "textarea", "label", "fieldset", "legend", "summary"],
+  "themes": [
+    "light"
+  ],
+  "densities": [
+    "comfortable"
+  ],
+  "defaults": {
+    "theme": "light",
+    "density": "comfortable"
+  },
+  "attributes": {
+    "data-sp-theme": [
+      "light"
+    ],
+    "data-sp-density": [
+      "comfortable"
+    ]
+  },
+  "primitives": [
+    "sp-button",
+    "sp-button-primary",
+    "sp-icon-button",
+    "sp-input",
+    "sp-label",
+    "sp-help",
+    "sp-error",
+    "sp-panel",
+    "sp-section",
+    "sp-status",
+    "sp-brand",
+    "sp-brandmark",
+    "sp-title",
+    "sp-section-title",
+    "sp-code",
+    "sp-code-location",
+    "sp-data-row",
+    "sp-toolbar",
+    "sp-nav",
+    "sp-button-subtle",
+    "sp-extension-header",
+    "sp-extension-body",
+    "sp-extension-footer",
+    "sp-button-secondary",
+    "sp-subnav",
+    "sp-section-row",
+    "sp-value",
+    "sp-disclosure",
+    "sp-icon",
+    "sp-visually-hidden"
+  ],
+  "states": [
+    "default",
+    "hover",
+    "focus-visible",
+    "disabled",
+    "busy"
+  ],
+  "nativeElements": [
+    "button",
+    "input",
+    "select",
+    "textarea",
+    "label",
+    "fieldset",
+    "legend",
+    "summary"
+  ],
   "busy": "aria-busy=true is visual and announced; use native disabled when activation must be blocked. Keep a visible busy label.",
   "status": "Neutral presentation only. Consumer supplies explicit status text, live-region behavior and evidence semantics.",
-  "ownership": "StatePort maintainers; external changes require PR/review. No npm scope ownership or publication is asserted."
+  "ownership": "StatePort maintainers; external changes require PR/review. No npm scope ownership or publication is asserted.",
+  "visualReference": "design/source/style.css and source/extension.css; supplied user reference preserved unchanged",
+  "fonts": {
+    "registration": "./fonts.css",
+    "family": "StatePort Inter",
+    "asset": "./assets/fonts/InterVariable.woff2",
+    "license": "OFL-1.1",
+    "optional": true,
+    "network": "none; host serves installed asset relative to fonts.css"
+  }
 }

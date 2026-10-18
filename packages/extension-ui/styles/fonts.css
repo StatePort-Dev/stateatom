@@ -1,0 +1,10 @@
+/* Optional local font registration. No host selector and no network service.
+ * Unmodified Inter Variable, Copyright The Inter Project Authors; SIL OFL 1.1.
+ * See assets/fonts/Inter-LICENSE.txt and assets/fonts/provenance.json. */
+@font-face {
+  font-family: "StatePort Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./assets/fonts/InterVariable.woff2") format("woff2");
+}

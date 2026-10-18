@@ -32,7 +32,7 @@ client.dispose(); // this client's requests/subscriptions only
 Host imports exactly one copy of the pinned peer's `tokens.css`, then
 `components.css`, then `@stateport/atom/atom.css`. Atom does not inject CSS or
 register global listeners on import. `contract.json` fixes API/wire version 1,
-UI contract 1.0.0 and the exact peer package version. Styles are scoped, not
+UI contract 2.1.0 and the exact peer package version. Styles are scoped, not
 Shadow DOM protection from hostile host CSS.
 
 Only the existing synthetic localhost origins/operations are supported. Browser
@@ -42,3 +42,13 @@ historical diagnostics keep their original meanings. Export is not a State Card.
 
 Source licenses: historical MIT implementation plus SPDX-marked Apache-2.0 work;
 see LICENSE, NOTICE and LICENSES. The CSS foundation is a separate Apache-2.0 peer.
+
+
+The inspector now follows the reference composition with a scrolling body and
+anchored header/footer. Give its mounting container a definite height when
+embedding (for example `height: 600px`); the mount follows that height and is
+capped at the viewport. Standalone host CSS supplies 100dvh. Section shortcuts
+scroll only the inspector, and all actions are type=button to avoid host-form
+submission. Load the optional shared `fonts.css` and serve the exported local
+Inter asset at its relative path to reproduce reference typography. Carry the
+font's OFL license from the UI package; no external font service is required.

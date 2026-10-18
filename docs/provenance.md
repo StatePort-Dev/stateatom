@@ -248,3 +248,13 @@ Exact bundled runtime/UI source input digests ship as `dist/source-manifest.json
 candidate and in its local handoff. They identify working-tree input bytes above
 the recorded Git base revision; they do not invent a commit for uncommitted work
 or rewrite historical validation hashes. See [embedding](embedding.md).
+
+## Local reference typography — 2026-10-18
+
+The later shared UI composition adds unmodified Inter Variable from the official
+`rsms/inter` repository, revision `353b61b9f4430d5f420d56605a6e7993e0941470`.
+The original OFL 1.1 license, source URLs and SHA-256 digests are retained in
+`packages/extension-ui/assets/fonts/`; optional `fonts.css` registers a unique
+StatePort Inter family. Built browser/reader/embedding hosts carry its license.
+This is a later asset addition, not part of the historical import above, and is
+not relicensed as Apache-2.0. No remote font service is used at runtime.

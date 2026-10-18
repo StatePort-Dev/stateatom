@@ -2,5 +2,11 @@ StatePort extension UI
 Copyright 2026 StatePort contributors
 
 New original implementation under Apache-2.0. Initial visual values were
-provided in the StateAtom shared-extension-ui task. No private Capture source,
-third-party fonts, icons or runtime code are included.
+provided in the StateAtom shared-extension-ui task. The reference alignment uses
+the user-supplied UX prototype at design/source/style.css and extension.css.
+assets/stateport-mark.svg is an unchanged copy of the supplied brand artwork at
+design/source/assets/stateport-mark.svg; its origin is preserved, not relicensed.
+Inter Variable is an unmodified, locally served font by The Inter Project Authors,
+redistributed under SIL OFL 1.1, not Apache-2.0. See assets/fonts/Inter-LICENSE.txt
+and assets/fonts/provenance.json for upstream revision and file digests.
+No private Capture source or third-party UI runtime is included.

@@ -22,9 +22,9 @@ deviation and its reason instead of creating an independent replacement design.
 
 This is a prototype/reference set, not the production extension. Its simulated
 Capture receipts, API edits and test artifacts do not establish real Capture or
-Atom engine behavior. The present candidate implements the minimal visual base
-from `01-stateatom-shared-extension-ui.md`; it does not claim to have ported every
-screen or to match all reference screens. Future reconciliation still goes
+Atom engine behavior. The present candidate aligns the shared native primitives and actual Atom
+composition with this reference; it does not port simulated business logic or
+claim to match every reference screen. Future reconciliation still goes
 through the Git token/contract/changelog/consumer-verification procedure below.
 Reference materials stay in the repository and are excluded from the CSS tarball.
 
@@ -51,10 +51,11 @@ orchestration are outside this contract.
 Load exports in this order:
 
 1. `@stateport/extension-ui/tokens.css`
-2. `@stateport/extension-ui/components.css`
+2. `@stateport/extension-ui/fonts.css` (optional, used by Atom for consistent Inter)
+3. `@stateport/extension-ui/components.css`
 
-Read `@stateport/extension-ui/contract.json` for UI contract version `1.0.0`.
-Package candidate `0.1.0-candidate.20261018.1` is independent of that version.
+Read `@stateport/extension-ui/contract.json` for UI contract version `2.1.0`.
+Package candidate `0.2.0-candidate.20261018.2` is independent of that version.
 The only supported scope/theme/density is `[data-sp-ui]` / light / comfortable;
 omitted theme/density attributes select these defaults. Unsupported theme/density
 values have no defined behavior. Token and primitive prefixes are `--sp-` / `sp-`.
@@ -75,32 +76,43 @@ retain visible busy wording. Set native `disabled` when activation must be
 blocked. CSS does not implement disabling. Status text and live-region roles
 belong to the consumer. Color never distinguishes Observed/Unknown/Stale.
 
-Rules are scoped; there are no global resets, external fonts or asset requests.
+Ordinary rules are scoped and there is no global reset. Optional `fonts.css`
+registers the unique StatePort Inter family and reads the installed local WOFF2;
+it has no host selector and uses no remote font service.
 Adjacent content is unaffected. This is not Shadow DOM isolation from host-authored
 rules. Consumers must avoid overriding shared primitives with conflicting rules.
 
 ## Values and explicit accessibility changes
 
-The task supplies the Capture base: Inter/system stack, 14px/1.5 body, text
-`#0f172a`, muted `#64748b`, canvas `#f8fafc`, white surface, structural border
-`#cbd5e1`, the supplied oklch primary/hover, 6px controls, 8px/12px padding and
-0.5 native disabled opacity. Inter is used only if present locally.
+The original v1 Capture base is retained in the historical changelog. V2 uses
+values directly from the supplied `design/source/style.css` and `extension.css`:
+white canvas/surface, `#17191f` text, `#646c7a` muted, `#e5e8ee` structural lines,
+`#0b5cff` primary / `#084ed8` hover, 13px body, 12px controls, 7px buttons,
+6px fields, 34px actions, 28px icon buttons and compact 10px neutral status text.
+Expression surfaces use `#171f30` / `#e0e8f8`, with `#b4c3da` source text.
+Optional `fonts.css` serves the unmodified Inter Variable locally, under its
+original OFL 1.1 license; the distinct family name avoids changing the host.
+Keep `assets/fonts/InterVariable.woff2` relative to the copied font CSS and carry
+its license/provenance. The supplied system code-font fallback is retained. All library geometry and
+colors are semantic tokens, generated from JSON.
 
-Additional geometry comes from the existing Atom panel: 12px small text, weight
-600 emphasis, 10px panels with 20px padding, 4/8/12px spacing, 1px borders and
-2px focus outline/offset. Existing Atom's 24/18/14px headings, 960px page width,
-source rows, dialog/backdrop and responsive composition remain consumer rules.
-No private Capture implementation or external icon/font asset was copied.
+Shared brand/title/section headings, toolbar/navigation, code blocks and data rows
+extend the primitive set. `assets/stateport-mark.svg` is an unchanged copy of the
+supplied artwork and an explicit package export. Atom inlines the same artwork
+so embedded hosts need no asset URL resolution or Chrome-specific image access.
+The artwork origin is retained in notices without relicensing the supplied set.
 
-Accessibility changes are explicit in the package changelog:
+The visual contract is bumped to 2.0.0 because defaults and token values change.
+No v1 artifact is overwritten. Atom's own composition now follows a 440px sheet,
+StatePort/Atom header, source-expression block and observed-value rows; its host
+can still override width/padding. Actual controls and evidence wording remain.
+Prototype-only Capture, editable state/props and draft/delivery UI are not added.
 
-- Enabled control boundaries reuse supplied muted `#64748b`, because structural
-  `#cbd5e1` on white measured 1.48:1. The new boundary measures 4.76:1; structural
-  panel borders retain the original color.
-- Focus covers textareas and links too. Buttons/labels wrap long text; busy/error
-  affordances include text and border shape. Panel header wraps at narrow sizes.
-- Reader adopts shared 14px/1.5 body instead of its prior 16px/1.55; its own
-  heading sizes and reader layout remain local.
+Accessibility deviations from the reference remain explicit: interactive
+boundaries use its darker `#8c94a2` subtle gray to reach at least 3:1 on white,
+focus uses a 2px primary outline, long labels/buttons wrap and statuses keep their
+textual meanings. Busy/error affordances retain visible text and border shape.
+See [reference alignment](extension-ui-reference-alignment.md) for scope and QA.
 
 ## Build and local development
 
@@ -120,7 +132,7 @@ npm run check
 tokens. `scripts/build.mjs` writes deterministic `dist/tokens.css` and
 `dist/components.css`; never edit generated files. Standalone `npm pack` runs
 the package's prepack build. The packed library deliberately contains only
-generated CSS, contract, package metadata, README, changelog, LICENSE and NOTICE.
+generated CSS, the supplied brand SVG, contract, package metadata, README, changelog, LICENSE and NOTICE.
 Source generation/showcase files remain in Git, not in the tarball.
 
 Root `npm install` links the file dependency recorded in package-lock.json.
@@ -178,7 +190,7 @@ The handoff records package/contract versions, sourceCommit, explicit sourceDirt
 artifactFile/SHA-256, exports, commands and actual consumer results. Its
 `sourceTreeDigest` is SHA-256 of UTF-8 `JSON.stringify(sourceManifest)`, where
 `sourceManifest` is an array of `[package-relative POSIX path, SHA-256 of exact
-file bytes]` sorted by path. It includes all files in tokens/, styles/, scripts/
+file bytes]` sorted by path. It includes all files in tokens/, styles/, scripts/, assets/
 plus package.json, contract.json, LICENSE, NOTICE, README.md and CHANGELOG.md.
 This identifies package generation and payload inputs, including dirty bytes;
 it does not identify the whole Atom consumer. Generated dist, showcase, tests,
@@ -192,9 +204,9 @@ version and compatible uiContractVersion. In the separately authorized StatePort
 checkout, install the exact tarball (replace the path with the transferred file):
 
 ```sh
-npm install --save-exact /absolute/path/stateport-extension-ui-0.1.0-candidate.20261018.1.tgz
+npm install --save-exact /absolute/path/stateport-extension-ui-0.2.0-candidate.20261018.2.tgz
 # For a pnpm consumer:
-pnpm add --save-exact /absolute/path/stateport-extension-ui-0.1.0-candidate.20261018.1.tgz
+pnpm add --save-exact /absolute/path/stateport-extension-ui-0.2.0-candidate.20261018.2.tgz
 ```
 
 Bundle/copy both CSS exports; scope the intended UI with data-sp-ui, and remove
@@ -208,3 +220,15 @@ Breaking exports, tokens, selectors, supported states or scope/theme/density
 require an incompatible contract version. Every visual change, however small,
 gets a changelog entry and refreshed candidate screenshots. Automated consumer
 updates may prepare reviewable PRs; they must not update production unchecked.
+
+
+## Composition correction after visual feedback
+
+The first v2 pass matched palette and some primitives but retained too much of
+the earlier form-based layout. The current `.2` candidate adds shared header,
+scroll body, footer, section rows, compact section navigation, native disclosure,
+icon and read-only value primitives. Atom puts the target and source/values first,
+folds setup and detailed explanations, and keeps contextual actions visible.
+Its height follows the host container, capped at the viewport; standalone host
+CSS supplies the definite height. Navigation scrolls only the inspector. The
+prototype's editing/draft controls are not copied onto read-only observations.

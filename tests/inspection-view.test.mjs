@@ -82,17 +82,17 @@ test('finite trace context qualifies host correspondence only for the validated 
 });
 test('panel fragment warnings point to the current finite trace without upgrading raw ancestry',async()=>{
  const priorDocument=globalThis.document,priorChrome=globalThis.chrome;
- function element(){return {textContent:'',value:'',children:[],append(...nodes){this.children.push(...nodes)},replaceChildren(...nodes){this.children=nodes},addEventListener(){}};}
+ function element(){return {textContent:'',value:'',children:[],setAttribute(){},removeAttribute(){},append(...nodes){this.children.push(...nodes)},replaceChildren(...nodes){this.children=nodes},addEventListener(){}};}
  const elements=new Map(),node=id=>{if(!elements.has(id))elements.set(id,element());return elements.get(id)};
  node('tabs').value='1';
  const s=snapshot(),rt=s.analysis.stateatom.runtime;s.analysis.stateatom.target={property:'disabled',value:true};rt.commitIdentity='Observed: host';rt.commit={adapter:'react18-final-host-props/1',status:'Observed',producer:{status:'Observed'}};
  rt.stateHandoffs=[{status:'Observed',queueId:'q',valueOrigin:'Unknown/Unsupported'}];rt.exchangeBindings=[{status:'Observed',requestId:'request'}];rt.nodes=[{status:'Observed',kind:'member',expression:'account.rules.quota',value:12,valueOrigin:'Unknown/Unsupported',origin:{url:'http://127.0.0.1/api',pointer:'/rules/quota'}}];
  s.analysis.stateatom.firstReadProfile={schema:1,status:'Supported finite trace',fullPath:true,freshness:'Recorded',scope:'original first read only',sourceProof:{status:'Code-linked',profile:'reviewed'},occurrence:{page:'page1',status:'Observed'},limits:['Later renders unsupported']};
  const before=JSON.stringify(s);
- const dom={createElement:element};const container={ownerDocument:dom,append(){}};dom.createElement=()=>({...element(),style:{},setAttribute(){},querySelector(selector){return node(selector.match(/data-atom-id="([^"]+)/)?.[1]);},querySelectorAll(){return[];},remove(){}});globalThis.document={getElementById:node,createElement:element};globalThis.chrome={runtime:{onMessage:{addListener(){}},sendMessage:async m=>({ok:true,result:m.op==='tabs'?[{id:1,url:'http://127.0.0.1'}]:m.op==='list-diagnostics'?[]:s})}};
+ const dom={createElement:element,createElementNS:()=>({...element(),setAttribute(){}})};const container={ownerDocument:dom,append(){}};dom.createElement=()=>({...element(),style:{},setAttribute(){},querySelector(selector){return node(selector.match(/data-atom-id="([^"]+)/)?.[1]);},querySelectorAll(){return[];},remove(){}});globalThis.document={getElementById:node,createElement:element};globalThis.chrome={runtime:{onMessage:{addListener(){}},sendMessage:async m=>({ok:true,result:m.op==='tabs'?[{id:1,url:'http://127.0.0.1'}]:m.op==='list-diagnostics'?[]:s})}};
  const text=n=>[n.textContent,...n.children.map(text)].join(' ');
  try{
-  let experimentReply;const {mountAtom}=await import('../packages/atom/src/ui.mjs');const view=mountAtom(container,{request:async m=>{if(m.op==='deep-experiment')return new Promise(r=>experimentReply=r);return m.op==='tabs'?[{id:1,url:'http://127.0.0.1'}]:m.op==='list-diagnostics'?[]:s;},subscribe:()=>()=>{}},{idPrefix:''});await view.ready;await node('refresh-tabs').onclick();
+  let experimentReply;const {mountAtom}=await import('../packages/atom/src/ui.mjs');const view=mountAtom(container,{request:async m=>{if(m.op==='deep-experiment')return new Promise(r=>experimentReply=r);return m.op==='tabs'?[{id:1,url:'http://127.0.0.1'}]:m.op==='list-diagnostics'?[]:s;},subscribe:()=>()=>{}},{idPrefix:''});await view.ready;assert.doesNotMatch(node('status').textContent,/^Error:/);await node('refresh-tabs').onclick();
   for(const id of ['commit-summary','state-handoffs','exchange-bindings'])assert.match(text(node(id)),/alone.*finite trace/i,id);
   assert.match(text(node('atom-chain')),/fragment.*Unknown\/Unsupported.*finite trace/i);assert.match(node('first-read-scope').textContent,/original first read only/);assert.equal(JSON.stringify(s),before);
   s.analysis.stateatom.firstReadProfile.fullPath=false;await node('refresh-tabs').onclick();

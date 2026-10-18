@@ -39,3 +39,13 @@ Forks and third-party builds should state their origin and avoid implying that t
 ## Source release record
 
 The release record must identify the source revision, effective licenses, dependency and asset inventory, required notices, and the build artifact they accompany. Verify these against the files actually being released. Keep that record with the release so later consumers can inspect the applicable terms.
+
+
+## Local UI font inventory — 2026-10-18
+
+`packages/extension-ui/assets/fonts/InterVariable.woff2` is the unmodified Inter
+Variable font from `rsms/inter`, revision
+`353b61b9f4430d5f420d56605a6e7993e0941470`, distributed under **SIL OFL 1.1**.
+Its original license and exact source URLs/SHA-256 digests are stored next to it
+in `Inter-LICENSE.txt` and `provenance.json`. It is not relicensed as Apache-2.0.
+The UI tarball and built browser/reader/embedding hosts carry the font notice.

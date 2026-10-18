@@ -15,7 +15,8 @@ export async function buildUI({out = path.join(root, 'dist'), check = false} = {
     return `  --sp-${key}: ${value};`;
   }).join('\n');
   const components = await readFile(path.join(root, 'styles/components.css'), 'utf8');
-  const files = {'tokens.css': banner + `[data-sp-ui] {\n${declarations}\n}\n`, 'components.css': banner + components};
+  const fonts = await readFile(path.join(root, 'styles/fonts.css'), 'utf8');
+  const files = {'fonts.css': fonts, 'tokens.css': banner + `[data-sp-ui] {\n${declarations}\n}\n`, 'components.css': banner + components};
   if (!check) await mkdir(out, {recursive: true});
   for (const [file, content] of Object.entries(files)) {
     const dest = path.join(out, file);
@@ -24,7 +25,11 @@ export async function buildUI({out = path.join(root, 'dist'), check = false} = {
       if (actual !== content) throw Error('Generated CSS drift: ' + dest);
     } else await writeFile(dest, content);
   }
-  return Object.keys(files);
+  const font = await readFile(path.join(root, 'assets/fonts/InterVariable.woff2'));
+  const fontDest = path.join(out, 'assets/fonts/InterVariable.woff2');
+  if (check) { if (!(await readFile(fontDest)).equals(font)) throw Error('Generated font drift: ' + fontDest); }
+  else { await mkdir(path.dirname(fontDest), {recursive: true}); await writeFile(fontDest, font); }
+  return [...Object.keys(files), 'assets/fonts/InterVariable.woff2'];
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {

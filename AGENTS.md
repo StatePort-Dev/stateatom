@@ -42,5 +42,8 @@ Keep CSS within `[data-sp-ui]` with `--sp-*` / `sp-*` names. Edit token sources,
 never generated CSS. Preserve Atom-specific layout and all evidence semantics.
 Every visual change requires a changelog entry; breaking contract changes require
 an incompatible contract version. Verify scope/keyboard/narrow views and affected
-Atom workflows. Screenshots are candidates until reviewed by a human. Local
+Atom workflows. Functional checks do not establish visual fidelity: compare the
+rendered first viewport, typography, layout, alignment and controls against the
+supplied HTML/screens and record necessary deviations. Screenshots are candidates
+until reviewed by a human. Local
 tarball preparation does not authorize publishing or modifying StatePort.

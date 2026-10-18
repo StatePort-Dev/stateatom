@@ -1,6 +1,6 @@
 {
   "name": "@stateport/atom",
-  "version": "0.1.0-candidate.20261018.1",
+  "version": "0.1.0-candidate.20261018.3",
   "type": "module",
   "description": "Embeddable StateAtom browser runtime and inspector",
   "license": "(MIT AND Apache-2.0)",
@@ -38,7 +38,7 @@
     "./contract.json": "./contract.json"
   },
   "peerDependencies": {
-    "@stateport/extension-ui": "0.1.0-candidate.20261018.1"
+    "@stateport/extension-ui": "0.2.0-candidate.20261018.2"
   },
   "engines": {
     "node": ">=24.0.0 <25"

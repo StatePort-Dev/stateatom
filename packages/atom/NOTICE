@@ -119,4 +119,4 @@ engine modules in src/engine, first-read modules in src/first-read, fixtures in
 tests/fixtures/inspection, unit/native checks in tests and acquisition probes in
 experiments. The relocation preserves all existing licenses and attributions.
 
-Embeddable runtime/UI adapted from the historical MIT StateAtom worker, panel and browser engine. Original platform/transport and packaging files carry Apache-2.0 SPDX headers.
+Embeddable runtime/UI adapted from the historical MIT StateAtom worker, panel and browser engine. Original platform/transport and packaging files carry Apache-2.0 SPDX headers. Supplied StatePort brand artwork and icon geometry in the UI template retain its extension-ui/design origin and is not relicensed.

@@ -1,13 +1,13 @@
 /* Atom diagnostic reader layout; shared primitives come from extension-ui. */
 body { margin:0; }
-main { max-width:1000px; margin:32px auto; }
-h1 { font-size:26px; }
+main { max-width:740px; margin:24px auto; }
+h1 { font-size:20px; }
 h2 { font-size:20px; }
 input { display:block; margin:12px 0; }
-#reader-status { display:block; padding:12px; }
-pre { white-space:pre-wrap; overflow-wrap:anywhere; max-height:65vh; overflow:auto; font-size:13px; }
+#reader-status { display:block; padding:12px; font-size:var(--sp-font-size-small); line-height:1.6; }
+pre { white-space:pre-wrap; overflow-wrap:anywhere; max-height:65vh; overflow:auto; font-family:var(--sp-font-mono); font-size:11px; }
 section { overflow-wrap:anywhere; }
 @media(max-width:720px) {
  main.sp-panel { margin:0; padding:16px; border:0; border-radius:0; }
- h1 { font-size:23px; }
+ h1 { font-size:20px; }
 }

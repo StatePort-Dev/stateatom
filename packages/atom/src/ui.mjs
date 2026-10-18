@@ -9,6 +9,7 @@ export function mountAtom(rootElement,client,options={}){
  root.setAttribute('data-sp-ui','');root.setAttribute('data-atom-root','');
  if(options.maxWidth!==undefined)root.style.maxWidth=options.maxWidth;if(options.padding!==undefined)root.style.padding=options.padding;
  root.innerHTML=template;
+ for(const button of root.querySelectorAll('button'))button.type='button';
  const prefix=options.idPrefix??('atom-'+crypto.randomUUID()+'-');
  for(const e of root.querySelectorAll('[id]'))e.id=prefix+e.id;
  for(const e of root.querySelectorAll('[aria-labelledby]'))e.setAttribute('aria-labelledby',e.getAttribute('aria-labelledby').split(' ').map(id=>prefix+id).join(' '));
@@ -17,13 +18,14 @@ export function mountAtom(rootElement,client,options={}){
  $('reader-link').href=options.readerURL||'reader.html';
  let disposed=false;const controller=new AbortController(),urls=new Set(),timers=new Set();
  const later=(fn,ms)=>{const timer=setTimeout(()=>{timers.delete(timer);if(!disposed)fn();},ms);timers.add(timer);};
-let analysis,selectedState,loadGeneration=0,selectionGeneration=0,tabGeneration=0;
+let analysis,selectedState,loadGeneration=0,selectionGeneration=0,tabGeneration=0,renderedAt;
 const tab=()=>Number($('tabs').value);
 async function rpc(message){const r=await client.request(message,{signal:controller.signal});if(disposed)throw atomError('DISPOSED');return r;}
 async function action(fn){const id=tab(),epoch=tabGeneration;try{$('status').textContent='Working…';const r=await fn();if(!disposed&&id===tab()&&epoch===tabGeneration)$('status').textContent='OK';return r;}catch(e){if(disposed||id!==tab()||epoch!==tabGeneration)return;$('status').textContent='Error: '+e.message;}}
 async function tabs(){const old=$('tabs').value;const ts=await rpc({op:'tabs'});$('tabs').replaceChildren(...ts.map(t=>{const o=document.createElement('option');o.value=t.id;o.textContent=t.id+' '+t.url;return o;}));if(ts.some(t=>String(t.id)===old))$('tabs').value=old;}
 async function load(){
  const id=tab(),generation=++loadGeneration;
+ if(!Number.isSafeInteger(id)||id<=0){selectedState=null;analysis=null;renderInspection();return;}
  const state=await rpc({op:'state',tabId:id,refreshDeep:true});
  if(generation!==loadGeneration||id!==tab())return;
  selectedState=state;analysis=state.analysis;renderInspection();
@@ -32,6 +34,13 @@ function renderInspection(){
  $('atom-result').textContent='';
  const view=inspectionView(selectedState||{}),selection=view.target;
  $('mode').textContent=view.mode;
+ $('connection-label').textContent=selectedState?.attached?'Attached · this tab':'Not attached';
+ if(view.observedAt&&view.observedAt!==renderedAt){$('scroll').scrollTop=0;for(const id of ['evidence-nav','diagnostics-nav'])$(id).removeAttribute('aria-current');$('inputs-nav').setAttribute('aria-current','location');}renderedAt=view.observedAt;
+ const target=selection||selectedState?.stale?.target;
+ const label=target?.tag==='button'&&typeof target.text==='string'?target.text.trim():'';
+ $('selection-title').textContent=label&&label.length<=64?label:target?.selector||'Select an element';
+ $('selection-value').textContent=view.stale?'Stale':selection?selection.property+' = '+JSON.stringify(selection.value):'No observation';
+ if((selectedState&&!selectedState.attached&&!target)||!Number.isSafeInteger(tab())||tab()<=0)$('browser-connection').open=true;
  $('commit-summary').textContent=view.commit.status+' · '+view.commit.reason;
  const profile=view.firstReadProfile;
  $('first-read-summary').textContent=profile.status+' · '+(profile.fullPath?'HTTP field → original read → committed property':profile.reason||'Finite trace unavailable');
@@ -41,7 +50,8 @@ function renderInspection(){
  $('save-report').disabled=!selectedState?.selection&&!selectedState?.stale?.target;
  $('load').disabled=!selectedState?.selection?.selector&&!selectedState?.stale?.target?.selector;
  $('selected').textContent=selection?selection.selector+' · '+selection.property+' = '+JSON.stringify(selection.value):view.stale?'Previous observation is stale. Select an element or inspect again.':'Select an element on the attached page.';
- $('freshness').textContent=view.stale?'Stale · '+view.reason:view.observedAt?'Snapshot at '+new Date(view.observedAt).toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit',second:'2-digit',fractionalSecondDigits:3})+'. Not live. After changing the app, choose Inspect again.':'No observation yet.';
+ $('freshness').textContent=view.stale?'Stale · '+view.reason:view.observedAt?'Snapshot at '+new Date(view.observedAt).toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit',second:'2-digit',fractionalSecondDigits:3})+'. Not live.':'No observation yet.';
+ $('freshness').title='Recorded snapshot. Inspect again after changing the app.';
  $('capabilities').textContent=view.mode==='Instrumented'?'Instrumented snapshot · open IDE + source + dev plugin. Only supported executions are available. A finite supported trace, when available, is shown separately above.':view.mode==='Source-linked'?'Source-linked snapshot · open IDE and source available. Operand values require supported dev instrumentation.':'Basic · DOM observation only. Connect the open IDE for source links; add the open dev plugin for supported operand observations.';
  $('state-handoffs').replaceChildren(...(view.handoffs.length?view.handoffs:[{status:view.stale?'Stale':'Unknown/Unsupported',reason:'No supported native state handoff for this selected trace.'}]).map(h=>{const item=document.createElement('li');item.textContent=h.status+' · '+(h.queueId?'queue '+h.queueId+' · update '+(h.updateId||'unknown')+' · ':'')+(h.parsedObject?'JSON consumption '+h.parsedObject.consumptionId+' · ':'')+(h.reason||h.scope||'')+(view.finiteTraceSupported?' This state handoff alone does not establish current field value ancestry; see the separately scoped finite trace.':' Current field value ancestry is unknown.');return item;}));
  $('exchange-bindings').replaceChildren(...(view.exchanges.length?view.exchanges:[{status:view.stale?'Stale':'Unknown/Unsupported',reason:'No exact exchange binding for a supported selected trace.'}]).map(b=>{const item=document.createElement('li');item.textContent=b.status+' · '+(b.requestId?b.method+' '+b.url+' · browser request '+b.requestId+' · ':'')+(b.reason||b.scope||'')+(view.finiteTraceSupported?' This exchange identity alone does not establish complete HTTP provenance; see the separately scoped finite trace.':' Complete HTTP provenance is not established.');return item;}));
@@ -54,13 +64,15 @@ function renderInspection(){
  if(view.stale)$('atom-summary').textContent='Stale · '+view.reason;
  for(const source of view.sources){
   const row=document.createElement('div');row.className='sp-atom-source';
-  const location=document.createElement('span');location.textContent=source.file+':'+source.line+':'+source.column+' · Code-linked';
-  const button=document.createElement('button');button.textContent='Open in IDE';
-  button.onclick=()=>action(async()=>{await rpc({op:'open',tabId:tab(),source});});row.append(location,button);$('sources').append(row);
+  const location=document.createElement('span');location.className='sp-code-location';location.textContent=source.file.split('/').at(-1)+' : '+source.line;location.title=source.file+':'+source.line+':'+source.column;
+  const button=document.createElement('button');button.type='button';button.className='sp-button-subtle';button.setAttribute('aria-label','Open in IDE: '+source.file+':'+source.line+':'+source.column);button.title='Open in IDE: '+source.file+':'+source.line+':'+source.column;
+  const external=document.createElementNS('http://www.w3.org/2000/svg','svg');external.setAttribute('viewBox','0 0 24 24');external.setAttribute('class','sp-icon');external.setAttribute('aria-hidden','true');const arrow=document.createElementNS('http://www.w3.org/2000/svg','path');arrow.setAttribute('d','M14 3h7v7m0-7L10 14M10 3H3v18h18v-7');external.append(arrow);button.append(location,external);
+  const badge=document.createElement('span');badge.className='sp-status';badge.textContent='Code-linked';
+  button.onclick=()=>action(async()=>{await rpc({op:'open',tabId:tab(),source});});row.append(button,badge);$('sources').append(row);
   const expression=document.createElement('pre');expression.textContent=(source.expressions||[]).join('\n');$('expressions').append(expression);
  }
  if(!view.sources.length)$('sources').textContent='Source unavailable for this selection.';
- for(const node of view.operands){const item=document.createElement('li');item.textContent=node.expression+' = '+JSON.stringify(node.value);$('operands').append(item);}
+ for(const node of view.operands){const item=document.createElement('li');item.className='sp-data-row';const expression=document.createElement('span'),value=document.createElement('code');value.className='sp-value';expression.textContent=node.expression+' = ';value.textContent=JSON.stringify(node.value);item.append(expression,value);$('operands').append(item);}
  $('values-unavailable').textContent=view.operands.length?'':'No scalar operand values observed for this selected computation.';
  $('experiment-result').textContent=selectedState?.experiment?selectedState.experiment.status+': '+selectedState.experiment.reason:'';
  const candidates=[...(analysis?.fields||[])];
@@ -74,6 +86,11 @@ function renderInspection(){
  $('experiment-eligibility').textContent=!eligible?'Inspect a current property on an attached local app first. Stale selections require inspection again.':selection.property==='text'&&candidates.length?'Text response experiment available for a recorded JSON leaf. Response presence alone is not dependency. Trials reset storage/cache and reload; server writes are not undone.':'Controlled property trials require explicit response variants below. The simpler response-field experiment supports text only. Trials reset storage/cache and reload; server writes are not undone.';
  $('evidence').textContent=selectedState?JSON.stringify({analysis,events:selectedState.events,bufferBytes:selectedState.bufferBytes},null,2):'';
 }
+function reveal(id){const e=$(id),scroller=$('scroll');if(e.tagName==='DETAILS')e.open=true;scroller.scrollTop+=e.getBoundingClientRect().top-scroller.getBoundingClientRect().top-16;(e.querySelector('summary')||e).focus({preventScroll:true});}
+ $('setup-toggle').onclick=()=>reveal('browser-connection');
+ $('diagnostic-toggle').onclick=()=>reveal('diagnostics-details');
+ for(const [button,section] of [['inputs-nav','inputs-section'],['evidence-nav','evidence-section'],['diagnostics-nav','diagnostics-details']])$(button).onclick=()=>{for(const id of ['inputs-nav','evidence-nav','diagnostics-nav'])$(id).removeAttribute('aria-current');$(button).setAttribute('aria-current','location');reveal(section);};
+ for(const d of root.querySelectorAll('.sp-atom-tools > details, .sp-atom-inspection > details'))d.classList.add('sp-disclosure');
 let fields=[];
 function clearInspection(){++selectionGeneration;const property=$('property').value;++loadGeneration;selectedState=null;analysis=null;renderInspection();$('property').value=property;}
 async function inspectAgain(){
@@ -85,7 +102,7 @@ async function inspectAgain(){
 }
 function flatten(v,p='',out=[]){if(v!==null&&typeof v==='object')for(const[k,x]of Object.entries(v))flatten(x,p?p+'.'+k:k,out);else out.push({path:p,value:v});return out;}
 $('pair').onclick=()=>action(()=>rpc({op:'pair',url:$('bridge').value,token:$('token').value,origin:$('origin').value,sourceRoot:$('source-root').value}));
-$('refresh-tabs').onclick=()=>action(async()=>{await tabs();await load();});$('tabs').onchange=()=>{++tabGeneration;return action(async()=>{clearInspection();await load();});};$('attach').onclick=()=>action(()=>rpc({op:'attach',tabId:tab()}));$('pick').onclick=()=>action(async()=>{clearInspection();await rpc({op:'pick',tabId:tab()});});$('inspect-selector').onclick=()=>action(async()=>{const id=tab(),selector=$('selector').value;clearInspection();try{await rpc({op:'inspect-selector',tabId:id,selector});}finally{if(id===tab())await load();}});$('load').onclick=()=>action(inspectAgain);$('detach').onclick=()=>action(async()=>{await rpc({op:'detach',tabId:tab()});await load();});
+$('refresh-tabs').onclick=()=>action(async()=>{await tabs();await load();});$('tabs').onchange=()=>{++tabGeneration;return action(async()=>{clearInspection();await load();});};$('attach').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration;await rpc({op:'attach',tabId:id});if(disposed||id!==tab()||epoch!==tabGeneration)return;await load();if(disposed||id!==tab()||epoch!==tabGeneration)return;$('browser-connection').open=false;$('source-connection').open=false;$('scroll').scrollTop=0;});$('pick').onclick=()=>action(async()=>{clearInspection();await rpc({op:'pick',tabId:tab()});});$('inspect-selector').onclick=()=>action(async()=>{const id=tab(),selector=$('selector').value;clearInspection();try{await rpc({op:'inspect-selector',tabId:id,selector});}finally{if(id===tab())await load();}});$('load').onclick=()=>action(inspectAgain);$('detach').onclick=()=>action(async()=>{await rpc({op:'detach',tabId:tab()});await load();});
 $('experiment').onclick=()=>action(async()=>{const id=tab(),generation=selectionGeneration;const field=fields[Number($('fields').value)];$('experiment-result').textContent='Running…';const result=await rpc({op:'experiment',tabId:tab(),field,value:JSON.parse($('value').value),controlPath:$('control').value,actions:JSON.parse($('actions').value)});if(id!==tab()||generation!==selectionGeneration)return;$('experiment-result').textContent=result.status+': '+result.reason;$('evidence').textContent=JSON.stringify(result,null,2);});
 const unsubscribe=client.subscribe(m=>{if(disposed)return;if(['selection','state-invalidated'].includes(m.event)&&m.tabId===tab())void action(load);});const ready=tabs().then(load).catch(e=>{if(disposed)return;$('status').textContent='Error: '+e.message;});
 

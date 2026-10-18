@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.2.0-candidate.20261018.2 — UI contract 2.1.0
+
+- Add reusable header/body/footer, compact section navigation, read-only value,
+  section-row, native disclosure and reference icon primitives.
+- Add optional local Inter Variable registration in a distinct StatePort Inter
+  family. Carry the unchanged OFL font, license, pinned revision and digests;
+  no network font service or global selector is introduced.
+- Match the reference condition surface #171f30, #e0e8f8 text and #b4c3da source.
+- Expose the composition in Atom: selected element and value first, then compact
+  property selection, source expression and observed rows. Move connection/setup
+  into native disclosures and anchor reinspection/diagnostics at the bottom.
+- Keep full source identity in accessible names/tooltips; navigate through the
+  exact original source object. No runtime evidence or editable input is inferred.
+
+## 0.2.0-candidate.20261018.1 — UI contract 2.0.0
+
+- Align the visual base with supplied design/source/style.css and extension.css:
+  white canvas, graphite #17191f text, muted #646c7a, structural #e5e8ee border,
+  #0b5cff primary and #084ed8 hover, 13px body, 12px controls, 7px buttons,
+  6px fields, 34px actions, compact neutral statuses and 28px icon buttons.
+- Add shared brand/title/section heading, toolbar/navigation, code surface and
+  data-row primitives, plus an exported unchanged supplied StatePort brand SVG.
+- Incompatible visual contract: default typography, geometry and existing token
+  values change. No names are silently removed. Consumers must opt into v2.
+- Retain accessible focus and >=3:1 interactive boundaries using the reference
+  subtle gray #8c94a2; the reference's light structural border is not used as
+  the sole input boundary. Status meaning remains explicit consumer text.
+- Atom uses the same primitives for a compact StatePort/Atom header, source
+  expression surface, observed-value rows, diagnostics and reader. No simulated
+  Capture, editors or writable state/props controls are introduced.
+
 ## 0.1.0-candidate.20261018.1 — UI contract 1.0.0
 
 - First local candidate; no registry release.

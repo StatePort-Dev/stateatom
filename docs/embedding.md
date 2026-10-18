@@ -14,7 +14,7 @@ synthetic competing debugger consumer; it implements no Capture.
 ## Contracts and ownership
 
 Types ship in the package's `dist/*.d.ts`; API/wire version is **1**, separately
-from package candidate `0.1.0-candidate.20261018.1`. Importing any entrypoint has
+from package candidate `0.1.0-candidate.20261018.3`. Importing any entrypoint has
 no Chrome listener, debugger or DOM side effect.
 
 - `createAtomRuntime(platform, options = {}) -> AtomRuntime`. Options are reserved
@@ -116,13 +116,14 @@ Session tabs/pairing are not migrated. Embedded host does not inspect legacy key
 No Capture or similarly named host key is read or deleted.
 
 The host imports **one** pinned `@stateport/extension-ui` peer (candidate
-`0.1.0-candidate.20261018.1`, contract `1.0.0`), in order: tokens.css,
+`0.2.0-candidate.20261018.2`, contract `2.1.0`), in order: tokens.css,
 components.css, then atom.css. Atom never bundles a second foundation copy or
 injects stylesheet links. Atom-specific styles stay inside its scoped inner root;
 the host owns surrounding layout. This prevents outgoing style leakage; it is
 not Shadow DOM isolation against arbitrary host CSS. The retained reference set
-and `docs/design/extension-ui.md` remain authoritative. This extraction preserves
-the existing Atom layout; it does not implement the simulated prototype Capture.
+and `docs/design/extension-ui.md` remain authoritative. The current visual alignment follows the supplied 440px inspector/reference
+base; host width/padding overrides remain supported. It does not implement the
+simulated prototype Capture.
 
 Historical worker/panel/engine code retains MIT origin; original platform,
 transport, packaging and new verification carry Apache-2.0 SPDX headers. The
@@ -159,7 +160,19 @@ unchanged fixture, not a source-code edit. Worker-only stop/restart, extension r
 scopes; the controlled checks do not prove every SW suspension schedule.
 
 Actual command results, browser versions, artifact digests and remaining limits
-belong in `docs/testing/atom-embedding-validation.md` and handoff. Screenshots are
+belong in `docs/testing/atom-embedding-validation.md` for the original extraction,
+`docs/testing/extension-ui-reference-alignment.md` for the visual v2 update, and
+the corresponding handoff. Screenshots are
 agent-produced candidates pending human review. Vue PARTIAL and existing deep
 tracing limits are preserved. There is no inherited lint/typecheck command;
 `.d.ts` shipping alone is not typecheck evidence.
+
+
+The inspector now follows the reference composition with a scrolling body and
+anchored header/footer. Give its mounting container a definite height when
+embedding (for example `height: 600px`); the mount follows that height and is
+capped at the viewport. Standalone host CSS supplies 100dvh. Section shortcuts
+scroll only the inspector, and all actions are type=button to avoid host-form
+submission. Load the optional shared `fonts.css` and serve the exported local
+Inter asset at its relative path to reproduce reference typography. Carry the
+font's OFL license from the UI package; no external font service is required.

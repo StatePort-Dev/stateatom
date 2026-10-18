@@ -1,20 +1,42 @@
 {
   "name": "@stateport/extension-ui",
-  "version": "0.1.0-candidate.20261018.1",
+  "version": "0.2.0-candidate.20261018.2",
   "description": "Scoped native HTML styles for StatePort browser extensions",
   "type": "module",
-  "license": "Apache-2.0",
-  "engines": {"node": ">=24.0.0 <25"},
-  "files": ["dist/tokens.css", "dist/components.css", "contract.json", "LICENSE", "NOTICE", "README.md", "CHANGELOG.md"],
+  "license": "(Apache-2.0 AND OFL-1.1)",
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "files": [
+    "dist/tokens.css",
+    "dist/components.css",
+    "contract.json",
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "CHANGELOG.md",
+    "assets/stateport-mark.svg",
+    "dist/fonts.css",
+    "dist/assets/fonts/InterVariable.woff2",
+    "assets/fonts/Inter-LICENSE.txt",
+    "assets/fonts/provenance.json"
+  ],
   "exports": {
     "./tokens.css": "./dist/tokens.css",
     "./components.css": "./dist/components.css",
-    "./contract.json": "./contract.json"
+    "./contract.json": "./contract.json",
+    "./assets/stateport-mark.svg": "./assets/stateport-mark.svg",
+    "./fonts.css": "./dist/fonts.css",
+    "./assets/fonts/InterVariable.woff2": "./dist/assets/fonts/InterVariable.woff2"
   },
   "scripts": {
     "build": "node scripts/build.mjs",
     "check": "node scripts/build.mjs --check",
     "prepack": "npm run build"
   },
-  "repository": {"type": "git", "url": "https://github.com/StatePort-Dev/stateatom.git", "directory": "packages/extension-ui"}
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StatePort-Dev/stateatom.git",
+    "directory": "packages/extension-ui"
+  }
 }

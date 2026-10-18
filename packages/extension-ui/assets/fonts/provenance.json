@@ -1,0 +1,12 @@
+{
+  "upstream": "https://github.com/rsms/inter",
+  "revision": "353b61b9f4430d5f420d56605a6e7993e0941470",
+  "fontURL": "https://raw.githubusercontent.com/rsms/inter/353b61b9f4430d5f420d56605a6e7993e0941470/docs/font-files/InterVariable.woff2",
+  "licenseURL": "https://raw.githubusercontent.com/rsms/inter/353b61b9f4430d5f420d56605a6e7993e0941470/LICENSE.txt",
+  "license": "OFL-1.1",
+  "modified": false,
+  "sha256": {
+    "InterVariable.woff2": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3",
+    "Inter-LICENSE.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a"
+  }
+}

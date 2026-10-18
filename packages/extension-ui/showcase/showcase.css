@@ -4,10 +4,17 @@ body { margin: 0; }
 main[data-sp-ui] { padding: 24px; max-width: 960px; margin: auto; }
 main[data-sp-ui] section { margin-block: 16px; }
 main[data-sp-ui] h1 { margin-block: 0 8px; }
-main[data-sp-ui] h2 { font-size: 18px; margin-block: 0 12px; }
+main[data-sp-ui] h2:not(.sp-section-title) { font-size: 16px; margin-block: 0 12px; }
 main[data-sp-ui] .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 main[data-sp-ui] .fields { display: grid; gap: 12px; }
 main[data-sp-ui] .fields label { display: block; margin-bottom: 4px; }
 main[data-sp-ui] .fields input:not([type="checkbox"]), main[data-sp-ui] textarea { width: 100%; }
 main[data-sp-ui] p { margin-block: 8px; }
 @media (max-width: 600px) { main[data-sp-ui] { padding: 12px; } }
+main[data-sp-ui] .showcase-inspector { display:flex; flex-direction:column; width:440px; max-width:100%; height:560px; border:1px solid var(--sp-color-border); }
+main[data-sp-ui] .showcase-inspector .sp-extension-body { padding:20px; }
+main[data-sp-ui] .showcase-inspector .sp-code { margin-bottom:18px; }
+main[data-sp-ui] .showcase-inspector .sp-code pre { margin:9px 0 0; font:11px/1.8 var(--sp-font-mono); white-space:pre-wrap; }
+main[data-sp-ui] .showcase-inspector .sp-section-title { font-size:10px; }
+main[data-sp-ui] .showcase-inspector summary { padding:12px 0; font-size:11px; color:var(--sp-color-muted); }
+main[data-sp-ui] .showcase-inspector .sp-extension-footer button { width:100%; }

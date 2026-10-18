@@ -83,6 +83,15 @@ try {
       assert.notEqual(before, after, id);
     }
   });
+  await check('navigation distinguishes current links without styling every link as active', async () => {
+    const nav = await page.locator('.sp-nav').evaluate(e => {
+      const current=getComputedStyle(e.querySelector('#nav-current')), other=getComputedStyle(e.querySelector('#nav-other'));
+      return {current:current.color,other:other.color,decoration:other.textDecorationLine};
+    });
+    assert.notEqual(nav.current, nav.other);
+    assert.equal(nav.other, 'rgb(100, 108, 122)');
+    assert.equal(nav.decoration, 'none');
+  });
   await check('text contrast >=4.5 and enabled field boundary contrast >=3', async () => {
     result.contrast = await page.evaluate(() => {
       const context = document.createElement('canvas').getContext('2d', {willReadFrequently: true});
@@ -112,7 +121,7 @@ try {
     await surface.evaluate(async () => {
       const paint = () => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
       scrollTo(0, document.documentElement.scrollHeight); await paint();
-      scrollTo(0, 0); await paint();
+      scrollTo(0, 0);for(const e of document.querySelectorAll('.sp-extension-body'))e.scrollTop=0;await paint();
     });
     const file = name + '.png'; await surface.screenshot({path: path.join(out, file), fullPage: true});
     result.screenshots.push(file);
@@ -139,15 +148,42 @@ try {
 
   const panel = await panelFor(browser.context, browser.id);
   panel.on('pageerror', e => result.errors.push(e.message));
+  await check('Atom starts without an invalid-tab error when no local app is open', async () => {
+    await panel.locator('[data-atom-id="sources"]').filter({hasText: 'Source unavailable for this selection.'}).waitFor({timeout: 3000});
+    assert.doesNotMatch(await panel.locator('#status').innerText(), /^Error:/);
+  });
+  await check('inspector composition keeps data before setup and footer within the viewport', async()=>{
+    await panel.setViewportSize({width:440,height:900});
+    await panel.evaluate(()=>document.fonts.ready);
+    const geometry=await panel.evaluate(()=>{
+      const root=document.querySelector('[data-atom-root]'),box=id=>root.querySelector('[data-atom-id="'+id+'"]').getBoundingClientRect();
+      return {sourceTop:box('sources').top,footerBottom:root.querySelector('footer').getBoundingClientRect().bottom,headerHeight:root.querySelector('header').getBoundingClientRect().height,scrollHeight:box('scroll').height};
+    });
+    assert(geometry.sourceTop<400,JSON.stringify(geometry));assert.equal(geometry.footerBottom,900);assert.equal(geometry.headerHeight,57);
+    assert(await panel.evaluate(()=>[...document.fonts].some(f=>f.family==='StatePort Inter'&&f.status==='loaded')));
+    await panel.getByRole('button',{name:'Diagnostics',exact:true}).click();
+    assert.equal(await panel.locator('#diagnostics-details').getAttribute('open'),'');
+    assert.equal(await panel.locator('#diagnostics-nav').getAttribute('aria-current'),'location');
+    await panel.locator('#diagnostics-details > summary').click();await panel.locator('#inputs-nav').click();
+    assert.equal(await panel.locator('#inputs-nav').getAttribute('aria-current'),'location');
+    await panel.setViewportSize({width:1280,height:900});
+  });
   const reader = await browser.context.newPage();
   await reader.goto('file://' + root + '/dist/reader/reader.html');
   for (const [name, surface] of [['atom-panel', panel], ['atom-reader', reader]]) {
     await check(name + ' consumes exported tokens and native control styles', async () => {
-      const style = await surface.locator('input,select').first().evaluate(e => {
+      const style = await surface.locator('input:not([type=checkbox]),select:not([data-atom-id="property"])').first().evaluate(e => {
         const s = getComputedStyle(e); return [s.borderRadius, s.paddingTop, s.paddingRight];
       });
-      assert.deepEqual(style, ['6px', '8px', '12px']);
+      assert.deepEqual(style, ['6px', '7px', '11px']);
       assert.equal(await surface.locator('[data-sp-ui]').count(), 1);
+      if (name === 'atom-panel') {
+        const geometry = await surface.locator('[data-atom-root]').evaluate(e => ({width:e.getBoundingClientRect().width,font:getComputedStyle(e).fontSize,background:getComputedStyle(e.querySelector('.sp-code')).backgroundColor}));
+        assert.equal(geometry.width, 440);
+        assert.equal(geometry.font, '13px');
+        assert.equal(geometry.background, 'rgb(23, 31, 48)');
+        assert.equal(await surface.locator('#property').evaluate(e=>getComputedStyle(e).fontSize),'11px');
+      }
     });
     for (const width of [960, 360]) {
       await surface.setViewportSize({width, height: 900});
