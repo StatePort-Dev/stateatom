@@ -1,6 +1,10 @@
 # Project status
 
 Current checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
+The maintainer accepted the demonstrated scope as an **alpha** after the live
+demonstration of revision `2958d2b`. This records maintainer acceptance of that
+scope, with the following verification and limits.
+
 Original P2 and the distinct destructuring P1 now pass a scoped complete HTTP
 exchange/field trace in the controlled first-read configuration. The actual
 installed VSIX passed 17 panel/IDE/export/fresh-reader UI checks. Separate native
@@ -14,8 +18,9 @@ review artifacts and exact manifests are recorded in the linked checkpoint.
 The finite proof needs owned compilation, a fresh controlled browser, exact pinned
 sources and the original first eligible read region. Ordinary dev instrumentation,
 later regions, Vue and historical six-family A/B results are not upgraded.
-Acceptance is agent-operated at the user's request. Independent human usability
-and publication remain unperformed; no release or Store submission is established.
+Reproducibility/UI acceptance checks were agent-operated at the user's request.
+Independent developer installation/usability remains unverified. Source was pushed
+in `2958d2b`; no release or Store submission is established.
 Older entries below retain their original evidence, versions and criteria.
 The later [repository layout](repository-layout.md) relocation preserves those
 results; its [verification record](testing/repository-layout-validation.md) includes

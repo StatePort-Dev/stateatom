@@ -19,10 +19,11 @@ ordinary development instrumentation does not gain that claim. Historical A/B
 six-family results remain **0/6**. See [current support](docs/status.md) and the
 [scoped acceptance record](docs/roadmap/2026-10-18-closed-first-read.md).
 
-This is a local preview, without a published release, Store extension or SDK.
-Acceptance is agent-operated under the user's chosen fallback; independent human
-usability is unverified. Browser-only selection/save/export has separate checks
-and does not provide this deeper source/HTTP capability.
+The maintainer accepted the demonstrated scope as an **alpha on 2026-10-18**.
+The reproducibility and UI checks were agent-operated under the requested fallback;
+independent developer installation/usability is unverified. No release, Store
+extension or SDK is published. Browser-only selection/save/export has separate
+checks and does not provide this deeper source/HTTP capability.
 
 The current dependency-repair candidate uses Vite 7.3.7 and Vue compilers 3.5.44,
 while retaining React/ReactDOM 18.3.1 dev. Historical reports below retain their

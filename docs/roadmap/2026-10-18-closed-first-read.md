@@ -6,7 +6,7 @@ one exact HTTP exchange and `/rules/quota` read. The real panel presents a scope
 **Supported finite trace**, with Code-linked finite source/effect proof separated
 from Observed event/identity records. This is not general field-history support.
 
-Work remains uncommitted on main above
+The acceptance work was performed uncommitted on main above
 `bcde3d0f1572878df662db6bab79e65bc66dd6d0`; per-file manifests identify the actual
 candidate. No old experiment, frozen candidate or historical A/B result is changed.
 Independent source review found no Critical/Important findings in the bounded
@@ -184,3 +184,24 @@ fallback. Publishing source updates, a release or Store submission is an externa
 mutation and remains separately scoped under AGENTS.md; local artifacts do not
 establish any of those outcomes. Private GitHub vulnerability reporting was freshly
 read-checked `enabled:true`; no report was submitted.
+
+## Maintainer alpha acceptance — 2026-10-18
+
+The accepted source candidate was committed and pushed to main as
+`2958d2be0d3b41e4aa599630e22af1f66d8a99cf`; its 318-file tree matches the recorded
+source manifest. GitHub CI installation, tests and build passed for that commit.
+The user authorized commit and push only, so no release or tag was created.
+
+After the live demonstration, the maintainer explicitly accepted the demonstrated
+scope as an alpha. The agent-operated demo showed P2 disabled=false and P1 text=13
+with allowance=12 and the scoped HTTP trace, exact IDE navigation to App.tsx:30,
+form reinspection changing disabled from true to false, and a reviewed diagnostic
+opened in the passive reader. The subsequent discussion clarified that the
+existing click picker is available; the demo itself used the selector input.
+
+This is human maintainer acceptance of the demonstrated alpha, not evidence that
+an independent developer performed a clean installation or operated the full
+workflow unaided. Those facts remain unverified. The first-read computing base,
+unsupported cases, historical A/B results and publication boundaries above remain
+applicable. The previously frozen source/artifacts and their manifests are retained;
+this acceptance note is a later documentation addendum.

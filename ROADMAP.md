@@ -107,9 +107,10 @@ acquisition capabilities and must stay separately labelled.
 | Independent application questions | Three preregistered useful supported fragments across two applications; no store/HTTP ancestry |
 | Original selected complete HTTP path | Scoped PASS for P2 and distinct P1 in the closed first-read profile, with exact exchange/field, finite alias interval, native handoffs and selected commit; ordinary modes remain incomplete |
 | Clean source candidate | 318 files, fresh locked install, 491 tests/build, 34 identical outputs, 17 installed-helper UI checks; agent-operated, not independent human or published-source acceptance |
+| Maintainer alpha acceptance | Accepted on 2026-10-18 after the live demonstration of `2958d2b`, for the declared React inspection and controlled first-read scope |
 | Independent human usability | Not performed; user explicitly chose agent-operated fallback, which remains separately labelled |
 | Private vulnerability reporting | Enabled with explicit user authorization on 2026-10-18; a fresh GitHub API GET confirmed enabled:true. No vulnerability report submitted |
-| Publication | Local source/browser/reader/installed-VSIX candidate only; no public release or Store submission |
+| Publication | Source committed and pushed as `2958d2b`; local browser/reader/VSIX artifacts prepared, with no release or Store submission |
 
 The [compiler-input acquisition checkpoint](docs/roadmap/2026-10-18-compiler-input-progress.md)
 now records bounded actual workspace → StateAtom stage → exact native Vite result →
