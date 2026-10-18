@@ -6,6 +6,8 @@
 **Scope:** Event handlers, relevant React hooks, source navigation, and optional on-device explanations\
 **Prerequisite:** Preserve the existing property → expression → observed values → Open in IDE workflow
 
+Implementation candidate: see the [local validation and remaining gates](../testing/action-inspector-validation.md). The proposal below remains the requirement; implementation does not establish a release or real-device AI acceptance.
+
 ## 1. Purpose
 
 StateAtom should answer two questions about a selected interface element:

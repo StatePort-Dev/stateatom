@@ -2,7 +2,7 @@
 import {retainDiagnostics} from '../../../core/diagnostic.mjs';
 export function atomError(code,message=code){return Object.assign(new Error(message),{code});}
 export const capabilities=Object.freeze(['read','inject','reload','cache','override','replay']);
-const readCommands=new Set(['Network.enable','Page.enable','Runtime.enable','Debugger.enable','Performance.enable','Page.getFrameTree','Runtime.getIsolateId','Debugger.getScriptSource','Network.getResponseBody','Performance.getMetrics','Fetch.getResponseBody']);
+const readCommands=new Set(['DOM.getDocument','DOM.querySelector','DOM.resolveNode','DOMDebugger.getEventListeners','Runtime.releaseObjectGroup','Network.enable','Page.enable','Runtime.enable','Debugger.enable','Performance.enable','Page.getFrameTree','Runtime.getIsolateId','Debugger.getScriptSource','Network.getResponseBody','Performance.getMetrics','Fetch.getResponseBody']);
 function commandCapability(method){if(readCommands.has(method))return 'read';if(method==='Network.setCacheDisabled'||method==='Network.clearBrowserCache'||method==='Storage.clearDataForOrigin')return 'cache';if(method.startsWith('Fetch.'))return 'override';if(method==='Runtime.callFunctionOn')return 'inject';throw atomError('CAPABILITY_DENIED','Unsupported scoped debugger command');}
 // One broker per host, shared by every debugger consumer. Construction is inert.
 export function createDebuggerBroker(debuggerAPI){

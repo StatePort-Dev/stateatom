@@ -595,3 +595,21 @@ acceptance is implied. Analyzer/evidence criteria and earlier results above rema
 unchanged. The local package and exact commands are in
 `.artifacts/atom/atom-handoff.json`; see [embedding](embedding.md) and the
 [separate official-host task](tasks/stateport-host-atom-integration.md).
+
+
+## Action Inspector local candidate — 2026-10-18
+
+Source-linked React JSX actions, bounded relevant callback/hook relations, separate
+native CDP registration metadata and optional template/local explanation providers
+are implemented above `6c2c053e98f6775e1a7fa876c7ea9b9cc7380422` in the working tree.
+The [validation record](testing/action-inspector-validation.md) records 544 passing
+unit/harness tests, the full build, 32 real MV3/IDE Actions checks, 26 existing
+browser-only checks and the existing real IDE property/intervention/Restore regression.
+Source, registration and invocation remain distinct; every retained execution status
+is not-observed. The Actions run's source/build hashes match before and after.
+
+Chrome 153 on the tested device reports local model availability unavailable.
+The optional AI UI stays experimental; no real Nano quality, latency, resource or
+offline acceptance is claimed. Vue event binding support, executed action tracing
+and complete causal paths are not added. Screenshots are candidates for human review.
+No release, publication or public compatibility expansion follows from these checks.

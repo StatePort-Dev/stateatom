@@ -258,3 +258,13 @@ The original OFL 1.1 license, source URLs and SHA-256 digests are retained in
 StatePort Inter family. Built browser/reader/embedding hosts carry its license.
 This is a later asset addition, not part of the historical import above, and is
 not relicensed as Apache-2.0. No remote font service is used at runtime.
+
+## Action Inspector — 2026-10-18
+
+`core/action-{analysis,native,explanations}.mjs`, `packages/atom/src/action-ui.mjs`,
+the action tests and synthetic React action fixtures are original Apache-2.0 work.
+Changes to imported modules preserve their historical license. No external
+handler-inspection implementation or model SDK was copied. The shared UI reference
+set is unchanged. The compiler marker gains a column suffix; the first-read recipe
+and self receipt were updated for these exact reviewed input bytes, without changing
+the proof criteria or historical manifests.

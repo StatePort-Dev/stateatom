@@ -1,3 +1,4 @@
+import {createActionUI} from './action-ui.mjs';
 import {parseDiagnostic,serializeDiagnostic,omitDiagnosticContent} from '../../../core/diagnostic.mjs';
 import {inspectionView} from '../../../browser-extension/inspection-view.mjs';
 import {template} from './template.mjs';
@@ -30,12 +31,14 @@ async function load(){
  if(generation!==loadGeneration||id!==tab())return;
  selectedState=state;analysis=state.analysis;renderInspection();
 }
+const actionsUI=createActionUI({document,$,rpc,tab,action});
 function renderInspection(){
+ actionsUI.render(selectedState);
  $('atom-result').textContent='';
  const view=inspectionView(selectedState||{}),selection=view.target;
  $('mode').textContent=view.mode;
  $('connection-label').textContent=selectedState?.attached?'Attached · this tab':'Not attached';
- if(view.observedAt&&view.observedAt!==renderedAt){$('scroll').scrollTop=0;for(const id of ['evidence-nav','diagnostics-nav'])$(id).removeAttribute('aria-current');$('inputs-nav').setAttribute('aria-current','location');}renderedAt=view.observedAt;
+ if(view.observedAt&&view.observedAt!==renderedAt){$('scroll').scrollTop=0;for(const id of ['actions-nav','evidence-nav','diagnostics-nav'])$(id).removeAttribute('aria-current');$('inputs-nav').setAttribute('aria-current','location');}renderedAt=view.observedAt;
  const target=selection||selectedState?.stale?.target;
  const label=target?.tag==='button'&&typeof target.text==='string'?target.text.trim():'';
  $('selection-title').textContent=label&&label.length<=64?label:target?.selector||'Select an element';
@@ -89,7 +92,7 @@ function renderInspection(){
 function reveal(id){const e=$(id),scroller=$('scroll');if(e.tagName==='DETAILS')e.open=true;scroller.scrollTop+=e.getBoundingClientRect().top-scroller.getBoundingClientRect().top-16;(e.querySelector('summary')||e).focus({preventScroll:true});}
  $('setup-toggle').onclick=()=>reveal('browser-connection');
  $('diagnostic-toggle').onclick=()=>reveal('diagnostics-details');
- for(const [button,section] of [['inputs-nav','inputs-section'],['evidence-nav','evidence-section'],['diagnostics-nav','diagnostics-details']])$(button).onclick=()=>{for(const id of ['inputs-nav','evidence-nav','diagnostics-nav'])$(id).removeAttribute('aria-current');$(button).setAttribute('aria-current','location');reveal(section);};
+ for(const [button,section] of [['inputs-nav','inputs-section'],['actions-nav','actions-section'],['evidence-nav','evidence-section'],['diagnostics-nav','diagnostics-details']])$(button).onclick=()=>{for(const id of ['inputs-nav','actions-nav','evidence-nav','diagnostics-nav'])$(id).removeAttribute('aria-current');$(button).setAttribute('aria-current','location');reveal(section);};
  for(const d of root.querySelectorAll('.sp-atom-tools > details, .sp-atom-inspection > details'))d.classList.add('sp-disclosure');
 let fields=[];
 function clearInspection(){++selectionGeneration;const property=$('property').value;++loadGeneration;selectedState=null;analysis=null;renderInspection();$('property').value=property;}
@@ -125,5 +128,5 @@ $('delete-report').onclick=()=>action(async()=>{await rpc({op:'delete-diagnostic
 $('unpair').onclick=()=>action(async()=>{await rpc({op:'unpair'});await load();});
 void savedReports().catch(e=>{if(disposed)return;$('diagnostic-status').textContent='Local reports unavailable: '+e.message;});
 
-return {ready,element:root,dispose(){if(disposed)return;disposed=true;++loadGeneration;controller.abort();unsubscribe();for(const t of timers)clearTimeout(t);for(const u of urls)URL.revokeObjectURL(u);timers.clear();urls.clear();$('export-review').close();root.remove();mounted.delete(rootElement);}};
+return {ready,element:root,dispose(){actionsUI.dispose();if(disposed)return;disposed=true;++loadGeneration;controller.abort();unsubscribe();for(const t of timers)clearTimeout(t);for(const u of urls)URL.revokeObjectURL(u);timers.clear();urls.clear();$('export-review').close();root.remove();mounted.delete(rootElement);}};
 }

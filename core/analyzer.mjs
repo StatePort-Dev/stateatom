@@ -3,6 +3,7 @@ import traverseModule from '@babel/traverse';
 import generatorModule from '@babel/generator';
 import {createHash} from 'node:crypto';
 import {baseParse} from '@vue/compiler-dom';
+import {analyzeActions} from './action-analysis.mjs';
 import {flatten,edge} from './evidence.mjs';
 const traverse=traverseModule.default||traverseModule,generate=generatorModule.default||generatorModule;
 export const digest=s=>createHash('sha256').update(s).digest('hex');
@@ -24,7 +25,7 @@ function extract(file,text,selection){
  if(ast&&!file.endsWith('.vue'))traverse(ast,{
  JSXElement(p){const n=p.node,attrs=n.openingElement.attributes;const id=attrs.find(a=>a.name?.name==='id')?.value?.value;
   const marker=selection.marker?.split(':');
-  const cls=attrs.find(a=>a.name?.name==='className')?.value?.value;const classMatch=typeof cls==='string'&&selection.classes?.some(c=>cls.split(/\s+/).includes(c));const ownerPath=p.findParent(x=>x.isFunctionDeclaration()||x.isVariableDeclarator());const ownerMatch=selection.owners?.includes(ownerPath?.node.id?.name);if(!(selection.id&&id===selection.id)&&!(!selection.id&&marker&&Number(marker[1])===n.loc.start.line&&n.openingElement.name.name===selection.tag)&&!(!selection.id&&n.openingElement.name.name===selection.tag&&(classMatch||ownerMatch)))return;
+  const cls=attrs.find(a=>a.name?.name==='className')?.value?.value;const classMatch=typeof cls==='string'&&selection.classes?.some(c=>cls.split(/\s+/).includes(c));const ownerPath=p.findParent(x=>x.isFunctionDeclaration()||x.isVariableDeclarator());const ownerMatch=selection.owners?.includes(ownerPath?.node.id?.name);if(marker?!(Number(marker[1])===n.loc.start.line&&n.openingElement.name.name===selection.tag&&(!marker[3]||Number(marker[3])===n.loc.start.column+1)):!(selection.id&&id===selection.id)&&!(!selection.id&&n.openingElement.name.name===selection.tag&&(classMatch||ownerMatch)))return;
   const expressions=[];p.traverse({JSXExpressionContainer(q){if(q.node.expression.type!=='JSXEmptyExpression')expressions.push(generate(q.node.expression).code);}});
   const owner=p.findParent(x=>x.isFunctionDeclaration()||x.isVariableDeclarator());
   found.push({file,line:n.loc.start.line,column:n.loc.start.column+1,endLine:n.loc.end.line,endColumn:n.loc.end.column+1,expressions,owner:owner?.node.id?.name,method:'AST JSX literal identity',...details(expressions,ast,text,p.scope)});
@@ -63,9 +64,9 @@ function extract(file,text,selection){
    found.push(...matches.map(m=>m.source));
   }
  }
- return found;
+ return selection.marker&&!file.endsWith('.vue')&&found.length>1?[]:found;
 }
-export function analyzeSources(files,selection,requests,identity){
+export function analyzeSources(files,selection,requests,identity,{projectFiles=files}={}){
  const sources=[];if(!selection.unbound)for(const f of files){
   if(selection.marker){const [mf,,hash]=selection.marker.split(':');if(mf!==f.file||digest(f.text).slice(0,12)!==hash)continue;}
   for(const s of extract(f.file,f.text,selection))sources.push({...s,sourceDigest:digest(f.text),sourceFreshness:f.freshness||identity.freshness,runtimeValue:null});
@@ -79,7 +80,8 @@ export function analyzeSources(files,selection,requests,identity){
  const graph={identity,nodes:[{...selection,id:'ui',elementId:selection.id},...requests.map(r=>({id:'request:'+r.id,url:r.url,kind:'request'}))],edges:[]};
  for(const [i,s]of sources.entries()){graph.nodes.push({id:'source:'+i,...s});graph.edges.push(edge('ui','source:'+i,'render-location','Code-linked',s.method,['source:'+s.sourceDigest],{...identity,freshness:s.sourceFreshness}));}
  for(const [i,f]of fields.entries()){graph.nodes.push({id:'field:'+i,...f});graph.edges.push(edge('ui','field:'+i,'possible-data-dependency','Candidate',f.method,['request:'+f.requestId],identity));}
- return {sources,fields,graph,limitations:['Static bindings are code-linked, not proof of runtime consumption.','Private framework metadata is version-sensitive.','No general alias, closure, event or store taint analysis.']};
+ const actionBindings=analyzeActions(files,selection,identity,graph,projectFiles);
+ return {sources,fields,graph,actionBindings,limitations:['Static bindings are code-linked, not proof of runtime consumption.','Private framework metadata is version-sensitive.','No general alias, closure, event or store taint analysis.']};
 }
 
 function normalizedBody(text){

@@ -87,3 +87,12 @@
 [data-sp-ui][data-atom-root] .sp-atom-footer-status [data-atom-id="status"] { margin:0; min-width:0; }
 [data-sp-ui][data-atom-root] .sp-atom-footer-status [data-atom-id="connection-label"] { flex-shrink:0; }
 [data-sp-ui][data-atom-root] .sp-atom-footer [data-atom-id="freshness"] { margin:0 0 8px; }
+
+/* Compact Actions composition from supplied Actions/Handlers and Hooks references. */
+[data-sp-ui][data-atom-root] .sp-atom-action-card { border:1px solid var(--sp-color-border); border-radius:6px; padding:12px; margin:8px 0; background:var(--sp-color-surface); min-width:0; }
+[data-sp-ui][data-atom-root] .sp-atom-action-card .sp-section-row { align-items:flex-start; gap:8px; flex-wrap:wrap; }
+[data-sp-ui][data-atom-root] .sp-atom-action-card code { min-width:0; overflow-wrap:anywhere; font-size:11px; }
+[data-sp-ui][data-atom-root] .sp-atom-action-card pre { margin:8px 0; color:var(--sp-color-muted); }
+[data-sp-ui][data-atom-root] .sp-atom-action-card button { max-width:100%; overflow-wrap:anywhere; font-size:11px; }
+
+[data-sp-ui][data-atom-root] [data-atom-id^="action-"][hidden] { display:none !important; }

@@ -10,5 +10,5 @@ export function observeElement(selector,framework=true){
   for(let i=0;f&&i<20;i++,f=f.return){const type=f.type;const name=typeof type==='function'?(type.displayName||type.name):null;if(name&&!owners.includes(name))owners.push(name);}
   const vue=n.__vueParentComponent;if(vue){const type=vue.type;runtime.vue={name:type?.name||type?.__name,file:type?.__file||null};if(runtime.vue.name&&!owners.includes(runtime.vue.name))owners.push(runtime.vue.name);}
  }
- return {selector,id:el.id||null,tag:el.localName,classes:[...el.classList].slice(0,12),text:(Object.getOwnPropertyDescriptor(Node.prototype,'textContent').get.call(el)||'').trim().slice(0,2000),owners,runtime,marker:markers[0]||null,shadow:el.getRootNode() instanceof ShadowRoot?'open':null,observedAt:Date.now()};
+ return {selector,id:el.id||null,tag:el.localName,classes:[...el.classList].slice(0,12),text:(Object.getOwnPropertyDescriptor(Node.prototype,'textContent').get.call(el)||'').trim().slice(0,2000),owners,runtime,markerOnSelected:framework&&!!el.getAttribute('data-xray-source'),marker:markers[0]||null,shadow:el.getRootNode() instanceof ShadowRoot?'open':null,observedAt:Date.now()};
 }

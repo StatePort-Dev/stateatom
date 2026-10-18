@@ -118,3 +118,8 @@ original locations. Current counterparts are listed in docs/repository-layout.md
 engine modules in src/engine, first-read modules in src/first-read, fixtures in
 tests/fixtures/inspection, unit/native checks in tests and acquisition probes in
 experiments. The relocation preserves all existing licenses and attributions.
+
+Action Inspector analysis, native listener metadata, explanations, action UI, tests
+and synthetic action fixtures added in 2026 are original Apache-2.0 contributions.
+Edits to imported analyzer/bridge/observer/runtime material preserve its existing
+MIT origin. Supplied Actions design references remain unchanged.

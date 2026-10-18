@@ -6,7 +6,7 @@ import path from 'node:path';
 import {timingSafeEqual} from 'node:crypto';
 import http from 'node:http';
 import {analyzeSources,digest,sourceBinding} from './analyzer.mjs';
-const operations=new Set(['analyze','open','definitions','references']);
+const operations=new Set(['analyze','open','definitions','references','check-action-sources']);
 export function targetIdentity(s){return {tab:Number.isInteger(s.tabId)?s.tabId:null,frame:s.frame??0,property:s.property,value:s.value,instance:s.instance,page:s.page};}
 export function validateRequest(headers,cfg,operation){
  if(headers.host!=='127.0.0.1:'+cfg.port)throw Error('Host denied');
@@ -47,10 +47,15 @@ export function startBridge({root,port=47731,token,onOpen,onDefinitions,onRefere
 
      // File-level binding: unrelated loaded scripts cannot validate another file.
      const eligible=(body.selection.marker?instrumentedSources(files,body.selection.marker):files.filter(f=>sourceBinding(f.text,samples))).map(f=>{const matching=samples.filter(s=>sourceBinding(f.text,[s]));const executable=matching.some(s=>(body.proofs||[]).some(p=>p.digest===digest(s)&&p.kind==='executable'));return {...f,freshness:body.selection.marker?'instrumented-source-digest':executable?'executable-AST-matched':'map-claimed-unverified'};});
-     const bound=eligible.length>0;result=analyzeSources(eligible,{...body.selection,unbound:!bound},body.requests||[],{run:body.run,build:digest([...samples].sort().join(''))||'unbound',freshness:bound?'build-observed; source freshness per edge':'unbound'});
+     const bound=eligible.length>0;result=analyzeSources(eligible,{...body.selection,unbound:!bound},body.requests||[],{run:body.run,build:digest([...samples].sort().join(''))||'unbound',freshness:bound?'build-observed; source freshness per edge':'unbound'},{projectFiles:files});
      result.stateatom={target:targetIdentity(body.selection),runtime:validateTrace(files,body.deepTrace),slices:result.sources.map(source=>sourceSlice(files,source))};
      if(body.deepTrace?.firstReadObservations){const compilation=await loadFirstReadCompilation(root,body.origin);result.stateatom.firstReadCompilation=compilation;result.stateatom.firstReadProfile=verifyFirstRead({compilation,code:body.firstReadCode,trace:body.deepTrace,selection:body.selection,run:body.run});}
      result.boundFiles=eligible.map(f=>f.file);result.bindings=eligible.map(f=>({file:f.file,method:body.selection.marker?'instrumented marker + source digest':sourceBinding(f.text,samples)}));
+    }else if(op==='check-action-sources'){
+     if(!Array.isArray(body.sources)||body.sources.length>32)throw Error('Action source budget');
+     const sub=await safePath(root,sourceRoot);let current=true;
+     for(const source of body.sources){const full=await safePath(root,source.file);if(!full.startsWith(sub+path.sep))throw Error('Outside mapped sources');const size=(await stat(full)).size;if(size>256000)throw Error('Action source budget');if(source.sourceDigest!==digest(await readFile(full,'utf8')))current=false;}
+     result={current};
     }else{
      const full=await safePath(root,body.file),sub=await safePath(root,sourceRoot);if(!full.startsWith(sub+path.sep))throw Error('Outside mapped sources');
      const text=await readFile(full,'utf8');if(body.sourceDigest!==digest(text))throw Error('Stale source');

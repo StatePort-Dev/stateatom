@@ -9,6 +9,7 @@
     "test": "node --test --test-isolation=none tests/*.test.mjs tests/engine/*.test.mjs tests/browser/*.test.mjs tests/vue/*.test.mjs tests/atom/*.test.mjs",
     "dev": "node scripts/serve-phase2.mjs",
     "dev:react-host": "node scripts/serve-phase2.mjs --react-host-props",
+    "verify:actions": "node tests/integration/actions.mjs",
     "verify:ide": "node tests/integration/ide.mjs",
     "verify:browser": "node tests/integration/browser.mjs",
     "sanitize:artifacts": "node scripts/sanitize-artifacts.mjs",

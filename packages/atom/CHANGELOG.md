@@ -31,3 +31,10 @@ width, padding and reader navigation. No shared token/primitive contract change.
 Reference: supplied extension-ui design README/HANDOFF/SCREEN_INDEX; intentional
 deviation: this remains the existing production Atom inspector, not a port of
 simulated prototype screens. Screenshot candidates require human review.
+
+## Unreleased — Action Inspector
+
+Compact source-linked action cards, relevant hook/call disclosures and separate native
+listener metadata use the supplied Actions reference and shared primitives. Optional
+English local explanations remain experimental; deterministic explanations need no model.
+No shared tokens or primitive contract changed.
