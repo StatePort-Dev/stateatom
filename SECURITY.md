@@ -24,6 +24,6 @@ A local experiment can still trigger application or server side effects. Do not 
 
 ## Reporting a vulnerability
 
-Use GitHub private vulnerability reporting if it is enabled for the repository. If it is unavailable, open a generic issue asking for a private reporting contact. Include no exploit instructions, captured payloads, credentials, or private data in that issue. This policy does not designate an email address or guarantee a response time.
+Use [GitHub private vulnerability reporting for StatePort-Dev/stateatom](https://github.com/StatePort-Dev/stateatom/security). The repository setting was enabled with maintainer authorization and verified through the GitHub API on 2026-10-18. If the private channel is unavailable, open a generic issue asking for a private reporting contact. Include no exploit instructions, captured payloads, credentials, or private data in that issue. This policy does not designate an email address or guarantee a response time.
 
 Once a private channel is available, provide the affected source revision, relevant configuration, impact, and a safe minimal reproduction. Separate observed behavior from suspected impact. If a report involves exposed secrets, avoid copying them into further reports or logs. Ordinary bugs without security-sensitive information can use the bug report template.

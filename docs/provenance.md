@@ -47,3 +47,170 @@ Public npm packages retain their own licenses; repository metadata is not a lice
 The lockfile also includes synthetic fixture and build/test dependencies that are not shipped
 in the browser bundle. Installed VS Code and Playwright Chromium are host prerequisites,
 not distributed StateAtom binaries. This inventory is not a patent or trademark clearance.
+
+## Short developer workflow follow-up
+
+`stateatom-short-loop/run.mjs` is adapted from the historical MIT short-loop harness;
+`tests/source-marker.test.mjs` preserves its five marker regression cases. Historical
+reports, checkpoints and run artifacts are not copied or rewritten. The panel changes
+modify the existing MIT shell. New `browser-extension/inspection-view.mjs`,
+`scripts/prepare-short-loop.mjs`, `scripts/short-loop-inputs.mjs` and
+`tests/inspection-view.test.mjs` are original
+Apache-2.0 files with explicit SPDX headers. No historical file is relicensed.
+
+`npm run prepare:short-loop` optionally exports the original React/Vue TodoMVC test
+applications at `tastejs/todomvc` revision `ff43b02e59dfa604386bb382034b2cd07c2bcd8a`
+into ignored `.runtime/todomvc/`, including their `license.md`, upstream package.json
+and lockfiles. Their production dependencies are installed there with `npm ci
+--omit=dev --ignore-scripts`; neither application nor these dependencies is bundled
+or added to the product lockfile. TodoMVC's MIT source and dependency-specific notices
+(including `todomvc-app-css`'s CC-BY-4.0 license) stay with these local test inputs.
+
+## Roadmap follow-up additions
+
+The independent harness adapts the MIT native scaffolding; optional external
+TodoMVC/Redux applications and their dependencies stay ignored, not distributed.
+`scripts/prepare-independent.mjs`, `stateatom-react-host/{run,ui,consumption}.mjs`,
+`stateatom-phase2/engine/react-host-vendor.mjs`, the host/source-consumption tests
+and their new synthetic fixtures are original Apache-2.0 contributions. The
+private vendor-input transform retains React's original MIT comments and uses
+installed, hash-guarded development inputs; it does not vendor or modify the
+installed React source. Existing MIT observer/plugin modifications remain MIT.
+stateatom-network-probe/run.mjs is an original Apache-2.0 verification experiment;
+its acquisition test hook is not a product backend. See NOTICE for the
+corresponding distribution notices.
+
+The later opt-in worker integration adds original Apache-2.0
+`core/fetch-bindings.mjs`, `tests/fetch-bindings.test.mjs`,
+`stateatom-network-probe/product.mjs` and the synthetic fetch-controls fixtures.
+Existing observer/plugin/worker changes retain their MIT origin. No Chromium or
+React source is vendored, and no arbitrary evaluation operation is exposed. The
+internal CDP operation installs a fixed policy boolean in a specific context.
+
+
+The state-handoff/write-occurrence increment adds original Apache-2.0
+`stateatom-phase2/engine/react-state.mjs`, `stateatom-react-state/run.mjs`,
+`stateatom-phase2/tests/{react-state,source-writes}.test.mjs` and synthetic
+`state-controls` fixtures. Original MIT observer/plugin files remain MIT.
+No new package or lockfile input was introduced. The pinned React dev transform
+observes original native queues/update objects; it does not replace setters.
+Write occurrence instrumentation retains the original operation and excludes
+unsupported execution contexts; it is not complete value ancestry.
+
+The separate `stateatom-execution-probe/{inventory,run}.mjs` and
+`tests/execution-inventory.test.mjs` are original Apache-2.0 acquisition work.
+They use the existing installed Vite/Playwright dependencies without introducing
+packages or modifying upstream sources. Final trusted server response bytes are
+compared with CDP compiled-source bytes; no claim of execution or complete
+compiler-input provenance is made. Native output remains ignored and local.
+`stateatom-execution-probe/ownership.mjs` and `tests/ownership-boundary.test.mjs`
+are original Apache-2.0 negative controls. The declared synthetic React devtools
+hook and nested Query method wrapper demonstrate limits; neither is shipped as
+an inspection hook or asserted to be part of the original app.
+The original Apache-2.0 `stateatom-phase2/engine/source-uses.mjs`,
+`stateatom-execution-probe/source.mjs` and `tests/source-uses.test.mjs` add a
+source-only all-reference inventory using the existing Babel bindings/sourceSlice.
+They do not introduce a second module resolver or change the product trace path.
+`stateatom-phase2/engine/source-functions.mjs` and `tests/source-functions.test.mjs`
+are original Apache-2.0 AST-only conditional fragment checks. They never evaluate
+app functions and do not verify runtime premises or establish ownership.
+`stateatom-execution-probe/entry.mjs` is original Apache-2.0 acquisition work. It
+records CDP instrumentation pauses and an explicit false precall/missing invocation
+counterexample. It does not execute callbacks/getters for inspection or establish
+execution history, field provenance or a new browser capability.
+
+The Query acquisition adds original Apache-2.0 query-handoff/query-vendor modules,
+query-handoff/query-vendor tests, stateatom-query-handoff/run.mjs and synthetic
+query-controls fixtures. It uses hash-guarded private input copies of installed
+MIT Query 5.90.3 without editing or distributing installed dependency trees. The
+original MIT observer/plugin/server retain their licenses. No dependency/lockfile
+change or full-path support claim accompanies this acquisition.
+The later original Apache-2.0 query-calls module, query-calls/query-call-vendor tests,
+stateatom-query-handoff/calls.mjs and query-call-controls fixtures classify only two
+native call sites. They retain original member callee chains and synthetic equal-write
+counterexamples; installed upstream inputs and historical experiment remain unchanged.
+
+The source-only write-access helper/tests, stateatom-write-access/run.mjs and
+write-access-controls fixtures are original Apache-2.0. They reuse existing Babel
+and Playwright dependencies; no upstream dependency or historical spike is edited.
+Existing MIT plugin/observer/server preserve their licenses. Receiver guards are
+conservative potential accesses, not completed-write or full-history proof.
+
+The private Query receiver-guard extension and its query-write-vendor/private-input
+boundary tests, writes.mjs and query-write-controls/query-write-view fixtures are
+original Apache-2.0. Staged code is derived locally from three hash-guarded installed
+MIT Query inputs; input digests/ranges describe those exact staged bytes, never
+upstream/application IDE ranges. The imported MIT source validator retains its
+license. Unavailable private source is Unknown and supplies no action authority.
+
+The React private-input guard extension, react-write-vendor tests,
+stateatom-react-state/writes.mjs and ref-controls fixtures are original Apache-2.0.
+The shared compiler staging helper observes no user values while building metadata.
+Query generated outputs remain byte-identical across its six accepted modes. Four
+pinned installed MIT React inputs retain their original notices; no installed
+package or historical source is edited. Private source remains unavailable/Unknown.
+
+The original Apache-2.0 `core/code-journal.mjs` and tests extend the existing open
+browser integration with digest-only native compilation metadata. They derive
+no code bodies from external projects for distribution and grant no source or
+action authority to page or imported observations.
+
+`stateatom-compiler-probe/{model,acquire,run}.mjs` and
+`tests/compiler-inputs.test.mjs` and `tests/compiler-acquire.test.mjs` are original
+Apache-2.0 acquisition code. They
+observe actual pinned Vite 7.1.9 pipeline inputs/results and exact HTTP/CDP content,
+without copying the Vite implementation or introducing product source authority.
+Native acquisition data is separate from the actual panel/IDE acceptance records.
+
+`tests/observer-identity.test.mjs` is original Apache-2.0 regression code. The
+factory-owned identity and inspection-API sealing changes in the imported
+`stateatom-phase2/engine/observer.mjs` retain its MIT provenance. The native
+identity controls extend the original Apache-2.0 compiler probe. They do not
+establish runtime attestation, readonly effects or full field ancestry.
+
+`tests/observer-intrinsics.test.mjs` and
+`stateatom-compiler-probe/telemetry-controls.mjs` are original Apache-2.0 controls.
+They use synthetic own-data values and synchronous, restored post-bootstrap
+replacements; original application expressions are not replayed. The telemetry
+changes in the imported observer retain MIT provenance. Captured references do
+not attest pristine pre-bootstrap intrinsics or complete readonly effects.
+
+`stateatom-compiler-probe/{entry-records,references,invocations}.mjs` and
+`tests/{observer-entries,observer-entry-owner}.test.mjs` are original Apache-2.0
+acquisition experiments/regressions. A declared local post-transform entry probe
+derives from the imported MIT observer without editing it; its origin/notices are
+preserved. Native closure reads retain digest/location metadata rather than source
+bodies or arbitrary application scope values. This is not a product wrapper
+contract, runtime attestation, complete provenance or new framework support.
+
+`stateatom-compiler-probe/effect-frontier.mjs` and
+`tests/effect-frontier.test.mjs` are original Apache-2.0 acquisition/regression work.
+The declared helper-writer control transforms only a disposable local copy of the
+imported MIT observer, retaining its notices. Babel parses exact native checkpoint
+JS for digest/syntax metadata; this does not import third-party source bodies into
+review exports, establish executed branches, certify opaque builtins or change the
+product analyzer's supported grammar.
+
+`stateatom-compiler-probe/operands.mjs` and
+`tests/{observer-operands,operand-checkpoint}.test.mjs` are original Apache-2.0
+acquisition/regression work. The optional entry transform adds receiver/key retention
+and disposal only to an experimental copy of the imported MIT observer. Original
+notices remain intact; product source is unchanged. Persisted native results omit
+receiver objects and function/scope bodies and do not grant field-revision authority.
+
+The Vite 7.3.7 compiler pin module, 15-file SHA-256 manifest and pin/warmup
+regressions are original Apache-2.0 acquisition metadata/code. No Vite body is
+copied into source or review exports. The helper package metadata describes the
+actual mixed MIT/Apache-2.0 bundled components without relicensing historical MIT.
+Dependency patches and their upstream licenses are recorded in the lockfile and
+generated bundle notices; older source candidates remain unchanged.
+
+The closed first-read profile in `stateatom-field-revision/` and its tests are
+original Apache-2.0 work. It composes the same open marker/observer pipeline with
+an owned pinned compiler and local launch channel. Installed upstream inputs
+retain their MIT/Babel/esbuild dependency notices and are not copied into source
+review exports. `stateatom-phase2/engine/script-transform.mjs` is a shared
+extraction from the imported MIT plugin; its MIT origin and notice remain.
+The finite source argument does not expand framework support or claim native
+runtime attestation. Controlled browser profiles and private channel credentials
+are local operational artifacts, excluded from distribution and diagnostics.

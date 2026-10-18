@@ -1,3 +1,5 @@
+import {verifyFirstRead} from '../stateatom-field-revision/verify.mjs';
+import {loadFirstReadCompilation} from '../stateatom-field-revision/profile-channel.mjs';
 import {sourceSlice,validateTrace} from '../stateatom-phase2/engine/slice.mjs';
 import {realpath,readFile,readdir,stat} from 'node:fs/promises';
 import path from 'node:path';
@@ -47,6 +49,7 @@ export function startBridge({root,port=47731,token,onOpen,onDefinitions,onRefere
      const eligible=(body.selection.marker?instrumentedSources(files,body.selection.marker):files.filter(f=>sourceBinding(f.text,samples))).map(f=>{const matching=samples.filter(s=>sourceBinding(f.text,[s]));const executable=matching.some(s=>(body.proofs||[]).some(p=>p.digest===digest(s)&&p.kind==='executable'));return {...f,freshness:body.selection.marker?'instrumented-source-digest':executable?'executable-AST-matched':'map-claimed-unverified'};});
      const bound=eligible.length>0;result=analyzeSources(eligible,{...body.selection,unbound:!bound},body.requests||[],{run:body.run,build:digest([...samples].sort().join(''))||'unbound',freshness:bound?'build-observed; source freshness per edge':'unbound'});
      result.stateatom={target:targetIdentity(body.selection),runtime:validateTrace(files,body.deepTrace),slices:result.sources.map(source=>sourceSlice(files,source))};
+     if(body.deepTrace?.firstReadObservations){const compilation=await loadFirstReadCompilation(root,body.origin);result.stateatom.firstReadCompilation=compilation;result.stateatom.firstReadProfile=verifyFirstRead({compilation,code:body.firstReadCode,trace:body.deepTrace,selection:body.selection,run:body.run});}
      result.boundFiles=eligible.map(f=>f.file);result.bindings=eligible.map(f=>({file:f.file,method:body.selection.marker?'instrumented marker + source digest':sourceBinding(f.text,samples)}));
     }else{
      const full=await safePath(root,body.file),sub=await safePath(root,sourceRoot);if(!full.startsWith(sub+path.sep))throw Error('Outside mapped sources');

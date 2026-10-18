@@ -27,7 +27,7 @@
       }
     ]
   },
-  "license": "MIT",
+  "license": "(MIT AND Apache-2.0)",
   "description": "Open local source bridge for the StateAtom experimental inspector",
   "repository": {
     "type": "git",

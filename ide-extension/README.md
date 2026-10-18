@@ -12,3 +12,16 @@ The token stays private in the isolated local session. Do not share profiles or 
 The manual recipe, automated real-host checks and limitations are in the root
 README and docs/status.md. The helper retains MIT licensing. The build generates
 THIRD_PARTY_LICENSES.md for the dependencies actually bundled with this helper.
+
+The distributed helper bundles historical MIT code together with original
+Apache-2.0 analysis components. Its effective package expression is
+`(MIT AND Apache-2.0)`; this does not relicense the historical source. Both license
+texts, the root NOTICE and generated third-party notices accompany the bundle.
+
+The optional controlled first-read workflow (`npm run dev:first-read` at the source
+root) also uses this helper to independently rebuild the pinned owned compilation.
+It currently requires the declared Linux x64 source/toolchain and a private local
+channel created by that command. Pair the setup page, attach it, then open its
+React example. No source/effect claim comes from a page-provided manifest. Missing
+compiler, channel or native browser premises remain Unknown. See
+`stateatom-field-revision/README.md` in the source distribution for the exact scope.

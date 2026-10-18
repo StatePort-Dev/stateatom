@@ -1,0 +1,20 @@
+{
+  "version": "7.3.7",
+  "files": {
+    "chunks/build.js": "f228b2fce893cf356a609b538462fe26e2ce918d49b887f6312176e2923857e2",
+    "chunks/build2.js": "129cea220306a5054d78ace4a48d88cbc5c0f093c9b6499cdd1c4539742e3077",
+    "chunks/chunk.js": "4a512edeb87a37abc7fd2574a176dddda623ebd49e041f0b77a8ecd373f91ba5",
+    "chunks/config.js": "2e71344450b7c25a7fe0848d5ee474fb7342614d900ab9168588986150cbb9f9",
+    "chunks/config2.js": "041e72699a9be7ab6ba99b771e5a0bc6beb2cfae02673630dece92b99ca3912c",
+    "chunks/dist.js": "3b2d73dcac21bab6a1d49ee88cd3f083a1d70f79b0733b5cad9e8bac20b76867",
+    "chunks/lib.js": "96c7cbd2a91d962962be93f256e83643e59ebc0eec1f63ef1700e6114d037ce7",
+    "chunks/logger.js": "88c4e6e2d6d81a4ef7eea5cb12d0e47150f405e5642aa94eb8a199de8e40ed2e",
+    "chunks/optimizer.js": "564be35d0c93033678a68f2d1d80658eba9750b6bf41571222c1c04acffac506",
+    "chunks/postcss-import.js": "a66e817c638f539b5c3876576302454413a03af7b4bc084c62b2a3e4e0b60ebd",
+    "chunks/preview.js": "e4fbf251258588cd0048aaded7fc414014b4a65028b42838ca5b2e522d7fca3a",
+    "chunks/server.js": "5eae10da11aa502440652e25cf92b14ea5eec7a3d88b95e7d4132062aa6fdcb9",
+    "cli.js": "6b9001816eb5fb0979cbe380ed2116db93e315ff22ebf7fe55a4fc60458fa067",
+    "index.js": "8b142bd1231a46bf2cad4c05b3f76de5b183064ee771b9934fbaffb70b914652",
+    "module-runner.js": "e9e66cba21fc780ae9a5a64da48503afa49bf9bc25c69007333c7835b763b89c"
+  }
+}
