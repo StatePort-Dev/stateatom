@@ -1,0 +1,48 @@
+from browser_support import launch_browser
+from pathlib import Path
+from playwright.sync_api import sync_playwright
+import json
+ROOT=Path(__file__).resolve().parents[1]
+(ROOT/'artifacts/screens-atom').mkdir(parents=True,exist_ok=True)
+results=[]
+def check(name,ok):
+ if not ok: raise AssertionError(name)
+ results.append({'name':name,'result':'PASS'})
+with sync_playwright() as p:
+ b=launch_browser(p);page=b.new_page(viewport={'width':1440,'height':960},accept_downloads=True);page.set_default_timeout(5000)
+ errors=[];requests=[];page.on('pageerror',lambda e:errors.append(str(e)));page.on('request',lambda r:requests.append(r.url));page.set_content((ROOT/'index.html').read_text(encoding='utf-8'))
+ state=lambda:page.evaluate('StateAtomPrototype.getState()');ui=lambda:page.evaluate('StateAtomPrototype.getUI()')
+ def click(a):
+  d=page.locator(f'#dialog[open] [data-action="{a}"]');(d.first if d.count() else page.locator(f'[data-action="{a}"]').first).click()
+ def scene(k):page.locator('#scenario').select_option(k)
+ def toggle(r,path,v):
+  q=f'[data-edit-bool="{r}|{path}|{str(v).lower()}"]';d=page.locator('#dialog[open] '+q);(d.first if d.count() else page.locator(q).first).click()
+ def apply():
+  click('apply')
+  if ui()['dialog']=='scope':click('trust')
+  page.wait_for_function('!StateAtomPrototype.getUI().busy')
+ def shot(n):page.screenshot(path=str(ROOT/'artifacts/screens-atom'/n))
+ check('Unified prototype title',page.title()=='StatePort · Extension v3 — UX prototype');check('Six boolean controls on first screen',page.locator('.atom-scroll [data-edit-bool]').count()==6);check('No explanatory paragraphs',page.locator('.atom-scroll .signal-box').count()==0);check('No preset experiment',state()['draft']==state()['original'])
+ shot('01-inputs.png');toggle('order','/account/creditHold',False);check('Draft is not delivered',page.locator('.app-confirm').is_disabled());check('Prepared status','Prepared' in page.locator('.edit-status').inner_text());shot('03-prepared.png');click('apply');check('Initial trust request',ui()['dialog']=='scope');page.locator('#auto-read').uncheck();click('trust');check('Waiting for real delivery',state()['waiting'] and page.locator('.app-confirm').is_disabled());shot('04-waiting.png');click('refresh');page.wait_for_function('!StateAtomPrototype.getUI().busy');check('Response delivery updates UI',not page.locator('.app-confirm').is_disabled());check('Applied status','Applied' in page.locator('.edit-status').inner_text());shot('05-applied.png');click('remove');check('Rules removed without pretending restore',state()['armed'] is None and not page.locator('.app-confirm').is_disabled());check('Not restored visible','Not restored' in page.locator('.edit-status').inner_text());click('restore');page.wait_for_function('!StateAtomPrototype.getUI().busy');check('Restoration measured',state()['restored'] and page.locator('.app-confirm').is_disabled());check('Delivered events logged',len(state()['history'])==2);shot('06-restored.png')
+ toggle('order','/account/creditHold',False);click('apply');check('No repeated trust wizard',ui()['dialog'] is None)
+ scene('two');toggle('order','/account/creditHold',False);apply();check('Second blocker prevents confirmation',page.locator('.app-confirm').is_disabled());check('No change not no dependency','No change' in page.locator('.result-strip').inner_text());toggle('permissions','/canConfirm',True);apply();check('Two inputs together enable',not page.locator('.app-confirm').is_disabled());check('Combined intervention retained',len(state()['history'][-1]['changes'])==2)
+ scene('browser');check('No fabricated code in browser mode',page.locator('.compact-condition').count()==0);toggle('order','/account/creditHold',False);apply();check('Manual API editing without IDE',not page.locator('.app-confirm').is_disabled())
+ scene('unknown');click('response:order');check('Unknown provenance does not block manual editor',page.locator('#dialog').is_visible());click('dialog-close');scene('hold');click('response:order');shot('02-response-fields.png')
+ page.locator('[data-field="order|/account/name"]').fill('Example Studio');page.locator('[data-field="order|/total"]').fill('4200.5');page.locator('[data-field="order|/currency"]').select_option('EUR');check('String draft',state()['draft']['order']['body']['account']['name']=='Example Studio');check('Number draft',state()['draft']['order']['body']['total']==4200.5);check('Enum draft',state()['draft']['order']['body']['currency']=='EUR')
+ page.locator('[data-field-action="order|/note"]').select_option('null');check('Null separate operation',state()['draft']['order']['body']['note'] is None);page.locator('[data-field-action="order|/note"]').select_option('remove');check('Removed property not null','note' not in state()['draft']['order']['body']);page.locator('[data-field-action="order|/note"]').select_option('reset');check('Reset removed property',state()['draft']['order']['body']['note']=='')
+ page.locator('[data-field="order|/tags"]').fill('["review","edited"]');click('view:json');check('Array synchronized in raw JSON',json.loads(page.locator('#raw-json').input_value())['tags']==['review','edited']);x=json.loads(page.locator('#raw-json').input_value());x['account']['creditHold']=False;page.locator('#raw-json').fill(json.dumps(x,indent=2));click('view:fields');check('Raw edits update field controls',page.locator('#dialog [data-edit-bool="order|/account/creditHold|false"]').get_attribute('aria-pressed')=='true');click('view:changes');check('Diff available','/body/total' in page.locator('.diff-table').inner_text());shot('07-response-diff.png');click('view:json');page.locator('#raw-json').fill('{invalid');check('Invalid JSON blocks apply',page.locator('#dialog [data-action="apply"]').is_disabled());check('Parse error visible','Invalid JSON' in page.locator('#editor-error').inner_text());shot('08-invalid-json.png');click('dialog-close');check('Invalid draft blocked outside modal',page.locator('.atom-footer [data-action="apply"]').is_disabled());click('response:order');click('view:json');check('Malformed text retained',page.locator('#raw-json').input_value()=='{invalid');click('reset-response');click('view:fields');page.locator('[data-meta="order|status"]').fill('503');page.locator('[data-meta="order|delay"]').fill('350');click('view:changes');check('HTTP and delay staged',state()['draft']['order']['status']==503 and state()['draft']['order']['delay']==350);apply();check('HTTP failure reflected','HTTP 503' in page.locator('.app-alert').inner_text())
+ scene('hold');toggle('local','/formValid',False);apply();check('Runtime state writable through explicit adapter',state()['current']['local']['body']['formValid'] is False)
+ scene('hold');page.locator('.trace-details').last.locator('summary').click();page.locator('[data-field="local|/variant"]').select_option('outline');apply();check('Props variant delivered',state()['current']['local']['body']['variant']=='outline');check('Props variant visible','outline-variant' in page.locator('.app-confirm').get_attribute('class'))
+ scene('types');check('Numeric target has correct title',page.locator('.atom-summary-head h2').inner_text()=='Order total');page.locator('[data-field="order|/total"]').fill('99.5');page.locator('[data-field="order|/currency"]').select_option('EUR');apply();check('Number and enum update application','€99.50' in page.locator('.app-total').inner_text())
+ scene('pm');check('PM shows facts, not interpretation',page.locator('.summary-facts').count()==1);click('response:order');check('PM editor readonly',page.locator('[data-field="order|/total"]').is_disabled());click('dialog-close');scene('production');click('mode:technical');check('Production remains readonly',page.locator('[data-edit-bool]').first.is_disabled())
+ scene('hold');toggle('order','/account/creditHold',False);apply();click('toggle-panel');check('Override visible with inspector closed',page.locator('.active-override-strip').is_visible());click('restore');page.wait_for_function('!StateAtomPrototype.getUI().busy');click('toggle-panel');click('tab:brief');page.locator('#expected').fill('Confirm should work.');check('Reporter supplies expected behaviour','Confirm should work.' in page.locator('#report-preview').inner_text())
+ with page.expect_download() as d:click('export')
+ d.value.save_as(str(ROOT/'artifacts/sample-brief.md'));check('Markdown file exported',(ROOT/'artifacts/sample-brief.md').stat().st_size>100)
+ page.locator('body').click(position={'x':10,'y':55});page.keyboard.press('i');check('Keyboard selection',ui()['selecting']);page.keyboard.press('Escape');check('Escape cancellation',not ui()['selecting']);click('float');check('Float panel',ui()['floating']);click('float')
+ for w,h in [(1440,960),(1280,800),(1024,768),(390,844)]:
+  page.set_viewport_size({'width':w,'height':h});scene('hold');check(str(w)+' no horizontal overflow',not page.evaluate('document.documentElement.scrollWidth>innerWidth'));check(str(w)+' action visible',page.locator('.atom-footer [data-action="apply"]').is_visible());click('response:order');check(str(w)+' editor action reachable',page.locator('#dialog [data-action="dialog-close"]').last.is_visible())
+  if w==390:shot('09-narrow-editor.png')
+  click('dialog-close')
+  if w==390:shot('10-narrow-inputs.png')
+ check('No JS exceptions',not errors);check('No requests from app',not requests)
+ (ROOT/'artifacts/atom-browser.json').write_text(json.dumps({'method':'Chromium Playwright set_content on unified packaged HTML; no external requests. File navigation and cross-reload persistence are outside this suite.','checks':results,'errors':errors,'requests':requests},indent=2));print('PASS',len(results));b.close()

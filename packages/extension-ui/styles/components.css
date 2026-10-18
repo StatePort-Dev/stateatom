@@ -1,0 +1,107 @@
+/* SPDX-License-Identifier: Apache-2.0 */
+[data-sp-ui] {
+  font: var(--sp-font-size-body)/var(--sp-line-height-body) var(--sp-font-body);
+  color: var(--sp-color-text);
+  background: var(--sp-color-canvas);
+  overflow-wrap: anywhere;
+}
+[data-sp-ui] :where(*), [data-sp-ui] :where(*)::before, [data-sp-ui] :where(*)::after {
+  box-sizing: border-box;
+}
+[data-sp-ui] :where(button, .sp-button, .sp-icon-button, input, select, textarea, .sp-input) {
+  font: inherit;
+  line-height: var(--sp-line-height-body);
+  max-inline-size: 100%;
+  min-inline-size: 0;
+  padding: var(--sp-control-padding-block) var(--sp-control-padding-inline);
+  border: var(--sp-border-width) solid var(--sp-color-muted);
+  border-radius: var(--sp-radius-control);
+  background: var(--sp-color-surface);
+  color: var(--sp-color-text);
+}
+[data-sp-ui] :where(button, .sp-button, .sp-icon-button) {
+  cursor: pointer;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+[data-sp-ui] :where(button, .sp-button, .sp-icon-button):hover:where(:not(:disabled)) {
+  background: var(--sp-color-canvas);
+}
+[data-sp-ui] :where(.sp-button-primary) {
+  background: var(--sp-color-primary);
+  border-color: var(--sp-color-primary);
+  color: var(--sp-color-surface);
+}
+[data-sp-ui] :where(.sp-button-primary):hover:where(:not(:disabled)) {
+  background: var(--sp-color-primary-hover);
+  border-color: var(--sp-color-primary-hover);
+}
+[data-sp-ui] :where(.sp-icon-button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: calc(1em * var(--sp-line-height-body) + 2 * var(--sp-control-padding-block) + 2 * var(--sp-border-width));
+  padding-inline: var(--sp-control-padding-block);
+}
+[data-sp-ui] :where(button, input, select, textarea, .sp-button, .sp-input):disabled {
+  opacity: var(--sp-disabled-opacity);
+  cursor: default;
+}
+[data-sp-ui] :where([aria-busy="true"]) {
+  cursor: progress;
+  border-style: dashed;
+}
+[data-sp-ui] :where(button, input, select, textarea, summary, a, [tabindex]):focus-visible {
+  outline: var(--sp-focus-width) solid var(--sp-color-primary);
+  outline-offset: var(--sp-focus-offset);
+}
+[data-sp-ui] :where(input[type="checkbox"], input[type="radio"]) {
+  accent-color: var(--sp-color-primary);
+  padding: 0;
+}
+[data-sp-ui] :where(label, .sp-label) {
+  display: inline-block;
+  max-inline-size: 100%;
+}
+[data-sp-ui] :where(.sp-help) {
+  color: var(--sp-color-muted);
+  font-size: var(--sp-font-size-small);
+}
+[data-sp-ui] :where(.sp-error) {
+  color: var(--sp-color-text);
+  font-weight: var(--sp-font-weight-emphasis);
+  border-inline-start: var(--sp-focus-width) solid var(--sp-color-text);
+  padding-inline-start: var(--sp-space-medium);
+}
+[data-sp-ui] :where([aria-invalid="true"]) {
+  border-color: var(--sp-color-text);
+  border-style: dashed;
+}
+[data-sp-ui] :where(.sp-panel) {
+  background: var(--sp-color-surface);
+  border: var(--sp-border-width) solid var(--sp-color-border);
+  border-radius: var(--sp-radius-panel);
+  padding: var(--sp-space-section);
+}
+[data-sp-ui] :where(.sp-section, fieldset) {
+  min-inline-size: 0;
+  border: var(--sp-border-width) solid var(--sp-color-border);
+  border-radius: var(--sp-radius-control);
+  padding: var(--sp-space-large);
+}
+[data-sp-ui] :where(legend) {
+  font-weight: var(--sp-font-weight-emphasis);
+}
+[data-sp-ui] :where(.sp-status) {
+  display: inline-block;
+  max-inline-size: 100%;
+  padding: var(--sp-space-small) var(--sp-space-large);
+  border: var(--sp-border-width) solid var(--sp-color-border);
+  border-radius: var(--sp-radius-control);
+  background: var(--sp-color-canvas);
+  color: var(--sp-color-text);
+}
+[data-sp-ui] :where(a) {
+  color: var(--sp-color-primary);
+  text-decoration: underline;
+}

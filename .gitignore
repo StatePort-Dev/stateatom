@@ -14,3 +14,4 @@ ide-extension/THIRD_PARTY_LICENSES.md
 .env.*
 !.env.example
 .DS_Store
+.artifacts/

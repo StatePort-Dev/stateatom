@@ -1,0 +1,6 @@
+StatePort extension UI
+Copyright 2026 StatePort contributors
+
+New original implementation under Apache-2.0. Initial visual values were
+provided in the StateAtom shared-extension-ui task. No private Capture source,
+third-party fonts, icons or runtime code are included.

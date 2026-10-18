@@ -59,7 +59,11 @@
     "verify:first-read-profile": "node tests/integration/first-read-profile.mjs",
     "verify:first-read-ui": "node tests/integration/first-read-ui.mjs",
     "dev:first-read": "node scripts/dev-first-read.mjs",
-    "verify:first-read-session": "node tests/integration/first-read-session.mjs"
+    "verify:first-read-session": "node tests/integration/first-read-session.mjs",
+    "build:ui": "npm --prefix packages/extension-ui run build",
+    "check:ui": "npm --prefix packages/extension-ui run check",
+    "verify:extension-ui": "node tests/integration/extension-ui.mjs",
+    "pack:ui": "node scripts/pack-extension-ui.mjs"
   },
   "dependencies": {
     "@angular/compiler": "20.3.34",
@@ -84,7 +88,8 @@
     "svelte": "5.57.2",
     "vite": "7.3.7",
     "vue": "3.5.44",
-    "zone.js": "0.15.1"
+    "zone.js": "0.15.1",
+    "@stateport/extension-ui": "file:packages/extension-ui"
   },
   "description": "Experimental local UI inspection and evidence tooling",
   "license": "(MIT AND Apache-2.0)",

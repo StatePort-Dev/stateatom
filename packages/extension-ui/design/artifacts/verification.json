@@ -1,0 +1,38 @@
+{
+  "scope": "Rebuild and regression check of the source handoff; not production-extension validation.",
+  "node": "v22.16.0",
+  "python": "3.13.5",
+  "playwright": "1.57.0",
+  "modelTests": 41,
+  "atomBrowserChecks": 65,
+  "extensionBrowserChecks": 52,
+  "localExplanationChecks": 4,
+  "sourceHashUnchanged": {
+    "app.js": "f16cff91c72080dbcd76990c56aa80635de87ccea713c21831a3590c288d9b4d",
+    "engine.js": "49ac68c3c0d05e8d5396fb4e70722b561fcd079788d577cefe8af4fd5cbd7119",
+    "style.css": "d5883e4c22363f05081338b4a6ebaa6bf67eebc47cf77eee3e2520b5822819c4",
+    "extension.js": "e6a2f41d2003b91a6c480e4e81b79eef1d1d9d7327eab7d943c285f98a6d346b",
+    "extension.css": "1c474f2c10d829b22d93c37abedf9dd16e4e615c3d82617adbccb2953e7ef87d",
+    "extension-model.js": "764009dd2f0e1c9dcee24b8752a30c6e526281c5f00f2f9714bda967637484ee",
+    "assets/stateport-mark.svg": "d9cf5712f750cb5f8a0674368ca4dbe99052163bfcba8882e34cd9ec149de65d"
+  },
+  "browserMethod": "Playwright Chromium set_content with /usr/bin/chromium in isolated test pages; user browser and Figma not modified.",
+  "limits": [
+    "Synthetic data and integrations only",
+    "No real extension attachment",
+    "No actual code analyzer, source-map download/parser, model, Desktop save",
+    "set_content suites do not verify file:// persistence"
+  ],
+  "figmaInventory": {
+    "page": "Extension · Current",
+    "screenCount": 24,
+    "overview": "38:2",
+    "navigationEdgesRead": 189
+  },
+  "deterministicBuild": true,
+  "standaloneMatchesProvidedV3": true,
+  "jsSyntaxChecks": "4 passed",
+  "pythonSyntaxChecks": "all passed",
+  "relativeSourceReferences": "all resolved",
+  "designReferenceExport": "16 SVGs regenerated from bundled HTML; not a native Figma backup"
+}

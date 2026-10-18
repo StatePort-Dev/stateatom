@@ -1,0 +1,3 @@
+screens 16 colors 49 vectors 46 bytes 82424
+[('capture-ready', 65), ('capture-recording', 61), ('capture-floating', 7), ('capture-review', 49), ('desktop-review', 30), ('capture-saved', 46), ('settings-capture', 73), ('settings-domains', 59), ('settings-maps', 85), ('settings-mismatch', 81), ('settings-instrument', 79), ('settings-localai', 63), ('settings-connections', 73), ('handlers', 88), ('hooks', 86), ('calls-future', 83)]
+exported 16 SVGs with native <text> and vector controls; no screenshots embedded

@@ -1,0 +1,267 @@
+{
+  "method": "Chromium Playwright set_content on unified packaged HTML; no external requests. File navigation and cross-reload persistence are outside this suite.",
+  "checks": [
+    {
+      "name": "Unified prototype title",
+      "result": "PASS"
+    },
+    {
+      "name": "Six boolean controls on first screen",
+      "result": "PASS"
+    },
+    {
+      "name": "No explanatory paragraphs",
+      "result": "PASS"
+    },
+    {
+      "name": "No preset experiment",
+      "result": "PASS"
+    },
+    {
+      "name": "Draft is not delivered",
+      "result": "PASS"
+    },
+    {
+      "name": "Prepared status",
+      "result": "PASS"
+    },
+    {
+      "name": "Initial trust request",
+      "result": "PASS"
+    },
+    {
+      "name": "Waiting for real delivery",
+      "result": "PASS"
+    },
+    {
+      "name": "Response delivery updates UI",
+      "result": "PASS"
+    },
+    {
+      "name": "Applied status",
+      "result": "PASS"
+    },
+    {
+      "name": "Rules removed without pretending restore",
+      "result": "PASS"
+    },
+    {
+      "name": "Not restored visible",
+      "result": "PASS"
+    },
+    {
+      "name": "Restoration measured",
+      "result": "PASS"
+    },
+    {
+      "name": "Delivered events logged",
+      "result": "PASS"
+    },
+    {
+      "name": "No repeated trust wizard",
+      "result": "PASS"
+    },
+    {
+      "name": "Second blocker prevents confirmation",
+      "result": "PASS"
+    },
+    {
+      "name": "No change not no dependency",
+      "result": "PASS"
+    },
+    {
+      "name": "Two inputs together enable",
+      "result": "PASS"
+    },
+    {
+      "name": "Combined intervention retained",
+      "result": "PASS"
+    },
+    {
+      "name": "No fabricated code in browser mode",
+      "result": "PASS"
+    },
+    {
+      "name": "Manual API editing without IDE",
+      "result": "PASS"
+    },
+    {
+      "name": "Unknown provenance does not block manual editor",
+      "result": "PASS"
+    },
+    {
+      "name": "String draft",
+      "result": "PASS"
+    },
+    {
+      "name": "Number draft",
+      "result": "PASS"
+    },
+    {
+      "name": "Enum draft",
+      "result": "PASS"
+    },
+    {
+      "name": "Null separate operation",
+      "result": "PASS"
+    },
+    {
+      "name": "Removed property not null",
+      "result": "PASS"
+    },
+    {
+      "name": "Reset removed property",
+      "result": "PASS"
+    },
+    {
+      "name": "Array synchronized in raw JSON",
+      "result": "PASS"
+    },
+    {
+      "name": "Raw edits update field controls",
+      "result": "PASS"
+    },
+    {
+      "name": "Diff available",
+      "result": "PASS"
+    },
+    {
+      "name": "Invalid JSON blocks apply",
+      "result": "PASS"
+    },
+    {
+      "name": "Parse error visible",
+      "result": "PASS"
+    },
+    {
+      "name": "Invalid draft blocked outside modal",
+      "result": "PASS"
+    },
+    {
+      "name": "Malformed text retained",
+      "result": "PASS"
+    },
+    {
+      "name": "HTTP and delay staged",
+      "result": "PASS"
+    },
+    {
+      "name": "HTTP failure reflected",
+      "result": "PASS"
+    },
+    {
+      "name": "Runtime state writable through explicit adapter",
+      "result": "PASS"
+    },
+    {
+      "name": "Props variant delivered",
+      "result": "PASS"
+    },
+    {
+      "name": "Props variant visible",
+      "result": "PASS"
+    },
+    {
+      "name": "Numeric target has correct title",
+      "result": "PASS"
+    },
+    {
+      "name": "Number and enum update application",
+      "result": "PASS"
+    },
+    {
+      "name": "PM shows facts, not interpretation",
+      "result": "PASS"
+    },
+    {
+      "name": "PM editor readonly",
+      "result": "PASS"
+    },
+    {
+      "name": "Production remains readonly",
+      "result": "PASS"
+    },
+    {
+      "name": "Override visible with inspector closed",
+      "result": "PASS"
+    },
+    {
+      "name": "Reporter supplies expected behaviour",
+      "result": "PASS"
+    },
+    {
+      "name": "Markdown file exported",
+      "result": "PASS"
+    },
+    {
+      "name": "Keyboard selection",
+      "result": "PASS"
+    },
+    {
+      "name": "Escape cancellation",
+      "result": "PASS"
+    },
+    {
+      "name": "Float panel",
+      "result": "PASS"
+    },
+    {
+      "name": "1440 no horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "name": "1440 action visible",
+      "result": "PASS"
+    },
+    {
+      "name": "1440 editor action reachable",
+      "result": "PASS"
+    },
+    {
+      "name": "1280 no horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "name": "1280 action visible",
+      "result": "PASS"
+    },
+    {
+      "name": "1280 editor action reachable",
+      "result": "PASS"
+    },
+    {
+      "name": "1024 no horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "name": "1024 action visible",
+      "result": "PASS"
+    },
+    {
+      "name": "1024 editor action reachable",
+      "result": "PASS"
+    },
+    {
+      "name": "390 no horizontal overflow",
+      "result": "PASS"
+    },
+    {
+      "name": "390 action visible",
+      "result": "PASS"
+    },
+    {
+      "name": "390 editor action reachable",
+      "result": "PASS"
+    },
+    {
+      "name": "No JS exceptions",
+      "result": "PASS"
+    },
+    {
+      "name": "No requests from app",
+      "result": "PASS"
+    }
+  ],
+  "errors": [],
+  "requests": []
+}

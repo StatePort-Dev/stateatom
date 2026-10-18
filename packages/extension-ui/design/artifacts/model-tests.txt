@@ -1,0 +1,256 @@
+TAP version 13
+# Subtest: clean original
+ok 1 - clean original
+  ---
+  duration_ms: 2.321176
+  type: 'test'
+  ...
+# Subtest: draft is not live
+ok 2 - draft is not live
+  ---
+  duration_ms: 1.587443
+  type: 'test'
+  ...
+# Subtest: waiting is not applied
+ok 3 - waiting is not applied
+  ---
+  duration_ms: 0.581974
+  type: 'test'
+  ...
+# Subtest: removing rule is not restoring data
+ok 4 - removing rule is not restoring data
+  ---
+  duration_ms: 0.596115
+  type: 'test'
+  ...
+# Subtest: manual edits without IDE
+ok 5 - manual edits without IDE
+  ---
+  duration_ms: 0.262694
+  type: 'test'
+  ...
+# Subtest: unknown source does not prevent manual edits
+ok 6 - unknown source does not prevent manual edits
+  ---
+  duration_ms: 0.298979
+  type: 'test'
+  ...
+# Subtest: readonly modes reject writes
+ok 7 - readonly modes reject writes
+  ---
+  duration_ms: 0.593692
+  type: 'test'
+  ...
+# Subtest: JSON parse error retained, draft not destroyed
+ok 8 - JSON parse error retained, draft not destroyed
+  ---
+  duration_ms: 0.518359
+  type: 'test'
+  ...
+# Subtest: JSON and fields share one draft
+ok 9 - JSON and fields share one draft
+  ---
+  duration_ms: 0.462625
+  type: 'test'
+  ...
+# Subtest: null, removal and original are different
+ok 10 - null, removal and original are different
+  ---
+  duration_ms: 0.688774
+  type: 'test'
+  ...
+# Subtest: typed values delivered
+ok 11 - typed values delivered
+  ---
+  duration_ms: 1.210527
+  type: 'test'
+  ...
+# Subtest: HTTP failure affects UI
+ok 12 - HTTP failure affects UI
+  ---
+  duration_ms: 0.35976
+  type: 'test'
+  ...
+# Subtest: invalid metadata blocked
+ok 13 - invalid metadata blocked
+  ---
+  duration_ms: 0.195544
+  type: 'test'
+  ...
+# Subtest: two blockers
+ok 14 - two blockers
+  ---
+  duration_ms: 0.356225
+  type: 'test'
+  ...
+# Subtest: local state supported adapter
+ok 15 - local state supported adapter
+  ---
+  duration_ms: 1.180553
+  type: 'test'
+  ...
+# Subtest: reset draft to armed does not undo live override
+ok 16 - reset draft to armed does not undo live override
+  ---
+  duration_ms: 0.25271
+  type: 'test'
+  ...
+# Subtest: reset full response clears errors
+ok 17 - reset full response clears errors
+  ---
+  duration_ms: 0.183365
+  type: 'test'
+  ...
+# Subtest: escaped JSON pointers
+ok 18 - escaped JSON pointers
+  ---
+  duration_ms: 0.119129
+  type: 'test'
+  ...
+# Subtest: prototype pollution and negative array indexes rejected
+ok 19 - prototype pollution and negative array indexes rejected
+  ---
+  duration_ms: 0.338238
+  type: 'test'
+  ...
+# Subtest: null body is valid JSON but UI handles it honestly
+ok 20 - null body is valid JSON but UI handles it honestly
+  ---
+  duration_ms: 0.209245
+  type: 'test'
+  ...
+# Subtest: exact origins include scheme and port
+ok 21 - exact origins include scheme and port
+  ---
+  duration_ms: 2.515077
+  type: 'test'
+  ...
+# Subtest: domain profiles isolated
+ok 22 - domain profiles isolated
+  ---
+  duration_ms: 1.225931
+  type: 'test'
+  ...
+# Subtest: new profile has no grants
+ok 23 - new profile has no grants
+  ---
+  duration_ms: 0.224136
+  type: 'test'
+  ...
+# Subtest: origins reject wildcards and deduplicate
+ok 24 - origins reject wildcards and deduplicate
+  ---
+  duration_ms: 1.356708
+  type: 'test'
+  ...
+# Subtest: capture cannot start without Desktop
+ok 25 - capture cannot start without Desktop
+  ---
+  duration_ms: 0.457327
+  type: 'test'
+  ...
+# Subtest: capture cannot silently include Atom overrides
+ok 26 - capture cannot silently include Atom overrides
+  ---
+  duration_ms: 0.298589
+  type: 'test'
+  ...
+# Subtest: capture requires readiness before recording
+ok 27 - capture requires readiness before recording
+  ---
+  duration_ms: 0.221994
+  type: 'test'
+  ...
+# Subtest: no reload means explicit partial capture
+ok 28 - no reload means explicit partial capture
+  ---
+  duration_ms: 0.184627
+  type: 'test'
+  ...
+# Subtest: Stop leads to Review not Saved
+ok 29 - Stop leads to Review not Saved
+  ---
+  duration_ms: 0.453961
+  type: 'test'
+  ...
+# Subtest: sign in choice needed before saved receipt
+ok 30 - sign in choice needed before saved receipt
+  ---
+  duration_ms: 0.58618
+  type: 'test'
+  ...
+# Subtest: interrupt stays limited and never reattaches
+ok 31 - interrupt stays limited and never reattaches
+  ---
+  duration_ms: 0.259741
+  type: 'test'
+  ...
+# Subtest: discard never saves
+ok 32 - discard never saves
+  ---
+  duration_ms: 0.227642
+  type: 'test'
+  ...
+# Subtest: matching name alone is unverified
+ok 33 - matching name alone is unverified
+  ---
+  duration_ms: 0.134491
+  type: 'test'
+  ...
+# Subtest: equal explicit build artifact identity is exact in fixture
+ok 34 - equal explicit build artifact identity is exact in fixture
+  ---
+  duration_ms: 0.148012
+  type: 'test'
+  ...
+# Subtest: different identities rejected
+ok 35 - different identities rejected
+  ---
+  duration_ms: 0.115414
+  type: 'test'
+  ...
+# Subtest: sourcesContent is distinct from source mapping
+ok 36 - sourcesContent is distinct from source mapping
+  ---
+  duration_ms: 0.140761
+  type: 'test'
+  ...
+# Subtest: observation does not call handler
+ok 37 - observation does not call handler
+  ---
+  duration_ms: 0.15311
+  type: 'test'
+  ...
+# Subtest: disabled control emits no click trace
+ok 38 - disabled control emits no click trace
+  ---
+  duration_ms: 0.15949
+  type: 'test'
+  ...
+# Subtest: observed calls are separate from static path
+ok 39 - observed calls are separate from static path
+  ---
+  duration_ms: 0.211918
+  type: 'test'
+  ...
+# Subtest: export strips local map URL/path and connection state
+ok 40 - export strips local map URL/path and connection state
+  ---
+  duration_ms: 0.243556
+  type: 'test'
+  ...
+# Subtest: argument retention is decided when event is observed
+ok 41 - argument retention is decided when event is observed
+  ---
+  duration_ms: 0.217637
+  type: 'test'
+  ...
+1..41
+# tests 41
+# suites 0
+# pass 41
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 98.494201

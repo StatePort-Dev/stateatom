@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>StatePort StateAtom</title><link rel="stylesheet" href="panel.css"></head><body>
-<header><div><h1>StateAtom <small>developer preview</small></h1><p>Inspect a UI property, its possible source and available observed values.</p></div><span id="mode">Basic</span></header>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>StatePort StateAtom</title><link rel="stylesheet" href="extension-ui-tokens.css"><link rel="stylesheet" href="extension-ui-components.css"><link rel="stylesheet" href="panel.css"></head><body data-sp-ui>
+<header><div><h1>StateAtom <small>developer preview</small></h1><p>Inspect a UI property, its possible source and available observed values.</p></div><span id="mode" class="sp-status">Basic</span></header>
 <section aria-label="Browser connection" class="toolbar">
  <label>Local app <select id="tabs" aria-label="Local app"></select></label><button id="refresh-tabs">Refresh tabs</button><button id="attach">Attach debugger</button><button id="detach">Detach</button>
  <p class="hint">Local preview: 127.0.0.1:4173–4175. Attach, then reload the app to collect its executions.</p>
 </section>
 <p id="status" role="status">Choose a local app and attach.</p>
-<main id="inspection" aria-label="Selected property inspection">
- <div class="inspection-heading"><h2>Selected property</h2><button id="load" disabled>Inspect again</button></div>
+<main id="inspection" class="sp-panel" aria-label="Selected property inspection">
+ <div class="inspection-heading"><h2>Selected property</h2><button id="load" class="sp-button-primary" disabled>Inspect again</button></div>
  <div class="toolbar"><label>Property <select id="property"><option value="text">Text</option><option value="disabled">Disabled</option></select></label><button id="pick">Select page element</button></div>
  <details id="selector-details"><summary>Select by CSS selector</summary><label>DOM selector <input id="selector" placeholder="CSS selector, optional >>> for open shadow"></label><button id="inspect-selector">Inspect selector</button></details>
  <p id="selected">Select an element on the attached page.</p>

@@ -1,0 +1,19 @@
+{
+  "uiContractVersion": "1.0.0",
+  "exports": {
+    "./tokens.css": "./dist/tokens.css",
+    "./components.css": "./dist/components.css",
+    "./contract.json": "./contract.json"
+  },
+  "scope": "[data-sp-ui]",
+  "themes": ["light"],
+  "densities": ["comfortable"],
+  "defaults": {"theme": "light", "density": "comfortable"},
+  "attributes": {"data-sp-theme": ["light"], "data-sp-density": ["comfortable"]},
+  "primitives": ["sp-button", "sp-button-primary", "sp-icon-button", "sp-input", "sp-label", "sp-help", "sp-error", "sp-panel", "sp-section", "sp-status"],
+  "states": ["default", "hover", "focus-visible", "disabled", "busy"],
+  "nativeElements": ["button", "input", "select", "textarea", "label", "fieldset", "legend", "summary"],
+  "busy": "aria-busy=true is visual and announced; use native disabled when activation must be blocked. Keep a visible busy label.",
+  "status": "Neutral presentation only. Consumer supplies explicit status text, live-region behavior and evidence semantics.",
+  "ownership": "StatePort maintainers; external changes require PR/review. No npm scope ownership or publication is asserted."
+}

@@ -1,0 +1,365 @@
+{
+  "fileKey": "PdAC6xFCNtGHdzStethUbW",
+  "pageId": "23:2",
+  "page": "Extension · Current",
+  "indexId": "38:2",
+  "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=38-2",
+  "screenCount": 24,
+  "source": "Live Figma connector read after consolidation",
+  "flowStartingPoints": [
+    {
+      "nodeId": "38:2",
+      "name": "StatePort Extension · Start here"
+    }
+  ],
+  "observedNavigationEdges": 189,
+  "screens": [
+    {
+      "id": "38:2",
+      "name": "00 · Start here",
+      "x": 80,
+      "y": 80,
+      "width": 1440,
+      "height": 442,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=38-2",
+      "sourceFiles": []
+    },
+    {
+      "id": "11:2",
+      "name": "01.1 Atom / Inputs",
+      "x": 80,
+      "y": 740,
+      "width": 440,
+      "height": 899,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=11-2",
+      "sourceFiles": [
+        "source/app.js",
+        "source/engine.js",
+        "source/style.css"
+      ]
+    },
+    {
+      "id": "11:149",
+      "name": "01.2 Atom / Draft",
+      "x": 580,
+      "y": 740,
+      "width": 440,
+      "height": 899,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=11-149",
+      "sourceFiles": [
+        "source/app.js",
+        "source/engine.js",
+        "source/style.css"
+      ]
+    },
+    {
+      "id": "11:297",
+      "name": "01.3 Atom / Applied",
+      "x": 1080,
+      "y": 740,
+      "width": 440,
+      "height": 899,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=11-297",
+      "sourceFiles": [
+        "source/app.js",
+        "source/engine.js",
+        "source/style.css"
+      ]
+    },
+    {
+      "id": "11:450",
+      "name": "01.4 Atom / Restored",
+      "x": 1580,
+      "y": 740,
+      "width": 440,
+      "height": 899,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=11-450",
+      "sourceFiles": [
+        "source/app.js",
+        "source/engine.js",
+        "source/style.css"
+      ]
+    },
+    {
+      "id": "11:602",
+      "name": "02.1 API editor / Fields",
+      "x": 80,
+      "y": 1840,
+      "width": 740,
+      "height": 756.1900024414062,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=11-602",
+      "sourceFiles": [
+        "source/app.js",
+        "source/engine.js",
+        "source/style.css"
+      ]
+    },
+    {
+      "id": "11:698",
+      "name": "02.2 API editor / JSON",
+      "x": 900,
+      "y": 1840,
+      "width": 740,
+      "height": 637,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=11-698",
+      "sourceFiles": [
+        "source/app.js",
+        "source/engine.js",
+        "source/style.css"
+      ]
+    },
+    {
+      "id": "11:754",
+      "name": "02.3 API editor / Changes",
+      "x": 1720,
+      "y": 1840,
+      "width": 740,
+      "height": 549,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=11-754",
+      "sourceFiles": [
+        "source/app.js",
+        "source/engine.js",
+        "source/style.css"
+      ]
+    },
+    {
+      "id": "28:656",
+      "name": "03.1 Actions / Handlers",
+      "x": 80,
+      "y": 2820,
+      "width": 440,
+      "height": 819,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-656",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:710",
+      "name": "03.2 Actions / Hooks",
+      "x": 580,
+      "y": 2820,
+      "width": 440,
+      "height": 819,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-710",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:2",
+      "name": "04.1 Capture / Ready",
+      "x": 80,
+      "y": 3860,
+      "width": 440,
+      "height": 819,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-2",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:50",
+      "name": "04.2 Capture / Recording",
+      "x": 580,
+      "y": 3860,
+      "width": 440,
+      "height": 819,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-50",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:100",
+      "name": "04.3 Capture / Interrupted",
+      "x": 1080,
+      "y": 3860,
+      "width": 440,
+      "height": 819,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-100",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:135",
+      "name": "04.4 Capture / Review in Desktop",
+      "x": 1580,
+      "y": 3860,
+      "width": 440,
+      "height": 819,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-135",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:177",
+      "name": "04.5 Capture / Saved receipt",
+      "x": 2080,
+      "y": 3860,
+      "width": 440,
+      "height": 819,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-177",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:216",
+      "name": "04.6 Capture / Desktop Review",
+      "x": 80,
+      "y": 4780,
+      "width": 620,
+      "height": 480,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-216",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:236",
+      "name": "04.7 Capture / Floating controls",
+      "x": 800,
+      "y": 4780,
+      "width": 405,
+      "height": 50,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-236",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:242",
+      "name": "05.1 Settings / Domains",
+      "x": 80,
+      "y": 5520,
+      "width": 1140,
+      "height": 894,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-242",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:293",
+      "name": "05.2 Settings / Capture",
+      "x": 1320,
+      "y": 5520,
+      "width": 1140,
+      "height": 894,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-293",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:353",
+      "name": "05.3 Settings / Source maps",
+      "x": 80,
+      "y": 6530,
+      "width": 1140,
+      "height": 894,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-353",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:424",
+      "name": "05.4 Settings / Build mismatch",
+      "x": 1320,
+      "y": 6530,
+      "width": 1140,
+      "height": 894,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-424",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "29:227",
+      "name": "05.5 Settings / Local maps",
+      "x": 80,
+      "y": 7540,
+      "width": 1140,
+      "height": 894,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=29-227",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:485",
+      "name": "05.6 Settings / Listeners & hooks",
+      "x": 1320,
+      "y": 7540,
+      "width": 1140,
+      "height": 894,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-485",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:551",
+      "name": "05.7 Settings / Local explanation",
+      "x": 80,
+      "y": 8550,
+      "width": 1140,
+      "height": 894,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-551",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    },
+    {
+      "id": "28:605",
+      "name": "05.8 Settings / Connections",
+      "x": 1320,
+      "y": 8550,
+      "width": 1140,
+      "height": 894,
+      "url": "https://www.figma.com/design/PdAC6xFCNtGHdzStethUbW?node-id=28-605",
+      "sourceFiles": [
+        "source/extension.js",
+        "source/extension-model.js",
+        "source/extension.css"
+      ]
+    }
+  ],
+  "scope": "Native editable design remains in Figma. This manifest is not a .fig file or layer-tree backup. The HTML is the runnable UX simulation; fixed Figma states are not pixel-identical to every HTML state."
+}

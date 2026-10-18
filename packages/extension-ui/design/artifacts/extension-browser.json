@@ -1,0 +1,237 @@
+{
+  "method": "Playwright Chromium set_content on packaged standalone HTML. Opaque test origin: session fallback only; persistence across page reloads not verified in this suite.",
+  "checks": [
+    {
+      "name": "v3 loads without JS errors",
+      "result": "PASS"
+    },
+    {
+      "name": "input editors retained",
+      "result": "PASS"
+    },
+    {
+      "name": "Capture entry available",
+      "result": "PASS"
+    },
+    {
+      "name": "Reload is explicit",
+      "result": "PASS"
+    },
+    {
+      "name": "Preparing before reload",
+      "result": "PASS"
+    },
+    {
+      "name": "Recording ready then reload",
+      "result": "PASS"
+    },
+    {
+      "name": "Simulated activity counted",
+      "result": "PASS"
+    },
+    {
+      "name": "Recording controls persist",
+      "result": "PASS"
+    },
+    {
+      "name": "Stop does not save",
+      "result": "PASS"
+    },
+    {
+      "name": "Sign-in decision blocks Save",
+      "result": "PASS"
+    },
+    {
+      "name": "Only simulated receipt leads to Saved",
+      "result": "PASS"
+    },
+    {
+      "name": "Without reload remains partial",
+      "result": "PASS"
+    },
+    {
+      "name": "Interrupt does not auto-reattach",
+      "result": "PASS"
+    },
+    {
+      "name": "Discard is terminal without Card",
+      "result": "PASS"
+    },
+    {
+      "name": "Capture options saved",
+      "result": "PASS"
+    },
+    {
+      "name": "Different domain does not inherit capture opts",
+      "result": "PASS"
+    },
+    {
+      "name": "Changing settings profile did not change capture tab",
+      "result": "PASS"
+    },
+    {
+      "name": "Origin validation rejects paths",
+      "result": "PASS"
+    },
+    {
+      "name": "Added exact origin profile",
+      "result": "PASS"
+    },
+    {
+      "name": "Map URL requires explicit origin permission",
+      "result": "PASS"
+    },
+    {
+      "name": "Matching fixture reports exact build",
+      "result": "PASS"
+    },
+    {
+      "name": "Mismatched build not used",
+      "result": "PASS"
+    },
+    {
+      "name": "Filename identity is not exact",
+      "result": "PASS"
+    },
+    {
+      "name": "Mappings without code distinguished",
+      "result": "PASS"
+    },
+    {
+      "name": "Local file selected",
+      "result": "PASS"
+    },
+    {
+      "name": "Clear maps scoped to editor",
+      "result": "PASS"
+    },
+    {
+      "name": "Handlers not conflated with native dispatcher",
+      "result": "PASS"
+    },
+    {
+      "name": "Native phase and target present",
+      "result": "PASS"
+    },
+    {
+      "name": "Hooks component scoped",
+      "result": "PASS"
+    },
+    {
+      "name": "No made up link for effect",
+      "result": "PASS"
+    },
+    {
+      "name": "Observe does not execute handler",
+      "result": "PASS"
+    },
+    {
+      "name": "Disabled button no click record",
+      "result": "PASS"
+    },
+    {
+      "name": "Enabled demo action recorded",
+      "result": "PASS"
+    },
+    {
+      "name": "Argument capture off by default",
+      "result": "PASS"
+    },
+    {
+      "name": "Observation can stop",
+      "result": "PASS"
+    },
+    {
+      "name": "Active overrides prevent capture",
+      "result": "PASS"
+    },
+    {
+      "name": "Desktop connection can detach in demo",
+      "result": "PASS"
+    },
+    {
+      "name": "Capture blocked but Atom retained",
+      "result": "PASS"
+    },
+    {
+      "name": "Atom works with Desktop offline",
+      "result": "PASS"
+    },
+    {
+      "name": "JSON editor remains synced",
+      "result": "PASS"
+    },
+    {
+      "name": "Invalid JSON remains blocked",
+      "result": "PASS"
+    },
+    {
+      "name": "Settings 1440 no document overflow",
+      "result": "PASS"
+    },
+    {
+      "name": "Settings 1440 save visible",
+      "result": "PASS"
+    },
+    {
+      "name": "Capture 1440 action reachable",
+      "result": "PASS"
+    },
+    {
+      "name": "Settings 1280 no document overflow",
+      "result": "PASS"
+    },
+    {
+      "name": "Settings 1280 save visible",
+      "result": "PASS"
+    },
+    {
+      "name": "Capture 1280 action reachable",
+      "result": "PASS"
+    },
+    {
+      "name": "Settings 390 no document overflow",
+      "result": "PASS"
+    },
+    {
+      "name": "Settings 390 save visible",
+      "result": "PASS"
+    },
+    {
+      "name": "Capture 390 action reachable",
+      "result": "PASS"
+    },
+    {
+      "name": "No browser errors",
+      "result": "PASS"
+    },
+    {
+      "name": "No external requests",
+      "result": "PASS"
+    }
+  ],
+  "errors": [],
+  "requests": [],
+  "screens": [
+    "01-capture-ready.png",
+    "02-capture-recording.png",
+    "03-capture-review.png",
+    "04-desktop-review.png",
+    "05-capture-saved.png",
+    "06-capture-interrupted.png",
+    "07-settings-capture.png",
+    "08-settings-domains.png",
+    "09-settings-maps-exact.png",
+    "10-settings-maps-mismatch.png",
+    "11-settings-local-maps.png",
+    "12-settings-listeners.png",
+    "13-actions-handlers.png",
+    "14-actions-native.png",
+    "15-actions-hooks.png",
+    "16-actions-calls.png",
+    "17-settings-connections.png",
+    "18-capture-offline.png",
+    "19-settings-narrow.png",
+    "20-capture-narrow.png"
+  ]
+}

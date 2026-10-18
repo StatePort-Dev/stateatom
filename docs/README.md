@@ -5,6 +5,7 @@ These documents define StateAtom's project boundaries, target design, and develo
 | Document | Purpose |
 | --- | --- |
 | [Repository layout](repository-layout.md) | Current product, tests, experiments and historical relocation map |
+| [Shared extension UI](design/extension-ui.md) | Scoped CSS contract, required supplied design references, generation, local handoff and consumer verification |
 | [Architecture](architecture.md) | Components, operating capabilities, analysis approach, and lifecycle boundaries |
 | [Evidence model](evidence-model.md) | What each claim means, what supports it, and how unknown or stale information is represented |
 | [Experiments](experiments.md) | Local interventions, observation, cancellation, undo, and baseline restoration |

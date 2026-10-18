@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>StatePort extension UI candidate</title>
+<link rel="stylesheet" href="../dist/tokens.css"><link rel="stylesheet" href="../dist/components.css"><link rel="stylesheet" href="showcase.css"></head>
+<body>
+<aside id="host-control"><h2>Adjacent host control</h2><label for="host-input">Host input</label><input id="host-input" value="Outside UI scope"><button id="host-button">Host button</button><p id="host-status">Host text must retain its native styles.</p></aside>
+<main data-sp-ui data-sp-theme="light" data-sp-density="comfortable">
+<header><h1>Extension UI</h1><p>Contract 1.0.0 · light / comfortable · candidate baseline</p><p class="sp-help">Visual values supplied by the shared UI task. These screenshots await human design review.</p></header>
+<section class="sp-panel" aria-labelledby="buttons-heading"><h2 id="buttons-heading">Native actions</h2>
+<div class="row"><button id="default-button">Default action</button><button id="primary-button" class="sp-button-primary">Primary action</button><button id="icon-button" class="sp-icon-button" aria-label="Refresh showcase" title="Refresh showcase"><span aria-hidden="true">↻</span></button><button disabled>Disabled action</button><button id="busy-button" aria-busy="true" disabled>Saving…</button></div>
+<p id="action-status" class="sp-status" role="status">Ready for a local action</p>
+<p><button id="long-button">A deliberately long action label that must wrap without hiding its meaning or its focus outline in a narrow extension area</button></p>
+</section>
+<section class="sp-section" aria-labelledby="fields-heading"><h2 id="fields-heading">Fields, help and errors</h2>
+<div class="fields"><div><label class="sp-label" for="app-origin">App origin</label><input id="app-origin" value="http://127.0.0.1:4173" aria-describedby="origin-help"><p id="origin-help" class="sp-help">Synthetic local address; this showcase makes no connection.</p></div>
+<div><label for="choice">Property</label><select id="choice"><option>Text</option><option>Disabled</option></select></div>
+<div><label for="notes">Notes with a long descriptive label that wraps</label><textarea id="notes" rows="3">Synthetic notes only</textarea></div>
+<div><label for="invalid">Required report name</label><input id="invalid" aria-invalid="true" aria-describedby="name-error"><p id="name-error" class="sp-error">Error: Enter a report name before saving.</p></div>
+<div><label for="disabled-input">Disabled input</label><input id="disabled-input" value="Unavailable" disabled></div>
+<div><label for="busy-input">Busy input</label><input id="busy-input" value="Loading…" aria-busy="true" disabled></div>
+<div><label><input id="opt-in" type="checkbox"> Include optional synthetic excerpts</label></div></div>
+</section>
+<section class="sp-panel" aria-label="Neutral status presentation"><h2>Status text belongs to the consumer</h2><div class="row"><span class="sp-status">Unknown — no observation</span><span class="sp-status">Stale — inspect again</span><span class="sp-status">Observed — scoped event only</span></div><p class="sp-help">Status meaning remains explicit text and never depends on color.</p><details><summary>Keyboard and scaling</summary><p>Tab through buttons and fields. Disabled controls are skipped. A visible outline identifies focus. Long content remains readable at 200% zoom.</p></details><p><a href="../README.md">Package documentation</a></p></section>
+</main><script src="showcase.js"></script></body></html>
