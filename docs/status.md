@@ -576,3 +576,17 @@ and normalized timestamp requests remain Unknown. A rejected warmup admission an
 its false-positive clone RED are preserved; no native-return criterion was relaxed.
 The effective helper bundle license is mixed MIT/Apache-2.0, preserving origins.
 [Updated candidate, checks and limits](roadmap/2026-10-18-dependency-candidate.md).
+
+## Embeddable local candidate — 2026-10-18
+
+One local `@stateport/atom` tarball now backs both the public standalone extension
+and a separate genuine MV3 embedding example, using the existing shared UI peer.
+The [validation record](testing/atom-embedding-validation.md) records 509 unit tests,
+30 dual-host native checks, 26 IDE-free checks, the unchanged 106-check short loop
+(20 PASS / 10 expected PARTIAL), 16 first-read UI checks and 22 shared-UI checks.
+These were agent-operated on the recorded working-tree bytes and actual IDE;
+no registry release, official StatePort/Capture integration or human usability
+acceptance is implied. Analyzer/evidence criteria and earlier results above remain
+unchanged. The local package and exact commands are in
+`.artifacts/atom/atom-handoff.json`; see [embedding](embedding.md) and the
+[separate official-host task](tasks/stateport-host-atom-integration.md).

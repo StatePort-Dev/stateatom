@@ -1,3 +1,4 @@
+import path from 'node:path';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
 import {createServer} from 'vite';
@@ -20,8 +21,9 @@ const runtime=root+'/.runtime/short-'+tag+'-'+Date.now();
 await mkdir(root+'/.runtime/short-loop-runs',{recursive:true});await mkdir(out);await mkdir(runtime,{recursive:true});
 const result={schema:'stateatom-short-loop/1',startedAt:new Date().toISOString(),criterion:'T+E+V+I; not full provenance',revision:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),configuration:{node:process.version,sandbox:true,viewport:{width:1280,height:900},browserPath:'Playwright; Browser plugin not available',todoRevision},checks:[],cases:[],hypotheses:[],health:[],errors:[]};
 let ide,server,browser;
-const sourceInputs=['core','browser-extension','ide-extension/extension.mjs','src/engine','tests/fixtures/inspection',"scripts/inspection-server.mjs",'scripts/harness.mjs','scripts/vite-config.mjs','scripts/ide-runner.mjs','scripts/short-loop-inputs.mjs','tests/ide-host.cjs','tests/offline-guard.cjs',"tests/integration/short-loop.mjs"];
-const buildInputs=['dist/browser','dist/ide/extension.cjs','dist/ide/package.json'];
+const sourceInputs=['packages/atom/src','packages/atom/types','packages/atom/package.json','core','browser-extension','ide-extension/extension.mjs','src/engine','tests/fixtures/inspection',"scripts/inspection-server.mjs",'scripts/harness.mjs','scripts/vite-config.mjs','scripts/ide-runner.mjs','scripts/short-loop-inputs.mjs','tests/ide-host.cjs','tests/offline-guard.cjs',"tests/integration/short-loop.mjs"];
+const extensionPath=process.env.ATOM_EXTENSION_PATH?path.resolve(process.env.ATOM_EXTENSION_PATH):root+'/dist/browser';result.configuration.extensionPath=extensionPath;
+const buildInputs=[path.relative(root,extensionPath),'dist/ide/extension.cjs','dist/ide/package.json'];
 const compact=s=>s.replace(/\s+/g,'');
 function check(name,condition){result.checks.push({name,status:condition?'PASS':'FAIL'});assert.ok(condition,name);}
 async function persist(){await writeFile(out+'/results.json',JSON.stringify(result,null,2));}

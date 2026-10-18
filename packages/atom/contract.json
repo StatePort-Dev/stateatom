@@ -1,0 +1,1 @@
+{"apiVersion":1,"wireVersion":1,"uiContract":"1.0.0","uiPackage":"0.1.0-candidate.20261018.1","storageNamespace":"stateport.atom.v1.","capabilities":["read","inject","reload","cache","override","replay"],"origins":["http://127.0.0.1:4173","http://127.0.0.1:4174","http://127.0.0.1:4175"]}

@@ -1,0 +1,15 @@
+{
+  "name": "stateatom-mv3-embedding-example",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "@stateport/atom": "0.1.0-candidate.20261018.1",
+    "@stateport/extension-ui": "0.1.0-candidate.20261018.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  }
+}

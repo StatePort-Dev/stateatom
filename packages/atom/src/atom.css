@@ -1,0 +1,51 @@
+/* Atom layout and code/evidence presentation; shared primitives come from extension-ui. */
+[data-sp-ui][data-atom-root] { max-width:960px; margin:24px auto; min-width:0; padding:0 20px 36px; }
+[data-sp-ui][data-atom-root] header,[data-sp-ui][data-atom-root] .sp-atom-inspection-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+[data-sp-ui][data-atom-root] header > div,[data-sp-ui][data-atom-root] .sp-atom-inspection-heading > h2 { min-width:0; }
+[data-sp-ui][data-atom-root] h1 { font-size:24px; margin:0; }
+[data-sp-ui][data-atom-root] h2 { font-size:18px; margin:0; }
+[data-sp-ui][data-atom-root] h3 { font-size:14px; margin:16px 0 4px; }
+[data-sp-ui][data-atom-root] small,[data-sp-ui][data-atom-root] .sp-atom-hint { font-size:var(--sp-font-size-small); color:var(--sp-color-muted); }
+[data-sp-ui][data-atom-root] header p { margin:4px 0 16px; }
+[data-sp-ui][data-atom-root] [data-atom-id="mode"] { font-weight:var(--sp-font-weight-emphasis); flex-shrink:0; }
+[data-sp-ui][data-atom-root] [data-atom-id="inspection"] { margin:12px 0 20px; }
+[data-sp-ui][data-atom-root] .sp-atom-toolbar { display:flex; flex-wrap:wrap; gap:4px; align-items:center; }
+[data-sp-ui][data-atom-root] .sp-atom-toolbar p { flex-basis:100%; margin:0; }
+[data-sp-ui][data-atom-root] label { margin:4px; }
+[data-sp-ui][data-atom-root] input,[data-sp-ui][data-atom-root] select,[data-sp-ui][data-atom-root] button { margin:3px; }
+[data-sp-ui][data-atom-root] input { width:235px; }
+[data-sp-ui][data-atom-root] [data-atom-id="token"] { width:160px; }
+[data-sp-ui][data-atom-root] [data-atom-id="diagnostic-content"] { width:auto; }
+[data-sp-ui][data-atom-root] [data-atom-id="tabs"] { width:360px; }
+[data-sp-ui][data-atom-root] details { margin:10px 0; }
+[data-sp-ui][data-atom-root] summary { cursor:pointer; font-weight:500; padding:6px 0; }
+[data-sp-ui][data-atom-root] fieldset { margin:12px 0; }
+[data-sp-ui][data-atom-root] pre { white-space:pre-wrap; overflow-wrap:anywhere; font:12px/1.5 monospace; }
+[data-sp-ui][data-atom-root] section { margin:8px 0; }
+[data-sp-ui][data-atom-root] .sp-atom-source { margin-top:8px; padding:8px; background:var(--sp-color-canvas); border-radius:var(--sp-radius-control); }
+[data-sp-ui][data-atom-root] .sp-atom-source button { font-size:var(--sp-font-size-small); }
+[data-sp-ui][data-atom-root] [data-atom-id="expressions"] pre { margin:5px 0; padding:8px; background:var(--sp-color-canvas); border-left:3px solid var(--sp-color-border); }
+[data-sp-ui][data-atom-root] [data-atom-id="selected"] { font-family:monospace; margin:12px 0 2px; }
+[data-sp-ui][data-atom-root] [data-atom-id="freshness"] { margin:0 0 10px; }
+[data-sp-ui][data-atom-root] [data-atom-id="atom-summary"] { font-weight:var(--sp-font-weight-emphasis); }
+[data-sp-ui][data-atom-root] [data-atom-id="operands"] { list-style:none; padding:0; margin:6px 0; }
+[data-sp-ui][data-atom-root] [data-atom-id="operands"] li { font-family:monospace; padding:4px 0; }
+[data-sp-ui][data-atom-root] [data-atom-id="atom-chain"] { max-height:380px; overflow:auto; }
+[data-sp-ui][data-atom-root] .sp-atom-content-option { display:block; }
+[data-sp-ui][data-atom-root] textarea { width:100%; font-family:monospace; }
+[data-sp-ui][data-atom-root] [data-atom-id="status"] { font-size:var(--sp-font-size-small); min-height:24px; margin:8px 0; }
+[data-sp-ui][data-atom-root] [data-atom-id="report-select"] { max-width:95%; min-width:min(160px, 95%); }
+[data-sp-ui][data-atom-root] dialog { max-width:760px; width:calc(100% - 3rem); border:var(--sp-border-width) solid var(--sp-color-border); border-radius:var(--sp-radius-control); padding:1rem; background:var(--sp-color-surface); color:var(--sp-color-text); }
+[data-sp-ui][data-atom-root] dialog::backdrop { background:#15202b80; }
+[data-sp-ui][data-atom-root] [data-atom-id="export-json"] { width:100%; font-family:monospace; overflow-wrap:anywhere; }
+[data-sp-ui][data-atom-root] dialog button { margin-top:.5rem; }
+[data-sp-ui][data-atom-root] [data-atom-id="code-journal-records"] { max-height:200px; overflow:auto; white-space:pre-wrap; word-break:break-word; }
+@media(max-width:600px) {
+[data-sp-ui][data-atom-root] { margin:16px auto; padding:0 12px 24px; }
+[data-sp-ui][data-atom-root] header,[data-sp-ui][data-atom-root] .sp-atom-inspection-heading { align-items:flex-start; flex-wrap:wrap; }
+[data-sp-ui][data-atom-root] header small { display:block; }
+[data-sp-ui][data-atom-root] [data-atom-id="inspection"] { padding:14px; }
+[data-sp-ui][data-atom-root] [data-atom-id="tabs"] { width:100%; }
+[data-sp-ui][data-atom-root] .sp-atom-toolbar label { width:100%; }
+[data-sp-ui][data-atom-root] input { width:100%; }
+}

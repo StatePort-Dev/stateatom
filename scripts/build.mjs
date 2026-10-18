@@ -1,9 +1,12 @@
+import {buildAtom} from './build-atom.mjs';
 import {build} from 'esbuild';import {dirname as pathDir} from 'node:path';import {cp,mkdir,writeFile,copyFile,readFile} from 'node:fs/promises';import {build as viteBuild} from 'vite';import {config,root} from './vite-config.mjs';
 import {createRequire} from 'node:module';
 import {buildUI} from '../packages/extension-ui/scripts/build.mjs';
 await buildUI();
+await buildAtom();
 const resolveUI = createRequire(import.meta.url);
 await mkdir(root+'/dist/browser',{recursive:true});
+await copyFile(root+'/packages/atom/dist/atom.css',root+'/dist/browser/atom.css');
 for (const name of ['tokens.css', 'components.css', 'contract.json']) {
  await copyFile(resolveUI.resolve('@stateport/extension-ui/'+name), root+'/dist/browser/extension-ui-'+name);
 }

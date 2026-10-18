@@ -418,3 +418,13 @@ original receiver/key references and bounded scalar read results in disposable
 probe contexts, with per-owner stop cleanup. Later native descriptors are separate
 from event-time history. Getter/proxy/key and pre-/post-read writer controls retain
 Unknown parse-to-read ancestry. See [consolidated roadmap result](docs/roadmap/2026-10-18-roadmap-closeout.md).
+
+## Embed the same Atom runtime and inspector
+
+The local `@stateport/atom` candidate retains this standalone extension and adds a
+separate MV3 consumer example. Use `npm run pack:atom` and
+`npm run verify:embedding`; see [embedding and ownership](docs/embedding.md),
+[verification evidence](docs/testing/atom-embedding-validation.md) and
+[the official-host integration task](docs/tasks/stateport-host-atom-integration.md).
+The ignored `.artifacts/atom/atom-handoff.json` records the local artifact identity.
+No npm publication or official StatePort/Capture integration is implied.

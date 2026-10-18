@@ -289,3 +289,13 @@ Track a small set of outcomes:
 - Time to the first supported conclusion when a comparable debugging task is available; record the method before making efficiency claims.
 
 Keep the original six-case results separate from controls and new application cases. Test counts, artifact counts, and repository activity do not replace evidence of a useful supported workflow. Update this roadmap when a result changes the next decision; keep measured capabilities in [project status](docs/status.md).
+
+## Embeddable follow-up candidate — 2026-10-18
+
+The separately requested [embeddable increment](docs/embedding.md) retains
+public standalone Atom and extracts one runtime/inspector package for a separate
+official StatePort host. The MV3 embedding example is a contract consumer, not a
+second analysis implementation or a new tracing experiment. Earlier alpha scope
+and historical acceptance criteria above remain unchanged. See
+[the contract](docs/embedding.md), [validation](docs/testing/atom-embedding-validation.md)
+and [the bounded official-host task](docs/tasks/stateport-host-atom-integration.md).

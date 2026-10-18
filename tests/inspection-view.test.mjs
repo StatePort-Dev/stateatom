@@ -89,13 +89,15 @@ test('panel fragment warnings point to the current finite trace without upgradin
  rt.stateHandoffs=[{status:'Observed',queueId:'q',valueOrigin:'Unknown/Unsupported'}];rt.exchangeBindings=[{status:'Observed',requestId:'request'}];rt.nodes=[{status:'Observed',kind:'member',expression:'account.rules.quota',value:12,valueOrigin:'Unknown/Unsupported',origin:{url:'http://127.0.0.1/api',pointer:'/rules/quota'}}];
  s.analysis.stateatom.firstReadProfile={schema:1,status:'Supported finite trace',fullPath:true,freshness:'Recorded',scope:'original first read only',sourceProof:{status:'Code-linked',profile:'reviewed'},occurrence:{page:'page1',status:'Observed'},limits:['Later renders unsupported']};
  const before=JSON.stringify(s);
- globalThis.document={getElementById:node,createElement:element};globalThis.chrome={runtime:{onMessage:{addListener(){}},sendMessage:async m=>({ok:true,result:m.op==='tabs'?[{id:1,url:'http://127.0.0.1'}]:m.op==='list-diagnostics'?[]:s})}};
+ const dom={createElement:element};const container={ownerDocument:dom,append(){}};dom.createElement=()=>({...element(),style:{},setAttribute(){},querySelector(selector){return node(selector.match(/data-atom-id="([^"]+)/)?.[1]);},querySelectorAll(){return[];},remove(){}});globalThis.document={getElementById:node,createElement:element};globalThis.chrome={runtime:{onMessage:{addListener(){}},sendMessage:async m=>({ok:true,result:m.op==='tabs'?[{id:1,url:'http://127.0.0.1'}]:m.op==='list-diagnostics'?[]:s})}};
  const text=n=>[n.textContent,...n.children.map(text)].join(' ');
  try{
-  await import('../browser-extension/panel.js');await node('refresh-tabs').onclick();
+  let experimentReply;const {mountAtom}=await import('../packages/atom/src/ui.mjs');const view=mountAtom(container,{request:async m=>{if(m.op==='deep-experiment')return new Promise(r=>experimentReply=r);return m.op==='tabs'?[{id:1,url:'http://127.0.0.1'}]:m.op==='list-diagnostics'?[]:s;},subscribe:()=>()=>{}},{idPrefix:''});await view.ready;await node('refresh-tabs').onclick();
   for(const id of ['commit-summary','state-handoffs','exchange-bindings'])assert.match(text(node(id)),/alone.*finite trace/i,id);
   assert.match(text(node('atom-chain')),/fragment.*Unknown\/Unsupported.*finite trace/i);assert.match(node('first-read-scope').textContent,/original first read only/);assert.equal(JSON.stringify(s),before);
   s.analysis.stateatom.firstReadProfile.fullPath=false;await node('refresh-tabs').onclick();
   assert.match(node('commit-summary').textContent,/Complete HTTP provenance is not established/);assert.match(text(node('state-handoffs')),/Current field value ancestry is unknown/);assert.match(text(node('exchange-bindings')),/Complete HTTP provenance is not established/);assert.match(text(node('atom-chain')),/current value origin Unknown\/Unsupported/);
+  node('atom-variants').value='[]';const oldExperiment=node('atom-run').onclick();node('tabs').value='2';await node('tabs').onchange();const evidence=node('evidence').textContent;experimentReply({status:'Observed',baseline:true,scope:'old tab'});await oldExperiment;assert.equal(node('atom-result').textContent,'');assert.equal(node('evidence').textContent,evidence);
+
  }finally{if(priorDocument===undefined)delete globalThis.document;else globalThis.document=priorDocument;if(priorChrome===undefined)delete globalThis.chrome;else globalThis.chrome=priorChrome;}
 });

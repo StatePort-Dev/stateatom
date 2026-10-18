@@ -1,0 +1,51 @@
+{
+  "name": "@stateport/atom",
+  "version": "0.1.0-candidate.20261018.1",
+  "type": "module",
+  "description": "Embeddable StateAtom browser runtime and inspector",
+  "license": "(MIT AND Apache-2.0)",
+  "files": [
+    "dist",
+    "contract.json",
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+    "LICENSES",
+    "CHANGELOG.md"
+  ],
+  "exports": {
+    "./runtime": {
+      "types": "./dist/runtime.d.ts",
+      "default": "./dist/runtime.mjs"
+    },
+    "./ui": {
+      "types": "./dist/ui.d.ts",
+      "default": "./dist/ui.mjs"
+    },
+    "./platform": {
+      "types": "./dist/platform.d.ts",
+      "default": "./dist/platform.mjs"
+    },
+    "./transport": {
+      "types": "./dist/transport.d.ts",
+      "default": "./dist/transport.mjs"
+    },
+    "./atom.css": "./dist/atom.css",
+    "./content.js": "./dist/content.js",
+    "./reader.js": "./dist/reader.js",
+    "./reader.html": "./dist/reader.html",
+    "./reader.css": "./dist/reader.css",
+    "./contract.json": "./contract.json"
+  },
+  "peerDependencies": {
+    "@stateport/extension-ui": "0.1.0-candidate.20261018.1"
+  },
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StatePort-Dev/stateatom.git",
+    "directory": "packages/atom"
+  }
+}

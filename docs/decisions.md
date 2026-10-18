@@ -10,9 +10,16 @@ Opening only a shell around a required closed analyzer would not satisfy this bo
 
 ## One official browser extension
 
-**Target distribution.** The preferred distribution is one StatePort extension, built from the public browser source, with Atom and an optional Desktop connector. Existing Desktop Capture and Replay code stays in its own project boundary.
+**Current direction (2026-10-18).** Public Atom retains a standalone extension
+and supplies one open `@stateport/atom` runtime/inspector package. The official
+StatePort extension is a separate consumer with its existing Capture and optional
+Desktop/Native Messaging integration. This replaces the earlier requirement that
+the entire official extension be built from this public browser source.
 
-This avoids maintaining separate copies of the browser engine. A closed browser host should be introduced only if an identified requirement needs it, with its additional build and compatibility costs recorded. It is not a prerequisite for the current experiment.
+One shared analysis/UI implementation avoids copied engines. The public MV3
+embedding example verifies the consumer contract; it is not a second official
+product extension and does not establish private StatePort integration. Exact
+local packaging, ownership and evidence are recorded in [embedding](embedding.md).
 
 ## Shared implementation
 

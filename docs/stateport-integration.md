@@ -4,7 +4,7 @@ StateAtom is intended to work independently. StatePort integration is an optiona
 
 ## Product boundary
 
-The preferred distribution is one official StatePort browser extension built from public source, with a thin open browser connector. Atom's inspector, analyzer, supported adapters, optional IDE tooling, local interventions, undo, and export remain independently usable. Sharing these capabilities should use a single implementation and evidence model rather than a separate closed analysis path.
+The distribution direction is a public standalone Atom extension and one official StatePort host consuming the public `@stateport/atom` package, with an optional Desktop bridge. The official host is a separate consumer; Atom does not require the entire official extension or its Capture implementation to move into this public repository. Atom's inspector, analyzer, supported adapters, optional IDE tooling, local interventions, undo, and export remain independently usable. Sharing these capabilities should use a single implementation and evidence model rather than a separate closed analysis path.
 
 Existing Desktop Capture, State Cards, Replay, and team or agent workflows remain separate StatePort capabilities. They may consume Atom evidence without becoming prerequisites for local inspection. Optional server workloads belong to the separate product and must not become an implicit requirement for ordinary Atom use. The integration should not require a second public extension, a cloud account, a closed resolver, or a model/API service.
 
@@ -37,3 +37,5 @@ State Card capture must originate from an actual user capture or an actual autom
 Validate standalone operation with the StatePort host absent, permission rejection at each bridge, incompatible versions, interrupted handoffs, and redacted exports. Verify that exported evidence can be read independently and that consumers preserve unknown boundaries. A harness-produced artifact does not verify the application's export UI. [Validation](validation.md) defines the broader checks; [status](status.md) must distinguish reported tests from evidence reviewed in this repository.
 
 Keep protocol choices and tradeoffs in [decisions](decisions.md). Reuse of connector or shell code requires the checks described in [licensing](licensing.md). No integration document should promise a fixed first-version schema or transport before review and implementation establish one.
+
+The local embeddable contract, package and two-host validation workflow are documented in [Embedding Atom](embedding.md). This candidate does not establish integration into the official StatePort host.

@@ -100,3 +100,13 @@ an installed dependency or an implemented replacement. The single browser shell 
 The optional instrumenter, observer and experiment controller stay together in
 `src/engine/`. `core/diagnostic.mjs` and the reader are existing basic
 diagnostic implementations; the broader evidence model remains target design.
+
+## Embeddable candidate
+
+The existing browser runtime and inspector are extracted as one `@stateport/atom`
+package with inert browser entrypoints, explicit platform/client separation and
+mount/shutdown lifecycles. Both public standalone and a separate MV3 example
+consume it. The official StatePort extension remains a separate future consumer;
+Capture/Native Messaging remain outside this package. See [the exact contract](embedding.md)
+and [validation](testing/atom-embedding-validation.md). Analyzer/evidence placement
+and acceptance criteria are unchanged. This is a local candidate, not a published API.

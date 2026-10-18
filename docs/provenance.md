@@ -226,3 +226,25 @@ were rebound to exact relocated source bytes with the same rejection rules.
 Historical MIT material remains MIT; existing Apache-2.0 files keep their headers.
 The two ignored old artifact groups were retained privately with checked hashes.
 Old X-Ray source, frozen candidates and prior run results were not rewritten.
+
+## Embeddable Atom extraction — 2026-10-18
+
+The local `@stateport/atom` candidate extracts the historical MIT
+`browser-extension/worker.js` and panel implementation into
+`packages/atom/src/runtime.mjs`, `ui.mjs`, `template.mjs` and `atom.css`.
+`src/engine/browser.mjs` keeps its historical origin; its browser API accesses
+are bound through a factory, with cancellation plumbing added to the existing
+experiment lifecycle. Analyzer/evidence algorithms and acceptance criteria are
+not relicensed or replaced.
+
+New platform/transport adapters, package build/pack scripts and new contract/native
+embedding checks carry Apache-2.0 SPDX notices, as do the shipped declarations.
+Package/host outputs retain the original MIT license, existing notices and Apache
+text. The separately pinned extension-ui peer retains its own license/notice.
+No private StatePort or Capture implementation is imported. The retained shared
+UI design-reference set is unchanged.
+
+Exact bundled runtime/UI source input digests ship as `dist/source-manifest.json` in the
+candidate and in its local handoff. They identify working-tree input bytes above
+the recorded Git base revision; they do not invent a commit for uncommitted work
+or rewrite historical validation hashes. See [embedding](embedding.md).

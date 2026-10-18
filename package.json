@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "build:extensions": "node scripts/build.mjs --extensions-only",
-    "test": "node --test --test-isolation=none tests/*.test.mjs tests/engine/*.test.mjs tests/browser/*.test.mjs tests/vue/*.test.mjs",
+    "test": "node --test --test-isolation=none tests/*.test.mjs tests/engine/*.test.mjs tests/browser/*.test.mjs tests/vue/*.test.mjs tests/atom/*.test.mjs",
     "dev": "node scripts/serve-phase2.mjs",
     "dev:react-host": "node scripts/serve-phase2.mjs --react-host-props",
     "verify:ide": "node tests/integration/ide.mjs",
@@ -63,7 +63,11 @@
     "build:ui": "npm --prefix packages/extension-ui run build",
     "check:ui": "npm --prefix packages/extension-ui run check",
     "verify:extension-ui": "node tests/integration/extension-ui.mjs",
-    "pack:ui": "node scripts/pack-extension-ui.mjs"
+    "pack:ui": "node scripts/pack-extension-ui.mjs",
+    "build:atom": "node scripts/build-atom.mjs",
+    "pack:atom": "node scripts/pack-atom.mjs",
+    "verify:atom-contract": "node --test --test-isolation=none tests/atom/*.test.mjs",
+    "verify:embedding": "node tests/integration/embedding.mjs"
   },
   "dependencies": {
     "@angular/compiler": "20.3.34",
@@ -89,7 +93,8 @@
     "vite": "7.3.7",
     "vue": "3.5.44",
     "zone.js": "0.15.1",
-    "@stateport/extension-ui": "file:packages/extension-ui"
+    "@stateport/extension-ui": "file:packages/extension-ui",
+    "@stateport/atom": "file:packages/atom"
   },
   "description": "Experimental local UI inspection and evidence tooling",
   "license": "(MIT AND Apache-2.0)",
