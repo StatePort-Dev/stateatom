@@ -28,6 +28,8 @@ The current dependency-repair candidate uses Vite 7.3.7 and Vue compilers 3.5.44
 while retaining React/ReactDOM 18.3.1 dev. Historical reports below retain their
 original tested versions. See [dependency repair and compiler limits](docs/roadmap/2026-10-18-dependency-candidate.md).
 
+Current source locations are documented in the [repository layout](docs/repository-layout.md).
+
 ## Develop locally
 
 Use Node **24.19.0** (`.nvmrc`) and npm **11.17.0**. The verified host is Linux.
@@ -72,7 +74,7 @@ Use disposable synthetic applications: interventions reload the page and clear a
    loads the open helper. Trust only the source workspace you intend to inspect.
 3. Run **X-Ray: Show local pairing token** from the Command Palette (the existing command ID is
    retained). Enter the displayed local URL/token in the panel. Keep the token private.
-   Set app origin to `http://127.0.0.1:4173`, source folder to `stateatom-phase2/fixtures`, and Pair.
+   Set app origin to `http://127.0.0.1:4173`, source folder to `tests/fixtures/inspection`, and Pair.
 4. Refresh tabs, choose the React fixture, Attach debugger, then reload the app so collection
    starts before the API responses. Choose **Disabled**, click **Select page element**, and select
    **Confirm combined**. The main block shows the snapshot, code-linked expressions and
@@ -125,7 +127,7 @@ The native check requires the Chromium, graphical VS Code host and local ports d
 below, plus 4175. Each run exclusively creates `.runtime/short-loop-runs/<timestamp>/`
 and isolated profiles. A custom `SHORT_TAG` must be unused. It checks the original
 T/E/V/I criteria, expects known partial cases and fails on a changed expectation.
-See [short-loop checks and limits](stateatom-short-loop/README.md).
+See [short-loop checks and limits](docs/testing/short-loop.md).
 There is no need to start `npm run dev` separately for this harness.
 
 ## Controlled first-read example
@@ -138,7 +140,7 @@ npm run dev:first-read
 ```
 
 Use the opened StateAtom panel and inert setup page. Load the open IDE helper,
-pair with source folder `stateatom-phase2/fixtures`, attach to that setup tab,
+pair with source folder `tests/fixtures/inspection`, attach to that setup tab,
 then follow its React app link. Select **Disabled / Confirm transformed (P2)** or
 **Text / 13 (P1)**. The separate finite-trace block identifies the actual exchange,
 field/read, native Query/React handoffs and selected commit; source proof is
@@ -164,7 +166,7 @@ FIRST_UI_TAG="ui-$(date +%s)" npm run verify:first-read-ui
 The first two are native mechanism controls; the third operates the actual panel,
 IDE, experiment/rollback and fresh passive reader. For an installed local helper,
 add `-- --installed-vsix=/absolute/path/to/helper.vsix` to the UI command. See the
-[profile instructions and computing base](stateatom-field-revision/README.md).
+[profile instructions and computing base](docs/testing/first-read.md).
 
 ## Optional committed-host experiment
 
@@ -183,10 +185,10 @@ npm run verify:preview
 ```
 
 Run native checks sequentially, using unused result tags. See the
-[probe limits](stateatom-react-host/README.md), [roadmap evidence](docs/roadmap/2026-10-17-progress.md)
+[probe limits](docs/testing/react-host.md), [roadmap evidence](docs/roadmap/2026-10-17-progress.md)
 and [developer acceptance procedure](docs/roadmap/acceptance.md). The preview
 acceptance command is agent-operated, not independent human evidence.
-`npm run verify:fetch-initiator` runs a separate [acquisition-only experiment](stateatom-network-probe/README.md); it does not enable HTTP provenance in the panel. The later opt-in
+`npm run verify:fetch-initiator` runs a separate [acquisition-only experiment](experiments/network/README.md); it does not enable HTTP provenance in the panel. The later opt-in
 `npm run dev:react-http` adds exact browser exchange identities with a conservative
 static-document preflight. `npm run verify:fetch-product` checks its mechanism and
 `npm run verify:fetch-ui` checks the actual panel/IDE/export/offline path. CSP and
@@ -227,7 +229,7 @@ HOST_UI_TAG=<unused> npm run verify:write-access-ui
 compares captured CDP compiled sources, including dependencies, with exact trusted
 dev-server responses. Compilation/content matching does not prove execution,
 response creator, readonly effects or complete HTTP ancestry. See its
-[scope and controls](stateatom-execution-probe/README.md).
+[scope and controls](experiments/execution/README.md).
 
 The independent public-application evaluation can be prepared with
 `npm run prepare:independent`, then repeated with `npm run verify:independent`.

@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
-import test from 'node:test';import assert from 'node:assert/strict';import {build} from 'esbuild';import {makeQueryProbe} from '../stateatom-phase2/engine/query-vendor.mjs';
-const probe=await import('../stateatom-field-revision/query-contracts.mjs').catch(e=>{if(e.code!=='ERR_MODULE_NOT_FOUND')throw e;return {};});
+import test from 'node:test';import assert from 'node:assert/strict';import {build} from 'esbuild';import {makeQueryProbe} from "../src/engine/query-vendor.mjs";
+const probe=await import("../src/first-read/query-contracts.mjs").catch(e=>{if(e.code!=='ERR_MODULE_NOT_FOUND')throw e;return {};});
 let serial=0;
 test('nonfinite or oversized primitive metadata never masquerades as a known null or truncated scalar',async()=>{
- const ledger=await import('../stateatom-field-revision/query-ledger.mjs?scalar-bounds');
+ const ledger=await import("../src/first-read/query-ledger.mjs?scalar-bounds");
  ledger.firstQueryTap('bounds',NaN,Infinity,-Infinity,'x'.repeat(129),null);
  const args=ledger.firstQuerySnapshot().events[0].args;
  for(const value of args.slice(0,4)){assert.equal(value.type,'Unsupported');assert.equal(Object.hasOwn(value,'value'),false);}
@@ -46,7 +46,7 @@ test('same-value listener/sharing effects remain visible and original callback e
  }
 });
 test('branch telemetry does not adopt a public callback, inspect proxy fields, or call replaced collection/scalar methods',async()=>{
- const ledger=await import('../stateatom-field-revision/query-ledger.mjs?intrinsic-control');let traps=0,calls=0;
+ const ledger=await import("../src/first-read/query-ledger.mjs?intrinsic-control");let traps=0,calls=0;
  const proxy=new Proxy({},{get(){traps++;throw Error('get');},getOwnPropertyDescriptor(){traps++;throw Error('describe');},ownKeys(){traps++;throw Error('keys');}});
  const oldSlice=String.prototype.slice,oldFinite=Number.isFinite,oldIncludes=Array.prototype.includes,oldGet=WeakMap.prototype.get,oldPush=Array.prototype.push;
  Object.defineProperty(globalThis,'__STATEATOM_FIRST_READ_TAP__',{configurable:true,get(){traps++;throw Error('public callback');}});
@@ -67,7 +67,7 @@ test('noncallable original notification methods keep their native TypeError mess
  assert.deepEqual(messages.off,['this.listeners.forEach is not a function','this.observers.forEach is not a function']);assert.deepEqual(messages.on,messages.off);
 });
 test('malformed event kind cannot retain or expose an application object graph',async()=>{
- const ledger=await import('../stateatom-field-revision/query-ledger.mjs?malformed-kind');let traps=0;const kind=new Proxy({secret:{graph:true}},{get(){traps++;throw Error('get');},ownKeys(){traps++;throw Error('keys');},getOwnPropertyDescriptor(){traps++;throw Error('describe');}});
+ const ledger=await import("../src/first-read/query-ledger.mjs?malformed-kind");let traps=0;const kind=new Proxy({secret:{graph:true}},{get(){traps++;throw Error('get');},ownKeys(){traps++;throw Error('keys');},getOwnPropertyDescriptor(){traps++;throw Error('describe');}});
  ledger.firstQueryTap(kind,{private:true});const snapshot=ledger.firstQuerySnapshot();assert.equal(snapshot.status,'Unknown/Unsupported');assert.deepEqual(snapshot.events,[]);assert.doesNotThrow(()=>JSON.stringify(snapshot));assert.equal(traps,0);
 });
 
@@ -77,7 +77,7 @@ test('first-read branch taps compose with original pinned Query handoff/call/wri
  assert(records.some(r=>r.kind==='updater'&&r.args[0].id===id));assert.equal(records.filter(r=>r.kind==='cache-notify').length,2);assert(records.some(r=>r.kind==='sharing'&&r.args[1].id===id));client.clear();
 });
 test('identical module bytes at distinct ESM identities cannot share ledger or object-id authority',async()=>{
- const a=await import('../stateatom-field-revision/query-ledger.mjs?incarnation-a'),b=await import('../stateatom-field-revision/query-ledger.mjs?incarnation-b'),value={};
+ const a=await import("../src/first-read/query-ledger.mjs?incarnation-a"),b=await import("../src/first-read/query-ledger.mjs?incarnation-b"),value={};
  assert.notEqual(a.firstQuerySnapshot().id,b.firstQuerySnapshot().id);assert.notEqual(a.firstQueryObjectId(value),b.firstQueryObjectId(value));
  a.firstQueryTap('control',value);assert.equal(a.firstQuerySnapshot().events.length,1);assert.equal(b.firstQuerySnapshot().events.length,0);
 });

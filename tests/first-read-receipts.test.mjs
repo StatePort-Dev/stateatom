@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 import test from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';
-const source=await readFile(new URL('../stateatom-phase2/engine/observer.mjs',import.meta.url),'utf8');
+const source=await readFile(new URL("../src/engine/observer.mjs",import.meta.url),'utf8');
 let serial=0;
 async function setup(){
- const {instrumentReadReceipts}=await import('../stateatom-field-revision/observer-receipts.mjs');
- const ledgerURL=new URL('../stateatom-field-revision/query-ledger.mjs?receipt-'+(++serial),import.meta.url).href;
+ const {instrumentReadReceipts}=await import("../src/first-read/observer-receipts.mjs");
+ const ledgerURL=new URL("../src/first-read/query-ledger.mjs?receipt-"+(++serial),import.meta.url).href;
  let code=instrumentReadReceipts(source,{ledgerURL});
- for(const file of['query-handoff.mjs','react-state.mjs'])code=code.replaceAll(`'./${file}'`,JSON.stringify(new URL('../stateatom-phase2/engine/'+file,import.meta.url).href));
+ for(const file of['query-handoff.mjs','react-state.mjs'])code=code.replaceAll(`'./${file}'`,JSON.stringify(new URL("../src/engine/"+file,import.meta.url).href));
  const module=await import('data:text/javascript;base64,'+Buffer.from(code).toString('base64')+'#receipt-'+serial),ledger=await import(ledgerURL);
  class Response extends globalThis.Response{}const w={crypto,Response,fetch:()=>Promise.resolve(new Response('{"rules":{"quota":12}}')),location:{href:'http://127.0.0.1:4173/'}};
  const o=module.createObserver(w);return{w,o,ledger};

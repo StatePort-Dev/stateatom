@@ -3,7 +3,7 @@ import {newCodeJournal,journalEvent,journalSource,journalReadySources,journalGap
 import {newFetchBindings,fetchBindingEvent,fetchScriptSource,bindFetchTrace,allowsFetchGeneration,installFetchPolicy} from '../core/fetch-bindings.mjs';
 import {makeDiagnostic,retainDiagnostics,recordDiagnosticExperiment,recordTextExperiment} from '../core/diagnostic.mjs';
 import {resolveInspection} from '../core/basic-analysis.mjs';
-import {observeDeep,handleDeepOverlay,deepExperiment,identifySelection,isSameSelection} from '../stateatom-phase2/engine/browser.mjs';
+import {observeDeep,handleDeepOverlay,deepExperiment,identifySelection,isSameSelection} from "../src/engine/browser.mjs";
 import {putSample,beginInspection,isCurrentInspection,lockExperiment,unlockExperiment,recordStale} from '../core/runtime-state.mjs';
 import {observeElement} from './adapters.js';
 import {assessExperiment,flatten,edge} from '../core/evidence.mjs';

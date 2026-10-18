@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createObserver} from '../stateatom-phase2/engine/observer.mjs';
+import {createObserver} from "../src/engine/observer.mjs";
 import {makeDiagnostic,parseDiagnostic,serializeDiagnostic} from '../core/diagnostic.mjs';
-import {runTelemetryControls} from '../stateatom-compiler-probe/telemetry-controls.mjs';
+import {runTelemetryControls} from "../experiments/compiler/telemetry-controls.mjs";
 const define=Object.defineProperty,descriptor=Object.getOwnPropertyDescriptor,apply=Reflect.apply;
 const originalSet=Set,mapIterator=Object.getPrototypeOf(new Map().keys()),setIterator=Object.getPrototypeOf(new Set().values());
 const environment=()=>{class Response extends globalThis.Response{}return{crypto:globalThis.crypto,Response,fetch:()=>Promise.resolve(new Response('{}')),location:{href:'http://127.0.0.1:4173/'}};};

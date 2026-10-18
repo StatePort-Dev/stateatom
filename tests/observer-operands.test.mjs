@@ -2,13 +2,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {instrumentEntries} from '../stateatom-compiler-probe/entry-records.mjs';
-const source=await readFile(new URL('../stateatom-phase2/engine/observer.mjs',import.meta.url),'utf8');
+import {instrumentEntries} from "../experiments/compiler/entry-records.mjs";
+const source=await readFile(new URL("../src/engine/observer.mjs",import.meta.url),'utf8');
 const meta={file:'controlled.ts',key:'member',expression:'object.quota'};
 let serial=0;
 async function setup(){
  let text=instrumentEntries(source,{retainOperands:true}).code;
- for(const file of['query-handoff.mjs','react-state.mjs'])text=text.replaceAll(`'./${file}'`,JSON.stringify(new URL('../stateatom-phase2/engine/'+file,import.meta.url).href)).replaceAll(`"./${file}"`,JSON.stringify(new URL('../stateatom-phase2/engine/'+file,import.meta.url).href));
+ for(const file of['query-handoff.mjs','react-state.mjs'])text=text.replaceAll(`'./${file}'`,JSON.stringify(new URL("../src/engine/"+file,import.meta.url).href)).replaceAll(`"./${file}"`,JSON.stringify(new URL("../src/engine/"+file,import.meta.url).href));
  const m=await import('data:text/javascript;base64,'+Buffer.from(text+'\nexport const log=__sa_invocation_log;').toString('base64')+'#operands-'+(++serial));
  const env=()=>{class Response extends globalThis.Response{}return{crypto,Response,fetch:()=>Promise.resolve(new Response('{}')),location:{href:'http://127.0.0.1:4173/'}};};return{log:m.log,create:()=>m.createObserver(env())};
 }

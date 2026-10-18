@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 import test from 'node:test';import assert from 'node:assert/strict';
-import {compilerLedger,compilerHash} from '../stateatom-compiler-probe/model.mjs';
+import {compilerLedger,compilerHash} from "../experiments/compiler/model.mjs";
 const input='export const value = 12;',stage='const __sa=0; export const value=12;',final='const __sa=0; const value=12; export {value};';
 const workspace={'/project/App.tsx':{file:'src/App.tsx',digest:compilerHash(input)}};
 function fixture(options={}){const l=compilerLedger(workspace,options),p=l.begin('/project/App.tsx',input);l.stage(p,input,stage);l.finish(p,final);const r={code:final,map:null};l.seal(r,'/project/App.tsx',[p]);const receipt=l.receipt(r,final,'http://127.0.0.1:4173/App.tsx');return{l,p,r,receipt};}

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {inventory} from '../stateatom-execution-probe/inventory.mjs';
+import {inventory} from "../experiments/execution/inventory.mjs";
 function fixture(options={}){const s=inventory({armedBeforeNavigation:true,...options});s.context({id:1,uniqueId:'unique-main',auxData:{isDefault:true,frameId:'main'}});s.receipt('http://127.0.0.1:4173/a.js','const a=1;','script');s.script({scriptId:'1',executionContextId:1,url:'http://127.0.0.1:4173/a.js',hasSourceURL:false},'const a=1;');return s;}
 test('exact compiled bytes and browser-owned context yield only bounded inventory',()=>{const r=fixture().checkpoint('main');assert.equal(r.status,'Matched captured compiled main-world inventory');assert.equal(r.fullPath,false);assert.equal(r.readonlyEffects,'Unknown/Unsupported');assert.equal(r.scripts.length,1);});
 test('dependency substitution cannot inherit matching App proof',()=>{const s=fixture();s.receipt('http://127.0.0.1:4173/node_modules/dep.js','original','script');s.script({scriptId:'2',executionContextId:1,url:'http://127.0.0.1:4173/node_modules/dep.js'},'substituted');assert.equal(s.checkpoint('main').status,'Unknown/Unsupported');});

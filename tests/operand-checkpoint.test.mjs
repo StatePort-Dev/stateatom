@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {operandCheckpoint} from '../stateatom-compiler-probe/operands.mjs';
+import {operandCheckpoint} from "../experiments/compiler/operands.mjs";
 const primitive=value=>({type:typeof value,value}),receiver={type:'object',objectId:'receiver'};
 function fixture({proxy=false,getter=false,key=primitive('quota'),current=12,read=12,completed=true}={}){
  let requests=0;const props={result:[{name:'receiver',value:proxy?{...receiver,subtype:'proxy'}:receiver},{name:'key',value:key},{name:'readCompleted',value:primitive(completed)},{name:'readValueRetained',value:primitive(true)},{name:'readValue',value:primitive(read)}]};

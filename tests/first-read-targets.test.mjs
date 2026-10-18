@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createTargetHistory} from '../stateatom-field-revision/target-history.mjs';
+import {createTargetHistory} from "../src/first-read/target-history.mjs";
 
 const extension='a'.repeat(32),panelURL=`chrome-extension://${extension}/panel.html`,workerURL=`chrome-extension://${extension}/worker.js`;
 const target=(targetId,type,url,extra={})=>({targetId,type,url,title:'',attached:false,canAccessOpener:false,...extra});

@@ -24,4 +24,4 @@ It currently requires the declared Linux x64 source/toolchain and a private loca
 channel created by that command. Pair the setup page, attach it, then open its
 React example. No source/effect claim comes from a page-provided manifest. Missing
 compiler, channel or native browser premises remain Unknown. See
-`stateatom-field-revision/README.md` in the source distribution for the exact scope.
+`docs/testing/first-read.md` in the source distribution for the exact scope.

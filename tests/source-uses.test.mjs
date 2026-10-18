@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
-import {sourceUses} from '../stateatom-phase2/engine/source-uses.mjs';
+import {sourceUses} from "../src/engine/source-uses.mjs";
 const run=(text,options={})=>sourceUses([{file:'app.tsx',text}],{file:'app.tsx',binding:'account',...options});
 test('follows exact ordinary and destructured aliases and records a descendant write',()=>{const r=run('function f(){const account={};const a=account.rules;const {quota:q}=a;a.quota=12;return q+1;}');assert(r.records.some(n=>n.kind==='write'&&n.pointer==='/rules/quota'));assert(r.bindings.some(b=>b.name==='q'&&b.pointer==='/rules/quota'));assert.equal(r.fullPath,false);assert.equal(r.ownership,'Unknown/Unsupported');});
 test('shadowed equal names do not join lexical aliases',()=>{const r=run('function f(){const account={};const alias=account.rules;function g(){const alias={};alias.quota=12;}return alias.quota;}');assert(!r.records.some(n=>n.kind==='write'));});

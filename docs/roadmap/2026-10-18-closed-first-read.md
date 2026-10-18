@@ -17,7 +17,7 @@ increment. Its one documentation finding is addressed in the
 
 Use Node 24.19.0/npm 11.17.0 on Linux x64, matching Playwright Chromium and a
 sandboxed graphical VS Code host. See the [root setup](../../README.md) and
-[profile instructions](../../stateatom-field-revision/README.md). After the locked
+[profile instructions](../testing/first-read.md). After the locked
 install/build, start `npm run dev:first-read`, pair the open IDE in its panel,
 attach the inert setup tab, then follow the app link. No account, Desktop, paid AI
 or private resolver is required. Stop other dev servers before automated checks.

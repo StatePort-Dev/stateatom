@@ -93,10 +93,10 @@ Use [validation](validation.md) to define reproducible checks and [status](statu
 ## Imported implementation map
 
 The physical source layout is recorded in [provenance](provenance.md). Current source
-analysis is the existing `core/analyzer.mjs` plus `stateatom-phase2/engine/slice.mjs`,
+analysis is the existing `core/analyzer.mjs` plus `src/engine/slice.mjs`,
 using Babel and Vue compilers. The target TypeScript/ts-morph direction above is not
 an installed dependency or an implemented replacement. The single browser shell is
 `browser-extension/`; open source resolution is `core/bridge.mjs` and `ide-extension/`.
 The optional instrumenter, observer and experiment controller stay together in
-`stateatom-phase2/engine/`. `core/diagnostic.mjs` and the reader are existing basic
+`src/engine/`. `core/diagnostic.mjs` and the reader are existing basic
 diagnostic implementations; the broader evidence model remains target design.

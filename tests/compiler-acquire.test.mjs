@@ -5,8 +5,8 @@ import assert from 'node:assert/strict';
 import {ServerResponse} from 'node:http';
 import {PassThrough} from 'node:stream';
 import {once} from 'node:events';
-import {installCompilerAcquisition} from '../stateatom-compiler-probe/acquire.mjs';
-import {compilerLedger,compilerHash} from '../stateatom-compiler-probe/model.mjs';
+import {installCompilerAcquisition} from "../experiments/compiler/acquire.mjs";
+import {compilerLedger,compilerHash} from "../experiments/compiler/model.mjs";
 function setup({lateClone=false,cloneDuringWarmup=false}={}){
  const input='export const x=1;',id='/project/App.tsx',ledger=compilerLedger({[id]:{file:'App.tsx',digest:compilerHash(input)}});
  let cached,original,release;const gate=new Promise(resolve=>release=resolve),mod={id,file:id};

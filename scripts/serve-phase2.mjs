@@ -1,5 +1,5 @@
 // Run the existing synthetic project with the open development instrumentation enabled.
-import {startServer} from '../stateatom-phase2/server.mjs';
+import {startServer} from "./inspection-server.mjs";
 const reactHostProps=process.argv.includes('--react-host-props');
 const fetchInitiators=process.argv.includes('--fetch-initiators');
 const reactStateHandoffs=process.argv.includes('--react-state-handoffs');

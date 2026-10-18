@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createObserver} from '../stateatom-phase2/engine/observer.mjs';
+import {createObserver} from "../src/engine/observer.mjs";
 const meta={file:'logic.ts',sourceDigest:'a',line:1,column:1,key:'read',kind:'member'};
 function environment(){class Response extends globalThis.Response{}return {crypto:globalThis.crypto,Response,fetch:()=>Promise.resolve(new Response('{}')),location:{href:'http://127.0.0.1:4173/'}};}
 test('a page-provided active observer cannot become the factory result',()=>{const w=environment(),forged={active:true,sourceConsumption:false,fetchInitiators:false,reactStateHandoffs:false,sourceWrites:false,queryHandoffs:false,queryCallCensus:false,writeAccessGuards:false};w.__STATEATOM__=forged;const o=createObserver(w);assert.notEqual(o,forged);assert.equal(o,w.__STATEATOM__);o.stop();});

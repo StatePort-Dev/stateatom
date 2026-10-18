@@ -18,7 +18,7 @@ The current increment does not add a resolver, framework support, a complete HTT
 or the rest of this roadmap. Automated UI evidence covers the React form,
 two instances, IDE navigation, explicit reinspection, immediate picker clearing,
 and invalidating navigation followed by a new observation. Reproduction
-and current results belong in [short-loop guidance](stateatom-short-loop/README.md)
+and current results belong in [short-loop guidance](docs/testing/short-loop.md)
 and [status](docs/status.md), not in a rewritten historical experiment.
 
 The current increment is recorded as a working automated React inspection loop in
@@ -73,6 +73,11 @@ from product UI evidence. They do not close milestone 1. The later [descriptor c
 records the refreshed clean/UI acceptance after a concrete semantic fix.
 
 ## Current work and remaining gates
+
+The later [source-layout cleanup](docs/repository-layout.md) separates product,
+checks and experiments without expanding the accepted alpha scope. Historical
+paths below remain origin references.
+
 
 Latest [closed first-read acceptance](docs/roadmap/2026-10-18-closed-first-read.md)
 records a separate controlled-project result: original P2 and the structurally

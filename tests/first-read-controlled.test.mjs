@@ -6,7 +6,7 @@ import os from 'node:os';
 import path from 'node:path';
 
 test('controlled browser ownership cannot be obtained from JSON, clones or browser-shaped declarations',async()=>{
- const module=await import('../stateatom-field-revision/controlled-session.mjs');
+ const module=await import("../src/first-read/controlled-session.mjs");
  assert.equal(typeof module.launchControlledFirstReadBrowser,'function');
  assert.deepEqual(Object.keys(module).sort(),['controlledBrowserView','isOwnedControlledBrowserWitness','launchControlledFirstReadBrowser']);
  const claimed={schema:1,witnessId:'11111111-1111-4111-8111-111111111111',targetId:'TARGET',extensionId:'a'.repeat(32),browserVersion:'Chrome/153.0.0.0',mainFrameId:'FRAME',contextUniqueId:'CONTEXT',startedAt:Date.now(),freshProfile:true,sandbox:true,soleStateAtomExtension:true};
@@ -17,7 +17,7 @@ test('controlled browser ownership cannot be obtained from JSON, clones or brows
 });
 
 test('source-only launcher refuses unsafe/missing built outputs before importing or launching browser tools',async()=>{
- const {launchControlledFirstReadBrowser}=await import('../stateatom-field-revision/controlled-session.mjs');
+ const {launchControlledFirstReadBrowser}=await import("../src/first-read/controlled-session.mjs");
  const temp=await mkdtemp(path.join(os.tmpdir(),'stateatom-controlled-'));
  try{
   await assert.rejects(launchControlledFirstReadBrowser({projectRoot:temp}),/^Error: Controlled first-read browser initialization failed$/);
@@ -29,7 +29,7 @@ test('source-only launcher refuses unsafe/missing built outputs before importing
 });
 
 test('serialized startup readiness and helper compilation never create controlled browser authority',async()=>{
- const {controlledBrowserView,isOwnedControlledBrowserWitness}=await import('../stateatom-field-revision/controlled-session.mjs');
+ const {controlledBrowserView,isOwnedControlledBrowserWitness}=await import("../src/first-read/controlled-session.mjs");
  const claimed={schema:1,witnessId:'11111111-1111-4111-8111-111111111111',targetId:'TARGET',extensionId:'a'.repeat(32),browserVersion:'Chrome/153.0.0.0',mainFrameId:'FRAME',contextUniqueId:'CONTEXT',startedAt:Date.now(),freshProfile:true,sandbox:true,soleStateAtomExtension:true,gate:{helperCompiled:true,delivered:true,contextUniqueId:'CONTEXT'}};
  for(const value of [claimed,structuredClone(claimed),Object.freeze({...claimed,gate:Object.freeze(claimed.gate)}),{...claimed,startedAt:0},Object.freeze({})]){
   assert.equal(isOwnedControlledBrowserWitness(value),false);
@@ -42,7 +42,7 @@ test('serialized startup readiness and helper compilation never create controlle
 // Fake protocol replies below exercise bounded cleanup logic, not native facts.
 async function transportUnit(){
  const {readFile}=await import('node:fs/promises');
- const source=await readFile(new URL('../stateatom-field-revision/controlled-session.mjs',import.meta.url),'utf8');
+ const source=await readFile(new URL("../src/first-read/controlled-session.mjs",import.meta.url),'utf8');
  return import('data:text/javascript;base64,'+Buffer.from(source+'\nexport {admitPausedScript,observeHelper,contextGate,clearGate,stopTransport};\n').toString('base64'));
 }
 function transportState({count=0,paused=0,expired=false,failDisable=false}={}){

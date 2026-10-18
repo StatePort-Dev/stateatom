@@ -7,8 +7,8 @@ import path from 'node:path';
 import http from 'node:http';
 import {createRequire} from 'node:module';
 import {createHash,randomUUID} from 'node:crypto';
-import {buildFirstReadProfile} from '../stateatom-field-revision/build-profile.mjs';
-import {startFirstReadServer,loadFirstReadCompilation,isOwnedFirstReadCompilation} from '../stateatom-field-revision/profile-channel.mjs';
+import {buildFirstReadProfile} from "../src/first-read/build-profile.mjs";
+import {startFirstReadServer,loadFirstReadCompilation,isOwnedFirstReadCompilation} from "../src/first-read/profile-channel.mjs";
 const root=path.resolve(import.meta.dirname,'..');
 function request(url,{headers={},method='GET'}={}) {return new Promise((resolve,reject)=>{const req=http.request(url,{headers,method},r=>{let body='';r.on('data',c=>body+=c);r.on('end',()=>resolve({status:r.statusCode,headers:r.headers,body}));}).on('error',reject);req.end();});}
 test('no channel and foreign origins fail closed without workspace compilation',async()=>{
@@ -76,7 +76,7 @@ test('real temporary owned channel serves UTF-8 bytes, authenticates privately, 
    try{const linked=await loadFirstReadCompilation(temp,cap.origin);assert.equal(linked.status,'Code-linked');assert.deepEqual(linked.compilerHosts.server,other.compiler.host);assert.equal(linked.compilerHosts.helper.node,process.versions.node);assert.equal(linked.compilerHosts.helper.v8,process.versions.v8);assert(Object.isFrozen(linked.compilerHosts));}finally{channel.profile.manifest=originalManifest;}
   });
   const {build}=await import('esbuild');const helperFile=path.join(temp,'helper.cjs');
-  const helperBuild=await build({entryPoints:[path.join(root,'stateatom-field-revision/profile-channel.mjs')],bundle:true,platform:'node',format:'cjs',target:'node20',outfile:helperFile,metafile:true,logLevel:'silent'});
+  const helperBuild=await build({entryPoints:[path.join(root,"src/first-read/profile-channel.mjs")],bundle:true,platform:'node',format:'cjs',target:'node20',outfile:helperFile,metafile:true,logLevel:'silent'});
   assert(!Object.keys(helperBuild.metafile.inputs).some(f=>f.includes('node_modules/esbuild/')||f.includes('node_modules/vite/')||f.includes('node_modules/playwright/')||f.includes('node_modules/playwright-core/')));
   const installed=createRequire(import.meta.url)(helperFile),installedResult=await installed.loadFirstReadCompilation(temp,cap.origin);assert.equal(installedResult.status,'Code-linked');assert(installed.isOwnedFirstReadCompilation(installedResult));
   await assert.rejects(startFirstReadServer({projectRoot:temp}),/channel|port|listen/i);
@@ -91,7 +91,7 @@ test('real temporary owned channel serves UTF-8 bytes, authenticates privately, 
   finally{await rm(capPath,{force:true});await rename(savedCapPath,capPath);}
   const malformed='{'+JSON.stringify(cap.token);await writeFile(capPath,malformed);await assert.rejects(startFirstReadServer({projectRoot:temp}),e=>!e.message.includes(cap.token));await writeFile(capPath,JSON.stringify(cap));
   const savedOverride=process.env.ESBUILD_BINARY_PATH;process.env.ESBUILD_BINARY_PATH='/private/nonexistent';assert.equal((await loadFirstReadCompilation(temp,cap.origin)).status,'Unknown');if(savedOverride===undefined)delete process.env.ESBUILD_BINARY_PATH;else process.env.ESBUILD_BINARY_PATH=savedOverride;
-  const app='stateatom-phase2/fixtures/react/App.tsx',original=await readFile(path.join(temp,app));await writeFile(path.join(temp,app),Buffer.concat([original,Buffer.from('\n// changed source')]));assert.equal((await loadFirstReadCompilation(temp,cap.origin)).status,'Unknown');await writeFile(path.join(temp,app),original);
+  const app="tests/fixtures/inspection/react/App.tsx",original=await readFile(path.join(temp,app));await writeFile(path.join(temp,app),Buffer.concat([original,Buffer.from('\n// changed source')]));assert.equal((await loadFirstReadCompilation(temp,cap.origin)).status,'Unknown');await writeFile(path.join(temp,app),original);
   const appPath=path.join(temp,app);await rename(appPath,appPath+'.original');try{await symlink(path.join(root,app),appPath);await assert.rejects(buildFirstReadProfile({projectRoot:temp}),/symlink denied/);assert.equal((await loadFirstReadCompilation(temp,cap.origin)).status,'Unknown');}finally{await rm(appPath,{force:true});await rename(appPath+'.original',appPath);}
   const apiFile=path.join(temp,'node_modules/esbuild/lib/main.js'),apiBytes=await readFile(apiFile);await writeFile(apiFile,Buffer.concat([apiBytes,Buffer.from('\n// tampered compiler')]));assert.equal((await loadFirstReadCompilation(temp,cap.origin)).status,'Unknown');await writeFile(apiFile,apiBytes);
   const binaryFile=path.join(temp,'node_modules/@esbuild/linux-x64/bin/esbuild'),binaryBytes=await readFile(binaryFile);await rename(binaryFile,binaryFile+'.original');try{await writeFile(binaryFile,Buffer.concat([binaryBytes,Buffer.from('tampered')]));assert.equal((await loadFirstReadCompilation(temp,cap.origin)).status,'Unknown');}finally{await rm(binaryFile,{force:true});await rename(binaryFile+'.original',binaryFile);}

@@ -17,6 +17,9 @@ later regions, Vue and historical six-family A/B results are not upgraded.
 Acceptance is agent-operated at the user's request. Independent human usability
 and publication remain unperformed; no release or Store submission is established.
 Older entries below retain their original evidence, versions and criteria.
+The later [repository layout](repository-layout.md) relocation preserves those
+results; its [verification record](testing/repository-layout-validation.md) includes
+new short-loop and installed-helper UI runs rather than rewriting historical hashes.
 
 Last recorded baseline: **2026-10-17**.
 
@@ -181,7 +184,7 @@ are not established by this work. No Store, Desktop or main StatePort integratio
 was performed. The old full-chain **0/6** remains historical and is not this workflow's
 acceptance criterion. **Product scope: NARROW SCOPE. OSS alpha: NOT READY.**
 
-See [short-loop setup and criteria](../stateatom-short-loop/README.md) for reproduction.
+See [short-loop setup and criteria](testing/short-loop.md) for reproduction.
 
 ## Autonomous roadmap follow-up — 2026-10-17
 

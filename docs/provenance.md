@@ -214,3 +214,15 @@ extraction from the imported MIT plugin; its MIT origin and notice remain.
 The finite source argument does not expand framework support or claim native
 runtime attestation. Controlled browser profiles and private channel credentials
 are local operational artifacts, excluded from distribution and diagnostics.
+
+
+## Source layout relocation — 2026-10-18
+
+The [repository layout](repository-layout.md) maps the historical filenames above
+to current product, test and experiment locations. All 139 tracked sources from
+the fourteen stateatom-* directories were relocated; original synthetic fixture
+bytes, dependency pins and existing notices were retained. Runtime recipe hashes
+were rebound to exact relocated source bytes with the same rejection rules.
+Historical MIT material remains MIT; existing Apache-2.0 files keep their headers.
+The two ignored old artifact groups were retained privately with checked hashes.
+Old X-Ray source, frozen candidates and prior run results were not rewritten.

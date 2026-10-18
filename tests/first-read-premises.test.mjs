@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 import test from 'node:test';import assert from 'node:assert/strict';
-const{checkFirstReadPremises}=await import('../stateatom-field-revision/model.mjs').catch(e=>{if(e.code!=='ERR_MODULE_NOT_FOUND')throw e;return {};});
+const{checkFirstReadPremises}=await import("../src/first-read/model.mjs").catch(e=>{if(e.code!=='ERR_MODULE_NOT_FOUND')throw e;return {};});
 // These are synthetic protocol premises, not acquired browser/effect proof. The
 // model must never upgrade them to a supported/full runtime trace on its own.
 function premises(kind='member'){

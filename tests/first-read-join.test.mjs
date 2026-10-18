@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
-import test from 'node:test';import assert from 'node:assert/strict';import {joinFirstRead} from '../stateatom-field-revision/join.mjs';
-const app='stateatom-phase2/fixtures/react/App.tsx',logic='stateatom-phase2/fixtures/shared/logic.ts',digest='a'.repeat(64);
+import test from 'node:test';import assert from 'node:assert/strict';import {joinFirstRead} from "../src/first-read/join.mjs";
+const app="tests/fixtures/inspection/react/App.tsx",logic="tests/fixtures/inspection/shared/logic.ts",digest='a'.repeat(64);
 // Serialized synthetic protocol only. Neither this fixture nor a conditional
 // join supplies source authority, a browser witness or an accepted full trace.
 function fixture(p1=true){

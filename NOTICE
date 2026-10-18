@@ -112,3 +112,9 @@ notices; no dependency source is imported into this source tree. The shared
 stateatom-phase2/engine/script-transform.mjs is extracted from the historical MIT
 plugin, retains MIT, and is not relicensed by this extraction. Finite first-read
 proofs are scoped instrumented-page/code-linked claims, not native attestation.
+
+Source relocation (2026-10-18): historical stateatom-* names above identify their
+original locations. Current counterparts are listed in docs/repository-layout.md:
+engine modules in src/engine, first-read modules in src/first-read, fixtures in
+tests/fixtures/inspection, unit/native checks in tests and acquisition probes in
+experiments. The relocation preserves all existing licenses and attributions.

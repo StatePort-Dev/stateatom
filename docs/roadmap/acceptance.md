@@ -10,7 +10,7 @@ their historical commands, versions and limitations.
 ## Current controlled-profile acceptance
 
 Follow the [root controlled example](../../README.md#controlled-first-read-example)
-and [profile procedure](../../stateatom-field-revision/README.md), using synthetic
+and [profile procedure](../testing/first-read.md), using synthetic
 data and recording source/build identities. Start `npm run dev:first-read`, pair
 and attach on its inert setup tab, then enter the app. Keep the known app/panel as
 the only pages. Select original P2 disabled and P1 text; inspect their scoped trace,

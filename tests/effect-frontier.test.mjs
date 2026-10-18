@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-import {functionEvidence,helperWriterControl,effectFrontier} from '../stateatom-compiler-probe/effect-frontier.mjs';
+import {functionEvidence,helperWriterControl,effectFrontier} from "../experiments/compiler/effect-frontier.mjs";
 const point=(source,needle)=>{const offset=source.indexOf(needle);assert(offset>=0);const lines=source.slice(0,offset).split('\n');return{lineNumber:lines.length-1,columnNumber:lines.at(-1).length};};
 test('exact native header location selects the nested function without borrowing its enclosing body',()=>{
  const source='function outer(secret) { return function inner(record) { return record.quota * 2; }; }';
