@@ -1,0 +1,1027 @@
+{
+  "schema": "stateatom.completion-plan/2",
+  "reviewed_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
+  "review_date": "2026-10-19",
+  "task_ids_are": "Local plan identifiers, not created GitHub issues",
+  "execution_policy": "One bounded work item at a time; reuse existing implementation; preserve historical criteria; publish only with explicit authorization",
+  "first_task": "F01",
+  "notes": [
+    "Existing source paths and commands remain anchored to the original reviewed revision; reconcile newer completed work before execution.",
+    "existing_commands are repository entrypoints, not claims that this document revision executed them.",
+    "O01 and O02 are required deliveries. Local model use remains optional per device/user; a fallback-only test does not complete O01.",
+    "S01/O03 is outside Atom scope and belongs to StatePort; it is absent from active dependencies.",
+    "V03 may be agent-operated; independent application-code coverage remains mandatory, an independent human participant does not.",
+    "F05, U05 and U06 are added for approved production enablement, visual selection and unresolved handoff UX.",
+    "Intermediate public previews may omit unfinished scope explicitly; they do not complete or reduce the baseline.",
+    "Preserve historical criteria and run port-sharing native suites sequentially; publication requires explicit authorization."
+  ],
+  "tasks": [
+    {
+      "id": "F01",
+      "title": "Capability and public-contract consolidation",
+      "document": "03-runtime-and-onboarding.md",
+      "depends_on": [],
+      "owner": "StateAtom",
+      "requirements": [
+        "C02",
+        "C08",
+        "C10",
+        "C11",
+        "O01",
+        "O02"
+      ],
+      "files": [
+        "packages/atom/src/capabilities.mjs",
+        "packages/atom/src/runtime.mjs",
+        "packages/atom/src/platform.mjs",
+        "packages/atom/src/transport.mjs",
+        "packages/atom/types/"
+      ],
+      "existing_commands": [
+        "npm run verify:atom-contract",
+        "npm test",
+        "npm run build",
+        "npm run pack:atom"
+      ],
+      "deliverable": "Canonical capability policy and compiled packed consumer",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "F02",
+      "title": "Real site and project origin policy",
+      "document": "03-runtime-and-onboarding.md",
+      "depends_on": [
+        "F01"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C01",
+        "C02",
+        "C11"
+      ],
+      "files": [
+        "packages/atom/src/platform.mjs",
+        "packages/atom/src/runtime.mjs",
+        "browser-extension/manifest.json",
+        "core/bridge.mjs"
+      ],
+      "existing_commands": [
+        "npm run verify:browser",
+        "npm run verify:react-host-ui",
+        "npm run verify:production-source-mapping"
+      ],
+      "deliverable": "Explicit scoped connections outside fixture ports",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "F03",
+      "title": "Installable open helper and dev-plugin workflow",
+      "document": "03-runtime-and-onboarding.md",
+      "depends_on": [
+        "F02"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C02"
+      ],
+      "files": [
+        "ide-extension/extension.mjs",
+        "src/engine/plugin.mjs",
+        "core/bridge.mjs",
+        "tests/integration/project-setup.mjs"
+      ],
+      "existing_commands": [
+        "npm run verify:react-host-ui",
+        "npm run verify:short-loop",
+        "npm run verify:first-read-ui"
+      ],
+      "deliverable": "Real project setup with installed open components",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "F04",
+      "title": "Immutable package pair and current consumer proof",
+      "document": "03-runtime-and-onboarding.md",
+      "depends_on": [
+        "F01"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C08",
+        "C10"
+      ],
+      "files": [
+        "scripts/pack-atom.mjs",
+        "scripts/pack-extension-ui.mjs",
+        "packages/atom/package.json",
+        "examples/embedding-host/"
+      ],
+      "existing_commands": [
+        "npm run pack:atom",
+        "npm run verify:embedding",
+        "npm run check:ui"
+      ],
+      "deliverable": "Current Atom/UI artifact pair with compatibility receipt",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "F05",
+      "title": "Two-confirmation production change enablement",
+      "document": "03-runtime-and-onboarding.md",
+      "depends_on": [
+        "F02",
+        "U02"
+      ],
+      "owner": "StateAtom; official-host integration through I02",
+      "requirements": [
+        "C05",
+        "C06"
+      ],
+      "files": [
+        "packages/atom/src/capabilities.mjs",
+        "packages/atom/src/platform.mjs",
+        "packages/atom/src/runtime.mjs",
+        "packages/atom/src/transport.mjs",
+        "packages/atom/src/ui.mjs",
+        "tests/atom/production-change-policy.test.mjs"
+      ],
+      "existing_commands": [
+        "npm run verify:atom-contract",
+        "npm run verify:browser",
+        "npm run verify:embedding"
+      ],
+      "deliverable": "Settings two warnings/confirmations, scoped admission and revocation for supported production Live/Draft changes",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "U01",
+      "title": "Selected-element inspector experience",
+      "document": "04-inspector-and-experiments.md",
+      "depends_on": [
+        "F01"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C01",
+        "C03",
+        "C04",
+        "C08",
+        "C11"
+      ],
+      "files": [
+        "packages/atom/src/ui.mjs",
+        "packages/atom/src/template.mjs",
+        "packages/atom/src/atom.css",
+        "browser-extension/inspection-view.mjs"
+      ],
+      "existing_commands": [
+        "npm run verify:extension-ui",
+        "npm run verify:browser",
+        "npm run verify:react-host-ui",
+        "npm run verify:actions",
+        "npm run verify:embedding"
+      ],
+      "deliverable": "Reference-aligned normal workflow without research controls",
+      "status": "planned",
+      "optional": false,
+      "additional_final_scope_dependencies": [
+        "U05"
+      ]
+    },
+    {
+      "id": "U02",
+      "title": "Live and Draft/Apply eligible-input editing",
+      "document": "04-inspector-and-experiments.md",
+      "depends_on": [
+        "F02",
+        "U01",
+        "U05"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C05"
+      ],
+      "files": [
+        "core/experiment-plan.mjs",
+        "packages/atom/src/runtime.mjs",
+        "src/engine/browser.mjs",
+        "core/diagnostic.mjs"
+      ],
+      "existing_commands": [
+        "npm test",
+        "npm run verify:browser",
+        "npm run verify:ide"
+      ],
+      "deliverable": "Live for most declared editable inputs, grouped drafts, observed effects, undo-last and baseline restoration",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "U03",
+      "title": "Readable independent investigation handoff",
+      "document": "04-inspector-and-experiments.md",
+      "depends_on": [
+        "U01",
+        "U06"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C01",
+        "C07"
+      ],
+      "files": [
+        "core/diagnostic.mjs",
+        "packages/atom/src/ui.mjs",
+        "browser-extension/reader.mjs"
+      ],
+      "existing_commands": [
+        "npm run verify:browser",
+        "npm run verify:actions",
+        "npm run verify:production-source-mapping"
+      ],
+      "deliverable": "U06-designed reporter/recipient workflow, local save/review/export and passive enrichment",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "U04",
+      "title": "Reference-to-runtime journey acceptance",
+      "document": "11-design-acceptance-map.md",
+      "depends_on": [
+        "U02",
+        "U03",
+        "U05",
+        "U06",
+        "F05",
+        "A05",
+        "L02",
+        "P03",
+        "I02"
+      ],
+      "owner": "StateAtom and StatePort maintainers",
+      "requirements": [
+        "C08",
+        "C10",
+        "C11",
+        "C05",
+        "C07"
+      ],
+      "files": [
+        "packages/atom/src/ui.mjs",
+        "packages/extension-ui/",
+        "docs/testing/"
+      ],
+      "existing_commands": [
+        "npm run verify:extension-ui",
+        "npm run verify:embedding"
+      ],
+      "deliverable": "Reference and approved new interactions tied to actual runtime states, checked in both hosts without a mandatory second person",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "U05",
+      "title": "Visual page-element picker",
+      "document": "04-inspector-and-experiments.md",
+      "depends_on": [
+        "F01",
+        "F02"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C01",
+        "C04",
+        "C06",
+        "C11"
+      ],
+      "files": [
+        "browser-extension/picker.mjs",
+        "browser-extension/content.js",
+        "packages/atom/src/runtime.mjs",
+        "packages/atom/src/transport.mjs",
+        "packages/atom/src/ui.mjs",
+        "tests/integration/"
+      ],
+      "existing_commands": [
+        "npm run verify:browser",
+        "npm run verify:actions",
+        "npm run verify:embedding"
+      ],
+      "deliverable": "Hover/click/refine/cancel on real targets without manual selectors, source prerequisites or supported selection-induced application actions",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "U06",
+      "title": "QA/PM-to-developer handoff UX",
+      "document": "04-inspector-and-experiments.md",
+      "depends_on": [
+        "U01",
+        "U05"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C07"
+      ],
+      "files": [
+        "docs/features/qa-pm-handoff-journey.md",
+        "packages/extension-ui/design/",
+        "core/diagnostic.mjs",
+        "browser-extension/reader.mjs"
+      ],
+      "existing_commands": [],
+      "deliverable": "Concrete reporter/recipient journey, failure states and U03/P04 control-to-runtime acceptance; detailed flow not preapproved",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "A01",
+      "title": "Ordinary React source and selected-occurrence coverage",
+      "document": "05-analysis-and-actions.md",
+      "depends_on": [
+        "F03",
+        "U01",
+        "U05"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C02",
+        "C03"
+      ],
+      "files": [
+        "src/engine/plugin.mjs",
+        "src/engine/script-transform.mjs",
+        "src/engine/observer.mjs",
+        "src/engine/react-host-vendor.mjs",
+        "core/analyzer.mjs"
+      ],
+      "existing_commands": [
+        "npm run verify:react-host",
+        "npm run verify:react-host-ui",
+        "npm run verify:short-loop",
+        "npm run verify:independent"
+      ],
+      "deliverable": "Supported ordinary-session property/read paths and controls",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "A02",
+      "title": "Bounded ordinary query/state lineage",
+      "document": "05-analysis-and-actions.md",
+      "depends_on": [
+        "A01"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C03"
+      ],
+      "files": [
+        "src/engine/query-handoff.mjs",
+        "src/engine/query-calls.mjs",
+        "src/engine/react-state.mjs",
+        "core/fetch-bindings.mjs"
+      ],
+      "existing_commands": [
+        "npm run verify:query-handoffs",
+        "npm run verify:query-calls",
+        "npm run verify:react-state",
+        "npm run verify:first-read-ui"
+      ],
+      "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "A03",
+      "title": "Common handlers and relevant hooks",
+      "document": "05-analysis-and-actions.md",
+      "depends_on": [
+        "A01"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C04"
+      ],
+      "files": [
+        "core/action-analysis.mjs",
+        "core/action-native.mjs",
+        "packages/atom/src/action-ui.mjs"
+      ],
+      "existing_commands": [
+        "npm run verify:actions",
+        "npm run verify:browser",
+        "npm run verify:ide"
+      ],
+      "deliverable": "Common callback source paths without invented invocation",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "A04",
+      "title": "Positive Vue property and action support",
+      "document": "05-analysis-and-actions.md",
+      "depends_on": [
+        "F03",
+        "U01",
+        "U05",
+        "A03"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C04",
+        "C09"
+      ],
+      "files": [
+        "src/engine/plugin.mjs",
+        "core/action-analysis.mjs",
+        "browser-extension/adapters.js",
+        "tests/vue/"
+      ],
+      "existing_commands": [
+        "npm test",
+        "npm run verify:short-loop"
+      ],
+      "deliverable": "Positive Vue UI/source cases plus retained PARTIAL controls",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "A05",
+      "title": "Required actual action observation",
+      "document": "05-analysis-and-actions.md",
+      "depends_on": [
+        "F02",
+        "A03",
+        "U05"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "O02"
+      ],
+      "files": [
+        "core/action-observation.mjs",
+        "src/engine/observer.mjs",
+        "packages/atom/src/runtime.mjs",
+        "packages/atom/src/action-ui.mjs"
+      ],
+      "existing_commands": [
+        "npm run verify:actions",
+        "npm run verify:browser"
+      ],
+      "deliverable": "Actual bounded user-action invocation and separately supported consequences through the UI",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "P01",
+      "title": "Production selected-action source anchors",
+      "document": "06-production-and-source-maps.md",
+      "depends_on": [
+        "F02",
+        "U01",
+        "U05"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C06"
+      ],
+      "files": [
+        "core/source-provider.mjs",
+        "core/source-anchor.mjs",
+        "core/action-native.mjs",
+        "core/action-analysis.mjs",
+        "packages/atom/src/source-map-session.mjs"
+      ],
+      "existing_commands": [
+        "npm run verify:production-source-mapping",
+        "npm run verify:actions",
+        "npm run verify:browser"
+      ],
+      "deliverable": "Real element-to-generated-handler-to-source path without IDE",
+      "status": "partially-implemented",
+      "optional": false,
+      "credited_existing_work": {
+        "revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
+        "implementation": "Loaded script identities, exact artifact association, manual source lookup and explicit missing element anchor",
+        "validation": "../testing/production-source-mapping.md",
+        "reconciliation": "13-scope-reconciliation.md"
+      },
+      "remaining_acceptance": "Select real native/framework handlers in minified apps without manual generated coordinates"
+    },
+    {
+      "id": "P02",
+      "title": "Release bundle and responsive source provider",
+      "document": "06-production-and-source-maps.md",
+      "depends_on": [
+        "P01"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C06"
+      ],
+      "files": [
+        "core/source-maps.mjs",
+        "core/source-map-archive.mjs",
+        "packages/atom/src/source-map-session.mjs",
+        "packages/atom/src/source-map-ui.mjs"
+      ],
+      "existing_commands": [
+        "npm run verify:production-source-mapping"
+      ],
+      "deliverable": "One release import and lazy exact per-chunk matching",
+      "status": "partially-implemented",
+      "optional": false,
+      "credited_existing_work": {
+        "revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
+        "implementation": "Bounded .map/ZIP import, manifest/digest checks, per-script identity, expiry and stale cleanup",
+        "validation": "../testing/production-source-mapping.md",
+        "reconciliation": "13-scope-reconciliation.md"
+      },
+      "remaining_acceptance": "Release-bundle preparation and normal multi-chunk/source workflow with responsive bounded parsing"
+    },
+    {
+      "id": "P03",
+      "title": "Corporate artifact and native HTTPS access workflow",
+      "document": "06-production-and-source-maps.md",
+      "depends_on": [
+        "F02",
+        "P02"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C06"
+      ],
+      "files": [
+        "packages/atom/src/source-map-session.mjs",
+        "packages/atom/src/source-map-ui.mjs",
+        "packages/atom/src/platform.mjs"
+      ],
+      "existing_commands": [
+        "npm run verify:production-source-mapping"
+      ],
+      "deliverable": "Real HTTPS permission/error/local-fallback evidence",
+      "status": "partially-implemented",
+      "optional": false,
+      "credited_existing_work": {
+        "revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
+        "implementation": "Scoped URL acquisition, omitted credentials, redirect refusal, local import fallback and read-only enforcement",
+        "validation": "../testing/production-source-mapping.md",
+        "reconciliation": "13-scope-reconciliation.md"
+      },
+      "remaining_acceptance": "Actual HTTPS/native permission grant, denial, revocation and corporate/local fallback acceptance"
+    },
+    {
+      "id": "P04",
+      "title": "Read-only QA production observations",
+      "document": "06-production-and-source-maps.md",
+      "depends_on": [
+        "F02",
+        "U03",
+        "U06"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C07"
+      ],
+      "files": [
+        "core/production-observations.mjs",
+        "packages/atom/src/runtime.mjs",
+        "core/diagnostic.mjs"
+      ],
+      "existing_commands": [
+        "npm run verify:browser",
+        "npm run verify:production-source-mapping"
+      ],
+      "deliverable": "U06-designed QA production observation/handoff flow, read-only collector distinct from intentional edits",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "L01",
+      "title": "Deterministic selected-question explanations",
+      "document": "07-local-explanations.md",
+      "depends_on": [
+        "U01"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "C03",
+        "O01"
+      ],
+      "files": [
+        "core/action-explanations.mjs",
+        "packages/atom/src/action-ui.mjs",
+        "packages/atom/src/ui.mjs"
+      ],
+      "existing_commands": [
+        "npm test",
+        "npm run verify:actions",
+        "npm run verify:browser"
+      ],
+      "deliverable": "Short explanations from existing fact/evidence records",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "L02",
+      "title": "Required local AI delivery with optional user activation",
+      "document": "07-local-explanations.md",
+      "depends_on": [
+        "L01"
+      ],
+      "owner": "StateAtom",
+      "requirements": [
+        "O01"
+      ],
+      "files": [
+        "core/action-explanations.mjs",
+        "packages/atom/src/action-ui.mjs",
+        "docs/testing/"
+      ],
+      "existing_commands": [
+        "npm run verify:actions",
+        "npm run verify:browser"
+      ],
+      "deliverable": "Real-device useful local explanations and complete model-free fallback; unavailability alone does not pass",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "I01",
+      "title": "Reconcile and update official package intake",
+      "document": "08-stateport-integration.md",
+      "depends_on": [
+        "F04"
+      ],
+      "owner": "StatePort (authorized host checkout)",
+      "requirements": [
+        "C08"
+      ],
+      "files": [
+        "packages/atom/package.json",
+        "packages/atom/contract.json",
+        "docs/tasks/stateport-host-atom-integration.md"
+      ],
+      "existing_commands": [],
+      "deliverable": "Actual host consumes the current hash-checked Atom/UI pair",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "I02",
+      "title": "Real Atom/Capture coexistence",
+      "document": "08-stateport-integration.md",
+      "depends_on": [
+        "I01"
+      ],
+      "owner": "StatePort (authorized host checkout)",
+      "requirements": [
+        "C08",
+        "O01",
+        "O02",
+        "C05",
+        "C07"
+      ],
+      "files": [
+        "docs/embedding.md",
+        "docs/tasks/stateport-host-atom-integration.md"
+      ],
+      "existing_commands": [],
+      "deliverable": "Native official host lifecycle/permission/Capture proof",
+      "status": "planned",
+      "optional": false,
+      "additional_final_scope_dependencies": [
+        "F05",
+        "U02",
+        "U03",
+        "U05",
+        "A05",
+        "L02",
+        "P03",
+        "P04"
+      ]
+    },
+    {
+      "id": "I03",
+      "title": "Coordinated official distribution",
+      "document": "08-stateport-integration.md",
+      "depends_on": [
+        "I02",
+        "V01",
+        "V02"
+      ],
+      "owner": "StatePort (authorized host checkout)",
+      "requirements": [
+        "C08",
+        "C10"
+      ],
+      "files": [
+        "docs/embedding.md",
+        "packages/atom/contract.json"
+      ],
+      "existing_commands": [],
+      "deliverable": "One accepted distribution with component identity/update record",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "V01",
+      "title": "CI native lanes and packed contracts",
+      "document": "09-validation-and-release.md",
+      "depends_on": [
+        "F01",
+        "F04"
+      ],
+      "owner": "StateAtom / release maintainer",
+      "requirements": [
+        "C10",
+        "C11",
+        "O01",
+        "O02"
+      ],
+      "files": [
+        ".github/workflows/ci.yml",
+        "package.json",
+        "tests/integration/",
+        "tests/atom/types/"
+      ],
+      "existing_commands": [
+        "npm test",
+        "npm run build",
+        "npm run check:ui",
+        "npm run verify:embedding"
+      ],
+      "deliverable": "Candidate-scoped CI/native/type and package evidence",
+      "status": "planned",
+      "optional": false
+    },
+    {
+      "id": "V02",
+      "title": "Lifecycle privacy and resource acceptance",
+      "document": "09-validation-and-release.md",
+      "depends_on": [
+        "F01",
+        "F02"
+      ],
+      "owner": "StateAtom / release maintainer",
+      "requirements": [
+        "C05",
+        "C10",
+        "C11",
+        "O01",
+        "O02"
+      ],
+      "files": [
+        "tests/atom/",
+        "tests/browser/",
+        "tests/engine/",
+        "tests/integration/"
+      ],
+      "existing_commands": [
+        "npm test",
+        "npm run verify:browser",
+        "npm run verify:embedding",
+        "npm run verify:production-source-mapping"
+      ],
+      "deliverable": "Lifecycle/privacy controls and approved latency/overhead targets or explicit maintainer exceptions",
+      "status": "planned",
+      "optional": false,
+      "additional_final_scope_dependencies": [
+        "F05",
+        "U02",
+        "U05",
+        "A05",
+        "L02"
+      ]
+    },
+    {
+      "id": "V03",
+      "title": "Clean installation, real UI and independent-app acceptance",
+      "document": "09-validation-and-release.md",
+      "depends_on": [
+        "F03",
+        "U02",
+        "U03",
+        "U05",
+        "U06",
+        "A01",
+        "A03"
+      ],
+      "owner": "StateAtom / release maintainer",
+      "requirements": [
+        "C01",
+        "C02",
+        "C06",
+        "C07",
+        "C09",
+        "C10",
+        "C11",
+        "O01",
+        "O02"
+      ],
+      "files": [
+        "README.md",
+        "docs/testing/"
+      ],
+      "existing_commands": [],
+      "deliverable": "Clean artifact installation and actual user flows on independent apps; agent operation allowed, another person not required",
+      "status": "planned",
+      "additional_final_scope_dependencies": [
+        "A02",
+        "A04",
+        "A05",
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "F05",
+        "L02"
+      ],
+      "optional": false
+    },
+    {
+      "id": "V04",
+      "title": "Candidate ledger and release readiness",
+      "document": "09-validation-and-release.md",
+      "depends_on": [
+        "V01",
+        "V02",
+        "V03",
+        "I03",
+        "A02",
+        "A04",
+        "A05",
+        "L02",
+        "F05",
+        "P03",
+        "P04",
+        "U04",
+        "U05",
+        "U06"
+      ],
+      "owner": "StateAtom / release maintainer",
+      "requirements": [
+        "C10",
+        "O01",
+        "O02",
+        "C05",
+        "C07"
+      ],
+      "files": [
+        "README.md",
+        "docs/status.md",
+        "ROADMAP.md",
+        "docs/licensing.md",
+        "scripts/"
+      ],
+      "existing_commands": [
+        "npm test",
+        "npm run build",
+        "npm run pack:atom"
+      ],
+      "deliverable": "Full approved-scope acceptance ledger or an explicitly narrower preview; no silent requirement waivers",
+      "status": "planned",
+      "optional": false
+    }
+  ],
+  "starting_sequence": [
+    "F01",
+    "F02",
+    "F03",
+    "U05",
+    "U01",
+    "U02",
+    "U06",
+    "U03",
+    "F05",
+    "A01",
+    "A03",
+    "L01",
+    "F04",
+    "I01",
+    "I02"
+  ],
+  "sequence_note": "Suggested dependency-valid order for new work, not a requirement to restart completed items or an authorization to execute/publish everything. Additional final-scope dependencies are required for full acceptance, not for an earlier bounded preview.",
+  "scope_revision": "scope-review-1",
+  "scope_status": "approved",
+  "scope_source": "02-release-scope.md",
+  "decision_record": "12-scope-decisions.md",
+  "scope_revision_does_not_reaudit_source": true,
+  "required_requirements": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "O01",
+    "O02"
+  ],
+  "external_work_items": [
+    {
+      "id": "S01",
+      "title": "Production SDK — separate StatePort project",
+      "document": "10-later-sdk-and-extension-points.md",
+      "depends_on": [],
+      "owner": "StatePort",
+      "requirements": [
+        "O03"
+      ],
+      "files": [],
+      "existing_commands": [],
+      "deliverable": "A separately authorized StatePort SDK plan; not delivered by this Atom package",
+      "status": "outside-atom-scope",
+      "optional": false,
+      "gates_atom_release": false
+    }
+  ],
+  "scope_constraints": {
+    "local_ai": {
+      "delivery": "required",
+      "activation": "user-opt-in",
+      "fallback": "required",
+      "real_device_validation": "required"
+    },
+    "action_trace": "required-bounded",
+    "input_editing": {
+      "modes": [
+        "live",
+        "draft-apply"
+      ],
+      "live_coverage": "most inputs in the predeclared editable scope",
+      "undo_last": true,
+      "restore_baseline": true,
+      "exact_timing_and_catalogue": "defined in U02"
+    },
+    "production": {
+      "default": "read-only",
+      "enable_in": "settings",
+      "sequential_confirmations": 2,
+      "scope_and_lifetime": "defined in F05, not decided in scope interview"
+    },
+    "qa_handoff": {
+      "outcome": "required",
+      "detailed_ux": "to develop in U06"
+    },
+    "sdk_owner": "StatePort, outside Atom scope",
+    "independent_human_required": false,
+    "independent_apps_minimum": 2,
+    "non_react_app_required": true,
+    "snapshot_default": "accepted for current scope; explicit reinspection",
+    "intermediate_public_releases_allowed": true,
+    "automatic_publication_authorized": false,
+    "performance": {
+      "basic_p95_ms": 1000,
+      "warm_source_action_p95_ms": 3000,
+      "active_observation_median_degradation_percent": 10,
+      "exception": "explicit maintainer agreement"
+    },
+    "exclusions": [
+      "Atom cloud backend",
+      "production SDK implementation in Atom",
+      "automatic source bug fix",
+      "whole-app call graph",
+      "effort/story-point estimates",
+      "mandatory new UI framework",
+      "second official Store product",
+      "new QA-role/auth integration"
+    ]
+  },
+  "reconciliation": {
+    "document": "13-scope-reconciliation.md",
+    "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
+    "date": "2026-10-19",
+    "current_increment": {
+      "id": "production-source-mapping-source-exploration",
+      "status": "complete-within-original-scope",
+      "implementation_plan": "../superpowers/plans/2026-10-19-production-source-mapping.md",
+      "validation": "../testing/production-source-mapping.md",
+      "does_not_complete": [
+        "P01",
+        "P02",
+        "P03"
+      ],
+      "fresh_check": {
+        "command": "node --test --test-isolation=none tests/source-maps.test.mjs tests/source-map-diagnostic.test.mjs tests/atom/source-maps.test.mjs tests/atom/read-only-sites.test.mjs",
+        "passed": 24,
+        "failed": 0,
+        "kind": "unit-api-harness"
+      },
+      "native_evidence": "Retained runs, input hashes checked against current files; no native rerun"
+    },
+    "next_item": "F01",
+    "new_full_task_acceptances": [],
+    "status_semantics": "partially-implemented credits inherited code and bounded evidence; dependencies and remaining acceptance still apply. planned does not mean reusable underlying code is absent."
+  }
+}

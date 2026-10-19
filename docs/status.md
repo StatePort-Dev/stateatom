@@ -1,5 +1,13 @@
 # Project status
 
+Active delivery scope: approved **`scope-review-1`** on 2026-10-19; see the
+[completion contract](completion/02-release-scope.md) and
+[current reconciliation](completion/13-scope-reconciliation.md). This supersedes
+earlier delivery exclusions and independent-human gates, not historical evidence.
+The source-exploration increment is complete within its original boundary;
+P01–P03 remain partial and F01 is next. No new runtime capability, release or
+independent-human verification follows from adopting the documents.
+
 Current checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

@@ -1,5 +1,12 @@
 # Production Source Mapping
 
+Delivery reconciliation, 2026-10-19: the original source-exploration alternative
+below is complete at `f3a7a7e`. The approved
+[`scope-review-1`](../completion/02-release-scope.md) requires additional work in
+P01–P03 and separate F05 production enablement. This feature record and its tests
+are retained; their completion does not satisfy the new element-anchor/HTTPS
+acceptance gates. See [credited work and next item](../completion/13-scope-reconciliation.md).
+
 **Status:** Implemented local candidate — mapping/source exploration; see [verification and limits](../testing/production-source-mapping.md)\
 **Scope:** StateAtom browser extension\
 **Target location:** `docs/features/production-source-mapping.md`\

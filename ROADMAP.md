@@ -1,5 +1,44 @@
 # Roadmap
 
+## Active completion scope — 2026-10-19
+
+The approved [completion contract](docs/completion/02-release-scope.md), revision
+`scope-review-1`, and its [decision record](docs/completion/12-scope-decisions.md)
+govern current delivery. Use the [task index](docs/completion/task-index.json) for
+dependencies and the [reconciliation](docs/completion/13-scope-reconciliation.md)
+for credited work and the current stopping point. The earlier roadmap below is
+retained as history, including its original experiment criteria and results; its
+human-participant gates and initial-alpha exclusions do not override this scope.
+
+- L02 local AI and A05 bounded Action Trace are mandatory deliveries. AI use is
+  opt-in; model-free operation remains required. Fallback and handler declarations
+  alone do not complete those deliveries.
+- U02 includes Live for most inputs in its declared editable scope and grouped
+  Draft/Apply, undo-last and baseline return. U02 defines the catalogue, coverage
+  denominator and commit timing before evaluation; those details are not approved yet.
+- Production starts read-only. F05 adds two sequential Settings warnings and
+  confirmations before supported changes are available, without applying any
+  change automatically. Grant scope/lifetime and navigation/restart/update policy
+  must be defined in F05; source access never supplies mutation authority.
+- U05 is the visual page-element picker. U06 develops the QA/PM-to-developer
+  handoff UX and precedes completion of U03/P04; technical export is only a base.
+- Independent application-code checks remain required. An independent human is
+  optional evidence, not a blocker; agent-operated installation/UI checks must be
+  labelled accurately. Source maps remain distinct from runtime/action evidence.
+- The production SDK belongs to StatePort outside Atom and has no active release
+  dependency. Publication, another repository and a new redesign are not authorized.
+
+The production source-exploration increment at `f3a7a7e` is complete within its
+original boundary. Credit its map/ZIP import, artifact matching, manual lookup,
+safe diagnostics and read-only behavior rather than rebuilding them. P01–P03
+remain partial: real element anchors, the complete release-bundle workflow and
+actual HTTPS permission acceptance are still owed. The next bounded item is
+**F01 — capability and public-contract consolidation**, with no prerequisites.
+This scope adoption does not implement new capabilities or authorize all 29 items
+in one run. The narrower historical alpha acceptance remains unchanged.
+
+## Historical roadmap and checkpoint ledger
+
 StateAtom's next development target is a narrow, independently useful developer alpha. A developer should be able to select a UI property, inspect its supported dependencies, test an eligible input locally, and save an explanation that another person can read.
 
 This roadmap defines intended work and completion criteria. It does not establish current feature support. [Project status](docs/status.md) keeps the earlier Phase 2 report separate from the newer verified import and short-loop checks. In particular, the old IDE-pairing blocker and harness-only export result do not describe the current basic/browser diagnostic implementation. Reuse revision-specific evidence; source migration alone is not execution proof.

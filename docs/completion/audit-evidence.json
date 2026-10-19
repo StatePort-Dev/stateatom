@@ -1,0 +1,312 @@
+{
+  "schema": "stateatom.audit-evidence/1",
+  "repository": "StatePort-Dev/stateatom",
+  "revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
+  "commit_date_utc": "2026-10-18T20:48:29Z",
+  "review_date": "2026-10-19",
+  "review_method": [
+    "Read-only connector repository file/contract review",
+    "Repository-reported native acceptance records",
+    "Hosted CI status and workflow definition inspection"
+  ],
+  "not_performed": [
+    "Fresh local checkout dependency install",
+    "Local unit/build run",
+    "Native browser or IDE test rerun",
+    "Real Chrome LanguageModel session",
+    "Full line-by-line observer/compiler security audit",
+    "Fresh live Figma or human visual acceptance",
+    "Independent user installation test",
+    "GitHub mutation or publication"
+  ],
+  "ci": {
+    "run_id": 39165018688,
+    "head_sha": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
+    "url": "https://github.com/StatePort-Dev/stateatom/actions/runs/39165018688",
+    "conclusion": "success",
+    "verified_job_steps": [
+      "npm ci --no-audit --no-fund",
+      "npm test",
+      "npm run build"
+    ],
+    "not_in_workflow": [
+      "Native browser/IDE suites",
+      "Embedding tests",
+      "Declared type compilation",
+      "Local model inference"
+    ]
+  },
+  "reported_current_candidate": {
+    "unit_tests": 568,
+    "production_source_mapping_native_checks": 19,
+    "note": "These counts come from the repository record; they are not fresh executions by this audit."
+  },
+  "sources": [
+    {
+      "id": "R01",
+      "title": "Project instructions",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/AGENTS.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "AGENTS.md"
+    },
+    {
+      "id": "R02",
+      "title": "Current status and historical results",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/docs/status.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "docs/status.md"
+    },
+    {
+      "id": "R03",
+      "title": "Current commands and dependencies",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/package.json",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "package.json"
+    },
+    {
+      "id": "R04",
+      "title": "Current user setup",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/README.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "README.md"
+    },
+    {
+      "id": "R05",
+      "title": "Existing roadmap and historical gates",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/ROADMAP.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "ROADMAP.md"
+    },
+    {
+      "id": "R06",
+      "title": "Repository layout",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/docs/repository-layout.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "docs/repository-layout.md"
+    },
+    {
+      "id": "R07",
+      "title": "Accepted closed first-read scope",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/docs/roadmap/2026-10-18-closed-first-read.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "docs/roadmap/2026-10-18-closed-first-read.md"
+    },
+    {
+      "id": "R08",
+      "title": "First-read operating constraints",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/docs/testing/first-read.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "docs/testing/first-read.md"
+    },
+    {
+      "id": "R09",
+      "title": "Action Inspector validation",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/docs/testing/action-inspector-validation.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "docs/testing/action-inspector-validation.md"
+    },
+    {
+      "id": "R10",
+      "title": "Action source resolver",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/core/action-analysis.mjs",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "core/action-analysis.mjs"
+    },
+    {
+      "id": "R11",
+      "title": "Current template and local-model provider",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/core/action-explanations.mjs",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "core/action-explanations.mjs"
+    },
+    {
+      "id": "R12",
+      "title": "Production source mapping validation",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/docs/testing/production-source-mapping.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "docs/testing/production-source-mapping.md"
+    },
+    {
+      "id": "R13",
+      "title": "Map acquisition and lifecycle",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/packages/atom/src/source-map-session.mjs",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "packages/atom/src/source-map-session.mjs"
+    },
+    {
+      "id": "R14",
+      "title": "Manual source-map interface",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/packages/atom/src/source-map-ui.mjs",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "packages/atom/src/source-map-ui.mjs"
+    },
+    {
+      "id": "R15",
+      "title": "Atom runtime",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/packages/atom/src/runtime.mjs",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "packages/atom/src/runtime.mjs"
+    },
+    {
+      "id": "R16",
+      "title": "Chrome platform and debugger leases",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/packages/atom/src/platform.mjs",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "packages/atom/src/platform.mjs"
+    },
+    {
+      "id": "R17",
+      "title": "Transport validation",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/packages/atom/src/transport.mjs",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "packages/atom/src/transport.mjs"
+    },
+    {
+      "id": "R18",
+      "title": "Runtime declarations",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/packages/atom/types/runtime.d.ts",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "packages/atom/types/runtime.d.ts"
+    },
+    {
+      "id": "R19",
+      "title": "Embedding contract",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/docs/embedding.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "docs/embedding.md"
+    },
+    {
+      "id": "R20",
+      "title": "Original embedding validation",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/docs/testing/atom-embedding-validation.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "docs/testing/atom-embedding-validation.md"
+    },
+    {
+      "id": "R21",
+      "title": "Atom package and exact UI peer",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/packages/atom/package.json",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "packages/atom/package.json"
+    },
+    {
+      "id": "R22",
+      "title": "Shared UI ownership and reference",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/docs/design/extension-ui.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "docs/design/extension-ui.md"
+    },
+    {
+      "id": "R23",
+      "title": "Atom package README",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/packages/atom/README.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "packages/atom/README.md"
+    },
+    {
+      "id": "R24",
+      "title": "Hosted CI definition",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/.github/workflows/ci.yml",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": ".github/workflows/ci.yml"
+    },
+    {
+      "id": "R25",
+      "title": "CI for reviewed commit",
+      "url": "https://github.com/StatePort-Dev/stateatom/actions/runs/39165018688",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": null
+    },
+    {
+      "id": "R26",
+      "title": "Source mapping feature specification",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/docs/features/production-source-mapping.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "docs/features/production-source-mapping.md"
+    },
+    {
+      "id": "R27",
+      "title": "Action Inspector feature specification",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/docs/features/STATEATOM_ACTION_INSPECTOR_LOCAL_AI.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "docs/features/STATEATOM_ACTION_INSPECTOR_LOCAL_AI.md"
+    },
+    {
+      "id": "R28",
+      "title": "Current inspector composition",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/packages/atom/src/template.mjs",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "packages/atom/src/template.mjs"
+    },
+    {
+      "id": "R29",
+      "title": "Shared UI validation",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/docs/testing/extension-ui-reference-alignment.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "docs/testing/extension-ui-reference-alignment.md"
+    },
+    {
+      "id": "R30",
+      "title": "Existing host integration task",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/docs/tasks/stateport-host-atom-integration.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "docs/tasks/stateport-host-atom-integration.md"
+    },
+    {
+      "id": "X01",
+      "title": "Chrome Prompt API",
+      "url": "https://developer.chrome.com/docs/ai/prompt-api",
+      "kind": "official_external_reference",
+      "repository_path": null
+    },
+    {
+      "id": "X02",
+      "title": "Chrome extension permissions",
+      "url": "https://developer.chrome.com/docs/extensions/reference/api/permissions",
+      "kind": "official_external_reference",
+      "repository_path": null
+    },
+    {
+      "id": "X03",
+      "title": "Chrome debugger API",
+      "url": "https://developer.chrome.com/docs/extensions/reference/api/debugger",
+      "kind": "official_external_reference",
+      "repository_path": null
+    },
+    {
+      "id": "X04",
+      "title": "Extension network requests",
+      "url": "https://developer.chrome.com/docs/extensions/develop/concepts/network-requests",
+      "kind": "official_external_reference",
+      "repository_path": null
+    },
+    {
+      "id": "X05",
+      "title": "Manifest V3 code requirements",
+      "url": "https://developer.chrome.com/docs/webstore/program-policies/mv3-requirements",
+      "kind": "official_external_reference",
+      "repository_path": null
+    },
+    {
+      "id": "X06",
+      "title": "ECMA-426 source map format",
+      "url": "https://tc39.es/ecma426/",
+      "kind": "official_external_reference",
+      "repository_path": null
+    },
+    {
+      "id": "R31",
+      "title": "Supplied design screen/source index",
+      "url": "https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/packages/extension-ui/design/design/SCREEN_INDEX.md",
+      "kind": "repository_or_hosted_CI",
+      "repository_path": "packages/extension-ui/design/design/SCREEN_INDEX.md"
+    }
+  ],
+  "interpretation_limits": [
+    "The original closed first-read P1/P2 success and the historical six-family 0/6 are distinct results.",
+    "Older embedding results use earlier package versions; they do not prove the new feature combination.",
+    "Artifact identity does not prove an element producer anchor or execution.",
+    "Design references include simulated states and do not establish runtime functionality.",
+    "Delivery scope and budgets in this package are recommendations, not measured product claims."
+  ]
+}
