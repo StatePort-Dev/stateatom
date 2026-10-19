@@ -290,3 +290,29 @@ scanner or shell launcher. App, artifact and helper grants do not imply one anot
 
 These rules add connection policy, not F03 installable onboarding, F05 production
 consent, U02 Live/Draft editing or general runtime provenance.
+
+## Immutable pair receipt (F04)
+
+`npm run pack:atom` creates a new local timestamped handoff after offline clean
+installation and browser-only builds. It refuses changed tarball bytes under an
+already-issued Atom/UI package identity; bump the changed package candidate
+version instead. An identical byte reproduction may reuse the same version.
+Failed candidates stay in hidden staging and never reserve an issued identity.
+
+The handoff distinguishes Atom package/API/wire, exact UI package/visual contract,
+source-input digest, tarball hashes, installed export/type/asset hashes and both
+host outputs. `consumerReceipt` records build checks and remains
+`BUILT_NOT_VERIFIED`. Run `npm run verify:atom-package` and
+`npm run verify:atom-types` against the current pointer, or pass an explicit
+handoff: `npm run verify:atom-package -- /absolute/path/atom-handoff.json`.
+The package check verifies current build-source hashes too; use the matching
+source checkout. Keep native acceptance separately, as in the
+[F04 execution record](completion/17-f04-immutable-package-pair.md).
+
+`npm run verify:embedding -- /absolute/path/atom-handoff.json` uses the exact
+hosts from that handoff. Actions/maps checks accept `ATOM_EXTENSION_PATH` and
+`ATOM_PANEL_PATH=workspace/inspect.html` for embedding. Use native suites
+sequentially when they share the IDE or app port; the full unit suite also
+contains a real fixed-port first-read channel test. Both hosts carry bundled
+third-party notices in addition to source and font notices. A receipt verifies
+the named pair and checks; it does not add capabilities or publish the package.

@@ -71,6 +71,7 @@
     "verify:embedding": "node tests/integration/embedding.mjs",
     "verify:production-source-mapping": "node tests/integration/production-source-mapping.mjs",
     "verify:atom-types": "node scripts/verify-atom-types.mjs",
+    "verify:atom-package": "node scripts/verify-atom-package.mjs",
     "verify:capability-ui": "node tests/integration/capability-ui.mjs",
     "verify:origin-connections": "node tests/integration/origin-connections.mjs",
     "pack:development": "node scripts/pack-development.mjs",

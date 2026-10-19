@@ -25,8 +25,12 @@ installed first-read checks pass; short-loop retains 20 PASS / 10 expected PARTI
 and 2 strict packed consumers pass. Native DOM identity fixes the proof freshness
 conflict; historical trials/Restore remain visible after availability refresh.
 Failed/intermediate runs and original criteria remain recorded. F03 is complete
-within its brief; **F04** is the next single unfinished item. No release or
-human-study claim follows.
+within its brief. The subsequent [F04 execution](completion/17-f04-immutable-package-pair.md)
+completes immutable packaging and consumer receipts on the unchanged .8/UI .2
+pair: 628 unit, 35 two-host, 32 Actions and 19 maps per host, 2 strict type
+consumers and 7 installed admission checks pass. Packed hosts now retain bundled
+third-party notices. **U05 — visual element picker** is the next single unfinished
+item; F01/F02 prerequisites are complete. No release or human-study claim follows.
 
 Current checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live

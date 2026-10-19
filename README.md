@@ -496,5 +496,12 @@ results, not proof of ordinary apps satisfying the controlled first-read premise
 F03 acceptance on local Atom candidate `.20261019.8` includes normal installed
 setup and the separate required first-read regression. See the
 [F03 execution record](docs/completion/16-f03-installed-project-setup.md) for exact
-artifacts, retained failures and scope limits. F04 is the next unfinished item;
-this acceptance does not establish a published release.
+artifacts, retained failures and scope limits. The subsequent
+[F04 execution](docs/completion/17-f04-immutable-package-pair.md) reproduces the same
+Atom/UI tarballs, adds immutable staging and a checked consumer receipt, and
+verifies both packed hosts. U05 is the next single unfinished item; these scoped
+checks do not establish a published release.
+
+`npm run verify:atom-package` checks the current packed pair and disposable
+compatibility/refusal controls. See [the embedding receipt workflow](docs/embedding.md#immutable-pair-receipt-f04)
+for explicit handoffs and native host checks.

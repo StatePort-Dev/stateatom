@@ -13,3 +13,4 @@ await mkdir(out+'/assets/fonts',{recursive:true});await copyFile(require.resolve
 await copyFile(path.dirname(require.resolve('@stateport/extension-ui/contract.json'))+'/assets/fonts/Inter-LICENSE.txt',out+'/Inter-LICENSE.txt');
 for(const pkg of ['atom','extension-ui']){const base=path.dirname(require.resolve('@stateport/'+pkg+'/contract.json'));await cp(base+'/LICENSE',out+'/'+pkg+'-LICENSE');await cp(base+'/NOTICE',out+'/'+pkg+'-NOTICE');}
 const base=path.dirname(require.resolve('@stateport/atom/contract.json'));await cp(base+'/LICENSES',out+'/LICENSES',{recursive:true});
+await cp(base+'/dist/THIRD_PARTY_LICENSES.md',out+'/atom-THIRD_PARTY_LICENSES.md');

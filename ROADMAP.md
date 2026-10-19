@@ -46,8 +46,12 @@ installed helper/plugin setup and a private connection receipt on Atom candidate
 React-host passes 12, installed first-read passes 17 and short-loop retains its
 20 PASS / 10 expected PARTIAL. Native DOM identity preserves proof freshness;
 target-bound historical trials and Restore survive panel refresh. Earlier failed
-candidates and criteria are preserved. The single next bounded item is **F04 —
-immutable package pair and current consumer proof**, still partial. No broader
+candidates and criteria are preserved. The subsequent [F04 execution](docs/completion/17-f04-immutable-package-pair.md)
+completes immutable staging, exact package reproduction and checked consumer
+receipts on the same .8/UI .2 pair: 628 unit, 35 two-host, 32 Actions and 19 maps
+per host pass, with 2 strict consumers and 7 installed admission checks. The
+single next bounded item is **U05 — visual element picker**, after completed
+F01/F02. No broader
 feature implementation or execution of all 29 items follows. The narrower
 historical alpha acceptance remains unchanged.
 

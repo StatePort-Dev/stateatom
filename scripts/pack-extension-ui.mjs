@@ -7,6 +7,7 @@ import {createRequire} from 'node:module';
 import path from 'node:path';
 import os from 'node:os';
 import {buildUI} from '../packages/extension-ui/scripts/build.mjs';
+import {assertImmutableArtifact} from './atom-package-receipt.mjs';
 
 const root = path.resolve(import.meta.dirname, '..'), pkgRoot = path.join(root, 'packages/extension-ui');
 const pkg = JSON.parse(await readFile(pkgRoot + '/package.json', 'utf8'));
@@ -58,6 +59,7 @@ const allowed = [...pkg.files, 'package.json'].sort();
 const packedFiles = packed.files.map(f => f.path).sort();
 if (JSON.stringify(packedFiles) !== JSON.stringify(allowed)) throw Error('Unexpected package files: ' + packedFiles);
 const tarball = await readFile(packTemp + '/' + packed.filename);
+await assertImmutableArtifact([root+'/.artifacts/atom',root+'/.artifacts/extension-ui'],packed.filename,tarball);
 // npm tar metadata must be deterministic too, not just the generated CSS.
 const repeatDir = await mkdtemp(path.join(os.tmpdir(), 'stateport-ui-repeat-'));
 run('npm', ['pack', '--json', '--ignore-scripts', '--pack-destination', repeatDir], pkgRoot);

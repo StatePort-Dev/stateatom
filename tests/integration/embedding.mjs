@@ -7,7 +7,9 @@ import {startIDE,startBrowser,approveDevelopment,rpc,waitFor} from '../../script
 import {startServer} from '../../scripts/inspection-server.mjs';
 import {root} from '../../scripts/vite-config.mjs';
 import {disallowedBrowserInputs} from '../../scripts/atom-browser-inputs.mjs';
-const handoff=JSON.parse(await readFile(root+'/.artifacts/atom/atom-handoff.json','utf8'));
+import {inspectInstalledPair,verifyArtifactHashes,fileManifest} from '../../scripts/atom-package-receipt.mjs';
+const handoffFile=process.argv[2]||root+'/.artifacts/atom/atom-handoff.json';
+const handoff=JSON.parse(await readFile(handoffFile,'utf8'));
 const tag=new Date().toISOString().replaceAll(/[:.]/g,'-'),out=root+'/.artifacts/atom/verification/'+tag,runtime=out+'/profiles';await mkdir(out,{recursive:true});
 const result={schema:'stateatom.embedding-verification/1',status:'RUNNING',startedAt:new Date().toISOString(),package:handoff.package,sourceRevision:handoff.sourceRevision,configuration:{node:process.version,sandbox:true,browserPath:'Browser plugin not available; existing Playwright MV3 harness',viewports:[960,360],IDE:'Real VS Code Extension Host, public development helper'},checks:[],errors:[],hosts:{}};
 const check=async(name,fn)=>{await fn();result.checks.push({name,status:'PASS'});console.log('PASS',name);};
@@ -15,7 +17,9 @@ let ide,ideRuntime,server,browser,panel,readerBrowser;const summaries={},files=[
 const digest=b=>createHash('sha256').update(b).digest('hex');
 try{
  await check('one packed Atom identity is installed into clean consumer and both host bundles use only that installed package',async()=>{
-  assert.equal(digest(await readFile(handoff.package.file)),handoff.package.sha256);
+  await verifyArtifactHashes([handoff.package,handoff.ui]);
+  if(handoff.consumerReceipt){await inspectInstalledPair(handoff.consumer,handoff.consumerReceipt);for(const kind of ['standalone','embedding'])assert.deepEqual(await fileManifest(handoff.hosts[kind]),handoff.consumerReceipt.hostFiles[kind]);}
+  result.handoff={file:handoffFile,sha256:digest(await readFile(handoffFile)),ui:handoff.ui,consumerReceipt:handoff.consumerReceipt};
   for(const [bundle,inputs]of Object.entries(handoff.browserInputs)){assert(inputs.some(p=>p.startsWith(handoff.consumer+'/node_modules/@stateport/atom/')),bundle);assert(inputs.every(p=>p.startsWith(handoff.consumer+'/')),bundle);}
   const inputs=JSON.parse(await readFile(handoff.consumer+'/node_modules/@stateport/atom/dist/browser-inputs.json','utf8'));assert.deepEqual(disallowedBrowserInputs(inputs.flat()),[]);
  });
@@ -60,6 +64,13 @@ try{
   await check(kind+' IDE disconnect keeps basic diagnostics and refuses source navigation',async()=>{await ui('source-connection').evaluate(e=>{e.open=true;});await ui('unpair').click();await ui('status').filter({hasText:/^OK$/}).waitFor();await ui('load').click();await ui('status').filter({hasText:/^OK$/}).waitFor();state=await rpc(panel,{op:'state',tabId});assert.equal(state.analysis.capabilities.sourceResolver,'unavailable');assert.equal(await ui('sources').locator('button').count(),0);assert.equal((await rpc(panel,{op:'list-diagnostics'})).length,1);await ui('source-connection').evaluate(e=>{e.open=false;});});
   await check(kind+' closing and reopening the panel preserves independently owned runtime and diagnostics',async()=>{const before=await rpc(panel,{op:'state',tabId});await panel.close();panel=await context.newPage();await panel.setViewportSize({width:960,height:900});await panel.goto('chrome-extension://'+browser.id+'/'+entry);await ui('inspection').waitFor();await choose('/react/');const after=await rpc(panel,{op:'state',tabId});assert.equal(after.attached,true);assert.equal(after.selection.observedAt,before.selection.observedAt);assert.equal((await rpc(panel,{op:'list-diagnostics'})).length,1);});
   if(kind==='embedding'){
+   await check('embedding default refuses HTTPS read-only admission without host opt-in',async()=>{
+    const unsupported=await context.newPage();await unsupported.route('https://embedding-control.invalid/**',route=>route.fulfill({contentType:'text/html',body:'<!doctype html><title>Synthetic HTTPS host-policy control</title>'}));await unsupported.goto('https://embedding-control.invalid/');
+    const all=await rpc(panel,{op:'tabs'});assert(!all.some(t=>t.url==='https://embedding-control.invalid/'));
+    const target=await panel.evaluate(async()=>{const tabs=await chrome.tabs.query({});return tabs.find(t=>t.url==='https://embedding-control.invalid/');});assert(target);
+    const policy=await rpc(panel,{op:'capabilities',tabId:target.id});assert.equal(policy.features['basic.attach-read-only'].available,false);assert.equal(policy.features['basic.attach-read-only'].code,'ORIGIN_DENIED');
+    const denied=await panel.evaluate(id=>chrome.runtime.sendMessage({op:'attach',tabId:id,readOnly:true}),target.id);assert.equal(denied.ok,false);assert.equal(denied.code,'ORIGIN_DENIED');await unsupported.close();
+   });
    await check('embedding same Atom CSS leaves neighboring controls unchanged at 960/360 and keyboard stays usable',async()=>{
     const styles=()=>panel.locator('#host-neighbor').evaluate(e=>[e,...e.querySelectorAll('*')].map(n=>{const s=getComputedStyle(n);return ['fontFamily','fontSize','color','backgroundColor','padding','border','margin'].map(k=>s[k]);}));const baseline=await styles();await panel.evaluate(()=>{document.querySelectorAll('link[rel=stylesheet]').forEach(l=>{l.disabled=true;});});assert.deepEqual(await styles(),baseline);await panel.evaluate(()=>{document.querySelectorAll('link[rel=stylesheet]').forEach(l=>{l.disabled=false;});});
     for(const width of [960,360]){await panel.setViewportSize({width,height:900});assert(await panel.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await panel.screenshot({path:out+'/embedding-'+width+'.png',fullPage:true});}await ui('refresh-tabs').focus();await panel.keyboard.press('Enter');await ui('status').filter({hasText:/^OK$/}).waitFor();
