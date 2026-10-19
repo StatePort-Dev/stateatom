@@ -479,9 +479,22 @@
           },
           "record": "21-overnight-u02-progress.md",
           "native_rows_verified": 0
+        },
+        {
+          "id": "U02.4c.1",
+          "status": "complete",
+          "scope": "Unbundled per-view command queue/controller only; fake-clock/backend-ledger models, no actual field UI or timing proof",
+          "tests": {
+            "controller_models": 18,
+            "focused": 88,
+            "full": 948
+          },
+          "record": "21-overnight-u02-progress.md",
+          "runtime_bundled": false,
+          "native_rows_verified": 0
         }
       ],
-      "active_slice": "U02.4c",
+      "active_slice": "U02.4c.2",
       "implementation_dependency": ".24 page lifetime/backend proof passes; mounted-view close/cancel, fields, both modes and timing remain required before unchanged majority acceptance"
     },
     {

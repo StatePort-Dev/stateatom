@@ -87,3 +87,22 @@ per-view close/cancellation, keyboard actions, fields and timing. Connection los
 requires explicit reopening/recovery guidance; the backend does not silently
 reconnect a stale writer. Removal of response rules/observers never promises
 application or server rollback.
+
+
+## 4c.1 queue/controller boundary
+
+The unbundled controller has one per-view owner and one in-flight operation.
+Text/number changes coalesce for the current working 250ms interval; invalid
+latest text cancels older timers, while boolean/select values flush immediately.
+Blur/Enter can explicitly flush a valid field once. Mode changes cancel queued
+automatic work and preserve held drafts until explicit Apply/Discard. Already
+sent work remains an acknowledged or uncertain application effect, not cancelled
+merely by deleting a local draft. Refresh reads runtime inputs only; undo reads a
+fresh runtime revision before requesting guarded restoration.
+
+Failed opening replies still trigger scoped cleanup. Late old replies cannot
+publish into a new context and close only their old investigation. Connection
+loss performs no unowned fallback. Context loss retains one read-only old draft;
+starting another scope requires explicit discard rather than silent migration.
+These are source/controller choices, not installed field behavior. 18 models,
+88 focused and 948 full tests pass; actual view/timing/native/visual checks remain.

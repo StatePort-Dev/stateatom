@@ -83,6 +83,11 @@ weakening selected-target freshness. The next bounded slice is U02.4c: mounted
 view cleanup, actual fields/timing and rendered checks. Backend page lifetime does
 not complete field UI, both-mode majority acceptance or Task 2's remaining gate.
 
+U02.4c.1 subsequently adds an unbundled per-view field controller: 18 model / 88
+focused / 948 full tests pass with .24 recorded inputs/archive bytes unchanged.
+No rendered fields or real timing is credited. Next is U02.4c.2: actual view
+wiring and native/keyboard/visual validation, with Task 4 and U02 still open.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

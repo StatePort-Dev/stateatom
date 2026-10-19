@@ -286,3 +286,34 @@ visual checks still belong to **U02.4c**. Task 2's remaining inspector lifecycle
 criterion is not waived by backend page checks. Closing a rule/observer does not
 promise application/server rollback. New field-mode/majority acceptance and the
 single final review remain required before U02 completion.
+
+
+## U02.4c.1 — unbundled view queue/controller
+
+The source-only `input-controller.mjs` composes the draft model with a per-view
+owner, one in-flight request and a cancellable field queue. Construction is inert;
+explicit methods use the caller-supplied client. Neither current runtime nor UI
+imports it, and the issued .24 recorded source/build inputs and archive bytes are
+unchanged. No new packet, visual change or feature availability is added.
+
+18 controller models / 88 focused contract-ledger-draft-controller checks / 948
+full source tests pass. Exact source/log/archive bindings and executable verifier:
+`.artifacts/u02/input-controller/verification.json` and `verify.mjs`. These are
+fake-clock/backend-ledger models, not actual browser timing or native application
+checks. They cover 250ms latest-value coalescing, invalid numeric cancellation,
+boolean/select immediate scheduling, explicit flush, a single in-flight edit,
+queued newer versions, held drafts on mode switch, explicit grouped Apply,
+owned close/dispose, current-read/undo revision ordering and connection loss.
+An own quick-edit stale analysis does not close its editor; a different physical
+context closes the old owner while retaining a read-only unsent draft.
+
+The initial missing-module RED is retained. Further REDs exposed forgotten
+ownership after a failed opening reply, missing exact old-investigation cleanup
+for a late reply after disposal, and hidden pre-open mode state. Fixes keep
+cleanup scoped and never publish late data into a new view. The original failures
+and green results are preserved under the same artifact directory.
+
+This completes only the source controller slice. **U02.4c.2** must import it into
+real fields, wire mounted-view cleanup/recovery, and test actual Live/Draft events,
+keyboard, narrow/visual fidelity and native effects. Task 4 stays open; field-mode
+catalogue coverage is still 0/18 in both modes, and feature flags stay unavailable.
