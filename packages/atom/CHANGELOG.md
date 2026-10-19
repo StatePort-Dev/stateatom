@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-candidate.20261019.14
+
+- Hold the requested property and cleared snapshot while its operation is pending,
+  including concurrent tab refresh and returning to that tab. Disable that
+  selector until completion; release the guard and refresh actual state on both
+  success and failure. This fixes the Important final-review race with new
+  interleaving regressions. The issued .13 archive and its 42-host/33-picker
+  native results remain retained; final U01 acceptance belongs to .14.
+
 ## 0.1.0-candidate.20261019.13
 
 - Focus the requested section instead of a hidden descendant disclosure. Keep

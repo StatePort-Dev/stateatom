@@ -47,16 +47,22 @@ delivery remain separate named tasks.
 
 | Input | Value |
 | --- | --- |
-| Atom | `0.1.0-candidate.20261019.13` |
-| Atom SHA-256 | `17e779327cb6ec8f9d191a28610578fd19dbba532920c46ef9ad63c0822593d4` |
+| Atom | `0.1.0-candidate.20261019.14` |
+| Atom SHA-256 | `9d9987ddc1854e7cdd56075e204110c080c6e85aa18eccbe7ba07de962c8f2c1` |
 | UI | `0.2.0-candidate.20261018.2` |
 | UI SHA-256 | `2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5` |
-| Build-source digest | `a78b0ba19e634bfc39d159bab1a6b5ef7dd9d3376445ec2def1940a28968e585` |
-| Handoff | `.artifacts/atom/2026-10-19T16-49-54-223Z/atom-handoff.json` |
+| Build-source digest | `14b69a8cb5ff6c2bfaecece332d831353bba8a8a6b4ec39175662f9ce6ecd1d4` |
+| Handoff | `.artifacts/atom/2026-10-19T16-59-43-626Z/atom-handoff.json` |
 
 The handoff remains immutable `BUILT_NOT_VERIFIED`; a separate acceptance record
-binds successful final evidence to the local commit. Candidate .12 is retained
-with its incomplete verification, not replaced under the same package identity.
+binds successful final evidence to the local commit. Candidates .12 and .13 are retained rather than replaced under their package identities.
+The .13 cycle passed 660 unit, 42 two-host and 33 picker checks, but fresh review
+reproduced an Important property/refresh interleaving that those native checks
+did not cover. Three regressions reproduced it RED, then passed GREEN with the
+.14 guard; the .14 full suite passes 663/663. The guard releases on operation
+failure and retains the requested property when returning to a pending tab.
+The reviewer reported no Critical/Minor findings and no declined judgments; no
+second review or human-acceptance claim is inferred from the fix pass.
 
 ## Verification record
 

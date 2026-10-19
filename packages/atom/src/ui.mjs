@@ -30,12 +30,12 @@ function ownPickerRequest(tabId,id){ownedPicker?.controller?.abort();const own={
 let analysis,selectedState,loadGeneration=0,selectionGeneration=0,tabGeneration=0,tabsGeneration=0,tabsInitialized=false,renderedAt,restorationNotice;
 const tab=()=>Number($('tabs').value);
 async function rpc(message,signal=controller.signal){const r=await client.request(message,{signal});if(disposed)throw atomError('DISPOSED');return r;}
-const pendingActions=new Map();
+const pendingActions=new Map(),pendingProperties=new Map();
 async function action(fn){
  const id=tab(),epoch=tabGeneration,key=epoch+':'+id,batch=pendingActions.get(key)||{count:0,error:null};pendingActions.set(key,batch);++batch.count;
  try{$('status').textContent='Working…';return await fn();}
  catch(e){batch.error=e.message;}
- finally{if(!--batch.count){pendingActions.delete(key);if(!disposed&&id===tab()&&epoch===tabGeneration)$('status').textContent=batch.error?'Error: '+batch.error:'OK';}}
+ finally{if(!--batch.count){pendingActions.delete(key);if(!disposed&&id===tab()&&epoch===tabGeneration)$('status').textContent=batch.error?'Error: '+batch.error:pendingProperties.has(id)?'Working…':'OK';}}
 }
 async function tabs(){
  const generation=++tabsGeneration,ts=await rpc({op:'tabs'});if(generation!==tabsGeneration)return;
@@ -46,9 +46,10 @@ async function tabs(){
 }
 async function load(){
  const id=tab(),generation=++loadGeneration;
+ if(pendingProperties.has(id))return;
  if(!Number.isSafeInteger(id)||id<=0){selectedState=null;analysis=null;renderInspection();return;}
  const state=await rpc({op:'state',tabId:id,refreshDeep:true});
- if(generation!==loadGeneration||id!==tab())return;
+ if(generation!==loadGeneration||id!==tab()||pendingProperties.has(id))return;
  selectedState={...state,tabId:id};analysis=state.analysis;renderInspection();
 }
 const sourceMapUI=createSourceMapUI({document,$,rpc,tab,load,action,requestPermission:options.requestOriginPermission});
@@ -87,7 +88,7 @@ function renderInspection(){
  $('first-read-summary').textContent=profile.status+' · '+(profile.fullPath?'HTTP field → original read → committed property':profile.reason||'Finite trace unavailable');
  $('first-read-scope').textContent=profile.fullPath?profile.scope+' Snapshot; inspect again after changes.':'';
  $('first-read-joins').replaceChildren(...(profile.fullPath?['Code-linked · reviewed source/effect derivation '+profile.sourceProof.profile,'Observed · '+profile.occurrence.pointer+' = '+JSON.stringify(profile.occurrence.readValue)+' · parse '+profile.occurrence.parseId+' · browser request '+profile.occurrence.requestId,'Observed · read '+profile.occurrence.readId+' → target '+profile.occurrence.targetId+' → commit '+profile.occurrence.commitId,...profile.limits]:[]).map(text=>{const li=document.createElement('li');li.textContent=text;return li;}));
- $('property').value=selectedState?.property||'text';
+ $('property').value=pendingProperties.get(tab())?.property||selectedState?.property||'text';$('property').disabled=pendingProperties.has(tab());
  $('save-report').disabled=!selectedState?.selection&&!selectedState?.stale?.target;
  gate('load',admission('inspect-selector'),!selectedState?.selection?.selector&&!selectedState?.stale?.target?.selector);
  const picker=selectedState?.picker,picking=['starting','picking','resolving'].includes(picker?.status);
@@ -146,7 +147,7 @@ function reveal(id){const e=$(id),scroller=$('scroll');if(e.tagName==='DETAILS')
  $('source-project').onclick=()=>reveal('source-connection');$('source-import').onclick=()=>reveal('source-map-details');
  for(const d of root.querySelectorAll('.sp-atom-tools > details, .sp-atom-inspection > details'))d.classList.add('sp-disclosure');
 let fields=[];
-function clearInspection(keepTarget=true){++selectionGeneration;const property=$('property').value;++loadGeneration;selectedState=keepTarget&&selectedState?{...selectedState,selection:null,analysis:null,stale:null}:null;analysis=null;renderInspection();$('property').value=property;}
+function clearInspection(keepTarget=true){++selectionGeneration;const property=$('property').value;++loadGeneration;selectedState=keepTarget&&selectedState?{...selectedState,selection:null,analysis:null,stale:null}:null;analysis=null;renderInspection();if(keepTarget)$('property').value=property;}
 async function changeContext(){const owned=ownedPicker;owned?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);if(owned)await client.request({op:'cancel-pick',tabId:owned.tabId,pickerId:owned.id}).catch(()=>{});}
 async function inspectAgain(){
  const id=tab(),selector=selectedState?.selection?.selector||selectedState?.stale?.target?.selector;
@@ -167,7 +168,12 @@ const unsubscribe=client.subscribe(m=>{if(disposed)return;if(['selection','state
 function renderAtom(atom,finiteTraceSupported=false){$('atom-chain').replaceChildren();$('atom-independent').textContent='';if(!atom){$('atom-summary').textContent=selectedState?.stale?'Stale · '+selectedState.stale.reason+' · inspect again':'Unknown/Unsupported: no inspection';return;}const r=atom.runtime;$('atom-summary').textContent=(r.status||'Unknown/Unsupported')+' · '+atom.target.property+' = '+JSON.stringify(atom.target.value)+' · '+(r.status==='Observed'?'selected computation snapshot':r.reason||'');
  for(const n of (r.nodes||[])){const d=document.createElement('details'),s=document.createElement('summary');s.textContent=n.status+' · '+n.kind+' · '+n.expression+(n.kind==='potential-property-write'?' · potential access; completion unknown':' = '+JSON.stringify(n.value))+(n.origin?' · parsed object/field '+n.origin.url+' #'+n.origin.pointer+(finiteTraceSupported?' · independent fragment value origin ':' · current value origin ')+(n.valueOrigin||'Unknown/Unsupported')+(finiteTraceSupported?' · This parsed-identity fragment alone does not establish ancestry; see the separately scoped finite trace for the original selected read.':''):'')+(n.boundary?' · '+n.boundary:'');const p=document.createElement('pre');p.textContent=JSON.stringify(n,null,2);d.append(s,p);$('atom-chain').append(d);}
  for(const slice of atom.slices||[]){const d=document.createElement('details'),s=document.createElement('summary');s.textContent='Code-linked · possible source slice · '+slice.nodes.length+' nodes';const p=document.createElement('pre');p.textContent=JSON.stringify(slice,null,2);d.append(s,p);$('atom-chain').append(d);}$('atom-independent').textContent=JSON.stringify(r.independentObservations||[],null,2);}
-$('property').onchange=()=>action(async()=>{const id=tab(),property=$('property').value;clearInspection();const generation=selectionGeneration;await rpc({op:'property',tabId:id,property});if(id===tab()&&generation===selectionGeneration)await load();});
+$('property').onchange=()=>action(async()=>{
+ const id=tab(),property=$('property').value;if(pendingProperties.has(id))return;
+ pendingProperties.set(id,{property});clearInspection();
+ try{await rpc({op:'property',tabId:id,property});}
+ finally{pendingProperties.delete(id);if(!disposed&&id===tab())await action(load);}
+});
 $('source-map-readonly').onchange=attachAvailability;
 $('atom-run').onclick=()=>action(async()=>{restorationNotice=null;const id=tab(),generation=selectionGeneration;$('atom-result').textContent='Running controlled trials…';const r=await rpc({op:'deep-experiment',tabId:tab(),variants:JSON.parse($('atom-variants').value)});if(id!==tab()||generation!==selectionGeneration)return;$('atom-result').textContent=r.status+' · baseline '+JSON.stringify(r.baseline)+' · '+r.scope;$('evidence').textContent=JSON.stringify(r,null,2);});
 $('atom-restore').onclick=()=>action(async()=>{const id=tab(),generation=selectionGeneration,epoch=tabGeneration,experimentId=selectedState?.deepExperiment?.id,target=selectedState?.selection||selectedState?.stale?.target,origin=selectedState?.origin;const r=await rpc({op:'restore',tabId:id});if(id!==tab()||generation!==selectionGeneration)return;restorationNotice={id:experimentId,tab:id,epoch,generation,origin,selector:target?.selector,property:target?.property,text:'Restored by reload + cache/storage reset · '+JSON.stringify(r.value)};await load();});

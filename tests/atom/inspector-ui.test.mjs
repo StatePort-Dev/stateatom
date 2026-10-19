@@ -60,6 +60,18 @@ test('invalidation clears old sources and explanation before refreshed state ret
 test('one finished background refresh cannot say OK while another current-context action is pending',async()=>{
  const pending=deferred();const f=fixture(m=>m.op==='property'?pending.promise:undefined);await f.view.ready;f.$('property').value='disabled';const attaching=f.$('property').onchange();await f.$('refresh-tabs').onclick();assert.equal(f.$('status').textContent,'Working…');pending.resolve({});await attaching;assert.equal(f.$('status').textContent,'OK');await f.view.dispose();
 });
+test('refresh during a pending property change cannot restore the previous property snapshot',async()=>{
+ const reply=deferred();let property='text';const f=fixture(m=>m.op==='property'?reply.promise:m.op==='state'?{...f.state(m.tabId),property,selection:{...f.state(m.tabId).selection,property}}:undefined);await f.view.ready;
+ f.$('property').value='disabled';const changing=f.$('property').onchange();await f.$('refresh-tabs').onclick();assert.equal(f.$('property').value,'disabled');assert.doesNotMatch(f.$('selected').textContent,/#target/);assert.equal(f.$('property').disabled,true);
+ property='disabled';reply.resolve({});await changing;assert.equal(f.$('property').value,'disabled');assert.match(f.$('selected').textContent,/#target/);assert.equal(f.$('property').disabled,false);await f.view.dispose();
+});
+test('failed property change releases its pending guard and renders the actual runtime property',async()=>{
+ const reply=deferred();const f=fixture(m=>m.op==='property'?reply.promise:undefined);await f.view.ready;f.$('property').value='disabled';const changing=f.$('property').onchange();await f.$('refresh-tabs').onclick();assert.doesNotMatch(f.$('selected').textContent,/#target/);
+ reply.resolve(Promise.reject(Error('Property denied')));await changing;assert.match(f.$('status').textContent,/Property denied/);assert.equal(f.$('property').disabled,false);assert.equal(f.$('property').value,'text');assert.match(f.$('selected').textContent,/#target/);await f.view.dispose();
+});
+test('returning to a tab with a pending property change keeps its requested property without an old snapshot',async()=>{
+ const reply=deferred();const f=fixture(m=>m.op==='property'?reply.promise:undefined);await f.view.ready;f.$('property').value='disabled';const changing=f.$('property').onchange();f.$('tabs').value='2';await f.$('tabs').onchange();assert.match(f.$('selected').textContent,/#target-2/);f.$('tabs').value='1';await f.$('tabs').onchange();assert.doesNotMatch(f.$('selected').textContent,/#target/);assert.equal(f.$('property').value,'disabled');assert.equal(f.$('property').disabled,true);reply.resolve({});await changing;assert.equal(f.$('property').disabled,false);await f.view.dispose();
+});
 
 test('section navigation focuses the section instead of a hidden nested disclosure',async()=>{
  const f=fixture();await f.view.ready;let focused='';const section=f.$('actions-section');section.focus=()=>focused='section';section.querySelector=()=>({focus:()=>focused='nested summary'});f.$('actions-nav').onclick();assert.equal(focused,'section');await f.view.dispose();
