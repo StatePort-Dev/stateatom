@@ -15,8 +15,8 @@ function fixture(request,options={}){
  const host={ownerDocument:document,append(){}};
  const state=id=>({attached:true,tabId:id,property:'text',selection:{selector:'#target-'+id,property:'text',value:'Tab '+id,text:'Tab '+id,observedAt:100},analysis:{sources:[],actionContext:{},stateatom:{target:{property:'text',value:'Tab '+id},runtime:{status:'Unknown/Unsupported'}}}});
  const list=[{id:1,url:'http://127.0.0.1:4173/one'},{id:2,url:'http://127.0.0.1:4173/two'}];
- let onEvent;const client={request:async(m,o)=>request?.(m,o)??(m.op==='tabs'?list:m.op==='list-diagnostics'?[]:m.op==='state'?state(m.tabId):{}),subscribe:fn=>{onEvent=fn;return()=>{};}};
- return {$,state,list,emit:m=>onEvent(m),view:mountAtom(host,client,{idPrefix:'',...options})};
+ let onEvent;const connectionListeners=new Set();const client={request:async(m,o)=>request?.(m,o)??(m.op==='tabs'?list:m.op==='list-diagnostics'?[]:m.op==='state'?state(m.tabId):{}),subscribeConnection:fn=>{connectionListeners.add(fn);return()=>connectionListeners.delete(fn);},subscribe:fn=>{onEvent=fn;return()=>{};}};
+ return {$,state,list,emit:m=>onEvent(m),disconnect:()=>{for(const fn of connectionListeners)fn({state:'closed',code:'INSPECTOR_DISCONNECTED'});},view:mountAtom(host,client,{idPrefix:'',...options})};
 }
 test('changing tab clears explanation and target before pending picker cleanup settles',async()=>{
  const cancel=deferred(),pick=deferred();const f=fixture(m=>m.op==='pick'?pick.promise:m.op==='cancel-pick'?cancel.promise:undefined);await f.view.ready;
@@ -76,3 +76,9 @@ test('returning to a tab with a pending property change keeps its requested prop
 test('section navigation focuses the section instead of a hidden nested disclosure',async()=>{
  const f=fixture();await f.view.ready;let focused='';const section=f.$('actions-section');section.focus=()=>focused='section';section.querySelector=()=>({focus:()=>focused='nested summary'});f.$('actions-nav').onclick();assert.equal(focused,'section');await f.view.dispose();
 });
+
+test('unavailable input fields stay hidden and do not probe their own capability operations without explicit preview',async()=>{const{describeCapabilities}=await import('../../packages/atom/src/transport.mjs');const calls=[];let f;f=fixture(m=>{calls.push(m.op);if(m.op==='state')return{...f.state(m.tabId),capabilityPolicy:describeCapabilities({url:'http://127.0.0.1:4173/',permission:true,attached:true,lease:'owned',grants:['read','inject','cache','reload','override','replay'],hasSelection:true,hasAnalysis:true,workerIndependent:true,nativeInputOwner:true})};});await f.view.ready;await tick();assert.equal(f.$('input-editor').hidden,true);assert.equal(calls.filter(op=>op==='capabilities').length,0);await f.view.dispose();});
+
+test('a lost owned connection clears main inspection actions and keeps an explicit recovery message',async()=>{const{describeCapabilities}=await import('../../packages/atom/src/transport.mjs');let f;f=fixture(m=>m.op==='state'?{...f.state(m.tabId),capabilityPolicy:describeCapabilities({url:'http://127.0.0.1:4173/',permission:true,attached:true,lease:'owned',grants:['read','inject','cache','reload','override','replay'],hasSelection:true,hasAnalysis:true,workerIndependent:true,nativeInputOwner:true})}:undefined);await f.view.ready;assert.equal(f.$('pick').disabled,false);f.disconnect();assert.equal(f.$('pick').disabled,true);assert.match(f.$('status').textContent,/connection lost|reopen/i);assert.doesNotMatch(f.$('selected').textContent,/#target/);await f.view.dispose();});
+
+test('same-observation background refresh preserves the input scroll position while still clearing stale content',async()=>{const f=fixture();await f.view.ready;f.$('scroll').scrollTop=240;f.emit({event:'state-invalidated',tabId:1});assert.doesNotMatch(f.$('selected').textContent,/#target/);await tick();await tick();assert.equal(f.$('scroll').scrollTop,240);await f.view.dispose();});

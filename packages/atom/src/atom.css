@@ -114,3 +114,38 @@
 [data-sp-ui][data-atom-root] .sp-atom-element-details [data-atom-id="picker-choices"] button { min-height:24px; padding:3px 6px; font:10px/1.4 var(--sp-font-mono); }
 [data-sp-ui][data-atom-root] [data-atom-id="picker-parent"][hidden],
 [data-sp-ui][data-atom-root] [data-atom-id="element-details"][hidden] { display:none !important; }
+
+/* Eligible-input rows follow the supplied Inputs/Draft controls. Shared tokens
+   and primitive sizing stay authoritative; long locators are on demand. */
+[data-sp-ui][data-atom-root] .sp-atom-input-editor { margin-block:12px 20px; min-width:0; }
+[data-sp-ui][data-atom-root] .sp-atom-input-toolbar { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin:10px 0; }
+[data-sp-ui][data-atom-root] .sp-atom-input-toolbar > label { display:flex; align-items:center; gap:6px; margin:0; font-size:12px; }
+[data-sp-ui][data-atom-root] .sp-atom-input-modes { display:flex; gap:3px; padding:3px; background:var(--sp-color-soft); border-radius:6px; }
+[data-sp-ui][data-atom-root] .sp-atom-input-modes button { min-width:48px; }
+[data-sp-ui][data-atom-root] .sp-atom-input-modes [aria-pressed="true"],
+[data-sp-ui][data-atom-root] .sp-atom-input-control button[aria-pressed="true"] { color:var(--sp-color-primary); border-color:var(--sp-color-primary); background:var(--sp-color-surface); }
+[data-sp-ui][data-atom-root] .sp-atom-input-actions { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0; }
+[data-sp-ui][data-atom-root] .sp-atom-input-columns { color:var(--sp-color-muted); font-size:11px; margin:12px 0 4px; }
+[data-sp-ui][data-atom-root] .sp-atom-input-row { padding:12px 0; border-bottom:1px solid var(--sp-color-border); min-width:0; }
+[data-sp-ui][data-atom-root] .sp-atom-input-row-top { display:grid; grid-template-columns:minmax(80px,1fr) auto; align-items:center; gap:8px; }
+[data-sp-ui][data-atom-root] .sp-atom-input-name { margin:0; font:600 12px/1.5 var(--sp-font-mono); min-width:0; overflow-wrap:anywhere; }
+[data-sp-ui][data-atom-root] .sp-atom-input-values { display:flex; align-items:center; gap:6px; min-width:0; }
+[data-sp-ui][data-atom-root] .sp-atom-input-current { display:block; max-width:52px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; color:var(--sp-color-muted); font-size:12px; }
+[data-sp-ui][data-atom-root] .sp-atom-input-arrow { color:var(--sp-color-muted); }
+[data-sp-ui][data-atom-root] .sp-atom-input-control { display:flex; gap:3px; width:128px; min-width:0; }
+[data-sp-ui][data-atom-root] .sp-atom-input-control :is(input,textarea,select) { width:100%; font-size:12px; }
+[data-sp-ui][data-atom-root] .sp-atom-input-control button { flex:1; padding-inline:6px; }
+[data-sp-ui][data-atom-root] .sp-atom-input-meta { display:flex; align-items:center; justify-content:space-between; gap:6px; margin-top:6px; color:var(--sp-color-muted); font-size:11px; }
+[data-sp-ui][data-atom-root] .sp-atom-input-meta button { min-height:28px; padding:3px 6px; }
+[data-sp-ui][data-atom-root] .sp-atom-input-row details { border:0; margin:4px 0 0; }
+[data-sp-ui][data-atom-root] .sp-atom-input-row summary { padding:3px 0; font-size:11px; color:var(--sp-color-muted); }
+[data-sp-ui][data-atom-root] .sp-atom-input-row details code { display:block; overflow-wrap:anywhere; }
+[data-sp-ui][data-atom-root] .sp-atom-input-status { font-size:12px; }
+[data-sp-ui][data-atom-root] [data-atom-id="input-editor"][hidden],
+[data-sp-ui][data-atom-root] [data-atom-id^="input-"][hidden] { display:none !important; }
+@media (max-width:400px) { [data-sp-ui][data-atom-root] .sp-atom-input-values { gap:4px; } [data-sp-ui][data-atom-root] .sp-atom-input-current { max-width:38px; } }
+[data-sp-ui][data-atom-root] .sp-atom-input-toolbar > label { width:auto; flex:0 0 auto; white-space:nowrap; }
+[data-sp-ui][data-atom-root] .sp-atom-input-toolbar > label select { width:132px; flex:none; }
+[data-sp-ui][data-atom-root] .sp-atom-input-editor [hidden] { display:none !important; }
+[data-sp-ui][data-atom-root] [data-atom-id="inspector-reconnect"][hidden],
+[data-sp-ui][data-atom-root] [data-atom-id="load"][hidden] { display:none !important; }

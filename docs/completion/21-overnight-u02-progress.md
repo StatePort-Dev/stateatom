@@ -317,3 +317,54 @@ This completes only the source controller slice. **U02.4c.2** must import it int
 real fields, wire mounted-view cleanup/recovery, and test actual Live/Draft events,
 keyboard, narrow/visual fidelity and native effects. Task 4 stays open; field-mode
 catalogue coverage is still 0/18 in both modes, and feature flags stay unavailable.
+
+## U02.4c.2 — actual fields in explicit development preview
+
+Candidate `.20261019.25` / unchanged shared UI `.20261018.2`, checked above
+`65435d7` with working changes, now mounts the real field controller. Both local
+hosts explicitly opt into `inputEditorPreview`; the library default and public
+Live/Draft feature flags remain unavailable until Task 5 acceptance. Preview
+never bypasses runtime admission. Atom-only rows use supplied native primitives,
+short resource labels, observed/rule → draft, on-demand locators, Live/Draft,
+explicit Apply/Discard, current-read and both undos. Shared tokens/fonts and
+reference artifacts are unchanged. The optional reconnect callback reloads only
+the inspector; no stale writer resumes automatically.
+
+Fresh checks: 34 focused UI/controller and 951 full source tests; 2 strict packed
+consumers; 7 package admission controls; 7 source and 7 installed controlled-render
+checks; **16 actual packaged native field checks** across standalone/embedding.
+The latter use setup/permission/selection RPC, then field DOM actions and native
+panel keyboard. Both modes exercise a response rule → next app request → changed
+validation → UI undo; text/textarea/number/checkbox/select change actual native
+outputs and each undo restores its baseline. Invalid `-` remains local. Actual
+embedding unmount closes its observer with the client still alive; remount opens
+an independent investigation. This completes mounted-view wiring, not the full
+Task 4 timing/race contract or U02 acceptance.
+
+Frozen local receipt and executable verifier:
+`.artifacts/u02/input-fields/verification.json` and `verify.mjs`.
+Immutable handoff: `.artifacts/atom/2026-10-19T22-46-21-262Z/atom-handoff.json`.
+Native results: `.artifacts/u02/input-fields/native/2026-10-19T22-57-13-861Z/results.json`.
+Source/installed controlled-render clients are explicitly separate from native
+proof. No precise native debounce measurement or catalogue credit is claimed;
+coverage stays **0/18** until the preregistered matrix in both modes is run.
+
+Retained failures first exposed a browser timer receiver error, missing readonly
+capability refresh and a same-observation scroll reset. Fixes have RED/GREEN
+source/rendered checks. Existing immediate tab clearing and pending-property
+semantics remain covered. Native harness failures were separately diagnosed:
+independent cases overlapped an outstanding Read current (correctly refusing a
+stale draft), then selected a new tab before its option arrived. The driver now
+waits for the actual UI operation/list; freshness/conflict checks were preserved.
+Failed results and diagnostic screenshots remain in their original directories.
+
+Rendered first viewport at 440/390 was compared by the agent with supplied
+`01-inputs.png`: original selected-element hierarchy, Inter/native controls,
+spacing/alignment and short value rows remain. Necessary deviations are an
+explicit source/mode/open toolbar, scope disclosures and real stale/unknown
+statuses in place of simulated source/local-state support. Long resource strings
+move to disclosures; values truncate within their row without horizontal overflow.
+Screenshots are **review candidates**, not human approval. The controlled-render
+check covers reduced motion; native layout/keyboard checks cover both widths.
+The next bounded slice is **U02.4c.3**: precise native timing, queued/partial and
+external-revision cases before unchanged Task 5 majority/default-path acceptance.

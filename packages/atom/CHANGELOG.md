@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-candidate.20261019.25
+
+- Add reference-based typed input rows, Live/Draft controls, scoped Apply,
+  both undos, current-read and per-view cleanup in an explicit local-host
+  development preview. Library defaults keep unavailable features hidden.
+- Preserve raw invalid text, field focus/scroll and held drafts; show actual
+  backend phases and Unknown dependency without promoting delivery to effect.
+- Add visible readonly refusal and explicit inspector reconnect through a host
+  callback. Reconnect reloads the inspector only and restores no old writer.
+- Use shared native primitives and unchanged tokens/fonts; default feature flags
+  and majority acceptance remain pending the actual field-mode matrix.
+
 ## 0.1.0-candidate.20261019.24
 
 - Prevent a failed background read of a retired input editor from invalidating

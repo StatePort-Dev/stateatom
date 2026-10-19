@@ -6,7 +6,7 @@ addEventListener('pagehide',()=>{closed=true;void Promise.resolve(view?.dispose(
 void chrome.tabs.getCurrent().catch(()=>null).then(current=>{
  if(closed)return;
  // A host can supply its own selected tab; opener is the example host's context.
- const mount=(initialTabId=current?.openerTabId)=>{view=mountAtom(root,client,{readerURL:'../reader.html',initialTabId});return view.ready;};
+ const mount=(initialTabId=current?.openerTabId)=>{view=mountAtom(root,client,{readerURL:'../reader.html',initialTabId,inputEditorPreview:true,onReconnect:()=>location.reload()});return view.ready;};
  window.embedding={mount,unmount(){return view.dispose();}};
  void mount();
 });

@@ -88,6 +88,15 @@ focused / 948 full tests pass with .24 recorded inputs/archive bytes unchanged.
 No rendered fields or real timing is credited. Next is U02.4c.2: actual view
 wiring and native/keyboard/visual validation, with Task 4 and U02 still open.
 
+U02.4c.2 subsequently mounts actual fields in the explicit .25 development
+preview: 34 focused / 951 full, 16 two-host native field and 7 source / 7 installed
+controlled-render checks pass, with 2 strict consumers and 7 package controls.
+Both modes and UI undo affect actual native controls/response-driven validation;
+embedding view unmount cleans its observer with the client alive. Public flags
+remain unavailable and catalogue credit stays 0/18 until unchanged Task 5
+acceptance. Next is U02.4c.3 native timing/races; Task 4 and U02 remain open.
+Screenshots are candidates, not human approval.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

@@ -492,10 +492,27 @@
           "record": "21-overnight-u02-progress.md",
           "runtime_bundled": false,
           "native_rows_verified": 0
+        },
+        {
+          "id": "U02.4c.2",
+          "status": "complete",
+          "scope": "Actual packaged fields in explicit development preview and mounted-view cleanup only; no timing/race/majority acceptance",
+          "candidate": "0.1.0-candidate.20261019.25",
+          "tests": {
+            "focused": 34,
+            "full": 951,
+            "source_controlled_render": 7,
+            "installed_controlled_render": 7,
+            "native_fields": 16,
+            "packed_type_consumers": 2,
+            "package_admission": 7
+          },
+          "record": "21-overnight-u02-progress.md",
+          "native_rows_verified": 0
         }
       ],
-      "active_slice": "U02.4c.2",
-      "implementation_dependency": ".24 page lifetime/backend proof passes; mounted-view close/cancel, fields, both modes and timing remain required before unchanged majority acceptance"
+      "active_slice": "U02.4c.3",
+      "implementation_dependency": ".25 preview fields and mounted-view cleanup pass; precise native timing/races, both-mode catalogue majority and final default-path acceptance remain required"
     },
     {
       "id": "U03",

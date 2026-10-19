@@ -106,3 +106,27 @@ loss performs no unowned fallback. Context loss retains one read-only old draft;
 starting another scope requires explicit discard rather than silent migration.
 These are source/controller choices, not installed field behavior. 18 models,
 88 focused and 948 full tests pass; actual view/timing/native/visual checks remain.
+
+## 4c.2 development preview and keyboard choices
+
+Before field-mode acceptance, both local host examples explicitly opt into a
+new `inputEditorPreview` mount option. The library default hides these controls
+while the public Live/Draft feature flags remain unavailable. The preview reveals
+the actual packaged components and guarded operations, not a simulated engine;
+readonly/native-owner/grant checks still apply. It carries an explicit Preview
+label. Task 5 must establish the unchanged both-mode majority and final checks
+before enabling the ordinary feature availability and verifying the default path.
+This is a new development choice, not an earlier approved product decision.
+
+Number editors use a text input with decimal input mode so invalid intermediate
+text stays visible. Plain Enter flushes single-line text/number; textarea Enter
+inserts a newline and Ctrl+Enter flushes. This explicit textarea exception preserves
+multiline entry; actual keyboard/timing verification remains required. Reconnect
+is an optional explicit host callback that reloads the inspector, not the app.
+No stale writer reconnects or recovers rules automatically.
+
+The .25 preview is now exercised in both immutable hosts: response fields and
+native typed widgets in both modes, invalid numeric text, UI undo, narrow/focus
+checks and embedding mounted-view cleanup pass. These are scoped agent checks;
+timing/races and the fixed catalogue majority remain open. See the
+[execution record](../completion/21-overnight-u02-progress.md).

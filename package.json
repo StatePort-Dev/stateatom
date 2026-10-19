@@ -82,7 +82,9 @@
     "verify:input-owner-lifetime": "node tests/integration/input-owner-lifetime.mjs",
     "verify:input-control-world": "node tests/integration/input-control-world.mjs",
     "verify:input-controls": "node tests/integration/input-controls.mjs",
-    "verify:input-inspector": "node tests/integration/input-inspector.mjs"
+    "verify:input-inspector": "node tests/integration/input-inspector.mjs",
+    "verify:input-fields-ui": "node tests/integration/input-fields-ui.mjs",
+    "verify:input-fields": "node tests/integration/input-fields.mjs"
   },
   "dependencies": {
     "@angular/compiler": "20.3.34",

@@ -37,3 +37,6 @@ runtime.connectInspector?.('typed-live-session').close('Typed cleanup');
 // @ts-expect-error owner identity cannot be supplied on an unrelated operation.
 liveClient.request({op:'attach',tabId:1,ownerId:'wrong-scope'});
 void inspectorConnections.dispose();
+
+const fieldPreview=mountAtom(document.createElement('div'),client,{inputEditorPreview:true,onReconnect:async()=>{},idPrefix:'field-preview-'});
+void fieldPreview.dispose();

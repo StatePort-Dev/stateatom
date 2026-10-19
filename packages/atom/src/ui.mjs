@@ -1,6 +1,7 @@
 import {parseConnectionReceipt} from '../../../core/project-connection.mjs';
 import {appOrigin,helperURL} from './origin-policy.mjs';
 import {createSourceMapUI} from './source-map-ui.mjs';
+import {createInputUI} from './input-ui.mjs';
 import {createActionUI} from './action-ui.mjs';
 import {parseDiagnostic,serializeDiagnostic,omitDiagnosticContent} from '../../../core/diagnostic.mjs';
 import {inspectionView,selectionPresentation} from '../../../browser-extension/inspection-view.mjs';
@@ -22,7 +23,7 @@ export function mountAtom(rootElement,client,options={}){
  rootElement.append(root);mounted.set(rootElement,root);
  const $=id=>root.querySelector('[data-atom-id="'+id+'"]');
  $('reader-link').href=options.readerURL||'reader.html';
- let disposed=false;const controller=new AbortController(),urls=new Set(),timers=new Set();
+ let disposed=false,connectionLost=false;const controller=new AbortController(),urls=new Set(),timers=new Set();
  const later=(fn,ms)=>{const timer=setTimeout(()=>{timers.delete(timer);if(!disposed)fn();},ms);timers.add(timer);};
 let ownedPicker;
 function ownPickerRequest(tabId,id){ownedPicker?.controller?.abort();const own={tabId,id,controller:new AbortController()};ownedPicker=own;return AbortSignal.any([controller.signal,own.controller.signal]);}
@@ -50,14 +51,19 @@ async function load(){
  if(!Number.isSafeInteger(id)||id<=0){selectedState=null;analysis=null;renderInspection();return;}
  const state=await rpc({op:'state',tabId:id,refreshDeep:true});
  if(generation!==loadGeneration||id!==tab()||pendingProperties.has(id))return;
- selectedState={...state,tabId:id};analysis=state.analysis;renderInspection();
+ selectedState={...state,tabId:id};analysis=state.analysis;inputUI.update(selectedState);renderInspection();
 }
 const sourceMapUI=createSourceMapUI({document,$,rpc,tab,load,action,requestPermission:options.requestOriginPermission});
 const actionsUI=createActionUI({document,$,rpc,tab,action});
+const inputUI=createInputUI({document,$,client,preview:options.inputEditorPreview===true});
+function lostConnection(){if(disposed)return;connectionLost=true;ownedPicker?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);inputUI.update(null);$('status').textContent='Inspector connection lost. Reopen this inspector to continue.';}
+const offConnection=client.subscribeConnection?.(lostConnection)||(()=>{});
+$('inspector-reconnect').onclick=()=>{if(typeof options.onReconnect==='function')void options.onReconnect();};
 function admission(op){const p=selectedState?.capabilityPolicy;return supportsCapabilityPolicy(p)?p.operations?.[op]:{available:false,reason:'Host does not advertise capability policy v1; update the Atom host'};}
 function gate(id,decision,otherwise=false){$(id).disabled=otherwise||!decision?.available;$(id).title=decision?.available?'':decision?.reason||'Capability unavailable';}
 function attachAvailability(){const p=selectedState?.capabilityPolicy,known=supportsCapabilityPolicy(p),requestAccess=known&&!!options.requestOriginPermission&&p.features['basic.request-site-access'].available;gate('attach',requestAccess?p.features['basic.request-site-access']:$('source-map-readonly').checked&&known?p.features['basic.attach-read-only']:admission('attach'));$('attach').textContent=requestAccess?'Allow site and attach':'Attach';}
 function renderInspection(){
+ $('load').hidden=connectionLost;$('inspector-reconnect').hidden=!connectionLost||typeof options.onReconnect!=='function';
  sourceMapUI.render(selectedState);
  actionsUI.render(selectedState);
  $('project-setup-status').textContent=selectedState?.projectSetup?.reason||'Basic works without the helper. For source access, install matching components and paste a private receipt.';
@@ -67,7 +73,7 @@ function renderInspection(){
  for(const name of ['cache','reload','override','replay'])$('site-'+name).checked=selectedState?.connection?.actions?.includes(name)===true;
  $('site-mode').value=selectedState?.connection?.mode||'read-only';
  $('connection-label').textContent=selectedState?.attached?(selectedState.readOnly?'Attached · read-only':'Attached · this tab'):'Not attached';
- if(view.observedAt&&view.observedAt!==renderedAt){$('scroll').scrollTop=0;for(const id of ['actions-nav','evidence-nav','source-nav'])$(id).removeAttribute('aria-current');$('inputs-nav').setAttribute('aria-current','location');}renderedAt=view.observedAt;
+ if(view.observedAt&&view.observedAt!==renderedAt){$('scroll').scrollTop=0;for(const id of ['actions-nav','evidence-nav','source-nav'])$(id).removeAttribute('aria-current');$('inputs-nav').setAttribute('aria-current','location');}if(view.observedAt)renderedAt=view.observedAt;
  $('inspection-summary').textContent=view.summary;
  const next={attach:['Choose tab and attach',()=>reveal('browser-connection')],'select-element':['Select page element',()=>$('pick').click()],'inspect-again':['Inspect again',()=>$('load').click()],'connect-project':['Connect project for source',()=>reveal('source-connection')],'start-observation':['Set up input observation',()=>reveal('source-connection')],unsupported:['View supported boundaries',()=>reveal('evidence-scope-details')]};
  const [nextLabel,nextAction]=next[view.nextStep];$('inspection-next').textContent=nextLabel;$('inspection-next').onclick=nextAction;
@@ -147,13 +153,13 @@ function reveal(id){const e=$(id),scroller=$('scroll');if(e.tagName==='DETAILS')
  $('source-project').onclick=()=>reveal('source-connection');$('source-import').onclick=()=>reveal('source-map-details');
  for(const d of root.querySelectorAll('.sp-atom-tools > details, .sp-atom-inspection > details'))d.classList.add('sp-disclosure');
 let fields=[];
-function clearInspection(keepTarget=true){++selectionGeneration;const property=$('property').value;++loadGeneration;selectedState=keepTarget&&selectedState?{...selectedState,selection:null,analysis:null,stale:null}:null;analysis=null;renderInspection();if(keepTarget)$('property').value=property;}
-async function changeContext(){const owned=ownedPicker;owned?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);if(owned)await client.request({op:'cancel-pick',tabId:owned.tabId,pickerId:owned.id}).catch(()=>{});}
+function clearInspection(keepTarget=true,{preserveViewport=false}={}){if(!preserveViewport)renderedAt=null;++selectionGeneration;const property=$('property').value;++loadGeneration;selectedState=keepTarget&&selectedState?{...selectedState,selection:null,analysis:null,stale:null}:null;analysis=null;renderInspection();if(keepTarget)$('property').value=property;}
+async function changeContext(){const inputCleanup=inputUI.close('Selected tab changed'),owned=ownedPicker;owned?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);if(owned)await client.request({op:'cancel-pick',tabId:owned.tabId,pickerId:owned.id}).catch(()=>{});await inputCleanup;}
 async function inspectAgain(){
  const id=tab(),selector=selectedState?.selection?.selector||selectedState?.stale?.target?.selector;
  if(!selector)throw Error('Select an element first');
- clearInspection();
- try{await rpc({op:'inspect-selector',tabId:id,selector});}
+ const inputCleanup=inputUI.close('Inspect again');clearInspection();
+ try{await inputCleanup;if(id!==tab())return;await rpc({op:'inspect-selector',tabId:id,selector});}
  finally{if(id===tab())await load();}
 }
 function flatten(v,p='',out=[]){if(v!==null&&typeof v==='object')for(const[k,x]of Object.entries(v))flatten(x,p?p+'.'+k:k,out);else out.push({path:p,value:v});return out;}
@@ -161,17 +167,17 @@ $('connect-receipt').onclick=()=>action(async()=>{try{const r=parseConnectionRec
 $('pair').onclick=()=>action(async()=>{const url=$('bridge').value,origin=$('origin').value;if(!helperURL(url)||!appOrigin(origin,{exact:true}))throw Error('Enter canonical origins without paths');if(options.requestOriginPermission&&!await options.requestOriginPermission(url))throw Error('Helper origin permission denied');await rpc({op:'pair',url,token:$('token').value,origin,sourceRoot:$('source-root').value});await load();});
 $('save-site').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration,origin=$('tabs').selectedOptions?.[0]?.dataset.origin,mode=$('site-mode').value,actions=mode==='development'?['cache','reload','override','replay'].filter(n=>$('site-'+n).checked):[];if(!appOrigin(origin,{exact:true}))throw Error('Select an exact application origin');if(options.requestOriginPermission&&!await options.requestOriginPermission(origin))throw Error('Site origin permission denied');if(id!==tab()||epoch!==tabGeneration)throw Error('Selected tab changed');await rpc({op:'connect-site',tabId:id,connection:{origin,mode,actions}});await load();});
 $('forget-site').onclick=()=>action(async()=>{await rpc({op:'forget-site',tabId:tab()});await load();});
-$('refresh-tabs').onclick=()=>action(async()=>{await tabs();await load();});$('tabs').onchange=()=>{const cleanup=changeContext();return action(async()=>{await cleanup;await load();});};$('attach').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration,origin=$('tabs').selectedOptions?.[0]?.dataset.origin;if(selectedState?.capabilityPolicy?.features?.['basic.request-site-access']?.available&&(!options.requestOriginPermission||!await options.requestOriginPermission(origin)))throw Error('Site origin permission denied');await rpc({op:'attach',tabId:id,readOnly:$('source-map-readonly').checked});if(disposed||id!==tab()||epoch!==tabGeneration)return;await load();if(disposed||id!==tab()||epoch!==tabGeneration)return;$('browser-connection').open=false;$('source-connection').open=false;$('scroll').scrollTop=0;});$('pick').onclick=()=>action(async()=>{const cancelling=['starting','picking','resolving'].includes(selectedState?.picker?.status),pickerId=cancelling?selectedState.picker.id:crypto.randomUUID();const signal=cancelling?controller.signal:ownPickerRequest(tab(),pickerId);if(cancelling)ownedPicker?.controller?.abort();await rpc({op:cancelling?'cancel-pick':'pick',tabId:tab(),pickerId},signal);if(cancelling)ownedPicker=null;await load();});$('inspect-selector').onclick=()=>action(async()=>{const id=tab(),selector=$('selector').value;clearInspection();try{await rpc({op:'inspect-selector',tabId:id,selector});}finally{if(id===tab())await load();}});$('load').onclick=()=>action(inspectAgain);$('detach').onclick=()=>action(async()=>{await rpc({op:'detach',tabId:tab()});await load();});
+$('refresh-tabs').onclick=()=>action(async()=>{await tabs();await load();});$('tabs').onchange=()=>{const cleanup=changeContext();return action(async()=>{await cleanup;await load();});};$('attach').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration,origin=$('tabs').selectedOptions?.[0]?.dataset.origin;if(selectedState?.capabilityPolicy?.features?.['basic.request-site-access']?.available&&(!options.requestOriginPermission||!await options.requestOriginPermission(origin)))throw Error('Site origin permission denied');await rpc({op:'attach',tabId:id,readOnly:$('source-map-readonly').checked});if(disposed||id!==tab()||epoch!==tabGeneration)return;await load();if(disposed||id!==tab()||epoch!==tabGeneration)return;$('browser-connection').open=false;$('source-connection').open=false;$('scroll').scrollTop=0;});$('pick').onclick=()=>action(async()=>{await inputUI.close('Element selection changed');const cancelling=['starting','picking','resolving'].includes(selectedState?.picker?.status),pickerId=cancelling?selectedState.picker.id:crypto.randomUUID();const signal=cancelling?controller.signal:ownPickerRequest(tab(),pickerId);if(cancelling)ownedPicker?.controller?.abort();await rpc({op:cancelling?'cancel-pick':'pick',tabId:tab(),pickerId},signal);if(cancelling)ownedPicker=null;await load();});$('inspect-selector').onclick=()=>action(async()=>{const id=tab(),selector=$('selector').value,inputCleanup=inputUI.close('Manual selection changed');clearInspection();try{await inputCleanup;if(id!==tab())return;await rpc({op:'inspect-selector',tabId:id,selector});}finally{if(id===tab())await load();}});$('load').onclick=()=>action(inspectAgain);$('detach').onclick=()=>action(async()=>{await rpc({op:'detach',tabId:tab()});await load();});
 $('experiment').onclick=()=>action(async()=>{const id=tab(),generation=selectionGeneration;const field=fields[Number($('fields').value)];$('experiment-result').textContent='Running…';const result=await rpc({op:'experiment',tabId:tab(),field,value:JSON.parse($('value').value),controlPath:$('control').value,actions:JSON.parse($('actions').value)});if(id!==tab()||generation!==selectionGeneration)return;$('experiment-result').textContent=result.status+': '+result.reason;$('evidence').textContent=JSON.stringify(result,null,2);});
-const unsubscribe=client.subscribe(m=>{if(disposed)return;if(['selection','state-invalidated'].includes(m.event)&&m.tabId===tab()){clearInspection();void action(load);}});const ready=tabs().then(load).catch(e=>{if(disposed)return;$('status').textContent='Error: '+e.message;});
+const unsubscribe=client.subscribe(m=>{if(disposed)return;if(['selection','state-invalidated'].includes(m.event)&&m.tabId===tab()){clearInspection(true,{preserveViewport:m.event==='state-invalidated'});void action(load);}});const ready=tabs().then(load).catch(e=>{if(disposed)return;if(e.code==='INSPECTOR_DISCONNECTED')lostConnection();else $('status').textContent='Error: '+e.message;});
 
 function renderAtom(atom,finiteTraceSupported=false){$('atom-chain').replaceChildren();$('atom-independent').textContent='';if(!atom){$('atom-summary').textContent=selectedState?.stale?'Stale · '+selectedState.stale.reason+' · inspect again':'Unknown/Unsupported: no inspection';return;}const r=atom.runtime;$('atom-summary').textContent=(r.status||'Unknown/Unsupported')+' · '+atom.target.property+' = '+JSON.stringify(atom.target.value)+' · '+(r.status==='Observed'?'selected computation snapshot':r.reason||'');
  for(const n of (r.nodes||[])){const d=document.createElement('details'),s=document.createElement('summary');s.textContent=n.status+' · '+n.kind+' · '+n.expression+(n.kind==='potential-property-write'?' · potential access; completion unknown':' = '+JSON.stringify(n.value))+(n.origin?' · parsed object/field '+n.origin.url+' #'+n.origin.pointer+(finiteTraceSupported?' · independent fragment value origin ':' · current value origin ')+(n.valueOrigin||'Unknown/Unsupported')+(finiteTraceSupported?' · This parsed-identity fragment alone does not establish ancestry; see the separately scoped finite trace for the original selected read.':''):'')+(n.boundary?' · '+n.boundary:'');const p=document.createElement('pre');p.textContent=JSON.stringify(n,null,2);d.append(s,p);$('atom-chain').append(d);}
  for(const slice of atom.slices||[]){const d=document.createElement('details'),s=document.createElement('summary');s.textContent='Code-linked · possible source slice · '+slice.nodes.length+' nodes';const p=document.createElement('pre');p.textContent=JSON.stringify(slice,null,2);d.append(s,p);$('atom-chain').append(d);}$('atom-independent').textContent=JSON.stringify(r.independentObservations||[],null,2);}
 $('property').onchange=()=>action(async()=>{
- const id=tab(),property=$('property').value;if(pendingProperties.has(id))return;
+ const id=tab(),property=$('property').value;if(pendingProperties.has(id))return;const inputCleanup=inputUI.close('Selected property changed');
  pendingProperties.set(id,{property});clearInspection();
- try{await rpc({op:'property',tabId:id,property});}
+ try{await inputCleanup;await rpc({op:'property',tabId:id,property});}
  finally{pendingProperties.delete(id);if(!disposed&&id===tab())await action(load);}
 });
 $('source-map-readonly').onchange=attachAvailability;
@@ -190,5 +196,5 @@ $('delete-report').onclick=()=>action(async()=>{await rpc({op:'delete-diagnostic
 $('unpair').onclick=()=>action(async()=>{await rpc({op:'unpair'});await load();});
 void savedReports().catch(e=>{if(disposed)return;$('diagnostic-status').textContent='Local reports unavailable: '+e.message;});
 
-return {ready,element:root,dispose(){ownedPicker?.controller?.abort();const cleanup=ownedPicker?client.request({op:'cancel-pick',tabId:ownedPicker.tabId,pickerId:ownedPicker.id}).catch(()=>{}):Promise.resolve();ownedPicker=null;sourceMapUI.dispose();actionsUI.dispose();if(disposed)return;disposed=true;++loadGeneration;controller.abort();unsubscribe();for(const t of timers)clearTimeout(t);for(const u of urls)URL.revokeObjectURL(u);timers.clear();urls.clear();$('export-review').close();root.remove();mounted.delete(rootElement);return cleanup;}};
+return {ready,element:root,dispose(){const inputCleanup=inputUI.dispose();ownedPicker?.controller?.abort();const cleanup=ownedPicker?client.request({op:'cancel-pick',tabId:ownedPicker.tabId,pickerId:ownedPicker.id}).catch(()=>{}):Promise.resolve();ownedPicker=null;sourceMapUI.dispose();actionsUI.dispose();if(disposed)return;disposed=true;++loadGeneration;controller.abort();unsubscribe();offConnection();for(const t of timers)clearTimeout(t);for(const u of urls)URL.revokeObjectURL(u);timers.clear();urls.clear();$('export-review').close();root.remove();mounted.delete(rootElement);return Promise.all([cleanup,inputCleanup]).then(()=>{});}};
 }
