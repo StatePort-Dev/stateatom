@@ -16,7 +16,7 @@ chrome.debugger.onDetach.addListener((source,reason)=>events.emit({type:'detach'
 chrome.permissions.onRemoved.addListener(()=>events.emit({type:'permissions-removed'}));
 chrome.tabs.onUpdated.addListener((tabId,change)=>{if(change.url)events.emit({type:'navigation',tabId,url:change.url});});
 chrome.tabs.onRemoved.addListener(tabId=>events.emit({type:'removed',tabId}));
-chrome.action.onClicked.addListener(()=>chrome.tabs.create({url:chrome.runtime.getURL('workspace/inspect.html')}));
+chrome.action.onClicked.addListener(tab=>chrome.tabs.create({url:chrome.runtime.getURL('workspace/inspect.html'),...(Number.isSafeInteger(tab?.id)&&tab.id>0?{openerTabId:tab.id}:{})}));
 chrome.runtime.onMessage.addListener(createAtomDispatcher(runtime,{
  isTrusted:s=>s.id===chrome.runtime.id&&s.url===chrome.runtime.getURL('workspace/inspect.html'),
  isSelectionSender:s=>s.id===chrome.runtime.id&&s.frameId===0&&!!s.tab&&(isInspectionOrigin(s.url)||platform.approvedSite(s.url))&&new URL(s.url).origin===new URL(s.tab.url).origin

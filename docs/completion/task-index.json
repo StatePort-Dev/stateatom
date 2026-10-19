@@ -253,7 +253,7 @@
         "npm run verify:embedding"
       ],
       "deliverable": "Reference-aligned normal workflow without research controls",
-      "status": "planned",
+      "status": "in-progress",
       "optional": false,
       "additional_final_scope_dependencies": [
         "U05"
@@ -265,7 +265,8 @@
           "validation": "19-u05-picker-presentation.md",
           "does_not_complete": "Broader selected-element normal workflow and remaining U01 acceptance"
         }
-      }
+      },
+      "active_plan": "../plans/2026-10-19-u01-selected-workspace.md"
     },
     {
       "id": "U02",
@@ -1023,7 +1024,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK \u2014 separate StatePort project",
+      "title": "Production SDK — separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",

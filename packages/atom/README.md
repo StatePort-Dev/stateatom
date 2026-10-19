@@ -136,3 +136,9 @@ ancestor index and stops before document/body choices. Full native DOM choices,
 exact CSS identity and picker limitations remain in Element details. Missing
 ancestor-index metadata does not guess a parent. This changes presentation only;
 Unknown/Stale evidence and exact native document/node checks are unchanged.
+
+A host may pass `initialTabId` (a positive integer) to `mountAtom` to retain its
+selected application context. Atom selects it only if the runtime admits that tab.
+If that tab is missing or unsupported, the application selection stays empty; the
+user must choose a tab explicitly. The examples use Chrome's `openerTabId` while
+keeping the exact trusted inspector URL unchanged.

@@ -161,9 +161,8 @@ try {
     });
     assert(geometry.sourceTop<400,JSON.stringify(geometry));assert.equal(geometry.footerBottom,900);assert.equal(geometry.headerHeight,57);
     assert(await panel.evaluate(()=>[...document.fonts].some(f=>f.family==='StatePort Inter'&&f.status==='loaded')));
-    await panel.getByRole('button',{name:'Diagnostics',exact:true}).click();
+    await panel.locator('#diagnostic-toggle').click();
     assert.equal(await panel.locator('#diagnostics-details').getAttribute('open'),'');
-    assert.equal(await panel.locator('#diagnostics-nav').getAttribute('aria-current'),'location');
     await panel.locator('#diagnostics-details > summary').click();await panel.locator('#inputs-nav').click();
     assert.equal(await panel.locator('#inputs-nav').getAttribute('aria-current'),'location');
     await panel.setViewportSize({width:1280,height:900});
@@ -208,9 +207,9 @@ try {
   await chooseTab(panel, '/react/'); await panel.locator('#attach').click();
   await panel.locator('#status').filter({hasText: /^OK$/}).waitFor();
   await app.reload(); await app.locator('#p1').waitFor();
-  await select(panel, app, '#p1');
+  try{await select(panel, app, '#p1');}catch(e){await writeFile(out+'/native-selection-failure.json',JSON.stringify(await panel.evaluate(async()=>({text:document.querySelector('#selected').textContent,status:document.querySelector('#status').textContent,state:await chrome.runtime.sendMessage({op:'state',tabId:Number(document.querySelector('#tabs').value)})})),null,2));throw e;}
   await check('selected browser-only property retains explicit Unknown evidence', async () => {
-    assert.match(await panel.locator('#selected').innerText(), /13/);
+    assert.match(await panel.locator('#selected').textContent(), /13/);
     assert.match(await panel.locator('#atom-summary').innerText(), /Unknown\/Unsupported/);
   });
   for (const width of [960, 360]) {

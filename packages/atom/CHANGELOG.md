@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.0-candidate.20261019.13
+
+- Focus the requested section instead of a hidden descendant disclosure. Keep
+  Working status until every current-context action settles. Preserve the issued
+  .12 archive and its incomplete native checks; U01 acceptance belongs to .13.
+
+## 0.1.0-candidate.20261019.12
+
+- Complete the existing 440px inspector composition with four real task entries,
+  a short snapshot result and a specific next action. Keep manual generated
+  coordinates in advanced source lookup; no new provenance or edit capability.
+- Clear old target/explanation output before awaiting tab, property or
+  invalidation refreshes. Preserve current tab during late list responses and
+  cancel model output on exact context changes. Hosts may supply initialTabId;
+  examples retain Chrome opener context without broadening trusted URLs.
+- Permit only bundled local fonts in the passive reader CSP. Script and network
+  restrictions stay intact. Shared UI .2, tokens and visual contract are unchanged;
+  these are Atom-local composition corrections. Screenshots need human review.
+
 ## 0.1.0-candidate.20261019.11
 
 - Replace the always-visible DOM selector/ancestor toolbar with an observed text

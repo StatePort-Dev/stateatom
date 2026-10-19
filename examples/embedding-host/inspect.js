@@ -1,7 +1,12 @@
 import {mountAtom} from '@stateport/atom/ui';
 import {createAtomClient,chromeTransport} from '@stateport/atom/transport';
 const client=createAtomClient(chromeTransport(chrome)),root=document.getElementById('workbench-inspector');
-let view=mountAtom(root,client,{readerURL:'../reader.html'});
-// Lifecycle controls used by the embedding consumer as well as its verification.
-window.embedding={mount(){view=mountAtom(root,client,{readerURL:'../reader.html'});return view.ready;},unmount(){return view.dispose();}};
-addEventListener('pagehide',()=>{void Promise.resolve(view.dispose()).finally(()=>client.dispose());},{once:true});
+let view,closed=false;
+addEventListener('pagehide',()=>{closed=true;void Promise.resolve(view?.dispose()).finally(()=>client.dispose());},{once:true});
+void chrome.tabs.getCurrent().catch(()=>null).then(current=>{
+ if(closed)return;
+ // A host can supply its own selected tab; opener is the example host's context.
+ const mount=(initialTabId=current?.openerTabId)=>{view=mountAtom(root,client,{readerURL:'../reader.html',initialTabId});return view.ready;};
+ window.embedding={mount,unmount(){return view.dispose();}};
+ void mount();
+});

@@ -1,6 +1,6 @@
 {
   "name": "@stateport/atom",
-  "version": "0.1.0-candidate.20261019.11",
+  "version": "0.1.0-candidate.20261019.13",
   "type": "module",
   "description": "Embeddable StateAtom browser runtime and inspector",
   "license": "(MIT AND Apache-2.0)",

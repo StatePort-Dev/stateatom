@@ -9,7 +9,7 @@ export function createActionUI({document,$,rpc,tab,action}){
  function render(state){
   const stale=!!state?.stale||(state?.analysis?.actionBindings||[]).some(b=>b.freshness==='Stale');
   const sourcePermission=supportsCapabilityPolicy(state?.capabilityPolicy)?state.capabilityPolicy.operations.open:null;
-  const next=JSON.stringify([state?.analysis?.actionContext,stale,state?.selection?.observedAt,state?.stale?.at,sourcePermission]);if(key===next)return;key=next;++epoch;cancel();
+  const next=JSON.stringify([state?.tabId,state?.run,state?.selection,state?.property,state?.analysis?.actionContext,state?.analysis?.actionBindings,stale,state?.stale?.at,sourcePermission]);if(key===next)return;key=next;++epoch;cancel();
   const analysis=state?.analysis,bindings=analysis?.actionBindings||[],source=bindings.filter(b=>b.mechanism==='react-jsx'),native=bindings.filter(b=>b.mechanism==='dom-listener');
   $('action-handlers').replaceChildren();$('action-more').replaceChildren();$('action-native').replaceChildren();$('action-more-details').hidden=source.length<=3;$('action-native-details').hidden=!native.length;
   $('action-summary').textContent=stale?'Stale · inspect again for current action evidence.':source.length?'Declared in source · execution not observed':'Unknown/Unsupported · no exact JSX binding. Native metadata, where available, is separate.';
