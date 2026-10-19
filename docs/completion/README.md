@@ -7,18 +7,18 @@
 
 This is a delivery plan, not a new architecture or a release announcement. It reuses the public Atom runtime, inspector, design library, source-map implementation, IDE helper and test harnesses. Completed work is not assigned again.
 
-The audit distinguishes implementation read in this revision, results recorded by the repository, and the hosted CI result for this exact commit. No native browser, IDE or local-model test was rerun for this document package. See [the audit](01-current-state-audit.md).
+The audit distinguishes implementation read in this revision, results recorded by the repository, and the hosted CI result for this exact commit. No native browser, IDE or local-model test was rerun for that original document package. Subsequent executable increments have separate execution records. See [the audit](01-current-state-audit.md).
 
 ## Read and execute
 
 1. Read [release scope](02-release-scope.md) and [current gaps](01-current-state-audit.md).
-2. Reuse the [scope-adoption reconciliation](13-scope-reconciliation.md) and
-   [completed F01 execution](14-f01-capability-contracts.md). Source exploration
-   and canonical policy/packed declarations are credited, not reassigned. The
-   single next item is **F02: real site/project origin policy**; it is not started
-   by the F01 execution. Current implementation remains on the original dev
-   origins plus host-opted-in read-only HTTPS.
-3. Continue with **F02/F03**, **U05 visual selection** and **U01/U02** for ordinary projects, the normal inspector and Live/Draft editing. **U06** develops the QA/PM handoff before U03 finishes it; **F05** provides deliberate production enablement. In parallel, a maintainer can inspect the official host's consumed package versions under **I01**; integrating incompatible in-flight public contracts must wait for F01/F04.
+2. Reuse completed F01–F04 and U05 implementation/evidence; the compact .11
+   target controls are credited in the [completed U01 workspace](20-u01-selected-workspace.md).
+   Its .14 checks and retained failures are scoped in that execution report.
+3. The single next item is **U02: Live and Draft/Apply eligible-input editing**,
+   after completed F02/U01/U05. Define its catalogue and exact Live parameters in
+   U02. U06 develops handoff UX; F05 defines deliberate production enablement.
+   Official-host intake remains I01 and is separate from this local increment.
 4. Develop the remaining analysis and production capabilities through their named cases. Keep the existing closed first-read profile as a separately labelled regression.
 5. Run the release matrix on one immutable candidate, then decide the distribution milestone. A green unit/build job alone is not a release gate.
 
@@ -44,6 +44,10 @@ Each work item contains its inputs, output, files, tests and stopping point. An 
 | [14 — F01 execution](14-f01-capability-contracts.md) | Canonical policy, packed declarations, exact checks and remaining boundaries |
 | [15 — F02 execution](15-f02-origin-connections.md) | Exact connections, explicit development actions and permission invalidation |
 | [16 — F03 execution](16-f03-installed-project-setup.md) | Accepted installed setup on .8, scoped native evidence, retained failures and next F04 |
+| [17 — F04 execution](17-f04-immutable-package-pair.md) | Immutable package identities and checked consumers |
+| [18 — U05 execution](18-u05-visual-picker.md) | Native visual selection, refinement and cancellation |
+| [19 — U05 feedback](19-u05-picker-presentation.md) | Compact target controls and system-scale demo correction |
+| [20 — U01 execution](20-u01-selected-workspace.md) | Normal inspector, context/freshness guards, reader fonts and scoped checks |
 | [Task index](task-index.json) | 29 active work items, dependency graph, owners and separate external SDK reference |
 | [Evidence register](audit-evidence.json) | Pinned sources and the limits of this review |
 

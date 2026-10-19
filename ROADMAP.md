@@ -54,7 +54,7 @@ subsequent [U05 execution](docs/completion/18-u05-visual-picker.md) completes
 native visual selection/refinement/cancel on `.20261019.10`: 649 unit, 33 packed
 picker, 35 two-host, 26 Basic and 32 Actions checks pass. Escape cancellation
 retains an explicit page-key limitation; UI Cancel avoids page keys. The actual
-packed demo is prepared and smoke-checked. The single next bounded item is
+packed demo is prepared and smoke-checked. At that checkpoint the next bounded item was
 **U01 — selected-element inspector experience**, after completed F01/U05.
 No broader feature implementation or execution of all 29 items follows. The narrower
 historical alpha acceptance remains unchanged.
@@ -64,6 +64,18 @@ responds to maintainer demo feedback on Atom `.20261019.11`: concise observed
 labels, one actual-parent action, technical details on request and restrained
 native hover styling. Its 650 unit / 33 packed picker controls pass. Credit this
 slice in U01 without restarting U05 or declaring the broader U01 workflow complete.
+
+The [U01 execution](docs/completion/20-u01-selected-workspace.md) completes the
+normal selected-element workspace on `.20261019.14`: four real task entries,
+short snapshot guidance, advanced manual lookup, exact tab/property/explanation
+context and a working passive-reader font policy. Fresh results: 663 unit,
+42 two-host/IDE, 25 UI, 33 picker, 32 Actions and 19 maps per host, with 2 strict
+consumers and 7 package controls. Actions input methods and retained pointer
+timeouts are explicitly scoped in the report; human visual approval is not
+presumed. Earlier criteria/results remain historical. The one next unfinished
+item is **U02 — Live and Draft/Apply eligible-input editing**, after F02/U01/U05.
+Its exact Live parameters remain for U02; F05 grant scope/lifetime and U06
+handoff UX are still unresolved in their own tasks.
 
 ## Historical roadmap and checkpoint ledger
 

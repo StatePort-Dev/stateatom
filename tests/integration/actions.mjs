@@ -15,13 +15,14 @@ const inputFiles=['core/action-analysis.mjs','core/action-native.mjs','core/acti
 async function hashes(){const out={};for(const f of inputFiles)out[f]=createHash('sha256').update(await readFile(root+'/'+f)).digest('hex');return out;}
 const beforeHashes=await hashes();
 const result={startedAt:new Date().toISOString(),revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceDirty:true,browserPath:'Browser plugin not available; existing sandboxed Playwright MV3 + VS Code harness',checks:[],health:[],cases:[]};
+result.inspectionActivation='Keyboard focus + Enter on the real Inspect selector button; original pointer timeout runs retained separately';
 result.host={path:hostPath,panelPath:process.env.ATOM_PANEL_PATH||'panel.html',before:hostBefore};
 let ide,browser,server,panel,page;const check=(name,ok)=>{result.checks.push({name,status:ok?'PASS':'FAIL'});assert(ok,name);};
 async function inspect(selector){
  const started=performance.now();
  const before=await rpc(panel,{op:'state',tabId:result.tabId});
  if(!await atom('#selector').isVisible())await atom('#selector-details > summary').click();
- await atom('#selector').fill(selector);await atom('#inspect-selector').click();
+ await atom('#selector').fill(selector);await atom('#inspect-selector').focus();await panel.keyboard.press('Enter');
  const s=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId:result.tabId});return s.selection?.observedAt!==before.selection?.observedAt&&s.selection?.selector===selector&&s.analysis?s:null;},60000);
  await atom('#status').filter({hasText:/^(OK|Error:)/}).waitFor();assert.equal(await atom('#status').innerText(),'OK');
  await writeFile(out+'/latest-inspection.json',JSON.stringify(s,null,2));

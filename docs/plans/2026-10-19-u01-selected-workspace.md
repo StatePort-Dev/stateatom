@@ -28,17 +28,32 @@
 
 **Interfaces:** initialTabId is an optional positive integer supplied by a host; it is admitted only from the runtime tab list. Presentation consumes existing validated records only. Clearing context invalidates pending presentation work before cleanup awaits.
 
-- [ ] RED: add regressions for pending picker cancellation, late tab refresh, property output clearing, equal-timestamp action contexts and missing host context; assert summary/source guidance and passive reader CSP.
+- [x] RED: add regressions for pending picker cancellation, late tab refresh, property output clearing, equal-timestamp action contexts and missing host context; assert summary/source guidance and passive reader CSP.
   Run: node --test --test-isolation=none tests/atom/inspector-ui.test.mjs
   Expected: failures demonstrating current gaps.
-- [ ] GREEN: add four task entrypoints, concise result/next action, source guidance and advanced generated lookup; synchronous context clearing, host opener context and reader font-src self. Do not change runtime evidence or evaluation.
+- [x] GREEN: add four task entrypoints, concise result/next action, source guidance and advanced generated lookup; synchronous context clearing, host opener context and reader font-src self. Do not change runtime evidence or evaluation.
   Run: node --test --test-isolation=none tests/atom/inspector-ui.test.mjs tests/inspection-view.test.mjs
   Expected: all pass, historical evidence assertions preserved.
-- [ ] Add a current native U01 flow to existing embedding verification for both immutable hosts: selected opener, four real entrypoints, skipped operands, unexecuted handler/model absent, stale HMR, no editable input, imported historical reader/font/CSP, narrow/keyboard views. Reuse actual U05 native suite for selection/refinement.
+- [x] Add a current native U01 flow to existing embedding verification for both immutable hosts: selected opener, four real entrypoints, skipped operands, unexecuted handler/model absent, stale HMR, no editable input, imported historical reader/font/CSP, narrow/keyboard views. Reuse actual U05 native suite for selection/refinement.
   Run: npm test; npm run check:ui; npm run pack:atom; npm run verify:atom-types; npm run verify:atom-package; npm run verify:embedding; npm run verify:picker
   Expected: all pass for the final candidate; source/CI/native/agent visuals are reported separately. Adjust affected source-map driver to open advanced lookup.
-- [ ] Record exact package identity, configuration, fresh checks, historical credits and unverified boundaries; complete only U01 and select U02 next. Local commit; one fresh final review and one focused fix pass if necessary.
+- [x] Record exact package identity, configuration, fresh checks, historical credits and unverified boundaries; complete only U01 and select U02 next. Local commit; one fresh final review and one focused fix pass if necessary.
   Run: git diff --check
   Expected: clean.
 
 **Commit:** feat(atom): complete selected-element inspector workspace
+
+## Execution evidence
+
+Final candidate .14 and scoped results are recorded in
+[20-u01-selected-workspace](../completion/20-u01-selected-workspace.md).
+One fresh reviewer found an Important concurrent property/refresh race; three
+regressions failed before the guard fix, then passed, with 663/663 full-suite checks.
+No Critical/Minor findings or declined judgments remained. Actions preserves all
+32 assertions; successful standalone uses pointer activation and embedding uses
+real keyboard activation. Original pointer timeout runs remain failed evidence,
+not a claimed fix. Existing engine experiments retain their historical status.
+
+Run: python3 .artifacts/u01/verify-evidence.py
+Expected: exact final package/build source and all ten successful evidence records
+match their retained hashes before the acceptance record is bound to delivery.

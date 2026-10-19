@@ -250,10 +250,12 @@
         "npm run verify:browser",
         "npm run verify:react-host-ui",
         "npm run verify:actions",
-        "npm run verify:embedding"
+        "npm run verify:embedding",
+        "npm run verify:picker",
+        "npm run verify:production-source-mapping"
       ],
       "deliverable": "Reference-aligned normal workflow without research controls",
-      "status": "in-progress",
+      "status": "complete",
       "optional": false,
       "additional_final_scope_dependencies": [
         "U05"
@@ -266,7 +268,17 @@
           "does_not_complete": "Broader selected-element normal workflow and remaining U01 acceptance"
         }
       },
-      "active_plan": "../plans/2026-10-19-u01-selected-workspace.md"
+      "implementation_plan": "../plans/2026-10-19-u01-selected-workspace.md",
+      "execution_record": "20-u01-selected-workspace.md",
+      "delivery_states": [
+        "implemented",
+        "native-verified"
+      ],
+      "remaining_limits": [
+        "Intermittent Chrome pointer-click timeouts retained; cause not isolated. Standalone pointer retry and embedding keyboard run pass unchanged 32 assertions.",
+        "Snapshots only; Live/Draft belongs to U02, production enablement to F05, handoff UX to U06.",
+        "No real-model validation, SDK, official-host intake, publication or global release-readiness claim."
+      ]
     },
     {
       "id": "U02",
@@ -1096,57 +1108,86 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "U05",
-      "increment": "presentation follow-up to maintainer demo feedback",
+      "id": "U01",
       "status": "complete",
-      "source_base": "042333534fd534acd108eb50768d6cd5bf5dbae8",
-      "source_dirty_at_checks": true,
-      "package_version": "0.1.0-candidate.20261019.11",
-      "package_sha256": "10f0f03045ef77ac4abe89e1018042dec8d457719f9917e439baab04c64fb683",
+      "source_base": "76c310727338e7be4d93158b25d39158fdd0a53c",
+      "source_fix_commit": "206622b",
+      "package_version": "0.1.0-candidate.20261019.14",
+      "package_sha256": "9d9987ddc1854e7cdd56075e204110c080c6e85aa18eccbe7ba07de962c8f2c1",
       "ui_version": "0.2.0-candidate.20261018.2",
       "ui_sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
-      "execution_record": "19-u05-picker-presentation.md",
-      "delivery_states": [
-        "implemented",
-        "native-verified"
-      ],
-      "operator": "agent-operated automated harnesses and live demo",
-      "verified_checks": {
-        "unit": 650,
-        "focused_view_controller": 33,
-        "development_picker": 16,
-        "picker_both_hosts": 33,
-        "strict_packed_consumers": 2,
-        "installed_admission_matrix": 7,
-        "demo_smoke_stages": 3,
-        "headed_system_scale_dpr": 2,
-        "headed_demo_recorded_steps": 6
+      "build_sources_sha256": "14b69a8cb5ff6c2bfaecece332d831353bba8a8a6b4ec39175662f9ce6ecd1d4",
+      "handoff": ".artifacts/atom/2026-10-19T16-59-43-626Z/atom-handoff.json",
+      "record": "20-u01-selected-workspace.md",
+      "verification": {
+        "ui": {
+          "file": ".artifacts/extension-ui/verification/2026-10-19T17-01-06-151Z/verification.json",
+          "sha256": "dd8b1caa21167af168a5e0471b33705748e54d120f41d68426f5ac19da306225",
+          "passed": 25
+        },
+        "embedding": {
+          "file": ".artifacts/atom/verification/2026-10-19T17-01-41-772Z/results.json",
+          "sha256": "85f632872e54341314d43851426e3f447664c2d626ba362af6fc191be679d23f",
+          "passed": 42
+        },
+        "actions_standalone": {
+          "file": ".runtime/action-runs/u01-final-standalone-retry/results.json",
+          "sha256": "0ba88afac659f4e0adc1631f84ade0b2a3804404444ebdde68845a1981d9858c",
+          "passed": 32
+        },
+        "actions_embedding": {
+          "file": ".runtime/action-runs/u01-final-embedding-keyboard/results.json",
+          "sha256": "6209a117417351978833a00fabf9278a30b4d965f83899439aff383c386917c0",
+          "passed": 32
+        },
+        "maps_standalone": {
+          "file": ".artifacts/production-source-mapping-2026-10-19T17-14-39-437Z/result.json",
+          "sha256": "0f917b43972253c8ce5f51372b0a8d809ce10206a952d908ec6e575f8273e4e6",
+          "passed": 19
+        },
+        "maps_embedding": {
+          "file": ".artifacts/production-source-mapping-2026-10-19T17-14-54-341Z/result.json",
+          "sha256": "3ddcea1a9af0a12422d9a8423862cf3fd659bf87869d6ce0c3dce0b335e45042",
+          "passed": 19
+        },
+        "picker": {
+          "file": ".artifacts/u05/picker-runs/2026-10-19T17-14-52-817Z/results.json",
+          "sha256": "9c9fd969c4e83e4910ca191eb7d4fca93fab5fe590ae6a25a50651a8ada24815",
+          "passed": 33
+        },
+        "package": {
+          "file": ".artifacts/atom/compatibility/2026-10-19T16-59-50-630Z/result.json",
+          "sha256": "a66f03479665644b2d3ce0f27aad921037a3f04f26e868617a32d18fd93f40de",
+          "passed": 7
+        },
+        "types": {
+          "file": ".artifacts/atom/2026-10-19T16-59-43-626Z/type-consumer-result.json",
+          "sha256": "05329c181662015126a38b3d08438682f2cbb81c53d8ef0cbad6b77c5b398e3a",
+          "passed": 2
+        },
+        "unit": {
+          "file": ".artifacts/u01/review-tests-full.log",
+          "sha256": "a839246d6412861f7a925369ef8940930712746caacc900bc8147a172848876f",
+          "passed": 663
+        }
       },
-      "credited_history": "18-u05-visual-picker.md; original .10 Actions/IDE/ABA results retained, not rerun or upgraded",
-      "unsupported": [
-        "Exclusive Escape-key suppression",
-        "frame/closed-root internals",
-        "universal DPI/emulation acceptance"
-      ],
-      "not_claimed": [
-        "broader U01 completion",
-        "human visual approval",
-        "official-host intake",
-        "publication",
-        "SDK",
-        "Live/Draft editing",
-        "production change enablement",
-        "Action Trace",
-        "validated local model"
+      "operator": "agent",
+      "human_visual_approval": false,
+      "next_item": "U02",
+      "limits": [
+        "Intermittent Chrome pointer-click timeouts retained; cause not isolated. Standalone pointer retry and embedding keyboard run pass unchanged 32 assertions.",
+        "Snapshots only; Live/Draft belongs to U02, production enablement to F05, handoff UX to U06.",
+        "No real-model validation, SDK, official-host intake, publication or global release-readiness claim."
       ]
     },
-    "next_item": "U01",
+    "next_item": "U02",
     "new_full_task_acceptances": [
       "F01",
       "F02",
       "F03",
       "F04",
-      "U05"
+      "U05",
+      "U01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": null,
@@ -1362,9 +1403,54 @@
           "validated local model",
           "universal event suppression"
         ]
+      },
+      {
+        "id": "U05",
+        "increment": "presentation follow-up to maintainer demo feedback",
+        "status": "complete",
+        "source_base": "042333534fd534acd108eb50768d6cd5bf5dbae8",
+        "source_dirty_at_checks": true,
+        "package_version": "0.1.0-candidate.20261019.11",
+        "package_sha256": "10f0f03045ef77ac4abe89e1018042dec8d457719f9917e439baab04c64fb683",
+        "ui_version": "0.2.0-candidate.20261018.2",
+        "ui_sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+        "execution_record": "19-u05-picker-presentation.md",
+        "delivery_states": [
+          "implemented",
+          "native-verified"
+        ],
+        "operator": "agent-operated automated harnesses and live demo",
+        "verified_checks": {
+          "unit": 650,
+          "focused_view_controller": 33,
+          "development_picker": 16,
+          "picker_both_hosts": 33,
+          "strict_packed_consumers": 2,
+          "installed_admission_matrix": 7,
+          "demo_smoke_stages": 3,
+          "headed_system_scale_dpr": 2,
+          "headed_demo_recorded_steps": 6
+        },
+        "credited_history": "18-u05-visual-picker.md; original .10 Actions/IDE/ABA results retained, not rerun or upgraded",
+        "unsupported": [
+          "Exclusive Escape-key suppression",
+          "frame/closed-root internals",
+          "universal DPI/emulation acceptance"
+        ],
+        "not_claimed": [
+          "broader U01 completion",
+          "human visual approval",
+          "official-host intake",
+          "publication",
+          "SDK",
+          "Live/Draft editing",
+          "production change enablement",
+          "Action Trace",
+          "validated local model"
+        ]
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md"
   },
-  "next_task": "U01"
+  "next_task": "U02"
 }

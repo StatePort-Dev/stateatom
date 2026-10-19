@@ -1,7 +1,6 @@
 # U01 — selected-element workspace
 
-Date: 2026-10-19. Source base `76c3107`, same main branch. Verification is in
-progress. This increment follows the approved U01 brief in
+Date: 2026-10-19. Source base `76c3107`, same main branch. Status: **complete within the bounded U01 brief**. This increment follows the approved U01 brief in
 [04](04-inspector-and-experiments.md), with F01 and U05 already complete.
 It does not implement U02 editing or expand the approved scope.
 
@@ -45,6 +44,11 @@ delivery remain separate named tasks.
 
 ## Exact candidate
 
+Implementation commits: `59c2a25` and the reviewed property fix `206622b`.
+The .14 handoff records `59c2a25` plus its dirty .14 fix inputs at build time;
+its full build-source manifest was checked against the final committed source.
+Delivery metadata is bound separately after the final local documentation commit.
+
 | Input | Value |
 | --- | --- |
 | Atom | `0.1.0-candidate.20261019.14` |
@@ -66,8 +70,38 @@ second review or human-acceptance claim is inferred from the fix pass.
 
 ## Verification record
 
-Final native and full-suite results will be recorded here after completion.
+| Actual check | Result | Retained evidence |
+| --- | --- | --- |
+| UI context/property regressions | RED → GREEN; 26 focused checks PASS | `.artifacts/u01/review-property-red.log`, `review-property-green.log` |
+| `npm test` after the review fix | 663/663 PASS; no skips | `.artifacts/u01/review-tests-full.log` |
+| `npm run verify:extension-ui` | 25/25 PASS | `.artifacts/extension-ui/verification/2026-10-19T17-01-06-151Z/verification.json` |
+| `npm run verify:embedding -- <handoff>` | 42/42 PASS, both exact hosts and actual IDE | `.artifacts/atom/verification/2026-10-19T17-01-41-772Z/results.json` |
+| `npm run verify:actions`, standalone pointer activation | 32/32 PASS on fresh retry | `.runtime/action-runs/u01-final-standalone-retry/results.json` |
+| `npm run verify:actions`, embedding keyboard activation | 32/32 PASS, same assertions | `.runtime/action-runs/u01-final-embedding-keyboard/results.json` |
+| `npm run verify:production-source-mapping`, each host | 19/19 PASS per host | `.artifacts/production-source-mapping-2026-10-19T17-14-39-437Z/result.json`, `.artifacts/production-source-mapping-2026-10-19T17-14-54-341Z/result.json` |
+| `npm run verify:picker -- <handoff>` | 33/33 PASS, both exact hosts | `.artifacts/u05/picker-runs/2026-10-19T17-14-52-817Z/results.json` |
+| `npm run verify:atom-types` | 2 strict packed consumers PASS | `.artifacts/atom/2026-10-19T16-59-43-626Z/type-consumer-result.json` |
+| `npm run verify:atom-package` | 7/7 PASS | `.artifacts/atom/compatibility/2026-10-19T16-59-50-630Z/result.json` |
+| `npm run check:ui` | PASS, unchanged exact UI .2 | `.artifacts/u01/check-ui.log` |
+
+The successful .14 checks use Chromium 153.0.8010.12 with sandbox enabled,
+repository Playwright (Browser plugin unavailable), synthetic fixtures and real
+VS Code Extension Host for source navigation. Both hosts use the same fixtures
+and 440/360 widths for U01; additional established 960, 390 and 200% CSS zoom
+controls retain their configurations. This is not browser chrome zoom or fresh
+headed HiDPI acceptance. No network model download or real-model inference ran.
+
 Initial regressions, native failures and intermediate candidates remain retained.
+In .14, the first standalone Actions pointer run stopped after 29 passing checks;
+an embedding pointer run stopped after four. Both timed out delivering a click
+to Inspect selector. High memory/swap pressure was observed, but causation was
+not isolated. The fresh standalone pointer retry passed all 32; embedding passed
+the same 32 assertions using real focus/Enter on that same control. No timeout
+was increased and no result assertion was removed. The keyboard result does not
+prove that the intermittent pointer timeout is fixed. Original failed runs stay
+in `.runtime/action-runs/u01-final-standalone/` and `u01-final-embedding/`.
+The earlier isolated IDE trust-startup failure is retained in
+`.artifacts/u01/embedding-final.log`; it supplies no product acceptance.
 The layout driver was reconciled with .11's already-approved closed Element
 details: inert advanced selector text is read with textContent, while visible
 title/controls and closed disclosure are checked separately. No unavailable

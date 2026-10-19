@@ -36,7 +36,7 @@ on Atom `.20261019.10`: 649 unit, 33 packed picker, 35 two-host, 26 Basic and
 cancels but may reach page key handlers; UI Cancel avoids page keys. The real
 packed [demo](testing/visual-picker-demo.md) passes its preparation smoke; a human
 demonstration has not yet been performed. Screenshots remain review candidates.
-**U01 — selected-element inspector experience** is the one next unfinished item,
+At that checkpoint, **U01 — selected-element inspector experience** was next,
 after completed F01/U05. No release or human-study claim follows.
 
 A subsequent [maintainer-feedback correction](completion/19-u05-picker-presentation.md)
@@ -84,6 +84,18 @@ new short-loop and installed-helper UI runs rather than rewriting historical has
 Last recorded baseline: **2026-10-17**.
 
 StateAtom is an experimental project. The latest available prototype summary records **NARROW SCOPE** for the technical result and **NOT READY** for a public OSS alpha.
+
+The [U01 execution](completion/20-u01-selected-workspace.md) completes the
+normal selected-element workspace on `.20261019.14`: four real task entries,
+short snapshot guidance, advanced manual lookup, exact tab/property/explanation
+context and a working passive-reader font policy. Fresh results: 663 unit,
+42 two-host/IDE, 25 UI, 33 picker, 32 Actions and 19 maps per host, with 2 strict
+consumers and 7 package controls. Actions input methods and retained pointer
+timeouts are explicitly scoped in the report; human visual approval is not
+presumed. Earlier criteria/results remain historical. The one next unfinished
+item is **U02 — Live and Draft/Apply eligible-input editing**, after F02/U01/U05.
+Its exact Live parameters remain for U02; F05 grant scope/lifetime and U06
+handoff UX are still unresolved in their own tasks.
 
 ## Basis of this record
 
