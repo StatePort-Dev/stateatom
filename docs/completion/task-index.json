@@ -305,8 +305,23 @@
         "npm run verify:ide"
       ],
       "deliverable": "Live for most declared editable inputs, grouped drafts, observed effects, undo-last and baseline restoration",
-      "status": "planned",
-      "optional": false
+      "status": "in-progress",
+      "optional": false,
+      "implementation_plan": "../superpowers/plans/2026-10-19-u02-input-editor.md",
+      "execution_record": "21-overnight-u02-progress.md",
+      "completed_slices": [
+        {
+          "id": "U02.1",
+          "status": "complete",
+          "scope": "Preregistered 18-row catalogue and inert plan/type/revision contract only",
+          "tests": {
+            "focused": 26,
+            "full": 689
+          },
+          "record": "21-overnight-u02-progress.md",
+          "native_rows_verified": 0
+        }
+      ]
     },
     {
       "id": "U03",
@@ -1190,7 +1205,7 @@
       "U01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": null,
+    "active_item": "U02",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",

@@ -59,6 +59,7 @@ presumed. Earlier criteria/results remain historical. The one next unfinished
 item is **U02 — Live and Draft/Apply eligible-input editing**, after F02/U01/U05.
 Its exact Live parameters remain for U02; F05 grant scope/lifetime and U06
 handoff UX are still unresolved in their own tasks.
+U02 is now in progress under the [autonomous execution record](completion/21-overnight-u02-progress.md). The first pure contract slice passes 26 focused / 689 full tests; actual Live/Draft adapters and native coverage remain unimplemented.
 
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live

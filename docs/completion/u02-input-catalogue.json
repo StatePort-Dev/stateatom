@@ -1,0 +1,27 @@
+{
+  "schema": "stateatom.input-catalogue/1",
+  "version": 1,
+  "registeredBeforeImplementation": true,
+  "scope": "Representative input sites/families in the ordinary React/Vue inspection fixtures plus native form controls; not arbitrary application values",
+  "counting": "Each row once, unsupported included. Strict majority in both modes requires at least 10 of 18 rows actually verified. Planned targets are not implementation evidence.",
+  "rows": [
+    {"id":"response-hold","kind":"json-response","type":"boolean","site":"/api/account /risk/hold","liveTarget":true},
+    {"id":"response-ready","kind":"json-response","type":"boolean","site":"/api/permission /access/ready","liveTarget":true},
+    {"id":"response-quota","kind":"json-response","type":"number","site":"/api/account /rules/quota","liveTarget":true},
+    {"id":"response-note","kind":"json-response","type":"string","site":"/api/account /metadata/note; irrelevant control, dependency unknown","liveTarget":true},
+    {"id":"response-race-amount","kind":"json-response","type":"number","site":"/api/race /amount; repeated exact request revisions","liveTarget":true},
+    {"id":"response-race-label","kind":"json-response","type":"string","site":"/api/race /completion; repeated exact request revisions","liveTarget":true},
+    {"id":"react-form-text","kind":"dom-control","type":"string","site":"React #form through native input event and actual onChange","liveTarget":true},
+    {"id":"vue-form-text","kind":"dom-control","type":"string","site":"Vue #form through native input event and actual v-model","liveTarget":true},
+    {"id":"native-checkbox","kind":"dom-control","type":"boolean","site":"Synthetic native checkbox with ordinary change handler","liveTarget":true},
+    {"id":"native-number","kind":"dom-control","type":"number","site":"Synthetic native number input with ordinary input handler","liveTarget":true},
+    {"id":"native-select","kind":"dom-control","type":"string","site":"Synthetic select; only observed options","liveTarget":true},
+    {"id":"response-null","kind":"json-response","type":"null","site":"/api/react-ref /rules/current","liveTarget":false,"reason":"No declared nullable value contract; observed null does not authorize arbitrary type change"},
+    {"id":"react-prop","kind":"react-prop","type":"scalar","site":"Observed Row prop","liveTarget":false,"reason":"No supported owner update path"},
+    {"id":"react-state-without-control","kind":"react-state","type":"scalar","site":"Observed hook state lacking a native input path","liveTarget":false,"reason":"No direct setter/queue mutation adapter"},
+    {"id":"custom-hook-state","kind":"hook-state","type":"scalar","site":"Custom hook-returned value","liveTarget":false,"reason":"Observation does not expose a safe writer"},
+    {"id":"query-cache","kind":"query-cache","type":"scalar","site":"TanStack cache selector result","liveTarget":false,"reason":"No revisioned cache write/undo adapter"},
+    {"id":"readonly-control","kind":"dom-control","type":"scalar","site":"Disabled/readonly native control","liveTarget":false,"reason":"Editing must respect native disabled/readonly constraints"},
+    {"id":"structural-json","kind":"json-response","type":"object-or-array","site":"Whole nested response object or array","liveTarget":false,"reason":"Structural/type-changing edits are not admitted by scalar contract"}
+  ]
+}
