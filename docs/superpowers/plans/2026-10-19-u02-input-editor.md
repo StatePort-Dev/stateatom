@@ -126,12 +126,13 @@ restrictions and an existing host offscreen slot must not be bypassed.
   Pure registry sub-slice 2c.2 is delivered: focused24/full779; native transport
   and trusted-peer ownership subsequently pass in .20 with 156 focused / 819 full,
   15 native response and 8 native guardian checks. UI-owned lifecycle remains below.
-- [ ] New immutable candidate and actual active-Fetch worker/owner interruption,
+- [x] New immutable candidate and actual active-Fetch worker/owner interruption,
   inspector close/reopen and normal response matrix in both hosts; commit only
   actual bounded results, preserve the gate until the criterion is satisfied.
   .20 passes native worker-stop, guardian-close and normal backend matrix. Actual
   inspector-owned close/reopen remains required with Task 4 field UI ownership;
-  this checkbox stays open and U02 remains in progress until that path passes.
+  This path subsequently passes in .24 page-close/reopen and .25 actual field
+  UI/mounted-view checks. Task 5 and U02 acceptance remain separate.
 
 ### Task 3: U02.3 native controls
 
@@ -155,10 +156,10 @@ restrictions and an existing host offscreen slot must not be bypassed.
 **Interfaces:** existing reference controls consume guarded runtime operations;
 both modes share plans, history and outcomes, no staged draft auto-submit.
 
-- [ ] Read supplied editor reference and define concrete control mappings.
-- [ ] RED/GREEN typed controls, invalid local text, coalescing, 250ms/blur/Enter,
+- [x] Read supplied editor reference and define concrete control mappings.
+- [x] RED/GREEN typed controls, invalid local text, coalescing, 250ms/blur/Enter,
   grouped drafts, mode switch, pending effects, explicit refresh and both undos.
-- [ ] Keyboard/narrow/reduced-motion/reference comparison, checks and commit.
+- [x] Keyboard/narrow/reduced-motion/reference comparison, checks and commit.
 
 ### Task 5: U02.5 packed acceptance
 

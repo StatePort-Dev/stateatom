@@ -368,3 +368,34 @@ Screenshots are **review candidates**, not human approval. The controlled-render
 check covers reduced motion; native layout/keyboard checks cover both widths.
 The next bounded slice is **U02.4c.3**: precise native timing, queued/partial and
 external-revision cases before unchanged Task 5 majority/default-path acceptance.
+
+## U02.4c.3 — native scheduling and acknowledgement ordering
+
+The unchanged immutable .25 package passes **34** actual two-host field checks
+with the extended driver. No product source or archive was changed in this slice.
+The additional cases cover rapid last-value coalescing, Enter/blur dispatch,
+Draft→Live hold and explicit grouped Apply, newer typing during a slow ordinary
+app handler, a delayed real reply arriving behind a newer external snapshot,
+partial native group/retained failed raw text/scoped Undo, external eventful ABA
+refusal, and cancellation of an unsent edit with a retained read-only draft.
+
+Outgoing edit dispatch is measured separately from the later app input event.
+The observed native-wrapper timings and exact input/result hashes are recorded in
+`.artifacts/u02/input-ordering/verification.json` with an executable `verify.mjs`.
+Native result: `.artifacts/u02/input-fields/native/2026-10-19T23-03-03-751Z/results.json`.
+The message wrapper forwards identical arguments/replies; one declared fault
+holds an unchanged real reply. It is transport fault instrumentation, not a mock
+writer or proof of real-world latency. The initial wrong app-event-under-250ms
+assertion is retained: it confused dispatch with native guard/effect latency.
+The corrected probe measures the actual scheduling contract without speeding up
+or bypassing native checks. A later harness-only timeout attempted to click an
+already disabled Discard button after a draft-free external refusal; removing
+that unnecessary action did not change product behavior or conflict criteria.
+
+Controller/source models retain their RED/GREEN pending/older snapshot cases;
+actual native interruption/page-close proof remains the separately recorded .24
+backend checks. Current DOM control actions do not establish pointer-specific
+focus/blur ordering. Task 4's declared UI mapping, fields, keyboard/narrow/reference,
+ordering and lifecycle boundary is complete; U02 remains open for **Task 5**.
+The original catalogue stays 18 rows and coverage credit remains 0/18 until its
+row-by-row both-mode acceptance. Default feature flags are still unavailable.

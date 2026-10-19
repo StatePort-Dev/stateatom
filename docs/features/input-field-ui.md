@@ -130,3 +130,9 @@ native typed widgets in both modes, invalid numeric text, UI undo, narrow/focus
 checks and embedding mounted-view cleanup pass. These are scoped agent checks;
 timing/races and the fixed catalogue majority remain open. See the
 [execution record](../completion/21-overnight-u02-progress.md).
+
+The extended .25 native driver passes 34 UI/ordering checks. It measures outgoing
+commit separately from app-effect latency and declares its real-reply delay fault.
+Held drafts, late acknowledgements behind external snapshots, partial native groups,
+scoped Undo and eventful ABA refusal pass in both hosts. Task 5 majority/default
+availability and final review remain required; no new source or archive is issued.

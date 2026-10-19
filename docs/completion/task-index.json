@@ -509,10 +509,21 @@
           },
           "record": "21-overnight-u02-progress.md",
           "native_rows_verified": 0
+        },
+        {
+          "id": "U02.4c.3",
+          "status": "complete",
+          "scope": "Native field timing, delayed/out-of-order acknowledgements, held Draft, partial group, external ABA and unsent-close controls; no majority credit",
+          "candidate": "0.1.0-candidate.20261019.25",
+          "tests": {
+            "native_fields_and_ordering": 34
+          },
+          "record": "21-overnight-u02-progress.md",
+          "native_rows_verified": 0
         }
       ],
-      "active_slice": "U02.4c.3",
-      "implementation_dependency": ".25 preview fields and mounted-view cleanup pass; precise native timing/races, both-mode catalogue majority and final default-path acceptance remain required"
+      "active_slice": "U02.5",
+      "implementation_dependency": "Field UI/lifecycle/timing checks pass on .25 explicit preview; fixed18-row both-mode majority, final default-path availability and whole-item review remain required"
     },
     {
       "id": "U03",
