@@ -3,7 +3,7 @@ import {appOrigin,helperURL} from './origin-policy.mjs';
 import {createSourceMapUI} from './source-map-ui.mjs';
 import {createActionUI} from './action-ui.mjs';
 import {parseDiagnostic,serializeDiagnostic,omitDiagnosticContent} from '../../../core/diagnostic.mjs';
-import {inspectionView} from '../../../browser-extension/inspection-view.mjs';
+import {inspectionView,selectionPresentation} from '../../../browser-extension/inspection-view.mjs';
 import {template} from './template.mjs';
 import {atomError} from './platform.mjs';
 import {supportsCapabilityPolicy} from './transport.mjs';
@@ -59,9 +59,10 @@ function renderInspection(){
  const matchingTrial=trial&&selectedState?.deepExperiment?.id===trial.result?.id&&trial.target?.selector===target?.selector&&trial.target?.property===target?.property;
  const restored=restorationNotice&&selectedState?.attached&&restorationNotice.tab===tab()&&restorationNotice.epoch===tabGeneration&&restorationNotice.generation===selectionGeneration&&restorationNotice.origin===selectedState.origin&&restorationNotice.selector===target?.selector&&restorationNotice.property===target?.property&&restorationNotice.property===selectedState.property&&(!restorationNotice.id||matchingTrial&&restorationNotice.id===trial.result.id);
  $('atom-result').textContent=restored?restorationNotice.text:matchingTrial?trial.result.status+' · Historical controlled trials · baseline '+JSON.stringify(trial.result.trials?.[0]?.a?.value)+' · '+trial.result.scope:'';
- const label=target?.tag==='button'&&typeof target.text==='string'?target.text.trim():'';
- $('selection-title').textContent=label&&label.length<=64?label:target?.selector||'Select an element';
- $('selection-value').textContent=view.stale?'Stale':selection?selection.property+' = '+JSON.stringify(selection.value):'No observation';
+ const presentation=selectionPresentation(selection,{stale:view.stale,picker:selectedState?.picker});
+ $('selection-title').textContent=presentation.title;
+ $('selection-value').textContent=presentation.value;
+ $('selection-kind').textContent=presentation.kind;
  if((selectedState&&!selectedState.attached&&!target)||!Number.isSafeInteger(tab())||tab()<=0)$('browser-connection').open=true;
  $('commit-summary').textContent=view.commit.status+' · '+view.commit.reason;
  const profile=view.firstReadProfile;
@@ -73,7 +74,12 @@ function renderInspection(){
  gate('load',admission('inspect-selector'),!selectedState?.selection?.selector&&!selectedState?.stale?.target?.selector);
  const picker=selectedState?.picker,picking=['starting','picking','resolving'].includes(picker?.status);
  gate('pick',admission(picking?'cancel-pick':'pick'));$('pick').setAttribute('aria-label',picking?'Cancel element selection':'Select page element');$('pick').setAttribute('aria-pressed',String(picking));$('pick').title=picking?'Cancel selection; Escape also cancels on the page':$('pick').title;
- $('picker-status').hidden=!picker||picker.status==='idle';$('picker-status').textContent=picker?.status==='starting'?'Preparing native picker. Wait for the page highlight.':picking?'Select a target on the application tab. Cancel here avoids page keys; Escape also cancels but may reach page handlers. Frame and closed-root internals are unsupported.':picker?.status==='selected'?'Refine this DOM target below. Source association is separate. Frame and closed-root internals are unsupported.':picker?.reason||'';
+ $('picker-status').hidden=!picking&&picker?.status!=='unsupported';$('picker-status').textContent=picker?.status==='starting'?'Preparing selection…':picking?'Click an element. Cancel here, or Escape (may reach the page).':picker?.reason||'';
+ $('element-details').hidden=!target&&!picking&&picker?.status!=='unsupported';
+ $('picker-limits').textContent='Escape cancels but may reach page key handlers; Cancel in the inspector avoids page keys. Frame and closed-root internals are unsupported. DOM selection does not establish a source association.'+(picker?.reason?' '+picker.reason:'');
+ $('picker-parent').hidden=presentation.parentIndex===null;
+ $('picker-parent').disabled=!admission('refine-pick')?.available;
+ $('picker-parent').onclick=()=>action(async()=>{if(presentation.parentIndex===null)return;const signal=ownPickerRequest(tab(),picker.id);await rpc({op:'refine-pick',tabId:tab(),pickerId:picker.id,index:presentation.parentIndex},signal);await load();});
  const focusedChoice=$('picker-choices').contains(document.activeElement)?document.activeElement.dataset.pickerChoice:null;
  $('picker-choices').replaceChildren(...(picker?.choices||[]).map(choice=>{const button=document.createElement('button');button.type='button';button.dataset.pickerChoice=picker.id+':'+choice.index;button.textContent=choice.label;button.disabled=!admission('refine-pick').available;button.onclick=()=>action(async()=>{const signal=ownPickerRequest(tab(),picker.id);await rpc({op:'refine-pick',tabId:tab(),pickerId:picker.id,index:choice.index},signal);await load();});return button;}));$('picker-choices').hidden=!(picker?.choices?.length);if(focusedChoice){const button=[...$('picker-choices').children].find(b=>b.dataset.pickerChoice===focusedChoice&&!b.disabled);button?.focus({preventScroll:true});}
  gate('inspect-selector',admission('inspect-selector'));attachAvailability();

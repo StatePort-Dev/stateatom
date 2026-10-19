@@ -121,3 +121,16 @@ test('panel fragment warnings point to the current finite trace without upgradin
 
  }finally{if(priorDocument===undefined)delete globalThis.document;else globalThis.document=priorDocument;if(priorChrome===undefined)delete globalThis.chrome;else globalThis.chrome=priorChrome;}
 });
+
+test('selected-element presentation keeps selectors out of normal titles and offers only the next useful parent',async()=>{
+ const {selectionPresentation}=await import('../browser-extension/inspection-view.mjs');
+ const selection={tag:'span',selector:'#confirm > span:nth-of-type(1)',text:'Confirm nested target',property:'text',value:'Confirm nested target'};
+ const picker={status:'selected',selectedIndex:0,choices:[{index:0,label:'span'},{index:1,label:'button#confirm'},{index:2,label:'body'},{index:3,label:'html'}]};
+ assert.deepEqual(selectionPresentation(selection,{picker}),{title:'Confirm nested target',kind:'Element',value:'Text',parentIndex:1});
+ assert.equal(selectionPresentation({...selection,tag:'button'},{picker:{...picker,selectedIndex:1}}).parentIndex,null);
+ assert.equal(selectionPresentation({...selection,text:''}).title,'Element');
+ assert.equal(selectionPresentation(null,{stale:true}).title,'Previous element');
+ assert.equal(selectionPresentation(selection,{stale:true,picker}).parentIndex,null);
+ assert.equal(selectionPresentation(selection,{picker:{...picker,selectedIndex:undefined}}).parentIndex,null);
+ assert.equal(selectionPresentation({...selection,tag:'button',property:'disabled',value:true}).value,'disabled = true');
+});

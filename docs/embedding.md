@@ -14,7 +14,7 @@ synthetic competing debugger consumer; it implements no Capture.
 ## Contracts and ownership
 
 Types ship in the package's `dist/*.d.ts`; API/wire version is **1**, separately
-from package candidate `0.1.0-candidate.20261019.10`. Importing any entrypoint has
+from package candidate `0.1.0-candidate.20261019.11`. Importing any entrypoint has
 no Chrome listener, debugger or DOM side effect.
 
 - `createAtomRuntime(platform, options = {}) -> AtomRuntime`. The only current
@@ -338,3 +338,8 @@ full domain disable mid-gesture was measured to leak mouseup. No page overlay,
 DOM reparenting or retained page listeners are used. Selection does not establish
 source or runtime provenance. See the [U05 record](completion/18-u05-visual-picker.md)
 and [demo](testing/visual-picker-demo.md) for exact candidate evidence.
+
+The .11 target presentation uses observed text plus a single Select parent action.
+`state.picker.selectedIndex` records the actual successful choice; missing metadata
+never guesses the next parent. Full native choices/selector and scope limitations
+remain inside Element details. See the [presentation follow-up](completion/19-u05-picker-presentation.md).

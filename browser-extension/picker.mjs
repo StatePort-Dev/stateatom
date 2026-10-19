@@ -60,11 +60,11 @@ export function createNativeDOMQueue(){
   const done=()=>{if(--q.count===0)queues.delete(id);};void work.then(done,done);return work;
  };
 }
-const highlightConfig={showInfo:true,showAccessibilityInfo:false,contentColor:{r:0,g:92,b:255,a:0.12},borderColor:{r:0,g:92,b:255,a:1}};
+const highlightConfig={showInfo:true,showStyles:false,showRulers:false,showExtensionLines:false,showAccessibilityInfo:false,contentColor:{r:11,g:92,b:255,a:0.10},paddingColor:{r:11,g:92,b:255,a:0.06},borderColor:{r:11,g:92,b:255,a:0.8}};
 export function createNativePicker({send,current,onSelect,onChange=()=>{},now=Date.now,lifetime=30000,readDOM=async(id,read)=>read()}){
  const sessions=new Map();
  const live=(id,s)=>sessions.get(id)===s&&['starting','picking','resolving','selected'].includes(s.status)&&current(id,s.epoch)&&now()<s.expiresAt;
- const view=s=>s?{status:s.status,reason:s.reason||'',id:s.id,expiresAt:s.expiresAt,choices:(s.status==='selected'?s.choices:[]).map((v,index)=>({index,label:v.label}))}:{status:'idle',reason:'',choices:[]};
+ const view=s=>s?{status:s.status,reason:s.reason||'',id:s.id,expiresAt:s.expiresAt,selectedIndex:s.status==='selected'?s.selectedIndex:undefined,choices:(s.status==='selected'?s.choices:[]).map((v,index)=>({index,label:v.label}))}:{status:'idle',reason:'',choices:[]};
  function changed(id){onChange(id);}
  async function stop(id){await send(id,'Overlay.setInspectMode',{mode:'none',highlightConfig:{}});await send(id,'Overlay.hideHighlight');/* Keep the passive domain until lease release: disable() releases a held gesture's mouseup into the app. */}
  async function cancel(id,reason='Selection cancelled',expectedId){
@@ -93,7 +93,7 @@ export function createNativePicker({send,current,onSelect,onChange=()=>{},now=Da
   try{
    const target=await readDOM(id,()=>resolve(id,s,s.choices[index]));if(!valid())fail('Picker request cancelled or superseded');
    await onSelect(id,target,{signal:controller.signal,current:valid});
-   if(!valid())fail('Picker request cancelled or superseded');s.status='selected';changed(id);return view(s);
+   if(!valid())fail('Picker request cancelled or superseded');s.selectedIndex=index;s.status='selected';changed(id);return view(s);
   }catch(e){if(live(id,s)&&s.controller===controller&&!controller.signal.aborted){s.status='unsupported';s.reason=e.message;changed(id);}throw e;}
   finally{options.signal?.removeEventListener('abort',abort);}
  }

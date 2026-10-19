@@ -129,3 +129,10 @@ Hosts must forward owned Overlay/DOM debugger events unchanged. No active native
 highlight/inspect mode remains after cleanup. The passive Overlay domain stays
 until the owned debugger lease ends: disabling it mid-gesture can release an
 application mouseup. No application DOM/style overlay or page listeners are used.
+
+The .11 presentation keeps the observed text title and a single Select parent
+command in the normal view. That command advances from the actual selected
+ancestor index and stops before document/body choices. Full native DOM choices,
+exact CSS identity and picker limitations remain in Element details. Missing
+ancestor-index metadata does not guess a parent. This changes presentation only;
+Unknown/Stale evidence and exact native document/node checks are unchanged.

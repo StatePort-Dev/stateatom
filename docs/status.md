@@ -39,6 +39,14 @@ demonstration has not yet been performed. Screenshots remain review candidates.
 **U01 — selected-element inspector experience** is the one next unfinished item,
 after completed F01/U05. No release or human-study claim follows.
 
+A subsequent [maintainer-feedback correction](completion/19-u05-picker-presentation.md)
+on `.20261019.11` replaces the exposed DOM toolbar with one parent action and
+on-demand Element details, softens native hover styling and fixes demo launch
+scaling. 650 unit, 33 packed native picker, 2 strict consumers and 7 package
+controls pass; headed and finite smoke demos exercise the actual new controls.
+These screenshots remain candidates for human review. U01 remains next; the
+broader workflow, source/runtime evidence and approved scope are unchanged.
+
 Current checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

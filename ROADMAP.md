@@ -59,6 +59,12 @@ packed demo is prepared and smoke-checked. The single next bounded item is
 No broader feature implementation or execution of all 29 items follows. The narrower
 historical alpha acceptance remains unchanged.
 
+The subsequent [U05 presentation correction](docs/completion/19-u05-picker-presentation.md)
+responds to maintainer demo feedback on Atom `.20261019.11`: concise observed
+labels, one actual-parent action, technical details on request and restrained
+native hover styling. Its 650 unit / 33 packed picker controls pass. Credit this
+slice in U01 without restarting U05 or declaring the broader U01 workflow complete.
+
 ## Historical roadmap and checkpoint ledger
 
 StateAtom's next development target is a narrow, independently useful developer alpha. A developer should be able to select a UI property, inspect its supported dependencies, test an eligible input locally, and save an explanation that another person can read.

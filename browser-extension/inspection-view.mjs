@@ -37,3 +37,14 @@ export function inspectionView(state={}) {
   reason:state.stale?.reason||runtime?.reason||'No inspection yet.',
  };
 }
+
+// Friendly labels for already observed DOM records. Never infer a component.
+export function selectionPresentation(selection,{stale=false,picker}={}){
+ const names={button:'Button',a:'Link',input:'Input',textarea:'Text area',select:'Select',form:'Form',p:'Paragraph',img:'Image',svg:'Graphic',div:'Container',body:'Page body',html:'Document element'};
+ const kind=selection?names[selection.tag]||'Element':'';
+ const text=typeof selection?.text==='string'?selection.text.trim().replace(/\s+/g,' '):'';
+ const title=stale?'Previous element':selection?(text?(text.length>64?text.slice(0,63)+'…':text):kind):'Select an element';
+ const next=Number.isSafeInteger(picker?.selectedIndex)?picker.choices?.find(c=>c.index===picker.selectedIndex+1):null;
+ const parentIndex=!stale&&picker?.status==='selected'&&next&&!/^(body|html)(#|$)/.test(next.label)?next.index:null;
+ return{title,kind,value:stale?'Stale':!selection?'No observation':selection.property==='text'?'Text':selection.property+' = '+JSON.stringify(selection.value),parentIndex};
+}

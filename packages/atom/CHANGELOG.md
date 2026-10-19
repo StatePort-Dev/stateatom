@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-candidate.20261019.11
+
+- Replace the always-visible DOM selector/ancestor toolbar with an observed text
+  title, DOM kind and one compact Select parent action. Keep exact selectors,
+  full ancestor choices and limitations inside Element details; no component or
+  source association is inferred. The real selected ancestor index is explicit.
+- Use a restrained blue content/padding highlight and compact native info only;
+  no rulers, styles, extension lines or accessibility tooltip expansion. Native
+  selection, event suppression and ownership cleanup retain their criteria.
+- Preserve the supplied 440px composition and shared UI .2 peer. Only Atom-local
+  layout changes; no token/primitive/visual-contract replacement. Candidate .10
+  and its functional evidence remain historical; human feedback requested this
+  presentation correction. Screenshots remain review candidates.
+
 ## 0.1.0-candidate.20261019.10
 
 - Invalidate only the cancelled native selection during its final storage write;

@@ -257,7 +257,15 @@
       "optional": false,
       "additional_final_scope_dependencies": [
         "U05"
-      ]
+      ],
+      "credited_existing_work": {
+        "compact_target_controls": {
+          "candidate": "0.1.0-candidate.20261019.11",
+          "implementation": "Observed text title, DOM kind, one actual-parent command and on-demand exact DOM details; only this bounded presentation slice",
+          "validation": "19-u05-picker-presentation.md",
+          "does_not_complete": "Broader selected-element normal workflow and remaining U01 acceptance"
+        }
+      }
     },
     {
       "id": "U02",
@@ -393,7 +401,12 @@
         "Exclusive Escape key suppression is Unsupported; inspector Cancel avoids page keys",
         "Frame and closed-root internals unsupported; untested touch/secondary/multi-click paths unverified",
         "Source/runtime provenance, broader U01 workflow and official-host intake remain separate"
-      ]
+      ],
+      "presentation_followup": {
+        "record": "19-u05-picker-presentation.md",
+        "candidate": "0.1.0-candidate.20261019.11",
+        "status": "implemented and native-verified; screenshots remain review candidates"
+      }
     },
     {
       "id": "U06",
@@ -1078,49 +1091,52 @@
     ]
   },
   "reconciliation": {
-    "document": "18-u05-visual-picker.md",
+    "document": "19-u05-picker-presentation.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
       "id": "U05",
+      "increment": "presentation follow-up to maintainer demo feedback",
       "status": "complete",
-      "source_base": "1aa4b249e78341664644a2b3657c1d0a756cc2e9",
+      "source_base": "042333534fd534acd108eb50768d6cd5bf5dbae8",
       "source_dirty_at_checks": true,
-      "package_version": "0.1.0-candidate.20261019.10",
-      "package_sha256": "db62fa82c9bdbeb9c6750445e8ef31a7a21ed56e0d13aa628a1706dc011d566d",
+      "package_version": "0.1.0-candidate.20261019.11",
+      "package_sha256": "10f0f03045ef77ac4abe89e1018042dec8d457719f9917e439baab04c64fb683",
       "ui_version": "0.2.0-candidate.20261018.2",
       "ui_sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
-      "execution_record": "18-u05-visual-picker.md",
+      "execution_record": "19-u05-picker-presentation.md",
       "delivery_states": [
         "implemented",
         "native-verified"
       ],
-      "operator": "agent-operated automated harnesses",
+      "operator": "agent-operated automated harnesses and live demo",
       "verified_checks": {
-        "unit": 649,
-        "review_controls": 49,
+        "unit": 650,
+        "focused_view_controller": 33,
+        "development_picker": 16,
         "picker_both_hosts": 33,
-        "embedding": 35,
-        "basic": 26,
-        "standalone_actions": 32,
         "strict_packed_consumers": 2,
         "installed_admission_matrix": 7,
-        "demo_smoke_stages": 3
+        "demo_smoke_stages": 3,
+        "headed_system_scale_dpr": 2,
+        "headed_demo_recorded_steps": 6
       },
+      "credited_history": "18-u05-visual-picker.md; original .10 Actions/IDE/ABA results retained, not rerun or upgraded",
       "unsupported": [
         "Exclusive Escape-key suppression",
-        "frame/closed-root internals"
+        "frame/closed-root internals",
+        "universal DPI/emulation acceptance"
       ],
       "not_claimed": [
-        "official-host integration",
+        "broader U01 completion",
+        "human visual approval",
+        "official-host intake",
         "publication",
-        "independent-human study",
-        "human demonstration already performed",
+        "SDK",
         "Live/Draft editing",
         "production change enablement",
         "Action Trace",
-        "validated local model",
-        "universal event suppression"
+        "validated local model"
       ]
     },
     "next_item": "U01",
@@ -1302,6 +1318,48 @@
           "Action Trace",
           "validated local model",
           "native optional HTTPS prompt acceptance"
+        ]
+      },
+      {
+        "id": "U05",
+        "status": "complete",
+        "source_base": "1aa4b249e78341664644a2b3657c1d0a756cc2e9",
+        "source_dirty_at_checks": true,
+        "package_version": "0.1.0-candidate.20261019.10",
+        "package_sha256": "db62fa82c9bdbeb9c6750445e8ef31a7a21ed56e0d13aa628a1706dc011d566d",
+        "ui_version": "0.2.0-candidate.20261018.2",
+        "ui_sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+        "execution_record": "18-u05-visual-picker.md",
+        "delivery_states": [
+          "implemented",
+          "native-verified"
+        ],
+        "operator": "agent-operated automated harnesses",
+        "verified_checks": {
+          "unit": 649,
+          "review_controls": 49,
+          "picker_both_hosts": 33,
+          "embedding": 35,
+          "basic": 26,
+          "standalone_actions": 32,
+          "strict_packed_consumers": 2,
+          "installed_admission_matrix": 7,
+          "demo_smoke_stages": 3
+        },
+        "unsupported": [
+          "Exclusive Escape-key suppression",
+          "frame/closed-root internals"
+        ],
+        "not_claimed": [
+          "official-host integration",
+          "publication",
+          "independent-human study",
+          "human demonstration already performed",
+          "Live/Draft editing",
+          "production change enablement",
+          "Action Trace",
+          "validated local model",
+          "universal event suppression"
         ]
       }
     ],

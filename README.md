@@ -517,3 +517,12 @@ To prepare the actual packed picker demonstration, run `npm run demo:picker --
 See the [demo guide](docs/testing/visual-picker-demo.md) for the exact accepted
 handoff, steps, app counters and explicit limits. `npm run verify:picker --
 /absolute/path/atom-handoff.json` runs the broader two-host native controls.
+
+
+The maintainer's subsequent demo feedback is addressed in the bounded
+[U05 presentation follow-up](docs/completion/19-u05-picker-presentation.md), Atom
+`.20261019.11`: normal target controls are compact, technical DOM details disclose
+on request, and native hover uses a restrained blue treatment. The headed demo
+records a consistent device scale to avoid viewport-emulation displacement.
+650 unit and 33 two-host native picker controls pass. U01 remains the next item;
+its compact-title/refinement slice is credited, not treated as the whole workflow.

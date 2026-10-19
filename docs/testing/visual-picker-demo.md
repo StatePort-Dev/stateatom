@@ -2,7 +2,9 @@
 
 This uses the actual packed standalone extension and a synthetic local page.
 It needs the repository's installed Chromium/Playwright and a graphical display
-for the interactive mode. No IDE, Desktop, account, model or application change
+for the interactive mode. The headed runner keeps the system display scale and
+disables viewport emulation, so HiDPI text stays readable and the native highlight
+uses the same coordinates as the actual page. Automated smoke retains its fixed viewport. No IDE, Desktop, account, model or application change
 grant is needed. The extension attaches read-only to the demo page.
 
 From the repository root:
@@ -12,7 +14,7 @@ npm run demo:picker -- /absolute/path/to/atom-handoff.json
 ```
 
 Use the exact accepted U05 handoff named in the
-[execution record](../completion/18-u05-visual-picker.md). The runner verifies its
+[presentation follow-up](../completion/19-u05-picker-presentation.md). The runner verifies its
 tarball hashes and standalone host manifest before opening a fresh profile with
 only that extension. It opens the synthetic application and actual inspector,
 chooses the application tab and attaches. Ctrl+C closes the isolated demo.
@@ -21,8 +23,9 @@ chooses the application tab and attaches. Ctrl+C closes the isolated demo.
 2. Hover the small text within **Confirm nested target**. Chrome shows its native
    outline and element label. Click that nested target.
 3. Return to the inspector. The selected node is the actual `span`, not an
-   automatically substituted ancestor. Click or keyboard-activate **button#confirm**
-   to refine to the real parent button. The app click/submit counters stay zero.
+   automatically substituted ancestor. Keyboard-activate **Select parent**
+   to refine to the real parent button. Element details retains exact CSS and
+   the full DOM ancestor list when needed. The app click/submit counters stay zero.
 4. Start selection again, then click **Cancel element selection** in the
    inspector. A normal click on the application button now increments the
    click and submit counters. Repeat selection or try disabled/repeated targets.
