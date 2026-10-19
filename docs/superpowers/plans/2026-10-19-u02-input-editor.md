@@ -123,6 +123,8 @@ restrictions and an existing host offscreen slot must not be bypassed.
   exact next bounded cycles are in docs/features/response-resource-owner.md.
 - [ ] Select the smallest viable resource-owner contract from evidence; RED/GREEN
   lifecycle/proxy/grants/foreign ownership/cancellation and exact trusted peers.
+  Pure registry sub-slice 2c.2 is delivered: focused24/full779; native transport
+  and trusted-peer ownership are still outstanding, so this checkbox stays open.
 - [ ] New immutable candidate and actual active-Fetch worker/owner interruption,
   inspector close/reopen and normal response matrix in both hosts; commit only
   actual bounded results, preserve the gate until the criterion is satisfied.

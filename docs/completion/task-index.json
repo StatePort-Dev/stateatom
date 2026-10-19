@@ -299,7 +299,8 @@
         "packages/atom/src/response-editor.mjs",
         "packages/atom/src/runtime.mjs",
         "src/engine/browser.mjs",
-        "core/diagnostic.mjs"
+        "core/diagnostic.mjs",
+        "core/debugger-guardian.mjs"
       ],
       "existing_commands": [
         "npm test",
@@ -358,9 +359,20 @@
           "record": "21-overnight-u02-progress.md",
           "native_rows_verified": 0,
           "native_owner_close_safe": false
+        },
+        {
+          "id": "U02.2c.2",
+          "status": "complete",
+          "scope": "Inert live registry/protocol only; no Chrome owner or mutation capability enabled",
+          "tests": {
+            "focused": 24,
+            "full": 779
+          },
+          "record": "21-overnight-u02-progress.md",
+          "native_rows_verified": 0
         }
       ],
-      "active_slice": "U02.2c.2",
+      "active_slice": "U02.2c.3",
       "implementation_dependency": "Worker-independent response resource owner, discovered by actual active-Fetch worker-stop failure"
     },
     {

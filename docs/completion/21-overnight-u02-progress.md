@@ -70,3 +70,14 @@ The new [working owner design](../features/response-resource-owner.md) therefore
 selects a live guardian registry with cleanup-only delegation, respecting the
 Offscreen runtime-only API restriction. The design is not implementation evidence.
 Next bounded slice: pure registry/protocol tests and implementation, then commit.
+
+
+U02.2c.2 adds an inert live registry with opaque current-client/lease/operation
+identities, actual grant checks, foreign ownership refusal, closing locks, separate
+cleanup grants, failed cleanup retention and late executor acknowledgement refusal.
+24/24 focused and 779/779 full tests pass. Missing-module RED and cleanup key-order
+RED/GREEN are retained under `.artifacts/u02/guardian-registry/`, with exact hashes
+in `verification.json`. These are Node model results; no Chrome command runs in
+this module. Issued .17 runtime source inputs and package bytes are unchanged,
+and current hosts remain gated. Next: exact-peer/native bridge, then real cleanup
+fault tests; field-mode coverage remains 0/18.

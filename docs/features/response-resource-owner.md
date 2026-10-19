@@ -84,3 +84,41 @@ implemented by this design document.
    origin/grant and cancellation. Keep legacy criteria and field UI acceptance
    separate. U02 still needs native controls, both field modes and >9/18 actual
    preregistered rows in both modes; current verified field-mode count is 0/18.
+
+### U02.2c.2 inert registry interface
+
+`createDebuggerGuardian({commandCapability,now})` constructs fresh live authority;
+there is no restore/import operation. The trusted constructor supplies the existing
+command-to-grant policy. `connect()` creates an opaque current host-client token.
+`acquire(client,{tabId,origin,owner,capabilities})` exclusively allocates a tab and
+returns an opaque lease; a matching owner label is never adoption. `verify` checks
+the current exact client/lease/grant. `begin(client,lease,{kind,method?})` creates
+an attach/command ticket; `finish(client,ticket,{ok})` acknowledges that one call.
+Commands require acknowledged attachment and the actual method grant. Attach
+failure acknowledgement means not attached; loss during pending attach is unknown.
+
+`release` or `disconnect` revokes tickets. Unused allocation can be freed directly;
+known/potential native attachment stays locked in closing. `claimCleanup(client)`
+issues fixed cleanup-only grants for closing leases. `finishCleanup` accepts only
+current executor/token and detached/already-detached/failed outcomes. Failure
+blocks further automatic retry; `retryCleanup` is explicit. Lost executor claims
+rotate, so late replies cannot release a later incarnation. Active foreign leases
+never enter cleanup. `status` and `snapshot` expose scoped metadata without tokens.
+Bounds: 8 active clients, 16 leases, 128 in-flight tickets / 32 per lease, 128
+redacted event records with an explicit dropped count. Protocol records are inert
+flat data; accessors and conversion hooks are refused without invocation.
+
+This library cannot attest a Chrome call. Node results model trusted native
+acknowledgements; only the later exact-peer/native bridge can establish that they
+came from actual commands. No worker-independent capability follows from pure
+registry tests. Production grants and Settings lifetime remain F05 work.
+
+
+Before an actual native attach, the Chrome adapter must inspect current native
+attachment and refuse an unknown existing session before marking any attach
+attempt in the registry. A pre-existing debugger client is not adopted or given
+cleanup authority because a new registry is empty. Pending attachment cleanup
+assumes the shared host broker's exclusive allocation and the extension's native
+client; unrelated same-extension consumers must use that same broker. Native
+Chrome authentication continues to protect other extensions / DevTools clients.
+The pure registry alone cannot prove this browser precondition.
