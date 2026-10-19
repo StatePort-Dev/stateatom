@@ -44,6 +44,7 @@ npm(['run','build'],consumer);
 // Both host copies below retain normalized bundle-input receipts; example npm build also ran independently.
 const resolve=createRequire(consumer+'/package.json');const assets=async(dest)=>{
  await mkdir(dest,{recursive:true});
+ for(const f of ['guardian.html','guardian.js','guardian-worker.js'])await copyFile(resolve.resolve('@stateport/atom/'+f),dest+'/atom-'+f);
  for(const f of ['atom.css','content.js','reader.js','reader.html','reader.css'])await copyFile(resolve.resolve('@stateport/atom/'+f),dest+'/'+f);
  for(const f of ['tokens.css','components.css','fonts.css','contract.json'])await copyFile(resolve.resolve('@stateport/extension-ui/'+f),dest+'/extension-ui-'+f);
  await mkdir(dest+'/assets/fonts',{recursive:true});await copyFile(resolve.resolve('@stateport/extension-ui/assets/fonts/InterVariable.woff2'),dest+'/assets/fonts/InterVariable.woff2');

@@ -84,6 +84,9 @@ async function capabilityContext(id,request={}){
  const s=state(id);cap(s);let target={url:null,permission:false,grants:[],lease:'unknown'};
  try{if(platform.describeTarget)target={...target,...await platform.describeTarget(id)};}catch{/* Missing target facts cannot grant browser access. */}
  if(s.origin&&(new URL(target.url||'about:blank').origin!==s.origin||target.permission!==true)||target.permission!==true&&(s.analysis||s.selection||s.samples.length||s.requests.length)){invalidateScope(id,'Site permission or origin changed; attach again');await platform.invalidate?.(id);}
+ if(s.attached&&target.lease!=='owned'){
+  void stopInputs(id,'Debugger ownership lost');sourceMaps.invalidate(id,'Debugger ownership lost');void picker.cancel(id,'Debugger ownership lost').catch(()=>{});recordStale(s,'Debugger ownership lost; attach and inspect again');beginInspection(s,{keepDiagnostic:true});s.attached=false;s.override=null;s.deepOverrides=null;
+ }
  const analysis=codeAnalysis(s);
  return {...target,readOnlySites:options.readOnlySites===true&&target.readOnlySites===true,disposed:stopped||target.disposed===true,
   attached:s.attached===true&&target.lease==='owned',readOnly:target.readOnly===true||(s.attached&&s.readOnly===true),requestReadOnly:request.readOnly===true,

@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-candidate.20261019.20
+
+- Add an optional shared guardian broker: a bundled offscreen document runs a
+  dedicated Worker with live lease authority; native debugger calls stay in the
+  service worker. A restarted worker receives cleanup-only grants, never restored
+  editing authority. Both local host examples declare the necessary offscreen
+  permission; unsupported hosts or an occupied foreign slot keep editing gated.
+- Bind peers to exact native document identity and fresh channels, retain closing
+  locks until detach acknowledgement, and preserve active foreign consumers.
+  Health checks are private Worker messages and stop when the registry is empty;
+  idle host-worker loss without leases does not trigger keepalive reconnection.
+- Invalidate attached metadata when broker authority is lost. Report an attempted
+  response whose acknowledgement is lost as unconfirmed, retaining unknown app
+  effects; it is never fabricated as definitely undelivered or restored.
+- New host assets and source/model checks do not establish Native interruption or
+  field-mode acceptance. Retain the .15/.16 failures and .17 safety gate record.
+
 ## 0.1.0-candidate.20261019.17
 
 - Refuse response editing on the existing worker-only debugger owner. Native .16

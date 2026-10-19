@@ -103,3 +103,4 @@ test('delivery evidence has a hard bound rather than silently dropping earlier a
 test('close rejects an object reason without evaluating user conversion hooks',()=>{
  const l=create();let conversions=0;const before=l.snapshot();rejects(()=>l.close({toString(){conversions++;return 'closed';}}),'INVALID_REASON');assert.equal(conversions,0);assert.deepEqual(l.snapshot(),before);
 });
+test('an unconfirmed native delivery stays unknown rather than fabricating non-delivery',()=>{const l=create();l.apply(plan(l),fresh());const r=l.prepareResponse(facts(undefined,2));l.confirmResponse(r.receipt,{delivered:null,error:'ACK_LOST'});const h=l.snapshot().history[0];assert.equal(h.phase,'unconfirmed');assert.equal(h.outcomes[0].deliveries[0].delivered,null);assert.equal(row(l).rule,null);assert.equal(h.applicationRestored,false);assert.equal(h.consumption,'unknown');});

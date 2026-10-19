@@ -80,7 +80,7 @@ edit ledger; install/consume/cleanup provide explicit per-resource outcomes.
   safe escaped pointers; all-member preflight; delivered != consumed; failed and
   partial deliveries; guarded undo/baseline; external revisions; close/late ack;
   bounds and immutable snapshots. Focused Node tests, then full npm test, commit.
-- [ ] U02.2b exact runtime interface: `inputs-open` starts one in-memory response
+- [x] U02.2b exact runtime interface: `inputs-open` starts one in-memory response
   editor for the current selected physical target; `inputs-read` refreshes its
   selected-property observation without re-running expressions; `inputs-apply`
   takes the versioned plan; `inputs-undo` / `inputs-baseline` require the current
@@ -101,9 +101,9 @@ edit ledger; install/consume/cleanup provide explicit per-resource outcomes.
   interruption cleanup with actual Chrome before response editing is available.
   This is a new implementation dependency discovered by native testing, not a
   previously approved host architecture or completed feature.
-- [ ] RED/GREEN real guarded rules, no implicit reload/request/storage reset,
+- [x] RED/GREEN real guarded rules, no implicit reload/request/storage reset,
   exact request match, consumed-versus-waiting states, partial failure and undo.
-- [ ] Focused/full checks, source/runtime boundaries recorded, local commit.
+- [x] Focused/full checks, source/runtime boundaries recorded, local commit.
 
 ### Task 2c: U02.2c worker-independent response owner
 
@@ -121,13 +121,17 @@ restrictions and an existing host offscreen slot must not be bypassed.
   host, retaining successful and failed controls without relabelling readiness.
   Document-owner close is unsafe; the selected guardian working design and
   exact next bounded cycles are in docs/features/response-resource-owner.md.
-- [ ] Select the smallest viable resource-owner contract from evidence; RED/GREEN
+- [x] Select the smallest viable resource-owner contract from evidence; RED/GREEN
   lifecycle/proxy/grants/foreign ownership/cancellation and exact trusted peers.
   Pure registry sub-slice 2c.2 is delivered: focused24/full779; native transport
-  and trusted-peer ownership are still outstanding, so this checkbox stays open.
+  and trusted-peer ownership subsequently pass in .20 with 156 focused / 819 full,
+  15 native response and 8 native guardian checks. UI-owned lifecycle remains below.
 - [ ] New immutable candidate and actual active-Fetch worker/owner interruption,
   inspector close/reopen and normal response matrix in both hosts; commit only
   actual bounded results, preserve the gate until the criterion is satisfied.
+  .20 passes native worker-stop, guardian-close and normal backend matrix. Actual
+  inspector-owned close/reopen remains required with Task 4 field UI ownership;
+  this checkbox stays open and U02 remains in progress until that path passes.
 
 ### Task 3: U02.3 native controls
 

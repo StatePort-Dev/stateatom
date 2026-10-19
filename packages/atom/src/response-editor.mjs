@@ -81,17 +81,18 @@ export function createResponseEditor({investigationId,target,responses=[],readCu
   const matching=!closed&&matches(p,meta);if(matching)handled.add(p.networkId);
   return queue(async()=>{
    if(!matching||closed){await continuePaused(p);return true;}
-   let receipt=null;
+   let receipt=null,deliveryAttempted=false;
    try{
     await current();assertOpen();const response=await send('Fetch.getResponseBody',{requestId:p.requestId});assertOpen();await current();assertOpen();
     const prepared=ledger.prepareResponse({...meta,body:decode(response)});receipt=prepared.receipt;
     await current();assertOpen();
+    deliveryAttempted=true;
     if(prepared.modified)await send('Fetch.fulfillRequest',{requestId:p.requestId,responseCode:p.responseStatusCode,responseHeaders:(p.responseHeaders||[]).filter(h=>!['content-length','content-encoding','transfer-encoding','etag','content-md5','digest'].includes(h.name.toLowerCase())),body:encode(prepared.body)});
     else await send('Fetch.continueRequest',{requestId:p.requestId});
     if(receipt){ledger.confirmResponse(receipt,{delivered:true});receipt=null;}
     publish();if(!ledger.responseURLs().length)await disable();return true;
    }catch(e){
-    if(receipt)ledger.confirmResponse(receipt,{delivered:false,error:e.code||'RESPONSE_SEND_FAILED'});
+    if(receipt)ledger.confirmResponse(receipt,{delivered:deliveryAttempted?null:false,error:e.code||'RESPONSE_SEND_FAILED'});
     notes.push({code:e.code||'RESPONSE_SEND_FAILED'});markClosed('Response intervention failed');await continuePaused(p);await disable();publish();return true;
    }
   });

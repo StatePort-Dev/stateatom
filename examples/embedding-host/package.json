@@ -6,7 +6,7 @@
     "build": "node build.mjs"
   },
   "dependencies": {
-    "@stateport/atom": "0.1.0-candidate.20261019.17",
+    "@stateport/atom": "0.1.0-candidate.20261019.20",
     "@stateport/extension-ui": "0.2.0-candidate.20261018.2"
   },
   "devDependencies": {

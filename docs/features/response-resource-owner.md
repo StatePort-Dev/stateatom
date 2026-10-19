@@ -122,3 +122,73 @@ assumes the shared host broker's exclusive allocation and the extension's native
 client; unrelated same-extension consumers must use that same broker. Native
 Chrome authentication continues to protect other extensions / DevTools clients.
 The pure registry alone cannot prove this browser precondition.
+
+
+The bridge now has model-tested session, private Worker, native-peer and broker
+adapters. Guardian protocol frames are bounded to 128 KiB (working choice, allowing
+the full bounded origin/lease metadata snapshot); application payloads stay in the
+service worker. An unchanged/idle registry does not wake the host. Private Worker
+health checks run every 2 seconds only while leases exist, with a 3-second RPC
+failure threshold; these are implementation settings, not measured latency claims.
+A lost private Worker closes the peer; the host retires known live references and
+keeps editing unavailable if the registry cannot be recovered. Simple guardian
+Document loss permits a fresh document only after known cleanup. There is no
+storage-based adoption. A delivery attempted before an acknowledgement was lost
+is explicitly unconfirmed, rather than definitely undelivered.
+
+The initial candidate .18 added three packaged assets and the two local example manifests'
+necessary offscreen permission. It leaves old broker/API entrypoints intact and
+adds an optional factory. Broker status can explicitly be unknown during channel
+loss; no confidence claim follows. Its native bootstrap failure and later outcomes are retained below.
+
+
+## U02.2c.3 scoped native result — candidate .20
+
+Current backend owner proof is bound to
+`.artifacts/atom/2026-10-19T19-57-08-977Z/atom-handoff.json`, with exact source,
+package, test and native bindings in
+`.artifacts/u02/guardian-bridge/verification-20.json`. This is local synthetic,
+agent-operated backend evidence, not field UI, human acceptance or a release.
+
+- 156 focused / 819 full Node checks pass, including legacy source controls;
+  2 strict packed type consumers and 7 immutable admission controls pass.
+- 15 native response checks cover both hosts, actual masked/second-blocker,
+  text/number/Unicode effects, future-only rules, undo/baseline, external revision
+  refusal and forced host-worker stop while Fetch is active. The next real app
+  request completes with original server values; the old plan cannot regain
+  authority. Native record: `response-native/2026-10-19T20-00-47-694Z/`.
+- 8 separate native guardian checks cover both hosts, unknown native owner BUSY,
+  actual offscreen-document loss with owned cleanup and foreign preservation,
+  visible inspector peer refusal, and embedding Atom-only shutdown with a live
+  shared second consumer. Record: `response-native/2026-10-19T20-02-25-472Z/`.
+
+Native Chrome supplied an exact offscreen URL/extension identity but omitted the
+optional `MessageSender.documentId`. New working binding: require one current
+native context at that URL, of type OFFSCREEN_DOCUMENT with a native document ID;
+reject visible/ambiguous contexts, sender tabs, wrong IDs when supplied, and wrong
+extension/URL. The protocol still requires a fresh channel challenge. This follows
+[Chrome's optional sender metadata contract](https://developer.chrome.com/docs/extensions/reference/api/runtime#type-MessageSender),
+not an invented mandatory field. Model and actual-peer checks remain separate.
+
+A pre-existing attached native target is conservatively BUSY, including DevTools
+or a browser-automation debugger. Playwright attaches automatically before Atom,
+so the new backend driver launches a fresh sandboxed Chrome and attaches its raw
+CDP test channel only to the inspector before Atom admission. It attaches to the
+app only after Atom acquires it and never attaches to the host worker. Connection
+approval and backend requests are harness RPC; DOM clicks/reads exercise the
+synthetic app. These checks do not establish user-facing field interactions.
+The preflight is preserved; no foreign session is detached to accommodate a test.
+
+Retained intermediate evidence: .18 bootstrap ReferenceError from a missing public
+factory import; .19 handshake refusal of optional missing sender identity; .20
+Playwright BUSY before editing. Separate raw-driver setup failures (wrong built-in
+worker selection and navigation timing) are retained before the successful run.
+All issued archives and original .15/.16/.17 results are unchanged.
+
+The old plain broker still gates response editing. The .20 local examples can use
+the verified guardian backend, while Live/Draft feature flags stay unavailable.
+Native controls, both field modes, actual inspector-owned close/cancel lifecycle,
+required majority rows, repeated legacy runtime acceptance and whole-U02 review
+remain required. Inspector close/reopen is sequenced with field UI ownership; it
+has not passed here. Simultaneous loss of guardian and host worker remains outside
+the claimed recovery guarantee. No official StatePort host intake is performed.

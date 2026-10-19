@@ -2,6 +2,7 @@
 import {appOrigin,siteRecord} from './origin-policy.mjs';
 import {retainDiagnostics} from '../../../core/diagnostic.mjs';
 import {DEBUGGER_CAPABILITIES,debuggerCommandCapability,isDevelopmentOrigin,isInspectionOrigin} from './capabilities.mjs';
+import {createGuardianBroker as makeGuardianBroker} from './guardian-broker.mjs';
 export function atomError(code,message=code){return Object.assign(new Error(message),{code});}
 export const capabilities=DEBUGGER_CAPABILITIES;
 function commandCapability(method){const cap=debuggerCommandCapability(method);if(!cap)throw atomError('CAPABILITY_DENIED','Unsupported scoped debugger command');return cap;}
@@ -22,6 +23,7 @@ export function createDebuggerBroker(debuggerAPI){
   };
  },status(tabId,owner){const token=leases.get(tabId);return !token?'none':token.owner===owner?'owned':'foreign';},invalidate(tabId){leases.delete(tabId);}};
 }
+export function createGuardianBroker(api,{documentPath}={}){return makeGuardianBroker(api,{...(documentPath?{documentPath}:{}),fallback:()=>createDebuggerBroker(api.debugger)});}
 export function createEventHub(){const handlers=new Set();return {subscribe(fn){handlers.add(fn);return()=>handlers.delete(fn);},emit(event){for(const fn of handlers)fn(event);}};}
 export function namespacedStorage(area,namespace='stateport.atom.v1.'){
  return {async get(keys){const list=typeof keys==='string'?[keys]:keys;const raw=await area.get(list.map(k=>namespace+k));return Object.fromEntries(list.filter(k=>Object.hasOwn(raw,namespace+k)).map(k=>[k,raw[namespace+k]]));},set(value){return area.set(Object.fromEntries(Object.entries(value).map(([k,v])=>[namespace+k,v])));}};
@@ -32,7 +34,7 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
  grants=Object.freeze([...grants]);
  const leases=new Map(),acquiring=new Map(),connections=new Map();let stopped=false,authorityEpoch=0;
  const storage=namespacedStorage(api.storage.session,namespace);
- const ready=storage.get(['connections']).then(x=>{for(const raw of x.connections||[]){try{const c=siteRecord({origin:raw.origin,mode:raw.mode,actions:raw.actions});connections.set(c.origin,c);}catch{/* Old or malformed records cannot grant authority. */}}});
+ const restored=storage.get(['connections']);const ready=(broker.ready?Promise.all([broker.ready,restored]).then(([,x])=>x):restored).then(x=>{for(const raw of x.connections||[]){try{const c=siteRecord({origin:raw.origin,mode:raw.mode,actions:raw.actions});connections.set(c.origin,c);}catch{/* Old or malformed records cannot grant authority. */}}});
  const persistConnections=()=>storage.set({connections:[...connections.values()]});
  const approvedSite=url=>connections.has(appOrigin(url));
  const permission=async origin=>!!origin&&!!await api.permissions?.contains({origins:[origin+'/*']});
@@ -50,7 +52,7 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
   if(!f.permission||f.origin!==entry.origin||entry.epoch!==authorityEpoch||(connections.get(entry.origin)||null)!==entry.connection){
    await revoke(id);throw atomError('ORIGIN_DENIED','Site permission or connection changed; attach again');
   }
-  entry.l.assert();return entry.l;
+  entry.l.assert();if(entry.l.verify)await entry.l.verify();entry.l.assert();return entry.l;
  }
  async function lease(id){
   if(stopped)throw atomError('DISPOSED');

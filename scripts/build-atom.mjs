@@ -9,6 +9,8 @@ export async function buildAtom(){
  const dir=root+'/packages/atom';await mkdir(dir+'/dist',{recursive:true});
  const results=[];
  for(const entry of ['runtime','ui','platform','transport'])results.push(await build({entryPoints:[dir+'/src/'+entry+'.mjs'],bundle:true,metafile:true,format:'esm',platform:'browser',outfile:dir+'/dist/'+entry+'.mjs'}));
+ for(const [entry,out]of [['guardian-entry','atom-guardian.js'],['guardian-worker','atom-guardian-worker.js']])results.push(await build({entryPoints:[dir+'/src/'+entry+'.mjs'],bundle:true,metafile:true,format:'esm',platform:'browser',outfile:dir+'/dist/'+out}));
+ await copyFile(dir+'/src/guardian.html',dir+'/dist/atom-guardian.html');
  await build({entryPoints:[root+'/browser-extension/reader.mjs'],bundle:true,format:'iife',platform:'browser',outfile:dir+'/dist/reader.js'});
  await build({entryPoints:[root+'/browser-extension/content.js'],bundle:true,format:'iife',platform:'browser',outfile:dir+'/dist/content.js'});
  for(const name of ['reader.html','reader.css'])await copyFile(root+'/browser-extension/'+name,dir+'/dist/'+name);

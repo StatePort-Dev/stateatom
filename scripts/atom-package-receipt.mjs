@@ -46,6 +46,7 @@ export async function inspectInstalledPair(consumer,expected){
  const contained=async file=>{const real=await realpath(file);if(!real.startsWith(installed+'/'))throw Error('Export escapes clean consumer: '+file);return real;};
  const peer=createRequire(atom+'/package.json');if(await realpath(peer.resolve('@stateport/extension-ui/contract.json'))!==await realpath(ui+'/contract.json'))throw Error('Multiple UI peer resolutions');
  const required={atom:['runtime','ui','platform','transport','atom.css','content.js','reader.js','reader.html','reader.css','contract.json'],'extension-ui':['tokens.css','components.css','fonts.css','contract.json','assets/fonts/InterVariable.woff2']};
+ if(contract.guardian?.protocolVersion===1)required.atom.push(...contract.guardian.assets);
  const exported={};
  for(const [name,pkg,dir]of [['atom',atomPkg,atom],['extension-ui',uiPkg,ui]]){
   for(const key of required[name])if(!pkg.exports?.['./'+key])throw Error('Missing export: '+name+'/'+key);

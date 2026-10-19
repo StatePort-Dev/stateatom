@@ -18,6 +18,7 @@ for (const name of ['LICENSE', 'NOTICE']) await copyFile(root+'/packages/extensi
 await copyFile(root+'/packages/extension-ui/assets/fonts/Inter-LICENSE.txt',root+'/dist/browser/extension-ui-licenses/Inter-LICENSE.txt');
 for(const name of ['manifest.json','panel.html','panel.css','reader.html','reader.css'])await copyFile(root+'/browser-extension/'+name,root+'/dist/browser/'+name);
 await copyFile(root+'/packages/atom/dist/content.js',root+'/dist/browser/content.js');
+for(const f of ['atom-guardian.html','atom-guardian.js','atom-guardian-worker.js'])await copyFile(root+'/packages/atom/dist/'+f,root+'/dist/browser/'+f);
 await build({entryPoints:[root+'/browser-extension/worker.js'],bundle:true,format:'esm',platform:'browser',outfile:root+'/dist/browser/worker.js'});
 await build({entryPoints:[root+'/browser-extension/panel.js'],bundle:true,format:'esm',platform:'browser',outfile:root+'/dist/browser/panel.js'});
 await build({entryPoints:[root+'/browser-extension/reader.mjs'],bundle:true,format:'iife',platform:'browser',outfile:root+'/dist/browser/reader.js'});

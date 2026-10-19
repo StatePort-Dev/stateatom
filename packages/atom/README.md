@@ -142,3 +142,26 @@ selected application context. Atom selects it only if the runtime admits that ta
 If that tab is missing or unsupported, the application selection stays empty; the
 user must choose a tab explicitly. The examples use Chrome's `openerTabId` while
 keeping the exact trusted inspector URL unchanged.
+
+
+### Optional live resource guardian (candidate .18)
+
+The local standalone and embedding examples use `createGuardianBroker(chrome)`
+in place of `createDebuggerBroker(chrome.debugger)`, shared by all host consumers.
+The host declares `offscreen` and copies the package exports `guardian.html`,
+`guardian.js` and `guardian-worker.js` as `atom-guardian.*` at its extension root.
+The optional `documentPath` must point to that exact bundled document. The shared
+platform waits for `broker.ready`; the old in-memory broker remains available for
+hosts that cannot supply the guardian. Existing unrelated offscreen documents
+are never closed or replaced. Response mutation requires the live owner; resource
+availability is separate from input support or execution evidence.
+
+Only runtime messaging and a dedicated Worker run offscreen. Native calls remain
+in the service worker. When its connection is lost, the live registry revokes its
+leases and delegates fixed cleanup to a new worker. Storage summaries cannot
+restore authority. An unknown existing native debugger client is refused before
+attachment; matching owner labels do not adopt it. A guardian loss retires current
+live references. Unconfirmed cleanup remains unavailable, not successfully restored.
+A lost registry can require restarting the extension; simultaneous context loss
+has no blanket crash-recovery guarantee. Official StatePort host intake remains
+separate. Live/Draft field controls and U02 majority acceptance remain unfinished.

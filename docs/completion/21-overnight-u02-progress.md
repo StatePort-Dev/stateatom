@@ -81,3 +81,26 @@ in `verification.json`. These are Node model results; no Chrome command runs in
 this module. Issued .17 runtime source inputs and package bytes are unchanged,
 and current hosts remain gated. Next: exact-peer/native bridge, then real cleanup
 fault tests; field-mode coverage remains 0/18.
+
+
+U02.2c.3 delivers the live native bridge on Atom `.20261019.20` / unchanged UI .2.
+156 focused / 819 full source tests, 2 strict packed consumers and 7 admission
+controls pass. 15 native response checks pass across both hosts, including forced
+worker stop with active Fetch and a completed unmodified next app request. A
+separate 8-check native fault pass covers guardian document loss, foreign native
+owner preservation/refusal, forged inspector peer rejection and Atom-only shared
+broker shutdown. Exact bindings: `.artifacts/u02/guardian-bridge/verification-20.json`;
+[interpretation and retained failures](../features/response-resource-owner.md#u022c3-scoped-native-result--candidate-20).
+
+The native driver uses sandboxed Chrome with no test debugger on the app before
+Atom admission; the new conservative BUSY guard is retained. Setup/approval and
+backend requests are harness RPC, not field-UI evidence. .18/.19 bootstrap failures,
+.20 Playwright BUSY and raw-driver setup failures remain retained. Sender identity
+binding now respects Chrome's optional documentId while requiring a unique exact
+native offscreen context. These are new implementation decisions, not old approval.
+
+Main Task 2 / U02 remain in progress: field modes, native controls, inspector-owned
+close/reopen, majority acceptance and final review are required. Both feature flags
+remain unavailable and native field catalogue coverage remains **0/18** in each
+mode. Next bounded slice: **U02.3a native control descriptor/ledger contract**, then
+its actual adapter; do not repeat completed response/guardian work without cause.

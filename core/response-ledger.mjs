@@ -46,7 +46,8 @@ export function createResponseLedger({investigationId,target}){
  function touch(r){r.resource.revision=++revision;}
  function phase(tx){
   const phases=tx.outcomes.map(o=>o.phase),delivered=phases.filter(p=>p==='delivered'||p==='delivered-after-close').length;
-  if(phases.some(p=>p==='failed'))tx.phase=delivered||tx.outcomes.some(o=>o.deliveries?.some(d=>d.delivered))?'partial-failure':'failed';
+  if(phases.some(p=>p==='unconfirmed'))tx.phase=delivered||tx.outcomes.some(o=>o.deliveries?.some(d=>d.delivered===true))?'partial-unconfirmed':'unconfirmed';
+  else if(phases.some(p=>p==='failed'))tx.phase=delivered||tx.outcomes.some(o=>o.deliveries?.some(d=>d.delivered))?'partial-failure':'failed';
   else if(delivered===phases.length)tx.phase='delivered';
   else if(delivered)tx.phase='partial';
   else if(phases.some(p=>p==='prepared'))tx.phase='prepared';
@@ -129,11 +130,11 @@ export function createResponseLedger({investigationId,target}){
  }
  function confirmResponse(receipt,result){
   const delivery=pending.get(receipt);if(!delivery)fail('STALE_RECEIPT','Unknown or already confirmed response receipt');
-  if(!result||typeof result.delivered!=='boolean'||result.error!==undefined&&typeof result.error!=='string')fail('INVALID_RECEIPT','Delivery acknowledgement required');
+  if(!result||![true,false,null].includes(result.delivered)||result.error!==undefined&&typeof result.error!=='string')fail('INVALID_RECEIPT','Delivery acknowledgement required');
   pending.delete(receipt);
   for(const e of delivery.entries){
    const r=records.get(e.id),isCurrent=r?.rule?.transactionId===e.rule.transactionId;
-   const value={phase:result.delivered?(closed?'delivered-after-close':'delivered'):'failed',...(result.error?{error:result.error.slice(0,512)}:{})};
+   const value={phase:result.delivered===null?'unconfirmed':result.delivered?(closed?'delivered-after-close':'delivered'):'failed',...(result.error?{error:result.error.slice(0,512)}:{})};
    outcome(e.rule,e.id,{...value,delivery:{receipt,url:delivery.url,requestId:delivery.requestId,requestOrdinal:delivery.requestOrdinal,delivered:result.delivered,...(value.error?{error:value.error}:{}),afterClose:closed}});
    if(e.restoration){restorations.delete(e.id);continue;}
    if(isCurrent){if(result.delivered)r.rule.phase='delivered';else{r.rule=null;r.resource.value=r.serverValue;}touch(r);}

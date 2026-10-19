@@ -1,6 +1,6 @@
 import {createAtomRuntime,type AtomRuntime} from '@stateport/atom/runtime';
 import {mountAtom,type AtomMount} from '@stateport/atom/ui';
-import {createChromePlatform,createDebuggerBroker,createEventHub,namespacedStorage,migrateStandaloneDiagnostics,capabilities,atomError,type ChromeAPI} from '@stateport/atom/platform';
+import {createChromePlatform,createDebuggerBroker,createGuardianBroker,createEventHub,namespacedStorage,migrateStandaloneDiagnostics,capabilities,atomError,type ChromeAPI} from '@stateport/atom/platform';
 import {createAtomClient,chromeTransport,createAtomDispatcher,validateRequest,API_VERSION,CAPABILITY_VERSION,FEATURE_IDS,describeCapabilities,operationPolicy,supportsCapabilityPolicy,type AtomOperation,type CapabilityDescription} from '@stateport/atom/transport';
 declare const chrome:ChromeAPI;
 const events=createEventHub(),broker=createDebuggerBroker(chrome.debugger);
@@ -41,3 +41,7 @@ client.request({op:'inputs-close',tabId:1,investigationId:'i'});
 client.request({op:'inputs-undo',tabId:1});
 // @ts-expect-error A plan is versioned data, never a source expression or eval request.
 client.request({op:'inputs-apply',tabId:1,plan:'window.value = 1'});
+
+const guarded=createGuardianBroker(chrome,{documentPath:"atom-guardian.html"});
+const resourceReady:Promise<void>=guarded.ready;
+void resourceReady;

@@ -20,7 +20,8 @@
   "capabilityVersion": 1,
   "features": [
     "capability-policy-v1",
-    "native-picker-v1"
+    "native-picker-v1",
+    "live-debugger-guardian-v1"
   ],
   "featureDiscovery": {
     "operation": "capabilities",
@@ -34,5 +35,16 @@
     "production": "read-only; F05 not implemented",
     "helper": "canonical http://127.0.0.1:<port>, separate browser access",
     "artifacts": "separate exact-origin browser permission"
+  },
+  "guardian": {
+    "protocolVersion": 1,
+    "authority": "live-memory-only",
+    "offscreenReason": "WORKERS",
+    "assets": [
+      "guardian.html",
+      "guardian.js",
+      "guardian-worker.js"
+    ],
+    "scope": "Resource admission and cleanup; not input or execution evidence"
   }
 }
