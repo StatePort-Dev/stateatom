@@ -1,5 +1,6 @@
 import {parseConnectionReceipt} from '../../../core/project-connection.mjs';
 // SPDX-License-Identifier: Apache-2.0
+import {parseExperimentPlan} from '../../../core/experiment-plan.mjs';
 import {siteRecord} from './origin-policy.mjs';
 import {atomError} from './platform.mjs';
 import {CAPABILITY_VERSION,FEATURE_IDS,GLOBAL_OPERATIONS,OPERATIONS,DEBUGGER_CAPABILITIES,isBridgeURL} from './capabilities.mjs';
@@ -18,6 +19,10 @@ export function validateRequest(m){
  if(['selected','inspect-selector'].includes(p.op)&&(typeof p.selector!=='string'||!p.selector||p.selector.length>1024))bad();
  if(['pick','cancel-pick'].includes(p.op)&&p.pickerId!==undefined&&(typeof p.pickerId!=='string'||!p.pickerId||p.pickerId.length>100))bad();
  if(p.op==='refine-pick'&&(typeof p.pickerId!=='string'||!p.pickerId||p.pickerId.length>100||!Number.isSafeInteger(p.index)||p.index<0||p.index>11))bad();
+ if(p.op==='inputs-apply'){try{if(!p.plan||typeof p.plan!=='object'||parseExperimentPlan(p.plan).target.tabId!==p.tabId)bad();}catch{bad();}}
+ if(['inputs-read','inputs-undo','inputs-baseline'].includes(p.op)&&(typeof p.investigationId!=='string'||!p.investigationId||p.investigationId.length>512))bad();
+ if(p.op==='inputs-close'&&p.investigationId!==undefined&&(typeof p.investigationId!=='string'||!p.investigationId||p.investigationId.length>512))bad();
+ if(['inputs-undo','inputs-baseline'].includes(p.op)&&(!Number.isSafeInteger(p.expectedRevision)||p.expectedRevision<0))bad();
  if(p.op==='connect-site')siteRecord(p.connection);
  if(p.op==='property'&&!['text','disabled'].includes(p.property))bad();
  if(p.op==='pair'&&p.receipt)parseConnectionReceipt(p.receipt);

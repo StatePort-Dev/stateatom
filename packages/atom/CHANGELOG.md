@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.1.0-candidate.20261019.17
+
+- Refuse response editing on the existing worker-only debugger owner. Native .16
+  stopped-worker testing left Fetch active and a subsequent request pending;
+  its partial successes and interruption FAIL remain retained. Safe independent
+  ownership is still required before exposing this backend in the shipped hosts.
+- Never seed a new editor from a previously substituted Network body or restored
+  session metadata as though either were an original current server occurrence.
+  Fresh original requests remain explicit application actions.
+
+## 0.1.0-candidate.20261019.16
+
+- Bind paused Fetch responses to the exact independently observed Network.Fetch
+  occurrence, including Chrome's XHR pause label for an actual Fetch request.
+  Network.XHR remains unsupported. Preserve candidate .15 and its native FAIL.
+- Persist a non-executable investigation summary before edit/restoration replies
+  and after response acknowledgements. Worker recreation keeps it stale and never
+  rehydrates rules or debugger ownership. No field-mode capability is advertised.
+
+## 0.1.0-candidate.20261019.15
+
+- Add explicit guarded response-editor backend operations and a document-bound
+  edit/restoration ledger. Future GET JSON rules never silently request, reload
+  or reset storage; send acknowledgements remain separate from unknown app
+  consumption and selected-property dependency. Live/Draft field UI and native
+  controls remain unavailable in this backend-only slice.
+- Coordinate owned Fetch cleanup with cancellation, navigation, property/source
+  changes and debugger lifecycle; legacy causal trials require closing the editor.
+  Fresh native reads preserve the bound editor while its old execution analysis
+  is marked stale. Historical .14 acceptance and evidence remain retained.
+
 ## 0.1.0-candidate.20261019.14
 
 - Hold the requested property and cleared snapshot while its operation is pending,

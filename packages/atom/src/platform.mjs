@@ -8,7 +8,7 @@ function commandCapability(method){const cap=debuggerCommandCapability(method);i
 // One broker per host, shared by every debugger consumer. Construction is inert.
 export function createDebuggerBroker(debuggerAPI){
  const leases=new Map();
- return {async acquire({tabId,documentId=null,owner,capabilities:grants=[]}){
+ return {workerIndependent:false,async acquire({tabId,documentId=null,owner,capabilities:grants=[]}){
   grants=Object.freeze([...grants]);
   if(!Number.isSafeInteger(tabId)||tabId<1||!owner||grants.some(c=>!capabilities.includes(c)))throw atomError('INVALID_PLATFORM');
   if(leases.has(tabId))throw atomError('BUSY','Debugger resource busy');
@@ -77,7 +77,7 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
    const f=await facts(id),entry=leases.get(id);
    if(entry){try{await check(id,entry);}catch{/* Revocation closes the old lease. */}}
    let status=broker.status?.(id,'atom')||'unknown';if(!leases.has(id)&&status==='owned')status='foreign';
-   return {...f,readOnlySites:readOnlySites===true,lease:status,disposed:stopped};
+   return {...f,readOnlySites:readOnlySites===true,lease:status,disposed:stopped,workerIndependent:broker.workerIndependent===true};
   },permittedOrigin:permission,owns:id=>leases.has(id),chrome,fetch:(...args)=>fetch(...args),events,
   async authorize(id,cap){const l=await lease(id);l.assert(cap);},
   async invalidate(id){await revoke(id);},

@@ -33,8 +33,29 @@ catalogue is registered before implementation. It is not runtime evidence.
   No adapter sends CDP commands yet; application consumption/effect remain Unknown.
   The library is not bundled; .14 package build inputs remain unchanged. Both
   feature availability flags stay unimplemented, native rows remain 0/18.
-- Remaining slices: actual runtime response rules, native controls, both field modes and
-  packed native acceptance. None is claimed implemented by this document.
+- U02.2b: guarded response backend and safety gate — delivered within this
+  bounded backend-only slice. Current .17 passes 92/92 focused, 755/755 full,
+  2 packed type consumers, 7 package admission controls and 3 native gate checks
+  across standalone/embedding. The current hosts refuse response editing with
+  `UNSAFE_LIFECYCLE`; request-supplied safety flags cannot bypass it. .17 handoff:
+  `.artifacts/atom/2026-10-19T18-41-49-049Z/atom-handoff.json`. Exact source/package
+  bindings and logs: `.artifacts/u02/response-runtime/verification-17.json`.
+  The new command is declared as `npm run verify:input-response`; .17 was checked
+  with `--expect-unsafe-owner`, so this proves refusal, not editing readiness.
+- Retained .15 native FAIL: a real Network.Fetch occurrence was paused with an XHR
+  label and was initially refused; exact CDP facts, input hashes and driver copies
+  are retained in two runs at 18:30/18:32 UTC under `response-native/`. .16 fixed
+  the binding and passed seven standalone checks through real response effects,
+  masked target, second blocker, text/number/Unicode, undo/baseline and external
+  revision refusal. Its actual active-Fetch worker-stop check FAILED: the worker
+  correctly did not recover authority, but native Fetch persisted and the next
+  application request hung. Evidence: `response-native/2026-10-19T18-37-10-451Z/`.
+  No embedding response acceptance followed. The current gate is the consequence
+  of this failure; unit successes never replace the failed runtime criterion.
+- Remaining: U02.2c must establish a worker-independent resource owner and native
+  interruption/disposal safety. Then native controls, both actual field modes and
+  full packed acceptance remain. Current catalogue coverage is still 0/18 in
+  both field modes. U02 and main plan Task 2 stay in progress.
 
 The final run report will list exact commits, checks and remaining dependency-ready
 work. Historical results/criteria, pointer timeout evidence and unsupported paths

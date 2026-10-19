@@ -296,6 +296,7 @@
       "files": [
         "core/experiment-plan.mjs",
         "core/response-ledger.mjs",
+        "packages/atom/src/response-editor.mjs",
         "packages/atom/src/runtime.mjs",
         "src/engine/browser.mjs",
         "core/diagnostic.mjs"
@@ -303,7 +304,8 @@
       "existing_commands": [
         "npm test",
         "npm run verify:browser",
-        "npm run verify:ide"
+        "npm run verify:ide",
+        "npm run verify:input-response"
       ],
       "deliverable": "Live for most declared editable inputs, grouped drafts, observed effects, undo-last and baseline restoration",
       "status": "in-progress",
@@ -332,8 +334,25 @@
           },
           "record": "21-overnight-u02-progress.md",
           "native_rows_verified": 0
+        },
+        {
+          "id": "U02.2b",
+          "status": "complete",
+          "scope": "Guarded response backend plus native refusal gate only; current worker-only hosts cannot edit responses",
+          "tests": {
+            "focused": 92,
+            "full": 755,
+            "packed_types": 2,
+            "package_admission": 7,
+            "native_refusal": 3
+          },
+          "record": "21-overnight-u02-progress.md",
+          "native_rows_verified": 0,
+          "native_interruption_ready": false
         }
-      ]
+      ],
+      "active_slice": "U02.2c",
+      "implementation_dependency": "Worker-independent response resource owner, discovered by actual active-Fetch worker-stop failure"
     },
     {
       "id": "U03",

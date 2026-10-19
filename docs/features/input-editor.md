@@ -119,3 +119,41 @@ External scalar changes, even a subsequently observed return to the original sca
 prevent restoring the old baseline over a new server revision. Close disarms
 rules, retains pending receipts and records late acknowledgements without reviving
 authority. No resource/history metadata is restored as executable authority.
+
+## Backend lifecycle findings (U02.2b)
+
+The source now has guarded `inputs-open/read/apply/undo/baseline/close` operations,
+owned future-response coordination and native property refreshes. Old execution
+analysis becomes Stale when quick editing starts; reading unchanged editor facts
+does not emit another invalidation. Source generation and native document/node
+are checked independently; no full application-build attestation is available, so
+this backend keeps `target.build = null`. Readonly summaries persist before
+mutation replies. Summaries and old request metadata cannot restore executable
+rules, current editing resources or debugger ownership.
+
+Native .15 revealed that Chrome reports the same actual request as Network.Fetch
+and Fetch.requestPaused XHR. .16 accepts that pause label only for the exact
+independently recorded Network.Fetch ID/frame/GET/URL; actual Network.XHR remains
+unsupported. Original .15 failures and packet identities remain retained.
+
+Native .16 passed standalone response effects, masked unchanged target, second
+blocker, actual selected text/disabled changes, Unicode/number groups, undo,
+baseline and external-revision refusal. Its active-Fetch worker-stop scenario
+FAILED: the restarted worker correctly lacked authority, but native Fetch stayed
+active and the next request waited indefinitely. No embedding pass followed.
+This disproves interruption readiness; prior test counts do not override it.
+
+.17 therefore refuses response mutation with `UNSAFE_LIFECYCLE` unless the trusted
+host provides a worker-independent debugger owner. The current in-memory broker
+reports false; request metadata cannot forge this capability. UI Live/Draft flags
+remain unavailable. An intercepted Network body is not relabelled an original
+server value for a later investigation. After worker restart, editing metadata is
+removed; new original application requests must be collected explicitly.
+
+U02.2c is the next newly discovered implementation dependency: establish resource
+ownership outside the worker being stopped, while preserving actual foreign
+lease refusal, inspector disposal and worker interruption cleanup. This is not a
+previously approved host architecture. First test native extension-document
+lifetime in an isolated synthetic fixture; choose the smallest viable owner from
+that evidence. No SDK, other repository mutation or publication is authorized by
+this dependency. U02 and Task 2 stay in progress.

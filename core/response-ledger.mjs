@@ -160,5 +160,5 @@ export function createResponseLedger({investigationId,target}){
   for(const [id,w] of restorations)outcome(w,id,{phase:'closed'});restorations.clear();
   revision++;return snapshot();
  }
- return Object.freeze({snapshot,observeResponse,apply,prepareResponse,confirmResponse,undoLast:fresh=>restoration('undo',fresh),restoreBaseline:fresh=>restoration('baseline',fresh),close});
+ return Object.freeze({snapshot,responseURLs:()=>[...new Set([...records.values()].filter(r=>r.rule||restorations.has(r.resource.id)).map(r=>r.resource.locator.url))],observeResponse,apply,prepareResponse,confirmResponse,undoLast:fresh=>restoration('undo',fresh),restoreBaseline:fresh=>restoration('baseline',fresh),close});
 }

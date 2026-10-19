@@ -31,3 +31,13 @@ events.emit({type:'permissions-removed'});
 client.request({op:'connect-site',tabId:1,connection:{origin:'http://localhost:3000',mode:'development',actions:[],sourceRoot:'/private'}});
 // @ts-expect-error Evaluation is not a permitted development action.
 client.request({op:'connect-site',tabId:1,connection:{origin:'http://localhost:3000',mode:'development',actions:['eval']}});
+
+client.request({op:'inputs-open',tabId:1});
+client.request({op:'inputs-read',tabId:1,investigationId:'i'});
+client.request({op:'inputs-undo',tabId:1,investigationId:'i',expectedRevision:1});
+client.request({op:'inputs-baseline',tabId:1,investigationId:'i',expectedRevision:1});
+client.request({op:'inputs-close',tabId:1,investigationId:'i'});
+// @ts-expect-error Undo requires the current investigation and ledger revision.
+client.request({op:'inputs-undo',tabId:1});
+// @ts-expect-error A plan is versioned data, never a source expression or eval request.
+client.request({op:'inputs-apply',tabId:1,plan:'window.value = 1'});

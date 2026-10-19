@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Atom response editor synthetic fixture</title>
+<style>body{font:18px system-ui;max-width:640px;margin:40px auto;padding:20px}button{font:inherit;padding:10px 18px;margin:8px}output{display:block;padding:8px}</style>
+<h1>Response input fixture</h1><p>Refresh explicitly reads two local JSON responses. Atom must not make this request for you.</p>
+<button id="refresh" type="button">Refresh application data</button><button id="confirm" type="button" disabled>Confirm</button>
+<output id="quota">Unknown quota</output><output id="note">Unknown note</output><output id="status">Not requested</output>
+<script>
+let generation=0;window.fixtureRequests=0;
+document.getElementById('refresh').addEventListener('click',async()=>{
+ const current=++generation;document.getElementById('status').textContent='Loading';
+ try{
+  window.fixtureRequests+=2;
+  const [account,permission]=await Promise.all([fetch('/api/account',{cache:'no-store'}).then(r=>r.json()),fetch('/api/permission',{cache:'no-store'}).then(r=>r.json())]);
+  if(current!==generation)return;
+  document.getElementById('confirm').disabled=account.risk.hold||!permission.access.ready||account.rules.quota<1;
+  document.getElementById('quota').textContent=String(account.rules.quota);document.getElementById('note').textContent=account.metadata.note;
+  document.getElementById('status').textContent='Loaded '+generation;
+ }catch(e){document.getElementById('status').textContent='Failed';}
+});
+</script></html>

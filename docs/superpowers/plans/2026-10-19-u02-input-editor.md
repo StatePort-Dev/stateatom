@@ -80,9 +80,50 @@ edit ledger; install/consume/cleanup provide explicit per-resource outcomes.
   safe escaped pointers; all-member preflight; delivered != consumed; failed and
   partial deliveries; guarded undo/baseline; external revisions; close/late ack;
   bounds and immutable snapshots. Focused Node tests, then full npm test, commit.
+- [ ] U02.2b exact runtime interface: `inputs-open` starts one in-memory response
+  editor for the current selected physical target; `inputs-read` refreshes its
+  selected-property observation without re-running expressions; `inputs-apply`
+  takes the versioned plan; `inputs-undo` / `inputs-baseline` require the current
+  investigation ID and ledger revision; `inputs-close` is local cleanup. `state`
+  returns the existing snapshot without running editor discovery. Only open / edit
+  require read+override, reads require owned read; production edit always refused.
+  Feature flags stay unavailable until both field modes/native acceptance exist.
+  The response adapter serializes install/pause/undo work, revalidates authority /
+  native occurrence after awaits, and confirms send acknowledgements separately.
+  It intercepts only future main-frame Fetch GET JSON success responses whose
+  exact network ID/ordinal/URL were observed. UTF-8 bodies are decoded correctly.
+  Close disarms synchronously, drains in-flight acknowledgement and disables only
+  its own Fetch domain. Cleanup failure is explicit, never foreign detach.
+  Editor state is not executable session storage. Legacy trials conflict with an
+  open editor rather than replacing its Fetch configuration. New immutable Atom
+  candidates .15/.16 retain their native failures; .17 closes the unsafe worker-only
+  route. A separate U02.2c slice must supply a worker-independent owner and prove
+  interruption cleanup with actual Chrome before response editing is available.
+  This is a new implementation dependency discovered by native testing, not a
+  previously approved host architecture or completed feature.
 - [ ] RED/GREEN real guarded rules, no implicit reload/request/storage reset,
   exact request match, consumed-versus-waiting states, partial failure and undo.
 - [ ] Focused/full checks, source/runtime boundaries recorded, local commit.
+
+### Task 2c: U02.2c worker-independent response owner
+
+**New dependency:** actual .16 worker-stop left native Fetch active. .17 gates the
+unsafe backend. This is a new working architecture choice, not prior approval.
+**First bounded step:** native extension-document owner lifetime experiment;
+inspect source/API constraints before choosing a host owner. Preserve foreign
+lease denial and no authority recovery from storage. Both owner disappearance
+and worker disappearance need actual cleanup proof before response editing opens.
+**Scope:** this repository's Atom package and standalone/embedding examples only;
+no official-host repo, SDK, account/publication or replacement UI. Offscreen API
+restrictions and an existing host offscreen slot must not be bypassed.
+
+- [ ] Establish native owner lifetime and constraints on a disposable synthetic
+  host, retaining successful and failed controls without relabelling readiness.
+- [ ] Select the smallest viable resource-owner contract from evidence; RED/GREEN
+  lifecycle/proxy/grants/foreign ownership/cancellation and exact trusted peers.
+- [ ] New immutable candidate and actual active-Fetch worker/owner interruption,
+  inspector close/reopen and normal response matrix in both hosts; commit only
+  actual bounded results, preserve the gate until the criterion is satisfied.
 
 ### Task 3: U02.3 native controls
 

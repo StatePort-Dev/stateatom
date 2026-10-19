@@ -4,6 +4,12 @@ export {describeCapabilities,operationPolicy,CAPABILITY_VERSION,FEATURE_IDS} fro
 export type {CapabilityDescription,CapabilityContext,Admission,FeatureId} from './capabilities.js';
 export type SourceLocation={file:string;line:number;column?:number;endLine?:number;endColumn?:number;sourceDigest?:string};
 export declare function isInspectionOrigin(url:string,readOnlySites?:boolean):boolean;
+export type InputScalar=boolean|number|string;
+export interface InputTarget {tabId:number;origin:string;run:string;document:string;node:string;selector:string;property:'text'|'disabled';value:string|boolean;observedAt:number;build:string|null}
+export interface ResponseInputResource {id:string;kind:'json-response';revision:number|string;type:'boolean'|'number'|'string';value:InputScalar;writable:true;locator:{url:string;method:'GET';requestId:string;requestOrdinal:number;pointer:string}}
+export interface ControlInputResource {id:string;kind:'dom-control';revision:number|string;type:'boolean'|'number'|'string';value:InputScalar;writable:true;locator:{document:string;node:string;selector:string;control:'text'|'textarea'|'number'|'checkbox'|'select';options?:string[]}}
+/** Inert data. A plan grants no authority; each runtime adapter can refuse a kind. */
+export interface ExperimentPlan {schema:'stateatom.experiment-plan/1';id:string;investigationId:string;mode:'live'|'draft';target:InputTarget;changes:Array<{resource:ResponseInputResource|ControlInputResource;value:InputScalar}>;requiredGrants:import('./platform.js').Capability[];refresh:'none';atomic:false;cleanup:'adapter-specific'}
 export type AtomOperation=
  |{op:'connect-site';tabId:number;connection:import('./platform.js').SiteConnection}
  |{op:'forget-site';tabId:number}
@@ -11,6 +17,11 @@ export type AtomOperation=
  |{op:'capabilities';tabId:number;capabilityVersion?:1}
  |{op:'pair';url:string;token:string;origin:string;sourceRoot:string;receipt?:unknown}
  |{op:'delete-diagnostic';id:string}
+ |{op:'inputs-open';tabId:number}
+ |{op:'inputs-read';tabId:number;investigationId:string}
+ |{op:'inputs-apply';tabId:number;plan:ExperimentPlan}
+ |{op:'inputs-undo'|'inputs-baseline';tabId:number;investigationId:string;expectedRevision:number}
+ |{op:'inputs-close';tabId:number;investigationId?:string}
  |{op:'attach';tabId:number;readOnly?:boolean}
  |{op:'source-map-import';tabId:number;scriptId:string;name:string;data:string}
  |{op:'source-map-acquire';tabId:number;scriptId:string;url?:string}
