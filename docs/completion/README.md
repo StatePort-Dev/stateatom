@@ -42,6 +42,8 @@ Each work item contains its inputs, output, files, tests and stopping point. An 
 | [12 — Approved decisions](12-scope-decisions.md) | Item-by-item decisions, changes and details still to design |
 | [13 — Current reconciliation](13-scope-reconciliation.md) | Completed increment, credited implementation, scoped checks and next item |
 | [14 — F01 execution](14-f01-capability-contracts.md) | Canonical policy, packed declarations, exact checks and remaining boundaries |
+| [15 — F02 execution](15-f02-origin-connections.md) | Exact connections, explicit development actions and permission invalidation |
+| [16 — F03 execution](16-f03-installed-project-setup.md) | Installed normal-project setup, retained first-read failure and remaining acceptance |
 | [Task index](task-index.json) | 29 active work items, dependency graph, owners and separate external SDK reference |
 | [Evidence register](audit-evidence.json) | Pinned sources and the limits of this review |
 

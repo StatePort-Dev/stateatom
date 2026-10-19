@@ -11,9 +11,10 @@ import {todoRevision,fixtureEntries,fileDigests} from "../../scripts/short-loop-
 import {stateatomPlugin} from "../../src/engine/plugin.mjs";
 import {startServer} from "../../scripts/inspection-server.mjs";
 import {root} from "../../scripts/vite-config.mjs";
-import {startIDE,startBrowser,panelFor,pair,chooseTab,rpc,waitFor} from "../../scripts/harness.mjs";
+import {startIDE,startBrowser,approveDevelopment,panelFor,pair,chooseTab,rpc,waitFor} from "../../scripts/harness.mjs";
 
 // Adapted from the historical short-loop harness (MIT); runs only in this checkout.
+const installedOption=process.argv.find(v=>v.startsWith('--installed-vsix=')),installedVsix=installedOption?path.resolve(installedOption.slice('--installed-vsix='.length)):null;if(installedOption&&!installedOption.slice('--installed-vsix='.length))throw Error('Explicit VSIX path required');
 const tag=process.env.SHORT_TAG||new Date().toISOString().replaceAll(':','-');
 if(!/^[a-zA-Z0-9_-][a-zA-Z0-9_.-]{0,100}$/.test(tag))throw Error('Invalid SHORT_TAG');
 const out=root+'/.runtime/short-loop-runs/'+tag;
@@ -41,7 +42,7 @@ async function setup(stack,mode,independent=false,noIDE=false){
  const origin=independent?'http://127.0.0.1:4175':'http://127.0.0.1:4173';
  if(!noIDE){await pair(panel,ide.conn,origin,independent?`.runtime/todomvc/examples/${stack}/src`:'tests/fixtures/inspection');await panel.locator('#token').fill('');await panel.locator('#source-connection > summary').click();}
  await page.goto(origin+(independent?'/':`/${stack}/`));await page.locator(independent?'.new-todo':'#p4').waitFor();
- const tabId=await chooseTab(panel,origin);await panel.locator('#attach').click();await panel.locator('#status').filter({hasText:/^OK$/}).waitFor();await page.reload();await page.locator(independent?'.new-todo':'#p4').waitFor();
+ const tabId=await chooseTab(panel,origin);await approveDevelopment(panel);await panel.locator('#attach').click();await panel.locator('#status').filter({hasText:/^OK$/}).waitFor();await page.reload();await page.locator(independent?'.new-todo':'#p4').waitFor();
  if(independent){for(const title of['Alpha short','Beta short']){await page.locator('.new-todo').fill(title);await page.locator('.new-todo').press('Enter');}await page.locator('.todo-list li .toggle').first().check();await waitFor(()=>page.locator('.todo-list li').count().then(n=>n===2));}
  check('optional panels start collapsed '+stack+mode+independent,await panel.locator('#experiments-details').evaluate(e=>!e.open)&&await panel.locator('#diagnostics-details').evaluate(e=>!e.open));
  health.chromium=browser.context.browser()?.version();health.identity={url:page.url(),title:await page.title(),bodyLength:(await page.locator('body').innerText()).length,overlay:await page.locator('vite-error-overlay').count()};
@@ -55,7 +56,7 @@ async function inspect(ctx,c){
  const name=[mode,stack,independent?'todo':noIDE?'basic':'fixture',c.id].join('-');
  const item={name,stack,mode,configuration:{browser:true,IDE:!noIDE,sources:!noIDE,devInstrumentation:mode==='B',independent},expected:c,selectionMethod:c.picker?'real picker pointer':'real inspector selector input'};
  try{
- if(!c.refresh)await panel.locator('#property').selectOption(c.property);
+ if(!c.refresh){await panel.locator('#property').selectOption(c.property);await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});return s.property===c.property&&await panel.locator('#status').innerText()==='OK';});}
  const before=(await rpc(panel,{op:'state',tabId})).selection?.observedAt;
  if(c.refresh){await panel.locator('#load').click();}
  else if(c.picker){await panel.locator('#pick').click();const box=await page.locator(c.selector).boundingBox();if(!box)throw Error('No element box');await page.mouse.click(box.x+box.width/2,box.y+box.height/2);}
@@ -69,10 +70,11 @@ async function inspect(ctx,c){
  item.T=dom===c.value&&state.selection.value===dom;
  item.actual={dom,rawDOM,selectionValue:state.selection.value,marker:state.selection.marker,instance:state.analysis.stateatom?.runtime?.target?.scope||state.selection.deepTrace?.target?.scope};
  item.ui={operands:await panel.locator('#operands').innerText(),mode:await panel.locator('#mode').innerText(),freshness:await panel.locator('#freshness').innerText(),selected:await panel.locator('#selected').innerText(),sources:await panel.locator('#sources').innerText(),expressions:await panel.locator('#expressions').innerText(),summary:await panel.locator('#atom-summary').innerText(),chain:await panel.locator('#atom-chain').innerText(),independentObservations:await panel.locator('#atom-independent').textContent()};
+ item.ui.operandRows=await panel.locator('#operands li').evaluateAll(rows=>rows.map(row=>({expression:row.querySelector('span')?.textContent?.trim(),value:row.querySelector('code')?.textContent})));
  const expectedSources=state.analysis.sources.filter(s=>s.expressions.some(e=>compact(e).includes(compact(c.expression))));
  item.E=expectedSources.length===1&&compact(item.ui.expressions).includes(compact(c.expression));
  const nodes=state.analysis.stateatom?.runtime?.nodes||[];
- item.observedValues=nodes.filter(n=>n.status==='Observed'&&n.kind!=='target'&&typeof n.expression==='string'&&c.valueNames.some(x=>n.expression.includes(x))&&['string','number','boolean'].includes(typeof n.value)).map(n=>({kind:n.kind,expression:n.expression,value:n.value,scope:n.scope,status:n.status,uiVisible:item.ui.operands.includes(n.expression+' = '+JSON.stringify(n.value))}));
+ item.observedValues=nodes.filter(n=>n.status==='Observed'&&n.kind!=='target'&&typeof n.expression==='string'&&c.valueNames.some(x=>n.expression.includes(x))&&['string','number','boolean'].includes(typeof n.value)).map(n=>({kind:n.kind,expression:n.expression,value:n.value,scope:n.scope,status:n.status,uiVisible:item.ui.operandRows.some(row=>row.expression===n.expression+' ='&&row.value===JSON.stringify(n.value))}));
  item.V=state.analysis.stateatom?.runtime?.status==='Observed'&&item.observedValues.some(n=>n.uiVisible);
  item.I=false;
  if(item.E){const source=expectedSources[0],index=state.analysis.sources.indexOf(source);
@@ -135,7 +137,7 @@ async function navigationFreshness({page,panel,tabId}){
  await panel.locator('#load').click();await panel.locator('#status').filter({hasText:/^OK$/}).waitFor();
  const after=await rpc(panel,{op:'state',tabId});
  check('reinspection after navigation records a new observation',after.selection?.observedAt>before.selection.observedAt&&after.run!==before.run&&after.selection?.page!==before.selection.page);
- check('reinspection after navigation recovers selected expression and values',(await panel.locator('#expressions').innerText()).includes('form.length < 3')&&(await panel.locator('#operands').innerText()).includes('form = ""'));
+ check('reinspection after navigation recovers selected expression and values',(await panel.locator('#expressions').innerText()).includes('form.length < 3')&&await panel.locator('#operands li').evaluateAll(rows=>rows.some(row=>row.querySelector('span')?.textContent?.trim()==='form ='&&row.querySelector('code')?.textContent==='""')));
  await panel.screenshot({path:out+'/after-navigation-reinspection.png'});
 }
 try{
@@ -146,7 +148,7 @@ try{
  assert.deepEqual(result.fixtureDigests,JSON.parse(await readFile(fixtureRoot+'/SOURCE_SHA256.json','utf8')),'TodoMVC source tree matches prepared archive');
  result.fixtureVersions={};
  for(const stack of ['react','vue'])for(const name of stack==='react'?['react','react-dom','react-router-dom']:['vue','vue-router'])result.fixtureVersions[stack+'/'+name]=JSON.parse(await readFile(fixtureRoot+'/examples/'+stack+'/node_modules/'+name+'/package.json','utf8')).version;
- ide=await startIDE(runtime,{logDir:out});
+ ide=await startIDE(runtime,{logDir:out,...(installedVsix?{installedVsix}:{})});if(installedVsix){result.configuration.installedDistribution=true;result.installedHelper=JSON.parse(await readFile(runtime+'/installed-helper-host.json'));check('actual VS Code host loads the exact isolated installed VSIX',result.installedHelper.loadedFromIsolatedInstallation===true);}
  if(!process.env.SHORT_ONLY_TODO){
  for(const mode of['B','A'])for(const stack of['react','vue']){
  const ctx=await setup(stack,mode);

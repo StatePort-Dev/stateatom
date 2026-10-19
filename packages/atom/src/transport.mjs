@@ -1,3 +1,4 @@
+import {parseConnectionReceipt} from '../../../core/project-connection.mjs';
 // SPDX-License-Identifier: Apache-2.0
 import {siteRecord} from './origin-policy.mjs';
 import {atomError} from './platform.mjs';
@@ -17,6 +18,7 @@ export function validateRequest(m){
  if(['selected','inspect-selector'].includes(p.op)&&(typeof p.selector!=='string'||!p.selector||p.selector.length>1024))bad();
  if(p.op==='connect-site')siteRecord(p.connection);
  if(p.op==='property'&&!['text','disabled'].includes(p.property))bad();
+ if(p.op==='pair'&&p.receipt)parseConnectionReceipt(p.receipt);
  if(p.op==='pair'&&(!isBridgeURL(p.url)||typeof p.token!=='string'||p.token.length>4096||typeof p.origin!=='string'||typeof p.sourceRoot!=='string'))bad();
  if(p.op==='capabilities'&&p.capabilityVersion!==undefined&&p.capabilityVersion!==CAPABILITY_VERSION)bad();
  if(['open','definitions','references'].includes(p.op)&&(!p.source||typeof p.source.file!=='string'||!Number.isSafeInteger(p.source.line)||p.source.line<1))bad();

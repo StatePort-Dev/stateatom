@@ -1,3 +1,4 @@
+import {parseConnectionReceipt} from '../../../core/project-connection.mjs';
 import {appOrigin,helperURL} from './origin-policy.mjs';
 import {createSourceMapUI} from './source-map-ui.mjs';
 import {createActionUI} from './action-ui.mjs';
@@ -42,6 +43,7 @@ function attachAvailability(){const p=selectedState?.capabilityPolicy,known=supp
 function renderInspection(){
  sourceMapUI.render(selectedState);
  actionsUI.render(selectedState);
+ $('project-setup-status').textContent=selectedState?.projectSetup?.reason||'Basic works without the helper. For source access, install matching components and paste a private receipt.';
  $('atom-result').textContent='';
  const view=inspectionView(selectedState||{}),selection=view.target;
  $('mode').textContent=view.mode;
@@ -117,6 +119,7 @@ async function inspectAgain(){
  finally{if(id===tab())await load();}
 }
 function flatten(v,p='',out=[]){if(v!==null&&typeof v==='object')for(const[k,x]of Object.entries(v))flatten(x,p?p+'.'+k:k,out);else out.push({path:p,value:v});return out;}
+$('connect-receipt').onclick=()=>action(async()=>{try{const r=parseConnectionReceipt($('connection-receipt').value);if(options.requestOriginPermission&&!await options.requestOriginPermission(r.url))throw Error('Helper origin permission denied');await rpc({op:'pair',url:r.url,token:r.token,origin:r.origin,sourceRoot:r.sourceRoot,receipt:r});await load();}finally{$('connection-receipt').value='';}});
 $('pair').onclick=()=>action(async()=>{const url=$('bridge').value,origin=$('origin').value;if(!helperURL(url)||!appOrigin(origin,{exact:true}))throw Error('Enter canonical origins without paths');if(options.requestOriginPermission&&!await options.requestOriginPermission(url))throw Error('Helper origin permission denied');await rpc({op:'pair',url,token:$('token').value,origin,sourceRoot:$('source-root').value});await load();});
 $('save-site').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration,origin=$('tabs').selectedOptions?.[0]?.dataset.origin,mode=$('site-mode').value,actions=mode==='development'?['cache','reload','override','replay'].filter(n=>$('site-'+n).checked):[];if(!appOrigin(origin,{exact:true}))throw Error('Select an exact application origin');if(options.requestOriginPermission&&!await options.requestOriginPermission(origin))throw Error('Site origin permission denied');if(id!==tab()||epoch!==tabGeneration)throw Error('Selected tab changed');await rpc({op:'connect-site',tabId:id,connection:{origin,mode,actions}});await load();});
 $('forget-site').onclick=()=>action(async()=>{await rpc({op:'forget-site',tabId:tab()});await load();});

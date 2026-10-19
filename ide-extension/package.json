@@ -1,7 +1,7 @@
 {
   "name": "stateatom-dev-helper",
   "displayName": "StateAtom Development Helper",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "publisher": "local-research",
   "engines": {
     "vscode": "^1.95.0"
@@ -24,8 +24,41 @@
       {
         "command": "xray.pair",
         "title": "X-Ray: Show local pairing token"
+      },
+      {
+        "command": "stateatom.copyConnectionReceipt",
+        "title": "StateAtom: Copy connection receipt"
+      },
+      {
+        "command": "stateatom.disconnect",
+        "title": "StateAtom: Disconnect source helper"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "StateAtom source connection",
+      "properties": {
+        "stateatom.helperPort": {
+          "type": "number",
+          "default": 47731,
+          "minimum": 1,
+          "maximum": 65535,
+          "scope": "resource",
+          "description": "Explicit 127.0.0.1 helper port. Change if occupied; no scanning."
+        },
+        "stateatom.appOrigin": {
+          "type": "string",
+          "default": "http://localhost:5173",
+          "scope": "resource",
+          "description": "Canonical exact HTTP development origin for the private connection receipt."
+        },
+        "stateatom.sourceFolder": {
+          "type": "string",
+          "default": ".",
+          "scope": "resource",
+          "description": "Source folder relative to the selected trusted workspace. Dot explicitly selects the whole workspace."
+        }
+      }
+    }
   },
   "license": "(MIT AND Apache-2.0)",
   "description": "Open local source bridge for the StateAtom experimental inspector",

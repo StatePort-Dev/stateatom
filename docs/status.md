@@ -18,7 +18,14 @@ connection, 26 Basic, 11 React-host, 19 source-map and 34 two-host checks pass,
 with 2 strict packed consumers. Ordinary loopback is read-only until explicit
 development actions are approved; navigation/revocation invalidates old authority
 and private source/trial state. Native optional HTTPS prompt acceptance is still
-unclaimed. F03 installation/onboarding is next; no release or human-study claim follows.
+unclaimed. The [F03 implementation](completion/16-f03-installed-project-setup.md)
+adds installed helper/plugin setup and a private receipt on `.20261019.6`:
+612 unit, 65 contract, 18 independent-project and 12 React-host checks pass;
+short-loop retains 20 PASS / 10 expected PARTIAL and 2 strict packed consumers pass.
+F03 is not complete: the required installed first-read regression refuses its
+first P2 inspection because the final isolated DOM identity check compiles after
+the proof snapshot. That bounded freshness repair remains the next step, with the
+failed run and historical criteria preserved. No release or human-study claim follows.
 
 Current checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live

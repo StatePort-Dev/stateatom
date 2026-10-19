@@ -469,3 +469,31 @@ not claim acceptance of the optional HTTPS permission prompt. See
 [the F02 execution record](docs/completion/15-f02-origin-connections.md) for exact
 artifacts, controls and limits. F03 installation/onboarding and F05 production
 confirmations remain separate work.
+
+## Installed development setup (F03)
+
+`npm run build:extensions` then `npm run pack:development` prepares a local VSIX
+and open Vite-plugin tarball, with an immutable handoff under `.artifacts/development/`.
+Neither command publishes. Install the VSIX through VS Code **Install from VSIX**
+and the tarball as a development dependency of your own project. Follow the
+[plugin's normal Vite React recipe](packages/vite-plugin/README.md) and
+[helper connection/trust guide](ide-extension/README.md). The private receipt
+replaces URL/token/source-folder copy/paste and never belongs in a URL or report.
+Basic works without this integration. No production SDK or closed launcher is needed.
+
+`npm run verify:project-setup` tests installed artifacts in a clean independent
+project, including real IDE navigation, state change, HMR, disconnect and removal.
+It reads `.artifacts/development/handoff.json`; build and pack first. Installed
+first-read regression remains separate: `npm run verify:first-read-ui --
+--installed-vsix=/absolute/path/helper.vsix`. Its stronger restricted premises and
+original acceptance criteria do not become ordinary development claims.
+
+The retained `verify:react-host-ui` and `verify:short-loop` regressions also accept
+`--installed-vsix=/absolute/path/helper.vsix`; the development-host path remains
+available when that explicit option is omitted. These are separate scoped harness
+results, not proof of ordinary apps satisfying the controlled first-read premises.
+
+Current F03 acceptance is incomplete: normal installed setup passes, but the
+required first-read UI regression refuses changed compilation history. See the
+[F03 execution record](docs/completion/16-f03-installed-project-setup.md) for the
+retained failure and the bounded repair still required.

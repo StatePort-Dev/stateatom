@@ -9,7 +9,7 @@ export type AtomOperation=
  |{op:'forget-site';tabId:number}
  |{op:'tabs'|'unpair'|'list-diagnostics'}
  |{op:'capabilities';tabId:number;capabilityVersion?:1}
- |{op:'pair';url:string;token:string;origin:string;sourceRoot:string}
+ |{op:'pair';url:string;token:string;origin:string;sourceRoot:string;receipt?:unknown}
  |{op:'delete-diagnostic';id:string}
  |{op:'attach';tabId:number;readOnly?:boolean}
  |{op:'source-map-import';tabId:number;scriptId:string;name:string;data:string}

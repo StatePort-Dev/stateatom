@@ -1,10 +1,11 @@
+import {HELPER_ID,HELPER_VERSION,HELPER_PROTOCOL} from './project-connection.mjs';
 import {appOrigin} from '../packages/atom/src/origin-policy.mjs';
 import {verifyFirstRead} from "../src/first-read/verify.mjs";
 import {loadFirstReadCompilation} from "../src/first-read/profile-channel.mjs";
 import {sourceSlice,validateTrace} from "../src/engine/slice.mjs";
 import {realpath,readFile,readdir,stat} from 'node:fs/promises';
 import path from 'node:path';
-import {timingSafeEqual} from 'node:crypto';
+import {timingSafeEqual,randomUUID,createHash} from 'node:crypto';
 import http from 'node:http';
 import {analyzeSources,digest,sourceBinding} from './analyzer.mjs';
 const operations=new Set(['analyze','open','definitions','references','check-action-sources']);
@@ -18,9 +19,9 @@ export function validateRequest(headers,cfg,operation){
  if(operation!=='pair'&&!operations.has(operation))throw Error('Operation denied');return true;
 }
 export async function safePath(root,relative){
- if(typeof relative!=='string'||relative.includes('%')||path.isAbsolute(relative))throw Error('Path denied');
+ if(typeof relative!=='string'||relative.includes('%')||relative.includes('\\')||relative.split('/').includes('..')||path.isAbsolute(relative))throw Error('Path denied');
  const base=await realpath(root),full=await realpath(path.resolve(base,relative));
- if(!full.startsWith(base+path.sep))throw Error('Outside workspace');return full;
+ if(!(full===base&&relative==='.')&&!full.startsWith(base+path.sep))throw Error('Outside workspace');return full;
 }
 async function sourceFiles(root,subdir){
  const base=await safePath(root,subdir),out=[];let bytes=0;
@@ -28,19 +29,22 @@ async function sourceFiles(root,subdir){
  await walk(base);return out;
 }
 export function instrumentedSources(files,marker){const [file,,hash]=String(marker).split(':');return files.filter(f=>f.file===file&&digest(f.text).slice(0,12)===hash);}
-export function startBridge({root,port=47731,token,onOpen,onDefinitions,onReferences}){
- const cfg={port,token,extension:null},bindings=new Map();
+export function startBridge({root,port=47731,token,onOpen,onDefinitions,onReferences,isAllowed=()=>true}){
+ const cfg={port,token,extension:null},bindings=new Map(),helper={id:HELPER_ID,version:HELPER_VERSION,protocol:HELPER_PROTOCOL,session:randomUUID()},workspace={id:createHash('sha256').update(path.resolve(root)).digest('hex'),name:path.basename(root)};
  const server=http.createServer(async(req,res)=>{
   const origin=req.headers.origin;res.setHeader('Vary','Origin');
   if(/^chrome-extension:\/\/[a-p]{32}$/.test(origin||'')&&(!cfg.extension||origin.endsWith(cfg.extension)))res.setHeader('Access-Control-Allow-Origin',origin);
   res.setHeader('Access-Control-Allow-Headers','authorization,content-type');res.setHeader('Access-Control-Allow-Methods','POST,OPTIONS');
   if(req.method==='OPTIONS'){res.writeHead(204);res.end();return;}
   try{
-   const op=req.url?.slice(1);validateRequest(req.headers,cfg,op);if(req.method!=='POST')throw Error('POST only');
+   if(!isAllowed())throw Error('Workspace trust or selection changed; reconnect in the IDE');const op=req.url?.slice(1);validateRequest(req.headers,cfg,op);if(req.method!=='POST')throw Error('POST only');
    let data='';for await(const c of req){data+=c;if(Buffer.byteLength(data)>1500000)throw Error('Payload limit');}const body=JSON.parse(data||'{}');let result;
+   if(!isAllowed())throw Error('Workspace trust revoked');
    if(op==='pair'){
+    if(body.clientProtocol!==undefined&&body.clientProtocol!==HELPER_PROTOCOL)throw Error('Helper protocol mismatch; install matching components');
+    if(body.connection&&(body.connection.schemaVersion!==1||body.connection.helper?.id!==helper.id||body.connection.helper?.version!==helper.version||body.connection.helper?.protocol!==helper.protocol||body.connection.helper?.session!==helper.session||body.connection.workspace?.id!==workspace.id))throw Error('Stale or wrong-workspace receipt; copy a fresh receipt from this helper');
     if(!appOrigin(body.origin,{exact:true})||new URL(body.origin).protocol!=='http:')throw Error('App origin denied');
-    await safePath(root,body.sourceRoot);cfg.extension=origin.split('://')[1];bindings.set(body.origin,body.sourceRoot);result={paired:true,workspace:path.basename(root),origin:body.origin};
+    await safePath(root,body.sourceRoot);cfg.extension=origin.split('://')[1];bindings.set(body.origin,body.sourceRoot);result={paired:true,workspace:path.basename(root),origin:body.origin,sourceRoot:body.sourceRoot,helper,workspaceIdentity:workspace};
    }else{
     const sourceRoot=bindings.get(body.origin);if(!sourceRoot)throw Error('Origin not mapped');
     if(op==='analyze'){
@@ -64,8 +68,8 @@ export function startBridge({root,port=47731,token,onOpen,onDefinitions,onRefere
      if(op==='open')result=await onOpen(full,body);else if(op==='definitions')result=await onDefinitions(full,body);else result=await onReferences(full,body);
     }
    }
-   res.setHeader('Content-Type','application/json');res.end(JSON.stringify({ok:true,result}));
+   if(!isAllowed())throw Error('Workspace trust revoked');res.setHeader('Content-Type','application/json');res.end(JSON.stringify({ok:true,result}));
   }catch(e){res.writeHead(403,{'Content-Type':'application/json'});res.end(JSON.stringify({ok:false,error:e.message}));}
  });
- return {server,cfg,ready:new Promise((resolve,reject)=>server.once('error',reject).listen(port,'127.0.0.1',resolve)),close:()=>new Promise(r=>server.close(r))};
+ return {server,cfg,helper,workspace,ready:new Promise((resolve,reject)=>server.once('error',reject).listen(port,'127.0.0.1',resolve)),close:()=>new Promise(r=>server.close(r))};
 }

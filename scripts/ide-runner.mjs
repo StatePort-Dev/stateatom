@@ -17,5 +17,5 @@ try{
   developmentPath=runtime+'/acceptance-driver';await mkdir(developmentPath);
   await writeFile(developmentPath+'/package.json',JSON.stringify({name:'stateatom-acceptance-driver',publisher:'local-research',version:'0.0.0',engines:{vscode:'^1.95.0'},main:'./driver.cjs',extensionDependencies:['local-research.stateatom-dev-helper']}));await writeFile(developmentPath+'/driver.cjs','exports.activate=()=>{};');
  }
- await runTests({vscodeExecutablePath:root+'/scripts/code-sandbox-wrapper.sh',extensionDevelopmentPath:developmentPath,extensionTestsPath:root+'/tests/ide-host.cjs',launchArgs:[root,'--user-data-dir='+runtime+'/vscode-user','--extensions-dir='+runtime+'/vscode-extensions','--remote-debugging-port=49331','--disable-updates','--skip-welcome','--skip-release-notes'],extensionTestsEnv:{XRAY_RUNTIME:runtime}});
+ await runTests({vscodeExecutablePath:root+'/scripts/code-sandbox-wrapper.sh',extensionDevelopmentPath:developmentPath,extensionTestsPath:root+'/tests/ide-host.cjs',launchArgs:[process.env.XRAY_PROJECT_ROOT||root,'--user-data-dir='+runtime+'/vscode-user','--extensions-dir='+runtime+'/vscode-extensions','--remote-debugging-port=49331','--disable-updates','--skip-welcome','--skip-release-notes'],extensionTestsEnv:{XRAY_RUNTIME:runtime}});
 }catch(e){console.error(e);process.exitCode=1;}

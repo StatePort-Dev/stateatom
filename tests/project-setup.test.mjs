@@ -1,0 +1,46 @@
+// SPDX-License-Identifier: Apache-2.0
+import test from 'node:test';import assert from 'node:assert/strict';
+import {parseConnectionReceipt,assessProjectSetup} from '../core/project-connection.mjs';
+import {stateatomPlugin} from '../src/engine/vite-install.mjs';
+const receipt={schemaVersion:1,helper:{id:'local-research.stateatom-dev-helper',version:'0.1.3',protocol:1,session:'12345678-1234-4234-8234-123456789abc'},workspace:{id:'a'.repeat(64),name:'Ordinary app'},url:'http://127.0.0.1:53029',token:'b'.repeat(64),origin:'http://localhost:5173',sourceRoot:'.'};
+test('private receipt validates exact protocol/helper/session/origin/subtree without URLs or arbitrary paths',()=>{
+ assert.equal(parseConnectionReceipt(JSON.stringify(receipt)).sourceRoot,'.');
+ for(const patch of [{schemaVersion:2},{helper:{...receipt.helper,protocol:2}},{helper:{...receipt.helper,version:'99.0.0'}},{origin:'http://localhost.evil:5173/path'},{url:'http://remote.invalid:53029'},{sourceRoot:'/home/private'},{sourceRoot:'../outside'},{sourceRoot:'C:\\private'},{token:''}])assert.throws(()=>parseConnectionReceipt(JSON.stringify({...receipt,...patch})),/receipt|version|origin|source|helper/i);
+});
+test('setup hints separate missing instrumentation and source mismatch from observed evidence',()=>{
+ assert.equal(assessProjectSetup({paired:false}).code,'HELPER_DISCONNECTED');
+ assert.equal(assessProjectSetup({paired:true,selection:{},analysis:{}}).code,'PLUGIN_MISSING');
+ assert.equal(assessProjectSetup({paired:true,selection:{marker:'src/ui/Panel.jsx:1:bad'},analysis:{boundFiles:[]}}).code,'SOURCE_MISMATCH');
+ assert.equal(assessProjectSetup({paired:true,selection:{marker:'src/ui/Panel.jsx:1:ok'},analysis:{boundFiles:['src/ui/Panel.jsx']}}).code,'SOURCE_CONNECTED');
+});
+test('normal dev plugin detects a conflicting React transform without silently claiming support',()=>{
+ const p=stateatomPlugin({enabled:true,root:'/project',reactHostProps:true});assert.throws(()=>p.configResolved({plugins:[{name:'vite:react-babel'}],esbuild:{jsx:'automatic'}}),/classic|conflict|React/i);
+});
+test('helper never advertises a connection after bind failure; trusted source folder and session are bounded',async()=>{
+ const {createHelperSession}=await import('../ide-extension/session.mjs');const {createServer}=await import('node:net');const {mkdtemp,mkdir}=await import('node:fs/promises');const {tmpdir}=await import('node:os');const root=await mkdtemp(tmpdir()+'/atom-helper-test-');await mkdir(root+'/app');const occupied=createServer();await new Promise(r=>occupied.listen(0,'127.0.0.1',r));const port=occupied.address().port;let trusted=true;const session=createHelperSession();
+ try{await assert.rejects(session.start({root,port,isAllowed:()=>trusted}),/port|address|use/i);assert.equal(session.connection,null);await new Promise(r=>occupied.close(r));await session.start({root,port,isAllowed:()=>trusted});const r=await session.receipt({origin:'http://localhost:5173',sourceRoot:'app'});assert.equal(r.helper.session,session.connection.helper.session);await assert.rejects(session.receipt({origin:r.origin,sourceRoot:'../outside'}));trusted=false;await assert.rejects(session.receipt({origin:r.origin,sourceRoot:'.'}),/trust|workspace/i);}finally{await session.stop();if(occupied.listening)await new Promise(r=>occupied.close(r));}
+});
+test('transport refuses malformed or unsupported private receipts before helper access',async()=>{
+ const {validateRequest}=await import('../packages/atom/src/transport.mjs');const payload={op:'pair',url:receipt.url,token:receipt.token,origin:receipt.origin,sourceRoot:'.',receipt:{...receipt,schemaVersion:2}};assert.throws(()=>validateRequest({version:1,id:'r',session:'s',payload}),/receipt|version/i);
+});
+test('bridge receipt session/workspace are checked before pairing and revoked trust denies reads',async()=>{
+ const {createHelperSession}=await import('../ide-extension/session.mjs');const {mkdtemp,writeFile}=await import('node:fs/promises');const root=await mkdtemp('/tmp/atom-receipt-server-');await writeFile(root+'/Screen.jsx','export const value=42;');let trusted=true;const session=createHelperSession();
+ try{await session.start({root,port:53028,isAllowed:()=>trusted});const r=await session.receipt({origin:'http://localhost:5173',sourceRoot:'.'});const request=async body=>(await fetch(r.url+'/pair',{method:'POST',headers:{origin:'chrome-extension://'+'a'.repeat(32),authorization:'Bearer '+r.token,'content-type':'application/json'},body:JSON.stringify(body)})).json();const body={origin:r.origin,sourceRoot:'.',clientProtocol:1,connection:{schemaVersion:1,helper:r.helper,workspace:r.workspace}};
+ assert.equal((await request({...body,connection:{...body.connection,helper:{...r.helper,session:'00000000-0000-0000-0000-000000000000'}}})).ok,false);const paired=await request(body);assert.equal(paired.result.helper.session,r.helper.session);assert.equal(paired.result.sourceRoot,'.');trusted=false;assert.equal((await request(body)).ok,false);
+ }finally{await session.stop();}
+});
+test('multiple workspaces require an explicit helper selection; untrusted workspace never starts',async()=>{
+ const {readFile}=await import('node:fs/promises');const {runInNewContext}=await import('node:vm');let trusted=false,starts=0,choices=0,copied;const commands={},folders=[{name:'one',uri:{scheme:'file',fsPath:'/one'}},{name:'two',uri:{scheme:'file',fsPath:'/two'}}],session={connection:null,start:async o=>{starts++;session.connection={root:o.root};},stop:async()=>{session.connection=null;},receipt:async()=>receipt};const vscode={workspace:{get isTrusted(){return trusted;},workspaceFolders:folders,getConfiguration:()=>({get:(_k,d)=>d}),onDidGrantWorkspaceTrust:()=>({}),onDidChangeWorkspaceFolders:()=>({})},commands:{registerCommand:(name,fn)=>{commands[name]=fn;return{};}},env:{clipboard:{writeText:async v=>copied=v}},window:{showQuickPick:async items=>{choices++;return items[1];},showErrorMessage(){},showInformationMessage(){}}};
+ const source=(await readFile(new URL('../ide-extension/extension.mjs',import.meta.url),'utf8')).replace(/^import .*;\n/gm,'').replaceAll('export async function','async function').replaceAll('export function','function');const api=await runInNewContext(source+'\nactivate({subscriptions:[]})',{vscode,createHelperSession:()=>session});assert.equal(starts,0);trusted=true;assert.equal((await api.getConnection()),null);await commands['stateatom.copyConnectionReceipt']();assert.equal(choices,1);assert.equal(starts,1);assert.equal(session.connection.root,'/two');assert.equal(copied,JSON.stringify(receipt));
+});
+test('wrong helper version refuses the connection while Basic remains admitted',async()=>{
+ const {createAtomRuntime}=await import('../packages/atom/src/runtime.mjs');const area={get:async()=>({}),set:async()=>{}},platform={chrome:{storage:{local:area,session:area},runtime:{sendMessage:async()=>{}},tabs:{get:async()=>({url:'http://localhost:5173/'})}},permittedOrigin:async()=>true,describeTarget:async()=>({url:'http://localhost:5173/',permission:true,lease:'none',grants:['read','inject'],readOnly:true,readOnlySites:false}),events:{subscribe:()=>()=>{}},fetch:async()=>({json:async()=>({ok:true,result:{paired:true,helper:{id:receipt.helper.id,version:'99.0.0',protocol:99}}})}),shutdown:async()=>{}};
+ const runtime=createAtomRuntime(platform),message=payload=>({version:1,id:crypto.randomUUID(),session:'wrong-version',payload});try{await assert.rejects(runtime.request(message({op:'pair',url:receipt.url,token:receipt.token,origin:receipt.origin,sourceRoot:'.'})),{code:'HELPER_VERSION_MISMATCH'});const p=await runtime.request(message({op:'capabilities',tabId:1}));assert.equal(p.features['basic.inspect'].available,true);assert.equal(p.features['source.navigate'].available,false);}finally{await runtime.shutdown();}
+});
+test('review: Disconnect wins over pending startup; competing starts leave only the newest session',async()=>{
+ const {readFile}=await import('node:fs/promises');const {runInNewContext}=await import('node:vm');let resolvePath,started,closed=0,created=0;const begun=new Promise(r=>started=r);let delayed=true;
+ const src=(await readFile(new URL('../ide-extension/session.mjs',import.meta.url),'utf8')).replace(/^import .*;\n/gm,'').replace('export function','function');
+ const api=runInNewContext(src+'\ncreateHelperSession()',{randomBytes:()=>({toString:()=>receipt.token}),safePath:async root=>{if(delayed){started();return new Promise(r=>resolvePath=r);}return root;},stat:async()=>({isDirectory:()=>true}),parseConnectionReceipt:v=>v,startBridge:()=>{created++;return{ready:Promise.resolve(),helper:receipt.helper,workspace:receipt.workspace,server:{close(){closed++;}},close:async()=>closed++};}});
+ const first=api.start({root:'/one',port:53029,isAllowed:()=>true}).then(()=>true,e=>e.message);await begun;const stopping=api.stop();delayed=false;resolvePath('/one');await first;await stopping;assert.equal(api.connection,null);assert.equal(created,closed);
+ const a=api.start({root:'/one',port:53029,isAllowed:()=>true}).catch(()=>null),b=api.start({root:'/two',port:53029,isAllowed:()=>true});await Promise.all([a,b]);assert.equal(api.connection.root,'/two');await api.stop();assert.equal(created,closed);
+});

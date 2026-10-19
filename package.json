@@ -72,7 +72,9 @@
     "verify:production-source-mapping": "node tests/integration/production-source-mapping.mjs",
     "verify:atom-types": "node scripts/verify-atom-types.mjs",
     "verify:capability-ui": "node tests/integration/capability-ui.mjs",
-    "verify:origin-connections": "node tests/integration/origin-connections.mjs"
+    "verify:origin-connections": "node tests/integration/origin-connections.mjs",
+    "pack:development": "node scripts/pack-development.mjs",
+    "verify:project-setup": "node tests/integration/project-setup.mjs"
   },
   "dependencies": {
     "@angular/compiler": "20.3.34",

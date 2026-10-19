@@ -95,3 +95,11 @@ No shared tokens or primitive contract changed.
 - Bind pending leases/approvals to original connection identity and permission epoch;
   require HTTPS opt-in from both platform and runtime. Preserve `.4` as an
   intermediate built candidate without final acceptance.
+
+## 0.1.0-candidate.20261019.6
+
+- Add private versioned connection-receipt paste/connect inside the existing Source
+  connection disclosure, clearing secret input after use. No shared CSS/token change.
+- Check helper protocol/version/session and report setup repair hints separately
+  from source/runtime evidence. Manual contributor pairing and Basic remain available.
+- Source-folder default is explicit workspace (`.`), not a repository test fixture.
