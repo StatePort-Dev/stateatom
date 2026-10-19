@@ -87,3 +87,35 @@ F05's enabled-path acceptance is recorded in F05, after this local implementatio
 The supplied Atom Inputs/Draft/Applied/Restored and API Fields/Changes screens
 govern composition. Shared tokens/primitives stay unchanged. No cloud, SDK,
 publication, other repository or replacement design is included.
+
+## Response ledger contract (U02.2a)
+
+`core/response-ledger.mjs` is an inert document-bound library, still outside the
+bundled runtime. It records at most 128 scalar sites/URLs and 64 edit/restoration
+transactions. Future response preparation is bounded to 32 simultaneous receipts
+and 128 lifetime receipts; it refuses further delivery preparation rather than
+silently dropping earlier acknowledgement evidence. Bodies are bounded to 256 KiB
+before and after substitution, 4096 JSON nodes and depth 12. Unsafe keys, null,
+structural leaves, negative zero and oversized strings are not writable inputs.
+
+A resource descriptor's value is the current prospective rule value (or raw server
+value when no rule exists), not a fresh observation of application state. The
+snapshot separately retains `serverValue`, rule phase and unknown consumption /
+effect. Subsequent requests must be same-origin GETs in the same document, with
+increasing observed request ordinals. Every guarded leaf in one response must
+still match its originally observed server scalar; a change/missing leaf disarms
+the entire response group before substitution. This is a future-response rule
+with a value guard, not evidence that two requests are the same occurrence.
+The runtime adapter must independently establish main-frame ownership, MIME and
+current authority before using this library; those are not facts a plan can grant.
+
+Delivery receipts record exact request ID/ordinal and adapter acknowledgement.
+Repeated deliveries retain earlier successes even if a later send fails. Groups
+across different responses report partial success/failure; they are not atomic.
+Undo-last restores a prior owned rule, while baseline removes the rules. Both
+wait for a later explicitly triggered response and keep application restoration
+unverified. A later untouched baseline response can be acknowledged separately.
+External scalar changes, even a subsequently observed return to the original scalar,
+prevent restoring the old baseline over a new server revision. Close disarms
+rules, retains pending receipts and records late acknowledgements without reviving
+authority. No resource/history metadata is restored as executable authority.

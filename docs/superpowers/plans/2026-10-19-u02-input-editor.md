@@ -56,7 +56,30 @@ response rule and lifecycle tests. Do not replace legacy experiment paths.
 **Interfaces:** Task 1 plan/current-state validation; resource revision and ordered
 edit ledger; install/consume/cleanup provide explicit per-resource outcomes.
 
-- [ ] Flesh out exact adapter interfaces from current source before tests.
+- [x] Flesh out exact adapter interfaces from current source before tests.
+  U02.2a is an inert `createResponseLedger({investigationId,target})` library.
+  `observeResponse({url,method,requestId,requestOrdinal,document,body})` records
+  bounded GET JSON scalar leaves before rules exist. `apply(plan,{target,admission})`
+  validates fresh ledger resource descriptors and installs document-bound future
+  response rules; it neither fetches nor reloads. `prepareResponse(facts)` validates
+  the whole same-response group against original server values, returns a pending
+  receipt/body; `confirmResponse(receipt,{delivered,error})` records actual adapter
+  acknowledgement separately from application consumption (always unknown here).
+  `undoLast`/`restoreBaseline` take `{target,admission,expectedRevision}` and refuse
+  intervening external value changes, outstanding deliveries or stale revisions.
+  Rule removal/restoration only affects future responses, not consumed app copies.
+  `close(reason)` disarms rules, retaining any in-flight acknowledgement as unknown
+  until confirmed. `snapshot()` is detached data with resources, raw originals,
+  rule/phase, ordered history and global revision. Bounds: 128 scalar resources,
+  64 transactions, 32 pending / 128 lifetime receipts and 128 URLs; JSON
+  <=256 KiB before/after substitution, 4096 nodes, depth 12.
+  No CDP/runtime capability is exposed by 2a. Native adapter/real-host proof follow.
+  U02.2b subsequently owns Fetch coordination, fresh runtime authority checks,
+  transport/capability operations and actual send/cleanup lifecycle integration.
+- [x] U02.2a RED/GREEN: future-only rules; exact origin/document/GET/ordinal;
+  safe escaped pointers; all-member preflight; delivered != consumed; failed and
+  partial deliveries; guarded undo/baseline; external revisions; close/late ack;
+  bounds and immutable snapshots. Focused Node tests, then full npm test, commit.
 - [ ] RED/GREEN real guarded rules, no implicit reload/request/storage reset,
   exact request match, consumed-versus-waiting states, partial failure and undo.
 - [ ] Focused/full checks, source/runtime boundaries recorded, local commit.

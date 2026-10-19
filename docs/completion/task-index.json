@@ -295,6 +295,7 @@
       ],
       "files": [
         "core/experiment-plan.mjs",
+        "core/response-ledger.mjs",
         "packages/atom/src/runtime.mjs",
         "src/engine/browser.mjs",
         "core/diagnostic.mjs"
@@ -317,6 +318,17 @@
           "tests": {
             "focused": 26,
             "full": 689
+          },
+          "record": "21-overnight-u02-progress.md",
+          "native_rows_verified": 0
+        },
+        {
+          "id": "U02.2a",
+          "status": "complete",
+          "scope": "Inert guarded response registry and edit/restoration ledger only; not runtime bundled",
+          "tests": {
+            "focused": 55,
+            "full": 718
           },
           "record": "21-overnight-u02-progress.md",
           "native_rows_verified": 0
