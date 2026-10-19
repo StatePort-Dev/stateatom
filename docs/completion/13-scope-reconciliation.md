@@ -1,5 +1,10 @@
 # Current work and approved-scope reconciliation
 
+This is the retained scope-adoption checkpoint before F01. Its input-hash checks
+and stopping point refer to `f3a7a7e`, not later implementations. See the
+[F01 execution record](14-f01-capability-contracts.md) for the subsequent work;
+the task index records current execution status.
+
 Date: **2026-10-19**, Indian/Mauritius. Source: clean tracked runtime at
 `f3a7a7e1ba43bea4e39954eaf49b95266822692b`; this continuation changes documentation
 only. The supplied completion directory was untracked on entry and is preserved.

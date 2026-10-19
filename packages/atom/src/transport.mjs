@@ -1,8 +1,13 @@
 // SPDX-License-Identifier: Apache-2.0
 import {atomError} from './platform.mjs';
+import {CAPABILITY_VERSION,FEATURE_IDS,GLOBAL_OPERATIONS,OPERATIONS,DEBUGGER_CAPABILITIES,isBridgeURL} from './capabilities.mjs';
 export const API_VERSION=1;
-const globalOps=new Set(['pair','unpair','tabs','list-diagnostics','delete-diagnostic']);
-const ops=new Set([...globalOps,'save-diagnostic','attach','pick','selected','deep-experiment','restore','property','inspect-selector','state','open','definitions','references','experiment','detach','metrics','source-map-import','source-map-acquire','source-map-lookup','source-map-clear']);
+const globalOps=new Set(GLOBAL_OPERATIONS),ops=new Set(OPERATIONS);
+export {describeCapabilities,operationPolicy,CAPABILITY_VERSION,FEATURE_IDS} from './capabilities.mjs';
+export function supportsCapabilityPolicy(value){
+ const decision=d=>d&&typeof d.available==='boolean'&&Array.isArray(d.requiredGrants)&&d.requiredGrants.every(c=>DEBUGGER_CAPABILITIES.includes(c))&&(d.available?d.reason===null&&d.code===null:typeof d.reason==='string'&&typeof d.code==='string');
+ return value?.schemaVersion===CAPABILITY_VERSION&&value.wireVersion===API_VERSION&&Array.isArray(value.featureIds)&&FEATURE_IDS.every(id=>value.featureIds.includes(id)&&decision(value.features?.[id]))&&OPERATIONS.every(op=>decision(value.operations?.[op]));
+}
 export function validateRequest(m){
  const bad=()=>{throw atomError('INVALID_MESSAGE');};
  if(!m||m.version!==1||typeof m.id!=='string'||!m.id||m.id.length>100||typeof m.session!=='string'||!m.session||m.session.length>100||!m.payload||typeof m.payload!=='object')bad();
@@ -10,7 +15,8 @@ export function validateRequest(m){
  if(!globalOps.has(p.op)&&(!Number.isSafeInteger(p.tabId)||p.tabId<1))bad();
  if(['selected','inspect-selector'].includes(p.op)&&(typeof p.selector!=='string'||!p.selector||p.selector.length>1024))bad();
  if(p.op==='property'&&!['text','disabled'].includes(p.property))bad();
- if(p.op==='pair'&&(!/^http:\/\/127\.0\.0\.1:47731$/.test(p.url)||typeof p.token!=='string'||p.token.length>4096||typeof p.origin!=='string'||typeof p.sourceRoot!=='string'))bad();
+ if(p.op==='pair'&&(!isBridgeURL(p.url)||typeof p.token!=='string'||p.token.length>4096||typeof p.origin!=='string'||typeof p.sourceRoot!=='string'))bad();
+ if(p.op==='capabilities'&&p.capabilityVersion!==undefined&&p.capabilityVersion!==CAPABILITY_VERSION)bad();
  if(['open','definitions','references'].includes(p.op)&&(!p.source||typeof p.source.file!=='string'||!Number.isSafeInteger(p.source.line)||p.source.line<1))bad();
  if(p.op==='deep-experiment'&&!Array.isArray(p.variants))bad();
  if(p.op==='experiment'&&(!p.field||typeof p.field.url!=='string'||typeof p.field.path!=='string'||typeof p.field.requestId!=='string'||!Array.isArray(p.actions)))bad();

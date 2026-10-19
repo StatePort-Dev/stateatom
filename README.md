@@ -44,7 +44,10 @@ npm run build
 
 `npm run build` produces `dist/browser/`, `dist/ide/`, `dist/reader/`, and minified
 synthetic fixtures in `dist-fixtures/`. `npm run build:extensions` builds just the
-browser, IDE and reader. There is no separate lint or typecheck command in the inherited project.
+browser, IDE and reader. There is no general lint command. F01 adds the focused
+`npm run verify:atom-types` check for strict NodeNext and browser consumers of
+the packed Atom/UI artifacts; run `npm run pack:atom` first. It is not a whole
+repository TypeScript conversion.
 
 For browser verification, install the Playwright-pinned Chromium and its host libraries:
 

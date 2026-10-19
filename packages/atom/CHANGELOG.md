@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.1.0-candidate.20261019.3
+
+- Publish fresh availability after intervention cleanup on success or failure,
+  so completed trials cannot leave Inspect again disabled by an old busy snapshot.
+  Preserve `.1`/`.2` artifacts and their acceptance/failure records.
+
+## 0.1.0-candidate.20261019.2
+
+- Keep Restore unavailable until an investigation target exists, including its
+  retained stale target. Preserve the earlier `.1` package bytes and verification.
+
+## 0.1.0-candidate.20261019.1
+
+- Consolidate origin, operation and debugger-resource policy with explicit
+  capability discovery v1. Preserve wire/API v1, production read-only default
+  and the exact UI peer; source availability never grants mutation authority.
+- Existing controls now use runtime admission/reasons, including a separate
+  HTTPS site-permission request. Unknown legacy hosts fail closed. Keep the
+  supplied inspector layout, tokens and evidence semantics; no visual redesign.
+  Screenshots remain candidates, not independent-human visual acceptance.
+- Compile packed public declarations for strict NodeNext and browser consumers.
+  Required Action Trace, Live/Draft and production grants remain unimplemented.
+
 ## Unreleased — 2026-10-19
 
 - Add source-map discovery/import/URL controls, artifact status, manual original

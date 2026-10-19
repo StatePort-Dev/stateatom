@@ -12,7 +12,7 @@ export async function buildAtom(){
  await build({entryPoints:[root+'/browser-extension/reader.mjs'],bundle:true,format:'iife',platform:'browser',outfile:dir+'/dist/reader.js'});
  await build({entryPoints:[root+'/browser-extension/content.js'],bundle:true,format:'iife',platform:'browser',outfile:dir+'/dist/content.js'});
  for(const name of ['reader.html','reader.css'])await copyFile(root+'/browser-extension/'+name,dir+'/dist/'+name);
- for(const entry of ['runtime','ui','platform','transport'])await copyFile(dir+'/types/'+entry+'.d.ts',dir+'/dist/'+entry+'.d.ts');
+ for(const entry of ['runtime','ui','platform','transport','capabilities'])await copyFile(dir+'/types/'+entry+'.d.ts',dir+'/dist/'+entry+'.d.ts');
  await copyFile(dir+'/src/atom.css',dir+'/dist/atom.css');
  await mkdir(dir+'/LICENSES',{recursive:true});for(const name of ['LICENSE','NOTICE','LICENSES/Apache-2.0.txt'])await copyFile(root+'/'+name,dir+'/'+name);
  await writeFile(dir+'/NOTICE',(await readFile(root+'/NOTICE','utf8'))+'\nEmbeddable runtime/UI adapted from the historical MIT StateAtom worker, panel and browser engine. Original platform/transport and packaging files carry Apache-2.0 SPDX headers. Supplied StatePort brand artwork and icon geometry in the UI template retain its extension-ui/design origin and is not relicensed.\n');

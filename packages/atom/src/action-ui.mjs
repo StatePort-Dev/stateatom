@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 import {explanationFacts,TemplateExplanation,ChromeBuiltInExplanation} from '../../../core/action-explanations.mjs';
+import {supportsCapabilityPolicy} from './transport.mjs';
 export function createActionUI({document,$,rpc,tab,action}){
  let key,epoch=0,controller;
  const model=document.defaultView?.location?.protocol==='chrome-extension:'?document.defaultView.LanguageModel:null;
@@ -7,11 +8,12 @@ export function createActionUI({document,$,rpc,tab,action}){
  function cancel(){controller?.abort();controller=null;}
  function render(state){
   const stale=!!state?.stale||(state?.analysis?.actionBindings||[]).some(b=>b.freshness==='Stale');
-  const next=JSON.stringify([state?.analysis?.actionContext,stale,state?.selection?.observedAt,state?.stale?.at]);if(key===next)return;key=next;++epoch;cancel();
+  const sourcePermission=supportsCapabilityPolicy(state?.capabilityPolicy)?state.capabilityPolicy.operations.open:null;
+  const next=JSON.stringify([state?.analysis?.actionContext,stale,state?.selection?.observedAt,state?.stale?.at,sourcePermission]);if(key===next)return;key=next;++epoch;cancel();
   const analysis=state?.analysis,bindings=analysis?.actionBindings||[],source=bindings.filter(b=>b.mechanism==='react-jsx'),native=bindings.filter(b=>b.mechanism==='dom-listener');
   $('action-handlers').replaceChildren();$('action-more').replaceChildren();$('action-native').replaceChildren();$('action-more-details').hidden=source.length<=3;$('action-native-details').hidden=!native.length;
   $('action-summary').textContent=stale?'Stale · inspect again for current action evidence.':source.length?'Declared in source · execution not observed':'Unknown/Unsupported · no exact JSX binding. Native metadata, where available, is separate.';
-  function open(source,label){const b=node('button',label,'sp-button-subtle');b.type='button';b.disabled=stale;b.onclick=()=>action(async()=>{const fresh=await rpc({op:'state',tabId:tab(),refreshDeep:true});if(fresh.stale||fresh.analysis?.actionBindings?.some(b=>b.freshness==='Stale')||JSON.stringify(fresh.analysis?.actionContext)!==JSON.stringify(analysis.actionContext))throw Error('Stale action evidence; inspect again');await rpc({op:'open',tabId:tab(),source});});return b;}
+  function open(source,label){const b=node('button',label,'sp-button-subtle');b.type='button';b.disabled=stale||!sourcePermission?.available;b.title=b.disabled?sourcePermission?.reason||'Stale or unavailable source connection':'';b.onclick=()=>action(async()=>{const fresh=await rpc({op:'state',tabId:tab(),refreshDeep:true});if(fresh.stale||fresh.analysis?.actionBindings?.some(b=>b.freshness==='Stale')||JSON.stringify(fresh.analysis?.actionContext)!==JSON.stringify(analysis.actionContext))throw Error('Stale action evidence; inspect again');await rpc({op:'open',tabId:tab(),source});});return b;}
   function row(b){const card=node('article',null,'sp-atom-action-card'),head=node('div',null,'sp-section-row');head.append(node('code',b.event+' → '+(b.entry?.symbol||b.binding?.expression||'Unknown')),node('span',stale?'Stale':'Declared in source','sp-status'));card.append(head);
    if(b.binding){card.append(node('pre',b.binding.expression));const loc=b.entry?.source||b.binding.source;if(loc)card.append(open(loc,'Open handler in IDE · '+loc.file.split('/').at(-1)+':'+loc.line));}
    card.append(node('p','Execution: not observed','sp-atom-hint'));

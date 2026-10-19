@@ -44,8 +44,13 @@
         "npm run pack:atom"
       ],
       "deliverable": "Canonical capability policy and compiled packed consumer",
-      "status": "planned",
-      "optional": false
+      "status": "complete",
+      "optional": false,
+      "execution_record": "14-f01-capability-contracts.md",
+      "delivery_states": [
+        "implemented",
+        "native-verified"
+      ]
     },
     {
       "id": "F02",
@@ -125,8 +130,14 @@
         "npm run check:ui"
       ],
       "deliverable": "Current Atom/UI artifact pair with compatibility receipt",
-      "status": "planned",
-      "optional": false
+      "status": "partially-implemented",
+      "optional": false,
+      "credited_existing_work": {
+        "candidate": "0.1.0-candidate.20261019.3",
+        "implementation": "Exact current Atom/UI pair installed into clean consumer, strict declaration checks and both real MV3 hosts verified under F01",
+        "validation": "14-f01-capability-contracts.md"
+      },
+      "remaining_acceptance": "Complete reproducibility, compatibility/error/upgrade matrix and candidate receipt requirements; official StatePort intake remains I01 in a separately authorized repository."
     },
     {
       "id": "F05",
@@ -999,29 +1010,69 @@
     ]
   },
   "reconciliation": {
-    "document": "13-scope-reconciliation.md",
+    "document": "14-f01-capability-contracts.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "production-source-mapping-source-exploration",
-      "status": "complete-within-original-scope",
-      "implementation_plan": "../superpowers/plans/2026-10-19-production-source-mapping.md",
-      "validation": "../testing/production-source-mapping.md",
-      "does_not_complete": [
-        "P01",
-        "P02",
-        "P03"
+      "id": "F01",
+      "status": "complete",
+      "source_base": "7a9f7184d1a61b08cbca114273da3ed5bcb335fc",
+      "source_dirty_at_checks": true,
+      "package_version": "0.1.0-candidate.20261019.3",
+      "package_sha256": "3fea09fc6f7c709442d4e1f0ea98f99dc467104b59056c653599577440fa1803",
+      "execution_record": "14-f01-capability-contracts.md",
+      "delivery_states": [
+        "implemented",
+        "native-verified"
       ],
-      "fresh_check": {
-        "command": "node --test --test-isolation=none tests/source-maps.test.mjs tests/source-map-diagnostic.test.mjs tests/atom/source-maps.test.mjs tests/atom/read-only-sites.test.mjs",
-        "passed": 24,
-        "failed": 0,
-        "kind": "unit-api-harness"
+      "operator": "agent-operated automated harnesses",
+      "checks": {
+        "unit": 586,
+        "contract": 48,
+        "strict_packed_consumers": 2,
+        "controlled_client_ui": 5,
+        "embedding": 34,
+        "basic": 26,
+        "actions": 32,
+        "source_maps": 19
       },
-      "native_evidence": "Retained runs, input hashes checked against current files; no native rerun"
+      "not_claimed": [
+        "official-host integration",
+        "publication",
+        "independent-human study",
+        "Live/Draft editing",
+        "production change enablement",
+        "Action Trace",
+        "validated local model"
+      ]
     },
-    "next_item": "F01",
-    "new_full_task_acceptances": [],
-    "status_semantics": "partially-implemented credits inherited code and bounded evidence; dependencies and remaining acceptance still apply. planned does not mean reusable underlying code is absent."
-  }
+    "next_item": "F02",
+    "new_full_task_acceptances": [
+      "F01"
+    ],
+    "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
+    "active_item": null,
+    "completed_increments": [
+      {
+        "id": "production-source-mapping-source-exploration",
+        "status": "complete-within-original-scope",
+        "implementation_plan": "../superpowers/plans/2026-10-19-production-source-mapping.md",
+        "validation": "../testing/production-source-mapping.md",
+        "does_not_complete": [
+          "P01",
+          "P02",
+          "P03"
+        ],
+        "fresh_check": {
+          "command": "node --test --test-isolation=none tests/source-maps.test.mjs tests/source-map-diagnostic.test.mjs tests/atom/source-maps.test.mjs tests/atom/read-only-sites.test.mjs",
+          "passed": 24,
+          "failed": 0,
+          "kind": "unit-api-harness"
+        },
+        "native_evidence": "Retained runs, input hashes checked against current files; no native rerun"
+      }
+    ],
+    "scope_adoption_record": "13-scope-reconciliation.md"
+  },
+  "next_task": "F02"
 }

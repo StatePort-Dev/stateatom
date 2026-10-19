@@ -41,7 +41,8 @@ test('Detach releases an Atom picker reservation that never attached debugger',a
 });
 test('cancelling a read cannot erase the selected observation owned by another request',async()=>{
  const current={selector:'#p1',property:'text',value:'13',observedAt:Date.now()},f=fixture({initial:{'stateport.atom.v1.tabs':{1:{run:'r',requests:[],events:[],pending:{},samples:[],sampleEntries:{},selection:current,analysis:{sources:[]}}}}});await f.runtime.ready;
- let resolve;f.platform.chrome.debugger.sendCommand=()=>new Promise(r=>resolve=r);const m=message({op:'metrics',tabId:1}),pending=f.runtime.request(m);await new Promise(r=>setTimeout(r,0));f.runtime.cancel(m.session,m.id);await assert.rejects(pending,{code:'CANCELLED'});resolve({});const s=await f.runtime.request(message({op:'state',tabId:1}));assert.equal(s.selection.selector,'#p1');await f.runtime.shutdown();
+ await f.runtime.request(message({op:'attach',tabId:1}));
+ let resolve;const original=f.platform.chrome.debugger.sendCommand;f.platform.chrome.debugger.sendCommand=(_,method)=>method==='Performance.getMetrics'?new Promise(r=>resolve=r):original(_,method);const m=message({op:'metrics',tabId:1}),pending=f.runtime.request(m);await new Promise(r=>setTimeout(r,0));f.runtime.cancel(m.session,m.id);await assert.rejects(pending,{code:'CANCELLED'});resolve({});const s=await f.runtime.request(message({op:'state',tabId:1}));assert.equal(s.selection.selector,'#p1');await f.runtime.shutdown();
 });
 test('shutdown keeps owned Fetch event handling alive until in-flight cleanup settles',async()=>{
  const f=fixture();await f.runtime.request(message({op:'attach',tabId:1}));let resolve;const original=f.platform.chrome.debugger.sendCommand;

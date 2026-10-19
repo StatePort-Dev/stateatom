@@ -12,7 +12,12 @@ The audit distinguishes implementation read in this revision, results recorded b
 ## Read and execute
 
 1. Read [release scope](02-release-scope.md) and [current gaps](01-current-state-audit.md).
-2. Read the [current reconciliation](13-scope-reconciliation.md) before starting **F01: capability and contract consolidation** in the public StateAtom checkout. The preceding source-exploration increment is complete; its implementation and verification are credited, not reassigned. F01 establishes one source of truth for existing operating modes, permissions and available operations. It does not widen permissions or change tracing semantics.
+2. Reuse the [scope-adoption reconciliation](13-scope-reconciliation.md) and
+   [completed F01 execution](14-f01-capability-contracts.md). Source exploration
+   and canonical policy/packed declarations are credited, not reassigned. The
+   single next item is **F02: real site/project origin policy**; it is not started
+   by the F01 execution. Current implementation remains on the original dev
+   origins plus host-opted-in read-only HTTPS.
 3. Continue with **F02/F03**, **U05 visual selection** and **U01/U02** for ordinary projects, the normal inspector and Live/Draft editing. **U06** develops the QA/PM handoff before U03 finishes it; **F05** provides deliberate production enablement. In parallel, a maintainer can inspect the official host's consumed package versions under **I01**; integrating incompatible in-flight public contracts must wait for F01/F04.
 4. Develop the remaining analysis and production capabilities through their named cases. Keep the existing closed first-read profile as a separately labelled regression.
 5. Run the release matrix on one immutable candidate, then decide the distribution milestone. A green unit/build job alone is not a release gate.
@@ -36,6 +41,7 @@ Each work item contains its inputs, output, files, tests and stopping point. An 
 | [11 — Design acceptance map](11-design-acceptance-map.md) | Each reference screen tied to real runtime states and task ownership |
 | [12 — Approved decisions](12-scope-decisions.md) | Item-by-item decisions, changes and details still to design |
 | [13 — Current reconciliation](13-scope-reconciliation.md) | Completed increment, credited implementation, scoped checks and next item |
+| [14 — F01 execution](14-f01-capability-contracts.md) | Canonical policy, packed declarations, exact checks and remaining boundaries |
 | [Task index](task-index.json) | 29 active work items, dependency graph, owners and separate external SDK reference |
 | [Evidence register](audit-evidence.json) | Pinned sources and the limits of this review |
 

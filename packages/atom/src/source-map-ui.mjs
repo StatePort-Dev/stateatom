@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
+import {supportsCapabilityPolicy} from './transport.mjs';
 export const sourceMapTemplate=`
 <details id="source-map-details" data-atom-id="source-map-details" class="sp-disclosure"><summary>Source maps · no IDE required</summary>
 <label><input id="source-map-readonly" data-atom-id="source-map-readonly" type="checkbox"> Read-only inspection on next attach (automatic for HTTPS sites)</label>
@@ -27,6 +28,11 @@ export function createSourceMapUI({document,$,rpc,tab,load,action,requestPermiss
   $('source-map-identity').textContent=r?JSON.stringify({...r,url:'[shown in inspected tab only]',sourceMapURL:r.sourceMapURL?'[declared reference available]':null},null,2):'';
   const unavailable=!state?.attached||!r||maps?.status==='Stale';for(const id of ['source-map-discover','source-map-acquire','source-map-file'])$(id).disabled=unavailable;
   $('source-map-lookup').disabled=unavailable||!r.map||['Mismatch','Stale','Unavailable'].includes(r.map.status);$('source-map-discover').disabled=unavailable||!r.sourceMapURL;
+  $('source-map-clear').disabled=false;
+  const policy=state?.capabilityPolicy,known=supportsCapabilityPolicy(policy);
+  for(const [id,op] of [['source-map-file','source-map-import'],['source-map-discover','source-map-acquire'],['source-map-acquire','source-map-acquire'],['source-map-lookup','source-map-lookup'],['source-map-clear','source-map-clear']]){
+   const decision=known?policy.operations?.[op]:null;$(id).disabled||=!decision?.available;$(id).title=decision?.available?'':decision?.reason||'Host does not advertise capability policy v1';
+  }
  }
  $('source-map-script').onchange=show;
  async function changed(fn){const id=tab(),g=generation;await fn();if(disposed||id!==tab()||g!==generation)return;await load();}

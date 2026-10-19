@@ -69,7 +69,9 @@
     "pack:atom": "node scripts/pack-atom.mjs",
     "verify:atom-contract": "node --test --test-isolation=none tests/atom/*.test.mjs",
     "verify:embedding": "node tests/integration/embedding.mjs",
-    "verify:production-source-mapping": "node tests/integration/production-source-mapping.mjs"
+    "verify:production-source-mapping": "node tests/integration/production-source-mapping.mjs",
+    "verify:atom-types": "node scripts/verify-atom-types.mjs",
+    "verify:capability-ui": "node tests/integration/capability-ui.mjs"
   },
   "dependencies": {
     "@angular/compiler": "20.3.34",
@@ -81,6 +83,9 @@
     "@babel/plugin-transform-react-jsx": "7.27.1",
     "@babel/traverse": "7.28.5",
     "@babel/types": "7.29.8",
+    "@jridgewell/trace-mapping": "0.3.31",
+    "@stateport/atom": "file:packages/atom",
+    "@stateport/extension-ui": "file:packages/extension-ui",
     "@tanstack/query-core": "5.90.3",
     "@vitejs/plugin-vue": "6.0.1",
     "@vscode/test-electron": "2.5.2",
@@ -94,10 +99,7 @@
     "svelte": "5.57.2",
     "vite": "7.3.7",
     "vue": "3.5.44",
-    "zone.js": "0.15.1",
-    "@stateport/extension-ui": "file:packages/extension-ui",
-    "@stateport/atom": "file:packages/atom",
-    "@jridgewell/trace-mapping": "0.3.31"
+    "zone.js": "0.15.1"
   },
   "description": "Experimental local UI inspection and evidence tooling",
   "license": "(MIT AND Apache-2.0)",
@@ -109,5 +111,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/StatePort-Dev/stateatom.git"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
   }
 }

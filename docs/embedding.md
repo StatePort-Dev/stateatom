@@ -14,11 +14,12 @@ synthetic competing debugger consumer; it implements no Capture.
 ## Contracts and ownership
 
 Types ship in the package's `dist/*.d.ts`; API/wire version is **1**, separately
-from package candidate `0.1.0-candidate.20261018.3`. Importing any entrypoint has
+from package candidate `0.1.0-candidate.20261019.3`. Importing any entrypoint has
 no Chrome listener, debugger or DOM side effect.
 
-- `createAtomRuntime(platform, options = {}) -> AtomRuntime`. Options are reserved
-  and empty. `ready: Promise<void>` restores namespaced metadata. The platform
+- `createAtomRuntime(platform, options = {}) -> AtomRuntime`. The only current
+  option is `readOnlySites?: boolean`, default false. HTTPS also requires the
+  platform's independent opt-in and current site permission. `ready: Promise<void>` restores namespaced metadata. The platform
   supplies scoped Chrome resources, host-owned events, permitted fetch and
   lifecycle. It never supplies `inspect` or a substitute analyzer.
 - `runtime.request({version:1,id,session,payload}, {signal?}) -> Promise<unknown>`
@@ -91,9 +92,10 @@ is authority to resume a debugger session.
 | override | bounded existing Fetch interception operations |
 | replay | existing explicit experiment action sequences |
 
-Initial hosts grant these capabilities only for the original synthetic localhost
-ports 4173–4175, and the optional IDE bridge at port 47731. No origin or production
-mode was added. Experiment entry requires current grants, an owned lease and the
+Default hosts grant these capabilities only for the original synthetic localhost
+ports 4173–4175, and the optional IDE bridge at port 47731. The standalone host
+also opts into permission-gated read-only HTTPS, as described below; this does
+not enable production edits. Experiment entry requires current grants, an owned lease and the
 existing fresh-selection/experiment preconditions. An occupied resource returns
 BUSY before attach, script injection, reload, cache changes or interception.
 Missing browser permission remains an error; runtime does not retry by weakening
@@ -140,6 +142,8 @@ npm run verify:atom-contract
 npm test
 npm run build
 npm run pack:atom
+npm run verify:atom-types
+npm run verify:capability-ui
 npm run verify:embedding
 ```
 
@@ -164,8 +168,13 @@ belong in `docs/testing/atom-embedding-validation.md` for the original extractio
 `docs/testing/extension-ui-reference-alignment.md` for the visual v2 update, and
 the corresponding handoff. Screenshots are
 agent-produced candidates pending human review. Vue PARTIAL and existing deep
-tracing limits are preserved. There is no inherited lint/typecheck command;
-`.d.ts` shipping alone is not typecheck evidence.
+tracing limits are preserved. There is no general lint command. The focused
+`verify:atom-types` installs hash-checked tarballs into a fresh consumer, compiles
+all four code entrypoints with TypeScript 5.9.3 in strict NodeNext and browser
+Bundler resolution with `skipLibCheck:false`, and resolves every exported asset
+under the installed package. It consumes no repository-relative declarations.
+`verify:capability-ui` is a rendered controlled-client fixture, not native
+permission or application-picker proof. Compiler and fixture code do not ship.
 
 
 The inspector now follows the reference composition with a scrolling body and
@@ -189,3 +198,56 @@ frame-0 selection sender and relay debugger lifecycle events. HTTPS inspection
 uses read/inject helpers only; no reload/cache/override/replay/IDE operation.
 Source maps and excerpts remain local, in memory; manual generated-position lookup
 is not a UI/property anchor. See [production source mapping](testing/production-source-mapping.md).
+
+## Capability policy v1
+
+Wire version 1 alone is insufficient to discover additive functionality.
+`contract.json` advertises `features: ["capability-policy-v1"]`; request
+`{op:"capabilities",tabId,capabilityVersion:1}` through the authenticated client.
+The response has `schemaVersion`, `wireVersion`, explicit `featureIds`, `features`
+and `operations`. Every admission has `available`, `reason`, `code` and
+`requiredGrants`. `state` also supplies `capabilityPolicy`. New UI validates the
+whole descriptor; a legacy/malformed response leaves scoped controls unavailable
+with an update reason instead of inferring authority from wire v1.
+
+`describeCapabilities(context)` and `operationPolicy(op,context)` are exported
+from `@stateport/atom/transport`. They are pure projections for consumers, not
+credentials. The runtime obtains its own current facts and enforces the same
+rules before calling the operation; caller-provided policy fields are ignored.
+Discovery acquires no debugger lease and performs no injection, reload or edit.
+An available operation can still encounter a changed target or an unsupported
+expression; admission does not promise a positive investigation result.
+
+`createChromePlatform` supplies `describeTarget(tabId)`: current URL, host opt-in,
+permission, copied grants, ownership (`none`, `owned`, `foreign`, `expired` or
+`unknown`) and disposal state. A custom platform must provide these facts to
+enable browser operations; missing/invalid ownership facts fail closed. The
+shared broker's read-only `status` never transfers ownership. Current grants and
+native ownership are checked again when resources are used; no persisted record
+or displayed descriptor is a grant. Capability availability is a snapshot and
+may change before a request completes.
+
+| Operations | Required resources and current boundary |
+| --- | --- |
+| `pair`, `unpair`, `tabs`, `list-diagnostics`, `delete-diagnostic` | Trusted host; fixed open bridge endpoint for pairing; storage operations require no debugger |
+| `capabilities`, `state`, `property` | Tab-scoped metadata; deep refresh uses inspection admission, even though metadata stays readable on denial |
+| `save-diagnostic` | Current observation or retained stale target; historical local evidence remains saveable |
+| `attach` | Allowed target, current site permission, non-foreign lease, read/inject; development attach also needs cache grant |
+| `pick` | Allowed target, read; read-only picker helper also needs inject; token-bound selection remains separately validated |
+| `selected`, `inspect-selector` | Allowed target, read/inject; selected also requires the pending picker token/document; outcome may remain Unknown |
+| `open`, `definitions`, `references` | Open source connection and existing development-only policy; source availability grants no page or source-file write permission |
+| `deep-experiment`, `experiment` | Attached current selection/analysis, development mode, read/inject/reload/cache/override/replay; response experiment additionally needs supported observed text/response inputs; original repeated-trial criteria remain |
+| `restore` | Attached development context and experiment resource grants; local cleanup cannot reverse arbitrary server effects |
+| `source-map-import`, `source-map-acquire`, `source-map-lookup` | Attached permitted read context; actual loaded script/map and artifact-origin checks remain operation-specific |
+| `source-map-clear`, `detach` | Owned local cleanup; cannot detach a foreign debugger; conflicting experiment remains denied |
+| `metrics` | Attached read lease |
+
+`source.navigate`, `actions.source` and `inputs.observed` are separate features:
+a connected IDE does not fabricate handler bindings or recorded operands. Actual
+Action Trace, Live/Draft editing and production changes explicitly remain
+unimplemented (A05/U02/F05). Local model availability requires the extension-page
+device check; a deterministic fallback is never advertised as validated inference.
+The separate `basic.request-site-access` feature lets an opted-in host offer
+**Allow site and attach** before HTTPS permission exists. It does not permit
+inspection until the browser grant is actually obtained. Native enterprise
+permission UX remains a separate P03 acceptance gate.

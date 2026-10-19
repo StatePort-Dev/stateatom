@@ -13,6 +13,10 @@ Runtime/transport/platform repeat synthetic-origin and bridge restrictions. Read
 
 ## F01 — One capability model and checked public contracts
 
+**Execution:** complete for Atom `0.1.0-candidate.20261019.3`; see
+[implementation, exact checks and boundaries](14-f01-capability-contracts.md).
+Reuse this result; the following brief remains the acceptance contract.
+
 **Scope reconciliation:** the preceding source-exploration increment is complete
 and must be reused; see [credited work](13-scope-reconciliation.md). Consolidate
 the current enforced read-only policy without claiming F05 enablement exists.

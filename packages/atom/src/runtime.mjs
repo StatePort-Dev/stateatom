@@ -12,10 +12,11 @@ import {observeElement} from '../../../browser-extension/adapters.js';
 import {assessExperiment,flatten,edge} from '../../../core/evidence.mjs';
 import {atomError} from './platform.mjs';
 import {validateRequest} from './transport.mjs';
+import {describeCapabilities,operationPolicy,isDevelopmentOrigin,isInspectionOrigin,isBridgeURL} from './capabilities.mjs';
 export function createAtomRuntime(platform, options={}) {
 const chrome=platform.chrome,fetch=platform.fetch;
 const sourceMaps=createSourceMapSession({onChange:id=>notifyInvalidation(id),send:(id,m,p)=>chrome.debugger.sendCommand({tabId:id},m,p),fetch,permitted:origin=>platform.permittedOrigin?.(origin)??Promise.resolve(false)});
-const synthetic=url=>{try{return /^http:\/\/127\.0\.0\.1:(4173|4174|4175)$/.test(new URL(url).origin);}catch{return false;}};
+const synthetic=isDevelopmentOrigin;
 const {observeDeep,deepExperiment,identifySelection}=createBrowserEngine(chrome);
 const pickers=new Map();
 let stopped=false,eventsClosed=false,shutdownPromise;const jobs=new Map(),eventJobs=new Set();
@@ -47,12 +48,24 @@ async function drainCode(id,s){
  }}catch{/* An undrained acquisition is an explicit gap, never raw CDP error text. */}finally{clearTimeout(timer);}
  if(s.codeJournal===store)journalGap(store,'drain-budget');
 }
-const allowed=url=>synthetic(url)||options.readOnlySites===true&&/^https:\/\//.test(url||'');
+const allowed=url=>isInspectionOrigin(url,options.readOnlySites);
 const persist=()=>{for(const s of Object.values(tabs)){cap(s);if(s.deepExperiment&&JSON.stringify(s.deepExperiment).length>400000)s.deepExperiment={id:s.deepExperiment.id,status:s.deepExperiment.status,scope:s.deepExperiment.scope,details:'full trials returned to panel; omitted from session buffer'};if(s.experiment&&JSON.stringify(s.experiment).length>512000)s.experiment={status:s.experiment.status,reason:s.experiment.reason,experimentId:s.experiment.experimentId,field:s.experiment.field,selector:s.experiment.selector,identity:s.experiment.identity,details:'full trials returned in operation result; omitted from session buffer'};}while(Object.keys(tabs).length>3||JSON.stringify(tabs).length>5000000){const oldest=Object.entries(tabs).sort((a,b)=>(a[1].lastTouched||0)-(b[1].lastTouched||0))[0];if(!oldest)break;delete tabs[oldest[0]];}return chrome.storage.session.set({tabs,pairing});};
 const notifyInvalidation=id=>chrome.runtime.sendMessage({event:'state-invalidated',tabId:id}).catch(()=>{});
 const send=(id,method,params={})=>chrome.debugger.sendCommand({tabId:id},method,params);
 function state(id){const s=tabs[id]??={requests:[],pending:{},samples:[],sampleEntries:{},run:crypto.randomUUID(),attached:false,events:[],selection:null,override:null};s.fetchBindings??=newFetchBindings(s.run);s.codeJournal??=codeState(s);s.lastTouched=Date.now();return s;}
 function cap(s){const cutoff=Date.now()-300000;if(s.codeJournal?.startedAt<cutoff)journalGap(s.codeJournal,'expired');if(s.fetchBindings?.startedAt<cutoff)s.fetchBindings={...newFetchBindings(s.run),overflow:true};if(s.diagnosticExperiment?.result.completedAt<cutoff)s.diagnosticExperiment=null;if(s.stale?.at<cutoff)s.stale=null;if(s.sampleEntries){for(const[k,e]of Object.entries(s.sampleEntries))if(e.at<cutoff)delete s.sampleEntries[k];s.samples=Object.values(s.sampleEntries).map(e=>e.text);}if(s.analysisAt&&s.analysisAt<cutoff){s.analysis=null;s.selection=null;s.experiment=null;}if(s.experiment?.completedAt&&s.experiment.completedAt<cutoff)s.experiment=null;s.requests=s.requests.filter(x=>x.time>cutoff).slice(-32);while(JSON.stringify(s.requests).length>256000)s.requests.shift();s.samples=s.samples.slice(-50);while(s.samples.join('').length>800000)s.samples.shift();if(Object.keys(s.pending).length>64)s.pending={};s.events=s.events.slice(-30);}
+async function capabilityContext(id,request={}){
+ const s=state(id);cap(s);let target={url:null,permission:false,grants:[],lease:'unknown'};
+ try{if(platform.describeTarget)target={...target,...await platform.describeTarget(id)};}catch{/* Missing target facts cannot grant browser access. */}
+ const analysis=codeAnalysis(s);
+ return {...target,readOnlySites:options.readOnlySites===true&&target.readOnlySites===true,disposed:stopped||target.disposed===true,
+  attached:s.attached===true&&target.lease==='owned',readOnly:s.readOnly===true,requestReadOnly:request.readOnly===true,
+  sourceConnected:!!pairing,hasSelection:!!s.selection,hasHistoricalTarget:!!s.stale?.target,hasAnalysis:!!s.analysis,
+  hasResponseFields:s.requests.some(r=>r.json!==undefined),property:s.selection?.property||s.property||'text',
+  stale:!!s.stale||s.analysis?.stateatom?.runtime?.status==='Stale',busy:!!s.busy,
+  hasSourceActions:analysis?.actionBindings?.some(b=>b.binding?.source&&b.freshness!=='Stale')===true,
+  hasObservedInputs:analysis?.stateatom?.runtime?.status==='Observed'&&analysis.stateatom.runtime.nodes?.some(n=>n.status==='Observed'&&Object.hasOwn(n,'value'))===true};
+}
 async function bridge(op,body,signal){if(!pairing)throw Error('Pair IDE first');const response=await fetch(pairing.url+'/'+op,{method:'POST',signal,headers:{'content-type':'application/json',authorization:'Bearer '+pairing.token},body:JSON.stringify(body)});const r=await response.json();if(!r.ok)throw Error(r.error);return r.result;}
 async function permitFetchGeneration(id,s){
  const policy=s.documentPolicies?.[s.mainLoaderId],run=s.run;if(!policy||policy.frameId!==s.mainFrameId)return;
@@ -168,11 +181,16 @@ async function experiment(id,field,value,actions=[],controlPath,signal){const s=
  }s.diagnosticExperiment=recordTextExperiment(selection,result);await persist();return result;
 }
 async function operation(m,context){const signal=context.signal;await ready;
+ let publishAvailability=false;
  try{
   let result;const id=m.tabId;
-  if(id&&['deep-experiment','restore','experiment','open','definitions','references'].includes(m.op)&&(state(id).readOnly||!synthetic((await chrome.tabs.get(id)).url)))throw Error('Read-only inspection: operation unavailable');if(id&&state(id).busy&&!['state','tabs','metrics'].includes(m.op))throw Error('Experiment running; conflicting action denied');
-  if(['deep-experiment','restore','experiment'].includes(m.op))for(const cap of ['reload','cache','override','replay'])await platform.authorize(id,cap);
-  if(m.op==='pair'){if(!/^http:\/\/127\.0\.0\.1:47731$/.test(m.url))throw Error('Bridge URL denied');pairing={url:m.url,token:m.token};try{result=await bridge('pair',{origin:m.origin,sourceRoot:m.sourceRoot},signal);}catch(e){pairing=null;throw e;}await persist();}
+  const capabilityState=id?await capabilityContext(id,m):{disposed:stopped};
+  if(signal.aborted)throw atomError('CANCELLED');
+  const decision=operationPolicy(m.op,capabilityState);if(!decision.available)throw atomError(decision.code,decision.reason);
+  publishAvailability=['experiment','deep-experiment','restore'].includes(m.op);
+  for(const grant of decision.requiredGrants){await platform.authorize(id,grant);if(signal.aborted)throw atomError('CANCELLED');}
+  if(m.op==='capabilities')result=describeCapabilities(capabilityState);
+  else if(m.op==='pair'){if(!isBridgeURL(m.url))throw Error('Bridge URL denied');pairing={url:m.url,token:m.token};try{result=await bridge('pair',{origin:m.origin,sourceRoot:m.sourceRoot},signal);}catch(e){pairing=null;throw e;}await persist();}
   else if(m.op==='save-diagnostic'){const current=state(id);cap(current);if(!current.selection&&!current.stale?.target)throw Error('Observation unavailable or expired; inspect again');const report=makeDiagnostic({...current,sourceMaps:sourceMaps.snapshot(id),analysis:codeAnalysis(current)},{includeContent:m.includeContent===true,notes:m.notes});await diagnostics(list=>retainDiagnostics(list,report));result=report;}
   else if(m.op==='list-diagnostics')result=await diagnostics();
   else if(m.op==='delete-diagnostic')result=await diagnostics(list=>list.filter(r=>r.id!==m.id));
@@ -185,7 +203,7 @@ async function operation(m,context){const signal=context.signal;await ready;
   else if(m.op==='restore'){const s=state(id),selection=structuredClone(s.selection),lock=lockExperiment(s);try{s.deepOverrides=null;await reset(id,null);await new Promise(r=>setTimeout(r,400));result=await observeDeep(id,selection,selection?.property||'text',{includeTrace:!!pairing&&!s.readOnly,beforeMainScript:(op,role)=>ownMainCode(id,s,op,role)});s.selection=selection?{...selection,...result}:null;}finally{unlockExperiment(s,lock);}}
   else if(m.op==='property'){if(!['text','disabled'].includes(m.property))throw Error('Unsupported property');const s=state(id);if(s.property!==m.property){recordStale(s,'Property changed; inspect again');beginInspection(s);}s.property=m.property;result={property:m.property};}
   else if(m.op==='inspect-selector'){if(typeof m.selector!=='string'||m.selector.length>1024)throw Error('Selector limit');const tab=await chrome.tabs.get(id);if(!allowed(tab.url))throw Error('Origin denied');result=await inspect(id,m.selector,context);}
-  else if(m.op==='state'){const s=state(id);cap(s);if(m.refreshDeep){const generation=s.inspectionGeneration,run=s.run;await refreshActionSources(s,signal);if(tabs[id]!==s||s.inspectionGeneration!==generation||s.run!==run)throw Error('Stale action source result');}if(m.refreshDeep&&s.selection&&s.analysis?.actionContext){const old=s.selection,g=s.inspectionGeneration,current=await identifySelection(id,old.selector,old.property);if(s.selection===old&&s.inspectionGeneration===g&&!isSameSelection(old.domIdentity,current)){recordStale(s,'Selected DOM node or value changed; inspect again');beginInspection(s,{keepDiagnostic:true});}}if(m.refreshDeep&&s.analysis?.stateatom&&s.selection&&!s.analysis.stateatom.firstReadProfile){const generation=s.inspectionGeneration,run=s.run;const current=await observeDeep(id,s.selection,s.property||'text',{includeTrace:s.analysis.capabilities?.sourceResolver==='open-ide',beforeMainScript:(op,role)=>ownMainCode(id,s,op,role)});if(tabs[id]!==s||s.inspectionGeneration!==generation||s.run!==run)throw Error('Stale inspection result');if(current.trace?.status==='Stale'){s.analysis.stateatom.runtime.status='Stale';s.analysis.stateatom.runtime.reason=current.trace.reason;}}result={...s,sourceMaps:sourceMaps.snapshot(id),analysis:codeAnalysis(s),codeJournal:undefined,documentPolicies:undefined,fetchBindings:undefined,samples:undefined,pending:undefined,bufferBytes:JSON.stringify(s.requests).length,sampleEntries:undefined,sampleBytes:s.samples.join('').length};}
+  else if(m.op==='state'){const s=state(id);cap(s);if(m.refreshDeep&&operationPolicy('inspect-selector',capabilityState).available){const generation=s.inspectionGeneration,run=s.run;await refreshActionSources(s,signal);if(tabs[id]!==s||s.inspectionGeneration!==generation||s.run!==run)throw Error('Stale action source result');}if(m.refreshDeep&&operationPolicy('inspect-selector',capabilityState).available&&s.selection&&s.analysis?.actionContext){const old=s.selection,g=s.inspectionGeneration,current=await identifySelection(id,old.selector,old.property);if(s.selection===old&&s.inspectionGeneration===g&&!isSameSelection(old.domIdentity,current)){recordStale(s,'Selected DOM node or value changed; inspect again');beginInspection(s,{keepDiagnostic:true});}}if(m.refreshDeep&&operationPolicy('inspect-selector',capabilityState).available&&s.analysis?.stateatom&&s.selection&&!s.analysis.stateatom.firstReadProfile){const generation=s.inspectionGeneration,run=s.run;const current=await observeDeep(id,s.selection,s.property||'text',{includeTrace:s.analysis.capabilities?.sourceResolver==='open-ide',beforeMainScript:(op,role)=>ownMainCode(id,s,op,role)});if(tabs[id]!==s||s.inspectionGeneration!==generation||s.run!==run)throw Error('Stale inspection result');if(current.trace?.status==='Stale'){s.analysis.stateatom.runtime.status='Stale';s.analysis.stateatom.runtime.reason=current.trace.reason;}}result={...s,capabilityPolicy:describeCapabilities(await capabilityContext(id)),sourceMaps:sourceMaps.snapshot(id),analysis:codeAnalysis(s),codeJournal:undefined,documentPolicies:undefined,fetchBindings:undefined,samples:undefined,pending:undefined,bufferBytes:JSON.stringify(s.requests).length,sampleEntries:undefined,sampleBytes:s.samples.join('').length};}
   else if(m.op==='open'||m.op==='definitions'||m.op==='references'){const s=state(id);result=await bridge(m.op,{origin:s.origin,...m.source},signal);}
   else if(m.op==='experiment'){result=await experiment(id,m.field,m.value,m.actions,m.controlPath,signal);}
   else if(m.op==='detach'){sourceMaps.invalidate(id,'Debugger detached');const s=state(id);recordStale(s,'Debugger detached; inspect again');await chrome.debugger.detach({tabId:id});s.attached=false;journalGap(s.codeJournal,'detach');s.fetchBindings=newFetchBindings(s.run);s.override=null;s.analysis=null;s.experiment=null;beginInspection(s);s.events.push({detach:'explicit user action'});await persist();result={detached:true};}
@@ -195,7 +213,7 @@ async function operation(m,context){const signal=context.signal;await ready;
   else if(m.op==='source-map-clear'){sourceMaps.clear(id);result=sourceMaps.snapshot(id);}
   else if(m.op==='metrics')result=await send(id,'Performance.getMetrics');
   else throw Error('Unsupported operation');return result;
- }catch(e){throw e;}
+ }finally{if(publishAvailability)notifyInvalidation(m.tabId);}
 }
 
 const unsubscribe=platform.events.subscribe(event=>{

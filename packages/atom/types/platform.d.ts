@@ -5,8 +5,9 @@ export interface ChromeAPI {permissions?:{contains(request:{origins:string[]}):P
 export interface HostEvent {type:'debugger'|'detach'|'removed';source?:{tabId:number};method?:string;params?:any;reason?:string;tabId?:number}
 export interface EventHub {subscribe(fn:(event:HostEvent)=>void):()=>void;emit(event:HostEvent):void}
 export interface DebuggerLease {tabId:number;documentId:string|null;assert(capability?:Capability):void;attach():Promise<void>;command(method:string,params?:Record<string,unknown>):Promise<any>;release():Promise<void>;invalidate():void}
-export interface DebuggerBroker {acquire(options:{tabId:number;documentId?:string|null;owner:string;capabilities:Capability[]}):Promise<DebuggerLease>;invalidate(tabId:number):void}
-export interface AtomPlatform {chrome:Omit<ChromeAPI,'runtime'> & {runtime:Pick<ChromeAPI['runtime'],'id'|'sendMessage'>};fetch:typeof fetch;permittedOrigin?(origin:string):Promise<boolean>;events:EventHub;ready?:Promise<void>;owns(tabId:number):boolean;authorize(tabId:number,capability:Capability):Promise<void>;shutdown():Promise<void>;detached(tabId:number):void}
+export interface DebuggerBroker {acquire(options:{tabId:number;documentId?:string|null;owner:string;capabilities:Capability[]}):Promise<DebuggerLease>;status?(tabId:number,owner:string):'none'|'owned'|'foreign';invalidate(tabId:number):void}
+export interface AtomTargetFacts {url:string;readOnlySites:boolean;permission:boolean;grants:Capability[];lease:'none'|'owned'|'foreign'|'expired'|'unknown';disposed:boolean}
+export interface AtomPlatform {chrome:Omit<ChromeAPI,'runtime'> & {runtime:Pick<ChromeAPI['runtime'],'id'|'sendMessage'>};fetch:typeof fetch;describeTarget?(tabId:number):Promise<AtomTargetFacts>;permittedOrigin?(origin:string):Promise<boolean>;events:EventHub;ready?:Promise<void>;owns(tabId:number):boolean;authorize(tabId:number,capability:Capability):Promise<void>;shutdown():Promise<void>;detached(tabId:number):void}
 export declare const capabilities:readonly Capability[];
 export declare function atomError(code:string,message?:string):Error & {code:string};
 export declare function createDebuggerBroker(api:ChromeAPI['debugger']):DebuggerBroker;

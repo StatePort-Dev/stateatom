@@ -35,6 +35,23 @@ register global listeners on import. `contract.json` fixes API/wire version 1,
 UI contract 2.1.0 and the exact peer package version. Styles are scoped, not
 Shadow DOM protection from hostile host CSS.
 
+Wire v1 has additive capability discovery v1. Import
+`supportsCapabilityPolicy` from `@stateport/atom/transport`, then request
+`client.request({op:'capabilities',tabId,capabilityVersion:1})`. The validated
+descriptor and `state.capabilityPolicy` distinguish available operations,
+source/observations and explicit unavailable reasons. They never grant access:
+runtime enforces the same policy with fresh platform facts. Custom platforms
+must describe current target permission, grants and lease ownership; unknown
+facts do not enable scoped operations. Older hosts without discovery remain
+explicitly unavailable in the new UI. An HTTPS permission-request button is
+separate from an admitted inspection operation.
+
+Public declarations are checked from installed tarballs using strict NodeNext
+and browser Bundler resolution (`skipLibCheck:false`). TypeScript 5.9.3 is a
+repository development tool, not a runtime/package requirement. Basic remains
+independent of IDE, Desktop, accounts and models. Action Trace, Live/Draft and
+production change enablement remain future required tasks, not new F01 features.
+
 The default embedded host supports the existing synthetic localhost origins/operations.
 A host may explicitly set `readOnlySites:true` on both `createChromePlatform` and
 `createAtomRuntime` and supply `requestOriginPermission` through the `mountAtom`

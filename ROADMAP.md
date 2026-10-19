@@ -32,10 +32,13 @@ The production source-exploration increment at `f3a7a7e` is complete within its
 original boundary. Credit its map/ZIP import, artifact matching, manual lookup,
 safe diagnostics and read-only behavior rather than rebuilding them. P01–P03
 remain partial: real element anchors, the complete release-bundle workflow and
-actual HTTPS permission acceptance are still owed. The next bounded item is
-**F01 — capability and public-contract consolidation**, with no prerequisites.
-This scope adoption does not implement new capabilities or authorize all 29 items
-in one run. The narrower historical alpha acceptance remains unchanged.
+actual HTTPS permission acceptance are still owed. The subsequent
+[F01 execution](docs/completion/14-f01-capability-contracts.md) completes canonical
+admission/discovery and strict packed declarations on candidate `.20261019.3`,
+with current two-host/browser/IDE evidence. The single next bounded item is
+**F02 — real site/project origin policy**, following completed F01. No broader
+feature implementation or execution of all 29 items follows. The narrower
+historical alpha acceptance remains unchanged.
 
 ## Historical roadmap and checkpoint ledger
 

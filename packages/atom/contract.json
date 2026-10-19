@@ -16,5 +16,14 @@
     "http://127.0.0.1:4173",
     "http://127.0.0.1:4174",
     "http://127.0.0.1:4175"
-  ]
+  ],
+  "capabilityVersion": 1,
+  "features": [
+    "capability-policy-v1"
+  ],
+  "featureDiscovery": {
+    "operation": "capabilities",
+    "requiredVersion": 1,
+    "notEvidence": "Admission and observation availability are separate from source/execution claims"
+  }
 }

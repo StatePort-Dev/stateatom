@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 import {associateSourceMap,readSourceBundle,lookupSource,sourceDigest,jsonBytes,validateManifest,MAP_LIMITS} from '../../../core/source-maps.mjs';
 import {ARCHIVE_LIMITS} from '../../../core/source-map-archive.mjs';
+import {isDevelopmentOrigin} from './capabilities.mjs';
 const enc=new TextEncoder(),ttl=300000,MAX_SCRIPTS=128;
-export function sourceMapURL(input,base){let u;try{u=new URL(input,base);}catch{throw Error('Invalid source-map URL');}if(u.username||u.password||u.hash||!(u.protocol==='https:'||u.protocol==='http:'&&u.hostname==='127.0.0.1'&&['4173','4174','4175'].includes(u.port)))throw Error('Source-map URL requires HTTPS (or a supported synthetic localhost)');return u;}
+export function sourceMapURL(input,base){let u;try{u=new URL(input,base);}catch{throw Error('Invalid source-map URL');}if(u.username||u.password||u.hash||!(u.protocol==='https:'||isDevelopmentOrigin(u.href)))throw Error('Source-map URL requires HTTPS (or a supported synthetic localhost)');return u;}
 export function createSourceMapSession({send,fetch,permitted,onChange=()=>{}}){
  const tabs=new Map();
  function state(id){const s=tabs.get(id);if(!s)throw Error('Attach this tab before connecting source maps');if(Date.now()-s.at>ttl){invalidate(id,'Session expired; reconnect source maps');s.at=Date.now();}return s;}
