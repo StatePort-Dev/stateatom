@@ -118,3 +118,13 @@ first GREEN and intermediate 843-check full log remain separate. No native
 adapter/event/framework write or new package is delivered by this library.
 Task 3 / U02 stay in progress; next is **U02.3b actual native-control adapter**.
 Both field-mode catalogue counts remain 0/18; all original acceptance gates stand.
+
+
+U02.3b.0 completes a finite [native mechanism probe](../testing/native-control-probe.md),
+not an adapter. Plain React/Vue built-in input events produce real validation
+changes and return; an isolated world survives native detach (negative cleanup
+finding). A disposable extension-world/private-Port host passes four identity /
+cleanup checks, including actual worker stop and refusal of later writes. Raw
+results and the nullable-sentinel probe failures are retained. Source checkout and
+issued .20 package stay unchanged. Next: **3b.1 native primitive implementation**,
+then runtime integration. U02/Task3 remain in progress, field rows remain 0/18.

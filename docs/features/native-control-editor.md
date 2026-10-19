@@ -99,3 +99,15 @@ Exact source/build inputs and packet digests of .20 remain unchanged. The new
 module has no runtime importer and is not in that package's manifest. No new
 archive, browser/framework write, field interaction or catalogue row is credited.
 Next slice is 3b, the actual native adapter and real React/Vue/native controls.
+
+
+## 3b mechanism choice after native probes
+
+The [bounded native study](../testing/native-control-probe.md) proves the
+built-in setter/event path on plain React/Vue and records that a custom isolated
+world survives native detach. An extension isolated-world/private-Port probe
+subsequently passes four cleanup/identity controls, including actual worker stop.
+The new working implementation direction is `chrome.scripting` with native object
+identity and independent Port cleanup. The study does not deliver a product
+adapter or increase field-mode catalogue coverage. Next: 3b.1 native primitive,
+then guarded runtime/ledger integration. No generic Page-world eval is introduced.

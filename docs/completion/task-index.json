@@ -405,9 +405,20 @@
           },
           "record": "21-overnight-u02-progress.md",
           "native_rows_verified": 0
+        },
+        {
+          "id": "U02.3b.0",
+          "status": "complete",
+          "scope": "Bounded native mechanism probe only; custom world survives detach; extension Port cleanup works in diagnostic copy",
+          "checks": {
+            "plain_frameworks": 2,
+            "native_private_port": 4
+          },
+          "record": "../testing/native-control-probe.md",
+          "native_rows_verified": 0
         }
       ],
-      "active_slice": "U02.3b",
+      "active_slice": "U02.3b.1",
       "implementation_dependency": "Worker/document owner-loss backend proof passes on .20; native controls next, inspector-owned close/reopen remains required with field UI"
     },
     {
