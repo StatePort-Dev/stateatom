@@ -69,16 +69,29 @@
         "packages/atom/src/platform.mjs",
         "packages/atom/src/runtime.mjs",
         "browser-extension/manifest.json",
-        "core/bridge.mjs"
+        "core/bridge.mjs",
+        "packages/atom/src/origin-policy.mjs",
+        "packages/atom/src/transport.mjs",
+        "packages/atom/src/ui.mjs",
+        "tests/atom/origin-policy.test.mjs",
+        "tests/integration/origin-connections.mjs"
       ],
       "existing_commands": [
         "npm run verify:browser",
         "npm run verify:react-host-ui",
-        "npm run verify:production-source-mapping"
+        "npm run verify:production-source-mapping",
+        "npm run verify:origin-connections",
+        "npm run verify:atom-contract"
       ],
       "deliverable": "Explicit scoped connections outside fixture ports",
-      "status": "planned",
-      "optional": false
+      "status": "complete",
+      "optional": false,
+      "implementation_plan": "../superpowers/plans/2026-10-19-origin-policy.md",
+      "execution_record": "15-f02-origin-connections.md",
+      "delivery_states": [
+        "implemented",
+        "native-verified"
+      ]
     },
     {
       "id": "F03",
@@ -942,7 +955,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK — separate StatePort project",
+      "title": "Production SDK \u2014 separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",
@@ -1010,45 +1023,49 @@
     ]
   },
   "reconciliation": {
-    "document": "14-f01-capability-contracts.md",
+    "document": "15-f02-origin-connections.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "F01",
+      "id": "F02",
       "status": "complete",
-      "source_base": "7a9f7184d1a61b08cbca114273da3ed5bcb335fc",
+      "source_base": "b0606cf603a76561ce5fe118fea52a42deb68f8c",
       "source_dirty_at_checks": true,
-      "package_version": "0.1.0-candidate.20261019.3",
-      "package_sha256": "3fea09fc6f7c709442d4e1f0ea98f99dc467104b59056c653599577440fa1803",
-      "execution_record": "14-f01-capability-contracts.md",
+      "package_version": "0.1.0-candidate.20261019.5",
+      "package_sha256": "b9f72231cb43d57c83af8fbe30f8fa422f81266171b020c008597916d8379f6e",
+      "execution_record": "15-f02-origin-connections.md",
       "delivery_states": [
         "implemented",
         "native-verified"
       ],
-      "operator": "agent-operated automated harnesses",
-      "checks": {
-        "unit": 586,
-        "contract": 48,
+      "verified_checks": {
+        "unit": 603,
+        "contract": 65,
         "strict_packed_consumers": 2,
-        "controlled_client_ui": 5,
-        "embedding": 34,
+        "origin_connections": 18,
         "basic": 26,
-        "actions": 32,
-        "source_maps": 19
+        "react_host_ui": 11,
+        "source_maps": 19,
+        "embedding": 34
       },
       "not_claimed": [
+        "native optional HTTPS prompt acceptance",
+        "F03 installed onboarding",
+        "F05 production grants",
+        "U02 Live/Draft editing",
+        "U05 full picker acceptance",
         "official-host integration",
         "publication",
         "independent-human study",
-        "Live/Draft editing",
-        "production change enablement",
+        "SDK",
         "Action Trace",
         "validated local model"
       ]
     },
-    "next_item": "F02",
+    "next_item": "F03",
     "new_full_task_acceptances": [
-      "F01"
+      "F01",
+      "F02"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": null,
@@ -1070,9 +1087,42 @@
           "kind": "unit-api-harness"
         },
         "native_evidence": "Retained runs, input hashes checked against current files; no native rerun"
+      },
+      {
+        "id": "F01",
+        "status": "complete",
+        "source_base": "7a9f7184d1a61b08cbca114273da3ed5bcb335fc",
+        "source_dirty_at_checks": true,
+        "package_version": "0.1.0-candidate.20261019.3",
+        "package_sha256": "3fea09fc6f7c709442d4e1f0ea98f99dc467104b59056c653599577440fa1803",
+        "execution_record": "14-f01-capability-contracts.md",
+        "delivery_states": [
+          "implemented",
+          "native-verified"
+        ],
+        "operator": "agent-operated automated harnesses",
+        "checks": {
+          "unit": 586,
+          "contract": 48,
+          "strict_packed_consumers": 2,
+          "controlled_client_ui": 5,
+          "embedding": 34,
+          "basic": 26,
+          "actions": 32,
+          "source_maps": 19
+        },
+        "not_claimed": [
+          "official-host integration",
+          "publication",
+          "independent-human study",
+          "Live/Draft editing",
+          "production change enablement",
+          "Action Trace",
+          "validated local model"
+        ]
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md"
   },
-  "next_task": "F02"
+  "next_task": "F03"
 }

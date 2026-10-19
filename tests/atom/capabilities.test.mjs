@@ -9,7 +9,7 @@ import {validateRequest,supportsCapabilityPolicy} from '../../packages/atom/src/
 const context={url:'http://127.0.0.1:4173/react/',permission:true,grants:['read','inject','reload','cache','override','replay'],lease:'none'};
 const message=payload=>({version:1,id:crypto.randomUUID(),session:'capability-test',payload});
 function fixture({url=context.url,permission=true,grants=context.grants,initial={}}={}){
- const calls=[],data={'stateport.atom.v1.tabs':initial};
+ const calls=[],data={'stateport.atom.v1.connections':[{origin:new URL(url).origin,mode:url.startsWith('http:')?'development':'read-only',actions:url.startsWith('http:')?context.grants.filter(c=>!['read','inject'].includes(c)):[]}],'stateport.atom.v1.tabs':initial};
  const area={get:async keys=>Object.fromEntries(keys.filter(k=>k in data).map(k=>[k,data[k]])),set:async v=>Object.assign(data,v)};
  const api={permissions:{contains:async()=>permission},runtime:{id:'test',sendMessage:async()=>{}},storage:{local:area,session:area},tabs:{query:async()=>[{id:1,url}],get:async()=>({id:1,url}),reload:async()=>calls.push('reload'),onUpdated:{addListener(){},removeListener(){}}},debugger:{attach:async()=>calls.push('attach'),detach:async()=>calls.push('detach'),sendCommand:async(_,m)=>{calls.push(m);return m==='Page.getFrameTree'?{frameTree:{frame:{id:'frame'}}}:{};}},scripting:{executeScript:async()=>{calls.push('inject');return[];}}};
  const events=createEventHub(),broker=createDebuggerBroker(api.debugger),platform=createChromePlatform(api,{events,broker,capabilities:grants,readOnlySites:true});
@@ -45,7 +45,7 @@ test('a denied HTTPS attach still advertises the separate site-access request, n
  assert.equal(describeCapabilities({...c,readOnlySites:false}).features['basic.request-site-access'].available,false);
 });
 test('discovery and direct admission share origin, permission, lease, disposed and grant refusals',()=>{
- for(const [patch,code] of [[{url:'http://127.0.0.1:4999/'},'ORIGIN_DENIED'],[{url:'https://app.invalid/',readOnlySites:true,permission:false},'ORIGIN_DENIED'],[{lease:'foreign'},'BUSY'],[{disposed:true},'DISPOSED'],[{grants:['read']},'CAPABILITY_DENIED']]){
+ for(const [patch,code] of [[{url:'http://localhost.evil:4999/'},'ORIGIN_DENIED'],[{url:'https://app.invalid/',readOnlySites:true,permission:false},'ORIGIN_DENIED'],[{lease:'foreign'},'BUSY'],[{disposed:true},'DISPOSED'],[{grants:['read']},'CAPABILITY_DENIED']]){
   const c={...context,...patch},feature=describeCapabilities(c).features['basic.inspect'];
   assert.equal(feature.available,false);assert.equal(feature.code,code);assert.equal(operationPolicy('inspect-selector',c).code,code);
  }

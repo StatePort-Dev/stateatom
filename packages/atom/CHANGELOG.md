@@ -74,3 +74,24 @@ Compact source-linked action cards, relevant hook/call disclosures and separate 
 listener metadata use the supplied Actions reference and shared primitives. Optional
 English local explanations remain experimental; deterministic explanations need no model.
 No shared tokens or primitive contract changed.
+
+## 0.1.0-candidate.20261019.4
+
+- Replace fixture-port authority with exact session application connections.
+  Ordinary loopback starts read-only; explicit per-action development consent
+  does not enable HTTPS changes, source pairing or artifact downloads.
+- Revalidate cached leases, detach across origins, cancel private source work
+  on access withdrawal. Support explicit alternate loopback helper ports.
+- Add site permissions inside the existing Browser connection disclosure using
+  the supplied native controls; no shared tokens/primitives or layout redesign.
+  Connection controls necessarily differ from simulated prototype settings:
+  F05 production grants and U02 editing are not implemented here.
+
+## 0.1.0-candidate.20261019.5
+
+- Install picker on demand in the current document in both inspection modes.
+- Retain explicitly approved custom HTTP development mode across reloads; clear
+  unsaved private source/trial history when authority ends, preserving saved reports.
+- Bind pending leases/approvals to original connection identity and permission epoch;
+  require HTTPS opt-in from both platform and runtime. Preserve `.4` as an
+  intermediate built candidate without final acceptance.

@@ -52,7 +52,7 @@ repository development tool, not a runtime/package requirement. Basic remains
 independent of IDE, Desktop, accounts and models. Action Trace, Live/Draft and
 production change enablement remain future required tasks, not new F01 features.
 
-The default embedded host supports the existing synthetic localhost origins/operations.
+The default embedded host admits ordinary loopback HTTP sites read-only, with explicit development actions.
 A host may explicitly set `readOnlySites:true` on both `createChromePlatform` and
 `createAtomRuntime` and supply `requestOriginPermission` through the `mountAtom`
 options object to enable permission-gated HTTPS inspection. The standalone host
@@ -77,3 +77,31 @@ scroll only the inspector, and all actions are type=button to avoid host-form
 submission. Load the optional shared `fonts.css` and serve the exported local
 Inter asset at its relative path to reproduce reference typography. Carry the
 font's OFL license from the UI package; no external font service is required.
+
+F02 replaces fixture-port defaults: ordinary `localhost`, `127.0.0.1` and `[::1]`
+HTTP origins at valid ports can be inspected read-only. `connect-site` takes
+`{tabId,connection:{origin,mode,actions}}`; `origin` is canonical without a path,
+`mode` is `read-only` or `development`, and `actions` is a subset of `cache`,
+`reload`, `override`, `replay`. Development is HTTP only. Saving in Atom's
+Browser connection settings explicitly approves checked actions for that exact
+scheme/host/port for the browser session, across its tabs; it detaches existing
+contexts. Host implementations must expose genuine user consent before sending
+this trusted operation. `forget-site` removes it. Page messages cannot configure
+connections. Additional HTTP hostnames need both an exact record and Chrome host
+access; no registrable-domain or other-port authority is inferred.
+
+Browser host patterns can span ports; Atom's authority does not. Standalone
+ships required loopback host access and optional HTTP/HTTPS host patterns, with
+required `debugger` permission. Hosts forward `navigation` (`tabId,url`) and
+`permissions-removed` events in addition to debugger/detach/removed. Every lease
+use also checks current permission/origin; a missing permissions API denies access.
+Permission removal conservatively clears all active connection/source contexts.
+Cross-origin navigation always requires a new attach, including between approved
+sites. Source pairing is a separate, exact app-origin association with a confined
+workspace subtree. Read-only HTTP source navigation does not grant mutation rights;
+HTTPS source navigation remains denied pending a trusted production association.
+The helper URL policy is canonical `http://127.0.0.1:<1..65535>` with an explicit
+port, no slash, path, query, fragment, credentials, aliases, HTTPS or LAN host.
+Default `47731` is a convenience; the helper keeps binding only `127.0.0.1`.
+No endpoint scan, proxy or shell startup exists. Helper and artifact browser
+access are checked separately; no application approval grants either.

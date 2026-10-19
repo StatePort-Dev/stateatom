@@ -11,7 +11,14 @@ capability policy and checks packed declarations on candidate `.20261019.3`:
 586 unit, 48 contract, 34 two-host, 26 Basic, 32 Actions and 19 source-map checks
 pass, with separate strict type and controlled-client UI checks. These are scoped,
 agent-operated results; no Action Trace, Live/Draft, production edit grant, SDK or
-real-model inference is added. F02 is next; no release or human-study claim follows.
+real-model inference is added. The subsequent
+[F02 implementation](completion/15-f02-origin-connections.md) completes exact
+site/project connection policy on `.20261019.5`: 603 unit, 65 contract, 18 native
+connection, 26 Basic, 11 React-host, 19 source-map and 34 two-host checks pass,
+with 2 strict packed consumers. Ordinary loopback is read-only until explicit
+development actions are approved; navigation/revocation invalidates old authority
+and private source/trial state. Native optional HTTPS prompt acceptance is still
+unclaimed. F03 installation/onboarding is next; no release or human-study claim follows.
 
 Current checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live

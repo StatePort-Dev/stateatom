@@ -3,7 +3,10 @@ import type {CapabilityDescription} from './capabilities.js';
 export {describeCapabilities,operationPolicy,CAPABILITY_VERSION,FEATURE_IDS} from './capabilities.js';
 export type {CapabilityDescription,CapabilityContext,Admission,FeatureId} from './capabilities.js';
 export type SourceLocation={file:string;line:number;column?:number;endLine?:number;endColumn?:number;sourceDigest?:string};
+export declare function isInspectionOrigin(url:string,readOnlySites?:boolean):boolean;
 export type AtomOperation=
+ |{op:'connect-site';tabId:number;connection:import('./platform.js').SiteConnection}
+ |{op:'forget-site';tabId:number}
  |{op:'tabs'|'unpair'|'list-diagnostics'}
  |{op:'capabilities';tabId:number;capabilityVersion?:1}
  |{op:'pair';url:string;token:string;origin:string;sourceRoot:string}

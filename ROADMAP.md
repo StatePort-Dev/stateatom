@@ -35,8 +35,13 @@ remain partial: real element anchors, the complete release-bundle workflow and
 actual HTTPS permission acceptance are still owed. The subsequent
 [F01 execution](docs/completion/14-f01-capability-contracts.md) completes canonical
 admission/discovery and strict packed declarations on candidate `.20261019.3`,
-with current two-host/browser/IDE evidence. The single next bounded item is
-**F02 — real site/project origin policy**, following completed F01. No broader
+with its scoped two-host/browser/IDE evidence. The subsequent
+[F02 execution](docs/completion/15-f02-origin-connections.md) completes exact
+site records, explicit development actions and origin/permission invalidation on
+candidate `.20261019.5`, with fresh packed/native checks. Actual optional HTTPS
+prompt acceptance and broader production source workflow remain unclaimed.
+The single next bounded item is **F03 — installable open helper/dev-plugin workflow**,
+following completed F02. No broader
 feature implementation or execution of all 29 items follows. The narrower
 historical alpha acceptance remains unchanged.
 

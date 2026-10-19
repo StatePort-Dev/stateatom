@@ -449,3 +449,23 @@ anchor exists. No IDE, dev SDK, account or AI is required.
 
 Use `npm run verify:production-source-mapping` for the isolated minified React
 MV3 check. [Verification, limits and bundle format](docs/testing/production-source-mapping.md).
+
+## Site/project connections (F02 local candidate)
+
+Ordinary HTTP localhost, 127.0.0.1 and IPv6 loopback ports start read-only.
+**Browser connection → Application permissions** saves individual development
+rights for the exact scheme/host/port for the browser session. Cache/storage reset,
+reload, response overlays and replay need explicit checked permissions; local
+hosting alone grants none of them. Additional HTTP hostnames need an exact record
+and browser access; HTTPS remains read-only. Source pairing and artifact access
+are separate. A loopback helper can use another explicit nondefault port instead
+of 47731. Cross-origin navigation detaches; permission withdrawal cancels work and
+clears unsaved private source/trial buffers. Saved diagnostics keep their original
+retention policy.
+
+`npm run verify:origin-connections` uses real nonfixture ports and Chrome host
+permission state, including access withdrawal through browser settings. It does
+not claim acceptance of the optional HTTPS permission prompt. See
+[the F02 execution record](docs/completion/15-f02-origin-connections.md) for exact
+artifacts, controls and limits. F03 installation/onboarding and F05 production
+confirmations remain separate work.

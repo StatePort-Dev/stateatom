@@ -3,7 +3,7 @@
 import assert from 'node:assert/strict';
 import {readFile,writeFile,mkdir,cp} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {startIDE,startBrowser,rpc,waitFor} from '../../scripts/harness.mjs';
+import {startIDE,startBrowser,approveDevelopment,rpc,waitFor} from '../../scripts/harness.mjs';
 import {startServer} from '../../scripts/inspection-server.mjs';
 import {root} from '../../scripts/vite-config.mjs';
 import {disallowedBrowserInputs} from '../../scripts/atom-browser-inputs.mjs';
@@ -36,7 +36,7 @@ try{
   });
   const page=await context.newPage();await page.goto('http://127.0.0.1:4173/react/');await page.locator('#p1').filter({hasText:'13'}).waitFor();
   async function choose(url){if(!await ui('tabs').isVisible())await ui('setup-toggle').click();await ui('refresh-tabs').click();await ui('tabs').locator('option').filter({hasText:url}).first().waitFor({state:'attached'});const id=await ui('tabs').locator('option').filter({hasText:url}).first().getAttribute('value');await ui('tabs').selectOption(id);await ui('status').filter({hasText:/^OK$/}).waitFor();return Number(id);}
-  const tabId=await choose('/react/');await ui('attach').click();await ui('status').filter({hasText:/^OK$/}).waitFor();await page.reload();await page.locator('#p1').filter({hasText:'13'}).waitFor();
+  const tabId=await choose('/react/');await approveDevelopment(panel);await ui('attach').click();await ui('status').filter({hasText:/^OK$/}).waitFor();await page.reload();await page.locator('#p1').filter({hasText:'13'}).waitFor();
   async function inspect(selector,property='text',pick=false){await ui('property').selectOption(property);await rpc(panel,{op:'property',tabId,property});if(pick){await ui('pick').click();const box=await page.locator(selector).boundingBox();await page.mouse.click(box.x+box.width/2,box.y+box.height/2);await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});return s.selection?.selector===selector&&s.analysis;});await ui('refresh-tabs').click();}else{await ui('selector-details').evaluate(e=>{e.open=true;});await ui('selector').fill(selector);await ui('inspect-selector').click();}await ui('status').filter({hasText:/^OK$/}).waitFor({timeout:60000});return rpc(panel,{op:'state',tabId});}
   await check(kind+' capability discovery agrees with current UI without inferring execution or edits',async()=>{
    const policy=await rpc(panel,{op:'capabilities',tabId,capabilityVersion:1});

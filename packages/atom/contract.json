@@ -13,9 +13,9 @@
     "replay"
   ],
   "origins": [
-    "http://127.0.0.1:4173",
-    "http://127.0.0.1:4174",
-    "http://127.0.0.1:4175"
+    "http://localhost:<port>",
+    "http://127.0.0.1:<port>",
+    "http://[::1]:<port>"
   ],
   "capabilityVersion": 1,
   "features": [
@@ -25,5 +25,13 @@
     "operation": "capabilities",
     "requiredVersion": 1,
     "notEvidence": "Admission and observation availability are separate from source/execution claims"
+  },
+  "sitePolicy": {
+    "scope": "exact scheme, host and port",
+    "default": "read-only",
+    "development": "explicit session connection with individual actions",
+    "production": "read-only; F05 not implemented",
+    "helper": "canonical http://127.0.0.1:<port>, separate browser access",
+    "artifacts": "separate exact-origin browser permission"
   }
 }

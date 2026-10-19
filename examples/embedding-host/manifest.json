@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "StateAtom MV3 embedding example",
   "version": "0.1.0",
-  "description": "Local research inspector; synthetic localhost origins only",
+  "description": "Local research inspector; loopback read-only with explicit development actions",
   "permissions": [
     "debugger",
     "scripting",
@@ -10,10 +10,9 @@
     "tabs"
   ],
   "host_permissions": [
-    "http://127.0.0.1:4173/*",
-    "http://127.0.0.1:4174/*",
-    "http://127.0.0.1:4175/*",
-    "http://127.0.0.1:47731/*"
+    "http://127.0.0.1/*",
+    "http://localhost/*",
+    "http://[::1]/*"
   ],
   "background": {
     "service_worker": "host-worker.js",
@@ -21,18 +20,5 @@
   },
   "action": {
     "default_title": "Open StateAtom"
-  },
-  "content_scripts": [
-    {
-      "matches": [
-        "http://127.0.0.1:4173/*",
-        "http://127.0.0.1:4174/*",
-        "http://127.0.0.1:4175/*"
-      ],
-      "js": [
-        "content.js"
-      ],
-      "run_at": "document_idle"
-    }
-  ]
+  }
 }

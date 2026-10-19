@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
+import {appOrigin,siteRecord} from './origin-policy.mjs';
 import {retainDiagnostics} from '../../../core/diagnostic.mjs';
 import {DEBUGGER_CAPABILITIES,debuggerCommandCapability,isDevelopmentOrigin,isInspectionOrigin} from './capabilities.mjs';
 export function atomError(code,message=code){return Object.assign(new Error(message),{code});}
@@ -29,37 +30,60 @@ export function namespacedStorage(area,namespace='stateport.atom.v1.'){
 export function createChromePlatform(api,{events,broker,capabilities:grants=capabilities,namespace='stateport.atom.v1.',readOnlySites=false}={}){
  if(!events||!broker)throw atomError('INVALID_PLATFORM','Host events and shared broker required');
  grants=Object.freeze([...grants]);
- const leases=new Map(),acquiring=new Map();let stopped=false;
+ const leases=new Map(),acquiring=new Map(),connections=new Map();let stopped=false,authorityEpoch=0;
+ const storage=namespacedStorage(api.storage.session,namespace);
+ const ready=storage.get(['connections']).then(x=>{for(const raw of x.connections||[]){try{const c=siteRecord({origin:raw.origin,mode:raw.mode,actions:raw.actions});connections.set(c.origin,c);}catch{/* Old or malformed records cannot grant authority. */}}});
+ const persistConnections=()=>storage.set({connections:[...connections.values()]});
+ const approvedSite=url=>connections.has(appOrigin(url));
+ const permission=async origin=>!!origin&&!!await api.permissions?.contains({origins:[origin+'/*']});
+ async function revoke(id){const entry=leases.get(id);leases.delete(id);if(entry)await entry.l.release().catch(()=>{});}
+ async function facts(id){
+  await ready;const epoch=authorityEpoch,tab=await api.tabs.get(id),origin=appOrigin(tab.url),connection=connections.get(origin)||null;
+  const supported=isInspectionOrigin(tab.url,readOnlySites)||!!connection&&new URL(origin).protocol==='http:';
+  const permitted=supported&&await permission(origin)&&epoch===authorityEpoch&&appOrigin((await api.tabs.get(id)).url)===origin;
+  if(!permitted&&connection){connections.delete(origin);await persistConnections();}
+  const active=permitted?connection:null,readOnly=active?.mode!=='development'||new URL(origin).protocol==='https:';
+  return {url:tab.url,origin,epoch,siteApproved:!!active&&new URL(origin).protocol==='http:',permission:permitted,readOnly,connection:active,grants:grants.filter(c=>['read','inject'].includes(c)||!readOnly&&active.actions.includes(c))};
+ }
+ async function check(id,entry){
+  if(stopped)throw atomError('DISPOSED');const f=await facts(id);
+  if(!f.permission||f.origin!==entry.origin||entry.epoch!==authorityEpoch||(connections.get(entry.origin)||null)!==entry.connection){
+   await revoke(id);throw atomError('ORIGIN_DENIED','Site permission or connection changed; attach again');
+  }
+  entry.l.assert();return entry.l;
+ }
  async function lease(id){
   if(stopped)throw atomError('DISPOSED');
-  if(!leases.has(id)){
-   if(!acquiring.has(id))acquiring.set(id,(async()=>{
-    const tab=await api.tabs.get(id);
-    const origin=new URL(tab.url).origin,local=isDevelopmentOrigin(origin);
-    if(!isInspectionOrigin(origin,readOnlySites)||!local&&!await api.permissions?.contains({origins:[origin+'/*']}))throw atomError('ORIGIN_DENIED','Site origin permission required');
-    if(stopped)throw atomError('DISPOSED');
-    const l=await broker.acquire({tabId:id,owner:'atom',capabilities:local?grants:grants.filter(c=>['read','inject'].includes(c))});
-    if(stopped){await l.release();throw atomError('DISPOSED');}
-    leases.set(id,l);return l;
-   })().finally(()=>acquiring.delete(id)));
-   return acquiring.get(id);
-  }
-  return leases.get(id);
+  if(leases.has(id))return check(id,leases.get(id));
+  if(!acquiring.has(id))acquiring.set(id,(async()=>{
+   const f=await facts(id);if(!f.permission)throw atomError('ORIGIN_DENIED','Site origin permission required');
+   if(stopped)throw atomError('DISPOSED');const l=await broker.acquire({tabId:id,owner:'atom',capabilities:f.grants});
+   const entry={l,origin:f.origin,epoch:f.epoch,connection:f.connection};leases.set(id,entry);
+   try{await check(id,entry);return l;}catch(e){await revoke(id);throw e;}
+  })().finally(()=>acquiring.delete(id)));
+  return acquiring.get(id);
  }
- const requireLease=(id,cap)=>{if(stopped)throw atomError('DISPOSED');const l=leases.get(id);if(!l)throw atomError('LEASE_REQUIRED');l.assert(cap);return l;};
- const chrome={runtime:{id:api.runtime.id,sendMessage:m=>api.runtime.sendMessage(m)},storage:{local:namespacedStorage(api.storage.local,namespace),session:namespacedStorage(api.storage.session,namespace)},
-  debugger:{attach:async({tabId})=>{const l=await lease(tabId);try{await l.attach();}catch(e){await l.release().catch(()=>{});leases.delete(tabId);throw e;}},sendCommand:({tabId},m,p)=>requireLease(tabId).command(m,p),getTargets:()=>api.debugger.getTargets(),detach:async({tabId})=>{const l=leases.get(tabId);if(l){await l.release();leases.delete(tabId);}}},
-  scripting:{executeScript:async op=>{const l=await lease(op.target.tabId);l.assert('inject');return api.scripting.executeScript(op);}},
-  tabs:{get:id=>api.tabs.get(id),query:q=>api.tabs.query(q),reload:async(id,o)=>{requireLease(id,'reload');return api.tabs.reload(id,o);},sendMessage:async(id,m)=>{(await lease(id)).assert('read');return api.tabs.sendMessage(id,m);},onUpdated:api.tabs.onUpdated}};
- return {async describeTarget(id){
-   const tab=await api.tabs.get(id),local=isDevelopmentOrigin(tab.url),origin=new URL(tab.url).origin;
-   let status=broker.status?.(id,'atom')||'unknown';const l=leases.get(id);if(!l&&status==='owned')status='foreign';
-   if(l){try{l.assert();status='owned';}catch{status='expired';}}
-   return {url:tab.url,readOnlySites:readOnlySites===true,permission:api.permissions?!!await api.permissions.contains({origins:[origin+'/*']}):local,grants:local?[...grants]:grants.filter(c=>['read','inject'].includes(c)),lease:status,disposed:stopped};
-  },permittedOrigin:async origin=>!!await api.permissions?.contains({origins:[origin+'/*']}),owns:id=>leases.has(id),chrome,fetch:(...args)=>fetch(...args),events,
+ async function requireLease(id,cap){if(stopped)throw atomError('DISPOSED');const e=leases.get(id);if(!e)throw atomError('LEASE_REQUIRED');const l=await check(id,e);l.assert(cap);return l;}
+ const chrome={runtime:{id:api.runtime.id,sendMessage:m=>api.runtime.sendMessage(m)},storage:{local:namespacedStorage(api.storage.local,namespace),session:storage},
+  debugger:{attach:async({tabId})=>{const l=await lease(tabId);try{await l.attach();await requireLease(tabId,'read');}catch(e){await revoke(tabId);throw e;}},sendCommand:async({tabId},m,p)=>{const l=await requireLease(tabId);const result=await l.command(m,p);await requireLease(tabId);return result;},getTargets:()=>api.debugger.getTargets(),detach:async({tabId})=>revoke(tabId)},
+  scripting:{executeScript:async op=>{const l=await lease(op.target.tabId);l.assert('inject');const result=await api.scripting.executeScript(op);await requireLease(op.target.tabId,'inject');return result;}},
+  tabs:{get:id=>api.tabs.get(id),query:q=>api.tabs.query(q),reload:async(id,o)=>{await requireLease(id,'reload');return api.tabs.reload(id,o);},sendMessage:async(id,m)=>{(await lease(id)).assert('read');return api.tabs.sendMessage(id,m);},onUpdated:api.tabs.onUpdated}};
+ return {ready,approvedSite,async connectSite(id,value){
+   await ready;const epoch=authorityEpoch,record=siteRecord(value),tab=await api.tabs.get(id);
+   if(new URL(record.origin).protocol==='https:'&&!readOnlySites||appOrigin(tab.url)!==record.origin||!await permission(record.origin))throw atomError('ORIGIN_DENIED','Approve browser access to the current exact origin first');
+   if(epoch!==authorityEpoch)throw atomError('ORIGIN_DENIED','Permission changed during connection approval');await revoke(id);const currentTab=await api.tabs.get(id);if(epoch!==authorityEpoch||appOrigin(currentTab.url)!==record.origin)throw atomError('ORIGIN_DENIED','Connection context changed');connections.set(record.origin,record);await persistConnections();return record;
+  },async forgetSite(id){const origin=appOrigin((await api.tabs.get(id)).url);connections.delete(origin);await persistConnections();await revoke(id);},
+  async describeTarget(id){
+   const f=await facts(id),entry=leases.get(id);
+   if(entry){try{await check(id,entry);}catch{/* Revocation closes the old lease. */}}
+   let status=broker.status?.(id,'atom')||'unknown';if(!leases.has(id)&&status==='owned')status='foreign';
+   return {...f,readOnlySites:readOnlySites===true,lease:status,disposed:stopped};
+  },permittedOrigin:permission,owns:id=>leases.has(id),chrome,fetch:(...args)=>fetch(...args),events,
   async authorize(id,cap){const l=await lease(id);l.assert(cap);},
-  async shutdown(){if(stopped)return;stopped=true;await Promise.allSettled([...acquiring.values()]);for(const[id,l]of leases){try{await l.command('Fetch.disable');}catch{}try{await l.command('Network.setCacheDisabled',{cacheDisabled:false});}catch{}await l.release().catch(()=>{});leases.delete(id);}stopped=true;},
-  detached(id){leases.get(id)?.invalidate();leases.delete(id);}
+  async invalidate(id){await revoke(id);},
+  async permissionsRemoved(){authorityEpoch++;await ready;connections.clear();await persistConnections();await Promise.allSettled([...leases.keys()].map(revoke));},
+  async shutdown(){if(stopped)return;stopped=true;await Promise.allSettled([...acquiring.values()]);for(const[id,{l}]of leases){try{await l.command('Fetch.disable');}catch{}try{await l.command('Network.setCacheDisabled',{cacheDisabled:false});}catch{}await revoke(id);}},
+  detached(id){leases.get(id)?.l.invalidate();leases.delete(id);}
  };
 }
 

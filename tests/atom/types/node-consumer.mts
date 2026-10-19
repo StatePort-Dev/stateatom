@@ -22,3 +22,12 @@ client.request({op:'eval',tabId:1});
 // @ts-expect-error Wire v1 does not imply a future capability schema.
 client.request({op:'capabilities',tabId:1,capabilityVersion:2});
 void [response,mount,admitted,CAPABILITY_VERSION,FEATURE_IDS,atomError];
+const connection:import('@stateport/atom/platform').SiteConnection={origin:'http://localhost:3000',mode:'development',actions:['cache','reload']};
+client.request({op:'connect-site',tabId:1,connection});
+client.request({op:'forget-site',tabId:1});
+events.emit({type:'navigation',tabId:1,url:'http://localhost:3001/'});
+events.emit({type:'permissions-removed'});
+// @ts-expect-error Source paths cannot be smuggled into a site connection literal.
+client.request({op:'connect-site',tabId:1,connection:{origin:'http://localhost:3000',mode:'development',actions:[],sourceRoot:'/private'}});
+// @ts-expect-error Evaluation is not a permitted development action.
+client.request({op:'connect-site',tabId:1,connection:{origin:'http://localhost:3000',mode:'development',actions:['eval']}});

@@ -1,3 +1,4 @@
+import {appOrigin} from '../packages/atom/src/origin-policy.mjs';
 import {verifyFirstRead} from "../src/first-read/verify.mjs";
 import {loadFirstReadCompilation} from "../src/first-read/profile-channel.mjs";
 import {sourceSlice,validateTrace} from "../src/engine/slice.mjs";
@@ -38,7 +39,7 @@ export function startBridge({root,port=47731,token,onOpen,onDefinitions,onRefere
    const op=req.url?.slice(1);validateRequest(req.headers,cfg,op);if(req.method!=='POST')throw Error('POST only');
    let data='';for await(const c of req){data+=c;if(Buffer.byteLength(data)>1500000)throw Error('Payload limit');}const body=JSON.parse(data||'{}');let result;
    if(op==='pair'){
-    if(!/^http:\/\/127\.0\.0\.1:(4173|4174|4175)$/.test(body.origin))throw Error('App origin denied');
+    if(!appOrigin(body.origin,{exact:true})||new URL(body.origin).protocol!=='http:')throw Error('App origin denied');
     await safePath(root,body.sourceRoot);cfg.extension=origin.split('://')[1];bindings.set(body.origin,body.sourceRoot);result={paired:true,workspace:path.basename(root),origin:body.origin};
    }else{
     const sourceRoot=bindings.get(body.origin);if(!sourceRoot)throw Error('Origin not mapped');

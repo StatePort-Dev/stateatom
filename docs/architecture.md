@@ -110,3 +110,20 @@ consume it. The official StatePort extension remains a separate future consumer;
 Capture/Native Messaging remain outside this package. See [the exact contract](embedding.md)
 and [validation](testing/atom-embedding-validation.md). Analyzer/evidence placement
 and acceptance criteria are unchanged. This is a local candidate, not a published API.
+
+## Exact connection authority
+
+The [F02 implementation record](completion/15-f02-origin-connections.md) describes
+the current connection increment. The browser platform owns canonical exact-origin
+session records and scoped debugger leases; the runtime consumes fresh permission,
+mode and grant facts. Browser match patterns, application development consent,
+artifact-server permission and the helper/source association are separate layers.
+Page observations cannot configure any of them. Both platform and runtime must
+explicitly opt into read-only HTTPS. Production mutation authorization remains
+F05 work; source access never supplies it.
+
+Navigation across origins or lost browser access invalidates the old context,
+including pending acquisitions. Unsaved private source/trial material is scoped
+to this authority; separately saved historical diagnostics follow their existing
+retention and export policy. This does not upgrade any source link or source-map
+match to execution/provenance evidence.

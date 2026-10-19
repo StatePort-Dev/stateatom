@@ -14,7 +14,7 @@ synthetic competing debugger consumer; it implements no Capture.
 ## Contracts and ownership
 
 Types ship in the package's `dist/*.d.ts`; API/wire version is **1**, separately
-from package candidate `0.1.0-candidate.20261019.3`. Importing any entrypoint has
+from package candidate `0.1.0-candidate.20261019.5`. Importing any entrypoint has
 no Chrome listener, debugger or DOM side effect.
 
 - `createAtomRuntime(platform, options = {}) -> AtomRuntime`. The only current
@@ -92,8 +92,11 @@ is authority to resume a debugger session.
 | override | bounded existing Fetch interception operations |
 | replay | existing explicit experiment action sequences |
 
-Default hosts grant these capabilities only for the original synthetic localhost
-ports 4173–4175, and the optional IDE bridge at port 47731. The standalone host
+Default hosts admit ordinary loopback HTTP origins read-only. Development cache,
+reload, override and replay rights require individual actions in a validated exact
+site record, explicitly saved by the user for this browser session. The helper
+endpoint and artifact origin require separate browser access; the default helper
+port 47731 is a convenience, not an application grant. The standalone host
 also opts into permission-gated read-only HTTPS, as described below; this does
 not enable production edits. Experiment entry requires current grants, an owned lease and the
 existing fresh-selection/experiment preconditions. An occupied resource returns
@@ -251,3 +254,39 @@ The separate `basic.request-site-access` feature lets an opted-in host offer
 **Allow site and attach** before HTTPS permission exists. It does not permit
 inspection until the browser grant is actually obtained. Native enterprise
 permission UX remains a separate P03 acceptance gate.
+
+## Exact site connections (F02)
+
+See the executable [package policy](../packages/atom/README.md)
+and `tests/integration/origin-connections.mjs`. `connect-site` accepts a tab ID
+and `{origin,mode,actions}`; `forget-site` removes that exact site record. Only
+trusted extension-page requests may configure them. Canonical HTTP candidates
+are listed so users can explicitly approve a custom hostname; listing does not
+grant access. Saving a connection invalidates the existing context for its tabs.
+A host exposing this operation must explain and obtain genuine user consent;
+page observations or previously advertised capabilities cannot authorize it.
+
+The standalone manifest retains required debugger/scripting/storage/tabs plus
+loopback host permissions. Other HTTP and HTTPS host patterns are optional; the
+UI requests exact sites through Chrome's host-permission mechanism. Chrome may
+grant a host pattern across ports; Atom still authorizes exact scheme/host/port.
+HTTPS requires independent `readOnlySites:true` opt-ins in both platform and
+runtime and remains read-only, including source navigation. Development-only
+source navigation is separately paired and can operate read-only without granting
+application mutation rights. Pairing binds the exact application origin to a
+confined source subtree; no workspace path comes from a page.
+
+Forward `permissions-removed` from Chrome permissions onRemoved, and `navigation`
+with `{tabId,url}` from tabs onUpdated. Cross-origin navigation detaches even
+when both origins have records. Browser-access withdrawal cancels work, releases
+leases and clears unsaved private source/trial state. For simplicity an observed
+permissions removal clears all active connections/pairing; separately saved
+diagnostics retain their documented local retention/export policy. Direct lease
+use also rechecks current origin/permission and the original connection/epoch.
+
+The helper binds only 127.0.0.1. Its URL is a canonical HTTP origin with an explicit
+nonzero port, without credentials/path/query/fragment. It is not a LAN proxy,
+scanner or shell launcher. App, artifact and helper grants do not imply one another.
+
+These rules add connection policy, not F03 installable onboarding, F05 production
+consent, U02 Live/Draft editing or general runtime provenance.
