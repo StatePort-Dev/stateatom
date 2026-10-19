@@ -69,6 +69,12 @@ This finishes Task 3's backend boundary. U02 remains open: Task 4 field UI and
 inspector-owned lifecycle, both field-mode coverage/majority acceptance and final
 review remain required; field catalogue coverage stays 0/18 in both modes.
 
+U02.4a subsequently adds an unbundled local draft/ack model: 19 model / 70
+focused / 908 full source tests pass, with the issued .22 runtime inputs and
+archives unchanged. It preserves invalid/newer drafts and refuses old/external
+acknowledgement rebasing. This adds no rendered controls or scheduler. U02.4b's
+live inspector ownership/close/reopen is the next bounded slice; Task 4 stays open.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

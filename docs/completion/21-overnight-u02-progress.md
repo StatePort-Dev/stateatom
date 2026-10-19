@@ -202,3 +202,30 @@ The next bounded item is **U02.4 — field UI and acknowledgement ordering**:
 read the supplied shared UI references, implement both modes/draft preservation
 and exact inspector ownership, then actual field-mode acceptance. No feature flag
 or majority criterion is advanced by this backend packet alone.
+
+
+## U02.4a — inert local draft and acknowledgement state
+
+`packages/atom/src/input-draft.mjs` adds a source-only model with no runtime/UI
+importer, transport, timers or native writer. It preserves typed raw drafts and
+invalid numeric intermediates, native observed enum choices, UTF-8 limits and
+explicit held drafts during a Draft → Live switch. Its local ticket binds each
+submitted field version to its actual transaction; new typing survives a late
+reply. Own confirmed after-revisions can rebase queued typing, while external,
+missing, malformed or older facts cannot authorize it. Response waiting means an
+installed rule, never consumption or selected-property effect. Partial groups
+retain failed drafts; pending discard cannot promise to cancel application work.
+
+19 draft models / 70 focused contract-ledger-model checks / 908 full source tests
+pass. The missing-module RED, malformed receipt, missing revision, older snapshot
+and late acknowledgement failures/green results remain under
+`.artifacts/u02/input-draft/`, with exact hashes in `verification.json` and its
+executable `verify.mjs`. All recorded .22 source/build inputs and archive digests
+remain unchanged; no new packet is prepared for this inert slice.
+
+[The working UI mapping](../features/input-field-ui.md) records the supplied
+reference screens and necessary real-adapter deviations. This is not a visual
+change or rendered acceptance. Both field modes, native inspector ownership,
+scheduler timing and UI controls remain unimplemented; field catalogue coverage
+is still 0/18 per mode. Task 4 remains open. Next bounded slice: **U02.4b — live
+inspector ownership and actual close/reopen**, before rendered controls.
