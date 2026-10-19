@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Input catalogue response fixture</title>
+<h1>Ordinary GET input catalogue</h1><p>Synthetic data; refresh is an application action.</p>
+<button id="refresh">Refresh application data</button><button id="confirm" disabled>Confirm</button>
+<dl><dt>Hold</dt><dd id="hold">Unknown</dd><dt>Ready</dt><dd id="ready">Unknown</dd><dt>Quota</dt><dd id="quota">Unknown</dd><dt>Note</dt><dd id="note">Unknown</dd><dt>Amount</dt><dd id="amount">Unknown</dd><dt>Completion</dt><dd id="completion">Unknown</dd></dl><output id="status">Not requested</output>
+<script>
+let generation=0;window.fixtureRequests=0;window.raceDeliveries=[];
+document.querySelector('#refresh').addEventListener('click',async()=>{
+ const current=++generation;document.querySelector('#status').textContent='Loading';window.fixtureRequests+=4;
+ try{
+  const get=url=>fetch(url,{cache:'no-store'}).then(r=>r.json());
+  const [account,permission,race]=await Promise.all([get('/api/account'),get('/api/permission'),Promise.all([get('/api/race').then(r=>{window.raceDeliveries.push({request:1,...r});return r;}),get('/api/race').then(r=>{window.raceDeliveries.push({request:2,...r});return r;})]).then(([slow,fast])=>fast)]);
+  if(current!==generation)return;
+  for(const[id,value]of Object.entries({hold:account.risk.hold,quota:account.rules.quota,note:account.metadata.note,ready:permission.access.ready,amount:race.amount,completion:race.completion}))document.getElementById(id).textContent=String(value);
+  document.querySelector('#confirm').disabled=account.risk.hold||!permission.access.ready||account.rules.quota<1;
+  document.querySelector('#status').textContent='Loaded '+generation;
+ }catch(e){document.querySelector('#status').textContent='Failed';}
+});
+</script></html>

@@ -97,6 +97,16 @@ remain unavailable and catalogue credit stays 0/18 until unchanged Task 5
 acceptance. Next is U02.4c.3 native timing/races; Task 4 and U02 remain open.
 Screenshots are candidates, not human approval.
 
+U02.5a subsequently passes the unchanged 18-row catalogue on .27 preview:
+**11/18 Live and 11/18 Draft in each host**, with seven unsupported rows retained
+without success credit. Six GET sites, native widgets and actual React/Vue forms
+change app outputs/validation and restore ordered values through field controls.
+77 focused / 954 full, 2 strict consumers and 7 package controls pass. Genuine
+.25/.26 race failures are retained; exact older-response and already-released-pause
+fixes pass RED/GREEN and the original native cases. Runtime evidence labels and
+legacy causal criteria are unchanged. U02 remains open for .5b ordinary default UI,
+masked/group/production/interruption/legacy controls and fresh whole-item review.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

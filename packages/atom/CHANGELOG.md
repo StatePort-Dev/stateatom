@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-candidate.20261019.27
+
+- Ignore a queued native pause after acknowledged Fetch disable has already
+  released it. Preserve current restored editor state; active-domain continuation
+  failures and unknown cleanup remain explicit. No UI/token/primitive change.
+
+## 0.1.0-candidate.20261019.26
+
+- Continue an exact older response occurrence unchanged after a newer request has
+  already completed, preserving the current rule/revision. Never substitute its
+  body or claim it consumed the current intervention. Contradictory identity and
+  native continuation failure still close the editor and clean owned Fetch.
+- Keep Live/Draft feature readiness gated pending full catalogue/default-path
+  acceptance; no shared UI, token, typography or primitive change.
+
 ## 0.1.0-candidate.20261019.25
 
 - Add reference-based typed input rows, Live/Draft controls, scoped Apply,

@@ -399,3 +399,60 @@ focus/blur ordering. Task 4's declared UI mapping, fields, keyboard/narrow/refer
 ordering and lifecycle boundary is complete; U02 remains open for **Task 5**.
 The original catalogue stays 18 rows and coverage credit remains 0/18 until its
 row-by-row both-mode acceptance. Default feature flags are still unavailable.
+
+## U02.5a — fixed catalogue preview acceptance and response ordering
+
+The matrix was written before evaluation in
+[the native acceptance brief](../testing/input-editing-acceptance.md), retaining
+all original 18 rows. Candidate **.27** / unchanged shared UI .2 passes **11/18
+in Live and 11/18 in Draft, independently in each of both hosts**. All seven
+unsupported rows retain their reasons, stay in the denominator and receive no
+successful-write credit. There are 44 positive row/mode/host cycles and 28
+explicit unsupported checks; these are not 72 editable-input successes.
+
+Actual fields exercise six GET response sites with two edits, unchanged app while
+waiting, an explicit app request and corresponding DOM output, UI undo and
+baseline on subsequent app requests. Native checkbox/number/select and existing
+ordinary React/Vue #form similarly change real event-driven outputs/validation
+and restore ordered values. The race family retains the original alternating
+5/99, slow/fast server behavior in a separate shareable fixture with normal refresh
+and both output fields; this adapter-family proof does not broaden into arbitrary
+ordinary-session lineage or universal app compatibility. Unknown consumption/effect
+and selected dependency in runtime metadata remain explicit despite fixture-side
+observations. Unsupported prop/state/hook/cache kinds are absent from writers;
+separate malformed wire proposals refuse before mutation. Locked controls remain
+unavailable and unchanged; null/root structures are not scalar editors.
+
+Fresh .27 results: **77 focused / 954 full source**, 2 strict packed consumers,
+7 package admission controls, and the complete native matrix above. Exact package,
+source/build inputs, tests, catalogue, driver, results and retained failures are
+bound in `.artifacts/u02/response-ordering/verification.json` / `verify.mjs`.
+Handoff: `.artifacts/atom/2026-10-19T23-15-09-670Z/atom-handoff.json`.
+Matrix: `.artifacts/u02/input-acceptance/2026-10-19T23-16-46-490Z/results.json`.
+
+The initial .25 partial matrix genuinely failed both race fields: an exact older
+response closed a newer rule. The .26 response adapter now continues the older
+occurrence unchanged without reading/substituting its body or changing the current
+revision. The original no-old-overwrite assertion remains and is strengthened by
+no body read, unchanged resource facts, active rule and another later delivery.
+The former incidental closed-editor expectation is intentionally superseded by
+this new tested behavior; this does not lower any causal/evidence criterion.
+Contradictory equal ordinal/different network identity still closes/refuses.
+Native continuation failure still closes and disables owned Fetch.
+
+The .26 run exposed a second native ordering case after baseline: Fetch disable
+had already resumed a queued older pause, so sending another command to it failed
+and incorrectly closed the restored editor. An exact model first failed, then
+.27 skips only pauses already released by acknowledged Fetch disable. Unknown
+cleanup is not treated as acknowledged. The same actual race rows now pass
+without retrying edits or changing their values/denominator/restoration criteria.
+Both original native failures, focused REDs and green results are retained.
+An EADDRINUSE run before browser setup and a frozen-plan tampering error in the
+negative-test harness are retained separately; neither received coverage credit.
+
+This completes only **U02.5a**. Public feature flags remain unavailable and local
+hosts still explicitly show Preview. Next **U02.5b** verifies ordinary default
+availability, the masked two-blocker/group case, production-default refusal,
+interruption and existing browser/IDE causal regressions, then the required fresh
+whole-item review. F05 production grant details, U06 handoff and SDK remain outside
+this slice; U02 is still in progress. No human visual approval or release follows.

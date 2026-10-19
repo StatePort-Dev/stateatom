@@ -80,10 +80,21 @@ export function createResponseEditor({investigationId,target,responses=[],readCu
   // as though it were a new original server value while this task is queued.
   const matching=!closed&&matches(p,meta);if(matching)handled.add(p.networkId);
   return queue(async()=>{
+   // A preceding job may have disabled Fetch and already released this native
+   // pause. Never issue a second command against the released interception.
+   if(!touched)return true;
    if(!matching||closed){await continuePaused(p);return true;}
    let receipt=null,deliveryAttempted=false;
    try{
-    await current();assertOpen();const response=await send('Fetch.getResponseBody',{requestId:p.requestId});assertOpen();await current();assertOpen();
+    await current();assertOpen();
+    // A later-started request may finish first. Continue the older exact native
+    // occurrence unchanged; it cannot replace the current resource revision or
+    // consume a rule/restoration intended for a newer response.
+    const recorded=ledger.snapshot().resources.find(r=>r.resource.locator.url===meta.url)?.resource.locator;
+    if(recorded&&Number.isSafeInteger(meta.requestOrdinal)&&meta.requestOrdinal>0&&meta.requestOrdinal<recorded.requestOrdinal){
+     await send('Fetch.continueRequest',{requestId:p.requestId});notes.push({code:'SUPERSEDED_RESPONSE'});publish();return true;
+    }
+    const response=await send('Fetch.getResponseBody',{requestId:p.requestId});assertOpen();await current();assertOpen();
     const prepared=ledger.prepareResponse({...meta,body:decode(response)});receipt=prepared.receipt;
     await current();assertOpen();
     deliveryAttempted=true;

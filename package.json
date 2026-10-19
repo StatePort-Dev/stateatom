@@ -84,7 +84,8 @@
     "verify:input-controls": "node tests/integration/input-controls.mjs",
     "verify:input-inspector": "node tests/integration/input-inspector.mjs",
     "verify:input-fields-ui": "node tests/integration/input-fields-ui.mjs",
-    "verify:input-fields": "node tests/integration/input-fields.mjs"
+    "verify:input-fields": "node tests/integration/input-fields.mjs",
+    "verify:input-acceptance": "node tests/integration/input-acceptance.mjs"
   },
   "dependencies": {
     "@angular/compiler": "20.3.34",
