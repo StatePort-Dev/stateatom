@@ -78,7 +78,8 @@
     "verify:project-setup": "node tests/integration/project-setup.mjs",
     "verify:picker": "node tests/integration/picker.mjs",
     "demo:picker": "node scripts/demo-picker.mjs",
-    "verify:input-response": "node tests/integration/input-response.mjs"
+    "verify:input-response": "node tests/integration/input-response.mjs",
+    "verify:input-owner-lifetime": "node tests/integration/input-owner-lifetime.mjs"
   },
   "dependencies": {
     "@angular/compiler": "20.3.34",

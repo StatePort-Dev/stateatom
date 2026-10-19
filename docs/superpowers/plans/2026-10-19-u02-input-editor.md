@@ -117,8 +117,10 @@ and worker disappearance need actual cleanup proof before response editing opens
 no official-host repo, SDK, account/publication or replacement UI. Offscreen API
 restrictions and an existing host offscreen slot must not be bypassed.
 
-- [ ] Establish native owner lifetime and constraints on a disposable synthetic
+- [x] Establish native owner lifetime and constraints on a disposable synthetic
   host, retaining successful and failed controls without relabelling readiness.
+  Document-owner close is unsafe; the selected guardian working design and
+  exact next bounded cycles are in docs/features/response-resource-owner.md.
 - [ ] Select the smallest viable resource-owner contract from evidence; RED/GREEN
   lifecycle/proxy/grants/foreign ownership/cancellation and exact trusted peers.
 - [ ] New immutable candidate and actual active-Fetch worker/owner interruption,

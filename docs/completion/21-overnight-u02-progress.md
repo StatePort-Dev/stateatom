@@ -60,3 +60,13 @@ catalogue is registered before implementation. It is not runtime evidence.
 The final run report will list exact commits, checks and remaining dependency-ready
 work. Historical results/criteria, pointer timeout evidence and unsupported paths
 are preserved. Full U02 acceptance awaits actual adapters, effects and undo.
+
+
+U02.2c.1 recorded a new negative owner-lifetime experiment: a native extension
+page survived worker stop and modified two expected synthetic responses, but its
+closure left Fetch attached and the following request pending. Source inputs and
+parent .17 host stayed unchanged; this disproves a simple document-owner fix.
+The new [working owner design](../features/response-resource-owner.md) therefore
+selects a live guardian registry with cleanup-only delegation, respecting the
+Offscreen runtime-only API restriction. The design is not implementation evidence.
+Next bounded slice: pure registry/protocol tests and implementation, then commit.

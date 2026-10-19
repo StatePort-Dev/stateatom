@@ -305,7 +305,8 @@
         "npm test",
         "npm run verify:browser",
         "npm run verify:ide",
-        "npm run verify:input-response"
+        "npm run verify:input-response",
+        "npm run verify:input-owner-lifetime"
       ],
       "deliverable": "Live for most declared editable inputs, grouped drafts, observed effects, undo-last and baseline restoration",
       "status": "in-progress",
@@ -349,9 +350,17 @@
           "record": "21-overnight-u02-progress.md",
           "native_rows_verified": 0,
           "native_interruption_ready": false
+        },
+        {
+          "id": "U02.2c.1",
+          "status": "complete",
+          "scope": "Bounded native owner-lifetime study and new working owner design; document close unsafe, no response capability credited",
+          "record": "21-overnight-u02-progress.md",
+          "native_rows_verified": 0,
+          "native_owner_close_safe": false
         }
       ],
-      "active_slice": "U02.2c",
+      "active_slice": "U02.2c.2",
       "implementation_dependency": "Worker-independent response resource owner, discovered by actual active-Fetch worker-stop failure"
     },
     {
