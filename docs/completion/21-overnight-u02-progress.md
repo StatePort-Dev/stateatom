@@ -128,3 +128,16 @@ cleanup checks, including actual worker stop and refusal of later writes. Raw
 results and the nullable-sentinel probe failures are retained. Source checkout and
 issued .20 package stay unchanged. Next: **3b.1 native primitive implementation**,
 then runtime integration. U02/Task3 remain in progress, field rows remain 0/18.
+
+U02.3b.1 implements the unbundled native-world source primitive and its declared
+`verify:input-control-world` command. 57 focused / 850 full source tests and 20
+native source checks pass. Real synthetic/native and plain React/Vue inputs change
+and return through built-in setters/events; observed external revisions and DOM
+replacement are refused. Private Port/worker loss and post-setter exceptions revoke
+future writes. Key-order, event-closure, partial-bootstrap/disconnect and Unicode
+REDs are retained under `.artifacts/u02/native-control-world/`; final exact binding
+is `verification.json` there. See the [source scope](../features/native-control-editor.md#3b1-source-primitive).
+This source is injected by a diagnostic driver, not imported from the installed
+Atom runtime. No tarball/native ledger integration or field-mode acceptance is
+credited. Packet .20 stays unchanged; the root command list now includes the new
+check. Next: **3b.2 guarded runtime/ledger/permission integration**, still within U02.

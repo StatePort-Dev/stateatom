@@ -111,3 +111,60 @@ The new working implementation direction is `chrome.scripting` with native objec
 identity and independent Port cleanup. The study does not deliver a product
 adapter or increase field-mode catalogue coverage. Next: 3b.1 native primitive,
 then guarded runtime/ledger integration. No generic Page-world eval is introduced.
+
+## 3b.1 source primitive
+
+`packages/atom/src/control-world.mjs` supplies the self-contained function executed
+in the extension isolated world. It is not imported by the current Atom runtime.
+The native driver injects that exact source into a disposable .20 standalone host
+copy with a diagnostic receiver; it is not a packed-control-adapter check.
+
+The explicit versioned protocol opens one private session, reads its bounded
+native object map, writes an exact current descriptor, or closes it. A private
+Port must receive document-bound admission before a write is allowed. The host
+receiver must authenticate native sender metadata and compare the injection
+document ID; this slice supplies that receiver only in the diagnostic host. Different
+sessions cannot adopt an owner. Scope is the actual main Document and retained
+native object references; selector text is not used to find a replacement writer.
+A closed Port removes subscriptions and closes the local writer independently.
+Partially failed bootstrap and exceptions after the setter also dispose locally:
+Chrome's own Port.disconnect does not deliver onDisconnect back to its caller.
+
+Discovery scans at most 4096 elements / 100 ms, registers at most 32 supported
+controls and bounds returned resources to 60 KiB. Limits are new implementation
+settings, not performance measurements. Unsupported types, readonly/disabled
+controls, custom validity, ambiguous options and truncation remain explicit.
+Passwords and other unsupported input types are excluded before value collection.
+Native built-ins avoid page getters. Detached native controls validate proposals
+without temporarily changing the real field. Number step/min/max and enabled
+select options are preserved; valid text stays within the 4096-byte scalar budget.
+
+Revisions combine retained input/change events, relevant DOM mutation records and
+fresh native value/constraint observations. This is an observation token, not a
+complete application version. Suppressed events and unobserved programmatic
+property writes can leave missing history; arbitrary no-event ABA is unclaimed.
+A handler's nested external event makes the attempted result unconfirmed and
+revokes later writes. Already applied values are not automatically restored on
+close or worker loss; no global application rollback or causal link is inferred.
+
+Verification on the frozen final source: 6 protocol/import model cases plus the
+existing ledger/plan tests give 57 focused PASS; full source suite gives 850 PASS.
+20 native source checks cover the synthetic controls and real plain React/Vue:
+actual field/validation changes and return, Unicode, native constraints, observed
+ABA, option changes, exact replacement refusal, forged peer refusal, controlled
+after-setter failure, explicit close and actual worker stop. The partial-bootstrap
+failure is a separate Node protocol model, not a native failure observation.
+Command: `npm run verify:input-control-world -- <handoff.json>`.
+Raw run: `.artifacts/u02/native-control-world/2026-10-19T20-56-22-474Z/`;
+exact bindings: `.artifacts/u02/native-control-world/verification.json`.
+
+Retained REDs exposed dictionary key-order comparison, a walker-variable listener
+closure, one-sided disconnect cleanup and a text/default-value limit. The fixes
+preserve exact resource identity, observed revisions and unknown outcomes. The
+prior 17-check intermediate pass is retained; it does not replace the final run.
+
+No new tarball, runtime operation, Live/Draft field interaction, installed native
+undo or catalogue row is delivered here. The root package adds only the declared
+verification command; .20 packet bytes and bundled runtime sources are unchanged,
+while its old build-source receipt still refers to the earlier root command list.
+Next 3b.2 connects the private owner, permissions, ledger and actual packed runtime.

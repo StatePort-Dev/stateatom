@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Native control synthetic fixture</title>
+<h1>Native control update paths</h1>
+<label>Text <input id="native-text" value="AB"></label><button id="native-confirm" disabled>Confirm</button><output id="text-result">AB</output>
+<label>Details <textarea id="native-area">Original</textarea></label><output id="area-result">Original</output>
+<label>Amount <input id="native-number" type="number" min="1" max="10" step="0.5" value="2"></label><output id="number-result">2</output>
+<label>Enabled <input id="native-check" type="checkbox"></label><output id="check-result">false</output>
+<label>Plan <select id="native-select"><option value="Basic">Basic</option><option value="Pro">Pro</option><option value="Unavailable" disabled>Unavailable</option></select></label><output id="select-result">Basic</output>
+<label>Locked <input id="readonly-control" readonly value="Readonly"></label><fieldset disabled><input id="fieldset-control" value="Disabled by ancestor"></fieldset>
+<input id="password-control" type="password" value="synthetic-private-control"><input id="radio-control" type="radio">
+<label>Getter control <input id="getter-control" value="Native baseline"></label>
+<script>
+const byId=id=>document.getElementById(id);window.nativeGetterReads=0;
+Object.defineProperty(byId('getter-control'),'value',{configurable:true,get(){window.nativeGetterReads++;return 'PAGE_GETTER';},set(){throw Error('Page setter must not be called');}});
+byId('native-text').addEventListener('input',e=>{byId('text-result').textContent=e.target.value;byId('native-confirm').disabled=e.target.value.length<3;});
+byId('native-area').addEventListener('input',e=>byId('area-result').textContent=e.target.value);
+byId('native-number').addEventListener('input',e=>byId('number-result').textContent=e.target.value);
+byId('native-check').addEventListener('change',e=>byId('check-result').textContent=String(e.target.checked));
+byId('native-select').addEventListener('change',e=>byId('select-result').textContent=e.target.value);
+</script></html>

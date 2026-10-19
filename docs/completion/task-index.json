@@ -306,14 +306,16 @@
         "packages/atom/src/guardian-broker.mjs",
         "packages/atom/src/guardian-document.mjs",
         "scripts/native-browser.mjs",
-        "core/control-ledger.mjs"
+        "core/control-ledger.mjs",
+        "packages/atom/src/control-world.mjs"
       ],
       "existing_commands": [
         "npm test",
         "npm run verify:browser",
         "npm run verify:ide",
         "npm run verify:input-response",
-        "npm run verify:input-owner-lifetime"
+        "npm run verify:input-owner-lifetime",
+        "npm run verify:input-control-world"
       ],
       "deliverable": "Live for most declared editable inputs, grouped drafts, observed effects, undo-last and baseline restoration",
       "status": "in-progress",
@@ -416,9 +418,21 @@
           },
           "record": "../testing/native-control-probe.md",
           "native_rows_verified": 0
+        },
+        {
+          "id": "U02.3b.1",
+          "status": "complete",
+          "scope": "Unbundled native-world source primitive only; diagnostic host injection, no installed native editor",
+          "tests": {
+            "focused": 57,
+            "full": 850,
+            "native_source": 20
+          },
+          "record": "21-overnight-u02-progress.md",
+          "native_rows_verified": 0
         }
       ],
-      "active_slice": "U02.3b.1",
+      "active_slice": "U02.3b.2",
       "implementation_dependency": "Worker/document owner-loss backend proof passes on .20; native controls next, inspector-owned close/reopen remains required with field UI"
     },
     {
