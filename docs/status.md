@@ -61,6 +61,14 @@ Its exact Live parameters remain for U02; F05 grant scope/lifetime and U06
 handoff UX are still unresolved in their own tasks.
 U02 is now in progress under the [autonomous execution record](completion/21-overnight-u02-progress.md). The bundled response backend is guarded: .17 passes 92 focused / 755 full tests and native refusal in both hosts, but current worker-only owners cannot enable it. An actual .16 active-Fetch worker-stop hung the next request, so U02.2c resource ownership is now required. The subsequent .20 guardian bridge passes 156 focused / 819 full source checks, 2 packed consumers, 7 admission controls, 15 two-host response checks (including active-Fetch worker stop) and 8 native guardian/foreign-owner controls. See the linked scoped record: this is backend safety evidence, not field UI readiness. The subsequent inert native-control ledger passes 51 focused / 844 full source checks while .20 runtime inputs remain unchanged. The subsequent unbundled native-world primitive passes 57 focused / 850 full and 20 diagnostic source-injection checks, including real React/Vue changes and Port/worker cleanup. Both field modes, the installed native-control adapter/ledger integration, inspector-owned close/reopen and majority coverage remain incomplete; old native failures/results are retained.
 
+The subsequent .22 installed native-control backend passes 66 focused / 889 full,
+25 two-host native-control, 15 response and 8 guardian checks, 2 strict consumers
+and 7 admission controls. Explicit source selection, native event acknowledgements,
+scoped undo/baseline and worker-loss refusal now run from the immutable archive.
+This finishes Task 3's backend boundary. U02 remains open: Task 4 field UI and
+inspector-owned lifecycle, both field-mode coverage/majority acceptance and final
+review remain required; field catalogue coverage stays 0/18 in both modes.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

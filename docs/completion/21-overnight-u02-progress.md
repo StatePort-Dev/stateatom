@@ -141,3 +141,64 @@ This source is injected by a diagnostic driver, not imported from the installed
 Atom runtime. No tarball/native ledger integration or field-mode acceptance is
 credited. Packet .20 stays unchanged; the root command list now includes the new
 check. Next: **3b.2 guarded runtime/ledger/permission integration**, still within U02.
+
+
+## U02.3b.2 — installed native-control backend
+
+Delivered within the native adapter/controller boundary on Atom
+`0.1.0-candidate.20261019.22`, unchanged UI `.20261018.2`.
+Handoff: `.artifacts/atom/2026-10-19T21-38-36-313Z/atom-handoff.json`.
+Exact bindings and executable verifier:
+`.artifacts/u02/control-runtime/verification.json` and `verify.mjs`.
+
+The host explicitly constructs a native-control owner beside its debugger broker.
+A private content Port must match the pending identity, extension/tab/frame/origin
+and the actual scripting document before admission. Later injections target that
+exact native document. Read/inject/replay authority and selected physical identity
+are checked before each operation; saved summaries cannot recreate authority.
+A one-shot admission deadline and close acknowledgement remove owned observers
+and references; uncertain startup cleanup remains Unknown. Shutdown closes only
+Atom sessions, without disposing the shared host factory. Model checks cover
+foreign sessions, forged peers, cancellation, late acknowledgements and startup
+failure; native checks cover actual worker interruption in both hosts.
+
+Fresh results on frozen .22 inputs:
+
+- `node --test --test-isolation=none` with the five focused control/runtime files:
+  **66 PASS**; `npm test`: **889 PASS**, zero failed/cancelled.
+- `npm run verify:input-controls -- <handoff>`: **25 PASS** through actual packed
+  runtime RPC in standalone/embedding. Both backend plan modes change five native
+  widget kinds and undo their real outputs; React/Vue validation changes and
+  returns. Native constraints, partial group/external sibling preservation,
+  repeated edits/baseline, eventful ABA refusal, replaced selected node, real
+  read-only connection and forced-worker-stop refusal are exercised.
+- Existing `verify:input-response` passes **15** and `--guardian-controls` passes
+  **8** on this new pair, preserving response effects, masked blockers, undo,
+  active-Fetch interruption, foreign-owner refusal and shared-consumer cleanup.
+- `verify:atom-types`: **2** strict installed consumers, including the new optional
+  factory/source-family declarations; `verify:atom-package`: **7** controls.
+
+All results are agent/harness operated. Native implementations come from the
+archive; the native harness uses ordinary inspector RPC, application reads/setup
+and a read-only cleanup diagnostic after worker loss. Neither host is modified.
+Live/Draft **field UI is not exercised**, catalogue coverage remains **0/18** in
+both modes, and selected-property dependency stays Unknown. Task 3 is complete
+within its adapter brief; Task 2's inspector-owned close/reopen is still mandatory
+with Task 4, and U02 remains in progress.
+
+Intermediate failures are retained. .21 native runs stopped on harness repeated
+navigation and hardcoded embedding worker filename; corrected runs use new own
+targets and manifest identity. The first .22 native start collided with the full
+source suite's fixture port; runs were then serialized. Another case correctly
+refused baseline after an external sibling revision; independent baseline tests
+now start a new explicit investigation, with the refusal criteria unchanged.
+Read-only reattach initially met the harness's own CDP client and correctly
+returned BUSY; a fresh target avoids that client. .21 admission failed after the
+root test command changed post-pack; .22 includes it and all source/build hashes
+match. A strict consumer fixture naming error and a model promise rejection
+handler timing error are retained separately. No failed run is relabelled PASS.
+
+The next bounded item is **U02.4 — field UI and acknowledgement ordering**:
+read the supplied shared UI references, implement both modes/draft preservation
+and exact inspector ownership, then actual field-mode acceptance. No feature flag
+or majority criterion is advanced by this backend packet alone.

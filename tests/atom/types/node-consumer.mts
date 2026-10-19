@@ -45,3 +45,16 @@ client.request({op:'inputs-apply',tabId:1,plan:'window.value = 1'});
 const guarded=createGuardianBroker(chrome,{documentPath:"atom-guardian.html"});
 const resourceReady:Promise<void>=guarded.ready;
 void resourceReady;
+
+// Optional host owner and explicit source family are consumed from the archive.
+import {createNativeControlOwner,type NativeControlOwner} from '@stateport/atom/platform';
+const nativeOwner:NativeControlOwner=createNativeControlOwner(chrome,{startupTimeout:5000,closeTimeout:5000,maxSessions:16});
+const nativePlatform=createChromePlatform(chrome,{events,broker,controlOwner:nativeOwner});
+const nativeAvailable:boolean|undefined=nativePlatform.nativeControlsAvailable;
+client.request({op:'inputs-open',tabId:1,sourceKind:'dom-control'});
+client.request({op:'capabilities',tabId:1,sourceKind:'json-response'});
+// @ts-expect-error source families are a bounded enum, not an evaluator selector.
+client.request({op:'inputs-open',tabId:1,sourceKind:'javascript'});
+// @ts-expect-error plan application cannot switch the active source family.
+client.request({op:'inputs-apply',tabId:1,sourceKind:'dom-control'});
+void nativeAvailable;

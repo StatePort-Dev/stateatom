@@ -165,3 +165,13 @@ see [its retained interruption results](response-resource-owner.md). The next
 checks but is inert and unbundled. Actual native-control events, both field modes,
 inspector-owned close/reopen and majority acceptance remain unfinished. Task 3b
 supplies that adapter; field catalogue coverage stays 0/18 in each mode.
+
+
+U02.3b.2 subsequently delivers the installed .22 native-control adapter/controller:
+66 focused / 889 full, 25 two-host native, 15 response, 8 guardian checks, 2 strict
+consumers and 7 admission controls pass. Backend source selection is explicit;
+there is no implicit change between native controls and JSON responses. Native
+acknowledgements retain Unknown consumption/effect and external revision refusal.
+The next bounded slice is Task 4's actual fields, both modes, draft preservation
+and inspector-owned lifecycle. These backend results do not credit field-mode
+catalogue rows or turn on Live/Draft feature availability.

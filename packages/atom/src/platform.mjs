@@ -3,6 +3,7 @@ import {appOrigin,siteRecord} from './origin-policy.mjs';
 import {retainDiagnostics} from '../../../core/diagnostic.mjs';
 import {DEBUGGER_CAPABILITIES,debuggerCommandCapability,isDevelopmentOrigin,isInspectionOrigin} from './capabilities.mjs';
 import {createGuardianBroker as makeGuardianBroker} from './guardian-broker.mjs';
+import {createNativeControlOwner as makeControlOwner} from './control-owner.mjs';
 export function atomError(code,message=code){return Object.assign(new Error(message),{code});}
 export const capabilities=DEBUGGER_CAPABILITIES;
 function commandCapability(method){const cap=debuggerCommandCapability(method);if(!cap)throw atomError('CAPABILITY_DENIED','Unsupported scoped debugger command');return cap;}
@@ -24,21 +25,24 @@ export function createDebuggerBroker(debuggerAPI){
  },status(tabId,owner){const token=leases.get(tabId);return !token?'none':token.owner===owner?'owned':'foreign';},invalidate(tabId){leases.delete(tabId);}};
 }
 export function createGuardianBroker(api,{documentPath}={}){return makeGuardianBroker(api,{...(documentPath?{documentPath}:{}),fallback:()=>createDebuggerBroker(api.debugger)});}
+export function createNativeControlOwner(api,options){return makeControlOwner(api.runtime,options);}
 export function createEventHub(){const handlers=new Set();return {subscribe(fn){handlers.add(fn);return()=>handlers.delete(fn);},emit(event){for(const fn of handlers)fn(event);}};}
 export function namespacedStorage(area,namespace='stateport.atom.v1.'){
  return {async get(keys){const list=typeof keys==='string'?[keys]:keys;const raw=await area.get(list.map(k=>namespace+k));return Object.fromEntries(list.filter(k=>Object.hasOwn(raw,namespace+k)).map(k=>[k,raw[namespace+k]]));},set(value){return area.set(Object.fromEntries(Object.entries(value).map(([k,v])=>[namespace+k,v])));}};
 }
 // Receives host-owned events, never installs global Chrome listeners.
-export function createChromePlatform(api,{events,broker,capabilities:grants=capabilities,namespace='stateport.atom.v1.',readOnlySites=false}={}){
+export function createChromePlatform(api,{events,broker,capabilities:grants=capabilities,namespace='stateport.atom.v1.',readOnlySites=false,controlOwner}={}){
  if(!events||!broker)throw atomError('INVALID_PLATFORM','Host events and shared broker required');
  grants=Object.freeze([...grants]);
+ const nativeSessions=new Set();
  const leases=new Map(),acquiring=new Map(),connections=new Map();let stopped=false,authorityEpoch=0;
  const storage=namespacedStorage(api.storage.session,namespace);
  const restored=storage.get(['connections']);const ready=(broker.ready?Promise.all([broker.ready,restored]).then(([,x])=>x):restored).then(x=>{for(const raw of x.connections||[]){try{const c=siteRecord({origin:raw.origin,mode:raw.mode,actions:raw.actions});connections.set(c.origin,c);}catch{/* Old or malformed records cannot grant authority. */}}});
  const persistConnections=()=>storage.set({connections:[...connections.values()]});
  const approvedSite=url=>connections.has(appOrigin(url));
  const permission=async origin=>!!origin&&!!await api.permissions?.contains({origins:[origin+'/*']});
- async function revoke(id){const entry=leases.get(id);leases.delete(id);if(entry)await entry.l.release().catch(()=>{});}
+ async function closeNative(id){await Promise.allSettled([...nativeSessions].filter(r=>id===undefined||r.tabId===id).map(async r=>{r.abort.abort();if(r.session)await r.session.close('Platform authority closed');nativeSessions.delete(r);}));}
+ async function revoke(id){await closeNative(id);const entry=leases.get(id);leases.delete(id);if(entry)await entry.l.release().catch(()=>{});}
  async function facts(id){
   await ready;const epoch=authorityEpoch,tab=await api.tabs.get(id),origin=appOrigin(tab.url),connection=connections.get(origin)||null;
   const supported=isInspectionOrigin(tab.url,readOnlySites)||!!connection&&new URL(origin).protocol==='http:';
@@ -70,7 +74,27 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
   debugger:{attach:async({tabId})=>{const l=await lease(tabId);try{await l.attach();await requireLease(tabId,'read');}catch(e){await revoke(tabId);throw e;}},sendCommand:async({tabId},m,p)=>{const l=await requireLease(tabId);const result=await l.command(m,p);await requireLease(tabId);return result;},getTargets:()=>api.debugger.getTargets(),detach:async({tabId})=>revoke(tabId)},
   scripting:{executeScript:async op=>{const l=await lease(op.target.tabId);l.assert('inject');const result=await api.scripting.executeScript(op);await requireLease(op.target.tabId,'inject');return result;}},
   tabs:{get:id=>api.tabs.get(id),query:q=>api.tabs.query(q),reload:async(id,o)=>{await requireLease(id,'reload');return api.tabs.reload(id,o);},sendMessage:async(id,m)=>{(await lease(id)).assert('read');return api.tabs.sendMessage(id,m);},onUpdated:api.tabs.onUpdated}};
- return {ready,approvedSite,async connectSite(id,value){
+ return {ready,approvedSite,get nativeControlsAvailable(){return controlOwner?.available===true&&typeof api.scripting?.executeScript==='function';},
+  async openNativeControls({target,verify,onLost=()=>{}}={}){
+   if(controlOwner?.available!==true||typeof api.scripting?.executeScript!=='function')throw atomError('CONTROL_OWNER_UNAVAILABLE');
+   if(!target||typeof verify!=='function'||typeof onLost!=='function')throw atomError('INVALID_PLATFORM');
+   const id=target.tabId;
+   const guard=async required=>{
+    for(const cap of required)await requireLease(id,cap);
+    if(leases.get(id)?.origin!==target.origin)throw atomError('ORIGIN_DENIED');
+    await verify();
+    for(const cap of required)await requireLease(id,cap);
+   };
+   await guard(['read','inject','replay']);
+   const record={tabId:id,abort:new AbortController(),session:null};nativeSessions.add(record);
+   try{
+    const session=await controlOwner.open({tabId:id,origin:target.origin,document:target.document,
+     signal:record.abort.signal,guard,execute:op=>api.scripting.executeScript(op),onLost});
+    record.session=session;
+    if(record.abort.signal.aborted||stopped){await session.close('Opening cancelled');throw atomError('EDITOR_CLOSED');}
+    return Object.freeze({read:()=>session.read(),write:(...args)=>session.write(...args),get closed(){return session.closed;},async close(reason){try{return await session.close(reason);}finally{nativeSessions.delete(record);}}});
+   }catch(e){record.abort.abort();nativeSessions.delete(record);throw e;}
+  },async connectSite(id,value){
    await ready;const epoch=authorityEpoch,record=siteRecord(value),tab=await api.tabs.get(id);
    if(new URL(record.origin).protocol==='https:'&&!readOnlySites||appOrigin(tab.url)!==record.origin||!await permission(record.origin))throw atomError('ORIGIN_DENIED','Approve browser access to the current exact origin first');
    if(epoch!==authorityEpoch)throw atomError('ORIGIN_DENIED','Permission changed during connection approval');await revoke(id);const currentTab=await api.tabs.get(id);if(epoch!==authorityEpoch||appOrigin(currentTab.url)!==record.origin)throw atomError('ORIGIN_DENIED','Connection context changed');connections.set(record.origin,record);await persistConnections();return record;
@@ -84,8 +108,8 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
   async authorize(id,cap){const l=await lease(id);l.assert(cap);},
   async invalidate(id){await revoke(id);},
   async permissionsRemoved(){authorityEpoch++;await ready;connections.clear();await persistConnections();await Promise.allSettled([...leases.keys()].map(revoke));},
-  async shutdown(){if(stopped)return;stopped=true;await Promise.allSettled([...acquiring.values()]);for(const[id,{l}]of leases){try{await l.command('Fetch.disable');}catch{}try{await l.command('Network.setCacheDisabled',{cacheDisabled:false});}catch{}await revoke(id);}},
-  detached(id){leases.get(id)?.l.invalidate();leases.delete(id);}
+  async shutdown(){if(stopped)return;stopped=true;await closeNative();await Promise.allSettled([...acquiring.values()]);for(const[id,{l}]of leases){try{await l.command('Fetch.disable');}catch{}try{await l.command('Network.setCacheDisabled',{cacheDisabled:false});}catch{}await revoke(id);}},
+  detached(id){void closeNative(id);leases.get(id)?.l.invalidate();leases.delete(id);}
  };
 }
 

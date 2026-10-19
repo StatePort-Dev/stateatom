@@ -14,10 +14,10 @@ export type AtomOperation=
  |{op:'connect-site';tabId:number;connection:import('./platform.js').SiteConnection}
  |{op:'forget-site';tabId:number}
  |{op:'tabs'|'unpair'|'list-diagnostics'}
- |{op:'capabilities';tabId:number;capabilityVersion?:1}
+ |{op:'capabilities';tabId:number;capabilityVersion?:1;sourceKind?:'dom-control'|'json-response'}
  |{op:'pair';url:string;token:string;origin:string;sourceRoot:string;receipt?:unknown}
  |{op:'delete-diagnostic';id:string}
- |{op:'inputs-open';tabId:number}
+ |{op:'inputs-open';tabId:number;sourceKind?:'dom-control'|'json-response'}
  |{op:'inputs-read';tabId:number;investigationId:string}
  |{op:'inputs-apply';tabId:number;plan:ExperimentPlan}
  |{op:'inputs-undo'|'inputs-baseline';tabId:number;investigationId:string;expectedRevision:number}

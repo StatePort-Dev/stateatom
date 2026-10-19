@@ -430,10 +430,27 @@
           },
           "record": "21-overnight-u02-progress.md",
           "native_rows_verified": 0
+        },
+        {
+          "id": "U02.3b.2",
+          "status": "complete",
+          "scope": "Installed native-control owner/editor/backend only; no Live/Draft field UI or catalogue acceptance",
+          "tests": {
+            "focused": 66,
+            "full": 889,
+            "native_backend": 25,
+            "response_regression": 15,
+            "guardian_regression": 8,
+            "packed_type_consumers": 2,
+            "package_admission": 7
+          },
+          "candidate": "0.1.0-candidate.20261019.22",
+          "record": "21-overnight-u02-progress.md",
+          "native_rows_verified": 0
         }
       ],
-      "active_slice": "U02.3b.2",
-      "implementation_dependency": "Worker/document owner-loss backend proof passes on .20; native controls next, inspector-owned close/reopen remains required with field UI"
+      "active_slice": "U02.4",
+      "implementation_dependency": "Response and native backend/worker-loss checks pass on .22; field UI, both modes and inspector-owned close/reopen now required, then unchanged majority acceptance"
     },
     {
       "id": "U03",

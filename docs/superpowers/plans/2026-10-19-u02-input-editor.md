@@ -142,9 +142,12 @@ restrictions and an existing host offscreen slot must not be bypassed.
   U02.3a inert ledger is delivered under docs/features/native-control-editor.md,
   25 model / 51 focused / 844 full tests; no runtime/native event proof.
   Task 3 remains open for actual adapter/React/Vue/update/cleanup below.
-- [ ] RED/GREEN text/number/checkbox/select, actual React/Vue updates, stale or
+- [x] RED/GREEN text/number/checkbox/select, actual React/Vue updates, stale or
   readonly refusal, external revision, undo and cleanup.
-- [ ] Meaningful native/source checks and local commit; no generic state writer.
+- [x] Meaningful native/source checks and local commit; no generic state writer.
+
+  Installed .22 backend: 66 focused / 889 full; native25, response15, guardian8,
+  types2 and admission7. Field modes and inspector lifecycle remain Task4/5.
 
 ### Task 4: U02.4 field UI and acknowledgement ordering
 

@@ -1,8 +1,8 @@
 import {createAtomRuntime} from '@stateport/atom/runtime';
-import {createChromePlatform,createEventHub,createGuardianBroker} from '@stateport/atom/platform';
+import {createChromePlatform,createEventHub,createGuardianBroker,createNativeControlOwner} from '@stateport/atom/platform';
 import {createAtomDispatcher,isInspectionOrigin} from '@stateport/atom/transport';
-const events=createEventHub(),broker=createGuardianBroker(chrome);
-const platform=createChromePlatform(chrome,{events,broker});
+const events=createEventHub(),broker=createGuardianBroker(chrome),controlOwner=createNativeControlOwner(chrome);
+const platform=createChromePlatform(chrome,{events,broker,controlOwner});
 const runtime=createAtomRuntime(platform);
 let reservation;
 // Synthetic competing consumer only; no Capture implementation.

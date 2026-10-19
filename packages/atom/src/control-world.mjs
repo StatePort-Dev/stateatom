@@ -84,16 +84,19 @@ export async function nativeControlOperation(input) {
    const locator={document:p.document,node:'native-control:'+entry.id,selector:f.selector,control:f.control};if(f.options)locator.options=f.options;
    return{resource:{id:'control:'+entry.id,kind:'dom-control',revision:registry.epoch+':'+entry.id+':'+[entry.events,entry.mutations,entry.values,entry.writes].join(':'),type:typeof f.value,value:f.value,writable:true,locator},facts:f};
   }
-  function close(reason){
+  function close(reason,acknowledge=false){
    if(!registry?.active)return;
    registry.active=false;registry.armed=false;
+   if(registry.startupTimer!==undefined){clearTimeout(registry.startupTimer);registry.startupTimer=undefined;}
    for(const entry of registry.entries.values()){
     EventTarget.prototype.removeEventListener.call(entry.node,'input',entry.listener,true);EventTarget.prototype.removeEventListener.call(entry.node,'change',entry.listener,true);entry.observer.disconnect();
    }
    registry.entries.clear();
    try{if(registry.message)registry.port?.onMessage.removeListener(registry.message);}catch{}
    try{if(registry.disconnected)registry.port?.onDisconnect.removeListener(registry.disconnected);}catch{}
-   try{registry.port?.disconnect();}catch{}if(Object.getOwnPropertyDescriptor(globalThis,KEY)?.value===registry)delete globalThis[KEY];
+   if(Object.getOwnPropertyDescriptor(globalThis,KEY)?.value===registry)delete globalThis[KEY];
+   if(acknowledge)try{registry.port?.postMessage({version:1,kind:'closed',session:registry.session});}catch{}
+   try{registry.port?.disconnect();}catch{}
   }
   dispose=close;
   function snapshot(){
@@ -108,8 +111,9 @@ export async function nativeControlOperation(input) {
    try{
     registry.port=chrome.runtime.connect({name:'stateatom.controls/1:'+p.session});
     registry.disconnected=()=>{void chrome.runtime.lastError;close('Owner disconnected');};
-    registry.message=m=>{if(!registry.active)return;if(m?.version!==1||m.kind!=='admit'||m.session!==registry.session||typeof m.documentId!=='string'||!m.documentId||m.documentId.length>128){close('Invalid owner admission');return;}if(registry.armed){if(m.documentId!==registry.nativeDocumentId)close('Native document changed');return;}registry.nativeDocumentId=m.documentId;registry.armed=true;registry.port.postMessage({version:1,kind:'ready',session:registry.session});};
+    registry.message=m=>{if(!registry.active)return;if(m?.version===1&&m.kind==='close'&&m.session===registry.session&&Object.keys(m).length===3){close('Owner closed',true);return;}if(m?.version!==1||m.kind!=='admit'||m.session!==registry.session||typeof m.documentId!=='string'||!m.documentId||m.documentId.length>128){close('Invalid owner admission');return;}if(registry.armed){if(m.documentId!==registry.nativeDocumentId)close('Native document changed');return;}registry.nativeDocumentId=m.documentId;registry.armed=true;if(registry.startupTimer!==undefined){clearTimeout(registry.startupTimer);registry.startupTimer=undefined;}registry.port.postMessage({version:1,kind:'ready',session:registry.session});};
     registry.port.onDisconnect.addListener(registry.disconnected);registry.port.onMessage.addListener(registry.message);
+    registry.startupTimer=setTimeout(()=>close('Native owner admission timed out'),5000);
     const walker=Document.prototype.createTreeWalker.call(nativeDocument,nativeDocument,NodeFilter.SHOW_ELEMENT),started=performance.now();let count=0,node;
     while((node=TreeWalker.prototype.nextNode.call(walker))){
      if(++count>4096||performance.now()-started>100){registry.truncated=true;break;}

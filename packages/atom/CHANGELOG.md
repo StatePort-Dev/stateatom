@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-candidate.20261019.22
+
+- Retain unknown native startup cleanup when opening has no confirmed reply;
+  closing cannot relabel a potentially injected owner as never started.
+- Include the declared packed native backend verification command in the
+  immutable build-source receipt. Field UI acceptance remains pending.
+
+## 0.1.0-candidate.20261019.21
+
+- Add an optional explicit host-owned native control channel, bound to a live
+  content Port and exact Chrome injection document. Native read/write checks
+  require current read/inject/replay grants and selected-target identity.
+- Connect the native control ledger to runtime input operations with an explicit
+  source family, ordered acknowledgements, scoped undo/baseline and uncertain
+  effect retention. Closing/revoking Atom releases only its own native sessions.
+- Bound pending owner admission; acknowledge close after local observer and
+  reference cleanup. No saved metadata recreates write authority.
+- Live and Draft/Apply field UI flags remain unavailable pending their own
+  implementation and actual coverage acceptance; this is a backend candidate.
+
 ## 0.1.0-candidate.20261019.20
 
 - Add an optional shared guardian broker: a bundled offscreen document runs a

@@ -168,3 +168,38 @@ undo or catalogue row is delivered here. The root package adds only the declared
 verification command; .20 packet bytes and bundled runtime sources are unchanged,
 while its old build-source receipt still refers to the earlier root command list.
 Next 3b.2 connects the private owner, permissions, ledger and actual packed runtime.
+
+## 3b.2 guarded integration contract
+
+The host explicitly creates a native-control owner factory, alongside its shared
+debugger broker, and supplies it to the Chrome platform. The factory authenticates
+private ports by unpredictable pending identity plus native extension/tab/frame/
+origin/document metadata, compares it with the native scripting receipt, and only
+then admits the content owner. Later operations target that exact native document.
+The platform guards current read/inject/replay authority; the editor independently
+checks the selected physical target and uses the existing control ledger.
+
+A bounded startup deadline disarms a bootstrap that never receives admission.
+Close uses the private channel and an acknowledgement/disconnect cleanup barrier;
+unknown cleanup stays explicit. Host-worker disappearance still removes the
+content observer independently. Atom shutdown closes only its own sessions.
+Already dispatched acknowledgements remain scoped historical data after close;
+lost acknowledgement never becomes confirmed non-delivery.
+
+Backend selection is explicit through `inputs-open.sourceKind`: existing requests
+default to `json-response`; `dom-control` selects the native editor. An open editor
+cannot silently change families. Groups within each adapter are supported;
+cross-adapter plans remain explicitly refused, with no atomicity promise. This is
+a new working implementation limit, not a change to the fixed 18-row denominator
+or a statement that U02 field-mode/majority acceptance has passed. UI source
+selection and draft preservation will be reconciled with the supplied references
+in Task 4. All existing legacy experimental assertions remain separate.
+
+
+The .22 installed backend now passes 66 focused / 889 full source checks,
+25 native-control checks across both hosts, 15 response and 8 guardian regression
+checks, 2 strict installed type consumers and 7 admission controls. Exact bindings:
+`.artifacts/u02/control-runtime/verification.json`; scope and retained failures:
+[execution record](../completion/21-overnight-u02-progress.md). These results finish
+Task 3's backend boundary. Task 4 owns the field UI, source selector/draft
+preservation and inspector-owned close/reopen; field-mode coverage stays 0/18.

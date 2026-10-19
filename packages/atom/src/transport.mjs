@@ -19,6 +19,7 @@ export function validateRequest(m){
  if(['selected','inspect-selector'].includes(p.op)&&(typeof p.selector!=='string'||!p.selector||p.selector.length>1024))bad();
  if(['pick','cancel-pick'].includes(p.op)&&p.pickerId!==undefined&&(typeof p.pickerId!=='string'||!p.pickerId||p.pickerId.length>100))bad();
  if(p.op==='refine-pick'&&(typeof p.pickerId!=='string'||!p.pickerId||p.pickerId.length>100||!Number.isSafeInteger(p.index)||p.index<0||p.index>11))bad();
+ if(p.sourceKind!==undefined&&(!['inputs-open','capabilities'].includes(p.op)||!['dom-control','json-response'].includes(p.sourceKind)))bad();
  if(p.op==='inputs-apply'){try{if(!p.plan||typeof p.plan!=='object'||parseExperimentPlan(p.plan).target.tabId!==p.tabId)bad();}catch{bad();}}
  if(['inputs-read','inputs-undo','inputs-baseline'].includes(p.op)&&(typeof p.investigationId!=='string'||!p.investigationId||p.investigationId.length>512))bad();
  if(p.op==='inputs-close'&&p.investigationId!==undefined&&(typeof p.investigationId!=='string'||!p.investigationId||p.investigationId.length>512))bad();

@@ -1,5 +1,6 @@
 import {parseConnectionReceipt,assessProjectSetup,HELPER_PROTOCOL,HELPER_VERSION,HELPER_ID} from '../../../core/project-connection.mjs';
 import {createResponseEditor} from './response-editor.mjs';
+import {createControlEditor} from './control-editor.mjs';
 import {appOrigin} from './origin-policy.mjs';
 import {createSourceMapSession} from './source-map-session.mjs';
 import {createNativePicker,createNativeDOMQueue} from '../../../browser-extension/picker.mjs';
@@ -92,6 +93,7 @@ async function capabilityContext(id,request={}){
   attached:s.attached===true&&target.lease==='owned',readOnly:target.readOnly===true||(s.attached&&s.readOnly===true),requestReadOnly:request.readOnly===true,
   sourceConnected:!!pairing&&pairing.origin===new URL(target.url||'about:blank').origin,hasSelection:!!s.selection,hasHistoricalTarget:!!s.stale?.target,hasAnalysis:!!s.analysis,
   hasInputEditor:!!editors.get(id)&&!editors.get(id).snapshot().closed,inputEditorBusy:!!editors.get(id)&&(!editors.get(id).snapshot().closed||['active','unknown'].includes(editors.get(id).snapshot().cleanup)),
+  nativeInputOwner:platform.nativeControlsAvailable===true,inputSourceKind:editors.get(id)&&!editors.get(id).snapshot().closed?(editors.get(id).sourceKind||'json-response'):request.sourceKind||'json-response',
   hasResponseFields:s.requests.some(r=>r.json!==undefined),property:s.selection?.property||s.property||'text',
   stale:!!s.stale||analysis?.stateatom?.runtime?.status==='Stale',busy:!!s.busy,
   hasSourceActions:analysis?.actionBindings?.some(b=>b.binding?.source&&b.freshness!=='Stale')===true,
@@ -100,8 +102,8 @@ async function capabilityContext(id,request={}){
 function inputsSnapshot(id){return editors.get(id)?.snapshot()||tabs[id]?.inputHistory||null;}
 function stopInputs(id,reason){return editors.get(id)?.close(reason)||Promise.resolve(null);}
 function requireInputs(id,investigationId){const editor=editors.get(id);if(!editor||editor.snapshot().investigationId!==investigationId)throw atomError('STALE_INVESTIGATION','Input investigation changed; open it again');return editor;}
-async function openInputs(id,context){
- const previous=editors.get(id);if(previous&&!previous.snapshot().closed)return previous.read();
+async function openInputs(id,context,sourceKind='json-response'){
+ const previous=editors.get(id);if(previous&&!previous.snapshot().closed){if((previous.sourceKind||'json-response')!==sourceKind)throw atomError('BUSY','Close the current input source before changing families');return previous.read();}
  if(previous){await previous.close('New investigation');if(['unknown','authority-lost'].includes(previous.snapshot().cleanup)&&platform.owns?.(id)!==false)throw atomError('BUSY','Native Fetch cleanup unconfirmed; detach and attach before reopening');}
  if(context.signal.aborted)throw atomError('CANCELLED');
  const s=state(id),selected=s.selection,run=s.run,generation=s.sourceGeneration||0,leaseEpoch=s.inputLeaseEpoch||0;
@@ -113,7 +115,7 @@ async function openInputs(id,context){
  const readCurrent=async()=>{
   guard();const native=await identifySelection(id,selected.selector,selected.property);guard();
   if(!native||native.document!==selected.domIdentity.document||native.node!==selected.domIdentity.node)throw atomError('STALE_TARGET','Selected native node changed');
-  const c=await capabilityContext(id),decision=operationPolicy('inputs-apply',{...c,hasInputEditor:true});guard();
+  const c=await capabilityContext(id),decision=operationPolicy('inputs-apply',{...c,inputSourceKind:sourceKind,hasInputEditor:true});guard();
   const old=editor?.snapshot().target||published;
   return {target:{tabId:id,origin:s.origin,run,document:native.document,node:native.node,selector:selected.selector,property:selected.property,value:native.value,observedAt:old&&old.value===native.value?old.observedAt:Date.now(),build},admission:{available:decision.available,grants:c.grants||[]}};
  };
@@ -121,11 +123,13 @@ async function openInputs(id,context){
  if(fresh.target.value!==selected.value)throw atomError('STALE_TARGET','Selected value changed; inspect again before opening inputs');
  if(!fresh.admission.available)throw atomError('CAPABILITY_DENIED','Current input editing authority required');published=fresh.target;
  const investigationId=crypto.randomUUID(),responses=s.requests.filter(r=>r.inputResponse&&typeof r.inputBody==='string').map(r=>({...r.inputResponse,document:fresh.target.document,body:r.inputBody}));
- editor=createResponseEditor({investigationId,target:fresh.target,responses,readCurrent,send:(method,params)=>send(id,method,params),ownsFetch:()=>platform.owns?.(id)!==false&&s.attached===true&&(s.inputLeaseEpoch||0)===leaseEpoch,onChange:snapshot=>{
-  if(tabs[id]===s&&snapshot.history.length)s.inputEditedInspection=s.inspectionGeneration;
-  if(tabs[id]===s)s.inputHistory={investigationId:snapshot.investigationId,target:snapshot.target,revision:snapshot.revision,status:'Historical',executable:false,closed:snapshot.closed,cleanup:snapshot.cleanup,closeReason:snapshot.closeReason,resources:[],history:snapshot.history.slice(-8).map(t=>({id:t.id,kind:t.kind,phase:t.phase,outcomeCount:t.outcomes.length})),details:'Read-only runtime summary; rules, raw values and complete history are not restored'};
+ const onChange=snapshot=>{
+  if(tabs[id]!==s||editor&&editors.get(id)&&editors.get(id)!==editor)return;
+  if(snapshot.history.length||sourceKind==='dom-control'&&snapshot.pending)s.inputEditedInspection=s.inspectionGeneration;
+  s.inputHistory={sourceKind,investigationId:snapshot.investigationId,target:snapshot.target,revision:snapshot.revision,status:'Historical',executable:false,closed:snapshot.closed,cleanup:snapshot.cleanup,closeReason:snapshot.closeReason,resources:[],history:snapshot.history.slice(-8).map(t=>({id:t.id,kind:t.kind,phase:t.phase,outcomeCount:t.outcomes.length})),details:'Read-only runtime summary; rules, raw values and complete history are not restored'};
   notifyInvalidation(id);
- }});
+ };
+ editor=sourceKind==='dom-control'?createControlEditor({investigationId,target:fresh.target,readCurrent,onChange,openOwner:options=>platform.openNativeControls(options)}):createResponseEditor({investigationId,target:fresh.target,responses,readCurrent,send:(method,params)=>send(id,method,params),ownsFetch:()=>platform.owns?.(id)!==false&&s.attached===true&&(s.inputLeaseEpoch||0)===leaseEpoch,onChange});
  editors.set(id,editor);context.cancelInput=()=>{if(editors.get(id)===editor)void editor.close('Input opening cancelled');};
  const result=await editor.read();if(context.signal.aborted){await editor.close('Input opening cancelled');throw atomError('CANCELLED');}await persist();return result;
 }
@@ -271,7 +275,7 @@ async function operation(m,context){const signal=context.signal;await ready;
   else if(m.op==='selected')throw atomError('SELECTION_EXPIRED','Legacy page picker has no active selection session');
   else if(m.op==='deep-experiment'){const s=state(id);await eligibleSelection(id,s);const selected=structuredClone(s.selection),lock=lockExperiment(s);try{result=await deepExperiment({id,s,send,reset,selection:s.selection,variants:m.variants,signal,includeTrace:!!pairing&&pairing.origin===s.origin&&!s.readOnly,beforeMainScript:(op,role)=>ownMainCode(id,s,op,role)});s.deepExperiment=result;s.diagnosticExperiment=recordDiagnosticExperiment(selected,result);await persist();}finally{unlockExperiment(s,lock);}}
   else if(m.op==='restore'){const s=state(id),selection=structuredClone(s.selection),lock=lockExperiment(s);try{s.deepOverrides=null;await reset(id,null);await new Promise(r=>setTimeout(r,400));result=await observeDeep(id,selection,selection?.property||'text',{includeTrace:!!pairing&&pairing.origin===s.origin&&!s.readOnly,beforeMainScript:(op,role)=>ownMainCode(id,s,op,role)});s.selection=selection?{...selection,...result}:null;}finally{unlockExperiment(s,lock);}}
-  else if(m.op==='inputs-open')result=await openInputs(id,context);
+  else if(m.op==='inputs-open')result=await openInputs(id,context,m.sourceKind);
   else if(m.op==='inputs-read'){result=await requireInputs(id,m.investigationId).read();await persist();}
   else if(m.op==='inputs-apply'){result=await requireInputs(id,m.plan.investigationId).apply(m.plan,{signal});await persist();}
   else if(m.op==='inputs-undo'||m.op==='inputs-baseline'){result=await requireInputs(id,m.investigationId)[m.op==='inputs-undo'?'undoLast':'restoreBaseline'](m.expectedRevision,{signal});await persist();}

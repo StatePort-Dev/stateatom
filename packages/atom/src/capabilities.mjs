@@ -45,11 +45,12 @@ export function operationPolicy(op,c={}){
   required=requestedReadOnly?['read','inject']:['read','inject','cache'];
  }else if(['inspect-selector','selected'].includes(op))required=['read','inject'];
  else if(['pick','refine-pick'].includes(op))required=['read','inject'];
- else if(inputMutation.has(op))required=['read','override'];
+ else if(inputMutation.has(op))required=c.inputSourceKind==='dom-control'?['read','inject','replay']:['read','override'];
+ else if(op==='inputs-read'&&c.inputSourceKind==='dom-control')required=['read','inject'];
  else if(mutation.has(op))required=['read','inject','reload','cache','override','replay'];
  for(const grant of required)if(!c.grants?.includes(grant))return deny('CAPABILITY_DENIED',grant+' capability required',required);
  if((mutation.has(op)||inputMutation.has(op)||op==='inputs-read'||op.startsWith('source-map-')||['metrics','pick','refine-pick'].includes(op))&&!c.attached)return deny('LEASE_REQUIRED','Attach this tab first',required);
- if(inputMutation.has(op)&&c.workerIndependent!==true)return deny('UNSAFE_LIFECYCLE','Response changes require a worker-independent debugger owner',required);
+ if(inputMutation.has(op)){if(c.inputSourceKind==='dom-control'){if(c.nativeInputOwner!==true)return deny('UNSAFE_LIFECYCLE','Native input changes require a live private content owner',required);}else if(c.workerIndependent!==true)return deny('UNSAFE_LIFECYCLE','Response changes require a worker-independent debugger owner',required);}
  if(op==='inputs-open'&&!c.hasInputEditor&&(!c.hasSelection||!c.hasAnalysis||c.stale))return deny('OBSERVATION_REQUIRED','Inspect a current target before opening inputs',required);
  if(['inputs-apply','inputs-undo','inputs-baseline','inputs-read'].includes(op)&&!c.hasInputEditor)return deny('OBSERVATION_REQUIRED','Open the current target input editor first',required);
  if(['deep-experiment','experiment'].includes(op)&&(!c.hasSelection||!c.hasAnalysis||c.stale))return deny('OBSERVATION_REQUIRED','Current attached inspection required; inspect again',required);

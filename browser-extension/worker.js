@@ -1,8 +1,8 @@
 import {createAtomRuntime} from '@stateport/atom/runtime';
-import {createChromePlatform,createEventHub,createGuardianBroker,migrateStandaloneDiagnostics} from '@stateport/atom/platform';
+import {createChromePlatform,createEventHub,createGuardianBroker,createNativeControlOwner,migrateStandaloneDiagnostics} from '@stateport/atom/platform';
 import {createAtomDispatcher,isInspectionOrigin} from '@stateport/atom/transport';
-const events=createEventHub(),broker=createGuardianBroker(chrome);
-const platform=createChromePlatform(chrome,{events,broker,readOnlySites:true});platform.ready=Promise.all([platform.ready,migrateStandaloneDiagnostics(chrome.storage.local)]);
+const events=createEventHub(),broker=createGuardianBroker(chrome),controlOwner=createNativeControlOwner(chrome);
+const platform=createChromePlatform(chrome,{events,broker,controlOwner,readOnlySites:true});platform.ready=Promise.all([platform.ready,migrateStandaloneDiagnostics(chrome.storage.local)]);
 const runtime=createAtomRuntime(platform,{readOnlySites:true});
 // Register synchronously; runtime queues events behind its own storage readiness.
 chrome.debugger.onEvent.addListener((source,method,params)=>events.emit({type:'debugger',source,method,params}));

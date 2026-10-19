@@ -79,3 +79,13 @@ Normal close removes owned subscriptions, and lost worker ownership closes them
 independently. No polling/keepalive or expiry timer is selected by this probe.
 Native controls/types/constraints, external revisions, model-ledger integration,
 both field modes, inspector ownership and catalogue majority remain required.
+
+The subsequent installed-backend check is a separate declared command:
+`npm run verify:input-controls -- <immutable-atom-handoff.json>`.
+It uses the actual installed runtime through the existing inspector transport,
+without modifying either host or injecting the source primitive. It records exact
+package/host hashes, native application outputs, both backend plan modes,
+framework validation/undo, partial-group refusal, stale selection, readonly site
+and worker interruption. It does not exercise the Live/Draft field widgets or
+credit catalogue rows; those remain Task 4/5 acceptance. Earlier diagnostic source
+checks and failures above retain their original scope.
