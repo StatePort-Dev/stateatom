@@ -40,14 +40,14 @@ with its scoped two-host/browser/IDE evidence. The subsequent
 site records, explicit development actions and origin/permission invalidation on
 candidate `.20261019.5`, with fresh packed/native checks. Actual optional HTTPS
 prompt acceptance and broader production source workflow remain unclaimed.
-The [F03 implementation](docs/completion/16-f03-installed-project-setup.md) adds an
-installed helper 0.1.3, a local Vite plugin and private connection receipt on Atom
-candidate `.20261019.6`. Ordinary independent-project setup passes 18 native checks,
-React-host passes 12 and short-loop retains 20 PASS / 10 expected PARTIAL. F03 is
-still incomplete: its required installed first-read regression safely refuses a
-proof invalidated by the final isolated DOM-check compilation. The single next
-bounded item remains **F03 — first-read freshness repair and acceptance**; F04
-remains partial. No broader
+The [F03 implementation](docs/completion/16-f03-installed-project-setup.md) completes
+installed helper/plugin setup and a private connection receipt on Atom candidate
+`.20261019.8`. Ordinary independent-project setup passes 18 native checks,
+React-host passes 12, installed first-read passes 17 and short-loop retains its
+20 PASS / 10 expected PARTIAL. Native DOM identity preserves proof freshness;
+target-bound historical trials and Restore survive panel refresh. Earlier failed
+candidates and criteria are preserved. The single next bounded item is **F04 —
+immutable package pair and current consumer proof**, still partial. No broader
 feature implementation or execution of all 29 items follows. The narrower
 historical alpha acceptance remains unchanged.
 

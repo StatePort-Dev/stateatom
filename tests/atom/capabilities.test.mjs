@@ -151,3 +151,12 @@ test('an admitted intervention publishes fresh availability after cleanup, inclu
   const state=await f.runtime.request(message({op:'state',tabId:1}));assert.equal(state.capabilityPolicy.operations['inspect-selector'].available,true);assert.equal(state.busy,null);
  }finally{await f.runtime.shutdown();}
 });
+
+test('read-only broker admits native DOM identity facts but no DOM writes or evaluation',async()=>{
+ const calls=[],broker=createDebuggerBroker({attach:async()=>{},detach:async()=>{},sendCommand:async(target,method,params)=>{calls.push({target,method,params});return {nativeFact:true};}}),lease=await broker.acquire({tabId:7,owner:'identity',capabilities:['read']});
+ await lease.attach();
+ for(const [method,params]of [['DOM.enable',{includeWhitespace:'all'}],['DOM.describeNode',{nodeId:2,depth:32}],['DOM.pushNodesByBackendIdsToFrontend',{backendNodeIds:[3]}]])assert.equal((await lease.command(method,params)).nativeFact,true);
+ assert.equal(calls.length,3);
+ for(const method of ['Runtime.evaluate','Runtime.compileScript','DOM.setAttributeValue','DOM.setNodeValue','DOM.removeNode'])await assert.rejects(lease.command(method),e=>e.code==='CAPABILITY_DENIED');
+ assert.equal(calls.length,3);await lease.release();
+});

@@ -21,15 +21,51 @@ async function observeDeep(id,selection,property='text',{includeTrace=true,befor
  if(!selection?.selector)return {property,status:'Unknown/Unsupported',reason:'Selection missing',trace:null};
  const operation={target:{tabId:id},world:'MAIN',func:(selector,property,includeTrace)=>{const e=selector.split(' >>> ').reduce((root,part,i)=>i?root?.shadowRoot?.querySelector(part):document.querySelector(part),null);if(!e)return {property,status:'Unknown/Unsupported',reason:'Element missing',trace:null};const marker=e.getAttribute('data-stateatom');let value;if(property==='disabled'){const get=Object.getOwnPropertyDescriptor(HTMLButtonElement.prototype,'disabled')?.get;if(e instanceof HTMLButtonElement)value=get.call(e);else return {property,status:'Unknown/Unsupported',reason:'disabled: HTMLButtonElement only',trace:null};}else value=Object.getOwnPropertyDescriptor(Node.prototype,'textContent').get.call(e)?.trim();let page=null,trace=null;if(includeTrace&&marker)try{const runtime=Object.getOwnPropertyDescriptor(window,'__STATEATOM__')?.value,version=runtime&&Object.getOwnPropertyDescriptor(runtime,'version')?.value,snapshot=runtime&&Object.getOwnPropertyDescriptor(runtime,'snapshot')?.value;page=runtime&&Object.getOwnPropertyDescriptor(runtime,'page')?.value||null;if(version===1&&typeof snapshot==='function'){trace=snapshot.call(runtime,marker,property,e);const first=Object.getOwnPropertyDescriptor(runtime,'firstReadObservations')?.value;if(trace&&typeof first==='function')trace.firstReadObservations=first.call(runtime);}}catch{trace={status:'Unknown/Unsupported',reason:'Optional instrumentation unavailable'};}return {property,value,instance:includeTrace?marker:null,frame:0,page,trace};},args:[selection.selector,property,includeTrace]};await beforeMainScript(operation,'deep-helper');const r=await chrome.scripting.executeScript(operation);return r[0]?.result?matchTarget(r[0].result):{property,status:'Unknown/Unsupported',reason:'Observation unavailable',trace:null};
 }
-// Extension isolated-world identity: a page cannot copy this token with DOM attributes.
+// Browser-owned DOM identities and native node data. No inspection compilation:
+// even an isolated executeScript would invalidate a finite code-history proof.
 async function identifySelection(id,selector,property){
- const r=await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:(selector,property)=>{
-  const e=selector.split(' >>> ').reduce((root,part,i)=>i?root?.shadowRoot?.querySelector(part):document.querySelector(part),null);if(!e)return null;
-  const key='__STATEATOM_DOM_IDENTITIES__';let identities=globalThis[key];if(!identities){identities={page:crypto.randomUUID(),nodes:new WeakMap()};Object.defineProperty(globalThis,key,{value:identities});}
-  if(!identities.nodes.has(e))identities.nodes.set(e,crypto.randomUUID());
-  let value;if(property==='text')value=Object.getOwnPropertyDescriptor(Node.prototype,'textContent').get.call(e)?.trim();else if(property==='disabled'&&e instanceof HTMLButtonElement)value=Object.getOwnPropertyDescriptor(HTMLButtonElement.prototype,'disabled').get.call(e);else return null;
-  return {document:identities.page,node:identities.nodes.get(e),property,value};
- },args:[selector,property]});return r[0]?.result||null;
+ const send=(method,params={})=>chrome.debugger.sendCommand({tabId:id},method,params);
+ const validId=v=>Number.isSafeInteger(v)&&v>0;
+ try{
+  if(!['text','disabled'].includes(property))return null;
+  await send('DOM.enable',{includeWhitespace:'all'});
+  const {root}=await send('DOM.getDocument',{depth:0});if(!validId(root?.nodeId)||!validId(root.backendNodeId))return null;
+  const parts=selector.split(' >>> ');
+  async function selected(){
+   let scope=root.nodeId,nodeId;
+   for(let i=0;i<parts.length;i++){
+    ({nodeId}=await send('DOM.querySelector',{nodeId:scope,selector:parts[i]}));if(!validId(nodeId))return null;
+    if(i<parts.length-1){
+     const {node}=await send('DOM.describeNode',{nodeId,depth:0}),open=(node?.shadowRoots||[]).filter(r=>r.shadowRootType==='open');
+     if(open.length!==1||!validId(open[0].backendNodeId))return null;
+     const {nodeIds}=await send('DOM.pushNodesByBackendIdsToFrontend',{backendNodeIds:[open[0].backendNodeId]});scope=nodeIds?.[0];if(!validId(scope))return null;
+    }
+   }
+   return nodeId;
+  }
+  const nodeId=await selected();if(!nodeId)return null;
+  const {node}=await send('DOM.describeNode',{nodeId,depth:property==='text'?32:0});if(node?.nodeType!==1||!validId(node.backendNodeId))return null;
+  let value;
+  if(property==='disabled'){
+   // HTML buttons have an uppercase native nodeName. Other namespaces and XML
+   // documents are not silently treated as HTMLButtonElement instances.
+   if(node.nodeName!=='BUTTON'||node.localName!=='button'||!Array.isArray(node.attributes)||node.attributes.length%2)return null;
+   value=node.attributes.some((v,i)=>i%2===0&&v==='disabled');
+  }else{
+   let count=0,chars=0;const chunks=[];
+   function text(n,depth){
+    if(++count>2048||depth>32)throw Error('Native DOM text budget');
+    if(n.nodeType===3||n.nodeType===4){if(typeof n.nodeValue!=='string'||(chars+=n.nodeValue.length)>128000)throw Error('Native DOM text budget');chunks.push(n.nodeValue);return;}
+    if(![1,9,11].includes(n.nodeType))return;
+    if(!Number.isSafeInteger(n.childNodeCount)||n.childNodeCount<0||(n.children||[]).length!==n.childNodeCount)throw Error('Incomplete native DOM subtree');
+    for(const child of n.children||[])text(child,depth+1);
+   }
+   text(node,0);value=chunks.join('').trim();
+  }
+  if(await selected()!==nodeId)return null;
+  const current=await send('DOM.getDocument',{depth:0});if(current.root?.backendNodeId!==root.backendNodeId)return null;
+  return {document:'cdp:'+root.backendNodeId,node:'cdp:'+node.backendNodeId,property,value};
+ }catch{return null;}
 }
 async function deepExperiment({id,s,send,reset,selection,variants,signal,includeTrace=true,beforeMainScript=async()=>{}}){
  if(!Array.isArray(variants)||variants.length<1||variants.length>4)throw Error('1..4 intervention variants');const origin=s.origin;for(const v of variants){if(!Array.isArray(v.rules)||v.rules.length>4)throw Error('Overlay rule budget');for(const rule of v.rules){if(new URL(rule.url).origin!==origin||!Array.isArray(rule.patches)||rule.patches.length>4||JSON.stringify(rule).length>4096)throw Error('Overlay scope/budget');}}

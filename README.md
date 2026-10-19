@@ -493,7 +493,8 @@ The retained `verify:react-host-ui` and `verify:short-loop` regressions also acc
 available when that explicit option is omitted. These are separate scoped harness
 results, not proof of ordinary apps satisfying the controlled first-read premises.
 
-Current F03 acceptance is incomplete: normal installed setup passes, but the
-required first-read UI regression refuses changed compilation history. See the
-[F03 execution record](docs/completion/16-f03-installed-project-setup.md) for the
-retained failure and the bounded repair still required.
+F03 acceptance on local Atom candidate `.20261019.8` includes normal installed
+setup and the separate required first-read regression. See the
+[F03 execution record](docs/completion/16-f03-installed-project-setup.md) for exact
+artifacts, retained failures and scope limits. F04 is the next unfinished item;
+this acceptance does not establish a published release.

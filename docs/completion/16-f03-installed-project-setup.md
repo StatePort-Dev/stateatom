@@ -1,11 +1,56 @@
 # F03 — installed helper/plugin setup
 
-Status: implemented, acceptance incomplete on 2026-10-19. The required installed
-first-read regression fails; F03 remains active. Spec: approved
+Status: **complete within F03's bounded scope on Atom `.20261019.8`**, 2026-10-19.
+The required installed first-read and ordinary-project gates pass. Spec: approved
 `scope-review-1`, F03 in `03-runtime-and-onboarding.md`. Source base:
 `fa0cfb231e0f06595d9b071b4dd745be1ffe2163`; checks run on the F03 worktree.
 Only the normal installed development setup is in scope. The specialised first-read
 profile keeps its original premises and evidence criteria. No publication is implied.
+
+## Final acceptance — .8
+
+Repair source base: `6d8650fc4ea766833eca4975250826c637590496`; checks run on the
+dirty worktree, with the final local commit bound in the verification sidecar.
+Helper **0.1.3**, plugin **.20261019.2** and UI **.20261018.2** retain their exact
+earlier artifact bytes. Atom `.8` SHA-256 is
+`58da6251b0c88ccdf9cba5086b43b1daaf47aa3047d63c8e4be750c52b2dc2a8`;
+handoff `.artifacts/atom/2026-10-19T13-57-27-228Z/atom-handoff.json`.
+
+| Check on final product bytes | Result | Receipt/log |
+| --- | --- | --- |
+| Full unit suite, including contract | 618/618 PASS, including 66 contract | `.artifacts/f03-freshness/tests-accepted-candidate.log` |
+| Build/pack and strict installed consumers | PASS, 2 consumers | `build-8.log`, `pack-8.log`, `types-8.log` under `.artifacts/f03-freshness/` |
+| Installed first-read panel/IDE/export/reader | 17/17 PASS, stable inputs, no errors | `.runtime/first-read-ui-runs/f03-final-installed-retry-20261019/results.json` |
+| Installed React-host | 12/12 PASS, stable inputs, no errors | `.runtime/react-host-ui-runs/f03-final-20261019/results.json` |
+| Installed short-loop | 107 checks; original 20 PASS / 10 expected PARTIAL, 2 hypotheses PASS; stable source/build/fixtures, no errors | `.runtime/short-loop-runs/f03-final-20261019/results.json` |
+| Independent ordinary project | 18/18 PASS, no errors | `.artifacts/project-setup/2026-10-19T14-10-36-327Z/result.json` |
+| Basic without IDE, ABA/export/reader | 26/26 PASS, stable inputs, no errors | `.runtime/browser-runs/f03-final-20261019/native-A.json` |
+
+All are agent-operated Linux checks on the declared recipe. The first-read run
+includes actual writer/CSP/foreign-window refusals, original P1/P2, stable proof
+on panel refresh, exact IDE ranges, historical export/reader and trials/Restore.
+The ordinary app remains independent of fixture filenames and `.runtime`; setup,
+HMR, real IDE Disconnect, production output, plugin removal, Basic afterward and
+isolated VSIX removal are exercised. These results do not establish universal
+compiler support, ordinary-app finite HTTP lineage, official-host acceptance or
+human usability.
+
+Final verification sidecar: `.artifacts/f03-freshness/f03-verification.json`.
+It verifies four artifact files, 50 packed source/visual entries, five unbundled
+plugin runtime assets and 617 retained run input hashes, with the one inventory
+delta described below; 611 final source-file hashes bind the local commit.
+Earlier `.6`/`.7` failures, the `.8` Workspace Trust precondition failure and the
+first `.8` Vite navigation failure remain unchanged. The ordinary-project driver
+now records a concurrent `ERR_ABORTED` reload and waits for the replacement
+document; every original assertion still runs. Its final run records one such
+interruption at plugin installation. Product bytes are unchanged by that driver fix.
+Earlier passing suites' broad test-directory inventories retain the prior driver
+hash from `6d8650f:tests/integration/project-setup.mjs`; the sidecar records this
+single non-executed-input delta explicitly, while their actual entrypoints,
+imported helpers and product hashes match. No unrelated native suite is rerun.
+
+The following initial/intermediate records retain their original candidate scope;
+they do not override the final acceptance table above.
 
 ## Implementation
 
@@ -52,7 +97,7 @@ instrumentation markers are inserted into application sources. The acceptance
 harness lives outside the app. Its app data are synthetic; this is an independent
 layout/install example, not a human usability study or universal compatibility test.
 
-Final ordinary-project receipt:
+Initial `.6` ordinary-project receipt:
 `.artifacts/project-setup/2026-10-19T13-04-15-656Z/result.json`, **PASS 18/18**.
 This proves Basic before installation, the actual public receipt-copy command and
 panel connection, missing-plugin repair, supported operands, exact original
@@ -65,7 +110,7 @@ Basic afterward, plus actual VSIX removal from the isolated installation.
 No receipt secret is in that public result. Private connection/receipt files are
 mode 0600 in the ignored test profile and are never committed or published.
 
-## Artifact identity and checks
+## Initial .6 artifact identity and checks
 
 Development handoff:
 `.artifacts/development/2026-10-19T13-03-22-564Z/handoff.json`.
@@ -109,7 +154,7 @@ Node 24.19.0 / npm 11.17.0 / Playwright 1.63.0 / Chromium 153.0.8010.12, Linux;
 actual VS Code host version is in installed-helper/host-complete receipts.
 Browser plugin unavailable; repository Playwright/MV3 workflow used, sandbox on.
 
-## Remaining acceptance gate: first-read freshness
+## Retained .6 acceptance failure: first-read freshness
 
 The failed first-read run has stable inputs. It loads the exact helper 0.1.3 VSIX,
 then refuses the initial P2 result with `Code changed during inspection; inspect
@@ -134,6 +179,76 @@ acquisition or final storage. No retry, ignored isolated event, newer journal
 substitution, recipe repin or weakened acceptance was introduced here. A new unique
 installed-helper first-read run is required after that repair; only then may F03
 be accepted. F01/F02 historical records remain unchanged.
+
+## Freshness repair continuation — candidates .7/.8
+
+Source base: `6d8650fc4ea766833eca4975250826c637590496`, dirty repair worktree.
+The scoped change replaces only the identity acquisition in `src/engine/browser.mjs`:
+native CDP document/node backend IDs, native text nodes and the HTML button's own
+disabled attribute replace the isolated-world script. Acquisition rechecks the
+selector and document. Full and display refreshes therefore need no new compiled
+identity helper. No runtime snapshot, unknown-code rule, final-storage guard,
+compiler recipe, transform pin or first-eligible occurrence rule is changed.
+
+Text acquisition includes whitespace-only nodes, excludes comments and shadow
+contents, and refuses incomplete subtrees, more than 32 levels/2048 nodes/128000
+UTF-16 units. Only open shadow paths and native HTML buttons are admitted for the
+corresponding identity checks; closed shadows, other namespaces/XML disabled
+targets and unavailable facts remain unsupported. The broker adds exactly three
+read metadata commands; DOM writes and Runtime.evaluate/compileScript stay denied.
+
+RED→GREEN tests cover the no-compilation regression, whitespace joining, an
+uppercase non-HTML name and scoped read admission. Actual Chromium mechanism
+receipt `.artifacts/f03-freshness/native-identity-1792417012484/result.json` passes
+five checks, including no Debugger.scriptParsed events across repeated identity
+reads, open/closed shadow bounds, no getter invocation, equal-value replacement
+and navigation. This is separate from installed panel/IDE acceptance.
+
+The first intermediate full suite reported a channel subtest and parent failure:
+its fixed future timestamp became past during slow repeated compilation. The
+fixture now generates that same future-time control at each HTTP response; the
+production validator is unchanged. The failed log remains
+`.artifacts/f03-freshness/tests.log`; final full suite is **618/618 PASS** at
+`tests-final.log`, and contract is **66/66 PASS** at `contract-final.log`.
+One fresh focused source review reports no Critical/Important/Minor findings;
+that review does not certify native results.
+
+New handoff: `.artifacts/atom/2026-10-19T13-45-43-309Z/atom-handoff.json`.
+Atom `.20261019.7` SHA-256:
+`843634e12106e324a596e65f6423f2ba6f0ab7a89f805633405035b9eea29738`.
+The exact prior helper 0.1.3, plugin `.2` and UI `.20261018.2` artifacts remain
+unchanged. Build passes with the previously recorded CJS import.meta warnings;
+both strict installed TypeScript consumers pass. The build receipt itself remains
+`BUILT_NOT_VERIFIED`; final acceptance still requires the native results below.
+
+The installed `.7` run at
+`.runtime/first-read-ui-runs/f03-freshness-installed-20261019/results.json` reaches
+**9 PASS**, including original P1/P2, exact IDE ranges, export and unknown-MAIN
+refusal, then fails waiting for the controlled-trial result. The availability
+invalidation refresh erased that result from `atom-result`. This FAIL is retained;
+partial progress is not full first-read acceptance.
+
+Candidate `.8` renders the existing bounded diagnostic trial record only when its
+experiment ID and selected/historical target match. Results are labelled Historical.
+Restore presentation is bound to origin, tab epoch, selection generation, target,
+property and the matching experiment when present. A new Important review finding
+showed a final direct assignment could bypass that check after Restore's own load;
+RED→GREEN property-change/revocation controls now cover it, and the renderer owns
+the final message. No review finding is deferred. This is source review plus unit
+evidence; native evidence remains separate.
+
+Final `.8` full suite: **618/618 PASS**, including **66 contract checks**,
+`.artifacts/f03-freshness/tests-accepted-candidate.log`. Both strict packed consumers
+pass (`types-8.log`); build and pack pass (`build-8.log`, `pack-8.log`). The new
+handoff is `.artifacts/atom/2026-10-19T13-57-27-228Z/atom-handoff.json`, Atom SHA-256
+`58da6251b0c88ccdf9cba5086b43b1daaf47aa3047d63c8e4be750c52b2dc2a8`.
+The first `.8` native attempt (`f03-final-installed-20261019`) stops before any
+product checks because the actual IDE Workspace Trust UI was not accepted in time.
+It remains FAIL; trust is not disabled or bypassed. A separate fresh-profile retry
+and the affected final `.8` native regressions determine acceptance.
+
+DOM protocol basis: [native DOM metadata](https://chromedevtools.github.io/devtools-protocol/tot/DOM/)
+and [Chromium whitespace handling](https://chromium.googlesource.com/chromium/src/+/HEAD/third_party/blink/renderer/core/inspector/inspector_dom_agent.cc).
 
 ## Preserved evidence, review and UI deviations
 
@@ -174,8 +289,8 @@ and [workspace trust](https://code.visualstudio.com/api/extension-guides/workspa
 The pinned Vite recipe is documented in `packages/vite-plugin/README.md`; no Vite 8
 migration or unsupported compiler compatibility is inferred from current docs.
 
-Next single unfinished item: **F03**, the bounded first-read freshness repair above.
-F04 remains partial and is not started by this continuation. The new receipt path
+Next single unfinished item: **F04**, immutable current Atom/UI pair and consumer
+receipt. It remains partial and is not started by this continuation. The new receipt path
 is verified in standalone; older F02 two-host evidence is not proof of that new
 path in both hosts.
 SDK, production enablement/F05, Live/Draft/U02, Action Trace/A05, local-model/L02,

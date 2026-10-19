@@ -46,11 +46,12 @@ test('real temporary owned channel serves UTF-8 bytes, authenticates privately, 
    const base={schema:1,witnessId:randomUUID(),targetId:'native-target-fixture',extensionId:'a'.repeat(32),browserVersion:'Chrome/153.0.0.0',mainFrameId:'native-frame-fixture',contextUniqueId:'native-context-fixture',startedAt:Date.now(),freshProfile:true,sandbox:true,soleStateAtomExtension:true,channelId:cap.id,manifestId:channel.profile.manifest.id,bundleDigest:channel.profile.manifest.bundle.digest};
    const listeners=channel.server.listeners('request');let responses=[],reads=0;
    channel.server.removeAllListeners('request');
-   const handler=(req,res)=>{if(req.url==='/__stateatom/first-read-session'){res.writeHead(200,{'content-type':'application/json'});res.end(JSON.stringify(responses[Math.min(reads++,responses.length-1)]));}else for(const fn of listeners)fn(req,res);};
+   const handler=(req,res)=>{if(req.url==='/__stateatom/first-read-session'){res.writeHead(200,{'content-type':'application/json'});const value=responses[Math.min(reads++,responses.length-1)];res.end(JSON.stringify(typeof value==='function'?value():value));}else for(const fn of listeners)fn(req,res);};
    channel.server.on('request',handler);
    try{
-    for(const change of [{channelId:randomUUID()},{manifestId:randomUUID()},{bundleDigest:'0'.repeat(64)},{schema:2},{sandbox:false},{extensionId:'evil'},{contextUniqueId:''},{targetId:'x'.repeat(257)},{startedAt:Date.now()+60000},{extra:'undeclared'}]){
-     responses=[{...base,...change}];reads=0;const result=await loadFirstReadCompilation(temp,cap.origin);assert.equal(result.status,'Code-linked');assert.equal(result.controlledBrowser,null);
+    for(const change of [{channelId:randomUUID()},{manifestId:randomUUID()},{bundleDigest:'0'.repeat(64)},{schema:2},{sandbox:false},{extensionId:'evil'},{contextUniqueId:''},{targetId:'x'.repeat(257)},()=>({...base,startedAt:Date.now()+60000}),{extra:'undeclared'}]){
+     // A future timestamp must still be future when the server replies, even on a slow compiler host.
+     responses=[typeof change==='function'?change:{...base,...change}];reads=0;const result=await loadFirstReadCompilation(temp,cap.origin);assert.equal(result.status,'Code-linked');assert.equal(result.controlledBrowser,null);
     }
     for(const after of [null,{...base,witnessId:randomUUID()},{...base,contextUniqueId:'replacement-context'},{...base,targetId:'replacement-target'}]){
      responses=[base,after];reads=0;const result=await loadFirstReadCompilation(temp,cap.origin);assert.equal(reads,2);assert.equal(result.status,'Code-linked');assert.equal(result.controlledBrowser,null);

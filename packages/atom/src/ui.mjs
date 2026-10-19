@@ -23,7 +23,7 @@ export function mountAtom(rootElement,client,options={}){
  $('reader-link').href=options.readerURL||'reader.html';
  let disposed=false;const controller=new AbortController(),urls=new Set(),timers=new Set();
  const later=(fn,ms)=>{const timer=setTimeout(()=>{timers.delete(timer);if(!disposed)fn();},ms);timers.add(timer);};
-let analysis,selectedState,loadGeneration=0,selectionGeneration=0,tabGeneration=0,renderedAt;
+let analysis,selectedState,loadGeneration=0,selectionGeneration=0,tabGeneration=0,renderedAt,restorationNotice;
 const tab=()=>Number($('tabs').value);
 async function rpc(message){const r=await client.request(message,{signal:controller.signal});if(disposed)throw atomError('DISPOSED');return r;}
 async function action(fn){const id=tab(),epoch=tabGeneration;try{$('status').textContent='Working…';const r=await fn();if(!disposed&&id===tab()&&epoch===tabGeneration)$('status').textContent='OK';return r;}catch(e){if(disposed||id!==tab()||epoch!==tabGeneration)return;$('status').textContent='Error: '+e.message;}}
@@ -44,7 +44,6 @@ function renderInspection(){
  sourceMapUI.render(selectedState);
  actionsUI.render(selectedState);
  $('project-setup-status').textContent=selectedState?.projectSetup?.reason||'Basic works without the helper. For source access, install matching components and paste a private receipt.';
- $('atom-result').textContent='';
  const view=inspectionView(selectedState||{}),selection=view.target;
  $('mode').textContent=view.mode;
  $('site-origin').textContent=$('tabs').selectedOptions?.[0]?.dataset.origin||'No application selected';
@@ -53,6 +52,10 @@ function renderInspection(){
  $('connection-label').textContent=selectedState?.attached?(selectedState.readOnly?'Attached · read-only':'Attached · this tab'):'Not attached';
  if(view.observedAt&&view.observedAt!==renderedAt){$('scroll').scrollTop=0;for(const id of ['actions-nav','evidence-nav','diagnostics-nav'])$(id).removeAttribute('aria-current');$('inputs-nav').setAttribute('aria-current','location');}renderedAt=view.observedAt;
  const target=selection||selectedState?.stale?.target;
+ const trial=selectedState?.diagnosticExperiment;
+ const matchingTrial=trial&&selectedState?.deepExperiment?.id===trial.result?.id&&trial.target?.selector===target?.selector&&trial.target?.property===target?.property;
+ const restored=restorationNotice&&selectedState?.attached&&restorationNotice.tab===tab()&&restorationNotice.epoch===tabGeneration&&restorationNotice.generation===selectionGeneration&&restorationNotice.origin===selectedState.origin&&restorationNotice.selector===target?.selector&&restorationNotice.property===target?.property&&restorationNotice.property===selectedState.property&&(!restorationNotice.id||matchingTrial&&restorationNotice.id===trial.result.id);
+ $('atom-result').textContent=restored?restorationNotice.text:matchingTrial?trial.result.status+' · Historical controlled trials · baseline '+JSON.stringify(trial.result.trials?.[0]?.a?.value)+' · '+trial.result.scope:'';
  const label=target?.tag==='button'&&typeof target.text==='string'?target.text.trim():'';
  $('selection-title').textContent=label&&label.length<=64?label:target?.selector||'Select an element';
  $('selection-value').textContent=view.stale?'Stale':selection?selection.property+' = '+JSON.stringify(selection.value):'No observation';
@@ -102,7 +105,7 @@ function renderInspection(){
  gate('atom-run',admission('deep-experiment'),!selection||!analysis||view.stale);gate('atom-restore',admission('restore'));
  gate('experiment',admission('experiment'),!candidates.length);
  $('experiment-eligibility').textContent=!eligible?(admission('deep-experiment')?.reason||'Capability unavailable'):selection?.property==='text'&&candidates.length?'Text response experiment available for a recorded JSON leaf. Response presence alone is not dependency. Trials reset storage/cache and reload; server writes are not undone.':'Controlled property trials require explicit response variants below. The simpler response-field experiment supports text only. Trials reset storage/cache and reload; server writes are not undone.';
- $('evidence').textContent=selectedState?JSON.stringify({analysis,events:selectedState.events,bufferBytes:selectedState.bufferBytes},null,2):'';
+ $('evidence').textContent=selectedState?JSON.stringify({analysis,events:selectedState.events,bufferBytes:selectedState.bufferBytes,...(matchingTrial?{experiment:trial}:{})},null,2):'';
 }
 function reveal(id){const e=$(id),scroller=$('scroll');if(e.tagName==='DETAILS')e.open=true;scroller.scrollTop+=e.getBoundingClientRect().top-scroller.getBoundingClientRect().top-16;(e.querySelector('summary')||e).focus({preventScroll:true});}
  $('setup-toggle').onclick=()=>reveal('browser-connection');
@@ -132,8 +135,8 @@ function renderAtom(atom,finiteTraceSupported=false){$('atom-chain').replaceChil
  for(const slice of atom.slices||[]){const d=document.createElement('details'),s=document.createElement('summary');s.textContent='Code-linked · possible source slice · '+slice.nodes.length+' nodes';const p=document.createElement('pre');p.textContent=JSON.stringify(slice,null,2);d.append(s,p);$('atom-chain').append(d);}$('atom-independent').textContent=JSON.stringify(r.independentObservations||[],null,2);}
 $('property').onchange=()=>action(async()=>{await rpc({op:'property',tabId:tab(),property:$('property').value});await load();});
 $('source-map-readonly').onchange=attachAvailability;
-$('atom-run').onclick=()=>action(async()=>{const id=tab(),generation=selectionGeneration;$('atom-result').textContent='Running controlled trials…';const r=await rpc({op:'deep-experiment',tabId:tab(),variants:JSON.parse($('atom-variants').value)});if(id!==tab()||generation!==selectionGeneration)return;$('atom-result').textContent=r.status+' · baseline '+JSON.stringify(r.baseline)+' · '+r.scope;$('evidence').textContent=JSON.stringify(r,null,2);});
-$('atom-restore').onclick=()=>action(async()=>{const id=tab(),generation=selectionGeneration;const r=await rpc({op:'restore',tabId:id});if(id!==tab()||generation!==selectionGeneration)return;await load();if(id!==tab()||generation!==selectionGeneration)return;$('atom-result').textContent='Restored by reload + cache/storage reset · '+JSON.stringify(r.value);});
+$('atom-run').onclick=()=>action(async()=>{restorationNotice=null;const id=tab(),generation=selectionGeneration;$('atom-result').textContent='Running controlled trials…';const r=await rpc({op:'deep-experiment',tabId:tab(),variants:JSON.parse($('atom-variants').value)});if(id!==tab()||generation!==selectionGeneration)return;$('atom-result').textContent=r.status+' · baseline '+JSON.stringify(r.baseline)+' · '+r.scope;$('evidence').textContent=JSON.stringify(r,null,2);});
+$('atom-restore').onclick=()=>action(async()=>{const id=tab(),generation=selectionGeneration,epoch=tabGeneration,experimentId=selectedState?.deepExperiment?.id,target=selectedState?.selection||selectedState?.stale?.target,origin=selectedState?.origin;const r=await rpc({op:'restore',tabId:id});if(id!==tab()||generation!==selectionGeneration)return;restorationNotice={id:experimentId,tab:id,epoch,generation,origin,selector:target?.selector,property:target?.property,text:'Restored by reload + cache/storage reset · '+JSON.stringify(r.value)};await load();});
 
 let reports=[];
 async function savedReports(prefer){reports=await rpc({op:'list-diagnostics'});const chosen=prefer||$('report-select').value;$('report-select').replaceChildren(...reports.map(r=>{const o=document.createElement('option');o.value=r.id;o.textContent=r.createdAt+' · '+r.target.selector+' · '+r.target.property;return o;}));if(reports.some(r=>r.id===chosen))$('report-select').value=chosen;else if(reports.length)$('report-select').value=reports.at(-1).id;$('export-report').disabled=$('delete-report').disabled=reports.length===0;}

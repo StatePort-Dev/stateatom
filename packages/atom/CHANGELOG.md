@@ -103,3 +103,19 @@ No shared tokens or primitive contract changed.
 - Check helper protocol/version/session and report setup repair hints separately
   from source/runtime evidence. Manual contributor pairing and Basic remain available.
 - Source-folder default is explicit workspace (`.`), not a repository test fixture.
+
+## 0.1.0-candidate.20261019.7
+
+- Read selection identity through browser-owned DOM IDs and native node data,
+  without compiling a script after a finite proof snapshot or during UI refresh.
+  Retain node/document/value checks, code-history guards and the failed `.6` run.
+- Preserve whitespace and open-shadow selection; incomplete/over-budget text,
+  closed shadows and unsupported disabled targets remain unavailable. No UI change.
+
+## 0.1.0-candidate.20261019.8
+
+- Preserve completed controlled-trial results across availability refreshes using
+  their target-bound historical record. Keep a successful Restore notice with
+  that same experiment/tab; never reuse it for another target or new investigation.
+- Retain `.7` and its failed installed regression: original P1/P2 pass, but a later
+  availability render erased the completed trial result. No token, CSS or layout change.
