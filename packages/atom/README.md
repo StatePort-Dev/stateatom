@@ -24,7 +24,7 @@ import {createAtomClient, chromeTransport} from '@stateport/atom/transport';
 const client = createAtomClient(chromeTransport(chrome));
 const view = mountAtom(container, client, {readerURL: '../reader.html'});
 await view.ready;
-view.dispose(); // UI subscriptions, in-flight UI requests, DOM, timers and Blob URLs
+await view.dispose(); // owned picker cleanup, UI requests, DOM, timers and Blob URLs
 client.dispose(); // this client's requests/subscriptions only
 // Host later awaits runtime.shutdown(); panel closure does not shut down runtime.
 ```
@@ -105,3 +105,27 @@ port, no slash, path, query, fragment, credentials, aliases, HTTPS or LAN host.
 Default `47731` is a convenience; the helper keeps binding only `127.0.0.1`.
 No endpoint scan, proxy or shell startup exists. Helper and artifact browser
 access are checked separately; no application approval grants either.
+
+U05 adds `native-picker-v1` / `basic.pick-refine`. After attachment, `pick`
+starts Chrome's native hover/label picker using the owned debugger lease.
+`state.picker` exposes status, a short-lived session ID and at most 12 actual
+DOM ancestor choices. `refine-pick` accepts `{tabId,pickerId,index}`; it rechecks
+both document and native node identity before inspection. `cancel-pick` accepts
+`{tabId,pickerId?}`; supply the ID for view-owned cleanup so stale UI cannot
+cancel another session. There is no page-token fallback or inferred component.
+Legacy `selected` messages are refused. Existing CSS inspection stays available.
+
+Tested primary pointer/mouse selection suppresses application selection clicks,
+submit and navigation, including earlier capture/bubble listeners. Escape cancels
+but can reach page key handlers; the inspector Cancel button avoids page keys.
+Frame and closed-shadow internals, touch, secondary/multi-click and universal
+keyboard suppression are unsupported/unverified. A DOM selection establishes no
+source producer or runtime provenance. Sessions expire after 30 seconds; this is
+picker identity retention, not a Live refresh or production permission policy.
+
+Mount disposal aborts pending picker admission/refinement and asynchronously
+cleans its own native session. Await `view.dispose()` before `client.dispose()`.
+Hosts must forward owned Overlay/DOM debugger events unchanged. No active native
+highlight/inspect mode remains after cleanup. The passive Overlay domain stays
+until the owned debugger lease ends: disabling it mid-gesture can release an
+application mouseup. No application DOM/style overlay or page listeners are used.

@@ -29,8 +29,15 @@ within its brief. The subsequent [F04 execution](completion/17-f04-immutable-pac
 completes immutable packaging and consumer receipts on the unchanged .8/UI .2
 pair: 628 unit, 35 two-host, 32 Actions and 19 maps per host, 2 strict type
 consumers and 7 installed admission checks pass. Packed hosts now retain bundled
-third-party notices. **U05 — visual element picker** is the next single unfinished
-item; F01/F02 prerequisites are complete. No release or human-study claim follows.
+third-party notices. The subsequent [U05 execution](completion/18-u05-visual-picker.md)
+completes native hover/select, actual DOM ancestor refinement and owned cancellation
+on Atom `.20261019.10`: 649 unit, 33 packed picker, 35 two-host, 26 Basic and
+32 Actions checks pass, with 2 strict consumers and 7 package controls. Escape
+cancels but may reach page key handlers; UI Cancel avoids page keys. The real
+packed [demo](testing/visual-picker-demo.md) passes its preparation smoke; a human
+demonstration has not yet been performed. Screenshots remain review candidates.
+**U01 — selected-element inspector experience** is the one next unfinished item,
+after completed F01/U05. No release or human-study claim follows.
 
 Current checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live

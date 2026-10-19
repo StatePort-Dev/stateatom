@@ -58,8 +58,9 @@ test('a default host cannot opt into HTTPS by submitting a connection record alo
  const f=fixture();f.setURL('https://example.invalid/');const defaultPlatform=createChromePlatform({...f.platform.chrome,permissions:{contains:async()=>true}},{events:createEventHub(),broker:createDebuggerBroker(f.platform.chrome.debugger)});
  try{await assert.rejects(defaultPlatform.connectSite(1,{origin:'https://example.invalid',mode:'read-only',actions:[]}),{code:'ORIGIN_DENIED'});}finally{await defaultPlatform.shutdown();await f.platform.shutdown();}
 });
-test('picker installs in the current document for development too, without fixed content-script matches',async()=>{
- const {createAtomRuntime}=await import('../../packages/atom/src/runtime.mjs');const f=fixture();await f.platform.connectSite(1,{origin:'http://localhost:53001',mode:'development',actions:['cache']});const runtime=createAtomRuntime(f.platform,{readOnlySites:true});try{await runtime.request({version:1,id:'pick-current-document',session:'origin-policy',payload:{op:'pick',tabId:1}});assert(f.calls.includes('inject'));}finally{await runtime.shutdown();}
+test('native picker uses the current owned document on development ports, without page listeners',async()=>{
+ const {createAtomRuntime}=await import('../../packages/atom/src/runtime.mjs');const f=fixture();await f.platform.connectSite(1,{origin:'http://localhost:53001',mode:'development',actions:['cache']});const native=f.platform.chrome.debugger.sendCommand;f.platform.chrome.debugger.sendCommand=async(t,m,p)=>m==='DOM.getDocument'?{root:{nodeId:1,backendNodeId:101,nodeType:9,children:[]}}:native(t,m,p);
+ const runtime=createAtomRuntime(f.platform,{readOnlySites:true});try{await runtime.request({version:1,id:'attach-current-document',session:'origin-policy',payload:{op:'attach',tabId:1}});await runtime.request({version:1,id:'pick-current-document',session:'origin-policy',payload:{op:'pick',tabId:1}});assert(f.calls.includes('Overlay.setInspectMode'));assert(!f.calls.includes('inject'));}finally{await runtime.shutdown();}
 });
 const envelope=payload=>({version:1,id:crypto.randomUUID(),session:'f02-review',payload});
 test('review: approved custom HTTP development mode survives a same-origin reload',async()=>{

@@ -82,7 +82,7 @@ test('finite trace context qualifies host correspondence only for the validated 
 });
 test('panel fragment warnings point to the current finite trace without upgrading raw ancestry',async()=>{
  const priorDocument=globalThis.document,priorChrome=globalThis.chrome;
- function element(){return {textContent:'',value:'',children:[],setAttribute(){},removeAttribute(){},append(...nodes){this.children.push(...nodes)},replaceChildren(...nodes){this.children=nodes},addEventListener(){}};}
+ function element(){return {textContent:'',value:'',children:[],contains(){return false},setAttribute(){},removeAttribute(){},append(...nodes){this.children.push(...nodes)},replaceChildren(...nodes){this.children=nodes},addEventListener(){}};}
  const elements=new Map(),node=id=>{if(!elements.has(id))elements.set(id,element());return elements.get(id)};
  node('tabs').value='1';
  const s=snapshot(),rt=s.analysis.stateatom.runtime;s.analysis.stateatom.target={property:'disabled',value:true};rt.commitIdentity='Observed: host';rt.commit={adapter:'react18-final-host-props/1',status:'Observed',producer:{status:'Observed'}};
@@ -92,7 +92,7 @@ test('panel fragment warnings point to the current finite trace without upgradin
  const dom={createElement:element,createElementNS:()=>({...element(),setAttribute(){}})};const container={ownerDocument:dom,append(){}};dom.createElement=()=>({...element(),style:{},setAttribute(){},querySelector(selector){return node(selector.match(/data-atom-id="([^"]+)/)?.[1]);},querySelectorAll(){return[];},remove(){}});globalThis.document={getElementById:node,createElement:element};globalThis.chrome={runtime:{onMessage:{addListener(){}},sendMessage:async m=>({ok:true,result:m.op==='tabs'?[{id:1,url:'http://127.0.0.1'}]:m.op==='list-diagnostics'?[]:s})}};
  const text=n=>[n.textContent,...n.children.map(text)].join(' ');
  try{
-  let experimentReply,restoreStateHook;const {mountAtom}=await import('../packages/atom/src/ui.mjs');const view=mountAtom(container,{request:async m=>{if(m.op==='deep-experiment')return new Promise(r=>experimentReply=r);if(m.op==='restore')return {value:false};if(m.op==='state'&&restoreStateHook){restoreStateHook();restoreStateHook=null;}return m.op==='tabs'?[{id:1,url:'http://127.0.0.1'}]:m.op==='list-diagnostics'?[]:s;},subscribe:()=>()=>{}},{idPrefix:''});await view.ready;assert.doesNotMatch(node('status').textContent,/^Error:/);await node('refresh-tabs').onclick();
+  let experimentReply,restoreStateHook,pickSignal,pickReply;const {mountAtom}=await import('../packages/atom/src/ui.mjs');const view=mountAtom(container,{request:async (m,options)=>{if(m.op==='pick'){pickSignal=options?.signal;return new Promise(r=>pickReply=r);}if(m.op==='deep-experiment')return new Promise(r=>experimentReply=r);if(m.op==='restore')return {value:false};if(m.op==='state'&&restoreStateHook){restoreStateHook();restoreStateHook=null;}return m.op==='tabs'?[{id:1,url:'http://127.0.0.1'}]:m.op==='list-diagnostics'?[]:s;},subscribe:()=>()=>{}},{idPrefix:''});await view.ready;assert.doesNotMatch(node('status').textContent,/^Error:/);await node('refresh-tabs').onclick();
   for(const id of ['commit-summary','state-handoffs','exchange-bindings'])assert.match(text(node(id)),/alone.*finite trace/i,id);
   assert.match(text(node('atom-chain')),/fragment.*Unknown\/Unsupported.*finite trace/i);assert.match(node('first-read-scope').textContent,/original first read only/);assert.equal(JSON.stringify(s),before);
   s.analysis.stateatom.firstReadProfile.fullPath=false;await node('refresh-tabs').onclick();
@@ -116,6 +116,8 @@ test('panel fragment warnings point to the current finite trace without upgradin
   s.attached=true;
   s.diagnosticExperiment=null;s.deepExperiment=null;s.selection=selected;s.analysis=analyzed;s.stale=null;await node('refresh-tabs').onclick();
   node('atom-variants').value='[]';const oldExperiment=node('atom-run').onclick();node('tabs').value='2';await node('tabs').onchange();const evidence=node('evidence').textContent;experimentReply({status:'Observed',baseline:true,scope:'old tab'});await oldExperiment;assert.equal(node('atom-result').textContent,'');assert.equal(node('evidence').textContent,evidence);
+  const picking=node('pick').onclick();await new Promise(r=>setTimeout(r,0));assert(pickSignal);node('tabs').value='1';await node('tabs').onchange();assert.equal(pickSignal.aborted,true,'tab switch aborts pending picker admission before a native session exists');pickReply({});await picking;
+
 
  }finally{if(priorDocument===undefined)delete globalThis.document;else globalThis.document=priorDocument;if(priorChrome===undefined)delete globalThis.chrome;else globalThis.chrome=priorChrome;}
 });

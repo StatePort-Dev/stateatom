@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.1.0-candidate.20261019.10
+
+- Invalidate only the cancelled native selection during its final storage write;
+  late refinement completion cannot leave fresh evidence after cancellation.
+  Preserve the issued .9 artifact and its incomplete native verification.
+
+## 0.1.0-candidate.20261019.9
+
+- Replace late page picker listeners with owned native Chrome hover/label/select
+  and Escape cancellation; keep exact document/backend-node identity. No page
+  mutation or application event invocation is required by selection.
+- Add bounded DOM ancestor refinement in the existing inspector, picker status
+  and cancel/restart. Preserve supplied layout, native shared controls and
+  evidence semantics; Chrome owns the page highlight styling. No shared token
+  or visual-contract change. Screenshots remain candidate baselines.
+- Advertise additive native-picker-v1 and basic.pick-refine with bounded wire-v1
+  operations. Pick now requires attachment; cleanup remains available on refusal.
+- Retain inert content.js compatibility asset; old page tokens cannot select a
+  native target. Prior package identities and historical acceptance remain.
+
+
 ## 0.1.0-candidate.20261019.3
 
 - Publish fresh availability after intervention cleanup on success or failure,

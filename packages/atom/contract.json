@@ -19,7 +19,8 @@
   ],
   "capabilityVersion": 1,
   "features": [
-    "capability-policy-v1"
+    "capability-policy-v1",
+    "native-picker-v1"
   ],
   "featureDiscovery": {
     "operation": "capabilities",

@@ -16,9 +16,11 @@ export type AtomOperation=
  |{op:'source-map-acquire';tabId:number;scriptId:string;url?:string}
  |{op:'source-map-lookup';tabId:number;scriptId:string;line:number;column:number}
  |{op:'source-map-clear';tabId:number}
- |{op:'detach'|'pick'|'restore'|'metrics';tabId:number}
+ |{op:'detach'|'restore'|'metrics';tabId:number}
+ |{op:'pick'|'cancel-pick';tabId:number;pickerId?:string}
  |{op:'state';tabId:number;refreshDeep?:boolean}
  |{op:'inspect-selector';tabId:number;selector:string}
+ |{op:'refine-pick';tabId:number;pickerId:string;index:number}
  |{op:'selected';tabId:number;selector:string;token:string;documentId?:string}
  |{op:'property';tabId:number;property:'text'|'disabled'}
  |{op:'save-diagnostic';tabId:number;includeContent?:boolean;notes?:string}

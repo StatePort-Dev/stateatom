@@ -14,7 +14,7 @@ synthetic competing debugger consumer; it implements no Capture.
 ## Contracts and ownership
 
 Types ship in the package's `dist/*.d.ts`; API/wire version is **1**, separately
-from package candidate `0.1.0-candidate.20261019.5`. Importing any entrypoint has
+from package candidate `0.1.0-candidate.20261019.10`. Importing any entrypoint has
 no Chrome listener, debugger or DOM side effect.
 
 - `createAtomRuntime(platform, options = {}) -> AtomRuntime`. The only current
@@ -316,3 +316,25 @@ sequentially when they share the IDE or app port; the full unit suite also
 contains a real fixed-port first-read channel test. Both hosts carry bundled
 third-party notices in addition to source and font notices. A receipt verifies
 the named pair and checks; it does not add capabilities or publish the package.
+
+## Native element picker (U05)
+
+The additive `native-picker-v1` / `basic.pick-refine` contract uses the existing
+owned debugger lease. Forward native Overlay and DOM events as debugger events;
+do not translate them into trusted page selections. `pick` now requires an
+attached target. `state.picker` carries short-lived status/ID and bounded actual
+DOM ancestor labels. `refine-pick` takes `{tabId,pickerId,index}` and verifies the
+exact document/backend node. ID-bound `cancel-pick` cleans only that session;
+a request signal cancels pending admission or its specific refinement. Legacy
+`selected` page messages are refused; CSS selector inspection remains separate.
+
+Await `view.dispose()` before disposing its client: mount cleanup cancels pending
+picker admission/refinement and native mode without detaching another consumer.
+Cancel via the inspector avoids page keyboard events. Escape cancels but may also
+reach page handlers; exclusivity is Unsupported. Frame/closed-root internals and
+untested touch/secondary/multi-click paths are not claimed. Passive Overlay can
+remain enabled until the owned lease ends, with inspect mode/highlight cleared;
+full domain disable mid-gesture was measured to leak mouseup. No page overlay,
+DOM reparenting or retained page listeners are used. Selection does not establish
+source or runtime provenance. See the [U05 record](completion/18-u05-visual-picker.md)
+and [demo](testing/visual-picker-demo.md) for exact candidate evidence.

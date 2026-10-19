@@ -50,9 +50,13 @@ candidates and criteria are preserved. The subsequent [F04 execution](docs/compl
 completes immutable staging, exact package reproduction and checked consumer
 receipts on the same .8/UI .2 pair: 628 unit, 35 two-host, 32 Actions and 19 maps
 per host pass, with 2 strict consumers and 7 installed admission checks. The
-single next bounded item is **U05 — visual element picker**, after completed
-F01/F02. No broader
-feature implementation or execution of all 29 items follows. The narrower
+subsequent [U05 execution](docs/completion/18-u05-visual-picker.md) completes
+native visual selection/refinement/cancel on `.20261019.10`: 649 unit, 33 packed
+picker, 35 two-host, 26 Basic and 32 Actions checks pass. Escape cancellation
+retains an explicit page-key limitation; UI Cancel avoids page keys. The actual
+packed demo is prepared and smoke-checked. The single next bounded item is
+**U01 — selected-element inspector experience**, after completed F01/U05.
+No broader feature implementation or execution of all 29 items follows. The narrower
 historical alpha acceptance remains unchanged.
 
 ## Historical roadmap and checkpoint ledger

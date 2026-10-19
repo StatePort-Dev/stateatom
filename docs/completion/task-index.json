@@ -376,11 +376,24 @@
       "existing_commands": [
         "npm run verify:browser",
         "npm run verify:actions",
-        "npm run verify:embedding"
+        "npm run verify:embedding",
+        "npm run verify:picker",
+        "npm run demo:picker"
       ],
       "deliverable": "Hover/click/refine/cancel on real targets without manual selectors, source prerequisites or supported selection-induced application actions",
-      "status": "planned",
-      "optional": false
+      "status": "complete",
+      "optional": false,
+      "implementation_plan": "../superpowers/plans/2026-10-19-visual-picker.md",
+      "execution_record": "18-u05-visual-picker.md",
+      "delivery_states": [
+        "implemented",
+        "native-verified"
+      ],
+      "remaining_limits": [
+        "Exclusive Escape key suppression is Unsupported; inspector Cancel avoids page keys",
+        "Frame and closed-root internals unsupported; untested touch/secondary/multi-click paths unverified",
+        "Source/runtime provenance, broader U01 workflow and official-host intake remain separate"
+      ]
     },
     {
       "id": "U06",
@@ -1065,52 +1078,58 @@
     ]
   },
   "reconciliation": {
-    "document": "17-f04-immutable-package-pair.md",
+    "document": "18-u05-visual-picker.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "F04",
+      "id": "U05",
       "status": "complete",
-      "source_base": "61eb183ad1f50840a8a408c5450e4b569c4af4e2",
+      "source_base": "1aa4b249e78341664644a2b3657c1d0a756cc2e9",
       "source_dirty_at_checks": true,
-      "package_version": "0.1.0-candidate.20261019.8",
-      "package_sha256": "58da6251b0c88ccdf9cba5086b43b1daaf47aa3047d63c8e4be750c52b2dc2a8",
+      "package_version": "0.1.0-candidate.20261019.10",
+      "package_sha256": "db62fa82c9bdbeb9c6750445e8ef31a7a21ed56e0d13aa628a1706dc011d566d",
       "ui_version": "0.2.0-candidate.20261018.2",
       "ui_sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
-      "execution_record": "17-f04-immutable-package-pair.md",
+      "execution_record": "18-u05-visual-picker.md",
       "delivery_states": [
         "implemented",
         "native-verified"
       ],
       "operator": "agent-operated automated harnesses",
       "verified_checks": {
-        "unit": 628,
-        "package_controls": 10,
-        "installed_admission_matrix": 7,
-        "strict_packed_consumers": 2,
+        "unit": 649,
+        "review_controls": 49,
+        "picker_both_hosts": 33,
         "embedding": 35,
+        "basic": 26,
         "standalone_actions": 32,
-        "embedding_actions": 32,
-        "standalone_source_maps": 19,
-        "embedding_source_maps": 19
+        "strict_packed_consumers": 2,
+        "installed_admission_matrix": 7,
+        "demo_smoke_stages": 3
       },
+      "unsupported": [
+        "Exclusive Escape-key suppression",
+        "frame/closed-root internals"
+      ],
       "not_claimed": [
         "official-host integration",
         "publication",
         "independent-human study",
+        "human demonstration already performed",
         "Live/Draft editing",
         "production change enablement",
         "Action Trace",
         "validated local model",
-        "native optional HTTPS prompt acceptance"
+        "universal event suppression"
       ]
     },
-    "next_item": "U05",
+    "next_item": "U01",
     "new_full_task_acceptances": [
       "F01",
       "F02",
       "F03",
-      "F04"
+      "F04",
+      "U05"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": null,
@@ -1247,9 +1266,46 @@
           "validated local model",
           "ordinary-app finite HTTP lineage"
         ]
+      },
+      {
+        "id": "F04",
+        "status": "complete",
+        "source_base": "61eb183ad1f50840a8a408c5450e4b569c4af4e2",
+        "source_dirty_at_checks": true,
+        "package_version": "0.1.0-candidate.20261019.8",
+        "package_sha256": "58da6251b0c88ccdf9cba5086b43b1daaf47aa3047d63c8e4be750c52b2dc2a8",
+        "ui_version": "0.2.0-candidate.20261018.2",
+        "ui_sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+        "execution_record": "17-f04-immutable-package-pair.md",
+        "delivery_states": [
+          "implemented",
+          "native-verified"
+        ],
+        "operator": "agent-operated automated harnesses",
+        "verified_checks": {
+          "unit": 628,
+          "package_controls": 10,
+          "installed_admission_matrix": 7,
+          "strict_packed_consumers": 2,
+          "embedding": 35,
+          "standalone_actions": 32,
+          "embedding_actions": 32,
+          "standalone_source_maps": 19,
+          "embedding_source_maps": 19
+        },
+        "not_claimed": [
+          "official-host integration",
+          "publication",
+          "independent-human study",
+          "Live/Draft editing",
+          "production change enablement",
+          "Action Trace",
+          "validated local model",
+          "native optional HTTPS prompt acceptance"
+        ]
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md"
   },
-  "next_task": "U05"
+  "next_task": "U01"
 }

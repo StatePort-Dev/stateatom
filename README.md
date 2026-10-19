@@ -499,9 +499,21 @@ setup and the separate required first-read regression. See the
 artifacts, retained failures and scope limits. The subsequent
 [F04 execution](docs/completion/17-f04-immutable-package-pair.md) reproduces the same
 Atom/UI tarballs, adds immutable staging and a checked consumer receipt, and
-verifies both packed hosts. U05 is the next single unfinished item; these scoped
-checks do not establish a published release.
+verifies both packed hosts. The subsequent [U05 execution](docs/completion/18-u05-visual-picker.md)
+completes native visual hover/select/refine/cancel on Atom `.20261019.10` with
+33 packed picker controls, 649 unit, 35 two-host, 26 Basic and 32 Actions checks.
+Escape cancels but may reach page key handlers; inspector Cancel avoids page keys.
+Source/runtime provenance remains separate. The one next unfinished item is U01;
+these scoped checks do not establish a published release.
 
 `npm run verify:atom-package` checks the current packed pair and disposable
 compatibility/refusal controls. See [the embedding receipt workflow](docs/embedding.md#immutable-pair-receipt-f04)
 for explicit handoffs and native host checks.
+
+
+To prepare the actual packed picker demonstration, run `npm run demo:picker --
+/absolute/path/atom-handoff.json` (graphical display), or `npm run demo:picker --
+--smoke /absolute/path/atom-handoff.json` for the finite native preparation check.
+See the [demo guide](docs/testing/visual-picker-demo.md) for the exact accepted
+handoff, steps, app counters and explicit limits. `npm run verify:picker --
+/absolute/path/atom-handoff.json` runs the broader two-host native controls.

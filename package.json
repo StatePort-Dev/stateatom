@@ -75,7 +75,9 @@
     "verify:capability-ui": "node tests/integration/capability-ui.mjs",
     "verify:origin-connections": "node tests/integration/origin-connections.mjs",
     "pack:development": "node scripts/pack-development.mjs",
-    "verify:project-setup": "node tests/integration/project-setup.mjs"
+    "verify:project-setup": "node tests/integration/project-setup.mjs",
+    "verify:picker": "node tests/integration/picker.mjs",
+    "demo:picker": "node scripts/demo-picker.mjs"
   },
   "dependencies": {
     "@angular/compiler": "20.3.34",

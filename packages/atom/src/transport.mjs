@@ -16,6 +16,8 @@ export function validateRequest(m){
  const p=m.payload;if(!ops.has(p.op)||JSON.stringify(m).length>(p.op==='source-map-import'?11500000:65536))bad();
  if(!globalOps.has(p.op)&&(!Number.isSafeInteger(p.tabId)||p.tabId<1))bad();
  if(['selected','inspect-selector'].includes(p.op)&&(typeof p.selector!=='string'||!p.selector||p.selector.length>1024))bad();
+ if(['pick','cancel-pick'].includes(p.op)&&p.pickerId!==undefined&&(typeof p.pickerId!=='string'||!p.pickerId||p.pickerId.length>100))bad();
+ if(p.op==='refine-pick'&&(typeof p.pickerId!=='string'||!p.pickerId||p.pickerId.length>100||!Number.isSafeInteger(p.index)||p.index<0||p.index>11))bad();
  if(p.op==='connect-site')siteRecord(p.connection);
  if(p.op==='property'&&!['text','disabled'].includes(p.property))bad();
  if(p.op==='pair'&&p.receipt)parseConnectionReceipt(p.receipt);

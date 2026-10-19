@@ -35,9 +35,9 @@ test('standalone migration copies only valid legacy diagnostics once, leaving ho
  const area={async get(keys){reads.push(...keys);return Object.fromEntries(keys.filter(k=>k in data).map(k=>[k,data[k]]));},async set(v){Object.assign(data,v);}};
  await migrateStandaloneDiagnostics(area);assert.equal(data['stateport.atom.v1.diagnostics'][0].id,report.id);assert.deepEqual(data.diagnostics,[report]);assert.deepEqual(data.tabs,{host:true});assert.deepEqual(data.capture,{host:true});assert(!reads.includes('tabs')&&!reads.includes('capture'));data.diagnostics=[];await migrateStandaloneDiagnostics(area);assert.equal(data['stateport.atom.v1.diagnostics'].length,1);
 });
-test('Detach releases an Atom picker reservation that never attached debugger',async()=>{
- const f=fixture();f.platform.chrome.tabs.sendMessage=async(id)=>{await f.platform.authorize(id,'read');return{};};
- await f.runtime.request(message({op:'pick',tabId:1}));await f.runtime.request(message({op:'detach',tabId:1}));assert.equal(f.platform.owns(1),false);const foreign=await f.broker.acquire({tabId:1,owner:'other',capabilities:['read']});await foreign.release();await f.runtime.shutdown();
+test('native picker refuses an unattached tab and Detach leaves its resource available',async()=>{
+ const f=fixture();await assert.rejects(f.runtime.request(message({op:'pick',tabId:1})),{code:'LEASE_REQUIRED'});assert.deepEqual(f.calls,[]);
+ await f.runtime.request(message({op:'detach',tabId:1}));assert.equal(f.platform.owns(1),false);const foreign=await f.broker.acquire({tabId:1,owner:'other',capabilities:['read']});await foreign.release();await f.runtime.shutdown();
 });
 test('cancelling a read cannot erase the selected observation owned by another request',async()=>{
  const current={selector:'#p1',property:'text',value:'13',observedAt:Date.now()},f=fixture({initial:{'stateport.atom.v1.tabs':{1:{run:'r',requests:[],events:[],pending:{},samples:[],sampleEntries:{},selection:current,analysis:{sources:[]}}}}});await f.runtime.ready;

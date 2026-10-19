@@ -88,7 +88,7 @@ test('source connection does not need recorded operands, and stale metadata cann
 test('revocation after discovery and restricted synthetic-site permissions deny the next browser operation',async()=>{
  const f=fixture({url:'https://app.invalid/'});let permission=true;f.api.permissions.contains=async()=>permission;
  try{
-  assert.equal((await f.runtime.request(message({op:'capabilities',tabId:1}))).operations.pick.available,true);
+  const before=await f.runtime.request(message({op:'capabilities',tabId:1}));assert.equal(before.features['basic.inspect'].available,true);assert.equal(before.operations.pick.code,'LEASE_REQUIRED');
   permission=false;
   await assert.rejects(f.runtime.request(message({op:'pick',tabId:1})),{code:'ORIGIN_DENIED'});assert.deepEqual(f.calls,[]);
  }finally{await f.runtime.shutdown();}
