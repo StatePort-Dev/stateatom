@@ -157,3 +157,11 @@ previously approved host architecture. First test native extension-document
 lifetime in an isolated synthetic fixture; choose the smallest viable owner from
 that evidence. No SDK, other repository mutation or publication is authorized by
 this dependency. U02 and Task 2 stay in progress.
+
+
+U02.2c.3 subsequently establishes the scoped .20 response/native owner backend;
+see [its retained interruption results](response-resource-owner.md). The next
+[U02.3a native ledger](native-control-editor.md) passes 51 focused / 844 full source
+checks but is inert and unbundled. Actual native-control events, both field modes,
+inspector-owned close/reopen and majority acceptance remain unfinished. Task 3b
+supplies that adapter; field catalogue coverage stays 0/18 in each mode.

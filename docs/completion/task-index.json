@@ -305,7 +305,8 @@
         "core/guardian-worker-wire.mjs",
         "packages/atom/src/guardian-broker.mjs",
         "packages/atom/src/guardian-document.mjs",
-        "scripts/native-browser.mjs"
+        "scripts/native-browser.mjs",
+        "core/control-ledger.mjs"
       ],
       "existing_commands": [
         "npm test",
@@ -392,9 +393,21 @@
           "candidate": "0.1.0-candidate.20261019.20",
           "native_rows_verified": 0,
           "inspector_owned_close_verified": false
+        },
+        {
+          "id": "U02.3a",
+          "status": "complete",
+          "scope": "Inert native-control acknowledgement/undo ledger only; no runtime importer or native event adapter",
+          "tests": {
+            "native_ledger_model": 25,
+            "focused": 51,
+            "full": 844
+          },
+          "record": "21-overnight-u02-progress.md",
+          "native_rows_verified": 0
         }
       ],
-      "active_slice": "U02.3a",
+      "active_slice": "U02.3b",
       "implementation_dependency": "Worker/document owner-loss backend proof passes on .20; native controls next, inspector-owned close/reopen remains required with field UI"
     },
     {

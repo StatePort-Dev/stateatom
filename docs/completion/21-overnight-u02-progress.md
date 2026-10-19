@@ -104,3 +104,17 @@ close/reopen, majority acceptance and final review are required. Both feature fl
 remain unavailable and native field catalogue coverage remains **0/18** in each
 mode. Next bounded slice: **U02.3a native control descriptor/ledger contract**, then
 its actual adapter; do not repeat completed response/guardian work without cause.
+
+
+U02.3a implements the [inert native-control ledger](../features/native-control-editor.md):
+all-member preflight, ordered per-control acknowledgements, partial groups,
+explicit unknown/taint, eventful external revision refusal, successive owned
+undo and guarded baseline. Closing after an earlier acknowledgement cannot
+relabel it late; its failing control and correction are retained. 25 ledger
+models + 26 plan checks pass (51 focused), and final full suite passes 844/844.
+Exact inputs and unchanged .20 runtime bindings:
+`.artifacts/u02/control-ledger/verification.json`. Earlier missing-module RED,
+first GREEN and intermediate 843-check full log remain separate. No native
+adapter/event/framework write or new package is delivered by this library.
+Task 3 / U02 stay in progress; next is **U02.3b actual native-control adapter**.
+Both field-mode catalogue counts remain 0/18; all original acceptance gates stand.

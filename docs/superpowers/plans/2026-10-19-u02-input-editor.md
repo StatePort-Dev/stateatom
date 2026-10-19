@@ -138,7 +138,10 @@ restrictions and an existing host offscreen slot must not be bypassed.
 **Files:** native control adapter, runtime and tests, synthetic control fixture.
 **Interfaces:** same plan/ledger, native exact node and supported update event.
 
-- [ ] Complete exact native descriptor/revision and event contract before RED.
+- [x] Complete exact native descriptor/revision and event contract before RED.
+  U02.3a inert ledger is delivered under docs/features/native-control-editor.md,
+  25 model / 51 focused / 844 full tests; no runtime/native event proof.
+  Task 3 remains open for actual adapter/React/Vue/update/cleanup below.
 - [ ] RED/GREEN text/number/checkbox/select, actual React/Vue updates, stale or
   readonly refusal, external revision, undo and cleanup.
 - [ ] Meaningful native/source checks and local commit; no generic state writer.
