@@ -58,3 +58,15 @@ client.request({op:'inputs-open',tabId:1,sourceKind:'javascript'});
 // @ts-expect-error plan application cannot switch the active source family.
 client.request({op:'inputs-apply',tabId:1,sourceKind:'dom-control'});
 void nativeAvailable;
+
+import {createInspectorConnections} from '@stateport/atom/transport';
+const inspectorConnections=createInspectorConnections(runtime,{isTrusted:sender=>sender.id==='host',maxClients:16});
+const liveTransport=chromeTransport(chrome,{inspectorOwnership:true,startupTimeout:5000});
+const liveClient=createAtomClient(liveTransport);
+liveClient.request({op:'inputs-open',tabId:1,ownerId:'view',sourceKind:'dom-control'});
+liveClient.request({op:'capabilities',tabId:1,ownerId:'view'});
+liveClient.subscribeConnection?.(status=>{const closed:'closed'=status.state;void closed;});
+runtime.connectInspector?.('typed-live-session').close('Typed cleanup');
+// @ts-expect-error owner identity cannot be supplied on an unrelated operation.
+liveClient.request({op:'attach',tabId:1,ownerId:'wrong-scope'});
+void inspectorConnections.dispose();

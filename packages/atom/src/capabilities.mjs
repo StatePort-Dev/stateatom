@@ -28,6 +28,7 @@ export function operationPolicy(op,c={}){
  if(!OPERATIONS.includes(op))return deny('INVALID_MESSAGE','Unknown Atom operation');
  if(c.busy&&!['state','capabilities','metrics','inputs-close'].includes(op))return deny('BUSY','Experiment running; conflicting action denied');
  if(c.inputEditorBusy&&mutation.has(op))return deny('BUSY','Close the input editor before running legacy trials');
+ if(op.startsWith('inputs-')&&c.foreignInputEditor)return deny('BUSY','This input editor belongs to another inspector');
  if(local.has(op))return allow([]);
  if(op==='save-diagnostic')return c.hasSelection||c.hasHistoricalTarget?allow([]):deny('OBSERVATION_REQUIRED','Observation unavailable or expired; inspect again');
  if(!isInspectionOrigin(c.url,c.readOnlySites)&&!(c.siteApproved===true&&appOrigin(c.url)&&new URL(c.url).protocol==='http:'))return deny('ORIGIN_DENIED','Unsupported inspection origin');

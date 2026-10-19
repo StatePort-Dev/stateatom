@@ -460,10 +460,29 @@
           "record": "21-overnight-u02-progress.md",
           "runtime_bundled": false,
           "native_rows_verified": 0
+        },
+        {
+          "id": "U02.4b",
+          "status": "complete",
+          "scope": "Live inspector backend ownership and native page close/reopen only; no mounted-view field UI or timing acceptance",
+          "candidate": "0.1.0-candidate.20261019.24",
+          "tests": {
+            "focused": 48,
+            "atom_contracts": 258,
+            "full": 930,
+            "native_inspector_lifetime": 13,
+            "native_controls_regression": 25,
+            "response_regression": 15,
+            "guardian_regression": 8,
+            "packed_type_consumers": 2,
+            "package_admission": 7
+          },
+          "record": "21-overnight-u02-progress.md",
+          "native_rows_verified": 0
         }
       ],
-      "active_slice": "U02.4b",
-      "implementation_dependency": "Response and native backend/worker-loss checks pass on .22; field UI, both modes and inspector-owned close/reopen now required, then unchanged majority acceptance"
+      "active_slice": "U02.4c",
+      "implementation_dependency": ".24 page lifetime/backend proof passes; mounted-view close/cancel, fields, both modes and timing remain required before unchanged majority acceptance"
     },
     {
       "id": "U03",

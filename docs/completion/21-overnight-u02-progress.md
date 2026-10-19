@@ -229,3 +229,60 @@ change or rendered acceptance. Both field modes, native inspector ownership,
 scheduler timing and UI controls remain unimplemented; field catalogue coverage
 is still 0/18 per mode. Task 4 remains open. Next bounded slice: **U02.4b — live
 inspector ownership and actual close/reopen**, before rendered controls.
+
+
+## U02.4b — live inspector ownership and page close/reopen
+
+Delivered within the backend page-lifetime boundary on Atom `.20261019.24`,
+unchanged UI `.20261018.2`; handoff
+`.artifacts/atom/2026-10-19T22-07-31-902Z/atom-handoff.json`.
+Exact source/archive/host/fixture bindings and executable verification:
+`.artifacts/u02/input-inspector/verification.json` and `verify.mjs`.
+
+The trusted host explicitly registers an inspector Port dispatcher. Opted-in
+clients wait for native admission; the default transport retains old-host
+compatibility. An input editor belongs to its envelope session, current live token
+and per-view owner ID. Other clients/views cannot adopt, mutate or close it.
+Port loss revokes runtime authority synchronously, cancels that client's pending
+opening jobs and closes only its editors. A lost connection has no unowned
+fallback, automatic reconnect or saved-authority recovery. Optional native sender
+metadata is checked where present; missing optional document data is not invented.
+An optional per-client connection callback reports loss, not successful cleanup.
+
+Fresh frozen results:
+
+- 48 focused lifetime/runtime/transport models; 258 Atom contract tests;
+  `npm test`: **930 PASS**, zero failed/cancelled.
+- `npm run verify:input-inspector -- <handoff>`: **13 PASS** across both packed
+  hosts. Actual inspector-page closure removes active Fetch rules; the next app
+  request is original and does not hang. Native closure removes the observer/write
+  owner and leaves already changed app values intact. New clients require fresh
+  inspection/new investigation; old clients/views/IDs cannot affect the new editor.
+- Affected backends on this exact new pair: **25 native-control**, **15 response**,
+  **8 guardian/foreign-consumer** controls pass; **2** strict installed type
+  consumers and **7** package admission controls pass.
+
+These are agent-operated native private-Port/wire checks, not field-widget or
+human acceptance. The harness modifies neither installed host, injects no control
+implementation and retains a read-only native cleanup diagnostic. All recorded
+current package source/build hashes match. Field catalogue coverage remains 0/18
+per mode; actual Live/Draft UI availability remains unimplemented.
+
+The .23 native run passed 12 checks and failed the last embedding reopening with
+`Selection changed during inspection`. A finite native-editor model reproduced
+that exact error: an old background `state(refreshDeep)` read failed after a new
+inspection began, and its catch unconditionally invalidated the new generation.
+.24 limits that invalidation to the captured tab/run/generation/selection/editor;
+selected native freshness checks are unchanged. The original native case now
+passes without retrying the failed step or lowering its threshold. A second RED
+proved runtime token revocation was deferred to a microtask; .24 revokes it
+synchronously before awaiting cleanup. Intermediate model harness errors and the
+terminated incorrect response-editor test remain retained; the corrected model
+uses the actual native-editor close ordering. .23 passes remain historical.
+
+Task 4 stays open. Actual page close/reopen now has evidence; **disposing a mounted
+view while its client remains alive**, typed fields, scheduling, keyboard and
+visual checks still belong to **U02.4c**. Task 2's remaining inspector lifecycle
+criterion is not waived by backend page checks. Closing a rule/observer does not
+promise application/server rollback. New field-mode/majority acceptance and the
+single final review remain required before U02 completion.

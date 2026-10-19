@@ -75,6 +75,14 @@ archives unchanged. It preserves invalid/newer drafts and refuses old/external
 acknowledgement rebasing. This adds no rendered controls or scheduler. U02.4b's
 live inspector ownership/close/reopen is the next bounded slice; Task 4 stays open.
 
+U02.4b subsequently delivers live inspector ownership/page close/reopen on .24:
+48 focused / 258 contract / 930 full, 13 native inspector-lifetime, 25 native
+control, 15 response and 8 guardian checks pass, with 2 strict consumers and 7
+admission controls. A .23 reopening race is retained and reproduced/fixed without
+weakening selected-target freshness. The next bounded slice is U02.4c: mounted
+view cleanup, actual fields/timing and rendered checks. Backend page lifetime does
+not complete field UI, both-mode majority acceptance or Task 2's remaining gate.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

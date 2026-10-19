@@ -1,6 +1,6 @@
 import {mountAtom} from '@stateport/atom/ui';
 import {createAtomClient,chromeTransport} from '@stateport/atom/transport';
-const client=createAtomClient(chromeTransport(chrome)),root=document.getElementById('workbench-inspector');
+const client=createAtomClient(chromeTransport(chrome,{inspectorOwnership:true})),root=document.getElementById('workbench-inspector');
 let view,closed=false;
 addEventListener('pagehide',()=>{closed=true;void Promise.resolve(view?.dispose()).finally(()=>client.dispose());},{once:true});
 void chrome.tabs.getCurrent().catch(()=>null).then(current=>{

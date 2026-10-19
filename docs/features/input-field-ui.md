@@ -56,3 +56,34 @@ local tickets. That local invalidation is not native cleanup; 4b supplies the
 actual resource lifetime guarantee. Invalid intermediate numeric text, empty
 strings and UTF-8 byte limits remain explicit, without restoring a previous
 valid value or silently converting blank input to zero.
+
+## 4b inspector ownership contract
+
+Input ownership is the envelope's client session, its optional live runtime token
+and optional bounded per-view `ownerId`. Another client/view receives BUSY rather
+than adopting or closing an active editor. Reusing a client across unmount/mount
+does not make an old view's cleanup authority applicable to a new view. Cleanup
+must retain the owner and current investigation. A closed investigation is not
+fresh authority for reopening.
+
+The local host explicitly registers `createInspectorConnections(...).acceptPort`
+and passes that registry to its trusted dispatcher. The opted-in Chrome transport
+waits for a private native Port admission before owned requests. Disconnect marks
+runtime ownership inactive synchronously, cancels only its pending jobs and closes
+only its editors. Startup refusal/loss has no unowned fallback, heartbeat or saved
+metadata adoption. Older custom hosts retain the default opt-out transport.
+Native sender metadata is checked when supplied; missing optional document data
+is not invented. A per-client connection callback reports loss, not completed
+native cleanup.
+
+A stale background editor read can finish after another inspector has started a
+fresh inspection. Its failure may invalidate only its captured tab record,
+run/generation, selection and editor. It cannot invalidate the new generation;
+selected native node/property/value freshness checks remain mandatory.
+
+Page closure is distinct from disposing one mounted view while keeping a client
+alive. The actual page-close/reopen backend is checked in 4b; 4c must still wire
+per-view close/cancellation, keyboard actions, fields and timing. Connection loss
+requires explicit reopening/recovery guidance; the backend does not silently
+reconnect a stale writer. Removal of response rules/observers never promises
+application or server rollback.

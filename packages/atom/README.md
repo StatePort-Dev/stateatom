@@ -165,3 +165,29 @@ live references. Unconfirmed cleanup remains unavailable, not successfully resto
 A lost registry can require restarting the extension; simultaneous context loss
 has no blanket crash-recovery guarantee. Official StatePort host intake remains
 separate. Live/Draft field controls and U02 majority acceptance remain unfinished.
+
+### Optional inspector lifetime channel
+
+The local hosts also construct `createInspectorConnections(runtime,{isTrusted})`
+from `@stateport/atom/transport` and register its `acceptPort` explicitly on
+`chrome.runtime.onConnect`. Pass the same object as `connections` to
+`createAtomDispatcher`; `isTrusted` must authenticate the host's exact native
+inspector sender. Clients opt in with
+`chromeTransport(chrome,{inspectorOwnership:true})`. The default transport keeps
+older hosts compatible. No constructor installs hidden Chrome listeners.
+
+A private live Port is admitted before owned requests. Port loss synchronously
+revokes that inspector's runtime token and closes only its input editors; it does
+not dispose a host's shared broker. The client does not reconnect or adopt saved
+editing authority. Optional `subscribeConnection` reports loss, without claiming
+native cleanup completed. A bounded failed startup does not fall back to an
+unowned request. Native sender document/tab metadata is checked when available;
+missing optional metadata is not invented as a native identity.
+
+Input operations can carry a bounded `ownerId` for a particular mounted view,
+combined with the transport session and its current live token. Another view or
+client cannot adopt or close an active editor. Explicit close must retain the
+same owner and current investigation; unmount wiring belongs to the consumer.
+Closing releases input rules/observers, not application/server effects. Unknown
+cleanup stays unavailable. The .24 packet's field widgets and actual Live/Draft
+field-mode acceptance remain unfinished.

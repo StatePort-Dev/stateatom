@@ -14,14 +14,14 @@ export type AtomOperation=
  |{op:'connect-site';tabId:number;connection:import('./platform.js').SiteConnection}
  |{op:'forget-site';tabId:number}
  |{op:'tabs'|'unpair'|'list-diagnostics'}
- |{op:'capabilities';tabId:number;capabilityVersion?:1;sourceKind?:'dom-control'|'json-response'}
+ |{op:'capabilities';tabId:number;ownerId?:string;capabilityVersion?:1;sourceKind?:'dom-control'|'json-response'}
  |{op:'pair';url:string;token:string;origin:string;sourceRoot:string;receipt?:unknown}
  |{op:'delete-diagnostic';id:string}
- |{op:'inputs-open';tabId:number;sourceKind?:'dom-control'|'json-response'}
- |{op:'inputs-read';tabId:number;investigationId:string}
- |{op:'inputs-apply';tabId:number;plan:ExperimentPlan}
- |{op:'inputs-undo'|'inputs-baseline';tabId:number;investigationId:string;expectedRevision:number}
- |{op:'inputs-close';tabId:number;investigationId?:string}
+ |{op:'inputs-open';tabId:number;ownerId?:string;sourceKind?:'dom-control'|'json-response'}
+ |{op:'inputs-read';tabId:number;ownerId?:string;investigationId:string}
+ |{op:'inputs-apply';tabId:number;ownerId?:string;plan:ExperimentPlan}
+ |{op:'inputs-undo'|'inputs-baseline';tabId:number;ownerId?:string;investigationId:string;expectedRevision:number}
+ |{op:'inputs-close';tabId:number;ownerId?:string;investigationId?:string}
  |{op:'attach';tabId:number;readOnly?:boolean}
  |{op:'source-map-import';tabId:number;scriptId:string;name:string;data:string}
  |{op:'source-map-acquire';tabId:number;scriptId:string;url?:string}
@@ -41,11 +41,14 @@ export type AtomOperation=
 export interface AtomMessage {version:1;id:string;session:string;payload:AtomOperation}
 export interface AtomReply {version:1;id:string;session:string;ok:boolean;result?:unknown;error?:string;code?:string}
 export interface AtomEvent {event:'selection'|'state-invalidated';tabId:number}
-export interface AtomClient {request(payload:Extract<AtomOperation,{op:'capabilities'}>,options?:{signal?:AbortSignal}):Promise<CapabilityDescription>;request(payload:AtomOperation,options?:{signal?:AbortSignal}):Promise<unknown>;subscribe(fn:(event:AtomEvent)=>void):()=>void;dispose():void}
-export interface AtomTransport {request(message:AtomMessage,options:{signal:AbortSignal}):Promise<AtomReply>;subscribe(fn:(event:AtomEvent)=>void):()=>void}
+export interface AtomClient {request(payload:Extract<AtomOperation,{op:'capabilities'}>,options?:{signal?:AbortSignal}):Promise<CapabilityDescription>;request(payload:AtomOperation,options?:{signal?:AbortSignal}):Promise<unknown>;subscribeConnection?(fn:(event:{state:'closed';code:'INSPECTOR_DISCONNECTED'})=>void):()=>void;subscribe(fn:(event:AtomEvent)=>void):()=>void;dispose():void}
+export interface AtomTransport {request(message:AtomMessage,options:{signal:AbortSignal}):Promise<AtomReply>;subscribe(fn:(event:AtomEvent)=>void):()=>void;closeSession?(session:string):void;subscribeConnection?(session:string,fn:(event:{state:'closed';code:'INSPECTOR_DISCONNECTED'})=>void):()=>void}
 export declare const API_VERSION:1;
 export declare function validateRequest(message:unknown):AtomMessage;
 export declare function createAtomClient(transport:AtomTransport):AtomClient;
 export declare function supportsCapabilityPolicy(value:unknown):value is CapabilityDescription;
-export declare function chromeTransport(api:import('./platform.js').ChromeAPI):AtomTransport;
-export declare function createAtomDispatcher(runtime:import('./runtime.js').AtomRuntime,policy:{isTrusted(sender:Record<string,any>):boolean;isSelectionSender(sender:Record<string,any>):boolean}):(message:any,sender:any,reply:(value:unknown)=>void)=>boolean;
+export declare function chromeTransport(api:import('./platform.js').ChromeAPI,options?:{inspectorOwnership?:boolean;startupTimeout?:number}):AtomTransport;
+export declare function createAtomDispatcher(runtime:import('./runtime.js').AtomRuntime,policy:{connections?:InspectorConnections;isTrusted(sender:Record<string,any>):boolean;isSelectionSender(sender:Record<string,any>):boolean}):(message:any,sender:any,reply:(value:unknown)=>void)=>boolean;
+
+export interface InspectorConnections {acceptPort(port:import('./platform.js').ExtensionPort):boolean;assert(session:string,sender:Record<string,any>):void;has(session:string):boolean;dispose():Promise<void>}
+export declare function createInspectorConnections(runtime:import('./runtime.js').AtomRuntime,options:{isTrusted(sender:Record<string,any>):boolean;maxClients?:number}):InspectorConnections;

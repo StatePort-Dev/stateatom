@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-candidate.20261019.24
+
+- Prevent a failed background read of a retired input editor from invalidating
+  a newer inspection. Preserve generation/run/selection and editor identity
+  checks without weakening native selected-target freshness.
+- Revoke runtime inspector ownership synchronously on native Port loss, before
+  awaiting cleanup. Preserve scoped late acknowledgements and unknown cleanup.
+
+## 0.1.0-candidate.20261019.23
+
+- Bind input editors to their client session, optional live inspector token and
+  per-view owner ID. Another client/view cannot adopt or close an active editor.
+- Add an explicit host inspector Port dispatcher and opt-in Chrome transport.
+  Local host examples connect before requests; page loss revokes only that
+  inspector, including pending opening jobs. No implicit reconnect or storage
+  authority adoption occurs. The default transport retains old-host compatibility.
+- Expose optional connection lifecycle callbacks and preserve unknown cleanup.
+  This packet adds backend page lifetime checks; field widgets, view-unmount
+  wiring and both-mode catalogue acceptance remain separate unfinished work.
+
 ## 0.1.0-candidate.20261019.22
 
 - Retain unknown native startup cleanup when opening has no confirmed reply;
