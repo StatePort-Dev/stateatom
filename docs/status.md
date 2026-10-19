@@ -44,10 +44,23 @@ on `.20261019.11` replaces the exposed DOM toolbar with one parent action and
 on-demand Element details, softens native hover styling and fixes demo launch
 scaling. 650 unit, 33 packed native picker, 2 strict consumers and 7 package
 controls pass; headed and finite smoke demos exercise the actual new controls.
-These screenshots remain candidates for human review. U01 remains next; the
-broader workflow, source/runtime evidence and approved scope are unchanged.
+These screenshots remain candidates for human review. At that checkpoint U01
+remained next; the broader workflow, source/runtime evidence and approved scope
+were unchanged.
 
-Current checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
+The [U01 execution](completion/20-u01-selected-workspace.md) completes the
+normal selected-element workspace on `.20261019.14`: four real task entries,
+short snapshot guidance, advanced manual lookup, exact tab/property/explanation
+context and a working passive-reader font policy. Fresh results: 663 unit,
+42 two-host/IDE, 25 UI, 33 picker, 32 Actions and 19 maps per host, with 2 strict
+consumers and 7 package controls. Actions input methods and retained pointer
+timeouts are explicitly scoped in the report; human visual approval is not
+presumed. Earlier criteria/results remain historical. The one next unfinished
+item is **U02 — Live and Draft/Apply eligible-input editing**, after F02/U01/U05.
+Its exact Live parameters remain for U02; F05 grant scope/lifetime and U06
+handoff UX are still unresolved in their own tasks.
+
+Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that
 scope, with the following verification and limits.
@@ -85,17 +98,6 @@ Last recorded baseline: **2026-10-17**.
 
 StateAtom is an experimental project. The latest available prototype summary records **NARROW SCOPE** for the technical result and **NOT READY** for a public OSS alpha.
 
-The [U01 execution](completion/20-u01-selected-workspace.md) completes the
-normal selected-element workspace on `.20261019.14`: four real task entries,
-short snapshot guidance, advanced manual lookup, exact tab/property/explanation
-context and a working passive-reader font policy. Fresh results: 663 unit,
-42 two-host/IDE, 25 UI, 33 picker, 32 Actions and 19 maps per host, with 2 strict
-consumers and 7 package controls. Actions input methods and retained pointer
-timeouts are explicitly scoped in the report; human visual approval is not
-presumed. Earlier criteria/results remain historical. The one next unfinished
-item is **U02 — Live and Draft/Apply eligible-input editing**, after F02/U01/U05.
-Its exact Live parameters remain for U02; F05 grant scope/lifetime and U06
-handoff UX are still unresolved in their own tasks.
 
 ## Basis of this record
 
