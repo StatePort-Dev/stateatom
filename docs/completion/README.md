@@ -17,9 +17,10 @@ The audit distinguishes implementation read in this revision, results recorded b
    Its .14 checks and retained failures are scoped in that execution report.
 3. [U02 is complete within its fixed input catalogue](21-overnight-u02-progress.md):
    default Live/Draft, native effects, undo and lifecycle, plus one reviewed fix pass.
-   The single next item is **F05: two-confirmation production change enablement**,
-   after completed F02/U02. Its exact grant scope/lifetime remain to define in F05.
-   U06 separately develops handoff UX.
+   [F05 Settings and native integration](22-overnight-f05-progress.md) now pass
+   the current two-host matrix and real expiry. Its newly selected bounded policy
+   is documented; F05 remains open for one whole-item review/fix pass.
+   The next dependency-ready item after acceptance is **U06: handoff journey design**.
    Official-host intake remains I01 and is separate from this local increment.
 4. Develop the remaining analysis and production capabilities through their named cases. Keep the existing closed first-read profile as a separately labelled regression.
 5. Run the release matrix on one immutable candidate, then decide the distribution milestone. A green unit/build job alone is not a release gate.

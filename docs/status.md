@@ -148,6 +148,14 @@ native permission gesture; ordinary prompt acceptance stays unclaimed. Settings
 readiness remains unavailable. GUI consent/expiry/revoke, elapsed native expiry
 and one whole-F05 review still gate F05 completion; next is F05.3.
 
+F05.3 completes the Settings/native slice on `.20261020.7`: full1041/Atom367,
+component14/render6/native lifetime9, main Settings23 with actual ten-minute expiry
+on both hosts, backend27/default local40/original legacy6, types2/admission7 pass.
+Unknown cleanup stays explicit. Browser setup and agent-only screenshot limits
+are unchanged; one unexplained concurrent timeout and all corrected harness
+failures remain recorded. F05 is still in progress pending the one whole-item
+review/fix pass; next is F05.4, then U06 journey design.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

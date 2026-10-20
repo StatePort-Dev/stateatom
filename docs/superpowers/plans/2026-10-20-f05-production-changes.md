@@ -67,9 +67,9 @@ visible status/expiry/revoke and view-lifetime cleanup.
 - [x] Record reference/control mappings and necessary narrow adaptation before RED.
 - [x] RED/GREEN first-step cannot enable, cancel/no effects, two views/context loss,
   keyboard/narrow/reduced-motion and no automatic app requests/handlers.
-- [ ] Fresh immutable candidate and actual both-host HTTPS Live/Draft/Undo/revoke,
+- [x] Fresh immutable candidate and actual both-host HTTPS Live/Draft/Undo/revoke,
   native expiry/interruption controls, default local U02 regression and packed types.
-- [ ] Compare rendered first viewport/type/controls with reference; agent candidates
+- [x] Compare rendered first viewport/type/controls with reference; agent candidates
   remain separate from human visual approval. Local commit.
 
 ### Task 4: F05.4 bounded acceptance

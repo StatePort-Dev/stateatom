@@ -235,7 +235,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-f05-production-changes.md",
       "execution_record": "22-overnight-f05-progress.md",
-      "active_slice": "F05.3",
+      "active_slice": "F05.4",
       "completed_slices": [
         {
           "id": "F05.1",
@@ -292,6 +292,27 @@
             "package_admission": 7
           },
           "native_elapsed_expiry": false,
+          "record": "22-overnight-f05-progress.md"
+        },
+        {
+          "id": "F05.3b",
+          "status": "complete-within-current-settings-native-boundary",
+          "scope": "Actual both-host sequential Settings and HTTPS Live/Draft/Undo/revoke; real ten-minute expiry on each host, current affected local/legacy regression; whole-item review pending",
+          "candidate": "0.1.0-candidate.20261020.7",
+          "tests": {
+            "full": 1041,
+            "atom_contracts": 367,
+            "settings_component": 14,
+            "controlled_render": 6,
+            "native_lifetime_controls": 9,
+            "native_settings_matrix": 23,
+            "native_elapsed_expiry_hosts": 2,
+            "native_backend": 27,
+            "ordinary_default_local_fields": 40,
+            "original_legacy_criteria": 6,
+            "packed_type_consumers": 2,
+            "package_admission": 7
+          },
           "record": "22-overnight-f05-progress.md"
         }
       ],

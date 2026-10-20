@@ -198,3 +198,47 @@ current both-host main Settings Live/Draft/Undo/revoke and actual ten-minute exp
 matrix completes, followed by current local/legacy regression and the one fresh
 whole-F05 review. `.5/.6` candidates and all old/failing runs are unchanged. No
 historical U02 majority, official-host integration, SDK or release is relabelled.
+
+## F05.3b — exact current Settings/native acceptance
+
+The corrected main driver waits for Open/editor readiness, enabled boolean
+controls and acknowledged mode before editing. The `.6` embedding failure had
+clicked an old disabled row and made no edit; the old `.7` run was intentionally
+stopped in its own disposable browser before changing the driver. Its partial
+FAIL11 and explicit interruption record remain. A helper-name shadowing error
+then produced FAIL5; both are retained, not product successes. No runtime code,
+assertion of an app effect, native timeout or expiry duration was changed.
+
+The unchanged `.20261020.7` now passes **23** main Settings checks across standalone
+and embedding: actual two-pane consent/cancel/Escape, exact origin, 440/390px
+13px/12px layout, no enable effects, Live/Draft native and response fields, guarded
+Undo, visible revoke with a waiting response writer, two views/tab switch and
+issuing inspector closure. Both real ten-minute expiries release native attachment,
+close the input editor and leave no silently restored rule. Measured waits are
+**604731 ms** (standalone) and **605007 ms** (embedding), each with initial remaining
+599894 ms. Read-only state polling every five seconds prevents worker suspension;
+this is elapsed active-host expiry, while actual worker restart is separately
+covered by the backend suite.
+
+Fresh affected `.7` regressions pass: native backend **27**, ordinary default local
+fields **40** (no preview), original legacy/real-IDE criteria **6**. One earlier
+concurrent backend run timed out after 9 checks; its cause remains unconfirmed.
+The unchanged isolated run passes27 with the original assertions/timeouts. The
+failed run remains visible; no resource/environment cause is asserted as proven.
+
+`node .artifacts/f05/settings/verify7c.mjs` verifies current source/test bindings,
+exact tarballs/installed hosts and all records: full1041/Atom367/component14,
+render6/native lifetime9/main Settings23 with real expiry2/backend27/default40/
+legacy6/types2/admission7, PASS. Its receipt is
+`.artifacts/f05/settings/verification7c.json`; main results are
+`.artifacts/f05/settings-native/2026-10-20T01-44-42-203Z/results.json`.
+Previous source-only verification records remain historical under their own
+frozen driver hashes. Agent screenshots of both hosts were compared against the
+supplied reference for first viewport, typography, origin, spacing and controls;
+human visual approval is still not claimed or introduced as a blocker.
+
+Task3 is complete. **F05 remains in progress** until Task4's one fresh whole-item
+review, regrading and one tested Critical/Important fix pass. Next is that bounded
+acceptance, followed by U06 journey design when F05 meets its contract. Ordinary
+permission prompt acceptance, official-host intake, public release, SDK and the
+broader baseline remain outside this result.
