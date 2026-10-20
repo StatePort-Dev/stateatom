@@ -166,6 +166,15 @@ packed types2/admission7 pass. Current main Settings/elapsed-expiry and local/
 legacy acceptance remain running; F05 is not yet complete. Minor exact-tab
 presentation debt and all review rulings are recorded in the F05 execution log.
 
+
+[U06](completion/23-u06-handoff-journey.md) now completes the selected QA/PM-to-
+developer **journey specification**, including readable review, local manual
+sharing, immutable developer additions and failure states. Existing v1 export/
+reader is credited; structured expected behavior, observation windows, granular
+privacy and new revisions remain U03/P04 implementation gaps. The written
+synthetic two-role walkthrough is not runtime UI acceptance. Next implementation
+is U03 after U01/U06; C07 and mandatory A05/L02 remain open.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

@@ -78,7 +78,10 @@ Work:
 
 ## U06 — QA/PM-to-developer journey design
 
-**Scope:** mandatory UX work under C07; its outcome is approved but the detailed journey is not yet agreed.  
+**Scope:** mandatory UX work under C07; its outcome is approved. The new working
+journey is now selected in [the U06 specification](../features/qa-pm-handoff-journey.md)
+and [execution record](23-u06-handoff-journey.md); it is a design deliverable, not
+U03/P04 runtime acceptance.
 **Depends on:** U01 and U05.  
 **Produces:** a concrete reporter/recipient journey, mapped to existing capabilities and an implementation-ready handoff specification.  
 **Files:** add `docs/features/qa-pm-handoff-journey.md`; use existing design reference, diagnostic schema and passive-reader behavior. Add a small synthetic clickable/reference flow only where needed to settle interactions; label all simulated behavior.

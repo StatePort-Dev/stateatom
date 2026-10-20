@@ -868,8 +868,18 @@
       ],
       "existing_commands": [],
       "deliverable": "Concrete reporter/recipient journey, failure states and U03/P04 control-to-runtime acceptance; detailed flow not preapproved",
-      "status": "planned",
-      "optional": false
+      "status": "complete",
+      "optional": false,
+      "completion_boundary": "journey-design-only; U03/P04 and C07 runtime remain unfinished",
+      "execution_record": "23-u06-handoff-journey.md",
+      "specification": "../features/qa-pm-handoff-journey.md",
+      "new_working_decisions_not_scope_interview_approval": true,
+      "verification": {
+        "kind": "focused-source/design review and agent written two-role synthetic walkthrough",
+        "runtime_acceptance": false,
+        "independent_human_required": false,
+        "acceptance_cases": "H01-H09 assigned to U03/P04"
+      }
     },
     {
       "id": "A01",
@@ -1504,7 +1514,7 @@
     },
     "qa_handoff": {
       "outcome": "required",
-      "detailed_ux": "to develop in U06"
+      "detailed_ux": "New working journey selected in U06; docs/features/qa-pm-handoff-journey.md; U03/P04 implementation and C07 runtime acceptance remain open"
     },
     "sdk_owner": "StatePort, outside Atom scope",
     "independent_human_required": false,
@@ -1607,7 +1617,7 @@
         "No real-model validation, SDK, official-host intake, publication or global release-readiness claim."
       ]
     },
-    "next_item": "U02",
+    "next_item": "U03",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -1617,7 +1627,7 @@
       "U01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "U02",
+    "active_item": "F05",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -1875,9 +1885,19 @@
           "Action Trace",
           "validated local model"
         ]
+      },
+      {
+        "id": "U06",
+        "status": "complete",
+        "boundary": "journey-design-only",
+        "source_base": "8e28b74",
+        "record": "23-u06-handoff-journey.md",
+        "runtime_acceptance": false,
+        "next_item": "U03"
       }
     ],
-    "scope_adoption_record": "13-scope-reconciliation.md"
+    "scope_adoption_record": "13-scope-reconciliation.md",
+    "current_activity_note": "F05 .9 native expiry acceptance still running; U06 independent design item completed after U01/U05, without runtime changes"
   },
   "next_task": "F05"
 }

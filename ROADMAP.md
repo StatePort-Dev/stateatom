@@ -99,7 +99,10 @@ Full1047/Atom373/F05 models78 and fresh native backend27/lifetime15 pass. Curren
 main Settings/real expiry and local/legacy acceptance still run before completion.
 The ten-minute exact-document policy is a new F05 working choice, not scope-review
 approval. Minor debt: the modal still lacks a readable exact tab/page identifier.
-U06 remains the next dependency-ready item after this bounded acceptance.
+The independent U06 design item is now complete as a
+[reporter/recipient journey](docs/features/qa-pm-handoff-journey.md), with explicit
+U03/P04 gaps and acceptance. This changes no runtime or C07 readiness claim.
+Next implementation is U03 after U01/U06; F05 current expiry acceptance still runs.
 
 ## Historical roadmap and checkpoint ledger
 
