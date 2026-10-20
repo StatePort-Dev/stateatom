@@ -11,6 +11,8 @@ export interface ControlInputResource {id:string;kind:'dom-control';revision:num
 /** Inert data. A plan grants no authority; each runtime adapter can refuse a kind. */
 export interface ExperimentPlan {schema:'stateatom.experiment-plan/1';id:string;investigationId:string;mode:'live'|'draft';target:InputTarget;changes:Array<{resource:ResponseInputResource|ControlInputResource;value:InputScalar}>;requiredGrants:import('./platform.js').Capability[];refresh:'none';atomic:false;cleanup:'adapter-specific'}
 export type AtomOperation=
+ |{op:'production-begin'|'production-close'|'production-revoke';tabId:number;ownerId:string}
+ |{op:'production-advance'|'production-confirm'|'production-cancel';tabId:number;ownerId:string;ticket:string}
  |{op:'connect-site';tabId:number;connection:import('./platform.js').SiteConnection}
  |{op:'forget-site';tabId:number}
  |{op:'tabs'|'unpair'|'list-diagnostics'}

@@ -32,7 +32,7 @@ export function createProductionChangeHost({available,readTarget,retire,onChange
    if(stage==='begin')return policy.begin(target,owner,viewId);
    if(stage==='advance')return policy.advance(ticket,target,owner,viewId);
    const grant=policy.confirm(ticket,target,owner,viewId);issued=true;active.add(id);schedule();
-   const retired=await cleanup(id);guard();if(retired.cleanup==='unknown')throw error('CLEANUP_UNCONFIRMED');const result=policy.snapshot(target);if(!result.active||result.grantId!==grant.grantId)throw error('CAPABILITY_DENIED');return{...result,cleanup:retired.cleanup};
+   const retired=await cleanup(id);guard();if(retired.cleanup==='unknown')throw error('CLEANUP_UNCONFIRMED');const fresh=await readTarget(id,guard,{ownedLease:false});guard();const result=policy.snapshot(fresh);if(!result.active||result.grantId!==grant.grantId)throw error('CAPABILITY_DENIED');return{...result,cleanup:retired.cleanup};
   }catch(e){if(issued)policy.revokeOwner(owner,viewId);throw e;}
  }
  return Object.freeze({available:available===true,transition,

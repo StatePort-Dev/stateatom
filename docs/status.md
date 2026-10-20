@@ -141,6 +141,13 @@ command dispatch are controlled Chrome-boundary models in this slice. Actual
 Settings/wire/runtime/packed-HTTPS admission remains F05.2b/3; installed U02
 archives stay unchanged and their old source checks are historical.
 
+F05.2b completes the native HTTPS backend boundary on `.20261020.4`: 1027 full /
+353 Atom checks, native backend27/local-fields40 and types2/admission7 pass.
+Browser grant is real but uses explicitly declared Chrome WebUI preapproval plus
+native permission gesture; ordinary prompt acceptance stays unclaimed. Settings
+readiness remains unavailable. GUI consent/expiry/revoke, elapsed native expiry
+and one whole-F05 review still gate F05 completion; next is F05.3.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

@@ -220,14 +220,15 @@
       "existing_commands": [
         "npm run verify:atom-contract",
         "npm run verify:browser",
-        "npm run verify:embedding"
+        "npm run verify:embedding",
+        "npm run verify:production-changes"
       ],
       "deliverable": "Settings two warnings/confirmations, scoped admission and revocation for supported production Live/Draft changes",
       "status": "in-progress",
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-f05-production-changes.md",
       "execution_record": "22-overnight-f05-progress.md",
-      "active_slice": "F05.2b",
+      "active_slice": "F05.3",
       "completed_slices": [
         {
           "id": "F05.1",
@@ -250,6 +251,23 @@
             "source_type_consumer": 1
           },
           "native_production_enabled": false,
+          "record": "22-overnight-f05-progress.md"
+        },
+        {
+          "id": "F05.2b",
+          "status": "complete-within-native-backend-boundary",
+          "scope": "Runtime/wire/live peer enforcement, actual independent browser grant and both-host HTTPS backend effects; Settings readiness still unavailable",
+          "candidate": "0.1.0-candidate.20261020.4",
+          "tests": {
+            "full": 1027,
+            "atom_contracts": 353,
+            "native_backend": 27,
+            "affected_local_fields": 40,
+            "packed_type_consumers": 2,
+            "package_admission": 7
+          },
+          "native_settings_ui": false,
+          "native_elapsed_expiry": false,
           "record": "22-overnight-f05-progress.md"
         }
       ],

@@ -26,6 +26,12 @@ client.request({op:'inputs-open',tabId:1,sourceKind:'javascript'});
 client.request({op:'inputs-apply',tabId:1,sourceKind:'dom-control'});
 void nativeAvailable;
 
+client.request({op:'production-begin',tabId:1,ownerId:'settings-view'});
+client.request({op:'production-advance',tabId:1,ownerId:'settings-view',ticket:'opaque-ticket'});
+client.request({op:'production-close',tabId:1,ownerId:'settings-view'});
+// @ts-expect-error Browser requests cannot invent a target grant.
+client.request({op:'production-confirm',tabId:1,ownerId:'settings-view',ticket:'t',grant:{active:true}});
+
 import {createInspectorConnections} from '@stateport/atom/transport';
 const inspectorConnections=createInspectorConnections(runtime,{isTrusted:sender=>sender.id==='host',maxClients:16});
 const liveTransport=chromeTransport(api,{inspectorOwnership:true,startupTimeout:5000});

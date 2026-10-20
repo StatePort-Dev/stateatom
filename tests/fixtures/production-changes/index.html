@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Synthetic production changes</title>
+<style>body{font:18px system-ui;max-width:700px;margin:36px auto}button,input{font:inherit;margin:8px;padding:8px}output{display:block}</style>
+<h1>Synthetic HTTPS application</h1><p>No customer data. Refresh is an explicit application action.</p>
+<button id="refresh" type="button">Refresh app data</button><button id="response-confirm" disabled>Response confirm</button>
+<output id="response-quota">Not loaded</output><output id="status">Idle</output>
+<form><label>Name <input id="native-text" value="AB"></label><label>Amount <input id="native-number" type="number" value="2" min="1"></label><button id="native-confirm" type="button" disabled>Native confirm</button></form>
+<output id="native-result">AB / 2</output>
+<script>
+window.fixture={requests:0,events:0};let generation=0;
+document.querySelector('#refresh').onclick=async()=>{const current=++generation;window.fixture.requests++;const data=await fetch('/api',{cache:'no-store'}).then(r=>r.json());document.querySelector('#response-confirm').disabled=data.flag;document.querySelector('#response-quota').textContent=String(data.quota);document.querySelector('#status').textContent='Loaded '+current;};
+function update(){window.fixture.events++;const text=document.querySelector('#native-text').value,n=Number(document.querySelector('#native-number').value);document.querySelector('#native-result').textContent=text+' / '+n;document.querySelector('#native-confirm').disabled=text.length<3||n<1;}
+for(const id of['native-text','native-number'])for(const event of['input','change'])document.getElementById(id).addEventListener(event,update);
+</script></html>

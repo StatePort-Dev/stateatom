@@ -48,7 +48,7 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
   if(revoking.has(id))return revoking.get(id);const entry=leases.get(id);leases.delete(id);
   const work=(async()=>{await closeNative(id);if(!entry)return{cleanup:'none'};try{await entry.l.release();return{cleanup:'released'};}catch{return{cleanup:'unknown'};}})();revoking.set(id,work);void work.finally(()=>{if(revoking.get(id)===work)revoking.delete(id);});return work;
  }
- const productionHost=createProductionChangeHost({available:readOnlySites===true&&typeof api.scripting?.executeScript==='function',readTarget:async(id,guard)=>{const l=await requireLease(id,'read');guard();const target=await productionTarget(id,guard);l.assert('read');guard();return target;},retire:revoke,onChange:e=>events.emit(e),...(productionClock?{clock:productionClock}:{})});
+ const productionHost=createProductionChangeHost({available:readOnlySites===true&&typeof api.scripting?.executeScript==='function',readTarget:async(id,guard,{ownedLease=true}={})=>{const l=ownedLease?await requireLease(id,'read'):null;guard();const target=await productionTarget(id,guard);l?.assert('read');guard();return target;},retire:revoke,onChange:e=>events.emit(e),...(productionClock?{clock:productionClock}:{})});
  async function basicFacts(id){
   await ready;const epoch=authorityEpoch,tab=await api.tabs.get(id),origin=appOrigin(tab.url),connection=connections.get(origin)||null;
   const supported=isInspectionOrigin(tab.url,readOnlySites)||!!connection&&new URL(origin).protocol==='http:';
@@ -109,7 +109,7 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
    const record={tabId:id,abort:new AbortController(),session:null};nativeSessions.add(record);
    try{
     const session=await controlOwner.open({tabId:id,origin:target.origin,document:target.document,
-     signal:record.abort.signal,guard,execute:async op=>{await guard(['read','inject','replay']);const entry=leases.get(id);if(entry?.origin.startsWith('https:'))productionHost.assert(entry.productionTarget,'dom-control');return api.scripting.executeScript(op);},onLost});
+     signal:record.abort.signal,guard,execute:async op=>{await guard(['read','inject','replay']);const entry=leases.get(id);if(!entry)throw atomError('LEASE_REQUIRED');entry.l.assert('replay');if(entry.origin.startsWith('https:'))productionHost.assert(entry.productionTarget,'dom-control');return api.scripting.executeScript(op);},onLost});
     record.session=session;
     if(record.abort.signal.aborted||stopped){await session.close('Opening cancelled');throw atomError('EDITOR_CLOSED');}
     return Object.freeze({read:()=>session.read(),write:(...args)=>session.write(...args),get closed(){return session.closed;},async close(reason){try{return await session.close(reason);}finally{nativeSessions.delete(record);}}});

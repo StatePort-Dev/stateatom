@@ -73,3 +73,16 @@ void inspectorConnections.dispose();
 
 const fieldPreview=mountAtom(document.createElement('div'),client,{inputEditorPreview:true,onReconnect:async()=>{},idPrefix:'field-preview-'});
 void fieldPreview.dispose();
+
+liveClient.request({op:'production-begin',tabId:1,ownerId:'settings-view'});
+liveClient.request({op:'production-confirm',tabId:1,ownerId:'settings-view',ticket:'opaque-ticket'});
+liveClient.request({op:'production-revoke',tabId:1,ownerId:'settings-view'});
+// @ts-expect-error A confirmation needs its current private ticket and view.
+liveClient.request({op:'production-confirm',tabId:1,ownerId:'settings-view'});
+// @ts-expect-error Wire requests cannot choose target, duration or capabilities.
+liveClient.request({op:'production-begin',tabId:1,ownerId:'settings-view',duration:99999999});
+if(platform.productionChanges){
+ platform.productionChanges.transition('begin',1,{owner:{},viewId:'settings-view',assertCurrent(){}});
+ // @ts-expect-error Host transitions require a live context assertion.
+ platform.productionChanges.transition('confirm',1,{owner:{},viewId:'settings-view'});
+}

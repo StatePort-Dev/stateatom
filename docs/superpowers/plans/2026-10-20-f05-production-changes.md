@@ -47,13 +47,13 @@ permission/authority test. **Consumes:** Task1 actor. **Produces:** same policy 
 runtime/host admission, real native document scope, pending cleanup and explicit
 read-only reattach, production input observations without legacy instrumentation.
 
-- [ ] Define exact host/runtime/transport interfaces from current code; capture
+- [x] Define exact host/runtime/transport interfaces from current code; capture
   the conservative lease-renewal and cleanup order before RED.
-- [ ] RED/GREEN default/first-only/forged scope, post-await expiry/revoke/doc loss,
+- [x] RED/GREEN default/first-only/forged scope, post-await expiry/revoke/doc loss,
   old inspector, foreign lease, restart and owned cleanup controls.
-- [ ] Prove actual browser permission route on disposable local HTTPS; distinguish
+- [x] Prove actual browser permission route on disposable local HTTPS; distinguish
   browser permission from Settings grant and do not alter issued artifacts.
-- [ ] New immutable candidate, source/full/packed/native changed-area proof and
+- [x] New immutable candidate, source/full/packed/native changed-area proof and
   bounded local commit. Keep feature unavailable to ordinary UI until Task3.
 
 ### Task 3: F05.3 Settings and visible revocation

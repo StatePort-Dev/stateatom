@@ -79,3 +79,72 @@ wire/runtime denial/admission, Settings and native enabled changes are still owe
 Task2 remains open; next **F05.2b** wires that authority into the runtime and exact
 transport. No Settings/native production credit is taken for these controlled
 Chrome-boundary models.
+
+
+## F05.2b — runtime/wire and native HTTPS backend
+
+The runtime now consumes the same checked host status. Production inputs need a
+real live inspector client and independent browser permission plus the grant.
+Strict stage messages accept no target/duration/capability claims. Omitting the
+owned marker cannot borrow a registered native peer; two real inspector pages
+exercise that refusal. All grant IDs/private tickets/owner state stay out of
+persisted runtime state, and restart never restores authority. Final confirmation
+rechecks the native document after retiring its old readonly attachment.
+
+HTTPS inspection remains read-only: legacy reset/cache/reload trials still refuse.
+Only separately granted U02 inputs can collect bounded matching responses and
+write through existing adapters. The embedding example explicitly opts into
+optional HTTPS and the same existing browser permission action, with no shared
+style/token change. Ordinary production Settings readiness remains NOT_IMPLEMENTED
+until Task3; backend commands do not count as the two-warning GUI workflow.
+
+The browser permission route is explicit: in a disposable synthetic profile, the
+test preapproves the runtime host through Chrome's privileged extensions WebUI
+API, then uses a **real native pointer gesture** on Allow site and attach. Native
+`permissions.contains` is false initially, false after preapproval on the tested
+version, then true after the real extension permission request. Readonly attach
+completes. No Chrome permission API is mocked. This is native setup, **not proof
+of accepting an ordinary browser permission prompt**; the standalone gesture-only
+probe remained pending and is retained as a negative result. F02/P03's ordinary
+prompt/corporate workflow is not silently completed by this setup route.
+
+Fresh `.20261020.4` handoff:
+`.artifacts/atom/2026-10-20T01-08-43-098Z/atom-handoff.json`. Full **1027/1027**,
+Atom contracts **353/353**, two packed strict consumers and seven admission checks
+pass. Exact source/archive/host/result bindings are in
+`.artifacts/f05/runtime/verification4.json` and its `verify4.mjs`.
+
+- Native backend27, both hosts:
+  `.artifacts/f05/native-backend/2026-10-20T01-09-40-912Z/results.json`.
+  Actual default/browser gates, cancel either stage, first-only refusal, native
+  peer binding, grant-only enablement without app work, explicit readonly reattach,
+  both Live/Draft response and native-control effects/undos, independent other-tab
+  refusal, revocation preserving a foreign owner, issuer disappearance and actual
+  active-Fetch worker restart all pass. Server requests/fixture handler counts
+  distinguish enabling from changing. Setup is backend RPC/private Port, not GUI
+  consent; app observation/actions use declared scripting on the synthetic fixture.
+- Affected local U02 fields40:
+  `.artifacts/u02/input-fields/native/2026-10-20T01-09-40-779Z/results.json`, preserving
+  timing/late reply/partial/ABA/undo/view/tab/native-loss/default-HTTPS refusal.
+  The original18-row majority results retain their own .1 identity; these40 are
+  affected-area regressions, not a relabelled full catalogue or broad re-audit.
+
+Retained defects and controls:
+
+- Native .2 FAIL6: awaited production checks delayed request identity registration,
+  so a real matching pause looked unrelated and passed through unchanged. A
+  concurrent event model RED reproduces it. Metadata now registers before awaits;
+  body reads and every write keep fresh authority checks. .3 normal native27 pass.
+- A subsequent source microtask control found a genuine post-revoke scripting
+  dispatch when the removed entry skipped its final guard. Continuation3 RED is
+  retained; .4 requires the current replay lease synchronously after guards and
+  refuses all tested continuations. Initial control accidentally armed on opening
+  rather than the final write; its GREEN is retained and not called a failing RED.
+- A native-document change during readonly retirement now refuses the final grant
+  (source RED). Persistence/peer-marker failures and all earlier runtime REDs remain.
+
+Task2 is complete within this host/runtime/backend boundary. Settings UI, visible
+mode/expiry/revoke, actual UI Live/Draft acceptance, native elapsed expiry and one
+whole-F05 review remain required. F05 is not complete and no release, SDK, other
+repository, generic backend writer, action execution proof or human approval is
+claimed. Next bounded slice is **F05.3**.

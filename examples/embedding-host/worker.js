@@ -2,8 +2,8 @@ import {createAtomRuntime} from '@stateport/atom/runtime';
 import {createChromePlatform,createEventHub,createGuardianBroker,createNativeControlOwner} from '@stateport/atom/platform';
 import {createAtomDispatcher,createInspectorConnections,isInspectionOrigin} from '@stateport/atom/transport';
 const events=createEventHub(),broker=createGuardianBroker(chrome),controlOwner=createNativeControlOwner(chrome);
-const platform=createChromePlatform(chrome,{events,broker,controlOwner});
-const runtime=createAtomRuntime(platform);
+const platform=createChromePlatform(chrome,{events,broker,controlOwner,readOnlySites:true});
+const runtime=createAtomRuntime(platform,{readOnlySites:true});
 const trustedInspector=s=>s.id===chrome.runtime.id&&s.url===chrome.runtime.getURL('workspace/inspect.html');
 const inspectorConnections=createInspectorConnections(runtime,{isTrusted:trustedInspector});
 chrome.runtime.onConnect.addListener(inspectorConnections.acceptPort);
@@ -22,5 +22,5 @@ chrome.tabs.onRemoved.addListener(tabId=>events.emit({type:'removed',tabId}));
 chrome.action.onClicked.addListener(tab=>chrome.tabs.create({url:chrome.runtime.getURL('workspace/inspect.html'),...(Number.isSafeInteger(tab?.id)&&tab.id>0?{openerTabId:tab.id}:{})}));
 chrome.runtime.onMessage.addListener(createAtomDispatcher(runtime,{
  isTrusted:trustedInspector,connections:inspectorConnections,
- isSelectionSender:s=>s.id===chrome.runtime.id&&s.frameId===0&&!!s.tab&&(isInspectionOrigin(s.url)||platform.approvedSite(s.url))&&new URL(s.url).origin===new URL(s.tab.url).origin
+ isSelectionSender:s=>s.id===chrome.runtime.id&&s.frameId===0&&!!s.tab&&(isInspectionOrigin(s.url,true)||platform.approvedSite(s.url))&&new URL(s.url).origin===new URL(s.tab.url).origin
 }));

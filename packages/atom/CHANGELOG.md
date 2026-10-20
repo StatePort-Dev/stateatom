@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.4
+
+- Reassert the current replay lease synchronously after native-control guards
+  resume. A revoked/removed lease can never skip its final production check and
+  dispatch a later scripting write. Preserve the microtask-boundary RED.
+- Existing UI/shared tokens and Settings readiness are unchanged.
+
+## 0.1.0-candidate.20261020.3
+
+- Register production request/frame metadata before awaited permission probes,
+  so a concurrent exact Fetch pause is matched. Body reads and all native writes
+  retain fresh grant/document checks. Preserve the failed .2 HTTPS native result.
+- No Settings readiness, shared UI or typography change.
+
+## 0.1.0-candidate.20261020.2
+
+- Add bounded production policy at runtime and the Chrome lease/native boundary.
+  Two private sequential backend stages grant only current-document input kinds;
+  runtime Settings readiness remains unavailable until its UI acceptance.
+- Expiry/revoke/owner or permission loss independently retire owned resources;
+  unknown cleanup is preserved. No grant or ticket is persisted or adopted.
+- Keep HTTPS inspection read-only and legacy cache/reload trials denied. Input
+  observations run only under the separate active grant.
+- Opt the local embedding example into optional HTTPS access with the existing
+  native permission action. No new shared UI token/primitive/typography change.
+
 ## 0.1.0-candidate.20261020.1
 
 - Refuse JSON response editing when serializing an untouched negative zero or
