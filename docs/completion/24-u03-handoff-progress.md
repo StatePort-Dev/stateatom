@@ -344,3 +344,107 @@ separate reviewed Save action, exact-source preparation, readable saved-v2 reope
 and explicit import/removal to the existing inspector UI. Current UI still exposes
 its existing saved-v1/minimal download workflow. Rich per-category/per-note privacy,
 full H01–H06, whole-U03 review, P04 and C07 remain open; Tasks2/3 are not task-done.
+
+## U03.2b.2b — reviewed Save, local reopen and explicit import UI
+
+Current immutable `.20261020.17`:
+`.artifacts/atom/2026-10-20T05-36-31-213Z/atom-handoff.json`.
+This completes the bounded local persistence UI after backend `92f0e6c`, not
+rich privacy, whole U03 or C07. New UI details are implementation choices within
+the U03 working brief, not retrospective approval from the scope interview.
+
+After selecting a saved v1 snapshot, Prepare issue reopens its **exact stored raw
+string**. Preview and download do not save automatically. **Save reviewed report
+locally** is separate and requires acknowledgement of the exact artifact ID and
+raw digest; failed/lost replies preserve the reviewed bytes for retry/reopen.
+Edits/Cancel invalidate old replies, and queued writes are aborted where possible;
+a committed save is not promised to roll back. Inputs wait for the saved source
+before the default title is initialized. Original snapshots remain v1; retention
+may remove oldest reports with a visible notice under the unchanged common budget.
+
+The same selector displays readable issue titles/snapshot properties. Review/export
+opens saved v2 read-only, shows discrepancy/condition/time/omissions/unverified
+notes and downloads the original string. A local exact parent permits content
+matching only; absent parents remain unchecked. Close returns focus to review.
+Explicit file import checks 1 MiB/strict UTF-8/format before storage. Identical
+files are idempotent; a different raw string at the same ID conflicts visibly.
+Malformed UTF-8/BOM/JSON are not silently normalized into stored files. Delete uses
+the selected raw digest; Refresh local files provides recovery after uncertain I/O.
+These operations require no live app, source, model or account.
+
+Fresh commands (exact handoff argument shown once as `$HANDOFF` for readability):
+
+```sh
+# HANDOFF=.artifacts/atom/2026-10-20T05-36-31-213Z/atom-handoff.json
+npm test
+node --test --test-reporter=tap --test-isolation=none tests/atom/handoff-ui.test.mjs tests/atom/handoff-library.test.mjs tests/atom/inspector-ui.test.mjs
+npm run pack:atom
+npm run verify:atom-types -- "$HANDOFF"
+npm run verify:atom-package -- "$HANDOFF"
+node tests/integration/handoff-library.mjs "$HANDOFF"
+node tests/integration/handoff-storage.mjs "$HANDOFF"
+node tests/integration/production-settings-lifetime.mjs "$HANDOFF"
+npm run verify:input-fields -- "$HANDOFF" --accepted
+node tests/integration/input-legacy.mjs "$HANDOFF"
+node .artifacts/u03/storage-ui/verify17.mjs
+```
+
+Full **1227**, controllers **59** (UI23/library15/mounted21), packed types **2** and
+admission **7** pass. Actual native UI **25** includes the original minimal two-role
+controls plus separate keyboard-reachable Save, exact read-only redownload, whole
+reporter browser restart with the app closed, actual native file input, duplicate/
+conflict/invalid UTF-8 paths, 440/390 layouts and actual 200% browser zoom. It then
+opens the downloaded report in a clean recipient profile and appends/reopens a
+new unverified note without changing the baseline. Record:
+`.artifacts/u03/library-native/2026-10-20T05-38-02-809Z/results.json`.
+Repeated download is proven by a **fresh native Chrome download GUID, completion
+and byte count**, even when Chrome overwrites an identical destination filename.
+
+Current storage/restart/quota **15**:
+`.artifacts/u03/storage-native/2026-10-20T05-38-18-361Z/results.json`.
+Current F05 lifecycle **15**:
+`.artifacts/f05/settings-lifetime/2026-10-20T05-38-35-039Z/results.json`.
+Actual **default** input fields **40**, `configuration.preview:false`:
+`.artifacts/u02/input-fields/native/2026-10-20T05-43-49-779Z/results.json`.
+Original legacy experiments/real IDE/Restore **6**:
+`.artifacts/u02/input-legacy/2026-10-20T05-41-31-526Z/results.json`.
+The earlier bare verify:input-fields run passed preview40 separately at
+`2026-10-20T05-38-50-083Z`; it is retained as preview, never relabelled default.
+Old majority/ten-minute expiry results retain their own original versions.
+Frozen current source/archive/entire-host/log receipt:
+`.artifacts/u03/storage-ui/verification17.json`.
+
+Visual comparison used the supplied Settings narrow reference and current native
+prepare/saved views in both hosts. Shared type/surfaces/borders/control alignment
+remain the foundation; the longer description form scrolls and 200% zoom wraps
+its header. No dedicated handoff reference screen is claimed. Plain textareas
+now use the shared body font instead of the existing broad JSON-monospace rule;
+computed body/control sizes stay 13/12 px. New CSS is scoped to Atom handoff/import
+controls; shared tokens/primitives/reference artifacts are unchanged. Changelog
+records every visual change. Screenshots are agent-reviewed candidates, not human
+visual approval, and an independent human remains **not a blocker**.
+
+Retained RED/control history in `.artifacts/u03/storage-ui`:
+
+- Library missing-factory14 and later title metadata1; Save7/identity8 after the
+  old12 pass; mounted coupling2; real-parser missing-parent2; focus1; source-ready1.
+  Fixes preserve strict parser semantics, precise acknowledgements and stale UI
+  refusal. No getter, skipped branch or app expression is re-evaluated.
+- `.15` native **FAIL6** at `2026-10-20T05-26-52-398Z`: Save/reopen succeeded;
+  the helper incorrectly required a new second filename. Read-only Chrome History
+  confirms two completed 1962-byte downloads to the same destination. Native GUID
+  completion now proves the second download without a false positive from old data.
+  The same screenshot exposed a default-title/native typing race, fixed by the
+  source-ready input gate. Native input now waits for enabled controls, activates
+  the page before focus/select, and asserts the exact entered title.
+- `.16` functional native25 remains at `2026-10-20T05-32-09-313Z`. A new visual
+  control then correctly failed3 at `2026-10-20T05-35-45-386Z`: ordinary textareas
+  inherited SFMono instead of shared Inter. Scoped CSS fixes it; `.17` reruns the
+  whole current native flow. Superseded archives/results are not overwritten.
+
+The stale package contract's textual F05-not-implemented note now describes the
+actual default-read-only/separate two-stage condition; policy and authority were
+not broadened. Next **U03.2b.3 — rich privacy/technical evidence profile** must add
+explicit category/field/per-note review without silently gaining data or trust.
+Tasks2/3, full H01–H06, one whole-U03 review, P04 and C07 remain open. SDK,
+publication and other-repository changes remain outside this run.

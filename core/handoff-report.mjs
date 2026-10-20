@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Unimported minimal diagnostic-v2 candidate. Data only; no reader/storage/Chrome.
+// Minimal diagnostic-v2 data codec; no direct Chrome or action authority.
 import{parseDiagnostic}from'./diagnostic.mjs';
 const MAX=1048576,DATE_MAX=8640000000000000,PROFILE='minimal-snapshot/1';
 const issueFields=['title','actual','expected','question','steps'];

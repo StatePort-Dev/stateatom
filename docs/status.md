@@ -215,6 +215,15 @@ one original retention budget. Actual Chrome byte usage is measured. Source/nati
 failures and their controls are retained. V2 Save/import/reopen **UI** is next
 (U03.2b.2b); backend tests do not complete that journey, rich review, U03 or C07.
 
+[U03.2b.2b](completion/24-u03-handoff-progress.md) now exposes actual reviewed
+Save/local reopen/import on `.20261020.17`: full1227/controllers59, native UI25/
+storage15/Settings15/default fields40/original legacy6 and types2/admission7 pass.
+Exact bytes survive browser restart and clean-recipient revision; conflicting and
+invalid UTF-8 imports preserve originals. Native narrow/200%-zoom/font controls
+and agent visual comparison are recorded with all failed controls. The minimal
+profile still excludes technical fragments; next is U03.2b.3 rich category/field/
+per-note privacy. Full U03/H01–H06/whole review/C07 and P04 remain open.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

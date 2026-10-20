@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 // Controlled DOM; real data codec. Not rendered/native workflow acceptance.
-import test from'node:test';import assert from'node:assert/strict';import{makeDiagnostic}from'../../core/diagnostic.mjs';import{parseHandoffReport}from'../../core/handoff-report.mjs';import{createHandoffUI}from'../../packages/atom/src/handoff-ui.mjs';
+import test from'node:test';import assert from'node:assert/strict';import{makeDiagnostic}from'../../core/diagnostic.mjs';import{parseHandoffReport,handoffArtifactDigest,appendHandoffFinding}from'../../core/handoff-report.mjs';import{createHandoffUI}from'../../packages/atom/src/handoff-ui.mjs';
 const tick=()=>new Promise(r=>setTimeout(r,0));
+const savedReply=async(raw,status='saved')=>({status,entry:{id:JSON.parse(raw).id,digest:await handoffArtifactDigest(raw)},evicted:[],expired:[]});
 function node(){const events=new Map();return{value:'',checked:false,textContent:'',hidden:false,disabled:false,open:false,ownerDocument:{activeElement:null},focus(){this.focused=true;},getClientRects(){return[{}];},querySelectorAll(){return[];},showModal(){this.open=true;},close(){this.open=false;events.get('close')?.({});},addEventListener(k,fn){events.set(k,fn);},fire(k){events.get(k)?.({preventDefault(){},stopPropagation(){}});}};}
-function fixture(property='disabled'){
- const source=JSON.stringify(makeDiagnostic({selection:{selector:'#PrivateSelectorCedar',property,value:property==='disabled'?true:'PrivateTextCedar',observedAt:1000},analysis:null},{notes:'PrivateLegacyNotesCedar',now:1500})),nodes=new Map(),$=id=>{if(!nodes.has(id))nodes.set(id,node());return nodes.get(id);};let calls=0,release,hold=false;const downloads=[];
- const view=createHandoffUI({$,getSource:async()=>{calls++;if(hold){hold=false;await new Promise(r=>release=r);}return source;},download:(raw,name)=>downloads.push({raw,name}),now:()=>2000});
+function fixture(property='disabled',{saveReviewed,build}={}){
+ const source=JSON.stringify(makeDiagnostic({selection:{selector:'#PrivateSelectorCedar',property,value:property==='disabled'?true:'PrivateTextCedar',observedAt:1000},analysis:build?{sources:[],graph:{identity:{build}}}:null},{notes:'PrivateLegacyNotesCedar',now:1500})),nodes=new Map(),$=id=>{if(!nodes.has(id))nodes.set(id,node());return nodes.get(id);};let calls=0,release,hold=false;const downloads=[];
+ const view=createHandoffUI({$,saveReviewed,getSource:async()=>{calls++;if(hold){hold=false;await new Promise(r=>release=r);}return source;},download:(raw,name)=>downloads.push({raw,name}),now:()=>2000});
  const click=id=>$(id).onclick(),input=(id,value)=>{$(id).value=value;$(id).oninput();};
  return{$,view,source,downloads,click,input,calls:()=>calls,hold:()=>hold=true,release:()=>release?.(),enable:()=>view.update({available:true,contextKey:'saved-a'}),async open(){view.update({available:true,contextKey:'saved-a'});await click('handoff-open');}};
 }
@@ -21,3 +22,40 @@ test('whole-field omission is visible and changes only the derivative',async()=>
 test('dispose discards pending source without an orphaned dialog or download',async()=>{const f=fixture();f.enable();f.hold();const pending=f.click('handoff-open');f.view.dispose();f.release();await pending;assert.equal(f.$('handoff-dialog').open,false);assert.equal(f.downloads.length,0);});
 test('background saved-list availability does not steal keyboard focus',()=>{const f=fixture();f.enable();assert.notEqual(f.$('handoff-open').focused,true);f.view.update({available:true,contextKey:'saved-b'});assert.notEqual(f.$('handoff-open').focused,true);f.view.dispose();});
 test('late close event from a cancelled dialog cannot invalidate a newly opened saved report',async()=>{const f=fixture();await f.open();f.$('handoff-dialog').close=function(){this.open=false;};f.click('handoff-cancel');await f.click('handoff-open');assert.equal(f.$('handoff-preview').disabled,false);f.$('handoff-dialog').fire('close');assert.equal(f.$('handoff-dialog').open,true);assert.equal(f.$('handoff-preview').disabled,false);await f.click('handoff-preview');assert.equal(f.$('handoff-download').disabled,false);f.view.dispose();});
+
+test('local Save is a separate explicit action after preview and keeps the reviewed bytes',async()=>{
+ const saved=[],f=fixture('disabled',{saveReviewed:async raw=>{saved.push(raw);return savedReply(raw);}});await f.open();assert.equal(f.$('handoff-save').disabled,true);f.input('handoff-actual','Cannot confirm');await f.click('handoff-preview');assert.equal(saved.length,0);assert.equal(f.$('handoff-save').disabled,false);await f.click('handoff-save');assert.equal(saved.length,1);f.click('handoff-download');assert.equal(saved[0],f.downloads[0].raw);assert.equal((await parseHandoffReport(saved[0])).record.report.issue.actual,'Cannot confirm');assert.equal(f.$('handoff-save').disabled,true);assert.match(f.$('handoff-status').textContent,/local|saved/i);f.view.dispose();
+});
+test('form edits invalidate reviewed Save just as they invalidate download',async()=>{
+ const saved=[],f=fixture('disabled',{saveReviewed:async raw=>{saved.push(raw);return savedReply(raw);}});await f.open();await f.click('handoff-preview');f.input('handoff-expected','New expectation');assert.equal(f.$('handoff-save').disabled,true);await f.click('handoff-save');assert.equal(saved.length,0);f.view.dispose();
+});
+test('failed Save keeps the exact reviewed file available for retry',async()=>{
+ const attempted=[];let fail=true;const f=fixture('disabled',{saveReviewed:async raw=>{attempted.push(raw);if(fail)throw Error('storage unavailable');return savedReply(raw,'unchanged');}});await f.open();await f.click('handoff-preview');await f.click('handoff-save');assert.match(f.$('handoff-status').textContent,/not confirmed|unavailable/i);assert.equal(f.$('handoff-save').disabled,false);assert.equal(f.$('handoff-download').disabled,false);fail=false;await f.click('handoff-save');assert.equal(attempted.length,2);assert.equal(attempted[0],attempted[1]);assert.equal(f.$('handoff-save').disabled,true);f.view.dispose();
+});
+test('a late Save acknowledgement cannot label a newer form as saved',async()=>{
+ let release,signal;const f=fixture('disabled',{saveReviewed:(_raw,options)=>{signal=options.signal;return new Promise(r=>release=r);}});await f.open();await f.click('handoff-preview');const pending=f.click('handoff-save');f.input('handoff-expected','Newer unsaved text');assert.equal(signal.aborted,true);release({status:'saved',evicted:[]});await pending;assert.equal(f.$('handoff-save').disabled,true);assert.equal(f.$('handoff-download').disabled,true);assert.equal(f.$('handoff-expected').value,'Newer unsaved text');assert.doesNotMatch(f.$('handoff-status').textContent,/^Saved/);f.view.dispose();
+});
+test('Cancel aborts a pending Save without promising rollback of a committed write',async()=>{
+ let release,signal;const f=fixture('disabled',{saveReviewed:(_raw,options)=>{signal=options.signal;return new Promise(r=>release=r);}});await f.open();await f.click('handoff-preview');const pending=f.click('handoff-save');f.click('handoff-cancel');assert.equal(signal.aborted,true);release({status:'saved',evicted:[]});await pending;assert.equal(f.$('handoff-dialog').open,false);assert.equal(f.$('handoff-save').disabled,true);assert.doesNotMatch(f.$('handoff-status').textContent,/rolled back|deleted|not saved/i);f.view.dispose();
+});
+test('saved issue opens read-only and downloads the unchanged original string',async()=>{
+ const f=fixture();await f.open();f.input('handoff-actual','Readable saved meaning');await f.click('handoff-preview');f.click('handoff-download');const raw='\n'+f.downloads[0].raw+'\n';f.click('handoff-cancel');f.downloads.length=0;await f.view.openSaved(raw);assert.equal(f.$('handoff-fields').hidden,true);assert.equal(f.$('handoff-preview').hidden,true);assert.equal(f.$('handoff-save').hidden,true);assert.match(f.$('handoff-summary').textContent,/Readable saved meaning/);assert.match(f.$('handoff-status').textContent,/historical|untrusted/i);assert.equal(f.$('handoff-download').disabled,false);f.click('handoff-download');assert.equal(f.downloads[0].raw,raw);f.click('handoff-cancel');await f.click('handoff-open');assert.equal(f.$('handoff-fields').hidden,false);assert.equal(f.$('handoff-preview').hidden,false);f.view.dispose();
+});
+test('Cancel during saved-file parsing cannot reopen or publish an old view',async()=>{
+ const f=fixture();await f.open();await f.click('handoff-preview');f.click('handoff-download');const raw=f.downloads[0].raw;f.click('handoff-cancel');const pending=f.view.openSaved(raw);f.click('handoff-cancel');await pending;assert.equal(f.$('handoff-dialog').open,false);assert.equal(f.$('handoff-download').disabled,true);f.view.dispose();
+});
+
+test('Save acknowledgement must identify the exact reviewed file, not another ID or digest',async()=>{
+ const f=fixture('disabled',{saveReviewed:async raw=>({...await savedReply(raw),entry:{id:crypto.randomUUID(),digest:'a'.repeat(64)}})});await f.open();await f.click('handoff-preview');await f.click('handoff-save');assert.match(f.$('handoff-status').textContent,/not confirmed|different|mismatch/i);assert.equal(f.$('handoff-save').disabled,false);assert.equal(f.$('handoff-download').disabled,false);f.view.dispose();
+});
+
+test('saved wrong-build notes stay unverified and missing parent clears a previous matched label',async()=>{
+ const f=fixture('disabled',{build:'a'.repeat(64)});await f.open();await f.click('handoff-preview');f.click('handoff-download');const parent=f.downloads[0].raw,child=await appendHandoffFinding(parent,{text:'<img src="https://example.invalid/not-fetched">Hypothesis',build:'b'.repeat(64)},{expectedParentDigest:await handoffArtifactDigest(parent),now:()=>3000});f.click('handoff-cancel');await f.view.openSaved(child,{parentRaw:parent});assert.match(f.$('handoff-summary').textContent,/Developer notes · unverified/);assert.match(f.$('handoff-summary').textContent,/Different recorded build hash; no evidence match/);assert.match(f.$('handoff-summary').textContent,/Parent content matches/);await f.view.openSaved(child);assert.match(f.$('handoff-summary').textContent,/continuity is not checked/);assert.doesNotMatch(f.$('handoff-summary').textContent,/Parent content matches/);f.view.dispose();
+});
+test('closing a read-only saved report returns focus to its review action',async()=>{
+ const f=fixture();await f.open();await f.click('handoff-preview');f.click('handoff-download');const raw=f.downloads[0].raw;f.click('handoff-cancel');await f.view.openSaved(raw);f.$('handoff-open').disabled=true;f.click('handoff-cancel');assert.equal(f.$('export-report').focused,true);f.view.dispose();
+});
+
+test('reporter inputs wait for the saved source before default title initialization',async()=>{
+ const f=fixture();f.enable();f.hold();const pending=f.click('handoff-open');await tick();assert.equal(f.$('handoff-title').disabled,true);assert.equal(f.$('handoff-actual').disabled,true);assert.equal(f.$('handoff-omit-question').disabled,true);f.release();await pending;assert.equal(f.$('handoff-title').disabled,false);assert.equal(f.$('handoff-actual').disabled,false);f.view.dispose();
+});

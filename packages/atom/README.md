@@ -291,5 +291,6 @@ files keep exact supplied bytes; old v1 object arrays are marked reserialized.
 One namespaced diagnostics key shares eight entries, 2 MiB encoded storage and
 seven-day retention. An ID with different bytes conflicts; a lost write reply
 requires reopening actual storage. Existing list-diagnostics returns v1 records
-only, and legacy deletion cannot delete v2. This candidate adds the runtime
-boundary; Save/reopen controls for v2 and rich privacy review remain separate.
+only, and legacy deletion cannot delete v2. The inspector exposes a separate Save after review, readable saved-file reopen,
+explicit UTF-8 import, refresh and exact deletion. Downloads preserve raw bytes.
+Rich category/per-note review and full U03 acceptance remain separate.

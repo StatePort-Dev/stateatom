@@ -808,7 +808,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.2b.2b",
+      "active_slice": "U03.2b.3",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -897,17 +897,37 @@
           "installed_v2_persistence_ui": false,
           "rich_privacy_complete": false,
           "record": "24-u03-handoff-progress.md"
+        },
+        {
+          "id": "U03.2b.2b",
+          "status": "complete-within-minimal-profile-local-save-ui-boundary",
+          "candidate": "0.1.0-candidate.20261020.17",
+          "tests": {
+            "full": 1227,
+            "ui_library_mount": 59,
+            "native_save_reopen_import_handoff": 25,
+            "native_storage": 15,
+            "current_settings_lifecycle": 15,
+            "default_local_fields": 40,
+            "original_legacy": 6,
+            "packed_types": 2,
+            "package_admission": 7
+          },
+          "installed_v2_persistence_ui": true,
+          "rich_privacy_complete": false,
+          "full_H01_H06": false,
+          "whole_U03_review": false,
+          "record": "24-u03-handoff-progress.md"
         }
       ],
       "current_candidate": {
-        "version": "0.1.0-candidate.20261020.14",
-        "handoff": ".artifacts/atom/2026-10-20T04-58-15-793Z/atom-handoff.json",
-        "sha256": "f4fa37d4d66d83614c8268121ac528b184fda5d312bdf0556a4f4794c394f2c0",
-        "verification": ".artifacts/u03/storage-runtime/verification14.json",
-        "boundary": "installed storage backend and existing minimal UI only"
+        "version": "0.1.0-candidate.20261020.17",
+        "handoff": ".artifacts/atom/2026-10-20T05-36-31-213Z/atom-handoff.json",
+        "sha256": "dfdbeb6c2fa99348b34e1d7d6906c728c6b55fedda90d76ab1e9320818364e2d",
+        "verification": ".artifacts/u03/storage-ui/verification17.json",
+        "boundary": "minimal-profile reviewed save/reopen/import UI; rich privacy and whole U03 pending"
       },
       "remaining_acceptance": [
-        "actual reviewed Save/import/reopen UI for the installed v1/v2 storage backend",
         "rich per-category/per-note privacy and retained technical evidence",
         "full H01-H06 incl zoom and source/build enrichment",
         "one fresh whole-U03 review and tested fix pass"

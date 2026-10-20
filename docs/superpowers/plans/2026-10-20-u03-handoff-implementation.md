@@ -110,7 +110,9 @@ open. This model does not complete Task2 or installed v2 persistence.
 U03.2b.2a now installs the backend on `.14` (full1199/focused95/native storage15,
 existing minimal UI13/Settings lifecycle15/types2/admission7). Same-key private
 storage2 keeps compact legacy and exact raw files; old public records stay v1.
-U03.2b.2b actual Save/import/reopen UI remains next, with rich privacy still open.
+U03.2b.2b now verifies actual reviewed Save/reopen/import UI on `.17`
+(full1227/controllers59/native UI25/storage15/Settings15/default40/legacy6/types2/
+admission7). Rich category/field/per-note review is next U03.2b.3; Task2 stays open.
 
 **Consumes:** Task1 frozen baseline and exact original diagnostic, explicit review
 choices. **Produces:** validated historical v2 record/serializer/derivative and

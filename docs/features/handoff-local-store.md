@@ -101,3 +101,27 @@ second encoded JSON string; reading reserializes only the outer container,
 leaving raw report strings unchanged. The 2 MiB bound is the encoded value;
 Chrome quota additionally counts the fixed namespaced key bytes. Actual native
 quota measurement is required, not inferred from the generic file adapter.
+
+### U03.2b.2b UI implementation brief
+
+Continue from backend commit `92f0e6c`. Reuse the saved-report selector and Settings
+modal; the supplied reference has no approved handoff screen, so this is a small
+Atom composition, not a new shared primitive. Preserve 13px body/12px controls,
+440/390 widths, keyboard/zoom/reduced-motion checks and a visual changelog.
+
+A library controller owns listing/import/open/digest-delete and stale responses.
+Metadata adds reporter title/selected property for human-readable options; no raw
+selector/UUID toolbar is introduced. Prepare is enabled only for selected saved
+v1, and reopens its exact raw string. A reviewed v2 gets a separate Save locally
+button; editing/Cancel invalidates pending UI success and aborts undispatched
+writes. A committed save may survive lost acknowledgement; refresh reads reality.
+Background refresh keeps the current selection and does not close the draft.
+
+Review/export of saved v2 hides reporter inputs and shows historical discrepancy,
+condition/time/omissions and unverified notes. Exact available parent raw bytes can
+validate continuity; otherwise the parent remains unchecked. Download keeps exact
+raw bytes. Import is an explicit local file action, with 1 MiB and strict UTF-8
+checks before save; malformed UTF-8/BOM/JSON and ID conflicts remain visible without
+replacing originals. Imported v1 opens existing advanced review; v2 opens readable
+review. Source connection, app presence, HTML execution and linked-resource fetch
+remain unnecessary. Rich evidence inclusion/per-note privacy are still later work.

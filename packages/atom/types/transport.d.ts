@@ -11,7 +11,7 @@ export interface ControlInputResource {id:string;kind:'dom-control';revision:num
 /** Inert data. A plan grants no authority; each runtime adapter can refuse a kind. */
 export interface ExperimentPlan {schema:'stateatom.experiment-plan/1';id:string;investigationId:string;mode:'live'|'draft';target:InputTarget;changes:Array<{resource:ResponseInputResource|ControlInputResource;value:InputScalar}>;requiredGrants:import('./platform.js').Capability[];refresh:'none';atomic:false;cleanup:'adapter-specific'}
 /** Historical local data; hashes and reopened files grant no app authority. */
-export interface HandoffStoredEntry {id:string;version:1|2;createdAt:string;digest:string;representation:'input-bytes'|'legacy-reserialized';trust:'historical-untrusted'}
+export interface HandoffStoredEntry {id:string;version:1|2;createdAt:string;digest:string;representation:'input-bytes'|'legacy-reserialized';trust:'historical-untrusted';title?:string|null;property?:'text'|'disabled'}
 export interface HandoffStoredFile {version:1|2;record:Record<string,unknown>;raw:string;digest:string;representation:HandoffStoredEntry['representation'];trust:'historical-untrusted';parentStatus:'not-applicable'|'not-checked'|'content-matched'}
 export interface HandoffSaveResult {status:'saved'|'unchanged';entry:HandoffStoredEntry;expired:string[];evicted:string[]}
 export interface HandoffListResult {entries:HandoffStoredEntry[];expired:string[]}

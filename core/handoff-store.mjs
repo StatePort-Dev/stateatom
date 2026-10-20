@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Unimported single-writer storage controller. Historical data, no host authority.
+// Single-writer historical storage controller. Data only, no host authority.
 import {readHandoffFile, handoffArtifactDigest} from './handoff-report.mjs';
 
 const MAX_BYTES=2097152, MAX_ITEMS=8, DAY=86400000, DATE_MAX=8640000000000000;
@@ -24,7 +24,7 @@ function frozen(value){
  const freeze=v=>{if(v&&typeof v==='object'){for(const child of Object.values(v))freeze(child);Object.freeze(v);}return v;};
  return freeze(copy);
 }
-const metadata=entry=>({id:entry.view.record.id,version:entry.view.version,createdAt:entry.view.record.createdAt,digest:entry.digest,representation:entry.representation,trust:'historical-untrusted'});
+const metadata=entry=>({id:entry.view.record.id,version:entry.view.version,createdAt:entry.view.record.createdAt,digest:entry.digest,representation:entry.representation,trust:'historical-untrusted',title:entry.view.version===2?entry.view.record.report.issue.title:null,property:entry.view.version===2?entry.view.record.report.target.property:entry.view.record.target.property});
 function configuration(value){
  if(!value||typeof value!=='object'||Array.isArray(value)||![Object.prototype,null].includes(Object.getPrototypeOf(value)))throw error('INVALID_HANDOFF_ADAPTER');
  const descriptors=Object.getOwnPropertyDescriptors(value),out={};

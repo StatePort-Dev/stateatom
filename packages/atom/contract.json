@@ -32,7 +32,7 @@
     "scope": "exact scheme, host and port",
     "default": "read-only",
     "development": "explicit session connection with individual actions",
-    "production": "read-only; F05 not implemented",
+    "production": "read-only by default; separate two-stage production input permission",
     "helper": "canonical http://127.0.0.1:<port>, separate browser access",
     "artifacts": "separate exact-origin browser permission"
   },

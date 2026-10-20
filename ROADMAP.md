@@ -141,6 +141,14 @@ Chrome quota and full browser restart are verified. Next is U03.2b.2b actual
 reviewed Save/import/reopen UI; rich privacy and whole-U03 acceptance remain open.
 
 
+U03.2b.2b subsequently verifies **actual** reviewed Save/local reopen/import on
+`.20261020.17`: full1227/controllers59/native UI25/storage15/Settings15/default
+fields40/original legacy6/types2/admission7. Source-ready form, exact downloads,
+restart, conflicts, native UTF-8/file controls and narrow/200% rendering retain
+scoped evidence and failures. Next is U03.2b.3 rich technical/privacy profile;
+minimal-profile persistence does not complete rich review, whole U03 or C07.
+
+
 ## Historical roadmap and checkpoint ledger
 
 StateAtom's next development target is a narrow, independently useful developer alpha. A developer should be able to select a UI property, inspect its supported dependencies, test an eligible input locally, and save an explanation that another person can read.

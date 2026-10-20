@@ -172,7 +172,10 @@
 [data-sp-ui] .sp-atom-handoff label { display:block; margin:10px 0; }
 [data-sp-ui] .sp-atom-handoff input:not([type="checkbox"]),
 [data-sp-ui] .sp-atom-handoff textarea { width:100%; box-sizing:border-box; }
-[data-sp-ui] .sp-atom-handoff textarea { resize:vertical; min-height:56px; }
+[data-sp-ui] .sp-atom-handoff textarea { resize:vertical; min-height:56px; font-family:var(--sp-font-body); }
 [data-sp-ui] .sp-atom-handoff .sp-atom-content-option { display:flex; align-items:center; gap:8px; }
 [data-sp-ui] .sp-atom-handoff .sp-atom-content-option input { width:auto; }
 [data-sp-ui] .sp-atom-handoff-preview { white-space:pre-wrap; overflow-wrap:anywhere; border-top:1px solid var(--sp-color-border); margin-top:12px; padding-top:12px; }
+[data-sp-ui] .sp-atom-handoff [hidden] { display:none !important; }
+[data-sp-ui] .sp-atom-report-import { display:block; margin:10px 0; }
+[data-sp-ui] .sp-atom-report-import input { display:block; width:100%; max-width:100%; box-sizing:border-box; }

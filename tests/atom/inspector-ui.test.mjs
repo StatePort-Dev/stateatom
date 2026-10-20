@@ -5,17 +5,21 @@ import {readFile} from 'node:fs/promises';
 import {mountAtom} from '../../packages/atom/src/ui.mjs';
 import {createActionUI} from '../../packages/atom/src/action-ui.mjs';
 import {inspectionView} from '../../browser-extension/inspection-view.mjs';
+import {createHandoffStore} from '../../core/handoff-store.mjs';
+import {makeDiagnostic} from '../../core/diagnostic.mjs';
+import {createHandoffDraft} from '../../core/handoff-draft.mjs';
+import {createHandoffReport,handoffArtifactDigest} from '../../core/handoff-report.mjs';
 
 const deferred=()=>{let resolve;return {promise:new Promise(r=>resolve=r),resolve:v=>resolve(v)};};
 const tick=()=>new Promise(r=>setTimeout(r,0));
-function node(){return {textContent:'',value:'',children:[],dataset:{},style:{},tagName:'SECTION',scrollTop:0,contains(){return false;},setAttribute(){},removeAttribute(){},append(...v){this.children.push(...v);},replaceChildren(...v){this.children=v;if(v.length&&this.tagName==='SELECT')this.value=String(v[0].value);},addEventListener(){},getBoundingClientRect(){return{top:0};},focus(){},close(){},querySelector(){return null;}};}
+function node(){return {textContent:'',value:'',children:[],dataset:{},style:{},tagName:'SECTION',scrollTop:0,open:false,contains(){return false;},setAttribute(){},removeAttribute(){},append(...v){this.children.push(...v);},replaceChildren(...v){this.children=v;if(v.length&&this.tagName==='SELECT')this.value=String(v[0].value);},addEventListener(){},getBoundingClientRect(){return{top:0};},focus(){},showModal(){this.open=true;},close(){this.open=false;},querySelector(){return null;}};}
 function fixture(request,options={}){
  const elements=new Map(),$=id=>{if(!elements.has(id))elements.set(id,node());return elements.get(id);};$('tabs').tagName='SELECT';$('tabs').selectedOptions=[{dataset:{origin:'http://127.0.0.1:4173'}}];
  const document={createElement:node,createElementNS:node},root={...node(),querySelector:s=>$(s.match(/data-atom-id="([^"]+)/)[1]),querySelectorAll:()=>[],remove(){}};let first=true;document.createElement=tag=>{if(first){first=false;return root;}const e=node();e.tagName=tag.toUpperCase();return e;};
  const host={ownerDocument:document,append(){}};
  const state=id=>({attached:true,tabId:id,property:'text',selection:{selector:'#target-'+id,property:'text',value:'Tab '+id,text:'Tab '+id,observedAt:100},analysis:{sources:[],actionContext:{},stateatom:{target:{property:'text',value:'Tab '+id},runtime:{status:'Unknown/Unsupported'}}}});
  const list=[{id:1,url:'http://127.0.0.1:4173/one'},{id:2,url:'http://127.0.0.1:4173/two'}];
- let onEvent;const connectionListeners=new Set();const client={request:async(m,o)=>request?.(m,o)??(m.op==='tabs'?list:m.op==='list-diagnostics'?[]:m.op==='state'?state(m.tabId):{}),subscribeConnection:fn=>{connectionListeners.add(fn);return()=>connectionListeners.delete(fn);},subscribe:fn=>{onEvent=fn;return()=>{};}};
+ let onEvent;const connectionListeners=new Set();const client={request:async(m,o)=>request?.(m,o)??(m.op==='tabs'?list:m.op==='list-diagnostics'?[]:m.op==='list-handoffs'?{entries:[],expired:[]}:m.op==='state'?state(m.tabId):{}),subscribeConnection:fn=>{connectionListeners.add(fn);return()=>connectionListeners.delete(fn);},subscribe:fn=>{onEvent=fn;return()=>{};}};
  return {$,state,list,emit:m=>onEvent(m),disconnect:()=>{for(const fn of connectionListeners)fn({state:'closed',code:'INSPECTOR_DISCONNECTED'});},view:mountAtom(host,client,{idPrefix:'',...options})};
 }
 test('changing tab clears explanation and target before pending picker cleanup settles',async()=>{
@@ -90,4 +94,17 @@ test('Restore notice survives its own reload invalidation and keeps current evid
 });
 test('a late Restore cannot claim success for a newer explicit selection even after a background refresh',async()=>{
  const pending=deferred();let selected='#target-1',f;f=fixture(m=>{if(m.op==='restore')return pending.promise;if(m.op==='inspect-selector'){selected=m.selector;return{};}if(m.op==='state')return{...f.state(m.tabId),origin:'http://127.0.0.1:4173',selection:{...f.state(m.tabId).selection,selector:selected}};});await f.view.ready;const restoring=f.$('atom-restore').onclick();f.$('selector').value='#new-target';await f.$('inspect-selector').onclick();f.emit({event:'state-invalidated',tabId:1});await tick();pending.resolve({value:'Tab 1'});await restoring;assert.doesNotMatch(f.$('atom-result').textContent,/^Restored/);assert.match(f.$('selected').textContent,/#new-target/);await f.view.dispose();
+});
+
+async function historicalFixture(version=1){
+ let stored=null;const store=createHandoffStore({read:async()=>stored,write:async raw=>stored=raw});const original='\n'+JSON.stringify(makeDiagnostic({selection:{selector:'#private-original',property:'disabled',value:true,observedAt:Date.now()}}))+'\n';let raw=original;
+ if(version===2){const draft=await createHandoffDraft(original,{title:'Saved readable issue',actual:'Cannot confirm'});await draft.freeze({expectedRevision:0});raw=await createHandoffReport(original,JSON.stringify(draft.read().baseline));}
+ await store.save(raw);const request=m=>m.op==='list-handoffs'?store.list():m.op==='list-diagnostics'?store.list().then(async list=>{const out=[];for(const e of list.entries.filter(e=>e.version===1))out.push((await store.open(e.id)).record);return out;}):m.op==='open-handoff'?store.open(m.id):m.op==='save-handoff'?store.save(m.raw):m.op==='delete-handoff'?store.remove(m.id,m.expectedDigest):undefined;
+ const f=fixture(request);await f.view.ready;for(let i=0;i<30&&(f.$('report-select').children.length===0||f.$('export-report').disabled!==false);i++)await tick();return{...f,store,original,raw};
+}
+test('mounted inspector Save wires the reviewed v2 file to storage with exact original v1 source digest',async()=>{
+ const f=await historicalFixture();await f.$('handoff-open').onclick();f.$('handoff-actual').value='Cannot confirm';f.$('handoff-actual').oninput();await f.$('handoff-preview').onclick();assert.equal(f.$('handoff-save').disabled,false);await f.$('handoff-save').onclick();const entries=(await f.store.list()).entries,issue=entries.find(e=>e.version===2);assert(issue);const saved=await f.store.open(issue.id);assert.equal(saved.record.report.sourceDiagnostic.digest,await handoffArtifactDigest(f.original));assert.equal(saved.record.report.issue.actual,'Cannot confirm');assert.equal(entries.length,2);assert.equal((await f.store.open(JSON.parse(f.original).id)).raw,f.original);await f.view.dispose();
+});
+test('mounted inspector reopens saved v2 through the readable view instead of the legacy JSON form',async()=>{
+ const f=await historicalFixture(2);assert.equal(f.$('export-report').disabled,false);await f.$('export-report').onclick();assert.equal(f.$('handoff-dialog').open,true);assert.equal(f.$('handoff-fields').hidden,true);assert.match(f.$('handoff-summary').textContent,/Saved readable issue/);assert.equal(f.$('export-review').open,false);assert.equal(f.$('handoff-save').hidden,true);await f.view.dispose();
 });

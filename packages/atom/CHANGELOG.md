@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.17
+
+- Use the shared body font for ordinary issue-description textareas instead of inheriting the advanced JSON editor monospace rule. Preserve 13px dialog body, 12px controls and all shared tokens.
+
+## 0.1.0-candidate.20261020.16
+
+- Keep reporter inputs disabled until the selected saved source is ready, preventing delayed default-title initialization from racing native typing. Preserve typed drafts and all byte/Save acknowledgement checks.
+
+## 0.1.0-candidate.20261020.15
+
+- Add a separate reviewed Save action, human-readable local file titles, exact-source preparation and readable saved-v2 review/export. Preserve typed drafts, precise Save acknowledgements and original file bytes.
+- Add explicit bounded UTF-8 file import, refresh and digest-checked deletion; keep missing parent continuity and wrong-build Developer notes unverified.
+- Reuse Settings dialog/shared 13px body and 12px controls, with scoped hidden/read-only states and focus return; no token or shared primitive changes. Rich privacy and whole U03 remain open.
+
 ## 0.1.0-candidate.20261020.14
 
 - Store the private container as a Chrome object to avoid a second JSON-string encoding exceeding the common byte budget; keep each supplied file string byte-exact. Preserve source RED and superseded .13 archive.
