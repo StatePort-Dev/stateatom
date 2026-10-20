@@ -165,7 +165,8 @@ async function onDebuggerEvent(source,method,p){await ready;if(platform.owns&&!p
  if(method.startsWith('Overlay.')||method.startsWith('DOM.')){if(source.sessionId){void picker.cancel(id,'Child-frame selection is unsupported').catch(()=>{});return;}await picker.event(id,method,p);return;}
  if(method==='Page.frameNavigated'&&!p.frame.parentId){
   if(s.origin&&new URL(p.frame.url).origin!==s.origin){invalidateScope(id,'Cross-origin navigation; attach again');await platform.invalidate?.(id);await persist();return;}
-  if(s.productionGrantId){void platform.productionChanges?.revoke(id,'navigation');s.productionGrantId=null;s.attached=false;}
+  void platform.productionChanges?.revoke(id,'navigation');
+  if(s.productionGrantId){s.productionGrantId=null;s.attached=false;}
   // Advance identities before the first await: script events can arrive while permissions settle.
   const closingInputs=stopInputs(id,'Navigation closed input editing');
   sourceMaps.invalidate(id,'Navigation; previous source association is stale');void picker.cancel(id,'Navigation cancelled selection').catch(()=>{});recordStale(s,'navigation/reload; previous execution invalidated');
@@ -336,7 +337,7 @@ async function productionRevoked(event){
 }
 const unsubscribe=platform.events.subscribe(event=>{
  if(eventsClosed)return;
- const work=event.type==='production-revoked'?productionRevoked(event):event.type==='permissions-removed'?(async()=>{await ready;for(const id of Object.keys(tabs).map(Number))invalidateScope(id,'Browser access revoked; reconnect explicitly');pairing=null;await platform.permissionsRemoved?.();await persist();})():event.type==='navigation'?(async()=>{await ready;const s=tabs[event.tabId];if(s?.productionGrantId)void platform.productionChanges?.revoke(event.tabId,'navigation');if(s?.origin&&new URL(event.url).origin!==s.origin){invalidateScope(event.tabId,'Cross-origin navigation; attach again');await platform.invalidate?.(event.tabId);await persist();}})():event.type==='debugger'?onDebuggerEvent(event.source,event.method,event.params):event.type==='detach'?onDebuggerDetach(event.source,event.reason):event.type==='removed'?(async()=>{await ready;await stopInputs(event.tabId,'Tab closed');editors.delete(event.tabId);editorOwners.delete(event.tabId);await picker.cancel(event.tabId,'Tab closed').catch(()=>{});sourceMaps.remove(event.tabId);platform.detached(event.tabId);delete tabs[event.tabId];await persist();notifyInvalidation(event.tabId);})():null;
+ const work=event.type==='production-revoked'?productionRevoked(event):event.type==='permissions-removed'?(async()=>{await ready;for(const id of Object.keys(tabs).map(Number))invalidateScope(id,'Browser access revoked; reconnect explicitly');pairing=null;await platform.permissionsRemoved?.();await persist();})():event.type==='navigation'?(async()=>{await ready;const s=tabs[event.tabId];void platform.productionChanges?.revoke(event.tabId,'navigation');if(s?.origin&&new URL(event.url).origin!==s.origin){invalidateScope(event.tabId,'Cross-origin navigation; attach again');await platform.invalidate?.(event.tabId);await persist();}})():event.type==='debugger'?onDebuggerEvent(event.source,event.method,event.params):event.type==='detach'?onDebuggerDetach(event.source,event.reason):event.type==='removed'?(async()=>{await ready;await stopInputs(event.tabId,'Tab closed');editors.delete(event.tabId);editorOwners.delete(event.tabId);await picker.cancel(event.tabId,'Tab closed').catch(()=>{});sourceMaps.remove(event.tabId);platform.detached(event.tabId);delete tabs[event.tabId];await persist();notifyInvalidation(event.tabId);})():null;
  if(work){eventJobs.add(work);void work.catch(()=>{}).finally(()=>eventJobs.delete(work));}
 });
 return {ready,

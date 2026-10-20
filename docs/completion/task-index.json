@@ -318,17 +318,20 @@
       ],
       "working_policy": "New F05 decision: exact HTTPS tab/origin/native main-frame document; ten minutes after second confirmation; two-minute tickets; issuer client/view close/tab switch, navigation, permission loss, restart/update/expiry/revoke invalidate; only U02 input kinds, no legacy reset/reload grant",
       "acceptance_candidate": {
-        "package": "0.1.0-candidate.20261020.8",
-        "state": "exact-executable-reuse-review-pending",
-        "native_execution_package": "0.1.0-candidate.20261020.7",
-        "entire_both_host_bytes_identical": true,
-        "installed_package_changes": [
-          "CHANGELOG.md",
-          "README.md",
-          "package.json"
+        "package": "0.1.0-candidate.20261020.9",
+        "state": "review-important-fixes-verified-fresh-native-matrix-pending",
+        "full": 1047,
+        "atom_contracts": 373,
+        "production_models": 78,
+        "native_backend": 27,
+        "native_lifetime_controls": 15,
+        "packed_type_consumers": 2,
+        "package_admission": 7,
+        "one_whole_review_complete": true,
+        "one_important_fix_pass": true,
+        "minor_deferred": [
+          "M1 exact displayed tab/page identifier"
         ],
-        "fresh_packed_type_consumers": 2,
-        "fresh_package_admission": 7,
         "record": "22-overnight-f05-progress.md"
       }
     },
@@ -1460,7 +1463,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK \u2014 separate StatePort project",
+      "title": "Production SDK — separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",

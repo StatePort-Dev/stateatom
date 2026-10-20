@@ -46,3 +46,13 @@ test('revocation while final native-control guards resume cannot dispatch a late
   await execute({target:{tabId:1,frameIds:[0]},world:'ISOLATED',func:()=>true,args:['fixture-native-write']}).catch(()=>{});await tick();await tick();assert(!f.calls.some(c=>c.method==='native-write'&&c.revoked),'post-revoke native write at continuation '+hops);
  }
 });
+
+for(const explicit of [false,true])test('failed native control close stays unknown through production revoke; explicit='+explicit,async t=>{
+ let closes=0;const owner={available:true,async open(){return{async close(){closes++;throw Object.assign(Error('Close unconfirmed'),{code:'CLEANUP_UNCONFIRMED'});}};}},f=fixture({controlOwner:owner});t.after(()=>f.platform.shutdown());await f.enable();await f.platform.chrome.debugger.attach({tabId:1});const session=await f.platform.openNativeControls({target:{tabId:1,origin:'https://app.invalid:8443',document:'cdp:1'},verify:async()=>{}});
+ if(explicit)await assert.rejects(session.close('Input editor closed'),{code:'CLEANUP_UNCONFIRMED'});
+ const result=await f.platform.productionChanges.revoke(1,'user');assert.equal(result.active,false);assert.equal(result.cleanup,'unknown');assert.equal(f.native.has(1),false);assert(closes>=1);assert.equal((await f.platform.productionChanges.revoke(1,'user')).cleanup,'unknown');await assert.rejects(f.platform.chrome.debugger.sendCommand({tabId:1},'Fetch.enable',{}));
+});
+
+test('navigation revocation during initial target sampling cannot issue a new warning ticket',async t=>{
+ const f=fixture();t.after(()=>f.platform.shutdown());await f.platform.chrome.debugger.attach({tabId:1});let entered,release,first=true;const started=new Promise(r=>entered=r),gate=new Promise(r=>release=r);f.onDocument(async()=>{if(first){first=false;entered();await gate;}});const pending=f.step('begin');await started;await f.platform.productionChanges.revoke(1,'navigation');f.setURL('https://app.invalid:8443/next-route');release();await assert.rejects(pending,{code:'STALE_CONFIRMATION'});assert.equal((await f.platform.describeTarget(1)).productionChange.active,false);
+});

@@ -263,3 +263,49 @@ against changed `.8` README inputs or silently rewritten as current `.8` runs.
 This finishes the package/evidence preparation only. One fresh whole-F05 review
 and one tested Critical/Important fix pass still gate completion. No additional
 native run is justified by documentation-only byte-identical payloads.
+
+## F05.4a — whole review and one Important fix pass
+
+The single fresh whole-F05 reviewer assessed range `7da18df..44a1df1` read-only:
+no Critical, two Important, two Minor. R1 reproduced consent surviving same-document
+SPA navigation in risk, scope and final-confirm retirement. R2 reproduced native
+session close rejection being lost behind successful debugger detach, including
+an earlier failed explicit Inputs close. Both are accepted and fixed in one pass.
+Original RED5 and a further in-flight initial-target-sampling RED1 remain in
+`.artifacts/f05/review-fix/`; no second review or threshold change was introduced.
+The host now invalidates in-flight transitions as well as issued tickets/grants.
+Failed native sessions retain their unconfirmed cleanup records; debugger release
+still proceeds independently, and a later empty revoke cannot erase Unknown.
+
+Current functional candidate `.20261020.9` is
+`.artifacts/atom/2026-10-20T02-26-54-458Z/atom-handoff.json`. Fresh source results:
+full **1047**, Atom **373**, F05 models **78**, packed type consumers **2**, admission
+**7**, PASS. Native backend **27** and Settings lifetime **15** pass on both exact
+installed hosts. The latter includes actual `history.pushState` with unchanged
+Chrome `documentId`, independently invalidating risk, scope and active authority
+on each host. The retirement-await and initial-sampling races and failed native
+close remain controlled source tests, not relabelled native fault evidence.
+Current main Settings/real expiry plus default local/legacy regression continue;
+this subsection alone does not complete F05.
+
+Minor M1 is deferred: show selected tab ID and a readable page identifier in the
+modal without leaking private query content; native enforcement already binds
+the exact tab/document, but same-origin tabs remain visually hard to distinguish.
+M2 is addressed by replacing the stale inert-only **current** roadmap summary;
+the original inert-policy checkpoint and all prior results remain historical.
+
+Implementer rulings for the review's declined judgments: reuse the original U02
+majority identity and rerun affected integration, not the whole adapter catalogue;
+ordinary browser-prompt/corporate acceptance remains F02/P03; independent human
+visual review is not a blocker and screenshots remain candidates; official-host
+intake stays in its other-repository task; SDK/accounts/cloud/Store/release are
+outside this scope; whole-baseline overhead needs its own workload. The existing
+grant is exact-tab-scoped and usable by another authenticated inspector while
+its issuer remains live; ticket creation/lifetime stay issuer-private. The host
+is a trusted in-process boundary, not a malicious-host sandbox. Pre-existing root
+lockfile version drift does not replace exact consumed archive/receipt identity.
+Costs if these rulings are wrong: untested customer/adapter/overhead workflows
+can still fail; a second authenticated view may use that already-authorized tab;
+privileged-host compromise is outside this boundary, and root npm metadata may
+remain confusing. No claim closes those distinct gates. Full individual rulings
+and costs are retained in the local whole-review-result.md execution ledger.

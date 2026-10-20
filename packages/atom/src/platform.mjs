@@ -42,11 +42,11 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
  const persistConnections=()=>storage.set({connections:[...connections.values()]});
  const approvedSite=url=>connections.has(appOrigin(url));
  const permission=async origin=>!!origin&&!!await api.permissions?.contains({origins:[origin+'/*']});
- async function closeNative(id){await Promise.allSettled([...nativeSessions].filter(r=>id===undefined||r.tabId===id).map(async r=>{r.abort.abort();if(r.session)await r.session.close('Platform authority closed');nativeSessions.delete(r);}));}
+ async function closeNative(id){const results=await Promise.allSettled([...nativeSessions].filter(r=>id===undefined||r.tabId===id).map(async r=>{r.abort.abort();if(r.session){await r.session.close('Platform authority closed');nativeSessions.delete(r);}}));return results.some(r=>r.status==='rejected')?'unknown':'none';}
  const revoking=new Map();
  function revoke(id){
   if(revoking.has(id))return revoking.get(id);const entry=leases.get(id);leases.delete(id);
-  const work=(async()=>{await closeNative(id);if(!entry)return{cleanup:'none'};try{await entry.l.release();return{cleanup:'released'};}catch{return{cleanup:'unknown'};}})();revoking.set(id,work);void work.finally(()=>{if(revoking.get(id)===work)revoking.delete(id);});return work;
+  const work=(async()=>{const nativeCleanup=await closeNative(id);if(!entry)return{cleanup:nativeCleanup};try{await entry.l.release();return{cleanup:nativeCleanup==='unknown'?'unknown':'released'};}catch{return{cleanup:'unknown'};}})();revoking.set(id,work);void work.finally(()=>{if(revoking.get(id)===work)revoking.delete(id);});return work;
  }
  const productionHost=createProductionChangeHost({available:readOnlySites===true&&typeof api.scripting?.executeScript==='function',readTarget:async(id,guard,{ownedLease=true}={})=>{const l=ownedLease?await requireLease(id,'read'):null;guard();const target=await productionTarget(id,guard);l?.assert('read');guard();return target;},retire:revoke,onChange:e=>events.emit(e),...(productionClock?{clock:productionClock}:{})});
  async function basicFacts(id){
@@ -112,8 +112,8 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
      signal:record.abort.signal,guard,execute:async op=>{await guard(['read','inject','replay']);const entry=leases.get(id);if(!entry)throw atomError('LEASE_REQUIRED');entry.l.assert('replay');if(entry.origin.startsWith('https:'))productionHost.assert(entry.productionTarget,'dom-control');return api.scripting.executeScript(op);},onLost});
     record.session=session;
     if(record.abort.signal.aborted||stopped){await session.close('Opening cancelled');throw atomError('EDITOR_CLOSED');}
-    return Object.freeze({read:()=>session.read(),write:(...args)=>session.write(...args),get closed(){return session.closed;},async close(reason){try{return await session.close(reason);}finally{nativeSessions.delete(record);}}});
-   }catch(e){record.abort.abort();nativeSessions.delete(record);throw e;}
+    return Object.freeze({read:()=>session.read(),write:(...args)=>session.write(...args),get closed(){return session.closed;},async close(reason){const result=await session.close(reason);nativeSessions.delete(record);return result;}});
+   }catch(e){record.abort.abort();if(!record.session)nativeSessions.delete(record);throw e;}
   },async connectSite(id,value){
    await ready;const epoch=authorityEpoch,record=siteRecord(value),tab=await api.tabs.get(id);
    if(new URL(record.origin).protocol==='https:'&&!readOnlySites||appOrigin(tab.url)!==record.origin||!await permission(record.origin))throw atomError('ORIGIN_DENIED','Approve browser access to the current exact origin first');

@@ -6,7 +6,7 @@ const error=code=>Object.assign(new Error(code),{code});
 const defaultClock={now:()=>Date.now(),setTimeout:(...args)=>globalThis.setTimeout(...args),clearTimeout:id=>globalThis.clearTimeout(id)};
 export function createProductionChangeHost({available,readTarget,retire,onChange=()=>{},clock=defaultClock}){
  if(typeof readTarget!=='function'||typeof retire!=='function'||typeof onChange!=='function'||!['now','setTimeout','clearTimeout'].every(k=>typeof clock[k]==='function'))throw error('INVALID_PLATFORM');
- const active=new Set(),cleanups=new Map();let stopped=false,timer=null;
+ const active=new Set(),cleanups=new Map(),transitions=new Set();let stopped=false,timer=null;
  const emit=e=>{try{onChange(e);}catch{/* Native cleanup cannot depend on a view. */}};
  function cleanup(id){
   const old=cleanups.get(id);if(old?.pending)return old.promise;
@@ -26,20 +26,21 @@ export function createProductionChangeHost({available,readTarget,retire,onChange
  function describe(id){const s=policy.describe(id);return{...s,cleanup:cleanups.get(id)?.result.cleanup||'none'};}
  async function transition(stage,id,{ticket,owner,viewId,assertCurrent}={}){
   if(stopped)throw error('DISPOSED');if(!available)throw error('CAPABILITY_UNAVAILABLE');if(!['begin','advance','confirm'].includes(stage)||typeof assertCurrent!=='function')throw error('INVALID_PLATFORM');
-  const guard=()=>{if(stopped)throw error('DISPOSED');assertCurrent();};guard();let issued=false;
+  const current={id,owner,viewId,invalidated:false};transitions.add(current);
+  const guard=()=>{if(stopped)throw error('DISPOSED');assertCurrent();if(current.invalidated)throw error('STALE_CONFIRMATION');};let issued=false;
   try{
-   if(cleanups.get(id)?.pending)throw error('BUSY');const target=await readTarget(id,guard);guard();
+   guard();if(cleanups.get(id)?.pending)throw error('BUSY');const target=await readTarget(id,guard);guard();
    if(stage==='begin')return policy.begin(target,owner,viewId);
    if(stage==='advance')return policy.advance(ticket,target,owner,viewId);
    const grant=policy.confirm(ticket,target,owner,viewId);issued=true;active.add(id);schedule();
    const retired=await cleanup(id);guard();if(retired.cleanup==='unknown')throw error('CLEANUP_UNCONFIRMED');const fresh=await readTarget(id,guard,{ownedLease:false});guard();const result=policy.snapshot(fresh);if(!result.active||result.grantId!==grant.grantId)throw error('CAPABILITY_DENIED');return{...result,cleanup:retired.cleanup};
-  }catch(e){if(issued)policy.revokeOwner(owner,viewId);throw e;}
+  }catch(e){if(issued)policy.revokeOwner(owner,viewId);throw e;}finally{transitions.delete(current);}
  }
  return Object.freeze({available:available===true,transition,
   cancel:(ticket,owner,viewId)=>policy.cancel(ticket,owner,viewId),
-  async close(owner,viewId){const ids=policy.revokeOwner(owner,viewId);await Promise.allSettled(ids.map(id=>cleanups.get(id)?.promise));},
-  async revoke(id,reason='user'){policy.revoke(id,reason);const done=cleanups.get(id);if(done?.pending)await done.promise;return describe(id);},
-  async revokeAll(reason){const ids=policy.revokeAll(reason);await Promise.allSettled(ids.map(id=>cleanups.get(id)?.promise));},
+  async close(owner,viewId){for(const t of transitions)if(t.owner===owner&&t.viewId===viewId)t.invalidated=true;const ids=policy.revokeOwner(owner,viewId);await Promise.allSettled(ids.map(id=>cleanups.get(id)?.promise));},
+  async revoke(id,reason='user'){for(const t of transitions)if(t.id===id)t.invalidated=true;policy.revoke(id,reason);const done=cleanups.get(id);if(done?.pending)await done.promise;return describe(id);},
+  async revokeAll(reason){for(const t of transitions)t.invalidated=true;const ids=policy.revokeAll(reason);await Promise.allSettled(ids.map(id=>cleanups.get(id)?.promise));},
   describe,snapshot:target=>addCleanup(policy.snapshot(target)),assert:(target,kind)=>policy.assert(target,kind),
   async shutdown(){if(stopped)return;stopped=true;if(timer!==null)clock.clearTimeout(timer);timer=null;policy.revokeAll('runtime-stopped');await Promise.allSettled([...cleanups.values()].map(r=>r.promise));}
  });

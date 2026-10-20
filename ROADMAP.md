@@ -89,11 +89,17 @@ lifetime/scope and implement the two sequential Settings confirmations, runtime
 authority and revocation. These parameters are new F05 decisions, not scope-review
 approvals. U06 UX, A05/L02, official intake and release gates remain separate.
 
-F05 is now in progress: [F05.1](docs/completion/22-overnight-f05-progress.md)
-completes only its inert two-confirmation/expiry model (20 focused, 988 full).
-The ten-minute exact-document policy is a new working choice, not a scope-review
-approval. No runtime importer or production feature flag changed; F05.2 host
-authority and real Settings/native acceptance remain required.
+F05 remains in progress under the [current execution record](docs/completion/22-overnight-f05-progress.md).
+The earlier inert-only F05.1 checkpoint (20 focused/988 full, no runtime importer)
+is historical. F05.2/3 subsequently integrated host/runtime authority and real
+Settings, with both-host native editing and elapsed expiry on `.20261020.7`.
+The one whole-item review found two Important defects; `.20261020.9` now fixes
+pending-consent invalidation on SPA navigation and lost native-cleanup errors.
+Full1047/Atom373/F05 models78 and fresh native backend27/lifetime15 pass. Current
+main Settings/real expiry and local/legacy acceptance still run before completion.
+The ten-minute exact-document policy is a new F05 working choice, not scope-review
+approval. Minor debt: the modal still lacks a readable exact tab/page identifier.
+U06 remains the next dependency-ready item after this bounded acceptance.
 
 ## Historical roadmap and checkpoint ledger
 

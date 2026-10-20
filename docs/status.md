@@ -156,6 +156,16 @@ are unchanged; one unexplained concurrent timeout and all corrected harness
 failures remain recorded. F05 is still in progress pending the one whole-item
 review/fix pass; next is F05.4, then U06 journey design.
 
+
+F05.4's one whole-item review found no Critical and two Important issues. The
+single fix pass in `.20261020.9` invalidates pending/in-flight consent on URL
+navigation even when the native document is unchanged, and retains unknown
+native-control retirement after successful debugger detach or failed editor
+close. Fresh full1047/Atom373/F05 models78, native backend27/lifetime15 and
+packed types2/admission7 pass. Current main Settings/elapsed-expiry and local/
+legacy acceptance remain running; F05 is not yet complete. Minor exact-tab
+presentation debt and all review rulings are recorded in the F05 execution log.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

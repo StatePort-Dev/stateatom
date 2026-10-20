@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.9
+
+- Invalidate pending and confirming production consent on same-document navigation, including target sampling already in flight.
+- Retain unconfirmed native-control cleanup even after debugger detach or a failed explicit editor close.
+
 ## 0.1.0-candidate.20261020.8
 
 - Document the independently granted production input workflow, exact working

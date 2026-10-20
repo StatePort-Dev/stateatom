@@ -12,6 +12,9 @@ one exact scheme/host/port, Chrome tab ID and **native main-frame document ID**,
 for **10 minutes** from the second confirmation. It permits only supported U02
 JSON-response scalars and native controls. It does not permit legacy reload/cache/
 storage-reset trials, arbitrary scripts, additional API origins or other tabs.
+An already active grant is tab-scoped: another authenticated inspector may use
+it while its issuing client/view remains live. It does not grant a second view
+authority to create or extend the first view's private confirmation tickets.
 Browser origin permission, an owned live debugger lease, current selection and
 resource revisions, and each adapter's existing constraints are still required.
 
