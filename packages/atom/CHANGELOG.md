@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.23
+
+- Add optional local Developer diagnostic/source-file comparison in the reader.
+  Require explicit recorded paths and default-off metadata consent; derive build
+  relation from the diagnostic and export no source text. Note-only remains usable.
+- Use existing Settings/native form foundations, collapsed tools, wrapped file
+  rows and shared13/12px typography. No shared tokens/primitives change. Inputs
+  invalidate prepared revisions; Cancel preserves the original and typed note.
+
 ## 0.1.0-candidate.20261020.22
 
 - Explicit passive source-evidence profile import/read/storage, unchanged original

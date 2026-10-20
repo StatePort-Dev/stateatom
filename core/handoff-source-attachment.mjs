@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Unimported explicit attachment codec. Data comparisons never confer app authority.
+// Explicit attachment codec. Data comparisons never confer app authority.
 import{portableSourcePath}from'./diagnostic.mjs';
 import{filterHandoffReviewText}from'./handoff-content.mjs';
 import{omitHandoffFields}from'./handoff-report.mjs';

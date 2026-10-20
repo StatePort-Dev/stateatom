@@ -166,3 +166,33 @@ Normal Developer diagnostic/source-file creation is still pending4c.2.
 
 Actual native downloaded files from the passive journey:
 \n- standalone libraryDownload: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/standalone-library/stateatom-issue-c35f915d-1725-42c5-9b5b-06cfab1e2c09.stateatom.json\n- standalone note: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/standalone-recipient/stateatom-revision-107cc6ad-8e34-463e-b415-936104444002.stateatom.json\n- standalone filePrivacy: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/standalone-recipient/stateatom-privacy-1e78a31f-34b0-4e3a-ab33-ef9f32f61ddc.stateatom.json\n- standalone notePrivacy: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/standalone-recipient/stateatom-privacy-05cfe3db-6dfb-4274-9ec7-07862fbfc530.stateatom.json\n- embedding libraryDownload: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/embedding-library/stateatom-issue-afdafdee-d1c9-4ff9-b9a4-72648dd370a9.stateatom.json\n- embedding note: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/embedding-recipient/stateatom-revision-82cdadac-0434-42bf-b2d9-62ba84a62ef1.stateatom.json\n- embedding filePrivacy: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/embedding-recipient/stateatom-privacy-69541319-f8f3-4574-9a21-43e2d3821c2d.stateatom.json\n- embedding notePrivacy: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/embedding-recipient/stateatom-privacy-443aad32-a4e8-43f7-bffa-aa5a02ce0f28.stateatom.json\n\nFirst viewport/control screenshots and exact receipts:\n.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/.\nAgent candidates only, no public reader deployment or H05 completion claim.\n
+
+## Actual local source comparison demo (.23)
+
+Current identical-payload receipt: .artifacts/atom/2026-10-20T10-42-56-664Z/atom-handoff.json.
+Use its standalone host and the existing Open diagnostic reader link; no public
+reader deployment is assumed. Actual native inputs, not the earlier synthetic
+source fixtures:
+
+- Reporter report: /home/roman/projects/stateatom/.artifacts/u03/source-creation-native/2026-10-20T10-33-40-649Z/downloads/standalone-reporter/stateatom-issue-0cf1d712-8066-478c-b56b-7f561b1db95e.stateatom.json
+- Developer diagnostic: /home/roman/projects/stateatom/.artifacts/u03/source-creation-native/2026-10-20T10-33-40-649Z/downloads/standalone-developer/stateatom-31be9058-0ebc-4944-b255-394bfec0fad1.stateatom.json
+- Different recorded sample hash diagnostic: /home/roman/projects/stateatom/.artifacts/u03/source-creation-native/2026-10-20T10-33-40-649Z/downloads/standalone-different/stateatom-8b8b3358-78d1-404e-aa0c-e13cdd8e0da5.stateatom.json
+- Actual matched revision: /home/roman/projects/stateatom/.artifacts/u03/source-creation-native/2026-10-20T10-33-40-649Z/downloads/standalone-recipient/stateatom-source-revision-5a80c211-ee90-484e-abe5-261a8bea45c6.stateatom.json
+- Later revision preserving notes/packets: /home/roman/projects/stateatom/.artifacts/u03/source-creation-native/2026-10-20T10-33-40-649Z/downloads/standalone-recipient/stateatom-source-revision-3046bbc1-c012-4334-9673-d201db2a6739.stateatom.json
+
+1. Open Reporter report. First view explains the recorded discrepancy/condition;
+   app/server/IDE need not run. Imported claims remain historical/untrusted.
+2. Type a Developer note; expand Compare local source files. Choose Developer
+   diagnostic and local tests/fixtures/inspection/react/App.tsx. Select that exact
+   recorded path manually, then explicitly check Include comparison metadata.
+3. Review source revision; only explicit Download source revision creates a new
+   file. Manual note-only build field is ignored here. No source text is embedded.
+4. Reopen child/original. Baseline stays intact; source result is local content
+   comparison, not selected-occurrence execution, full-build attestation or fix.
+5. For negative controls use the saved Different sample hash diagnostic or the
+   owned standalone-wrong-bytes/App.tsx beside these results. Do not edit the
+   original fixture. Derived missing-build file is a labelled historical negative.
+
+Native25 receipt: .artifacts/u03/source-creation-native/2026-10-20T10-33-40-649Z/results.json.
+Visible source-control narrow/zoom200 candidates: .artifacts/u03/source-visual-native/2026-10-20T10-38-36-114Z/.
+Agent-operated evidence only. Saved U02 outcomes and whole U03/P04/C07 remain open.

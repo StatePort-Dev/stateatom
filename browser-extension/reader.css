@@ -34,3 +34,9 @@ section { overflow-wrap:anywhere; }
 [data-sp-ui] #reader-privacy-area[hidden] { display:none !important; }
 
 [data-sp-ui] .sp-atom-review-check > span { min-width:0; overflow-wrap:anywhere; }
+
+[data-sp-ui] #reader-source-area select { display:block; width:100%; max-width:100%; box-sizing:border-box; margin-top:6px; font:inherit; }
+[data-sp-ui] #reader-source-area input[type="file"] { max-width:100%; min-width:0; }
+[data-sp-ui] #reader-source-area .sp-atom-review-check { align-items:flex-start; }
+[data-sp-ui] #reader-source-input-status,
+[data-sp-ui] #reader-source-status { color:var(--sp-color-muted); line-height:1.6; }

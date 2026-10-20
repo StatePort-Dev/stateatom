@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Unimported local byte comparisons. No file access, source execution or app authority.
+// Local byte comparisons. No file access, source execution or app authority.
 import{parseDiagnostic,portableSourcePath}from'./diagnostic.mjs';
 import{parseHandoffReport,handoffArtifactDigest}from'./handoff-files.mjs';
 import{createHandoffDraft}from'./handoff-draft.mjs';

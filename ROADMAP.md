@@ -149,17 +149,22 @@ scoped evidence and failures. Next is U03.2b.3 rich technical/privacy profile;
 minimal-profile persistence does not complete rich review, whole U03 or C07.
 
 
-Current U03 checkpoint (2026-10-20): ordinary category/field review and privacy
-copies are installed; .20261020.22 additionally reads/stores/downloads the explicit
-source-evidence profile with note/file privacy. Full1432/focused206/native passive27/
-ordinary41/storage15/types2/admission7 bind exact files and package/host identity
-in the [execution record](docs/completion/24-u03-handoff-progress.md). Source-profile
-native inputs are synthetic fixtures, not actual H05 source acquisition.
-The one next bounded item is U03.2b.4c.2: normal explicit Developer diagnostic/
-local-source-file review plus actual H05 workflow. Task2/3/whole U03 and saved U02
-outcomes/P04/C07 remain open. A05/L02 stay mandatory, SDK remains outside Atom,
-and an independent human remains no blocker. Historical criteria/results below
-and new working-design versus approved-scope boundaries are preserved.
+Current U03 checkpoint (2026-10-20): .20261020.23 adds explicit local Developer
+diagnostic/file/path/metadata-consent review and actual H05 source-content comparison.
+Full1446/focused397/form26, nativeH05 25/visual7/ordinary41/passive27/storage15,
+types2/admission7 pass. [Execution](docs/completion/24-u03-handoff-progress.md)
+retains earlier failures, the initial zoom-image qualification and metadata-only
+root-lock correction: exact archives, installed pair and both host payloads match
+the executed .23. No source/IDE acquisition was repeated for the visual supplement.
+Recorded sample hashes are not full application build attestation or selected-
+occurrence execution, ancestry or fix verification. Working UX is documented;
+it is not retrospective approval of previously unknown scope details.
+
+The one next bounded item is U03.2c.1: define and verify an unimported model for
+separately bound saved U02 outcomes, using actual existing ledgers. Task2/3/whole
+U03, P04/C07 and mandatory A05/L02 remain open. Historical evidence below stays
+under its own identity; independent human review is optional, candidate screenshots
+are not human visual approval. No SDK, publication or another repository work.
 
 ## Historical roadmap and checkpoint ledger
 

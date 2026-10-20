@@ -303,3 +303,42 @@ No Developer diagnostic/source-file acquisition form/H05 claim in this slice.
 
 4c.1 passive installed22 complete only: full1432/focused206/passive27/ordinary41/
 storage15/types2/admission7. Source fixtures synthetic, actualH05 remains4c.2.
+
+### Bounded U03.2b.4c.2: explicit Developer file workflow and actual H05
+
+Contract docs/features/handoff-source-creation.md. New local input controller,
+reader owner/HTML/CSS integration; actual recorded source context from existing
+app/open IDE, no replacement fake analyzer or source fixture for H05 positive.
+
+- [x] RED/GREEN diagnostic/file inputs, exact-path/no-autofill/default-off consent,
+  pre-read budgets/UTF8, reset/generations/pre-await snapshots and no external effects.
+- [x] Coupled real codec source preview/download, derived diagnostic build,
+  cross-note/privacy/source invalidation/Cancel/new parent and8-note bound.
+- [x] Fresh immutable23+types/full/admission; actual reporter+independent Developer
+  capture and real source-file comparison/download/reopen, mismatch/name-only/missing
+  controls, no app/source/IDE at recipient and unchanged baseline/parent bytes.
+- [x] Current affected ordinary/passive/storage regressions; native keyboard/
+  440/390/zoom/reduced-motion, real CDP Network positive control and visual reference.
+- [x] Local bounded commit and truthful H05 boundary; no whole U03 claim before
+  remaining saved U02 outcomes/full acceptance/one whole Task5 review.
+
+4c.2 installed local comparison complete only: .23 full1446/focused397/form26,
+actual nativeH05 25/visual7/ordinary41/passive27/storage15/types2/admission7.
+Exact metadata-only lock sync binds current receipt to the same executed archives
+and all installed/host bytes. Initial zoom image was not a controls view; separate
+visual7 supplies it without repeating acquisition. Whole Task2/3/U03 stay OPEN.
+
+### Bounded U03.2c.1: separately bound U02 outcome model, unimported
+
+Next bounded task only; concrete working data design follows focused reads of the
+existing native/response ledger and save-diagnostic ownership. This is not prior
+scope-interview approval and must not reinterpret old v1 or invent absent history.
+
+- [ ] Pin an explicit contract/identity boundary using actual existing U02 records,
+  preserving per-resource/transaction results and missing/failed/unconfirmed states.
+- [ ] RED/GREEN detached bounded model, exact selected-target/revision binding,
+  explicit privacy/default exclusions and inertness; no runtime/UI import yet.
+- [ ] Focused/full source checks and exact unchanged .23 runtime/archive/hosts;
+  no repack or old majority/expiry/legacy experiment repeat without source changes.
+- [ ] Local bounded commit. Actual atomic capture/public format/installed UI
+  follow separately; do not claim saved U02 outcomes or whole U03 from a model.

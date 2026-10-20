@@ -1039,3 +1039,67 @@ Next U03.2b.4c.2 adds normal explicit Developer diagnostic/source-file selection
 review/download and actual independent matching-source H05. No whole Task2/3/U03
 H01–H06 review, U02 saved outcomes/P04/C07/A05/L02 completion follows from passive
 fixtures. No SDK/publication/other repository work.
+
+## U03.2b.4c.2 — installed explicit local source comparison (.23)
+
+Completed only this bounded increment on base64d3580 with working changes;
+contract [source creation](../features/handoff-source-creation.md), exact receipt
+`.artifacts/u03/source-creation/verification23.json`. Normal reader now accepts a
+saved Developer v1 diagnostic plus1..8 explicitly chosen local files. Paths must
+be selected from recorded diagnostic paths; filenames infer nothing and metadata
+consent defaults off. Budgets precede reads. Source bytes are compared on Review,
+not embedded; note build comes from diagnostic. Shared note/privacy/source epochs
+cancel obsolete prepared output. Cancel preserves original and typed note.
+
+Actual commands: focused Node handoff tests397, `npm test`1446; normal form26.
+`node tests/integration/handoff-source-creation.mjs <executed-handoff>` passes25:
+real existing instrumented React app/open VS Code helper, actual U05 selection,
+normal Reporter Save/review/source-location consent/download, separate Developer
+capture, actual unchanged filesystem bytes. Both hosts record matching sample-set
+hashes; an actual existing reactCommit configuration changes the recorded sample
+hash while original source stays identical. App/server/IDE close before clean
+recipient reads files. Actual revision/download/reopen and a second source-profile
+append preserve baseline/prior notes/packets and exact parent. Wrong bytes with
+the same filename remain unjoined. Missing-build negative is explicitly derived
+historical compatibility data, never a fresh native capture. No occurrence
+execution, ancestry, fix verification or full application build attestation.
+
+Current native ordinary41/passive27/storage15 pass on the same archive; passive
+source fixtures remain synthetic. `handoff-source-visual.mjs` reuses only exact
+actual H05 inputs, adds7 native checks without source/IDE reacquisition. Supplied
+Settings19 foundation/13px body/12px controls, first390 discrepancy/expected/
+condition/time/question, >200-char local label wrapping and visible controls at
+actual195CSS/zoom200 were compared by the agent. Optional disclosures/vertical
+scroll are necessary local composition deviations, not a replacement design.
+All screenshots remain candidates, not human approval. Initial H05 named zoom
+images show historical details rather than source controls; visual7 supersedes
+only that view. Inspector CDP Network has positive reader.js reload controls;
+reader HTTP arrays are empty. This is not all-browser/P04 network evidence.
+
+Packed strict consumers2 and admission7 pass. Executed receipt:
+`.artifacts/atom/2026-10-20T10-12-46-696Z/atom-handoff.json`.
+Current producer receipt after syncing root lockfile's linked package22→23:
+`.artifacts/atom/2026-10-20T10-42-56-664Z/atom-handoff.json`.
+The reproduced Atom/UI archives, entire installed pair and both entire host maps
+are byte-identical. Only root lock metadata changed, not product inputs/payload;
+old lock bytes and receipts remain. Current admission7 passes again. Type/native/
+full executions retain their original receipt and exact payload equivalence;
+no fresh rerun is claimed for metadata alone. Verification is idempotent.
+
+Failures/control runs preserved in source-creation-native:10:13:12 and10:15:46
+FAIL3 on differential setup/UI;10:21:25 FAIL1 IDE trust;10:25:03/10:28:15 FAIL1
+because the failed isolated IDE held49331;10:30:42 FAIL1 Enter pairing. No feature
+PASS was inferred. Exact own PID/profile was rechecked, SIGTERM then bounded
+SIGKILL cleanup recorded; no user/other windows touched. Targeted coordinate
+probe proves only its simple reader case. Diagnostic-only10:32:58 PASS2 is not
+H05. Final actual25 is10:33:40, visual7 is10:38:36. Native driver now checks exact
+field input and trusted Pair gesture and scopes failed-IDE cleanup to its own
+profile. Failed/probe results, initial test syntax failure and sandbox port
+refusal remain. Final1446/397 run on settled product/test sources; intermediate
+1445 runs are not substituted. Earlier .22/.19 authority evidence stays historical
+under unchanged source hashes; no old majority/Settings/default/legacy rerun.
+
+Next **U03.2c.1 — bound saved U02 outcome model**. Task2/3 BASE markers remain
+OPEN. Full H01–H06 reconciliation/one whole-U03 review, actual saved U02 outcomes,
+P04/C07 and mandatory A05/L02 remain unfinished. No SDK, publication, account or
+other repository work; no independent-human blocker is introduced.

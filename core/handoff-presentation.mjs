@@ -42,9 +42,9 @@ export function handoffSourceEvidenceSummary(record){
  const kept=record.sourceEvidence.reduce((n,p)=>n+p.files.length,0),omitted=record.sourceEvidence.reduce((n,p)=>n+p.omittedFiles,0);
  return'Local source comparisons: '+kept+' file checks retained, '+omitted+' omitted; '+record.evidencePrivacy.omittedAttachments+' comparisons omitted. Historical untrusted claims, not reverified.';
 }
-export function handoffSourceEvidenceText(record){
+export function handoffSourceEvidenceText(record,{creating=false}={}){
  if(record.profile!=='source-evidence/1')return'';
- const lines=[handoffSourceEvidenceSummary(record),'These recorded local byte comparisons are not reverified by this reader. No original source file is opened.'];
+ const lines=[handoffSourceEvidenceSummary(record),creating?'Selected local file bytes were compared for this revision. Recorded source/build claims remain historical and untrusted; execution is not verified.':'These recorded local byte comparisons are not reverified by this reader. No original source file is opened.'];
  for(const p of record.sourceEvidence){
   const ordinal=record.additions.findIndex(n=>n.id===p.findingId)+1,build={'same-hash':'Same recorded collected-source sample hash.','different-hash':'Different recorded collected-source sample hashes.','unknown':'Recorded collected-source hash comparison is unknown.'}[p.buildComparison.relation];
   lines.push('','Developer note '+ordinal+' · unverified',build+' Not full application build attestation.',p.files.length+' file checks included; '+p.omittedFiles+' omitted.');

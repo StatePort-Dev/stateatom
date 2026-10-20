@@ -808,7 +808,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.2b.4c.2",
+      "active_slice": "U03.2c.1",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -1085,19 +1085,42 @@
           "whole_U03_review": false,
           "verification": ".artifacts/u03/source-passive/verification22.json",
           "record": "24-u03-handoff-progress.md"
+        },
+        {
+          "id": "U03.2b.4c.2",
+          "status": "complete-within-installed-local-source-comparison-boundary",
+          "candidate": "0.1.0-candidate.20261020.23",
+          "checks": {
+            "full_source": 1446,
+            "focused": 397,
+            "form_controls": 26,
+            "native_actual_H05": 25,
+            "native_source_controls_visual": 7,
+            "native_ordinary": 41,
+            "native_passive_source": 27,
+            "native_storage": 15,
+            "packed_types": 2,
+            "package_admission": 7
+          },
+          "normal_developer_source_file_form": true,
+          "actual_H05_enrichment": true,
+          "evidence_scope": "Actual explicitly selected local source bytes compared with two separate recorded source contexts; sample-set hashes are not full build attestation or selected-occurrence execution/ancestry/fix proof.",
+          "metadata_only_lock_sync": "Same exact archives/entire installed pair/two host payloads; old execution receipt retained, current producer receipt synchronized.",
+          "whole_U03_review": false,
+          "verification": ".artifacts/u03/source-creation/verification23.json",
+          "record": "24-u03-handoff-progress.md"
         }
       ],
       "current_candidate": {
-        "version": "0.1.0-candidate.20261020.22",
-        "handoff": ".artifacts/atom/2026-10-20T09-23-15-512Z/atom-handoff.json",
-        "sha256": "616c747addb996184fda0c92070abfd95c6f7c588b4c395a78c965875a953700",
-        "verification": ".artifacts/u03/source-passive/verification22.json",
-        "boundary": "ordinary reporter plus installed passive source-profile read/note/privacy; source fixtures synthetic, normal Developer file form/native H05 and whole U03 pending"
+        "version": "0.1.0-candidate.20261020.23",
+        "handoff": ".artifacts/atom/2026-10-20T10-42-56-664Z/atom-handoff.json",
+        "sha256": "c5d8cb2b3e90d6b53cd54cc1d5662e2c6f0344afa8d172d157a2144efa4c994d",
+        "verification": ".artifacts/u03/source-creation/verification23.json",
+        "boundary": "Ordinary reporter/privacy, installed source-profile read/store/note/privacy and explicit local-file comparison with actual H05 content checks; saved U02 outcomes and whole U03 remain pending."
       },
       "remaining_acceptance": [
-        "actual H05 matched-source/build evidence attachment, including mismatched/missing/name-only controls",
         "separately bound saved U02 input outcomes",
-        "full H01-H06 plus one fresh whole-U03 review and tested fix pass"
+        "full H01-H06 reconciliation plus one fresh whole-U03 review and tested fix pass"
       ]
     },
     {
@@ -2275,7 +2298,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Current .18 minimal reporter and passive reviewed-profile import/read/persistence/note verified; source1300/native45/default40/legacy6/types2/admission7. Normal rich reporter/category-field-per-note controls, actual H05 evidence and whole U03/C07 remain open.",
+    "current_activity_note": "Current .23: full1446/focused397/form26, actual local-source H05native25/visual7/ordinary41/passive27/storage15/types2/admission7. Metadata-only lock sync retains byte-identical archives/installed pair/hosts. Next U03.2c.1 bound saved U02 outcome model; whole U03/Task2/3/P04/C07 and mandatory A05/L02 remain open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "U03"

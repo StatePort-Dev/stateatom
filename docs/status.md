@@ -920,3 +920,13 @@ source files remain synthetic fixtures, not actual H05 acquisition. First view/
 13/12 typography/long-path/narrow/zoom preserve scope. [Record](completion/24-u03-handoff-progress.md)
 retains failures and qualified short-NaN fixture result. Next4c.2 normal Developer
 file workflow/native H05; Task2/3/whole U03/P04/C07/U02 saved outcomes stay open.
+
+U03.2b.4c.2 now installs explicit local Developer diagnostic/file comparison on
+.20261020.23: full1446/focused397/form26, actual H05native25/visual7/ordinary41/
+passive27/storage15/types2/admission7 pass. Actual separate source-connected
+captures and real local bytes remain distinct from execution/ancestry/fix or
+full-build attestation. Default-off consent, exact path choice, immutable prior
+notes/packets and missing/different/name-only controls are verified. [Record](completion/24-u03-handoff-progress.md)
+retains setup failures, the corrected zoom-controls view and exact metadata-only
+lock-sync reproduction. Next U03.2c.1 saved U02 outcome model; whole U03/Task2/3,
+P04/C07 and mandatory A05/L02 remain open. Candidate screenshots are not approval.
