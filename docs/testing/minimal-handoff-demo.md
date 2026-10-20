@@ -140,3 +140,14 @@ Candidate screenshots and exact source/download/network-positive receipts are in
 `node tests/integration/handoff-review-controls.mjs <exact-handoff-path>`.
 No source fetch or authority comes from opening a file. Actual H05 matched-source
 evidence and whole U03/P04/C07 remain unfinished.
+
+
+Source-fidelity correction (.21): exact candidate
+`.artifacts/atom/2026-10-20T08-20-12-486Z/atom-handoff.json`. The .19 ordinary workflow
+above still applies; when an imported v1 source has non-Code-linked or absent
+status, Prepare explains the profile limitation and requires explicit Use a simple
+report. Typed issue words and original identity remain; no source-kind upgrade.
+Current native41 screenshots/download receipts:
+`.artifacts/u03/review-controls-native/2026-10-20T08-20-42-371Z/`.
+The status inputs are labelled synthetic historical compatibility controls;
+actual H05 matched-source evidence is not demonstrated by them.

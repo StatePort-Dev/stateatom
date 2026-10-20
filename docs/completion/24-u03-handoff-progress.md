@@ -715,3 +715,79 @@ Next bounded work is **U03.2b.3d source-evidence fidelity**, checking the specif
 legacy source-status projection before actual H05 source/build enrichment. Task2/3
 BASEs and whole H01–H06/U03 review remain open, as do separately bound U02 saved
 outcomes, P04/C07, mandatory A05/L02. No SDK/publication/other repository work.
+
+
+## U03.2b.3d — non-Code-linked legacy source fidelity
+
+A focused reproduction above `67f8c1e` showed accepted v1 sources labelled Candidate,
+Unknown/Unsupported, Stale or with absent status becoming Code-linked in detailed
+projection and actual public reviewed creation. Root cause was the fixed source
+join definition; `reviewed-snapshot/1` only represents Code-linked sources.
+The [working failure contract](../features/handoff-review-controls.md) rejects new
+detailed creation with `UNSUPPORTED_HANDOFF_EVIDENCE` unless each source explicitly
+records Code-linked. It never infers a status from a filename or an absent field.
+The strict v1 parser, existing rich imports and original files remain unchanged.
+
+Prepare explains the unrepresentable evidence kind and offers the existing
+explicit **Use a simple report** action. Actual/expected and exact source identity
+are preserved; technical fragments stay omitted with existing counts. Typing keeps
+the explanation visible until Simple is chosen. Nothing falls back automatically.
+Already-exported rich files remain untrusted historical claims; without original
+v1 bytes this change cannot retrospectively detect/rewrite an old creator's upgrade.
+A future profile for other source kinds needs its own contract, not a silent /1 edit.
+
+Final immutable `.20261020.21`:
+`.artifacts/atom/2026-10-20T08-20-12-486Z/atom-handoff.json`, source above `67f8c1e`.
+Intermediate `.20` stays at08:15:42 with its own native41/types2 evidence. It does
+not include the subsequent visible-reason correction. Final source **1335** and
+focused **100** pass; packed types **2**, admission **7**. Actual both-host native
+**41** keeps all prior normal reporter/privacy controls and adds four separately
+labelled historical-status controls per host. Each actual native downloaded simple
+file retains issue words, exact original source digest and sourceLocations1, with
+no source fragment bytes. Original v1 files are byte-equal after review. Budget
+fixtures explicitly retain Code-linked so original row/output limit controls are
+still exercised rather than accidentally testing only the new source-status guard.
+Native storage **15** is fresh on .21. Exact paths/bytes/hashes and retained results
+are in `.artifacts/u03/source-fidelity/verification21.json`.
+
+Fresh commands (`$HANDOFF` denotes the exact final .21 path):
+
+```sh
+node --test --test-isolation=none tests/handoff-content.test.mjs tests/handoff-reviewed.test.mjs tests/atom/handoff-ui.test.mjs
+npm test
+npm run pack:atom
+npm run verify:atom-types -- "$HANDOFF"
+node tests/integration/handoff-review-controls.mjs "$HANDOFF"
+node tests/integration/handoff-storage.mjs "$HANDOFF"
+npm run verify:atom-package -- "$HANDOFF"
+node .artifacts/u03/source-fidelity/verify21.mjs
+```
+
+Current authority, input-editor, storage/parser and CSS source identity is compared
+with .19. Settings15/default40/legacy6 remain their exact historical .19 executions,
+not relabelled as fresh .21 runs. No old majority/ten-minute/legacy/default/Settings
+experiment is repeated without a changed criterion. Inspector network observation
+continues to require an actual positive CDP reader.js control; old unwired arrays
+remain qualified. Shared typography/primitives/CSS/reference files are unchanged;
+agent compares the wrapped source-limit explanation/native Simple control at390.
+Screenshots stay candidates; no independent human blocker or approval claim.
+
+Retained controls in `.artifacts/u03/source-fidelity/`: original reproduction;
+RED12/100, then first green7/100 due an invalid new test assumption that old
+parseDiagnostic byte-roundtrips unrelated normalized map/action metadata. The
+correct assertion retains exact source fields; the parser was not changed.
+Green100 passes. First full1335 failed only a newly added message assertion read
+after typing had changed that message. Moving that assertion before typing kept
+its exact budget reason; full20b1335 passed. Actual .20 render then exposed the
+useful-reason loss as a UI issue; new persistent-reason RED2/30 precedes the real
+UI fix, final focused100/full1335 pass. Native20a failed after17 checks because a
+new driver used nonexistent minimal counts.sources instead of sourceLocations;
+actual downloaded file already had sourceLocations1. Corrected driver only gives
+20b41 PASS; all failed files/driver copies remain. Storage20 wrote rawPASS15 with
+unchanged before/after inputs but its exec session ended143; it is retained with
+that process limitation, not a clean-exit claim. Final .21 uses its own fresh run.
+
+Next bounded **U03.2b.4a** defines actual source/build evidence attachment for H05
+before installed integration. Matching hashes remain content comparisons, not
+new execution/fix verification. Whole Task2/3/U03 H01–H06 review, separately bound
+U02 saved outcomes, P04/C07 and mandatory A05/L02 remain open.

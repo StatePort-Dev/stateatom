@@ -98,3 +98,29 @@ replacement. Disable the category's field editors while omitted and exclude thei
 local choices from emitted replacements; unchecking permits explicit re-review.
 Keep typed replacement locally while choices remain open, without copying it into
 an omitted category. Do not relax the codec's conflict checks.
+
+## U03.2b.3d — non-Code-linked legacy source guard
+
+Focused reproduction showed that v1 parsing accepts source status Candidate,
+Unknown/Unsupported, Stale or absent, while the fixed reviewed-snapshot/1 source
+scope only represents Code-linked fragments. The old projection silently assigned
+Code-linked to all of them. New working failure handling rejects detailed creation
+with `UNSUPPORTED_HANDOFF_EVIDENCE` if any legacy source lacks explicit Code-linked
+status. This does not change the strict v1 parser, saved original, existing public
+reviewed-profile meaning or old file import/append/redaction.
+
+Prepare explains that the recorded source evidence cannot be represented by this
+review profile and offers the existing explicit Use a simple report action. Typed
+issue words and exact source identity remain; no automatic fallback or new known
+source status. Simple profile drops technical fragments with its existing counts.
+Malformed source input is still refused, never offered as a compatible fallback.
+This bounded refusal is preferable to a silent evidence upgrade; broader source
+kinds require a separately versioned contract, not a quiet change to profile1.
+
+
+The guard applies to new detailed creation only. Previously exported/imported
+reviewed files remain untrusted historical claims under their original profile;
+without their original v1 bytes the reader cannot infer that an old creator used
+an incorrect source kind. This fix does not retrospectively certify or rewrite
+those files. Recreate a derivative from the retained v1 when corrected creation
+is needed.

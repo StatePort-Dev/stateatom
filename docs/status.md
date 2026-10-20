@@ -878,3 +878,12 @@ are verified; old v1/minimal remain supported. Corrected inspector CDP network
 observation includes a positive control; old .18 request arrays are not network
 proof. Next U03.2b.3d checks source-evidence fidelity before actual H05 enrichment.
 Whole U03/H01–H06/P04/C07 and separately saved U02 outcomes remain open.
+
+
+U03.2b.3d fixes new detailed handoff creation silently upgrading legacy source
+Candidate/Unknown/Stale/absent status to Code-linked. Final `.20261020.21` offers
+explicit simple review for these inputs and keeps its explanation visible while
+typing; original v1/existing rich import semantics are unchanged. Full1335/focused100/
+native41/storage15/types2/admission7 pass; [record](completion/24-u03-handoff-progress.md)
+retains .20 controls/failures and the .19 identities for unchanged authority tests.
+Next U03.2b.4a is actual H05 source/build evidence attachment; whole U03 stays open.

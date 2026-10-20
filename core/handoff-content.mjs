@@ -77,7 +77,9 @@ function available(v,type){
 }
 
 export async function createHandoffContentReview(sourceRaw){
- const source=parseDiagnostic(sourceRaw),reference=(await createHandoffDraft(sourceRaw)).read().sourceDiagnostic;
+ const source=parseDiagnostic(sourceRaw);
+ if(source.sources.some(s=>s.status!=='Code-linked'))throw error('UNSUPPORTED_HANDOFF_EVIDENCE','Recorded source evidence cannot be represented by this review profile without changing its kind. Original snapshot unchanged.');
+ const reference=(await createHandoffDraft(sourceRaw)).read().sourceDiagnostic;
  const fields=[],groups=[];
  function group(id,kind,evidenceKind,reason='execution-and-dependency-not-established'){
   const g={id,kind,evidenceKind:level(evidenceKind),scope:scopes[kind],reason,fieldIds:[]};groups.push(g);return g;

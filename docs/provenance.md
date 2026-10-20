@@ -290,3 +290,14 @@ network events and prove no HTTP absence. Current .19h uses inspector CDP Networ
 with positive reader.js reload control; no app/global/P04 collector claim. Raw
 historical runs, original failures, and scoped evidence criteria are preserved.
 Actual H05 source/build enrichment and whole U03 remain open.
+
+
+U03 source fidelity final candidate .20261020.21 (above67f8c1e):
+`.artifacts/atom/2026-10-20T08-20-12-486Z/atom-handoff.json`, exact receipt
+`.artifacts/u03/source-fidelity/verification21.json`. Rejects new detailed creation
+from non-Code-linked/absent legacy source status, keeps old records intact and
+supports explicit simple review. Old .20 native41/types2 and storage rawPASS15
+(exec143 limitation) remain intermediate evidence; .21 has its own native/storage
+checks. Historical19 Settings/default/legacy tests retain identity under exact
+unchanged authority/source comparison, never current21 execution claims. This
+cannot certify or silently correct previously exported untrusted source claims.

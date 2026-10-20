@@ -808,7 +808,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.2b.3d",
+      "active_slice": "U03.2b.4a",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -998,17 +998,38 @@
           "whole_U03_review": false,
           "verification": ".artifacts/u03/review-controls/verification19.json",
           "record": "24-u03-handoff-progress.md"
+        },
+        {
+          "id": "U03.2b.3d",
+          "status": "complete-within-source-status-fidelity-guard-boundary",
+          "candidate": "0.1.0-candidate.20261020.21",
+          "tests": {
+            "full": 1335,
+            "focused": 100,
+            "native_normal_review_privacy_source_status": 41,
+            "native_storage": 15,
+            "packed_types": 2,
+            "package_admission": 7
+          },
+          "old_v1_semantics_unchanged": true,
+          "new_detailed_source_kind_upgrade_refused": true,
+          "fallback": "explicit-simple-report-original-source-identity-kept",
+          "historical_authority_tests": "exact19 source identity; not fresh21 executions",
+          "actual_H05_enrichment": false,
+          "whole_U03_review": false,
+          "verification": ".artifacts/u03/source-fidelity/verification21.json",
+          "record": "24-u03-handoff-progress.md"
         }
       ],
       "current_candidate": {
-        "version": "0.1.0-candidate.20261020.19",
-        "handoff": ".artifacts/atom/2026-10-20T07-15-17-102Z/atom-handoff.json",
-        "sha256": "8a22f0b6bda613ce5f8383aefaab5fe986ec55e969999a5e6af356c96a15f42d",
-        "verification": ".artifacts/u03/review-controls/verification19.json",
-        "boundary": "ordinary reporter/category/field and recipient privacy controls; actual H05 enrichment, source fidelity check and whole U03 pending"
+        "version": "0.1.0-candidate.20261020.21",
+        "handoff": ".artifacts/atom/2026-10-20T08-20-12-486Z/atom-handoff.json",
+        "sha256": "a2d564a7d5abac484efa162c83fed966c63f1b2036f8311967f475c9dfdfcd0d",
+        "verification": ".artifacts/u03/source-fidelity/verification21.json",
+        "boundary": "normal review/privacy controls and explicit non-Code-linked source fallback; actual H05 source/build enrichment and whole U03 pending"
       },
       "remaining_acceptance": [
-        "source-status projection fidelity and actual H05 matched-source/build evidence",
+        "actual H05 matched-source/build evidence attachment, including mismatched/missing/name-only controls",
         "separately bound saved U02 input outcomes",
         "full H01-H06 plus one fresh whole-U03 review and tested fix pass"
       ]

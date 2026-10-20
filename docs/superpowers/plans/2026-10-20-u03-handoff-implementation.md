@@ -213,3 +213,12 @@ positive reader.js reload control. Task2/3 remain open, no BASE/task-done reset.
 Next bounded U03.2b.3d checks only source-status fidelity in legacy projection;
 actual H05 matched-source/build enrichment and saved U02 outcomes follow separately.
 Whole U03 Task5 review still occurs once at its full acceptance boundary.
+
+
+U03.2b.3d now guards legacy non-Code-linked source creation and offers explicit
+simple fallback with persistent explanation. Final .21 full1335/focused100/native41/
+storage15/types2/admission7; .20 intermediate and all failures remain separate.
+Authority/UI CSS source identity retains historical19 Settings/default/legacy
+results without rerun or freshness upgrade. Task2/3 stay OPEN. Next U03.2b.4a pins
+an actual H05 source/build evidence attachment contract and unimported model before
+new runtime/UI integration. No evidence threshold or old format is relaxed.

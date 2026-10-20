@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.21
+
+- Keep detailed-review failure reasons visible while the user types, until the
+  explicit simple report is chosen. No shared typography or primitive changes.
+
+## 0.1.0-candidate.20261020.20
+
+- Refuse detailed creation when a legacy source lacks explicit Code-linked status,
+  avoiding an evidence-kind upgrade. Keep v1 and existing reviewed imports intact.
+- Explain this scope limit in Prepare issue and offer the existing explicit simple
+  report path, preserving typed issue words and exact original identity. Shared
+  UI tokens, primitives, typography and layout are unchanged.
+
 ## 0.1.0-candidate.20261020.19
 
 - Prepare a reviewed historical report through ordinary category/field consent, inert filtered previews, explicit omission/reviewer replacement and separately reviewed local Save. Keep private categories off by default and clear technical consent on Cancel/new source while preserving typed issue words.
