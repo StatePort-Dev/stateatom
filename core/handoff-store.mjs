@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // Single-writer historical storage controller. Data only, no host authority.
-import {readHandoffFile, handoffArtifactDigest} from './handoff-report.mjs';
+import {readHandoffFile, handoffArtifactDigest} from './handoff-files.mjs';
 
 const MAX_BYTES=2097152, MAX_ITEMS=8, DAY=86400000, DATE_MAX=8640000000000000;
 const encoder=new TextEncoder();

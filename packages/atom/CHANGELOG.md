@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.18
+
+- Read and persist the explicit reviewed historical profile alongside unchanged v1/minimal files. Keep exact raw bytes, shared retention and inert parent/note handling.
+- Show included/omitted/filtered/reviewer-redacted conditions honestly in Atom and the passive reader, with optional readable technical disclosure instead of raw field IDs/JSON in the first viewport. Preserve shared Settings type/control foundation and all tokens/primitives.
+- Reject malformed UTF-8 in passive file input. Reporter preparation still creates its existing minimal profile; rich creation controls and full U03 acceptance follow separately.
+
 ## 0.1.0-candidate.20261020.17
 
 - Use the shared body font for ordinary issue-description textareas instead of inheriting the advanced JSON editor monospace rule. Preserve 13px dialog body, 12px controls and all shared tokens.

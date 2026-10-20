@@ -238,6 +238,14 @@ notes stay immutable, async consent is snapshotted and omitted bytes are absent.
 Next is U03.2b.3c installed review/reader/persistence integration. Hash-only notes
 do not satisfy actual H05 matched-build evidence; full U03/P04/C07 remain open.
 
+[U03.2b.3c.1](completion/24-u03-handoff-progress.md) now installs passive reviewed-
+profile import/read/persistence/notes on `.20261020.18`: full1300/targeted78/native45/
+storage15/Settings15/default40/legacy6/types2/admission7 pass. Rich native files are
+explicit synthetic codec fixtures; normal Prepare issue still creates minimal files.
+Shared type/narrow/zoom/native-keyboard/reduced-motion checks retain historical
+evidence and failures. Next is U03.2b.3c.2 normal category/field/per-note controls;
+actual H05 evidence, whole U03/P04/C07 remain open.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

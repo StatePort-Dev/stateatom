@@ -543,3 +543,88 @@ normal category/field/per-note review and compatible persistence, then creates a
 fresh immutable package and verifies actual downloaded bytes in both hosts.
 Task2/3, full H01–H06/whole-U03 review, actual source/build enrichment, P04 and C07
 remain open; no SDK/publication/other-repository work follows from this increment.
+
+## U03.2b.3c.1 — installed passive reviewed-profile integration
+
+Candidate `.20261020.18` is immutable at
+`.artifacts/atom/2026-10-20T06-38-34-241Z/atom-handoff.json`, built from working
+source above `76657b7`. The [integration contract](../features/handoff-reviewed-integration.md)
+splits passive integration from new reporter/recipient privacy controls. Strict
+minimal/v1 codecs retain their semantics; `core/handoff-files.mjs` explicitly
+dispatches the reviewed profile. Common private storage, local import, Atom saved
+review and passive reader now accept it without adopting application authority.
+Source/window/values remain historical and untrusted. No source or URL is fetched.
+
+Shared presentation distinguishes included false/text, filtered, omitted, unavailable
+and reviewer replacement. First view stays discrepancy/expected/condition/time;
+readable technical fragments live in a native disclosure, with original scoped
+evidence kinds and broken-context wording. Data uses textContent, never active
+links/HTML. Exact original JSON remains advanced. The passive file input now uses
+strict bounded UTF-8, preserves BOM for rejection and never silently substitutes
+bytes. Normal **Prepare issue still creates minimal-snapshot/1**. Rich files in
+this native check are declared synthetic codec fixtures, not normal reporter rich
+creation, actual H05 evidence enrichment or full U03 acceptance.
+
+Fresh commands (`$HANDOFF` denotes the exact .18 path above):
+
+```sh
+node --test --test-isolation=none tests/atom/handoff-ui.test.mjs tests/browser/handoff-reader.test.mjs tests/atom/handoff-library.test.mjs tests/atom/inspector-ui.test.mjs tests/handoff-files.test.mjs tests/handoff-presentation.test.mjs
+npm test
+npm run pack:atom
+npm run verify:atom-types -- "$HANDOFF"
+node tests/integration/handoff-reviewed.mjs "$HANDOFF"
+node tests/integration/handoff-storage.mjs "$HANDOFF"
+node tests/integration/production-settings-lifetime.mjs "$HANDOFF"
+npm run verify:input-fields -- "$HANDOFF" --accepted
+node tests/integration/input-legacy.mjs "$HANDOFF"
+npm run verify:atom-package -- "$HANDOFF"
+node .artifacts/u03/reviewed-integration/verify18.mjs
+```
+
+Full **1300**, targeted UI/readers/dispatch **78**, packed types **2**, admission
+**7** pass. Actual native **45** retains all original25 minimal two-role/local-save
+controls and adds rich fixture import, readable included text/scoped details, exact
+raw-byte reopen/download with fresh completed Chrome GUID, separately redacted
+fixture import, tampered-checksum refusal, clean recipient note download/reopen,
+UTF-8/BOM refusal, native Space/Tab/focus trap and reduced motion. Result:
+`.artifacts/u03/reviewed-native/2026-10-20T06-46-03-682Z/results.json`.
+Both hosts have no app/source/IDE during passive rich reading; observed external
+reader requests remain empty. Rich note preserves the whole report and stays
+unverified with a different recorded build hash.
+
+Current native storage/restart/quota **15**:
+`.artifacts/u03/storage-native/2026-10-20T06-43-51-421Z/results.json`.
+F05 Settings lifecycle **15**:
+`.artifacts/f05/settings-lifetime/2026-10-20T06-47-29-052Z/results.json`.
+Default fields **40**, actual `configuration.preview:false`:
+`.artifacts/u02/input-fields/native/2026-10-20T06-48-05-207Z/results.json`.
+Original legacy/real IDE/Restore **6**:
+`.artifacts/u02/input-legacy/2026-10-20T06-49-08-093Z/results.json`.
+Default and legacy suites briefly overlapped; focused source checks establish
+independent ephemeral origins/profiles versus legacy4173/its own IDE, and both
+terminal results retain unchanged before/after inputs. No shared-port result or
+old majority/expiry evidence is silently rerun or regraded.
+
+The source/entire-host/archive/native raw-file receipts are frozen in
+`.artifacts/u03/reviewed-integration/verification18.json`. Agent compared the
+supplied Settings narrow reference with current390/200%-zoom/recipient captures.
+Shared13px body/12px controls/type/borders remain; longer readonly scrolling,
+wrapped200% heading and optional technical disclosure are necessary local composition
+differences, with no dedicated handoff reference claimed. Shared tokens/primitives/
+reference files are unchanged. Changelog18 records the visual change; screenshots
+remain candidates, no independent-human gate or human approval claim.
+
+Retained controls: missing dispatcher/presentation2, contract9 (including real
+old-store unsupported-rich refusal), and UI-rich2 RED. First full run had **1/1300
+failure**: old v1 reader test supplied `.text()` only with fake size100. The harness
+now reselects a real Node File for each changed synthetic payload; all original
+provenance assertions remain, focused v1 reader24/full1300 pass. Product .18 did
+not change for this repair. First native43 PASS remains at06:42:51. Added keyboard/
+reduced-motion control then failed14 at06:44:47 because the raw native page wrapper
+has no Playwright `emulateMedia`. Driver-only CDP Emulation correction gives the
+final45 PASS; failed/intermediate results and original driver copies remain intact.
+
+Next **U03.2b.3c.2** adds normal reporter category/field review and recipient
+per-note privacy controls. Tasks2/3 remain open, with actual source/build evidence
+enrichment, any separately bound saved input outcomes, full H01–H06/whole-U03
+review, P04 and C07 still unfinished. No SDK/publication/other-repository work.

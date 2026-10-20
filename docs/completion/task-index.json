@@ -808,7 +808,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.2b.3c",
+      "active_slice": "U03.2b.3c.2",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -952,14 +952,37 @@
           "issued_candidate_unchanged": "0.1.0-candidate.20261020.17",
           "verification": ".artifacts/u03/reviewed-codec/verification.json",
           "record": "24-u03-handoff-progress.md"
+        },
+        {
+          "id": "U03.2b.3c.1",
+          "status": "complete-within-installed-passive-reviewed-profile-boundary",
+          "candidate": "0.1.0-candidate.20261020.18",
+          "tests": {
+            "full": 1300,
+            "focused_ui_readers_dispatch": 78,
+            "native_minimal_plus_reviewed_passive": 45,
+            "native_storage": 15,
+            "current_settings_lifecycle": 15,
+            "default_local_fields": 40,
+            "original_legacy": 6,
+            "packed_types": 2,
+            "package_admission": 7
+          },
+          "installed_reviewed_file_import_read": true,
+          "normal_rich_reporter_creation": false,
+          "recipient_granular_privacy_controls": false,
+          "actual_H05_enrichment": false,
+          "full_H01_H06": false,
+          "whole_U03_review": false,
+          "record": "24-u03-handoff-progress.md"
         }
       ],
       "current_candidate": {
-        "version": "0.1.0-candidate.20261020.17",
-        "handoff": ".artifacts/atom/2026-10-20T05-36-31-213Z/atom-handoff.json",
-        "sha256": "dfdbeb6c2fa99348b34e1d7d6906c728c6b55fedda90d76ab1e9320818364e2d",
-        "verification": ".artifacts/u03/storage-ui/verification17.json",
-        "boundary": "minimal-profile reviewed save/reopen/import UI; rich privacy and whole U03 pending"
+        "version": "0.1.0-candidate.20261020.18",
+        "handoff": ".artifacts/atom/2026-10-20T06-38-34-241Z/atom-handoff.json",
+        "sha256": "84022a40a95108c313af6c1698616f4fa6fb4c610abfe8a26f5150d27c3dbb42",
+        "verification": ".artifacts/u03/reviewed-integration/verification18.json",
+        "boundary": "normal minimal reporter plus installed passive reviewed-profile import/read/persistence/note; rich reporter/privacy controls and whole U03 pending"
       },
       "remaining_acceptance": [
         "rich per-category/per-note privacy and retained technical evidence",
@@ -1750,13 +1773,12 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "U03.2b.3b",
-      "status": "complete-within-unimported-reviewed-codec-boundary",
-      "profile": "reviewed-snapshot/1",
+      "id": "U03.2b.3c.1",
+      "status": "complete-within-installed-passive-reviewed-profile-boundary",
+      "candidate": "0.1.0-candidate.20261020.18",
       "record": "24-u03-handoff-progress.md",
-      "verification": ".artifacts/u03/reviewed-codec/verification.json",
-      "issued_candidate_unchanged": "0.1.0-candidate.20261020.17",
-      "next_item": "U03.2b.3c"
+      "verification": ".artifacts/u03/reviewed-integration/verification18.json",
+      "next_item": "U03.2b.3c.2"
     },
     "next_item": "U03",
     "new_full_task_acceptances": [
@@ -2143,7 +2165,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Current .17 reviewed local Save/reopen/import UI unchanged; unimported reviewed profile/per-note derivatives30/full1286 complete. Installed rich review/reader, actual source/build enrichment and whole U03/C07 remain open.",
+    "current_activity_note": "Current .18 minimal reporter and passive reviewed-profile import/read/persistence/note verified; source1300/native45/default40/legacy6/types2/admission7. Normal rich reporter/category-field-per-note controls, actual H05 evidence and whole U03/C07 remain open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "U03"

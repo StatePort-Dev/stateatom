@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 // Controlled DOM; real data codec. Not rendered/native workflow acceptance.
 import test from'node:test';import assert from'node:assert/strict';import{makeDiagnostic}from'../../core/diagnostic.mjs';import{parseHandoffReport,handoffArtifactDigest,appendHandoffFinding}from'../../core/handoff-report.mjs';import{createHandoffUI}from'../../packages/atom/src/handoff-ui.mjs';
+import {createHandoffDraft} from '../../core/handoff-draft.mjs';
+import {createReviewedHandoffReport} from '../../core/handoff-reviewed.mjs';
 const tick=()=>new Promise(r=>setTimeout(r,0));
 const savedReply=async(raw,status='saved')=>({status,entry:{id:JSON.parse(raw).id,digest:await handoffArtifactDigest(raw)},evicted:[],expired:[]});
 function node(){const events=new Map();return{value:'',checked:false,textContent:'',hidden:false,disabled:false,open:false,ownerDocument:{activeElement:null},focus(){this.focused=true;},getClientRects(){return[{}];},querySelectorAll(){return[];},showModal(){this.open=true;},close(){this.open=false;events.get('close')?.({});},addEventListener(k,fn){events.set(k,fn);},fire(k){events.get(k)?.({preventDefault(){},stopPropagation(){}});}};}
@@ -58,4 +60,7 @@ test('closing a read-only saved report returns focus to its review action',async
 
 test('reporter inputs wait for the saved source before default title initialization',async()=>{
  const f=fixture();f.enable();f.hold();const pending=f.click('handoff-open');await tick();assert.equal(f.$('handoff-title').disabled,true);assert.equal(f.$('handoff-actual').disabled,true);assert.equal(f.$('handoff-omit-question').disabled,true);f.release();await pending;assert.equal(f.$('handoff-title').disabled,false);assert.equal(f.$('handoff-actual').disabled,false);f.view.dispose();
+});
+test('saved reviewed text is shown only with actual inclusion and old details clear on another view',async()=>{
+ const f=fixture('text'),a=await createHandoffDraft(f.source,{actual:'Rich issue',expected:'Different text'},{now:()=>2000});await a.freeze({expectedRevision:0});const baseline=JSON.stringify(a.read().baseline),rich=await createReviewedHandoffReport(f.source,baseline,{content:{includeCategories:['selectedText','originalNotes']}},{now:()=>3000}),omitted=await createReviewedHandoffReport(f.source,baseline,{}, {now:()=>3000});await f.view.openSaved(rich);assert.match(f.$('handoff-summary').textContent,/PrivateTextCedar/);assert.doesNotMatch(f.$('handoff-summary').textContent,/Source, responses and recorded actions are excluded/);assert.equal(f.$('handoff-technical').hidden,false);assert.match(f.$('handoff-technical-text').textContent,/PrivateLegacyNotesCedar/);f.click('handoff-download');assert.equal(f.downloads[0].raw,rich);await f.view.openSaved(omitted);assert.doesNotMatch(f.$('handoff-summary').textContent,/PrivateTextCedar/);assert.doesNotMatch(f.$('handoff-technical-text').textContent,/PrivateLegacyNotesCedar/);f.click('handoff-cancel');await f.open();assert.equal(f.$('handoff-technical').hidden,true);assert.equal(f.$('handoff-technical-text').textContent,'');f.view.dispose();
 });

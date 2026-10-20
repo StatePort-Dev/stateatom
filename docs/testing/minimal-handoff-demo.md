@@ -1,6 +1,40 @@
 # Minimal issue handoff — local demonstration
 
-## Current reviewed local-save increment (.20261020.17)
+## Current .18 passive reviewed-profile increment
+
+Exact package: `.artifacts/atom/2026-10-20T06-38-34-241Z/atom-handoff.json`.
+Normal Prepare issue still creates the minimal profile described below. This
+increment adds explicit rich-file import/read/persistence/note support. The real
+passive UI demo uses a **synthetic codec fixture**, not new normal rich reporter
+controls or actual source/build evidence. It does not complete U03 or C07.
+
+```sh
+node tests/integration/handoff-reviewed.mjs .artifacts/atom/2026-10-20T06-38-34-241Z/atom-handoff.json
+```
+
+This is a verified headless driver, not an interactive launcher. Actual native45
+results/screens/files: `.artifacts/u03/reviewed-native/2026-10-20T06-46-03-682Z/`.
+Import `standalone-synthetic-reviewed.stateatom.json` through the bundled reader's
+file picker to show title/discrepancy/expected/included text, then open Reviewed
+technical details for Code-linked source and scoped response fragments. Raw JSON
+is not needed. The original app/source/IDE can stay closed. The same file imports
+into Atom's local file selector and redownloads byte-exactly.
+
+The separately generated `standalone-synthetic-redacted.stateatom.json` demonstrates
+that omitted selected text/source/body/original notes are absent; this fixture is
+not credited as a normal UI privacy action. The actual recipient-created revision
+is in `downloads/standalone-recipient/`, with unverified note text and unchanged
+reporter baseline. Screenshot examples: `standalone-reviewed-390-candidate.png`,
+`embedding-reviewed-zoom200-candidate.png`, `standalone-reviewed-recipient-390-candidate.png`.
+Agent visual comparison and native keyboard/reduced-motion/narrow/actual-zoom checks
+are recorded; no human visual approval is claimed or required to continue.
+
+Next3c.2 adds normal category/field/per-note privacy controls. Receipt and exact
+raw/GUID/source bindings: `.artifacts/u03/reviewed-integration/verification18.json`.
+The .17 and .12 walkthroughs below retain their historical identity.
+
+
+## Earlier reviewed local-save increment (.20261020.17)
 
 The current candidate adds separate **Save reviewed report locally**, readable
 saved-file reopen, native local import, Refresh local files and exact deletion.

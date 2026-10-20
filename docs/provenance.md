@@ -271,7 +271,7 @@ the proof criteria or historical manifests.
 
 ## Historical handoff — 2026-10-20
 
-New `core/handoff-{draft,report,store,content,reviewed}.mjs`, handoff controllers and new
+New `core/handoff-{draft,report,store,content,reviewed,files,presentation}.mjs`, handoff controllers and new
 source/native tests are original Apache-2.0 work. The content projection adapts
 secret-pattern filtering from the existing original Apache diagnostic module; no
 external sanitizer or new dependency is copied. Changes to imported runtime/UI

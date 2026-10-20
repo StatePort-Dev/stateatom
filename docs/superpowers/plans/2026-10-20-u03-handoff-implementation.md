@@ -126,6 +126,12 @@ exact `.17` source/archive/installed hosts unchanged. Contract:
 `docs/features/handoff-reviewed-format.md`. Next U03.2b.3c integrates all file
 consumers and readable review together; no H05 enrichment or whole-Task2 credit.
 
+U03.2b.3c.1 now installs explicit reviewed-profile passive reading/import/storage
+and notes on `.18`: full1300/targeted78/native45/storage15/Settings15/default40/
+legacy6/types2/admission7 pass. Rich fixtures are synthetic passive-file controls,
+not normal reporter creation/H05 enrichment. Next3c.2 adds actual category/field/
+per-note controls. Contract: `docs/features/handoff-reviewed-integration.md`.
+
 **Consumes:** Task1 frozen baseline and exact original diagnostic, explicit review
 choices. **Produces:** validated historical v2 record/serializer/derivative and
 version-aware local storage without changing old record interpretation.

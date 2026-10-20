@@ -48,14 +48,14 @@ test('passive reader displays actual nested profile statuses and profile freshne
   await import('../../browser-extension/reader.mjs');
   const s=state();s.analysis.stateatom.firstReadProfile={schema:1,status:'Unknown/Unsupported',fullPath:false,freshness:'Stale',sourceProof:{status:'Unknown/Unsupported',profile:'unavailable'},occurrence:{status:'Unknown/Unsupported',pointer:'/rules/quota'},limits:[]};
   s.analysis.stateatom.runtime.commit={status:'Observed',producer:{status:'Observed'}};s.analysis.stateatom.runtime.exchangeBindings=[{status:'Observed',requestId:'request'}];s.analysis.stateatom.runtime.stateHandoffs=[{status:'Observed',queueId:'q',valueOrigin:'Unknown/Unsupported'}];
-  const r=makeDiagnostic(s);elements['diagnostic-file'].files=[{size:100,text:async()=>JSON.stringify(r)}];await elements['diagnostic-file'].listener();
+  const r=makeDiagnostic(s),load=async()=>{elements['diagnostic-file'].files=[new File([JSON.stringify(r)],'synthetic-diagnostic.json',{type:'application/json'})];await elements['diagnostic-file'].listener();};await load();
   const text=renderText(elements['reader-summary']);assert.match(text,/Unknown\/Unsupported source\/effect derivation/);assert.match(text,/Unknown\/Unsupported occurrence claim/);assert.match(text,/Stale/);assert.doesNotMatch(text,/Code-linked source\/effect derivation|Observed occurrence claim/);assert.match(elements['reader-summary'].children[1].textContent,/Complete provenance is not established/);
   r.runtime.firstReadProfile={...r.runtime.firstReadProfile,status:'Supported finite trace',fullPath:true,freshness:'Recorded',sourceProof:{status:'Code-linked',profile:'reviewed'},occurrence:{status:'Observed',pointer:'/rules/quota'}};
-  await elements['diagnostic-file'].listener();const supported=renderText(elements['reader-summary']);assert.match(supported,/Code-linked source\/effect derivation/);assert.match(supported,/Observed occurrence claim/);assert.match(supported,/Recorded/);
+  await load();const supported=renderText(elements['reader-summary']);assert.match(supported,/Code-linked source\/effect derivation/);assert.match(supported,/Observed occurrence claim/);assert.match(supported,/Recorded/);
   const sectionText=title=>{const nodes=elements['reader-summary'].children,i=nodes.findIndex(n=>n.textContent===title);return renderText(nodes[i+1]);};
   assert.match(elements['reader-summary'].children[1].textContent,/alone.*finite trace/i);
   for(const title of ['Historical host-property correspondence','Historical React state handoffs','Historical browser exchange identities'])assert.match(sectionText(title),/alone.*finite trace/i,title);
   assert.match(supported,/not reverified/);assert.match(supported,/Untrusted historical claim/);assert.equal(r.runtime.stateHandoffs[0].valueOrigin,'Unknown/Unsupported');
-  r.runtime.firstReadProfile.freshness='Stale';await elements['diagnostic-file'].listener();assert.match(elements['reader-summary'].children[1].textContent,/Complete provenance is not established/);
+  r.runtime.firstReadProfile.freshness='Stale';await load();assert.match(elements['reader-summary'].children[1].textContent,/Complete provenance is not established/);
  }finally{if(originalDocument===undefined)delete globalThis.document;else globalThis.document=originalDocument;}
 });

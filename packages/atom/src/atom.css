@@ -179,3 +179,4 @@
 [data-sp-ui] .sp-atom-handoff [hidden] { display:none !important; }
 [data-sp-ui] .sp-atom-report-import { display:block; margin:10px 0; }
 [data-sp-ui] .sp-atom-report-import input { display:block; width:100%; max-width:100%; box-sizing:border-box; }
+[data-sp-ui] .sp-atom-handoff-technical { white-space:pre-wrap; overflow-wrap:anywhere; max-height:50vh; overflow:auto; padding:12px 0; font-family:var(--sp-font-body); }

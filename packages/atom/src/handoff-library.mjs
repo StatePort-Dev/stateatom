@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // Local historical files only. No app/source permission or linked-resource fetch.
-import {readHandoffFile} from '../../../core/handoff-report.mjs';
+import {readHandoffFile} from '../../../core/handoff-files.mjs';
 const failure=(message,code='OPERATION_FAILED')=>Object.assign(new Error(message),{code});
 export function createHandoffLibrary({$,document,rpc,onContext,openReport,openLegacy}){
  let disposed=false,entries=[],refreshEpoch=0,selectionEpoch=0,work=null;

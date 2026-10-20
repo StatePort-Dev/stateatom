@@ -2,7 +2,9 @@
 // Readable minimal issue derivative of an explicitly saved v1 snapshot.
 import{parseDiagnostic}from'../../../core/diagnostic.mjs';
 import{createHandoffDraft}from'../../../core/handoff-draft.mjs';
-import{createHandoffReport,parseHandoffReport,handoffArtifactDigest}from'../../../core/handoff-report.mjs';
+import{createHandoffReport}from'../../../core/handoff-report.mjs';
+import{parseHandoffReport,handoffArtifactDigest}from'../../../core/handoff-files.mjs';
+import{handoffConditionText,handoffTechnicalText,handoffTechnicalSummary}from'../../../core/handoff-presentation.mjs';
 export const handoffButton='<button id="handoff-open" data-atom-id="handoff-open" class="sp-button-primary" disabled title="Save a snapshot locally first">Prepare issue</button>';
 export const handoffImport='<button id="report-refresh" data-atom-id="report-refresh" class="sp-button-secondary">Refresh local files</button><label class="sp-atom-report-import">Import a report file locally<input id="report-import" data-atom-id="report-import" type="file" accept=".json,.stateatom.json,application/json"></label>';
 export const handoffTemplate=`<dialog id="handoff-dialog" data-atom-id="handoff-dialog" class="sp-atom-settings sp-atom-handoff" aria-labelledby="handoff-heading">
@@ -17,7 +19,7 @@ export const handoffTemplate=`<dialog id="handoff-dialog" data-atom-id="handoff-
  ${['title','actual','expected','steps','question'].map(k=>'<label class="sp-atom-content-option"><input type="checkbox" id="handoff-omit-'+k+'" data-atom-id="handoff-omit-'+k+'">Omit '+({actual:'what happened',expected:'expected behavior'}[k]||k)+'</label>').join('')}
  </details></div>
  <div class="sp-atom-settings-actions"><button id="handoff-preview" data-atom-id="handoff-preview" class="sp-button-primary">Review report</button><button id="handoff-save" data-atom-id="handoff-save" class="sp-button-primary" disabled>Save reviewed report locally</button><button id="handoff-download" data-atom-id="handoff-download" class="sp-button-secondary" disabled>Download reviewed file</button></div>
- <p id="handoff-status" data-atom-id="handoff-status" class="sp-atom-hint" role="status"></p><section id="handoff-summary" data-atom-id="handoff-summary" class="sp-atom-handoff-preview" aria-label="Report preview"></section>
+ <p id="handoff-status" data-atom-id="handoff-status" class="sp-atom-hint" role="status"></p><section id="handoff-summary" data-atom-id="handoff-summary" class="sp-atom-handoff-preview" aria-label="Report preview"></section><details id="handoff-technical" data-atom-id="handoff-technical" hidden><summary>Reviewed technical details</summary><div id="handoff-technical-text" data-atom-id="handoff-technical-text" class="sp-atom-handoff-technical"></div></details>
 </dialog>`;
 const names=['title','actual','expected','steps','question'];
 export function createHandoffUI({$,getSource,saveReviewed,download,now=Date.now}={}){
@@ -27,16 +29,17 @@ export function createHandoffUI({$,getSource,saveReviewed,download,now=Date.now}
  function current(token){return !disposed&&pending===token&&epoch===token.epoch&&!token.controller.signal.aborted;}
  function mode(saved){readOnly=saved;$('handoff-fields').hidden=saved;$('handoff-preview').hidden=saved;$('handoff-save').hidden=saved||typeof saveReviewed!=='function';text('handoff-heading',saved?'Saved issue report':'Prepare issue');text('handoff-cancel',saved?'Close':'Cancel');text('handoff-intro',saved?'Historical statements from the reporter. Claims are untrusted and have not been reverified.':'Your description and the selected condition form a simple historical report. Source, responses and recorded actions are excluded. No observation window is recorded.');}
  function render(){if(disposed)return;for(const name of names){$('handoff-'+name).disabled=$('handoff-omit-'+name).disabled=readOnly||pending?.kind==='source';}$('handoff-open').disabled=!available||!!pending;$('handoff-preview').disabled=readOnly||!sourceRaw||!!pending;$('handoff-save').disabled=readOnly||!prepared||prepared.saved||!!pending||typeof saveReviewed!=='function';$('handoff-download').disabled=!prepared||!!pending;}
- function invalidate(message='Review your changes before saving or downloading.'){pending?.controller.abort();epoch++;pending=null;prepared=null;text('handoff-summary','');text('handoff-status',message);render();}
+ function invalidate(message='Review your changes before saving or downloading.'){pending?.controller.abort();epoch++;pending=null;prepared=null;text('handoff-summary','');text('handoff-technical-text','');$('handoff-technical').hidden=true;text('handoff-status',message);render();}
  function cancel(){const wasOpen=$('handoff-dialog').open;invalidate('Dialog closed. Existing local snapshots and reports are unchanged.');sourceRaw=null;if(wasOpen){controlledCloses++;$('handoff-dialog').close();const trigger=readOnly?$('export-report'):$('handoff-open');if(!trigger.disabled)trigger.focus();else if(!$('export-report').disabled)$('export-report').focus();}render();}
  function summary(record,parentStatus){
   const r=record.report,omitted=record.privacy.redactedIssueFields,label=k=>omitted.includes(k)?'Omitted during review':r.issue[k]||'Not supplied';
-  const rows=['Title: '+label('title'),'What happened: '+label('actual'),'Expected: '+label('expected'),r.target.property==='text'?'Selected text: excluded from this report.':'Selected disabled = '+r.target.value.value,'Snapshot: '+r.sourceDiagnostic.freshness+' · '+(r.sourceDiagnostic.capturedAt===null?'capture time unknown':new Date(r.sourceDiagnostic.capturedAt).toISOString()),'No observation window recorded. Earlier history is unknown.','Steps: '+(omitted.includes('steps')?'Omitted during review':r.issue.steps.join(' → ')||'Not supplied'),'Question: '+label('question'),'Source, responses and recorded actions are excluded. Historical claims are not reverified.'];
+  const rows=['Title: '+label('title'),'What happened: '+label('actual'),'Expected: '+label('expected'),handoffConditionText(record),'Snapshot: '+r.sourceDiagnostic.freshness+' · '+(r.sourceDiagnostic.capturedAt===null?'capture time unknown':new Date(r.sourceDiagnostic.capturedAt).toISOString()),'No observation window recorded. Earlier history is unknown.','Steps: '+(omitted.includes('steps')?'Omitted during review':r.issue.steps.join(' → ')||'Not supplied'),'Question: '+label('question'),handoffTechnicalSummary(record)];
   if(record.additions.length)rows.push('Developer notes · unverified:\n'+record.additions.map(n=>n.text+'\n'+({'same-hash':'Same recorded build hash; not verification.','different-hash':'Different recorded build hash; no evidence match.','unknown':'Recorded build comparison is unknown.'}[n.buildRelation])).join('\n\n'));
   if(parentStatus==='not-checked')rows.push('Parent file unavailable; content continuity is not checked.');
   else if(parentStatus==='content-matched')rows.push('Parent content matches. These historical claims remain untrusted.');
   return rows.join('\n\n');
  }
+ function present(record,parentStatus){text('handoff-summary',summary(record,parentStatus));text('handoff-technical-text',handoffTechnicalText(record));$('handoff-technical').hidden=record.profile!=='reviewed-snapshot/1';$('handoff-technical').open=false;}
  function begin(kind){const token={epoch,kind,controller:new AbortController()};pending=token;render();return token;}
  $('handoff-open').onclick=async()=>{
   if(disposed||!available||pending)return;invalidate('Preparing the selected saved snapshot…');mode(false);sourceRaw=null;const token=begin('source');if(!$('handoff-dialog').open)$('handoff-dialog').showModal();$('handoff-heading').focus();
@@ -47,7 +50,7 @@ export function createHandoffUI({$,getSource,saveReviewed,download,now=Date.now}
  for(const k of names){$('handoff-'+k).oninput=()=>invalidate();$('handoff-omit-'+k).onchange=()=>invalidate();}
  $('handoff-preview').onclick=async()=>{
   if(disposed||readOnly||!sourceRaw||pending)return;prepared=null;const source=sourceRaw,fields=Object.fromEntries(names.map(k=>[k,k==='steps'?$('handoff-steps').value.split('\n').filter(s=>s.length):$('handoff-'+k).value])),omitIssueFields=names.filter(k=>$('handoff-omit-'+k).checked),token=begin();text('handoff-status','Preparing a historical report…');
-  try{const actor=await createHandoffDraft(source,fields,{now}),frozen=await actor.freeze({expectedRevision:0}),raw=await createHandoffReport(source,JSON.stringify(frozen.baseline),{omitIssueFields},{now}),{record}=await parseHandoffReport(raw),digest=await handoffArtifactDigest(raw);if(!current(token))return;prepared={raw,id:record.id,digest,saved:false};text('handoff-summary',summary(record));text('handoff-status','Review your words and exclusions. Save keeps a local file; downloading does not send it.');}
+  try{const actor=await createHandoffDraft(source,fields,{now}),frozen=await actor.freeze({expectedRevision:0}),raw=await createHandoffReport(source,JSON.stringify(frozen.baseline),{omitIssueFields},{now}),{record}=await parseHandoffReport(raw),digest=await handoffArtifactDigest(raw);if(!current(token))return;prepared={raw,id:record.id,digest,saved:false};present(record);text('handoff-status','Review your words and exclusions. Save keeps a local file; downloading does not send it.');}
   catch(e){if(current(token))text('handoff-status',e.message);}
   finally{if(pending===token){pending=null;render();}}
  };
@@ -66,7 +69,7 @@ export function createHandoffUI({$,getSource,saveReviewed,download,now=Date.now}
   update(next){if(disposed)return;if(contextKey!==next.contextKey){cancel();contextKey=next.contextKey;}available=next.available===true;render();},
   async openSaved(raw,options={}){
    if(disposed)return;invalidate('Opening a saved historical report…');mode(true);sourceRaw=null;const token=begin();if(!$('handoff-dialog').open)$('handoff-dialog').showModal();$('handoff-heading').focus();
-   try{const {record,parentStatus}=await parseHandoffReport(raw,options);if(!current(token))return;prepared={raw,id:record.id,saved:true};text('handoff-source','Saved historical report · '+record.report.sourceDiagnostic.freshness);text('handoff-summary',summary(record,parentStatus));text('handoff-status','Historical, untrusted report; not reverified. Download preserves this original file.');}
+   try{const {record,parentStatus}=await parseHandoffReport(raw,options);if(!current(token))return;prepared={raw,id:record.id,saved:true};text('handoff-source','Saved historical report · '+record.report.sourceDiagnostic.freshness);present(record,parentStatus);text('handoff-status','Historical, untrusted report; not reverified. Download preserves this original file.');}
    catch(e){if(current(token))text('handoff-status',e.message);}
    finally{if(pending===token){pending=null;render();}}
   },

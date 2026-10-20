@@ -19,3 +19,5 @@ section { overflow-wrap:anywhere; }
 [data-sp-ui] .sp-atom-handoff-reader .sp-toolbar { display:flex; flex-wrap:wrap; gap:8px; }
 [data-sp-ui] .sp-atom-handoff-reader .sp-atom-handoff-preview { white-space:pre-wrap; overflow-wrap:anywhere; padding:12px 0; }
 [data-sp-ui] #reader-note-status { color:var(--sp-color-muted); line-height:1.6; }
+[data-sp-ui] .sp-atom-handoff-details { margin:12px 0; }
+[data-sp-ui] .sp-atom-handoff-details li { white-space:pre-wrap; overflow-wrap:anywhere; }
