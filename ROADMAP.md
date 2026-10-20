@@ -89,20 +89,20 @@ lifetime/scope and implement the two sequential Settings confirmations, runtime
 authority and revocation. These parameters are new F05 decisions, not scope-review
 approvals. U06 UX, A05/L02, official intake and release gates remain separate.
 
-F05 remains in progress under the [current execution record](docs/completion/22-overnight-f05-progress.md).
-The earlier inert-only F05.1 checkpoint (20 focused/988 full, no runtime importer)
-is historical. F05.2/3 subsequently integrated host/runtime authority and real
-Settings, with both-host native editing and elapsed expiry on `.20261020.7`.
-The one whole-item review found two Important defects; `.20261020.9` now fixes
-pending-consent invalidation on SPA navigation and lost native-cleanup errors.
-Full1047/Atom373/F05 models78 and fresh native backend27/lifetime15 pass. Current
-main Settings/real expiry and local/legacy acceptance still run before completion.
-The ten-minute exact-document policy is a new F05 working choice, not scope-review
-approval. Minor debt: the modal still lacks a readable exact tab/page identifier.
-The independent U06 design item is now complete as a
-[reporter/recipient journey](docs/features/qa-pm-handoff-journey.md), with explicit
-U03/P04 gaps and acceptance. This changes no runtime or C07 readiness claim.
-Next implementation is U03 after U01/U06; F05 current expiry acceptance still runs.
+F05 is now complete within its [bounded production Settings contract](docs/completion/22-overnight-f05-progress.md)
+on `.20261020.9`: one whole-item review and one tested Important fix pass,
+full1047/Atom373/F05 models78, fresh native Settings23 with both real ten-minute
+expiries, lifetime15/backend27/default fields40/original legacy6/types2/admission7.
+Pending consent is invalidated on same-document URL navigation; failed native
+retirement stays Unknown. Earlier inert-only and `.7/.8` checkpoints remain
+historical. The ten-minute exact-document policy is a new F05 working choice,
+not scope-interview approval. Minor debt: readable exact tab/page identity in
+the modal; native authority already binds the exact tab/document. Ordinary browser
+prompt/customer, human visual, official-host, SDK and release gates are not closed.
+
+U06 is complete as the [selected reporter/recipient journey](docs/features/qa-pm-handoff-journey.md),
+with explicit U03/P04 gaps and acceptance, not a new runtime or C07 readiness claim.
+Next implementation is **U03** after U01/U06. Mandatory A05/L02 remain required.
 
 ## Historical roadmap and checkpoint ledger
 

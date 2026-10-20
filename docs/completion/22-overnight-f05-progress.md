@@ -309,3 +309,33 @@ can still fail; a second authenticated view may use that already-authorized tab;
 privileged-host compromise is outside this boundary, and root npm metadata may
 remain confusing. No claim closes those distinct gates. Full individual rulings
 and costs are retained in the local whole-review-result.md execution ledger.
+
+
+## F05.4b — current final acceptance
+
+The exact `.20261020.9` matrix now passes: main Settings **23**, including two
+actual ten-minute expiries; native lifetime **15**, backend **27**, ordinary default
+local fields **40** and original real-browser/IDE legacy criteria **6**. Real waits:
+standalone 604858 ms (initial 599892 ms), embedding 604811 ms (initial 599894 ms). Each expiry closes the editor, removes the owned native attachment and leaves
+read-only with reason `expired`; no request or rule is silently restored.
+Five-second read-only status polling prevents suspension; actual worker loss is
+separate backend proof. All native records bind the exact .9 handoff and unchanged
+input/host file maps. Controlled render **6** retains its .7 execution identity:
+every tracked source/driver/rendered byte is unchanged, and .8→.9 changed only
+`worker.js` / `host-worker.js`. This does not create a new render/native run.
+
+`node .artifacts/f05/review-fix/verify9.mjs` verifies all current bindings and source
+logs **full1047 / Atom373 / F05 models78**, exact packages/installed hosts, native
+records, packed types2/admission7 and original RED5 + RED1. Receipt:
+`.artifacts/f05/review-fix/verification9.json`. Main result: `.artifacts/f05/settings-native/2026-10-20T02-27-25-097Z/results.json`.
+No prior failure, criterion, unsupported denominator or historical result was
+rewritten. The one whole-F05 review and one tested Important fix pass are complete;
+no second reviewer was requested. Commit `8e28b74` contains the actual fixes.
+
+**F05 is complete within its own brief**, with documented Minor M1 (readable exact
+tab/page display) deferred. This does not close ordinary browser-prompt/corporate
+acceptance, independent-human visual approval, official Capture-host intake, SDK,
+release or whole-baseline gates. U06 separately completed its journey design in
+`1e969a5` without modifying executable .9 inputs. The next dependency-ready
+implementation is **U03**, after U01/U06; P04's observation collector remains a
+later separate gate. A05/L02 stay mandatory.

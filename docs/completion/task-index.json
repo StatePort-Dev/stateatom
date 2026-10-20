@@ -231,11 +231,10 @@
         "npm run verify:production-changes"
       ],
       "deliverable": "Settings two warnings/confirmations, scoped admission and revocation for supported production Live/Draft changes",
-      "status": "in-progress",
+      "status": "complete",
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-f05-production-changes.md",
       "execution_record": "22-overnight-f05-progress.md",
-      "active_slice": "F05.4",
       "completed_slices": [
         {
           "id": "F05.1",
@@ -314,26 +313,65 @@
             "package_admission": 7
           },
           "record": "22-overnight-f05-progress.md"
+        },
+        {
+          "id": "F05.4",
+          "status": "complete-within-reviewed-production-settings-boundary",
+          "candidate": "0.1.0-candidate.20261020.9",
+          "tests": {
+            "full": 1047,
+            "atom_contracts": 373,
+            "production_models": 78,
+            "controlled_render_reused": 6,
+            "native_lifetime_controls": 15,
+            "native_settings_matrix": 23,
+            "native_elapsed_expiry_hosts": 2,
+            "native_backend": 27,
+            "ordinary_default_local_fields": 40,
+            "original_legacy_criteria": 6,
+            "packed_type_consumers": 2,
+            "package_admission": 7
+          },
+          "one_fresh_whole_review": true,
+          "important_fixed": [
+            "R1 navigation/pending consent",
+            "R2 unknown native cleanup"
+          ],
+          "one_tested_fix_pass": true,
+          "known_minor_debt": [
+            "M1 modal exact tab/page display"
+          ],
+          "record": "22-overnight-f05-progress.md"
         }
       ],
       "working_policy": "New F05 decision: exact HTTPS tab/origin/native main-frame document; ten minutes after second confirmation; two-minute tickets; issuer client/view close/tab switch, navigation, permission loss, restart/update/expiry/revoke invalidate; only U02 input kinds, no legacy reset/reload grant",
       "acceptance_candidate": {
         "package": "0.1.0-candidate.20261020.9",
-        "state": "review-important-fixes-verified-fresh-native-matrix-pending",
-        "full": 1047,
-        "atom_contracts": 373,
-        "production_models": 78,
-        "native_backend": 27,
-        "native_lifetime_controls": 15,
-        "packed_type_consumers": 2,
-        "package_admission": 7,
-        "one_whole_review_complete": true,
-        "one_important_fix_pass": true,
-        "minor_deferred": [
-          "M1 exact displayed tab/page identifier"
-        ],
+        "state": "verified-with-documented-minor-ux-debt",
+        "handoff": ".artifacts/atom/2026-10-20T02-26-54-458Z/atom-handoff.json",
+        "handoff_sha256": "8934f67d9272040d4d4856fe797bb6fe0209cf67638a31e17f7c65b99de07c2f",
+        "verification": ".artifacts/f05/review-fix/verification9.json",
+        "counts": {
+          "full": 1047,
+          "atom_contracts": 373,
+          "production_models": 78,
+          "controlled_render_reused": 6,
+          "native_lifetime_controls": 15,
+          "native_settings_matrix": 23,
+          "native_elapsed_expiry_hosts": 2,
+          "native_backend": 27,
+          "ordinary_default_local_fields": 40,
+          "original_legacy_criteria": 6,
+          "packed_type_consumers": 2,
+          "package_admission": 7
+        },
         "record": "22-overnight-f05-progress.md"
-      }
+      },
+      "known_limitations": [
+        "M1: modal exact tab ID/readable page identifier deferred; authority remains exact-tab/document bound",
+        "Browser permission setup uses declared WebUI preapproval plus native gesture; ordinary prompt/customer/corporate gate remains separate",
+        "Agent-operated synthetic HTTPS/isolated hosts; no human visual or official Capture-host acceptance"
+      ]
     },
     {
       "id": "U01",
@@ -1541,81 +1579,37 @@
     ]
   },
   "reconciliation": {
-    "document": "19-u05-picker-presentation.md",
+    "document": "22-overnight-f05-progress.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "U01",
+      "id": "F05",
       "status": "complete",
-      "source_base": "76c310727338e7be4d93158b25d39158fdd0a53c",
-      "source_fix_commit": "206622b",
-      "package_version": "0.1.0-candidate.20261019.14",
-      "package_sha256": "9d9987ddc1854e7cdd56075e204110c080c6e85aa18eccbe7ba07de962c8f2c1",
-      "ui_version": "0.2.0-candidate.20261018.2",
-      "ui_sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
-      "build_sources_sha256": "14b69a8cb5ff6c2bfaecece332d831353bba8a8a6b4ec39175662f9ce6ecd1d4",
-      "handoff": ".artifacts/atom/2026-10-19T16-59-43-626Z/atom-handoff.json",
-      "record": "20-u01-selected-workspace.md",
-      "verification": {
-        "ui": {
-          "file": ".artifacts/extension-ui/verification/2026-10-19T17-01-06-151Z/verification.json",
-          "sha256": "dd8b1caa21167af168a5e0471b33705748e54d120f41d68426f5ac19da306225",
-          "passed": 25
-        },
-        "embedding": {
-          "file": ".artifacts/atom/verification/2026-10-19T17-01-41-772Z/results.json",
-          "sha256": "85f632872e54341314d43851426e3f447664c2d626ba362af6fc191be679d23f",
-          "passed": 42
-        },
-        "actions_standalone": {
-          "file": ".runtime/action-runs/u01-final-standalone-retry/results.json",
-          "sha256": "0ba88afac659f4e0adc1631f84ade0b2a3804404444ebdde68845a1981d9858c",
-          "passed": 32
-        },
-        "actions_embedding": {
-          "file": ".runtime/action-runs/u01-final-embedding-keyboard/results.json",
-          "sha256": "6209a117417351978833a00fabf9278a30b4d965f83899439aff383c386917c0",
-          "passed": 32
-        },
-        "maps_standalone": {
-          "file": ".artifacts/production-source-mapping-2026-10-19T17-14-39-437Z/result.json",
-          "sha256": "0f917b43972253c8ce5f51372b0a8d809ce10206a952d908ec6e575f8273e4e6",
-          "passed": 19
-        },
-        "maps_embedding": {
-          "file": ".artifacts/production-source-mapping-2026-10-19T17-14-54-341Z/result.json",
-          "sha256": "3ddcea1a9af0a12422d9a8423862cf3fd659bf87869d6ce0c3dce0b335e45042",
-          "passed": 19
-        },
-        "picker": {
-          "file": ".artifacts/u05/picker-runs/2026-10-19T17-14-52-817Z/results.json",
-          "sha256": "9c9fd969c4e83e4910ca191eb7d4fca93fab5fe590ae6a25a50651a8ada24815",
-          "passed": 33
-        },
-        "package": {
-          "file": ".artifacts/atom/compatibility/2026-10-19T16-59-50-630Z/result.json",
-          "sha256": "a66f03479665644b2d3ce0f27aad921037a3f04f26e868617a32d18fd93f40de",
-          "passed": 7
-        },
-        "types": {
-          "file": ".artifacts/atom/2026-10-19T16-59-43-626Z/type-consumer-result.json",
-          "sha256": "05329c181662015126a38b3d08438682f2cbb81c53d8ef0cbad6b77c5b398e3a",
-          "passed": 2
-        },
-        "unit": {
-          "file": ".artifacts/u01/review-tests-full.log",
-          "sha256": "a839246d6412861f7a925369ef8940930712746caacc900bc8147a172848876f",
-          "passed": 663
-        }
+      "source_fix_commit": "8e28b74",
+      "package_version": "0.1.0-candidate.20261020.9",
+      "handoff": ".artifacts/atom/2026-10-20T02-26-54-458Z/atom-handoff.json",
+      "record": "22-overnight-f05-progress.md",
+      "verification": ".artifacts/f05/review-fix/verification9.json",
+      "tests": {
+        "full": 1047,
+        "atom_contracts": 373,
+        "production_models": 78,
+        "controlled_render_reused": 6,
+        "native_lifetime_controls": 15,
+        "native_settings_matrix": 23,
+        "native_elapsed_expiry_hosts": 2,
+        "native_backend": 27,
+        "ordinary_default_local_fields": 40,
+        "original_legacy_criteria": 6,
+        "packed_type_consumers": 2,
+        "package_admission": 7
       },
       "operator": "agent",
       "human_visual_approval": false,
-      "next_item": "U02",
-      "limits": [
-        "Intermittent Chrome pointer-click timeouts retained; cause not isolated. Standalone pointer retry and embedding keyboard run pass unchanged 32 assertions.",
-        "Snapshots only; Live/Draft belongs to U02, production enablement to F05, handoff UX to U06.",
-        "No real-model validation, SDK, official-host intake, publication or global release-readiness claim."
-      ]
+      "known_minor_debt": [
+        "M1 exact displayed tab/page identity"
+      ],
+      "next_item": "U03"
     },
     "next_item": "U03",
     "new_full_task_acceptances": [
@@ -1624,10 +1618,13 @@
       "F03",
       "F04",
       "U05",
-      "U01"
+      "U01",
+      "U02",
+      "U06",
+      "F05"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "F05",
+    "active_item": "U03",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -1894,10 +1891,84 @@
         "record": "23-u06-handoff-journey.md",
         "runtime_acceptance": false,
         "next_item": "U03"
+      },
+      {
+        "id": "U01",
+        "status": "complete",
+        "source_base": "76c310727338e7be4d93158b25d39158fdd0a53c",
+        "source_fix_commit": "206622b",
+        "package_version": "0.1.0-candidate.20261019.14",
+        "package_sha256": "9d9987ddc1854e7cdd56075e204110c080c6e85aa18eccbe7ba07de962c8f2c1",
+        "ui_version": "0.2.0-candidate.20261018.2",
+        "ui_sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+        "build_sources_sha256": "14b69a8cb5ff6c2bfaecece332d831353bba8a8a6b4ec39175662f9ce6ecd1d4",
+        "handoff": ".artifacts/atom/2026-10-19T16-59-43-626Z/atom-handoff.json",
+        "record": "20-u01-selected-workspace.md",
+        "verification": {
+          "ui": {
+            "file": ".artifacts/extension-ui/verification/2026-10-19T17-01-06-151Z/verification.json",
+            "sha256": "dd8b1caa21167af168a5e0471b33705748e54d120f41d68426f5ac19da306225",
+            "passed": 25
+          },
+          "embedding": {
+            "file": ".artifacts/atom/verification/2026-10-19T17-01-41-772Z/results.json",
+            "sha256": "85f632872e54341314d43851426e3f447664c2d626ba362af6fc191be679d23f",
+            "passed": 42
+          },
+          "actions_standalone": {
+            "file": ".runtime/action-runs/u01-final-standalone-retry/results.json",
+            "sha256": "0ba88afac659f4e0adc1631f84ade0b2a3804404444ebdde68845a1981d9858c",
+            "passed": 32
+          },
+          "actions_embedding": {
+            "file": ".runtime/action-runs/u01-final-embedding-keyboard/results.json",
+            "sha256": "6209a117417351978833a00fabf9278a30b4d965f83899439aff383c386917c0",
+            "passed": 32
+          },
+          "maps_standalone": {
+            "file": ".artifacts/production-source-mapping-2026-10-19T17-14-39-437Z/result.json",
+            "sha256": "0f917b43972253c8ce5f51372b0a8d809ce10206a952d908ec6e575f8273e4e6",
+            "passed": 19
+          },
+          "maps_embedding": {
+            "file": ".artifacts/production-source-mapping-2026-10-19T17-14-54-341Z/result.json",
+            "sha256": "3ddcea1a9af0a12422d9a8423862cf3fd659bf87869d6ce0c3dce0b335e45042",
+            "passed": 19
+          },
+          "picker": {
+            "file": ".artifacts/u05/picker-runs/2026-10-19T17-14-52-817Z/results.json",
+            "sha256": "9c9fd969c4e83e4910ca191eb7d4fca93fab5fe590ae6a25a50651a8ada24815",
+            "passed": 33
+          },
+          "package": {
+            "file": ".artifacts/atom/compatibility/2026-10-19T16-59-50-630Z/result.json",
+            "sha256": "a66f03479665644b2d3ce0f27aad921037a3f04f26e868617a32d18fd93f40de",
+            "passed": 7
+          },
+          "types": {
+            "file": ".artifacts/atom/2026-10-19T16-59-43-626Z/type-consumer-result.json",
+            "sha256": "05329c181662015126a38b3d08438682f2cbb81c53d8ef0cbad6b77c5b398e3a",
+            "passed": 2
+          },
+          "unit": {
+            "file": ".artifacts/u01/review-tests-full.log",
+            "sha256": "a839246d6412861f7a925369ef8940930712746caacc900bc8147a172848876f",
+            "passed": 663
+          }
+        },
+        "operator": "agent",
+        "human_visual_approval": false,
+        "next_item": "U02",
+        "limits": [
+          "Intermittent Chrome pointer-click timeouts retained; cause not isolated. Standalone pointer retry and embedding keyboard run pass unchanged 32 assertions.",
+          "Snapshots only; Live/Draft belongs to U02, production enablement to F05, handoff UX to U06.",
+          "No real-model validation, SDK, official-host intake, publication or global release-readiness claim."
+        ]
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "F05 .9 native expiry acceptance still running; U06 independent design item completed after U01/U05, without runtime changes"
+    "current_activity_note": "F05 reviewed .9 acceptance complete; independent U06 journey design complete; U03.1 unimported actor is next, no new C07 runtime claim",
+    "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
-  "next_task": "F05"
+  "next_task": "U03"
 }

@@ -80,6 +80,6 @@ visible status/expiry/revoke and view-lifetime cleanup.
   legacy controls without a broad project re-audit.
 - [x] ONE fresh whole-F05 reviewer; regrade findings; ONE tested Critical/Important
   fix pass RED→GREEN + full suite, no re-review. Record declined judgments/rulings.
-- [ ] Complete F05 only if real Settings/runtime/host/native gates pass; otherwise
+- [x] Complete F05 only if real Settings/runtime/host/native gates pass; otherwise
   commit honest bounded progress. Name one next dependency-ready item; continue
   authorized cycles until deadline, without implementing all29 in one work item.
