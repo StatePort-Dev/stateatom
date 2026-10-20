@@ -281,3 +281,15 @@ and download an unverified Developer note as a new file; a same build hash does
 not verify execution or a fix. V1 reading/advanced export remain available. Rich
 per-category review, v2 local persistence, P04 collection and full U03 handoff
 acceptance are unfinished; this bounded candidate is not whole C07 readiness.
+
+### Local historical file storage
+
+The trusted host can use `save-handoff {raw}`, `list-handoffs`, `open-handoff {id}`
+and `delete-handoff {id, expectedDigest}` without a live app or source provider.
+These are historical data operations, not permission to mutate a page. New v1/v2
+files keep exact supplied bytes; old v1 object arrays are marked reserialized.
+One namespaced diagnostics key shares eight entries, 2 MiB encoded storage and
+seven-day retention. An ID with different bytes conflicts; a lost write reply
+requires reopening actual storage. Existing list-diagnostics returns v1 records
+only, and legacy deletion cannot delete v2. This candidate adds the runtime
+boundary; Save/reopen controls for v2 and rich privacy review remain separate.

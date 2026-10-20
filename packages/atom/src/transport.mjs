@@ -15,7 +15,14 @@ export function supportsCapabilityPolicy(value){
 export function validateRequest(m){
  const bad=()=>{throw atomError('INVALID_MESSAGE');};
  if(!m||m.version!==1||typeof m.id!=='string'||!m.id||m.id.length>100||typeof m.session!=='string'||!m.session||m.session.length>100||!m.payload||typeof m.payload!=='object')bad();
- const p=m.payload;if(!ops.has(p.op)||JSON.stringify(m).length>(p.op==='source-map-import'?11500000:65536))bad();
+ const p=m.payload;if(!ops.has(p.op)||JSON.stringify(m).length>(p.op==='source-map-import'?11500000:p.op==='save-handoff'?2200000:65536))bad();
+ if(['save-handoff','list-handoffs','open-handoff','delete-handoff'].includes(p.op)){
+  const allowed=p.op==='save-handoff'?['op','raw']:p.op==='list-handoffs'?['op']:p.op==='open-handoff'?['op','id']:['op','id','expectedDigest'];
+  if(Object.keys(p).some(k=>!allowed.includes(k)))bad();
+  if(p.op==='save-handoff'&&(typeof p.raw!=='string'||new TextEncoder().encode(p.raw).length>1048576))bad();
+  if(['open-handoff','delete-handoff'].includes(p.op)&&(typeof p.id!=='string'||!/^[a-f0-9-]{36}$/.test(p.id)))bad();
+  if(p.op==='delete-handoff'&&(typeof p.expectedDigest!=='string'||!/^[a-f0-9]{64}$/.test(p.expectedDigest)))bad();
+ }
  if(!globalOps.has(p.op)&&(!Number.isSafeInteger(p.tabId)||p.tabId<1))bad();
  if(['selected','inspect-selector'].includes(p.op)&&(typeof p.selector!=='string'||!p.selector||p.selector.length>1024))bad();
  if(['pick','cancel-pick'].includes(p.op)&&p.pickerId!==undefined&&(typeof p.pickerId!=='string'||!p.pickerId||p.pickerId.length>100))bad();

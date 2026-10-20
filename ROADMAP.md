@@ -134,6 +134,13 @@ inputs/entire hosts remain unchanged. Next is U03.2b.2 browser storage/UI wiring
 installed persistence, rich review and whole-U03 acceptance remain unfinished.
 
 
+U03.2b.2a subsequently installs the backend on `.20261020.14`: full1199/focused95,
+actual both-host storage15/existing minimal handoff13/Settings lifecycle15 and
+types2/admission7 pass. Same-key legacy compatibility, exact raw new files, actual
+Chrome quota and full browser restart are verified. Next is U03.2b.2b actual
+reviewed Save/import/reopen UI; rich privacy and whole-U03 acceptance remain open.
+
+
 ## Historical roadmap and checkpoint ledger
 
 StateAtom's next development target is a narrow, independently useful developer alpha. A developer should be able to select a UI property, inspect its supported dependencies, test an eligible input locally, and save an explanation that another person can read.

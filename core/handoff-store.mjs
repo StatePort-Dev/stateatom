@@ -7,7 +7,15 @@ const encoder=new TextEncoder();
 const error=(code,message=code)=>Object.assign(new Error(message),{code});
 const invalid=()=>{throw error('INVALID_HANDOFF_STORE','Invalid local report store; original bytes preserved');};
 const bytes=raw=>encoder.encode(raw).length;
-const envelope=entries=>JSON.stringify({schema:'stateatom.handoff-store',version:1,entries:entries.map(({raw,representation})=>({raw,representation}))});
+function envelope(entries){
+ return JSON.stringify({schema:'stateatom.handoff-store',version:2,entries:entries.map(({raw,representation})=>{
+  // Only reserialized legacy objects can use compact storage. New files keep raw bytes.
+  if(representation==='legacy-reserialized'){
+   const legacy=JSON.parse(raw);if(JSON.stringify(legacy)===raw)return {legacy,representation};
+  }
+  return {raw,representation};
+ })});
+}
 function exactKeys(value,names){
  if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).length!==names.length||names.some(k=>!Object.hasOwn(value,k)))invalid();
 }
@@ -55,13 +63,17 @@ export function createHandoffStore(options){
   const source=await adapter.read();if(source===null)return {source,entries:[]};
   if(typeof source!=='string'||bytes(source)>MAX_BYTES)invalid();
   let value;try{value=JSON.parse(source);}catch{invalid();}
-  exactKeys(value,['schema','version','entries']);
-  if(value.schema!=='stateatom.handoff-store'||value.version!==1||!Array.isArray(value.entries)||value.entries.length>MAX_ITEMS)invalid();
+  const legacy=Array.isArray(value);
+  if(!legacy){exactKeys(value,['schema','version','entries']);if(value.schema!=='stateatom.handoff-store'||![1,2].includes(value.version)||!Array.isArray(value.entries))invalid();}
+  const stored=legacy?value.map(item=>({raw:JSON.stringify(item),representation:'legacy-reserialized'})):value.entries;
+  if(stored.length>MAX_ITEMS)invalid();
   const entries=[],ids=new Set();
-  for(const item of value.entries){
-   exactKeys(item,['raw','representation']);
+  for(const item of stored){
+   const compact=!legacy&&value.version===2&&Object.hasOwn(item??{},'legacy');
+   exactKeys(item,[compact?'legacy':'raw','representation']);
    if(!['input-bytes','legacy-reserialized'].includes(item.representation))invalid();
-   let parsed;try{parsed=await entry(item.raw,item.representation);}catch{invalid();}
+   if(compact&&item.representation!=='legacy-reserialized')invalid();
+   let parsed;try{parsed=await entry(compact?JSON.stringify(item.legacy):item.raw,item.representation);}catch{invalid();}
    if(item.representation==='legacy-reserialized'&&parsed.view.version!==1||ids.has(parsed.view.record.id))invalid();
    ids.add(parsed.view.record.id);entries.push(parsed);
   }
@@ -73,7 +85,8 @@ export function createHandoffStore(options){
   return {active,expired:expired.map(e=>e.view.record.id)};
  }
  async function persist(entries,source){
-  const raw=envelope(entries);
+  const legacy=typeof source==='string'&&source.trimStart().startsWith('[')&&entries.every(e=>e.representation==='legacy-reserialized');
+  const raw=legacy?JSON.stringify(entries.map(e=>JSON.parse(e.raw))):envelope(entries);
   if(raw===source||source===null&&entries.length===0)return;
   await adapter.write(raw);
  }

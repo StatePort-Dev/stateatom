@@ -3,7 +3,7 @@
 import {appOrigin,loopbackOrigin,helperURL} from './origin-policy.mjs';
 export const CAPABILITY_VERSION=1;
 export const DEBUGGER_CAPABILITIES=Object.freeze(['read','inject','reload','cache','override','replay']);
-export const GLOBAL_OPERATIONS=Object.freeze(['pair','unpair','tabs','list-diagnostics','delete-diagnostic']);
+export const GLOBAL_OPERATIONS=Object.freeze(['pair','unpair','tabs','list-diagnostics','delete-diagnostic','save-handoff','list-handoffs','open-handoff','delete-handoff']);
 export const OPERATIONS=Object.freeze([...GLOBAL_OPERATIONS,'capabilities','save-diagnostic','attach','pick','cancel-pick','refine-pick','selected','deep-experiment','restore','property','inspect-selector','state','open','definitions','references','experiment','detach','metrics','source-map-import','source-map-acquire','source-map-lookup','source-map-clear','connect-site','forget-site','inputs-open','inputs-read','inputs-apply','inputs-undo','inputs-baseline','inputs-close','production-begin','production-advance','production-confirm','production-cancel','production-close','production-revoke']);
 export const FEATURE_IDS=Object.freeze(['basic.inspect','basic.pick','basic.pick-refine','basic.attach-read-only','basic.request-site-access','source.navigate','actions.source','inputs.observed','experiment.response','experiment.controlled','experiment.restore','production.maps','actions.trace','inputs.live','inputs.draft-apply','production.changes','explanations.local-model']);
 export const isDevelopmentOrigin=loopbackOrigin;

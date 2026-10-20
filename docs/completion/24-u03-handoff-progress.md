@@ -257,3 +257,90 @@ Only this controller boundary is complete. Next: **U03.2b.2 — browser-owned lo
 storage and UI save/reopen**, consuming exact raw strings and preserving old v1
 records. Rich per-category/per-note review, full H01–H06, P04, one whole-U03 review
 and C07 remain open. Tasks2/3 retain their original BASEs and are not task-done.
+
+## U03.2b.2a — installed compatible storage backend
+
+The resumed autonomous timebox ends at 2026-10-20T14:00:00Z (18:00 Mauritius).
+This increment consumes `528ca48`'s controller and leaves actual v2 save/reopen
+controls for the next bounded UI increment. Current immutable candidate `.14`:
+`.artifacts/atom/2026-10-20T04-58-15-793Z/atom-handoff.json`.
+
+All reports now share the existing namespaced `diagnostics` key. Old v1 object
+arrays remain readable as marked legacy representation; unchanged reads keep
+that array. New files cause a private version2 container at the same key, with
+compact legacy objects and exact raw strings for supplied v1/v2 files. Prior
+private version1 envelopes remain explicitly readable. No public report schema
+is silently upgraded, no neighboring host key is touched, and a large valid v1
+archive is not inflated into unreadability by wrapping every old object in JSON.
+The Chrome adapter writes the container as a structured object, avoiding another
+layer of escaping. Combined limits stay eight reports, 2 MiB encoded value and
+seven days; Chrome additionally counts the fixed 29-byte namespaced key.
+
+Trusted local operations `save-handoff`, `list-handoffs`, `open-handoff` and
+`delete-handoff` require no app, source, model, browser origin grant or debugger.
+Wire fields/UTF-8 budgets are checked; only file save has a larger escaped envelope.
+Old list-diagnostics still returns v1, and old deletion cannot delete v2. Exact
+digest deletion and duplicate-ID conflicts preserve originals. Queued/cancelled/
+shutdown work checks its live context before writes. Already committed writes are
+not promised to roll back after a lost reply. Public declarations describe these
+historical data results, not a mutation or execution capability.
+
+Fresh verification on dirty source atop `528ca48`:
+
+```sh
+npm test
+node --test --test-reporter=tap --test-isolation=none tests/handoff-store.test.mjs tests/atom/handoff-runtime.test.mjs tests/atom/contract.test.mjs tests/atom/capabilities.test.mjs tests/browser/worker.test.mjs
+npm run pack:atom
+npm run verify:atom-types -- .artifacts/atom/2026-10-20T04-58-15-793Z/atom-handoff.json
+npm run verify:atom-package -- .artifacts/atom/2026-10-20T04-58-15-793Z/atom-handoff.json
+node tests/integration/handoff-storage.mjs .artifacts/atom/2026-10-20T04-58-15-793Z/atom-handoff.json
+node tests/integration/handoff-minimal.mjs .artifacts/atom/2026-10-20T04-58-15-793Z/atom-handoff.json
+node tests/integration/production-settings-lifetime.mjs .artifacts/atom/2026-10-20T04-58-15-793Z/atom-handoff.json
+node .artifacts/u03/storage-runtime/verify14.mjs
+```
+
+Full **1199**, focused **95** (store38/runtime13/old worker17 plus existing contract/
+capability checks), strict packed consumers **2**, admission **7** pass. Actual
+packed Chrome storage passes **15** in both standalone/embedding, including a
+near-budget legacy array, exact Unicode/whitespace raw file, conflict/invalid
+input, same-profile whole browser restart, combined retention and digest-checked
+removal. Heavy escaped files measure **1544456 encoded value bytes / 1544485 Chrome
+bytes**, exactly the extra 29 key bytes in both hosts. No app/IDE/model is involved;
+these are backend controls through the real trusted host dispatcher, not UI saves.
+Record: `.artifacts/u03/storage-native/2026-10-20T05-01-26-556Z/results.json`.
+
+The unchanged minimal reporter/download/clean-recipient driver passes **13** on
+current `.14`: `.artifacts/u03/minimal-native/2026-10-20T05-02-39-480Z/results.json`.
+Current F05 Settings lifecycle passes **15**:
+`.artifacts/f05/settings-lifetime/2026-10-20T05-03-18-471Z/results.json`.
+Old elapsed ten-minute expiry, majority and legacy experiments retain their own
+versions and criteria; they are not relabelled as these new runs. Agent-operated
+screenshots remain candidates. There is no fresh official host or human acceptance.
+Final frozen source/archive/entire-host/log receipt:
+`.artifacts/u03/storage-runtime/verification14.json`.
+
+Retained failures and corrections:
+
+- Legacy source RED2, then compact-storage RED3 show the old controller rejecting
+  valid old arrays/escaped legacy capacity. Private2 fits the prior escaped batch
+  without raising the 2 MiB limit; raw new-file bounds remain asserted.
+- First full run had **17 failures**, all `createHandoffStore is not defined` in
+  the old VM harness that manually strips runtime imports. Wiring the real store
+  through an ordinary cross-realm adapter fixes those tests; their old assertions
+  are unchanged. Subsequent full1198 pass is preserved as an intermediate result.
+- Chrome byte-budget RED2 reproduces a real adapter bug: storing the whole container
+  as a string double-encodes its contents. The structured-object write fixes it.
+  Superseded `.13` archive is retained, unclaimed as native acceptance.
+- First native `.14` **FAIL1** assumed Chrome preserves old object key order; its
+  semantic v1 equality passed. The driver now compares actual seeded Chrome data,
+  array type and meaning, while new file bytes still require exact equality.
+- Second native `.14` **FAIL3** expected the wrong existing code for `{}`; the codec
+  reports `UNSUPPORTED_HANDOFF_FORMAT`. Corrected that exact expectation and added
+  a separate malformed `{bad` control requiring `INVALID_HANDOFF_REPORT`.
+  Both failed result directories remain unchanged; no refusal/assertion was removed.
+
+Only this installed backend boundary is complete. Next **U03.2b.2b** connects the
+separate reviewed Save action, exact-source preparation, readable saved-v2 reopening
+and explicit import/removal to the existing inspector UI. Current UI still exposes
+its existing saved-v1/minimal download workflow. Rich per-category/per-note privacy,
+full H01–H06, whole-U03 review, P04 and C07 remain open; Tasks2/3 are not task-done.

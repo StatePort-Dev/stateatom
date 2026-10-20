@@ -10,12 +10,20 @@ export interface ResponseInputResource {id:string;kind:'json-response';revision:
 export interface ControlInputResource {id:string;kind:'dom-control';revision:number|string;type:'boolean'|'number'|'string';value:InputScalar;writable:true;locator:{document:string;node:string;selector:string;control:'text'|'textarea'|'number'|'checkbox'|'select';options?:string[]}}
 /** Inert data. A plan grants no authority; each runtime adapter can refuse a kind. */
 export interface ExperimentPlan {schema:'stateatom.experiment-plan/1';id:string;investigationId:string;mode:'live'|'draft';target:InputTarget;changes:Array<{resource:ResponseInputResource|ControlInputResource;value:InputScalar}>;requiredGrants:import('./platform.js').Capability[];refresh:'none';atomic:false;cleanup:'adapter-specific'}
+/** Historical local data; hashes and reopened files grant no app authority. */
+export interface HandoffStoredEntry {id:string;version:1|2;createdAt:string;digest:string;representation:'input-bytes'|'legacy-reserialized';trust:'historical-untrusted'}
+export interface HandoffStoredFile {version:1|2;record:Record<string,unknown>;raw:string;digest:string;representation:HandoffStoredEntry['representation'];trust:'historical-untrusted';parentStatus:'not-applicable'|'not-checked'|'content-matched'}
+export interface HandoffSaveResult {status:'saved'|'unchanged';entry:HandoffStoredEntry;expired:string[];evicted:string[]}
+export interface HandoffListResult {entries:HandoffStoredEntry[];expired:string[]}
 export type AtomOperation=
  |{op:'production-begin'|'production-close'|'production-revoke';tabId:number;ownerId:string}
  |{op:'production-advance'|'production-confirm'|'production-cancel';tabId:number;ownerId:string;ticket:string}
  |{op:'connect-site';tabId:number;connection:import('./platform.js').SiteConnection}
  |{op:'forget-site';tabId:number}
- |{op:'tabs'|'unpair'|'list-diagnostics'}
+ |{op:'tabs'|'unpair'|'list-diagnostics'|'list-handoffs'}
+ |{op:'save-handoff';raw:string}
+ |{op:'open-handoff';id:string}
+ |{op:'delete-handoff';id:string;expectedDigest:string}
  |{op:'capabilities';tabId:number;ownerId?:string;capabilityVersion?:1;sourceKind?:'dom-control'|'json-response'}
  |{op:'pair';url:string;token:string;origin:string;sourceRoot:string;receipt?:unknown}
  |{op:'delete-diagnostic';id:string}
@@ -43,7 +51,13 @@ export type AtomOperation=
 export interface AtomMessage {version:1;id:string;session:string;payload:AtomOperation}
 export interface AtomReply {version:1;id:string;session:string;ok:boolean;result?:unknown;error?:string;code?:string}
 export interface AtomEvent {event:'selection'|'state-invalidated';tabId:number}
-export interface AtomClient {request(payload:Extract<AtomOperation,{op:'capabilities'}>,options?:{signal?:AbortSignal}):Promise<CapabilityDescription>;request(payload:AtomOperation,options?:{signal?:AbortSignal}):Promise<unknown>;subscribeConnection?(fn:(event:{state:'closed';code:'INSPECTOR_DISCONNECTED'})=>void):()=>void;subscribe(fn:(event:AtomEvent)=>void):()=>void;dispose():void}
+export interface AtomClient {
+ request(payload:{op:'save-handoff';raw:string},options?:{signal?:AbortSignal}):Promise<HandoffSaveResult>;
+ request(payload:{op:'list-handoffs'},options?:{signal?:AbortSignal}):Promise<HandoffListResult>;
+ request(payload:{op:'open-handoff';id:string},options?:{signal?:AbortSignal}):Promise<HandoffStoredFile|null>;
+ request(payload:{op:'delete-handoff';id:string;expectedDigest:string},options?:{signal?:AbortSignal}):Promise<{removed:boolean;expired:string[]}>;
+ request(payload:Extract<AtomOperation,{op:'capabilities'}>,options?:{signal?:AbortSignal}):Promise<CapabilityDescription>;request(payload:AtomOperation,options?:{signal?:AbortSignal}):Promise<unknown>;subscribeConnection?(fn:(event:{state:'closed';code:'INSPECTOR_DISCONNECTED'})=>void):()=>void;subscribe(fn:(event:AtomEvent)=>void):()=>void;dispose():void
+}
 export interface AtomTransport {request(message:AtomMessage,options:{signal:AbortSignal}):Promise<AtomReply>;subscribe(fn:(event:AtomEvent)=>void):()=>void;closeSession?(session:string):void;subscribeConnection?(session:string,fn:(event:{state:'closed';code:'INSPECTOR_DISCONNECTED'})=>void):()=>void}
 export declare const API_VERSION:1;
 export declare function validateRequest(message:unknown):AtomMessage;

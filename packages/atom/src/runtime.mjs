@@ -8,7 +8,8 @@ import {inspectNativeActions} from '../../../core/action-native.mjs';
 import {declareOwnedCode,ownedInjectionSource,bindOwnedFetchCode} from '../../../core/owned-code.mjs';
 import {newCodeJournal,journalEvent,journalSource,journalReadySources,journalGap,journalSnapshot,journalView} from '../../../core/code-journal.mjs';
 import {newFetchBindings,fetchBindingEvent,fetchScriptSource,bindFetchTrace,allowsFetchGeneration,installFetchPolicy} from '../../../core/fetch-bindings.mjs';
-import {makeDiagnostic,retainDiagnostics,recordDiagnosticExperiment,recordTextExperiment} from '../../../core/diagnostic.mjs';
+import {makeDiagnostic,recordDiagnosticExperiment,recordTextExperiment} from '../../../core/diagnostic.mjs';
+import {createHandoffStore} from '../../../core/handoff-store.mjs';
 import {resolveInspection} from '../../../core/basic-analysis.mjs';
 import {createBrowserEngine,handleDeepOverlay,isSameSelection} from "../../../src/engine/browser.mjs";
 import {putSample,beginInspection,isCurrentInspection,lockExperiment,unlockExperiment,recordStale} from '../../../core/runtime-state.mjs';
@@ -25,8 +26,19 @@ const nativeDOM=createNativeDOMQueue(),engine=createBrowserEngine(chrome);
 const {observeDeep,deepExperiment}=engine;
 const identifySelection=(id,...args)=>nativeDOM(id,()=>engine.identifySelection(id,...args));
 let stopped=false,eventsClosed=false,shutdownPromise;const jobs=new Map(),eventJobs=new Set(),editors=new Map(),editorOwners=new Map(),inspectorClients=new Map();
-let diagnosticQueue=Promise.resolve();
-function diagnostics(update){const task=diagnosticQueue.then(async()=>{const stored=await chrome.storage.local.get("diagnostics");const list=retainDiagnostics(stored.diagnostics,null);const result=update?update(list):list;await chrome.storage.local.set({diagnostics:result});return result;});diagnosticQueue=task.catch(()=>{});return task;}
+let diagnosticQueue=Promise.resolve(),diagnosticContext=null;
+const diagnosticStore=createHandoffStore({
+ read:async()=>{const {diagnostics:value}=await chrome.storage.local.get('diagnostics');return value===undefined?null:typeof value==='string'?value:JSON.stringify(value);},
+ write:async diagnostics=>{if(stopped||diagnosticContext?.signal.aborted)throw atomError('CANCELLED');await chrome.storage.local.set({diagnostics:JSON.parse(diagnostics)});}
+});
+function diagnostics(operation,context){
+ const task=diagnosticQueue.then(async()=>{if(stopped||context.signal.aborted)throw atomError('CANCELLED');diagnosticContext=context;try{return await operation(diagnosticStore);}finally{diagnosticContext=null;}});
+ diagnosticQueue=task.catch(()=>{});return task;
+}
+async function legacyDiagnostics(store){
+ const {entries}=await store.list(),files=await Promise.all(entries.filter(e=>e.version===1).map(e=>store.open(e.id)));
+ return files.filter(Boolean).map(file=>file.record);
+}
 const workerIncarnation=crypto.randomUUID(),journalPending=new Map();
 let tabs={},pairing=null;const ready=Promise.resolve(platform.ready).then(()=>chrome.storage.session.get(['tabs','pairing'])).then(x=>{tabs=x.tabs||{};pairing=x.pairing||null;for(const s of Object.values(tabs)){delete s.productionGrantId;delete s.productionCleanup;s.inputRequests={};s.inputIntervened={};for(const r of s.requests||[]){delete r.inputResponse;delete r.inputBody;delete r.inputOriginalUnavailable;}s.attached=false;if(s.inputHistory)s.inputHistory={...s.inputHistory,status:'Stale',closed:true,executable:false,cleanup:'unknown',closeReason:'Worker restarted; open a new investigation'};recordStale(s,'Worker restarted; attach and inspect again');s.inspectionGeneration=(s.inspectionGeneration||0)+1;s.override=null;s.deepOverrides=null;s.busy=null;s.codeJournal=newCodeJournal(s.run,{debuggerSession:s.codeJournal?.debuggerSession,incarnation:workerIncarnation});journalGap(s.codeJournal,'worker-restart');}});
 async function ownMainCode(id,s,operation,role){if(s.readOnly)return;const j=s.codeJournal,contexts=Object.values(j?.contexts||{}).filter(c=>c.isDefault===true&&c.frameId===s.mainFrameId);if(contexts.length!==1){if(j)journalGap(j,'owned-code-unavailable');return;}await declareOwnedCode(j,role,ownedInjectionSource(operation.func,operation.args||[]),contexts[0].uniqueId);}
@@ -295,9 +307,13 @@ async function operation(m,context){const signal=context.signal;await ready;
   else if(m.op==='production-revoke'){result=await platform.productionChanges?.revoke(id,'user')||{active:false,cleanup:'none'};await stopInputs(id,'Production changes revoked');await persist();notifyInvalidation(id);}
   else if(m.op==='connect-site'||m.op==='forget-site'){const origin=new URL(capabilityState.url).origin;for(const [other,s]of Object.entries(tabs))if(Number(other)===id||s.origin===origin){invalidateScope(Number(other),'Site connection changed; attach again');await platform.invalidate?.(Number(other));}result=m.op==='connect-site'?await platform.connectSite(id,m.connection):await platform.forgetSite(id);await persist();}
   else if(m.op==='pair'){await Promise.allSettled([...editors.values()].map(e=>e.close('Source connection changed')));const receipt=m.receipt?parseConnectionReceipt(m.receipt):null;if(receipt&&['url','token','origin','sourceRoot'].some(k=>receipt[k]!==m[k]))throw Error('Receipt fields do not match; paste a fresh connection receipt');if(!isBridgeURL(m.url)||!(synthetic(m.origin)||platform.approvedSite?.(m.origin))||new URL(m.origin).protocol!=='http:')throw Error('Bridge or application origin denied');if(!await platform.permittedOrigin?.(m.url))throw atomError('ORIGIN_DENIED','Helper browser permission required');for(const s of Object.values(tabs)){recordStale(s,'Source connection changed; inspect again');beginInspection(s,{keepDiagnostic:true});}pairing={url:m.url,token:m.token,origin:m.origin};try{result=await bridge('pair',{origin:m.origin,sourceRoot:m.sourceRoot,clientProtocol:HELPER_PROTOCOL,...(receipt?{connection:{schemaVersion:1,helper:receipt.helper,workspace:receipt.workspace}}:{})},signal);if(result.helper?.protocol!==HELPER_PROTOCOL||result.helper?.id!==HELPER_ID||result.helper?.version!==HELPER_VERSION)throw atomError('HELPER_VERSION_MISMATCH','Helper version mismatch. Install matching helper/plugin artifacts and copy a fresh receipt; Basic remains available');}catch(e){pairing=null;throw e;}await persist();}
-  else if(m.op==='save-diagnostic'){const current=state(id);cap(current);if(!current.selection&&!current.stale?.target)throw Error('Observation unavailable or expired; inspect again');const report=makeDiagnostic({...current,sourceMaps:sourceMaps.snapshot(id),analysis:codeAnalysis(current)},{includeContent:m.includeContent===true,notes:m.notes});await diagnostics(list=>retainDiagnostics(list,report));result=report;}
-  else if(m.op==='list-diagnostics')result=await diagnostics();
-  else if(m.op==='delete-diagnostic')result=await diagnostics(list=>list.filter(r=>r.id!==m.id));
+  else if(m.op==='save-diagnostic'){const current=state(id);cap(current);if(!current.selection&&!current.stale?.target)throw Error('Observation unavailable or expired; inspect again');const report=makeDiagnostic({...current,sourceMaps:sourceMaps.snapshot(id),analysis:codeAnalysis(current)},{includeContent:m.includeContent===true,notes:m.notes});await diagnostics(store=>store.save(JSON.stringify(report)),context);result=report;}
+  else if(m.op==='list-diagnostics')result=await diagnostics(legacyDiagnostics,context);
+  else if(m.op==='delete-diagnostic')result=await diagnostics(async store=>{const file=await store.open(m.id);if(file?.version===1)await store.remove(m.id,file.digest);return legacyDiagnostics(store);},context);
+  else if(m.op==='save-handoff')result=await diagnostics(store=>store.save(m.raw),context);
+  else if(m.op==='list-handoffs')result=await diagnostics(store=>store.list(),context);
+  else if(m.op==='open-handoff')result=await diagnostics(store=>store.open(m.id),context);
+  else if(m.op==='delete-handoff')result=await diagnostics(store=>store.remove(m.id,m.expectedDigest),context);
   else if(m.op==='unpair'){await Promise.allSettled([...editors.values()].map(e=>e.close('Source disconnected')));pairing=null;for(const s of Object.values(tabs)){recordStale(s,'IDE disconnected; inspect again');beginInspection(s,{keepDiagnostic:true});}await persist();result={paired:false};}
   else if(m.op==='tabs')result=(await chrome.tabs.query({})).filter(t=>allowed(t.url)||appOrigin(t.url)&&new URL(t.url).protocol==='http:').map(t=>({id:t.id,url:t.url}));
   else if(m.op==='attach'){await attach(id,m.readOnly===true);result={attached:true};}

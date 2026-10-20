@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.14
+
+- Store the private container as a Chrome object to avoid a second JSON-string encoding exceeding the common byte budget; keep each supplied file string byte-exact. Preserve source RED and superseded .13 archive.
+
+## 0.1.0-candidate.20261020.13
+
+- Add trusted-host local v1/v2 file save/list/reopen/digest-checked deletion, with one namespaced storage key and combined retention. The inspector still uses its existing v1 UI; v2 UI persistence follows separately.
+- Read old v1 object arrays and private v1 store envelopes; compact marked legacy objects preserve capacity while new files keep exact bytes. Conflicts and cancelled pending writes do not overwrite history.
+
 ## 0.1.0-candidate.20261020.12
 
 - Use plain historical/untrusted wording in the passive issue reader instead of displaying an internal enum.

@@ -35,6 +35,21 @@ test('v1 and noncanonical Unicode v2 reopen after controller restart with exact 
  const opened=await b.open(JSON.parse(raw).id);assert.equal(opened.raw,raw);assert.equal(opened.digest,hash(raw));assert.equal(opened.version,2);assert.equal(opened.record.report.issue.title,'Кнопка недоступна');assert.equal(opened.trust,'historical-untrusted');
  assert.equal((await b.open(JSON.parse(old).id)).raw,old);assert.equal((await b.open(JSON.parse(old).id)).version,1);
 });
+test('an existing legacy v1 array remains readable without rewriting it',async t=>{
+ const d=await disk(t),old=JSON.parse(v1()),source=JSON.stringify([old]);await d.adapter.write(source);
+ const s=d.restart(),list=await s.list();assert.equal(list.entries.length,1);assert.equal((await s.open(old.id)).raw,JSON.stringify(old));assert.equal((await s.open(old.id)).representation,'legacy-reserialized');assert.equal(await d.bytes(),source);
+ const raw='\n'+await v2();await s.save(raw);const stored=JSON.parse(await d.bytes());assert.equal(stored.version,2);assert.deepEqual(stored.entries[0].legacy,old);assert.equal(stored.entries[1].raw,raw);
+ assert.equal((await d.restart().open(old.id)).raw,JSON.stringify(old));assert.equal((await d.restart().open(JSON.parse(raw).id)).raw,raw);
+});
+test('near-budget legacy archive is not inflated into unreadability',async t=>{
+ const d=await disk(t),old=Array.from({length:2},()=>JSON.parse(largeV1())),source=JSON.stringify(old);assert(Buffer.byteLength(source)<2097152);await d.adapter.write(source);
+ const s=d.restart();assert.equal((await s.list()).entries.length,2);assert.equal(await d.bytes(),source);
+ await s.save(await v2());assert.equal((await d.restart().list()).entries.length,3);assert(Buffer.byteLength(await d.bytes())<=2097152);assert.equal((await s.open(old[0].id)).raw,JSON.stringify(old[0]));
+});
+test('prior private v1 envelope reopens without rewriting supplied raw bytes',async t=>{
+ const d=await disk(t),raw='\n'+await v2(),input=JSON.stringify({schema:'stateatom.handoff-store',version:1,entries:[{raw,representation:'input-bytes'}]});await d.adapter.write(input);
+ assert.equal((await d.restart().open(JSON.parse(raw).id)).raw,raw);
+});
 test('same bytes are idempotent, different bytes at the same ID conflict without any write',async t=>{
  const d=await disk(t),s=d.restart(),raw=await v2();await s.save(raw);const before=await d.bytes();
  assert.equal((await s.save(raw)).status,'unchanged');assert.equal(await d.bytes(),before);
@@ -93,11 +108,11 @@ test('encoded UTF-8 storage budget evicts before eight entries without truncatin
  const d=await disk(t),s=d.restart(),raws=Array.from({length:3},()=>largeV1());for(const r of raws)await s.save(r);
  const out=await s.list();assert.equal(out.entries.length,2);assert.equal(await s.open(JSON.parse(raws[0]).id),null);assert.equal((await s.open(JSON.parse(raws[2]).id)).raw,raws[2]);assert(Buffer.byteLength(await d.bytes())<=2097152);
 });
-test('an oversized legacy batch rejects atomically instead of acknowledging immediately evicted input',async t=>{
+test('compact legacy intake fits a valid batch without double-encoding its strings',async t=>{
  const d=await disk(t),s=d.restart(),batch=JSON.stringify(Array.from({length:3},()=>{
   const r=JSON.parse(largeV1());r.notes='\\'.repeat(9000);for(const n of r.network)n.body='\\'.repeat(9000);return r;
  }));
- assert(Buffer.byteLength(batch)<2097152);await assert.rejects(s.importLegacy(batch),{code:'HANDOFF_STORE_LIMIT'});assert.equal(await d.bytes(),null);
+ assert(Buffer.byteLength(batch)<2097152);assert.equal((await s.importLegacy(batch)).saved.length,3);assert.equal((await d.restart().list()).entries.length,3);assert(Buffer.byteLength(await d.bytes())<=2097152);
 });
 test('removal rejects stale digest and preserves the exact stored report',async t=>{
  const d=await disk(t),s=d.restart(),raw=v1(),id=JSON.parse(raw).id;await s.save(raw);const before=await d.bytes();await assert.rejects(s.remove(id,hash('wrong')),{code:'STALE_HANDOFF_RECORD'});assert.equal(await d.bytes(),before);assert.equal((await s.remove(id,hash(raw))).removed,true);assert.equal(await s.open(id),null);

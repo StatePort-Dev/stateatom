@@ -46,3 +46,15 @@ void inspectorConnections.dispose();
 
 const fieldPreview=mountAtom(document.createElement('div'),client,{inputEditorPreview:true,onReconnect:async()=>{},idPrefix:'field-preview-'});
 void fieldPreview.dispose();
+
+const historicalList=await client.request({op:'list-handoffs'});
+for(const entry of historicalList.entries){
+ const trust:'historical-untrusted'=entry.trust;
+ const file=await client.request({op:'open-handoff',id:entry.id});
+ if(file){const raw:string=file.raw;const saved=await client.request({op:'save-handoff',raw});const status:'saved'|'unchanged'=saved.status;void status;}
+ void trust;
+}
+// @ts-expect-error Local reports cannot choose a live app target or grant.
+client.request({op:'save-handoff',raw:'{}',tabId:1,grant:'inject'});
+// @ts-expect-error Removal needs the reopened exact digest.
+client.request({op:'delete-handoff',id:'uuid'});

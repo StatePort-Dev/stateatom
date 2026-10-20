@@ -34,8 +34,9 @@ not retrospective scope-interview approval).
 - No public publication/push, other repository, SDK, cloud account or external send.
 - User deadline 2026-10-20T04:00:00Z: finish bounded work/verification/local commit;
   leave later steps explicit rather than claim the whole U03 prematurely complete.
-  That timebox ended; a subsequent Continue resumes one bounded storage increment,
-  without re-opening completed work or creating another overnight timebox.
+  That timebox ended; Continue resumed one storage increment. The later explicit
+  autonomous request runs bounded cycles until 2026-10-20T14:00:00Z (18 Mauritius),
+  without re-opening completed work.
 
 ## Review Focus
 
@@ -106,6 +107,10 @@ U03.2b.1 now isolates the unimported exact-byte storage controller, specified in
 `docs/features/handoff-local-store.md`; 35 focused/full1183 pass with unchanged
 issued `.12` inputs. U03.2b.2 browser storage/UI integration and rich privacy stay
 open. This model does not complete Task2 or installed v2 persistence.
+U03.2b.2a now installs the backend on `.14` (full1199/focused95/native storage15,
+existing minimal UI13/Settings lifecycle15/types2/admission7). Same-key private
+storage2 keeps compact legacy and exact raw files; old public records stay v1.
+U03.2b.2b actual Save/import/reopen UI remains next, with rich privacy still open.
 
 **Consumes:** Task1 frozen baseline and exact original diagnostic, explicit review
 choices. **Produces:** validated historical v2 record/serializer/derivative and

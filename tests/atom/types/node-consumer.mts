@@ -86,3 +86,15 @@ if(platform.productionChanges){
  // @ts-expect-error Host transitions require a live context assertion.
  platform.productionChanges.transition('confirm',1,{owner:{},viewId:'settings-view'});
 }
+
+const historicalList=await client.request({op:'list-handoffs'});
+const historicalFile=await client.request({op:'open-handoff',id:'00000000-0000-0000-0000-000000000000'});
+if(historicalFile){
+ const original:string=historicalFile.raw;
+ const saved=await client.request({op:'save-handoff',raw:original});
+ const trust:'historical-untrusted'=saved.entry.trust;void trust;
+ await client.request({op:'delete-handoff',id:saved.entry.id,expectedDigest:saved.entry.digest});
+}
+void historicalList.entries;
+// @ts-expect-error Local reports cannot adopt an execution or source grant.
+client.request({op:'save-handoff',raw:'{}',ownerId:'live-owner'});

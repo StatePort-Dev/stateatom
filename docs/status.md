@@ -207,6 +207,14 @@ producer inputs and entire installed hosts are unchanged. Next is U03.2b.2 brows
 storage/UI integration. Installed v2 persistence, rich review and U03 acceptance
 remain open; no new browser feature is credited by the controller tests.
 
+[U03.2b.2a](completion/24-u03-handoff-progress.md) now installs the shared v1/v2
+storage backend on `.20261020.14`: full1199/focused95, actual two-host storage15,
+existing minimal UI/recipient13, Settings lifecycle15 and types2/admission7 pass.
+Old arrays remain compatible, new files retain exact raw strings, and both share
+one original retention budget. Actual Chrome byte usage is measured. Source/native
+failures and their controls are retained. V2 Save/import/reopen **UI** is next
+(U03.2b.2b); backend tests do not complete that journey, rich review, U03 or C07.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that
