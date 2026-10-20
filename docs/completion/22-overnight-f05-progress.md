@@ -148,3 +148,53 @@ mode/expiry/revoke, actual UI Live/Draft acceptance, native elapsed expiry and o
 whole-F05 review remain required. F05 is not complete and no release, SDK, other
 repository, generic backend writer, action execution proof or human approval is
 claimed. Next bounded slice is **F05.3**.
+
+## F05.3a — mounted Settings UI, full native matrix still running
+
+The supplied Domains/Settings reference and its original slider icon now back an
+Atom-local Settings dialog. The necessary adaptation is explicit: one selected
+origin in the existing 440px inspector, 390px narrow view, instead of the wide
+prototype's sidebar/domain manager. Shared tokens/primitives/reference files are
+unchanged. Body/control type remains 13px/12px. Native first-viewport screenshots
+were compared by the agent for type, spacing, aligned actions and exact origin;
+they are candidates, not human visual approval.
+
+Risk and exact-scope/undo warnings are distinct sequential panes. Only the final
+button grants ten-minute permission; there is no automatic attach, request,
+reload, data reset, input edit or app handler. Explicit Attach this tab obtains
+a fresh read-only inspection lease. The fixed production bar shows remaining
+permission and Return to read-only. Pending/unconfirmed native cleanup remains
+visible separately from logical read-only admission and never becomes a success
+label. Display countdowns cannot extend from an older repeated status snapshot.
+
+A mounted view has a private in-memory owner ID. Cancel/Escape, tab/run/origin
+change and disposal close its owner even when a real successful confirmation
+reply is delayed past backend completion. Closing the acknowledged overview keeps
+the bounded grant. Two mounted views cannot combine steps; issuer loss/reload/
+real browser permission withdrawal cancel authority. There is no persistence or
+silent reconnection. Modal Tab/Shift+Tab is bounded and focus returns to Settings.
+
+Retained REDs include the missing component, erroneous host-error wording,
+CSS-hidden final control/keyboard traversal in the source-only render, and hidden
+pending/unknown cleanup. The historical inspection-view test DOM needed its new
+native focus stub; original result-revocation assertions were retained. Native
+harness failures are retained too: unowned raw status was incorrectly expected to
+advertise a live-client feature, actions raced acknowledgements, and a permission
+withdrawal test incorrectly expected the correctly closed dialog to stay clickable.
+No admission or assertion of application effects was weakened to fix them.
+
+Current immutable `.20261020.7`:
+`.artifacts/atom/2026-10-20T01-34-31-187Z/atom-handoff.json`.
+`node .artifacts/f05/settings/verify-ui7.mjs` verifies frozen current source and
+exact package/host bindings: full **1041**, Atom **367**, Settings component **14**,
+controlled render **6**, both-host native lifetime controls **9**, packed strict
+types **2**, package admission **7**, all PASS. Lifetime controls delay a real
+native success reply without changing request/reply values; they are not mocked
+backend proof. Browser permission setup retains the declared WebUI preapproval
+and native gesture; ordinary prompt acceptance stays unclaimed.
+
+This commits only the UI integration slice. Task3/F05 remain **open** while the
+current both-host main Settings Live/Draft/Undo/revoke and actual ten-minute expiry
+matrix completes, followed by current local/legacy regression and the one fresh
+whole-F05 review. `.5/.6` candidates and all old/failing runs are unchanged. No
+historical U02 majority, official-host integration, SDK or release is relabelled.

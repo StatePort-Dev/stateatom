@@ -215,7 +215,14 @@
         "packages/atom/src/ui.mjs",
         "tests/atom/production-change-policy.test.mjs",
         "packages/atom/src/production-change-policy.mjs",
-        "packages/atom/src/production-change-host.mjs"
+        "packages/atom/src/production-change-host.mjs",
+        "packages/atom/src/production-ui.mjs",
+        "packages/atom/src/template.mjs",
+        "packages/atom/src/atom.css",
+        "tests/atom/production-ui.test.mjs",
+        "tests/integration/production-settings.mjs",
+        "tests/integration/production-settings-ui.mjs",
+        "tests/integration/production-settings-lifetime.mjs"
       ],
       "existing_commands": [
         "npm run verify:atom-contract",
@@ -267,6 +274,23 @@
             "package_admission": 7
           },
           "native_settings_ui": false,
+          "native_elapsed_expiry": false,
+          "record": "22-overnight-f05-progress.md"
+        },
+        {
+          "id": "F05.3a",
+          "status": "complete-within-mounted-ui-boundary",
+          "scope": "Separate Settings warnings, visible countdown/revoke/unknown cleanup, view-lifetime cancellation; full native matrix/elapsed expiry and final review pending",
+          "candidate": "0.1.0-candidate.20261020.7",
+          "tests": {
+            "full": 1041,
+            "atom_contracts": 367,
+            "settings_component": 14,
+            "controlled_render": 6,
+            "native_lifetime_controls": 9,
+            "packed_type_consumers": 2,
+            "package_admission": 7
+          },
           "native_elapsed_expiry": false,
           "record": "22-overnight-f05-progress.md"
         }

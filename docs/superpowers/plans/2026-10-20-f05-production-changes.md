@@ -64,8 +64,8 @@ synthetic controlled-render/native suite and package changelog.
 Settings with two genuinely sequential warnings, exact scope/limits, cancel,
 visible status/expiry/revoke and view-lifetime cleanup.
 
-- [ ] Record reference/control mappings and necessary narrow adaptation before RED.
-- [ ] RED/GREEN first-step cannot enable, cancel/no effects, two views/context loss,
+- [x] Record reference/control mappings and necessary narrow adaptation before RED.
+- [x] RED/GREEN first-step cannot enable, cancel/no effects, two views/context loss,
   keyboard/narrow/reduced-motion and no automatic app requests/handlers.
 - [ ] Fresh immutable candidate and actual both-host HTTPS Live/Draft/Undo/revoke,
   native expiry/interruption controls, default local U02 regression and packed types.

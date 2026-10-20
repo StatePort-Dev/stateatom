@@ -149,3 +149,21 @@
 [data-sp-ui][data-atom-root] .sp-atom-input-editor [hidden] { display:none !important; }
 [data-sp-ui][data-atom-root] [data-atom-id="inspector-reconnect"][hidden],
 [data-sp-ui][data-atom-root] [data-atom-id="load"][hidden] { display:none !important; }
+/* F05: narrow adaptation of the supplied Settings/Domains reference. */
+[data-sp-ui][data-atom-root] .sp-atom-production-state{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 20px;border-bottom:1px solid var(--sp-color-border);font-size:var(--sp-font-size-control);line-height:1.5;color:var(--sp-color-muted)}
+[data-sp-ui][data-atom-root] .sp-atom-production-state[data-active="true"]{background:var(--sp-color-value-background);color:var(--sp-color-text)}
+[data-sp-ui][data-atom-root] .sp-atom-production-state button{flex-shrink:0}
+[data-sp-ui][data-atom-root] dialog.sp-atom-settings{box-sizing:border-box;width:min(440px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:24px;overflow:auto;font-size:var(--sp-font-size-body);line-height:1.6;color:var(--sp-color-text);background:var(--sp-color-surface);border:1px solid var(--sp-color-border);border-radius:16px}
+[data-sp-ui][data-atom-root] .sp-atom-settings::backdrop{background:rgb(23 25 31 / .28)}
+[data-sp-ui][data-atom-root] .sp-atom-settings-head{display:flex;align-items:start;justify-content:space-between;gap:12px;margin-bottom:16px}
+[data-sp-ui][data-atom-root] .sp-atom-settings h2{font-size:20px;line-height:1.35;margin:4px 0 0;font-weight:600}
+[data-sp-ui][data-atom-root] .sp-atom-settings h3{font-size:var(--sp-font-size-body);margin:16px 0 8px;font-weight:600}
+[data-sp-ui][data-atom-root] .sp-atom-settings p{margin:8px 0 12px}
+[data-sp-ui][data-atom-root] .sp-atom-settings-origin{overflow-wrap:anywhere;font-weight:600}
+[data-sp-ui][data-atom-root] .sp-atom-settings-scope{display:grid;grid-template-columns:58px minmax(0,1fr);gap:8px 12px;padding:16px 0;margin:0;border-block:1px solid var(--sp-color-border)}
+[data-sp-ui][data-atom-root] .sp-atom-settings-scope dt{color:var(--sp-color-muted)}
+[data-sp-ui][data-atom-root] .sp-atom-settings-scope dd{margin:0;overflow-wrap:anywhere}
+[data-sp-ui][data-atom-root] .sp-atom-settings-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:16px}
+[data-sp-ui][data-atom-root] .sp-atom-settings-head button{flex-shrink:0}
+@media(max-width:420px){[data-sp-ui][data-atom-root] dialog.sp-atom-settings{padding:20px}[data-sp-ui][data-atom-root] .sp-atom-settings-head{flex-wrap:wrap}}
+[data-sp-ui][data-atom-root] [data-atom-id^="production-"][hidden]{display:none!important}

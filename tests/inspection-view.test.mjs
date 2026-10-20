@@ -82,7 +82,7 @@ test('finite trace context qualifies host correspondence only for the validated 
 });
 test('panel fragment warnings point to the current finite trace without upgrading raw ancestry',async()=>{
  const priorDocument=globalThis.document,priorChrome=globalThis.chrome;
- function element(){return {textContent:'',value:'',children:[],contains(){return false},setAttribute(){},removeAttribute(){},append(...nodes){this.children.push(...nodes)},replaceChildren(...nodes){this.children=nodes},addEventListener(){}};}
+ function element(){return {textContent:'',value:'',children:[],focus(){},contains(){return false},setAttribute(){},removeAttribute(){},append(...nodes){this.children.push(...nodes)},replaceChildren(...nodes){this.children=nodes},addEventListener(){}};}
  const elements=new Map(),node=id=>{if(!elements.has(id))elements.set(id,element());return elements.get(id)};
  node('tabs').value='1';
  const s=snapshot(),rt=s.analysis.stateatom.runtime;s.analysis.stateatom.target={property:'disabled',value:true};rt.commitIdentity='Observed: host';rt.commit={adapter:'react18-final-host-props/1',status:'Observed',producer:{status:'Observed'}};

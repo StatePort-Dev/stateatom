@@ -1,6 +1,7 @@
 import {parseConnectionReceipt} from '../../../core/project-connection.mjs';
 import {appOrigin,helperURL} from './origin-policy.mjs';
 import {createSourceMapUI} from './source-map-ui.mjs';
+import {createProductionUI} from './production-ui.mjs';
 import {createInputUI} from './input-ui.mjs';
 import {createActionUI} from './action-ui.mjs';
 import {parseDiagnostic,serializeDiagnostic,omitDiagnosticContent} from '../../../core/diagnostic.mjs';
@@ -56,6 +57,7 @@ async function load(){
 const sourceMapUI=createSourceMapUI({document,$,rpc,tab,load,action,requestPermission:options.requestOriginPermission});
 const actionsUI=createActionUI({document,$,rpc,tab,action});
 const inputUI=createInputUI({document,$,client,preview:options.inputEditorPreview===true});
+const productionUI=createProductionUI({$,client,onRefresh:load,onAttach:async()=>{await rpc({op:'attach',tabId:tab(),readOnly:true});await load();},onConnection:()=>reveal('browser-connection')});
 function lostConnection(){if(disposed)return;connectionLost=true;ownedPicker?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);inputUI.update(null);$('status').textContent='Inspector connection lost. Reopen this inspector to continue.';}
 const offConnection=client.subscribeConnection?.(lostConnection)||(()=>{});
 $('inspector-reconnect').onclick=()=>{if(typeof options.onReconnect==='function')void options.onReconnect();};
@@ -63,6 +65,7 @@ function admission(op){const p=selectedState?.capabilityPolicy;return supportsCa
 function gate(id,decision,otherwise=false){$(id).disabled=otherwise||!decision?.available;$(id).title=decision?.available?'':decision?.reason||'Capability unavailable';}
 function attachAvailability(){const p=selectedState?.capabilityPolicy,known=supportsCapabilityPolicy(p),requestAccess=known&&!!options.requestOriginPermission&&p.features['basic.request-site-access'].available;gate('attach',requestAccess?p.features['basic.request-site-access']:$('source-map-readonly').checked&&known?p.features['basic.attach-read-only']:admission('attach'));$('attach').textContent=requestAccess?'Allow site and attach':'Attach';}
 function renderInspection(){
+ productionUI.update(selectedState);
  $('load').hidden=connectionLost;$('inspector-reconnect').hidden=!connectionLost||typeof options.onReconnect!=='function';
  sourceMapUI.render(selectedState);
  actionsUI.render(selectedState);
@@ -154,7 +157,7 @@ function reveal(id){const e=$(id),scroller=$('scroll');if(e.tagName==='DETAILS')
  for(const d of root.querySelectorAll('.sp-atom-tools > details, .sp-atom-inspection > details'))d.classList.add('sp-disclosure');
 let fields=[];
 function clearInspection(keepTarget=true,{preserveViewport=false,preserveIntent=false}={}){if(!preserveIntent)++selectionIntent;if(!preserveViewport)renderedAt=null;++selectionGeneration;const property=$('property').value;++loadGeneration;selectedState=keepTarget&&selectedState?{...selectedState,selection:null,analysis:null,stale:null}:null;analysis=null;renderInspection();if(keepTarget)$('property').value=property;}
-async function changeContext(){const inputCleanup=inputUI.close('Selected tab changed'),owned=ownedPicker;owned?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);if(owned)await client.request({op:'cancel-pick',tabId:owned.tabId,pickerId:owned.id}).catch(()=>{});await inputCleanup;}
+async function changeContext(){const productionCleanup=productionUI.contextChanged(),inputCleanup=inputUI.close('Selected tab changed'),owned=ownedPicker;owned?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);if(owned)await client.request({op:'cancel-pick',tabId:owned.tabId,pickerId:owned.id}).catch(()=>{});await Promise.all([inputCleanup,productionCleanup]);}
 async function inspectAgain(){
  const id=tab(),selector=selectedState?.selection?.selector||selectedState?.stale?.target?.selector;
  if(!selector)throw Error('Select an element first');
@@ -196,5 +199,5 @@ $('delete-report').onclick=()=>action(async()=>{await rpc({op:'delete-diagnostic
 $('unpair').onclick=()=>action(async()=>{await rpc({op:'unpair'});await load();});
 void savedReports().catch(e=>{if(disposed)return;$('diagnostic-status').textContent='Local reports unavailable: '+e.message;});
 
-return {ready,element:root,dispose(){const inputCleanup=inputUI.dispose();ownedPicker?.controller?.abort();const cleanup=ownedPicker?client.request({op:'cancel-pick',tabId:ownedPicker.tabId,pickerId:ownedPicker.id}).catch(()=>{}):Promise.resolve();ownedPicker=null;sourceMapUI.dispose();actionsUI.dispose();if(disposed)return;disposed=true;++loadGeneration;controller.abort();unsubscribe();offConnection();for(const t of timers)clearTimeout(t);for(const u of urls)URL.revokeObjectURL(u);timers.clear();urls.clear();$('export-review').close();root.remove();mounted.delete(rootElement);return Promise.all([cleanup,inputCleanup]).then(()=>{});}};
+return {ready,element:root,dispose(){const productionCleanup=productionUI.dispose(),inputCleanup=inputUI.dispose();ownedPicker?.controller?.abort();const cleanup=ownedPicker?client.request({op:'cancel-pick',tabId:ownedPicker.tabId,pickerId:ownedPicker.id}).catch(()=>{}):Promise.resolve();ownedPicker=null;sourceMapUI.dispose();actionsUI.dispose();if(disposed)return;disposed=true;++loadGeneration;controller.abort();unsubscribe();offConnection();for(const t of timers)clearTimeout(t);for(const u of urls)URL.revokeObjectURL(u);timers.clear();urls.clear();$('export-review').close();root.remove();mounted.delete(rootElement);return Promise.all([cleanup,inputCleanup,productionCleanup]).then(()=>{});}};
 }

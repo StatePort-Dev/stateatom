@@ -81,7 +81,7 @@ export function describeCapabilities(context={}){
   'actions.trace':unavailable('Actual application-handler invocation is not implemented (A05)'),
   'inputs.live':operations['inputs-open'],
   'inputs.draft-apply':operations['inputs-open'],
-  'production.changes':unavailable('Production changes require the unimplemented F05 Settings confirmations'),
+  'production.changes':context.productionChange?.active?allow([]):operations['production-begin'],
   'explanations.local-model':deny('DEVICE_CHECK_REQUIRED','Local model availability requires an explicit extension-page device check; fallback is not model validation')
  }};
 }

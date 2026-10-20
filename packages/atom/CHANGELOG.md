@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.7
+
+- Preserve pending/unconfirmed native cleanup in both the always-visible
+  production status and Settings text after logical revoke or connection loss.
+  Read-only admission is separate from successful native retirement.
+
+## 0.1.0-candidate.20261020.6
+
+- Keep hidden production stages/actions hidden with only the Atom scoped styles,
+  and wrap Tab/Shift+Tab within the active Settings dialog. Retain the rendered
+  keyboard failure from .5; no shared primitive/token change.
+
+## 0.1.0-candidate.20261020.5
+
+- Add reference-aligned, Atom-local Settings with separate risk and exact-scope
+  confirmations. Keep read-only inspection and explicit reattach, display the
+  bounded permission countdown and immediate Return to read-only action.
+- Bind pending consent and active permission to the issuing mounted view; cancel,
+  tab change and disposal close that view even after a delayed successful reply.
+- Preserve shared tokens/primitives and normal 13px body/12px controls. Adapt the
+  supplied wide Domains prototype to a 440px dialog, with a 390px narrow view.
+
 ## 0.1.0-candidate.20261020.4
 
 - Reassert the current replay lease synchronously after native-control guards
