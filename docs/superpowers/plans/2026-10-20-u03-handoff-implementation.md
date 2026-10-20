@@ -375,16 +375,38 @@ focused108/runtime25/native backend23/ordinary41/storage15/types2/admission7.
 Public storage explicitly refuses the private reply. Intermediate24, REDs and
 setup failures remain historical. No normal saved U02 UI/full Task2/3/U03 credit.
 
-### Bounded U03.2c.3a: explicit public outcome format, unimported
+### Bounded U03.2c.3a: explicit public outcome evidence packet, unimported
 
-- [ ] Pin a concrete compatible public layout and privacy/lineage boundary from
+Contract `docs/features/handoff-input-evidence.md` pins an inert packet, not a
+full diagnostic profile. Report composition/lineage is3b; dispatcher/storage/UI
+remain later. This avoids conflicting with existing source-evidence baseProfile.
+
+- [x] Pin a concrete compatible public layout and privacy/lineage boundary from
   the actual .25 capture, retaining old v1/minimal/reviewed/source interpretations.
   New working design, not retrospective interview approval. No raw private capture
   or rule authority may be smuggled into a file; missing identities stay explicit.
-- [ ] RED/GREEN bounded inert creation/parse and immutable privacy, exact source
+- [x] RED/GREEN bounded inert creation/parse and immutable privacy, exact source
   and parent binding, altered/rehashed untrusted claims, absent/closed/summary
   and per-resource unknown/error outcomes. Do not reconstruct omitted history.
-- [ ] Focused/full source and unchanged .25 executable/archive/host identity if
+- [x] Focused/full source and unchanged .25 executable/archive/host identity if
   unimported; no repeated native acquisition without executable changes.
-- [ ] Local bounded commit. Dispatcher/storage and ordinary reporter/recipient
+- [x] Local bounded commit. Dispatcher/storage and ordinary reporter/recipient
   integration follow separately; whole U03 acceptance stays open.
+
+
+3a complete within unimported packet boundary: packet32/focused161/full1534,
+source processing16 historical native25 artifacts. Current producer/archive/hosts
+unchanged, no package/browser rerun. All claims stay untrusted even if rehashed.
+
+### Bounded U03.2c.3b: compatible public handoff composition, unimported
+
+- [ ] Pin the complete public profile/lineage and source-comparison coexistence
+  using the packet plus old exact-source baseline. Keep all old parser meanings;
+  never attach a fresh capture to a different saved diagnostic occurrence.
+- [ ] RED/GREEN strict complete creation/parse, immutable notes/privacy/parent
+  checks and source/input evidence coexistence, default exclusions and unsupported
+  versions, one1MiB budget, no hidden raw private capture or authority.
+- [ ] Focused/full source and exact unchanged .25 if still unimported. Do not
+  repeat native acquisition merely to exercise an unimported formatter.
+- [ ] Local bounded commit. Dispatcher/storage and ordinary reporter/recipient
+  review integration follow; parent Task2/3 and whole U03 remain open.

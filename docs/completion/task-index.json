@@ -808,7 +808,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.2c.3a",
+      "active_slice": "U03.2c.3b",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -1144,6 +1144,22 @@
           "normal_reporter_outcome_UI": false,
           "whole_U03_review": false,
           "verification": ".artifacts/u03/input-capture/verification.json",
+          "record": "24-u03-handoff-progress.md"
+        },
+        {
+          "id": "U03.2c.3a",
+          "status": "complete-within-unimported-public-evidence-packet-boundary",
+          "checks": {
+            "packet": 32,
+            "focused": 161,
+            "full_source": 1534,
+            "source_processing_historical_native25_artifacts": 16
+          },
+          "installed_runtime_changed": false,
+          "full_public_diagnostic_profile": false,
+          "actual_saved_U02_outcomes": false,
+          "normal_reporter_outcome_UI": false,
+          "verification": ".artifacts/u03/input-evidence/verification.json",
           "record": "24-u03-handoff-progress.md"
         }
       ],
@@ -2334,7 +2350,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "U03.2c.2 private atomic capture complete on .25: full1502/focused108/native backend23/ordinary41/storage15/types2/admission7. Strict original selection/editor context and unknowns preserved. Next U03.2c.3a pins an unimported compatible public outcome profile and privacy; no saved U02 UX or whole U03 acceptance from backend/model proof.",
+    "current_activity_note": "U03.2c.3a unimported public packet codec32/focused161/full1534 with exact unchanged .25. Source-only processing16 existing actual native25 capture artifacts preserves their old scope. Default category/per-field exclusions, immutable privacy and exact source binding verified. Next U03.2c.3b compatible full public diagnostic composition/lineage before installed saved U02 review; whole U03 remains open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "U03"

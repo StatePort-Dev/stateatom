@@ -1214,3 +1214,61 @@ format, persistence and normal reporter/recipient saved-outcome review remain
 unfinished. Parent Task2/3 BASE markers and full U03/H01-H06 review stay OPEN;
 P04/C07 and mandatory A05/L02 remain pending. No SDK, publication, other repository
 or independent-human blocker. No shared visual/token/primitives change this step.
+
+## U03.2c.3a — unimported public input-evidence packet, 2026-10-20
+
+BASE9e01785; contract [handoff-input-evidence](../features/handoff-input-evidence.md).
+This working design separates typed packet/privacy validation from the later
+full diagnostic-profile composition. It avoids changing the meaning of existing
+v1/minimal/reviewed/source files or hiding a raw private capture inside a file.
+It is not retrospective scope-interview approval or installed saved U02 support.
+
+New `core/handoff-input-evidence.mjs` creates/validates
+`stateatom.input-evidence/1`, with exact diagnostic/private-reply content references,
+curated typed metadata and unknowns. It exports neither raw diagnostic/snapshot
+nor rule/plan/grant/writer/undo data. All claims remain historical-untrusted,
+including a deliberately rehashed plausible alternative. Default four-category
+exclusion applies even when private capture contains every value; explicit field
+omissions and immutable exact-byte privacy derivatives never restore omitted data
+or change phase/count/consumption/effect. Original selected/later editor time and
+value stay separate. Null history/notices and incomplete summary stay explicit.
+
+Fresh commands: targeted Node packet/model/base codec checks **161 PASS**, including
+packet32; `npm test` **1534 PASS**; `git diff --check`; idempotent
+`.artifacts/u03/input-evidence/verify.mjs` checks frozen inputs and invokes the
+unchanged25 verifier. Aggregate `.artifacts/u03/input-evidence/verification.json`.
+No imported/runtime/UI/type/package inputs changed; .25 producer/archive/installed
+pair/whole hosts stay exact. No repack or repeated old browser/majority experiment.
+
+Source processing of **16 existing actual native25 artifacts** passes creation,
+explicit inclusion, default exclusions and privacy-parent validation, at
+`.artifacts/u03/input-evidence/processed-native25-2026-10-20T17-14-09-886Z/results.json`.
+These are new codec checks of exact historical bytes, not a new browser capture,
+normal review/download, installed file/storage or original-occurrence execution
+proof. All underlying native input files remain unchanged. Outputs use unique
+run directories; previous partial/successful processing files remain historical.
+
+Retained controls: module-missing RED1; contract12 had8 failures and4 already
+passing refusal controls, then12 passed. Boundary21/4 exposed future-clock join,
+ACK resource-ID mismatch, contradictory cleanup and pending-response upper bound;
+fixed. Budget24/1 caught an oversized private projection hidden by default
+omission; its1MiB bound now applies before public projection. Existing native
+artifacts exposed an incorrect URL assumption: known filtering returns origin
+without `/`, and a secret redaction can leave a quoted marker/query suffix.
+Real-ledger RED25/1 fixed by conservatively retaining only filtered canonical
+origin or explicit `[REDACTED_URL]`, never restoring a removed route. Underlying25
+model and old evidence were not edited. First partial processing output plus
+as-executed driver/codec and a clearly labelled manual failure note are preserved.
+
+Later source-binding RED31/1 rejected filtered labels that contradict the exact
+v1 selected value/run; compare retained envelopes to the actual known-filter
+projection of those exact bytes. Filtered-ID RED1 fixed a false collision between
+an unknown filtered marker and a known literal marker ID; true included duplicates
+still reject. Packet32/focused161/full1534 are final; intermediate full1532/1533
+and all raw failures remain under their own source stage. No threshold weakened.
+
+Next **U03.2c.3b — compatible complete public handoff composition/lineage**.
+The packet is deliberately unimported and not accepted by existing file dispatch
+or storage. Full report source/input coexistence, persistence and normal saved-U02
+reporter/recipient review remain unfinished. Task2/3/U03/P04/C07/A05/L02 stay OPEN;
+no SDK, publication, other repository or independent-human blocker is introduced.

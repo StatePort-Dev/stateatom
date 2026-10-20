@@ -170,8 +170,10 @@ The subsequent U03.2c.2 installs atomic private runtime capture on .25: full1502
 focused108/native backend23/ordinary41/storage15/types2/admission7. It binds the
 actual editor-open context, rejects obsolete hash replies and preserves unknowns;
 no new DOM observation or normal saved-outcome UI is implied. The one next bounded
-item is U03.2c.3a: explicit unimported public outcome format/privacy, before
-persistence and normal reporter/recipient review.
+item was U03.2c.3a. Its unimported public evidence packet now passes32/focused161/
+full1534, plus source-only processing of16 historical native25 captures; installed
+.25 remains unchanged. Next U03.2c.3b composes the compatible full public handoff
+and immutable lineage, before persistence and normal reporter/recipient review.
 Task2/3/whole U03, P04/C07 and mandatory A05/L02 remain open. Historical evidence
 below stays under its own identity; independent human review is optional, candidate
 screenshots are not human visual approval. No SDK, publication or another repository.

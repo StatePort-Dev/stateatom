@@ -949,3 +949,15 @@ obsolete hash replies, including cleanup changes without revision. [Record](comp
 This is not the normal saved U02 workflow: public file format/privacy, persistence
 and reporter/recipient review follow. Next U03.2c.3a pins that unimported public
 format. Whole U03/Task2/3/P04/C07/A05/L02 remain open. No publication is established.
+
+
+U03.2c.3a adds an **unimported public input-evidence packet codec**:
+packet32/focused161/full1534 pass, with source-only processing of16 exact
+historical native25 capture artifacts. Public defaults exclude all optional input
+categories; per-field omission and exact-byte immutable privacy parents preserve
+unknowns and separate observations. Filtered delivery locations retain origin-only
+text, never reconstructed routes/query suffixes. Exact .25 runtime/archive/hosts
+stay unchanged. [Record](completion/24-u03-handoff-progress.md).
+The packet is not a complete diagnostic profile or installed saved-outcome UI.
+Next U03.2c.3b supplies compatible report composition/lineage; full U03/Task2/3,
+P04/C07/A05/L02 stay open.
