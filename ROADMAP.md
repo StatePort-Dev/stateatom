@@ -89,6 +89,12 @@ lifetime/scope and implement the two sequential Settings confirmations, runtime
 authority and revocation. These parameters are new F05 decisions, not scope-review
 approvals. U06 UX, A05/L02, official intake and release gates remain separate.
 
+F05 is now in progress: [F05.1](docs/completion/22-overnight-f05-progress.md)
+completes only its inert two-confirmation/expiry model (20 focused, 988 full).
+The ten-minute exact-document policy is a new working choice, not a scope-review
+approval. No runtime importer or production feature flag changed; F05.2 host
+authority and real Settings/native acceptance remain required.
+
 ## Historical roadmap and checkpoint ledger
 
 StateAtom's next development target is a narrow, independently useful developer alpha. A developer should be able to select a UI property, inspect its supported dependencies, test an eligible input locally, and save an explanation that another person can read.

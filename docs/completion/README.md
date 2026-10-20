@@ -51,6 +51,7 @@ Each work item contains its inputs, output, files, tests and stopping point. An 
 | [19 — U05 feedback](19-u05-picker-presentation.md) | Compact target controls and system-scale demo correction |
 | [20 — U01 execution](20-u01-selected-workspace.md) | Normal inspector, context/freshness guards, reader fonts and scoped checks |
 | [21 — U02 execution](21-overnight-u02-progress.md) | Default Live/Draft, original 18-row coverage, native lifecycle, review corrections and limits |
+| [22 — F05 execution](22-overnight-f05-progress.md) | New bounded grant policy and subsequent enforced Settings/native progress, with explicit partial boundaries |
 | [Task index](task-index.json) | 29 active work items, dependency graph, owners and separate external SDK reference |
 | [Evidence register](audit-evidence.json) | Pinned sources and the limits of this review |
 

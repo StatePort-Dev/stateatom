@@ -129,6 +129,12 @@ visual evidence are in the linked execution record. Next is **F05**, after F02/U
 its enabled production path and grant scope/lifetime remain unimplemented. This
 does not complete the broader baseline or create a public release.
 
+F05.1 now adds an **unbundled inert permission model**: 20 policy checks and
+988 full checks pass. Its new working lifetime/scope and two-stage ticket rules
+are in [the F05 record](completion/22-overnight-f05-progress.md). Current installed
+`.20261020.1` is unchanged and production remains unavailable. Next is F05.2
+host/runtime enforcement; this model does not prove a Settings or HTTPS edit path.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

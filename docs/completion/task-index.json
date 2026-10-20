@@ -213,7 +213,8 @@
         "packages/atom/src/runtime.mjs",
         "packages/atom/src/transport.mjs",
         "packages/atom/src/ui.mjs",
-        "tests/atom/production-change-policy.test.mjs"
+        "tests/atom/production-change-policy.test.mjs",
+        "packages/atom/src/production-change-policy.mjs"
       ],
       "existing_commands": [
         "npm run verify:atom-contract",
@@ -221,8 +222,25 @@
         "npm run verify:embedding"
       ],
       "deliverable": "Settings two warnings/confirmations, scoped admission and revocation for supported production Live/Draft changes",
-      "status": "planned",
-      "optional": false
+      "status": "in-progress",
+      "optional": false,
+      "implementation_plan": "../superpowers/plans/2026-10-20-f05-production-changes.md",
+      "execution_record": "22-overnight-f05-progress.md",
+      "active_slice": "F05.2",
+      "completed_slices": [
+        {
+          "id": "F05.1",
+          "status": "complete-within-inert-policy-boundary",
+          "scope": "Two distinct view-bound tickets; exact HTTPS tab/origin/native-document scope, ten-minute grant, no persistence/writer/runtime importer",
+          "tests": {
+            "policy_models": 20,
+            "full": 988
+          },
+          "native_production_enabled": false,
+          "record": "22-overnight-f05-progress.md"
+        }
+      ],
+      "working_policy": "New F05 decision: exact HTTPS tab/origin/native main-frame document; ten minutes after second confirmation; two-minute tickets; issuer client/view close/tab switch, navigation, permission loss, restart/update/expiry/revoke invalidate; only U02 input kinds, no legacy reset/reload grant"
     },
     {
       "id": "U01",
