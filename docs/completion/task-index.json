@@ -797,8 +797,29 @@
         "npm run verify:production-source-mapping"
       ],
       "deliverable": "U06-designed reporter/recipient workflow, local save/review/export and passive enrichment",
-      "status": "planned",
-      "optional": false
+      "status": "in-progress",
+      "optional": false,
+      "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
+      "execution_record": "24-u03-handoff-progress.md",
+      "active_slice": "U03.2",
+      "completed_slices": [
+        {
+          "id": "U03.1",
+          "status": "complete-within-unimported-model-boundary",
+          "files": [
+            "core/handoff-draft.mjs",
+            "tests/handoff-draft.test.mjs"
+          ],
+          "tests": {
+            "model": 49,
+            "full": 1096
+          },
+          "runtime_importer": false,
+          "public_v2_format": false,
+          "actual_two_role_handoff": false,
+          "record": "24-u03-handoff-progress.md"
+        }
+      ]
     },
     {
       "id": "U04",
@@ -1579,37 +1600,19 @@
     ]
   },
   "reconciliation": {
-    "document": "22-overnight-f05-progress.md",
+    "document": "24-u03-handoff-progress.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "F05",
-      "status": "complete",
-      "source_fix_commit": "8e28b74",
-      "package_version": "0.1.0-candidate.20261020.9",
-      "handoff": ".artifacts/atom/2026-10-20T02-26-54-458Z/atom-handoff.json",
-      "record": "22-overnight-f05-progress.md",
-      "verification": ".artifacts/f05/review-fix/verification9.json",
+      "id": "U03.1",
+      "status": "complete-within-unimported-model-boundary",
+      "record": "24-u03-handoff-progress.md",
       "tests": {
-        "full": 1047,
-        "atom_contracts": 373,
-        "production_models": 78,
-        "controlled_render_reused": 6,
-        "native_lifetime_controls": 15,
-        "native_settings_matrix": 23,
-        "native_elapsed_expiry_hosts": 2,
-        "native_backend": 27,
-        "ordinary_default_local_fields": 40,
-        "original_legacy_criteria": 6,
-        "packed_type_consumers": 2,
-        "package_admission": 7
+        "model": 49,
+        "full": 1096
       },
-      "operator": "agent",
-      "human_visual_approval": false,
-      "known_minor_debt": [
-        "M1 exact displayed tab/page identity"
-      ],
-      "next_item": "U03"
+      "runtime_changed": false,
+      "next_item": "U03.2"
     },
     "next_item": "U03",
     "new_full_task_acceptances": [
@@ -1964,10 +1967,39 @@
           "Snapshots only; Live/Draft belongs to U02, production enablement to F05, handoff UX to U06.",
           "No real-model validation, SDK, official-host intake, publication or global release-readiness claim."
         ]
+      },
+      {
+        "id": "F05",
+        "status": "complete",
+        "source_fix_commit": "8e28b74",
+        "package_version": "0.1.0-candidate.20261020.9",
+        "handoff": ".artifacts/atom/2026-10-20T02-26-54-458Z/atom-handoff.json",
+        "record": "22-overnight-f05-progress.md",
+        "verification": ".artifacts/f05/review-fix/verification9.json",
+        "tests": {
+          "full": 1047,
+          "atom_contracts": 373,
+          "production_models": 78,
+          "controlled_render_reused": 6,
+          "native_lifetime_controls": 15,
+          "native_settings_matrix": 23,
+          "native_elapsed_expiry_hosts": 2,
+          "native_backend": 27,
+          "ordinary_default_local_fields": 40,
+          "original_legacy_criteria": 6,
+          "packed_type_consumers": 2,
+          "package_admission": 7
+        },
+        "operator": "agent",
+        "human_visual_approval": false,
+        "known_minor_debt": [
+          "M1 exact displayed tab/page identity"
+        ],
+        "next_item": "U03"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "F05 reviewed .9 acceptance complete; independent U06 journey design complete; U03.1 unimported actor is next, no new C07 runtime claim",
+    "current_activity_note": "F05 complete on exact .9; U06 design complete; U03.1 internal actor complete, public v2/UI/real handoff acceptance still unfinished",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "U03"

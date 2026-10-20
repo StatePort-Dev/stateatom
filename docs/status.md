@@ -176,6 +176,14 @@ privacy and new revisions remain U03/P04 implementation gaps. The written
 synthetic two-role walkthrough is not runtime UI acceptance. Next implementation
 is U03 after U01/U06; C07 and mandatory A05/L02 remain open.
 
+
+[U03.1](completion/24-u03-handoff-progress.md) completes only an **unimported internal
+handoff draft/baseline actor** (49 model/1096 full). Exact `.9` producer inputs and
+both hosts are unchanged. Reporter fields and appended unverified Developer notes
+preserve missing data, parent identity and immutable baseline. Public diagnostic-v2,
+privacy/storage integration, mounted UI/reader and actual two-role acceptance remain
+unfinished; next is U03.2. No new runtime or C07 readiness follows from this model.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that
