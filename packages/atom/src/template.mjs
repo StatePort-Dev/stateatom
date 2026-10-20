@@ -1,3 +1,4 @@
+import {handoffButton,handoffTemplate} from './handoff-ui.mjs';
 import {productionSettingsButton,productionStateTemplate,productionSettingsTemplate} from './production-ui.mjs';
 import {inputEditorTemplate} from './input-ui.mjs';
 import {sourceMapTemplate} from './source-map-ui.mjs';
@@ -7,4 +8,4 @@ const baseTemplate="\n<header class=\"sp-extension-header sp-atom-brandbar\">\n 
 export const template=baseTemplate.replace('__SOURCE_MAP__',sourceMapTemplate).replace('__INPUT_EDITOR__',inputEditorTemplate)
  .replace('</button></div>\n</header>','</button>'+productionSettingsButton+'</div>\n</header>')
  .replace('<div class="sp-extension-body sp-atom-scroll"',productionStateTemplate+'<div class="sp-extension-body sp-atom-scroll"')
- .replace('HTTPS stays read-only; production changes require future Settings confirmations (F05).','HTTPS inspection stays read-only. Separate, bounded input permission is available in Settings.')+productionSettingsTemplate;
+ .replace('HTTPS stays read-only; production changes require future Settings confirmations (F05).','HTTPS inspection stays read-only. Separate, bounded input permission is available in Settings.').replace('<select id="report-select"',handoffButton+'<select id="report-select"')+productionSettingsTemplate+handoffTemplate;

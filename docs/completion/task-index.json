@@ -371,7 +371,14 @@
         "M1: modal exact tab ID/readable page identifier deferred; authority remains exact-tab/document bound",
         "Browser permission setup uses declared WebUI preapproval plus native gesture; ordinary prompt/customer/corporate gate remains separate",
         "Agent-operated synthetic HTTPS/isolated hosts; no human visual or official Capture-host acceptance"
-      ]
+      ],
+      "current_runtime_revalidation": {
+        "candidate": "0.1.0-candidate.20261020.12",
+        "authority_workers_byte_identical_to_native_9": true,
+        "current_settings_lifecycle": 15,
+        "actual_expiry_execution_remains": "0.1.0-candidate.20261020.9",
+        "record": "24-u03-handoff-progress.md"
+      }
     },
     {
       "id": "U01",
@@ -801,7 +808,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.2",
+      "active_slice": "U03.2b",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -833,7 +840,42 @@
           "version_aware_storage_complete": false,
           "actual_two_role_handoff": false,
           "record": "24-u03-handoff-progress.md"
+        },
+        {
+          "id": "U03.3a",
+          "status": "complete-within-minimal-ui-boundary",
+          "candidate": "0.1.0-candidate.20261020.12",
+          "profile": "minimal-snapshot/1",
+          "tests": {
+            "full": 1148,
+            "focused_ui_reader_v1": 41,
+            "native_minimal_two_role": 13,
+            "current_settings_lifecycle": 15,
+            "default_local_fields": 40,
+            "original_legacy": 6,
+            "packed_types": 2,
+            "package_admission": 7
+          },
+          "native_minimal_two_role_workflow": true,
+          "v2_local_persistence": false,
+          "rich_privacy_complete": false,
+          "full_H01_H06": false,
+          "whole_U03_review": false,
+          "record": "24-u03-handoff-progress.md"
         }
+      ],
+      "current_candidate": {
+        "version": "0.1.0-candidate.20261020.12",
+        "handoff": ".artifacts/atom/2026-10-20T03-40-16-658Z/atom-handoff.json",
+        "sha256": "0082cb99020c910a23dff2e53bb90e55bb5c0af51a6aee396c2159e56b337301",
+        "verification": ".artifacts/u03/ui/verification12.json",
+        "boundary": "minimal workflow only"
+      },
+      "remaining_acceptance": [
+        "compatible v1/v2 local save/reopen and duplicate-ID conflicts",
+        "rich per-category/per-note privacy and retained technical evidence",
+        "full H01-H06 incl zoom and source/build enrichment",
+        "one fresh whole-U03 review and tested fix pass"
       ]
     },
     {
@@ -1619,14 +1661,11 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "U03.2a",
-      "status": "complete-within-unimported-minimal-codec-boundary",
+      "id": "U03.3a",
+      "status": "complete-within-minimal-ui-boundary",
+      "candidate": "0.1.0-candidate.20261020.12",
       "record": "24-u03-handoff-progress.md",
-      "tests": {
-        "codec": 35,
-        "full": 1131
-      },
-      "runtime_changed": false,
+      "verification": ".artifacts/u03/ui/verification12.json",
       "next_item": "U03.2b"
     },
     "next_item": "U03",
@@ -2014,7 +2053,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "F05 complete .9, U06 journey design complete; U03 internal draft and minimal codec complete as unimported source slices, richer privacy/storage/UI and actual acceptance unfinished",
+    "current_activity_note": "F05 complete with unchanged authority workers; U06 design complete; current .12 minimal two-role UI verified, whole U03/C07 and v2 storage/rich review unfinished",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "U03"

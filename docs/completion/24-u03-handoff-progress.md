@@ -107,3 +107,92 @@ C07 is not complete. The next bounded product increment can mount the minimal
 profile using the existing saved v1 original, without pretending v2 persistence
 or rich technical review already exists; that direction must be ledgered before
 implementation and retain the original Task2 gaps.
+
+
+## U03.3a — actual minimal reporter / recipient UI
+
+Current immutable `.20261020.12`:
+`.artifacts/atom/2026-10-20T03-40-16-658Z/atom-handoff.json`. The minimal codec/draft are now bundled for this slice;
+previous “unimported” entries above remain their historical checkpoints.
+
+After explicitly saving a v1 snapshot, select it and choose **Prepare issue**.
+The dialog takes reporter actual/expected/title/steps/question, shows a readable
+snapshot-only preview, supports whole-field omissions and downloads only on a
+separate click. It does not silently save/capture another observation or alter
+the original stored v1. Source, responses, selected text and recorded actions are
+excluded in this profile, with counts/limits; no fake window or execution is added.
+The passive reader opens the actual file in a clean session without app/IDE/model,
+and previews/downloads an unverified Developer note as a new file. Original
+baseline and parent bytes remain intact. A different hash is not matched evidence.
+Raw JSON remains optional detail; there is no auto-send, account or Capture action.
+
+The adopted Settings dialog/shared typography supplies the visual foundation;
+no shared token, primitive, reference artifact or contract version changed. A
+report form is a necessary U06 journey adaptation: the supplied screen index has
+no dedicated handoff screen. Agent inspection compared current 440/390px first
+viewports, body13/control12, alignment, inputs/buttons, keyboard and reduced motion
+against the existing foundation. The current screenshots are candidates, not
+human approval. An independent human is not a prerequisite.
+
+### Current checks
+
+- Full source **1148**, focused UI/reader/original-v1 **41** (reporter12, reader5,
+  existing diagnostic24), zero failures/skips/cancellations.
+- Actual both-host minimal workflow **13**: real native picker/no app action;
+  Save/preparation/Cancel; 440/390 and native keyboard; actual downloaded bytes,
+  Russian descriptions, omitted private question; reporter browser closed,
+  separate clean recipient; actual revision download and reopening with original
+  reporter baseline unchanged. This is the minimal flow, not all H01–H06.
+- Current packed F05 Settings lifecycle **15**, default local Live/Draft fields
+  **40** without preview, original real browser/IDE legacy criteria **6**, strict
+  packed consumers **2**, original package admission **7**, all PASS.
+- Both authority workers are byte-identical to actual-expiry `.9`; production
+  actor/runtime/platform/Settings source is unchanged and the old Atom CSS is an
+  exact prefix of the new scoped CSS. `.9` ten-minute measurements retain their
+  own identity; they are not called a new `.12` expiry run. Current `.12` Settings
+  lifecycle checks independently cover the changed inspector composition.
+
+`node .artifacts/u03/ui/verify12.mjs` binds current producer/source/tests, immutable
+archives, installed consumer, entire host maps, result/file hashes and preserved
+failures. Receipt: `.artifacts/u03/ui/verification12.json`. Native result:
+`.artifacts/u03/minimal-native/2026-10-20T03-41-19-496Z/results.json`.
+
+### Preserved failures and corrections
+
+Initial `.10` native FAIL4 looked in the configured test folder, while the exact
+1935-byte synthetic file had completed in default Downloads. The isolated browser's
+History confirmed the path/state; only that UUID-named generated file was verified
+and moved to its failure evidence directory with a recovery hash. The original
+FAIL4 stays unchanged. Keeping the browser-level download CDP connection alive
+fixed the test configuration; assertions/timeouts were retained.
+
+A second `.10` FAIL4 exposed a genuine late-close event race after Cancel/reopen.
+Controlled RED→GREEN now ignores the already-handled close event and preserves
+the new source; `.11` was issued instead of overwriting `.10`. A `.11` FAIL6 then
+had a wrong fixture expectation: the actual snapshot contains a recorded build
+hash, so an intentionally different supplied hash must be `different-hash`.
+The corrected driver adds strict SHA/non-equality assertions and keeps the note
+unverified; it does not fabricate missing build identity. All old files/results
+remain. A final plain-wording RED→GREEN produced `.12`, replacing the internal
+trust enum in the normal reader status.
+
+Other original source RED controls retain focus-stealing, eight-note-bound
+re-enabling and missing-module evidence. Automatic approval review rejected a
+proposed deletion of an unused driver read as possible criteria weakening. That
+deletion was not performed. The safe alternative kept the original driver data/
+assertions and added foreground input setup; later corrections retained explicit
+checks and strengthened the wrong-build control. No approval remains blocked.
+
+### Remaining scope and one next step
+
+This completes **only U03.3a's minimal UI increment**. Parent Tasks2/3 and U03 stay
+in progress. Rich per-category/per-note review, source/response/action inclusion,
+compatible v2 local persistence/conflict handling, zoom and full H01–H06 plus the
+one whole-U03 review/fix pass remain open. P04 observation collection is separate;
+no C07/baseline acceptance is claimed. F05 M1 exact tab/page display is still a
+known Minor; A05/L02 remain mandatory and SDK remains outside Atom.
+
+One next bounded item: **U03.2b — compatible local v2 save/reopen**, preserving v1
+and exact file bytes with explicit duplicate-ID conflict and existing retention
+limits. Richer review then consumes that model. No new implementation begins in
+the final deadline verification window.

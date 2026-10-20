@@ -1,5 +1,11 @@
 # U03.2a — minimal historical format candidate
 
+Current implementation note: `.20261020.12` bundles this minimal profile for the
+limited Prepare issue / passive reader flow verified in
+[U03.3a](../completion/24-u03-handoff-progress.md). The source-only wording below
+records its earlier U03.2a checkpoint. Rich review/v2 persistence and whole U03
+remain unfinished; the layout/limits below are not weakened.
+
 New working implementation decision, 2026-10-20; follows the
 [U06 journey](qa-pm-handoff-journey.md). This is a **source-only, unimported codec**
 slice of U03.2. It does not complete granular privacy/storage, connect a reader,

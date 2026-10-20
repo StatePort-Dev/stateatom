@@ -11,3 +11,11 @@ section { overflow-wrap:anywhere; }
  main.sp-panel { margin:0; padding:16px; border:0; border-radius:0; }
  h1 { font-size:20px; }
 }
+
+[data-sp-ui] .sp-atom-handoff-reader label { display:block; margin:12px 0; }
+[data-sp-ui] .sp-atom-handoff-reader input,
+[data-sp-ui] .sp-atom-handoff-reader textarea { width:100%; box-sizing:border-box; }
+[data-sp-ui] .sp-atom-handoff-reader textarea { display:block; resize:vertical; margin-top:6px; }
+[data-sp-ui] .sp-atom-handoff-reader .sp-toolbar { display:flex; flex-wrap:wrap; gap:8px; }
+[data-sp-ui] .sp-atom-handoff-reader .sp-atom-handoff-preview { white-space:pre-wrap; overflow-wrap:anywhere; padding:12px 0; }
+[data-sp-ui] #reader-note-status { color:var(--sp-color-muted); line-height:1.6; }

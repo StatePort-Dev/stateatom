@@ -98,7 +98,9 @@ retirement stays Unknown. Earlier inert-only and `.7/.8` checkpoints remain
 historical. The ten-minute exact-document policy is a new F05 working choice,
 not scope-interview approval. Minor debt: readable exact tab/page identity in
 the modal; native authority already binds the exact tab/document. Ordinary browser
-prompt/customer, human visual, official-host, SDK and release gates are not closed.
+prompt/customer, official-host and release acceptance remain separate. Screenshots
+are agent-operated candidates; an independent human is not a prerequisite. SDK
+work remains outside Atom.
 
 U06 is complete as the [selected reporter/recipient journey](docs/features/qa-pm-handoff-journey.md),
 with explicit U03/P04 gaps and acceptance, not a new runtime or C07 readiness claim.
@@ -115,6 +117,15 @@ U03.2a subsequently adds the **unimported minimal historical codec** (35 source 
 1131 full), with explicit omissions and immutable data-only revisions. V1 and
 `.9` executable inputs remain unchanged. Rich privacy/storage and the actual
 reporter/recipient UI remain unfinished; this is not C07 readiness.
+
+
+The current [U03.3a minimal UI](docs/completion/24-u03-handoff-progress.md) is now
+verified on `.20261020.12`: full1148/target41, actual both-host file handoff13,
+Settings lifecycle15/default fields40/original legacy6/types2/admission7. It uses
+saved v1 originals, readable preparation and a passive recipient/new note file.
+This is partial U03, with rich review/v2 storage/full acceptance still open;
+next is U03.2b compatible local save/reopen. Authority workers match expiry-tested
+`.9` byte-for-byte; those expiry measurements retain their original identity.
 
 
 ## Historical roadmap and checkpoint ledger

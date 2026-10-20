@@ -265,3 +265,19 @@ stays explicit. Closing Settings after enabling keeps this bounded permission.
 Undo checks revisions and can refuse an external change. It cannot undo server
 effects or every already-admitted application action. Enabling or granting input
 permission does not strengthen source, dependency or causal evidence.
+
+
+### Simple issue files (bounded candidate)
+
+Save a snapshot locally, choose it in the saved list, then **Prepare issue**.
+Enter what happened and what you expected, review the simple historical report,
+optionally omit whole description fields, and download it explicitly. The original
+saved snapshot is unchanged. This minimal profile excludes source, responses,
+recorded actions and selected text; it records no observation window. User-entered
+words still require privacy review. No file is sent automatically.
+
+The local Diagnostic Reader opens the issue without the app/IDE. It can preview
+and download an unverified Developer note as a new file; a same build hash does
+not verify execution or a fix. V1 reading/advanced export remain available. Rich
+per-category review, v2 local persistence, P04 collection and full U03 handoff
+acceptance are unfinished; this bounded candidate is not whole C07 readiness.

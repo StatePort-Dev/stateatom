@@ -334,8 +334,9 @@ no second reviewer was requested. Commit `8e28b74` contains the actual fixes.
 
 **F05 is complete within its own brief**, with documented Minor M1 (readable exact
 tab/page display) deferred. This does not close ordinary browser-prompt/corporate
-acceptance, independent-human visual approval, official Capture-host intake, SDK,
-release or whole-baseline gates. U06 separately completed its journey design in
+acceptance, official Capture-host intake, release or whole-baseline acceptance.
+Independent-human visual approval is optional, not a blocker; screenshots remain
+agent-operated candidates. SDK work stays outside Atom. U06 separately completed its journey design in
 `1e969a5` without modifying executable .9 inputs. The next dependency-ready
 implementation is **U03**, after U01/U06; P04's observation collector remains a
 later separate gate. A05/L02 stay mandatory.

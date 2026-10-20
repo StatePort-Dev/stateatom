@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.12
+
+- Use plain historical/untrusted wording in the passive issue reader instead of displaying an internal enum.
+
+## 0.1.0-candidate.20261020.11
+
+- Preserve a newly reopened issue dialog when a previous Cancel close event arrives late; retain native failing .10 evidence.
+
+## 0.1.0-candidate.20261020.10
+
+- Add readable issue preparation from an explicitly saved snapshot, with whole-field omissions and explicit download.
+- Read minimal historical issue files and preview/download an unverified Developer note as a new file. Original v1 snapshots and advanced export remain unchanged.
+- Reuse Settings dialog/shared typography for the bounded minimal flow; raw reader data is an optional disclosure. Rich content review, v2 persistence and full U03 acceptance remain open.
+
 ## 0.1.0-candidate.20261020.9
 
 - Invalidate pending and confirming production consent on same-document navigation, including target sampling already in flight.

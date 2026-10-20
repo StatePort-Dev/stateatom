@@ -4,7 +4,10 @@ This is the selected **new working UX decision** for `scope-review-1`, made unde
 the maintainer's autonomous execution instruction on 2026-10-20. C07 approved
 the outcome, not this detailed flow. This document completes a journey/design
 boundary; it does **not** implement U03, P04, a new export format or a collector.
-The current diagnostic reader/export remains version 1.
+At that design checkpoint the diagnostic reader/export remained version 1.
+The later [U03.3a increment](../completion/24-u03-handoff-progress.md) implements a
+limited minimal-profile UI on `.20261020.12`; rich review/storage and full U03/P04
+acceptance remain open. The original requirements below are not reduced.
 
 ## Purpose and boundaries
 

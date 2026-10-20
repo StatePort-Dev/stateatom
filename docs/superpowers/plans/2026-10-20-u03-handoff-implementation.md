@@ -124,6 +124,11 @@ version-aware local storage without changing old record interpretation.
 
 **Files:** `packages/atom/src/ui.mjs`, `template.mjs`, `atom.css`, focused new
 handoff UI module if warranted; `browser-extension/reader.mjs`/HTML/CSS and tests.
+**Bounded 3a dependency ruling:** the minimal profile UI may consume Task2a and
+existing saved v1 originals before Task2b. It does not silently save v2, expose
+unsupported technical inclusion, or complete full Task3/U03/C07. Full 3b still
+consumes Task2b storage/rich privacy. Every source/native claim names this boundary.
+
 **Consumes:** Task2 record/privacy/storage interfaces. **Produces:** existing
 selected workspace's Prepare issue, structured discrepancy, snapshot-only window,
 readable per-category review/download and passive recipient first view/addition.
@@ -136,6 +141,12 @@ readable per-category review/download and passive recipient first view/addition.
   accurately unavailable until P04; never add a fake recording/collector.
 - [ ] Every visual change changelog + supplied-reference/rendered comparison;
   fresh current package/types and actual both-host UI checks. Local commit.
+
+- [x] U03.3a minimal saved-v1 preparation/passive-reader workflow: .12,
+  full1148/target41/native13/Settings15/default40/legacy6/types2/admission7;
+  source/native failures retained. Parent Task3 stays open.
+- [ ] U03.3b consumes rich privacy/storage from Task2b and completes the remaining
+  full reporter/recipient/zoom/build-enrichment acceptance; no whole-U03 claim.
 
 ### Task 4: U03.4 actual H01–H06 two-role acceptance
 

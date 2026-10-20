@@ -190,6 +190,15 @@ immutable unverified notes and privacy derivatives. V1 parser/storage/reader and
 current `.9` remain unchanged. Rich category review/storage and actual handoff UI
 remain open; no C07 runtime acceptance is claimed.
 
+Current [U03.3a](completion/24-u03-handoff-progress.md) `.20261020.12` implements a
+**minimal** Prepare issue → actual downloaded file → clean recipient → new note
+file flow, agent-verified in both hosts13. Full1148/target41, current Settings15,
+default fields40/original legacy6 and types2/admission7 pass. V1 originals stay
+unchanged, unknown windows and omitted technical evidence remain explicit. Rich
+review, compatible v2 local persistence, full H01–H06/whole-U03 review and C07
+acceptance remain open. Next is U03.2b local save/reopen. New screenshots remain
+agent candidates; independent human review is not a blocker. SDK stays outside Atom.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

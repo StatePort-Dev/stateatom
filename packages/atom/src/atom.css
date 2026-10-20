@@ -167,3 +167,12 @@
 [data-sp-ui][data-atom-root] .sp-atom-settings-head button{flex-shrink:0}
 @media(max-width:420px){[data-sp-ui][data-atom-root] dialog.sp-atom-settings{padding:20px}[data-sp-ui][data-atom-root] .sp-atom-settings-head{flex-wrap:wrap}}
 [data-sp-ui][data-atom-root] [data-atom-id^="production-"][hidden]{display:none!important}
+
+/* Minimal issue preparation adapts the existing Settings dialog foundation. */
+[data-sp-ui] .sp-atom-handoff label { display:block; margin:10px 0; }
+[data-sp-ui] .sp-atom-handoff input:not([type="checkbox"]),
+[data-sp-ui] .sp-atom-handoff textarea { width:100%; box-sizing:border-box; }
+[data-sp-ui] .sp-atom-handoff textarea { resize:vertical; min-height:56px; }
+[data-sp-ui] .sp-atom-handoff .sp-atom-content-option { display:flex; align-items:center; gap:8px; }
+[data-sp-ui] .sp-atom-handoff .sp-atom-content-option input { width:auto; }
+[data-sp-ui] .sp-atom-handoff-preview { white-space:pre-wrap; overflow-wrap:anywhere; border-top:1px solid var(--sp-color-border); margin-top:12px; padding-top:12px; }
