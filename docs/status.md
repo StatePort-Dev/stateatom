@@ -868,3 +868,13 @@ The optional AI UI stays experimental; no real Nano quality, latency, resource o
 offline acceptance is claimed. Vue event binding support, executed action tracing
 and complete causal paths are not added. Screenshots are candidates for human review.
 No release, publication or public compatibility expansion follows from these checks.
+
+
+Current U03 bounded increment: ordinary reviewed reporter/privacy controls on
+`.20261020.19`, [execution record](completion/24-u03-handoff-progress.md).
+Full1323/focused103/native33/storage15/Settings15/default40/legacy6/types2/admission7
+pass. Real default/opt-in/recipient privacy files and exact parent/download bytes
+are verified; old v1/minimal remain supported. Corrected inspector CDP network
+observation includes a positive control; old .18 request arrays are not network
+proof. Next U03.2b.3d checks source-evidence fidelity before actual H05 enrichment.
+Whole U03/H01–H06/P04/C07 and separately saved U02 outcomes remain open.

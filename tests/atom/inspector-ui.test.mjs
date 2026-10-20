@@ -14,8 +14,9 @@ const deferred=()=>{let resolve;return {promise:new Promise(r=>resolve=r),resolv
 const tick=()=>new Promise(r=>setTimeout(r,0));
 function node(){return {textContent:'',value:'',children:[],dataset:{},style:{},tagName:'SECTION',scrollTop:0,open:false,contains(){return false;},setAttribute(){},removeAttribute(){},append(...v){this.children.push(...v);},replaceChildren(...v){this.children=v;if(v.length&&this.tagName==='SELECT')this.value=String(v[0].value);},addEventListener(){},getBoundingClientRect(){return{top:0};},focus(){},showModal(){this.open=true;},close(){this.open=false;},querySelector(){return null;}};}
 function fixture(request,options={}){
- const elements=new Map(),$=id=>{if(!elements.has(id))elements.set(id,node());return elements.get(id);};$('tabs').tagName='SELECT';$('tabs').selectedOptions=[{dataset:{origin:'http://127.0.0.1:4173'}}];
- const document={createElement:node,createElementNS:node},root={...node(),querySelector:s=>$(s.match(/data-atom-id="([^"]+)/)[1]),querySelectorAll:()=>[],remove(){}};let first=true;document.createElement=tag=>{if(first){first=false;return root;}const e=node();e.tagName=tag.toUpperCase();return e;};
+ let document;
+ const elements=new Map(),$=id=>{if(!elements.has(id))elements.set(id,{...node(),ownerDocument:document});return elements.get(id);};$('tabs').tagName='SELECT';$('tabs').selectedOptions=[{dataset:{origin:'http://127.0.0.1:4173'}}];
+ document={createElement:node,createElementNS:node};for(const e of elements.values())e.ownerDocument=document;const root={...node(),querySelector:s=>$(s.match(/data-atom-id="([^"]+)/)[1]),querySelectorAll:()=>[],remove(){}};let first=true;document.createElement=tag=>{if(first){first=false;return root;}const e=node();e.tagName=tag.toUpperCase();return e;};
  const host={ownerDocument:document,append(){}};
  const state=id=>({attached:true,tabId:id,property:'text',selection:{selector:'#target-'+id,property:'text',value:'Tab '+id,text:'Tab '+id,observedAt:100},analysis:{sources:[],actionContext:{},stateatom:{target:{property:'text',value:'Tab '+id},runtime:{status:'Unknown/Unsupported'}}}});
  const list=[{id:1,url:'http://127.0.0.1:4173/one'},{id:2,url:'http://127.0.0.1:4173/two'}];

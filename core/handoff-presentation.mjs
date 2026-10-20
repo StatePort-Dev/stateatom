@@ -2,7 +2,8 @@
 // Pure passive wording shared by Atom and the recipient; callers render inert text.
 const reviewed=r=>r.profile==='reviewed-snapshot/1';
 const rows=r=>[r.report.target.value,...r.report.technicalEvidence.fields];
-const categoryLabels={selectedText:'Selected text',selectionDetails:'Selection context',sourceLocations:'Source locations',sourceExcerpts:'Source excerpts',responseBodies:'Response excerpts',runtimeValues:'Runtime values',networkLocations:'Network origins',routePaths:'Route paths',originalNotes:'Original notes',diagnosticDetails:'Diagnostic context',actionDetails:'Action source and registration',sourceMaps:'Source-map metadata',interventionValues:'Legacy intervention fragments'};
+export const handoffCategoryLabels=Object.freeze({selectedText:'Selected text',selectionDetails:'Selection context',sourceLocations:'Source locations',sourceExcerpts:'Source excerpts',responseBodies:'Response excerpts',runtimeValues:'Runtime values',networkLocations:'Network origins',routePaths:'Route paths',originalNotes:'Original notes',diagnosticDetails:'Diagnostic context',actionDetails:'Action source and registration',sourceMaps:'Source-map metadata',interventionValues:'Legacy intervention fragments'});
+const categoryLabels=handoffCategoryLabels;
 const display=v=>typeof v==='string'?v:JSON.stringify(v);
 export function handoffConditionText(record){
  const t=record.report.target;if(!reviewed(record))return t.property==='text'?'Selected text: excluded from this report.':'Selected disabled = '+t.value.value;

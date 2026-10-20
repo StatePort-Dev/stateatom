@@ -628,3 +628,90 @@ Next **U03.2b.3c.2** adds normal reporter category/field review and recipient
 per-note privacy controls. Tasks2/3 remain open, with actual source/build evidence
 enrichment, any separately bound saved input outcomes, full H01–H06/whole-U03
 review, P04 and C07 still unfinished. No SDK/publication/other-repository work.
+
+
+## U03.2b.3c.2 — ordinary reporter and recipient privacy controls
+
+Immutable candidate `.20261020.19` at
+`.artifacts/atom/2026-10-20T07-15-17-102Z/atom-handoff.json` was built from
+working source above `1f7df4a`. The [working UI contract](../features/handoff-review-controls.md)
+adds native category/field review to ordinary Prepare issue, now creating the
+explicit reviewed profile by default. Private categories start excluded; map
+metadata requires its own choice. Safe metadata and individual filtered fields
+can be omitted or replaced by labelled reviewer redaction. Cancel/new source reset
+technical consent; existing typing, source-ready, stale-preview and exact Save
+acknowledgement guards remain. No absent data is collected from the application.
+
+The recipient can create a separately previewed/downloaded privacy copy, omit
+individual Developer notes/issue fields/categories/fields, and redact retained
+fragments. Exact parent bytes bind the child; originals and retained notes remain
+unchanged. Omitted/unavailable data cannot be restored. Edits, Cancel and file
+replacement invalidate both prepared downloads, while Cancel preserves typed note.
+Old minimal/v1 reading remains supported. A valid old snapshot beyond detailed
+review budgets offers an explicit **Use a simple report** action, preserving typed
+issue words through the unchanged minimal codec. No automatic fallback/limit raise.
+
+Fresh commands (`$HANDOFF` denotes the exact .19 path above):
+
+```sh
+node --test --test-isolation=none tests/atom/handoff-ui.test.mjs tests/atom/handoff-review.test.mjs tests/browser/handoff-reader.test.mjs tests/atom/inspector-ui.test.mjs tests/handoff-presentation.test.mjs tests/browser/diagnostic.test.mjs
+npm test
+npm run pack:atom
+npm run verify:atom-types -- "$HANDOFF"
+node tests/integration/handoff-review-controls.mjs "$HANDOFF"
+node tests/integration/handoff-storage.mjs "$HANDOFF"
+node tests/integration/production-settings-lifetime.mjs "$HANDOFF"
+npm run verify:input-fields -- "$HANDOFF" --accepted
+node tests/integration/input-legacy.mjs "$HANDOFF"
+npm run verify:atom-package -- "$HANDOFF"
+node .artifacts/u03/review-controls/verify19.mjs
+```
+
+Full **1323**, focused **103**, packed types **2**, package admission **7** pass.
+Ordinary native both-host flow **33**:
+`.artifacts/u03/review-controls-native/2026-10-20T07-59-03-213Z/results.json`.
+This uses actual picker, explicit synthetic GET context, real saved v1 and normal
+Prepare controls. Actual reviewed default/opt-in files, exact re-download after a
+full browser restart with app closed, clean-recipient note and privacy-copy
+files are parsed and bound by exact hashes/completed Chrome download GUIDs.
+Private text/body omission, reviewer replacement, per-note removal, map consent,
+Cancel/stale guards, UTF-8 refusal, old minimal compatibility and explicit budget
+fallback are exercised. Map/budget compatibility files are separately labelled
+synthetic legacy fixtures, not runtime map provenance or H05 enrichment.
+
+Native storage **15**, Settings lifetime **15**, ordinary accepted fields **40**
+(`configuration.preview:false`) and legacy/real-IDE/Restore **6** remain current
+on the same immutable pair. Exact result paths, all producer/consumer/entire-host
+hashes, retained failed runs and source logs are bound by
+`.artifacts/u03/review-controls/verification19.json`.
+
+**Network evidence correction:** the raw browser wrapper never forwarded the
+`.on('request')` callbacks used by .18 and .19a–d. Their empty arrays are **not**
+HTTP-observation proof; raw results/logs remain unchanged, and the old .18 claim
+above is qualified accordingly. Final .19 uses an inspector-only CDP Network
+observer with a positive reload control: actual reader.js/self requests are
+observed before importing a file, then no HTTP requests occur through reading,
+note and privacy-copy workflows. This is inspector-scoped observation, not an
+all-browser/app collector or P04 window. No prior acceptance threshold is lowered.
+
+Agent compared actual390 and200%-zoom screenshots with the supplied Settings
+foundation. Shared13px body/12px controls, borders and native controls remain;
+optional technical review adds vertical scrolling. No dedicated handoff design
+reference, shared-token edit or human approval is claimed. Screenshots remain
+candidates; an independent human is not a blocker.
+
+Retained controls in `.artifacts/u03/review-controls/`: missing/editor14 RED,
+coupling6/36 RED, limits/category-conflict2/45 RED, then focused103 PASS. First full
+1323 failed one old inspection-view fake DOM lacking ownerDocument; repairing the
+test double preserves all finite-trace assertions (focused13/full1323 PASS).
+Mounted fake DOM required the same property; no original assertion was removed.
+Seven unique native failures remain: catalogue/source-save timing, map checkbox
+presence assumption, missing async imported readiness, CSS zoom reflow, async tab
+options and mouse acknowledgement. Drivers now wait actual enabled/new-ID/native
+state and hit-test the real target before native Input; product .19 was unchanged,
+no blind retry, threshold relaxation or synthetic interaction substituted.
+
+Next bounded work is **U03.2b.3d source-evidence fidelity**, checking the specific
+legacy source-status projection before actual H05 source/build enrichment. Task2/3
+BASEs and whole H01–H06/U03 review remain open, as do separately bound U02 saved
+outcomes, P04/C07, mandatory A05/L02. No SDK/publication/other repository work.

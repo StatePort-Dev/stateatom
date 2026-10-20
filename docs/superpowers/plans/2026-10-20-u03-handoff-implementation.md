@@ -200,3 +200,16 @@ separate clean recipient → added revision → reopen/original comparison.
   tested Critical/Important fix pass; ledger Minor, no re-review loop.
 - [ ] Complete U03 only with real H01–H06 and current bindings. Preserve P04,
   A05/L02 and broader completion gates. One next dependency-ready item, local commit.
+
+
+### Current bounded checkpoint — U03.2b.3c.2
+
+Normal reporter category/field and recipient per-note privacy controls now run on
+immutable .19, full1323/focused103/native33/storage15/Settings15/default40/legacy6/
+types2/admission7. Working contract: `docs/features/handoff-review-controls.md`;
+exact receipt: `.artifacts/u03/review-controls/verification19.json`. Old .18 request
+callback arrays are explicitly not HTTP proof; .19 inspector CDP observation has a
+positive reader.js reload control. Task2/3 remain open, no BASE/task-done reset.
+Next bounded U03.2b.3d checks only source-status fidelity in legacy projection;
+actual H05 matched-source/build enrichment and saved U02 outcomes follow separately.
+Whole U03 Task5 review still occurs once at its full acceptance boundary.

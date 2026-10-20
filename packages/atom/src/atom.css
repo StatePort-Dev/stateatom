@@ -180,3 +180,13 @@
 [data-sp-ui] .sp-atom-report-import { display:block; margin:10px 0; }
 [data-sp-ui] .sp-atom-report-import input { display:block; width:100%; max-width:100%; box-sizing:border-box; }
 [data-sp-ui] .sp-atom-handoff-technical { white-space:pre-wrap; overflow-wrap:anywhere; max-height:50vh; overflow:auto; padding:12px 0; font-family:var(--sp-font-body); }
+[data-sp-ui] .sp-atom-handoff .sp-atom-review-check { display:flex; align-items:center; gap:8px; margin:10px 0; }
+[data-sp-ui] .sp-atom-review-check input[type="checkbox"] { width:auto; margin:0; flex:none; }
+[data-sp-ui] .sp-atom-review-category { padding:8px 0; border-bottom:1px solid var(--sp-color-border); }
+[data-sp-ui] .sp-atom-review-field { min-width:0; padding:10px 0; border-top:1px solid var(--sp-color-border); }
+[data-sp-ui] .sp-atom-review-field label { display:block; }
+[data-sp-ui] .sp-atom-review-field select,
+[data-sp-ui] .sp-atom-review-field textarea { display:block; width:100%; box-sizing:border-box; margin-top:6px; font-family:var(--sp-font-body); }
+[data-sp-ui] .sp-atom-review-preview { white-space:pre-wrap; overflow-wrap:anywhere; max-height:160px; overflow:auto; padding:8px 0; }
+[data-sp-ui] .sp-atom-review-help { color:var(--sp-color-muted); overflow-wrap:anywhere; }
+[data-sp-ui] .sp-atom-review-field [hidden] { display:none !important; }

@@ -278,3 +278,15 @@ external sanitizer or new dependency is copied. Changes to imported runtime/UI
 files preserve their historical origin and notices. Private synthetic reports and
 verification receipts are local evidence, not published artifacts or runtime proof
 for an unimported model. Existing MIT/Apache/OFL notices remain unchanged.
+
+
+U03 normal review/privacy candidate .20261020.19: exact handoff
+`.artifacts/atom/2026-10-20T07-15-17-102Z/atom-handoff.json` (source above1f7df4a),
+source/package/entire hosts/actual source and downloaded parent-child files bound
+in `.artifacts/u03/review-controls/verification19.json`. Native33 exercises ordinary
+controls, not generated rich reporter substitutes. Map/budget compatibility inputs
+remain labelled synthetic. .18 and .19a–d `.on('request')` arrays did not receive
+network events and prove no HTTP absence. Current .19h uses inspector CDP Network
+with positive reader.js reload control; no app/global/P04 collector claim. Raw
+historical runs, original failures, and scoped evidence criteria are preserved.
+Actual H05 source/build enrichment and whole U03 remain open.

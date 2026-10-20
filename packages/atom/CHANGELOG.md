@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.19
+
+- Prepare a reviewed historical report through ordinary category/field consent, inert filtered previews, explicit omission/reviewer replacement and separately reviewed local Save. Keep private categories off by default and clear technical consent on Cancel/new source while preserving typed issue words.
+- Add recipient privacy-copy review/download with per-note/issue/category/field removal, unchanged originals and stale-preview guards. Omitted data cannot be restored; whole-category omission disables conflicting field edits.
+- Offer an explicit simple report when detailed snapshot review exceeds its unchanged budget; never silently drop evidence or reporter expectations.
+- Reuse Settings/native disclosures and shared body/control typography with scoped local choice layout. No token/primitive/reference change, source fetch, observation collector or evidence upgrade.
+
 ## 0.1.0-candidate.20261020.18
 
 - Read and persist the explicit reviewed historical profile alongside unchanged v1/minimal files. Keep exact raw bytes, shared retention and inert parent/note handling.

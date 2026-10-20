@@ -808,7 +808,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.2b.3c.2",
+      "active_slice": "U03.2b.3d",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -974,20 +974,43 @@
           "actual_H05_enrichment": false,
           "full_H01_H06": false,
           "whole_U03_review": false,
+          "record": "24-u03-handoff-progress.md",
+          "network_evidence_qualification": "Old request callback was not wired; empty arrays are not observed HTTP proof. Raw45 result retained; current19h CDP positive-control observation is separate."
+        },
+        {
+          "id": "U03.2b.3c.2",
+          "status": "complete-within-normal-review-privacy-controls-boundary",
+          "candidate": "0.1.0-candidate.20261020.19",
+          "tests": {
+            "full": 1323,
+            "focused": 103,
+            "native_normal_review_privacy": 33,
+            "native_storage": 15,
+            "current_settings_lifecycle": 15,
+            "default_local_fields": 40,
+            "original_legacy": 6,
+            "packed_types": 2,
+            "package_admission": 7
+          },
+          "normal_rich_reporter_creation": true,
+          "recipient_granular_privacy_controls": true,
+          "actual_H05_enrichment": false,
+          "whole_U03_review": false,
+          "verification": ".artifacts/u03/review-controls/verification19.json",
           "record": "24-u03-handoff-progress.md"
         }
       ],
       "current_candidate": {
-        "version": "0.1.0-candidate.20261020.18",
-        "handoff": ".artifacts/atom/2026-10-20T06-38-34-241Z/atom-handoff.json",
-        "sha256": "84022a40a95108c313af6c1698616f4fa6fb4c610abfe8a26f5150d27c3dbb42",
-        "verification": ".artifacts/u03/reviewed-integration/verification18.json",
-        "boundary": "normal minimal reporter plus installed passive reviewed-profile import/read/persistence/note; rich reporter/privacy controls and whole U03 pending"
+        "version": "0.1.0-candidate.20261020.19",
+        "handoff": ".artifacts/atom/2026-10-20T07-15-17-102Z/atom-handoff.json",
+        "sha256": "8a22f0b6bda613ce5f8383aefaab5fe986ec55e969999a5e6af356c96a15f42d",
+        "verification": ".artifacts/u03/review-controls/verification19.json",
+        "boundary": "ordinary reporter/category/field and recipient privacy controls; actual H05 enrichment, source fidelity check and whole U03 pending"
       },
       "remaining_acceptance": [
-        "rich per-category/per-note privacy and retained technical evidence",
-        "full H01-H06 incl zoom and source/build enrichment",
-        "one fresh whole-U03 review and tested fix pass"
+        "source-status projection fidelity and actual H05 matched-source/build evidence",
+        "separately bound saved U02 input outcomes",
+        "full H01-H06 plus one fresh whole-U03 review and tested fix pass"
       ]
     },
     {

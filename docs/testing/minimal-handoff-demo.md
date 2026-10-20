@@ -109,3 +109,34 @@ The checked driver is `tests/integration/handoff-minimal.mjs`, invoked with Node
 and the exact handoff path above. There is no new public demo/npm command promised
 by this increment. Do not substitute a harness-generated file for its recorded
 actual downloads or call older picker launchers newly verified by this run.
+
+
+## Current ordinary review/privacy demo (.19)
+
+Use the immutable candidate described by
+`.artifacts/atom/2026-10-20T07-15-17-102Z/atom-handoff.json`.
+Prepare issue now defaults to the reviewed profile; the older .12 minimal demo
+above retains its historical boundary. Save/reopen/import are available locally.
+
+1. Save an actual target snapshot, choose it and Prepare issue. Enter actual/expected.
+2. Optional Technical details: choose a category/field, omit or redact a fragment,
+   Review, then Save reviewed report or Download reviewed file explicitly.
+3. Open the actual downloaded file in the diagnostic reader with app/IDE closed.
+4. Append an unverified note, Review new revision and Download new file.
+5. Create a privacy copy: omit that note/issue/text/body, Review privacy copy,
+   then Download privacy copy. Reopen it; the original remains unchanged.
+
+Actual native synthetic files (not generated reporter replacements):
+
+- standalone text: `/home/roman/projects/stateatom/.artifacts/u03/review-controls-native/2026-10-20T07-59-03-213Z/downloads/standalone-reporter/stateatom-issue-f30a6ff3-e29a-45af-b577-826877d703ee.stateatom.json`
+- standalone note: `/home/roman/projects/stateatom/.artifacts/u03/review-controls-native/2026-10-20T07-59-03-213Z/downloads/standalone-recipient/stateatom-revision-ea3a8c66-587f-43b8-a709-66edae0ff8cf.stateatom.json`
+- standalone privacy: `/home/roman/projects/stateatom/.artifacts/u03/review-controls-native/2026-10-20T07-59-03-213Z/downloads/standalone-recipient/stateatom-privacy-4c5e8efd-57ac-4b65-8a21-57d804b5231a.stateatom.json`
+- embedding text: `/home/roman/projects/stateatom/.artifacts/u03/review-controls-native/2026-10-20T07-59-03-213Z/downloads/embedding-reporter/stateatom-issue-63f45bda-3cef-4c65-a855-b907b75cac82.stateatom.json`
+- embedding note: `/home/roman/projects/stateatom/.artifacts/u03/review-controls-native/2026-10-20T07-59-03-213Z/downloads/embedding-recipient/stateatom-revision-4895ffaf-c62e-4ce4-8495-a34962906e50.stateatom.json`
+- embedding privacy: `/home/roman/projects/stateatom/.artifacts/u03/review-controls-native/2026-10-20T07-59-03-213Z/downloads/embedding-recipient/stateatom-privacy-7830ec94-7ee7-44f4-977c-a098b331afcc.stateatom.json`
+
+Candidate screenshots and exact source/download/network-positive receipts are in
+`.artifacts/u03/review-controls-native/2026-10-20T07-59-03-213Z/`. Driver:
+`node tests/integration/handoff-review-controls.mjs <exact-handoff-path>`.
+No source fetch or authority comes from opening a file. Actual H05 matched-source
+evidence and whole U03/P04/C07 remain unfinished.
