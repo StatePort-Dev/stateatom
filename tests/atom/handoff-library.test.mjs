@@ -63,3 +63,12 @@ test('disposal during file read prevents subsequent storage mutation',async()=>{
 test('a saved child without a local parent stays readable with continuity unchecked',async()=>{
  const f=await fixture(),parent=await v2(),child=await appendHandoffFinding(parent,{text:'Unjoined note'},{expectedParentDigest:await handoffArtifactDigest(parent)});await f.store.save(child);await f.library.refresh();await f.$('export-report').onclick();assert.equal(f.opened.length,1);assert.equal(f.opened[0].parentStatus,'not-checked');assert.equal(Object.hasOwn(f.opened[0].options,'parentRaw'),false);f.library.dispose();
 });
+
+import {inputReportFixture} from '../helpers/input-report-fixture.mjs';
+import {composeHandoffInputReport} from '../../core/handoff-input-report.mjs';
+test('unknown nested input format gives useful import refusal and preserves exact previously stored file',async()=>{
+ const source=await inputReportFixture({now:Date.now()-5000}),raw=await composeHandoffInputReport(source.baseRaw,source.packetRaw,{expectedParentDigest:await handoffArtifactDigest(source.baseRaw)}),f=await fixture(),record=JSON.parse(raw);
+ await f.store.save(raw);await f.library.refresh(record.id);const before=(await f.store.list()).entries.length,saves=f.calls.filter(x=>x.op==='save-handoff').length;
+ const future=JSON.parse(raw);future.inputEvidence.schema='stateatom.input-evidence/99';const canonical=x=>JSON.stringify(function sort(v){return Array.isArray(v)?v.map(sort):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sort(v[k])])):v;}(x));future.inputEvidenceDigest=await handoffArtifactDigest(canonical({inputEvidence:future.inputEvidence,inputPrivacy:future.inputPrivacy}));
+ for(const incoming of[canonical(future),raw.replace('"profile":"input-evidence/1"','"profile":"input-evidence/99"')]){await f.import(incoming);assert.match(f.$('diagnostic-status').textContent,/not supported.*compatible export/i);assert.doesNotMatch(f.$('diagnostic-status').textContent,/UNSUPPORTED_INPUT_EVIDENCE/);assert.equal((await f.store.open(record.id)).raw,raw);assert.equal((await f.store.list()).entries.length,before);assert.equal(f.calls.filter(x=>x.op==='save-handoff').length,saves);assert.equal(f.$('report-import').value,'');}f.library.dispose();
+});

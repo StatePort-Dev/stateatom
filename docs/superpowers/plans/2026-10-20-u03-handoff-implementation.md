@@ -140,17 +140,17 @@ version-aware local storage without changing old record interpretation.
 
 - [x] Pin concrete v2 field layout before implementation, mapping U06 logical
   fields and every retained v1 fragment; no placeholder selected value for omission.
-- [ ] RED/GREEN v1 compatibility, per-category/field omission, broken joins,
+- [x] RED/GREEN v1 compatibility, per-category/field omission, broken joins,
   exact downloaded bytes, source-map import not consent, notes/paths/values,
   old-schema explicit derivative, budget/duplicate conflict and immutable lineage.
-- [ ] Keep exact parent bytes/digest distinct from trust and missing-parent status;
+- [x] Keep exact parent bytes/digest distinct from trust and missing-parent status;
   incompatible/malformed versions reject visibly, no actions/network on parse.
-- [ ] Verify affected full/contracts/types and fresh immutable package/native
+- [x] Verify affected full/contracts/types and fresh immutable package/native
   boundary if imported. Local commit; do not claim H01 real two-role UI yet.
 
 - [x] U03.2a minimal source profile: codec35/full1131, exact .9 unchanged;
   original source RED retained. No runtime/reader/storage or whole-Task2 completion.
-- [ ] U03.2b rich per-category/per-note review, source/response inclusion and
+- [x] U03.2b rich per-category/per-note review, source/response inclusion and
   compatible persisted v1/v2 records; original full Task2 acceptance remains open.
 
 ### Task 3: U03.3 reporter UI and passive recipient/revision UI
@@ -166,19 +166,19 @@ consumes Task2b storage/rich privacy. Every source/native claim names this bound
 selected workspace's Prepare issue, structured discrepancy, snapshot-only window,
 readable per-category review/download and passive recipient first view/addition.
 
-- [ ] Map supplied reference/control structure and necessary deviations before UI.
-- [ ] RED/GREEN field validation, no source/expired window, stale replies,
+- [x] Map supplied reference/control structure and necessary deviations before UI.
+- [x] RED/GREEN field validation, no source/expired window, stale replies,
   preview invalidation, Cancel/no download, original remains intact, no privilege
   adoption, wrong build/unjoined note and keyboard/narrow/zoom/reduced motion.
-- [ ] Keep exact JSON advanced; no source/IDE/model required. Window controls
+- [x] Keep exact JSON advanced; no source/IDE/model required. Window controls
   accurately unavailable until P04; never add a fake recording/collector.
-- [ ] Every visual change changelog + supplied-reference/rendered comparison;
+- [x] Every visual change changelog + supplied-reference/rendered comparison;
   fresh current package/types and actual both-host UI checks. Local commit.
 
 - [x] U03.3a minimal saved-v1 preparation/passive-reader workflow: .12,
   full1148/target41/native13/Settings15/default40/legacy6/types2/admission7;
   source/native failures retained. Parent Task3 stays open.
-- [ ] U03.3b consumes rich privacy/storage from Task2b and completes the remaining
+- [x] U03.3b consumes rich privacy/storage from Task2b and completes the remaining
   full reporter/recipient/zoom/build-enrichment acceptance; no whole-U03 claim.
 
 ### Task 4: U03.4 actual H01–H06 two-role acceptance
@@ -188,13 +188,13 @@ synthetic shareable fixtures and U03 execution record/index.
 **Consumes:** Task3 actual UI. **Produces:** exact packed reporter download →
 separate clean recipient → added revision → reopen/original comparison.
 
-- [ ] Prove actual U05 selection and normal reporter controls, explicit download,
+- [x] Prove actual U05 selection and normal reporter controls, explicit download,
   app/inspector closed, no-source recipient first view, privacy and old v1.
-- [ ] Hostile/oversized/duplicate/wrong-build/stale/omitted variants; real bytes,
+- [x] Hostile/oversized/duplicate/wrong-build/stale/omitted variants; real bytes,
   no linked-resource network, action, permission or Capture side effects.
-- [ ] Repeat affected maps/Actions/U02/F05 boundaries without relabelling old
+- [x] Repeat affected maps/Actions/U02/F05 boundaries without relabelling old
   majority, legacy or prototype results. H07–H09 remain separate P04 work.
-- [ ] Current exact package/host/source receipts, full/contracts/types, local commit.
+- [x] Current exact package/host/source receipts, full/contracts/types, local commit.
 
 ### Task 5: U03 final bounded review and acceptance
 
@@ -465,14 +465,24 @@ Intermediate27/28 and raw failures remain historical. No whole-U03/H05/P04 credi
 
 ### Next bounded U03.4: exact H01–H06 reconciliation and remaining checks
 
-- [ ] Map each original H01–H06 criterion to current code and actual source/native
+- [x] Map each original H01–H06 criterion to current code and actual source/native
   results with exact identities; retain historical/control/fixture distinctions.
   Credit completed work without rerunning all old experiments.
-- [ ] Run only remaining targeted checks justified by changed common UI/reader:
+- [x] Run only remaining targeted checks justified by changed common UI/reader:
   actual current source comparison/build boundary, malformed nested-profile
   readable refusal, and pending local Draft capture without Apply/adoption.
   Fix a demonstrated gap with preserved RED/control; never lower a criterion.
-- [ ] Bind unchanged historical majority/legacy/expiry criteria separately from
+- [x] Bind unchanged historical majority/legacy/expiry criteria separately from
   affected fresh checks and current package/source/host identities. No P04 window.
-- [ ] Local bounded commit with Task2/3/4 acceptance reconciled from evidence.
+- [x] Local bounded commit with Task2/3/4 acceptance reconciled from evidence.
   Then ONE fresh whole-U03 Task5 review and one tested fix pass, no per-slice loop.
+
+
+U03.4 acceptance reconciliation on .32: full1603/focused571/current33/boundaries11/
+ordinary41/storage15/first-viewport7/actual-source25/keyboard5/types2/admission7.
+Exact aggregate .artifacts/u03/final-acceptance/verification32.json passed twice.
+Original Task2/3 BASEs retained; their implementation and Task4 acceptance are now
+credited from actual source/native evidence, including missing-window states.
+The targeted .30/.31 focus failures and .32 harness modifier error remain historical.
+Next ONE whole-U03 Task5 review and tested Critical/Important fix pass; U03 itself,
+P04/C07/A05/L02 and public release are not completed by these checkboxes.

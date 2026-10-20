@@ -1472,3 +1472,47 @@ readable refusal and pending local Draft capture where current changes justify i
 Then one whole-U03 Task5 review and one tested fix pass. Task2/3/U03/P04/C07/A05/L02
 remain open until their own acceptance. No old catalogue/majority/expiry campaign
 repeat, SDK/publication/push/other repository or memory update.
+
+## U03.4 — original H01–H06 reconciled on candidate .32
+
+[Acceptance record](25-u03-h01-h06-acceptance.md) maps every original criterion to
+actual current evidence. Exact receipt:
+.artifacts/atom/2026-10-20T20-24-24-552Z/atom-handoff.json.
+Aggregate .artifacts/u03/final-acceptance/verification32.json passed twice, binding
+all source/build inputs, exact archives/installed pair/entire hosts, actual files,
+native download GUIDs/bytes/parents and current test drivers. Full1603/focused571,
+current reporter33/boundaries11/ordinary41/storage15/first-viewport7/actual H05
+source25/keyboard5/types2/admission7 PASS at dirty BASE6d0c0e6. Do not relabel the
+pre-commit receipt as a clean post-commit build.
+
+Task4's actual pending local Draft remains unapplied, unexported and locally
+preserved; actual v1 Save/export/read retains its JSON. Actual current H05 uses
+separate IDE-connected captures and ordinary current Prepare with fresh source
+identity, not the prior saved v1. Source/input coexistence and exact whole-file
+versus canonical-component parent domains are verified. No matching hash is an
+execution, full-build or fix attestation. Nested/root future versions still refuse;
+Reader/Library now explain that a compatible export is required, with old output
+cleared and exact originals unchanged.
+
+Native keyboard exposed a .30 Save-focus defect, then .31's false Tab boundary
+inside closed details. Targeted REDs and .32 fixes retain deliberate Cancel focus,
+keep forward/reverse Tab in the modal, preserve reviewed bytes and return focus on
+Escape. No automatic download/retry. Initial pre-open timeout cause remains
+unisolated; an omitted unit test-isolation option and a later Alt/Shift encoding
+mistake are harness failures, not hidden product PASSes. Exact intermediate .30/
+.31 packages, logs, archived drivers and screenshots remain historical.
+
+Agent viewed actual .32 first390/440/zoom200 candidates against supplied Settings
+HTML/narrow19 foundations: shared13/12px Inter, neutral borders and controls,
+wrapped long text and vertical zoom scrolling. Two source actions, longer report
+prose and collapsed input details remain documented necessary extensions. No
+shared token/primitive changes; changelog updated. Screenshots are candidates,
+independent human optional. Source identity comparison retains old maps/Actions/
+F05 policy grading unchanged, explicitly listing runtime/capability/transport
+changes; no old majority/legacy/elapsed-expiry campaign was rerun or recredited.
+
+Original Task2 BASE04c9ac4 and Task3 BASEc5b4d83 remain recorded; their implementation
+acceptance and Task4 H01–H06 are now credited from actual checks. Next **U03.5 — ONE
+fresh whole-U03 review**, regrade every finding/decline, one tested Critical/Important
+fix pass, ledger Minor without a re-review loop. Whole U03, P04 H07–H09, C07,
+mandatory A05/L02 and release are still open. No SDK/push/publication/other repo.

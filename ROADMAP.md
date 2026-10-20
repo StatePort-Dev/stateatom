@@ -184,9 +184,13 @@ browser refresh. U03.2c.3c.2 now supplies normal current reporter capture/consen
 review/save on .29: full1597/focused548/native33/first-viewport7/ordinary41/
 storage15/types2/admission7. Actual Live/Draft native/response outcomes keep exact
 source ownership and separate original/later observations; default-off input
-privacy governs exact saved files. Next U03.4 reconciles H01–H06 on current
-bindings and runs remaining targeted checks before one whole-U03 review.
-Task2/3/whole U03, P04/C07 and mandatory A05/L02 remain open. Historical evidence
+privacy governs exact saved files. U03.4 now reconciles original Task2/3 and
+H01–H06 on .32: full1603/focused571/current33/boundaries11/ordinary41/storage15/
+first-viewport7/actual-source25/keyboard5/types2/admission7. Unknown-profile refusals
+are readable; Save focus and Tab traversal through collapsed details are fixed.
+[Acceptance](docs/completion/25-u03-h01-h06-acceptance.md) binds actual evidence and
+preserves failed/intermediate runs. Next ONE whole-U03 Task5 review/regrading/tested
+fix pass. Whole U03, P04/C07 and mandatory A05/L02 remain open. Historical evidence
 below stays under its own identity; independent human review is optional, candidate
 screenshots are not human visual approval. No SDK, publication or another repository.
 

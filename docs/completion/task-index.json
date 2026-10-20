@@ -808,7 +808,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.4",
+      "active_slice": "U03.5",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -1223,20 +1223,42 @@
           "whole_U03_review": false,
           "verification": ".artifacts/u03/input-reporter/verification29.json",
           "record": "24-u03-handoff-progress.md"
+        },
+        {
+          "id": "U03.4",
+          "status": "complete-within-H01-H06-acceptance-pending-whole-review",
+          "candidate": "0.1.0-candidate.20261020.32",
+          "checks": {
+            "full": 1603,
+            "focused": 571,
+            "current": 33,
+            "actualFamilyModeReports": 8,
+            "boundaries": 11,
+            "ordinary": 41,
+            "storage": 15,
+            "visual": 7,
+            "source": 25,
+            "keyboard": 5
+          },
+          "full_H01_H06": true,
+          "whole_U03_review": false,
+          "evidence_scope": "Original Task2/3 and H01-H06 reconciled from exact current source, real paired native creation/read/storage/source comparison and keyboard checks; snapshot-only without P04. Historical .30/.31 keyboard failures and .32 harness modifier error retained; no evidence threshold relaxed.",
+          "verification": ".artifacts/u03/final-acceptance/verification32.json",
+          "record": "25-u03-h01-h06-acceptance.md"
         }
       ],
       "current_candidate": {
-        "version": "0.1.0-candidate.20261020.29",
-        "handoff": ".artifacts/atom/2026-10-20T19-24-00-849Z/atom-handoff.json",
-        "sha256": "77a9f63d4a1cf4fd8b25d550c0c9469395695a7b4801d67dec064cd98456a97c",
-        "verification": ".artifacts/u03/input-reporter/verification29.json",
-        "boundary": "Normal current and saved-source preparation, explicit local input review/Save/download/read/notes; actual original/later observations and native ACK/response delivery stay distinct and untrusted. Full H01-H06 reconciliation and whole-U03 review remain open.",
+        "version": "0.1.0-candidate.20261020.32",
+        "handoff": ".artifacts/atom/2026-10-20T20-24-24-552Z/atom-handoff.json",
+        "sha256": "003d8534917949a941cf30ead41d2d7b4c16d4209a7f28cd063c7a8f35b3c788",
+        "verification": ".artifacts/u03/final-acceptance/verification32.json",
+        "boundary": "H01-H06 automatic/source/native acceptance only. ONE whole-U03 review/regrading/tested fix pass remains. Source/build matching remains untrusted non-causal content evidence; snapshot-only before P04.",
         "historical_acquisition_qualification": ".artifacts/u03/input-report/native25-app-probe-qualification.json"
       },
       "remaining_acceptance": [
-        "full H01-H06 reconciliation on current bindings and remaining targeted checks",
-        "one fresh whole-U03 review and tested Critical/Important fix pass"
-      ]
+        "one fresh whole-U03 review, regrade all findings/declines and tested Critical/Important fix pass"
+      ],
+      "acceptance_record": "25-u03-h01-h06-acceptance.md"
     },
     {
       "id": "U04",
@@ -2021,26 +2043,27 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "U03.2c.3c.2",
-      "status": "complete-within-normal-current-input-reporter-boundary",
-      "candidate": "0.1.0-candidate.20261020.29",
+      "id": "U03.4",
+      "status": "complete-within-H01-H06-acceptance-pending-whole-review",
+      "candidate": "0.1.0-candidate.20261020.32",
       "checks": {
-        "full_source": 1597,
-        "focused": 548,
-        "native_current_reporter": 33,
-        "native_first_viewport": 7,
-        "native_ordinary": 41,
-        "native_storage": 15,
-        "packed_types": 2,
-        "package_admission": 7
+        "full": 1603,
+        "focused": 571,
+        "current": 33,
+        "actualFamilyModeReports": 8,
+        "boundaries": 11,
+        "ordinary": 41,
+        "storage": 15,
+        "visual": 7,
+        "source": 25,
+        "keyboard": 5
       },
-      "normal_reporter_outcome_UI": true,
-      "actual_saved_U02_outcomes": true,
-      "evidence_scope": "Actual Live/Draft native/response field changes, exact current owner/source, explicit default-off privacy and reviewed Save/download/restart/clean recipient in both packed hosts. Not all U02 catalogue reacquisition, H05/source execution, P04 or full U03.",
+      "full_H01_H06": true,
       "whole_U03_review": false,
-      "verification": ".artifacts/u03/input-reporter/verification29.json",
-      "record": "24-u03-handoff-progress.md",
-      "next_item": "U03.4"
+      "evidence_scope": "Original Task2/3 and H01-H06 reconciled from exact current source, real paired native creation/read/storage/source comparison and keyboard checks; snapshot-only without P04. Historical .30/.31 keyboard failures and .32 harness modifier error retained; no evidence threshold relaxed.",
+      "verification": ".artifacts/u03/final-acceptance/verification32.json",
+      "record": "25-u03-h01-h06-acceptance.md",
+      "next_item": "U03.5"
     },
     "next_item": "U03",
     "new_full_task_acceptances": [
@@ -2455,10 +2478,32 @@
         "verification": ".artifacts/u03/input-passive/verification26.json",
         "record": "24-u03-handoff-progress.md",
         "next_item": "U03.2c.3c.2"
+      },
+      {
+        "id": "U03.2c.3c.2",
+        "status": "complete-within-normal-current-input-reporter-boundary",
+        "candidate": "0.1.0-candidate.20261020.29",
+        "checks": {
+          "full_source": 1597,
+          "focused": 548,
+          "native_current_reporter": 33,
+          "native_first_viewport": 7,
+          "native_ordinary": 41,
+          "native_storage": 15,
+          "packed_types": 2,
+          "package_admission": 7
+        },
+        "normal_reporter_outcome_UI": true,
+        "actual_saved_U02_outcomes": true,
+        "evidence_scope": "Actual Live/Draft native/response field changes, exact current owner/source, explicit default-off privacy and reviewed Save/download/restart/clean recipient in both packed hosts. Not all U02 catalogue reacquisition, H05/source execution, P04 or full U03.",
+        "whole_U03_review": false,
+        "verification": ".artifacts/u03/input-reporter/verification29.json",
+        "record": "24-u03-handoff-progress.md",
+        "next_item": "U03.4"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "U03.2c.3c.2 normal current reporter on .29: full1597/focused548/native33/first-viewport7/ordinary41/storage15/types2/admission7. Actual Live/Draft native/response outcomes with fresh owner-bound source, input privacy default-off/per-field omit, exact Save/download/restart and clean recipient. Original selected time shown; capture waits for pending editor close. Intermediate27/28 and all failures retained. NextU03.4 exact H01-H06 reconciliation/remaining focused checks before one whole-U03 Task5 review; P04/C07/A05/L02 remain open.",
+    "current_activity_note": "U03.4 H01-H06 on .32: full1603/focused571/current33/boundaries11/ordinary41/storage15/first-viewport7/source25/keyboard5/types2/admission7, exact aggregate twice PASS. Readable unknown-profile refusals, pending Draft exclusion and real source comparison verified; Save-focus and collapsed-details Tab defects fixed with retained negatives. Original Task2/3 BASEs retained and acceptance credited. Next ONE whole-U03 Task5 review/finding regrading/tested fix pass. U03/P04/C07/A05/L02 and release remain open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "U03"

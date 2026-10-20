@@ -984,5 +984,10 @@ changes are captured under the same owner with fresh source identity, reviewed
 with default-off input categories/field omission, saved/downloaded exactly, then
 reopened after restart and read by a clean recipient. Original observation time
 is explicit; acquisition waits for an in-flight editor-close reply.
-Next U03.4 reconciles H01–H06 and remaining focused checks. Full U03/Task2/3/
-P04/C07/A05/L02 remain open; no whole-feature readiness follows from this document.
+U03.4 now credits original Task2/3 and H01–H06 on exact .32: full1603/focused571/
+current33/boundaries11/ordinary41/storage15/first-viewport7/source25/keyboard5/
+types2/admission7. It fixes demonstrated Save-focus and collapsed-details Tab
+failures plus readable unknown-profile refusals, with all original negative results
+retained. [Acceptance](completion/25-u03-h01-h06-acceptance.md) links actual results.
+Next ONE whole-U03 Task5 review/regrading/tested fix pass. U03/P04/C07/A05/L02
+remain open; this document alone does not establish feature or release readiness.

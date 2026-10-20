@@ -1,5 +1,35 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.32
+
+- Keep Tab and Shift+Tab inside the reporting dialog when optional details are
+  collapsed. Exclude their hidden descendants from the modal traversal boundary,
+  even when Chrome retains client rectangles for those descendants.
+- Preserve existing controls, focus rings, data and evidence semantics; no shared
+  token or primitive changes. Native results and screenshots remain scoped
+  automated evidence and visual candidates.
+
+## 0.1.0-candidate.20261020.31
+
+- Keep the keyboard position inside the report after confirmed Save disables its
+  focused button: move to Download only when that trigger lost focus. Preserve
+  deliberate focus on Cancel or another field, stale-token and closed-dialog
+  guards; no automatic download or retry.
+- Reuse the existing focus ring/controls without token or primitive changes.
+  Native keyboard traversal reached Download after Save, then exposed a separate
+  closed-details Tab-boundary issue addressed in .32.
+
+
+## 0.1.0-candidate.20261020.30
+
+- Explain unsupported nested input files in the reader and unsupported root/input
+  files in local import with a compatible-export message. Keep strict refusal,
+  output invalidation and exact stored originals; no schema is newly accepted.
+- Error wording extends the existing status area only; typography, tokens,
+  primitives and report layout stay unchanged. Actual refusal/narrow-view checks
+  and screenshot candidates retain their own verification scope.
+
+
 ## 0.1.0-candidate.20261020.29
 
 - Refuse current-report acquisition while the same view is still awaiting its

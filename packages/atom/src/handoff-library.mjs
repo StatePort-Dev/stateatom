@@ -15,7 +15,7 @@ export function createHandoffLibrary({$,document,rpc,onContext,openReport,openLe
  function current(token){return !disposed&&work===token&&!token.signal.aborted;}
  async function run(operation){
   if(disposed)return;work?.abort();const token=new AbortController();work=token;render();
-  try{await operation(token);}catch(e){if(current(token))status(e.code==='HANDOFF_ID_CONFLICT'?'Report ID conflict: different bytes. Existing file preserved.':e.message);}
+  try{await operation(token);}catch(e){if(current(token))status(e.code==='HANDOFF_ID_CONFLICT'?'Report ID conflict: different bytes. Existing file preserved.':['UNSUPPORTED_INPUT_EVIDENCE','UNSUPPORTED_HANDOFF_FORMAT'].includes(e.code)?'This format is not supported. Ask for a compatible export or use a matching Atom reader.':e.message);}
   finally{if(work===token){work=null;render();}}
  }
  async function refresh(prefer,signal){
