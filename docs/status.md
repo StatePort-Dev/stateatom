@@ -1008,5 +1008,9 @@ count CSS-selector UI remain explicit under the original count-overlay limit.
 [Execution](completion/27-a01-ordinary-react-progress.md) retains all failed probes.
 This is marker/value correspondence with final host commit Unknown/Unsupported,
 fullPath false; no private18.3.1 or closed-proof result is extended to React19.
-Next A01.2 equal-output two-instance/read controls; full A01/whole review, P04/C07,
-mandatory A05/L02 and release gates remain open.
+A01.2 now passes10 actual equal-instance controls in both unchanged .33 hosts:
+different backend/marker/target/read identities for equal values, real same-value/
+different-value first-row edits, and unchanged second-row read IDs/event clock on
+reinspection with a later inspection timestamp. Old source/snapshot/saved bytes
+remain unchanged; no engine/package change. Next A01.3 grammar/semantic/version
+reconciliation; full A01/whole review, P04/C07, mandatory A05/L02 and release stay open.

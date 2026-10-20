@@ -4,7 +4,8 @@ A01 is in progress. U03 was completed separately on .33/c32722d; its public JSON
 and paired native evidence do not establish new React source/read capabilities.
 The original A01 criteria in05-analysis-and-actions.md remain unchanged.
 
-Active bounded increment: A01.1 actual source-edit/HMR acceptance.
+First bounded increment: A01.1 actual source-edit/HMR acceptance;
+current A01.2 completion and next A01.3 are recorded below.
 Plan: ../superpowers/plans/2026-10-21-a01-ordinary-react-hmr.md.
 Registered questions: ../testing/ordinary-react.md, OR01–OR05. No resolver changes
 were made before registration. Existing direct/destructured text, boolean,
@@ -133,3 +134,73 @@ this does not inherit the private18.3.1 adapter or closed first-read proof. Pare
 A01's full grammar, equal-value/instance controls, semantics and whole review stay
 open. Next bounded **A01.2 — equal-output two-instance/read controls**, registered
 before changing a resolver. No SDK/publication/other repository/P04/A05/L02 claim.
+
+## A01.2 registered equal-output instance controls — work in progress
+
+Plan: ../superpowers/plans/2026-10-21-a01-equal-instance-controls.md;
+OR09a–OR09d were registered before resolver changes. The existing native driver
+has a separate --instances-only mode/output/schema. It uses two equal titles,
+actual double-click/edit/Enter, changed first title and unchanged second reinspection.
+Original/copied business sources remain unchanged; no runtime change yet.
+
+Retained attempts:
+
+- .artifacts/a01/ordinary-instances-native/2026-10-20T21-24-59-097Z/results.json:
+  FAIL2, test compared an existing backend identity with a separately queried
+  frontend ID. No instance counterexample acceptance follows.
+- .artifacts/a01/ordinary-instances-native/2026-10-20T21-27-43-571Z/results.json:
+  FAIL2, that backend value was incorrectly passed as nodeId to describeNode.
+- .artifacts/a01/ordinary-instances-native/2026-10-20T21-30-27-290Z/results.json:
+  FAIL2 during setup, frame0 removed during the initial reload/input transition.
+
+The actual identity domain is explicit in browser-extension/picker.mjs:85:
+cdp: labels hold backend node/document IDs. The harness now describes backendNodeId
+and compares against a separate native CSS search/backend identity plus the actual
+row's data-stateatom marker; no product identity contract changes. It also waits
+for a genuinely new Page loaderId and a ready document before initial input, so
+an old ready frame cannot satisfy a reload precondition. Read-only readiness may
+wait through a frame gap; sent user actions are not automatically repeated.
+The next unique run is pending. None of these setup failures is treated as a
+product failure or supported equal-instance result.
+
+## A01.2 final — independent equal-output instance controls
+
+.artifacts/a01/ordinary-instances-native/2026-10-20T21-32-28-949Z/results.json:
+10 PASS in both exact .33 hosts. Aggregate
+.artifacts/a01/equal-instances/verification.json twicePASS, binding current source/
+harness/archives/consumer/entire hosts, all sixteen selected observation files,
+actual native backend identity/source/read closure/timestamps/editor audits, four
+ordinary native UI edits, copied/original source manifests, old saved bytes and
+all three failed archived drivers. No engine, runtime, business source, package
+or existing acceptance threshold changed; no repack/old finite campaign repeat.
+
+With two Equal Cedar labels, backend nodes/actual data-stateatom markers, target
+scopes/IDs and reachable title read/destructure IDs differ. A real same-value
+first-row edit creates a new first target event. A different-value first edit
+shows Changed Cedar while the second stays Equal Cedar. Before reinspection, the
+old selected snapshot remains explicitly Not live and the saved v1 bytes stay
+unchanged. In both actual runs the second row retained its original event651
+through the first-row edits. Reinspection keeps that target/read ID and event
+clock, advancing only inspection time. This is this recorded application's
+behavior, not a blanket React.memo scheduling guarantee.
+
+The first ID checks were a harness domain error, not a product identity race:
+picker.mjs:85 already returns backend document/node IDs. Correct native backend
+lookup/search and actual row marker now independently match the selected record;
+frontend nodeId handles are not compared across that domain. The third setup
+failure observed frame0 removal after an old ready document satisfied an initial
+reload check. New loaderId plus ready-document gating fixed that precondition;
+read-only readiness may wait, dispatched app actions are not replayed. All three
+raw results stay FAIL and are not counted as a successful instance control.
+
+Run inputs are dirty at BASE3d0ebf8; actual VS Code host completion is trusted/PASS
+1.142.0 in both cases. The old A01.1 source-edit14 remains valid at its archived
+driver/current unchanged engine and server inputs. Its frozen verifier is not run
+against the extended --instances-only/readiness driver. The new aggregate records
+this distinction rather than relabelling history as a fresh source-edit run.
+
+Parent A01 is still in progress: default React19 source/read fragments use marker/
+value correspondence, final committed-host binding Unknown/Unsupported, fullPath
+false. Next bounded A01.3 — remaining grammar/semantic/version reconciliation
+for boolean/form/skipped/wrapper/prop controls and the supported workflow; ONE
+whole-A01 review follows its complete matrix. P04/C07/A05/L02/release stay open.

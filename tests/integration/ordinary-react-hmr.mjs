@@ -11,9 +11,10 @@ import {startNativeBrowser,nativeApproveDevelopment} from '../../scripts/native-
 import {startIDE,rpc,waitFor} from '../../scripts/harness.mjs';
 import {sha256,fileManifest,verifyArtifactHashes,inspectInstalledPair} from '../../scripts/atom-package-receipt.mjs';
 
+const instancesOnly=process.argv.includes('--instances-only');
 const hf=process.argv.find(s=>s.endsWith('atom-handoff.json'))||'.artifacts/atom/atom-handoff.json';
 const h=JSON.parse(await readFile(hf));
-const out='.artifacts/a01/ordinary-hmr-native/'+new Date().toISOString().replace(/[:.]/g,'-');
+const out='.artifacts/a01/'+(instancesOnly?'ordinary-instances-native':'ordinary-hmr-native')+'/' +new Date().toISOString().replace(/[:.]/g,'-');
 await mkdir(out,{recursive:true});await writeFile(out+'/driver.mjs',await readFile(new URL(import.meta.url)));
 const sourceBase='.runtime/todomvc',appRelative='examples/react',appBase=sourceBase+'/'+appRelative;
 const entries=['license.md',appRelative+'/src',appRelative+'/public',appRelative+'/package.json',appRelative+'/package-lock.json'];
@@ -21,13 +22,13 @@ const footer='src/todo/components/footer.jsx';
 const inputEntries=['src/engine','core/analyzer.mjs','core/runtime-state.mjs','core/bridge.mjs','ide-extension/session.mjs','ide-extension/extension.mjs','dist/ide/extension.cjs','scripts/native-browser.mjs','scripts/harness.mjs','scripts/short-loop-inputs.mjs','tests/ide-host.cjs','tests/integration/ordinary-react-hmr.mjs','tests/helpers/ordinary-react-server.mjs'];
 const inputs=async()=>({...await fileDigests(root,inputEntries),...Object.fromEntries(await Promise.all(Object.keys({...h.sourceManifest,...h.buildSources.manifest}).map(async f=>[f,sha256(await readFile(f))])))});
 const result={
- schema:'stateatom.ordinary-react-hmr-native/1',status:'RUNNING',startedAt:new Date().toISOString(),
+ schema:instancesOnly?'stateatom.ordinary-react-instances-native/1':'stateatom.ordinary-react-hmr-native/1',status:'RUNNING',startedAt:new Date().toISOString(),
  revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceDirty:true,
  handoff:{file:hf,sha256:sha256(await readFile(hf)),package:h.package,ui:h.ui},
- configuration:{operator:'agent',browserPlugin:'Browser plugin unavailable; exact paired native MV3 hosts and existing Atom debugger ownership required',
+ configuration:{mode:instancesOnly?'equal-instances':'source-edits',operator:'agent',browserPlugin:'Browser plugin unavailable; exact paired native MV3 hosts and existing Atom debugger ownership required',
   source:'Read-only pinned extracted TodoMVC directory; edits only in an exclusive copied workspace including its locked dependencies',
   plugin:{enabled:true,sourceConsumption:true,reactHostProps:false,reactCommit:false,firstReadContracts:false},
-  appTargetSession:false,probes:'Explicit chrome.scripting MAIN/ISOLATED, native app Input and Network.getResponseBody through the existing Atom debugger. No app-page facade or parallel app-target CDP.',
+  appTargetSession:false,probes:'Explicit chrome.scripting MAIN/ISOLATED, native app Input, DOM metadata/search (without harness DOM.getDocument) and Network.getResponseBody through the existing Atom debugger. No app-page facade or parallel app-target CDP.',
   IDE:'Real VS Code Extension Host, explicit copied project root and native source-open audit',model:false,
   limits:'Ordinary source/read fragments and source-version freshness only. No React19 final-host-props witness, full HTTP path, no-all-traffic assertion or human acceptance.'},
  checks:[],errors:[],cases:[],inputsBefore:await inputs()
@@ -72,7 +73,7 @@ async function appProbe(){return panel.evaluate(async id=>(await chrome.scriptin
  completed:[...document.querySelectorAll('.todo-list .toggle')].map(e=>e.checked),
  ready:!!document.querySelector('.new-todo'),observer:typeof window.__STATEATOM__?.snapshot==='function'
 })}))[0].result,tabId);}
-async function appClick(selector){
+async function appClick(selector,clickCount=1){
  const point=await waitFor(()=>panel.evaluate(async({id,selector})=>{
   await chrome.tabs.update(id,{active:true});
   const replies=await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:async s=>{
@@ -87,12 +88,58 @@ async function appClick(selector){
   const r=replies[0]?.result;return r&&Number.isFinite(r.x)&&Number.isFinite(r.y)?r:null;
  },{id:tabId,selector}));
  (result.appNativePoints??=[]).push(point);
- await panel.evaluate(async({id,point})=>{for(const type of ['mouseMoved','mousePressed','mouseReleased'])await chrome.debugger.sendCommand({tabId:id},'Input.dispatchMouseEvent',{type,x:point.x,y:point.y,...(type==='mouseMoved'?{}:{button:'left',clickCount:1})});},{id:tabId,point});
+ await panel.evaluate(async({id,point,clickCount})=>{await chrome.debugger.sendCommand({tabId:id},'Input.dispatchMouseEvent',{type:'mouseMoved',x:point.x,y:point.y});for(let count=1;count<=clickCount;count++)for(const type of ['mousePressed','mouseReleased'])await chrome.debugger.sendCommand({tabId:id},'Input.dispatchMouseEvent',{type,x:point.x,y:point.y,button:'left',clickCount:count});},{id:tabId,point,clickCount});
 }
 async function addTodo(title){
+ const {count:previousCount}=await waitFor(async()=>{const p=await appProbe();return p.ready?{count:p.titles.length}:null;});
  await appClick('.new-todo');
  await panel.evaluate(async({id,title})=>{await chrome.debugger.sendCommand({tabId:id},'Input.insertText',{text:title});for(const type of ['keyDown','keyUp'])await chrome.debugger.sendCommand({tabId:id},'Input.dispatchKeyEvent',{type,key:'Enter',code:'Enter',windowsVirtualKeyCode:13});},{id:tabId,title});
- await waitFor(async()=>(await appProbe()).titles.includes(title));
+ await waitFor(async()=>{const p=await appProbe();return p.titles.length===previousCount+1&&p.titles.at(-1)===title;});
+}
+async function editTitle(row,value){
+ const prefix='.todo-list li:nth-child('+row+')';await appClick(prefix+' label',2);
+ await waitFor(()=>panel.evaluate(async({id,selector})=>(await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:s=>{const e=document.querySelector(s);return !!e&&e.getBoundingClientRect().width>0;},args:[selector]}))[0]?.result,{id:tabId,selector:prefix+' input.edit'}));
+ await appClick(prefix+' input.edit');
+ await panel.evaluate(async({id,value})=>{
+  for(const type of ['keyDown','keyUp'])await chrome.debugger.sendCommand({tabId:id},'Input.dispatchKeyEvent',{type,key:'a',code:'KeyA',windowsVirtualKeyCode:65,modifiers:type==='keyDown'?2:0});
+  await chrome.debugger.sendCommand({tabId:id},'Input.insertText',{text:value});
+  for(const type of ['keyDown','keyUp'])await chrome.debugger.sendCommand({tabId:id},'Input.dispatchKeyEvent',{type,key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+ },{id:tabId,value});
+ await waitFor(async()=>(await appProbe()).titles[row-1]===value&&await panel.evaluate(async({id,selector})=>(await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:s=>!document.querySelector(s),args:[selector]}))[0]?.result,{id:tabId,selector:prefix+' input.edit'}));
+}
+async function rowDOM(row,selection){
+ return panel.evaluate(async({id,selector,identity})=>{
+  const inspected=await chrome.debugger.sendCommand({tabId:id},'DOM.describeNode',{backendNodeId:Number(identity.node.slice(4))});
+  const document=await chrome.debugger.sendCommand({tabId:id},'DOM.describeNode',{backendNodeId:Number(identity.document.slice(4))});
+  const{searchId,resultCount}=await chrome.debugger.sendCommand({tabId:id},'DOM.performSearch',{query:selector,includeUserAgentShadowDOM:false});
+  try{
+   if(resultCount!==1)throw Error('Native row selector does not identify exactly one element: '+resultCount);
+   const{nodeIds}=await chrome.debugger.sendCommand({tabId:id},'DOM.getSearchResults',{searchId,fromIndex:0,toIndex:1});
+   const{node}=await chrome.debugger.sendCommand({tabId:id},'DOM.describeNode',{nodeId:nodeIds[0]});
+   const attributes={};for(let i=0;i<(node.attributes||[]).length;i+=2)attributes[node.attributes[i]]=node.attributes[i+1];
+   const{frameTree}=await chrome.debugger.sendCommand({tabId:id},'Page.getFrameTree');
+   if((frameTree.childFrames||[]).length)throw Error('This registered instance control requires the original single-frame app');
+   return{recordedIdentity:identity,inspectedBackendNodeId:inspected.node.backendNodeId,backendNodeId:node.backendNodeId,queriedFrontendNodeId:node.nodeId,documentBackendNodeId:document.node.backendNodeId,frame:frameTree.frame.id,attributes};
+  }finally{await chrome.debugger.sendCommand({tabId:id},'DOM.discardSearchResults',{searchId});}
+ },{id:tabId,selector:'.todo-list li:nth-child('+row+') label',identity:selection.domIdentity});
+}
+async function inspectTitle(label,row,expected){
+ await choose('property','text');const before=(await rpc(panel,{op:'state',tabId})).selection?.observedAt,appBefore=await appProbe();
+ await action('pick');await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).picker?.status==='picking');await appClick('.todo-list li:nth-child('+row+') label');
+ const state=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});return s.picker?.status==='selected'&&s.selection?.observedAt!==before&&s.analysis?s:null;});
+ const dom=await rowDOM(row,state.selection),runtime=state.analysis.stateatom?.runtime;result.lastTitleAttempt={label,row,selection:state.selection,dom};
+ assert.equal(state.selection.value,expected);assert.equal(state.selection.tag,'label');assert.equal(dom.inspectedBackendNodeId,dom.backendNodeId);assert.equal(state.selection.frame,0);
+ assert.equal(state.selection.instance,dom.attributes['data-stateatom']);assert.equal(state.selection.instance,runtime.target.scope+':'+runtime.target.target);
+ assert.equal(runtime.status,'Observed');assert.equal(runtime.target.value,expected);assert.equal(runtime.fullPath,false);assert.equal(runtime.commit.status,'Unknown/Unsupported');
+ const sources=state.analysis.sources.filter(x=>x.file.endsWith('src/todo/components/item.jsx'));assert.equal(sources.length,1);const source=sources[0],digest=sha256(await readFile(result.currentWorkspace+'/src/todo/components/item.jsx'));
+ assert.equal(source.sourceDigest,digest);assert.equal(runtime.target.sourceDigest,digest);
+ const reads=runtime.nodes.filter(n=>n.expression==='title'&&n.kind!=='target');assert(reads.some(n=>n.kind==='read'));assert(reads.some(n=>n.kind==='destructure'));
+ const byId=new Map(runtime.nodes.map(n=>[n.id,n])),reachable=new Set(),pending=[runtime.target.id];while(pending.length){const id=pending.pop();if(reachable.has(id))continue;reachable.add(id);pending.push(...byId.get(id)?.deps||[]);}
+ assert(reads.every(n=>n.value===expected&&n.page===state.selection.page&&n.sourceDigest===digest&&n.scope===runtime.target.scope&&reachable.has(n.id)));
+ const ui=await waitFor(()=>panel.evaluate(expected=>{const value={status:document.querySelector('[data-atom-id="status"]').textContent,expressions:document.querySelector('[data-atom-id="expressions"]').textContent,operands:document.querySelector('[data-atom-id="operands"]').textContent,freshness:document.querySelector('[data-atom-id="freshness"]').textContent};return value.status==='OK'&&value.expressions.includes('title')&&value.operands.includes(JSON.stringify(expected))?value:null;},expected));
+ assert.deepEqual(await appProbe(),appBefore);
+ const record={label,row,selectionMethod:'Real native U05 picker',dom,selection:state.selection,source,runtime,reads,ui,run:state.run},file=out+'/'+label+'-observation.json';
+ await writeFile(file,JSON.stringify(record,null,2));return{...record,file,sha256:sha256(await readFile(file))};
 }
 async function launch(kind,name){
  browser=await startNativeBrowser(out+'/profiles',name,true,false,[],{extensionPath:h.hosts[kind]});
@@ -139,6 +186,15 @@ async function startOwnedIDE(workspace){
 async function pair(){
  for(const[id,value]of [['bridge',ide.conn.url],['origin',origin],['source-root','src'],['token',ide.conn.token]])await fill(id,value);
  await action('pair');await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).connection.source?.url===ide.conn.url);await fill('token','');
+}
+async function reloadApp(){
+ const before=await panel.evaluate(async id=>(await chrome.debugger.sendCommand({tabId:id},'Page.getFrameTree')).frameTree.frame,tabId);
+ await panel.evaluate(id=>chrome.debugger.sendCommand({tabId:id},'Page.reload',{ignoreCache:true}),tabId);
+ const after=await waitFor(async()=>{
+  const frame=await panel.evaluate(async id=>(await chrome.debugger.sendCommand({tabId:id},'Page.getFrameTree')).frameTree.frame,tabId);
+  return frame.loaderId!==before.loaderId&&frame.url.startsWith(origin)&&(await appProbe()).ready?frame:null;
+ });
+ (result.reloads??=[]).push({before:{frame:before.id,loader:before.loaderId},after:{frame:after.id,loader:after.loaderId,url:after.url},ready:true});
 }
 async function observeServed(){
  await panel.evaluate(id=>{
@@ -218,11 +274,36 @@ try{
  for(const kind of ['standalone','embedding']){
   const workspace=await copyWorkspace(kind),entry={kind,workspace,observations:[],sourceVersions:[]};result.cases.push(entry);
   const original=await readFile(workspace.dir+'/'+footer,'utf8');entry.sourceVersions.push({stage:'original',sha256:sha256(original)});
+  if(instancesOnly){
+   result.currentWorkspace=workspace.dir;
+   await startServer(workspace.dir,false);await launch(kind,kind+'-instances-off');
+   await addTodo('Equal Cedar');await addTodo('Equal Cedar');entry.off={initial:await appProbe()};await editTitle(1,'Equal Cedar');entry.off.same=await appProbe();await editTitle(1,'Changed Cedar');entry.off.changed=await appProbe();await closeBrowser();await stopServer();
+   await startServer(workspace.dir,true);ide=await startOwnedIDE(workspace.dir);await launch(kind,kind+'-instances-on');await pair();
+   await reloadApp();await addTodo('Equal Cedar');await addTodo('Equal Cedar');
+   await check(kind+' equal-output native picks retain distinct DOM/instance/target/read identities',async()=>{
+    const before=await appProbe();assert.deepEqual({...before,observer:false},entry.off.initial);const first=await inspectTitle(kind+'-equal-first',1,'Equal Cedar');first.ide=await openSource(first,workspace.dir);entry.first=first;entry.saved=await saveOriginal(kind+'-instances');
+    const second=await inspectTitle(kind+'-equal-second',2,'Equal Cedar');entry.second=second;assert.notEqual(first.dom.backendNodeId,second.dom.backendNodeId);assert.notEqual(first.selection.instance,second.selection.instance);assert.notEqual(first.runtime.target.scope,second.runtime.target.scope);assert.notEqual(first.runtime.target.id,second.runtime.target.id);assert.equal(first.source.sourceDigest,second.source.sourceDigest);assert.equal(first.selection.page,second.selection.page);assert(first.reads.every(n=>!second.reads.some(m=>m.id===n.id)));
+   });
+   await check(kind+' actual same-value first-row edit preserves per-instance source reads without a value join',async()=>{
+    await editTitle(1,'Equal Cedar');assert.deepEqual({...await appProbe(),observer:false},entry.off.same);const first=await inspectTitle(kind+'-same-first',1,'Equal Cedar'),second=await inspectTitle(kind+'-same-second',2,'Equal Cedar');entry.same={first,second,secondEventChanged:second.runtime.target.id!==entry.second.runtime.target.id};assert.notEqual(first.runtime.target.id,entry.first.runtime.target.id);assert.notEqual(first.selection.instance,second.selection.instance);assert(first.reads.every(n=>!second.reads.some(m=>m.id===n.id)));entry.beforeDifferent=await inspectTitle(kind+'-before-different',1,'Equal Cedar');
+   });
+   await check(kind+' changed first title stays separate from the old second value and old inspector/save',async()=>{
+    await editTitle(1,'Changed Cedar');assert.deepEqual({...await appProbe(),observer:false},entry.off.changed);
+    const previous=await rpc(panel,{op:'state',tabId}),freshness=await panel.evaluate(()=>document.querySelector('[data-atom-id="freshness"]').textContent);entry.oldSnapshot={selection:previous.selection,stale:previous.stale,freshness};
+    if(previous.selection){assert.equal(previous.selection.value,'Equal Cedar');assert.equal(previous.selection.observedAt,entry.beforeDifferent.selection.observedAt);assert(freshness.includes('Not live'));}else{assert.equal(previous.stale?.target?.value,'Equal Cedar');assert(freshness.startsWith('Stale'));}
+    const first=await inspectTitle(kind+'-changed-first',1,'Changed Cedar');first.ide=await openSource(first,workspace.dir);const second=await inspectTitle(kind+'-unchanged-second',2,'Equal Cedar');entry.changed={first,second};assert.notEqual(first.runtime.target.scope,second.runtime.target.scope);assert(first.reads.every(n=>!second.reads.some(m=>m.id===n.id)));
+    const saved=await rpc(panel,{op:'open-handoff',id:entry.saved.id});assert.equal(saved.raw,entry.saved.raw);assert.equal(sha256(await readFile(entry.saved.file)),entry.saved.sha256);
+   });
+   await check(kind+' reinspection without app changes retains actual read IDs/time rather than inventing an execution',async()=>{
+    const again=await inspectTitle(kind+'-second-reinspect',2,'Equal Cedar');entry.secondReinspect=again;const prior=entry.changed.second;assert.equal(again.runtime.target.id,prior.runtime.target.id);assert.equal(again.runtime.target.at,prior.runtime.target.at);assert.deepEqual(again.reads.map(n=>[n.id,n.at]),prior.reads.map(n=>[n.id,n.at]));assert(again.selection.observedAt>prior.selection.observedAt);assert.equal(again.dom.backendNodeId,prior.dom.backendNodeId);assert.equal((await rpc(panel,{op:'open-handoff',id:entry.saved.id})).raw,entry.saved.raw);
+   });
+   entry.finalManifest=await fileDigests(workspace.dir,['src','public','package.json','package-lock.json','license.md']);assert.deepEqual(entry.finalManifest,workspace.initialManifest);await panel.screenshot({path:out+'/'+kind+'-equal-instances-candidate.png'});delete entry.saved.raw;await closeBrowser();await stopServer();await ide.close(true);ide=null;assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);continue;
+  }
   await startServer(workspace.dir,false);await launch(kind,kind+'-off');
   await addTodo('Alpha ordinary');await addTodo('Beta ordinary');await appClick('.todo-list .toggle');await waitFor(async()=>(await appProbe()).count==='1 item left!');
   entry.baseline=await appProbe();assert.equal(entry.baseline.observer,false);await closeBrowser();await stopServer();
   await startServer(workspace.dir,true);ide=await startOwnedIDE(workspace.dir);await launch(kind,kind+'-on');await pair();await observeServed();
-  await panel.evaluate(id=>chrome.debugger.sendCommand({tabId:id},'Page.reload',{ignoreCache:true}),tabId);await waitFor(async()=>(await appProbe()).ready);
+  await reloadApp();
   await addTodo('Alpha ordinary');await addTodo('Beta ordinary');await appClick('.todo-list .toggle');await waitFor(async()=>(await appProbe()).count==='1 item left!');
   await check(kind+' ordinary observer-off/on application outputs agree before any source edit',async()=>{entry.initialApp=await appProbe();assert.deepEqual({...entry.initialApp,observer:false},entry.baseline);assert.equal(entry.initialApp.observer,true);});
   await check(kind+' actual native picker selects visible independent task title and preserves the app state',async()=>{
@@ -264,7 +345,7 @@ try{
   await closeBrowser();await stopServer();await ide.close(true);ide=null;
   assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);
  }
- result.status='PASS_ORDINARY_REACT_SOURCE_EDIT_ONLY';
+ result.status=instancesOnly?'PASS_ORDINARY_REACT_EQUAL_INSTANCES_ONLY':'PASS_ORDINARY_REACT_SOURCE_EDIT_ONLY';
 }catch(e){result.status='FAIL';result.error=String(e.stack||e);process.exitCode=1;console.error(e);await panel?.screenshot({path:out+'/failure-candidate.png'}).catch(()=>{});}
 finally{
  await closeBrowser().catch(e=>result.errors.push({cleanup:'browser',message:e.message}));await stopServer().catch(e=>result.errors.push({cleanup:'server',message:e.message}));

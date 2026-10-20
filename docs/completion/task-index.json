@@ -1449,7 +1449,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-21-a01-ordinary-react-hmr.md",
       "execution_record": "27-a01-ordinary-react-progress.md",
-      "active_slice": "A01.2",
+      "active_slice": "A01.3",
       "remaining_acceptance": [
         "registered ordinary source/read/occurrence matrix and real source-edit/HMR checks",
         "meaningful positive/counterexample and semantics controls with exact current evidence",
@@ -1474,14 +1474,36 @@
           "verification": ".artifacts/a01/source-edit/verification-final.json",
           "record": "27-a01-ordinary-react-progress.md",
           "evidence_scope": "Real source edits/same-output control/stale/new page-run/current source-read-IDE/old saved bytes on pinned independent React19.2.5, exact paired .33; title native picker and count CSS-selector UI explicit because original CSS occludes count. Marker/value correspondence only, final host commit Unknown/Unsupported/fullPath false."
+        },
+        {
+          "id": "A01.2",
+          "status": "complete-within-equal-instance-source-read-boundary",
+          "candidate_unchanged": "0.1.0-candidate.20261020.33",
+          "checks": {
+            "native_equal_instances": 10,
+            "paired_hosts": 2,
+            "selected_observations": 16,
+            "ordinary_UI_edits": 4
+          },
+          "product_code_changed": false,
+          "equal_output_instance_controls": true,
+          "react19_committed_host_binding": false,
+          "full_A01_acceptance": false,
+          "verification": ".artifacts/a01/equal-instances/verification.json",
+          "record": "27-a01-ordinary-react-progress.md",
+          "evidence_scope": "Actual native two equal titles, same-value/different-value first-row edits, exact backend-marker-target-read identities, independent second row event/time retained on reinspection, old snapshot/save unchanged. React19 marker/value correspondence only; committed-host binding unsupported/fullPath false."
         }
       ],
       "current_candidate": {
         "version": "0.1.0-candidate.20261020.33",
         "handoff": ".artifacts/atom/2026-10-20T20-41-35-056Z/atom-handoff.json",
-        "verification": ".artifacts/a01/source-edit/verification-final.json",
-        "boundary": "Real source edits/same-output control/stale/new page-run/current source-read-IDE/old saved bytes on pinned independent React19.2.5, exact paired .33; title native picker and count CSS-selector UI explicit because original CSS occludes count. Marker/value correspondence only, final host commit Unknown/Unsupported/fullPath false."
-      }
+        "verification": ".artifacts/a01/equal-instances/verification.json",
+        "boundary": "Actual native two equal titles, same-value/different-value first-row edits, exact backend-marker-target-read identities, independent second row event/time retained on reinspection, old snapshot/save unchanged. React19 marker/value correspondence only; committed-host binding unsupported/fullPath false."
+      },
+      "implementation_plans": [
+        "../superpowers/plans/2026-10-21-a01-ordinary-react-hmr.md",
+        "../superpowers/plans/2026-10-21-a01-equal-instance-controls.md"
+      ]
     },
     {
       "id": "A02",
@@ -2116,24 +2138,23 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "A01.1",
-      "status": "complete-within-ordinary-source-edit-boundary",
+      "id": "A01.2",
+      "status": "complete-within-equal-instance-source-read-boundary",
       "candidate_unchanged": "0.1.0-candidate.20261020.33",
       "checks": {
-        "native_source_edit": 14,
+        "native_equal_instances": 10,
         "paired_hosts": 2,
-        "source_versions": 3,
-        "selected_version_observations": 6,
-        "actual_owned_file_edits": 4
+        "selected_observations": 16,
+        "ordinary_UI_edits": 4
       },
       "product_code_changed": false,
-      "ordinary_source_read_fragments": true,
+      "equal_output_instance_controls": true,
       "react19_committed_host_binding": false,
       "full_A01_acceptance": false,
-      "verification": ".artifacts/a01/source-edit/verification-final.json",
+      "verification": ".artifacts/a01/equal-instances/verification.json",
       "record": "27-a01-ordinary-react-progress.md",
-      "evidence_scope": "Real source edits/same-output control/stale/new page-run/current source-read-IDE/old saved bytes on pinned independent React19.2.5, exact paired .33; title native picker and count CSS-selector UI explicit because original CSS occludes count. Marker/value correspondence only, final host commit Unknown/Unsupported/fullPath false.",
-      "next_item": "A01.2"
+      "evidence_scope": "Actual native two equal titles, same-value/different-value first-row edits, exact backend-marker-target-read identities, independent second row event/time retained on reinspection, old snapshot/save unchanged. React19 marker/value correspondence only; committed-host binding unsupported/fullPath false.",
+      "next_item": "A01.3"
     },
     "next_item": "A01",
     "new_full_task_acceptances": [
@@ -2624,10 +2645,30 @@
         "record": "26-u03-whole-review.md",
         "evidence_scope": "Original H01-H06 and one whole-review/tested Important fix pass complete in Linux isolated native Chrome paired hosts; snapshot-only without P04. Duplicate decoded public-v2 members reject; v1 interpretation/unique exact bytes/history preserved. Minor M1 direct minimal-codec argument race remains explicit; no normal-user UI leak established.",
         "next_item": "A01"
+      },
+      {
+        "id": "A01.1",
+        "status": "complete-within-ordinary-source-edit-boundary",
+        "candidate_unchanged": "0.1.0-candidate.20261020.33",
+        "checks": {
+          "native_source_edit": 14,
+          "paired_hosts": 2,
+          "source_versions": 3,
+          "selected_version_observations": 6,
+          "actual_owned_file_edits": 4
+        },
+        "product_code_changed": false,
+        "ordinary_source_read_fragments": true,
+        "react19_committed_host_binding": false,
+        "full_A01_acceptance": false,
+        "verification": ".artifacts/a01/source-edit/verification-final.json",
+        "record": "27-a01-ordinary-react-progress.md",
+        "evidence_scope": "Real source edits/same-output control/stale/new page-run/current source-read-IDE/old saved bytes on pinned independent React19.2.5, exact paired .33; title native picker and count CSS-selector UI explicit because original CSS occludes count. Marker/value correspondence only, final host commit Unknown/Unsupported/fullPath false.",
+        "next_item": "A01.2"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A01.1 actual ordinary source-edit boundary complete: native14 across both unchanged .33 hosts, three source versions/six selected-version observations/four owned edits, exact current script/target/source/read/IDE identities, old saved bytes and original extraction stable. All five failed harness probes retained. No product code, repack or old finite suite rerun. React19 host-commit proof remains unsupported/fullPath false. Next A01.2 equal-output two-instance/read controls; full A01/P04/C07/A05/L02/release remain open.",
+    "current_activity_note": "A01.2 actual equal-instance source/read controls complete: native10 in both unchanged .33 hosts, sixteen selections/four ordinary native UI edits. Correct existing backend ID domain, distinct equal-value markers/scopes/read IDs, new first occurrence after same-value edit, retained second read/time through reinspection, old snapshot/save/source immutable. Three setup/domain failures retained. No product/repack/threshold changes. A01.1 archived current-mechanism proof preserved; no old frozen verifier rerun. Next A01.3 remaining grammar/semantic/version reconciliation before one whole-A01 review. Parent A01/P04/C07/A05/L02/release open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "A01"

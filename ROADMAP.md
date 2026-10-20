@@ -206,8 +206,11 @@ saved bytes/original extraction remain unchanged. The native title picker and
 count CSS-selector UI are explicit because original application CSS occludes the
 count. [Execution](docs/completion/27-a01-ordinary-react-progress.md). No product
 code or old finite result changed. React19 committed-host binding remains
-Unknown/Unsupported/fullPath false. Next bounded A01.2 equal-output two-instance
-controls; complete A01 and its whole review remain open.
+Unknown/Unsupported/fullPath false. A01.2 now passes native10 equal-output two-instance
+controls across both hosts: distinct actual backend/marker/target/read IDs, ordinary
+same-value and changed-value edits, retained old second-row event/time and immutable
+old saves. No engine/runtime/package changes. Next bounded A01.3 reconciles remaining
+grammar/semantic/version coverage; complete A01 and its whole review remain open.
 
 ## Historical roadmap and checkpoint ledger
 
