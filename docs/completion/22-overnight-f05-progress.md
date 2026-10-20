@@ -41,3 +41,41 @@ Next bounded slice: **F05.2**, the same live policy at runtime and host native
 admission, independent real browser permission, exact Chrome document facts,
 explicit lease renewal and revocation cleanup. Settings/native acceptance and
 the one final whole-F05 review remain required before F05 completion.
+
+
+## F05.2a — source host enforcement, runtime still unavailable
+
+The Chrome platform now owns the single live actor. It samples the real browser
+main-frame document ID through a fixed isolated null function, rechecks permission
+and origin/epoch, and binds a new lease to that grant. Confirm retires the old
+read-only lease; explicit reattach can receive only read/inject/override/replay,
+never cache/reload. Runtime/wire integration is the next slice, so ordinary
+production input operations remain denied and `production.changes` unimplemented.
+
+The host independently starts cleanup on logical expiry/revoke/owner loss without
+needing a runtime listener. The trusted broker beforeNative hook revalidates after
+guardian admission and before native dispatch. Native control execution rechecks
+its grant as well. Unknown native release stays unknown; a subsequent empty local
+entry cannot turn it into a success. Permission removal clears grants between
+confirmation and reattach and both pending stages, including a detected permission
+gap without onRemoved. New owner-close/all-invalidation model methods return only
+the exact retired targets for host cleanup.
+
+Initial missing-host/hook RED, owner-target result RED, permission-epoch/missing
+cleanup-ack RED, retained unknown cleanup RED and the explicit permission-gap
+mutation RED all remain under `.artifacts/f05/platform/`. Final affected source
+**109/109** and full **1010/1010** pass. A strict source declaration consumer exits0
+with TS5.9.3; it is not packed-consumer proof. Frozen source/result bindings and
+`verification.json` distinguish this source host boundary from native acceptance.
+The actual immutable U02 tarballs/hosts remain unchanged; their producer source
+checks are now historical because this new source slice intentionally differs.
+No old verification is rerun or relabelled as current.
+
+New public host methods accept trusted live-context callbacks and opaque owner
+objects, not wire target/grant claims. Their complete interface/cleanup contract
+is [recorded here](../features/production-change-host.md), including the official
+Chrome permission requirement. Actual browser permission grant, packed types,
+wire/runtime denial/admission, Settings and native enabled changes are still owed.
+Task2 remains open; next **F05.2b** wires that authority into the runtime and exact
+transport. No Settings/native production credit is taken for these controlled
+Chrome-boundary models.

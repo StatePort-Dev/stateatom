@@ -110,10 +110,11 @@ export function createGuardianBroker(api,{documentPath='atom-guardian.html',fall
    })();
    try{await l.attachPromise;}catch(e){await release().catch(()=>{});throw e;}
   }
-  async function command(method,params={}){
+  async function command(method,params={},beforeNative){
    const grant=typeof method==='string'?debuggerCommandCapability(method):null;if(!grant)throw error('CAPABILITY_DENIED');assert(grant);if(!l.attached)throw error('LEASE_EXPIRED');
+   if(beforeNative!==undefined&&typeof beforeNative!=='function')throw error('INVALID_PLATFORM');
    const ticket=(await call('begin',[cap,{kind:'command',method}])).value;assert(grant);
-   let nativeAcknowledged=false,nativeLost=false;const work=(async()=>{try{const result=await api.debugger.sendCommand({tabId},method,params);nativeAcknowledged=true;assert(grant);await call('finish',[ticket,{ok:true}]);return result;}catch(e){if(absent(e)){nativeLost=true;l.nativeGone=true;}if(current(l.c))await call('finish',[ticket,{ok:false}]).catch(()=>{});if(nativeAcknowledged)e.nativeMayHaveApplied=true;throw e;}})();
+   let nativeAcknowledged=false,nativeLost=false;const work=(async()=>{try{if(beforeNative)await beforeNative();assert(grant);const result=await api.debugger.sendCommand({tabId},method,params);nativeAcknowledged=true;assert(grant);await call('finish',[ticket,{ok:true}]);return result;}catch(e){if(absent(e)){nativeLost=true;l.nativeGone=true;}if(current(l.c))await call('finish',[ticket,{ok:false}]).catch(()=>{});if(nativeAcknowledged)e.nativeMayHaveApplied=true;throw e;}})();
    l.inFlight.add(work);try{return await work;}finally{l.inFlight.delete(work);if(nativeLost)await invalidate();}
   }
   function release(){

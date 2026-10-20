@@ -135,6 +135,12 @@ are in [the F05 record](completion/22-overnight-f05-progress.md). Current instal
 `.20261020.1` is unchanged and production remains unavailable. Next is F05.2
 host/runtime enforcement; this model does not prove a Settings or HTTPS edit path.
 
+F05.2a adds source host enforcement and independent cleanup: 109 affected models,
+1010 full tests and a strict source declaration consumer pass. Native facts and
+command dispatch are controlled Chrome-boundary models in this slice. Actual
+Settings/wire/runtime/packed-HTTPS admission remains F05.2b/3; installed U02
+archives stay unchanged and their old source checks are historical.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

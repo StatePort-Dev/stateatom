@@ -52,12 +52,14 @@ export function createProductionChangePolicy({now=Date.now,onRevoke=()=>{}}={}){
  function cancel(ticket,owner,viewId){identity(owner,viewId);clock();if(!string(ticket))fail('INVALID_CONFIRMATION');const x=tickets.get(ticket);if(!x)return false;if(x.owner!==owner||x.viewId!==viewId)fail('INVALID_CONFIRMATION');tickets.delete(ticket);return true;}
  function revokeOwner(owner,viewId){
   if(!owner||typeof owner!=='object'||viewId!==undefined&&!string(viewId))fail('INVALID_CONFIRMATION');
+  const retired=[];
   for(const[k,x]of tickets)if(x.owner===owner&&(viewId===undefined||x.viewId===viewId))tickets.delete(k);
-  for(const[id,g]of grants)if(g.owner===owner&&(viewId===undefined||g.viewId===viewId))revoke(id,'owner-closed');
+  for(const[id,g]of grants)if(g.owner===owner&&(viewId===undefined||g.viewId===viewId)){retired.push(id);revoke(id,'owner-closed');}return retired;
  }
+ function revokeAll(reason){tickets.clear();const retired=[...grants.keys()];for(const id of retired)revoke(id,reason);return retired;}
  function snapshot(input){const scope=target(input),t=clock();return current(scope,t);}
  function assert(input,kind){if(!kinds.includes(kind))fail('CAPABILITY_DENIED');const s=snapshot(input);if(!s.active)fail('CAPABILITY_DENIED');return s.grantId;}
- return Object.freeze({begin,advance,confirm,cancel,revoke,revokeOwner,snapshot,assert,
+ return Object.freeze({begin,advance,confirm,cancel,revoke,revokeOwner,revokeAll,snapshot,assert,
   // Metadata only: callers must supply fresh native facts to snapshot/assert.
   describe:id=>view(tab(id),clock()),expire:()=>{clock();},nextExpiryDelay(){const t=clock();return grants.size?Math.max(0,Math.min(...[...grants.values()].map(g=>g.expiresAt))-t):null;}
  });
