@@ -76,7 +76,7 @@ visible status/expiry/revoke and view-lifetime cleanup.
 
 **Files:** exact result/source/payload receipts, task index/roadmap/status.
 
-- [ ] Verify exact latest packed identity, production matrix and relevant original
+- [x] Verify exact latest packed identity, production matrix and relevant original
   legacy controls without a broad project re-audit.
 - [ ] ONE fresh whole-F05 reviewer; regrade findings; ONE tested Critical/Important
   fix pass RED→GREEN + full suite, no re-review. Record declined judgments/rulings.

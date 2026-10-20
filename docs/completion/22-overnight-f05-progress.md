@@ -242,3 +242,24 @@ review, regrading and one tested Critical/Important fix pass. Next is that bound
 acceptance, followed by U06 journey design when F05 meets its contract. Ordinary
 permission prompt acceptance, official-host intake, public release, SDK and the
 broader baseline remain outside this result.
+
+## F05.4 preparation — current package, review pending
+
+The package README now describes the implemented Settings workflow and its newly
+chosen limits. New immutable documentation candidate `.20261020.8` is at
+`.artifacts/atom/2026-10-20T02-08-11-434Z/atom-handoff.json`. The **entire file maps
+of both executable hosts** match native-tested `.7` byte-for-byte. The installed
+Atom packages differ only in `README.md`, `CHANGELOG.md` and `package.json`.
+The source manifest is identical. This is executable evidence reuse, not a new
+native execution under the `.8` archive label.
+
+Fresh `.8` strict packed types2 and original admission7 pass. Current source and
+exact package/host bindings plus all frozen `.7` actual native records are checked
+by `node .artifacts/f05/acceptance/verify8.mjs`; its receipt is `verification8.json`
+there and its full byte comparison is `byte-identity8.json`. Original `.7` source
+receipts now retain their historical producer-document hashes; they are not rerun
+against changed `.8` README inputs or silently rewritten as current `.8` runs.
+
+This finishes the package/evidence preparation only. One fresh whole-F05 review
+and one tested Critical/Important fix pass still gate completion. No additional
+native run is justified by documentation-only byte-identical payloads.

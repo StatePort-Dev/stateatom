@@ -51,15 +51,16 @@ and browser Bundler resolution (`skipLibCheck:false`). TypeScript 5.9.3 is a
 repository development tool, not a runtime/package requirement. Basic remains
 independent of IDE, Desktop, accounts and models. At the F01 checkpoint, Action
 Trace, Live/Draft and production change enablement remained future required tasks.
-The later guarded input workflow is described below; Action Trace (A05) and
-production change enablement (F05) remain separate required work.
+The later guarded input workflow and separately enabled production permission
+are described below. Action Trace (A05) remains required future work.
 
 The default embedded host admits ordinary loopback HTTP sites read-only, with explicit development actions.
 A host may explicitly set `readOnlySites:true` on both `createChromePlatform` and
 `createAtomRuntime` and supply `requestOriginPermission` through the `mountAtom`
 options object to enable permission-gated HTTPS inspection. The standalone host
-does so; this does not widen the default. HTTPS leases grant read/inject helpers
-only, and runtime denies experiments, Restore and IDE context transfer.
+does so; this does not widen the default. HTTPS inspection grants read/inject
+helpers. Only the separately confirmed F05 permission admits supported input
+changes; legacy experiments, Restore and IDE context transfer remain denied.
 Source-map operations add offline import, permitted URL acquisition, manual lookup
 and clearing to wire version 1. Parsed maps/source stay outside storage, expire
 after five minutes and clear on detach/navigation. Diagnostics omit their contents. Browser
@@ -236,6 +237,31 @@ The ordinary local hosts expose these implemented controls without the developme
 preview opt-in. Current capability decisions still govern every operation; a
 known implemented denial remains visible, while an older NOT_IMPLEMENTED host
 keeps the hidden fallback. `inputEditorPreview` remains an optional compatibility
-mount parameter and grants no authority. HTTPS edits remain unavailable until
-F05's separately defined two-confirmation Settings grant. SDK, generic eval,
+mount parameter and grants no authority. HTTPS edits require the separately
+scoped two-confirmation Settings permission below. SDK, generic eval,
 arbitrary state/props/cache writers and automatic server rollback are not added.
+
+## Production input permission (F05 local candidate)
+
+HTTPS starts with read-only inspection. Browser access is a separate prerequisite
+and never grants editing by itself. Select and attach the permitted HTTPS tab,
+then open **Settings → Enable changes**. A first warning describes live handlers
+and possible server consequences; Continue opens a separate exact-scope and undo
+warning. Only **Enable for 10 minutes** creates permission. Enabling performs no
+input edit, app request, reload or data reset. Choose **Attach this tab**, then
+inspect a current element explicitly before using Inputs.
+
+The new working policy covers one exact HTTPS scheme/host/port, Chrome tab and
+native main-frame page for ten minutes. It admits supported U02 form controls and
+JSON response fields in Live or Draft/Apply. It grants no additional API origins
+or legacy cache/reload/storage-reset experiments. Reload/navigation, tab switch,
+closing the issuing inspector or mounted view, permission loss, expiry/revoke and
+worker restart/update end it. Permission and tickets are never persisted or
+silently resumed.
+
+The production status shows time remaining and **Return to read-only**. This
+blocks new edits and retires owned native writers; pending/unconfirmed cleanup
+stays explicit. Closing Settings after enabling keeps this bounded permission.
+Undo checks revisions and can refuse an external change. It cannot undo server
+effects or every already-admitted application action. Enabling or granting input
+permission does not strengthen source, dependency or causal evidence.

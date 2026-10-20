@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.8
+
+- Document the independently granted production input workflow, exact working
+  scope/lifetime, explicit reattach and visible cleanup limits. This candidate
+  updates package documentation/metadata; verify executable host byte identity
+  against the native-tested .7 pair before reusing its scoped evidence.
+
 ## 0.1.0-candidate.20261020.7
 
 - Preserve pending/unconfirmed native cleanup in both the always-visible

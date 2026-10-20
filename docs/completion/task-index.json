@@ -316,7 +316,21 @@
           "record": "22-overnight-f05-progress.md"
         }
       ],
-      "working_policy": "New F05 decision: exact HTTPS tab/origin/native main-frame document; ten minutes after second confirmation; two-minute tickets; issuer client/view close/tab switch, navigation, permission loss, restart/update/expiry/revoke invalidate; only U02 input kinds, no legacy reset/reload grant"
+      "working_policy": "New F05 decision: exact HTTPS tab/origin/native main-frame document; ten minutes after second confirmation; two-minute tickets; issuer client/view close/tab switch, navigation, permission loss, restart/update/expiry/revoke invalidate; only U02 input kinds, no legacy reset/reload grant",
+      "acceptance_candidate": {
+        "package": "0.1.0-candidate.20261020.8",
+        "state": "exact-executable-reuse-review-pending",
+        "native_execution_package": "0.1.0-candidate.20261020.7",
+        "entire_both_host_bytes_identical": true,
+        "installed_package_changes": [
+          "CHANGELOG.md",
+          "README.md",
+          "package.json"
+        ],
+        "fresh_packed_type_consumers": 2,
+        "fresh_package_admission": 7,
+        "record": "22-overnight-f05-progress.md"
+      }
     },
     {
       "id": "U01",
