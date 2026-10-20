@@ -184,6 +184,12 @@ preserve missing data, parent identity and immutable baseline. Public diagnostic
 privacy/storage integration, mounted UI/reader and actual two-role acceptance remain
 unfinished; next is U03.2. No new runtime or C07 readiness follows from this model.
 
+U03.2a subsequently passes codec35/full1131 for an **unimported** minimal v2
+candidate: exact source/parent bytes, explicit omitted technical fragments,
+immutable unverified notes and privacy derivatives. V1 parser/storage/reader and
+current `.9` remain unchanged. Rich category review/storage and actual handoff UI
+remain open; no C07 runtime acceptance is claimed.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

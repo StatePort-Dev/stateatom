@@ -818,6 +818,21 @@
           "public_v2_format": false,
           "actual_two_role_handoff": false,
           "record": "24-u03-handoff-progress.md"
+        },
+        {
+          "id": "U03.2a",
+          "status": "complete-within-unimported-minimal-codec-boundary",
+          "profile": "minimal-snapshot/1",
+          "tests": {
+            "codec": 35,
+            "full": 1131
+          },
+          "runtime_importer": false,
+          "v1_parser_changed": false,
+          "granular_privacy_complete": false,
+          "version_aware_storage_complete": false,
+          "actual_two_role_handoff": false,
+          "record": "24-u03-handoff-progress.md"
         }
       ]
     },
@@ -1604,15 +1619,15 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "U03.1",
-      "status": "complete-within-unimported-model-boundary",
+      "id": "U03.2a",
+      "status": "complete-within-unimported-minimal-codec-boundary",
       "record": "24-u03-handoff-progress.md",
       "tests": {
-        "model": 49,
-        "full": 1096
+        "codec": 35,
+        "full": 1131
       },
       "runtime_changed": false,
-      "next_item": "U03.2"
+      "next_item": "U03.2b"
     },
     "next_item": "U03",
     "new_full_task_acceptances": [
@@ -1999,7 +2014,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "F05 complete on exact .9; U06 design complete; U03.1 internal actor complete, public v2/UI/real handoff acceptance still unfinished",
+    "current_activity_note": "F05 complete .9, U06 journey design complete; U03 internal draft and minimal codec complete as unimported source slices, richer privacy/storage/UI and actual acceptance unfinished",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "U03"

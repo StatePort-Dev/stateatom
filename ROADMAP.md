@@ -111,6 +111,12 @@ snapshot reference, missing window and immutable Developer notes. It is not a
 public-v2 format or actual handoff UI. Next bounded step is U03.2 compatible
 format/privacy/storage, followed by real reporter/recipient acceptance.
 
+U03.2a subsequently adds the **unimported minimal historical codec** (35 source /
+1131 full), with explicit omissions and immutable data-only revisions. V1 and
+`.9` executable inputs remain unchanged. Rich privacy/storage and the actual
+reporter/recipient UI remain unfinished; this is not C07 readiness.
+
+
 ## Historical roadmap and checkpoint ledger
 
 StateAtom's next development target is a narrow, independently useful developer alpha. A developer should be able to select a UI property, inspect its supported dependencies, test an eligible input locally, and save an explanation that another person can read.

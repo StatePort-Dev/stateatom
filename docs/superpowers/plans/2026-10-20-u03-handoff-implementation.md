@@ -95,11 +95,17 @@ are inspected as own data descriptors; no getter or expression is evaluated.
 
 **Files:** new `core/handoff-report.mjs`, corresponding tests; narrow updates to
 `core/diagnostic.mjs` dispatch/storage helpers and Atom runtime/types as needed.
+**Bounded execution slices:** U03.2a is the unimported `minimal-snapshot/1` codec
+specified in `docs/features/handoff-minimal-format.md`, with no v1/parser/runtime
+importer changes. U03.2b supplies rich per-category privacy and compatible storage.
+Task2 is not complete until both meet its original acceptance. This split avoids
+claiming a minimal data codec completes the user journey.
+
 **Consumes:** Task1 frozen baseline and exact original diagnostic, explicit review
 choices. **Produces:** validated historical v2 record/serializer/derivative and
 version-aware local storage without changing old record interpretation.
 
-- [ ] Pin concrete v2 field layout before implementation, mapping U06 logical
+- [x] Pin concrete v2 field layout before implementation, mapping U06 logical
   fields and every retained v1 fragment; no placeholder selected value for omission.
 - [ ] RED/GREEN v1 compatibility, per-category/field omission, broken joins,
   exact downloaded bytes, source-map import not consent, notes/paths/values,
@@ -108,6 +114,11 @@ version-aware local storage without changing old record interpretation.
   incompatible/malformed versions reject visibly, no actions/network on parse.
 - [ ] Verify affected full/contracts/types and fresh immutable package/native
   boundary if imported. Local commit; do not claim H01 real two-role UI yet.
+
+- [x] U03.2a minimal source profile: codec35/full1131, exact .9 unchanged;
+  original source RED retained. No runtime/reader/storage or whole-Task2 completion.
+- [ ] U03.2b rich per-category/per-note review, source/response inclusion and
+  compatible persisted v1/v2 records; original full Task2 acceptance remains open.
 
 ### Task 3: U03.3 reporter UI and passive recipient/revision UI
 

@@ -66,3 +66,44 @@ subsequent read/update are synchronous, freeze/append await hashes. Text bounds
 use JavaScript UTF-16 units. Cost if wrong: later UI/schema integration may need
 adjustment and extra review, but no source/runtime behavior has been enabled by
 this actor. Source hash/content identity is not trust or action authority.
+
+## U03.2a — unimported minimal historical codec
+
+Task2 is split into this independent source codec and later rich category review/
+compatible storage. The parent Task2 remains **open**. The exact new working
+[format profile](../features/handoff-minimal-format.md) was written before RED.
+`core/handoff-report.mjs` now validates and emits candidate diagnostic-v2
+`minimal-snapshot/1`, explicitly dispatches old v1 unchanged, binds creation to
+exact source bytes/frozen baseline, and appends unverified Developer notes as new
+files. Checksums validate content, not sender trust, causal proof or bug fixes.
+Without supplied parent bytes, lineage is visibly not checked; matching parent
+bytes establish only content continuity. Same/different/missing build remains a
+hash relation. Cross-device wall-clock order is not assumed.
+
+The minimal profile includes reporter discrepancy and selected disabled boolean
+(or omitted text), source identity and `not-recorded` window. All other technical
+fragments are omitted with category counts/reasons, not silently recategorized or
+claimed absent in the original. It copies no legacy notes/paths/source/body/raw
+selector. Reporter-entered words can still be private. Whole-field omissions make
+a new privacy derivative/report identity, preserve the original and explicitly
+drop/count old Developer notes so their text does not survive nested. Granular
+per-category/per-note review, selected-text opt-in and storage remain later work.
+
+Original missing-module RED is retained in `.artifacts/u03/format/red.log`.
+`node --test --test-reporter=tap --test-isolation=none tests/handoff-report.test.mjs`
+passes **35** source checks: strict v1 control, no private-copy/default-text leak,
+source/target mismatch, missing window, checksum tamper versus rehashed untrusted
+claim, exact whitespace-sensitive parent, immutable append/forks/stale parent,
+wrong build, explicit derivative, bounded hostile input and no fetch/actions.
+`npm test` passes **1131** including prior draft49 and original diagnostic cases.
+`node .artifacts/u03/format/verify.mjs` verifies frozen source/logs and unchanged
+issued `.9` manifests, tarballs, installed consumer and entire both-host bytes;
+receipt `verification.json` in that directory, PASS.
+
+This adds no runtime importer, v1 parser change, packed types, storage migration,
+reader/UI, P04 collector or real two-role handoff. No repack/native rerun is
+justified by this unimported codec. U03.2b and H01–H06/whole-U03 review remain open;
+C07 is not complete. The next bounded product increment can mount the minimal
+profile using the existing saved v1 original, without pretending v2 persistence
+or rich technical review already exists; that direction must be ledgered before
+implementation and retain the original Task2 gaps.
