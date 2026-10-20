@@ -456,3 +456,122 @@ availability, the masked two-blocker/group case, production-default refusal,
 interruption and existing browser/IDE causal regressions, then the required fresh
 whole-item review. F05 production grant details, U06 handoff and SDK remain outside
 this slice; U02 is still in progress. No human visual approval or release follows.
+
+## U02.5b — ordinary fields, current acceptance and retained legacy criteria
+
+The ordinary local hosts now expose the guarded fields without opting into
+Preview. `inputs.live` and `inputs.draft-apply` describe current `inputs-open`
+admission, not global release confidence. An implemented BUSY/readonly denial
+keeps the workflow visible with its scoped reason; an older NOT_IMPLEMENTED host
+keeps the hidden fallback. Own per-view capability checks remain authoritative.
+A lost connection preserves an unsent draft visibly read-only until Discard;
+there is no automatic writer reconnect or migration. Rendered RED/GREEN first
+exposed the hidden-draft default-path bug, then the corrected installed path passed.
+
+Current field/native execution is **.30**, followed by docs/version-only **.31**.
+The **entire installed standalone and embedding host manifests are byte-identical**
+between .30 and .31, including every JS/HTML/CSS/asset/manifest/license file. .31
+only updates package README/changelog/version; fresh .31 strict consumers (2) and
+package admission controls (7) pass. Native .30 results are preserved under their
+actual .30 identity, not relabelled as a new native .31 run. This exact payload
+binding avoids repeating unchanged experiments. Full **961** source tests and
+56 UI/draft/controller models pass before those metadata-only edits; all executable
+producer inputs still match. Native-loss ownership/registry/runtime models pass 78.
+
+Actual .30 results:
+
+- **40 two-host default UI checks**: response/typed widgets in both modes, actual
+  outputs and undo, rapid coalescing and separate dispatch/app latency, invalid
+  text, held Draft/group Apply, slow/late/out-of-order acknowledgement, partial
+  failure, external eventful ABA, unsent close, keyboard/narrow layouts, mounted
+  view unmount/reopen, tab switch with read-only retained draft, lost native
+  attachment detection through current-read, and HTTPS default refusal.
+- **11/18 Live and 11/18 Draft in each host**, with all seven unsupported rows
+  retained without credit: the final ordinary-path matrix again passes all 44
+  positive row/mode/host cycles and 28 unsupported checks. Four additional
+  masked/group controls verify actual validation, explicit app refresh, undo and
+  baseline. Independent controls explicitly start independent investigations.
+- **6 raw-native legacy checks** retain the original three ABA/irrelevant-field
+  repetitions, three left-masked/right-masked/joint repetitions, actual application
+  delivery/consumption/restoration, exact real Open in IDE file/range, and Restore
+  returning the app baseline while its current execution evidence stays Stale.
+- **7 installed controlled-render checks** cover default visibility, fields,
+  invalid text, mode hold, narrow/reduced-motion setup, readonly denial and a
+  visible retained draft on connection loss. These are not native catalogue proof.
+
+The .29 response (15), guardian/foreign-owner (8) and inspector-lifetime (13)
+controls remain applicable to .30/.31 because both host workers and all guardian
+worker/document bytes match exactly. Their original executed .29 records remain
+separate. Current .30 field lifecycle/native checks exercise the changed UI too.
+The older .28 native-control backend 25-check pass stays historical, rather than
+being silently labelled a new .31 run.
+
+HTTPS scope is explicit: actual native tests use synthetic self-signed localhost
+inside an isolated browser with test certificate errors ignored. Standalone denies
+ungranted HTTPS input operations; the default embedding example does not opt into
+HTTPS inspection and also refuses. The test reads the real Chrome tab ID rather
+than widening that host's filtered application list. Granted-HTTPS edit refusal
+is separately covered by policy/runtime models; an enabled production path,
+positive permission prompt acceptance and grant scope/lifetime remain F05 work.
+
+### Failures found and preserved in this slice
+
+A raw native loss case first showed safe field closure with stale broker attachment
+metadata. The broker now retires only a lease whose native command explicitly
+reports attachment absence. It skips that exact lease's terminal cleanup after
+known absence, preserving a replacement foreign owner; ordinary stale-node errors
+do not fake detach. Both focused REDs and the actual native case pass after the
+fix. There is no generic command-error-to-detach conversion or new native probe.
+
+The final legacy run then found a real Restore presentation regression: the app
+had restored and all three trial repetitions passed, but its own reload invalidation
+advanced a generic UI generation and discarded the success notice. A separate
+selection-intent counter now preserves that historical notice through background
+refreshes while rejecting late replies after a new explicit target/property/tab
+intent. The original failing native result, a focused RED, the newer-selection
+negative control and the passing real .30 Restore case are retained. Current proof
+still says Stale; the notice does not revive old execution evidence.
+
+Other retained failures are distinguished from product fixes. The original
+Playwright browser harness was correctly refused as an already attached native
+owner before its first case. The new raw-native variant enters through the existing
+IDE command and retains the original experiment criteria, without weakening that
+foreign-owner guard. An early test wrongly dereferenced fresh analysis after the
+legacy reload; the corrected check requires absent analysis and explicit Stale.
+A masked control initially reused an investigation containing externally revised
+race fields, and baseline correctly refused; the independent control now opens
+its own investigation. No external-revision guard or catalogue row was removed.
+The initial embedding HTTPS test incorrectly waited for an intentionally filtered
+site; it now queries Chrome's actual tab metadata and verifies refusal directly.
+
+Current commands (the expected-current-stage assertion is explicit):
+
+```sh
+npm run verify:input-fields -- <handoff> --accepted
+npm run verify:input-acceptance -- <handoff> --accepted
+npm run verify:input-fields-ui -- --accepted <handoff>
+npm run verify:input-controls -- <handoff> --accepted
+npm run verify:ide -- <handoff> --native-legacy
+```
+
+These switches are test expectations/input methods, not authority grants. Original
+preview/unsafe-owner diagnostic variants and their historical results remain.
+The handoff verified for distribution inputs is
+`.artifacts/atom/2026-10-20T00-00-16-398Z/atom-handoff.json` (.31).
+The aggregated exact-payload/source/result bindings and executable verifier are
+`.artifacts/u02/input-default/pre-review-verification.json` and `verify-final.mjs`.
+Raw .30 fields/matrix/legacy/rendered and .29 backend paths are named in that receipt.
+
+Rendered 440/390 candidates were compared again with supplied Inputs reference:
+existing hierarchy, Inter/native typography and aligned short value rows remain;
+Preview disappears in the ordinary path. Existing documented source/mode/scope
+controls replace simulated writers. The synthetic embedding host supplies a 600px
+Atom box beneath its own unrelated controls, so its first narrow viewport reaches
+the toolbar and requires scrolling for rows; this host sizing is not visual parity
+with the full-height prototype. Screenshots remain agent-reviewed candidates,
+not human approval. Shared UI .2 bytes/tokens/primitives are unchanged.
+
+Implementation/native acceptance for this slice is complete. **U02/Task 5 remains
+open for the one fresh whole-item review and any tested Critical/Important fix
+pass.** No public release, official StatePort intake, SDK, Action Trace, local-model
+validation, production edit grant or independent-human study is claimed.

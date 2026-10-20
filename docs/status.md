@@ -107,6 +107,18 @@ fixes pass RED/GREEN and the original native cases. Runtime evidence labels and
 legacy causal criteria are unchanged. U02 remains open for .5b ordinary default UI,
 masked/group/production/interruption/legacy controls and fresh whole-item review.
 
+U02.5b subsequently verifies the ordinary default workflow: 961 full tests,
+40 two-host native fields/lifecycle/timing/denial checks, 6 strict original legacy
+experiment/real-IDE/Restore checks and 7 installed controlled-render checks pass.
+The final default matrix is 11/18 in each mode and host, plus actual masked/group
+validation controls. Native execution is .30; docs-only .31 has entire byte-identical
+installed hosts and fresh 2 strict consumers / 7 package controls. Exact source,
+payload and retained .29 backend bindings are in the linked execution record.
+Native absence now retires its known lease without touching a foreign replacement;
+Restore notice survives its own reload while new selections still reject late replies.
+All failures/criteria remain recorded. U02 is still open for its one fresh whole-item
+review and tested Important/Critical fixes; no whole-baseline/release claim follows.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

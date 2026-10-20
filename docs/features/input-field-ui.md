@@ -136,3 +136,20 @@ commit separately from app-effect latency and declares its real-reply delay faul
 Held drafts, late acknowledgements behind external snapshots, partial native groups,
 scoped Undo and eventful ABA refusal pass in both hosts. Task 5 majority/default
 availability and final review remain required; no new source or archive is issued.
+
+## 5b ordinary availability after preview majority
+
+After .27 verified 11/18 in each mode/host, the .28 working candidate derives
+Live/Draft feature decisions from current `inputs-open` admission. An available
+operation is not global release readiness or causal confidence. Scope, grants,
+readonly, physical target and owned resource checks remain unchanged. The default
+UI stays visible for implemented-but-denied decisions and uses its own scoped
+owner capabilities; global ownerless BUSY must not hide an owned investigation.
+An older host's NOT_IMPLEMENTED flags still hide the feature without probing it.
+The local examples remove the preview opt-in; the optional mount parameter stays
+backward compatible. This reuses the existing reference-based rows and controls.
+
+A lost connection keeps an existing unsent draft visible and read-only until
+explicit discard. The old view never reconnects a writer or adopts a new scope.
+Rendered RED/GREEN verifies this distinction on the ordinary default path;
+controlled-client proof remains separate from native acceptance.

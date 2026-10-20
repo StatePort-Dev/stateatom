@@ -74,8 +74,8 @@ export function describeCapabilities(context={}){
   'experiment.response':operations.experiment,'experiment.controlled':operations['deep-experiment'],'experiment.restore':operations.restore,
   'production.maps':operations['source-map-import'],
   'actions.trace':unavailable('Actual application-handler invocation is not implemented (A05)'),
-  'inputs.live':unavailable('Live editing scope and controls remain U02 work'),
-  'inputs.draft-apply':unavailable('Grouped Draft/Apply remains U02 work'),
+  'inputs.live':operations['inputs-open'],
+  'inputs.draft-apply':operations['inputs-open'],
   'production.changes':unavailable('Production changes require the unimplemented F05 Settings confirmations'),
   'explanations.local-model':deny('DEVICE_CHECK_REQUIRED','Local model availability requires an explicit extension-page device check; fallback is not model validation')
  }};

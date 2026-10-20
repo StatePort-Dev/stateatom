@@ -25,13 +25,16 @@ export function createGuardianBroker(api,{documentPath='atom-guardian.html',fall
   const allowed=['Fetch.disable','Network.setCacheDisabled:false','detach'];
   if(!Number.isSafeInteger(job?.tabId)||job.tabId<1||!Array.isArray(job.actions)||job.actions.at(-1)!=='detach'||new Set(job.actions).size!==job.actions.length||job.actions.some((a,i)=>!allowed.includes(a)||i&&allowed.indexOf(a)<=allowed.indexOf(job.actions[i-1])))return{status:'failed'};
   const own=local.get(job.tabId);if(own?.inFlight.size){let timer;await Promise.race([Promise.allSettled([...own.inFlight]),new Promise(r=>{timer=setTimeout(r,1000);})]);clearTimeout(timer);}
+  // An exact native absence is a terminal fact for this lease. A replacement
+  // owner in the same tab must not receive our old cleanup commands.
+  if(own?.nativeGone&&job.leaseId===own.cap.leaseId&&job.guardianId===own.cap.guardianId)return{status:'already-detached'};
   for(const action of job.actions.slice(0,-1))try{await api.debugger.sendCommand({tabId:job.tabId},action==='Fetch.disable'?action:'Network.setCacheDisabled',action==='Fetch.disable'?{}:{cacheDisabled:false});}catch{/* Native detach below is the terminal cleanup barrier. */}
   try{await api.debugger.detach({tabId:job.tabId});return{status:'detached'};}catch(e){return{status:absent(e)?'already-detached':'failed'};}
  }
  async function retireKnown(entries){
   for(const l of entries){l.active=false;l.closing=true;if(!l.touched){if(local.get(l.cap.tabId)===l)local.delete(l.cap.tabId);continue;}
    const actions=[];if(l.cap.capabilities.includes('override'))actions.push('Fetch.disable');if(l.cap.capabilities.includes('cache'))actions.push('Network.setCacheDisabled:false');actions.push('detach');
-   const result=await nativeCleanup({tabId:l.cap.tabId,actions});if(result.status==='failed')throw error('CLEANUP_UNCONFIRMED');if(local.get(l.cap.tabId)===l)local.delete(l.cap.tabId);
+   const result=await nativeCleanup({tabId:l.cap.tabId,leaseId:l.cap.leaseId,guardianId:l.cap.guardianId,actions});if(result.status==='failed')throw error('CLEANUP_UNCONFIRMED');if(local.get(l.cap.tabId)===l)local.delete(l.cap.tabId);
   }
  }
  async function ensureDocument(){
@@ -96,7 +99,7 @@ export function createGuardianBroker(api,{documentPath='atom-guardian.html',fall
   const {tabId,owner,capabilities=[],documentId=null}=options,tab=await api.tabs.get(tabId);const origin=new URL(tab.url).origin;
   const reply=await call('acquire',[{tabId,owner,capabilities,origin}]),cap=reply.value;
   const l={cap,active:true,attached:false,touched:false,closing:false,nativeGone:false,inFlight:new Set(),releasePromise:null,attachPromise:null,c:channel,public:null};local.set(tabId,l);
-  const assert=grant=>{if(!l.active||l.closing||local.get(tabId)!==l||!current(l.c))throw error('LEASE_EXPIRED');if(grant&&!cap.capabilities.includes(grant))throw error('CAPABILITY_DENIED');};
+  const assert=grant=>{if(!l.active||l.closing||l.nativeGone||local.get(tabId)!==l||!current(l.c))throw error('LEASE_EXPIRED');if(grant&&!cap.capabilities.includes(grant))throw error('CAPABILITY_DENIED');};
   async function attach(){
    assert('read');if(l.attached)return;
    if(!l.attachPromise)l.attachPromise=(async()=>{
@@ -110,8 +113,8 @@ export function createGuardianBroker(api,{documentPath='atom-guardian.html',fall
   async function command(method,params={}){
    const grant=typeof method==='string'?debuggerCommandCapability(method):null;if(!grant)throw error('CAPABILITY_DENIED');assert(grant);if(!l.attached)throw error('LEASE_EXPIRED');
    const ticket=(await call('begin',[cap,{kind:'command',method}])).value;assert(grant);
-   let nativeAcknowledged=false;const work=(async()=>{try{const result=await api.debugger.sendCommand({tabId},method,params);nativeAcknowledged=true;assert(grant);await call('finish',[ticket,{ok:true}]);return result;}catch(e){if(current(l.c))await call('finish',[ticket,{ok:false}]).catch(()=>{});if(nativeAcknowledged)e.nativeMayHaveApplied=true;throw e;}})();
-   l.inFlight.add(work);try{return await work;}finally{l.inFlight.delete(work);}
+   let nativeAcknowledged=false,nativeLost=false;const work=(async()=>{try{const result=await api.debugger.sendCommand({tabId},method,params);nativeAcknowledged=true;assert(grant);await call('finish',[ticket,{ok:true}]);return result;}catch(e){if(absent(e)){nativeLost=true;l.nativeGone=true;}if(current(l.c))await call('finish',[ticket,{ok:false}]).catch(()=>{});if(nativeAcknowledged)e.nativeMayHaveApplied=true;throw e;}})();
+   l.inFlight.add(work);try{return await work;}finally{l.inFlight.delete(work);if(nativeLost)await invalidate();}
   }
   function release(){
    if(l.releasePromise)return l.releasePromise;l.closing=true;

@@ -160,3 +160,7 @@ test('read-only broker admits native DOM identity facts but no DOM writes or eva
  for(const method of ['Runtime.evaluate','Runtime.compileScript','DOM.setAttributeValue','DOM.setNodeValue','DOM.removeNode'])await assert.rejects(lease.command(method),e=>e.code==='CAPABILITY_DENIED');
  assert.equal(calls.length,3);await lease.release();
 });
+
+test('implemented Live and Draft feature discovery follows guarded current input admission in both source families',()=>{
+ for(const inputSourceKind of['json-response','dom-control']){const facts={...context,inputSourceKind,lease:'owned',attached:true,hasSelection:true,hasAnalysis:true,workerIndependent:true,nativeInputOwner:true};const p=describeCapabilities(facts);for(const name of['inputs.live','inputs.draft-apply']){assert.equal(p.features[name].available,true);assert.deepEqual(p.features[name],p.operations['inputs-open']);for(const extra of[{foreignInputEditor:true},{readOnly:true},{url:'https://app.invalid/',readOnlySites:true},{workerIndependent:false,nativeInputOwner:false},{attached:false}]){const denied=describeCapabilities({...facts,...extra});assert.equal(denied.features[name].available,false);assert.notEqual(denied.features[name].code,'NOT_IMPLEMENTED');assert.deepEqual(denied.features[name],denied.operations['inputs-open']);}}}
+});

@@ -314,7 +314,10 @@
         "packages/atom/src/control-editor.mjs",
         "packages/atom/src/control-owner.mjs",
         "packages/atom/src/inspector-connections.mjs",
-        "tests/integration/input-acceptance.mjs"
+        "tests/integration/input-acceptance.mjs",
+        "tests/integration/input-fields.mjs",
+        "tests/integration/input-fields-ui.mjs",
+        "tests/integration/input-legacy.mjs"
       ],
       "existing_commands": [
         "npm test",
@@ -553,14 +556,33 @@
             "total": 18,
             "unsupported": 7
           }
+        },
+        {
+          "id": "U02.5b",
+          "status": "complete-within-implementation-native-boundary",
+          "scope": "Ordinary default fields and scoped capability discovery, lost-native-lease retirement, preserved historical Restore notice; final fresh whole-item review remains",
+          "candidate": "0.1.0-candidate.20261019.31",
+          "native_executed_candidate": "0.1.0-candidate.20261019.30",
+          "binding": "entire standalone/embedding installed host manifests byte-identical .30/.31; backend worker/guardian bytes also identical .29",
+          "tests": {
+            "full": 961,
+            "ui_draft_controller_models": 56,
+            "ownership_registry_runtime_models": 78,
+            "native_default_fields": 40,
+            "legacy_native": 6,
+            "installed_controlled_render": 7,
+            "packed_type_consumers": 2,
+            "package_admission": 7
+          },
+          "record": "21-overnight-u02-progress.md"
         }
       ],
-      "active_slice": "U02.5b",
-      "implementation_dependency": ".27 preview majority passes 11/18 both modes/hosts; default availability, masked/group/default-production/interruption/legacy controls and fresh whole-item review remain",
+      "active_slice": "U02.5c",
+      "implementation_dependency": "Default/native/majority/legacy acceptance passes; one fresh whole-U02 review and any tested Important/Critical fix pass remain before item completion",
       "field_mode_coverage": {
-        "candidate": "0.1.0-candidate.20261019.27",
-        "configuration": "explicit development preview, agent-operated immutable native hosts",
-        "counting": "each host independently, unsupported retained without credit",
+        "candidate": "0.1.0-candidate.20261019.31",
+        "native_executed_candidate": "0.1.0-candidate.20261019.30",
+        "configuration": "ordinary default UI, agent-operated immutable local hosts; entire .31 host payloads identical to .30",
         "standalone": {
           "live": 11,
           "draft": 11,
@@ -573,7 +595,7 @@
           "total": 18,
           "unsupported": 7
         },
-        "final_default_path": "pending"
+        "final_default_path": "verified; fresh whole-item review pending"
       }
     },
     {

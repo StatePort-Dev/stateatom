@@ -83,7 +83,7 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
   const unavailable=e?.unsupported||[];$('input-unavailable').hidden=!unavailable.length;text('input-unavailable-title',unavailable.length+' unavailable '+(unavailable.length===1?'input':'inputs'));$('input-unavailable-list').replaceChildren(...unavailable.map(r=>node('li',(r.selector||'Input')+' · '+r.reason)));
  }
  function update(next){
-  state=next;controller.update(next||{});visible=preview||supportsCapabilityPolicy(next?.capabilityPolicy)&&(next.capabilityPolicy.features['inputs.live'].available||next.capabilityPolicy.features['inputs.draft-apply'].available);
+  state=next;controller.update(next||{});visible=preview||supportsCapabilityPolicy(next?.capabilityPolicy)&&['inputs.live','inputs.draft-apply'].some(id=>next.capabilityPolicy.features[id].code!=='NOT_IMPLEMENTED')||visible&&!!controller.snapshot().draft?.dirtyCount;
   const key=JSON.stringify([next?.tabId,next?.run,next?.selection?.domIdentity,next?.property,next?.attached,next?.readOnly,next?.capabilityPolicy?.operations?.['inputs-open'],next?.capabilityPolicy?.operations?.['inputs-apply'],next?.connection,next?.stale?.at,next?.inputs?.investigationId,next?.inputs?.closed,visible,$('input-source').value]);if(key!==capKey){capKey=key;if(visible)ask();else{caps=null;++capEpoch;}}render();
  }
  $('input-source').value='json-response';$('input-source').onchange=()=>{const s=controller.snapshot();if(s.active&&s.draft?.dirtyCount){$('input-source').value=s.sourceKind;localError='Apply or discard the current draft before changing sources.';render();return;}ask();if(s.active)void run(()=>controller.open({tabId:state.tabId,sourceKind:$('input-source').value}));};

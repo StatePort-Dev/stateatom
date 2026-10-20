@@ -49,8 +49,10 @@ separate from an admitted inspection operation.
 Public declarations are checked from installed tarballs using strict NodeNext
 and browser Bundler resolution (`skipLibCheck:false`). TypeScript 5.9.3 is a
 repository development tool, not a runtime/package requirement. Basic remains
-independent of IDE, Desktop, accounts and models. Action Trace, Live/Draft and
-production change enablement remain future required tasks, not new F01 features.
+independent of IDE, Desktop, accounts and models. At the F01 checkpoint, Action
+Trace, Live/Draft and production change enablement remained future required tasks.
+The later guarded input workflow is described below; Action Trace (A05) and
+production change enablement (F05) remain separate required work.
 
 The default embedded host admits ordinary loopback HTTP sites read-only, with explicit development actions.
 A host may explicitly set `readOnlySites:true` on both `createChromePlatform` and
@@ -164,7 +166,8 @@ attachment; matching owner labels do not adopt it. A guardian loss retires curre
 live references. Unconfirmed cleanup remains unavailable, not successfully restored.
 A lost registry can require restarting the extension; simultaneous context loss
 has no blanket crash-recovery guarantee. Official StatePort host intake remains
-separate. Live/Draft field controls and U02 majority acceptance remain unfinished.
+separate. Field controls and majority acceptance were unfinished at this .18
+checkpoint; see the subsequent guarded input workflow below.
 
 ### Optional inspector lifetime channel
 
@@ -191,3 +194,48 @@ same owner and current investigation; unmount wiring belongs to the consumer.
 Closing releases input rules/observers, not application/server effects. Unknown
 cleanup stays unavailable. The .24 packet's field widgets and actual Live/Draft
 field-mode acceptance remain unfinished.
+
+
+### Guarded input fields
+
+After explicitly approving development actions for the exact loopback origin,
+inspect a target, choose **Responses** or **Form controls**, then **Open inputs**.
+The declared catalogue contains 18 representative sites: 11 are verified through
+actual fields in each mode and local host, while seven unsupported rows keep
+their reasons and receive no write credit. This is a bounded catalogue, not a
+claim about most values in arbitrary apps. The [repository acceptance record](https://github.com/StatePort-Dev/stateatom/blob/main/docs/testing/input-editing-acceptance.md)
+describes configuration, negative controls and evidence limits; no public release
+or independent human visual approval follows from these local checks.
+
+**Live** sends valid text/number edits after 250 ms of inactivity; Enter or blur
+flushes a valid value. Textarea Enter inserts a newline; Ctrl+Enter flushes.
+Boolean/select changes send immediately. That is dispatch timing, not an app
+latency guarantee. **Draft** keeps changes local until explicit Apply. Switching
+a dirty Draft to Live holds it until Apply or Discard. Invalid and newer typed
+text remains visible through delayed acknowledgements. Groups report individual
+outcomes and are not promised atomic across application effects.
+
+Native controls use ordinary supported input/change paths; React/Vue form cases
+are verified without direct hook/state setters. Select accepts observed enabled
+options only. Response scalar rules wait for the next matching application GET;
+Atom does not make the app request, reload or clear storage on each edit.
+Read current values observes the editor/target, without fetching app data.
+Applied/waiting/delivered values, app observations and unknown dependency remain
+separate. A quick edit is never automatically Experimentally verified.
+
+Undo-last and baseline restoration check current revisions. They refuse an
+external update instead of overwriting it, even after eventful same-value ABA.
+A closed investigation retains unsent drafts read-only until explicit discard;
+no old writer reconnects or migrates to a new target. Consumer unmount closes its
+per-view owner; page loss closes its live inspector scope. Cleanup removes
+rules/observers, not already changed app or server state. Unknown cleanup stays
+explicit. Native attachment absence retires only its known lease; it cannot clean
+a replacement foreign owner.
+
+The ordinary local hosts expose these implemented controls without the development
+preview opt-in. Current capability decisions still govern every operation; a
+known implemented denial remains visible, while an older NOT_IMPLEMENTED host
+keeps the hidden fallback. `inputEditorPreview` remains an optional compatibility
+mount parameter and grants no authority. HTTPS edits remain unavailable until
+F05's separately defined two-confirmation Settings grant. SDK, generic eval,
+arbitrary state/props/cache writers and automatic server rollback are not added.

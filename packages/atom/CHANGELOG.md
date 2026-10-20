@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.1.0-candidate.20261019.31
+
+- Document the verified guarded input workflow and identify older .18/.24
+  descriptions as historical checkpoints. No executable or visual code change.
+
+## 0.1.0-candidate.20261019.30
+
+- Retain the scoped historical Restore notice across its own background reload
+  invalidations. A new explicit target/property/tab intent still rejects an old
+  reply; restored app state never makes current execution evidence fresh.
+- Preserve existing typography/primitives; no shared token or contract change.
+
+## 0.1.0-candidate.20261019.29
+
+- Retire a guardian lease on explicit native attachment absence, including when
+  no onDetach event arrives. Preserve the original failed command/uncertainty.
+- Do not send old Fetch/cache/detach cleanup to a replacement owner after that
+  lease is known gone. Ordinary stale-node protocol errors do not fake detach.
+- No UI/token/primitive change beyond the .28 default input workflow.
+
+## 0.1.0-candidate.20261019.28
+
+- Expose Live/Draft through current guarded input admission after .27 field
+  catalogue majority; ordinary local hosts no longer opt into Preview. These
+  decisions describe operation availability, never causal or release confidence.
+- Keep implemented input workflows visible with scoped denial reasons (including
+  another owner); older NOT_IMPLEMENTED hosts retain the hidden fallback.
+- Preserve visible read-only unsent drafts on inspector loss until explicit
+  discard. Reopening does not restore old write authority.
+- Reuse the same Atom field composition and unchanged shared tokens, fonts and
+  primitives; no shared UI contract or artifact change.
+
 ## 0.1.0-candidate.20261019.27
 
 - Ignore a queued native pause after acknowledged Fetch disable has already
