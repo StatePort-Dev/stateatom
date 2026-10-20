@@ -45,6 +45,10 @@ function cleanText(s){
   .replace(/((?:password|passwd|secret|api[-_]?key|authorization|cookie|token|credential|session[-_]?id)["']?\s*[:=]\s*)(?:"[^"]*"|'[^']*'|[^\s&"'<>;,}\]]+)/gi,'$1"[REDACTED_SECRET]"')
   .replace(/https?:\/\/[^\s"'<>]+/gi,url=>{try{return new URL(url).origin;}catch{return'[REDACTED_URL]';}});
 }
+// Shared only with the explicit reviewed-profile codec; no active authority.
+export const handoffContentPolicy=copy({categories,scopes,limitations});
+export const filterHandoffReviewText=cleanText;
+export const filterHandoffReviewValue=(value,type)=>filteredValue(value,type,false);
 function cleanData(v){
  // Only parsed JSON, bounded by parseDiagnostic's existing tree budgets, enters here.
  if(typeof v==='string')return cleanText(v);

@@ -231,6 +231,13 @@ field replacement is labelled reviewer redaction, and broken context stays expli
 No new installed rich profile follows. Next is U03.2b.3b explicit rich public codec
 and per-note privacy; full U03/P04/C07 remain unfinished.
 
+The subsequent [U03.2b.3b](completion/24-u03-handoff-progress.md) supplies the
+**unimported** explicit reviewed profile and per-note privacy derivatives: codec30/
+focused94/full1286 pass, exact `.17` executable inputs/hosts unchanged. Retained
+notes stay immutable, async consent is snapshotted and omitted bytes are absent.
+Next is U03.2b.3c installed review/reader/persistence integration. Hash-only notes
+do not satisfy actual H05 matched-build evidence; full U03/P04/C07 remain open.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

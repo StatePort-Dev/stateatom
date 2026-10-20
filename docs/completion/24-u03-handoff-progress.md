@@ -491,3 +491,55 @@ opted-in output now exercises the rejection. No acceptance limit was increased.
 Next **U03.2b.3b** defines the explicit rich public codec and per-note privacy
 derivatives before installed/UI integration. Original minimal/v1 profiles, Task2/3
 BASEs, full H01–H06, whole-U03 review, P04/C07 and mandatory A05/L02 stay open.
+
+## U03.2b.3b — unimported explicit reviewed profile and per-note derivatives
+
+The [new working format](../features/handoff-reviewed-format.md),
+`core/handoff-reviewed.mjs`, implements a separate `reviewed-snapshot/1` codec. It
+reuses the existing minimal factory only for exact v1/frozen baseline binding,
+then validates its explicit own profile. Strict v1/minimal importers are unchanged
+and still reject the new profile. No installed/UI rich capability is claimed.
+
+Creation includes only the reviewed allowlisted projection, source identity and
+reporter baseline. Per-note/category/field/issue privacy creates a new artifact
+and baseline identity/digest. Retained Developer notes form an identical ordered
+subsequence, omitted notes leave only a cumulative count, and no removed original
+bytes/catalogue/raw v1 clone survive in the result. Omitted/unavailable content
+cannot be restored. Replacement stays filtered reviewer redaction. Parent checks
+bind exact raw bytes, revision and permitted changes; hashes never attest claims.
+
+Choices and findings are copied before asynchronous hashing. Strict public types,
+known-secret/URL checks and static metadata scopes keep source Code-linked, exchanges
+Observed-only and maps unjoined. Broken-context/omission indices are recomputed,
+false values remain false and absent windows remain not-recorded. Public1MiB/
+depth16/tree10000 limits still apply, even if the internal model's row budget fits.
+Matching-build Developer notes remain unverified; **actual H05 evidence enrichment
+is unfinished**, not satisfied by hash-only fixtures.
+
+Fresh commands:
+
+```sh
+node --test --test-isolation=none tests/handoff-reviewed.test.mjs tests/handoff-content.test.mjs tests/handoff-report.test.mjs
+npm test
+node .artifacts/u03/reviewed-codec/verify.mjs
+```
+
+Reviewed codec **30**, combined focused **94** and full **1286** pass. Receipt
+`.artifacts/u03/reviewed-codec/verification.json` binds source/log bytes and exact
+unchanged `.17` producer/archive/installed consumer/entire hosts. No native rerun
+or new package for this unimported codec; old native results retain their identity.
+
+Retained controls: missing-factory1/contract23 RED; initial24 PASS; boundaries5/29
+RED caught late consent/finding reads, null-array fallback, missing static metadata
+labels and unfiltered public patterns/origins. Fixes snapshot inputs synchronously,
+validate present arrays and public filtering, and accept the two actually emitted
+static labels. A synthetic debug copy identifies the expression-label omission,
+without product debug hooks. Types1/30 RED requires strict typed paths, truncation
+unknown and source/network/map context kinds/reasons. All acceptance assertions and
+old minimal tests remain, with no limit or evidence threshold relaxed.
+
+Next **U03.2b.3c** integrates an explicit dispatcher, both passive readable views,
+normal category/field/per-note review and compatible persistence, then creates a
+fresh immutable package and verifies actual downloaded bytes in both hosts.
+Task2/3, full H01–H06/whole-U03 review, actual source/build enrichment, P04 and C07
+remain open; no SDK/publication/other-repository work follows from this increment.

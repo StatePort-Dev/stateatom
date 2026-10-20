@@ -120,6 +120,12 @@ producer/archive/installed hosts unchanged. This is not a public rich codec,
 per-note derivative or installed review. Next U03.2b.3b pins that public format;
 remaining full Task2 acceptance is unchanged.
 
+U03.2b.3b now supplies the unimported explicit `reviewed-snapshot/1` codec and
+per-note/category/field privacy derivatives: reviewed30/focused94/full1286 pass,
+exact `.17` source/archive/installed hosts unchanged. Contract:
+`docs/features/handoff-reviewed-format.md`. Next U03.2b.3c integrates all file
+consumers and readable review together; no H05 enrichment or whole-Task2 credit.
+
 **Consumes:** Task1 frozen baseline and exact original diagnostic, explicit review
 choices. **Produces:** validated historical v2 record/serializer/derivative and
 version-aware local storage without changing old record interpretation.
