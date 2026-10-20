@@ -444,14 +444,35 @@ limits and native-driver failures remain historical; none imply normal creation.
 
 ### Bounded U03.2c.3c.2: normal reporter input capture and reviewed save
 
-- [ ] Pin explicit ordinary UI acquisition/consent/source-binding lifecycle from
+- [x] Pin explicit ordinary UI acquisition/consent/source-binding lifecycle from
   existing save/Prepare and owner-bound atomic capture. No current capture may be
   attached to a different older saved v1; omitted historical outcomes stay unknown.
-- [ ] RED/GREEN default-off categories/field omissions, original/later observation
+- [x] RED/GREEN default-off categories/field omissions, original/later observation
   separation, exact immutable review/save/download and stale owner/parent/Cancel.
   Keep no-editor and legacy saved-snapshot workflows usable without fabrication.
-- [ ] Fresh immutable candidate and meaningful source/types/admission/both-host
+- [x] Fresh immutable candidate and meaningful source/types/admission/both-host
   actual Live/Draft native/response saved outcomes with explicit scope, affected
   ordinary controls/storage, keyboard/narrow/zoom and reference comparison.
-- [ ] Local bounded commit. Full H01-H06 reconciliation and one whole-U03 Task5
+- [x] Local bounded commit. Full H01-H06 reconciliation and one whole-U03 Task5
   review/fix pass remain separate; P04/C07/A05/L02 are not completed by paperwork.
+
+3c.2 complete within normal current-input reporter boundary: .29 full1597/
+focused548/native33/first-viewport7/ordinary41/storage15/types2/admission7.
+Native33 actually creates eight reports across both hosts and both input families/
+modes; original selected versus later observation remains explicit. Private reply
+is dialog-only; default-off categories/field omission affect exact public bytes.
+Intermediate27/28 and raw failures remain historical. No whole-U03/H05/P04 credit.
+
+### Next bounded U03.4: exact H01–H06 reconciliation and remaining checks
+
+- [ ] Map each original H01–H06 criterion to current code and actual source/native
+  results with exact identities; retain historical/control/fixture distinctions.
+  Credit completed work without rerunning all old experiments.
+- [ ] Run only remaining targeted checks justified by changed common UI/reader:
+  actual current source comparison/build boundary, malformed nested-profile
+  readable refusal, and pending local Draft capture without Apply/adoption.
+  Fix a demonstrated gap with preserved RED/control; never lower a criterion.
+- [ ] Bind unchanged historical majority/legacy/expiry criteria separately from
+  affected fresh checks and current package/source/host identities. No P04 window.
+- [ ] Local bounded commit with Task2/3/4 acceptance reconciled from evidence.
+  Then ONE fresh whole-U03 Task5 review and one tested fix pass, no per-slice loop.

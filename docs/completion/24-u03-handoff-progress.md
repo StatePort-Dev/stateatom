@@ -1406,3 +1406,69 @@ Next **U03.2c.3c.2 — normal reporter capture/consent/review/save**, preserving
 source ownership and immutable review. Task2/3 remain open at their recorded bases;
 H01-H06 reconciliation and one whole-U03 Task5 review/fix pass follow. No project
 re-audit, SDK, publication, push, other repo or memory update.
+
+## U03.2c.3c.2 — normal current-input reporter, candidate .29
+
+Working contract: [current reporter](../features/handoff-input-reporter.md).
+Separate saved/current actions use the existing Diagnostic area. Current Prepare
+captures the actual view owner and a **fresh atomic v1**; no old saved v1 is
+matched by selector/name. Original selected observation/time and later editor
+observation remain separate. The private reply stays in dialog memory for local
+filtered review. Four input categories default off in public bytes; individual
+fields can be omitted. Unapplied local drafts are excluded, never reported as
+attempted writes. Capture does not flush/Apply/cancel timers, read the app,
+refresh permission or save. Pending open/read/write/close asks the user to wait;
+closed historical capture remains usable once close settles.
+
+Context changes/Cancel/disposal abort obsolete replies and clear private data,
+preserving typed reporter words. Saved-library selection cannot replace an open
+current draft's source. Exact Save acknowledgement and Download bind reviewed
+public bytes. An explicit simple fallback names excluded technical/input history;
+nothing is silently truncated or reinstated.
+
+Current receipt: .artifacts/atom/2026-10-20T19-24-00-849Z/atom-handoff.json.
+Full1597/focused548, actual current reporter33/first-viewport7/ordinary41/storage15,
+types2/admission7 PASS. Aggregate .artifacts/u03/input-reporter/verification29.json.
+Native .artifacts/u03/input-reporter-native/2026-10-20T19-25-21-560Z/results.json
+uses actual U05 selection and ordinary Live/Draft native/response edits to create
+**eight reviewed saved reports** across both installed hosts. Exact selected native
+document/time/source UUID/digest, originaltrue/laterfalse, ACK/delivery phases and
+unknown consumption/effect survive inclusion/field omission. Default exclusions,
+no-editor not-recorded history, Save/download, restart without an app tab and clean
+recipient unverified notes pass. No synthetic formatter file is counted as creation.
+
+No app-page facade or parallel app-target CDP session is created. Harness probes
+use chrome.scripting MAIN, geometry ISOLATED and the existing Atom debugger Input.
+Fixture values/getter/request counters stay unchanged during report preparation;
+this is not absence-of-all-app-protocol proof. Source/runtime checks separately
+cover no-new-read/flush. The synthetic HTTP fixture server remains available in
+recipient checks; original app tabs/IDE/source helper are absent. Inspector
+Network observes HTTP0 with reader.js reload positive control, permissions unchanged.
+
+History retained: owner-capture RED4/4, source-review RED2/2, current-UI RED6/6;
+controller22/source27/UI38/boundaries48/sharedUI75 GREEN. Intermediate .27
+full1595/focused546/types2/admission7/native33/ordinary41/storage15/visual7 remains.
+Native27a failed15 because its own app tab was left open and restored by Chrome;
+explicit ordinary editor Close + owned app-tab removal corrected setup, native27b33
+passed unchanged code. Functional27 screenshots named first390 had780x437 surfaces
+after app-tab activation; **not first-viewport proof**. A separate focused visual
+driver resets/probes geometry, PNG size, dialog scroll and typography; no catalogue
+is recredited. Original-time RED1 led to explicit Original selected/time/freshness/
+No new app observation wording in .28 (full1596/focused547/types2/admission7/native33).
+Close-queue RED1 found capture allowed before the close reply; .29's private epoch
+guard passes controller/UI34 and final checks. No acceptance threshold was lowered.
+
+Final visual result:
+.artifacts/u03/input-reporter-visual-native/2026-10-20T19-26-45-434Z/results.json.
+Agent compared actual .29 first390/440/200% with supplied Settings HTML and narrow19:
+shared13/12px Inter, neutral borders, aligned controls and wrapped readable fields.
+Two source actions and optional input privacy are necessary local extensions
+absent from the prototype. Tokens/primitives unchanged; screenshots are candidates,
+not human approval. Independent human review is optional.
+
+Next **U03.4 — exact H01–H06 reconciliation and remaining targeted checks**:
+credit completed work; check current source-comparison/build, nested-profile
+readable refusal and pending local Draft capture where current changes justify it.
+Then one whole-U03 Task5 review and one tested fix pass. Task2/3/U03/P04/C07/A05/L02
+remain open until their own acceptance. No old catalogue/majority/expiry campaign
+repeat, SDK/publication/push/other repository or memory update.

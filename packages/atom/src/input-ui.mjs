@@ -95,5 +95,5 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
  for(const m of['live','draft'])$('input-mode-'+m).onclick=()=>run(()=>controller.setMode(m));
  for(const[id,fn]of[['input-apply',()=>controller.apply()],['input-discard',()=>controller.discard()],['input-read',()=>controller.refresh()],['input-undo',()=>controller.undo()],['input-baseline',()=>controller.baseline()],['input-close',()=>controller.close()]])$(id).onclick=()=>run(fn);
  $('input-reconnect').onclick=()=>run(()=>onReconnect?.());
- return Object.freeze({update,close:reason=>controller.close(reason),dispose(){if(disposed)return;disposed=true;++capEpoch;return controller.dispose();},snapshot:controller.snapshot});
+ return Object.freeze({update,capture:options=>controller.capture(options),close:reason=>controller.close(reason),dispose(){if(disposed)return;disposed=true;++capEpoch;return controller.dispose();},snapshot:controller.snapshot});
 }

@@ -101,6 +101,7 @@ function renderInspection(){
  $('first-read-joins').replaceChildren(...(profile.fullPath?['Code-linked · reviewed source/effect derivation '+profile.sourceProof.profile,'Observed · '+profile.occurrence.pointer+' = '+JSON.stringify(profile.occurrence.readValue)+' · parse '+profile.occurrence.parseId+' · browser request '+profile.occurrence.requestId,'Observed · read '+profile.occurrence.readId+' → target '+profile.occurrence.targetId+' → commit '+profile.occurrence.commitId,...profile.limits]:[]).map(text=>{const li=document.createElement('li');li.textContent=text;return li;}));
  $('property').value=pendingProperties.get(tab())?.property||selectedState?.property||'text';$('property').disabled=pendingProperties.has(tab());
  $('save-report').disabled=!selectedState?.selection&&!selectedState?.stale?.target;
+ handoffUI.updateCurrent({available:!!(selectedState?.selection||selectedState?.stale?.target)&&supportsCapabilityPolicy(selectedState?.capabilityPolicy)&&!connectionLost,contextKey:JSON.stringify([tab(),tabGeneration,selectionGeneration,selectedState?.run,selectedState?.selection?.domIdentity,selectedState?.selection?.observedAt,selectedState?.stale?.at,selectedState?.property,connectionLost])});
  gate('load',admission('inspect-selector'),!selectedState?.selection?.selector&&!selectedState?.stale?.target?.selector);
  const picker=selectedState?.picker,picking=['starting','picking','resolving'].includes(picker?.status);
  gate('pick',admission(picking?'cancel-pick':'pick'));$('pick').setAttribute('aria-label',picking?'Cancel element selection':'Select page element');$('pick').setAttribute('aria-pressed',String(picking));$('pick').title=picking?'Cancel selection; Escape also cancels on the page':$('pick').title;
@@ -192,6 +193,12 @@ $('atom-restore').onclick=()=>action(async()=>{const id=tab(),intent=selectionIn
 let reportLibrary;
 const handoffUI=createHandoffUI({$,
  getSource:({signal}={})=>reportLibrary.getSource(signal),
+ getCurrent:async({signal}={})=>{
+  const id=tab(),epoch=tabGeneration,generation=selectionGeneration;
+  const result=await inputUI.capture({tabId:id,includeContent:$('diagnostic-content').checked,notes:$('diagnostic-notes').value,includeCategories:['inputIdentities','inputValues','inputLocations','inputErrors'],signal});
+  if(id!==tab()||epoch!==tabGeneration||generation!==selectionGeneration)throw atomError('STALE_CAPTURE','Selected occurrence changed; prepare the current issue again.');
+  return result;
+ },
  saveReviewed:async(raw,{signal})=>{const result=await rpc({op:'save-handoff',raw},signal);$('diagnostic-status').textContent='Saved a reviewed report locally; not sent.'+(result.evicted.length?' Oldest local reports removed by retention: '+result.evicted.length+'.':'');await reportLibrary.refresh();return result;},
  download:(raw,name)=>{const url=URL.createObjectURL(new Blob([raw],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download=name;urls.add(url);a.click();later(()=>{URL.revokeObjectURL(url);urls.delete(url);},1000);}
 });

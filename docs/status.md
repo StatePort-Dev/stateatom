@@ -977,5 +977,12 @@ note/source/privacy on .26: full1579/focused512/native27/ordinary41/storage15/
 types2/admission7. Native27 has no app tab and reads historical25 captures plus
 labelled synthetic source controls; original/later observations and unknown
 consumption/effect remain distinct. Private capture obeys existing unsaved-cache
-expiry without app refresh. Next U03.2c.3c.2 supplies normal reporter capture/
-consent/review/save. Full U03/Task2/3/P04/C07/A05/L02 remain open.
+expiry without app refresh. U03.2c.3c.2 now supplies normal current reporter
+capture/consent/review/save on .29: full1597/focused548/native33/first-viewport7/
+ordinary41/storage15/types2/admission7. Actual Live/Draft native and response
+changes are captured under the same owner with fresh source identity, reviewed
+with default-off input categories/field omission, saved/downloaded exactly, then
+reopened after restart and read by a clean recipient. Original observation time
+is explicit; acquisition waits for an in-flight editor-close reply.
+Next U03.4 reconciles H01–H06 and remaining focused checks. Full U03/Task2/3/
+P04/C07/A05/L02 remain open; no whole-feature readiness follows from this document.

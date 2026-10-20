@@ -5,7 +5,7 @@ import{createInputDraft}from'./input-draft.mjs';
 const error=(code,message=code)=>Object.assign(new Error(message),{code}),clone=v=>structuredClone(v);
 export function createInputController({client,onChange=()=>{},clock={setTimeout:(...args)=>globalThis.setTimeout(...args),clearTimeout:id=>globalThis.clearTimeout(id)},debounceMs=250}={}){
  if(typeof client?.request!=='function'||typeof clock.setTimeout!=='function'||typeof clock.clearTimeout!=='function'||!Number.isFinite(debounceMs)||debounceMs<0)throw error('INVALID_PLATFORM');
- const ownerId=crypto.randomUUID(),timers=new Map(),queued=new Set();let scope=null,last=null,model=null,mode='live',epoch=0,busy=false,opening=null,closing=null,flight=null,disposed=false,connectionLost=false,failure=null;
+ const ownerId=crypto.randomUUID(),timers=new Map(),queued=new Set();let scope=null,last=null,model=null,mode='live',epoch=0,busy=false,opening=null,closing=null,closingCaptureEpoch=null,flight=null,disposed=false,connectionLost=false,failure=null;
  const active=()=>!disposed&&!connectionLost&&!!scope&&!!last&&!last.closed;
  function snapshot(){return clone({ownerId,mode,active:active(),opening:!!opening,busy,connectionLost,editor:last,draft:model?.snapshot()||null,error:failure,sourceKind:scope?.sourceKind||last?.sourceKind||null,tabId:scope?.tabId||last?.target.tabId||null});}
  function emit(){if(disposed)return;try{onChange(snapshot());}catch{}}
@@ -23,14 +23,14 @@ export function createInputController({client,onChange=()=>{},clock={setTimeout:
  async function close(reason='Input editor closed',{remote=false}={}){
   if(!scope)return closing||snapshot();
   const own=scope,closingFlight=flight,at=++epoch;scope=null;flight=null;busy=false;opening=null;cancelScheduled();own.abort.abort();
-  if(model&&last)model.receive({...last,closed:true});emit();
+  closingCaptureEpoch=at;if(model&&last)model.receive({...last,closed:true});emit();
   closing=(async()=>{
    try{
     if(remote){if(closingFlight)model?.reject(closingFlight.ticket,'INSPECTOR_DISCONNECTED');return snapshot();}
     const value=await client.request({op:'inputs-close',tabId:own.tabId,ownerId,...(last?.investigationId?{investigationId:last.investigationId}:{})});
     if(at===epoch&&value?.investigationId===last?.investigationId){if(closingFlight)model.settle(closingFlight.ticket,value);receive(value);}
    }catch(e){if(at===epoch){if(closingFlight)model?.reject(closingFlight.ticket,e.code||'CLEANUP_UNCONFIRMED');fail(e);}}
-   finally{if(at===epoch)emit();}
+   finally{if(closingCaptureEpoch===at)closingCaptureEpoch=null;if(at===epoch)emit();}
    return snapshot();
   })();return closing;
  }
@@ -97,6 +97,16 @@ export function createInputController({client,onChange=()=>{},clock={setTimeout:
   else if(state.inputs&&state.inputs.investigationId!==last.investigationId){void close('Input investigation changed',{remote:true});}
  }
  const off=client.subscribeConnection?.(()=>{if(disposed)return;connectionLost=true;failure={code:'INSPECTOR_DISCONNECTED',message:'Inspector connection lost; reopen this inspector.'};void close('Inspector connection lost',{remote:true});emit();})||(()=>{});
+ async function capture({tabId,includeContent=false,notes='',includeCategories=[],signal}={}){
+  if(disposed)throw error('DISPOSED');if(connectionLost)throw error('INSPECTOR_DISCONNECTED');
+  if(signal?.aborted)throw error('CANCELLED');if(busy||opening||closingCaptureEpoch!==null)throw error('BUSY','Wait for the current input operation before preparing a report.');
+  if(!Number.isSafeInteger(tabId)||tabId<=0)throw error('INVALID_MESSAGE');
+  const at=epoch,expected=last?.target.tabId===tabId?{investigationId:last.investigationId,expectedRevision:last.revision}:{};
+  // No read/flush/Apply, no timer cancellation or local draft projection.
+  const value=await client.request({op:'inputs-capture',tabId,ownerId,includeContent,notes,includeCategories,...expected},{signal});
+  if(signal?.aborted)throw error('CANCELLED');if(disposed)throw error('DISPOSED');if(connectionLost)throw error('INSPECTOR_DISCONNECTED');if(at!==epoch)throw error('STALE_CAPTURE');
+  return value;
+ }
  function dispose(){if(disposed)return closing||Promise.resolve(snapshot());disposed=true;off();return close('Input view disposed');}
- return Object.freeze({open,edit,flush,setMode,discard,apply,refresh,undo:()=>restore('inputs-undo'),baseline:()=>restore('inputs-baseline'),update,close,dispose,snapshot});
+ return Object.freeze({open,edit,flush,setMode,discard,apply,refresh,capture,undo:()=>restore('inputs-undo'),baseline:()=>restore('inputs-baseline'),update,close,dispose,snapshot});
 }

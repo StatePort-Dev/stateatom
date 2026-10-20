@@ -21,7 +21,7 @@ export function handoffInputSummary(record){
  if(record.profile!=='input-evidence/1')return'';
  if(record.inputEvidence===null)return'Historical input evidence: omitted from this copy; cannot be restored here.';
  const p=record.inputEvidence.projection,s=p.snapshot;
- return'Historical input evidence: '+(s?s.availableTransactions+' retained changes · '+s.freshness:'not recorded')+'. Application consumption and selected-property effect remain unknown.';
+ return'Historical input evidence: '+(s?s.availableTransactions+' retained '+(s.availableTransactions===1?'change':'changes')+' · '+s.freshness:'not recorded')+'. Application consumption and selected-property effect remain unknown.';
 }
 export function handoffInputText(record,{advanced=false}={}){
  if(record.profile!=='input-evidence/1')return'';const packet=record.inputEvidence;

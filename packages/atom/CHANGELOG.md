@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.29
+
+- Refuse current-report acquisition while the same view is still awaiting its
+  editor-close reply. Once close settles, historical closed-editor capture remains
+  available with the exact owner/revision. No queue flush or app read is added.
+  Candidate .28 remains unchanged as an intermediate.
+
+
+## 0.1.0-candidate.20261020.28
+
+- Label the original selected observation with its recorded time/freshness on
+  the current-report first view. Acquisition time is not a new app observation.
+  Candidate .27 and its functional/visual results remain an intermediate.
+
+
+## 0.1.0-candidate.20261020.27
+
+- Add explicit Prepare current issue beside saved-snapshot preparation. Capture
+  the same editor owner and fresh source together, then review/default-off input
+  categories and field omissions before exact local Save/Download. Unapplied
+  local draft values are excluded; capture does not flush, Apply or refresh app
+  authority. No raw private reply is saved or exported.
+- Keep original/later observations separate, invalidate obsolete capture/privacy
+  previews, retain typed reporter words on Cancel and keep current source
+  independent of the selected saved-library file. Simple fallback explicitly
+  excludes technical details and input history.
+- Extend existing Diagnostic/Settings controls with a current-source action and
+  optional input privacy disclosure. Shared13/12px typography and tokens remain;
+  no supplied handoff prototype counterpart exists. Candidate screenshots and
+  reference/layout/keyboard checks retain their own scope.
+
+
 ## 0.1.0-candidate.20261020.26
 
 - Admit passive input-evidence/1 public files together with readable historical

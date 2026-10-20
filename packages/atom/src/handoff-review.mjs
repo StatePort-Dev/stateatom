@@ -74,12 +74,14 @@ export function createHandoffReview({document,root,onChange=()=>{}}){
  function inputContent(record,parent){
   const box=disclosure('Historical input evidence');
   if(!record.inputEvidence){box.append(el('p','Input evidence already omitted; cannot be restored here.','sp-atom-review-help'));parent.append(box);return;}
-  const fields=handoffInputFields(record),whole=checkbox('Omit all input evidence from this copy','spReviewInputWhole','all');inputWhole=whole.input;box.append(whole.line,el('p','Only historical fragments are retained. Consumption and selected-property effect remain unknown. No runtime permission or input plan is adopted.','sp-atom-review-help'));
+  const fields=handoffInputFields(record),creating=mode==='input-source';
+  if(!creating){const whole=checkbox('Omit all input evidence from this copy','spReviewInputWhole','all');inputWhole=whole.input;box.append(whole.line);}
+  box.append(el('p',(creating?'Categories are excluded from the file until included. Local draft fields are not runtime history. ':'')+'Only historical fragments are retained. Consumption and selected-property effect remain unknown. No runtime permission or input plan is adopted.','sp-atom-review-help'));
   for(const[category,label]of Object.entries(handoffInputCategories)){
    const all=fields.filter(f=>f.category===category),kept=all.filter(f=>['included','filtered'].includes(f.state));
    const group=disclosure(label+' · '+kept.length+' retained / '+(all.length-kept.length)+' omitted or not recorded');
-   if(kept.length){const check=checkbox('Omit '+label.toLowerCase(),'spReviewInputCategory',category,{locked:()=>inputWhole.checked});inputCategories.push(check.input);group.append(check.line);
-    for(const f of kept){const row=el('div',undefined,'sp-atom-review-field'),choice=checkbox('Omit '+handoffInputFieldLabel(f.path),'spReviewInputField',f.path,{locked:()=>inputWhole.checked||check.input.checked});inputFields.push({input:choice.input,category:check.input});row.append(choice.line,el('div',(f.state==='filtered'?'Filtered historical fragment: ':'Historical fragment: ')+valueText(f.value),'sp-atom-review-preview'));group.append(row);}
+   if(kept.length){const check=checkbox((creating?'Include ':'Omit ')+label.toLowerCase(),'spReviewInputCategory',category,{locked:()=>inputWhole?.checked===true});inputCategories.push(check.input);group.append(check.line);
+    for(const f of kept){const row=el('div',undefined,'sp-atom-review-field'),choice=checkbox('Omit '+handoffInputFieldLabel(f.path),'spReviewInputField',f.path,{locked:()=>inputWhole?.checked===true||(creating?!check.input.checked:check.input.checked)});inputFields.push({input:choice.input,category:check.input});row.append(choice.line,el('div',(f.state==='filtered'?'Filtered historical fragment: ':'Historical fragment: ')+valueText(f.value),'sp-atom-review-preview'));group.append(row);}
    }
    box.append(group);
   }
@@ -87,11 +89,12 @@ export function createHandoffReview({document,root,onChange=()=>{}}){
  }
  function read(){
   if(!mode)return{};
+  if(mode==='input-source')return{includeCategories:inputCategories.filter(n=>n.checked).map(n=>n.dataset.spReviewInputCategory),omitFields:inputFields.filter(f=>f.input.checked&&f.category.checked).map(f=>f.input.dataset.spReviewInputField)};
   const includeFields=[],omitFields=[],replaceFields=[];
   for(const f of fieldControls){if(mode==='report'&&f.categoryControl?.checked)continue;if(!f.allowed.has(f.select.value))throw error('INVALID_CONTENT_REVIEW','Choose a supported review option');if(f.select.value==='include')includeFields.push(f.id);else if(f.select.value==='omit')omitFields.push(f.id);else if(f.select.value==='replace'){if(f.replacement.value.length>4096)throw error('HANDOFF_LIMIT','Reviewer replacement exceeds 4096 characters');replaceFields.push({id:f.id,text:f.replacement.value});}}
   const categories=categoryControls.filter(n=>n.checked).map(n=>n.dataset.spReviewCategory);
   if(mode==='source')return{includeCategories:categories,includeFields,omitFields,replaceFields};
   const result={omitIssueFields:issueControls.filter(c=>!c.locked&&c.input.checked).map(c=>c.name),omitCategories:categories,omitFields,replaceFields,omitNotes:noteControls.filter(n=>n.checked).map(n=>n.dataset.spReviewNote)};if(attachmentMode){result.omitEvidence=[];result.omitEvidenceFiles=[];for(const g of evidenceControls){if(g.noteInput?.checked)continue;if(g.input.checked)result.omitEvidence.push(g.findingId);else if(!g.category?.checked){const files=g.files.filter(f=>f.input.checked).map(f=>f.file);if(files.length)result.omitEvidenceFiles.push({findingId:g.findingId,files});}}}if(inputMode)return{baseReview:result,omitInputEvidence:inputWhole?.checked===true,inputReview:{omitCategories:inputWhole?.checked?[]:inputCategories.filter(n=>n.checked).map(n=>n.dataset.spReviewInputCategory),omitFields:inputWhole?.checked?[]:inputFields.filter(f=>f.input.checked&&!f.category.checked).map(f=>f.input.dataset.spReviewInputField)}};return result;
  }
- return Object.freeze({source,report,read,clear,busy(value){busy=value===true;applyDisabled();}});
+ return Object.freeze({source,report,inputSource(packet){clear();mode='input-source';inputContent({profile:'input-evidence/1',inputEvidence:packet},root);},read,clear,busy(value){busy=value===true;applyDisabled();}});
 }

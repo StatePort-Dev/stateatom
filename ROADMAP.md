@@ -180,7 +180,12 @@ installs passive .26 file/storage/read/note/source/privacy: full1579/focused512/
 native27/ordinary41/storage15/types2/admission7. Native27 opens historical25 inputs
 and separately labelled synthetic source controls without an app tab; no new
 acquisition is claimed. Capture respects existing unsaved-cache expiry without
-browser refresh. Next U03.2c.3c.2 is normal reporter capture/consent/review/save.
+browser refresh. U03.2c.3c.2 now supplies normal current reporter capture/consent/
+review/save on .29: full1597/focused548/native33/first-viewport7/ordinary41/
+storage15/types2/admission7. Actual Live/Draft native/response outcomes keep exact
+source ownership and separate original/later observations; default-off input
+privacy governs exact saved files. Next U03.4 reconciles H01–H06 on current
+bindings and runs remaining targeted checks before one whole-U03 review.
 Task2/3/whole U03, P04/C07 and mandatory A05/L02 remain open. Historical evidence
 below stays under its own identity; independent human review is optional, candidate
 screenshots are not human visual approval. No SDK, publication or another repository.

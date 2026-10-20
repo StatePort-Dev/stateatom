@@ -808,7 +808,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.2c.3c.2",
+      "active_slice": "U03.4",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -1202,19 +1202,40 @@
           "whole_U03_review": false,
           "verification": ".artifacts/u03/input-passive/verification26.json",
           "record": "24-u03-handoff-progress.md"
+        },
+        {
+          "id": "U03.2c.3c.2",
+          "status": "complete-within-normal-current-input-reporter-boundary",
+          "candidate": "0.1.0-candidate.20261020.29",
+          "checks": {
+            "full_source": 1597,
+            "focused": 548,
+            "native_current_reporter": 33,
+            "native_first_viewport": 7,
+            "native_ordinary": 41,
+            "native_storage": 15,
+            "packed_types": 2,
+            "package_admission": 7
+          },
+          "normal_reporter_outcome_UI": true,
+          "actual_saved_U02_outcomes": true,
+          "evidence_scope": "Actual Live/Draft native/response field changes, exact current owner/source, explicit default-off privacy and reviewed Save/download/restart/clean recipient in both packed hosts. Not all U02 catalogue reacquisition, H05/source execution, P04 or full U03.",
+          "whole_U03_review": false,
+          "verification": ".artifacts/u03/input-reporter/verification29.json",
+          "record": "24-u03-handoff-progress.md"
         }
       ],
       "current_candidate": {
-        "version": "0.1.0-candidate.20261020.26",
-        "handoff": ".artifacts/atom/2026-10-20T18-45-49-791Z/atom-handoff.json",
-        "sha256": "e88748c188255931a602668fcacc8dfc0ea85d77799fdc233ba808a74c96df1a",
-        "verification": ".artifacts/u03/input-passive/verification26.json",
-        "boundary": "Installed passive input-file/read/store/note/source/privacy; native27 uses no app tab. Historical25 acquisition retains separate app-target observer qualification. Normal active reporter capture/consent/review/save and whole U03 remain pending.",
+        "version": "0.1.0-candidate.20261020.29",
+        "handoff": ".artifacts/atom/2026-10-20T19-24-00-849Z/atom-handoff.json",
+        "sha256": "77a9f63d4a1cf4fd8b25d550c0c9469395695a7b4801d67dec064cd98456a97c",
+        "verification": ".artifacts/u03/input-reporter/verification29.json",
+        "boundary": "Normal current and saved-source preparation, explicit local input review/Save/download/read/notes; actual original/later observations and native ACK/response delivery stay distinct and untrusted. Full H01-H06 reconciliation and whole-U03 review remain open.",
         "historical_acquisition_qualification": ".artifacts/u03/input-report/native25-app-probe-qualification.json"
       },
       "remaining_acceptance": [
-        "separately bound saved U02 input outcomes",
-        "full H01-H06 reconciliation plus one fresh whole-U03 review and tested fix pass"
+        "full H01-H06 reconciliation on current bindings and remaining targeted checks",
+        "one fresh whole-U03 review and tested Critical/Important fix pass"
       ]
     },
     {
@@ -2000,27 +2021,26 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "U03.2c.3c.1",
-      "status": "complete-within-installed-passive-input-profile-boundary",
-      "candidate": "0.1.0-candidate.20261020.26",
-      "profile": "input-evidence/1",
+      "id": "U03.2c.3c.2",
+      "status": "complete-within-normal-current-input-reporter-boundary",
+      "candidate": "0.1.0-candidate.20261020.29",
       "checks": {
-        "full_source": 1579,
-        "focused": 512,
-        "native_passive_input": 27,
+        "full_source": 1597,
+        "focused": 548,
+        "native_current_reporter": 33,
+        "native_first_viewport": 7,
         "native_ordinary": 41,
         "native_storage": 15,
         "packed_types": 2,
         "package_admission": 7
       },
-      "installed_profile_dispatch_storage": true,
-      "passive_input_read_note_source_privacy": true,
-      "normal_reporter_outcome_UI": false,
-      "actual_saved_U02_outcomes": false,
+      "normal_reporter_outcome_UI": true,
+      "actual_saved_U02_outcomes": true,
+      "evidence_scope": "Actual Live/Draft native/response field changes, exact current owner/source, explicit default-off privacy and reviewed Save/download/restart/clean recipient in both packed hosts. Not all U02 catalogue reacquisition, H05/source execution, P04 or full U03.",
       "whole_U03_review": false,
-      "verification": ".artifacts/u03/input-passive/verification26.json",
+      "verification": ".artifacts/u03/input-reporter/verification29.json",
       "record": "24-u03-handoff-progress.md",
-      "next_item": "U03.2c.3c.2"
+      "next_item": "U03.4"
     },
     "next_item": "U03",
     "new_full_task_acceptances": [
@@ -2412,10 +2432,33 @@
         "record": "24-u03-handoff-progress.md",
         "verification": ".artifacts/u03/reviewed-integration/verification18.json",
         "next_item": "U03.2b.3c.2"
+      },
+      {
+        "id": "U03.2c.3c.1",
+        "status": "complete-within-installed-passive-input-profile-boundary",
+        "candidate": "0.1.0-candidate.20261020.26",
+        "profile": "input-evidence/1",
+        "checks": {
+          "full_source": 1579,
+          "focused": 512,
+          "native_passive_input": 27,
+          "native_ordinary": 41,
+          "native_storage": 15,
+          "packed_types": 2,
+          "package_admission": 7
+        },
+        "installed_profile_dispatch_storage": true,
+        "passive_input_read_note_source_privacy": true,
+        "normal_reporter_outcome_UI": false,
+        "actual_saved_U02_outcomes": false,
+        "whole_U03_review": false,
+        "verification": ".artifacts/u03/input-passive/verification26.json",
+        "record": "24-u03-handoff-progress.md",
+        "next_item": "U03.2c.3c.2"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "U03.2c.3c.1 installed passive input-evidence/1 on .26: full1579/focused512/native27/ordinary41/storage15/types2/admission7. Exact bytes, source/note component parents, readable original/later observations and monotone privacy; capture obeys existing unsaved expiry without app refresh. Native27 has no app tab; old25 acquisition qualification retained. Next3c.2 normal reporter capture/consent/review/save; Task2/3/whole U03 open.",
+    "current_activity_note": "U03.2c.3c.2 normal current reporter on .29: full1597/focused548/native33/first-viewport7/ordinary41/storage15/types2/admission7. Actual Live/Draft native/response outcomes with fresh owner-bound source, input privacy default-off/per-field omit, exact Save/download/restart and clean recipient. Original selected time shown; capture waits for pending editor close. Intermediate27/28 and all failures retained. NextU03.4 exact H01-H06 reconciliation/remaining focused checks before one whole-U03 Task5 review; P04/C07/A05/L02 remain open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "U03"
