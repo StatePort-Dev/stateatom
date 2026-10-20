@@ -808,7 +808,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.2b.3",
+      "active_slice": "U03.2b.3b",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -917,6 +917,24 @@
           "rich_privacy_complete": false,
           "full_H01_H06": false,
           "whole_U03_review": false,
+          "record": "24-u03-handoff-progress.md"
+        },
+        {
+          "id": "U03.2b.3a",
+          "status": "complete-within-unimported-content-projection-boundary",
+          "files": [
+            "core/handoff-content.mjs",
+            "tests/handoff-content.test.mjs"
+          ],
+          "tests": {
+            "projection": 29,
+            "full": 1256
+          },
+          "runtime_importer": false,
+          "rich_public_profile": false,
+          "granular_installed_privacy_complete": false,
+          "issued_candidate_unchanged": "0.1.0-candidate.20261020.17",
+          "verification": ".artifacts/u03/content-model/verification.json",
           "record": "24-u03-handoff-progress.md"
         }
       ],
@@ -1716,12 +1734,12 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "U03.3a",
-      "status": "complete-within-minimal-ui-boundary",
-      "candidate": "0.1.0-candidate.20261020.12",
+      "id": "U03.2b.3a",
+      "status": "complete-within-unimported-content-projection-boundary",
       "record": "24-u03-handoff-progress.md",
-      "verification": ".artifacts/u03/ui/verification12.json",
-      "next_item": "U03.2b"
+      "verification": ".artifacts/u03/content-model/verification.json",
+      "issued_candidate_unchanged": "0.1.0-candidate.20261020.17",
+      "next_item": "U03.2b.3b"
     },
     "next_item": "U03",
     "new_full_task_acceptances": [
@@ -2108,7 +2126,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "F05 complete with unchanged authority workers; U06 design complete; current .12 minimal two-role UI verified, whole U03/C07 and v2 storage/rich review unfinished",
+    "current_activity_note": "Current .17 reviewed local Save/reopen/import UI remains verified; unimported granular content projection29/full1256 complete. Rich public codec/per-note review/UI and whole U03/C07 remain open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "U03"

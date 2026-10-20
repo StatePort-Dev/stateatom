@@ -224,6 +224,13 @@ and agent visual comparison are recorded with all failed controls. The minimal
 profile still excludes technical fragments; next is U03.2b.3 rich category/field/
 per-note privacy. Full U03/H01–H06/whole review/C07 and P04 remain open.
 
+The later [U03.2b.3a](completion/24-u03-handoff-progress.md) adds an **unimported**
+granular saved-source review model: projection29/full1256 pass, with exact `.17`
+producer/archive/installed hosts unchanged. Private categories default to omission,
+field replacement is labelled reviewer redaction, and broken context stays explicit.
+No new installed rich profile follows. Next is U03.2b.3b explicit rich public codec
+and per-note privacy; full U03/P04/C07 remain unfinished.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

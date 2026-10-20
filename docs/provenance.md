@@ -268,3 +268,13 @@ handler-inspection implementation or model SDK was copied. The shared UI referen
 set is unchanged. The compiler marker gains a column suffix; the first-read recipe
 and self receipt were updated for these exact reviewed input bytes, without changing
 the proof criteria or historical manifests.
+
+## Historical handoff — 2026-10-20
+
+New `core/handoff-{draft,report,store,content}.mjs`, handoff controllers and new
+source/native tests are original Apache-2.0 work. The content projection adapts
+secret-pattern filtering from the existing original Apache diagnostic module; no
+external sanitizer or new dependency is copied. Changes to imported runtime/UI
+files preserve their historical origin and notices. Private synthetic reports and
+verification receipts are local evidence, not published artifacts or runtime proof
+for an unimported model. Existing MIT/Apache/OFL notices remain unchanged.

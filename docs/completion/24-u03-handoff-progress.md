@@ -448,3 +448,46 @@ not broadened. Next **U03.2b.3 — rich privacy/technical evidence profile** mus
 explicit category/field/per-note review without silently gaining data or trust.
 Tasks2/3, full H01–H06, one whole-U03 review, P04 and C07 remain open. SDK,
 publication and other-repository changes remain outside this run.
+
+## U03.2b.3a — unimported granular saved-source projection
+
+The [working contract](../features/handoff-content-review.md) and
+`core/handoff-content.mjs` add a bounded pure model, not a public rich profile or
+installed feature. `createHandoffContentReview(rawV1)` binds the exact saved bytes
+and returns a private filtered catalogue and detached frozen projection. Thirteen
+explicit categories and individual field omission/reviewer replacement exclude
+private content by default. Only allowlisted v1 fields are eligible; no raw source
+clone is hidden in the result. Origin/path consent is separate, query/credentials/
+fragment are always removed, sensitive keys/patterns remain filtered after opt-in,
+and source-map consent is independent. Filtering is not complete PII removal.
+
+Original evidence kinds/freshness and actual false booleans remain; a replacement
+is reviewer redaction, never a new observation. Missing/filtered/omitted context
+makes its join unverifiable. Compilation journal exclusion is explicit; map/source
+bodies, U02 history, Action executions and observation windows absent from v1 are
+not reconstructed. Strict choices reject accessors, sparse arrays, conflicts and
+unknown IDs; input/row/output limits reject instead of silently discarding evidence.
+
+Fresh commands:
+
+```sh
+node --test --test-isolation=none tests/handoff-content.test.mjs
+npm test
+node .artifacts/u03/content-model/verify.mjs
+```
+
+Source projection **29** and full **1256** pass. Exact `.17` producer, archive,
+installed consumer and entire two hosts remain unchanged; their old native results
+retain their own execution identity. No repack/native rerun is justified for an
+unimported model. Receipt `.artifacts/u03/content-model/verification.json` records
+source/log hashes and retained controls. Missing-factory1/contract24 RED, first23/25
+and semantics26/29 results are preserved. Two first-run expectations were corrected
+to actual source `ide:false` and category-specific map exclusion (the same script
+ID can independently appear in Action registration). Real per-relation/effect kind
+and journal-disclosure failures required product fixes. The initial output-budget
+fixture fit; a larger source is explicitly below1MiB/default output below1MiB, while
+opted-in output now exercises the rejection. No acceptance limit was increased.
+
+Next **U03.2b.3b** defines the explicit rich public codec and per-note privacy
+derivatives before installed/UI integration. Original minimal/v1 profiles, Task2/3
+BASEs, full H01–H06, whole-U03 review, P04/C07 and mandatory A05/L02 stay open.

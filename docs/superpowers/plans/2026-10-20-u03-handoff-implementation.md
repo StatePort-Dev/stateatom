@@ -114,6 +114,12 @@ U03.2b.2b now verifies actual reviewed Save/reopen/import UI on `.17`
 (full1227/controllers59/native UI25/storage15/Settings15/default40/legacy6/types2/
 admission7). Rich category/field/per-note review is next U03.2b.3; Task2 stays open.
 
+U03.2b.3a now isolates the unimported saved-v1 content projection, specified in
+`docs/features/handoff-content-review.md`: source29/full1256 pass, `.17` executable
+producer/archive/installed hosts unchanged. This is not a public rich codec,
+per-note derivative or installed review. Next U03.2b.3b pins that public format;
+remaining full Task2 acceptance is unchanged.
+
 **Consumes:** Task1 frozen baseline and exact original diagnostic, explicit review
 choices. **Produces:** validated historical v2 record/serializer/derivative and
 version-aware local storage without changing old record interpretation.
