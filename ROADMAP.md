@@ -198,6 +198,17 @@ dependency-ready item A01 ordinary React coverage. P04/C07 and mandatory A05/L02
 below stays under its own identity; independent human review is optional, candidate
 screenshots are not human visual approval. No SDK, publication or another repository.
 
+A01.1 now verifies actual ordinary source edits on the pinned independent React19.2.5
+application: native14 across both unchanged .33 hosts, three source versions/six
+selected-version observations and four actual owned file edits. Current decoded
+script/target/source/read/IDE data and stale/new generation boundaries match; old
+saved bytes/original extraction remain unchanged. The native title picker and
+count CSS-selector UI are explicit because original application CSS occludes the
+count. [Execution](docs/completion/27-a01-ordinary-react-progress.md). No product
+code or old finite result changed. React19 committed-host binding remains
+Unknown/Unsupported/fullPath false. Next bounded A01.2 equal-output two-instance
+controls; complete A01 and its whole review remain open.
+
 ## Historical roadmap and checkpoint ledger
 
 StateAtom's next development target is a narrow, independently useful developer alpha. A developer should be able to select a UI property, inspect its supported dependencies, test an eligible input locally, and save an explanation that another person can read.

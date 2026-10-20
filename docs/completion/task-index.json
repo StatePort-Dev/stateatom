@@ -1445,8 +1445,43 @@
         "npm run verify:independent"
       ],
       "deliverable": "Supported ordinary-session property/read paths and controls",
-      "status": "planned",
-      "optional": false
+      "status": "in-progress",
+      "optional": false,
+      "implementation_plan": "../superpowers/plans/2026-10-21-a01-ordinary-react-hmr.md",
+      "execution_record": "27-a01-ordinary-react-progress.md",
+      "active_slice": "A01.2",
+      "remaining_acceptance": [
+        "registered ordinary source/read/occurrence matrix and real source-edit/HMR checks",
+        "meaningful positive/counterexample and semantics controls with exact current evidence",
+        "one complete A01 review and tested important-fix pass"
+      ],
+      "completed_slices": [
+        {
+          "id": "A01.1",
+          "status": "complete-within-ordinary-source-edit-boundary",
+          "candidate_unchanged": "0.1.0-candidate.20261020.33",
+          "checks": {
+            "native_source_edit": 14,
+            "paired_hosts": 2,
+            "source_versions": 3,
+            "selected_version_observations": 6,
+            "actual_owned_file_edits": 4
+          },
+          "product_code_changed": false,
+          "ordinary_source_read_fragments": true,
+          "react19_committed_host_binding": false,
+          "full_A01_acceptance": false,
+          "verification": ".artifacts/a01/source-edit/verification-final.json",
+          "record": "27-a01-ordinary-react-progress.md",
+          "evidence_scope": "Real source edits/same-output control/stale/new page-run/current source-read-IDE/old saved bytes on pinned independent React19.2.5, exact paired .33; title native picker and count CSS-selector UI explicit because original CSS occludes count. Marker/value correspondence only, final host commit Unknown/Unsupported/fullPath false."
+        }
+      ],
+      "current_candidate": {
+        "version": "0.1.0-candidate.20261020.33",
+        "handoff": ".artifacts/atom/2026-10-20T20-41-35-056Z/atom-handoff.json",
+        "verification": ".artifacts/a01/source-edit/verification-final.json",
+        "boundary": "Real source edits/same-output control/stale/new page-run/current source-read-IDE/old saved bytes on pinned independent React19.2.5, exact paired .33; title native picker and count CSS-selector UI explicit because original CSS occludes count. Marker/value correspondence only, final host commit Unknown/Unsupported/fullPath false."
+      }
     },
     {
       "id": "A02",
@@ -2081,34 +2116,24 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "U03.5",
-      "status": "complete-within-H01-H06-and-one-review-fix-boundary",
-      "candidate": "0.1.0-candidate.20261020.33",
+      "id": "A01.1",
+      "status": "complete-within-ordinary-source-edit-boundary",
+      "candidate_unchanged": "0.1.0-candidate.20261020.33",
       "checks": {
-        "full": 1613,
-        "focused": 581,
-        "duplicateCodecControls": 10,
-        "current": 33,
-        "actualFamilyModeReports": 8,
-        "boundaries": 11,
-        "ordinary": 41,
-        "storage": 15,
-        "visual": 7,
-        "source": 25,
-        "keyboard": 5
+        "native_source_edit": 14,
+        "paired_hosts": 2,
+        "source_versions": 3,
+        "selected_version_observations": 6,
+        "actual_owned_file_edits": 4
       },
-      "whole_U03_review": true,
-      "important_findings_fixed": [
-        "I1"
-      ],
-      "open_minor_findings": [
-        "M1"
-      ],
-      "declined_judgments_ruled": 6,
-      "verification": ".artifacts/u03/final-review/verification33.json",
-      "record": "26-u03-whole-review.md",
-      "evidence_scope": "Original H01-H06 and one whole-review/tested Important fix pass complete in Linux isolated native Chrome paired hosts; snapshot-only without P04. Duplicate decoded public-v2 members reject; v1 interpretation/unique exact bytes/history preserved. Minor M1 direct minimal-codec argument race remains explicit; no normal-user UI leak established.",
-      "next_item": "A01"
+      "product_code_changed": false,
+      "ordinary_source_read_fragments": true,
+      "react19_committed_host_binding": false,
+      "full_A01_acceptance": false,
+      "verification": ".artifacts/a01/source-edit/verification-final.json",
+      "record": "27-a01-ordinary-react-progress.md",
+      "evidence_scope": "Real source edits/same-output control/stale/new page-run/current source-read-IDE/old saved bytes on pinned independent React19.2.5, exact paired .33; title native picker and count CSS-selector UI explicit because original CSS occludes count. Marker/value correspondence only, final host commit Unknown/Unsupported/fullPath false.",
+      "next_item": "A01.2"
     },
     "next_item": "A01",
     "new_full_task_acceptances": [
@@ -2569,10 +2594,40 @@
         "verification": ".artifacts/u03/final-acceptance/verification32.json",
         "record": "25-u03-h01-h06-acceptance.md",
         "next_item": "U03.5"
+      },
+      {
+        "id": "U03.5",
+        "status": "complete-within-H01-H06-and-one-review-fix-boundary",
+        "candidate": "0.1.0-candidate.20261020.33",
+        "checks": {
+          "full": 1613,
+          "focused": 581,
+          "duplicateCodecControls": 10,
+          "current": 33,
+          "actualFamilyModeReports": 8,
+          "boundaries": 11,
+          "ordinary": 41,
+          "storage": 15,
+          "visual": 7,
+          "source": 25,
+          "keyboard": 5
+        },
+        "whole_U03_review": true,
+        "important_findings_fixed": [
+          "I1"
+        ],
+        "open_minor_findings": [
+          "M1"
+        ],
+        "declined_judgments_ruled": 6,
+        "verification": ".artifacts/u03/final-review/verification33.json",
+        "record": "26-u03-whole-review.md",
+        "evidence_scope": "Original H01-H06 and one whole-review/tested Important fix pass complete in Linux isolated native Chrome paired hosts; snapshot-only without P04. Duplicate decoded public-v2 members reject; v1 interpretation/unique exact bytes/history preserved. Minor M1 direct minimal-codec argument race remains explicit; no normal-user UI leak established.",
+        "next_item": "A01"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "U03 H01-H06 and ONE whole review/fix complete on .33: full1613/focused581/duplicate10/current33/boundaries11/ordinary41/storage15/visual7/source25/keyboard5/types2/admission7, exact aggregate twice PASS. Important I1 fixed, Minor M1 explicit, all6 declined judgments ruled. Original criteria/BASEs/history retained; snapshot-only before P04. Next dependency-ready A01 ordinary React coverage. P04/C07/A05/L02 and release remain open.",
+    "current_activity_note": "A01.1 actual ordinary source-edit boundary complete: native14 across both unchanged .33 hosts, three source versions/six selected-version observations/four owned edits, exact current script/target/source/read/IDE identities, old saved bytes and original extraction stable. All five failed harness probes retained. No product code, repack or old finite suite rerun. React19 host-commit proof remains unsupported/fullPath false. Next A01.2 equal-output two-instance/read controls; full A01/P04/C07/A05/L02/release remain open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "A01"

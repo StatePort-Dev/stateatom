@@ -996,3 +996,17 @@ types2/admission7 and exact aggregate twicePASS. Minor M1 minimal-codec mutable
 arguments remains explicitly open; no normal-user UI leak was demonstrated. U03
 H01–H06 is complete in the recorded native configuration. Next A01 ordinary React
 coverage. P04/C07/A05/L02 remain open; documents alone establish no release readiness.
+
+
+A01.1 ordinary source/edit coverage now passes14 actual native checks across both
+unchanged .33 hosts on the verified pinned React19.2.5 TodoMVC extraction. Four
+owned-copy edits give three distinct source versions, actual changed decoded
+script text, explicit stale old results and six current selected source/read/IDE
+observations. Original source/dependencies and saved v1 bytes remain unchanged;
+no engine/runtime code or package rebuild was needed. Title native picker and
+count CSS-selector UI remain explicit under the original count-overlay limit.
+[Execution](completion/27-a01-ordinary-react-progress.md) retains all failed probes.
+This is marker/value correspondence with final host commit Unknown/Unsupported,
+fullPath false; no private18.3.1 or closed-proof result is extended to React19.
+Next A01.2 equal-output two-instance/read controls; full A01/whole review, P04/C07,
+mandatory A05/L02 and release gates remain open.
