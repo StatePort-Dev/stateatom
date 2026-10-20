@@ -989,5 +989,10 @@ current33/boundaries11/ordinary41/storage15/first-viewport7/source25/keyboard5/
 types2/admission7. It fixes demonstrated Save-focus and collapsed-details Tab
 failures plus readable unknown-profile refusals, with all original negative results
 retained. [Acceptance](completion/25-u03-h01-h06-acceptance.md) links actual results.
-Next ONE whole-U03 Task5 review/regrading/tested fix pass. U03/P04/C07/A05/L02
-remain open; this document alone does not establish feature or release readiness.
+[ONE whole-U03 Task5 review](completion/26-u03-whole-review.md) is now complete.
+Important I1 duplicate decoded JSON members is fixed in .33, with full1613/focused581/
+duplicate10/current33/boundaries11/ordinary41/storage15/visual7/source25/keyboard5/
+types2/admission7 and exact aggregate twicePASS. Minor M1 minimal-codec mutable
+arguments remains explicitly open; no normal-user UI leak was demonstrated. U03
+H01–H06 is complete in the recorded native configuration. Next A01 ordinary React
+coverage. P04/C07/A05/L02 remain open; documents alone establish no release readiness.

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // Public packet codec only; unimported by Atom, readers, dispatch and storage.
+import {assertUniqueHandoffJSONMembers} from './handoff-json.mjs';
 import {parseDiagnostic} from './diagnostic.mjs';
 import {filterHandoffReviewValue} from './handoff-content.mjs';
 const encoder=new TextEncoder(),MAX=1048576,PROFILE='stateatom.input-evidence/1';
@@ -25,7 +26,7 @@ function bool(x,nullable=false){if(nullable&&x===null)return;if(typeof x!=='bool
 function one(x,values){if(!values.includes(x))fail('Unsupported typed input outcome');}
 function array(x,max){if(!Array.isArray(x)||x.length>max)fail('Input evidence array limit');return x;}
 function scalar(x){if(!['boolean','number','string'].includes(typeof x))fail('Scalar required');if(typeof x==='number'&&(!Number.isFinite(x)||Object.is(x,-0)))fail('JSON-stable number required');if(typeof x==='string')text(x);}
-function json(raw,max=MAX,bounded=true){if(typeof raw!=='string')fail('JSON text required');if(encoder.encode(raw).length>max)throw error('HANDOFF_LIMIT');let r;try{r=JSON.parse(raw);}catch{fail('Malformed JSON');}const stack=[[r,0]];let count=0;while(stack.length){const [x,depth]=stack.pop();if(++count>(bounded?10000:65536)||depth>(bounded?16:24)||bounded&&typeof x==='string'&&x.length>16384)throw error('HANDOFF_LIMIT');if(typeof x==='number'&&(!Number.isFinite(x)||Object.is(x,-0)))fail('JSON-stable number required');if(x&&typeof x==='object')for(const [k,v]of Object.entries(x)){if(['__proto__','constructor','prototype'].includes(k))fail('Unsafe key');stack.push([v,depth+1]);}}return r;}
+function json(raw,max=MAX,bounded=true){if(typeof raw!=='string')fail('JSON text required');if(encoder.encode(raw).length>max)throw error('HANDOFF_LIMIT');let r;try{r=JSON.parse(raw);}catch{fail('Malformed JSON');}assertUniqueHandoffJSONMembers(raw,{maxDepth:bounded?16:24,maxMembers:bounded?10000:65536});const stack=[[r,0]];let count=0;while(stack.length){const [x,depth]=stack.pop();if(++count>(bounded?10000:65536)||depth>(bounded?16:24)||bounded&&typeof x==='string'&&x.length>16384)throw error('HANDOFF_LIMIT');if(typeof x==='number'&&(!Number.isFinite(x)||Object.is(x,-0)))fail('JSON-stable number required');if(x&&typeof x==='object')for(const [k,v]of Object.entries(x)){if(['__proto__','constructor','prototype'].includes(k))fail('Unsafe key');stack.push([v,depth+1]);}}return r;}
 function choices(value,names){const o=own(value,names),result={};for(const k of Object.keys(o)){const list=dense(o[k],k.endsWith('Categories')?4:2048);if(list.some(x=>typeof x!=='string')||new Set(list).size!==list.length||k.endsWith('Categories')&&list.some(x=>!categories.includes(x)))fail('Unique known review choices required');result[k]=list;}return result;}
 function clock(options){const now=Object.hasOwn(options,'now')?options.now:Date.now;if(typeof now!=='function')fail('Explicit host clock required');const n=now();time(n);return new Date(n).toISOString();}
 function filteredSafe(value){const filtered=filterHandoffReviewValue(value,'json');if(!equal(value,filtered.value))fail('Unfiltered private bytes in public field');}

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // Passive full public profile. No app access, executable state or authority.
+import {assertUniqueHandoffJSONMembers} from './handoff-json.mjs';
 import {parseHandoffReport as parseBase,redactHandoffFile,appendHandoffFinding,handoffArtifactDigest} from './handoff-files.mjs';
 import {appendHandoffSourceEvidence} from './handoff-source-attachment.mjs';
 import {omitHandoffFields} from './handoff-report.mjs';
@@ -26,7 +27,7 @@ function time(x){if(typeof x!=='number'||!Number.isFinite(x)||x<0||Object.is(x,-
 function iso(x){if(typeof x!=='string'||!Number.isFinite(Date.parse(x))||new Date(Date.parse(x)).toISOString()!==x)fail('Canonical UTC time required');}
 function clock(o){const fn=Object.hasOwn(o,'now')?o.now:Date.now;if(typeof fn!=='function')fail('Explicit host clock required');return time(fn());}
 function next(n){integer(n);if(n===Number.MAX_SAFE_INTEGER)throw error('HANDOFF_LIMIT');return n+1;}
-function json(raw){if(typeof raw!=='string')fail('Public JSON text required');if(encoder.encode(raw).length>MAX)throw error('HANDOFF_LIMIT');let r;try{r=JSON.parse(raw);}catch{fail('Malformed public report');}const stack=[[r,0]];let count=0;while(stack.length){const[v,d]=stack.pop();if(++count>10000||d>16||typeof v==='string'&&v.length>16384)throw error('HANDOFF_LIMIT');if(typeof v==='number'&&(!Number.isFinite(v)||Object.is(v,-0)))fail('JSON-stable public scalar required');if(v&&typeof v==='object')for(const[k,x]of Object.entries(v)){if(['__proto__','constructor','prototype'].includes(k))fail('Forbidden public key');stack.push([x,d+1]);}}return r;}
+function json(raw){if(typeof raw!=='string')fail('Public JSON text required');if(encoder.encode(raw).length>MAX)throw error('HANDOFF_LIMIT');let r;try{r=JSON.parse(raw);}catch{fail('Malformed public report');}assertUniqueHandoffJSONMembers(raw);const stack=[[r,0]];let count=0;while(stack.length){const[v,d]=stack.pop();if(++count>10000||d>16||typeof v==='string'&&v.length>16384)throw error('HANDOFF_LIMIT');if(typeof v==='number'&&(!Number.isFinite(v)||Object.is(v,-0)))fail('JSON-stable public scalar required');if(v&&typeof v==='object')for(const[k,x]of Object.entries(v)){if(['__proto__','constructor','prototype'].includes(k))fail('Forbidden public key');stack.push([x,d+1]);}}return r;}
 function header(base){return Object.fromEntries(headerKeys.map(k=>[k,structuredClone(base[k])]));}
 function baseView(record){const base=Object.fromEntries(common.map(k=>[k,record[k]]));Object.assign(base,record.inputBaseHeader);if(base.profile==='source-evidence/1')for(const k of sourceKeys)base[k]=record[k];return structuredClone(base);}
 function visible(x){return x&&['included','filtered'].includes(x.state);}

@@ -198,9 +198,9 @@ separate clean recipient → added revision → reopen/original comparison.
 
 ### Task 5: U03 final bounded review and acceptance
 
-- [ ] ONE fresh whole-U03 review; regrade all findings/declined judgments, one
+- [x] ONE fresh whole-U03 review; regrade all findings/declined judgments, one
   tested Critical/Important fix pass; ledger Minor, no re-review loop.
-- [ ] Complete U03 only with real H01–H06 and current bindings. Preserve P04,
+- [x] Complete U03 only with real H01–H06 and current bindings. Preserve P04,
   A05/L02 and broader completion gates. One next dependency-ready item, local commit.
 
 
@@ -486,3 +486,13 @@ credited from actual source/native evidence, including missing-window states.
 The targeted .30/.31 focus failures and .32 harness modifier error remain historical.
 Next ONE whole-U03 Task5 review and tested Critical/Important fix pass; U03 itself,
 P04/C07/A05/L02 and public release are not completed by these checkboxes.
+
+
+Task5 final: ONE read-only whole-U03 review of1e969a5..0f53ee3 returned no Critical,
+Important I1 duplicate JSON members and Minor M1 mutable minimal-codec arguments.
+All findings and six declined judgments explicitly ruled in26-u03-whole-review.md.
+I1 fixed in one tested pass; M1 remains Minor ledger, no normal-user UI leak shown.
+Final .33 full1613/focused581/duplicate10/current33/boundaries11/ordinary41/storage15/
+first-viewport7/source25/keyboard5/types2/admission7, aggregate33 twicePASS. No second
+whole reviewer or per-slice review. U03 H01-H06 complete; P04/C07/A05/L02 and broader
+release remain separate. Next one dependency-ready item A01, not all remaining tasks.

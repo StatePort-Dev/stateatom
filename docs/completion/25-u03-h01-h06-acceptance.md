@@ -111,3 +111,10 @@ Original Task2/3 acceptance and Task4 H01–H06 checks are now reconciled from t
 linked source/native evidence at their retained BASE revisions. This does not
 complete U03: ONE fresh whole-U03 Task5 review, finding regrading and a tested
 Critical/Important fix pass remain. P04 H07–H09 and all broader gates stay open.
+
+
+Final Task5 update: this .32 Task4 record remains historical. The ONE whole review
+found Important I1 (duplicate decoded JSON members) and Minor M1 (direct minimal
+codec argument race). I1's tested .33 fix and all findings/decline rulings are in
+[Task5 final record](26-u03-whole-review.md); M1 is an explicit open Minor. U03 is
+now complete within H01–H06, without upgrading P04 or broader release evidence.

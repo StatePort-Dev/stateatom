@@ -1516,3 +1516,32 @@ acceptance and Task4 H01–H06 are now credited from actual checks. Next **U03.5
 fresh whole-U03 review**, regrade every finding/decline, one tested Critical/Important
 fix pass, ledger Minor without a re-review loop. Whole U03, P04 H07–H09, C07,
 mandatory A05/L02 and release are still open. No SDK/push/publication/other repo.
+
+## U03.5 — ONE whole review and tested fix, candidate .33
+
+[Final review/rulings](26-u03-whole-review.md) records the one fresh whole-item
+review1e969a5..0f53ee3, no Critical, Important I1 duplicate JSON members, Minor M1
+minimal-codec argument race, and six explicitly ruled declined judgments.
+I1 fixed in one tested pass: all public v2 decoders reject decoded duplicate names,
+including escaped/nested fields, without canonicalizing/replacing originals or
+changing v1 interpretation. Actual native Reader/Library refuses the hidden-byte
+variants with previous output cleared, exact original/count preserved and no
+HTTP/permission/download side effects. M1 is retained as open Minor, with no
+normal-user UI leak established; no blanket minimal-codec pre-await snapshot claim.
+
+Final receipt .artifacts/atom/2026-10-20T20-41-35-056Z/atom-handoff.json;
+.artifacts/u03/final-review/verification33.json twicePASS. Full1613/focused581,
+duplicate controls10/native current33/boundaries11/ordinary41/storage15/visual7/
+actual source25/keyboard5/types2/admission7. Exact source/build/archives/installed
+pair/entire hosts/downloadGUIDs/bytes/parents/current drivers and review rulings
+are bound. Receipt source was dirty at BASE0f53ee3; no clean post-commit rebuild
+claim. Initial codec RED5, store clock setup refusal and import-insertion syntax
+failure remain separately qualified; final controls pass without lowered criteria.
+Agent viewed actual .33 first390 and duplicate-refusal390 against supplied shared
+foundations. No token/primitive/layout changes; candidate screenshots only.
+
+Original Task1–5 and H01–H06 are complete within these bounds. Snapshot-only before
+P04 is still explicit; C07/H07–H09, mandatory A05/L02 and release remain open. No
+second reviewer/re-review loop, SDK, push/publication or another repository.
+Next one dependency-ready item **A01 — ordinary React source/read/occurrence
+coverage**, crediting existing implementation and registering only actual gaps.

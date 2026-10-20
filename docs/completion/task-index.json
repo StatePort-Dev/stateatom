@@ -804,11 +804,10 @@
         "npm run verify:production-source-mapping"
       ],
       "deliverable": "U06-designed reporter/recipient workflow, local save/review/export and passive enrichment",
-      "status": "in-progress",
+      "status": "complete",
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.5",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -1245,20 +1244,59 @@
           "evidence_scope": "Original Task2/3 and H01-H06 reconciled from exact current source, real paired native creation/read/storage/source comparison and keyboard checks; snapshot-only without P04. Historical .30/.31 keyboard failures and .32 harness modifier error retained; no evidence threshold relaxed.",
           "verification": ".artifacts/u03/final-acceptance/verification32.json",
           "record": "25-u03-h01-h06-acceptance.md"
+        },
+        {
+          "id": "U03.5",
+          "status": "complete-within-H01-H06-and-one-review-fix-boundary",
+          "candidate": "0.1.0-candidate.20261020.33",
+          "checks": {
+            "full": 1613,
+            "focused": 581,
+            "duplicateCodecControls": 10,
+            "current": 33,
+            "actualFamilyModeReports": 8,
+            "boundaries": 11,
+            "ordinary": 41,
+            "storage": 15,
+            "visual": 7,
+            "source": 25,
+            "keyboard": 5
+          },
+          "whole_U03_review": true,
+          "important_findings_fixed": [
+            "I1"
+          ],
+          "open_minor_findings": [
+            "M1"
+          ],
+          "declined_judgments_ruled": 6,
+          "verification": ".artifacts/u03/final-review/verification33.json",
+          "record": "26-u03-whole-review.md",
+          "evidence_scope": "Original H01-H06 and one whole-review/tested Important fix pass complete in Linux isolated native Chrome paired hosts; snapshot-only without P04. Duplicate decoded public-v2 members reject; v1 interpretation/unique exact bytes/history preserved. Minor M1 direct minimal-codec argument race remains explicit; no normal-user UI leak established."
         }
       ],
       "current_candidate": {
-        "version": "0.1.0-candidate.20261020.32",
-        "handoff": ".artifacts/atom/2026-10-20T20-24-24-552Z/atom-handoff.json",
-        "sha256": "003d8534917949a941cf30ead41d2d7b4c16d4209a7f28cd063c7a8f35b3c788",
-        "verification": ".artifacts/u03/final-acceptance/verification32.json",
-        "boundary": "H01-H06 automatic/source/native acceptance only. ONE whole-U03 review/regrading/tested fix pass remains. Source/build matching remains untrusted non-causal content evidence; snapshot-only before P04.",
+        "version": "0.1.0-candidate.20261020.33",
+        "handoff": ".artifacts/atom/2026-10-20T20-41-35-056Z/atom-handoff.json",
+        "sha256": "02b08cfd72b1f600184a76f79288917d268ea508ccce2cc220a58d9f54c331aa",
+        "verification": ".artifacts/u03/final-review/verification33.json",
+        "boundary": "Original H01-H06 and one whole-review/tested Important fix pass complete in Linux isolated native Chrome paired hosts; snapshot-only without P04. Duplicate decoded public-v2 members reject; v1 interpretation/unique exact bytes/history preserved. Minor M1 direct minimal-codec argument race remains explicit; no normal-user UI leak established.",
         "historical_acquisition_qualification": ".artifacts/u03/input-report/native25-app-probe-qualification.json"
       },
-      "remaining_acceptance": [
-        "one fresh whole-U03 review, regrade all findings/declines and tested Critical/Important fix pass"
+      "remaining_acceptance": [],
+      "acceptance_record": "26-u03-whole-review.md",
+      "known_minor_findings": [
+        {
+          "id": "M1",
+          "status": "open-minor",
+          "record": "26-u03-whole-review.md"
+        }
       ],
-      "acceptance_record": "25-u03-h01-h06-acceptance.md"
+      "delivery_states": [
+        "implemented",
+        "native-verified",
+        "whole-review-and-tested-important-fix"
+      ]
     },
     {
       "id": "U04",
@@ -2043,12 +2081,13 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "U03.4",
-      "status": "complete-within-H01-H06-acceptance-pending-whole-review",
-      "candidate": "0.1.0-candidate.20261020.32",
+      "id": "U03.5",
+      "status": "complete-within-H01-H06-and-one-review-fix-boundary",
+      "candidate": "0.1.0-candidate.20261020.33",
       "checks": {
-        "full": 1603,
-        "focused": 571,
+        "full": 1613,
+        "focused": 581,
+        "duplicateCodecControls": 10,
         "current": 33,
         "actualFamilyModeReports": 8,
         "boundaries": 11,
@@ -2058,14 +2097,20 @@
         "source": 25,
         "keyboard": 5
       },
-      "full_H01_H06": true,
-      "whole_U03_review": false,
-      "evidence_scope": "Original Task2/3 and H01-H06 reconciled from exact current source, real paired native creation/read/storage/source comparison and keyboard checks; snapshot-only without P04. Historical .30/.31 keyboard failures and .32 harness modifier error retained; no evidence threshold relaxed.",
-      "verification": ".artifacts/u03/final-acceptance/verification32.json",
-      "record": "25-u03-h01-h06-acceptance.md",
-      "next_item": "U03.5"
+      "whole_U03_review": true,
+      "important_findings_fixed": [
+        "I1"
+      ],
+      "open_minor_findings": [
+        "M1"
+      ],
+      "declined_judgments_ruled": 6,
+      "verification": ".artifacts/u03/final-review/verification33.json",
+      "record": "26-u03-whole-review.md",
+      "evidence_scope": "Original H01-H06 and one whole-review/tested Important fix pass complete in Linux isolated native Chrome paired hosts; snapshot-only without P04. Duplicate decoded public-v2 members reject; v1 interpretation/unique exact bytes/history preserved. Minor M1 direct minimal-codec argument race remains explicit; no normal-user UI leak established.",
+      "next_item": "A01"
     },
-    "next_item": "U03",
+    "next_item": "A01",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -2075,10 +2120,11 @@
       "U01",
       "U02",
       "U06",
-      "F05"
+      "F05",
+      "U03"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "U03",
+    "active_item": "A01",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -2500,11 +2546,34 @@
         "verification": ".artifacts/u03/input-reporter/verification29.json",
         "record": "24-u03-handoff-progress.md",
         "next_item": "U03.4"
+      },
+      {
+        "id": "U03.4",
+        "status": "complete-within-H01-H06-acceptance-pending-whole-review",
+        "candidate": "0.1.0-candidate.20261020.32",
+        "checks": {
+          "full": 1603,
+          "focused": 571,
+          "current": 33,
+          "actualFamilyModeReports": 8,
+          "boundaries": 11,
+          "ordinary": 41,
+          "storage": 15,
+          "visual": 7,
+          "source": 25,
+          "keyboard": 5
+        },
+        "full_H01_H06": true,
+        "whole_U03_review": false,
+        "evidence_scope": "Original Task2/3 and H01-H06 reconciled from exact current source, real paired native creation/read/storage/source comparison and keyboard checks; snapshot-only without P04. Historical .30/.31 keyboard failures and .32 harness modifier error retained; no evidence threshold relaxed.",
+        "verification": ".artifacts/u03/final-acceptance/verification32.json",
+        "record": "25-u03-h01-h06-acceptance.md",
+        "next_item": "U03.5"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "U03.4 H01-H06 on .32: full1603/focused571/current33/boundaries11/ordinary41/storage15/first-viewport7/source25/keyboard5/types2/admission7, exact aggregate twice PASS. Readable unknown-profile refusals, pending Draft exclusion and real source comparison verified; Save-focus and collapsed-details Tab defects fixed with retained negatives. Original Task2/3 BASEs retained and acceptance credited. Next ONE whole-U03 Task5 review/finding regrading/tested fix pass. U03/P04/C07/A05/L02 and release remain open.",
+    "current_activity_note": "U03 H01-H06 and ONE whole review/fix complete on .33: full1613/focused581/duplicate10/current33/boundaries11/ordinary41/storage15/visual7/source25/keyboard5/types2/admission7, exact aggregate twice PASS. Important I1 fixed, Minor M1 explicit, all6 declined judgments ruled. Original criteria/BASEs/history retained; snapshot-only before P04. Next dependency-ready A01 ordinary React coverage. P04/C07/A05/L02 and release remain open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
-  "next_task": "U03"
+  "next_task": "A01"
 }

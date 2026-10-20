@@ -189,8 +189,12 @@ H01–H06 on .32: full1603/focused571/current33/boundaries11/ordinary41/storage1
 first-viewport7/actual-source25/keyboard5/types2/admission7. Unknown-profile refusals
 are readable; Save focus and Tab traversal through collapsed details are fixed.
 [Acceptance](docs/completion/25-u03-h01-h06-acceptance.md) binds actual evidence and
-preserves failed/intermediate runs. Next ONE whole-U03 Task5 review/regrading/tested
-fix pass. Whole U03, P04/C07 and mandatory A05/L02 remain open. Historical evidence
+preserves failed/intermediate runs. [ONE whole-U03 Task5 review](docs/completion/26-u03-whole-review.md)
+then found Important I1 duplicate JSON members and Minor M1 minimal-codec mutable
+arguments. I1 is fixed in .33: full1613/focused581/duplicate10/current33/boundaries11/
+ordinary41/storage15/visual7/source25/keyboard5/types2/admission7; M1 is explicitly
+open in the Minor ledger. U03 H01–H06 is complete within that recorded scope. Next
+dependency-ready item A01 ordinary React coverage. P04/C07 and mandatory A05/L02 remain open. Historical evidence
 below stays under its own identity; independent human review is optional, candidate
 screenshots are not human visual approval. No SDK, publication or another repository.
 

@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.33
+
+- Refuse duplicate decoded JSON object member names in every public v2 report
+  and input-evidence packet decoder, including escaped names and nested members.
+  Hidden shadow bytes can no longer survive parsed review into exact downloads.
+- Keep original v1 interpretation, exact stored bytes, noncanonical whitespace
+  and ordering, existing structure/size limits and historical records. Do not
+  canonicalize or rewrite an ambiguous imported original.
+- Explain refusal in the existing Reader/Library status areas. No token, primitive
+  or layout changes; native narrow-view screenshots remain visual candidates.
+
 ## 0.1.0-candidate.20261020.32
 
 - Keep Tab and Shift+Tab inside the reporting dialog when optional details are

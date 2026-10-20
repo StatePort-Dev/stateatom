@@ -32,3 +32,14 @@ No P04 window, A05 execution, L02/license, SDK, publication or other repo comple
 Commit this bounded acceptance work. Then ONE fresh whole-U03 Task5 review and
 one tested Critical/Important fix pass; record Minor findings without a review loop.
 An independent human is not a blocker, screenshots remain candidates.
+
+Task5's single whole review found duplicate decoded JSON object members can hide
+raw private bytes from parsed v2 review. The one Important fix rejects ambiguous
+members consistently in all public v2 codecs, including escaped names/nesting.
+This enforces the existing exact-byte privacy requirement; it does not grant a new
+capability or change original v1 interpretation. Keep unique whitespace/order,
+size/structure/schema/lineage thresholds and historical originals. Do not repair an
+ambiguous imported original by silently canonicalizing it. Actual native Library/
+Reader refusal and current affected paths must pass on a new immutable candidate.
+The separate mutable-argument minimal-codec finding remains Minor in Task5's ledger;
+no normal-user UI leak was demonstrated, and no second review loop is authorized.
