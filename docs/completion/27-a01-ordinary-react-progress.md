@@ -204,3 +204,62 @@ value correspondence, final committed-host binding Unknown/Unsupported, fullPath
 false. Next bounded A01.3 — remaining grammar/semantic/version reconciliation
 for boolean/form/skipped/wrapper/prop controls and the supported workflow; ONE
 whole-A01 review follows its complete matrix. P04/C07/A05/L02/release stay open.
+
+## A01.3 — current retained mechanisms and remaining grammar
+
+Completed within the reconciliation boundary, with no product/source transform or
+package change. Exact hash comparison is recorded in
+.artifacts/a01/retained-mechanisms/verification.json. Historical inputs use explicit
+path relocation; byte differences remain differences. Compared with the named
+old host/host-UI/source-consumption/independent records, equal/different inputs are
+53/11,50/47,42/13,18/40 respectively. All named relocated files exist. In particular
+observer/plugin/vendor hashes differ: those old PASS records remain historical,
+not current proof. UI/independent results are not silently regraded current.
+
+This concrete drift justifies two focused current mechanism runs:
+
+- HOST_TAG=a01-current-20261020T2200 npm run verify:react-host:
+  .runtime/react-host-runs/a01-current-20261020T2200/results.json,21 PASS.
+  Actual immutable final host props, duplicate explicit props/children precedence,
+  separate instances, discarded equal work, clone/manual/mutable/replacement-freeze/
+  spread refusals, original refs/callee order, Suspense, separate roots, mutation,
+  copied DOM, source/stop/navigation and bounded retention are preserved.
+- CONSUMPTION_TAG=a01-current-20261020T2203 npm run verify:source-consumption:
+  .runtime/source-consumption-runs/a01-current-20261020T2203/results.json,8 PASS.
+  Off/on getters/callback receivers/errors/await and original unhandled Promise
+  identities agree. Constructor/then/species/custom boundaries, late descriptor
+  replacement, prototype serialization refusal and scoped P1/P2 fragments pass.
+- node --test --test-isolation=none tests/engine/plugin.test.mjs
+  tests/engine/trace.test.mjs tests/engine/source-consumption.test.mjs
+  tests/engine/react-host*.test.mjs:55 PASS,0 fail/skip.
+
+Both native mechanism records report stable current inputs, no errors and
+fullPath false, at dirty BASEf48db9b. These are synthetic React18.3.1 development/
+classic controls, not React19 committed-host support, a new UI acceptance or a
+new run of the finite first-read campaign. The result tags are labels; actual
+startedAt/completedAt fields give execution time. Initial sandbox execution hit
+spawnSync git EPERM before tests; the separate empty attempt directory/log remain.
+The actual checks ran outside that process restriction with Chromium sandbox
+kept enabled. Current source-consumption has8 checks, including late-descriptor
+replacement; the earlier commentary's7 came from the old record and is corrected.
+The aggregate's initial old-schema checks lookup and expected7 count failed;
+reading the actual old schema/current8 fixes the verifier, not product acceptance.
+
+Both already-recorded current .33 H05 exports contain the real selected Disabled
+true expression creditHold || !canConfirm and the original creditHold true read.
+There is no canConfirm/!canConfirm node in their bounded selected fragments.
+Hashes bind their source to current code. This credits exactly that saved
+short-circuit fragment: no new runtime, forced right operand, full form cycle,
+getter count, wrapper/parameter ancestry or omitted dependency reconstruction.
+The recorded committed-host result remains Unknown/Unsupported, fullPath false.
+
+OR06/OR09 direct/destructured/equal-instance text are covered by current A01.1/2.
+OR10 final-prop/semantic controls now have current pinned18 results. OR07 still
+needs a registered form/boolean positive plus masked/skipped counterexample in
+the ordinary workflow. OR08 still needs a specific wrapper/forwarding/override
+case with observed local reads and honest parameter/producer boundary. Selected
+properties remain Text/Disabled; checkbox checked/input value are not silently
+added by naming a form test. Next bounded slice A01.4 fills that grammar gap.
+ONE whole-A01 review follows the complete matrix. Exact .33 pair/archives/entire
+hosts remain unchanged; independent19 final commit/full HTTP/P04/C07/A05/L02 and
+release readiness are not established by this reconciliation.

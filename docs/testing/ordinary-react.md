@@ -14,15 +14,15 @@ on it must not acquire the older adapter's commit claims.
 | OR03 | Different output after actual copied-footer suffix edit | Browser rendered new text and matching source bytes/expression, real watcher reload rather than injected event | Scoped PASS A01.1 native14 in both .33 hosts; see27-a01 execution record |
 | OR04 | Repeated ordinary app update after source edits | Explicit reinspection binds new value/read to current source and occurrence, no borrowed old observation | Scoped PASS A01.1 native14 in both .33 hosts; see27-a01 execution record |
 | OR05 | Saved original after edits | Exact old v1 raw bytes/source remain historical, never rewritten to new revision | Scoped PASS A01.1 native14 in both .33 hosts; see27-a01 execution record |
-| OR06 | Direct and destructured text | Positive plus equal-output/wrong-instance control | Existing results retained; full A01 reconciliation pending |
-| OR07 | Transformed boolean/form updates | Positive and masked/skipped operand control without extra execution | Existing synthetic controls retained; full A01 reconciliation pending |
-| OR08 | Wrapper/prop forwarding and override | Proven selected binding or specific lost-identity boundary, never nearest component as witness | Full A01 reconciliation pending |
-| OR09 | Two instances/equal values | Exact selected instance/read/version, no same-value attachment | Existing controls retained; fresh independent acceptance pending |
+| OR06 | Direct and destructured text | Positive plus equal-output/wrong-instance control | Scoped PASS current A01.1/2 actual title read/destructure plus equal-instance controls; no committed-host promotion |
+| OR07 | Transformed boolean/form updates | Positive and masked/skipped operand control without extra execution | Current H05 skipped-right fragment retained; full form/boolean positive and counterexample pending A01.4 |
+| OR08 | Wrapper/prop forwarding and override | Proven selected binding or specific lost-identity boundary, never nearest component as witness | Specific ordinary wrapper/parameter/override case pending A01.4 |
+| OR09 | Two instances/equal values | Exact selected instance/read/version, no same-value attachment | Scoped current OR09a–d below; general instance/commit support not inferred |
 | OR09a | Two equal independent task titles | Native picks produce different DOM nodes, selected instance/target scopes and reachable actual title read/destructure IDs, same source digest/value | Scoped PASS A01.2 native10 in both .33 hosts; see27-a01 execution record |
 | OR09b | Real same-value first-row edit | Current per-row markers/read IDs after ordinary double-click/edit/Enter; no nearest-value attachment | Scoped PASS A01.2 native10 in both .33 hosts; see27-a01 execution record |
 | OR09c | Change first title while second stays equal to its old value | Explicit per-row reinspection, current source/read/value, immutable old save/labelled snapshot | Scoped PASS A01.2 native10 in both .33 hosts; see27-a01 execution record |
 | OR09d | Reinspect second without app update | Same recorded target/read IDs and event time, newer inspection time only | Scoped PASS A01.2 native10 in both .33 hosts; see27-a01 execution record |
-| OR10 | Immutable/replaced props and semantics | Pinned supported witness or explicit refusal; on/off outputs/calls/errors/Promise behavior | Existing controls retained; only rerun changed mechanisms |
+| OR10 | Immutable/replaced props and semantics | Pinned supported witness or explicit refusal; on/off outputs/calls/errors/Promise behavior | Current A01.3 synthetic pinned React18.3.1 host21/semantics8/unit55; independent19 final-props unsupported |
 
 
 
@@ -69,3 +69,9 @@ nodeId handles; the test checks the actual row's native metadata in that domain.
 No source/runtime/package change, missing committed-host binding still explicit.
 A01.1 uses its archived driver and unchanged current mechanism inputs; its frozen
 verifier is not rerun against this test-only driver extension.
+
+A01.3 reconciliation: .artifacts/a01/retained-mechanisms/verification.json binds
+current host21/semantics8/unit55 and two current H05 skipped-right fragments.
+Old host/UI/semantics/independent files remain historical when recorded inputs
+differ. Explicit relocation is not byte equality. See27-a01 for commands, failed
+setup/verifier attempts and remaining OR07/OR08 gaps; no new UI/package feature.

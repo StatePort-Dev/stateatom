@@ -514,3 +514,10 @@ second analysis implementation or a new tracing experiment. Earlier alpha scope
 and historical acceptance criteria above remain unchanged. See
 [the contract](docs/embedding.md), [validation](docs/testing/atom-embedding-validation.md)
 and [the bounded official-host task](docs/tasks/stateport-host-atom-integration.md).
+
+A01.3 current mechanism reconciliation passes synthetic pinned18 host21/semantics8/
+unit55 after actual recorded input drift. Historical UI/independent results remain
+historical; current H05 credits only its two saved skipped-right fragments. Exact
+.33 package/hosts and all criteria are unchanged. Next bounded A01.4: ordinary
+Text/Disabled form/boolean and wrapper/prop positive-counterexample cases. A01
+whole acceptance/review and mandatory A05/L02 remain open; see27-a01 execution.

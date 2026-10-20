@@ -1014,3 +1014,10 @@ different-value first-row edits, and unchanged second-row read IDs/event clock o
 reinspection with a later inspection timestamp. Old source/snapshot/saved bytes
 remain unchanged; no engine/package change. Next A01.3 grammar/semantic/version
 reconciliation; full A01/whole review, P04/C07, mandatory A05/L02 and release stay open.
+
+A01.3 current mechanism reconciliation passes synthetic pinned18 host21/semantics8/
+unit55 after actual recorded input drift. Historical UI/independent results remain
+historical; current H05 credits only its two saved skipped-right fragments. Exact
+.33 package/hosts and all criteria are unchanged. Next bounded A01.4: ordinary
+Text/Disabled form/boolean and wrapper/prop positive-counterexample cases. A01
+whole acceptance/review and mandatory A05/L02 remain open; see27-a01 execution.
