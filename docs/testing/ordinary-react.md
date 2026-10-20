@@ -15,8 +15,15 @@ on it must not acquire the older adapter's commit claims.
 | OR04 | Repeated ordinary app update after source edits | Explicit reinspection binds new value/read to current source and occurrence, no borrowed old observation | Scoped PASS A01.1 native14 in both .33 hosts; see27-a01 execution record |
 | OR05 | Saved original after edits | Exact old v1 raw bytes/source remain historical, never rewritten to new revision | Scoped PASS A01.1 native14 in both .33 hosts; see27-a01 execution record |
 | OR06 | Direct and destructured text | Positive plus equal-output/wrong-instance control | Scoped PASS current A01.1/2 actual title read/destructure plus equal-instance controls; no committed-host promotion |
-| OR07 | Transformed boolean/form updates | Positive and masked/skipped operand control without extra execution | Current H05 skipped-right fragment retained; full form/boolean positive and counterexample pending A01.4 |
-| OR08 | Wrapper/prop forwarding and override | Proven selected binding or specific lost-identity boundary, never nearest component as witness | Specific ordinary wrapper/parameter/override case pending A01.4 |
+| OR07 | Transformed boolean/form updates | Positive and masked/skipped operand control without extra execution | Scoped PASS A01.4 synthetic ordinary form/skipped controls below; independent boolean claim not inferred |
+| OR07a | Synthetic form with hold true, skipped policy getter | Actual Disabled true fragment; hold read, absent right member/unary and unchanged getter count during inspection | Scoped PASS A01.4 native12 across both .33 hosts; synthetic ordinary React19, commit unknown |
+| OR07b | Real name change under hold | Same Disabled output, new actual target/read occurrence, skipped getter unchanged; old inspector historical | Scoped PASS A01.4 native12 across both .33 hosts; synthetic ordinary React19, commit unknown |
+| OR07c | Real hold change and taken validation | Disabled false; original getter/member/unary observed, exactly matching off-mode app events, no inspection-side call | Scoped PASS A01.4 native12 across both .33 hosts; synthetic ordinary React19, commit unknown |
+| OR07d | Short name while hold false | Disabled true with original current form read/validation; repeated normal update and explicit reinspection | Scoped PASS A01.4 native12 across both .33 hosts; synthetic ordinary React19, commit unknown |
+| OR08 | Wrapper/prop forwarding and override | Proven selected binding or specific lost-identity boundary, never nearest component as witness | Scoped PASS local text reads with explicit unobserved parameter ancestry in A01.4; no upstream producer claim |
+| OR08a | Direct synthetic form text | Native picker exact target/source/local read, commit unknown | Scoped PASS A01.4 native12 across both .33 hosts; synthetic ordinary React19, commit unknown |
+| OR08b | Text through Forward and Label | Native selected Label local read; explicit parameter provenance boundary, no upstream producer inferred | Scoped PASS A01.4 native12 across both .33 hosts; synthetic ordinary React19, commit unknown |
+| OR08c | Equal-output spread override on another wrapper instance | Distinct actual DOM/instance/read; after name change only forwarded changes, override remains Cedar; upstream declared/effective ancestry unavailable | Scoped PASS A01.4 native12 across both .33 hosts; synthetic ordinary React19, commit unknown |
 | OR09 | Two instances/equal values | Exact selected instance/read/version, no same-value attachment | Scoped current OR09a–d below; general instance/commit support not inferred |
 | OR09a | Two equal independent task titles | Native picks produce different DOM nodes, selected instance/target scopes and reachable actual title read/destructure IDs, same source digest/value | Scoped PASS A01.2 native10 in both .33 hosts; see27-a01 execution record |
 | OR09b | Real same-value first-row edit | Current per-row markers/read IDs after ordinary double-click/edit/Enter; no nearest-value attachment | Scoped PASS A01.2 native10 in both .33 hosts; see27-a01 execution record |
@@ -75,3 +82,11 @@ current host21/semantics8/unit55 and two current H05 skipped-right fragments.
 Old host/UI/semantics/independent files remain historical when recorded inputs
 differ. Explicit relocation is not byte equality. See27-a01 for commands, failed
 setup/verifier attempts and remaining OR07/OR08 gaps; no new UI/package feature.
+
+A01.4 grammar: .artifacts/a01/grammar/verification.json binds18 actual native
+selected observations. Form/hold transitions preserve getter events off/on; skipped
+right operand is absent. Wrapper reads stay local with parameter provenance
+unobserved, including equal-output spread override. New synthetic fixture and
+server stay separate from independent source-edit/instances programs. See27-a01
+for exact commands, failed attempts and source/commit limits. Parent A01 review
+and current retained UI/short-loop/independent controls remain open.

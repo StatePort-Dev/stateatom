@@ -263,3 +263,78 @@ added by naming a form test. Next bounded slice A01.4 fills that grammar gap.
 ONE whole-A01 review follows the complete matrix. Exact .33 pair/archives/entire
 hosts remain unchanged; independent19 final commit/full HTTP/P04/C07/A05/L02 and
 release readiness are not established by this reconciliation.
+
+## A01.4 — synthetic ordinary form, skipped getter and wrapper boundaries
+
+Completed the registered OR07a–d/OR08a–c increment without changing engine,
+resolver, extension/IDE runtime or package bits. Fixture source is separately
+located under tests/fixtures/inspection/ordinary-react. It uses the copied
+independent application's already locked React19.2.5 dependencies, ordinary
+plugin defaults and automatic JSX. This program is explicitly synthetic; its
+checks do not become an independently authored application evaluation. The
+original extracted/copy business sources and package manifests remain unchanged.
+
+Actual command:
+node tests/integration/ordinary-react-hmr.mjs --grammar-only
+.artifacts/atom/2026-10-20T20-41-35-056Z/atom-handoff.json.
+Final .artifacts/a01/ordinary-grammar-native/2026-10-20T21-58-22-002Z/results.json:
+12 PASS across both exact .33 hosts,18 recorded selected observations and six
+instrumented native form updates (plus six corresponding off-mode controls).
+.artifacts/a01/grammar/verification.json twicePASS binds exact source/dependency/
+archive/consumer/entire-host inputs, copied fixture/business manifests, all18
+observation files, native backend/marker/target/read/source identities, actual
+VS Code selected bytes, getter logs, saved original bytes and failed drivers.
+Actual VS Code host completion is trusted/PASS1.142.0 in both cases. Inputs are
+dirty BASE82a5195; no new package/rebuild/full-unit campaign is credited.
+
+With Hold true, Disabled is true and only the original hold read is present:
+policy.allowed and !policy.allowed are absent, and actual getter events stay empty
+through inspection. Native name change Cedar→Birch preserves Disabled true but
+creates a new target occurrence; the old snapshot remains labelled Not live until
+explicit inspection. Removing Hold calls the original getter once and exposes its
+actual member=true/unary=false. Changing the form to Bi calls it once more and
+exposes member=false/unary=true, Disabled true. Off/on DOM/state and exact app
+getter event arrays agree. Each inspection leaves them unchanged: no forced
+operand or extra getter execution fills the explanation.
+
+Native direct/Forward/Label picks initially show Cedar. Separate wrapper labels
+have distinct actual backend nodes, markers/instances, local text-read IDs and
+scopes. The selected source is exactly Label.jsx; the read explicitly carries
+binding write/parameter provenance not observed. The original declared/effective
+upstream props are absent from this selected closure. After the real name change,
+forwarded text is Birch while the spread-overridden instance stays Cedar. This is
+useful local source/read evidence with a named parameter boundary, not proved
+wrapper ancestry or final-property producer identity. React19 commit remains
+Unknown/Unsupported and fullPath false for every case. Form/checkbox controls are
+native user inputs; checked/value are not newly supported inspector properties.
+
+Retained attempts:
+
+- 2026-10-20T21-56-07-529Z: FAIL4 after initial boolean/wrapper cases. The harness
+  attempted to select already selected Disabled by first sending Home (Text),
+  then ArrowDown. The intermediate ordinary property change cleared selection/
+  rerendered and the subsequent key no longer selected the requested value.
+- 2026-10-20T21-57-00-688Z: FAIL2, source pairing timed out after a helper revision
+  also replaced Space with Enter for selects. There is no recorded pair-state
+  diagnosis, so a product failure or exact Enter-caused mechanism is not claimed.
+  Enter was removed; the existing Space behavior is retained for other selects.
+
+The helper now skips an already satisfied selection and uses one Home/End for
+Property; other selectors retain their previous native-key path. Pair failures
+now retain bounded state without tokens. Field equality assertions record only
+field IDs, avoiding future expected-token assertion output. No product code or
+acceptance threshold changed. The family configuration lists the source-edit
+Network body probe too; the grammar branch actually uses scripting, native Input
+and DOM metadata/search, not Network.getResponseBody or a parallel app session.
+A driver description was briefly edited and immediately restored during the last
+run; the already loaded/archived driver and final driver bytes match, and no
+fixture/application/runtime code changed. Before/after equality is not an audit
+of every intervening filesystem write.
+
+A01.1/2 keep their original archived drivers/results. The only differing current
+recorded input is this extended test driver; their engine, original ordinary
+server and product inputs still match. Frozen old verifiers are not rerun against
+the extended driver. OR10 pinned18 current host/semantics controls remain separate.
+Next A01.5: current retained UI/short-loop/independent controls at changed UI inputs,
+then ONE whole-A01 review and a tested important-fix pass. A01 remains in progress;
+no finite first-read, full HTTP, P04/C07, mandatory A05/L02 or release claim follows.

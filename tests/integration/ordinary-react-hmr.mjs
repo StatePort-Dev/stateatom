@@ -11,22 +11,23 @@ import {startNativeBrowser,nativeApproveDevelopment} from '../../scripts/native-
 import {startIDE,rpc,waitFor} from '../../scripts/harness.mjs';
 import {sha256,fileManifest,verifyArtifactHashes,inspectInstalledPair} from '../../scripts/atom-package-receipt.mjs';
 
-const instancesOnly=process.argv.includes('--instances-only');
+const instancesOnly=process.argv.includes('--instances-only'),grammarOnly=process.argv.includes('--grammar-only');
+assert(!(instancesOnly&&grammarOnly),'Select exactly one bounded mode');
 const hf=process.argv.find(s=>s.endsWith('atom-handoff.json'))||'.artifacts/atom/atom-handoff.json';
 const h=JSON.parse(await readFile(hf));
-const out='.artifacts/a01/'+(instancesOnly?'ordinary-instances-native':'ordinary-hmr-native')+'/' +new Date().toISOString().replace(/[:.]/g,'-');
+const out='.artifacts/a01/'+(grammarOnly?'ordinary-grammar-native':instancesOnly?'ordinary-instances-native':'ordinary-hmr-native')+'/' +new Date().toISOString().replace(/[:.]/g,'-');
 await mkdir(out,{recursive:true});await writeFile(out+'/driver.mjs',await readFile(new URL(import.meta.url)));
 const sourceBase='.runtime/todomvc',appRelative='examples/react',appBase=sourceBase+'/'+appRelative;
 const entries=['license.md',appRelative+'/src',appRelative+'/public',appRelative+'/package.json',appRelative+'/package-lock.json'];
 const footer='src/todo/components/footer.jsx';
-const inputEntries=['src/engine','core/analyzer.mjs','core/runtime-state.mjs','core/bridge.mjs','ide-extension/session.mjs','ide-extension/extension.mjs','dist/ide/extension.cjs','scripts/native-browser.mjs','scripts/harness.mjs','scripts/short-loop-inputs.mjs','tests/ide-host.cjs','tests/integration/ordinary-react-hmr.mjs','tests/helpers/ordinary-react-server.mjs'];
+const inputEntries=['src/engine','core/analyzer.mjs','core/runtime-state.mjs','core/bridge.mjs','ide-extension/session.mjs','ide-extension/extension.mjs','dist/ide/extension.cjs','scripts/native-browser.mjs','scripts/harness.mjs','scripts/short-loop-inputs.mjs','tests/ide-host.cjs','tests/integration/ordinary-react-hmr.mjs','tests/helpers/ordinary-react-server.mjs','tests/helpers/ordinary-properties-server.mjs','tests/fixtures/inspection/ordinary-react'];
 const inputs=async()=>({...await fileDigests(root,inputEntries),...Object.fromEntries(await Promise.all(Object.keys({...h.sourceManifest,...h.buildSources.manifest}).map(async f=>[f,sha256(await readFile(f))])))});
 const result={
- schema:instancesOnly?'stateatom.ordinary-react-instances-native/1':'stateatom.ordinary-react-hmr-native/1',status:'RUNNING',startedAt:new Date().toISOString(),
+ schema:grammarOnly?'stateatom.ordinary-react-grammar-native/1':instancesOnly?'stateatom.ordinary-react-instances-native/1':'stateatom.ordinary-react-hmr-native/1',status:'RUNNING',startedAt:new Date().toISOString(),
  revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceDirty:true,
  handoff:{file:hf,sha256:sha256(await readFile(hf)),package:h.package,ui:h.ui},
- configuration:{mode:instancesOnly?'equal-instances':'source-edits',operator:'agent',browserPlugin:'Browser plugin unavailable; exact paired native MV3 hosts and existing Atom debugger ownership required',
-  source:'Read-only pinned extracted TodoMVC directory; edits only in an exclusive copied workspace including its locked dependencies',
+ configuration:{mode:grammarOnly?'synthetic-ordinary-grammar':instancesOnly?'equal-instances':'source-edits',operator:'agent',browserPlugin:'Browser plugin unavailable; exact paired native MV3 hosts and existing Atom debugger ownership required',
+  source:grammarOnly?'Explicit synthetic grammar fixture in an exclusive copied workspace, using its verified locked React19 dependencies; independent business source unused/unchanged':'Read-only pinned extracted TodoMVC directory; edits only in an exclusive copied workspace including its locked dependencies',
   plugin:{enabled:true,sourceConsumption:true,reactHostProps:false,reactCommit:false,firstReadContracts:false},
   appTargetSession:false,probes:'Explicit chrome.scripting MAIN/ISOLATED, native app Input, DOM metadata/search (without harness DOM.getDocument) and Network.getResponseBody through the existing Atom debugger. No app-page facade or parallel app-target CDP.',
   IDE:'Real VS Code Extension Host, explicit copied project root and native source-open audit',model:false,
@@ -59,15 +60,18 @@ async function fill(id,value){
  await waitFor(()=>panel.evaluate(s=>{const e=document.querySelector(s);return e&&!e.disabled;},q(id)));
  await panel.evaluate(s=>{const e=document.querySelector(s);for(let p=e.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true;e.scrollIntoView({block:'center'});e.focus();e.select();},q(id));
  await (await protocol()).send('Input.insertText',{text:value});
- assert.equal(await panel.evaluate(s=>document.querySelector(s).value,q(id)),value);
+ assert(await panel.evaluate(({s,value})=>document.querySelector(s).value===value,{s:q(id),value}),'Native field fill did not match: '+id);
 }
 async function choose(id,value){
  await (await protocol()).send('Page.bringToFront');
  const index=await waitFor(()=>panel.evaluate(({s,value})=>{const e=document.querySelector(s);if(!e||e.disabled)return null;const i=[...e.options].findIndex(o=>o.value===value);if(i<0)return null;for(let p=e.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true;e.scrollIntoView({block:'center'});e.focus();return i+1;},{s:q(id),value}));
- await key('Home','Home',36);for(let i=1;i<index;i++)await key('ArrowDown','ArrowDown',40);await key(' ','Space',32);
- assert.equal(await panel.evaluate(s=>document.querySelector(s).value,q(id)),value);
+ const current=await panel.evaluate(s=>({value:document.querySelector(s).value,count:document.querySelector(s).options.length}),q(id));
+ if(current.value===value)return;
+ if(id==='property')await key(index===1?'Home':'End',index===1?'Home':'End',index===1?36:35);else{await key('Home','Home',36);for(let i=1;i<index;i++)await key('ArrowDown','ArrowDown',40);}
+ await key(' ','Space',32);
+ assert(await panel.evaluate(({s,value})=>document.querySelector(s).value===value,{s:q(id),value}),'Native field fill did not match: '+id);
 }
-async function appProbe(){return panel.evaluate(async id=>(await chrome.scripting.executeScript({target:{tabId:id},world:'MAIN',func:()=>({
+async function appProbe(){if(grammarOnly)return grammarProbe();return panel.evaluate(async id=>(await chrome.scripting.executeScript({target:{tabId:id},world:'MAIN',func:()=>({
  count:document.querySelector('.todo-count')?.textContent??null,
  titles:[...document.querySelectorAll('.todo-list label')].map(e=>e.textContent.trim()),
  completed:[...document.querySelectorAll('.todo-list .toggle')].map(e=>e.checked),
@@ -107,7 +111,7 @@ async function editTitle(row,value){
  },{id:tabId,value});
  await waitFor(async()=>(await appProbe()).titles[row-1]===value&&await panel.evaluate(async({id,selector})=>(await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:s=>!document.querySelector(s),args:[selector]}))[0]?.result,{id:tabId,selector:prefix+' input.edit'}));
 }
-async function rowDOM(row,selection){
+async function rowDOM(row,selection,selector='.todo-list li:nth-child('+row+') label'){
  return panel.evaluate(async({id,selector,identity})=>{
   const inspected=await chrome.debugger.sendCommand({tabId:id},'DOM.describeNode',{backendNodeId:Number(identity.node.slice(4))});
   const document=await chrome.debugger.sendCommand({tabId:id},'DOM.describeNode',{backendNodeId:Number(identity.document.slice(4))});
@@ -121,7 +125,7 @@ async function rowDOM(row,selection){
    if((frameTree.childFrames||[]).length)throw Error('This registered instance control requires the original single-frame app');
    return{recordedIdentity:identity,inspectedBackendNodeId:inspected.node.backendNodeId,backendNodeId:node.backendNodeId,queriedFrontendNodeId:node.nodeId,documentBackendNodeId:document.node.backendNodeId,frame:frameTree.frame.id,attributes};
   }finally{await chrome.debugger.sendCommand({tabId:id},'DOM.discardSearchResults',{searchId});}
- },{id:tabId,selector:'.todo-list li:nth-child('+row+') label',identity:selection.domIdentity});
+ },{id:tabId,selector,identity:selection.domIdentity});
 }
 async function inspectTitle(label,row,expected){
  await choose('property','text');const before=(await rpc(panel,{op:'state',tabId})).selection?.observedAt,appBefore=await appProbe();
@@ -163,7 +167,7 @@ async function stopServer(){
 }
 async function startServer(workspace,enabled){
  const log=await open(out+'/server-'+path.basename(workspace)+'-'+enabled+'.log','wx');
- const child=fork(path.resolve('tests/helpers/ordinary-react-server.mjs'),[workspace,String(enabled),path.resolve(out)+'/vite-'+path.basename(workspace)+'-'+enabled],{cwd:workspace,stdio:['ignore',log.fd,log.fd,'ipc']});
+ const child=fork(path.resolve(grammarOnly?'tests/helpers/ordinary-properties-server.mjs':'tests/helpers/ordinary-react-server.mjs'),[workspace,String(enabled),path.resolve(out)+'/vite-'+path.basename(workspace)+'-'+enabled],{cwd:workspace,stdio:['ignore',log.fd,log.fd,'ipc']});
  let ready,error;child.on('message',m=>{if(m.type==='ready')ready=m;else if(m.type==='error')error=m.message;});server={child,log};
  const receipt=await waitFor(()=>{if(error)throw Error(error);if(child.exitCode!==null)throw Error('Own dev server exited '+child.exitCode);return ready;},45000);
  assert.equal(receipt.cwd,workspace);origin=receipt.origin;(result.devServers??=[]).push(receipt);
@@ -184,8 +188,8 @@ async function startOwnedIDE(workspace){
  instance.runtime=runtime;return instance;
 }
 async function pair(){
- for(const[id,value]of [['bridge',ide.conn.url],['origin',origin],['source-root','src'],['token',ide.conn.token]])await fill(id,value);
- await action('pair');await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).connection.source?.url===ide.conn.url);await fill('token','');
+ for(const[id,value]of [['bridge',ide.conn.url],['origin',origin],['source-root',grammarOnly?'control-src':'src'],['token',ide.conn.token]])await fill(id,value);
+ await action('pair');try{await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).connection.source?.url===ide.conn.url);}catch(e){const state=await rpc(panel,{op:'state',tabId});result.lastPairFailure={attached:state.attached,sourceConnected:!!state.connection.source,staleReason:state.stale?.reason??null,ui:await panel.evaluate(()=>({status:document.querySelector('[data-atom-id="status"]').textContent,tokenPresent:!!document.querySelector('[data-atom-id="token"]').value}))};throw e;}await fill('token','');
 }
 async function reloadApp(){
  const before=await panel.evaluate(async id=>(await chrome.debugger.sendCommand({tabId:id},'Page.getFrameTree')).frameTree.frame,tabId);
@@ -255,6 +259,85 @@ async function saveOriginal(label){
  assert.equal(saved.version,1);const file=out+'/'+label+'-original.v1.json';await writeFile(file,saved.raw);await action('diagnostic-toggle');
  return{id:saved.record.id,file,sha256:sha256(saved.raw),raw:saved.raw};
 }
+async function grammarProbe(){return panel.evaluate(async id=>(await chrome.scripting.executeScript({target:{tabId:id},world:'MAIN',func:()=>({
+ ready:!!document.querySelector('#controls-name'),observer:typeof window.__STATEATOM__?.snapshot==='function',
+ name:document.querySelector('#controls-name')?.value,hold:document.querySelector('#controls-hold')?.checked,
+ disabled:document.querySelector('#condition')?.disabled,direct:document.querySelector('#direct')?.textContent,
+ forwarded:document.querySelector('#forwarded')?.textContent,overridden:document.querySelector('#overridden')?.textContent,
+ getterEvents:window.ordinaryPropertyEvents?.slice()
+})}))[0].result,tabId);}
+async function changeGrammarName(value){
+ await appClick('#controls-name');
+ await panel.evaluate(async({id,value})=>{
+  for(const type of ['keyDown','keyUp'])await chrome.debugger.sendCommand({tabId:id},'Input.dispatchKeyEvent',{type,key:'a',code:'KeyA',windowsVirtualKeyCode:65,modifiers:type==='keyDown'?2:0});
+  await chrome.debugger.sendCommand({tabId:id},'Input.insertText',{text:value});
+ },{id:tabId,value});
+ await waitFor(async()=>{const p=await grammarProbe();return p.name===value&&p.direct===value&&p.forwarded===value;});
+}
+async function inspectGrammar(label,selector,property,value,file,expression){
+ await choose('property',property);
+ const before=(await rpc(panel,{op:'state',tabId})).selection?.observedAt,appBefore=await grammarProbe();
+ await action('pick');await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).picker?.status==='picking');await appClick(selector);
+ const state=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});return s.picker?.status==='selected'&&s.selection?.observedAt!==before&&s.analysis?s:null;});
+ const dom=await rowDOM(0,state.selection,selector),runtime=state.analysis.stateatom?.runtime;result.lastGrammarAttempt={label,selection:state.selection,dom,runtime};
+ assert.equal(state.selection.value,value);assert.equal(dom.inspectedBackendNodeId,dom.backendNodeId);assert.equal(state.selection.instance,dom.attributes['data-stateatom']);
+ assert.equal(state.selection.instance,runtime.target.scope+':'+runtime.target.target);assert.equal(state.selection.frame,0);
+ assert.equal(runtime.status,'Observed');assert.equal(runtime.target.value,value);assert.equal(runtime.target.expression,expression);assert.equal(runtime.fullPath,false);assert.equal(runtime.commit.status,'Unknown/Unsupported');
+ const matches=state.analysis.sources.filter(s=>s.file===file);assert.equal(matches.length,1);const source=matches[0],digest=sha256(await readFile(result.currentWorkspace+'/'+file));assert.equal(source.sourceDigest,digest);assert.equal(runtime.target.sourceDigest,digest);
+ const byId=new Map(runtime.nodes.map(n=>[n.id,n])),reachable=new Set(),pending=[runtime.target.id];while(pending.length){const id=pending.pop();if(reachable.has(id))continue;reachable.add(id);pending.push(...byId.get(id)?.deps||[]);}
+ for(const n of runtime.nodes){assert(reachable.has(n.id));assert.equal(n.page,state.selection.page);if(n.sourceDigest)assert.equal(n.sourceDigest,sha256(await readFile(result.currentWorkspace+'/'+n.file)));}
+ const ui=await waitFor(()=>panel.evaluate(expression=>{const r={status:document.querySelector('[data-atom-id="status"]').textContent,expressions:document.querySelector('[data-atom-id="expressions"]').textContent,operands:document.querySelector('[data-atom-id="operands"]').textContent,freshness:document.querySelector('[data-atom-id="freshness"]').textContent};return r.status==='OK'&&r.expressions.includes(expression)?r:null;},expression));
+ assert.deepEqual(await grammarProbe(),appBefore,'Inspection did not execute the policy getter or change the application');
+ const record={label,selectionMethod:'Real native U05 picker',selection:state.selection,dom,source,runtime,ui,appBefore,appAfter:await grammarProbe(),run:state.run},destination=out+'/'+label+'-observation.json';await writeFile(destination,JSON.stringify(record,null,2));return{...record,file:destination,sha256:sha256(await readFile(destination))};
+}
+function skipped(observation){
+ assert(observation.runtime.nodes.some(n=>n.kind==='read'&&n.expression==='hold'&&n.value===true));
+ assert(!observation.runtime.nodes.some(n=>['policy.allowed','!policy.allowed'].includes(n.expression)));
+ assert.deepEqual(observation.appBefore.getterEvents,[]);
+}
+function parameterBoundary(observation){
+ const reads=observation.runtime.nodes.filter(n=>n.kind==='read'&&n.expression==='text');assert.equal(reads.length,1);assert.equal(reads[0].value,observation.selection.value);assert.equal(reads[0].scope,observation.runtime.target.scope);
+ assert(reads[0].boundary.includes('parameter provenance not observed'));assert(observation.runtime.boundaries.some(b=>b.includes('parameter provenance not observed')));
+ assert(!observation.runtime.nodes.some(n=>['declared','effective'].includes(n.expression)));
+ return reads[0];
+}
+async function grammarSequence(entry,kind,workspace){
+ result.currentWorkspace=workspace.dir;await mkdir(workspace.dir+'/control-src');
+ for(const file of ['App.jsx','Label.jsx','Forward.jsx'])await cp('tests/fixtures/inspection/ordinary-react/'+file,workspace.dir+'/control-src/'+file);
+ await cp('tests/fixtures/inspection/ordinary-react/index.html',workspace.dir+'/index.html');entry.fixtureManifest=await fileDigests(workspace.dir,['control-src','index.html']);
+ const withoutObserver=p=>({...p,observer:false});
+ await startServer(workspace.dir,false);await launch(kind,kind+'-grammar-off');
+ entry.off={initial:await grammarProbe()};await changeGrammarName('Birch');entry.off.masked=await grammarProbe();await appClick('#controls-hold');await waitFor(async()=>!(await grammarProbe()).hold);entry.off.taken=await grammarProbe();await changeGrammarName('Bi');entry.off.short=await grammarProbe();await closeBrowser();await stopServer();
+ await startServer(workspace.dir,true);ide=await startOwnedIDE(workspace.dir);await launch(kind,kind+'-grammar-on');await pair();await reloadApp();
+ await check(kind+' native ordinary skipped boolean does not execute its right getter during inspection',async()=>{
+  entry.initial=await grammarProbe();assert.deepEqual(withoutObserver(entry.initial),entry.off.initial);assert.equal(entry.initial.disabled,true);
+  const condition=await inspectGrammar(kind+'-skipped-initial','#condition','disabled',true,'control-src/App.jsx','hold || !policy.allowed');skipped(condition);condition.ide=await openSource(condition,workspace.dir);entry.initialCondition=condition;entry.saved=await saveOriginal(kind+'-grammar');
+ });
+ await check(kind+' native wrapper equal values keep exact local parameter and instance boundaries',async()=>{
+  const direct=await inspectGrammar(kind+'-direct','#direct','text','Cedar','control-src/App.jsx','name');assert(direct.runtime.nodes.some(n=>n.kind==='read'&&n.expression==='name'&&n.value==='Cedar'));
+  const forwarded=await inspectGrammar(kind+'-forwarded','#forwarded','text','Cedar','control-src/Label.jsx','text'),overridden=await inspectGrammar(kind+'-overridden','#overridden','text','Cedar','control-src/Label.jsx','text');
+  const a=parameterBoundary(forwarded),b=parameterBoundary(overridden);assert.notEqual(forwarded.dom.backendNodeId,overridden.dom.backendNodeId);assert.notEqual(forwarded.selection.instance,overridden.selection.instance);assert.notEqual(a.id,b.id);assert.equal(forwarded.source.sourceDigest,overridden.source.sourceDigest);forwarded.ide=await openSource(forwarded,workspace.dir);entry.initialTexts={direct,forwarded,overridden};
+ });
+ await check(kind+' actual form change is masked while hold skips the right operand',async()=>{
+  await choose('property','disabled');await action('pick');await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).picker?.status==='picking');await appClick('#condition');await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).picker?.status==='selected');const old=await rpc(panel,{op:'state',tabId});
+  await changeGrammarName('Birch');assert.deepEqual(withoutObserver(await grammarProbe()),entry.off.masked);
+  const previous=await rpc(panel,{op:'state',tabId}),freshness=await panel.evaluate(()=>document.querySelector('[data-atom-id="freshness"]').textContent);entry.maskedOldSnapshot={selection:previous.selection,stale:previous.stale,freshness};if(previous.selection){assert.equal(previous.selection.observedAt,old.selection.observedAt);assert(freshness.includes('Not live'));}else assert(freshness.startsWith('Stale'));
+  const condition=await inspectGrammar(kind+'-masked','#condition','disabled',true,'control-src/App.jsx','hold || !policy.allowed');skipped(condition);assert.notEqual(condition.runtime.target.id,entry.initialCondition.runtime.target.id);entry.masked=condition;
+  const forwarded=await inspectGrammar(kind+'-forwarded-changed','#forwarded','text','Birch','control-src/Label.jsx','text'),overridden=await inspectGrammar(kind+'-overridden-unchanged','#overridden','text','Cedar','control-src/Label.jsx','text');parameterBoundary(forwarded);parameterBoundary(overridden);entry.changedTexts={forwarded,overridden};
+ });
+ await check(kind+' actual hold change takes only the original right getter with observed boolean transformation',async()=>{
+  await appClick('#controls-hold');await waitFor(async()=>!(await grammarProbe()).hold);assert.deepEqual(withoutObserver(await grammarProbe()),entry.off.taken);assert.deepEqual((await grammarProbe()).getterEvents,['allowed:Birch']);
+  const condition=await inspectGrammar(kind+'-taken','#condition','disabled',false,'control-src/App.jsx','hold || !policy.allowed');assert(condition.runtime.nodes.some(n=>n.kind==='member'&&n.expression==='policy.allowed'&&n.value===true));assert(condition.runtime.nodes.some(n=>n.kind==='unary'&&n.expression==='!policy.allowed'&&n.value===false));entry.taken=condition;
+ });
+ await check(kind+' repeated native form validation obtains current reads and leaves saved original bytes historical',async()=>{
+  await changeGrammarName('Bi');assert.deepEqual(withoutObserver(await grammarProbe()),entry.off.short);assert.deepEqual((await grammarProbe()).getterEvents,['allowed:Birch','allowed:Bi']);
+  const condition=await inspectGrammar(kind+'-short','#condition','disabled',true,'control-src/App.jsx','hold || !policy.allowed');assert(condition.runtime.nodes.some(n=>n.kind==='member'&&n.expression==='policy.allowed'&&n.value===false));assert(condition.runtime.nodes.some(n=>n.kind==='unary'&&n.expression==='!policy.allowed'&&n.value===true));assert.notEqual(condition.runtime.target.id,entry.taken.runtime.target.id);entry.short=condition;
+  assert.equal((await rpc(panel,{op:'open-handoff',id:entry.saved.id})).raw,entry.saved.raw);assert.equal(sha256(await readFile(entry.saved.file)),entry.saved.sha256);
+ });
+ entry.finalManifest=await fileDigests(workspace.dir,['src','public','package.json','package-lock.json','license.md']);assert.deepEqual(entry.finalManifest,workspace.initialManifest);assert.deepEqual(await fileDigests(workspace.dir,['control-src','index.html']),entry.fixtureManifest);
+ await panel.screenshot({path:out+'/'+kind+'-grammar-candidate.png'});delete entry.saved.raw;await closeBrowser();await stopServer();await ide.close(true);ide=null;assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);
+}
+
 async function waitStale(old){
  const state=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});const text=await panel.evaluate(()=>document.querySelector('[data-atom-id="freshness"]').textContent);return s.run!==old.run&&text.startsWith('Stale')?{run:s.run,freshness:text,sourceCount:s.analysis?.sources?.length??0}:null;},30000);
  assert.equal(state.sourceCount,0);return state;
@@ -274,6 +357,7 @@ try{
  for(const kind of ['standalone','embedding']){
   const workspace=await copyWorkspace(kind),entry={kind,workspace,observations:[],sourceVersions:[]};result.cases.push(entry);
   const original=await readFile(workspace.dir+'/'+footer,'utf8');entry.sourceVersions.push({stage:'original',sha256:sha256(original)});
+  if(grammarOnly){await grammarSequence(entry,kind,workspace);continue;}
   if(instancesOnly){
    result.currentWorkspace=workspace.dir;
    await startServer(workspace.dir,false);await launch(kind,kind+'-instances-off');
@@ -345,7 +429,7 @@ try{
   await closeBrowser();await stopServer();await ide.close(true);ide=null;
   assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);
  }
- result.status=instancesOnly?'PASS_ORDINARY_REACT_EQUAL_INSTANCES_ONLY':'PASS_ORDINARY_REACT_SOURCE_EDIT_ONLY';
+ result.status=grammarOnly?'PASS_SYNTHETIC_ORDINARY_REACT_GRAMMAR_ONLY':instancesOnly?'PASS_ORDINARY_REACT_EQUAL_INSTANCES_ONLY':'PASS_ORDINARY_REACT_SOURCE_EDIT_ONLY';
 }catch(e){result.status='FAIL';result.error=String(e.stack||e);process.exitCode=1;console.error(e);await panel?.screenshot({path:out+'/failure-candidate.png'}).catch(()=>{});}
 finally{
  await closeBrowser().catch(e=>result.errors.push({cleanup:'browser',message:e.message}));await stopServer().catch(e=>result.errors.push({cleanup:'server',message:e.message}));

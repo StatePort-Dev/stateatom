@@ -1021,3 +1021,10 @@ historical; current H05 credits only its two saved skipped-right fragments. Exac
 .33 package/hosts and all criteria are unchanged. Next bounded A01.4: ordinary
 Text/Disabled form/boolean and wrapper/prop positive-counterexample cases. A01
 whole acceptance/review and mandatory A05/L02 remain open; see27-a01 execution.
+
+A01.4 passes12 native synthetic ordinary React19 grammar checks in both unchanged
+.33 hosts:18 selected observations, six on/six off native updates, skipped/taken
+getter behavior and exact local wrapper reads with explicit unobserved parameter
+ancestry. No resolver/runtime/package change or independent-app promotion. Next
+A01.5 current retained UI/short-loop/independent controls and ONE whole-A01 review;
+A01/mandatory A05/L02/release remain open. See27-a01 for actual evidence/limits.

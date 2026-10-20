@@ -1449,10 +1449,10 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-21-a01-ordinary-react-hmr.md",
       "execution_record": "27-a01-ordinary-react-progress.md",
-      "active_slice": "A01.4",
+      "active_slice": "A01.5",
       "remaining_acceptance": [
-        "ordinary Text/Disabled form/boolean/skipped and wrapper/prop positive-counterexample matrix with exact boundaries",
-        "current affected UI/short-loop/independent retained controls where necessary; historical/current inputs explicitly separated",
+        "current retained UI/short-loop/independent controls where inputs changed; historical/current inputs explicitly separated",
+        "published supported grammar/profile matrix without promoting local wrapper reads or unsupported final commit",
         "one complete A01 review and tested important-fix pass"
       ],
       "completed_slices": [
@@ -1507,18 +1507,35 @@
           "full_A01_acceptance": false,
           "verification": ".artifacts/a01/retained-mechanisms/verification.json",
           "evidence_scope": "Actual current synthetic pinned18 host/semantics controls after recorded mechanism hash drift; ordinary19 final commit remains unsupported. Historical files unchanged, current H05 skipped fragment only, no form/wrapper counterexample yet."
+        },
+        {
+          "id": "A01.4",
+          "status": "complete-within-synthetic-ordinary-grammar-boundary",
+          "candidate_unchanged": "0.1.0-candidate.20261020.33",
+          "checks": {
+            "native_grammar": 12,
+            "paired_hosts": 2,
+            "selected_observations": 18,
+            "instrumented_native_form_updates": 6,
+            "off_mode_native_form_updates": 6
+          },
+          "product_code_changed": false,
+          "full_A01_acceptance": false,
+          "verification": ".artifacts/a01/grammar/verification.json",
+          "evidence_scope": "Explicit synthetic ordinary React19 form/hold/skipped original getter controls and native exact local wrapper reads; upstream parameter/override ancestry and final commit unobserved, fullPath false. Original independent sources and .33 unchanged."
         }
       ],
       "current_candidate": {
         "version": "0.1.0-candidate.20261020.33",
         "handoff": ".artifacts/atom/2026-10-20T20-41-35-056Z/atom-handoff.json",
-        "verification": ".artifacts/a01/equal-instances/verification.json",
-        "boundary": "Actual native two equal titles, same-value/different-value first-row edits, exact backend-marker-target-read identities, independent second row event/time retained on reinspection, old snapshot/save unchanged. React19 marker/value correspondence only; committed-host binding unsupported/fullPath false."
+        "verification": ".artifacts/a01/grammar/verification.json",
+        "boundary": "Explicit synthetic ordinary React19 form/hold/skipped original getter controls and native exact local wrapper reads; upstream parameter/override ancestry and final commit unobserved, fullPath false. Original independent sources and .33 unchanged."
       },
       "implementation_plans": [
         "../superpowers/plans/2026-10-21-a01-ordinary-react-hmr.md",
         "../superpowers/plans/2026-10-21-a01-equal-instance-controls.md",
-        "../superpowers/plans/2026-10-21-a01-retained-mechanisms.md"
+        "../superpowers/plans/2026-10-21-a01-retained-mechanisms.md",
+        "../superpowers/plans/2026-10-21-a01-ordinary-grammar.md"
       ]
     },
     {
