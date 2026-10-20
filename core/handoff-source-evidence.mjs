@@ -31,7 +31,8 @@ function snapshotFiles(files){
  }
  return result;
 }
-function reporterAnchors(record){
+// Internal shared reader: input is a previously validated base-profile record.
+export function sourceEvidenceReporterAnchors(record){
  if(record.profile!=='reviewed-snapshot/1')return[];
  const t=record.report.technicalEvidence,map=new Map(t.fields.map(f=>[f.id,f])),anchors=[];
  for(const g of t.joins){const index=/^source-(\d+)$/.exec(g.id);if(!index||g.kind!=='source'||g.evidenceKind!=='Code-linked')continue;
@@ -47,7 +48,7 @@ export async function createHandoffSourceEvidence(reportRaw,developerDiagnosticR
  const relation=!reporter.build||!developer.build?'unknown':reporter.build===developer.build?'same-hash':'different-hash',globalReasons=[];
  if(relation==='unknown')globalReasons.push('recorded-build-missing');else if(relation==='different-hash')globalReasons.push('recorded-build-mismatch');
  if(reporter.freshness!=='Recorded')globalReasons.push('reporter-snapshot-stale');if(developer.freshness!=='Recorded')globalReasons.push('developer-snapshot-stale');
- const anchors=reporterAnchors(record),sourceChecks=[];
+ const anchors=sourceEvidenceReporterAnchors(record),sourceChecks=[];
  for(const f of selected){
   const reporterSources=anchors.filter(x=>x.file===f.file),developerSources=developerRecord.sources.map((s,index)=>({...s,index})).filter(x=>x.file===f.file),reasons=[...globalReasons];
   if(!reporterSources.length)reasons.push('reporter-source-anchor-missing');else if(reporterSources.length>1)reasons.push('reporter-source-ambiguous');

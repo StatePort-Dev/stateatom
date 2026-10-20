@@ -241,3 +241,24 @@ sample hash, not whole-app build attestation. No public attachment/H05 completio
 
 Source-only4a final26/full1361; exact .21 unchanged, no installed/native H05 claim.
 Next4b public versioned attachment and parent/consent semantics before UI wiring.
+
+### Bounded U03.2b.4b.1: unimported public source attachment append/parse
+
+Contract `docs/features/handoff-source-attachment.md`. Add only new codec/tests,
+plus a narrow shared validated-anchor helper in the unimported4a model if needed.
+No dispatcher/runtime changes or repack. New explicit profile source-evidence/1
+retains a strict baseProfile view; packets bind Developer note and exact parent.
+
+- [x] RED/GREEN real-file computed attachment, explicit includeFiles/default none,
+  same/different/missing/name-only/stale/omitted controls, no hidden source bytes.
+- [x] Strict root/packet/reference/file types, sizes, kinds and deterministic
+  reasons; integrity versus rehashed-untrusted data stays explicit.
+- [x] Exact parent/raw whitespace, baseline/prior-note/prior-packet immutability,
+  new-note association, stale/concurrent children and note-only preservation.
+- [x] Snapshot mutable finding/review/files before await; no getter/expression or
+  linked-resource/app/permission effects. Focused/full plus unchanged .21 binding.
+- [x] Local bounded commit; next4b.2 privacy before installed4c/nativeH05. Parent
+  Task2/3 and whole U03 remain OPEN.
+
+4b.1 source append/parse complete only: public26/focused52/full1387, exact .21
+unchanged. Next4b.2 monotone packet/file privacy before installed4c/nativeH05.

@@ -808,7 +808,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.2b.4b",
+      "active_slice": "U03.2b.4b.2",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -1033,6 +1033,22 @@
           "issued_candidate_unchanged": "0.1.0-candidate.20261020.21",
           "verification": ".artifacts/u03/source-evidence/verification.json",
           "record": "24-u03-handoff-progress.md"
+        },
+        {
+          "id": "U03.2b.4b.1",
+          "status": "complete-within-unimported-attachment-append-parse-boundary",
+          "tests": {
+            "public_codec": 26,
+            "focused_model_codec": 52,
+            "full": 1387
+          },
+          "runtime_importer": false,
+          "public_profile": "source-evidence/1",
+          "privacy_derivative": false,
+          "actual_H05_enrichment": false,
+          "issued_candidate_unchanged": "0.1.0-candidate.20261020.21",
+          "verification": ".artifacts/u03/source-attachment/verification.json",
+          "record": "24-u03-handoff-progress.md"
         }
       ],
       "current_candidate": {
@@ -1041,7 +1057,7 @@
         "sha256": "a2d564a7d5abac484efa162c83fed966c63f1b2036f8311967f475c9dfdfcd0d",
         "verification": ".artifacts/u03/source-fidelity/verification21.json",
         "boundary": "normal review/privacy controls and explicit non-Code-linked source fallback; actual H05 source/build enrichment and whole U03 pending",
-        "source_only_extension_verification": ".artifacts/u03/source-evidence/verification.json"
+        "source_only_extension_verification": ".artifacts/u03/source-attachment/verification.json"
       },
       "remaining_acceptance": [
         "actual H05 matched-source/build evidence attachment, including mismatched/missing/name-only controls",

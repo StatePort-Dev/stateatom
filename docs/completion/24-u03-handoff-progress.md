@@ -847,3 +847,58 @@ Next **U03.2b.4b** defines an explicit public source-evidence attachment codec,
 immutable parent/note lineage and consent/redaction semantics, still before
 installed recipient controls/native H05. Task2/3, whole H01–H06/U03 review,
 separately saved U02 outcomes, P04/C07 and mandatory A05/L02 remain open.
+
+
+## U03.2b.4b.1 — unimported public source attachment append/parse
+
+The [working candidate format](../features/handoff-source-attachment.md) adds
+`core/handoff-source-attachment.mjs`, still unimported. Explicit profile
+`source-evidence/1` retains a flat immutable reporter report/notes plus supported
+baseProfile. Strict original base codecs validate the base view and still refuse
+new-profile imports. The only4a change exports a shared validated-anchor reader;
+model behavior remains covered by its original26 checks.
+
+A source packet is tied to one unverified Developer note and exact parent raw/
+report digest. The note build comes from the supplied Developer diagnostic.
+Actual copied file bytes are hashed by4a; only explicitly included file checks
+enter the public packet. Default excludes all files with a count and no hidden
+path/digest. Developer reference is bounded historical metadata, not original v1
+or source text. Known-secret paths cannot be opted in: refuse rather than leak
+or silently change a matching path. All status/reason/build/retained-anchor checks
+are deterministic and scoped to local content, never execution or fix evidence.
+
+Source-evidence checksum covers packets/omission count; base reportDigest remains
+unchanged. Both checksums provide self-integrity, not trust. A consistent rehashed
+comparison claim remains historical/untrusted. Append preserves previous report,
+notes and packets; note-only child preserves packets. Parent verification checks
+actual original bytes rather than a synthetic base-view digest. Missing parent is
+not-checked, supplied undefined/changed parent fails. Finding/review/file buffers
+are snapshotted before first await; old minimal/v1 semantics are not weakened.
+
+Fresh commands:
+
+```sh
+node --test --test-isolation=none tests/handoff-source-attachment.test.mjs tests/handoff-source-evidence.test.mjs
+npm test
+node .artifacts/u03/source-attachment/verify.mjs
+```
+
+Public codec **26**, model+codec focused **52**, full **1387** pass. Exact `.21`
+producer/archive/installed pair/entire hosts remain unchanged, bound by
+`.artifacts/u03/source-attachment/verification.json`. No repack/native rerun for
+unimported code. Prior native .21 retains its identity and proves no installed
+source attachment. This does not complete actual H05/U03.
+
+Retained controls: missing-factory1, contract21/24 RED, first24 PASS. Added privacy/
+empty-profile RED2/26 exposed unfiltered known-secret local filepath opt-in and
+empty attachment without omission history. Both now reject; focused52/full1387
+pass. Tests keep actual byte comparison, minimal/rich base distinction, name-only/
+missing/different/omitted controls, exact parent/whitespace, prior-note/packet
+immutability, checksum versus rehashed-untrusted distinction,8-note bound,
+getter/sparse/decorated/late-input refusal and inert hostile text.
+
+Next **U03.2b.4b.2** must implement monotone privacy before any dispatcher/reader
+integration: omitted note removes its packet, omitted files leave counts only,
+source category/anchor removal removes affected packet metadata too, no hidden
+retention/restoration. Installed4c and native actual H05 follow separately; Task2/3,
+whole H01–H06/U03, U02 saved outcomes, P04/C07 and mandatory A05/L02 remain open.

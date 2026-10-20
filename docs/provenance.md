@@ -308,3 +308,11 @@ U03.2b.4a unimported source-byte model aboveb132957: focused26/full1361,
 is source-harness evidence only; .21 producer/archive/entire installed hosts are
 unchanged and old native results keep identity. No public/installed source-evidence
 attachment, native H05 or full-app build attestation is claimed.
+
+
+U03.2b.4b.1 unimported source attachment above74aaf60: public26/focused52/full1387,
+receipt `.artifacts/u03/source-attachment/verification.json`. New explicit profile
+validates strict base semantics and source-note/parent data continuity. Checksum/
+rehashed input stays historical-untrusted; tests are not native file acquisition
+or H05 acceptance. Exact .21 package/producer/entire hosts unchanged. Privacy and
+installed recipient integration remain subsequent bounded work.

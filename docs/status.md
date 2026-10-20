@@ -896,3 +896,10 @@ states, without source text or action authority. The existing build hash domain
 is collected samples, not full-build attestation. [Record](completion/24-u03-handoff-progress.md).
 Next4b is the public versioned evidence attachment; no installed attachment/H05
 completion follows from this source-only model.
+
+
+U03.2b.4b.1 supplies an **unimported** explicit source-evidence/1 attachment codec:
+public26/focused52/full1387 pass, exact .21 executable inputs/hosts unchanged.
+Packets bind an unverified note and actual raw parent, default file checks stay
+excluded, baseline/prior notes/packets remain intact. No installed/native H05 is
+claimed. Next4b.2 implements monotone packet/file privacy before4c UI integration.
