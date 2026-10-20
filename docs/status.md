@@ -903,3 +903,11 @@ public26/focused52/full1387 pass, exact .21 executable inputs/hosts unchanged.
 Packets bind an unverified note and actual raw parent, default file checks stay
 excluded, baseline/prior notes/packets remain intact. No installed/native H05 is
 claimed. Next4b.2 implements monotone packet/file privacy before4c UI integration.
+
+
+U03.2b.4b.2 adds **unimported** source-attachment privacy: privacy23/focused75/
+full1410 pass; exact .21 executable inputs remain unchanged. Retained entries stay
+immutable, actual removed metadata leaves counts only, source-anchor omissions
+prune packet duplicates, and minimal all-note semantics are explicit. [Record](completion/24-u03-handoff-progress.md).
+Next4c.1 installs passive dispatch/read/storage with a focused old-counter guard;
+normal source-file UI/native H05 remain later, whole U03 stays open.

@@ -2,6 +2,8 @@
 // Unimported explicit attachment codec. Data comparisons never confer app authority.
 import{portableSourcePath}from'./diagnostic.mjs';
 import{filterHandoffReviewText}from'./handoff-content.mjs';
+import{omitHandoffFields}from'./handoff-report.mjs';
+import{redactReviewedHandoff}from'./handoff-reviewed.mjs';
 import{parseHandoffReport,appendHandoffFinding,handoffArtifactDigest}from'./handoff-files.mjs';
 import{createHandoffSourceEvidence,sourceEvidenceReporterAnchors}from'./handoff-source-evidence.mjs';
 const PROFILE='source-evidence/1',BASES=['minimal-snapshot/1','reviewed-snapshot/1'],MAX=1048576;
@@ -38,16 +40,36 @@ function fileCheck(f,base,packet){
 }
 function packetCheck(p,r,base){
  keys(p,['kind','findingId','createdAt','parentArtifactDigest','parentReportDigest','developerDiagnostic','buildComparison','files','omittedFiles','scope']);const n=r.additions.find(n=>n.id===p.findingId);
- if(p.kind!=='local-source-byte-comparison'||!n||p.createdAt!==n.createdAt||!hash(p.parentArtifactDigest)||p.parentArtifactDigest!==n.parentArtifactDigest||p.parentReportDigest!==r.reportDigest||p.scope!==scope||!Array.isArray(p.files)||p.files.length>8||!integer(p.omittedFiles,8)||p.files.length+p.omittedFiles>8)fail('Invalid comparison packet');sourceReference(p.developerDiagnostic);comparison(p.buildComparison,r.report.sourceDiagnostic,p.developerDiagnostic);if(n.build!==p.developerDiagnostic.build)fail('Note build differs from supplied Developer diagnostic');let size=0;const paths=new Set();for(const f of p.files){fileCheck(f,base,p);if(paths.has(f.file)||(size+=f.bytes)>524288)fail('Packet file budget or duplicate');paths.add(f.file);}
+ if(p.kind!=='local-source-byte-comparison'||!n||p.createdAt!==n.createdAt||!hash(p.parentArtifactDigest)||p.parentArtifactDigest!==n.parentArtifactDigest||(!hash(p.parentReportDigest)||r.lineage.kind==='developer-addition'&&p.findingId===r.additions.at(-1).id&&p.parentReportDigest!==r.reportDigest)||p.scope!==scope||!Array.isArray(p.files)||p.files.length>8||!integer(p.omittedFiles,8)||p.files.length+p.omittedFiles>8)fail('Invalid comparison packet');sourceReference(p.developerDiagnostic);comparison(p.buildComparison,r.report.sourceDiagnostic,p.developerDiagnostic);if(n.build!==p.developerDiagnostic.build)fail('Note build differs from supplied Developer diagnostic');let size=0;const paths=new Set();for(const f of p.files){fileCheck(f,base,p);if(paths.has(f.file)||(size+=f.bytes)>524288)fail('Packet file budget or duplicate');paths.add(f.file);}
 }
 async function decode(raw){
  const r=json(raw);keys(r,[...common,...extras]);if(r.schema!=='stateatom.diagnostic'||r.version!==2||r.kind!=='historical-diagnostic'||r.profile!==PROFILE||!BASES.includes(r.baseProfile))throw error('UNSUPPORTED_HANDOFF_FORMAT');if(!hash(r.sourceEvidenceDigest))fail('Missing attachment checksum');if(await handoffArtifactDigest(canonical({sourceEvidence:r.sourceEvidence,evidencePrivacy:r.evidencePrivacy}))!==r.sourceEvidenceDigest)throw error('HANDOFF_EVIDENCE_INTEGRITY');
- const base=baseView(r);await parseHandoffReport(canonical(base));if(r.lineage.kind!=='developer-addition')fail('Attachment privacy derivatives are not implemented in this increment');keys(r.evidencePrivacy,['omittedAttachments']);if(!integer(r.evidencePrivacy.omittedAttachments)||!equal(r.evidenceLimitations,limits)||!Array.isArray(r.sourceEvidence)||r.sourceEvidence.length>8||!r.sourceEvidence.length&&!r.evidencePrivacy.omittedAttachments)fail('Invalid attachment limits/privacy');const ids=new Set();for(const p of r.sourceEvidence){packetCheck(p,r,base);if(ids.has(p.findingId))fail('Duplicate attachment finding');ids.add(p.findingId);}return r;
+ const base=baseView(r);await parseHandoffReport(canonical(base));if(!['developer-addition','privacy-derivative'].includes(r.lineage.kind))fail('Unknown attachment lineage');keys(r.evidencePrivacy,['omittedAttachments']);if(!integer(r.evidencePrivacy.omittedAttachments)||!equal(r.evidenceLimitations,limits)||!Array.isArray(r.sourceEvidence)||r.sourceEvidence.length>8||!r.sourceEvidence.length&&!r.evidencePrivacy.omittedAttachments)fail('Invalid attachment limits/privacy');const ids=new Set();for(const p of r.sourceEvidence){packetCheck(p,r,base);if(ids.has(p.findingId))fail('Duplicate attachment finding');ids.add(p.findingId);}return r;
 }
 async function parseAny(raw){const r=json(raw);return r?.profile===PROFILE?decode(raw):(await parseHandoffReport(raw)).record;}
-async function parentCheck(r,parentRaw){const p=await parseAny(parentRaw),digest=await handoffArtifactDigest(parentRaw),previous=p.profile===PROFILE?p.sourceEvidence:[],privacy=p.profile===PROFILE?p.evidencePrivacy:{omittedAttachments:0},baseProfile=p.profile===PROFILE?p.baseProfile:p.profile;
- if(r.id===p.id||r.revision!==p.revision+1||r.baseProfile!==baseProfile||r.lineage.parentArtifactDigest!==digest||r.lineage.parentReportDigest!==p.reportDigest||!equal(r.report,p.report)||r.reportDigest!==p.reportDigest||!equal(r.privacy,p.privacy)||!equal(r.evidencePrivacy,privacy)||r.additions.length!==p.additions.length+1||!equal(r.additions.slice(0,-1),p.additions)||r.additions.at(-1).parentArtifactDigest!==digest)throw error('HANDOFF_PARENT_MISMATCH');
- const added=r.sourceEvidence.slice(previous.length);if(!equal(r.sourceEvidence.slice(0,previous.length),previous)||added.length>1||added.length===1&&(added[0].findingId!==r.additions.at(-1).id||added[0].parentArtifactDigest!==digest))throw error('HANDOFF_PARENT_MISMATCH');
+async function validateBaseContinuity(r,p){
+ // Public bytes/counters are checked independently. These private views adapt
+ // only the digest namespace and bounded counter delta for the strict base
+ // semantic checker; no public baseline, note or omission count is rewritten.
+ const previousView=baseView(p),next=baseView(r);
+ if(r.lineage.kind==='privacy-derivative'){
+  const removed=p.additions.length-r.additions.length,count=p.privacy.omittedDeveloperFindings+removed;if(removed<0||!integer(count)||r.privacy.omittedDeveloperFindings!==count)throw error('HANDOFF_PARENT_MISMATCH');
+  previousView.privacy.omittedDeveloperFindings=0;next.privacy.omittedDeveloperFindings=removed;
+ }
+ const previous=canonical(previousView),shadowDigest=await handoffArtifactDigest(previous);next.lineage.parentArtifactDigest=shadowDigest;
+ if(next.lineage.kind==='developer-addition')next.additions.at(-1).parentArtifactDigest=shadowDigest;
+ await parseHandoffReport(canonical(next),{parentRaw:previous});
+}
+function subsequence(oldRows,nextRows){let at=0;for(const row of nextRows){while(at<oldRows.length&&!equal(oldRows[at],row))at++;if(at===oldRows.length)return false;at++;}return true;}
+async function parentCheck(r,parentRaw){
+ const p=await parseAny(parentRaw),digest=await handoffArtifactDigest(parentRaw),previous=p.profile===PROFILE?p.sourceEvidence:[],privacy=p.profile===PROFILE?p.evidencePrivacy:{omittedAttachments:0},baseProfile=p.profile===PROFILE?p.baseProfile:p.profile;
+ if(r.id===p.id||r.revision!==p.revision+1||r.baseProfile!==baseProfile||r.lineage.parentArtifactDigest!==digest||r.lineage.parentReportDigest!==p.reportDigest)throw error('HANDOFF_PARENT_MISMATCH');
+ await validateBaseContinuity(r,p);
+ if(r.lineage.kind==='developer-addition'){
+  const added=r.sourceEvidence.slice(previous.length);if(!equal(r.evidencePrivacy,privacy)||!equal(r.sourceEvidence.slice(0,previous.length),previous)||added.length>1||added.length===1&&(added[0].findingId!==r.additions.at(-1).id||added[0].parentArtifactDigest!==digest))throw error('HANDOFF_PARENT_MISMATCH');return;
+ }
+ let at=0;for(const packet of r.sourceEvidence){while(at<previous.length&&previous[at].findingId!==packet.findingId)at++;if(at===previous.length)throw error('HANDOFF_PARENT_MISMATCH');const before=previous[at++],expected={...before,files:packet.files,omittedFiles:before.omittedFiles+before.files.length-packet.files.length};if(!equal(expected,packet)||!subsequence(before.files,packet.files))throw error('HANDOFF_PARENT_MISMATCH');}
+ const attachmentCount=privacy.omittedAttachments+(previous.length-r.sourceEvidence.length),noteCount=p.privacy.omittedDeveloperFindings+(p.additions.length-r.additions.length);if(!integer(attachmentCount)||!integer(noteCount)||r.evidencePrivacy.omittedAttachments!==attachmentCount||r.privacy.omittedDeveloperFindings!==noteCount)throw error('HANDOFF_PARENT_MISMATCH');
 }
 export async function parseHandoffSourceEvidence(raw,options={}){const d=own(options,['parentRaw']),r=await decode(raw);let parentStatus='not-checked';if(Object.hasOwn(d,'parentRaw')){await parentCheck(r,d.parentRaw);parentStatus='content-matched';}return freeze({record:r,trust:'historical-untrusted',parentStatus});}
 async function emit(r){r.sourceEvidenceDigest=await handoffArtifactDigest(canonical({sourceEvidence:r.sourceEvidence,evidencePrivacy:r.evidencePrivacy}));const raw=canonical(r);await decode(raw);return raw;}
@@ -59,3 +81,33 @@ export async function appendHandoffSourceEvidence(parentRaw,developerDiagnosticR
  r.sourceEvidence.push({kind:'local-source-byte-comparison',findingId:newNote.id,createdAt:newNote.createdAt,parentArtifactDigest:await handoffArtifactDigest(parentRaw),parentReportDigest:p.reportDigest,developerDiagnostic:structuredClone(model.developer),buildComparison:structuredClone(model.buildComparison),files:selected,omittedFiles:model.sourceChecks.length-selected.length,scope});return emit(r);
 }
 export async function appendSourceEvidenceNote(raw,finding,options={}){const n=note(finding,true),c=choice(options,false),p=await decode(raw);return emit(await childBase(p,raw,n,c));}
+
+function reviewSnapshot(value){
+ const c=own(value,['omitIssueFields','omitCategories','omitFields','replaceFields','omitNotes','omitEvidence','omitEvidenceFiles']);
+ for(const[name,max]of[['omitIssueFields',5],['omitCategories',13],['omitFields',2048],['omitNotes',8],['omitEvidence',8]])if(Object.hasOwn(c,name)){c[name]=dense(c[name],max);if(c[name].some(x=>typeof x!=='string')||new Set(c[name]).size!==c[name].length)fail('Unique own omission choices required');}
+ if(Object.hasOwn(c,'replaceFields'))c.replaceFields=dense(c.replaceFields,2048).map(x=>{const d=own(x,['id','text']);if(typeof d.id!=='string'||typeof d.text!=='string')fail('Replacement must be own text');return{id:d.id,text:d.text};});
+ if(Object.hasOwn(c,'omitEvidenceFiles'))c.omitEvidenceFiles=dense(c.omitEvidenceFiles,8).map(x=>{const d=own(x,['findingId','files']);if(typeof d.findingId!=='string')fail('Packet finding required');const files=dense(d.files,8);if(files.some(f=>!portableSourcePath(f))||new Set(files).size!==files.length)fail('Unique own packet file omissions required');return{findingId:d.findingId,files};});
+ return c;
+}
+function affectedSourceFile(before,after,file){
+ if(before.profile!=='reviewed-snapshot/1')return false;const old=before.report.technicalEvidence.fields,next=new Map(after.report.technicalEvidence.fields.map(f=>[f.id,f]));
+ for(const field of old){const m=/^\/sources\/(\d+)\/(file|sourceDigest)$/.exec(field.sourcePointer);if(!m||equal(field,next.get(field.id)))continue;const path=old.find(f=>f.sourcePointer==='/sources/'+m[1]+'/file');if(file.reporterIndices.includes(Number(m[1]))||['included','filtered','replaced'].includes(path?.state)&&path.value===file.file)return true;}
+ return false;
+}
+export async function redactHandoffSourceEvidence(raw,review={},options={}){
+ const c=reviewSnapshot(review),o=choice(options,false),p=await decode(raw),digest=await handoffArtifactDigest(raw);if(!hash(o.expectedParentDigest)||o.expectedParentDigest!==digest)throw error('STALE_HANDOFF_PARENT');
+ const packetIds=new Set(p.sourceEvidence.map(x=>x.findingId)),omitted=new Set(c.omitEvidence??[]),fileOmissions=new Map();for(const id of omitted)if(!packetIds.has(id))fail('Unknown packet omission');
+ for(const item of c.omitEvidenceFiles??[]){const packet=p.sourceEvidence.find(x=>x.findingId===item.findingId);if(!packet||fileOmissions.has(item.findingId)||item.files.some(file=>!packet.files.some(x=>x.file===file)))fail('Unknown or duplicate packet file omission');fileOmissions.set(item.findingId,new Set(item.files));}
+ const base=baseView(p),baseRaw=canonical(base);let child;
+ if(p.baseProfile==='minimal-snapshot/1'){
+  if((c.omitCategories?.length??0)||(c.omitFields?.length??0)||(c.replaceFields?.length??0))throw error('UNSUPPORTED_SOURCE_PRIVACY','Minimal profile has no granular source fields.');
+  const notes=new Set(p.additions.map(n=>n.id));if((c.omitNotes??[]).some(id=>!notes.has(id)))fail('Unknown note omission');if((c.omitNotes?.length??0)!==notes.size)throw error('UNSUPPORTED_SOURCE_PRIVACY','Minimal profile requires explicit omission of all Developer notes.');
+  child=(await parseHandoffReport(await omitHandoffFields(baseRaw,c.omitIssueFields??[],{now:()=>o.at}))).record;
+ }else{
+  const baseReview=Object.fromEntries(['omitIssueFields','omitCategories','omitFields','replaceFields','omitNotes'].filter(k=>Object.hasOwn(c,k)).map(k=>[k,c[k]]));child=(await parseHandoffReport(await redactReviewedHandoff(baseRaw,baseReview,{expectedParentDigest:await handoffArtifactDigest(baseRaw),now:()=>o.at}))).record;
+ }
+ const r=structuredClone(child),noteIds=new Set(r.additions.map(n=>n.id)),allSourcePaths=(c.omitCategories??[]).includes('sourceLocations'),packets=[];
+ for(const packet of p.sourceEvidence){if(omitted.has(packet.findingId)||!noteIds.has(packet.findingId))continue;const files=packet.files.filter(file=>!allSourcePaths&&!fileOmissions.get(packet.findingId)?.has(file.file)&&!affectedSourceFile(base,child,file));packets.push({...packet,files,omittedFiles:packet.omittedFiles+packet.files.length-files.length});}
+ const count=p.evidencePrivacy.omittedAttachments+(p.sourceEvidence.length-packets.length);if(!integer(count))throw error('HANDOFF_LIMIT');r.lineage.parentArtifactDigest=digest;
+ return emit({...r,profile:PROFILE,baseProfile:p.baseProfile,sourceEvidence:packets,evidencePrivacy:{omittedAttachments:count},evidenceLimitations:[...limits]});
+}

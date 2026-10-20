@@ -262,3 +262,24 @@ retains a strict baseProfile view; packets bind Developer note and exact parent.
 
 4b.1 source append/parse complete only: public26/focused52/full1387, exact .21
 unchanged. Next4b.2 monotone packet/file privacy before installed4c/nativeH05.
+
+### Bounded U03.2b.4b.2: unimported source-attachment privacy derivatives
+
+Contract continuation `docs/features/handoff-source-attachment.md`; narrow updates
+only to that codec/tests. No dispatcher/UI/repack. Keep strict base codec semantics;
+minimal copy requires explicit omission of all notes, normal rich supports per-note.
+
+- [x] RED/GREEN per-note/packet/file omission, actual removed bytes, cumulative
+  counts, original/prior retained entries immutable and no restore through parent.
+- [x] Drop packet file data when source category/path/digest anchors are removed,
+  including unjoined/missing-digest same-path cases; preserve unrelated packets.
+- [x] Exact parent/root privacy identity and historical packet baseline references;
+  append-after-privacy and privacy-after-append, old minimal explicit all-notes limit.
+- [x] Own choices/clock/file lists snapshot before await, getter/refusal/budgets/
+  overflow/inert controls; focused/full plus exact unchanged .21 executable binding.
+- [x] Local bounded commit, then installed4c actual recipient controls/native H05.
+  Parent Task2/3/whole U03 remain OPEN.
+
+4b.2 source privacy complete only: privacy23/focused75/full1410, exact .21
+unchanged. Next4c.1 explicit passive dispatcher/read/storage +focused old reviewed
+omission-counter guard before new package;4c.2 normal source-file UI/nativeH05.

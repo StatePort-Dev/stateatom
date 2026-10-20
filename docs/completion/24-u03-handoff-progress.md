@@ -902,3 +902,59 @@ integration: omitted note removes its packet, omitted files leave counts only,
 source category/anchor removal removes affected packet metadata too, no hidden
 retention/restoration. Installed4c and native actual H05 follow separately; Task2/3,
 whole H01–H06/U03, U02 saved outcomes, P04/C07 and mandatory A05/L02 remain open.
+
+
+## U03.2b.4b.2 — unimported monotone source-packet privacy
+
+The [privacy contract](../features/handoff-source-attachment.md) now implements
+`redactHandoffSourceEvidence`. Retained notes/packets/files stay identical ordered
+subsequences. Note removal removes its packet; explicit packet removal can retain
+the unverified note. File/category/anchor omissions remove actual serialized path/
+digest/indices/status metadata, with cumulative counts only. SourceLocations drops
+all packet paths, including unjoined paths; path/digest redaction prunes affected
+comparisons, including the missing-digest/same-visible-path case. Originals remain
+unchanged and omitted content cannot be restored through a derivative.
+
+New privacy identity/parent digest comes from the strict base semantics; packets
+retain their historical creation parentReportDigest rather than falsely rewriting
+it to the later redacted baseline. Append-after-privacy keeps prior packets and
+binds any new comparison separately to the current baseline. Exact supplied parent
+checks reporter/source identity, note/packet/file continuity and safe monotone counts.
+No linked resource, permission or application operation is performed.
+
+Minimal base preserves its original all-notes-removed privacy rule: require an
+explicit list of every current note, reject partial/empty selection and nonempty
+rich-only requests. Nothing silently removes unchosen notes. Normal reviewed base
+supports per-note/per-file choices. This compatibility limit does not weaken the
+normal rich privacy requirement or reinterpret minimal-snapshot/1.
+
+Fresh commands:
+
+```sh
+node --test --test-isolation=none tests/handoff-source-privacy.test.mjs tests/handoff-source-attachment.test.mjs tests/handoff-source-evidence.test.mjs
+npm test
+node .artifacts/u03/source-privacy/verify.mjs
+```
+
+Privacy **23**, combined focused **75**, full **1410** pass. Exact `.21` producer/
+archive/installed pair/entire hosts remain unchanged, bound in
+`.artifacts/u03/source-privacy/verification.json`. No new package/native repeat for
+unimported code. This is no installed source attachment, actual H05 or whole U03.
+
+Retained controls: missing-factory1, contract19/21 RED, first72/73 passed with one
+real safe-integer omission overflow. Added forged note-count underflow gives
+counter RED2/22; removed count is computed before addition and checked as safe.
+A valid file-only copy at MAX_SAFE_INTEGER then exposed a false rejection in the
+old base-checker add-before-subtract arithmetic (boundary RED1/23). The new adapter
+independently verifies actual counters first, then uses zero prior counter/bounded
+removed delta only in temporary semantic-check views. Actual records/counters/raw
+parent bindings are never rewritten. Green75/full1410 pass. The existing old
+reviewed-profile comparator itself is unchanged here; its focused arithmetic guard
+is an explicit dependency before passive dispatcher integration, not a claim that
+this source-only adapter fixed every old importer.
+
+Next **U03.2b.4c.1** integrates explicit passive dispatch/import/read/storage of the
+new profile, readable historical comparisons, note/privacy preservation and the
+focused old reviewed-counter guard, then verifies a fresh immutable package.
+Normal Developer diagnostic/source-file selection and actual native H05 follow
+in4c.2; Task2/3, whole H01–H06/U03, U02 saved outcomes/P04/C07/A05/L02 remain open.

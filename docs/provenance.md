@@ -316,3 +316,11 @@ validates strict base semantics and source-note/parent data continuity. Checksum
 rehashed input stays historical-untrusted; tests are not native file acquisition
 or H05 acceptance. Exact .21 package/producer/entire hosts unchanged. Privacy and
 installed recipient integration remain subsequent bounded work.
+
+
+U03.2b.4b.2 unimported source privacy above3168907: privacy23/focused75/full1410,
+`.artifacts/u03/source-privacy/verification.json`. Exact old .21 package/producer/
+entire installed hosts remain unchanged. Actual public parent/counters are checked
+separately from temporary base-validation namespaces; no new trust/execution claim.
+Existing old comparator arithmetic is not changed by this source-only increment.
+No installed source attachment or native H05 is established.

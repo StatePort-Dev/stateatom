@@ -97,3 +97,50 @@ No packet/file/check can be restored or rewritten. Bind exact original parent,
 preserve identity/source and label every retained comparison historical/untrusted.
 Only then wire dispatcher/store/readers, actual local file selection/review and
 both-host H05. No source fetching, account/model, SDK, app mutation or publication.
+
+##4b.2 concrete privacy contract
+
+`redactHandoffSourceEvidence(raw,review,{expectedParentDigest,now})` supports the
+underlying rich review choices plus `omitEvidence:[findingId]` and
+`omitEvidenceFiles:[{findingId,files:[safeRelativePath]}]`. Snapshot all own data
+before awaits. A packet may be omitted while keeping its unverified note; omitting
+a note always omits its packet. Retained packets and files remain identical
+ordered subsequences; only their omittedFiles/cumulative omittedAttachments counts
+increase. No retained reference/build/status/reason/file descriptor is rewritten.
+
+The unchanged base codec validates its privacy semantics through temporary base
+views; exact public parent bytes are checked separately. Reporter baseline
+receives the existing explicit privacy derivative identity, and source identity
+stays unchanged. Packets retain their original parentReportDigest: this is their
+historical creation baseline, not rewritten to a later privacy baseline. Packet
+validation checks remaining file anchors against the current retained source fields.
+
+Omitting sourceLocations drops all packet file checks, including unjoined files
+whose paths were never root anchors. Changing/omitting/replacing a reporter source
+path or sourceDigest drops affected file checks, identified by recorded indices
+or the previously visible same path. This includes an originally missing digest:
+no duplicate path remains hidden in a packet after its source field is removed.
+Other explicit file omission removes only that packet's selected file metadata.
+Omitted data leaves counts only; no omitted path/note/finding-ID index is retained.
+
+For minimal-snapshot/1 base, preserve its existing privacy derivative rule: no
+retained Developer notes. Require an explicit omitNotes list containing every
+current note; partial/empty selection when notes exist rejects visibly. Do not
+silently remove unchosen notes. Rich-only field/category/replacement requests on
+minimal base reject rather than being ignored. This is a disclosed compatibility
+limit, not a reduced per-note requirement for the normal reviewed profile.
+
+Parsing and exact-parent validation accept developer-addition or privacy-derivative
+lineage. Append still cannot rewrite/drop prior packets. A privacy child cannot
+restore packets/files/notes, alter retained data, decrease omission counts, change
+source/build identity or introduce evidence for a new note. A checksum without a
+supplied parent remains untrusted and continuity not-checked. No permission,
+resolution, network or application effect follows from redaction/import.
+
+
+At the integer boundary, validate actual omission counters as old+(removed count)
+before delegating. Temporary base views use a zero prior counter plus the bounded
+removed-note delta, avoiding the existing add-before-subtract rounding in a base
+checker. Actual public counters/raw-parent binding are checked independently and
+never rewritten. This preserves valid no-note-removal copies at MAX_SAFE_INTEGER
+and refuses real overflow/forged undercount; it does not modify the old profiles.
