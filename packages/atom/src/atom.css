@@ -190,3 +190,5 @@
 [data-sp-ui] .sp-atom-review-preview { white-space:pre-wrap; overflow-wrap:anywhere; max-height:160px; overflow:auto; padding:8px 0; }
 [data-sp-ui] .sp-atom-review-help { color:var(--sp-color-muted); overflow-wrap:anywhere; }
 [data-sp-ui] .sp-atom-review-field [hidden] { display:none !important; }
+
+[data-sp-ui] .sp-atom-review-check > span { min-width:0; overflow-wrap:anywhere; }

@@ -149,6 +149,18 @@ scoped evidence and failures. Next is U03.2b.3 rich technical/privacy profile;
 minimal-profile persistence does not complete rich review, whole U03 or C07.
 
 
+Current U03 checkpoint (2026-10-20): ordinary category/field review and privacy
+copies are installed; .20261020.22 additionally reads/stores/downloads the explicit
+source-evidence profile with note/file privacy. Full1432/focused206/native passive27/
+ordinary41/storage15/types2/admission7 bind exact files and package/host identity
+in the [execution record](docs/completion/24-u03-handoff-progress.md). Source-profile
+native inputs are synthetic fixtures, not actual H05 source acquisition.
+The one next bounded item is U03.2b.4c.2: normal explicit Developer diagnostic/
+local-source-file review plus actual H05 workflow. Task2/3/whole U03 and saved U02
+outcomes/P04/C07 remain open. A05/L02 stay mandatory, SDK remains outside Atom,
+and an independent human remains no blocker. Historical criteria/results below
+and new working-design versus approved-scope boundaries are preserved.
+
 ## Historical roadmap and checkpoint ledger
 
 StateAtom's next development target is a narrow, independently useful developer alpha. A developer should be able to select a UI property, inspect its supported dependencies, test an eligible input locally, and save an explanation that another person can read.

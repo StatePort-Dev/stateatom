@@ -151,3 +151,18 @@ Current native41 screenshots/download receipts:
 `.artifacts/u03/review-controls-native/2026-10-20T08-20-42-371Z/`.
 The status inputs are labelled synthetic historical compatibility controls;
 actual H05 matched-source evidence is not demonstrated by them.
+
+
+## Passive source-profile demo (.22)
+
+Exact candidate .artifacts/atom/2026-10-20T09-23-15-512Z/atom-handoff.json.
+These source files are explicitly synthetic passive fixtures, not normal actual
+H05 source acquisition. Use Open diagnostic reader with app/IDE/source closed.
+Read discrepancy/condition/question first; Local source comparisons is optional,
+historical and not reverified. Add an unverified note or create a separate privacy
+copy by omitting a file/comparison/note; originals remain unchanged. Minimal base
+requires explicit omission of every note for its compatible privacy copy.
+Normal Developer diagnostic/source-file creation is still pending4c.2.
+
+Actual native downloaded files from the passive journey:
+\n- standalone libraryDownload: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/standalone-library/stateatom-issue-c35f915d-1725-42c5-9b5b-06cfab1e2c09.stateatom.json\n- standalone note: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/standalone-recipient/stateatom-revision-107cc6ad-8e34-463e-b415-936104444002.stateatom.json\n- standalone filePrivacy: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/standalone-recipient/stateatom-privacy-1e78a31f-34b0-4e3a-ab33-ef9f32f61ddc.stateatom.json\n- standalone notePrivacy: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/standalone-recipient/stateatom-privacy-05cfe3db-6dfb-4274-9ec7-07862fbfc530.stateatom.json\n- embedding libraryDownload: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/embedding-library/stateatom-issue-afdafdee-d1c9-4ff9-b9a4-72648dd370a9.stateatom.json\n- embedding note: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/embedding-recipient/stateatom-revision-82cdadac-0434-42bf-b2d9-62ba84a62ef1.stateatom.json\n- embedding filePrivacy: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/embedding-recipient/stateatom-privacy-69541319-f8f3-4574-9a21-43e2d3821c2d.stateatom.json\n- embedding notePrivacy: /home/roman/projects/stateatom/.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/downloads/embedding-recipient/stateatom-privacy-443aad32-a4e8-43f7-bffa-aa5a02ce0f28.stateatom.json\n\nFirst viewport/control screenshots and exact receipts:\n.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/.\nAgent candidates only, no public reader deployment or H05 completion claim.\n

@@ -958,3 +958,84 @@ new profile, readable historical comparisons, note/privacy preservation and the
 focused old reviewed-counter guard, then verifies a fresh immutable package.
 Normal Developer diagnostic/source-file selection and actual native H05 follow
 in4c.2; Task2/3, whole H01–H06/U03, U02 saved outcomes/P04/C07/A05/L02 remain open.
+
+
+## U03.2b.4c.1 — installed passive source-profile integration
+
+Immutable .20261020.22:
+.artifacts/atom/2026-10-20T09-23-15-512Z/atom-handoff.json, source above6eef583.
+The [working contract](../features/handoff-source-integration.md) separates passive
+support from normal Developer source acquisition. Explicit common dispatch now
+handles source-evidence/1 read/parse/note/privacy; storage keeps exact bytes and
+original parent/conflict/retention rules. Strict base codecs keep their profiles.
+The focused old reviewed counter uses safe old+(removed) plus safe-integer check,
+preserving valid MAX_SAFE_INTEGER/no-note-loss copies and refusing forged overflow.
+
+Discrepancy/expected/selected condition/time/question stay first. Validated baseProfile
+keeps its technical/value meaning. Source comparisons are a separate collapsed
+inert disclosure: historical/not reverified, local content match or unjoined
+reasons, collected-sample equality rather than full-build attestation. Note
+associations use ordinals; exact JSON is advanced. No source/URL is opened/fetched.
+
+Saved readonly/download and recipient note/privacy support the profile. Native
+checkboxes omit whole comparison/files; note/comparison/source-category omission
+locks and skips subordinate choices while preserving local choices on uncheck.
+Cancel/new file invalidates prepared outputs, keeping original plus typed words.
+Minimal attachment requires explicit all-note omission; plain minimal UI stays
+unchanged. Shared13px body/12px controls remain, with scoped long-label wrapping.
+
+Fresh commands ($HANDOFF denotes the exact .22 path):
+
+    node --test --test-isolation=none tests/handoff-source-passive.test.mjs tests/handoff-reviewed.test.mjs tests/handoff-source-evidence.test.mjs tests/handoff-source-attachment.test.mjs tests/handoff-source-privacy.test.mjs tests/atom/handoff-ui.test.mjs tests/atom/handoff-review.test.mjs tests/browser/handoff-reader.test.mjs tests/atom/inspector-ui.test.mjs
+    npm test
+    npm run pack:atom
+    npm run verify:atom-types -- "$HANDOFF"
+    node tests/integration/handoff-source-passive.mjs "$HANDOFF"
+    node tests/integration/handoff-review-controls.mjs "$HANDOFF"
+    node tests/integration/handoff-storage.mjs "$HANDOFF"
+    npm run verify:atom-package -- "$HANDOFF"
+    node .artifacts/u03/source-passive/verify22.mjs
+
+Final full1432/focused206/types2/admission7 pass. Native passive27:
+.artifacts/u03/source-passive-native/2026-10-20T09-33-22-757Z/results.json.
+Source files are declared SYNTHETIC codec fixtures, not live H05 acquisition.
+Actual import/read/download, full same-profile restart/exact re-download with
+fresh completed GUID, conflicts, clean recipient note/file/note-packet privacy
+downloads/reopen are checked by exact hashes/parents. Installed old-reviewed
+counter admits the valid boundary and atomically refuses forged overflow through
+normal file import/storage. Actual inspector CDP Network has positive reader.js
+reload control, then HTTP stays empty; permissions unchanged, no HTTP app tab.
+This is inspector-scoped, not all-browser/P04 evidence.
+
+Ordinary actual reporter/review/source-status41:
+.artifacts/u03/review-controls-native/2026-10-20T09-28-35-668Z/results.json.
+Storage/legacy/exact-byte/restart/quota15:
+.artifacts/u03/storage-native/2026-10-20T09-35-43-484Z/results.json.
+All terminate exit0 on the same immutable pair. Exact producer/archive/entire
+hosts/receipts are in .artifacts/u03/source-passive/verification22.json.
+Unchanged authority/input source and old CSS prefix retain historical19/21
+Settings/default/legacy/expiry identities, never relabelled fresh22 or rerun.
+
+Agent compared first reader viewport (question visible at390), readonly modal,
+long-path controls and actual200%-zoom captures to supplied Settings foundation.
+Final path exceeds200 characters, wraps without page overflow; type stays13/12.
+Optional disclosures/vertical scroll are necessary local composition, not a new
+design reference. Tokens/primitives/reference assets unchanged. Changelog22;
+screenshots candidates, no independent human gate/approval claim.
+
+Retained controls: dispatch RED8/8, UI RED10/64 then dispatch64/UI64 PASS;
+first full1431/focused205 pass. Native22a FAIL3 at09:24:59: restart used stale
+DevToolsActivePort from closed own Chrome. Driver now archives only that endpoint
+before restart, preserving profile/storage and logs; package22 unchanged.
+Native22b PASS27 at09:27:23 used a short NaN path from JS string multiplication:
+its named long-path check does NOT establish long-path coverage. Raw result stays.
+Executed helper was archived after SHA matched its frozen before/after input.
+Added length RED1/9, corrected repeat(), final full1432/focused206 and native22c27
+exercise intended >200-char input. Final driver records first viewport and scrolls
+controls for narrow/zoom screenshots. No product rebuild/threshold relaxation;
+ordinary41 and unrelated old experiments were not repeated for this fixture fix.
+
+Next U03.2b.4c.2 adds normal explicit Developer diagnostic/source-file selection,
+review/download and actual independent matching-source H05. No whole Task2/3/U03
+H01–H06 review, U02 saved outcomes/P04/C07/A05/L02 completion follows from passive
+fixtures. No SDK/publication/other repository work.

@@ -32,3 +32,5 @@ section { overflow-wrap:anywhere; }
 [data-sp-ui] .sp-atom-review-help { color:var(--sp-color-muted); overflow-wrap:anywhere; }
 [data-sp-ui] .sp-atom-review-field [hidden],
 [data-sp-ui] #reader-privacy-area[hidden] { display:none !important; }
+
+[data-sp-ui] .sp-atom-review-check > span { min-width:0; overflow-wrap:anywhere; }

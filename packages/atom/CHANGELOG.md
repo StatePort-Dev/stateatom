@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.22
+
+- Explicit passive source-evidence profile import/read/storage, unchanged original
+  download, unverified note append and monotone privacy-copy controls. This does
+  not add normal Developer source-file acquisition or establish native H05.
+- Keep baseline discrepancy/condition first; optional historical source comparisons
+  use existing Settings/native disclosure foundations and13/12px typography.
+  Add whole-comparison/per-file privacy choices and scoped long-path wrapping.
+- Guard reviewed-parent omission-counter arithmetic at the safe-integer boundary.
+  Shared UI tokens/primitives/reference assets and action authority are unchanged.
+
 ## 0.1.0-candidate.20261020.21
 
 - Keep detailed-review failure reasons visible while the user types, until the

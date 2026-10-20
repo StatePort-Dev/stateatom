@@ -808,7 +808,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.2b.4c.1",
+      "active_slice": "U03.2b.4c.2",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -1065,15 +1065,34 @@
           "issued_candidate_unchanged": "0.1.0-candidate.20261020.21",
           "verification": ".artifacts/u03/source-privacy/verification.json",
           "record": "24-u03-handoff-progress.md"
+        },
+        {
+          "id": "U03.2b.4c.1",
+          "status": "complete-within-installed-passive-source-profile-boundary",
+          "candidate": "0.1.0-candidate.20261020.22",
+          "tests": {
+            "full": 1432,
+            "focused": 206,
+            "native_source_passive_fixture": 27,
+            "native_ordinary_review": 41,
+            "native_storage": 15,
+            "packed_types": 2,
+            "package_admission": 7
+          },
+          "installed_source_profile_read_note_privacy": true,
+          "normal_developer_source_file_form": false,
+          "actual_H05_enrichment": false,
+          "whole_U03_review": false,
+          "verification": ".artifacts/u03/source-passive/verification22.json",
+          "record": "24-u03-handoff-progress.md"
         }
       ],
       "current_candidate": {
-        "version": "0.1.0-candidate.20261020.21",
-        "handoff": ".artifacts/atom/2026-10-20T08-20-12-486Z/atom-handoff.json",
-        "sha256": "a2d564a7d5abac484efa162c83fed966c63f1b2036f8311967f475c9dfdfcd0d",
-        "verification": ".artifacts/u03/source-fidelity/verification21.json",
-        "boundary": "normal review/privacy controls and explicit non-Code-linked source fallback; actual H05 source/build enrichment and whole U03 pending",
-        "source_only_extension_verification": ".artifacts/u03/source-privacy/verification.json"
+        "version": "0.1.0-candidate.20261020.22",
+        "handoff": ".artifacts/atom/2026-10-20T09-23-15-512Z/atom-handoff.json",
+        "sha256": "616c747addb996184fda0c92070abfd95c6f7c588b4c395a78c965875a953700",
+        "verification": ".artifacts/u03/source-passive/verification22.json",
+        "boundary": "ordinary reporter plus installed passive source-profile read/note/privacy; source fixtures synthetic, normal Developer file form/native H05 and whole U03 pending"
       },
       "remaining_acceptance": [
         "actual H05 matched-source/build evidence attachment, including mismatched/missing/name-only controls",

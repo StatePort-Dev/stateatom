@@ -911,3 +911,12 @@ immutable, actual removed metadata leaves counts only, source-anchor omissions
 prune packet duplicates, and minimal all-note semantics are explicit. [Record](completion/24-u03-handoff-progress.md).
 Next4c.1 installs passive dispatch/read/storage with a focused old-counter guard;
 normal source-file UI/native H05 remain later, whole U03 stays open.
+
+
+U03.2b.4c.1 installs passive source-evidence/1 on .20261020.22:
+full1432/focused206/passive27/ordinary41/storage15/types2/admission7 pass. Exact
+import/restart/download/note/privacy bytes and old-counter guards are verified;
+source files remain synthetic fixtures, not actual H05 acquisition. First view/
+13/12 typography/long-path/narrow/zoom preserve scope. [Record](completion/24-u03-handoff-progress.md)
+retains failures and qualified short-NaN fixture result. Next4c.2 normal Developer
+file workflow/native H05; Task2/3/whole U03/P04/C07/U02 saved outcomes stay open.

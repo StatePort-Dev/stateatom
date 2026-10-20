@@ -283,3 +283,23 @@ minimal copy requires explicit omission of all notes, normal rich supports per-n
 4b.2 source privacy complete only: privacy23/focused75/full1410, exact .21
 unchanged. Next4c.1 explicit passive dispatcher/read/storage +focused old reviewed
 omission-counter guard before new package;4c.2 normal source-file UI/nativeH05.
+
+### Bounded U03.2b.4c.1: passive installed source profile
+
+Contract docs/features/handoff-source-integration.md. Explicit file dispatch,
+common inert presentation, saved readonly view and recipient note/privacy controls.
+No Developer diagnostic/source-file acquisition form/H05 claim in this slice.
+
+- [x] RED/fix old reviewed omission-counter boundary, then dispatch/source-profile
+  storage/read/append/redact with real codecs and old-v1/minimal controls.
+- [x] RED/GREEN normalized base view, readable comparisons, note/packet/file
+  privacy locks/reset/stale/Cancel; retain exact original/parent bytes and typing.
+- [x] Fresh immutable22/full/types/admission, actual passive fixture both-host
+  import/read/download/note/privacy/storage and ordinary normal41 regressions.
+- [x] Native keyboard/narrow/zoom/reduced-motion, positive CDP Network control and
+  rendered comparison to supplied Settings foundation; candidate images only.
+- [x] Local bounded commit; next4c.2 actual source-file form/nativeH05, no whole
+  Task2/3/U03/P04/C07 claim. Retain old authority evidence under exact source identity.
+
+4c.1 passive installed22 complete only: full1432/focused206/passive27/ordinary41/
+storage15/types2/admission7. Source fixtures synthetic, actualH05 remains4c.2.

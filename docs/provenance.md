@@ -324,3 +324,14 @@ entire installed hosts remain unchanged. Actual public parent/counters are check
 separately from temporary base-validation namespaces; no new trust/execution claim.
 Existing old comparator arithmetic is not changed by this source-only increment.
 No installed source attachment or native H05 is established.
+
+
+U03 passive source .20261020.22 above6eef583:
+.artifacts/atom/2026-10-20T09-23-15-512Z/atom-handoff.json;
+.artifacts/u03/source-passive/verification22.json binds full1432/focused206/native
+passive27/ordinary41/storage15/types2/admission7/entire hosts. Passive source
+fixtures are synthetic; actual downloaded revisions/parent continuity do not
+establish normal H05 source acquisition. Native22b long-path wording is qualified
+(short NaN fixture); final22c asserts >200 characters and captures first viewport/
+controls on the same package. Older executed helper was archived after matching
+recorded SHA; raw results unchanged. Old authority experiments keep identity.
