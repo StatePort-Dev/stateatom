@@ -127,6 +127,12 @@ This is partial U03, with rich review/v2 storage/full acceptance still open;
 next is U03.2b compatible local save/reopen. Authority workers match expiry-tested
 `.9` byte-for-byte; those expiry measurements retain their original identity.
 
+U03.2b.1 subsequently adds the **unimported local storage controller**: 35 real
+filesystem-backed checks/full1183 pass, with exact-byte v1/v2 reopen, ID conflicts,
+explicit legacy representation and existing retention. Issued `.12` executable
+inputs/entire hosts remain unchanged. Next is U03.2b.2 browser storage/UI wiring;
+installed persistence, rich review and whole-U03 acceptance remain unfinished.
+
 
 ## Historical roadmap and checkpoint ledger
 

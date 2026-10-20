@@ -199,6 +199,14 @@ review, compatible v2 local persistence, full H01–H06/whole-U03 review and C07
 acceptance remain open. Next is U03.2b local save/reopen. New screenshots remain
 agent candidates; independent human review is not a blocker. SDK stays outside Atom.
 
+The subsequent [U03.2b.1 storage controller](completion/24-u03-handoff-progress.md)
+passes 35 filesystem-backed checks and 1183 full source tests. It retains exact
+v1/v2 input strings, rejects conflicting IDs, labels legacy reserialization and
+preserves the eight-entry/2 MiB/seven-day limits. It is **unimported**; issued `.12`
+producer inputs and entire installed hosts are unchanged. Next is U03.2b.2 browser
+storage/UI integration. Installed v2 persistence, rich review and U03 acceptance
+remain open; no new browser feature is credited by the controller tests.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

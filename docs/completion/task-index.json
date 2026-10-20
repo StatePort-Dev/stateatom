@@ -808,7 +808,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.2b",
+      "active_slice": "U03.2b.2",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -862,6 +862,22 @@
           "full_H01_H06": false,
           "whole_U03_review": false,
           "record": "24-u03-handoff-progress.md"
+        },
+        {
+          "id": "U03.2b.1",
+          "status": "complete-within-unimported-storage-controller-boundary",
+          "files": [
+            "core/handoff-store.mjs",
+            "tests/handoff-store.test.mjs"
+          ],
+          "tests": {
+            "filesystem_backed_controller": 35,
+            "full": 1183
+          },
+          "runtime_importer": false,
+          "installed_v2_persistence": false,
+          "rich_privacy_complete": false,
+          "record": "24-u03-handoff-progress.md"
         }
       ],
       "current_candidate": {
@@ -872,7 +888,7 @@
         "boundary": "minimal workflow only"
       },
       "remaining_acceptance": [
-        "compatible v1/v2 local save/reopen and duplicate-ID conflicts",
+        "browser-owned compatible v1/v2 local save/reopen UI and installed conflict handling",
         "rich per-category/per-note privacy and retained technical evidence",
         "full H01-H06 incl zoom and source/build enrichment",
         "one fresh whole-U03 review and tested fix pass"

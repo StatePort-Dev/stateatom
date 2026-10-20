@@ -2,7 +2,8 @@
 
 Current branch `main`; no new branch/worktree. Binding new working journey:
 [U06](../features/qa-pm-handoff-journey.md). The maintainer authorized bounded
-implementation/verification/local-commit cycles until 2026-10-20T04:00:00Z.
+implementation/verification/local-commit cycles until 2026-10-20T04:00:00Z,
+then requested continuation for the next bounded cycle.
 [Implementation plan](../superpowers/plans/2026-10-20-u03-handoff-implementation.md).
 U03 remains **in progress**: a source model is not a reporter/recipient workflow.
 
@@ -196,3 +197,63 @@ One next bounded item: **U03.2b — compatible local v2 save/reopen**, preservin
 and exact file bytes with explicit duplicate-ID conflict and existing retention
 limits. Richer review then consumes that model. No new implementation begins in
 the final deadline verification window.
+
+## U03.2b.1 — compatible storage controller, not yet installed
+
+Continuation from clean `043fe41` on the existing `main` branch. The next bounded
+storage increment is specified in [the local store contract](../features/handoff-local-store.md).
+`core/handoff-store.mjs` supplies a single-writer queued controller with save,
+list, exact reopen, digest-checked removal and explicit legacy intake. Both v1
+and minimal v2 retain their supplied raw strings, including whitespace/Unicode.
+Same ID/same bytes is idempotent; same ID/different bytes rejects without writing.
+The older v1 object array is accepted only through explicit intake, marked
+`legacy-reserialized`; it does not recover original file bytes or delete the old
+key. Available exact parents validate content only. Missing/evicted/deleted parents
+remain not-checked, and developer statements remain unverified historical notes.
+
+Retention keeps eight entries, 2 MiB of encoded storage and seven days from the
+original artifact timestamp. Duplicate saves do not extend expiry or reorder.
+Evicted/expired IDs are returned. An incoming batch that would immediately lose
+its own new records rejects atomically; the caller can choose a smaller batch.
+Corrupt storage, malformed files, stale removal and conflicts cause no write.
+Read failure never becomes an empty-store overwrite; write failure never publishes
+success or triggers a blind rollback. A lost acknowledgement after commit requires
+reopening actual storage, and is not a guarantee that old bytes survived. The adapter must atomically replace a string and use
+one controller/writer per key; cross-process CAS is not claimed. No default Chrome
+adapter, runtime importer, startup migration, wire/type operation or UI is added.
+
+Fresh commands and results from this source revision (dirty atop `043fe41`):
+
+```sh
+node --test --test-reporter=tap --test-isolation=none tests/handoff-store.test.mjs
+npm test
+node .artifacts/u03/ui/verify12.mjs
+node .artifacts/u03/storage/verify2.mjs
+```
+
+Storage **35**, full **1183** pass with zero failures/cancelled/skipped. Tests use
+real temporary filesystem read/write and a restarted controller for reopening;
+controlled read/write failures check acknowledgement boundaries, including a
+lost acknowledgement after a real disk commit. Initial34/full1182 results remain
+historical; the final extra check characterizes the existing controller behavior
+and corrects the adapter guarantee without changing product code. Concurrent
+operations retain both acknowledged writes. Source/digest/log receipt:
+`.artifacts/u03/storage/verification2.json`. Original missing-controller RED1 and
+contract RED34, then first implementation32/34 and second33/34 remain in that
+artifact directory. Two test mistakes were corrected: checksum tampering uses
+existing `HANDOFF_INTEGRITY`, and a claimed single-file encoded-size overflow
+actually fit. The replacement batch control changes decoded backslash strings
+before serialization, so the legacy array fits 2 MiB but its nested store does
+not. No production guard, old test or evidence threshold was weakened.
+
+Fresh identity verification confirms `.20261020.12` producer/build inputs,
+archives, installed consumer and **entire both-host file maps** are unchanged;
+this controller is absent from executable manifests. The old native/UI/type
+results retain their original execution identity. No repack or repeated native
+experiment is justified by this unimported controller, and its filesystem checks
+do not prove Chrome storage or a usable Save/reopen interface.
+
+Only this controller boundary is complete. Next: **U03.2b.2 — browser-owned local
+storage and UI save/reopen**, consuming exact raw strings and preserving old v1
+records. Rich per-category/per-note review, full H01–H06, P04, one whole-U03 review
+and C07 remain open. Tasks2/3 retain their original BASEs and are not task-done.

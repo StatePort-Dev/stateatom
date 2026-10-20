@@ -34,6 +34,8 @@ not retrospective scope-interview approval).
 - No public publication/push, other repository, SDK, cloud account or external send.
 - User deadline 2026-10-20T04:00:00Z: finish bounded work/verification/local commit;
   leave later steps explicit rather than claim the whole U03 prematurely complete.
+  That timebox ended; a subsequent Continue resumes one bounded storage increment,
+  without re-opening completed work or creating another overnight timebox.
 
 ## Review Focus
 
@@ -100,6 +102,10 @@ specified in `docs/features/handoff-minimal-format.md`, with no v1/parser/runtim
 importer changes. U03.2b supplies rich per-category privacy and compatible storage.
 Task2 is not complete until both meet its original acceptance. This split avoids
 claiming a minimal data codec completes the user journey.
+U03.2b.1 now isolates the unimported exact-byte storage controller, specified in
+`docs/features/handoff-local-store.md`; 35 focused/full1183 pass with unchanged
+issued `.12` inputs. U03.2b.2 browser storage/UI integration and rich privacy stay
+open. This model does not complete Task2 or installed v2 persistence.
 
 **Consumes:** Task1 frozen baseline and exact original diagnostic, explicit review
 choices. **Produces:** validated historical v2 record/serializer/derivative and
