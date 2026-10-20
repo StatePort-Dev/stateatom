@@ -972,5 +972,10 @@ hosts remain unchanged. [Record](completion/24-u03-handoff-progress.md).
 The old native25 driver appCDP:false flag was inaccurate: fixture actions/reads
 used an app-target CDP session. Raw evidence remains unchanged and explicitly
 qualified; no clean-app-CDP-absence proof is claimed. Capture-operation no-new-read
-controls remain separate. Next U03.2c.3c.1 installs file/store/read/privacy; normal
-reporter saved-outcome creation and full U03/Task2/3/P04/C07/A05/L02 remain open.
+controls remain separate. U03.2c.3c.1 now installs passive input-file/store/read/
+note/source/privacy on .26: full1579/focused512/native27/ordinary41/storage15/
+types2/admission7. Native27 has no app tab and reads historical25 captures plus
+labelled synthetic source controls; original/later observations and unknown
+consumption/effect remain distinct. Private capture obeys existing unsaved-cache
+expiry without app refresh. Next U03.2c.3c.2 supplies normal reporter capture/
+consent/review/save. Full U03/Task2/3/P04/C07/A05/L02 remain open.

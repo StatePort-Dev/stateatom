@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 // Pure passive wording shared by Atom and the recipient; callers render inert text.
-export const handoffBaseProfile=r=>r?.profile==='source-evidence/1'?r.baseProfile:r?.profile;
+const componentProfile=r=>r?.profile==='input-evidence/1'?r.inputBaseHeader.profile:r?.profile;
+export const handoffHasSourceEvidence=r=>componentProfile(r)==='source-evidence/1';
+export const handoffBaseProfile=r=>handoffHasSourceEvidence(r)?r.baseProfile:componentProfile(r);
 const reviewed=r=>handoffBaseProfile(r)==='reviewed-snapshot/1';
 const rows=r=>[r.report.target.value,...r.report.technicalEvidence.fields];
 export const handoffCategoryLabels=Object.freeze({selectedText:'Selected text',selectionDetails:'Selection context',sourceLocations:'Source locations',sourceExcerpts:'Source excerpts',responseBodies:'Response excerpts',runtimeValues:'Runtime values',networkLocations:'Network origins',routePaths:'Route paths',originalNotes:'Original notes',diagnosticDetails:'Diagnostic context',actionDetails:'Action source and registration',sourceMaps:'Source-map metadata',interventionValues:'Legacy intervention fragments'});
@@ -16,7 +18,7 @@ export function handoffConditionText(record){
  return t.property==='text'?'Selected text: excluded from this report.':label+': omitted during review; recorded value unavailable here.';
 }
 export function handoffTechnicalSummary(record){
- if(!reviewed(record))return(record.profile==='source-evidence/1'?'Base snapshot: source':'Source')+', responses and recorded actions are excluded. Historical claims are not reverified.';
+ if(!reviewed(record))return(handoffHasSourceEvidence(record)?'Base snapshot: source':'Source')+', responses and recorded actions are excluded. Historical claims are not reverified.';
  const all=rows(record),count=state=>all.filter(f=>f.state===state).length;
  return'Reviewed historical details: '+count('included')+' included, '+count('filtered')+' filtered, '+count('replaced')+' reviewer replacements, '+count('omitted')+' omitted, '+count('unavailable')+' unavailable. Missing context does not establish no dependency.';
 }
@@ -38,12 +40,12 @@ export function handoffTechnicalText(record){
 
 const sourceReasons={'recorded-build-missing':'A recorded source-sample hash is missing.','recorded-build-mismatch':'Recorded source-sample hashes differ.','reporter-snapshot-stale':'Reporter snapshot is stale.','developer-snapshot-stale':'Developer snapshot is stale.','reporter-source-anchor-missing':'Reporter source context is not retained.','reporter-source-ambiguous':'Reporter source path is ambiguous.','developer-source-anchor-missing':'Developer source context is not retained.','developer-source-ambiguous':'Developer source path is ambiguous.','developer-source-kind-unavailable':'Developer snapshot has no explicit Code-linked source kind.','developer-source-digest-missing':'Developer source digest is missing.','recorded-source-digest-mismatch':'Recorded source digests differ.','local-bytes-mismatch':'Selected local file bytes differ from a recorded source digest.'};
 export function handoffSourceEvidenceSummary(record){
- if(record.profile!=='source-evidence/1')return'';
+ if(!handoffHasSourceEvidence(record))return'';
  const kept=record.sourceEvidence.reduce((n,p)=>n+p.files.length,0),omitted=record.sourceEvidence.reduce((n,p)=>n+p.omittedFiles,0);
  return'Local source comparisons: '+kept+' file checks retained, '+omitted+' omitted; '+record.evidencePrivacy.omittedAttachments+' comparisons omitted. Historical untrusted claims, not reverified.';
 }
 export function handoffSourceEvidenceText(record,{creating=false}={}){
- if(record.profile!=='source-evidence/1')return'';
+ if(!handoffHasSourceEvidence(record))return'';
  const lines=[handoffSourceEvidenceSummary(record),creating?'Selected local file bytes were compared for this revision. Recorded source/build claims remain historical and untrusted; execution is not verified.':'These recorded local byte comparisons are not reverified by this reader. No original source file is opened.'];
  for(const p of record.sourceEvidence){
   const ordinal=record.additions.findIndex(n=>n.id===p.findingId)+1,build={'same-hash':'Same recorded collected-source sample hash.','different-hash':'Different recorded collected-source sample hashes.','unknown':'Recorded collected-source hash comparison is unknown.'}[p.buildComparison.relation];

@@ -186,3 +186,14 @@ test('a source revision event invalidates hashing without assigning that revisio
  finally{gate.release();}
  const r=await f.capture();assert.equal(r.outcomes.binding.status,'unjoined');assert.equal(r.outcomes.transactions,null);
 });
+test('private capture respects the same unsaved observation expiry as save-diagnostic without refreshing the app',async t=>{
+ const f=await fixture(t),legacy=await fixture(t);await f.request({op:'inputs-open'});
+ const realNow=Date.now,future=realNow()+300001,calls=f.calls.length;
+ f.platform.describeTarget=()=>{throw Error('Historical capture must not refresh browser authority');};
+ Date.now=()=>future;
+ try{
+  await assert.rejects(legacy.request({op:'save-diagnostic'}),{code:'OBSERVATION_REQUIRED'});
+  await assert.rejects(f.capture(),{code:'OBSERVATION_REQUIRED'});
+  assert.equal(f.calls.length,calls);
+ }finally{Date.now=realNow;}
+});

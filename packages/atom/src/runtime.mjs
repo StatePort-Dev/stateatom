@@ -319,6 +319,8 @@ async function operation(m,context){const signal=context.signal;await ready;
  let publishAvailability=false;
  try{
   let result;const id=m.tabId;
+  // Historical capture skips browser refresh, not the local unsaved-cache limit.
+  if(m.op==='inputs-capture'&&tabs[id])cap(tabs[id]);
   const capabilityState=m.op==='inputs-capture'?inputCapturePolicyContext(id,context):id?await capabilityContext(id,m,context):{disposed:stopped};
   if(signal.aborted)throw atomError('CANCELLED');
   const decision=operationPolicy(m.op,capabilityState);if(!decision.available)throw atomError(decision.code,decision.reason);

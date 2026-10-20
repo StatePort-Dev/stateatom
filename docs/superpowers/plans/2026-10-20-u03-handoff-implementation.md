@@ -420,18 +420,38 @@ Current .25 package inputs/archive/consumer/hosts unchanged; no browser rerun.
 
 ### Bounded U03.2c.3c.1: installed passive input-report integration
 
-- [ ] Pin existing dispatcher/store/reader/note/source/privacy adaptations using
+- [x] Pin existing dispatcher/store/reader/note/source/privacy adaptations using
   the supplied visual foundations. Imported profiles must show/review all retained
   input data; never accept a profile whose private fields are hidden by old UI.
-- [ ] RED/GREEN explicit dispatch, compatible exact-byte persistence, readable
+- [x] RED/GREEN explicit dispatch, compatible exact-byte persistence, readable
   input/source views and monotone whole/category/field privacy with stale epochs.
   Keep complete-file versus canonical public-component parent domains explicit.
-- [ ] Preflight private capture's unsaved-cache expiry against existing
+- [x] Preflight private capture's unsaved-cache expiry against existing
   save-diagnostic policy: it intentionally skips browser authority refresh, but
   local cache retention must not be silently bypassed. Verify before changing;
   no reason to repeat the old native expiry experiment wholesale.
-- [ ] Fresh immutable package/types/admission/full and actual both-host passive
+- [x] Fresh immutable package/types/admission/full and actual both-host passive
   read/reopen/note/source/privacy/no-network/keyboard/narrow/zoom checks. Old native
   evidence retains its own scope, including the app-target observer qualification.
-- [ ] Local bounded commit. Active normal reporter capture/consent/review/save and
+- [x] Local bounded commit. Active normal reporter capture/consent/review/save and
   complete H01-H06/one whole-U03 review follow separately; no saved-UX claim yet.
+
+3c.1 complete only within installed passive input profile boundary: .26 full1579/
+focused512/native27/ordinary41/storage15/types2/admission7. Native27 reads retained
+historical25 inputs plus labelled synthetic source controls with no app tab.
+Expired unsaved capture now refuses without browser refresh. All REDs, sandbox
+limits and native-driver failures remain historical; none imply normal creation.
+
+### Bounded U03.2c.3c.2: normal reporter input capture and reviewed save
+
+- [ ] Pin explicit ordinary UI acquisition/consent/source-binding lifecycle from
+  existing save/Prepare and owner-bound atomic capture. No current capture may be
+  attached to a different older saved v1; omitted historical outcomes stay unknown.
+- [ ] RED/GREEN default-off categories/field omissions, original/later observation
+  separation, exact immutable review/save/download and stale owner/parent/Cancel.
+  Keep no-editor and legacy saved-snapshot workflows usable without fabrication.
+- [ ] Fresh immutable candidate and meaningful source/types/admission/both-host
+  actual Live/Draft native/response saved outcomes with explicit scope, affected
+  ordinary controls/storage, keyboard/narrow/zoom and reference comparison.
+- [ ] Local bounded commit. Full H01-H06 reconciliation and one whole-U03 Task5
+  review/fix pass remain separate; P04/C07/A05/L02 are not completed by paperwork.

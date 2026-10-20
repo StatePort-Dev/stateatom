@@ -1349,3 +1349,60 @@ skip established memory retention. This is a focused preflight, not a project-wi
 re-audit or repeated old expiry campaign. Normal active reporter capture/consent/
 review/save and full H01-H06/Task5 whole review remain later. Task2/3/U03/P04/C07/
 A05/L02 stay OPEN. No SDK, publication, other repository or independent-human gate.
+
+## U03.2c.3c.1 — installed passive input handoff, candidate .26
+
+Working contract: [passive integration](../features/handoff-input-passive.md).
+This slice imports the complete profile together with readable Atom/recipient
+views and whole/category/field omission; no new private fields are hidden behind
+an old reader. Notes and explicit local source-file comparisons advance the
+canonical public component, while exact imported bytes define whole-file parents.
+Mutable findings/file buffers/consent/clock are snapshotted before asynchronous
+hashing. Source metadata consent stays off. Existing files remain compatible.
+Input choices, changed parents and Cancel invalidate prepared downloads. The
+original selected observation, later observation, native ACK and response delivery
+remain distinct; consumption, selected-property effect and total history stay
+unknown. Imported outcomes grant no plan, writer, replay, undo or permission.
+
+A focused preflight demonstrated private capture bypassed the existing five-minute
+unsaved selection cap. RED1 is retained. The fix applies the same local cap before
+capture, without browser authority refresh or application reads. Legacy
+save-diagnostic is the refusal control; no original value is reconstructed from a
+later editor value. Existing expiry criteria/history were not replaced.
+
+Current .26: full1579/focused512, actual passive browser27, ordinary41/storage15,
+packed types2/admission7 PASS. Receipt
+`.artifacts/atom/2026-10-20T18-45-49-791Z/atom-handoff.json`; aggregate
+`.artifacts/u03/input-passive/verification26.json`. Native passive result:
+`.artifacts/u03/input-passive-native/2026-10-20T18-48-38-430Z/results.json`.
+The passive run creates **no app tab/IDE/source server**. It opens retained exact
+historical25 captures, whose separate app-target-observer qualification remains,
+and uses a separately labelled synthetic ledger/source fixture for source forms.
+It does not repeat native U02 acquisition or establish new H05 evidence. Actual
+library import/restart/exact native downloads, source consent, notes/privacy,
+no-HTTP with reader.js positive control, unchanged permissions, Space/Tab,
+390/440px, actual200% zoom and reduced motion pass in both installed hosts.
+
+Historical failures remain: dispatch RED4/4, review RED5/4; first dispatch/store
+setup forgot fixture clock (retention refusal), corrected only the test clock.
+Sandbox full1573 had four local-listener EPERMs; authorized final1579 passes.
+Sandbox npm pack status226 was followed by successful local offline .26 packing.
+Native26a failed after12 checks: choosing the same file twice did not fire change,
+so a deliberately locked field remained locked. Two harness attempts to clear the
+native file input failed (26b5/timeout,26c5/file list remained unchanged). Final26d
+selects a different real file first and waits for the expected payload identity;
+all27 pass on the same immutable package. No product workaround was introduced,
+old logs/drivers/screens are preserved in unique directories.
+
+Agent compared actual first viewport and privacy390/200% candidates with supplied
+Settings HTML and `screens/extension/19-settings-narrow.png`. Shared Inter13/12px,
+neutral borders, controls/alignment and wrapped values remain. Required deviation:
+longer report paragraphs plus collapsed historical-input and identity sections;
+there is no input-handoff prototype counterpart. No tokens/primitives changed.
+Screenshots are candidates, not human visual approval; independent human review
+remains optional. Changelog records the visual extension.
+
+Next **U03.2c.3c.2 — normal reporter capture/consent/review/save**, preserving exact
+source ownership and immutable review. Task2/3 remain open at their recorded bases;
+H01-H06 reconciliation and one whole-U03 Task5 review/fix pass follow. No project
+re-audit, SDK, publication, push, other repo or memory update.

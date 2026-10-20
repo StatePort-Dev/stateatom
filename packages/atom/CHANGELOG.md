@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.26
+
+- Admit passive input-evidence/1 public files together with readable historical
+  input outcomes, advanced identities/locations and whole/category/field privacy.
+  Preserve exact imported bytes, source comparisons and unverified note lineage.
+  No active input reporter creation, executable input plan or permission adoption.
+- Extend the existing Settings/disclosure/value-row foundation with input detail
+  sections; keep13/12px shared typography and unchanged tokens/primitives. There
+  is no supplied input-handoff prototype screen: this documented layout deviation
+  preserves original report first and keeps technical identities on demand.
+  Changed choices/Cancel invalidate prepared files. Screenshots are candidates.
+- Apply the existing unsaved-observation expiry to private inputs-capture without
+  refreshing browser authority or reading the application again.
+
 ## 0.1.0-candidate.20261020.25
 
 - Refuse sparse/decorated capture category arrays at the transport boundary,

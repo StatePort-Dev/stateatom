@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
-// Unimported full public profile; no installed dispatch, app access or authority.
-import {parseHandoffReport as parseBase,redactHandoffFile,handoffArtifactDigest} from './handoff-files.mjs';
+// Passive full public profile. No app access, executable state or authority.
+import {parseHandoffReport as parseBase,redactHandoffFile,appendHandoffFinding,handoffArtifactDigest} from './handoff-files.mjs';
+import {appendHandoffSourceEvidence} from './handoff-source-attachment.mjs';
 import {omitHandoffFields} from './handoff-report.mjs';
 import {parseHandoffInputEvidence,redactHandoffInputEvidence} from './handoff-input-evidence.mjs';
 const PROFILE='input-evidence/1',BASES=['minimal-snapshot/1','reviewed-snapshot/1','source-evidence/1'],MAX=1048576,encoder=new TextEncoder();
@@ -112,4 +113,20 @@ export async function redactHandoffInputReport(raw,review={},options={}){
   if(categories.length||fields.length){const packetRaw=canonical(packet);packet=(await parseHandoffInputEvidence(await redactHandoffInputEvidence(packetRaw,{omitCategories:categories,omitFields:fields},{expectedParentDigest:await digest(packetRaw),now:()=>at}))).record;}
  }
  return emit(build(child,packet,omitted,at,next(p.revision),{kind:'privacy-derivative',parentArtifactDigest:parentDigest,parentReportDigest:p.reportDigest}));
+}
+
+// Start the old component writer synchronously: it snapshots findings, options and
+// source-file buffers before hashing. The full parent is validated before return.
+async function appendComponent(raw,start,options,source=false){
+ const o=own(options,source?['includeFiles','expectedParentDigest','now']:['expectedParentDigest','now']),at=clock(o),r=json(raw);
+ if(r?.profile!==PROFILE)throw error('UNSUPPORTED_HANDOFF_FORMAT');
+ const component=canonical(baseView(r)),child=start(component,{...(Object.hasOwn(o,'includeFiles')?{includeFiles:o.includeFiles}:{}),expectedParentDigest:r.inputBaseDigest,now:()=>at});
+ child.catch(()=>{});
+ return advanceHandoffInputReport(raw,await child,{expectedParentDigest:o.expectedParentDigest,now:()=>at});
+}
+export function appendHandoffInputFinding(raw,finding,options={}){
+ return appendComponent(raw,(base,o)=>appendHandoffFinding(base,finding,o),options);
+}
+export function appendHandoffInputSource(raw,developerRaw,files,finding,options={}){
+ return appendComponent(raw,(base,o)=>appendHandoffSourceEvidence(base,developerRaw,files,finding,o),options,true);
 }

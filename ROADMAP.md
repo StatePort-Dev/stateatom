@@ -175,8 +175,12 @@ full1534, plus source-only processing of16 historical native25 captures; install
 .25 remains unchanged. U03.2c.3b now supplies the unimported complete input-evidence/1
 profile:29/current packet32/focused190/full1563;32 source-only compositions retain
 actual historical capture identity. Notes/source comparisons and overlapping
-privacy preserve separate exact-file/canonical-component lineage. Next U03.2c.3c.1
-integrates installed file/storage/read/privacy, before normal reporter creation.
+privacy preserve separate exact-file/canonical-component lineage. U03.2c.3c.1 now
+installs passive .26 file/storage/read/note/source/privacy: full1579/focused512/
+native27/ordinary41/storage15/types2/admission7. Native27 opens historical25 inputs
+and separately labelled synthetic source controls without an app tab; no new
+acquisition is claimed. Capture respects existing unsaved-cache expiry without
+browser refresh. Next U03.2c.3c.2 is normal reporter capture/consent/review/save.
 Task2/3/whole U03, P04/C07 and mandatory A05/L02 remain open. Historical evidence
 below stays under its own identity; independent human review is optional, candidate
 screenshots are not human visual approval. No SDK, publication or another repository.

@@ -129,3 +129,8 @@ export async function redactHandoffInputEvidence(raw,review={},options={}){
  const c=choices(review,['omitCategories','omitFields']),o=own(options,['expectedParentDigest','now']),createdAt=clock(o),r=await decode(raw),parentDigest=await digest(raw);if(!hash(o.expectedParentDigest)||o.expectedParentDigest!==parentDigest)throw error('STALE_HANDOFF_PARENT');if(r.revision===Number.MAX_SAFE_INTEGER)throw error('HANDOFF_LIMIT');
  const child=structuredClone(r),excluded=categories.filter(k=>r.privacy.excludedCategories.includes(k)||(c.omitCategories??[]).includes(k)),paths=[...new Set([...r.privacy.omittedFields,...(c.omitFields??[])])].sort();omit(child,excluded,paths);child.privacy={excludedCategories:excluded,omittedFields:paths};child.id=crypto.randomUUID();child.createdAt=createdAt;child.revision++;child.lineage={kind:'privacy-derivative',parentArtifactDigest:parentDigest,parentEvidenceDigest:r.evidenceDigest};return emit(child);
 }
+
+// Review projection for an already parsed inert packet. No capture or new data.
+export function handoffInputEvidenceFields(record){
+ return freeze(fieldCatalogue(record).map(({path,category,field})=>({path,category,...structuredClone(field)})));
+}

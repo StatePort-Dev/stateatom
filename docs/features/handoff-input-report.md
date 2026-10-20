@@ -115,3 +115,9 @@ No getters or async review mutation; no actions, permissions, file/source fetch.
 Full source and exact unchanged25 executable/archive/hosts. Historical native
 inputs may be processed as source-only checks, never fresh browser or normal saved
 U02 evidence. Installed dispatch/storage/normal review/download remains next.
+
+
+Integration checkpoint: the unimported stage above records its original boundary.
+U03.2c.3c.1 now installs passive dispatch/store/read/note/source/privacy on .26; see
+[passive contract](handoff-input-passive.md). Original results retain their own
+revision and scope. Normal active reporter creation remains U03.2c.3c.2.

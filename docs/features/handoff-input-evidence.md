@@ -85,3 +85,9 @@ rehashed imports, immutable exact-byte parent/fork/stale derivatives, no getters
 async caller mutation or external effects. Full source and exact unchanged25
 producer/archive/hosts. Fixtures do not become native acquisition or normal saved
 U02 acceptance. Public report composition and real review/download remain open.
+
+
+Integration checkpoint: the unimported stage above records its original boundary.
+U03.2c.3c.1 now installs passive dispatch/store/read/note/source/privacy on .26; see
+[passive contract](handoff-input-passive.md). Original results retain their own
+revision and scope. Normal active reporter creation remains U03.2c.3c.2.
