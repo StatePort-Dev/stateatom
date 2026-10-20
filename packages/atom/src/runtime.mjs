@@ -10,6 +10,7 @@ import {newCodeJournal,journalEvent,journalSource,journalReadySources,journalGap
 import {newFetchBindings,fetchBindingEvent,fetchScriptSource,bindFetchTrace,allowsFetchGeneration,installFetchPolicy} from '../../../core/fetch-bindings.mjs';
 import {makeDiagnostic,recordDiagnosticExperiment,recordTextExperiment} from '../../../core/diagnostic.mjs';
 import {createHandoffStore} from '../../../core/handoff-store.mjs';
+import {createHandoffInputOutcomes} from '../../../core/handoff-input-outcomes.mjs';
 import {resolveInspection} from '../../../core/basic-analysis.mjs';
 import {createBrowserEngine,handleDeepOverlay,isSameSelection} from "../../../src/engine/browser.mjs";
 import {putSample,beginInspection,isCurrentInspection,lockExperiment,unlockExperiment,recordStale} from '../../../core/runtime-state.mjs';
@@ -106,6 +107,7 @@ async function capabilityContext(id,request={},inputContext=null){
   sourceConnected:!!pairing&&pairing.origin===new URL(target.url||'about:blank').origin,hasSelection:!!s.selection,hasHistoricalTarget:!!s.stale?.target,hasAnalysis:!!s.analysis,
   foreignInputEditor:!!inputContext&&!!editors.get(id)&&!editors.get(id).snapshot().closed&&!sameInputOwner(id,inputContext),
   hasInputEditor:!!editors.get(id)&&!editors.get(id).snapshot().closed,inputEditorBusy:!!editors.get(id)&&(!editors.get(id).snapshot().closed||['active','unknown'].includes(editors.get(id).snapshot().cleanup)),
+  captureInspector:inputCapturePolicyContext(id,inputContext).captureInspector,captureForeignEditor:inputCapturePolicyContext(id,inputContext).captureForeignEditor,
   productionHost:platform.productionChanges?.available===true,productionInspector:!!inputContext?.inspector?.active&&inspectorClients.get(inputContext.session)===inputContext.inspector,nativeInputOwner:platform.nativeControlsAvailable===true,inputSourceKind:editors.get(id)&&!editors.get(id).snapshot().closed?(editors.get(id).sourceKind||'json-response'):request.sourceKind||'json-response',
   hasResponseFields:s.requests.some(r=>r.json!==undefined),property:s.selection?.property||s.property||'text',
   stale:!!s.stale||analysis?.stateatom?.runtime?.status==='Stale',busy:!!s.busy,
@@ -119,6 +121,32 @@ function assertProductionClient(context){assertInputClient(context);if(!context.
 function sameInputOwner(id,context){const owner=editorOwners.get(id);return owner?.session===context.session&&owner.client===context.inspector&&owner.ownerId===context.ownerId;}
 function requireInputOwner(id,context){assertInputClient(context);if(editors.has(id)&&!sameInputOwner(id,context))throw atomError('BUSY','This input editor belongs to another inspector');}
 function requireInputs(id,investigationId,context){requireInputOwner(id,context);const editor=editors.get(id);if(!editor||editor.snapshot().investigationId!==investigationId)throw atomError('STALE_INVESTIGATION','Input investigation changed; open it again');return editor;}
+function inputCapturePolicyContext(id,context){
+ const s=tabs[id];return {disposed:stopped,captureInspector:!!context?.inspector?.active&&inspectorClients.get(context.session)===context.inspector,captureForeignEditor:!!context&&editors.has(id)&&!sameInputOwner(id,context),hasSelection:!!s?.selection,hasHistoricalTarget:!!s?.stale?.target,busy:!!s?.busy};
+}
+function inputSelectionContext(id,s){
+ const selected=s.selection;
+ if(!selected?.domIdentity||!s.origin||!s.run||!Number.isFinite(selected.observedAt))return null;
+ return Object.freeze({tabId:id,origin:s.origin,run:s.run,document:selected.domIdentity.document,node:selected.domIdentity.node,frameId:s.mainFrameId||null,selector:selected.selector,property:selected.property,selectionObservedAt:selected.observedAt,inspectionGeneration:s.inspectionGeneration||0,sourceGeneration:s.sourceGeneration||0,leaseEpoch:s.inputLeaseEpoch||0});
+}
+async function captureInputs(id,m,context){
+ assertInputClient(context);if(!context.inspector?.active)throw atomError('INSPECTOR_DISCONNECTED');requireInputOwner(id,context);
+ const s=tabs[id],selected=s?.selection||s?.stale?.target;
+ if(!selected)throw atomError('OBSERVATION_REQUIRED','Observation unavailable or expired; inspect again');
+ const editor=editors.get(id),owner=editorOwners.get(id),snapshot=editor?.snapshot()||s.inputHistory||null;
+ if(m.investigationId!==undefined){if(!editor||snapshot.investigationId!==m.investigationId)throw atomError('STALE_INVESTIGATION');if(snapshot.revision!==m.expectedRevision)throw atomError('STALE_REVISION');}
+ const currentContext=inputSelectionContext(id,s),stale=s.stale,selection=s.selection;
+ const stamp=()=>JSON.stringify({context:inputSelectionContext(id,s),selected:s.selection||s.stale?.target,stale:s.stale,run:s.run,origin:s.origin,frame:s.mainFrameId,inspection:s.inspectionGeneration,source:s.sourceGeneration,lease:s.inputLeaseEpoch,busy:s.busy,snapshot:editors.get(id)?.snapshot()||s.inputHistory||null});
+ const before=stamp(),capturedAt=Date.now();
+ const diagnosticRaw=JSON.stringify(makeDiagnostic({...s,sourceMaps:sourceMaps.snapshot(id),analysis:codeAnalysis(s)},{includeContent:m.includeContent===true,notes:m.notes,now:capturedAt}));
+ const capture=snapshot?{kind:editor?'editor-snapshot':'runtime-summary',sourceKind:editor?.sourceKind||snapshot.sourceKind||'json-response',capturedAt,snapshotRevision:snapshot.revision,selectionContext:currentContext,investigationContext:editor?owner?.captureContext||null:null,snapshot}:null;
+ // The projection copies inert descriptors synchronously before its first await.
+ const outcomes=await createHandoffInputOutcomes(diagnosticRaw,capture,{includeCategories:m.includeCategories||[]});
+ if(context.signal.aborted||stopped)throw atomError('CANCELLED');assertInputClient(context);requireInputOwner(id,context);
+ if(tabs[id]!==s||editors.get(id)!==editor||editorOwners.get(id)!==owner||s.selection!==selection||s.stale!==stale||stamp()!==before)throw atomError('STALE_CAPTURE','Input snapshot changed while preparing capture; review again');
+ const result=Object.freeze({schema:'stateatom.input-outcome-capture/1',exportable:false,executable:false,capturedAt,diagnosticRaw,outcomes,limitations:Object.freeze(['Atomic acquisition of stored runtime/editor data only; no new DOM, permission or execution observation.','Not a public file, saved report, replay, causal dependency, successful fix or application restoration attestation.'])});
+ if(new TextEncoder().encode(JSON.stringify(result)).length>2097152)throw atomError('CAPTURE_LIMIT','Input capture reply exceeds2MiB');return result;
+}
 async function openInputs(id,context,sourceKind='json-response'){
  assertInputClient(context);const previous=editors.get(id);if(previous&&!previous.snapshot().closed){requireInputOwner(id,context);if((previous.sourceKind||'json-response')!==sourceKind)throw atomError('BUSY','Close the current input source before changing families');return previous.read();}
  if(previous){await previous.close('New investigation');if(['unknown','authority-lost'].includes(previous.snapshot().cleanup)&&platform.owns?.(id)!==false)throw atomError('BUSY','Native Fetch cleanup unconfirmed; detach and attach before reopening');}
@@ -147,7 +175,8 @@ async function openInputs(id,context,sourceKind='json-response'){
   notifyInvalidation(id);
  };
  editor=sourceKind==='dom-control'?createControlEditor({investigationId,target:fresh.target,readCurrent,onChange,openOwner:options=>platform.openNativeControls(options)}):createResponseEditor({investigationId,target:fresh.target,responses,readCurrent,send:(method,params)=>send(id,method,params),ownsFetch:()=>platform.owns?.(id)!==false&&s.attached===true&&(s.inputLeaseEpoch||0)===leaseEpoch,onChange});
- editors.set(id,editor);editorOwners.set(id,{session:context.session,client:context.inspector,ownerId:context.ownerId});context.cancelInput=()=>{if(editors.get(id)===editor)void editor.close('Input opening cancelled');};
+ const selectedContext=inputSelectionContext(id,s);
+ editors.set(id,editor);editorOwners.set(id,{session:context.session,client:context.inspector,ownerId:context.ownerId,captureContext:selectedContext?Object.freeze({...selectedContext,investigationId}):null});context.cancelInput=()=>{if(editors.get(id)===editor)void editor.close('Input opening cancelled');};
  const result=await editor.read();if(context.signal.aborted){await editor.close('Input opening cancelled');throw atomError('CANCELLED');}await persist();return result;
 }
 async function bridge(op,body,signal){const connection=pairing;if(!connection||connection.origin!==body.origin)throw Error('Pair IDE first');if(!await platform.permittedOrigin?.(connection.url)||!await platform.permittedOrigin?.(body.origin))throw atomError('ORIGIN_DENIED','Source connection permission revoked');const response=await fetch(connection.url+'/'+op,{method:'POST',redirect:'error',signal,headers:{'content-type':'application/json',authorization:'Bearer '+pairing.token},body:JSON.stringify(body)});const r=await response.json();if(pairing!==connection||!await platform.permittedOrigin?.(connection.url)||!await platform.permittedOrigin?.(body.origin))throw atomError('ORIGIN_DENIED','Source connection changed or revoked');if(!r.ok)throw Error(r.error);return r.result;}
@@ -290,7 +319,7 @@ async function operation(m,context){const signal=context.signal;await ready;
  let publishAvailability=false;
  try{
   let result;const id=m.tabId;
-  const capabilityState=id?await capabilityContext(id,m,context):{disposed:stopped};
+  const capabilityState=m.op==='inputs-capture'?inputCapturePolicyContext(id,context):id?await capabilityContext(id,m,context):{disposed:stopped};
   if(signal.aborted)throw atomError('CANCELLED');
   const decision=operationPolicy(m.op,capabilityState);if(!decision.available)throw atomError(decision.code,decision.reason);
   publishAvailability=['experiment','deep-experiment','restore'].includes(m.op);
@@ -323,6 +352,7 @@ async function operation(m,context){const signal=context.signal;await ready;
   else if(m.op==='selected')throw atomError('SELECTION_EXPIRED','Legacy page picker has no active selection session');
   else if(m.op==='deep-experiment'){const s=state(id);await eligibleSelection(id,s);const selected=structuredClone(s.selection),lock=lockExperiment(s);try{result=await deepExperiment({id,s,send,reset,selection:s.selection,variants:m.variants,signal,includeTrace:!!pairing&&pairing.origin===s.origin&&!s.readOnly,beforeMainScript:(op,role)=>ownMainCode(id,s,op,role)});s.deepExperiment=result;s.diagnosticExperiment=recordDiagnosticExperiment(selected,result);await persist();}finally{unlockExperiment(s,lock);}}
   else if(m.op==='restore'){const s=state(id),selection=structuredClone(s.selection),lock=lockExperiment(s);try{s.deepOverrides=null;await reset(id,null);await new Promise(r=>setTimeout(r,400));result=await observeDeep(id,selection,selection?.property||'text',{includeTrace:!!pairing&&pairing.origin===s.origin&&!s.readOnly,beforeMainScript:(op,role)=>ownMainCode(id,s,op,role)});s.selection=selection?{...selection,...result}:null;}finally{unlockExperiment(s,lock);}}
+  else if(m.op==='inputs-capture')result=await captureInputs(id,m,context);
   else if(m.op==='inputs-open')result=await openInputs(id,context,m.sourceKind);
   else if(m.op==='inputs-read'){result=await requireInputs(id,m.investigationId,context).read();await persist();}
   else if(m.op==='inputs-apply'){result=await requireInputs(id,m.plan.investigationId,context).apply(m.plan,{signal});await persist();}

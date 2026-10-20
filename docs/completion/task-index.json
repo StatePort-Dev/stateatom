@@ -808,7 +808,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-20-u03-handoff-implementation.md",
       "execution_record": "24-u03-handoff-progress.md",
-      "active_slice": "U03.2c.2",
+      "active_slice": "U03.2c.3a",
       "completed_slices": [
         {
           "id": "U03.1",
@@ -1123,14 +1123,36 @@
           "whole_U03_review": false,
           "verification": ".artifacts/u03/input-outcomes/verification.json",
           "record": "24-u03-handoff-progress.md"
+        },
+        {
+          "id": "U03.2c.2",
+          "status": "complete-within-atomic-private-runtime-capture-boundary",
+          "candidate": "0.1.0-candidate.20261020.25",
+          "checks": {
+            "runtime_source": 25,
+            "focused": 108,
+            "full_source": 1502,
+            "native_backend_capture": 23,
+            "ordinary_handoff": 41,
+            "native_storage": 15,
+            "packed_types": 2,
+            "package_admission": 7
+          },
+          "runtime_importer": true,
+          "public_outcome_profile": false,
+          "actual_saved_U02_outcomes": false,
+          "normal_reporter_outcome_UI": false,
+          "whole_U03_review": false,
+          "verification": ".artifacts/u03/input-capture/verification.json",
+          "record": "24-u03-handoff-progress.md"
         }
       ],
       "current_candidate": {
-        "version": "0.1.0-candidate.20261020.23",
-        "handoff": ".artifacts/atom/2026-10-20T10-42-56-664Z/atom-handoff.json",
-        "sha256": "c5d8cb2b3e90d6b53cd54cc1d5662e2c6f0344afa8d172d157a2144efa4c994d",
-        "verification": ".artifacts/u03/source-creation/verification23.json",
-        "boundary": "Ordinary reporter/privacy, installed source-profile read/store/note/privacy and explicit local-file comparison with actual H05 content checks; saved U02 outcomes and whole U03 remain pending."
+        "version": "0.1.0-candidate.20261020.25",
+        "handoff": ".artifacts/atom/2026-10-20T16-48-44-708Z/atom-handoff.json",
+        "sha256": "3f48109689d28bd81e9671186f36fcbf6798e314adbb00b4d6e155b6efd0dccf",
+        "verification": ".artifacts/u03/input-capture/verification.json",
+        "boundary": "Atomic private stored diagnostic/editor outcome acquisition with exact live inspector ownership and obsolete-reply guard; ordinary public handoff still works. Public saved U02 outcomes/normal review and whole U03 remain pending."
       },
       "remaining_acceptance": [
         "separately bound saved U02 input outcomes",
@@ -2312,7 +2334,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Current installed .23 H05/source-file workflow remains byte-identical and verified under its own receipt. U03.2c.1 unimported outcome model31/focused114/full1477 preserves actual ledger phases, exact supplied context and unknown/missing states; no installed saved U02 outcomes. Next U03.2c.2 atomic runtime capture/ownership boundary; public format/persistence/normal review and whole U03 remain pending.",
+    "current_activity_note": "U03.2c.2 private atomic capture complete on .25: full1502/focused108/native backend23/ordinary41/storage15/types2/admission7. Strict original selection/editor context and unknowns preserved. Next U03.2c.3a pins an unimported compatible public outcome profile and privacy; no saved U02 UX or whole U03 acceptance from backend/model proof.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "U03"

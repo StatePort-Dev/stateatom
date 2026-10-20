@@ -15,7 +15,12 @@ export interface HandoffStoredEntry {id:string;version:1|2;createdAt:string;dige
 export interface HandoffStoredFile {version:1|2;record:Record<string,unknown>;raw:string;digest:string;representation:HandoffStoredEntry['representation'];trust:'historical-untrusted';parentStatus:'not-applicable'|'not-checked'|'content-matched'}
 export interface HandoffSaveResult {status:'saved'|'unchanged';entry:HandoffStoredEntry;expired:string[];evicted:string[]}
 export interface HandoffListResult {entries:HandoffStoredEntry[];expired:string[]}
+/** Private snapshot acquisition only. Not a public report, save or replay request. */
+export type InputOutcomeCategory='inputIdentities'|'inputValues'|'inputLocations'|'inputErrors';
+export type InputCaptureRequest={op:'inputs-capture';tabId:number;ownerId:string;includeContent?:boolean;notes?:string;includeCategories?:InputOutcomeCategory[]} & ({investigationId:string;expectedRevision:number}|{investigationId?:never;expectedRevision?:never});
+export interface InputOutcomeCapture {readonly schema:'stateatom.input-outcome-capture/1';readonly exportable:false;readonly executable:false;readonly capturedAt:number;readonly diagnosticRaw:string;readonly outcomes:Readonly<Record<string,unknown>> & {readonly schema:'stateatom.handoff-input-outcomes/1';readonly exportable:false;readonly executable:false;readonly binding:Readonly<{status:'not-recorded'|'unjoined'|'capture-context-matched';reasons:readonly string[]}>};readonly limitations:readonly string[]}
 export type AtomOperation=
+ |InputCaptureRequest
  |{op:'production-begin'|'production-close'|'production-revoke';tabId:number;ownerId:string}
  |{op:'production-advance'|'production-confirm'|'production-cancel';tabId:number;ownerId:string;ticket:string}
  |{op:'connect-site';tabId:number;connection:import('./platform.js').SiteConnection}
@@ -52,6 +57,7 @@ export interface AtomMessage {version:1;id:string;session:string;payload:AtomOpe
 export interface AtomReply {version:1;id:string;session:string;ok:boolean;result?:unknown;error?:string;code?:string}
 export interface AtomEvent {event:'selection'|'state-invalidated';tabId:number}
 export interface AtomClient {
+ request(payload:InputCaptureRequest,options?:{signal?:AbortSignal}):Promise<InputOutcomeCapture>;
  request(payload:{op:'save-handoff';raw:string},options?:{signal?:AbortSignal}):Promise<HandoffSaveResult>;
  request(payload:{op:'list-handoffs'},options?:{signal?:AbortSignal}):Promise<HandoffListResult>;
  request(payload:{op:'open-handoff';id:string},options?:{signal?:AbortSignal}):Promise<HandoffStoredFile|null>;

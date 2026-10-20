@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.25
+
+- Refuse sparse/decorated capture category arrays at the transport boundary,
+  before runtime dispatch. Candidate .24 remains an unchanged intermediate.
+
+## 0.1.0-candidate.20261020.24
+
+- Add private owner-bound inputs-capture for an atomic historical diagnostic and
+  existing editor outcome projection. Reject obsolete hash replies, including
+  pending/cleanup changes without revision changes. No new app observation, rule,
+  permission, storage, public file format or normal saved-outcome UX.
+- Preserve separate original selection and later editor observation; retained
+  summaries stay incomplete and unjoined. Outcome content is excluded by default.
+
 ## 0.1.0-candidate.20261020.23
 
 - Add optional local Developer diagnostic/source-file comparison in the reader.

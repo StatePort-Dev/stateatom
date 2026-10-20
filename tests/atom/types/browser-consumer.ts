@@ -58,3 +58,17 @@ for(const entry of historicalList.entries){
 client.request({op:'save-handoff',raw:'{}',tabId:1,grant:'inject'});
 // @ts-expect-error Removal needs the reopened exact digest.
 client.request({op:'delete-handoff',id:'uuid'});
+
+const capturedInputs=await client.request({op:'inputs-capture',tabId:1,ownerId:'review-view',investigationId:'i',expectedRevision:0,includeCategories:['inputValues']});
+const captureSchema:'stateatom.input-outcome-capture/1'=capturedInputs.schema;
+const captureNotExecutable:false=capturedInputs.executable;
+const captureDiagnostic:string=capturedInputs.diagnosticRaw;
+void [captureSchema,captureNotExecutable,captureDiagnostic];
+// @ts-expect-error Capture requires a local view owner.
+client.request({op:'inputs-capture',tabId:1});
+// @ts-expect-error Investigation and revision must be supplied together.
+client.request({op:'inputs-capture',tabId:1,ownerId:'view',investigationId:'i'});
+// @ts-expect-error Capture cannot accept injected editor state.
+client.request({op:'inputs-capture',tabId:1,ownerId:'view',snapshot:{}});
+// @ts-expect-error Only explicit outcome review categories exist.
+client.request({op:'inputs-capture',tabId:1,ownerId:'view',includeCategories:['grants']});

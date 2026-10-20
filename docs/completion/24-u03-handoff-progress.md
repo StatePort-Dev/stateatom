@@ -1144,3 +1144,73 @@ Next **U03.2c.2 — actual atomic runtime capture/ownership**. Actual saved inpu
 outcomes still need public versioned format, persistence and normal review/reader
 integration. Task2/3 BASE markers, whole U03/P04/C07 and mandatory A05/L02 stay
 OPEN. No SDK/publication/other repository or independent-human blocker.
+
+## U03.2c.2 — atomic private runtime acquisition, 2026-10-20
+
+Bounded continuation on BASE2b1cfaf after explicit stop/resume; new user timebox
+ends21 October09:00 Mauritius (05:00UTC). Working contract
+[handoff-input-capture](../features/handoff-input-capture.md), not an additional
+scope-interview approval. Approved02/12 remain byte-identical to44a1df1.
+
+Final immutable **.20261020.25**:
+`.artifacts/atom/2026-10-20T16-48-44-708Z/atom-handoff.json`.
+Aggregate `.artifacts/u03/input-capture/verification.json`, verifier `verify.mjs`
+and frozen inputs in that directory. Fresh commands/results:
+
+- `npm test`: **1502 PASS**; focused Node source/runtime/contract checks **108**,
+  new runtime/wire controls25, model controls31 included. Source CDP/ACK fixtures
+  are synthetic; they do not become browser proof because runtime imports them.
+- `node scripts/verify-atom-types.mjs <exact handoff>`:2 strict packed consumers;
+  `node scripts/verify-atom-package.mjs <exact handoff>`:7 admission controls.
+- `node tests/integration/handoff-input-capture.mjs <exact handoff>`:23 actual
+  both-host backend checks at
+  `.artifacts/u03/input-capture-native/2026-10-20T16-49-39-114Z/results.json`.
+- Existing ordinary handoff UI41 at
+  `.artifacts/u03/review-controls-native/2026-10-20T16-50-36-411Z/results.json`;
+  actual storage/restart15 at
+  `.artifacts/u03/storage-native/2026-10-20T16-51-09-389Z/results.json`.
+  These verify existing reporter/recipient/storage paths, not new saved U02 UI.
+- `git diff --check` and idempotent exact source/archive/installed pair/host checks
+  pass. Reader HTML/JS/CSS and UI package bytes match issued23; old H05/passive
+  results retain their own receipt, not fresh25 acquisition labels.
+
+`inputs-capture` requires a live authenticated inspector plus exact editor owner,
+including closed editors; optional investigation/revision must match together.
+It freezes a fresh strict v1 diagnostic and existing snapshot before hashing,
+retains actual editor-open native frame/document/node plus run/source/lease/
+inspection context, then rejects changed context, owner, selection or whole editor
+snapshot. Pending/cleanup changes matter even without revision change. No browser
+permission refresh, DOM/getter/expression read, attach, source/IDE/network fetch,
+grant, active rule adoption or storage occurs from capture. Local historical
+admission is deliberate: this is stored-snapshot consistency, not fresh DOM or
+permission attestation. Old browser lifecycle events can invalidate that context.
+
+Actual .25 native proof uses real MV3 dispatchers/editors and a separate live
+extension port, with backend messages for Live/Draft/apply/undo/baseline. Native
+ACKs and real response delivery remain distinct; effect/consumption unknown,
+application restoration unproven. Original selected disabled:true and later
+editor false are both retained. Actual fixture getter counter, app requests,
+permissions and diagnostic storage stay unchanged across capture. Closed/wrong
+owner, stale revision, changed context, port loss/active-writer cleanup and public
+store refusal pass. It does not demonstrate typing debounce/scheduler, ordinary
+reporter outcome review, a saved public outcome file or full U03 acceptance.
+
+History retained: RED6/6 ->6 PASS; source boundaries found and fixed an accidental
+host-disposed overwrite in newly combined context. A test ownerId on unrelated
+property operation caused strict refusal plus held-hash cleanup deadlock; test
+finally/envelope corrected. Exact original test PID4070897 argv/cwd verified and
+SIGTERM only, evidence preserved. Boundary24/focused107/full1501 and native23/
+ordinary41/storage15/types2/admission7 passed on intermediate24. Native24a stopped
+at8 checks on unsupported driver `app.close`; corrected to Chrome removal of its
+own tab. Concurrent ordinary24a covered-checkbox FAIL2/screenshot remains; same
+driver isolated24b passed41, with no product UI change. Sandbox full/pack failures
+were permission/child-process constraints, retained and rerun with authorized local
+execution. No auto-review rejection. Final wire-array RED1/1 showed sparse category
+arrays reached the model; strict transport refusal fixed in new25 without changing
+issued24. All raw failures and intermediate receipts remain immutable.
+
+Next **U03.2c.3a — explicit unimported public outcome format/privacy**. Public
+format, persistence and normal reporter/recipient saved-outcome review remain
+unfinished. Parent Task2/3 BASE markers and full U03/H01-H06 review stay OPEN;
+P04/C07 and mandatory A05/L02 remain pending. No SDK, publication, other repository
+or independent-human blocker. No shared visual/token/primitives change this step.

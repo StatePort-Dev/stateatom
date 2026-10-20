@@ -1,5 +1,10 @@
 # U03.2c.1 — unimported U02 outcome capture model
 
+Historical checkpoint at2b1cfaf: the model below was unimported and its synthetic
+evidence remains scoped that way. The subsequent runtime integration is specified
+in [atomic input capture](handoff-input-capture.md); it does not make these older
+model runs native acquisition or saved-outcome proof.
+
 New working implementation under the existing U03/U06 journey and autonomous
 scope; not prior interview approval or an installed capability. Current .23 and
 strict v1/public handoff profiles remain unchanged. No capture/runtime/UI import,

@@ -938,3 +938,14 @@ generation binding, and never reconstructs v1/retained-summary history. [Record]
 This is not installed atomic capture or saved U02 outcome support. Next2c.2 supplies
 runtime capture/ownership before public format/persistence/normal review; whole
 U03/Task2/3/P04/C07/A05/L02 remain open.
+
+
+U03.2c.2 now installs private atomic input capture on .20261020.25:
+full1502/focused108/native backend23/ordinary handoff41/storage15/types2/admission7
+pass. Actual native and response operations preserve separate ACK/delivery and
+unknown consumption/effect; original selected and later editor observations stay
+separate. Capture is owner-bound, performs no new app/permission read and rejects
+obsolete hash replies, including cleanup changes without revision. [Record](completion/24-u03-handoff-progress.md).
+This is not the normal saved U02 workflow: public file format/privacy, persistence
+and reporter/recipient review follow. Next U03.2c.3a pins that unimported public
+format. Whole U03/Task2/3/P04/C07/A05/L02 remain open. No publication is established.

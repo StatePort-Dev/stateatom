@@ -37,6 +37,8 @@ not retrospective scope-interview approval).
   That timebox ended; Continue resumed one storage increment. The later explicit
   autonomous request runs bounded cycles until 2026-10-20T14:00:00Z (18 Mauritius),
   without re-opening completed work.
+  After an explicit stop, the new autonomous continuation runs until
+  2026-10-21T05:00:00Z (21 October 09:00 Mauritius), with the same bounded cycles.
 
 ## Review Focus
 
@@ -352,16 +354,37 @@ and contradictory clocks retain explicit states. Task2/3/whole U03 remain OPEN.
 
 New working runtime contract must be pinned from current implementation before
 code. Capture only, no public-file format/storage or claim of normal saved U02 UX.
+Contract: `docs/features/handoff-input-capture.md`.
 
-- [ ] Capture actual editor-open selected/native frame and source/lease/inspection
+- [x] Capture actual editor-open selected/native frame and source/lease/inspection
   context from runtime ownership; never infer it from v1 or current resource names.
-- [ ] Freeze current selected diagnostic and existing editor snapshot together
+- [x] Freeze current selected diagnostic and existing editor snapshot together
   before await, then reject obsolete replies. No replay/rule/permission adoption,
   expression/getter rerun or automatic new observation/reattachment.
-- [ ] RED/GREEN exact owner/generation/revision, missing/closed/retained summary,
+- [x] RED/GREEN exact owner/generation/revision, missing/closed/retained summary,
   active edit/close/hash races and strict wire/type/admission boundaries.
-- [ ] Fresh immutable candidate for imported runtime changes; actual bounded Live/
+- [x] Fresh immutable candidate for imported runtime changes; actual bounded Live/
   Draft/Apply/undo/response outcomes capture in both hosts, source/types/full and
   affected safety. Reuse unchanged old majority/expiry/legacy evidence accurately.
-- [ ] Local bounded commit. Public versioned format, persistence, normal reporter/
+- [x] Local bounded commit. Public versioned format, persistence, normal reporter/
   recipient review and full U03 acceptance remain later; do not claim saved UX.
+
+
+2c.2 complete only within private atomic runtime acquisition: .25 full1502/
+focused108/runtime25/native backend23/ordinary41/storage15/types2/admission7.
+Public storage explicitly refuses the private reply. Intermediate24, REDs and
+setup failures remain historical. No normal saved U02 UI/full Task2/3/U03 credit.
+
+### Bounded U03.2c.3a: explicit public outcome format, unimported
+
+- [ ] Pin a concrete compatible public layout and privacy/lineage boundary from
+  the actual .25 capture, retaining old v1/minimal/reviewed/source interpretations.
+  New working design, not retrospective interview approval. No raw private capture
+  or rule authority may be smuggled into a file; missing identities stay explicit.
+- [ ] RED/GREEN bounded inert creation/parse and immutable privacy, exact source
+  and parent binding, altered/rehashed untrusted claims, absent/closed/summary
+  and per-resource unknown/error outcomes. Do not reconstruct omitted history.
+- [ ] Focused/full source and unchanged .25 executable/archive/host identity if
+  unimported; no repeated native acquisition without executable changes.
+- [ ] Local bounded commit. Dispatcher/storage and ordinary reporter/recipient
+  integration follow separately; whole U03 acceptance stays open.
