@@ -334,11 +334,34 @@ Next bounded task only; concrete working data design follows focused reads of th
 existing native/response ledger and save-diagnostic ownership. This is not prior
 scope-interview approval and must not reinterpret old v1 or invent absent history.
 
-- [ ] Pin an explicit contract/identity boundary using actual existing U02 records,
+- [x] Pin an explicit contract/identity boundary using actual existing U02 records,
   preserving per-resource/transaction results and missing/failed/unconfirmed states.
-- [ ] RED/GREEN detached bounded model, exact selected-target/revision binding,
+- [x] RED/GREEN detached bounded model, exact selected-target/revision binding,
   explicit privacy/default exclusions and inertness; no runtime/UI import yet.
-- [ ] Focused/full source checks and exact unchanged .23 runtime/archive/hosts;
+- [x] Focused/full source checks and exact unchanged .23 runtime/archive/hosts;
   no repack or old majority/expiry/legacy experiment repeat without source changes.
-- [ ] Local bounded commit. Actual atomic capture/public format/installed UI
+- [x] Local bounded commit. Actual atomic capture/public format/installed UI
   follow separately; do not claim saved U02 outcomes or whole U03 from a model.
+
+2c.1 source-only model complete: model31/focused114/full1477, exact .23 producer/
+archives/installed pair/hosts unchanged. Real ledger APIs in synthetic model tests
+are not real browser captures or saved U02 outcomes. Unknown restoration/notices
+and contradictory clocks retain explicit states. Task2/3/whole U03 remain OPEN.
+
+### Bounded U03.2c.2: actual atomic input-capture ownership boundary
+
+New working runtime contract must be pinned from current implementation before
+code. Capture only, no public-file format/storage or claim of normal saved U02 UX.
+
+- [ ] Capture actual editor-open selected/native frame and source/lease/inspection
+  context from runtime ownership; never infer it from v1 or current resource names.
+- [ ] Freeze current selected diagnostic and existing editor snapshot together
+  before await, then reject obsolete replies. No replay/rule/permission adoption,
+  expression/getter rerun or automatic new observation/reattachment.
+- [ ] RED/GREEN exact owner/generation/revision, missing/closed/retained summary,
+  active edit/close/hash races and strict wire/type/admission boundaries.
+- [ ] Fresh immutable candidate for imported runtime changes; actual bounded Live/
+  Draft/Apply/undo/response outcomes capture in both hosts, source/types/full and
+  affected safety. Reuse unchanged old majority/expiry/legacy evidence accurately.
+- [ ] Local bounded commit. Public versioned format, persistence, normal reporter/
+  recipient review and full U03 acceptance remain later; do not claim saved UX.

@@ -930,3 +930,11 @@ notes/packets and missing/different/name-only controls are verified. [Record](co
 retains setup failures, the corrected zoom-controls view and exact metadata-only
 lock-sync reproduction. Next U03.2c.1 saved U02 outcome model; whole U03/Task2/3,
 P04/C07 and mandatory A05/L02 remain open. Candidate screenshots are not approval.
+
+U03.2c.1 adds an **unimported** U02 outcome projection: model31/focused114/
+full1477 pass; exact installed .23 remains unchanged. It preserves actual ledger
+phases/unknowns and separate original/post observations, requires supplied native/
+generation binding, and never reconstructs v1/retained-summary history. [Record](completion/24-u03-handoff-progress.md).
+This is not installed atomic capture or saved U02 outcome support. Next2c.2 supplies
+runtime capture/ownership before public format/persistence/normal review; whole
+U03/Task2/3/P04/C07/A05/L02 remain open.

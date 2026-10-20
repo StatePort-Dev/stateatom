@@ -160,11 +160,17 @@ Recorded sample hashes are not full application build attestation or selected-
 occurrence execution, ancestry or fix verification. Working UX is documented;
 it is not retrospective approval of previously unknown scope details.
 
-The one next bounded item is U03.2c.1: define and verify an unimported model for
-separately bound saved U02 outcomes, using actual existing ledgers. Task2/3/whole
-U03, P04/C07 and mandatory A05/L02 remain open. Historical evidence below stays
-under its own identity; independent human review is optional, candidate screenshots
-are not human visual approval. No SDK, publication or another repository work.
+The subsequent unimported U03.2c.1 outcome model passes31/focused114/full1477
+with exact .23 runtime/archive/host identity unchanged. It preserves native/response
+phases and unknown effects, requires separately supplied native/generation context,
+and refuses to reconstruct missing v1/retained-summary history. It is not actual
+saved U02 outcome support. [Execution](docs/completion/24-u03-handoff-progress.md).
+
+The one next bounded item is U03.2c.2: actual atomic runtime capture and inspector
+ownership for the new internal data, before public format/persistence/normal review.
+Task2/3/whole U03, P04/C07 and mandatory A05/L02 remain open. Historical evidence
+below stays under its own identity; independent human review is optional, candidate
+screenshots are not human visual approval. No SDK, publication or another repository.
 
 ## Historical roadmap and checkpoint ledger
 

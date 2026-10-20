@@ -1103,3 +1103,44 @@ Next **U03.2c.1 — bound saved U02 outcome model**. Task2/3 BASE markers remain
 OPEN. Full H01–H06 reconciliation/one whole-U03 review, actual saved U02 outcomes,
 P04/C07 and mandatory A05/L02 remain unfinished. No SDK, publication, account or
 other repository work; no independent-human blocker is introduced.
+
+## U03.2c.1 — unimported U02 outcome model
+
+Base e043500; working [contract](../features/handoff-input-outcomes.md) and new
+core/handoff-input-outcomes.mjs. Exact source-only receipt:
+`.artifacts/u03/input-outcomes/verification.json`. Model31/focused114/full1477
+pass; .23 producer/archive/installed pair/both hosts remain exact. No repack or
+native/majority/expiry/legacy experiment repeat is justified for an unimported file.
+
+Focused source reads found that U02 target build is deliberately null, diagnostic
+build is a collected-sample digest, v1 lacks document/node/input history, and the
+editor can have a later value/time than the selected snapshot. A separately
+supplied capture context includes original selection event, actual native frame,
+source/lease/inspection generations and exact investigation/revision. Missing or
+changed keys/time leave it unjoined. This is only supplied-data consistency;
+current runtime does not yet supply that new atomic ownership guard.
+
+Detached bounded projection preserves actual native acknowledgement/response
+receipt phases, pending/partial/unconfirmed/failed/after-close and undo/baseline,
+unknown consumption/effect and missing transaction times. Native after descriptors
+remain their actual recorded revision; current resources never fill missing
+historical locators or before values. Last8 retained runtime summary cannot restore
+full history or unknown totals. Default identities/values/locations/errors stay
+omitted; explicit reviews filter known patterns and URLs, preserve filtered/missing
+join states, and never adopt plan/rule/writer/undo authority. Original and later
+observations stay separate; null capture is not zero edits.
+
+Actual model controls use both existing ledger APIs,64 native transactions,128
+response sites/grouped baseline members, all scalar families and a real >budget
+projection while its supplied capture remains under1MiB. These acknowledgements
+are synthetic fixtures, not native U02 acceptance. RED23/23 then first23 pass;
+additional30 controls exposed2 real model defects (invented false restoration and
+future-clock association), fixed. Later notice-list RED1/31 preserved absence as
+null rather than empty. Final31/114/1477 pass. Intermediate1476 and raw REDs stay.
+Verifier's sandbox spawn EPERM was corrected to same-process module import;
+no acceptance threshold or privilege increase. Verification is idempotent.
+
+Next **U03.2c.2 — actual atomic runtime capture/ownership**. Actual saved input
+outcomes still need public versioned format, persistence and normal review/reader
+integration. Task2/3 BASE markers, whole U03/P04/C07 and mandatory A05/L02 stay
+OPEN. No SDK/publication/other repository or independent-human blocker.
