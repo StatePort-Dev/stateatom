@@ -575,3 +575,81 @@ Implementation/native acceptance for this slice is complete. **U02/Task 5 remain
 open for the one fresh whole-item review and any tested Critical/Important fix
 pass.** No public release, official StatePort intake, SDK, Action Trace, local-model
 validation, production edit grant or independent-human study is claimed.
+
+
+## U02.5c — whole review and one correction pass
+
+The fresh whole-range review covered `17c2441..cb349b5` read-only and reported
+three Important findings, no Critical or Minor findings. Each was reproduced
+before correction and fixed in one pass. The reviewer did not execute native
+suites or write evidence. Declined judgments remain separate work: F05 production
+authority, U06/SDK/A05/L02/official intake, arbitrary framework combinations,
+no-event ABA/crash/server undo guarantees and mixed-version compatibility.
+Human visual/Store/release approval is neither established nor a U02 blocker.
+
+- A whole-body JSON rewrite formerly changed an untouched `-0` to `0` and parsed
+  `1e400` to `null`. Discovery and future delivery now refuse the entire response
+  containing any nested nonfinite/negative-zero number. Ordinary finite siblings
+  and numerical strings remain supported. This conservative eligibility choice
+  preserves JS values; it changes no original catalogue row or denominator.
+- A failed continuation outside the matching-rule branch formerly left active
+  interception/rules. It now closes and attempts owned disable, retaining
+  authority-lost/unknown outcomes and never disabling a foreign replacement.
+  The acknowledged-already-disabled queued-pause control remains unchanged.
+- Same-ID resources formerly kept their first widget after a scalar/control type
+  change. Clean fields now reconcile shape/source labels; conflicting drafts keep
+  their original display descriptor and raw invalid text until explicit discard.
+  Observed values and runtime preconditions still use current resources.
+
+Focused response RED4 → GREEN56 and UI RED2 → GREEN58, followed by the full
+**968/968** suite, pass. The new candidate is `.20261020.1`, exact immutable
+handoff `.artifacts/atom/2026-10-20T00-18-03-309Z/atom-handoff.json`. Fresh packed
+types2/admission7 and source/installed controlled-render8 pass. The render client
+is explicitly controlled; those results get no native catalogue credit.
+
+Fresh native results on that exact candidate:
+
+- Review regressions15: `.artifacts/u02/review-native/2026-10-20T00-20-44-634Z/results.json`.
+  Both hosts/modes preserve untouched finite siblings, continue unrelated real
+  requests and pass through unsafe numerical siblings unchanged while closing
+  the rule. Both hosts reconcile a true→number resource, perform a real numerical
+  edit/Undo, retain invalid text across a subsequent boolean observation and adopt
+  the current widget only on discard. Initial unsafe responses create no editable
+  catalogue. Command-continuation failure is a separately labelled source fault
+  test, not misrepresented as an ordinary successful native request.
+- Default fields40: `.artifacts/u02/input-fields/native/2026-10-20T00-19-33-564Z/results.json`.
+  Normal types/modes/effects, debounce/flush, late replies, partial groups, eventful
+  ABA, view/tab/native-loss cleanup, narrow typography and default HTTPS refusal.
+- Original fixed catalogue: `.artifacts/u02/input-acceptance/2026-10-20T00-20-07-624Z/results.json`,
+  **11/18 Live and 11/18 Draft in each host**, seven unsupported rows without
+  credit, no failed/unverified rows; actual masked/group controls also pass.
+- Response backend15: `.artifacts/u02/response-native/2026-10-20T00-19-31-056Z/results.json`,
+  including actual active-Fetch worker stop.
+
+New failure records remain separate. The initial restricted sandbox forbade local
+listeners, Chrome and npm subprocesses (EPERM); permitted local-process runs pass.
+The first new native regression stopped after two checks because its next click
+raced the Undo observation, producing no new plan; the driver now explicitly
+reads current values before the next edit, without making an app request. The
+first passing native screenshots used an unhelpful short viewport; the final
+440×960 candidate shows the editor. Source/driver snapshots and original records
+are preserved, never overwritten. Existing shared typography/tokens/primitives
+remain unchanged; candidate screenshots are agent-reviewed, not human acceptance.
+
+Fresh current legacy6 passes at
+`.artifacts/u02/input-legacy/2026-10-20T00-23-29-467Z/results.json`: the unchanged
+three-repeat ABA/irrelevant and masked/joint criteria, actual helper/exact IDE
+range and real Restore with retained historical notice/current Stale all pass.
+Guardian8 passes at
+`.artifacts/u02/response-native/2026-10-20T00-24-30-995Z/results.json`, including
+actual offscreen loss and preservation of a foreign native owner.
+
+Exact source/package/result bindings are checked by
+`.artifacts/u02/review-fixes/verify.mjs` and retained in `verification.json`.
+U02/Task5 is complete within this bounded declared catalogue and two local hosts;
+no second review or criteria reduction occurred. The next dependency-ready item
+is F05, after completed F02/U02. The local ledger and old evidence remain intact
+under the user's history-preservation instruction.
+ Production enablement remains F05; no granted-HTTPS mutation, SDK,
+public release, official-host integration, Action Trace or local-model inference
+is inferred from this U02 result.

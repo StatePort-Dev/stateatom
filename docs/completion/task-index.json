@@ -317,7 +317,9 @@
         "tests/integration/input-acceptance.mjs",
         "tests/integration/input-fields.mjs",
         "tests/integration/input-fields-ui.mjs",
-        "tests/integration/input-legacy.mjs"
+        "tests/integration/input-legacy.mjs",
+        "tests/integration/input-review.mjs",
+        "tests/atom/input-ui.test.mjs"
       ],
       "existing_commands": [
         "npm test",
@@ -330,10 +332,11 @@
         "npm run verify:input-inspector",
         "npm run verify:input-fields-ui",
         "npm run verify:input-fields",
-        "npm run verify:input-acceptance"
+        "npm run verify:input-acceptance",
+        "npm run verify:input-review"
       ],
       "deliverable": "Live for most declared editable inputs, grouped drafts, observed effects, undo-last and baseline restoration",
-      "status": "in-progress",
+      "status": "complete",
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-19-u02-input-editor.md",
       "execution_record": "21-overnight-u02-progress.md",
@@ -575,14 +578,33 @@
             "package_admission": 7
           },
           "record": "21-overnight-u02-progress.md"
+        },
+        {
+          "id": "U02.5c",
+          "status": "complete",
+          "scope": "One fresh whole-range review, one RED/GREEN pass fixes three Important findings, exact current-package acceptance",
+          "candidate": "0.1.0-candidate.20261020.1",
+          "tests": {
+            "full": 968,
+            "response_models": 56,
+            "ui_draft_controller_models": 58,
+            "native_review_regressions": 15,
+            "native_default_fields": 40,
+            "native_response": 15,
+            "native_guardian": 8,
+            "legacy_native": 6,
+            "installed_controlled_render": 8,
+            "packed_type_consumers": 2,
+            "package_admission": 7
+          },
+          "record": "21-overnight-u02-progress.md"
         }
       ],
-      "active_slice": "U02.5c",
-      "implementation_dependency": "Default/native/majority/legacy acceptance passes; one fresh whole-U02 review and any tested Important/Critical fix pass remain before item completion",
+      "implementation_dependency": "U02 bounded catalogue/field/runtime acceptance complete; F05 retains production enablement/lifetime/scope and I01/I02 retain official-host intake",
       "field_mode_coverage": {
-        "candidate": "0.1.0-candidate.20261019.31",
-        "native_executed_candidate": "0.1.0-candidate.20261019.30",
-        "configuration": "ordinary default UI, agent-operated immutable local hosts; entire .31 host payloads identical to .30",
+        "candidate": "0.1.0-candidate.20261020.1",
+        "native_executed_candidate": "0.1.0-candidate.20261020.1",
+        "configuration": "ordinary default UI, agent-operated immutable local hosts; fresh current pair",
         "standalone": {
           "live": 11,
           "draft": 11,
@@ -595,8 +617,12 @@
           "total": 18,
           "unsupported": 7
         },
-        "final_default_path": "verified; fresh whole-item review pending"
-      }
+        "final_default_path": "verified; whole review and one tested Important fix pass complete"
+      },
+      "delivery_states": [
+        "implemented",
+        "native-verified"
+      ]
     },
     {
       "id": "U03",
@@ -1326,7 +1352,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK — separate StatePort project",
+      "title": "Production SDK \u2014 separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",
@@ -1742,5 +1768,5 @@
     ],
     "scope_adoption_record": "13-scope-reconciliation.md"
   },
-  "next_task": "U02"
+  "next_task": "F05"
 }

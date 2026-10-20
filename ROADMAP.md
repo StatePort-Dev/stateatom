@@ -78,6 +78,17 @@ Its exact Live parameters remain for U02; F05 grant scope/lifetime and U06
 handoff UX are still unresolved in their own tasks.
 U02 is now in progress under the [autonomous execution record](docs/completion/21-overnight-u02-progress.md). The bundled response backend is guarded: .17 passes 92 focused / 755 full tests and native refusal in both hosts, but current worker-only owners cannot enable it. An actual .16 active-Fetch worker-stop hung the next request, so U02.2c resource ownership is now required. The new unbundled guardian registry passes 24 focused / 779 full source tests; Chrome ownership is still unimplemented. Both field modes, native controls and majority coverage remain incomplete; old native partial results are retained.
 
+The subsequent [U02 execution](docs/completion/21-overnight-u02-progress.md) now
+completes the bounded default input workflow on `.20261020.1`: 968 full source
+checks, actual 11/18 per mode per host, typed fields/effects/undos and lifecycle,
+original legacy criteria, and one whole review followed by one tested fix pass.
+Seven unsupported rows retain their denominator and receive no credit. Details
+and earlier failures remain scoped in that record; agent screenshots are candidates.
+The one next dependency-ready item is **F05** after F02/U02: define bounded grant
+lifetime/scope and implement the two sequential Settings confirmations, runtime
+authority and revocation. These parameters are new F05 decisions, not scope-review
+approvals. U06 UX, A05/L02, official intake and release gates remain separate.
+
 ## Historical roadmap and checkpoint ledger
 
 StateAtom's next development target is a narrow, independently useful developer alpha. A developer should be able to select a UI property, inspect its supported dependencies, test an eligible input locally, and save an explanation that another person can read.

@@ -19,6 +19,9 @@ function parseBody(body){
  let count=0;const leaves=[];
  function visit(value,pointer,depth){
   if(++count>4096||depth>12)fail('RESPONSE_UNSUPPORTED','JSON response structure budget exceeded');
+  // Rewriting one leaf serializes the whole body. Refuse values that JSON.parse
+  // accepts but JSON.stringify would silently change in an untouched sibling.
+  if(typeof value==='number'&&(!Number.isFinite(value)||Object.is(value,-0)))fail('RESPONSE_UNSUPPORTED','JSON response contains a number that cannot be preserved');
   if(value&&typeof value==='object')for(const k of Object.keys(value)){
    if(unsafe.has(k))fail('RESPONSE_UNSUPPORTED','Unsafe JSON key');
    visit(value[k],pointer+'/'+k.replace(/~/g,'~0').replace(/\//g,'~1'),depth+1);

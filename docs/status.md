@@ -119,6 +119,16 @@ Restore notice survives its own reload while new selections still reject late re
 All failures/criteria remain recorded. U02 is still open for its one fresh whole-item
 review and tested Important/Critical fixes; no whole-baseline/release claim follows.
 
+U02.5c completes the bounded U02 item on `.20261020.1`. One fresh whole review
+found three Important defects; one reproduced/tested pass fixes unsafe numerical
+JSON siblings, failed nonmatching continuation cleanup and refreshed widget types.
+Fresh full968, native review15/fields40/response15/guardian8/legacy6, rendered8,
+types2 and package7 pass. The original catalogue remains **11/18 per mode per host**,
+with seven unsupported rows retained. All exact identities/failures and agent-only
+visual evidence are in the linked execution record. Next is **F05**, after F02/U02;
+its enabled production path and grant scope/lifetime remain unimplemented. This
+does not complete the broader baseline or create a public release.
+
 Historical checkpoint: **2026-10-18**, [closed first-read developer preview](roadmap/2026-10-18-closed-first-read.md).
 The maintainer accepted the demonstrated scope as an **alpha** after the live
 demonstration of revision `2958d2b`. This records maintainer acceptance of that

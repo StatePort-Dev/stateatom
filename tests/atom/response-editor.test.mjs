@@ -72,3 +72,15 @@ test('an older queued pause already released by acknowledged Fetch disable canno
  let entered,release,disabled=false;const started=new Promise(r=>entered=r),gate=new Promise(r=>release=r);const f=fixture({send:async(method,params)=>{if(method==='Fetch.getResponseBody'&&params.requestId==='fetch3'){entered();await gate;}if(method==='Fetch.disable')disabled=true;if(method==='Fetch.continueRequest'&&disabled)throw Error('Native interception already released');}});
  try{await f.editor.apply(f.plan());await f.editor.restoreBaseline(f.editor.snapshot().revision);const newer=f.editor.handlePaused(paused(3),meta(3));await started;const older=f.editor.handlePaused(paused(2),meta(2));release();await Promise.all([newer,older]);assert.equal(f.editor.snapshot().closed,false);assert.equal(f.editor.snapshot().cleanup,'disabled');assert.equal(f.calls.some(c=>c.method==='Fetch.continueRequest'&&c.params.requestId==='fetch2'),false);assert.equal(f.editor.snapshot().resources[0].resource.locator.requestOrdinal,3);}finally{release();await f.editor.close('done');}
 });
+
+test('failed nonmatching continuation closes rules and disables owned interception',async()=>{
+ for(const change of [{request:{url:target().origin+'/other',method:'GET'}},{responseStatusCode:404},{responseHeaders:[{name:'Content-Type',value:'text/plain'}]}]){
+  const f=fixture({send:async m=>{if(m==='Fetch.continueRequest')throw Error('native continuation failed');}});await f.editor.apply(f.plan());await f.editor.handlePaused(paused(2,change),meta(2));const s=f.editor.snapshot();assert.equal(s.closed,true);assert.equal(s.cleanup,'disabled');assert(!s.resources.some(r=>r.rule));assert.equal(methods(f).at(-1),'Fetch.disable');assert(!methods(f).includes('Fetch.getResponseBody'));assert(!methods(f).includes('Fetch.fulfillRequest'));await f.editor.close('done');
+ }
+});
+test('failed nonmatching continuation after ownership loss never disables a replacement lease',async()=>{
+ let f;f=fixture({send:async m=>{if(m==='Fetch.continueRequest'){f.foreign();throw Error('lease changed during continuation');}}});await f.editor.apply(f.plan());await f.editor.handlePaused(paused(2,{responseStatusCode:404}),meta(2));assert.equal(f.editor.snapshot().closed,true);assert.equal(f.editor.snapshot().cleanup,'authority-lost');assert(!methods(f).includes('Fetch.disable'));await f.editor.close('done');
+});
+test('unsafe numerical siblings on a future matching response continue unchanged and disarm the editor',async()=>{
+ const f=fixture({send:async m=>m==='Fetch.getResponseBody'?{body:'{"flag":true,"negativeZero":-0,"overflow":1e400}',base64Encoded:false}:undefined});await f.editor.apply(f.plan());await f.editor.handlePaused(paused(),meta(2));const s=f.editor.snapshot();assert.equal(s.closed,true);assert.equal(s.cleanup,'disabled');assert(!methods(f).includes('Fetch.fulfillRequest'));assert(methods(f).includes('Fetch.continueRequest'));assert(!s.resources.some(r=>r.rule));assert.equal(s.notes.some(n=>n.code==='RESPONSE_UNSUPPORTED'),true);await f.editor.close('done');
+});

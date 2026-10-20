@@ -69,7 +69,7 @@ export function createResponseEditor({investigationId,target,responses=[],readCu
   try{const fresh=await current();assertOpen(signal);ledger[kind]({...fresh,expectedRevision});published=structuredClone(fresh.target);publish();return snapshot();}
   catch(e){if(['CAPABILITY_DENIED','STALE_TARGET'].includes(e.code)){markClosed('Restoration admission changed');await disable();}throw e;}
  },signal);}
- async function continuePaused(p){if(ownsFetch())try{await send('Fetch.continueRequest',{requestId:p.requestId});}catch{notes.push({code:'CONTINUE_UNCONFIRMED'});publish();}}
+ async function continuePaused(p){if(!ownsFetch())return false;try{await send('Fetch.continueRequest',{requestId:p.requestId});return true;}catch{notes.push({code:'CONTINUE_UNCONFIRMED'});publish();return false;}}
  function matches(p,meta){
   const mime=p.responseHeaders?.find(h=>h.name?.toLowerCase()==='content-type')?.value||'';
   return meta?.mainFrame===true&&typeof meta.frameId==='string'&&p.frameId===meta.frameId&&meta.document===target.document&&meta.type==='Fetch'&&['Fetch','XHR'].includes(p.resourceType)&&p.request?.method==='GET'&&meta.method==='GET'&&p.networkId===meta.requestId&&p.request.url===meta.url&&ledger.responseURLs().includes(meta.url)&&p.responseStatusCode>=200&&p.responseStatusCode<300&&/^application\/(?:[\w.-]+\+)?json(?:\s*;|$)/i.test(mime);
@@ -83,7 +83,7 @@ export function createResponseEditor({investigationId,target,responses=[],readCu
    // A preceding job may have disabled Fetch and already released this native
    // pause. Never issue a second command against the released interception.
    if(!touched)return true;
-   if(!matching||closed){await continuePaused(p);return true;}
+   if(!matching||closed){if(!await continuePaused(p)){markClosed('Response continuation unconfirmed');await disable();}return true;}
    let receipt=null,deliveryAttempted=false;
    try{
     await current();assertOpen();

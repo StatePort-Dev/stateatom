@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Input safety fixture</title>
+<style>body{font:18px system-ui;margin:40px}button{font:inherit;padding:10px;margin:8px}output{display:block}</style>
+<h1>Input safety fixture</h1><p>Synthetic JSON only. Refresh is always an explicit application action.</p>
+<button id="refresh">Refresh data</button><button id="other">Read unrelated data</button><button id="confirm" disabled>Confirm</button>
+<output id="result">Not loaded</output><output id="status">Idle</output><output id="other-result"></output>
+<script>
+let generation=0;window.refreshes=0;
+document.querySelector('#refresh').onclick=async()=>{const current=++generation;window.refreshes++;try{const data=await fetch('/api/data',{cache:'no-store'}).then(r=>r.json());window.latest=data;document.querySelector('#confirm').disabled=data.flag===true;document.querySelector('#result').textContent=String(data.flag);document.querySelector('#status').textContent='Loaded '+current;}catch(e){document.querySelector('#status').textContent='Failed '+current;}};
+document.querySelector('#other').onclick=async()=>{document.querySelector('#other-result').textContent=await fetch('/other',{cache:'no-store'}).then(r=>r.text());};
+</script></html>

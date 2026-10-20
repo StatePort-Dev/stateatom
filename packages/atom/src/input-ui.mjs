@@ -17,6 +17,10 @@ export const inputEditorTemplate=`
 </section>`;
 const equal=(a,b)=>JSON.stringify(a)===JSON.stringify(b),label=r=>r.kind==='json-response'?(r.locator.pointer.split('/').at(-1)||'response value').replaceAll('~1','/').replaceAll('~0','~'):r.locator.selector.startsWith('#')?r.locator.selector.slice(1):r.locator.control+' input';
 const short=v=>{const s=JSON.stringify(v);return s===undefined?'Unknown':s;};
+// A conflicted draft keeps its original input shape until explicit discard.
+// Current observed values still come from entry.resource, never this UI hint.
+const fieldResource=entry=>entry.conflict&&entry.draftResource||entry.resource;
+const rowKey=r=>JSON.stringify([r.kind,r.type,r.locator.control,r.locator.selector,r.locator.url,r.locator.method,r.locator.pointer]);
 function explanation(code,message){return({DRAFT_PENDING:'Apply or discard the local draft first.',INVALID_CONTROL_VALUE:'Not an allowed value for this control.',STALE_CONTROL:'This control changed. Discard the stale draft.',STALE_RESOURCE:'This field changed. Discard the stale draft.',EXTERNAL_REVISION:'A newer external value cannot be overwritten by undo.',INSPECTOR_DISCONNECTED:'Inspector connection lost. Reopen this inspector.',BUSY:'This input editor is busy or belongs to another view.',OBSERVATION_REQUIRED:'Inspect a current target before opening inputs.',ACK_UNCONFIRMED:'The edit may have had effects; acknowledgement is unavailable.'})[code]||message||code;}
 export function createInputUI({document,$,client,preview=false,onReconnect}={}){
  const rows=new Map();let state=null,caps=null,capKey=null,capEpoch=0,visible=false,disposed=false,localError=null;
@@ -31,7 +35,7 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
   void client.request({op:'capabilities',tabId:id,ownerId:controller.snapshot().ownerId,sourceKind:$('input-source').value}).then(value=>{if(disposed||epoch!==capEpoch)return;caps=supportsCapabilityPolicy(value)?value:null;render();},e=>{if(disposed||epoch!==capEpoch)return;localError=explanation(e.code,e.message);render();});render();
  }
  function makeRow(entry){
-  const r=entry.resource,name=label(r),el=node('article',undefined,'sp-atom-input-row');el.setAttribute('data-input-resource',entry.id);el.setAttribute('data-input-selector',r.locator.selector||'');
+  const r=fieldResource(entry),name=label(r),el=node('article',undefined,'sp-atom-input-row');el.setAttribute('data-input-resource',entry.id);el.setAttribute('data-input-selector',r.locator.selector||'');
   const top=node('div',undefined,'sp-atom-input-row-top'),title=node('label',name,'sp-atom-input-name'),values=node('div',undefined,'sp-atom-input-values'),observed=node('code',undefined,'sp-atom-input-current'),arrow=node('span','→','sp-atom-input-arrow'),control=node('div',undefined,'sp-atom-input-control'),error=node('p',undefined,'sp-error');
   const uid='input-'+crypto.randomUUID();error.id=uid+'-error';error.hidden=true;const common=field=>{field.setAttribute('aria-label',name);field.setAttribute('aria-describedby',error.id);return field;};let input,buttons;
   if(r.type==='boolean'){
@@ -47,7 +51,7 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
   values.append(observed,arrow,control);top.append(title,values);el.append(top);
   const meta=node('div',undefined,'sp-atom-input-meta'),hint=node('span',r.kind==='dom-control'?'Native '+r.locator.control:'Observed response'),reset=node('button','Discard field','sp-button-subtle');reset.type='button';reset.onclick=()=>run(()=>controller.discard(entry.id));meta.append(hint,reset);el.append(meta,error);
   const details=node('details'),summary=node('summary','Source / scope'),location=node('code');location.textContent=r.kind==='dom-control'?r.locator.selector:r.locator.method+' '+r.locator.url+' #'+r.locator.pointer;details.append(summary,location,node('p','Consumption and selected-property dependency remain unknown.','sp-atom-hint'));el.append(details);
-  return{el,input,buttons,observed,error,reset,location,options:null};
+  return{el,input,buttons,observed,error,reset,location,options:null,key:rowKey(r)};
  }
  function render(){
   if(disposed)return;const s=controller.snapshot(),d=s.draft,e=s.editor;const region=$('input-editor');region.hidden=!visible;if(!visible)return;
@@ -65,12 +69,12 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
   $('input-read').disabled=!s.active||s.busy||!decision('inputs-read')?.available;$('input-undo').disabled=!s.active||s.busy||!e?.canUndo||!decision('inputs-undo')?.available;$('input-baseline').disabled=!s.active||s.busy||!e?.canRestoreBaseline||!decision('inputs-baseline')?.available;
   text('input-note',s.connectionLost?'Reopen the inspector, then inspect again; old drafts do not restore authority.':heldClosed?'A local draft from the closed investigation is kept read-only. Discard it to open another target.':d?.heldDraft?'Draft kept. Apply or discard to resume Live.':s.mode==='draft'?'Draft stays local until Apply.':s.active?'Live sends valid text/number edits after 250 ms; Enter or blur sends now.':'Choose a source, then open supported inputs.');
   text('input-kind',e?(e.sourceKind==='dom-control'?'FORM CONTROLS':'RESPONSE SCALARS'):'');text('input-columns',e?.sourceKind==='json-response'?'Rule → Draft':'Observed → Draft');
-  const ids=new Set();for(const entry of d?.entries||[]){ids.add(entry.id);let row=rows.get(entry.id);if(!row){row=makeRow(entry);rows.set(entry.id,row);$('input-fields').append(row.el);}const disabled=!s.active||entry.missing||!decision('inputs-apply')?.available;
+  const ids=new Set();for(const entry of d?.entries||[]){ids.add(entry.id);const resource=fieldResource(entry);let row=rows.get(entry.id);if(!row||row.key!==rowKey(resource)){const old=row;row=makeRow(entry);rows.set(entry.id,row);if(old)old.el.replaceWith(row.el);else $('input-fields').append(row.el);}const disabled=!s.active||entry.missing||!decision('inputs-apply')?.available;
    row.el.setAttribute('data-dirty',String(entry.dirty));row.observed.textContent=short(entry.resource.value);row.observed.title=short(entry.resource.value);row.reset.hidden=!entry.dirty;row.reset.disabled=s.busy;
    const message=entry.conflict?'Field changed elsewhere. Discard this draft.':entry.error?explanation(entry.error,entry.error):null;row.error.hidden=!message;row.error.textContent=message||'';
    if(row.buttons)row.buttons.forEach((b,i)=>{b.disabled=disabled;b.setAttribute('aria-pressed',String(entry.raw===(i===0)));b.setAttribute('aria-invalid',String(!entry.valid||entry.conflict));});
    else{const field=row.input;field.disabled=disabled;field.setAttribute('aria-invalid',String(!entry.valid||entry.conflict));if(field.tagName==='SELECT'){
-     const choices=entry.resource.locator.options||[],key=JSON.stringify([choices,entry.raw]);if(row.options!==key){row.options=key;const values=choices.map(value=>{const option=node('option',value);option.value=value;return option;});if(!choices.includes(entry.raw)){const option=node('option',String(entry.raw)+' (unavailable)');option.value=entry.raw;option.disabled=true;values.unshift(option);}field.replaceChildren(...values);}
+     const choices=resource.locator.options||[],key=JSON.stringify([choices,entry.raw]);if(row.options!==key){row.options=key;const values=choices.map(value=>{const option=node('option',value);option.value=value;return option;});if(!choices.includes(entry.raw)){const option=node('option',String(entry.raw)+' (unavailable)');option.value=entry.raw;option.disabled=true;values.unshift(option);}field.replaceChildren(...values);}
     }if(field.value!==String(entry.raw))field.value=String(entry.raw);}
   }
   for(const[id,row]of rows)if(!ids.has(id)){row.el.remove();rows.delete(id);}

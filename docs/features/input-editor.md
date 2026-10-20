@@ -96,7 +96,12 @@ transactions. Future response preparation is bounded to 32 simultaneous receipts
 and 128 lifetime receipts; it refuses further delivery preparation rather than
 silently dropping earlier acknowledgement evidence. Bodies are bounded to 256 KiB
 before and after substitution, 4096 JSON nodes and depth 12. Unsafe keys, null,
-structural leaves, negative zero and oversized strings are not writable inputs.
+structural leaves and oversized strings are not writable inputs. The review fix
+additionally refuses the **whole response** when any parsed number is negative
+zero or nonfinite, including untouched siblings/nested arrays: serializing one
+changed leaf would otherwise alter those unrelated application values. Ordinary
+finite numbers and numerical strings remain supported. This conservative
+eligibility rule does not remove or relabel any preregistered catalogue row.
 
 A resource descriptor's value is the current prospective rule value (or raw server
 value when no rule exists), not a fresh observation of application state. The
@@ -175,3 +180,19 @@ acknowledgements retain Unknown consumption/effect and external revision refusal
 The next bounded slice is Task 4's actual fields, both modes, draft preservation
 and inspector-owned lifecycle. These backend results do not credit field-mode
 catalogue rows or turn on Live/Draft feature availability.
+
+
+### Whole-item review corrections
+
+Same-resource IDs do not freeze widget shape. A clean refreshed scalar/control
+changes the rendered input kind and its source label/scope. A conflicting dirty
+draft retains its original resource descriptor for presentation only, keeping
+invalid raw text visible until explicit discard; the current observed resource
+and mutation preconditions remain independent. Discard adopts the current type.
+
+An unconfirmed continuation of a nonmatching native Fetch pause closes rules and
+attempts owned Fetch cleanup. Failure is never an active/success state. Cleanup
+remains unknown if native disable fails and authority-lost for a foreign lease.
+Pauses already released by acknowledged disable are still skipped. Command-fault
+models establish this failure branch; ordinary native nonmatching requests and
+unsafe numerical passthrough are separately exercised on immutable hosts.

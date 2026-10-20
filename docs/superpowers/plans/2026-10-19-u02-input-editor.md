@@ -168,11 +168,16 @@ execution records, roadmap/index. Use actual runtime and synthetic shareable dat
 **Interfaces:** exact packed pair plus all preceding slices; adapter-specific
 atomicity and cleanup limits survive diagnostics without causal upgrades.
 
-- [ ] Finish exact native matrix before executing it; test both modes across all
+- [x] Finish exact native matrix before executing it; test both modes across all
   preregistered rows and retain expected unsupported outcomes separately.
-- [ ] Run typed/rapid/invalid/out-of-order/group/undo/external revision/interrupt
+- [x] Run typed/rapid/invalid/out-of-order/group/undo/external revision/interrupt
   cases; default production refusal; existing legacy experimental controls.
-- [ ] One fresh whole-item reviewer, one Critical/Important fix pass with RED/GREEN
+- [x] One fresh whole-item reviewer, one Critical/Important fix pass with RED/GREEN
   and full suite. Record agent/human evidence separately, local final commit.
-- [ ] Only mark U02 complete if both modes and majority/effect criteria actually
+- [x] Only mark U02 complete if both modes and majority/effect criteria actually
   pass; otherwise commit honest bounded progress and continue dependency-ready work.
+
+Task5 accepted on `.20261020.1`: full968, original11/18bothmodes EACHhost,
+native fields40/review15/response15/guardian8/legacy6, rendered8/types2/admission7.
+One whole review found3Important; one RED/GREEN pass fixes all. Exact current
+receipt `.artifacts/u02/review-fixes/verification.json`; no re-review.

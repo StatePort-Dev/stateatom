@@ -15,9 +15,11 @@ The audit distinguishes implementation read in this revision, results recorded b
 2. Reuse completed F01–F04 and U05 implementation/evidence; the compact .11
    target controls are credited in the [completed U01 workspace](20-u01-selected-workspace.md).
    Its .14 checks and retained failures are scoped in that execution report.
-3. The single next item is **U02: Live and Draft/Apply eligible-input editing**,
-   after completed F02/U01/U05. Define its catalogue and exact Live parameters in
-   U02. U06 develops handoff UX; F05 defines deliberate production enablement.
+3. [U02 is complete within its fixed input catalogue](21-overnight-u02-progress.md):
+   default Live/Draft, native effects, undo and lifecycle, plus one reviewed fix pass.
+   The single next item is **F05: two-confirmation production change enablement**,
+   after completed F02/U02. Its exact grant scope/lifetime remain to define in F05.
+   U06 separately develops handoff UX.
    Official-host intake remains I01 and is separate from this local increment.
 4. Develop the remaining analysis and production capabilities through their named cases. Keep the existing closed first-read profile as a separately labelled regression.
 5. Run the release matrix on one immutable candidate, then decide the distribution milestone. A green unit/build job alone is not a release gate.
@@ -48,6 +50,7 @@ Each work item contains its inputs, output, files, tests and stopping point. An 
 | [18 — U05 execution](18-u05-visual-picker.md) | Native visual selection, refinement and cancellation |
 | [19 — U05 feedback](19-u05-picker-presentation.md) | Compact target controls and system-scale demo correction |
 | [20 — U01 execution](20-u01-selected-workspace.md) | Normal inspector, context/freshness guards, reader fonts and scoped checks |
+| [21 — U02 execution](21-overnight-u02-progress.md) | Default Live/Draft, original 18-row coverage, native lifecycle, review corrections and limits |
 | [Task index](task-index.json) | 29 active work items, dependency graph, owners and separate external SDK reference |
 | [Evidence register](audit-evidence.json) | Pinned sources and the limits of this review |
 

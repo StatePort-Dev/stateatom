@@ -64,8 +64,8 @@ test('receipts are unique single-use, unknown receipts cannot mutate the ledger'
 test('JSON intake rejects unsafe keys, oversize bodies/depth and non-JSON without side effects',()=>{
  const l=create(),before=l.snapshot();for(const body of ['{"__proto__":{"x":true}}','{"constructor":1}','{bad','"'+ 'x'.repeat(262144)+'"','{"x":'.repeat(14)+'1'+'}'.repeat(14)]){rejects(()=>l.observeResponse({...facts(undefined,2),body}),'RESPONSE_UNSUPPORTED');assert.deepEqual(l.snapshot(),before);}
 });
-test('null, structural values, negative zero and oversized strings remain unsupported leaves',()=>{
- const l=createResponseLedger({investigationId:'i1',target:target()});l.observeResponse({...facts(),body:'{"nil":null,"n":-0,"large":"'+ 'x'.repeat(4097)+'","ok":true}'});assert.deepEqual(l.snapshot().resources.map(r=>r.resource.locator.pointer),['/ok']);
+test('null, structural values and oversized strings remain unsupported leaves',()=>{
+ const l=createResponseLedger({investigationId:'i1',target:target()});l.observeResponse({...facts(),body:'{"nil":null,"large":"'+ 'x'.repeat(4097)+'","ok":true}'});assert.deepEqual(l.snapshot().resources.map(r=>r.resource.locator.pointer),['/ok']);
 });
 test('resource/history budgets reject before dropping prior evidence or installing a partial group',()=>{
  const l=createResponseLedger({investigationId:'i1',target:target()});const many=Object.fromEntries(Array.from({length:129},(_,i)=>['k'+i,i]));rejects(()=>l.observeResponse(facts(many)),'RESOURCE_LIMIT');assert.equal(l.snapshot().resources.length,0);const q=create();for(let i=0;i<64;i++)q.apply(plan(q,{'/quota':i+3}),fresh());const before=q.snapshot();rejects(()=>q.apply(plan(q,{'/quota':100}),fresh()),'HISTORY_LIMIT');assert.deepEqual(q.snapshot(),before);
@@ -104,3 +104,13 @@ test('close rejects an object reason without evaluating user conversion hooks',(
  const l=create();let conversions=0;const before=l.snapshot();rejects(()=>l.close({toString(){conversions++;return 'closed';}}),'INVALID_REASON');assert.equal(conversions,0);assert.deepEqual(l.snapshot(),before);
 });
 test('an unconfirmed native delivery stays unknown rather than fabricating non-delivery',()=>{const l=create();l.apply(plan(l),fresh());const r=l.prepareResponse(facts(undefined,2));l.confirmResponse(r.receipt,{delivered:null,error:'ACK_LOST'});const h=l.snapshot().history[0];assert.equal(h.phase,'unconfirmed');assert.equal(h.outcomes[0].deliveries[0].delivered,null);assert.equal(row(l).rule,null);assert.equal(h.applicationRestored,false);assert.equal(h.consumption,'unknown');});
+
+test('a JSON response with a nonstable numerical sibling is refused before discovery or guarded rewriting',()=>{
+ for(const raw of ['{"flag":true,"n":-0}','{"flag":true,"nested":[1e400]}','{"flag":true,"nested":{"n":-1e400}}','{"flag":true,"n":-1e-400}']){
+  const empty=createResponseLedger({investigationId:'i1',target:target()}),initial=empty.snapshot();rejects(()=>empty.observeResponse({...facts(),body:raw}),'RESPONSE_UNSUPPORTED');assert.deepEqual(empty.snapshot(),initial);
+  const l=createResponseLedger({investigationId:'i1',target:target()});l.observeResponse(facts({flag:true}));l.apply(plan(l,{'/flag':false}),fresh());const before=l.snapshot();rejects(()=>l.prepareResponse({...facts(undefined,2),body:raw}),'RESPONSE_UNSUPPORTED');assert.deepEqual(l.snapshot(),before);
+ }
+});
+test('ordinary finite numerical siblings and numerical strings survive a boolean leaf edit',()=>{
+ const l=createResponseLedger({investigationId:'i1',target:target()}),body={flag:true,zero:0,large:1e300,tiny:1e-300,text:['-0','1e400']};l.observeResponse(facts(body));l.apply(plan(l,{'/flag':false}),fresh());const r=l.prepareResponse(facts(body,2));assert.deepEqual(JSON.parse(r.body),{...body,flag:false});
+});

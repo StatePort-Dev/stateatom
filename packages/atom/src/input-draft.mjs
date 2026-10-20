@@ -48,7 +48,7 @@ export function createInputDraft({mode='live'}={}){
  function setMode(next){if(!['live','draft'].includes(next))throw error('INVALID_MODE');if(next==='live'&&mode==='draft'&&drafts.size)heldDraft=true;mode=next;if(next==='draft')heldDraft=false;return output();}
  function discard(id){if(flight)throw error('BUSY');if(id===undefined)drafts.clear();else drafts.delete(id);if(!drafts.size)heldDraft=false;return output();}
  function output(){
-  const ids=new Set([...rows.keys(),...drafts.keys()]),entries=[...ids].map(id=>{const row=rows.get(id),d=drafts.get(id),resource=row?.resource||d.resource;return{id,resource:clone(resource),raw:d?d.raw:text(resource),value:d?.valid?d.value:resource.value,dirty:!!d,valid:d?d.valid:true,conflict:d?.conflict===true,missing:!row,error:d?.error||null};});
+  const ids=new Set([...rows.keys(),...drafts.keys()]),entries=[...ids].map(id=>{const row=rows.get(id),d=drafts.get(id),resource=row?.resource||d.resource;return{id,resource:clone(resource),draftResource:d?clone(d.resource):null,raw:d?d.raw:text(resource),value:d?.valid?d.value:resource.value,dirty:!!d,valid:d?d.valid:true,conflict:d?.conflict===true,missing:!row,error:d?.error||null};});
   const dirty=entries.filter(e=>e.dirty),valid=e=>e.valid&&!e.conflict&&!e.missing;
   return clone({investigationId:state?.investigationId||null,mode,heldDraft,pending:!!flight,closed:!editable(),entries,dirtyCount:dirty.length,canApply:editable()&&!flight&&dirty.length>0&&dirty.length<=32&&dirty.every(valid),liveCandidates:editable()&&mode==='live'&&!heldDraft&&!flight?dirty.filter(e=>valid(e)&&!e.error).map(e=>e.id):[]});
  }

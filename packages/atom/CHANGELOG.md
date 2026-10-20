@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.1
+
+- Refuse JSON response editing when serializing an untouched negative zero or
+  nonfinite number would change application values.
+- Close and clean up owned interception after an unconfirmed continuation of
+  a nonmatching response; preserve foreign ownership and unknown cleanup.
+- Reconcile same-resource field widgets when scalar/control types change. Keep
+  conflicting raw drafts in their original widget until explicit discard.
+- Existing Atom typography and shared UI tokens/primitives are unchanged.
+
 ## 0.1.0-candidate.20261019.31
 
 - Document the verified guarded input workflow and identify older .18/.24
