@@ -172,8 +172,11 @@ actual editor-open context, rejects obsolete hash replies and preserves unknowns
 no new DOM observation or normal saved-outcome UI is implied. The one next bounded
 item was U03.2c.3a. Its unimported public evidence packet now passes32/focused161/
 full1534, plus source-only processing of16 historical native25 captures; installed
-.25 remains unchanged. Next U03.2c.3b composes the compatible full public handoff
-and immutable lineage, before persistence and normal reporter/recipient review.
+.25 remains unchanged. U03.2c.3b now supplies the unimported complete input-evidence/1
+profile:29/current packet32/focused190/full1563;32 source-only compositions retain
+actual historical capture identity. Notes/source comparisons and overlapping
+privacy preserve separate exact-file/canonical-component lineage. Next U03.2c.3c.1
+integrates installed file/storage/read/privacy, before normal reporter creation.
 Task2/3/whole U03, P04/C07 and mandatory A05/L02 remain open. Historical evidence
 below stays under its own identity; independent human review is optional, candidate
 screenshots are not human visual approval. No SDK, publication or another repository.

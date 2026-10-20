@@ -400,13 +400,38 @@ unchanged, no package/browser rerun. All claims stay untrusted even if rehashed.
 
 ### Bounded U03.2c.3b: compatible public handoff composition, unimported
 
-- [ ] Pin the complete public profile/lineage and source-comparison coexistence
+- [x] Pin the complete public profile/lineage and source-comparison coexistence
   using the packet plus old exact-source baseline. Keep all old parser meanings;
   never attach a fresh capture to a different saved diagnostic occurrence.
-- [ ] RED/GREEN strict complete creation/parse, immutable notes/privacy/parent
+- [x] RED/GREEN strict complete creation/parse, immutable notes/privacy/parent
   checks and source/input evidence coexistence, default exclusions and unsupported
   versions, one1MiB budget, no hidden raw private capture or authority.
-- [ ] Focused/full source and exact unchanged .25 if still unimported. Do not
+- [x] Focused/full source and exact unchanged .25 if still unimported. Do not
   repeat native acquisition merely to exercise an unimported formatter.
-- [ ] Local bounded commit. Dispatcher/storage and ordinary reporter/recipient
+- [x] Local bounded commit. Dispatcher/storage and ordinary reporter/recipient
   review integration follow; parent Task2/3 and whole U03 remain open.
+
+
+3b complete within unimported full profile boundary: report29/packet32/focused190/
+full1563; source processing32 compositions from16 historical native25 inputs.
+3a dependency type tightened by a new counterexample; old32/full1534 stay historical.
+Native25 app-target CDP probe metadata qualified without rewriting raw evidence.
+Current .25 package inputs/archive/consumer/hosts unchanged; no browser rerun.
+
+### Bounded U03.2c.3c.1: installed passive input-report integration
+
+- [ ] Pin existing dispatcher/store/reader/note/source/privacy adaptations using
+  the supplied visual foundations. Imported profiles must show/review all retained
+  input data; never accept a profile whose private fields are hidden by old UI.
+- [ ] RED/GREEN explicit dispatch, compatible exact-byte persistence, readable
+  input/source views and monotone whole/category/field privacy with stale epochs.
+  Keep complete-file versus canonical public-component parent domains explicit.
+- [ ] Preflight private capture's unsaved-cache expiry against existing
+  save-diagnostic policy: it intentionally skips browser authority refresh, but
+  local cache retention must not be silently bypassed. Verify before changing;
+  no reason to repeat the old native expiry experiment wholesale.
+- [ ] Fresh immutable package/types/admission/full and actual both-host passive
+  read/reopen/note/source/privacy/no-network/keyboard/narrow/zoom checks. Old native
+  evidence retains its own scope, including the app-target observer qualification.
+- [ ] Local bounded commit. Active normal reporter capture/consent/review/save and
+  complete H01-H06/one whole-U03 review follow separately; no saved-UX claim yet.

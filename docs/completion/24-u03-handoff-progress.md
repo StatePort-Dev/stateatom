@@ -1272,3 +1272,80 @@ The packet is deliberately unimported and not accepted by existing file dispatch
 or storage. Full report source/input coexistence, persistence and normal saved-U02
 reporter/recipient review remain unfinished. Task2/3/U03/P04/C07/A05/L02 stay OPEN;
 no SDK, publication, other repository or independent-human blocker is introduced.
+
+## U03.2c.3b — unimported complete input-report profile, 2026-10-20
+
+BASE4de04e3; working contract
+[handoff-input-report](../features/handoff-input-report.md). Full v2
+`input-evidence/1` preserves ordinary public report/notes/privacy/source fields,
+adds a validated packet and an explicit original public-component header. It does
+not nest raw JSON or a private capture. Whole-file lineage binds exact parent
+bytes; canonical component digests/parents are a separate labelled domain. Old
+notes and source packets keep their recorded references and unverified roles.
+All old v1/minimal/reviewed/source interpretations remain intact.
+
+Fresh source commands: targeted report/packet/model/base codec checks **190 PASS**
+(report29, current packet32); `npm test` **1563 PASS**; `git diff --check`;
+idempotent `.artifacts/u03/input-report/verify.mjs` and
+`.artifacts/u03/input-report/verification.json`. Both actual package source/build
+manifests, archives, installed consumer and entire two hosts remain exact .25.
+New report/packet modules are unimported; changed test driver is not a package
+input. No fresh package, native UI acceptance or old majority/expiry rerun.
+
+Source-only processing yields **32 complete compositions from16 exact historical
+native25 inputs**, at
+`.artifacts/u03/input-report/processed-native25-2026-10-20T18-09-30-530Z/results.json`.
+Two base profiles, note append, privacy and whole-input omission validate; no
+network call occurs. Reporter statements are explicitly synthetic formatter text,
+not a new QA/user statement or new browser assertion. Actual old capture bytes
+remain unchanged. Source-profile coexistence is separately exercised by synthetic
+local-byte fixtures, not relabelled actual H05 acquisition.
+
+Controls preserve exact source correspondence, original/later observations,
+closed/unjoined/unknown phases and explicit omission. No fresh capture can borrow
+another saved snapshot by selector/property. Notes/source additions change only
+legitimate canonical public components; packet/history stay immutable. Explicit
+base privacy automatically narrows overlapping packet fields/categories, including
+privacy markers already present in an old base. Whole omission cannot restore
+input data. Minimal coarse privacy still needs explicit all-note omission.
+
+History: module RED1; contract13 had11 failures plus2 already passing refusal
+controls, then13 passed. Boundary20/2 exposed old explicit privacy ignored at
+composition and an overbroad editor-observation scalar; choices21/3 also exposed
+silent duplicate-list deduplication. Fixed before publication/import. The packet
+consumer now requires boolean disabled/string text observation, distinct from
+arbitrary scalar resource values. Its old32/full1534 evidence stays historical;
+new32/190/1563 covers the corrected dependency. Rehashed note/privacy attacks,
+clock/getter snapshots, network denial, safe revision/forks and retained-source
+packet omission pass. A large fixture initially attempted no-change writes and
+omitted content; those invalid setup failures remain recorded. Explicit before
+observations/content opt-in produce two individually valid components exceeding
+the unchanged whole-file budget. Composition rejects; explicit minimal fallback
+retains all64 transactions and the exact source/expected statement. No truncation
+or acceptance threshold was introduced to make it pass.
+
+**Native evidence qualification:** the own native25 driver's `appCDP:false` flag
+was inaccurate. `scripts/native-browser.mjs`24–27 attaches an app-target session
+for fixture evaluate/locator actions, output and counter reads. Native23 checks
+remain actual packed backend observations **under that harness observer**, not
+proof of absent app protocol traffic. Operation-specific no-new-app-read tests
+are separate. Raw result, as-executed driver and helper SHA are preserved;
+`.artifacts/u03/input-report/native25-app-probe-qualification.json` is explicitly a
+manual source-inspection qualification, not a fabricated execution log. Current
+driver metadata now says true plus scope. The historical frozen verifiers are not
+rerun against altered driver/packet source; the new verifier independently checks
+unchanged .25 package inputs/artifacts and the historical as-executed identities.
+
+One combined command's automatic permission review timed out **before execution**.
+The local metadata edit ran in the workspace sandbox; one permitted retry of the
+plain full-test command succeeded. No permission blocker remains. An initial
+aggregate expected the wrong RED count; corrected to actual11 failures/2 refusals,
+with the first verifier version retained. Original logs/criteria are unchanged.
+
+Next **U03.2c.3c.1 — installed passive file/store/read/privacy integration**.
+Before further runtime work, compare private capture's local cache expiry with the
+existing save-diagnostic policy; skipping browser refresh must not accidentally
+skip established memory retention. This is a focused preflight, not a project-wide
+re-audit or repeated old expiry campaign. Normal active reporter capture/consent/
+review/save and full H01-H06/Task5 whole review remain later. Task2/3/U03/P04/C07/
+A05/L02 stay OPEN. No SDK, publication, other repository or independent-human gate.

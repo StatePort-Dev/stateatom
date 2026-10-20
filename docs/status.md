@@ -961,3 +961,16 @@ stay unchanged. [Record](completion/24-u03-handoff-progress.md).
 The packet is not a complete diagnostic profile or installed saved-outcome UI.
 Next U03.2c.3b supplies compatible report composition/lineage; full U03/Task2/3,
 P04/C07/A05/L02 stay open.
+
+
+U03.2c.3b adds the **unimported full input-evidence/1 diagnostic profile**:
+report29/current packet32/focused190/full1563 pass;32 formatter-only compositions
+of16 exact historical native25 inputs preserve source identity, notes/source
+comparisons and immutable privacy. Component parents use canonical public JSON;
+whole-file parents bind exact imported bytes. Existing .25 package/build/installed
+hosts remain unchanged. [Record](completion/24-u03-handoff-progress.md).
+The old native25 driver appCDP:false flag was inaccurate: fixture actions/reads
+used an app-target CDP session. Raw evidence remains unchanged and explicitly
+qualified; no clean-app-CDP-absence proof is claimed. Capture-operation no-new-read
+controls remain separate. Next U03.2c.3c.1 installs file/store/read/privacy; normal
+reporter saved-outcome creation and full U03/Task2/3/P04/C07/A05/L02 remain open.
