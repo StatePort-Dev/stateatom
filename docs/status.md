@@ -887,3 +887,12 @@ typing; original v1/existing rich import semantics are unchanged. Full1335/focus
 native41/storage15/types2/admission7 pass; [record](completion/24-u03-handoff-progress.md)
 retains .20 controls/failures and the .19 identities for unchanged authority tests.
 Next U03.2b.4a is actual H05 source/build evidence attachment; whole U03 stays open.
+
+
+U03.2b.4a adds an **unimported** local source-byte comparison model: focused26/
+full1361 pass; exact installed .21 inputs remain unchanged. It computes actual
+file hashes and preserves missing/different/stale/ambiguous/omitted source/build
+states, without source text or action authority. The existing build hash domain
+is collected samples, not full-build attestation. [Record](completion/24-u03-handoff-progress.md).
+Next4b is the public versioned evidence attachment; no installed attachment/H05
+completion follows from this source-only model.

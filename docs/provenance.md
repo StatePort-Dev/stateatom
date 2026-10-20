@@ -301,3 +301,10 @@ supports explicit simple review. Old .20 native41/types2 and storage rawPASS15
 checks. Historical19 Settings/default/legacy tests retain identity under exact
 unchanged authority/source comparison, never current21 execution claims. This
 cannot certify or silently correct previously exported untrusted source claims.
+
+
+U03.2b.4a unimported source-byte model aboveb132957: focused26/full1361,
+`.artifacts/u03/source-evidence/verification.json`. Actual temp-file byte hashing
+is source-harness evidence only; .21 producer/archive/entire installed hosts are
+unchanged and old native results keep identity. No public/installed source-evidence
+attachment, native H05 or full-app build attestation is claimed.

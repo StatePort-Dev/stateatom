@@ -791,3 +791,59 @@ Next bounded **U03.2b.4a** defines actual source/build evidence attachment for H
 before installed integration. Matching hashes remain content comparisons, not
 new execution/fix verification. Whole Task2/3/U03 H01–H06 review, separately bound
 U02 saved outcomes, P04/C07 and mandatory A05/L02 remain open.
+
+
+## U03.2b.4a — unimported actual local source-byte comparison model
+
+The [working contract](../features/handoff-source-evidence.md) adds
+`core/handoff-source-evidence.mjs`, not imported by runtime/UI. It compares a v2
+report, separately acquired v1 Developer diagnostic and explicit local file
+ArrayBuffers. Hashes are computed from actual copied bytes. Exact retained
+Code-linked path/digest, recorded-build equality and Recorded freshness are all
+required; absent, omitted, reviewer-replaced, stale, ambiguous, same-name/different-
+path/different-byte/different-build cases remain unjoined with ordered reasons.
+No file borrows a sibling's match, and no omitted source anchor is restored.
+
+The result is frozen, internal and `exportable:false`, bound to exact raw parent/
+Developer hashes and baseline identity. Source text/raw v1/buffers are absent.
+Private relative paths need later explicit public review. One to8 files,256KiB
+per file/512KiB total; own descriptors and copied buffers are snapshotted before
+any asynchronous hash. Input size is checked through intrinsic ArrayBuffer brand/
+length before copying, and detached/forged/decorated buffers reject. There is no
+source execution, fetch, filesystem resolution/write, app action or authority.
+
+Source investigation confirms current `identity.build` hashes sorted concatenated
+collected source samples (`runtime.mjs` and `bridge.mjs`), not an attested full app
+build. The result states that recorded domain explicitly. A content match adds no
+exact event/frame/instance, selected-occurrence, current-value ancestry, execution
+or fix-verification claim. This is a source model, **not actual completed H05**.
+
+Fresh commands:
+
+```sh
+node --test --test-isolation=none tests/handoff-source-evidence.test.mjs
+npm test
+node .artifacts/u03/source-evidence/verify.mjs
+```
+
+Focused **26** and full **1361** pass. The positive control reads an actual synthetic
+temp file and verifies byte hash/size/unchanged file. Additional controls retain
+exact Unicode/BOM/CRLF bytes, whitespace-sensitive parent/Developer raw identity,
+matching-filename failure, source privacy, minimal unjoined result and hostile
+inert content. Receipt `.artifacts/u03/source-evidence/verification.json` binds
+source/logs and unchanged exact `.21` producer/archive/installed pair/entire hosts.
+No repack or native repeat is justified for this unimported module; prior native
+.21 keeps its original identity and does not demonstrate source attachments.
+
+Retained failures: missing-factory1, contract17/21 RED; first implementation17/21
+because the existing handoffArtifactDigest deliberately accepts JSON strings only,
+not binary buffers. A local binary SHA256 helper fixes it without changing the old
+helper. Source21 passes. Added bound tests fail1/25 because oversized input was
+copied before rejection; intrinsic size/brand checking now precedes the copy.
+Green25 plus exact Unicode characterization gives final26; all original criteria
+remain. No model source hooks or simulated evidence become native proof.
+
+Next **U03.2b.4b** defines an explicit public source-evidence attachment codec,
+immutable parent/note lineage and consent/redaction semantics, still before
+installed recipient controls/native H05. Task2/3, whole H01–H06/U03 review,
+separately saved U02 outcomes, P04/C07 and mandatory A05/L02 remain open.

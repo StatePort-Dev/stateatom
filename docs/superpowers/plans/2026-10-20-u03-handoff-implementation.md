@@ -222,3 +222,22 @@ Authority/UI CSS source identity retains historical19 Settings/default/legacy
 results without rerun or freshness upgrade. Task2/3 stay OPEN. Next U03.2b.4a pins
 an actual H05 source/build evidence attachment contract and unimported model before
 new runtime/UI integration. No evidence threshold or old format is relaxed.
+
+### Bounded U03.2b.4a: unimported local source evidence comparison
+
+Working contract `docs/features/handoff-source-evidence.md`; add only
+`core/handoff-source-evidence.mjs` and `tests/handoff-source-evidence.test.mjs`.
+Keep old profiles/runtime unchanged. Existing identity.build is collected-source
+sample hash, not whole-app build attestation. No public attachment/H05 completion.
+
+- [x] RED exact real-file path/digest/build matching, mismatched/missing/name-only,
+  stale/ambiguous/omitted anchors and minimal unjoined controls.
+- [x] RED/GREEN snapshot-before-await, strict own data/bounds/no getter or source
+  execution; frozen output without source bytes/raw clones.
+- [x] Focused/full checks, unchanged issued .21 source/archive/entire hosts;
+  retain original RED and one bounded local commit.
+- [ ] Next separate public versioned attachment/recipient review integration and
+  actual H05 native acceptance; no task-done2/3 or whole-U03 claim from model.
+
+Source-only4a final26/full1361; exact .21 unchanged, no installed/native H05 claim.
+Next4b public versioned attachment and parent/consent semantics before UI wiring.
