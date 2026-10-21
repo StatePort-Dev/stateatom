@@ -5,7 +5,7 @@ import {appOrigin} from './origin-policy.mjs';
 import {createSourceMapSession} from './source-map-session.mjs';
 import {createNativePicker,createNativeDOMQueue} from '../../../browser-extension/picker.mjs';
 import {inspectNativeActions} from '../../../core/action-native.mjs';
-import {createActionTraceController,actionPageOperation} from './action-trace.mjs';
+import {createActionTraceController,actionPageOperation,actionPageGlobal,resolveActionPageAPI} from './action-trace.mjs';
 import {declareOwnedCode,ownedInjectionSource,bindOwnedFetchCode} from '../../../core/owned-code.mjs';
 import {newCodeJournal,journalEvent,journalSource,journalReadySources,journalGap,journalSnapshot,journalView} from '../../../core/code-journal.mjs';
 import {newFetchBindings,fetchBindingEvent,fetchScriptSource,bindFetchTrace,allowsFetchGeneration,installFetchPolicy} from '../../../core/fetch-bindings.mjs';
@@ -62,7 +62,7 @@ function acquireCode(id,s,store,scriptId){
 }
 function collectCode(id,s,method,p){
  if(!codeEligible(id,s))return;
- const store=s.codeJournal??=codeState(s),scriptId=journalEvent(store,method,p);const actionOwner=actionOwners.get(id);if(actionOwner&&!actionOwner.contextCurrent())void stopActionTrace(id,'Native execution context changed',actionOwner);if(scriptId)acquireCode(id,s,store,scriptId);
+ const store=s.codeJournal??=codeState(s),scriptId=journalEvent(store,method,p);const actionOwner=actionOwners.get(id);if(actionOwner&&!actionOwner.contextCurrent())void stopActionTrace(id,'Native execution context changed',actionOwner).then(persist).then(()=>notifyInvalidation(id)).catch(()=>{});if(scriptId)acquireCode(id,s,store,scriptId);
 }
 async function drainCode(id,s){
  const store=s.codeJournal,deadline=Date.now()+2000;if(!store||!s.attached)return;
@@ -141,7 +141,7 @@ async function actionTraceOperation(id,m,context){
   const method=m.op.slice('actions-'.length);let result;
   try{result=await previous.controller[method]();}catch(e){if(method==='cancel'||method==='clear'){await stopActionTrace(id,'Stale observation retired',previous);if(method==='clear')return clearRetiredActionTrace(id,m.traceId,context);result=previous.controller.snapshot();await persist();return result;}throw e;}
   const observed=result,guardResult=async()=>{await previous.guard();if(method==='read'&&previous.controller.snapshot()!==observed)throw atomError('STALE_TARGET','Observation changed while checking source');};await guardResult();
-  if(method==='read'&&result.records?.some(r=>r.kind==='body-entry')&&pairing){const sources=[...new Map(result.records.filter(r=>r.kind==='body-entry').map(r=>[r.source.file,{file:r.source.file,sourceDigest:r.source.sourceDigest}])).values()];let sourceCurrent=false;try{sourceCurrent=(await bridge('check-action-sources',{origin:state(id).origin,sources},context.signal)).current===true;}catch{}await guardResult();result={...result,sourceCurrent};state(id).actionTrace={...result,capturedAt:Date.now()};}
+  if(method==='read'&&!result.freshness&&result.records?.some(r=>r.kind==='body-entry')&&pairing){const sources=[...new Map(result.records.filter(r=>r.kind==='body-entry').map(r=>[r.source.file,{file:r.source.file,sourceDigest:r.source.sourceDigest}])).values()];let sourceCurrent=false;try{sourceCurrent=(await bridge('check-action-sources',{origin:state(id).origin,sources},context.signal)).current===true;}catch{}await guardResult();result={...result,sourceCurrent};state(id).actionTrace={...result,capturedAt:Date.now()};}
   if(method==='clear'&&actionOwners.get(id)===previous){actionOwners.delete(id);if(actionEpochs.get(id)===previous)actionEpochs.delete(id);}await persist();return result;
  }
  if(previous)await stopActionTrace(id,'New observation');
@@ -154,8 +154,12 @@ async function actionTraceOperation(id,m,context){
  const invoke=async(op,page,expected,traceId)=>{
   const group='atom-action-'+crypto.randomUUID();try{
    let objectId;if(op==='arm'){await guard();const native=await identifySelection(id,selected.selector,selected.property);await guard();if(!native||native.document!==selected.domIdentity.document||native.node!==selected.domIdentity.node)throw atomError('STALE_TARGET','Selected native node changed');const backendNodeId=Number(native.node.slice(4));const object=await send(id,'DOM.resolveNode',{backendNodeId,executionContextId:main.id,objectGroup:group});objectId=object.object?.objectId;if(!objectId)throw atomError('STALE_TARGET');}
+   const globalDeclaration=actionPageGlobal.toString();await declareOwnedCode(s.codeJournal,'action-observation-global',globalDeclaration,main.uniqueId);
+   const global=await send(id,'Runtime.callFunctionOn',{uniqueContextId:main.uniqueId,functionDeclaration:globalDeclaration,objectGroup:group,returnByValue:false});
+   if(global.exceptionDetails||!global.result?.objectId)throw atomError('ACTION_TRACE_UNAVAILABLE');
+   const apiArgs=await resolveActionPageAPI((m,p)=>send(id,m,p),global.result.objectId);
    const declaration=actionPageOperation.toString();await declareOwnedCode(s.codeJournal,'action-observation-helper',declaration,main.uniqueId);
-   const response=await send(id,'Runtime.callFunctionOn',{...(objectId?{objectId}:{uniqueContextId:main.uniqueId}),functionDeclaration:declaration,arguments:[{value:op},{value:page},{value:expected},{value:traceId}],returnByValue:true});if(response.exceptionDetails)throw atomError('ACTION_TRACE_UNAVAILABLE','Optional development observer unavailable');return response.result?.value;
+   const response=await send(id,'Runtime.callFunctionOn',{uniqueContextId:main.uniqueId,functionDeclaration:declaration,arguments:[{value:op},{value:page},{value:expected},{value:traceId},objectId?{objectId}:{value:null},...apiArgs],returnByValue:true});if(response.exceptionDetails)throw atomError('ACTION_TRACE_UNAVAILABLE','Optional development observer unavailable');return response.result?.value;
   }finally{await send(id,'Runtime.releaseObjectGroup',{objectGroup:group}).catch(()=>{});}
  };
  owner.guard=guard;owner.controller=createActionTraceController({identity,guard,invoke,onChange:trace=>{if(tabs[id]!==s||actionEpochs.get(id)!==owner||s.run!==run||s.selection!==selected||s.inspectionGeneration!==inspection||(s.sourceGeneration||0)!==sourceGeneration||!contextCurrent())return;s.actionTrace={...trace,capturedAt:Date.now()};const g=s.analysis?.graph;if(g){g.nodes=g.nodes.filter(n=>!String(n.id).startsWith('action-trace:'));g.edges=g.edges.filter(e=>!String(e.id).startsWith('action-trace:'));for(const r of trace.records){const nodeId='action-trace:'+trace.traceId+':'+r.sequence;g.nodes.push({id:nodeId,kind:r.kind,status:trace.freshness?'Stale':'Observed',...(r.kind==='body-entry'?{symbol:r.source.symbol,sourceClaim:r.source}:{}),dispatchId:r.dispatchId,activationId:r.activationId,completion:r.completion});g.edges.push({id:nodeId+':edge',...edge('ui',nodeId,'independent-action-observation',trace.freshness?'Stale':'Observed','Opt-in original Event identity and synchronous body hooks; no property/network consequence',[nodeId],g.identity)});}}}});

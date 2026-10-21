@@ -13,3 +13,18 @@ for(const code of ['STALE_TARGET','BUSY'])test('Clear removes only this view’s
  await f.$('action-observe').onclick();f.change();await f.$('action-observe-clear').onclick();
  assert.match(f.$('action-observe-status').textContent,/cleared.*this view/);assert.equal(f.$('action-observe-records').children.length,0);await f.view.dispose();
 });
+
+for(const status of ['stale','stopped'])test(`helper ${status} is visibly historical with no source navigation`,async()=>{
+ const f=fixture(async()=>({status,traceId:'trace',records,sourceCurrent:true,freshness:'Stale'}));await f.$('action-observe').onclick();
+ assert.match(f.$('action-observe-status').textContent,/stale/);assert.equal(f.$('action-observe-records').children[0].children.length,0);await f.view.dispose();
+});
+
+test('same-context root retirement updates a completed local card and rejects an older source button',async()=>{
+ const calls=[],f=fixture(async m=>{calls.push(m);return{status:'complete',traceId:'trace',records,sourceCurrent:true};});await f.$('action-observe').onclick();
+ const button=f.$('action-observe-records').children[0].children[0];
+ f.view.render({...state(1),actionTrace:{traceId:'other',status:'stale',freshness:'Stale',sourceCurrent:false}});
+ assert.match(f.$('action-observe-status').textContent,/Recorded/,'foreign trace must not replace this card');
+ f.view.render({...state(1),actionTrace:{traceId:'trace',status:'stale',freshness:'Stale',sourceCurrent:false}});
+ assert.match(f.$('action-observe-status').textContent,/stale/);assert.equal(f.$('action-observe-records').children[0].children.length,0);
+ await assert.rejects(button.onclick(),/changed/);assert(!calls.some(m=>m.op==='open'));await f.view.dispose();
+});

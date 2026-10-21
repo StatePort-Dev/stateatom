@@ -743,3 +743,14 @@ change uses actual full reload, not pure Vue hot replacement. Native two-view
 local-clear/narrow/keyboard controls and candidate screenshots retained. See44-a05-
 native-session-lifecycle.md. ONE bounded plan review next; whole A05, saved reports,
 production/performance/async boundaries and broader gates remain open.
+
+
+### 2026-10-21 — A05 bounded runtime/session plan complete
+
+One final bounded review found three Important freshness/extra-getter/context-UI
+issues; one TDD pass fixed them on .17. Source1715/focused35, seven isolated bug
+variants, exact two-host native37, read-inject3/types2/admission7 PASS. Immutable
+inputs and failed harness attempts retained; actual390/1100 visual candidates
+inspected, no human acceptance inferred. See45-a05-bounded-review-fixes.md and
+verification17.json. Whole A05 stays in-progress. Next: A05.3c saved historical
+observation reports, preserving old source-binding semantics and passive authority.

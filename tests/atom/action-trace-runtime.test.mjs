@@ -131,3 +131,27 @@ test('a different nonce cannot clear or consume the authority for matching retir
  await assert.rejects(f.request({op:'actions-clear',traceId:'not-the-owned-trace'}),{code:'STALE_TARGET'});
  assert.equal((await f.request({op:'actions-clear',traceId:a.traceId})).status,'cleared');
 });
+
+for(const status of ['stale','stopped'])test(`helper ${status} stays historical through source verification and graph publication`,async t=>{
+ const f=await fixture(t),a=await f.request({op:'actions-arm'});f.action();f.terminal(status);
+ const result=await f.request({op:'actions-read',traceId:a.traceId});
+ assert.equal(result.freshness,'Stale');assert.equal(result.sourceCurrent,false);assert.equal(f.sourceChecks,0);
+ const graph=(await f.state()).analysis.graph;assert(graph.nodes.filter(n=>String(n.id).startsWith('action-trace:')).every(n=>n.status==='Stale'));
+});
+
+test('completed trace context retirement persists and notifies a root refresh',async t=>{
+ const f=await fixture(t),messages=[];f.api.runtime.sendMessage=async m=>messages.push(m);
+ const a=await f.request({op:'actions-arm'});f.action();await f.request({op:'actions-read',traceId:a.traceId});messages.length=0;
+ await f.emit('Runtime.executionContextDestroyed',{executionContextId:7,executionContextUniqueId:'main-context'});
+ assert(messages.some(m=>m.event==='state-invalidated'&&m.tabId===1));
+ assert.equal(f.data['stateport.atom.v1.tabs'][1].actionTrace.freshness,'Stale');
+});
+
+test('replacement MAIN during native node resolution cannot arm a replacement collector',async t=>{
+ const entered=deferred(),resolved=deferred();t.after(()=>resolved.resolve());
+ const f=await fixture(t,{resolveGate:async()=>{entered.resolve();await resolved.promise;}}),pending=f.request({op:'actions-arm'});
+ const rejected=assert.rejects(pending,e=>['STALE_TARGET','ACTION_TRACE_UNAVAILABLE'].includes(e.code));await entered.promise;
+ f.setNativeContext('replacement-context');await f.emit('Runtime.executionContextDestroyed',{executionContextId:7,executionContextUniqueId:'main-context'});
+ await f.emit('Runtime.executionContextCreated',{context:{id:7,uniqueId:'replacement-context',auxData:{frameId:'main',isDefault:true}}});resolved.resolve();await rejected;
+ assert.equal(f.armCalls,0,'node resolved in reused numeric context must not invoke a replacement helper');
+});

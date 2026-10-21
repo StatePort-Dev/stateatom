@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.17
+
+- Keep invalidated/stopped Action Trace records historical and remove source navigation.
+  Notify and persist native context retirement; reconcile only the matching local
+  card. Existing Actions controls, typography and layout remain; this adds actual
+  stale state propagation to the simulated reference, with no CSS/token change.
+- Read helper data descriptors through the native debugger, never a later page
+  descriptor override or accessor. Bind every operation and node argument to the
+  original unique MAIN context. Read/inject grants and production limits remain.
+
 ## 0.1.0-candidate.20261021.16
 
 - Let the matching live view clear its own retired Action Trace metadata without

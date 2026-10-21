@@ -14,18 +14,25 @@ export function parseActionTrace(value,identity,page){
   else if(r.kind==='body-leave'){if(!dispatchId||!stack.length||!small(r.activationId)||r.dispatchId!==dispatchId||r.activationId!==stack.at(-1)||!['return','throw'].includes(r.completion))throw fail('ACTION_TRACE_UNAVAILABLE');stack.pop();records.push({kind:r.kind,sequence:r.sequence,dispatchId,activationId:r.activationId,completion:r.completion});}else throw fail('ACTION_TRACE_UNAVAILABLE');
  }
  if(value.status==='complete'&&(!seen.size||stack.length))throw fail('ACTION_TRACE_UNAVAILABLE','Completed observation has missing body exit');
- return{schema:1,status:value.status,traceId:value.traceId??null,selectedId:value.selectedId??null,identity:{...identity,page},records,reason:typeof value.reason==='string'?value.reason.slice(0,1024):null,sourceCurrent:false,sessionOnly:true,runtimeFunctionObjectIdentity:'Unavailable',asyncEffects:'Unlinked',completeListenerCoverage:false,actionUndone:false};
+ return{schema:1,status:value.status,...(['stale','stopped'].includes(value.status)?{freshness:'Stale'}:{}),traceId:value.traceId??null,selectedId:value.selectedId??null,identity:{...identity,page},records,reason:typeof value.reason==='string'?value.reason.slice(0,1024):null,sourceCurrent:false,sessionOnly:true,runtimeFunctionObjectIdentity:'Unavailable',asyncEffects:'Unlinked',completeListenerCoverage:false,actionUndone:false};
+}
+// Native descriptor inspection does not call application getters or freshly
+// resolved page intrinsics. Only own data properties become protocol arguments.
+export function actionPageGlobal(){return this;}
+export async function resolveActionPageAPI(send,globalId){
+ const descriptors=async objectId=>{const r=await send('Runtime.getProperties',{objectId,ownProperties:true,generatePreview:false});if(r.exceptionDetails)throw fail('ACTION_TRACE_UNAVAILABLE');return new Map((r.result||[]).filter(d=>d.isOwn===true&&!d.get&&!d.set&&d.value).map(d=>[d.name,d.value]));};
+ const global=await descriptors(globalId),api=global.get('__STATEATOM__');if(!api?.objectId||api.subtype==='proxy')throw fail('ACTION_TRACE_UNAVAILABLE');
+ const props=await descriptors(api.objectId),page=props.get('page');if(props.get('version')?.value!==1||page?.type!=='string'||!small(page.value))throw fail('ACTION_TRACE_UNAVAILABLE');
+ const args=[{value:page.value}];for(const key of ['actionTraceInfo','actionTraceRead','actionTraceArm','actionTraceCancel','actionTraceClear']){const fn=props.get(key);if(fn?.type!=='function'||!fn.objectId)throw fail('ACTION_TRACE_UNAVAILABLE');args.push({objectId:fn.objectId});}return args;
 }
 // Executed only in the exact recorded MAIN context. No application handler,
 // expression, getter, argument or closure is evaluated to obtain observations.
-export function actionPageOperation(op,expectedPage,identity,expectedTraceId){
- const own=(o,k)=>Object.getOwnPropertyDescriptor(o,k)?.value,api=own(window,'__STATEATOM__');
- if(!api||own(api,'version')!==1||typeof own(api,'actionTraceRead')!=='function'||typeof own(api,'actionTraceInfo')!=='function')return{ok:false,code:'ACTION_TRACE_UNAVAILABLE'};
- const page=own(api,'page');if(expectedPage&&page!==expectedPage)return{ok:false,code:'STALE_TARGET'};
- const info=api.actionTraceInfo();if(op==='arm'){if(info.available!==true||typeof own(api,'actionTraceArm')!=='function')return{ok:false,code:'ACTION_TRACE_UNAVAILABLE'};return{ok:true,page,trace:api.actionTraceArm(this,identity,{timeoutMs:10000})};}
- const before=api.actionTraceRead();if(before.traceId!==expectedTraceId)return{ok:false,code:'STALE_TARGET'};
- if(op==='cancel')api.actionTraceCancel();else if(op==='clear')api.actionTraceClear();else if(op!=='read')return{ok:false,code:'INVALID_MESSAGE'};
- return{ok:true,page,trace:api.actionTraceRead()};
+export function actionPageOperation(op,expectedPage,identity,expectedTraceId,selected,page,info,read,arm,cancel,clear){
+ if(expectedPage&&page!==expectedPage)return{ok:false,code:'STALE_TARGET'};
+ if(op==='arm'){if(info().available!==true)return{ok:false,code:'ACTION_TRACE_UNAVAILABLE'};return{ok:true,page,trace:arm(selected,identity,{timeoutMs:10000})};}
+ const before=read();if(before.traceId!==expectedTraceId)return{ok:false,code:'STALE_TARGET'};
+ if(op==='cancel')cancel();else if(op==='clear')clear();else if(op!=='read')return{ok:false,code:'INVALID_MESSAGE'};
+ return{ok:true,page,trace:read()};
 }
 export function createActionTraceController({identity,invoke,guard,onChange=()=>{}}){
  let current=null,page=null,closed=false,serial=Promise.resolve();

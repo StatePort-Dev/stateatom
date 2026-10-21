@@ -18,12 +18,13 @@ const mutations=[
  ['late-IDE-reply-skips-owner-guard',s=>s.replace('catch{}await guardResult();result={...result,sourceCurrent}','catch{}result={...result,sourceCurrent}'),'late source verification'],
  ['old-controller-publishes-over-new-epoch',s=>s.replace('||actionEpochs.get(id)!==owner',''),'cancelled pending Arm A'],
  ['same-owner-late-read-overwrites-Cancel',s=>s.replace("if(method==='read'&&previous.controller.snapshot()!==observed)throw atomError('STALE_TARGET','Observation changed while checking source');",''),'pre-Cancel read'],
- ['cancel-waits-for-IDE',s=>s.replace("if(method==='read'&&result.records?.some","if(result.records?.some"),'Cancel acknowledges'],
- ['native-context-change-not-retired',s=>s.replace("if(actionOwner&&!actionOwner.contextCurrent())void stopActionTrace(id,'Native execution context changed',actionOwner);",'').replaceAll('||!contextCurrent()',''),'native MAIN context|native context destruction']
+ ['cancel-waits-for-IDE',s=>s.replace("if(method==='read'&&!result.freshness&&result.records?.some","if(!result.freshness&&result.records?.some"),'Cancel acknowledges'],
+ ['arm-transfers-to-reused-context',s=>s.replaceAll('uniqueContextId:main.uniqueId,functionDeclaration:','...(objectId?{objectId}:{uniqueContextId:main.uniqueId}),functionDeclaration:'),'replacement MAIN during native node'],
+ ['native-context-change-not-retired',s=>s.replace("if(actionOwner&&!actionOwner.contextCurrent())void stopActionTrace(id,'Native execution context changed',actionOwner).then(persist).then(()=>notifyInvalidation(id)).catch(()=>{});",'').replaceAll('||!contextCurrent()',''),'native MAIN context|native context destruction']
 ];
 function run(file,pattern){return spawnSync(process.execPath,['--test','--test-isolation=none',...(pattern?['--test-name-pattern',pattern]:[]),testPath],{cwd:root,env:{...process.env,ATOM_ACTION_RUNTIME_VARIANT:file||''},encoding:'utf8',timeout:15000});}
 try{
- const baseline=run();await writeFile(path.join(out,'baseline.log'),baseline.stdout+baseline.stderr);assert.equal(baseline.error,undefined);assert.equal(baseline.status,0);assert.match(baseline.stdout,/ℹ pass 14\b/);result.checks.push({name:'current actual runtime baseline',status:'PASS',tests:14});
+ const baseline=run();await writeFile(path.join(out,'baseline.log'),baseline.stdout+baseline.stderr);assert.equal(baseline.error,undefined);assert.equal(baseline.status,0);assert.match(baseline.stdout,/ℹ pass 18\b/);result.checks.push({name:'current actual runtime baseline',status:'PASS',tests:18});
  for(const[name,mutate,pattern]of mutations){
   const changed=mutate(source);assert.notEqual(changed,source,name+' must change the source');
   const module=changed.replace(/from\s+(['"])(\.\.?\/[^'"]+)\1/g,(_,q,spec)=>'from '+JSON.stringify(new URL(spec,pathToFileURL(path.join(root,runtimePath))).href));

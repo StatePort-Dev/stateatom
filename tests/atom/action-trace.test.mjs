@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import test from 'node:test';import assert from 'node:assert/strict';
-import {parseActionTrace,createActionTraceController} from '../../packages/atom/src/action-trace.mjs';
+import vm from 'node:vm';
+import {actionPageOperation,resolveActionPageAPI,parseActionTrace,createActionTraceController} from '../../packages/atom/src/action-trace.mjs';
 import {operationPolicy} from '../../packages/atom/src/capabilities.mjs';
 import {validateRequest} from '../../packages/atom/src/transport.mjs';
 const identity={run:'run',build:'build',frame:'frame'},page='page',ownerId='view',envelope=p=>({version:1,id:'request',session:'session',payload:{tabId:1,ownerId,...p}});
@@ -11,3 +12,19 @@ test('controller close invalidates a late read and cleans only its owned exact t
 test('late arm acknowledgement after close is cancelled by its exact returned nonce',async()=>{let ready,ack;const entered=new Promise(r=>ready=r),answer=new Promise(r=>ack=r),calls=[];const trace={schema:1,status:'armed',traceId:'late',selectedId:'n',identity:{...identity,page},records:[]};const c=createActionTraceController({identity,guard:()=>{},invoke:async(op,p,i,id)=>{calls.push({op,id});if(op==='arm'){ready();return answer;}return{ok:true,page,trace};}});const arming=c.arm();await entered;const closed=c.close('Closed while opening');ack({ok:true,page,trace});await assert.rejects(arming,{code:'STALE_TARGET'});await closed;assert.equal(calls[1].op,'cancel');assert.equal(calls[1].id,'late');});
 
 test('missing identity, mismatched selection and orphan leave remain unavailable',()=>{const trace={schema:1,status:'partial',traceId:'trace',selectedId:'n',identity:{...identity,page},records:[]};assert.throws(()=>parseActionTrace({...trace,identity:undefined},identity,page),{code:'STALE_TARGET'});assert.throws(()=>parseActionTrace({...trace,records:[{kind:'body-leave',sequence:0,completion:'return'}]},identity,page));assert.throws(()=>parseActionTrace({...trace,records:[{kind:'dispatch',sequence:0,dispatchId:'d',eventType:'click',trusted:true,selectedId:'other',targetId:'n'}]},identity,page));});
+
+test('action page dispatch never invokes a later descriptor override or helper-global getter',()=>{
+ const realm=vm.createContext({});vm.runInContext(`var getterReads=0,descriptorCalls=0;var window=this;
+ Object.defineProperty(window,'__STATEATOM__',{get(){getterReads++;return null;}});
+ Object.getOwnPropertyDescriptor=function(o,k){descriptorCalls++;return{value:o[k]};};`,realm);
+ const result=vm.runInContext('('+actionPageOperation.toString()+')'+`('read','page',{},'trace',null,'page',()=>({available:true}),()=>({traceId:'trace',records:[]}))`,realm);
+ assert.equal(vm.runInContext('getterReads',realm),0);assert.equal(vm.runInContext('descriptorCalls',realm),0);assert.equal(result.ok,true);
+});
+
+for(const accessor of ['__STATEATOM__','actionTraceRead'])test('native API admission refuses accessor '+accessor+' without invoking it',async()=>{
+ let reads=0;const api={version:1,page:'page',actionTraceInfo(){},actionTraceRead(){},actionTraceArm(){},actionTraceCancel(){},actionTraceClear(){}},global={__STATEATOM__:api};
+ Object.defineProperty(accessor==='__STATEATOM__'?global:api,accessor,{get(){reads++;return api;},configurable:true});
+ const objects=new Map([['global',global],['api',api]]);
+ const send=async(method,{objectId})=>({result:Object.entries(Object.getOwnPropertyDescriptors(objects.get(objectId))).map(([name,d])=>({name,isOwn:true,...('value'in d?{value:typeof d.value==='function'?{type:'function',objectId:name}:d.value===api?{type:'object',objectId:'api'}:{type:typeof d.value,value:d.value}}:{get:{type:'function',objectId:'getter'}})}))});
+ await assert.rejects(resolveActionPageAPI(send,'global'),{code:'ACTION_TRACE_UNAVAILABLE'});assert.equal(reads,0);
+});
