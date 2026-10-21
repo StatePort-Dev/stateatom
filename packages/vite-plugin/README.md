@@ -58,3 +58,20 @@ Disconnect source helper**; Basic remains independent of IDE, accounts and model
 Historical MIT source and Apache-2.0 components retain their original notices. This
 package bundles only local implementation; Babel/Vue dependencies retain their own
 package licenses. It does not ship a production SDK or enable production changes.
+
+## Optional Action Trace source mechanism (local20261021.1 candidate)
+
+`actionTrace:true` is an additional, disabled-by-default development option. It
+registers original synchronous function sites and the private Event/body-entry/
+body-leave collector in the existing observer. Original source ranges and event
+identity are required; source links/registrations remain different claims.
+This candidate's source mechanism is tested separately; the installed Atom Actions
+UI has not yet integrated Arm/Cancel/Clear. Enabling the option alone is not a
+shipped Action Trace workflow. No production or general async support is implied.
+
+Supported first-identifier synchronous functions/arrows receiving the original
+native Event retain normal/throw body leave. Methods, async/generator, wrapper/
+SyntheticEvent, missing/destructured first parameter, eval/with and opaque bodies
+remain boundaries. Complete listener coverage, function object identity, effects
+and source reflection equivalence are not established. Existing property/runtime
+observations remain separate; no Promise reactions or argument snapshots are added.

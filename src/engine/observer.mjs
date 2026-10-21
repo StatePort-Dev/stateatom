@@ -1,5 +1,7 @@
 import {createQueryLedger} from './query-handoff.mjs';
 import {createStateHandoffLedger} from './react-state.mjs';
+import {captureBrowserActionObservation} from './action-observer.mjs';
+const actionArray=Array.isArray,actionInteger=Number.isSafeInteger,actionExec=RegExp.prototype.exec;
 // Factory-owned identity; public page globals never establish observer provenance.
 const observerInstances=new WeakMap();
 const lookupObserver=observerInstances.get.bind(observerInstances),retainObserver=observerInstances.set.bind(observerInstances),forgetObserver=observerInstances.delete.bind(observerInstances),freezeObserverAPI=Object.freeze;
@@ -29,11 +31,11 @@ const telemetryOps=(()=>{
   });
 })();
 // Dev-only synchronous observations; no application object serialization or extra body reads.
-export function createObserver(w,{sourceConsumption=false,fetchInitiators=false,reactStateHandoffs=false,sourceWrites=false,queryHandoffs=false,queryCallCensus=false,writeAccessGuards=false}={}) {
+export function createObserver(w,{sourceConsumption=false,fetchInitiators=false,reactStateHandoffs=false,sourceWrites=false,queryHandoffs=false,queryCallCensus=false,writeAccessGuards=false,actionTrace=false}={}) {
   const retained=lookupObserver(w);
   if(retained?.phase==='publishing')throw new Error('StateAtom observer initialization in progress');
   const existing=retained?.api;
-  if(existing?.active){if(existing.sourceConsumption!==sourceConsumption||existing.fetchInitiators!==fetchInitiators||existing.reactStateHandoffs!==reactStateHandoffs||existing.sourceWrites!==sourceWrites||existing.queryHandoffs!==queryHandoffs||existing.queryCallCensus!==queryCallCensus||existing.writeAccessGuards!==writeAccessGuards)throw new Error('StateAtom observation mode mismatch; reload the page before switching modes');return existing;}
+  if(existing?.active){if(existing.sourceConsumption!==sourceConsumption||existing.fetchInitiators!==fetchInitiators||existing.reactStateHandoffs!==reactStateHandoffs||existing.sourceWrites!==sourceWrites||existing.queryHandoffs!==queryHandoffs||existing.queryCallCensus!==queryCallCensus||existing.writeAccessGuards!==writeAccessGuards||existing.actionTrace!==actionTrace)throw new Error('StateAtom observation mode mismatch; reload the page before switching modes');return existing;}
   if(writeAccessGuards&&(!sourceWrites||!sourceConsumption))throw new Error('Write-access guards require source writes and source consumption');
   if(queryCallCensus&&!queryHandoffs)throw new Error('Native call census requires Query handoffs');
   if(queryHandoffs&&!sourceConsumption)throw new Error('Query handoffs require source consumption');
@@ -42,6 +44,7 @@ export function createObserver(w,{sourceConsumption=false,fetchInitiators=false,
   let active=true, serial=0, scopeSerial=0, exchangeSerial=0, stale=null, dropped=0;
   const page=w.crypto.randomUUID(), limits={records:2000,exportBytes:512000,closure:120};
   const nodes=new Map(), targets=new Map(), bindings=new Map(), captures=new Map(), urlCounts=new Map();
+  const actionSites=new Map(),actionSiteList=[],actionFactory=actionTrace?captureBrowserActionObservation(w):null;let actionCollector=null,actionUnavailable=null;
   const origins=new WeakMap(), descriptors=new WeakMap(), responses=new WeakMap(), writes=new WeakMap(),invalidatedDescriptors=new WeakSet(),potentialWriteObjects=new WeakSet();
   const stack=[], exchanges=[];
   const sourcePromises=new WeakMap();
@@ -225,7 +228,22 @@ export function createObserver(w,{sourceConsumption=false,fetchInitiators=false,
       else if((via==='await'&&entry.mode==='await'||via==='then'&&entry.mode==='armed-then')&&ordinaryPromise(promise)){entry.consumed=true;recordJSON(entry.exchange,value);}
     }catch{} // Telemetry never changes the application's successful consumption.
   }
-  const api={version:1,get writeAccessGuards(){return writeAccessGuards;},
+  function actionTraceInfo(){const info=nativeCreate(null);info.schema=1;info.enabled=actionTrace;info.available=active&&!stale&&actionTrace&&!actionUnavailable&&actionFactory.available&&telemetryOps.mapSize(actionSites)>0;info.siteCount=telemetryOps.mapSize(actionSites);info.reason=!active?'Observer stopped':stale||actionUnavailable||(!actionTrace?'Action instrumentation disabled':!actionFactory.available?'Native event observation unavailable':!telemetryOps.mapSize(actionSites)?'No supported action source registered':null);info.mechanism='opt-in-original-event-synchronous-body/1';return info;}
+  function actionTraceRead(){if(serializationHook()){const unavailable=nativeCreate(null);unavailable.schema=1;unavailable.status='Unknown/Unsupported';unavailable.reason='Application serialization hook unsupported';return unavailable;}return actionCollector?.snapshot()||{schema:1,status:!active?'stopped':stale?'stale':'idle',reason:actionTraceInfo().reason,records:[],runtimeFunctionObjectIdentity:'Unavailable',asyncEffects:'Unlinked',completeListenerCoverage:false,actionUndone:false};}
+  const api={version:1,get actionTrace(){return actionTrace;},actionTraceInfo,actionTraceRead,
+    registerActionSites(batch){
+      if(!active||!actionTrace||actionUnavailable)return;
+      try{if(!actionArray(batch)||batch.length>256)throw Error();let added=false;
+        for(let i=0;i<batch.length;i++){const source=batch[i],field=key=>ownDataValue(ownDescriptor(source,key)),id=field('id'),file=field('file'),sourceDigest=field('sourceDigest'),line=field('line'),column=field('column'),endLine=field('endLine'),endColumn=field('endColumn'),kind=field('kind'),symbol=field('symbol');
+          if(typeof id!=='string'||!nativeApply(actionExec,/^[a-f0-9]{64}$/,[id])||typeof file!=='string'||file.length>1024||typeof sourceDigest!=='string'||!nativeApply(actionExec,/^[a-f0-9]{64}$/,[sourceDigest])||!actionInteger(line)||line<=0||!actionInteger(column)||column<=0||!actionInteger(endLine)||endLine<=0||!actionInteger(endColumn)||endColumn<=0||(kind!=='function'&&kind!=='arrow')||typeof symbol!=='string'||symbol.length>256)throw Error();
+          const old=mapRead(actionSites,id);if(old){if(old.file!==file||old.sourceDigest!==sourceDigest||old.line!==line||old.column!==column)throw Error();continue;}if(telemetryOps.mapSize(actionSites)>=512)throw Error();const record=freezeObserverAPI({id,file,sourceDigest,line,column,endLine,endColumn,kind,symbol});put(actionSites,id,record,512);telemetryOps.push(actionSiteList,record);added=true;
+        }if(added&&actionCollector)actionCollector.invalidate();
+      }catch{actionUnavailable='Action source catalog unavailable or over budget';actionCollector?.invalidate();}
+    },
+    actionTraceArm(element,identity,options){const info=actionTraceInfo();if(!info.available)throw Error(info.reason);actionCollector?.stop();actionCollector=actionFactory.create({identity:{run:identity.run,build:identity.build,frame:identity.frame,page},sites:actionSiteList});return actionCollector.arm(element,options);},
+    actionTraceCancel(){actionCollector?.cancel();return actionTraceRead();},actionTraceClear(){actionCollector?.clear();return actionTraceRead();},
+    actionEnter(site,event){return actionCollector?.enter(site,event)??null;},actionLeave(token,threw){return actionCollector?.leave(token,threw)??false;},
+    get writeAccessGuards(){return writeAccessGuards;},
     potentialPropertyWrite(meta,obj){if(!active||!writeAccessGuards||!object(obj))return obj;try{const known=nativeApply(nativeWeakMapGet,descriptors,[obj]);if(!known)return obj;
       nativeApply(nativeWeakSetAdd,potentialWriteObjects,[obj]);
       const n=add({...meta,kind:'potential-property-write',completedWrite:false,invocation:'Unknown/Unsupported'},undefined,[],{boundary:meta.privateAccess?'Potential private-member access; public-field write not established, identity conservatively invalidated':'Potential property write access before key/RHS/operation; a skipped, failed or suspended operation is not a completed write'+(meta.privateInput?'; Adapter-generated private input only; original IDE source unavailable':'')},false);
@@ -384,16 +402,16 @@ export function createObserver(w,{sourceConsumption=false,fetchInitiators=false,
       if(missing&&commit.status==='Observed')commit={...commit,status:'Unknown/Unsupported',reason:'Committed execution closure/retention budget'};
       const producerUnknown=hostProbe?commit.status!=='Observed'||commit.producer?.status!=='Observed':commit.status==='Observed'&&commit.producer?.status!=='Observed';
       const stateHandoffs=stateLedger&&commit.status==='Observed'?stateLedger.witness(out,new Set((mapRead(hostCommits.get(element),property)?.ancestors||[]).map(r=>r.deref()).filter(Boolean))):null;
-      const result={schema:1,page,...(stateHandoffs?{stateHandoffs}:{}),status:stale?'Stale':target&&!missing&&!producerUnknown?'Observed':'Unknown/Unsupported',reason:stale||(missing?'trace closure/retention budget':!target?'No dev target execution observed':producerUnknown?(commit.reason||commit.producer?.reason||'Final host producer unavailable'):null),target:target||null,commit,nodes:out,
+      const result={schema:1,page,...(actionTrace?{actionTrace:{availability:actionTraceInfo(),observation:actionTraceRead()}}:{}),...(stateHandoffs?{stateHandoffs}:{}),status:stale?'Stale':target&&!missing&&!producerUnknown?'Observed':'Unknown/Unsupported',reason:stale||(missing?'trace closure/retention budget':!target?'No dev target execution observed':producerUnknown?(commit.reason||commit.producer?.reason||'Final host producer unavailable'):null),target:target||null,commit,nodes:out,
         independentObservations:[...nodes.values()].filter(n=>n.scope===target?.scope&&n.kind==='binding'&&!seen.has(n.id)).slice(-20).map(n=>({...n,separateFromTarget:true})),
         exchanges:exchanges.filter(e=>out.some(n=>n.origin?.exchangeId===e.id)),recentExchanges:exchanges.slice(-32),dropped,missing,
         retention:{nodes:nodes.size,captures:captures.size,bindings:bindings.size,targets:targets.size,reactRoots:reactRoots.size,hostNodes:hostNodes.size,objectRoots:[...captures.values()].filter(c=>c.object).length},boundaries:[...new Set([...out.map(n=>n.boundary).filter(Boolean),...(sourceWrites?['Completed property-write coverage incomplete: computed keys, logical assignments, class initializers, aliased/unrecognized native/opaque writes and missing earlier history remain unsupported.']:[]),...(writeAccessGuards?['Potential write-access guards conservatively invalidate eligible source receivers; optional/super/implicit-field/native/opaque/history gaps remain.']:[])])],limits};
       if(JSON.stringify(result).length>limits.exportBytes)return {schema:1,page,status:'Unknown/Unsupported',reason:'export byte budget',target:null,nodes:[],exchanges:[],recentExchanges:[],limits};return result;
     },
-    invalidate(reason){stale=reason;},
+    invalidate(reason){stale=reason;actionCollector?.invalidate();},
     stop(){
       active=false;
-      for(const cleanup of[()=>stateLedger?.stop(),()=>queryLedger?.stop(),()=>headGuard?.disconnect(),()=>rootGuard?.disconnect()])try{cleanup();}catch{}
+      for(const cleanup of[()=>actionCollector?.stop(),()=>stateLedger?.stop(),()=>queryLedger?.stop(),()=>headGuard?.disconnect(),()=>rootGuard?.disconnect()])try{cleanup();}catch{}
       try{for(const record of hostNodes.values()){record.active=false;try{record.observer.disconnect();}catch{}}}catch{}try{hostNodes.clear();}catch{}
       try{for(const root of reactRoots.values()){root.active=false;try{root.mutations?.disconnect();}catch{}}}catch{}try{reactRoots.clear();}catch{}
       restoreHook(w,'fetch',wrappedFetch,fetchDescriptor);restoreHook(proto,'json',wrappedJSON,jsonDescriptor);

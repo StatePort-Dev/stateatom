@@ -4,10 +4,13 @@
 import {createActionObservation} from '../../core/action-observation.mjs';
 const invoke=Reflect.apply,describe=Object.getOwnPropertyDescriptor,freeze=Object.freeze;
 const NativeWeakMap=WeakMap,weakGet=WeakMap.prototype.get,weakSet=WeakMap.prototype.set;
-export function createBrowserActionObservation(w,{identity,sites,recordLimit=64}){
- const get=name=>describe(w.Event.prototype,name)?.get,target=get('target'),currentTarget=get('currentTarget'),phase=get('eventPhase'),eventType=get('type');
- const contains=w.Node.prototype.contains,add=w.EventTarget.prototype.addEventListener,remove=w.EventTarget.prototype.removeEventListener;
- const setTimer=w.setTimeout,clearTimer=w.clearTimeout,uuid=w.crypto.randomUUID.bind(w.crypto),clock=Date.now;
+export function captureBrowserActionObservation(w){
+ const eventPrototype=w.Event?.prototype,get=name=>eventPrototype&&describe(eventPrototype,name)?.get,target=get('target'),currentTarget=get('currentTarget'),phase=get('eventPhase'),eventType=get('type');
+ const contains=w.Node?.prototype?.contains,add=w.EventTarget?.prototype?.addEventListener,remove=w.EventTarget?.prototype?.removeEventListener;
+ const setTimer=w.setTimeout,clearTimer=w.clearTimeout,crypto=w.crypto,random=crypto?.randomUUID,performance=w.performance,performanceNow=performance?.now,wallClock=Date.now,uuid=()=>invoke(random,crypto,[]),clock=typeof performanceNow==='function'?()=>invoke(performanceNow,performance,[]):wallClock;
+ const available=!!(target&&currentTarget&&phase&&eventType&&contains&&add&&remove&&setTimer&&clearTimer&&random);
+ const create=({identity,sites,recordLimit=64})=>{
+ if(!available)throw Error('Native event observation unavailable');
  const ledger=createActionObservation({identity,sites,recordLimit,now:clock,id:uuid}),nodeIds=new NativeWeakMap();let selected=null,original=null,finishTimer=null,expiryTimer=null,listening=false;
  function nodeId(node){if(!node||(typeof node!=='object'&&typeof node!=='function'))return null;let id=invoke(weakGet,nodeIds,[node]);if(!id){id=uuid();invoke(weakSet,nodeIds,[node,id]);}return id;}
  function cleanup(){if(listening)invoke(remove,w,['click',capture,true]);listening=false;if(finishTimer!==null)invoke(clearTimer,w,[finishTimer]);if(expiryTimer!==null)invoke(clearTimer,w,[expiryTimer]);finishTimer=expiryTimer=null;selected=original=null;}
@@ -27,4 +30,6 @@ export function createBrowserActionObservation(w,{identity,sites,recordLimit=64}
   cancel(){cleanup();ledger.cancel();},clear(){cleanup();ledger.clear();},invalidate(){cleanup();ledger.invalidate();},stop(){cleanup();ledger.stop();},
  };
  return freeze(api);
+ };return freeze({available,create});
 }
+export function createBrowserActionObservation(w,options){return captureBrowserActionObservation(w).create(options);}

@@ -1175,3 +1175,17 @@ are unchanged. This is unbundled mechanism evidence, not installed Atom trace UI
 production acceptance; mandatory A05 remains in progress. See39-a05-development-
 mechanism.md. Next bounded item A05.3 existing plugin/observer/evidence and selected-
 context armed UI integration; A02/L02 and broader gates remain open.
+
+### 2026-10-21 — A05.3a existing source plugin/observer
+
+The disabled-by-default Action Trace source mechanism now belongs to the existing
+plugin/observer, with original AST sites (including exact SFC offsets), file-distinct
+IDs, private Event collector and lifecycle. Local plugin .20261021.1 consumed14 files
+passes source1680/focused27/native13, original22 scenarios plus real Vue/later-source
+invalidation;22 matched body entries/leaves. Three default output checkpoints remain
+byte-identical; four original finite compilation/refusal checks pass with exact new
+compiler pins and Action Trace excluded. Initial data-URL loader failures and first
+verifier metadata mismatch remain preserved, no predicate waiver/native re-audit.
+See40-a05-plugin-observer.md. Atom Actions UI/runtime/report/production integration
+is still open, mandatory A05 in progress; next A05.3b selected-context/read-only
+Arm/read/Cancel/Clear. No SDK/publication/other-repository/installed IDE claim.

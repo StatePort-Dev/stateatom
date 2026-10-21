@@ -1,17 +1,39 @@
 {
   "name": "@stateport/vite-plugin",
-  "version": "0.1.0-candidate.20261019.2",
+  "version": "0.1.0-candidate.20261021.1",
   "description": "Open opt-in development instrumentation for the StateAtom inspector",
   "type": "module",
   "license": "(MIT AND Apache-2.0)",
-  "files": ["dist", "README.md", "LICENSE", "NOTICE", "LICENSES"],
-  "exports": {".": "./dist/engine/plugin.mjs"},
-  "engines": {"node": ">=24 <25"},
-  "peerDependencies": {"vite": "7.3.7"},
-  "dependencies": {
-    "@babel/core": "7.29.7", "@babel/generator": "7.28.5", "@babel/parser": "7.28.5",
-    "@babel/plugin-transform-react-jsx": "7.27.1", "@babel/traverse": "7.28.5", "@babel/types": "7.29.8",
-    "@vue/compiler-dom": "3.5.44", "@vue/compiler-sfc": "3.5.44"
+  "files": [
+    "dist",
+    "core",
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+    "LICENSES"
+  ],
+  "exports": {
+    ".": "./dist/engine/plugin.mjs"
   },
-  "repository": {"type": "git", "url": "https://github.com/StatePort-Dev/stateatom.git", "directory": "packages/vite-plugin"}
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "peerDependencies": {
+    "vite": "7.3.7"
+  },
+  "dependencies": {
+    "@babel/core": "7.29.7",
+    "@babel/generator": "7.28.5",
+    "@babel/parser": "7.28.5",
+    "@babel/plugin-transform-react-jsx": "7.27.1",
+    "@babel/traverse": "7.28.5",
+    "@babel/types": "7.29.8",
+    "@vue/compiler-dom": "3.5.44",
+    "@vue/compiler-sfc": "3.5.44"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/StatePort-Dev/stateatom.git",
+    "directory": "packages/vite-plugin"
+  }
 }

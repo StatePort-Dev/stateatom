@@ -1970,9 +1970,9 @@
       "deliverable": "Actual bounded user-action invocation and separately supported consequences through the UI",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "A05.3 existing plugin/observer/evidence and context-bound armed UI integration",
+      "active_slice": "A05.3b selected-context read-only runtime and armed Actions UI",
       "implementation_plan": "../superpowers/plans/2026-10-21-a05-native-boundary.md",
-      "execution_record": "39-a05-development-mechanism.md",
+      "execution_record": "40-a05-plugin-observer.md",
       "completed_slices": [
         {
           "id": "A05.1",
@@ -2007,20 +2007,42 @@
           "full_A05_acceptance": false,
           "installed_product_verified": false,
           "next_item": "A05.3"
+        },
+        {
+          "id": "A05.3a",
+          "status": "complete-within-consumed-plugin-observer-mechanism",
+          "record": "40-a05-plugin-observer.md",
+          "verification": ".artifacts/a05/plugin-integration/verification1.json",
+          "candidate": "@stateport/vite-plugin@0.1.0-candidate.20261021.1",
+          "checks": {
+            "source": 1680,
+            "focused": 27,
+            "native_controls": 13,
+            "scenarios_per_mode": 22,
+            "modes": 3,
+            "matched_body_entries_leaves": 22,
+            "finite_compilation_regression": 4,
+            "consumed_files": 14
+          },
+          "Atom_UI_integrated": false,
+          "full_A05_acceptance": false,
+          "next_item": "A05.3b"
         }
       ],
       "remaining_acceptance": [
-        "Integrate the tested original Event/body mechanism into existing plugin/observer/evidence store and current F03 setup; same runtime context/permissions/identities",
-        "Explicitly armed one-interaction UI, budget/cancel/Clear and truthful source/registration/body/effect gaps under F02 read-only observation",
-        "Original A05 native/control matrix, production/performance/cleanup boundaries and ONE whole-item review; no async/network causality inferred"
+        "Existing runtime selected-context/read-only operations, same evidence graph and live inspector lifecycle",
+        "Arm/read/Cancel/Clear Actions UI and fresh exact packed native host/report verification",
+        "Original A05 full matrix, explicit production/performance/async boundaries and ONE whole-item review"
       ],
       "implementation_plans": [
         "../superpowers/plans/2026-10-21-a05-native-boundary.md",
-        "../superpowers/plans/2026-10-21-a05-development-boundary.md"
+        "../superpowers/plans/2026-10-21-a05-development-boundary.md",
+        "../superpowers/plans/2026-10-21-a05-plugin-observer.md"
       ],
       "execution_records": [
         "38-a05-native-mechanism-boundary.md",
-        "39-a05-development-mechanism.md"
+        "39-a05-development-mechanism.md",
+        "40-a05-plugin-observer.md"
       ]
     },
     {
@@ -2548,25 +2570,26 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "A05.2",
-      "status": "complete-within-unbundled-development-mechanism",
-      "record": "39-a05-development-mechanism.md",
-      "verification": ".artifacts/a05/development-boundary/verification.json",
+      "id": "A05.3a",
+      "status": "complete-within-consumed-plugin-observer-mechanism",
+      "record": "40-a05-plugin-observer.md",
+      "verification": ".artifacts/a05/plugin-integration/verification1.json",
+      "candidate": "@stateport/vite-plugin@0.1.0-candidate.20261021.1",
       "checks": {
-        "source": 1674,
-        "focused": 10,
-        "native_controls": 11,
+        "source": 1680,
+        "focused": 27,
+        "native_controls": 13,
         "scenarios_per_mode": 22,
         "modes": 3,
-        "dispatches": 20,
-        "body_entries": 21,
-        "body_leaves": 21
+        "matched_body_entries_leaves": 22,
+        "finite_compilation_regression": 4,
+        "consumed_files": 14
       },
+      "Atom_UI_integrated": false,
       "full_A05_acceptance": false,
-      "installed_product_verified": false,
-      "next_item": "A05.3"
+      "next_item": "A05.3b"
     },
-    "next_item": "A05.3",
+    "next_item": "A05.3b",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -3215,10 +3238,30 @@
         "full_A05_acceptance": false,
         "installed_product_verified": false,
         "next_item": "A05.3"
+      },
+      {
+        "id": "A05.3a",
+        "status": "complete-within-consumed-plugin-observer-mechanism",
+        "record": "40-a05-plugin-observer.md",
+        "verification": ".artifacts/a05/plugin-integration/verification1.json",
+        "candidate": "@stateport/vite-plugin@0.1.0-candidate.20261021.1",
+        "checks": {
+          "source": 1680,
+          "focused": 27,
+          "native_controls": 13,
+          "scenarios_per_mode": 22,
+          "modes": 3,
+          "matched_body_entries_leaves": 22,
+          "finite_compilation_regression": 4,
+          "consumed_files": 14
+        },
+        "Atom_UI_integrated": false,
+        "full_A05_acceptance": false,
+        "next_item": "A05.3b"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A05.2 unbundled opt-in development Event/body mechanism passed source1674/focused10/native11 over22 scenarios in original/unarmed/armed profiles:20 actual dispatches/21 matched body entries/leaves, exact original Event, original outputs/error/Promise/order controls. Real with/Proxy has-trap failure fixed by whole-file eval/with refusal; old native/source/failures remain. Existing observer/plugin/analyzer unchanged, no installed Atom trace UI or production capability. Mandatory A05 stays in progress; next A05.3 context-bound existing plugin/observer/evidence/UI integration.",
+    "current_activity_note": "A05.3a existing plugin/observer integration passed source1680/focused27/native13, original22 scenarios per three modes plus real Vue SFC body/range and later compiled source invalidation,22 matched bodies. Exact local plugin .20261021.1 consumed14 files, original default compiler bytes equal in3 controls; finite original acquisition/refusal4 pass with pinned new module, actionTrace excluded. Atom trace UI/permissions/reports still unintegrated; next bounded A05.3b runtime/Actions. Earlier artifacts/failures/native partials unchanged; A05 remains mandatory/in progress.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "A05"

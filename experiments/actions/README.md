@@ -51,3 +51,16 @@ and matching leaves, with original outputs/order/error identity and explicit
 disabled/async/wrapper/late-event/propagation/cancel/timeout gaps. See39-a05 for
 exact source/native verification and preserved failures. Product integration and
 mandatory A05 acceptance remain open; do not run this again solely to recount it.
+
+## Exact installed plugin/observer mechanism
+
+```sh
+node experiments/actions/plugin-boundary.mjs /absolute/exact/consumer/dist/engine/plugin.mjs
+```
+
+Uses the actual supplied local plugin archive through real Vite/Vue and the
+existing observer, retaining the original22 scenario predicates plus Vue original
+SFC body/range and later source-registration invalidation. It never attaches to an
+existing tab. Exact package/workspace/current-input maps and compiled source bytes
+are retained. The control UI remains synthetic; Atom runtime/Actions integration,
+production admission and whole mandatory A05 acceptance are separate. See40-a05.

@@ -15,3 +15,6 @@ ide-extension/THIRD_PARTY_LICENSES.md
 !.env.example
 .DS_Store
 .artifacts/
+
+# Generated open-plugin runtime copy; canonical source remains in core/.
+packages/vite-plugin/core/

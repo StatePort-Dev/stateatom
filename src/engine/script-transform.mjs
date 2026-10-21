@@ -3,6 +3,7 @@
 // experiment license and history remain under the root LICENSE. JSX compilation
 // is supplied by the caller; this module imports no Vue, Vite or Babel Node API.
 import {isWriteTarget,guardPropertyWriteReceivers} from './write-access.mjs';
+import {prepareActionInstrumentation} from './action-transform.mjs';
 import {parse as parseJS} from '@babel/parser';
 import traverseModule from '@babel/traverse';
 import generatorModule from '@babel/generator';
@@ -10,11 +11,12 @@ import * as t from '@babel/types';
 import {createHash} from 'node:crypto';
 const traverse=traverseModule.default||traverseModule,generate=generatorModule.default||generatorModule;
 const hash=s=>createHash('sha256').update(s).digest('hex'),runtimeURL='/@stateatom/runtime';
-export function instrumentScript(text,file,{imports=true,baseText=text,lineOffset=0,rootName='__sa_mod',reactCommit=false,reactHostProps=false,sourceConsumption=false,reactStateHandoffs=false,sourceWrites=false,writeAccessGuards=false,jsxTransform}={}){
+export function instrumentScript(text,file,{imports=true,baseText=text,lineOffset=0,rootName='__sa_mod',reactCommit=false,reactHostProps=false,sourceConsumption=false,reactStateHandoffs=false,sourceWrites=false,writeAccessGuards=false,actionTrace=false,actionSourceOffset=0,jsxTransform}={}){
  if(writeAccessGuards&&!sourceWrites)throw Error('Write-access guards require source writes');
  if(reactCommit&&reactHostProps)throw Error('Choose one experimental React commit adapter');
  if(reactStateHandoffs&&!reactHostProps)throw Error('State handoffs require host props');
  const ast=parseJS(text,{sourceType:'unambiguous',plugins:['typescript',...(/\.[cm]?ts$/.test(file)?[]:['jsx']),'decorators-legacy']});let reserved=false;traverse(ast,{Identifier(p){if(p.isBindingIdentifier()&&p.node.name.startsWith('__sa'))reserved=true;}});if(reserved)return {code:text,bindings:{},skipped:true,unsupported:[{file,reason:'reserved observer binding collision; entire file left unchanged'}]};const unsupported=[],scopes=new Map(),functionScopes=new WeakMap(),bindingInfo=new Map();let ordinal=0;
+ const actions=actionTrace?prepareActionInstrumentation(ast,text,file,{baseText,sourceOffset:actionSourceOffset}):null;if(actions?.skipped)return{code:text,bindings:{},skipped:true,unsupported:actions.unsupported};if(actions)unsupported.push(...actions.unsupported);
  const meta=(node,kind,extra={})=>({file,sourceDigest:hash(baseText),line:(node.loc?.start.line||1)+lineOffset,column:(node.loc?.start.column||0)+1,endLine:(node.loc?.end.line||1)+lineOffset,endColumn:(node.loc?.end.column||0)+1,key:String(node.start??0),expression:text.slice(node.start,node.end).slice(0,400),kind,...extra});
  const inherit=(n,o)=>Object.assign(n,{loc:o.loc,start:o.start,end:o.end});
  const call=(method,args)=>t.callExpression(t.memberExpression(t.identifier('__sa'),t.identifier(method)),args);
@@ -97,11 +99,12 @@ export function instrumentScript(text,file,{imports=true,baseText=text,lineOffse
  for(const p of statePosts)p.statement.insertAfter(t.expressionStatement(call('reactStateBinding',[t.valueToNode(p.meta),t.identifier(p.scope),t.identifier(p.value),t.identifier(p.setter)])));
  // Insert scope declarations after traversal so generated observer code is never instrumented.
  traverse(ast,{Program(p){p.node.body.unshift(t.variableDeclaration('const',[t.variableDeclarator(t.identifier(rootName),call('scope',[]))]));},Function(p){const name=functionScopes.get(p.node);if(!name)return;if(!t.isBlockStatement(p.node.body))p.node.body=t.blockStatement([t.returnStatement(p.node.body)]);p.node.body.body.unshift(t.variableDeclaration('const',[t.variableDeclarator(t.identifier(name),call('scope',[]))]));}});
+ if(actions){actions.install({receiver:'__sa',enter:'actionEnter',leave:'actionLeave'});if(actions.sites.length)ast.program.body.unshift(t.expressionStatement(call('registerActionSites',[t.valueToNode(actions.sites)])));}
  if(imports)ast.program.body.unshift(t.importDeclaration([t.importSpecifier(t.identifier('__sa'),t.identifier('__sa'))],t.stringLiteral(runtimeURL)));
  if(commitImport)ast.program.body.unshift(t.importDeclaration([t.importSpecifier(t.identifier('__sa_createElement'),t.identifier('createElement')),t.importSpecifier(t.identifier('__sa_Profiler'),t.identifier('Profiler'))],t.stringLiteral('react')));
  let output=ast;
  if(reactHostProps){if(typeof jsxTransform!=='function')throw Error('Owned JSX compiler unavailable');output=jsxTransform(ast,text);
   traverse(output,{CallExpression(p){const n=p.node;if(hostSites.has(site(n))&&t.isMemberExpression(n.callee)&&t.isIdentifier(n.callee.object,{name:'React'})&&t.isIdentifier(n.callee.property,{name:'createElement'})){n.callee=call('reactFactory',[n.callee.object,t.stringLiteral('createElement')]);}}});
  }
- const bindings=Object.fromEntries([...bindingInfo.values()].filter(b=>scopeName(b.scope)===rootName).map(b=>[b.name,b.key]));return {code:generate(output,{retainLines:true},text).code,unsupported,bindings,...(writeAccess?{writeAccess}:{})};
+ const bindings=Object.fromEntries([...bindingInfo.values()].filter(b=>scopeName(b.scope)===rootName).map(b=>[b.name,b.key]));return {code:generate(output,{retainLines:true},text).code,unsupported,bindings,...(actions?{actionSites:actions.sites}:{}),...(writeAccess?{writeAccess}:{})};
 }
