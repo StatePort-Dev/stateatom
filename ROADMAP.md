@@ -709,3 +709,15 @@ A05.3b remains in progress. Next bounded item: adversarial runtime ownership/lat
 IDE regression and remaining native lifecycle/context/Basic/throw/keyboard matrix.
 Saved reports/full A05 performance and gaps follow; mandatory A05/L02 and all
 existing scope-review-1 requirements/evidence thresholds remain unchanged.
+
+
+### 2026-10-21 — A05 read/inject-only native fix
+
+Actual .12 readOnly development attachment with actions=[] reproduced an Arm
+failure: exact MAIN context unavailable. .13 retains only passive context metadata
+in that branch, with no script body reads or mutation grants. Original native RED
+and harness failures preserved; final standalone connection/Arm/actual body3 checks
+PASS, source1689/focused28/types/admission7 PASS. See42-a05-read-inject-native-boundary.md
+and verification13.json; .12 two-host/finite evidence remains historical in41.
+A05.3b/whole A05 stay in progress. Next one bounded step: adversarial runtime
+replacement-owner/late-IDE regression and remaining lifecycle matrix. No publication.

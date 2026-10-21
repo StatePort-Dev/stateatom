@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.13
+
+- Retain passive native execution-context metadata for explicitly read-only
+  development attachment, allowing the existing read/inject Action Trace operation
+  to resolve its exact MAIN target. No script-body acquisition or mutation grant
+  is added to this path. Existing session UI and visual contract are unchanged.
+
 ## 0.1.0-candidate.20261021.12
 
 - Add explicitly armed, session-only one-click development body observations with

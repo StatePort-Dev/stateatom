@@ -257,6 +257,9 @@ async function onDebuggerEvent(source,method,p){await ready;if(platform.owns&&!p
  }
  const sourceMapChanged=sourceMaps.event(id,method,p);
  if(s.readOnly){
+  // Passive context identities are required by read/inject observations too.
+  // Do not acquire script bodies or enable any mutation authority in this path.
+  if(['Runtime.executionContextCreated','Runtime.executionContextDestroyed','Runtime.executionContextsCleared'].includes(method))collectCode(id,s,method,p);
   if(method==='Fetch.requestPaused'&&await handleInputPause(id,s,p))return;
   if(s.productionGrantId&&['Network.requestWillBeSent','Network.responseReceived','Network.loadingFinished'].includes(method)){
    // Request/frame identities must be registered before any awaited authority

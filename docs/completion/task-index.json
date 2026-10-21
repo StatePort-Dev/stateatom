@@ -1972,7 +1972,7 @@
       "optional": false,
       "active_slice": "A05.3b runtime/UI implemented; remaining adversarial lifecycle and native matrix",
       "implementation_plan": "../superpowers/plans/2026-10-21-a05-runtime-ui.md",
-      "execution_record": "41-a05-session-runtime-ui.md",
+      "execution_record": "42-a05-read-inject-native-boundary.md",
       "completed_slices": [
         {
           "id": "A05.1",
@@ -2031,7 +2031,6 @@
       ],
       "remaining_acceptance": [
         "Runtime-level replacement-Arm/late-IDE verification regressions; full context/lifecycle/Basic/disabled/throw/keyboard matrix",
-        "Native read/inject-only connection positive path; current native hosts grant all development actions",
         "Saved report integration: current session trace explicitly excluded",
         "Original A05 full matrix, explicit production/performance/async boundaries and ONE whole-item review"
       ],
@@ -2045,13 +2044,14 @@
         "38-a05-native-mechanism-boundary.md",
         "39-a05-development-mechanism.md",
         "40-a05-plugin-observer.md",
-        "41-a05-session-runtime-ui.md"
+        "41-a05-session-runtime-ui.md",
+        "42-a05-read-inject-native-boundary.md"
       ],
       "current_checkpoint": {
         "id": "A05.3b",
         "status": "in-progress-implemented-session-checkpoint",
-        "record": "41-a05-session-runtime-ui.md",
-        "candidate": "@stateport/atom@0.1.0-candidate.20261021.12",
+        "record": "42-a05-read-inject-native-boundary.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.13",
         "source_checks": 1689,
         "focused_checks": 28,
         "full_A05_acceptance": false,
@@ -2060,11 +2060,12 @@
         "whole_A05_review_performed": false,
         "bounded_review": "four Important source findings fixed and source-rechecked; runtime/native race regressions remain",
         "next_item": "A05.3b adversarial lifecycle/regression matrix",
-        "verification": ".artifacts/a05/runtime-ui/verification12.json",
-        "native_checks": 17,
-        "finite_compilation_regression": 4,
+        "verification": ".artifacts/a05/runtime-ui/verification13.json",
         "package_admission_checks": 7,
-        "type_consumers": 2
+        "type_consumers": 2,
+        "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
+        "standalone_read_inject_native_checks": 3,
+        "boundary": "Native readOnly attachment with development actions=[] RED→GREEN; passive context metadata only; full lifecycle/reports/whole A05 remain open"
       }
     },
     {
@@ -2594,8 +2595,8 @@
     "current_increment": {
       "id": "A05.3b",
       "status": "in-progress-implemented-session-checkpoint",
-      "record": "41-a05-session-runtime-ui.md",
-      "candidate": "@stateport/atom@0.1.0-candidate.20261021.12",
+      "record": "42-a05-read-inject-native-boundary.md",
+      "candidate": "@stateport/atom@0.1.0-candidate.20261021.13",
       "source_checks": 1689,
       "focused_checks": 28,
       "full_A05_acceptance": false,
@@ -2604,11 +2605,12 @@
       "whole_A05_review_performed": false,
       "bounded_review": "four Important source findings fixed and source-rechecked; runtime/native race regressions remain",
       "next_item": "A05.3b adversarial lifecycle/regression matrix",
-      "verification": ".artifacts/a05/runtime-ui/verification12.json",
-      "native_checks": 17,
-      "finite_compilation_regression": 4,
+      "verification": ".artifacts/a05/runtime-ui/verification13.json",
       "package_admission_checks": 7,
-      "type_consumers": 2
+      "type_consumers": 2,
+      "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
+      "standalone_read_inject_native_checks": 3,
+      "boundary": "Native readOnly attachment with development actions=[] RED→GREEN; passive context metadata only; full lifecycle/reports/whole A05 remain open"
     },
     "next_item": "A05.3b adversarial lifecycle/regression matrix",
     "new_full_task_acceptances": [
@@ -3282,7 +3284,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A05.3b implements context-bound actions-arm/read/cancel/clear and existing Actions session UI with stale history. Final .12 source1689/focused28; exact packed native/type/admission results in41-a05-session-runtime-ui.md. One bounded review found4 Important, source fixes rechecked; adversarial runtime/native lifecycle matrix and reports remain. Whole A05 mandatory/in progress, no whole-item review or production/full async/function-object identity claim. Earlier .10/.11 and all original evidence/criteria remain historical.",
+    "current_activity_note": "After82653c5 scoped session checkpoint, native read/inject-only .12 RED proved missing exact MAIN context. Three-line passive context metadata fix in .13 passes source1689/focused28, exact types/admission7, actual standalone readOnly/actions[]/Arm/body3 native checks. Original .12 two-host17/finite4 and all harness failures remain historical in41/42; .13 current verification13.json does not upgrade them. A05.3b remains in progress: next adversarial owner/late-IDE lifecycle matrix, then reports/full A05 original gates.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "A05"
