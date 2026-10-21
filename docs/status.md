@@ -1640,3 +1640,15 @@ driver corrections; source/body/AST exclusions remain. Shared UI/Worker bytes eq
 accepted .39, not new HTTP/NodeIDE evidence. Next P02.3 preemptible archive/map
 parsing; companions, real-app/indexed-map qualification and ONE whole-P02 review
 remain.16/29 complete (~55% equal item count); no SDK/publication/other repository.
+
+### 2026-10-22 — one-shot parser Worker foundation; MV3 integration next
+
+[P02.3a](completion/78-p02-preemptible-parser-worker.md):17new/2053full/17focused source and10actual dedicated HTTP Worker
+checks PASS. Same strict parsers, decoded source-index/name/Unicode parity, fixed
+owned asset, copied bytes, no synchronous fallback, cancel and1500/2000ms parent
+termination. Separate blocked-thread and positive network-observer controls keep
+proof scopes explicit. Atom .40/UI .2 and both complete hosts remain unchanged;
+the new modules are unbundled/uninstalled, not product preemption. Next P02.3b
+trusted offscreen source channel and existing session integration with actual packed
+two-host lifecycle. P02/companions/real-app/indexed qualification/ONE whole review
+remain open;16/29 full items. No SDK, UI redesign, publication or other repository.

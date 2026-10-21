@@ -2740,13 +2740,22 @@
         "docs/source-bundles.md",
         "tests/source-release-index.test.mjs",
         "tests/atom/source-release-session.test.mjs",
-        "tests/fixtures/production-source-mapping/ReleaseConnectionView.js"
+        "tests/fixtures/production-source-mapping/ReleaseConnectionView.js",
+        "core/source-parse-contract.mjs",
+        "core/source-parse-job.mjs",
+        "packages/atom/src/source-parse-client.mjs",
+        "packages/atom/src/source-parse-worker.mjs",
+        "tests/source-parse-job.test.mjs",
+        "tests/atom/source-parse-client.test.mjs",
+        "tests/atom/source-parse-worker.test.mjs",
+        "tests/integration/source-parse-worker.mjs"
       ],
       "existing_commands": [
         "npm run verify:production-source-mapping",
         "npm run prepare:source-bundle",
         "npm run verify:source-bundle-native",
-        "npm run verify:source-release-native"
+        "npm run verify:source-release-native",
+        "node tests/integration/source-parse-worker.mjs"
       ],
       "deliverable": "One release import and lazy exact per-chunk matching",
       "status": "in-progress",
@@ -2758,7 +2767,7 @@
         "reconciliation": "13-scope-reconciliation.md"
       },
       "remaining_acceptance": [
-        "Retained release connection and lazy cold/later chunk matching complete within P02.2; interruption is still to cover actual preemptible archive/map parsing",
+        "Install trusted offscreen preemptible archive/map jobs into the existing MV3 source session; actual cancel/clear/navigation/restart and identity/budget controls",
         "Explicit bounded companion sources when sourcesContent is missing; never follow sourceRoot/sources paths",
         "Preemptible archive/map parsing and session-local lifecycle/budgets",
         "Registered real-app size/time/indexed-map qualification and actual nontrivial minified UI workflow",
@@ -2770,38 +2779,31 @@
         "scope": "Owned hard-budget source AST Worker, exact separate dependency gate and transient provider foundation only",
         "does_not_complete": "Release-bundle preparation/bulk matching, preemptible archive/map parsing, companion sources or registered real-app limit qualification"
       },
-      "active_slice": "P02.3 preemptible archive/map parsing with preserved session identity and budgets",
-      "execution_record": "77-p02-single-release-connection.md",
+      "active_slice": "P02.3b trusted offscreen parser transport and existing MV3 source session integration",
+      "execution_record": "78-p02-preemptible-parser-worker.md",
       "current_checkpoint": {
-        "id": "P02.2-single-release-connection",
-        "status": "complete-bounded-packed-single-release-not-full-P02",
-        "record": "77-p02-single-release-connection.md",
-        "candidate": "@stateport/atom@0.1.0-candidate.20261021.40",
-        "source_tests": 2036,
+        "id": "P02.3a-fixed-parser-worker-foundation",
+        "status": "complete-bounded-HTTP-worker-not-installed-MV3",
+        "record": "78-p02-preemptible-parser-worker.md",
+        "candidate": "Existing Atom .40/UI .2 byte-identical; new parser modules unbundled/uninstalled",
+        "source_tests": 2053,
         "new_source_tests": 17,
-        "actual_single_release_checks": 67,
-        "actual_single_release_checks_per_host": {
-          "standalone": 32,
-          "embedding": 33
-        },
-        "native_source_regression_checks": 49,
-        "own_host_source_regression_checks": 65,
-        "types": 2,
-        "admission": 8,
-        "primary_imports_per_host": [
-          "release.zip"
-        ],
-        "loaded_chunk_assets": 3,
-        "single_retained_import_for_all_eligible_chunks": true,
-        "cache_accounting": "8MiB unique retained raw maps plus unique parsed-map inputs; max8 parsed maps; retained+largest parse admission",
-        "worker_and_ui_bytes_unchanged_from_P01": true,
+        "focused_tests": 17,
+        "actual_HTTP_worker_checks": 10,
+        "network_observer_positive_control": true,
+        "map_budget_ms": 1500,
+        "archive_budget_ms": 2000,
+        "actual_valid_map_segments": 250000,
+        "actual_valid_map_names": 35000,
+        "worker_inputs": 8,
+        "parser_installed_in_Atom": false,
+        "inspector_MV3_parse_preemption": false,
         "companion_sources": false,
-        "inspector_parse_preemption": false,
         "independent_real_app_qualification": false,
         "full_P02_acceptance": false,
-        "verification": ".artifacts/p02/single-release/verification40.json",
-        "next_item": "P02.3 preemptible archive/map parsing with preserved session identity and budgets",
-        "boundary": "Exact .40/UI .2:one tab-local private release index, cold native second chunk and later own-host third chunk by actual loaded text digest; old-tab/new-deploy mismatch.2036source/67actual/49native/65host/types2/admission8 PASS. No source bodies in default snapshots/reports/models, app handler/effect execution, total heap claim, independent real-app/indexed qualification, companions, SDK/publication/other repository.16/29 full tasks remains unchanged."
+        "verification": ".artifacts/p02/parser-worker/verification.json",
+        "next_item": "P02.3b trusted offscreen parser transport and existing MV3 source session integration",
+        "boundary": "Same strict source-map/ZIP parser in fixed one-shot owned Worker;2053full/17focused source and10actual HTTP Worker checks PASS. Actual cancel before reply, separate blocked hard-budget control, source/name/index/privacy and calibrated request observer. Atom/UI .40 and both hosts unchanged; no installed MV3 parser-preemption, zero serialization CPU/heap, companions/indexed/real-app, SDK/publication/other repository claim;16/29 full items."
       },
       "completed_slices": [
         {
@@ -2860,6 +2862,30 @@
           "verification": ".artifacts/p02/single-release/verification40.json",
           "next_item": "P02.3 preemptible archive/map parsing with preserved session identity and budgets",
           "boundary": "Exact .40/UI .2:one tab-local private release index, cold native second chunk and later own-host third chunk by actual loaded text digest; old-tab/new-deploy mismatch.2036source/67actual/49native/65host/types2/admission8 PASS. No source bodies in default snapshots/reports/models, app handler/effect execution, total heap claim, independent real-app/indexed qualification, companions, SDK/publication/other repository.16/29 full tasks remains unchanged."
+        },
+        {
+          "id": "P02.3a-fixed-parser-worker-foundation",
+          "status": "complete-bounded-HTTP-worker-not-installed-MV3",
+          "record": "78-p02-preemptible-parser-worker.md",
+          "candidate": "Existing Atom .40/UI .2 byte-identical; new parser modules unbundled/uninstalled",
+          "source_tests": 2053,
+          "new_source_tests": 17,
+          "focused_tests": 17,
+          "actual_HTTP_worker_checks": 10,
+          "network_observer_positive_control": true,
+          "map_budget_ms": 1500,
+          "archive_budget_ms": 2000,
+          "actual_valid_map_segments": 250000,
+          "actual_valid_map_names": 35000,
+          "worker_inputs": 8,
+          "parser_installed_in_Atom": false,
+          "inspector_MV3_parse_preemption": false,
+          "companion_sources": false,
+          "independent_real_app_qualification": false,
+          "full_P02_acceptance": false,
+          "verification": ".artifacts/p02/parser-worker/verification.json",
+          "next_item": "P02.3b trusted offscreen parser transport and existing MV3 source session integration",
+          "boundary": "Same strict source-map/ZIP parser in fixed one-shot owned Worker;2053full/17focused source and10actual HTTP Worker checks PASS. Actual cancel before reply, separate blocked hard-budget control, source/name/index/privacy and calibrated request observer. Atom/UI .40 and both hosts unchanged; no installed MV3 parser-preemption, zero serialization CPU/heap, companions/indexed/real-app, SDK/publication/other repository claim;16/29 full items."
         }
       ],
       "historical_remaining_acceptance": "Release-bundle preparation and normal multi-chunk/source workflow with responsive bounded parsing"
@@ -3676,41 +3702,34 @@
     ]
   },
   "reconciliation": {
-    "document": "77-p02-single-release-connection.md",
+    "document": "78-p02-preemptible-parser-worker.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "P02.2-single-release-connection",
-      "status": "complete-bounded-packed-single-release-not-full-P02",
-      "record": "77-p02-single-release-connection.md",
-      "candidate": "@stateport/atom@0.1.0-candidate.20261021.40",
-      "source_tests": 2036,
+      "id": "P02.3a-fixed-parser-worker-foundation",
+      "status": "complete-bounded-HTTP-worker-not-installed-MV3",
+      "record": "78-p02-preemptible-parser-worker.md",
+      "candidate": "Existing Atom .40/UI .2 byte-identical; new parser modules unbundled/uninstalled",
+      "source_tests": 2053,
       "new_source_tests": 17,
-      "actual_single_release_checks": 67,
-      "actual_single_release_checks_per_host": {
-        "standalone": 32,
-        "embedding": 33
-      },
-      "native_source_regression_checks": 49,
-      "own_host_source_regression_checks": 65,
-      "types": 2,
-      "admission": 8,
-      "primary_imports_per_host": [
-        "release.zip"
-      ],
-      "loaded_chunk_assets": 3,
-      "single_retained_import_for_all_eligible_chunks": true,
-      "cache_accounting": "8MiB unique retained raw maps plus unique parsed-map inputs; max8 parsed maps; retained+largest parse admission",
-      "worker_and_ui_bytes_unchanged_from_P01": true,
+      "focused_tests": 17,
+      "actual_HTTP_worker_checks": 10,
+      "network_observer_positive_control": true,
+      "map_budget_ms": 1500,
+      "archive_budget_ms": 2000,
+      "actual_valid_map_segments": 250000,
+      "actual_valid_map_names": 35000,
+      "worker_inputs": 8,
+      "parser_installed_in_Atom": false,
+      "inspector_MV3_parse_preemption": false,
       "companion_sources": false,
-      "inspector_parse_preemption": false,
       "independent_real_app_qualification": false,
       "full_P02_acceptance": false,
-      "verification": ".artifacts/p02/single-release/verification40.json",
-      "next_item": "P02.3 preemptible archive/map parsing with preserved session identity and budgets",
-      "boundary": "Exact .40/UI .2:one tab-local private release index, cold native second chunk and later own-host third chunk by actual loaded text digest; old-tab/new-deploy mismatch.2036source/67actual/49native/65host/types2/admission8 PASS. No source bodies in default snapshots/reports/models, app handler/effect execution, total heap claim, independent real-app/indexed qualification, companions, SDK/publication/other repository.16/29 full tasks remains unchanged."
+      "verification": ".artifacts/p02/parser-worker/verification.json",
+      "next_item": "P02.3b trusted offscreen parser transport and existing MV3 source session integration",
+      "boundary": "Same strict source-map/ZIP parser in fixed one-shot owned Worker;2053full/17focused source and10actual HTTP Worker checks PASS. Actual cancel before reply, separate blocked hard-budget control, source/name/index/privacy and calibrated request observer. Atom/UI .40 and both hosts unchanged; no installed MV3 parser-preemption, zero serialization CPU/heap, companions/indexed/real-app, SDK/publication/other repository claim;16/29 full items."
     },
-    "next_item": "P02.3 preemptible archive/map parsing with preserved session identity and budgets",
+    "next_item": "P02.3b trusted offscreen parser transport and existing MV3 source session integration",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -5197,10 +5216,34 @@
         "verification": ".artifacts/p02/single-release/verification40.json",
         "next_item": "P02.3 preemptible archive/map parsing with preserved session identity and budgets",
         "boundary": "Exact .40/UI .2:one tab-local private release index, cold native second chunk and later own-host third chunk by actual loaded text digest; old-tab/new-deploy mismatch.2036source/67actual/49native/65host/types2/admission8 PASS. No source bodies in default snapshots/reports/models, app handler/effect execution, total heap claim, independent real-app/indexed qualification, companions, SDK/publication/other repository.16/29 full tasks remains unchanged."
+      },
+      {
+        "id": "P02.3a-fixed-parser-worker-foundation",
+        "status": "complete-bounded-HTTP-worker-not-installed-MV3",
+        "record": "78-p02-preemptible-parser-worker.md",
+        "candidate": "Existing Atom .40/UI .2 byte-identical; new parser modules unbundled/uninstalled",
+        "source_tests": 2053,
+        "new_source_tests": 17,
+        "focused_tests": 17,
+        "actual_HTTP_worker_checks": 10,
+        "network_observer_positive_control": true,
+        "map_budget_ms": 1500,
+        "archive_budget_ms": 2000,
+        "actual_valid_map_segments": 250000,
+        "actual_valid_map_names": 35000,
+        "worker_inputs": 8,
+        "parser_installed_in_Atom": false,
+        "inspector_MV3_parse_preemption": false,
+        "companion_sources": false,
+        "independent_real_app_qualification": false,
+        "full_P02_acceptance": false,
+        "verification": ".artifacts/p02/parser-worker/verification.json",
+        "next_item": "P02.3b trusted offscreen parser transport and existing MV3 source session integration",
+        "boundary": "Same strict source-map/ZIP parser in fixed one-shot owned Worker;2053full/17focused source and10actual HTTP Worker checks PASS. Actual cancel before reply, separate blocked hard-budget control, source/name/index/privacy and calibrated request observer. Atom/UI .40 and both hosts unchanged; no installed MV3 parser-preemption, zero serialization CPU/heap, companions/indexed/real-app, SDK/publication/other repository claim;16/29 full items."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Exact .40/UI .2:one tab-local private release index, cold native second chunk and later own-host third chunk by actual loaded text digest; old-tab/new-deploy mismatch.2036source/67actual/49native/65host/types2/admission8 PASS. No source bodies in default snapshots/reports/models, app handler/effect execution, total heap claim, independent real-app/indexed qualification, companions, SDK/publication/other repository.16/29 full tasks remains unchanged.",
+    "current_activity_note": "Same strict source-map/ZIP parser in fixed one-shot owned Worker;2053full/17focused source and10actual HTTP Worker checks PASS. Actual cancel before reply, separate blocked hard-budget control, source/name/index/privacy and calibrated request observer. Atom/UI .40 and both hosts unchanged; no installed MV3 parser-preemption, zero serialization CPU/heap, companions/indexed/real-app, SDK/publication/other repository claim;16/29 full items.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "P02"

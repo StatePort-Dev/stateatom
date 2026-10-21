@@ -47,7 +47,7 @@ explicit Node producer and actual generated-bundle compatibility; subsequent
 [P02.2](77-p02-single-release-connection.md) adds one retained private release index
 and actual lazy native/own-host matching across cold/later chunks. See
 [recipe/limits](../source-bundles.md). Companion sources, inspector archive/map parse
-preemption, registered real-app qualification and ONE whole-P02 review remain open.
+preemption, registered real-app qualification and ONE whole-P02 review remain open. The [P02.3a Worker foundation](78-p02-preemptible-parser-worker.md) has separate HTTP proof; P02.3b MV3 integration is next, with no installed preemption claim yet.
 
 **Files:** existing `core/source-maps.mjs`, `core/source-map-archive.mjs`, map session/UI, packing/build scripts; add a small standalone release-bundle preparation command and tests. This command packages explicit input artifacts; it does not build or execute arbitrary application code.
 
