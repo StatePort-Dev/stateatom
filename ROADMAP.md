@@ -648,3 +648,16 @@ remain unobserved. Next dependency-ready item: mandatory A05 bounded Action Trac
 starting with a finite new listener/return mechanism probe. Historical
 beforeScriptExecution rejection is not repeated. A02/L02 and broader gates stay open;
 SDK outside Atom, no publication/other-repository/installed/human acceptance claim.
+
+### 2026-10-21 — A05.1 finite native mechanism boundary
+
+A05 remains mandatory/in progress. A finite new listener/return protocol probe
+records17 native entries/14 return points,17 matching off/on scenarios and5 controls
+in owned Chrome153. Ordinary native this identifies currentTarget only; event/original
+target/completed exit remain missing. Arrow/bound this and try/finally/throw exit gaps
+are explicit; a real same-source closure control rejects function breakpoint identity.
+Original failed off-mode harness sentinel run and old beforeScriptExecution rejection
+are preserved, the latter not repeated. No product runtime/UI changed or trace shipped.
+See38-a05-native-mechanism-boundary.md; next bounded step A05.2 finite development
+event carrier/entry/exit with original semantics before armed UI. Production observation
+does not require F05 mutation authority. A02/L02/production/release remain open.

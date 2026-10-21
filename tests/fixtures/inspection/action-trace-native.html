@@ -1,0 +1,41 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<meta charset="utf-8">
+<title>Synthetic native action boundary controls</title>
+<style>button,section{display:block;margin:8px;padding:8px}pre{white-space:pre-wrap}</style>
+<button id="direct"><span id="direct-child">Direct</span></button>
+<section id="capture"><button id="capture-child">Capture and bubble</button></section>
+<section id="delegated"><button id="delegated-child">Delegated</button></section>
+<button id="arrow">Arrow</button><button id="bound">Bound receiver</button>
+<button id="disabled" disabled>Disabled</button>
+<button id="factory-a">Closure A</button><button id="factory-b">Closure B</button>
+<button id="replace-target">Old listener</button><button id="replace-handler">Replace node/listener</button>
+<button id="throwing">Throw original</button><button id="finally">Return with finally</button>
+<button id="finally-throw">Return overridden by finally throw</button>
+<button id="async">Async continuation</button><button id="unrelated">Queued work</button>
+<pre id="output"></pre>
+<script>
+'use strict';
+const output=document.getElementById('output'),order=[],originalError=new Error('Synthetic original error'),originalFinallyError=new Error('Synthetic finally error');
+let count=0,errorIdentity=true;
+function record(label,event){order.push(label+(event?':'+event.target.id+':'+event.currentTarget.id+':'+event.isTrusted:''));count++;output.textContent=JSON.stringify({count,order,errorIdentity});}
+window.addEventListener('error',function originalErrorControl(event){errorIdentity=errorIdentity&&(event.error===originalError||event.error===originalFinallyError);record('error-same:'+errorIdentity);event.preventDefault();});
+document.getElementById('direct').addEventListener('click',function directListener(event){record('direct',event);return 7;});
+document.getElementById('capture').addEventListener('click',function captureListener(event){record('capture',event);},true);
+document.getElementById('capture-child').addEventListener('click',function bubbleListener(event){record('bubble',event);});
+document.getElementById('delegated').addEventListener('click',function delegatedListener(event){record('delegated',event);});
+document.getElementById('arrow').addEventListener('click',event=>{record('arrow',event);});
+document.getElementById('bound').addEventListener('click',function boundOriginal(event){record('bound',event);}.bind({synthetic:true}));
+document.getElementById('disabled').addEventListener('click',function disabledListener(event){record('DISABLED-MUST-NOT-RUN',event);});
+function factory(label){return function sameSourceListener(event){record(label,event);};}
+document.getElementById('factory-a').addEventListener('click',factory('factory-a'));
+document.getElementById('factory-b').addEventListener('click',factory('factory-b'));
+document.getElementById('replace-target').addEventListener('click',function originalListener(event){record('old',event);});
+document.getElementById('replace-handler').addEventListener('click',function replaceListener(event){const replacement=document.createElement('button');replacement.id='replace-target';replacement.textContent='New listener';replacement.addEventListener('click',function replacementListener(event){record('new',event);});document.getElementById('replace-target').replaceWith(replacement);record('replaced',event);});
+document.getElementById('throwing').addEventListener('click',function throwingListener(event){record('throwing',event);throw originalError;});
+document.getElementById('finally').addEventListener('click',function finallyListener(event){try{record('before-finally',event);return 11;}finally{record('finally');}});
+document.getElementById('finally-throw').addEventListener('click',function finallyThrowListener(event){try{record('before-finally-throw',event);return 13;}finally{record('finally-throws');throw originalFinallyError;}});
+document.getElementById('async').addEventListener('click',async function asyncListener(event){record('async-entry',event);await Promise.resolve();record('async-continuation');});
+document.getElementById('unrelated').addEventListener('click',function queuedListener(event){record('queued-entry',event);Promise.resolve().then(()=>record('promise-original'));setTimeout(()=>record('timer-original'),0);});
+output.textContent=JSON.stringify({count,order,errorIdentity});
+</script>

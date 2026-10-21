@@ -1968,8 +1968,33 @@
         "npm run verify:browser"
       ],
       "deliverable": "Actual bounded user-action invocation and separately supported consequences through the UI",
-      "status": "planned",
-      "optional": false
+      "status": "in-progress",
+      "optional": false,
+      "active_slice": "A05.2 finite development event/entry/exit mechanism",
+      "implementation_plan": "../superpowers/plans/2026-10-21-a05-native-boundary.md",
+      "execution_record": "38-a05-native-mechanism-boundary.md",
+      "completed_slices": [
+        {
+          "id": "A05.1",
+          "status": "complete-with-explicit-native-mechanism-gaps",
+          "record": "38-a05-native-mechanism-boundary.md",
+          "verification": ".artifacts/a05/native-boundary/verification.json",
+          "product_code_changed": false,
+          "full_A05_acceptance": false,
+          "checks": {
+            "finite_controls": 5,
+            "off_on_scenarios": 17,
+            "native_entries": 17,
+            "return_points": 14
+          },
+          "boundary": "Native ordinary listener currentTarget/entry only; event/original target and completed exit missing, arrow/bound this unavailable, same-source closure identity shortcut disproven. No Atom observed invocation/UI claim."
+        }
+      ],
+      "remaining_acceptance": [
+        "Exact original event/instance carrier and supported synchronous entry/exit mechanism with semantic controls",
+        "Explicitly armed one-interaction UI, budget/cancel/Clear and truthful gaps/effects under F02 read-only observation",
+        "Original A05 native/control matrix and ONE whole-item review; no async/network causality inferred"
+      ]
     },
     {
       "id": "P01",
@@ -2496,15 +2521,14 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "A04",
-      "status": "complete-within-original-scope",
-      "record": "37-a04-whole-item-review.md",
-      "verification": ".artifacts/a04/review/result.json",
-      "original_matrix": ".artifacts/a04/native-matrix/verification6.json",
-      "invocation_observed": false,
-      "next_item": "A05"
+      "id": "A05.1",
+      "status": "complete-with-explicit-native-mechanism-gaps",
+      "record": "38-a05-native-mechanism-boundary.md",
+      "verification": ".artifacts/a05/native-boundary/verification.json",
+      "full_A05_acceptance": false,
+      "next_item": "A05.2"
     },
-    "next_item": "A05.1",
+    "next_item": "A05.2",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -3126,10 +3150,18 @@
         "original_matrix": ".artifacts/a04/native-matrix/verification6.json",
         "invocation_observed": false,
         "next_item": "A05"
+      },
+      {
+        "id": "A05.1",
+        "status": "complete-with-explicit-native-mechanism-gaps",
+        "record": "38-a05-native-mechanism-boundary.md",
+        "verification": ".artifacts/a05/native-boundary/verification.json",
+        "full_A05_acceptance": false,
+        "next_item": "A05.2"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A04 complete within original positive Vue matrix after ONE whole-item review (0 Critical,2 Important resolved,0 Minor). Interpolation writes and encoded raw source spans corrected with RED/GREEN controls; current source1664/focused131/Vue-native47. Earlier matrix/failures/PARTIALs preserved, exact .6 unchanged, current contributor IDE separately sealed. Next mandatory A05 starts with a finite native listener/return mechanism probe; historical beforeScriptExecution rejection not repeated. A02/L02 and broader gates remain open.",
+    "current_activity_note": "A05.1 finite native listener/return probe completed with PARTIAL mechanism:17 native entries/14 return points,17 matching off/on scenarios,5 controls, currentTarget only; exact event/original target/completed exit missing. Arrow/bound gap and actual same-source closure breakpoint counterexample preserved. No product code/UI trace shipped; A05 mandatory/in-progress, next A05.2 finite development event/entry/exit instrumentation. Failed harness/off cleanup and historical script-pause rejection remain unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "A05"
