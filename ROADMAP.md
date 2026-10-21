@@ -584,3 +584,18 @@ built IDE166-input proof stays separate from the Atom tarball. Original .2 and
 legacy failure records remain historical. Next A03.3 native event context/listener/
 prop freshness, then ONE whole A03 review; A03/A02/A05/L02/P04/C07/release remain open.
 See32-a03-forwarded-handlers.md.
+
+### 2026-10-21 — A03.3 native metadata freshness matrix
+
+A03.3 updates bounded native registration metadata and its graph together on deep
+refresh, retains metadata snapshot/read clocks, and expires an old selected render
+occurrence even when DOM node/value remain equal. Cancel/Escape preserves old
+history. The passive reader retains both source caveat and optional metadata clock;
+legacy v1 gets no invented time. Dirty BASE98edc45, exact local .5:
+source1649/focused106/types2/admission7/native105/picker16/reporter33, current sealed
+aggregate .artifacts/a03/native-freshness/verification5.json. The .4 reader failure,
+legacy Attach failure and finite unavailable-parent probe remain explicit. This is
+source/registration/freshness evidence, not invocation, callback identity or actual
+prop transfer. ONE whole-A03 review remains; parent A03 is open. A02/A05/L02/P04/C07/
+release remain open, SDK outside Atom. See33-a03-native-freshness.md and
+[the supported matrix](docs/testing/actions-supported.md).

@@ -134,7 +134,7 @@ test('pending picker guidance names cancellation and uses its admission while re
   assert.equal(supportsCapabilityPolicy(policy),true);
   let picker={status,id:'pending-'+status},f;f=fixture(m=>{calls.push(m);if(m.op==='state')return{...f.state(m.tabId),picker,capabilityPolicy:policy};if(m.op==='cancel-pick'){picker={...picker,status:'cancelled'};return{};}});
   await f.view.ready;f.$('pick').click=()=>f.$('pick').onclick();
-  try{assert.equal(f.$('inspection-next').textContent,'Cancel element selection');assert.equal(f.$('inspection-next').disabled,false);await f.$('inspection-next').onclick();assert.equal(calls.filter(m=>m.op==='pick').length,0);assert.deepEqual(calls.filter(m=>m.op==='cancel-pick').map(m=>({tabId:m.tabId,pickerId:m.pickerId})),[{tabId:1,pickerId:'pending-'+status}]);assert.match(f.$('selected').textContent,/#target-1/);assert.match(f.$('freshness').textContent,/Not live/);}finally{await f.view.dispose();}
+  try{assert.equal(f.$('inspection-next').textContent,'Cancel element selection');assert.equal(f.$('inspection-next').disabled,false);await f.$('inspection-next').onclick();assert.equal(calls.filter(m=>m.op==='pick').length,0);assert.deepEqual(calls.filter(m=>m.op==='cancel-pick').map(m=>({tabId:m.tabId,pickerId:m.pickerId})),[{tabId:1,pickerId:'pending-'+status}]);assert.equal(calls.filter(m=>m.op==='state').at(-1).refreshDeep,false,'Cancel reloads the original snapshot without replacing native read IDs/clocks');assert.match(f.$('selected').textContent,/#target-1/);assert.match(f.$('freshness').textContent,/Not live/);}finally{await f.view.dispose();}
  }
 });
 
@@ -144,4 +144,14 @@ test('pending picker guidance cannot use new-pick admission to enable a denied c
  assert.equal(supportsCapabilityPolicy(policy),true);
  let f;f=fixture(m=>m.op==='state'?{...f.state(m.tabId),picker:{status:'picking',id:'denied'},capabilityPolicy:policy}:undefined);await f.view.ready;
  try{assert.equal(f.$('inspection-next').textContent,'Cancel element selection');assert.equal(f.$('inspection-next').disabled,true);assert.equal(f.$('pick').disabled,true);}finally{await f.view.dispose();}
+});
+
+test('native action UI shows metadata read time and missing legacy time without exposing snapshot IDs',async()=>{
+ for(const timed of [true,false]){let f;f=fixture(m=>m.op==='state'?{...f.state(m.tabId),analysis:{sources:[],actionContext:{},actionBindings:[{id:'native:0',event:'click',mechanism:'dom-listener',registeredOn:'selected-element',status:'Observed',entry:{status:'Unknown/Unsupported',reason:'Registration only'},calls:[],hookRelations:[],registration:{scriptId:'s',line:2,column:3,...(timed?{snapshotId:'private-native-snapshot-id',readAt:1234}:{})},execution:{status:'not-observed'}}]}}:undefined);
+  try{await f.view.ready;const text=f.$('action-native').children.map(n=>n.textContent).join(' ');assert(text.includes(timed?'Metadata read at ':'Metadata read time not recorded'));assert(text.includes('callback identity unverified'));assert(!text.includes('private-native-snapshot-id'));assert(text.includes('Registration is not invocation'));}finally{await f.view.dispose();}
+ }
+});
+test('picker cancellation notifications retain the restored snapshot until an explicit user refresh',async()=>{
+ const calls=[];let picker={status:'picking',id:'pending-escape'},f;f=fixture(m=>{calls.push(m);if(m.op==='state')return{...f.state(m.tabId),picker};});
+ try{await f.view.ready;picker={...picker,status:'cancelled'};for(let i=0;i<2;i++){f.emit({event:'state-invalidated',tabId:1});await tick();await tick();assert.equal(calls.filter(m=>m.op==='state').at(-1).refreshDeep,false,'Escape or delayed cancellation notification must not replace old native IDs/time');}await f.$('refresh-tabs').onclick();assert.equal(calls.filter(m=>m.op==='state').at(-1).refreshDeep,true);}finally{await f.view.dispose();}
 });

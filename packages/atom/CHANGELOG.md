@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.5
+
+- Preserve the source relationship limitation beside a named callback in the
+  historical reader. A source symbol no longer hides the recorded missing prop
+  transfer/function-identity reason. Native metadata read times remain separate.
+- Retain Cancel/Escape snapshots across picker state notifications; an explicit
+  user refresh still revalidates current metadata and render occurrence.
+- Retain the immutable .4 failed reader control and its successful scoped native
+  checks; no snapshot/export/evidence, execution or shared visual contract upgrade.
+
+## 0.1.0-candidate.20261021.4
+
+- Re-read bounded native listener metadata on explicit deep refresh, replacing its
+  graph records together with the displayed registrations. Metadata has a scoped
+  snapshot ID/read time; equal code coordinates never assert callback identity.
+- Check native document/node and selected render marker before/after acquisition.
+  A changed occurrence expires the old snapshot; unavailable revalidation expires
+  action freshness while preserving the independently observed property snapshot.
+- Freeze retained history while picking and restore Cancel without deep refresh,
+  preserving original read IDs/clocks and saved bytes. Later action checks still
+  revalidate the selected context. Active input editors keep their existing path.
+- Show native metadata read time in advanced details/historical reader. The optional
+  v1 registration snapshotId/readAt fields preserve missing legacy clocks; no old
+  report receives a new time. No wire/API version break or permission expansion.
+- Preserve source-only action/prop evidence and explicit ancestor/window/shadow/
+  portal gaps. Registration/event reach/invocation remain distinct; no Action Trace,
+  callback/getter execution, runtime identity proof, shared token or layout change.
+
 ## 0.1.0-candidate.20261021.3
 
 - Link source declarations through a private same-file component callback prop

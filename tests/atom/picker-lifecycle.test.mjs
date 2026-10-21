@@ -25,3 +25,10 @@ test('pending and failed native admission cannot rewrite the prior snapshot',asy
  const during=await f.request({op:'state'});assert.deepEqual(during.selection,before.selection);assert.deepEqual(during.analysis,before.analysis);assert.equal(during.property,'disabled');assert.equal(inspectionView(during).target,null);
  release();assert.match((await outcome).error.message,/Native document unavailable/);const failed=await f.request({op:'state'});assert.equal(failed.picker.status,'unsupported');assert.deepEqual(failed.selection,before.selection);assert.deepEqual(failed.analysis,before.analysis);assert.equal(failed.property,'disabled');
 });
+
+test('explicit background refresh while picking retains native snapshot IDs clocks and evidence graph',async t=>{
+ const f=inputCaptureRuntimeFixture({send:async(m,p)=>m==='DOM.resolveNode'?{object:{objectId:'node-'+p.nodeId}}:m==='DOMDebugger.getEventListeners'?{listeners:[{type:'click',scriptId:'native',lineNumber:1,columnNumber:2,once:true}]}:undefined});t.after(()=>f.runtime.shutdown());await f.inspect();
+ const before=await f.request({op:'state'});assert(before.analysis.actionBindings.some(b=>b.registration?.snapshotId));const reads=f.calls.filter(c=>c.m==='DOMDebugger.getEventListeners').length;
+ const started=await f.request({op:'pick',pickerId:'retain-native-history'});assert.equal(started.status,'picking');const selecting=await f.request({op:'state',refreshDeep:true});assert.deepEqual(selecting.analysis,before.analysis);assert.equal(f.calls.filter(c=>c.m==='DOMDebugger.getEventListeners').length,reads);
+ await f.request({op:'cancel-pick',pickerId:started.id});const cancelled=await f.request({op:'state',refreshDeep:false});assert.deepEqual(cancelled.selection,before.selection);assert.deepEqual(cancelled.analysis,before.analysis);
+});

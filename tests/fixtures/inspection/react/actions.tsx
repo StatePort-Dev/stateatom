@@ -1,10 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 // Synthetic React 18 action controls; not real application coverage.
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {useOrders} from './action-hooks';
 (window as any).actionInvocations = 0;
 (window as any).actionGetterReads = 0;
+(window as any).actionNativeLog = [];
+(window as any).actionNativeVersion = 0;
 function save() { (window as any).actionInvocations++; }
 function useUnrelated() { return 42; }
 function ForwardedButton({id,click}: {id:string,click:()=>void}) {
@@ -72,14 +74,39 @@ function Row({id}: {id: string}) {
  </section>;
 }
 function factory(callback: () => void) { return () => callback(); }
+function ReplacedRow({id}: {id:string}) {
+ const [changed,setChanged] = useState(false);
+ const alternative = () => { (window as any).actionInvocations++; };
+ return <section>
+  <button id={'replaced-prop-'+id} onClick={changed?alternative:save}>Stable callback target</button>
+  <button id={'replace-prop-'+id} onClick={()=>setChanged(value=>!value)}>Replace callback {id}</button>
+ </section>;
+}
 function App() {
  useEffect(() => {
   const element = document.getElementById('native-action')!;
   const native = () => { (window as any).actionInvocations++; };
   element.addEventListener('click', native, {once:true});
   document.addEventListener('keydown', native, {capture:true});
-  return () => { element.removeEventListener('click', native); document.removeEventListener('keydown', native, {capture:true}); };
+  const log = (stage:string,event:Event) => {if(event.target===element)(window as any).actionNativeLog.push({stage,phase:event.eventPhase});};
+  const windowCapture = (event:Event) => log('window-capture',event);
+  const documentCapture = (event:Event) => log('document-capture',event);
+  const documentBubble = (event:Event) => log('document-bubble',event);
+  const makeListener = (version:number) => function managedNative(event:Event) {
+   (window as any).actionNativeLog.push({stage:'selected',version,phase:event.eventPhase});event.stopPropagation();
+  };
+  let managed=makeListener(0),capture=false;
+  element.addEventListener('click',managed);
+  window.addEventListener('click',windowCapture,true);
+  document.addEventListener('click',documentCapture,{capture:true,passive:true});
+  document.addEventListener('click',documentBubble);
+  const replace = () => {element.removeEventListener('click',managed,capture);managed=makeListener(++(window as any).actionNativeVersion);element.addEventListener('click',managed,{capture,passive:capture});};
+  const phase = () => {element.removeEventListener('click',managed,capture);capture=!capture;element.addEventListener('click',managed,{capture,passive:capture});};
+  const remove = () => element.removeEventListener('click',managed,capture);
+  const replaceButton=document.getElementById('native-replace')!,phaseButton=document.getElementById('native-phase')!,removeButton=document.getElementById('native-remove')!;
+  replaceButton.addEventListener('click',replace);phaseButton.addEventListener('click',phase);removeButton.addEventListener('click',remove);
+  return () => { element.removeEventListener('click', native);element.removeEventListener('click',managed,capture);document.removeEventListener('keydown', native, {capture:true});window.removeEventListener('click',windowCapture,true);document.removeEventListener('click',documentCapture,true);document.removeEventListener('click',documentBubble);replaceButton.removeEventListener('click',replace);phaseButton.removeEventListener('click',phase);removeButton.removeEventListener('click',remove); };
  }, []);
- return <main><h1>Action Inspector controls</h1><Row id="one"/><Row id="two"/></main>;
+ return <main><h1>Action Inspector controls</h1><Row id="one"/><Row id="two"/><ReplacedRow id="one"/><ReplacedRow id="two"/></main>;
 }
 createRoot(document.getElementById('root')!).render(<App/>);

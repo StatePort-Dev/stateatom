@@ -253,3 +253,18 @@ Current source1639/focused48/types2/admission7/native89 pass across .3 hosts; or
 action/object/hook controls remain, with exact current analyzer/IDE166-input proof
 separate from the Atom tarball. .2 records stay historical and unchanged. Parent
 A03 native event-context/replacement matrix and ONE whole review remain open.
+
+### 2026-10-21 — A03.3 native metadata freshness matrix
+
+A03.3 updates bounded native registration metadata and its graph together on deep
+refresh, retains metadata snapshot/read clocks, and expires an old selected render
+occurrence even when DOM node/value remain equal. Cancel/Escape preserves old
+history. The passive reader retains both source caveat and optional metadata clock;
+legacy v1 gets no invented time. Dirty BASE98edc45, exact local .5:
+source1649/focused106/types2/admission7/native105/picker16/reporter33, current sealed
+aggregate .artifacts/a03/native-freshness/verification5.json. The .4 reader failure,
+legacy Attach failure and finite unavailable-parent probe remain explicit. This is
+source/registration/freshness evidence, not invocation, callback identity or actual
+prop transfer. ONE whole-A03 review remains; parent A03 is open. A02/A05/L02/P04/C07/
+release remain open, SDK outside Atom. See33-a03-native-freshness.md and
+[the supported matrix](actions-supported.md).
