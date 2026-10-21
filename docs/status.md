@@ -1494,3 +1494,12 @@ for input/options;0derived prompt returns,29main+4supplement unvisited. Exact of
 schema keyword unknown. Provider remains evaluation-addon source outside archive/UI;
 old results unchanged. Next focused full/single-keyword compatibility probe, with
 strict client gate unchanged. Full comparison/L02 still open;15/29 complete.
+
+### 2026-10-21 — isolated schema incompatibility, no quality acceptance
+
+[L02.8b](completion/65-l02-schema-compatibility-control.md):actual Chrome155 full
+schema rejects; identical facts/prompt with ONLY uniqueItems omitted returns text.
+Client structure accepts, factual entailment remains unverified; speculative handler
+wording is not accepted.2resolved/2destroy returns, strict client/provider unchanged.
+Next remove evidenced generation keyword then registered original30+separate4
+comparison. No product provider switch; L02 open,15/29 original items complete.

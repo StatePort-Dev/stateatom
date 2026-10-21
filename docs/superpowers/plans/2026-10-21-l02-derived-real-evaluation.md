@@ -45,3 +45,10 @@ attempt1 only; next probe corrects the log. Offending keyword UNKNOWN, no gradin
 whole corpus completion. Record completion/64. Next bounded L02.8b full-schema versus
 single-keyword controls with actual argument/raw taps, no client-validator weakening.
 Do not rerun full30 until compatibility evidence supports a correction.
+
+L02.8b bounded compatibility control complete; see completion/65. Same genuine facts/
+prompt:full schema NotSupportedError, only uniqueItems omitted returns actual text,
+structure-valid but speculative/unverified.2resolved/2destroy returns; no quality or
+full-corpus acceptance. First offscreen-toggle pre-model harness failure retained,
+scroll corrected. Next L02.8c evidenced generation-keyword fix with client uniqueness
+unchanged, then registered actual30+4 comparison. No product provider switch.

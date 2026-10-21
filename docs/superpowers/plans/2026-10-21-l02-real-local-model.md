@@ -122,3 +122,10 @@ main30+supplement4 registered. API available/create resolves; prompt NotSupporte
 0derived returns.29main/4supplement unvisited; full quality/usefulness pending. New
 provider stays outside archive exports and product UI. See completion/64. Next ONLY
 L02.8b focused schema keyword controls; preserve strict client gates and old receipts.
+
+L02.8b bounded compatibility control complete; see completion/65. Same genuine facts/
+prompt:full schema NotSupportedError, only uniqueItems omitted returns actual text,
+structure-valid but speculative/unverified.2resolved/2destroy returns; no quality or
+full-corpus acceptance. First offscreen-toggle pre-model harness failure retained,
+scroll corrected. Next L02.8c evidenced generation-keyword fix with client uniqueness
+unchanged, then registered actual30+4 comparison. No product provider switch.

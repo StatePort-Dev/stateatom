@@ -3,8 +3,9 @@
 import {ChromeDerivedAnnotation} from '../../core/derived-model-provider.mjs';
 import {TemplateExplanation} from '../../core/action-explanations.mjs';
 import {projectDerivedAnnotation,buildDerivedAnnotationPrompt} from '../../core/derived-annotations.mjs';
+import {localDerivedSchemaProbe,forwardDerivedSchemaProbe} from '../fixtures/local-derived-schema-probe.mjs';
 import {localDerivedCorpus,localDerivedCorpusVersion} from '../fixtures/local-derived-corpus.mjs';
-const cases=localDerivedCorpus(),status=document.getElementById('status'),run=document.getElementById('run'),cancel=document.getElementById('cancel'),change=document.getElementById('change'),select=document.getElementById('case');
+const schemaProbe=new URL(location.href).searchParams.get('schemaProbe')==='unique-items',cases=schemaProbe?localDerivedSchemaProbe():localDerivedCorpus(),status=document.getElementById('status'),run=document.getElementById('run'),cancel=document.getElementById('cancel'),change=document.getElementById('change'),select=document.getElementById('case');
 let controller,currentFacts;
 const state=window.l02Evaluation={schema:localDerivedCorpusVersion,phase:'idle',results:[],progress:[],active:null,api:typeof LanguageModel,realApiForwarding:true,modelBuildId:'Unknown; no API-exposed build ID',availability:null};
 for(const [i,c]of cases.entries()){const o=document.createElement('option');o.value=String(i);o.textContent=c.campaign+' / '+c.id;select.append(o);}
@@ -14,13 +15,13 @@ run.onclick=async event=>{
  if(controller)return;
  controller=new AbortController();const own=controller,index=Number(select.value),c=cases[index],projection=projectDerivedAnnotation(c.facts),events=[];
  currentFacts=c.facts;
- const record={id:c.id,campaign:c.campaign,expected:c.expected,expectedEligible:!!projection,startedAt:new Date().toISOString(),started:performance.now(),activation:{trusted:event.isTrusted,isActive:navigator.userActivation.isActive},template:TemplateExplanation(c.facts),registeredPrompt:projection?buildDerivedAnnotationPrompt(projection):null,events,phases:[]};
+ const record={id:c.id,campaign:c.campaign,schemaVariant:c.schemaVariant??null,expected:c.expected,expectedEligible:!!projection,startedAt:new Date().toISOString(),started:performance.now(),activation:{trusted:event.isTrusted,isActive:navigator.userActivation.isActive},template:TemplateExplanation(c.facts),registeredPrompt:projection?buildDerivedAnnotationPrompt(projection):null,events,phases:[]};
  state.active=record;state.phase='running';state.progress=[];run.disabled=true;cancel.disabled=false;change.disabled=false;status.textContent='Explicit real experimental provider request';
  const forwarded={
   async availability(o){const value=await api.availability(o);events.push({op:'availability',at:performance.now(),result:value});return value;},
   async create(o){events.push({op:'create-start',at:performance.now()});try{
    const session=await api.create(o);events.push({op:'create-resolved',at:performance.now()});
-   return {async prompt(p,o){events.push({op:'prompt-start',at:performance.now(),prompt:p,constraint:o.responseConstraint});try{const raw=await session.prompt(p,o);events.push({op:'prompt-resolved',at:performance.now(),raw});return raw;}catch(error){events.push({op:'prompt-rejected',at:performance.now(),name:error.name,message:error.message});throw error;}},
+   return {async prompt(p,o){const constraint=schemaProbe?forwardDerivedSchemaProbe(o.responseConstraint,c.schemaVariant):o.responseConstraint;events.push({op:'prompt-start',at:performance.now(),prompt:p,requestedConstraint:o.responseConstraint,constraint});try{const raw=await session.prompt(p,{...o,responseConstraint:constraint});events.push({op:'prompt-resolved',at:performance.now(),raw});return raw;}catch(error){events.push({op:'prompt-rejected',at:performance.now(),name:error.name,message:error.message});throw error;}},
     destroy(){events.push({op:'destroy-attempt',at:performance.now()});try{session.destroy();events.push({op:'destroy-returned',at:performance.now()});}catch(error){events.push({op:'destroy-rejected',at:performance.now(),name:error.name,message:error.message});throw error;}}};
   }catch(error){events.push({op:'create-rejected',at:performance.now(),name:error.name,message:error.message});throw error;}}
  };
