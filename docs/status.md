@@ -1133,3 +1133,18 @@ framework-capabilities.md for exact records/versions/limits. Missing inner route
 recomputation read/cache ancestry/function identity/invocation remain Unknown.
 All failures/old results preserved. ONE whole-A04 review remains; parent A04 open.
 No SDK, publication, installed-product/human acceptance or complete lineage claim.
+
+### 2026-10-21 — A04 whole-item review and closure
+
+ONE whole-A04 review found0 Critical,2 Important,0 Minor. Both source-evidence
+defects were reproduced and fixed: interpolation writes now invalidate old callback
+declarations; encoded Vue events retain complete raw spans and refuse inner mapping.
+Current post-fix source1664/focused131/nativeVue47 pass in both exact unchanged .6
+hosts with separately rebuilt/sealed contributor IDE. Original full matrix and old
+PARTIAL/failed results stay their historical checkpoint; no native re-audit or waiver.
+A04 is complete within its original positive Vue property/source/action scope; see
+37-a04-whole-item-review.md. Runtime callback identity/invocation/complete lineage
+remain unobserved. Next dependency-ready item: mandatory A05 bounded Action Trace,
+starting with a finite new listener/return mechanism probe. Historical
+beforeScriptExecution rejection is not repeated. A02/L02 and broader gates stay open;
+SDK outside Atom, no publication/other-repository/installed/human acceptance claim.

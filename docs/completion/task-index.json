@@ -1858,11 +1858,11 @@
         "npm run verify:short-loop"
       ],
       "deliverable": "Positive Vue UI/source cases plus retained PARTIAL controls",
-      "status": "in-progress",
+      "status": "complete",
       "optional": false,
-      "active_slice": "A04 whole-item review",
+      "active_slice": null,
       "implementation_plan": "../superpowers/plans/2026-10-21-a04-vue-positive.md",
-      "execution_record": "36-a04-vue-native-matrix.md",
+      "execution_record": "37-a04-whole-item-review.md",
       "completed_slices": [
         {
           "id": "A04.1",
@@ -1901,18 +1901,48 @@
           "full_A04_acceptance": false,
           "invocation_observed": false,
           "boundary": "Vue/compiler3.5.44 and real locked router4.6.4, exact native UI/source/reads/IDE/two instances/normal updates/HMR/v1. Independent unchanged Vue3.5.33 labels add source actions but retain old property PARTIAL. Opaque QueryClient ancestry and missing inner route recomputation read remain Unknown. Contributor analyzer/IDE separately sealed, not in Atom tarball."
+        },
+        {
+          "id": "A04.3",
+          "status": "complete-within-two-review-source-fixes",
+          "record": "37-a04-whole-item-review.md",
+          "verification": ".artifacts/a04/review/result.json",
+          "checks": {
+            "source": 1664,
+            "focused": 131,
+            "Vue_native": 47
+          },
+          "original_criteria_waived": false,
+          "invocation_observed": false
         }
       ],
-      "remaining_acceptance": [
-        "ONE whole-A04 review against original brief/matrix, tested Critical/Important resolutions and explicit Minor rulings"
-      ],
+      "remaining_acceptance": [],
       "supported_matrix": "../testing/framework-capabilities.md",
       "current_candidate": {
         "version": "0.1.0-candidate.20261021.6",
         "handoff": ".artifacts/atom/2026-10-21T02-27-38-725Z/atom-handoff.json",
         "verification": ".artifacts/a04/native-matrix/verification6.json",
-        "boundary": "Dirty BASEb608749; current source/IDE separately sealed from exact browser package. Whole-item review pending; no invocation/identity/complete producer/installed-product/human/release claim."
-      }
+        "boundary": "Exact unchanged .6 browser pair; rebuilt analyzer/IDE sealed separately in post-review native47. Original matrix verification6.json retains pending-review historical status; later review/fixes close A04. No identity/invocation/full producer/installed/human/release claim.",
+        "post_review_verification": ".artifacts/a04/review/result.json"
+      },
+      "execution_records": [
+        "35-a04-vue-source-adapter.md",
+        "36-a04-vue-native-matrix.md",
+        "37-a04-whole-item-review.md"
+      ],
+      "whole_item_review": {
+        "reviewer": "/root/a04_whole_review",
+        "base": "e4dcbacbaff326c71df7ac99641b028fbe6d5741",
+        "head": "0bb401fa8e2c376e980cb0109b0a950bd5478fc8",
+        "critical": 0,
+        "important": 2,
+        "important_resolved": 2,
+        "minor": 0,
+        "receipt": ".artifacts/a04/review/result.json",
+        "kind": "ONE read-only whole-item review; reproduced source defects fixed and verified by implementer",
+        "original_criteria_waived": false
+      },
+      "completion_boundary": "Original A04 positive Vue source/property/action matrix, real router, preserved original PARTIALs. Both review source-evidence defects fixed; current source1664/focused131/Vue-native47, unchanged exact .6 and separately sealed rebuilt contributor IDE. Earlier original matrix remains its recorded checkpoint. Runtime identity/invocation/complete lineage and installed/human/release remain unclaimed."
     },
     {
       "id": "A05",
@@ -2466,14 +2496,15 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "A04.2",
-      "status": "complete-within-declared-native-Vue-library-matrix",
-      "record": "36-a04-vue-native-matrix.md",
-      "verification": ".artifacts/a04/native-matrix/verification6.json",
-      "full_A04_acceptance": false,
-      "next_item": "A04 whole-item review"
+      "id": "A04",
+      "status": "complete-within-original-scope",
+      "record": "37-a04-whole-item-review.md",
+      "verification": ".artifacts/a04/review/result.json",
+      "original_matrix": ".artifacts/a04/native-matrix/verification6.json",
+      "invocation_observed": false,
+      "next_item": "A05"
     },
-    "next_item": "A04 whole-item review",
+    "next_item": "A05.1",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -2486,10 +2517,11 @@
       "F05",
       "U03",
       "A01",
-      "A03"
+      "A03",
+      "A04"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "A04",
+    "active_item": "A05",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -3085,11 +3117,20 @@
         "full_A04_acceptance": false,
         "native_Vue_verified": false,
         "next_item": "A04.2"
+      },
+      {
+        "id": "A04",
+        "status": "complete-within-original-scope",
+        "record": "37-a04-whole-item-review.md",
+        "verification": ".artifacts/a04/review/result.json",
+        "original_matrix": ".artifacts/a04/native-matrix/verification6.json",
+        "invocation_observed": false,
+        "next_item": "A05"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A04.2 current native/source/library matrix passed: source1662/focused129/types2/admission7/Vue47/affectedReactActions105/current original short-loop30 per host20PASS10PARTIAL plus separate real QueryClient/independent Vue source actions; finite compilation4. Exact .6 and separately sealed current analyzer/IDE. Preserved all failed attempts/old PARTIALs; missing inner route recomputation/cache ancestry/producer/function identity/invocation remain Unknown. ONE whole-A04 review next; A02/A05/L02 and broader gates remain open.",
+    "current_activity_note": "A04 complete within original positive Vue matrix after ONE whole-item review (0 Critical,2 Important resolved,0 Minor). Interpolation writes and encoded raw source spans corrected with RED/GREEN controls; current source1664/focused131/Vue-native47. Earlier matrix/failures/PARTIALs preserved, exact .6 unchanged, current contributor IDE separately sealed. Next mandatory A05 starts with a finite native listener/return mechanism probe; historical beforeScriptExecution rejection not repeated. A02/L02 and broader gates remain open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
-  "next_task": "A04"
+  "next_task": "A05"
 }

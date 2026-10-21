@@ -163,8 +163,8 @@ export function analyzeActions(files,selection,identity,graph,projectFiles=files
  }
  for(const item of entries){
   if(result.length>=12)break;
-  const {p,event,capture,sourceKind,boundary}=item;if(!p)continue;
-  const id='action:'+result.length,bindingSource=location(p,u),expression=u.text.slice(p.node.start,p.node.end);
+  const {p,event,capture,sourceKind,boundary}=item;if(!p&&!(boundary&&item.source))continue;
+  const id='action:'+result.length,bindingSource=item.source?{file:u.file,...item.source,sourceDigest:u.sourceDigest}:location(p,u),expression=item.raw??u.text.slice(p.node.start,p.node.end);
   if(expression.length>400)continue;
   graph.nodes.push({id,kind:'action-binding',...bindingSource});
   const binding={expression,source:bindingSource,evidenceIds:proof('ui',bindingSource,'declared-event-binding')};

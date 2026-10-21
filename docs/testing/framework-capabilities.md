@@ -35,6 +35,13 @@ implicit/dynamic/aggregate operands have no new positive path. Source-only navig
 observed reads. Static event-only nodes may supply source links while property
 operands/producer are unavailable.
 
+The A04 whole-item review found two source-evidence defects, now corrected:
+interpolation writes invalidate the original callback declaration; encoded event
+expressions preserve the full raw compiler span and explicitly refuse inner source
+mapping. See [37-a04](../completion/37-a04-whole-item-review.md): current post-fix
+source1664/focused131/nativeVue47. The original36-a04 matrix and old PARTIALs retain
+their exact historical checkpoint; they are not silently reissued as fresh runs.
+
 Shared observation rules remain: snapshot plus explicit reinspection, exact selected
 DOM/document and current own instrumentation instance/source revision, stale old
 results after source/HMR, missing intervals/unsupported boundaries visible. Old

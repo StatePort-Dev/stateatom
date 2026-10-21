@@ -97,3 +97,10 @@ preserved attempts. Optional-preprocessor bundling and lost legacy Options templ
 navigation were corrected with actual failing/control checks. The missing inner
 route recomputation read remains Unknown; no old read is borrowed. Product code
 frozen after the Options fix; one whole-A04 review remains before parent closure.
+
+Final state: A04.1/A04.2 matrix completed, ONE whole review found two Important
+source-evidence defects, both reproduced and fixed. Post-review source1664/
+focused131/current Vue-native47 pass; original matrix and failures retained.
+See37-a04-whole-item-review.md and .artifacts/a04/review/result.json. A04 closes
+within original scope; mandatory A05 is next. No actual invocation/identity or
+complete lineage is inferred.

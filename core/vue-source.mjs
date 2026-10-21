@@ -26,13 +26,21 @@ export function vueSourceUnit(file,text){
   try{const parsed=parse(text.slice(0,offset).replace(/[^\n]/g,' ')+exp.content,{sourceType:'module',plugins:['typescript']});if(parsed.program.body.length!==1||parsed.program.body[0].type!=='ExpressionStatement')return null;const statement=parsed.program.body[0];ast.program.body.push(statement);return statement.expression;}catch{return null;}
  }
  function walk(node,outerBoundary){
-  if(node.type!==1){for(const c of node.children||[])walk(c,outerBoundary);return;}
+  // Interpolation expressions also participate in lexical write analysis. They
+  // are never evidence that a displayed expression was actually evaluated.
+  if(node.type!==1){if(node.type===5)expression(node.content);for(const c of node.children||[])walk(c,outerBoundary);return;}
   const at=position(start+node.loc.start.offset),end=position(start+node.loc.end.offset);
   const scopeBoundary=outerBoundary||node.props.some(p=>p.type===7&&['for','slot'].includes(p.name));
   const override=node.props.some(p=>p.type===7&&(p.name==='on'&&!p.arg||p.name==='bind'&&(!p.arg||!p.arg.isStatic||/^on[A-Z]/.test(p.arg.content))));
   const expressions=[],events=[];
   for(const p of node.props){if(p.type!==7||!p.exp)continue;const parsed=expression(p.exp);
-   if(p.name==='on'&&p.arg)events.push({event:p.arg?.isStatic?p.arg.content:'unknown',capture:false,expression:parsed,raw:p.exp.content,boundary:scopeBoundary?'Vue loop/slot lexical scope boundary':override?'Vue event-object/dynamic binding override boundary':!p.arg?.isStatic?'Vue dynamic event argument boundary':p.modifiers.length?'Vue event modifier wrapper boundary':!parsed?'Unsupported Vue event statement/expression':null});
+   if(p.name==='on'&&p.arg){
+    // The compiler decodes entities, but its span addresses the original SFC.
+    // Preserve that complete binding span; never use decoded AST offsets as
+    // original inner source locations. Mapping those remains unsupported.
+    const from=position(start+p.exp.loc.start.offset),to=position(start+p.exp.loc.end.offset);
+    events.push({event:p.arg?.isStatic?p.arg.content:'unknown',capture:false,expression:parsed,raw:p.exp.loc.source,source:{line:from.line,column:from.column,endLine:to.line,endColumn:to.column},boundary:scopeBoundary?'Vue loop/slot lexical scope boundary':override?'Vue event-object/dynamic binding override boundary':!p.arg?.isStatic?'Vue dynamic event argument boundary':p.modifiers.length?'Vue event modifier wrapper boundary':p.exp.content!==p.exp.loc.source?'Vue encoded expression inner source mapping unsupported':!parsed?'Unsupported Vue event statement/expression':null});
+   }
    else expressions.push(p.exp.content);
   }
   const collect=n=>{if(n.type===5)expressions.push(n.content.content);for(const c of n.children||[])collect(c);};collect(node);

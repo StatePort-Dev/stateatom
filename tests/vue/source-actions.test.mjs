@@ -41,3 +41,16 @@ test('legacy Options API template source navigation stays available without clai
  const text='<script>export default {data(){return {shown:2}},methods:{save(){}}}</script><template><button id="options" :disabled="shown < 3" @click="save">{{shown}}</button></template>';
  const a=inspect(text,{marker:null,id:'options'});assert.equal(a.sources.length,1);assert(a.sources[0].expressions.includes('shown < 3'));assert(a.actionBindings.every(b=>b.entry.status==='Unknown/Unsupported'));
 });
+test('Vue interpolation assignment invalidates the original handler declaration without weakening the unchanged control',()=>{
+ const setup='<script setup>let save=()=>1;const other=()=>2;</script>',button='<button @click="save"/>',plain=inspect(setup+'<template>'+button+'</template>'),written=inspect(setup+'<template><p>{{ save = other }}</p>'+button+'</template>');
+ assert.equal(plain.actionBindings[0].entry.status,'Code-linked');
+ assert.equal(written.actionBindings[0].entry.status,'Unknown/Unsupported');
+ assert.equal(written.actionBindings[0].execution.status,'not-observed');
+});
+test('Vue encoded event expressions retain the complete original binding span and refuse unsupported inner mapping',()=>{
+ for(const raw of ['&#115;ave','() => save(&quot;x&quot;)','() => shown &lt; 2']){
+  const text='<script setup>const save=()=>1,shown=1;</script><template><button @click="'+raw+'"/></template>',b=inspect(text).actionBindings[0];
+  assert(b,raw);assert.equal(b.binding.expression,raw);assert.equal(b.binding.source.column,text.indexOf(raw)+1);assert.equal(b.binding.source.endColumn,text.indexOf(raw)+raw.length+1);
+  assert.equal(b.entry.status,'Unknown/Unsupported');assert.match(b.entry.reason,/encoded.*mapping/i);assert.equal(b.entry.source,undefined);assert.deepEqual(b.calls,[]);assert.equal(b.execution.status,'not-observed');
+ }
+});
