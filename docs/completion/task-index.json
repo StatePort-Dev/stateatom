@@ -2533,7 +2533,9 @@
       "files": [
         "core/action-explanations.mjs",
         "packages/atom/src/action-ui.mjs",
-        "packages/atom/src/ui.mjs"
+        "packages/atom/src/ui.mjs",
+        "core/inspection-explanations.mjs",
+        "core/explanation-condition.mjs"
       ],
       "existing_commands": [
         "npm test",
@@ -2541,8 +2543,47 @@
         "npm run verify:browser"
       ],
       "deliverable": "Short explanations from existing fact/evidence records",
-      "status": "planned",
-      "optional": false
+      "status": "in-progress",
+      "optional": false,
+      "active_slice": "L01.2 current Atom summary/details, passive reader and native acceptance",
+      "implementation_plan": "../superpowers/plans/2026-10-21-l01-selected-explanations.md",
+      "execution_record": "54-l01-local-fact-model.md",
+      "completed_slices": [
+        {
+          "id": "L01.1-local-facts-source",
+          "status": "source-only-not-installed",
+          "record": "54-l01-local-fact-model.md",
+          "source_checks": 1818,
+          "focused_checks": 39,
+          "new_native_checks": 0,
+          "new_package": false,
+          "full_L01_acceptance": false,
+          "L02_real_model_acceptance": false,
+          "verification": ".artifacts/l01/facts/verification.json",
+          "next_item": "L01.2 current UI/passive reader and native acceptance",
+          "boundary": "Pure bounded local property/action facts and boolean/source-literal condition model. Exact current target/structural operand/source context required; missing/stale/foreign/old same-span reads remain unavailable. Rich details excluded by explicit prompt projection. No new rendered/installed capability or real-model inference."
+        }
+      ],
+      "current_checkpoint": {
+        "id": "L01.1-local-facts-source",
+        "status": "source-only-not-installed",
+        "record": "54-l01-local-fact-model.md",
+        "source_checks": 1818,
+        "focused_checks": 39,
+        "new_native_checks": 0,
+        "new_package": false,
+        "full_L01_acceptance": false,
+        "L02_real_model_acceptance": false,
+        "verification": ".artifacts/l01/facts/verification.json",
+        "next_item": "L01.2 current UI/passive reader and native acceptance",
+        "boundary": "Pure bounded local property/action facts and boolean/source-literal condition model. Exact current target/structural operand/source context required; missing/stale/foreign/old same-span reads remain unavailable. Rich details excluded by explicit prompt projection. No new rendered/installed capability or real-model inference."
+      },
+      "remaining_acceptance": [
+        "Current selected-property/action summary/details and exact stale/model-result invalidation in mounted Atom",
+        "Passive diagnostic explanation without reconstructing omitted links",
+        "Actual immutable native Actions/Basic/maps and registered condition controls, visual/keyboard candidates",
+        "ONE whole-L01 read-only review and one test-backed fix pass if required"
+      ]
     },
     {
       "id": "L02",
@@ -2919,37 +2960,20 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "A05-whole-item-reviewed",
-      "status": "complete-with-explicit-capability-boundaries",
-      "record": "53-a05-whole-item-review.md",
-      "candidate": "@stateport/atom@0.1.0-candidate.20261021.23",
-      "source_checks": 1787,
-      "focused_checks": 62,
-      "native_ownership_checks": 5,
-      "type_consumers": 2,
-      "package_admission_checks": 7,
-      "whole_A05_review_performed": true,
-      "reviewed_range": "84e3e23..ea466d2891a088ee33331865a9f25e942f596070",
-      "review_findings": {
-        "critical": 0,
-        "important_confirmed": 0,
-        "minor_fixed": 2
-      },
-      "one_fix_pass": true,
-      "second_review": false,
-      "full_A05_acceptance": true,
-      "production_supported": false,
-      "runtime_callback_object_identity": "Unavailable",
-      "async_state_network_effects": "Unlinked",
-      "retained_native_results_are_not_fresh_23_runs": true,
-      "V02_overhead_target_accepted": false,
-      "V03_accepted": false,
-      "verification": ".artifacts/a05/whole-review-fixes/verification23.json",
-      "retained_matrix": ".artifacts/a05/final-acceptance/retained-matrix.json",
-      "next_item": "L01",
-      "boundary": "Mandatory bounded O02 accepted after ONE whole-item review: actual original JS/Vue source body/activation + SAME trusted Event/native target/currentTarget under explicit open dev instrumentation. HTTPS, SyntheticEvent, full listener census and callback-object equality unsupported; async/state/network consequences unlinked. Original native checkpoints preserved; .23 native5 verifies exact helper provenance, not fresh reruns of every campaign. V02/V03, A02/L02 and release remain open."
+      "id": "L01.1-local-facts-source",
+      "status": "source-only-not-installed",
+      "record": "54-l01-local-fact-model.md",
+      "source_checks": 1818,
+      "focused_checks": 39,
+      "new_native_checks": 0,
+      "new_package": false,
+      "full_L01_acceptance": false,
+      "L02_real_model_acceptance": false,
+      "verification": ".artifacts/l01/facts/verification.json",
+      "next_item": "L01.2 current UI/passive reader and native acceptance",
+      "boundary": "Pure bounded local property/action facts and boolean/source-literal condition model. Exact current target/structural operand/source context required; missing/stale/foreign/old same-span reads remain unavailable. Rich details excluded by explicit prompt projection. No new rendered/installed capability or real-model inference."
     },
-    "next_item": "L01",
+    "next_item": "L01.2 current UI/passive reader and native acceptance",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -3897,10 +3921,24 @@
         "retained_matrix": ".artifacts/a05/final-acceptance/retained-matrix.json",
         "next_item": "L01",
         "boundary": "Mandatory bounded O02 accepted after ONE whole-item review: actual original JS/Vue source body/activation + SAME trusted Event/native target/currentTarget under explicit open dev instrumentation. HTTPS, SyntheticEvent, full listener census and callback-object equality unsupported; async/state/network consequences unlinked. Original native checkpoints preserved; .23 native5 verifies exact helper provenance, not fresh reruns of every campaign. V02/V03, A02/L02 and release remain open."
+      },
+      {
+        "id": "L01.1-local-facts-source",
+        "status": "source-only-not-installed",
+        "record": "54-l01-local-fact-model.md",
+        "source_checks": 1818,
+        "focused_checks": 39,
+        "new_native_checks": 0,
+        "new_package": false,
+        "full_L01_acceptance": false,
+        "L02_real_model_acceptance": false,
+        "verification": ".artifacts/l01/facts/verification.json",
+        "next_item": "L01.2 current UI/passive reader and native acceptance",
+        "boundary": "Pure bounded local property/action facts and boolean/source-literal condition model. Exact current target/structural operand/source context required; missing/stale/foreign/old same-span reads remain unavailable. Rich details excluded by explicit prompt projection. No new rendered/installed capability or real-model inference."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Mandatory bounded O02 accepted after ONE whole-item review: actual original JS/Vue source body/activation + SAME trusted Event/native target/currentTarget under explicit open dev instrumentation. HTTPS, SyntheticEvent, full listener census and callback-object equality unsupported; async/state/network consequences unlinked. Original native checkpoints preserved; .23 native5 verifies exact helper provenance, not fresh reruns of every campaign. V02/V03, A02/L02 and release remain open. Next dependency-ready item L01; templates do not complete mandatory L02.",
+    "current_activity_note": "Pure bounded local property/action facts and boolean/source-literal condition model. Exact current target/structural operand/source context required; missing/stale/foreign/old same-span reads remain unavailable. Rich details excluded by explicit prompt projection. No new rendered/installed capability or real-model inference.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "L01"

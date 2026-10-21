@@ -1366,3 +1366,16 @@ resource guards do not pass V02 overhead targets; A02/L02/V02/V03 and release st
 open. Task accounting:14/29 complete by item count (48%); this is not a weighted
 release-readiness estimate. Next is L01 useful deterministic explanations, then
 its separately mandatory real-model L02. No publication/SDK/other-repo changes.
+
+
+### 2026-10-21 — L01 local facts/model, source-only increment
+
+[L01.1](completion/54-l01-local-fact-model.md) adds frozen exact-snapshot facts and
+a bounded pure boolean/source-literal model, with explicit unknowns, hypothetical
+masking and unproven DOM/HTTP joins. Source1818/focused39 PASS; no new native run
+or package. Exact structural operand references prevent old same-span/independent
+values filling a skipped branch. Prompt projection excludes rich local details.
+Existing .23 archives/history remain unchanged. L01 stays in-progress: current
+Atom/reader integration, native acceptance and one whole-item review are next.
+Mandatory real-model L02 remains planned/open; templates and mock states do not
+complete it. Complete item count remains14/29.
