@@ -167,3 +167,17 @@ clean agent-operated acceptance: 241 source files, fresh locked cache install,
 320 tests/build, 34 matching outputs and 26 actual UI checks, including ten reviewed
 exports in a fresh offline reader. The latest compilation checkpoint has 49/49
 hashes; no current-field, ownership or complete HTTP claim follows from it.
+
+
+## 2026-10-21 approved completion-scope checkpoint
+
+The [A05 whole-item acceptance](../completion/53-a05-whole-item-review.md) completes
+bounded O02 for explicitly instrumented ordinary JS/Vue development bodies with
+exact original Event/native target identity. This adds no result to the historical
+first-read criteria above, no general async/network ancestry, production Action
+Trace or callback-object equality. Existing reports and experiment results keep
+their exact checkpoints. Finite A05 timing guards are not the separate V02 <=10%
+overhead target. The approved task index now records14/29 complete items; A02
+lineage, L02 real model, production and final V gates remain open. The next bounded
+dependency-ready item is L01 deterministic selected-question explanations. Human
+visual approval is unobserved, not a required second-operator gate.

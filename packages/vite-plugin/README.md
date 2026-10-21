@@ -59,15 +59,23 @@ Historical MIT source and Apache-2.0 components retain their original notices. T
 package bundles only local implementation; Babel/Vue dependencies retain their own
 package licenses. It does not ship a production SDK or enable production changes.
 
-## Optional Action Trace source mechanism (local20261021.1 candidate)
+## Optional Action Trace development workflow
 
 `actionTrace:true` is an additional, disabled-by-default development option. It
 registers original synchronous function sites and the private Event/body-entry/
 body-leave collector in the existing observer. Original source ranges and event
 identity are required; source links/registrations remain different claims.
-This candidate's source mechanism is tested separately; the installed Atom Actions
-UI has not yet integrated Arm/Cancel/Clear. Enabling the option alone is not a
-shipped Action Trace workflow. No production or general async support is implied.
+Use the exact plugin `0.1.0-candidate.20261021.1` archive with a compatible Atom
+`0.1.0-candidate.20261021.23` candidate and its pinned extension UI.
+Connect the matching private source helper, attach the development page, select
+the actual element and open Actions. Arm observation, then perform the real
+interaction in the application. Cancel ends collection; Clear removes the trace
+without undoing the application action. Selection does not invoke the handler.
+The original plugin-only experiment remains historical evidence in
+[completion record 40](../../docs/completion/40-a05-plugin-observer.md); it did not
+include these installed controls. Enabling the option alone does not provide an
+installed workflow. HTTPS Action Trace and general async causality remain
+unsupported; no public release is established.
 
 Supported first-identifier synchronous functions/arrows receiving the original
 native Event retain normal/throw body leave. Methods, async/generator, wrapper/

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.23
+
+- Register the exact parenthesized function form compiled by native Chromium for
+  Action Trace helpers. Exact native digest comparisons remain required; no
+  approximate matching or application code classification is introduced.
+
+## 0.1.0-candidate.20261021.22
+
+- Preserve exact Action Trace global/helper ownership roles in compilation journal
+  diagnostics. Avoid an artificial collection gap; these roles remain metadata,
+  without invocation, source equivalence or consequence authority.
+- No UI, collector, transformation, privacy or application behavior change.
+
 ## 0.1.0-candidate.20261021.21
 
 - Keep a recorded click/body visible when observation expires during the original

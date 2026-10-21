@@ -1350,3 +1350,19 @@ Retained13/37/3/13/11 native checkpoints keep original versions/scopes, not fres
 retained-matrix.json. Next: ONE whole-A05 scope/code/evidence review and one fix pass
 if needed. A05 remains in-progress; production/SyntheticEvent/async/function-object
 boundaries are explicit and mandatory O02 completion is not presumed by documents.
+
+
+### 2026-10-21 — bounded A05/O02 accepted after one whole-item review
+
+[Whole-A05 review and correction](completion/53-a05-whole-item-review.md) accepts
+explicit opt-in ordinary JS/Vue body/activation + SAME native Event/currentTarget
+evidence. Critical0/confirmed Important0; two Minor provenance/docs corrections
+are fixed in one pass, including native exact parenthesized helper registration.
+Final .23 source1787/focused62, native5, types2/admission7 PASS; original matrix
+checkpoints retain their versions/results. Final lock-aligned archives and both
+hosts are byte-identical to the native-consumed pair. HTTPS/SyntheticEvent/full
+listener/function-object/async consequences stay unsupported or unlinked. Finite
+resource guards do not pass V02 overhead targets; A02/L02/V02/V03 and release stay
+open. Task accounting:14/29 complete by item count (48%); this is not a weighted
+release-readiness estimate. Next is L01 useful deterministic explanations, then
+its separately mandatory real-model L02. No publication/SDK/other-repo changes.

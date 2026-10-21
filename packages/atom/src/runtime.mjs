@@ -154,11 +154,11 @@ async function actionTraceOperation(id,m,context){
  const invoke=async(op,page,expected,traceId)=>{
   const group='atom-action-'+crypto.randomUUID();try{
    let objectId;if(op==='arm'){await guard();const native=await identifySelection(id,selected.selector,selected.property);await guard();if(!native||native.document!==selected.domIdentity.document||native.node!==selected.domIdentity.node)throw atomError('STALE_TARGET','Selected native node changed');const backendNodeId=Number(native.node.slice(4));const object=await send(id,'DOM.resolveNode',{backendNodeId,executionContextId:main.id,objectGroup:group});objectId=object.object?.objectId;if(!objectId)throw atomError('STALE_TARGET');}
-   const globalDeclaration=actionPageGlobal.toString();await declareOwnedCode(s.codeJournal,'action-observation-global',globalDeclaration,main.uniqueId);
+   const globalDeclaration=actionPageGlobal.toString();await declareOwnedCode(s.codeJournal,'action-observation-global','('+globalDeclaration+')',main.uniqueId);
    const global=await send(id,'Runtime.callFunctionOn',{uniqueContextId:main.uniqueId,functionDeclaration:globalDeclaration,objectGroup:group,returnByValue:false});
    if(global.exceptionDetails||!global.result?.objectId)throw atomError('ACTION_TRACE_UNAVAILABLE');
    const apiArgs=await resolveActionPageAPI((m,p)=>send(id,m,p),global.result.objectId);
-   const declaration=actionPageOperation.toString();await declareOwnedCode(s.codeJournal,'action-observation-helper',declaration,main.uniqueId);
+   const declaration=actionPageOperation.toString();await declareOwnedCode(s.codeJournal,'action-observation-helper','('+declaration+')',main.uniqueId);
    const response=await send(id,'Runtime.callFunctionOn',{uniqueContextId:main.uniqueId,functionDeclaration:declaration,arguments:[{value:op},{value:page},{value:expected},{value:traceId},objectId?{objectId}:{value:null},...apiArgs],returnByValue:true});if(response.exceptionDetails)throw atomError('ACTION_TRACE_UNAVAILABLE','Optional development observer unavailable');return response.result?.value;
   }finally{await send(id,'Runtime.releaseObjectGroup',{objectGroup:group}).catch(()=>{});}
  };

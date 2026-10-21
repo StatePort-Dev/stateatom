@@ -1975,11 +1975,11 @@
         "npm run verify:browser"
       ],
       "deliverable": "Actual bounded user-action invocation and separately supported consequences through the UI",
-      "status": "in-progress",
+      "status": "complete",
       "optional": false,
-      "active_slice": "Original registered controls reconciled; ONE whole-A05 scope/code/evidence review next",
-      "implementation_plan": "../superpowers/plans/2026-10-21-a05-historical-action-reports.md",
-      "execution_record": "52-a05-original-matrix-and-expiry.md",
+      "active_slice": null,
+      "implementation_plan": null,
+      "execution_record": "53-a05-whole-item-review.md",
       "completed_slices": [
         {
           "id": "A05.1",
@@ -2296,11 +2296,40 @@
           "verification": ".artifacts/a05/semantic-controls/verification21.json",
           "retained_matrix": ".artifacts/a05/final-acceptance/retained-matrix.json",
           "boundary": "Registered original JS/Vue Event/body/instance controls, concurrency/replacement/expiry, lifecycle/read-only, reports and finite resources reconciled from exact code/current and retained native evidence. Mandatory O02 completion remains for one whole-item scope assessment; no production/universal async/full listener/function-object claim."
+        },
+        {
+          "id": "A05-whole-item-reviewed",
+          "status": "complete-with-explicit-capability-boundaries",
+          "record": "53-a05-whole-item-review.md",
+          "candidate": "@stateport/atom@0.1.0-candidate.20261021.23",
+          "source_checks": 1787,
+          "focused_checks": 62,
+          "native_ownership_checks": 5,
+          "type_consumers": 2,
+          "package_admission_checks": 7,
+          "whole_A05_review_performed": true,
+          "reviewed_range": "84e3e23..ea466d2891a088ee33331865a9f25e942f596070",
+          "review_findings": {
+            "critical": 0,
+            "important_confirmed": 0,
+            "minor_fixed": 2
+          },
+          "one_fix_pass": true,
+          "second_review": false,
+          "full_A05_acceptance": true,
+          "production_supported": false,
+          "runtime_callback_object_identity": "Unavailable",
+          "async_state_network_effects": "Unlinked",
+          "retained_native_results_are_not_fresh_23_runs": true,
+          "V02_overhead_target_accepted": false,
+          "V03_accepted": false,
+          "verification": ".artifacts/a05/whole-review-fixes/verification23.json",
+          "retained_matrix": ".artifacts/a05/final-acceptance/retained-matrix.json",
+          "next_item": "L01",
+          "boundary": "Mandatory bounded O02 accepted after ONE whole-item review: actual original JS/Vue source body/activation + SAME trusted Event/native target/currentTarget under explicit open dev instrumentation. HTTPS, SyntheticEvent, full listener census and callback-object equality unsupported; async/state/network consequences unlinked. Original native checkpoints preserved; .23 native5 verifies exact helper provenance, not fresh reruns of every campaign. V02/V03, A02/L02 and release remain open."
         }
       ],
-      "remaining_acceptance": [
-        "ONE whole-A05 review must assess mandatory O02 against approved scope and explicit supported/unsupported modes; fix accepted Critical/Important findings in one TDD pass"
-      ],
+      "remaining_acceptance": [],
       "implementation_plans": [
         "../superpowers/plans/2026-10-21-a05-native-boundary.md",
         "../superpowers/plans/2026-10-21-a05-development-boundary.md",
@@ -2324,41 +2353,46 @@
         "49-a05-reviewed-action-report-ui.md",
         "50-a05-report-review-fix.md",
         "51-a05-installed-resource-controls.md",
-        "52-a05-original-matrix-and-expiry.md"
+        "52-a05-original-matrix-and-expiry.md",
+        "53-a05-whole-item-review.md"
       ],
       "current_checkpoint": {
-        "id": "A05-original-matrix-ready-for-one-review",
-        "status": "registered-controls-reconciled-pending-whole-item-review",
-        "record": "52-a05-original-matrix-and-expiry.md",
-        "candidate": "@stateport/atom@0.1.0-candidate.20261021.21",
-        "source_checks": 1785,
-        "focused_checks": 69,
-        "native_semantic_checks": 11,
-        "actual_HTTP_responses": 16,
-        "new_expiry_controls": 3,
+        "id": "A05-whole-item-reviewed",
+        "status": "complete-with-explicit-capability-boundaries",
+        "record": "53-a05-whole-item-review.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.23",
+        "source_checks": 1787,
+        "focused_checks": 62,
+        "native_ownership_checks": 5,
         "type_consumers": 2,
         "package_admission_checks": 7,
-        "retained_native_checkpoints": {
-          "consumed_plugin": 13,
-          "session17": 37,
-          "read_inject17": 3,
-          "reports20": 13,
-          "resource20": 11
+        "whole_A05_review_performed": true,
+        "reviewed_range": "84e3e23..ea466d2891a088ee33331865a9f25e942f596070",
+        "review_findings": {
+          "critical": 0,
+          "important_confirmed": 0,
+          "minor_fixed": 2
         },
-        "native_retained_results_are_not_fresh_21_runs": true,
-        "live_runtime_and_mechanism_byte_identical_to17": true,
-        "strict_parser_extraction_unchanged": true,
-        "product_change": "Existing expired UI caption only; known entry retained, empty timeout distinct.",
-        "full_A05_acceptance": false,
+        "one_fix_pass": true,
+        "second_review": false,
+        "full_A05_acceptance": true,
         "production_supported": false,
         "runtime_callback_object_identity": "Unavailable",
         "async_state_network_effects": "Unlinked",
-        "whole_A05_review_performed": false,
-        "next_item": "ONE whole-A05 scope/code/evidence review, then one test-backed fix pass if required",
-        "verification": ".artifacts/a05/semantic-controls/verification21.json",
+        "retained_native_results_are_not_fresh_23_runs": true,
+        "V02_overhead_target_accepted": false,
+        "V03_accepted": false,
+        "verification": ".artifacts/a05/whole-review-fixes/verification23.json",
         "retained_matrix": ".artifacts/a05/final-acceptance/retained-matrix.json",
-        "boundary": "Registered original JS/Vue Event/body/instance controls, concurrency/replacement/expiry, lifecycle/read-only, reports and finite resources reconciled from exact code/current and retained native evidence. Mandatory O02 completion remains for one whole-item scope assessment; no production/universal async/full listener/function-object claim."
-      }
+        "next_item": "L01",
+        "boundary": "Mandatory bounded O02 accepted after ONE whole-item review: actual original JS/Vue source body/activation + SAME trusted Event/native target/currentTarget under explicit open dev instrumentation. HTTPS, SyntheticEvent, full listener census and callback-object equality unsupported; async/state/network consequences unlinked. Original native checkpoints preserved; .23 native5 verifies exact helper provenance, not fresh reruns of every campaign. V02/V03, A02/L02 and release remain open."
+      },
+      "delivery_states": [
+        "implemented",
+        "native-verified",
+        "whole-item-reviewed"
+      ],
+      "completion_boundary": "Mandatory bounded O02 accepted after ONE whole-item review: actual original JS/Vue source body/activation + SAME trusted Event/native target/currentTarget under explicit open dev instrumentation. HTTPS, SyntheticEvent, full listener census and callback-object equality unsupported; async/state/network consequences unlinked. Original native checkpoints preserved; .23 native5 verifies exact helper provenance, not fresh reruns of every campaign. V02/V03, A02/L02 and release remain open."
     },
     {
       "id": "P01",
@@ -2885,39 +2919,37 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "A05-original-matrix-ready-for-one-review",
-      "status": "registered-controls-reconciled-pending-whole-item-review",
-      "record": "52-a05-original-matrix-and-expiry.md",
-      "candidate": "@stateport/atom@0.1.0-candidate.20261021.21",
-      "source_checks": 1785,
-      "focused_checks": 69,
-      "native_semantic_checks": 11,
-      "actual_HTTP_responses": 16,
-      "new_expiry_controls": 3,
+      "id": "A05-whole-item-reviewed",
+      "status": "complete-with-explicit-capability-boundaries",
+      "record": "53-a05-whole-item-review.md",
+      "candidate": "@stateport/atom@0.1.0-candidate.20261021.23",
+      "source_checks": 1787,
+      "focused_checks": 62,
+      "native_ownership_checks": 5,
       "type_consumers": 2,
       "package_admission_checks": 7,
-      "retained_native_checkpoints": {
-        "consumed_plugin": 13,
-        "session17": 37,
-        "read_inject17": 3,
-        "reports20": 13,
-        "resource20": 11
+      "whole_A05_review_performed": true,
+      "reviewed_range": "84e3e23..ea466d2891a088ee33331865a9f25e942f596070",
+      "review_findings": {
+        "critical": 0,
+        "important_confirmed": 0,
+        "minor_fixed": 2
       },
-      "native_retained_results_are_not_fresh_21_runs": true,
-      "live_runtime_and_mechanism_byte_identical_to17": true,
-      "strict_parser_extraction_unchanged": true,
-      "product_change": "Existing expired UI caption only; known entry retained, empty timeout distinct.",
-      "full_A05_acceptance": false,
+      "one_fix_pass": true,
+      "second_review": false,
+      "full_A05_acceptance": true,
       "production_supported": false,
       "runtime_callback_object_identity": "Unavailable",
       "async_state_network_effects": "Unlinked",
-      "whole_A05_review_performed": false,
-      "next_item": "ONE whole-A05 scope/code/evidence review, then one test-backed fix pass if required",
-      "verification": ".artifacts/a05/semantic-controls/verification21.json",
+      "retained_native_results_are_not_fresh_23_runs": true,
+      "V02_overhead_target_accepted": false,
+      "V03_accepted": false,
+      "verification": ".artifacts/a05/whole-review-fixes/verification23.json",
       "retained_matrix": ".artifacts/a05/final-acceptance/retained-matrix.json",
-      "boundary": "Registered original JS/Vue Event/body/instance controls, concurrency/replacement/expiry, lifecycle/read-only, reports and finite resources reconciled from exact code/current and retained native evidence. Mandatory O02 completion remains for one whole-item scope assessment; no production/universal async/full listener/function-object claim."
+      "next_item": "L01",
+      "boundary": "Mandatory bounded O02 accepted after ONE whole-item review: actual original JS/Vue source body/activation + SAME trusted Event/native target/currentTarget under explicit open dev instrumentation. HTTPS, SyntheticEvent, full listener census and callback-object equality unsupported; async/state/network consequences unlinked. Original native checkpoints preserved; .23 native5 verifies exact helper provenance, not fresh reruns of every campaign. V02/V03, A02/L02 and release remain open."
     },
-    "next_item": "ONE whole-A05 scope/code/evidence review, then one test-backed fix pass if required",
+    "next_item": "L01",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -2931,10 +2963,11 @@
       "U03",
       "A01",
       "A03",
-      "A04"
+      "A04",
+      "A05"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "A05",
+    "active_item": "L01",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -3833,11 +3866,42 @@
         "verification": ".artifacts/a05/semantic-controls/verification21.json",
         "retained_matrix": ".artifacts/a05/final-acceptance/retained-matrix.json",
         "boundary": "Registered original JS/Vue Event/body/instance controls, concurrency/replacement/expiry, lifecycle/read-only, reports and finite resources reconciled from exact code/current and retained native evidence. Mandatory O02 completion remains for one whole-item scope assessment; no production/universal async/full listener/function-object claim."
+      },
+      {
+        "id": "A05-whole-item-reviewed",
+        "status": "complete-with-explicit-capability-boundaries",
+        "record": "53-a05-whole-item-review.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.23",
+        "source_checks": 1787,
+        "focused_checks": 62,
+        "native_ownership_checks": 5,
+        "type_consumers": 2,
+        "package_admission_checks": 7,
+        "whole_A05_review_performed": true,
+        "reviewed_range": "84e3e23..ea466d2891a088ee33331865a9f25e942f596070",
+        "review_findings": {
+          "critical": 0,
+          "important_confirmed": 0,
+          "minor_fixed": 2
+        },
+        "one_fix_pass": true,
+        "second_review": false,
+        "full_A05_acceptance": true,
+        "production_supported": false,
+        "runtime_callback_object_identity": "Unavailable",
+        "async_state_network_effects": "Unlinked",
+        "retained_native_results_are_not_fresh_23_runs": true,
+        "V02_overhead_target_accepted": false,
+        "V03_accepted": false,
+        "verification": ".artifacts/a05/whole-review-fixes/verification23.json",
+        "retained_matrix": ".artifacts/a05/final-acceptance/retained-matrix.json",
+        "next_item": "L01",
+        "boundary": "Mandatory bounded O02 accepted after ONE whole-item review: actual original JS/Vue source body/activation + SAME trusted Event/native target/currentTarget under explicit open dev instrumentation. HTTPS, SyntheticEvent, full listener census and callback-object equality unsupported; async/state/network consequences unlinked. Original native checkpoints preserved; .23 native5 verifies exact helper provenance, not fresh reruns of every campaign. V02/V03, A02/L02 and release remain open."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Registered original JS/Vue Event/body/instance controls, concurrency/replacement/expiry, lifecycle/read-only, reports and finite resources reconciled from exact code/current and retained native evidence. Mandatory O02 completion remains for one whole-item scope assessment; no production/universal async/full listener/function-object claim.",
+    "current_activity_note": "Mandatory bounded O02 accepted after ONE whole-item review: actual original JS/Vue source body/activation + SAME trusted Event/native target/currentTarget under explicit open dev instrumentation. HTTPS, SyntheticEvent, full listener census and callback-object equality unsupported; async/state/network consequences unlinked. Original native checkpoints preserved; .23 native5 verifies exact helper provenance, not fresh reruns of every campaign. V02/V03, A02/L02 and release remain open. Next dependency-ready item L01; templates do not complete mandatory L02.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
-  "next_task": "A05"
+  "next_task": "L01"
 }

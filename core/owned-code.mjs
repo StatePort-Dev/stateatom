@@ -3,7 +3,7 @@
 // bind code bodies/context/roles only; they are not invocation or effect proofs.
 import {journalGap} from './code-journal.mjs';
 import {fetchScriptBody} from './fetch-bindings.mjs';
-export const ownedCodeRoles=Object.freeze(['selection-helper','deep-helper','fetch-policy-helper','action-observation-helper']);
+export const ownedCodeRoles=Object.freeze(['selection-helper','deep-helper','fetch-policy-helper','action-observation-global','action-observation-helper']);
 export async function declareOwnedCode(j,role,source,contextUniqueId){
  if(!ownedCodeRoles.includes(role)||typeof source!=='string'||source.length>32768||!Object.values(j.contexts).some(c=>c.uniqueId===contextUniqueId&&c.isDefault===true)){
   journalGap(j,'owned-code-unavailable');return false;
