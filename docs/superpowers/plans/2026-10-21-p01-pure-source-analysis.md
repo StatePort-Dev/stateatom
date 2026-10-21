@@ -115,8 +115,16 @@ analysis gap while existing source preview remains. No external fallback/model.
   Existing affected native/host source controls are regressions, not whole-project
   re-audit. Pin/freeze inputs and keep failed runs.440/390/keyboard/console/source
   fidelity vs supplied references, scoped changelog; no redesign.
-- [ ] Record completion/evidence/index/status/local commit. After remaining P01
+- [x] Record completion/evidence/index/status/local commit. After remaining P01
   acceptance is actually satisfied, ONE whole-P01 review; retain any real gaps.
+
+Final whole-P01 review/correction:completion75. One Important line-separator defect
+was reproduced RED and corrected in one bounded pass. Current .39 full2004/focused146,
+actual packed analysis56/native49/own-host65/NodeIDE105/types2/admission8 PASS;
+12 immutable Node bindings/graph cases remain equal. The .38 failed concurrent
+campaigns stay negative with Unknown cause; no concurrent-reliability claim.
+P01 accepted within its finite handler/source scope; next P02.1, not a C06/release
+completion. Prior candidate records and preregistered plan copies remain unchanged.
 
 Ruling: owned extension-document Worker with fixed parser input, same-origin asset
 and hard termination, rather than parsing private maps synchronously in the service

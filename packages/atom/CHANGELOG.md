@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.39
+
+- Map original source lines consistently for LF, CRLF, CR, U+2028 and U+2029.
+  Valid selected callback positions now retain their preview and reach source
+  analysis; out-of-range positions still refuse analysis. Columns remain UTF-16.
+
 ## 0.1.0-candidate.20261021.38
 
 - Resolve only explicit ./ or ../ source imports. Dot-prefixed bare names such as

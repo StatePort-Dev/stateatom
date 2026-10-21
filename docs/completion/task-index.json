@@ -2484,7 +2484,7 @@
         "npm run verify:react-source-native"
       ],
       "deliverable": "Real element-to-generated-handler-to-source path without IDE",
-      "status": "in-progress",
+      "status": "complete",
       "optional": false,
       "credited_existing_work": {
         "revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
@@ -2492,47 +2492,39 @@
         "validation": "../testing/production-source-mapping.md",
         "reconciliation": "13-scope-reconciliation.md"
       },
-      "remaining_acceptance": [
-        "ONE whole-P01 review of approved scope, current code and actual native/framework/shared-source controls; assess impact of preserved concurrent harness failures and retain any real gaps"
-      ],
-      "active_slice": "ONE whole-P01 scope/code/evidence review and one bounded fix pass if needed; assess preserved concurrent harness failures without relabelling them passed",
+      "remaining_acceptance": [],
+      "active_slice": null,
       "implementation_plan": "../superpowers/plans/2026-10-21-p01-pure-source-analysis.md",
-      "execution_record": "74-p01-owned-source-analysis-worker.md",
+      "execution_record": "75-p01-whole-item-review.md",
       "current_checkpoint": {
-        "id": "P01.4b-owned-source-analysis-worker",
-        "status": "complete-bounded-packed-source-analysis-awaiting-whole-P01-review",
-        "record": "74-p01-owned-source-analysis-worker.md",
-        "implementation_plan": "../superpowers/plans/2026-10-21-p01-pure-source-analysis.md",
-        "candidate": "@stateport/atom@0.1.0-candidate.20261021.38",
-        "superseded_immutable_candidates": [
-          ".20261021.36",
-          ".20261021.37"
-        ],
-        "new_source_tests": 23,
-        "focused_tests": 126,
-        "source_tests": 1998,
+        "id": "P01.5-whole-item-accepted",
+        "status": "complete-bounded-P01-after-one-review-and-fix-pass",
+        "record": "75-p01-whole-item-review.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.39",
+        "source_tests": 2004,
+        "focused_tests": 146,
+        "new_source_tests": 6,
         "node_exact_parity_cases": 12,
-        "actual_HTTP_worker_checks": 6,
-        "actual_packed_source_analysis_checks": 46,
-        "actual_packed_checks_per_host": {
-          "standalone": 22,
-          "embedding": 23
-        },
-        "actual_native_registration_regression": 49,
-        "actual_framework_source_regression": 65,
-        "actual_Node_Action_IDE_regression": 105,
+        "actual_packed_source_analysis_checks": 56,
+        "actual_native_registration_checks": 49,
+        "actual_framework_source_checks": 65,
+        "actual_Node_Action_IDE_checks": 105,
         "packed_type_consumers": 2,
         "package_admission": 8,
         "worker_only_exact_inputs": 172,
-        "common_pure_source_analysis_in_product": true,
-        "source_body_in_default_state_diagnostics_model": false,
-        "renderer_version_attestation": false,
-        "callback_object_identity": "Unknown/Unsupported",
-        "concurrent_harness_failures": "Preserved4/26; cause Unknown; unchanged sequential49/105 controls pass",
-        "full_P01_acceptance": false,
-        "verification": ".artifacts/p01/worker-source/verification38.json",
-        "next_item": "ONE whole-P01 scope/code/evidence review and one bounded fix pass if needed; assess preserved concurrent harness failures without relabelling them passed",
-        "boundary": "Actual current .38/UI .2 source-only lexical context through owned one-shot Worker:1998full/126focused,6HTTPWorker/46packed/49native/65framework/105NodeIDE/types2/admission8. Same original/identical maps in two co-loaded different JS builds keep runtime anchors separate. Explicit provider/input/DTO/budget/cancel/privacy/unsupported controls; no invocation/values/property/HTTP/renderer claim. Prior .36/.37 and all failed runs preserved; ONE P01 review pending,15/29 complete."
+        "whole_P01_review_performed": true,
+        "important_findings": 1,
+        "important_findings_fixed": 1,
+        "full_P01_acceptance": true,
+        "delivery_states": [
+          "implemented",
+          "native-verified"
+        ],
+        "verification": ".artifacts/p01/review-fix/verification39.json",
+        "concurrent_failure_cause": "Unknown; retained .38 failures are not resolved or concurrent-reliability proof",
+        "human_visual_approval": false,
+        "next_item": "P02.1 explicit local release-bundle preparation",
+        "boundary": "Finite native/own-host selected callback source path without IDE/manual coordinates, shared pure source analysis and one-shot owned Worker. One full review and one RED/GREEN correction pass for CR/LS/PS source lines. No invocation/values/property/HTTP/renderer attestation, P02/P03, L02 quality, release/SDK/other repository claim."
       },
       "completed_slices": [
         {
@@ -2691,6 +2683,36 @@
           "verification": ".artifacts/p01/worker-source/verification38.json",
           "next_item": "ONE whole-P01 scope/code/evidence review and one bounded fix pass if needed; assess preserved concurrent harness failures without relabelling them passed",
           "boundary": "Actual current .38/UI .2 source-only lexical context through owned one-shot Worker:1998full/126focused,6HTTPWorker/46packed/49native/65framework/105NodeIDE/types2/admission8. Same original/identical maps in two co-loaded different JS builds keep runtime anchors separate. Explicit provider/input/DTO/budget/cancel/privacy/unsupported controls; no invocation/values/property/HTTP/renderer claim. Prior .36/.37 and all failed runs preserved; ONE P01 review pending,15/29 complete."
+        },
+        {
+          "id": "P01.5-whole-item-accepted",
+          "status": "complete-bounded-P01-after-one-review-and-fix-pass",
+          "record": "75-p01-whole-item-review.md",
+          "candidate": "@stateport/atom@0.1.0-candidate.20261021.39",
+          "source_tests": 2004,
+          "focused_tests": 146,
+          "new_source_tests": 6,
+          "node_exact_parity_cases": 12,
+          "actual_packed_source_analysis_checks": 56,
+          "actual_native_registration_checks": 49,
+          "actual_framework_source_checks": 65,
+          "actual_Node_Action_IDE_checks": 105,
+          "packed_type_consumers": 2,
+          "package_admission": 8,
+          "worker_only_exact_inputs": 172,
+          "whole_P01_review_performed": true,
+          "important_findings": 1,
+          "important_findings_fixed": 1,
+          "full_P01_acceptance": true,
+          "delivery_states": [
+            "implemented",
+            "native-verified"
+          ],
+          "verification": ".artifacts/p01/review-fix/verification39.json",
+          "concurrent_failure_cause": "Unknown; retained .38 failures are not resolved or concurrent-reliability proof",
+          "human_visual_approval": false,
+          "next_item": "P02.1 explicit local release-bundle preparation",
+          "boundary": "Finite native/own-host selected callback source path without IDE/manual coordinates, shared pure source analysis and one-shot owned Worker. One full review and one RED/GREEN correction pass for CR/LS/PS source lines. No invocation/values/property/HTTP/renderer attestation, P02/P03, L02 quality, release/SDK/other repository claim."
         }
       ]
     },
@@ -2725,11 +2747,12 @@
       },
       "remaining_acceptance": "Release-bundle preparation and normal multi-chunk/source workflow with responsive bounded parsing",
       "credited_p01_source_analysis": {
-        "record": "74-p01-owned-source-analysis-worker.md",
-        "candidate": "@stateport/atom@0.1.0-candidate.20261021.38",
+        "record": "75-p01-whole-item-review.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.39",
         "scope": "Owned hard-budget source AST Worker, exact separate dependency gate and transient provider foundation only",
         "does_not_complete": "Release-bundle preparation/bulk matching, preemptible archive/map parsing, companion sources or registered real-app limit qualification"
-      }
+      },
+      "active_slice": "P02.1 explicit already-built JS/map bundle preparation; P01 accepted, runtime bulk/corpus acceptance remains open"
     },
     {
       "id": "P03",
@@ -3543,36 +3566,40 @@
     ]
   },
   "reconciliation": {
-    "document": "24-u03-handoff-progress.md",
+    "document": "75-p01-whole-item-review.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "P01.3b-react-host-source-view",
-      "status": "complete-bounded-packed-host-source-not-full-P01",
-      "record": "72-p01-react-host-source-view.md",
-      "implementation_plan": "../superpowers/plans/2026-10-21-p01-react-source-view.md",
-      "candidate": "@stateport/atom@0.1.0-candidate.20261021.35",
-      "new_source_tests": 13,
-      "focused_tests": 115,
-      "source_tests": 1957,
-      "actual_framework_native_checks": 65,
-      "actual_framework_checks_per_host": 32,
-      "actual_native_registration_regression": 49,
+      "id": "P01.5-whole-item-accepted",
+      "status": "complete-bounded-P01-after-one-review-and-fix-pass",
+      "record": "75-p01-whole-item-review.md",
+      "candidate": "@stateport/atom@0.1.0-candidate.20261021.39",
+      "source_tests": 2004,
+      "focused_tests": 146,
+      "new_source_tests": 6,
+      "node_exact_parity_cases": 12,
+      "actual_packed_source_analysis_checks": 56,
+      "actual_native_registration_checks": 49,
+      "actual_framework_source_checks": 65,
+      "actual_Node_Action_IDE_checks": 105,
       "packed_type_consumers": 2,
-      "package_admission": 7,
-      "actual_minified_framework_source_UI": true,
-      "actual_native_onClickCapture": true,
-      "test_sidecar": false,
-      "renderer_version_attestation": false,
-      "callback_object_identity": "Unknown/Unsupported",
-      "collector_in_product_archive": true,
-      "common_pure_source_analysis": false,
-      "full_P01_acceptance": false,
-      "verification": ".artifacts/p01/react-view-source/verification35.json",
-      "next_item": "P01.4 shared browser-safe bounded pure source analysis with explicit source provider; actual same-file/two-loaded-bundle and remaining whole-item controls, then ONE P01 review",
-      "boundary": "Exact .35/UI .2 current native own-host source factory/runtime/map/provider/Actions path;13new/115focused/1957full PASS,actual two-host framework65/native regression49/types2/admission7. Real picker, equal labels, capture, sourceIndex/minified originals, getter/Proxy/root/bound/wrong host, replacement/removal/stale/map/privacy and440/390 keyboard controls. Renderer/version unverified, callback identity/property/HTTP unknown/execution not-observed. Source body stays transient; portable v1 keeps carrier unknown. Common pure analysis/full P01 open;15/29 complete."
+      "package_admission": 8,
+      "worker_only_exact_inputs": 172,
+      "whole_P01_review_performed": true,
+      "important_findings": 1,
+      "important_findings_fixed": 1,
+      "full_P01_acceptance": true,
+      "delivery_states": [
+        "implemented",
+        "native-verified"
+      ],
+      "verification": ".artifacts/p01/review-fix/verification39.json",
+      "concurrent_failure_cause": "Unknown; retained .38 failures are not resolved or concurrent-reliability proof",
+      "human_visual_approval": false,
+      "next_item": "P02.1 explicit local release-bundle preparation",
+      "boundary": "Finite native/own-host selected callback source path without IDE/manual coordinates, shared pure source analysis and one-shot owned Worker. One full review and one RED/GREEN correction pass for CR/LS/PS source lines. No invocation/values/property/HTTP/renderer attestation, P02/P03, L02 quality, release/SDK/other repository claim."
     },
-    "next_item": "P01.4 shared browser-safe bounded pure source analysis with explicit source provider; actual same-file/two-loaded-bundle and remaining whole-item controls, then ONE P01 review",
+    "next_item": "P02.1 explicit local release-bundle preparation",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -3588,10 +3615,11 @@
       "A03",
       "A04",
       "A05",
-      "L01"
+      "L01",
+      "P01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "P01",
+    "active_item": "P02",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -4914,11 +4942,98 @@
         "verification": ".artifacts/p01/react-view-source/verification35.json",
         "next_item": "P01.4 shared browser-safe bounded pure source analysis with explicit source provider; actual same-file/two-loaded-bundle and remaining whole-item controls, then ONE P01 review",
         "boundary": "Exact .35/UI .2 current native own-host source factory/runtime/map/provider/Actions path;13new/115focused/1957full PASS,actual two-host framework65/native regression49/types2/admission7. Real picker, equal labels, capture, sourceIndex/minified originals, getter/Proxy/root/bound/wrong host, replacement/removal/stale/map/privacy and440/390 keyboard controls. Renderer/version unverified, callback identity/property/HTTP unknown/execution not-observed. Source body stays transient; portable v1 keeps carrier unknown. Common pure analysis/full P01 open;15/29 complete."
+      },
+      {
+        "id": "P01.4a-shared-pure-source-analysis",
+        "status": "complete-bounded-pure-node-not-browser-feature",
+        "record": "73-p01-shared-pure-source-analysis.md",
+        "implementation_plan": "../superpowers/plans/2026-10-21-p01-pure-source-analysis.md",
+        "unchanged_product_candidate": "@stateport/atom@0.1.0-candidate.20261021.35",
+        "new_source_tests": 18,
+        "focused_tests": 65,
+        "source_tests": 1975,
+        "node_exact_parity_cases": 12,
+        "actual_native_action_IDE_checks": 105,
+        "browser_bundle_bytes": 2218162,
+        "browser_bundle_inputs": 164,
+        "browser_worker_executed": false,
+        "common_pure_resolver": true,
+        "browser_analysis_in_product": false,
+        "full_P01_acceptance": false,
+        "verification": ".artifacts/p01/pure-source/verification.json",
+        "next_item": "P01.4b owned bounded source-analysis Worker and transient explicit source-provider product integration; actual two-loaded-bundle and remaining controls, then ONE P01 review",
+        "boundary": "Same lexical resolver shared; Node API/hash/Vue and evidence preserved.18new/65focused/1975full PASS,12 exact immutable Node parity cases,105 actual two-host Action/IDE/native/freshness/reader checks. Browser bundle only, not Worker execution/admission/product. Current .35/UI .2 archives unchanged. Original Playwright debugger conflict and two obsolete native-driver assumptions retained as failures, criteria unchanged; P01 open,15/29 complete."
+      },
+      {
+        "id": "P01.4b-owned-source-analysis-worker",
+        "status": "complete-bounded-packed-source-analysis-awaiting-whole-P01-review",
+        "record": "74-p01-owned-source-analysis-worker.md",
+        "implementation_plan": "../superpowers/plans/2026-10-21-p01-pure-source-analysis.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.38",
+        "superseded_immutable_candidates": [
+          ".20261021.36",
+          ".20261021.37"
+        ],
+        "new_source_tests": 23,
+        "focused_tests": 126,
+        "source_tests": 1998,
+        "node_exact_parity_cases": 12,
+        "actual_HTTP_worker_checks": 6,
+        "actual_packed_source_analysis_checks": 46,
+        "actual_packed_checks_per_host": {
+          "standalone": 22,
+          "embedding": 23
+        },
+        "actual_native_registration_regression": 49,
+        "actual_framework_source_regression": 65,
+        "actual_Node_Action_IDE_regression": 105,
+        "packed_type_consumers": 2,
+        "package_admission": 8,
+        "worker_only_exact_inputs": 172,
+        "common_pure_source_analysis_in_product": true,
+        "source_body_in_default_state_diagnostics_model": false,
+        "renderer_version_attestation": false,
+        "callback_object_identity": "Unknown/Unsupported",
+        "concurrent_harness_failures": "Preserved4/26; cause Unknown; unchanged sequential49/105 controls pass",
+        "full_P01_acceptance": false,
+        "verification": ".artifacts/p01/worker-source/verification38.json",
+        "next_item": "ONE whole-P01 scope/code/evidence review and one bounded fix pass if needed; assess preserved concurrent harness failures without relabelling them passed",
+        "boundary": "Actual current .38/UI .2 source-only lexical context through owned one-shot Worker:1998full/126focused,6HTTPWorker/46packed/49native/65framework/105NodeIDE/types2/admission8. Same original/identical maps in two co-loaded different JS builds keep runtime anchors separate. Explicit provider/input/DTO/budget/cancel/privacy/unsupported controls; no invocation/values/property/HTTP/renderer claim. Prior .36/.37 and all failed runs preserved; ONE P01 review pending,15/29 complete."
+      },
+      {
+        "id": "P01.5-whole-item-accepted",
+        "status": "complete-bounded-P01-after-one-review-and-fix-pass",
+        "record": "75-p01-whole-item-review.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.39",
+        "source_tests": 2004,
+        "focused_tests": 146,
+        "new_source_tests": 6,
+        "node_exact_parity_cases": 12,
+        "actual_packed_source_analysis_checks": 56,
+        "actual_native_registration_checks": 49,
+        "actual_framework_source_checks": 65,
+        "actual_Node_Action_IDE_checks": 105,
+        "packed_type_consumers": 2,
+        "package_admission": 8,
+        "worker_only_exact_inputs": 172,
+        "whole_P01_review_performed": true,
+        "important_findings": 1,
+        "important_findings_fixed": 1,
+        "full_P01_acceptance": true,
+        "delivery_states": [
+          "implemented",
+          "native-verified"
+        ],
+        "verification": ".artifacts/p01/review-fix/verification39.json",
+        "concurrent_failure_cause": "Unknown; retained .38 failures are not resolved or concurrent-reliability proof",
+        "human_visual_approval": false,
+        "next_item": "P02.1 explicit local release-bundle preparation",
+        "boundary": "Finite native/own-host selected callback source path without IDE/manual coordinates, shared pure source analysis and one-shot owned Worker. One full review and one RED/GREEN correction pass for CR/LS/PS source lines. No invocation/values/property/HTTP/renderer attestation, P02/P03, L02 quality, release/SDK/other repository claim."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Exact .35/UI .2 current native own-host source factory/runtime/map/provider/Actions path;13new/115focused/1957full PASS,actual two-host framework65/native regression49/types2/admission7. Real picker, equal labels, capture, sourceIndex/minified originals, getter/Proxy/root/bound/wrong host, replacement/removal/stale/map/privacy and440/390 keyboard controls. Renderer/version unverified, callback identity/property/HTTP unknown/execution not-observed. Source body stays transient; portable v1 keeps carrier unknown. Common pure analysis/full P01 open;15/29 complete.",
+    "current_activity_note": "Finite native/own-host selected callback source path without IDE/manual coordinates, shared pure source analysis and one-shot owned Worker. One full review and one RED/GREEN correction pass for CR/LS/PS source lines. No invocation/values/property/HTTP/renderer attestation, P02/P03, L02 quality, release/SDK/other repository claim.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
-  "next_task": "P01"
+  "next_task": "P02"
 }

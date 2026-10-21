@@ -10,18 +10,22 @@ for credited work and the current stopping point. The earlier roadmap below is
 retained as history, including its original experiment criteria and results; its
 human-participant gates and initial-alpha exclusions do not override this scope.
 
-- L02 local AI and A05 bounded Action Trace are mandatory deliveries. AI use is
+- L02 local AI and A05 bounded Action Trace are mandatory deliveries. A05 has its
+  bounded acceptance; L02 usefulness remains open. AI use is
   opt-in; model-free operation remains required. Fallback and handler declarations
   alone do not complete those deliveries.
 - U02 includes Live for most inputs in its declared editable scope and grouped
   Draft/Apply, undo-last and baseline return. U02 defines the catalogue, coverage
-  denominator and commit timing before evaluation; those details are not approved yet.
+  denominator and commit timing before evaluation; the working choices and acceptance
+  are recorded in U02, not attributed to the scope interview.
 - Production starts read-only. F05 adds two sequential Settings warnings and
   confirmations before supported changes are available, without applying any
   change automatically. Grant scope/lifetime and navigation/restart/update policy
-  must be defined in F05; source access never supplies mutation authority.
+  are recorded in F05's bounded exact-document policy; those working choices are
+  not scope-interview approvals. Source access never supplies mutation authority.
 - U05 is the visual page-element picker. U06 develops the QA/PM-to-developer
-  handoff UX and precedes completion of U03/P04; technical export is only a base.
+  handoff UX and precedes completion of U03/P04. U06's journey and U03's bounded
+  implementation are recorded; P04 observations remain separate.
 - Independent application-code checks remain required. An independent human is
   optional evidence, not a blocker; agent-operated installation/UI checks must be
   labelled accurately. Source maps remain distinct from runtime/action evidence.
@@ -30,9 +34,9 @@ human-participant gates and initial-alpha exclusions do not override this scope.
 
 The production source-exploration increment at `f3a7a7e` is complete within its
 original boundary. Credit its map/ZIP import, artifact matching, manual lookup,
-safe diagnostics and read-only behavior rather than rebuilding them. P01–P03
-remain partial: real element anchors, the complete release-bundle workflow and
-actual HTTPS permission acceptance are still owed. The subsequent
+safe diagnostics and read-only behavior rather than rebuilding them. P01's finite
+selected-action source path is now complete (completion75); P02's complete release-
+bundle workflow and P03's actual HTTPS permission acceptance remain open. The subsequent
 [F01 execution](docs/completion/14-f01-capability-contracts.md) completes canonical
 admission/discovery and strict packed declarations on candidate `.20261019.3`,
 with its scoped two-host/browser/IDE evidence. The subsequent
@@ -901,3 +905,15 @@ Same original in two co-loaded builds is checked without conflating shared sourc
 and runtime identity. Concurrent4/26 failures remain visible; isolated current controls
 pass, cause Unknown. Next ONE whole-P01 review; P01 still in-progress,15/29 complete.
 P02 may reuse this Worker foundation but still needs its own bundle/corpus acceptance.
+
+### 2026-10-22 — bounded P01 accepted; next P02
+
+[P01 whole review and correction](docs/completion/75-p01-whole-item-review.md):one Important source-line defect
+reproduced RED and fixed without changing evidence thresholds. Exact .39/UI .2:
+2004full/146focused/12Node parity, actual56source-analysis/49native/65own-host/
+105NodeIDE/types2/admission8 PASS. CRLF/CR/LF/LS/PS agree through preview/provider/
+analysis; current inputs and hosts are exact. .38 concurrent failures remain
+negative with Unknown cause; no concurrency claim.16/29 full tasks complete
+(~55% equal item count). P02.1 explicit artifact bundle preparation is next;
+P02/P03/C06 overall, mandatory L02 quality, A02 and release-wide gates remain open.
+No SDK, publication, redesign or other repository changes.

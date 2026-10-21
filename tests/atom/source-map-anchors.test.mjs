@@ -5,6 +5,7 @@ import {createNativeSourceAnchor,createReactHostSourceAnchor} from '../../core/s
 import {lookupSource,parseSourceMap} from '../../core/source-maps.mjs';
 import {sourceAnchorFixture,reactAnchorFixture} from '../helpers/source-anchor-fixture.mjs';
 import {storedZip} from '../helpers/source-map-zip.mjs';
+import {analyzeExplicitSource} from '../../core/source-function-analysis.mjs';
 const enc=new TextEncoder(),bytes=x=>enc.encode(typeof x==='string'?x:JSON.stringify(x)),sha=x=>createHash('sha256').update(x).digest('hex');
 async function fixture(t,{unverified=false,positions=false,duplicate=false,extra={}}={}){
  const input=sourceAnchorFixture(),code='function t(){return 1}';input.binding.registration.column=4;
@@ -23,3 +24,13 @@ test('declared original line/column outside provided source content is unavailab
 test('shared provider maps own-host callback without turning it into native registration or renderer attestation',async t=>{const f=await fixture(t),input=reactAnchorFixture();input.maps=f.s.snapshot(7);const anchor=createReactHostSourceAnchor(input),r=await f.s.lookupAnchor(7,anchor,input);assert.equal(r.status,'Code-linked');assert.equal(r.match,'Exact artifact match');assert.match(r.excerpt,/PRIVATE_HANDLER_SOURCE/);assert.match(r.link,/host callback/);assert(!r.link.includes('registered listener'));assert.equal(r.anchor.frameworkVersion,'not-attested');assert.equal(r.execution,'not-observed');assert.equal(r.callbackIdentity,'Unknown/Unsupported');});
 test('full explicit source input is opt-in, index-specific and absent from session snapshots',async t=>{const f=await fixture(t,{duplicate:true}),ordinary=await f.s.lookupAnchor(7,f.anchor,f.input);assert.equal(ordinary.analysisInput,undefined);const r=await f.s.lookupAnchor(7,f.anchor,f.input,{includeAnalysisInput:true});assert.equal(r.analysisInput.schema,'stateatom.source-analysis-input/1');assert.equal(r.analysisInput.point.file,r.sourceKey);assert.equal(r.analysisInput.point.line,r.line);assert.equal(r.analysisInput.point.column,r.column);assert.deepEqual(r.analysisInput.identity,{run:'run',build:'b'.repeat(64)});assert.equal(JSON.parse(r.analysisInput.serialized).files[1].content,'const PRIVATE_HANDLER_SOURCE = 1;');assert(!JSON.stringify(f.s.snapshot(7)).includes('PRIVATE_HANDLER_SOURCE'));});
 test('positions-only and invalid map positions expose no parser input, unverified mappings stay Candidate',async t=>{for(const opts of[{positions:true},{extra:{mappings:'AAAU',sourcesContent:['x']}}]){const f=await fixture(t,opts),r=await f.s.lookupAnchor(7,f.anchor,f.input,{includeAnalysisInput:true});assert.equal(r.analysisInput,undefined);}const f=await fixture(t,{unverified:true}),r=await f.s.lookupAnchor(7,f.anchor,f.input,{includeAnalysisInput:true});assert.equal(r.status,'Candidate');assert(r.analysisInput);});
+for(const [name,separator]of[['LF','\n'],['CRLF','\r\n'],['CR','\r'],['LS','\u2028'],['PS','\u2029']])test(name+' original line 2 passes exact source lookup and the shared analyzer for both anchor kinds',async t=>{
+ const content='const prefix="😀";'+separator+'function handler(){}';
+ for(const kind of['native','own-host']){
+  const f=await fixture(t,{extra:{mappings:'AACA',sourcesContent:[content]}}),input=kind==='native'?f.input:reactAnchorFixture();input.maps=f.s.snapshot(7);
+  const anchor=kind==='native'?f.anchor:createReactHostSourceAnchor(input),r=await f.s.lookupAnchor(7,anchor,input,{includeAnalysisInput:true});
+  assert.equal(r.match,'Exact artifact match');assert.equal(r.status,'Code-linked');assert.equal(r.excerpt,'function handler(){}');assert.equal(r.line,2);assert.equal(r.column,0);assert(r.analysisInput);
+  const analysis=await analyzeExplicitSource(r.analysisInput);assert.equal(analysis.status,'Available');assert.equal(analysis.entry.symbol,'handler');assert.equal(analysis.execution,'not-observed');
+  assert(!JSON.stringify(f.s.snapshot(7)).includes('function handler'));
+ }
+});

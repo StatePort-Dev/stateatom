@@ -91,6 +91,8 @@ or a 1500ms budget. Source text is data; the fixed JS/TS/JSX parser resolves lex
 names/imports only among included files. Missing Worker/content/unsupported syntax or
 budget exhaustion keeps the preview with an explicit analysis gap. There is no
 main-thread parser, network import, application execution or AI fallback.
+Original source lines recognize LF, CRLF, CR, U+2028 and U+2029 with UTF-16 columns;
+a valid mapped position uses the same line convention in preview and analysis.
 
 The optional source details show the function, possible calls and bounded expression.
 Calls stay Candidate; runtime values, branch choice, invocation, property producer

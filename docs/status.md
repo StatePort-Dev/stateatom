@@ -4,8 +4,9 @@ Active delivery scope: approved **`scope-review-1`** on 2026-10-19; see the
 [completion contract](completion/02-release-scope.md) and
 [current reconciliation](completion/13-scope-reconciliation.md). This supersedes
 earlier delivery exclusions and independent-human gates, not historical evidence.
-The source-exploration increment is complete within its original boundary;
-P01–P03 remain partial. The subsequent
+The original source-exploration increment remains complete within its original
+boundary. [P01's bounded selected-action source path](completion/75-p01-whole-item-review.md)
+is now complete; P02/P03 remain partial. The subsequent
 [F01 implementation](completion/14-f01-capability-contracts.md) consolidates
 capability policy and checks packed declarations on candidate `.20261019.3`:
 586 unit, 48 contract, 34 two-host, 26 Basic, 32 Actions and 19 source-map checks
@@ -1601,3 +1602,15 @@ may share provider identity; runtime script/JS/DOM anchors remain distinct. .36/
 and failed runs preserved, including4/26 concurrent harness failures (cause Unknown;
 unchanged sequential controls pass). ONE whole-P01 review remains;15/29 complete.
 No runtime values/invocation/property/HTTP/renderer attestation, publication or SDK.
+
+### 2026-10-22 — bounded P01 accepted; next P02
+
+[P01 whole review and correction](completion/75-p01-whole-item-review.md):one Important source-line defect
+reproduced RED and fixed without changing evidence thresholds. Exact .39/UI .2:
+2004full/146focused/12Node parity, actual56source-analysis/49native/65own-host/
+105NodeIDE/types2/admission8 PASS. CRLF/CR/LF/LS/PS agree through preview/provider/
+analysis; current inputs and hosts are exact. .38 concurrent failures remain
+negative with Unknown cause; no concurrency claim.16/29 full tasks complete
+(~55% equal item count). P02.1 explicit artifact bundle preparation is next;
+P02/P03/C06 overall, mandatory L02 quality, A02 and release-wide gates remain open.
+No SDK, publication, redesign or other repository changes.

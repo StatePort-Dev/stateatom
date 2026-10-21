@@ -43,8 +43,11 @@ export async function associateSourceMap(script,bundle){
 }
 export function sourceExcerpt(content,line,column){
  if(typeof content!=='string'||!Number.isSafeInteger(line)||line<1||!Number.isSafeInteger(column)||column<0)return null;
- let start=0;for(let n=1;n<line;n++){const next=content.indexOf('\n',start);if(next<0)return null;start=next+1;}
- const next=content.indexOf('\n',start),end=next<0?content.length:next;if(column>end-start)return null;
+ // Source-map columns are UTF-16 offsets. CRLF is one JavaScript line break;
+ // standalone CR, LF, LS and PS also delimit lines, as in the source analyzer.
+ const breaks=/\r\n|[\n\r\u2028\u2029]/g;let start=0;
+ for(let n=1;n<line;n++){const next=breaks.exec(content);if(!next)return null;start=breaks.lastIndex;}
+ const end=breaks.exec(content)?.index??content.length;if(column>end-start)return null;
  return content.slice(start,end).slice(Math.max(0,column-160),column+480);
 }
 export function lookupSource(parsed,line,column){
