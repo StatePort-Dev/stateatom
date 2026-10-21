@@ -879,3 +879,14 @@ original .26 host/archive bytes unchanged. Not installed Atom Explain UX, OS
 airgap, historical25-plus-malicious/full30 acceptance or O01 completion. L02
 remains mandatory/in-progress;15/29 full items complete. Next actual installed
 controls and evidence-metadata omission hardening, keeping strict validation.
+
+### 2026-10-22 — current source path and shared pure resolver
+
+[P01 current checkpoints](docs/completion/73-p01-shared-pure-source-analysis.md):
+actual .35/UI .2 selected native/own-host callback source view is delivered within
+its recorded scope. Shared lexical resolver extraction now passes1975 source tests,
+12 exact Node parity cases and105 actual native Action/IDE checks. Browser parsing
+is still preparation:bundle-only evidence does not ship a Worker. Next bounded item
+P01.4b owned Worker/transient explicit source input, actual two-loaded-bundle and
+remaining P01 controls, followed by ONE whole-item review. P01 remains in-progress;
+15/29 complete(~52% equal item count), mandatory L02 and A02 gaps preserved.

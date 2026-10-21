@@ -1577,3 +1577,15 @@ HTTP unknown, execution not-observed. Native registration and legacy diagnostics
 model source omissions preserved. Next P01.4 shared bounded pure browser+Node source
 analysis and actual two-bundle/remaining controls, then ONE P01 review. Whole P01
 remains open;15/29 full tasks complete. Screens remain human review candidates.
+
+### 2026-10-22 — shared pure source resolver; browser Worker next
+
+[P01.4a](completion/73-p01-shared-pure-source-analysis.md):18new/65focused/1975full
+PASS,12 immutable exact Node-output/graph parity cases,105 actual two-host native
+Actions/IDE checks. Node digest/Vue adapter preserves original semantics; same pure
+resolver now supports exact mapped-function source names/imports/candidate calls.
+Browser bundle only2,218,162bytes/164inputs; no Worker execution or product parsing
+claim. Current .35/UI .2 archives unchanged; failed legacy debugger/obsolete driver
+assumptions retained with bounded corrections. Next P01.4b owned Worker/transient
+provider/product/two-loaded-bundle controls, then ONE P01 review. P01/A02/L02 open,
+15/29 original items complete; no release/publication/SDK/other repository.
