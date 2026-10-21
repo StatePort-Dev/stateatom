@@ -1319,3 +1319,17 @@ cleanup retained; clean complete native run keeps unchanged criteria. See
 have explicit rulings. No second review loop. Next: A05.3d installed record-budget/
 resource and measured overhead controls; whole A05/production/async gates, A02/L02
 remain open. No publication, SDK, other repository or new handoff journey.
+
+
+### 2026-10-21 — A05 finite installed resource controls
+
+Unchanged exact .20/plugin .1:11 native checks/42 measured interactions/14 armed
+budget traces PASS across both hosts. Trace caps at64 with explicit partial/root
+exit gap, at most24905bytes; original50-call workload and later Cancel/Clear effects
+stay intact. Handler medians0.6/0.7/1.1ms (OFF/unarmed/armed) are finite local
+measurements, not universal latency/heap/leak acceptance. Source1782/focused584/
+types2/admission7 remain retained .20 results, not reruns. First screenshot timeout
+(background inspector) preserved; foregrounded actual390/1100 candidates inspected,
+no visual/product change. See51-a05-installed-resource-controls.md and resource
+verification.json. Next: original concurrent unrelated request/replaced-handler
+controls and retained-matrix reconciliation; production/async/whole-A05 review open.
