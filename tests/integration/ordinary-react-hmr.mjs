@@ -358,10 +358,21 @@ async function pickerPresentation(){return panel.evaluate(()=>{
   explanation:get('action-explanation').textContent,explainDisabled:get('action-explain').disabled,
   saveDisabled:get('save-report').disabled,inspectDisabled:get('load').disabled,inputOpenDisabled:get('input-open').disabled,raw:get('evidence').textContent,
   pickerStatus:get('picker-status').textContent,pickerPressed:get('pick').getAttribute('aria-pressed')==='true',property:get('property').value,overflow:document.documentElement.scrollWidth>innerWidth+1,
+  guidance:{label:get('inspection-next').textContent,disabled:get('inspection-next').disabled},
   font:{title:getComputedStyle(get('selection-title')).fontSize,operand:getComputedStyle(get('operands')).fontSize,hint:getComputedStyle(get('freshness')).fontSize}};
  });}
 async function startPickerView(){await action('pick');await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).picker.status==='picking');}
-async function maskedView(){return waitFor(async()=>{const v=await pickerPresentation();return v.pickerPressed&&v.pickerStatus.includes('Click an element')&&v.title==='Select an element'&&v.sourceButtons===0&&v.operandRows===0&&v.actionButtons===0&&!v.explanation&&v.explainDisabled&&v.saveDisabled&&v.inspectDisabled&&v.inputOpenDisabled?v:null;});}
+async function maskedView(){return waitFor(async()=>{const v=await pickerPresentation();return v.pickerPressed&&v.pickerStatus.includes('Click an element')&&v.title==='Select an element'&&v.sourceButtons===0&&v.operandRows===0&&v.actionButtons===0&&!v.explanation&&v.explainDisabled&&v.saveDisabled&&v.inspectDisabled&&v.inputOpenDisabled&&v.guidance.label==='Cancel element selection'&&!v.guidance.disabled?v:null;});}
+async function guidanceEnter(){
+ const p=await protocol();await p.send('Page.bringToFront');await panel.evaluate(s=>{
+  const e=document.querySelector(s);e.scrollIntoView({block:'center',behavior:'instant'});e.focus();if(document.activeElement!==e)throw Error('Guidance did not receive actual keyboard focus');
+  window.__a01GuidanceEvents=[];window.__a01GuidanceAbort?.abort();window.__a01GuidanceAbort=new AbortController();for(const type of ['keydown','keypress','keyup','click'])document.addEventListener(type,event=>{if(event.target===e)window.__a01GuidanceEvents.push({type:event.type,key:event.key??null,isTrusted:event.isTrusted,defaultPrevented:event.defaultPrevented});},{capture:true,signal:window.__a01GuidanceAbort.signal});
+ },q('inspection-next'));
+ // Installed Playwright's primary Chromium input supplies Enter text '\r'; an
+ // untexted keyDown delivers a key event but not the button's activation.
+ const descriptor={key:'Enter',code:'Enter',windowsVirtualKeyCode:13,modifiers:0,location:0,isKeypad:false};await p.send('Input.dispatchKeyEvent',{type:'keyDown',...descriptor,text:'\r',unmodifiedText:'\r',autoRepeat:false});await p.send('Input.dispatchKeyEvent',{type:'keyUp',...descriptor});
+ const events=await panel.evaluate(()=>{window.__a01GuidanceAbort.abort();return window.__a01GuidanceEvents;});assert(events.some(e=>e.type==='click'&&e.isTrusted),'Enter must cause a real trusted guidance activation');(result.guidanceNativeEvents??=[]).push(events);
+}
 async function originalAfterCancel(original){
  const state=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});return s.picker.status==='cancelled'?s:null;});
  assert.deepEqual(state.selection,original.selection);assert.equal(state.analysis.stateatom.runtime.target.id,original.runtime.target.id);assert.equal(state.analysis.stateatom.runtime.target.at,original.runtime.target.at);assert.deepEqual(state.analysis.stateatom.runtime.nodes.map(n=>[n.id,n.at]),original.runtime.nodes.map(n=>[n.id,n.at]));
@@ -374,10 +385,10 @@ async function basicPickerView(entry,kind,workspace){
   await choose('property','text');await startPickerView();await appClick('.todo-list label');const state=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});return s.picker.status==='selected'&&s.selection&&s.analysis?s:null;});
   assert.equal(state.readOnly,true);assert.equal(state.selection.value,'Basic Cedar');assert.equal(state.analysis.capabilities.sourceResolver,'unavailable');assert.equal(state.analysis.stateatom.runtime.status,'Unknown/Unsupported');assert.equal(state.analysis.sources.length,0);const dom=await rowDOM(1,state.selection);assert.equal(dom.backendNodeId,dom.inspectedBackendNodeId);entry.basic={selection:state.selection,dom,runtime:state.analysis.stateatom.runtime,ui:await waitFor(async()=>{const v=await pickerPresentation();return !v.pickerPressed&&v.title==='Basic Cedar'&&!v.saveDisabled?v:null;}),app:await appProbe()};
  });
- await check(kind+' native Basic UI Cancel and real Escape restore the exact old DOM snapshot',async()=>{
-  entry.basic.cancelled=[];for(const method of ['UI Cancel','app Escape']){
+ await check(kind+' native Basic UI Cancel guidance Enter and real Escape restore the exact old DOM snapshot',async()=>{
+  entry.basic.cancelled=[];for(const method of ['UI Cancel','guidance Enter','app Escape']){
    await startPickerView();const masked=await maskedView();const held=await rpc(panel,{op:'state',tabId});assert.deepEqual(held.selection,entry.basic.selection);entry.basic.lastCancelAttempt={method,before:held.picker,masked};
-   if(method==='UI Cancel')await action('pick');else await panel.evaluate(async id=>{await chrome.tabs.update(id,{active:true});for(const type of ['rawKeyDown','keyUp'])await chrome.debugger.sendCommand({tabId:id},'Input.dispatchKeyEvent',{type,key:'Escape',code:'Escape',windowsVirtualKeyCode:27,modifiers:0,location:0});},tabId);
+   if(method==='UI Cancel')await action('pick');else if(method==='guidance Enter')await guidanceEnter();else await panel.evaluate(async id=>{await chrome.tabs.update(id,{active:true});for(const type of ['rawKeyDown','keyUp'])await chrome.debugger.sendCommand({tabId:id},'Input.dispatchKeyEvent',{type,key:'Escape',code:'Escape',windowsVirtualKeyCode:27,modifiers:0,location:0});},tabId);
    const after=await rpc(panel,{op:'state',tabId});entry.basic.lastCancelAttempt.after={picker:after.picker,ui:await pickerPresentation(),status:await panel.evaluate(()=>document.querySelector('[data-atom-id="status"]').textContent)};
    const cancelled=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});entry.basic.lastCancelAttempt.lastPicker=s.picker;return s.picker.status==='cancelled'?s:null;});assert.deepEqual(cancelled.selection,entry.basic.selection);const ui=await waitFor(async()=>{const v=await pickerPresentation();return !v.pickerPressed&&v.title==='Basic Cedar'&&!v.saveDisabled&&!v.inspectDisabled?v:null;});assert.equal(ui.freshness,entry.basic.ui.freshness);assert.equal(ui.inputOpenDisabled,entry.basic.ui.inputOpenDisabled);assert.deepEqual(await appProbe(),entry.basic.app);entry.basic.cancelled.push({method,masked,selection:cancelled.selection,ui});
   }
@@ -397,6 +408,9 @@ async function pickerViewSequence(entry,kind,workspace){
  await check(kind+' actual application Escape preserves the same old snapshot and original clocks',async()=>{
   await startPickerView();await maskedView();await panel.evaluate(async id=>{await chrome.tabs.update(id,{active:true});for(const type of ['rawKeyDown','keyUp'])await chrome.debugger.sendCommand({tabId:id},'Input.dispatchKeyEvent',{type,key:'Escape',code:'Escape',windowsVirtualKeyCode:27,modifiers:0,location:0});},tabId);
   entry.escapeCancelled=await originalAfterCancel(entry.original);assert.equal(entry.escapeCancelled.ui.inputOpenDisabled,entry.beforeUI.inputOpenDisabled);assert.deepEqual(await appProbe(),entry.appBefore);assert.equal((await rpc(panel,{op:'open-handoff',id:entry.saved.id})).raw,entry.saved.raw);
+ });
+ await check(kind+' correctly labelled cancellation guidance accepts real Enter and restores the exact old event',async()=>{
+  await startPickerView();entry.guidancePicking=await maskedView();await guidanceEnter();entry.guidanceCancelled=await originalAfterCancel(entry.original);assert.equal(entry.guidanceCancelled.ui.inputOpenDisabled,entry.beforeUI.inputOpenDisabled);assert.deepEqual(await appProbe(),entry.appBefore);assert.equal((await rpc(panel,{op:'open-handoff',id:entry.saved.id})).raw,entry.saved.raw);
  });
  await check(kind+' explicit fresh equal-value second pick uses its own current DOM/read identity',async()=>{
   const second=await inspectTitle(kind+'-after-picker-view',2,'Equal Cedar');entry.second=second;assert.notEqual(second.dom.backendNodeId,entry.original.dom.backendNodeId);assert.notEqual(second.runtime.target.scope,entry.original.runtime.target.scope);assert.notEqual(second.runtime.target.id,entry.original.runtime.target.id);assert(second.selection.observedAt>entry.original.selection.observedAt);assert.equal((await rpc(panel,{op:'open-handoff',id:entry.saved.id})).raw,entry.saved.raw);assert.equal(sha256(await readFile(entry.saved.file)),entry.saved.sha256);assert.deepEqual(await appProbe(),entry.appBefore);

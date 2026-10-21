@@ -145,3 +145,98 @@ test-only later delta is explicit; failed legacy app-CDP setups remain failed.
 The ordinary source/read, synthetic grammar, pinned18 final-host profile and
 historical passive-report claims remain separate. ONE whole-A01 review is pending;
 these counts and documents do not themselves complete A01 or the release.
+
+## Contributor recipe: ordinary React19
+
+This is the A01 contributor environment for the retained independent TodoMVC React
+source, with its existing source/public layout and locked dependencies. Use an
+exclusive copy; retain its license, package.json and package-lock.json unchanged.
+The tested versions are Node24.19.0, Vite7.3.7, React/DOM19.2.5 and router7.14.2.
+The checkout's locked Babel transform handles automatic JSX in both.js and.jsx.
+Source edits use the normal watcher/reload flow described above.
+
+After preparing the Atom checkout with its existing npm commands, save this file
+as `.runtime/ordinary-react-contributor.config.mjs` inside that checkout. It resolves
+the existing locked tooling there. The current working directory must be the
+copied application, matching the project opened by the source helper.
+
+<!-- ordinary-react-contributor-config:start -->
+```js
+import path from 'node:path';
+import {readFile} from 'node:fs/promises';
+import {defineConfig} from 'vite';
+import {transformSync} from '@babel/core';
+import jsx from '@babel/plugin-transform-react-jsx';
+import {stateatomPlugin} from '../src/engine/plugin.mjs';
+
+const appRoot=process.cwd();
+const html=await readFile(path.join(appRoot,'public/index.html'),'utf8');
+export default defineConfig({
+  root:appRoot,publicDir:path.join(appRoot,'public'),
+  cacheDir:path.join(appRoot,'node_modules/.vite-atom-contributor'),
+  server:{host:'127.0.0.1',port:5173,strictPort:true,fs:{allow:[appRoot]}},
+  optimizeDeps:{noDiscovery:true,include:[
+    'react','react-dom','react-dom/client','react-router-dom',
+    'react/jsx-runtime','classnames'
+  ]},
+  plugins:[stateatomPlugin({enabled:true,root:path.join(appRoot,'src')}),{
+    name:'ordinary-react-entry-and-jsx',enforce:'pre',
+    configureServer(server){server.middlewares.use(async(req,res,next)=>{
+      if(req.url==='/base.js'){
+        res.setHeader('Content-Type','application/javascript');
+        res.end(await readFile(path.join(appRoot,'node_modules/todomvc-common/base.js'),'utf8'));
+        return;
+      }
+      if(req.url==='/'){
+        res.setHeader('Content-Type','text/html');
+        res.end(await server.transformIndexHtml('/',html.replace('</body>',
+          '<script type="module" src="/src/index.js"></script></body>')));
+        return;
+      }
+      next();
+    });},
+    transform(code,id){
+      if(id.startsWith(path.join(appRoot,'src')+path.sep)&&/\.(js|jsx)$/.test(id))
+        return transformSync(code,{filename:id,configFile:false,babelrc:false,
+          plugins:[[jsx,{runtime:'automatic'}]],sourceMaps:true});
+    }
+  }]
+});
+```
+<!-- ordinary-react-contributor-config:end -->
+
+Run the existing local Vite CLI from the copied app directory, replacing the two
+absolute paths with your actual directories:
+
+```sh
+cd /absolute/path/copied-react-app
+node /absolute/path/stateatom/node_modules/vite/bin/vite.js --config /absolute/path/stateatom/.runtime/ordinary-react-contributor.config.mjs
+```
+
+The environment-only entry/JSX adaptation above matches the executed ordinary
+server helper. Default source consumption is enabled; no host-props, React commit,
+query/state or first-read adapter is enabled. Inspect Text/Disabled to obtain
+matching source/read fragments; the React19 final producer, parameter ancestry,
+earlier mutable-object history and complete HTTP path remain unsupported.
+
+Open that exact copied app in the helper's trusted VS Code workspace and choose
+`src` as its relative source folder. Pair its private receipt for the exact
+`http://127.0.0.1:5173` origin, grant development access for that origin, attach and
+reload. The A01 contributor checks used the real current VS Code host and manual
+private connection fields; fresh installed-VSIX receipt acceptance remains the
+separate F03 evidence. Keep session secrets out of source, URLs and shared reports.
+Basic inspection works without this source connection.
+
+The checked-out plugin module and Atom immutable pair are different inputs. This
+recipe uses the current source module; it does not silently substitute the older
+supplied plugin tarball. Before claiming an installed-artifact result, verify that
+artifact's receipt, source manifest, exact pins and actual installed workflow.
+The retained React18/classic installed recipe in packages/vite-plugin/README.md
+has its own scope. No registry publication or new installed-package support is
+established by this contributor example.
+
+Subsequent closure2026-10-21: A01 completed after ONE whole-item review and two
+verified Minor resolutions. See [29-a01-whole-review](../completion/29-a01-whole-review.md).
+The .37 result above keeps its original review-pending status; current .1 evidence
+covers the reviewed guidance/admission delta and exact contributor recipe setup.
+No ordinary19 final producer/full lineage, installed or human acceptance is added.

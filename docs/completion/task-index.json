@@ -1445,14 +1445,12 @@
         "npm run verify:independent"
       ],
       "deliverable": "Supported ordinary-session property/read paths and controls",
-      "status": "in-progress",
+      "status": "complete",
       "optional": false,
-      "implementation_plan": "../superpowers/plans/2026-10-21-a01-current-acceptance.md",
-      "execution_record": "28-a01-current-acceptance.md",
-      "active_slice": "A01.5",
-      "remaining_acceptance": [
-        "one complete A01 review and tested Critical/Important resolutions"
-      ],
+      "implementation_plan": "../superpowers/plans/2026-10-21-a01-review-fixes.md",
+      "execution_record": "29-a01-whole-review.md",
+      "active_slice": null,
+      "remaining_acceptance": [],
       "completed_slices": [
         {
           "id": "A01.1",
@@ -1521,47 +1519,120 @@
           "full_A01_acceptance": false,
           "verification": ".artifacts/a01/grammar/verification.json",
           "evidence_scope": "Explicit synthetic ordinary React19 form/hold/skipped original getter controls and native exact local wrapper reads; upstream parameter/override ancestry and final commit unobserved, fullPath false. Original independent sources and .33 unchanged."
+        },
+        {
+          "id": "A01.5",
+          "status": "complete-within-current-retained-acceptance",
+          "candidate": "0.1.0-candidate.20261020.37",
+          "verification": ".artifacts/a01/current-acceptance/verification37-final.json",
+          "record": "28-a01-current-acceptance.md",
+          "checks": {
+            "full_source": 1619,
+            "focused": 63,
+            "strict_consumers": 2,
+            "admission": 7,
+            "ordinary_native": 50,
+            "retained_corpus": 18,
+            "pinned18_host_ui": 23,
+            "short_loop_cases_per_host": {
+              "total": 30,
+              "PASS": 20,
+              "PARTIAL": 10
+            },
+            "short_loop_native_control_checks": 19,
+            "affected_reporter": 33
+          },
+          "full_A01_acceptance": false,
+          "evidence_scope": "Original current matrix completed before one whole-item review; frozen .37 result retains its original review-pending status and all PARTIAL/setup failures."
+        },
+        {
+          "id": "A01.6",
+          "status": "complete",
+          "candidate": "0.1.0-candidate.20261021.1",
+          "verification": ".artifacts/a01/review-fixes/verification1.json",
+          "record": "29-a01-whole-review.md",
+          "checks": {
+            "source": 1621,
+            "focused": 65,
+            "strict_consumers": 2,
+            "admission": 7,
+            "native": 16,
+            "trusted_guidance_enter": 4
+          },
+          "review_count": 1,
+          "critical_findings": 0,
+          "important_findings": 0,
+          "minor_findings_fixed": [
+            "A01-M1",
+            "A01-M2"
+          ],
+          "full_A01_acceptance": true,
+          "evidence_scope": "One whole A01 review accepts declared ordinary source/read/profile workflow. Pending-picker guidance uses cancellation wording/admission; contributor React19 recipe setup verified. .37 matrix remains the reviewed base, not a fresh .1 run. No ordinary19 final producer/parameter/store/HTTP/installed/human/release promotion."
         }
       ],
       "current_candidate": {
-        "version": "0.1.0-candidate.20261020.37",
-        "handoff": ".artifacts/atom/2026-10-20T23-00-23-503Z/atom-handoff.json",
-        "verification": ".artifacts/a01/current-acceptance/verification37-final.json",
-        "boundary": "Current acceptance matrix verified with exact .37 package/source hashes and archived executed drivers. Ordinary19 final producer/parameter/store/HTTP ancestry remain unsupported; pinned18 host-props and historical reports retain their scopes. Legacy parallel-app-CDP failures stay failed; native equivalents use original predicates. Dirty BASE85c4cc2 receipt, not a clean post-commit build. ONE whole-A01 review pending."
+        "version": "0.1.0-candidate.20261021.1",
+        "handoff": ".artifacts/atom/2026-10-21T00-14-06-283Z/atom-handoff.json",
+        "verification": ".artifacts/a01/review-fixes/verification1.json",
+        "boundary": "Dirty BASEe8cb00e exact package/host receipt. Reviewed .37 matrix retained unchanged; only pending-picker guidance wording/admission and package metadata/changelog changed. Current source1621/focused65/types2/admission7/native16/doc recipe setup pass. Ordinary19 final producer/parameter/store/HTTP ancestry, fresh installed VSIX/plugin, human visuals and release remain outside these claims."
       },
       "implementation_plans": [
         "../superpowers/plans/2026-10-21-a01-ordinary-react-hmr.md",
         "../superpowers/plans/2026-10-21-a01-equal-instance-controls.md",
         "../superpowers/plans/2026-10-21-a01-retained-mechanisms.md",
         "../superpowers/plans/2026-10-21-a01-ordinary-grammar.md",
-        "../superpowers/plans/2026-10-21-a01-current-acceptance.md"
+        "../superpowers/plans/2026-10-21-a01-current-acceptance.md",
+        "../superpowers/plans/2026-10-21-a01-review-fixes.md"
       ],
       "execution_records": [
         "27-a01-ordinary-react-progress.md",
-        "28-a01-current-acceptance.md"
+        "28-a01-current-acceptance.md",
+        "29-a01-whole-review.md"
       ],
       "current_acceptance": {
-        "status": "PASS_CURRENT_A01_ACCEPTANCE_REVIEW_PENDING",
-        "record": "28-a01-current-acceptance.md",
-        "verification": ".artifacts/a01/current-acceptance/verification37-final.json",
+        "status": "PASS_A01_ACCEPTED_SCOPE_AND_REVIEW_FIXES",
+        "record": "29-a01-whole-review.md",
+        "verification": ".artifacts/a01/review-fixes/verification1.json",
+        "accepted_matrix": {
+          "status": "PASS_CURRENT_A01_ACCEPTANCE_REVIEW_PENDING",
+          "record": "28-a01-current-acceptance.md",
+          "verification": ".artifacts/a01/current-acceptance/verification37-final.json",
+          "checks": {
+            "full_source": 1619,
+            "focused": 63,
+            "strict_consumers": 2,
+            "admission": 7,
+            "ordinary_native": 50,
+            "retained_corpus": 18,
+            "pinned18_host_ui": 23,
+            "short_loop_cases_per_host": {
+              "total": 30,
+              "PASS": 20,
+              "PARTIAL": 10
+            },
+            "short_loop_native_control_checks": 19,
+            "affected_reporter": 33
+          },
+          "review_count": 0,
+          "full_A01_acceptance": false
+        },
         "checks": {
-          "full_source": 1619,
-          "focused": 63,
+          "source": 1621,
+          "focused": 65,
           "strict_consumers": 2,
           "admission": 7,
-          "ordinary_native": 50,
-          "retained_corpus": 18,
-          "pinned18_host_ui": 23,
-          "short_loop_cases_per_host": {
-            "total": 30,
-            "PASS": 20,
-            "PARTIAL": 10
-          },
-          "short_loop_native_control_checks": 19,
-          "affected_reporter": 33
+          "native": 16,
+          "trusted_guidance_enter": 4
         },
-        "review_count": 0,
-        "full_A01_acceptance": false
+        "review_count": 1,
+        "critical_findings": 0,
+        "important_findings": 0,
+        "minor_rulings": {
+          "A01-M1": "fixed-tested",
+          "A01-M2": "documented-setup-verified"
+        },
+        "full_A01_acceptance": true,
+        "independent_human_required": false
       }
     },
     {
@@ -2197,17 +2268,18 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "A01.5",
-      "status": "current-acceptance-complete-whole-review-pending",
-      "candidate": "0.1.0-candidate.20261020.37",
-      "verification": ".artifacts/a01/current-acceptance/verification37-final.json",
-      "record": "28-a01-current-acceptance.md",
+      "id": "A01.6",
+      "status": "complete",
+      "candidate": "0.1.0-candidate.20261021.1",
+      "verification": ".artifacts/a01/review-fixes/verification1.json",
+      "record": "29-a01-whole-review.md",
       "product_code_changed": true,
       "observer_compiler_runtime_changed": false,
-      "full_A01_acceptance": false,
-      "next_item": "A01 whole review"
+      "full_A01_acceptance": true,
+      "whole_review_count": 1,
+      "next_item": "A02"
     },
-    "next_item": "A01",
+    "next_item": "A02",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -2218,10 +2290,11 @@
       "U02",
       "U06",
       "F05",
-      "U03"
+      "U03",
+      "A01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "A01",
+    "active_item": null,
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -2735,11 +2808,22 @@
         "record": "27-a01-ordinary-react-progress.md",
         "evidence_scope": "Actual native two equal titles, same-value/different-value first-row edits, exact backend-marker-target-read identities, independent second row event/time retained on reinspection, old snapshot/save unchanged. React19 marker/value correspondence only; committed-host binding unsupported/fullPath false.",
         "next_item": "A01.3"
+      },
+      {
+        "id": "A01.5",
+        "status": "current-acceptance-complete-whole-review-pending",
+        "candidate": "0.1.0-candidate.20261020.37",
+        "verification": ".artifacts/a01/current-acceptance/verification37-final.json",
+        "record": "28-a01-current-acceptance.md",
+        "product_code_changed": true,
+        "observer_compiler_runtime_changed": false,
+        "full_A01_acceptance": false,
+        "next_item": "A01 whole review"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A01.5 exact .37 current acceptance matrix passes: source1619/focused63/types2/admission7/native50; original corpus18, pinned18 host-UI23, original short-loop30 per host with20PASS/10PARTIAL plus19 controls, affected reporter33. UI-only picker projection/input-open/focus correction preserves original runtime/saved history. Original legacy app-CDP setup failures and all intermediate attempts retained. Final aggregate binds archived executed drivers and explicitly records later test-only deltas; no old frozen verifier rerun or threshold reduction. ONE whole-A01 review/Important fix pass next. Parent A01/P04/C07/mandatory A05/L02/release open; SDK outside Atom.",
+    "current_activity_note": "A01 complete within original ordinary source/read/profile scope: ONE whole-item review, no Critical/Important findings, two Minor findings fixed/tested. Accepted .37 matrix remains unchanged and explicitly separate from .20261021.1 guidance/admission delta. Current source1621/focused65/types2/admission7/native16/four trusted guidance Enter activations and exact contributor CLI recipe setup pass. Final verification1 binds actual evidence; failures/PARTIAL/historical scopes retained. Next A02 preregisters a real independent query/state usage and exact missing ownership/producer edges. P04/C07/mandatory A05/L02/release remain open; SDK outside Atom.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
-  "next_task": "A01"
+  "next_task": "A02"
 }

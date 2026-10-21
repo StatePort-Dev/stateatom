@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.1
+
+- Name the pending-picker guidance **Cancel element selection**, matching its
+  existing cancellation action and toolbar, and use cancel-pick availability.
+  Starting/picking/resolving no longer offers a new-selection instruction that
+  unexpectedly cancels, or uses new-pick permission to enable cancellation.
+- Preserve original snapshot restoration, read clocks, saved bytes, input cleanup
+  and permission/evidence contracts. No runtime/controller/format/style change.
+  Narrow/keyboard screenshots remain human-review candidates.
+
 ## 0.1.0-candidate.20261020.37
 
 - Restore focus to the Settings trigger only after closing an actually open

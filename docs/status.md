@@ -1039,3 +1039,16 @@ legacy parallel-app-CDP setup failures stay failed/blocked. Current native short
 passes the original30 cases per host with20PASS/10PARTIAL and19 controls. The exact
 acceptance aggregate passes with ONE whole-A01 review pending. This is no React19 final-producer/full HTTP,
 human acceptance or public release claim. See28-a01-current-acceptance.md.
+
+
+A01 is complete within its declared ordinary source/read/profile scope after one
+whole-item automated review (no Critical/Important findings) and two tested Minor
+resolutions. Current candidate0.1.0-candidate.20261021.1 passes source1621/focused65/
+types2/admission7/native16, including four trusted Enter cancellations; the exact
+ordinary contributor CLI recipe setup also passes. The reviewed .37 matrix remains
+unchanged, with its original PARTIAL/setup-failure and historical boundaries.
+See docs/completion/29-a01-whole-review.md and the bound verification1 record.
+Ordinary19 final producer/parameter/store/HTTP ancestry, fresh installed artifacts,
+human visuals and release are not established by this closure. Next unfinished
+item by dependencies:A02, one preregistered real query/state usage. Mandatory
+A05/L02 and P04/C07 remain open; SDK stays outside Atom.

@@ -125,3 +125,23 @@ test('refresh while picking cannot restore old source operands or actions; cance
  picker={status:'picking',id:'new-selection'};f.emit({event:'state-invalidated',tabId:1});await tick();await tick();assert.equal(f.$('sources').children.length,0);assert.equal(f.$('operands').children.length,0);assert.equal(f.$('action-explanation').textContent,'');assert.equal(f.$('selection-title').textContent,'Select an element');assert.equal(f.$('save-report').disabled,true);assert.equal(f.$('load').disabled,true);
  picker={status:'cancelled',id:'new-selection'};f.emit({event:'state-invalidated',tabId:1});await tick();await tick();assert.equal(f.$('sources').children.length,1);assert.equal(f.$('operands').children.length,1);assert.equal(f.$('selected').textContent,selected);assert.equal(f.$('freshness').textContent,freshness);await f.view.dispose();
 });
+
+test('pending picker guidance names cancellation and uses its admission while restoring the same snapshot',async()=>{
+ const {describeCapabilities,supportsCapabilityPolicy}=await import('../../packages/atom/src/transport.mjs');
+ for(const status of ['starting','picking','resolving']){
+  const calls=[],policy=describeCapabilities({url:'http://127.0.0.1:4173/',permission:true,attached:true,lease:'owned',grants:['read','inject'],hasSelection:true,hasAnalysis:true});
+  policy.operations.pick={...policy.operations.pick,available:false,reason:'A picker is already active',code:'BUSY'};policy.operations['cancel-pick']={...policy.operations['cancel-pick'],available:true};
+  assert.equal(supportsCapabilityPolicy(policy),true);
+  let picker={status,id:'pending-'+status},f;f=fixture(m=>{calls.push(m);if(m.op==='state')return{...f.state(m.tabId),picker,capabilityPolicy:policy};if(m.op==='cancel-pick'){picker={...picker,status:'cancelled'};return{};}});
+  await f.view.ready;f.$('pick').click=()=>f.$('pick').onclick();
+  try{assert.equal(f.$('inspection-next').textContent,'Cancel element selection');assert.equal(f.$('inspection-next').disabled,false);await f.$('inspection-next').onclick();assert.equal(calls.filter(m=>m.op==='pick').length,0);assert.deepEqual(calls.filter(m=>m.op==='cancel-pick').map(m=>({tabId:m.tabId,pickerId:m.pickerId})),[{tabId:1,pickerId:'pending-'+status}]);assert.match(f.$('selected').textContent,/#target-1/);assert.match(f.$('freshness').textContent,/Not live/);}finally{await f.view.dispose();}
+ }
+});
+
+test('pending picker guidance cannot use new-pick admission to enable a denied cancellation',async()=>{
+ const {describeCapabilities,supportsCapabilityPolicy}=await import('../../packages/atom/src/transport.mjs');const policy=describeCapabilities({url:'http://127.0.0.1:4173/',permission:true,attached:true,lease:'owned',grants:['read','inject'],hasSelection:true,hasAnalysis:true});
+ policy.operations.pick={...policy.operations.pick,available:true};policy.operations['cancel-pick']={...policy.operations['cancel-pick'],available:false,reason:'Cancellation unavailable',code:'CAPABILITY_DENIED'};
+ assert.equal(supportsCapabilityPolicy(policy),true);
+ let f;f=fixture(m=>m.op==='state'?{...f.state(m.tabId),picker:{status:'picking',id:'denied'},capabilityPolicy:policy}:undefined);await f.view.ready;
+ try{assert.equal(f.$('inspection-next').textContent,'Cancel element selection');assert.equal(f.$('inspection-next').disabled,true);assert.equal(f.$('pick').disabled,true);}finally{await f.view.dispose();}
+});

@@ -1,5 +1,12 @@
 # StateAtom open Vite development plugin (local candidate)
 
+The installed-artifact recipe below is the experimental React18/classic
+host-props profile. A source checkout also has a separately documented
+[ordinary React19 contributor recipe](../../docs/testing/ordinary-react.md#contributor-recipe-ordinary-react19)
+for automatic JSX and source/read fragments. Its current checkout/native evidence
+does not establish a new installed plugin/VSIX combination or React19 committed
+host-props support.
+
 Install the supplied local tarball in an existing app, without cloning the Atom
 repository: `npm install --save-dev /absolute/path/stateport-vite-plugin-<candidate>.tgz`.
 No registry publication is established. Tested configuration: Node 24, Vite

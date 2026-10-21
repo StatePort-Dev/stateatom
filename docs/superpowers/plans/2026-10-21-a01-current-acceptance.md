@@ -26,10 +26,10 @@ Current real UI-to-source/read relationships, off/on semantics, native versus ha
 
 ### Task 2: one whole-A01 review and bounded resolution
 
-- [ ] Request one read-only whole-A01 review of the final range/evidence against A01, not per driver. No new independent-human blocker.
-- [ ] Rule on every finding; fix real Critical/Important findings with original RED/control and meaningful verification. Explicitly retain Minor/deferred items. No automatic re-review loop.
-- [ ] Update task-index/dependencies/status/roadmap only from actual results. If A01 done, select one next unfinished item by dependencies; otherwise name the concrete remaining gate.
-- [ ] diff check, scoped local commit and clean worktree. Continue with the next bounded authorized item until the absolute deadline.
+- [x] Request one read-only whole-A01 review of the final range/evidence against A01, not per driver. No new independent-human blocker.
+- [x] Rule on every finding; fix real Critical/Important findings with original RED/control and meaningful verification. Explicitly retain Minor/deferred items. No automatic re-review loop.
+- [x] Update task-index/dependencies/status/roadmap only from actual results. If A01 done, select one next unfinished item by dependencies; otherwise name the concrete remaining gate.
+- [x] diff check, scoped local commit and clean worktree. Continue with the next bounded authorized item until the absolute deadline.
 
 
 ### Necessary bounded correction found in Task 1
@@ -57,7 +57,7 @@ finite profile while picking. No shared tokens/layout/compiler/observer change.
 - [x] Affected current reporting checks (33, exact .37).
 - [x] Current retained host UI/short-loop/independent questions; classify parallel
   debugger/harness drift before any adaptation, preserve original acceptance.
-- [ ] One whole A01 review, Important-fix pass and bounded local commit.
+- [x] One whole A01 review, Important-fix pass and bounded local commit.
 
 ### Bounded native transport adaptation for retained corpus questions
 
@@ -107,3 +107,9 @@ Atom candidate version in package-lock; normalized dependency objects match.
 ONE whole-A01 review is next, followed by tested Critical/Important resolutions,
 explicit Minor rulings and the final task-index/dependency update. No claim that
 documents/counts/package alone complete A01, ordinary19 final props or release.
+
+Subsequent final state: one whole-item review of c32722d→e8cb00e found no Critical/
+Important findings and two Minor findings, both resolved in bounded A01.6. Exact
+.1 delta checks pass; final acceptance and all declined-judgment rulings are in
+29-a01-whole-review.md. The dated .37 aggregate retains its original review-pending
+status. A01 is complete within its declared scope; next dependency-ready item A02.
