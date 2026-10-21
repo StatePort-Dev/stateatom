@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.18
+
+- Retain bounded action invocation metadata in diagnostic snapshots as separate
+  historical, untrusted records, with no live source or action authority. Reuse
+  the unchanged live trace grammar; source declarations remain not-observed.
+- Show historical bodies/exits and limits in the passive diagnostic reader using
+  existing section/details primitives. Existing Actions layout/13px typography
+  stays; help now identifies diagnostic retention and the interim reviewed-issue
+  exclusion. No shared token/CSS contract change or new handoff journey.
+- Explicitly refuse the closed reviewed profile when it would silently discard
+  saved action execution. The original diagnostic stays intact; a composed report
+  profile and privacy integration remain the next bounded step.
+
 ## 0.1.0-candidate.20261021.17
 
 - Keep invalidated/stopped Action Trace records historical and remove source navigation.

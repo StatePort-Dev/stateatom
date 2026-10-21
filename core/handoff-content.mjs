@@ -78,6 +78,7 @@ function available(v,type){
 
 export async function createHandoffContentReview(sourceRaw){
  const source=parseDiagnostic(sourceRaw);
+ if(source.runtime.actionObservation)throw error('UNSUPPORTED_HANDOFF_EVIDENCE','This closed reviewed profile cannot retain saved action execution. The original diagnostic keeps it; a simple report explicitly omits technical evidence.');
  if(source.sources.some(s=>s.status!=='Code-linked'))throw error('UNSUPPORTED_HANDOFF_EVIDENCE','Recorded source evidence cannot be represented by this review profile without changing its kind. Original snapshot unchanged.');
  const reference=(await createHandoffDraft(sourceRaw)).read().sourceDiagnostic;
  const fields=[],groups=[];

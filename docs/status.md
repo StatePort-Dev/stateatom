@@ -1254,3 +1254,15 @@ inputs and failed harness attempts retained; actual390/1100 visual candidates
 inspected, no human acceptance inferred. See45-a05-bounded-review-fixes.md and
 verification17.json. Whole A05 stays in-progress. Next: A05.3c saved historical
 observation reports, preserving old source-binding semantics and passive authority.
+
+
+### 2026-10-21 — A05 historical diagnostic storage
+
+Exact .18 retains separately scoped historical action bodies/exits in diagnostics
+and reads them passively. Source1731/focused147/codec-reader15, runtime19/seven
+isolated bug variants, actual two-host Save/export-review/clean-reader9, types2/
+admission7 PASS. Original parser moved unchanged; no compiler/observer change or
+old finite rerun. Actual390/1100 first viewport/new section/keyboard candidates
+inspected. See46-a05-historical-diagnostic.md and verification18.json. Reviewed
+issue action composition/privacy remains excluded explicitly; that is the next
+bounded item before ONE report-plan review. Whole A05/production/performance open.

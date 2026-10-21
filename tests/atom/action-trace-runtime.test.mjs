@@ -155,3 +155,10 @@ test('replacement MAIN during native node resolution cannot arm a replacement co
  await f.emit('Runtime.executionContextCreated',{context:{id:7,uniqueId:'replacement-context',auxData:{frameId:'main',isDefault:true}}});resolved.resolve();await rejected;
  assert.equal(f.armCalls,0,'node resolved in reused numeric context must not invoke a replacement helper');
 });
+
+test('actual runtime saves and reopens bounded action history without issuing another native operation',async t=>{
+ const f=await fixture(t),a=await f.request({op:'actions-arm'});f.action();await f.request({op:'actions-read',traceId:a.traceId});
+ const before=f.calls.length,saved=await f.request({op:'save-diagnostic',includeContent:false,notes:'Synthetic saved invocation'});
+ assert(saved.runtime.actionObservation,'actual acknowledged body must be included');assert.equal(saved.runtime.actionObservation.traceId,a.traceId);assert.equal(saved.runtime.actionObservation.sourceCurrent,false);
+ const opened=await f.runtime.request({version:1,id:crypto.randomUUID(),session:'trace-runtime',payload:{op:'open-handoff',id:saved.id}});assert.equal(JSON.parse(opened.raw).runtime.actionObservation.records[1].source.symbol,'confirm');assert.equal(f.calls.length,before,'saving/reading passive metadata must not enter the page');
+});

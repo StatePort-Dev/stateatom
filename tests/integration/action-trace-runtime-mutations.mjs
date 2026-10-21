@@ -10,7 +10,7 @@ const root=fileURLToPath(new URL('../../',import.meta.url));
 const runtimePath='packages/atom/src/runtime.mjs',testPath='tests/atom/action-trace-runtime.test.mjs';
 const out=path.join(root,'.artifacts/a05/runtime-races',new Date().toISOString().replace(/[:.]/g,'-'));
 await mkdir(out,{recursive:true});
-const entries=[runtimePath,testPath,'packages/atom/src/action-trace.mjs','packages/atom/src/platform.mjs','packages/atom/src/capabilities.mjs','packages/atom/src/transport.mjs','tests/helpers/action-trace-runtime-fixture.mjs','tests/helpers/input-capture-runtime-fixture.mjs','core/action-observation.mjs','core/code-journal.mjs','core/owned-code.mjs','tests/integration/action-trace-runtime-mutations.mjs'];
+const entries=[runtimePath,testPath,'packages/atom/src/action-trace.mjs','core/action-trace-record.mjs','core/source-path.mjs','core/action-observation-report.mjs','packages/atom/src/platform.mjs','packages/atom/src/capabilities.mjs','packages/atom/src/transport.mjs','tests/helpers/action-trace-runtime-fixture.mjs','tests/helpers/input-capture-runtime-fixture.mjs','core/action-observation.mjs','core/code-journal.mjs','core/owned-code.mjs','tests/integration/action-trace-runtime-mutations.mjs'];
 const source=await readFile(path.join(root,runtimePath),'utf8');
 const result={schema:'stateatom.action-runtime-regression-sensitivity/1',status:'RUNNING',baseRevision:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),sourceDirty:true,scope:'Actual runtime/platform/broker and wire with synthetic CDP/helper/IDE transport; not native browser evidence',inputsBefore:await fileDigests(root,entries),checks:[]};
 const mutations=[
@@ -24,7 +24,7 @@ const mutations=[
 ];
 function run(file,pattern){return spawnSync(process.execPath,['--test','--test-isolation=none',...(pattern?['--test-name-pattern',pattern]:[]),testPath],{cwd:root,env:{...process.env,ATOM_ACTION_RUNTIME_VARIANT:file||''},encoding:'utf8',timeout:15000});}
 try{
- const baseline=run();await writeFile(path.join(out,'baseline.log'),baseline.stdout+baseline.stderr);assert.equal(baseline.error,undefined);assert.equal(baseline.status,0);assert.match(baseline.stdout,/ℹ pass 18\b/);result.checks.push({name:'current actual runtime baseline',status:'PASS',tests:18});
+ const baseline=run();await writeFile(path.join(out,'baseline.log'),baseline.stdout+baseline.stderr);assert.equal(baseline.error,undefined);assert.equal(baseline.status,0);assert.match(baseline.stdout,/ℹ pass 19\b/);result.checks.push({name:'current actual runtime baseline',status:'PASS',tests:19});
  for(const[name,mutate,pattern]of mutations){
   const changed=mutate(source);assert.notEqual(changed,source,name+' must change the source');
   const module=changed.replace(/from\s+(['"])(\.\.?\/[^'"]+)\1/g,(_,q,spec)=>'from '+JSON.stringify(new URL(spec,pathToFileURL(path.join(root,runtimePath))).href));
