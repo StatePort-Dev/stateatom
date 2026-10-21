@@ -8,30 +8,30 @@ import net from 'node:net';
 import {root} from '../../scripts/vite-config.mjs';
 import {fileDigests,todoRevision} from '../../scripts/short-loop-inputs.mjs';
 import {startNativeBrowser,nativeApproveDevelopment} from '../../scripts/native-browser.mjs';
-import {startIDE,rpc,waitFor} from '../../scripts/harness.mjs';
+import {startIDE,startBrowser,rpc,waitFor} from '../../scripts/harness.mjs';
 import {sha256,fileManifest,verifyArtifactHashes,inspectInstalledPair} from '../../scripts/atom-package-receipt.mjs';
 
-const instancesOnly=process.argv.includes('--instances-only'),grammarOnly=process.argv.includes('--grammar-only');
-assert(!(instancesOnly&&grammarOnly),'Select exactly one bounded mode');
+const instancesOnly=process.argv.includes('--instances-only'),grammarOnly=process.argv.includes('--grammar-only'),pickerViewOnly=process.argv.includes('--picker-view-only'),independentOnly=process.argv.includes('--independent-only');
+assert([instancesOnly,grammarOnly,pickerViewOnly,independentOnly].filter(Boolean).length<=1,'Select exactly one bounded mode');
 const hf=process.argv.find(s=>s.endsWith('atom-handoff.json'))||'.artifacts/atom/atom-handoff.json';
 const h=JSON.parse(await readFile(hf));
-const out='.artifacts/a01/'+(grammarOnly?'ordinary-grammar-native':instancesOnly?'ordinary-instances-native':'ordinary-hmr-native')+'/' +new Date().toISOString().replace(/[:.]/g,'-');
+const out='.artifacts/a01/'+(independentOnly?'ordinary-corpus-native':pickerViewOnly?'ordinary-picker-view-native':grammarOnly?'ordinary-grammar-native':instancesOnly?'ordinary-instances-native':'ordinary-hmr-native')+'/' +new Date().toISOString().replace(/[:.]/g,'-');
 await mkdir(out,{recursive:true});await writeFile(out+'/driver.mjs',await readFile(new URL(import.meta.url)));
 const sourceBase='.runtime/todomvc',appRelative='examples/react',appBase=sourceBase+'/'+appRelative;
 const entries=['license.md',appRelative+'/src',appRelative+'/public',appRelative+'/package.json',appRelative+'/package-lock.json'];
 const footer='src/todo/components/footer.jsx';
-const inputEntries=['src/engine','core/analyzer.mjs','core/runtime-state.mjs','core/bridge.mjs','ide-extension/session.mjs','ide-extension/extension.mjs','dist/ide/extension.cjs','scripts/native-browser.mjs','scripts/harness.mjs','scripts/short-loop-inputs.mjs','tests/ide-host.cjs','tests/integration/ordinary-react-hmr.mjs','tests/helpers/ordinary-react-server.mjs','tests/helpers/ordinary-properties-server.mjs','tests/fixtures/inspection/ordinary-react'];
+const inputEntries=['src/engine','core/analyzer.mjs','core/runtime-state.mjs','core/bridge.mjs','ide-extension/session.mjs','ide-extension/extension.mjs','dist/ide/extension.cjs','scripts/native-browser.mjs','scripts/harness.mjs','scripts/short-loop-inputs.mjs','tests/ide-host.cjs','tests/integration/ordinary-react-hmr.mjs','tests/helpers/ordinary-react-server.mjs','tests/helpers/ordinary-properties-server.mjs','tests/fixtures/inspection/ordinary-react',...(independentOnly?['tests/helpers/ordinary-redux-server.mjs']:[])];
 const inputs=async()=>({...await fileDigests(root,inputEntries),...Object.fromEntries(await Promise.all(Object.keys({...h.sourceManifest,...h.buildSources.manifest}).map(async f=>[f,sha256(await readFile(f))])))});
 const result={
- schema:grammarOnly?'stateatom.ordinary-react-grammar-native/1':instancesOnly?'stateatom.ordinary-react-instances-native/1':'stateatom.ordinary-react-hmr-native/1',status:'RUNNING',startedAt:new Date().toISOString(),
+ schema:independentOnly?'stateatom.ordinary-react-corpus-native/1':pickerViewOnly?'stateatom.ordinary-react-picker-view-native/1':grammarOnly?'stateatom.ordinary-react-grammar-native/1':instancesOnly?'stateatom.ordinary-react-instances-native/1':'stateatom.ordinary-react-hmr-native/1',status:'RUNNING',startedAt:new Date().toISOString(),
  revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceDirty:true,
  handoff:{file:hf,sha256:sha256(await readFile(hf)),package:h.package,ui:h.ui},
- configuration:{mode:grammarOnly?'synthetic-ordinary-grammar':instancesOnly?'equal-instances':'source-edits',operator:'agent',browserPlugin:'Browser plugin unavailable; exact paired native MV3 hosts and existing Atom debugger ownership required',
+ configuration:{mode:independentOnly?'retained-three-corpus-questions-both-hosts':pickerViewOnly?'picker-display-cancel-history':grammarOnly?'synthetic-ordinary-grammar':instancesOnly?'equal-instances':'source-edits',operator:'agent',browserPlugin:'Browser plugin unavailable; exact paired native MV3 hosts and existing Atom debugger ownership required',
   source:grammarOnly?'Explicit synthetic grammar fixture in an exclusive copied workspace, using its verified locked React19 dependencies; independent business source unused/unchanged':'Read-only pinned extracted TodoMVC directory; edits only in an exclusive copied workspace including its locked dependencies',
   plugin:{enabled:true,sourceConsumption:true,reactHostProps:false,reactCommit:false,firstReadContracts:false},
-  appTargetSession:false,probes:'Explicit chrome.scripting MAIN/ISOLATED, native app Input, DOM metadata/search (without harness DOM.getDocument) and Network.getResponseBody through the existing Atom debugger. No app-page facade or parallel app-target CDP.',
+  appTargetSession:false,probes:grammarOnly?'Explicit chrome.scripting MAIN/ISOLATED, native app Input and native DOM metadata/search through the existing Atom debugger; no harness DOM.getDocument, app-page facade or parallel app-target session. Getter event reads are explicit synthetic probes.':'Explicit chrome.scripting MAIN/ISOLATED, native app Input, DOM metadata/search (without harness DOM.getDocument) and Network.getResponseBody through the existing Atom debugger. No app-page facade or parallel app-target CDP.',
   IDE:'Real VS Code Extension Host, explicit copied project root and native source-open audit',model:false,
-  limits:'Ordinary source/read fragments and source-version freshness only. No React19 final-host-props witness, full HTTP path, no-all-traffic assertion or human acceptance.'},
+  limits:'Ordinary source/read fragments and selected-occurrence/source freshness only. No React19 final-host-props witness, full HTTP path, no-all-traffic assertion or human acceptance.'},
  checks:[],errors:[],cases:[],inputsBefore:await inputs()
 };
 let browser,panel,panelCDP,server,ide,origin,tabId;
@@ -41,6 +41,7 @@ async function protocol(){return panelCDP??=await browser.context.newCDPSession(
 async function click(selector,index=0){
  await waitFor(()=>panel.evaluate(({selector,index})=>{const e=document.querySelectorAll(selector)[index];return e&&!e.disabled&&!e.hidden;},{selector,index}));
  const p=await protocol();await p.send('Page.bringToFront');
+ const active=await panel.evaluate(async()=>{const t=await chrome.tabs.getCurrent();return{id:t.id,active:t.active};});
  const point=await panel.evaluate(async({selector,index})=>{
   const e=document.querySelectorAll(selector)[index];
   for(let a=e.parentElement;a;a=a.parentElement)if(a.tagName==='DETAILS'&&!(e.tagName==='SUMMARY'&&a===e.parentElement))a.open=true;
@@ -49,6 +50,7 @@ async function click(selector,index=0){
   if(!r.width||!r.height||hit!==e&&!e.contains(hit))throw Error('Native UI target covered: '+selector);
   return{x,y};
  },{selector,index});
+ (result.uiNativePoints??=[]).push({selector,index,point,active});
  for(const type of ['mouseMoved','mousePressed','mouseReleased'])await p.send('Input.dispatchMouseEvent',{type,...point,...(type==='mouseMoved'?{}:{button:'left',clickCount:1})});
 }
 const action=id=>click(q(id));
@@ -68,7 +70,7 @@ async function choose(id,value){
  const current=await panel.evaluate(s=>({value:document.querySelector(s).value,count:document.querySelector(s).options.length}),q(id));
  if(current.value===value)return;
  if(id==='property')await key(index===1?'Home':'End',index===1?'Home':'End',index===1?36:35);else{await key('Home','Home',36);for(let i=1;i<index;i++)await key('ArrowDown','ArrowDown',40);}
- await key(' ','Space',32);
+ // Home/End/arrows already commit native select changes; no extra Space on a moved focus.
  assert(await panel.evaluate(({s,value})=>document.querySelector(s).value===value,{s:q(id),value}),'Native field fill did not match: '+id);
 }
 async function appProbe(){if(grammarOnly)return grammarProbe();return panel.evaluate(async id=>(await chrome.scripting.executeScript({target:{tabId:id},world:'MAIN',func:()=>({
@@ -112,20 +114,25 @@ async function editTitle(row,value){
  await waitFor(async()=>(await appProbe()).titles[row-1]===value&&await panel.evaluate(async({id,selector})=>(await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:s=>!document.querySelector(s),args:[selector]}))[0]?.result,{id:tabId,selector:prefix+' input.edit'}));
 }
 async function rowDOM(row,selection,selector='.todo-list li:nth-child('+row+') label'){
- return panel.evaluate(async({id,selector,identity})=>{
+ const read=()=>panel.evaluate(async({id,selector,identity})=>{
   const inspected=await chrome.debugger.sendCommand({tabId:id},'DOM.describeNode',{backendNodeId:Number(identity.node.slice(4))});
   const document=await chrome.debugger.sendCommand({tabId:id},'DOM.describeNode',{backendNodeId:Number(identity.document.slice(4))});
   const{searchId,resultCount}=await chrome.debugger.sendCommand({tabId:id},'DOM.performSearch',{query:selector,includeUserAgentShadowDOM:false});
-  try{
+  let metadata;try{
    if(resultCount!==1)throw Error('Native row selector does not identify exactly one element: '+resultCount);
    const{nodeIds}=await chrome.debugger.sendCommand({tabId:id},'DOM.getSearchResults',{searchId,fromIndex:0,toIndex:1});
    const{node}=await chrome.debugger.sendCommand({tabId:id},'DOM.describeNode',{nodeId:nodeIds[0]});
    const attributes={};for(let i=0;i<(node.attributes||[]).length;i+=2)attributes[node.attributes[i]]=node.attributes[i+1];
    const{frameTree}=await chrome.debugger.sendCommand({tabId:id},'Page.getFrameTree');
    if((frameTree.childFrames||[]).length)throw Error('This registered instance control requires the original single-frame app');
-   return{recordedIdentity:identity,inspectedBackendNodeId:inspected.node.backendNodeId,backendNodeId:node.backendNodeId,queriedFrontendNodeId:node.nodeId,documentBackendNodeId:document.node.backendNodeId,frame:frameTree.frame.id,attributes};
-  }finally{await chrome.debugger.sendCommand({tabId:id},'DOM.discardSearchResults',{searchId});}
+   return metadata={recordedIdentity:identity,inspectedBackendNodeId:inspected.node.backendNodeId,backendNodeId:node.backendNodeId,queriedFrontendNodeId:node.nodeId,documentBackendNodeId:document.node.backendNodeId,frame:frameTree.frame.id,attributes};
+  }finally{try{await chrome.debugger.sendCommand({tabId:id},'DOM.discardSearchResults',{searchId});}catch(e){if(!String(e.message).includes('No search session with given id found'))throw e;if(metadata)metadata.searchCleanup='Already retired; exact native lookup above completed';}}
  },{id:tabId,selector,identity:selection.domIdentity});
+ for(let attempt=0;attempt<2;attempt++)try{return await read();}catch(e){
+  if(attempt||!String(e.message).includes('No search session with given id found'))throw e;
+  const current=await rpc(panel,{op:'state',tabId});assert(current.selection,'Native metadata retry requires the same retained selection');assert.equal(current.selection.observedAt,selection.observedAt);assert.deepEqual(current.selection.domIdentity,selection.domIdentity);assert.equal(current.selection.instance,selection.instance);
+  (result.nativeDOMReadRetries??=[]).push({selector,reason:'Native search session retired before metadata read; retry once against the unchanged selected identity',observedAt:selection.observedAt,identity:selection.domIdentity});
+ }
 }
 async function inspectTitle(label,row,expected){
  await choose('property','text');const before=(await rpc(panel,{op:'state',tabId})).selection?.observedAt,appBefore=await appProbe();
@@ -145,15 +152,19 @@ async function inspectTitle(label,row,expected){
  const record={label,row,selectionMethod:'Real native U05 picker',dom,selection:state.selection,source,runtime,reads,ui,run:state.run},file=out+'/'+label+'-observation.json';
  await writeFile(file,JSON.stringify(record,null,2));return{...record,file,sha256:sha256(await readFile(file))};
 }
-async function launch(kind,name){
+async function launch(kind,name,{readOnly=false}={}){
  browser=await startNativeBrowser(out+'/profiles',name,true,false,[],{extensionPath:h.hosts[kind]});
  panel=await browser.context.newPage();panel.on('pageerror',e=>result.errors.push({name,message:e.message}));
  await panel.goto('chrome-extension://'+browser.id+'/'+(kind==='standalone'?'panel.html':'workspace/inspect.html'));
  await (await protocol()).send('Emulation.setDeviceMetricsOverride',{width:1100,height:1000,deviceScaleFactor:1,mobile:false});
  tabId=await panel.evaluate(async url=>(await chrome.tabs.create({url})).id,origin);
  await waitFor(()=>panel.evaluate(async id=>(await chrome.tabs.get(id)).status==='complete',tabId));
- await nativeApproveDevelopment(panel,tabId);await action('refresh-tabs');await choose('tabs',String(tabId));await action('attach');
+ if(!readOnly)await nativeApproveDevelopment(panel,tabId);await action('refresh-tabs');await choose('tabs',String(tabId));
+ // Native select value alone precedes its asynchronous context/load completion.
+ // Attach only after the chosen tab's actual connection has rendered.
+ const preAttach=await waitFor(()=>panel.evaluate(({id,mode})=>{const get=id=>document.querySelector('[data-atom-id="'+id+'"]');const r={tab:Number(get('tabs').value),status:get('status').textContent,mode:get('site-mode').value,label:get('connection-label').textContent};return r.tab===id&&r.status==='OK'&&r.mode===mode&&r.label==='Not attached'?r:null;},{id:tabId,mode:readOnly?'read-only':'development'}));(result.preAttachUI??=[]).push({name,...preAttach});await action('attach');
  await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).attached);
+ let attachedUI;try{attachedUI=await waitFor(()=>panel.evaluate(()=>{const get=id=>document.querySelector('[data-atom-id="'+id+'"]');const r={status:get('status').textContent,label:get('connection-label').textContent,browserOpen:get('browser-connection').open,sourceOpen:get('source-connection').open};return r.status==='OK'&&r.label.startsWith('Attached')&&!r.browserOpen&&!r.sourceOpen?r:null;}));}catch(e){const s=await rpc(panel,{op:'state',tabId});result.lastAttachFailure={name,attached:s.attached,run:s.run,stale:s.stale?.reason,mode:s.connection?.mode,ui:await panel.evaluate(()=>{const get=id=>document.querySelector('[data-atom-id="'+id+'"]');return{status:get('status').textContent,label:get('connection-label').textContent,tab:Number(get('tabs').value),browserOpen:get('browser-connection').open,sourceOpen:get('source-connection').open,siteMode:get('site-mode').value};})};throw e;}(result.attachedUI??=[]).push({name,...attachedUI});
  await waitFor(async()=>(await appProbe()).ready);
 }
 async function closeBrowser(){
@@ -165,9 +176,9 @@ async function stopServer(){
  if(owned.child.exitCode===null){owned.child.send({op:'stop'});try{await waitFor(()=>owned.child.exitCode!==null,15000);}catch{owned.child.kill('SIGTERM');await waitFor(()=>owned.child.exitCode!==null,5000);}}
  await owned.log.close();assert.equal(owned.child.exitCode,0,'Own dev server cleanup');
 }
-async function startServer(workspace,enabled){
+async function startServer(workspace,enabled,{redux=false}={}){
  const log=await open(out+'/server-'+path.basename(workspace)+'-'+enabled+'.log','wx');
- const child=fork(path.resolve(grammarOnly?'tests/helpers/ordinary-properties-server.mjs':'tests/helpers/ordinary-react-server.mjs'),[workspace,String(enabled),path.resolve(out)+'/vite-'+path.basename(workspace)+'-'+enabled],{cwd:workspace,stdio:['ignore',log.fd,log.fd,'ipc']});
+ const child=fork(path.resolve(redux?'tests/helpers/ordinary-redux-server.mjs':grammarOnly?'tests/helpers/ordinary-properties-server.mjs':'tests/helpers/ordinary-react-server.mjs'),[workspace,String(enabled),path.resolve(out)+'/vite-'+path.basename(workspace)+'-'+enabled],{cwd:workspace,stdio:['ignore',log.fd,log.fd,'ipc']});
  let ready,error;child.on('message',m=>{if(m.type==='ready')ready=m;else if(m.type==='error')error=m.message;});server={child,log};
  const receipt=await waitFor(()=>{if(error)throw Error(error);if(child.exitCode!==null)throw Error('Own dev server exited '+child.exitCode);return ready;},45000);
  assert.equal(receipt.cwd,workspace);origin=receipt.origin;(result.devServers??=[]).push(receipt);
@@ -224,7 +235,7 @@ async function inspect(label,expectedText,sourceText,workspace){
  const before=(await rpc(panel,{op:'state',tabId})).selection?.observedAt;
  if(!await panel.evaluate(()=>document.querySelector('[data-atom-id="selector-details"]').open))await click(q('selector-details')+' > summary');
  await fill('selector','.todo-count');await action('inspect-selector');
- const state=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});return s.selection?.observedAt!==before&&s.analysis?s:null;});
+ const state=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});return s.selection?.selector==='.todo-count'&&s.selection.property==='text'&&s.selection.observedAt!==before&&s.analysis?s:null;});
  assert.equal(state.selection.selector,'.todo-count');
  result.lastInspection={label,selection:state.selection,sourceFiles:state.analysis.sources.map(s=>s.file)};assert.equal(state.selection.value,expectedText);assert.equal((await appProbe()).count,expectedText);
  const matches=state.analysis.sources.filter(s=>s.file.endsWith(footer));assert.equal(matches.length,1,'One matching selected Footer source');
@@ -252,8 +263,9 @@ async function openSource(observation,workspace){
  assert.equal(audit.selectedText,fragment.slice(0,300),'Actual editor selection contains current source bytes');
  return audit;
 }
-async function saveOriginal(label){
- await action('diagnostic-toggle');await fill('diagnostic-notes','Ordinary source/edit baseline; historical, not a complete path');
+async function saveOriginal(label,{notes='Ordinary source/edit baseline; historical, not a complete path',content=false}={}){
+ await action('diagnostic-toggle');await fill('diagnostic-notes',notes);
+ if(content&&!await panel.evaluate(()=>document.querySelector('[data-atom-id="diagnostic-content"]').checked))await action('diagnostic-content');
  const prior=new Set((await rpc(panel,{op:'list-handoffs'})).entries.map(e=>e.id));await action('save-report');
  const saved=await waitFor(async()=>{const id=await panel.evaluate(()=>document.querySelector('[data-atom-id="report-select"]').value);return id&&!prior.has(id)?rpc(panel,{op:'open-handoff',id}):null;});
  assert.equal(saved.version,1);const file=out+'/'+label+'-original.v1.json';await writeFile(file,saved.raw);await action('diagnostic-toggle');
@@ -338,12 +350,137 @@ async function grammarSequence(entry,kind,workspace){
  await panel.screenshot({path:out+'/'+kind+'-grammar-candidate.png'});delete entry.saved.raw;await closeBrowser();await stopServer();await ide.close(true);ide=null;assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);
 }
 
+async function pickerPresentation(){return panel.evaluate(()=>{
+ const get=id=>document.querySelector('[data-atom-id="'+id+'"]');
+ return{title:get('selection-title').textContent,value:get('selection-value').textContent,freshness:get('freshness').textContent,
+  sourceButtons:get('sources').querySelectorAll('button').length,operandRows:get('operands').querySelectorAll('li').length,
+  actionButtons:get('action-handlers').querySelectorAll('button').length+get('action-more').querySelectorAll('button').length,
+  explanation:get('action-explanation').textContent,explainDisabled:get('action-explain').disabled,
+  saveDisabled:get('save-report').disabled,inspectDisabled:get('load').disabled,inputOpenDisabled:get('input-open').disabled,raw:get('evidence').textContent,
+  pickerStatus:get('picker-status').textContent,pickerPressed:get('pick').getAttribute('aria-pressed')==='true',property:get('property').value,overflow:document.documentElement.scrollWidth>innerWidth+1,
+  font:{title:getComputedStyle(get('selection-title')).fontSize,operand:getComputedStyle(get('operands')).fontSize,hint:getComputedStyle(get('freshness')).fontSize}};
+ });}
+async function startPickerView(){await action('pick');await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).picker.status==='picking');}
+async function maskedView(){return waitFor(async()=>{const v=await pickerPresentation();return v.pickerPressed&&v.pickerStatus.includes('Click an element')&&v.title==='Select an element'&&v.sourceButtons===0&&v.operandRows===0&&v.actionButtons===0&&!v.explanation&&v.explainDisabled&&v.saveDisabled&&v.inspectDisabled&&v.inputOpenDisabled?v:null;});}
+async function originalAfterCancel(original){
+ const state=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});return s.picker.status==='cancelled'?s:null;});
+ assert.deepEqual(state.selection,original.selection);assert.equal(state.analysis.stateatom.runtime.target.id,original.runtime.target.id);assert.equal(state.analysis.stateatom.runtime.target.at,original.runtime.target.at);assert.deepEqual(state.analysis.stateatom.runtime.nodes.map(n=>[n.id,n.at]),original.runtime.nodes.map(n=>[n.id,n.at]));
+ const ui=await waitFor(async()=>{const v=await pickerPresentation();return !v.pickerPressed&&v.title===original.selection.text&&v.sourceButtons>0&&v.operandRows>0&&!v.saveDisabled&&!v.inspectDisabled?v:null;});
+ assert(ui.freshness.includes('Not live'));return{selection:state.selection,runtime:state.analysis.stateatom.runtime,ui,inspectionGeneration:state.inspectionGeneration};
+}
+async function basicPickerView(entry,kind,workspace){
+ await startServer(workspace.dir,false);await launch(kind,kind+'-basic-picker-view',{readOnly:true});await addTodo('Basic Cedar');
+ await check(kind+' native Basic read-only selection has no parallel app debugger or invented source',async()=>{
+  await choose('property','text');await startPickerView();await appClick('.todo-list label');const state=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});return s.picker.status==='selected'&&s.selection&&s.analysis?s:null;});
+  assert.equal(state.readOnly,true);assert.equal(state.selection.value,'Basic Cedar');assert.equal(state.analysis.capabilities.sourceResolver,'unavailable');assert.equal(state.analysis.stateatom.runtime.status,'Unknown/Unsupported');assert.equal(state.analysis.sources.length,0);const dom=await rowDOM(1,state.selection);assert.equal(dom.backendNodeId,dom.inspectedBackendNodeId);entry.basic={selection:state.selection,dom,runtime:state.analysis.stateatom.runtime,ui:await waitFor(async()=>{const v=await pickerPresentation();return !v.pickerPressed&&v.title==='Basic Cedar'&&!v.saveDisabled?v:null;}),app:await appProbe()};
+ });
+ await check(kind+' native Basic UI Cancel and real Escape restore the exact old DOM snapshot',async()=>{
+  entry.basic.cancelled=[];for(const method of ['UI Cancel','app Escape']){
+   await startPickerView();const masked=await maskedView();const held=await rpc(panel,{op:'state',tabId});assert.deepEqual(held.selection,entry.basic.selection);entry.basic.lastCancelAttempt={method,before:held.picker,masked};
+   if(method==='UI Cancel')await action('pick');else await panel.evaluate(async id=>{await chrome.tabs.update(id,{active:true});for(const type of ['rawKeyDown','keyUp'])await chrome.debugger.sendCommand({tabId:id},'Input.dispatchKeyEvent',{type,key:'Escape',code:'Escape',windowsVirtualKeyCode:27,modifiers:0,location:0});},tabId);
+   const after=await rpc(panel,{op:'state',tabId});entry.basic.lastCancelAttempt.after={picker:after.picker,ui:await pickerPresentation(),status:await panel.evaluate(()=>document.querySelector('[data-atom-id="status"]').textContent)};
+   const cancelled=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});entry.basic.lastCancelAttempt.lastPicker=s.picker;return s.picker.status==='cancelled'?s:null;});assert.deepEqual(cancelled.selection,entry.basic.selection);const ui=await waitFor(async()=>{const v=await pickerPresentation();return !v.pickerPressed&&v.title==='Basic Cedar'&&!v.saveDisabled&&!v.inspectDisabled?v:null;});assert.equal(ui.freshness,entry.basic.ui.freshness);assert.equal(ui.inputOpenDisabled,entry.basic.ui.inputOpenDisabled);assert.deepEqual(await appProbe(),entry.basic.app);entry.basic.cancelled.push({method,masked,selection:cancelled.selection,ui});
+  }
+ });await closeBrowser();await stopServer();
+}
+async function pickerViewSequence(entry,kind,workspace){
+ result.currentWorkspace=workspace.dir;await basicPickerView(entry,kind,workspace);await startServer(workspace.dir,true);ide=await startOwnedIDE(workspace.dir);await launch(kind,kind+'-picker-view');await pair();await reloadApp();await addTodo('Equal Cedar');await addTodo('Equal Cedar');
+ await check(kind+' original native selected source/read and saved history exist before another pick',async()=>{
+  const original=await inspectTitle(kind+'-before-picker-view',1,'Equal Cedar');original.ide=await openSource(original,workspace.dir);entry.original=original;entry.saved=await saveOriginal(kind+'-picker-view');entry.appBefore=await appProbe();assert.equal(await panel.evaluate(()=>document.querySelector('[data-atom-id="action-local-enabled"]').checked),false);await action('action-explain');entry.beforeUI=await pickerPresentation();assert(entry.beforeUI.sourceButtons>0);assert(entry.beforeUI.operandRows>0);assert(entry.beforeUI.explanation);assert.equal(entry.beforeUI.inputOpenDisabled,false);
+ });
+ await check(kind+' native picker and background refresh hide old details while UI Cancel restores exact prior event',async()=>{
+  await startPickerView();entry.picking=await maskedView();const held=await rpc(panel,{op:'state',tabId});assert.deepEqual(held.selection,entry.original.selection);assert.equal(held.analysis.stateatom.runtime.target.id,entry.original.runtime.target.id);entry.heldDuringPick={selection:held.selection,targetId:held.analysis.stateatom.runtime.target.id,picker:held.picker};
+  await action('refresh-tabs');entry.afterRefresh=await maskedView();assert(!entry.afterRefresh.raw.includes(entry.original.runtime.target.id));
+  for(const width of [390,1100]){await (await protocol()).send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:false});await panel.evaluate(()=>document.querySelector('[data-atom-id="scroll"]').scrollTop=0);const ui=await maskedView();assert.equal(ui.overflow,false);(entry.viewport??=[]).push({width,ui});await panel.screenshot({path:out+'/'+kind+'-picking-'+width+'-candidate.png'});}
+  await action('pick');entry.uiCancelled=await originalAfterCancel(entry.original);assert.equal(entry.uiCancelled.ui.inputOpenDisabled,entry.beforeUI.inputOpenDisabled);assert.deepEqual(await appProbe(),entry.appBefore);assert.equal((await rpc(panel,{op:'open-handoff',id:entry.saved.id})).raw,entry.saved.raw);
+ });
+ await check(kind+' actual application Escape preserves the same old snapshot and original clocks',async()=>{
+  await startPickerView();await maskedView();await panel.evaluate(async id=>{await chrome.tabs.update(id,{active:true});for(const type of ['rawKeyDown','keyUp'])await chrome.debugger.sendCommand({tabId:id},'Input.dispatchKeyEvent',{type,key:'Escape',code:'Escape',windowsVirtualKeyCode:27,modifiers:0,location:0});},tabId);
+  entry.escapeCancelled=await originalAfterCancel(entry.original);assert.equal(entry.escapeCancelled.ui.inputOpenDisabled,entry.beforeUI.inputOpenDisabled);assert.deepEqual(await appProbe(),entry.appBefore);assert.equal((await rpc(panel,{op:'open-handoff',id:entry.saved.id})).raw,entry.saved.raw);
+ });
+ await check(kind+' explicit fresh equal-value second pick uses its own current DOM/read identity',async()=>{
+  const second=await inspectTitle(kind+'-after-picker-view',2,'Equal Cedar');entry.second=second;assert.notEqual(second.dom.backendNodeId,entry.original.dom.backendNodeId);assert.notEqual(second.runtime.target.scope,entry.original.runtime.target.scope);assert.notEqual(second.runtime.target.id,entry.original.runtime.target.id);assert(second.selection.observedAt>entry.original.selection.observedAt);assert.equal((await rpc(panel,{op:'open-handoff',id:entry.saved.id})).raw,entry.saved.raw);assert.equal(sha256(await readFile(entry.saved.file)),entry.saved.sha256);assert.deepEqual(await appProbe(),entry.appBefore);
+ });
+ entry.finalManifest=await fileDigests(workspace.dir,['src','public','package.json','package-lock.json','license.md']);assert.deepEqual(entry.finalManifest,workspace.initialManifest);await panel.screenshot({path:out+'/'+kind+'-after-picker-cancel-candidate.png'});delete entry.saved.raw;await closeBrowser();await stopServer();await ide.close(true);ide=null;assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);
+}
+
 async function waitStale(old){
  const state=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});const text=await panel.evaluate(()=>document.querySelector('[data-atom-id="freshness"]').textContent);return s.run!==old.run&&text.startsWith('Stale')?{run:s.run,freshness:text,sourceCount:s.analysis?.sources?.length??0}:null;},30000);
  assert.equal(state.sourceCount,0);return state;
 }
+const corpusApps=[
+ {name:'react',base:sourceBase,relative:appRelative,versions:['react','react-dom','react-router-dom'],questions:[{id:'remaining',selector:'.todo-count',file:footer,expression:'activeTodos.length',value:1,question:'After adding Alpha and Beta and completing Alpha, which expression and observed read explain the remaining count?'}]},
+ {name:'react-redux',base:'.runtime/independent-apps/todomvc-redux-'+todoRevision.slice(0,12),relative:'examples/react-redux',versions:['react','react-dom','react-redux','@reduxjs/toolkit'],questions:[{id:'remaining',selector:'.todo-count',file:'src/components/footer.jsx',expression:'activeCount',value:1,question:'After adding Alpha and Beta and completing Alpha, which expression and observed read explain the remaining count?'},{id:'completed-title',selector:'.todo-list li:first-child label',file:'src/components/item.jsx',expression:'todo.text',value:'Alpha independent',question:'Where is the completed Alpha title rendered and what title value was actually read?'}]}
+];
+async function corpusUpstream(app){
+ const revision=String(await readFile(app.base+'/REVISION')).trim();assert.equal(revision,todoRevision);
+ const entries=['license.md',...['src','public','package.json','package-lock.json'].map(p=>app.relative+'/'+p)];
+ const sourceFiles=await fileDigests(app.base,entries),recorded=JSON.parse(await readFile(app.base+'/SOURCE_SHA256.json'));
+ assert.deepEqual(sourceFiles,Object.fromEntries(Object.entries(recorded).filter(([p])=>p==='license.md'||p.startsWith(app.relative+'/'))));
+ const base=app.base+'/'+app.relative,lock=JSON.parse(await readFile(base+'/package-lock.json')),versions={};
+ for(const name of app.versions){versions[name]=JSON.parse(await readFile(base+'/node_modules/'+name+'/package.json')).version;assert.equal(versions[name],lock.packages['node_modules/'+name].version);}
+ return{base:app.base,relative:app.relative,revision,sourceFiles,versions,heldout:false,historicalHeldout:app.name==='react-redux',evaluation:'Retained original questions; already exposed, not a fresh holdout'};
+}
+async function corpusWorkspace(kind,app,upstream){
+ const dir=path.resolve(out+'/'+kind+'-'+app.name+'-workspace');await mkdir(dir);
+ for(const p of ['src','public','package.json','package-lock.json','node_modules'])await cp(app.base+'/'+app.relative+'/'+p,dir+'/'+p,{recursive:true,verbatimSymlinks:true});
+ await cp(app.base+'/license.md',dir+'/license.md');const initialManifest=await fileDigests(dir,['src','public','package.json','package-lock.json','license.md']);
+ for(const[p,digest]of Object.entries(initialManifest))assert.equal(digest,upstream.sourceFiles[p==='license.md'?p:app.relative+'/'+p]);
+ return{dir,initialManifest};
+}
+async function inspectCorpus(label,question,workspace){
+ await choose('property','text');const before=(await rpc(panel,{op:'state',tabId})).selection?.observedAt,appBefore=await appProbe();
+ if(!await panel.evaluate(()=>document.querySelector('[data-atom-id="selector-details"]').open))await click(q('selector-details')+' > summary');
+ await fill('selector',question.selector);await action('inspect-selector');
+ const state=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});return s.selection?.selector===question.selector&&s.selection.property==='text'&&s.selection.observedAt!==before&&s.analysis?s:null;});
+ // DOM.performSearch also searches text; a bare .todo-count returned two hits.
+ // Use the original known span's XPath for native metadata only. UI question and
+ // selected backend/marker checks stay exactly the same and mismatches still fail.
+ const nativeMetadataQuery=question.selector==='.todo-count'?'//span[@class="todo-count"]':question.selector;
+ const dom=await rowDOM(null,state.selection,nativeMetadataQuery),runtime=state.analysis.stateatom?.runtime;
+ result.lastCorpusAttempt={label,selection:state.selection,sourceFiles:state.analysis.sources.map(s=>s.file),runtimeStatus:runtime?.status};
+ assert.equal(dom.inspectedBackendNodeId,dom.backendNodeId);assert.equal(state.selection.instance,dom.attributes['data-stateatom']);assert.equal(state.selection.frame,0);
+ assert.equal(runtime.status,'Observed');assert.equal(runtime.fullPath,false);assert.equal(runtime.commit.status,'Unknown/Unsupported');assert.equal(state.selection.instance,runtime.target.scope+':'+runtime.target.target);assert.equal(runtime.target.value,state.selection.value);
+ const sources=state.analysis.sources.filter(s=>s.file.endsWith(question.file));assert.equal(sources.length,1);const source=sources[0],digest=sha256(await readFile(workspace+'/'+question.file));assert.equal(source.sourceDigest,digest);assert.equal(runtime.target.sourceDigest,digest);assert(source.expressions.some(e=>e.includes(question.expression)));
+ const byId=new Map(runtime.nodes.map(n=>[n.id,n])),reachable=new Set(),pending=[runtime.target.id];while(pending.length){const id=pending.pop();if(reachable.has(id))continue;reachable.add(id);pending.push(...byId.get(id)?.deps||[]);}
+ // Existing member observations do not carry a direct scope field. Bind them by
+ // actual selected-target dependency IDs/page/digest; never invent that field.
+ const reads=runtime.nodes.filter(n=>n.expression===question.expression&&n.kind!=='target'&&n.status==='Observed');assert(reads.length);for(const n of reads){assert.equal(n.value,question.value);if(n.scope!==undefined)assert.equal(n.scope,runtime.target.scope);assert.equal(n.sourceDigest,digest);assert.equal(n.page,state.selection.page);assert(reachable.has(n.id));}
+ const ui=await waitFor(()=>panel.evaluate(({expression,value})=>{const get=id=>document.querySelector('[data-atom-id="'+id+'"]');const r={status:get('status').textContent,expressions:get('expressions').textContent,operands:get('operands').textContent,freshness:get('freshness').textContent};return r.status==='OK'&&r.expressions.includes(expression)&&r.operands.includes(expression+' = '+JSON.stringify(value))?r:null;},{expression:question.expression,value:question.value}));
+ assert.deepEqual(await appProbe(),appBefore);const record={label,question,selectionMethod:'Actual native CSS-selector UI; same retained independent question',nativeMetadataQuery,dom,selection:state.selection,source,runtime,reads,ui,run:state.run};const file=out+'/'+label+'-observation.json';await writeFile(file,JSON.stringify(record,null,2));return{...record,file,sha256:sha256(await readFile(file))};
+}
+async function corpusDownload(name,saved,question){
+ const [port,route]=String(await readFile(out+'/profiles/'+name+'/DevToolsActivePort')).trim().split('\n'),dir=path.resolve(out+'/downloads/'+name);await mkdir(dir,{recursive:true});
+ const socket=new WebSocket('ws://127.0.0.1:'+port+route),items=new Map();
+ try{
+  await new Promise((resolve,reject)=>{socket.addEventListener('open',resolve,{once:true});socket.addEventListener('error',reject,{once:true});});
+  socket.addEventListener('message',e=>{const m=JSON.parse(String(e.data));if(['Browser.downloadWillBegin','Browser.downloadProgress'].includes(m.method))items.set(m.params.guid,{...items.get(m.params.guid),...m.params});});
+  await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Native download configuration timeout')),10000);socket.addEventListener('message',e=>{const m=JSON.parse(String(e.data));if(m.id===1){clearTimeout(timer);m.error?reject(Error(m.error.message)):resolve();}});socket.send(JSON.stringify({id:1,method:'Browser.setDownloadBehavior',params:{behavior:'allow',downloadPath:dir,eventsEnabled:true}}));});
+  await action('diagnostic-toggle');await action('export-report');const preview=await waitFor(()=>panel.evaluate(()=>{const get=id=>document.querySelector('[data-atom-id="'+id+'"]');return get('export-review').open&&get('export-json').value?get('export-json').value:null;}));assert.equal(preview,saved.raw);assert(preview.includes(question.question));await action('export-confirm');
+  const downloaded=await waitFor(async()=>{const x=[...items.values()].find(x=>x.state==='completed');if(!x)return null;assert(x.totalBytes>0);assert.equal(x.receivedBytes,x.totalBytes);const file=x.filePath||path.join(dir,x.suggestedFilename);assert(file.startsWith(dir+path.sep));const raw=await readFile(file,'utf8');assert.equal(raw,preview);return{file,sha256:sha256(raw),native:{guid:x.guid,state:x.state,receivedBytes:x.receivedBytes,totalBytes:x.totalBytes}};});
+  await action('diagnostic-toggle');return downloaded;
+ }finally{socket.close();}
+}
+async function corpusReader(entry,kind,app){
+ // No extension, application server or IDE connection exists in this fresh profile.
+ browser=await startBrowser(out+'/profiles',kind+'-'+app.name+'-passive-reader',false);panel=await browser.context.newPage();const requests=[];panel.on('request',r=>requests.push(r.url()));panel.on('pageerror',e=>result.errors.push({reader:app.name,message:e.message}));
+ const reader=path.join(h.hosts[kind],'reader.html');await panel.goto('file://'+path.resolve(reader));
+ for(const record of entry.questions){await panel.locator('#diagnostic-file').setInputFiles(record.download.file);await panel.locator('#reader-status').filter({hasText:/^Imported historical diagnostic/}).waitFor();const summary=await panel.locator('#reader-summary').textContent();assert(summary.includes(record.question.question));assert(summary.includes(record.question.file));assert(summary.includes('Complete provenance is not established'));const raw=await panel.locator('#reader-payload').textContent(),payload=JSON.parse(raw);assert.deepEqual(payload,JSON.parse(await readFile(record.download.file)));assert(payload.runtime.nodes.some(n=>n.expression===record.question.expression&&n.value===record.question.value));await panel.screenshot({path:out+'/'+kind+'-'+app.name+'-'+record.question.id+'-reader-candidate.png'});record.reader={freshProfile:true,noExtension:true,appServerClosed:server===null,IDEClosed:ide===null,summary,payloadSha256:sha256(raw),status:await panel.locator('#reader-status').textContent()};}
+ assert(requests.every(u=>u.startsWith('file:')));entry.reader={reader,sha256:sha256(await readFile(reader)),requests,networkScope:'Observed fresh-reader page requests are file-only; not a whole-browser traffic absence claim'};await closeBrowser();
+}
+async function corpusSequence(kind,app,upstream){
+ const workspace=await corpusWorkspace(kind,app,upstream),entry={kind,app:app.name,heldout:false,historicalHeldout:app.name==='react-redux',workspace,questions:[]};result.cases.push(entry);const options={redux:app.name==='react-redux'};
+ async function prepare(){await addTodo('Alpha independent');await addTodo('Beta independent');await appClick('.todo-list li:first-child .toggle');return waitFor(async()=>{const p=await appProbe();return p.completed[0]&&!p.completed[1]&&p.count?.includes('1 item left')?p:null;});}
+ await startServer(workspace.dir,false,options);await launch(kind,kind+'-'+app.name+'-corpus-off');entry.off=await prepare();assert.equal(entry.off.observer,false);await closeBrowser();await stopServer();
+ const name=kind+'-'+app.name+'-corpus-on';await startServer(workspace.dir,true,options);ide=await startOwnedIDE(workspace.dir);await launch(kind,name);await pair();await reloadApp();
+ await check(kind+' '+app.name+' original two tasks/native toggle match instrumentation-off output',async()=>{entry.on=await prepare();assert.equal(entry.on.observer,true);assert.deepEqual({...entry.on,observer:false},entry.off);});
+ for(const question of app.questions)await check(kind+' '+app.name+' '+question.id+' original source/read/IDE/save/review/native-download question',async()=>{const label=kind+'-'+app.name+'-'+question.id,record={question,status:'RUNNING'};entry.questions.push(record);record.observation=await inspectCorpus(label,question,workspace.dir);record.observation.ide=await openSource(record.observation,workspace.dir);record.saved=await saveOriginal(label,{notes:question.question,content:true});record.download=await corpusDownload(name,record.saved,question);assert.equal(record.download.sha256,record.saved.sha256);delete record.saved.raw;record.status='USEFUL_SUPPORTED_FRAGMENT';await panel.screenshot({path:out+'/'+label+'-panel-candidate.png'});});
+ entry.finalManifest=await fileDigests(workspace.dir,['src','public','package.json','package-lock.json','license.md']);assert.deepEqual(entry.finalManifest,workspace.initialManifest);await closeBrowser();await stopServer();await ide.close(true);ide=null;
+ await check(kind+' '+app.name+' exact reviewed questions load in a fresh passive reader after app/IDE close',()=>corpusReader(entry,kind,app));assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);
+}
 try{
- await check('exact current immutable .33 archives installed pair and entire hosts',async()=>{
+ await check('exact current immutable '+h.package.version+' sources archives installed pair and entire hosts',async()=>{
+  for(const[file,digest]of Object.entries({...h.sourceManifest,...h.buildSources.manifest}))assert.equal(sha256(await readFile(file)),digest,'Current package source: '+file);
   await verifyArtifactHashes([h.package,h.ui]);await inspectInstalledPair(h.consumer,h.consumerReceipt);
   for(const kind of ['standalone','embedding'])assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);
  });
@@ -354,9 +491,12 @@ try{
   for(const name of ['react','react-dom','react-router-dom']){versions[name]=JSON.parse(await readFile(appBase+'/node_modules/'+name+'/package.json')).version;assert.equal(versions[name],lock.packages['node_modules/'+name].version);}
   result.upstream={kind:'Pinned extracted directory, no nested Git metadata',revision,sourceFiles:actual,versions};
  });
+ if(independentOnly){result.corpus=[];for(const app of corpusApps)await check(app.name+' retained corpus pinned source and installed locked versions',async()=>{result.corpus.push(await corpusUpstream(app));});}
  for(const kind of ['standalone','embedding']){
+  if(independentOnly){for(const[appIndex,app]of corpusApps.entries())await corpusSequence(kind,app,result.corpus[appIndex]);continue;}
   const workspace=await copyWorkspace(kind),entry={kind,workspace,observations:[],sourceVersions:[]};result.cases.push(entry);
   const original=await readFile(workspace.dir+'/'+footer,'utf8');entry.sourceVersions.push({stage:'original',sha256:sha256(original)});
+  if(pickerViewOnly){await pickerViewSequence(entry,kind,workspace);continue;}
   if(grammarOnly){await grammarSequence(entry,kind,workspace);continue;}
   if(instancesOnly){
    result.currentWorkspace=workspace.dir;
@@ -429,12 +569,13 @@ try{
   await closeBrowser();await stopServer();await ide.close(true);ide=null;
   assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);
  }
- result.status=grammarOnly?'PASS_SYNTHETIC_ORDINARY_REACT_GRAMMAR_ONLY':instancesOnly?'PASS_ORDINARY_REACT_EQUAL_INSTANCES_ONLY':'PASS_ORDINARY_REACT_SOURCE_EDIT_ONLY';
+ result.status=independentOnly?'PASS_RETAINED_THREE_CORPUS_QUESTIONS_BOTH_HOSTS':pickerViewOnly?'PASS_ORDINARY_PICKER_DISPLAY_CANCEL_ONLY':grammarOnly?'PASS_SYNTHETIC_ORDINARY_REACT_GRAMMAR_ONLY':instancesOnly?'PASS_ORDINARY_REACT_EQUAL_INSTANCES_ONLY':'PASS_ORDINARY_REACT_SOURCE_EDIT_ONLY';
 }catch(e){result.status='FAIL';result.error=String(e.stack||e);process.exitCode=1;console.error(e);await panel?.screenshot({path:out+'/failure-candidate.png'}).catch(()=>{});}
 finally{
  await closeBrowser().catch(e=>result.errors.push({cleanup:'browser',message:e.message}));await stopServer().catch(e=>result.errors.push({cleanup:'server',message:e.message}));
  if(ide)await ide.close(false).catch(e=>result.errors.push({cleanup:'IDE',message:e.message}));
  result.upstreamAfter=await fileDigests(sourceBase,entries);result.inputsAfter=await inputs();
+ if(independentOnly&&result.corpus)for(const[appIndex,app]of corpusApps.entries()){const current=await corpusUpstream(app);if(JSON.stringify(current)!==JSON.stringify(result.corpus[appIndex])){result.status='FAIL';process.exitCode=1;result.errors.push({app:app.name,message:'Original retained corpus changed'});}}
  if(result.upstream&&JSON.stringify(result.upstream.sourceFiles)!==JSON.stringify(result.upstreamAfter)||JSON.stringify(result.inputsBefore)!==JSON.stringify(result.inputsAfter)||result.errors.length){result.status='FAIL';process.exitCode=1;}
  result.completedAt=new Date().toISOString();await writeFile(out+'/results.json',JSON.stringify(result,null,2));console.log(result.status,result.checks.length,out);
 }

@@ -1,5 +1,41 @@
 # Changelog
 
+## 0.1.0-candidate.20261020.37
+
+- Restore focus to the Settings trigger only after closing an actually open
+  Settings dialog. Ordinary tab/context refreshes with closed Settings preserve
+  the user's keyboard focus instead of redirecting it to that trigger.
+- Preserve the existing consent, cancellation, grant lifetime/scope and cleanup
+  contracts. Shared layout/tokens remain unchanged.
+
+## 0.1.0-candidate.20261020.36
+
+- Keep Open inputs unavailable while a new element is being picked, even when
+  the retained old snapshot still has an eligible backend capability. Explain
+  the temporary UI state; Cancel restores the previous ordinary input workflow.
+- Keep local drafts, existing editor cleanup, permissions, Live/Draft behavior
+  and original runtime/saved history unchanged. No new input permission or API.
+
+## 0.1.0-candidate.20261020.35
+
+- Hide the previous selected target/source/operands/action explanation while a
+  native picker is starting, picking or resolving, including background refresh.
+  Disable current-snapshot save/inspection/selected experiment actions in that view.
+- Keep the original runtime record and exact saved diagnostic bytes. Cancel/Escape
+  restores the prior labelled historical snapshot and its original observation
+  clock, preserving the existing U05 cancellation contract.
+- Preserve shared tokens, primitives, layout and evidence semantics. Screenshots
+  remain candidates; this adds no source, commit or HTTP provenance support.
+
+## 0.1.0-candidate.20261020.34 (intermediate, not accepted)
+
+- Local intermediate build permanently cleared the selected runtime snapshot on
+  picker start. This conflicts with the retained U05 Cancel/Escape requirement;
+  the implementation was withdrawn. Its immutable archive remains historical.
+- Its source1615/unit2 results verify that intermediate behavior only, not final
+  acceptance. The attempted old native driver failed before attach because its
+  parallel application debugger already owned the resource; Cancel was not tested.
+
 ## 0.1.0-candidate.20261020.33
 
 - Refuse duplicate decoded JSON object member names in every public v2 report

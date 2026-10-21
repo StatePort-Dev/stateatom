@@ -1447,13 +1447,11 @@
       "deliverable": "Supported ordinary-session property/read paths and controls",
       "status": "in-progress",
       "optional": false,
-      "implementation_plan": "../superpowers/plans/2026-10-21-a01-ordinary-react-hmr.md",
-      "execution_record": "27-a01-ordinary-react-progress.md",
+      "implementation_plan": "../superpowers/plans/2026-10-21-a01-current-acceptance.md",
+      "execution_record": "28-a01-current-acceptance.md",
       "active_slice": "A01.5",
       "remaining_acceptance": [
-        "current retained UI/short-loop/independent controls where inputs changed; historical/current inputs explicitly separated",
-        "published supported grammar/profile matrix without promoting local wrapper reads or unsupported final commit",
-        "one complete A01 review and tested important-fix pass"
+        "one complete A01 review and tested Critical/Important resolutions"
       ],
       "completed_slices": [
         {
@@ -1526,17 +1524,45 @@
         }
       ],
       "current_candidate": {
-        "version": "0.1.0-candidate.20261020.33",
-        "handoff": ".artifacts/atom/2026-10-20T20-41-35-056Z/atom-handoff.json",
-        "verification": ".artifacts/a01/grammar/verification.json",
-        "boundary": "Explicit synthetic ordinary React19 form/hold/skipped original getter controls and native exact local wrapper reads; upstream parameter/override ancestry and final commit unobserved, fullPath false. Original independent sources and .33 unchanged."
+        "version": "0.1.0-candidate.20261020.37",
+        "handoff": ".artifacts/atom/2026-10-20T23-00-23-503Z/atom-handoff.json",
+        "verification": ".artifacts/a01/current-acceptance/verification37-final.json",
+        "boundary": "Current acceptance matrix verified with exact .37 package/source hashes and archived executed drivers. Ordinary19 final producer/parameter/store/HTTP ancestry remain unsupported; pinned18 host-props and historical reports retain their scopes. Legacy parallel-app-CDP failures stay failed; native equivalents use original predicates. Dirty BASE85c4cc2 receipt, not a clean post-commit build. ONE whole-A01 review pending."
       },
       "implementation_plans": [
         "../superpowers/plans/2026-10-21-a01-ordinary-react-hmr.md",
         "../superpowers/plans/2026-10-21-a01-equal-instance-controls.md",
         "../superpowers/plans/2026-10-21-a01-retained-mechanisms.md",
-        "../superpowers/plans/2026-10-21-a01-ordinary-grammar.md"
-      ]
+        "../superpowers/plans/2026-10-21-a01-ordinary-grammar.md",
+        "../superpowers/plans/2026-10-21-a01-current-acceptance.md"
+      ],
+      "execution_records": [
+        "27-a01-ordinary-react-progress.md",
+        "28-a01-current-acceptance.md"
+      ],
+      "current_acceptance": {
+        "status": "PASS_CURRENT_A01_ACCEPTANCE_REVIEW_PENDING",
+        "record": "28-a01-current-acceptance.md",
+        "verification": ".artifacts/a01/current-acceptance/verification37-final.json",
+        "checks": {
+          "full_source": 1619,
+          "focused": 63,
+          "strict_consumers": 2,
+          "admission": 7,
+          "ordinary_native": 50,
+          "retained_corpus": 18,
+          "pinned18_host_ui": 23,
+          "short_loop_cases_per_host": {
+            "total": 30,
+            "PASS": 20,
+            "PARTIAL": 10
+          },
+          "short_loop_native_control_checks": 19,
+          "affected_reporter": 33
+        },
+        "review_count": 0,
+        "full_A01_acceptance": false
+      }
     },
     {
       "id": "A02",
@@ -2171,23 +2197,15 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "A01.2",
-      "status": "complete-within-equal-instance-source-read-boundary",
-      "candidate_unchanged": "0.1.0-candidate.20261020.33",
-      "checks": {
-        "native_equal_instances": 10,
-        "paired_hosts": 2,
-        "selected_observations": 16,
-        "ordinary_UI_edits": 4
-      },
-      "product_code_changed": false,
-      "equal_output_instance_controls": true,
-      "react19_committed_host_binding": false,
+      "id": "A01.5",
+      "status": "current-acceptance-complete-whole-review-pending",
+      "candidate": "0.1.0-candidate.20261020.37",
+      "verification": ".artifacts/a01/current-acceptance/verification37-final.json",
+      "record": "28-a01-current-acceptance.md",
+      "product_code_changed": true,
+      "observer_compiler_runtime_changed": false,
       "full_A01_acceptance": false,
-      "verification": ".artifacts/a01/equal-instances/verification.json",
-      "record": "27-a01-ordinary-react-progress.md",
-      "evidence_scope": "Actual native two equal titles, same-value/different-value first-row edits, exact backend-marker-target-read identities, independent second row event/time retained on reinspection, old snapshot/save unchanged. React19 marker/value correspondence only; committed-host binding unsupported/fullPath false.",
-      "next_item": "A01.3"
+      "next_item": "A01 whole review"
     },
     "next_item": "A01",
     "new_full_task_acceptances": [
@@ -2698,10 +2716,29 @@
         "record": "27-a01-ordinary-react-progress.md",
         "evidence_scope": "Real source edits/same-output control/stale/new page-run/current source-read-IDE/old saved bytes on pinned independent React19.2.5, exact paired .33; title native picker and count CSS-selector UI explicit because original CSS occludes count. Marker/value correspondence only, final host commit Unknown/Unsupported/fullPath false.",
         "next_item": "A01.2"
+      },
+      {
+        "id": "A01.2",
+        "status": "complete-within-equal-instance-source-read-boundary",
+        "candidate_unchanged": "0.1.0-candidate.20261020.33",
+        "checks": {
+          "native_equal_instances": 10,
+          "paired_hosts": 2,
+          "selected_observations": 16,
+          "ordinary_UI_edits": 4
+        },
+        "product_code_changed": false,
+        "equal_output_instance_controls": true,
+        "react19_committed_host_binding": false,
+        "full_A01_acceptance": false,
+        "verification": ".artifacts/a01/equal-instances/verification.json",
+        "record": "27-a01-ordinary-react-progress.md",
+        "evidence_scope": "Actual native two equal titles, same-value/different-value first-row edits, exact backend-marker-target-read identities, independent second row event/time retained on reinspection, old snapshot/save unchanged. React19 marker/value correspondence only; committed-host binding unsupported/fullPath false.",
+        "next_item": "A01.3"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A01.2 actual equal-instance source/read controls complete: native10 in both unchanged .33 hosts, sixteen selections/four ordinary native UI edits. Correct existing backend ID domain, distinct equal-value markers/scopes/read IDs, new first occurrence after same-value edit, retained second read/time through reinspection, old snapshot/save/source immutable. Three setup/domain failures retained. No product/repack/threshold changes. A01.1 archived current-mechanism proof preserved; no old frozen verifier rerun. Next A01.3 remaining grammar/semantic/version reconciliation before one whole-A01 review. Parent A01/P04/C07/A05/L02/release open.",
+    "current_activity_note": "A01.5 exact .37 current acceptance matrix passes: source1619/focused63/types2/admission7/native50; original corpus18, pinned18 host-UI23, original short-loop30 per host with20PASS/10PARTIAL plus19 controls, affected reporter33. UI-only picker projection/input-open/focus correction preserves original runtime/saved history. Original legacy app-CDP setup failures and all intermediate attempts retained. Final aggregate binds archived executed drivers and explicitly records later test-only deltas; no old frozen verifier rerun or threshold reduction. ONE whole-A01 review/Important fix pass next. Parent A01/P04/C07/mandatory A05/L02/release open; SDK outside Atom.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "A01"

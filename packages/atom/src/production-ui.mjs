@@ -43,7 +43,7 @@ export function createProductionUI({$,client,onRefresh=async()=>{},onAttach=asyn
   text('production-note',error||(lost?'Inspector disconnected. Native cleanup is unconfirmed. Reopen the inspector explicitly.':cleanupUnknown?'Permission revoked; native cleanup is unconfirmed. Reconnect explicitly before further changes; already admitted app or server effects may remain.':cleanupPending?'Permission revoked; native cleanup is pending. New edits are blocked.':busy==='production-revoke'?'Returning to read-only…':busy?'Waiting for the host…':enabled&&!state?.attached?'Permission enabled. Attach this tab, then inspect a current element.':enabled?'Supported edits still check their current target and revision.':!https()?'Production changes require an HTTPS tab. Development permissions are in Browser connection.':!decision?.available?decision?.reason||'Attach the permitted tab first.':'Two separate confirmations are required.'));
   if(enabled&&remaining()>0)schedule();else stopTimer();
  }
- function hideDialog(){if($('production-dialog').open){suppressClose=true;$('production-dialog').close();}$('settings-toggle').focus();}
+ function hideDialog(){if($('production-dialog').open){suppressClose=true;$('production-dialog').close();$('settings-toggle').focus();}}
  function closeView(id){if(!Number.isSafeInteger(id)||id<1)return Promise.resolve();return client.request({op:'production-close',tabId:id,ownerId}).catch(e=>{if(!disposed){error=message(e);render();}});}
  async function cancelDialog(){
   const id=scope?.tabId,staged=stage!=='overview'||!!pending;epoch++;pending?.abort();pending=null;busy=null;ticket=null;stage='overview';hideDialog();

@@ -7,7 +7,7 @@ import {createProductionUI} from './production-ui.mjs';
 import {createInputUI} from './input-ui.mjs';
 import {createActionUI} from './action-ui.mjs';
 import {parseDiagnostic,serializeDiagnostic,omitDiagnosticContent} from '../../../core/diagnostic.mjs';
-import {inspectionView,selectionPresentation} from '../../../browser-extension/inspection-view.mjs';
+import {inspectionView,inspectionDisplayState,selectionPresentation} from '../../../browser-extension/inspection-view.mjs';
 import {template} from './template.mjs';
 import {atomError} from './platform.mjs';
 import {supportsCapabilityPolicy} from './transport.mjs';
@@ -54,7 +54,7 @@ async function load(){
  if(!Number.isSafeInteger(id)||id<=0){selectedState=null;analysis=null;renderInspection();return;}
  const state=await rpc({op:'state',tabId:id,refreshDeep:true});
  if(generation!==loadGeneration||id!==tab()||pendingProperties.has(id))return;
- selectedState={...state,tabId:id};analysis=state.analysis;inputUI.update(selectedState);renderInspection();
+ selectedState={...state,tabId:id};analysis=state.analysis;inputUI.update(inspectionDisplayState(selectedState));renderInspection();
 }
 const sourceMapUI=createSourceMapUI({document,$,rpc,tab,load,action,requestPermission:options.requestOriginPermission});
 const actionsUI=createActionUI({document,$,rpc,tab,action});
@@ -69,10 +69,11 @@ function attachAvailability(){const p=selectedState?.capabilityPolicy,known=supp
 function renderInspection(){
  productionUI.update(selectedState);
  $('load').hidden=connectionLost;$('inspector-reconnect').hidden=!connectionLost||typeof options.onReconnect!=='function';
- sourceMapUI.render(selectedState);
- actionsUI.render(selectedState);
+ const displayState=inspectionDisplayState(selectedState||{}),displayAnalysis=displayState.analysis;
+ sourceMapUI.render(displayState);
+ actionsUI.render(displayState);
  $('project-setup-status').textContent=selectedState?.projectSetup?.reason||'Basic works without the helper. For source access, install matching components and paste a private receipt.';
- const view=inspectionView(selectedState||{}),selection=view.target;
+ const view=inspectionView(displayState),selection=view.target;
  $('mode').textContent=view.mode;
  $('site-origin').textContent=$('tabs').selectedOptions?.[0]?.dataset.origin||'No application selected';
  for(const name of ['cache','reload','override','replay'])$('site-'+name).checked=selectedState?.connection?.actions?.includes(name)===true;
@@ -84,7 +85,7 @@ function renderInspection(){
  const [nextLabel,nextAction]=next[view.nextStep];$('inspection-next').textContent=nextLabel;$('inspection-next').onclick=nextAction;
  $('inspection-next').disabled=view.nextStep==='inspect-again'&&(!admission('inspect-selector')?.available||!selectedState?.selection&&!selectedState?.stale?.target)||view.nextStep==='select-element'&&!admission('pick')?.available;
  $('source-overview').textContent=view.stale?'Source links expired with this snapshot. Inspect again.':view.sources.length?view.sources.length+' code-linked source location'+(view.sources.length===1?'':'s')+'. A code link alone does not establish execution or data ancestry.':'No selected-property source association. Connect the project for supported source links, or explore this release’s sources separately.';
- const target=selection||selectedState?.stale?.target;
+ const target=selection||displayState.stale?.target;
  const trial=selectedState?.diagnosticExperiment;
  const matchingTrial=trial&&selectedState?.deepExperiment?.id===trial.result?.id&&trial.target?.selector===target?.selector&&trial.target?.property===target?.property;
  const restored=restorationNotice&&selectedState?.attached&&restorationNotice.tab===tab()&&restorationNotice.epoch===tabGeneration&&restorationNotice.intent===selectionIntent&&restorationNotice.origin===selectedState.origin&&restorationNotice.selector===target?.selector&&restorationNotice.property===target?.property&&restorationNotice.property===selectedState.property&&(!restorationNotice.id||matchingTrial&&restorationNotice.id===trial.result.id);
@@ -100,9 +101,9 @@ function renderInspection(){
  $('first-read-scope').textContent=profile.fullPath?profile.scope+' Snapshot; inspect again after changes.':'';
  $('first-read-joins').replaceChildren(...(profile.fullPath?['Code-linked · reviewed source/effect derivation '+profile.sourceProof.profile,'Observed · '+profile.occurrence.pointer+' = '+JSON.stringify(profile.occurrence.readValue)+' · parse '+profile.occurrence.parseId+' · browser request '+profile.occurrence.requestId,'Observed · read '+profile.occurrence.readId+' → target '+profile.occurrence.targetId+' → commit '+profile.occurrence.commitId,...profile.limits]:[]).map(text=>{const li=document.createElement('li');li.textContent=text;return li;}));
  $('property').value=pendingProperties.get(tab())?.property||selectedState?.property||'text';$('property').disabled=pendingProperties.has(tab());
- $('save-report').disabled=!selectedState?.selection&&!selectedState?.stale?.target;
- handoffUI.updateCurrent({available:!!(selectedState?.selection||selectedState?.stale?.target)&&supportsCapabilityPolicy(selectedState?.capabilityPolicy)&&!connectionLost,contextKey:JSON.stringify([tab(),tabGeneration,selectionGeneration,selectedState?.run,selectedState?.selection?.domIdentity,selectedState?.selection?.observedAt,selectedState?.stale?.at,selectedState?.property,connectionLost])});
- gate('load',admission('inspect-selector'),!selectedState?.selection?.selector&&!selectedState?.stale?.target?.selector);
+ $('save-report').disabled=!displayState.selection&&!displayState.stale?.target;
+ handoffUI.updateCurrent({available:!!(displayState.selection||displayState.stale?.target)&&supportsCapabilityPolicy(selectedState?.capabilityPolicy)&&!connectionLost,contextKey:JSON.stringify([tab(),tabGeneration,selectionGeneration,selectedState?.run,displayState.selection?.domIdentity,displayState.selection?.observedAt,displayState.stale?.at,selectedState?.property,connectionLost,selectedState?.picker?.status,selectedState?.picker?.id])});
+ gate('load',admission('inspect-selector'),!displayState.selection?.selector&&!displayState.stale?.target?.selector);
  const picker=selectedState?.picker,picking=['starting','picking','resolving'].includes(picker?.status);
  gate('pick',admission(picking?'cancel-pick':'pick'));$('pick').setAttribute('aria-label',picking?'Cancel element selection':'Select page element');$('pick').setAttribute('aria-pressed',String(picking));$('pick').title=picking?'Cancel selection; Escape also cancels on the page':$('pick').title;
  $('picker-status').hidden=!picking&&picker?.status!=='unsupported';$('picker-status').textContent=picker?.status==='starting'?'Preparing selection…':picking?'Click an element. Cancel here, or Escape (may reach the page).':picker?.reason||'';
@@ -125,7 +126,7 @@ function renderInspection(){
  $('code-journal-limits').textContent=journal?'Independent browser observations. Compilation does not establish calls, source equivalence, readonly effects or field ancestry. Earlier/future effects and other targets/workers are not excluded. '+(journal.armedBeforeNavigation?'Collection started before this navigation. ':'Earlier history unavailable: attached after navigation. ')+(journal.gaps.length?'Collection boundaries: '+journal.gaps.join(', ')+'. ':'No recorded acquisition gaps in this bounded snapshot. '):'';
  $('code-journal-records').textContent=journal?journal.scripts.map(r=>'script '+r.scriptId+' · '+r.world+' · '+r.resource+' · '+r.sourceStatus+(r.digest?' · SHA-256 '+r.digest:'')).join('\n'):'';
  $('sources').replaceChildren();$('expressions').replaceChildren();$('fields').replaceChildren();$('operands').replaceChildren();
- renderAtom(analysis?.stateatom,view.finiteTraceSupported);
+ renderAtom(displayAnalysis?.stateatom,view.finiteTraceSupported,displayState);
  if(view.stale)$('atom-summary').textContent='Stale · '+view.reason;
  for(const source of view.sources){
   const row=document.createElement('div');row.className='sp-atom-source';
@@ -140,17 +141,17 @@ function renderInspection(){
  if(!view.sources.length)$('sources').textContent='Source unavailable for this selection.';
  for(const node of view.operands){const item=document.createElement('li');item.className='sp-data-row';const expression=document.createElement('span'),value=document.createElement('code');value.className='sp-value';expression.textContent=node.expression+' = ';value.textContent=JSON.stringify(node.value);item.append(expression,value);$('operands').append(item);}
  $('values-unavailable').textContent=view.operands.length?'':'No scalar operand values observed for this selected computation.';
- $('experiment-result').textContent=selectedState?.experiment?selectedState.experiment.status+': '+selectedState.experiment.reason:'';
- const candidates=[...(analysis?.fields||[])];
+ $('experiment-result').textContent=displayState.experiment?displayState.experiment.status+': '+displayState.experiment.reason:'';
+ const candidates=[...(displayAnalysis?.fields||[])];
  for(const request of selectedState?.requests||[])for(const field of flatten(request.json))if(!candidates.some(c=>c.requestId===request.id&&c.path===field.path))candidates.push({...field,url:request.url,requestId:request.id,status:'Unknown',method:'manually selectable observed response leaf'});
  // Keep the existing experiment index contract without mutating the resolver result.
  fields=candidates;
  candidates.forEach((field,i)=>{const option=document.createElement('option');option.value=i;option.textContent=field.status+' '+field.url+' #'+field.path+' = '+JSON.stringify(field.value);$('fields').append(option);});
  const eligible=admission('deep-experiment')?.available===true;
  gate('atom-run',admission('deep-experiment'),!selection||!analysis||view.stale);gate('atom-restore',admission('restore'));
- gate('experiment',admission('experiment'),!candidates.length);
+ gate('experiment',admission('experiment'),!selection||!candidates.length);
  $('experiment-eligibility').textContent=!eligible?(admission('deep-experiment')?.reason||'Capability unavailable'):selection?.property==='text'&&candidates.length?'Text response experiment available for a recorded JSON leaf. Response presence alone is not dependency. Trials reset storage/cache and reload; server writes are not undone.':'Controlled property trials require explicit response variants below. The simpler response-field experiment supports text only. Trials reset storage/cache and reload; server writes are not undone.';
- $('evidence').textContent=selectedState?JSON.stringify({analysis,events:selectedState.events,bufferBytes:selectedState.bufferBytes,...(matchingTrial?{experiment:trial}:{})},null,2):'';
+ $('evidence').textContent=selectedState?JSON.stringify({analysis:displayAnalysis,events:selectedState.events,bufferBytes:selectedState.bufferBytes,...(matchingTrial?{experiment:trial}:{})},null,2):'';
 }
 function reveal(id){const e=$(id),scroller=$('scroll');if(e.tagName==='DETAILS')e.open=true;scroller.scrollTop+=e.getBoundingClientRect().top-scroller.getBoundingClientRect().top-16;(e.tagName==='DETAILS'?e.querySelector('summary'):e).focus({preventScroll:true});}
  $('setup-toggle').onclick=()=>reveal('browser-connection');
@@ -177,7 +178,7 @@ $('refresh-tabs').onclick=()=>action(async()=>{await tabs();await load();});$('t
 $('experiment').onclick=()=>action(async()=>{const id=tab(),generation=selectionGeneration;const field=fields[Number($('fields').value)];$('experiment-result').textContent='Running…';const result=await rpc({op:'experiment',tabId:tab(),field,value:JSON.parse($('value').value),controlPath:$('control').value,actions:JSON.parse($('actions').value)});if(id!==tab()||generation!==selectionGeneration)return;$('experiment-result').textContent=result.status+': '+result.reason;$('evidence').textContent=JSON.stringify(result,null,2);});
 const unsubscribe=client.subscribe(m=>{if(disposed)return;if(['selection','state-invalidated'].includes(m.event)&&m.tabId===tab()){clearInspection(true,{preserveViewport:m.event==='state-invalidated',preserveIntent:m.event==='state-invalidated'});void action(load);}});const ready=tabs().then(load).catch(e=>{if(disposed)return;if(e.code==='INSPECTOR_DISCONNECTED')lostConnection();else $('status').textContent='Error: '+e.message;});
 
-function renderAtom(atom,finiteTraceSupported=false){$('atom-chain').replaceChildren();$('atom-independent').textContent='';if(!atom){$('atom-summary').textContent=selectedState?.stale?'Stale · '+selectedState.stale.reason+' · inspect again':'Unknown/Unsupported: no inspection';return;}const r=atom.runtime;$('atom-summary').textContent=(r.status||'Unknown/Unsupported')+' · '+atom.target.property+' = '+JSON.stringify(atom.target.value)+' · '+(r.status==='Observed'?'selected computation snapshot':r.reason||'');
+function renderAtom(atom,finiteTraceSupported=false,displayState=selectedState){$('atom-chain').replaceChildren();$('atom-independent').textContent='';if(!atom){$('atom-summary').textContent=displayState?.stale?'Stale · '+displayState.stale.reason+' · inspect again':'Unknown/Unsupported: no inspection';return;}const r=atom.runtime;$('atom-summary').textContent=(r.status||'Unknown/Unsupported')+' · '+atom.target.property+' = '+JSON.stringify(atom.target.value)+' · '+(r.status==='Observed'?'selected computation snapshot':r.reason||'');
  for(const n of (r.nodes||[])){const d=document.createElement('details'),s=document.createElement('summary');s.textContent=n.status+' · '+n.kind+' · '+n.expression+(n.kind==='potential-property-write'?' · potential access; completion unknown':' = '+JSON.stringify(n.value))+(n.origin?' · parsed object/field '+n.origin.url+' #'+n.origin.pointer+(finiteTraceSupported?' · independent fragment value origin ':' · current value origin ')+(n.valueOrigin||'Unknown/Unsupported')+(finiteTraceSupported?' · This parsed-identity fragment alone does not establish ancestry; see the separately scoped finite trace for the original selected read.':''):'')+(n.boundary?' · '+n.boundary:'');const p=document.createElement('pre');p.textContent=JSON.stringify(n,null,2);d.append(s,p);$('atom-chain').append(d);}
  for(const slice of atom.slices||[]){const d=document.createElement('details'),s=document.createElement('summary');s.textContent='Code-linked · possible source slice · '+slice.nodes.length+' nodes';const p=document.createElement('pre');p.textContent=JSON.stringify(slice,null,2);d.append(s,p);$('atom-chain').append(d);}$('atom-independent').textContent=JSON.stringify(r.independentObservations||[],null,2);}
 $('property').onchange=()=>action(async()=>{

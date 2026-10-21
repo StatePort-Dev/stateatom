@@ -1,3 +1,4 @@
+import {fixtureCases,independentCases,remainingStrongVariant} from '../helpers/short-loop-cases.mjs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
 import {execFileSync} from 'node:child_process';
@@ -22,7 +23,7 @@ const runtime=root+'/.runtime/short-'+tag+'-'+Date.now();
 await mkdir(root+'/.runtime/short-loop-runs',{recursive:true});await mkdir(out);await mkdir(runtime,{recursive:true});
 const result={schema:'stateatom-short-loop/1',startedAt:new Date().toISOString(),criterion:'T+E+V+I; not full provenance',revision:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),configuration:{node:process.version,sandbox:true,viewport:{width:1280,height:900},browserPath:'Playwright; Browser plugin not available',todoRevision},checks:[],cases:[],hypotheses:[],health:[],errors:[]};
 let ide,server,browser;
-const sourceInputs=['packages/atom/src','packages/atom/types','packages/atom/package.json','core','browser-extension','ide-extension/extension.mjs','src/engine','tests/fixtures/inspection',"scripts/inspection-server.mjs",'scripts/harness.mjs','scripts/vite-config.mjs','scripts/ide-runner.mjs','scripts/short-loop-inputs.mjs','tests/ide-host.cjs','tests/offline-guard.cjs',"tests/integration/short-loop.mjs"];
+const sourceInputs=['tests/helpers/short-loop-cases.mjs','packages/atom/src','packages/atom/types','packages/atom/package.json','core','browser-extension','ide-extension/extension.mjs','src/engine','tests/fixtures/inspection',"scripts/inspection-server.mjs",'scripts/harness.mjs','scripts/vite-config.mjs','scripts/ide-runner.mjs','scripts/short-loop-inputs.mjs','tests/ide-host.cjs','tests/offline-guard.cjs',"tests/integration/short-loop.mjs"];
 const extensionPath=process.env.ATOM_EXTENSION_PATH?path.resolve(process.env.ATOM_EXTENSION_PATH):root+'/dist/browser';result.configuration.extensionPath=extensionPath;
 const buildInputs=[path.relative(root,extensionPath),'dist/ide/extension.cjs','dist/ide/package.json'];
 const compact=s=>s.replace(/\s+/g,'');
@@ -59,7 +60,7 @@ async function inspect(ctx,c){
  if(!c.refresh){await panel.locator('#property').selectOption(c.property);await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});return s.property===c.property&&await panel.locator('#status').innerText()==='OK';});}
  const before=(await rpc(panel,{op:'state',tabId})).selection?.observedAt;
  if(c.refresh){await panel.locator('#load').click();}
- else if(c.picker){await panel.locator('#pick').click();const box=await page.locator(c.selector).boundingBox();if(!box)throw Error('No element box');await page.mouse.click(box.x+box.width/2,box.y+box.height/2);}
+ else if(c.picker){await panel.locator('#pick').click();await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});item.pickerPreparation={attached:s.attached,picker:s.picker};return s.picker?.status==='picking';});const box=await page.locator(c.selector).boundingBox();if(!box)throw Error('No element box');await page.mouse.click(box.x+box.width/2,box.y+box.height/2);}
  else{if(!await panel.locator('#selector').isVisible())await panel.locator('#selector-details > summary').click();await panel.locator('#selector').fill(c.selector);await panel.locator('#inspect-selector').click();}
  await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});return s.analysis&&s.selection?.observedAt!==before&&s.selection?.property===c.property?s:null;});
  await panel.locator('#status').filter({hasText:/^OK$/}).waitFor();
@@ -70,6 +71,8 @@ async function inspect(ctx,c){
  item.T=dom===c.value&&state.selection.value===dom;
  item.actual={dom,rawDOM,selectionValue:state.selection.value,marker:state.selection.marker,instance:state.analysis.stateatom?.runtime?.target?.scope||state.selection.deepTrace?.target?.scope};
  item.ui={operands:await panel.locator('#operands').innerText(),mode:await panel.locator('#mode').innerText(),freshness:await panel.locator('#freshness').innerText(),selected:await panel.locator('#selected').innerText(),sources:await panel.locator('#sources').innerText(),expressions:await panel.locator('#expressions').innerText(),summary:await panel.locator('#atom-summary').innerText(),chain:await panel.locator('#atom-chain').innerText(),independentObservations:await panel.locator('#atom-independent').textContent()};
+ item.ui.presentation={title:await panel.locator('#selection-title').innerText(),value:await panel.locator('#selection-value').innerText(),visible:await panel.locator('#selection-title').isVisible()&&await panel.locator('#selection-value').isVisible()};
+ item.T=item.T&&item.ui.presentation.visible&&item.ui.presentation.title===(await page.locator(c.selector).textContent()).trim()&&item.ui.presentation.value===(c.property==='text'?'Text':'disabled = '+JSON.stringify(c.value));
  item.ui.operandRows=await panel.locator('#operands li').evaluateAll(rows=>rows.map(row=>({expression:row.querySelector('span')?.textContent?.trim(),value:row.querySelector('code')?.textContent})));
  const expectedSources=state.analysis.sources.filter(s=>s.expressions.some(e=>compact(e).includes(compact(c.expression))));
  item.E=expectedSources.length===1&&compact(item.ui.expressions).includes(compact(c.expression));
@@ -105,7 +108,8 @@ async function panelTransitions({page,panel,tabId}){
  check('picker keeps the selected property',await panel.locator('#property').inputValue()==='text');
  const box=await page.locator('#p4').boundingBox();await page.mouse.click(box.x+10,box.y+10);
  await waitFor(async()=>{const state=await rpc(panel,{op:'state',tabId});return state.selection?.id==='p4'&&state.selection?.property==='text'&&state.analysis;});
- await panel.locator('#selected').filter({hasText:/^#p4/}).waitFor();
+ await panel.locator('#selection-title').filter({hasText:'Confirm combined'}).waitFor();
+ check('selected visible title retains the exact picked property',(await rpc(panel,{op:'state',tabId})).selection?.selector==='#p4'&&await panel.locator('#property').inputValue()==='text');
  await panel.locator('#property').selectOption('disabled');
  await panel.locator('#status').filter({hasText:/^OK$/}).waitFor();
  check('property change clears old scalar operands',await panel.locator('#operands li').count()===0);
@@ -114,13 +118,13 @@ async function panelTransitions({page,panel,tabId}){
  if(!await panel.locator('#selector').isVisible())await panel.locator('#selector-details > summary').click();
  await panel.locator('#selector').fill('#p4');await panel.locator('#inspect-selector').click();
  await panel.locator('#status').filter({hasText:/^OK$/}).waitFor();
- check('new inspection after property change',/disabled = true/.test(await panel.locator('#selected').innerText()));
+ check('new inspection after property change',(await rpc(panel,{op:'state',tabId})).selection?.selector==='#p4'&&await panel.locator('#selection-value').innerText()==='disabled = true'&&await panel.locator('#selection-value').isVisible());
  const other=await page.context().newPage();await other.goto('http://127.0.0.1:4173/react/?other-tab');await other.locator('#p4').waitFor();
  await chooseTab(panel,'?other-tab');await panel.locator('#status').filter({hasText:/^OK$/}).waitFor();
- check('tab switch clears previous target and source',(await panel.locator('#selected').innerText()).startsWith('Select an element')&&await panel.getByRole('button',{name:'Open in IDE'}).count()===0);
+ check('tab switch clears previous target and source',await panel.locator('#selection-title').innerText()==='Select an element'&&!(await rpc(panel,{op:'state',tabId:Number(await panel.locator('#tabs').inputValue())})).selection&&await panel.getByRole('button',{name:'Open in IDE'}).count()===0);
  check('tab switch clears previous operands and independent observations',await panel.locator('#operands li').count()===0&&(await panel.locator('#atom-independent').textContent())==='');
  await panel.locator('#tabs').selectOption(String(tabId));await panel.locator('#status').filter({hasText:/^OK$/}).waitFor();
- check('return to original tab restores its labelled snapshot',(await panel.locator('#selected').innerText()).startsWith('#p4')&&(await panel.locator('#freshness').innerText()).includes('Not live'));
+ check('return to original tab restores its labelled snapshot',(await rpc(panel,{op:'state',tabId})).selection?.selector==='#p4'&&await panel.locator('#selection-title').innerText()==='Confirm combined'&&await panel.locator('#selection-value').innerText()==='disabled = true'&&(await panel.locator('#freshness').innerText()).includes('Not live'));
  await other.close();
  await panel.setViewportSize({width:390,height:844});await panel.evaluate(()=>scrollTo(0,0));
  check('390px panel has no horizontal overflow',await panel.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
@@ -152,7 +156,7 @@ try{
  if(!process.env.SHORT_ONLY_TODO){
  for(const mode of['B','A'])for(const stack of['react','vue']){
  const ctx=await setup(stack,mode);
- const cases=mode==='B'?[{id:'P1',selector:'#p1',property:'text',value:'13',expression:'shown',valueNames:['shown','allowance']},{id:'P2',selector:'#p2',property:'disabled',value:false,expression:'!eligible',valueNames:['eligible']},{id:'P4',selector:'#p4',property:'disabled',value:true,expression:'creditHold || !canConfirm',valueNames:['creditHold']},{id:'P5',selector:'#p5',property:'disabled',value:true,expression:'form.length < 3',valueNames:['form']},{id:'row-first',selector:'.row >> nth=0',property:'text',value:'12',expression:stack==='vue'?'props.row.rules.quota':'row.rules.quota',valueNames:['rules.quota'],picker:true},{id:'row-second',selector:'.row >> nth=1',property:'text',value:'77',expression:stack==='vue'?'props.row.rules.quota':'row.rules.quota',valueNames:['rules.quota'],picker:true}]:[{id:'P4',selector:'#p4',property:'disabled',value:true,expression:'creditHold || !canConfirm',valueNames:['creditHold']},{id:'P5',selector:'#p5',property:'disabled',value:true,expression:'form.length < 3',valueNames:['form']}];
+ const cases=fixtureCases(mode,stack);
  for(const c of cases)await inspect(ctx,c);
  if(mode==='B'&&stack==='react')await panelTransitions(ctx);
  if(mode==='B'){
@@ -167,8 +171,8 @@ try{
  }
  for(const stack of['vue','react']){
  const ctx=await setup(stack,'B',true);
- for(const c of[{id:'first-label',selector:'.todo-list li:nth-child(1) label',property:'text',value:'Alpha short',expression:stack==='vue'?'todo.title':'title',valueNames:['title'],picker:true},{id:'remaining-count',selector:'.todo-count',property:'text',value:stack==='vue'?'1 item left':'1 item left!',expression:stack==='vue'?'remaining':'activeTodos.length',valueNames:stack==='vue'?['remaining']:['activeTodos.length']},{id:'second-label',selector:'.todo-list li:nth-child(2) label',property:'text',value:'Beta short',expression:stack==='vue'?'todo.title':'title',valueNames:['title'],picker:true}])await inspect(ctx,c);
- if(process.env.SHORT_COUNT_VARIANT!=='0'&&stack==='vue')await inspect(ctx,{id:'remaining-strong-variant',selector:'.todo-count strong',property:'text',value:'1',expression:'remaining',valueNames:['remaining']});
+ for(const c of independentCases(stack))await inspect(ctx,c);
+ if(process.env.SHORT_COUNT_VARIANT!=='0'&&stack==='vue')await inspect(ctx,remainingStrongVariant);
  await closeApp();
  }
  result.status=result.cases.some(c=>c.status==='ERROR'||c.regression)||result.checks.some(c=>c.status==='FAIL')?'CHECK_ERRORS':'COMPLETED_WITH_EXPLICIT_PARTIALS';

@@ -528,3 +528,14 @@ getter behavior and exact local wrapper reads with explicit unobserved parameter
 ancestry. No resolver/runtime/package change or independent-app promotion. Next
 A01.5 current retained UI/short-loop/independent controls and ONE whole-A01 review;
 A01/mandatory A05/L02/release remain open. See27-a01 for actual evidence/limits.
+
+A01.5 current .37 now passes source1619/focused63/types2/admission7 and native50
+ordinary grammar/picker/source-edit/instance checks. The picker hides old selected
+details while retaining the original record for Cancel/Escape; old input opening
+is blocked during selection, and closed Settings no longer steals focus. Runtime,
+observer/compiler and shared styles remain unchanged. Retained corpus18, pinned18
+host-UI23 and affected current reporter33 pass in explicitly separate native scopes;
+legacy parallel-app-CDP setup failures stay failed/blocked. Current native short-loop
+passes the original30 cases per host with20PASS/10PARTIAL and19 controls. The exact
+acceptance aggregate passes with ONE whole-A01 review pending. This is no React19 final-producer/full HTTP,
+human acceptance or public release claim. See28-a01-current-acceptance.md.

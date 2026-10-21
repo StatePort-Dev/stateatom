@@ -1,7 +1,13 @@
 // SPDX-License-Identifier: Apache-2.0
 // Copyright 2026 StateAtom contributors.
 // Presentation of validated records only. No page reads or expression evaluation.
+export function inspectionDisplayState(state={}) {
+ if(!['starting','picking','resolving'].includes(state.picker?.status))return state;
+ // Keep the original record for Cancel; hide it while another target is pending.
+ return {...state,selection:null,analysis:null,stale:null,experiment:null};
+}
 export function inspectionView(state={}) {
+ state=inspectionDisplayState(state);
  const analysis=state.analysis,runtime=analysis?.stateatom?.runtime;
  const stale=!!state.stale||runtime?.status==='Stale';
  const sourceLinked=analysis?.capabilities?.sourceResolver==='open-ide';
