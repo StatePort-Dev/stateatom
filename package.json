@@ -92,7 +92,8 @@
     "verify:local-model-product": "node tests/integration/local-model-product-native.mjs",
     "verify:local-derived-model": "node tests/integration/local-model-native.mjs --derived",
     "verify:react19-reducer": "node experiments/react19-reducer/run.mjs",
-    "verify:source-anchor-native": "node tests/integration/source-anchor-native.mjs"
+    "verify:source-anchor-native": "node tests/integration/source-anchor-native.mjs",
+    "verify:react-host-carrier": "node experiments/actions/react-host-carrier.mjs"
   },
   "dependencies": {
     "@angular/compiler": "20.3.34",

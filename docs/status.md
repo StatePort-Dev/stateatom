@@ -1554,3 +1554,14 @@ controls. Final .34/UI .2 has identical complete executable source/host payloads
 .34 types2/admission7 PASS. Registration location only, callback/invocation/property/
 HTTP unknown. Screens remain human candidates. Next P01.3 supported actual framework
 handler with unsupported controls/common pure analysis; whole P01 open,15/29 complete.
+
+### 2026-10-21 — finite selected React host native carrier
+
+[P01.3a](completion/71-p01-react-host-native-carrier.md):7new/22focused/1944full
+source PASS; actual16 native checks/17 pinned React18.3.1 synthetic cases. Exact
+MAIN own host callback slots give distinct minified/original positions, getter/
+Proxy/ambiguous/wrong-host/bound/root/isolated controls refuse, passive counters0.
+Metadata is not renderer/version attestation or callback-object identity. Explicit
+test-only sidecar; original .34 product/runtime/hosts unchanged. Next P01.3b runtime/
+shared anchor/map/provider/Actions integration and packed two-host controls; no
+framework source UI support credited yet. P01 open,15/29 full tasks complete.
