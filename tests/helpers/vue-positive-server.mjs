@@ -1,0 +1,13 @@
+// SPDX-License-Identifier: Apache-2.0
+// Synthetic application uses the REAL locked router from the prepared independent
+// Vue app, with its license/source bytes preserved. No replacement state library.
+import {createServer} from 'vite';import vue from '@vitejs/plugin-vue';
+import {readFile} from 'node:fs/promises';import path from 'node:path';
+import {stateatomPlugin} from '../../src/engine/plugin.mjs';import {root} from '../../scripts/vite-config.mjs';
+const [workspace,mode,cacheDir]=process.argv.slice(2);let server;
+async function stop(){await server?.close();process.exit(0);}process.on('message',m=>{if(m?.op==='stop')void stop();});process.on('SIGTERM',()=>void stop());
+try{
+ const router=root+'/.runtime/todomvc/examples/vue/node_modules/vue-router',pkg=JSON.parse(await readFile(router+'/package.json'));
+ server=await createServer({configFile:false,root:workspace,cacheDir,server:{host:'127.0.0.1',port:4173,strictPort:true,fs:{allow:[root]}},resolve:{alias:{'vue-router':router+'/dist/vue-router.mjs','vue':root+'/node_modules/vue/dist/vue.runtime.esm-bundler.js'},dedupe:['vue']},optimizeDeps:{include:['vue','vue-router']},plugins:[stateatomPlugin({enabled:mode==='B',root:workspace}),vue()]});
+ await server.listen();process.send({type:'ready',origin:'http://127.0.0.1:4173',workspace:path.relative(root,workspace),mode,vue:JSON.parse(await readFile(root+'/node_modules/vue/package.json')).version,router:pkg.version,routerSource:path.relative(root,router+'/dist/vue-router.mjs')});
+}catch(e){process.send?.({type:'error',message:e.stack||e.message});await server?.close();process.exitCode=1;process.disconnect?.();}

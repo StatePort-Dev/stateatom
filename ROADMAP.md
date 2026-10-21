@@ -621,3 +621,15 @@ finite compilation regression4 pass.35-a04-vue-source-adapter.md retains actual
 failed/control cases and pin-only builder refresh. No native Vue positive gate is
 claimed; parent A04 remains open, next A04.2 actual real-library/UI/source matrix.
 Old Vue PARTIAL evidence and mandatory A05/L02 remain unchanged.
+
+### 2026-10-21 — A04.2 positive Vue current matrix
+
+Actual Vue/compiler3.5.44 plus real locked router4.6.4 now passes the registered
+picker/property/read/source/IDE/normal-update/two-instance/HMR/v1 matrix47 in both
+exact .6 native hosts. Source1662/focused129/types2/admission7; affected React
+Actions105 and original short-loop30 per host20PASS10PARTIAL retained, with separate
+real QueryClient and unchanged independent Vue source-action checks. See36-a04 and
+framework-capabilities.md for exact records/versions/limits. Missing inner route
+recomputation read/cache ancestry/function identity/invocation remain Unknown.
+All failures/old results preserved. ONE whole-A04 review remains; parent A04 open.
+No SDK, publication, installed-product/human acceptance or complete lineage claim.

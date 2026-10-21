@@ -151,7 +151,7 @@ export function analyzeActions(files,selection,identity,graph,projectFiles=files
   const targets=u.vue.targets.filter(t=>t.tag===selection.tag&&t.line===Number(line)&&(!column||t.column===Number(column)));
   if(targets.length!==1)return result;
   const paths=new Map();traverse(u.ast,{ExpressionStatement(p){paths.set(p.node.expression,p.get('expression'));}});
-  entries=targets[0].events.map(e=>({...e,p:paths.get(e.expression),sourceKind:'vue-template'}));
+  entries=targets[0].events.map(e=>({...e,boundary:e.boundary||u.vue.actionBoundary,p:paths.get(e.expression),sourceKind:'vue-template'}));
  }else{
   traverse(u.ast,{JSXOpeningElement(p){const n=p.node;if(n.name.type==='JSXIdentifier'&&/^[a-z]/.test(n.name.name)&&n.name.name===selection.tag&&n.loc.start.line===Number(line)&&(!column||n.loc.start.column+1===Number(column)))matches.push(p);}});
   if(matches.length!==1)return result;

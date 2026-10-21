@@ -280,3 +280,15 @@ The earlier matrix receipt remains unchanged; the later review is recorded in
 unobserved. Next dependency-ready item:A04 positive Vue; A02/A05/L02 and broader
 production/performance/release gates remain open. No independent-human blocker,
 SDK, publication or other-repository work is inferred.
+
+### 2026-10-21 — A04.2 positive Vue current matrix
+
+Actual Vue/compiler3.5.44 plus real locked router4.6.4 now passes the registered
+picker/property/read/source/IDE/normal-update/two-instance/HMR/v1 matrix47 in both
+exact .6 native hosts. Source1662/focused129/types2/admission7; affected React
+Actions105 and original short-loop30 per host20PASS10PARTIAL retained, with separate
+real QueryClient and unchanged independent Vue source-action checks. See36-a04 and
+framework-capabilities.md for exact records/versions/limits. Missing inner route
+recomputation read/cache ancestry/function identity/invocation remain Unknown.
+All failures/old results preserved. ONE whole-A04 review remains; parent A04 open.
+No SDK, publication, installed-product/human acceptance or complete lineage claim.

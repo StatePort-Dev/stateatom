@@ -1,17 +1,22 @@
 // SPDX-License-Identifier: Apache-2.0
 // Compiler-backed source descriptors only: no application code is evaluated.
-import {parse as parseSFC} from '@vue/compiler-sfc';
+// Use the package's self-contained ESM parser in the IDE bundle. The Node CJS
+// entry also contains optional template preprocessor requires unrelated to parse.
+import {parse as parseSFC} from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser.js';
 import {baseParse} from '@vue/compiler-dom';
 import {parse} from '@babel/parser';
 
 export function vueSourceUnit(file,text){
- let descriptor,tree,ast;
+ let descriptor,tree,ast,actionBoundary;
  try{
   const parsed=parseSFC(text,{filename:file});if(parsed.errors.length)return null;
   descriptor=parsed.descriptor;
-  if(!descriptor.template||descriptor.template.src||descriptor.template.lang||descriptor.script||descriptor.scriptSetup?.src||!['js','ts',undefined].includes(descriptor.scriptSetup?.lang))return null;
+  if(!descriptor.template||descriptor.template.src||descriptor.template.lang)return null;
   const script=descriptor.scriptSetup;
-  ast=parse(script?text.slice(0,script.loc.start.offset).replace(/[^\n]/g,' ')+script.content:'',{sourceType:'module',plugins:['typescript']});
+  actionBoundary=!script||descriptor.script||script.src||!['js','ts',undefined].includes(script.lang)?'Vue setup source scope unavailable (Options API, mixed/external/unsupported script block)':null;
+  // Retain legacy template navigation even when callback ownership cannot be
+  // resolved. An Options API/module name is not a template lexical binding.
+  ast=parse(!actionBoundary?text.slice(0,script.loc.start.offset).replace(/[^\n]/g,' ')+script.content:'',{sourceType:'module',plugins:['typescript']});
   tree=baseParse(descriptor.template.content);
  }catch{return null;}
  const start=descriptor.template.loc.start.offset,targets=[];
@@ -34,5 +39,5 @@ export function vueSourceUnit(file,text){
   targets.push({tag:node.tag,...at,endLine:end.line,endColumn:end.column,node,expressions,events});
   for(const child of node.children||[])walk(child,scopeBoundary);
  }
- walk(tree,false);return {descriptor,tree,ast,targets};
+ walk(tree,false);return {descriptor,tree,ast,targets,actionBoundary};
 }

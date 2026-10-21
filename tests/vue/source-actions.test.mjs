@@ -37,3 +37,7 @@ test('Vue SFC source location uses compiler blocks rather than matching template
 });
 
 test('Vue v-pre compiler literal text cannot become a source event declaration',()=>{const text='<script setup>function save(){}</script><template><section v-pre><button @click="save"/></section></template>';assert.deepEqual(inspect(text).actionBindings,[]);});
+test('legacy Options API template source navigation stays available without claiming setup handler ownership',()=>{
+ const text='<script>export default {data(){return {shown:2}},methods:{save(){}}}</script><template><button id="options" :disabled="shown < 3" @click="save">{{shown}}</button></template>';
+ const a=inspect(text,{marker:null,id:'options'});assert.equal(a.sources.length,1);assert(a.sources[0].expressions.includes('shown < 3'));assert(a.actionBindings.every(b=>b.entry.status==='Unknown/Unsupported'));
+});

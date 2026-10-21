@@ -57,3 +57,43 @@ builder pins are refreshed mechanically; no compiler/observer/finite argument or
 acceptance threshold changes. Run the finite current profile as a justified regression,
 not a whole historical audit. Initial new explanation unit also had a missing local
 import in the test; corrected without product predicate changes.
+
+A04.2 native questions registered before observation changes: six selected T/E/V/I
+rows in tests/helpers/vue-positive-cases.mjs (direct/computed/condition/router and
+two separate Row computed values), six source actions including ordinary method,
+composable and unknown computed callback. Actual Vue3.5.44/compiler3.5.44 plus the
+REAL locked vue-router4.6.4 from prepared TodoMVC Vue3.5.33 (ff43b02...) implements
+routing, not a transparent replacement. This synthetic app reuses the library,
+not the independent application's result/producer evidence. Current library route
+read/condition must change after ordinary RouterLink navigation and reinspection;
+upstream library internals/complete ancestry stay unknown. Original TodoMVC/Row/
+aggregate PARTIAL and thirty T/E/V/I controls remain separate unchanged assertions.
+Observer-off/on method/composable/route/two-row/replaced-handler updates must agree
+in output, callback/getter counts, caught error identity and Promise order. One
+isolated real source edit/HMR stales old evidence, preserves old save bytes and
+reinspection opens current exact ranges. No Atom invocation/React marker oracle.
+
+Additive independent control registered before its implementation: optional
+--vue-source-actions on the retained native --short-loop driver selects both
+unchanged TodoMVC Vue labels, preserves their original PARTIAL T/E/V/I predicates,
+and separately opens the source-declared @dblclick startEdit method at its actual
+IDE range. Distinct DOM/instance and shared source only; selection must not enter
+edit mode. Original thirty scored cases/20PASS10PARTIAL and source manifests remain
+unchanged, no conversion of the old label read failure into a property pass.
+
+Additional opaque-library control registered before running the changed shared
+Vue mechanism: the original synthetic Vue #p3 reads the REAL QueryClient's
+getQueryData and selectAllowance (15). Retain T/E/V/I for the displayed cached
+result, but require absence of a complete path/producer certificate. This is an
+explicit opaque-cache boundary, not a transparent test store or the independent
+real-router positive gate. It is additive outside the original thirty case count.
+
+Execution checkpoint: A04.1 committed b608749. A04.2 current declared matrix passes
+source1662/focused129/types2/admission7/Vue47/React-action-regression105/original
+short-loop30 per host20PASS10PARTIAL plus additive real QueryClient/independent Vue
+source actions; current finite-compilation4. See36-a04 and
+.artifacts/a04/native-matrix/verification6.json for exact identities/commands and
+preserved attempts. Optional-preprocessor bundling and lost legacy Options template
+navigation were corrected with actual failing/control checks. The missing inner
+route recomputation read remains Unknown; no old read is borrowed. Product code
+frozen after the Options fix; one whole-A04 review remains before parent closure.
