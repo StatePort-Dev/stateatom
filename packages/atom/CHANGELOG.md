@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.29
+
+- Register internal construction provenance for immutable inspection facts without
+  changing serialized claims or the existing model UI/provider. Separate derived
+  annotation source is evaluated only in declared additional harness files; it is
+  not a new public archive export or a product provider selection. No visual change.
+
 ## 0.1.0-candidate.20261021.28
 
 - Distinguish local-model availability checks, initialization, download and

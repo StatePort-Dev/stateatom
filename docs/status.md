@@ -1484,3 +1484,13 @@ Chrome guidance, with no truncation. Original provider/UI/factory/corpus unchang
 New model calls0, no product exposure or L02 acceptance;15/29 complete. Next actual
 registered30-case model comparison plus separate body-count supplement and factual/
 unknown/concision/usefulness grading, preserving every historical result.
+
+### 2026-10-21 — first derived API request rejected, quality remains untested
+
+[L02.8a](completion/64-l02-derived-api-attempt.md):unchanged main30 plus separate4
+synthetic body inputs registered before model calls. .29 source1894/types2/admission7
+PASS. Actual Chrome155 API available, session created, prompt rejected NotSupportedError
+for input/options;0derived prompt returns,29main+4supplement unvisited. Exact offending
+schema keyword unknown. Provider remains evaluation-addon source outside archive/UI;
+old results unchanged. Next focused full/single-keyword compatibility probe, with
+strict client gate unchanged. Full comparison/L02 still open;15/29 complete.

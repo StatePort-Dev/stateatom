@@ -116,3 +116,9 @@ and no truncation remain. Model calls0. See completion/63/dedicated plan/ledger.
 Next L02.8 immutable evaluation derivative, original30 plus separate body supplement,
 real model calls and per-case factual/unknown/concision/usefulness rulings. No UI
 switch or whole-L02 acceptance before evidence supports it.
+
+L02.8a actual route attempt recorded:exact .29/source1894/types2/admission7; immutable
+main30+supplement4 registered. API available/create resolves; prompt NotSupportedError,
+0derived returns.29main/4supplement unvisited; full quality/usefulness pending. New
+provider stays outside archive exports and product UI. See completion/64. Next ONLY
+L02.8b focused schema keyword controls; preserve strict client gates and old receipts.

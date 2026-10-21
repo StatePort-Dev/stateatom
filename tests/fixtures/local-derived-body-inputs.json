@@ -1,0 +1,842 @@
+{
+  "schema": "stateatom.synthetic-derived-body-inputs/1",
+  "scope": "Synthetic source-runtime/helper/CDP boundary fixture data; not native Events, real app execution, model output or newly verified provenance. Separate controls, never a replacement for main30.",
+  "cases": [
+    {
+      "id": "separate-body-without-binding",
+      "state": {
+        "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+        "attached": true,
+        "tabId": 1,
+        "mainFrameId": "main",
+        "inspectionGeneration": 2,
+        "stale": null,
+        "actionTrace": {
+          "schema": 1,
+          "status": "complete",
+          "traceId": "trace-1",
+          "selectedId": "selected-native-node",
+          "identity": {
+            "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+            "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "frame": "main",
+            "page": "test-page"
+          },
+          "records": [
+            {
+              "kind": "dispatch",
+              "sequence": 0,
+              "dispatchId": "trace-2",
+              "eventType": "click",
+              "trusted": true,
+              "targetId": "selected-native-node",
+              "selectedId": "selected-native-node"
+            },
+            {
+              "kind": "body-entry",
+              "sequence": 1,
+              "dispatchId": "trace-2",
+              "activationId": "trace-3",
+              "siteId": "click-site",
+              "currentTargetId": "selected-native-node",
+              "parentActivationId": null,
+              "source": {
+                "file": "src/actions.js",
+                "line": 2,
+                "column": 1,
+                "endLine": 5,
+                "endColumn": 2,
+                "sourceDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "symbol": "confirm"
+              }
+            },
+            {
+              "kind": "body-leave",
+              "sequence": 2,
+              "dispatchId": "trace-2",
+              "activationId": "trace-3",
+              "completion": "return"
+            }
+          ],
+          "reason": null,
+          "sourceCurrent": true,
+          "sessionOnly": true,
+          "runtimeFunctionObjectIdentity": "Unavailable",
+          "asyncEffects": "Unlinked",
+          "completeListenerCoverage": false,
+          "actionUndone": false,
+          "capturedAt": 1792600010652
+        },
+        "selection": {
+          "tabId": 1,
+          "frame": 0,
+          "property": "disabled",
+          "value": true,
+          "observedAt": 1,
+          "page": "test-page",
+          "domIdentity": {
+            "document": "cdp:101",
+            "node": "cdp:103",
+            "property": "disabled",
+            "value": true
+          }
+        },
+        "analysis": {
+          "actionContext": {
+            "schema": 1,
+            "tabId": 1,
+            "frameId": "main",
+            "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+            "inspection": 2,
+            "sourceGeneration": 0,
+            "document": "cdp:101",
+            "instance": "cdp:103",
+            "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "observedAt": 1
+          },
+          "actionBindings": [],
+          "graph": {
+            "identity": {
+              "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+              "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "freshness": "DOM observation; source unverified"
+            },
+            "nodes": [
+              {
+                "id": "ui",
+                "observedAt": 1,
+                "page": "test-page",
+                "domIdentity": {
+                  "document": "cdp:101",
+                  "node": "cdp:103",
+                  "property": "disabled",
+                  "value": true
+                }
+              },
+              {
+                "id": "action-trace:trace-1:0",
+                "status": "Observed",
+                "kind": "dispatch"
+              },
+              {
+                "id": "action-trace:trace-1:1",
+                "status": "Observed",
+                "kind": "body-entry",
+                "sourceClaim": {
+                  "file": "src/actions.js",
+                  "line": 2,
+                  "column": 1,
+                  "endLine": 5,
+                  "endColumn": 2,
+                  "sourceDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "symbol": "confirm"
+                }
+              },
+              {
+                "id": "action-trace:trace-1:2",
+                "status": "Observed",
+                "kind": "body-leave"
+              }
+            ],
+            "edges": [
+              {
+                "from": "ui",
+                "to": "dom-observation",
+                "relation": "disabled-at-selection",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-trace:trace-1:0:edge",
+                "from": "ui",
+                "to": "action-trace:trace-1:0",
+                "relation": "independent-action-observation",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-trace:trace-1:1:edge",
+                "from": "ui",
+                "to": "action-trace:trace-1:1",
+                "relation": "independent-action-observation",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-trace:trace-1:2:edge",
+                "from": "ui",
+                "to": "action-trace:trace-1:2",
+                "relation": "independent-action-observation",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              }
+            ]
+          },
+          "stateatom": {
+            "runtime": {
+              "status": "Unknown/Unsupported",
+              "target": {}
+            }
+          }
+        }
+      },
+      "expectedBodies": 1
+    },
+    {
+      "id": "binding-plus-independent-body",
+      "state": {
+        "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+        "attached": true,
+        "tabId": 1,
+        "mainFrameId": "main",
+        "inspectionGeneration": 2,
+        "stale": null,
+        "actionTrace": {
+          "schema": 1,
+          "status": "complete",
+          "traceId": "trace-1",
+          "selectedId": "selected-native-node",
+          "identity": {
+            "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+            "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "frame": "main",
+            "page": "test-page"
+          },
+          "records": [
+            {
+              "kind": "dispatch",
+              "sequence": 0,
+              "dispatchId": "trace-2",
+              "eventType": "click",
+              "trusted": true,
+              "targetId": "selected-native-node",
+              "selectedId": "selected-native-node"
+            },
+            {
+              "kind": "body-entry",
+              "sequence": 1,
+              "dispatchId": "trace-2",
+              "activationId": "trace-3",
+              "siteId": "click-site",
+              "currentTargetId": "selected-native-node",
+              "parentActivationId": null,
+              "source": {
+                "file": "src/actions.js",
+                "line": 2,
+                "column": 1,
+                "endLine": 5,
+                "endColumn": 2,
+                "sourceDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "symbol": "confirm"
+              }
+            },
+            {
+              "kind": "body-leave",
+              "sequence": 2,
+              "dispatchId": "trace-2",
+              "activationId": "trace-3",
+              "completion": "return"
+            }
+          ],
+          "reason": null,
+          "sourceCurrent": true,
+          "sessionOnly": true,
+          "runtimeFunctionObjectIdentity": "Unavailable",
+          "asyncEffects": "Unlinked",
+          "completeListenerCoverage": false,
+          "actionUndone": false,
+          "capturedAt": 1792600010652
+        },
+        "selection": {
+          "tabId": 1,
+          "frame": 0,
+          "property": "disabled",
+          "value": true,
+          "observedAt": 1,
+          "page": "test-page",
+          "domIdentity": {
+            "document": "cdp:101",
+            "node": "cdp:103",
+            "property": "disabled",
+            "value": true
+          }
+        },
+        "analysis": {
+          "actionContext": {
+            "schema": 1,
+            "tabId": 1,
+            "frameId": "main",
+            "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+            "inspection": 2,
+            "sourceGeneration": 0,
+            "document": "cdp:101",
+            "instance": "cdp:103",
+            "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "observedAt": 1
+          },
+          "actionBindings": [
+            {
+              "identity": {
+                "schema": 1,
+                "tabId": 1,
+                "frameId": "main",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "inspection": 2,
+                "sourceGeneration": 0,
+                "document": "cdp:101",
+                "instance": "cdp:103",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "observedAt": 1
+              },
+              "mechanism": "vue-template",
+              "event": "click",
+              "freshness": "Recorded",
+              "binding": {
+                "evidenceIds": [
+                  "action-evidence:0"
+                ]
+              },
+              "entry": {
+                "status": "Code-linked",
+                "symbol": "syntheticDeclaredHandler",
+                "evidenceIds": [
+                  "action-evidence:0"
+                ]
+              }
+            }
+          ],
+          "graph": {
+            "identity": {
+              "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+              "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "freshness": "DOM observation; source unverified"
+            },
+            "nodes": [
+              {
+                "id": "ui",
+                "observedAt": 1,
+                "page": "test-page",
+                "domIdentity": {
+                  "document": "cdp:101",
+                  "node": "cdp:103",
+                  "property": "disabled",
+                  "value": true
+                }
+              },
+              {
+                "id": "action-trace:trace-1:0",
+                "status": "Observed",
+                "kind": "dispatch"
+              },
+              {
+                "id": "action-trace:trace-1:1",
+                "status": "Observed",
+                "kind": "body-entry",
+                "sourceClaim": {
+                  "file": "src/actions.js",
+                  "line": 2,
+                  "column": 1,
+                  "endLine": 5,
+                  "endColumn": 2,
+                  "sourceDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "symbol": "confirm"
+                }
+              },
+              {
+                "id": "action-trace:trace-1:2",
+                "status": "Observed",
+                "kind": "body-leave"
+              }
+            ],
+            "edges": [
+              {
+                "from": "ui",
+                "to": "dom-observation",
+                "relation": "disabled-at-selection",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-trace:trace-1:0:edge",
+                "from": "ui",
+                "to": "action-trace:trace-1:0",
+                "relation": "independent-action-observation",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-trace:trace-1:1:edge",
+                "from": "ui",
+                "to": "action-trace:trace-1:1",
+                "relation": "independent-action-observation",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-trace:trace-1:2:edge",
+                "from": "ui",
+                "to": "action-trace:trace-1:2",
+                "relation": "independent-action-observation",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-evidence:0"
+              }
+            ]
+          },
+          "stateatom": {
+            "runtime": {
+              "status": "Unknown/Unsupported",
+              "target": {}
+            }
+          }
+        }
+      },
+      "expectedBodies": 1
+    },
+    {
+      "id": "body-wrong-ui-identity",
+      "state": {
+        "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+        "attached": true,
+        "tabId": 1,
+        "mainFrameId": "main",
+        "inspectionGeneration": 2,
+        "stale": null,
+        "actionTrace": {
+          "schema": 1,
+          "status": "complete",
+          "traceId": "trace-1",
+          "selectedId": "selected-native-node",
+          "identity": {
+            "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+            "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "frame": "main",
+            "page": "test-page"
+          },
+          "records": [
+            {
+              "kind": "dispatch",
+              "sequence": 0,
+              "dispatchId": "trace-2",
+              "eventType": "click",
+              "trusted": true,
+              "targetId": "selected-native-node",
+              "selectedId": "selected-native-node"
+            },
+            {
+              "kind": "body-entry",
+              "sequence": 1,
+              "dispatchId": "trace-2",
+              "activationId": "trace-3",
+              "siteId": "click-site",
+              "currentTargetId": "selected-native-node",
+              "parentActivationId": null,
+              "source": {
+                "file": "src/actions.js",
+                "line": 2,
+                "column": 1,
+                "endLine": 5,
+                "endColumn": 2,
+                "sourceDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "symbol": "confirm"
+              }
+            },
+            {
+              "kind": "body-leave",
+              "sequence": 2,
+              "dispatchId": "trace-2",
+              "activationId": "trace-3",
+              "completion": "return"
+            }
+          ],
+          "reason": null,
+          "sourceCurrent": true,
+          "sessionOnly": true,
+          "runtimeFunctionObjectIdentity": "Unavailable",
+          "asyncEffects": "Unlinked",
+          "completeListenerCoverage": false,
+          "actionUndone": false,
+          "capturedAt": 1792600010652
+        },
+        "selection": {
+          "tabId": 1,
+          "frame": 0,
+          "property": "disabled",
+          "value": true,
+          "observedAt": 1,
+          "page": "test-page",
+          "domIdentity": {
+            "document": "cdp:101",
+            "node": "cdp:103",
+            "property": "disabled",
+            "value": true
+          }
+        },
+        "analysis": {
+          "actionContext": {
+            "schema": 1,
+            "tabId": 1,
+            "frameId": "main",
+            "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+            "inspection": 2,
+            "sourceGeneration": 0,
+            "document": "cdp:101",
+            "instance": "cdp:103",
+            "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "observedAt": 1
+          },
+          "actionBindings": [
+            {
+              "identity": {
+                "schema": 1,
+                "tabId": 1,
+                "frameId": "main",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "inspection": 2,
+                "sourceGeneration": 0,
+                "document": "cdp:101",
+                "instance": "cdp:103",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "observedAt": 1
+              },
+              "mechanism": "vue-template",
+              "event": "click",
+              "freshness": "Recorded",
+              "binding": {
+                "evidenceIds": [
+                  "action-evidence:0"
+                ]
+              },
+              "entry": {
+                "status": "Code-linked",
+                "symbol": "syntheticDeclaredHandler",
+                "evidenceIds": [
+                  "action-evidence:0"
+                ]
+              }
+            }
+          ],
+          "graph": {
+            "identity": {
+              "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+              "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "freshness": "DOM observation; source unverified"
+            },
+            "nodes": [
+              {
+                "id": "ui",
+                "observedAt": 1,
+                "page": "test-page",
+                "domIdentity": {
+                  "document": "cdp:101",
+                  "node": "foreign-synthetic-node",
+                  "property": "disabled",
+                  "value": true
+                }
+              },
+              {
+                "id": "action-trace:trace-1:0",
+                "status": "Observed",
+                "kind": "dispatch"
+              },
+              {
+                "id": "action-trace:trace-1:1",
+                "status": "Observed",
+                "kind": "body-entry",
+                "sourceClaim": {
+                  "file": "src/actions.js",
+                  "line": 2,
+                  "column": 1,
+                  "endLine": 5,
+                  "endColumn": 2,
+                  "sourceDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "symbol": "confirm"
+                }
+              },
+              {
+                "id": "action-trace:trace-1:2",
+                "status": "Observed",
+                "kind": "body-leave"
+              }
+            ],
+            "edges": [
+              {
+                "from": "ui",
+                "to": "dom-observation",
+                "relation": "disabled-at-selection",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-trace:trace-1:0:edge",
+                "from": "ui",
+                "to": "action-trace:trace-1:0",
+                "relation": "independent-action-observation",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-trace:trace-1:1:edge",
+                "from": "ui",
+                "to": "action-trace:trace-1:1",
+                "relation": "independent-action-observation",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-trace:trace-1:2:edge",
+                "from": "ui",
+                "to": "action-trace:trace-1:2",
+                "relation": "independent-action-observation",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-evidence:0"
+              }
+            ]
+          },
+          "stateatom": {
+            "runtime": {
+              "status": "Unknown/Unsupported",
+              "target": {}
+            }
+          }
+        }
+      },
+      "expectedBodies": 0
+    },
+    {
+      "id": "body-stale-history",
+      "state": {
+        "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+        "attached": true,
+        "tabId": 1,
+        "mainFrameId": "main",
+        "inspectionGeneration": 2,
+        "stale": null,
+        "actionTrace": {
+          "schema": 1,
+          "status": "complete",
+          "traceId": "trace-1",
+          "selectedId": "selected-native-node",
+          "identity": {
+            "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+            "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "frame": "main",
+            "page": "test-page"
+          },
+          "records": [
+            {
+              "kind": "dispatch",
+              "sequence": 0,
+              "dispatchId": "trace-2",
+              "eventType": "click",
+              "trusted": true,
+              "targetId": "selected-native-node",
+              "selectedId": "selected-native-node"
+            },
+            {
+              "kind": "body-entry",
+              "sequence": 1,
+              "dispatchId": "trace-2",
+              "activationId": "trace-3",
+              "siteId": "click-site",
+              "currentTargetId": "selected-native-node",
+              "parentActivationId": null,
+              "source": {
+                "file": "src/actions.js",
+                "line": 2,
+                "column": 1,
+                "endLine": 5,
+                "endColumn": 2,
+                "sourceDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "symbol": "confirm"
+              }
+            },
+            {
+              "kind": "body-leave",
+              "sequence": 2,
+              "dispatchId": "trace-2",
+              "activationId": "trace-3",
+              "completion": "return"
+            }
+          ],
+          "reason": null,
+          "sourceCurrent": true,
+          "sessionOnly": true,
+          "runtimeFunctionObjectIdentity": "Unavailable",
+          "asyncEffects": "Unlinked",
+          "completeListenerCoverage": false,
+          "actionUndone": false,
+          "capturedAt": 1792600010652,
+          "freshness": "Stale"
+        },
+        "selection": {
+          "tabId": 1,
+          "frame": 0,
+          "property": "disabled",
+          "value": true,
+          "observedAt": 1,
+          "page": "test-page",
+          "domIdentity": {
+            "document": "cdp:101",
+            "node": "cdp:103",
+            "property": "disabled",
+            "value": true
+          }
+        },
+        "analysis": {
+          "actionContext": {
+            "schema": 1,
+            "tabId": 1,
+            "frameId": "main",
+            "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+            "inspection": 2,
+            "sourceGeneration": 0,
+            "document": "cdp:101",
+            "instance": "cdp:103",
+            "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "observedAt": 1
+          },
+          "actionBindings": [
+            {
+              "identity": {
+                "schema": 1,
+                "tabId": 1,
+                "frameId": "main",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "inspection": 2,
+                "sourceGeneration": 0,
+                "document": "cdp:101",
+                "instance": "cdp:103",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                "observedAt": 1
+              },
+              "mechanism": "vue-template",
+              "event": "click",
+              "freshness": "Recorded",
+              "binding": {
+                "evidenceIds": [
+                  "action-evidence:0"
+                ]
+              },
+              "entry": {
+                "status": "Code-linked",
+                "symbol": "syntheticDeclaredHandler",
+                "evidenceIds": [
+                  "action-evidence:0"
+                ]
+              }
+            }
+          ],
+          "graph": {
+            "identity": {
+              "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+              "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "freshness": "DOM observation; source unverified"
+            },
+            "nodes": [
+              {
+                "id": "ui",
+                "observedAt": 1,
+                "page": "test-page",
+                "domIdentity": {
+                  "document": "cdp:101",
+                  "node": "cdp:103",
+                  "property": "disabled",
+                  "value": true
+                }
+              },
+              {
+                "id": "action-trace:trace-1:0",
+                "status": "Observed",
+                "kind": "dispatch"
+              },
+              {
+                "id": "action-trace:trace-1:1",
+                "status": "Observed",
+                "kind": "body-entry",
+                "sourceClaim": {
+                  "file": "src/actions.js",
+                  "line": 2,
+                  "column": 1,
+                  "endLine": 5,
+                  "endColumn": 2,
+                  "sourceDigest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "symbol": "confirm"
+                }
+              },
+              {
+                "id": "action-trace:trace-1:2",
+                "status": "Observed",
+                "kind": "body-leave"
+              }
+            ],
+            "edges": [
+              {
+                "from": "ui",
+                "to": "dom-observation",
+                "relation": "disabled-at-selection",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-trace:trace-1:0:edge",
+                "from": "ui",
+                "to": "action-trace:trace-1:0",
+                "relation": "independent-action-observation",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-trace:trace-1:1:edge",
+                "from": "ui",
+                "to": "action-trace:trace-1:1",
+                "relation": "independent-action-observation",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-trace:trace-1:2:edge",
+                "from": "ui",
+                "to": "action-trace:trace-1:2",
+                "relation": "independent-action-observation",
+                "status": "Observed",
+                "run": "e6f9e29e-77c5-4f57-86f2-7b5e426f7500",
+                "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+              },
+              {
+                "id": "action-evidence:0"
+              }
+            ]
+          },
+          "stateatom": {
+            "runtime": {
+              "status": "Unknown/Unsupported",
+              "target": {}
+            }
+          }
+        }
+      },
+      "expectedBodies": 0
+    }
+  ]
+}
