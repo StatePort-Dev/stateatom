@@ -1463,3 +1463,13 @@ No new provider/projection/model run is implemented by this document; no new ful
 item completion. Next ONLY L02.6 source-only projection/structural validator with
 privacy/unknown/identity tests. Actual product candidate remains .28/bee61ee with
 source1852/native6 proof; mandatory L02 and final validation remain open,15/29 complete.
+
+### 2026-10-21 — derived annotation source boundary, not a model feature
+
+[L02.6](completion/62-l02-derived-projection-source.md) adds genuine factory admission,
+opaque non-sensitive projection and same-snapshot structural annotation validation.
+New16/focused62/full1868 PASS; original30 serialized facts/legacy prompts unchanged.
+Source body-count/foreign-identity controls are synthetic, not native/model results.
+Valid JSON remains explicitly entailment-unverified. New model calls0, no UI/provider
+selection or installed candidate from this slice. L02 remains mandatory/open,15/29
+complete. Next separate experimental provider lifecycle tests before real evaluation.

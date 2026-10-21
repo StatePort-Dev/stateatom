@@ -100,3 +100,11 @@ new projection/provider/product behavior/model run or L02 acceptance from the sp
 NEXT ONLY L02.6:pure versioned abstract projection + structural annotation validator,
 privacy/unknown/identity tests, source-only; original provider and UI stay unchanged.
 Later real evaluation/product/whole review remain distinct bounded tasks.
+
+L02.6 source-only complete:private genuine-fact admission/projection/structure-only
+validator,16new/62focused/1868full PASS and original30 facts/legacy prompts unchanged.
+See completion/62 and dedicated derived-projection plan/ledger. New model calls0;
+no UI exposure, package/native or factual-entailment/usefulness acceptance implied.
+Next L02.7 separate provider/lifecycle tests, then separate registered actual model
+comparison including body-count supplement. Autonomous deadline extended by user to
+2026-10-22T06:00:00Z(10:00 Mauritius); no publication/SDK/other repo.

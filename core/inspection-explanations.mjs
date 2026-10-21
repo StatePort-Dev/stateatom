@@ -9,6 +9,10 @@ const text=(v,max=400)=>typeof v==='string'&&v.length<=max?v:null;
 const primitive=v=>v===null||typeof v==='boolean'||typeof v==='number'&&Number.isFinite(v)||typeof v==='string'&&v.length<=256;
 const hash=v=>typeof v==='string'&&/^[a-f0-9]{64}$/.test(v)?v:null;
 const freeze=o=>{for(const v of Object.values(o))if(v&&typeof v==='object')freeze(v);return Object.freeze(o);};
+// Internal construction provenance only; this adds no evidence or serializable flag.
+const localFacts=new WeakSet();
+const finishFacts=facts=>{freeze(facts);localFacts.add(facts);return facts;};
+export const isLocalExplanationFacts=value=>localFacts.has(value);
 const unique=a=>[...new Set(a)];
 const SOURCE_LIMIT='A code link or recorded computation alone does not establish the committed DOM producer; that join is not established here.';
 const ORIGIN_LIMIT='Current HTTP value origin is not established by this explanation.';
@@ -104,9 +108,9 @@ function actionFacts(state,facts){
 }
 export function inspectionExplanationFacts(state={}, {question='property',historical=false}={}){
  question=question==='action'?'action':'property';const facts=baseFacts(state,question),c=at(state,'analysis','actionContext'),sourceChanged=at(state,'analysis','actionsInvalidated')===true||c&&[['sourceGeneration','sourceGeneration'],['inspection','inspectionGeneration']].some(([k,s])=>own(state,s)!==undefined&&own(c,k)!==own(state,s)),stale=sourceChanged||!!own(state,'stale')||at(state,'analysis','stateatom','runtime','status')==='Stale'&&question==='property'||question==='action'&&list(at(state,'analysis','actionBindings'),24).some(b=>own(b,'freshness')==='Stale');
- if(historical){facts.status='Historical';for(const detail of facts.details)detail.status='Historical';facts.summaries=['This saved diagnostic is historical; current condition links are unavailable.'];facts.limitations=['Imported claims are not reverified.','Saved diagnostics omit exact computation dependency and occurrence links; no reconstruction is attempted.'];facts.nextAction={id:'view-evidence',label:'Review recorded evidence'};return freeze(facts);}
- if(stale){facts.status='Stale';for(const detail of facts.details)detail.status='Stale';facts.summaries=['The previous inspection is stale. Inspect again for a current explanation.'];facts.limitations=['No previous values are treated as current inputs.'];return freeze(facts);}
- if(question==='action')actionFacts(state,facts);else propertyFacts(state,facts);return freeze(facts);
+ if(historical){facts.status='Historical';for(const detail of facts.details)detail.status='Historical';facts.summaries=['This saved diagnostic is historical; current condition links are unavailable.'];facts.limitations=['Imported claims are not reverified.','Saved diagnostics omit exact computation dependency and occurrence links; no reconstruction is attempted.'];facts.nextAction={id:'view-evidence',label:'Review recorded evidence'};return finishFacts(facts);}
+ if(stale){facts.status='Stale';for(const detail of facts.details)detail.status='Stale';facts.summaries=['The previous inspection is stale. Inspect again for a current explanation.'];facts.limitations=['No previous values are treated as current inputs.'];return finishFacts(facts);}
+ if(question==='action')actionFacts(state,facts);else propertyFacts(state,facts);return finishFacts(facts);
 }
 export function diagnosticExplanationFacts(record){return inspectionExplanationFacts({selection:own(record,'target')},{historical:true});}
 export function explanationIdentity(facts){return JSON.stringify({identity:facts.identity,status:facts.status,question:facts.question,evidenceIds:facts.evidenceIds,condition:facts.condition,details:facts.details,summaries:facts.summaries,limitations:facts.limitations});}
