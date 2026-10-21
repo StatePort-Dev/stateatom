@@ -777,3 +777,14 @@ rerunning a browser campaign. No new installed feature/package/native claim; see
 47-a05-action-packet-model.md and verification-model.json. Next: composed profile
 and exact source/parent/privacy continuity, then existing controls/native acceptance
 and ONE report-plan review. Whole A05 remains open.
+
+
+### 2026-10-21 — A05 unimported composed report
+
+Versioned action composition preserves old minimal/reviewed/source/input components,
+exact source references, note and privacy lineage. Source1765/focused125/composition20
+and six retained actual .18 diagnostic inputs PASS. Source-hash/name privacy leaks
+and forbidden-key handling REDs fixed; no new installed/native/package claim. See
+48-a05-action-report-composition.md and verification-source.json. Next: existing
+reporter/reader dispatch and privacy controls, fresh packed/native checks, then ONE
+report-plan review. Whole A05 remains open.

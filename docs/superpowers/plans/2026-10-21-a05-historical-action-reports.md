@@ -142,3 +142,12 @@ Add `createHandoffActionReview(diagnosticRaw) -> Promise<model|null>` with
 no private catalogue or raw original is embedded in a public packet. Packet
 parser additionally accepts optional `{parentRaw}` to check privacy lineage.
 ONE final report-plan reviewer still follows the integrated2c outcome.
+
+Task2b clarification: preserve independently consented base fields when the new
+packet merely excludes fields by default. Explicit privacy reductions propagate
+known repeated metadata; unavailable prior redactions require conservative category
+omissions. Required diagnostic reference identity/content hashes remain provenance
+metadata, not a promise of general PII anonymisation. User-entered words still need
+review. This refines internal privacy mapping; it is not a new handoff UX approval.
+Export existing source-file snapshot helper internally for the wrapper so supplied
+ArrayBuffers are copied before awaits under the same old byte/count rules.

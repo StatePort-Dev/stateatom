@@ -15,7 +15,7 @@ function ownRecord(x,names){
  if(keys.length!==names.length||keys.some(k=>typeof k!=='string'||!names.includes(k)||!Object.hasOwn(descriptors[k],'value')))fail('Source-file descriptors must be exact own data');
  return Object.fromEntries(names.map(k=>[k,descriptors[k].value]));
 }
-function snapshotFiles(files){
+export function snapshotHandoffSourceFiles(files){
  if(!Array.isArray(files)||Object.getPrototypeOf(files)!==Array.prototype)fail('Dense source-file array required');
  const d=Object.getOwnPropertyDescriptors(files),n=d.length.value;
  if(n<1||n>COUNT_MAX||Reflect.ownKeys(d).length!==n+1)fail('Choose one to eight undecorated source files');
@@ -43,7 +43,7 @@ export function sourceEvidenceReporterAnchors(record){
 }
 export async function createHandoffSourceEvidence(reportRaw,developerDiagnosticRaw,files){
  // File objects and buffers are external mutable input. Snapshot before any hash/parse await.
- const selected=snapshotFiles(files),developerRecord=parseDiagnostic(developerDiagnosticRaw),{record}=await parseHandoffReport(reportRaw);
+ const selected=snapshotHandoffSourceFiles(files),developerRecord=parseDiagnostic(developerDiagnosticRaw),{record}=await parseHandoffReport(reportRaw);
  const developer=(await createHandoffDraft(developerDiagnosticRaw)).read().sourceDiagnostic,reporter=record.report.sourceDiagnostic;
  const relation=!reporter.build||!developer.build?'unknown':reporter.build===developer.build?'same-hash':'different-hash',globalReasons=[];
  if(relation==='unknown')globalReasons.push('recorded-build-missing');else if(relation==='different-hash')globalReasons.push('recorded-build-mismatch');

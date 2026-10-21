@@ -12,7 +12,7 @@ export const actionEqual=(a,b)=>actionCanonical(a)===actionCanonical(b);
 export async function actionDigest(raw){return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(raw))),x=>x.toString(16).padStart(2,'0')).join('');}
 export function actionOwn(value,allowed){
  if(!value||typeof value!=='object'||Array.isArray(value)||![null,Object.prototype].includes(Object.getPrototypeOf(value)))actionFail('Own plain action evidence options required');
- const out={};for(const key of Reflect.ownKeys(value)){const d=Object.getOwnPropertyDescriptor(value,key);if(typeof key!=='string'||!allowed.includes(key)||!d.enumerable||!Object.hasOwn(d,'value'))actionFail('Unknown action evidence option or accessor');out[key]=d.value;}return out;
+ const out=Object.create(null);for(const key of Reflect.ownKeys(value)){const d=Object.getOwnPropertyDescriptor(value,key);if(typeof key!=='string'||!allowed.includes(key)||!d.enumerable||!Object.hasOwn(d,'value'))actionFail('Unknown action evidence option or accessor');out[key]=d.value;}return out;
 }
 export function actionArray(value,max=1024){
  if(!Array.isArray(value)||Object.getPrototypeOf(value)!==Array.prototype)actionFail('Plain action evidence array required');const d=Object.getOwnPropertyDescriptors(value),n=d.length.value;
@@ -27,3 +27,7 @@ export function actionJSON(raw){
 }
 export function actionFrozen(value){const copy=structuredClone(value);function freeze(x){if(x&&typeof x==='object'){Object.values(x).forEach(freeze);Object.freeze(x);}return x;}return freeze(copy);}
 export function actionClock(options){const fn=Object.hasOwn(options,'now')?options.now:Date.now;if(typeof fn!=='function')actionFail('Host action evidence clock required');const now=fn();if(!actionTime(now))actionFail('Invalid action evidence time');return new Date(now).toISOString();}
+// Snapshot mutable review choices before asynchronous integrity checks.
+export function actionInertReview(value){
+ let count=0;function copy(v,depth){if(++count>32768||depth>8)throw actionError('Action review structure limit','HANDOFF_LIMIT');if(v===null||typeof v==='boolean')return v;if(typeof v==='number'){if(!Number.isFinite(v)||Object.is(v,-0))actionFail('JSON-stable review scalar required');return v;}if(typeof v==='string'){if(v.length>4096)throw actionError('Action review text limit','HANDOFF_LIMIT');return v;}if(!v||typeof v!=='object')actionFail('Inert review data required');if(Array.isArray(v))return actionArray(v,2048).map(x=>copy(x,depth+1));const out={};for(const[k,x]of Object.entries(actionOwn(v,Reflect.ownKeys(v).filter(k=>typeof k==='string')))){if(['__proto__','prototype','constructor'].includes(k))actionFail('Forbidden review key');out[k]=copy(x,depth+1);}return out;}return copy(value,0);
+}
