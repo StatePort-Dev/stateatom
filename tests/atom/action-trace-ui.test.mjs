@@ -28,3 +28,11 @@ test('same-context root retirement updates a completed local card and rejects an
  assert.match(f.$('action-observe-status').textContent,/stale/);assert.equal(f.$('action-observe-records').children[0].children.length,0);
  await assert.rejects(button.onclick(),/changed/);assert(!calls.some(m=>m.op==='open'));await f.view.dispose();
 });
+
+test('a timeout after recorded body entry retains known interaction and an explicit missing exit',async()=>{
+ const f=fixture(async()=>({status:'expired',traceId:'trace',records:[{kind:'dispatch'},records[0]],reason:'Observation time budget ended',sourceCurrent:true}));await f.$('action-observe').onclick();
+ assert.match(f.$('action-observe-status').textContent,/Click recorded.*timed out/);assert.doesNotMatch(f.$('action-observe-status').textContent,/No supported interaction/);assert.match(f.$('action-observe-records').children[0].textContent,/save.*exit unavailable/);await f.view.dispose();
+});
+test('timeout without a dispatch retains the explicit empty interaction wording',async()=>{
+ const f=fixture(async()=>({status:'expired',traceId:'trace',records:[],sourceCurrent:false}));await f.$('action-observe').onclick();assert.match(f.$('action-observe-status').textContent,/No supported interaction recorded before timeout/);assert.equal(f.$('action-observe-records').children.length,0);await f.view.dispose();
+});

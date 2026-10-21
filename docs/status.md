@@ -1333,3 +1333,20 @@ types2/admission7 remain retained .20 results, not reruns. First screenshot time
 no visual/product change. See51-a05-installed-resource-controls.md and resource
 verification.json. Next: original concurrent unrelated request/replaced-handler
 controls and retained-matrix reconciliation; production/async/whole-A05 review open.
+
+
+### 2026-10-21 — A05 original registered matrix ready for whole-item review
+
+Fresh exact .21 native11 verifies concurrent equal-data HTTP requests with no
+action consequence edge, actual async gap, current alternative Vue callback and
+timeout inside an original body, against action-disabled controls. A real .20
+native/source RED found the expired caption denying a known click; .21 changes
+only that text, preserving2known records/no invented exit and the actual app action.
+Source1785/focused69/types2/admission7 PASS,16actual HTTP responses; narrow corrected
+candidates inspected. Runtime/policy/observer/compiler/native helper remain exact
+reviewed .17 code; strict parser/path moved unchanged, UI only save help/expiry text.
+Retained13/37/3/13/11 native checkpoints keep original versions/scopes, not fresh
+.21 labels. See52-a05-original-matrix-and-expiry.md, verification21.json and
+retained-matrix.json. Next: ONE whole-A05 scope/code/evidence review and one fix pass
+if needed. A05 remains in-progress; production/SyntheticEvent/async/function-object
+boundaries are explicit and mandatory O02 completion is not presumed by documents.

@@ -1,5 +1,9 @@
 # Framework/version/mode capabilities
 
+The original matrix below records the A04 checkpoint. The later A05 addendum at
+the end records distinct, bounded invocation evidence; it does not rewrite the
+historical A04 results or imply complete property/HTTP lineage.
+
 Capabilities are separate scoped claims, not a confidence ladder. No public release
 is established. Every row requires its own mode/resources; library detection does
 not establish source or observed-read support. Current A04 candidate is the exact
@@ -58,3 +62,23 @@ screenshots are candidates, not human fidelity acceptance. Current original shor
 unchanged20PASS/10PARTIAL per host; one whole-A04 review remains pending. See
 [36-a04-vue-native-matrix](../completion/36-a04-vue-native-matrix.md) before treating
 parent A04 complete.
+
+## A05 addendum — separately armed body observations
+
+Exact local Atom .20261021.21 and consumed Vite plugin .20261021.1 add supported
+synchronous body observations after explicit actionTrace opt-in, matching source
+connection and native target selection. No public release or whole-A05 acceptance
+is inferred; see [52 original matrix](../completion/52-a05-original-matrix-and-expiry.md).
+
+| Mode / carrier | Actual positive evidence | Missing or unsupported |
+|---|---|---|
+| Original trusted DOM click, supported simple-event-parameter synchronous JS | Distinct dispatch/body activation and matched original return/throw; exact compiled source/context/currentTarget | Registered callback-object equality/full listener census unavailable; complete means only recorded supported bodies |
+| Vue3.5.44/compiler3.5.44 + actual router4.6.4, opt-in native Event dev/IDE | Actual method/capture/bubble/throw, current alternative body after computed callback replacement, exact source digest | Static computed binding remains a separate Unknown; no library-cache/committed-property or HTTP consequence inference |
+| Async/SyntheticEvent/Proxy/later reused Event or detached work | Dispatch or supported synchronous fragments only where admitted | Continuation/function-object/state/network relationships unlinked; no native React body positive claimed |
+| HTTPS production / maps / F05 grant | Existing separate read-only inspection/source/change-policy evidence | Action Trace currently refused; a mutation grant or source map is not an invocation witness |
+
+Historical action files are passive/untrusted, with no current source or collector
+authority. Body/source claims, registration and selected-property origin stay
+separate. Fresh concurrent same-data HTTP responses do not acquire action edges;
+inside-body expiry retains entry and explicit missing exit instead of denying a
+known click. Default private report fields stay excluded until reviewed.

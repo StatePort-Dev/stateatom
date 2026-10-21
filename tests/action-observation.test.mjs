@@ -21,3 +21,7 @@ test('private catalog and snapshot do not call application Array iterator or spe
  const iterator=Object.getOwnPropertyDescriptor(Array.prototype,Symbol.iterator),constructor=Object.getOwnPropertyDescriptor(Array.prototype,'constructor');let traps=0,error;
  try{Object.defineProperty(Array.prototype,Symbol.iterator,{configurable:true,get(){traps++;throw Error('Application iterator');}});Object.defineProperty(Array.prototype,'constructor',{configurable:true,get(){traps++;throw Error('Application species');}});const {api}=make();api.arm({selectedId:'node'});const event={};api.dispatch(event,{targetId:'node',trusted:true});const token=api.enter(site.id,event,'node');api.leave(token,false);api.finish();api.snapshot();}catch(e){error=e;}finally{Object.defineProperty(Array.prototype,Symbol.iterator,iterator);Object.defineProperty(Array.prototype,'constructor',constructor);}assert.equal(traps,0);assert.equal(error,undefined);
 });
+
+test('time budget expiring inside an original body retains entry without inventing its later exit',()=>{
+ const{api,advance}=make(),event={};api.arm({selectedId:'node',timeoutMs:10});api.dispatch(event,{targetId:'node',trusted:true});const token=api.enter(site.id,event,'node');advance(11);assert.equal(api.leave(token,false),false);const r=api.snapshot();assert.equal(r.status,'expired');assert.deepEqual(r.records.map(x=>x.kind),['dispatch','body-entry']);assert.equal(r.actionUndone,false);assert.equal(api.enter(site.id,event,'node'),null);
+});

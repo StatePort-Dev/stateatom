@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.21
+
+- Keep a recorded click/body visible when observation expires during the original
+  synchronous action. State that later evidence is unavailable; preserve the
+  distinct empty-timeout message. Existing rows still show missing exits.
+- Only the existing status caption changes: no CSS/token/primitive, layout,
+  budget, collector, source policy or application behavior change.
+
 ## 0.1.0-candidate.20261021.20
 
 - Remove related base/source/input metadata conservatively when an explicit
