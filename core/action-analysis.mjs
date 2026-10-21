@@ -5,14 +5,15 @@ import traverseModule from '@babel/traverse';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {edge} from './evidence.mjs';
+import {vueSourceUnit} from './vue-source.mjs';
 const traverse=traverseModule.default||traverseModule;
 const hash=s=>createHash('sha256').update(s).digest('hex');
 const unknown=reason=>({status:'Unknown/Unsupported',reason,evidenceIds:[]});
 export function analyzeActions(files,selection,identity,graph,projectFiles=files){
  const result=[],[file,line,digest,column]=String(selection.marker||'').split(':');
- if(selection.unbound||selection.markerOnSelected!==true||!file||file.endsWith('.vue'))return result;
+ if(selection.unbound||selection.markerOnSelected!==true||!file)return result;
  const cache=new Map(),objects=new WeakMap();
- function unit(f){if(cache.has(f.file))return cache.get(f.file);let ast;try{ast=parse(f.text,{sourceType:'unambiguous',plugins:['jsx','typescript']});}catch{return null;}let dynamicScope=false;traverse(ast,{WithStatement(){dynamicScope=true;},CallExpression(p){if(p.get('callee').isIdentifier({name:'eval'}))dynamicScope=true;}});const u={...f,ast,dynamicScope,sourceDigest:hash(f.text)};cache.set(f.file,u);return u;}
+ function unit(f){if(cache.has(f.file))return cache.get(f.file);let ast,vue;if(f.file.endsWith('.vue')){vue=vueSourceUnit(f.file,f.text);if(!vue)return null;ast=vue.ast;}else try{ast=parse(f.text,{sourceType:'unambiguous',plugins:['jsx','typescript']});}catch{return null;}let dynamicScope=false;traverse(ast,{WithStatement(){dynamicScope=true;},CallExpression(p){if(p.get('callee').isIdentifier({name:'eval'}))dynamicScope=true;}});const u={...f,ast,vue,dynamicScope,sourceDigest:hash(f.text)};cache.set(f.file,u);return u;}
  const f=files.find(f=>f.file===file&&hash(f.text).slice(0,12)===digest),u=f&&unit(f);if(!u)return result;
  const location=(p,u)=>({file:u.file,line:p.node.loc.start.line,column:p.node.loc.start.column+1,endLine:p.node.loc.end.line,endColumn:p.node.loc.end.column+1,sourceDigest:u.sourceDigest});
  let evidenceCount=0;
@@ -145,18 +146,30 @@ export function analyzeActions(files,selection,identity,graph,projectFiles=files
   const hs=location(hookPath.node.id?{node:hookPath.node.id}:hookPath,hookUnit);
   return {...resolved,hookRelations:[...(resolved.hookRelations||[]),{hook,relation:'returns-handler',status:'Code-linked',source:hs,evidenceIds:proof(from,location(matches[0],hookUnit),'returns-handler')}]};
  }
- const matches=[];traverse(u.ast,{JSXOpeningElement(p){const n=p.node;if(n.name.type==='JSXIdentifier'&&/^[a-z]/.test(n.name.name)&&n.name.name===selection.tag&&n.loc.start.line===Number(line)&&(!column||n.loc.start.column+1===Number(column)))matches.push(p);}});
- if(matches.length!==1)return result;
- const opening=matches[0],attrs=opening.get('attributes');
- for(const [index,a]of attrs.entries()){
+ const matches=[];let entries=[];
+ if(u.vue){
+  const targets=u.vue.targets.filter(t=>t.tag===selection.tag&&t.line===Number(line)&&(!column||t.column===Number(column)));
+  if(targets.length!==1)return result;
+  const paths=new Map();traverse(u.ast,{ExpressionStatement(p){paths.set(p.node.expression,p.get('expression'));}});
+  entries=targets[0].events.map(e=>({...e,p:paths.get(e.expression),sourceKind:'vue-template'}));
+ }else{
+  traverse(u.ast,{JSXOpeningElement(p){const n=p.node;if(n.name.type==='JSXIdentifier'&&/^[a-z]/.test(n.name.name)&&n.name.name===selection.tag&&n.loc.start.line===Number(line)&&(!column||n.loc.start.column+1===Number(column)))matches.push(p);}});
+  if(matches.length!==1)return result;
+  const attrs=matches[0].get('attributes');
+  for(const [index,a]of attrs.entries()){
+   const prop=a.node.name?.name;if(!a.isJSXAttribute()||typeof prop!=='string'||!/^on[A-Z][A-Za-z0-9]*$/.test(prop)||!a.get('value').isJSXExpressionContainer())continue;
+   entries.push({p:a.get('value.expression'),event:prop.slice(2).replace(/Capture$/,'').toLowerCase(),capture:prop.endsWith('Capture'),sourceKind:'react-jsx',boundary:attrs.slice(index+1).some(q=>q.isJSXSpreadAttribute()||q.node.name?.name===prop)?'Later JSX spread or duplicate prop may override this declaration':null});
+  }
+ }
+ for(const item of entries){
   if(result.length>=12)break;
-  const prop=a.node.name?.name;if(!a.isJSXAttribute()||typeof prop!=='string'||!/^on[A-Z][A-Za-z0-9]*$/.test(prop)||!a.get('value').isJSXExpressionContainer())continue;
-  const p=a.get('value.expression'),id='action:'+result.length,bindingSource=location(p,u),expression=u.text.slice(p.node.start,p.node.end);
+  const {p,event,capture,sourceKind,boundary}=item;if(!p)continue;
+  const id='action:'+result.length,bindingSource=location(p,u),expression=u.text.slice(p.node.start,p.node.end);
   if(expression.length>400)continue;
   graph.nodes.push({id,kind:'action-binding',...bindingSource});
   const binding={expression,source:bindingSource,evidenceIds:proof('ui',bindingSource,'declared-event-binding')};
   let entry=unknown('Anonymous expression; no unique runtime destination'),calls=[],hookRelations=[],kind='reference';
-  if(attrs.slice(index+1).some(q=>q.isJSXSpreadAttribute()||q.node.name?.name===prop))entry=unknown('Later JSX spread or duplicate prop may override this declaration');
+  if(boundary)entry=unknown(boundary);
   else if(p.isIdentifier()||p.isMemberExpression()){entry=resolve(p,u,id);hookRelations=entry.hookRelations||[];delete entry.hookRelations;}
   else if(p.isFunction()){
    kind='inline';entry={symbol:'Inline callback',status:'Code-linked',source:bindingSource,evidenceIds:proof(id,bindingSource,'inline-handler')};
@@ -164,7 +177,8 @@ export function analyzeActions(files,selection,identity,graph,projectFiles=files
   }else if(p.isConditionalExpression()){
    kind='alternatives';for(const branch of ['consequent','alternate']){const c=p.get(branch),r=resolve(c,u,id);calls.push({...r,symbol:c.isIdentifier()?c.node.name:'Unknown',status:'Candidate',reason:'Binding branch unresolved; execution not observed',evidenceIds:[...r.evidenceIds,...proof(id,location(c,u),'binding-alternative','Candidate')]});}
   }else if(p.isCallExpression()){kind='factory';entry=unknown('Handler factory result unknown; arguments are not click callees');}
-  result.push({id,event:prop.slice(2).replace(/Capture$/,'').toLowerCase(),capture:prop.endsWith('Capture'),mechanism:'react-jsx',registeredOn:'selected-element',kind,binding,entry,calls,hookRelations,execution:{status:'not-observed'},freshness:'snapshot',identity:{...identity,tab:selection.tabId,frame:selection.frame??0,page:selection.page??null,instance:selection.instance??null}});
+  if(sourceKind==='vue-template'&&entry.status==='Code-linked')entry.reason='Vue template source declares this callback. Its runtime function identity and invocation were not observed.';
+  result.push({id,event,capture,mechanism:sourceKind,registeredOn:'selected-element',kind,binding,entry,calls,hookRelations,execution:{status:'not-observed'},freshness:'snapshot',identity:{...identity,tab:selection.tabId,frame:selection.frame??0,page:selection.page??null,instance:selection.instance??null}});
  }
  return result;
 }

@@ -155,3 +155,9 @@ test('picker cancellation notifications retain the restored snapshot until an ex
  const calls=[];let picker={status:'picking',id:'pending-escape'},f;f=fixture(m=>{calls.push(m);if(m.op==='state')return{...f.state(m.tabId),picker};});
  try{await f.view.ready;picker={...picker,status:'cancelled'};for(let i=0;i<2;i++){f.emit({event:'state-invalidated',tabId:1});await tick();await tick();assert.equal(calls.filter(m=>m.op==='state').at(-1).refreshDeep,false,'Escape or delayed cancellation notification must not replace old native IDs/time');}await f.$('refresh-tabs').onclick();assert.equal(calls.filter(m=>m.op==='state').at(-1).refreshDeep,true);}finally{await f.view.dispose();}
 });
+
+test('Vue source action is visible beside its exact source boundary without a native invocation claim',()=>{
+ const nodes=new Map(),$=id=>{if(!nodes.has(id))nodes.set(id,node());return nodes.get(id);},ui=createActionUI({document:{createElement:node},$,rpc:async()=>{},tab:()=>1,action:fn=>fn()});
+ ui.render({selection:{selector:'#vue'},analysis:{actionContext:{},actionBindings:[{mechanism:'vue-template',event:'click',binding:{expression:'submit',source:{file:'View.vue',line:2,column:1}},entry:{symbol:'save',status:'Code-linked',reason:'Runtime function identity not observed'},execution:{status:'not-observed'}}]}});
+ assert.match($('action-summary').textContent,/Declared in source/);assert.equal($('action-handlers').children.length,1);const texts=$('action-handlers').children[0].children.map(c=>c.textContent);assert(texts.includes('Runtime function identity not observed'));assert(texts.includes('Execution: not observed'));ui.dispose();
+});

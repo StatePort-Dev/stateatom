@@ -273,11 +273,11 @@ async function inspect(id,selector,context){await stopInputs(id,'Selection chang
  s.analysis.graph.nodes.push({...s.selection,id:'dom-observation',elementId:s.selection.id});s.analysis.graph.edges.push(edge('ui','dom-observation',(selection.property||'text')+'-at-selection','Observed','MAIN DOM read',['dom-observation'],s.analysis.graph.identity));
  await persist();if(tabs[id]!==s||!isCurrentInspection(s,generation,run))throw Error('Stale inspection result');if(firstReadCode&&journalView(firstReadCode.journal,s.codeJournal).freshness!=='Recorded'){recordStale(s,'Code changed during inspection; inspect again');beginInspection(s,{keepDiagnostic:true});await persist();throw Error('Code changed during inspection; inspect again');}if(sourceGeneration!==(s.sourceGeneration||0)){recordStale(s,'Source changed during action inspection; inspect again');beginInspection(s,{keepDiagnostic:true});await persist();throw Error('Source changed during action inspection; inspect again');}return s.analysis;}
 async function refreshActionSources(s,signal){
- if(!pairing||pairing.origin!==s.origin||!s.analysis?.actionBindings?.some(b=>b.mechanism==='react-jsx'))return;
+ if(!pairing||pairing.origin!==s.origin||!s.analysis?.actionBindings?.some(b=>['react-jsx','vue-template'].includes(b.mechanism)))return;
  const analysis=s.analysis,sources=new Map();
  for(const b of analysis.actionBindings){for(const loc of [b.binding?.source,b.entry?.source,...(b.calls||[]).map(c=>c.source),...(b.hookRelations||[]).map(h=>h.source)])if(loc)sources.set(loc.file,{file:loc.file,sourceDigest:loc.sourceDigest});}
  let current=false;try{current=(await bridge('check-action-sources',{origin:s.origin,sources:[...sources.values()]} ,signal)).current===true;}catch{/* Missing/changed source stays unavailable. */}
- if(s.analysis===analysis&&!current){analysis.actionBindings=analysis.actionBindings.map(b=>b.mechanism==='react-jsx'?{...b,freshness:'Stale'}:b);}
+ if(s.analysis===analysis&&!current){analysis.actionBindings=analysis.actionBindings.map(b=>['react-jsx','vue-template'].includes(b.mechanism)?{...b,freshness:'Stale'}:b);}
 }
 function installNativeActions(analysis,native,identity,occurrenceRequired=false){
  const unavailable=occurrenceRequired&&native.some(b=>b.id==='native:unknown');

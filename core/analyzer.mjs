@@ -2,7 +2,7 @@ import {parse} from '@babel/parser';
 import traverseModule from '@babel/traverse';
 import generatorModule from '@babel/generator';
 import {createHash} from 'node:crypto';
-import {baseParse} from '@vue/compiler-dom';
+import {vueSourceUnit} from './vue-source.mjs';
 import {analyzeActions} from './action-analysis.mjs';
 import {flatten,edge} from './evidence.mjs';
 const traverse=traverseModule.default||traverseModule,generate=generatorModule.default||generatorModule;
@@ -21,7 +21,7 @@ function details(expressions,ast,text,sourceScope){
 }
 function extract(file,text,selection){
  const found=[];let ast;
- try {ast=parseJS(text);}catch{}
+ if(!file.endsWith('.vue'))try {ast=parseJS(text);}catch{}
  if(ast&&!file.endsWith('.vue'))traverse(ast,{
  JSXElement(p){const n=p.node,attrs=n.openingElement.attributes;const id=attrs.find(a=>a.name?.name==='id')?.value?.value;
   const marker=selection.marker?.split(':');
@@ -37,33 +37,20 @@ function extract(file,text,selection){
  }
  });
  if(file.endsWith('.vue')){
-  const script=text.match(/<script[^>]*>([\s\S]*?)<\/script>/);let scriptAst;try{scriptAst=parseJS(script?.[1]||'');}catch{}
-  const template=text.match(/<template[^>]*>([\s\S]*)<\/template>/);
-  if(template){
-   const templateStart=text.indexOf(template[1],template.index),lineOffset=text.slice(0,templateStart).split('\n').length-1;
-   const columnOffset=templateStart-text.lastIndexOf('\n',templateStart-1)-1,vueFound=[];
-   let tree;try{tree=baseParse(template[1]);}catch{}
-   const walk=node=>{if(node.type===1){
-    const attrs=Object.fromEntries(node.props.filter(p=>p.type===6).map(p=>[p.name,p.value?.content||'']));
-    const classes=(attrs.class||'').split(/\s+/);const classMatch=selection.classes?.some(c=>classes.includes(c));
-    const metadataFile=selection.runtime?.vue?.file;const fileMatch=metadataFile&&(metadataFile.endsWith('/'+file.split('/').at(-1))||metadataFile===file);
-    const marker=selection.marker?.split(':');
-    const markerMatch=marker&&Number(marker[1])===lineOffset+node.loc.start.line&&node.tag===selection.tag;
-    if(marker?markerMatch:(selection.id&&attrs.id===selection.id)||(!selection.id&&node.tag===selection.tag&&(classMatch||fileMatch))){
-     const expressions=[];const collect=n=>{if(n.type===5)expressions.push(n.content.content);if(n.type===1)for(const p of n.props)if(p.type===7&&p.exp&&p.name!=='on')expressions.push(p.exp.content);for(const c of n.children||[])collect(c);};collect(node);
-     const d=details(expressions,scriptAst,text);const scriptOffset=script?text.slice(0,script.index+script[0].indexOf(script[1])).split('\n').length-1:0;d.definitions.forEach(x=>x.line+=scriptOffset);
-     vueFound.push({attrs,source:{file,line:lineOffset+node.loc.start.line,column:node.loc.start.column+(node.loc.start.line===1?columnOffset:0),endLine:lineOffset+node.loc.end.line,endColumn:node.loc.end.column+(node.loc.end.line===1?columnOffset:0),expressions,method:marker?'SFC digest-bound marker line/tag / interpolation AST':'SFC literal identity / interpolation AST',...d}});
-    }
-   }for(const c of node.children||[])walk(c);};if(tree)walk(tree);
-   let matches=vueFound;
-   if(selection.marker&&matches.length>1){
-    if(selection.id)matches=matches.filter(m=>m.attrs.id===selection.id);
-    else if(selection.classes?.length){const narrowed=matches.filter(m=>(m.attrs.class||'').split(/\s+/).some(c=>selection.classes.includes(c)));if(narrowed.length)matches=narrowed;}
-    if(matches.length!==1)matches=[];
-   }
-   found.push(...matches.map(m=>m.source));
+  const vue=vueSourceUnit(file,text);if(!vue)return found;
+  const marker=selection.marker?.split(':');let matches=vue.targets.filter(n=>{
+   const attrs=Object.fromEntries(n.node.props.filter(p=>p.type===6).map(p=>[p.name,p.value?.content||'']));
+   if(marker)return n.tag===selection.tag&&n.line===Number(marker[1])&&(!marker[3]||n.column===Number(marker[3]));
+   return selection.id?attrs.id===selection.id:n.tag===selection.tag&&(attrs.class||'').split(/\s+/).some(c=>selection.classes?.includes(c));
+  });
+  if(marker&&!marker[3]&&matches.length>1){
+   if(selection.id)matches=matches.filter(n=>n.node.props.some(p=>p.type===6&&p.name==='id'&&p.value?.content===selection.id));
+   else if(selection.classes?.length)matches=matches.filter(n=>n.node.props.some(p=>p.type===6&&p.name==='class'&&p.value?.content.split(/\s+/).some(c=>selection.classes.includes(c))));
   }
+  if(selection.marker&&matches.length!==1)return found;
+  for(const n of matches)found.push({file,line:n.line,column:n.column,endLine:n.endLine,endColumn:n.endColumn,expressions:n.expressions,method:marker?'SFC digest-bound exact template span':'SFC literal template identity',...details(n.expressions,vue.ast,text)});
  }
+
  return selection.marker&&!file.endsWith('.vue')&&found.length>1?[]:found;
 }
 export function analyzeSources(files,selection,requests,identity,{projectFiles=files}={}){

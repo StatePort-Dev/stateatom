@@ -9,3 +9,7 @@ test('native metadata read time/snapshot ID survive v1 export/import without man
  const legacy=structuredClone(report);delete legacy.runtime.actionBindings[0].registration.snapshotId;delete legacy.runtime.actionBindings[0].registration.readAt;const old=parseDiagnostic(JSON.stringify(legacy));assert(!Object.hasOwn(old.runtime.actionBindings[0].registration,'readAt'));assert(!Object.hasOwn(old.runtime.actionBindings[0].registration,'snapshotId'));
  for(const readAt of [-1,1e100]){const invalid=structuredClone(report);invalid.runtime.actionBindings[0].registration.readAt=readAt;const rejected=parseDiagnostic(JSON.stringify(invalid));assert(!Object.hasOwn(rejected.runtime.actionBindings[0].registration,'readAt'));}
 });
+test('Vue template declaration survives inert v1 save/import and keeps the runtime identity boundary',()=>{
+ const v=structuredClone(state);v.analysis.actionBindings[0].mechanism='vue-template';v.analysis.actionBindings[0].entry.reason='Vue template source declares this callback. Its runtime function identity and invocation were not observed.';
+ const r=parseDiagnostic(serializeDiagnostic(makeDiagnostic(v)));assert.equal(r.runtime.actionBindings[0].mechanism,'vue-template');assert.equal(r.runtime.actionBindings[0].execution.status,'not-observed');assert.match(r.runtime.actionBindings[0].entry.reason,/identity.*not observed/);assert(!r.runtime.actionBindings[0].binding.expression);
+});

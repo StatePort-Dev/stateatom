@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.6
+
+- Add bounded Vue SFC/template source event declarations, using original compiler
+  blocks and exact columns for ordinary methods and supported composable callbacks.
+  Keep source identity/invocation unobserved and dynamic/modifier/loop/slot/override
+  boundaries explicit; no handler/getter evaluation.
+- Show Vue source declarations using existing action controls, freshness and passive
+  v1 reader; template explanations retain the same no-invocation vocabulary.
+  No shared tokens, primitives, CSS, layout or wire/API version change.
+- Preserve legacy SFC source/id/class disambiguation and all old PARTIAL records.
+  Current source controls alone do not establish native Vue workflow readiness.
+
 ## 0.1.0-candidate.20261021.5
 
 - Preserve the source relationship limitation beside a named callback in the

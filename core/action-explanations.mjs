@@ -7,7 +7,7 @@ export function explanationFacts(state={}){
  state=state||{};
  const stale=!!state.stale||(state?.analysis?.actionBindings||[]).some(b=>b.freshness==='Stale');
  const all=(state.analysis?.actionBindings||[]).slice(0,24),bindings=stale?[]:all.filter(b=>b.freshness!=='Stale');
- const source=bindings.find(b=>b.mechanism==='react-jsx'),native=bindings.find(b=>b.mechanism==='dom-listener'&&b.registeredOn==='selected-element'&&b.status==='Observed');
+ const source=bindings.find(b=>['react-jsx','vue-template'].includes(b.mechanism)),native=bindings.find(b=>b.mechanism==='dom-listener'&&b.registeredOn==='selected-element'&&b.status==='Observed');
  const event=knownEvents.has((source||native)?.event)?(source||native).event:'interaction';
  const unknown=bindings.some(b=>b.entry?.status==='Unknown/Unsupported')||!bindings.length;
  const limits=[invocation,...(stale?['The inspection is stale; inspect again.']:[]),...(unknown?['Some action links are unknown or unsupported.']:[])];

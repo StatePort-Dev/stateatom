@@ -611,3 +611,13 @@ The earlier matrix receipt remains unchanged; the later review is recorded in
 unobserved. Next dependency-ready item:A04 positive Vue; A02/A05/L02 and broader
 production/performance/release gates remain open. No independent-human blocker,
 SDK, publication or other-repository work is inferred.
+
+### 2026-10-21 — A04.1 Vue source adapter
+
+A04.1 source increment adds compiler-block/exact-column Vue event declarations
+through existing Actions/freshness/v1/template controls, with explicit dynamic/
+modifier/loop/slot/override/getter boundaries. Source1661/focused128 and current
+finite compilation regression4 pass.35-a04-vue-source-adapter.md retains actual
+failed/control cases and pin-only builder refresh. No native Vue positive gate is
+claimed; parent A04 remains open, next A04.2 actual real-library/UI/source matrix.
+Old Vue PARTIAL evidence and mandatory A05/L02 remain unchanged.

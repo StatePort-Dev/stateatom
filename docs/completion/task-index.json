@@ -1858,8 +1858,32 @@
         "npm run verify:short-loop"
       ],
       "deliverable": "Positive Vue UI/source cases plus retained PARTIAL controls",
-      "status": "planned",
-      "optional": false
+      "status": "in-progress",
+      "optional": false,
+      "active_slice": "A04.2",
+      "implementation_plan": "../superpowers/plans/2026-10-21-a04-vue-positive.md",
+      "execution_record": "35-a04-vue-source-adapter.md",
+      "completed_slices": [
+        {
+          "id": "A04.1",
+          "status": "complete-within-compiler-source-adapter",
+          "record": "35-a04-vue-source-adapter.md",
+          "verification": ".artifacts/a04/source-adapter/verification-source.json",
+          "checks": {
+            "source": 1661,
+            "focused": 128,
+            "finite_compilation_regression": 4
+          },
+          "native_Vue_verified": false,
+          "full_A04_acceptance": false
+        }
+      ],
+      "remaining_acceptance": [
+        "Positive actual native Vue property/action/source workflow with real library",
+        "Repeated normal updates/two instances/stale source/replaced handler and opaque/aggregate boundaries",
+        "Original Vue PARTIAL/Basic controls and framework/version/mode capability matrix",
+        "ONE whole-A04 review with tested Critical/Important resolutions"
+      ]
     },
     {
       "id": "A05",
@@ -2413,15 +2437,15 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "A03",
-      "status": "complete-within-original-scope",
-      "record": "34-a03-whole-item-review.md",
-      "verification": ".artifacts/a03/native-freshness/verification5.json",
-      "review": ".artifacts/a03/review/result.json",
-      "next_item": "A04",
-      "invocation_observed": false
+      "id": "A04.1",
+      "status": "complete-within-compiler-source-adapter",
+      "record": "35-a04-vue-source-adapter.md",
+      "verification": ".artifacts/a04/source-adapter/verification-source.json",
+      "full_A04_acceptance": false,
+      "native_Vue_verified": false,
+      "next_item": "A04.2"
     },
-    "next_item": "A04",
+    "next_item": "A04.2",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -3015,10 +3039,19 @@
         "full_A03_acceptance": false,
         "invocation_observed": false,
         "next_item": "A03 whole-item review"
+      },
+      {
+        "id": "A03",
+        "status": "complete-within-original-scope",
+        "record": "34-a03-whole-item-review.md",
+        "verification": ".artifacts/a03/native-freshness/verification5.json",
+        "review": ".artifacts/a03/review/result.json",
+        "next_item": "A04",
+        "invocation_observed": false
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A03 complete on original source-handler/relevant-hook/native metadata scope after ONE whole-item read-only agent review aae5141..572bc1f:0 Critical/Important/Minor, no waived original criterion or rerun. Current .5 source1649/focused106/types2/admission7/native105/picker16/reporter33, sealed contributor IDE separate. Earlier matrix receipt/history unchanged; actual transfer/function identity/invocation unobserved. Next A04 positive Vue with real library; A02/A05/L02/P04/C07/release remain open; SDK outside Atom.",
+    "current_activity_note": "A04.1 source adapter complete: actual SFC/template blocks and exact source columns, direct method/import/composable source kind through UI/v1/freshness, no execution. Full1661/focused128/current finite compilation4 pass; original legacy source criterion restored and all failed attempts preserved. .6 only being prepared, native positive real-library Vue matrix not yet run; parent A04 open, next A04.2. A03 closed on its own scope; A02/A05/L02 broader gates open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "A04"
