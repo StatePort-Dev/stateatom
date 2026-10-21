@@ -1454,3 +1454,12 @@ including real Generating phase, Cancel/stale late guards and document-offline.
 and .26 cold/download evidence remain historical; prompt/validator/schema unchanged.
 L02 open/no added usefulness;15/29 full items complete. Next bounded derived-
 annotation contract/privacy projection/usefulness rubric, before behavioral changes.
+
+### 2026-10-21 — next annotation contract prepared, capability still open
+
+[L02.5 preparation](completion/61-l02-derived-annotation-preparation.md) defines the
+proposed separate annotation/privacy boundaries and fixed-corpus usefulness rubric.
+No new provider/projection/model run is implemented by this document; no new full
+item completion. Next ONLY L02.6 source-only projection/structural validator with
+privacy/unknown/identity tests. Actual product candidate remains .28/bee61ee with
+source1852/native6 proof; mandatory L02 and final validation remain open,15/29 complete.

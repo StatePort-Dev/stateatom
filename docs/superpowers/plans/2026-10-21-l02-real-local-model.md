@@ -91,3 +91,12 @@ candidate and unchanged prompt/validator/schema hashes. Older corpus/download
 results remain their exact historical candidates. Next Task2 begins with ONE
 bounded derived-annotation contract/projection/rubric definition; no useful output,
 new projection or final whole-item acceptance is assumed from documents alone.
+
+Task2 preparation L02.5:separate technical proposal in specs/2026-10-21-l02-derived-
+annotation-design.md, recorded by completion/61. Explicit field/privacy boundary,
+immutable limits/references, per-case factual/unknown/concision/usefulness rubric;
+no JSON-entailment guarantee, no changed historical counts/percentage gate. No
+new projection/provider/product behavior/model run or L02 acceptance from the spec.
+NEXT ONLY L02.6:pure versioned abstract projection + structural annotation validator,
+privacy/unknown/identity tests, source-only; original provider and UI stay unchanged.
+Later real evaluation/product/whole review remain distinct bounded tasks.

@@ -2651,7 +2651,7 @@
       "deliverable": "Real-device useful local explanations and complete model-free fallback; unavailability alone does not pass",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "L02.5 bounded derived-annotation contract, privacy projection and usefulness rubric",
+      "active_slice": "L02.6 source-only pure versioned abstract projection and structural annotation validator with privacy/unknown/identity tests",
       "implementation_plan": "../superpowers/plans/2026-10-21-l02-real-local-model.md",
       "remaining_acceptance": [
         "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
@@ -2659,23 +2659,19 @@
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
-      "execution_record": "60-l02-model-phase-status.md",
+      "execution_record": "61-l02-derived-annotation-preparation.md",
       "current_checkpoint": {
-        "id": "L02.4-truthful-model-phases",
-        "status": "complete-bounded-phase-fix-not-L02",
-        "record": "60-l02-model-phase-status.md",
-        "candidate": "@stateport/atom@0.1.0-candidate.20261021.28",
-        "source_tests": 1852,
-        "focused_tests": 18,
-        "packed_type_consumers": 2,
-        "package_admission": 7,
-        "actual_product_controls": 6,
-        "actual_generation_phase": true,
+        "id": "L02.5-derived-annotation-preparation",
+        "status": "design-preparation-only-no-new-capability",
+        "record": "61-l02-derived-annotation-preparation.md",
+        "source_revision": "bee61ee",
+        "technical_proposal": "../superpowers/specs/2026-10-21-l02-derived-annotation-design.md",
+        "new_provider_implemented": false,
+        "new_projection_implemented": false,
+        "new_model_inference": false,
         "full_L02_acceptance": false,
-        "added_usefulness_cases": 0,
-        "verification": ".artifacts/l02/phases/verification28.json",
-        "next_item": "L02.5 bounded derived-annotation contract, privacy projection and usefulness rubric",
-        "boundary": "Actual .28 warm generation status corrected,6 native product controls PASS including Cancel/stale6500ms/offline with fetch control,1100/390 no overflow/13px. Exact unchanged host/API, registered source hashes; old30 corpus remains .27 and cold download remains .26. Fact/prompt/validator/schema unchanged. No added usefulness/whole L02/OS airgap/heap claim; human-unreviewed screenshots."
+        "next_item": "L02.6 source-only pure versioned abstract projection and structural annotation validator with privacy/unknown/identity tests",
+        "boundary": "Technical proposal only: separate derived annotation, explicit non-sensitive allowlist and immutable limits/refs; JSON/token structure is not natural-language entailment. Preserve30 including historical>=25/5incomplete/5untrusted, require per-case real usefulness beyond templates. Exact names/bounds proposed, not prior approved decisions. Existing .28 tests/native proof not upgraded; L02 remains mandatory/open."
       },
       "completed_slices": [
         {
@@ -2745,13 +2741,27 @@
           "verification": ".artifacts/l02/phases/verification28.json",
           "next_item": "L02.5 bounded derived-annotation contract, privacy projection and usefulness rubric",
           "boundary": "Actual .28 warm generation status corrected,6 native product controls PASS including Cancel/stale6500ms/offline with fetch control,1100/390 no overflow/13px. Exact unchanged host/API, registered source hashes; old30 corpus remains .27 and cold download remains .26. Fact/prompt/validator/schema unchanged. No added usefulness/whole L02/OS airgap/heap claim; human-unreviewed screenshots."
+        },
+        {
+          "id": "L02.5-derived-annotation-preparation",
+          "status": "design-preparation-only-no-new-capability",
+          "record": "61-l02-derived-annotation-preparation.md",
+          "source_revision": "bee61ee",
+          "technical_proposal": "../superpowers/specs/2026-10-21-l02-derived-annotation-design.md",
+          "new_provider_implemented": false,
+          "new_projection_implemented": false,
+          "new_model_inference": false,
+          "full_L02_acceptance": false,
+          "next_item": "L02.6 source-only pure versioned abstract projection and structural annotation validator with privacy/unknown/identity tests",
+          "boundary": "Technical proposal only: separate derived annotation, explicit non-sensitive allowlist and immutable limits/refs; JSON/token structure is not natural-language entailment. Preserve30 including historical>=25/5incomplete/5untrusted, require per-case real usefulness beyond templates. Exact names/bounds proposed, not prior approved decisions. Existing .28 tests/native proof not upgraded; L02 remains mandatory/open."
         }
       ],
       "execution_records": [
         "57-l02-real-device-baseline.md",
         "58-l02-exact-metadata-controls.md",
         "59-l02-installed-model-controls.md",
-        "60-l02-model-phase-status.md"
+        "60-l02-model-phase-status.md",
+        "61-l02-derived-annotation-preparation.md"
       ]
     },
     {
@@ -3105,23 +3115,19 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "L02.4-truthful-model-phases",
-      "status": "complete-bounded-phase-fix-not-L02",
-      "record": "60-l02-model-phase-status.md",
-      "candidate": "@stateport/atom@0.1.0-candidate.20261021.28",
-      "source_tests": 1852,
-      "focused_tests": 18,
-      "packed_type_consumers": 2,
-      "package_admission": 7,
-      "actual_product_controls": 6,
-      "actual_generation_phase": true,
+      "id": "L02.5-derived-annotation-preparation",
+      "status": "design-preparation-only-no-new-capability",
+      "record": "61-l02-derived-annotation-preparation.md",
+      "source_revision": "bee61ee",
+      "technical_proposal": "../superpowers/specs/2026-10-21-l02-derived-annotation-design.md",
+      "new_provider_implemented": false,
+      "new_projection_implemented": false,
+      "new_model_inference": false,
       "full_L02_acceptance": false,
-      "added_usefulness_cases": 0,
-      "verification": ".artifacts/l02/phases/verification28.json",
-      "next_item": "L02.5 bounded derived-annotation contract, privacy projection and usefulness rubric",
-      "boundary": "Actual .28 warm generation status corrected,6 native product controls PASS including Cancel/stale6500ms/offline with fetch control,1100/390 no overflow/13px. Exact unchanged host/API, registered source hashes; old30 corpus remains .27 and cold download remains .26. Fact/prompt/validator/schema unchanged. No added usefulness/whole L02/OS airgap/heap claim; human-unreviewed screenshots."
+      "next_item": "L02.6 source-only pure versioned abstract projection and structural annotation validator with privacy/unknown/identity tests",
+      "boundary": "Technical proposal only: separate derived annotation, explicit non-sensitive allowlist and immutable limits/refs; JSON/token structure is not natural-language entailment. Preserve30 including historical>=25/5incomplete/5untrusted, require per-case real usefulness beyond templates. Exact names/bounds proposed, not prior approved decisions. Existing .28 tests/native proof not upgraded; L02 remains mandatory/open."
     },
-    "next_item": "L02.5 bounded derived-annotation contract, privacy projection and usefulness rubric",
+    "next_item": "L02.6 source-only pure versioned abstract projection and structural annotation validator with privacy/unknown/identity tests",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -4189,10 +4195,23 @@
         "verification": ".artifacts/l02/phases/verification28.json",
         "next_item": "L02.5 bounded derived-annotation contract, privacy projection and usefulness rubric",
         "boundary": "Actual .28 warm generation status corrected,6 native product controls PASS including Cancel/stale6500ms/offline with fetch control,1100/390 no overflow/13px. Exact unchanged host/API, registered source hashes; old30 corpus remains .27 and cold download remains .26. Fact/prompt/validator/schema unchanged. No added usefulness/whole L02/OS airgap/heap claim; human-unreviewed screenshots."
+      },
+      {
+        "id": "L02.5-derived-annotation-preparation",
+        "status": "design-preparation-only-no-new-capability",
+        "record": "61-l02-derived-annotation-preparation.md",
+        "source_revision": "bee61ee",
+        "technical_proposal": "../superpowers/specs/2026-10-21-l02-derived-annotation-design.md",
+        "new_provider_implemented": false,
+        "new_projection_implemented": false,
+        "new_model_inference": false,
+        "full_L02_acceptance": false,
+        "next_item": "L02.6 source-only pure versioned abstract projection and structural annotation validator with privacy/unknown/identity tests",
+        "boundary": "Technical proposal only: separate derived annotation, explicit non-sensitive allowlist and immutable limits/refs; JSON/token structure is not natural-language entailment. Preserve30 including historical>=25/5incomplete/5untrusted, require per-case real usefulness beyond templates. Exact names/bounds proposed, not prior approved decisions. Existing .28 tests/native proof not upgraded; L02 remains mandatory/open."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Actual .28 warm generation status corrected,6 native product controls PASS including Cancel/stale6500ms/offline with fetch control,1100/390 no overflow/13px. Exact unchanged host/API, registered source hashes; old30 corpus remains .27 and cold download remains .26. Fact/prompt/validator/schema unchanged. No added usefulness/whole L02/OS airgap/heap claim; human-unreviewed screenshots.",
+    "current_activity_note": "Technical proposal only: separate derived annotation, explicit non-sensitive allowlist and immutable limits/refs; JSON/token structure is not natural-language entailment. Preserve30 including historical>=25/5incomplete/5untrusted, require per-case real usefulness beyond templates. Exact names/bounds proposed, not prior approved decisions. Existing .28 tests/native proof not upgraded; L02 remains mandatory/open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "L02"
