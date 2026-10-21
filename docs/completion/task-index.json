@@ -2731,13 +2731,21 @@
         "core/source-maps.mjs",
         "core/source-map-archive.mjs",
         "packages/atom/src/source-map-session.mjs",
-        "packages/atom/src/source-map-ui.mjs"
+        "packages/atom/src/source-map-ui.mjs",
+        "core/release-bundle.mjs",
+        "core/release-bundle-zip.mjs",
+        "scripts/prepare-source-bundle.mjs",
+        "tests/release-bundle.test.mjs",
+        "tests/helpers/release-bundle-io-race.mjs",
+        "docs/source-bundles.md"
       ],
       "existing_commands": [
-        "npm run verify:production-source-mapping"
+        "npm run verify:production-source-mapping",
+        "npm run prepare:source-bundle",
+        "npm run verify:source-bundle-native"
       ],
       "deliverable": "One release import and lazy exact per-chunk matching",
-      "status": "partially-implemented",
+      "status": "in-progress",
       "optional": false,
       "credited_existing_work": {
         "revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
@@ -2745,14 +2753,76 @@
         "validation": "../testing/production-source-mapping.md",
         "reconciliation": "13-scope-reconciliation.md"
       },
-      "remaining_acceptance": "Release-bundle preparation and normal multi-chunk/source workflow with responsive bounded parsing",
+      "remaining_acceptance": [
+        "One retained explicit bundle import and lazy exact per-loaded-chunk matching, including stale/mixed releases and interruption",
+        "Explicit bounded companion sources when sourcesContent is missing; never follow sourceRoot/sources paths",
+        "Preemptible archive/map parsing and session-local lifecycle/budgets",
+        "Registered real-app size/time/indexed-map qualification and actual nontrivial minified UI workflow",
+        "ONE whole-P02 scope/code/evidence review after actual acceptance, with one tested correction pass if needed"
+      ],
       "credited_p01_source_analysis": {
         "record": "75-p01-whole-item-review.md",
         "candidate": "@stateport/atom@0.1.0-candidate.20261021.39",
         "scope": "Owned hard-budget source AST Worker, exact separate dependency gate and transient provider foundation only",
         "does_not_complete": "Release-bundle preparation/bulk matching, preemptible archive/map parsing, companion sources or registered real-app limit qualification"
       },
-      "active_slice": "P02.1 explicit already-built JS/map bundle preparation; P01 accepted, runtime bulk/corpus acceptance remains open"
+      "active_slice": "P02.2 retain one explicit release bundle and lazily match eligible loaded chunks",
+      "execution_record": "76-p02-release-bundle-preparation.md",
+      "current_checkpoint": {
+        "id": "P02.1-explicit-release-bundle-preparation",
+        "status": "complete-bounded-preparation-and-native-compatibility-not-full-P02",
+        "record": "76-p02-release-bundle-preparation.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.39",
+        "runtime_payload": "Unchanged Atom/UI/installed package and both complete host bytes from accepted P01 .39; current packaging receipt21-58-37-567Z",
+        "source_tests": 2019,
+        "new_source_tests": 15,
+        "actual_generated_bundle_checks": 57,
+        "actual_generated_bundle_checks_per_host": {
+          "standalone": 27,
+          "embedding": 28
+        },
+        "actual_npm_entry": true,
+        "private_output_mode": "0600",
+        "output_publication": "Complete private same-filesystem stage, atomic non-overwriting hard link; no final-path deletion",
+        "cleanup_race_fixed": true,
+        "verification": ".artifacts/p02/prepare/verification.json",
+        "single_retained_import_for_all_chunks": false,
+        "companion_sources": false,
+        "inspector_parse_preemption": false,
+        "independent_real_app_qualification": false,
+        "full_P02_acceptance": false,
+        "next_item": "P02.2 retain one explicit release bundle and lazily match eligible loaded chunks",
+        "boundary": "Node-only explicit already-built JS/map recipe, current limits and manifest raw SHA-256, private deterministic ZIP, real CLI/two-host compatibility. No app build/eval/config/source search/network; no SDK/publication or other repository. Current .39 runtime/UI unchanged; P02 bulk/companions/parser-worker/corpus remain open."
+      },
+      "completed_slices": [
+        {
+          "id": "P02.1-explicit-release-bundle-preparation",
+          "status": "complete-bounded-preparation-and-native-compatibility-not-full-P02",
+          "record": "76-p02-release-bundle-preparation.md",
+          "candidate": "@stateport/atom@0.1.0-candidate.20261021.39",
+          "runtime_payload": "Unchanged Atom/UI/installed package and both complete host bytes from accepted P01 .39; current packaging receipt21-58-37-567Z",
+          "source_tests": 2019,
+          "new_source_tests": 15,
+          "actual_generated_bundle_checks": 57,
+          "actual_generated_bundle_checks_per_host": {
+            "standalone": 27,
+            "embedding": 28
+          },
+          "actual_npm_entry": true,
+          "private_output_mode": "0600",
+          "output_publication": "Complete private same-filesystem stage, atomic non-overwriting hard link; no final-path deletion",
+          "cleanup_race_fixed": true,
+          "verification": ".artifacts/p02/prepare/verification.json",
+          "single_retained_import_for_all_chunks": false,
+          "companion_sources": false,
+          "inspector_parse_preemption": false,
+          "independent_real_app_qualification": false,
+          "full_P02_acceptance": false,
+          "next_item": "P02.2 retain one explicit release bundle and lazily match eligible loaded chunks",
+          "boundary": "Node-only explicit already-built JS/map recipe, current limits and manifest raw SHA-256, private deterministic ZIP, real CLI/two-host compatibility. No app build/eval/config/source search/network; no SDK/publication or other repository. Current .39 runtime/UI unchanged; P02 bulk/companions/parser-worker/corpus remain open."
+        }
+      ],
+      "historical_remaining_acceptance": "Release-bundle preparation and normal multi-chunk/source workflow with responsive bounded parsing"
     },
     {
       "id": "P03",
@@ -3566,40 +3636,36 @@
     ]
   },
   "reconciliation": {
-    "document": "75-p01-whole-item-review.md",
+    "document": "76-p02-release-bundle-preparation.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "P01.5-whole-item-accepted",
-      "status": "complete-bounded-P01-after-one-review-and-fix-pass",
-      "record": "75-p01-whole-item-review.md",
+      "id": "P02.1-explicit-release-bundle-preparation",
+      "status": "complete-bounded-preparation-and-native-compatibility-not-full-P02",
+      "record": "76-p02-release-bundle-preparation.md",
       "candidate": "@stateport/atom@0.1.0-candidate.20261021.39",
-      "source_tests": 2004,
-      "focused_tests": 146,
-      "new_source_tests": 6,
-      "node_exact_parity_cases": 12,
-      "actual_packed_source_analysis_checks": 56,
-      "actual_native_registration_checks": 49,
-      "actual_framework_source_checks": 65,
-      "actual_Node_Action_IDE_checks": 105,
-      "packed_type_consumers": 2,
-      "package_admission": 8,
-      "worker_only_exact_inputs": 172,
-      "whole_P01_review_performed": true,
-      "important_findings": 1,
-      "important_findings_fixed": 1,
-      "full_P01_acceptance": true,
-      "delivery_states": [
-        "implemented",
-        "native-verified"
-      ],
-      "verification": ".artifacts/p01/review-fix/verification39.json",
-      "concurrent_failure_cause": "Unknown; retained .38 failures are not resolved or concurrent-reliability proof",
-      "human_visual_approval": false,
-      "next_item": "P02.1 explicit local release-bundle preparation",
-      "boundary": "Finite native/own-host selected callback source path without IDE/manual coordinates, shared pure source analysis and one-shot owned Worker. One full review and one RED/GREEN correction pass for CR/LS/PS source lines. No invocation/values/property/HTTP/renderer attestation, P02/P03, L02 quality, release/SDK/other repository claim."
+      "runtime_payload": "Unchanged Atom/UI/installed package and both complete host bytes from accepted P01 .39; current packaging receipt21-58-37-567Z",
+      "source_tests": 2019,
+      "new_source_tests": 15,
+      "actual_generated_bundle_checks": 57,
+      "actual_generated_bundle_checks_per_host": {
+        "standalone": 27,
+        "embedding": 28
+      },
+      "actual_npm_entry": true,
+      "private_output_mode": "0600",
+      "output_publication": "Complete private same-filesystem stage, atomic non-overwriting hard link; no final-path deletion",
+      "cleanup_race_fixed": true,
+      "verification": ".artifacts/p02/prepare/verification.json",
+      "single_retained_import_for_all_chunks": false,
+      "companion_sources": false,
+      "inspector_parse_preemption": false,
+      "independent_real_app_qualification": false,
+      "full_P02_acceptance": false,
+      "next_item": "P02.2 retain one explicit release bundle and lazily match eligible loaded chunks",
+      "boundary": "Node-only explicit already-built JS/map recipe, current limits and manifest raw SHA-256, private deterministic ZIP, real CLI/two-host compatibility. No app build/eval/config/source search/network; no SDK/publication or other repository. Current .39 runtime/UI unchanged; P02 bulk/companions/parser-worker/corpus remain open."
     },
-    "next_item": "P02.1 explicit local release-bundle preparation",
+    "next_item": "P02.2 retain one explicit release bundle and lazily match eligible loaded chunks",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -5029,10 +5095,36 @@
         "human_visual_approval": false,
         "next_item": "P02.1 explicit local release-bundle preparation",
         "boundary": "Finite native/own-host selected callback source path without IDE/manual coordinates, shared pure source analysis and one-shot owned Worker. One full review and one RED/GREEN correction pass for CR/LS/PS source lines. No invocation/values/property/HTTP/renderer attestation, P02/P03, L02 quality, release/SDK/other repository claim."
+      },
+      {
+        "id": "P02.1-explicit-release-bundle-preparation",
+        "status": "complete-bounded-preparation-and-native-compatibility-not-full-P02",
+        "record": "76-p02-release-bundle-preparation.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.39",
+        "runtime_payload": "Unchanged Atom/UI/installed package and both complete host bytes from accepted P01 .39; current packaging receipt21-58-37-567Z",
+        "source_tests": 2019,
+        "new_source_tests": 15,
+        "actual_generated_bundle_checks": 57,
+        "actual_generated_bundle_checks_per_host": {
+          "standalone": 27,
+          "embedding": 28
+        },
+        "actual_npm_entry": true,
+        "private_output_mode": "0600",
+        "output_publication": "Complete private same-filesystem stage, atomic non-overwriting hard link; no final-path deletion",
+        "cleanup_race_fixed": true,
+        "verification": ".artifacts/p02/prepare/verification.json",
+        "single_retained_import_for_all_chunks": false,
+        "companion_sources": false,
+        "inspector_parse_preemption": false,
+        "independent_real_app_qualification": false,
+        "full_P02_acceptance": false,
+        "next_item": "P02.2 retain one explicit release bundle and lazily match eligible loaded chunks",
+        "boundary": "Node-only explicit already-built JS/map recipe, current limits and manifest raw SHA-256, private deterministic ZIP, real CLI/two-host compatibility. No app build/eval/config/source search/network; no SDK/publication or other repository. Current .39 runtime/UI unchanged; P02 bulk/companions/parser-worker/corpus remain open."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Finite native/own-host selected callback source path without IDE/manual coordinates, shared pure source analysis and one-shot owned Worker. One full review and one RED/GREEN correction pass for CR/LS/PS source lines. No invocation/values/property/HTTP/renderer attestation, P02/P03, L02 quality, release/SDK/other repository claim.",
+    "current_activity_note": "Node-only explicit already-built JS/map recipe, current limits and manifest raw SHA-256, private deterministic ZIP, real CLI/two-host compatibility. No app build/eval/config/source search/network; no SDK/publication or other repository. Current .39 runtime/UI unchanged; P02 bulk/companions/parser-worker/corpus remain open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "P02"

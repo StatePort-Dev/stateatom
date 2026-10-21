@@ -1614,3 +1614,15 @@ negative with Unknown cause; no concurrency claim.16/29 full tasks complete
 (~55% equal item count). P02.1 explicit artifact bundle preparation is next;
 P02/P03/C06 overall, mandatory L02 quality, A02 and release-wide gates remain open.
 No SDK, publication, redesign or other repository changes.
+
+### 2026-10-22 — explicit private release-bundle preparation
+
+[P02.1](completion/76-p02-release-bundle-preparation.md) adds a Node-only explicit already-built JS/map recipe and
+compatible private ZIP.15new/2019full source checks and57 actual two-host CLI bundle
+checks pass; documented npm entry and independent unzip check pass. A reproduced
+stale-ownership cleanup race is fixed with private staging and atomic non-overwriting
+final linking; cancellation and foreign output are tested. Atom/UI .39 and both
+complete hosts remain byte-identical to accepted P01, not a new runtime shipment.
+Next P02.2:one retained import and lazy exact matching across loaded chunks.
+P02/companions/inspector parser preemption/real-app qualification remain open;
+16/29 full items complete. No new UI/SDK/publication/other repository or model claim.

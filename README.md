@@ -49,6 +49,11 @@ browser, IDE and reader. There is no general lint command. F01 adds the focused
 the packed Atom/UI artifacts; run `npm run pack:atom` first. It is not a whole
 repository TypeScript conversion.
 
+`npm run prepare:source-bundle -- --root <built-directory> --recipe <recipe.json>
+--output <new-local.zip>` prepares explicit already-built JS/maps for private local
+source import. See [the recipe and limits](docs/source-bundles.md). It does not build
+or execute the application, publish artifacts or complete the broader P02 workflow.
+
 For browser verification, install the Playwright-pinned Chromium and its host libraries:
 
 ```sh
