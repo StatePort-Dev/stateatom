@@ -72,3 +72,7 @@ client.request({op:'inputs-capture',tabId:1,ownerId:'view',investigationId:'i'})
 client.request({op:'inputs-capture',tabId:1,ownerId:'view',snapshot:{}});
 // @ts-expect-error Only explicit outcome review categories exist.
 client.request({op:'inputs-capture',tabId:1,ownerId:'view',includeCategories:['grants']});
+
+client.request({op:'source-map-anchor',tabId:1,bindingId:'native:0',snapshotId:'snapshot',contextKey:'context'});
+// @ts-expect-error native source coordinates are runtime-owned
+client.request({op:'source-map-anchor',tabId:1,bindingId:'native:0',snapshotId:'snapshot',contextKey:'context',line:1});

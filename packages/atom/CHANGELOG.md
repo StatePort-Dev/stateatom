@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.34
+
+- Document the no-IDE native registration source workflow and its evidence limits.
+  Clarify that the HTTPS IDE-transfer restriction does not prohibit permitted local
+  map exploration. Executable runtime/UI inputs are unchanged from .33; compare
+  installed payload/host hashes before transferring its native results.
+
+## 0.1.0-candidate.20261021.33
+
+- Keep the new native source action at 12px after the real first-viewport check
+  exposed inherited 11px action-card styling. Body typography, shared tokens and
+  existing controls remain unchanged; this is a scoped legibility correction.
+- Refuse direct native source reads from an input-edited investigation until a
+  new inspection. Preserve the immutable .32 candidate and its actual results.
+
+## 0.1.0-candidate.20261021.32
+
+- Add selected native-listener source cards using the existing visual primitives,
+  typography and three-card budget. Connect the listener script map without manual
+  coordinates; explicitly view its original source outside Advanced manual lookup.
+  This extends the supplied prototype flow; source registration is not execution,
+  callback identity or proof of the selected property producer. Screens remain
+  candidates for human visual review. No shared UI token/contract change.
+- Re-read private current native metadata before read-only mapping. Reject changed,
+  missing or ambiguous registrations, stale targets and late source results. Exact
+  artifact mapping remains separate from Candidate/unverified or position-only data.
+  Source bodies stay transient and are excluded from default diagnostics.
+
 ## 0.1.0-candidate.20261021.31
 
 - Use the actual CDP EventListener backendNodeId for native registration identity.

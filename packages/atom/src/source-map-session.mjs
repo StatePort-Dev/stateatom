@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
-import {associateSourceMap,readSourceBundle,lookupSource,sourceDigest,jsonBytes,validateManifest,MAP_LIMITS} from '../../../core/source-maps.mjs';
+import {associateSourceMap,readSourceBundle,lookupSource,sourceExcerpt,sourceDigest,jsonBytes,validateManifest,MAP_LIMITS} from '../../../core/source-maps.mjs';
+import {isCurrentGeneratedAnchor} from '../../../core/source-anchor.mjs';
+import {createReadOnlySourceProvider} from '../../../core/source-provider.mjs';
 import {ARCHIVE_LIMITS} from '../../../core/source-map-archive.mjs';
 import {isDevelopmentOrigin} from './capabilities.mjs';
 const enc=new TextEncoder(),ttl=300000,MAX_SCRIPTS=128;
@@ -44,6 +46,21 @@ export function createSourceMapSession({send,fetch,permitted,onChange=()=>{}}){
    if(c.signal.aborted)throw Error('Map acquisition cancelled or timed out');return await install(id,s,r,g,bundles);
   }finally{clearTimeout(timer);s.controllers.delete(c);signal?.removeEventListener('abort',abort);}
  }
+ async function lookupAnchor(id,anchor,input,{signal}={}){
+  if(!isCurrentGeneratedAnchor(anchor,input)||anchor.identity.tabId!==id)throw Error('Current native source anchor required');
+  const {s,r}=script(id,anchor.generated.scriptId),g=s.generation;
+  const check=()=>{if(signal?.aborted)throw Error('Source view cancelled');const maps=snapshot(id);current(id,s,r,g);if(!isCurrentGeneratedAnchor(anchor,input)||!isCurrentGeneratedAnchor(anchor,{context:input.context,binding:input.binding,maps}))throw Error('Stale native source anchor or changed inspection');};
+  check();if(!r.parsed||!r.map||['Mismatch','Stale','Unavailable'].includes(r.map.status))throw Error('Connect a usable source map for this registered listener script');
+  const pos=lookupSource(r.parsed,anchor.generated.line,anchor.generated.column),base={anchor,match:r.map.status,verificationMethod:r.map.verificationMethod,execution:'not-observed',callbackIdentity:'Unknown/Unsupported',propertyProducer:'Unknown/Unsupported',httpOrigin:'Unknown/Unsupported',operands:'not observed'};
+  if(pos.status==='Unavailable')return{...base,...pos,contentStatus:'Unavailable',excerpt:null,sourceDigest:null};
+  let provider;
+  try{
+   provider=await createReadOnlySourceProvider(JSON.stringify({schema:'stateatom.readonly-source-files/1',kind:'user-map',ownerDigest:r.map.mapDigest,files:r.parsed.sources.map((source,index)=>({index,source,content:r.parsed.sourcesContent[index]??null}))}),{signal});
+   check();const descriptor=provider.list().find(f=>f.index===pos.sourceIndex);if(!descriptor)throw Error('Mapped original source index is unavailable');
+   const file=provider.read(descriptor.key),excerpt=file.status==='Available'?sourceExcerpt(file.content,pos.line,pos.column):null,invalid=file.status==='Available'&&excerpt===null;
+   check();return{...base,source:pos.source,sourceIndex:pos.sourceIndex,sourceKey:descriptor.key,line:pos.line,column:pos.column,name:pos.name,sourceDigest:file.sourceDigest??null,sourceDigestDomain:file.sourceDigestDomain??null,contentStatus:file.status,excerpt,status:invalid?'Unavailable':r.map.status==='Exact artifact match'?'Code-linked':'Candidate',link:invalid?'not linked to original source content':r.map.status==='Exact artifact match'?'selected native listener registered location':'selected native listener location; source mapping unverified',reason:invalid?'Mapped position is outside provided source content':file.status==='Unavailable'?'Map lacks source content; position only':r.map.reason};
+  }finally{provider?.close();}
+ }
  function snapshot(id){const s=tabs.get(id);if(!s)return {status:'Unavailable',scripts:[],history:[],lookup:null};state(id);return {status:s.status,epoch:s.epoch,reason:s.reason,history:s.history,lookup:s.lookup?{scriptId:s.lookup.scriptId,line:s.lookup.line,column:s.lookup.column,originalLine:s.lookup.originalLine,originalColumn:s.lookup.originalColumn,link:'not linked to element'}:null,scripts:[...s.scripts.values()].map(({parsed,bytes,...r})=>({...r}))};}
  return {begin(id,epoch){const old=tabs.get(id);if(old)invalidate(id,'New inspection epoch');tabs.set(id,{epoch,status:'Connected',reason:null,scripts:new Map(),contexts:new Map(),headerRefs:new Map(),generation:0,at:Date.now(),history:old?[...old.scripts.values()].filter(r=>r.map).slice(0,8).map(r=>({scriptId:r.scriptId,status:'Stale',mapDigest:r.map.mapDigest})):[],lookup:null,controllers:new Set()});touch(id,tabs.get(id));while(tabs.size>3){const oldest=tabs.keys().next().value;invalidate(oldest,'Evicted');tabs.delete(oldest);}},
   event(id,method,p){const s=tabs.get(id);if(!s||s.status==='Stale')return;
@@ -58,7 +75,7 @@ export function createSourceMapSession({send,fetch,permitted,onChange=()=>{}}){
     const old=s.scripts.get(p.scriptId);if(old){s.generation++;s.lookup=null;}
     s.scripts.set(p.scriptId,{scriptId:p.scriptId,length:Number.isSafeInteger(p.length)?p.length:null,url:p.url.slice(0,4096),executionContextId:p.executionContextId,frameId:s.contexts.get(p.executionContextId)||null,cdpHash:typeof p.hash==='string'?p.hash.slice(0,128):null,cdpHashDomain:'v8-script-content-sha256',buildId:typeof p.buildId==='string'?p.buildId.slice(0,128):null,startLine:p.startLine??0,startColumn:p.startColumn??0,endLine:p.endLine,endColumn:p.endColumn,special:!!p.hasSourceURL||p.startLine!==0||p.startColumn!==0,sourceMapURL:typeof p.sourceMapURL==='string'&&p.sourceMapURL.length<=4096?p.sourceMapURL:s.headerRefs.get(p.url)||null,map:null});return true;
    }
-  },snapshot,import:importBundle,acquire,
+  },snapshot,import:importBundle,acquire,lookupAnchor,
   lookup(id,scriptId,line,column){const {s,r}=script(id,scriptId);if(!r.parsed)throw Error('No usable map; connect a matching artifact');const pos=lookupSource(r.parsed,line,column);s.lookup={scriptId,line,column,originalLine:pos.line??null,originalColumn:pos.column??null};return {...pos,match:r.map.status,reason:r.map.reason};},
   invalidate,clear(id){const s=tabs.get(id);if(s){s.generation++;for(const c of s.controllers)c.abort();for(const r of s.scripts.values()){r.parsed=null;r.map=null;r.bytes=0;}s.lookup=null;s.history=[];}},remove(id){invalidate(id,'Tab closed');tabs.delete(id);},dispose(){for(const id of tabs.keys())invalidate(id,'Session ended');tabs.clear();}
  };

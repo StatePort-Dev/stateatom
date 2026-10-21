@@ -5,6 +5,7 @@ import {appOrigin} from './origin-policy.mjs';
 import {createSourceMapSession} from './source-map-session.mjs';
 import {createNativePicker,createNativeDOMQueue} from '../../../browser-extension/picker.mjs';
 import {inspectNativeActions} from '../../../core/action-native.mjs';
+import {createNativeSourceAnchor,isCurrentGeneratedAnchor} from '../../../core/source-anchor.mjs';
 import {createActionTraceController,actionPageOperation,actionPageGlobal,resolveActionPageAPI} from './action-trace.mjs';
 import {declareOwnedCode,ownedInjectionSource,bindOwnedFetchCode} from '../../../core/owned-code.mjs';
 import {newCodeJournal,journalEvent,journalSource,journalReadySources,journalGap,journalSnapshot,journalView} from '../../../core/code-journal.mjs';
@@ -358,6 +359,26 @@ async function refreshActionSnapshot(id,s,signal){
  const expired=native.find(b=>b.freshness==='Stale');if(expired){stale(expired.entry.reason);return;}
  installNativeActions(analysis,native,identity,typeof selected.instance==='string');
 }
+async function readNativeSource(id,request,signal){
+ const s=state(id),analysis=s.analysis,selected=s.selection,generation=s.inspectionGeneration,run=s.run,sourceGeneration=s.sourceGeneration||0;
+ const current=()=>!signal.aborted&&tabs[id]===s&&s.attached&&!s.stale&&s.analysis===analysis&&s.selection===selected&&s.inspectionGeneration===generation&&s.run===run&&(s.sourceGeneration||0)===sourceGeneration&&s.inputEditedInspection!==generation&&!analysis?.actionsInvalidated;
+ const check=()=>{if(!current())throw Error('Stale native source inspection; inspect again');};
+ check();const old=analysis.actionBindings?.find(b=>b.id===request.bindingId),input={context:analysis.actionContext,binding:old,maps:sourceMaps.snapshot(id)},anchor=createNativeSourceAnchor(input);
+ if(anchor.status!=='Observed'||anchor.acquisition.snapshotId!==request.snapshotId||JSON.stringify(anchor.identity)!==request.contextKey)throw Error('Current native registration snapshot required');
+ const identity=analysis.graph?.identity||analysis.actionContext;
+ const native=await nativeDOM(id,()=>inspectNativeActions((method,params)=>send(id,method,params),selected.selector,identity,{...selected.domIdentity,marker:selected.instance}));
+ check();if(!analysis.actionBindings.includes(old)||!isCurrentGeneratedAnchor(anchor,{context:analysis.actionContext,binding:old,maps:sourceMaps.snapshot(id)}))throw Error('Native source context changed');
+ const expired=native.find(b=>b.freshness==='Stale');if(expired){recordStale(s,expired.entry.reason);beginInspection(s,{keepDiagnostic:true});await persist();throw Error('Stale native source occurrence; inspect again');}
+ const tuple=b=>JSON.stringify([b.event,b.registration?.scriptId,b.registration?.line,b.registration?.column,b.registration?.registeredNode,b.capture===true,b.passive===true,b.once===true]);
+ const matches=native.filter(b=>b.status==='Observed'&&b.registeredOn==='selected-element'&&tuple(b)===tuple(old));
+ installNativeActions(analysis,native,identity,typeof selected.instance==='string');await persist();check();
+ if(matches.length!==1)throw Error('Native listener registration changed or is ambiguous; refresh handlers');
+ const binding=analysis.actionBindings.find(b=>b.id===matches[0].id),freshInput={context:analysis.actionContext,binding,maps:sourceMaps.snapshot(id)},fresh=createNativeSourceAnchor(freshInput);
+ if(fresh.status!=='Observed')throw Error('Current native source anchor unavailable');
+ const result=await sourceMaps.lookupAnchor(id,fresh,freshInput,{signal});check();
+ if(!analysis.actionBindings.includes(binding)||!isCurrentGeneratedAnchor(fresh,{context:analysis.actionContext,binding,maps:sourceMaps.snapshot(id)}))throw Error('Native source registration changed during read');
+ return result;
+}
 async function readText(id,selector){const r=await chrome.scripting.executeScript({target:{tabId:id},func:(selector)=>{const e=selector.split(' >>> ').reduce((r,p,i)=>i?r?.shadowRoot?.querySelector(p):document.querySelector(p),null);return e?.textContent?.trim()??null;},args:[selector]});return r[0].result;}
 async function reset(id,override){const s=state(id);s.override=override?{...override,consumed:0}:null;s.lastOverride=null;
  if(override)await send(id,'Fetch.enable',{patterns:[{urlPattern:override.url,requestStage:'Response'}]});else if(s.deepOverrides)await send(id,'Fetch.enable',{patterns:s.deepOverrides.map(o=>({urlPattern:o.url,requestStage:'Response'}))});else await send(id,'Fetch.disable');
@@ -448,6 +469,7 @@ async function operation(m,context){const signal=context.signal;await ready;
   else if(m.op==='source-map-import'){if(!state(id).attached)throw Error('Attach this tab first');const bytes=Uint8Array.from(atob(m.data),c=>c.charCodeAt(0));result=await sourceMaps.import(id,m.scriptId,bytes,m.name,{signal});}
   else if(m.op==='source-map-acquire'){if(!state(id).attached)throw Error('Attach this tab first');result=await sourceMaps.acquire(id,m.scriptId,m.url,{signal});}
   else if(m.op==='source-map-lookup')result=sourceMaps.lookup(id,m.scriptId,m.line,m.column);
+  else if(m.op==='source-map-anchor')result=await readNativeSource(id,m,signal);
   else if(m.op==='source-map-clear'){sourceMaps.clear(id);result=sourceMaps.snapshot(id);}
   else if(m.op==='metrics')result=await send(id,'Performance.getMetrics');
   else throw Error('Unsupported operation');return result;

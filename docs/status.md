@@ -1542,3 +1542,15 @@ Unknown/no selected graph.17new/60focused/1919full PASS; pure browser build, exa
 anchor/provider modules are source-only, not archive exports/UI feature. Next P01.2
 actual current native source view through existing read-only map session/UI and
 packed minified controls; P01 open,15/29 full tasks complete.
+
+### 2026-10-21 — current selected native listener source through the UI
+
+[P01.2](completion/70-p01-native-source-view.md): real native picker → automatic
+listener script/map connection → explicit original source, no IDE/manual coordinates.
+18new/95focused/1937full PASS; actual .33 two-host native49 PASS, including equal labels,
+Unicode/minified source, replacement/removal/stale/map/privacy and440/390 keyboard
+controls. Final .34/UI .2 has identical complete executable source/host payloads;
+49native results transferred on hashes, no fresh .34 browser run claimed; exact
+.34 types2/admission7 PASS. Registration location only, callback/invocation/property/
+HTTP unknown. Screens remain human candidates. Next P01.3 supported actual framework
+handler with unsupported controls/common pure analysis; whole P01 open,15/29 complete.

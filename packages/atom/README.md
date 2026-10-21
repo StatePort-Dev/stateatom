@@ -61,11 +61,19 @@ options object to enable permission-gated HTTPS inspection. The standalone host
 does so; this does not widen the default. HTTPS inspection grants read/inject
 helpers. Only the separately confirmed F05 permission admits supported input
 changes; legacy experiments, Restore and IDE context transfer remain denied.
-Source-map operations add offline import, permitted URL acquisition, manual lookup
-and clearing to wire version 1. Parsed maps/source stay outside storage, expire
+Source-map operations add offline import, permitted URL acquisition, manual lookup,
+selected native registration lookup and clearing to wire version 1. Parsed maps/source stay outside storage, expire
 after five minutes and clear on detach/navigation. Diagnostics omit their contents. Browser
-basic/save/export work without IDE; source navigation and supported source-linked
-analysis require the public open IDE helper. Unknown, Unsupported, Stale and
+basic/save/export work without IDE. A current listener registered directly on the
+selected element can also be mapped without IDE: select the element, open Actions,
+choose Connect source map, import its map/release ZIP, then View registered listener
+source. Coordinates come from fresh native registration metadata, not manual input.
+An exact artifact links the registered location only; invocation, callback identity
+and the selected property's producer remain unproved. Unverified maps stay Candidate;
+maps without source content provide positions only. Delegated/root listeners and
+framework application-handler anchors are unsupported in this increment. The
+read-only source operation never calls a handler/getter or the IDE. Other IDE source
+navigation and source-linked analysis require the public open helper. Unknown, Unsupported, Stale and
 historical diagnostics keep their original meanings. Export is not a State Card.
 
 Source licenses: historical MIT implementation plus SPDX-marked Apache-2.0 work;
@@ -102,7 +110,8 @@ Permission removal conservatively clears all active connection/source contexts.
 Cross-origin navigation always requires a new attach, including between approved
 sites. Source pairing is a separate, exact app-origin association with a confined
 workspace subtree. Read-only HTTP source navigation does not grant mutation rights;
-HTTPS source navigation remains denied pending a trusted production association.
+HTTPS IDE context transfer remains denied. Permitted local source-map exploration
+is separate and grants no production changes.
 The helper URL policy is canonical `http://127.0.0.1:<1..65535>` with an explicit
 port, no slash, path, query, fragment, credentials, aliases, HTTPS or LAN host.
 Default `47731` is a convenience; the helper keeps binding only `127.0.0.1`.

@@ -58,7 +58,7 @@ async function load(options={}){
  selectedState={...state,tabId:id};analysis=state.analysis;inputUI.update(inspectionDisplayState(selectedState));renderInspection();
 }
 const sourceMapUI=createSourceMapUI({document,$,rpc,tab,load,action,requestPermission:options.requestOriginPermission});
-const actionsUI=createActionUI({document,$,rpc,cleanupRpc:m=>client.request(m),tab,action});
+const actionsUI=createActionUI({document,$,rpc,cleanupRpc:m=>client.request(m),tab,action,nativeSource:sourceMapUI});
 const inputUI=createInputUI({document,$,client,preview:options.inputEditorPreview===true});
 const explanationUI=createInspectionExplanationUI({document,$,onNext:id=>{if(id==='connect-project')reveal('source-connection');else if(id==='inspect-again')$('load').click();}});
 const productionUI=createProductionUI({$,client,onRefresh:load,onAttach:async()=>{await rpc({op:'attach',tabId:tab(),readOnly:true});await load();},onConnection:()=>reveal('browser-connection')});

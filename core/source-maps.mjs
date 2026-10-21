@@ -41,10 +41,15 @@ export async function associateSourceMap(script,bundle){
  if(script.endLine!==undefined&&parsed.lines.some((line,i)=>line.some(seg=>i>script.endLine-script.startLine||i===script.endLine-script.startLine&&seg[0]>script.endColumn))){status='Mismatch';reason='Mapping exceeds the loaded script range';}
  return {status,reason,mapDigest,parsed,manifestDigest:bundle.manifestDigest||null,verificationMethod:status==='Exact artifact match'?'release-manifest-digests-and-loaded-utf8-script':'unverified-artifact-association',releaseId:bundle.releaseId?String(bundle.releaseId).slice(0,128):null};
 }
+export function sourceExcerpt(content,line,column){
+ if(typeof content!=='string'||!Number.isSafeInteger(line)||line<1||!Number.isSafeInteger(column)||column<0)return null;
+ let start=0;for(let n=1;n<line;n++){const next=content.indexOf('\n',start);if(next<0)return null;start=next+1;}
+ const next=content.indexOf('\n',start),end=next<0?content.length:next;if(column>end-start)return null;
+ return content.slice(start,end).slice(Math.max(0,column-160),column+480);
+}
 export function lookupSource(parsed,line,column){
  if(!Number.isSafeInteger(line)||line<1||line>MAP_LIMITS.lines||!Number.isSafeInteger(column)||column<0||column>MAP_LIMITS.bytes)throw Error('Invalid generated position');
  const p=originalPositionFor(parsed.trace,{line,column});if(p.source===null)return {status:'Unavailable',reason:'No mapped segment at this generated position',link:'not linked to element'};
- const index=traceSegment(parsed.trace,line-1,column)[1],content=parsed.sourcesContent[index];let excerpt=null;
- if(typeof content==='string'){let start=0;for(let n=1;n<p.line;n++){const next=content.indexOf('\n',start);if(next<0){start=-1;break;}start=next+1;}if(start>=0){const end=content.indexOf('\n',start);excerpt=content.slice(start,end<0?undefined:end).slice(Math.max(0,p.column-160),p.column+480);}}
- return {status:'Candidate',source:parsed.sources[index]??p.source,line:p.line,column:p.column,name:p.name,excerpt,link:'not linked to element',operands:'not observed'};
+ const index=traceSegment(parsed.trace,line-1,column)[1],content=parsed.sourcesContent[index];
+ return {status:'Candidate',sourceIndex:index,source:parsed.sources[index]??p.source,line:p.line,column:p.column,name:p.name,excerpt:sourceExcerpt(content,p.line,p.column),link:'not linked to element',operands:'not observed'};
 }

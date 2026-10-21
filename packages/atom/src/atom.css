@@ -94,6 +94,7 @@
 [data-sp-ui][data-atom-root] .sp-atom-action-card code { min-width:0; overflow-wrap:anywhere; font-size:11px; }
 [data-sp-ui][data-atom-root] .sp-atom-action-card pre { margin:8px 0; color:var(--sp-color-muted); }
 [data-sp-ui][data-atom-root] .sp-atom-action-card button { max-width:100%; overflow-wrap:anywhere; font-size:11px; }
+[data-sp-ui][data-atom-root] .sp-atom-action-card .sp-atom-native-source { font-size:12px; }
 
 [data-sp-ui][data-atom-root] [data-atom-id^="action-"][hidden] { display:none !important; }
 /* Atom composition using the supplied shared controls; no shared token changes. */
