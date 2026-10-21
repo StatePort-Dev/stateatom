@@ -7,3 +7,9 @@ test('Cancel retains an action acknowledged before the next UI poll',async()=>{c
 test('late source verification cannot open a previous observation in a new tab',async()=>{let respond,entered;const pending=new Promise(r=>respond=r),ready=new Promise(r=>entered=r),calls=[];const f=fixture(async m=>{calls.push(m);if(m.op==='actions-arm')return{status:'complete',traceId:'trace',records,sourceCurrent:true};if(m.op==='actions-read'){entered();return pending;}return{status:'cancelled',traceId:'trace',records};});await f.$('action-observe').onclick();const button=f.$('action-observe-records').children[0].children[0],opening=button.onclick();await ready;f.change();respond({sourceCurrent:true});await assert.rejects(opening,/changed/);assert(!calls.some(m=>m.op==='open'));await f.view.dispose();});
 
 test('context change retains previous body records explicitly stale without source navigation',async()=>{const f=fixture(async m=>({status:m.op==='actions-arm'?'complete':'cancelled',traceId:'trace',records,sourceCurrent:true}));await f.$('action-observe').onclick();f.change();assert.match(f.$('action-observe-status').textContent,/stale/);assert.match(f.$('action-observe-records').children[0].textContent,/save/);assert.equal(f.$('action-observe-records').children[0].children.length,0);await f.view.dispose();});
+
+for(const code of ['STALE_TARGET','BUSY'])test('Clear removes only this view’s stale rows when the runtime reports '+code,async()=>{
+ const f=fixture(async m=>{if(m.op==='actions-clear')throw Object.assign(Error('Another context owns the current trace'),{code});return{status:m.op==='actions-arm'?'complete':'cancelled',traceId:'trace',records,sourceCurrent:true};});
+ await f.$('action-observe').onclick();f.change();await f.$('action-observe-clear').onclick();
+ assert.match(f.$('action-observe-status').textContent,/cleared.*this view/);assert.equal(f.$('action-observe-records').children.length,0);await f.view.dispose();
+});

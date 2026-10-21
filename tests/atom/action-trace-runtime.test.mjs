@@ -91,3 +91,43 @@ test('Cancel acknowledges captured body history without waiting for an IDE sourc
  assert.equal(first,'cancelled','local cleanup must not depend on an IDE response');
  const result=await cancelling;assert.equal(result.status,'cancelled');assert.equal(result.records[1].source.symbol,'confirm');assert.equal(result.sourceCurrent,false);
 });
+
+test('a late pre-Cancel read cannot republish acknowledged cancellation as complete or source-current',async t=>{
+ const entered=deferred(),verified=deferred();t.after(()=>verified.resolve());
+ const f=await fixture(t,{sourceGate:async()=>{entered.resolve();await verified.promise;}});
+ const a=await f.request({op:'actions-arm'});f.action();
+ const reading=f.request({op:'actions-read',traceId:a.traceId});await entered.promise;
+ const cancelled=await f.request({op:'actions-cancel',traceId:a.traceId});assert.equal(cancelled.status,'cancelled');
+ verified.resolve();await reading.catch(e=>assert.equal(e.code,'STALE_TARGET'));
+ const stored=(await f.state()).actionTrace;assert.equal(stored.status,'cancelled');assert.equal(stored.sourceCurrent,false);
+});
+
+test('the owning view can clear retired stale history without another native operation',async t=>{
+ const f=await fixture(t);const a=await f.request({op:'actions-arm'});f.action();await f.request({op:'actions-read',traceId:a.traceId});
+ await f.request({op:'inspect-selector',selector:'#confirm'});
+ const nativeBefore=f.calls.length,result=await f.request({op:'actions-clear',traceId:a.traceId});
+ assert.equal(result.status,'cleared');assert.equal(result.traceId,null);assert.equal(result.records.length,0);
+ assert.equal(f.calls.length,nativeBefore,'historical metadata cleanup must not enter a native context');
+ const stored=(await f.state()).actionTrace;assert.equal(stored.status,'cleared');assert.equal(stored.records.length,0);
+});
+
+test('clearing old history cannot clear another view’s newer active observation',async t=>{
+ const f=await fixture(t);const a=await f.request({op:'actions-arm'});await f.request({op:'inspect-selector',selector:'#confirm'});
+ const b=await f.request({op:'actions-arm',ownerId:'view-b'});
+ await assert.rejects(f.request({op:'actions-clear',traceId:a.traceId}),{code:'BUSY'});
+ const current=await f.request({op:'actions-read',ownerId:'view-b',traceId:b.traceId});assert.equal(current.status,'armed');assert.equal(current.traceId,b.traceId);
+});
+
+test('only the matching view can clear the last retired trace even when its nonce is known',async t=>{
+ const f=await fixture(t);const b=await f.request({op:'actions-arm',ownerId:'view-b'});f.action();await f.request({op:'actions-read',ownerId:'view-b',traceId:b.traceId});
+ await f.request({op:'inspect-selector',selector:'#confirm'});
+ await assert.rejects(f.request({op:'actions-clear',traceId:b.traceId}),{code:'STALE_TARGET'});
+ assert.equal((await f.state()).actionTrace.records[1].source.symbol,'confirm');
+ assert.equal((await f.request({op:'actions-clear',ownerId:'view-b',traceId:b.traceId})).status,'cleared');
+});
+
+test('a different nonce cannot clear or consume the authority for matching retired history',async t=>{
+ const f=await fixture(t);const a=await f.request({op:'actions-arm'});await f.request({op:'inspect-selector',selector:'#confirm'});
+ await assert.rejects(f.request({op:'actions-clear',traceId:'not-the-owned-trace'}),{code:'STALE_TARGET'});
+ assert.equal((await f.request({op:'actions-clear',traceId:a.traceId})).status,'cleared');
+});

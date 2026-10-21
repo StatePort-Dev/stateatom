@@ -122,16 +122,27 @@ function inputsSnapshot(id){return editors.get(id)?.snapshot()||tabs[id]?.inputH
 function stopInputs(id,reason){return editors.get(id)?.close(reason)||Promise.resolve(null);}
 function sameActionOwner(owner,context){return owner.session===context.session&&owner.client===context.inspector&&owner.ownerId===context.ownerId;}
 function stopActionTrace(id,reason,expected){const own=expected||actionOwners.get(id);if(!own)return Promise.resolve();if(actionOwners.get(id)===own){actionOwners.delete(id);const s=tabs[id];if(s?.actionTrace?.traceId===own.controller.snapshot()?.traceId){s.actionTrace={...s.actionTrace,freshness:'Stale',sourceCurrent:false,status:'stale',reason};for(const n of s.analysis?.graph?.nodes||[])if(String(n.id).startsWith('action-trace:'))n.status='Stale';for(const e of s.analysis?.graph?.edges||[])if(String(e.id).startsWith('action-trace:'))e.status='Stale';}}return own.controller.close(reason).catch(()=>{});}
+async function clearRetiredActionTrace(id,traceId,context){
+ const owner=actionEpochs.get(id),snapshot=owner?.controller.snapshot();
+ if(actionOwners.has(id)||!owner||!sameActionOwner(owner,context)||snapshot?.traceId!==traceId)throw atomError('STALE_TARGET','Observation replaced or closed');
+ // The native collector was already retired. Clear only this actor's known
+ // historical metadata, never resolve a node or enter a replacement document.
+ const result={...snapshot,status:'cleared',traceId:null,selectedId:null,records:[],sourceCurrent:false,freshness:'Stale',reason:'Observation cleared'};
+ actionEpochs.delete(id);const s=tabs[id];
+ if(s?.actionTrace?.traceId===traceId){s.actionTrace={...result,capturedAt:Date.now()};const prefix='action-trace:'+traceId+':';if(s.analysis?.graph){s.analysis.graph.nodes=s.analysis.graph.nodes.filter(n=>!String(n.id).startsWith(prefix));s.analysis.graph.edges=s.analysis.graph.edges.filter(e=>!String(e.id).startsWith(prefix));}}
+ await persist();return result;
+}
 async function actionTraceOperation(id,m,context){
  assertInputClient(context);if(!context.inspector?.active||!context.ownerId)throw atomError('INSPECTOR_DISCONNECTED');
  const previous=actionOwners.get(id);if(previous&&!sameActionOwner(previous,context))throw atomError('BUSY','Observation belongs to another inspector');
+ if(m.op==='actions-clear'&&!previous)return clearRetiredActionTrace(id,m.traceId,context);
  if(m.op!=='actions-arm'){
   if(!previous||previous.controller.snapshot()?.traceId!==m.traceId)throw atomError('STALE_TARGET','Observation replaced or closed');
   const method=m.op.slice('actions-'.length);let result;
-  try{result=await previous.controller[method]();}catch(e){if(method==='cancel'||method==='clear'){await stopActionTrace(id,'Stale observation retired',previous);result=previous.controller.snapshot();if(method==='clear')result={...result,status:'cleared',records:[],traceId:null};await persist();return result;}throw e;}
-  await previous.guard();
-  if(method==='read'&&result.records?.some(r=>r.kind==='body-entry')&&pairing){const sources=[...new Map(result.records.filter(r=>r.kind==='body-entry').map(r=>[r.source.file,{file:r.source.file,sourceDigest:r.source.sourceDigest}])).values()];let sourceCurrent=false;try{sourceCurrent=(await bridge('check-action-sources',{origin:state(id).origin,sources},context.signal)).current===true;}catch{}await previous.guard();result={...result,sourceCurrent};state(id).actionTrace={...result,capturedAt:Date.now()};}
-  if(method==='clear'&&actionOwners.get(id)===previous)actionOwners.delete(id);await persist();return result;
+  try{result=await previous.controller[method]();}catch(e){if(method==='cancel'||method==='clear'){await stopActionTrace(id,'Stale observation retired',previous);if(method==='clear')return clearRetiredActionTrace(id,m.traceId,context);result=previous.controller.snapshot();await persist();return result;}throw e;}
+  const observed=result,guardResult=async()=>{await previous.guard();if(method==='read'&&previous.controller.snapshot()!==observed)throw atomError('STALE_TARGET','Observation changed while checking source');};await guardResult();
+  if(method==='read'&&result.records?.some(r=>r.kind==='body-entry')&&pairing){const sources=[...new Map(result.records.filter(r=>r.kind==='body-entry').map(r=>[r.source.file,{file:r.source.file,sourceDigest:r.source.sourceDigest}])).values()];let sourceCurrent=false;try{sourceCurrent=(await bridge('check-action-sources',{origin:state(id).origin,sources},context.signal)).current===true;}catch{}await guardResult();result={...result,sourceCurrent};state(id).actionTrace={...result,capturedAt:Date.now()};}
+  if(method==='clear'&&actionOwners.get(id)===previous){actionOwners.delete(id);if(actionEpochs.get(id)===previous)actionEpochs.delete(id);}await persist();return result;
  }
  if(previous)await stopActionTrace(id,'New observation');
  const s=state(id),selected=s.selection,run=s.run,inspection=s.inspectionGeneration,sourceGeneration=s.sourceGeneration||0,sourceConnection=pairing;

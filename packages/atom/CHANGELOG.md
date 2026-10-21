@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.16
+
+- Let the matching live view clear its own retired Action Trace metadata without
+  entering a new native context. Other actors and wrong nonces cannot clear it.
+- Clear this view’s stale rows locally when a different context now owns the trace;
+  explain that local scope and preserve the other observer. Existing card/native
+  controls and13px base are unchanged; no CSS/token contract change. This functional
+  cleanup state extends the same simulated Actions reference, not a redesign.
+
+## 0.1.0-candidate.20261021.15
+
+- Refuse an older Action Trace read after a newer read or Cancel changed the same
+  owner’s observation while IDE source verification was pending. Late replies
+  preserve acknowledged cancellation and do not republish it as current/complete.
+  Existing UI primitives, evidence kinds and saved report formats are unchanged.
+
 ## 0.1.0-candidate.20261021.14
 
 - Refuse late Action Trace acknowledgements after the exact native MAIN execution

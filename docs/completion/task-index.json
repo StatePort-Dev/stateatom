@@ -1970,9 +1970,9 @@
       "deliverable": "Actual bounded user-action invocation and separately supported consequences through the UI",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "A05.3b preregistered native session/lifecycle matrix; runtime race step verified",
+      "active_slice": "A05.3b native session14-case/two-host matrix verified; bounded plan review",
       "implementation_plan": "../superpowers/plans/2026-10-21-a05-runtime-races.md",
-      "execution_record": "43-a05-runtime-races.md",
+      "execution_record": "44-a05-native-session-lifecycle.md",
       "completed_slices": [
         {
           "id": "A05.1",
@@ -2045,7 +2045,7 @@
         }
       ],
       "remaining_acceptance": [
-        "Remaining native context/lifecycle/Basic/disabled/throw/keyboard matrix; runtime race9 and5 isolated sensitivity controls now verified",
+        "ONE bounded runtime-races/session-plan review before closing that increment",
         "Saved report integration: current session trace explicitly excluded",
         "Original A05 full matrix, explicit production/performance/async boundaries and ONE whole-item review"
       ],
@@ -2062,30 +2062,32 @@
         "40-a05-plugin-observer.md",
         "41-a05-session-runtime-ui.md",
         "42-a05-read-inject-native-boundary.md",
-        "43-a05-runtime-races.md"
+        "43-a05-runtime-races.md",
+        "44-a05-native-session-lifecycle.md"
       ],
       "current_checkpoint": {
         "id": "A05.3b",
-        "status": "in-progress-implemented-session-checkpoint",
-        "record": "43-a05-runtime-races.md",
-        "candidate": "@stateport/atom@0.1.0-candidate.20261021.14",
-        "source_checks": 1698,
+        "status": "implemented-verified-pending-bounded-plan-review",
+        "record": "44-a05-native-session-lifecycle.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.16",
+        "source_checks": 1705,
         "focused_checks": 28,
         "full_A05_acceptance": false,
         "report_integrated": false,
         "production_supported": false,
         "whole_A05_review_performed": false,
         "bounded_review": "four Important source findings fixed and source-rechecked; runtime/native race regressions remain",
-        "next_item": "A05.3b remaining native session/lifecycle matrix",
-        "verification": ".artifacts/a05/runtime-races/verification14.json",
+        "next_item": "A05 runtime-races/session bounded-plan review, then A05.3c saved reports",
+        "verification": ".artifacts/a05/runtime-races/verification16.json",
         "package_admission_checks": 7,
         "type_consumers": 2,
         "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
         "standalone_read_inject_native_checks": 3,
-        "boundary": "Exact native context destruction/reuse retires owner; Cancel independent of IDE. Actual runtime synthetic boundaries9 plus5 isolated bug variants; exact packed native17/read-inject3. Not whole A05; reports/production/performance remain open.",
-        "runtime_race_checks": 9,
-        "isolated_bug_mutations_rejected": 5,
-        "native_checks": 17
+        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+        "runtime_race_checks": 14,
+        "isolated_bug_mutations_rejected": 6,
+        "native_checks": 29,
+        "mounted_UI_checks": 5
       }
     },
     {
@@ -2614,28 +2616,29 @@
     "date": "2026-10-19",
     "current_increment": {
       "id": "A05.3b",
-      "status": "in-progress-implemented-session-checkpoint",
-      "record": "43-a05-runtime-races.md",
-      "candidate": "@stateport/atom@0.1.0-candidate.20261021.14",
-      "source_checks": 1698,
+      "status": "implemented-verified-pending-bounded-plan-review",
+      "record": "44-a05-native-session-lifecycle.md",
+      "candidate": "@stateport/atom@0.1.0-candidate.20261021.16",
+      "source_checks": 1705,
       "focused_checks": 28,
       "full_A05_acceptance": false,
       "report_integrated": false,
       "production_supported": false,
       "whole_A05_review_performed": false,
       "bounded_review": "four Important source findings fixed and source-rechecked; runtime/native race regressions remain",
-      "next_item": "A05.3b remaining native session/lifecycle matrix",
-      "verification": ".artifacts/a05/runtime-races/verification14.json",
+      "next_item": "A05 runtime-races/session bounded-plan review, then A05.3c saved reports",
+      "verification": ".artifacts/a05/runtime-races/verification16.json",
       "package_admission_checks": 7,
       "type_consumers": 2,
       "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
       "standalone_read_inject_native_checks": 3,
-      "boundary": "Exact native context destruction/reuse retires owner; Cancel independent of IDE. Actual runtime synthetic boundaries9 plus5 isolated bug variants; exact packed native17/read-inject3. Not whole A05; reports/production/performance remain open.",
-      "runtime_race_checks": 9,
-      "isolated_bug_mutations_rejected": 5,
-      "native_checks": 17
+      "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+      "runtime_race_checks": 14,
+      "isolated_bug_mutations_rejected": 6,
+      "native_checks": 29,
+      "mounted_UI_checks": 5
     },
-    "next_item": "A05.3b remaining native session/lifecycle matrix",
+    "next_item": "A05 runtime-races/session bounded-plan review, then A05.3c saved reports",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -3307,7 +3310,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A05 runtime race step:9 real runtime/platform/wire protocol cases and5 isolated historical bug mutations verified. New native context reuse/owner retention and Cancel waiting on IDE RED→GREEN, exact .14 native17/read-inject3/types/admission7 and source1698. Scope remains A05.3b in progress; next preregistered native lifecycle/Basic/disabled/throw/keyboard matrix, then reports/full original A05 gates. Old receipts unchanged.",
+    "current_activity_note": "A05.3b current .16 passes source1705, runtime14/UI5, six isolated bug variants, exact native29 across14 preregistered cases per standalone/embedding, read-inject3/types/admission7; native/source/visual failures preserved. Actual native late IDE overwrote Cancel and Clear failed on retired history, both fixed; foreign observer preserved. Bounded plan review next, then reports/original full A05 gates; no whole-A05 acceptance.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "A05"

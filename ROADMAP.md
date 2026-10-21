@@ -732,3 +732,14 @@ Cancel waiting on IDE bugs reproduced and fixed. Final .14 source1698, exact pac
 two-host native17/read-inject3/types/admission7 PASS;43-a05-runtime-races.md records
 source/native distinctions and failures. No whole-A05 acceptance, report integration
 or production/full async claim. Next bounded step: native session/lifecycle matrix.
+
+
+### 2026-10-21 — A05 native session/lifecycle checkpoint
+
+Current .16 source1705, runtime14/UI5, six isolated bug variants and exact native29
+(14 preregistered cases in each host) PASS; read/inject3/types/admission7 PASS. Real
+late IDE reply after Cancel and retired-Clear bugs reproduced and fixed. Source
+change uses actual full reload, not pure Vue hot replacement. Native two-view
+local-clear/narrow/keyboard controls and candidate screenshots retained. See44-a05-
+native-session-lifecycle.md. ONE bounded plan review next; whole A05, saved reports,
+production/performance/async boundaries and broader gates remain open.
