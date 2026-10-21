@@ -1052,3 +1052,14 @@ Ordinary19 final producer/parameter/store/HTTP ancestry, fresh installed artifac
 human visuals and release are not established by this closure. Next unfinished
 item by dependencies:A02, one preregistered real query/state usage. Mandatory
 A05/L02 and P04/C07 remain open; SDK stays outside Atom.
+
+
+A02.1 registered the real independent React19 useReducer title-replacement pattern
+and reached the brief's explicit stopping point: original queue/reducer/result/
+state revision, field ownership, prop-transfer and selected commit identities are
+missing. Current query29/calls16/state14/write-access19 controls pass their pinned
+synthetic scope;65 current input hashes and14 retained native observations/two
+partial exports confirm the actual gap. A02 remains unresolved; no complete lineage
+is claimed. One finite React19 reducer observation experiment is specified but not
+implemented. Next independently ready item:A03. P04/C07 remain gated by A02;
+mandatory A05/L02 and release stay open. See30-a02-reducer-lineage-boundary.md.

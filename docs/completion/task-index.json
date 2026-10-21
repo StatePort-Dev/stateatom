@@ -1659,8 +1659,48 @@
         "npm run verify:first-read-ui"
       ],
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
-      "status": "planned",
-      "optional": false
+      "status": "in-progress",
+      "optional": false,
+      "implementation_plan": "../superpowers/plans/2026-10-21-a02-reducer-boundary.md",
+      "execution_record": "30-a02-reducer-lineage-boundary.md",
+      "active_slice": null,
+      "completed_slices": [
+        {
+          "id": "A02.1",
+          "status": "bounded-investigation-complete-full-lineage-unresolved",
+          "verification": ".artifacts/a02/reducer-boundary/verification.json",
+          "record": "30-a02-reducer-lineage-boundary.md",
+          "product_code_changed": false,
+          "full_A02_acceptance": false,
+          "current_controls": {
+            "query_handoffs": 29,
+            "query_calls": 16,
+            "react_state": 14,
+            "write_access": 19
+          },
+          "retained_native_scope": {
+            "candidate": "0.1.0-candidate.20261020.37",
+            "hosts": 2,
+            "selected_source_read_observations": 14,
+            "actual_v1_partial_exports": 2,
+            "current_input_hashes": 65
+          },
+          "evidence_scope": "Original independent React19 useReducer same/different title and equal-instance partial path; exact missing queue/reducer/state revision, ownership/prop-transfer/committed-producer inputs. Synthetic pinned18/Query controls remain separate; no complete ordinary lineage claim."
+        }
+      ],
+      "remaining_acceptance": [
+        "Original React19 useReducer queue/dispatch/applied reducer input/result and state revision identity",
+        "Bounded field ownership/effects excluding unobserved equal-value/escaped-alias writers",
+        "Exact state row to prop/parameter/destructure transfer and selected committed host producer",
+        "Original full-lineage positive/counterexample cycle, including relevant query/refetch/cache rows where supported"
+      ],
+      "stopping_point": {
+        "invoked": true,
+        "reason": "Chosen real useReducer19 usage needs unimplemented native identity and ownership/transfer mechanisms; A02 complete-lineage gate stays open. Do not build a general proof framework in this product cycle.",
+        "finite_next_experiment": "Isolated version-specific original React19 useReducer two-row queue/update/result to committed consumer, same-value/wrong-row/rebased-or-aborted/off-on controls. Even success leaves field ownership and prop transfer unknown.",
+        "experiment_implemented": false,
+        "independent_ready_next_item": "A03"
+      }
     },
     {
       "id": "A03",
@@ -2268,18 +2308,15 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "A01.6",
-      "status": "complete",
-      "candidate": "0.1.0-candidate.20261021.1",
-      "verification": ".artifacts/a01/review-fixes/verification1.json",
-      "record": "29-a01-whole-review.md",
-      "product_code_changed": true,
-      "observer_compiler_runtime_changed": false,
-      "full_A01_acceptance": true,
-      "whole_review_count": 1,
-      "next_item": "A02"
+      "id": "A02.1",
+      "status": "bounded-investigation-complete-full-A02-unresolved",
+      "verification": ".artifacts/a02/reducer-boundary/verification.json",
+      "record": "30-a02-reducer-lineage-boundary.md",
+      "product_code_changed": false,
+      "full_A02_acceptance": false,
+      "next_item": "A03"
     },
-    "next_item": "A02",
+    "next_item": "A03",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -2819,11 +2856,23 @@
         "observer_compiler_runtime_changed": false,
         "full_A01_acceptance": false,
         "next_item": "A01 whole review"
+      },
+      {
+        "id": "A01.6",
+        "status": "complete",
+        "candidate": "0.1.0-candidate.20261021.1",
+        "verification": ".artifacts/a01/review-fixes/verification1.json",
+        "record": "29-a01-whole-review.md",
+        "product_code_changed": true,
+        "observer_compiler_runtime_changed": false,
+        "full_A01_acceptance": true,
+        "whole_review_count": 1,
+        "next_item": "A02"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A01 complete within original ordinary source/read/profile scope: ONE whole-item review, no Critical/Important findings, two Minor findings fixed/tested. Accepted .37 matrix remains unchanged and explicitly separate from .20261021.1 guidance/admission delta. Current source1621/focused65/types2/admission7/native16/four trusted guidance Enter activations and exact contributor CLI recipe setup pass. Final verification1 binds actual evidence; failures/PARTIAL/historical scopes retained. Next A02 preregisters a real independent query/state usage and exact missing ownership/producer edges. P04/C07/mandatory A05/L02/release remain open; SDK outside Atom.",
+    "current_activity_note": "A01 completed and locally committed704b632 after one whole review/tested Minor fixes. A02.1 registers real independent useReducer19 title replacement and confirms concrete native identity/ownership/prop-transfer/selected-commit gaps using65 unchanged inputs/14 retained native observations/two partial exports. Current synthetic query29/calls16/state14/write-access19 pass only their own scope. A02 remains unresolved; its explicit stopping point names one finite unimplemented React19 reducer experiment. Next independently dependency-ready item A03. P04/C07 remain gated by A02; mandatory A05/L02/release open; SDK outside Atom.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
-  "next_task": "A02"
+  "next_task": "A03"
 }
