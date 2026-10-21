@@ -1532,3 +1532,13 @@ keeps update origin Unknown. Original getter/call/error controls agree. Explicit
 synthetic consumer oracle does not establish ordinary prop transfer/field ownership;
 product19/whole A02 remain incomplete. Next ready P01.1 native action anchor/source
 provider. Mandatory L02 still unresolved;15/29 full tasks complete.
+
+### 2026-10-21 — bounded native source-anchor contracts
+
+[P01.1](completion/69-p01-native-anchor-source-contract.md):typed native metadata
+uses ACTUAL listener backend, not the requested node; missing/other target stays
+Unknown/no selected graph.17new/60focused/1919full PASS; pure browser build, exact
+.31/UI .2 types2/admission7 PASS. .30 immutable/superseded before acceptance. New
+anchor/provider modules are source-only, not archive exports/UI feature. Next P01.2
+actual current native source view through existing read-only map session/UI and
+packed minified controls; P01 open,15/29 full tasks complete.

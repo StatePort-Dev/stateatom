@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.31
+
+- Use the actual CDP EventListener backendNodeId for native registration identity.
+  Missing or different backend targets remain unsupported candidates and cannot
+  become selected-node registrations/anchors. No callback or getter is invoked.
+- Supersede the unaccepted .30 preparation after the target-identity counterexample;
+  preserve its immutable package/history. Anchor/provider UI integration remains
+  pending. No visual or production-permission policy change.
+
+## 0.1.0-candidate.20261021.30
+
+- Retain explicit coordinate bases and already acquired selected backend DOM
+  identities in native listener metadata. Registrations remain not-observed for
+  execution; delegated roots and callback identity stay separate boundaries.
+- Prepare internal generated-anchor and read-only source-file contracts in source;
+  these unused modules are not a new archive export or selected-element source UI.
+  Existing manual map lookup remains unlinked. No visual or permission-policy change.
+
 ## 0.1.0-candidate.20261021.29
 
 - Register internal construction provenance for immutable inspection facts without
