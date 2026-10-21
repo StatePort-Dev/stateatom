@@ -7,6 +7,7 @@ export function localDerivedSchemaProbe(){
 }
 export function forwardDerivedSchemaProbe(schema,variant){
  if(!['full','without-unique-items'].includes(variant))throw Error('Unknown schema probe variant');
+ if(schema?.properties?.factTokens?.uniqueItems!==true)throw Error('Historical probe requires its original full uniqueItems schema');
  const forwarded=JSON.parse(JSON.stringify(schema));
  if(variant==='without-unique-items')delete forwarded.properties.factTokens.uniqueItems;
  return forwarded;

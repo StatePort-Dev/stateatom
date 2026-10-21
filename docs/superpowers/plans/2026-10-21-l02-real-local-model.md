@@ -129,3 +129,11 @@ structure-valid but speculative/unverified.2resolved/2destroy returns; no qualit
 full-corpus acceptance. First offscreen-toggle pre-model harness failure retained,
 scroll corrected. Next L02.8c evidenced generation-keyword fix with client uniqueness
 unchanged, then registered actual30+4 comparison. No product provider switch.
+
+L02.8c bounded correction/partial failure record complete; see completion/66.
+Generation uniqueItems omitted;strict client byte-unchanged,44focused/1896full PASS.
+Actual25returns/25structure accepted but9clear failures/7ambiguous/9scoped passes,
+1limited useful addition.28main visited;120s timeout stops before2main+4supplement.
+26resolved/26destroy returns;old histories unchanged, full quality/product still open.
+Next L02.9 bounded fixed-system/low-variance candidate and targeted failed/unknown
+controls, no blind full30 repeat or product switch. Full Task1 comparison INCOMPLETE.

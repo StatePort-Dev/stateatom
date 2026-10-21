@@ -53,7 +53,9 @@ export function buildDerivedAnnotationPrompt(projection){
 
 export function derivedAnnotationResponseConstraint(projection){
  const {input}=admitted(projection),tokens=input.facts.map(f=>f.id);
- return freeze({type:'object',additionalProperties:false,required:['schema','text','factTokens'],properties:{schema:{type:'string',const:OUTPUT},text:{type:'string',minLength:1},factTokens:{type:'array',minItems:1,maxItems:tokens.length,uniqueItems:true,items:{type:'string',enum:tokens}}}});
+ // Chrome155 rejected uniqueItems in the isolated actual API control (completion/65).
+ // The strict client uniqueness gate below remains authoritative; no output repair.
+ return freeze({type:'object',additionalProperties:false,required:['schema','text','factTokens'],properties:{schema:{type:'string',const:OUTPUT},text:{type:'string',minLength:1},factTokens:{type:'array',minItems:1,maxItems:tokens.length,items:{type:'string',enum:tokens}}}});
 }
 
 export function isCurrentDerivedProjection(projection,currentFacts){

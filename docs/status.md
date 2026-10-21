@@ -1503,3 +1503,13 @@ Client structure accepts, factual entailment remains unverified; speculative han
 wording is not accepted.2resolved/2destroy returns, strict client/provider unchanged.
 Next remove evidenced generation keyword then registered original30+separate4
 comparison. No product provider switch; L02 open,15/29 original items complete.
+
+### 2026-10-21 — corrected grammar, real prose fails quality
+
+[L02.8c](completion/66-l02-compatible-partial-quality.md):generation uniqueItems
+omitted, strict client byte-unchanged;44focused/1896full PASS. Actual25returned
+annotations all structure-valid, but9clear factual failures and7ambiguous boundaries;
+9scoped passes/1limited useful addition do not pass quality. Main28visited,2main+4
+supplement unvisited after actual120s timeout;26resolved/26destroy returns. No UI
+exposure, whole L02 open;15/29 complete. Next bounded instruction/sampling candidate
+and targeted controls before another full comparison.
