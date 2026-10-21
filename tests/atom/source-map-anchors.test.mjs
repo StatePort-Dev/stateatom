@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 import test from 'node:test';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';
 import {createSourceMapSession} from '../../packages/atom/src/source-map-session.mjs';
-import {createNativeSourceAnchor} from '../../core/source-anchor.mjs';
+import {createNativeSourceAnchor,createReactHostSourceAnchor} from '../../core/source-anchor.mjs';
 import {lookupSource,parseSourceMap} from '../../core/source-maps.mjs';
-import {sourceAnchorFixture} from '../helpers/source-anchor-fixture.mjs';
+import {sourceAnchorFixture,reactAnchorFixture} from '../helpers/source-anchor-fixture.mjs';
 import {storedZip} from '../helpers/source-map-zip.mjs';
 const enc=new TextEncoder(),bytes=x=>enc.encode(typeof x==='string'?x:JSON.stringify(x)),sha=x=>createHash('sha256').update(x).digest('hex');
 async function fixture(t,{unverified=false,positions=false,duplicate=false,extra={}}={}){
@@ -20,3 +20,4 @@ test('cloned/current-context mismatch and source-map replacement cannot supply a
 test('changed native snapshot during hashing and cancellation return no late original-source text',async t=>{const a=await fixture(t),pending=a.s.lookupAnchor(7,a.anchor,a.input);a.input.binding.registration.snapshotId='changed';await assert.rejects(pending,/current|changed|Stale/i);const b=await fixture(t),c=new AbortController(),cancelled=b.s.lookupAnchor(7,b.anchor,b.input,{signal:c.signal});c.abort();await assert.rejects(cancelled,/cancel/i);});
 test('source lookup exposes the exact mapped source index without treating a map as a selected-element anchor',async()=>{const p=await parseSourceMap(bytes({version:3,sources:['same','same'],names:[],mappings:'ACAA',sourcesContent:['wrong','right']})),r=lookupSource(p,1,0);assert.equal(r.sourceIndex,1);assert.equal(r.link,'not linked to element');});
 test('declared original line/column outside provided source content is unavailable despite exact artifact bytes',async t=>{for(const extra of[{mappings:'AAEA'},{mappings:'AAAU',sourcesContent:['x']}]){const f=await fixture(t,{extra}),r=await f.s.lookupAnchor(7,f.anchor,f.input);assert.equal(r.match,'Exact artifact match');assert.equal(r.status,'Unavailable');assert.equal(r.excerpt,null);}});
+test('shared provider maps own-host callback without turning it into native registration or renderer attestation',async t=>{const f=await fixture(t),input=reactAnchorFixture();input.maps=f.s.snapshot(7);const anchor=createReactHostSourceAnchor(input),r=await f.s.lookupAnchor(7,anchor,input);assert.equal(r.status,'Code-linked');assert.equal(r.match,'Exact artifact match');assert.match(r.excerpt,/PRIVATE_HANDLER_SOURCE/);assert.match(r.link,/host callback/);assert(!r.link.includes('registered listener'));assert.equal(r.anchor.frameworkVersion,'not-attested');assert.equal(r.execution,'not-observed');assert.equal(r.callbackIdentity,'Unknown/Unsupported');});

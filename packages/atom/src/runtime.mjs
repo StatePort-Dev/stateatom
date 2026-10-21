@@ -5,7 +5,8 @@ import {appOrigin} from './origin-policy.mjs';
 import {createSourceMapSession} from './source-map-session.mjs';
 import {createNativePicker,createNativeDOMQueue} from '../../../browser-extension/picker.mjs';
 import {inspectNativeActions} from '../../../core/action-native.mjs';
-import {createNativeSourceAnchor,isCurrentGeneratedAnchor} from '../../../core/source-anchor.mjs';
+import {inspectReactHostActions} from '../../../core/action-react-host.mjs';
+import {createNativeSourceAnchor,createReactHostSourceAnchor,isCurrentGeneratedAnchor} from '../../../core/source-anchor.mjs';
 import {createActionTraceController,actionPageOperation,actionPageGlobal,resolveActionPageAPI} from './action-trace.mjs';
 import {declareOwnedCode,ownedInjectionSource,bindOwnedFetchCode} from '../../../core/owned-code.mjs';
 import {newCodeJournal,journalEvent,journalSource,journalReadySources,journalGap,journalSnapshot,journalView} from '../../../core/code-journal.mjs';
@@ -321,6 +322,7 @@ async function inspect(id,selector,context){await stopActionTrace(id,'Selection 
  if(sourceGeneration!==(s.sourceGeneration||0))throw Error('Source changed during action inspection; inspect again');
  analysis.actionContext={schema:1,tabId:id,frameId:s.mainFrameId||null,run,inspection:generation,sourceGeneration,document:selection.domIdentity.document,instance:selection.domIdentity.node,build:identity.build,observedAt:selection.observedAt};
  installNativeActions(analysis,native,identity,typeof selection.instance==='string');
+ const host=await readHostActions(id,s,selection,identity,()=>tabs[id]===s&&isCurrentInspection(s,generation,run),context?.signal);installHostActions(analysis,host,identity);
  if(tabs[id]!==s||!isCurrentInspection(s,generation,run))throw Error('Stale action result');
  if(context?.pickerCurrent&&!context.pickerCurrent())throw atomError('SELECTION_EXPIRED','Picker selection cancelled or replaced');
  analysis.codeJournal=journalSnapshot(s.codeJournal,{mainFrameId:s.mainFrameId,selectionGeneration:generation,observedAt:selection.observedAt});s.selection=selection;s.analysis=analysis;s.stale=null;s.analysisAt=Date.now();
@@ -342,6 +344,17 @@ function installNativeActions(analysis,native,identity,occurrenceRequired=false)
  for(const b of native)if(b.status==='Observed'){const evidenceId=b.id+':registration';analysis.graph.nodes.push({id:b.id,kind:'listener-registration',...b.registration});analysis.graph.edges.push({id:evidenceId,...edge('ui',b.id,'registered-on-'+b.registeredOn,'Observed','CDP DOMDebugger.getEventListeners',[evidenceId],identity)});}
  analysis.actionBindings=[...source,...native].slice(0,24).map(b=>({...b,identity:{...analysis.actionContext,sourceRevision:b.binding?.source?.sourceDigest||null}}));
 }
+async function readHostActions(id,s,selected,identity,current,signal){
+ const contexts=Object.values(s.codeJournal?.contexts||{}).filter(c=>c.isDefault===true&&c.frameId===s.mainFrameId&&Number.isSafeInteger(c.id)&&typeof c.uniqueId==='string');
+ if(contexts.length!==1||!selected?.domIdentity?.document?.startsWith('cdp:')||!selected.domIdentity.node?.startsWith('cdp:'))return[];
+ const c=contexts[0],guard=()=>s.attached&&current()&&s.codeJournal?.contexts?.[c.id]?.uniqueId===c.uniqueId;
+ return nativeDOM(id,()=>inspectReactHostActions((method,params)=>send(id,method,params),selected.selector,identity,{...selected.domIdentity,marker:selected.instance,frameId:s.mainFrameId,executionContextId:c.id},{signal,current:guard}));
+}
+function installHostActions(analysis,host,identity){
+ analysis.graph??={identity,nodes:[],edges:[]};analysis.graph.nodes=(analysis.graph.nodes||[]).filter(n=>!(n.kind==='host-callback-slot'&&/^react-host:/.test(n.id)));analysis.graph.edges=(analysis.graph.edges||[]).filter(e=>!/^react-host:/.test(e.id));
+ for(const b of host)if(b.status==='Observed'){const evidenceId=b.id+':host-slot';analysis.graph.nodes.push({id:b.id,kind:'host-callback-slot',property:b.property,...b.carrier,generated:b.generated});analysis.graph.edges.push({id:evidenceId,...edge('ui',b.id,'current-own-host-callback-slot','Observed','CDP own-data descriptors; renderer/version not attested',[evidenceId],identity)});}
+ const other=(analysis.actionBindings||[]).filter(b=>b.mechanism!=='react-host-props');analysis.actionBindings=[...host,...other].slice(0,24).map(b=>({...b,identity:{...analysis.actionContext,sourceRevision:b.binding?.source?.sourceDigest||null}}));
+}
 async function refreshActionSnapshot(id,s,signal){
  const analysis=s.analysis,selected=s.selection,generation=s.inspectionGeneration,run=s.run;
  const current=()=>tabs[id]===s&&s.analysis===analysis&&s.selection===selected&&s.inspectionGeneration===generation&&s.run===run;
@@ -358,22 +371,23 @@ async function refreshActionSnapshot(id,s,signal){
  if(!isSameSelection(selected.domIdentity,after)){stale('Selected DOM node or value changed; inspect again');return;}
  const expired=native.find(b=>b.freshness==='Stale');if(expired){stale(expired.entry.reason);return;}
  installNativeActions(analysis,native,identity,typeof selected.instance==='string');
+ const host=await readHostActions(id,s,selected,identity,current,signal);if(!current()||!s.attached)throw Error('Stale own-host metadata result');const changed=host.find(b=>b.freshness==='Stale');if(changed){stale(changed.reason);return;}installHostActions(analysis,host,identity);
 }
 async function readNativeSource(id,request,signal){
  const s=state(id),analysis=s.analysis,selected=s.selection,generation=s.inspectionGeneration,run=s.run,sourceGeneration=s.sourceGeneration||0;
  const current=()=>!signal.aborted&&tabs[id]===s&&s.attached&&!s.stale&&s.analysis===analysis&&s.selection===selected&&s.inspectionGeneration===generation&&s.run===run&&(s.sourceGeneration||0)===sourceGeneration&&s.inputEditedInspection!==generation&&!analysis?.actionsInvalidated;
  const check=()=>{if(!current())throw Error('Stale native source inspection; inspect again');};
- check();const old=analysis.actionBindings?.find(b=>b.id===request.bindingId),input={context:analysis.actionContext,binding:old,maps:sourceMaps.snapshot(id)},anchor=createNativeSourceAnchor(input);
+ check();const old=analysis.actionBindings?.find(b=>b.id===request.bindingId),react=old?.mechanism==='react-host-props',factory=react?createReactHostSourceAnchor:createNativeSourceAnchor,input={context:analysis.actionContext,binding:old,maps:sourceMaps.snapshot(id)},anchor=factory(input);
  if(anchor.status!=='Observed'||anchor.acquisition.snapshotId!==request.snapshotId||JSON.stringify(anchor.identity)!==request.contextKey)throw Error('Current native registration snapshot required');
  const identity=analysis.graph?.identity||analysis.actionContext;
- const native=await nativeDOM(id,()=>inspectNativeActions((method,params)=>send(id,method,params),selected.selector,identity,{...selected.domIdentity,marker:selected.instance}));
+ const native=react?await readHostActions(id,s,selected,identity,current,signal):await nativeDOM(id,()=>inspectNativeActions((method,params)=>send(id,method,params),selected.selector,identity,{...selected.domIdentity,marker:selected.instance}));
  check();if(!analysis.actionBindings.includes(old)||!isCurrentGeneratedAnchor(anchor,{context:analysis.actionContext,binding:old,maps:sourceMaps.snapshot(id)}))throw Error('Native source context changed');
  const expired=native.find(b=>b.freshness==='Stale');if(expired){recordStale(s,expired.entry.reason);beginInspection(s,{keepDiagnostic:true});await persist();throw Error('Stale native source occurrence; inspect again');}
- const tuple=b=>JSON.stringify([b.event,b.registration?.scriptId,b.registration?.line,b.registration?.column,b.registration?.registeredNode,b.capture===true,b.passive===true,b.once===true]);
- const matches=native.filter(b=>b.status==='Observed'&&b.registeredOn==='selected-element'&&tuple(b)===tuple(old));
- installNativeActions(analysis,native,identity,typeof selected.instance==='string');await persist();check();
- if(matches.length!==1)throw Error('Native listener registration changed or is ambiguous; refresh handlers');
- const binding=analysis.actionBindings.find(b=>b.id===matches[0].id),freshInput={context:analysis.actionContext,binding,maps:sourceMaps.snapshot(id)},fresh=createNativeSourceAnchor(freshInput);
+ const tuple=b=>react?JSON.stringify([b.property,b.generated,b.carrier?.hostNode,b.carrier?.frameId,b.carrier?.executionContextId]):JSON.stringify([b.event,b.registration?.scriptId,b.registration?.line,b.registration?.column,b.registration?.registeredNode,b.capture===true,b.passive===true,b.once===true]);
+ const matches=native.filter(b=>b.status==='Observed'&&(react?b.boundOn:b.registeredOn)==='selected-element'&&tuple(b)===tuple(old));
+ if(react)installHostActions(analysis,native,identity);else installNativeActions(analysis,native,identity,typeof selected.instance==='string');await persist();check();
+ if(matches.length!==1)throw Error(react?'Current host callback changed or is unavailable; refresh handlers':'Native listener registration changed or is ambiguous; refresh handlers');
+ const binding=analysis.actionBindings.find(b=>b.id===matches[0].id),freshInput={context:analysis.actionContext,binding,maps:sourceMaps.snapshot(id)},fresh=factory(freshInput);
  if(fresh.status!=='Observed')throw Error('Current native source anchor unavailable');
  const result=await sourceMaps.lookupAnchor(id,fresh,freshInput,{signal});check();
  if(!analysis.actionBindings.includes(binding)||!isCurrentGeneratedAnchor(fresh,{context:analysis.actionContext,binding,maps:sourceMaps.snapshot(id)}))throw Error('Native source registration changed during read');

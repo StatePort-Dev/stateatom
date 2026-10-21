@@ -70,9 +70,15 @@ choose Connect source map, import its map/release ZIP, then View registered list
 source. Coordinates come from fresh native registration metadata, not manual input.
 An exact artifact links the registered location only; invocation, callback identity
 and the selected property's producer remain unproved. Unverified maps stay Candidate;
-maps without source content provide positions only. Delegated/root listeners and
-framework application-handler anchors are unsupported in this increment. The
-read-only source operation never calls a handler/getter or the IDE. Other IDE source
+maps without source content provide positions only. A finite React-compatible
+profile additionally reads the selected host's own onClick/onClickCapture data slot
+and its native function location in the exact MAIN context. It uses the same
+Connect/View map workflow. This profile was developed against ReactDOM18.3.1;
+private host data does not independently attest the renderer/version. Getters,
+Proxies, ambiguous carriers, wrong host/frame and bound/native functions without
+locations remain unsupported. Root/delegated dispatchers and nearest components
+are not substituted for application callbacks. The read-only source operation
+never calls a handler/getter or the IDE. Other IDE source
 navigation and source-linked analysis require the public open helper. Unknown, Unsupported, Stale and
 historical diagnostics keep their original meanings. Export is not a State Card.
 

@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.35
+
+- Add scoped React-compatible own-host callback Connect/View cards through the
+  existing source map section, before native registration context. Reuse the
+  existing card budget, visual primitives and 12px source action. Renderer/version
+  remains unverified; callback identity, invocation and property producer stay
+  unknown. Metadata and original source are distinct from source declarations.
+- Use native MAIN-world own-data descriptors and actual Fiber host backend for
+  private current callback locations. Shared anchor/map/provider and read-only
+  operation admit only a stored selected snapshot; replaced, stale or unsupported
+  carriers refuse source. No getter/handler execution, IDE or new mutation grant.
+- Refresh only cached state after map import/acquisition/clear; source reads perform
+  their own native metadata revalidation without an extra application property probe.
+- Reveal the returned source block after an explicit view, rather than scrolling
+  only its location label while leaving the snippet below the footer.
+- Preserve manual unlinked lookup, native registration semantics and default
+  diagnostic/model source omissions. No shared token or contract redesign.
+
 ## 0.1.0-candidate.20261021.34
 
 - Document the no-IDE native registration source workflow and its evidence limits.

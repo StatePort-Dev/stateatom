@@ -19,13 +19,13 @@ export function createSourceMapUI({document,$,rpc,tab,load,action,requestPermiss
  let state=null,key='',disposed=false,generation=0,previewTimer,controller;
  const selected=()=>state?.sourceMaps?.scripts?.find(r=>r.scriptId===$('source-map-script').value);
  const clearPreview=()=>{controller?.abort();controller=null;clearTimeout(previewTimer);$('source-map-location').textContent='';$('source-map-preview').textContent='';};
- const scope=()=>JSON.stringify([state?.attached,state?.stale,state?.analysis?.actionContext,(state?.analysis?.actionBindings||[]).filter(b=>b.mechanism==='dom-listener').map(b=>[b.id,b.event,b.status,b.freshness,b.registeredOn,b.registration?.scriptId,b.registration?.line,b.registration?.column,b.registration?.registeredNode,b.capture,b.passive,b.once])]);
+ const scope=()=>JSON.stringify([state?.attached,state?.stale,state?.analysis?.actionContext,(state?.analysis?.actionBindings||[]).filter(b=>['dom-listener','react-host-props'].includes(b.mechanism)).map(b=>[b.id,b.event,b.status,b.freshness,b.identity,b.registeredOn,b.registration?.scriptId,b.registration?.line,b.registration?.column,b.registration?.positionBase,b.registration?.registeredNode,b.capture,b.passive,b.once,b.boundOn,b.property,b.generated,b.frameworkVersion,b.carrier?.profile,b.carrier?.hostNode,b.carrier?.frameId,b.carrier?.executionContextId])]);
  function render(s){
   state=s;const scripts=s?.sourceMaps?.scripts||[],old=$('source-map-script').value;
   $('source-map-script').replaceChildren(...scripts.map(r=>{const o=document.createElement('option');o.value=r.scriptId;let name;try{name=new URL(r.url).pathname.split('/').at(-1);}catch{name='script';}o.textContent=name+' · script '+r.scriptId;return o;}));if(scripts.some(r=>r.scriptId===old))$('source-map-script').value=old;
   show();
  }
- function show(){const r=selected(),maps=state?.sourceMaps,next=tab()+':'+maps?.epoch+':'+maps?.status+':'+r?.scriptId+':'+r?.map?.mapDigest+':'+r?.map?.status+':'+scope();if(key!==next){key=next;generation++;clearPreview();}
+ function show(){const r=selected(),maps=state?.sourceMaps,next=tab()+':'+maps?.epoch+':'+maps?.status+':'+r?.scriptId+':'+r?.map?.mapDigest+':'+r?.map?.status+':'+JSON.stringify([r?.frameId,r?.executionContextId,r?.cdpHash,r?.digest])+':'+scope();if(key!==next){key=next;generation++;clearPreview();}
   $('source-map-status').textContent=maps?.status==='Stale'?'Stale · reconnect after navigation or debugger change':r?.map?r.map.status+' · '+(r.map.hasContent?'Source available':'Map lacks source content; positions only')+' · '+r.map.reason:r?'Connect source map · not linked to element':'Attach and inspect a tab to discover loaded scripts';
   $('source-map-identity').textContent=r?JSON.stringify({...r,url:'[shown in inspected tab only]',sourceMapURL:r.sourceMapURL?'[declared reference available]':null},null,2):'';
   const unavailable=!state?.attached||!r||maps?.status==='Stale';for(const id of ['source-map-discover','source-map-acquire','source-map-file'])$(id).disabled=unavailable;
@@ -37,11 +37,11 @@ export function createSourceMapUI({document,$,rpc,tab,load,action,requestPermiss
   }
  }
  $('source-map-script').onchange=show;
- async function changed(fn){const id=tab(),g=generation;await fn();if(disposed||id!==tab()||g!==generation)return;await load();}
+ async function changed(fn){const id=tab(),g=generation;await fn();if(disposed||id!==tab()||g!==generation)return;await load({refreshDeep:false});}
  $('source-map-file').onchange=()=>action(async()=>{const file=$('source-map-file').files[0],scriptId=selected()?.scriptId,id=tab();if(!file)return;if(file.size>8*1024*1024)throw Error('Import limit is 8 MiB');if(!/\.(map|zip)$/i.test(file.name))throw Error('Choose a .map or .zip file');const g=generation;try{const bytes=new Uint8Array(await file.arrayBuffer());if(disposed||g!==generation||id!==tab())return;let text='';for(let i=0;i<bytes.length;i+=16384)text+=String.fromCharCode(...bytes.subarray(i,i+16384));await changed(()=>rpc({op:'source-map-import',tabId:id,scriptId,name:file.name,data:btoa(text)}));}finally{$('source-map-file').value='';}});
  $('source-map-discover').onclick=()=>action(()=>changed(()=>rpc({op:'source-map-acquire',tabId:tab(),scriptId:selected()?.scriptId})));
  $('source-map-acquire').onclick=()=>action(async()=>{const input=$('source-map-url').value,url=new URL(input),id=tab(),scriptId=selected()?.scriptId;if(url.protocol!=='https:'&&!(url.protocol==='http:'&&url.hostname==='127.0.0.1'))throw Error('Artifact URL requires HTTPS');const permitted=requestPermission?await requestPermission(url.origin):true;if(!permitted)throw Error('Origin permission denied');await changed(()=>rpc({op:'source-map-acquire',tabId:id,scriptId,url:input}));});
- $('source-map-clear').onclick=()=>action(async()=>{await rpc({op:'source-map-clear',tabId:tab()});clearPreview();await load();});
+ $('source-map-clear').onclick=()=>action(async()=>{await rpc({op:'source-map-clear',tabId:tab()});clearPreview();await load({refreshDeep:false});});
  $('source-map-lookup').onclick=()=>action(async()=>{const id=tab(),g=generation,r=selected();const result=await rpc({op:'source-map-lookup',tabId:id,scriptId:r?.scriptId,line:Number($('source-map-line').value),column:Number($('source-map-column').value)});if(disposed||id!==tab()||g!==generation)return;$('source-map-location').textContent=(result.source?result.source+':'+result.line+':'+result.column+' · ':'')+(result.match||'Unavailable')+' · '+result.link+' · runtime operands not observed'+(result.excerpt===null?' · Map lacks source content':'');$('source-map-preview').textContent=result.excerpt||result.reason||'No source content at this position';clearTimeout(previewTimer);previewTimer=setTimeout(()=>{if(!disposed){clearPreview();$('source-map-location').textContent='Preview expired; reconnect source maps';}},300000);});
  function current(anchor){const binding=state?.analysis?.actionBindings?.find(b=>b.id===anchor?.acquisition?.bindingId);return !disposed&&state?.attached&&!state?.stale&&isCurrentGeneratedAnchor(anchor,{context:state?.analysis?.actionContext,binding,maps:state?.sourceMaps});}
  function connectNative(anchor){if(!current(anchor))throw Error('Native source context changed; refresh handlers');$('source-map-details').open=true;$('source-map-script').value=anchor.generated.scriptId;show();$('source-map-file').focus();}
@@ -52,10 +52,10 @@ export function createSourceMapUI({document,$,rpc,tab,load,action,requestPermiss
   const own=new AbortController();controller=own;const id=tab(),g=generation;
   try{const result=await rpc({op:'source-map-anchor',tabId:id,bindingId:anchor.acquisition.bindingId,snapshotId:anchor.acquisition.snapshotId,contextKey:JSON.stringify(anchor.identity)},own.signal);
    if(disposed||own.signal.aborted||id!==tab()||g!==generation)return;await load({refreshDeep:false});if(disposed||own.signal.aborted||id!==tab()||g!==generation)return;
-   $('source-map-location').textContent=(result.source?result.source+':'+result.line+':'+result.column+' · ':'')+result.status+' · '+(result.match||'Unavailable')+' · registered listener location; execution not observed; property producer unknown'+(result.contentStatus==='Unavailable'?' · Position only; source content unavailable':'');
+   const host=result.anchor?.relation==='selected-react-compatible-host-callback-generated-location';$('source-map-location').textContent=(result.source?result.source+':'+result.line+':'+result.column+' · ':'')+result.status+' · '+(result.match||'Unavailable')+(host?' · current own host callback-slot location; renderer/version unverified; execution not observed; property producer unknown':' · registered listener location; execution not observed; property producer unknown')+(result.contentStatus==='Unavailable'?' · Position only; source content unavailable':'');
    $('source-map-preview').textContent=result.excerpt||result.reason||'No source content at this position';
    previewTimer=setTimeout(()=>{if(!disposed){clearPreview();$('source-map-location').textContent='Preview expired; reconnect source maps';}},300000);
-   $('source-map-location').scrollIntoView?.({block:'nearest'});
+   $('source-map-preview').scrollIntoView?.({block:'nearest'});
   }catch(e){if(!own.signal.aborted&&!disposed)throw e;}finally{if(controller===own)controller=null;}
  }
  return {render,connectNative,viewNative,dispose(){disposed=true;++generation;clearPreview();}};

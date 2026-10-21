@@ -1565,3 +1565,15 @@ Metadata is not renderer/version attestation or callback-object identity. Explic
 test-only sidecar; original .34 product/runtime/hosts unchanged. Next P01.3b runtime/
 shared anchor/map/provider/Actions integration and packed two-host controls; no
 framework source UI support credited yet. P01 open,15/29 full tasks complete.
+
+### 2026-10-21 — own-host callback source in exact product UI
+
+[P01.3b](completion/72-p01-react-host-source-view.md):13new/115focused/1957full
+PASS; exact .35/UI .2 framework65/native registration49/types2/admission7. Real
+picker/auto script/map/current bubble+capture source, no sidecar/IDE/manual coords,
+zero passive handlers/getters/traps, replacement/removal/root/Proxy/map/cleanup and
+440/390 keyboard controls. Renderer/version unverified; callback identity/property/
+HTTP unknown, execution not-observed. Native registration and legacy diagnostics/
+model source omissions preserved. Next P01.4 shared bounded pure browser+Node source
+analysis and actual two-bundle/remaining controls, then ONE P01 review. Whole P01
+remains open;15/29 full tasks complete. Screens remain human review candidates.

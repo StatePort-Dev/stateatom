@@ -76,3 +76,7 @@ client.request({op:'inputs-capture',tabId:1,ownerId:'view',includeCategories:['g
 client.request({op:'source-map-anchor',tabId:1,bindingId:'native:0',snapshotId:'snapshot',contextKey:'context'});
 // @ts-expect-error native source coordinates are runtime-owned
 client.request({op:'source-map-anchor',tabId:1,bindingId:'native:0',snapshotId:'snapshot',contextKey:'context',line:1});
+
+client.request({op:'source-map-anchor',tabId:1,bindingId:'react-host:0',snapshotId:'host-read',contextKey:'context'});
+// @ts-expect-error a current stored snapshot is required for host source reads
+client.request({op:'source-map-anchor',tabId:1,bindingId:'react-host:0',contextKey:'context'});
