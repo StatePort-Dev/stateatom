@@ -31,3 +31,23 @@ Result is PARTIAL, never a new Action Trace feature claim.
 See docs/completion/38-a05-native-mechanism-boundary.md for exact paths, versions,
 failed harness run, verified controls and the one bounded next implementation.
 The historical beforeScriptExecution rejection is not rerun or reinterpreted.
+
+## Development Event/body mechanism
+
+```sh
+node experiments/actions/development-boundary.mjs
+```
+
+Preregistered separately in2026-10-21-a05-development-boundary.md. Three owned
+synthetic browser profiles compare original code, transformed-unarmed and armed.
+Native Input and DOM reads only; fixture control UI is not the Atom inspector.
+The opt-in transform and private exact-Event adapter prove scoped synchronous
+source body entry/normal-or-throw leave without inspecting returned/thrown values
+or adding Promise reactions. Full listener/function-object/async identity remains
+unavailable. Whole eval/with files are refused after a real Proxy has-trap control.
+
+Final recorded11 controls/22 scenarios per mode retain20 dispatches/21 body entries
+and matching leaves, with original outputs/order/error identity and explicit
+disabled/async/wrapper/late-event/propagation/cancel/timeout gaps. See39-a05 for
+exact source/native verification and preserved failures. Product integration and
+mandatory A05 acceptance remain open; do not run this again solely to recount it.

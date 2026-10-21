@@ -1970,9 +1970,9 @@
       "deliverable": "Actual bounded user-action invocation and separately supported consequences through the UI",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "A05.2 finite development event/entry/exit mechanism",
+      "active_slice": "A05.3 existing plugin/observer/evidence and context-bound armed UI integration",
       "implementation_plan": "../superpowers/plans/2026-10-21-a05-native-boundary.md",
-      "execution_record": "38-a05-native-mechanism-boundary.md",
+      "execution_record": "39-a05-development-mechanism.md",
       "completed_slices": [
         {
           "id": "A05.1",
@@ -1988,12 +1988,39 @@
             "return_points": 14
           },
           "boundary": "Native ordinary listener currentTarget/entry only; event/original target and completed exit missing, arrow/bound this unavailable, same-source closure identity shortcut disproven. No Atom observed invocation/UI claim."
+        },
+        {
+          "id": "A05.2",
+          "status": "complete-within-unbundled-development-mechanism",
+          "record": "39-a05-development-mechanism.md",
+          "verification": ".artifacts/a05/development-boundary/verification.json",
+          "checks": {
+            "source": 1674,
+            "focused": 10,
+            "native_controls": 11,
+            "scenarios_per_mode": 22,
+            "modes": 3,
+            "dispatches": 20,
+            "body_entries": 21,
+            "body_leaves": 21
+          },
+          "full_A05_acceptance": false,
+          "installed_product_verified": false,
+          "next_item": "A05.3"
         }
       ],
       "remaining_acceptance": [
-        "Exact original event/instance carrier and supported synchronous entry/exit mechanism with semantic controls",
-        "Explicitly armed one-interaction UI, budget/cancel/Clear and truthful gaps/effects under F02 read-only observation",
-        "Original A05 native/control matrix and ONE whole-item review; no async/network causality inferred"
+        "Integrate the tested original Event/body mechanism into existing plugin/observer/evidence store and current F03 setup; same runtime context/permissions/identities",
+        "Explicitly armed one-interaction UI, budget/cancel/Clear and truthful source/registration/body/effect gaps under F02 read-only observation",
+        "Original A05 native/control matrix, production/performance/cleanup boundaries and ONE whole-item review; no async/network causality inferred"
+      ],
+      "implementation_plans": [
+        "../superpowers/plans/2026-10-21-a05-native-boundary.md",
+        "../superpowers/plans/2026-10-21-a05-development-boundary.md"
+      ],
+      "execution_records": [
+        "38-a05-native-mechanism-boundary.md",
+        "39-a05-development-mechanism.md"
       ]
     },
     {
@@ -2521,14 +2548,25 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "A05.1",
-      "status": "complete-with-explicit-native-mechanism-gaps",
-      "record": "38-a05-native-mechanism-boundary.md",
-      "verification": ".artifacts/a05/native-boundary/verification.json",
+      "id": "A05.2",
+      "status": "complete-within-unbundled-development-mechanism",
+      "record": "39-a05-development-mechanism.md",
+      "verification": ".artifacts/a05/development-boundary/verification.json",
+      "checks": {
+        "source": 1674,
+        "focused": 10,
+        "native_controls": 11,
+        "scenarios_per_mode": 22,
+        "modes": 3,
+        "dispatches": 20,
+        "body_entries": 21,
+        "body_leaves": 21
+      },
       "full_A05_acceptance": false,
-      "next_item": "A05.2"
+      "installed_product_verified": false,
+      "next_item": "A05.3"
     },
-    "next_item": "A05.2",
+    "next_item": "A05.3",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -3158,10 +3196,29 @@
         "verification": ".artifacts/a05/native-boundary/verification.json",
         "full_A05_acceptance": false,
         "next_item": "A05.2"
+      },
+      {
+        "id": "A05.2",
+        "status": "complete-within-unbundled-development-mechanism",
+        "record": "39-a05-development-mechanism.md",
+        "verification": ".artifacts/a05/development-boundary/verification.json",
+        "checks": {
+          "source": 1674,
+          "focused": 10,
+          "native_controls": 11,
+          "scenarios_per_mode": 22,
+          "modes": 3,
+          "dispatches": 20,
+          "body_entries": 21,
+          "body_leaves": 21
+        },
+        "full_A05_acceptance": false,
+        "installed_product_verified": false,
+        "next_item": "A05.3"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A05.1 finite native listener/return probe completed with PARTIAL mechanism:17 native entries/14 return points,17 matching off/on scenarios,5 controls, currentTarget only; exact event/original target/completed exit missing. Arrow/bound gap and actual same-source closure breakpoint counterexample preserved. No product code/UI trace shipped; A05 mandatory/in-progress, next A05.2 finite development event/entry/exit instrumentation. Failed harness/off cleanup and historical script-pause rejection remain unchanged.",
+    "current_activity_note": "A05.2 unbundled opt-in development Event/body mechanism passed source1674/focused10/native11 over22 scenarios in original/unarmed/armed profiles:20 actual dispatches/21 matched body entries/leaves, exact original Event, original outputs/error/Promise/order controls. Real with/Proxy has-trap failure fixed by whole-file eval/with refusal; old native/source/failures remain. Existing observer/plugin/analyzer unchanged, no installed Atom trace UI or production capability. Mandatory A05 stays in progress; next A05.3 context-bound existing plugin/observer/evidence/UI integration.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "A05"

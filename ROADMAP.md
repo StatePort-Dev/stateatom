@@ -661,3 +661,17 @@ are preserved, the latter not repeated. No product runtime/UI changed or trace s
 See38-a05-native-mechanism-boundary.md; next bounded step A05.2 finite development
 event carrier/entry/exit with original semantics before armed UI. Production observation
 does not require F05 mutation authority. A02/L02/production/release remain open.
+
+### 2026-10-21 — A05.2 development mechanism checkpoint
+
+A standalone opt-in original-source mechanism now records one exact native Event
+and supported synchronous body entry/normal-or-throw leave: source1674/focused10/
+native11 pass,22 original/unarmed/armed scenarios,20 dispatches/21 matched bodies.
+Original returns/this/arguments/Promise/error identity/getter/order controls retained.
+A real with/Proxy extra-has-trap failure now refuses the whole dynamic source.
+Async/wrappers/late Event reuse/coverage stay explicit gaps; no reactions or argument
+snapshots. Existing observer/plugin/analyzer/package and historical native PARTIALs
+are unchanged. This is unbundled mechanism evidence, not installed Atom trace UI or
+production acceptance; mandatory A05 remains in progress. See39-a05-development-
+mechanism.md. Next bounded item A05.3 existing plugin/observer/evidence and selected-
+context armed UI integration; A02/L02 and broader gates remain open.
