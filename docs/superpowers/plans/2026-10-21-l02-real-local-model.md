@@ -28,7 +28,7 @@ Chrome primary page. Text/en options match existing provider; no WebWorker API.
   correctness, word count, usefulness and cold/warm latency per case. A fallback or
   formatting success is not inference or usefulness. No arbitrary values/source/path/
   comments/HTTP bodies in actual prompts; retain the current explicit allowlist.
-- [ ] Actual installed Atom Explain/control/fallback and offline/late/cancel checks
+- [x] Actual installed Atom Explain/control/fallback and offline/late/cancel checks
   where the route permits; name missing checks separately.
 - [x] Commit bounded findings; L02 stays incomplete unless ALL approved gates pass.
 
@@ -68,3 +68,11 @@ Source1850/focused12/types2/admission7 PASS. See completion/58 for exact receipt
 The original baseline24 and its4 omissions remain history. Next L02.3 is actual
 unchanged installed Atom Explain/opt-in/Cancel/stale/offline, not another full
 corpus rerun. Useful derived annotation/whole-item review are still unstarted.
+
+Task1 installed controls L02.3:exact original standalone .27, actual real-model
+Explain/opt-in/template/Cancel/stale/document-offline6/6 PASS with trusted clicks,
+6500ms late guards and positive/negative fetch controls. No API override or extra
+host files. See completion/59 and permanent native runner/receipt. This discharges
+the named Task1 installed-control checkbox in its recorded scope; no usefulness
+or OS-airgap/heap claim. Next observed defect:L02.4 warm generation labelled
+Downloading100%; distinguish phases without changing evidence or prompt policy.

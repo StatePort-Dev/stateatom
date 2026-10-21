@@ -88,7 +88,8 @@
     "verify:input-acceptance": "node tests/integration/input-acceptance.mjs",
     "verify:input-review": "node tests/integration/input-review.mjs",
     "verify:production-changes": "node tests/integration/production-changes.mjs",
-    "verify:local-model": "node tests/integration/local-model-native.mjs"
+    "verify:local-model": "node tests/integration/local-model-native.mjs",
+    "verify:local-model-product": "node tests/integration/local-model-product-native.mjs"
   },
   "dependencies": {
     "@angular/compiler": "20.3.34",

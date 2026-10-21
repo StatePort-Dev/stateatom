@@ -1433,3 +1433,13 @@ summaries still equal templates:0added-benefit cases, L02 mandatory/in-progress.
 Source1850/focused12/packed types2/admission7 PASS. Original .26 baseline24 and
 failures retained. Next actual unchanged installed Atom Explain/Cancel/stale/offline
 controls; the evaluation derivative is not that product proof.15/29 remain complete.
+
+### 2026-10-21 — actual installed local-model controls
+
+[L02.3](completion/59-l02-installed-model-controls.md):exact original .27 standalone
+host, real Chrome155 model and6 native UI controls PASS. Opt-in/template/Explain,
+Cancel and stale-target6.5s guards, controlled document-offline with fetch control;
+no model API override or app-target CDP. App counter0,1100/390 no overflow,13px.
+This is now actual product UI evidence, separate from the prior evaluation page.
+L02 still open/no added usefulness. Next fix observed warm generation labelled
+Downloading100%, then bounded usefulness work.15/29 full items complete.

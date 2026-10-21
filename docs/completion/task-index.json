@@ -2645,38 +2645,35 @@
       "existing_commands": [
         "npm run verify:actions",
         "npm run verify:browser",
-        "npm run verify:local-model"
+        "npm run verify:local-model",
+        "npm run verify:local-model-product"
       ],
       "deliverable": "Real-device useful local explanations and complete model-free fallback; unavailability alone does not pass",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "L02.3 actual installed Atom opt-in/Explain/Cancel/stale/offline controls",
+      "active_slice": "L02.4 distinguish actual local-model initialization/download/generation status",
       "implementation_plan": "../superpowers/plans/2026-10-21-l02-real-local-model.md",
       "remaining_acceptance": [
-        "Actual installed Atom opt-in/Explain/Cancel/stale/fallback and controlled offline workflow",
+        "Distinguish actual initialization/download/generation status",
         "Usefulness beyond finite equivalent sentence selection; no mock/unavailable substitution",
         "Final candidate factual/concision/usefulness comparison preserving historical criteria",
         "ONE whole-L02 review only after full item acceptance"
       ],
-      "execution_record": "58-l02-exact-metadata-controls.md",
+      "execution_record": "59-l02-installed-model-controls.md",
       "current_checkpoint": {
-        "id": "L02.2-exact-metadata-real30",
-        "status": "complete-bounded-metadata-controls-not-L02",
-        "record": "58-l02-exact-metadata-controls.md",
+        "id": "L02.3-installed-product-controls",
+        "status": "complete-bounded-installed-controls-not-L02",
+        "record": "59-l02-installed-model-controls.md",
         "candidate": "@stateport/atom@0.1.0-candidate.20261021.27",
-        "actual_corpus_inferences": 30,
-        "validated_model_outputs": 30,
-        "strict_rejections_with_template": 0,
-        "incomplete_cases": 6,
-        "untrusted_cases": 5,
-        "additional_offline_document_inference": 1,
-        "added_usefulness_cases": 0,
+        "actual_product_controls": 6,
+        "native_trusted_initiation": true,
+        "installed_Atom_Explain_UX_controls_accepted": true,
+        "model_API_wire_tap": false,
         "full_L02_acceptance": false,
-        "historical_25_with_malicious_count_met": true,
-        "installed_Atom_Explain_UX_accepted": false,
-        "verification": ".artifacts/l02/metadata-fix/verification27.json",
-        "next_item": "L02.3 actual installed Atom opt-in/Explain/Cancel/stale/offline controls",
-        "boundary": "Exact .27 metadata const arrays accepted by real Chrome155, unchanged strict validator.30 actual inferences/30 accepted;5 untrusted/6 incomplete and actual forwarded prompt/schema verified.31 resolved/31 destroy calls. Added benefit0/30. Declared derivative with2 added files, not product UX/OS airgap/heap/resource or whole L02 acceptance. Baseline24 and old failures preserved."
+        "added_usefulness_cases": 0,
+        "verification": ".artifacts/l02/product-evaluation/permanent-verification27.json",
+        "next_item": "L02.4 distinguish actual local-model initialization/download/generation status",
+        "boundary": "Exact unchanged original standalone .27, no evaluation derivative/API override;6 native UI controls pass with real model, Cancel and6500ms late guards, target change and document-offline plus fetch control. Synthetic DOM counter0, no app-target CDP.1100/390 no overflow,13px; screenshots human-unreviewed. Warm generation incorrectly labelled download100%; usefulness/whole L02 remain open."
       },
       "completed_slices": [
         {
@@ -2714,11 +2711,27 @@
           "verification": ".artifacts/l02/metadata-fix/verification27.json",
           "next_item": "L02.3 actual installed Atom opt-in/Explain/Cancel/stale/offline controls",
           "boundary": "Exact .27 metadata const arrays accepted by real Chrome155, unchanged strict validator.30 actual inferences/30 accepted;5 untrusted/6 incomplete and actual forwarded prompt/schema verified.31 resolved/31 destroy calls. Added benefit0/30. Declared derivative with2 added files, not product UX/OS airgap/heap/resource or whole L02 acceptance. Baseline24 and old failures preserved."
+        },
+        {
+          "id": "L02.3-installed-product-controls",
+          "status": "complete-bounded-installed-controls-not-L02",
+          "record": "59-l02-installed-model-controls.md",
+          "candidate": "@stateport/atom@0.1.0-candidate.20261021.27",
+          "actual_product_controls": 6,
+          "native_trusted_initiation": true,
+          "installed_Atom_Explain_UX_controls_accepted": true,
+          "model_API_wire_tap": false,
+          "full_L02_acceptance": false,
+          "added_usefulness_cases": 0,
+          "verification": ".artifacts/l02/product-evaluation/permanent-verification27.json",
+          "next_item": "L02.4 distinguish actual local-model initialization/download/generation status",
+          "boundary": "Exact unchanged original standalone .27, no evaluation derivative/API override;6 native UI controls pass with real model, Cancel and6500ms late guards, target change and document-offline plus fetch control. Synthetic DOM counter0, no app-target CDP.1100/390 no overflow,13px; screenshots human-unreviewed. Warm generation incorrectly labelled download100%; usefulness/whole L02 remain open."
         }
       ],
       "execution_records": [
         "57-l02-real-device-baseline.md",
-        "58-l02-exact-metadata-controls.md"
+        "58-l02-exact-metadata-controls.md",
+        "59-l02-installed-model-controls.md"
       ]
     },
     {
@@ -3072,25 +3085,21 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "L02.2-exact-metadata-real30",
-      "status": "complete-bounded-metadata-controls-not-L02",
-      "record": "58-l02-exact-metadata-controls.md",
+      "id": "L02.3-installed-product-controls",
+      "status": "complete-bounded-installed-controls-not-L02",
+      "record": "59-l02-installed-model-controls.md",
       "candidate": "@stateport/atom@0.1.0-candidate.20261021.27",
-      "actual_corpus_inferences": 30,
-      "validated_model_outputs": 30,
-      "strict_rejections_with_template": 0,
-      "incomplete_cases": 6,
-      "untrusted_cases": 5,
-      "additional_offline_document_inference": 1,
-      "added_usefulness_cases": 0,
+      "actual_product_controls": 6,
+      "native_trusted_initiation": true,
+      "installed_Atom_Explain_UX_controls_accepted": true,
+      "model_API_wire_tap": false,
       "full_L02_acceptance": false,
-      "historical_25_with_malicious_count_met": true,
-      "installed_Atom_Explain_UX_accepted": false,
-      "verification": ".artifacts/l02/metadata-fix/verification27.json",
-      "next_item": "L02.3 actual installed Atom opt-in/Explain/Cancel/stale/offline controls",
-      "boundary": "Exact .27 metadata const arrays accepted by real Chrome155, unchanged strict validator.30 actual inferences/30 accepted;5 untrusted/6 incomplete and actual forwarded prompt/schema verified.31 resolved/31 destroy calls. Added benefit0/30. Declared derivative with2 added files, not product UX/OS airgap/heap/resource or whole L02 acceptance. Baseline24 and old failures preserved."
+      "added_usefulness_cases": 0,
+      "verification": ".artifacts/l02/product-evaluation/permanent-verification27.json",
+      "next_item": "L02.4 distinguish actual local-model initialization/download/generation status",
+      "boundary": "Exact unchanged original standalone .27, no evaluation derivative/API override;6 native UI controls pass with real model, Cancel and6500ms late guards, target change and document-offline plus fetch control. Synthetic DOM counter0, no app-target CDP.1100/390 no overflow,13px; screenshots human-unreviewed. Warm generation incorrectly labelled download100%; usefulness/whole L02 remain open."
     },
-    "next_item": "L02.3 actual installed Atom opt-in/Explain/Cancel/stale/offline controls",
+    "next_item": "L02.4 distinguish actual local-model initialization/download/generation status",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -4126,10 +4135,25 @@
         "verification": ".artifacts/l02/metadata-fix/verification27.json",
         "next_item": "L02.3 actual installed Atom opt-in/Explain/Cancel/stale/offline controls",
         "boundary": "Exact .27 metadata const arrays accepted by real Chrome155, unchanged strict validator.30 actual inferences/30 accepted;5 untrusted/6 incomplete and actual forwarded prompt/schema verified.31 resolved/31 destroy calls. Added benefit0/30. Declared derivative with2 added files, not product UX/OS airgap/heap/resource or whole L02 acceptance. Baseline24 and old failures preserved."
+      },
+      {
+        "id": "L02.3-installed-product-controls",
+        "status": "complete-bounded-installed-controls-not-L02",
+        "record": "59-l02-installed-model-controls.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.27",
+        "actual_product_controls": 6,
+        "native_trusted_initiation": true,
+        "installed_Atom_Explain_UX_controls_accepted": true,
+        "model_API_wire_tap": false,
+        "full_L02_acceptance": false,
+        "added_usefulness_cases": 0,
+        "verification": ".artifacts/l02/product-evaluation/permanent-verification27.json",
+        "next_item": "L02.4 distinguish actual local-model initialization/download/generation status",
+        "boundary": "Exact unchanged original standalone .27, no evaluation derivative/API override;6 native UI controls pass with real model, Cancel and6500ms late guards, target change and document-offline plus fetch control. Synthetic DOM counter0, no app-target CDP.1100/390 no overflow,13px; screenshots human-unreviewed. Warm generation incorrectly labelled download100%; usefulness/whole L02 remain open."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Exact .27 metadata const arrays accepted by real Chrome155, unchanged strict validator.30 actual inferences/30 accepted;5 untrusted/6 incomplete and actual forwarded prompt/schema verified.31 resolved/31 destroy calls. Added benefit0/30. Declared derivative with2 added files, not product UX/OS airgap/heap/resource or whole L02 acceptance. Baseline24 and old failures preserved.",
+    "current_activity_note": "Exact unchanged original standalone .27, no evaluation derivative/API override;6 native UI controls pass with real model, Cancel and6500ms late guards, target change and document-offline plus fetch control. Synthetic DOM counter0, no app-target CDP.1100/390 no overflow,13px; screenshots human-unreviewed. Warm generation incorrectly labelled download100%; usefulness/whole L02 remain open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "L02"
