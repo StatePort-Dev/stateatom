@@ -48,8 +48,8 @@ export function createActionUI({document,$,rpc,cleanupRpc,tab,action}){
     $('action-local-status').textContent='Recorded snapshot · template explanation; no new application action.';
     if(!$('action-local-enabled').checked)return;
     if(facts.evidenceIds.length>24){$('action-local-status').textContent='Too many references for the experimental model; showing the template.';return;}
-    $('action-local-status').textContent='Checking local model / download…';
-    const r=await provider.explain(facts,{userActivation:document.defaultView?.navigator.userActivation?.isActive===true,allowDownload:true,signal,timeoutMs:120000,onProgress:p=>{if(current())$('action-local-status').textContent='Downloading local model: '+Math.round(p*100)+'%';}});
+    $('action-local-status').textContent='Checking local model availability…';
+    const r=await provider.explain(facts,{userActivation:document.defaultView?.navigator.userActivation?.isActive===true,allowDownload:true,signal,timeoutMs:120000,onPhase:phase=>{if(current())$('action-local-status').textContent={checking:'Checking local model availability…',initializing:'Initializing local model…',downloading:'Downloading local model…',generating:'Generating local explanation…'}[phase];},onProgress:p=>{if(current())$('action-local-status').textContent='Downloading local model: '+Math.round(p*100)+'%';}});
     if(!current())return;$('action-explanation').textContent=r.summary;$('action-local-status').textContent=r.provider==='chrome-built-in'?'Experimental local model · grounded sentence selection · not evidence':r.reason;
    }catch{if(current())$('action-local-status').textContent='Stored evidence refresh unavailable · showing the displayed snapshot template.';}
    finally{if(current()){$('action-explain').disabled=false;$('action-cancel').hidden=true;}}

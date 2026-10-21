@@ -59,3 +59,17 @@ extension-document CDP context, not OS airgap. See57-l02-real-device-baseline.md
 24 actual inferences,20 validated/4 safe fallbacks,0 added-benefit cases. L02 open.
 The exact original protocol bytes remain at
 .artifacts/l02/evaluation/protocol-before-postrun-notes.md with the registered hash.
+
+## Subsequent exact candidates — preserve the registration above
+
+The separately versioned30 corpus (tests/fixtures/local-model-acceptance-corpus.mjs)
+keeps all24 original facts and adds5untrusted/one stale case:6incomplete total.
+.27 real30/30 strict outputs with0added benefit and actual API prompt/schema taps
+are recorded in completion/58. The original24 registration/raw outputs remain.
+Actual unchanged installed product controls are completion/59(.27) and60(.28),
+including Cancel/stale and document-offline fetch controls. .28 changes phase
+presentation only;30-case model output is not claimed rerun there. Its contract
+hash comparison and source1852 preserve prompt/schema/strict validation boundaries.
+Use the two explicit verify:local-model / verify:local-model-product commands from
+those records; cached product testing requires matching owned profile/latest result.
+No unavailable/mock/schema-only outcome or this protocol completes usefulness/O01.

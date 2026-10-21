@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.28
+
+- Distinguish local-model availability checks, initialization, download and
+  generation. Already available weights do not display download100% while generating;
+  late download progress cannot overwrite generation or cancellation. Existing
+  optional-model placement, supplied typography/layout, tokens and primitives remain.
+  Screenshot candidates and actual installed controls are recorded separately;
+  finite-mode model output still demonstrates no added usefulness over templates.
+
 ## 0.1.0-candidate.20261021.27
 
 - Constrain the experimental local model to the complete immutable evidence and

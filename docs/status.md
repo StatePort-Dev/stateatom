@@ -1443,3 +1443,14 @@ no model API override or app-target CDP. App counter0,1100/390 no overflow,13px.
 This is now actual product UI evidence, separate from the prior evaluation page.
 L02 still open/no added usefulness. Next fix observed warm generation labelled
 Downloading100%, then bounded usefulness work.15/29 full items complete.
+
+### 2026-10-21 — truthful warm local-model generation status
+
+[L02.4](completion/60-l02-model-phase-status.md) corrects actual warm Downloading100%
+to initialization/generation phases and rejects late progress updates. Exact .28:
+source1852/focused18/types2/admission7 and6 actual native product controls PASS,
+including real Generating phase, Cancel/stale late guards and document-offline.
+1100/390,13px/no overflow; screenshot candidates remain human-unreviewed. .27 corpus30
+and .26 cold/download evidence remain historical; prompt/validator/schema unchanged.
+L02 open/no added usefulness;15/29 full items complete. Next bounded derived-
+annotation contract/privacy projection/usefulness rubric, before behavioral changes.

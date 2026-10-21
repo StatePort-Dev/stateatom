@@ -76,3 +76,18 @@ host files. See completion/59 and permanent native runner/receipt. This discharg
 the named Task1 installed-control checkbox in its recorded scope; no usefulness
 or OS-airgap/heap claim. Next observed defect:L02.4 warm generation labelled
 Downloading100%; distinguish phases without changing evidence or prompt policy.
+
+Task1 bounded phase correction L02.4: reproduce the actual .27 warm Downloading100%
+in provider/UI RED tests; emit checking/initializing/downloading/generating, ignore
+warm/late progress and preserve all lifecycle guards. No model facts/prompt/schema/
+validation change or new UI layout. Verify source/focused, exact new .28 package
+contracts and actual installed generation+Cancel/stale/offline controls; compare
+390/1100 candidates using supplied references. Then commit before usefulness work.
+
+Task1 phase correction accepted within its boundary:source1852/focused18/types2/
+admission7 and actual installed .28 product6 PASS with Generating phase and all
+Cancel/stale/document-offline guards. See completion/60 for final painted390
+candidate and unchanged prompt/validator/schema hashes. Older corpus/download
+results remain their exact historical candidates. Next Task2 begins with ONE
+bounded derived-annotation contract/projection/rubric definition; no useful output,
+new projection or final whole-item acceptance is assumed from documents alone.

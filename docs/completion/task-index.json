@@ -2651,29 +2651,31 @@
       "deliverable": "Real-device useful local explanations and complete model-free fallback; unavailability alone does not pass",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "L02.4 distinguish actual local-model initialization/download/generation status",
+      "active_slice": "L02.5 bounded derived-annotation contract, privacy projection and usefulness rubric",
       "implementation_plan": "../superpowers/plans/2026-10-21-l02-real-local-model.md",
       "remaining_acceptance": [
-        "Distinguish actual initialization/download/generation status",
-        "Usefulness beyond finite equivalent sentence selection; no mock/unavailable substitution",
-        "Final candidate factual/concision/usefulness comparison preserving historical criteria",
+        "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
+        "Final candidate actual factual/concision/usefulness comparison preserving historical20–30 and>=25/5incomplete/5untrusted criteria",
+        "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
-      "execution_record": "59-l02-installed-model-controls.md",
+      "execution_record": "60-l02-model-phase-status.md",
       "current_checkpoint": {
-        "id": "L02.3-installed-product-controls",
-        "status": "complete-bounded-installed-controls-not-L02",
-        "record": "59-l02-installed-model-controls.md",
-        "candidate": "@stateport/atom@0.1.0-candidate.20261021.27",
+        "id": "L02.4-truthful-model-phases",
+        "status": "complete-bounded-phase-fix-not-L02",
+        "record": "60-l02-model-phase-status.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.28",
+        "source_tests": 1852,
+        "focused_tests": 18,
+        "packed_type_consumers": 2,
+        "package_admission": 7,
         "actual_product_controls": 6,
-        "native_trusted_initiation": true,
-        "installed_Atom_Explain_UX_controls_accepted": true,
-        "model_API_wire_tap": false,
+        "actual_generation_phase": true,
         "full_L02_acceptance": false,
         "added_usefulness_cases": 0,
-        "verification": ".artifacts/l02/product-evaluation/permanent-verification27.json",
-        "next_item": "L02.4 distinguish actual local-model initialization/download/generation status",
-        "boundary": "Exact unchanged original standalone .27, no evaluation derivative/API override;6 native UI controls pass with real model, Cancel and6500ms late guards, target change and document-offline plus fetch control. Synthetic DOM counter0, no app-target CDP.1100/390 no overflow,13px; screenshots human-unreviewed. Warm generation incorrectly labelled download100%; usefulness/whole L02 remain open."
+        "verification": ".artifacts/l02/phases/verification28.json",
+        "next_item": "L02.5 bounded derived-annotation contract, privacy projection and usefulness rubric",
+        "boundary": "Actual .28 warm generation status corrected,6 native product controls PASS including Cancel/stale6500ms/offline with fetch control,1100/390 no overflow/13px. Exact unchanged host/API, registered source hashes; old30 corpus remains .27 and cold download remains .26. Fact/prompt/validator/schema unchanged. No added usefulness/whole L02/OS airgap/heap claim; human-unreviewed screenshots."
       },
       "completed_slices": [
         {
@@ -2726,12 +2728,30 @@
           "verification": ".artifacts/l02/product-evaluation/permanent-verification27.json",
           "next_item": "L02.4 distinguish actual local-model initialization/download/generation status",
           "boundary": "Exact unchanged original standalone .27, no evaluation derivative/API override;6 native UI controls pass with real model, Cancel and6500ms late guards, target change and document-offline plus fetch control. Synthetic DOM counter0, no app-target CDP.1100/390 no overflow,13px; screenshots human-unreviewed. Warm generation incorrectly labelled download100%; usefulness/whole L02 remain open."
+        },
+        {
+          "id": "L02.4-truthful-model-phases",
+          "status": "complete-bounded-phase-fix-not-L02",
+          "record": "60-l02-model-phase-status.md",
+          "candidate": "@stateport/atom@0.1.0-candidate.20261021.28",
+          "source_tests": 1852,
+          "focused_tests": 18,
+          "packed_type_consumers": 2,
+          "package_admission": 7,
+          "actual_product_controls": 6,
+          "actual_generation_phase": true,
+          "full_L02_acceptance": false,
+          "added_usefulness_cases": 0,
+          "verification": ".artifacts/l02/phases/verification28.json",
+          "next_item": "L02.5 bounded derived-annotation contract, privacy projection and usefulness rubric",
+          "boundary": "Actual .28 warm generation status corrected,6 native product controls PASS including Cancel/stale6500ms/offline with fetch control,1100/390 no overflow/13px. Exact unchanged host/API, registered source hashes; old30 corpus remains .27 and cold download remains .26. Fact/prompt/validator/schema unchanged. No added usefulness/whole L02/OS airgap/heap claim; human-unreviewed screenshots."
         }
       ],
       "execution_records": [
         "57-l02-real-device-baseline.md",
         "58-l02-exact-metadata-controls.md",
-        "59-l02-installed-model-controls.md"
+        "59-l02-installed-model-controls.md",
+        "60-l02-model-phase-status.md"
       ]
     },
     {
@@ -3085,21 +3105,23 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "L02.3-installed-product-controls",
-      "status": "complete-bounded-installed-controls-not-L02",
-      "record": "59-l02-installed-model-controls.md",
-      "candidate": "@stateport/atom@0.1.0-candidate.20261021.27",
+      "id": "L02.4-truthful-model-phases",
+      "status": "complete-bounded-phase-fix-not-L02",
+      "record": "60-l02-model-phase-status.md",
+      "candidate": "@stateport/atom@0.1.0-candidate.20261021.28",
+      "source_tests": 1852,
+      "focused_tests": 18,
+      "packed_type_consumers": 2,
+      "package_admission": 7,
       "actual_product_controls": 6,
-      "native_trusted_initiation": true,
-      "installed_Atom_Explain_UX_controls_accepted": true,
-      "model_API_wire_tap": false,
+      "actual_generation_phase": true,
       "full_L02_acceptance": false,
       "added_usefulness_cases": 0,
-      "verification": ".artifacts/l02/product-evaluation/permanent-verification27.json",
-      "next_item": "L02.4 distinguish actual local-model initialization/download/generation status",
-      "boundary": "Exact unchanged original standalone .27, no evaluation derivative/API override;6 native UI controls pass with real model, Cancel and6500ms late guards, target change and document-offline plus fetch control. Synthetic DOM counter0, no app-target CDP.1100/390 no overflow,13px; screenshots human-unreviewed. Warm generation incorrectly labelled download100%; usefulness/whole L02 remain open."
+      "verification": ".artifacts/l02/phases/verification28.json",
+      "next_item": "L02.5 bounded derived-annotation contract, privacy projection and usefulness rubric",
+      "boundary": "Actual .28 warm generation status corrected,6 native product controls PASS including Cancel/stale6500ms/offline with fetch control,1100/390 no overflow/13px. Exact unchanged host/API, registered source hashes; old30 corpus remains .27 and cold download remains .26. Fact/prompt/validator/schema unchanged. No added usefulness/whole L02/OS airgap/heap claim; human-unreviewed screenshots."
     },
-    "next_item": "L02.4 distinguish actual local-model initialization/download/generation status",
+    "next_item": "L02.5 bounded derived-annotation contract, privacy projection and usefulness rubric",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -4150,10 +4172,27 @@
         "verification": ".artifacts/l02/product-evaluation/permanent-verification27.json",
         "next_item": "L02.4 distinguish actual local-model initialization/download/generation status",
         "boundary": "Exact unchanged original standalone .27, no evaluation derivative/API override;6 native UI controls pass with real model, Cancel and6500ms late guards, target change and document-offline plus fetch control. Synthetic DOM counter0, no app-target CDP.1100/390 no overflow,13px; screenshots human-unreviewed. Warm generation incorrectly labelled download100%; usefulness/whole L02 remain open."
+      },
+      {
+        "id": "L02.4-truthful-model-phases",
+        "status": "complete-bounded-phase-fix-not-L02",
+        "record": "60-l02-model-phase-status.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.28",
+        "source_tests": 1852,
+        "focused_tests": 18,
+        "packed_type_consumers": 2,
+        "package_admission": 7,
+        "actual_product_controls": 6,
+        "actual_generation_phase": true,
+        "full_L02_acceptance": false,
+        "added_usefulness_cases": 0,
+        "verification": ".artifacts/l02/phases/verification28.json",
+        "next_item": "L02.5 bounded derived-annotation contract, privacy projection and usefulness rubric",
+        "boundary": "Actual .28 warm generation status corrected,6 native product controls PASS including Cancel/stale6500ms/offline with fetch control,1100/390 no overflow/13px. Exact unchanged host/API, registered source hashes; old30 corpus remains .27 and cold download remains .26. Fact/prompt/validator/schema unchanged. No added usefulness/whole L02/OS airgap/heap claim; human-unreviewed screenshots."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Exact unchanged original standalone .27, no evaluation derivative/API override;6 native UI controls pass with real model, Cancel and6500ms late guards, target change and document-offline plus fetch control. Synthetic DOM counter0, no app-target CDP.1100/390 no overflow,13px; screenshots human-unreviewed. Warm generation incorrectly labelled download100%; usefulness/whole L02 remain open.",
+    "current_activity_note": "Actual .28 warm generation status corrected,6 native product controls PASS including Cancel/stale6500ms/offline with fetch control,1100/390 no overflow/13px. Exact unchanged host/API, registered source hashes; old30 corpus remains .27 and cold download remains .26. Fact/prompt/validator/schema unchanged. No added usefulness/whole L02/OS airgap/heap claim; human-unreviewed screenshots.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "L02"
