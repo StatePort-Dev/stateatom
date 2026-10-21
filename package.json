@@ -90,7 +90,8 @@
     "verify:production-changes": "node tests/integration/production-changes.mjs",
     "verify:local-model": "node tests/integration/local-model-native.mjs",
     "verify:local-model-product": "node tests/integration/local-model-product-native.mjs",
-    "verify:local-derived-model": "node tests/integration/local-model-native.mjs --derived"
+    "verify:local-derived-model": "node tests/integration/local-model-native.mjs --derived",
+    "verify:react19-reducer": "node experiments/react19-reducer/run.mjs"
   },
   "dependencies": {
     "@angular/compiler": "20.3.34",
