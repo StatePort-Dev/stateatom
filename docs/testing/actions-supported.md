@@ -4,7 +4,8 @@ Current local candidate0.1.0-candidate.20261021.5. Implementation/evidence:
 [object declarations](../completion/31-a03-object-handlers.md),
 [private prop declarations](../completion/32-a03-forwarded-handlers.md),
 [native freshness](../completion/33-a03-native-freshness.md).
-Parent A03 whole-item review is pending. No public release is established.
+Parent A03 whole-item review passed; closure is recorded in34-a03. No public
+release is established.
 
 These are claim-level source/registration capabilities, not a confidence ladder.
 Current native action matrix uses synthetic pinned React18.3.1 plus plain DOM
@@ -53,7 +54,10 @@ are released. No new debugger permission or Runtime execution primitive is added
 
 Current source1649/focused106/types2/admission7 and native105 pass. The affected
 ordinary picker16 and handoff reporter33 also pass on exact .5. The sealed
-aggregate and ONE pending whole-item review are recorded in33-a03 before parent
-completion. Screenshots are
+aggregate is recorded in33-a03; subsequent ONE whole-item review/closure is
+recorded in34-a03. Screenshots are
 agent-operated candidates; no independent-human blocker, installed-product,
 performance, AI, full-lineage, SDK or release acceptance follows from these counts.
+
+Subsequent whole-A03 review passed0 Critical/Important/Minor with no reruns;
+[34-a03-whole-item-review.md](../completion/34-a03-whole-item-review.md) records parent closure. The original matrix receipt remains unchanged.
