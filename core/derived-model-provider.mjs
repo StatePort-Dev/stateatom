@@ -2,7 +2,7 @@
 // Experimental, separately versioned annotation provider. Not selected by product UI.
 import {TemplateExplanation} from './action-explanations.mjs';
 import {inspectionExplanationFacts,isLocalExplanationFacts} from './inspection-explanations.mjs';
-import {projectDerivedAnnotation,isCurrentDerivedProjection,buildDerivedAnnotationPrompt,derivedAnnotationResponseConstraint,validateDerivedAnnotationStructure} from './derived-annotations.mjs';
+import {projectDerivedAnnotation,isCurrentDerivedProjection,buildDerivedAnnotationPrompt,derivedAnnotationResponseConstraint,derivedAnnotationSessionOptions,validateDerivedAnnotationStructure} from './derived-annotations.mjs';
 
 const textEn=Object.freeze([Object.freeze({type:'text',languages:Object.freeze(['en'])})]);
 const OPTIONS=Object.freeze({expectedInputs:textEn,expectedOutputs:textEn});
@@ -51,7 +51,7 @@ export function ChromeDerivedAnnotation(model=globalThis.LanguageModel){
    notify(onPhase,state==='available'?'initializing':'downloading');ensureLive();
    if(!readCurrent())return changed();
    creating=true;
-   const creation=Promise.resolve(model.create({...OPTIONS,signal:controller.signal,monitor(m){
+   const creation=Promise.resolve(model.create({...OPTIONS,...derivedAnnotationSessionOptions(),signal:controller.signal,monitor(m){
     m.addEventListener('downloadprogress',event=>{
      if(active&&creating&&state!=='available'&&!controller.signal.aborted&&Number.isFinite(event.loaded))notify(onProgress,Math.max(0,Math.min(1,event.loaded)));
     });

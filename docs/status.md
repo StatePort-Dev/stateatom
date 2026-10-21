@@ -1513,3 +1513,12 @@ annotations all structure-valid, but9clear factual failures and7ambiguous bounda
 supplement unvisited after actual120s timeout;26resolved/26destroy returns. No UI
 exposure, whole L02 open;15/29 complete. Next bounded instruction/sampling candidate
 and targeted controls before another full comparison.
+
+### 2026-10-21 — focused local-model candidate remains insufficient
+
+[L02.9](completion/67-l02-system-focused-controls.md):fixed system/create-only
+topK1/temp0;46focused/1898full PASS. Actual10prompt returns/10structure accepted,
+actual settings exposed and10destroy returns;8scoped factual passes/2boundary
+rejects/0new useful meaning. Original8main+2positive body controls are not30+4.
+No UI switch or full-corpus repeat justified; mandatory L02 remains unresolved.
+Next A02.2 finite pinned React19 reducer-identity experiment;15/29 full tasks complete.

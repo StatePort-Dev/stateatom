@@ -1663,7 +1663,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-21-a02-reducer-boundary.md",
       "execution_record": "30-a02-reducer-lineage-boundary.md",
-      "active_slice": null,
+      "active_slice": "A02.2 isolated pinned React19.2.5 original useReducer queue/update/result to committed-consumer experiment; retain ownership/prop-transfer Unknown",
       "completed_slices": [
         {
           "id": "A02.1",
@@ -2651,7 +2651,7 @@
       "deliverable": "Real-device useful local explanations and complete model-free fallback; unavailability alone does not pass",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "L02.9 bounded fixed system instructions and documented low-variance extension sampling; preregister targeted failed/unknown controls before full corpus",
+      "active_slice": null,
       "implementation_plan": "../superpowers/plans/2026-10-21-l02-real-local-model.md",
       "remaining_acceptance": [
         "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
@@ -2659,34 +2659,34 @@
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
-      "execution_record": "66-l02-compatible-partial-quality.md",
+      "execution_record": "67-l02-system-focused-controls.md",
       "current_checkpoint": {
-        "id": "L02.8c-compatible-partial-quality",
-        "status": "complete-bounded-source-correction-and-partial-failure-record",
-        "record": "66-l02-compatible-partial-quality.md",
+        "id": "L02.9-system-focused-controls",
+        "status": "complete-bounded-candidate-focused-controls-not-L02",
+        "record": "67-l02-system-focused-controls.md",
         "candidate": "@stateport/atom@0.1.0-candidate.20261021.29",
-        "source_tests": 1896,
-        "focused_tests": 44,
-        "main_visited": 28,
-        "main_unvisited": 2,
-        "supplement_unvisited": 4,
-        "actual_prompt_returns": 25,
-        "structurally_accepted": 25,
-        "definite_clause_failures": 9,
-        "ambiguous_clause_rejections": 7,
-        "scoped_factual_passes": 9,
-        "limited_useful_additions": 1,
-        "actual_timeout_ms": 120023,
-        "resolved_sessions": 26,
-        "destroy_returned": 26,
-        "strict_client_byte_unchanged": true,
+        "source_tests": 1898,
+        "focused_tests": 46,
+        "actual_focused_prompt_returns": 10,
+        "original_main_inputs": 8,
+        "original_positive_body_inputs": 2,
+        "structure_accepted": 10,
+        "scoped_factual_passes": 8,
+        "boundary_rejections": 2,
+        "added_useful_meaning": 0,
+        "actual_session_settings": {
+          "topK": 1,
+          "temperature": 0
+        },
+        "resolved_and_destroy_returned": 10,
+        "strict_client_unchanged": true,
         "provider_in_archive_exports": false,
         "full_comparison_complete": false,
         "quality_gate_passed": false,
         "full_L02_acceptance": false,
-        "verification": ".artifacts/l02/derived-compatible/verification.json",
-        "next_item": "L02.9 bounded fixed system instructions and documented low-variance extension sampling; preregister targeted failed/unknown controls before full corpus",
-        "boundary": "Only evidenced generation uniqueItems omitted;44focused/1896full PASS, strict client byte-unchanged. Actual25returns/25structure accepted but9factual failures/7ambiguous;1limited useful addition cannot offset quality failures. Main28visited/2unvisited+4supplement unvisited after120s timeout;26resolved/26destroy returns. Experimental addon only; L02 open."
+        "verification": ".artifacts/l02/system-candidate/verification-and-clauses.json",
+        "next_item": "A02.2 isolated pinned React19.2.5 original useReducer queue/update/result to committed-consumer experiment; retain ownership/prop-transfer Unknown",
+        "boundary": "Fixed system plus topK1/temp0 accepted/exposed by real Chrome155,10actual returns/10structure accepted and cleanup;8scoped passes/2boundary rejects/0new useful meaning.46focused/1898full source PASS; strict gates unchanged. Focused8main+2positive body, not30+4 or final product. No UI switch/full rerun; L02 mandatory/open, next ready A02.2."
       },
       "completed_slices": [
         {
@@ -2877,6 +2877,34 @@
           "verification": ".artifacts/l02/derived-compatible/verification.json",
           "next_item": "L02.9 bounded fixed system instructions and documented low-variance extension sampling; preregister targeted failed/unknown controls before full corpus",
           "boundary": "Only evidenced generation uniqueItems omitted;44focused/1896full PASS, strict client byte-unchanged. Actual25returns/25structure accepted but9factual failures/7ambiguous;1limited useful addition cannot offset quality failures. Main28visited/2unvisited+4supplement unvisited after120s timeout;26resolved/26destroy returns. Experimental addon only; L02 open."
+        },
+        {
+          "id": "L02.9-system-focused-controls",
+          "status": "complete-bounded-candidate-focused-controls-not-L02",
+          "record": "67-l02-system-focused-controls.md",
+          "candidate": "@stateport/atom@0.1.0-candidate.20261021.29",
+          "source_tests": 1898,
+          "focused_tests": 46,
+          "actual_focused_prompt_returns": 10,
+          "original_main_inputs": 8,
+          "original_positive_body_inputs": 2,
+          "structure_accepted": 10,
+          "scoped_factual_passes": 8,
+          "boundary_rejections": 2,
+          "added_useful_meaning": 0,
+          "actual_session_settings": {
+            "topK": 1,
+            "temperature": 0
+          },
+          "resolved_and_destroy_returned": 10,
+          "strict_client_unchanged": true,
+          "provider_in_archive_exports": false,
+          "full_comparison_complete": false,
+          "quality_gate_passed": false,
+          "full_L02_acceptance": false,
+          "verification": ".artifacts/l02/system-candidate/verification-and-clauses.json",
+          "next_item": "A02.2 isolated pinned React19.2.5 original useReducer queue/update/result to committed-consumer experiment; retain ownership/prop-transfer Unknown",
+          "boundary": "Fixed system plus topK1/temp0 accepted/exposed by real Chrome155,10actual returns/10structure accepted and cleanup;8scoped passes/2boundary rejects/0new useful meaning.46focused/1898full source PASS; strict gates unchanged. Focused8main+2positive body, not30+4 or final product. No UI switch/full rerun; L02 mandatory/open, next ready A02.2."
         }
       ],
       "execution_records": [
@@ -2889,8 +2917,14 @@
         "63-l02-derived-provider-source.md",
         "64-l02-derived-api-attempt.md",
         "65-l02-schema-compatibility-control.md",
-        "66-l02-compatible-partial-quality.md"
-      ]
+        "66-l02-compatible-partial-quality.md",
+        "67-l02-system-focused-controls.md"
+      ],
+      "stopping_point": {
+        "reason": "Focused candidate still loses observation/model boundaries and demonstrates no new useful meaning; no blind full-corpus or prompt-tuning repeat justified. Mandatory L02 remains unresolved, not waived.",
+        "provider_visibility": "experimental evaluation addon only; original product finite provider unchanged",
+        "next_dependency_ready_work_item": "A02.2"
+      }
     },
     {
       "id": "I01",
@@ -3243,34 +3277,34 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "L02.8c-compatible-partial-quality",
-      "status": "complete-bounded-source-correction-and-partial-failure-record",
-      "record": "66-l02-compatible-partial-quality.md",
+      "id": "L02.9-system-focused-controls",
+      "status": "complete-bounded-candidate-focused-controls-not-L02",
+      "record": "67-l02-system-focused-controls.md",
       "candidate": "@stateport/atom@0.1.0-candidate.20261021.29",
-      "source_tests": 1896,
-      "focused_tests": 44,
-      "main_visited": 28,
-      "main_unvisited": 2,
-      "supplement_unvisited": 4,
-      "actual_prompt_returns": 25,
-      "structurally_accepted": 25,
-      "definite_clause_failures": 9,
-      "ambiguous_clause_rejections": 7,
-      "scoped_factual_passes": 9,
-      "limited_useful_additions": 1,
-      "actual_timeout_ms": 120023,
-      "resolved_sessions": 26,
-      "destroy_returned": 26,
-      "strict_client_byte_unchanged": true,
+      "source_tests": 1898,
+      "focused_tests": 46,
+      "actual_focused_prompt_returns": 10,
+      "original_main_inputs": 8,
+      "original_positive_body_inputs": 2,
+      "structure_accepted": 10,
+      "scoped_factual_passes": 8,
+      "boundary_rejections": 2,
+      "added_useful_meaning": 0,
+      "actual_session_settings": {
+        "topK": 1,
+        "temperature": 0
+      },
+      "resolved_and_destroy_returned": 10,
+      "strict_client_unchanged": true,
       "provider_in_archive_exports": false,
       "full_comparison_complete": false,
       "quality_gate_passed": false,
       "full_L02_acceptance": false,
-      "verification": ".artifacts/l02/derived-compatible/verification.json",
-      "next_item": "L02.9 bounded fixed system instructions and documented low-variance extension sampling; preregister targeted failed/unknown controls before full corpus",
-      "boundary": "Only evidenced generation uniqueItems omitted;44focused/1896full PASS, strict client byte-unchanged. Actual25returns/25structure accepted but9factual failures/7ambiguous;1limited useful addition cannot offset quality failures. Main28visited/2unvisited+4supplement unvisited after120s timeout;26resolved/26destroy returns. Experimental addon only; L02 open."
+      "verification": ".artifacts/l02/system-candidate/verification-and-clauses.json",
+      "next_item": "A02.2 isolated pinned React19.2.5 original useReducer queue/update/result to committed-consumer experiment; retain ownership/prop-transfer Unknown",
+      "boundary": "Fixed system plus topK1/temp0 accepted/exposed by real Chrome155,10actual returns/10structure accepted and cleanup;8scoped passes/2boundary rejects/0new useful meaning.46focused/1898full source PASS; strict gates unchanged. Focused8main+2positive body, not30+4 or final product. No UI switch/full rerun; L02 mandatory/open, next ready A02.2."
     },
-    "next_item": "L02.9 bounded fixed system instructions and documented low-variance extension sampling; preregister targeted failed/unknown controls before full corpus",
+    "next_item": "A02.2 isolated pinned React19.2.5 original useReducer queue/update/result to committed-consumer experiment; retain ownership/prop-transfer Unknown",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -3289,7 +3323,7 @@
       "L01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "L02",
+    "active_item": "A02",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -4459,11 +4493,39 @@
         "verification": ".artifacts/l02/derived-compatible/verification.json",
         "next_item": "L02.9 bounded fixed system instructions and documented low-variance extension sampling; preregister targeted failed/unknown controls before full corpus",
         "boundary": "Only evidenced generation uniqueItems omitted;44focused/1896full PASS, strict client byte-unchanged. Actual25returns/25structure accepted but9factual failures/7ambiguous;1limited useful addition cannot offset quality failures. Main28visited/2unvisited+4supplement unvisited after120s timeout;26resolved/26destroy returns. Experimental addon only; L02 open."
+      },
+      {
+        "id": "L02.9-system-focused-controls",
+        "status": "complete-bounded-candidate-focused-controls-not-L02",
+        "record": "67-l02-system-focused-controls.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.29",
+        "source_tests": 1898,
+        "focused_tests": 46,
+        "actual_focused_prompt_returns": 10,
+        "original_main_inputs": 8,
+        "original_positive_body_inputs": 2,
+        "structure_accepted": 10,
+        "scoped_factual_passes": 8,
+        "boundary_rejections": 2,
+        "added_useful_meaning": 0,
+        "actual_session_settings": {
+          "topK": 1,
+          "temperature": 0
+        },
+        "resolved_and_destroy_returned": 10,
+        "strict_client_unchanged": true,
+        "provider_in_archive_exports": false,
+        "full_comparison_complete": false,
+        "quality_gate_passed": false,
+        "full_L02_acceptance": false,
+        "verification": ".artifacts/l02/system-candidate/verification-and-clauses.json",
+        "next_item": "A02.2 isolated pinned React19.2.5 original useReducer queue/update/result to committed-consumer experiment; retain ownership/prop-transfer Unknown",
+        "boundary": "Fixed system plus topK1/temp0 accepted/exposed by real Chrome155,10actual returns/10structure accepted and cleanup;8scoped passes/2boundary rejects/0new useful meaning.46focused/1898full source PASS; strict gates unchanged. Focused8main+2positive body, not30+4 or final product. No UI switch/full rerun; L02 mandatory/open, next ready A02.2."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Only evidenced generation uniqueItems omitted;44focused/1896full PASS, strict client byte-unchanged. Actual25returns/25structure accepted but9factual failures/7ambiguous;1limited useful addition cannot offset quality failures. Main28visited/2unvisited+4supplement unvisited after120s timeout;26resolved/26destroy returns. Experimental addon only; L02 open.",
+    "current_activity_note": "Fixed system plus topK1/temp0 accepted/exposed by real Chrome155,10actual returns/10structure accepted and cleanup;8scoped passes/2boundary rejects/0new useful meaning.46focused/1898full source PASS; strict gates unchanged. Focused8main+2positive body, not30+4 or final product. No UI switch/full rerun; L02 mandatory/open, next ready A02.2.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
-  "next_task": "L02"
+  "next_task": "A02"
 }
