@@ -866,3 +866,16 @@ not weighted release readiness. Next L02 actual extension-document local-model
 lifecycle and usefulness evaluation; templates/availability/mocks do not complete
 it. A02 and other validation/release gates remain open. No independent-human
 blocker, redesign, publication, SDK or other-repository changes.
+
+
+### 2026-10-21 — actual local-model baseline; L02 still open
+
+[Real Chrome155 baseline](docs/completion/57-l02-real-device-baseline.md):24actual corpus
+inferences,20strictly validated/4safe template fallbacks for omitted refs. One
+additional inference in document-offline context;25resolved sessions/25destroy
+calls. Explicit download/cancel/two120s timeouts retained. All displayed results
+equal templates:0added-benefit cases. Evaluation derivative has2declared files;
+original .26 host/archive bytes unchanged. Not installed Atom Explain UX, OS
+airgap, historical25-plus-malicious/full30 acceptance or O01 completion. L02
+remains mandatory/in-progress;15/29 full items complete. Next actual installed
+controls and evidence-metadata omission hardening, keeping strict validation.

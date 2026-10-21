@@ -2647,8 +2647,56 @@
         "npm run verify:browser"
       ],
       "deliverable": "Real-device useful local explanations and complete model-free fallback; unavailability alone does not pass",
-      "status": "planned",
-      "optional": false
+      "status": "in-progress",
+      "optional": false,
+      "active_slice": "L02.2 actual installed controls and observed metadata omission hardening",
+      "implementation_plan": "../superpowers/plans/2026-10-21-l02-real-local-model.md",
+      "remaining_acceptance": [
+        "Actual supported Google Chrome extension-document inference/lifecycle/offline",
+        "20–30-case factual/concision/usefulness comparison with L01 templates",
+        "Usefulness beyond finite equivalent sentence selection; no mock/unavailable substitution",
+        "ONE whole-L02 review only after full item acceptance"
+      ],
+      "execution_record": "57-l02-real-device-baseline.md",
+      "current_checkpoint": {
+        "id": "L02.1-real-device-finite-baseline",
+        "status": "actual-inference-without-added-usefulness-not-complete",
+        "record": "57-l02-real-device-baseline.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.26",
+        "actual_corpus_inferences": 24,
+        "validated_model_outputs": 20,
+        "strict_rejections_with_template": 4,
+        "additional_offline_document_inference": 1,
+        "added_usefulness_cases": 0,
+        "full_L02_acceptance": false,
+        "historical_25_with_malicious_gate_passed": false,
+        "installed_Atom_Explain_UX_accepted": false,
+        "verification": ".artifacts/l02/evaluation/baseline-verification.json",
+        "next_item": "L02.2 actual installed controls and observed metadata omission hardening",
+        "boundary": "Real Google Chrome155 extension-document inference; explicit download/cancel/two timeouts and25 destroy calls. Evaluation derivative adds2 declared files; original .26 bytes unchanged.24 is exploratory baseline, not final25-plus-malicious/30 acceptance.20 accepted/4 refs omissions safely rejected; all displayed text equals templates, no usefulness benefit. Offline document only, not OS airgap. L02 mandatory/open."
+      },
+      "completed_slices": [
+        {
+          "id": "L02.1-real-device-finite-baseline",
+          "status": "actual-inference-without-added-usefulness-not-complete",
+          "record": "57-l02-real-device-baseline.md",
+          "candidate": "@stateport/atom@0.1.0-candidate.20261021.26",
+          "actual_corpus_inferences": 24,
+          "validated_model_outputs": 20,
+          "strict_rejections_with_template": 4,
+          "additional_offline_document_inference": 1,
+          "added_usefulness_cases": 0,
+          "full_L02_acceptance": false,
+          "historical_25_with_malicious_gate_passed": false,
+          "installed_Atom_Explain_UX_accepted": false,
+          "verification": ".artifacts/l02/evaluation/baseline-verification.json",
+          "next_item": "L02.2 actual installed controls and observed metadata omission hardening",
+          "boundary": "Real Google Chrome155 extension-document inference; explicit download/cancel/two timeouts and25 destroy calls. Evaluation derivative adds2 declared files; original .26 bytes unchanged.24 is exploratory baseline, not final25-plus-malicious/30 acceptance.20 accepted/4 refs omissions safely rejected; all displayed text equals templates, no usefulness benefit. Offline document only, not OS airgap. L02 mandatory/open."
+        }
+      ],
+      "execution_records": [
+        "57-l02-real-device-baseline.md"
+      ]
     },
     {
       "id": "I01",
@@ -3001,23 +3049,23 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "L01.3-whole-item-accepted",
-      "status": "complete-bounded-L01-after-one-review-and-fix-pass",
-      "record": "56-l01-whole-item-review.md",
+      "id": "L02.1-real-device-finite-baseline",
+      "status": "actual-inference-without-added-usefulness-not-complete",
+      "record": "57-l02-real-device-baseline.md",
       "candidate": "@stateport/atom@0.1.0-candidate.20261021.26",
-      "source_checks": 1846,
-      "focused_checks": 87,
-      "native_explanation_checks": 24,
-      "type_consumers": 2,
-      "package_admission_checks": 7,
-      "full_L01_acceptance": true,
-      "whole_L01_review_performed": true,
-      "L02_real_model_acceptance": false,
-      "verification": ".artifacts/l01/whole-review-fixes/verification26.json",
-      "next_item": "L02",
-      "boundary": "ONE whole-L01 review and one TDD correction pass. Supported grouping/negation preserve hypothetical masking and unknowns; Basic reuses one fallback/action with details retained. Exact .26 native24; .25 action7/input40/map39 remain historical, not fresh .26 reruns. No model inference, general DOM/HTTP/callback/effect authority, V02/V03 or release acceptance."
+      "actual_corpus_inferences": 24,
+      "validated_model_outputs": 20,
+      "strict_rejections_with_template": 4,
+      "additional_offline_document_inference": 1,
+      "added_usefulness_cases": 0,
+      "full_L02_acceptance": false,
+      "historical_25_with_malicious_gate_passed": false,
+      "installed_Atom_Explain_UX_accepted": false,
+      "verification": ".artifacts/l02/evaluation/baseline-verification.json",
+      "next_item": "L02.2 actual installed controls and observed metadata omission hardening",
+      "boundary": "Real Google Chrome155 extension-document inference; explicit download/cancel/two timeouts and25 destroy calls. Evaluation derivative adds2 declared files; original .26 bytes unchanged.24 is exploratory baseline, not final25-plus-malicious/30 acceptance.20 accepted/4 refs omissions safely rejected; all displayed text equals templates, no usefulness benefit. Offline document only, not OS airgap. L02 mandatory/open."
     },
-    "next_item": "L02",
+    "next_item": "L02.2 actual installed controls and observed metadata omission hardening",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -4017,10 +4065,27 @@
         "verification": ".artifacts/l01/whole-review-fixes/verification26.json",
         "next_item": "L02",
         "boundary": "ONE whole-L01 review and one TDD correction pass. Supported grouping/negation preserve hypothetical masking and unknowns; Basic reuses one fallback/action with details retained. Exact .26 native24; .25 action7/input40/map39 remain historical, not fresh .26 reruns. No model inference, general DOM/HTTP/callback/effect authority, V02/V03 or release acceptance."
+      },
+      {
+        "id": "L02.1-real-device-finite-baseline",
+        "status": "actual-inference-without-added-usefulness-not-complete",
+        "record": "57-l02-real-device-baseline.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.26",
+        "actual_corpus_inferences": 24,
+        "validated_model_outputs": 20,
+        "strict_rejections_with_template": 4,
+        "additional_offline_document_inference": 1,
+        "added_usefulness_cases": 0,
+        "full_L02_acceptance": false,
+        "historical_25_with_malicious_gate_passed": false,
+        "installed_Atom_Explain_UX_accepted": false,
+        "verification": ".artifacts/l02/evaluation/baseline-verification.json",
+        "next_item": "L02.2 actual installed controls and observed metadata omission hardening",
+        "boundary": "Real Google Chrome155 extension-document inference; explicit download/cancel/two timeouts and25 destroy calls. Evaluation derivative adds2 declared files; original .26 bytes unchanged.24 is exploratory baseline, not final25-plus-malicious/30 acceptance.20 accepted/4 refs omissions safely rejected; all displayed text equals templates, no usefulness benefit. Offline document only, not OS airgap. L02 mandatory/open."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "ONE whole-L01 review and one TDD correction pass. Supported grouping/negation preserve hypothetical masking and unknowns; Basic reuses one fallback/action with details retained. Exact .26 native24; .25 action7/input40/map39 remain historical, not fresh .26 reruns. No model inference, general DOM/HTTP/callback/effect authority, V02/V03 or release acceptance.",
+    "current_activity_note": "Real Google Chrome155 extension-document inference; explicit download/cancel/two timeouts and25 destroy calls. Evaluation derivative adds2 declared files; original .26 bytes unchanged.24 is exploratory baseline, not final25-plus-malicious/30 acceptance.20 accepted/4 refs omissions safely rejected; all displayed text equals templates, no usefulness benefit. Offline document only, not OS airgap. L02 mandatory/open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "L02"
