@@ -1,3 +1,4 @@
+if(process.argv.includes('--native-handoff')){await import('./source-map-native.mjs');process.exit(process.exitCode||0);}
 // SPDX-License-Identifier: Apache-2.0
 import {build} from 'esbuild';
 import {createServer} from 'node:http';

@@ -5,28 +5,29 @@ import {readFile,writeFile,mkdir,cp,rename,open} from 'node:fs/promises';
 import {execFileSync,fork} from 'node:child_process';
 import path from 'node:path';
 import net from 'node:net';
+import {readExplanationUI,assertExplanationMeaning,runExplanationExtras} from '../helpers/explanation-native-cases.mjs';
 import {root} from '../../scripts/vite-config.mjs';
 import {fileDigests,todoRevision} from '../../scripts/short-loop-inputs.mjs';
 import {startNativeBrowser,nativeApproveDevelopment} from '../../scripts/native-browser.mjs';
 import {startIDE,startBrowser,rpc,waitFor} from '../../scripts/harness.mjs';
 import {sha256,fileManifest,verifyArtifactHashes,inspectInstalledPair} from '../../scripts/atom-package-receipt.mjs';
 
-const instancesOnly=process.argv.includes('--instances-only'),grammarOnly=process.argv.includes('--grammar-only'),pickerViewOnly=process.argv.includes('--picker-view-only'),independentOnly=process.argv.includes('--independent-only');
+const explanationsOnly=process.argv.includes('--explanations-only'),instancesOnly=process.argv.includes('--instances-only'),grammarOnly=process.argv.includes('--grammar-only')||explanationsOnly,pickerViewOnly=process.argv.includes('--picker-view-only'),independentOnly=process.argv.includes('--independent-only');
 assert([instancesOnly,grammarOnly,pickerViewOnly,independentOnly].filter(Boolean).length<=1,'Select exactly one bounded mode');
 const hf=process.argv.find(s=>s.endsWith('atom-handoff.json'))||'.artifacts/atom/atom-handoff.json';
 const h=JSON.parse(await readFile(hf));
-const out='.artifacts/a01/'+(independentOnly?'ordinary-corpus-native':pickerViewOnly?'ordinary-picker-view-native':grammarOnly?'ordinary-grammar-native':instancesOnly?'ordinary-instances-native':'ordinary-hmr-native')+'/' +new Date().toISOString().replace(/[:.]/g,'-');
+const out=(explanationsOnly?'.artifacts/l01/ui-native/':'.artifacts/a01/'+(independentOnly?'ordinary-corpus-native':pickerViewOnly?'ordinary-picker-view-native':grammarOnly?'ordinary-grammar-native':instancesOnly?'ordinary-instances-native':'ordinary-hmr-native')+'/')+new Date().toISOString().replace(/[:.]/g,'-');
 await mkdir(out,{recursive:true});await writeFile(out+'/driver.mjs',await readFile(new URL(import.meta.url)));
 const sourceBase='.runtime/todomvc',appRelative='examples/react',appBase=sourceBase+'/'+appRelative;
 const entries=['license.md',appRelative+'/src',appRelative+'/public',appRelative+'/package.json',appRelative+'/package-lock.json'];
 const footer='src/todo/components/footer.jsx';
-const inputEntries=['src/engine','core/analyzer.mjs','core/runtime-state.mjs','core/bridge.mjs','ide-extension/session.mjs','ide-extension/extension.mjs','dist/ide/extension.cjs','scripts/native-browser.mjs','scripts/harness.mjs','scripts/short-loop-inputs.mjs','tests/ide-host.cjs','tests/integration/ordinary-react-hmr.mjs','tests/helpers/ordinary-react-server.mjs','tests/helpers/ordinary-properties-server.mjs','tests/fixtures/inspection/ordinary-react',...(independentOnly?['tests/helpers/ordinary-redux-server.mjs']:[])];
+const inputEntries=['src/engine','core/analyzer.mjs','core/runtime-state.mjs','core/bridge.mjs','ide-extension/session.mjs','ide-extension/extension.mjs','dist/ide/extension.cjs','scripts/native-browser.mjs','scripts/harness.mjs','scripts/short-loop-inputs.mjs','tests/ide-host.cjs','tests/integration/ordinary-react-hmr.mjs','tests/helpers/ordinary-react-server.mjs','tests/helpers/ordinary-properties-server.mjs','tests/fixtures/inspection/ordinary-react',...(explanationsOnly?['tests/helpers/explanation-native-cases.mjs','tests/fixtures/explanations']:[]),...(independentOnly?['tests/helpers/ordinary-redux-server.mjs']:[])];
 const inputs=async()=>({...await fileDigests(root,inputEntries),...Object.fromEntries(await Promise.all(Object.keys({...h.sourceManifest,...h.buildSources.manifest}).map(async f=>[f,sha256(await readFile(f))])))});
 const result={
- schema:independentOnly?'stateatom.ordinary-react-corpus-native/1':pickerViewOnly?'stateatom.ordinary-react-picker-view-native/1':grammarOnly?'stateatom.ordinary-react-grammar-native/1':instancesOnly?'stateatom.ordinary-react-instances-native/1':'stateatom.ordinary-react-hmr-native/1',status:'RUNNING',startedAt:new Date().toISOString(),
+ schema:explanationsOnly?'stateatom.l01-native-explanations/1':independentOnly?'stateatom.ordinary-react-corpus-native/1':pickerViewOnly?'stateatom.ordinary-react-picker-view-native/1':grammarOnly?'stateatom.ordinary-react-grammar-native/1':instancesOnly?'stateatom.ordinary-react-instances-native/1':'stateatom.ordinary-react-hmr-native/1',status:'RUNNING',startedAt:new Date().toISOString(),
  revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceDirty:true,
  handoff:{file:hf,sha256:sha256(await readFile(hf)),package:h.package,ui:h.ui},
- configuration:{mode:independentOnly?'retained-three-corpus-questions-both-hosts':pickerViewOnly?'picker-display-cancel-history':grammarOnly?'synthetic-ordinary-grammar':instancesOnly?'equal-instances':'source-edits',operator:'agent',browserPlugin:'Browser plugin unavailable; exact paired native MV3 hosts and existing Atom debugger ownership required',
+ configuration:{mode:explanationsOnly?'L01-real-copied-condition-summaries':independentOnly?'retained-three-corpus-questions-both-hosts':pickerViewOnly?'picker-display-cancel-history':grammarOnly?'synthetic-ordinary-grammar':instancesOnly?'equal-instances':'source-edits',operator:'agent',browserPlugin:'Browser plugin unavailable; exact paired native MV3 hosts and existing Atom debugger ownership required',
   source:grammarOnly?'Explicit synthetic grammar fixture in an exclusive copied workspace, using its verified locked React19 dependencies; independent business source unused/unchanged':'Read-only pinned extracted TodoMVC directory; edits only in an exclusive copied workspace including its locked dependencies',
   plugin:{enabled:true,sourceConsumption:true,reactHostProps:false,reactCommit:false,firstReadContracts:false},
   appTargetSession:false,probes:grammarOnly?'Explicit chrome.scripting MAIN/ISOLATED, native app Input and native DOM metadata/search through the existing Atom debugger; no harness DOM.getDocument, app-page facade or parallel app-target session. Getter event reads are explicit synthetic probes.':'Explicit chrome.scripting MAIN/ISOLATED, native app Input, DOM metadata/search (without harness DOM.getDocument) and Network.getResponseBody through the existing Atom debugger. No app-page facade or parallel app-target CDP.',
@@ -300,7 +301,7 @@ async function inspectGrammar(label,selector,property,value,file,expression){
  for(const n of runtime.nodes){assert(reachable.has(n.id));assert.equal(n.page,state.selection.page);if(n.sourceDigest)assert.equal(n.sourceDigest,sha256(await readFile(result.currentWorkspace+'/'+n.file)));}
  const ui=await waitFor(()=>panel.evaluate(expression=>{const r={status:document.querySelector('[data-atom-id="status"]').textContent,expressions:document.querySelector('[data-atom-id="expressions"]').textContent,operands:document.querySelector('[data-atom-id="operands"]').textContent,freshness:document.querySelector('[data-atom-id="freshness"]').textContent};return r.status==='OK'&&r.expressions.includes(expression)?r:null;},expression));
  assert.deepEqual(await grammarProbe(),appBefore,'Inspection did not execute the policy getter or change the application');
- const record={label,selectionMethod:'Real native U05 picker',selection:state.selection,dom,source,runtime,ui,appBefore,appAfter:await grammarProbe(),run:state.run},destination=out+'/'+label+'-observation.json';await writeFile(destination,JSON.stringify(record,null,2));return{...record,file:destination,sha256:sha256(await readFile(destination))};
+ const record={label,selectionMethod:'Real native U05 picker',selection:state.selection,dom,source,runtime,ui,appBefore,appAfter:await grammarProbe(),run:state.run,...(explanationsOnly?{state,nativeTabId:tabId,explanation:await readExplanationUI(panel)}:{})};if(explanationsOnly)assertExplanationMeaning(record);const destination=out+'/'+label+'-observation.json';await writeFile(destination,JSON.stringify(record,null,2));return{...record,file:destination,sha256:sha256(await readFile(destination))};
 }
 function skipped(observation){
  assert(observation.runtime.nodes.some(n=>n.kind==='read'&&n.expression==='hold'&&n.value===true));
@@ -315,7 +316,7 @@ function parameterBoundary(observation){
 }
 async function grammarSequence(entry,kind,workspace){
  result.currentWorkspace=workspace.dir;await mkdir(workspace.dir+'/control-src');
- for(const file of ['App.jsx','Label.jsx','Forward.jsx'])await cp('tests/fixtures/inspection/ordinary-react/'+file,workspace.dir+'/control-src/'+file);
+ for(const file of ['App.jsx','Label.jsx','Forward.jsx'])await cp(explanationsOnly&&file==='App.jsx'?'tests/fixtures/explanations/App.jsx':'tests/fixtures/inspection/ordinary-react/'+file,workspace.dir+'/control-src/'+file);
  await cp('tests/fixtures/inspection/ordinary-react/index.html',workspace.dir+'/index.html');entry.fixtureManifest=await fileDigests(workspace.dir,['control-src','index.html']);
  const withoutObserver=p=>({...p,observer:false});
  await startServer(workspace.dir,false);await launch(kind,kind+'-grammar-off');
@@ -346,6 +347,9 @@ async function grammarSequence(entry,kind,workspace){
   const condition=await inspectGrammar(kind+'-short','#condition','disabled',true,'control-src/App.jsx','hold || !policy.allowed');assert(condition.runtime.nodes.some(n=>n.kind==='member'&&n.expression==='policy.allowed'&&n.value===false));assert(condition.runtime.nodes.some(n=>n.kind==='unary'&&n.expression==='!policy.allowed'&&n.value===true));assert.notEqual(condition.runtime.target.id,entry.taken.runtime.target.id);entry.short=condition;
   assert.equal((await rpc(panel,{op:'open-handoff',id:entry.saved.id})).raw,entry.saved.raw);assert.equal(sha256(await readFile(entry.saved.file)),entry.saved.sha256);
  });
+ if(explanationsOnly)await runExplanationExtras({kind,entry,workspace,out,h,check,panel:()=>panel,protocol,action,appClick,grammarProbe,inspectGrammar,waitFor,rpc,tabId,unpair:()=>rpc(panel,{op:'unpair'}),basicPick:async()=>{await action('pick');await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).picker?.status==='picking');await appClick('#mask');return waitFor(async()=>{const state=await rpc(panel,{op:'state',tabId});return state.picker?.status==='selected'&&state.analysis?.capabilities.sourceResolver==='unavailable'&&state.selection?.selector==='#mask'?{state}:null;});},openReader:async file=>{
+  const original=panel,originalCDP=panelCDP;const reader=await browser.context.newPage();await reader.goto('chrome-extension://'+browser.id+'/reader.html');const p=await browser.context.newCDPSession(reader);try{await p.send('Page.bringToFront');const root=(await p.send('DOM.getDocument')).root.nodeId,input=(await p.send('DOM.querySelector',{nodeId:root,selector:'#diagnostic-file'})).nodeId;await p.send('DOM.setFileInputFiles',{nodeId:input,files:[path.resolve(file)]});return await waitFor(()=>reader.evaluate(()=>{const status=document.getElementById('reader-status').textContent;if(!status.startsWith('Imported historical'))return null;return{status,summary:document.getElementById('reader-summary').textContent,detailsOpen:[...document.querySelectorAll('details')].find(n=>n.querySelector('summary')?.textContent==='Recorded findings and limits')?.open};}));}finally{const id=await reader.evaluate(async()=>(await chrome.tabs.getCurrent()).id);await p.detach();await original.evaluate(id=>chrome.tabs.remove(id),id);panel=original;panelCDP=originalCDP;}
+ }});
  entry.finalManifest=await fileDigests(workspace.dir,['src','public','package.json','package-lock.json','license.md']);assert.deepEqual(entry.finalManifest,workspace.initialManifest);assert.deepEqual(await fileDigests(workspace.dir,['control-src','index.html']),entry.fixtureManifest);
  await panel.screenshot({path:out+'/'+kind+'-grammar-candidate.png'});delete entry.saved.raw;await closeBrowser();await stopServer();await ide.close(true);ide=null;assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);
 }
@@ -583,7 +587,7 @@ try{
   await closeBrowser();await stopServer();await ide.close(true);ide=null;
   assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);
  }
- result.status=independentOnly?'PASS_RETAINED_THREE_CORPUS_QUESTIONS_BOTH_HOSTS':pickerViewOnly?'PASS_ORDINARY_PICKER_DISPLAY_CANCEL_ONLY':grammarOnly?'PASS_SYNTHETIC_ORDINARY_REACT_GRAMMAR_ONLY':instancesOnly?'PASS_ORDINARY_REACT_EQUAL_INSTANCES_ONLY':'PASS_ORDINARY_REACT_SOURCE_EDIT_ONLY';
+ result.status=explanationsOnly?'PASS_SCOPED_L01_INSTALLED_EXPLANATIONS_NOT_REAL_MODEL':independentOnly?'PASS_RETAINED_THREE_CORPUS_QUESTIONS_BOTH_HOSTS':pickerViewOnly?'PASS_ORDINARY_PICKER_DISPLAY_CANCEL_ONLY':grammarOnly?'PASS_SYNTHETIC_ORDINARY_REACT_GRAMMAR_ONLY':instancesOnly?'PASS_ORDINARY_REACT_EQUAL_INSTANCES_ONLY':'PASS_ORDINARY_REACT_SOURCE_EDIT_ONLY';
 }catch(e){result.status='FAIL';result.error=String(e.stack||e);process.exitCode=1;console.error(e);await panel?.screenshot({path:out+'/failure-candidate.png'}).catch(()=>{});}
 finally{
  await closeBrowser().catch(e=>result.errors.push({cleanup:'browser',message:e.message}));await stopServer().catch(e=>result.errors.push({cleanup:'server',message:e.message}));

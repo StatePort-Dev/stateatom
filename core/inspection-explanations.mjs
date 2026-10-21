@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Existing inert records -> local presentation facts. This creates no evidence.
 import{parseExplanationCondition,evaluateExplanationCondition}from'./explanation-condition.mjs';
+import{createActionObservationReport}from'./action-observation-report.mjs';
 const own=(o,k)=>{try{const d=o&&Object.getOwnPropertyDescriptor(o,k);return d&&'value'in d?d.value:undefined;}catch{return undefined;}};
 const at=(o,...keys)=>keys.reduce((v,k)=>own(v,k),o);
 const list=(o,max=128)=>{if(!Array.isArray(o))return[];const n=own(o,'length');if(!Number.isSafeInteger(n)||n<0||n>max)return[];return Array.from({length:n},(_,i)=>own(o,String(i)));};
@@ -52,8 +53,10 @@ function propertyFacts(state,facts){
   const nodes=[];function leaves(n){if(n.kind==='input')nodes.push(n);else if(n.child)leaves(n.child);else if(n.left){leaves(n.left);leaves(n.right);}}leaves(model);
   const readRecords=conditionReadRecords(model,expression,anchor,root,closure,location);
   for(const n of nodes){const record=readRecords.get(n.start+':'+n.end),v=own(record,'value');
-   if(record&&typeof v==='boolean'){inputs.push({start:n.start,end:n.end,value:v,status:'Observed'});facts.evidenceIds.push(own(record,'id'));}
-   facts.details.push({kind:'condition-input',expression:n.label,status:record&&typeof v==='boolean'?'Observed':'Unavailable',...(record&&primitive(v)?{value:v}:{}),source:record?source(record):null,evidenceIds:record?[own(record,'id')]:[]});
+   if(record&&typeof v==='boolean')inputs.push({start:n.start,end:n.end,value:v,status:'Observed'});if(record&&primitive(v))facts.evidenceIds.push(own(record,'id'));
+   facts.details.push({kind:'condition-input',expression:n.label,status:record&&primitive(v)?'Observed':'Unavailable',...(record&&primitive(v)?{value:v}:{}),source:record?source(record):null,evidenceIds:record?[own(record,'id')]:[]});
+   const origin=own(record,'origin'),pointer=text(own(origin,'pointer'),512),exchangeId=text(own(origin,'exchangeId'),160);
+   if(record&&primitive(v)&&pointer&&exchangeId)facts.details.push({kind:'parsed-origin-fragment',status:'Observed',expression:pointer,exchangeId,scope:'Parsed object/field identity only; current HTTP value origin remains unknown.',evidenceIds:[own(record,'id')]});
   }
   const condition=evaluateExplanationCondition(model,inputs);
   // A disagreeing computed model is not repaired by the recorded target result.
@@ -64,6 +67,7 @@ function propertyFacts(state,facts){
  const c=facts.condition;
  if(typeof value==='boolean'&&c?.masking&&c.knownTrueTerms>1)facts.summaries=['In the copied condition, two terms independently keep the result true. Changing only one would be insufficient; this is a hypothetical logical result.'];
  else if(typeof value==='boolean'&&c)facts.summaries=['The recorded condition returned '+value+'. '+(c.unknownInputs?'A skipped or unsupported input remains unavailable.':c.knownTrueTerms===1?'One known term is sufficient in this copied boolean model.':'The copied boolean inputs and source are available below.')];
+ else if(facts.property==='text'&&facts.details.some(d=>d.kind==='condition-input'&&d.status==='Observed'))facts.summaries=['The recorded text computation read a copied scalar value. Its upstream producer is not established by this inspection.'];
  else facts.summaries=['A source-linked computation was recorded for this selection. Its detailed condition or its connection to the displayed value is not established.'];
  if(c?.masking)facts.limitations.push('Hypothetical logical consequences are not verified interventions.');
 }
@@ -74,11 +78,28 @@ function currentActionContext(state){
  return c;
 }
 function sameActionContext(binding,context){const id=own(binding,'identity');return !!context&&!!id&&['schema','tabId','frameId','run','inspection','sourceGeneration','document','instance','build','observedAt'].every(k=>own(id,k)===own(context,k));}
+function actionBodyFacts(state,context){
+ if(!context)return[];
+ try{
+  const trace=createActionObservationReport(own(state,'actionTrace'));if(!trace||trace.freshness==='Stale'||['run','build'].some(k=>trace.identity[k]!==own(context,k))||trace.identity.frame!==own(context,'frameId')||trace.identity.page!==at(state,'selection','page'))return[];
+  const graph=at(state,'analysis','graph'),nodes=list(own(graph,'nodes'),512),edges=list(own(graph,'edges'),512),selected=own(state,'selection'),ui=nodes.find(n=>own(n,'id')==='ui');
+  if(!ui||own(ui,'observedAt')!==own(selected,'observedAt')||own(ui,'page')!==own(selected,'page')||own(ui,'instance')!==own(selected,'instance')||at(ui,'domIdentity','document')!==at(selected,'domIdentity','document')||at(ui,'domIdentity','node')!==at(selected,'domIdentity','node'))return[];
+  const bodies=[];
+  for(const record of trace.records.filter(r=>r.kind==='body-entry')){
+   const id='action-trace:'+trace.traceId+':'+record.sequence,node=nodes.find(n=>own(n,'id')===id),edge=edges.find(e=>own(e,'from')==='ui'&&own(e,'to')===id&&own(e,'relation')==='independent-action-observation'&&own(e,'status')==='Observed'&&own(e,'run')===trace.identity.run&&own(e,'build')===trace.identity.build),claim=own(node,'sourceClaim');
+   if(!node||own(node,'status')!=='Observed'||own(node,'kind')!=='body-entry'||!edge||['file','sourceDigest','line','column','endLine','endColumn','symbol'].some(k=>own(claim,k)!==record.source[k]))continue;
+   bodies.push({kind:'independent-body-entry',status:'Observed',expression:record.source.symbol,source:source(record.source),evidenceIds:[id],sourceAtLastRead:trace.sourceAtLastRead});
+  }
+  return bodies;
+ }catch{return[];}
+}
 function actionFacts(state,facts){
  const analysis=own(state,'analysis'),context=currentActionContext(state),bindings=list(own(analysis,'actionBindings'),24).filter(b=>own(b,'freshness')!=='Stale'&&sameActionContext(b,context)),knownEvents=new Set(['click','change','submit','keydown','keyup','blur','focus','input','pointerdown','pointerup']),binding=bindings.find(b=>['react-jsx','vue-template'].includes(own(b,'mechanism')))||bindings.find(b=>own(b,'mechanism')==='dom-listener'&&own(b,'registeredOn')==='selected-element'&&own(b,'status')==='Observed'),event=knownEvents.has(own(binding,'event'))?own(binding,'event'):'interaction';
- facts.status=binding?'Supported':'Unavailable';facts.summaries=[binding?(own(binding,'mechanism')==='dom-listener'?'A '+event+' listener is registered on this element.':'Source declares a '+event+' binding for this element.')+' This does not prove invocation.':'No supported action binding is available for this selection.'];facts.limitations=['A source binding or native registration does not prove invocation.','Callback-object identity and action consequences are not established.'];facts.nextAction={id:'view-evidence',label:'View action evidence'};
+ facts.status=binding?'Supported':'Unavailable';facts.summaries=[binding?(own(binding,'mechanism')==='dom-listener'?'A '+event+' listener is registered on this element.':'Source declares a '+event+' binding for this element.')+' This does not prove invocation; handler execution is not observed from this binding.':'No supported action binding is available for this selection. Handler execution is not observed from binding metadata.'];facts.limitations=['A source binding or native registration does not prove invocation.','Callback-object identity and action consequences are not established.'];facts.nextAction={id:'view-evidence',label:'View action evidence'};
  const valid=new Set(list(at(analysis,'graph','edges'),512).map(e=>text(own(e,'id'),160)).filter(Boolean));
  if(binding){for(const part of['binding','entry'])for(const id of list(at(binding,part,'evidenceIds'),24))if(valid.has(id))facts.evidenceIds.push(id);const entry=own(binding,'entry'),loc=source(own(entry,'source'));facts.details.push({kind:'action-source',status:own(entry,'status')==='Code-linked'?'Code-linked':'Unknown/Unsupported',expression:text(own(entry,'symbol'),256),source:loc,evidenceIds:unique(facts.evidenceIds)});}
+ const bodies=actionBodyFacts(state,context);facts.observedBodies=bodies.length;facts.details.push(...bodies);facts.evidenceIds.push(...bodies.flatMap(b=>b.evidenceIds));
+ if(bodies.length){facts.status='Supported';facts.summaries=[(binding?(own(binding,'mechanism')==='dom-listener'?'A '+event+' listener is registered.':'Source declares a '+event+' binding.'):'No supported source binding is available.')+' A separate same-target observation recorded '+bodies.length+' source-body entr'+(bodies.length===1?'y':'ies')+'; callback-object identity and consequences remain unavailable.'];}
  facts.evidenceIds=unique(facts.evidenceIds);
 }
 export function inspectionExplanationFacts(state={}, {question='property',historical=false}={}){

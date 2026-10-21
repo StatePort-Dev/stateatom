@@ -7,9 +7,9 @@ import {createActionObservation} from '../../core/action-observation.mjs';
 export const deferred=()=>{let resolve;const promise=new Promise(r=>resolve=r);return{promise,resolve};};
 const origin='http://127.0.0.1:4173',page='test-page';
 const site={id:'click-site',file:'src/actions.js',sourceDigest:'a'.repeat(64),line:2,column:1,endLine:5,endColumn:2,kind:'function',symbol:'confirm'};
-export async function actionTraceRuntimeFixture(t,{createRuntime,armGate,sourceGate,onCleanup,resolveGate}={}){
+export async function actionTraceRuntimeFixture(t,{createRuntime,armGate,sourceGate,onCleanup,resolveGate,selectionPage}={}){
  let ledger=null,sequence=0,sourceChecks=0,nativeContext='main-context',armCalls=0,prepared=false;
- const f=inputCaptureRuntimeFixture({createRuntime,
+ const f=inputCaptureRuntimeFixture({createRuntime,selectionPage,
   async fetch(url,init){
    const op=new URL(url).pathname,body=JSON.parse(init.body);
    if(op==='/check-action-sources'){sourceChecks++;await sourceGate?.(body);return{json:async()=>({ok:true,result:{current:true}})};}

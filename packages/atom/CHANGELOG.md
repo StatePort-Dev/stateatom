@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.25
+
+- Keep copied text scalars visibly observed in local details and describe their
+  missing upstream producer. Retain parsed-object identity as a scoped local
+  fragment, with current HTTP ancestry unknown; neither enters model prompts.
+
+## 0.1.0-candidate.20261021.24
+
+- Explain supported copied property conditions in one or two sentences, with a
+  short next action and exact limitations. Keep the existing input editor directly
+  available; group raw source/value/evidence details in a collapsed disclosure.
+- Refresh stored action metadata on explicit Explain, preserving separate body
+  observations and rejecting stale context/model replies. Rich local details do
+  not enter the experimental finite-sentence provider prompt; L02 remains open.
+- Lead passive v1 diagnostics with a historical summary and collapsed recorded
+  findings/limits. Imports never reconstruct missing condition links or gain
+  runtime authority. Use existing typography/controls/disclosures; no CSS, shared
+  tokens, primitives or contract change. Reference has no real condition engine;
+  grouping raw inputs after the editor is the necessary approved L01 deviation.
+
 ## 0.1.0-candidate.20261021.23
 
 - Register the exact parenthesized function form compiled by native Chromium for

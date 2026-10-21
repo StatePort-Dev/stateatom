@@ -2,15 +2,22 @@ import{createHandoffReader}from'./handoff-reader.mjs';
 // SPDX-License-Identifier: Apache-2.0
 // Copyright 2026 StateAtom contributors.
 import{parseDiagnostic}from'../core/diagnostic.mjs';
+import{diagnosticExplanationFacts}from'../core/inspection-explanations.mjs';
 import{readHandoffInput}from'../core/handoff-files.mjs';
 const input=document.getElementById('diagnostic-file'),status=document.getElementById('reader-status'),summary=document.getElementById('reader-summary'),payload=document.getElementById('reader-payload');let generation=0;
-function section(title,lines,{collapsed=false}={}){if(!lines.length)return;const h=document.createElement(collapsed?'summary':'h3'),list=document.createElement('ul');h.textContent=title;for(const line of lines){const item=document.createElement('li');item.textContent=line;list.append(item);}if(collapsed){const disclosure=document.createElement('details');disclosure.className='sp-atom-handoff-details';disclosure.append(h,list);summary.append(disclosure);}else summary.append(h,list);}
+function section(title,lines,{collapsed=false,parent=summary}={}){if(!lines.length)return;const h=document.createElement(collapsed?'summary':'h3'),list=document.createElement('ul');h.textContent=title;for(const line of lines){const item=document.createElement('li');item.textContent=line;list.append(item);}if(collapsed){const disclosure=document.createElement('details');disclosure.className='sp-atom-handoff-details';disclosure.append(h,list);parent.append(disclosure);}else parent.append(h,list);}
 const handoffReader=createHandoffReader({document,summary,payload,status,section});
 function hasHistoricalFiniteTrace(r){const p=r.runtime.firstReadProfile;return p?.status==='Supported finite trace'&&p.fullPath===true&&p.freshness==='Recorded'&&p.sourceProof?.status==='Code-linked'&&p.occurrence?.status==='Observed';}
 function explanation(r){
+ const facts=diagnosticExplanationFacts(r);section('Historical explanation',facts.summaries);
+ const details=document.createElement('details'),heading=document.createElement('summary');details.className='sp-atom-handoff-details';heading.textContent='Recorded findings and limits';details.append(heading);
+ section('Explanation limits',facts.limitations,{parent:details});recordedExplanation(r,(title,lines,options={})=>section(title,lines,{...options,parent:details}));summary.append(details);
+}
+function recordedExplanation(r,section){
  const finiteTrace=hasHistoricalFiniteTrace(r);
  section('Investigation question',[typeof r.notes==='string'&&r.notes?r.notes:'No question supplied.']);
  section('Code-linked locations',r.sources.map(s=>s.file+':'+s.line+':'+s.column+' · Code-linked; execution not established by a source link'));
+ section('Recorded expressions and values',(r.runtime.nodes||[]).filter(n=>typeof n.expression==='string').map(n=>'Historical '+n.status+' claim · '+n.expression+(Object.hasOwn(n,'value')?' = '+JSON.stringify(n.value):'')+' · record '+n.id+' · not current or reverified'));
  const profile=r.runtime.firstReadProfile;
  if(profile)section('Historical finite trace',[profile.status+' · '+profile.freshness+' · '+(profile.case||'')+' · '+(profile.scope||profile.reason||''),profile.sourceProof?profile.sourceProof.status+' source/effect derivation · '+profile.sourceProof.profile:'No source/effect derivation retained',profile.occurrence?profile.occurrence.status+' occurrence claim · '+profile.occurrence.pointer+' · parse '+profile.occurrence.parseId+' · browser request '+profile.occurrence.requestId+' · read '+profile.occurrence.readId+' → commit '+profile.occurrence.commitId:'No occurrence join retained',...profile.limits,profile.trust]);
  const maps=r.runtime.sourceMaps;if(maps)section('Historical source maps',[maps.status+' · '+maps.scripts.filter(r=>r.map).length+' map associations',...maps.scripts.filter(r=>r.map).map(r=>'Script '+r.scriptId+' · '+r.map.status+' · map SHA-256 '+r.map.mapDigest),maps.lookup?'Generated '+maps.lookup.line+':'+maps.lookup.column+' → original '+maps.lookup.originalLine+':'+maps.lookup.originalColumn+' · not linked to element':'No source lookup retained',maps.omissions,maps.trust]);

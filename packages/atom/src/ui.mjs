@@ -6,6 +6,7 @@ import {createSourceMapUI} from './source-map-ui.mjs';
 import {createProductionUI} from './production-ui.mjs';
 import {createInputUI} from './input-ui.mjs';
 import {createActionUI} from './action-ui.mjs';
+import {createInspectionExplanationUI} from './inspection-explanation-ui.mjs';
 import {parseDiagnostic,serializeDiagnostic,omitDiagnosticContent} from '../../../core/diagnostic.mjs';
 import {inspectionView,inspectionDisplayState,selectionPresentation} from '../../../browser-extension/inspection-view.mjs';
 import {template} from './template.mjs';
@@ -59,6 +60,7 @@ async function load(options={}){
 const sourceMapUI=createSourceMapUI({document,$,rpc,tab,load,action,requestPermission:options.requestOriginPermission});
 const actionsUI=createActionUI({document,$,rpc,cleanupRpc:m=>client.request(m),tab,action});
 const inputUI=createInputUI({document,$,client,preview:options.inputEditorPreview===true});
+const explanationUI=createInspectionExplanationUI({document,$,onNext:id=>{if(id==='connect-project')reveal('source-connection');else if(id==='inspect-again')$('load').click();}});
 const productionUI=createProductionUI({$,client,onRefresh:load,onAttach:async()=>{await rpc({op:'attach',tabId:tab(),readOnly:true});await load();},onConnection:()=>reveal('browser-connection')});
 function lostConnection(){if(disposed)return;connectionLost=true;ownedPicker?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);inputUI.update(null);$('status').textContent='Inspector connection lost. Reopen this inspector to continue.';}
 const offConnection=client.subscribeConnection?.(lostConnection)||(()=>{});
@@ -72,6 +74,7 @@ function renderInspection(){
  const displayState=inspectionDisplayState(selectedState||{}),displayAnalysis=displayState.analysis;
  sourceMapUI.render(displayState);
  actionsUI.render(displayState);
+ explanationUI.render(displayState);
  $('project-setup-status').textContent=selectedState?.projectSetup?.reason||'Basic works without the helper. For source access, install matching components and paste a private receipt.';
  const view=inspectionView(displayState),selection=view.target;
  $('mode').textContent=view.mode;

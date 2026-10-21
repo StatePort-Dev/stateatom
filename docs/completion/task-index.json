@@ -2545,9 +2545,9 @@
       "deliverable": "Short explanations from existing fact/evidence records",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "L01.2 current Atom summary/details, passive reader and native acceptance",
+      "active_slice": "ONE whole-L01 scope/code/evidence review",
       "implementation_plan": "../superpowers/plans/2026-10-21-l01-selected-explanations.md",
-      "execution_record": "54-l01-local-fact-model.md",
+      "execution_record": "55-l01-installed-explanations.md",
       "completed_slices": [
         {
           "id": "L01.1-local-facts-source",
@@ -2562,27 +2562,54 @@
           "verification": ".artifacts/l01/facts/verification.json",
           "next_item": "L01.2 current UI/passive reader and native acceptance",
           "boundary": "Pure bounded local property/action facts and boolean/source-literal condition model. Exact current target/structural operand/source context required; missing/stale/foreign/old same-span reads remain unavailable. Rich details excluded by explicit prompt projection. No new rendered/installed capability or real-model inference."
+        },
+        {
+          "id": "L01.2-installed-explanations-ready-for-review",
+          "status": "native-controls-passed-pending-one-whole-item-review",
+          "record": "55-l01-installed-explanations.md",
+          "candidate": "@stateport/atom@0.1.0-candidate.20261021.25",
+          "source_checks": 1833,
+          "focused_checks": 107,
+          "native_explanation_checks": 20,
+          "native_action_explanation_checks": 7,
+          "native_input_regression_checks": 40,
+          "native_map_regression_checks": 39,
+          "type_consumers": 2,
+          "package_admission_checks": 7,
+          "full_L01_acceptance": false,
+          "whole_L01_review_performed": false,
+          "L02_real_model_acceptance": false,
+          "verification": ".artifacts/l01/ui/verification25.json",
+          "next_item": "ONE whole-L01 scope/code/evidence review and one test-backed correction pass if required",
+          "boundary": "Exact .25 native current copied-condition/source-scalar/masking/getter/Basic/passive-reader controls pass in both hosts; explicit Action Explain uses stored independent body metadata without another app action. Existing input and original map predicates pass, with legacy debugger-conflict FAIL retained. No raw local details enter prompts, real-model inference, full causal/HTTP/DOM producer or L02 completion."
         }
       ],
       "current_checkpoint": {
-        "id": "L01.1-local-facts-source",
-        "status": "source-only-not-installed",
-        "record": "54-l01-local-fact-model.md",
-        "source_checks": 1818,
-        "focused_checks": 39,
-        "new_native_checks": 0,
-        "new_package": false,
+        "id": "L01.2-installed-explanations-ready-for-review",
+        "status": "native-controls-passed-pending-one-whole-item-review",
+        "record": "55-l01-installed-explanations.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.25",
+        "source_checks": 1833,
+        "focused_checks": 107,
+        "native_explanation_checks": 20,
+        "native_action_explanation_checks": 7,
+        "native_input_regression_checks": 40,
+        "native_map_regression_checks": 39,
+        "type_consumers": 2,
+        "package_admission_checks": 7,
         "full_L01_acceptance": false,
+        "whole_L01_review_performed": false,
         "L02_real_model_acceptance": false,
-        "verification": ".artifacts/l01/facts/verification.json",
-        "next_item": "L01.2 current UI/passive reader and native acceptance",
-        "boundary": "Pure bounded local property/action facts and boolean/source-literal condition model. Exact current target/structural operand/source context required; missing/stale/foreign/old same-span reads remain unavailable. Rich details excluded by explicit prompt projection. No new rendered/installed capability or real-model inference."
+        "verification": ".artifacts/l01/ui/verification25.json",
+        "next_item": "ONE whole-L01 scope/code/evidence review and one test-backed correction pass if required",
+        "boundary": "Exact .25 native current copied-condition/source-scalar/masking/getter/Basic/passive-reader controls pass in both hosts; explicit Action Explain uses stored independent body metadata without another app action. Existing input and original map predicates pass, with legacy debugger-conflict FAIL retained. No raw local details enter prompts, real-model inference, full causal/HTTP/DOM producer or L02 completion."
       },
       "remaining_acceptance": [
-        "Current selected-property/action summary/details and exact stale/model-result invalidation in mounted Atom",
-        "Passive diagnostic explanation without reconstructing omitted links",
-        "Actual immutable native Actions/Basic/maps and registered condition controls, visual/keyboard candidates",
-        "ONE whole-L01 read-only review and one test-backed fix pass if required"
+        "ONE whole-L01 review against approved07/02/12, including sufficiency of the explicit boolean grammar/masking boundary; one test-backed correction pass if needed"
+      ],
+      "execution_records": [
+        "54-l01-local-fact-model.md",
+        "55-l01-installed-explanations.md"
       ]
     },
     {
@@ -2960,20 +2987,26 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "L01.1-local-facts-source",
-      "status": "source-only-not-installed",
-      "record": "54-l01-local-fact-model.md",
-      "source_checks": 1818,
-      "focused_checks": 39,
-      "new_native_checks": 0,
-      "new_package": false,
+      "id": "L01.2-installed-explanations-ready-for-review",
+      "status": "native-controls-passed-pending-one-whole-item-review",
+      "record": "55-l01-installed-explanations.md",
+      "candidate": "@stateport/atom@0.1.0-candidate.20261021.25",
+      "source_checks": 1833,
+      "focused_checks": 107,
+      "native_explanation_checks": 20,
+      "native_action_explanation_checks": 7,
+      "native_input_regression_checks": 40,
+      "native_map_regression_checks": 39,
+      "type_consumers": 2,
+      "package_admission_checks": 7,
       "full_L01_acceptance": false,
+      "whole_L01_review_performed": false,
       "L02_real_model_acceptance": false,
-      "verification": ".artifacts/l01/facts/verification.json",
-      "next_item": "L01.2 current UI/passive reader and native acceptance",
-      "boundary": "Pure bounded local property/action facts and boolean/source-literal condition model. Exact current target/structural operand/source context required; missing/stale/foreign/old same-span reads remain unavailable. Rich details excluded by explicit prompt projection. No new rendered/installed capability or real-model inference."
+      "verification": ".artifacts/l01/ui/verification25.json",
+      "next_item": "ONE whole-L01 scope/code/evidence review and one test-backed correction pass if required",
+      "boundary": "Exact .25 native current copied-condition/source-scalar/masking/getter/Basic/passive-reader controls pass in both hosts; explicit Action Explain uses stored independent body metadata without another app action. Existing input and original map predicates pass, with legacy debugger-conflict FAIL retained. No raw local details enter prompts, real-model inference, full causal/HTTP/DOM producer or L02 completion."
     },
-    "next_item": "L01.2 current UI/passive reader and native acceptance",
+    "next_item": "ONE whole-L01 scope/code/evidence review and one test-backed correction pass if required",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -3935,10 +3968,30 @@
         "verification": ".artifacts/l01/facts/verification.json",
         "next_item": "L01.2 current UI/passive reader and native acceptance",
         "boundary": "Pure bounded local property/action facts and boolean/source-literal condition model. Exact current target/structural operand/source context required; missing/stale/foreign/old same-span reads remain unavailable. Rich details excluded by explicit prompt projection. No new rendered/installed capability or real-model inference."
+      },
+      {
+        "id": "L01.2-installed-explanations-ready-for-review",
+        "status": "native-controls-passed-pending-one-whole-item-review",
+        "record": "55-l01-installed-explanations.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.25",
+        "source_checks": 1833,
+        "focused_checks": 107,
+        "native_explanation_checks": 20,
+        "native_action_explanation_checks": 7,
+        "native_input_regression_checks": 40,
+        "native_map_regression_checks": 39,
+        "type_consumers": 2,
+        "package_admission_checks": 7,
+        "full_L01_acceptance": false,
+        "whole_L01_review_performed": false,
+        "L02_real_model_acceptance": false,
+        "verification": ".artifacts/l01/ui/verification25.json",
+        "next_item": "ONE whole-L01 scope/code/evidence review and one test-backed correction pass if required",
+        "boundary": "Exact .25 native current copied-condition/source-scalar/masking/getter/Basic/passive-reader controls pass in both hosts; explicit Action Explain uses stored independent body metadata without another app action. Existing input and original map predicates pass, with legacy debugger-conflict FAIL retained. No raw local details enter prompts, real-model inference, full causal/HTTP/DOM producer or L02 completion."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Pure bounded local property/action facts and boolean/source-literal condition model. Exact current target/structural operand/source context required; missing/stale/foreign/old same-span reads remain unavailable. Rich details excluded by explicit prompt projection. No new rendered/installed capability or real-model inference.",
+    "current_activity_note": "Exact .25 native current copied-condition/source-scalar/masking/getter/Basic/passive-reader controls pass in both hosts; explicit Action Explain uses stored independent body metadata without another app action. Existing input and original map predicates pass, with legacy debugger-conflict FAIL retained. No raw local details enter prompts, real-model inference, full causal/HTTP/DOM producer or L02 completion.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "L01"
