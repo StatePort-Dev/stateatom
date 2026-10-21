@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.14
+
+- Refuse late Action Trace acknowledgements after the exact native MAIN execution
+  context is destroyed, reused or becomes ambiguous; retire its observation owner
+  and retain known history as stale. Never transfer cleanup to a replacement trace.
+- Keep Cancel independent of IDE source checks, preserving captured body history
+  without waiting for source navigation readiness. No UI/token/report schema change.
+
 ## 0.1.0-candidate.20261021.13
 
 - Retain passive native execution-context metadata for explicitly read-only

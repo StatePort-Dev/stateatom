@@ -721,3 +721,14 @@ PASS, source1689/focused28/types/admission7 PASS. See42-a05-read-inject-native-b
 and verification13.json; .12 two-host/finite evidence remains historical in41.
 A05.3b/whole A05 stay in progress. Next one bounded step: adversarial runtime
 replacement-owner/late-IDE regression and remaining lifecycle matrix. No publication.
+
+
+### 2026-10-21 — A05 runtime race step
+
+Real runtime/platform/wire with controlled CDP/helper/IDE boundaries now exercises9
+ownership/context/late-source/cleanup scenarios;5 isolated historical bug variants
+fail the corresponding consumer assertions. New context reuse/retained owner and
+Cancel waiting on IDE bugs reproduced and fixed. Final .14 source1698, exact packed
+two-host native17/read-inject3/types/admission7 PASS;43-a05-runtime-races.md records
+source/native distinctions and failures. No whole-A05 acceptance, report integration
+or production/full async claim. Next bounded step: native session/lifecycle matrix.

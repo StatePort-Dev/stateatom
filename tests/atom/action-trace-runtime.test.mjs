@@ -1,0 +1,93 @@
+// SPDX-License-Identifier: Apache-2.0
+// Consumer-visible runtime ownership tests; synthetic external boundaries only.
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {pathToFileURL} from 'node:url';
+import {actionTraceRuntimeFixture,deferred} from '../helpers/action-trace-runtime-fixture.mjs';
+const createRuntime=process.env.ATOM_ACTION_RUNTIME_VARIANT?(await import(pathToFileURL(process.env.ATOM_ACTION_RUNTIME_VARIANT).href)).createAtomRuntime:undefined;
+const fixture=(t,options={})=>actionTraceRuntimeFixture(t,{createRuntime,...options});
+
+test('cancelled pending Arm A cannot cancel or publish over replacement view B after its late acknowledgement',async t=>{
+ const entered=deferred(),ack=deferred(),oldCleanup=deferred();let first=true;
+ t.after(()=>ack.resolve());
+ const f=await fixture(t,{armGate:async()=>{if(first){first=false;entered.resolve();await ack.promise;}},onCleanup:id=>{if(id==='trace-1')oldCleanup.resolve();}});
+ const abort=new AbortController(),a=f.request({op:'actions-arm'},{signal:abort.signal});
+ await entered.promise;abort.abort();await assert.rejects(a,{code:'CANCELLED'});
+ const b=await f.request({op:'actions-arm',ownerId:'view-b'});assert.equal(b.traceId,'trace-2');
+ ack.resolve();
+ // Its CDP cleanup is the last external boundary. Drain the ready continuations,
+ // rather than depending on a guessed wall-clock delay after the raced reply.
+ await oldCleanup.promise;await new Promise(setImmediate);
+ const state=await f.state();assert.equal(state.actionTrace.traceId,'trace-2');assert.equal(state.actionTrace.status,'armed');
+ const observed=await f.request({op:'actions-read',ownerId:'view-b',traceId:b.traceId});
+ assert.equal(observed.traceId,'trace-2');assert.equal(observed.status,'armed');
+ assert.equal((await f.state()).actionTrace.traceId,'trace-2');
+});
+
+test('late source verification of A cannot overwrite re-armed B or return a fresh old trace',async t=>{
+ const entered=deferred(),verified=deferred();
+ t.after(()=>verified.resolve());
+ const f=await fixture(t,{sourceGate:async()=>{entered.resolve();await verified.promise;}});
+ const a=await f.request({op:'actions-arm'});f.action();
+ const reading=f.request({op:'actions-read',traceId:a.traceId});
+ await entered.promise;
+ const b=await f.request({op:'actions-arm'});assert.notEqual(b.traceId,a.traceId);
+ verified.resolve();await assert.rejects(reading,{code:'STALE_TARGET'});
+ const state=await f.state();assert.equal(state.actionTrace.traceId,b.traceId);assert.equal(state.actionTrace.status,'armed');
+ assert.equal(state.actionTrace.sourceCurrent,false);
+ const current=await f.request({op:'actions-read',traceId:b.traceId});assert.equal(current.traceId,b.traceId);
+});
+
+test('late source verification after a changed selection cannot resurrect the old observation',async t=>{
+ const entered=deferred(),verified=deferred();
+ t.after(()=>verified.resolve());
+ const f=await fixture(t,{sourceGate:async()=>{entered.resolve();await verified.promise;}});
+ const a=await f.request({op:'actions-arm'});f.action();
+ const reading=f.request({op:'actions-read',traceId:a.traceId});await entered.promise;
+ await f.request({op:'inspect-selector',selector:'#confirm'});
+ verified.resolve();await assert.rejects(reading,{code:'STALE_TARGET'});
+ const state=await f.state();assert.equal(state.actionTrace.freshness,'Stale');assert.equal(state.actionTrace.sourceCurrent,false);
+ assert.equal(state.analysis.graph.nodes.some(n=>String(n.id).startsWith('action-trace:')),false);
+});
+
+test('destroyed and reused native MAIN context cannot accept a late Arm acknowledgement as current',async t=>{
+ const entered=deferred(),ack=deferred();t.after(()=>ack.resolve());
+ const f=await fixture(t,{armGate:async()=>{entered.resolve();await ack.promise;}});
+ const pending=f.request({op:'actions-arm'});await entered.promise;
+ await f.emit('Runtime.executionContextDestroyed',{executionContextId:7,executionContextUniqueId:'main-context'});
+ await f.emit('Runtime.executionContextCreated',{context:{id:7,uniqueId:'replacement-context',auxData:{frameId:'main',isDefault:true}}});
+ ack.resolve();await assert.rejects(pending,{code:'STALE_TARGET'});
+ const stored=(await f.state()).actionTrace;
+ assert(!stored||stored.freshness==='Stale');
+});
+
+test('native context destruction retires its owner and leaves stale history without blocking another view',async t=>{
+ const f=await fixture(t);const a=await f.request({op:'actions-arm'});f.action();
+ await f.request({op:'actions-read',traceId:a.traceId});
+ await f.emit('Runtime.executionContextDestroyed',{executionContextId:7,executionContextUniqueId:'main-context'});
+ const stored=(await f.state()).actionTrace;assert.equal(stored.freshness,'Stale');assert.equal(stored.sourceCurrent,false);
+ await f.emit('Runtime.executionContextCreated',{context:{id:8,uniqueId:'new-main',auxData:{frameId:'main',isDefault:true}}});
+ const b=await f.request({op:'actions-arm',ownerId:'view-b'});assert.equal(b.status,'armed');
+});
+
+for(const change of ['navigation','disconnect','unpair'])test(`late IDE response after ${change} cannot publish source-current history`,async t=>{
+ const entered=deferred(),verified=deferred();t.after(()=>verified.resolve());
+ const f=await fixture(t,{sourceGate:async()=>{entered.resolve();await verified.promise;}});
+ const a=await f.request({op:'actions-arm'});f.action();
+ const reading=f.request({op:'actions-read',traceId:a.traceId});const rejected=assert.rejects(reading,e=>['CANCELLED','STALE_TARGET','INSPECTOR_DISCONNECTED'].includes(e.code));await entered.promise;
+ if(change==='navigation')await f.emit('Page.frameNavigated',{frame:{id:'main',loaderId:'next-loader',url:'http://127.0.0.1:4173/react/'}});
+ else if(change==='disconnect')await f.client.close();
+ else await f.request({op:'unpair'});
+ verified.resolve();await rejected;
+ const state=await f.state();assert(!state.actionTrace||state.actionTrace.freshness==='Stale');assert.notEqual(state.actionTrace?.sourceCurrent,true);
+});
+
+test('Cancel acknowledges captured body history without waiting for an IDE source check',async t=>{
+ const entered=deferred(),verified=deferred();t.after(()=>verified.resolve());
+ const f=await fixture(t,{sourceGate:async()=>{entered.resolve('source-check');await verified.promise;}});
+ const a=await f.request({op:'actions-arm'});f.action();
+ const cancelling=f.request({op:'actions-cancel',traceId:a.traceId});
+ const first=await Promise.race([cancelling.then(()=> 'cancelled'),entered.promise]);
+ assert.equal(first,'cancelled','local cleanup must not depend on an IDE response');
+ const result=await cancelling;assert.equal(result.status,'cancelled');assert.equal(result.records[1].source.symbol,'confirm');assert.equal(result.sourceCurrent,false);
+});
