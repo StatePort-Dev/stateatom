@@ -72,6 +72,24 @@ non-sensitive abstract facts allowed by07, not raw/richer application content. N
 field becomes model input merely because it was added to local inspector details.
 The old explicit seven-field projection remains unchanged for the original provider.
 
+## Input admission is a trust boundary, not a freeze check
+
+A caller can freeze a forged object containing arbitrary summaries. Object.isFrozen,
+schema2, a kind string or matching JSON shape is NOT proof that the trusted fact
+factory produced it. The next source-only task must cover this before serialization.
+Proposed implementation: an internal module-owned WeakSet/opaque constructor handle
+for exact locally created inspectionExplanationFacts results; the projection checks
+it before reading a trusted summary. No application-settable marker and no public
+SDK contract. A structured clone/import loses that local handle and keeps the normal
+deterministic path; do not silently rebrand arbitrary imported JSON. Alternatively
+rebuild facts from the existing admitted snapshot through that factory, without an
+app re-read or expression/getter call. Choose the exact internal mechanism in the
+source task and test forged/frozen/cloned inputs explicitly.
+
+This handle is an implementation/privacy provenance check, NOT a new evidence
+status or proof that an application's fact is true. Original evidence semantics,
+unsupported/stale/historical records and deterministic details are unchanged.
+
 ## Fact references and output: local-derived-annotation/1
 
 The new projection assigns fixed internal fact tokens to the admitted input fields,
@@ -141,10 +159,37 @@ as successful inference or usefulness. If this projection supplies too little
 context for benefit, record that specific result and define a later bounded change;
 do not silently add source/business/private fields or cloud models.
 
+## Existing-corpus inventory and explicit coverage gap
+
+Read-only inventory of the current30 factory-produced facts is retained at
+.artifacts/l02/annotation-preparation/inventory.json (source d19bfe3, files unchanged,
+modelCalls0):27 Supported/1 Unavailable/2 Stale;17 action/13 property;12 condition
+models; maximum4 refs/4 limits. All are frozen, which is NOT the admission proof
+above. Categories remain19supported/6incomplete/5untrusted; status/category are
+separate classifications and are never merged into a convenient denominator.
+
+There are ZERO positive observedBodies examples. Therefore this corpus does not
+establish quality of a generated positive body-entry-count claim. Before including
+that claim in a tested provider, add explicit positive/separate-binding/unknown
+identity controls using the existing admitted-body factory/runtime fixtures. Keep
+these as a registered versioned supplement with its own outcomes; preserve all30
+main cases and their denominator. Do not invent positive evidence in the old cases,
+claim their zero counts test the positive path, or count new source tests as actual
+model inference. If the field is withheld until that follow-up, preserve deterministic
+body explanations and describe the narrower tested annotation boundary explicitly.
+
+With the proposed eligibility, the one Unavailable/two Stale cases remain ordinary
+deterministic outcomes. Record all30 comparisons but actual inference counts
+separately; no claim of30 model inferences if only27 genuinely ran. Supported
+short-circuit/unknown-input cases still require factual/unknown-preserving model
+checks. This distinction does not relax the existing acceptance counts or allow
+fallbacks to count as inference/usefulness.
+
 ## Bounded implementation order and stopping points
 
 1. NEXT ONLY: add pure versioned projection + structural annotation validator and
-   privacy/identity tests. No model call, product selection, input-policy expansion,
+   privacy/identity/admission tests (including forged frozen facts and the body-count
+   coverage gap). No model call, product selection, input-policy expansion,
    UI change, package prominence or L02 acceptance at this source-only checkpoint.
 2. Add the separate opt-in provider/evaluation adapter with lifecycle tests; run the
    registered real30-case comparison on an immutable candidate and grade every case.

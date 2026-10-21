@@ -24,3 +24,14 @@ original provider/prompt/validator and product UI unchanged; do not start all la
 provider/corpus/UI tasks as one run. Mandatory L02/O01 stays in-progress,15/29 full
 items complete(~52% equal count), not weighted release readiness. SDK/publication/
 other repository/new redesign remain outside scope.
+
+Inline contract correction before implementation: frozen/schema-shaped facts can
+be forged, so the proposal now requires local factory-origin admission (opaque
+internal handle or reconstruction through the existing admitted fact factory),
+not a user-set marker/freeze check. No such mechanism is implemented by this doc.
+Read-only current-corpus inventory:modelCalls0,27Supported/1Unavailable/2Stale,
+17action/13property,12conditions, max4refs/4limits. No positive observedBodies case;
+require a separately registered positive/identity supplement before claiming model
+quality for body-count wording. Preserve all30 existing facts/denominator and count
+actual inferences separately from deterministic stale/unavailable results. Receipt:
+.artifacts/l02/annotation-preparation/inventory.json, source inputs unchanged.

@@ -2671,7 +2671,10 @@
         "new_model_inference": false,
         "full_L02_acceptance": false,
         "next_item": "L02.6 source-only pure versioned abstract projection and structural annotation validator with privacy/unknown/identity tests",
-        "boundary": "Technical proposal only: separate derived annotation, explicit non-sensitive allowlist and immutable limits/refs; JSON/token structure is not natural-language entailment. Preserve30 including historical>=25/5incomplete/5untrusted, require per-case real usefulness beyond templates. Exact names/bounds proposed, not prior approved decisions. Existing .28 tests/native proof not upgraded; L02 remains mandatory/open."
+        "boundary": "Technical proposal only: separate derived annotation, explicit non-sensitive allowlist and immutable limits/refs; JSON/token structure is not natural-language entailment. Preserve30 including historical>=25/5incomplete/5untrusted, require per-case real usefulness beyond templates. Exact names/bounds proposed, not prior approved decisions. Existing .28 tests/native proof not upgraded; L02 remains mandatory/open.",
+        "preparation_inventory": ".artifacts/l02/annotation-preparation/inventory.json",
+        "factory_origin_admission_required": true,
+        "positive_body_count_corpus_gap": true
       },
       "completed_slices": [
         {
@@ -2753,7 +2756,10 @@
           "new_model_inference": false,
           "full_L02_acceptance": false,
           "next_item": "L02.6 source-only pure versioned abstract projection and structural annotation validator with privacy/unknown/identity tests",
-          "boundary": "Technical proposal only: separate derived annotation, explicit non-sensitive allowlist and immutable limits/refs; JSON/token structure is not natural-language entailment. Preserve30 including historical>=25/5incomplete/5untrusted, require per-case real usefulness beyond templates. Exact names/bounds proposed, not prior approved decisions. Existing .28 tests/native proof not upgraded; L02 remains mandatory/open."
+          "boundary": "Technical proposal only: separate derived annotation, explicit non-sensitive allowlist and immutable limits/refs; JSON/token structure is not natural-language entailment. Preserve30 including historical>=25/5incomplete/5untrusted, require per-case real usefulness beyond templates. Exact names/bounds proposed, not prior approved decisions. Existing .28 tests/native proof not upgraded; L02 remains mandatory/open.",
+          "preparation_inventory": ".artifacts/l02/annotation-preparation/inventory.json",
+          "factory_origin_admission_required": true,
+          "positive_body_count_corpus_gap": true
         }
       ],
       "execution_records": [
@@ -3125,7 +3131,10 @@
       "new_model_inference": false,
       "full_L02_acceptance": false,
       "next_item": "L02.6 source-only pure versioned abstract projection and structural annotation validator with privacy/unknown/identity tests",
-      "boundary": "Technical proposal only: separate derived annotation, explicit non-sensitive allowlist and immutable limits/refs; JSON/token structure is not natural-language entailment. Preserve30 including historical>=25/5incomplete/5untrusted, require per-case real usefulness beyond templates. Exact names/bounds proposed, not prior approved decisions. Existing .28 tests/native proof not upgraded; L02 remains mandatory/open."
+      "boundary": "Technical proposal only: separate derived annotation, explicit non-sensitive allowlist and immutable limits/refs; JSON/token structure is not natural-language entailment. Preserve30 including historical>=25/5incomplete/5untrusted, require per-case real usefulness beyond templates. Exact names/bounds proposed, not prior approved decisions. Existing .28 tests/native proof not upgraded; L02 remains mandatory/open.",
+      "preparation_inventory": ".artifacts/l02/annotation-preparation/inventory.json",
+      "factory_origin_admission_required": true,
+      "positive_body_count_corpus_gap": true
     },
     "next_item": "L02.6 source-only pure versioned abstract projection and structural annotation validator with privacy/unknown/identity tests",
     "new_full_task_acceptances": [
@@ -4207,7 +4216,10 @@
         "new_model_inference": false,
         "full_L02_acceptance": false,
         "next_item": "L02.6 source-only pure versioned abstract projection and structural annotation validator with privacy/unknown/identity tests",
-        "boundary": "Technical proposal only: separate derived annotation, explicit non-sensitive allowlist and immutable limits/refs; JSON/token structure is not natural-language entailment. Preserve30 including historical>=25/5incomplete/5untrusted, require per-case real usefulness beyond templates. Exact names/bounds proposed, not prior approved decisions. Existing .28 tests/native proof not upgraded; L02 remains mandatory/open."
+        "boundary": "Technical proposal only: separate derived annotation, explicit non-sensitive allowlist and immutable limits/refs; JSON/token structure is not natural-language entailment. Preserve30 including historical>=25/5incomplete/5untrusted, require per-case real usefulness beyond templates. Exact names/bounds proposed, not prior approved decisions. Existing .28 tests/native proof not upgraded; L02 remains mandatory/open.",
+        "preparation_inventory": ".artifacts/l02/annotation-preparation/inventory.json",
+        "factory_origin_admission_required": true,
+        "positive_body_count_corpus_gap": true
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
