@@ -1,3 +1,4 @@
+import {handoffActionBaseRecord} from '../../../core/handoff-action-report.mjs';
 // SPDX-License-Identifier: Apache-2.0
 // Native local review choices only; no capture, file I/O, storage or app authority.
 import {handoffCategoryLabels,handoffBaseProfile,handoffHasSourceEvidence} from '../../../core/handoff-presentation.mjs';
@@ -23,7 +24,7 @@ export function createHandoffReview({document,root,onChange=()=>{}}){
  function clear(){mode=null;attachmentMode=false;controls=[];categoryControls=[];fieldControls=[];issueControls=[];noteControls=[];evidenceControls=[];inputMode=false;inputWhole=null;inputCategories=[];inputFields=[];root.replaceChildren();}
  function disclosure(label){const d=el('details',undefined,'sp-atom-review-disclosure');d.append(el('summary',label));return d;}
  function renderField(f,parent,categoryControl=null){
-  const omittedCategory=()=>mode==='report'&&categoryControl?.checked===true;
+  const omittedCategory=()=>['report','packet-report'].includes(mode)&&categoryControl?.checked===true;
   const box=el('div',undefined,'sp-atom-review-field'),name=el('label'),select=register(el('select'),omittedCategory);
   name.append(el('span',title(f)+' · '+f.evidenceKind+' historical claim'));select.dataset.spReviewField=f.id;
   const options=mode==='source'?[['default',f.category===null?'Keep recorded metadata':'Follow category'],...(f.category===null?[]:[['include','Include this field']]),['omit','Omit this field'],['replace','Reviewer replacement']]:[['default','Keep current content'],['omit','Omit this field'],['replace','Reviewer replacement']];
@@ -33,9 +34,9 @@ export function createHandoffReview({document,root,onChange=()=>{}}){
   select.onchange=()=>{replacement.hidden=select.value!=='replace';if(!select.disabled)onChange();};
   box.append(name,preview,replacement);parent.append(box);fieldControls.push({id:f.id,select,replacement,categoryControl,allowed:new Set(options.map(x=>x[0]))});
  }
- function content(fields,parent){
+ function content(fields,parent,labels=handoffCategoryLabels){
   const unavailable=[];
-  for(const[category,label]of Object.entries(handoffCategoryLabels)){
+  for(const[category,label]of Object.entries(labels)){
    const all=fields.filter(f=>f.category===category),available=all.filter(f=>f.available);
    if(!available.length){unavailable.push(label);continue;}
    const box=el('div',undefined,'sp-atom-review-category'),check=checkbox((mode==='source'?'Include ':'Omit ')+label+' · '+available.length+' '+(available.length===1?'field':'fields'),'spReviewCategory',category);categoryControls.push(check.input);box.append(check.line);
@@ -49,10 +50,10 @@ export function createHandoffReview({document,root,onChange=()=>{}}){
   if(unavailable.length)parent.append(el('p','Not retained or unavailable here: '+unavailable.join(', ')+'. No additional data will be fetched.','sp-atom-review-help'));
  }
  function source(catalogue){
-  clear();mode='source';content(catalogue.fields,root);
+  clear();mode='source';content(catalogue.fields,root,catalogue.categoryLabels||handoffCategoryLabels);
  }
  function report(record){
-  clear();attachmentMode=handoffHasSourceEvidence(record);inputMode=record.profile==='input-evidence/1';if(handoffBaseProfile(record)!=='reviewed-snapshot/1'&&!attachmentMode&&!inputMode)return;mode='report';
+  record=handoffActionBaseRecord(record);clear();attachmentMode=handoffHasSourceEvidence(record);inputMode=record.profile==='input-evidence/1';if(handoffBaseProfile(record)!=='reviewed-snapshot/1'&&!attachmentMode&&!inputMode)return;mode='report';
   const parent=disclosure('Choose content to omit from a copy'),issue=disclosure('Reporter words');
   for(const name of issueNames){const locked=record.privacy.redactedIssueFields.includes(name),check=checkbox((locked?'Already omitted: ':'Omit ')+issueLabels[name],'spReviewIssue',name,{locked,checked:locked});issueControls.push({...check,name});issue.append(check.line);}parent.append(issue);
   if(handoffBaseProfile(record)==='reviewed-snapshot/1'){const fields=[record.report.target.value,...record.report.technicalEvidence.fields].map(f=>({...f,available:['included','filtered','replaced'].includes(f.state),preview:{state:f.state,...(Object.hasOwn(f,'value')?{value:f.value}:{})}}));content(fields,parent);}
@@ -91,10 +92,11 @@ export function createHandoffReview({document,root,onChange=()=>{}}){
   if(!mode)return{};
   if(mode==='input-source')return{includeCategories:inputCategories.filter(n=>n.checked).map(n=>n.dataset.spReviewInputCategory),omitFields:inputFields.filter(f=>f.input.checked&&f.category.checked).map(f=>f.input.dataset.spReviewInputField)};
   const includeFields=[],omitFields=[],replaceFields=[];
-  for(const f of fieldControls){if(mode==='report'&&f.categoryControl?.checked)continue;if(!f.allowed.has(f.select.value))throw error('INVALID_CONTENT_REVIEW','Choose a supported review option');if(f.select.value==='include')includeFields.push(f.id);else if(f.select.value==='omit')omitFields.push(f.id);else if(f.select.value==='replace'){if(f.replacement.value.length>4096)throw error('HANDOFF_LIMIT','Reviewer replacement exceeds 4096 characters');replaceFields.push({id:f.id,text:f.replacement.value});}}
+  for(const f of fieldControls){if(['report','packet-report'].includes(mode)&&f.categoryControl?.checked)continue;if(!f.allowed.has(f.select.value))throw error('INVALID_CONTENT_REVIEW','Choose a supported review option');if(f.select.value==='include')includeFields.push(f.id);else if(f.select.value==='omit')omitFields.push(f.id);else if(f.select.value==='replace'){if(f.replacement.value.length>4096)throw error('HANDOFF_LIMIT','Reviewer replacement exceeds 4096 characters');replaceFields.push({id:f.id,text:f.replacement.value});}}
   const categories=categoryControls.filter(n=>n.checked).map(n=>n.dataset.spReviewCategory);
   if(mode==='source')return{includeCategories:categories,includeFields,omitFields,replaceFields};
+  if(mode==='packet-report')return{omitCategories:categories,omitFields,replaceFields};
   const result={omitIssueFields:issueControls.filter(c=>!c.locked&&c.input.checked).map(c=>c.name),omitCategories:categories,omitFields,replaceFields,omitNotes:noteControls.filter(n=>n.checked).map(n=>n.dataset.spReviewNote)};if(attachmentMode){result.omitEvidence=[];result.omitEvidenceFiles=[];for(const g of evidenceControls){if(g.noteInput?.checked)continue;if(g.input.checked)result.omitEvidence.push(g.findingId);else if(!g.category?.checked){const files=g.files.filter(f=>f.input.checked).map(f=>f.file);if(files.length)result.omitEvidenceFiles.push({findingId:g.findingId,files});}}}if(inputMode)return{baseReview:result,omitInputEvidence:inputWhole?.checked===true,inputReview:{omitCategories:inputWhole?.checked?[]:inputCategories.filter(n=>n.checked).map(n=>n.dataset.spReviewInputCategory),omitFields:inputWhole?.checked?[]:inputFields.filter(f=>f.input.checked&&!f.category.checked).map(f=>f.input.dataset.spReviewInputField)}};return result;
  }
- return Object.freeze({source,report,inputSource(packet){clear();mode='input-source';inputContent({profile:'input-evidence/1',inputEvidence:packet},root);},read,clear,busy(value){busy=value===true;applyDisabled();}});
+ return Object.freeze({source,report,packetReport(catalogue){clear();mode='packet-report';content(catalogue.fields,root,catalogue.categoryLabels);},inputSource(packet){clear();mode='input-source';inputContent({profile:'input-evidence/1',inputEvidence:packet},root);},read,clear,busy(value){busy=value===true;applyDisabled();}});
 }

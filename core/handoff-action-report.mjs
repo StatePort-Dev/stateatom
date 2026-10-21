@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Unimported composed historical format. No application or source-read authority.
+// Composed historical format. No application or source-read authority.
 import{parseHandoffReport as parseBase,appendHandoffFinding,appendHandoffSourceFinding,redactHandoffFile}from'./handoff-files.mjs';
 import{omitHandoffFields}from'./handoff-report.mjs';
 import{snapshotHandoffSourceFiles}from'./handoff-source-evidence.mjs';
@@ -55,3 +55,6 @@ export async function redactHandoffActionReport(raw,review={},options={}){
  const {record:p,base}=await mutation(raw,o),requested=baseReview(base,c.baseReview||{}),related=actionRelatedBaseReview(base,p.actionEvidence,requested,c.omitActionEvidence,a),child=await privacyBase(base,related,at);let packet=p.actionEvidence,omitted=p.actionPrivacy.omittedPackets;if(c.omitActionEvidence){packet=null;omitted=1;}else if(packet===null){if(someReview(a))fail('Omitted action packet cannot be restored');}else packet=await reduce(packet,actionMergePrivacy(packet,a,actionPriorBaseOmissions(child)),at);
  return emit(build(child,packet,omitted,at,next(p.revision),{kind:'privacy-derivative',parentArtifactDigest:o.expectedParentDigest,parentReportDigest:p.reportDigest}));
 }
+
+// Presentation only; caller supplies an already validated public record.
+export function handoffActionBaseRecord(record){return record?.profile===PROFILE?frozen(baseView(record)):record;}

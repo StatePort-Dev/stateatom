@@ -1,3 +1,4 @@
+import {handoffHasInputEvidence} from './handoff-presentation.mjs';
 // SPDX-License-Identifier: Apache-2.0
 // Passive wording and review catalogue for already parsed, frozen public records.
 import {handoffInputEvidenceFields} from './handoff-input-evidence.mjs';
@@ -16,15 +17,15 @@ export function handoffInputFieldLabel(path){
  if(labels[part])return resource+' · '+labels[part];
  const d=part.match(/^deliveries\/(\d+)\/(.*)$/);return d?resource+' · delivery '+(+d[1]+1)+' · '+({receipt:'receipt identity',requestId:'request identity',url:'origin',error:'error'}[d[2]]||'metadata'):resource+' metadata';
 }
-export function handoffInputFields(record){return record.profile==='input-evidence/1'&&record.inputEvidence?handoffInputEvidenceFields(record.inputEvidence):[];}
+export function handoffInputFields(record){return handoffHasInputEvidence(record)&&record.inputEvidence?handoffInputEvidenceFields(record.inputEvidence):[];}
 export function handoffInputSummary(record){
- if(record.profile!=='input-evidence/1')return'';
+ if(!handoffHasInputEvidence(record))return'';
  if(record.inputEvidence===null)return'Historical input evidence: omitted from this copy; cannot be restored here.';
  const p=record.inputEvidence.projection,s=p.snapshot;
  return'Historical input evidence: '+(s?s.availableTransactions+' retained '+(s.availableTransactions===1?'change':'changes')+' · '+s.freshness:'not recorded')+'. Application consumption and selected-property effect remain unknown.';
 }
 export function handoffInputText(record,{advanced=false}={}){
- if(record.profile!=='input-evidence/1')return'';const packet=record.inputEvidence;
+ if(!handoffHasInputEvidence(record))return'';const packet=record.inputEvidence;
  if(!packet)return handoffInputSummary(record);
  const p=packet.projection,s=p.snapshot,a=packet.acquisition,lines=[];
  if(advanced){

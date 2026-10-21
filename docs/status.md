@@ -1288,3 +1288,18 @@ and forbidden-key handling REDs fixed; no new installed/native/package claim. Se
 48-a05-action-report-composition.md and verification-source.json. Next: existing
 reporter/reader dispatch and privacy controls, fresh packed/native checks, then ONE
 report-plan review. Whole A05 remains open.
+
+
+### 2026-10-21 — A05 installed reviewed interaction report
+
+Exact .19 connects the separate historical action packet to existing saved/current
+report review, local Save/download and passive recipient. Source1776/focused578,
+two-host native reviewed13 with16 completed downloads, original input reporter33,
+types2/admission7 PASS. Full restart, clean recipient without HTTP/permissions,
+notes/local byte comparison and one-way granular/whole privacy are verified;
+original inputs and failed harness attempts retained. Existing13px typography and
+shared UI primitives remain; actual390/440/1100/zoom200 candidates inspected. See
+49-a05-reviewed-action-report-ui.md and verification19.json. Next: ONE final
+historical-report plan review, then one fix pass if required. Whole A05 remains
+open for original matrix/production/performance/async boundaries and whole review;
+A02/L02 are not completed by this report feature. No SDK/publication/other repo.

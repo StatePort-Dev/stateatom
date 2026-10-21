@@ -44,10 +44,10 @@
 
 **Interfaces:** consume Task1's actionObservation and exact saved diagnostic reference. Produce an explicitly versioned passive composed profile with an immutable base checksum and separately reviewed/omitted action packet. Existing file dispatch/store/reader accept the new profile; notes/privacy copies retain exact parent lineage. This is an internal format implementation choice, not a claimed preapproved new user journey.
 
-- [ ] Pin exact public record/choice interfaces and allowed composed bases in this plan before Task2 edits; use existing privacy review controls rather than inventing replacement UX.
-- [ ] RED for default exclusions, explicit selected metadata, omitted/replaced identities across packets, wrong parent/digest, duplicate JSON keys/oversize, note/privacy continuity and legacy unchanged bytes.
-- [ ] Implement minimal codec/presentation and connect existing review/save/download/reader. No active action operation in passive code.
-- [ ] GREEN source suites and exact two-host native reporter→restart→clean recipient with real saved action and no app/IDE/HTTP authority; narrow/keyboard candidates compared to retained reference. Relevant existing input/source reporter controls must remain intact.
+- [x] Pin exact public record/choice interfaces and allowed composed bases in this plan before Task2 edits; use existing privacy review controls rather than inventing replacement UX.
+- [x] RED for default exclusions, explicit selected metadata, omitted/replaced identities across packets, wrong parent/digest, duplicate JSON keys/oversize, note/privacy continuity and legacy unchanged bytes.
+- [x] Implement minimal codec/presentation and connect existing review/save/download/reader. No active action operation in passive code.
+- [x] GREEN source suites and exact two-host native reporter→restart→clean recipient with real saved action and no app/IDE/HTTP authority; narrow/keyboard candidates compared to retained reference. Relevant existing input/source reporter controls must remain intact.
 - [ ] Update evidence/task-index/status/roadmap and local commit. ONE final fresh read-only review for this bounded report plan, one fix pass if needed, no per-subcase review loop or whole A05 claim.
 
 ## Scope self-review

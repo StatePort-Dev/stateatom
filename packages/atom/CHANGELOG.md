@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.19
+
+- Include separately reviewed historical interaction metadata in ordinary saved
+  and current issue reports. Private identities, function names, source locations
+  and notes stay excluded by default; no imported report resumes collection.
+- Keep input history, local source comparisons and developer notes when composing
+  reports; preserve exact parent content and one-way privacy reductions.
+- Add optional interaction privacy/details using existing report disclosures and
+  controls. Preserve the supplied extension UI visual base, 13px typography and
+  Atom layout; no CSS, token or shared contract change. This extends the existing
+  report workflow because the reference prototype has no real historical packet.
+
 ## 0.1.0-candidate.20261021.18
 
 - Retain bounded action invocation metadata in diagnostic snapshots as separate
