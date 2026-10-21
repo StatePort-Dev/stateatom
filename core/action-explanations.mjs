@@ -44,7 +44,7 @@ export function ChromeBuiltInExplanation(model=globalThis.LanguageModel){
    const creation=model.create({...options,signal:controller.signal,monitor(m){m.addEventListener('downloadprogress',e=>{if(!controller.signal.aborted&&Number.isFinite(e.loaded))onProgress?.(Math.max(0,Math.min(1,e.loaded)));});}});
    Promise.resolve(creation).then(s=>{if(controller.signal.aborted)s.destroy();},()=>{});
    session=await Promise.race([creation,stopped]);
-   const schema={type:'object',additionalProperties:false,required:['summary','evidenceIds','limitations'],properties:{summary:{type:'string',enum:facts.summaries},evidenceIds:{type:'array',items:{type:'string',enum:facts.evidenceIds.length?facts.evidenceIds:['unused']},maxItems:24},limitations:{type:'array',items:{type:'string',enum:facts.limitations},maxItems:8}}};
+   const schema={type:'object',additionalProperties:false,required:['summary','evidenceIds','limitations'],properties:{summary:{type:'string',enum:facts.summaries},evidenceIds:{type:'array',const:[...facts.evidenceIds],items:{type:'string',enum:facts.evidenceIds.length?facts.evidenceIds:['unused']},maxItems:24},limitations:{type:'array',const:[...facts.limitations],items:{type:'string',enum:facts.limitations},maxItems:8}}};
    const raw=await Promise.race([session.prompt(buildExplanationPrompt(facts),{signal:controller.signal,responseConstraint:schema}),stopped]);
    return {...validateExplanation(raw,facts),provider:'chrome-built-in'};
   }catch{return fallback(controller.signal.aborted?'Local explanation cancelled or timed out.':'Local model output unavailable or rejected; showing the template.');}

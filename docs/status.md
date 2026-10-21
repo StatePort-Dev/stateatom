@@ -1422,3 +1422,14 @@ original .26 host/archive bytes unchanged. Not installed Atom Explain UX, OS
 airgap, historical25-plus-malicious/full30 acceptance or O01 completion. L02
 remains mandatory/in-progress;15/29 full items complete. Next actual installed
 controls and evidence-metadata omission hardening, keeping strict validation.
+
+### 2026-10-21 — exact model metadata, actual30-case controls
+
+[L02.2](completion/58-l02-exact-metadata-controls.md):exact .27 uses const metadata
+arrays with the original strict validator. Real Chrome155 returned30/30 accepted
+corpus outputs, including6 incomplete and5 untrusted cases; additional document-
+offline inference and31destroy calls recorded. Native Cancel passes. All displayed
+summaries still equal templates:0added-benefit cases, L02 mandatory/in-progress.
+Source1850/focused12/packed types2/admission7 PASS. Original .26 baseline24 and
+failures retained. Next actual unchanged installed Atom Explain/Cancel/stale/offline
+controls; the evaluation derivative is not that product proof.15/29 remain complete.

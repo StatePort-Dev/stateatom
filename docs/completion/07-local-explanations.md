@@ -69,3 +69,13 @@ Work:
 [R11]: https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/core/action-explanations.mjs "Current template and local-model provider"
 [R27]: https://github.com/StatePort-Dev/stateatom/blob/f3a7a7e1ba43bea4e39954eaf49b95266822692b/docs/features/STATEATOM_ACTION_INSPECTOR_LOCAL_AI.md "Action Inspector feature specification"
 [X01]: https://developer.chrome.com/docs/ai/prompt-api "Chrome Prompt API"
+
+## 2026-10-21 execution update (historical baseline above retained)
+
+L01 accepted after ONE review; see [56](56-l01-whole-item-review.md). Actual Chrome155
+.26 baseline24 is [57](57-l02-real-device-baseline.md); .27 exact-metadata correction
+and real30-case controls are [58](58-l02-exact-metadata-controls.md). The old API-
+unavailable outcome is historical, not current device status. All30 latest corpus
+outputs passed strict validation, with6 incomplete/5 untrusted cases; no added
+usefulness over templates. Mandatory L02 remains open. Next actual installed Atom
+controls; neither corpus counts nor this document completes O01.

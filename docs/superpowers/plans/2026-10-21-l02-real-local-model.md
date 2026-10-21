@@ -60,3 +60,11 @@ Actual installed Atom UX remains a separate bounded slice; L02 remains open.
 Preserve historical>=25 with5incomplete/5malicious:future final corpus30.
 Next observed defect:four model metadata omissions; strengthen constraints if current
 API supports them, never relax existing validator. No derived annotation assumed done.
+
+Task1 bounded correction L02.2:exact .27 const metadata arrays; unchanged strict
+validator. Actual30/30 outputs accepted with6 incomplete/5 untrusted;0benefit.
+31resolved/31destroy calls, native Cancel and extra document-offline inference.
+Source1850/focused12/types2/admission7 PASS. See completion/58 for exact receipts.
+The original baseline24 and its4 omissions remain history. Next L02.3 is actual
+unchanged installed Atom Explain/opt-in/Cancel/stale/offline, not another full
+corpus rerun. Useful derived annotation/whole-item review are still unstarted.

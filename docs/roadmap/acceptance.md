@@ -181,3 +181,13 @@ overhead target. The approved task index now records14/29 complete items; A02
 lineage, L02 real model, production and final V gates remain open. The next bounded
 dependency-ready item is L01 deterministic selected-question explanations. Human
 visual approval is unobserved, not a required second-operator gate.
+
+### 2026-10-21 subsequent L01/L02 checkpoint
+
+L01 is accepted after its ONE whole review and bounded fix pass;15/29 completion
+items now complete. [L02 metadata controls](../completion/58-l02-exact-metadata-controls.md)
+record actual30/30 strict outputs on .27,6 incomplete/5 untrusted, Cancel and an
+additional document-offline inference. No added usefulness beyond templates; L02,
+A02, production and final validation gates remain open. Historical roadmap criteria,
+prior .26 baseline24, and earlier unavailable-device outcomes are unchanged.
+Next is actual installed Atom opt-in/Explain/Cancel/target-change/offline controls.

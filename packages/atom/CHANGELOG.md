@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.27
+
+- Constrain the experimental local model to the complete immutable evidence and
+  limitation arrays. Retain strict output validation and safe template fallback;
+  no metadata is filled after generation. Actual finite-mode baseline showed no
+  added usefulness, so local AI remains optional and experimental. No UI change.
+
 ## 0.1.0-candidate.20261021.26
 
 - Preserve masking explanations through supported grouping and negation, including
