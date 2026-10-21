@@ -30,16 +30,56 @@ export async function readSourceBundle(bytes,name,{signal}={}){
  if(!manifestBytes){const maps=[...files].filter(([p])=>p.endsWith('.map'));if(!maps.length||maps.length>16)throw Error('Choose a bundle with maps');return maps.map(([mapId,mapBytes])=>({mapId,mapBytes}));}
  const m=validateManifest(jsonBytes(manifestBytes)),manifestDigest=await sourceDigest(manifestBytes);return m.assets.map(asset=>{const mapBytes=files.get(asset.sourceMap),assetBytes=files.get(asset.asset);if(!mapBytes||!assetBytes)throw Error('Manifest artifact missing from bundle');return {mapId:asset.sourceMap,mapBytes,assetBytes,asset,releaseId:m.releaseId,manifestDigest};});
 }
-export async function associateSourceMap(script,bundle){
- const mapDigest=await sourceDigest(bundle.mapBytes),parsed=await parseSourceMap(bundle.mapBytes);let status='Unverified',reason='Map association has no verified release artifact; filenames are insufficient';
- const {asset,assetBytes}=bundle;
- if(asset&&assetBytes){
-  const assetDigest=await sourceDigest(assetBytes);let textDigest;try{textDigest=await sourceDigest(enc.encode(dec.decode(assetBytes)));}catch{/* Invalid encoding cannot be compared to script text. */}
+const copiedBytes=value=>{const view=ArrayBuffer.isView(value)?new Uint8Array(value.buffer,value.byteOffset,value.byteLength):new Uint8Array(value);return view.slice();};
+async function prepareArtifacts(bundles,check=()=>{}){
+ const maps=new Map(),records=[];
+ for(const bundle of bundles){
+  check();const raw=copiedBytes(bundle.mapBytes);if(raw.length>MAP_LIMITS.bytes)throw Error('Map size budget');
+  const assetBytes=bundle.asset&&bundle.assetBytes?copiedBytes(bundle.assetBytes):null,mapDigest=await sourceDigest(raw);check();
+  let map=maps.get(mapDigest);if(!map){map={bytes:raw,digest:mapDigest,parsed:null};maps.set(mapDigest,map);}
+  const asset=assetBytes?{assetSha256:bundle.asset.assetSha256,sourceMapSha256:bundle.asset.sourceMapSha256}:null,assetDigest=assetBytes?await sourceDigest(assetBytes):null;check();let textDigest;
+  if(assetBytes)try{textDigest=await sourceDigest(enc.encode(dec.decode(assetBytes)));}catch{/* Non-UTF-8 bytes cannot establish a loaded text match. */}
+  check();records.push({map,asset,assetDigest,textDigest,manifestDigest:bundle.manifestDigest||null,releaseId:bundle.releaseId?String(bundle.releaseId).slice(0,128):null});
+ }
+ return{maps,records};
+}
+function artifactAssociation(script,record,parsed){
+ const {map,asset,assetDigest,textDigest}=record,mapDigest=map.digest;let status='Unverified',reason='Map association has no verified release artifact; filenames are insufficient';
+ if(asset){
   if(assetDigest!==asset.assetSha256||mapDigest!==asset.sourceMapSha256||script.digest&&textDigest!==script.digest){status='Mismatch';reason='Loaded script or selected artifact digest conflicts with the release manifest';}
   else if(script.digest&&script.digestDomain==='utf8-script-source'&&script.startLine===0&&script.startColumn===0&&!script.special){status='Exact artifact match';reason='User-selected release artifact bytes and map verified; UTF-8 script content matches this loaded script';}
  }
  if(script.endLine!==undefined&&parsed.lines.some((line,i)=>line.some(seg=>i>script.endLine-script.startLine||i===script.endLine-script.startLine&&seg[0]>script.endColumn))){status='Mismatch';reason='Mapping exceeds the loaded script range';}
- return {status,reason,mapDigest,parsed,manifestDigest:bundle.manifestDigest||null,verificationMethod:status==='Exact artifact match'?'release-manifest-digests-and-loaded-utf8-script':'unverified-artifact-association',releaseId:bundle.releaseId?String(bundle.releaseId).slice(0,128):null};
+ return {status,reason,mapDigest,parsed,manifestDigest:record.manifestDigest,verificationMethod:status==='Exact artifact match'?'release-manifest-digests-and-loaded-utf8-script':'unverified-artifact-association',releaseId:record.releaseId};
+}
+export async function associateSourceMap(script,bundle){
+ const {records}=await prepareArtifacts([bundle]),record=records[0],parsed=await parseSourceMap(record.map.bytes);return artifactAssociation(script,record,parsed);
+}
+// The controller and its prepared records never cross the runtime wire. JS bodies
+// are discarded; maps are shared by raw digest and parsed only on explicit use.
+export async function createReleaseMapIndex(bundles,{signal,assertCurrent=()=>{}}={}){
+ let closed=false,initialized=false;const check=()=>{if(closed||!initialized&&signal?.aborted)throw Error('Release source connection cancelled');if(!initialized)assertCurrent();};
+ if(!Array.isArray(bundles)||!bundles.length||bundles.length>64||bundles.some(b=>!b.asset||!b.assetBytes||!b.manifestDigest))throw Error('Explicit release manifest and built artifacts required');
+ const {maps,records}=await prepareArtifacts(bundles,check);check();
+ const retainedBytes=[...maps.values()].reduce((n,m)=>n+m.bytes.length,0),largestMapBytes=Math.max(...[...maps.values()].map(m=>m.bytes.length));
+ if(retainedBytes+largestMapBytes>8*1024*1024)throw Error('Release index and parsed-map cache budget');
+ // A connected index outlives the import request and its selected script record.
+ // Drop those construction-only references as well as ignoring their lifetime.
+ initialized=true;signal=null;assertCurrent=null;
+ const matches=digest=>records.filter(r=>typeof digest==='string'&&r.textDigest===digest);
+ function find(digest){check();const found=matches(digest);return{status:found.length===1?'Unique':found.length?'Ambiguous':'Missing',count:found.length,...(found.length===1?{mapDigest:found[0].map.digest,mapBytes:found[0].map.bytes.length}:{})};}
+ return Object.freeze({
+  describe(){const parsed=[...maps.values()].filter(m=>m.parsed);return closed?{status:'Unavailable',assetCount:0,mapCount:0,retainedBytes:0,parsedMaps:0,parsedInputBytes:0}:{status:'Connected',assetCount:records.length,mapCount:maps.size,retainedBytes,largestMapBytes,parsedMaps:parsed.length,parsedInputBytes:parsed.reduce((n,m)=>n+m.bytes.length,0),manifestDigest:records[0].manifestDigest,artifactAuthenticity:'not-established',mapValidation:'lazy'};},
+  find,
+  async associate(script,{signal:jobSignal,assertCurrent:jobCurrent=()=>{}}={}){
+   const current=()=>{check();if(jobSignal?.aborted)throw Error('Release source lookup cancelled');jobCurrent();};
+   current();if(script.digestDomain!=='utf8-script-source')throw Error('Loaded UTF-8 script digest required');const found=matches(script.digest);
+   if(found.length!==1)throw Object.assign(Error(found.length?'Ambiguous release assets; no unique map for this loaded script':'No matching artifact in this release bundle for the loaded script'),{code:found.length?'AMBIGUOUS_RELEASE_MAP':'NO_RELEASE_MATCH'});
+   const record=found[0],parsed=record.map.parsed||await parseSourceMap(record.map.bytes);current();const result=artifactAssociation(script,record,parsed);if(result.status!=='Mismatch')record.map.parsed=parsed;return result;
+  },
+  release(digest){const m=maps.get(digest);if(m)m.parsed=null;},
+  close(){closed=true;for(const m of maps.values())m.parsed=null;records.length=0;maps.clear();}
+ });
 }
 export function sourceExcerpt(content,line,column){
  if(typeof content!=='string'||!Number.isSafeInteger(line)||line<1||!Number.isSafeInteger(column)||column<0)return null;

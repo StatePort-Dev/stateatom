@@ -73,10 +73,26 @@ Source parsing preemption in the inspector is a
 separate P02 deliverable.
 
 In Atom, select the real supported element, choose its native/own-host callback's
-Connect source map action, import the ZIP, then View source. Existing exact loaded
-artifact checks and evidence labels still apply. P02.1 establishes preparation and
-compatibility with this flow; it does **not** yet supply one retained import for all
-loaded chunks, the independent real-app corpus, companion files or full P02 acceptance.
+Connect source map action, import the ZIP once, then View source. The connection
+stays private in this tab session. Later supported handler source actions match
+their actual loaded script lazily, including chunks loaded later; no second file
+selection is needed when the release contains that exact artifact. There is no
+automatic source download. Same URLs or release labels never replace the loaded
+script's byte identity; missing or ambiguous artifacts stay explicit gaps.
+
+The session accounts unique retained raw maps plus unique parsed-map input sizes
+inside its existing8MiB cache budget, with at most8 parsed maps. It admits a release
+index only when retained maps plus its largest parse fit that budget. Thus a ZIP
+within the archive limits above can still be refused by the connection-cache
+limit. Recoverable parsed maps can be evicted and reparsed on explicit use; built
+JS bodies are dropped after hashing. This accounts cache input sizes, not total
+RSS/AST or in-flight allocations. Clear source connection, navigation, detach,
+expiry and runtime restart drop the connection; reconnect explicitly afterward.
+
+[P02.2 evidence](completion/77-p02-single-release-connection.md) establishes this
+finite native/own-host flow on synthetic minified chunks in both exact hosts.
+Independent real-app qualification, companion source files, preemptible inspector
+archive/map parsing and full P02 acceptance remain open.
 
 Node filesystem/compression APIs were checked against the primary
 [Node24 filesystem](https://nodejs.org/docs/latest-v24.x/api/fs.html) and

@@ -2120,7 +2120,7 @@
           "type_consumers": 2,
           "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
           "standalone_read_inject_native_checks": 3,
-          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
           "runtime_race_checks": 14,
           "isolated_bug_mutations_rejected": 6,
           "native_checks": 29,
@@ -2737,12 +2737,16 @@
         "scripts/prepare-source-bundle.mjs",
         "tests/release-bundle.test.mjs",
         "tests/helpers/release-bundle-io-race.mjs",
-        "docs/source-bundles.md"
+        "docs/source-bundles.md",
+        "tests/source-release-index.test.mjs",
+        "tests/atom/source-release-session.test.mjs",
+        "tests/fixtures/production-source-mapping/ReleaseConnectionView.js"
       ],
       "existing_commands": [
         "npm run verify:production-source-mapping",
         "npm run prepare:source-bundle",
-        "npm run verify:source-bundle-native"
+        "npm run verify:source-bundle-native",
+        "npm run verify:source-release-native"
       ],
       "deliverable": "One release import and lazy exact per-chunk matching",
       "status": "in-progress",
@@ -2754,7 +2758,7 @@
         "reconciliation": "13-scope-reconciliation.md"
       },
       "remaining_acceptance": [
-        "One retained explicit bundle import and lazy exact per-loaded-chunk matching, including stale/mixed releases and interruption",
+        "Retained release connection and lazy cold/later chunk matching complete within P02.2; interruption is still to cover actual preemptible archive/map parsing",
         "Explicit bounded companion sources when sourcesContent is missing; never follow sourceRoot/sources paths",
         "Preemptible archive/map parsing and session-local lifecycle/budgets",
         "Registered real-app size/time/indexed-map qualification and actual nontrivial minified UI workflow",
@@ -2766,33 +2770,38 @@
         "scope": "Owned hard-budget source AST Worker, exact separate dependency gate and transient provider foundation only",
         "does_not_complete": "Release-bundle preparation/bulk matching, preemptible archive/map parsing, companion sources or registered real-app limit qualification"
       },
-      "active_slice": "P02.2 retain one explicit release bundle and lazily match eligible loaded chunks",
-      "execution_record": "76-p02-release-bundle-preparation.md",
+      "active_slice": "P02.3 preemptible archive/map parsing with preserved session identity and budgets",
+      "execution_record": "77-p02-single-release-connection.md",
       "current_checkpoint": {
-        "id": "P02.1-explicit-release-bundle-preparation",
-        "status": "complete-bounded-preparation-and-native-compatibility-not-full-P02",
-        "record": "76-p02-release-bundle-preparation.md",
-        "candidate": "@stateport/atom@0.1.0-candidate.20261021.39",
-        "runtime_payload": "Unchanged Atom/UI/installed package and both complete host bytes from accepted P01 .39; current packaging receipt21-58-37-567Z",
-        "source_tests": 2019,
-        "new_source_tests": 15,
-        "actual_generated_bundle_checks": 57,
-        "actual_generated_bundle_checks_per_host": {
-          "standalone": 27,
-          "embedding": 28
+        "id": "P02.2-single-release-connection",
+        "status": "complete-bounded-packed-single-release-not-full-P02",
+        "record": "77-p02-single-release-connection.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.40",
+        "source_tests": 2036,
+        "new_source_tests": 17,
+        "actual_single_release_checks": 67,
+        "actual_single_release_checks_per_host": {
+          "standalone": 32,
+          "embedding": 33
         },
-        "actual_npm_entry": true,
-        "private_output_mode": "0600",
-        "output_publication": "Complete private same-filesystem stage, atomic non-overwriting hard link; no final-path deletion",
-        "cleanup_race_fixed": true,
-        "verification": ".artifacts/p02/prepare/verification.json",
-        "single_retained_import_for_all_chunks": false,
+        "native_source_regression_checks": 49,
+        "own_host_source_regression_checks": 65,
+        "types": 2,
+        "admission": 8,
+        "primary_imports_per_host": [
+          "release.zip"
+        ],
+        "loaded_chunk_assets": 3,
+        "single_retained_import_for_all_eligible_chunks": true,
+        "cache_accounting": "8MiB unique retained raw maps plus unique parsed-map inputs; max8 parsed maps; retained+largest parse admission",
+        "worker_and_ui_bytes_unchanged_from_P01": true,
         "companion_sources": false,
         "inspector_parse_preemption": false,
         "independent_real_app_qualification": false,
         "full_P02_acceptance": false,
-        "next_item": "P02.2 retain one explicit release bundle and lazily match eligible loaded chunks",
-        "boundary": "Node-only explicit already-built JS/map recipe, current limits and manifest raw SHA-256, private deterministic ZIP, real CLI/two-host compatibility. No app build/eval/config/source search/network; no SDK/publication or other repository. Current .39 runtime/UI unchanged; P02 bulk/companions/parser-worker/corpus remain open."
+        "verification": ".artifacts/p02/single-release/verification40.json",
+        "next_item": "P02.3 preemptible archive/map parsing with preserved session identity and budgets",
+        "boundary": "Exact .40/UI .2:one tab-local private release index, cold native second chunk and later own-host third chunk by actual loaded text digest; old-tab/new-deploy mismatch.2036source/67actual/49native/65host/types2/admission8 PASS. No source bodies in default snapshots/reports/models, app handler/effect execution, total heap claim, independent real-app/indexed qualification, companions, SDK/publication/other repository.16/29 full tasks remains unchanged."
       },
       "completed_slices": [
         {
@@ -2820,6 +2829,37 @@
           "full_P02_acceptance": false,
           "next_item": "P02.2 retain one explicit release bundle and lazily match eligible loaded chunks",
           "boundary": "Node-only explicit already-built JS/map recipe, current limits and manifest raw SHA-256, private deterministic ZIP, real CLI/two-host compatibility. No app build/eval/config/source search/network; no SDK/publication or other repository. Current .39 runtime/UI unchanged; P02 bulk/companions/parser-worker/corpus remain open."
+        },
+        {
+          "id": "P02.2-single-release-connection",
+          "status": "complete-bounded-packed-single-release-not-full-P02",
+          "record": "77-p02-single-release-connection.md",
+          "candidate": "@stateport/atom@0.1.0-candidate.20261021.40",
+          "source_tests": 2036,
+          "new_source_tests": 17,
+          "actual_single_release_checks": 67,
+          "actual_single_release_checks_per_host": {
+            "standalone": 32,
+            "embedding": 33
+          },
+          "native_source_regression_checks": 49,
+          "own_host_source_regression_checks": 65,
+          "types": 2,
+          "admission": 8,
+          "primary_imports_per_host": [
+            "release.zip"
+          ],
+          "loaded_chunk_assets": 3,
+          "single_retained_import_for_all_eligible_chunks": true,
+          "cache_accounting": "8MiB unique retained raw maps plus unique parsed-map inputs; max8 parsed maps; retained+largest parse admission",
+          "worker_and_ui_bytes_unchanged_from_P01": true,
+          "companion_sources": false,
+          "inspector_parse_preemption": false,
+          "independent_real_app_qualification": false,
+          "full_P02_acceptance": false,
+          "verification": ".artifacts/p02/single-release/verification40.json",
+          "next_item": "P02.3 preemptible archive/map parsing with preserved session identity and budgets",
+          "boundary": "Exact .40/UI .2:one tab-local private release index, cold native second chunk and later own-host third chunk by actual loaded text digest; old-tab/new-deploy mismatch.2036source/67actual/49native/65host/types2/admission8 PASS. No source bodies in default snapshots/reports/models, app handler/effect execution, total heap claim, independent real-app/indexed qualification, companions, SDK/publication/other repository.16/29 full tasks remains unchanged."
         }
       ],
       "historical_remaining_acceptance": "Release-bundle preparation and normal multi-chunk/source workflow with responsive bounded parsing"
@@ -3018,7 +3058,7 @@
       "implementation_plan": "../superpowers/plans/2026-10-21-l02-real-local-model.md",
       "remaining_acceptance": [
         "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
-        "Final candidate actual factual/concision/usefulness comparison preserving historical20–30 and>=25/5incomplete/5untrusted criteria",
+        "Final candidate actual factual/concision/usefulness comparison preserving historical20\u201330 and>=25/5incomplete/5untrusted criteria",
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
@@ -3568,7 +3608,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK — separate StatePort project",
+      "title": "Production SDK \u2014 separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",
@@ -3636,36 +3676,41 @@
     ]
   },
   "reconciliation": {
-    "document": "76-p02-release-bundle-preparation.md",
+    "document": "77-p02-single-release-connection.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "P02.1-explicit-release-bundle-preparation",
-      "status": "complete-bounded-preparation-and-native-compatibility-not-full-P02",
-      "record": "76-p02-release-bundle-preparation.md",
-      "candidate": "@stateport/atom@0.1.0-candidate.20261021.39",
-      "runtime_payload": "Unchanged Atom/UI/installed package and both complete host bytes from accepted P01 .39; current packaging receipt21-58-37-567Z",
-      "source_tests": 2019,
-      "new_source_tests": 15,
-      "actual_generated_bundle_checks": 57,
-      "actual_generated_bundle_checks_per_host": {
-        "standalone": 27,
-        "embedding": 28
+      "id": "P02.2-single-release-connection",
+      "status": "complete-bounded-packed-single-release-not-full-P02",
+      "record": "77-p02-single-release-connection.md",
+      "candidate": "@stateport/atom@0.1.0-candidate.20261021.40",
+      "source_tests": 2036,
+      "new_source_tests": 17,
+      "actual_single_release_checks": 67,
+      "actual_single_release_checks_per_host": {
+        "standalone": 32,
+        "embedding": 33
       },
-      "actual_npm_entry": true,
-      "private_output_mode": "0600",
-      "output_publication": "Complete private same-filesystem stage, atomic non-overwriting hard link; no final-path deletion",
-      "cleanup_race_fixed": true,
-      "verification": ".artifacts/p02/prepare/verification.json",
-      "single_retained_import_for_all_chunks": false,
+      "native_source_regression_checks": 49,
+      "own_host_source_regression_checks": 65,
+      "types": 2,
+      "admission": 8,
+      "primary_imports_per_host": [
+        "release.zip"
+      ],
+      "loaded_chunk_assets": 3,
+      "single_retained_import_for_all_eligible_chunks": true,
+      "cache_accounting": "8MiB unique retained raw maps plus unique parsed-map inputs; max8 parsed maps; retained+largest parse admission",
+      "worker_and_ui_bytes_unchanged_from_P01": true,
       "companion_sources": false,
       "inspector_parse_preemption": false,
       "independent_real_app_qualification": false,
       "full_P02_acceptance": false,
-      "next_item": "P02.2 retain one explicit release bundle and lazily match eligible loaded chunks",
-      "boundary": "Node-only explicit already-built JS/map recipe, current limits and manifest raw SHA-256, private deterministic ZIP, real CLI/two-host compatibility. No app build/eval/config/source search/network; no SDK/publication or other repository. Current .39 runtime/UI unchanged; P02 bulk/companions/parser-worker/corpus remain open."
+      "verification": ".artifacts/p02/single-release/verification40.json",
+      "next_item": "P02.3 preemptible archive/map parsing with preserved session identity and budgets",
+      "boundary": "Exact .40/UI .2:one tab-local private release index, cold native second chunk and later own-host third chunk by actual loaded text digest; old-tab/new-deploy mismatch.2036source/67actual/49native/65host/types2/admission8 PASS. No source bodies in default snapshots/reports/models, app handler/effect execution, total heap claim, independent real-app/indexed qualification, companions, SDK/publication/other repository.16/29 full tasks remains unchanged."
     },
-    "next_item": "P02.2 retain one explicit release bundle and lazily match eligible loaded chunks",
+    "next_item": "P02.3 preemptible archive/map parsing with preserved session identity and budgets",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -4356,7 +4401,7 @@
         "type_consumers": 2,
         "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
         "standalone_read_inject_native_checks": 3,
-        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
         "runtime_race_checks": 14,
         "isolated_bug_mutations_rejected": 6,
         "native_checks": 29,
@@ -5121,10 +5166,41 @@
         "full_P02_acceptance": false,
         "next_item": "P02.2 retain one explicit release bundle and lazily match eligible loaded chunks",
         "boundary": "Node-only explicit already-built JS/map recipe, current limits and manifest raw SHA-256, private deterministic ZIP, real CLI/two-host compatibility. No app build/eval/config/source search/network; no SDK/publication or other repository. Current .39 runtime/UI unchanged; P02 bulk/companions/parser-worker/corpus remain open."
+      },
+      {
+        "id": "P02.2-single-release-connection",
+        "status": "complete-bounded-packed-single-release-not-full-P02",
+        "record": "77-p02-single-release-connection.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.40",
+        "source_tests": 2036,
+        "new_source_tests": 17,
+        "actual_single_release_checks": 67,
+        "actual_single_release_checks_per_host": {
+          "standalone": 32,
+          "embedding": 33
+        },
+        "native_source_regression_checks": 49,
+        "own_host_source_regression_checks": 65,
+        "types": 2,
+        "admission": 8,
+        "primary_imports_per_host": [
+          "release.zip"
+        ],
+        "loaded_chunk_assets": 3,
+        "single_retained_import_for_all_eligible_chunks": true,
+        "cache_accounting": "8MiB unique retained raw maps plus unique parsed-map inputs; max8 parsed maps; retained+largest parse admission",
+        "worker_and_ui_bytes_unchanged_from_P01": true,
+        "companion_sources": false,
+        "inspector_parse_preemption": false,
+        "independent_real_app_qualification": false,
+        "full_P02_acceptance": false,
+        "verification": ".artifacts/p02/single-release/verification40.json",
+        "next_item": "P02.3 preemptible archive/map parsing with preserved session identity and budgets",
+        "boundary": "Exact .40/UI .2:one tab-local private release index, cold native second chunk and later own-host third chunk by actual loaded text digest; old-tab/new-deploy mismatch.2036source/67actual/49native/65host/types2/admission8 PASS. No source bodies in default snapshots/reports/models, app handler/effect execution, total heap claim, independent real-app/indexed qualification, companions, SDK/publication/other repository.16/29 full tasks remains unchanged."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Node-only explicit already-built JS/map recipe, current limits and manifest raw SHA-256, private deterministic ZIP, real CLI/two-host compatibility. No app build/eval/config/source search/network; no SDK/publication or other repository. Current .39 runtime/UI unchanged; P02 bulk/companions/parser-worker/corpus remain open.",
+    "current_activity_note": "Exact .40/UI .2:one tab-local private release index, cold native second chunk and later own-host third chunk by actual loaded text digest; old-tab/new-deploy mismatch.2036source/67actual/49native/65host/types2/admission8 PASS. No source bodies in default snapshots/reports/models, app handler/effect execution, total heap claim, independent real-app/indexed qualification, companions, SDK/publication/other repository.16/29 full tasks remains unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "P02"

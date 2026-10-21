@@ -929,3 +929,17 @@ complete hosts remain byte-identical to accepted P01, not a new runtime shipment
 Next P02.2:one retained import and lazy exact matching across loaded chunks.
 P02/companions/inspector parser preemption/real-app qualification remain open;
 16/29 full items complete. No new UI/SDK/publication/other repository or model claim.
+
+### 2026-10-22 — one private release connection across loaded chunks
+
+[P02.2](docs/completion/77-p02-single-release-connection.md) completes one tab-local release ZIP import with lazy exact native/
+own-host source matching:initial a/b plus later user-loaded c, distinct runtime
+anchors, same-URL newer-deploy mismatch and combined8MiB cache-input budget.
+Current .40/UI .2:17new/2036full source,67actual two-host release checks,49native/
+65own-host regressions,types2/admission8 PASS. Console/errors0, current inputs and
+complete hosts unchanged; every primary flow imports only release.zip once.
+Invisible-target and static-hint privacy-regex failures are retained with evidenced
+driver corrections; source/body/AST exclusions remain. Shared UI/Worker bytes equal
+accepted .39, not new HTTP/NodeIDE evidence. Next P02.3 preemptible archive/map
+parsing; companions, real-app/indexed-map qualification and ONE whole-P02 review
+remain.16/29 complete (~55% equal item count); no SDK/publication/other repository.

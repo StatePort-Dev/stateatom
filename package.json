@@ -72,6 +72,7 @@
     "verify:production-source-mapping": "node tests/integration/production-source-mapping.mjs",
     "prepare:source-bundle": "node scripts/prepare-source-bundle.mjs",
     "verify:source-bundle-native": "node tests/integration/source-analysis-native.mjs --prepared-release-bundle",
+    "verify:source-release-native": "node tests/integration/source-analysis-native.mjs --single-release-connection",
     "verify:atom-types": "node scripts/verify-atom-types.mjs",
     "verify:atom-package": "node scripts/verify-atom-package.mjs",
     "verify:capability-ui": "node tests/integration/capability-ui.mjs",

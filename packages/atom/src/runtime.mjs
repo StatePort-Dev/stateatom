@@ -387,7 +387,10 @@ async function readNativeSource(id,request,signal){
  const matches=native.filter(b=>b.status==='Observed'&&(react?b.boundOn:b.registeredOn)==='selected-element'&&tuple(b)===tuple(old));
  if(react)installHostActions(analysis,native,identity);else installNativeActions(analysis,native,identity,typeof selected.instance==='string');await persist();check();
  if(matches.length!==1)throw Error(react?'Current host callback changed or is unavailable; refresh handlers':'Native listener registration changed or is ambiguous; refresh handlers');
- const binding=analysis.actionBindings.find(b=>b.id===matches[0].id),freshInput={context:analysis.actionContext,binding,maps:sourceMaps.snapshot(id)},fresh=factory(freshInput);
+ const binding=analysis.actionBindings.find(b=>b.id===matches[0].id),location=react?binding.generated:binding.registration;
+ try{await sourceMaps.ensure(id,location.scriptId,{signal});}catch(error){throw Error('Source map unavailable: '+error.message);}
+ check();if(!analysis.actionBindings.includes(binding))throw Error('Native source registration changed during map matching');
+ const freshInput={context:analysis.actionContext,binding,maps:sourceMaps.snapshot(id)},fresh=factory(freshInput);
  if(fresh.status!=='Observed')throw Error('Current native source anchor unavailable');
  const result=await sourceMaps.lookupAnchor(id,fresh,freshInput,{signal,includeAnalysisInput:request.includeAnalysisInput===true});check();
  if(!analysis.actionBindings.includes(binding)||!isCurrentGeneratedAnchor(fresh,{context:analysis.actionContext,binding,maps:sourceMaps.snapshot(id)}))throw Error('Native source registration changed during read');
@@ -482,7 +485,7 @@ async function operation(m,context){const signal=context.signal;await ready;
   else if(m.op==='detach'){await stopActionTrace(id,'Debugger detached');await stopInputs(id,'Debugger detached');await picker.cancel(id,'Debugger detached').catch(()=>{});sourceMaps.invalidate(id,'Debugger detached');const s=state(id);recordStale(s,'Debugger detached; inspect again');await chrome.debugger.detach({tabId:id});s.attached=false;journalGap(s.codeJournal,'detach');s.fetchBindings=newFetchBindings(s.run);s.override=null;s.analysis=null;s.experiment=null;beginInspection(s);s.events.push({detach:'explicit user action'});await persist();result={detached:true};}
   else if(m.op==='source-map-import'){if(!state(id).attached)throw Error('Attach this tab first');const bytes=Uint8Array.from(atob(m.data),c=>c.charCodeAt(0));result=await sourceMaps.import(id,m.scriptId,bytes,m.name,{signal});}
   else if(m.op==='source-map-acquire'){if(!state(id).attached)throw Error('Attach this tab first');result=await sourceMaps.acquire(id,m.scriptId,m.url,{signal});}
-  else if(m.op==='source-map-lookup')result=sourceMaps.lookup(id,m.scriptId,m.line,m.column);
+  else if(m.op==='source-map-lookup'){await sourceMaps.ensure(id,m.scriptId,{signal});result=sourceMaps.lookup(id,m.scriptId,m.line,m.column);}
   else if(m.op==='source-map-anchor')result=await readNativeSource(id,m,signal);
   else if(m.op==='source-map-clear'){sourceMaps.clear(id);result=sourceMaps.snapshot(id);}
   else if(m.op==='metrics')result=await send(id,'Performance.getMetrics');

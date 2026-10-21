@@ -43,9 +43,11 @@ Work:
 **Produces:** practical release-artifact preparation, bulk matching to loaded chunks, and responsive source browsing/analysis.
 
 Current bounded [P02.1 execution](76-p02-release-bundle-preparation.md) delivers the
-explicit Node producer and actual generated-bundle compatibility; see
-[recipe/limits](../source-bundles.md). One retained import/bulk matching, companion
-sources, inspector parse preemption and real-app qualification remain P02 work.
+explicit Node producer and actual generated-bundle compatibility; subsequent
+[P02.2](77-p02-single-release-connection.md) adds one retained private release index
+and actual lazy native/own-host matching across cold/later chunks. See
+[recipe/limits](../source-bundles.md). Companion sources, inspector archive/map parse
+preemption, registered real-app qualification and ONE whole-P02 review remain open.
 
 **Files:** existing `core/source-maps.mjs`, `core/source-map-archive.mjs`, map session/UI, packing/build scripts; add a small standalone release-bundle preparation command and tests. This command packages explicit input artifacts; it does not build or execute arbitrary application code.
 

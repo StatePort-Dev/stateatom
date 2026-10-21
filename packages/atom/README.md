@@ -69,6 +69,13 @@ basic/save/export work without IDE. A current listener registered directly on th
 selected element can also be mapped without IDE: select the element, open Actions,
 choose Connect source map, import its map/release ZIP, then View registered listener
 source. Coordinates come from fresh native registration metadata, not manual input.
+An explicit manifest ZIP is connected once for this tab session. Other current or
+later loaded supported handler scripts can use the same connection without another
+file selection:matching derives the loaded UTF-8 script digest, not its filename or
+release label. JS bodies are discarded after verification; raw map index and unique
+parsed-map inputs share the existing8MiB cache budget. Cold maps are reparsed on
+explicit use. Missing/ambiguous/mixed-release cases remain explicit. Clear source
+connection, navigation, expiry and detach release index/maps; no persistence is added.
 An exact artifact links the registered location only; invocation, callback identity
 and the selected property's producer remain unproved. Unverified maps stay Candidate;
 maps without source content provide positions only. A finite React-compatible

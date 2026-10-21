@@ -1,0 +1,18 @@
+// SPDX-License-Identifier: Apache-2.0
+import test from 'node:test';import assert from 'node:assert/strict';import {createHash} from 'node:crypto';
+import {createReleaseMapIndex,lookupSource} from '../core/source-maps.mjs';
+const bytes=x=>Buffer.from(typeof x==='string'?x:JSON.stringify(x)),sha=b=>createHash('sha256').update(b).digest('hex'),code='function owned(){}',map=()=>({version:3,sources:['src/private.ts'],sourceRoot:'https://invalid.example/private/',names:[],mappings:'AAAA',sourcesContent:['ORIGINAL_INCLUDED_SOURCE']});
+function artifact(js=code,m=map()){const assetBytes=bytes(js),mapBytes=bytes(m);return{assetBytes,mapBytes,asset:{asset:'unrelated-name.js',sourceMap:'unrelated.map',assetSha256:sha(assetBytes),sourceMapSha256:sha(mapBytes)},manifestDigest:'f'.repeat(64),releaseId:'owner-label'};}
+const script=js=>({digest:sha(bytes(new TextDecoder('utf-8',{fatal:true}).decode(bytes(js)))),digestDomain:'utf8-script-source',startLine:0,startColumn:0,special:false,endLine:0,endColumn:js.length});
+test('prepared release retains copied map data and distinct raw/text digests without relying on a V8 hash',async t=>{
+ const js='\ufeff'+code,b=artifact(js),index=await createReleaseMapIndex([b]);t.after(()=>index.close());b.assetBytes.fill(0);b.mapBytes.fill(0);b.asset.assetSha256='0'.repeat(64);const r=await index.associate({...script(js),cdpHash:sha(bytes(js))});assert.equal(r.status,'Exact artifact match');assert.equal(lookupSource(r.parsed,1,0).excerpt,'ORIGINAL_INCLUDED_SOURCE');assert.notEqual(script(js).digest,sha(bytes(js)));await assert.rejects(index.associate({...script(js),digest:sha(bytes(js))}),/matching artifact/);await assert.rejects(index.associate({...script(js),digestDomain:'v8-script-content-sha256'}),/UTF-8 script digest/);assert(!JSON.stringify(index.describe()).includes('ORIGINAL_INCLUDED_SOURCE'));
+});
+test('construction cancellation is checked, but the completed connection does not retain the importing request lifetime',async t=>{
+ const c=new AbortController(),pending=createReleaseMapIndex([artifact()],{signal:c.signal});queueMicrotask(()=>c.abort());await assert.rejects(pending,/cancel/);const done=new AbortController();let constructionCurrent=true;const index=await createReleaseMapIndex([artifact()],{signal:done.signal,assertCurrent:()=>assert(constructionCurrent)});t.after(()=>index.close());constructionCurrent=false;done.abort();assert.equal(index.find(script(code).digest).status,'Unique');assert.equal((await index.associate(script(code))).status,'Exact artifact match');
+});
+test('lazy malformed map is not a successful cached parse; close releases private data and rejects later use',async()=>{
+ const second='function next(){}',index=await createReleaseMapIndex([artifact(),artifact(second,{version:3,sections:[]})]);assert.equal(index.describe().parsedMaps,0);assert.equal((await index.associate(script(code))).status,'Exact artifact match');await assert.rejects(index.associate(script(second)),/Unsupported source map/);assert.equal(index.describe().parsedMaps,1);index.release(index.find(script(code).digest).mapDigest);assert.equal(index.describe().parsedMaps,0);index.close();assert.equal(index.describe().retainedBytes,0);await assert.rejects(index.associate(script(code)),/cancel/);
+});
+test('a raw manifest conflict is Mismatch even where the loaded UTF-8 script text matches',async()=>{
+ const b=artifact();b.asset.sourceMapSha256='0'.repeat(64);const index=await createReleaseMapIndex([b]);const r=await index.associate(script(code));assert.equal(r.status,'Mismatch');assert.equal(index.describe().parsedMaps,0);index.close();
+});

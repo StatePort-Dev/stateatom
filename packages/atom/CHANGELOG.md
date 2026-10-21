@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.40
+
+- Keep one explicit release ZIP connection in the current tab session and match
+  supported native/own-host handler scripts lazily by verified artifact/text bytes.
+  Drop built JS bodies after hashing, share map bytes by digest, and keep raw index
+  plus parsed-map inputs inside the existing8MiB cache budget. Clear/expiry and
+  navigation release the connection; mixed/ambiguous releases remain explicit gaps.
+- Reuse existing source cards and disclosures:pending handlers offer View source,
+  status explains the session connection, and Clear source connection clears both
+  index and maps. Only the exact request's refreshed anchor may retain its preview
+  through lazy metadata reload. No shared token, primitive, layout or evidence change.
+
 ## 0.1.0-candidate.20261021.39
 
 - Map original source lines consistently for LF, CRLF, CR, U+2028 and U+2029.

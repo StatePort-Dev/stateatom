@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 import {supportsCapabilityPolicy} from './transport.mjs';
-import {isCurrentGeneratedAnchor} from '../../../core/source-anchor.mjs';
+import {isCurrentGeneratedAnchor,createNativeSourceAnchor,createReactHostSourceAnchor} from '../../../core/source-anchor.mjs';
 export const sourceMapTemplate=`
 <details id="source-map-details" data-atom-id="source-map-details" class="sp-disclosure"><summary>Source maps · no IDE required</summary>
 <label><input id="source-map-readonly" data-atom-id="source-map-readonly" type="checkbox"> Read-only inspection on next attach (automatic for HTTPS sites)</label>
-<p class="sp-atom-hint">Explore source for a script loaded in this tab. A map does not identify the producer of the selected property.</p>
+<p class="sp-atom-hint">Import a release ZIP once for this tab, then view supported handlers. A map does not identify the producer of the selected property.</p>
 <label>Loaded JavaScript <select id="source-map-script" data-atom-id="source-map-script"></select></label>
-<div class="sp-toolbar"><button id="source-map-discover" data-atom-id="source-map-discover">Load declared map</button><button id="source-map-clear" data-atom-id="source-map-clear">Clear cached maps</button></div>
+<div class="sp-toolbar"><button id="source-map-discover" data-atom-id="source-map-discover">Load declared map</button><button id="source-map-clear" data-atom-id="source-map-clear">Clear source connection</button></div>
 <label>Choose .map or release ZIP <input id="source-map-file" data-atom-id="source-map-file" type="file" accept=".map,.zip"></label>
 <p class="sp-atom-hint">Local only · no upload. An exact release ZIP contains manifest.json, built JS and maps. Sources are not saved in diagnostics.</p>
 <details class="sp-disclosure"><summary>Internal artifact URL</summary><label>HTTPS map, ZIP or manifest URL <input id="source-map-url" data-atom-id="source-map-url" type="url" placeholder="https://builds.example/map"></label><button id="source-map-acquire" data-atom-id="source-map-acquire">Allow origin and load</button><p class="sp-atom-hint">Credentials are omitted. Redirects are refused. Corporate SSO may require a local bundle.</p></details>
@@ -18,20 +18,26 @@ export const sourceMapTemplate=`
 <details id="source-analysis-details" data-atom-id="source-analysis-details" class="sp-disclosure" hidden><summary>Source function and possible calls</summary><p id="source-analysis-summary" data-atom-id="source-analysis-summary" class="sp-atom-hint"></p><ul id="source-analysis-calls" data-atom-id="source-analysis-calls"></ul><p id="source-analysis-identifiers" data-atom-id="source-analysis-identifiers" class="sp-atom-hint"></p><pre id="source-analysis-expression" data-atom-id="source-analysis-expression" class="sp-code"></pre></details>
 </details>`;
 export function createSourceMapUI({document,$,rpc,tab,load,action,requestPermission,sourceAnalysis}){
- let state=null,key='',disposed=false,generation=0,previewTimer,controller;
+ let state=null,key='',disposed=false,generation=0,previewTimer,controller,adoption;
  const selected=()=>state?.sourceMaps?.scripts?.find(r=>r.scriptId===$('source-map-script').value);
- const clearPreview=()=>{controller?.abort();controller=null;sourceAnalysis?.cancel();clearTimeout(previewTimer);$('source-map-location').textContent='';$('source-map-preview').textContent='';$('source-analysis-status').textContent='';$('source-analysis-cancel').hidden=true;$('source-analysis-details').hidden=true;$('source-analysis-details').open=false;$('source-analysis-summary').textContent='';$('source-analysis-calls').replaceChildren();$('source-analysis-identifiers').textContent='';$('source-analysis-expression').textContent='';};
+ const clearPreview=()=>{adoption=null;controller?.abort();controller=null;sourceAnalysis?.cancel();clearTimeout(previewTimer);$('source-map-location').textContent='';$('source-map-preview').textContent='';$('source-analysis-status').textContent='';$('source-analysis-cancel').hidden=true;$('source-analysis-details').hidden=true;$('source-analysis-details').open=false;$('source-analysis-summary').textContent='';$('source-analysis-calls').replaceChildren();$('source-analysis-identifiers').textContent='';$('source-analysis-expression').textContent='';};
  const scope=()=>JSON.stringify([state?.attached,state?.stale,state?.analysis?.actionContext,(state?.analysis?.actionBindings||[]).filter(b=>['dom-listener','react-host-props'].includes(b.mechanism)).map(b=>[b.id,b.event,b.status,b.freshness,b.identity,b.registeredOn,b.registration?.scriptId,b.registration?.line,b.registration?.column,b.registration?.positionBase,b.registration?.registeredNode,b.capture,b.passive,b.once,b.boundOn,b.property,b.generated,b.frameworkVersion,b.carrier?.profile,b.carrier?.hostNode,b.carrier?.frameId,b.carrier?.executionContextId])]);
  function render(s){
   state=s;const scripts=s?.sourceMaps?.scripts||[],old=$('source-map-script').value;
   $('source-map-script').replaceChildren(...scripts.map(r=>{const o=document.createElement('option');o.value=r.scriptId;let name;try{name=new URL(r.url).pathname.split('/').at(-1);}catch{name='script';}o.textContent=name+' · script '+r.scriptId;return o;}));if(scripts.some(r=>r.scriptId===old))$('source-map-script').value=old;
   show();
  }
- function show(){const r=selected(),maps=state?.sourceMaps,next=tab()+':'+maps?.epoch+':'+maps?.status+':'+r?.scriptId+':'+r?.map?.mapDigest+':'+r?.map?.status+':'+JSON.stringify([r?.frameId,r?.executionContextId,r?.cdpHash,r?.digest])+':'+scope();if(key!==next){key=next;generation++;clearPreview();}
-  $('source-map-status').textContent=maps?.status==='Stale'?'Stale · reconnect after navigation or debugger change':r?.map?r.map.status+' · '+(r.map.hasContent?'Source available':'Map lacks source content; positions only')+' · '+r.map.reason:r?'Connect source map · not linked to element':'Attach and inspect a tab to discover loaded scripts';
+ function adoptsCurrentAnchor(){
+  if(!controller||adoption?.controller!==controller||!state?.attached||state?.stale)return false;
+  const expected=adoption.anchor,binding=state.analysis?.actionBindings?.find(b=>b.id===expected?.acquisition?.bindingId),factory=binding?.mechanism==='react-host-props'?createReactHostSourceAnchor:createNativeSourceAnchor,fresh=factory({context:state.analysis?.actionContext,binding,maps:state.sourceMaps});
+  return fresh.status==='Observed'&&JSON.stringify(fresh)===JSON.stringify(expected);
+ }
+ function show(){const r=selected(),maps=state?.sourceMaps,next=tab()+':'+maps?.epoch+':'+maps?.status+':'+r?.scriptId+':'+r?.map?.mapDigest+':'+r?.map?.status+':'+JSON.stringify([r?.frameId,r?.executionContextId,r?.cdpHash,r?.digest])+':'+scope();if(key!==next){const adopt=adoptsCurrentAnchor();key=next;if(!adopt){generation++;clearPreview();}}
+  const release=maps?.bundle?.status==='Connected',pending=release&&(!r?.map||r.map.status==='Stale');
+  $('source-map-status').textContent=maps?.status==='Stale'?'Stale · reconnect after navigation or debugger change':pending?'Release bundle connected · '+maps.bundle.assetCount+' artifacts · view a handler to find its source':r?.map?r.map.status+(['Exact artifact match','Unverified'].includes(r.map.status)?' · '+(r.map.hasContent?'Source available':'Map lacks source content; positions only'):'')+' · '+r.map.reason:r?'Connect source map · not linked to element':'Attach and inspect a tab to discover loaded scripts';
   $('source-map-identity').textContent=r?JSON.stringify({...r,url:'[shown in inspected tab only]',sourceMapURL:r.sourceMapURL?'[declared reference available]':null},null,2):'';
   const unavailable=!state?.attached||!r||maps?.status==='Stale';for(const id of ['source-map-discover','source-map-acquire','source-map-file'])$(id).disabled=unavailable;
-  $('source-map-lookup').disabled=unavailable||!r.map||['Mismatch','Stale','Unavailable'].includes(r.map.status);$('source-map-discover').disabled=unavailable||!r.sourceMapURL;
+  $('source-map-lookup').disabled=unavailable||!pending&&(!r.map||['Mismatch','Stale','Unavailable'].includes(r.map.status));$('source-map-discover').disabled=unavailable||!r.sourceMapURL;
   $('source-map-clear').disabled=false;
   const policy=state?.capabilityPolicy,known=supportsCapabilityPolicy(policy);
   for(const [id,op] of [['source-map-file','source-map-import'],['source-map-discover','source-map-acquire'],['source-map-acquire','source-map-acquire'],['source-map-lookup','source-map-lookup'],['source-map-clear','source-map-clear']]){
@@ -65,7 +71,7 @@ export function createSourceMapUI({document,$,rpc,tab,load,action,requestPermiss
   $('source-map-details').open=true;$('source-map-script').value=anchor.generated.scriptId;show();clearPreview();
   const own=new AbortController();controller=own;const id=tab(),g=generation;
   try{const result=await rpc({op:'source-map-anchor',tabId:id,bindingId:anchor.acquisition.bindingId,snapshotId:anchor.acquisition.snapshotId,contextKey:JSON.stringify(anchor.identity),...(sourceAnalysis?.available?{includeAnalysisInput:true}:{})},own.signal);
-   if(disposed||own.signal.aborted||id!==tab()||g!==generation)return;await load({refreshDeep:false});if(disposed||own.signal.aborted||id!==tab()||g!==generation)return;
+   if(disposed||own.signal.aborted||id!==tab()||g!==generation)return;adoption={controller:own,anchor:result.anchor};await load({refreshDeep:false});adoption=null;if(disposed||own.signal.aborted||id!==tab()||g!==generation)return;
    const host=result.anchor?.relation==='selected-react-compatible-host-callback-generated-location';$('source-map-location').textContent=(result.source?result.source+':'+result.line+':'+result.column+' · ':'')+result.status+' · '+(result.match||'Unavailable')+(host?' · current own host callback-slot location; renderer/version unverified; execution not observed; property producer unknown':' · registered listener location; execution not observed; property producer unknown')+(result.contentStatus==='Unavailable'?' · Position only; source content unavailable':'');
    $('source-map-preview').textContent=result.excerpt||result.reason||'No source content at this position';
    previewTimer=setTimeout(()=>{if(!disposed){clearPreview();$('source-map-location').textContent='Preview expired; reconnect source maps';}},300000);
@@ -75,7 +81,7 @@ export function createSourceMapUI({document,$,rpc,tab,load,action,requestPermiss
     const analyzed=await sourceAnalysis.analyze(result.analysisInput,{signal:own.signal});
     if(disposed||own.signal.aborted||id!==tab()||g!==generation)return;showAnalysis(analyzed,result);
    }else $('source-analysis-status').textContent='Source analysis unavailable · '+(sourceAnalysis?.available?'No usable original source input':'This inspector provides source preview only');
-  }catch(e){if(!own.signal.aborted&&!disposed)throw e;}finally{if(controller===own)controller=null;}
+  }catch(e){if(!own.signal.aborted&&!disposed){await load({refreshDeep:false}).catch(()=>{});throw e;}}finally{if(adoption?.controller===own)adoption=null;if(controller===own)controller=null;}
  }
  return {render,connectNative,viewNative,dispose(){disposed=true;++generation;clearPreview();sourceAnalysis?.dispose();}};
 }
