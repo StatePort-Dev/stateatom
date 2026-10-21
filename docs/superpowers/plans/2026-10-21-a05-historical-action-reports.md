@@ -132,3 +132,13 @@ Task2 decisive tests additionally include action+input+source composed privacy,
 base-only/action-only redactions, same explicit source bytes across default/full
 choices, wrong diagnostic packet, notes preserving packet, duplicate keys and
 structural tampering, report limits, full browser restart and clean recipient.
+
+Task2 is executed as independently testable local commits: (2a) passive packet
+model/privacy codec, (2b) composed profile/parent continuity, then (2c) existing
+reporter/recipient controls and native acceptance. Source-only 2a/2b are not
+installed features; do not repack or repeat native campaigns until connected.
+Add `createHandoffActionReview(diagnosticRaw) -> Promise<model|null>` with
+`model.catalogue()` and `model.project(choices)` for the current local review;
+no private catalogue or raw original is embedded in a public packet. Packet
+parser additionally accepts optional `{parentRaw}` to check privacy lineage.
+ONE final report-plan reviewer still follows the integrated2c outcome.

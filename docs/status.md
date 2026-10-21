@@ -1266,3 +1266,14 @@ old finite rerun. Actual390/1100 first viewport/new section/keyboard candidates
 inspected. See46-a05-historical-diagnostic.md and verification18.json. Reviewed
 issue action composition/privacy remains excluded explicitly; that is the next
 bounded item before ONE report-plan review. Whole A05/production/performance open.
+
+
+### 2026-10-21 — A05 unimported action packet model
+
+Passive packet/default privacy/parent-aware redaction source model now passes
+source1745/focused96/model14 and projections over six retained actual .18 native
+diagnostic files. Compiled-site SHA filtering failure preserved and fixed without
+rerunning a browser campaign. No new installed feature/package/native claim; see
+47-a05-action-packet-model.md and verification-model.json. Next: composed profile
+and exact source/parent/privacy continuity, then existing controls/native acceptance
+and ONE report-plan review. Whole A05 remains open.
