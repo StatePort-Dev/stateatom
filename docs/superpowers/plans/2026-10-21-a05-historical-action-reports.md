@@ -48,7 +48,7 @@
 - [x] RED for default exclusions, explicit selected metadata, omitted/replaced identities across packets, wrong parent/digest, duplicate JSON keys/oversize, note/privacy continuity and legacy unchanged bytes.
 - [x] Implement minimal codec/presentation and connect existing review/save/download/reader. No active action operation in passive code.
 - [x] GREEN source suites and exact two-host native reporter→restart→clean recipient with real saved action and no app/IDE/HTTP authority; narrow/keyboard candidates compared to retained reference. Relevant existing input/source reporter controls must remain intact.
-- [ ] Update evidence/task-index/status/roadmap and local commit. ONE final fresh read-only review for this bounded report plan, one fix pass if needed, no per-subcase review loop or whole A05 claim.
+- [x] Update evidence/task-index/status/roadmap and local commit. ONE final fresh read-only review for this bounded report plan, one fix pass if needed, no per-subcase review loop or whole A05 claim.
 
 ## Scope self-review
 
@@ -151,3 +151,15 @@ metadata, not a promise of general PII anonymisation. User-entered words still n
 review. This refines internal privacy mapping; it is not a new handoff UX approval.
 Export existing source-file snapshot helper internally for the wrapper so supplied
 ArrayBuffers are copied before awaits under the same old byte/count rules.
+
+## Final bounded review/fix result
+
+ONE fresh review2fe77fe..d7c4f6c: Critical0/Important1; Important reproduced in
+actual reporter/recipient controllers, then fixed in one TDD pass with six added
+controls. Original unknown values are never retained; explicit reductions use
+conservative cross-component metadata categories. Default independent consent and
+armed-empty source controls remain. Final exact .20: source1782/focused584/native13
+with16 completed downloads/types2/admission7 PASS;16 old actual .19 files still
+parse.50-a05-report-review-fix.md and verification20.json; all four declined scopes
+have root rulings. Plan complete within historical report scope, not whole A05.
+Next bounded A05.3d resource/overhead controls. No new review loop.

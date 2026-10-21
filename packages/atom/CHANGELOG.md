@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.20
+
+- Remove related base/source/input metadata conservatively when an explicit
+  interaction privacy reduction can no longer match excluded, filtered or
+  replaced originals. Never retain hidden originals or hashes to recover them.
+  Initial default exclusions still preserve independently reviewed base content;
+  armed-empty packets do not erase unrelated source evidence. Existing controls
+  and visual styling are unchanged.
+
 ## 0.1.0-candidate.20261021.19
 
 - Include separately reviewed historical interaction metadata in ordinary saved

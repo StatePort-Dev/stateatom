@@ -1303,3 +1303,19 @@ shared UI primitives remain; actual390/440/1100/zoom200 candidates inspected. Se
 historical-report plan review, then one fix pass if required. Whole A05 remains
 open for original matrix/production/performance/async boundaries and whole review;
 A02/L02 are not completed by this report feature. No SDK/publication/other repo.
+
+
+### 2026-10-21 — A05 historical-report plan complete after one review/fix
+
+ONE fresh bounded review found one Important privacy overlap: a replaced action
+name survived later name omission through independently consented base metadata.
+Six RED→GREEN controls and conservative unknown-original category reductions fix
+it on exact .20. Source1782/focused584, native reviewed13/16 completed downloads,
+backwards read16 actual .19 files, types2/admission7 PASS. Original input reporter33
+remains .19 evidence with unchanged relevant source hashes; no fresh .20 33-run
+claim. Failed isolated IDE shutdown/occupied-port attempts and exact own-process
+cleanup retained; clean complete native run keeps unchanged criteria. See
+50-a05-report-review-fix.md and verification20.json. All four declined-review scopes
+have explicit rulings. No second review loop. Next: A05.3d installed record-budget/
+resource and measured overhead controls; whole A05/production/async gates, A02/L02
+remain open. No publication, SDK, other repository or new handoff journey.

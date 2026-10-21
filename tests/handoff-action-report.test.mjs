@@ -6,8 +6,8 @@ import{createHandoffActionEvidence}from'../core/handoff-action-evidence.mjs';imp
 import{parseHandoffReport}from'../core/handoff-files.mjs';import{createHandoffContentReview}from'../core/handoff-content.mjs';
 import{composeHandoffActionReport,parseHandoffActionReport,appendHandoffActionFinding,appendHandoffActionSource,redactHandoffActionReport,handoffActionReportComponents}from'../core/handoff-action-report.mjs';
 const categories=['actionIdentities','actionSources','actionSymbols','actionNotes'],opts=(raw,extra={})=>({expectedParentDigest:hash(raw),now:()=>8000,...extra});
-async function fixture(profile='reviewed'){
- const actionTrace=structuredClone(actionObservationReportFixture().trace);actionTrace.identity.run='input-run-cedar';actionTrace.records[1].source.file='src/InputReportCedar.tsx';actionTrace.records[1].source.sourceDigest=hash('export const disabled = true; // actual local fixture bytes\n');actionTrace.records[1].source.symbol='PrivateSharedFunctionCedar';
+async function fixture(profile='reviewed',traceState='complete'){
+ const actionTrace=structuredClone(actionObservationReportFixture(traceState).trace);actionTrace.identity.run='input-run-cedar';if(actionTrace.records[1]){actionTrace.records[1].source.file='src/InputReportCedar.tsx';actionTrace.records[1].source.sourceDigest=hash('export const disabled = true; // actual local fixture bytes\n');actionTrace.records[1].source.symbol='PrivateSharedFunctionCedar';}
  const actionBindings=[{id:'declaration',event:'click',mechanism:'vue-template',registeredOn:'selected-element',entry:{symbol:'PrivateSharedFunctionCedar',status:'Code-linked',reason:'Lexical callback PrivateSharedFunctionCedar; runtime object identity unavailable'},calls:[],hookRelations:[],execution:{status:'not-observed'}}];
  const f=await inputReportFixture({profile:profile==='input'?'source':profile,actionTrace,actionBindings});if(profile==='input')f.baseRaw=await composeHandoffInputReport(f.baseRaw,f.packetRaw,opts(f.baseRaw));
  const actionRaw=await createHandoffActionEvidence(f.diagnosticRaw,{includeCategories:categories},{now:()=>7000});return{...f,actionRaw};
@@ -38,6 +38,18 @@ test('runtime run identity does not survive in the input packet or base after ac
 });
 test('default action exclusions preserve independently consented base details and source declarations',async()=>{
  const f=await fixture(),packet=await createHandoffActionEvidence(f.diagnosticRaw),base=(await parseHandoffReport(f.baseRaw)).record,raw=await composeHandoffActionReport(f.baseRaw,packet,opts(f.baseRaw)),r=(await parseHandoffActionReport(raw)).record;assert.deepEqual(r.report,base.report);assert(raw.includes(f.file));assert(raw.includes('PrivateSharedFunctionCedar'));assert.equal(r.actionEvidence.fields.find(x=>x.path==='/records/1/source/symbol').state,'omitted');
+});
+
+for(const state of['omitted','replaced','filtered'])test('explicit privacy conservatively removes unknown '+state+' originals from base, input and source metadata',async()=>{
+ const f=await fixture('input'),paths=['/identity/run','/records/1/source/file','/records/1/source/symbol'],review={includeCategories:categories,...(state==='omitted'?{omitFields:paths}:state==='replaced'?{replaceFields:paths.map(id=>({id,text:'REMOVED'}))}:{})};
+ let packet=await createHandoffActionEvidence(f.diagnosticRaw,review);
+ if(state==='filtered'){const p=JSON.parse(packet);for(const field of p.fields.filter(x=>paths.includes(x.path))){field.state='filtered';field.value='[redacted]';field.reason='known-secret-pattern';}p.contextJoin={state:'unverifiable',missingContext:p.fields.filter(x=>x.path!=='/reason'&&x.state!=='included').map(x=>x.path)};p.evidenceDigest=hash(canonical(Object.fromEntries(Object.entries(p).filter(([k])=>k!=='evidenceDigest'))));packet=canonical(p);}
+ const raw=await composeHandoffActionReport(f.baseRaw,packet,opts(f.baseRaw));for(const original of['PrivateSharedFunctionCedar',f.file,'input-run-cedar'])assert(raw.includes(original),'initial exclusion does not revoke independent consent');
+ for(const choice of[{actionReview:{omitCategories:['actionIdentities','actionSources','actionSymbols']}},{omitActionEvidence:true},{actionReview:{omitFields:paths}}]){const next=await redactHandoffActionReport(raw,choice,opts(raw));for(const original of['PrivateSharedFunctionCedar',f.file,'input-run-cedar',hash(f.code)])assert(!next.includes(original),'original metadata must be removed after explicit reduction: '+original);await parseHandoffActionReport(next,{parentRaw:raw});}
+});
+test('whole omission of an armed-empty packet keeps independently consented unrelated source evidence',async()=>{
+ const f=await fixture('source','armed'),packet=await createHandoffActionEvidence(f.diagnosticRaw),raw=await composeHandoffActionReport(f.baseRaw,packet,opts(f.baseRaw)),next=await redactHandoffActionReport(raw,{omitActionEvidence:true},opts(raw)),r=(await parseHandoffActionReport(next,{parentRaw:raw})).record;
+ assert.equal(r.actionEvidence,null);assert(next.includes(f.file));assert.equal(r.sourceEvidence.at(-1).files[0].file,f.file);assert(raw.includes('PrivateSharedFunctionCedar'));
 });
 
 const canonical=value=>JSON.stringify(function sorted(x){return Array.isArray(x)?x.map(sorted):x&&typeof x==='object'?Object.fromEntries(Object.keys(x).sort().map(k=>[k,sorted(x[k])])):x;}(value));
