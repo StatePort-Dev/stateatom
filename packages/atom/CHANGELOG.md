@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.26
+
+- Preserve masking explanations through supported grouping and negation, including
+  false results. Keep source offsets and unavailable operands; this is a copied
+  boolean model, not an intervention or another application read.
+- Reuse the existing Basic summary and Connect project action. Keep local evidence
+  details available without repeating the fallback. Existing reference typography,
+  layout, tokens and primitives are unchanged; screenshots remain review candidates.
+
 ## 0.1.0-candidate.20261021.25
 
 - Keep copied text scalars visibly observed in local details and describe their

@@ -74,9 +74,9 @@ function renderInspection(){
  const displayState=inspectionDisplayState(selectedState||{}),displayAnalysis=displayState.analysis;
  sourceMapUI.render(displayState);
  actionsUI.render(displayState);
- explanationUI.render(displayState);
  $('project-setup-status').textContent=selectedState?.projectSetup?.reason||'Basic works without the helper. For source access, install matching components and paste a private receipt.';
  const view=inspectionView(displayState),selection=view.target;
+ explanationUI.render(displayState,{fallbackPresented:view.nextStep==='connect-project'});
  $('mode').textContent=view.mode;
  $('site-origin').textContent=$('tabs').selectedOptions?.[0]?.dataset.origin||'No application selected';
  for(const name of ['cache','reload','override','replay'])$('site-'+name).checked=selectedState?.connection?.actions?.includes(name)===true;

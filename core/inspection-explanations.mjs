@@ -65,7 +65,7 @@ function propertyFacts(state,facts){
  }
  facts.evidenceIds=unique(facts.evidenceIds);
  const c=facts.condition;
- if(typeof value==='boolean'&&c?.masking&&c.knownTrueTerms>1)facts.summaries=['In the copied condition, two terms independently keep the result true. Changing only one would be insufficient; this is a hypothetical logical result.'];
+ if(typeof value==='boolean'&&c?.masking)facts.summaries=['In the copied condition, '+((value?c.knownTrueTerms:c.knownFalseTerms)===2?'two':'multiple')+' terms independently keep the result '+value+'. Changing only one would be insufficient; this is a hypothetical logical result.'];
  else if(typeof value==='boolean'&&c)facts.summaries=['The recorded condition returned '+value+'. '+(c.unknownInputs?'A skipped or unsupported input remains unavailable.':c.knownTrueTerms===1?'One known term is sufficient in this copied boolean model.':'The copied boolean inputs and source are available below.')];
  else if(facts.property==='text'&&facts.details.some(d=>d.kind==='condition-input'&&d.status==='Observed'))facts.summaries=['The recorded text computation read a copied scalar value. Its upstream producer is not established by this inspection.'];
  else facts.summaries=['A source-linked computation was recorded for this selection. Its detailed condition or its connection to the displayed value is not established.'];

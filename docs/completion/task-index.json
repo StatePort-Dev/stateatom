@@ -2543,11 +2543,11 @@
         "npm run verify:browser"
       ],
       "deliverable": "Short explanations from existing fact/evidence records",
-      "status": "in-progress",
+      "status": "complete",
       "optional": false,
-      "active_slice": "ONE whole-L01 scope/code/evidence review",
+      "active_slice": "L01 accepted within bounded copied-fact scope",
       "implementation_plan": "../superpowers/plans/2026-10-21-l01-selected-explanations.md",
-      "execution_record": "55-l01-installed-explanations.md",
+      "execution_record": "56-l01-whole-item-review.md",
       "completed_slices": [
         {
           "id": "L01.1-local-facts-source",
@@ -2582,35 +2582,49 @@
           "verification": ".artifacts/l01/ui/verification25.json",
           "next_item": "ONE whole-L01 scope/code/evidence review and one test-backed correction pass if required",
           "boundary": "Exact .25 native current copied-condition/source-scalar/masking/getter/Basic/passive-reader controls pass in both hosts; explicit Action Explain uses stored independent body metadata without another app action. Existing input and original map predicates pass, with legacy debugger-conflict FAIL retained. No raw local details enter prompts, real-model inference, full causal/HTTP/DOM producer or L02 completion."
+        },
+        {
+          "id": "L01.3-whole-item-accepted",
+          "status": "complete-bounded-L01-after-one-review-and-fix-pass",
+          "record": "56-l01-whole-item-review.md",
+          "candidate": "@stateport/atom@0.1.0-candidate.20261021.26",
+          "source_checks": 1846,
+          "focused_checks": 87,
+          "native_explanation_checks": 24,
+          "type_consumers": 2,
+          "package_admission_checks": 7,
+          "full_L01_acceptance": true,
+          "whole_L01_review_performed": true,
+          "L02_real_model_acceptance": false,
+          "verification": ".artifacts/l01/whole-review-fixes/verification26.json",
+          "next_item": "L02",
+          "boundary": "ONE whole-L01 review and one TDD correction pass. Supported grouping/negation preserve hypothetical masking and unknowns; Basic reuses one fallback/action with details retained. Exact .26 native24; .25 action7/input40/map39 remain historical, not fresh .26 reruns. No model inference, general DOM/HTTP/callback/effect authority, V02/V03 or release acceptance."
         }
       ],
       "current_checkpoint": {
-        "id": "L01.2-installed-explanations-ready-for-review",
-        "status": "native-controls-passed-pending-one-whole-item-review",
-        "record": "55-l01-installed-explanations.md",
-        "candidate": "@stateport/atom@0.1.0-candidate.20261021.25",
-        "source_checks": 1833,
-        "focused_checks": 107,
-        "native_explanation_checks": 20,
-        "native_action_explanation_checks": 7,
-        "native_input_regression_checks": 40,
-        "native_map_regression_checks": 39,
+        "id": "L01.3-whole-item-accepted",
+        "status": "complete-bounded-L01-after-one-review-and-fix-pass",
+        "record": "56-l01-whole-item-review.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.26",
+        "source_checks": 1846,
+        "focused_checks": 87,
+        "native_explanation_checks": 24,
         "type_consumers": 2,
         "package_admission_checks": 7,
-        "full_L01_acceptance": false,
-        "whole_L01_review_performed": false,
+        "full_L01_acceptance": true,
+        "whole_L01_review_performed": true,
         "L02_real_model_acceptance": false,
-        "verification": ".artifacts/l01/ui/verification25.json",
-        "next_item": "ONE whole-L01 scope/code/evidence review and one test-backed correction pass if required",
-        "boundary": "Exact .25 native current copied-condition/source-scalar/masking/getter/Basic/passive-reader controls pass in both hosts; explicit Action Explain uses stored independent body metadata without another app action. Existing input and original map predicates pass, with legacy debugger-conflict FAIL retained. No raw local details enter prompts, real-model inference, full causal/HTTP/DOM producer or L02 completion."
+        "verification": ".artifacts/l01/whole-review-fixes/verification26.json",
+        "next_item": "L02",
+        "boundary": "ONE whole-L01 review and one TDD correction pass. Supported grouping/negation preserve hypothetical masking and unknowns; Basic reuses one fallback/action with details retained. Exact .26 native24; .25 action7/input40/map39 remain historical, not fresh .26 reruns. No model inference, general DOM/HTTP/callback/effect authority, V02/V03 or release acceptance."
       },
-      "remaining_acceptance": [
-        "ONE whole-L01 review against approved07/02/12, including sufficiency of the explicit boolean grammar/masking boundary; one test-backed correction pass if needed"
-      ],
+      "remaining_acceptance": [],
       "execution_records": [
         "54-l01-local-fact-model.md",
-        "55-l01-installed-explanations.md"
-      ]
+        "55-l01-installed-explanations.md",
+        "56-l01-whole-item-review.md"
+      ],
+      "completion_boundary": "ONE whole-L01 review and one TDD correction pass. Supported grouping/negation preserve hypothetical masking and unknowns; Basic reuses one fallback/action with details retained. Exact .26 native24; .25 action7/input40/map39 remain historical, not fresh .26 reruns. No model inference, general DOM/HTTP/callback/effect authority, V02/V03 or release acceptance."
     },
     {
       "id": "L02",
@@ -2987,26 +3001,23 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "L01.2-installed-explanations-ready-for-review",
-      "status": "native-controls-passed-pending-one-whole-item-review",
-      "record": "55-l01-installed-explanations.md",
-      "candidate": "@stateport/atom@0.1.0-candidate.20261021.25",
-      "source_checks": 1833,
-      "focused_checks": 107,
-      "native_explanation_checks": 20,
-      "native_action_explanation_checks": 7,
-      "native_input_regression_checks": 40,
-      "native_map_regression_checks": 39,
+      "id": "L01.3-whole-item-accepted",
+      "status": "complete-bounded-L01-after-one-review-and-fix-pass",
+      "record": "56-l01-whole-item-review.md",
+      "candidate": "@stateport/atom@0.1.0-candidate.20261021.26",
+      "source_checks": 1846,
+      "focused_checks": 87,
+      "native_explanation_checks": 24,
       "type_consumers": 2,
       "package_admission_checks": 7,
-      "full_L01_acceptance": false,
-      "whole_L01_review_performed": false,
+      "full_L01_acceptance": true,
+      "whole_L01_review_performed": true,
       "L02_real_model_acceptance": false,
-      "verification": ".artifacts/l01/ui/verification25.json",
-      "next_item": "ONE whole-L01 scope/code/evidence review and one test-backed correction pass if required",
-      "boundary": "Exact .25 native current copied-condition/source-scalar/masking/getter/Basic/passive-reader controls pass in both hosts; explicit Action Explain uses stored independent body metadata without another app action. Existing input and original map predicates pass, with legacy debugger-conflict FAIL retained. No raw local details enter prompts, real-model inference, full causal/HTTP/DOM producer or L02 completion."
+      "verification": ".artifacts/l01/whole-review-fixes/verification26.json",
+      "next_item": "L02",
+      "boundary": "ONE whole-L01 review and one TDD correction pass. Supported grouping/negation preserve hypothetical masking and unknowns; Basic reuses one fallback/action with details retained. Exact .26 native24; .25 action7/input40/map39 remain historical, not fresh .26 reruns. No model inference, general DOM/HTTP/callback/effect authority, V02/V03 or release acceptance."
     },
-    "next_item": "ONE whole-L01 scope/code/evidence review and one test-backed correction pass if required",
+    "next_item": "L02",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -3021,10 +3032,11 @@
       "A01",
       "A03",
       "A04",
-      "A05"
+      "A05",
+      "L01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "L01",
+    "active_item": "L02",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -3988,11 +4000,28 @@
         "verification": ".artifacts/l01/ui/verification25.json",
         "next_item": "ONE whole-L01 scope/code/evidence review and one test-backed correction pass if required",
         "boundary": "Exact .25 native current copied-condition/source-scalar/masking/getter/Basic/passive-reader controls pass in both hosts; explicit Action Explain uses stored independent body metadata without another app action. Existing input and original map predicates pass, with legacy debugger-conflict FAIL retained. No raw local details enter prompts, real-model inference, full causal/HTTP/DOM producer or L02 completion."
+      },
+      {
+        "id": "L01.3-whole-item-accepted",
+        "status": "complete-bounded-L01-after-one-review-and-fix-pass",
+        "record": "56-l01-whole-item-review.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.26",
+        "source_checks": 1846,
+        "focused_checks": 87,
+        "native_explanation_checks": 24,
+        "type_consumers": 2,
+        "package_admission_checks": 7,
+        "full_L01_acceptance": true,
+        "whole_L01_review_performed": true,
+        "L02_real_model_acceptance": false,
+        "verification": ".artifacts/l01/whole-review-fixes/verification26.json",
+        "next_item": "L02",
+        "boundary": "ONE whole-L01 review and one TDD correction pass. Supported grouping/negation preserve hypothetical masking and unknowns; Basic reuses one fallback/action with details retained. Exact .26 native24; .25 action7/input40/map39 remain historical, not fresh .26 reruns. No model inference, general DOM/HTTP/callback/effect authority, V02/V03 or release acceptance."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Exact .25 native current copied-condition/source-scalar/masking/getter/Basic/passive-reader controls pass in both hosts; explicit Action Explain uses stored independent body metadata without another app action. Existing input and original map predicates pass, with legacy debugger-conflict FAIL retained. No raw local details enter prompts, real-model inference, full causal/HTTP/DOM producer or L02 completion.",
+    "current_activity_note": "ONE whole-L01 review and one TDD correction pass. Supported grouping/negation preserve hypothetical masking and unknowns; Basic reuses one fallback/action with details retained. Exact .26 native24; .25 action7/input40/map39 remain historical, not fresh .26 reruns. No model inference, general DOM/HTTP/callback/effect authority, V02/V03 or release acceptance.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
-  "next_task": "L01"
+  "next_task": "L02"
 }

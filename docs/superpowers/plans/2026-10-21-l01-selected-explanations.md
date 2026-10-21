@@ -57,7 +57,11 @@ Historical reader has no model, live source navigation or runtime authority.
 - [x] RED mounted details, next action, stale/model race, exact same facts and passive-reader controls.
 - [x] Wire templates/details with existing layouts; changelog and immutable package/strict consumers/admission.
 - [x] Native Actions/Basic/maps regressions and exact synthetic condition/property cases on both installed hosts, real getter/non-invocation controls,390/1100/keyboard/zoom candidate comparison.
-- [ ] One fresh read-only whole-L01 review, one TDD fix pass if needed, no per-task review loop.
-- [ ] Update plan/task-index/status/evidence; local commit. Next L02 real device/provider usefulness gate; templates/mocks do not complete it.
+- [x] One fresh read-only whole-L01 review, one TDD fix pass if needed, no per-task review loop.
+- [x] Update plan/task-index/status/evidence; local commit. Next L02 real device/provider usefulness gate; templates/mocks do not complete it.
 
 Ruling: this is a bounded implementation of approved L01, not a new product architecture. The source-only increment is explicitly not rendered capability evidence. Existing user autonomy supersedes repeated skill approval menus; unknown L02/device behavior is not preapproved or assumed.
+
+Final: ONE review(Critical0/Important1/Minor1), both findings fixed in one TDD pass.
+Exact .26 source1846/focused87/native24/consumers2/admission7 PASS. L01 complete
+within the documented bounded scope; mandatory real-model L02 remains open.

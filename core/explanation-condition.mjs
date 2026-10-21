@@ -43,10 +43,12 @@ export function evaluateExplanationCondition(model,inputs=[]){
   return left===null?null:kind==='or'?left===true?true:right:left===false?false:right;
  }
  try{
-  const value=visit(model),kind=own(model,'kind');let trueTerms=0,falseTerms=0;
-  function terms(n){if(own(n,'kind')===kind&&(kind==='or'||kind==='and')){terms(own(n,'left'));terms(own(n,'right'));return;}const saved=leaves.length,skip=skipped.length,v=visit(n);leaves.length=saved;skipped.length=skip;if(v===true)trueTerms++;if(v===false)falseTerms++;}
+  const value=visit(model);let trueTerms=0,falseTerms=0;
+  function normalized(n,negative=false){let kind=own(n,'kind');while(kind==='group'||kind==='not'){if(kind==='not')negative=!negative;n=own(n,'child');kind=own(n,'kind');}return{node:n,negative,kind:negative?(kind==='or'?'and':kind==='and'?'or':kind):kind};}
+  const top=normalized(model),kind=top.kind;
+  function terms(n,negative=false){const term=normalized(n,negative);if(term.kind===kind&&(kind==='or'||kind==='and')){terms(own(term.node,'left'),term.negative);terms(own(term.node,'right'),term.negative);return;}const saved=leaves.length,skip=skipped.length,raw=visit(term.node),v=raw===null?null:term.negative?!raw:raw;leaves.length=saved;skipped.length=skip;if(v===true)trueTerms++;if(v===false)falseTerms++;}
   // Bounded second pass derives static masking; it is not a second app read.
   visits=0;if(kind==='or'||kind==='and')terms(model);else{trueTerms=value===true?1:0;falseTerms=value===false?1:0;}
-  return freeze({value,knownTrueTerms:trueTerms,knownFalseTerms:falseTerms,unknownInputs:leaves.filter(x=>x.status==='Unavailable').length,observedInputs:leaves.filter(x=>x.status==='Observed').length,literalInputs:leaves.filter(x=>x.status==='Code-linked').length,masking:kind==='or'&&trueTerms>1||kind==='and'&&falseTerms>1,hypothetical:true,skipped:[...new Set(skipped)],inputs:leaves});
+  return freeze({value,knownTrueTerms:trueTerms,knownFalseTerms:falseTerms,unknownInputs:leaves.filter(x=>x.status==='Unavailable').length,observedInputs:leaves.filter(x=>x.status==='Observed').length,literalInputs:leaves.filter(x=>x.status==='Code-linked').length,masking:kind==='or'&&value===true&&trueTerms>1||kind==='and'&&value===false&&falseTerms>1,hypothetical:true,skipped:[...new Set(skipped)],inputs:leaves});
  }catch{return freeze(unknown);}
 }

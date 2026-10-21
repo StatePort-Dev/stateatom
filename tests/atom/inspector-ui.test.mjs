@@ -23,6 +23,7 @@ function fixture(request,options={}){
  let onEvent;const connectionListeners=new Set();const client={request:async(m,o)=>request?.(m,o)??(m.op==='tabs'?list:m.op==='list-diagnostics'?[]:m.op==='list-handoffs'?{entries:[],expired:[]}:m.op==='state'?state(m.tabId):{}),subscribeConnection:fn=>{connectionListeners.add(fn);return()=>connectionListeners.delete(fn);},subscribe:fn=>{onEvent=fn;return()=>{};}};
  return {$,state,list,emit:m=>onEvent(m),disconnect:()=>{for(const fn of connectionListeners)fn({state:'closed',code:'INSPECTOR_DISCONNECTED'});},view:mountAtom(host,client,{idPrefix:'',...options})};
 }
+test('mounted Basic reuses its existing summary/action while keeping evidence details available',async()=>{const f=fixture();await f.view.ready;assert.match(f.$('inspection-summary').textContent,/DOM snapshot/);assert.equal(f.$('inspection-next').textContent,'Connect project for source');assert.equal(f.$('property-explanation-block').hidden,true);assert.equal(f.$('explanation-details').hidden,false);await f.view.dispose();});
 test('changing tab clears explanation and target before pending picker cleanup settles',async()=>{
  const cancel=deferred(),pick=deferred();const f=fixture(m=>m.op==='pick'?pick.promise:m.op==='cancel-pick'?cancel.promise:undefined);await f.view.ready;
  const picking=f.$('pick').onclick();await tick();f.$('action-explain').onclick();assert(f.$('action-explanation').textContent);

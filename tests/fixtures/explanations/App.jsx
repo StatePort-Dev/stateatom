@@ -17,6 +17,8 @@ function App() {
   <label>Hold <input id="controls-hold" type="checkbox" checked={hold} onChange={e=>setHold(e.target.checked)}/></label>
   <button id="condition" disabled={hold || !policy.allowed}>Continue</button>
   <button id="mask" disabled={hold || true}>Masking constant control</button>
+  <button id="mask-negated" disabled={!(false && false)}>Negated masking true control</button>
+  <button id="mask-negated-false" disabled={!(true || true)}>Negated masking false control</button>
   <p>Direct: <span id="direct">{name}</span></p>
   <p>Forwarded: <Forward id="forwarded" text={declared}/></p>
   <p>Overridden: <Forward id="overridden" text={declared} {...{text:effective}}/></p>

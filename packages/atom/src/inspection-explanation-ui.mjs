@@ -8,9 +8,9 @@ export function renderExplanationDetails(document,container,facts){
 }
 export function createInspectionExplanationUI({document,$,onNext=()=>{}}){
  let key;
- return{render(state){
+ return{render(state,{fallbackPresented=false}={}){
   const facts=inspectionExplanationFacts(state||{}),visible=!!state?.selection||!!state?.stale,nextKey=visible?explanationIdentity(facts):null;
-  $('property-explanation-block').hidden=!visible;$('explanation-details').hidden=!visible;
+  $('property-explanation-block').hidden=!visible||fallbackPresented&&facts.status==='Unavailable';$('explanation-details').hidden=!visible;
   if(key===nextKey)return facts;key=nextKey;$('explanation-details').open=false;
   $('property-explanation').textContent=visible?facts.summaries[0]:'';
   $('property-explanation-scope').textContent=visible&&facts.status==='Supported'?'Computation snapshot · DOM producer and HTTP origin remain unverified.':'';
