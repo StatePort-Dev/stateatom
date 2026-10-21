@@ -21,6 +21,8 @@ export type InputCaptureRequest={op:'inputs-capture';tabId:number;ownerId:string
 export interface InputOutcomeCapture {readonly schema:'stateatom.input-outcome-capture/1';readonly exportable:false;readonly executable:false;readonly capturedAt:number;readonly diagnosticRaw:string;readonly outcomes:Readonly<Record<string,unknown>> & {readonly schema:'stateatom.handoff-input-outcomes/1';readonly exportable:false;readonly executable:false;readonly binding:Readonly<{status:'not-recorded'|'unjoined'|'capture-context-matched';reasons:readonly string[]}>};readonly limitations:readonly string[]}
 export type AtomOperation=
  |InputCaptureRequest
+ |{op:'actions-arm';tabId:number;ownerId:string}
+ |{op:'actions-read'|'actions-cancel'|'actions-clear';tabId:number;ownerId:string;traceId:string}
  |{op:'production-begin'|'production-close'|'production-revoke';tabId:number;ownerId:string}
  |{op:'production-advance'|'production-confirm'|'production-cancel';tabId:number;ownerId:string;ticket:string}
  |{op:'connect-site';tabId:number;connection:import('./platform.js').SiteConnection}

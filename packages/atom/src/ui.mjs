@@ -57,7 +57,7 @@ async function load(options={}){
  selectedState={...state,tabId:id};analysis=state.analysis;inputUI.update(inspectionDisplayState(selectedState));renderInspection();
 }
 const sourceMapUI=createSourceMapUI({document,$,rpc,tab,load,action,requestPermission:options.requestOriginPermission});
-const actionsUI=createActionUI({document,$,rpc,tab,action});
+const actionsUI=createActionUI({document,$,rpc,cleanupRpc:m=>client.request(m),tab,action});
 const inputUI=createInputUI({document,$,client,preview:options.inputEditorPreview===true});
 const productionUI=createProductionUI({$,client,onRefresh:load,onAttach:async()=>{await rpc({op:'attach',tabId:tab(),readOnly:true});await load();},onConnection:()=>reveal('browser-connection')});
 function lostConnection(){if(disposed)return;connectionLost=true;ownedPicker?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);inputUI.update(null);$('status').textContent='Inspector connection lost. Reopen this inspector to continue.';}
@@ -215,5 +215,5 @@ $('export-confirm').onclick=()=>{try{const r=parseDiagnostic($('export-json').va
 $('unpair').onclick=()=>action(async()=>{await rpc({op:'unpair'});await load();});
 void reportLibrary.refresh().catch(e=>{if(disposed)return;$('diagnostic-status').textContent='Local reports unavailable: '+e.message;});
 
-return {ready,element:root,dispose(){reportLibrary.dispose();handoffUI.dispose();const productionCleanup=productionUI.dispose(),inputCleanup=inputUI.dispose();ownedPicker?.controller?.abort();const cleanup=ownedPicker?client.request({op:'cancel-pick',tabId:ownedPicker.tabId,pickerId:ownedPicker.id}).catch(()=>{}):Promise.resolve();ownedPicker=null;sourceMapUI.dispose();actionsUI.dispose();if(disposed)return;disposed=true;++loadGeneration;controller.abort();unsubscribe();offConnection();for(const t of timers)clearTimeout(t);for(const u of urls)URL.revokeObjectURL(u);timers.clear();urls.clear();$('export-review').close();root.remove();mounted.delete(rootElement);return Promise.all([cleanup,inputCleanup,productionCleanup]).then(()=>{});}};
+return {ready,element:root,dispose(){reportLibrary.dispose();handoffUI.dispose();const productionCleanup=productionUI.dispose(),inputCleanup=inputUI.dispose();ownedPicker?.controller?.abort();const cleanup=ownedPicker?client.request({op:'cancel-pick',tabId:ownedPicker.tabId,pickerId:ownedPicker.id}).catch(()=>{}):Promise.resolve();ownedPicker=null;sourceMapUI.dispose();const actionCleanup=actionsUI.dispose();if(disposed)return;disposed=true;++loadGeneration;controller.abort();unsubscribe();offConnection();for(const t of timers)clearTimeout(t);for(const u of urls)URL.revokeObjectURL(u);timers.clear();urls.clear();$('export-review').close();root.remove();mounted.delete(rootElement);return Promise.all([cleanup,inputCleanup,productionCleanup,actionCleanup]).then(()=>{});}};
 }

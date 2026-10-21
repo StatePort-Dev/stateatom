@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.12
+
+- Add explicitly armed, session-only one-click development body observations with
+  Cancel/Clear, context/inspector ownership and exact MAIN native target resolution.
+  Read/inject observation needs no input mutation grant; production remains unavailable.
+- Compose the new controls from existing shared Actions cards/native primitives;
+  preserve13px base and original source/registration evidence. No token/CSS contract
+  change. Necessary deviation from the simulated reference: actual ten-second Arm
+  and cleanup states. Candidate screenshots require human review.
+- Keep report formats unchanged: the new session trace is explicitly not included
+  in saved reports. Runtime function-object identity/full async effects remain gaps;
+  mandatory A05 is not complete.
+
 ## 0.1.0-candidate.20261021.6
 
 - Add bounded Vue SFC/template source event declarations, using original compiler

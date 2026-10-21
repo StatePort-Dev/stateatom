@@ -1,12 +1,15 @@
 // SPDX-License-Identifier: Apache-2.0
 import {explanationFacts,TemplateExplanation,ChromeBuiltInExplanation} from '../../../core/action-explanations.mjs';
 import {supportsCapabilityPolicy} from './transport.mjs';
-export function createActionUI({document,$,rpc,tab,action}){
+import {createActionTraceUI} from './action-trace-ui.mjs';
+export function createActionUI({document,$,rpc,cleanupRpc,tab,action}){
+ const traceUI=createActionTraceUI({document,$,rpc,cleanupRpc,tab,action});
  let key,epoch=0,controller;
  const model=document.defaultView?.location?.protocol==='chrome-extension:'?document.defaultView.LanguageModel:null;
  const provider=ChromeBuiltInExplanation(model),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;};
  function cancel(){controller?.abort();controller=null;}
  function render(state){
+  traceUI.render(state);
   const stale=!!state?.stale||(state?.analysis?.actionBindings||[]).some(b=>b.freshness==='Stale');
   const sourcePermission=supportsCapabilityPolicy(state?.capabilityPolicy)?state.capabilityPolicy.operations.open:null;
   const next=JSON.stringify([state?.tabId,state?.run,state?.selection,state?.property,state?.analysis?.actionContext,state?.analysis?.actionBindings,stale,state?.stale?.at,sourcePermission]);if(key===next)return;key=next;++epoch;cancel();
@@ -37,5 +40,5 @@ export function createActionUI({document,$,rpc,tab,action}){
   $('action-cancel').onclick=()=>{cancel();$('action-local-status').textContent='Cancelled · showing template.';$('action-explain').disabled=false;$('action-cancel').hidden=true;};
   $('action-local-enabled').onchange=()=>{cancel();$('action-explain').disabled=!state?.selection||stale;$('action-cancel').hidden=true;const own=epoch;if($('action-local-enabled').checked)void provider.availability().then(a=>{if(own===epoch&&$('action-local-enabled').checked)$('action-local-status').textContent=a==='available'?'Local model available.':a==='downloadable'||a==='downloading'?'Explain simply starts/resumes the local model download; disk, CPU/GPU and battery may be used.':'Local model unavailable · using templates.';});};
  }
- return {render,dispose(){++epoch;cancel();}};
+ return {render,dispose(){++epoch;cancel();return traceUI.dispose();}};
 }

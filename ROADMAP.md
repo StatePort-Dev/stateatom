@@ -689,3 +689,23 @@ verifier metadata mismatch remain preserved, no predicate waiver/native re-audit
 See40-a05-plugin-observer.md. Atom Actions UI/runtime/report/production integration
 is still open, mandatory A05 in progress; next A05.3b selected-context/read-only
 Arm/read/Cancel/Clear. No SDK/publication/other-repository/installed IDE claim.
+
+
+### 2026-10-21 — A05.3b session runtime/UI checkpoint
+
+Current inspector implements exact selected MAIN native-node Arm/read/Cancel/Clear
+with inspector/view/trace/context ownership, independent synchronous dispatch/body
+observations and digest-checked IDE navigation. Existing shared Actions controls
+retain13px base and known stale session history; no CSS/token/report schema change.
+Session trace is explicitly not saved in reports. Production remains unavailable.
+
+Final local Atom .12 source1689/focused28; exact immutable native/type/admission
+checks and historical .10/.11 results are separated in41-a05-session-runtime-ui.md.
+Bounded review's4 Important issues were fixed and source-rechecked; whole A05 has
+not been reviewed or completed. Native positive connection grants all development
+actions; read/inject-only policy tests are a separate narrower result.
+
+A05.3b remains in progress. Next bounded item: adversarial runtime ownership/late
+IDE regression and remaining native lifecycle/context/Basic/throw/keyboard matrix.
+Saved reports/full A05 performance and gaps follow; mandatory A05/L02 and all
+existing scope-review-1 requirements/evidence thresholds remain unchanged.
