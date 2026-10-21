@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.3
+
+- Link source declarations through a private same-file component callback prop
+  with one bounded explicit JSX supply, including named/aliased/member parameters
+  and a short wrapper chain. Reuse exact lexical callback and hook source links.
+- Explicitly state that transfer to the selected instance and runtime function
+  identity were not observed. Refuse ambiguous supplies, spreads/duplicates,
+  exported/escaped/mutable/dynamic components, unsupported parameters and JSX
+  passed through clone factories, stored values or opaque composite children.
+- Preserve not-observed invocation, native registration/evidence contracts,
+  current source freshness and shared UI/layout. No runtime prop/lineage adapter.
+
 ## 0.1.0-candidate.20261021.2
 
 - Link selected JSX callbacks to supported same-project constant object methods

@@ -573,3 +573,14 @@ Source-open, original two-hook and added object-instance controls, off/on effect
 v1 export review and freshness/Basic checks pass. Invocation remains not-observed;
 legacy occupied-debugger Attach stays failed. Next A03.2 forwarded handler source
 paths; parent A03 and A02/A05/L02/P04/C07/release remain open. See31-a03-object-handlers.md.
+
+
+A03.2 completes bounded private same-file source prop declarations: named/aliased/
+member parameters and wrapper chains, with explicit Unknown for ambiguous supplies,
+overrides, clone/factory/stored JSX/composite children, getters and escapes/writes.
+Actual selected-instance transfer/function identity remains unobserved in UI/export.
+Current full1639/focused48/types2/admission7/native89 pass across .3 hosts; analyzer/
+built IDE166-input proof stays separate from the Atom tarball. Original .2 and
+legacy failure records remain historical. Next A03.3 native event context/listener/
+prop freshness, then ONE whole A03 review; A03/A02/A05/L02/P04/C07/release remain open.
+See32-a03-forwarded-handlers.md.

@@ -238,3 +238,18 @@ Original direct/inline/hook/factory/prop/native/snapshot controls are retained w
 actual native Input; the legacy parallel app-debugger Attach failure stays failed.
 Method/source relations do not establish invocation or runtime callback identity.
 Parent A03, A02 lineage and mandatory A05 remain open; only A03.1 is complete.
+
+## Subsequent A03.2 private source forwarding — 2026-10-21
+
+See [32-a03-forwarded-handlers](../completion/32-a03-forwarded-handlers.md).
+One explicit untransformed JSX source supply to a private same-file component can
+link named/aliased/member callback parameters and a bounded wrapper chain. Current
+UI/export explicitly say that transfer to the selected instance and runtime
+function identity were not observed. Multiple supplies, writes/escapes, spreads,
+clone/factory/stored JSX/composite children and unsupported parameters refuse.
+This is a source declaration relationship, not runtime prop ancestry or invocation.
+
+Current source1639/focused48/types2/admission7/native89 pass across .3 hosts; original
+action/object/hook controls remain, with exact current analyzer/IDE166-input proof
+separate from the Atom tarball. .2 records stay historical and unchanged. Parent
+A03 native event-context/replacement matrix and ONE whole review remain open.

@@ -1726,8 +1726,8 @@
       "deliverable": "Common callback source paths without invented invocation",
       "status": "in-progress",
       "optional": false,
-      "implementation_plan": "../superpowers/plans/2026-10-21-a03-object-handlers.md",
-      "execution_record": "31-a03-object-handlers.md",
+      "implementation_plan": "../superpowers/plans/2026-10-21-a03-forwarded-handlers.md",
+      "execution_record": "32-a03-forwarded-handlers.md",
       "active_slice": null,
       "completed_slices": [
         {
@@ -1751,20 +1751,50 @@
           "full_A03_acceptance": false,
           "invocation_observed": false,
           "evidence_scope": "Bounded local own object method/data callback declarations and exact source/evidence, with getter/write/escape/ambiguous/global/dynamic refusals. Current contributor IDE source/build sealed separately from Atom tarball. Native original controls/source-open/instance/off-on/v1 export review pass; no installed VSIX/runtime callback identity/trace claim."
+        },
+        {
+          "id": "A03.2",
+          "status": "complete-within-private-source-prop-declarations",
+          "candidate": "0.1.0-candidate.20261021.3",
+          "verification": ".artifacts/a03/forwarded-handlers/verification3.json",
+          "record": "32-a03-forwarded-handlers.md",
+          "product_code_changed": true,
+          "runtime_observer_compiler_changed": false,
+          "checks": {
+            "source": 1639,
+            "focused_action": 48,
+            "strict_consumers": 2,
+            "admission": 7,
+            "native": 89,
+            "hosts": 2,
+            "native_source_cases_per_host": 21,
+            "sealed_native_inputs": 166
+          },
+          "full_A03_acceptance": false,
+          "runtime_prop_transfer_observed": false,
+          "invocation_observed": false,
+          "evidence_scope": "Private same-file unique static JSX callback prop supply only, named/aliased/member/wrapper/anonymous source links. UI and actual v1 export retain unobserved selected-instance transfer/function identity. Ambiguous/spread/clone/getter/writes/escape unsupported; actual current contributor analyzer/IDE sealed separately from Atom tarball. Original/object/hook/native source-only controls preserved."
         }
       ],
       "remaining_acceptance": [
-        "Forwarded handler source paths with selected-instance/override/ambiguous-parent counterexamples",
-        "Publish remaining custom-hook source forms/relevant-only relations and unsupported boundaries",
+        "Publish remaining custom-hook source forms/relevant-only relations and explicit unsupported boundaries",
         "Original capture/bubble/stopPropagation and replaced listener/prop freshness controls with no invocation inference",
         "ONE whole-A03 review and tested Critical/Important resolutions after the declared matrix"
       ],
       "current_candidate": {
-        "version": "0.1.0-candidate.20261021.2",
-        "handoff": ".artifacts/atom/2026-10-21T00-38-37-796Z/atom-handoff.json",
-        "verification": ".artifacts/a03/object-handlers/verification2.json",
-        "boundary": "Dirty BASEaae5141; immutable Atom pair is distinct from actual contributor IDE/analyzer source and built inputs sealed by current native166-input receipt. A03.1 only; source declarations/native registrations are not invocation, complete lineage or fresh installed VSIX acceptance."
-      }
+        "version": "0.1.0-candidate.20261021.3",
+        "handoff": ".artifacts/atom/2026-10-21T00-56-57-603Z/atom-handoff.json",
+        "verification": ".artifacts/a03/forwarded-handlers/verification3.json",
+        "boundary": "Dirty BASEf76b15f; exact Atom package/hosts separate from actual contributor analyzer and built IDE sealed by native166-input receipt. Source declaration forwarding only; actual selected-instance transfer/function identity unobserved and visible in UI/v1 export. Parent A03 open, no fresh installed VSIX/invocation/lineage/human/release claim."
+      },
+      "implementation_plans": [
+        "../superpowers/plans/2026-10-21-a03-object-handlers.md",
+        "../superpowers/plans/2026-10-21-a03-forwarded-handlers.md"
+      ],
+      "execution_records": [
+        "31-a03-object-handlers.md",
+        "32-a03-forwarded-handlers.md"
+      ]
     },
     {
       "id": "A04",
@@ -2347,16 +2377,17 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "A03.1",
-      "status": "complete-within-local-object-source-declarations",
-      "candidate": "0.1.0-candidate.20261021.2",
-      "verification": ".artifacts/a03/object-handlers/verification2.json",
-      "record": "31-a03-object-handlers.md",
+      "id": "A03.2",
+      "status": "complete-within-private-source-prop-declarations",
+      "candidate": "0.1.0-candidate.20261021.3",
+      "verification": ".artifacts/a03/forwarded-handlers/verification3.json",
+      "record": "32-a03-forwarded-handlers.md",
       "product_code_changed": true,
       "full_A03_acceptance": false,
-      "next_item": "A03.2"
+      "runtime_prop_transfer_observed": false,
+      "next_item": "A03.3"
     },
-    "next_item": "A03.2",
+    "next_item": "A03.3",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -2917,10 +2948,20 @@
         "product_code_changed": false,
         "full_A02_acceptance": false,
         "next_item": "A03"
+      },
+      {
+        "id": "A03.1",
+        "status": "complete-within-local-object-source-declarations",
+        "candidate": "0.1.0-candidate.20261021.2",
+        "verification": ".artifacts/a03/object-handlers/verification2.json",
+        "record": "31-a03-object-handlers.md",
+        "product_code_changed": true,
+        "full_A03_acceptance": false,
+        "next_item": "A03.2"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A03.1 bounded local own object method/data callback source declarations complete: source1629/focused38/types2/admission7/native59 across exact .2 paired hosts. All166 native inputs, including current analyzer and built IDE outside Atom tarball, match; original hook pair remains separate from added object pair. Getter/write/escape/ambiguous/export/global/dynamic cases refuse; invocation stays not-observed. Native source-open/off-on/v1 reviewed export/freshness/Basic controls pass, legacy Attach ownership failure retained. Parent A03 open; next A03.2 forwarded handler source paths. A02 unresolved per explicit stopping point; mandatory A05/L02/P04/C07/release remain open; SDK outside Atom.",
+    "current_activity_note": "A03.2 private same-file unique static source prop declarations complete: full1639/focused48/types2/admission7/native89 across .3 hosts. UI and original v1 export explicitly retain unobserved transfer to selected instance and runtime function identity; ambiguous/spread/clone/getter/escape/write forms refuse. Actual source-open/three separate instance pairs/off-on object+forwarded clicks and original native/freshness/Basic controls pass; analyzer/IDE166-input proof separate from Atom tarball. Prior .2/59 archived driver and legacy Attach setup failure retained, not relabelled. Parent A03 open; next A03.3 native context/listener/prop freshness then ONE whole review. A02/A05/L02/P04/C07/release open; SDK outside Atom.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "A03"

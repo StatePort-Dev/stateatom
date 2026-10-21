@@ -50,9 +50,50 @@ export function analyzeActions(files,selection,identity,graph,projectFiles=files
   }
   const record={reason,properties};objects.set(binding,record);return record;
  }
+ function resolveProp(p,u,from,depth,seen){
+  const receiver=p.isMemberExpression()?p.get('object'):p,b=receiver.scope.getBinding(receiver.node.name),fn=b?.scope.path;
+  if(!b?.constant||b.kind!=='param'||!fn?.isFunction()||u.dynamicScope)return unknown('Mutable, dynamic or unavailable callback parameter');
+  const params=fn.get('params');if(params.length!==1)return unknown('Unsupported component parameter form');
+  const parameter=params[0];let name,parameterPath;
+  if(p.isIdentifier()&&parameter.isObjectPattern()){
+   const props=parameter.get('properties');if(props.length>32||props.some(q=>!q.isObjectProperty()||q.node.computed||!q.get('value').isIdentifier()))return unknown('Default/rest/computed/nested callback parameter boundary');
+   if(new Set(props.map(q=>String(q.node.key.name??q.node.key.value))).size!==props.length)return unknown('Duplicate callback parameter property boundary');
+   const matches=props.filter(q=>q.node.value.name===p.node.name);if(matches.length!==1)return unknown('Ambiguous callback parameter');
+   name=matches[0].node.key.name??matches[0].node.key.value;parameterPath=matches[0].get('value');
+  }else if(p.isMemberExpression()&&!p.node.computed&&!p.node.optional&&parameter.isIdentifier({name:receiver.node.name})){
+   if(b.referencePaths.some(ref=>{const member=ref.parentPath,container=member?.parentPath;return!member?.isMemberExpression()||member.get('object')!==ref||member.node.computed||member.node.optional||!container?.isJSXExpressionContainer()||container.get('expression')!==member;}))return unknown('Props receiver has a write, escape or unsupported reference');
+   name=p.node.property.name;parameterPath=parameter;
+  }else return unknown('Default/rest/computed/nested callback parameter boundary');
+  let declaration,componentName;
+  if(fn.isFunctionDeclaration()&&fn.node.id){declaration=fn;componentName=fn.node.id.name;}
+  else if(fn.parentPath.isVariableDeclarator()&&fn.parentPath.get('id').isIdentifier()&&fn.parentPath.get('init')===fn){declaration=fn.parentPath;componentName=declaration.node.id.name;}
+  if(!declaration||!/^\p{Lu}/u.test(componentName))return unknown('Component wrapper or dynamic owner declaration unavailable');
+  const component=declaration.parentPath.scope.getBinding(componentName),statement=declaration.isVariableDeclarator()?declaration.parentPath:declaration;
+  if(!component?.constant||component.path!==declaration||statement.parentPath.isExportNamedDeclaration()||statement.parentPath.isExportDefaultDeclaration()||component.scope.path.isProgram()&&u.ast.program.sourceType!=='module')return unknown('Callback prop component is exported, mutable or outside private source scope');
+  const key=u.file+':prop:'+component.identifier.start+':'+name;if(seen.has(key))return unknown('Prop forwarding source cycle');seen=new Set([...seen,key]);
+  if(component.referencePaths.length>64)return unknown('Bounded component reference budget exceeded');
+  const sites=new Set();for(const ref of component.referencePaths){const tag=ref.parentPath;if(!ref.isJSXIdentifier()||ref.key!=='name'||!(tag.isJSXOpeningElement()||tag.isJSXClosingElement()))return unknown('Component has an escaped or dynamic caller');sites.add(tag.parentPath);}
+  if(sites.size!==1)return unknown('No unique source supply: multiple or ambiguous component JSX callsites');
+  const site=[...sites][0];let cursor=site,level=0;
+  while(cursor.parentPath&&!cursor.parentPath.isFunction()){
+   const parent=cursor.parentPath;if(++level>16)return unknown('Bounded JSX source supply depth exceeded');
+   if(parent.isReturnStatement()&&cursor.key==='argument')break;
+   if(parent.isJSXElement()&&cursor.listKey==='children'&&parent.node.openingElement.name.type==='JSXIdentifier'&&/^[a-z]/.test(parent.node.openingElement.name.name)||parent.isJSXFragment()&&cursor.listKey==='children'||parent.isJSXExpressionContainer()&&cursor.key==='expression'){cursor=parent;continue;}
+   return unknown('JSX source supply may escape or be transformed by a caller');
+  }
+  if(!cursor.parentPath)return unknown('JSX source supply has no bounded component return');
+  const attrs=site.get('openingElement.attributes');if(attrs.length>64||attrs.some(q=>q.isJSXSpreadAttribute()))return unknown('Component prop spread or attribute budget boundary');
+  const supplied=attrs.filter(q=>q.isJSXAttribute()&&q.node.name?.name===name);if(supplied.length!==1||!supplied[0].get('value').isJSXExpressionContainer())return unknown('Missing or duplicate explicit callback prop supply');
+  const value=supplied[0].get('value.expression');let resolved;
+  if(value.isFunction()){const source=location(value,u);resolved={symbol:value.node.id?.name||null,status:'Code-linked',source,evidenceIds:proof(from,source,'inline-supplied-handler'),hookRelations:[]};}
+  else resolved=resolve(value,u,from,depth+1,seen);
+  if(resolved.status!=='Code-linked')return resolved;
+  return {...resolved,reason:'Source declares this callback for '+name+'. Transfer to this selected instance and runtime function identity were not observed.',evidenceIds:[...resolved.evidenceIds,...proof(from,location(value,u),'supplied-handler-prop'),...proof(from,location(parameterPath,u),'forwarded-handler-parameter')]};
+ }
  function resolveMember(p,u,from,depth,seen){
   if(p.node.computed||p.node.optional||!p.get('object').isIdentifier()||!p.get('property').isIdentifier())return unknown('Dynamic member/prop callback upstream or getter target is unknown');
   const receiver=p.get('object'),b=receiver.scope.getBinding(receiver.node.name);if(!b)return unknown('Member/prop receiver binding unavailable');
+  if(b.kind==='param')return resolveProp(p,u,from,depth,seen);
   const object=objectDeclaration(b,u);if(object.reason)return unknown(object.reason);
   const property=object.properties.find(q=>(q.node.key.name??String(q.node.key.value))===p.node.property.name);if(!property)return unknown('Own object handler property unavailable');
   const key=u.file+':'+b.identifier.start+':'+p.node.property.name;if(seen.has(key))return unknown('Object handler alias cycle');seen=new Set([...seen,key]);
@@ -70,7 +111,7 @@ export function analyzeActions(files,selection,identity,graph,projectFiles=files
   if(depth>4||!p?.node)return unknown('Bounded call/return depth exceeded');
   if(p.isMemberExpression()||p.isOptionalMemberExpression())return resolveMember(p,u,from,depth,seen);
   if(!p.isIdentifier())return unknown('Dynamic expression or handler factory boundary');
-  const b=p.scope.getBinding(p.node.name);if(!b||!b.constant||b.kind==='param')return unknown('Missing, mutable or parameter binding');
+  const b=p.scope.getBinding(p.node.name);if(b?.kind==='param')return resolveProp(p,u,from,depth,seen);if(!b||!b.constant)return unknown('Missing or mutable lexical binding');
   const key=u.file+':'+b.identifier.start;if(seen.has(key))return unknown('Alias cycle');seen=new Set([...seen,key]);
   const decl=b.path,source=location({node:b.identifier},u);
   if(decl.isImportSpecifier()||decl.isImportDefaultSpecifier()){

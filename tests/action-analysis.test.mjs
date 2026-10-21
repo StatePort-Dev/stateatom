@@ -66,3 +66,53 @@ test('multiple direct JSX callback reads keep an unescaped object admissible whi
  const text='const actions={save(){}};export const View=()=> <><button onClick={actions.save}/><button onClick={actions.save} {...extra}/></>', first=text.indexOf('<button'),second=text.indexOf('<button',first+1);
  const a=inspect(text,[],{marker:`${file}:1:${digest(text).slice(0,12)}:${first+1}`}).actionBindings[0],b=inspect(text,[],{marker:`${file}:1:${digest(text).slice(0,12)}:${second+1}`}).actionBindings[0];assert.equal(a.entry.status,'Code-linked');assert.equal(b.entry.status,'Unknown/Unsupported');assert.match(b.entry.reason,/override/);
 });
+test('private component prop forwarding links source declarations while preserving missing runtime transfer',()=>{
+ const text='function Button({onPress}){return <button onClick={onPress}/>}function save(){}export function View(){return <Button onPress={save}/>}';
+ const a=inspect(text),b=a.actionBindings[0];assert.equal(b.entry.status,'Code-linked');assert.equal(b.entry.symbol,'save');assert.equal(b.binding.expression,'onPress');assert.equal(b.entry.source.column,text.indexOf('save()')+1);assert.match(b.entry.reason,/transfer.*not observed/i);assert.equal(b.execution.status,'not-observed');
+ for(const relation of ['supplied-handler-prop','forwarded-handler-parameter'])assert(a.graph.edges.some(e=>e.relation===relation&&e.status==='Code-linked'));
+});
+test('aliased destructured and props-member callbacks resolve only the private static supply',()=>{
+ for(const [parameter,expression] of [['{onPress: click}','click'],['props','props.onPress']]){
+  const text=`function Button(${parameter}){return <button onClick={${expression}}/>}const save=()=>42;export const View=()=> <Button onPress={save}/>`,b=inspect(text).actionBindings[0];
+  assert.equal(b.entry.status,'Code-linked');assert.equal(b.entry.symbol,'save');assert.equal(b.binding.expression,expression);assert.equal(b.entry.source.column,text.indexOf('save=')+1);assert.equal(b.execution.status,'not-observed');
+ }
+});
+test('bounded wrapper chain keeps exact upstream useCallback relation without inventing prop observations',()=>{
+ const text="import {useCallback as memo} from 'react';function Button({click}){return <button onClick={click}/>}function Wrapper({onPress: handler}){return <Button click={handler}/>}export function View(){const save=memo(()=>42,[]);return <Wrapper onPress={save}/>}",a=inspect(text),b=a.actionBindings[0];
+ assert.equal(b.entry.status,'Code-linked');assert.equal(b.entry.symbol,'save');assert.deepEqual(b.hookRelations.map(h=>h.relation),['creates-callback']);assert.equal(a.graph.edges.filter(e=>e.relation==='supplied-handler-prop').length,2);assert(!a.graph.edges.some(e=>e.status==='Observed'));assert.equal(b.execution.status,'not-observed');
+});
+test('anonymous supplied callback keeps its actual expression range and no invented name',()=>{
+ const text='function Button({onPress}){return <button onClick={onPress}/>}export const View=()=> <Button onPress={()=>42}/>',b=inspect(text).actionBindings[0];assert.equal(b.entry.status,'Code-linked');assert.equal(b.entry.symbol,null);assert.equal(b.entry.source.column,text.indexOf('()=>42')+1);assert.match(b.entry.reason,/not observed/);
+});
+test('multiple private JSX supplies remain unresolved even with equal callback source',()=>{
+ for(const second of ['save','other']){const text=`function Button({onPress}){return <button onClick={onPress}/>}function save(){}function other(){}export function View(){return <><Button onPress={save}/><Button onPress={${second}}/></>}`,b=inspect(text).actionBindings[0];assert.equal(b.entry.status,'Unknown/Unsupported');assert.match(b.entry.reason,/multiple|ambiguous/i);assert.deepEqual(b.hookRelations,[]);}
+});
+test('forwarding refuses spread duplicate missing getter and factory supplies without evaluating them',()=>{
+ for(const attrs of ['onPress={save} {...extra}','{...extra} onPress={save}','onPress={save} onPress={other}','other={save}','onPress={handlers.save}','onPress={factory(save)}']){
+  const text=`const handlers={get save(){throw Error('never')}};function Button({onPress}){return <button onClick={onPress}/>}function save(){}export const View=()=> <Button ${attrs}/>`,b=inspect(text).actionBindings[0];assert.equal(b.entry.status,'Unknown/Unsupported',attrs);assert.equal(b.execution.status,'not-observed');
+ }
+});
+test('exported escaped mutable dynamic or wrapper-built component callers stay unknown',()=>{
+ for(const [declaration,extra] of [
+  ['export function Button({onPress}){return <button onClick={onPress}/>}',''],
+  ['function Button({onPress}){return <button onClick={onPress}/>}','consume(Button);'],
+  ['function Button({onPress}){return <button onClick={onPress}/>}','Button=Other;'],
+  ['function Button({onPress}){return <button onClick={onPress}/>}','const other=React.createElement(Button,{onPress:save});'],
+  ['const Button=memo(function Inner({onPress}){return <button onClick={onPress}/>});','']
+ ]){const b=inspect(`${declaration}function save(){}${extra}export const View=()=> <Button onPress={save}/>`).actionBindings[0];assert.equal(b.entry.status,'Unknown/Unsupported');assert.equal(b.execution.status,'not-observed');}
+});
+test('default rest computed nested parameters and writes/escapes cannot become forwarded callback identity',()=>{
+ for(const [parameter,expression,extra] of [
+  ['{onPress=other}','onPress',''],['{...props}','props.onPress',''],['{[name]:onPress}','onPress',''],['{actions:{onPress}}','onPress',''],['props={}','props.onPress',''],['{onPress: click,onPress: other}','click',''],
+  ['{onPress}','onPress','onPress=other;'],['props','props.onPress','props.onPress=other;'],['props','props.onPress','consume(props);']
+ ]){const b=inspect(`function Button(${parameter}){${extra}return <button onClick={${expression}}/>}function save(){}export const View=()=> <Button onPress={save}/>`).actionBindings[0];assert.equal(b.entry.status,'Unknown/Unsupported',parameter+extra);assert.equal(b.execution.status,'not-observed');}
+});
+test('prop cycles and native JSX overrides preserve explicit unknown source boundaries',()=>{
+ const cyclic='function Button({onPress}){return <><button onClick={onPress}/><Button onPress={onPress}/></>}export const something=1;';assert.equal(inspect(cyclic).actionBindings[0].entry.status,'Unknown/Unsupported');
+ const override='function Button({onPress}){return <button onClick={onPress} {...other}/>}function save(){}export const View=()=> <Button onPress={save}/>';assert.match(inspect(override).actionBindings[0].entry.reason,/override/);
+});
+test('a JSX element handed through clone factories stored values or composite children is not a unique prop supply',()=>{
+ for(const body of ['return React.cloneElement(<Button onPress={save}/>,{onPress:other});','const node=<Button onPress={save}/>;return node;','return <Transform><Button onPress={save}/></Transform>;','return <Transform node={<Button onPress={save}/>}/>;']){
+  const b=inspect(`function Button({onPress}){return <button onClick={onPress}/>}function save(){}function other(){}export function View(){${body}}`).actionBindings[0];assert.equal(b.entry.status,'Unknown/Unsupported',body);assert.match(b.entry.reason,/transform|supply|caller/i);
+ }
+});
