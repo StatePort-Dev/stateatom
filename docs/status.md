@@ -1473,3 +1473,14 @@ Source body-count/foreign-identity controls are synthetic, not native/model resu
 Valid JSON remains explicitly entailment-unverified. New model calls0, no UI/provider
 selection or installed candidate from this slice. L02 remains mandatory/open,15/29
 complete. Next separate experimental provider lifecycle tests before real evaluation.
+
+### 2026-10-21 — derived provider lifecycle source, still unselected
+
+[L02.7](completion/63-l02-derived-provider-source.md):separate provider retains the
+deterministic summary and explicitly unverified annotation.22provider/17contract/
+85focused/1891full PASS, including5 reproduced same-tick/callback/stale/error races.
+Client text/UTF8 bounds remain; new generation schema omits maxLength per current
+Chrome guidance, with no truncation. Original provider/UI/factory/corpus unchanged.
+New model calls0, no product exposure or L02 acceptance;15/29 complete. Next actual
+registered30-case model comparison plus separate body-count supplement and factual/
+unknown/concision/usefulness grading, preserving every historical result.

@@ -2651,7 +2651,7 @@
       "deliverable": "Real-device useful local explanations and complete model-free fallback; unavailability alone does not pass",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "L02.7 separate experimental derived provider with lifecycle/identity/cancel/timeout tests; no UI selection",
+      "active_slice": "L02.8 immutable registered real30-case derived-model comparison plus separate body-count supplement and per-case factual/usefulness grading",
       "implementation_plan": "../superpowers/plans/2026-10-21-l02-real-local-model.md",
       "remaining_acceptance": [
         "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
@@ -2659,22 +2659,22 @@
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
-      "execution_record": "62-l02-derived-projection-source.md",
+      "execution_record": "63-l02-derived-provider-source.md",
       "current_checkpoint": {
-        "id": "L02.6-derived-projection-source",
-        "status": "complete-bounded-source-only-not-model-or-product",
-        "record": "62-l02-derived-projection-source.md",
-        "implementation_plan": "../superpowers/plans/2026-10-21-l02-derived-projection.md",
-        "source_tests": 1868,
-        "focused_tests": 62,
-        "new_boundary_tests": 16,
-        "exact_historical_facts_and_legacy_prompts_preserved": 30,
+        "id": "L02.7-derived-provider-source",
+        "status": "complete-bounded-provider-source-not-model-or-product",
+        "record": "63-l02-derived-provider-source.md",
+        "implementation_plan": "../superpowers/plans/2026-10-21-l02-derived-provider.md",
+        "source_tests": 1891,
+        "focused_tests": 85,
+        "provider_tests": 22,
+        "contract_tests": 17,
         "new_model_calls": 0,
+        "original_provider_and_UI_unchanged": true,
         "new_installed_product_acceptance": false,
-        "factual_entailment_verified": false,
         "full_L02_acceptance": false,
-        "next_item": "L02.7 separate experimental derived provider with lifecycle/identity/cancel/timeout tests; no UI selection",
-        "boundary": "Private WeakSet genuine-fact admission and WeakMap projection; explicit non-sensitive tokens, original IDs/identity local, exact snapshot validation. Structure-only output always entailment-unverified; duplicate keys/tokens/extra fields rejected. Synthetic separate body-count/wrong-identity source controls, not native/model proof.1868 source PASS; .27 corpus/.28 installed evidence remain historical. L02 mandatory/open,15/29 complete."
+        "next_item": "L02.8 immutable registered real30-case derived-model comparison plus separate body-count supplement and per-case factual/usefulness grading",
+        "boundary": "Separate provider preserves deterministic summary/limits/refs and explicitly unverified annotation.22 source lifecycle tests cover no implicit init, cancellation/deadline/late cleanup, current-fact changes and same-tick race failures;1891 full PASS. Client bounds unchanged, no generation maxLength/truncation per current Chrome guidance. Mock API checks are not real inference/heap or usefulness. Original provider/UI/corpus/history unchanged; L02 mandatory/open."
       },
       "completed_slices": [
         {
@@ -2776,6 +2776,22 @@
           "full_L02_acceptance": false,
           "next_item": "L02.7 separate experimental derived provider with lifecycle/identity/cancel/timeout tests; no UI selection",
           "boundary": "Private WeakSet genuine-fact admission and WeakMap projection; explicit non-sensitive tokens, original IDs/identity local, exact snapshot validation. Structure-only output always entailment-unverified; duplicate keys/tokens/extra fields rejected. Synthetic separate body-count/wrong-identity source controls, not native/model proof.1868 source PASS; .27 corpus/.28 installed evidence remain historical. L02 mandatory/open,15/29 complete."
+        },
+        {
+          "id": "L02.7-derived-provider-source",
+          "status": "complete-bounded-provider-source-not-model-or-product",
+          "record": "63-l02-derived-provider-source.md",
+          "implementation_plan": "../superpowers/plans/2026-10-21-l02-derived-provider.md",
+          "source_tests": 1891,
+          "focused_tests": 85,
+          "provider_tests": 22,
+          "contract_tests": 17,
+          "new_model_calls": 0,
+          "original_provider_and_UI_unchanged": true,
+          "new_installed_product_acceptance": false,
+          "full_L02_acceptance": false,
+          "next_item": "L02.8 immutable registered real30-case derived-model comparison plus separate body-count supplement and per-case factual/usefulness grading",
+          "boundary": "Separate provider preserves deterministic summary/limits/refs and explicitly unverified annotation.22 source lifecycle tests cover no implicit init, cancellation/deadline/late cleanup, current-fact changes and same-tick race failures;1891 full PASS. Client bounds unchanged, no generation maxLength/truncation per current Chrome guidance. Mock API checks are not real inference/heap or usefulness. Original provider/UI/corpus/history unchanged; L02 mandatory/open."
         }
       ],
       "execution_records": [
@@ -2784,7 +2800,8 @@
         "59-l02-installed-model-controls.md",
         "60-l02-model-phase-status.md",
         "61-l02-derived-annotation-preparation.md",
-        "62-l02-derived-projection-source.md"
+        "62-l02-derived-projection-source.md",
+        "63-l02-derived-provider-source.md"
       ]
     },
     {
@@ -3138,22 +3155,22 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "L02.6-derived-projection-source",
-      "status": "complete-bounded-source-only-not-model-or-product",
-      "record": "62-l02-derived-projection-source.md",
-      "implementation_plan": "../superpowers/plans/2026-10-21-l02-derived-projection.md",
-      "source_tests": 1868,
-      "focused_tests": 62,
-      "new_boundary_tests": 16,
-      "exact_historical_facts_and_legacy_prompts_preserved": 30,
+      "id": "L02.7-derived-provider-source",
+      "status": "complete-bounded-provider-source-not-model-or-product",
+      "record": "63-l02-derived-provider-source.md",
+      "implementation_plan": "../superpowers/plans/2026-10-21-l02-derived-provider.md",
+      "source_tests": 1891,
+      "focused_tests": 85,
+      "provider_tests": 22,
+      "contract_tests": 17,
       "new_model_calls": 0,
+      "original_provider_and_UI_unchanged": true,
       "new_installed_product_acceptance": false,
-      "factual_entailment_verified": false,
       "full_L02_acceptance": false,
-      "next_item": "L02.7 separate experimental derived provider with lifecycle/identity/cancel/timeout tests; no UI selection",
-      "boundary": "Private WeakSet genuine-fact admission and WeakMap projection; explicit non-sensitive tokens, original IDs/identity local, exact snapshot validation. Structure-only output always entailment-unverified; duplicate keys/tokens/extra fields rejected. Synthetic separate body-count/wrong-identity source controls, not native/model proof.1868 source PASS; .27 corpus/.28 installed evidence remain historical. L02 mandatory/open,15/29 complete."
+      "next_item": "L02.8 immutable registered real30-case derived-model comparison plus separate body-count supplement and per-case factual/usefulness grading",
+      "boundary": "Separate provider preserves deterministic summary/limits/refs and explicitly unverified annotation.22 source lifecycle tests cover no implicit init, cancellation/deadline/late cleanup, current-fact changes and same-tick race failures;1891 full PASS. Client bounds unchanged, no generation maxLength/truncation per current Chrome guidance. Mock API checks are not real inference/heap or usefulness. Original provider/UI/corpus/history unchanged; L02 mandatory/open."
     },
-    "next_item": "L02.7 separate experimental derived provider with lifecycle/identity/cancel/timeout tests; no UI selection",
+    "next_item": "L02.8 immutable registered real30-case derived-model comparison plus separate body-count supplement and per-case factual/usefulness grading",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -4253,10 +4270,26 @@
         "full_L02_acceptance": false,
         "next_item": "L02.7 separate experimental derived provider with lifecycle/identity/cancel/timeout tests; no UI selection",
         "boundary": "Private WeakSet genuine-fact admission and WeakMap projection; explicit non-sensitive tokens, original IDs/identity local, exact snapshot validation. Structure-only output always entailment-unverified; duplicate keys/tokens/extra fields rejected. Synthetic separate body-count/wrong-identity source controls, not native/model proof.1868 source PASS; .27 corpus/.28 installed evidence remain historical. L02 mandatory/open,15/29 complete."
+      },
+      {
+        "id": "L02.7-derived-provider-source",
+        "status": "complete-bounded-provider-source-not-model-or-product",
+        "record": "63-l02-derived-provider-source.md",
+        "implementation_plan": "../superpowers/plans/2026-10-21-l02-derived-provider.md",
+        "source_tests": 1891,
+        "focused_tests": 85,
+        "provider_tests": 22,
+        "contract_tests": 17,
+        "new_model_calls": 0,
+        "original_provider_and_UI_unchanged": true,
+        "new_installed_product_acceptance": false,
+        "full_L02_acceptance": false,
+        "next_item": "L02.8 immutable registered real30-case derived-model comparison plus separate body-count supplement and per-case factual/usefulness grading",
+        "boundary": "Separate provider preserves deterministic summary/limits/refs and explicitly unverified annotation.22 source lifecycle tests cover no implicit init, cancellation/deadline/late cleanup, current-fact changes and same-tick race failures;1891 full PASS. Client bounds unchanged, no generation maxLength/truncation per current Chrome guidance. Mock API checks are not real inference/heap or usefulness. Original provider/UI/corpus/history unchanged; L02 mandatory/open."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Private WeakSet genuine-fact admission and WeakMap projection; explicit non-sensitive tokens, original IDs/identity local, exact snapshot validation. Structure-only output always entailment-unverified; duplicate keys/tokens/extra fields rejected. Synthetic separate body-count/wrong-identity source controls, not native/model proof.1868 source PASS; .27 corpus/.28 installed evidence remain historical. L02 mandatory/open,15/29 complete.",
+    "current_activity_note": "Separate provider preserves deterministic summary/limits/refs and explicitly unverified annotation.22 source lifecycle tests cover no implicit init, cancellation/deadline/late cleanup, current-fact changes and same-tick race failures;1891 full PASS. Client bounds unchanged, no generation maxLength/truncation per current Chrome guidance. Mock API checks are not real inference/heap or usefulness. Original provider/UI/corpus/history unchanged; L02 mandatory/open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "L02"

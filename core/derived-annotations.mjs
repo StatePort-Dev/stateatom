@@ -53,12 +53,17 @@ export function buildDerivedAnnotationPrompt(projection){
 
 export function derivedAnnotationResponseConstraint(projection){
  const {input}=admitted(projection),tokens=input.facts.map(f=>f.id);
- return freeze({type:'object',additionalProperties:false,required:['schema','text','factTokens'],properties:{schema:{type:'string',const:OUTPUT},text:{type:'string',minLength:1,maxLength:512},factTokens:{type:'array',minItems:1,maxItems:tokens.length,uniqueItems:true,items:{type:'string',enum:tokens}}}});
+ return freeze({type:'object',additionalProperties:false,required:['schema','text','factTokens'],properties:{schema:{type:'string',const:OUTPUT},text:{type:'string',minLength:1},factTokens:{type:'array',minItems:1,maxItems:tokens.length,uniqueItems:true,items:{type:'string',enum:tokens}}}});
+}
+
+export function isCurrentDerivedProjection(projection,currentFacts){
+ const local=projections.get(projection);
+ return !!local&&isLocalExplanationFacts(currentFacts)&&explanationIdentity(currentFacts)===local.identity;
 }
 
 export function validateDerivedAnnotationStructure(raw,projection,currentFacts){
  const local=admitted(projection);
- if(!isLocalExplanationFacts(currentFacts)||explanationIdentity(currentFacts)!==local.identity)fail();
+ if(!isCurrentDerivedProjection(projection,currentFacts))fail();
  if(typeof raw!=='string'||byteLength(raw)>4096)fail();
  let value;
  try{value=JSON.parse(raw);assertUniqueHandoffJSONMembers(raw,{maxDepth:4,maxMembers:16});}catch{fail();}
