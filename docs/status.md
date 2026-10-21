@@ -1063,3 +1063,13 @@ partial exports confirm the actual gap. A02 remains unresolved; no complete line
 is claimed. One finite React19 reducer observation experiment is specified but not
 implemented. Next independently ready item:A03. P04/C07 remain gated by A02;
 mandatory A05/L02 and release stay open. See30-a02-reducer-lineage-boundary.md.
+
+
+A03.1 completes bounded local object method/data-callback source declarations with
+getter/mutation/escape/ambiguous/dynamic refusals. Current source1629/focused38/
+types2/admission7/native59 pass across both .20261021.2 hosts;166 native inputs
+seal the actual contributor analyzer/IDE separately from the Atom tarball.
+Source-open, original two-hook and added object-instance controls, off/on effects,
+v1 export review and freshness/Basic checks pass. Invocation remains not-observed;
+legacy occupied-debugger Attach stays failed. Next A03.2 forwarded handler source
+paths; parent A03 and A02/A05/L02/P04/C07/release remain open. See31-a03-object-handlers.md.

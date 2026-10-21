@@ -25,3 +25,44 @@ test('imported mutable export cannot be promoted to a resolved handler',()=>{con
 test('inline call from custom hook keeps its own hook return evidence',()=>{const a=inspect('function useWork(){const save=()=>{};return {save}}function View(){const {save}=useWork();return <button onClick={()=>save()}/>}');assert.equal(a.actionBindings[0].hookRelations[0]?.relation,'returns-handler');});
 test('export aliases are not overwritten by unrelated exported declarations',()=>{const a=inspect("import {save} from './aliases';const View=()=> <button onClick={save}/>",[{file:'src/aliases.ts',text:'const save=()=>42; const hidden=()=>1; export {hidden as save}; export const other=1;'}]);assert.equal(a.actionBindings[0].entry.symbol,'hidden');assert.equal(a.actionBindings[0].entry.source.column,26);});
 test('async and generator hook returns cannot be immediate callback output',()=>{for(const prefix of ['async function','function*']){const a=inspect(`${prefix} useActions(){const save=()=>42;return {save}}function View(){const {save}=useActions();return <button onClick={save}/>} `);assert.equal(a.actionBindings[0].entry.status,'Unknown/Unsupported');assert.deepEqual(a.actionBindings[0].hookRelations,[]);}});
+test('local object method links the exact selected own declaration without claiming invocation',()=>{
+ const text='function View(){const actions={save(){return 42},cancel(){return 0}};return <button onClick={actions.save}/>}';
+ const a=inspect(text),b=a.actionBindings[0];assert.equal(b.binding.expression,'actions.save');assert.equal(b.entry.status,'Code-linked');assert.equal(b.entry.symbol,'save');assert.equal(b.entry.source.column,text.indexOf('save(){')+1);assert.equal(b.entry.source.sourceDigest,digest(text));assert.equal(b.execution.status,'not-observed');assert(a.graph.edges.some(e=>e.relation==='declared-object-method'&&e.status==='Code-linked'));assert(!b.calls.length);
+});
+test('object data callback reuses its lexical hook relation and exact source symbol',()=>{
+ const text="import {useCallback} from 'react';function View(){const submit=useCallback(()=>42,[]);const actions={save:submit};return <button onClick={actions.save}/>}",a=inspect(text),b=a.actionBindings[0];
+ assert.equal(b.entry.status,'Code-linked');assert.equal(b.entry.symbol,'submit');assert.equal(b.entry.source.column,text.indexOf('submit=')+1);assert.equal(b.hookRelations[0].relation,'creates-callback');assert(a.graph.edges.some(e=>e.relation==='object-data-handler'&&e.status==='Code-linked'));assert.equal(b.execution.status,'not-observed');
+});
+test('anonymous object data callback uses its expression location instead of an invented function name',()=>{
+ const text='const actions={save:()=>42};export const View=()=> <button onClick={actions.save}/>',b=inspect(text).actionBindings[0];
+ assert.equal(b.entry.status,'Code-linked');assert.equal(b.entry.symbol,null);assert.equal(b.entry.source.column,text.indexOf('()=>42')+1);assert.equal(b.binding.expression,'actions.save');assert.equal(b.execution.status,'not-observed');
+});
+test('same source method in two selected JSX occurrences keeps marker column and lexical object separate',()=>{
+ const text='function View(){const left={save(){return 1}},right={save(){return 2}};return <><button onClick={left.save}/><button onClick={right.save}/></>}';
+ const at=expression=>inspect(text,[],{marker:`${file}:1:${digest(text).slice(0,12)}:${text.indexOf('<button onClick={'+expression)+1}`,instance:expression}).actionBindings[0];
+ const a=at('left.save'),b=at('right.save');assert.equal(a.entry.status,'Code-linked');assert.equal(b.entry.status,'Code-linked');assert.notEqual(a.entry.source.column,b.entry.source.column);assert.notEqual(a.identity.instance,b.identity.instance);assert.equal(a.entry.source.column,text.indexOf('save(){return 1}')+1);assert.equal(b.entry.source.column,text.indexOf('save(){return 2}')+1);
+});
+test('getter computed spread duplicate and prototype object declarations remain unknown without execution',()=>{
+ for(const declaration of ['{get save(){throw new Error("never inspect")}}','{[key]:()=>42}','{...base,save(){}}','{save(){},save(){}}','{__proto__:base,save(){}}']){
+  const b=inspect(`const actions=${declaration};export const View=()=> <button onClick={actions.save}/>`).actionBindings[0];assert.equal(b.entry.status,'Unknown/Unsupported',declaration);assert.match(b.entry.reason,/spread\/getter\/computed\/duplicate\/prototype/);assert.deepEqual(b.hookRelations,[]);assert.equal(b.execution.status,'not-observed');
+ }
+});
+test('const receiver does not hide writes aliases escapes or unsupported member uses',()=>{
+ for(const effect of ['actions.save=other;','delete actions.save;','actions.save++;','const alias=actions;','consume(actions);','const copy={...actions};','const result=actions.save;','actions.save();']){
+  const b=inspect(`const actions={save(){}};${effect}export const View=()=> <button onClick={actions.save}/>`).actionBindings[0];assert.equal(b.entry.status,'Unknown/Unsupported',effect);assert.match(b.entry.reason,/write, escape or unsupported reference/);assert.equal(b.execution.status,'not-observed');
+ }
+ for(const text of ['let actions={save(){}};actions=other;const View=()=> <button onClick={actions.save}/>','function View(actions){return <button onClick={actions.save}/>}','const View=()=> <button onClick={external.save}/>','const actions={save(){}};const View=()=> <button onClick={actions["save"]}/>'])assert.equal(inspect(text).actionBindings[0].entry.status,'Unknown/Unsupported',text);
+});
+test('module exports global script bindings dynamic scope and declaration budgets retain boundaries',()=>{
+ for(const [text,reason] of [
+  ['export const actions={save(){}};const View=()=> <button onClick={actions.save}/>','Exported object'],
+  ['const actions={save(){}};const View=()=> <button onClick={actions.save}/>','global script'],
+  ['const actions={save(){}};export function View(){eval("anything");return <button onClick={actions.save}/>}','dynamic'],
+  ['const actions={save(){}};export {actions};const View=()=> <button onClick={actions.save}/>','escape'],
+  ['const actions={save(){},'+Array.from({length:64},(_,i)=>`key${i}:0`).join(',')+'};export const View=()=> <button onClick={actions.save}/>','budget']
+ ]){const b=inspect(text).actionBindings[0];assert.equal(b.entry.status,'Unknown/Unsupported');assert(b.entry.reason.includes(reason),b.entry.reason);}
+});
+test('multiple direct JSX callback reads keep an unescaped object admissible while an override still refuses',()=>{
+ const text='const actions={save(){}};export const View=()=> <><button onClick={actions.save}/><button onClick={actions.save} {...extra}/></>', first=text.indexOf('<button'),second=text.indexOf('<button',first+1);
+ const a=inspect(text,[],{marker:`${file}:1:${digest(text).slice(0,12)}:${first+1}`}).actionBindings[0],b=inspect(text,[],{marker:`${file}:1:${digest(text).slice(0,12)}:${second+1}`}).actionBindings[0];assert.equal(a.entry.status,'Code-linked');assert.equal(b.entry.status,'Unknown/Unsupported');assert.match(b.entry.reason,/override/);
+});

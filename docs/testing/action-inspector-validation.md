@@ -221,3 +221,20 @@ worker logic; keep source/registration/invocation evidence distinct; conservativ
 stop complex hook/member/factory resolution; limit native propagation coverage; keep
 model wording finite and experimental until real device quality testing is possible.
 These cost coverage and AI expressiveness, not hidden execution or elevated evidence.
+
+## Subsequent A03.1 source increment — 2026-10-21
+
+The record above remains historical. Current bounded object declarations are
+documented in [31-a03-object-handlers](../completion/31-a03-object-handlers.md).
+A constant local object method/data callback with only supported JSX event reads
+can now acquire Code-linked source/evidence, while getter/spread/computed/duplicate/
+prototype, write/escape/export/global-script/dynamic receiver forms remain Unknown.
+Anonymous functions retain their expression range and no invented function name.
+
+Current source1629/focused38, exact .2 consumers2/admission7 and native59 pass in
+both immutable hosts. The current real IDE/analyzer is sealed separately: it is
+not part of the Atom tarball and this is not a new installed VSIX acceptance.
+Original direct/inline/hook/factory/prop/native/snapshot controls are retained with
+actual native Input; the legacy parallel app-debugger Attach failure stays failed.
+Method/source relations do not establish invocation or runtime callback identity.
+Parent A03, A02 lineage and mandatory A05 remain open; only A03.1 is complete.

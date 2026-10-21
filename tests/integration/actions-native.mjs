@@ -1,0 +1,137 @@
+// SPDX-License-Identifier: (MIT AND Apache-2.0)
+// Original Action Inspector questions plus bounded A03 object declaration controls.
+// Explicit native helpers adapted from retained-ui-native.mjs (same notices).
+// No app CDP owner, handler invocation by inspection or page-expression evaluation.
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdir,open,rename} from 'node:fs/promises';
+import {fork,execFileSync} from 'node:child_process';
+import path from 'node:path';
+import net from 'node:net';
+import {root} from '../../scripts/vite-config.mjs';
+import {startNativeBrowser,nativeApproveDevelopment} from '../../scripts/native-browser.mjs';
+import {startIDE,rpc,waitFor} from '../../scripts/harness.mjs';
+import {fileDigests} from '../../scripts/short-loop-inputs.mjs';
+import {sha256,fileManifest,verifyArtifactHashes,inspectInstalledPair} from '../../scripts/atom-package-receipt.mjs';
+
+const hf=process.argv.find(s=>s.endsWith('atom-handoff.json'))||'.artifacts/atom/atom-handoff.json',h=JSON.parse(await readFile(hf));
+const out='.artifacts/a03/actions-native/'+new Date().toISOString().replace(/[:.]/g,'-');
+await mkdir(out,{recursive:true});await writeFile(out+'/driver.mjs',await readFile(new URL(import.meta.url)));
+const inputEntries=['core','src/engine','ide-extension','dist/ide','scripts/inspection-server.mjs','scripts/harness.mjs','scripts/native-browser.mjs','tests/ide-host.cjs','tests/integration/actions-native.mjs','tests/integration/actions.mjs','tests/helpers/retained-ui-server.mjs','tests/fixtures/inspection/react/actions.tsx','tests/fixtures/inspection/react/action-hooks.ts','tests/fixtures/inspection/react/actions.html'];
+const inputs=async()=>({...await fileDigests(root,inputEntries),...Object.fromEntries(await Promise.all(Object.keys({...h.sourceManifest,...h.buildSources.manifest}).map(async f=>[f,sha256(await readFile(f))])))});
+const result={schema:'stateatom.actions-native/1',status:'RUNNING',startedAt:new Date().toISOString(),revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceDirty:true,handoff:{file:hf,sha256:sha256(await readFile(hf)),package:h.package,ui:h.ui},configuration:{originalCommand:'npm run verify:actions',operator:'agent',browserPlugin:'Unavailable; exact immutable native MV3 pair and existing Atom debugger required',appTargetSession:false,transport:'Explicit inspector/app native Input, chrome.scripting metadata and existing Atom debugger; no app-page facade or parallel app CDP',reactHostProps:false,sourceConsumption:true,reactCommit:false,firstReadContracts:false,model:false,IDE:'Actual current VS Code host and exact source-open audit',scope:'Synthetic pinned React18 source declarations and native listener registration, two hosts/instances; no invocation observed by Atom, ordinary lineage, human or release acceptance'},checks:[],errors:[],cases:[],inputsBefore:await inputs()};
+let browser,panel,panelCDP,server,ide,origin,tabId;
+const q=id=>'[data-atom-id="'+id+'"]';
+async function check(name,fn){await fn();result.checks.push({name,status:'PASS'});console.log('PASS',name);}
+async function protocol(){return panelCDP??=await browser.context.newCDPSession(panel);}
+async function click(selector,index=0){
+ await waitFor(()=>panel.evaluate(({selector,index})=>{const e=document.querySelectorAll(selector)[index];return e&&!e.disabled&&!e.hidden;},{selector,index}));
+ const p=await protocol();await p.send('Page.bringToFront');
+ const point=await panel.evaluate(async({selector,index})=>{
+  const e=document.querySelectorAll(selector)[index];for(let a=e.parentElement;a;a=a.parentElement)if(a.tagName==='DETAILS'&&!(e.tagName==='SUMMARY'&&a===e.parentElement))a.open=true;
+  e.scrollIntoView({block:'center',behavior:'instant'});await new Promise(requestAnimationFrame);await new Promise(requestAnimationFrame);
+  const r=e.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2,hit=document.elementFromPoint(x,y);if(!r.width||!r.height||hit!==e&&!e.contains(hit))throw Error('Covered native inspector control: '+selector);return{x,y};
+ },{selector,index});
+ (result.nativeUIPoints??=[]).push({selector,index,point});for(const type of ['mouseMoved','mousePressed','mouseReleased'])await p.send('Input.dispatchMouseEvent',{type,...point,...(type==='mouseMoved'?{}:{button:'left',clickCount:1})});
+}
+const action=id=>click(q(id));
+async function key(key,code=key,n){const p=await protocol();for(const type of ['keyDown','keyUp'])await p.send('Input.dispatchKeyEvent',{type,key,code,...(n?{windowsVirtualKeyCode:n}:{}),...(type==='keyDown'&&key==='Enter'?{text:'\r',unmodifiedText:'\r'}:{})});}
+async function fill(id,value){
+ const p=await protocol();await p.send('Page.bringToFront');await waitFor(()=>panel.evaluate(s=>{const e=document.querySelector(s);return e&&!e.disabled;},q(id)));
+ await panel.evaluate(s=>{const e=document.querySelector(s);for(let a=e.parentElement;a;a=a.parentElement)if(a.tagName==='DETAILS')a.open=true;e.scrollIntoView({block:'center'});e.focus();e.select();},q(id));await p.send('Input.insertText',{text:value});
+ assert(await panel.evaluate(({s,value})=>document.querySelector(s).value===value,{s:q(id),value}),'Native field mismatch: '+id);
+}
+async function choose(id,value){
+ await (await protocol()).send('Page.bringToFront');
+ const current=await waitFor(()=>panel.evaluate(({s,value})=>{const e=document.querySelector(s);if(!e||e.disabled)return null;const index=[...e.options].findIndex(o=>o.value===value);if(index<0)return null;for(let a=e.parentElement;a;a=a.parentElement)if(a.tagName==='DETAILS')a.open=true;e.scrollIntoView({block:'center'});e.focus();return{index,value:e.value};},{s:q(id),value}));
+ if(current.value===value)return;if(id==='property')await key(current.index===0?'Home':'End',undefined,current.index===0?36:35);else{await key('Home','Home',36);for(let i=0;i<current.index;i++)await key('ArrowDown','ArrowDown',40);}
+ assert(await panel.evaluate(({s,value})=>document.querySelector(s).value===value,{s:q(id),value}),'Native select mismatch: '+id);
+}
+async function appClick(selector){
+ const point=await waitFor(async()=>{
+  const attempt=await panel.evaluate(async({id,selector})=>{await chrome.tabs.update(id,{active:true});return(await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:async selector=>{
+   const e=document.querySelector(selector);if(!e)return{point:null,reason:'Missing element',selector};e.scrollIntoView({block:'center',behavior:'instant'});await new Promise(requestAnimationFrame);await new Promise(requestAnimationFrame);const r=e.getBoundingClientRect(),hits=[];
+   for(const x of [r.x+Math.min(8,r.width/2),r.x+r.width/2,r.right-Math.min(8,r.width/2)]){const y=r.y+r.height/2,hit=document.elementFromPoint(x,y);hits.push(hit?.tagName||null);if(r.width&&r.height&&(hit===e||e.contains(hit)))return{point:{x,y},selector,hits,rect:{x:r.x,y:r.y,width:r.width,height:r.height}};}return{point:null,selector,hits,rect:{x:r.x,y:r.y,width:r.width,height:r.height}};
+  },args:[selector]}))[0].result;},{id:tabId,selector});result.lastAppGeometry=attempt;return attempt?.point;
+ });
+ (result.nativeAppPoints??=[]).push({selector,point});await panel.evaluate(async({id,point})=>{for(const type of ['mouseMoved','mousePressed','mouseReleased'])await chrome.debugger.sendCommand({tabId:id},'Input.dispatchMouseEvent',{type,...point,...(type==='mouseMoved'?{}:{button:'left',clickCount:1})});},{id:tabId,point});
+}
+async function startServer(kind,{mode='B',hostProps=true}={}){
+ const log=await open(out+'/server-'+kind+'.log','wx'),child=fork(path.resolve('tests/helpers/retained-ui-server.mjs'),[mode,String(hostProps),path.resolve(out)+'/vite-'+kind],{cwd:root,stdio:['ignore',log.fd,log.fd,'ipc']});server={child,log};let ready,error;child.on('message',m=>{if(m.type==='ready')ready=m;else error=m.message;});const receipt=await waitFor(()=>{if(error)throw Error(error);if(child.exitCode!==null)throw Error('Own server exited');return ready;},45000);origin=receipt.origin;(result.servers??=[]).push(receipt);
+}
+async function stopServer(){if(!server)return;const owned=server;server=null;if(owned.child.exitCode===null){owned.child.send({op:'stop'});try{await waitFor(()=>owned.child.exitCode!==null,15000);}catch{owned.child.kill('SIGTERM');await waitFor(()=>owned.child.exitCode!==null,5000);}}await owned.log.close();assert.equal(owned.child.exitCode,0);}
+async function closeBrowser(){await panelCDP?.detach().catch(()=>{});panelCDP=null;await browser?.context.close();browser=null;panel=null;tabId=null;}
+async function startOwnedIDE(kind){
+ const busy=await new Promise(resolve=>{const s=net.createConnection({host:'127.0.0.1',port:49331});s.setTimeout(1000);s.once('connect',()=>{s.destroy();resolve(true);});s.once('error',()=>resolve(false));s.once('timeout',()=>{s.destroy();resolve(true);});});assert.equal(busy,false,'Own IDE port occupied; no foreign process changed');
+ const runtime=out+'/profiles/ide-'+kind;const instance=await startIDE(runtime,{logDir:out+'/ide-'+kind,projectRoot:root});instance.runtime=runtime;return instance;
+}
+async function appProbe(){return panel.evaluate(async id=>(await chrome.scripting.executeScript({target:{tabId:id},world:'MAIN',func:()=>({title:document.title,buttons:document.querySelectorAll('button').length,ready:!!document.getElementById('object-method-two'),observer:typeof window.__STATEATOM__?.snapshot==='function',invocations:window.actionInvocations,getterReads:window.actionGetterReads,disabled:document.getElementById('object-method-two')?.disabled,overlay:!!document.querySelector('vite-error-overlay')})}))[0].result,tabId);}
+async function ui(){return panel.evaluate(()=>{const get=id=>document.querySelector('[data-atom-id="'+id+'"]');return{status:get('status').textContent,mode:get('mode').textContent,summary:get('action-summary').textContent,handlers:get('action-handlers').textContent,more:get('action-more').textContent,explanation:get('action-explanation').textContent,explainDisabled:get('action-explain').disabled,cancelHidden:get('action-cancel').hidden};});}
+async function reloadApp(){
+ const before=await panel.evaluate(async id=>(await chrome.debugger.sendCommand({tabId:id},'Page.getFrameTree')).frameTree.frame.loaderId,tabId);
+ await panel.evaluate(id=>chrome.debugger.sendCommand({tabId:id},'Page.reload',{ignoreCache:true}),tabId);
+ await waitFor(async()=>{const f=await panel.evaluate(async id=>(await chrome.debugger.sendCommand({tabId:id},'Page.getFrameTree')).frameTree.frame,tabId);return f.loaderId!==before&&(await appProbe()).ready;});
+}
+async function launch(kind,name,{source=true}={}){
+ browser=await startNativeBrowser(out+'/profiles',name,true,false,[],{extensionPath:h.hosts[kind]});panel=await browser.context.newPage();panel.on('pageerror',e=>result.errors.push({surface:'inspector',message:e.message}));await panel.goto('chrome-extension://'+browser.id+'/'+(kind==='standalone'?'panel.html':'workspace/inspect.html'));await(await protocol()).send('Emulation.setDeviceMetricsOverride',{width:1100,height:1000,deviceScaleFactor:1,mobile:false});
+ tabId=await panel.evaluate(async url=>(await chrome.tabs.create({url})).id,origin+'/react/actions.html');await waitFor(()=>panel.evaluate(async id=>(await chrome.tabs.get(id)).status==='complete',tabId));await nativeApproveDevelopment(panel,tabId);await action('refresh-tabs');await choose('tabs',String(tabId));await waitFor(()=>panel.evaluate(()=>{const get=id=>document.querySelector('[data-atom-id="'+id+'"]');return get('status').textContent==='OK'&&get('site-mode').value==='development'&&get('connection-label').textContent==='Not attached';}));await action('attach');
+ await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).attached);await waitFor(()=>panel.evaluate(()=>{const get=id=>document.querySelector('[data-atom-id="'+id+'"]');return get('status').textContent==='OK'&&get('connection-label').textContent.startsWith('Attached')&&!get('browser-connection').open&&!get('source-connection').open;}));
+ if(source){for(const[id,value]of [['bridge',ide.conn.url],['origin',origin],['source-root','tests/fixtures/inspection'],['token',ide.conn.token]])await fill(id,value);await action('pair');await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).connection.source?.url===ide.conn.url);await fill('token','');}
+ await reloadApp();return waitFor(async()=>{const p=await appProbe();return p.ready&&p.invocations===0?p:null;});
+}
+async function inspect(selector){
+ const before=(await rpc(panel,{op:'state',tabId})).selection?.observedAt;await choose('property','disabled');await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).property==='disabled'&&(await ui()).status==='OK');
+ await action('pick');await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).picker?.status==='picking');await appClick(selector);
+ const state=await waitFor(async()=>{const s=await rpc(panel,{op:'state',tabId});return s.selection?.selector===selector&&s.selection.observedAt!==before&&s.analysis?s:null;});
+ await waitFor(async()=>(await ui()).status==='OK');await action('actions-nav');const view=await waitFor(async()=>{const v=await ui();return /Declared|Unknown/.test(v.summary)?v:null;});
+ assert((await appProbe()).ready);assert((state.analysis.actionBindings||[]).every(b=>b.execution.status==='not-observed'));
+ const file=out+'/'+(result.currentHost||'host')+'-'+selector.slice(1)+'-'+state.selection.observedAt+'-state.json';await writeFile(file,JSON.stringify(state,null,2));return{state,ui:view,file,sha256:sha256(await readFile(file))};
+}
+async function openHandler(observation){
+ const binding=observation.state.analysis.actionBindings.find(b=>b.mechanism==='react-jsx'),source=binding.entry.source||binding.binding.source;
+ const reset=crypto.randomUUID();await writeFile(ide.runtime+'/editor-reset.tmp',JSON.stringify({id:reset}));await rename(ide.runtime+'/editor-reset.tmp',ide.runtime+'/editor-reset.json');await waitFor(async()=>JSON.parse(await readFile(ide.runtime+'/editor-reset-done.json')).id===reset);
+ let prior='';try{prior=String(await readFile(ide.runtime+'/ide-audit.jsonl'));}catch(e){if(e.code!=='ENOENT')throw e;}
+ const actual=String(await readFile(path.join(root,source.file)));assert.equal(source.sourceDigest,sha256(actual));await click(q('action-handlers')+' button');
+ const audit=await waitFor(async()=>String(await readFile(ide.runtime+'/ide-audit.jsonl')).slice(prior.length).split('\n').filter(Boolean).map(JSON.parse).find(a=>a.file===path.join(root,source.file)&&['line','column','endLine','endColumn'].every(k=>a[k]===source[k])));
+ const lines=actual.split('\n'),fragment=source.line===source.endLine?lines[source.line-1].slice(source.column-1,source.endColumn-1):lines.slice(source.line-1,source.endLine).map((l,i,a)=>i===0?l.slice(source.column-1):i===a.length-1?l.slice(0,source.endColumn-1):l).join('\n');assert.equal(audit.selectedText,fragment.slice(0,300));return audit;
+}
+async function exported(name){
+ await action('diagnostic-toggle');await fill('diagnostic-notes','Which source declaration supplies this selected callback? Execution not observed.');
+ if(await panel.evaluate(()=>document.querySelector('[data-atom-id="diagnostic-content"]').checked))await action('diagnostic-content');
+ const previous=new Set((await rpc(panel,{op:'list-handoffs'})).entries.map(e=>e.id));await action('save-report');
+ const saved=await waitFor(async()=>{const id=await panel.evaluate(()=>document.querySelector('[data-atom-id="report-select"]').value);return id&&!previous.has(id)?rpc(panel,{op:'open-handoff',id}):null;});assert.equal(saved.version,1);await action('export-report');
+ const preview=await waitFor(()=>panel.evaluate(()=>{const get=id=>document.querySelector('[data-atom-id="'+id+'"]');return get('export-review').open&&get('export-json').value?get('export-json').value:null;}));assert.equal(preview,saved.raw);const report=JSON.parse(preview);assert(report.runtime.actionBindings.some(b=>b.mechanism==='react-jsx'&&b.entry.status==='Code-linked'));assert(report.runtime.actionBindings.every(b=>!b.binding?.expression&&b.execution.status==='not-observed'));
+ const file=out+'/'+name+'-actions-original.v1.json';await writeFile(file,preview);await action('export-cancel');await action('diagnostic-toggle');return{file,sha256:sha256(preview),reportId:report.id,scope:'Actual native Save and export review of exact stored v1 bytes; download not claimed by this control'};
+}
+async function captureWidths(entry){
+ entry.widths=[];for(const width of [390,1100]){await(await protocol()).send('Emulation.setDeviceMetricsOverride',{width,height:1000,deviceScaleFactor:1,mobile:false});const v=await panel.evaluate(async()=>{await document.fonts.ready;const root=document.querySelector('[data-atom-root]');return{width:innerWidth,overflow:document.documentElement.scrollWidth>innerWidth+1,fontSize:getComputedStyle(root).fontSize,fontFamily:getComputedStyle(root).fontFamily};});assert.equal(v.width,width);assert.equal(v.overflow,false);assert.equal(v.fontSize,'13px');entry.widths.push(v);await panel.screenshot({path:out+'/'+entry.kind+'-actions-'+width+'-candidate.png'});}
+}
+async function run(kind){
+ result.currentHost=kind;const entry={kind,targets:[]};result.cases.push(entry);
+ await startServer(kind+'-off',{mode:'A',hostProps:false});await launch(kind,kind+'-off',{source:false});entry.off={before:await appProbe()};await appClick('#object-method-one');entry.off.after=await waitFor(async()=>{const p=await appProbe();return p.invocations===1?p:null;});await closeBrowser();await stopServer();
+ await startServer(kind+'-on',{mode:'B',hostProps:false});ide=await startOwnedIDE(kind);entry.initial=await launch(kind,kind+'-on');
+ await check(kind+' actual synthetic action route and paired native host are nonblank',async()=>{assert.equal(entry.initial.title,'Action Inspector controls');assert(entry.initial.buttons>20);assert.equal(entry.initial.observer,true);assert.equal(entry.initial.overlay,false);assert.equal(entry.initial.invocations,0);assert.equal(entry.initial.getterReads,entry.off.before.getterReads);entry.browser=browser.context.browser().version();await panel.screenshot({path:out+'/'+kind+'-first-viewport-candidate.png'});});
+ for(const [id,kindExpected,status,symbol] of [['direct','reference','Code-linked','save'],['inline','inline','Code-linked','Inline callback'],['hook','reference','Code-linked','confirmOrder'],['memo','reference','Code-linked','memoSave'],['factory','factory','Unknown/Unsupported',null],['prop','reference','Unknown/Unsupported',null],['object-method','reference','Code-linked','save'],['object-data','reference','Code-linked','memoSave'],['object-anonymous','reference','Code-linked',null],['object-getter','reference','Unknown/Unsupported',null],['object-mutable','reference','Unknown/Unsupported',null],['object-escape','reference','Unknown/Unsupported',null]]){
+  const item={id,selector:'#'+id+'-one'};entry.targets.push(item);
+  await check(kind+' '+id+' exact JSX binding/source relation and explicit execution boundary',async()=>{item.observation=await inspect(item.selector);const a=item.observation.state.analysis,b=a.actionBindings.find(b=>b.mechanism==='react-jsx');assert(b);assert.equal(b.kind,kindExpected);assert.equal(b.entry.status,status);if(status==='Code-linked')assert.equal(b.entry.symbol,symbol);assert.equal(b.execution.status,'not-observed');assert.equal(b.binding.source.sourceDigest,sha256(await readFile('tests/fixtures/inspection/react/actions.tsx')));assert.equal(b.identity.instance,a.actionContext.instance);assert.equal(b.identity.document,a.actionContext.document);assert.equal(b.identity.inspection,a.actionContext.inspection);assert(item.observation.ui.summary.includes('execution not observed'));if(id==='hook')assert.deepEqual(b.hookRelations.map(h=>h.hook),['useOrders']);if(id==='object-data')assert.deepEqual(b.hookRelations.map(h=>h.relation),['creates-callback']);if(id==='object-method')assert(a.graph.edges.some(e=>e.relation==='declared-object-method'&&e.status==='Code-linked'));if(id==='object-getter')assert.match(b.entry.reason,/getter/);if(id==='object-mutable'||id==='object-escape')assert.match(b.entry.reason,/write, escape/);item.binding=b;});
+  if(['direct','hook','memo','object-method','object-data','object-anonymous'].includes(id))await check(kind+' '+id+' actual IDE opens exact declaration/anonymous expression',async()=>{item.editor=await openHandler(item.observation);});
+ }
+ const hookOne=await inspect('#hook-one'),hookTwo=await inspect('#hook-two');entry.originalHookInstances={one:hookOne,two:hookTwo};
+ await check(kind+' original custom hook instances stay distinct and disabled handler is never invoked by inspection',async()=>{assert.notEqual(hookOne.state.analysis.actionContext.instance,hookTwo.state.analysis.actionContext.instance);assert.equal(hookTwo.state.selection.value,true);assert.equal(hookTwo.state.analysis.actionBindings.find(b=>b.mechanism==='react-jsx').hookRelations[0].hook,'useOrders');assert.equal((await appProbe()).invocations,0);});
+ const one=await inspect('#object-method-one'),two=await inspect('#object-method-two');entry.twoInstances={one,two};
+ await check(kind+' equal declaration retains distinct native DOM instances and disabled inspection never invokes callbacks/getters',async()=>{assert.notEqual(one.state.analysis.actionContext.instance,two.state.analysis.actionContext.instance);assert.equal(two.state.selection.value,true);assert.equal(one.state.analysis.actionBindings[0].entry.source.sourceDigest,two.state.analysis.actionBindings[0].entry.source.sourceDigest);const p=await appProbe();assert.equal(p.invocations,0);assert.equal(p.getterReads,entry.initial.getterReads);});
+ await check(kind+' original keyboard/template explanation remains non-execution evidence',async()=>{await action('action-explain');assert((await ui()).explanation.includes('not observed'));await panel.evaluate(s=>document.querySelector(s).focus(),q('action-explain'));await key('Enter','Enter',13);assert((await ui()).explanation.includes('not observed'));assert.equal((await ui()).cancelHidden,true);});
+ await check(kind+' first/narrow action viewport preserves width and typography',()=>captureWidths(entry));
+ await check(kind+' actual reviewed saved v1 action export remains inert and omits excerpts',async()=>{entry.export=await exported(kind);});
+ await check(kind+' original native listener registration stays separate from source declaration/invocation',async()=>{entry.native=await inspect('#native-action');const b=entry.native.state.analysis.actionBindings;assert(b.some(b=>b.mechanism==='dom-listener'&&b.registeredOn==='selected-element'&&b.event==='click'&&b.once));assert(b.filter(b=>b.registeredOn!=='selected-element').every(b=>b.entry.status==='Unknown/Unsupported'));});
+ await check(kind+' actual ordinary method click has equal off/on application effect without Atom invocation claim',async()=>{await appClick('#object-method-one');entry.onAfterClick=await waitFor(async()=>{const p=await appProbe();return p.invocations===1?p:null;});assert.equal(entry.onAfterClick.invocations,entry.off.after.invocations);assert.equal(entry.onAfterClick.getterReads,entry.off.after.getterReads);assert.equal(entry.onAfterClick.disabled,entry.off.after.disabled);});
+ await check(kind+' original selected DOM replacement invalidates action evidence',async()=>{await inspect('#direct-one');await panel.evaluate(async id=>(await chrome.scripting.executeScript({target:{tabId:id},world:'MAIN',func:()=>{const e=document.getElementById('direct-one');e.replaceWith(e.cloneNode(true));}}))[0].result,tabId);await rpc(panel,{op:'state',tabId,refreshDeep:true});await action('refresh-tabs');await waitFor(async()=>(await ui()).summary.startsWith('Stale'));assert.equal((await ui()).explainDisabled,true);});
+ await check(kind+' original real navigation makes prior source action snapshot stale',async()=>{await reloadApp();await inspect('#direct-one');await reloadApp();await waitFor(async()=>(await ui()).summary.startsWith('Stale'));assert.equal((await ui()).explainDisabled,true);});
+ await check(kind+' original browser-only native fallback after unpair and detach freshness',async()=>{await rpc(panel,{op:'unpair'});const basic=await inspect('#native-action');assert.equal(basic.state.analysis.capabilities.sourceResolver,'unavailable');assert(basic.state.analysis.actionBindings.some(b=>b.registeredOn==='selected-element'&&b.event==='click'));await rpc(panel,{op:'detach',tabId});await action('refresh-tabs');await waitFor(async()=>(await ui()).summary.startsWith('Stale'));assert.equal((await ui()).explainDisabled,true);});
+ await closeBrowser();await stopServer();await ide.close(true);ide=null;assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);
+}
+try{
+ await check('exact immutable candidate archives installed pair current build inputs and both native hosts',async()=>{for(const[file,d]of Object.entries({...h.sourceManifest,...h.buildSources.manifest}))assert.equal(sha256(await readFile(file)),d,file);await verifyArtifactHashes([h.package,h.ui]);await inspectInstalledPair(h.consumer,h.consumerReceipt);for(const kind of ['standalone','embedding'])assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);});
+ for(const kind of ['standalone','embedding'])await run(kind);
+ result.status='PASS_SCOPED_OBJECT_ACTION_DECLARATIONS_AND_RETAINED_ACTION_CONTROLS';
+}catch(e){result.status='FAIL';result.error=String(e.stack||e);process.exitCode=1;console.error(e);await panel?.screenshot({path:out+'/failure-candidate.png'}).catch(()=>{});}
+finally{await closeBrowser().catch(e=>result.errors.push({cleanup:'browser',message:e.message}));await stopServer().catch(e=>result.errors.push({cleanup:'server',message:e.message}));if(ide)await ide.close(false).catch(e=>result.errors.push({cleanup:'IDE',message:e.message}));result.inputsAfter=await inputs();if(JSON.stringify(result.inputsBefore)!==JSON.stringify(result.inputsAfter)||result.errors.length){result.status='FAIL';process.exitCode=1;}delete result.currentHost;result.completedAt=new Date().toISOString();await writeFile(out+'/results.json',JSON.stringify(result,null,2));console.log(result.status,result.checks.length,out);}

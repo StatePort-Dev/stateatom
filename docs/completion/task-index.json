@@ -1724,8 +1724,47 @@
         "npm run verify:ide"
       ],
       "deliverable": "Common callback source paths without invented invocation",
-      "status": "planned",
-      "optional": false
+      "status": "in-progress",
+      "optional": false,
+      "implementation_plan": "../superpowers/plans/2026-10-21-a03-object-handlers.md",
+      "execution_record": "31-a03-object-handlers.md",
+      "active_slice": null,
+      "completed_slices": [
+        {
+          "id": "A03.1",
+          "status": "complete-within-local-object-source-declarations",
+          "candidate": "0.1.0-candidate.20261021.2",
+          "verification": ".artifacts/a03/object-handlers/verification2.json",
+          "record": "31-a03-object-handlers.md",
+          "product_code_changed": true,
+          "runtime_observer_compiler_changed": false,
+          "checks": {
+            "source": 1629,
+            "focused_action": 38,
+            "strict_consumers": 2,
+            "admission": 7,
+            "native": 59,
+            "hosts": 2,
+            "native_source_cases_per_host": 12,
+            "sealed_native_inputs": 166
+          },
+          "full_A03_acceptance": false,
+          "invocation_observed": false,
+          "evidence_scope": "Bounded local own object method/data callback declarations and exact source/evidence, with getter/write/escape/ambiguous/global/dynamic refusals. Current contributor IDE source/build sealed separately from Atom tarball. Native original controls/source-open/instance/off-on/v1 export review pass; no installed VSIX/runtime callback identity/trace claim."
+        }
+      ],
+      "remaining_acceptance": [
+        "Forwarded handler source paths with selected-instance/override/ambiguous-parent counterexamples",
+        "Publish remaining custom-hook source forms/relevant-only relations and unsupported boundaries",
+        "Original capture/bubble/stopPropagation and replaced listener/prop freshness controls with no invocation inference",
+        "ONE whole-A03 review and tested Critical/Important resolutions after the declared matrix"
+      ],
+      "current_candidate": {
+        "version": "0.1.0-candidate.20261021.2",
+        "handoff": ".artifacts/atom/2026-10-21T00-38-37-796Z/atom-handoff.json",
+        "verification": ".artifacts/a03/object-handlers/verification2.json",
+        "boundary": "Dirty BASEaae5141; immutable Atom pair is distinct from actual contributor IDE/analyzer source and built inputs sealed by current native166-input receipt. A03.1 only; source declarations/native registrations are not invocation, complete lineage or fresh installed VSIX acceptance."
+      }
     },
     {
       "id": "A04",
@@ -2308,15 +2347,16 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "A02.1",
-      "status": "bounded-investigation-complete-full-A02-unresolved",
-      "verification": ".artifacts/a02/reducer-boundary/verification.json",
-      "record": "30-a02-reducer-lineage-boundary.md",
-      "product_code_changed": false,
-      "full_A02_acceptance": false,
-      "next_item": "A03"
+      "id": "A03.1",
+      "status": "complete-within-local-object-source-declarations",
+      "candidate": "0.1.0-candidate.20261021.2",
+      "verification": ".artifacts/a03/object-handlers/verification2.json",
+      "record": "31-a03-object-handlers.md",
+      "product_code_changed": true,
+      "full_A03_acceptance": false,
+      "next_item": "A03.2"
     },
-    "next_item": "A03",
+    "next_item": "A03.2",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -2331,7 +2371,7 @@
       "A01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": null,
+    "active_item": "A03",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -2868,10 +2908,19 @@
         "full_A01_acceptance": true,
         "whole_review_count": 1,
         "next_item": "A02"
+      },
+      {
+        "id": "A02.1",
+        "status": "bounded-investigation-complete-full-A02-unresolved",
+        "verification": ".artifacts/a02/reducer-boundary/verification.json",
+        "record": "30-a02-reducer-lineage-boundary.md",
+        "product_code_changed": false,
+        "full_A02_acceptance": false,
+        "next_item": "A03"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A01 completed and locally committed704b632 after one whole review/tested Minor fixes. A02.1 registers real independent useReducer19 title replacement and confirms concrete native identity/ownership/prop-transfer/selected-commit gaps using65 unchanged inputs/14 retained native observations/two partial exports. Current synthetic query29/calls16/state14/write-access19 pass only their own scope. A02 remains unresolved; its explicit stopping point names one finite unimplemented React19 reducer experiment. Next independently dependency-ready item A03. P04/C07 remain gated by A02; mandatory A05/L02/release open; SDK outside Atom.",
+    "current_activity_note": "A03.1 bounded local own object method/data callback source declarations complete: source1629/focused38/types2/admission7/native59 across exact .2 paired hosts. All166 native inputs, including current analyzer and built IDE outside Atom tarball, match; original hook pair remains separate from added object pair. Getter/write/escape/ambiguous/export/global/dynamic cases refuse; invocation stays not-observed. Native source-open/off-on/v1 reviewed export/freshness/Basic controls pass, legacy Attach ownership failure retained. Parent A03 open; next A03.2 forwarded handler source paths. A02 unresolved per explicit stopping point; mandatory A05/L02/P04/C07/release remain open; SDK outside Atom.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "A03"

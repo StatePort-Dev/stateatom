@@ -11,8 +11,8 @@ const unknown=reason=>({status:'Unknown/Unsupported',reason,evidenceIds:[]});
 export function analyzeActions(files,selection,identity,graph,projectFiles=files){
  const result=[],[file,line,digest,column]=String(selection.marker||'').split(':');
  if(selection.unbound||selection.markerOnSelected!==true||!file||file.endsWith('.vue'))return result;
- const cache=new Map();
- function unit(f){if(cache.has(f.file))return cache.get(f.file);let ast;try{ast=parse(f.text,{sourceType:'unambiguous',plugins:['jsx','typescript']});}catch{return null;}const u={...f,ast,sourceDigest:hash(f.text)};cache.set(f.file,u);return u;}
+ const cache=new Map(),objects=new WeakMap();
+ function unit(f){if(cache.has(f.file))return cache.get(f.file);let ast;try{ast=parse(f.text,{sourceType:'unambiguous',plugins:['jsx','typescript']});}catch{return null;}let dynamicScope=false;traverse(ast,{WithStatement(){dynamicScope=true;},CallExpression(p){if(p.get('callee').isIdentifier({name:'eval'}))dynamicScope=true;}});const u={...f,ast,dynamicScope,sourceDigest:hash(f.text)};cache.set(f.file,u);return u;}
  const f=files.find(f=>f.file===file&&hash(f.text).slice(0,12)===digest),u=f&&unit(f);if(!u)return result;
  const location=(p,u)=>({file:u.file,line:p.node.loc.start.line,column:p.node.loc.start.column+1,endLine:p.node.loc.end.line,endColumn:p.node.loc.end.column+1,sourceDigest:u.sourceDigest});
  let evidenceCount=0;
@@ -31,9 +31,44 @@ export function analyzeActions(files,selection,identity,graph,projectFiles=files
   return target?{p:target,u:other}:null;
  }
  function functionPath(p){return p?.isFunction()?p:p?.isVariableDeclarator()&&p.get('init').isFunction()?p.get('init'):null;}
+ function eventMemberRead(ref){
+  const member=ref.parentPath,container=member?.parentPath,attribute=container?.parentPath;
+  return member?.isMemberExpression()&&member.get('object')===ref&&!member.node.computed&&!member.node.optional&&container?.isJSXExpressionContainer()&&container.get('expression')===member&&attribute?.isJSXAttribute()&&/^on[A-Z][A-Za-z0-9]*$/.test(attribute.node.name?.name);
+ }
+ function objectDeclaration(binding,u){
+  if(objects.has(binding))return objects.get(binding);
+  const decl=binding.path,init=decl.isVariableDeclarator()?decl.get('init'):null;
+  let reason=null,properties=[];
+  if(binding.kind!=='const'||!binding.constant||!decl.isVariableDeclarator()||!decl.get('id').isIdentifier()||!init?.isObjectExpression())reason='Member receiver is not a constant local object literal';
+  else if(u.dynamicScope||binding.scope.path.isProgram()&&u.ast.program.sourceType!=='module')reason='Object receiver has a dynamic or global script scope boundary';
+  else if(decl.parentPath.parentPath.isExportNamedDeclaration())reason='Exported object receiver may escape this source scope';
+  else if(init.node.properties.length>64||binding.referencePaths.length>64)reason='Bounded object declaration budget exceeded';
+  else if(binding.referencePaths.some(ref=>!eventMemberRead(ref)))reason='Object receiver has a write, escape or unsupported reference';
+  else {
+   properties=init.get('properties');const keys=new Set();
+   for(const p of properties){const n=p.node,key=n.key?.name??n.key?.value;if(!(p.isObjectProperty()||p.isObjectMethod()&&n.kind==='method')||n.computed||key===undefined||key==='__proto__'||keys.has(String(key))){reason='Object spread/getter/computed/duplicate/prototype property boundary';break;}keys.add(String(key));}
+  }
+  const record={reason,properties};objects.set(binding,record);return record;
+ }
+ function resolveMember(p,u,from,depth,seen){
+  if(p.node.computed||p.node.optional||!p.get('object').isIdentifier()||!p.get('property').isIdentifier())return unknown('Dynamic member/prop callback upstream or getter target is unknown');
+  const receiver=p.get('object'),b=receiver.scope.getBinding(receiver.node.name);if(!b)return unknown('Member/prop receiver binding unavailable');
+  const object=objectDeclaration(b,u);if(object.reason)return unknown(object.reason);
+  const property=object.properties.find(q=>(q.node.key.name??String(q.node.key.value))===p.node.property.name);if(!property)return unknown('Own object handler property unavailable');
+  const key=u.file+':'+b.identifier.start+':'+p.node.property.name;if(seen.has(key))return unknown('Object handler alias cycle');seen=new Set([...seen,key]);
+  if(property.isObjectMethod()){
+   const source=location(property.get('key'),u);return {symbol:p.node.property.name,status:'Code-linked',source,evidenceIds:proof(from,source,'declared-object-method'),hookRelations:[]};
+  }
+  const value=property.get('value');
+  if(value.isFunction()){
+   const source=location(value,u);return {symbol:value.node.id?.name||null,status:'Code-linked',source,evidenceIds:proof(from,source,'object-data-handler'),hookRelations:[]};
+  }
+  const resolved=resolve(value,u,from,depth+1,seen);if(resolved.status!=='Code-linked')return resolved;
+  return {...resolved,evidenceIds:[...resolved.evidenceIds,...proof(from,location(property,u),'object-data-handler')]};
+ }
  function resolve(p,u,from,depth=0,seen=new Set()){
   if(depth>4||!p?.node)return unknown('Bounded call/return depth exceeded');
-  if(p.isMemberExpression()||p.isOptionalMemberExpression())return unknown('Member/prop callback upstream or getter target is unknown');
+  if(p.isMemberExpression()||p.isOptionalMemberExpression())return resolveMember(p,u,from,depth,seen);
   if(!p.isIdentifier())return unknown('Dynamic expression or handler factory boundary');
   const b=p.scope.getBinding(p.node.name);if(!b||!b.constant||b.kind==='param')return unknown('Missing, mutable or parameter binding');
   const key=u.file+':'+b.identifier.start;if(seen.has(key))return unknown('Alias cycle');seen=new Set([...seen,key]);

@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.2
+
+- Link selected JSX callbacks to supported same-project constant object methods
+  and data callback declarations, using exact source coordinates and existing
+  hook relations. These are source relationships; execution remains not observed.
+- Refuse getters, computed/spread/duplicate/prototype keys, receiver writes/escapes,
+  global script or dynamic scopes and exported/unsupported receivers. Const alone
+  does not establish property immutability. No callback or getter is executed.
+- Preserve existing source/native-registration/invocation and evidence contracts.
+  No runtime adapter, shared visual tokens, layout or action-trace support added.
+
 ## 0.1.0-candidate.20261021.1
 
 - Name the pending-picker guidance **Cancel element selection**, matching its
