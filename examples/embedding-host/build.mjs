@@ -8,6 +8,7 @@ await mkdir(out+'/workspace',{recursive:true});
 for(const [input,output] of [['worker.js','host-worker.js'],['inspect.js','workspace/inspect.js']])await build({entryPoints:[input],bundle:true,platform:'browser',format:'esm',outfile:out+'/'+output});
 await copyFile('manifest.json',out+'/manifest.json');await copyFile('inspect.html',out+'/workspace/inspect.html');
 for(const f of ['guardian.html','guardian.js','guardian-worker.js'])await copyFile(require.resolve('@stateport/atom/'+f),out+'/atom-'+f);
+await copyFile(require.resolve('@stateport/atom/source-analysis-worker.js'),out+'/source-analysis-worker.js');
 for(const file of ['atom.css','content.js','reader.js','reader.html','reader.css'])await copyFile(require.resolve('@stateport/atom/'+file),out+'/'+file);
 for(const file of ['tokens.css','components.css','fonts.css','contract.json'])await copyFile(require.resolve('@stateport/extension-ui/'+file),out+'/extension-ui-'+file);
 await mkdir(out+'/assets/fonts',{recursive:true});await copyFile(require.resolve('@stateport/extension-ui/assets/fonts/InterVariable.woff2'),out+'/assets/fonts/InterVariable.woff2');

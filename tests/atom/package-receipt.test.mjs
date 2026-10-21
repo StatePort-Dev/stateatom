@@ -39,3 +39,10 @@ test('rejected staging cannot poison restoration of already issued bytes',async 
  const accepted=await stageCandidate(parent,'reproduction');await writeFile(accepted.directory+'/atom.tgz','original');await accepted.promote();
  await access(accepted.finalDirectory+'/atom.tgz');await assertImmutableArtifact([parent],'atom.tgz',Buffer.from('original'));
 });
+test('new source-worker feature requires its fixed asset while old contracts remain admitted',async t=>{
+ const old=await fixture(t);await inspectInstalledPair(old.base,expected);
+ const c={apiVersion:1,wireVersion:1,uiContract:expected.uiContract,uiPackage:expected.uiVersion,features:['source-analysis-worker-v1'],sourceAnalysis:{protocolVersion:1,assets:['source-analysis-worker.js']}};
+ const missing=await fixture(t);await writeFile(missing.atom+'/contract.json',JSON.stringify(c));await assert.rejects(inspectInstalledPair(missing.base,expected),/export|asset/i);
+ // Fresh consumer avoids Node's package-export resolution cache after package edits.
+ const f=await fixture(t);await writeFile(f.atom+'/contract.json',JSON.stringify(c));f.atomPkg.exports['./source-analysis-worker.js']='./dist/source-analysis-worker.js';await writeFile(f.atom+'/package.json',JSON.stringify(f.atomPkg));await writeFile(f.atom+'/dist/source-analysis-worker.js','self.close();');await inspectInstalledPair(f.base,expected);await rm(f.atom+'/dist/source-analysis-worker.js');await assert.rejects(inspectInstalledPair(f.base,expected),/ENOENT|Cannot find module/i);
+});

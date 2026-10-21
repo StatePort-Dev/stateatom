@@ -3,6 +3,7 @@ import {createHandoffLibrary} from './handoff-library.mjs';
 import {parseConnectionReceipt} from '../../../core/project-connection.mjs';
 import {appOrigin,helperURL} from './origin-policy.mjs';
 import {createSourceMapUI} from './source-map-ui.mjs';
+import {createSourceAnalysisClient} from './source-analysis-client.mjs';
 import {createProductionUI} from './production-ui.mjs';
 import {createInputUI} from './input-ui.mjs';
 import {createActionUI} from './action-ui.mjs';
@@ -57,7 +58,8 @@ async function load(options={}){
  if(generation!==loadGeneration||id!==tab()||pendingProperties.has(id))return;
  selectedState={...state,tabId:id};analysis=state.analysis;inputUI.update(inspectionDisplayState(selectedState));renderInspection();
 }
-const sourceMapUI=createSourceMapUI({document,$,rpc,tab,load,action,requestPermission:options.requestOriginPermission});
+const sourceAnalysis=createSourceAnalysisClient({url:options.sourceAnalysisWorkerURL,baseURL:document.location?.href,Worker:document.defaultView?.Worker});
+const sourceMapUI=createSourceMapUI({document,$,rpc,tab,load,action,requestPermission:options.requestOriginPermission,sourceAnalysis});
 const actionsUI=createActionUI({document,$,rpc,cleanupRpc:m=>client.request(m),tab,action,nativeSource:sourceMapUI});
 const inputUI=createInputUI({document,$,client,preview:options.inputEditorPreview===true});
 const explanationUI=createInspectionExplanationUI({document,$,onNext:id=>{if(id==='connect-project')reveal('source-connection');else if(id==='inspect-again')$('load').click();}});

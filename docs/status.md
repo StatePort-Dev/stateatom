@@ -1589,3 +1589,15 @@ claim. Current .35/UI .2 archives unchanged; failed legacy debugger/obsolete dri
 assumptions retained with bounded corrections. Next P01.4b owned Worker/transient
 provider/product/two-loaded-bundle controls, then ONE P01 review. P01/A02/L02 open,
 15/29 original items complete; no release/publication/SDK/other repository.
+
+### 2026-10-22 — actual owned source-analysis Worker; P01 review next
+
+[P01.4b](completion/74-p01-owned-source-analysis-worker.md):current .38/UI .2,
+1998full/126focused/12exact Node parity, actual6HTTP Worker/46packed source-analysis/
+49native-source/65own-host-source/105NodeIDE,types2/admission8 PASS. Source-only
+function/helper/possible calls through the SAME resolver; explicit source input,
+1500ms/cancel/DTO/privacy and same-original/two-loaded-build controls. Identical maps
+may share provider identity; runtime script/JS/DOM anchors remain distinct. .36/.37
+and failed runs preserved, including4/26 concurrent harness failures (cause Unknown;
+unchanged sequential controls pass). ONE whole-P01 review remains;15/29 complete.
+No runtime values/invocation/property/HTTP/renderer attestation, publication or SDK.

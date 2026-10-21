@@ -28,8 +28,8 @@ function createResolver(files,identity,graph,projectFiles,options={}){
  }
  function importTarget(p,u){
   if(!p.isImportSpecifier()&&!p.isImportDefaultSpecifier())return null;
-  const declaration=p.parentPath.node,relative=declaration.source.value;if(!relative.startsWith('.'))return null;
-  const base=actionImportPath(u.importName??u.file,relative);
+  const declaration=p.parentPath.node,relative=declaration.source.value;
+  const base=actionImportPath(u.importName??u.file,relative);if(base===null)return null;
   const candidates=projectFiles.filter(f=>[base,...['.ts','.tsx','.js','.jsx','/index.ts','/index.tsx','/index.js','/index.jsx'].map(e=>base+e)].includes(f.importName===undefined?f.file:normalizeActionSourceName(f.importName)));
   if(candidates.length!==1)return null;const other=unit(candidates[0]);if(!other)return null;
   const name=p.isImportDefaultSpecifier()?'default':p.node.imported.name;let target;

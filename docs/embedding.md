@@ -343,3 +343,32 @@ The .11 target presentation uses observed text plus a single Select parent actio
 `state.picker.selectedIndex` records the actual successful choice; missing metadata
 never guesses the next parent. Full native choices/selector and scope limitations
 remain inside Element details. See the [presentation follow-up](completion/19-u05-picker-presentation.md).
+
+### Optional bounded source-analysis asset (candidate .20261021.36)
+
+A host can copy `@stateport/atom/source-analysis-worker.js` to its own extension root
+and pass `sourceAnalysisWorkerURL: chrome.runtime.getURL('source-analysis-worker.js')`
+to mountAtom. The asset URL must stay on that document's scheme/host, use the fixed
+filename and contain no credentials/query/fragment. Both supplied hosts configure it.
+The feature is additive to API/wire1, UI2.1; older hosts may omit the option and keep
+source previews with an explicit analysis gap. Feature `source-analysis-worker-v1`
+requires the exact exported asset in package admission. No public SDK is introduced.
+
+Only explicit View on a current selected native/own-host anchor requests the transient
+full source-provider envelope via optional boolean `includeAnalysisInput`. Default
+source reads still return the bounded preview. The fixed Worker revalidates/hashes
+explicit content and uses the same pure resolver as Node. JS/TS/JSX only; no Vue SFC
+compiler, Node wrapper, filesystem, configuration loading, remote import or evaluation.
+Normal runtime/UI/guardian browser input admission remains unchanged. The separate
+Worker uses the reviewed exact172-path allowlist and includes dependency notices.
+Babel7's build flag is fixed at build time; no broad process/Node polyfill is installed.
+
+One Worker per read is terminated on result,1500ms, cancellation, context/map changes
+or view disposal. No main-thread/model fallback.64KiB results,8 parsed units,64 proof
+relations,8 calls,64 identifiers and400-character expressions bound the source DTO.
+Unverified map association stays Candidate; lexical targets and possible calls do
+not establish invocation, branch choice, runtime values, property or HTTP ancestry.
+Source sets/AST stay transient and outside default state/diagnostic/model persistence.
+This does not erase strings already returned to an authorized host or independently
+authenticate a user-provided manifest/source map. Browser bundle success alone is
+not native product acceptance; see the current completion evidence for actual runs.

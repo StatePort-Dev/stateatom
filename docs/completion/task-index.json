@@ -2470,7 +2470,10 @@
         "packages/atom/src/action-ui.mjs",
         "core/action-react-host.mjs",
         "core/action-analysis-pure.mjs",
-        "core/action-source-path.mjs"
+        "core/action-source-path.mjs",
+        "core/source-function-analysis.mjs",
+        "packages/atom/src/source-analysis-client.mjs",
+        "packages/atom/src/source-analysis-worker.mjs"
       ],
       "existing_commands": [
         "npm run verify:production-source-mapping",
@@ -2490,32 +2493,46 @@
         "reconciliation": "13-scope-reconciliation.md"
       },
       "remaining_acceptance": [
-        "Integrate the shared pure resolver in an owned browser Worker with hard time/output/cancel limits and transient explicit source-provider input; actual product names/imports/expressions controls",
-        "Remaining whole-P01 controls including actual same original file in two loaded bundles, full affected acceptance and ONE whole-item review"
+        "ONE whole-P01 review of approved scope, current code and actual native/framework/shared-source controls; assess impact of preserved concurrent harness failures and retain any real gaps"
       ],
-      "active_slice": "P01.4b owned bounded source-analysis Worker and transient explicit source-provider product integration; actual two-loaded-bundle and remaining controls, then ONE P01 review",
+      "active_slice": "ONE whole-P01 scope/code/evidence review and one bounded fix pass if needed; assess preserved concurrent harness failures without relabelling them passed",
       "implementation_plan": "../superpowers/plans/2026-10-21-p01-pure-source-analysis.md",
-      "execution_record": "73-p01-shared-pure-source-analysis.md",
+      "execution_record": "74-p01-owned-source-analysis-worker.md",
       "current_checkpoint": {
-        "id": "P01.4a-shared-pure-source-analysis",
-        "status": "complete-bounded-pure-node-not-browser-feature",
-        "record": "73-p01-shared-pure-source-analysis.md",
+        "id": "P01.4b-owned-source-analysis-worker",
+        "status": "complete-bounded-packed-source-analysis-awaiting-whole-P01-review",
+        "record": "74-p01-owned-source-analysis-worker.md",
         "implementation_plan": "../superpowers/plans/2026-10-21-p01-pure-source-analysis.md",
-        "unchanged_product_candidate": "@stateport/atom@0.1.0-candidate.20261021.35",
-        "new_source_tests": 18,
-        "focused_tests": 65,
-        "source_tests": 1975,
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.38",
+        "superseded_immutable_candidates": [
+          ".20261021.36",
+          ".20261021.37"
+        ],
+        "new_source_tests": 23,
+        "focused_tests": 126,
+        "source_tests": 1998,
         "node_exact_parity_cases": 12,
-        "actual_native_action_IDE_checks": 105,
-        "browser_bundle_bytes": 2218162,
-        "browser_bundle_inputs": 164,
-        "browser_worker_executed": false,
-        "common_pure_resolver": true,
-        "browser_analysis_in_product": false,
+        "actual_HTTP_worker_checks": 6,
+        "actual_packed_source_analysis_checks": 46,
+        "actual_packed_checks_per_host": {
+          "standalone": 22,
+          "embedding": 23
+        },
+        "actual_native_registration_regression": 49,
+        "actual_framework_source_regression": 65,
+        "actual_Node_Action_IDE_regression": 105,
+        "packed_type_consumers": 2,
+        "package_admission": 8,
+        "worker_only_exact_inputs": 172,
+        "common_pure_source_analysis_in_product": true,
+        "source_body_in_default_state_diagnostics_model": false,
+        "renderer_version_attestation": false,
+        "callback_object_identity": "Unknown/Unsupported",
+        "concurrent_harness_failures": "Preserved4/26; cause Unknown; unchanged sequential49/105 controls pass",
         "full_P01_acceptance": false,
-        "verification": ".artifacts/p01/pure-source/verification.json",
-        "next_item": "P01.4b owned bounded source-analysis Worker and transient explicit source-provider product integration; actual two-loaded-bundle and remaining controls, then ONE P01 review",
-        "boundary": "Same lexical resolver shared; Node API/hash/Vue and evidence preserved.18new/65focused/1975full PASS,12 exact immutable Node parity cases,105 actual two-host Action/IDE/native/freshness/reader checks. Browser bundle only, not Worker execution/admission/product. Current .35/UI .2 archives unchanged. Original Playwright debugger conflict and two obsolete native-driver assumptions retained as failures, criteria unchanged; P01 open,15/29 complete."
+        "verification": ".artifacts/p01/worker-source/verification38.json",
+        "next_item": "ONE whole-P01 scope/code/evidence review and one bounded fix pass if needed; assess preserved concurrent harness failures without relabelling them passed",
+        "boundary": "Actual current .38/UI .2 source-only lexical context through owned one-shot Worker:1998full/126focused,6HTTPWorker/46packed/49native/65framework/105NodeIDE/types2/admission8. Same original/identical maps in two co-loaded different JS builds keep runtime anchors separate. Explicit provider/input/DTO/budget/cancel/privacy/unsupported controls; no invocation/values/property/HTTP/renderer claim. Prior .36/.37 and all failed runs preserved; ONE P01 review pending,15/29 complete."
       },
       "completed_slices": [
         {
@@ -2638,6 +2655,42 @@
           "verification": ".artifacts/p01/pure-source/verification.json",
           "next_item": "P01.4b owned bounded source-analysis Worker and transient explicit source-provider product integration; actual two-loaded-bundle and remaining controls, then ONE P01 review",
           "boundary": "Same lexical resolver shared; Node API/hash/Vue and evidence preserved.18new/65focused/1975full PASS,12 exact immutable Node parity cases,105 actual two-host Action/IDE/native/freshness/reader checks. Browser bundle only, not Worker execution/admission/product. Current .35/UI .2 archives unchanged. Original Playwright debugger conflict and two obsolete native-driver assumptions retained as failures, criteria unchanged; P01 open,15/29 complete."
+        },
+        {
+          "id": "P01.4b-owned-source-analysis-worker",
+          "status": "complete-bounded-packed-source-analysis-awaiting-whole-P01-review",
+          "record": "74-p01-owned-source-analysis-worker.md",
+          "implementation_plan": "../superpowers/plans/2026-10-21-p01-pure-source-analysis.md",
+          "candidate": "@stateport/atom@0.1.0-candidate.20261021.38",
+          "superseded_immutable_candidates": [
+            ".20261021.36",
+            ".20261021.37"
+          ],
+          "new_source_tests": 23,
+          "focused_tests": 126,
+          "source_tests": 1998,
+          "node_exact_parity_cases": 12,
+          "actual_HTTP_worker_checks": 6,
+          "actual_packed_source_analysis_checks": 46,
+          "actual_packed_checks_per_host": {
+            "standalone": 22,
+            "embedding": 23
+          },
+          "actual_native_registration_regression": 49,
+          "actual_framework_source_regression": 65,
+          "actual_Node_Action_IDE_regression": 105,
+          "packed_type_consumers": 2,
+          "package_admission": 8,
+          "worker_only_exact_inputs": 172,
+          "common_pure_source_analysis_in_product": true,
+          "source_body_in_default_state_diagnostics_model": false,
+          "renderer_version_attestation": false,
+          "callback_object_identity": "Unknown/Unsupported",
+          "concurrent_harness_failures": "Preserved4/26; cause Unknown; unchanged sequential49/105 controls pass",
+          "full_P01_acceptance": false,
+          "verification": ".artifacts/p01/worker-source/verification38.json",
+          "next_item": "ONE whole-P01 scope/code/evidence review and one bounded fix pass if needed; assess preserved concurrent harness failures without relabelling them passed",
+          "boundary": "Actual current .38/UI .2 source-only lexical context through owned one-shot Worker:1998full/126focused,6HTTPWorker/46packed/49native/65framework/105NodeIDE/types2/admission8. Same original/identical maps in two co-loaded different JS builds keep runtime anchors separate. Explicit provider/input/DTO/budget/cancel/privacy/unsupported controls; no invocation/values/property/HTTP/renderer claim. Prior .36/.37 and all failed runs preserved; ONE P01 review pending,15/29 complete."
         }
       ]
     },
@@ -2670,7 +2723,13 @@
         "validation": "../testing/production-source-mapping.md",
         "reconciliation": "13-scope-reconciliation.md"
       },
-      "remaining_acceptance": "Release-bundle preparation and normal multi-chunk/source workflow with responsive bounded parsing"
+      "remaining_acceptance": "Release-bundle preparation and normal multi-chunk/source workflow with responsive bounded parsing",
+      "credited_p01_source_analysis": {
+        "record": "74-p01-owned-source-analysis-worker.md",
+        "candidate": "@stateport/atom@0.1.0-candidate.20261021.38",
+        "scope": "Owned hard-budget source AST Worker, exact separate dependency gate and transient provider foundation only",
+        "does_not_complete": "Release-bundle preparation/bulk matching, preemptible archive/map parsing, companion sources or registered real-app limit qualification"
+      }
     },
     {
       "id": "P03",

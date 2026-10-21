@@ -7,7 +7,7 @@ export function normalizeActionSourceName(value){
  let result=(absolute?'/':'')+parts.join('/');if(!result)result=absolute?'/':'.';if(trailing&&result!=='/'&&result!=='.')result+='/';return result;
 }
 export function actionImportPath(from,relative){
- if(typeof from!=='string'||typeof relative!=='string'||!relative.startsWith('.'))return null;
+ if(typeof from!=='string'||typeof relative!=='string'||!/^\.\.?\//.test(relative))return null;
  const index=from.lastIndexOf('/'),dir=index<0?'.':index===0?'/':from.slice(0,index);
  return normalizeActionSourceName(dir+'/'+relative);
 }

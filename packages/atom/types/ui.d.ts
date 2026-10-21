@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
 import type {AtomClient} from './transport.js';
 export interface AtomMount {readonly ready:Promise<void>;readonly element:HTMLElement;dispose():Promise<void>|void}
-export interface MountOptions {initialTabId?:number;inputEditorPreview?:boolean;onReconnect?:()=>void|Promise<void>;maxWidth?:string;padding?:string;idPrefix?:string;readerURL?:string;requestOriginPermission?:(origin:string)=>Promise<boolean>}
+export interface MountOptions {initialTabId?:number;inputEditorPreview?:boolean;onReconnect?:()=>void|Promise<void>;maxWidth?:string;padding?:string;idPrefix?:string;readerURL?:string;sourceAnalysisWorkerURL?:string;requestOriginPermission?:(origin:string)=>Promise<boolean>}
 export declare function mountAtom(rootElement:HTMLElement,client:AtomClient,options?:MountOptions):AtomMount;

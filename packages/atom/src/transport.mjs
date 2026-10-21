@@ -50,7 +50,7 @@ export function validateRequest(m){
  if(p.op==='deep-experiment'&&!Array.isArray(p.variants))bad();
  if(p.op==='experiment'&&(!p.field||typeof p.field.url!=='string'||typeof p.field.path!=='string'||typeof p.field.requestId!=='string'||!Array.isArray(p.actions)))bad();
  if(p.op.startsWith('source-map-')&&!['source-map-clear','source-map-anchor'].includes(p.op)&&(typeof p.scriptId!=='string'||p.scriptId.length>128))bad();
- if(p.op==='source-map-anchor'&&(Object.keys(p).some(k=>!['op','tabId','bindingId','snapshotId','contextKey'].includes(k))||typeof p.bindingId!=='string'||!/^(?:native:(?:[0-9]|1[01])|react-host:[01])$/.test(p.bindingId)||typeof p.snapshotId!=='string'||!p.snapshotId||p.snapshotId.length>160||typeof p.contextKey!=='string'||!p.contextKey||p.contextKey.length>2048))bad();
+ if(p.op==='source-map-anchor'&&(Object.keys(p).some(k=>!['op','tabId','bindingId','snapshotId','contextKey','includeAnalysisInput'].includes(k))||Object.hasOwn(p,'includeAnalysisInput')&&typeof p.includeAnalysisInput!=='boolean'||typeof p.bindingId!=='string'||!/^(?:native:(?:[0-9]|1[01])|react-host:[01])$/.test(p.bindingId)||typeof p.snapshotId!=='string'||!p.snapshotId||p.snapshotId.length>160||typeof p.contextKey!=='string'||!p.contextKey||p.contextKey.length>2048))bad();
  if(p.op==='source-map-import'&&(typeof p.name!=='string'||p.name.length>512||typeof p.data!=='string'||p.data.length>11200000||p.data.length%4!==0||/[^A-Za-z0-9+/=]/.test(p.data)))bad();
  if(p.op==='source-map-acquire'&&p.url!==undefined&&(typeof p.url!=='string'||p.url.length>4096))bad();
  if(p.op==='source-map-lookup'&&(!Number.isSafeInteger(p.line)||p.line<1||!Number.isSafeInteger(p.column)||p.column<0))bad();

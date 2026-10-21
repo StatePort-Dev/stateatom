@@ -22,7 +22,8 @@ const runtime = createAtomRuntime(createChromePlatform(chrome, {events, broker})
 import {mountAtom} from '@stateport/atom/ui';
 import {createAtomClient, chromeTransport} from '@stateport/atom/transport';
 const client = createAtomClient(chromeTransport(chrome));
-const view = mountAtom(container, client, {readerURL: '../reader.html'});
+const view = mountAtom(container, client, {readerURL: '../reader.html',
+  sourceAnalysisWorkerURL: chrome.runtime.getURL('source-analysis-worker.js')});
 await view.ready;
 await view.dispose(); // owned picker cleanup, UI requests, DOM, timers and Blob URLs
 client.dispose(); // this client's requests/subscriptions only
@@ -79,8 +80,26 @@ Proxies, ambiguous carriers, wrong host/frame and bound/native functions without
 locations remain unsupported. Root/delegated dispatchers and nearest components
 are not substituted for application callbacks. The read-only source operation
 never calls a handler/getter or the IDE. Other IDE source
-navigation and source-linked analysis require the public open helper. Unknown, Unsupported, Stale and
+navigation and property-linked IDE analysis require the public open helper. Unknown, Unsupported, Stale and
 historical diagnostics keep their original meanings. Export is not a State Card.
+
+An owned extension document may pass `sourceAnalysisWorkerURL` for the exported
+`source-analysis-worker.js` asset copied into its own extension. Both example hosts
+configure this asset. Explicit View requests a transient source set from the current
+map and starts one dedicated module Worker, terminated after completion, cancellation
+or a 1500ms budget. Source text is data; the fixed JS/TS/JSX parser resolves lexical
+names/imports only among included files. Missing Worker/content/unsupported syntax or
+budget exhaustion keeps the preview with an explicit analysis gap. There is no
+main-thread parser, network import, application execution or AI fallback.
+
+The optional source details show the function, possible calls and bounded expression.
+Calls stay Candidate; runtime values, branch choice, invocation, property producer
+and HTTP origin remain unobserved/unknown. An unverified map stays Candidate even
+when lexical structure is readable. Source sets/ASTs are transient, omitted from
+state/diagnostic/model defaults; this does not promise erasure of strings already
+returned to an authorized host. Source-provider digests are not independent artifact
+authenticity. Node uses the same pure resolver with its own digest/Vue adapter; the
+browser Worker does not include the Node wrapper, filesystem or Vue SFC compiler.
 
 Source licenses: historical MIT implementation plus SPDX-marked Apache-2.0 work;
 see LICENSE, NOTICE and LICENSES. The CSS foundation is a separate Apache-2.0 peer.

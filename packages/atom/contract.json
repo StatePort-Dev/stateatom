@@ -21,7 +21,8 @@
   "features": [
     "capability-policy-v1",
     "native-picker-v1",
-    "live-debugger-guardian-v1"
+    "live-debugger-guardian-v1",
+    "source-analysis-worker-v1"
   ],
   "featureDiscovery": {
     "operation": "capabilities",
@@ -46,5 +47,14 @@
       "guardian-worker.js"
     ],
     "scope": "Resource admission and cleanup; not input or execution evidence"
+  },
+  "sourceAnalysis": {
+    "protocolVersion": 1,
+    "assets": [
+      "source-analysis-worker.js"
+    ],
+    "scope": "Explicit transient lexical source context only; no runtime values or execution",
+    "timeBudgetMs": 1500,
+    "resultBytes": 65536
   }
 }

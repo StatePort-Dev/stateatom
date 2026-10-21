@@ -47,6 +47,10 @@ export async function inspectInstalledPair(consumer,expected){
  const peer=createRequire(atom+'/package.json');if(await realpath(peer.resolve('@stateport/extension-ui/contract.json'))!==await realpath(ui+'/contract.json'))throw Error('Multiple UI peer resolutions');
  const required={atom:['runtime','ui','platform','transport','atom.css','content.js','reader.js','reader.html','reader.css','contract.json'],'extension-ui':['tokens.css','components.css','fonts.css','contract.json','assets/fonts/InterVariable.woff2']};
  if(contract.guardian?.protocolVersion===1)required.atom.push(...contract.guardian.assets);
+ if(Array.isArray(contract.features)&&contract.features.includes('source-analysis-worker-v1')){
+  if(contract.sourceAnalysis?.protocolVersion!==1||JSON.stringify(contract.sourceAnalysis.assets)!=='["source-analysis-worker.js"]')throw Error('Invalid source-analysis asset contract');
+  required.atom.push('source-analysis-worker.js');
+ }
  const exported={};
  for(const [name,pkg,dir]of [['atom',atomPkg,atom],['extension-ui',uiPkg,ui]]){
   for(const key of required[name])if(!pkg.exports?.['./'+key])throw Error('Missing export: '+name+'/'+key);

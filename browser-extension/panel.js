@@ -6,5 +6,5 @@ addEventListener('pagehide',()=>{closed=true;void Promise.resolve(view?.dispose(
 // Chrome owns openerTabId. Keep the exact trusted entry URL free of parameters.
 void chrome.tabs.getCurrent().catch(()=>null).then(current=>{
  if(closed)return;
- view=mountAtom(document.getElementById('atom'),client,{idPrefix:'',onReconnect:()=>location.reload(),initialTabId:current?.openerTabId,requestOriginPermission:origin=>chrome.permissions.request({origins:[origin+'/*']})});
+ view=mountAtom(document.getElementById('atom'),client,{idPrefix:'',sourceAnalysisWorkerURL:chrome.runtime.getURL('source-analysis-worker.js'),onReconnect:()=>location.reload(),initialTabId:current?.openerTabId,requestOriginPermission:origin=>chrome.permissions.request({origins:[origin+'/*']})});
 });

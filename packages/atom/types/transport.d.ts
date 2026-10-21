@@ -43,7 +43,7 @@ export type AtomOperation=
  |{op:'source-map-import';tabId:number;scriptId:string;name:string;data:string}
  |{op:'source-map-acquire';tabId:number;scriptId:string;url?:string}
  |{op:'source-map-lookup';tabId:number;scriptId:string;line:number;column:number}
- |{op:'source-map-anchor';tabId:number;bindingId:string;snapshotId:string;contextKey:string}
+ |{op:'source-map-anchor';tabId:number;bindingId:string;snapshotId:string;contextKey:string;includeAnalysisInput?:boolean}
  |{op:'source-map-clear';tabId:number}
  |{op:'detach'|'restore'|'metrics';tabId:number}
  |{op:'pick'|'cancel-pick';tabId:number;pickerId?:string}

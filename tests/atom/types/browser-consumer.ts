@@ -6,7 +6,7 @@ declare const api:ChromeAPI;
 const platform=createChromePlatform(api,{events:createEventHub(),broker:createDebuggerBroker(api.debugger)});
 const runtime=createAtomRuntime(platform);
 const client=createAtomClient(chromeTransport(api));
-const view=mountAtom(document.body,client,{requestOriginPermission:async origin=>origin.startsWith('https://')});
+const view=mountAtom(document.body,client,{sourceAnalysisWorkerURL:'chrome-extension://owned/source-analysis-worker.js',requestOriginPermission:async origin=>origin.startsWith('https://')});
 const policy:Promise<CapabilityDescription>=client.request({op:'capabilities',tabId:1});
 client.request({op:'source-map-lookup',tabId:1,scriptId:'1',line:1,column:0});
 // @ts-expect-error A map lookup requires a generated column.
@@ -80,3 +80,7 @@ client.request({op:'source-map-anchor',tabId:1,bindingId:'native:0',snapshotId:'
 client.request({op:'source-map-anchor',tabId:1,bindingId:'react-host:0',snapshotId:'host-read',contextKey:'context'});
 // @ts-expect-error a current stored snapshot is required for host source reads
 client.request({op:'source-map-anchor',tabId:1,bindingId:'react-host:0',contextKey:'context'});
+
+client.request({op:'source-map-anchor',tabId:1,bindingId:'native:0',snapshotId:'read',contextKey:'context',includeAnalysisInput:true});
+// @ts-expect-error parser input opt-in must be a boolean
+client.request({op:'source-map-anchor',tabId:1,bindingId:'native:0',snapshotId:'read',contextKey:'context',includeAnalysisInput:'true'});

@@ -46,7 +46,7 @@ export function createSourceMapSession({send,fetch,permitted,onChange=()=>{}}){
    if(c.signal.aborted)throw Error('Map acquisition cancelled or timed out');return await install(id,s,r,g,bundles);
   }finally{clearTimeout(timer);s.controllers.delete(c);signal?.removeEventListener('abort',abort);}
  }
- async function lookupAnchor(id,anchor,input,{signal}={}){
+ async function lookupAnchor(id,anchor,input,{signal,includeAnalysisInput=false}={}){
   if(!isCurrentGeneratedAnchor(anchor,input)||anchor.identity.tabId!==id)throw Error('Current native source anchor required');
   const {s,r}=script(id,anchor.generated.scriptId),g=s.generation;
   const check=()=>{if(signal?.aborted)throw Error('Source view cancelled');const maps=snapshot(id);current(id,s,r,g);if(!isCurrentGeneratedAnchor(anchor,input)||!isCurrentGeneratedAnchor(anchor,{context:input.context,binding:input.binding,maps}))throw Error('Stale native source anchor or changed inspection');};
@@ -55,10 +55,12 @@ export function createSourceMapSession({send,fetch,permitted,onChange=()=>{}}){
   if(pos.status==='Unavailable')return{...base,...pos,contentStatus:'Unavailable',excerpt:null,sourceDigest:null};
   let provider;
   try{
-   provider=await createReadOnlySourceProvider(JSON.stringify({schema:'stateatom.readonly-source-files/1',kind:'user-map',ownerDigest:r.map.mapDigest,files:r.parsed.sources.map((source,index)=>({index,source,content:r.parsed.sourcesContent[index]??null}))}),{signal});
+   const serialized=JSON.stringify({schema:'stateatom.readonly-source-files/1',kind:'user-map',ownerDigest:r.map.mapDigest,files:r.parsed.sources.map((source,index)=>({index,source,content:r.parsed.sourcesContent[index]??null}))});
+   provider=await createReadOnlySourceProvider(serialized,{signal});
    check();const descriptor=provider.list().find(f=>f.index===pos.sourceIndex);if(!descriptor)throw Error('Mapped original source index is unavailable');
    const file=provider.read(descriptor.key),excerpt=file.status==='Available'?sourceExcerpt(file.content,pos.line,pos.column):null,invalid=file.status==='Available'&&excerpt===null;
-   check();return{...base,source:pos.source,sourceIndex:pos.sourceIndex,sourceKey:descriptor.key,line:pos.line,column:pos.column,name:pos.name,sourceDigest:file.sourceDigest??null,sourceDigestDomain:file.sourceDigestDomain??null,contentStatus:file.status,excerpt,status:invalid?'Unavailable':r.map.status==='Exact artifact match'?'Code-linked':'Candidate',link:invalid?'not linked to original source content':r.map.status==='Exact artifact match'?(host?'selected own host callback-slot location; renderer/version not attested':'selected native listener registered location'):(host?'selected own host callback-slot location; source mapping unverified; renderer/version not attested':'selected native listener location; source mapping unverified'),reason:invalid?'Mapped position is outside provided source content':file.status==='Unavailable'?'Map lacks source content; position only':r.map.reason};
+   const analysisInput=includeAnalysisInput===true&&!invalid&&file.status==='Available'?{schema:'stateatom.source-analysis-input/1',serialized,point:{file:descriptor.key,line:pos.line,column:pos.column},identity:{run:anchor.identity.run,build:anchor.identity.build}}:null;
+   check();return{...base,source:pos.source,sourceIndex:pos.sourceIndex,sourceKey:descriptor.key,line:pos.line,column:pos.column,name:pos.name,sourceDigest:file.sourceDigest??null,sourceDigestDomain:file.sourceDigestDomain??null,contentStatus:file.status,excerpt,status:invalid?'Unavailable':r.map.status==='Exact artifact match'?'Code-linked':'Candidate',link:invalid?'not linked to original source content':r.map.status==='Exact artifact match'?(host?'selected own host callback-slot location; renderer/version not attested':'selected native listener registered location'):(host?'selected own host callback-slot location; source mapping unverified; renderer/version not attested':'selected native listener location; source mapping unverified'),reason:invalid?'Mapped position is outside provided source content':file.status==='Unavailable'?'Map lacks source content; position only':r.map.reason,...(analysisInput?{analysisInput}:{})};
   }finally{provider?.close();}
  }
  function snapshot(id){const s=tabs.get(id);if(!s)return {status:'Unavailable',scripts:[],history:[],lookup:null};state(id);return {status:s.status,epoch:s.epoch,reason:s.reason,history:s.history,lookup:s.lookup?{scriptId:s.lookup.scriptId,line:s.lookup.line,column:s.lookup.column,originalLine:s.lookup.originalLine,originalColumn:s.lookup.originalColumn,link:'not linked to element'}:null,scripts:[...s.scripts.values()].map(({parsed,bytes,...r})=>({...r}))};}

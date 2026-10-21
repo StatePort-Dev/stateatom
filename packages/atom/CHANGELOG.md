@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.38
+
+- Resolve only explicit ./ or ../ source imports. Dot-prefixed bare names such as
+  .helper cannot borrow an included relative file in either the Node or Worker
+  adapter; unresolved imports remain Unknown.
+- Reject empty query/fragment delimiters on the fixed owned Worker asset URL too.
+  Keep unavailable-analysis copy about the useful source preview, without exposing
+  Worker ownership plumbing in the product message. Layout/tokens remain unchanged.
+
+## 0.1.0-candidate.20261021.37
+
+- Respect hidden source-analysis controls inside the scoped Atom mount. The actual
+  .36 narrow-view RED found Cancel visible after completion because button styling
+  overrode the native hidden rule. Source/parser/worker behavior is unchanged.
+
+## 0.1.0-candidate.20261021.36
+
+- Add an optional fixed, separately bundled source-analysis Worker and host asset
+  configuration. Explicit source views can show lexical function names, included
+  import targets, possible calls and bounded expressions in existing disclosures.
+  Use existing typography/layout/tokens; no shared UI contract or redesign.
+- Keep unverified mapping Candidate, calls possible, and values/branch choice/
+  execution/property/HTTP unknown. Missing/failed/budget-limited analysis keeps the
+  source preview and a visible gap. Cancellation/map changes dispose owned work.
+- Share the pure Node resolver; source input/AST stay transient and outside default
+  diagnostics/models. Worker-only exact dependencies and notices do not expand the
+  normal runtime/UI npm allowlist. No source execution, remote or AI fallback.
+
 ## 0.1.0-candidate.20261021.35
 
 - Add scoped React-compatible own-host callback Connect/View cards through the

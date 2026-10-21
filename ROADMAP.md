@@ -890,3 +890,14 @@ is still preparation:bundle-only evidence does not ship a Worker. Next bounded i
 P01.4b owned Worker/transient explicit source input, actual two-loaded-bundle and
 remaining P01 controls, followed by ONE whole-item review. P01 remains in-progress;
 15/29 complete(~52% equal item count), mandatory L02 and A02 gaps preserved.
+
+### 2026-10-22 — actual shared source analysis in the packed inspector
+
+[P01.4b](docs/completion/74-p01-owned-source-analysis-worker.md):explicit source
+function/import/possible-call context now runs in an owned hard-budget Worker,
+with no source execution or default diagnostic/model body inclusion. Current .38:
+1998source,6actual HTTP Worker/46packed/49native/65framework/105NodeIDE/types2/admission8.
+Same original in two co-loaded builds is checked without conflating shared source
+and runtime identity. Concurrent4/26 failures remain visible; isolated current controls
+pass, cause Unknown. Next ONE whole-P01 review; P01 still in-progress,15/29 complete.
+P02 may reuse this Worker foundation but still needs its own bundle/corpus acceptance.

@@ -91,23 +91,23 @@ returns bounded source-only DTO, never raw AST or source files. Host supplies a
 same-origin owned sourceAnalysisWorkerURL; missing/blocked worker yields a visible
 analysis gap while existing source preview remains. No external fallback/model.
 
-- [ ] RED/GREEN closed source-envelope admission, identity/cancel/after-await checks,
+- [x] RED/GREEN closed source-envelope admission, identity/cancel/after-await checks,
   no default body inclusion or storage/diagnostic/model leak. Position-only content
   has no analysis input. SourceRoot/filename strings cannot fetch or configure code.
-- [ ] RED/GREEN worker protocol/current job ID/output budget, actual source-provider
+- [x] RED/GREEN worker protocol/current job ID/output budget, actual source-provider
   hashing, timeout/cancel/worker crash/wrong reply/dispose; terminate per request.
   Unit fakes cover lifecycle, actual Worker cases cover syntax/inertness/termination.
-- [ ] Same parser/resolver used by Node and worker; prove corresponding source
+- [x] Same parser/resolver used by Node and worker; prove corresponding source
   symbols/import targets/expressions, no observed values/branch winners/HTTP cause.
   AST UI uses existing details/cards/textContent and parent artifact/link status;
   no guessed runtime function identity or Code-linked upgrade of an unverified map.
-- [ ] Add bundled source-analysis-worker.js export/contract asset feature and exact
+- [x] Add bundled source-analysis-worker.js export/contract asset feature and exact
   host copies/typed optional worker URL. Asset admission conditional on feature;
   historical package contracts still admitted under their original criteria.
   Dependency notices/source manifests include worker; runtime/ui stay parser-free.
-- [ ] Full source, actual Node Action regression, new immutable next Atom candidate/
+- [x] Full source, actual Node Action regression, new immutable next Atom candidate/
   UI .2, packed types/admission and both exact hosts. No publication implied.
-- [ ] Actual native/host source view with included helper import, same original file
+- [x] Actual native/host source view with included helper import, same original file
   in TWO co-loaded bundles and exact script/map separation, duplicate source names,
   unverified/positions-only/wrong-map/unsupported point, parsing timeout/cancel while
   UI remains usable, source/tab/map change/clear/dispose. App callbacks/getters/
@@ -122,3 +122,5 @@ Ruling: owned extension-document Worker with fixed parser input, same-origin ass
 and hard termination, rather than parsing private maps synchronously in the service
 worker — preserves UI/cancel and isolates source data — cost if wrong:an explicit
 Unsupported/Budget analysis gap, never a hidden execution or remote fallback.
+
+Current Task2 evidence:completion74, .38/UI .2,1998full/126focused,6HTTP Worker/46packed/49native/65framework/105NodeIDE/types2/admission8. Dot-prefixed bare imports remain Unknown; nested reply bodies/AST reject. Concurrent native group4/26 failures retained, cause Unknown; unchanged sequential controls pass. ONE whole-P01 review still pending; no human recruitment gate.

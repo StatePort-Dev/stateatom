@@ -389,7 +389,7 @@ async function readNativeSource(id,request,signal){
  if(matches.length!==1)throw Error(react?'Current host callback changed or is unavailable; refresh handlers':'Native listener registration changed or is ambiguous; refresh handlers');
  const binding=analysis.actionBindings.find(b=>b.id===matches[0].id),freshInput={context:analysis.actionContext,binding,maps:sourceMaps.snapshot(id)},fresh=factory(freshInput);
  if(fresh.status!=='Observed')throw Error('Current native source anchor unavailable');
- const result=await sourceMaps.lookupAnchor(id,fresh,freshInput,{signal});check();
+ const result=await sourceMaps.lookupAnchor(id,fresh,freshInput,{signal,includeAnalysisInput:request.includeAnalysisInput===true});check();
  if(!analysis.actionBindings.includes(binding)||!isCurrentGeneratedAnchor(fresh,{context:analysis.actionContext,binding,maps:sourceMaps.snapshot(id)}))throw Error('Native source registration changed during read');
  return result;
 }
