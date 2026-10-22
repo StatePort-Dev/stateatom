@@ -3,6 +3,7 @@ import {appOrigin,siteRecord} from './origin-policy.mjs';
 import {retainDiagnostics} from '../../../core/diagnostic.mjs';
 import {DEBUGGER_CAPABILITIES,debuggerCommandCapability,isDevelopmentOrigin,isInspectionOrigin} from './capabilities.mjs';
 import {createGuardianBroker as makeGuardianBroker} from './guardian-broker.mjs';
+import {createSourceParseBroker} from './source-parse-broker.mjs';
 import {createNativeControlOwner as makeControlOwner} from './control-owner.mjs';
 import {createProductionChangeHost} from './production-change-host.mjs';
 export function atomError(code,message=code){return Object.assign(new Error(message),{code});}
@@ -25,7 +26,7 @@ export function createDebuggerBroker(debuggerAPI){
   };
  },status(tabId,owner){const token=leases.get(tabId);return !token?'none':token.owner===owner?'owned':'foreign';},invalidate(tabId){leases.delete(tabId);}};
 }
-export function createGuardianBroker(api,{documentPath}={}){return makeGuardianBroker(api,{...(documentPath?{documentPath}:{}),fallback:()=>createDebuggerBroker(api.debugger)});}
+export function createGuardianBroker(api,{documentPath}={}){const broker=makeGuardianBroker(api,{...(documentPath?{documentPath}:{}),fallback:()=>createDebuggerBroker(api.debugger)}),parser=createSourceParseBroker(api,{...(documentPath?{documentPath}:{}),ready:broker.ready,enabled:()=>broker.workerIndependent===true}),dispose=broker.dispose;broker.sourceParsing=parser;broker.dispose=async()=>{await parser.dispose();await dispose();};return broker;}
 export function createNativeControlOwner(api,options){return makeControlOwner(api.runtime,options);}
 export function createEventHub(){const handlers=new Set();return {subscribe(fn){handlers.add(fn);return()=>handlers.delete(fn);},emit(event){for(const fn of handlers)fn(event);}};}
 export function namespacedStorage(area,namespace='stateport.atom.v1.'){
@@ -94,7 +95,7 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
   debugger:{attach:async({tabId})=>{const l=await lease(tabId);try{await l.attach();await requireLease(tabId,'read');}catch(e){await revoke(tabId);throw e;}},sendCommand:async({tabId},m,p)=>{const cap=commandCapability(m),options={cleanup:['Fetch.disable','Fetch.continueRequest'].includes(m)},l=await requireLease(tabId,cap,options);const result=await l.command(m,p,()=>requireLease(tabId,cap,options));try{await requireLease(tabId,cap,options);}catch(e){e.nativeMayHaveApplied=true;throw e;}return result;},getTargets:()=>api.debugger.getTargets(),detach:async({tabId})=>{await productionHost.revoke(tabId,'debugger-detached');return revoke(tabId);}},
   scripting:{executeScript:async op=>{const l=await lease(op.target.tabId);l.assert('inject');const result=await api.scripting.executeScript(op);await requireLease(op.target.tabId,'inject');return result;}},
   tabs:{get:id=>api.tabs.get(id),query:q=>api.tabs.query(q),reload:async(id,o)=>{await requireLease(id,'reload');return api.tabs.reload(id,o);},sendMessage:async(id,m)=>{(await lease(id)).assert('read');return api.tabs.sendMessage(id,m);},onUpdated:api.tabs.onUpdated}};
- return {ready,approvedSite,productionChanges:{available:productionHost.available,transition:productionHost.transition,cancel:productionHost.cancel,close:productionHost.close,revoke:productionHost.revoke},get nativeControlsAvailable(){return controlOwner?.available===true&&typeof api.scripting?.executeScript==='function';},
+ return {ready,approvedSite,get sourceParsingAvailable(){return broker.sourceParsing?.configured===true;},parseSourceArtifact:(operation,bytes,options)=>broker.sourceParsing?.run(operation,bytes,options)??Promise.reject(atomError('SOURCE_PARSE_UNAVAILABLE','Source artifact parsing unavailable')),productionChanges:{available:productionHost.available,transition:productionHost.transition,cancel:productionHost.cancel,close:productionHost.close,revoke:productionHost.revoke},get nativeControlsAvailable(){return controlOwner?.available===true&&typeof api.scripting?.executeScript==='function';},
   async openNativeControls({target,verify,onLost=()=>{}}={}){
    if(controlOwner?.available!==true||typeof api.scripting?.executeScript!=='function')throw atomError('CONTROL_OWNER_UNAVAILABLE');
    if(!target||typeof verify!=='function'||typeof onLost!=='function')throw atomError('INVALID_PLATFORM');
@@ -121,9 +122,14 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
   },async forgetSite(id){const origin=appOrigin((await api.tabs.get(id)).url);connections.delete(origin);await persistConnections();await revoke(id);},
   async describeTarget(id){
    const f=await facts(id),entry=leases.get(id);
-   if(entry){try{await check(id,entry);}catch{/* Revocation closes the old lease. */}}
+   if(entry){try{await check(id,entry);}catch(error){
+    // A recovered host broker can already report none/foreign while this
+    // platform still holds its expired local object. Retire that reference;
+    // it cannot authorize native cleanup or block the next explicit attach.
+    if(error?.code==='LEASE_EXPIRED'&&leases.get(id)===entry)leases.delete(id);
+   }}
    let status=broker.status?.(id,'atom')||'unknown';if(!leases.has(id)&&status==='owned')status='foreign';
-   return {...f,readOnlySites:readOnlySites===true,lease:status,disposed:stopped,workerIndependent:broker.workerIndependent===true};
+   return {...f,sourceParsingAvailable:broker.sourceParsing?.configured===true,readOnlySites:readOnlySites===true,lease:status,disposed:stopped,workerIndependent:broker.workerIndependent===true};
   },permittedOrigin:permission,owns:id=>leases.has(id),chrome,fetch:(...args)=>fetch(...args),events,
   async authorize(id,cap){await lease(id);await requireLease(id,cap);},
   async invalidate(id){await productionHost.revoke(id,'context-changed');await revoke(id);},

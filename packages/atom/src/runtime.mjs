@@ -24,7 +24,7 @@ import {validateRequest} from './transport.mjs';
 import {describeCapabilities,operationPolicy,isDevelopmentOrigin,isInspectionOrigin,isBridgeURL} from './capabilities.mjs';
 export function createAtomRuntime(platform, options={}) {
 const chrome=platform.chrome,fetch=platform.fetch;
-const sourceMaps=createSourceMapSession({onChange:id=>notifyInvalidation(id),send:(id,m,p)=>chrome.debugger.sendCommand({tabId:id},m,p),fetch,permitted:origin=>platform.permittedOrigin?.(origin)??Promise.resolve(false)});
+const sourceMaps=createSourceMapSession({onChange:id=>notifyInvalidation(id),send:(id,m,p)=>chrome.debugger.sendCommand({tabId:id},m,p),fetch,permitted:origin=>platform.permittedOrigin?.(origin)??Promise.resolve(false),processArtifact:(...args)=>{if(typeof platform.parseSourceArtifact!=='function')throw atomError('SOURCE_PARSE_UNAVAILABLE','Source artifact parsing unavailable');return platform.parseSourceArtifact(...args);}});
 const synthetic=isDevelopmentOrigin;
 const nativeDOM=createNativeDOMQueue(),engine=createBrowserEngine(chrome);
 const {observeDeep,deepExperiment}=engine;
@@ -109,7 +109,7 @@ async function capabilityContext(id,request={},inputContext=null){
  const analysis=codeAnalysis(s);
  return {...target,readOnlySites:options.readOnlySites===true&&target.readOnlySites===true,disposed:stopped||target.disposed===true,
   attached:s.attached===true&&target.lease==='owned',readOnly:target.readOnly===true||(s.attached&&s.readOnly===true),requestReadOnly:request.readOnly===true,
-  sourceConnected:!!pairing&&pairing.origin===new URL(target.url||'about:blank').origin,hasSelection:!!s.selection,hasHistoricalTarget:!!s.stale?.target,hasAnalysis:!!s.analysis,
+  sourceConnected:!!pairing&&pairing.origin===new URL(target.url||'about:blank').origin,sourceParser:target.sourceParsingAvailable??typeof platform.parseSourceArtifact==='function',hasSelection:!!s.selection,hasHistoricalTarget:!!s.stale?.target,hasAnalysis:!!s.analysis,
   controlledProfile:!!s.analysis?.stateatom?.firstReadProfile,actionInspector:!!inputContext?.inspector?.active&&inspectorClients.get(inputContext.session)===inputContext.inspector,foreignActionTrace:!!actionOwners.get(id)&&(!inputContext||actionOwners.get(id).session!==inputContext.session||actionOwners.get(id).client!==inputContext.inspector||inputContext.ownerId!==null&&actionOwners.get(id).ownerId!==inputContext.ownerId),actionTraceReady:s.selection?.trace?.actionTrace?.availability?.available===true||!!s.actionTrace&&!s.actionTrace.freshness,
   foreignInputEditor:!!inputContext&&!!editors.get(id)&&!editors.get(id).snapshot().closed&&!sameInputOwner(id,inputContext),
   hasInputEditor:!!editors.get(id)&&!editors.get(id).snapshot().closed,inputEditorBusy:!!editors.get(id)&&(!editors.get(id).snapshot().closed||['active','unknown'].includes(editors.get(id).snapshot().cleanup)),

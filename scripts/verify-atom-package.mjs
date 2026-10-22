@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import {readFile,writeFile,mkdir,mkdtemp,cp,rm} from 'node:fs/promises';
 import {inspectInstalledPair,verifyArtifactHashes,fileManifest,sha256} from './atom-package-receipt.mjs';
 import {root} from './vite-config.mjs';
+import {assertSourceParseInputs} from './atom-source-parse-inputs.mjs';
 import {assertSourceAnalysisInputs} from './atom-source-analysis-inputs.mjs';
 import {disallowedBrowserInputs} from './atom-browser-inputs.mjs';
 const handoffFile=process.argv[2]||root+'/.artifacts/atom/atom-handoff.json',h=JSON.parse(await readFile(handoffFile));
@@ -17,6 +18,7 @@ try{
   assert.deepEqual(disallowedBrowserInputs(JSON.parse(await readFile(h.consumer+'/node_modules/@stateport/atom/dist/browser-inputs.json')).flat()),[]);
   for(const kind of ['standalone','embedding'])assert.equal(sha256(await readFile(h.hosts[kind]+'/source-analysis-worker.js')),h.consumerReceipt.files['@stateport/atom/dist/source-analysis-worker.js']);
  }
+ if(h.contract.features?.includes('source-parser-worker-v1')){assertSourceParseInputs(JSON.parse(await readFile(h.consumer+'/node_modules/@stateport/atom/dist/source-parse-worker-inputs.json')));for(const kind of['standalone','embedding'])assert.equal(sha256(await readFile(h.hosts[kind]+'/source-parse-worker.js')),h.consumerReceipt.files['@stateport/atom/dist/source-parse-worker.js']);}
  for(const kind of ['standalone','embedding']){assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);assert.equal(sha256(await readFile(h.hosts[kind]+'/atom-licenses/THIRD_PARTY_LICENSES.md')),h.consumerReceipt.files['@stateport/atom/dist/THIRD_PARTY_LICENSES.md']);}
  for(const file of ['packages/extension-ui/LICENSE','packages/extension-ui/NOTICE','scripts/atom-browser-inputs.mjs'])assert(h.buildSources.manifest[file],file);
  assert.equal(sha256(JSON.stringify(h.buildSources.manifest)),h.buildSources.sha256);
@@ -28,7 +30,8 @@ try{
   ['missing declared export',async a=>{const p=JSON.parse(await readFile(a+'/package.json'));delete p.exports['./reader.js'];await writeFile(a+'/package.json',JSON.stringify(p));},/export/],
   ['missing font asset',async(a,u)=>{const p=JSON.parse(await readFile(u+'/package.json'));await rm(u+'/'+p.exports['./assets/fonts/InterVariable.woff2']);},/ENOENT|Cannot find module/],
   ['stale declarations',a=>writeFile(a+'/dist/runtime.d.ts','export {};'),/digest/],
-  ...(h.contract.features?.includes('source-analysis-worker-v1')?[['missing source analysis worker',a=>rm(a+'/dist/source-analysis-worker.js'),/ENOENT|Cannot find module/]]:[])
+  ...(h.contract.features?.includes('source-analysis-worker-v1')?[['missing source analysis worker',a=>rm(a+'/dist/source-analysis-worker.js'),/ENOENT|Cannot find module/]]:[]),
+  ...(h.contract.features?.includes('source-parser-worker-v1')?[['missing source parser worker',a=>rm(a+'/dist/source-parse-worker.js'),/ENOENT|Cannot find module/]]:[])
  ]){
   const temp=await mkdtemp('/tmp/atom-negative-consumer-'),a=temp+'/node_modules/@stateport/atom',u=temp+'/node_modules/@stateport/extension-ui';
   try{await mkdir(temp+'/node_modules/@stateport',{recursive:true});await writeFile(temp+'/package.json','{"private":true}');await cp(h.consumer+'/node_modules/@stateport/atom',a,{recursive:true});await cp(h.consumer+'/node_modules/@stateport/extension-ui',u,{recursive:true});await mutate(a,u);await assert.rejects(inspectInstalledPair(temp,h.consumerReceipt),pattern);result.checks.push({name:'Refuse '+name,status:'PASS'});}finally{await rm(temp,{recursive:true,force:true});}

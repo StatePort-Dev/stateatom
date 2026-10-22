@@ -69,8 +69,9 @@ cancellation removes private staging and leaves no final output. After that comm
 point, the complete artifact is retained. `cleanup.status: Unavailable` explicitly
 reports a private staging directory name/code if its removal failed; it does not
 undo a completed final file or promise erasure after an OS/process crash.
-Source parsing preemption in the inspector is a
-separate P02 deliverable.
+The installed inspector uses a fixed owned parser Worker for map/ZIP work on
+candidate `.20261021.43`; preparation in this Node command remains a separate
+cooperatively cancelled local process.
 
 In Atom, select the real supported element, choose its native/own-host callback's
 Connect source map action, import the ZIP once, then View source. The connection
@@ -91,8 +92,14 @@ expiry and runtime restart drop the connection; reconnect explicitly afterward.
 
 [P02.2 evidence](completion/77-p02-single-release-connection.md) establishes this
 finite native/own-host flow on synthetic minified chunks in both exact hosts.
-Independent real-app qualification, companion source files, preemptible inspector
-archive/map parsing and full P02 acceptance remain open.
+[P02.3b evidence](completion/79-p02-mv3-source-parser.md) establishes fixed one-shot
+parser Workers through the exact host-owned offscreen document. Maps retain1.5s,
+ZIPs2s, at most2 jobs and the same artifact/cache bounds. A missing service gives
+an explicit source gap. Clear/navigation/restart cancels work; after offscreen
+loss explicitly Attach/import again, and after service-worker restart reopen the
+inspector before doing so. Sources and permissions are not silently restored.
+Independent real-app qualification, companion source files and full P02 acceptance
+remain open.
 
 Node filesystem/compression APIs were checked against the primary
 [Node24 filesystem](https://nodejs.org/docs/latest-v24.x/api/fs.html) and

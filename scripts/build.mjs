@@ -20,6 +20,7 @@ for(const name of ['manifest.json','panel.html','panel.css','reader.html','reade
 await copyFile(root+'/packages/atom/dist/content.js',root+'/dist/browser/content.js');
 for(const f of ['atom-guardian.html','atom-guardian.js','atom-guardian-worker.js'])await copyFile(root+'/packages/atom/dist/'+f,root+'/dist/browser/'+f);
 await copyFile(root+'/packages/atom/dist/source-analysis-worker.js',root+'/dist/browser/source-analysis-worker.js');
+await copyFile(root+'/packages/atom/dist/source-parse-worker.js',root+'/dist/browser/source-parse-worker.js');
 await build({entryPoints:[root+'/browser-extension/worker.js'],bundle:true,format:'esm',platform:'browser',outfile:root+'/dist/browser/worker.js'});
 await build({entryPoints:[root+'/browser-extension/panel.js'],bundle:true,format:'esm',platform:'browser',outfile:root+'/dist/browser/panel.js'});
 await build({entryPoints:[root+'/browser-extension/reader.mjs'],bundle:true,format:'iife',platform:'browser',outfile:root+'/dist/browser/reader.js'});

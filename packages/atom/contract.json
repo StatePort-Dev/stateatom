@@ -22,7 +22,8 @@
     "capability-policy-v1",
     "native-picker-v1",
     "live-debugger-guardian-v1",
-    "source-analysis-worker-v1"
+    "source-analysis-worker-v1",
+    "source-parser-worker-v1"
   ],
   "featureDiscovery": {
     "operation": "capabilities",
@@ -56,5 +57,16 @@
     "scope": "Explicit transient lexical source context only; no runtime values or execution",
     "timeBudgetMs": 1500,
     "resultBytes": 65536
+  },
+  "sourceParser": {
+    "protocolVersion": 1,
+    "assets": [
+      "source-parse-worker.js"
+    ],
+    "scope": "Private session-only artifact parsing in the owned offscreen document; no source execution or public validated-map input",
+    "mapTimeBudgetMs": 1500,
+    "archiveTimeBudgetMs": 2000,
+    "maxConcurrentJobs": 2,
+    "transportBytes": 33554432
   }
 }

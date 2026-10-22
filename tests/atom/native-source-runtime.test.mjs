@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {runSourceParseJob} from '../../core/source-parse-job.mjs';
 import {createAtomRuntime} from '../../packages/atom/src/runtime.mjs';
 import {createNativeSourceAnchor,createReactHostSourceAnchor} from '../../core/source-anchor.mjs';
 import {sourceAnchorFixture,reactAnchorFixture} from '../helpers/source-anchor-fixture.mjs';
@@ -21,7 +22,7 @@ test('native source request rejects client coordinates, source text and anchor o
  for(const bindingId of['react-host:0','react-host:1'])assert.equal(validateRequest(envelope({...p,bindingId})).payload.bindingId,bindingId);
  for(const patch of[{scriptId:'9'},{line:1},{column:0},{source:'private'},{anchor:{}},{bindingId:'action:0'},{bindingId:'native:12'},{bindingId:'react-host:2'},{snapshotId:''},{contextKey:''}])assert.throws(()=>validateRequest(envelope({...p,...patch})),{code:'INVALID_MESSAGE'});
 });
-async function fixture(t,{listeners,marker='occurrence:1',pause,react=false,frameworkProps,frameworkHost=109,frameworkPause,frameworkPosition=()=>({scriptId:'9',lineNumber:0,columnNumber:3}),scriptSources}={}){
+async function fixture(t,{listeners,marker='occurrence:1',pause,react=false,frameworkProps,frameworkHost=109,frameworkPause,frameworkPosition=()=>({scriptId:'9',lineNumber:0,columnNumber:3}),scriptSources,withoutParser=false}={}){
  const calls=[],stored={},s={requests:[],pending:{},samples:[],sampleEntries:{},events:[],run:'run',attached:false};let notify;
  const area={get:async()=>({tabs:{7:s}}),set:async v=>Object.assign(stored,v)};
  const chrome={storage:{session:area,local:{get:async()=>({}),set:async()=>{}}},runtime:{sendMessage:async()=>{}},tabs:{get:async()=>({url:'https://app.invalid/'})},debugger:{attach:async()=>{},detach:async()=>{},sendCommand:async(_,method,p)=>{
@@ -42,6 +43,8 @@ async function fixture(t,{listeners,marker='occurrence:1',pause,react=false,fram
   return{};
  }},scripting:{executeScript:async()=>{throw Error('Application injection forbidden in source read');}}};
  const platform={chrome,ready:Promise.resolve(),fetch:()=>{throw Error('IDE/network forbidden');},events:{subscribe(fn){notify=fn;return()=>{};}},authorize:async(_,grant)=>{calls.push('grant:'+grant);},owns:()=>true,describeTarget:async()=>({url:'https://app.invalid/',permission:true,readOnlySites:true,grants:['read','inject'],lease:s.attached?'owned':'none'}),shutdown:async()=>{}};
+ // Explicit in-process boundary model only; actual owned Worker is a separate gate.
+ if(!withoutParser)platform.parseSourceArtifact=(operation,bytes)=>runSourceParseJob({operation,bytes});
  const runtime=createAtomRuntime(platform,{readOnlySites:true});t.after(()=>runtime.shutdown());await runtime.ready;
  const call=p=>runtime.request(envelope({tabId:7,...p}));await call({op:'attach',readOnly:true});
  const input=react?reactAnchorFixture():sourceAnchorFixture();Object.assign(s,{stale:null,analysisAt:Date.now(),inspectionGeneration:1,sourceGeneration:0,selection:{selector:'#target',property:'text',value:'Confirm',instance:'occurrence:1',observedAt:100,domIdentity:{document:'cdp:101',node:'cdp:109'}},analysis:{graph:{identity:input.context,nodes:[],edges:[]},actionContext:input.context,actionBindings:react?[{...sourceAnchorFixture().binding,capture:false,passive:false,once:false},input.binding]:[{...input.binding,capture:false,passive:false,once:false}]}});
@@ -50,7 +53,7 @@ async function fixture(t,{listeners,marker='occurrence:1',pause,react=false,fram
  await event('Debugger.scriptParsed',{scriptId:'9',executionContextId:3,url:'https://app.invalid/app.js',hash:'a'.repeat(64),startLine:0,startColumn:0,endLine:0,endColumn:22,length:22});
  // The fixture supplies native context/registration only. It does not establish a real browser anchor.
  s.sourceGeneration=0;s.analysis.actionsInvalidated=false;
- await call({op:'source-map-import',scriptId:'9',name:'app.map',data:btoa(JSON.stringify({version:3,sources:['private.ts'],names:[],mappings:'AAAA',sourcesContent:['const PRIVATE_SOURCE = 1;']}))});
+ if(!withoutParser)await call({op:'source-map-import',scriptId:'9',name:'app.map',data:btoa(JSON.stringify({version:3,sources:['private.ts'],names:[],mappings:'AAAA',sourcesContent:['const PRIVATE_SOURCE = 1;']}))});
  const view=await call({op:'state',refreshDeep:false}),anchor=(react?createReactHostSourceAnchor:createNativeSourceAnchor)({context:view.analysis.actionContext,binding:view.analysis.actionBindings.find(b=>b.id===input.binding.id),maps:view.sourceMaps});assert.equal(anchor.status,'Observed');
  const request={op:'source-map-anchor',bindingId:input.binding.id,snapshotId:anchor.acquisition.snapshotId,contextKey:JSON.stringify(anchor.identity)};calls.length=0;
  return{call,calls,s,request,stored,event};
@@ -86,3 +89,6 @@ test('runtime lazily matches the second chunk only after private native or own-h
   const r=await f.call({op:'source-map-anchor',bindingId:binding.id,snapshotId:current.acquisition.snapshotId,contextKey:JSON.stringify(current.identity)});assert.equal(r.status,'Code-linked');assert.equal(r.excerpt,'SECOND_INCLUDED');assert.equal(r.anchor.generated.scriptId,'10');assert.equal(f.calls.filter(c=>c==='Debugger.getScriptSource').length,1);assert(f.calls.indexOf(react?'Runtime.getProperties':'DOMDebugger.getEventListeners')<f.calls.indexOf('Debugger.getScriptSource'));assert(!f.calls.includes('Runtime.callFunctionOn'));assert(!JSON.stringify(f.stored).includes('SECOND_INCLUDED'));assert(!JSON.stringify(await f.call({op:'save-diagnostic'})).includes('SECOND_INCLUDED'));
  }
 });
+
+test('runtime without a host parser refuses source import rather than parsing synchronously',async t=>{const f=await fixture(t,{withoutParser:true});await assert.rejects(f.call({op:'source-map-import',scriptId:'9',name:'app.map',data:btoa(JSON.stringify({version:3,sources:['private.ts'],names:[],mappings:'AAAA',sourcesContent:['PRIVATE_SOURCE']}))}),e=>e.code==='CAPABILITY_UNAVAILABLE');assert(!f.calls.includes('Debugger.getScriptSource'));assert(!JSON.stringify(f.stored).includes('PRIVATE_SOURCE'));});
+test('source-parser absence leaves Clear/local state available but refuses source operations with an explicit gap',()=>{const c={url:'https://app.invalid/',readOnlySites:true,permission:true,grants:['read'],lease:'owned',attached:true,hasSelection:true,hasAnalysis:true,sourceParser:false};for(const op of['source-map-import','source-map-acquire','source-map-lookup','source-map-anchor'])assert.equal(operationPolicy(op,c).code,'CAPABILITY_UNAVAILABLE');assert.equal(operationPolicy('source-map-clear',c).available,true);assert.equal(operationPolicy('state',c).available,true);});

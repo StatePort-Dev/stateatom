@@ -1652,3 +1652,18 @@ the new modules are unbundled/uninstalled, not product preemption. Next P02.3b
 trusted offscreen source channel and existing session integration with actual packed
 two-host lifecycle. P02/companions/real-app/indexed qualification/ONE whole review
 remain open;16/29 full items. No SDK, UI redesign, publication or other repository.
+
+### 2026-10-22 — P02.3b installed preemptible source parsing
+
+[P02.3b](completion/79-p02-mv3-source-parser.md) completes the bounded owned offscreen source channel and actual
+fixed parser asset on Atom`.20261021.43`/UI`.20261018.2`:2093source/86actual two-host
+parser/49native/65own-host/types2/admission9 PASS, buildPASS. Actual parse-start
+Clear/navigation/service-worker stop/document loss cancel work; explicit fresh
+reconnect succeeds and foreign debugger ownership remains BUSY. Same1500/2000ms,
+4/8/16MiB artifact and8MiB cache bounds; max2jobs, no sync product fallback.
+Failed .41/.42 runs and targeted RED/GREEN corrections remain historical.
+Aggregate`.artifacts/p02/parser-mv3/verification43.json`; screenshots candidates.
+No zero parent CPU/total heap/HTTPS/real-app/SDK/publication/other-repository claim.
+Next P02.4 explicit bounded local companions for missing sourcesContent; then
+registered real-app/indexed limits and ONE whole-P02 review.16/29 full items
+(~55% equal count) unchanged; L02 quality/A02 and release-wide gates remain open.

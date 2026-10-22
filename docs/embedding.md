@@ -372,3 +372,35 @@ Source sets/AST stay transient and outside default state/diagnostic/model persis
 This does not erase strings already returned to an authorized host or independently
 authenticate a user-provided manifest/source map. Browser bundle success alone is
 not native product acceptance; see the current completion evidence for actual runs.
+
+### Owned source-artifact parser asset (candidate .20261021.43)
+
+The two supplied hosts use the existing `createGuardianBroker` offscreen document
+for a separate private source-parsing channel. Copy
+`@stateport/atom/source-parse-worker.js` unchanged beside `atom-guardian.html` as
+`source-parse-worker.js`. Keep the existing `offscreen` permission and exact owned
+host/document identity. Source payloads never use the debugger registry protocol.
+The plain debugger broker still permits supported inspection; source exploration
+requires a configured host parser and reports an explicit gap when absent.
+The product has no synchronous source-artifact parser fallback.
+
+Feature `source-parser-worker-v1` declares this exact asset, its eight-input gate,
+map/manifest1500ms and ZIP2000ms parent budgets, at most2 live jobs and32MiB private
+transport ceiling. Existing4/8/16MiB artifact and8MiB cache-input limits remain.
+Binary pooling preserves shared map references without widening memory limits;
+message serialization and decoded lookup hydration still cost bounded parent CPU.
+No app code/URL/sourceRoot is executed or followed. Clear/replacement/navigation/
+expiry/detach/runtime shutdown abort this runtime's own jobs. The shared host owns
+the source broker; only disposing that host broker closes the whole source port.
+Worker/port loss invalidates pending results and does not resurrect a source index
+from storage. API/wire1/UI2.1 stay; decoded source data is never a public Atom input.
+See the scoped [execution record](completion/79-p02-mv3-source-parser.md) for current
+validation; this contract description alone is not actual MV3 or full P02 proof.
+
+The private host challenge supplies its exact manifest background script URL.
+Offscreen documents do not call getContexts/getManifest; their runtime API subset
+is narrower. Context identity is verified by the service worker before the challenge,
+and the offscreen document checks the URL belongs to the same extension. A wake
+cannot substitute a visible page for that host. Pending source UI requests have a
+separate generation:Clear/replacement invalidate late file/permission/RPC replies
+before a metadata refresh, while current failures remain visible.

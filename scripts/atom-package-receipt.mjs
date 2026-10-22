@@ -51,6 +51,7 @@ export async function inspectInstalledPair(consumer,expected){
   if(contract.sourceAnalysis?.protocolVersion!==1||JSON.stringify(contract.sourceAnalysis.assets)!=='["source-analysis-worker.js"]')throw Error('Invalid source-analysis asset contract');
   required.atom.push('source-analysis-worker.js');
  }
+ if(contract.features?.includes('source-parser-worker-v1')){if(contract.sourceParser?.protocolVersion!==1||JSON.stringify(contract.sourceParser.assets)!=='[\"source-parse-worker.js\"]')throw Error('Invalid source-parser asset contract');required.atom.push('source-parse-worker.js');}
  const exported={};
  for(const [name,pkg,dir]of [['atom',atomPkg,atom],['extension-ui',uiPkg,ui]]){
   for(const key of required[name])if(!pkg.exports?.['./'+key])throw Error('Missing export: '+name+'/'+key);

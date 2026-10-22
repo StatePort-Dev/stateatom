@@ -65,6 +65,7 @@ export function operationPolicy(op,c={}){
  if(['inputs-apply','inputs-undo','inputs-baseline','inputs-read'].includes(op)&&!c.hasInputEditor)return deny('OBSERVATION_REQUIRED','Open the current target input editor first',required);
  if(['deep-experiment','experiment'].includes(op)&&(!c.hasSelection||!c.hasAnalysis||c.stale))return deny('OBSERVATION_REQUIRED','Current attached inspection required; inspect again',required);
  if(op==='source-map-anchor'&&(!c.hasSelection||!c.hasAnalysis||c.stale))return deny('OBSERVATION_REQUIRED','Current attached inspection required; inspect again',required);
+ if(op.startsWith('source-map-')&&c.sourceParser===false)return deny('CAPABILITY_UNAVAILABLE','Source exploration is unavailable in this host',required);
  if(op==='restore'&&!c.hasSelection&&!c.hasHistoricalTarget)return deny('OBSERVATION_REQUIRED','Inspect a target before restoring an investigation baseline',required);
  if(op==='experiment'&&(c.property!=='text'||!c.hasResponseFields))return deny('UNSUPPORTED_INPUT','Select a supported observed text response field first',required);
  return allow(required);

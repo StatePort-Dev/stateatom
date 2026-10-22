@@ -5,12 +5,14 @@ import {mkdir,copyFile,writeFile,readFile} from 'node:fs/promises';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {root} from './vite-config.mjs';
+import {assertSourceParseInputs} from './atom-source-parse-inputs.mjs';
 import {assertSourceAnalysisInputs} from './atom-source-analysis-inputs.mjs';
 export async function buildAtom(){
  const dir=root+'/packages/atom';await mkdir(dir+'/dist',{recursive:true});
  const results=[];
  for(const entry of ['runtime','ui','platform','transport'])results.push(await build({entryPoints:[dir+'/src/'+entry+'.mjs'],bundle:true,metafile:true,format:'esm',platform:'browser',outfile:dir+'/dist/'+entry+'.mjs'}));
  for(const [entry,out]of [['guardian-entry','atom-guardian.js'],['guardian-worker','atom-guardian-worker.js']])results.push(await build({entryPoints:[dir+'/src/'+entry+'.mjs'],bundle:true,metafile:true,format:'esm',platform:'browser',outfile:dir+'/dist/'+out}));
+ const parserWorker=await build({entryPoints:[dir+'/src/source-parse-worker.mjs'],bundle:true,metafile:true,format:'esm',platform:'browser',outfile:dir+'/dist/source-parse-worker.js'});assertSourceParseInputs(Object.keys(parserWorker.metafile.inputs));results.push(parserWorker);await writeFile(dir+'/dist/source-parse-worker-inputs.json',JSON.stringify(Object.keys(parserWorker.metafile.inputs),null,2));
  const sourceWorker=await build({entryPoints:[dir+'/src/source-analysis-worker.mjs'],bundle:true,metafile:true,format:'esm',platform:'browser',define:{'process.env.BABEL_TYPES_8_BREAKING':'false'},outfile:dir+'/dist/source-analysis-worker.js'});
  assertSourceAnalysisInputs(Object.keys(sourceWorker.metafile.inputs));
  await writeFile(dir+'/dist/source-analysis-worker-inputs.json',JSON.stringify(Object.keys(sourceWorker.metafile.inputs),null,2));

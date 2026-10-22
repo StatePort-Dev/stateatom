@@ -1,6 +1,6 @@
 {
   "name": "@stateport/atom",
-  "version": "0.1.0-candidate.20261021.40",
+  "version": "0.1.0-candidate.20261021.43",
   "type": "module",
   "description": "Embeddable StateAtom browser runtime and inspector",
   "license": "(MIT AND Apache-2.0)",
@@ -39,7 +39,8 @@
     "./guardian.html": "./dist/atom-guardian.html",
     "./guardian.js": "./dist/atom-guardian.js",
     "./guardian-worker.js": "./dist/atom-guardian-worker.js",
-    "./source-analysis-worker.js": "./dist/source-analysis-worker.js"
+    "./source-analysis-worker.js": "./dist/source-analysis-worker.js",
+    "./source-parse-worker.js": "./dist/source-parse-worker.js"
   },
   "peerDependencies": {
     "@stateport/extension-ui": "0.2.0-candidate.20261018.2"

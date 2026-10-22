@@ -76,6 +76,28 @@ release label. JS bodies are discarded after verification; raw map index and uni
 parsed-map inputs share the existing8MiB cache budget. Cold maps are reparsed on
 explicit use. Missing/ambiguous/mixed-release cases remain explicit. Clear source
 connection, navigation, expiry and detach release index/maps; no persistence is added.
+
+Artifact parsing uses the host's owned offscreen document and the exported
+`source-parse-worker.js` asset copied beside `atom-guardian.html`. The examples
+supply this via `createGuardianBroker`; the plain debugger broker still supports
+other inspection but reports source exploration unavailable. Do not provide a
+caller-decoded map on the Atom wire. Each private job uses a fixed local Worker,
+existing1500ms map/manifest or2000ms ZIP budget, and termination on cancel/budget.
+At most2 jobs run together. Source payloads use a separate bounded channel; they
+never enter debugger registry messages or persistence. Shared raw binary objects
+are transferred once within a32MiB transport message; existing4/8/16MiB artifact
+limits and8MiB cache input accounting still apply. This is not a total heap or
+zero serialization/hydration CPU claim. Clear/replacement/nav/expiry/detach/dispose
+cancel pending import/acquisition/lazy parse work. Obsolete file-read/permission/RPC
+replies cannot reconnect a cleared view or replace its completed status; active
+validation/permission failures still surface. The exact host script URL comes
+from the verified private challenge, without requiring offscreen getManifest. Unsupported offscreen hosts do
+not fall back to synchronous parsing. This asset/feature is additive to API/wire1;
+no extra app mutation grant is needed for source exploration. After offscreen loss,
+explicitly attach and import again. Reopening the inspector is also required after
+a service-worker restart; source connections and inspector authority are not restored
+from a previous runtime.
+
 An exact artifact links the registered location only; invocation, callback identity
 and the selected property's producer remain unproved. Unverified maps stay Candidate;
 maps without source content provide positions only. A finite React-compatible
@@ -195,7 +217,8 @@ keeping the exact trusted inspector URL unchanged.
 The local standalone and embedding examples use `createGuardianBroker(chrome)`
 in place of `createDebuggerBroker(chrome.debugger)`, shared by all host consumers.
 The host declares `offscreen` and copies the package exports `guardian.html`,
-`guardian.js` and `guardian-worker.js` as `atom-guardian.*` at its extension root.
+`guardian.js` and `guardian-worker.js` as `atom-guardian.*` at its extension root;
+source exploration additionally copies `source-parse-worker.js` unchanged beside them.
 The optional `documentPath` must point to that exact bundled document. The shared
 platform waits for `broker.ready`; the old in-memory broker remains available for
 hosts that cannot supply the guardian. Existing unrelated offscreen documents

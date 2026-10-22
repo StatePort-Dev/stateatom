@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.43
+
+- Retire a confirmed expired local debugger lease reference when the host broker
+  recovers after offscreen loss. A fresh explicit Attach can acquire its new lease;
+  a replacement foreign owner stays BUSY. Metadata retirement invokes no stale
+  native release and leaves unknown errors/ownership unavailable.
+- Preserve the .42 native stale-lease failure and explicit old-inspector refusal;
+  inspector sessions still require an explicit reopen after service-worker restart.
+
+## 0.1.0-candidate.20261021.42
+
+- Ignore obsolete import, acquisition and advanced lookup errors after Clear,
+  replacement or view/context change. A delayed file read or permission reply
+  cannot reconnect cleared sources. Current validation/permission failures remain
+  visible; status and source content keep their existing layout and evidence labels.
+- Learn the exact background script URL from the verified private host handshake.
+  Offscreen documents do not need getManifest/getContexts; a custom embedding
+  worker filename is not guessed. Keep existing source parser budgets and ownership.
+- Preserve the .41 native failed Clear run and initial observer-context failure;
+  those candidates/results are not upgraded to accepted runtime evidence.
+
+## 0.1.0-candidate.20261021.41
+
+- Run strict map, release ZIP and manifest parsing in fixed one-shot Workers in
+  the host-owned offscreen document, through a separate private source channel.
+  Existing map1500ms/archive2000ms and artifact/cache limits remain; two jobs at
+  most, exact document/nonce identity, bounded shared-binary transport and no
+  synchronous product fallback. Missing host support is an explicit source gap.
+- Clear, replacement, navigation, expiry, detach and shutdown abort owned parser
+  jobs before a late result can replace the source connection. Existing source
+  cards/layout/tokens and runtime/source evidence semantics remain unchanged.
+
+
 ## 0.1.0-candidate.20261021.40
 
 - Keep one explicit release ZIP connection in the current tab session and match
