@@ -21,6 +21,8 @@ export type InputCaptureRequest={op:'inputs-capture';tabId:number;ownerId:string
 export interface InputOutcomeCapture {readonly schema:'stateatom.input-outcome-capture/1';readonly exportable:false;readonly executable:false;readonly capturedAt:number;readonly diagnosticRaw:string;readonly outcomes:Readonly<Record<string,unknown>> & {readonly schema:'stateatom.handoff-input-outcomes/1';readonly exportable:false;readonly executable:false;readonly binding:Readonly<{status:'not-recorded'|'unjoined'|'capture-context-matched';reasons:readonly string[]}>};readonly limitations:readonly string[]}
 export type AtomOperation=
  |InputCaptureRequest
+ |{op:'observation-start';tabId:number;ownerId:string}
+ |{op:'observation-read'|'observation-stop'|'observation-clear';tabId:number;ownerId:string;windowId:string}
  |{op:'actions-arm';tabId:number;ownerId:string}
  |{op:'actions-read'|'actions-cancel'|'actions-clear';tabId:number;ownerId:string;traceId:string}
  |{op:'production-begin'|'production-close'|'production-revoke';tabId:number;ownerId:string}
@@ -47,7 +49,7 @@ export type AtomOperation=
  |{op:'source-map-clear';tabId:number}
  |{op:'detach'|'restore'|'metrics';tabId:number}
  |{op:'pick'|'cancel-pick';tabId:number;pickerId?:string}
- |{op:'state';tabId:number;refreshDeep?:boolean}
+ |{op:'state';tabId:number;ownerId?:string;refreshDeep?:boolean}
  |{op:'inspect-selector';tabId:number;selector:string}
  |{op:'refine-pick';tabId:number;pickerId:string;index:number}
  |{op:'selected';tabId:number;selector:string;token:string;documentId?:string}

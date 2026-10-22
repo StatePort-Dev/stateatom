@@ -84,3 +84,14 @@ client.request({op:'source-map-anchor',tabId:1,bindingId:'react-host:0',contextK
 client.request({op:'source-map-anchor',tabId:1,bindingId:'native:0',snapshotId:'read',contextKey:'context',includeAnalysisInput:true});
 // @ts-expect-error parser input opt-in must be a boolean
 client.request({op:'source-map-anchor',tabId:1,bindingId:'native:0',snapshotId:'read',contextKey:'context',includeAnalysisInput:'true'});
+
+// Explicit private bounded observation operations; no arbitrary evaluator/filter.
+liveClient.request({op:'observation-start',tabId:1,ownerId:'report-view'});
+liveClient.request({op:'observation-stop',tabId:1,ownerId:'report-view',windowId:'opaque-window'});
+liveClient.request({op:'state',tabId:1,ownerId:'report-view'});
+// @ts-expect-error Private observation requires a view owner.
+liveClient.request({op:'observation-start',tabId:1});
+// @ts-expect-error Raw bodies cannot be requested for an observation window.
+liveClient.request({op:'observation-start',tabId:1,ownerId:'report-view',includeBody:true});
+// @ts-expect-error Start cannot accept a restored window identity.
+liveClient.request({op:'observation-start',tabId:1,ownerId:'report-view',windowId:'old'});

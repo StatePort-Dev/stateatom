@@ -46,7 +46,7 @@ export function createProductionObservation(input){
    if(!active(context))return null;const d=fields(value,['requestId','at','url','method']);if(!d)return null;
    if(!opaque(d.requestId)||typeof d.method!=='string'||d.method.length>32){gap('invalid');return null;}if(!time(d.at))return null;const site=origin(d.url);if(!site){gap('invalid');return null;}
    if(pending.size>=limits.pending){gap('pendingLimit');end('pending-limit',lastClock);return null;}
-   const token=state.windowId+':'+(++sequence),record={kind:'network',id:token,requestId:d.requestId,at:d.at,method:methods.has(d.method)?d.method:'OTHER',route:{origin:site,detail:'omitted'},status:null,responseAt:null,endedAt:null,durationMs:null,completion:'pending'};
+   const token=state.windowId+':'+(++sequence),record={kind:'network',id:token,requestId:d.requestId,at:d.at,method:methods.has(d.method)?d.method:'OTHER',route:{origin:site,detail:'omitted'},status:null,responseAt:null,endedAt:null,durationMs:null,completion:'pending',timingOrder:'not-completed'};
    if(!append(record,'requests',d.at))return null;pending.set(token,state.records.length-1);return token;
   },
   requestResponse(token,value,context){
@@ -56,8 +56,8 @@ export function createProductionObservation(input){
   requestEnd(token,value,context){
    if(!active(context))return false;const found=find(token);if(!found)return false;const d=fields(value,['at','outcome']);if(!d)return false;
    const counter={finished:'completed',failed:'transportFailed',cancelled:'cancelled',redirect:'redirects'};
-   if(typeof d.outcome!=='string'||!Object.hasOwn(counter,d.outcome)){gap('invalid');return false;}if(!time(d.at,found.row.responseAt??found.row.at))return false;
-   if(!update(found.index,{...found.row,endedAt:d.at,durationMs:d.at-found.row.at,completion:d.outcome},counter[d.outcome],d.at))return false;pending.delete(token);return true;
+   if(typeof d.outcome!=='string'||!Object.hasOwn(counter,d.outcome)){gap('invalid');return false;}if(!time(d.at,found.row.at))return false;
+   if(!update(found.index,{...found.row,endedAt:d.at,durationMs:d.at-found.row.at,completion:d.outcome,timingOrder:found.row.responseAt===null?'response-unobserved':d.at<found.row.responseAt?'end-precedes-response':'response-precedes-end'},counter[d.outcome],d.at))return false;pending.delete(token);return true;
   },
   error(value,context){
    if(!active(context))return false;const d=fields(value,['at','category','url','line','column']);if(!d||!time(d.at))return false;

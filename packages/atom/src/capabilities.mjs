@@ -4,8 +4,8 @@ import {appOrigin,loopbackOrigin,helperURL} from './origin-policy.mjs';
 export const CAPABILITY_VERSION=1;
 export const DEBUGGER_CAPABILITIES=Object.freeze(['read','inject','reload','cache','override','replay']);
 export const GLOBAL_OPERATIONS=Object.freeze(['pair','unpair','tabs','list-diagnostics','delete-diagnostic','save-handoff','list-handoffs','open-handoff','delete-handoff']);
-export const OPERATIONS=Object.freeze([...GLOBAL_OPERATIONS,'capabilities','save-diagnostic','attach','pick','cancel-pick','refine-pick','selected','deep-experiment','restore','property','inspect-selector','state','open','definitions','references','experiment','detach','metrics','source-map-import','source-map-acquire','source-map-lookup','source-map-anchor','source-map-clear','connect-site','forget-site','inputs-capture','inputs-open','inputs-read','inputs-apply','inputs-undo','inputs-baseline','inputs-close','production-begin','production-advance','production-confirm','production-cancel','production-close','production-revoke','actions-arm','actions-read','actions-cancel','actions-clear']);
-export const FEATURE_IDS=Object.freeze(['basic.inspect','basic.pick','basic.pick-refine','basic.attach-read-only','basic.request-site-access','source.navigate','actions.source','inputs.observed','experiment.response','experiment.controlled','experiment.restore','production.maps','actions.trace','inputs.live','inputs.draft-apply','production.changes','explanations.local-model']);
+export const OPERATIONS=Object.freeze([...GLOBAL_OPERATIONS,'capabilities','save-diagnostic','attach','pick','cancel-pick','refine-pick','selected','deep-experiment','restore','property','inspect-selector','state','open','definitions','references','experiment','detach','metrics','source-map-import','source-map-acquire','source-map-lookup','source-map-anchor','source-map-clear','connect-site','forget-site','inputs-capture','inputs-open','inputs-read','inputs-apply','inputs-undo','inputs-baseline','inputs-close','production-begin','production-advance','production-confirm','production-cancel','production-close','production-revoke','actions-arm','actions-read','actions-cancel','actions-clear','observation-start','observation-read','observation-stop','observation-clear']);
+export const FEATURE_IDS=Object.freeze(['basic.inspect','basic.pick','basic.pick-refine','basic.attach-read-only','basic.request-site-access','source.navigate','actions.source','inputs.observed','experiment.response','experiment.controlled','experiment.restore','production.maps','actions.trace','inputs.live','inputs.draft-apply','production.changes','production.observations','explanations.local-model']);
 export const isDevelopmentOrigin=loopbackOrigin;
 export const isBridgeURL=helperURL;
 export function isInspectionOrigin(url,readOnlySites=false){return !!appOrigin(url)&&(loopbackOrigin(url)||readOnlySites===true&&new URL(url).protocol==='https:');}
@@ -29,10 +29,11 @@ const local=new Set([...GLOBAL_OPERATIONS,'capabilities','state','property','det
 export function operationPolicy(op,c={}){
  if(c.disposed)return deny('DISPOSED','Atom runtime is disposed');
  if(!OPERATIONS.includes(op))return deny('INVALID_MESSAGE','Unknown Atom operation');
- if(c.busy&&!['state','capabilities','metrics','inputs-close',...productionCleanup].includes(op))return deny('BUSY','Experiment running; conflicting action denied');
+ if(c.busy&&!['state','capabilities','metrics','inputs-close','observation-read','observation-stop','observation-clear',...productionCleanup].includes(op))return deny('BUSY','Experiment running; conflicting action denied');
  if(c.inputEditorBusy&&mutation.has(op))return deny('BUSY','Close the input editor before running legacy trials');
  if(op.startsWith('inputs-')&&c.foreignInputEditor)return deny('BUSY','This input editor belongs to another inspector');
  if(op.startsWith('actions-')){if(c.actionInspector!==true)return deny('INSPECTOR_DISCONNECTED','Use a live inspector');if(c.foreignActionTrace)return deny('BUSY','Observation belongs to another inspector');if(['actions-cancel','actions-clear'].includes(op))return allow([]);}
+ if(op.startsWith('observation-')){if(c.observationInspector!==true)return deny('INSPECTOR_DISCONNECTED','Use a live inspector');if(c.foreignObservation)return deny('BUSY','Observation belongs to another inspector');if(op!=='observation-start')return allow([]);}
  if(local.has(op))return allow([]);
  if(op==='inputs-capture')return c.captureInspector!==true?deny('INSPECTOR_DISCONNECTED','Use a live inspector'):c.captureForeignEditor?deny('BUSY','This input editor belongs to another inspector'):c.hasSelection||c.hasHistoricalTarget?allow([]):deny('OBSERVATION_REQUIRED','Observation unavailable or expired; inspect again');
  if(op==='save-diagnostic')return c.hasSelection||c.hasHistoricalTarget?allow([]):deny('OBSERVATION_REQUIRED','Observation unavailable or expired; inspect again');
@@ -40,6 +41,7 @@ export function operationPolicy(op,c={}){
  const production=new URL(c.url).protocol==='https:',readOnly=production||c.readOnly===true;
  if(op.startsWith('actions-')){if(c.controlledProfile)return deny('CAPABILITY_UNAVAILABLE','Action observation is outside the controlled finite profile');if(production)return deny('CAPABILITY_UNAVAILABLE','Action observation currently requires opt-in development instrumentation');if(!c.sourceConnected)return deny('SOURCE_REQUIRED','Connect the matching development project');if(op==='actions-arm'&&(!c.hasSelection||!c.hasAnalysis||c.stale))return deny('OBSERVATION_REQUIRED','Inspect a current target first');if(c.inputEditorBusy)return deny('BUSY','Close input editing before observing an interaction');}
  if(c.permission!==true)return deny('ORIGIN_DENIED','Site origin permission required');
+ if(op==='observation-start'&&(!c.hasSelection||!c.hasAnalysis||c.stale))return deny('OBSERVATION_REQUIRED','Inspect a current target first');
  if(productionStages.has(op)){if(!production||c.productionHost!==true)return deny('CAPABILITY_UNAVAILABLE','Production Settings authority is unavailable for this target');if(c.productionInspector!==true)return deny('INSPECTOR_DISCONNECTED','Use a live inspector Settings view');}
  if(inputMutation.has(op)&&production&&c.productionChange?.active===true&&c.productionInspector!==true)return deny('INSPECTOR_DISCONNECTED','Production inputs require a live inspector');
  if(mutation.has(op)&&readOnly||inputMutation.has(op)&&readOnly&&!(production&&c.productionChange?.active===true)||source.has(op)&&production)return deny('CAPABILITY_DENIED','Read-only inspection: operation unavailable');
@@ -59,7 +61,7 @@ export function operationPolicy(op,c={}){
  else if(op==='inputs-read'&&c.inputSourceKind==='dom-control')required=['read','inject'];
  else if(mutation.has(op))required=['read','inject','reload','cache','override','replay'];
  for(const grant of required)if(!c.grants?.includes(grant))return deny('CAPABILITY_DENIED',grant+' capability required',required);
- if((mutation.has(op)||inputMutation.has(op)||productionStages.has(op)||op==='inputs-read'||op.startsWith('source-map-')||['metrics','pick','refine-pick','actions-arm','actions-read'].includes(op))&&!c.attached)return deny('LEASE_REQUIRED','Attach this tab first',required);
+ if((mutation.has(op)||inputMutation.has(op)||productionStages.has(op)||op==='inputs-read'||op.startsWith('source-map-')||['metrics','pick','refine-pick','actions-arm','actions-read','observation-start'].includes(op))&&!c.attached)return deny('LEASE_REQUIRED','Attach this tab first',required);
  if(inputMutation.has(op)){if(c.inputSourceKind==='dom-control'){if(c.nativeInputOwner!==true)return deny('UNSAFE_LIFECYCLE','Native input changes require a live private content owner',required);}else if(c.workerIndependent!==true)return deny('UNSAFE_LIFECYCLE','Response changes require a worker-independent debugger owner',required);}
  if(op==='inputs-open'&&!c.hasInputEditor&&(!c.hasSelection||!c.hasAnalysis||c.stale))return deny('OBSERVATION_REQUIRED','Inspect a current target before opening inputs',required);
  if(['inputs-apply','inputs-undo','inputs-baseline','inputs-read'].includes(op)&&!c.hasInputEditor)return deny('OBSERVATION_REQUIRED','Open the current target input editor first',required);
@@ -87,6 +89,7 @@ export function describeCapabilities(context={}){
   'actions.trace':context.actionTraceReady?operations['actions-arm']:unavailable('Supported action observation is unavailable in this project (A05 in progress)'),
   'inputs.live':operations['inputs-open'],
   'inputs.draft-apply':operations['inputs-open'],
+  'production.observations':operations['observation-start'],
   'production.changes':context.productionChange?.active?allow([]):operations['production-begin'],
   'explanations.local-model':deny('DEVICE_CHECK_REQUIRED','Local model availability requires an explicit extension-page device check; fallback is not model validation')
  }};

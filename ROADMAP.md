@@ -1084,3 +1084,20 @@ remain open,18/29 unchanged. Next P04.2 authenticated runtime/owner/lifecycle/na
 metadata mapping and integration into existing3-tab/5MB cap; then UI/reader H07-H09.
 ONE parent review later, no per-slice review loop. All earlier evidence retained;
 no SDK/publication/other repository/redesign/independent-human gate.
+
+
+### 2026-10-22 — P04.2 private runtime observation foundation
+
+[P04.2](docs/completion/87-p04-runtime-observation.md): current52 has explicit live-inspector/view-owned
+Start/Read/Stop/Clear, exact native MAIN target/loader, body-free metadata projection,
+closed lifecycle and the existing3-tab/5MB cache budget. Restored recordings stay
+historical with unknown end; no live owner returns. Original browser cleanup
+criteria remain; stale Read/storage races have preserved RED/GREEN controls.
+2231 full/121 focused source, types2/admission9/build, native runtime9 in both exact
+hosts and existing F05 backend27 PASS. Real native phase ordering and precise clock
+corrections preserve48/49 failures;51 shared-flush hang is not a pass.
+Runtime-only scoped result: DOM checkpoints, product controls, public report/reader
+and H07-H09/ONE parent review remain open.18/29 whole tasks (~62% equal count),
+mandatory L02 open/A05 scoped complete. Next P04.3 selected native checkpoints,
+read fence and exact private handoff capture. No SDK/publication/other repository,
+redesign or independent-human blocker.

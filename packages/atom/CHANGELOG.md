@@ -1,5 +1,51 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.52
+
+- Keep cleanup writes independent of a delayed prior write. A superseded write
+  repairs from the latest bounded cache state before acknowledging; no queue of
+  historical payloads. Preserve the original delayed-inspection/detach criterion.
+- The51 shared awaited flush stalled that existing source test; its incomplete
+  full run is retained, not a pass. Current Read still checks its exact owner and
+  immutable result after persistence before returning it.
+
+## 0.1.0-candidate.20261021.51
+
+- Label debugger ownership loss as context change, rather than claiming the site
+  permission was revoked. Stop only the retired observer; preserve a replacement
+  debugger owner. Separate actual permission removal keeps its own cleanup path.
+- Coalesce current cache writes through one in-flight submission and latest state,
+  with no historical payload queue. A late Read acknowledgment cannot return an
+  obsolete recording or persist it over a newer Stop/replacement window.
+
+## 0.1.0-candidate.20261021.50
+
+- Use the host's high-resolution monotonic epoch clock for observation windows and
+  native selected-read times. Fractional native phase times are not compared with
+  an integer wall-clock sample. Genuine future/cross-clock drift still remains a
+  gap; timestamps are not clamped or replaced with receipt time. Preserve49's
+  actual completion/HTTP/redirect passes and transport-failure timing refusal.
+
+## 0.1.0-candidate.20261021.49
+
+- Preserve native response and completion phase timestamps independently, including
+  an explicitly labelled end-before-response timestamp order. Actual Chrome153
+  evidence showed completion timestamps can precede response timestamps; no clamp,
+  receipt-time replacement or fabricated duration is used. Completions before the
+  admitted request start remain refused. Preserve the failed .48 native runs.
+
+## 0.1.0-candidate.20261021.48
+
+- Add explicit private inspector-owned production observation Start/Read/Stop/Clear
+  operations. A body-free native metadata adapter maps each request's paired
+  clocks and retains separate occurrences, HTTP/transport outcomes and scoped
+  MAIN-context exception metadata. No automatic attach, app action or edit grant.
+- Charge snapshots to the existing3-tab/5MB unsaved cache; retire owners/timers on
+  lifecycle loss/eviction and never restore a recording owner after worker restart.
+  Foreign views cannot read/stop/delete/replace a current private window.
+- Runtime foundation only: product controls, DOM checkpoints, report/reader profile
+  and H07-H09 acceptance remain pending P04. No visual/token/typography changes.
+
 ## 0.1.0-candidate.20261021.47
 
 - Visual/interaction: clear obsolete URL-failure guidance when a nonempty local

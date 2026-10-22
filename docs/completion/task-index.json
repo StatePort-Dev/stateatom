@@ -3229,36 +3229,50 @@
         "core/production-observations.mjs",
         "packages/atom/src/runtime.mjs",
         "core/diagnostic.mjs",
-        "tests/production-observations.test.mjs"
+        "tests/production-observations.test.mjs",
+        "packages/atom/src/production-observation.mjs",
+        "tests/atom/production-observation-native.test.mjs",
+        "tests/atom/production-observation-runtime.test.mjs",
+        "tests/integration/production-observation-native.mjs"
       ],
       "existing_commands": [
         "npm run verify:browser",
         "npm run verify:production-source-mapping",
         "node --test --test-isolation=none tests/production-observations.test.mjs",
-        "npm test"
+        "npm test",
+        "node tests/integration/production-observation-native.mjs <exact atom-handoff.json>",
+        "node tests/integration/production-changes.mjs --backend <exact atom-handoff.json>"
       ],
       "deliverable": "U06-designed QA production observation/handoff flow, read-only collector distinct from intentional edits",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "P04.2 authenticated runtime observation ownership/lifecycle/native clock mapping and existing3-tab/5MB integration",
-      "execution_record": "86-p04-observation-foundation.md",
-      "implementation_plan": "../superpowers/plans/2026-10-22-p04-observation-foundation.md",
+      "active_slice": "P04.3 explicit selected native DOM checkpoints, read-command fence and exact private handoff capture",
+      "execution_record": "87-p04-runtime-observation.md",
+      "implementation_plan": "../superpowers/plans/2026-10-22-p04-runtime-observation.md",
       "current_checkpoint": {
-        "id": "P04.1-pure-observation-foundation",
-        "status": "complete-source-foundation-not-runtime-P04",
-        "record": "86-p04-observation-foundation.md",
-        "verification": ".artifacts/p04/foundation/verification.json",
+        "id": "P04.2-private-runtime-observation",
+        "status": "complete-private-runtime-not-whole-P04",
+        "record": "87-p04-runtime-observation.md",
+        "verification": ".artifacts/p04/runtime/verification52.json",
+        "candidate": "0.1.0-candidate.20261021.52 / UI0.2.0-candidate.20261018.2",
+        "handoff": ".artifacts/atom/2026-10-22T10-47-14-633Z/atom-handoff.json",
         "checks": {
-          "source": 2178,
-          "focused": 39
+          "focused": 121,
+          "full": 2231,
+          "types": 2,
+          "admission": 9,
+          "build": true,
+          "native": 9,
+          "F05BackendRegression": 27
         },
-        "runtime_bundled": false,
-        "global_budget_integrated": false,
-        "native_acceptance": false,
-        "package_unchanged": "0.1.0-candidate.20261021.47 / UI0.2.0-candidate.20261018.2",
+        "runtime_bundled": true,
+        "global_budget_integrated": true,
+        "DOM_checkpoints": false,
+        "public_report_profile": false,
         "full_P04_acceptance": false,
-        "next_item": "P04.2 authenticated runtime observation ownership/lifecycle/native clock mapping and existing3-tab/5MB integration",
-        "boundary": "Pure normalized-event ledger only:39 focused/2178 full source PASS, no Chrome/timers/fetch/storage or packaged API. Bounds64records/32pending/64KiB/120s, closed privacy/context/time/stop/delete and immutable snapshots. Current47 package/source/install/both hosts unchanged; native P03 proof is not P04 proof. Global runtime3-tab/5MB ownership, native clock/events, UI/report/reader and H07-H09 remain open.18/29 whole tasks unchanged; no SDK/publication/other repository/redesign/human gate."
+        "whole_tasks_complete": 18,
+        "next_item": "P04.3 explicit selected native DOM checkpoints, read-command fence and exact private handoff capture",
+        "boundary": "Private runtime admission/metadata/lifecycle/cache slice only: current52 source2231/focused121/types2/admission9/build/native9 both hosts and F05 backend27 PASS, exact source/package/install/hosts bound. Preserve48/49 native failures,50 historical pass and51 interrupted shared-flush regression. Actual native phase order and precise clock are recorded without causality/universal clock sync; future/prehistory/foreign/negative-total-duration controls retained. DOM checkpoints, product controls, public profile/UI/reader, H07-H09 and ONE parent review remain open.18/29 unchanged; L02 mandatory/open and A05 mandatory/scoped complete. No SDK/publication/other repository/redesign/human gate."
       },
       "completed_slices": [
         {
@@ -3277,9 +3291,34 @@
           "full_P04_acceptance": false,
           "next_item": "P04.2 authenticated runtime observation ownership/lifecycle/native clock mapping and existing3-tab/5MB integration",
           "boundary": "Pure normalized-event ledger only:39 focused/2178 full source PASS, no Chrome/timers/fetch/storage or packaged API. Bounds64records/32pending/64KiB/120s, closed privacy/context/time/stop/delete and immutable snapshots. Current47 package/source/install/both hosts unchanged; native P03 proof is not P04 proof. Global runtime3-tab/5MB ownership, native clock/events, UI/report/reader and H07-H09 remain open.18/29 whole tasks unchanged; no SDK/publication/other repository/redesign/human gate."
+        },
+        {
+          "id": "P04.2-private-runtime-observation",
+          "status": "complete-private-runtime-not-whole-P04",
+          "record": "87-p04-runtime-observation.md",
+          "verification": ".artifacts/p04/runtime/verification52.json",
+          "candidate": "0.1.0-candidate.20261021.52 / UI0.2.0-candidate.20261018.2",
+          "handoff": ".artifacts/atom/2026-10-22T10-47-14-633Z/atom-handoff.json",
+          "checks": {
+            "focused": 121,
+            "full": 2231,
+            "types": 2,
+            "admission": 9,
+            "build": true,
+            "native": 9,
+            "F05BackendRegression": 27
+          },
+          "runtime_bundled": true,
+          "global_budget_integrated": true,
+          "DOM_checkpoints": false,
+          "public_report_profile": false,
+          "full_P04_acceptance": false,
+          "whole_tasks_complete": 18,
+          "next_item": "P04.3 explicit selected native DOM checkpoints, read-command fence and exact private handoff capture",
+          "boundary": "Private runtime admission/metadata/lifecycle/cache slice only: current52 source2231/focused121/types2/admission9/build/native9 both hosts and F05 backend27 PASS, exact source/package/install/hosts bound. Preserve48/49 native failures,50 historical pass and51 interrupted shared-flush regression. Actual native phase order and precise clock are recorded without causality/universal clock sync; future/prehistory/foreign/negative-total-duration controls retained. DOM checkpoints, product controls, public profile/UI/reader, H07-H09 and ONE parent review remain open.18/29 unchanged; L02 mandatory/open and A05 mandatory/scoped complete. No SDK/publication/other repository/redesign/human gate."
         }
       ],
-      "remaining_acceptance": "Authenticated runtime/global budgets, native clock/event/DOM admission, actual reviewed reporter/reader H07-H09 and ONE whole-P04 review"
+      "remaining_acceptance": "Native DOM checkpoints/read fence/private capture; public profile and product reporter/reader H07-H09; ONE whole-P04 review"
     },
     {
       "id": "L01",
@@ -4036,27 +4075,35 @@
     ]
   },
   "reconciliation": {
-    "document": "86-p04-observation-foundation.md",
+    "document": "87-p04-runtime-observation.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "P04.1-pure-observation-foundation",
-      "status": "complete-source-foundation-not-runtime-P04",
-      "record": "86-p04-observation-foundation.md",
-      "verification": ".artifacts/p04/foundation/verification.json",
+      "id": "P04.2-private-runtime-observation",
+      "status": "complete-private-runtime-not-whole-P04",
+      "record": "87-p04-runtime-observation.md",
+      "verification": ".artifacts/p04/runtime/verification52.json",
+      "candidate": "0.1.0-candidate.20261021.52 / UI0.2.0-candidate.20261018.2",
+      "handoff": ".artifacts/atom/2026-10-22T10-47-14-633Z/atom-handoff.json",
       "checks": {
-        "source": 2178,
-        "focused": 39
+        "focused": 121,
+        "full": 2231,
+        "types": 2,
+        "admission": 9,
+        "build": true,
+        "native": 9,
+        "F05BackendRegression": 27
       },
-      "runtime_bundled": false,
-      "global_budget_integrated": false,
-      "native_acceptance": false,
-      "package_unchanged": "0.1.0-candidate.20261021.47 / UI0.2.0-candidate.20261018.2",
+      "runtime_bundled": true,
+      "global_budget_integrated": true,
+      "DOM_checkpoints": false,
+      "public_report_profile": false,
       "full_P04_acceptance": false,
-      "next_item": "P04.2 authenticated runtime observation ownership/lifecycle/native clock mapping and existing3-tab/5MB integration",
-      "boundary": "Pure normalized-event ledger only:39 focused/2178 full source PASS, no Chrome/timers/fetch/storage or packaged API. Bounds64records/32pending/64KiB/120s, closed privacy/context/time/stop/delete and immutable snapshots. Current47 package/source/install/both hosts unchanged; native P03 proof is not P04 proof. Global runtime3-tab/5MB ownership, native clock/events, UI/report/reader and H07-H09 remain open.18/29 whole tasks unchanged; no SDK/publication/other repository/redesign/human gate."
+      "whole_tasks_complete": 18,
+      "next_item": "P04.3 explicit selected native DOM checkpoints, read-command fence and exact private handoff capture",
+      "boundary": "Private runtime admission/metadata/lifecycle/cache slice only: current52 source2231/focused121/types2/admission9/build/native9 both hosts and F05 backend27 PASS, exact source/package/install/hosts bound. Preserve48/49 native failures,50 historical pass and51 interrupted shared-flush regression. Actual native phase order and precise clock are recorded without causality/universal clock sync; future/prehistory/foreign/negative-total-duration controls retained. DOM checkpoints, product controls, public profile/UI/reader, H07-H09 and ONE parent review remain open.18/29 unchanged; L02 mandatory/open and A05 mandatory/scoped complete. No SDK/publication/other repository/redesign/human gate."
     },
-    "next_item": "P04.2 authenticated runtime observation ownership/lifecycle/native clock mapping and existing3-tab/5MB integration",
+    "next_item": "P04.3 explicit selected native DOM checkpoints, read-command fence and exact private handoff capture",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -5766,10 +5813,35 @@
         "full_P04_acceptance": false,
         "next_item": "P04.2 authenticated runtime observation ownership/lifecycle/native clock mapping and existing3-tab/5MB integration",
         "boundary": "Pure normalized-event ledger only:39 focused/2178 full source PASS, no Chrome/timers/fetch/storage or packaged API. Bounds64records/32pending/64KiB/120s, closed privacy/context/time/stop/delete and immutable snapshots. Current47 package/source/install/both hosts unchanged; native P03 proof is not P04 proof. Global runtime3-tab/5MB ownership, native clock/events, UI/report/reader and H07-H09 remain open.18/29 whole tasks unchanged; no SDK/publication/other repository/redesign/human gate."
+      },
+      {
+        "id": "P04.2-private-runtime-observation",
+        "status": "complete-private-runtime-not-whole-P04",
+        "record": "87-p04-runtime-observation.md",
+        "verification": ".artifacts/p04/runtime/verification52.json",
+        "candidate": "0.1.0-candidate.20261021.52 / UI0.2.0-candidate.20261018.2",
+        "handoff": ".artifacts/atom/2026-10-22T10-47-14-633Z/atom-handoff.json",
+        "checks": {
+          "focused": 121,
+          "full": 2231,
+          "types": 2,
+          "admission": 9,
+          "build": true,
+          "native": 9,
+          "F05BackendRegression": 27
+        },
+        "runtime_bundled": true,
+        "global_budget_integrated": true,
+        "DOM_checkpoints": false,
+        "public_report_profile": false,
+        "full_P04_acceptance": false,
+        "whole_tasks_complete": 18,
+        "next_item": "P04.3 explicit selected native DOM checkpoints, read-command fence and exact private handoff capture",
+        "boundary": "Private runtime admission/metadata/lifecycle/cache slice only: current52 source2231/focused121/types2/admission9/build/native9 both hosts and F05 backend27 PASS, exact source/package/install/hosts bound. Preserve48/49 native failures,50 historical pass and51 interrupted shared-flush regression. Actual native phase order and precise clock are recorded without causality/universal clock sync; future/prehistory/foreign/negative-total-duration controls retained. DOM checkpoints, product controls, public profile/UI/reader, H07-H09 and ONE parent review remain open.18/29 unchanged; L02 mandatory/open and A05 mandatory/scoped complete. No SDK/publication/other repository/redesign/human gate."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Pure normalized-event ledger only:39 focused/2178 full source PASS, no Chrome/timers/fetch/storage or packaged API. Bounds64records/32pending/64KiB/120s, closed privacy/context/time/stop/delete and immutable snapshots. Current47 package/source/install/both hosts unchanged; native P03 proof is not P04 proof. Global runtime3-tab/5MB ownership, native clock/events, UI/report/reader and H07-H09 remain open.18/29 whole tasks unchanged; no SDK/publication/other repository/redesign/human gate.",
+    "current_activity_note": "Private runtime admission/metadata/lifecycle/cache slice only: current52 source2231/focused121/types2/admission9/build/native9 both hosts and F05 backend27 PASS, exact source/package/install/hosts bound. Preserve48/49 native failures,50 historical pass and51 interrupted shared-flush regression. Actual native phase order and precise clock are recorded without causality/universal clock sync; future/prehistory/foreign/negative-total-duration controls retained. DOM checkpoints, product controls, public profile/UI/reader, H07-H09 and ONE parent review remain open.18/29 unchanged; L02 mandatory/open and A05 mandatory/scoped complete. No SDK/publication/other repository/redesign/human gate.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "P04"
