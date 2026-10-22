@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.57
+
+- Add explicit bounded Start, sampled read, Stop/review and Delete inside the
+  existing Prepare current issue dialog, after reporter words. Recording blocks
+  file output; Stop refreshes paired historical data while keeping typed words.
+- Default optional window fields off; imported/saved reports show no runtime
+  controls. Cancel/context/disposal fence late replies and Stop owned collection,
+  without application undo, input Apply or restoring an owner from a file.
+- Separate observer metadata/policy selection from the general state policy so
+  existing Action Trace/input views keep their prior ownership decisions.
+- Keep ordinary selection/general invalidation unchanged; only explicit
+  collector metadata notices in the originating view use a shallow state load.
+- Reuse existing native controls/layout/type. No shared token/primitive/contract
+  change. Interrupted unowned capture and whole H07-H09/P04 remain pending.
+
 ## 0.1.0-candidate.20261021.56
 
 - Accept a separately versioned reviewed observation report, preserving strict

@@ -53,7 +53,7 @@ export type AtomOperation=
  |{op:'source-map-clear';tabId:number}
  |{op:'detach'|'restore'|'metrics';tabId:number}
  |{op:'pick'|'cancel-pick';tabId:number;pickerId?:string}
- |{op:'state';tabId:number;ownerId?:string;refreshDeep?:boolean}
+ |{op:'state';tabId:number;ownerId?:string;observationOwnerId?:string;refreshDeep?:boolean}
  |{op:'inspect-selector';tabId:number;selector:string}
  |{op:'refine-pick';tabId:number;pickerId:string;index:number}
  |{op:'selected';tabId:number;selector:string;token:string;documentId?:string}

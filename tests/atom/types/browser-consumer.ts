@@ -105,3 +105,6 @@ liveClient.request({op:'observation-capture',tabId:1,ownerId:'view',windowId:'w'
 // @ts-expect-error A checkpoint never accepts a caller-observed value.
 liveClient.request({op:'observation-checkpoint',tabId:1,ownerId:'view',windowId:'w',value:false});
 void privateObservation;void originalInputCapture;
+
+// Independent observer metadata selection does not replace other view policy.
+void client.request({op: 'state', tabId: 1, observationOwnerId: 'observer-view', refreshDeep: false});

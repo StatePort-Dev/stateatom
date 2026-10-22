@@ -97,16 +97,21 @@ export function createInputController({client,onChange=()=>{},clock={setTimeout:
   else if(state.inputs&&state.inputs.investigationId!==last.investigationId){void close('Input investigation changed',{remote:true});}
  }
  const off=client.subscribeConnection?.(()=>{if(disposed)return;connectionLost=true;failure={code:'INSPECTOR_DISCONNECTED',message:'Inspector connection lost; reopen this inspector.'};void close('Inspector connection lost',{remote:true});emit();})||(()=>{});
- async function capture({tabId,includeContent=false,notes='',includeCategories=[],signal}={}){
+ async function captureData({tabId,includeContent=false,notes='',includeCategories=[],signal}={},observation=null){
   if(disposed)throw error('DISPOSED');if(connectionLost)throw error('INSPECTOR_DISCONNECTED');
   if(signal?.aborted)throw error('CANCELLED');if(busy||opening||closingCaptureEpoch!==null)throw error('BUSY','Wait for the current input operation before preparing a report.');
   if(!Number.isSafeInteger(tabId)||tabId<=0)throw error('INVALID_MESSAGE');
   const at=epoch,expected=last?.target.tabId===tabId?{investigationId:last.investigationId,expectedRevision:last.revision}:{};
   // No read/flush/Apply, no timer cancellation or local draft projection.
-  const value=await client.request({op:'inputs-capture',tabId,ownerId,includeContent,notes,includeCategories,...expected},{signal});
+  const value=await client.request({op:observation?'observation-capture':'inputs-capture',tabId,ownerId:observation?.ownerId??ownerId,...(observation?{inputOwnerId:ownerId,windowId:observation.windowId}:{}),includeContent,notes,includeCategories,...expected},{signal});
   if(signal?.aborted)throw error('CANCELLED');if(disposed)throw error('DISPOSED');if(connectionLost)throw error('INSPECTOR_DISCONNECTED');if(at!==epoch)throw error('STALE_CAPTURE');
   return value;
  }
+ const capture=options=>captureData(options);
+ function captureObservation({observationOwnerId,windowId,...options}={}){
+  if(typeof observationOwnerId!=='string'||!observationOwnerId||observationOwnerId.length>100||typeof windowId!=='string'||!/^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/.test(windowId))return Promise.reject(error('INVALID_MESSAGE'));
+  return captureData(options,{ownerId:observationOwnerId,windowId});
+ }
  function dispose(){if(disposed)return closing||Promise.resolve(snapshot());disposed=true;off();return close('Input view disposed');}
- return Object.freeze({open,edit,flush,setMode,discard,apply,refresh,capture,undo:()=>restore('inputs-undo'),baseline:()=>restore('inputs-baseline'),update,close,dispose,snapshot});
+ return Object.freeze({open,edit,flush,setMode,discard,apply,refresh,capture,captureObservation,undo:()=>restore('inputs-undo'),baseline:()=>restore('inputs-baseline'),update,close,dispose,snapshot});
 }

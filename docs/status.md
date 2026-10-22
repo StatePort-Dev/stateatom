@@ -1848,3 +1848,7 @@ unchanged (~62% equal count), L02 mandatory/open/A05 mandatory/scoped complete.
 Next P04.4c explicit bounded Start/checkpoint/Stop/review in existing Diagnostic
 flow. All original failures/results preserved; no SDK/publication/redesign/other
 repository or independent-human blocker.
+
+### 2026-10-22 — P04.4c.1 normal owned observation reporter
+
+[P04.4c.1](completion/91-p04-owned-observation-reporter.md): current57 source2347/focused407/types2/admission9/build/native19 both hosts PASS;0 console warnings/errors. Actual Describe/Start/manual reproduction/read/Stop/review/Save/download/passive readback uses existing CSS lookup UI. Original point, sampled values, reporter words and independent clocks stay separate; default privacy and no-action collection pass. Three primary picker entry failures before Start are retained/unresolved; CSS qualification does not requalify picker. No F05 edit during this native window or interrupted export/H08/H09/whole-P04 acceptance. P04/C07/ONE parent review remain open,18/29 (~62% equal count) unchanged; L02 mandatory/open, A05 mandatory/scoped complete, A02 open. Next P04.4c.2 passive interrupted metadata retention/read/delete without owner. No SDK/publication/redesign/other repository/human blocker.

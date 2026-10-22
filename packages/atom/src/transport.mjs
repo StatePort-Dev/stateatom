@@ -28,6 +28,7 @@ export function validateRequest(m){
  if(['pick','cancel-pick'].includes(p.op)&&p.pickerId!==undefined&&(typeof p.pickerId!=='string'||!p.pickerId||p.pickerId.length>100))bad();
  if(p.op==='refine-pick'&&(typeof p.pickerId!=='string'||!p.pickerId||p.pickerId.length>100||!Number.isSafeInteger(p.index)||p.index<0||p.index>11))bad();
  if(p.ownerId!==undefined&&(!(p.op.startsWith('inputs-')||p.op.startsWith('production-')||p.op.startsWith('actions-')||p.op.startsWith('observation-')||p.op==='capabilities'||p.op==='state')||typeof p.ownerId!=='string'||!p.ownerId||p.ownerId.length>100))bad();
+ if(p.observationOwnerId!==undefined&&(p.op!=='state'||typeof p.observationOwnerId!=='string'||!p.observationOwnerId||p.observationOwnerId.length>100))bad();
  if(p.op.startsWith('observation-')){
   const capture=p.op==='observation-capture',allowed=['op','tabId','ownerId','windowId',...(capture?['inputOwnerId','includeContent','notes','includeCategories','investigationId','expectedRevision']:[])];
   if(typeof p.ownerId!=='string'||!p.ownerId||p.ownerId.length>100||Object.keys(p).some(k=>!allowed.includes(k))||p.op==='observation-start'&&p.windowId!==undefined||p.op!=='observation-start'&&(typeof p.windowId!=='string'||!/^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/.test(p.windowId)))bad();
