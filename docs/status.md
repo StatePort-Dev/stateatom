@@ -1803,3 +1803,19 @@ and H07-H09/ONE parent review remain open.18/29 whole tasks (~62% equal count),
 mandatory L02 open/A05 scoped complete. Next P04.3 selected native checkpoints,
 read fence and exact private handoff capture. No SDK/publication/other repository,
 redesign or independent-human blocker.
+
+
+### 2026-10-22 — P04.3 sampled native checkpoints/private handoff
+
+[P04.3](completion/88-p04-native-checkpoints-and-capture.md): current55 source2261/focused151/types2/admission9/build
+and actual native19 in both exact hosts PASS. Fixed53's real legacy Refresh/selection
+conflict without weakening normal new-occurrence freshness. Explicit native read
+intervals retain boolean state and omit text, with DOM mutation time unknown.
+Stopped capture embeds the unchanged exact input reply; no browser action, public
+file or resumed authority. Native separate F05 consent/edit stays separately marked
+with unknown effect/consumption, not collector authority or restoration.
+P04/C07/public profile/product controls/reader/H07-H09 and ONE parent review remain
+open;18/29 unchanged (~62% equal count), L02 mandatory/open/A05 mandatory/scoped complete.
+Next P04.4 public reviewed observation profile, existing reporter/reader controls
+and passive interrupted-window handling. Historical attempts preserved; no SDK,
+publication/other repository/redesign or independent-human blocker.

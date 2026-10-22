@@ -19,10 +19,14 @@ export interface HandoffListResult {entries:HandoffStoredEntry[];expired:string[
 export type InputOutcomeCategory='inputIdentities'|'inputValues'|'inputLocations'|'inputErrors';
 export type InputCaptureRequest={op:'inputs-capture';tabId:number;ownerId:string;includeContent?:boolean;notes?:string;includeCategories?:InputOutcomeCategory[]} & ({investigationId:string;expectedRevision:number}|{investigationId?:never;expectedRevision?:never});
 export interface InputOutcomeCapture {readonly schema:'stateatom.input-outcome-capture/1';readonly exportable:false;readonly executable:false;readonly capturedAt:number;readonly diagnosticRaw:string;readonly outcomes:Readonly<Record<string,unknown>> & {readonly schema:'stateatom.handoff-input-outcomes/1';readonly exportable:false;readonly executable:false;readonly binding:Readonly<{status:'not-recorded'|'unjoined'|'capture-context-matched';reasons:readonly string[]}>};readonly limitations:readonly string[]}
+/** Private stopped-window acquisition; importing this data never creates an owner. */
+export type ObservationCaptureRequest={op:'observation-capture';tabId:number;ownerId:string;windowId:string;inputOwnerId?:string;includeContent?:boolean;notes?:string;includeCategories?:InputOutcomeCategory[]} & ({investigationId:string;expectedRevision:number}|{investigationId?:never;expectedRevision?:never});
+export interface ProductionObservationCapture {readonly schema:'stateatom.production-observation-capture/1';readonly exportable:false;readonly executable:false;readonly capturedAt:number;readonly inputCapture:InputOutcomeCapture;readonly observation:Readonly<Record<string,unknown>>;readonly binding:Readonly<{status:'capture-context-matched'|'unjoined';reasons:readonly string[];dependency:'unknown'}>;readonly limitations:readonly string[]}
 export type AtomOperation=
  |InputCaptureRequest
+ |ObservationCaptureRequest
  |{op:'observation-start';tabId:number;ownerId:string}
- |{op:'observation-read'|'observation-stop'|'observation-clear';tabId:number;ownerId:string;windowId:string}
+ |{op:'observation-read'|'observation-stop'|'observation-clear'|'observation-checkpoint';tabId:number;ownerId:string;windowId:string}
  |{op:'actions-arm';tabId:number;ownerId:string}
  |{op:'actions-read'|'actions-cancel'|'actions-clear';tabId:number;ownerId:string;traceId:string}
  |{op:'production-begin'|'production-close'|'production-revoke';tabId:number;ownerId:string}
@@ -62,6 +66,7 @@ export interface AtomMessage {version:1;id:string;session:string;payload:AtomOpe
 export interface AtomReply {version:1;id:string;session:string;ok:boolean;result?:unknown;error?:string;code?:string}
 export interface AtomEvent {event:'selection'|'state-invalidated';tabId:number}
 export interface AtomClient {
+ request(payload:ObservationCaptureRequest,options?:{signal?:AbortSignal}):Promise<ProductionObservationCapture>;
  request(payload:InputCaptureRequest,options?:{signal?:AbortSignal}):Promise<InputOutcomeCapture>;
  request(payload:{op:'save-handoff';raw:string},options?:{signal?:AbortSignal}):Promise<HandoffSaveResult>;
  request(payload:{op:'list-handoffs'},options?:{signal?:AbortSignal}):Promise<HandoffListResult>;

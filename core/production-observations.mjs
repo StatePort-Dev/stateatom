@@ -6,7 +6,7 @@ const opaque=s=>typeof s==='string'&&/^[A-Za-z0-9._:-]{1,160}$/.test(s),uuid=s=>
 const date=n=>typeof n==='number'&&Number.isFinite(n)&&n>=0&&n<=DATE_MAX;
 const methods=new Set(['GET','HEAD','POST','PUT','PATCH','DELETE','OPTIONS','CONNECT','TRACE']);
 const categories=new Set(['Error','TypeError','ReferenceError','SyntaxError','RangeError','URIError','EvalError','AggregateError']);
-const reasons=new Set(['user','cancelled','navigation','tab-switch','permission-lost','inspector-lost','runtime-stopped','target-replaced','metadata-evicted','context-changed','record-limit','pending-limit','byte-limit','time-limit','clock-invalid']);
+const reasons=new Set(['user','cancelled','navigation','tab-switch','permission-lost','inspector-lost','runtime-stopped','target-replaced','target-unavailable','metadata-evicted','context-changed','record-limit','pending-limit','byte-limit','time-limit','clock-invalid']);
 const error=code=>Object.assign(Error(code),{code});
 function own(value,allowed,code='INVALID_OBSERVATION_FIELDS'){
  if(!value||typeof value!=='object'||Array.isArray(value)||![Object.prototype,null].includes(Object.getPrototypeOf(value)))throw error(code);
@@ -66,11 +66,12 @@ export function createProductionObservation(input){
    return append({kind:'error',id:state.windowId+':'+(++sequence),at:d.at,category:typeof d.category==='string'&&d.category.length<=80&&categories.has(d.category)?d.category:'Unknown',location},'errors',d.at);
   },
   checkpoint(value,context){
-   if(!active(context))return false;const d=fields(value,['at','node','changeKind','value']);if(!d||!time(d.at))return false;
+   if(!active(context))return false;const d=fields(value,['at','node','changeKind','value','readStartedAt']);if(!d||!time(d.at))return false;
+   if(Object.hasOwn(d,'readStartedAt')){if(!time(d.readStartedAt))return false;if(d.readStartedAt>d.at){gap('outOfOrder');return false;}}
    if(d.node!==target.node){gap('foreignContext');return false;}if(!['snapshot','attribute','text','children'].includes(d.changeKind)){gap('invalid');return false;}
    if(target.property==='disabled'&&Object.hasOwn(d,'value')&&typeof d.value!=='boolean'){gap('invalid');return false;}
    const projection=target.property==='text'?{state:'omitted',reason:'private-content'}:Object.hasOwn(d,'value')?{state:'included',value:d.value}:{state:'not-read'};
-   return append({kind:'dom',id:state.windowId+':'+(++sequence),at:d.at,node:target.node,property:target.property,changeKind:d.changeKind,value:projection},'checkpoints',d.at);
+   return append({kind:'dom',id:state.windowId+':'+(++sequence),at:d.at,node:target.node,property:target.property,changeKind:d.changeKind,mutationTime:'unobserved',readWindow:Object.hasOwn(d,'readStartedAt')?{startedAt:d.readStartedAt,completedAt:d.at}:null,value:projection},'checkpoints',d.at);
   },
   stop(reason='user'){if(!reasons.has(reason))throw error('INVALID_OBSERVATION_REASON');if(tick())end(reason,lastClock);return state;},
   clear(){pending.clear();identity=null;target=null;state=freeze(empty('deleted'));return state;},

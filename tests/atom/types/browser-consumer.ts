@@ -95,3 +95,13 @@ liveClient.request({op:'observation-start',tabId:1});
 liveClient.request({op:'observation-start',tabId:1,ownerId:'report-view',includeBody:true});
 // @ts-expect-error Start cannot accept a restored window identity.
 liveClient.request({op:'observation-start',tabId:1,ownerId:'report-view',windowId:'old'});
+
+liveClient.request({op:'observation-checkpoint',tabId:1,ownerId:'report-view',windowId:'opaque-window'});
+const observationCapture=await liveClient.request({op:'observation-capture',tabId:1,ownerId:'report-view',windowId:'opaque-window',inputOwnerId:'input-view'});
+const privateObservation:false=observationCapture.exportable;
+const originalInputCapture:'stateatom.input-outcome-capture/1'=observationCapture.inputCapture.schema;
+// @ts-expect-error Expected input revision cannot appear without its investigation.
+liveClient.request({op:'observation-capture',tabId:1,ownerId:'view',windowId:'w',expectedRevision:1});
+// @ts-expect-error A checkpoint never accepts a caller-observed value.
+liveClient.request({op:'observation-checkpoint',tabId:1,ownerId:'view',windowId:'w',value:false});
+void privateObservation;void originalInputCapture;

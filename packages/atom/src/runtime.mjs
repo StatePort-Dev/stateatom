@@ -1,5 +1,5 @@
 import {parseConnectionReceipt,assessProjectSetup,HELPER_PROTOCOL,HELPER_VERSION,HELPER_ID} from '../../../core/project-connection.mjs';
-import {createNativeProductionObservation,productionObservationTime} from './production-observation.mjs';
+import {createNativeProductionObservation,productionObservationTime,createObservationReadFence} from './production-observation.mjs';
 import {createResponseEditor} from './response-editor.mjs';
 import {createControlEditor} from './control-editor.mjs';
 import {appOrigin} from './origin-policy.mjs';
@@ -28,6 +28,8 @@ const chrome=platform.chrome,fetch=platform.fetch;
 const sourceMaps=createSourceMapSession({onChange:id=>notifyInvalidation(id),send:(id,m,p)=>chrome.debugger.sendCommand({tabId:id},m,p),fetch,permitted:origin=>platform.permittedOrigin?.(origin)??Promise.resolve(false),processArtifact:(...args)=>{if(typeof platform.parseSourceArtifact!=='function')throw atomError('SOURCE_PARSE_UNAVAILABLE','Source artifact parsing unavailable');return platform.parseSourceArtifact(...args);}});
 const synthetic=isDevelopmentOrigin;
 const nativeDOM=createNativeDOMQueue(),engine=createBrowserEngine(chrome);
+const observationSend=createObservationReadFence((id,method,params)=>chrome.debugger.sendCommand({tabId:id},method,params)),observationEngine=createBrowserEngine({debugger:{sendCommand:(source,method,params)=>observationSend(source.tabId,method,params)}});
+const identifyObservation=(id,...args)=>nativeDOM(id,()=>observationEngine.identifySelection(id,...args));
 const {observeDeep,deepExperiment}=engine;
 const identifySelection=(id,...args)=>nativeDOM(id,()=>engine.identifySelection(id,...args));
 let stopped=false,eventsClosed=false,shutdownPromise;const jobs=new Map(),eventJobs=new Set(),editors=new Map(),editorOwners=new Map(),inspectorClients=new Map();
@@ -51,10 +53,11 @@ async function ownMainCode(id,s,operation,role){if(s.readOnly)return;const j=s.c
 function codeState(s,options={}){return newCodeJournal(s.run,{debuggerSession:s.codeJournal?.debuggerSession,incarnation:workerIncarnation,...options});}
 function codeAnalysis(s){
  if(!s.analysis)return null;
- const edited=Number.isSafeInteger(s.inputEditedInspection)&&s.inputEditedInspection===s.inspectionGeneration;
+ const edited=Number.isSafeInteger(s.inputEditedInspection)&&s.inputEditedInspection===s.inspectionGeneration,checkpointChanged=Number.isSafeInteger(s.observationStaleInspection)&&s.observationStaleInspection===s.inspectionGeneration,changed=edited||checkpointChanged;
+ const checkpointReason=s.observationStaleKind==='checkpoint'?'Selected DOM checkpoint differs from this inspection; inspect again for a new execution snapshot':'The original selected context is retained for observation; this execution snapshot is historical';
  const codeJournal=journalView(s.analysis.codeJournal,s.codeJournal),profile=s.analysis.stateatom?.firstReadProfile;
- const staleProfile=profile&&(edited||codeJournal?.freshness==='Stale');
- return {...s.analysis,codeJournal,actionBindings:(s.analysis.actionBindings||[]).map(b=>edited||s.analysis.actionsInvalidated||s.analysis.actionContext?.sourceGeneration!==(s.sourceGeneration||0)?{...b,freshness:'Stale'}:b),...(s.analysis.stateatom?{stateatom:{...s.analysis.stateatom,...(edited?{runtime:{...s.analysis.stateatom.runtime,status:'Stale',reason:'Quick input editing changed this investigation; inspect again for a new execution snapshot'}}:{}),...(staleProfile?{firstReadProfile:{...profile,status:'Stale',freshness:'Stale',fullPath:false,reason:edited?'Input editing started; this execution observation is historical':'Code history changed or expired; inspect again'}}:{})}}:{})};
+ const staleProfile=profile&&(changed||codeJournal?.freshness==='Stale');
+ return {...s.analysis,codeJournal,actionBindings:(s.analysis.actionBindings||[]).map(b=>changed||s.analysis.actionsInvalidated||s.analysis.actionContext?.sourceGeneration!==(s.sourceGeneration||0)?{...b,freshness:'Stale'}:b),...(s.analysis.stateatom?{stateatom:{...s.analysis.stateatom,...(changed?{runtime:{...s.analysis.stateatom.runtime,status:'Stale',reason:checkpointChanged?checkpointReason:'Quick input editing changed this investigation; inspect again for a new execution snapshot'}}:{}),...(staleProfile?{firstReadProfile:{...profile,status:'Stale',freshness:'Stale',fullPath:false,reason:checkpointChanged?checkpointReason:edited?'Input editing started; this execution observation is historical':'Code history changed or expired; inspect again'}}:{})}}:{})};
 }
 function codeEligible(id,s,store=s.codeJournal){return tabs[id]===s&&s.attached===true&&allowed(s.origin)&&s.codeJournal===store;}
 function acquireCode(id,s,store,scriptId){
@@ -137,16 +140,18 @@ function retireRestoredObservation(value){
   return value.status==='recording'?{...value,status:'stopped',endedAt:null,stopReason:'context-changed',records:value.records.map(r=>r.kind==='network'&&r.completion==='pending'?{...r,completion:'unobserved'}:r)}:value;
  }catch{return null;}
 }
+function retainsObservationSelection(id,s){const owner=observationOwners.get(id),before=owner?.selectionContext,current=inputSelectionContext(id,s);return owner?.state===s&&!!before&&!!current&&['tabId','origin','run','document','node','frameId','selector','property','selectionObservedAt','inspectionGeneration'].every(k=>before[k]===current[k]);}
 function observationView(id,context){const owner=observationOwners.get(id);if(owner&&!sameActionOwner(owner,context))return {status:'owned-elsewhere',exportable:false,executable:false};return owner?syncObservation(id,owner):tabs[id]?.productionObservation;}
 function syncObservation(id,owner){
  const snapshot=owner.controller?.snapshot();if(!snapshot)return null;
- if(snapshot.status!=='recording'){clearTimeout(owner.timer);owner.timer=null;}
+ if(snapshot.status!=='recording'){clearTimeout(owner.timer);owner.timer=null;owner.verify=null;}
  if(tabs[id]===owner.state)owner.state.productionObservation=snapshot;
  return snapshot;
 }
 function stopObservation(id,reason,forget=false,expected=null){
  const owner=observationOwners.get(id);if(!owner||expected&&owner!==expected)return;
  clearTimeout(owner.timer);owner.timer=null;
+ if(owner.controller&&['target-replaced','target-unavailable'].includes(reason)&&tabs[id]===owner.state){owner.state.observationStaleInspection=owner.state.inspectionGeneration;owner.state.observationStaleKind='refresh';}
  owner.controller?.stop(reason);syncObservation(id,owner);
  if(forget||!owner.controller)observationOwners.delete(id);
 }
@@ -157,28 +162,51 @@ function collectObservation(id,source,method,p){
  const before=owner.state.productionObservation;owner.controller.event(source,method,p);const after=syncObservation(id,owner);
  if(before!==after)void persist().then(()=>notifyInvalidation(id)).catch(()=>{});
 }
+function observationCapturePolicyContext(id,context){const owner=observationOwners.get(id);return {disposed:stopped,busy:!!tabs[id]?.busy,observationInspector:!!context.inspector?.active&&inspectorClients.get(context.session)===context.inspector,foreignObservation:!!owner&&!sameActionOwner(owner,context)};}
+async function captureObservation(id,m,context,owner){
+ const observation=syncObservation(id,owner);if(observation.status==='recording')throw atomError('OBSERVATION_RECORDING','Stop the observation before preparing its report');
+ const s=tabs[id],selection=s?.selection,stale=s?.stale,contextBefore=inputSelectionContext(id,s),editorBefore=JSON.stringify(inputsSnapshot(id));
+ const current=()=>{assertInputClient(context);if(context.signal.aborted)throw atomError('CANCELLED');if(stopped||tabs[id]!==s||observationOwners.get(id)!==owner||owner.controller.snapshot()!==observation||s.selection!==selection||s.stale!==stale||JSON.stringify(inputSelectionContext(id,s))!==JSON.stringify(contextBefore)||JSON.stringify(inputsSnapshot(id))!==editorBefore)throw atomError('STALE_CAPTURE','Observation or input context changed; prepare again');};
+ current();
+ const inputContext={...context,ownerId:m.inputOwnerId??context.ownerId},inputs=await captureInputs(id,m,inputContext);current();
+ const reasons=[];
+ if(!contextBefore)reasons.push('selected-context-missing');
+ else if(!owner.selectionContext||JSON.stringify(contextBefore)!==JSON.stringify(owner.selectionContext))reasons.push('selected-context-differs');
+ if(s.stale)reasons.push('selected-context-stale');
+ const binding=Object.freeze({status:reasons.length?'unjoined':'capture-context-matched',reasons:Object.freeze(reasons),dependency:'unknown'});
+ const result=Object.freeze({schema:'stateatom.production-observation-capture/1',exportable:false,executable:false,capturedAt:productionObservationTime(),inputCapture:inputs,observation,binding,limitations:Object.freeze(['Stored stopped window and exact diagnostic/input acquisition only; no new browser observation or permission.','Checkpoints are sampled native reads, not DOM mutation timestamps or complete change history.','A matching selected context is not request/action causality, execution, application consumption, restoration or a verified fix.','Private acquisition data, not a public file, saved report or executable state.'])});
+ if(new TextEncoder().encode(JSON.stringify(result)).length>2097152)throw atomError('CAPTURE_LIMIT','Observation capture reply exceeds2MiB');return result;
+}
 async function observationOperation(id,m,context){
  assertInputClient(context);if(!context.inspector?.active||!context.ownerId)throw atomError('INSPECTOR_DISCONNECTED');
  const previous=observationOwners.get(id);
  if(previous&&!sameActionOwner(previous,context))throw atomError('BUSY','Observation belongs to another inspector');
  if(m.op!=='observation-start'){
   if(!previous?.controller||previous.controller.snapshot().windowId!==m.windowId)throw atomError('STALE_TARGET','Observation replaced or closed');
-  if(m.op==='observation-stop')stopObservation(id,'user');
+  if(m.op==='observation-capture')return captureObservation(id,m,context,previous);
+  if(m.op==='observation-checkpoint'){
+   if(previous.controller.snapshot().status!=='recording')throw atomError('OBSERVATION_STOPPED','Start a new observation for another checkpoint');
+   let native;try{native=await previous.verify();}catch(e){if(observationOwners.get(id)!==previous)throw atomError('STALE_TARGET');stopObservation(id,e.code==='OBSERVATION_TARGET_UNAVAILABLE'?'target-unavailable':'target-replaced',false,previous);await persist();return previous.controller.snapshot();}
+   if(context.signal.aborted)throw atomError('CANCELLED');if(observationOwners.get(id)!==previous)throw atomError('STALE_TARGET');if(previous.controller.snapshot().status!=='recording')throw atomError('OBSERVATION_STOPPED');
+   if(native.value!==previous.state.selection?.value){previous.state.observationStaleInspection=previous.state.inspectionGeneration;previous.state.observationStaleKind='checkpoint';}
+   previous.controller.checkpoint({at:native.observedAt,readStartedAt:native.readStartedAt,node:native.node,changeKind:'snapshot',...(native.property==='disabled'?{value:native.value}:{})});
+  }
+  else if(m.op==='observation-stop')stopObservation(id,'user');
   else if(m.op==='observation-clear'){clearTimeout(previous.timer);previous.controller.clear();syncObservation(id,previous);observationOwners.delete(id);}
   else if(previous.controller.snapshot().status==='recording'){
-   try{await previous.verify();}catch(e){if(observationOwners.get(id)!==previous)throw atomError('STALE_TARGET','Observation replaced while reading');stopObservation(id,'target-replaced',false,previous);}
+   try{await previous.verify();}catch(e){if(observationOwners.get(id)!==previous)throw atomError('STALE_TARGET','Observation replaced while reading');stopObservation(id,e.code==='OBSERVATION_TARGET_UNAVAILABLE'?'target-unavailable':'target-replaced',false,previous);}
   }
-  const result=previous.controller.snapshot();syncObservation(id,previous);await persist();if(m.op==='observation-read'&&(observationOwners.get(id)!==previous||previous.controller.snapshot()!==result))throw atomError('STALE_TARGET','Observation changed while saving');notifyInvalidation(id);return result;
+  const result=previous.controller.snapshot();syncObservation(id,previous);await persist();if(['observation-read','observation-checkpoint'].includes(m.op)&&(observationOwners.get(id)!==previous||previous.controller.snapshot()!==result))throw atomError('STALE_TARGET','Observation changed while saving');notifyInvalidation(id);return result;
  }
  if(previous&&!previous.controller||previous?.controller?.snapshot().status==='recording')throw atomError('BUSY','Stop the current observation first');
  const s=state(id),selected=s.selection,run=s.run,inspection=s.inspectionGeneration;
  const contexts=Object.values(s.codeJournal?.contexts||{}).filter(c=>c.isDefault===true&&c.frameId===s.mainFrameId);
  const main=contexts.length===1?contexts[0]:null;
  if(!main?.uniqueId||!s.mainLoaderId||!selected?.domIdentity||!s.analysis||s.stale)throw atomError('OBSERVATION_REQUIRED','Inspect a current native MAIN target first');
- const owner={session:context.session,client:context.inspector,ownerId:context.ownerId,state:s,main,controller:null,timer:null};
+ const owner={session:context.session,client:context.inspector,ownerId:context.ownerId,state:s,main,selectionContext:inputSelectionContext(id,s),controller:null,timer:null};
  observationOwners.set(id,owner);
  const guard=()=>{assertInputClient(context);if(stopped||context.signal.aborted||observationOwners.get(id)!==owner||tabs[id]!==s||s.run!==run||s.selection!==selected||s.inspectionGeneration!==inspection||!s.attached||platform.owns?.(id)===false||s.codeJournal?.contexts?.[main.id]?.uniqueId!==main.uniqueId)throw atomError('STALE_TARGET','Observation context changed');};
- owner.verify=async()=>{guard();const facts=await capabilityContext(id,{},context);guard();if(!facts.permission||facts.lease!=='owned')throw atomError('ORIGIN_DENIED');const native=await identifySelection(id,selected.selector,selected.property);guard();if(!native||native.document!==selected.domIdentity.document||native.node!==selected.domIdentity.node)throw atomError('STALE_TARGET','Selected native node changed');return {...native,observedAt:productionObservationTime()};};
+ owner.verify=async()=>{guard();const facts=await capabilityContext(id,{},context);guard();if(!facts.permission||facts.lease!=='owned')throw atomError('ORIGIN_DENIED');const readStartedAt=productionObservationTime(),native=await identifyObservation(id,selected.selector,selected.property);guard();if(!native)throw atomError('OBSERVATION_TARGET_UNAVAILABLE','Selected native target could not be verified');if(native.document!==selected.domIdentity.document||native.node!==selected.domIdentity.node)throw atomError('STALE_TARGET','Selected native node changed');return {...native,readStartedAt,observedAt:productionObservationTime()};};
  context.cancelObservation=()=>{if(observationOwners.get(id)===owner)stopObservation(id,'cancelled',true);};
  try{
   const native=await owner.verify();guard();
@@ -427,7 +455,7 @@ async function refreshActionSnapshot(id,s,signal){
  await refreshActionSources(s,signal);if(!current())throw Error('Stale action source result');
  if(!selected||!analysis?.actionContext)return;
  const before=await identifySelection(id,selected.selector,selected.property);if(!current())throw Error('Stale action identity result');
- const stale=reason=>{recordStale(s,reason);beginInspection(s,{keepDiagnostic:true});};
+ const stale=reason=>{if(retainsObservationSelection(id,s)){s.observationStaleInspection=s.inspectionGeneration;s.observationStaleKind='refresh';return;}recordStale(s,reason);beginInspection(s,{keepDiagnostic:true});};
  if(!isSameSelection(selected.domIdentity,before)){stale('Selected DOM node or value changed; inspect again');return;}
  if(!s.attached)return;
  const identity=analysis.graph?.identity||analysis.actionContext;
@@ -502,8 +530,8 @@ async function operation(m,context){const signal=context.signal;await ready;
  try{
   let result;const id=m.tabId;
   // Historical capture skips browser refresh, not the local unsaved-cache limit.
-  if(m.op==='inputs-capture'&&tabs[id])cap(tabs[id]);
-  const capabilityState=m.op==='inputs-capture'?inputCapturePolicyContext(id,context):id?await capabilityContext(id,m,context):{disposed:stopped};
+  if(['inputs-capture','observation-capture'].includes(m.op)&&tabs[id])cap(tabs[id]);
+  const capabilityState=m.op==='inputs-capture'?inputCapturePolicyContext(id,context):m.op==='observation-capture'?observationCapturePolicyContext(id,context):id?await capabilityContext(id,m,context):{disposed:stopped};
   if(signal.aborted)throw atomError('CANCELLED');
   const decision=operationPolicy(m.op,capabilityState);if(!decision.available)throw atomError(decision.code,decision.reason);
   publishAvailability=['experiment','deep-experiment','restore'].includes(m.op);
@@ -546,7 +574,7 @@ async function operation(m,context){const signal=context.signal;await ready;
   else if(m.op==='inputs-close'){requireInputOwner(id,context);const editor=editors.get(id);if(m.investigationId&&editor?.snapshot().investigationId!==m.investigationId)throw atomError('STALE_INVESTIGATION');result=await stopInputs(id,'Editor closed');await persist();}
   else if(m.op==='property'){if(state(id).property!==m.property)stopObservation(id,'target-replaced');await stopActionTrace(id,'Property changed');if(!['text','disabled'].includes(m.property))throw Error('Unsupported property');const s=state(id);if(s.property!==m.property){await stopInputs(id,'Selected property changed');recordStale(s,'Property changed; inspect again');beginInspection(s);}s.property=m.property;result={property:m.property};}
   else if(m.op==='inspect-selector'){if(typeof m.selector!=='string'||m.selector.length>1024)throw Error('Selector limit');const tab=await chrome.tabs.get(id);if(!allowed(tab.url))throw Error('Origin denied');result=await inspect(id,m.selector,context);}
-  else if(m.op==='state'){const s=state(id);cap(s);const editor=editors.get(id),editorActive=editor&&!editor.snapshot().closed;const refreshLegacy=m.refreshDeep&&!editorActive&&!['starting','picking','resolving'].includes(picker.snapshot(id).status);if(m.refreshDeep&&editorActive){const generation=s.inspectionGeneration,run=s.run,selection=s.selection;try{await editor.read();}catch{if(tabs[id]===s&&editors.get(id)===editor&&s.inspectionGeneration===generation&&s.run===run&&s.selection===selection){recordStale(s,'Input editor target changed; inspect again');beginInspection(s,{keepDiagnostic:true});}}}if(refreshLegacy&&operationPolicy('inspect-selector',capabilityState).available){await refreshActionSnapshot(id,s,signal);}if(refreshLegacy&&operationPolicy('inspect-selector',capabilityState).available&&s.analysis?.stateatom&&s.selection&&!s.analysis.stateatom.firstReadProfile){const generation=s.inspectionGeneration,run=s.run;const current=await observeDeep(id,s.selection,s.property||'text',{includeTrace:s.analysis.capabilities?.sourceResolver==='open-ide',beforeMainScript:(op,role)=>ownMainCode(id,s,op,role)});if(tabs[id]!==s||s.inspectionGeneration!==generation||s.run!==run)throw Error('Stale inspection result');if(current.trace?.status==='Stale'){s.analysis.stateatom.runtime.status='Stale';s.analysis.stateatom.runtime.reason=current.trace.reason;}}result={...s,productionObservation:observationView(id,context),inputs:inputsSnapshot(id),inputHistory:undefined,inputRequests:undefined,inputIntervened:undefined,picker:picker.snapshot(id),productionChange:capabilityState.productionChange||{schemaVersion:1,active:false,target:null,grantId:null,remainingMs:0,operations:[],reason:'Two confirmations required',cleanup:'none'},projectSetup:assessProjectSetup({paired:pairing?.origin===new URL(capabilityState.url||'about:blank').origin&&(!s.analysis||s.analysis.capabilities?.sourceResolver==='open-ide'),selection:s.selection,analysis:s.analysis,sourceMaps:sourceMaps.snapshot(id)}),connection:{...(capabilityState.connection||{origin:new URL(capabilityState.url||'about:blank').origin,mode:'read-only',actions:[]}),source:pairing?.origin===new URL(capabilityState.url||'about:blank').origin?{url:pairing.url}:null},capabilityPolicy:describeCapabilities(await capabilityContext(id,{},context)),sourceMaps:sourceMaps.snapshot(id),analysis:codeAnalysis(s),codeJournal:undefined,documentPolicies:undefined,fetchBindings:undefined,samples:undefined,pending:undefined,bufferBytes:JSON.stringify(s.requests).length,sampleEntries:undefined,sampleBytes:s.samples.join('').length};}
+  else if(m.op==='state'){const s=state(id);cap(s);const editor=editors.get(id),editorActive=editor&&!editor.snapshot().closed;const refreshLegacy=m.refreshDeep&&!editorActive&&!retainsObservationSelection(id,s)&&!['starting','picking','resolving'].includes(picker.snapshot(id).status);if(m.refreshDeep&&editorActive){const generation=s.inspectionGeneration,run=s.run,selection=s.selection;try{await editor.read();}catch{if(tabs[id]===s&&editors.get(id)===editor&&s.inspectionGeneration===generation&&s.run===run&&s.selection===selection){recordStale(s,'Input editor target changed; inspect again');beginInspection(s,{keepDiagnostic:true});}}}if(refreshLegacy&&operationPolicy('inspect-selector',capabilityState).available){await refreshActionSnapshot(id,s,signal);}if(refreshLegacy&&operationPolicy('inspect-selector',capabilityState).available&&s.analysis?.stateatom&&s.selection&&!s.analysis.stateatom.firstReadProfile){const generation=s.inspectionGeneration,run=s.run;const current=await observeDeep(id,s.selection,s.property||'text',{includeTrace:s.analysis.capabilities?.sourceResolver==='open-ide',beforeMainScript:(op,role)=>ownMainCode(id,s,op,role)});if(tabs[id]!==s||s.inspectionGeneration!==generation||s.run!==run)throw Error('Stale inspection result');if(current.trace?.status==='Stale'){s.analysis.stateatom.runtime.status='Stale';s.analysis.stateatom.runtime.reason=current.trace.reason;}}result={...s,productionObservation:observationView(id,context),inputs:inputsSnapshot(id),inputHistory:undefined,inputRequests:undefined,inputIntervened:undefined,picker:picker.snapshot(id),productionChange:capabilityState.productionChange||{schemaVersion:1,active:false,target:null,grantId:null,remainingMs:0,operations:[],reason:'Two confirmations required',cleanup:'none'},projectSetup:assessProjectSetup({paired:pairing?.origin===new URL(capabilityState.url||'about:blank').origin&&(!s.analysis||s.analysis.capabilities?.sourceResolver==='open-ide'),selection:s.selection,analysis:s.analysis,sourceMaps:sourceMaps.snapshot(id)}),connection:{...(capabilityState.connection||{origin:new URL(capabilityState.url||'about:blank').origin,mode:'read-only',actions:[]}),source:pairing?.origin===new URL(capabilityState.url||'about:blank').origin?{url:pairing.url}:null},capabilityPolicy:describeCapabilities(await capabilityContext(id,{},context)),sourceMaps:sourceMaps.snapshot(id),analysis:codeAnalysis(s),codeJournal:undefined,documentPolicies:undefined,fetchBindings:undefined,samples:undefined,pending:undefined,bufferBytes:JSON.stringify(s.requests).length,sampleEntries:undefined,sampleBytes:s.samples.join('').length};}
   else if(m.op==='open'||m.op==='definitions'||m.op==='references'){const s=state(id);result=await bridge(m.op,{origin:s.origin,...m.source},signal);}
   else if(m.op==='experiment'){result=await experiment(id,m.field,m.value,m.actions,m.controlPath,signal);}
   else if(m.op==='detach'){stopObservation(id,'context-changed');await stopActionTrace(id,'Debugger detached');await stopInputs(id,'Debugger detached');await picker.cancel(id,'Debugger detached').catch(()=>{});sourceMaps.invalidate(id,'Debugger detached');const s=state(id);recordStale(s,'Debugger detached; inspect again');await chrome.debugger.detach({tabId:id});s.attached=false;journalGap(s.codeJournal,'detach');s.fetchBindings=newFetchBindings(s.run);s.override=null;s.analysis=null;s.experiment=null;beginInspection(s);s.events.push({detach:'explicit user action'});await persist();result={detached:true};}

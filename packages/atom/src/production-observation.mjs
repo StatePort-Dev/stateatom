@@ -4,6 +4,11 @@ import {createProductionObservation} from '../../../core/production-observations
 // Epoch milliseconds on the host monotonic high-resolution clock. Cross-clock
 // drift is still a gap; no rounding, tolerance or receipt-time substitution.
 export const productionObservationTime=(clock=globalThis.performance)=>clock.timeOrigin+clock.now();
+const observationReads=new Set(['DOM.enable','DOM.getDocument','DOM.querySelector','DOM.describeNode','DOM.pushNodesByBackendIdsToFrontend']);
+export function createObservationReadFence(send){
+ if(typeof send!=='function')throw Object.assign(Error('INVALID_PLATFORM'),{code:'INVALID_PLATFORM'});
+ return async(id,method,params={})=>{if(!Number.isSafeInteger(id)||id<1||!observationReads.has(method))throw Object.assign(Error('Observation read command unavailable'),{code:'CAPABILITY_DENIED'});return send(id,method,params);};
+}
 export function createNativeProductionObservation({identity,target,loader,contextId,now=Date.now}){
  if(typeof loader!=='string'||!loader||loader.length>160||!Number.isSafeInteger(contextId)||contextId<1)throw Object.assign(Error('OBSERVATION_REQUIRED'),{code:'OBSERVATION_REQUIRED'});
  const ledger=createProductionObservation({identity,target,now}),pending=new Map();

@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.55
+
+- Retain observation selection only for its exact inspected occurrence; an older
+  stopped window cannot suppress normal freshness checks after a new inspection.
+  Keep the before-Start Refresh race and existing worker criteria covered.
+- A native target that cannot be verified stops as target-unavailable, without
+  inventing a replacement or a sampled value. Preserve unknown scope explicitly.
+- .54 was a local intermediate build; it has no fresh full/native qualification.
+
+## 0.1.0-candidate.20261021.54
+
+- Keep an owned observation's original selected context through automatic inspector
+  Refresh, including a refresh already in flight at Start. A sampled value change
+  marks the earlier execution snapshot Stale without retargeting or clearing it.
+- Existing Stale copy distinguishes a changed DOM checkpoint from input editing;
+  no new source/execution claim or visual/layout/token change. Release the native
+  verifier closure on Stop while retaining bounded data for review.
+- Preserve53's real native second-checkpoint failure; normal metadata/model passes
+  do not establish a working dynamic checkpoint or handoff flow.
+
+## 0.1.0-candidate.20261021.53
+
+- Add explicit private selected-node checkpoints, with the actual native read
+  interval and DOM mutation time unobserved. Retain boolean disabled snapshots;
+  text stays omitted. Ordinary Read polling adds no checkpoint rows.
+- Fence collector DOM commands separately from script/body/actor/cache/override
+  commands, including when editing is separately allowed.
+- Add private stopped-window acquisition with the unchanged exact diagnostic/input
+  reply, original clocks and explicit context consistency. Same-inspector input
+  view/revision checks remain; late Clear/replacement/cancel cannot publish a capture.
+  It is not a public report or resumable state. Product controls/profile/reader
+  remain pending P04. No shared visual/token changes.
+
 ## 0.1.0-candidate.20261021.52
 
 - Keep cleanup writes independent of a delayed prior write. A superseded write
