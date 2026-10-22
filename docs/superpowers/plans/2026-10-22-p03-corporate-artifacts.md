@@ -49,7 +49,13 @@ Files: `packages/atom/src/source-map-session.mjs`, `source-map-ui.mjs` and a sma
 
 Files: dedicated HTTPS source-access integration driver/fixture, exact current package metadata and record83/task index/status/roadmap.
 
-- [ ] Register ordinary-account synthetic HTTPS cases before running: valid exact manifest/ZIP, separate artifact origin, real native deny/grant/revoke,403, cross-origin redirect, HTML SSO, offline/VPN-equivalent network loss, cancellation, target switch during prompt and local ZIP fallback.
-- [ ] Execute both exact MV3 hosts, without app-target test CDP or TLS bypass. Assert unchanged app state and production permission, credential/referrer omission and no forbidden endpoint/source-body export.
-- [ ] Run one whole-P03 review and one bounded correction pass if needed, with current hashes/results and preserved failures. No second review loop or whole-project audit.
-- [ ] Accept only demonstrated criteria; otherwise keep exact pending gates. Update dependencies and report one next unfinished item, then local commit.
+- [x] Register ordinary-account synthetic HTTPS cases before running: valid exact manifest/ZIP, separate artifact origin, real native deny/grant/revoke,403, cross-origin redirect, HTML SSO, offline/VPN-equivalent network loss, cancellation, target switch during prompt and local ZIP fallback.
+- [x] Execute both exact MV3 hosts, without app-target test CDP or TLS bypass. Assert unchanged app state and production permission, credential/referrer omission and no forbidden endpoint/source-body export.
+- [x] Run one whole-P03 review and one bounded correction pass if needed, with current hashes/results and preserved failures. No second review loop or whole-project audit.
+- [x] Accept only demonstrated criteria; otherwise keep exact pending gates. Update dependencies and report one next unfinished item, then local commit.
+
+
+Final scoped acceptance: completion85 and verification47; ONE review/one correction,
+2139source/113focused/native48/types2/admission9/build.46 backend27 retained on exact
+workers. Initial long app prompt still requires explicit Reopen+Attach; all failures
+retained. Next P04 after completed F02/U03/U06. No human gate or publication.

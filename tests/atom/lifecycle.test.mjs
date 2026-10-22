@@ -2,9 +2,9 @@ import test from 'node:test';import assert from 'node:assert/strict';
 import {createAtomRuntime} from '../../packages/atom/src/runtime.mjs';
 import {createChromePlatform,createDebuggerBroker,createEventHub} from '../../packages/atom/src/platform.mjs';
 const message=p=>({version:1,id:crypto.randomUUID(),session:'test',payload:p});
-function fixture({getTabs=async()=>[],grants,initial={}}={}){
+function fixture({getTabs=async()=>[],grants,initial={},detach=async()=>{},notify=async()=>{}}={}){
  const data={'stateport.atom.v1.connections':[{origin:'http://127.0.0.1:4173',mode:'development',actions:['cache','reload','override','replay']}],...initial},calls=[];const area={async get(keys){return Object.fromEntries(keys.filter(k=>k in data).map(k=>[k,data[k]]));},async set(v){Object.assign(data,v);}};
- const api={permissions:{contains:async()=>true},runtime:{id:'test',sendMessage:async()=>{}},storage:{local:area,session:area},tabs:{query:getTabs,get:async id=>({id,url:'http://127.0.0.1:4173/react/'}),reload:async()=>calls.push('reload'),onUpdated:{addListener(){},removeListener(){}}},debugger:{attach:async()=>calls.push('attach'),detach:async()=>calls.push('detach'),sendCommand:async(_,m)=>{calls.push(m);return m==='Page.getFrameTree'?{frameTree:{frame:{id:'frame'}}}:{};}},scripting:{executeScript:async()=>{calls.push('script');return[];}}};
+ const api={permissions:{contains:async()=>true},runtime:{id:'test',sendMessage:notify},storage:{local:area,session:area},tabs:{query:getTabs,get:async id=>({id,url:'http://127.0.0.1:4173/react/'}),reload:async()=>calls.push('reload'),onUpdated:{addListener(){},removeListener(){}}},debugger:{attach:async()=>calls.push('attach'),detach:async()=>{calls.push('detach');await detach();},sendCommand:async(_,m)=>{calls.push(m);return m==='Page.getFrameTree'?{frameTree:{frame:{id:'frame'}}}:{};}},scripting:{executeScript:async()=>{calls.push('script');return[];}}};
  const events=createEventHub(),broker=createDebuggerBroker(api.debugger),platform=createChromePlatform(api,{events,broker,capabilities:grants});return {data,calls,broker,events,platform,runtime:createAtomRuntime(platform)};
 }
 test('restored metadata is Stale and cannot restore leases or dangerous actions',async()=>{
@@ -53,4 +53,22 @@ test('shutdown keeps owned Fetch event handling alive until in-flight cleanup se
 test('tab removal arriving during asynchronous startup cannot resurrect saved tab metadata',async()=>{
  const f=fixture();let restore;const pending=new Promise(r=>restore=r);f.platform.chrome.storage.session.get=()=>pending;
  await new Promise(r=>setTimeout(r,0));f.events.emit({type:'removed',tabId:1});restore({tabs:{1:{run:'removed-document',attached:false,events:[],requests:[],pending:{},samples:[],sampleEntries:{}}}});await f.runtime.ready;await new Promise(r=>setTimeout(r,0));const s=await f.runtime.request(message({op:'state',tabId:1}));assert.notEqual(s.run,'removed-document');await f.runtime.shutdown();
+});
+
+
+// Controlled native cleanup/model UI refresh, not installed permission acceptance.
+for(const foreignReplacement of[false,true])test('permission cleanup republishes current attach availability; foreign replacement '+foreignReplacement,async t=>{
+ let release,entered,foreign;const enteredPromise=new Promise(r=>entered=r),gate=new Promise(r=>release=r),notifications=[];
+ const f=fixture({detach:async()=>{entered();await gate;},notify:async m=>{if(m.event==='state-invalidated')notifications.push(m);}});
+ t.after(async()=>{release();await foreign?.release();await f.runtime.shutdown();});
+ const request=op=>f.runtime.request(message({op,tabId:1}));await request('attach');notifications.length=0;
+ f.events.emit({type:'permissions-removed'});await enteredPromise;
+ let displayed;const renderNotifications=async()=>{while(notifications.length){notifications.shift();const s=await request('state');displayed=s.capabilityPolicy.features['basic.attach-read-only'];assert.equal(s.attached,false);assert.equal(s.analysis,null);assert.equal(s.productionChange.active,false);}};
+ await renderNotifications();assert.equal(displayed.code,'BUSY','The actual initial notification can arrive during native release');
+ release();await new Promise(r=>setTimeout(r,0));await new Promise(r=>setTimeout(r,0));
+ if(foreignReplacement){foreign=await f.broker.acquire({tabId:1,owner:'capture',capabilities:['read']});}
+ const current=await request('state');assert.equal(current.capabilityPolicy.features['basic.attach-read-only'].available,!foreignReplacement);
+ assert(notifications.length>0,'The inspector needs a post-cleanup refresh; a direct state read alone does not update it');
+ await renderNotifications();assert.equal(displayed.available,!foreignReplacement);if(foreignReplacement)assert.equal(displayed.code,'BUSY');
+ assert.equal(f.calls.filter(m=>m==='attach').length,1,'Cleanup must not reattach or grant anything automatically');assert(!f.calls.includes('script')&&!f.calls.includes('reload'));
 });

@@ -3030,16 +3030,21 @@
         "docs/testing/https-source-environment.md",
         "packages/atom/src/source-access-error.mjs",
         "tests/atom/source-access-errors.test.mjs",
-        "tests/integration/source-access-errors-native.mjs"
+        "tests/integration/source-access-errors-native.mjs",
+        "tests/integration/source-access-https-native.mjs",
+        "tests/helpers/source-access-https-fixture.mjs",
+        "tests/helpers/source-access-native-desktop.mjs",
+        "tests/atom/lifecycle.test.mjs"
       ],
       "existing_commands": [
         "npm run verify:production-source-mapping",
         "node tests/integration/source-access-environment.mjs <exact-atom-handoff.json>",
         "node tests/helpers/source-access-tls-fixture.mjs",
-        "node tests/integration/source-access-errors-native.mjs <exact-atom-handoff.json>"
+        "node tests/integration/source-access-errors-native.mjs <exact-atom-handoff.json>",
+        "node tests/integration/source-access-https-native.mjs <exact-atom-handoff.json>"
       ],
       "deliverable": "Real HTTPS permission/error/local-fallback evidence",
-      "status": "in-progress",
+      "status": "complete",
       "optional": false,
       "credited_existing_work": {
         "revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
@@ -3047,30 +3052,50 @@
         "validation": "../testing/production-source-mapping.md",
         "reconciliation": "13-scope-reconciliation.md"
       },
-      "remaining_acceptance": "Actual HTTPS/native permission grant, denial, revocation and corporate/local fallback acceptance",
-      "active_slice": "P03.3 actual trusted-HTTPS artifact access, prompt interruption/target switch, then ONE whole-P03 review",
-      "execution_record": "83-p03-https-artifact-access.md",
+      "remaining_acceptance": [],
+      "active_slice": null,
+      "execution_record": "85-p03-trusted-https-workflow.md",
       "implementation_plan": "../superpowers/plans/2026-10-22-p03-corporate-artifacts.md",
       "current_checkpoint": {
-        "id": "P03.2-safe-artifact-errors-local-fallback",
-        "status": "complete-bounded-errors-fallback-not-full-P03",
-        "record": "84-p03-artifact-errors-and-local-fallback.md",
-        "candidate": "0.1.0-candidate.20261021.45 / UI0.2.0-candidate.20261018.2",
-        "verification": ".artifacts/p03/access-errors/verification45.json",
+        "id": "P03-whole-item-acceptance",
+        "status": "complete-within-finite-trusted-HTTPS-and-local-artifact-brief",
+        "record": "85-p03-trusted-https-workflow.md",
+        "candidate": "0.1.0-candidate.20261021.47 / UI0.2.0-candidate.20261018.2",
+        "handoff": ".artifacts/atom/2026-10-22T08-55-21-215Z/atom-handoff.json",
+        "verification": ".artifacts/p03/whole-review/verification47.json",
         "checks": {
-          "source": 2134,
-          "focused": 42,
-          "new_regressions": 21,
-          "native_HTTP_errors_local_fallback": 22,
-          "native_parser": 86,
-          "native_permission_environment": 13,
+          "source": 2139,
+          "focused": 113,
+          "native_trusted_HTTPS_both_hosts": 48,
           "types": 2,
           "admission": 9,
-          "build": true
+          "build": true,
+          "review_focused": 53
         },
-        "full_P03_acceptance": false,
-        "next_item": "P03.3 actual trusted-HTTPS artifact access, prompt interruption/target switch, then ONE whole-P03 review",
-        "boundary": "Closed safe error categories, permission recheck, current inline local picker guidance. Candidate45 source2134/focused42/native HTTP22/parser86/native permissions13/types2/admission9/build PASS; shared UI/CSS/Workers unchanged. Separate HTTP/native-permission runs do not establish trusted HTTPS artifact acceptance. P03.1 TLS and long-prompt failures preserved;17/29 whole items unchanged; no SDK/publication/other repository/redesign/human gate."
+        "retained_production_backend": {
+          "candidate": ".46",
+          "checks": 27,
+          "worker_identity_equals_current": true,
+          "fresh_current_run": false
+        },
+        "retained_parser": {
+          "candidate": ".45",
+          "checks": 86,
+          "parser_assets_equal_current": true,
+          "fresh_current_run": false
+        },
+        "review": {
+          "count": 1,
+          "critical": 0,
+          "important": 0,
+          "minor": 1,
+          "minor_resolved": 1,
+          "correction_passes": 1
+        },
+        "full_P03_acceptance": true,
+        "whole_tasks_complete": 18,
+        "next_item": "P04 bounded post-start production observations after completed F02/U03/U06",
+        "boundary": "Finite synthetic ordinary trusted HTTPS app/separate artifact workflow complete after ONE review/correction. Current47 source2139/focused113/native48/types2/admission9/build PASS;46 backend27 retained on byte-identical workers,45 parser86 on unchanged assets. Actual native deny/grant/revoke/regrant, scoped errors/cancel/target switch and local fallback; no app action/production grant. Initial35s app prompt still needs explicit Reopen+Attach; no seamless or enterprise-provider claim. All failures and46 blank images preserved; current47 images readable. C06 bounded source path complete;18/29 tasks (~62% equal count), mandatory L02/A02/release gates open, A05 still mandatory/scoped complete. No SDK/publication/other repository/redesign/human blocker."
       },
       "completed_slices": [
         {
@@ -3113,12 +3138,79 @@
           "full_P03_acceptance": false,
           "next_item": "P03.3 actual trusted-HTTPS artifact access, prompt interruption/target switch, then ONE whole-P03 review",
           "boundary": "Closed safe error categories, permission recheck, current inline local picker guidance. Candidate45 source2134/focused42/native HTTP22/parser86/native permissions13/types2/admission9/build PASS; shared UI/CSS/Workers unchanged. Separate HTTP/native-permission runs do not establish trusted HTTPS artifact acceptance. P03.1 TLS and long-prompt failures preserved;17/29 whole items unchanged; no SDK/publication/other repository/redesign/human gate."
+        },
+        {
+          "id": "P03-whole-item-acceptance",
+          "status": "complete-within-finite-trusted-HTTPS-and-local-artifact-brief",
+          "record": "85-p03-trusted-https-workflow.md",
+          "candidate": "0.1.0-candidate.20261021.47 / UI0.2.0-candidate.20261018.2",
+          "handoff": ".artifacts/atom/2026-10-22T08-55-21-215Z/atom-handoff.json",
+          "verification": ".artifacts/p03/whole-review/verification47.json",
+          "checks": {
+            "source": 2139,
+            "focused": 113,
+            "native_trusted_HTTPS_both_hosts": 48,
+            "types": 2,
+            "admission": 9,
+            "build": true,
+            "review_focused": 53
+          },
+          "retained_production_backend": {
+            "candidate": ".46",
+            "checks": 27,
+            "worker_identity_equals_current": true,
+            "fresh_current_run": false
+          },
+          "retained_parser": {
+            "candidate": ".45",
+            "checks": 86,
+            "parser_assets_equal_current": true,
+            "fresh_current_run": false
+          },
+          "review": {
+            "count": 1,
+            "critical": 0,
+            "important": 0,
+            "minor": 1,
+            "minor_resolved": 1,
+            "correction_passes": 1
+          },
+          "full_P03_acceptance": true,
+          "whole_tasks_complete": 18,
+          "next_item": "P04 bounded post-start production observations after completed F02/U03/U06",
+          "boundary": "Finite synthetic ordinary trusted HTTPS app/separate artifact workflow complete after ONE review/correction. Current47 source2139/focused113/native48/types2/admission9/build PASS;46 backend27 retained on byte-identical workers,45 parser86 on unchanged assets. Actual native deny/grant/revoke/regrant, scoped errors/cancel/target switch and local fallback; no app action/production grant. Initial35s app prompt still needs explicit Reopen+Attach; no seamless or enterprise-provider claim. All failures and46 blank images preserved; current47 images readable. C06 bounded source path complete;18/29 tasks (~62% equal count), mandatory L02/A02/release gates open, A05 still mandatory/scoped complete. No SDK/publication/other repository/redesign/human blocker."
         }
       ],
       "execution_records": [
         "83-p03-https-artifact-access.md",
-        "84-p03-artifact-errors-and-local-fallback.md"
-      ]
+        "84-p03-artifact-errors-and-local-fallback.md",
+        "85-p03-trusted-https-workflow.md"
+      ],
+      "delivery_states": [
+        "implemented",
+        "native-verified"
+      ],
+      "completion_boundary": "Finite synthetic ordinary trusted HTTPS app/separate artifact workflow complete after ONE review/correction. Current47 source2139/focused113/native48/types2/admission9/build PASS;46 backend27 retained on byte-identical workers,45 parser86 on unchanged assets. Actual native deny/grant/revoke/regrant, scoped errors/cancel/target switch and local fallback; no app action/production grant. Initial35s app prompt still needs explicit Reopen+Attach; no seamless or enterprise-provider claim. All failures and46 blank images preserved; current47 images readable. C06 bounded source path complete;18/29 tasks (~62% equal count), mandatory L02/A02/release gates open, A05 still mandatory/scoped complete. No SDK/publication/other repository/redesign/human blocker.",
+      "whole_item_review": {
+        "count": 1,
+        "critical": 0,
+        "important": 0,
+        "minor": 1,
+        "minor_resolved": 1,
+        "correction_passes": 1,
+        "reviewer": "/root/p03_whole_review",
+        "base": "4b266d9",
+        "committed_head": "b3b6fa7",
+        "dirty_scope": "P03.3 runtime46 plus HTTPS driver/helpers",
+        "receipt": ".artifacts/p03/whole-review/review.md",
+        "original_criteria_waived": false
+      },
+      "current_candidate": {
+        "version": "0.1.0-candidate.20261021.47",
+        "handoff": ".artifacts/atom/2026-10-22T08-55-21-215Z/atom-handoff.json",
+        "verification": ".artifacts/p03/whole-review/verification47.json",
+        "boundary": "Finite synthetic ordinary trusted HTTPS app/separate artifact workflow complete after ONE review/correction. Current47 source2139/focused113/native48/types2/admission9/build PASS;46 backend27 retained on byte-identical workers,45 parser86 on unchanged assets. Actual native deny/grant/revoke/regrant, scoped errors/cancel/target switch and local fallback; no app action/production grant. Initial35s app prompt still needs explicit Reopen+Attach; no seamless or enterprise-provider claim. All failures and46 blank images preserved; current47 images readable. C06 bounded source path complete;18/29 tasks (~62% equal count), mandatory L02/A02/release gates open, A05 still mandatory/scoped complete. No SDK/publication/other repository/redesign/human blocker."
+      }
     },
     {
       "id": "P04",
@@ -3901,31 +3993,51 @@
     ]
   },
   "reconciliation": {
-    "document": "84-p03-artifact-errors-and-local-fallback.md",
+    "document": "85-p03-trusted-https-workflow.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "P03.2-safe-artifact-errors-local-fallback",
-      "status": "complete-bounded-errors-fallback-not-full-P03",
-      "record": "84-p03-artifact-errors-and-local-fallback.md",
-      "candidate": "0.1.0-candidate.20261021.45 / UI0.2.0-candidate.20261018.2",
-      "verification": ".artifacts/p03/access-errors/verification45.json",
+      "id": "P03-whole-item-acceptance",
+      "status": "complete-within-finite-trusted-HTTPS-and-local-artifact-brief",
+      "record": "85-p03-trusted-https-workflow.md",
+      "candidate": "0.1.0-candidate.20261021.47 / UI0.2.0-candidate.20261018.2",
+      "handoff": ".artifacts/atom/2026-10-22T08-55-21-215Z/atom-handoff.json",
+      "verification": ".artifacts/p03/whole-review/verification47.json",
       "checks": {
-        "source": 2134,
-        "focused": 42,
-        "new_regressions": 21,
-        "native_HTTP_errors_local_fallback": 22,
-        "native_parser": 86,
-        "native_permission_environment": 13,
+        "source": 2139,
+        "focused": 113,
+        "native_trusted_HTTPS_both_hosts": 48,
         "types": 2,
         "admission": 9,
-        "build": true
+        "build": true,
+        "review_focused": 53
       },
-      "full_P03_acceptance": false,
-      "next_item": "P03.3 actual trusted-HTTPS artifact access, prompt interruption/target switch, then ONE whole-P03 review",
-      "boundary": "Closed safe error categories, permission recheck, current inline local picker guidance. Candidate45 source2134/focused42/native HTTP22/parser86/native permissions13/types2/admission9/build PASS; shared UI/CSS/Workers unchanged. Separate HTTP/native-permission runs do not establish trusted HTTPS artifact acceptance. P03.1 TLS and long-prompt failures preserved;17/29 whole items unchanged; no SDK/publication/other repository/redesign/human gate."
+      "retained_production_backend": {
+        "candidate": ".46",
+        "checks": 27,
+        "worker_identity_equals_current": true,
+        "fresh_current_run": false
+      },
+      "retained_parser": {
+        "candidate": ".45",
+        "checks": 86,
+        "parser_assets_equal_current": true,
+        "fresh_current_run": false
+      },
+      "review": {
+        "count": 1,
+        "critical": 0,
+        "important": 0,
+        "minor": 1,
+        "minor_resolved": 1,
+        "correction_passes": 1
+      },
+      "full_P03_acceptance": true,
+      "whole_tasks_complete": 18,
+      "next_item": "P04 bounded post-start production observations after completed F02/U03/U06",
+      "boundary": "Finite synthetic ordinary trusted HTTPS app/separate artifact workflow complete after ONE review/correction. Current47 source2139/focused113/native48/types2/admission9/build PASS;46 backend27 retained on byte-identical workers,45 parser86 on unchanged assets. Actual native deny/grant/revoke/regrant, scoped errors/cancel/target switch and local fallback; no app action/production grant. Initial35s app prompt still needs explicit Reopen+Attach; no seamless or enterprise-provider claim. All failures and46 blank images preserved; current47 images readable. C06 bounded source path complete;18/29 tasks (~62% equal count), mandatory L02/A02/release gates open, A05 still mandatory/scoped complete. No SDK/publication/other repository/redesign/human blocker."
     },
-    "next_item": "P03.3 actual trusted-HTTPS artifact access, prompt interruption/target switch, then ONE whole-P03 review",
+    "next_item": "P04 bounded post-start production observations after completed F02/U03/U06",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -3943,10 +4055,11 @@
       "A05",
       "L01",
       "P01",
-      "P02"
+      "P02",
+      "P03"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "P03",
+    "active_item": "P04",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -5576,11 +5689,52 @@
         "full_P03_acceptance": false,
         "next_item": "P03.3 actual trusted-HTTPS artifact access, prompt interruption/target switch, then ONE whole-P03 review",
         "boundary": "Closed safe error categories, permission recheck, current inline local picker guidance. Candidate45 source2134/focused42/native HTTP22/parser86/native permissions13/types2/admission9/build PASS; shared UI/CSS/Workers unchanged. Separate HTTP/native-permission runs do not establish trusted HTTPS artifact acceptance. P03.1 TLS and long-prompt failures preserved;17/29 whole items unchanged; no SDK/publication/other repository/redesign/human gate."
+      },
+      {
+        "id": "P03-whole-item-acceptance",
+        "status": "complete-within-finite-trusted-HTTPS-and-local-artifact-brief",
+        "record": "85-p03-trusted-https-workflow.md",
+        "candidate": "0.1.0-candidate.20261021.47 / UI0.2.0-candidate.20261018.2",
+        "handoff": ".artifacts/atom/2026-10-22T08-55-21-215Z/atom-handoff.json",
+        "verification": ".artifacts/p03/whole-review/verification47.json",
+        "checks": {
+          "source": 2139,
+          "focused": 113,
+          "native_trusted_HTTPS_both_hosts": 48,
+          "types": 2,
+          "admission": 9,
+          "build": true,
+          "review_focused": 53
+        },
+        "retained_production_backend": {
+          "candidate": ".46",
+          "checks": 27,
+          "worker_identity_equals_current": true,
+          "fresh_current_run": false
+        },
+        "retained_parser": {
+          "candidate": ".45",
+          "checks": 86,
+          "parser_assets_equal_current": true,
+          "fresh_current_run": false
+        },
+        "review": {
+          "count": 1,
+          "critical": 0,
+          "important": 0,
+          "minor": 1,
+          "minor_resolved": 1,
+          "correction_passes": 1
+        },
+        "full_P03_acceptance": true,
+        "whole_tasks_complete": 18,
+        "next_item": "P04 bounded post-start production observations after completed F02/U03/U06",
+        "boundary": "Finite synthetic ordinary trusted HTTPS app/separate artifact workflow complete after ONE review/correction. Current47 source2139/focused113/native48/types2/admission9/build PASS;46 backend27 retained on byte-identical workers,45 parser86 on unchanged assets. Actual native deny/grant/revoke/regrant, scoped errors/cancel/target switch and local fallback; no app action/production grant. Initial35s app prompt still needs explicit Reopen+Attach; no seamless or enterprise-provider claim. All failures and46 blank images preserved; current47 images readable. C06 bounded source path complete;18/29 tasks (~62% equal count), mandatory L02/A02/release gates open, A05 still mandatory/scoped complete. No SDK/publication/other repository/redesign/human blocker."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Closed safe error categories, permission recheck, current inline local picker guidance. Candidate45 source2134/focused42/native HTTP22/parser86/native permissions13/types2/admission9/build PASS; shared UI/CSS/Workers unchanged. Separate HTTP/native-permission runs do not establish trusted HTTPS artifact acceptance. P03.1 TLS and long-prompt failures preserved;17/29 whole items unchanged; no SDK/publication/other repository/redesign/human gate.",
+    "current_activity_note": "Finite synthetic ordinary trusted HTTPS app/separate artifact workflow complete after ONE review/correction. Current47 source2139/focused113/native48/types2/admission9/build PASS;46 backend27 retained on byte-identical workers,45 parser86 on unchanged assets. Actual native deny/grant/revoke/regrant, scoped errors/cancel/target switch and local fallback; no app action/production grant. Initial35s app prompt still needs explicit Reopen+Attach; no seamless or enterprise-provider claim. All failures and46 blank images preserved; current47 images readable. C06 bounded source path complete;18/29 tasks (~62% equal count), mandatory L02/A02/release gates open, A05 still mandatory/scoped complete. No SDK/publication/other repository/redesign/human blocker.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
-  "next_task": "P03"
+  "next_task": "P04"
 }

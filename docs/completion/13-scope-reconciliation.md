@@ -109,3 +109,16 @@ inventory existing operations, consolidate enforced policy without widening it,
 expose versioned availability/reasons and compile consumers from packed exports.
 Reuse existing Basic/source/maps/experiment paths and their controls. This
 continuation ends here, before starting F01 or dependent feature work.
+
+
+### 2026-10-22 bounded C06 completion checkpoint
+
+The original reconciliation above remains historical. P01/P02/P03/U05 now satisfy
+C06's finite selected-action/private-local-artifact path: see [P03 final execution](85-p03-trusted-https-workflow.md),
+current47 source2139/focused113/actual trusted-HTTPS48 and ONE review/correction.
+18/29 whole tasks (~62% equal count), not release readiness. All old scope/evidence
+criteria and failed results retained. Initial long app prompt requires explicit
+Reopen+Attach; real enterprise SSO/account/VPN and runtime causality are unclaimed.
+Next P04/C07 after completed F02/U03/U06. Mandatory L02/A05 remain; L02 usefulness
+is open, A05 already complete in its declared scope. No independent-human gate,
+SDK/publication/other repository/redesign is introduced.

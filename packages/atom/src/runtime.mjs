@@ -501,9 +501,18 @@ async function productionRevoked(event){
  if(event.cleanup==='pending'){s.productionGrantId=null;s.readOnly=true;s.attached=false;recordStale(s,'Production change permission '+event.reason+'; owned cleanup '+event.cleanup);beginInspection(s,{keepDiagnostic:true});await stopInputs(event.tabId,'Production change permission '+event.reason);}
  await persist();notifyInvalidation(event.tabId);
 }
+async function permissionsRemoved(){
+ await ready;const affected=Object.keys(tabs).map(Number);
+ for(const id of affected)invalidateScope(id,'Browser access revoked; reconnect explicitly');
+ pairing=null;await platform.permissionsRemoved?.();await persist();
+ // The immediate revocation can be rendered while native lease release is still
+ // BUSY. Republish current availability after cleanup, without restoring scope
+ // or automatically attaching. A genuinely foreign owner remains unavailable.
+ for(const id of affected)if(Object.hasOwn(tabs,id))notifyInvalidation(id);
+}
 const unsubscribe=platform.events.subscribe(event=>{
  if(eventsClosed)return;
- const work=event.type==='production-revoked'?productionRevoked(event):event.type==='permissions-removed'?(async()=>{await ready;for(const id of Object.keys(tabs).map(Number))invalidateScope(id,'Browser access revoked; reconnect explicitly');pairing=null;await platform.permissionsRemoved?.();await persist();})():event.type==='navigation'?(async()=>{await ready;const s=tabs[event.tabId];void stopActionTrace(event.tabId,'Navigation changed context');void platform.productionChanges?.revoke(event.tabId,'navigation');if(s?.origin&&new URL(event.url).origin!==s.origin){invalidateScope(event.tabId,'Cross-origin navigation; attach again');await platform.invalidate?.(event.tabId);await persist();}})():event.type==='debugger'?onDebuggerEvent(event.source,event.method,event.params):event.type==='detach'?onDebuggerDetach(event.source,event.reason):event.type==='removed'?(async()=>{await ready;void stopActionTrace(event.tabId,'Tab closed');actionEpochs.delete(event.tabId);await stopInputs(event.tabId,'Tab closed');editors.delete(event.tabId);editorOwners.delete(event.tabId);await picker.cancel(event.tabId,'Tab closed').catch(()=>{});sourceMaps.remove(event.tabId);platform.detached(event.tabId);delete tabs[event.tabId];await persist();notifyInvalidation(event.tabId);})():null;
+ const work=event.type==='production-revoked'?productionRevoked(event):event.type==='permissions-removed'?permissionsRemoved():event.type==='navigation'?(async()=>{await ready;const s=tabs[event.tabId];void stopActionTrace(event.tabId,'Navigation changed context');void platform.productionChanges?.revoke(event.tabId,'navigation');if(s?.origin&&new URL(event.url).origin!==s.origin){invalidateScope(event.tabId,'Cross-origin navigation; attach again');await platform.invalidate?.(event.tabId);await persist();}})():event.type==='debugger'?onDebuggerEvent(event.source,event.method,event.params):event.type==='detach'?onDebuggerDetach(event.source,event.reason):event.type==='removed'?(async()=>{await ready;void stopActionTrace(event.tabId,'Tab closed');actionEpochs.delete(event.tabId);await stopInputs(event.tabId,'Tab closed');editors.delete(event.tabId);editorOwners.delete(event.tabId);await picker.cancel(event.tabId,'Tab closed').catch(()=>{});sourceMaps.remove(event.tabId);platform.detached(event.tabId);delete tabs[event.tabId];await persist();notifyInvalidation(event.tabId);})():null;
  if(work){eventJobs.add(work);void work.catch(()=>{}).finally(()=>eventJobs.delete(work));}
 });
 return {ready,

@@ -7,7 +7,9 @@ earlier delivery exclusions and independent-human gates, not historical evidence
 The original source-exploration increment remains complete within its original
 boundary. [P01's bounded selected-action source path](completion/75-p01-whole-item-review.md)
 is now complete; [P02](completion/82-p02-whole-item-review.md) is complete within
-its brief, and P03 remains partial. The subsequent
+its brief. [P03](completion/85-p03-trusted-https-workflow.md) now completes its
+finite trusted-HTTPS/local-artifact workflow;18/29 whole tasks (~62% equal count),
+not release readiness. P04 observations are next. The subsequent
 [F01 implementation](completion/14-f01-capability-contracts.md) consolidates
 capability policy and checks packed declarations on candidate `.20261019.3`:
 586 unit, 48 contract, 34 two-host, 26 Basic, 32 Actions and 19 source-map checks
@@ -19,8 +21,8 @@ site/project connection policy on `.20261019.5`: 603 unit, 65 contract, 18 nativ
 connection, 26 Basic, 11 React-host, 19 source-map and 34 two-host checks pass,
 with 2 strict packed consumers. Ordinary loopback is read-only until explicit
 development actions are approved; navigation/revocation invalidates old authority
-and private source/trial state. Native optional HTTPS prompt acceptance is still
-unclaimed. The [F03 implementation](completion/16-f03-installed-project-setup.md)
+and private source/trial state. That F02 checkpoint did not claim native optional HTTPS prompt acceptance;
+P03 now supplies its scoped evidence. The [F03 implementation](completion/16-f03-installed-project-setup.md)
 completes installed helper/plugin setup and a private receipt on `.20261019.8`:
 618 unit (including 66 contract), 18 independent-project, 12 React-host and 17
 installed first-read checks pass; short-loop retains 20 PASS / 10 expected PARTIAL
@@ -1748,3 +1750,24 @@ trusted-HTTPS artifact access. P03.1 TLS/long-prompt failures remain unchanged.
 P03/C06 open;17/29 full items (~59% equal count) unchanged. Next P03.3 trusted-HTTPS
 artifact-origin/prompt interruption/target-switch workflow and ONE whole review.
 No SDK/publication/other repository/redesign/independent-human blocker.
+
+
+### 2026-10-22 — bounded P03/C06 source-artifact workflow accepted
+
+[P03 final](completion/85-p03-trusted-https-workflow.md):current47 source2139/focused113/native trusted-HTTPS48/types2/
+admission9/build PASS. ONE review Critical0/Important0/Minor1; one RED/GREEN correction
+clears obsolete guidance for invalid local files and supersedes older pending permission.
+Earlier runtime46 final notification fixes Attach stuck BUSY after permission cleanup;
+immediate revocation and foreign ownership refusal remain. Actual two-host deny/grant/
+revoke/regrant, exact manifest/ZIP, safe errors, Clear/server loss/local fallback/target
+switch/long prompt controls pass without TLS bypass, permission preapproval, app test
+CDP, handler invocation or production grant. Profile-local test CA only. Current47
+source/recovery390/440 and TLS images inspected; old46 blank images stay unusable.
+Runtime workers equal46, so its backend27 retained unchanged; parser/CSS equal45 with
+its86 prior checks retained, not called fresh47. All failed attempts remain recorded.
+Known limitation: initial35s app prompt loses private channel; explicit Reopen+Attach
+recovers read-only, not seamless or proven idle cause. No enterprise SSO/account/VPN,
+new source/runtime/causal capability or mutation authority claim. C06's finite path
+complete;18/29 whole tasks (~62% equal count). Next P04 after completed F02/U03/U06.
+Mandatory L02 usefulness/A02/integration/validation/release gates remain open; A05
+mandatory/scoped complete. No SDK/publication/other repository/redesign/human blocker.

@@ -1,8 +1,9 @@
 # P03 HTTPS/native-permission test environment
 
-This is Linux/Chrome153 agent-operated environment qualification, not complete
-corporate-artifact acceptance. The recorded results and boundaries are in
-[completion83](../completion/83-p03-https-artifact-access.md).
+The original Linux/Chrome153 agent-operated environment qualification is in
+[completion83](../completion/83-p03-https-artifact-access.md); it alone does not prove
+artifact acceptance. The subsequent bounded two-host P03 workflow and actual
+checks are in [completion85](../completion/85-p03-trusted-https-workflow.md).
 
 ## Native optional-origin prompt
 
@@ -63,3 +64,45 @@ binds this certificate database to the supplied profile path. The actual recorde
 profile receipt and browser results, rather than this source reference alone,
 establish this test setup. Native permission support plus a trusted test page
 still does not prove artifact acquisition, SSO/error handling or local fallback.
+
+## Actual artifact and local-fallback workflow
+
+The subsequent [P03 execution record](../completion/85-p03-trusted-https-workflow.md)
+adds the finite two-host artifact workflow. Run its exact issued handoff explicitly:
+
+```sh
+node tests/integration/source-access-https-native.mjs <exact-atom-handoff.json>
+```
+
+It additionally requires local OpenSSL and Python3 SQLite, already used in the
+recorded environment. The helper generates a new private CA/server key pair and
+maps only named synthetic `.p03.test` hosts to its own local server through that
+child Chrome's resolver arguments. Certificate Manager Import/Open adds trust
+only to each disposable profile. No certificate exception, permission preapproval,
+account, system trust-store change or app-target test CDP is used. Own Chrome,
+server and nested display close in `finally`; ignored keys/profiles remain local
+evidence and are not distribution inputs.
+
+The native cycle covers independent app/artifact permission Deny/Allow, exact
+manifest and ZIP through actual selected-listener coordinates,403, refused redirect,
+HTML document, manifest boundary, unavailable server, pending Clear, actual local
+ZIP recovery, target change during a prompt, long prompts and actual removal/
+explicit regrant. Browser cookie-page/favicon requests are separate positive
+session controls; all actual artifact fetches must omit credentials/referrers.
+The case demonstrates a synthetic ordinary application/session, not a real
+enterprise SSO provider, authentication integration or OS VPN experiment.
+
+An initial app permission prompt held35s can close the private inspector channel.
+The existing visible **Reopen inspector**, then explicit **Attach**, recovers a
+fresh read-only view. This is a tested recovery boundary, not seamless prompt
+handling or proof of the underlying idle cause. A long artifact prompt while
+attached is a separate passing control. Source access never enables production
+changes or invokes the selected handler. Source text stays Code-linked; execution
+and property producer remain unobserved/unknown.
+
+All screenshot files are candidates. Some immediate embedding X11 TLS/root grabs
+in candidate46 are blank and provide no visual proof; exact page/title/server/SAN
+checks and the closed-profile root receipt establish their own scoped results.
+Readable native prompts and rendered source/recovery390/440 checks are separate.
+Preserve each original failed attempt and its input hashes; final readiness or
+traffic-classification corrections do not convert it into a passing run.

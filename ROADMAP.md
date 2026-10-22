@@ -36,8 +36,9 @@ The production source-exploration increment at `f3a7a7e` is complete within its
 original boundary. Credit its map/ZIP import, artifact matching, manual lookup,
 safe diagnostics and read-only behavior rather than rebuilding them. P01's finite
 selected-action source path is now complete (completion75); P02's bounded release-
-bundle workflow is complete (completion82). P03's actual HTTPS permission acceptance
-remains open and is next. The subsequent
+bundle workflow is complete (completion82). P03's finite trusted-HTTPS/local-artifact
+workflow is complete (completion85);18/29 whole tasks (~62% equal count), not release
+readiness. P04 post-start production observations are next. The subsequent
 [F01 execution](docs/completion/14-f01-capability-contracts.md) completes canonical
 admission/discovery and strict packed declarations on candidate `.20261019.3`,
 with its scoped two-host/browser/IDE evidence. The subsequent
@@ -1047,3 +1048,24 @@ trusted-HTTPS artifact access. P03.1 TLS/long-prompt failures remain unchanged.
 P03/C06 open;17/29 full items (~59% equal count) unchanged. Next P03.3 trusted-HTTPS
 artifact-origin/prompt interruption/target-switch workflow and ONE whole review.
 No SDK/publication/other repository/redesign/independent-human blocker.
+
+
+### 2026-10-22 — bounded P03/C06 source-artifact workflow accepted
+
+[P03 final](docs/completion/85-p03-trusted-https-workflow.md):current47 source2139/focused113/native trusted-HTTPS48/types2/
+admission9/build PASS. ONE review Critical0/Important0/Minor1; one RED/GREEN correction
+clears obsolete guidance for invalid local files and supersedes older pending permission.
+Earlier runtime46 final notification fixes Attach stuck BUSY after permission cleanup;
+immediate revocation and foreign ownership refusal remain. Actual two-host deny/grant/
+revoke/regrant, exact manifest/ZIP, safe errors, Clear/server loss/local fallback/target
+switch/long prompt controls pass without TLS bypass, permission preapproval, app test
+CDP, handler invocation or production grant. Profile-local test CA only. Current47
+source/recovery390/440 and TLS images inspected; old46 blank images stay unusable.
+Runtime workers equal46, so its backend27 retained unchanged; parser/CSS equal45 with
+its86 prior checks retained, not called fresh47. All failed attempts remain recorded.
+Known limitation: initial35s app prompt loses private channel; explicit Reopen+Attach
+recovers read-only, not seamless or proven idle cause. No enterprise SSO/account/VPN,
+new source/runtime/causal capability or mutation authority claim. C06's finite path
+complete;18/29 whole tasks (~62% equal count). Next P04 after completed F02/U03/U06.
+Mandatory L02 usefulness/A02/integration/validation/release gates remain open; A05
+mandatory/scoped complete. No SDK/publication/other repository/redesign/human blocker.

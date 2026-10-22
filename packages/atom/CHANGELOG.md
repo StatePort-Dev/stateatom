@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.47
+
+- Visual/interaction: clear obsolete URL-failure guidance when a nonempty local
+  file attempt starts, including size/type refusal. Keep its actual validation
+  error and clear the file selection for another attempt.
+- A newer rejected local attempt also supersedes an older pending origin decision
+  before it can launch download. Existing limits, shared visual tokens, typography and layout
+  are unchanged. ONE whole-P03 review: no Critical/Important; minor corrected.
+
+## 0.1.0-candidate.20261021.46
+
+- Refresh scoped capability availability after browser-permission cleanup finishes,
+  retaining immediate source/authority revocation and foreign debugger refusal.
+- Visual/interaction: existing Attach updates after the cleanup window without an
+  extra Refresh. No automatic attach, origin grant or restored private source.
+  Shared tokens, typography, layout and controls are unchanged.
+- Qualify the finite synthetic HTTPS workflow in disposable profiles with native
+  permissions and profile-local CA trust; preserve long-prompt/reopen limitations.
+
 ## 0.1.0-candidate.20261021.45
 
 - Classify artifact access, HTTP/auth, document, network/policy, size, cancellation
