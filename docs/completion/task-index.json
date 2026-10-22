@@ -2760,7 +2760,8 @@
         "tests/atom/source-parse-package.test.mjs",
         "tests/atom/source-parse-session.test.mjs",
         "tests/atom/source-platform-recovery.test.mjs",
-        "tests/helpers/source-parse-observer.mjs"
+        "tests/helpers/source-parse-observer.mjs",
+        "tests/release-bundle-companions.test.mjs"
       ],
       "existing_commands": [
         "npm run verify:production-source-mapping",
@@ -2768,7 +2769,8 @@
         "npm run verify:source-bundle-native",
         "npm run verify:source-release-native",
         "node tests/integration/source-parse-worker.mjs",
-        "npm run verify:source-parser-native"
+        "npm run verify:source-parser-native",
+        "npm run verify:source-release-native -- --companion-sources"
       ],
       "deliverable": "One release import and lazy exact per-chunk matching",
       "status": "in-progress",
@@ -2780,7 +2782,6 @@
         "reconciliation": "13-scope-reconciliation.md"
       },
       "remaining_acceptance": [
-        "Explicit bounded companion sources when sourcesContent is missing; never follow sourceRoot/sources paths",
         "Registered real-app size/time/indexed-map qualification and actual nontrivial minified UI workflow",
         "ONE whole-P02 scope/code/evidence review after actual acceptance, with one tested correction pass if needed"
       ],
@@ -2790,33 +2791,27 @@
         "scope": "Owned hard-budget source AST Worker, exact separate dependency gate and transient provider foundation only",
         "does_not_complete": "Release-bundle preparation/bulk matching, preemptible archive/map parsing, companion sources or registered real-app limit qualification"
       },
-      "active_slice": "P02.4 explicit bounded local companion sources when sourcesContent is missing",
-      "execution_record": "79-p02-mv3-source-parser.md",
+      "active_slice": "P02.5 registered real-app size/time/indexed-map qualification and actual minified UI workflow",
+      "execution_record": "80-p02-explicit-companion-sources.md",
       "current_checkpoint": {
-        "id": "P02.3b-installed-mv3-parser",
-        "status": "complete-bounded-packed-parser-not-full-P02",
-        "record": "79-p02-mv3-source-parser.md",
-        "candidate": "@stateport/atom@0.1.0-candidate.20261021.43 / extension-ui .20261018.2",
-        "source_tests": 2093,
-        "new_source_tests": 40,
-        "actual_parser_checks": 86,
-        "native_registration_checks": 49,
-        "framework_source_checks": 65,
-        "types": 2,
-        "admission": 9,
-        "parser_worker_inputs": 8,
-        "AST_worker_inputs": 172,
-        "map_budget_ms": 1500,
-        "archive_budget_ms": 2000,
-        "max_jobs": 2,
-        "parser_installed_in_Atom": true,
-        "inspector_MV3_parse_preemption": true,
-        "companion_sources": false,
+        "id": "P02.4-explicit-companion-sources",
+        "status": "complete-bounded-local-enrichment-not-full-P02",
+        "record": "80-p02-explicit-companion-sources.md",
+        "candidate": "Accepted Atom .43/UI .2/current packed inputs/installed pair/both hosts unchanged",
+        "source_tests": 2104,
+        "new_source_tests": 11,
+        "focused_tests": 26,
+        "actual_companion_checks": 70,
+        "actual_npm_entry": true,
+        "companion_sources": true,
+        "original_map_bytes_unchanged": true,
+        "enriched_map_has_new_raw_digest": true,
+        "runtime_and_UI_unchanged": true,
         "independent_real_app_qualification": false,
         "full_P02_acceptance": false,
-        "verification": ".artifacts/p02/parser-mv3/verification43.json",
-        "next_item": "P02.4 explicit bounded local companion sources when sourcesContent is missing",
-        "boundary": "Exact .43/UI .2:separate owned offscreen source channel, exact document/nonce, closed binary pool and no synchronous product fallback.2093source/86actual/49native/65host/types2/admission9 PASS. Actual parse-start Clear/nav/worker-stop/document-loss, explicit fresh reconnect, foreign BUSY; failed .41/.42 preserved. Same limits/cache/evidence; no zero parent CPU/heap, independent real-app/indexed/companions, HTTPS/SDK/publication/other repository claim;16/29 whole items."
+        "verification": ".artifacts/p02/companions/verification.json",
+        "next_item": "P02.5 registered real-app size/time/indexed-map qualification and actual minified UI workflow",
+        "boundary": "Explicit closed recipe2 binds original raw map hash/source index/exact name to selected safe local file; fills absent/null content only in copied map with new raw digest.2104source/26focused/70actual two-host + actual npm/unzip PASS. Exact .43/UI .2 immutable, original files/privacy/limits preserved. No discovery/execution/runtime/UI change, independent real-app/indexed/HTTPS/SDK/publication/other repository claim;16/29 whole items."
       },
       "completed_slices": [
         {
@@ -2925,6 +2920,26 @@
           "verification": ".artifacts/p02/parser-mv3/verification43.json",
           "next_item": "P02.4 explicit bounded local companion sources when sourcesContent is missing",
           "boundary": "Exact .43/UI .2:separate owned offscreen source channel, exact document/nonce, closed binary pool and no synchronous product fallback.2093source/86actual/49native/65host/types2/admission9 PASS. Actual parse-start Clear/nav/worker-stop/document-loss, explicit fresh reconnect, foreign BUSY; failed .41/.42 preserved. Same limits/cache/evidence; no zero parent CPU/heap, independent real-app/indexed/companions, HTTPS/SDK/publication/other repository claim;16/29 whole items."
+        },
+        {
+          "id": "P02.4-explicit-companion-sources",
+          "status": "complete-bounded-local-enrichment-not-full-P02",
+          "record": "80-p02-explicit-companion-sources.md",
+          "candidate": "Accepted Atom .43/UI .2/current packed inputs/installed pair/both hosts unchanged",
+          "source_tests": 2104,
+          "new_source_tests": 11,
+          "focused_tests": 26,
+          "actual_companion_checks": 70,
+          "actual_npm_entry": true,
+          "companion_sources": true,
+          "original_map_bytes_unchanged": true,
+          "enriched_map_has_new_raw_digest": true,
+          "runtime_and_UI_unchanged": true,
+          "independent_real_app_qualification": false,
+          "full_P02_acceptance": false,
+          "verification": ".artifacts/p02/companions/verification.json",
+          "next_item": "P02.5 registered real-app size/time/indexed-map qualification and actual minified UI workflow",
+          "boundary": "Explicit closed recipe2 binds original raw map hash/source index/exact name to selected safe local file; fills absent/null content only in copied map with new raw digest.2104source/26focused/70actual two-host + actual npm/unzip PASS. Exact .43/UI .2 immutable, original files/privacy/limits preserved. No discovery/execution/runtime/UI change, independent real-app/indexed/HTTPS/SDK/publication/other repository claim;16/29 whole items."
         }
       ],
       "historical_remaining_acceptance": "Release-bundle preparation and normal multi-chunk/source workflow with responsive bounded parsing"
@@ -3741,36 +3756,30 @@
     ]
   },
   "reconciliation": {
-    "document": "79-p02-mv3-source-parser.md",
+    "document": "80-p02-explicit-companion-sources.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "P02.3b-installed-mv3-parser",
-      "status": "complete-bounded-packed-parser-not-full-P02",
-      "record": "79-p02-mv3-source-parser.md",
-      "candidate": "@stateport/atom@0.1.0-candidate.20261021.43 / extension-ui .20261018.2",
-      "source_tests": 2093,
-      "new_source_tests": 40,
-      "actual_parser_checks": 86,
-      "native_registration_checks": 49,
-      "framework_source_checks": 65,
-      "types": 2,
-      "admission": 9,
-      "parser_worker_inputs": 8,
-      "AST_worker_inputs": 172,
-      "map_budget_ms": 1500,
-      "archive_budget_ms": 2000,
-      "max_jobs": 2,
-      "parser_installed_in_Atom": true,
-      "inspector_MV3_parse_preemption": true,
-      "companion_sources": false,
+      "id": "P02.4-explicit-companion-sources",
+      "status": "complete-bounded-local-enrichment-not-full-P02",
+      "record": "80-p02-explicit-companion-sources.md",
+      "candidate": "Accepted Atom .43/UI .2/current packed inputs/installed pair/both hosts unchanged",
+      "source_tests": 2104,
+      "new_source_tests": 11,
+      "focused_tests": 26,
+      "actual_companion_checks": 70,
+      "actual_npm_entry": true,
+      "companion_sources": true,
+      "original_map_bytes_unchanged": true,
+      "enriched_map_has_new_raw_digest": true,
+      "runtime_and_UI_unchanged": true,
       "independent_real_app_qualification": false,
       "full_P02_acceptance": false,
-      "verification": ".artifacts/p02/parser-mv3/verification43.json",
-      "next_item": "P02.4 explicit bounded local companion sources when sourcesContent is missing",
-      "boundary": "Exact .43/UI .2:separate owned offscreen source channel, exact document/nonce, closed binary pool and no synchronous product fallback.2093source/86actual/49native/65host/types2/admission9 PASS. Actual parse-start Clear/nav/worker-stop/document-loss, explicit fresh reconnect, foreign BUSY; failed .41/.42 preserved. Same limits/cache/evidence; no zero parent CPU/heap, independent real-app/indexed/companions, HTTPS/SDK/publication/other repository claim;16/29 whole items."
+      "verification": ".artifacts/p02/companions/verification.json",
+      "next_item": "P02.5 registered real-app size/time/indexed-map qualification and actual minified UI workflow",
+      "boundary": "Explicit closed recipe2 binds original raw map hash/source index/exact name to selected safe local file; fills absent/null content only in copied map with new raw digest.2104source/26focused/70actual two-host + actual npm/unzip PASS. Exact .43/UI .2 immutable, original files/privacy/limits preserved. No discovery/execution/runtime/UI change, independent real-app/indexed/HTTPS/SDK/publication/other repository claim;16/29 whole items."
     },
-    "next_item": "P02.4 explicit bounded local companion sources when sourcesContent is missing",
+    "next_item": "P02.5 registered real-app size/time/indexed-map qualification and actual minified UI workflow",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -5307,10 +5316,30 @@
         "verification": ".artifacts/p02/parser-mv3/verification43.json",
         "next_item": "P02.4 explicit bounded local companion sources when sourcesContent is missing",
         "boundary": "Exact .43/UI .2:separate owned offscreen source channel, exact document/nonce, closed binary pool and no synchronous product fallback.2093source/86actual/49native/65host/types2/admission9 PASS. Actual parse-start Clear/nav/worker-stop/document-loss, explicit fresh reconnect, foreign BUSY; failed .41/.42 preserved. Same limits/cache/evidence; no zero parent CPU/heap, independent real-app/indexed/companions, HTTPS/SDK/publication/other repository claim;16/29 whole items."
+      },
+      {
+        "id": "P02.4-explicit-companion-sources",
+        "status": "complete-bounded-local-enrichment-not-full-P02",
+        "record": "80-p02-explicit-companion-sources.md",
+        "candidate": "Accepted Atom .43/UI .2/current packed inputs/installed pair/both hosts unchanged",
+        "source_tests": 2104,
+        "new_source_tests": 11,
+        "focused_tests": 26,
+        "actual_companion_checks": 70,
+        "actual_npm_entry": true,
+        "companion_sources": true,
+        "original_map_bytes_unchanged": true,
+        "enriched_map_has_new_raw_digest": true,
+        "runtime_and_UI_unchanged": true,
+        "independent_real_app_qualification": false,
+        "full_P02_acceptance": false,
+        "verification": ".artifacts/p02/companions/verification.json",
+        "next_item": "P02.5 registered real-app size/time/indexed-map qualification and actual minified UI workflow",
+        "boundary": "Explicit closed recipe2 binds original raw map hash/source index/exact name to selected safe local file; fills absent/null content only in copied map with new raw digest.2104source/26focused/70actual two-host + actual npm/unzip PASS. Exact .43/UI .2 immutable, original files/privacy/limits preserved. No discovery/execution/runtime/UI change, independent real-app/indexed/HTTPS/SDK/publication/other repository claim;16/29 whole items."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Exact .43/UI .2:separate owned offscreen source channel, exact document/nonce, closed binary pool and no synchronous product fallback.2093source/86actual/49native/65host/types2/admission9 PASS. Actual parse-start Clear/nav/worker-stop/document-loss, explicit fresh reconnect, foreign BUSY; failed .41/.42 preserved. Same limits/cache/evidence; no zero parent CPU/heap, independent real-app/indexed/companions, HTTPS/SDK/publication/other repository claim;16/29 whole items.",
+    "current_activity_note": "Explicit closed recipe2 binds original raw map hash/source index/exact name to selected safe local file; fills absent/null content only in copied map with new raw digest.2104source/26focused/70actual two-host + actual npm/unzip PASS. Exact .43/UI .2 immutable, original files/privacy/limits preserved. No discovery/execution/runtime/UI change, independent real-app/indexed/HTTPS/SDK/publication/other repository claim;16/29 whole items.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "P02"

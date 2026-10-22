@@ -51,7 +51,8 @@ Mapping content remains owner-supplied data.
 Assets and ZIP entries have stable ordering and fixed metadata. Repeating the same
 recipe/artifact bytes in the same recorded Node/zlib environment produces identical
 ZIP bytes regardless of file mtimes or recipe order. No cross-zlib binary identity
-is promised. Original artifact bytes are preserved; the maps are never rewritten.
+is promised. Schema1 preserves original artifact/map bytes without rewriting. The explicit
+schema2 below creates a separately hashed enriched map copy.
 
 Limits remain those of the importer:8MiB ZIP,16MiB expanded,4MiB per entry,128 entries
 including manifest,64 manifest assets, and the existing flat-v3 map limits. Thus64
@@ -61,8 +62,9 @@ manifest paths, invalid UTF-8/maps, unsafe paths and symlinks below the selected
 canonical root refuse. Recipe JSON is closed, rejects duplicate keys and is at most
 128KiB. `sources` and `sourceRoot` are inert metadata and are never followed.
 
-Maps without `sourcesContent` remain usable for positions/names only. This command
-does not find or add companion sources. Read-only file-size/change checks and
+With schema1, maps without `sourcesContent` remain usable for positions/names only.
+Schema2 accepts only explicitly selected local companion files, as described below;
+it never searches for them. Read-only file-size/change checks and
 cooperative cancellation bound this local preparation; they are not an atomic
 input snapshot or a guarantee for hostile/network filesystems. Before the final link,
 cancellation removes private staging and leaves no final output. After that commit
@@ -98,9 +100,66 @@ ZIPs2s, at most2 jobs and the same artifact/cache bounds. A missing service give
 an explicit source gap. Clear/navigation/restart cancels work; after offscreen
 loss explicitly Attach/import again, and after service-worker restart reopen the
 inspector before doing so. Sources and permissions are not silently restored.
-Independent real-app qualification, companion source files and full P02 acceptance
-remain open.
+Independent real-app qualification and full P02 acceptance remain open; the
+explicit companion-source workflow below has its own bounded verification.
 
 Node filesystem/compression APIs were checked against the primary
 [Node24 filesystem](https://nodejs.org/docs/latest-v24.x/api/fs.html) and
 [zlib](https://nodejs.org/docs/latest-v24.x/api/zlib.html) documentation via Context7.
+
+## Explicit missing source files
+
+Use recipe schema2 when a matching map omits some original text and you own the
+corresponding source files. Put the selected files under the same explicit input
+root, for example `provided/Main.tsx`. This command does not copy or search the
+application's source folders for you.
+
+```json
+{
+  "schema": "stateatom.release-bundle-recipe/2",
+  "releaseId": "release-001-with-sources",
+  "assets": [
+    {"asset": "assets/main.js", "sourceMap": "assets/main.js.map"}
+  ],
+  "companions": [
+    {
+      "sourceMap": "assets/main.js.map",
+      "sourceMapSha256": "<64 lowercase hex digits for the original raw map>",
+      "sourceIndex": 0,
+      "source": "../src/Main.tsx",
+      "file": "provided/Main.tsx"
+    }
+  ]
+}
+```
+
+Replace the digest placeholder with the SHA-256 of that exact original map. Index0
+means the first entry of its `sources` array; `source` must equal that entry exactly.
+Even duplicate logical names are distinguished by index. `file` is the only local
+path followed; `source` and `sourceRoot` remain inert metadata. All paths selected
+for reading must be safe regular files beneath the canonical root, with no symlinks.
+Use the same `prepare:source-bundle` command/output rules as above.
+
+Only absent/null `sourcesContent` slots may be filled. Existing text, including an
+empty string, refuses replacement. Unlisted missing sources remain unavailable.
+UTF-8 decoding is strict; source BOM/line breaks/Unicode are preserved. Source text
+is never executed. The original map/JS/source files on disk remain unchanged.
+
+The ZIP stores an enriched COPY at the declared map entry, with its new raw SHA-256
+in manifest-v1. This is no longer the original map byte sequence. Mappings, names,
+source order, root and other JSON data retain their values; duplicate JSON members
+in a transformed input refuse rather than disappear. The companion files are not
+additional ZIP entries. Stdout includes `companionSources` digest provenance:
+original/enriched map hashes and each source index/raw-file hash/byte count, without
+source text, filenames or absolute paths. Keep this receipt with the private ZIP.
+It does not certify source authenticity or prove runtime execution/values.
+
+At most512 companions overall, no repeated map/index, same recipe128KiB,3MiB source
+content per map and4MiB raw enriched map, plus the existing ZIP/cache budgets.
+JSON escaping can cause an enriched map to exceed4MiB even below3MiB source text;
+the command refuses. A source file cannot double as a listed JS/map/manifest input.
+No caps are raised. Imported content uses the same transient source preview and
+explicit analysis workflow; it is omitted from default diagnostics/models.
+
+[P02.4 execution](completion/80-p02-explicit-companion-sources.md) distinguishes
+producer/source checks, actual installed consumption and remaining real-app work.

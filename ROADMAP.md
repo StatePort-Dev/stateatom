@@ -970,3 +970,18 @@ No zero parent CPU/total heap/HTTPS/real-app/SDK/publication/other-repository cl
 Next P02.4 explicit bounded local companions for missing sourcesContent; then
 registered real-app/indexed limits and ONE whole-P02 review.16/29 full items
 (~55% equal count) unchanged; L02 quality/A02 and release-wide gates remain open.
+
+### 2026-10-22 — P02.4 explicit local companion sources
+
+[P02.4](docs/completion/80-p02-explicit-companion-sources.md) completes bounded recipe2 enrichment:exact original map raw digest
++source index/name bind a selected safe regular local file; only missing/null slots
+are filled in an enriched COPY with a new raw map digest. Original files stay
+unchanged; no sources/sourceRoot discovery, source execution or new UI/runtime.
+2104source/26focused/70actual two-host +actual npm/unzip PASS. Exact accepted
+Atom`.43`/UI`.2`/installed pair/both complete hosts remain immutable; prior86parser/
+49native/65host/types2/admission9 retained by identity, not called new runs.
+Aggregate`.artifacts/p02/companions/verification.json`; no limit/evidence reduction.
+Next P02.5 registered real-app size/time/indexed-map qualification and actual
+nontrivial minified UI, then ONE whole-P02 review.16/29 whole items (~55% equal
+count) unchanged; L02 quality/A02/release-wide gates remain open. No SDK, release,
+publication, other repository, redesign or independent-human blocker.
