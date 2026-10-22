@@ -1819,3 +1819,16 @@ open;18/29 unchanged (~62% equal count), L02 mandatory/open/A05 mandatory/scoped
 Next P04.4 public reviewed observation profile, existing reporter/reader controls
 and passive interrupted-window handling. Historical attempts preserved; no SDK,
 publication/other repository/redesign or independent-human blocker.
+
+
+### 2026-10-22 — P04.4a reviewed observation evidence packet
+
+[P04.4a](completion/89-p04-reviewed-observation-packet.md) adds an unimported strict passive stopped-window/public
+evidence codec, default-private fields and one-way privacy derivatives.2278 full/17
+focused source checks PASS;12 current source projections consume unchanged historical55
+native captures, not a new native/UI run. Issued55 inputs/archives/both host manifests
+remain verified unchanged. The packet is not yet a public report/store profile.
+P04/C07/product controls/reader/H07-H09/ONE parent review stay open;18/29 unchanged
+(~62% equal count), L02 mandatory/open/A05 mandatory/scoped complete. Next P04.4b
+composed report and passive reader. Original sandbox EPERM and semantic RED attempts
+remain preserved. No SDK/publication/redesign/other repository or human blocker.
