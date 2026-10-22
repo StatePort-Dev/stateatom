@@ -29,3 +29,21 @@ Interrupted windows remain data, never reconstructed owners. No redesign, SDK,
 publication, other repository or independent-human blocker. Runtime55 remains the
 last qualified installed archive until a changed imported module is packed and
 verified. New source tests alone do not establish product workflow readiness.
+
+## P04.4b composition choice
+
+Continue b1908a1. Use the established finite flattened component envelope with an
+observation base header/digest, restoring the exact strict snapshot-only report
+component during validation. The new reporter reportDigest covers a recorded (or
+explicitly omitted) observationWindow summary; old profiles still require their
+original not-recorded status. Whole-file parents bind exact bytes; canonical
+component digests remain a separate domain. Support minimal/reviewed/source/input/
+action bases, never a recursively nested observation report. Notes/source additions
+delegate to the unchanged base codecs and preserve the window. Privacy derivatives
+can only reduce retained evidence. Base omissions propagate to overlapping window
+metadata/values; explicit window category/field redaction conservatively removes
+overlapping base categories in a rich report. Unsupported minimal technical
+redaction fails explicitly. Whole-window omission retains the independently
+reviewed original snapshot condition. Reader labels make component scopes visible.
+Use existing reader controls/layout/primitives; add only a window section and
+observation privacy review. No runtime controls or authority in the reader.

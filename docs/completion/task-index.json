@@ -3239,7 +3239,12 @@
         "core/production-observation-data.mjs",
         "core/handoff-observation-data.mjs",
         "core/handoff-observation-evidence.mjs",
-        "tests/handoff-observation-evidence.test.mjs"
+        "tests/handoff-observation-evidence.test.mjs",
+        "core/handoff-observation-report.mjs",
+        "core/handoff-observation-overlap.mjs",
+        "core/handoff-observation-presentation.mjs",
+        "browser-extension/handoff-reader.mjs",
+        "tests/integration/handoff-observation-passive.mjs"
       ],
       "existing_commands": [
         "npm run verify:browser",
@@ -3248,32 +3253,40 @@
         "npm test",
         "node tests/integration/production-observation-native.mjs <exact atom-handoff.json>",
         "node tests/integration/production-changes.mjs --backend <exact atom-handoff.json>",
-        "node tests/integration/production-observation-dom-native.mjs <exact atom-handoff.json>"
+        "node tests/integration/production-observation-dom-native.mjs <exact atom-handoff.json>",
+        "node tests/integration/handoff-observation-passive.mjs <exact atom-handoff.json>"
       ],
       "deliverable": "U06-designed QA production observation/handoff flow, read-only collector distinct from intentional edits",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "P04.4b composed reviewed observation report and passive reader",
-      "execution_record": "89-p04-reviewed-observation-packet.md",
+      "active_slice": "P04.4c explicit bounded Start/checkpoint/Stop/review in existing Diagnostic flow; interrupted-window handling and actual H07-H09 remain",
+      "execution_record": "90-p04-observation-report-and-reader.md",
       "implementation_plan": "../superpowers/plans/2026-10-22-p04-public-observation.md",
       "current_checkpoint": {
-        "id": "P04.4a-reviewed-observation-packet",
-        "status": "complete-source-packet-not-product-P04",
-        "record": "89-p04-reviewed-observation-packet.md",
-        "verification": ".artifacts/p04/public-evidence/verification.json",
-        "candidate": "Issued55 unchanged; new unimported source packet only",
+        "id": "P04.4b-observation-report-reader",
+        "status": "complete-packed-passive-report-not-reporter-P04",
+        "record": "90-p04-observation-report-and-reader.md",
+        "verification": ".artifacts/p04/public-report/verification56.json",
+        "candidate": "0.1.0-candidate.20261021.56 / UI0.2.0-candidate.20261018.2",
+        "handoff": ".artifacts/atom/2026-10-22T12-45-42-263Z/atom-handoff.json",
         "checks": {
-          "source": 2278,
-          "focused": 17,
-          "current_source_projection_of_historical_native55": 12
+          "source": 2304,
+          "focused": 195,
+          "types": 2,
+          "admission": 9,
+          "build": true,
+          "native_passive_both_hosts": 19,
+          "console_warnings_errors": 0
         },
         "public_evidence_packet": true,
-        "public_report_profile": false,
-        "product_controls": false,
+        "public_report_profile": true,
+        "passive_reader": true,
+        "product_observation_controls": false,
+        "passive_unowned_runtime_capture": false,
         "full_P04_acceptance": false,
         "whole_tasks_complete": 18,
-        "next_item": "P04.4b composed reviewed observation report and passive reader",
-        "boundary": "Source-only passive packet/strict stopped-window validation and privacy; no new runtime/UI. Exact unchanged historical55 native captures consumed, not a new native experiment. P04/C07/H07-H09 and ONE parent review stay open;18/29 unchanged. Mandatory L02 open/A05 scoped complete. No SDK/publication/redesign/other repository or independent-human blocker."
+        "next_item": "P04.4c explicit bounded Start/checkpoint/Stop/review in existing Diagnostic flow; interrupted-window handling and actual H07-H09 remain",
+        "boundary": "Current56 packed passive native import/store/restart/download/notes/privacy/readability/inertness19 in both hosts; source2304/focused195/types2/admission9 PASS. Actual acquired app/F05 data remains exact historical55 input, not new56 collection/edit/consumption proof. Preserve same-file driver failures, one launch failure, earlier PASS19 and final console-audited PASS19. P04/C07/ONE parent review stay open;18/29 unchanged. Mandatory L02 open/A05 scoped complete; A02 open. No SDK/publication/redesign/other repository or independent-human blocker."
       },
       "completed_slices": [
         {
@@ -3360,6 +3373,32 @@
           "whole_tasks_complete": 18,
           "next_item": "P04.4b composed reviewed observation report and passive reader",
           "boundary": "Source-only passive packet/strict stopped-window validation and privacy; no new runtime/UI. Exact unchanged historical55 native captures consumed, not a new native experiment. P04/C07/H07-H09 and ONE parent review stay open;18/29 unchanged. Mandatory L02 open/A05 scoped complete. No SDK/publication/redesign/other repository or independent-human blocker."
+        },
+        {
+          "id": "P04.4b-observation-report-reader",
+          "status": "complete-packed-passive-report-not-reporter-P04",
+          "record": "90-p04-observation-report-and-reader.md",
+          "verification": ".artifacts/p04/public-report/verification56.json",
+          "candidate": "0.1.0-candidate.20261021.56 / UI0.2.0-candidate.20261018.2",
+          "handoff": ".artifacts/atom/2026-10-22T12-45-42-263Z/atom-handoff.json",
+          "checks": {
+            "source": 2304,
+            "focused": 195,
+            "types": 2,
+            "admission": 9,
+            "build": true,
+            "native_passive_both_hosts": 19,
+            "console_warnings_errors": 0
+          },
+          "public_evidence_packet": true,
+          "public_report_profile": true,
+          "passive_reader": true,
+          "product_observation_controls": false,
+          "passive_unowned_runtime_capture": false,
+          "full_P04_acceptance": false,
+          "whole_tasks_complete": 18,
+          "next_item": "P04.4c explicit bounded Start/checkpoint/Stop/review in existing Diagnostic flow; interrupted-window handling and actual H07-H09 remain",
+          "boundary": "Current56 packed passive native import/store/restart/download/notes/privacy/readability/inertness19 in both hosts; source2304/focused195/types2/admission9 PASS. Actual acquired app/F05 data remains exact historical55 input, not new56 collection/edit/consumption proof. Preserve same-file driver failures, one launch failure, earlier PASS19 and final console-audited PASS19. P04/C07/ONE parent review stay open;18/29 unchanged. Mandatory L02 open/A05 scoped complete; A02 open. No SDK/publication/redesign/other repository or independent-human blocker."
         }
       ],
       "remaining_acceptance": "Public reviewed profile/product reporter/reader and passive interruption; actual H07-H09 and ONE whole-P04 review"
@@ -4119,29 +4158,36 @@
     ]
   },
   "reconciliation": {
-    "document": "89-p04-reviewed-observation-packet.md",
+    "document": "90-p04-observation-report-and-reader.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "P04.4a-reviewed-observation-packet",
-      "status": "complete-source-packet-not-product-P04",
-      "record": "89-p04-reviewed-observation-packet.md",
-      "verification": ".artifacts/p04/public-evidence/verification.json",
-      "candidate": "Issued55 unchanged; new unimported source packet only",
+      "id": "P04.4b-observation-report-reader",
+      "status": "complete-packed-passive-report-not-reporter-P04",
+      "record": "90-p04-observation-report-and-reader.md",
+      "verification": ".artifacts/p04/public-report/verification56.json",
+      "candidate": "0.1.0-candidate.20261021.56 / UI0.2.0-candidate.20261018.2",
+      "handoff": ".artifacts/atom/2026-10-22T12-45-42-263Z/atom-handoff.json",
       "checks": {
-        "source": 2278,
-        "focused": 17,
-        "current_source_projection_of_historical_native55": 12
+        "source": 2304,
+        "focused": 195,
+        "types": 2,
+        "admission": 9,
+        "build": true,
+        "native_passive_both_hosts": 19,
+        "console_warnings_errors": 0
       },
       "public_evidence_packet": true,
-      "public_report_profile": false,
-      "product_controls": false,
+      "public_report_profile": true,
+      "passive_reader": true,
+      "product_observation_controls": false,
+      "passive_unowned_runtime_capture": false,
       "full_P04_acceptance": false,
       "whole_tasks_complete": 18,
-      "next_item": "P04.4b composed reviewed observation report and passive reader",
-      "boundary": "Source-only passive packet/strict stopped-window validation and privacy; no new runtime/UI. Exact unchanged historical55 native captures consumed, not a new native experiment. P04/C07/H07-H09 and ONE parent review stay open;18/29 unchanged. Mandatory L02 open/A05 scoped complete. No SDK/publication/redesign/other repository or independent-human blocker."
+      "next_item": "P04.4c explicit bounded Start/checkpoint/Stop/review in existing Diagnostic flow; interrupted-window handling and actual H07-H09 remain",
+      "boundary": "Current56 packed passive native import/store/restart/download/notes/privacy/readability/inertness19 in both hosts; source2304/focused195/types2/admission9 PASS. Actual acquired app/F05 data remains exact historical55 input, not new56 collection/edit/consumption proof. Preserve same-file driver failures, one launch failure, earlier PASS19 and final console-audited PASS19. P04/C07/ONE parent review stay open;18/29 unchanged. Mandatory L02 open/A05 scoped complete; A02 open. No SDK/publication/redesign/other repository or independent-human blocker."
     },
-    "next_item": "P04.4b composed reviewed observation report and passive reader",
+    "next_item": "P04.4c explicit bounded Start/checkpoint/Stop/review in existing Diagnostic flow; interrupted-window handling and actual H07-H09 remain",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -5919,6 +5965,32 @@
         "whole_tasks_complete": 18,
         "next_item": "P04.4b composed reviewed observation report and passive reader",
         "boundary": "Source-only passive packet/strict stopped-window validation and privacy; no new runtime/UI. Exact unchanged historical55 native captures consumed, not a new native experiment. P04/C07/H07-H09 and ONE parent review stay open;18/29 unchanged. Mandatory L02 open/A05 scoped complete. No SDK/publication/redesign/other repository or independent-human blocker."
+      },
+      {
+        "id": "P04.4b-observation-report-reader",
+        "status": "complete-packed-passive-report-not-reporter-P04",
+        "record": "90-p04-observation-report-and-reader.md",
+        "verification": ".artifacts/p04/public-report/verification56.json",
+        "candidate": "0.1.0-candidate.20261021.56 / UI0.2.0-candidate.20261018.2",
+        "handoff": ".artifacts/atom/2026-10-22T12-45-42-263Z/atom-handoff.json",
+        "checks": {
+          "source": 2304,
+          "focused": 195,
+          "types": 2,
+          "admission": 9,
+          "build": true,
+          "native_passive_both_hosts": 19,
+          "console_warnings_errors": 0
+        },
+        "public_evidence_packet": true,
+        "public_report_profile": true,
+        "passive_reader": true,
+        "product_observation_controls": false,
+        "passive_unowned_runtime_capture": false,
+        "full_P04_acceptance": false,
+        "whole_tasks_complete": 18,
+        "next_item": "P04.4c explicit bounded Start/checkpoint/Stop/review in existing Diagnostic flow; interrupted-window handling and actual H07-H09 remain",
+        "boundary": "Current56 packed passive native import/store/restart/download/notes/privacy/readability/inertness19 in both hosts; source2304/focused195/types2/admission9 PASS. Actual acquired app/F05 data remains exact historical55 input, not new56 collection/edit/consumption proof. Preserve same-file driver failures, one launch failure, earlier PASS19 and final console-audited PASS19. P04/C07/ONE parent review stay open;18/29 unchanged. Mandatory L02 open/A05 scoped complete; A02 open. No SDK/publication/redesign/other repository or independent-human blocker."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",

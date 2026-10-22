@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.56
+
+- Accept a separately versioned reviewed observation report, preserving strict
+  original snapshot/input/interaction components and explicit historical scope.
+- Show sampled observation windows and independent HTTP/transport outcomes in
+  saved reports and the passive reader, with default-private context/value fields.
+  Add observation privacy review using the existing native controls/layout;
+  whole-window omission keeps the separately reviewed snapshot condition.
+- Keep explicit cross-component privacy restrictions even when a legacy field was
+  already default-private. Imported files never resume collection or grant actions.
+- No shared token, primitive, typography or contract change. Reader/screens are
+  review candidates; product Start/Stop controls and whole P04 remain pending.
+
 ## 0.1.0-candidate.20261021.55
 
 - Retain observation selection only for its exact inspected occurrence; an older

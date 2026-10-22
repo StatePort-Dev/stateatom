@@ -1,4 +1,5 @@
 import {handoffActionBaseRecord} from '../../../core/handoff-action-report.mjs';
+import {handoffObservationBaseRecord} from '../../../core/handoff-observation-report.mjs';
 // SPDX-License-Identifier: Apache-2.0
 // Native local review choices only; no capture, file I/O, storage or app authority.
 import {handoffCategoryLabels,handoffBaseProfile,handoffHasSourceEvidence} from '../../../core/handoff-presentation.mjs';
@@ -53,7 +54,7 @@ export function createHandoffReview({document,root,onChange=()=>{}}){
   clear();mode='source';content(catalogue.fields,root,catalogue.categoryLabels||handoffCategoryLabels);
  }
  function report(record){
-  record=handoffActionBaseRecord(record);clear();attachmentMode=handoffHasSourceEvidence(record);inputMode=record.profile==='input-evidence/1';if(handoffBaseProfile(record)!=='reviewed-snapshot/1'&&!attachmentMode&&!inputMode)return;mode='report';
+  record=handoffActionBaseRecord(handoffObservationBaseRecord(record));clear();attachmentMode=handoffHasSourceEvidence(record);inputMode=record.profile==='input-evidence/1';if(handoffBaseProfile(record)!=='reviewed-snapshot/1'&&!attachmentMode&&!inputMode)return;mode='report';
   const parent=disclosure('Choose content to omit from a copy'),issue=disclosure('Reporter words');
   for(const name of issueNames){const locked=record.privacy.redactedIssueFields.includes(name),check=checkbox((locked?'Already omitted: ':'Omit ')+issueLabels[name],'spReviewIssue',name,{locked,checked:locked});issueControls.push({...check,name});issue.append(check.line);}parent.append(issue);
   if(handoffBaseProfile(record)==='reviewed-snapshot/1'){const fields=[record.report.target.value,...record.report.technicalEvidence.fields].map(f=>({...f,available:['included','filtered','replaced'].includes(f.state),preview:{state:f.state,...(Object.hasOwn(f,'value')?{value:f.value}:{})}}));content(fields,parent);}

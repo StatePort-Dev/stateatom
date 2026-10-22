@@ -1130,3 +1130,19 @@ P04/C07/product controls/reader/H07-H09/ONE parent review stay open;18/29 unchan
 (~62% equal count), L02 mandatory/open/A05 mandatory/scoped complete. Next P04.4b
 composed report and passive reader. Original sandbox EPERM and semantic RED attempts
 remain preserved. No SDK/publication/redesign/other repository or human blocker.
+
+
+### 2026-10-22 — P04.4b composed observation report/passive reader
+
+[P04.4b](docs/completion/90-p04-observation-report-and-reader.md): current56 source2304/focused195/types2/admission9/build
+and native passive19/both hosts PASS, with0 console warning/error. New strict
+profile preserves old components, recorded-window summary, exact parents and
+persistent cross-component privacy. Actual import/store/restart/download/notes/
+privacy, inert markup/HTTP0 with positive script control,390/440/200percent and
+keyboard pass. Acquired app/F05 data remains exact historical55 input; no new56
+collection/edit/consumption or full H07-H09 proof. Screenshots remain candidates.
+P04/C07/reporter controls/interrupted ownership/ONE parent review stay open;18/29
+unchanged (~62% equal count), L02 mandatory/open/A05 mandatory/scoped complete.
+Next P04.4c explicit bounded Start/checkpoint/Stop/review in existing Diagnostic
+flow. All original failures/results preserved; no SDK/publication/redesign/other
+repository or independent-human blocker.

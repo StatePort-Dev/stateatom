@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: Apache-2.0
 // Pure passive wording shared by Atom and the recipient; callers render inert text.
-const outerProfile=r=>r?.profile==='action-evidence/1'?r.actionBaseHeader.profile:r?.profile;
+const observationBase=r=>r?.profile==='observation-evidence/1'?r.observationBaseHeader.profile:r?.profile;
+export const handoffHasActionEvidence=r=>observationBase(r)==='action-evidence/1';
+const outerProfile=r=>handoffHasActionEvidence(r)?r.actionBaseHeader.profile:observationBase(r);
 export const handoffHasInputEvidence=r=>outerProfile(r)==='input-evidence/1';
 const componentProfile=r=>handoffHasInputEvidence(r)?r.inputBaseHeader.profile:outerProfile(r);
 export const handoffHasSourceEvidence=r=>componentProfile(r)==='source-evidence/1';
@@ -20,7 +22,7 @@ export function handoffConditionText(record){
  return t.property==='text'?'Selected text: excluded from this report.':label+': omitted during review; recorded value unavailable here.';
 }
 export function handoffTechnicalSummary(record){
- if(!reviewed(record))return(record.profile==='action-evidence/1'||handoffHasSourceEvidence(record)?'Base snapshot: source':'Source')+', responses and recorded actions are excluded. Historical claims are not reverified.';
+ if(!reviewed(record))return(handoffHasActionEvidence(record)||handoffHasSourceEvidence(record)?'Base snapshot: source':'Source')+', responses and recorded actions are excluded. Historical claims are not reverified.';
  const all=rows(record),count=state=>all.filter(f=>f.state===state).length;
  return'Reviewed historical details: '+count('included')+' included, '+count('filtered')+' filtered, '+count('replaced')+' reviewer replacements, '+count('omitted')+' omitted, '+count('unavailable')+' unavailable. Missing context does not establish no dependency.';
 }

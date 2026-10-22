@@ -3,7 +3,7 @@
 - [x] P04.4a strict stopped-window decoder, private acquisition validation,
   reviewed public projection and privacy derivatives; meaningful RED/GREEN,
   full source suite, preserved runtime55 identity; bounded local commit.
-- [ ] P04.4b composed public profile, passive reader/presentation and existing
+- [x] P04.4b composed public profile, passive reader/presentation and existing
   developer note/source/privacy operations; original codecs stay strict.
 - [ ] P04.4c existing Diagnostic controls, explicit Start/checkpoint/Stop/review,
   safe cancellation and passive interrupted acquisition; no authority from files.

@@ -36,6 +36,7 @@ function originalFields(s){
  for(const [i,r] of s.records.entries()){const p='/records/'+i;if(r.kind==='network'){values[p+'/requestId']=r.requestId;values[p+'/origin']=r.route.origin;}if(r.kind==='error'&&r.location){for(const k of ['origin','line','column'])values[p+'/'+k]=r.location[k];}if(r.kind==='dom'&&r.value.state==='included')values[p+'/value']=r.value.value;}
  return values;
 }
+export function handoffObservationFieldLabel(path,observation){const f=definitions(observation).find(f=>f.path===path);if(!f)fail('Unknown observation field');return f.label;}
 function filtered(value){if(typeof value!=='string')return{state:'included',value};const clean=filterHandoffReviewText(value);return clean===value?{state:'included',value}:{state:'filtered',value:clean,reason:'known-secret-pattern'};}
 function project(defs,values,c){
  const known=new Set(defs.map(f=>f.path)),included=new Set(c.includeFields||[]),omitted=new Set(c.omitFields||[]),replacement=new Map((c.replaceFields||[]).map(f=>[f.id,f.text]));
