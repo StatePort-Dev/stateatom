@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.58
+
+- Strictly validate retained stopped windows after inspector/runtime loss; no
+  owner, timer, verifier or grant is reconstructed. Permission/origin revocation
+  continues clearing unsaved private site data.
+- Existing Diagnostic area offers passive Read stored history and Delete history,
+  separately from active reporter controls. Exact ownerless read/delete is local,
+  fenced against replacement and cannot resume/Stop/checkpoint/capture a window.
+- Historical metadata loads suppress legacy page reinspection; unknown end and
+  missing history stay explicit. No public interrupted-window report/export or
+  whole-P04/H08/H09 acceptance is claimed by this bounded addition.
+
+
 ## 0.1.0-candidate.20261021.57
 
 - Add explicit bounded Start, sampled read, Stop/review and Delete inside the

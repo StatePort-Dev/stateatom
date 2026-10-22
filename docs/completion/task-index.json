@@ -3248,7 +3248,11 @@
         "packages/atom/src/observation-controller.mjs",
         "tests/atom/observation-controller.test.mjs",
         "tests/atom/handoff-observation-ui.test.mjs",
-        "tests/integration/handoff-observation-reporter.mjs"
+        "tests/integration/handoff-observation-reporter.mjs",
+        "packages/atom/src/observation-history-ui.mjs",
+        "tests/atom/observation-history-ui.test.mjs",
+        "tests/atom/observation-history-runtime.test.mjs",
+        "tests/integration/handoff-observation-history.mjs"
       ],
       "existing_commands": [
         "npm run verify:browser",
@@ -3259,40 +3263,42 @@
         "node tests/integration/production-changes.mjs --backend <exact atom-handoff.json>",
         "node tests/integration/production-observation-dom-native.mjs <exact atom-handoff.json>",
         "node tests/integration/handoff-observation-passive.mjs <exact atom-handoff.json>",
-        "node tests/integration/handoff-observation-reporter.mjs <exact atom-handoff.json>"
+        "node tests/integration/handoff-observation-reporter.mjs <exact atom-handoff.json>",
+        "node tests/integration/handoff-observation-history.mjs <exact atom-handoff.json>"
       ],
       "deliverable": "U06-designed QA production observation/handoff flow, read-only collector distinct from intentional edits",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "P04.4c.2 passive interrupted-window metadata retention/read/delete without owner; H08/H09 and ONE parent review remain",
-      "execution_record": "91-p04-owned-observation-reporter.md",
-      "implementation_plan": "../superpowers/plans/2026-10-22-p04-owned-reporter.md",
+      "active_slice": "P04.4d remaining native H07/H08/H09 including independent F05/U02 edit outcomes and primary picker entry diagnosis; ONE parent review remains",
+      "execution_record": "92-p04-passive-interrupted-metadata.md",
+      "implementation_plan": "../superpowers/plans/2026-10-22-p04-interrupted-metadata.md",
       "current_checkpoint": {
-        "id": "P04.4c.1-owned-observation-reporter",
-        "status": "complete-normal-owned-CSS-entry-not-whole-P04",
-        "record": "91-p04-owned-observation-reporter.md",
-        "verification": ".artifacts/p04/owned-reporter/verification57.json",
-        "candidate": "0.1.0-candidate.20261021.57 / UI0.2.0-candidate.20261018.2",
-        "handoff": ".artifacts/atom/2026-10-22T13-53-02-948Z/atom-handoff.json",
+        "id": "P04.4c.2-passive-interrupted-metadata",
+        "status": "complete-passive-history-not-whole-P04",
+        "record": "92-p04-passive-interrupted-metadata.md",
+        "verification": ".artifacts/p04/interrupted-metadata/verification58.json",
+        "candidate": "0.1.0-candidate.20261021.58 / UI0.2.0-candidate.20261018.2",
+        "handoff": ".artifacts/atom/2026-10-22T14-43-13-332Z/atom-handoff.json",
         "checks": {
-          "source": 2347,
-          "focused": 407,
+          "source": 2365,
+          "focused": 138,
           "types": 2,
           "admission": 9,
           "build": true,
-          "native_owned_both_hosts": 19,
+          "native_both_hosts": 25,
           "console_warnings_errors": 0
         },
         "public_evidence_packet": true,
         "public_report_profile": true,
         "passive_reader": true,
         "product_observation_controls": true,
+        "ownerless_metadata_read_delete": true,
         "passive_unowned_runtime_capture": false,
         "actual_F05_edit_during_window": false,
         "full_P04_acceptance": false,
         "whole_tasks_complete": 18,
-        "next_item": "P04.4c.2 passive interrupted-window metadata retention/read/delete without owner; H08/H09 and ONE parent review remain",
-        "boundary": "Current57 normal owned Describe/Start/manual reproduction/read/Stop/review/save/download/passive readback native19 in both hosts via actual existing CSS lookup; source2347/focused407/types2/admission9/build PASS. Three primary-picker entry failures before Start retained, unresolved and not requalified by CSS. No actual F05 edit during window, interrupted capture/H08/H09 or full P04/C07 acceptance.18/29 unchanged; L02 mandatory/open/A05 mandatory/scoped complete/A02 open. No SDK/publication/redesign/other repository/human blocker."
+        "next_item": "P04.4d remaining native H07/H08/H09 including independent F05/U02 edit outcomes and primary picker entry diagnosis; ONE parent review remains",
+        "boundary": "Current58 source2365/focused138/types2/admission9/build/native25 both hosts PASS;0 console errors/warnings. Actual inspector close/reopen and forced worker loss/reopen/read/delete with native keyboard; strict unknown-ended history, no owner/adoption or native history command. Existing unsaved permission/origin clear preserved. First PASS25 with collapsed screenshot retained, final visible-history PASS25 current. Primary-picker failures from91 unresolved; no F05 edit during collection/public ownerless capture/whole P04/C07.18/29 unchanged; L02 mandatory/open/A05 mandatory/scoped complete/A02 open. No SDK/publication/redesign/other repository/human blocker."
       },
       "completed_slices": [
         {
@@ -3432,6 +3438,34 @@
           "whole_tasks_complete": 18,
           "next_item": "P04.4c.2 passive interrupted-window metadata retention/read/delete without owner; H08/H09 and ONE parent review remain",
           "boundary": "Current57 normal owned Describe/Start/manual reproduction/read/Stop/review/save/download/passive readback native19 in both hosts via actual existing CSS lookup; source2347/focused407/types2/admission9/build PASS. Three primary-picker entry failures before Start retained, unresolved and not requalified by CSS. No actual F05 edit during window, interrupted capture/H08/H09 or full P04/C07 acceptance.18/29 unchanged; L02 mandatory/open/A05 mandatory/scoped complete/A02 open. No SDK/publication/redesign/other repository/human blocker."
+        },
+        {
+          "id": "P04.4c.2-passive-interrupted-metadata",
+          "status": "complete-passive-history-not-whole-P04",
+          "record": "92-p04-passive-interrupted-metadata.md",
+          "verification": ".artifacts/p04/interrupted-metadata/verification58.json",
+          "candidate": "0.1.0-candidate.20261021.58 / UI0.2.0-candidate.20261018.2",
+          "handoff": ".artifacts/atom/2026-10-22T14-43-13-332Z/atom-handoff.json",
+          "checks": {
+            "source": 2365,
+            "focused": 138,
+            "types": 2,
+            "admission": 9,
+            "build": true,
+            "native_both_hosts": 25,
+            "console_warnings_errors": 0
+          },
+          "public_evidence_packet": true,
+          "public_report_profile": true,
+          "passive_reader": true,
+          "product_observation_controls": true,
+          "ownerless_metadata_read_delete": true,
+          "passive_unowned_runtime_capture": false,
+          "actual_F05_edit_during_window": false,
+          "full_P04_acceptance": false,
+          "whole_tasks_complete": 18,
+          "next_item": "P04.4d remaining native H07/H08/H09 including independent F05/U02 edit outcomes and primary picker entry diagnosis; ONE parent review remains",
+          "boundary": "Current58 source2365/focused138/types2/admission9/build/native25 both hosts PASS;0 console errors/warnings. Actual inspector close/reopen and forced worker loss/reopen/read/delete with native keyboard; strict unknown-ended history, no owner/adoption or native history command. Existing unsaved permission/origin clear preserved. First PASS25 with collapsed screenshot retained, final visible-history PASS25 current. Primary-picker failures from91 unresolved; no F05 edit during collection/public ownerless capture/whole P04/C07.18/29 unchanged; L02 mandatory/open/A05 mandatory/scoped complete/A02 open. No SDK/publication/redesign/other repository/human blocker."
         }
       ],
       "remaining_acceptance": "Public reviewed profile/product reporter/reader and passive interruption; actual H07-H09 and ONE whole-P04 review"
@@ -4194,8 +4228,8 @@
     "document": "90-p04-observation-report-and-reader.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "P04.4c.1-owned-observation-reporter",
-    "next_item": "P04.4c.2 passive interrupted-window metadata retention/read/delete without owner; H08/H09 and ONE parent review remain",
+    "current_increment": "P04.4c.2-passive-interrupted-metadata",
+    "next_item": "P04.4d remaining native H07/H08/H09 including independent F05/U02 edit outcomes and primary picker entry diagnosis; ONE parent review remains",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6026,10 +6060,38 @@
         "whole_tasks_complete": 18,
         "next_item": "P04.4c.2 passive interrupted-window metadata retention/read/delete without owner; H08/H09 and ONE parent review remain",
         "boundary": "Current57 normal owned Describe/Start/manual reproduction/read/Stop/review/save/download/passive readback native19 in both hosts via actual existing CSS lookup; source2347/focused407/types2/admission9/build PASS. Three primary-picker entry failures before Start retained, unresolved and not requalified by CSS. No actual F05 edit during window, interrupted capture/H08/H09 or full P04/C07 acceptance.18/29 unchanged; L02 mandatory/open/A05 mandatory/scoped complete/A02 open. No SDK/publication/redesign/other repository/human blocker."
+      },
+      {
+        "id": "P04.4c.2-passive-interrupted-metadata",
+        "status": "complete-passive-history-not-whole-P04",
+        "record": "92-p04-passive-interrupted-metadata.md",
+        "verification": ".artifacts/p04/interrupted-metadata/verification58.json",
+        "candidate": "0.1.0-candidate.20261021.58 / UI0.2.0-candidate.20261018.2",
+        "handoff": ".artifacts/atom/2026-10-22T14-43-13-332Z/atom-handoff.json",
+        "checks": {
+          "source": 2365,
+          "focused": 138,
+          "types": 2,
+          "admission": 9,
+          "build": true,
+          "native_both_hosts": 25,
+          "console_warnings_errors": 0
+        },
+        "public_evidence_packet": true,
+        "public_report_profile": true,
+        "passive_reader": true,
+        "product_observation_controls": true,
+        "ownerless_metadata_read_delete": true,
+        "passive_unowned_runtime_capture": false,
+        "actual_F05_edit_during_window": false,
+        "full_P04_acceptance": false,
+        "whole_tasks_complete": 18,
+        "next_item": "P04.4d remaining native H07/H08/H09 including independent F05/U02 edit outcomes and primary picker entry diagnosis; ONE parent review remains",
+        "boundary": "Current58 source2365/focused138/types2/admission9/build/native25 both hosts PASS;0 console errors/warnings. Actual inspector close/reopen and forced worker loss/reopen/read/delete with native keyboard; strict unknown-ended history, no owner/adoption or native history command. Existing unsaved permission/origin clear preserved. First PASS25 with collapsed screenshot retained, final visible-history PASS25 current. Primary-picker failures from91 unresolved; no F05 edit during collection/public ownerless capture/whole P04/C07.18/29 unchanged; L02 mandatory/open/A05 mandatory/scoped complete/A02 open. No SDK/publication/redesign/other repository/human blocker."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Current57 normal owned Describe/Start/manual reproduction/read/Stop/review/save/download/passive readback native19 in both hosts via actual existing CSS lookup; source2347/focused407/types2/admission9/build PASS. Three primary-picker entry failures before Start retained, unresolved and not requalified by CSS. No actual F05 edit during window, interrupted capture/H08/H09 or full P04/C07 acceptance.18/29 unchanged; L02 mandatory/open/A05 mandatory/scoped complete/A02 open. No SDK/publication/redesign/other repository/human blocker.",
+    "current_activity_note": "Current58 source2365/focused138/types2/admission9/build/native25 both hosts PASS;0 console errors/warnings. Actual inspector close/reopen and forced worker loss/reopen/read/delete with native keyboard; strict unknown-ended history, no owner/adoption or native history command. Existing unsaved permission/origin clear preserved. First PASS25 with collapsed screenshot retained, final visible-history PASS25 current. Primary-picker failures from91 unresolved; no F05 edit during collection/public ownerless capture/whole P04/C07.18/29 unchanged; L02 mandatory/open/A05 mandatory/scoped complete/A02 open. No SDK/publication/redesign/other repository/human blocker.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "P04"
