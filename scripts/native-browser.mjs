@@ -2,6 +2,7 @@
 // Backend fault-test driver: no automatic debugger attachment to app/worker.
 // Application CDP attaches lazily, only after Atom's native admission.
 import {spawn} from 'node:child_process';
+import path from 'node:path';
 import {mkdir,readFile,readdir,open} from 'node:fs/promises';
 import {existsSync} from 'node:fs';
 import {chromium} from 'playwright';
@@ -13,9 +14,9 @@ class NativeCDP {
  on(sessionId,event,fn){const key=(sessionId||'')+':'+event,list=this.listeners.get(key)||[];list.push(fn);this.listeners.set(key,list);}
  async session(targetId){const {sessionId}=await this.send('Target.attachToTarget',{targetId,flatten:true});return{send:(method,params)=>this.send(method,params,sessionId),on:(event,fn)=>this.on(sessionId,event,fn),detach:()=>this.send('Target.detachFromTarget',{sessionId})};}
 }
-export async function startNativeBrowser(runtime,name,_withExtension,_headed,extra=[],{extensionPath}){
+export async function startNativeBrowser(runtime,name,_withExtension,_headed,extra=[],{extensionPath,headless=true,display}={}){
  const profile=runtime+'/'+name;await mkdir(profile,{recursive:true});let executable=chromium.executablePath();if(existsSync(root+'/.browsers')){const dir=(await readdir(root+'/.browsers')).find(n=>/^chromium-/.test(n));if(dir)executable=root+'/.browsers/'+dir+'/chrome-linux64/chrome';}
- const log=await open(profile+'/chrome.log','a'),child=spawn(executable,['--headless=new','--remote-debugging-port=0','--user-data-dir='+profile,'--disable-extensions-except='+extensionPath,'--load-extension='+extensionPath,'--no-first-run','--no-default-browser-check','--disable-dev-shm-usage',...extra,'about:blank'],{stdio:['ignore',log.fd,log.fd]});
+ const log=await open(profile+'/chrome.log','a'),child=spawn(executable,[...(headless?['--headless=new']:[]),'--remote-debugging-port=0','--user-data-dir='+profile,'--disable-extensions-except='+extensionPath,'--load-extension='+extensionPath,'--no-first-run','--no-default-browser-check','--disable-dev-shm-usage',...extra,'about:blank'],{stdio:['ignore',log.fd,log.fd],env:{...process.env,...(display?{DISPLAY:display}:{}),...(!headless&&display?{DBUS_SESSION_BUS_ADDRESS:'unix:path='+path.resolve(profile,'no-shared-session-bus'),GTK_USE_PORTAL:'0'}:{})}});
  let cdp,closed=false;const pages=[];
  const close=async()=>{if(closed)return;closed=true;try{await cdp?.send('Browser.close');}catch{}if(child.exitCode===null){child.kill('SIGTERM');try{await waitFor(()=>child.exitCode!==null,5000);}catch{child.kill('SIGKILL');}}cdp?.socket.close();await log.close();};
  try{

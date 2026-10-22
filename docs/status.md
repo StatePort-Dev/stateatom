@@ -1718,3 +1718,18 @@ Original .43 corpus43/HTTP12/companions70 remain historical.17/29 full items
 HTTPS permission acceptance, after completed F02/P02; C06, mandatory L02 quality,
 A02 and integration/validation/release gates remain open. No SDK, publication,
 other repository, redesign or independent-human blocker.
+
+
+### 2026-10-22 — P03.1 actual permission/TLS environment qualified
+
+[P03.1](completion/83-p03-https-artifact-access.md):13 actual browser-owned Deny/Allow/read-only/revocation
+checks PASS across both .44/UI .2 hosts, without permission preapproval or API
+override. Native certificate manager adds a unique test root only to a disposable
+profile; actual localhost TLS succeeds while untrusted-chain and SAN-mismatched
+host controls fail, without certificate bypass. Reproducible fixture/finite driver
+and exact receipts retained. Long manual prompt/channel loss, portal/focus/early-
+click failures remain explicit; no full stability or artifact-flow acceptance.
+Product/UI/Worker bytes unchanged;2113source tests retained, not rerun. P03/C06
+remain open;17/29 full items (~59% equal count) unchanged. Next P03.2 safe artifact
+errors/local fallback, then full trusted-HTTPS artifact controls and ONE review.
+No SDK/publication/other repository/redesign/independent-human gate.
