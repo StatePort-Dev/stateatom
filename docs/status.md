@@ -1771,3 +1771,18 @@ new source/runtime/causal capability or mutation authority claim. C06's finite p
 complete;18/29 whole tasks (~62% equal count). Next P04 after completed F02/U03/U06.
 Mandatory L02 usefulness/A02/integration/validation/release gates remain open; A05
 mandatory/scoped complete. No SDK/publication/other repository/redesign/human blocker.
+
+
+### 2026-10-22 — P04.1 bounded observation source foundation
+
+[P04.1](completion/86-p04-observation-foundation.md):39 focused/2178 full source checks PASS,0fail/skip/cancel.
+New inert pure ledger has explicit Start, exact tab/document/frame/target, private
+occurrence tokens, immutable snapshots, closed error/route/value projection and
+stop/delete/missing history.64records/32pending/64KiB/120s caps; arbitrary outcome
+coercion, null clock/id and raw callback failures have preserved RED/GREEN controls.
+No Chrome/fetch/timer/storage or public report/API; issued47 and both hosts unchanged.
+These source models do not prove a production collector or native timing. P04/C07
+remain open,18/29 unchanged. Next P04.2 authenticated runtime/owner/lifecycle/native
+metadata mapping and integration into existing3-tab/5MB cap; then UI/reader H07-H09.
+ONE parent review later, no per-slice review loop. All earlier evidence retained;
+no SDK/publication/other repository/redesign/independent-human gate.

@@ -3228,15 +3228,58 @@
       "files": [
         "core/production-observations.mjs",
         "packages/atom/src/runtime.mjs",
-        "core/diagnostic.mjs"
+        "core/diagnostic.mjs",
+        "tests/production-observations.test.mjs"
       ],
       "existing_commands": [
         "npm run verify:browser",
-        "npm run verify:production-source-mapping"
+        "npm run verify:production-source-mapping",
+        "node --test --test-isolation=none tests/production-observations.test.mjs",
+        "npm test"
       ],
       "deliverable": "U06-designed QA production observation/handoff flow, read-only collector distinct from intentional edits",
-      "status": "planned",
-      "optional": false
+      "status": "in-progress",
+      "optional": false,
+      "active_slice": "P04.2 authenticated runtime observation ownership/lifecycle/native clock mapping and existing3-tab/5MB integration",
+      "execution_record": "86-p04-observation-foundation.md",
+      "implementation_plan": "../superpowers/plans/2026-10-22-p04-observation-foundation.md",
+      "current_checkpoint": {
+        "id": "P04.1-pure-observation-foundation",
+        "status": "complete-source-foundation-not-runtime-P04",
+        "record": "86-p04-observation-foundation.md",
+        "verification": ".artifacts/p04/foundation/verification.json",
+        "checks": {
+          "source": 2178,
+          "focused": 39
+        },
+        "runtime_bundled": false,
+        "global_budget_integrated": false,
+        "native_acceptance": false,
+        "package_unchanged": "0.1.0-candidate.20261021.47 / UI0.2.0-candidate.20261018.2",
+        "full_P04_acceptance": false,
+        "next_item": "P04.2 authenticated runtime observation ownership/lifecycle/native clock mapping and existing3-tab/5MB integration",
+        "boundary": "Pure normalized-event ledger only:39 focused/2178 full source PASS, no Chrome/timers/fetch/storage or packaged API. Bounds64records/32pending/64KiB/120s, closed privacy/context/time/stop/delete and immutable snapshots. Current47 package/source/install/both hosts unchanged; native P03 proof is not P04 proof. Global runtime3-tab/5MB ownership, native clock/events, UI/report/reader and H07-H09 remain open.18/29 whole tasks unchanged; no SDK/publication/other repository/redesign/human gate."
+      },
+      "completed_slices": [
+        {
+          "id": "P04.1-pure-observation-foundation",
+          "status": "complete-source-foundation-not-runtime-P04",
+          "record": "86-p04-observation-foundation.md",
+          "verification": ".artifacts/p04/foundation/verification.json",
+          "checks": {
+            "source": 2178,
+            "focused": 39
+          },
+          "runtime_bundled": false,
+          "global_budget_integrated": false,
+          "native_acceptance": false,
+          "package_unchanged": "0.1.0-candidate.20261021.47 / UI0.2.0-candidate.20261018.2",
+          "full_P04_acceptance": false,
+          "next_item": "P04.2 authenticated runtime observation ownership/lifecycle/native clock mapping and existing3-tab/5MB integration",
+          "boundary": "Pure normalized-event ledger only:39 focused/2178 full source PASS, no Chrome/timers/fetch/storage or packaged API. Bounds64records/32pending/64KiB/120s, closed privacy/context/time/stop/delete and immutable snapshots. Current47 package/source/install/both hosts unchanged; native P03 proof is not P04 proof. Global runtime3-tab/5MB ownership, native clock/events, UI/report/reader and H07-H09 remain open.18/29 whole tasks unchanged; no SDK/publication/other repository/redesign/human gate."
+        }
+      ],
+      "remaining_acceptance": "Authenticated runtime/global budgets, native clock/event/DOM admission, actual reviewed reporter/reader H07-H09 and ONE whole-P04 review"
     },
     {
       "id": "L01",
@@ -3993,51 +4036,27 @@
     ]
   },
   "reconciliation": {
-    "document": "85-p03-trusted-https-workflow.md",
+    "document": "86-p04-observation-foundation.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "P03-whole-item-acceptance",
-      "status": "complete-within-finite-trusted-HTTPS-and-local-artifact-brief",
-      "record": "85-p03-trusted-https-workflow.md",
-      "candidate": "0.1.0-candidate.20261021.47 / UI0.2.0-candidate.20261018.2",
-      "handoff": ".artifacts/atom/2026-10-22T08-55-21-215Z/atom-handoff.json",
-      "verification": ".artifacts/p03/whole-review/verification47.json",
+      "id": "P04.1-pure-observation-foundation",
+      "status": "complete-source-foundation-not-runtime-P04",
+      "record": "86-p04-observation-foundation.md",
+      "verification": ".artifacts/p04/foundation/verification.json",
       "checks": {
-        "source": 2139,
-        "focused": 113,
-        "native_trusted_HTTPS_both_hosts": 48,
-        "types": 2,
-        "admission": 9,
-        "build": true,
-        "review_focused": 53
+        "source": 2178,
+        "focused": 39
       },
-      "retained_production_backend": {
-        "candidate": ".46",
-        "checks": 27,
-        "worker_identity_equals_current": true,
-        "fresh_current_run": false
-      },
-      "retained_parser": {
-        "candidate": ".45",
-        "checks": 86,
-        "parser_assets_equal_current": true,
-        "fresh_current_run": false
-      },
-      "review": {
-        "count": 1,
-        "critical": 0,
-        "important": 0,
-        "minor": 1,
-        "minor_resolved": 1,
-        "correction_passes": 1
-      },
-      "full_P03_acceptance": true,
-      "whole_tasks_complete": 18,
-      "next_item": "P04 bounded post-start production observations after completed F02/U03/U06",
-      "boundary": "Finite synthetic ordinary trusted HTTPS app/separate artifact workflow complete after ONE review/correction. Current47 source2139/focused113/native48/types2/admission9/build PASS;46 backend27 retained on byte-identical workers,45 parser86 on unchanged assets. Actual native deny/grant/revoke/regrant, scoped errors/cancel/target switch and local fallback; no app action/production grant. Initial35s app prompt still needs explicit Reopen+Attach; no seamless or enterprise-provider claim. All failures and46 blank images preserved; current47 images readable. C06 bounded source path complete;18/29 tasks (~62% equal count), mandatory L02/A02/release gates open, A05 still mandatory/scoped complete. No SDK/publication/other repository/redesign/human blocker."
+      "runtime_bundled": false,
+      "global_budget_integrated": false,
+      "native_acceptance": false,
+      "package_unchanged": "0.1.0-candidate.20261021.47 / UI0.2.0-candidate.20261018.2",
+      "full_P04_acceptance": false,
+      "next_item": "P04.2 authenticated runtime observation ownership/lifecycle/native clock mapping and existing3-tab/5MB integration",
+      "boundary": "Pure normalized-event ledger only:39 focused/2178 full source PASS, no Chrome/timers/fetch/storage or packaged API. Bounds64records/32pending/64KiB/120s, closed privacy/context/time/stop/delete and immutable snapshots. Current47 package/source/install/both hosts unchanged; native P03 proof is not P04 proof. Global runtime3-tab/5MB ownership, native clock/events, UI/report/reader and H07-H09 remain open.18/29 whole tasks unchanged; no SDK/publication/other repository/redesign/human gate."
     },
-    "next_item": "P04 bounded post-start production observations after completed F02/U03/U06",
+    "next_item": "P04.2 authenticated runtime observation ownership/lifecycle/native clock mapping and existing3-tab/5MB integration",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -5730,10 +5749,27 @@
         "whole_tasks_complete": 18,
         "next_item": "P04 bounded post-start production observations after completed F02/U03/U06",
         "boundary": "Finite synthetic ordinary trusted HTTPS app/separate artifact workflow complete after ONE review/correction. Current47 source2139/focused113/native48/types2/admission9/build PASS;46 backend27 retained on byte-identical workers,45 parser86 on unchanged assets. Actual native deny/grant/revoke/regrant, scoped errors/cancel/target switch and local fallback; no app action/production grant. Initial35s app prompt still needs explicit Reopen+Attach; no seamless or enterprise-provider claim. All failures and46 blank images preserved; current47 images readable. C06 bounded source path complete;18/29 tasks (~62% equal count), mandatory L02/A02/release gates open, A05 still mandatory/scoped complete. No SDK/publication/other repository/redesign/human blocker."
+      },
+      {
+        "id": "P04.1-pure-observation-foundation",
+        "status": "complete-source-foundation-not-runtime-P04",
+        "record": "86-p04-observation-foundation.md",
+        "verification": ".artifacts/p04/foundation/verification.json",
+        "checks": {
+          "source": 2178,
+          "focused": 39
+        },
+        "runtime_bundled": false,
+        "global_budget_integrated": false,
+        "native_acceptance": false,
+        "package_unchanged": "0.1.0-candidate.20261021.47 / UI0.2.0-candidate.20261018.2",
+        "full_P04_acceptance": false,
+        "next_item": "P04.2 authenticated runtime observation ownership/lifecycle/native clock mapping and existing3-tab/5MB integration",
+        "boundary": "Pure normalized-event ledger only:39 focused/2178 full source PASS, no Chrome/timers/fetch/storage or packaged API. Bounds64records/32pending/64KiB/120s, closed privacy/context/time/stop/delete and immutable snapshots. Current47 package/source/install/both hosts unchanged; native P03 proof is not P04 proof. Global runtime3-tab/5MB ownership, native clock/events, UI/report/reader and H07-H09 remain open.18/29 whole tasks unchanged; no SDK/publication/other repository/redesign/human gate."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Finite synthetic ordinary trusted HTTPS app/separate artifact workflow complete after ONE review/correction. Current47 source2139/focused113/native48/types2/admission9/build PASS;46 backend27 retained on byte-identical workers,45 parser86 on unchanged assets. Actual native deny/grant/revoke/regrant, scoped errors/cancel/target switch and local fallback; no app action/production grant. Initial35s app prompt still needs explicit Reopen+Attach; no seamless or enterprise-provider claim. All failures and46 blank images preserved; current47 images readable. C06 bounded source path complete;18/29 tasks (~62% equal count), mandatory L02/A02/release gates open, A05 still mandatory/scoped complete. No SDK/publication/other repository/redesign/human blocker.",
+    "current_activity_note": "Pure normalized-event ledger only:39 focused/2178 full source PASS, no Chrome/timers/fetch/storage or packaged API. Bounds64records/32pending/64KiB/120s, closed privacy/context/time/stop/delete and immutable snapshots. Current47 package/source/install/both hosts unchanged; native P03 proof is not P04 proof. Global runtime3-tab/5MB ownership, native clock/events, UI/report/reader and H07-H09 remain open.18/29 whole tasks unchanged; no SDK/publication/other repository/redesign/human gate.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "P04"
