@@ -1,0 +1,3 @@
+// SPDX-License-Identifier: Apache-2.0
+import test from'node:test';import assert from'node:assert/strict';import{execFileSync}from'node:child_process';
+for(const role of['js','map','companion'])for(const level of['ancestor','root'])test('real '+level+' replacement cannot include outside '+role+' bytes in the private bundle',()=>{const r=JSON.parse(execFileSync(process.execPath,['tests/helpers/release-bundle-input-race.mjs',role,level],{encoding:'utf8',stdio:['ignore','pipe','pipe']}));assert.equal(r.swapped,true);assert.equal(r.producerSucceeded,false,JSON.stringify(r));assert.equal(r.outputAbsent,true);assert.match(r.refused,/directory|changed|symlink/i);});

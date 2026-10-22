@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.44
+
+- Revoke production grants and unfinished confirmation tickets, and close owned
+  native controls, when a confirmed expired local lease is retired before its
+  native detach event. Explicit reconnect starts read-only and requires fresh
+  confirmations for production changes.
+- Remove the expired reference before logical cleanup so a replacement foreign
+  debugger owner receives no stale release. Refresh returned capability facts
+  after revocation. Preserve the original source-map/parser limits and semantics.
+
 ## 0.1.0-candidate.20261021.43
 
 - Retire a confirmed expired local debugger lease reference when the host broker

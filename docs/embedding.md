@@ -373,7 +373,7 @@ This does not erase strings already returned to an authorized host or independen
 authenticate a user-provided manifest/source map. Browser bundle success alone is
 not native product acceptance; see the current completion evidence for actual runs.
 
-### Owned source-artifact parser asset (candidate .20261021.43)
+### Owned source-artifact parser asset (candidate .20261021.44)
 
 The two supplied hosts use the existing `createGuardianBroker` offscreen document
 for a separate private source-parsing channel. Copy

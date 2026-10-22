@@ -108,4 +108,3 @@ channel, preserve debugger guardian ownership/cleanup, require no synchronous
 product fallback, and test exact packed two-host source/lifecycle/clear/navigation/
 worker-restart behavior. Companions, registered real-app/indexed-map limits and
 ONE whole-P02 review remain open;16/29 full tasks (~55% equal item count).
-

@@ -360,3 +360,9 @@ requires reopening actual storage. Existing list-diagnostics returns v1 records
 only, and legacy deletion cannot delete v2. The inspector exposes a separate Save after review, readable saved-file reopen,
 explicit UTF-8 import, refresh and exact deletion. Downloads preserve raw bytes.
 Rich category/per-note review and full U03 acceptance remain separate.
+
+A confirmed lost debugger lease also revokes production-change grants and pending
+confirmation tickets, and closes owned native controls, even if its later native
+detach event arrives after local lease retirement. Reattach starts read-only;
+production changes require two fresh confirmations. A foreign replacement owner
+is never released through the expired reference.

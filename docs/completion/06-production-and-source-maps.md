@@ -42,12 +42,17 @@ Work:
 **Depends on:** P01.  
 **Produces:** practical release-artifact preparation, bulk matching to loaded chunks, and responsive source browsing/analysis.
 
-Current bounded [P02.1 execution](76-p02-release-bundle-preparation.md) delivers the
-explicit Node producer and actual generated-bundle compatibility; subsequent
-[P02.2](77-p02-single-release-connection.md) adds one retained private release index
-and actual lazy native/own-host matching across cold/later chunks. See
-[recipe/limits](../source-bundles.md). Companion sources, inspector archive/map parse
-preemption, registered real-app qualification and ONE whole-P02 review remain open. The [P02.3a Worker foundation](78-p02-preemptible-parser-worker.md) has separate HTTP proof; P02.3b MV3 integration is next, with no installed preemption claim yet.
+The bounded [P02 whole-item acceptance](82-p02-whole-item-review.md) credits
+[P02.1 preparation](76-p02-release-bundle-preparation.md),
+[P02.2 one release connection](77-p02-single-release-connection.md),
+[P02.3 owned preemptible parser](79-p02-mv3-source-parser.md),
+[P02.4 explicit companions](80-p02-explicit-companion-sources.md) and
+[P02.5 original-app qualification](81-p02-real-application-qualification.md).
+One whole review and one tested correction pass close P02 on exact .44/UI .2;
+current2113source/86native/27production/types2/admission9/build PASS. See
+[recipe/limits](../source-bundles.md). Indexed wrappers stay Unsupported; the
+registered original flat maps fit current caps. Corporate HTTPS/native permission
+acceptance belongs to P03, which is next; C06 is not yet complete.
 
 **Files:** existing `core/source-maps.mjs`, `core/source-map-archive.mjs`, map session/UI, packing/build scripts; add a small standalone release-bundle preparation command and tests. This command packages explicit input artifacts; it does not build or execute arbitrary application code.
 

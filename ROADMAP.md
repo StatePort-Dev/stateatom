@@ -35,8 +35,9 @@ human-participant gates and initial-alpha exclusions do not override this scope.
 The production source-exploration increment at `f3a7a7e` is complete within its
 original boundary. Credit its map/ZIP import, artifact matching, manual lookup,
 safe diagnostics and read-only behavior rather than rebuilding them. P01's finite
-selected-action source path is now complete (completion75); P02's complete release-
-bundle workflow and P03's actual HTTPS permission acceptance remain open. The subsequent
+selected-action source path is now complete (completion75); P02's bounded release-
+bundle workflow is complete (completion82). P03's actual HTTPS permission acceptance
+remains open and is next. The subsequent
 [F01 execution](docs/completion/14-f01-capability-contracts.md) completes canonical
 admission/discovery and strict packed declarations on candidate `.20261019.3`,
 with its scoped two-host/browser/IDE evidence. The subsequent
@@ -1002,3 +1003,17 @@ Aggregate`.artifacts/p02/qualification/verification.json`; accepted2104source te
 retained unchanged, not called a new full run. Next ONE whole-P02 review and one
 tested correction pass if needed.16/29 full items (~55% equal count) unchanged;
 L02/A02/release-wide gates remain open. No SDK/publication/other repository/redesign.
+
+
+### 2026-10-22 — bounded P02 accepted; next P03
+
+[P02 whole review/correction](docs/completion/82-p02-whole-item-review.md):one review,
+one reproduced correction pass for directory replacement and expired-lease
+production authority; exact .44/UI .2 passes2113source/86parser-native/27production
+backend/types2/admission9/build, with four current byte-identical CLI ZIP outputs.
+Intermediate native38/61 failures remain recorded; first blank reload cause Unknown,
+file import completion now explicitly awaited by driver. Historical .43 corpus/
+companions/Worker checks retain original versions and criteria.17/29 full tasks
+(~59% equal count), not release readiness. Next P03 actual HTTPS artifact/permission
+workflow, after completed F02/P02; C06/L02 quality/A02 and release-wide gates remain
+open. No SDK/publication/other repository/redesign/independent-human blocker.

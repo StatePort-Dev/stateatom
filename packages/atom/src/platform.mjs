@@ -121,12 +121,19 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
    if(epoch!==authorityEpoch)throw atomError('ORIGIN_DENIED','Permission changed during connection approval');await revoke(id);const currentTab=await api.tabs.get(id);if(epoch!==authorityEpoch||appOrigin(currentTab.url)!==record.origin)throw atomError('ORIGIN_DENIED','Connection context changed');connections.set(record.origin,record);await persistConnections();return record;
   },async forgetSite(id){const origin=appOrigin((await api.tabs.get(id)).url);connections.delete(origin);await persistConnections();await revoke(id);},
   async describeTarget(id){
-   const f=await facts(id),entry=leases.get(id);
+   let f=await facts(id);const entry=leases.get(id);
    if(entry){try{await check(id,entry);}catch(error){
     // A recovered host broker can already report none/foreign while this
     // platform still holds its expired local object. Retire that reference;
     // it cannot authorize native cleanup or block the next explicit attach.
-    if(error?.code==='LEASE_EXPIRED'&&leases.get(id)===entry)leases.delete(id);
+    if(error?.code==='LEASE_EXPIRED'&&leases.get(id)===entry){
+     leases.delete(id);
+     // Losing the local ref may make the later native-detach guard skip us.
+     // Retire logical grants/tickets and owned controls here. Delete first so
+     // cleanup cannot release this expired lease against a replacement owner.
+     await productionHost.revoke(id,'debugger-lost');await closeNative(id);
+     f=await facts(id);
+    }
    }}
    let status=broker.status?.(id,'atom')||'unknown';if(!leases.has(id)&&status==='owned')status='foreign';
    return {...f,sourceParsingAvailable:broker.sourceParsing?.configured===true,readOnlySites:readOnlySites===true,lease:status,disposed:stopped,workerIndependent:broker.workerIndependent===true};

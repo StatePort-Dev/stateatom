@@ -6,7 +6,8 @@ Active delivery scope: approved **`scope-review-1`** on 2026-10-19; see the
 earlier delivery exclusions and independent-human gates, not historical evidence.
 The original source-exploration increment remains complete within its original
 boundary. [P01's bounded selected-action source path](completion/75-p01-whole-item-review.md)
-is now complete; P02/P03 remain partial. The subsequent
+is now complete; [P02](completion/82-p02-whole-item-review.md) is complete within
+its brief, and P03 remains partial. The subsequent
 [F01 implementation](completion/14-f01-capability-contracts.md) consolidates
 capability policy and checks packed declarations on candidate `.20261019.3`:
 586 unit, 48 contract, 34 two-host, 26 Basic, 32 Actions and 19 source-map checks
@@ -1699,3 +1700,21 @@ Aggregate`.artifacts/p02/qualification/verification.json`; accepted2104source te
 retained unchanged, not called a new full run. Next ONE whole-P02 review and one
 tested correction pass if needed.16/29 full items (~55% equal count) unchanged;
 L02/A02/release-wide gates remain open. No SDK/publication/other repository/redesign.
+
+
+### 2026-10-22 — P02 accepted after one whole review and correction
+
+[P02 whole-item acceptance](completion/82-p02-whole-item-review.md):2 Important
+findings reproduced and fixed in one pass:ordinary input-root/ancestor replacement
+is refused; expired local debugger leases revoke production grants/tickets and
+owned controls before the detach guard can skip them. Exact .44/UI .2:2113full,
+32producer/69production focused,86actual two-host parser,27synthetic HTTPS backend,
+types2/admission9/build PASS. Four current CLI outputs equal original corpus and
+companion ZIPs and pass unzip. Preserved native38/61 failures, first blank reload
+cause Unknown; explicit file-handler completion fixes stale driver readiness without
+weakening positive assertions. No new visual/Worker bytes or human approval claim.
+Original .43 corpus43/HTTP12/companions70 remain historical.17/29 full items
+(~59% equal count), not release readiness. Next P03 corporate artifacts/native
+HTTPS permission acceptance, after completed F02/P02; C06, mandatory L02 quality,
+A02 and integration/validation/release gates remain open. No SDK, publication,
+other repository, redesign or independent-human blocker.

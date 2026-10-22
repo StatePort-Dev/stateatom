@@ -32,21 +32,26 @@ function recipeData(bytes){
  if(new Set([...names,...maps,'manifest.json']).size>ARCHIVE_LIMITS.files)throw Error('Archive entry count budget');
  return recipe;
 }
-async function boundedFile(file,limit,check,label='Artifact'){
- check();const beforeOpen=await lstat(file,{bigint:true});check();if(beforeOpen.isSymbolicLink()||!beforeOpen.isFile())throw Error(label+' must be a regular file, not a symlink');
+async function boundedFile(file,limit,check,label='Artifact',assertPath=async()=>{}){
+ check();await assertPath();check();const beforeOpen=await lstat(file,{bigint:true});check();if(beforeOpen.isSymbolicLink()||!beforeOpen.isFile())throw Error(label+' must be a regular file, not a symlink');
  const handle=await open(file,constants.O_RDONLY|(constants.O_NOFOLLOW??0)|(constants.O_NONBLOCK??0));
  try{
-  check();const initial=await handle.stat({bigint:true});if(!initial.isFile())throw Error(label+' must be a regular file');if(initial.size>BigInt(limit))throw Error(label+' file size budget');
+  check();await assertPath();check();const initial=await handle.stat({bigint:true});if(!initial.isFile())throw Error(label+' must be a regular file');if(initial.size>BigInt(limit))throw Error(label+' file size budget');
   const data=Buffer.alloc(Number(initial.size)+1);let at=0;
   while(at<data.length){check();const {bytesRead}=await handle.read(data,at,Math.min(64*1024,data.length-at),at);check();if(!bytesRead)break;at+=bytesRead;}
   const final=await handle.stat({bigint:true});check();
   if(!sameFile(initial,final)||initial.size!==final.size||initial.mtimeNs!==final.mtimeNs||initial.ctimeNs!==final.ctimeNs||at!==Number(initial.size))throw Error(label+' changed while reading');
-  return data.subarray(0,at);
+  await assertPath();check();return data.subarray(0,at);
  }finally{await handle.close();}
 }
 async function artifactFile(root,name,check){
- let directory=root;const segments=name.split('/');for(const part of segments.slice(0,-1)){check();directory=path.join(directory,part);const s=await lstat(directory);check();if(s.isSymbolicLink()||!s.isDirectory())throw Error('Artifact directory must be a regular directory, not a symlink');}
- return boundedFile(path.join(directory,segments.at(-1)),ARCHIVE_LIMITS.entry,check);
+ let directory=root;const segments=name.split('/'),ancestors=[];
+ for(const part of [null,...segments.slice(0,-1)]){check();if(part!==null)directory=path.join(directory,part);const stat=await lstat(directory,{bigint:true});check();if(stat.isSymbolicLink()||!stat.isDirectory())throw Error('Artifact directory must be a regular directory, not a symlink');ancestors.push({directory,stat});}
+ const assertPath=async()=>{for(const ancestor of ancestors){check();const current=await lstat(ancestor.directory,{bigint:true});check();if(current.isSymbolicLink()||!current.isDirectory()||!sameFile(current,ancestor.stat))throw Error('Artifact directory changed while reading');}};
+ // Revalidate the selected root/ancestors before opening, after opening and
+ // before accepting bytes. Detect ordinary persistent rename/symlink changes;
+ // this remains a bounded local read, not an atomic/hostile-filesystem snapshot.
+ return boundedFile(path.join(directory,segments.at(-1)),ARCHIVE_LIMITS.entry,check,'Artifact',assertPath);
 }
 async function enrichMaps(root,recipe,files,expanded,check){
  const receipts=[];

@@ -64,8 +64,9 @@ canonical root refuse. Recipe JSON is closed, rejects duplicate keys and is at m
 
 With schema1, maps without `sourcesContent` remain usable for positions/names only.
 Schema2 accepts only explicitly selected local companion files, as described below;
-it never searches for them. Read-only file-size/change checks and
-cooperative cancellation bound this local preparation; they are not an atomic
+it never searches for them. Read-only file-size/change checks, selected-root/ancestor identity checks before
+opening, after opening and before accepting bytes, and cooperative cancellation
+bound this local preparation; they are not an atomic
 input snapshot or a guarantee for hostile/network filesystems. Before the final link,
 cancellation removes private staging and leaves no final output. After that commit
 point, the complete artifact is retained. `cleanup.status: Unavailable` explicitly
