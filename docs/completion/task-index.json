@@ -3027,12 +3027,16 @@
         "scripts/native-browser.mjs",
         "tests/integration/source-access-environment.mjs",
         "tests/helpers/source-access-tls-fixture.mjs",
-        "docs/testing/https-source-environment.md"
+        "docs/testing/https-source-environment.md",
+        "packages/atom/src/source-access-error.mjs",
+        "tests/atom/source-access-errors.test.mjs",
+        "tests/integration/source-access-errors-native.mjs"
       ],
       "existing_commands": [
         "npm run verify:production-source-mapping",
         "node tests/integration/source-access-environment.mjs <exact-atom-handoff.json>",
-        "node tests/helpers/source-access-tls-fixture.mjs"
+        "node tests/helpers/source-access-tls-fixture.mjs",
+        "node tests/integration/source-access-errors-native.mjs <exact-atom-handoff.json>"
       ],
       "deliverable": "Real HTTPS permission/error/local-fallback evidence",
       "status": "in-progress",
@@ -3044,28 +3048,29 @@
         "reconciliation": "13-scope-reconciliation.md"
       },
       "remaining_acceptance": "Actual HTTPS/native permission grant, denial, revocation and corporate/local fallback acceptance",
-      "active_slice": "P03.2 bounded safe artifact errors and local fallback behavior",
+      "active_slice": "P03.3 actual trusted-HTTPS artifact access, prompt interruption/target switch, then ONE whole-P03 review",
       "execution_record": "83-p03-https-artifact-access.md",
       "implementation_plan": "../superpowers/plans/2026-10-22-p03-corporate-artifacts.md",
       "current_checkpoint": {
-        "id": "P03.1-native-permission-and-TLS-environment",
-        "status": "complete-bounded-environment-not-full-P03",
-        "record": "83-p03-https-artifact-access.md",
-        "candidate": "Exact accepted .44/UI .2 product and both hosts unchanged",
-        "actual_native_checks": 13,
-        "both_native_hosts": true,
-        "native_permission_preapproval": false,
-        "native_permission_override": false,
-        "TLS_bypass": false,
-        "trusted_local_CA_profile_only": true,
-        "untrusted_and_hostname_negative_controls": true,
-        "TLS_operator": "Agent native certificate manager; manually qualified route, not artifact flow",
-        "source_tests_retained": 2113,
-        "fresh_source_tests": false,
+        "id": "P03.2-safe-artifact-errors-local-fallback",
+        "status": "complete-bounded-errors-fallback-not-full-P03",
+        "record": "84-p03-artifact-errors-and-local-fallback.md",
+        "candidate": "0.1.0-candidate.20261021.45 / UI0.2.0-candidate.20261018.2",
+        "verification": ".artifacts/p03/access-errors/verification45.json",
+        "checks": {
+          "source": 2134,
+          "focused": 42,
+          "new_regressions": 21,
+          "native_HTTP_errors_local_fallback": 22,
+          "native_parser": 86,
+          "native_permission_environment": 13,
+          "types": 2,
+          "admission": 9,
+          "build": true
+        },
         "full_P03_acceptance": false,
-        "verification": ".artifacts/p03/environment/verification.json",
-        "next_item": "P03.2 bounded safe artifact errors and local fallback behavior",
-        "boundary": "Actual browser-owned Deny/Allow, readonly attach, separate origin and real permission removal in both hosts. Unique profile-root TLS positive and untrusted/hostname controls manually observed. Long manual prompt/channel loss and failed portal/focus/early-click attempts retained. Exact .44 product unchanged; full artifact/SSO/redirect/offline/cancel/target-switch/local fallback and one whole P03 review remain.17/29 whole items; no SDK/publication/other repository/redesign/human gate."
+        "next_item": "P03.3 actual trusted-HTTPS artifact access, prompt interruption/target switch, then ONE whole-P03 review",
+        "boundary": "Closed safe error categories, permission recheck, current inline local picker guidance. Candidate45 source2134/focused42/native HTTP22/parser86/native permissions13/types2/admission9/build PASS; shared UI/CSS/Workers unchanged. Separate HTTP/native-permission runs do not establish trusted HTTPS artifact acceptance. P03.1 TLS and long-prompt failures preserved;17/29 whole items unchanged; no SDK/publication/other repository/redesign/human gate."
       },
       "completed_slices": [
         {
@@ -3087,7 +3092,32 @@
           "verification": ".artifacts/p03/environment/verification.json",
           "next_item": "P03.2 bounded safe artifact errors and local fallback behavior",
           "boundary": "Actual browser-owned Deny/Allow, readonly attach, separate origin and real permission removal in both hosts. Unique profile-root TLS positive and untrusted/hostname controls manually observed. Long manual prompt/channel loss and failed portal/focus/early-click attempts retained. Exact .44 product unchanged; full artifact/SSO/redirect/offline/cancel/target-switch/local fallback and one whole P03 review remain.17/29 whole items; no SDK/publication/other repository/redesign/human gate."
+        },
+        {
+          "id": "P03.2-safe-artifact-errors-local-fallback",
+          "status": "complete-bounded-errors-fallback-not-full-P03",
+          "record": "84-p03-artifact-errors-and-local-fallback.md",
+          "candidate": "0.1.0-candidate.20261021.45 / UI0.2.0-candidate.20261018.2",
+          "verification": ".artifacts/p03/access-errors/verification45.json",
+          "checks": {
+            "source": 2134,
+            "focused": 42,
+            "new_regressions": 21,
+            "native_HTTP_errors_local_fallback": 22,
+            "native_parser": 86,
+            "native_permission_environment": 13,
+            "types": 2,
+            "admission": 9,
+            "build": true
+          },
+          "full_P03_acceptance": false,
+          "next_item": "P03.3 actual trusted-HTTPS artifact access, prompt interruption/target switch, then ONE whole-P03 review",
+          "boundary": "Closed safe error categories, permission recheck, current inline local picker guidance. Candidate45 source2134/focused42/native HTTP22/parser86/native permissions13/types2/admission9/build PASS; shared UI/CSS/Workers unchanged. Separate HTTP/native-permission runs do not establish trusted HTTPS artifact acceptance. P03.1 TLS and long-prompt failures preserved;17/29 whole items unchanged; no SDK/publication/other repository/redesign/human gate."
         }
+      ],
+      "execution_records": [
+        "83-p03-https-artifact-access.md",
+        "84-p03-artifact-errors-and-local-fallback.md"
       ]
     },
     {
@@ -3871,30 +3901,31 @@
     ]
   },
   "reconciliation": {
-    "document": "83-p03-https-artifact-access.md",
+    "document": "84-p03-artifact-errors-and-local-fallback.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": {
-      "id": "P03.1-native-permission-and-TLS-environment",
-      "status": "complete-bounded-environment-not-full-P03",
-      "record": "83-p03-https-artifact-access.md",
-      "candidate": "Exact accepted .44/UI .2 product and both hosts unchanged",
-      "actual_native_checks": 13,
-      "both_native_hosts": true,
-      "native_permission_preapproval": false,
-      "native_permission_override": false,
-      "TLS_bypass": false,
-      "trusted_local_CA_profile_only": true,
-      "untrusted_and_hostname_negative_controls": true,
-      "TLS_operator": "Agent native certificate manager; manually qualified route, not artifact flow",
-      "source_tests_retained": 2113,
-      "fresh_source_tests": false,
+      "id": "P03.2-safe-artifact-errors-local-fallback",
+      "status": "complete-bounded-errors-fallback-not-full-P03",
+      "record": "84-p03-artifact-errors-and-local-fallback.md",
+      "candidate": "0.1.0-candidate.20261021.45 / UI0.2.0-candidate.20261018.2",
+      "verification": ".artifacts/p03/access-errors/verification45.json",
+      "checks": {
+        "source": 2134,
+        "focused": 42,
+        "new_regressions": 21,
+        "native_HTTP_errors_local_fallback": 22,
+        "native_parser": 86,
+        "native_permission_environment": 13,
+        "types": 2,
+        "admission": 9,
+        "build": true
+      },
       "full_P03_acceptance": false,
-      "verification": ".artifacts/p03/environment/verification.json",
-      "next_item": "P03.2 bounded safe artifact errors and local fallback behavior",
-      "boundary": "Actual browser-owned Deny/Allow, readonly attach, separate origin and real permission removal in both hosts. Unique profile-root TLS positive and untrusted/hostname controls manually observed. Long manual prompt/channel loss and failed portal/focus/early-click attempts retained. Exact .44 product unchanged; full artifact/SSO/redirect/offline/cancel/target-switch/local fallback and one whole P03 review remain.17/29 whole items; no SDK/publication/other repository/redesign/human gate."
+      "next_item": "P03.3 actual trusted-HTTPS artifact access, prompt interruption/target switch, then ONE whole-P03 review",
+      "boundary": "Closed safe error categories, permission recheck, current inline local picker guidance. Candidate45 source2134/focused42/native HTTP22/parser86/native permissions13/types2/admission9/build PASS; shared UI/CSS/Workers unchanged. Separate HTTP/native-permission runs do not establish trusted HTTPS artifact acceptance. P03.1 TLS and long-prompt failures preserved;17/29 whole items unchanged; no SDK/publication/other repository/redesign/human gate."
     },
-    "next_item": "P03.2 bounded safe artifact errors and local fallback behavior",
+    "next_item": "P03.3 actual trusted-HTTPS artifact access, prompt interruption/target switch, then ONE whole-P03 review",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -5524,10 +5555,31 @@
         "verification": ".artifacts/p03/environment/verification.json",
         "next_item": "P03.2 bounded safe artifact errors and local fallback behavior",
         "boundary": "Actual browser-owned Deny/Allow, readonly attach, separate origin and real permission removal in both hosts. Unique profile-root TLS positive and untrusted/hostname controls manually observed. Long manual prompt/channel loss and failed portal/focus/early-click attempts retained. Exact .44 product unchanged; full artifact/SSO/redirect/offline/cancel/target-switch/local fallback and one whole P03 review remain.17/29 whole items; no SDK/publication/other repository/redesign/human gate."
+      },
+      {
+        "id": "P03.2-safe-artifact-errors-local-fallback",
+        "status": "complete-bounded-errors-fallback-not-full-P03",
+        "record": "84-p03-artifact-errors-and-local-fallback.md",
+        "candidate": "0.1.0-candidate.20261021.45 / UI0.2.0-candidate.20261018.2",
+        "verification": ".artifacts/p03/access-errors/verification45.json",
+        "checks": {
+          "source": 2134,
+          "focused": 42,
+          "new_regressions": 21,
+          "native_HTTP_errors_local_fallback": 22,
+          "native_parser": 86,
+          "native_permission_environment": 13,
+          "types": 2,
+          "admission": 9,
+          "build": true
+        },
+        "full_P03_acceptance": false,
+        "next_item": "P03.3 actual trusted-HTTPS artifact access, prompt interruption/target switch, then ONE whole-P03 review",
+        "boundary": "Closed safe error categories, permission recheck, current inline local picker guidance. Candidate45 source2134/focused42/native HTTP22/parser86/native permissions13/types2/admission9/build PASS; shared UI/CSS/Workers unchanged. Separate HTTP/native-permission runs do not establish trusted HTTPS artifact acceptance. P03.1 TLS and long-prompt failures preserved;17/29 whole items unchanged; no SDK/publication/other repository/redesign/human gate."
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Actual browser-owned Deny/Allow, readonly attach, separate origin and real permission removal in both hosts. Unique profile-root TLS positive and untrusted/hostname controls manually observed. Long manual prompt/channel loss and failed portal/focus/early-click attempts retained. Exact .44 product unchanged; full artifact/SSO/redirect/offline/cancel/target-switch/local fallback and one whole P03 review remain.17/29 whole items; no SDK/publication/other repository/redesign/human gate.",
+    "current_activity_note": "Closed safe error categories, permission recheck, current inline local picker guidance. Candidate45 source2134/focused42/native HTTP22/parser86/native permissions13/types2/admission9/build PASS; shared UI/CSS/Workers unchanged. Separate HTTP/native-permission runs do not establish trusted HTTPS artifact acceptance. P03.1 TLS and long-prompt failures preserved;17/29 whole items unchanged; no SDK/publication/other repository/redesign/human gate.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "P03"

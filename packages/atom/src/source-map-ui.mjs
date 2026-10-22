@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 import {supportsCapabilityPolicy} from './transport.mjs';
+import {sourceAccessError,safeSourceAccessError} from './source-access-error.mjs';
 import {isCurrentGeneratedAnchor,createNativeSourceAnchor,createReactHostSourceAnchor} from '../../../core/source-anchor.mjs';
 export const sourceMapTemplate=`
 <details id="source-map-details" data-atom-id="source-map-details" class="sp-disclosure"><summary>Source maps · no IDE required</summary>
@@ -9,6 +10,7 @@ export const sourceMapTemplate=`
 <div class="sp-toolbar"><button id="source-map-discover" data-atom-id="source-map-discover">Load declared map</button><button id="source-map-clear" data-atom-id="source-map-clear">Clear source connection</button></div>
 <label>Choose .map or release ZIP <input id="source-map-file" data-atom-id="source-map-file" type="file" accept=".map,.zip"></label>
 <p class="sp-atom-hint">Local only · no upload. An exact release ZIP contains manifest.json, built JS and maps. Sources are not saved in diagnostics.</p>
+<p id="source-map-access-status" data-atom-id="source-map-access-status" class="sp-atom-hint" role="alert" hidden></p>
 <details class="sp-disclosure"><summary>Internal artifact URL</summary><label>HTTPS map, ZIP or manifest URL <input id="source-map-url" data-atom-id="source-map-url" type="url" placeholder="https://builds.example/map"></label><button id="source-map-acquire" data-atom-id="source-map-acquire">Allow origin and load</button><p class="sp-atom-hint">Credentials are omitted. Redirects are refused. Corporate SSO may require a local bundle.</p></details>
 <p id="source-map-status" data-atom-id="source-map-status" role="status"></p>
 <details class="sp-disclosure"><summary>Artifact identity details</summary><pre id="source-map-identity" data-atom-id="source-map-identity"></pre></details>
@@ -20,7 +22,7 @@ export const sourceMapTemplate=`
 export function createSourceMapUI({document,$,rpc,tab,load,action,requestPermission,sourceAnalysis}){
  let state=null,key='',disposed=false,generation=0,connectionGeneration=0,previewTimer,controller,adoption;
  const selected=()=>state?.sourceMaps?.scripts?.find(r=>r.scriptId===$('source-map-script').value);
- const clearPreview=()=>{adoption=null;controller?.abort();controller=null;sourceAnalysis?.cancel();clearTimeout(previewTimer);$('source-map-location').textContent='';$('source-map-preview').textContent='';$('source-analysis-status').textContent='';$('source-analysis-cancel').hidden=true;$('source-analysis-details').hidden=true;$('source-analysis-details').open=false;$('source-analysis-summary').textContent='';$('source-analysis-calls').replaceChildren();$('source-analysis-identifiers').textContent='';$('source-analysis-expression').textContent='';};
+ const clearPreview=()=>{$('source-map-access-status').hidden=true;$('source-map-access-status').textContent='';adoption=null;controller?.abort();controller=null;sourceAnalysis?.cancel();clearTimeout(previewTimer);$('source-map-location').textContent='';$('source-map-preview').textContent='';$('source-analysis-status').textContent='';$('source-analysis-cancel').hidden=true;$('source-analysis-details').hidden=true;$('source-analysis-details').open=false;$('source-analysis-summary').textContent='';$('source-analysis-calls').replaceChildren();$('source-analysis-identifiers').textContent='';$('source-analysis-expression').textContent='';};
  const scope=()=>JSON.stringify([state?.attached,state?.stale,state?.analysis?.actionContext,(state?.analysis?.actionBindings||[]).filter(b=>['dom-listener','react-host-props'].includes(b.mechanism)).map(b=>[b.id,b.event,b.status,b.freshness,b.identity,b.registeredOn,b.registration?.scriptId,b.registration?.line,b.registration?.column,b.registration?.positionBase,b.registration?.registeredNode,b.capture,b.passive,b.once,b.boundOn,b.property,b.generated,b.frameworkVersion,b.carrier?.profile,b.carrier?.hostNode,b.carrier?.frameId,b.carrier?.executionContextId])]);
  function render(s){
   state=s;const scripts=s?.sourceMaps?.scripts||[],old=$('source-map-script').value;
@@ -48,8 +50,19 @@ export function createSourceMapUI({document,$,rpc,tab,load,action,requestPermiss
  const currentConnection=(id,g,token)=>!disposed&&id===tab()&&g===generation&&token===connectionGeneration;
  async function changed(fn,token=++connectionGeneration){const id=tab(),g=generation;clearPreview();try{await fn();}catch(e){if(!currentConnection(id,g,token))return;throw e;}if(!currentConnection(id,g,token))return;await load({refreshDeep:false});}
  $('source-map-file').onchange=()=>action(async()=>{const file=$('source-map-file').files[0],scriptId=selected()?.scriptId,id=tab();if(!file)return;if(file.size>8*1024*1024)throw Error('Import limit is 8 MiB');if(!/\.(map|zip)$/i.test(file.name))throw Error('Choose a .map or .zip file');const g=generation,token=++connectionGeneration;try{const bytes=new Uint8Array(await file.arrayBuffer());if(!currentConnection(id,g,token))return;let text='';for(let i=0;i<bytes.length;i+=16384)text+=String.fromCharCode(...bytes.subarray(i,i+16384));await changed(()=>rpc({op:'source-map-import',tabId:id,scriptId,name:file.name,data:btoa(text)}),token);}catch(e){if(currentConnection(id,g,token))throw e;}finally{if(token===connectionGeneration)$('source-map-file').value='';}});
- $('source-map-discover').onclick=()=>action(()=>changed(()=>rpc({op:'source-map-acquire',tabId:tab(),scriptId:selected()?.scriptId})));
- $('source-map-acquire').onclick=()=>action(async()=>{const input=$('source-map-url').value,url=new URL(input),id=tab(),scriptId=selected()?.scriptId,g=generation,token=++connectionGeneration;if(url.protocol!=='https:'&&!(url.protocol==='http:'&&url.hostname==='127.0.0.1'))throw Error('Artifact URL requires HTTPS');let permitted;try{permitted=requestPermission?await requestPermission(url.origin):true;}catch(e){if(currentConnection(id,g,token))throw e;return;}if(!currentConnection(id,g,token))return;if(!permitted)throw Error('Origin permission denied');await changed(()=>rpc({op:'source-map-acquire',tabId:id,scriptId,url:input}),token);});
+ function accessFailure(error,id,g,token,fallback){
+  if(!currentConnection(id,g,token))return;const safe=safeSourceAccessError(error,fallback);
+  $('source-map-access-status').textContent=safe.message;$('source-map-access-status').hidden=false;$('source-map-details').open=true;
+  if(!$('source-map-file').disabled){$('source-map-file').focus();$('source-map-file').scrollIntoView?.({block:'nearest'});}throw safe;
+ }
+ $('source-map-discover').onclick=()=>action(async()=>{const id=tab(),g=generation,token=++connectionGeneration;try{await changed(()=>rpc({op:'source-map-acquire',tabId:id,scriptId:selected()?.scriptId}),token);}catch(error){accessFailure(error,id,g,token);}});
+ $('source-map-acquire').onclick=()=>action(async()=>{
+  const input=$('source-map-url').value,id=tab(),scriptId=selected()?.scriptId,g=generation,token=++connectionGeneration;
+  let url;try{url=new URL(input);if(url.username||url.password||url.hash||url.protocol!=='https:'&&!(url.protocol==='http:'&&url.hostname==='127.0.0.1'))throw sourceAccessError('SOURCE_ACCESS_POLICY');}catch(error){accessFailure(error,id,g,token,'SOURCE_ACCESS_POLICY');return;}
+  let permitted;try{permitted=requestPermission?await requestPermission(url.origin):true;}catch(error){accessFailure(error,id,g,token,'SOURCE_ACCESS_PERMISSION');return;}
+  if(!currentConnection(id,g,token))return;if(!permitted){accessFailure(sourceAccessError('SOURCE_ACCESS_PERMISSION'),id,g,token);return;}
+  try{await changed(()=>rpc({op:'source-map-acquire',tabId:id,scriptId,url:input}),token);}catch(error){accessFailure(error,id,g,token);}
+ });
  $('source-map-clear').onclick=()=>action(()=>{const token=++connectionGeneration,id=tab();$('source-map-file').value='';return changed(()=>rpc({op:'source-map-clear',tabId:id}),token);});
  $('source-map-lookup').onclick=()=>action(async()=>{const id=tab(),g=generation,r=selected(),token=++connectionGeneration;clearPreview();let result;try{result=await rpc({op:'source-map-lookup',tabId:id,scriptId:r?.scriptId,line:Number($('source-map-line').value),column:Number($('source-map-column').value)});}catch(e){if(!currentConnection(id,g,token))return;throw e;}if(!currentConnection(id,g,token))return;$('source-map-location').textContent=(result.source?result.source+':'+result.line+':'+result.column+' · ':'')+(result.match||'Unavailable')+' · '+result.link+' · runtime operands not observed'+(result.excerpt===null?' · Map lacks source content':'');$('source-map-preview').textContent=result.excerpt||result.reason||'No source content at this position';clearTimeout(previewTimer);previewTimer=setTimeout(()=>{if(!disposed){clearPreview();$('source-map-location').textContent='Preview expired; reconnect source maps';}},300000);});
  $('source-analysis-cancel').onclick=()=>sourceAnalysis?.cancel();

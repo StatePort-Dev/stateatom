@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.45
+
+- Classify artifact access, HTTP/auth, document, network/policy, size, cancellation
+  and timeout failures with closed safe messages; omit raw response/URL/error text.
+- Recheck artifact-origin permission before accepting downloaded bytes, retaining
+  current limits, credentials omission, redirect refusal and owned parsing.
+- Visual: add scoped failure guidance beside the existing local .map/release ZIP
+  input and focus that input after a current URL failure. Existing shared tokens,
+  typography, controls and layout are retained; obsolete guidance clears with the
+  source context. This is an Atom-specific copy/focus addition, not a redesign.
+- This bounded change does not itself complete P03 trusted-HTTPS artifact/SSO/
+  interruption/local-fallback acceptance or grant production mutation authority.
+
 ## 0.1.0-candidate.20261021.44
 
 - Revoke production grants and unfinished confirmation tickets, and close owned

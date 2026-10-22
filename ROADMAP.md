@@ -1032,3 +1032,18 @@ Product/UI/Worker bytes unchanged;2113source tests retained, not rerun. P03/C06
 remain open;17/29 full items (~59% equal count) unchanged. Next P03.2 safe artifact
 errors/local fallback, then full trusted-HTTPS artifact controls and ONE review.
 No SDK/publication/other repository/redesign/independent-human gate.
+
+
+### 2026-10-22 — P03.2 safe artifact errors and local fallback
+
+[P03.2](docs/completion/84-p03-artifact-errors-and-local-fallback.md):candidate45 adds closed safe acquisition errors, post-download permission
+recheck and guidance/focus at the existing local picker. Source2134/focused42,
+actual HTTP error/import/Clear/timeout22, parser86, native permission environment13,
+types2/admission9/build PASS on exact two-host inputs. Worker/CSS/shared UI unchanged;
+390/440 keyboard/width candidates inspected by agent, no human acceptance claimed.
+Actual ZIP restores selected registered-handler source without invoking the app.
+HTTP artifact tests and separate native HTTPS permission checks do not complete
+trusted-HTTPS artifact access. P03.1 TLS/long-prompt failures remain unchanged.
+P03/C06 open;17/29 full items (~59% equal count) unchanged. Next P03.3 trusted-HTTPS
+artifact-origin/prompt interruption/target-switch workflow and ONE whole review.
+No SDK/publication/other repository/redesign/independent-human blocker.

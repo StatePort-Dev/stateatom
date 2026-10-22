@@ -366,3 +366,10 @@ confirmation tickets, and closes owned native controls, even if its later native
 detach event arrives after local lease retirement. Reattach starts read-only;
 production changes require two fresh confirmations. A foreign replacement owner
 is never released through the expired reference.
+
+
+Artifact URL failures offer the existing local .map/release ZIP input. HTTP401/403
+indicate access refusal; an HTML document may be a sign-in page. Generic network,
+redirect and browser-policy failures remain ambiguous. Atom omits credentials and
+referrers and refuses redirects; use your existing company access to download a
+local artifact when needed. No Atom login or production-change grant follows.

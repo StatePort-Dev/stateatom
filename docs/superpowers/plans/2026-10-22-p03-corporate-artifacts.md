@@ -40,10 +40,10 @@ Files: `scripts/native-browser.mjs` only if an explicit headed option is needed;
 
 Files: `packages/atom/src/source-map-session.mjs`, `source-map-ui.mjs` and a small source-acquisition error helper only if required; focused `tests/atom` controls.
 
-- [ ] Pin actual missing behavior with RED tests: HTTP401/403, HTML SSO, policy/network/redirect ambiguity, cancellation, permission changes and target switch. Check privacy and local fallback.
-- [ ] Implement only confirmed gaps, with static safe messages and no raw response bodies, new account flow or weakened parser checks.
-- [ ] Run focused/full source checks. If runtime bytes change, issue a new immutable Atom candidate with unchanged shared-UI contract/assets unless an existing reference requires a documented deviation.
-- [ ] Exercise rendered error/fallback and keyboard/narrow views when copy/controls change; screenshots remain agent-reviewed candidates. Commit the bounded correction.
+- [x] Pin actual missing behavior with RED tests: HTTP401/403, HTML SSO, policy/network/redirect ambiguity, cancellation, permission changes and target switch. Check privacy and local fallback.
+- [x] Implement only confirmed gaps, with static safe messages and no raw response bodies, new account flow or weakened parser checks.
+- [x] Run focused/full source checks. If runtime bytes change, issue a new immutable Atom candidate with unchanged shared-UI contract/assets unless an existing reference requires a documented deviation.
+- [x] Exercise rendered error/fallback and keyboard/narrow views when copy/controls change; screenshots remain agent-reviewed candidates. Commit the bounded correction.
 
 ### Task 3: Actual P03 end-to-end acceptance and one whole review
 

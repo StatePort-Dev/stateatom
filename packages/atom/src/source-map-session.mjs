@@ -6,9 +6,10 @@ import {isCurrentGeneratedAnchor} from '../../../core/source-anchor.mjs';
 import {createReadOnlySourceProvider} from '../../../core/source-provider.mjs';
 import {ARCHIVE_LIMITS} from '../../../core/source-map-archive.mjs';
 import {isDevelopmentOrigin} from './capabilities.mjs';
+import {sourceAccessError,safeSourceAccessError} from './source-access-error.mjs';
 const enc=new TextEncoder(),ttl=300000,MAX_SCRIPTS=128;
 const CACHE_BYTES=8*1024*1024,MAX_PARSED_MAPS=8;
-export function sourceMapURL(input,base){let u;try{u=new URL(input,base);}catch{throw Error('Invalid source-map URL');}if(u.username||u.password||u.hash||!(u.protocol==='https:'||isDevelopmentOrigin(u.href)))throw Error('Source-map URL requires HTTPS (or a supported synthetic localhost)');return u;}
+export function sourceMapURL(input,base){let u;try{u=new URL(input,base);}catch{throw sourceAccessError('SOURCE_ACCESS_POLICY');}if(u.username||u.password||u.hash||!(u.protocol==='https:'||isDevelopmentOrigin(u.href)))throw sourceAccessError('SOURCE_ACCESS_POLICY');return u;}
 export function createSourceMapSession({send,fetch,permitted,onChange=()=>{},processArtifact}={}){
  const tabs=new Map();
  const process=async(operation,bytes,options)=>{const result=await processArtifact(operation,bytes,options);if(!validSourceParseResult(result,operation))throw sourceParseError('SOURCE_PARSE_INVALID');return result.value;};
@@ -72,24 +73,31 @@ export function createSourceMapSession({send,fetch,permitted,onChange=()=>{},pro
  }
  async function importBundle(id,scriptId,bytes,name,{signal}={}){if(bytes.length>ARCHIVE_LIMITS.compressed)throw Error('Import size budget');const {s,r}=script(id,scriptId),g=replaceWork(s),owner=own(s,signal),jobSignal=owner.c.signal;try{await content(id,s,r,g,{signal:jobSignal});const bundles=await readBundle(bytes,name,{signal:jobSignal});if(jobSignal.aborted)throw Error('Source import cancelled');return await install(id,s,r,g,bundles,{signal:jobSignal});}finally{owner.close();}}
  async function download(id,s,r,g,input,signal){
-  const u=sourceMapURL(input);if(!await permitted(u.origin))throw Error('Origin permission required for source-map download');current(id,s,r,g);if(signal.aborted)throw Error('Cancelled');
-  let response;try{response=await fetch(u.href,{credentials:'omit',redirect:'error',referrerPolicy:'no-referrer',cache:'no-store',signal});}catch{throw Error('Map download unavailable: network, redirect, SSO or browser policy');}
-  current(id,s,r,g);if(!response.ok)throw Error('Map download HTTP '+response.status);if(response.redirected||response.url&&new URL(response.url).origin!==u.origin)throw Error('Map redirect denied');
-  if(Number(response.headers.get('content-length'))>ARCHIVE_LIMITS.compressed)throw Error('Download size budget');
-  const reader=response.body?.getReader();if(!reader)throw Error('Empty artifact response');const chunks=[];let n=0;
-  try{for(;;){const p=await reader.read();if(signal.aborted)throw Error('Cancelled');current(id,s,r,g);if(p.done)break;n+=p.value.length;if(n>ARCHIVE_LIMITS.compressed)throw Error('Download size budget');chunks.push(p.value);}}finally{await reader.cancel().catch(()=>{});}
+  const u=sourceMapURL(input),check=()=>{current(id,s,r,g);if(signal.aborted)throw sourceAccessError(signal.reason?.code==='SOURCE_ACCESS_TIMEOUT'?'SOURCE_ACCESS_TIMEOUT':'SOURCE_ACCESS_CANCELLED');};
+  const checkPermission=async()=>{let allowed=false;try{allowed=await permitted(u.origin);}catch{}check();if(!allowed)throw sourceAccessError('SOURCE_ACCESS_PERMISSION');};
+  await checkPermission();let response;
+  try{response=await fetch(u.href,{credentials:'omit',redirect:'error',referrerPolicy:'no-referrer',cache:'no-store',signal});}catch{check();throw sourceAccessError('SOURCE_ACCESS_NETWORK_POLICY');}
+  check();const refuse=async(code,status)=>{try{await response.body?.cancel?.();}catch{}throw sourceAccessError(code,status);};
+  if(!response.ok)await refuse([401,403].includes(response.status)?'SOURCE_ACCESS_AUTH':'SOURCE_ACCESS_HTTP',response.status);
+  if(response.redirected||response.url&&new URL(response.url).origin!==u.origin)await refuse('SOURCE_ACCESS_REDIRECT');
+  if(Number(response.headers.get('content-length'))>ARCHIVE_LIMITS.compressed)await refuse('SOURCE_ACCESS_BUDGET');
+  let reader;try{reader=response.body?.getReader();}catch{throw sourceAccessError('SOURCE_ACCESS_NETWORK_POLICY');}if(!reader)throw sourceAccessError('SOURCE_ACCESS_EMPTY');
+  const chunks=[];let n=0;
+  try{for(;;){const p=await reader.read();check();if(p.done)break;n+=p.value.length;if(n>ARCHIVE_LIMITS.compressed)throw sourceAccessError('SOURCE_ACCESS_BUDGET');chunks.push(p.value);}}
+  catch(error){check();throw safeSourceAccessError(error,'SOURCE_ACCESS_NETWORK_POLICY');}finally{await reader.cancel().catch(()=>{});}
+  await checkPermission();if(!n)throw sourceAccessError('SOURCE_ACCESS_EMPTY');
   const bytes=new Uint8Array(n);let at=0;for(const c of chunks){bytes.set(c,at);at+=c.length;}return {bytes,url:u};
  }
  async function acquire(id,scriptId,url,{signal}={}){
-  const {s,r}=script(id,scriptId),g=replaceWork(s),owner=own(s,signal),c=owner.c;const timer=setTimeout(()=>c.abort(),10000);
+  const {s,r}=script(id,scriptId),g=replaceWork(s),owner=own(s,signal),c=owner.c;const timer=setTimeout(()=>c.abort(sourceAccessError('SOURCE_ACCESS_TIMEOUT')),10000);
   try{
    // A missing URL means discovery, limited to the selected script's own origin.
-   let input=url;if(!input){if(!r.sourceMapURL)throw Error('No declared map reference for this script');const u=sourceMapURL(r.sourceMapURL,r.url);if(u.origin!==new URL(r.url).origin)throw Error('Cross-origin map requires an explicit URL and origin permission');input=u.href;}
-   const got=await download(id,s,r,g,input,c.signal);await content(id,s,r,g,{signal:c.signal});let bundles;
+   let input=url;if(!input){if(!r.sourceMapURL)throw Error('No declared map reference for this script');const u=sourceMapURL(r.sourceMapURL,r.url);if(u.origin!==new URL(r.url).origin)throw sourceAccessError('SOURCE_ACCESS_POLICY');input=u.href;}
+   const got=await download(id,s,r,g,input,c.signal);if(/^\s*(?:<!doctype\s+html\b|<(?:html|head|body|form)(?:\s|>))/i.test(new TextDecoder().decode(got.bytes.subarray(0,512))))throw sourceAccessError('SOURCE_ACCESS_DOCUMENT');await content(id,s,r,g,{signal:c.signal});let bundles;
    if(got.url.pathname.endsWith('.zip'))bundles=await readBundle(got.bytes,'release.zip',{signal:c.signal});
-   else {const data=processArtifact?await process('manifest',got.bytes,{signal:c.signal}):jsonBytes(got.bytes);if(data?.schemaVersion===1){const m=validateManifest(data),pathname=new URL(r.url).pathname,assets=m.assets.filter(a=>pathname.endsWith('/'+a.asset));if(assets.length!==1)throw Error('Manifest needs one asset for this loaded script URL');const a=assets[0],au=sourceMapURL(a.asset,got.url),mu=sourceMapURL(a.sourceMap,got.url);if(au.origin!==got.url.origin||mu.origin!==got.url.origin)throw Error('Manifest artifact origin denied');const ab=await download(id,s,r,g,au.href,c.signal),mb=await download(id,s,r,g,mu.href,c.signal);bundles=[{asset:a,assetBytes:ab.bytes,mapBytes:mb.bytes,releaseId:m.releaseId,manifestDigest:await sourceDigest(got.bytes)}];}else bundles=[{mapBytes:got.bytes}];}
-   if(c.signal.aborted)throw Error('Map acquisition cancelled or timed out');return await install(id,s,r,g,bundles,{signal:c.signal});
-  }finally{clearTimeout(timer);owner.close();}
+   else {const data=processArtifact?await process('manifest',got.bytes,{signal:c.signal}):jsonBytes(got.bytes);if(data?.schemaVersion===1){const m=validateManifest(data),pathname=new URL(r.url).pathname,assets=m.assets.filter(a=>pathname.endsWith('/'+a.asset));if(assets.length!==1)throw Error('Manifest needs one asset for this loaded script URL');const a=assets[0],au=sourceMapURL(a.asset,got.url),mu=sourceMapURL(a.sourceMap,got.url);if(au.origin!==got.url.origin||mu.origin!==got.url.origin)throw sourceAccessError('SOURCE_ACCESS_POLICY');const ab=await download(id,s,r,g,au.href,c.signal),mb=await download(id,s,r,g,mu.href,c.signal);bundles=[{asset:a,assetBytes:ab.bytes,mapBytes:mb.bytes,releaseId:m.releaseId,manifestDigest:await sourceDigest(got.bytes)}];}else bundles=[{mapBytes:got.bytes}];}
+   if(c.signal.aborted)throw sourceAccessError(c.signal.reason?.code==='SOURCE_ACCESS_TIMEOUT'?'SOURCE_ACCESS_TIMEOUT':'SOURCE_ACCESS_CANCELLED');return await install(id,s,r,g,bundles,{signal:c.signal});
+  }catch(error){current(id,s,r,g);if(c.signal.aborted)throw sourceAccessError(c.signal.reason?.code==='SOURCE_ACCESS_TIMEOUT'?'SOURCE_ACCESS_TIMEOUT':'SOURCE_ACCESS_CANCELLED');throw safeSourceAccessError(error,'SOURCE_ACCESS_INVALID');}finally{clearTimeout(timer);owner.close();}
  }
  async function lookupAnchor(id,anchor,input,{signal,includeAnalysisInput=false}={}){
   if(!isCurrentGeneratedAnchor(anchor,input)||anchor.identity.tabId!==id)throw Error('Current native source anchor required');
