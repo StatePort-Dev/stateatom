@@ -1,0 +1,10 @@
+// SPDX-License-Identifier: Apache-2.0
+// Exact already-built public artifact intake only. Never runs package/build code.
+import assert from 'node:assert/strict';import{readFile,writeFile,mkdir,lstat}from'node:fs/promises';import{createHash}from'node:crypto';import path from'node:path';
+const manifestFile='tests/fixtures/source-map-corpus/manifest.json',manifest=JSON.parse(await readFile(manifestFile)),stamp=new Date().toISOString().replace(/[:.]/g,'-'),out='.artifacts/p02/qualification/intake/'+stamp,sha=(b,kind='sha256')=>createHash(kind).update(b).digest('hex');await mkdir(out);const result={schema:'stateatom.p02-source-corpus-intake/1',status:'RUNNING',startedAt:new Date().toISOString(),manifestFile,manifestSha256:sha(await readFile(manifestFile)),upstream:manifest.upstream,revision:manifest.revision,files:{},errors:[]};
+try{
+ for(const entry of manifest.files){assert(!entry.path.startsWith('/')&&!entry.path.split('/').includes('..'));const url='https://raw.githubusercontent.com/'+manifest.upstream+'/'+manifest.revision+'/'+entry.path,response=await fetch(url,{redirect:'error',signal:AbortSignal.timeout(30000)});assert.equal(response.status,200,entry.path);const bytes=Buffer.from(await response.arrayBuffer());assert.equal(bytes.length,entry.bytes,entry.path);const git=sha(Buffer.concat([Buffer.from('blob '+bytes.length+'\0'),bytes]),'sha1');assert.equal(git,entry.gitBlob,entry.path);const file=path.join(out,entry.path);await mkdir(path.dirname(file),{recursive:true});await writeFile(file,bytes,{flag:'wx',mode:0o600});assert.equal((await lstat(file)).isFile(),true);result.files[entry.path]={bytes:bytes.length,gitBlob:git,sha256:sha(bytes)};
+ }
+ result.status='PASS_EXACT_UPSTREAM_BLOBS_NOT_EXECUTED';
+}catch(error){result.status='FAIL';result.errors.push(error.stack);process.exitCode=1;console.error(error);}
+result.finishedAt=new Date().toISOString();await writeFile(out+'/intake.json',JSON.stringify(result,null,2));console.log(result.status,Object.keys(result.files).length,out);

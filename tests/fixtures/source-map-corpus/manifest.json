@@ -1,0 +1,223 @@
+{
+  "schema": "stateatom.p02-source-corpus/1",
+  "upstream": "tastejs/todomvc",
+  "revision": "ff43b02e59dfa604386bb382034b2cd07c2bcd8a",
+  "source": "https://github.com/tastejs/todomvc/tree/ff43b02e59dfa604386bb382034b2cd07c2bcd8a",
+  "registration": "docs/completion/81-p02-real-application-qualification.md",
+  "apps": [
+    {
+      "id": "javascript-es6",
+      "subtree": "examples/javascript-es6/dist",
+      "package": "examples/javascript-es6/package.json",
+      "role": "small-real-native-ui",
+      "selector": ".new-todo",
+      "pairs": [
+        {
+          "asset": "app.bundle.js",
+          "sourceMap": "app.bundle.js.map"
+        }
+      ]
+    },
+    {
+      "id": "react",
+      "subtree": "examples/react/dist",
+      "package": "examples/react/package.json",
+      "role": "medium-known-framework-regression-not-new-renderer-support",
+      "selector": ".new-todo",
+      "pairs": [
+        {
+          "asset": "app.bundle.js",
+          "sourceMap": "app.bundle.js.map"
+        }
+      ]
+    },
+    {
+      "id": "ember",
+      "subtree": "examples/emberjs/todomvc/dist",
+      "package": "examples/emberjs/todomvc/package.json",
+      "role": "reserved-structurally-different-artifact-control",
+      "selector": ".new-todo",
+      "pairs": [
+        {
+          "asset": "assets/chunk.21a7dc4906237ee38116.js",
+          "sourceMap": "assets/chunk.21a7dc4906237ee38116.js.map"
+        },
+        {
+          "asset": "assets/chunk.5e0d2a6ae81027853a91.js",
+          "sourceMap": "assets/chunk.5e0d2a6ae81027853a91.js.map"
+        },
+        {
+          "asset": "assets/vendor.f7b15b30714107aa9519500d8302b211.js",
+          "sourceMap": "assets/vendor.map"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "examples/emberjs/todomvc/dist/assets/chunk.21a7dc4906237ee38116.js",
+      "gitBlob": "6a4385621aeebf44b52f03c713f97cc04a2566da",
+      "bytes": 483777
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/assets/chunk.21a7dc4906237ee38116.js.LICENSE.txt",
+      "gitBlob": "6859a7ecd9798d9b65b4e3ea460d5cd63ca98c0c",
+      "bytes": 104
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/assets/chunk.21a7dc4906237ee38116.js.map",
+      "gitBlob": "643354a1a57420720bab9842607ef16640b13df1",
+      "bytes": 2707386
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/assets/chunk.5e0d2a6ae81027853a91.css",
+      "gitBlob": "4824a6614fd95cf84f1aa850b24bd8383bad1305",
+      "bytes": 9155
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/assets/chunk.5e0d2a6ae81027853a91.css.map",
+      "gitBlob": "ae6c26ffddafc5580335dd04a2403d1f42b12aa0",
+      "bytes": 14400
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/assets/chunk.5e0d2a6ae81027853a91.js",
+      "gitBlob": "d6c776687671426ca1c4864b059b2953852fc0e8",
+      "bytes": 1953
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/assets/chunk.5e0d2a6ae81027853a91.js.map",
+      "gitBlob": "6b5bcd8ffc153f6005ca9751744fe11e6f639f08",
+      "bytes": 22675
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/assets/todomvc.css",
+      "gitBlob": "2aa3516f6d495f0190fb330ed726cbcfb8a0dca7",
+      "bytes": 52
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/assets/todomvc.d41d8cd98f00b204e9800998ecf8427e.css",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/assets/vendor.f7b15b30714107aa9519500d8302b211.js",
+      "gitBlob": "e1bbcbccf2bea01403b82128ff867dc4ab7bcb6a",
+      "bytes": 4610
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/assets/vendor.map",
+      "gitBlob": "373c68477666d7f99b9bcf1ea4e0274f21d53b31",
+      "bytes": 14630
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/images/github-logo.png",
+      "gitBlob": "55b6f994da5e40cbfbd0f7ba04b4eb558c553e37",
+      "bytes": 16057
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/images/github-mark.svg",
+      "gitBlob": "37fa923df33faeccc4b55228046b5b079a82926d",
+      "bytes": 963
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/images/logo.png",
+      "gitBlob": "40e7339a3a60ee35a8c637144851c4d7a2574d31",
+      "bytes": 15478
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/index.html",
+      "gitBlob": "8f09c46162c85fc63f9950c7d74d09a5f3cec7eb",
+      "bytes": 1321
+    },
+    {
+      "path": "examples/emberjs/todomvc/dist/robots.txt",
+      "gitBlob": "f5916452e5ff6c8b43d6d7c73d00153d34ac35de",
+      "bytes": 51
+    },
+    {
+      "path": "examples/emberjs/todomvc/package.json",
+      "gitBlob": "c8c392b4f8302b260cb334efa10e32e8214cc0f4",
+      "bytes": 3253
+    },
+    {
+      "path": "examples/javascript-es6/dist/app.bundle.js",
+      "gitBlob": "6e4b42d74daf35cece2fa8896c5c4478646ba45e",
+      "bytes": 8360
+    },
+    {
+      "path": "examples/javascript-es6/dist/app.bundle.js.map",
+      "gitBlob": "eb7590660e0d07609834fc0f81f938cd99493a4d",
+      "bytes": 38354
+    },
+    {
+      "path": "examples/javascript-es6/dist/app.css",
+      "gitBlob": "10a10a57a997eda9255ddd2f51f276a9a91c780f",
+      "bytes": 7377
+    },
+    {
+      "path": "examples/javascript-es6/dist/app.css.map",
+      "gitBlob": "63068d10f9fc3befb222e9f54356b6534e345241",
+      "bytes": 14212
+    },
+    {
+      "path": "examples/javascript-es6/dist/base.js",
+      "gitBlob": "319d4eb6884e9569068b4684dbbc845d5d82ab98",
+      "bytes": 3758
+    },
+    {
+      "path": "examples/javascript-es6/dist/index.html",
+      "gitBlob": "bb488bea80c6f446ccb3000e0a3caebb21602460",
+      "bytes": 1273
+    },
+    {
+      "path": "examples/javascript-es6/package.json",
+      "gitBlob": "8b632fa7ee1ba75f69b652c5469c6dd4ec6ad8cd",
+      "bytes": 990
+    },
+    {
+      "path": "examples/react/dist/app.bundle.js",
+      "gitBlob": "08741691a2f21c53f816811aa5750f7448b1f376",
+      "bytes": 236914
+    },
+    {
+      "path": "examples/react/dist/app.bundle.js.LICENSE.txt",
+      "gitBlob": "8176893c2c9fd488645d2fd92ca4119d0e49f693",
+      "bytes": 1332
+    },
+    {
+      "path": "examples/react/dist/app.bundle.js.map",
+      "gitBlob": "a43e8d03149794811e95c19e21e6f3ba20cf561b",
+      "bytes": 1361509
+    },
+    {
+      "path": "examples/react/dist/app.css",
+      "gitBlob": "676204ebeac3d26572e969bdc229dbbce7237336",
+      "bytes": 7400
+    },
+    {
+      "path": "examples/react/dist/app.css.map",
+      "gitBlob": "051cd5bf94db5ccb93c72447a99a364ccb2905f7",
+      "bytes": 14375
+    },
+    {
+      "path": "examples/react/dist/base.js",
+      "gitBlob": "013aacecb4f9f2e87b04552cd8b571d53cf55c0d",
+      "bytes": 3752
+    },
+    {
+      "path": "examples/react/dist/index.html",
+      "gitBlob": "82aa905b19394a7537790670445e3848d1d02c47",
+      "bytes": 645
+    },
+    {
+      "path": "examples/react/package.json",
+      "gitBlob": "46c9ec6649f1d063d6512009c24f96f801d8e844",
+      "bytes": 1236
+    },
+    {
+      "path": "license.md",
+      "gitBlob": "9275d4371020294b6a107e454a0d1819f8b71c31",
+      "bytes": 1166
+    }
+  ]
+}

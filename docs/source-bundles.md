@@ -100,8 +100,12 @@ ZIPs2s, at most2 jobs and the same artifact/cache bounds. A missing service give
 an explicit source gap. Clear/navigation/restart cancels work; after offscreen
 loss explicitly Attach/import again, and after service-worker restart reopen the
 inspector before doing so. Sources and permissions are not silently restored.
-Independent real-app qualification and full P02 acceptance remain open; the
-explicit companion-source workflow below has its own bounded verification.
+[Bounded real-application qualification](completion/81-p02-real-application-qualification.md)
+records original prebuilt JavaScript ES6/React/Ember maps, actual non-React native
+source navigation and distinct artifact-only cases. Indexed maps remain unsupported;
+all original tested maps fit existing caps. Full P02 review and broad V02/V03
+acceptance remain open; the explicit companion-source workflow below has its own
+bounded verification.
 
 Node filesystem/compression APIs were checked against the primary
 [Node24 filesystem](https://nodejs.org/docs/latest-v24.x/api/fs.html) and

@@ -985,3 +985,20 @@ Next P02.5 registered real-app size/time/indexed-map qualification and actual
 nontrivial minified UI, then ONE whole-P02 review.16/29 whole items (~55% equal
 count) unchanged; L02 quality/A02/release-wide gates remain open. No SDK, release,
 publication, other repository, redesign or independent-human blocker.
+
+### 2026-10-22 — P02.5 original real-application artifact qualification
+
+[P02.5](docs/completion/81-p02-real-application-qualification.md):33 exact Git/SHA upstream blobs,5 original JS maps from JavaScript
+ES6/React/Ember;43actual two-host +12exact issued Worker checks PASS. Non-React
+real selected native registration reaches original view.js without IDE/manual
+coordinates; lexical parameter form stays Partial. React/Ember prove actual loaded
+artifact imports only, no new renderer/component/callback support. Largest map
+2707386bytes/211sources/90149segments; all original maps flat and inside existing
+caps, separate indexed wrappers Unsupported. Source-preview local p95=149.9/147.6ms
+over20gestures per host; no V02 reference/degradation/Basic or full V03 acceptance.
+Current active440/390 candidates viewed; package/UI/hosts unchanged. Original
+31-check failed harness expectation and intermediate41-check pass retained.
+Aggregate`.artifacts/p02/qualification/verification.json`; accepted2104source tests
+retained unchanged, not called a new full run. Next ONE whole-P02 review and one
+tested correction pass if needed.16/29 full items (~55% equal count) unchanged;
+L02/A02/release-wide gates remain open. No SDK/publication/other repository/redesign.
