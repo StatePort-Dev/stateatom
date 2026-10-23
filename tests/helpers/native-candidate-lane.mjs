@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 import assert from 'node:assert/strict';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 export const nativeLaneCases = [
   {id:'basic',script:'tests/integration/basic-reader-native.mjs',schema:'stateatom.v01-basic-reader/1',status:'PASS_NATIVE_BASIC_READER',checks:23,perHost:11},
   {id:'maps',script:'tests/integration/source-map-native.mjs',schema:'stateatom.l01-native-map-regression/1',status:'PASS_L01_CURRENT_NATIVE_MAP_REGRESSION',checks:39,perHost:19}
@@ -32,4 +33,17 @@ export function validateLaneResult(id,result,handoffSha256){
   for(const value of Object.values(result.inputsBefore))assert.match(value,/^[a-f0-9]{64}$/);
   assert.deepEqual(result.inputsAfter,result.inputsBefore,'Source drift');
   return {id,checks:result.checks.length,hosts:result.cases.map(x=>x.kind)};
+}
+export function validateRetainedBasic(previous,raw,handoffSha256,currentInputs){
+  assert.equal(previous.schema,'stateatom.native-candidate-lane/1');
+  assert.equal(previous.handoff?.sha256,handoffSha256);
+  assert(previous.inputsBefore&&Object.keys(previous.inputsBefore).length);
+  assert.deepEqual(previous.inputsAfter,previous.inputsBefore,'Original lane input drift');
+  const entries=previous.cases.filter(x=>x.id==='basic');assert.equal(entries.length,1);
+  const entry=entries[0];assert.equal(entry.status,'PASS');assert.equal(entry.process.code,0);assert.equal(entry.process.signal,null);
+  assert.equal(createHash('sha256').update(raw).digest('hex'),entry.result.sha256,'Retained bytes changed');
+  const child=JSON.parse(raw),summary=validateLaneResult('basic',child,handoffSha256);
+  assert.equal(entry.result.status,child.status);
+  for(const[file,digest]of Object.entries(child.inputsBefore))assert.equal(currentInputs[file],digest,'Retained Basic source changed: '+file);
+  return summary;
 }
