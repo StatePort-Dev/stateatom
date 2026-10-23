@@ -16,12 +16,12 @@ import {nativeSourceParseObserver} from '../helpers/source-parse-observer.mjs';
 import {storedZip} from '../helpers/source-map-zip.mjs';
 import {warmSourceOrder,installWarmSourceTiming,summarizeWarmSource,assertMapCache} from '../helpers/warm-source-performance.mjs';
 
-const [hf,cf]=process.argv.slice(2);assert(hf&&cf,'Exact handoff and corpus paths required');
+const [hf,cf,retainedFile]=process.argv.slice(2);assert(hf&&cf,'Exact handoff and corpus paths required');
 const h=JSON.parse(await readFile(hf)),corpus=JSON.parse(await readFile(cf)),intake=JSON.parse(await readFile(corpus.intakeFile)),intakeRoot=path.dirname(corpus.intakeFile);
 assert.equal(h.package.version,'0.1.0-candidate.20261021.64');assert.equal(corpus.revision,'ff43b02e59dfa604386bb382034b2cd07c2bcd8a');
 const out='.artifacts/v02/warm-source/'+new Date().toISOString().replace(/[:.]/g,'-');await mkdir(out,{recursive:true,mode:0o700});
 const previous=JSON.parse(await readFile('.artifacts/v02/attachment-floor/2026-10-23/source-before.json'));
-const paths=[...new Set([...Object.keys(previous.inputs),'tests/helpers/warm-source-performance.mjs','tests/atom/warm-source-performance.test.mjs','tests/integration/warm-source-performance-native.mjs','docs/superpowers/plans/2026-10-23-v02-warm-source.md','docs/superpowers/plans/2026-10-23-v02-warm-source-preparation.md','tests/helpers/source-parse-observer.mjs','tests/helpers/source-map-zip.mjs','tests/fixtures/production-source-mapping/NativeListeners.js',cf,corpus.intakeFile,...Object.keys(intake.files).map(f=>intakeRoot+'/'+f),...corpus.apps.map(a=>a.prepared+'/release.zip')])];
+const paths=[...new Set([...Object.keys(previous.inputs),'tests/helpers/warm-source-performance.mjs','tests/atom/warm-source-performance.test.mjs','tests/integration/warm-source-performance-native.mjs','docs/superpowers/plans/2026-10-23-v02-warm-source.md','docs/superpowers/plans/2026-10-23-v02-warm-source-preparation.md','docs/superpowers/plans/2026-10-23-v02-warm-source-remainder.md','tests/helpers/source-parse-observer.mjs','tests/helpers/source-map-zip.mjs','tests/fixtures/production-source-mapping/NativeListeners.js',cf,corpus.intakeFile,...Object.keys(intake.files).map(f=>intakeRoot+'/'+f),...corpus.apps.map(a=>a.prepared+'/release.zip')])];
 const inputs=async()=>Object.fromEntries(await Promise.all(paths.map(async f=>[f,sha256(await readFile(f))])));
 const environment=()=>({platform:os.platform(),release:os.release(),arch:os.arch(),cpu:os.cpus()[0]?.model,logicalCPUs:os.cpus().length,totalRAM:os.totalmem(),freeRAM:os.freemem(),load:os.loadavg()});
 const b=await build({entryPoints:['tests/fixtures/production-source-mapping/NativeListeners.js'],bundle:true,minify:true,sourcemap:'external',write:false,outfile:'app.js',platform:'browser'});
@@ -33,9 +33,19 @@ const large={version:3,sources:['private-parser.ts'],names:Array.from({length:35
 const heavy=Buffer.from(JSON.stringify(large));assert(heavy.length>3*1024*1024&&heavy.length<=4*1024*1024);
 for(const [name,bytes]of [['app.js',js],['app.js.map',map],['fixture.html',html],['release.zip',zip],['parser-heavy.map',heavy],['driver.mjs',await readFile(new URL(import.meta.url))]])await writeFile(out+'/'+name,bytes);
 const generated=Object.fromEntries(await Promise.all(['app.js','app.js.map','fixture.html','release.zip','parser-heavy.map'].map(async f=>[f,sha256(await readFile(out+'/'+f))])));
+let retained=null;
+if(retainedFile){
+ assert.equal(retainedFile,'.artifacts/v02/warm-source/2026-10-23T12-06-47-419Z/results.json','Only the preregistered retained phase');
+ retained=JSON.parse(await readFile(retainedFile));const dir=path.dirname(retainedFile),p=JSON.parse(await readFile(dir+'/preregistration.json'));
+ assert.equal(retained.status,'INCOMPLETE');assert.equal(retained.schema,'stateatom.warm-source-performance/1');assert.equal(retained.preregistrationSha256,sha256(await readFile(dir+'/preregistration.json')));assert.deepEqual(p.inputs,retained.inputsAfter);assert.equal(retained.errors.length,0);assert.equal(retained.console.length,0);assert.equal(retained.samples.length,46);assert.deepEqual(retained.samples,JSON.parse('['+(await readFile(dir+'/samples.jsonl','utf8')).trim().split('\n').join(',')+']'));assert.equal(retained.cache.length,0);assert.equal(retained.cancellations.length,0);assert.equal(p.handoff.sha256,sha256(await readFile(hf)));assert.deepEqual(p.generated,generated);assert.deepEqual(p.order,warmSourceOrder());assert.deepEqual(summarizeWarmSource(retained.samples,'standalone'),retained.cases[0].summary);
+ for(const[f,v]of Object.entries(p.inputs)){const bytes=f==='tests/integration/warm-source-performance-native.mjs'?execFileSync('git',['show','e633f1d:'+f]):await readFile(f);assert.equal(sha256(bytes),v,'Retained phase input '+f);}assert.equal(sha256(await readFile(dir+'/driver.mjs')),p.inputs['tests/integration/warm-source-performance-native.mjs']);
+ await writeFile(out+'/retained-attempts.jsonl',await readFile(dir+'/attempts.jsonl'));
+}
 const preregistration={schema:'stateatom.warm-source-performance/1',createdAt:new Date().toISOString(),revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),dirty:execFileSync('git',['status','--porcelain'],{encoding:'utf8'}).trim(),inputs:await inputs(),handoff:{file:hf,sha256:sha256(await readFile(hf)),package:h.package,ui:h.ui},corpusFile:cf,order:warmSourceOrder(),generated,environment:environment(),configuration:{headed:true,route:'loopback HTTP/read-only/exact local ZIP',appTargetTestCDP:false,manualSelection:'CSS in setup',manualGeneratedCoordinates:false,sourceTextInTimingRows:false,cacheCycles:3,cancelAfterActualParserStart:true,sourceObserverDuringWarm:false,performanceAcceptance:false,targetsWaived:false}};
+if(retained)preregistration.retainedWarm={file:retainedFile,sha256:sha256(await readFile(retainedFile)),host:'standalone',raw:46,measured:40,warmup:6,freshWarmRows:46};
 await writeFile(out+'/preregistration.json',JSON.stringify(preregistration,null,2),{flag:'wx'});
 const result={schema:preregistration.schema,status:'RUNNING',out,preregistrationSha256:sha256(await readFile(out+'/preregistration.json')),cases:[],samples:[],cache:[],cancellations:[],errors:[],console:[],performanceAcceptance:false,targetsWaived:false};
+if(retained){result.retainedWarm=preregistration.retainedWarm;result.samples.push(...retained.samples);await writeFile(out+'/samples.jsonl',retained.samples.map(s=>JSON.stringify(s)).join('\n')+'\n');}
 let server,desktop,browser,panel,d,sourceObserver;
 const traffic=[];
 try{
@@ -65,7 +75,7 @@ try{
    assert(tabs.size<3,'No fourth inspected tab');
    const tabId=await panel.evaluate(async url=>(await chrome.tabs.create({url})).id,origin+'/'+a.subtree+'/');tabs.set(a.id,{tabId});await waitFor(()=>panel.evaluate(async id=>(await chrome.tabs.get(id)).status==='complete',tabId));
    await waitFor(async()=>{try{return(await readApp(a)).title.length>0;}catch{return false;}});tabs.get(a.id).before=await readApp(a);
-   await d.click('refresh-tabs');await d.waitOK();await choose(a);if(!await panel.evaluate(s=>document.querySelector(s).checked,d.q('source-map-readonly')))await d.click('source-map-readonly');await d.click('attach');await d.waitOK();
+   await d.click('refresh-tabs');await waitFor(()=>panel.evaluate(({selector,id})=>[...document.querySelector(selector).options].some(o=>o.value===String(id)),{selector:d.q('tabs'),id:tabId}));await choose(a);if(!await panel.evaluate(s=>document.querySelector(s).checked,d.q('source-map-readonly')))await d.click('source-map-readonly');await d.click('attach');await d.waitOK();
    await d.fill('selector',a.selector);await d.click('inspect-selector');await d.waitOK();const s=await state(tabId),script=await waitFor(async()=>(await state(tabId)).sourceMaps.scripts.find(s=>s.url===origin+'/'+a.subtree+'/'+a.pairs[0].asset));tabs.get(a.id).script=script;
    await d.select('source-map-script',script.scriptId);
    if(['synthetic','javascript-es6'].includes(a.id)){
@@ -81,7 +91,7 @@ try{
   async function remove(a,phase){await choose(a);assert.deepEqual(await readApp(a),tabs.get(a.id).before);await d.click('detach');await d.waitOK();const tabId=tabs.get(a.id).tabId;await panel.evaluate(id=>chrome.tabs.remove(id),tabId);tabs.delete(a.id);entry.lifecycle.push({phase,operation:'removed',caseId:a.id,tabId,tracked:tabs.size,appUnchanged:true});}
   for(const a of warmApps.filter(a=>['synthetic','javascript-es6'].includes(a.id)))await prepare(a,'warm');
   await panel.evaluate(installWarmSourceTiming);
-  for(const trial of warmSourceOrder()){
+  for(const trial of retained&&host==='standalone'?[]:warmSourceOrder()){
    const a=warmApps.find(a=>a.id===trial.caseId);await choose(a);const tabId=tabs.get(a.id).tabId,s=await state(tabId);assert.equal(s.attached,true);assert(s.selection);const attempt={...trial,host,tabId,startedAt:new Date().toISOString()};result.currentTrial=attempt;await appendFile(out+'/attempts.jsonl',JSON.stringify(attempt)+'\n');
    await panel.evaluate(meta=>globalThis.__warmSourceTiming.arm(meta),{...trial,host,tabId});await d.click('native-source-0');await d.waitOK();
    const row=await waitFor(()=>panel.evaluate(ordinal=>{const t=globalThis.__warmSourceTiming;if(t.errors.length)throw Error(t.errors.join('; '));return t.samples.find(s=>s.ordinal===ordinal);},trial.ordinal),15000);
