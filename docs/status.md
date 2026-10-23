@@ -173,12 +173,19 @@ Atom70/helper8 inputs327/223 unchanged; new helper zip has identical9 payload en
 no new helper native acceptance. Original plugin5/overall native FAILs remain.
 Whole20/29/fullV03/C09/A02/L02/V02 unchanged. Next V03.12 is the
 bounded guide-operated browser installation/independent React Basic handoff route.
-[V03.12](completion/125-v03-guide-browser-install.md) now prepares the actual
-Chrome Developer mode/Load unpacked/native chooser gate on unchanged70/UI2,
-with separately fresh reporter/recipient profiles. Shared-helper control
-initially fails a new exact-argv metadata assumption because Chromium rewrites its
-process title; corrected raw-process/default-launch control passes. Both remain
-preparation; the registered UI route is unexecuted and not accepted.
+[V03.12](completion/125-v03-guide-browser-install.md) engineering now passes actual
+Chrome Developer mode/Load unpacked/native folder selection in both fresh reporter/
+recipient profiles on unchanged70/UI2. First drawer-motion miss is retained; stable
+hittable control corrects the harness. Original default-helper cmdline assumption
+FAIL and corrected control are also retained. Fresh2 UI installs plus15 named app/
+reader checks PASS;339 inputs stable/65 originals exact/Atom327 unchanged. Actual
+317667B/778-row report downloads and reads passively with exact empty authority and
+no external reader-target request; recorded post-attach app/inspector/reader logs0.
+Screens are candidates; GTK Recent inherits host labels, so raw chooser screens
+remain private and are not clean-OS evidence. ONE final review pending. Full-guide
+entry assistance remains: extension-URL inspector launch/CDP reader file input.
+Next boundedV03.13 tests toolbar and native import entry; whole20/29/fullV03 gates
+remain open. No product source/build/certificates/accounts/publication changed.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

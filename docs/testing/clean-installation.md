@@ -104,3 +104,19 @@ for65 or full clean installation. CLI preload remains declared assistance, nativ
 embedding/source-connected/macOS/model/performance and other baseline gates stay
 separate. Next V03.5 is the already pinned non-React app's first scoped execution;
 reserve remains unexecuted. FullV03/A02/L02/V02 and20/29 are unchanged.
+
+## Subsequent V03.12 actual Chrome installation gate
+
+[Current70 route](../completion/125-v03-guide-browser-install.md) now installs the
+supplied standalone folder through Developer mode/Load unpacked/native folder
+selection in empty reporter/recipient Chrome profiles. First drawer-motion miss
+stays FAIL; stable hit geometry succeeds. Exact339 inputs/Atom327/65 original app
+files, existing React Basic/detailed report and passive317667B/778-row recipient
+checks pass, with ONE final review pending. No CLI preload/private load API provides
+installation. Original app logs cover after Atom attach, not all startup console.
+
+Inspector extension-URL launch and reader CDP file input remain explicit assistance,
+not whole-guide UI acceptance; next boundedV03.13 tests those entry controls. Native
+GTK Recent can show host folder labels: raw chooser screens are private ignored
+artifacts, not public examples or clean-OS proof. No independent-human gate, new
+product build/source, certificates/accounts/publication or fullV03 acceptance.

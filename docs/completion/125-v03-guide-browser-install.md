@@ -61,3 +61,51 @@ Require3 stable polling intervals, unchanged overall timeouts; no extra app warm
 or lowering of installation requirements. No product source/build/native old-route
 repeat. Current UI attempt is terminal before another run; original missing gate
 and existing app/reader questions remain due.
+
+## Actual stable-controls route — engineering complete, review pending
+
+Preregister43448fc, terminal24890/exit0:
+`.artifacts/v03/independent-react-basic/2026-10-23T23-41-45-324Z/results.json`.
+Both reporter and separately empty recipient install exact70/UI2 through Chrome
+Developer mode/Load unpacked, actual native "Select the extension directory."
+chooser and rendered StateAtom card joined to its real unattached worker. Actual
+requested/raw process command has no extension preload, headless or certificate
+bypass. No private extension-load API or preseeded state supplies installation.
+Current loaded stable/hittable button viewportY84 in both roles; original Y28
+failure stays FAIL. Both roles have absent StateAtom cards before installation.
+
+Then15 actual named source/pair/Basic/reader gates PASS: untouched65 originals,
+shop/synthetic image decode, native picker/actual parent/Cancel, original saved
+Cart historical bytes, ordinary Add→1Cart/Inspect again, explicit Unknown ownership/
+lineage, actual Review/Save/native Download and recipient import. Download317667B,
+SHA71feaf7215d726b68f1284def217c15a9e72d9ba47e24c5d7cbd0e960caa5e0b,
+778 technical rows/12649 nodes. Default selected text remains omitted; historical
+claims are not reverified. Reader imports after original browser and own app/API
+stop, with no external reader-target requests and exact empty authority unchanged.
+
+All339 registered inputs stable during execution; Atom327 source/build inputs,
+archives/installed pair/standalone files unchanged, all65 original app files exact.
+Owned Chrome processes close and nested display socket disappears; Vite143 is its
+intentional SIGTERM. Recorded inspector/reader errors/warnings and app warnings
+AFTER Atom attachment are0; no pre-navigation application-console claim. Source
+full2616 remains historical unchanged-product evidence, not a new suite execution.
+
+Actual native-folder/installed-card/desktop1100/narrow440/reader screenshots viewed;
+inspector root13px/no horizontal overflow are candidates, not human visual review.
+Native GTK chooser inherited host Recent folder labels despite the empty Chrome
+profile. Raw screenshots remain local/private/ignored, not public examples or
+clean-OS evidence; those labels are not imported into the actual report. No other
+folder/file was selected, certificate manager opened or account configured.
+
+verify-native.mjs/native-checkpoint.json independently recomputes identities,
+actual installer/worker/process/no-preload joins, downloaded bytes/reader authority,
+unchanged old detailed case and retained first failure. Reporting-only corpus/guide
+updates may be read from the actual run's Git revision for registered historical
+hashes; all product/helper/driver/case inputs must still match current bytes.
+
+Remaining explicit assistance: inspector is opened by extension URL, and reader
+file import uses its existing CDP file-input helper. These are not toolbar/menu or
+native import-chooser usability acceptance. After ONE final review, next one item
+V03.13 addresses those two actual entry controls without replaying completed app/
+codec/source/Vue campaigns. FullV03/C09/A02/L02/V02, Linux/macOS and all original
+native/zero-console gates remain open; whole20/29 unchanged.

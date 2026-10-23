@@ -18,12 +18,14 @@ Desktop, account, model or application plugin.
 The receipt identifies the actual Atom/UI candidates and supplied files. Chrome's
 extension version currently displays `0.1.0`; that alone does not identify which
 candidate you received. Do not combine files from different kits. A current local
-checkpoint is Atom `0.1.0-candidate.20261021.66` with UI
+checkpoint is Atom `0.1.0-candidate.20261021.70` with UI
 `0.2.0-candidate.20261018.2`; this is an identity reference, not a download link.
 Use its matching reader: newly supported larger detailed reports can exceed the
 older65 reader's structure limit. This is not a general old-reader compatibility
 promise. [The scoped qualification](completion/117-v03-packed-detailed-report.md)
-records actual report transfer and remaining installation/source/platform gaps.
+records the earlier66 report route. [Current70 browser installation](completion/125-v03-guide-browser-install.md)
+records actual Developer mode/Load unpacked and assisted Basic/report transfer;
+full guide/source/platform acceptance remains incomplete.
 
 For optional development-source access, obtain the helper VSIX and the separate
 Vite plugin tarball with their own compatibility record. A helper installation

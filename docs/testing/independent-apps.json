@@ -530,6 +530,28 @@
       "whole_V03_complete": false,
       "review_pending": false,
       "review_receipt": ".artifacts/v03/warning-baseline/2026-10-24/review/receipt.json"
+    },
+    {
+      "id": "V03.12-guide-browser-install-and-assisted-react",
+      "application": "Serkanbyx/e-commerce-frontend",
+      "execution_record": "../completion/125-v03-guide-browser-install.md",
+      "evidence": ".artifacts/v03/independent-react-basic/2026-10-23T23-41-45-324Z/results.json",
+      "status": "PASS_GUIDE_UI_INSTALL_AND_ASSISTED_BASIC_HANDOFF_NOT_FULL_V03",
+      "native_ui_installs": 2,
+      "native_named_gates": 15,
+      "registered_inputs": 339,
+      "inputs_stable_during_run": true,
+      "original_source_files_unchanged": 65,
+      "download_bytes": 317667,
+      "technical_rows": 778,
+      "recipient_authority_unchanged": true,
+      "remaining_assistance": [
+        "extension URL inspector launch",
+        "CDP reader file input"
+      ],
+      "whole_guide_accepted": false,
+      "whole_V03_complete": false,
+      "review_pending": true
     }
   ]
 }

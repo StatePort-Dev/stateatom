@@ -4757,13 +4757,27 @@
       "active_slice": {
         "id": "V03.12",
         "title": "Actual guide-operated browser extension installation and existing React handoff",
-        "status": "in-progress-preparation-no-runtime-claim",
+        "status": "engineering-complete-two-native-ui-installs-and-assisted-react-handoff-review-pending",
         "record": "125-v03-guide-browser-install.md",
         "design": "../superpowers/specs/2026-10-24-v03-guide-browser-install-design.md",
         "plan": "../superpowers/plans/2026-10-24-v03-guide-browser-install.md",
         "whole_V03_complete": false,
         "product_source_changed": false,
-        "previous_slice": "V03.11 complete at39c5171; native zero-console FAIL unchanged"
+        "previous_slice": "V03.11 complete at39c5171; native zero-console FAIL unchanged",
+        "registered_question": "../testing/independent-react-guide-install-case-stable-controls.json",
+        "runtime_result": ".artifacts/v03/independent-react-basic/2026-10-23T23-41-45-324Z/results.json",
+        "verification": ".artifacts/v03/guide-install/2026-10-24/native-checkpoint.json",
+        "native_ui_installs": 2,
+        "other_native_named_gates": 15,
+        "registered_inputs": 339,
+        "original_source_files": 65,
+        "report_bytes": 317667,
+        "report_technical_rows": 778,
+        "remaining_assistance": [
+          "extension URL inspector launch",
+          "CDP reader file input"
+        ],
+        "review_pending": true
       },
       "completed_slices": [
         {
@@ -5176,8 +5190,9 @@
       ],
       "current_checkpoint": {
         "record": "125-v03-guide-browser-install.md",
-        "status": "in-progress-preparation-no-runtime-claim",
-        "next_bounded_step": "Prepare/register owned Chrome UI installation, then actual existing independent React Basic/detailed handoff route; no completed experiment replay"
+        "status": "engineering-complete-two-native-ui-installs-and-assisted-react-handoff-review-pending",
+        "verification": ".artifacts/v03/guide-install/2026-10-24/native-checkpoint.json",
+        "next_bounded_step": "ONE final V03.12 review, then V03.13 actual toolbar/reader native import controls; preserve completed app/source/codec/Vue evidence"
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-warning-baseline.md",
       "implementation_plan": "../superpowers/plans/2026-10-24-v03-guide-browser-install.md"
@@ -5339,8 +5354,8 @@
     "document": "125-v03-guide-browser-install.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.12-browser-guide-install-preparation",
-    "next_item": "V03.12: guide-operated Chrome Load unpacked installation and existing independent React Basic/handoff in an owned fresh profile",
+    "current_increment": "V03.12-engineering-complete-actual-UI-install2-native15-review-pending",
+    "next_item": "V03.13: actual toolbar/menu launch and reader native file chooser after V03.12 review",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7480,11 +7495,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.11 complete at39c5171 after one review/routing correction. V03.12 now prepares actual Chrome UI installation on unchanged70/UI2 in owned fresh reporter/recipient profiles; runtime unexecuted, no acceptance claimed. Whole20/29/fullV03 dependencies unchanged.",
+    "current_activity_note": "V03.12 actual Chromium153 Developer mode/Load unpacked/native folder selection passes in2 empty profiles;15 existing independent React Basic/detailed/passive-reader gates pass;339 stable inputs/65 original files/Atom327 unchanged. Actual317667B/778rows/exact empty authority/no import requests/owned cleanup. First setup failures retained. ONE final review pending; sourcefull2616 retained, no product change. Toolbar launch/reader CDP file assistance and fullV03 dependencies remain;whole20/29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "39c5171 base; product Atom70/helper8/plugin6 unchanged, no new runtime claim",
+    "current_source_revision": "43448fc actual preregistered run; Atom70/UI2 unchanged, no product source/build",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "Prepare/register owned Chrome UI installation, then actual existing independent React Basic/detailed handoff route; no completed experiment replay"
+    "next_bounded_step": "ONE final V03.12 review, then V03.13 actual toolbar/reader native import controls; preserve completed app/source/codec/Vue evidence"
   },
   "next_task": "V03"
 }
