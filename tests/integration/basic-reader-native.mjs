@@ -13,7 +13,7 @@ const hf=process.argv[2];assert(hf&&process.argv.length===3,'Exact handoff requi
 const h=JSON.parse(await readFile(hf)),out='.artifacts/v01/basic-reader/'+new Date().toISOString().replace(/[:.]/g,'-');
 await mkdir(out,{recursive:true});await writeFile(out+'/driver.mjs',await readFile(new URL(import.meta.url)));
 const fixture='tests/fixtures/picker/index.html',html=await readFile(fixture);
-const registered=[...new Set([...Object.keys({...h.sourceManifest,...h.buildSources.manifest}),fixture,'tests/integration/basic-reader-native.mjs','tests/helpers/native-inspector-ui.mjs','scripts/native-browser.mjs','scripts/harness.mjs'])];
+const registered=[...new Set([...Object.keys({...h.sourceManifest,...h.buildSources.manifest}),fixture,'tests/integration/basic-reader-native.mjs','tests/helpers/native-inspector-ui.mjs','scripts/native-browser.mjs','scripts/harness.mjs','scripts/owned-ide-endpoint.mjs'])];
 const inputs=async()=>Object.fromEntries(await Promise.all(registered.map(async f=>[f,sha256(await readFile(f))])));
 const result={schema:'stateatom.v01-basic-reader/1',status:'RUNNING',startedAt:new Date().toISOString(),revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),handoff:{file:hf,sha256:sha256(await readFile(hf)),package:h.package,ui:h.ui},configuration:{headless:'new',realMV3:true,IDE:false,certificateSetup:false,appTargetTestCDP:false,readOnly:true,scope:'Basic/picker/legacy historical diagnostic/fresh-profile passive reader; not performance or full QA handoff'},checks:[],cases:[],errors:[],console:[],inputsBefore:await inputs()};
 let server,browser,d,downloads;const traffic=[];

@@ -14,7 +14,7 @@ process.chdir(root);const hf=immutableHandoffPath(process.argv[2],root),h=JSON.p
 const out='.artifacts/v01/native-candidate/'+new Date().toISOString().replace(/[:.]/g,'-');await mkdir(out,{recursive:true});
 const registered=[...new Set([...Object.keys({...h.sourceManifest,...h.buildSources.manifest}),
   ...nativeLaneCases.map(x=>x.script),'scripts/verify-native-candidate.mjs','tests/helpers/native-candidate-lane.mjs',
-  'tests/atom/native-candidate-lane.test.mjs','tests/helpers/native-inspector-ui.mjs','scripts/native-browser.mjs','scripts/harness.mjs',
+  'tests/atom/native-candidate-lane.test.mjs','tests/helpers/native-inspector-ui.mjs','scripts/native-browser.mjs','scripts/harness.mjs','scripts/owned-ide-endpoint.mjs',
   'tests/helpers/source-map-zip.mjs','tests/fixtures/picker/index.html','tests/fixtures/production-source-mapping/OrderActions.jsx',
   'tests/integration/production-source-mapping.mjs','.github/workflows/ci.yml','docs/superpowers/plans/2026-10-23-v01-native-candidate.md','docs/superpowers/plans/2026-10-23-v01-native-remainder.md'])];
 const inputs=async()=>Object.fromEntries(await Promise.all(registered.map(async f=>[f,sha256(await readFile(f))])));
