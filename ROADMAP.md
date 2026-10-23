@@ -1182,3 +1182,8 @@ repository or independent-human blocker.
 ### 2026-10-23 — P04 primary reporter and truthful tab cleanup
 
 [Current60](docs/completion/98-p04-primary-reporter-and-context-stop.md): actual selected-tab cleanup records tab-switch, generic view context uses context-changed; legacy explicit Stop/first closing reason/exact ownership remain. Source2378/focused107/types2/admission9/build/native13 primary-X11/keyboard/denial/tab-switch plus17 affected H09 checks both hosts PASS,0 inspector console warnings/errors. Genuine59 reason failure/driver wording failure and first full fixed-port4173 failure retained; unchanged full retry passes. No new design/token/CSS/authority. Next named H07-H09 coverage reconciliation/actual gaps before ONE whole-P04 review. P04/C07 remain open;18/29 unchanged, mandatory L02 open/A05 scoped complete/A02 open.
+
+
+### 2026-10-23 — P04 named coverage before parent review
+
+[Named H07-H09 coverage](docs/completion/99-p04-named-coverage.md): exact60 actual inspector/worker-loss/passive history25 and local-map exclusion7 both hosts pass,0 inspector console warnings/errors. New native-download early-open helper race has meaningful RED/GREEN; stalled setup explicitly aborted before map with0 credited checks. Current source2379/511 matching inputs; product60/type/admission/build unchanged. Historical58/59 matrix subchecks reused only with recorded unchanged-module/runtime-path reasoning; no old FAIL upgraded to whole PASS or fresh60 run. Next ONE whole-P04 review, parent P04/C07 still open;18/29 unchanged.

@@ -3257,7 +3257,8 @@
         "tests/integration/p04-picker-entry-native.mjs",
         "tests/atom/handoff-observation-coexistence.test.mjs",
         "tests/atom/observation-input-coexistence.test.mjs",
-        "tests/integration/handoff-observation-input-native.mjs"
+        "tests/integration/handoff-observation-input-native.mjs",
+        "tests/atom/native-download-helper.test.mjs"
       ],
       "existing_commands": [
         "npm run verify:browser",
@@ -3275,8 +3276,8 @@
       "deliverable": "U06-designed QA production observation/handoff flow, read-only collector distinct from intentional edits",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "P04.4e named H07-H09 coverage reconciliation, fill actual remaining gaps, then ONE whole-P04 review",
-      "execution_record": "98-p04-primary-reporter-and-context-stop.md",
+      "active_slice": "ONE whole-P04 scope/code/evidence review after named H07-H09 reconciliation; one tested correction pass if needed",
+      "execution_record": "99-p04-named-coverage.md",
       "implementation_plan": "../superpowers/plans/2026-10-23-p04-context-stop.md",
       "current_checkpoint": {
         "id": "P04.4d.5-primary-reporter-context-stop",
@@ -3555,9 +3556,24 @@
           "whole_tasks_complete": 18,
           "next_item": "P04.4e remaining named H07-H09 evidence reconciliation and actual gaps, then ONE whole-P04 review",
           "boundary": "Current60 source2378/focused107/types2/admission9/build/native13 primary-X11-keyboard-denial-tab-switch plus17 H09 regression both hosts PASS,0 inspector console warnings/errors. Actual tab switch now records tab-switch via closed optional owned Stop reason; generic context cleanup records context-changed, explicit user Stop/first reason/exact owner and nonce remain. Native59 genuine reason failure and wording failure preserved; first full port4173 failure retained, unchanged full retry passes. No new design/CSS/token or authority. Historical58/59 lifecycle results remain revision-scoped; no silent full-P04/C07/release claim.18/29 unchanged, L02 mandatory/open/A05 scoped complete/A02 open. No SDK/publication/other repository/human blocker."
+        },
+        {
+          "id": "P04.4e-named-coverage",
+          "status": "complete-scoped-coverage-not-parent-acceptance",
+          "record": "99-p04-named-coverage.md",
+          "verification": ".artifacts/p04/final-coverage/2026-10-23/verification60-coverage.json",
+          "source": 2379,
+          "source_inputs": 511,
+          "native60_interruption_both_hosts": 25,
+          "native60_local_map_both_hosts": 7,
+          "new_package": false,
+          "unchanged_candidate": "0.1.0-candidate.20261021.60",
+          "full_P04_acceptance": false,
+          "whole_tasks_complete": 18,
+          "next_item": "ONE whole-P04 scope/code/evidence review after named H07-H09 reconciliation; one tested correction pass if needed"
         }
       ],
-      "remaining_acceptance": "P04.4e named H07-H09 coverage reconciliation, fill actual remaining gaps, then ONE whole-P04 review",
+      "remaining_acceptance": "ONE whole-P04 scope/code/evidence review after named H07-H09 reconciliation; one tested correction pass if needed",
       "native_matrix_progress": {
         "record": "93-p04-native-window-matrix-progress.md",
         "status": "partial-not-H08-H09-P04-acceptance",
@@ -3566,7 +3582,7 @@
         "successful_checks": 29,
         "reused_successful_subchecks": 1,
         "native_status": "FAIL",
-        "open": "Historical58/59 evidence remains scoped; reconcile named H07-H09 cases before ONE parent review",
+        "open": "ONE whole-P04 review;99 explicitly reconciles source-equivalent historical subcheck reuse without rewriting FAIL29",
         "remaining_embedding": {
           "record": "96-p04-embedding-lifecycle.md",
           "status": "complete-bounded-embedding-lifecycle-not-whole-H08-P04",
@@ -6210,7 +6226,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Current60 fixes proven tab-switch reason bug; source2378/focused107/types2/admission9/native13 primary/keyboard/denial/tab-switch plus17 H09 both hosts PASS. All failures preserved. Next named H07-H09 coverage and actual gaps before ONE whole-P04 review;18/29 unchanged.",
+    "current_activity_note": "99 reconciles named P04 H07-H09 evidence: current60 full2379/511 inputs, actual interruption25 and local-map7 both hosts; helper missed-open RED/GREEN, aborted setup0 checks retained. Product60/type/admission/build unchanged. Scoped historical58/59 reuse is explicit, not fresh60 full matrix. Next ONE whole-P04 review;18/29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "P04"
