@@ -1,0 +1,107 @@
+{
+  "schema": "stateatom.v03-independent-corpus/1",
+  "scope_revision": "scope-review-1",
+  "registered_before_resolver_tailoring_and_app_execution": true,
+  "selection_plan": "../superpowers/plans/2026-10-23-v03-independent-clean-path.md",
+  "source_intake_evidence": ".artifacts/v03/independent-corpus/2026-10-23T15-40-52-439Z/results.json",
+  "primaries": [
+    {
+      "role": "primary-react",
+      "repository": "https://github.com/Serkanbyx/e-commerce-frontend",
+      "revision": "653ce1095bcd6b1c3a1c21d4f01f85953c9eb20f",
+      "license": {
+        "spdx": "MIT",
+        "source": "https://github.com/Serkanbyx/e-commerce-frontend/blob/653ce1095bcd6b1c3a1c21d4f01f85953c9eb20f/LICENSE",
+        "sha256": "a46c7ea4b472ec4498808ac6274eba9a4951eec301d87f1f27b460d252055caf"
+      },
+      "package_json_sha256": "bd7c1aa5c172342733d376104d4a70d524652b92dd1572f2b4a1c37f89bfeee2",
+      "lockfiles": {
+        "package-lock.json": "c5442f58f51e0391cce6a8093defef667ce08f90b2c9532c94a722e7f9c78ee3"
+      },
+      "package_manager": null,
+      "node_version_file": null,
+      "declared_dev_script": "vite",
+      "archive": {
+        "file": ".artifacts/v03/independent-corpus/2026-10-23T15-40-52-439Z/Serkanbyx--e-commerce-frontend/source.tar.gz",
+        "url": "https://codeload.github.com/Serkanbyx/e-commerce-frontend/tar.gz/653ce1095bcd6b1c3a1c21d4f01f85953c9eb20f",
+        "sha256": "c0450a641ecead7e57499040342f23b88d01f7859b6d6df30b21406fe89f885b",
+        "bytes": 780499
+      },
+      "source_manifest": ".artifacts/v03/independent-corpus/2026-10-23T15-40-52-439Z/Serkanbyx--e-commerce-frontend/SOURCE_SHA256.json",
+      "source_files": 65,
+      "tree_sha256": "1b28106fb06f5041f454724331908e8ca760c1a0eca6c3bfd096b70dba012668",
+      "source_intake": "verified-private-ignored-input-only",
+      "dependencies_installed": false,
+      "app_executed": false,
+      "V03_application_coverage_accepted": false
+    },
+    {
+      "role": "primary-non-react",
+      "repository": "https://github.com/CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "license": {
+        "spdx": "GPL-3.0",
+        "source": "https://github.com/CorentinTh/it-tools/blob/d505845f918e946ec300af7b36efc107e2f66e9e/LICENSE",
+        "sha256": "8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b"
+      },
+      "package_json_sha256": "f80cf1b724124a495e57c36996114bed138849ea42c8a97bcbc809782aa3d7f5",
+      "lockfiles": {
+        "pnpm-lock.yaml": "89f7442384f5365ddc8f274d3968725366379375917f2a39e46ec688aad2e23e"
+      },
+      "package_manager": "pnpm@9.11.0",
+      "node_version_file": "18.18.2",
+      "declared_dev_script": "vite",
+      "archive": {
+        "file": ".artifacts/v03/independent-corpus/2026-10-23T15-40-52-439Z/CorentinTh--it-tools/source.tar.gz",
+        "url": "https://codeload.github.com/CorentinTh/it-tools/tar.gz/d505845f918e946ec300af7b36efc107e2f66e9e",
+        "sha256": "02fc371df3d79b189cfa752f2bd5a411dddac6a6fb92ad94a3c0ad9f7e44a91a",
+        "bytes": 682093
+      },
+      "source_manifest": ".artifacts/v03/independent-corpus/2026-10-23T15-40-52-439Z/CorentinTh--it-tools/SOURCE_SHA256.json",
+      "source_files": 498,
+      "tree_sha256": "3da31c1a6c387649cc2f25cfd1aa1bcd3a4ccf7e8785ca2b412d63ab286225a6",
+      "source_intake": "verified-private-ignored-input-only",
+      "dependencies_installed": false,
+      "app_executed": false,
+      "V03_application_coverage_accepted": false
+    }
+  ],
+  "reserved_structural_control": {
+    "repository": "https://github.com/excalidraw/excalidraw",
+    "revision": "b7de45e88111f5680ae4bb3c3f3541c7d3b279fe",
+    "reason": "Drawing/canvas application differs from ordinary commerce/forms and Vue utilities",
+    "license": {
+      "spdx": "MIT",
+      "source": "https://github.com/excalidraw/excalidraw/blob/b7de45e88111f5680ae4bb3c3f3541c7d3b279fe/LICENSE",
+      "sha256": "1352d204fdb90d5e482c13139d848bc2c9300a9a7de358a0a558a23e72d0d8be"
+    },
+    "metadata_only": [
+      "README.md",
+      "package.json",
+      "LICENSE"
+    ],
+    "implementation_inspected": false,
+    "source_archive_intaken": false,
+    "app_executed": false,
+    "expected_answers_derived": false
+  },
+  "excluded_before_execution": [
+    {
+      "repository": "https://github.com/jeffersonRibeiro/react-shopping-cart",
+      "reason": "License endpoint404; source reuse permission not established, no archive intake"
+    },
+    {
+      "repository": "https://github.com/ritz078/transform",
+      "revision": "ff7557939be351706f4dc6f71cc375e3bc64c225",
+      "reason": "Declared React17/Next10/Node20 outside this installed-recipe path; metadata only, not a discarded runtime result"
+    }
+  ],
+  "boundaries": [
+    "Source intake and hashes do not prove app/browser/plugin support",
+    "No product resolver or dependency version tailored to these apps",
+    "External code stays outside shipped Atom outputs and public upload allowlists",
+    "Controlled product API must be disclosed before future React app run",
+    "Known TodoMVC remains regression, not this new corpus",
+    "V03/A02/L02/V02 remain incomplete; no human recruitment gate"
+  ]
+}

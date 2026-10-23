@@ -39,6 +39,14 @@ selection, license/source intake and reservation have **not happened** in V03.1.
 Do not relabel the synthetic F03 Cart, pinned first-read, or A02's repeated TodoMVC
 as the new independent corpus. Do not adapt away an unsupported state library.
 
+Subsequent V03.2 source registration (2026-10-23):
+[independent-apps.json](independent-apps.json) pins the new React commerce app,
+Vue/Pinia IT-Tools and metadata-only Excalidraw reserve before execution/tailoring.
+Two private source archives/license/hash manifests were checked. At this checkpoint
+their dependencies are not installed and neither application has run; this is not
+positive V03 application coverage. Original V03.1 preparation statements above
+remain historical. The reserve's implementation and expected answers remain unseen.
+
 For each actual run, seal artifact/host/app/source/lock identities and named cases
 before execution. Record declared OS/browser, clean profile, app startup command
 from its own package/guide, helper installation mode and enabled observations.

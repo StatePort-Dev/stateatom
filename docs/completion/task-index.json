@@ -4755,7 +4755,14 @@
       "optional": false,
       "execution_record": "114-v03-installed-guide-preparation.md",
       "implementation_plan": "../superpowers/plans/2026-10-23-v03-installed-guide.md",
-      "active_slice": null,
+      "active_slice": {
+        "id": "V03.2",
+        "title": "Pinned independent corpus and first clean Basic guide path",
+        "status": "source-intake-verified-runtime-unexecuted",
+        "plan": "../superpowers/plans/2026-10-23-v03-independent-clean-path.md",
+        "source_registration": "../testing/independent-apps.json",
+        "source_intake_evidence": ".artifacts/v03/independent-corpus/2026-10-23T15-40-52-439Z/results.json"
+      },
       "completed_slices": [
         {
           "id": "V03.1-installed-guide",
@@ -4786,7 +4793,7 @@
       "current_checkpoint": {
         "record": "114-v03-installed-guide-preparation.md",
         "status": "guide-prepared-execution-unverified",
-        "next_bounded_step": "V03.2 pin independent applications including non-React and structurally different reserve before tailoring, then first clean guide-operated path"
+        "next_bounded_step": "Establish exact project tooling/dependencies in isolated working copies, then preregister first app-specific clean Basic cases; no execution credit from intake"
       }
     },
     {
@@ -6977,7 +6984,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.1 preparation accepted ONE docsreview0Critical/0Important/1Minor retention clarification addressed. Guide/links/35labels+2dynamic/exact65+UI2+326 inputs/originalseparateVSIX/plugin checked. No new guide-operated clean UI/combined kit/independent corpus/macOS/model/native acceptance. V03/A02/L02/V02 open20/29. NextV03.2 pin new independent apps/nonReact/reserve before tailoring and execute actual admitted path; no human blocker/publication.",
+    "current_activity_note": "V03.2 plan03a3f48 pins Reactcommerce653ce109/MIT and VueITToolsd505845f/GPL3 plus metadata-only Excalidrawreserveb7de45e8 before execution/tailoring. Private source intakes65+498files/hash/licenses checked; no dependency install/app run/coverage credit yet. V03.1 guide accepted; fullV03/A02/L02/V02 open20/29. Next exacttooling+firstregisteredcleanBasicpath; no human blocker or publication.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "fd160d0 guide; b50b26e experimental companion; fa95157 product65 unchanged",
     "current_record_date": "2026-10-23",
