@@ -88,3 +88,13 @@ project, as the original dev script resolves it. Vite4.4.9 CLI/core bytes and
 esbuild version match, Rollup/PostCSS metadata differ. Pin original CLI/hash and
 realpath-resolved dependency metadata; do not reinstall or replace dependencies.
 No causal finding from version differences alone; original matrix not requalified.
+
+Original CLI control reproduces the failure. Next one-variable diagnostic overlay
+uses Vite4 public entries ['**/*.html','**/*.vue','!**/__tests__/**','!**/coverage/**']
+and refuses any explicit original optimizeDeps.entries/build.rollupOptions.input.
+Installed4.4.9 source confirms explicit entries overwrite default HTML inference
+and preserves its node_modules/build.outDir exclusions; extra negative patterns
+retain the original default test/coverage exclusions. This is hypothesis-only
+scanner-frontier intervention in private config, not a product or app-file change,
+approved compatibility default or original-matrix qualification. Keep the exact
+source/plugin/CLI/browser/cold/timeouts, no manual reload or hidden warmup.

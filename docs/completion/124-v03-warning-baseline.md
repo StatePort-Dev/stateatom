@@ -111,3 +111,20 @@ Same source/installed plugin/config/cache/browser/timeouts and tracing; no packa
 or dependency replacement. This tests launch fidelity, not an approved fix or a
 claim that Rollup/PostCSS caused504. It remains separate from the original ABBA
 question and all old FAILs. No manual reload, warmup, timer increase or suppression.
+
+Original-project CLI control020bcab also fails on the same two missing optimized
+outputs, with57 stable inputs/closed children/unchanged source:
+`.artifacts/v03/warning-baseline/2026-10-23T22-56-19-425Z/results.json`.
+Changing CLI context did not clear this failure; no transitive-version cause is
+inferred. The more faithful original CLI is retained for the next diagnostic.
+
+One new hypothesis-only cold-On control changes only the public Vite4
+optimizeDeps.entries scanner frontier to HTML+Vue, retaining default test/coverage
+exclusions. Original explicit entries or Rollup input would refuse this control;
+normal node_modules/build output exclusions still belong to Vite. Current original
+config has neither explicit entry policy. Private overlay only, original source/
+dependency files and installed plugin unchanged. No reload/warmup/timeout changes.
+This may test whether template-autoimported SFC static imports were absent from
+the initial scan. It is NOT an approved default/plugin fix or a replacement for
+the original ABBA question. Any product policy needs its own scoped decision and
+verification; all failed original cases remain unaccepted.
