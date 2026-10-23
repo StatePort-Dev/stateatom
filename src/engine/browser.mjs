@@ -1,3 +1,4 @@
+import {createNativeDOMQueue} from '../../browser-extension/picker.mjs';
 export function matchTarget(observation){
  const trace=observation.trace;if(!trace?.target)return observation;
  const v=trace.target.value,computed=observation.property==='disabled'?(v?.kind==='undefined'?false:Boolean(v)):['string','number'].includes(typeof v)?String(v).trim():null;
@@ -16,10 +17,19 @@ export async function handleDeepOverlay(id,p,s,send){if(!s.deepOverrides)return 
  const r=await send(id,'Fetch.getResponseBody',{requestId:p.requestId});const raw=r.base64Encoded?atob(r.body):r.body;if(raw.length>128000)throw Error('Overlay body budget');const json=JSON.parse(raw);for(const patch of rule.patches){const keys=patch.path.split('.');if(keys.some(k=>['__proto__','prototype','constructor'].includes(k)))throw Error('Unsafe patch');let obj=json;for(const k of keys.slice(0,-1)){if(!obj||!Object.hasOwn(obj,k))throw Error('Patch missing');obj=obj[k];}if(!obj||!Object.hasOwn(obj,keys.at(-1)))throw Error('Patch leaf missing');obj[keys.at(-1)]=patch.value;}
  const text=JSON.stringify(json);rule.consumed++;rule.actual=json;rule.networkId=p.networkId;rule.requestOrdinal=ordinal;await send(id,'Fetch.fulfillRequest',{requestId:p.requestId,responseCode:p.responseStatusCode,responseHeaders:p.responseHeaders.filter(h=>!['content-length','content-encoding','etag','transfer-encoding'].includes(h.name.toLowerCase())),body:btoa(String.fromCharCode(...new TextEncoder().encode(text)))});return true;
 }
-export function createBrowserEngine(chrome){
+export function createBrowserEngine(chrome,{readDOM=createNativeDOMQueue()}={}){
 async function observeDeep(id,selection,property='text',{includeTrace=true,beforeMainScript=async()=>{}}={}){
  if(!selection?.selector)return {property,status:'Unknown/Unsupported',reason:'Selection missing',trace:null};
- const operation={target:{tabId:id},world:'MAIN',func:(selector,property,includeTrace)=>{const e=selector.split(' >>> ').reduce((root,part,i)=>i?root?.shadowRoot?.querySelector(part):document.querySelector(part),null);if(!e)return {property,status:'Unknown/Unsupported',reason:'Element missing',trace:null};const marker=e.getAttribute('data-stateatom');let value;if(property==='disabled'){const get=Object.getOwnPropertyDescriptor(HTMLButtonElement.prototype,'disabled')?.get;if(e instanceof HTMLButtonElement)value=get.call(e);else return {property,status:'Unknown/Unsupported',reason:'disabled: HTMLButtonElement only',trace:null};}else value=Object.getOwnPropertyDescriptor(Node.prototype,'textContent').get.call(e)?.trim();let page=null,trace=null;if(includeTrace&&marker)try{const runtime=Object.getOwnPropertyDescriptor(window,'__STATEATOM__')?.value,version=runtime&&Object.getOwnPropertyDescriptor(runtime,'version')?.value,snapshot=runtime&&Object.getOwnPropertyDescriptor(runtime,'snapshot')?.value;page=runtime&&Object.getOwnPropertyDescriptor(runtime,'page')?.value||null;if(version===1&&typeof snapshot==='function'){trace=snapshot.call(runtime,marker,property,e);const first=Object.getOwnPropertyDescriptor(runtime,'firstReadObservations')?.value;if(trace&&typeof first==='function')trace.firstReadObservations=first.call(runtime);}}catch{trace={status:'Unknown/Unsupported',reason:'Optional instrumentation unavailable'};}return {property,value,instance:includeTrace?marker:null,frame:0,page,trace};},args:[selection.selector,property,includeTrace]};await beforeMainScript(operation,'deep-helper');const r=await chrome.scripting.executeScript(operation);return r[0]?.result?matchTarget(r[0].result):{property,status:'Unknown/Unsupported',reason:'Observation unavailable',trace:null};
+ const native=property==='disabled'?await readDOM(id,()=>identifySelection(id,selection.selector,property)):null;
+ if(property==='disabled'&&!native)return {property,status:'Unknown/Unsupported',reason:'Native disabled observation unavailable: HTML button, input and textarea only',trace:null};
+ const operation={target:{tabId:id},world:'MAIN',func:(selector,property,includeTrace,nativeDisabled)=>{const e=selector.split(' >>> ').reduce((root,part,i)=>i?root?.shadowRoot?.querySelector(part):document.querySelector(part),null);if(!e)return {property,status:'Unknown/Unsupported',reason:'Element missing',trace:null};const marker=e.getAttribute('data-stateatom');let value;if(property==='disabled'){if(typeof nativeDisabled!=='boolean')return {property,status:'Unknown/Unsupported',reason:'Native disabled observation unavailable',trace:null};value=nativeDisabled;}else value=Object.getOwnPropertyDescriptor(Node.prototype,'textContent').get.call(e)?.trim();let page=null,trace=null;if(includeTrace&&marker)try{const runtime=Object.getOwnPropertyDescriptor(window,'__STATEATOM__')?.value,version=runtime&&Object.getOwnPropertyDescriptor(runtime,'version')?.value,snapshot=runtime&&Object.getOwnPropertyDescriptor(runtime,'snapshot')?.value;page=runtime&&Object.getOwnPropertyDescriptor(runtime,'page')?.value||null;if(version===1&&typeof snapshot==='function'){trace=snapshot.call(runtime,marker,property,e);const first=Object.getOwnPropertyDescriptor(runtime,'firstReadObservations')?.value;if(trace&&typeof first==='function')trace.firstReadObservations=first.call(runtime);}}catch{trace={status:'Unknown/Unsupported',reason:'Optional instrumentation unavailable'};}return {property,value,instance:includeTrace?marker:null,frame:0,page,trace};},args:property==='disabled'?[selection.selector,property,includeTrace,native.value]:[selection.selector,property,includeTrace]};
+ await beforeMainScript(operation,'deep-helper');const r=await chrome.scripting.executeScript(operation),result=r[0]?.result;
+ if(property==='disabled'){
+  const after=await readDOM(id,()=>identifySelection(id,selection.selector,property));
+  if(!isSameSelection(native,after))return {property,status:'Stale',reason:'Native disabled target or value changed during observation',trace:{status:'Stale',reason:'Native disabled target or value changed during observation',target:null}};
+  if(!result||result.value!==native.value)return {property,status:'Unknown/Unsupported',reason:'Native disabled helper result unavailable or mismatched',trace:null};
+ }
+ return result?matchTarget(result):{property,status:'Unknown/Unsupported',reason:'Observation unavailable',trace:null};
 }
 // Browser-owned DOM identities and native node data. No inspection compilation:
 // even an isolated executeScript would invalidate a finite code-history proof.
@@ -31,10 +41,10 @@ async function identifySelection(id,selector,property){
   await send('DOM.enable',{includeWhitespace:'all'});
   const {root}=await send('DOM.getDocument',{depth:0});if(!validId(root?.nodeId)||!validId(root.backendNodeId))return null;
   const parts=selector.split(' >>> ');
-  async function selected(){
+  async function selected(disabledAttribute=false){
    let scope=root.nodeId,nodeId;
    for(let i=0;i<parts.length;i++){
-    ({nodeId}=await send('DOM.querySelector',{nodeId:scope,selector:parts[i]}));if(!validId(nodeId))return null;
+    ({nodeId}=await send('DOM.querySelector',{nodeId:scope,selector:disabledAttribute&&i===parts.length-1?':is('+parts[i]+')[disabled]':parts[i]}));if(!validId(nodeId))return null;
     if(i<parts.length-1){
      const {node}=await send('DOM.describeNode',{nodeId,depth:0}),open=(node?.shadowRoots||[]).filter(r=>r.shadowRootType==='open');
      if(open.length!==1||!validId(open[0].backendNodeId))return null;
@@ -47,10 +57,10 @@ async function identifySelection(id,selector,property){
   const {node}=await send('DOM.describeNode',{nodeId,depth:property==='text'?32:0});if(node?.nodeType!==1||!validId(node.backendNodeId))return null;
   let value;
   if(property==='disabled'){
-   // HTML buttons have an uppercase native nodeName. Other namespaces and XML
-   // documents are not silently treated as HTMLButtonElement instances.
-   if(node.nodeName!=='BUTTON'||node.localName!=='button'||!Array.isArray(node.attributes)||node.attributes.length%2)return null;
-   value=node.attributes.some((v,i)=>i%2===0&&v==='disabled');
+   // Exact native HTML kinds only. CSS attribute presence uses the null
+   // namespace, unlike a flattened attributes array or effective :disabled.
+   if(!['button','input','textarea'].includes(node.localName)||node.nodeName!==node.localName.toUpperCase()||!Array.isArray(node.attributes)||node.attributes.length%2||node.attributes.some(v=>typeof v!=='string'))return null;
+   value=await selected(true)===nodeId;
   }else{
    let count=0,chars=0;const chunks=[];
    function text(n,depth){

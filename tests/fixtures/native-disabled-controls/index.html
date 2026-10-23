@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><title>Native disabled controls</title>
+<style>body{font:16px system-ui;margin:24px;max-width:900px}main{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}label{display:grid;gap:8px}input,textarea,button,select,custom-control{box-sizing:border-box;min-height:42px;width:100%;padding:8px;font:inherit}fieldset{margin:0}svg{width:180px;height:42px}custom-control{display:block;border:1px solid #888}output{display:block;white-space:pre-wrap;font:13px monospace}</style>
+<h1>Native reflected disabled</h1><p>Synthetic controls; effective fieldset blocking is separate from the own attribute.</p>
+<main>
+<label>Button false<button id="button-off" type="button">Button off</button></label>
+<label>Input false<input id="input-off" value="Synthetic input"></label>
+<label>Textarea false<textarea id="textarea-off">Synthetic textarea</textarea></label>
+<label>Button true<button id="button-on" type="button" disabled="false">Button on</button></label>
+<label>Input true<input id="input-on" type="checkbox" disabled></label>
+<label>Textarea true<textarea id="textarea-on" disabled></textarea></label>
+<label>Repeated false<input id="input-repeat" value="Same Boolean"></label>
+<fieldset disabled><legend>Fieldset blocks use</legend><input id="fieldset-child" value="Own disabled remains false"></fieldset>
+<label>Namespaced attribute only<input id="namespace-input" value="Not a reflected disabled attribute"></label>
+<label>Namespaced attribute only<textarea id="namespace-textarea"></textarea></label>
+<label>Namespaced attribute only<button id="namespace-button" type="button">Namespace lookalike</button></label>
+<label>Unsupported select<select id="select-target"><option>Synthetic option</option></select></label>
+<custom-control id="custom-target" disabled>Unsupported custom element</custom-control>
+<svg xmlns="http://www.w3.org/2000/svg"><rect id="svg-target" width="180" height="42" fill="#cbd5e1" disabled=""/></svg>
+</main><h2>Fixture counters</h2><output id="proof"></output>
+<script>
+(() => {
+ const original={button:HTMLButtonElement,input:HTMLInputElement,textarea:HTMLTextAreaElement};
+ const counts={prototypeGetter:0,ownGetter:0,constructor:0,actions:{}};
+ for(const id of ['namespace-input','namespace-textarea','namespace-button'])document.getElementById(id).setAttributeNS('urn:stateatom:synthetic','disabled','');
+ const baseline={};
+ for(const element of document.querySelectorAll('button,input,textarea')){
+  const getter=Object.getOwnPropertyDescriptor(original[element.localName].prototype,'disabled').get;
+  baseline[element.id]={nativeDisabled:getter.call(element),effectiveDisabled:element.matches(':disabled'),nullNamespaceAttribute:element.hasAttributeNS(null,'disabled')};
+ }
+ document.body.dataset.baseline=JSON.stringify(baseline);
+ const publish=()=>{const raw=JSON.stringify(counts);document.body.dataset.proof=raw;document.getElementById('proof').textContent=raw;};
+ const controls=new Set(document.querySelectorAll('button,input,textarea,select,custom-control,#svg-target'));
+ for(const type of ['pointerdown','pointerup','mousedown','mouseup','click','input','change','focus','submit'])window.addEventListener(type,event=>{if(controls.has(event.target)){counts.actions[type]=(counts.actions[type]||0)+1;publish();}},true);
+ for(const [kind,Constructor]of Object.entries(original)){
+  Object.defineProperty(Constructor.prototype,'disabled',{configurable:true,get(){counts.prototypeGetter++;publish();throw Error('Fixture application disabled getter invoked');}});
+  Object.defineProperty(window,{button:'HTMLButtonElement',input:'HTMLInputElement',textarea:'HTMLTextAreaElement'}[kind],{configurable:true,get(){counts.constructor++;publish();return Constructor;}});
+ }
+ Object.defineProperty(document.getElementById('textarea-off'),'disabled',{configurable:true,get(){counts.ownGetter++;publish();throw Error('Fixture own disabled getter invoked');}});
+ publish();document.body.dataset.ready='true';
+})();
+</script></html>

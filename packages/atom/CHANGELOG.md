@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.69
+
+- Read native reflected disabled for exact HTML button/input/textarea kinds using
+  browser-owned null-namespace attribute presence. Do not invoke application
+  disabled getters or constructor lookups; namespaced lookalikes are separate.
+- Share picker DOM serialization with deep-value before/after identity checks.
+  Changed node/document/value yields Stale without borrowing a known value or
+  old Observed trace. Text keeps its original three serialized arguments.
+- Unsupported/missing native disabled identity reports its bounded catalogue
+  before claiming a picker target changed. This observes the own reflected
+  attribute, not fieldset/inert/ARIA/CSS or effective availability.
+- Preserve68 and its failed original textarea gate. New exact package and native
+  catalogue/source qualification remain due; no full Vue/C09 or release claim.
+
 ## 0.1.0-candidate.20261021.68
 
 - Carry source-map cancellation/generation guards through queued acquisition;

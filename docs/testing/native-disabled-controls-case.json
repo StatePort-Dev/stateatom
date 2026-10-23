@@ -1,0 +1,41 @@
+{
+  "schema": "stateatom.v03-native-disabled-controls-case/1",
+  "expectedAtomVersion": "0.1.0-candidate.20261021.69",
+  "expectedUIVersion": "0.2.0-candidate.20261018.2",
+  "expectedUISha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+  "fixture": "tests/fixtures/native-disabled-controls/index.html",
+  "property": "disabled",
+  "mode": "read-only",
+  "IDE": false,
+  "helper": false,
+  "viewport": {"width": 1280, "height": 900},
+  "positive": [
+    {"id": "button-off", "tag": "button", "value": false},
+    {"id": "input-off", "tag": "input", "value": false},
+    {"id": "textarea-off", "tag": "textarea", "value": false},
+    {"id": "button-on", "tag": "button", "value": true},
+    {"id": "input-on", "tag": "input", "value": true},
+    {"id": "textarea-on", "tag": "textarea", "value": true},
+    {"id": "input-repeat", "tag": "input", "value": false},
+    {"id": "fieldset-child", "tag": "input", "value": false},
+    {"id": "namespace-input", "tag": "input", "value": false},
+    {"id": "namespace-textarea", "tag": "textarea", "value": false},
+    {"id": "namespace-button", "tag": "button", "value": false}
+  ],
+  "unsupported": ["select-target", "custom-target", "svg-target"],
+  "applicationGetterAndConstructorCallsExpected": 0,
+  "applicationActionsExpected": {},
+  "criteria": [
+    "Actual native picker, exact backend node/document/value, readonly Basic and no source/runtime producer claim",
+    "Native reflected own disabled only; literal false attribute still true; fieldset effective disabled remains separate",
+    "Namespaced lookalike attributes do not count as the null-namespace reflected property",
+    "All three prototype getters, one own getter and global constructor bindings poisoned before inspection; all invocation counts remain zero",
+    "Repeated equal-valued fields remain distinct nodes; unsupported targets receive no fresh known selection",
+    "No application pointer/click/input/change/focus/submit action from selection; ordinary text fallback remains available",
+    "Exact archive/installed host/product/driver/fixture inputs stable; screenshots candidates, not human acceptance"
+  ],
+  "limits": [
+    "Synthetic fixture and agent-operated UI only; source-connected independent Vue question is a separate gate",
+    "No writes, Live/Draft, effective-interactivity oracle, SDK, external service, production permission or whole C09/V03 claim"
+  ]
+}

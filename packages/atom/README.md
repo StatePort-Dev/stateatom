@@ -36,6 +36,12 @@ register global listeners on import. `contract.json` fixes API/wire version 1,
 UI contract 2.1.0 and the exact peer package version. Styles are scoped, not
 Shadow DOM protection from hostile host CSS.
 
+Native `disabled` observation is limited to HTML button, input and textarea.
+It reads the native reflected attribute without calling application accessors;
+`false` does not prove effective availability under fieldset/inert/ARIA/CSS or
+application logic. Other kinds/namespaces or unavailable native identity remain
+unsupported. Native observation does not identify a source or data producer.
+
 Background source acquisition requires the trusted optional host method
 `AtomPlatform.readScriptSource(tabId, scriptId, assertCurrent)`. The supplied
 Chrome platform and both brokers run its synchronous guard immediately before

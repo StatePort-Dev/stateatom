@@ -120,6 +120,13 @@ checks PASS/378stable thenFAIL at unsupported textarea disabled. Both review
 Important fixed in one tested pass/full2533, no re-review. NextV03.7 defines/tests
 that separate native form-control property adapter before the unchanged source/
 scalar-read/IDE question can pass. Whole20/29 and original evidence stay unchanged.
+[V03.7](completion/120-v03-native-disabled-controls.md) now implements source-side
+native reflected disabled for button/input/textarea with zero app getter/constructor
+access, null-namespace attribute query and shared picker DOM fences. RED20→20PASS,
+affected1241/full2550 PASS after explicit fake DOM/marker adapter updates. New69
+package/types/admission/native catalogue and unchanged original Vue question/ONE
+review are due. No new capability acceptance; effective availability and finite
+first-read69 remain separate/unqualified. Whole20/29 unchanged.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

@@ -5,12 +5,12 @@ import {createBrowserEngine,isSameSelection} from '../../src/engine/browser.mjs'
 
 const text=value=>({nodeId:3,backendNodeId:103,nodeType:3,nodeName:'#text',localName:'',nodeValue:value});
 const button=()=>({nodeId:2,backendNodeId:102,nodeType:1,nodeName:'BUTTON',localName:'button',nodeValue:'',attributes:[],childNodeCount:2,children:[text('  Confirm '),{nodeId:4,backendNodeId:104,nodeType:8,nodeName:'#comment',localName:'',nodeValue:'not text content'}]});
-function nativeDOM({node=button(),afterQuery,documentId=101,whitespace=false}={}){
+function nativeDOM({node=button(),afterQuery,documentId=101,whitespace=false,ownDisabled}={}){
  let queries=0,allWhitespace=false;const methods=[];
  const chrome={scripting:{executeScript(){throw Error('DOM identity must not compile or execute a page script');}},debugger:{async sendCommand(target,method,params){assert.equal(target.tabId,9);methods.push(method);
   if(method==='DOM.enable'){allWhitespace=params.includeWhitespace==='all';return {}; }
   if(method==='DOM.getDocument')return {root:{nodeId:1,backendNodeId:documentId,nodeType:9,nodeName:'#document',localName:'',nodeValue:''}};
-  if(method==='DOM.querySelector'){queries++;return {nodeId:afterQuery?.(queries)??node.nodeId};}
+  if(method==='DOM.querySelector'){queries++;return {nodeId:afterQuery?.(queries)??(params.selector.endsWith('[disabled]')?(ownDisabled??node.attributes?.includes('disabled'))?node.nodeId:0:node.nodeId)};}
   if(method==='DOM.describeNode')return {node:whitespace&&!allWhitespace?{...node,children:node.children.filter(n=>n.nodeValue.trim()),childNodeCount:2}:node};
   throw Error('Unexpected identity command '+method);
  }}};
@@ -42,4 +42,19 @@ test('missing, truncated and over-budget native text never become an empty known
 test('native text acquisition includes whitespace-only nodes between children',async()=>{
  const node={...button(),childNodeCount:3,children:[text('Alpha'),text(' '),text('Beta')]};
  assert.equal((await nativeDOM({node,whitespace:true}).identifySelection(9,'#confirm','text')).value,'Alpha Beta');
+});
+
+for(const kind of ['button','input','textarea'])test(kind+' native disabled reflects attribute presence without a page getter',async()=>{
+ const node={...button(),nodeName:kind.toUpperCase(),localName:kind},dom=nativeDOM({node});
+ assert.equal((await dom.identifySelection(9,'#control','disabled')).value,false);
+ for(const value of ['', 'false', 'disabled']){node.attributes=['disabled',value];assert.equal((await dom.identifySelection(9,'#control','disabled')).value,true);}
+ assert(dom.methods.every(m=>m.startsWith('DOM.')));
+});
+for(const kind of ['button','input','textarea'])test(kind+' namespaced disabled lookalike is not the native reflected property',async()=>{
+ const node={...button(),nodeName:kind.toUpperCase(),localName:kind,attributes:['disabled','']};
+ assert.equal((await nativeDOM({node,ownDisabled:false}).identifySelection(9,'#control','disabled')).value,false);
+});
+test('unknown native controls, namespace lookalikes and malformed attributes stay unavailable',async()=>{
+ for(const [nodeName,localName]of [['SELECT','select'],['FIELDSET','fieldset'],['my-input','my-input'],['textarea','textarea'],['INPUT','INPUT'],['TEXTAREA','TEXTAREA']])assert.equal(await nativeDOM({node:{...button(),nodeName,localName}}).identifySelection(9,'#control','disabled'),null);
+ for(const attributes of [undefined,['disabled'],['disabled',false]])assert.equal(await nativeDOM({node:{...button(),attributes}}).identifySelection(9,'#control','disabled'),null);
 });
