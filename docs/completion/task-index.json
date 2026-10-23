@@ -2146,7 +2146,7 @@
           "type_consumers": 2,
           "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
           "standalone_read_inject_native_checks": 3,
-          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
           "runtime_race_checks": 14,
           "isolated_bug_mutations_rejected": 6,
           "native_checks": 29,
@@ -3802,7 +3802,7 @@
       "implementation_plan": "../superpowers/plans/2026-10-21-l02-real-local-model.md",
       "remaining_acceptance": [
         "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
-        "Final candidate actual factual/concision/usefulness comparison preserving historical20–30 and>=25/5incomplete/5untrusted criteria",
+        "Final candidate actual factual/concision/usefulness comparison preserving historical20\u201330 and>=25/5incomplete/5untrusted criteria",
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
@@ -4758,16 +4758,16 @@
       "active_slice": {
         "id": "V03.6",
         "title": "Explicit installed Vue profile and independent source-connected route",
-        "status": "in-progress-candidate4-export-startup-failure-correction-source-pass-new5-due",
+        "status": "in-progress-candidate5-attach-budget-source-backpressure-new67-due",
         "record": "119-v03-installed-vue-profile.md",
         "plan": "../superpowers/plans/2026-10-23-v03-installed-vue-profile.md",
         "design": "../superpowers/specs/2026-10-23-v03-installed-vue-profile-design.md",
         "focused_source_checks": 270,
-        "full_source_checks": 2521,
+        "full_source_checks": 2524,
         "installed_admission_checks": 2,
         "metadata_probe_groups": 6,
-        "consumer_receipt": ".artifacts/v03/installed-vue-consumer/2026-10-23T18-08-27-909Z/result.json",
-        "development_handoff": ".artifacts/development/2026-10-23T18-07-11-697Z/handoff.json",
+        "consumer_receipt": ".artifacts/v03/installed-vue-consumer/2026-10-23T19-24-04-566Z/result.json",
+        "development_handoff": ".artifacts/development/2026-10-23T19-23-45-661Z/handoff.json",
         "failed_candidate2_receipt": ".artifacts/v03/installed-vue-consumer/2026-10-23T17-58-02-443Z/result.json",
         "native_application_executed": true,
         "review_pending_after_native": true,
@@ -4779,7 +4779,12 @@
         "owned_native_controls": 4,
         "owned_native_evidence": ".runtime/first-profile-runs/2026-10-23T19-12-31-744Z/results.json",
         "failed_candidate4_native": ".artifacts/v03/independent-vue-source/2026-10-23T18-56-18-484Z/results.json",
-        "new_candidate5_pending": true
+        "new_candidate5_pending": false,
+        "failed_candidate5_startup": ".artifacts/v03/independent-vue-source/2026-10-23T19-25-02-344Z/results.json",
+        "failed_candidate5_attach": ".artifacts/v03/independent-vue-source/2026-10-23T19-28-14-996Z/results.json",
+        "source_burst_regressions": 3,
+        "atom_focused_checks": 973,
+        "new_atom67_pending": true
       },
       "completed_slices": [
         {
@@ -4902,8 +4907,8 @@
       ],
       "current_checkpoint": {
         "record": "119-v03-installed-vue-profile.md",
-        "status": "in-progress-candidate4-export-startup-failure-correction-source-pass-new5-due",
-        "next_bounded_step": "V03.6 rebuild helper/package5 after ESM export-linkage correction, strict installed admission then same-criteria independent Vue source/IDE native retry; preserve3/4FAIL and all Unknown boundaries"
+        "status": "in-progress-candidate5-attach-budget-source-backpressure-new67-due",
+        "next_bounded_step": "V03.6 verify/commit/package source-read backpressure Atom67, qualify exact67/UI2 then retry unchanged source/IDE native question with exact plugin5/helper5; preserve all failed receipts and Unknown boundaries"
       }
     },
     {
@@ -4992,7 +4997,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK — separate StatePort project",
+      "title": "Production SDK \u2014 separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",
@@ -5759,7 +5764,7 @@
         "type_consumers": 2,
         "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
         "standalone_read_inject_native_checks": 3,
-        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
         "runtime_race_checks": 14,
         "isolated_bug_mutations_rejected": 6,
         "native_checks": 29,
@@ -7151,11 +7156,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.6 actual3startupFAIL DOMvoidparser fixed; actual4startupFAIL ESM export-specifier rewrite in originalrandom.ts. Both2priorchecks/377stable, noIDE/sourcepositivegate. Minimalexport metadata exclusion now4regression/270focused/full2521PASS; exact recipe+self pin transition only, affectedownednative4PASS/stable. Newhelper/packet5/native/ONEwhole review due. Original497+knowngenerated/498immutable files unchanged, Atom66inputs326 unchanged. Whole20/29, fullV03/A02/L02/V02 open.",
+    "current_activity_note": "V03.6 exact5 strict admission PASS, helper bytes reproduce222 inputs. First native5 startup timeout with empty DOM/no overlay remains unknown; diagnostic retry renders original baseline then Attach FAIL Guardian pending64. Both377stable/497+known generated/498immutable, noIDE/sourcepositive. Source burst104 reproduced;4active/256queued source-only fence now3regression/973Atom/25worker-burstPASS. Correctedfull2524PASS; new67pair/native/ONEwhole review due; no guardian/journal/evidence budget increase. Whole20/29, fullV03/A02/L02/V02 open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "1037a27 clean native4 failure; pending single ExportSpecifier exclusion/exact recipe-self pin transition/tests and version5 metadata; Atom66 inputs unchanged",
+    "current_source_revision": "cf91ab8 diagnostic driver; pending bounded Atom67 source-read queue/tests and docs",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V03.6 rebuild helper/package5 after ESM export-linkage correction, strict installed admission then same-criteria independent Vue source/IDE native retry; preserve3/4FAIL and all Unknown boundaries"
+    "next_bounded_step": "V03.6 verify/commit/package source-read backpressure Atom67, qualify exact67/UI2 then retry unchanged source/IDE native question with exact plugin5/helper5; preserve all failed receipts and Unknown boundaries"
   },
   "next_task": "V03"
 }

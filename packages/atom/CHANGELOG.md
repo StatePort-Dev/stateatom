@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.67
+
+- Bound background Debugger.getScriptSource acquisition to four active reads and
+  256 queued jobs across the runtime; keep the guardian RPC cap64 and ordinary
+  control/Fetch/cleanup commands unchanged. Overflow is explicitly unavailable.
+- Check exact tab/run/debugger-session ownership before and after each queued
+  native read. Navigation, detach and shutdown cannot publish old source bodies
+  or send queued old reads into a replacement session. No cached source reuse.
+- Retain candidate66 and the original Vue Attach failure. This version requires
+  new package/native qualification; source tests alone do not establish it.
+  No visual, permission, evidence or public compatibility contract change.
+
 ## 0.1.0-candidate.20261021.66
 
 - Preserve full detailed handoff projections across reviewed/source/input/action/

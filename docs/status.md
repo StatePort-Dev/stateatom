@@ -95,6 +95,13 @@ Candidate4 then actually fails startup at original random.ts ESM export linkage,
 preserves live bindings/aliases/default/getter counts:4regression/270focused/
 full2521 PASS and4 affected owned native controls PASS. New5/helper and the same
 independent source/IDE question remain due; original app source stays unchanged.
+Candidate5 strict admission and exact helper byte reproduction pass. First native5
+startup timeout stays unexplained; diagnostic retry renders original baseline then
+Attach FAIL at guardian64 pending RPCs. Both377stable/noIDE. Necessary source-read
+backpressure reproduces104 concurrent reads, now bounds4 active/256 queued with
+exact-session fences and explicit overflow. Source3 regression/973Atom/25worker
+checks and corrected full2524 pass; exact new Atom67/UI2 qualification/native/ONE
+whole review are pending. No budget/Unknown waiver or feature completion.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

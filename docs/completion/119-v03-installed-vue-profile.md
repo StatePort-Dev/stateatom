@@ -5,7 +5,9 @@ passes, but the first actual candidate3 application startup **failed** before th
 IDE/source-positive gate. Its exact failure is retained; the bounded DOM-parser
 correction passed61 focused/full2517 source checks. Candidate4 then exposed a
 separate ordinary ESM export-linkage defect before IDE. That minimal correction
-now passes270 focused/full2521; new5 and a corrected native run remain due. No full V03/C09 or new Vue runtime acceptance.
+passes270 focused/full2521. Installed5 then renders the original page in its
+diagnostic retry but fails Attach at guardian64 pending RPCs. Necessary source-read
+backpressure correction and new Atom67 qualification are in progress. No full V03/C09 or new Vue runtime acceptance.
 20/29 whole tasks unchanged.
 
 [Executor design](../superpowers/specs/2026-10-23-v03-installed-vue-profile-design.md),
@@ -21,7 +23,9 @@ Query, writes, fetch initiators and Action Trace flags. Unknown profiles fail.
 Default installed profile retains Node24/Vite7.3.7 and existing React/classic
 conflict/controlled-first-read refusals; npm's expanded peer range alone must not
 admit the cross product. Disabled mode remains transparent; plugin remains serve-only.
-Historical transformer/observer code and all326 qualified Atom66 inputs unchanged.
+At initial profile admission, transformer/observer and326 Atom66 inputs were
+unchanged. The later compiler corrections and new Atom67 prerequisite below have
+separate identities; original Atom66 evidence remains historical.
 This is a new bounded engineering profile, not a previously user-approved version
 matrix or new Live/production/handoff product parameters.
 
@@ -200,3 +204,43 @@ existing recipe reproduced in memory from222 current inputs; two existing CJS
 warnings remain recorded. New case5 changes only the five packet-identity fields
 from case4. Neither admission nor source reproduction establishes app/IDE runtime
 acceptance. Native execution and ONE whole-increment review remain due.
+
+## Candidate5 actual native failures and bounded source-read prerequisite
+
+Case5 committed394a2b1 ran exact5/66/UI2 with377 stable inputs.
+`.artifacts/v03/independent-vue-source/2026-10-23T19-25-02-344Z/results.json` is
+FAIL:120s app-ready timeout, empty complete DOM, no Vite overlay/error. Its cause
+is not established. No IDE started. Original497+known generated/498 immutable
+remain exact. Source/compiler fixes alone were insufficient native acceptance.
+
+Drivercf91ab8 adds only browser stderr logging, without an app CDP sidecar, app
+listeners or acceptance/order/budget changes. Diagnostic retry
+`.artifacts/v03/independent-vue-source/2026-10-23T19-28-14-996Z/results.json` is
+also FAIL with377 stable inputs, but original page actually renders baseline
+0/0/0/0Bytes and enabled textarea. It fails next at native Attach: Guardian request
+budget reached. IDE/source-positive gate remains unmet. Browser startup stderr
+retains original locale/Vue warnings; app-from-attach console collector was not
+reached. No clean startup-wide console claim is made.
+
+Runtime model reproduces104 simultaneous getScriptSource calls for96 scriptParsed
+events. Journal bounds8 of its own pending reads, but fetch-binding/sample consumers
+also acquire code. A minimal source-only queue limits4 active/256 waiting jobs
+across the runtime. It preserves guardian64, journal8/256, source/byte/evidence
+budgets and control/Fetch/cleanup paths, rechecking exact tab/run/debugger-session
+identity before and after each read. Overflow is explicitly unavailable; no cached
+body or authorization is reused. This necessary change creates Atom67 input
+identity and cannot inherit installed66 qualification.
+
+New3 regression was3FAIL (including peak104), now3PASS: finite drain under an
+active session, navigation refusing queued old reads, explicit overflow and
+unblocked control/detach. Initial green2/3 had an incorrect test drain assertion
+after shutdown; shutdown correctly invalidates work. Corrected test drains before
+shutdown, retaining the original failure. Atom973 PASS. Full source first
+2502PASS/22FAIL revealed the VM harness missing the new import; adapted harness
+then24PASS/1FAIL expected old8 concurrent native reads. It now checks4 native reads
+while preserving8 Pending+one Queued journal records, zero old-source acceptance
+and zero old queue pumping after eviction. Worker+burst25 PASS; corrected full source2524 PASS, zero failures/skips. All logs retained in `.artifacts/v03/source-burst/2026-10-23/`.
+
+Next: commit/package67 with unchanged UI2, qualify exact
+new pair and retry the unchanged original source/IDE question with plugin5/helper5.
+ONE whole-increment review remains due. No feature completion from documents/tests.

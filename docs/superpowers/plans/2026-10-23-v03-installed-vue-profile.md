@@ -92,3 +92,17 @@ old artifact immutability, actual installed rather than checkout plugin/helper,
 original app/lock/generator identity, exact selected occurrence and source/IDE range,
 Unknown preservation, trusted native input and reader authority, private secrets,
 honest unpassed gates. No full-project or previous matrix re-audit.
+
+## Actual prerequisite: finite script-source burst
+
+Candidate5 native startup first times out with no overlay; diagnostic retry
+actually renders original baseline, then Attach fails Guardian request budget64.
+These are retained FAIL, not a source-positive gate. Before native continuation,
+reproduce scriptParsed burst in the actual runtime and bound only source reads
+to4 active/256 queued across this runtime. Revalidate exact tab/run/debugger
+session before and after each native read, preserve explicit overflow/Unknown,
+and leave control/Fetch/cleanup commands outside this queue. Guardian64 and
+original journal/source/evidence budgets stay intact. Verify burst, stale queued
+reads, overflow and affected runtime/authority checks. This necessarily changes
+Atom input identity: qualify a new exact67/UI2 pair; never inherit66 acceptance.
+No original application edits, broad platform rewrite or production/Live changes.

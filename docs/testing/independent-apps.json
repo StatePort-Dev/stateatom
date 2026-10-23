@@ -188,6 +188,44 @@
       "IDE_started": false,
       "source_positive_gate_reached": false,
       "whole_V03_complete": false
+    },
+    {
+      "id": "V03.6-candidate5-startup-failure",
+      "application": "CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "execution_record": "../completion/119-v03-installed-vue-profile.md",
+      "evidence": ".artifacts/v03/independent-vue-source/2026-10-23T19-25-02-344Z/results.json",
+      "status": "FAIL_APP_READY_TIMEOUT_EMPTY_DOM_NO_OVERLAY_CAUSE_UNKNOWN",
+      "prior_checks_passed": 2,
+      "registered_inputs": 377,
+      "inputs_stable_during_run": true,
+      "immutable_original_files": 498,
+      "working_original_unchanged": 497,
+      "normal_generated_deltas": [
+        "components.d.ts"
+      ],
+      "IDE_started": false,
+      "source_positive_gate_reached": false,
+      "whole_V03_complete": false
+    },
+    {
+      "id": "V03.6-candidate5-attach-failure",
+      "application": "CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "execution_record": "../completion/119-v03-installed-vue-profile.md",
+      "evidence": ".artifacts/v03/independent-vue-source/2026-10-23T19-28-14-996Z/results.json",
+      "status": "FAIL_GUARDIAN_REQUEST_BUDGET_AT_ATTACH_AFTER_ORIGINAL_BASELINE_RENDER",
+      "prior_checks_passed": 2,
+      "registered_inputs": 377,
+      "inputs_stable_during_run": true,
+      "immutable_original_files": 498,
+      "working_original_unchanged": 497,
+      "normal_generated_deltas": [
+        "components.d.ts"
+      ],
+      "IDE_started": false,
+      "source_positive_gate_reached": false,
+      "whole_V03_complete": false
     }
   ]
 }
