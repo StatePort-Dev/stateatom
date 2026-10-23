@@ -244,3 +244,16 @@ and zero old queue pumping after eviction. Worker+burst25 PASS; corrected full s
 Next: commit/package67 with unchanged UI2, qualify exact
 new pair and retry the unchanged original source/IDE question with plugin5/helper5.
 ONE whole-increment review remains due. No feature completion from documents/tests.
+
+## New exact Atom67 prerequisite packet
+
+Source9809253 packaged67/UI2 at
+`.artifacts/atom/2026-10-23T19-38-04-291Z/atom-handoff.json`. Atom SHA77b28157,
+UI unchanged2bfc8229;327 current product/build inputs. Pack script conservatively
+labels sourceDirty true although tracked source was clean; it is not evidence of
+new runtime acceptance. NodeNext/Bundler2 and package admission9 PASS
+(`.artifacts/atom/compatibility/2026-10-23T19-38-39-238Z/result.json`).
+Helper5 remains exact: all222 source-proof inputs have zero drift since its
+reproduction, so no rebuild or inherited different-payload claim. Case67 changes
+only expectedAtomVersion from case5; plugin5/helper5/question/budgets/criteria
+remain identical. Native retry and ONE whole review remain due.
