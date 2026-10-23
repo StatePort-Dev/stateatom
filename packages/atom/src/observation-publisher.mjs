@@ -6,6 +6,9 @@ export function createObservationPublisher({persist,notify}){
  return function publish(){
   dirty=true;if(flight)return flight;
   let resolve,reject;const result=new Promise((a,b)=>{resolve=a;reject=b;});flight=result;
+  // Native event callers are fire-and-forget. Handle rejection once per new
+  // flight, while keeping the original rejected Promise available to awaiters.
+  void result.catch(()=>{});
   void (async()=>{
    try{
     while(dirty){

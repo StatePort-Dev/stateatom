@@ -97,3 +97,25 @@ test('two native owner publishers retain exact tab routing without delaying the 
  assert.deepEqual(notices,[2]);const saved=f.data['stateport.atom.v1.tabs'][2].productionObservation;assert.equal(saved.windowId,b.windowId);assert.equal(saved.stopReason,'context-changed');
  ack.resolve();for(let i=0;i<5;i++)await new Promise(setImmediate);assert.deepEqual(notices,[2,1]);assert.equal(f.data['stateport.atom.v1.tabs'][2].productionObservation.stopReason,'context-changed');
 });
+
+test('gap-only native traffic retains at most one rejection subscription on each publication flight',async t=>{
+ const ack=deferred();t.after(()=>ack.resolve());const f=await fixture(t);await f.request({op:'observation-start'});const originalSet=f.platform.chrome.storage.session.set,originalCatch=Promise.prototype.catch,counts=new WeakMap();let maxSubscriptions=0,writes=0;
+ f.platform.chrome.storage.session.set=async value=>{writes++;await ack.promise;return originalSet(value);};
+ Promise.prototype.catch=function(...args){const n=(counts.get(this)||0)+1;counts.set(this,n);maxSubscriptions=Math.max(maxSubscriptions,n);return Reflect.apply(originalCatch,this,args);};
+ try{
+  for(let i=0;i<1000;i++)f.events.emit({type:'debugger',source:{tabId:1},method:'Network.loadingFinished',params:{requestId:'unmatched-'+i,timestamp:50}});
+  await new Promise(setImmediate);assert.equal(writes,1);assert.equal(maxSubscriptions,1,'No per-event rejection handlers may accumulate on a shared delayed flight');
+ }finally{Promise.prototype.catch=originalCatch;ack.resolve();}
+ for(let i=0;i<5;i++)await new Promise(setImmediate);const saved=f.data['stateport.atom.v1.tabs'][1].productionObservation;assert.equal(saved.records.length,0);assert.equal(saved.gaps.unmatched,1000);assert.equal(writes,2);
+});
+for(const ending of['context','record-limit','pending-limit'])test('same-owner '+ending+' persists and notifies independently of an old recording save',{timeout:10000},async t=>{
+ const ack=deferred();t.after(()=>ack.resolve());const f=await fixture(t),w=await f.request({op:'observation-start'}),original=f.platform.chrome.storage.session.set,notices=[];let writes=0;
+ f.api.runtime.sendMessage=async m=>{if(m.scope==='production-observation')notices.push(m);};
+ f.platform.chrome.storage.session.set=async value=>{if(++writes===1)await ack.promise;return original(value);};
+ if(ending==='record-limit')for(let i=0;i<65;i++)await f.network('limit-'+i);
+ else if(ending==='pending-limit'){
+  for(let i=0;i<33;i++)await f.emit('Network.requestWillBeSent',{requestId:'pending-'+i,frameId:'main',loaderId:'loader',timestamp:50,wallTime:(performance.timeOrigin+performance.now())/1000,request:{url:origin+'/private',method:'GET'}});
+ }else{await f.network('before-context');await f.emit('Runtime.executionContextsCleared',{});}
+ const saved=f.data['stateport.atom.v1.tabs'][1].productionObservation;assert.equal(saved.windowId,w.windowId);assert.equal(saved.status,'stopped','A terminal native transition must be saved before the old recording write is released');assert.equal(saved.stopReason,ending==='context'?'context-changed':ending);assert.equal(writes,2);assert.equal(notices.length,1);if(ending==='record-limit')assert.equal(saved.records.length,64);if(ending==='pending-limit')assert.equal(saved.records.length,32);
+ ack.resolve();for(let i=0;i<5;i++)await new Promise(setImmediate);assert.equal(f.data['stateport.atom.v1.tabs'][1].productionObservation.status,'stopped');assert.equal(f.data['stateport.atom.v1.tabs'][1].productionObservation.stopReason,saved.stopReason);
+});

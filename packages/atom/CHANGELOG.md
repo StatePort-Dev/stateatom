@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.64
+
+- Keep terminal context/record/pending/byte/time closure publication independent
+  of a delayed recording save. Only recording metadata updates coalesce; original
+  lifecycle durability and notification routing remain.
+- Attach one rejection handler per new private publication flight, preventing
+  gap-only event traffic from retaining one Promise reaction per event.
+- Preserve issued63 artifacts and scoped measurements;64 requires its own full
+  source/package/native qualification. No performance waiver or new authority.
+
 ## 0.1.0-candidate.20261021.63
 
 - Coalesce overlapping native observation metadata publications per private owner:
