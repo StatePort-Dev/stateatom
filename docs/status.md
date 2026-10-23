@@ -10,8 +10,13 @@ is now complete; [P02](completion/82-p02-whole-item-review.md) is complete withi
 its brief. [P03](completion/85-p03-trusted-https-workflow.md) now completes its
 finite trusted-HTTPS/local-artifact workflow. [P04](completion/100-p04-whole-item-review.md)
 now completes its bounded production observation/handoff scope after ONE review:
-19/29 whole tasks (~66% equal count), not release readiness. Next V02.1 bounded
-Basic/active-observer latency and overhead measurements are now in progress under the
+19/29 whole tasks (~66% equal count), not release readiness. Current [V02.7](completion/107-v02-warm-source-and-map-resources.md)
+measures existing warm preview versus settled lexical analysis separately:40focused/880hashes,
+92 joined rows (46 retained standalone+46 fresh embedding),18cache pairs/2started-parser cancels.
+Declared warm p95 targets met; TodoMVC remains Partial. ONE review next, then bounded V02.8
+Live/Draft and Action Trace measurements. Product64 unchanged;104 embedding Basic p95=2021.8ms
+and active/off25.08/26.87% still miss. No waiver or release claim.
+Historical V02.1 Basic/active-observer measurements began under the
 [preregistered finite protocol](superpowers/plans/2026-10-23-v02-basic-observer.md).
 The [first baseline](completion/101-v02-basic-observer-baseline.md) completed198 raw
 samples on unchanged60: both hosts miss the1000ms Basic route p95 and10% active/off
@@ -27,13 +32,13 @@ render-occurrence snapshots retain ordinary deep refresh. Current unchanged-prot
 198-sample results: Basic route p95=1864.9/517ms (standalone miss/embedding met),
 active/off20.30/27.66% still misses10%. The separate phase median fell from~240ms to
 47–51ms; it does not replace the full-run miss. ONE fresh V02.3 review accepted with no findings; next V02.4 publication amplification;
-19/29 and V02 open.61 results remain explicitly historical. [V02.4 current63](completion/104-v02-observation-publication.md) now coalesces only overlapping native event publication:
+19/29 and V02 open.61 results remain explicitly historical. [V02.4 historical63](completion/104-v02-observation-publication.md) now coalesces only overlapping native event publication:
 source2420/focused183/types2/admission9/native H09 reporter17 PASS;828 inputs and
 both exact hosts match. Unchanged198 measurements give Basic p95=565.3/515ms
 (both met), active/off26.86/29.79% (both missed).60 concurrent submissions in a
 gated20-request source burst become one flight plus latest follow-up, all events
-retained. This is not proof of whole performance readiness; ONE parent review next,
-then V02.5 Basic-selected overhead diagnosis.19/29 unchanged. The subsequent
+retained. This was not proof of whole performance readiness; ONE review required the64
+correction now recorded in104.19/29 unchanged. The subsequent
 [F01 implementation](completion/14-f01-capability-contracts.md) consolidates
 capability policy and checks packed declarations on candidate `.20261019.3`:
 586 unit, 48 contract, 34 two-host, 26 Basic, 32 Actions and 19 source-map checks
@@ -1928,3 +1933,5 @@ V02.5 ONE review accepts finite diagnostic,0/0/0/no correction: independent14 ch
 [V02.6 raw attachment/domain controls](completion/106-v02-attachment-domain-diagnostic.md): product64 unchanged;18 source/350 native attempts-workloads-samples,836 hashes/archive/install/hosts match,0 console/errors. Bare/off−1.19/+1.61%,Debugger-only/off−6.14/−1.21%,Network-only/off+12.29/+10.71%; descriptive point ratios/shared-host context, not universal floor or waiver. No supported low-risk product fix established; preserve104 target misses and all tails. ONE review next, then independent V02.7 warm source/action and source-map buffer/cancel measurements.19/29 unchanged.
 
 V02.6 ONE fresh review accepted finite diagnostic,0/0/0/no correction; independent18 checks/836 hashes/350 rows and retained64 targets verified. No new native/build/full rerun or waiver. Next V02.7 separately preregisters existing warm source preview versus settled lexical-analysis latency and map buffer/cancel proxies.19/29 unchanged.
+
+[V02.7 current64 warm/map measurements](completion/107-v02-warm-source-and-map-resources.md):40focused/880 current inputs,92 joined warm rows (original standalone46 retained unchanged, fresh embedding46),18 original-corpus cache/Clear pairs and2 actual started-parser cancels;0 inspector/parser console/errors. Warm preview p95=197/230.8ms synthetic,196.8/213.2ms real; settled analysis p95=280.8/331.5ms Available synthetic,314/331.2ms Partial real. Cache proxies<=8MiB then0; no heap/no-leak claim. Two harness preparation INCOMPLETE attempts preserved, no old fail upgraded or valid warm phase repeated. ONE review next;104 misses/19of29 unchanged.

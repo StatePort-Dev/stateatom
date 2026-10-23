@@ -4195,51 +4195,58 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.6",
-        "title": "Bare attachment and explicit Network/Debugger/full diagnostic",
-        "status": "diagnostic-accepted-one-review-product64-unchanged",
-        "plan": "../superpowers/plans/2026-10-23-v02-attachment-floor.md"
+        "id": "V02.7",
+        "title": "Warm source preview/settled lexical analysis and map cache/cancellation",
+        "status": "finite-measurements-complete-review-pending-product64-unchanged",
+        "plan": "../superpowers/plans/2026-10-23-v02-warm-source.md",
+        "preparation_addendum": "../superpowers/plans/2026-10-23-v02-warm-source-preparation.md",
+        "retained_phase_addendum": "../superpowers/plans/2026-10-23-v02-warm-source-remainder.md"
       },
-      "execution_record": "106-v02-attachment-domain-diagnostic.md",
+      "execution_record": "107-v02-warm-source-and-map-resources.md",
       "current_checkpoint": {
-        "id": "V02.6-attachment-floor64",
-        "status": "accepted-bounded-diagnostic-not-performance-acceptance",
-        "record": "106-v02-attachment-domain-diagnostic.md",
+        "id": "V02.7-warm-source64",
+        "status": "ready-one-parent-review",
+        "record": "107-v02-warm-source-and-map-resources.md",
         "candidate": "0.1.0-candidate.20261021.64",
-        "verification": ".artifacts/v02/attachment-floor/2026-10-23/verification64-attachment.json",
-        "focused_source_checks": 18,
-        "new_attachment_checks": 4,
+        "verification": ".artifacts/v02/warm-source/2026-10-23/verification64-warm-source.json",
+        "focused_source_checks": 40,
+        "new_warm_checks": 6,
         "retained_full_source_checks": 2424,
         "fresh_full_source_run": false,
         "fresh_build": false,
-        "source_inputs": 836,
-        "raw_samples": 350,
-        "measured_samples": 300,
-        "warmup_samples": 50,
-        "network_vs_off_percent": {
-          "standalone": 12.28695997,
-          "embedding": 10.70811745
+        "source_inputs": 880,
+        "raw_samples": 92,
+        "measured_samples": 80,
+        "warmup_samples": 12,
+        "retained_standalone_warm_rows": 46,
+        "fresh_embedding_warm_rows": 46,
+        "fresh_cache_import_clear_pairs": 18,
+        "fresh_started_parser_cancellations": 2,
+        "warm_preview_p95_ms": {
+          "synthetic": {
+            "standalone": 197,
+            "embedding": 230.8
+          },
+          "javascript_es6": {
+            "standalone": 196.8,
+            "embedding": 213.2
+          }
         },
-        "bare_vs_off_percent": {
-          "standalone": -1.18906064,
-          "embedding": 1.61197467
+        "warm_settled_analysis_p95_ms": {
+          "synthetic_Available": {
+            "standalone": 280.8,
+            "embedding": 331.5
+          },
+          "javascript_es6_Partial": {
+            "standalone": 314,
+            "embedding": 331.2
+          }
         },
-        "debugger_vs_off_percent": {
-          "standalone": -6.14347998,
-          "embedding": -1.208981
-        },
+        "declared_warm_p95_targets_met": true,
         "performance_acceptance": false,
         "targets_waived": false,
         "whole_task_complete": false,
-        "next_bounded_step": "V02.7 preregister existing warm source/action and source-map buffer/cancellation measurements on bounded declared corpus; no transport-based waiver",
-        "review": {
-          "critical": 0,
-          "important": 0,
-          "minor": 0,
-          "focused_independent_checks": 18,
-          "correction_required": false,
-          "report": ".artifacts/v02/attachment-floor/2026-10-23/review/report.md"
-        }
+        "next_bounded_step": "V02.8 preregister existing Live/Draft and Action Trace mode-specific resource/latency measurements; preserve104 Basic/active misses and L02 gap"
       },
       "completed_slices": [
         {
@@ -4443,6 +4450,46 @@
             "correction_passes": 0,
             "independent_source_checks": 14
           }
+        },
+        {
+          "id": "V02.6-attachment-floor64",
+          "status": "accepted-bounded-diagnostic-not-performance-acceptance",
+          "record": "106-v02-attachment-domain-diagnostic.md",
+          "candidate": "0.1.0-candidate.20261021.64",
+          "verification": ".artifacts/v02/attachment-floor/2026-10-23/verification64-attachment.json",
+          "focused_source_checks": 18,
+          "new_attachment_checks": 4,
+          "retained_full_source_checks": 2424,
+          "fresh_full_source_run": false,
+          "fresh_build": false,
+          "source_inputs": 836,
+          "raw_samples": 350,
+          "measured_samples": 300,
+          "warmup_samples": 50,
+          "network_vs_off_percent": {
+            "standalone": 12.28695997,
+            "embedding": 10.70811745
+          },
+          "bare_vs_off_percent": {
+            "standalone": -1.18906064,
+            "embedding": 1.61197467
+          },
+          "debugger_vs_off_percent": {
+            "standalone": -6.14347998,
+            "embedding": -1.208981
+          },
+          "performance_acceptance": false,
+          "targets_waived": false,
+          "whole_task_complete": false,
+          "next_bounded_step": "V02.7 preregister existing warm source/action and source-map buffer/cancellation measurements on bounded declared corpus; no transport-based waiver",
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 0,
+            "focused_independent_checks": 18,
+            "correction_required": false,
+            "report": ".artifacts/v02/attachment-floor/2026-10-23/review/report.md"
+          }
         }
       ]
     },
@@ -4645,11 +4692,11 @@
     ]
   },
   "reconciliation": {
-    "document": "106-v02-attachment-domain-diagnostic.md",
+    "document": "107-v02-warm-source-and-map-resources.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.6-attachment-floor64-accepted-one-review",
-    "next_item": "V02.7 preregister existing warm source/action and source-map buffer/cancellation measurements on bounded declared corpus; no transport-based waiver",
+    "current_increment": "V02.7-warm-source64-ready-review",
+    "next_item": "V02.8 preregister existing Live/Draft and Action Trace mode-specific resource/latency measurements; preserve104 Basic/active misses and L02 gap",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6633,11 +6680,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "P04 accepted after ONE fresh-context review with0 actionable findings; current60 source2379/review171/native13+17+25+7 scopes verified. Historical reuse/failures remain explicit.19/29 complete (~66% equal count), not readiness; next V02.1 preregistered Basic/observer measurements. L02/A02/integration/release remain open.",
+    "current_activity_note": "V02.7 finite warm/map measurements complete, ONE review next:40focused/880current hashes/92 joined rows (46 retained standalone+46 fresh embedding)/18cache pairs/2started-parser cancels. Declared warm p95 targets met, TodoMVC Partial retained. Original104 embeddingBasic and both active/off misses remain unwaived;19/29 unchanged. L02/A02/integration/release open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "74d4426 (product62, docs/evidence follow)",
+    "current_source_revision": "156bde5 (product64 unchanged);6f742e0 (V02.7 harness)",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V02.4 reproduce and remedy bounded observation publication amplification"
+    "next_bounded_step": "V02.8 preregister existing Live/Draft and Action Trace mode-specific resource/latency measurements; preserve104 Basic/active misses and L02 gap"
   },
   "next_task": "V02"
 }
