@@ -21,7 +21,13 @@ Basic latency/transport diagnosis. The [controlled V02.2 diagnostics](completion
 now retain224 transport-control workloads and30 request-phase lookups: the immediate
 deep-state request costs roughly240ms on this fixture. ONE diagnostic review accepted
 this finite slice (no findings); next V02.3 must separately prove correctness.
-Product60 and previous target misses unchanged. The subsequent
+That diagnostic checkpoint used unchanged60. [V02.3 candidate62](completion/103-v02-fresh-inspection-state.md)
+now has2411 source/2 strict packed types/9 admission/11 actual native identity checks;
+render-occurrence snapshots retain ordinary deep refresh. Current unchanged-protocol
+198-sample results: Basic route p95=1864.9/517ms (standalone miss/embedding met),
+active/off20.30/27.66% still misses10%. The separate phase median fell from~240ms to
+47–51ms; it does not replace the full-run miss. ONE whole V02.3 review pending;
+19/29 and V02 open.61 results remain explicitly historical. The subsequent
 [F01 implementation](completion/14-f01-capability-contracts.md) consolidates
 capability policy and checks packed declarations on candidate `.20261019.3`:
 586 unit, 48 contract, 34 two-host, 26 Basic, 32 Actions and 19 source-map checks

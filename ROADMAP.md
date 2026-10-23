@@ -1198,3 +1198,6 @@ V02.1 (2026-10-23): [preregistered two-host baseline](docs/completion/101-v02-ba
 
 
 V02.2 (2026-10-23): [controlled diagnostics](docs/completion/102-v02-transport-and-request-phases.md) completed224 single-owner transport workloads and30 timing-only own-inspector lookups on unchanged60. Full-domain control/off~6%; immediate deep state median239.45/242ms after explicit inspection. No attribution of all101 misses or performance waiver; ONE diagnostic review accepted the finite slice (Critical0/Important0/Minor0), no correction pass. Next bounded V02.3 preserve fresh explicit snapshot without immediate duplicate deep refresh, after boundary tests/new candidate.
+
+
+V02.3 (2026-10-23): [candidate62](docs/completion/103-v02-fresh-inspection-state.md) retains native node/value identity and ordinary render-occurrence deep guards while removing immediate redundant deep observation for plain DOM.2411 source/2 strict types/9 admission/11 native guard checks PASS;198 raw measurements retain Basic p95=1864.9/517ms and active/off20.30/27.66% (targets remain open). Separate immediate state phase median47–51ms vs original~240ms; no waiver or full V02 acceptance.61 remains historical, ONE parent review pending; next bounded V02.4 observation publication amplification control/fix.
