@@ -21,6 +21,7 @@ jobs:
       - run: npm run check:ui
   packed-contracts:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
         with:
@@ -56,3 +57,24 @@ jobs:
         env:
           ATOM_HANDOFF: ${{ steps.candidate.outputs.handoff }}
         run: npm run verify:atom-package -- "$ATOM_HANDOFF"
+      - name: Install locked Chromium and system dependencies
+        run: npx playwright install --with-deps chromium
+      - name: Verify native browser candidate sequentially
+        env:
+          ATOM_HANDOFF: ${{ steps.candidate.outputs.handoff }}
+        run: node scripts/verify-native-candidate.mjs "$ATOM_HANDOFF"
+      - name: Retain allowlisted synthetic native results
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: atom-native-candidate-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 7
+          include-hidden-files: true
+          if-no-files-found: warn
+          path: |
+            .artifacts/v01/native-candidate/*/results.json
+            .artifacts/v01/native-candidate/*/preregistration.json
+            .artifacts/v01/native-candidate/*/*.log
+            .artifacts/v01/basic-reader/*/results.json
+            .artifacts/l01/maps-native/*/results.json
+            !**/profiles/**
