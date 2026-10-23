@@ -103,3 +103,8 @@ private reducer-only proof and Unknown boundaries; choose one unproved path from
 its current checkpoint, without repeating old experiments or a blind model run.
 I01/I02 still require another repository and I03 depends on I02/V02, so they are
 not silently selected as dependency-ready local work. No SDK/publication/redesign.
+
+Subsequent acceptance: [112](112-v01-whole-review-and-owned-ide.md) records ONE
+review/correction, exact changed source-input accounting and final V01 acceptance.
+This111 checkpoint's901/341/15 hashes describe its recorded bytes and are not all
+current after that correction. Original results and criteria remain unchanged.

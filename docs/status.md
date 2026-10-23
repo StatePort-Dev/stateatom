@@ -21,10 +21,14 @@ corrected without product/native rerun. [V01.1](completion/109-v01-packed-ci-lan
 a separate immutable packed-contract CI job, locally syntax/selector/negative/check:ui
 verified. [V01.2](completion/110-v01-native-candidate-lane.md) now verifies local native
 Basic23 (retained unchanged) plus maps39 fresh,341 frozen inputs and24 controls.
-[V01.3](completion/111-v01-installed-maintainer-and-whole-review.md) adds actual
-installed VSIX0.1.3/VSCode1.142.0 acceptance10 checks/15 inputs. Whole source2469
-passes with901 frozen current inputs; ONE whole V01 review pending. No remote CI
-or full browser/IDE user-flow claim; next dependency-ready A02 after that review. Original64 Basic/active/warm-source/input results remain
+[V01 whole acceptance](completion/112-v01-whole-review-and-owned-ide.md) completes
+configured CI/native/installed lanes after ONE review and one correction pass:
+20/29 whole tasks (~69% equal count). Own child WebSocket identity precedes IDE
+Trust actions; actual Git dirtiness replaces the maps literal. Final source2476/
+904 inputs and fresh owned installed VSIX10/17 pass. Prior browser23+39 remains
+retained evidence with four explicit harness deltas. Product65/UI2 unchanged;
+hosted CI and full browser/IDE user flow are unverified. Next A02 bounded ordinary
+state-lineage acquisition; V02/L02 remain open. Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the
 [preregistered finite protocol](superpowers/plans/2026-10-23-v02-basic-observer.md).
