@@ -1,0 +1,48 @@
+{
+  "schema": "stateatom.v03-independent-basic-case/1",
+  "application": "Serkanbyx/e-commerce-frontend",
+  "revision": "653ce1095bcd6b1c3a1c21d4f01f85953c9eb20f",
+  "environment": {
+    "command": "node node_modules/vite/bin/vite.js --host 127.0.0.1 --port <owned-port> --strictPort",
+    "commandRelation": "Original package dev script is vite; direct child permits owned readiness and cleanup",
+    "apiConfiguration": "Original VITE_API_BASE_URL override points to an owned loopback synthetic API",
+    "upstreamBackend": false,
+    "appSourceEdits": false,
+    "extension": "Exact supplied Atom65/UI2 standalone folder, CLI preload assistance in fresh headless Chrome",
+    "guideInstallUIProved": false,
+    "sourcePlugin": false,
+    "IDE": false,
+    "model": false,
+    "certificates": false
+  },
+  "syntheticProducts": [
+    {"id": 1, "title": "V03 synthetic blue mug", "price": 12.5, "description": "Synthetic local validation data. No purchase or payment.", "category": "electronics", "imagePath": "/synthetic.svg", "rating": {"rate": 4, "count": 3}},
+    {"id": 2, "title": "V03 synthetic green notebook", "price": 7, "description": "Synthetic local validation data. No purchase or payment.", "category": "electronics", "imagePath": "/synthetic.svg", "rating": {"rate": 3, "count": 2}}
+  ],
+  "syntheticImage": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"128\" height=\"128\"><rect x=\"24\" y=\"24\" width=\"80\" height=\"80\" rx=\"12\" fill=\"#4388aa\"/></svg>",
+  "cartSelector": "header a[href='/cart'] button",
+  "addSelector": "a[href='/product/1'] button",
+  "cases": [
+    "Fresh profile has no stored app authority or reports; actual app title/body/products are present",
+    "Native picker selects cart descendant, actual UI parent refinement reaches that button; selection does not navigate or add a cart badge",
+    "Actual inspector Cancel preserves selection; visible URL/cart control remains unchanged",
+    "Save original Cart text locally; ordinary native Add to Cart; Inspect again observes 1Cart and keeps unsupported source/producer Unknown",
+    "Original saved diagnostic bytes remain unchanged and historical after new observation",
+    "Prepare current issue with explicit synthetic demonstration words; default technical categories remain excluded; Review then Save and Download preserve exact bytes",
+    "Close origin browser and stop app/API; fresh recipient imports passive report without app tab or stored authority",
+    "Capture candidate first viewport, inspector desktop/narrow and report/reader; console coverage begins after Atom attach"
+  ],
+  "issue": {
+    "title": "V03 cart interaction demonstration",
+    "actual": "Synthetic demonstration: after adding one local item the cart showed 1. This is a successful scenario, not a reported application bug.",
+    "expected": "For this demonstration the cart should show 1 after one Add to Cart action.",
+    "steps": ["Open the locally configured independent shop", "Select and save the cart text", "Add the first synthetic product", "Inspect again and review this historical report"]
+  },
+  "limits": [
+    "Native automation is agent-operated, not human visual acceptance",
+    "CLI extension preload is setup assistance, not Chrome Load unpacked UI evidence",
+    "Visible URL/cart checks are not universal callback-count or hover-effect proof",
+    "Basic DOM observations do not establish Redux ownership, causal lineage or installed React19 adapter support",
+    "No Vue/reserve runtime, full V03, performance, production edits, source maps, Action Trace, model or macOS acceptance"
+  ]
+}
