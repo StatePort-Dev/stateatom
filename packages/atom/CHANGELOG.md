@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.59
+
+- Recording can continue in the same inspector while the issue dialog is closed
+  explicitly. Return through Diagnostic to Stop/review; Cancel/Escape/context loss
+  still stop. A footer status keeps recording visible; existing type/styles remain.
+- Exact active-window input-history notices clear old execution immediately, keep
+  the original DOM point/description and load metadata without page reinspection.
+  Ordinary invalidations, foreign input ownership and F05 permission remain intact.
+- Reopening a recording dialog reuses its original source without a new capture,
+  Live flush or Draft Apply. Stop reacquires only the same input owner/revision;
+  unknown consumption/effect/server restoration and default privacy stay explicit.
+  This bounded increment does not establish whole P04 or release readiness.
+
 ## 0.1.0-candidate.20261021.58
 
 - Strictly validate retained stopped windows after inspector/runtime loss; no

@@ -331,7 +331,8 @@ async function openInputs(id,context,sourceKind='json-response'){
   if(tabs[id]!==s||editor&&editors.get(id)&&editors.get(id)!==editor)return;
   if(snapshot.history.length||sourceKind==='dom-control'&&snapshot.pending)s.inputEditedInspection=s.inspectionGeneration;
   s.inputHistory={sourceKind,investigationId:snapshot.investigationId,target:snapshot.target,revision:snapshot.revision,status:'Historical',executable:false,closed:snapshot.closed,cleanup:snapshot.cleanup,closeReason:snapshot.closeReason,resources:[],history:snapshot.history.slice(-8).map(t=>({id:t.id,kind:t.kind,phase:t.phase,outcomeCount:t.outcomes.length})),details:'Read-only runtime summary; rules, raw values and complete history are not restored'};
-  notifyInvalidation(id);
+  const observedWindow=observationOwners.get(id)?.controller?.snapshot();
+  if(observedWindow?.status==='recording'&&retainsObservationSelection(id,s))void chrome.runtime.sendMessage({event:'state-invalidated',tabId:id,scope:'input-history',windowId:observedWindow.windowId,inspectionChanged:s.inputEditedInspection===s.inspectionGeneration}).catch(()=>{});else notifyInvalidation(id);
  };
  editor=sourceKind==='dom-control'?createControlEditor({investigationId,target:fresh.target,readCurrent,onChange,openOwner:options=>platform.openNativeControls(options)}):createResponseEditor({investigationId,target:fresh.target,responses,readCurrent,send:(method,params)=>send(id,method,params),ownsFetch:()=>platform.owns?.(id)!==false&&s.attached===true&&(s.inputLeaseEpoch||0)===leaseEpoch,onChange});
  const selectedContext=inputSelectionContext(id,s);

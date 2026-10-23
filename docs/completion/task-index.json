@@ -3254,7 +3254,10 @@
         "tests/atom/observation-history-runtime.test.mjs",
         "tests/integration/handoff-observation-history.mjs",
         "tests/integration/handoff-observation-window-matrix.mjs",
-        "tests/integration/p04-picker-entry-native.mjs"
+        "tests/integration/p04-picker-entry-native.mjs",
+        "tests/atom/handoff-observation-coexistence.test.mjs",
+        "tests/atom/observation-input-coexistence.test.mjs",
+        "tests/integration/handoff-observation-input-native.mjs"
       ],
       "existing_commands": [
         "npm run verify:browser",
@@ -3266,28 +3269,29 @@
         "node tests/integration/production-observation-dom-native.mjs <exact atom-handoff.json>",
         "node tests/integration/handoff-observation-passive.mjs <exact atom-handoff.json>",
         "node tests/integration/handoff-observation-reporter.mjs <exact atom-handoff.json>",
-        "node tests/integration/handoff-observation-history.mjs <exact atom-handoff.json>"
+        "node tests/integration/handoff-observation-history.mjs <exact atom-handoff.json>",
+        "node tests/integration/handoff-observation-input-native.mjs <exact atom-handoff.json>"
       ],
       "deliverable": "U06-designed QA production observation/handoff flow, read-only collector distinct from intentional edits",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "P04.4d.2 same-inspector reporter/input coexistence; H08 embedding completion/picker diagnosis and ONE parent review remain",
-      "execution_record": "93-p04-native-window-matrix-progress.md",
+      "active_slice": "P04.4d.3 remaining H08 embedding deadline review/export/lifecycle; primary picker diagnosis and ONE parent review remain",
+      "execution_record": "95-p04-input-reporter-coexistence.md",
       "implementation_plan": "../superpowers/plans/2026-10-22-p04-input-coexistence.md",
       "current_checkpoint": {
-        "id": "P04.4c.2-passive-interrupted-metadata",
-        "status": "complete-passive-history-not-whole-P04",
-        "record": "92-p04-passive-interrupted-metadata.md",
-        "verification": ".artifacts/p04/interrupted-metadata/verification58.json",
-        "candidate": "0.1.0-candidate.20261021.58 / UI0.2.0-candidate.20261018.2",
-        "handoff": ".artifacts/atom/2026-10-22T14-43-13-332Z/atom-handoff.json",
+        "id": "P04.4d.2-input-reporter-coexistence",
+        "status": "complete-same-inspector-H09-not-whole-P04",
+        "record": "95-p04-input-reporter-coexistence.md",
+        "verification": ".artifacts/p04/input-coexistence/2026-10-23/verification59.json",
+        "candidate": "0.1.0-candidate.20261021.59 / UI0.2.0-candidate.20261018.2",
+        "handoff": ".artifacts/atom/2026-10-23T06-57-11-862Z/atom-handoff.json",
         "checks": {
-          "source": 2365,
-          "focused": 138,
+          "source": 2374,
+          "focused": 157,
           "types": 2,
           "admission": 9,
           "build": true,
-          "native_both_hosts": 25,
+          "native_both_hosts": 17,
           "console_warnings_errors": 0
         },
         "public_evidence_packet": true,
@@ -3296,11 +3300,11 @@
         "product_observation_controls": true,
         "ownerless_metadata_read_delete": true,
         "passive_unowned_runtime_capture": false,
-        "actual_F05_edit_during_window": false,
+        "actual_F05_edit_during_window": true,
         "full_P04_acceptance": false,
         "whole_tasks_complete": 18,
-        "next_item": "P04.4d remaining native H07/H08/H09 including independent F05/U02 edit outcomes and primary picker entry diagnosis; ONE parent review remains",
-        "boundary": "Current58 source2365/focused138/types2/admission9/build/native25 both hosts PASS;0 console errors/warnings. Actual inspector close/reopen and forced worker loss/reopen/read/delete with native keyboard; strict unknown-ended history, no owner/adoption or native history command. Existing unsaved permission/origin clear preserved. First PASS25 with collapsed screenshot retained, final visible-history PASS25 current. Primary-picker failures from91 unresolved; no F05 edit during collection/public ownerless capture/whole P04/C07.18/29 unchanged; L02 mandatory/open/A05 mandatory/scoped complete/A02 open. No SDK/publication/redesign/other repository/human blocker."
+        "next_item": "P04.4d.3 remaining H08 embedding deadline review/export/lifecycle; primary picker diagnosis and ONE parent review remain",
+        "boundary": "Current59 same-inspector H09 on synthetic trusted HTTPS through actual Settings confirmations/Live/Draft UI: source2374/focused157/types2/admission9/build/native17 both hosts PASS. Original point/words/window retained; execution cleared immediately on exact owned-window notice; generic/foreign invalidation and exact input ownership remain. Actual failed Undo to minlength-invalid AB retained, not positive restoration proof. Unapplied draft stays local; default-private report/passive reader/revoke preserve unknown effects. Screenshots candidates, prior failures retained; H08/picker/full P04/C07/release remain open.18/29 unchanged; L02 mandatory/open/A05 mandatory/scoped complete/A02 open. No SDK/publication/redesign/other repository/human blocker."
       },
       "completed_slices": [
         {
@@ -3468,9 +3472,37 @@
           "whole_tasks_complete": 18,
           "next_item": "P04.4d remaining native H07/H08/H09 including independent F05/U02 edit outcomes and primary picker entry diagnosis; ONE parent review remains",
           "boundary": "Current58 source2365/focused138/types2/admission9/build/native25 both hosts PASS;0 console errors/warnings. Actual inspector close/reopen and forced worker loss/reopen/read/delete with native keyboard; strict unknown-ended history, no owner/adoption or native history command. Existing unsaved permission/origin clear preserved. First PASS25 with collapsed screenshot retained, final visible-history PASS25 current. Primary-picker failures from91 unresolved; no F05 edit during collection/public ownerless capture/whole P04/C07.18/29 unchanged; L02 mandatory/open/A05 mandatory/scoped complete/A02 open. No SDK/publication/redesign/other repository/human blocker."
+        },
+        {
+          "id": "P04.4d.2-input-reporter-coexistence",
+          "status": "complete-same-inspector-H09-not-whole-P04",
+          "record": "95-p04-input-reporter-coexistence.md",
+          "verification": ".artifacts/p04/input-coexistence/2026-10-23/verification59.json",
+          "candidate": "0.1.0-candidate.20261021.59 / UI0.2.0-candidate.20261018.2",
+          "handoff": ".artifacts/atom/2026-10-23T06-57-11-862Z/atom-handoff.json",
+          "checks": {
+            "source": 2374,
+            "focused": 157,
+            "types": 2,
+            "admission": 9,
+            "build": true,
+            "native_both_hosts": 17,
+            "console_warnings_errors": 0
+          },
+          "public_evidence_packet": true,
+          "public_report_profile": true,
+          "passive_reader": true,
+          "product_observation_controls": true,
+          "ownerless_metadata_read_delete": true,
+          "passive_unowned_runtime_capture": false,
+          "actual_F05_edit_during_window": true,
+          "full_P04_acceptance": false,
+          "whole_tasks_complete": 18,
+          "next_item": "P04.4d.3 remaining H08 embedding deadline review/export/lifecycle; primary picker diagnosis and ONE parent review remain",
+          "boundary": "Current59 same-inspector H09 on synthetic trusted HTTPS through actual Settings confirmations/Live/Draft UI: source2374/focused157/types2/admission9/build/native17 both hosts PASS. Original point/words/window retained; execution cleared immediately on exact owned-window notice; generic/foreign invalidation and exact input ownership remain. Actual failed Undo to minlength-invalid AB retained, not positive restoration proof. Unapplied draft stays local; default-private report/passive reader/revoke preserve unknown effects. Screenshots candidates, prior failures retained; H08/picker/full P04/C07/release remain open.18/29 unchanged; L02 mandatory/open/A05 mandatory/scoped complete/A02 open. No SDK/publication/redesign/other repository/human blocker."
         }
       ],
-      "remaining_acceptance": "Public reviewed profile/product reporter/reader and passive interruption; actual H07-H09 and ONE whole-P04 review",
+      "remaining_acceptance": "Remaining actual H08 native lifecycle, primary picker entry diagnosis and ONE whole-P04 review; H09 current bounded coexistence credited in95",
       "native_matrix_progress": {
         "record": "93-p04-native-window-matrix-progress.md",
         "status": "partial-not-H08-H09-P04-acceptance",
@@ -3482,7 +3514,7 @@
         "open": "Embedding deadline review/export and later lifecycle after Input.dispatchMouseEvent timeout; primary picker native entry unresolved"
       },
       "evening_handoff": "94-p04-evening-handoff.md",
-      "next_implementation_status": "P04.4d.2 specification and archived RED only; no candidate59 implementation"
+      "next_implementation_status": "P04.4d.2 implemented and scoped-qualified on59; remaining H08/picker/parent review open"
     },
     {
       "id": "L01",
@@ -6105,7 +6137,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Evening stopped: exact58 source508 inputs unchanged; source2365/focused138/native25 remain scoped.93 FAIL29 matrix progress separate, embedding lifecycle/picker unresolved.94 handoff records next H09 spec/archived RED only, not implemented.18/29 unchanged.",
+    "current_activity_note": "Current59 H09 same-inspector coexistence scoped complete: source2374/focused157/types2/admission9/native17 both hosts. Failed Undo preserved as constraint refusal; no hidden Draft Apply.93 H08 partial and picker unresolved; next H08 embedding completion.18/29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "P04"

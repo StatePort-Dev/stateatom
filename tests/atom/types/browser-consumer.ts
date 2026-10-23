@@ -108,3 +108,5 @@ void privateObservation;void originalInputCapture;
 
 // Independent observer metadata selection does not replace other view policy.
 void client.request({op: 'state', tabId: 1, observationOwnerId: 'observer-view', refreshDeep: false});
+
+client.subscribe(event => { const windowId: string | undefined = event.windowId; const scope: 'production-observation' | 'input-history' | undefined = event.scope; void windowId; void scope; });

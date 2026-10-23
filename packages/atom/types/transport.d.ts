@@ -64,7 +64,7 @@ export type AtomOperation=
  |{op:'experiment';tabId:number;field:{url:string;path:string;requestId:string};value:unknown;actions:string[];controlPath:string};
 export interface AtomMessage {version:1;id:string;session:string;payload:AtomOperation}
 export interface AtomReply {version:1;id:string;session:string;ok:boolean;result?:unknown;error?:string;code?:string}
-export interface AtomEvent {event:'selection'|'state-invalidated';tabId:number}
+export interface AtomEvent {event:'selection'|'state-invalidated';tabId:number;scope?:'production-observation'|'input-history';windowId?:string;inspectionChanged?:boolean}
 export interface AtomClient {
  request(payload:ObservationCaptureRequest,options?:{signal?:AbortSignal}):Promise<ProductionObservationCapture>;
  request(payload:InputCaptureRequest,options?:{signal?:AbortSignal}):Promise<InputOutcomeCapture>;
