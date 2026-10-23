@@ -61,3 +61,23 @@ ONE fresh whole-increment review, at most one tested correction pass, no re-revi
 Local commits only, no SDK/publication/redesign/accounts/certificates/user profile/
 other repository. Preserve plan ledger/history and whole20/29 unless a whole item
 actually meets its independent acceptance gates.
+
+## Retained cold-On failure prerequisite
+
+Full Chromium run74a681e produces a valid Off24-warning trial, then On fails on
+two actual Vite504 outdated optimized-dependency requests before app readiness.
+The original matrix remains incomplete. One separately preregistered cold-On
+trace adds passive local-origin Network/HTTP response/WebSocket HMR/navigation
+events and documented DEBUG=vite:deps to the same original CLI config/tuple.
+Same120s app timeout, no warmup/reload/app/product/dependency changes. Trace
+observer/debug overhead can affect timing: a successful probe does not fix or
+erase the earlier failure, and is not one of the missing original matrix trials.
+
+Auxiliary trace has separate10000-event/16MiB limits with explicit overflow; original
+console5000/8MiB caps unchanged. No request/response bodies or headers are copied.
+Only owned-origin request IDs/WebSockets are followed; outside targets excluded.
+Full textual HMR frames are retained locally. First two504 responses may trigger
+metadata reads recorded as AFTER those events, never atomic metadata-at-request.
+Failure DOM/overlay/screenshot is acquired before owned browser shutdown when
+possible; unavailable acquisition is explicit. Original raw warnings stay separate.
+CDP protocol documentation fetched via Context7 confirms passive event methods.

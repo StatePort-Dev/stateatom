@@ -71,3 +71,17 @@ Next within V03.11: localize the retained cold-On504 with failure DOM, Network/H
 and optimizer evidence before more execution. A reload/warmup/longer timeout is
 not silently accepted as the solution. No original app patch, message suppression,
 completed-feature count or full native acceptance is introduced. Whole20/29 stays.
+
+## Preregistered cold-On trace prerequisite
+
+One new diagnostic case independent-vue-cold-on-trace-case.json pins the current
+driver/helper hashes and retained failed result. It runs only the failing cold On
+condition, unchanged original app/config/plugin5/Node18/Vite4/Chrome/120s deadline.
+Passive local Network/HTTP/WebSocket HMR/navigation and DEBUG=vite:deps add
+observability; failure DOM/screenshot and first two after504 metadata reads remain
+explicitly scoped. New5 trace controls plus existing7 comparison controls pass12.
+No product change or broad full/build/native repeat. Logging can change timing;
+this probe neither substitutes the original ABBA trials nor clears any old FAIL.
+Original warning caps unchanged; auxiliary10000-event/16MiB cap invalidates on
+overflow. No request/response body/header copy, response override, warmup or reload.
+Commit registration before execution; V03.11/final review/task-done still pending.

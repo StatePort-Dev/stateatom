@@ -1,0 +1,55 @@
+{
+  "schema": "stateatom.v03-vue-warning-case/1",
+  "application": "CorentinTh/it-tools",
+  "applicationRevision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+  "nativeResult": ".artifacts/v03/independent-vue-source/2026-10-23T21-53-15-845Z/results.json",
+  "expectedNativeSha256": "dc98dff4f9e0e32396864e92382116f26d801388c07a445f1394f3ef32e5aed5",
+  "originalCase": "docs/testing/independent-vue-source-case70-helper8.json",
+  "dependencyReceipt": ".artifacts/v03/dependency-prep/2026-10-23T15-48-05-165Z/results.json",
+  "expectedPluginSha256": "a6362897971eecdc0f0cd66a9cf25a4473be8224704e2a635cd4bbe7bf887453",
+  "expectedBrowserProduct": "Chrome/153.0.8010.12",
+  "expectedDriverSha256": "087e162642af69294f1c6c1d86f8d031d5e5727363a2a4ceaba64ffb4d2cc046",
+  "expectedComparisonHelperSha256": "d9e585e4313df2a0bb1faf97909864ae2719b43299fcaa1a8957b4ed7b323fa0",
+  "order": [
+    true
+  ],
+  "settleMs": 1000,
+  "maxEvents": 5000,
+  "maxRawBytes": 8388608,
+  "nativeOverallStatusRemains": "FAIL",
+  "constraints": [
+    "Off imports original config only; On prepends exact installed plugin enabled profile vue3",
+    "Same original source/dependency metadata/lock/Chrome/route/viewport; fresh private cache and profile per trial",
+    "No Atom/IDE mounted, no console replacement, positive blank control excluded from app window",
+    "All warning/error arguments and multiplicities compared; raw events and post-window events retained",
+    "No warning suppression, app patch, native gate waiver, rerun of original15-gate workflow or full V03/C09 acceptance"
+  ],
+  "expectedBrowserExecutable": "/home/roman/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome",
+  "expectedBrowserExecutableSha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e",
+  "browserLaunch": {
+    "channel": "chromium",
+    "headless": true,
+    "reason": "Use full Chromium new headless, same native driver executable lookup; no Headless Shell"
+  },
+  "supersedesPreparationOnly": {
+    "case": "docs/testing/independent-vue-warning-case.json",
+    "result": ".artifacts/v03/warning-baseline/2026-10-23T22-19-53-624Z/results.json",
+    "failure": "Browser edition mismatch before app navigation;0 app evidence"
+  },
+  "purpose": "retained-cold-on-startup-trace",
+  "expectedTraceHelperSha256": "d831d1abde7cb0b49cd7cc9f433db7499deaa514c1249cec0adb9ef072cf22de",
+  "trace": {
+    "debug": "vite:deps",
+    "maxEvents": 10000,
+    "maxBytes": 16777216,
+    "failureDOM": true,
+    "failureScreenshot": true,
+    "metadataAfter504Responses": 2
+  },
+  "parentFailure": {
+    "file": ".artifacts/v03/warning-baseline/2026-10-23T22-23-03-718Z/results.json",
+    "sha256": "b231744157719468d632ac59fd61873b3ec35f9b6d3ef8283924672b6fb927b7"
+  },
+  "originalMatrixCase": "docs/testing/independent-vue-warning-case-full-chromium.json",
+  "originalMatrixNotReplaced": true
+}

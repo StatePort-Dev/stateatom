@@ -45,6 +45,7 @@ counts, no app side effects or product exports.
 - [x] Implement the comparator and bounded integration driver with raw capture, source/tuple/treatment checks and owned cleanup.
 - [x] Run focused comparator tests; retain current full2585/product evidence because no product source changes; no rebuild or old full native replay.
 - [x] Preregister exact supplied identities, original case, order/window and diagnostic constraints; commit driver/case/plan before execution.
+- [ ] Preregister one separate cold-On trace after retained504 failure: same original tuple/timeout, passive local Network/HMR/navigation plus vite:deps debug, failure DOM/screenshot and after-response metadata; no warmup/reload. Run the trace without counting it as the original ABBA comparison.
 - [ ] Run node tests/integration/independent-vue-warning-baseline.mjs docs/testing/independent-vue-warning-case.json; inspect actual phase results, raw warnings, artifacts and cleanup. Do not restart a live handle or retry to improve output.
 - [ ] Summarize within-condition, cross-condition and original-native differences separately; keep original15-positive/overall-FAIL result unchanged.
 - [ ] Update record124/current task routing/corpus append-only, identify one dependency-valid next item from actual result.

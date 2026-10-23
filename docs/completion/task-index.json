@@ -4788,7 +4788,10 @@
         "off_vs_historical_native_full_arguments_equal": false,
         "on_cold_start_failure": "504 Outdated Optimize Dep: marked.js and dompurify.js",
         "initiating_cause_established": false,
-        "review_pending": true
+        "review_pending": true,
+        "prerequisite_trace_case": "../testing/independent-vue-cold-on-trace-case.json",
+        "prerequisite_trace_status": "preregistered-not-executed",
+        "focused_diagnostic_checks": 12
       },
       "completed_slices": [
         {
@@ -7405,11 +7408,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.11 full Chromium diagnostic executes2/4 trials: Off valid startup shows16 intlify+8 Vue prop warnings; historical native full-argument multiset differs4vs4 because instrumentation attrs appear in Vue context. On cold startup FAIL at2 Vite504 Outdated Optimize Dep requests (marked/dompurify), no valid On warning comparison.50inputs stable/source498+497 unchanged/all owned children closed. Original overall nativeFAIL/20of29 and V03.11 incomplete; ONE final review not yet dispatched.",
+    "current_activity_note": "V03.11 full Chromium diagnostic executes2/4 trials: Off valid startup shows16 intlify+8 Vue prop warnings; historical native full-argument multiset differs4vs4 because instrumentation attrs appear in Vue context. On cold startup FAIL at2 Vite504 Outdated Optimize Dep requests (marked/dompurify), no valid On warning comparison.50inputs stable/source498+497 unchanged/all owned children closed. Original overall nativeFAIL/20of29 and V03.11 incomplete; ONE final review not yet dispatched. One separate cold-On trace is preregistered (Network/HMR/failure DOM/after504 metadata and vite:deps debug),12 focused controls PASS; no warmup/reload/timeout or original-matrix replacement.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "74a681e diagnostic preregistration; product d40a503/helper8/Atom70/plugin5 exact327/223/19/14 inputs unchanged",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "Within V03.11, localize retained cold-On Vite4 outdated dependency request failure with failure DOM/Network/HMR/optimizer evidence before further execution. Current metadata snapshot is not metadata-at-request; initiating cause and instrumentation delta unknown. Preserve cold protocol/timeouts, no unregistered warmup/reload or suppression; then resume the original four-trial question. V03.11 remains unfinished, final review/task-done pending."
+    "next_bounded_step": "Execute the preregistered single cold-On trace after local commit; inspect actual optimized requests/HMR/navigation/failure DOM and after-response metadata, preserving the original failed matrix and cold/timeout constraints. Original V03.11 ABBA/final review/task-done remain pending."
   },
   "next_task": "V03"
 }
