@@ -1,6 +1,7 @@
 # V02.5 — passive DOM-domain/native-point diagnostic
 
-2026-10-23, scope-review-1. Finite actual diagnostic complete, ONE review pending.
+2026-10-23, scope-review-1. Finite actual diagnostic accepted after ONE fresh review
+(Critical0/Important0/Minor0); no correction pass.
 Product64/UI2 unchanged. No performance acceptance/waiver/full V02 or count change;
 19/29 whole tasks remains. Current target evidence stays104, including embedding
 Basic p95=2021.8ms miss and both active/off misses. This workload-only diagnostic
@@ -94,14 +95,17 @@ fresh/current passes. No cause of every latency tail is established.
 
 ## Remaining gates and ONE next step
 
-ONE fresh bounded diagnostic review next. V02/current target misses/modes/corpus,
+ONE fresh bounded diagnostic review accepted135533f..6605bc6: independent14
+checks,832 hashes,224 attempts/workloads/samples and raw distributions verified.
+No native/full/build rerun; all6 declined scopes explicitly ruled in retained
+review/report.md under the aggregate directory. V02/current target misses/modes/corpus,
 mandatory L02 usefulness, A02/integration/clean platform/release gates remain open;
 A05 mandatory/scoped complete, independent human not a blocker. No SDK/publication/
 redesign/other repository work or new Live/production/handoff parameters.
 
-Next bounded **V02.6**: isolate Network-only versus Debugger-only versus the
-existing full attach set (with Off) on the same unchanged64 workload. This adds
-one missing domain control, motivated by the current raw-full cost; it is not a
+Next bounded **V02.6**: isolate bare attachment, Network-only, Debugger-only and the
+existing full attach set (with Off) on the same unchanged64 workload. These add
+missing connection/domain controls, motivated by the current raw-full cost; it is not a
 blind rerun of original102 or a presumption that Debugger is the culprit. Preserve
 all old results and fixed workload; no product change until a specific mechanism
 is supported. If mandatory native transport itself exceeds the target, record

@@ -4197,13 +4197,13 @@
       "active_slice": {
         "id": "V02.5",
         "title": "Passive DOM/native-point versus raw attach-domain diagnostic",
-        "status": "diagnostic-complete-review-pending-product64-unchanged",
+        "status": "finite-diagnostic-reviewed-product64-unchanged",
         "plan": "../superpowers/plans/2026-10-23-v02-dom-floor.md"
       },
       "execution_record": "105-v02-dom-domain-diagnostic.md",
       "current_checkpoint": {
         "id": "V02.5-dom-floor64",
-        "status": "ready-one-parent-review",
+        "status": "finite-diagnostic-reviewed",
         "record": "105-v02-dom-domain-diagnostic.md",
         "candidate": "0.1.0-candidate.20261021.64",
         "verification": ".artifacts/v02/dom-floor/2026-10-23/verification64-dom.json",
@@ -4227,7 +4227,16 @@
         "performance_acceptance": false,
         "targets_waived": false,
         "whole_task_complete": false,
-        "next_bounded_step": "V02.6 Off/Network-only/Debugger-only/full-attach diagnostic on unchanged64; no product change from negative DOM result"
+        "next_bounded_step": "V02.6 Off/bare/Network-only/Debugger-only/full-attach diagnostic on unchanged64; no product change from negative DOM result",
+        "review": {
+          "count": 1,
+          "fresh_context": true,
+          "critical": 0,
+          "important": 0,
+          "minor": 0,
+          "correction_passes": 0,
+          "independent_source_checks": 14
+        }
       },
       "completed_slices": [
         {
@@ -4599,8 +4608,8 @@
     "document": "105-v02-dom-domain-diagnostic.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.5-dom-floor64-ready-review",
-    "next_item": "V02.6 Off/Network-only/Debugger-only/full-attach diagnostic on unchanged64; no product change from negative DOM result",
+    "current_increment": "V02.5-dom-floor64-reviewed",
+    "next_item": "V02.6 Off/bare/Network-only/Debugger-only/full-attach diagnostic on unchanged64; no product change from negative DOM result",
     "new_full_task_acceptances": [
       "F01",
       "F02",
