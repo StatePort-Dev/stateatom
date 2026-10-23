@@ -4195,48 +4195,43 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.5",
-        "title": "Passive DOM/native-point versus raw attach-domain diagnostic",
-        "status": "finite-diagnostic-reviewed-product64-unchanged",
-        "plan": "../superpowers/plans/2026-10-23-v02-dom-floor.md"
+        "id": "V02.6",
+        "title": "Bare attachment and explicit Network/Debugger/full diagnostic",
+        "status": "diagnostic-complete-review-pending-product64-unchanged",
+        "plan": "../superpowers/plans/2026-10-23-v02-attachment-floor.md"
       },
-      "execution_record": "105-v02-dom-domain-diagnostic.md",
+      "execution_record": "106-v02-attachment-domain-diagnostic.md",
       "current_checkpoint": {
-        "id": "V02.5-dom-floor64",
-        "status": "finite-diagnostic-reviewed",
-        "record": "105-v02-dom-domain-diagnostic.md",
+        "id": "V02.6-attachment-floor64",
+        "status": "ready-one-parent-review",
+        "record": "106-v02-attachment-domain-diagnostic.md",
         "candidate": "0.1.0-candidate.20261021.64",
-        "verification": ".artifacts/v02/dom-floor/2026-10-23/verification64-dom.json",
-        "focused_source_checks": 14,
-        "new_dom_checks": 5,
+        "verification": ".artifacts/v02/attachment-floor/2026-10-23/verification64-attachment.json",
+        "focused_source_checks": 18,
+        "new_attachment_checks": 4,
         "retained_full_source_checks": 2424,
         "fresh_full_source_run": false,
         "fresh_build": false,
-        "source_inputs": 832,
-        "raw_samples": 224,
-        "measured_samples": 192,
-        "warmup_samples": 32,
-        "dom_vs_full_percent": {
-          "standalone": 4.9012934,
-          "embedding": -0.330033
+        "source_inputs": 836,
+        "raw_samples": 350,
+        "measured_samples": 300,
+        "warmup_samples": 50,
+        "network_vs_off_percent": {
+          "standalone": 12.28695997,
+          "embedding": 10.70811745
         },
-        "raw_full_vs_off_percent": {
-          "standalone": 8.57354028,
-          "embedding": 28.38983051
+        "bare_vs_off_percent": {
+          "standalone": -1.18906064,
+          "embedding": 1.61197467
+        },
+        "debugger_vs_off_percent": {
+          "standalone": -6.14347998,
+          "embedding": -1.208981
         },
         "performance_acceptance": false,
         "targets_waived": false,
         "whole_task_complete": false,
-        "next_bounded_step": "V02.6 Off/bare/Network-only/Debugger-only/full-attach diagnostic on unchanged64; no product change from negative DOM result",
-        "review": {
-          "count": 1,
-          "fresh_context": true,
-          "critical": 0,
-          "important": 0,
-          "minor": 0,
-          "correction_passes": 0,
-          "independent_source_checks": 14
-        }
+        "next_bounded_step": "V02.7 preregister existing warm source/action and source-map buffer/cancellation measurements on bounded declared corpus; no transport-based waiver"
       },
       "completed_slices": [
         {
@@ -4403,6 +4398,43 @@
             "re_review": false
           },
           "historical63": ".artifacts/v02/observation-publication/2026-10-23/verification63-historical.json"
+        },
+        {
+          "id": "V02.5-dom-floor64",
+          "status": "finite-diagnostic-reviewed",
+          "record": "105-v02-dom-domain-diagnostic.md",
+          "candidate": "0.1.0-candidate.20261021.64",
+          "verification": ".artifacts/v02/dom-floor/2026-10-23/verification64-dom.json",
+          "focused_source_checks": 14,
+          "new_dom_checks": 5,
+          "retained_full_source_checks": 2424,
+          "fresh_full_source_run": false,
+          "fresh_build": false,
+          "source_inputs": 832,
+          "raw_samples": 224,
+          "measured_samples": 192,
+          "warmup_samples": 32,
+          "dom_vs_full_percent": {
+            "standalone": 4.9012934,
+            "embedding": -0.330033
+          },
+          "raw_full_vs_off_percent": {
+            "standalone": 8.57354028,
+            "embedding": 28.38983051
+          },
+          "performance_acceptance": false,
+          "targets_waived": false,
+          "whole_task_complete": false,
+          "next_bounded_step": "V02.6 Off/bare/Network-only/Debugger-only/full-attach diagnostic on unchanged64; no product change from negative DOM result",
+          "review": {
+            "count": 1,
+            "fresh_context": true,
+            "critical": 0,
+            "important": 0,
+            "minor": 0,
+            "correction_passes": 0,
+            "independent_source_checks": 14
+          }
         }
       ]
     },
@@ -4605,11 +4637,11 @@
     ]
   },
   "reconciliation": {
-    "document": "105-v02-dom-domain-diagnostic.md",
+    "document": "106-v02-attachment-domain-diagnostic.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.5-dom-floor64-reviewed",
-    "next_item": "V02.6 Off/bare/Network-only/Debugger-only/full-attach diagnostic on unchanged64; no product change from negative DOM result",
+    "current_increment": "V02.6-attachment-floor64-ready-review",
+    "next_item": "V02.7 preregister existing warm source/action and source-map buffer/cancellation measurements on bounded declared corpus; no transport-based waiver",
     "new_full_task_acceptances": [
       "F01",
       "F02",
