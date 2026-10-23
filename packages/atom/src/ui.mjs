@@ -38,7 +38,7 @@ function ownPickerRequest(tabId,id){ownedPicker?.controller?.abort();const own={
 let analysis,selectedState,loadGeneration=0,selectionGeneration=0,tabGeneration=0,tabsGeneration=0,tabsInitialized=false,renderedAt,restorationNotice,selectionIntent=0;
 const tab=()=>Number($('tabs').value);
 async function rpc(message,signal=controller.signal){const r=await client.request(message,{signal});if(disposed)throw atomError('DISPOSED');return r;}
-const pendingActions=new Map(),pendingProperties=new Map();
+const pendingActions=new Map(),pendingProperties=new Map(),pendingInspections=new Map();
 async function action(fn){
  const id=tab(),epoch=tabGeneration,key=epoch+':'+id,batch=pendingActions.get(key)||{count:0,error:null};pendingActions.set(key,batch);++batch.count;
  try{$('status').textContent='Working…';return await fn();}
@@ -54,17 +54,19 @@ async function tabs(){
 }
 async function load(options={}){
  const id=tab(),generation=++loadGeneration;
- if(pendingProperties.has(id))return;
+ if(pendingProperties.has(id)||pendingInspections.has(id))return;
  if(!Number.isSafeInteger(id)||id<=0){selectedState=null;analysis=null;renderInspection();return;}
  const request={op:'state',tabId:id,observationOwnerId,refreshDeep:options?.refreshDeep!==false,...(options?.refreshIdentity===true?{refreshIdentity:true}:{})};
+ const current=()=>!disposed&&generation===loadGeneration&&id===tab()&&!pendingProperties.has(id)&&!pendingInspections.has(id);
  let state;
  try{state=await rpc(request);}
  catch(e){
+  if(!current())return;
   if(options?.refreshIdentity!==true||e.code!=='DEEP_REFRESH_REQUIRED')throw e;
-  if(generation!==loadGeneration||id!==tab()||pendingProperties.has(id))return;
-  state=await rpc({...request,refreshDeep:true,refreshIdentity:false});
+  try{state=await rpc({...request,refreshDeep:true,refreshIdentity:false});}
+  catch(fallbackError){if(!current())return;throw fallbackError;}
  }
- if(generation!==loadGeneration||id!==tab()||pendingProperties.has(id))return;
+ if(!current())return;
  selectedState={...state,tabId:id};analysis=state.analysis;observation.update(selectedState);inputUI.update(inspectionDisplayState(selectedState));renderInspection();
 }
 const sourceAnalysis=createSourceAnalysisClient({url:options.sourceAnalysisWorkerURL,baseURL:document.location?.href,Worker:document.defaultView?.Worker});
@@ -180,20 +182,23 @@ function reveal(id){const e=$(id),scroller=$('scroll');if(e.tagName==='DETAILS')
 let fields=[];
 function clearInspection(keepTarget=true,{preserveViewport=false,preserveIntent=false}={}){if(!preserveIntent){++selectionIntent;void observation.contextChanged();}if(!preserveViewport)renderedAt=null;++selectionGeneration;const property=$('property').value;++loadGeneration;selectedState=keepTarget&&selectedState?{...selectedState,selection:null,analysis:null,stale:null}:null;analysis=null;renderInspection();if(keepTarget)$('property').value=property;}
 async function changeContext(){const productionCleanup=productionUI.contextChanged(),observationCleanup=observation.contextChanged('tab-switch'),inputCleanup=inputUI.close('Selected tab changed'),owned=ownedPicker;owned?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);if(owned)await client.request({op:'cancel-pick',tabId:owned.tabId,pickerId:owned.id}).catch(()=>{});await Promise.all([inputCleanup,productionCleanup,observationCleanup]);}
-async function inspectAgain(){
- const id=tab(),selector=selectedState?.selection?.selector||selectedState?.stale?.target?.selector;
- if(!selector)throw Error('Select an element first');
- const inputCleanup=inputUI.close('Inspect again');clearInspection();const intent=selectionIntent;let inspected=false;
+async function inspectSelection(selector,reason){
+ const id=tab(),inputCleanup=inputUI.close(reason);clearInspection();const intent=selectionIntent;pendingInspections.set(id,intent);let inspected=false;
  try{await inputCleanup;if(id!==tab())return;await rpc({op:'inspect-selector',tabId:id,selector});inspected=true;}
  // Preserve the completed snapshot; a later intent or failure uses ordinary recovery.
- finally{if(id===tab())await load({refreshDeep:!inspected||intent!==selectionIntent,refreshIdentity:inspected&&intent===selectionIntent});}
+ finally{if(pendingInspections.get(id)===intent)pendingInspections.delete(id);if(id===tab())await load({refreshDeep:!inspected||intent!==selectionIntent,refreshIdentity:inspected&&intent===selectionIntent});}
+}
+async function inspectAgain(){
+ const selector=selectedState?.selection?.selector||selectedState?.stale?.target?.selector;
+ if(!selector)throw Error('Select an element first');
+ return inspectSelection(selector,'Inspect again');
 }
 function flatten(v,p='',out=[]){if(v!==null&&typeof v==='object')for(const[k,x]of Object.entries(v))flatten(x,p?p+'.'+k:k,out);else out.push({path:p,value:v});return out;}
 $('connect-receipt').onclick=()=>action(async()=>{try{const r=parseConnectionReceipt($('connection-receipt').value);if(options.requestOriginPermission&&!await options.requestOriginPermission(r.url))throw Error('Helper origin permission denied');await rpc({op:'pair',url:r.url,token:r.token,origin:r.origin,sourceRoot:r.sourceRoot,receipt:r});await load();}finally{$('connection-receipt').value='';}});
 $('pair').onclick=()=>action(async()=>{const url=$('bridge').value,origin=$('origin').value;if(!helperURL(url)||!appOrigin(origin,{exact:true}))throw Error('Enter canonical origins without paths');if(options.requestOriginPermission&&!await options.requestOriginPermission(url))throw Error('Helper origin permission denied');await rpc({op:'pair',url,token:$('token').value,origin,sourceRoot:$('source-root').value});await load();});
 $('save-site').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration,origin=$('tabs').selectedOptions?.[0]?.dataset.origin,mode=$('site-mode').value,actions=mode==='development'?['cache','reload','override','replay'].filter(n=>$('site-'+n).checked):[];if(!appOrigin(origin,{exact:true}))throw Error('Select an exact application origin');if(options.requestOriginPermission&&!await options.requestOriginPermission(origin))throw Error('Site origin permission denied');if(id!==tab()||epoch!==tabGeneration)throw Error('Selected tab changed');await rpc({op:'connect-site',tabId:id,connection:{origin,mode,actions}});await load();});
 $('forget-site').onclick=()=>action(async()=>{await rpc({op:'forget-site',tabId:tab()});await load();});
-$('refresh-tabs').onclick=()=>action(async()=>{await tabs();await load();});$('tabs').onchange=()=>{const cleanup=changeContext();return action(async()=>{await cleanup;await load();});};$('attach').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration,origin=$('tabs').selectedOptions?.[0]?.dataset.origin;if(selectedState?.capabilityPolicy?.features?.['basic.request-site-access']?.available&&(!options.requestOriginPermission||!await options.requestOriginPermission(origin)))throw Error('Site origin permission denied');await rpc({op:'attach',tabId:id,readOnly:$('source-map-readonly').checked});if(disposed||id!==tab()||epoch!==tabGeneration)return;await load();if(disposed||id!==tab()||epoch!==tabGeneration)return;$('browser-connection').open=false;$('source-connection').open=false;$('scroll').scrollTop=0;});$('pick').onclick=()=>action(async()=>{await inputUI.close('Element selection changed');const cancelling=['starting','picking','resolving'].includes(selectedState?.picker?.status),pickerId=cancelling?selectedState.picker.id:crypto.randomUUID();const signal=cancelling?controller.signal:ownPickerRequest(tab(),pickerId);if(cancelling)ownedPicker?.controller?.abort();await rpc({op:cancelling?'cancel-pick':'pick',tabId:tab(),pickerId},signal);if(cancelling)ownedPicker=null;await load({refreshDeep:!cancelling});});$('inspect-selector').onclick=()=>action(async()=>{const id=tab(),selector=$('selector').value,inputCleanup=inputUI.close('Manual selection changed');clearInspection();const intent=selectionIntent;let inspected=false;try{await inputCleanup;if(id!==tab())return;await rpc({op:'inspect-selector',tabId:id,selector});inspected=true;}finally{if(id===tab())await load({refreshDeep:!inspected||intent!==selectionIntent,refreshIdentity:inspected&&intent===selectionIntent});}});$('load').onclick=()=>action(inspectAgain);$('detach').onclick=()=>action(async()=>{await rpc({op:'detach',tabId:tab()});await load();});
+$('refresh-tabs').onclick=()=>action(async()=>{await tabs();await load();});$('tabs').onchange=()=>{const cleanup=changeContext();return action(async()=>{await cleanup;await load();});};$('attach').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration,origin=$('tabs').selectedOptions?.[0]?.dataset.origin;if(selectedState?.capabilityPolicy?.features?.['basic.request-site-access']?.available&&(!options.requestOriginPermission||!await options.requestOriginPermission(origin)))throw Error('Site origin permission denied');await rpc({op:'attach',tabId:id,readOnly:$('source-map-readonly').checked});if(disposed||id!==tab()||epoch!==tabGeneration)return;await load();if(disposed||id!==tab()||epoch!==tabGeneration)return;$('browser-connection').open=false;$('source-connection').open=false;$('scroll').scrollTop=0;});$('pick').onclick=()=>action(async()=>{await inputUI.close('Element selection changed');const cancelling=['starting','picking','resolving'].includes(selectedState?.picker?.status),pickerId=cancelling?selectedState.picker.id:crypto.randomUUID();const signal=cancelling?controller.signal:ownPickerRequest(tab(),pickerId);if(cancelling)ownedPicker?.controller?.abort();await rpc({op:cancelling?'cancel-pick':'pick',tabId:tab(),pickerId},signal);if(cancelling)ownedPicker=null;await load({refreshDeep:!cancelling});});$('inspect-selector').onclick=()=>action(()=>inspectSelection($('selector').value,'Manual selection changed'));$('load').onclick=()=>action(inspectAgain);$('detach').onclick=()=>action(async()=>{await rpc({op:'detach',tabId:tab()});await load();});
 $('experiment').onclick=()=>action(async()=>{const id=tab(),generation=selectionGeneration;const field=fields[Number($('fields').value)];$('experiment-result').textContent='Running…';const result=await rpc({op:'experiment',tabId:tab(),field,value:JSON.parse($('value').value),controlPath:$('control').value,actions:JSON.parse($('actions').value)});if(id!==tab()||generation!==selectionGeneration)return;$('experiment-result').textContent=result.status+': '+result.reason;$('evidence').textContent=JSON.stringify(result,null,2);});
 const unsubscribe=client.subscribe(m=>{if(disposed)return;if(['selection','state-invalidated'].includes(m.event)&&m.tabId===tab()){const observer=observation.snapshot();if(m.event==='state-invalidated'&&m.scope==='input-history'&&observer.tabId===m.tabId&&observer.window?.status==='recording'&&m.windowId===observer.window.windowId&&selectedState?.observationAccess==='owned'&&selectedState.productionObservation?.windowId===observer.window.windowId&&!observer.connectionLost){
  if(m.inspectionChanged===true){analysis=null;selectedState={...selectedState,analysis:null};renderInspection();}

@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.65
+
+- Defer background state reads while an explicit element inspection is pending;
+  an older completion cannot release the newer inspection's guard. CSS selection
+  and Inspect again share the same existing cleanup and final refresh path.
+- Ignore superseded primary/deep-fallback state errors so they cannot replace a
+  newer selected point's status. Current request failures remain visible; native
+  identity, render-occurrence deep recovery and evidence semantics are unchanged.
+- Preserve64's original measurements and failures.65 requires its own package
+  and affected native qualification; no performance waiver, permission or UI
+  contract/layout/token/font change.
+
 ## 0.1.0-candidate.20261021.64
 
 - Keep terminal context/record/pending/byte/time closure publication independent
