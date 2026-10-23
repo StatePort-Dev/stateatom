@@ -4,7 +4,9 @@
 unchanged Atom `0.1.0-candidate.20261021.60` / UI `0.2.0-candidate.20261018.2`.
 **This workload misses both approved targets on both hosts. V02 remains open,
 19/29 whole tasks (~66% equal count), no performance waiver or release claim.**
-ONE whole-slice review is pending at this checkpoint.
+ONE fresh-context whole-slice review found one Important harness-validation gap;
+the single corrective pass is complete, with2385/2385 full source checks PASS.
+The finite measurement/reporting slice is complete; neither target is waived.
 
 ## Protocol and actual operation
 
@@ -81,7 +83,10 @@ Evidence directory:
 `results.json`; `samples.jsonl`, `workloads.jsonl`, `windows.jsonl`,
 `attempts.jsonl`, `native.log` preserve raw operation/timing. `verification.json`
 recomputes every summary from all198 raw rows and checks candidate archives,
-installed pair/both host manifests and all before/after/current input hashes.
+installed pair/both host manifests and all334 before/after/current input hashes
+at that original verification checkpoint. The later review correction changes
+three harness/test files explicitly, as recorded below; the original receipt is
+retained with its original time and identities.
 The product manifest has268 inputs; the measurement adds its exact protocol,
 plan, driver/tests/helpers and build inputs. No old P04 result becomes a timing.
 
@@ -102,6 +107,41 @@ plan, driver/tests/helpers and build inputs. No old P04 result becomes a timing.
   truncated-window rows cannot establish acceptance; valid outliers are retained.
   Protocol + existing observation-runtime contract checks37/37 PASS (0 skipped),
   syntax and `git diff --check` PASS. Logs retained beside the raw run.
+
+## ONE whole-slice review and correction
+
+Fresh read-only reviewer `/root/v02_baseline_review`, range `efa7be6…3604d69`:
+Critical0, Important1(P2), Minor0. Independent5 tests,198 raw summaries,334 original
+inputs and exact archives/installed hosts checked. No new native run or second
+review. The actual66 windows independently have zero gaps.
+
+Important finding: recording `window.gaps` without rejecting missing/malformed/
+nonzero values could admit a dropped response phase while20 completed requests
+and21 records still match. Control with `future=1` incorrectly passed. The
+regression was RED (missing exception), then GREEN6 after sharing strict
+`assertPerformanceWindow` between summarizer and native pre-cleanup validation.
+All nine exact gap keys are required and must be numeric zero. Metadata is saved
+before validation, so a rejected trial remains reviewable. Full `npm test` after
+this ONE corrective pass:2385/2385 PASS,0fail/skip/cancel,84077.3009ms; syntax and
+`git diff --check` PASS. This is current source evidence, not fresh installed
+product or performance evidence.
+
+Original driver/helper/tests are retained beside their recorded hashes. The
+separate `review/verification-reviewed.json` explicitly records the three changed
+harness/test inputs,331 unchanged current measurement inputs,268 unchanged product
+inputs plus every build input. All198 original rows/66 windows revalidate with
+the stricter code and reproduce exactly the original serialized summaries and
+target misses. No unchanged native workload was repeated; the original334-input
+preregistration and native source identities remain historical, not silently
+rewritten as a run of the corrected harness. Full/RED/GREEN logs and the retained
+review/rulings report reside in `review/` beside the baseline.
+
+Executor rulings on reviewer boundaries: full V02 lifecycle/modes/corpus stay
+open; other apps/browsers/hardware/routes are unmeasured; causality and remedies
+belong to controlled V02.2 diagnosis; human usability/visual fidelity are unclaimed
+and a human is no blocker; public release readiness/publication is outside scope.
+Misreading those boundaries would create false full/portable/usability/release
+acceptance or justify an unproven product change. No deferred minor finding.
 
 ## Active dependencies and next bounded step
 

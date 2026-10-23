@@ -12,7 +12,7 @@ import {sha256,fileManifest,verifyArtifactHashes,inspectInstalledPair} from '../
 import {nativeInspectorUI} from '../helpers/native-inspector-ui.mjs';
 import {sourceAccessDesktop,importProfileRoot} from '../helpers/source-access-native-desktop.mjs';
 import {sourceAccessHTTPSFixture} from '../helpers/source-access-https-fixture.mjs';
-import {PERFORMANCE_PROTOCOL,trialOrder,summarizePerformance,performanceFixtureScript,performanceFixtureHTML} from '../helpers/basic-observer-performance.mjs';
+import {PERFORMANCE_PROTOCOL,trialOrder,summarizePerformance,assertPerformanceWindow,performanceFixtureScript,performanceFixtureHTML} from '../helpers/basic-observer-performance.mjs';
 
 const hf=process.argv[2];assert(hf,'Exact atom-handoff.json required');
 const h=JSON.parse(await readFile(hf)),out='.artifacts/v02/basic-observer/'+new Date().toISOString().replace(/[:.]/g,'-');
@@ -57,7 +57,7 @@ async function stopWindow(tabId,initial){
  await waitFor(async()=>{const w=await windowState(tabId);assert.equal(w.windowId,initial.windowId);assert.equal(w.status,'recording','Collector stopped before explicit Stop');return w.counts.completed===20;});
  await d.click('handoff-current');await waitFor(()=>panel.evaluate(()=>document.querySelector('[data-atom-id="handoff-dialog"]').open));await d.click('observation-stop');
  const w=await waitFor(async()=>{const w=await windowState(tabId);return w?.status==='stopped'?w:null;});assert.equal(w.windowId,initial.windowId);assert.equal(w.stopReason,'user');
- const saved={windowId:w.windowId,status:w.status,stopReason:w.stopReason,counts:w.counts,gaps:w.gaps,records:w.records.length,bytes:Buffer.byteLength(JSON.stringify(w)),initial};result.currentTrial.window=saved;await appendFile(out+'/windows.jsonl',JSON.stringify(saved)+'\n');
+ const saved={windowId:w.windowId,status:w.status,stopReason:w.stopReason,counts:w.counts,gaps:w.gaps,records:w.records.length,bytes:Buffer.byteLength(JSON.stringify(w)),initial};result.currentTrial.window=saved;await appendFile(out+'/windows.jsonl',JSON.stringify(saved)+'\n');assertPerformanceWindow(saved);
  await waitFor(()=>panel.evaluate(()=>!document.querySelector('[data-atom-id="observation-clear"]').disabled));await d.click('observation-clear');await waitFor(async()=>{const cleared=await windowState(tabId);return cleared?.status==='deleted'&&cleared.windowId===null&&cleared.identity===null&&cleared.records.length===0;});await d.click('handoff-cancel');await waitFor(()=>panel.evaluate(()=>!document.querySelector('[data-atom-id="handoff-dialog"]').open));return saved;
 }
 async function appClick(tabId){
