@@ -1,4 +1,5 @@
 import {parseConnectionReceipt,assessProjectSetup,HELPER_PROTOCOL,HELPER_VERSION,HELPER_ID} from '../../../core/project-connection.mjs';
+import {createObservationPublisher} from './observation-publisher.mjs';
 import {parseStoppedProductionObservation} from '../../../core/production-observation-data.mjs';
 import {createNativeProductionObservation,productionObservationTime,createObservationReadFence} from './production-observation.mjs';
 import {createResponseEditor} from './response-editor.mjs';
@@ -154,12 +155,18 @@ function stopObservation(id,reason,forget=false,expected=null){
  owner.controller?.stop(reason);syncObservation(id,owner);
  if(forget||!owner.controller)observationOwners.delete(id);
 }
+function publishObservation(id,owner){
+ // One constant-state flight per private owner, no historical event/snapshot
+ // queue. Direct Stop/Clear/revoke writes stay independent of this flight.
+ owner.publish??=createObservationPublisher({persist,notify:()=>notifyObservation(id)});
+ void owner.publish().catch(()=>{});
+}
 function collectObservation(id,source,method,p){
  const owner=observationOwners.get(id);if(!owner||source.sessionId)return;
- if(method==='Runtime.executionContextsCleared'||method==='DOM.documentUpdated'||method==='Runtime.executionContextDestroyed'&&(p.executionContextId===owner.main?.id||p.executionContextUniqueId===owner.main?.uniqueId)||method==='Runtime.executionContextCreated'&&p.context?.auxData?.frameId===owner.state.mainFrameId&&p.context.auxData.isDefault&&p.context.uniqueId!==owner.main?.uniqueId){stopObservation(id,'context-changed');void persist().then(()=>notifyObservation(id)).catch(()=>{});return;}
+ if(method==='Runtime.executionContextsCleared'||method==='DOM.documentUpdated'||method==='Runtime.executionContextDestroyed'&&(p.executionContextId===owner.main?.id||p.executionContextUniqueId===owner.main?.uniqueId)||method==='Runtime.executionContextCreated'&&p.context?.auxData?.frameId===owner.state.mainFrameId&&p.context.auxData.isDefault&&p.context.uniqueId!==owner.main?.uniqueId){stopObservation(id,'context-changed');publishObservation(id,owner);return;}
  if(!owner.controller)return;
  const before=owner.state.productionObservation;owner.controller.event(source,method,p);const after=syncObservation(id,owner);
- if(before!==after)void persist().then(()=>notifyObservation(id)).catch(()=>{});
+ if(before!==after)publishObservation(id,owner);
 }
 function observationCapturePolicyContext(id,context){const owner=observationOwners.get(id);return {disposed:stopped,busy:!!tabs[id]?.busy,observationInspector:!!context.inspector?.active&&inspectorClients.get(context.session)===context.inspector,foreignObservation:!!owner&&!sameActionOwner(owner,context)};}
 function inspectionStatePolicy(id,m,context,facts){

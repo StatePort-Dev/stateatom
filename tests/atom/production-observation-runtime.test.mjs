@@ -55,3 +55,45 @@ for(const reason of['context-changed','tab-switch'])test('owned contextual Stop 
 test('context Stop DTO accepts only its closed reason set and no reason on another observation command',async t=>{const f=await fixture(t),w=await f.request({op:'observation-start'});for(const reason of['user','permission-lost','invented',null,1])await assert.rejects(f.request({op:'observation-stop',windowId:w.windowId,reason}),{code:'INVALID_MESSAGE'});for(const op of['observation-read','observation-clear','observation-checkpoint'])await assert.rejects(f.request({op,windowId:w.windowId,reason:'tab-switch'}),{code:'INVALID_MESSAGE'});assert.equal((await f.state()).productionObservation.status,'recording');});
 
 test('identity-only state never adds native reads to an owned active or historical observation window',async t=>{const f=await fixture(t),w=await f.request({op:'observation-start'});for(const historical of[false,true]){if(historical){await f.request({op:'observation-stop',windowId:w.windowId});await f.clients.get('p04-a').close();f.connect('p04-a');}const at=f.calls.length,s=await f.request({op:'state',observationOwnerId:'view-a',refreshDeep:false,refreshIdentity:true});assert.equal(s.productionObservation.windowId,w.windowId);assert.equal(f.calls.length,at,'Observation/history metadata must not acquire another DOM read');assert.equal(s.productionObservation.counts.checkpoints,0);}});
+
+test('native observation burst keeps every record with one in-flight publication and one final notice',async t=>{
+ const ack=deferred();t.after(()=>ack.resolve());const f=await fixture(t),w=await f.request({op:'observation-start'}),original=f.platform.chrome.storage.session.set;
+ let writes=0,inflight=0,maxInflight=0;const notices=[];
+ f.api.runtime.sendMessage=async m=>{if(m.scope==='production-observation')notices.push(m);};
+ f.platform.chrome.storage.session.set=async value=>{writes++;inflight++;maxInflight=Math.max(maxInflight,inflight);try{await ack.promise;return await original(value);}finally{inflight--;}};
+ for(let i=0;i<20;i++)await f.network('burst-'+i);
+ assert.equal(maxInflight,1,'Native event publication must not start one concurrent storage submission per event');
+ assert.equal(writes,1);assert.equal(notices.length,0,'Only a saved settled view may be announced');
+ ack.resolve();for(let i=0;i<5;i++)await new Promise(setImmediate);
+ assert.equal(writes,2,'One latest-current-state follow-up after the gated first save');assert.equal(notices.length,1);assert.equal(notices[0].tabId,1);
+ const saved=f.data['stateport.atom.v1.tabs'][1].productionObservation;assert.equal(saved.windowId,w.windowId);assert.equal(saved.records.length,20);assert(saved.records.every(r=>r.completion==='finished'));assert(Object.values(saved.gaps).every(n=>n===0));
+});
+
+test('delayed old event publication cannot block Stop/Delete/new Start or resurrect its window',{timeout:5000},async t=>{
+ const ack=deferred();t.after(()=>ack.resolve());const f=await fixture(t),a=await f.request({op:'observation-start'}),original=f.platform.chrome.storage.session.set;let first=true;
+ f.platform.chrome.storage.session.set=async value=>{if(first){first=false;await ack.promise;}return original(value);};
+ await f.network('old-pending');assert.equal(first,false);
+ const stopped=await f.request({op:'observation-stop',windowId:a.windowId});assert.equal(stopped.stopReason,'user');
+ await f.request({op:'observation-clear',windowId:a.windowId});const deleted=f.data['stateport.atom.v1.tabs'][1].productionObservation;assert.equal(deleted.status,'deleted');assert.equal(deleted.windowId,null);assert.deepEqual(deleted.records,[]);
+ const b=await f.request({op:'observation-start'});assert.notEqual(b.windowId,a.windowId);assert.equal(b.records.length,0);
+ ack.resolve();for(let i=0;i<5;i++)await new Promise(setImmediate);
+ const saved=f.data['stateport.atom.v1.tabs'][1].productionObservation;assert.equal(saved.windowId,b.windowId);assert.equal(saved.status,'recording');assert.equal(saved.records.length,0);assert.equal((await f.state()).productionObservation.windowId,b.windowId);
+});
+test('permission cleanup stays independent of delayed native event publication',{timeout:5000},async t=>{
+ const ack=deferred();t.after(()=>ack.resolve());const f=await fixture(t);await f.request({op:'observation-start'});const original=f.platform.chrome.storage.session.set;let first=true;
+ f.platform.chrome.storage.session.set=async value=>{if(first){first=false;await ack.promise;}return original(value);};await f.network('private-old');
+ f.deny();f.events.emit({type:'permissions-removed'});for(let i=0;i<5;i++)await new Promise(setImmediate);
+ assert.equal((await f.state()).productionObservation,undefined);assert.equal(f.data['stateport.atom.v1.tabs'][1].productionObservation,undefined);
+ ack.resolve();for(let i=0;i<5;i++)await new Promise(setImmediate);assert.equal(f.data['stateport.atom.v1.tabs'][1].productionObservation,undefined);await assert.rejects(f.request({op:'observation-start'}),{code:'ORIGIN_DENIED'});
+});
+test('two native owner publishers retain exact tab routing without delaying the second tab',{timeout:5000},async t=>{
+ const ack=deferred();t.after(()=>ack.resolve());const f=await fixture(t);await f.request({op:'observation-start'});
+ await f.request({op:'attach',tabId:2});await f.request({op:'property',tabId:2,property:'disabled'});await f.request({op:'inspect-selector',tabId:2,selector:'#confirm'});
+ f.events.emit({type:'debugger',source:{tabId:2},method:'Runtime.executionContextCreated',params:{context:{id:7,uniqueId:'tab2-context',origin,auxData:{frameId:'main',isDefault:true}}}});await new Promise(setImmediate);
+ const b=await f.request({op:'observation-start',tabId:2}),notices=[],original=f.platform.chrome.storage.session.set;let first=true;
+ f.api.runtime.sendMessage=async m=>{if(m.scope==='production-observation')notices.push(m.tabId);};
+ f.platform.chrome.storage.session.set=async value=>{if(first){first=false;await ack.promise;}return original(value);};await f.network('tab1-gated');
+ f.events.emit({type:'debugger',source:{tabId:2},method:'Runtime.executionContextsCleared',params:{}});for(let i=0;i<5;i++)await new Promise(setImmediate);
+ assert.deepEqual(notices,[2]);const saved=f.data['stateport.atom.v1.tabs'][2].productionObservation;assert.equal(saved.windowId,b.windowId);assert.equal(saved.stopReason,'context-changed');
+ ack.resolve();for(let i=0;i<5;i++)await new Promise(setImmediate);assert.deepEqual(notices,[2,1]);assert.equal(f.data['stateport.atom.v1.tabs'][2].productionObservation.stopReason,'context-changed');
+});

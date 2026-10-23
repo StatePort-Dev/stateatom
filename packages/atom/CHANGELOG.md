@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.63
+
+- Coalesce overlapping native observation metadata publications per private owner:
+  one persistence flight plus a latest-state follow-up, without dropping events,
+  changing timestamps or queuing historical snapshots. Exact tab notices and
+  conservative ordinary/foreign invalidation remain. No debounce timer.
+- Start/Read/Stop/Delete, permission cleanup and original late-write repair stay
+  independent; a delayed old publication cannot restore a retired window. No
+  wire, visual contract or production authority change. Native performance
+  thresholds remain unchanged and require separate measurement.
+
 ## 0.1.0-candidate.20261021.62
 
 - Keep render-occurrence snapshots on the existing full deep metadata path.
