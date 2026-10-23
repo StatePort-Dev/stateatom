@@ -42,15 +42,15 @@ create completion122 and a preregistered original source case after exact new he
 readWorkspaceSources(root,sourceRoot,{priorityFiles=[],isAllowed=()=>true}={})
 returns [{file,text}], no new Atom DTO/wire/version/authority.
 
-- [ ] Write actual bridge HTTP late-selected-file RED, run node --test --test-isolation=none tests/bridge-source-priority.test.mjs; expect original omission failure.
-- [ ] Write filesystem budget/scope/symlink/special-file/trust controls before implementing the new reader.
-- [ ] Implement workspace reader and bounded bridge candidate extraction; keep existing validator/marker/range logic unchanged.
-- [ ] Run node --test --test-isolation=none tests/workspace-sources.test.mjs tests/bridge-source-priority.test.mjs tests/security.test.mjs tests/project-setup.test.mjs; expect PASS. Run full npm test once after source changes.
-- [ ] Replay retained original source failure through actual reader/validator, preserve original FAIL; expect selected SFC included and source-only validation no longer Stale. This is not runtime proof.
-- [ ] Commit source/tests/spec/plan and docs before building native artifacts.
-- [ ] npm run build:extensions; npm run pack:development. Reproduce exact helper bundle/input hashes and archive identity, keep warnings. Check unchanged Atom70/UI2/plugin5 before reuse; do not rerun old native matrices.
-- [ ] Derive explicit unchanged-plugin consumer receipt from actual prior strict install plus fresh exact artifact/installed payload checks; never count inherited checks as a fresh install.
-- [ ] Preregister only necessary helper/development/consumer receipt identities in original case; same question/criteria. Commit before native execution.
-- [ ] Run unchanged independent-vue-source-native.mjs with exact70/new helper and retained original dependency receipt; inspect actual output/screenshots/IDE proof or retained FAIL. No easier substitute target.
-- [ ] Record122/current routing and read-only integrity seal; ONE fresh review de6e0f8..final source head, at most one RED→GREEN correction pass/full suite, no re-review.
-- [ ] Final aggregate read-only integrity verification, local commit and one next dependency-valid unresolved item. Preserve ledger/evidence; goal remains active until deadline.
+- [x] Write actual bridge HTTP late-selected-file RED, run node --test --test-isolation=none tests/bridge-source-priority.test.mjs; expect original omission failure.
+- [x] Write filesystem budget/scope/symlink/special-file/trust controls before implementing the new reader.
+- [x] Implement workspace reader and bounded bridge candidate extraction; keep existing validator/marker/range logic unchanged.
+- [x] Run node --test --test-isolation=none tests/workspace-sources.test.mjs tests/bridge-source-priority.test.mjs tests/security.test.mjs tests/project-setup.test.mjs; expect PASS. Run full npm test once after source changes.
+- [x] Replay retained original source failure through actual reader/validator, preserve original FAIL; expect selected SFC included and source-only validation no longer Stale. This is not runtime proof.
+- [x] Commit source/tests/spec/plan and docs before building native artifacts.
+- [x] npm run build:extensions; npm run pack:development. Reproduce exact helper bundle/input hashes and archive identity, keep warnings. Check unchanged Atom70/UI2/plugin5 before reuse; do not rerun old native matrices.
+- [x] Derive explicit unchanged-plugin consumer receipt from actual prior strict install plus fresh exact artifact/installed payload checks; never count inherited checks as a fresh install.
+- [x] Preregister only necessary helper/development/consumer receipt identities in original case; same question/criteria. Commit before native execution.
+- [x] Run unchanged independent-vue-source-native.mjs with exact70/new helper and retained original dependency receipt; inspect actual output/screenshots/IDE proof or retained FAIL. No easier substitute target.
+- [x] Record122/current routing and read-only integrity seal; ONE fresh review de6e0f8..final source head, at most one RED→GREEN correction pass/full suite, no re-review.
+- [x] Final aggregate read-only integrity verification, local commit and one next dependency-valid unresolved item. Preserve ledger/evidence; goal remains active until deadline.

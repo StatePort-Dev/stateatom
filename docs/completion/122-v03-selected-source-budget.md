@@ -1,7 +1,9 @@
-# V03.9 — bounded selected workspace source acquisition, in progress
+# V03.9 — bounded selected workspace source acquisition, engineering complete
 
-2026-10-24 local; base de6e0f8/main; scope-review-1. Source implemented;
-new exact helper/native qualification and ONE review due. Whole20/29 unchanged.
+2026-10-24 local; base de6e0f8/main; scope-review-1. ONE review/one tested
+correction pass complete, corrected helper7 installed. Original selected-source
+question remains FAIL; whole V03/C09 and20/29 unchanged. Earlier sections retain
+the exact historical sequence and its then-pending steps.
 
 [Design](../superpowers/specs/2026-10-24-v03-selected-source-budget-design.md),
 [plan](../superpowers/plans/2026-10-24-v03-selected-source-budget.md).
@@ -157,3 +159,33 @@ New `consumer-reuse-helper7.json` explicitly inherits prior strict plugin admiss
 and retains verified original appRoot/dependencyFile; no reinstall/native pass.
 Case70-helper7 changes only handoff/receipt/helperSHA from helper6-context and is
 committed before execution. Original app, driver, question and criteria unchanged.
+
+## Corrected installed helper7 outcome and next item
+
+Preregistered `12f2c8a`; actual native terminal23158/exit1:
+`.artifacts/v03/independent-vue-source/2026-10-23T21-40-16-363Z/results.json`.
+**4 setup PASS/378 stable inputs, then original exact source expression FAIL0/1.**
+Installed isolated VSIX/bundle match helper7 above; selected original textarea,
+disabled=false, exact marker and helper-validated runtime Observed pass before the
+source-link assertion. This demonstrates the missing-source digest barrier is
+removed in the corrected installed helper; scalar-read, exact IDE range, input,
+Save/export and recipient gates remain unaccepted because they are not reached.
+
+All498 immutable originals and working497+the same generated components.d.ts delta
+remain unchanged. Own Vite exits0/null; helper closes; inspector console/errors0.
+First viewport actually inspected: normal empty textarea and0/0/0/0 Bytes, agent
+candidate only. Journal256/hashed253, source/script/anonymous/isolated gaps and
+Stale freshness remain; no finite-first-read/complete writer history qualification.
+Previous helper6 preflight/source FAILs and helper5 Stale FAILs stay intact.
+
+ONE review Important is fixed with four actual RED→GREEN regressions, focused29/
+full2579; no re-review. Final checkpoint verifies recorded checks, current exact
+artifact/input identities and historical receipts; it is an integrity aggregate,
+not another native success or full-feature proof. The corpus reporting append
+after native execution is explicitly distinct from the run's frozen378 inputs.
+Plan/ledger/history remain preserved under the user's retention requirement.
+
+Next bounded dependency-valid item: **V03.10 selected Vue source parser HTML void
+handling**, then repeat the same original source/scalar/IDE question only with an
+exact newly qualified helper if its inputs change. SDK, publication, redesign,
+other repository, accounts/certificates and user browser profiles remain outside.

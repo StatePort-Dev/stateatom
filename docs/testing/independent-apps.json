@@ -344,6 +344,75 @@
       "native_disabled_selection_reached": true,
       "corrected_native_catalogue": ".artifacts/v03/native-disabled-controls/2026-10-23T20-58-05-546Z/results.json",
       "raw_page_trace_is_accepted_source": false
+    },
+    {
+      "id": "V03.9-helper6-preflight-missing-consumer-context",
+      "application": "CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "execution_record": "../completion/122-v03-selected-source-budget.md",
+      "evidence": ".artifacts/v03/independent-vue-source/2026-10-23T21-26-28-485Z/results.json",
+      "status": "FAIL_PREPARATION_MISSING_CONSUMER_APPROOT_NO_BROWSER_IDE_APP",
+      "prior_checks_passed": 0,
+      "registered_inputs": 378,
+      "inputs_stable_during_run": true,
+      "immutable_original_files": 498,
+      "working_original_unchanged": 497,
+      "normal_generated_deltas": [
+        "components.d.ts"
+      ],
+      "IDE_started": false,
+      "source_positive_gate_reached": false,
+      "whole_V03_complete": false,
+      "helper_validated_runtime_status": null,
+      "selected_source_links": null,
+      "required_selected_source_links": 1,
+      "raw_page_trace_is_accepted_source": false
+    },
+    {
+      "id": "V03.9-helper6-source-link-unavailable",
+      "application": "CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "execution_record": "../completion/122-v03-selected-source-budget.md",
+      "evidence": ".artifacts/v03/independent-vue-source/2026-10-23T21-28-25-366Z/results.json",
+      "status": "FAIL_EXACT_SELECTED_SOURCE_LINK_ZERO_REQUIRED_ONE",
+      "prior_checks_passed": 4,
+      "registered_inputs": 378,
+      "inputs_stable_during_run": true,
+      "immutable_original_files": 498,
+      "working_original_unchanged": 497,
+      "normal_generated_deltas": [
+        "components.d.ts"
+      ],
+      "IDE_started": true,
+      "source_positive_gate_reached": false,
+      "whole_V03_complete": false,
+      "helper_validated_runtime_status": "Observed",
+      "selected_source_links": 0,
+      "required_selected_source_links": 1,
+      "raw_page_trace_is_accepted_source": false
+    },
+    {
+      "id": "V03.9-corrected-helper7-source-link-unavailable",
+      "application": "CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "execution_record": "../completion/122-v03-selected-source-budget.md",
+      "evidence": ".artifacts/v03/independent-vue-source/2026-10-23T21-40-16-363Z/results.json",
+      "status": "FAIL_EXACT_SELECTED_SOURCE_LINK_ZERO_REQUIRED_ONE",
+      "prior_checks_passed": 4,
+      "registered_inputs": 378,
+      "inputs_stable_during_run": true,
+      "immutable_original_files": 498,
+      "working_original_unchanged": 497,
+      "normal_generated_deltas": [
+        "components.d.ts"
+      ],
+      "IDE_started": true,
+      "source_positive_gate_reached": false,
+      "whole_V03_complete": false,
+      "helper_validated_runtime_status": "Observed",
+      "selected_source_links": 0,
+      "required_selected_source_links": 1,
+      "raw_page_trace_is_accepted_source": false
     }
   ]
 }

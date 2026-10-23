@@ -2146,7 +2146,7 @@
           "type_consumers": 2,
           "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
           "standalone_read_inject_native_checks": 3,
-          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
           "runtime_race_checks": 14,
           "isolated_bug_mutations_rejected": 6,
           "native_checks": 29,
@@ -3802,7 +3802,7 @@
       "implementation_plan": "../superpowers/plans/2026-10-21-l02-real-local-model.md",
       "remaining_acceptance": [
         "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
-        "Final candidate actual factual/concision/usefulness comparison preserving historical20\u201330 and>=25/5incomplete/5untrusted criteria",
+        "Final candidate actual factual/concision/usefulness comparison preserving historical20–30 and>=25/5incomplete/5untrusted criteria",
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
@@ -5096,7 +5096,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK \u2014 separate StatePort project",
+      "title": "Production SDK — separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",
@@ -5167,8 +5167,8 @@
     "document": "122-v03-selected-source-budget.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.9-source-reader-implemented-not-new-native-acceptance",
-    "next_item": "V03.9 bounded selected workspace-source acquisition",
+    "current_increment": "V03.9-engineering-complete-corrected-helper-native-source-partial",
+    "next_item": "V03.10 selected Vue source parser HTML void-element handling",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -5863,7 +5863,7 @@
         "type_consumers": 2,
         "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
         "standalone_read_inject_native_checks": 3,
-        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
         "runtime_race_checks": 14,
         "isolated_bug_mutations_rejected": 6,
         "native_checks": 29,
@@ -7268,14 +7268,33 @@
         "verification": ".artifacts/v03/target-source-scan/2026-10-24/retained-scan-diagnosis.json",
         "full_task_complete": false,
         "next_independent_item": "V03.9"
+      },
+      {
+        "id": "V03.9",
+        "status": "engineering-complete-selected-source-acquisition-independent-source-fail",
+        "execution_record": "122-v03-selected-source-budget.md",
+        "verification": ".artifacts/v03/selected-source-budget/2026-10-24/final-checkpoint.json",
+        "source_checks": 2579,
+        "focused_checks": 29,
+        "native_setup_checks": 4,
+        "whole_review": {
+          "critical": 0,
+          "important": 1,
+          "fixed_important": 1,
+          "minor": 0,
+          "correction_passes": 1,
+          "re_review": false
+        },
+        "full_task_complete": false,
+        "next_independent_item": "V03.10"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.9 prioritizes safe selected/trace candidates within unchanged160/256000/2000000 budgets; HTTPRED4=2PASS2FAIL, focused25/full2575PASS. Retained original reader and trace digest validation now pass source-only, but original source links0/template void-input parsing remains PARTIAL/exit1. New exact helper/native question/ONEreview due; whole20/29 unchanged.",
+    "current_activity_note": "V03.9 safe candidate-first acquisition and ONE review correction complete: earlier admitted paths/metadata revalidated after later awaits; RED14=10PASS4FAIL -> focused29/full2579PASS. Corrected helper7 exact installed native4 setup PASS/378 stable, runtime Observed but selected source links0 required1 FAIL. Original source/scalar/IDE/input/export question unaccepted; whole20/29 unchanged; next V03.10 HTML void source parser.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "de6e0f8 plus pending V03.9 reader/bridge/tests/design/plan; Atom70/plugin5 source unchanged pending hash checks",
+    "current_source_revision": "2c888e296c8bacb98f6f6b780457da2d036b225e corrected helper producer; original native preregistration12f2c8a; Atom70/plugin5 inputs verified unchanged",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.9 implement bounded selected-file acquisition within existing160-file/256000B-file/2000000B-total limits and mapped-root/symlink/trust/digest safeguards; new exact helper required only after source changes; unchanged original question must actually pass or remain FAIL"
+    "next_bounded_step": "V03.10 fix generic Vue source-template parser rejecting original ordinary non-self-closing HTML input, preserving exact selected SFC/expression/scalar/digest/range/IDE/input/export gates and original app; new exact helper qualification required for changed helper inputs. No full V03/C09 credit until actual original gates pass."
   },
   "next_task": "V03"
 }

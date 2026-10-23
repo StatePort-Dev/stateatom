@@ -138,13 +138,16 @@ synthetically supplying it changes source validation Stale→Observed. This is a
 source control, no product fix or installed acceptance. Original70 FAIL remains;
 next V03.9 safely acquires the selected source within existing budgets before broad
 index exhaustion, with a new exact helper only when its source changes.20/29 unchanged.
-[V03.9](completion/122-v03-selected-source-budget.md) source reader now prioritizes
-safe selected/trace paths within unchanged160/256000B/2000000B budgets. Real helper
-HTTP RED reproduced omission; focused25/full2575 PASS include scope/symlink/FIFO/
-trust/descriptor controls. Retained original reader/digest validation pass source-
-only, but source links remain0: generic template parsing rejects ordinary HTML
-void input. Replay stays PARTIAL/exit1. New exact helper/native/ONEreview due;
-original70 FAIL and20/29 unchanged.
+[V03.9](completion/122-v03-selected-source-budget.md) engineering increment complete:
+safe selected/trace-first acquisition shares160/256000B/2000000B; ONE review found
+one Important earlier-source replacement during later reads, fixed in one pass
+with final bounded path/metadata fence. Four actual RED regressions, focused29/
+full2579 PASS. Corrected exact installed helper7 on unchanged Atom70/plugin5 has
+4 setup PASS/378 stable inputs and selected runtime Observed, then original exact
+source links0/required1 FAIL. Scalar-read/IDE/input/export remain unaccepted; old
+helper5/6 failures preserved. Next bounded V03.10 fixes the source parser rejecting
+ordinary HTML void input; no original app patch or target/criterion substitution.
+Whole20/29 (~69%), V03/C09/A02/L02/V02 unchanged; no new feature-readiness claim.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the
