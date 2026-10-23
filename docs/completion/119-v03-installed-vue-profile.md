@@ -1,14 +1,12 @@
-# V03.6 — installed Vue profile, source/native phase in progress
+# V03.6 — installed Vue profile and source backpressure; native partial
 
-2026-10-23, scope-review-1, base df68377. **In progress.** Source/profile admission
-passes, but the first actual candidate3 application startup **failed** before the
-IDE/source-positive gate. Its exact failure is retained; the bounded DOM-parser
-correction passed61 focused/full2517 source checks. Candidate4 then exposed a
-separate ordinary ESM export-linkage defect before IDE. That minimal correction
-passes270 focused/full2521. Installed5 then renders the original page in its
-diagnostic retry but fails Attach at guardian64 pending RPCs. Necessary source-read
-backpressure correction and new Atom67 qualification are in progress. No full V03/C09 or new Vue runtime acceptance.
-20/29 whole tasks unchanged.
+2026-10-23, scope-review-1, base df68377. **Engineering increment closing;
+selected-source native acceptance FAIL.** Experimental installed Vue profile,
+minimal compiler corrections and bounded Atom source acquisition are implemented.
+Source2524 PASS, exact plugin5/helper5 admission, new Atom67/UI2 types2/package9 PASS.
+Latest original-app native run has4 PASS then rejects the textarea disabled target.
+No selected-source/read/IDE-range/input/export success is claimed. ONE whole code
+review remains due. Full V03/C09 and20/29 whole tasks stay unchanged.
 
 [Executor design](../superpowers/specs/2026-10-23-v03-installed-vue-profile-design.md),
 [plan](../superpowers/plans/2026-10-23-v03-installed-vue-profile.md),
@@ -266,3 +264,40 @@ public Copy connection receipt. ENOENT is retained; actual600-mode receipt exist
 by cleanup. Driver now waits for complete actual JSON using its existing20s wait,
 without synthesizing secrets, increasing acceptance limits or changing question.
 Native continuation/review remain due; source-positive gate not reached.
+
+## Finite result and next separate item
+
+Receipt-wait retry
+`.artifacts/v03/independent-vue-source/2026-10-23T19-40-50-222Z/results.json`
+remains FAIL:4 native checks PASS,378 stable inputs; screenshot await times out.
+Native app DOM still responds after failure, so no browser crash is inferred.
+The next driver version foregrounds only its owned application, requires visible
+state, bounds capture to the viewport and records command start/finish without
+parameters. It changes no source/property/IDE acceptance criteria or timeout.
+
+Latest `.artifacts/v03/independent-vue-source/2026-10-23T19-42-56-837Z/results.json`
+is also FAIL,4 PASS/378 stable. Original page screenshot now succeeds and the picker
+receives a real mouse gesture. Inspector then reports `Picker target changed before
+inspection`; no selection/source gate passes. Source inspection finds the explicit
+native identity and deep-value boundary in `src/engine/browser.mjs`: disabled is
+restricted to HTMLButtonElement. The unchanged selected control is a textarea.
+This is an unsupported native property path, not evidence that its source or
+Observed scalar read works. The error wording currently suggests target mutation;
+no mutation or replacement has been established.
+
+The screenshot is an agent-inspected candidate of the original1280x900 app:
+textarea and0/0/0/0Bytes render without an app overlay. It is not Atom visual fidelity
+or human acceptance. Both source-connected67 runs verify the actual installed VSIX,
+private Copy connection receipt/native connect and exact-origin development
+cache/reload only, readOnly false. All owned resources close; original498 immutable
+files and497 working plus the one registered components.d.ts remain exact.
+
+Ruling: stop this finite engineering increment at the newly exposed native adapter
+boundary. Do not replace the textarea, weaken the registered question or call
+Unsupported a pass. Next **V03.7** separately defines/tests native disabled reads for
+ordinary textarea/input, including supported HTML native identity/value, exact
+selected occurrence, negative namespaces/unsupported elements, own field semantics
+and no getter reevaluation or mutation. Then qualify a new exact candidate and
+resume the same question; source/read/IDE gates and any subsequent failure remain
+independent. V03.6 native acceptance stays partial/unaccepted. This is a dependency
+split, not removal of a requirement or completion of full V03/C09.

@@ -102,6 +102,13 @@ backpressure reproduces104 concurrent reads, now bounds4 active/256 queued with
 exact-session fences and explicit overflow. Source3 regression/973Atom/25worker
 checks and corrected full2524 pass; exact new Atom67/UI2 qualification/native/ONE
 whole review are pending. No budget/Unknown waiver or feature completion.
+Exact67/UI2 types2/package9 PASS. Latest original native4 PASS/378stable then
+FAIL at selected textarea disabled: native identity/deep-value adapter supports
+only HTMLButtonElement. Actual installed VSIX/private receipt/native connection
+and baseline render pass; selected source/read/IDE range remain unaccepted.
+V03.6 engineering closes with partial native evidence and ONE code review due.
+NextV03.7 is that bounded native form-control property prerequisite, preserving
+the same original source question. No Unsupported path is credited as passed.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

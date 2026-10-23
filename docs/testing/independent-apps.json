@@ -226,6 +226,63 @@
       "IDE_started": false,
       "source_positive_gate_reached": false,
       "whole_V03_complete": false
+    },
+    {
+      "id": "V03.6-atom67-receipt-race",
+      "application": "CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "execution_record": "../completion/119-v03-installed-vue-profile.md",
+      "evidence": ".artifacts/v03/independent-vue-source/2026-10-23T19-39-14-003Z/results.json",
+      "status": "FAIL_DRIVER_PRIVATE_RECEIPT_STARTUP_RACE",
+      "prior_checks_passed": 2,
+      "registered_inputs": 378,
+      "inputs_stable_during_run": true,
+      "immutable_original_files": 498,
+      "working_original_unchanged": 497,
+      "normal_generated_deltas": [
+        "components.d.ts"
+      ],
+      "IDE_started": true,
+      "source_positive_gate_reached": false,
+      "whole_V03_complete": false
+    },
+    {
+      "id": "V03.6-atom67-screenshot-await",
+      "application": "CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "execution_record": "../completion/119-v03-installed-vue-profile.md",
+      "evidence": ".artifacts/v03/independent-vue-source/2026-10-23T19-40-50-222Z/results.json",
+      "status": "FAIL_NATIVE_SCREENSHOT_AWAIT_AFTER_ACTUAL_INSTALLED_SOURCE_CONNECT",
+      "prior_checks_passed": 4,
+      "registered_inputs": 378,
+      "inputs_stable_during_run": true,
+      "immutable_original_files": 498,
+      "working_original_unchanged": 497,
+      "normal_generated_deltas": [
+        "components.d.ts"
+      ],
+      "IDE_started": true,
+      "source_positive_gate_reached": false,
+      "whole_V03_complete": false
+    },
+    {
+      "id": "V03.6-atom67-textarea-disabled",
+      "application": "CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "execution_record": "../completion/119-v03-installed-vue-profile.md",
+      "evidence": ".artifacts/v03/independent-vue-source/2026-10-23T19-42-56-837Z/results.json",
+      "status": "FAIL_UNSUPPORTED_TEXTAREA_DISABLED_NATIVE_IDENTITY_NO_SELECTED_SOURCE_ACCEPTANCE",
+      "prior_checks_passed": 4,
+      "registered_inputs": 378,
+      "inputs_stable_during_run": true,
+      "immutable_original_files": 498,
+      "working_original_unchanged": 497,
+      "normal_generated_deltas": [
+        "components.d.ts"
+      ],
+      "IDE_started": true,
+      "source_positive_gate_reached": false,
+      "whole_V03_complete": false
     }
   ]
 }

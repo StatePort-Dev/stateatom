@@ -4758,7 +4758,7 @@
       "active_slice": {
         "id": "V03.6",
         "title": "Explicit installed Vue profile and independent source-connected route",
-        "status": "in-progress-candidate5-attach-budget-source-backpressure-new67-due",
+        "status": "closing-engineering-increment-native-partial-textarea-disabled-unsupported-review-due",
         "record": "119-v03-installed-vue-profile.md",
         "plan": "../superpowers/plans/2026-10-23-v03-installed-vue-profile.md",
         "design": "../superpowers/specs/2026-10-23-v03-installed-vue-profile-design.md",
@@ -4784,7 +4784,14 @@
         "failed_candidate5_attach": ".artifacts/v03/independent-vue-source/2026-10-23T19-28-14-996Z/results.json",
         "source_burst_regressions": 3,
         "atom_focused_checks": 973,
-        "new_atom67_pending": true
+        "new_atom67_pending": false,
+        "atom_handoff": ".artifacts/atom/2026-10-23T19-38-04-291Z/atom-handoff.json",
+        "atom_package_admission": ".artifacts/atom/compatibility/2026-10-23T19-38-39-238Z/result.json",
+        "native_evidence": ".artifacts/v03/independent-vue-source/2026-10-23T19-42-56-837Z/results.json",
+        "native_checks_passed": 4,
+        "native_status": "FAIL",
+        "registered_inputs": 378,
+        "next_independent_item": "V03.7"
       },
       "completed_slices": [
         {
@@ -4907,8 +4914,8 @@
       ],
       "current_checkpoint": {
         "record": "119-v03-installed-vue-profile.md",
-        "status": "in-progress-candidate5-attach-budget-source-backpressure-new67-due",
-        "next_bounded_step": "V03.6 verify/commit/package source-read backpressure Atom67, qualify exact67/UI2 then retry unchanged source/IDE native question with exact plugin5/helper5; preserve all failed receipts and Unknown boundaries"
+        "status": "closing-engineering-increment-native-partial-textarea-disabled-unsupported-review-due",
+        "next_bounded_step": "V03.7 bounded native disabled support for ordinary textarea/input before retrying unchanged independent Vue source/read/IDE question; V03.6 selected-source acceptance remains partial, all failures retained"
       }
     },
     {
@@ -7156,11 +7163,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.6 exact5 strict admission PASS, helper bytes reproduce222 inputs. First native5 startup timeout with empty DOM/no overlay remains unknown; diagnostic retry renders original baseline then Attach FAIL Guardian pending64. Both377stable/497+known generated/498immutable, noIDE/sourcepositive. Source burst104 reproduced;4active/256queued source-only fence now3regression/973Atom/25worker-burstPASS. Correctedfull2524PASS; new67pair/native/ONEwhole review due; no guardian/journal/evidence budget increase. Whole20/29, fullV03/A02/L02/V02 open.",
+    "current_activity_note": "V03.6 engineering closing: explicit installedVue profile/compiler fixes, source2524PASS, source-read4active/256queued preservesguardian64/journal8. Exact5/helper5 admitted, Atom67/UI2 types2/package9PASS. Latest independentnative4PASS/378stable then FAIL: native disabled identity/deep value only supportsHTMLButtonElement, selectedtextarea unsupported. ActualinstalledVSIX/privateCopyreceipt/nativeconnect cache+reload/readOnlyfalse and originalbaseline passed; screenshot candidate obtained. No selectedsource/scalarread/IDE-range/input/export acceptance. Whole20/29, fullV03/A02/L02/V02 open. ONEwhole code review due; nextV03.7 nativeadapter.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "cf91ab8 diagnostic driver; pending bounded Atom67 source-read queue/tests and docs",
+    "current_source_revision": "b140568 clean native67 target failure; record closure pending ONE review",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V03.6 verify/commit/package source-read backpressure Atom67, qualify exact67/UI2 then retry unchanged source/IDE native question with exact plugin5/helper5; preserve all failed receipts and Unknown boundaries"
+    "next_bounded_step": "V03.7 bounded native disabled support for ordinary textarea/input before retrying unchanged independent Vue source/read/IDE question; V03.6 selected-source acceptance remains partial, all failures retained"
   },
   "next_task": "V03"
 }
