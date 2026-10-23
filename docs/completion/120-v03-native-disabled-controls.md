@@ -126,3 +126,66 @@ Preserve expected SFC, expression, scalar read, source digest, IDE range and tim
 no substitute target, default/parent ownership claim, app patch or broad re-audit.
 The finite native-disabled prerequisite is verified, full V03/C09 remain open.
 ONE final whole-increment engineering review is still pending.
+
+## ONE final review and single correction pass
+
+Fresh reviewer `/root/v037_whole_review` (`gpt-6-astra`, high), range
+c699b25..1419c94, read-only, returned **0 Critical / 2 Important / 0 Minor,
+With fixes**. Report retained at
+`.artifacts/v03/native-disabled-controls/2026-10-24/whole-increment-review.md`.
+It independently ran focused22 PASS and read the two exact native receipts.
+Both findings are accepted as Important by user effect:
+
+1. Malformed filtered query or missing intermediate shadow traversal collapsed
+   to known false. Only successful terminal nodeId0 may establish absence.
+2. Before/after A→B→A can borrow B's Observed trace. Equal markers and Booleans
+   do not prove that the helper observed the native selected occurrence.
+
+Correction source RED11:1PASS/10FAIL, then focused33 PASS. Optional tracing now
+resolves the exact backend node into an owned remote group, requests its ancestor
+path for native mutation event coverage, and calls the helper with that node as
+`this`. Selector equality is checked before and after the synchronous trace read;
+native mutations invalidate even restored values. The shared native DOM queue is
+held for the whole bounded acquisition, preventing another inspector read from
+resetting known frontend nodes mid-helper. Watcher/group cleanup runs on all exits.
+Missing bindings/events/exceptions remain unavailable. Basic without trace performs
+native before/after reads and executes no MAIN deep helper. Text keeps its original
+helper/three arguments. `DOM.requestNode` is added only to read metadata; the
+existing Runtime.callFunctionOn inject capability is unchanged.
+
+The actual CDP function declaration is declared before execution. Its actual
+captured compiled bytes/context must still match the code journal, or ownership
+remains Unknown; no first-read exemption. This is not new finite-profile native
+qualification. One initial correction IIFE-invocation error was caught and fixed
+by the focused suite before any package/native run; its log is retained.
+
+Affected command `node --test --test-isolation=none tests/engine/*.test.mjs
+ tests/atom/*.test.mjs tests/worker/*.test.mjs`: **1230 PASS** after explicit
+native-response model updates. The historical earlier1241 command result is kept
+as such; these are distinct affected command scopes. Action model now delegates
+disabled helper calls to the shared native model. The marker-refresh control uses
+text, preserving its render-occurrence rejection assertions; Basic disabled no
+longer manufactures a helper marker. UI tests require one explicit element script
+instead of the removed deep script and still forbid another state-driven read.
+Full corrected existing `npm test`: **2561 PASS**,0fail/skip. Candidate70 qualification remains due.
+
+Reviewer declined boundaries are ruled explicitly:
+
+- D1 digest root cause remains next V03.8; cost if wrong: source scenario stays
+  unaccepted until diagnosis and actual recheck.
+- D2 corrected installed qualification requires a new exact70 run; old69 native
+  success cannot prove the corrected helper. Cost: possible installed regression
+  until the new run finishes.
+- D3 finite first-read on69/70 remains unqualified; no narrow command exists and
+  full historical matrices are not repeated without cause. Cost: later native
+  profiling may discover a regression; no readiness credit now.
+- D4 fullV03/C09/A02/L02/V02/release/human visual acceptance remain open/separate.
+  Independent human is not a blocker; screenshots stay candidates. Cost: this
+  bounded increment supplies no whole-task completion.
+- D5 current routing is updated to actual results; historical records stay intact.
+  Cost: consumers must use the current checkpoint rather than older pending text.
+
+No Minors deferred, no second review. Candidate70 preregisters only new Atom
+identity in both native cases. The independent driver's failure path additionally
+retains a passive `state(refreshDeep:false)` snapshot for precise digest/code-journal
+diagnosis; no success predicate, target or timeout changes.

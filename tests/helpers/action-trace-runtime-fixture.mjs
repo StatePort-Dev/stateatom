@@ -19,7 +19,7 @@ export async function actionTraceRuntimeFixture(t,{createRuntime,armGate,sourceG
    if(method==='Runtime.getProperties'){const names=params.objectId==='action-global'?['__STATEATOM__']:['version','page','actionTraceInfo','actionTraceRead','actionTraceArm','actionTraceCancel','actionTraceClear'];return{result:names.map(name=>({name,isOwn:true,value:name==='__STATEATOM__'?{type:'object',objectId:'action-api'}:name==='version'?{type:'number',value:1}:name==='page'?{type:'string',value:page}:{type:'function',objectId:name}}))};}
    if(method==='DOM.resolveNode'){if(prepared)await resolveGate?.();return{object:{objectId:'native-selected'}};}
    if(method==='DOMDebugger.getEventListeners')return{listeners:[]};
-   if(method!=='Runtime.callFunctionOn')return;
+   if(method!=='Runtime.callFunctionOn'||params.functionDeclaration.startsWith('function disabledTraceHelper('))return;
    if(params.uniqueContextId&&params.uniqueContextId!==nativeContext)return{exceptionDetails:{text:'Context destroyed'}};
    const [op,expectedPage,identity,expectedTraceId]=(params.arguments||[]).map(a=>a.value);
    if(!['arm','read','cancel','clear'].includes(op))return{result:{type:'object',objectId:'action-global'}};

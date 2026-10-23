@@ -4758,11 +4758,11 @@
       "active_slice": {
         "id": "V03.7",
         "title": "Bounded native disabled reads for ordinary form controls before unchanged Vue source question",
-        "status": "source-pass-native-package-qualification-due",
+        "status": "native-catalogue-pass-independent-digest-fail-review-running",
         "predecessor": "V03.6 engineering complete, selected-source acceptance partial/unaccepted",
         "record": "120-v03-native-disabled-controls.md",
         "design_pending": false,
-        "registered_question": "../testing/independent-vue-source-case68.json",
+        "registered_question": "../testing/independent-vue-source-case69.json",
         "same_question_required": true,
         "full_V03_acceptance": false,
         "plan": "../superpowers/plans/2026-10-24-v03-native-disabled-controls.md",
@@ -4770,9 +4770,17 @@
         "focused_source_checks": 1241,
         "full_source_checks": 2550,
         "native_catalogue": "../testing/native-disabled-controls-case.json",
-        "native_catalogue_executed": false,
-        "native_original_question_executed": false,
-        "review_pending_after_native": true
+        "native_catalogue_executed": true,
+        "native_original_question_executed": true,
+        "review_pending_after_native": true,
+        "native_catalogue_checks": 19,
+        "native_catalogue_result": ".artifacts/v03/native-disabled-controls/2026-10-23T20-40-29-762Z/results.json",
+        "native_original_question_result": ".artifacts/v03/independent-vue-source/2026-10-23T20-41-11-852Z/results.json",
+        "native_original_question_status": "FAIL_STALE_WORKSPACE_EXECUTED_DIGEST_NO_SELECTED_SOURCE_ACCEPTANCE",
+        "native_original_setup_passed": 4,
+        "package_version": "0.1.0-candidate.20261021.69",
+        "types_checks": 2,
+        "admission_checks": 9
       },
       "completed_slices": [
         {
@@ -4945,8 +4953,8 @@
       ],
       "current_checkpoint": {
         "record": "120-v03-native-disabled-controls.md",
-        "status": "source-pass-native-package-qualification-due",
-        "next_bounded_step": "V03.7 pack/qualify exact69/UI2, actual native reflected-disabled catalogue with zero poisoned getters/actions, then same-criteria independent Vue source/read/IDE question; keep all existing failures and Unknown limits"
+        "status": "native-catalogue-pass-independent-digest-fail-review-running",
+        "next_bounded_step": "V03.8: diagnose retained exact original textarea workspace/executed-instrumentation digest mismatch without changing original expression/scalar-read/source-digest/IDE-range/timeout criteria; full V03/C09 remain open"
       }
     },
     {
@@ -7194,11 +7202,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.7 source implemented: native button/input/textarea own reflected disabled via null-namespace CSS attribute query; no app disabled getter/constructor use; shared pickerDOM queue and before/after identity/value fence. RED20=6PASS14FAIL, corrected20PASS; affected1241PASS/full2550PASS. Three test adapters updated without assertion waiver. Native catalogue/69 package/types/admission and original question execution/ONEreview due. No new runtime/source readiness, finite-firstread69 unqualified; whole20/29/fullV03/A02/L02/V02 open.",
+    "current_activity_note": "V03.7 source1241/full2550 PASS; exact clean20cb320 Atom69/UI2 types2/admission9 and synthetic native reflected-disabled catalogue19 PASS/336 stable inputs/zero getters-actions. Original it-tools native4 setup PASS/378 stable then selected source FAIL: runtime Stale, workspace/executed instrumentation digest mismatch. ONE final review running; no source/scalar-read/IDE/input/export acceptance or finite-firstread69 qualification; whole20/29/fullV03/A02/L02/V02 open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "c699b25 plus pending V03.7 source/tests/native-case/design/plan and69 metadata; full2550PASS",
+    "current_source_revision": "20cb320 product source, Atom69 clean supplied packet; cases/results through1419c94",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V03.7 pack/qualify exact69/UI2, actual native reflected-disabled catalogue with zero poisoned getters/actions, then same-criteria independent Vue source/read/IDE question; keep all existing failures and Unknown limits"
+    "next_bounded_step": "V03.8: diagnose retained exact original textarea workspace/executed-instrumentation digest mismatch without changing original expression/scalar-read/source-digest/IDE-range/timeout criteria; full V03/C09 remain open"
   },
   "next_task": "V03"
 }

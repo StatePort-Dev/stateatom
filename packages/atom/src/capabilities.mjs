@@ -10,7 +10,7 @@ export const isDevelopmentOrigin=loopbackOrigin;
 export const isBridgeURL=helperURL;
 export function isInspectionOrigin(url,readOnlySites=false){return !!appOrigin(url)&&(loopbackOrigin(url)||readOnlySites===true&&new URL(url).protocol==='https:');}
 export function debuggerCommandCapability(method){
- if(['Overlay.enable','Overlay.disable','Overlay.hideHighlight','Overlay.setInspectMode','DOM.enable','DOM.describeNode','DOM.pushNodesByBackendIdsToFrontend','DOM.getDocument','DOM.querySelector','DOM.resolveNode','DOMDebugger.getEventListeners','Runtime.releaseObjectGroup','Network.enable','Page.enable','Runtime.enable','Debugger.enable','Debugger.disable','Performance.enable','Page.getFrameTree','Runtime.getIsolateId','Debugger.getScriptSource','Network.getResponseBody','Performance.getMetrics','Fetch.getResponseBody'].includes(method))return 'read';
+ if(['Overlay.enable','Overlay.disable','Overlay.hideHighlight','Overlay.setInspectMode','DOM.enable','DOM.describeNode','DOM.pushNodesByBackendIdsToFrontend','DOM.getDocument','DOM.querySelector','DOM.resolveNode','DOM.requestNode','DOMDebugger.getEventListeners','Runtime.releaseObjectGroup','Network.enable','Page.enable','Runtime.enable','Debugger.enable','Debugger.disable','Performance.enable','Page.getFrameTree','Runtime.getIsolateId','Debugger.getScriptSource','Network.getResponseBody','Performance.getMetrics','Fetch.getResponseBody'].includes(method))return 'read';
  if(['Network.setCacheDisabled','Network.clearBrowserCache','Storage.clearDataForOrigin'].includes(method))return 'cache';
  if(method.startsWith('Fetch.'))return 'override';
  if(method==='Runtime.getProperties')return 'read';

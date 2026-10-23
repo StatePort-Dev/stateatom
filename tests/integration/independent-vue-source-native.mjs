@@ -256,6 +256,9 @@ try {
   result.status='PASS_INSTALLED_INDEPENDENT_VUE_SELECTED_SOURCE_NOT_FULL_C09_OR_V03';
 } catch(error) {
   result.status='FAIL';result.error=error.stack;process.exitCode=1;console.error(error);
+  // Retain the exact rejected occurrence and code journal for the next bounded
+  // diagnosis. This is a passive snapshot, never another deep read or a pass.
+  try{if(panel&&tabId)result.failureState=await state();}catch{}
   try{if(panel&&tabId)result.failureAppDOM=await appDOM();}catch{}
   try{if(ui)result.failureUI=await ui.p.send('Runtime.evaluate',{expression:'document.body.innerText',returnByValue:true});}catch{}
 } finally {

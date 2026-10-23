@@ -40,7 +40,12 @@ Native `disabled` observation is limited to HTML button, input and textarea.
 It reads the native reflected attribute without calling application accessors;
 `false` does not prove effective availability under fieldset/inert/ARIA/CSS or
 application logic. Other kinds/namespaces or unavailable native identity remain
-unsupported. Native observation does not identify a source or data producer.
+unsupported. Basic disabled reads require no MAIN trace helper. Optional
+instrumented tracing binds a resolved native node, holds the shared DOM queue and
+rejects native mutations even when a value is restored. Missing node/event binding
+stays unavailable. The CDP helper's actual compiled bytes must match its prior
+owned-code declaration; no first-read exemption. Native observation does not
+identify a source or data producer.
 
 Background source acquisition requires the trusted optional host method
 `AtomPlatform.readScriptSource(tabId, scriptId, assertCurrent)`. The supplied

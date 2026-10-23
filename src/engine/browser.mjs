@@ -17,19 +17,67 @@ export async function handleDeepOverlay(id,p,s,send){if(!s.deepOverrides)return 
  const r=await send(id,'Fetch.getResponseBody',{requestId:p.requestId});const raw=r.base64Encoded?atob(r.body):r.body;if(raw.length>128000)throw Error('Overlay body budget');const json=JSON.parse(raw);for(const patch of rule.patches){const keys=patch.path.split('.');if(keys.some(k=>['__proto__','prototype','constructor'].includes(k)))throw Error('Unsafe patch');let obj=json;for(const k of keys.slice(0,-1)){if(!obj||!Object.hasOwn(obj,k))throw Error('Patch missing');obj=obj[k];}if(!obj||!Object.hasOwn(obj,keys.at(-1)))throw Error('Patch leaf missing');obj[keys.at(-1)]=patch.value;}
  const text=JSON.stringify(json);rule.consumed++;rule.actual=json;rule.networkId=p.networkId;rule.requestOrdinal=ordinal;await send(id,'Fetch.fulfillRequest',{requestId:p.requestId,responseCode:p.responseStatusCode,responseHeaders:p.responseHeaders.filter(h=>!['content-length','content-encoding','etag','transfer-encoding'].includes(h.name.toLowerCase())),body:btoa(String.fromCharCode(...new TextEncoder().encode(text)))});return true;
 }
-export function createBrowserEngine(chrome,{readDOM=createNativeDOMQueue()}={}){
+// A declaration compiled by Runtime.callFunctionOn, with `this` resolved from the
+// exact native backend node. Never resolve a second selector into the trace target.
+function disabledTraceHelper(selector,property,includeTrace,value){
+ const selected=()=>selector.split(' >>> ').reduce((root,part,i)=>i?root?.shadowRoot?.querySelector(part):document.querySelector(part),null);
+ const stale=()=>({property,status:'Stale',reason:'Native disabled occurrence changed during helper',trace:{status:'Stale',reason:'Native disabled occurrence changed during helper',target:null}});
+ const e=this;if(selected()!==e)return stale();
+ const marker=e.getAttribute('data-stateatom');let page=null,trace=null;
+ if(includeTrace&&marker)try{
+  const runtime=Object.getOwnPropertyDescriptor(window,'__STATEATOM__')?.value,version=runtime&&Object.getOwnPropertyDescriptor(runtime,'version')?.value,snapshot=runtime&&Object.getOwnPropertyDescriptor(runtime,'snapshot')?.value;
+  page=runtime&&Object.getOwnPropertyDescriptor(runtime,'page')?.value||null;
+  if(version===1&&typeof snapshot==='function'){trace=snapshot.call(runtime,marker,property,e);const first=Object.getOwnPropertyDescriptor(runtime,'firstReadObservations')?.value;if(trace&&typeof first==='function')trace.firstReadObservations=first.call(runtime);}
+ }catch{trace={status:'Unknown/Unsupported',reason:'Optional instrumentation unavailable'};}
+ if(selected()!==e)return stale();
+ return{property,value,instance:marker,frame:0,page,trace};
+}
+const mutationEvents=new Set(['DOM.documentUpdated','DOM.attributeModified','DOM.attributeRemoved','DOM.childNodeInserted','DOM.childNodeRemoved','DOM.childNodeCountUpdated','DOM.characterDataModified','DOM.shadowRootPushed','DOM.shadowRootPopped']);
+export function createBrowserEngine(chrome,{readDOM=createNativeDOMQueue(),subscribeDOM=(listener)=>{
+ const events=chrome.debugger.onEvent;if(!events?.addListener||!events?.removeListener)return null;
+ events.addListener(listener);return()=>events.removeListener(listener);
+}}={}){
 async function observeDeep(id,selection,property='text',{includeTrace=true,beforeMainScript=async()=>{}}={}){
  if(!selection?.selector)return {property,status:'Unknown/Unsupported',reason:'Selection missing',trace:null};
- const native=property==='disabled'?await readDOM(id,()=>identifySelection(id,selection.selector,property)):null;
- if(property==='disabled'&&!native)return {property,status:'Unknown/Unsupported',reason:'Native disabled observation unavailable: HTML button, input and textarea only',trace:null};
- const operation={target:{tabId:id},world:'MAIN',func:(selector,property,includeTrace,nativeDisabled)=>{const e=selector.split(' >>> ').reduce((root,part,i)=>i?root?.shadowRoot?.querySelector(part):document.querySelector(part),null);if(!e)return {property,status:'Unknown/Unsupported',reason:'Element missing',trace:null};const marker=e.getAttribute('data-stateatom');let value;if(property==='disabled'){if(typeof nativeDisabled!=='boolean')return {property,status:'Unknown/Unsupported',reason:'Native disabled observation unavailable',trace:null};value=nativeDisabled;}else value=Object.getOwnPropertyDescriptor(Node.prototype,'textContent').get.call(e)?.trim();let page=null,trace=null;if(includeTrace&&marker)try{const runtime=Object.getOwnPropertyDescriptor(window,'__STATEATOM__')?.value,version=runtime&&Object.getOwnPropertyDescriptor(runtime,'version')?.value,snapshot=runtime&&Object.getOwnPropertyDescriptor(runtime,'snapshot')?.value;page=runtime&&Object.getOwnPropertyDescriptor(runtime,'page')?.value||null;if(version===1&&typeof snapshot==='function'){trace=snapshot.call(runtime,marker,property,e);const first=Object.getOwnPropertyDescriptor(runtime,'firstReadObservations')?.value;if(trace&&typeof first==='function')trace.firstReadObservations=first.call(runtime);}}catch{trace={status:'Unknown/Unsupported',reason:'Optional instrumentation unavailable'};}return {property,value,instance:includeTrace?marker:null,frame:0,page,trace};},args:property==='disabled'?[selection.selector,property,includeTrace,native.value]:[selection.selector,property,includeTrace]};
+ if(property==='disabled')return readDOM(id,()=>observeDisabled(id,selection,includeTrace,beforeMainScript));
+ const operation={target:{tabId:id},world:'MAIN',func:(selector,property,includeTrace,nativeDisabled)=>{const e=selector.split(' >>> ').reduce((root,part,i)=>i?root?.shadowRoot?.querySelector(part):document.querySelector(part),null);if(!e)return {property,status:'Unknown/Unsupported',reason:'Element missing',trace:null};const marker=e.getAttribute('data-stateatom');let value;if(property==='disabled'){if(typeof nativeDisabled!=='boolean')return {property,status:'Unknown/Unsupported',reason:'Native disabled observation unavailable',trace:null};value=nativeDisabled;}else value=Object.getOwnPropertyDescriptor(Node.prototype,'textContent').get.call(e)?.trim();let page=null,trace=null;if(includeTrace&&marker)try{const runtime=Object.getOwnPropertyDescriptor(window,'__STATEATOM__')?.value,version=runtime&&Object.getOwnPropertyDescriptor(runtime,'version')?.value,snapshot=runtime&&Object.getOwnPropertyDescriptor(runtime,'snapshot')?.value;page=runtime&&Object.getOwnPropertyDescriptor(runtime,'page')?.value||null;if(version===1&&typeof snapshot==='function'){trace=snapshot.call(runtime,marker,property,e);const first=Object.getOwnPropertyDescriptor(runtime,'firstReadObservations')?.value;if(trace&&typeof first==='function')trace.firstReadObservations=first.call(runtime);}}catch{trace={status:'Unknown/Unsupported',reason:'Optional instrumentation unavailable'};}return {property,value,instance:includeTrace?marker:null,frame:0,page,trace};},args:[selection.selector,property,includeTrace]};
  await beforeMainScript(operation,'deep-helper');const r=await chrome.scripting.executeScript(operation),result=r[0]?.result;
- if(property==='disabled'){
-  const after=await readDOM(id,()=>identifySelection(id,selection.selector,property));
-  if(!isSameSelection(native,after))return {property,status:'Stale',reason:'Native disabled target or value changed during observation',trace:{status:'Stale',reason:'Native disabled target or value changed during observation',target:null}};
-  if(!result||result.value!==native.value)return {property,status:'Unknown/Unsupported',reason:'Native disabled helper result unavailable or mismatched',trace:null};
- }
  return result?matchTarget(result):{property,status:'Unknown/Unsupported',reason:'Observation unavailable',trace:null};
+}
+async function observeDisabled(id,selection,includeTrace,beforeMainScript){
+ const property='disabled',send=(m,p={})=>chrome.debugger.sendCommand({tabId:id},m,p);
+ const unavailable=reason=>({property,status:'Unknown/Unsupported',reason,trace:null});
+ const stale=()=>({property,status:'Stale',reason:'Native disabled target or value changed during observation',trace:{status:'Stale',reason:'Native disabled target or value changed during observation',target:null}});
+ let mutated=false,group,unsubscribe;
+ try{
+  const native=await identifySelection(id,selection.selector,property);
+  if(!native)return unavailable('Native disabled observation unavailable: HTML button, input and textarea only');
+  if(!includeTrace){const after=await identifySelection(id,selection.selector,property);return isSameSelection(native,after)?{property,value:native.value,instance:null,frame:0,page:null,trace:null}:stale();}
+  unsubscribe=subscribeDOM((source,method)=>{if(source.tabId===id&&mutationEvents.has(method))mutated=true;});
+  if(typeof unsubscribe!=='function')return unavailable('Native disabled occurrence mutation watch unavailable');
+  group='stateatom-disabled-'+crypto.randomUUID();
+  const object=await(async()=>{
+   const {object}=await send('DOM.resolveNode',{backendNodeId:Number(native.node.slice(4)),objectGroup:group});
+   if(typeof object?.objectId!=='string'||!object.objectId)return null;
+   // Known path guarantees native mutation events for the node and its ancestors.
+   const pushed=await send('DOM.requestNode',{objectId:object.objectId});
+   if(!Number.isSafeInteger(pushed?.nodeId)||pushed.nodeId<=0)return null;
+   const {node}=await send('DOM.describeNode',{objectId:object.objectId,depth:0});
+   return node?.backendNodeId===Number(native.node.slice(4))?object:null;
+  })();
+  if(!object)return unavailable('Native disabled exact node binding unavailable');
+  mutated=false;
+  const operation={func:disabledTraceHelper,args:[selection.selector,property,true,native.value],compilation:'call-function-on'};
+  await beforeMainScript(operation,'deep-helper');
+  const reply=await send('Runtime.callFunctionOn',{objectId:object.objectId,functionDeclaration:Function.prototype.toString.call(operation.func),arguments:operation.args.map(value=>({value})),returnByValue:true});
+  const after=await identifySelection(id,selection.selector,property);
+  if(mutated||!isSameSelection(native,after))return stale();
+  if(reply.exceptionDetails)return unavailable('Native disabled trace helper exception');
+  const result=reply.result?.value;if(result?.status==='Stale')return stale();
+  if(!result||result.value!==native.value)return unavailable('Native disabled helper result unavailable or mismatched');
+  return matchTarget(result);
+ }catch{return unavailable('Native disabled exact occurrence acquisition unavailable');}
+ finally{unsubscribe?.();if(group)await send('Runtime.releaseObjectGroup',{objectGroup:group}).catch(()=>{});}
 }
 // Browser-owned DOM identities and native node data. No inspection compilation:
 // even an isolated executeScript would invalidate a finite code-history proof.
@@ -44,11 +92,11 @@ async function identifySelection(id,selector,property){
   async function selected(disabledAttribute=false){
    let scope=root.nodeId,nodeId;
    for(let i=0;i<parts.length;i++){
-    ({nodeId}=await send('DOM.querySelector',{nodeId:scope,selector:disabledAttribute&&i===parts.length-1?':is('+parts[i]+')[disabled]':parts[i]}));if(!validId(nodeId))return null;
+    ({nodeId}=await send('DOM.querySelector',{nodeId:scope,selector:disabledAttribute&&i===parts.length-1?':is('+parts[i]+')[disabled]':parts[i]}));if(nodeId===0&&i===parts.length-1)return 0;if(!validId(nodeId))throw Error('Native selector response unavailable');
     if(i<parts.length-1){
      const {node}=await send('DOM.describeNode',{nodeId,depth:0}),open=(node?.shadowRoots||[]).filter(r=>r.shadowRootType==='open');
-     if(open.length!==1||!validId(open[0].backendNodeId))return null;
-     const {nodeIds}=await send('DOM.pushNodesByBackendIdsToFrontend',{backendNodeIds:[open[0].backendNodeId]});scope=nodeIds?.[0];if(!validId(scope))return null;
+     if(open.length!==1||!validId(open[0].backendNodeId))throw Error('Native shadow scope unavailable');
+     const {nodeIds}=await send('DOM.pushNodesByBackendIdsToFrontend',{backendNodeIds:[open[0].backendNodeId]});scope=nodeIds?.[0];if(!validId(scope))throw Error('Native shadow scope unavailable');
     }
    }
    return nodeId;
@@ -60,7 +108,7 @@ async function identifySelection(id,selector,property){
    // Exact native HTML kinds only. CSS attribute presence uses the null
    // namespace, unlike a flattened attributes array or effective :disabled.
    if(!['button','input','textarea'].includes(node.localName)||node.nodeName!==node.localName.toUpperCase()||!Array.isArray(node.attributes)||node.attributes.length%2||node.attributes.some(v=>typeof v!=='string'))return null;
-   value=await selected(true)===nodeId;
+   const filtered=await selected(true);if(filtered!==0&&filtered!==nodeId)return null;value=filtered===nodeId;
   }else{
    let count=0,chars=0;const chunks=[];
    function text(n,depth){

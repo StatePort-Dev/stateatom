@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.70
+
+- Refuse malformed/unavailable disabled-attribute queries instead of treating
+  them as a known false value; only successful terminal no-match means absent.
+- Bind optional disabled tracing to the native backend node through a resolved
+  remote object. Check selector equality on that object and reject native DOM
+  mutations, including value restoration. Hold the shared DOM queue throughout
+  the bounded acquisition, release the remote group and temporary watcher.
+- Declare the actual CDP function source before execution; actual compiled bytes
+  must match as usual. No first-read code-ownership exemption or new inject grant.
+  Add DOM.requestNode only as native read metadata for known-node event coverage.
+- Basic disabled values use native before/after reads without a MAIN trace helper.
+  Text retains its original helper/three arguments. Preserve69 native catalogue
+  and independent Stale digest FAIL; corrected native qualification is separate.
+
 ## 0.1.0-candidate.20261021.69
 
 - Read native reflected disabled for exact HTML button/input/textarea kinds using
