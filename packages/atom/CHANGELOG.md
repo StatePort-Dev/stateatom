@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.62
+
+- Keep render-occurrence snapshots on the existing full deep metadata path.
+  Identity-only reads explicitly require that fallback for selected instance
+  markers; the UI retries before presentation only in the same load/context.
+  Marker/instance freshness guards remain intact. The fast Basic path applies
+  to unmarked DOM snapshots; no source/action latency improvement is claimed.
+- Retain issued61 bytes and its scoped plain-DOM timing as historical evidence.
+  This correction requires separate62 qualification and unchanged measurements.
+
 ## 0.1.0-candidate.20261021.61
 
 - Successful same-intent manual lookup and Inspect again retain their completed

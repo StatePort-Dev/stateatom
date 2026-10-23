@@ -56,7 +56,14 @@ async function load(options={}){
  const id=tab(),generation=++loadGeneration;
  if(pendingProperties.has(id))return;
  if(!Number.isSafeInteger(id)||id<=0){selectedState=null;analysis=null;renderInspection();return;}
- const state=await rpc({op:'state',tabId:id,observationOwnerId,refreshDeep:options?.refreshDeep!==false,...(options?.refreshIdentity===true?{refreshIdentity:true}:{})});
+ const request={op:'state',tabId:id,observationOwnerId,refreshDeep:options?.refreshDeep!==false,...(options?.refreshIdentity===true?{refreshIdentity:true}:{})};
+ let state;
+ try{state=await rpc(request);}
+ catch(e){
+  if(options?.refreshIdentity!==true||e.code!=='DEEP_REFRESH_REQUIRED')throw e;
+  if(generation!==loadGeneration||id!==tab()||pendingProperties.has(id))return;
+  state=await rpc({...request,refreshDeep:true,refreshIdentity:false});
+ }
  if(generation!==loadGeneration||id!==tab()||pendingProperties.has(id))return;
  selectedState={...state,tabId:id};analysis=state.analysis;observation.update(selectedState);inputUI.update(inspectionDisplayState(selectedState));renderInspection();
 }

@@ -4,11 +4,11 @@
 
 **Goal:** remove the immediate second deep observation after successful explicit manual inspection/Inspect again, preserving evidence/identity/error/context behavior and measuring the exact new candidate.
 
-**Architecture:** keep runtime inspection and all native guards intact. The UI's immediate state read uses an additive state-only `refreshIdentity` check when explicit inspect-selector succeeded in the same tab and selection intent: verify native DOM node/property/value without rerunning deep observation or action metadata. Error/replaced-intent recovery keeps deep refresh; ordinary refresh/invalidation/picker behavior is unchanged. This creates no cache and changes no evidence label or timestamp. Node/value replacement still marks Stale before presentation.
+**Architecture:** keep runtime inspection and all native guards intact. The UI's immediate state read uses an additive state-only `refreshIdentity` check when explicit inspect-selector succeeded in the same tab and selection intent: verify native DOM node/property/value without rerunning deep observation or action metadata. Error/replaced-intent recovery keeps deep refresh; ordinary refresh/invalidation/picker behavior is unchanged. This creates no cache and changes no evidence label or timestamp. Node/value replacement still marks Stale before presentation. Render-occurrence snapshots conservatively retain ordinary deep refresh; identity-only returns DEEP_REFRESH_REQUIRED and UI retries before rendering only if context is unchanged. No marker/instance guard is removed.
 
 **Tech Stack:** existing Atom UI/Node tests, current native packaged browser harnesses; one additive boolean DTO option, no dependency or visual design changes.
 
-**Spec:** scope-review-1,09-validation V02; diagnostic102 found state.refreshDeep=true immediately after successful inspect-selector, ~240ms median on both hosts. This does not prove every target miss's cause. Candidate .60/native history stays unchanged; changes require new .61/UI2 package and actual acceptance. User authorized autonomous main/local commits; no publication/SDK/other repository.
+**Spec:** scope-review-1,09-validation V02; diagnostic102 found state.refreshDeep=true immediately after successful inspect-selector, ~240ms median on both hosts. This does not prove every target miss's cause. Candidate .60/native history stays unchanged; changes require new .61/UI2 package (superseded by .62 after render-occurrence fallback correction) and actual acceptance. User authorized autonomous main/local commits; no publication/SDK/other repository.
 
 ## Task1 — pin exact snapshot and recovery boundaries
 
@@ -30,3 +30,5 @@
 - [ ] ONE fresh-context whole V02.3 review, one material correction pass at most with RED/GREEN and relevant suite. Commit results/dependencies and name ONE next bounded unresolved item;19/29 remains until actual whole-task acceptance.
 
 Review Focus: only a successful same-intent snapshot can skip redundant deep work; failures/context changes must not borrow success. Identity-only state retains exact evidence, stale/unknown semantics and permission/capability/native DOM checks; no live/current claim is introduced. Native package and unchanged measurement thresholds are separate from source tests; target misses stay open.
+
+Preregistered correction before .62 measurements: .61 Basic plain-DOM timing improved but whole-parent acceptance is pending because source inspection exposed a render-marker guard omitted by identity-only DOM equality. Keep marked/render snapshots on the existing full deep path, with a same-load-generation UI retry. Test missing-refusal/retry RED→GREEN and late-tab suppression. Preserve all .61 artifacts/measurements as scoped historical data, mint .62 and repeat exact qualification/measurement; do not rebuild .61 under its old name.
