@@ -1661,8 +1661,8 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "implementation_plan": "../superpowers/plans/2026-10-21-a02-react19-reducer-experiment.md",
-      "execution_record": "68-a02-react19-reducer-identity-experiment.md",
+      "implementation_plan": "../superpowers/plans/2026-10-23-a02-ordinary-reducer-acquisition.md",
+      "execution_record": "113-a02-ordinary-reducer-acquisition.md",
       "active_slice": null,
       "completed_slices": [
         {
@@ -1711,48 +1711,74 @@
           "verification": ".artifacts/a02/react19-source/verification.json",
           "next_item": "P01.1 bounded native selected-listener GeneratedAnchor and source-provider boundary; reuse collector/map contracts without manual coordinates or property-origin promotion",
           "boundary": "Isolated pinned vendor derivative/native fixture only,14actual original/off/on checks with declared consumer oracle;1902 source PASS. Original call/getter/exception semantics scoped controls, actual same-value/StrictMode/suspended/rebase/stop IDs verified. Field ownership/general prop transfer/valueOrigin/fullPath remain Unknown/false. Product18 adapter/independent app unchanged; A02 open."
+        },
+        {
+          "id": "A02.3-ordinary-native-acquisition",
+          "status": "complete-finite-experiment-not-full-lineage-or-product19",
+          "record": "113-a02-ordinary-reducer-acquisition.md",
+          "source_revision": "b50b26e",
+          "native_source_revision": "b6708cb",
+          "full_source_checks": 2488,
+          "focused_source_checks": 16,
+          "source_inputs": 908,
+          "retained_actual_browser_checks": 22,
+          "native_registered_inputs": 64,
+          "changed_native_source_inputs": 3,
+          "fresh_native_after_review": false,
+          "react_version": "19.2.5",
+          "browser": "Chromium153.0.8010.12",
+          "ordinary_application_source_unchanged": true,
+          "consumer_or_reducer_oracle": false,
+          "same_value_new_result_revision_update": true,
+          "equal_selected_nodes_distinct": true,
+          "actual_detached_node_refused": true,
+          "render_phase_unresolved_same_object_origin_refused": "source-control-only-after-review",
+          "public_hook_kind": "Unknown/Unsupported",
+          "field_ownership": "Unknown/Unsupported",
+          "general_prop_transfer": "Unknown/Unsupported",
+          "product_React19_support": false,
+          "full_A02_acceptance": false,
+          "verification": ".artifacts/a02/ordinary-reducer/2026-10-23/final-verification.json",
+          "whole_review": {
+            "critical": 0,
+            "important": 1,
+            "minor": 1,
+            "one_correction_pass": true,
+            "addressed": true,
+            "re_review": false
+          }
         }
       ],
       "remaining_acceptance": [
-        "Original React19 useReducer queue/dispatch/applied reducer input/result and state revision identity",
+        "Product integration of ordinary React19 queue/dispatch/applied input/result/revision acquisition; finite isolated native ancestor experiment is not installed adapter support",
         "Bounded field ownership/effects excluding unobserved equal-value/escaped-alias writers",
         "Exact state row to prop/parameter/destructure transfer and selected committed host producer",
         "Original full-lineage positive/counterexample cycle, including relevant query/refetch/cache rows where supported"
       ],
       "stopping_point": {
         "invoked": true,
-        "reason": "Finite React19 identity experiment now exercised successfully in a declared synthetic derivative. It does not supply product/ordinary-app integration, field ownership or general prop transfer; no general proof framework in this cycle.",
-        "finite_next_experiment": "Isolated version-specific original React19 useReducer two-row queue/update/result to committed consumer, same-value/wrong-row/rebased-or-aborted/off-on controls. Even success leaves field ownership and prop transfer unknown.",
-        "experiment_implemented": true,
-        "independent_ready_next_item": "P01.1",
-        "experiment_record": "68-a02-react19-reducer-identity-experiment.md",
-        "experiment_result": "Pinned synthetic derivative PASS14 only; actual rebase clone update origin Unknown, product/ordinary app integration/ownership/transfer unresolved"
+        "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
+        "experiment_record": "113-a02-ordinary-reducer-acquisition.md",
+        "finite_next_experiment_proposal": "Observe original object-to-prop transfer with same-value/equal-row counterexamples while keeping writer exclusion Unknown; proposal only, not an approved complete solution.",
+        "experiment_implemented": false,
+        "next_independent_dependency_ready_item": "V03.1 installed-user guide and clean-path reconciliation"
       },
       "current_checkpoint": {
-        "id": "A02.2-react19-reducer-identity-experiment",
-        "status": "complete-bounded-experiment-not-A02-or-product-support",
-        "record": "68-a02-react19-reducer-identity-experiment.md",
-        "implementation_plan": "../superpowers/plans/2026-10-21-a02-react19-reducer-experiment.md",
-        "source_tests": 1902,
-        "new_source_tests": 4,
-        "actual_browser_checks": 14,
-        "actual_pages": 6,
-        "react_version": "19.2.5",
-        "browser": "Chromium153.0.8010.12",
-        "original_off_on_synchronous_semantics_equal": true,
-        "same_value_new_revision": true,
-        "wrong_row_no_replacement_join": true,
-        "ignored_and_pending_results_not_committed": true,
-        "actual_rebased_clone_origin": "Unknown/Unsupported",
-        "field_ownership": "Unknown/Unsupported",
-        "general_prop_transfer": "Unknown/Unsupported",
-        "product_React19_support": false,
-        "ordinary_TodoMVC_executed": false,
-        "full_A02_acceptance": false,
-        "verification": ".artifacts/a02/react19-source/verification.json",
-        "next_item": "P01.1 bounded native selected-listener GeneratedAnchor and source-provider boundary; reuse collector/map contracts without manual coordinates or property-origin promotion",
-        "boundary": "Isolated pinned vendor derivative/native fixture only,14actual original/off/on checks with declared consumer oracle;1902 source PASS. Original call/getter/exception semantics scoped controls, actual same-value/StrictMode/suspended/rebase/stop IDs verified. Field ownership/general prop transfer/valueOrigin/fullPath remain Unknown/false. Product18 adapter/independent app unchanged; A02 open."
-      }
+        "record": "113-a02-ordinary-reducer-acquisition.md",
+        "status": "finite-acquisition-accepted-full-A02-unresolved",
+        "next_bounded_step": "V03.1 independent guide/clean-path reconciliation; preserve A02 ownership stopping rule"
+      },
+      "stopping_point_history": [
+        {
+          "invoked": true,
+          "reason": "Finite React19 identity experiment now exercised successfully in a declared synthetic derivative. It does not supply product/ordinary-app integration, field ownership or general prop transfer; no general proof framework in this cycle.",
+          "finite_next_experiment": "Isolated version-specific original React19 useReducer two-row queue/update/result to committed consumer, same-value/wrong-row/rebased-or-aborted/off-on controls. Even success leaves field ownership and prop transfer unknown.",
+          "experiment_implemented": true,
+          "independent_ready_next_item": "P01.1",
+          "experiment_record": "68-a02-react19-reducer-identity-experiment.md",
+          "experiment_result": "Pinned synthetic derivative PASS14 only; actual rebase clone update origin Unknown, product/ordinary app integration/ownership/transfer unresolved"
+        }
+      ]
     },
     {
       "id": "A03",
@@ -4882,11 +4908,11 @@
     ]
   },
   "reconciliation": {
-    "document": "112-v01-whole-review-and-owned-ide.md",
+    "document": "113-a02-ordinary-reducer-acquisition.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V01-whole-accepted-after-one-review-correction",
-    "next_item": "A02 bounded ordinary state-lineage acquisition; preserve prior stopping rule",
+    "current_increment": "A02.3-finite-ordinary-native-acquisition-accepted-not-full-A02",
+    "next_item": "V03.1 installed-user guide and clean-profile first developer path reconciliation",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -4910,7 +4936,7 @@
       "V01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "A02",
+    "active_item": "V03",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -6893,14 +6919,25 @@
           "macOS/Windows",
           "publication"
         ]
+      },
+      {
+        "id": "A02.3",
+        "status": "complete-finite-experiment-not-full-A02",
+        "execution_record": "113-a02-ordinary-reducer-acquisition.md",
+        "verification": ".artifacts/a02/ordinary-reducer/2026-10-23/final-verification.json",
+        "full_source_checks": 2488,
+        "current_inputs": 908,
+        "retained_native_checks": 22,
+        "full_task_complete": false,
+        "next_independent_item": "V03.1"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V01 accepted20/29 after ONE review0Critical/1Important/1Minor and one correction pass. Current full2476/904 inputs; fresh owned installed10/17. Prior browser23+39 retained with4 explicit harness deltas, not newly executed. Exact product326/archive/install/hosts unchanged. Hosted CI/push/upload/release not performed; V02 and mandatory L02 remain open. Next A02; no blind repeated synthetic experiment or general ownership framework.",
+    "current_activity_note": "A02.3 finite ordinary native acquisition accepted after ONE review0Critical/1Important/1Minor and one correction pass. Full2488/908current; native22 retained with3explicit source deltas; corrected unresolved-revision refusal source-only. Exact original app/vendor/product326 unchanged; no oracle. FullA02/L02/V02 remain open,20/29. Next independent V03.1 guide/cleanpath from completed base dependencies; no human blocker or publication.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "9454f32 (V01 corrected tools); fa95157 product65 unchanged",
+    "current_source_revision": "b50b26e experimental companion; fa95157 product65 unchanged",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "A02 bounded ordinary state-lineage acquisition"
+    "next_bounded_step": "V03.1 installed-user guide and clean-path reconciliation"
   },
-  "next_task": "A02"
+  "next_task": "V03"
 }

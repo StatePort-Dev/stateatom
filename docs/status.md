@@ -27,8 +27,14 @@ configured CI/native/installed lanes after ONE review and one correction pass:
 Trust actions; actual Git dirtiness replaces the maps literal. Final source2476/
 904 inputs and fresh owned installed VSIX10/17 pass. Prior browser23+39 remains
 retained evidence with four explicit harness deltas. Product65/UI2 unchanged;
-hosted CI and full browser/IDE user flow are unverified. Next A02 bounded ordinary
-state-lineage acquisition; V02/L02 remain open. Original64 Basic/active/warm-source/input results remain
+hosted CI and full browser/IDE user flow are unverified.
+[A02.3 ordinary acquisition](completion/113-a02-ordinary-reducer-acquisition.md)
+now observes exact native reducer/state ancestors on unchanged TodoMVC19 without
+consumer oracle: native22 retained; corrected full2488/908 inputs and16 source
+controls pass after ONE review/correction. Same-object unresolved revisions cannot
+borrow old update origin; public hook kind/selected-property origin/ownership/prop
+transfer remain Unknown. Product19/full A02 and V02/L02 remain open;20/29 unchanged.
+Next independent V03.1 installed-user guide/clean-path reconciliation. Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the
 [preregistered finite protocol](superpowers/plans/2026-10-23-v02-basic-observer.md).
