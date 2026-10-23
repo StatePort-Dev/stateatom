@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // Bounded passive JSON utilities shared only by historical observation codecs.
-import{assertUniqueHandoffJSONMembers}from'./handoff-json.mjs';
+import{assertUniqueHandoffJSONMembers,assertHandoffJSONArrayBudget,MAX_HANDOFF_JSON_NODES}from'./handoff-json.mjs';
 export const observationError=(message='Invalid historical observation evidence',code='INVALID_OBSERVATION_EVIDENCE')=>Object.assign(Error(message),{code});
 export const observationFail=message=>{throw observationError(message);};
 export const observationHash=x=>typeof x==='string'&&/^[a-f0-9]{64}$/.test(x);
@@ -21,8 +21,8 @@ export function observationArray(value,max=1024){
 export function observationKeys(value,keys){if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).length!==keys.length||keys.some(k=>!Object.hasOwn(value,k)))observationFail('Unexpected observation evidence fields');}
 export function observationJSON(raw){
  if(typeof raw!=='string')observationFail('Observation evidence JSON text required');if(new TextEncoder().encode(raw).length>1048576)throw observationError('Historical file exceeds 1 MiB','HANDOFF_LIMIT');
- let record;try{record=JSON.parse(raw);}catch{observationFail('Malformed observation evidence JSON');}assertUniqueHandoffJSONMembers(raw);
- const stack=[[record,0]];let n=0;while(stack.length){const[x,depth]=stack.pop();if(++n>10000||depth>16||typeof x==='string'&&x.length>16384)throw observationError('Observation evidence structure limit','HANDOFF_LIMIT');if(typeof x==='number'&&(!Number.isFinite(x)||Object.is(x,-0)))observationFail('JSON-stable observation evidence number required');if(x&&typeof x==='object')for(const[k,v]of Object.entries(x)){if(['__proto__','prototype','constructor'].includes(k))observationFail('Forbidden observation evidence key');stack.push([v,depth+1]);}}
+ let record;try{record=JSON.parse(raw);}catch{observationFail('Malformed observation evidence JSON');}assertUniqueHandoffJSONMembers(raw);assertHandoffJSONArrayBudget(record);
+ const stack=[[record,0]];let n=0;while(stack.length){const[x,depth]=stack.pop();if(++n>MAX_HANDOFF_JSON_NODES||depth>16||typeof x==='string'&&x.length>16384)throw observationError('Observation evidence structure limit','HANDOFF_LIMIT');if(typeof x==='number'&&(!Number.isFinite(x)||Object.is(x,-0)))observationFail('JSON-stable observation evidence number required');if(x&&typeof x==='object')for(const[k,v]of Object.entries(x)){if(['__proto__','prototype','constructor'].includes(k))observationFail('Forbidden observation evidence key');stack.push([v,depth+1]);}}
  return record;
 }
 export function observationFrozen(value){const copy=structuredClone(value);function freeze(x){if(x&&typeof x==='object'){Object.values(x).forEach(freeze);Object.freeze(x);}return x;}return freeze(copy);}

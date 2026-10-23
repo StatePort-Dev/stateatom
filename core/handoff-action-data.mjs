@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // Bounded passive JSON utilities shared only by historical action codecs.
-import{assertUniqueHandoffJSONMembers}from'./handoff-json.mjs';
+import{assertUniqueHandoffJSONMembers,assertHandoffJSONArrayBudget,MAX_HANDOFF_JSON_NODES}from'./handoff-json.mjs';
 export const actionError=(message='Invalid historical action evidence',code='INVALID_ACTION_EVIDENCE')=>Object.assign(Error(message),{code});
 export const actionFail=message=>{throw actionError(message);};
 export const actionHash=x=>typeof x==='string'&&/^[a-f0-9]{64}$/.test(x);
@@ -21,8 +21,8 @@ export function actionArray(value,max=1024){
 export function actionKeys(value,keys){if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).length!==keys.length||keys.some(k=>!Object.hasOwn(value,k)))actionFail('Unexpected action evidence fields');}
 export function actionJSON(raw){
  if(typeof raw!=='string')actionFail('Action evidence JSON text required');if(new TextEncoder().encode(raw).length>1048576)throw actionError('Historical file exceeds 1 MiB','HANDOFF_LIMIT');
- let record;try{record=JSON.parse(raw);}catch{actionFail('Malformed action evidence JSON');}assertUniqueHandoffJSONMembers(raw);
- const stack=[[record,0]];let n=0;while(stack.length){const[x,depth]=stack.pop();if(++n>10000||depth>16||typeof x==='string'&&x.length>16384)throw actionError('Action evidence structure limit','HANDOFF_LIMIT');if(typeof x==='number'&&(!Number.isFinite(x)||Object.is(x,-0)))actionFail('JSON-stable action evidence number required');if(x&&typeof x==='object')for(const[k,v]of Object.entries(x)){if(['__proto__','prototype','constructor'].includes(k))actionFail('Forbidden action evidence key');stack.push([v,depth+1]);}}
+ let record;try{record=JSON.parse(raw);}catch{actionFail('Malformed action evidence JSON');}assertUniqueHandoffJSONMembers(raw);assertHandoffJSONArrayBudget(record);
+ const stack=[[record,0]];let n=0;while(stack.length){const[x,depth]=stack.pop();if(++n>MAX_HANDOFF_JSON_NODES||depth>16||typeof x==='string'&&x.length>16384)throw actionError('Action evidence structure limit','HANDOFF_LIMIT');if(typeof x==='number'&&(!Number.isFinite(x)||Object.is(x,-0)))actionFail('JSON-stable action evidence number required');if(x&&typeof x==='object')for(const[k,v]of Object.entries(x)){if(['__proto__','prototype','constructor'].includes(k))actionFail('Forbidden action evidence key');stack.push([v,depth+1]);}}
  return record;
 }
 export function actionFrozen(value){const copy=structuredClone(value);function freeze(x){if(x&&typeof x==='object'){Object.values(x).forEach(freeze);Object.freeze(x);}return x;}return freeze(copy);}

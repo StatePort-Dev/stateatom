@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // Explicit unimported reviewed profile. Inert JSON only; no storage or runtime authority.
-import {assertUniqueHandoffJSONMembers} from './handoff-json.mjs';
+import {assertUniqueHandoffJSONMembers,assertHandoffJSONArrayBudget,MAX_HANDOFF_JSON_NODES} from './handoff-json.mjs';
 import {portableSourcePath} from './diagnostic.mjs';
 import {createHandoffReport,parseHandoffReport,handoffArtifactDigest} from './handoff-report.mjs';
 import {createHandoffContentReview,handoffContentPolicy as policy,filterHandoffReviewText,filterHandoffReviewValue} from './handoff-content.mjs';
@@ -32,7 +32,7 @@ function choices(v,valid,max=2048){const a=dense(v,max);if(a.some(x=>typeof x!==
 function int(v,max=Number.MAX_SAFE_INTEGER){if(!Number.isSafeInteger(v)||v<0||v>max)fail('Invalid integer');}
 function text(v,max,nullable=false){if(nullable&&v===null)return;if(typeof v!=='string'||v.length>max)fail('Invalid bounded text');}
 function clock(d){const fn=Object.hasOwn(d,'now')?d.now:Date.now;if(typeof fn!=='function')throw err('INVALID_CLOCK');const n=fn();if(typeof n!=='number'||!Number.isFinite(n)||n<0||n>DATE_MAX)throw err('INVALID_CLOCK');return new Date(n).toISOString();}
-function json(raw){if(typeof raw!=='string')fail('JSON text required');if(new TextEncoder().encode(raw).length>MAX)throw err('HANDOFF_LIMIT');let r;try{r=JSON.parse(raw);}catch{fail('Malformed JSON');}assertUniqueHandoffJSONMembers(raw);const stack=[[r,0]];let n=0;while(stack.length){const[v,d]=stack.pop();if(++n>10000||d>16||typeof v==='string'&&v.length>16384)throw err('HANDOFF_LIMIT');if(v&&typeof v==='object')for(const[k,x]of Object.entries(v)){if(['__proto__','prototype','constructor'].includes(k))fail('Forbidden key');stack.push([x,d+1]);}}return r;}
+function json(raw){if(typeof raw!=='string')fail('JSON text required');if(new TextEncoder().encode(raw).length>MAX)throw err('HANDOFF_LIMIT');let r;try{r=JSON.parse(raw);}catch{fail('Malformed JSON');}assertUniqueHandoffJSONMembers(raw);assertHandoffJSONArrayBudget(r);const stack=[[r,0]];let n=0;while(stack.length){const[v,d]=stack.pop();if(++n>MAX_HANDOFF_JSON_NODES||d>16||typeof v==='string'&&v.length>16384)throw err('HANDOFF_LIMIT');if(v&&typeof v==='object')for(const[k,x]of Object.entries(v)){if(['__proto__','prototype','constructor'].includes(k))fail('Forbidden key');stack.push([x,d+1]);}}return r;}
 function source(v){keys(v,['schema','version','id','digest','createdAt','capturedAt','build','freshness','trust']);if(v.schema!=='stateatom.diagnostic'||v.version!==1||!isUUID(v.id)||!isHash(v.digest)||!iso(v.createdAt)||v.capturedAt!==null&&(typeof v.capturedAt!=='number'||!Number.isFinite(v.capturedAt)||v.capturedAt<0||v.capturedAt>DATE_MAX)||v.build!==null&&!isHash(v.build)||!['Recorded','Stale'].includes(v.freshness)||v.trust!=='untrusted-historical-reference')fail('Invalid source reference');}
 function issue(v){keys(v,['attribution',...issueNames]);if(v.attribution!=='reporter')fail('Invalid issue attribution');text(v.title,160,true);for(const k of['actual','expected','question'])text(v[k],1024,true);if(!Array.isArray(v.steps)||v.steps.length>8)fail('Invalid steps');v.steps.forEach(s=>text(s,512));}
 const pathPatterns=[

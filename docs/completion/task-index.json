@@ -4753,9 +4753,22 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "115-v03-independent-basic-and-report-limit.md",
-      "implementation_plan": "../superpowers/plans/2026-10-23-v03-independent-clean-path.md",
-      "active_slice": null,
+      "execution_record": "116-v03-handoff-structure-budget.md",
+      "implementation_plan": "../superpowers/plans/2026-10-23-v03-handoff-structure-budget.md",
+      "active_slice": {
+        "id": "V03.3",
+        "title": "Retained detailed-report structure correction",
+        "status": "source-corrected-tested-pending-one-review",
+        "plan": "../superpowers/plans/2026-10-23-v03-handoff-structure-budget.md",
+        "record": "116-v03-handoff-structure-budget.md",
+        "focused_source_checks": 653,
+        "full_source_checks": 2494,
+        "retained_source_fields": 778,
+        "retained_source_evidence": ".artifacts/v03/handoff-structure-budget/2026-10-23/retained-correction-v2/results.json",
+        "product_source_deltas_from_Atom65": 7,
+        "new_packed_native_acceptance": false,
+        "full_V03_acceptance": false
+      },
       "completed_slices": [
         {
           "id": "V03.1-installed-guide",
@@ -4805,9 +4818,9 @@
         }
       ],
       "current_checkpoint": {
-        "record": "115-v03-independent-basic-and-report-limit.md",
-        "status": "partial-independent-basic-and-explicit-simple-reader-detailed-limit",
-        "next_bounded_step": "V03.3 diagnose exact detailed HANDOFF_LIMIT with retained independent-app diagnostic and pure codecs before more native execution; preserve current bounds, omissions and original failed cases"
+        "record": "116-v03-handoff-structure-budget.md",
+        "status": "source-corrected-detailed-codec-not-new-packed-runtime",
+        "next_bounded_step": "V03.4 new immutable Atom/UI pair and targeted detailed current-report/download/fresh-reader acceptance after ONE source review; no old whole-matrix replay"
       }
     },
     {
@@ -7008,11 +7021,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.2 finite independent-corpus/first Basic investigation complete with partial results after ONE review0/0/2 reporting corrections. Original React shop source65 unchanged; native picker/parent/Cancel/Cart to1Cart refresh passed with Unknown lineage. Detailed current Review report HANDOFF_LIMIT remains FAIL; explicit simple file produced and separate fresh recipient6 checks/333 inputs pass. No combined green origin or origin console acceptance, no Chrome UI installation/source-connected/Vue/reserve/macOS/full V03 credit. Product65/UI2 and326 inputs unchanged;20/29. Next V03.3 retained pure-codec limit diagnosis before more browser work.",
+    "current_activity_note": "V03.3 source correction retains every detailed field and original evidence/omissions on retained before-Cart input. Explicit v2 mixed-node ceiling10000 to20000 derived from unchanged10000 member cap plus new9999 aggregate array-entry cap; legacy10000 and other checks preserved. Focused653/full2494 pass; actual778fields/17joins/752omissions roundtrip in source. Seven current source deltas from original65; old archives/runtime remain unchanged and failed detailed65 run remains FAIL. Pending ONE source review, then V03.4 new exact package and targeted native handoff. FullV03/A02/L02/V02 open20/29.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "786e1fc V03.2 finite partial evidence; fa95157 product65 unchanged",
+    "current_source_revision": "b9f5e0d plan plus current seven core decoder/budget changes; original Atom65 artifacts unchanged",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V03.3 diagnose retained detailed HANDOFF_LIMIT with pure codecs; no limit widening or new browser run inferred"
+    "next_bounded_step": "V03.4 after ONE V03.3 review: new immutable pair and affected detailed-report/native recipient path only"
   },
   "next_task": "V03"
 }

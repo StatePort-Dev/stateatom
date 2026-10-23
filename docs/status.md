@@ -47,7 +47,16 @@ Review report hit HANDOFF_LIMIT; the explicit simple file was produced, then6
 recipient-continuation checks passed in a fresh profile without app/storage authority
 or requests. Original failures remain FAIL; no combined green run, guide UI install,
 Vue/reserve/runtime-adapter/full V03 acceptance is inferred. Next V03.3 is the exact
-retained codec-limit diagnosis before more browser work;20/29 unchanged. Original64 Basic/active/warm-source/input results remain
+retained codec-limit diagnosis before more browser work;20/29 unchanged.
+[V03.3 source correction](completion/116-v03-handoff-structure-budget.md) now
+reproduces that limit on the retained32KB before-Cart diagnostic and uses separate
+10000-member/9999-array-entry budgets (aggregate node ceiling explicitly10000→20000).
+Legacy-v1, byte/depth/text, duplicate/schema/privacy/evidence boundaries remain.
+Source653 focused/2494 full PASS; all778 actual projected fields survive detailed
+encoding and exact-parent input composition. Seven current source files differ
+from original65; that old package/runtime failure is unchanged. New package/native
+handoff acceptance is next V03.4 after ONE source review, not inferred from tests.
+Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the
 [preregistered finite protocol](superpowers/plans/2026-10-23-v02-basic-observer.md).

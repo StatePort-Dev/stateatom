@@ -1,6 +1,20 @@
 // SPDX-License-Identifier: Apache-2.0
 // Internal lexical check after the caller validates JSON syntax and byte size.
 // Never canonicalize imported bytes: shadow members must be refused, not erased.
+// Explicit v2 codecs combine the unchanged 10000-member lexical limit with at
+// most 9999 array entries: root + object members + array entries <= 20000 nodes.
+// The legacy-v1 reader keeps its original mixed 10000-node limit.
+export const MAX_HANDOFF_JSON_NODES=20000;
+// Parsed inert JSON only, after syntax/byte/lexical checks; not an app-object API.
+export function assertHandoffJSONArrayBudget(value){
+ const stack=[value];let entries=0;
+ while(stack.length){
+  const current=stack.pop();
+  if(!current||typeof current!=='object')continue;
+  if(Array.isArray(current)&&(entries+=current.length)>9999)throw Object.assign(new Error('Historical array structure bound'),{code:'HANDOFF_LIMIT'});
+  for(const child of Object.values(current))stack.push(child);
+ }
+}
 export function assertUniqueHandoffJSONMembers(raw,{maxDepth=16,maxMembers=10000}={}){
  const stack=[];let members=0;
  const limit=()=>{throw Object.assign(new Error('Historical JSON structure bound'),{code:'HANDOFF_LIMIT'});};
