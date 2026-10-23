@@ -41,3 +41,15 @@ test('primitive, disabled, stopped and ledger overflow remain explicit unknown',
   assert.equal(fixture({state:1}).api.snapshot({}).status,'Unknown/Unsupported');const p=fixture({state:1});assert.equal(p.api.snapshot(p.dom1).status,'Unknown/Unsupported');const off=fixture({enabled:false});assert.equal(off.api.snapshot(off.dom1).status,'Unknown/Unsupported');const f=fixture();f.base.stop();assert.equal(f.api.snapshot(f.dom1).status,'Unknown/Unsupported');
   const capped=fixture();for(let i=0;i<4100;i++)capped.tap('state-result',[{},capped.queue.dispatch],capped.hook,capped.fiber);assert.equal(capped.api.snapshot(capped.dom1).status,'Unknown/Unsupported');
 });
+test('an unresolved render-phase revision cannot borrow an old update even for the identical result',()=>{
+  const f=fixture(),result={},hook=f.apply(result),before=f.api.snapshot(f.dom1);assert(before.ancestors[0].updateId);f.tap('render-phase-unresolved',result,hook);f.tap('state-result',[result,f.queue.dispatch],hook,f.fiber);f.tap('root-current',f.root,f.rootFiber);const after=f.api.snapshot(f.dom1);assert.equal(after.status,'Observed');assert.notEqual(after.ancestors[0].revisionId,before.ancestors[0].revisionId);assert.equal(after.ancestors[0].resultId,before.ancestors[0].resultId);assert.equal(after.ancestors[0].updateOriginStatus,'Unknown/Unsupported');assert.equal(after.ancestors[0].updateId,null);
+});
+test('an exact same revision carried to its next current hook retains only its own update origin',()=>{
+  const f=fixture(),result={},hook=f.apply(result),before=f.api.snapshot(f.dom1),next={queue:f.queue,memoizedState:result,next:null};f.tap('begin',next,hook,f.queue,f.fiber);f.fiber.memoizedState=next;f.tap('state-result',[result,f.queue.dispatch],next,f.fiber);f.tap('root-current',f.root,f.rootFiber);const after=f.api.snapshot(f.dom1);assert.equal(after.status,'Observed');assert.equal(after.ancestors[0].revisionId,before.ancestors[0].revisionId);assert.equal(after.ancestors[0].updateId,before.ancestors[0].updateId);assert.equal(after.ancestors[0].updateOriginStatus,'Observed');
+});
+test('returning to a previous result object after an unobserved revision reset does not resurrect origin',()=>{
+  const f=fixture(),result={},hook=f.apply(result);for(const state of[{},result]){hook.memoizedState=state;f.tap('state-result',[state,f.queue.dispatch],hook,f.fiber);}f.tap('root-current',f.root,f.rootFiber);const after=f.api.snapshot(f.dom1);assert.equal(after.status,'Observed');assert.equal(after.ancestors[0].updateId,null);assert.equal(after.ancestors[0].updateOriginStatus,'Unknown/Unsupported');
+});
+test('shared native machinery does not classify the public hook kind',()=>{
+  const f=fixture(),r=f.api.snapshot(f.dom1);assert.equal(r.ancestors[0].publicHookKind,'Unknown/Unsupported');assert(!r.scope.includes('useReducer hook'));assert.equal(r.ancestors[0].scope,r.scope);
+});

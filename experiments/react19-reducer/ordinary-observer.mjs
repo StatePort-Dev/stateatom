@@ -5,7 +5,7 @@ export function installOrdinaryReducerAcquisition(){
   if(!base||typeof originalTap!=='function')throw Error('Pinned experimental base observer required');
   const object=x=>x!==null&&(typeof x==='object'||typeof x==='function'),own=(x,k)=>{if(!object(x))return;const d=descriptor(x,k);return d&&Object.hasOwn(d,'value')?d.value:undefined;};
   const fibers=new WeakSet(),roots=new WeakSet(),returned=new WeakMap();let current=null;
-  const scope='Native useReducer hook on exact committed DOM ancestor; not selected-property producer';
+  const scope='Native React reducer/state machinery on exact committed DOM ancestor; public hook kind and selected-property producer unknown';
   const unknown=reason=>({status:'Unknown/Unsupported',reason,scope,ancestors:[],selectedPropertyOrigin:'Unknown/Unsupported',stateToProp:'Unknown/Unsupported',fieldOwnership:'Unknown/Unsupported',fullPath:false,consumerOracle:false});
   function tap(kind,...refs){
     originalTap(kind,...refs);
@@ -33,6 +33,17 @@ export function installOrdinaryReducerAcquisition(){
       const child=own(fiber,'child'),sibling=own(fiber,'sibling');if(object(child))todo.push({fiber:child,parent:fiber});if(object(sibling))todo.push({fiber:sibling,parent});
     }
     if(!selected)return unknown('Selected DOM node is absent from current committed tree');
+    // Origin belongs to a revision, not merely to a matching returned object.
+    // An unresolved/reset revision must not resurrect an older applied update.
+    const pending=new Map(),origins=new Map();
+    for(const event of history.events){
+      if(event.kind==='reducer-applied')pending.set(event.hookId,event);
+      else if(event.kind==='render-phase-unresolved')pending.delete(event.hookId);
+      else if(event.kind==='state-result'){
+        const applied=pending.get(event.hookId);pending.delete(event.hookId);
+        if(event.checked&&applied?.queueId===event.queueId&&applied.resultId===event.resultId)origins.set(event.revisionId,{queueId:event.queueId,resultId:event.resultId,updateId:applied.updateId});
+      }
+    }
     const ancestors=[],walked=new Set();let fiber=selected;
     while(fibers.has(fiber)&&walked.size<64&&!walked.has(fiber)){
       walked.add(fiber);let hook=[0,11,15].includes(own(fiber,'tag'))?own(fiber,'memoizedState'):null;const hooks=new Set();
@@ -41,9 +52,8 @@ export function installOrdinaryReducerAcquisition(){
         if(r&&state&&queue&&dispatch&&related(fiber,r.fiber.deref())&&own(hook,'memoizedState')===state&&own(hook,'queue')===queue&&own(queue,'dispatch')===dispatch){
           const hookId=base.id(hook),resultId=base.id(state),event=history.events.findLast(e=>e.kind==='state-result'&&e.hookId===hookId);
           if(event?.checked&&event.resultId===resultId){
-            const applied=history.events.findLast(e=>e.sequence<event.sequence&&e.kind==='reducer-applied'&&e.hookId===hookId&&e.queueId===event.queueId);
-            const sameResult=applied?.resultId===resultId;
-            ancestors.push({hookId,fiberId:base.id(fiber),queueId:event.queueId,resultId,revisionId:event.revisionId,updateId:sameResult?applied.updateId:null,updateOriginStatus:sameResult&&applied.updateId?'Observed':'Unknown/Unsupported',scope});
+            const origin=origins.get(event.revisionId),matches=origin?.queueId===event.queueId&&origin.resultId===resultId,updateId=matches?origin.updateId:null;
+            ancestors.push({hookId,fiberId:base.id(fiber),queueId:event.queueId,resultId,revisionId:event.revisionId,updateId,updateOriginStatus:updateId?'Observed':'Unknown/Unsupported',publicHookKind:'Unknown/Unsupported',scope});
           }
         }
         hook=own(hook,'next');

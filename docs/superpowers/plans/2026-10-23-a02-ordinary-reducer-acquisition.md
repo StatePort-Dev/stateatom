@@ -13,7 +13,8 @@ hashes and derivative bytes; no application callbacks/getters are replayed.
 
 New isolated companion observer wraps existing experimental tap. It matches an
 actual supplied DOM node to root.current's committed native Fiber, then reports
-eligible native useReducer hooks on its actual ancestors. Match exact hook/queue/
+eligible native React reducer/state machinery on its actual ancestors, with public
+hook kind Unknown. Match exact hook/queue/
 returned state/revision/update pointers using existing event ledger. No fixture
 consumer/reducer oracle, app name, URL, field names or equality hint is input to
 this acquisition. Multiple ancestor hooks remain candidates: native ancestor
