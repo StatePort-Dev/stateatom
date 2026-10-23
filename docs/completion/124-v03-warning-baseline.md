@@ -22,3 +22,14 @@ Preregistered case pins driver/comparator/native-result hashes, exact plugin5 an
 Chrome/153.0.8010.12; original Node18/Vite4/Vue3.3.4 route/viewport remain fixed.
 5000-event/8MiB raw caps fail comparison on overflow; no truncated sample passes.
 Post-window events remain separately retained. Actual execution remains due.
+
+First preregistered3723e7d preparation terminatesFAIL before app navigation:
+`.artifacts/v03/warning-baseline/2026-10-23T22-19-53-624Z/results.json`.
+Playwright's unspecified headless channel selects HeadlessChrome/153.0.8010.12,
+while original native uses full Chrome/153.0.8010.12. No app events collected;
+own browser/Vite close, original498/working497+same delta unchanged. Preserve
+the original case/result/driver revision. Context7 confirms this executable choice.
+New full-chromium case pins the full original Chromium executable/hash plus
+documented chromium channel/new headless and new driver hash, retaining order,
+window, app/tuple, caps and all comparison/original-native criteria. Register
+this preparation correction before execution; no browser version/edition waiver.

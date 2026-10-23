@@ -4757,12 +4757,12 @@
       "active_slice": {
         "id": "V03.11",
         "title": "Read-only original Vue warning baseline comparison",
-        "status": "preregistered-not-executed",
+        "status": "preparation-edition-fail-new-full-chromium-case-preregistered",
         "predecessor": "V03.10 bounded parser complete; native15-positive/final-console-FAIL retained",
         "record": "124-v03-warning-baseline.md",
         "design": "../superpowers/specs/2026-10-24-v03-warning-baseline-design.md",
         "plan": "../superpowers/plans/2026-10-24-v03-warning-baseline.md",
-        "registered_question": "../testing/independent-vue-warning-case.json",
+        "registered_question": "../testing/independent-vue-warning-case-full-chromium.json",
         "whole_V03_complete": false,
         "product_source_changed": false,
         "diagnostic_order": [
@@ -4771,7 +4771,8 @@
           "on",
           "off"
         ],
-        "focused_comparator_checks": 7
+        "focused_comparator_checks": 7,
+        "preparation_failure": ".artifacts/v03/warning-baseline/2026-10-23T22-19-53-624Z/results.json"
       },
       "completed_slices": [
         {
@@ -7388,7 +7389,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.11 read-only diagnostic preregisters four fresh original app off/on/on/off trials, raw CDP console/exception/Log capture, blank positive control,1000ms finite window and full argument/multiplicity comparison. Comparator7 PASS, missing-module RED retained as preparation only. No product source/build/dependency changes or original native FAIL waiver; whole20/29 unchanged.",
+    "current_activity_note": "V03.11 read-only diagnostic preregisters four fresh original app off/on/on/off trials, raw CDP console/exception/Log capture, blank positive control,1000ms finite window and full argument/multiplicity comparison. Comparator7 PASS, missing-module RED retained as preparation only. No product source/build/dependency changes or original native FAIL waiver; whole20/29 unchanged. First preparation failed browser edition before app navigation (0 app evidence); new preregistered full Chromium executable/hash/channel corrects that setup without changing criteria.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "d40a503 product proof retained, plus V03.11 diagnostic driver/comparator/tests/spec/plan/case only",
     "current_record_date": "2026-10-24",
