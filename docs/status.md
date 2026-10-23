@@ -64,7 +64,8 @@ opens in a fresh matching66 reader with unchanged authority/no import requests;
 the same file receives HANDOFF_LIMIT in old65.336 native inputs stable during run,
 all65 app source files unchanged. Original65 failure remains historical. This is
 the affected detailed route, not fullV03/Chrome UI install/embedding-native/source/
-Vue/model/performance/macOS acceptance. Next V03.5 is the pinned non-React app;
+Vue/model/performance/macOS acceptance. ONE whole V03.4 review accepted0/0/0;
+all five scope rulings recorded, no correction or re-review. Next V03.5 is the pinned non-React app;
 whole20/29 unchanged.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
