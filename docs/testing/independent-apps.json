@@ -132,6 +132,24 @@
       "vue_executed": false,
       "reserve_executed": false,
       "full_V03_accepted": false
+    },
+    {
+      "id": "V03.5",
+      "application": "CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "execution_record": "../completion/118-v03-independent-vue-basic.md",
+      "evidence": ".artifacts/v03/independent-vue-basic/2026-10-23T17-30-12-907Z/results.json",
+      "status": "PASS_INDEPENDENT_VUE_BASIC_NOT_SOURCE_OR_FULL_V03",
+      "native_checks": 13,
+      "registered_inputs": 335,
+      "source_files_before": 498,
+      "source_files_unchanged_after": 497,
+      "normal_generated_deltas": [
+        "components.d.ts"
+      ],
+      "immutable_original_files_unchanged": 498,
+      "source_runtime_adapter_accepted": false,
+      "whole_V03_complete": false
     }
   ]
 }

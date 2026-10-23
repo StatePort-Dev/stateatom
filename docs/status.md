@@ -67,6 +67,13 @@ the affected detailed route, not fullV03/Chrome UI install/embedding-native/sour
 Vue/model/performance/macOS acceptance. ONE whole V03.4 review accepted0/0/0;
 all five scope rulings recorded, no correction or re-review. Next V03.5 is the pinned non-React app;
 whole20/29 unchanged.
+[V03.5 independent Vue Basic](completion/118-v03-independent-vue-basic.md): actual
+standalone native13 PASS,335 stable inputs; original text statistics0→8→0 via
+ordinary trusted app input, exact38743B v1 export and passive fresh reader.497 of498
+working appfiles unchanged, sole normal components.d.ts generation retained; all498
+immutable originals exact. Source/runtime/consumer stays Unknown; no Live/Draft or
+fullVue/V03 credit. ONE review pending. NextV03.6 establishes exact helper/plugin
+and matching-build prerequisites for independent Vue source-connected positives.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the
