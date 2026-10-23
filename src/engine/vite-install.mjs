@@ -25,12 +25,30 @@ function version(require,name){
  }
  throw Error('Resolved package metadata unavailable');
 }
+// Only infer defaults through plain data containers. Explicit entries/policies,
+// including empty values and accessors, remain the application's responsibility.
+function unconfigured(object,keys){
+ if(!object||typeof object!=='object')return false;
+ const prototype=Object.getPrototypeOf(object);
+ if(prototype!==null&&prototype!==Object.prototype)return false;
+ const [key,...rest]=keys,descriptor=Object.getOwnPropertyDescriptor(object,key);
+ if(!descriptor)return !prototype||!Object.getOwnPropertyDescriptor(prototype,key);
+ if(!rest.length||!Object.hasOwn(descriptor,'value'))return false;
+ return unconfigured(descriptor.value,rest);
+}
 export function stateatomPlugin(options={}){
  if(options.firstReadContracts)throw Error('Controlled first-read is a separate specialised source-checkout profile, not this installed plugin recipe');
  if(options.profile!==undefined&&options.profile!=='vue3')throw Error('Unknown StateAtom installed profile; the explicit experimental profile is vue3, or omit profile for the default recipe');
  if(options.enabled&&options.profile==='vue3')for(const name of ['reactCommit','reactHostProps','fetchInitiators','reactStateHandoffs','sourceWrites','queryHandoffs','queryCallCensus','writeAccessGuards','queryWriteAccessGuards','reactWriteAccessGuards','actionTrace'])if(options[name])throw Error('StateAtom Vue profile does not admit option '+name+'; use the documented selected source/read profile');
  const plugin=implementation(options);
- return {...plugin,configResolved(config){
+ return {...plugin,config(config,environment){
+  const result=plugin.config.call(this,config,environment);
+  if(result!==undefined||!options.enabled||options.profile!=='vue3')return result;
+  if(!['entries','noDiscovery','disabled'].every(key=>unconfigured(config,['optimizeDeps',key]))||!unconfigured(config,['build','rollupOptions','input']))return;
+  // Vite4 otherwise infers HTML only; template-autoimported SFC dependencies
+  // can arrive after its initial scan. Keep the original default exclusions.
+  return {optimizeDeps:{entries:['**/*.html','**/*.vue','!**/__tests__/**','!**/coverage/**']}};
+ },configResolved(config){
   if(options.enabled&&options.reactHostProps&&(config.plugins?.some(p=>/^vite:react-(babel|refresh|swc)/.test(p.name))||config.esbuild?.jsx!=='transform'||config.esbuild?.jsxFactory!=='React.createElement'))throw Error('StateAtom React transform conflict: use the documented classic React.createElement JSX configuration without plugin-react; disable StateAtom for unsupported pipelines');
   if(!options.enabled)return;
   if(options.profile==='vue3'&&!config.plugins?.some(p=>p.name==='vite:vue'))throw Error('StateAtom Vue profile requires the original @vitejs/plugin-vue plugin; keep the application compiler configuration or disable StateAtom');

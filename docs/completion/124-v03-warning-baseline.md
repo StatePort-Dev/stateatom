@@ -128,3 +128,36 @@ This may test whether template-autoimported SFC static imports were absent from
 the initial scan. It is NOT an approved default/plugin fix or a replacement for
 the original ABBA question. Any product policy needs its own scoped decision and
 verification; all failed original cases remain unaccepted.
+
+## Scan-frontier control outcome and necessary prerequisite
+
+Preregister1e642c0 actually passes the single diagnostic control:
+`.artifacts/v03/warning-baseline/2026-10-23T23-02-07-747Z/results.json`.
+57 inputs stable,525 trace events/no overflow, one document navigation, no manual
+reload/warmup. Both prebundles exist and return200; exact original empty input,
+marker and zero statistics render. All24 warnings remain. The readonly aggregate
+cold-controls-checkpoint.json validates both retained504 runs and this control,
+plus unchanged327 Atom/223 helper/19 plugin/14 installed payload inputs. This is
+one sufficient scanner intervention, not a uniquely observed internal Vite race,
+a product fix, original ABBA completion or acceptance of the zero-console gate.
+
+Next bounded prerequisite within V03.11 is an installed Vue-profile correction,
+then the original four-trial question on its exact new package. Executor decision
+under the autonomous implementation authorization: extend default HTML dependency
+scanning to Vue SFCs only for enabled explicit vue3, preserving Vite4's default
+test/coverage exclusions and all explicit user entry/optimizer policies. This
+source change is not an already approved compatibility matrix. Tests, package,
+strict Node18 admission and actual cold original-app startup are required. No
+hardcoded application dependencies, reload, warning suppression or app patch.
+Existing helper8/Atom70 may be reused only after their input hashes still match;
+the changed plugin must be repacked/installed. FullV03/C09/20-of29 unchanged.
+
+Installed-wrapper prerequisite now has actual RED18 controls16PASS/2FAIL for
+missing entries/fresh-array behavior, then focused50 and corrected full2616 PASS
+(0 skipped). One added React test initially asserted the existing wrapper's
+snapshot getter rather than its config result; first full2615/2616 FAIL is retained,
+then the corrected test verifies actual force/include/vendor-probe return fields.
+No unrelated getter implementation was changed. Candidate6 source/default scanner
+policy is implemented; new package/install/original ABBA/runtime acceptance remain
+due. Atom327/helper223 current inputs and exact old archives still match, allowing
+scoped reuse without rebuilding or promoting historical native evidence.

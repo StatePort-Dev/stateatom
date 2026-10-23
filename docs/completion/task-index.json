@@ -2146,7 +2146,7 @@
           "type_consumers": 2,
           "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
           "standalone_read_inject_native_checks": 3,
-          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
           "runtime_race_checks": 14,
           "isolated_bug_mutations_rejected": 6,
           "native_checks": 29,
@@ -3802,7 +3802,7 @@
       "implementation_plan": "../superpowers/plans/2026-10-21-l02-real-local-model.md",
       "remaining_acceptance": [
         "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
-        "Final candidate actual factual/concision/usefulness comparison preserving historical20–30 and>=25/5incomplete/5untrusted criteria",
+        "Final candidate actual factual/concision/usefulness comparison preserving historical20\u201330 and>=25/5incomplete/5untrusted criteria",
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
@@ -4796,7 +4796,11 @@
         "launch_fidelity_control_case": "../testing/independent-vue-cold-on-original-cli-case.json",
         "launch_fidelity_control_result": ".artifacts/v03/warning-baseline/2026-10-23T22-56-19-425Z/results.json",
         "launch_fidelity_control_status": "FAIL_SAME_MISSING_PREBUNDLE_504",
-        "scan_frontier_control_case": "../testing/independent-vue-cold-on-scan-frontier-case.json"
+        "scan_frontier_control_case": "../testing/independent-vue-cold-on-scan-frontier-case.json",
+        "scan_frontier_control_result": ".artifacts/v03/warning-baseline/2026-10-23T23-02-07-747Z/results.json",
+        "scan_frontier_control_status": "PASS_SINGLE_CONTROL_200_READY24_NOT_PRODUCT_FIX_OR_ABBA",
+        "prerequisite": "Bounded installed Vue default scanner correction preserving explicit user policies, then exact new installed treatment and original ABBA; no private override in acceptance",
+        "control_verification": ".artifacts/v03/warning-baseline/2026-10-24/cold-controls-checkpoint.json"
       },
       "completed_slices": [
         {
@@ -5201,7 +5205,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK — separate StatePort project",
+      "title": "Production SDK \u2014 separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",
@@ -5968,7 +5972,7 @@
         "type_consumers": 2,
         "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
         "standalone_read_inject_native_checks": 3,
-        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
         "runtime_race_checks": 14,
         "isolated_bug_mutations_rejected": 6,
         "native_checks": 29,

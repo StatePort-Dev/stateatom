@@ -89,6 +89,19 @@ rewrite error in an original utility module; candidate5 preserves export specifi
 and live-binding semantics. These source corrections alone are not native support.
 Actual qualification and failures belong in repository completion record119;
 metadata and this recipe alone do not establish a successful installed workflow.
+Candidate `0.1.0-candidate.20261021.6` additionally scans HTML and Vue SFC entries
+at startup in this enabled Vue profile when the application leaves entry discovery
+at its default. This includes template-autoimported components before their first
+browser request; it can add initial scanning work. Existing explicit
+`optimizeDeps.entries`, `noDiscovery`, `disabled` or `build.rollupOptions.input`
+policies (including empty values) are preserved. Custom/accessor configuration is
+left untouched; such pipelines may still need their own dependency policy. Vite4
+still excludes node_modules/build output, and the original test/coverage excludes
+are retained. No dependency names are forced, no application warning is suppressed,
+and this does not qualify other Vue/Vite versions or the full native workflow.
+Fresh packaged/runtime results belong in completion record124; the earlier
+plugin5 cold-start failures and all zero-console criteria remain historical.
+
 No new public release or publication is established.
 
 ## Optional Action Trace development workflow

@@ -98,3 +98,26 @@ retain the original default test/coverage exclusions. This is hypothesis-only
 scanner-frontier intervention in private config, not a product or app-file change,
 approved compatibility default or original-matrix qualification. Keep the exact
 source/plugin/CLI/browser/cold/timeouts, no manual reload or hidden warmup.
+
+## Necessary source prerequisite after registered controls
+
+The original-CLI control still fails504; the single private HTML+Vue scanner
+control renders with both dependency responses200. This does not complete the
+original four trials. Explicit amendment: the no-product-change constraint above
+continues to describe the diagnostic controls. A bounded prerequisite may now
+change the installed vue3 wrapper, with RED/GREEN controls, full source checks,
+a new immutable plugin package/strict Node18 install, then a newly registered
+four-trial comparison without any private scanner override. Old plugin5 failures
+and all native/zero-console criteria stay intact. Record the new treatment apart
+from the historical native scenario; never mutate old cases or receipts.
+
+Enabled vue3 may return default entries HTML+Vue with test/coverage negatives
+only where no explicit optimizeDeps.entries, noDiscovery, disabled, or
+build.rollupOptions.input policy is present. Preserve even empty/custom/negative
+entries and explicit policy properties; unfamiliar/accessor configurations are
+left untouched without reading their getters. Return a partial Vite config,
+never mutate the original. Preserve the underlying config hook and default/React/
+disabled behavior, tuple/serve-only guards and every evidence boundary. No
+application/dependency-specific names. More scanned SFCs can cost startup time;
+no performance qualification is inferred. Reuse unchanged helper8/Atom70 after
+exact identity checks, not an unnecessary rebuild/replay of their old successes.

@@ -17,7 +17,7 @@ Vue3.3.4/plugin5, existing dependency/artifact receipts; no package upgrades.
 
 - Main/d40a503 local commits, no branch/push/publication or other repository.
 - Original zero-console/native source/scalar/IDE/input/export gates unchanged.
-- No app/product/helper/Atom/plugin/dependency edits or warning suppression.
+- No app/dependency edits or warning suppression. Diagnostic controls leave product unchanged; the scoped source prerequisite below is an explicit amendment.
 - Four preregistered off/on/on/off startup trials, exact original tuple/route.
 - No Atom/IDE mounted; isolated diagnostics do not requalify the whole native route.
 - Historical FAILs, Unknown and all raw events/counts remain visible.
@@ -45,7 +45,11 @@ counts, no app side effects or product exports.
 - [x] Implement the comparator and bounded integration driver with raw capture, source/tuple/treatment checks and owned cleanup.
 - [x] Run focused comparator tests; retain current full2585/product evidence because no product source changes; no rebuild or old full native replay.
 - [x] Preregister exact supplied identities, original case, order/window and diagnostic constraints; commit driver/case/plan before execution.
-- [ ] Preregister one separate cold-On trace after retained504 failure: same original tuple/timeout, passive local Network/HMR/navigation plus vite:deps debug, failure DOM/screenshot and after-response metadata; no warmup/reload. Run the trace without counting it as the original ABBA comparison.
+- [x] Preregister one separate cold-On trace after retained504 failure: same original tuple/timeout, passive local Network/HMR/navigation plus vite:deps debug, failure DOM/screenshot and after-response metadata; no warmup/reload. Run the trace without counting it as the original ABBA comparison.
+- [x] Retain original-CLI failure and one-variable HTML+Vue scanner control; record actual200/ready24 without original-matrix credit.
+- [ ] Write installed-wrapper scan-policy RED tests; implement only enabled vue3 defaults preserving explicit/accessor/custom entries/input/optimizer policies and underlying hook.
+- [ ] Focused GREEN/full source suite; commit source, pack exact new plugin, strict Node18 install and reuse unchanged helper8/Atom70 by hashes.
+- [ ] Register new treatment identities separately from historical native case, original CLI, no private scanner override; commit before four fresh trials.
 - [ ] Run node tests/integration/independent-vue-warning-baseline.mjs docs/testing/independent-vue-warning-case.json; inspect actual phase results, raw warnings, artifacts and cleanup. Do not restart a live handle or retry to improve output.
 - [ ] Summarize within-condition, cross-condition and original-native differences separately; keep original15-positive/overall-FAIL result unchanged.
 - [ ] Update record124/current task routing/corpus append-only, identify one dependency-valid next item from actual result.
