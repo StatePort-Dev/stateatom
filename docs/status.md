@@ -8,8 +8,10 @@ The original source-exploration increment remains complete within its original
 boundary. [P01's bounded selected-action source path](completion/75-p01-whole-item-review.md)
 is now complete; [P02](completion/82-p02-whole-item-review.md) is complete within
 its brief. [P03](completion/85-p03-trusted-https-workflow.md) now completes its
-finite trusted-HTTPS/local-artifact workflow;18/29 whole tasks (~62% equal count),
-not release readiness. P04 observations are next. The subsequent
+finite trusted-HTTPS/local-artifact workflow. [P04](completion/100-p04-whole-item-review.md)
+now completes its bounded production observation/handoff scope after ONE review:
+19/29 whole tasks (~66% equal count), not release readiness. Next V02.1 bounded
+Basic/active-observer latency and overhead measurements. The subsequent
 [F01 implementation](completion/14-f01-capability-contracts.md) consolidates
 capability policy and checks packed declarations on candidate `.20261019.3`:
 586 unit, 48 contract, 34 two-host, 26 Basic, 32 Actions and 19 source-map checks
@@ -1889,3 +1891,8 @@ repository or independent-human blocker.
 ### 2026-10-23 — P04 named coverage before parent review
 
 [Named H07-H09 coverage](completion/99-p04-named-coverage.md): exact60 actual inspector/worker-loss/passive history25 and local-map exclusion7 both hosts pass,0 inspector console warnings/errors. New native-download early-open helper race has meaningful RED/GREEN; stalled setup explicitly aborted before map with0 credited checks. Current source2379/511 matching inputs; product60/type/admission/build unchanged. Historical58/59 matrix subchecks reused only with recorded unchanged-module/runtime-path reasoning; no old FAIL upgraded to whole PASS or fresh60 run. Next ONE whole-P04 review, parent P04/C07 still open;18/29 unchanged.
+
+
+### 2026-10-23 — whole P04 accepted, next V02.1
+
+[ONE whole-P04 review](completion/100-p04-whole-item-review.md): fresh-context read-only reviewer accepts the finite brief,0 actionable Critical/Important/Minor, no correction pass. Independent171 focused checks and all511 source/268 package-source/archive/host identities verified. Current source2379 and native13/17/25/7 scopes plus explicitly bounded historical reuse support acceptance; no old FAIL or screenshot upgraded. C07 U06/U03/P04 path accepted within this scope.19/29 (~66% equal count), not release readiness; L02 mandatory/open/A05 scoped complete/A02/integration/release remain open. Next V02.1 preregistered Basic/active-observer measurements, preserve raw distributions/targets and no post-result workload reduction.
