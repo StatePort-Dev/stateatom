@@ -1,0 +1,30 @@
+{
+  "schema": "stateatom.v03-vue-warning-case/1",
+  "application": "CorentinTh/it-tools",
+  "applicationRevision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+  "nativeResult": ".artifacts/v03/independent-vue-source/2026-10-23T21-53-15-845Z/results.json",
+  "expectedNativeSha256": "dc98dff4f9e0e32396864e92382116f26d801388c07a445f1394f3ef32e5aed5",
+  "originalCase": "docs/testing/independent-vue-source-case70-helper8.json",
+  "dependencyReceipt": ".artifacts/v03/dependency-prep/2026-10-23T15-48-05-165Z/results.json",
+  "expectedPluginSha256": "a6362897971eecdc0f0cd66a9cf25a4473be8224704e2a635cd4bbe7bf887453",
+  "expectedBrowserProduct": "Chrome/153.0.8010.12",
+  "expectedDriverSha256": "f2bcdcfe6dc810ffd2f0110a370b62d496a8a6280ee74f8df7de7e7534087280",
+  "expectedComparisonHelperSha256": "d9e585e4313df2a0bb1faf97909864ae2719b43299fcaa1a8957b4ed7b323fa0",
+  "order": [
+    false,
+    true,
+    true,
+    false
+  ],
+  "settleMs": 1000,
+  "maxEvents": 5000,
+  "maxRawBytes": 8388608,
+  "nativeOverallStatusRemains": "FAIL",
+  "constraints": [
+    "Off imports original config only; On prepends exact installed plugin enabled profile vue3",
+    "Same original source/dependency metadata/lock/Chrome/route/viewport; fresh private cache and profile per trial",
+    "No Atom/IDE mounted, no console replacement, positive blank control excluded from app window",
+    "All warning/error arguments and multiplicities compared; raw events and post-window events retained",
+    "No warning suppression, app patch, native gate waiver, rerun of original15-gate workflow or full V03/C09 acceptance"
+  ]
+}

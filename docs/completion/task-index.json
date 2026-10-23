@@ -4753,38 +4753,25 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "123-v03-vue-source-html.md",
+      "execution_record": "124-v03-warning-baseline.md",
       "active_slice": {
-        "id": "V03.10",
-        "title": "Selected Vue source-template HTML parsing",
-        "status": "engineering-complete-native15-pass-final-app-console-fail",
-        "predecessor": "V03.9 bounded source acquisition complete; helper7 source0/1 FAIL retained",
-        "record": "123-v03-vue-source-html.md",
-        "design": "../superpowers/specs/2026-10-24-v03-vue-source-html-design.md",
-        "plan": "../superpowers/plans/2026-10-24-v03-vue-source-html.md",
-        "registered_question": "../testing/independent-vue-source-case70-helper8.json",
-        "same_question_required": true,
-        "focused_source_checks": 39,
-        "full_source_checks": 2585,
-        "native_checks_passed": 15,
-        "native_status": "FAIL_FINAL_APP_CONSOLE24_WARNINGS_16_INTLIFY_8_VUE_PROP_TYPE",
-        "native_evidence": ".artifacts/v03/independent-vue-source/2026-10-23T21-53-15-845Z/results.json",
-        "source_positive_gate_reached": true,
-        "full_V03_acceptance": false,
-        "review_pending": false,
-        "whole_review": {
-          "critical": 0,
-          "important": 0,
-          "minor": 0,
-          "correction_passes": 0,
-          "re_review": false
-        },
-        "verification": ".artifacts/v03/vue-source-html/2026-10-24/final-checkpoint.json",
-        "next_independent_item": "V03.11",
-        "app_warning_classes": {
-          "intlify_missing_translation": 16,
-          "vue_component_prop_type": 8
-        }
+        "id": "V03.11",
+        "title": "Read-only original Vue warning baseline comparison",
+        "status": "preregistered-not-executed",
+        "predecessor": "V03.10 bounded parser complete; native15-positive/final-console-FAIL retained",
+        "record": "124-v03-warning-baseline.md",
+        "design": "../superpowers/specs/2026-10-24-v03-warning-baseline-design.md",
+        "plan": "../superpowers/plans/2026-10-24-v03-warning-baseline.md",
+        "registered_question": "../testing/independent-vue-warning-case.json",
+        "whole_V03_complete": false,
+        "product_source_changed": false,
+        "diagnostic_order": [
+          "off",
+          "on",
+          "on",
+          "off"
+        ],
+        "focused_comparator_checks": 7
       },
       "completed_slices": [
         {
@@ -5060,6 +5047,38 @@
             "source_replay_status": "PARTIAL_READER_TRACE_VALIDATION_PASS_SOURCE_LINK_UNAVAILABLE",
             "native_rerun": false
           }
+        },
+        {
+          "id": "V03.10",
+          "title": "Selected Vue source-template HTML parsing",
+          "status": "engineering-complete-native15-pass-final-app-console-fail",
+          "predecessor": "V03.9 bounded source acquisition complete; helper7 source0/1 FAIL retained",
+          "record": "123-v03-vue-source-html.md",
+          "design": "../superpowers/specs/2026-10-24-v03-vue-source-html-design.md",
+          "plan": "../superpowers/plans/2026-10-24-v03-vue-source-html.md",
+          "registered_question": "../testing/independent-vue-source-case70-helper8.json",
+          "same_question_required": true,
+          "focused_source_checks": 39,
+          "full_source_checks": 2585,
+          "native_checks_passed": 15,
+          "native_status": "FAIL_FINAL_APP_CONSOLE24_WARNINGS_16_INTLIFY_8_VUE_PROP_TYPE",
+          "native_evidence": ".artifacts/v03/independent-vue-source/2026-10-23T21-53-15-845Z/results.json",
+          "source_positive_gate_reached": true,
+          "full_V03_acceptance": false,
+          "review_pending": false,
+          "whole_review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 0,
+            "correction_passes": 0,
+            "re_review": false
+          },
+          "verification": ".artifacts/v03/vue-source-html/2026-10-24/final-checkpoint.json",
+          "next_independent_item": "V03.11",
+          "app_warning_classes": {
+            "intlify_missing_translation": 16,
+            "vue_component_prop_type": 8
+          }
         }
       ],
       "current_checkpoint": {
@@ -5225,11 +5244,11 @@
     ]
   },
   "reconciliation": {
-    "document": "123-v03-vue-source-html.md",
+    "document": "124-v03-warning-baseline.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.10-engineering-complete-native15-partial-final-app-console-fail",
-    "next_item": "V03.11 original app warning baseline diagnosis",
+    "current_increment": "V03.11-preregistered-warning-comparison-not-executed",
+    "next_item": "V03.11 execute original off/on/on/off warning baseline",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7369,11 +7388,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.10 locked DOM parser complete: RED6=1PASS5FAIL -> focused39/full2585PASS. Exact helper8 native15 PASS/378 stable including original selected expression/scalar/IDE/input/save/export/passive reader; final zero-app-console gate FAIL24 warnings (16 intlify missing translations,8 Vue component prop type). Cause unknown; ONE review0/0/0/no correction/re-review, integrity checkpoint verified. Whole20/29/fullV03/C09 unchanged.",
+    "current_activity_note": "V03.11 read-only diagnostic preregisters four fresh original app off/on/on/off trials, raw CDP console/exception/Log capture, blank positive control,1000ms finite window and full argument/multiplicity comparison. Comparator7 PASS, missing-module RED retained as preparation only. No product source/build/dependency changes or original native FAIL waiver; whole20/29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "20fc8ec4a9add2128816dcd4b4b50635b35759c4 helper8 producer; original native preregistration4b4e536; Atom70/plugin5 inputs verified unchanged",
+    "current_source_revision": "d40a503 product proof retained, plus V03.11 diagnostic driver/comparator/tests/spec/plan/case only",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.11 read-only uninstrumented/instrumented original-app warning comparison for both16 missing-translation and8 Vue component-prop warnings. Preserve zero-console gate and original selected source/scalar/range/IDE/input/export criteria; no app patch, warning suppression, old FAIL rewrite or assumed pre-existing cause."
+    "next_bounded_step": "Commit registered diagnostic before execution, run exact original warning matrix, inspect all raw outcomes/current source/tuple/cleanup checks and comparisons; keep native15-positive/overall-FAIL unchanged; ONE whole review and one next item from actual result."
   },
   "next_task": "V03"
 }

@@ -158,6 +158,11 @@ consumer lineage or full V03/C09 claim. ONE review0/0/0 accepted the bounded par
 no correction/re-review; integrity verified. Next V03.11 compares
 uninstrumented/instrumented original app warnings without suppression or gate
 waiver. Atom70/plugin5/whole20/29 unchanged; historical FAILs retained.
+[V03.11](completion/124-v03-warning-baseline.md) now preregisters a read-only
+off/on/on/off startup warning comparison on the same original app/tuple/Chrome,
+with raw CDP events and all arguments/multiplicities retained. Comparator7 PASS;
+no product/dependency/build changes. Actual matrix/ONE review still due, original
+native15-positive/overall-FAIL and20/29 unchanged; no warning waiver.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the
