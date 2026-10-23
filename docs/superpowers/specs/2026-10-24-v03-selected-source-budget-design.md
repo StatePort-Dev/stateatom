@@ -33,7 +33,12 @@ Reject leaf and ancestor symlinks for candidate reads as the original walk does.
 Read only regular files through an opened handle, with bounded buffer reads and
 pre/post path/descriptor identity and metadata checks; never read a FIFO/device or
 silently accept a concurrently replaced source. Recheck trusted isAllowed across
-awaits/before reads. Close every descriptor. Defaults and limits are executor calls.
+awaits/before reads. Close every descriptor. Revalidate admitted path/ancestor and
+identity/metadata after all acquisition awaits; omit changed sources without
+refilling. A bounded synchronous metadata fence adds no later-file await. This is
+not an atomic filesystem snapshot or a watch against edits after return. Defaults
+and limits are executor calls; other-platform and performance qualification remain
+separate from Linux controls.
 
 Wrong/missing digest remains Stale, unsupported/oversized/escaped/missing candidates
 remain absent; marker identity and exact source location logic are unchanged.

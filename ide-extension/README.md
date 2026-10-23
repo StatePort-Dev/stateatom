@@ -47,5 +47,8 @@ file and2000000 bytes total. Page paths do not grant filesystem access: only reg
 source files inside the explicitly mapped folder are eligible; symlinks and
 node_modules/.git/dist/artifacts are excluded. Missing, oversized, replaced or
 unvalidated files do not become known source evidence. Trust loss stops reads and
-closes acquired descriptors. Exact digest/range checks still apply; this lookup
+closes acquired descriptors. A final bounded path/metadata check removes sources
+changed while subsequent files were being read; invalidated slots are not refilled.
+This is not an atomic filesystem snapshot or a watch against edits after return.
+Exact digest/range checks still apply; this lookup
 does not establish supported syntax, runtime ownership or a complete source path.

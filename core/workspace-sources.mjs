@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Workspace source acquisition only. Page paths are candidates, never authority.
 import {realpath,readdir,lstat,open} from 'node:fs/promises';
-import {constants} from 'node:fs';
+import {constants,lstatSync,realpathSync} from 'node:fs';
 import path from 'node:path';
 const excluded=new Set(['node_modules','.git','dist','artifacts']);
 const sourceName=/\.(jsx?|tsx?|vue|svelte)$/;
@@ -45,7 +45,7 @@ export async function readWorkspaceSources(root,sourceRoot,{priorityFiles=[],isA
    while(length<buffer.length){const r=await step(()=>handle.read(buffer,length,buffer.length-length,length));if(r.bytesRead===0)break;length+=r.bytesRead;}
    const after=await step(()=>handle.stat({bigint:true})),last=await candidate(file);
    if(length>max||BigInt(length)!==opened.size||!last||!same(opened,after)||!same(last.info,after))return;
-   seen.add(before.full);bytes+=length;files.push({file:path.relative(canonicalRoot,before.full).split(path.sep).join('/'),text:buffer.toString('utf8',0,length)});
+   seen.add(before.full);bytes+=length;files.push({full:before.full,info:after,source:{file:path.relative(canonicalRoot,before.full).split(path.sep).join('/'),text:buffer.toString('utf8',0,length)}});
   }catch{check(); /* Missing, replaced or unsupported source remains absent. */}
   finally{await handle?.close();}
  }
@@ -64,5 +64,23 @@ export async function readWorkspaceSources(root,sourceRoot,{priorityFiles=[],isA
    if(entry.isDirectory())await walk(full);else if(sourceName.test(entry.name))await admit(path.relative(canonicalRoot,full).split(path.sep).join('/'));
   }
  }
- await walk(base);check();return files;
+ await walk(base);check();
+ // An earlier admission may change while later files are awaited. Recheck the
+ // bounded admitted set after all acquisition awaits, including its ancestors.
+ // Synchronous metadata avoids introducing another later-file await here. This
+ // is a final acquisition fence, not an atomic filesystem snapshot or a watch
+ // against edits after return. Invalidated slots are not refilled or reread.
+ const current=[];
+ for(const entry of files){
+  check();
+  try{
+   if(realpathSync(canonicalRoot)!==canonicalRoot)continue;
+   let full=canonicalRoot,info,valid=true;
+   for(const segment of parts(entry.source.file)){
+    full=path.join(full,segment);info=lstatSync(full,{bigint:true});if(info.isSymbolicLink()){valid=false;break;}
+   }
+   if(valid&&info.isFile()&&realpathSync(full)===entry.full&&same(info,entry.info))current.push(entry.source);
+  }catch{check(); /* Deleted, replaced or inaccessible source remains absent. */}
+ }
+ check();return current;
 }

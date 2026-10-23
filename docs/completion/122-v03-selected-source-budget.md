@@ -121,3 +121,25 @@ is **V03.10: correct the selected SFC source parser's HTML void-element handling
 with actual original source/range/Observed-read/IDE criteria unchanged. Generic
 baseParse rejects the original ordinary input; no original app rewrite or target
 substitution is proposed. This is separate from the safe source acquisition fix.
+
+## ONE final review and single correction pass
+
+Fresh readonly astra/high review de6e0f8..a34eb0d reports Critical0/Important1/Minor0.
+The Important is real: after admitting selected file A, awaited acquisition of B
+could permit A to change, returning old bytes accepted by its old trace digest.
+Reviewer probe/report are retained in the artifact directory. No re-review.
+
+Four new real Linux controls replace, overwrite, delete or symlink the ancestor of
+an already admitted selected source when the later source descriptor opens.
+RED14=10PASS/4FAIL. Retain admission identity/metadata and perform a final bounded
+synchronous path/ancestor/metadata fence after all acquisition awaits. Changed
+sources are omitted, old trace becomes Stale, later unchanged source remains.
+GREEN focused29 PASS/0fail/skip, full **2579 PASS/0fail/skip** (91150ms).
+Invalidated slots are not refilled or reread; file/
+byte budgets and wire schema unchanged. No watcher/resource lifecycle added.
+The final metadata fence has bounded synchronous I/O (at most160 files/48 segments
+each), not atomic snapshot, post-return freshness, performance or other-platform
+qualification. Corrected retained replay still indexes160/338501B, exact original
+selected digest and Observed validation; source0 remains PARTIAL/exit1. New exact
+corrected helper/native execution follows;
+helper6 results above stay historical for its precise pre-correction bytes.

@@ -2,10 +2,12 @@
 // Real synthetic filesystem inputs, not installed-helper/browser qualification.
 import test from 'node:test';import assert from 'node:assert/strict';
 import {mkdtemp,mkdir,writeFile,symlink,rm} from 'node:fs/promises';
-import {readdirSync,readlinkSync,renameSync} from 'node:fs';
+import {readdirSync,readlinkSync,renameSync,writeFileSync,unlinkSync,symlinkSync} from 'node:fs';
+import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {readWorkspaceSources} from '../core/workspace-sources.mjs';
+import {validateTrace} from '../src/engine/slice.mjs';
 async function fixture(t){const root=await mkdtemp('/tmp/atom-workspace-sources-');t.after(()=>rm(root,{recursive:true,force:true}));await mkdir(root+'/src');return{root,async file(name,text='export const value = 1;'){await mkdir(path.dirname(root+'/'+name),{recursive:true});await writeFile(root+'/'+name,text);}};}
 test('selected candidate precedes160 unrelated files and duplicates consume no budget',async t=>{
  const f=await fixture(t);for(let i=0;i<160;i++)await f.file('src/a'+i+'.js');await f.file('src/zz/Selected.vue','<template><button disabled>Original</button></template>');
@@ -43,4 +45,19 @@ test('Linux descriptor probe: replacing an opened file cannot publish its old de
  const f=await fixture(t);await f.file('src/current.js','old original');await f.file('replacement.tmp','new original');let replaced=false;
  const isAllowed=()=>{if(!replaced){const open=readdirSync('/proc/self/fd').some(fd=>{try{return readlinkSync('/proc/self/fd/'+fd)===f.root+'/src/current.js';}catch{return false;}});if(open){replaced=true;renameSync(f.root+'/src/current.js',f.root+'/retained-old.tmp');renameSync(f.root+'/replacement.tmp',f.root+'/src/current.js');}}return true;};
  const files=await readWorkspaceSources(f.root,'src',{priorityFiles:['src/current.js'],isAllowed});assert.equal(replaced,true);assert(files.every(f=>f.text!=='old original'));assert(files.every(f=>f.file==='src/current.js'&&f.text==='new original'));
+});
+for(const mutation of ['replacement','in-place write','deletion','ancestor symlink'])test('Linux descriptor probe: earlier admitted source invalidated during later read: '+mutation,{skip:process.platform!=='linux'},async t=>{
+ const f=await fixture(t),selected='src/early/selected.js',old='export const flag = false;',fresh='export const flag = true;';
+ await f.file(selected,old);await f.file('src/second.js');await f.file('replacement.tmp',fresh);await f.file('elsewhere/selected.js',fresh);let changed=false;
+ const isAllowed=()=>{if(!changed&&readdirSync('/proc/self/fd').some(fd=>{try{return readlinkSync('/proc/self/fd/'+fd)===f.root+'/src/second.js';}catch{return false;}})){
+  changed=true;
+  if(mutation==='replacement')renameSync(f.root+'/replacement.tmp',f.root+'/'+selected);
+  else if(mutation==='in-place write')writeFileSync(f.root+'/'+selected,fresh);
+  else if(mutation==='deletion')unlinkSync(f.root+'/'+selected);
+  else{renameSync(f.root+'/src/early',f.root+'/retained-early');symlinkSync(f.root+'/elsewhere',f.root+'/src/early');}
+ }return true;};
+ const files=await readWorkspaceSources(f.root,'src',{priorityFiles:[selected,'src/second.js'],isAllowed});assert(changed);
+ assert(!files.some(f=>f.file===selected),'changed earlier source must be omitted before returning the acquisition');
+ const target={id:'selected',file:selected,sourceDigest:createHash('sha256').update(old).digest('hex'),kind:'target',expression:'flag',value:false,deps:[],line:1,column:1,status:'Observed'};
+ assert.equal(validateTrace(files,{status:'Observed',target,nodes:[target]}).status,'Stale');assert(files.some(f=>f.file==='src/second.js'));
 });
