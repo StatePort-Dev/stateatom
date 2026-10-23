@@ -1,6 +1,6 @@
 # V02.6 — bare attachment and explicit-domain controls
 
-2026-10-23, scope-review-1. Finite diagnostic complete, ONE review pending.
+2026-10-23, scope-review-1. Finite diagnostic accepted after ONE review,0 Critical/Important/Minor.
 Product64/UI2 unchanged;19/29 whole tasks unchanged. This workload-only study is
 not Basic gesture latency, active observation acceptance, a universal browser
 floor or a maintainer waiver. Actual target misses remain104.
@@ -108,7 +108,11 @@ new capability.
 
 ## ONE next unfinished step
 
-ONE fresh bounded diagnostic review next. Then **V02.7**: preregister and measure
+ONE fresh bounded diagnostic review accepted this finite slice without findings.
+Independent18 checks/836 hashes/350 rows and retained64 target rows verified; no
+native/build/full rerun. Every declined boundary has an executor ruling in
+`.artifacts/v02/attachment-floor/2026-10-23/review/report.md`. No correction needed.
+Next **V02.7**: preregister and measure
 the existing warm source/action path and source-map buffer/cancellation proxies
 on a declared bounded corpus/current candidate. Those are independent remaining
 requirements in09-validation, not another blind repeat of these transport controls.
