@@ -76,6 +76,15 @@ fullVue/V03 credit. ONE whole review accepted0/0/0, all six scope rulings record
 no correction/re-review. NextV03.6 addresses installed Vue profile compatibility:
 supplied plugin Node24/Vite7 recipe does not admit the original Node18/Vite4 app.
 No unsupported installed runtime or new source-positive claim is supplied.
+[V03.6](completion/119-v03-installed-vue-profile.md) is now in progress: explicit
+installed Vue profile with version/configuration refusals,57 focused/2513 full
+source PASS. Candidate2 installed metadata probe genuinely failed on package
+exports before app startup; fixed new3 passes strict Node18/npm9 install and6
+metadata probe groups. New companion helper has distinct payload/SHA; old helper
+qualification is not inherited. Original transformer/Atom66 inputs unchanged.
+Preregistered original textarea disabled/source question still needs its native
+driver, actual installed helper/browser run and ONE whole review. No new Vue
+source/runtime/C09 or fullV03 acceptance;20/29 unchanged.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

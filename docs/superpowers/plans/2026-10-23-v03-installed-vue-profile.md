@@ -4,6 +4,11 @@ Base df68377, main; [executor design](../specs/2026-10-23-v03-installed-vue-prof
 One finite package/integration increment. Scope-review-1, no redesign, SDK, push,
 publication, account/certificate/user-profile or other repository changes.
 
+Execution update: candidate2 failed its actual installed metadata probe on package
+exports before any app/browser. Failed result/archive stay immutable. Corrected3
+adds bounded nonexecuting metadata lookup with new RED→GREEN/strict consumer proof;
+all subsequent native steps use3.
+
 ## 1. Profile contract RED → GREEN
 
 Write focused tests before changing src/engine/vite-install.mjs. Watch the old
@@ -15,7 +20,11 @@ React conflict and first-read refusal retained. No fixture grants runtime suppor
 
 Implement the narrow installed wrapper guard, keeping historical transformer
 single-source and unchanged. Broaden package engines to exact18.18.2 plus prior24,
-peer Vite to exact4.4.9 or prior7.3.7. New unused plugin candidate2; preserve plugin1.
+peer Vite to exact4.4.9 or prior7.3.7. New unused candidate identity; preserve1/failed2.
+Because npm peers cannot encode profile combinations, retain Node24/Vite7 in the
+default profile's runtime gate as well; do not accidentally admit the cross product.
+Vue profile also checks the original @vitejs/plugin-vue4.3.2 and both app/plugin
+resolved Vite metadata. These are version-admission checks, not runtime proof.
 Run focused profile/engine/Vue source checks then full npm test once for behavior
 change. Expected green counts must be read, not assumed. No Atom rebuild if all326
 qualified Atom input hashes remain exact; if they drift, record and address it.
@@ -32,7 +41,7 @@ payload hashes. Original dependency preparation is reused, not reinstalled.
 
 Before first new app/browser execution, commit a separate registered Vue connected
 case and driver. Config overlay imports original Vite config and actual installed
-plugin2, adds profile:'vue3', explicit original root and private fresh cache. Use
+plugin3, adds profile:'vue3', explicit original root and private fresh cache. Use
 original Node18 Vite4 on owned loopback strict port. Keep all original runtime files,
 lock/config exact and acknowledge previously generated components.d.ts. Compare
 original empty/entered/baseline DOM statistics to retained V03.5 (not a repeat off

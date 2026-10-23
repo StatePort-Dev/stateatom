@@ -26,7 +26,7 @@ Disabled mode preserves the ordinary pipeline. The plugin remains serve-only.
 No new Vue provenance inference, library oracle, callback execution or transform
 semantic change is authorized merely to make a case pass.
 
-New local plugin2 retains notices and the existing pinned transform/compiler
+New local candidates retain notices and the existing pinned transform/compiler
 dependencies; package admission adds exact Node18.18.2 and Vite4.4.9 alongside the
 old default profile. Metadata cannot establish runtime compatibility. No general
 Node18/Vite4/Vue3 support promise or public release. Use actual installed tarball,

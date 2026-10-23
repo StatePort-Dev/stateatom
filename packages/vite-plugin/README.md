@@ -1,7 +1,8 @@
 # StateAtom open Vite development plugin (local candidate)
 
-The installed-artifact recipe below is the experimental React18/classic
-host-props profile. A source checkout also has a separately documented
+The default installed-artifact recipe below is the experimental React18/classic
+host-props profile. Candidate3 additionally contains the explicit experimental
+Vue profile described below. A source checkout also has a separately documented
 [ordinary React19 contributor recipe](../../docs/testing/ordinary-react.md#contributor-recipe-ordinary-react19)
 for automatic JSX and source/read fragments. Its current checkout/native evidence
 does not establish a new installed plugin/VSIX combination or React19 committed
@@ -10,8 +11,8 @@ host-props support.
 Install the supplied local tarball in an existing app, without cloning the Atom
 repository: `npm install --save-dev /absolute/path/stateport-vite-plugin-<candidate>.tgz`.
 No registry publication is established. Tested configuration: Node 24, Vite
-7.3.7, React and React DOM 18.3.1. Other bundlers/framework/compiler versions are
-unsupported by this recipe. The opt-in React host adapter checks exact upstream
+7.3.7, React and React DOM 18.3.1. Other default-profile bundlers/framework/compiler
+versions are unsupported by this recipe. The opt-in React host adapter checks exact upstream
 bytes; source links are not proof of runtime execution.
 
 Use this explicit `vite.config.mjs` configuration, adapting only the app root and
@@ -58,6 +59,33 @@ Disconnect source helper**; Basic remains independent of IDE, accounts and model
 Historical MIT source and Apache-2.0 components retain their original notices. This
 package bundles only local implementation; Babel/Vue dependencies retain their own
 package licenses. It does not ship a production SDK or enable production changes.
+
+## Experimental Vue development profile
+
+Candidate `0.1.0-candidate.20261021.3` adds an explicit `profile:'vue3'` option.
+Its declared tuple is Node18.18.2, Vite4.4.9 in app and plugin, Vue3.3.4 and
+@vitejs/plugin-vue4.3.2. Keep the original Vue compiler plugin/configuration:
+
+```js
+import {stateatomPlugin} from '@stateport/vite-plugin';
+// Add to the original application's plugins; preserve its other configuration.
+stateatomPlugin({enabled:true,profile:'vue3',root:process.cwd()})
+```
+
+The wrapper refuses a missing Vue plugin, mismatched installed version metadata,
+React/Query/write/Action Trace options or an unknown profile. Default profile
+still requires Node24/Vite7.3.7; the expanded npm peers do not admit every cross
+combination. Disable/remove StateAtom for other configurations. Disabled mode is
+transparent and instrumentation is serve-only, never a production SDK.
+
+This uses the existing selected Vue script-setup text/disabled observation path.
+A source link is not an executed callback, a component prop/consumer proof or
+complete value ancestry. Other Vue versions/pipelines and arbitrary component
+prop forwarding remain unqualified. The compiler dependencies bundled by Atom
+remain separately pinned; they do not replace the application's Vue compiler.
+Actual qualification and failures belong in repository completion record119;
+metadata and this recipe alone do not establish a successful installed workflow.
+No new public release or publication is established.
 
 ## Optional Action Trace development workflow
 
