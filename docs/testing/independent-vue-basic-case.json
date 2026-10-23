@@ -1,0 +1,31 @@
+{
+  "schema": "stateatom.v03-independent-vue-basic-case/1",
+  "application": "CorentinTh/it-tools",
+  "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+  "expectedAtomVersion": "0.1.0-candidate.20261021.66",
+  "expectedUIVersion": "0.2.0-candidate.20261018.2",
+  "nodeExecutable": "/home/roman/.config/nvm/versions/node/v18.18.2/bin/node",
+  "nodeVersion": "v18.18.2",
+  "route": "/text-statistics",
+  "inputSelector": "textarea[placeholder='Your text...']",
+  "countSelector": ".n-statistic .n-statistic-value__content",
+  "countLabel": "Character count",
+  "input": "Atom Vue",
+  "expectedCount": "8",
+  "expectedStatistics": ["8", "2", "1", "8 Bytes"],
+  "generatedSourceExceptions": [
+    ".eslintrc-auto-import.json",
+    "auto-imports.d.ts",
+    "components.d.ts"
+  ],
+  "startupTimeoutMs": 30000,
+  "appReadyTimeoutMs": 120000,
+  "viewport": {"width": 1280, "height": 900},
+  "limits": [
+    "Standalone Basic only; no IDE/helper or source/runtime adapter acceptance",
+    "Ordinary native text edit and baseline return are not Live/Draft/Apply or undo",
+    "Selected DOM statistic is not property producer or consumer provenance",
+    "CLI preload and native automation do not establish Chrome install UI or human acceptance",
+    "No reserve, embedding native, production, model, performance, macOS or full V03 acceptance"
+  ]
+}
