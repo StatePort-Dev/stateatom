@@ -19,7 +19,9 @@ verified. Live/Apply acknowledgement still has several-second tails; descriptive
 measurements do not pass whole V02. ONE whole-item review accepted0Critical/0Important/2 reporting Minors, both
 corrected without product/native rerun. [V01.1](completion/109-v01-packed-ci-lane.md) now adds deterministic UI and
 a separate immutable packed-contract CI job, locally syntax/selector/negative/check:ui
-verified. Remote CI and whole V01 remain unverified; next V01.2 native lane. Original64 Basic/active/warm-source/input results remain
+verified. [V01.2](completion/110-v01-native-candidate-lane.md) now verifies local native
+Basic23 (retained unchanged) plus maps39 fresh,341 frozen inputs and24 controls.
+Remote CI/whole V01 remain open; next V01.3 actual installed VSIX maintainer route. Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the
 [preregistered finite protocol](superpowers/plans/2026-10-23-v02-basic-observer.md).
@@ -1948,3 +1950,5 @@ V02.7 ONE review0/0/1 accepted; double-click harness guard corrected once RED0vs
 V02.8 ONE review accepted0/0/2, both reporting Minors corrected: all887 hashes are current (edited reporting files are outside that set), current reconciliation points to108. Independent119 and exact65/raw92/132/2limits/2Close verified; no product correction/rebuild/full/native rerun or re-review. Next V01 starts with deterministic UI/packed contracts in CI; whole V02 and19/29 unchanged.
 
 [V01.1 CI configuration](completion/109-v01-packed-ci-lane.md): fast install/unit/build retained plus check:ui; separate exact-pair pack/types/admission job, clean GITHUB_SHA/immutable-path selection and read-only/nonpersistent credentials. Actual YAML shell positive+wrong-revision controls and UI generation PASS. No remote CI or fresh product/full/native qualification claimed; candidate65/19of29 unchanged. Next V01.2 native browser lane, with installed-VSIX remaining separate.
+
+[V01.2 native candidate](completion/110-v01-native-candidate-lane.md): retained23 Basic/fresh-reader checks plus39 fresh maps checks,341 current hashes/exact65 pair/hosts and24 focused source controls PASS;0errors/console. Initial FAIL and partial maps preserved; old raw Unsafe message predicate corrected to current closed parser refusal, no product weakening. Same-pair sequential CI/native and allowlisted result retention configured, no remote run/upload. Next V01.3 installed VSIX maintainer route, then ONE whole review; V01/V02 open,19/29 unchanged.

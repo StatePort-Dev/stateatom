@@ -4155,27 +4155,50 @@
       "deliverable": "Candidate-scoped CI/native/type and package evidence",
       "status": "in_progress",
       "optional": false,
-      "execution_record": "109-v01-packed-ci-lane.md",
+      "execution_record": "110-v01-native-candidate-lane.md",
       "active_slice": {
-        "id": "V01.1",
-        "title": "Deterministic UI generation and immutable packed-contract CI lane",
-        "status": "implemented-locally-checked-not-remote-CI-not-whole-V01",
-        "plan": "../superpowers/plans/2026-10-23-v01-packed-ci.md"
+        "id": "V01.2",
+        "title": "Sequential native browser candidate matrix with fresh-profile Basic reader",
+        "status": "locally-verified-joined-retained23-fresh39-not-whole-V01",
+        "plan": "../superpowers/plans/2026-10-23-v01-native-candidate.md",
+        "remainder_plan": "../superpowers/plans/2026-10-23-v01-native-remainder.md"
       },
       "current_checkpoint": {
-        "id": "V01.1-packed-ci",
-        "record": "109-v01-packed-ci-lane.md",
-        "verification": ".artifacts/v01/packed-ci/2026-10-23/verification.json",
-        "configuration_only": true,
-        "yaml_bash_node_syntax": "PASS",
-        "actual_selector_positive_and_wrong_revision_control": "PASS",
-        "ui_generation_check": "PASS",
-        "retained_candidate65_qualification": "108-v02-input-modes-and-stale-load.md",
-        "fresh_full_build_native_execution": false,
+        "id": "V01.2-native65",
+        "record": "110-v01-native-candidate-lane.md",
+        "verification": ".artifacts/v01/packed-ci/2026-10-23/verification-native65.json",
+        "candidate": "0.1.0-candidate.20261021.65",
+        "source_inputs": 341,
+        "focused_source_checks": 24,
+        "native_checks": 62,
+        "retained_Basic_checks": 23,
+        "fresh_maps_checks": 39,
+        "headless_new_real_MV3": true,
+        "fresh_reader_profile_both_hosts": true,
+        "errors": 0,
+        "console_warnings_errors": 0,
+        "original_failed_lane_preserved": true,
+        "product_unchanged": true,
         "remote_CI_executed": false,
         "whole_task_complete": false,
-        "next_bounded_step": "V01.2 exact-candidate native browser lane; keep actual installed-VSIX and remote execution gaps explicit"
-      }
+        "next_bounded_step": "V01.3 actual installed VSIX maintainer route, then ONE whole V01 review"
+      },
+      "completed_slices": [
+        {
+          "id": "V01.1-packed-ci",
+          "record": "109-v01-packed-ci-lane.md",
+          "verification": ".artifacts/v01/packed-ci/2026-10-23/verification.json",
+          "configuration_only": true,
+          "yaml_bash_node_syntax": "PASS",
+          "actual_selector_positive_and_wrong_revision_control": "PASS",
+          "ui_generation_check": "PASS",
+          "retained_candidate65_qualification": "108-v02-input-modes-and-stale-load.md",
+          "fresh_full_build_native_execution": false,
+          "remote_CI_executed": false,
+          "whole_task_complete": false,
+          "next_bounded_step": "V01.2 exact-candidate native browser lane; keep actual installed-VSIX and remote execution gaps explicit"
+        }
+      ]
     },
     {
       "id": "V02",
@@ -4815,11 +4838,11 @@
     ]
   },
   "reconciliation": {
-    "document": "109-v01-packed-ci-lane.md",
+    "document": "110-v01-native-candidate-lane.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V01.1-packed-ci-local-configuration-complete",
-    "next_item": "V01.2 exact-candidate native browser lane; keep actual installed-VSIX and remote execution gaps explicit",
+    "current_increment": "V01.2-native65-local-joined23-plus39",
+    "next_item": "V01.3 actual installed VSIX maintainer route, then ONE whole V01 review",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6803,11 +6826,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.8 accepted ONE review0Critical/0Important/2reporting Minors corrected; candidate65 product/evidence unchanged. V01.1 adds deterministic UI and separate exact immutable packed-contract CI job. YAML/Bash/Node/actual selector positive+wrongSHA refusal/check:ui PASS. No remote CI/full/native rerun/publication claim;19/29 unchanged. V01.2 native lane next, actual installed-VSIX remains distinct.",
+    "current_activity_note": "V01.2 actual native Basic23 both hosts/fresh reader retained unchanged plus39 fresh maps,341 current frozen inputs/exact65 archives/install/hosts and24 focused controls verified;0errors/console. First FAIL preserved: obsolete Unsafe predicate corrected to current closed SOURCE_PARSE_INVALID, no product guard change. Same-pair native CI configured with allowlisted synthetic result retention, no remote run/upload/push.19/29 unchanged; V01.3 installed VSIX next, then whole V01 review.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "d3765cb (accepted65 product/evidence unchanged); workflow-only V01.1 increment",
+    "current_source_revision": "00884e5 (native harness); fa95157 product65 unchanged",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V01.2 exact-candidate native browser lane; keep actual installed-VSIX and remote execution gaps explicit"
+    "next_bounded_step": "V01.3 actual installed VSIX maintainer route, then ONE whole V01 review"
   },
   "next_task": "V01"
 }
