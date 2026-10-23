@@ -82,9 +82,14 @@ source PASS. Candidate2 installed metadata probe genuinely failed on package
 exports before app startup; fixed new3 passes strict Node18/npm9 install and6
 metadata probe groups. New companion helper has distinct payload/SHA; old helper
 qualification is not inherited. Original transformer/Atom66 inputs unchanged.
-Preregistered original textarea disabled/source question still needs its native
-driver, actual installed helper/browser run and ONE whole review. No new Vue
-source/runtime/C09 or fullV03 acceptance;20/29 unchanged.
+The preregistered driver then actually ran candidate3: startupFAIL on original
+HTML void tags,2 prior checks/377 stable inputs; IDE/source-positive gate not
+reached. Minimal DOM-parser fix now passes regression4/focused61/full2517 and
+original Vue3.3.4 compiler roundtrip on3 unchanged SFCs. Exact recipe/self pin
+transition preserves other builder/tool/binary/verifier criteria; owned source9
+PASS plus affected native4 controls PASS/stable inputs. New helper/candidate4 and the same
+independent source question/native/ONE review remain due. No new Vue source/runtime/
+C09 or fullV03 acceptance;20/29 unchanged.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

@@ -1,8 +1,10 @@
 # V03.6 — installed Vue profile, source/native phase in progress
 
 2026-10-23, scope-review-1, base df68377. **In progress.** Source/profile admission
-now passes; the independent source-connected application/browser/helper workflow
-has **not run** in this increment. No full V03/C09 or new Vue runtime acceptance.
+passes, but the first actual candidate3 application startup **failed** before the
+IDE/source-positive gate. Its exact failure is retained; the bounded DOM-parser
+correction now passes61 focused/full2517 source checks. New candidate4 and a
+corrected native run remain due. No full V03/C09 or new Vue runtime acceptance.
 20/29 whole tasks unchanged.
 
 [Executor design](../superpowers/specs/2026-10-23-v03-installed-vue-profile-design.md),
@@ -81,10 +83,57 @@ under Node18 passes six probe groups (exact tuple plus unsupported configuration
 Those metadata fixtures execute no application code and do not stand in for the
 real original Vue compiler, source observations or native browser flow.
 
+## First actual native startup and bounded correction
+
+Preregistered driver commit efe4949 runs the original application under exact3.
+`.artifacts/v03/independent-vue-source/2026-10-23T18-24-16-171Z/results.json` is
+**FAIL** after120s readiness,2 prior checks PASS.377 inputs stable before/after;
+all498 immutable originals exact, working497 plus the same generated declaration.
+Vite/browser stopped, Vite0/null; IDE was not started. The Vite overlay/log identifies
+`Element is missing end tag` in original c-input-text, c-select and c-file-upload.
+This is an instrumentation defect, not a reason to edit/remove the original app.
+
+The transformer used compiler-core baseParse without DOM parser options. Replacing
+only its import/call with compiler-dom parse preserves valid native HTML void tags.
+Synthetic regression4 was3FAIL/1PASS before correction, now4PASS; nonvoid malformed
+markup still refuses, self-closing controls and exact source columns remain.
+An intermediate3/4 checker mistook inert macro source words for executable macro
+calls; actual AST showed none. Corrected AST assertion retains the intended macro
+removal check. Three unchanged original SFCs also pass the actual original Vue
+compiler3.3.4 under Node18, separately from installed/native qualification.
+
+The first full source run correctly rejected changed recipe bytes:2509PASS/2FAIL
+of2511 reached tests; six nested owned tests were not reached. Following the existing
+[A04 pin transition](35-a04-vue-source-adapter.md), only the plugin recipe hash and
+builder self hash changed. Byte-normalized comparison proves every other builder
+byte, tool/native binary pin, finite verifier/effect threshold unchanged. Original
+FAIL is retained. Affected owned source9 PASS; corrected focused61/full2517 PASS.
+The four original owned native acquisition/refusal controls PASS sequentially:
+`.runtime/first-profile-runs/2026-10-23T18-45-50-672Z/results.json`, source inputs
+stable/errors empty. This affected regression is not full HTTP/product acceptance.
+
+Logs, original-SFC reproduction, exact before/after pin transition and original
+compiler roundtrip are in `.artifacts/v03/vue-dom-parser/2026-10-23/`.
+Atom66's326 inputs remain unchanged. The changed builder is a helper input, so the
+helper must be rebuilt before the new candidate4 packet. The pack receipt now
+measures sourceDirty from actual Git status rather than hardcoding true; actual
+packing verifies this metadata change. The existing shared
+`build:extensions` also regenerates local Atom/UI outputs; there is no helper-only
+command. This incidental regeneration will not replace the immutable66/UI2 kit or
+supply new Atom/native qualification. No UI source/tokens/redesign change is made.
+
+Before repinning, an in-memory reproduction of the exact existing helper build
+recipe matched packaged bundle751bba40 across222 current inputs. It changed no
+artifact. Two existing CJS empty-import-meta warnings in specialised first-read
+paths remain recorded; this Vue route does not qualify those installed paths.
+The new helper needs a new exact source/payload/installed-host check, not merely
+the unchanged0.1.3 version string.
+
 ## Current next step and retained boundaries
 
-Complete the preregistered source-connected native driver before the first new
-app/browser run. Use the installed plugin3 and exact new companion VSIX, isolated
+Build and admit corrected4, then register its exact new packet identities with
+the same source question and driver before the affected native retry. Use the
+installed corrected plugin and exact rebuilt companion VSIX, isolated
 owned helper endpoint/VS Code, native private-receipt connect and exact-origin dev
 cache/reload scope. Development collection requires its active inspection mode;
 this is separate from production change permission or input editing. No override/

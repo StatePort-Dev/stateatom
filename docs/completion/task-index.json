@@ -4758,20 +4758,26 @@
       "active_slice": {
         "id": "V03.6",
         "title": "Explicit installed Vue profile and independent source-connected route",
-        "status": "in-progress-source-and-installed-admission-pass-native-not-run",
+        "status": "in-progress-actual-candidate3-startup-failed-DOM-correction-source-pass-new4-due",
         "record": "119-v03-installed-vue-profile.md",
         "plan": "../superpowers/plans/2026-10-23-v03-installed-vue-profile.md",
         "design": "../superpowers/specs/2026-10-23-v03-installed-vue-profile-design.md",
-        "focused_source_checks": 57,
-        "full_source_checks": 2513,
+        "focused_source_checks": 61,
+        "full_source_checks": 2517,
         "installed_admission_checks": 2,
         "metadata_probe_groups": 6,
         "consumer_receipt": ".artifacts/v03/installed-vue-consumer/2026-10-23T18-08-27-909Z/result.json",
         "development_handoff": ".artifacts/development/2026-10-23T18-07-11-697Z/handoff.json",
         "failed_candidate2_receipt": ".artifacts/v03/installed-vue-consumer/2026-10-23T17-58-02-443Z/result.json",
-        "native_application_executed": false,
+        "native_application_executed": true,
         "review_pending_after_native": true,
-        "full_V03_acceptance": false
+        "full_V03_acceptance": false,
+        "failed_candidate3_native": ".artifacts/v03/independent-vue-source/2026-10-23T18-24-16-171Z/results.json",
+        "native_positive_gate_reached": false,
+        "new_candidate4_pending": true,
+        "owned_source_controls": 9,
+        "owned_native_controls": 4,
+        "owned_native_evidence": ".runtime/first-profile-runs/2026-10-23T18-45-50-672Z/results.json"
       },
       "completed_slices": [
         {
@@ -4894,8 +4900,8 @@
       ],
       "current_checkpoint": {
         "record": "119-v03-installed-vue-profile.md",
-        "status": "source-and-installed-profile-admission-pass-no-app-native-acceptance",
-        "next_bounded_step": "V03.6 finish preregistered independent Vue source native driver, then actual installed plugin3/helper/exact66 source-positive question; preserve original source/lock and Unknown, no nearby fixture substitution"
+        "status": "in-progress-actual-candidate3-startup-failed-DOM-correction-source-pass-new4-due",
+        "next_bounded_step": "V03.6 rebuild current helper via existing shared build, pack/admit new4 then same-question independent Vue native retry; no source/lock edits or Unknown substitution"
       }
     },
     {
@@ -7143,11 +7149,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.6 in progress: explicit installed Vue profile Node18.18.2/Vite4.4.9/Vue3.3.4/plugin-vue4.3.2; default Node24/Vite7 retained and cross-combinations refused. Actual RED controls plus57focused/2513full PASS. Candidate2 strict install passes then metadata probeFAIL package exports; corrected3 newimmutablearchive33772858/companionhelpera0e94647. Actual3 Node18 consumer install and6 metadata probe groups pass, no app/browser/native source claim. Original transformer/Atom66 inputs unchanged; current newhelper source-build provenance not inferred from version. Nativecase registered, driver/native/ONE whole review due. Whole20/29, fullV03/A02/L02/V02 open.",
+    "current_activity_note": "V03.6 in progress. Actual installed3 native startupFAIL on original HTMLvoidtags:2priorchecks/377stable, IDE/sourcegate not reached, app source unchanged. MinimalDOMparser correction regression4/source-focused61/full2517 PASS; original compiler3.3.4 roundtrip3 originalSFCs PASS. Exactownedrecipe plugin+self pins rebound only, normalized comparison/tool/binary/verifier thresholds preserved; ownedsource9/native4PASS with stable inputs. Newhelper/current4packet/native and ONEwhole review due. Source/metadata3 alone never countedruntimepositive; oldFAILs retained. Whole20/29, fullV03/A02/L02/V02 open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "134f936 prereg plus pending V03.6 wrapper/package/test/harness edits; plugin3 source manifest19; unchanged Atom66 compiled inputs",
+    "current_source_revision": "efe4949 clean native3 failure; pending two-line DOM parser fix/exact recipe-self pin transition and tests; Atom66 input set unchanged",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V03.6 finish preregistered independent Vue source native driver, then actual installed plugin3/helper/exact66 source-positive question; preserve original source/lock and Unknown, no nearby fixture substitution"
+    "next_bounded_step": "V03.6 rebuild current helper via existing shared build, pack/admit new4 then same-question independent Vue native retry; no source/lock edits or Unknown substitution"
   },
   "next_task": "V03"
 }

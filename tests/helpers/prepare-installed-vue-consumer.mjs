@@ -9,7 +9,7 @@ import {sha256,fileManifest} from '../../scripts/atom-package-receipt.mjs';
 const [handoffFile,dependencyFile]=process.argv.slice(2);
 assert.equal(process.argv.length,4,'Exact development handoff and original prepared dependency receipt required');
 const h=JSON.parse(await readFile(handoffFile)),app=JSON.parse(await readFile(dependencyFile)).apps.find(a=>a.slug==='CorentinTh--it-tools');
-assert.equal(h.plugin.version,'0.1.0-candidate.20261021.3');
+assert.match(h.plugin.version,/^0\.1\.0-candidate\.20261021\.\d+$/,'Expected supplied local development candidate');
 assert(app?.originalSourceAndLockFilesMatch);
 for(const a of [h.plugin,h.helper])assert.equal(sha256(await readFile(a.file)),a.sha256);
 for(const [f,hash]of Object.entries(h.sourceManifest))assert.equal(sha256(await readFile(f)),hash,f);
@@ -39,7 +39,7 @@ try{
   assert.deepEqual(JSON.parse(await readFile(installed+'/dist/source-manifest.json')),h.sourceManifest);
   const installedFiles=await fileManifest(installed);result.installedPlugin={path:installed,realpath:location,version:pkg.version,files:installedFiles};
   for(const f of ['LICENSE','NOTICE','LICENSES/Apache-2.0.txt','README.md','dist/engine/plugin.mjs','dist/engine/observer.mjs'])assert(installedFiles[f],f);
-  result.checks.push({name:'strict Node18 npm9 install of exact plugin3 and Vite4 without lifecycle scripts',status:'PASS'});
+  result.checks.push({name:'strict Node18 npm9 install of exact supplied plugin and Vite4 without lifecycle scripts',status:'PASS'});
   const probeFile=out+'/probe-installed-profile.mjs';
   const probe=`import assert from 'node:assert/strict';import{writeFile,mkdir}from'node:fs/promises';import{stateatomPlugin}from './consumer/node_modules/@stateport/vite-plugin/dist/engine/plugin.mjs';
 const original=${JSON.stringify(app.workingCopy)},base=${JSON.stringify(out)},checks=[];const config={root:original,plugins:[{name:'vite:vue'}]};

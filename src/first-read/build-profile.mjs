@@ -15,11 +15,11 @@ const SOURCE_LIMIT=2*1024*1024;
 // unsupported until their exact native artifacts have independent reviewed pins.
 const API_PIN='0d1241812c443111d39475dfc66836003e9ef8b87e54d990dd67df29d20010e1';
 const BINARY_PIN='bab29b2ca7a9e89b67cf720b77b2d743f9f31f5cf0d5bd74ee8c8de30ced7014';
-const BUILDER_PIN = '1b1b1ce1b1e6a9715c66acd37dc348976c83ecf70f119e9aca9bc68d592ac0be';
+const BUILDER_PIN = '5501254b22b3e4f21895e288dc4199ecb1f1552ce9d7c89e15333ae59fc4a7a3';
 const RECIPE_PINS={
   "src/engine/action-transform.mjs": "ff7eb4f075a58ea37b9fee45f3c40953263c31210e4976ced69868588557511b",
   "src/engine/script-transform.mjs": "b4fc1064528961fe49a7a3a657d526c89d36720723b34676bba4ef29ea69542d",
-  "src/engine/plugin.mjs": "33a7ce551fcf3b94d428839d4a35d95d7049dccbc314b4ca2156f960a7033e02",
+  "src/engine/plugin.mjs": "389d69240f300c905aff7c5f1da0ad32da6322c61dc069a360cc2cb5ae0f0a66",
   "src/engine/react-host-vendor.mjs": "a350aa4d271d034a8e458947291b9c4e705621ce63ebcd44e93c9bc25aae1361",
   "src/engine/query-vendor.mjs": "628af6f60568f5eb0d16101ff4db4ef71ce79263746336a7298f121abb286061",
   "src/engine/write-access.mjs": "07e6e811213b29aada895572caf1f415805f7157574bc09e76b84656ec278b06",
