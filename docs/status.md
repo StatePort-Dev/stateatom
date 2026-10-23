@@ -1869,3 +1869,8 @@ repository or independent-human blocker.
 ### 2026-10-23 — P04.4d.2 reporting beside admitted edits
 
 [Current59](completion/95-p04-input-reporter-coexistence.md): same-inspector Continue/reopen retains original point/words/window; exact input notices clear execution immediately while ordinary/foreign invalidation stays intact. Source2374/focused157/types2/admission9/build/native17 both hosts PASS;0 console warnings/errors. Actual Settings two confirmations, Live, constraint-refused Undo, Draft/Apply and unapplied draft through Stop/default-private download/passive reader/revoke pass. Failed Undo is not restoration proof; all native failures retained. No new token/CSS,390px/200% screenshots remain candidates. P04/C07/H08/picker/ONE parent review open,18/29 (~62% equal count) unchanged; mandatory L02 open/A05 scoped complete/A02 open. Next P04.4d.3 remaining embedding H08 deadline review/export/lifecycle. No SDK/publication/redesign/other repository/human blocker.
+
+
+### 2026-10-23 — P04.4d.3 remaining embedding lifecycle
+
+[Remaining embedding checks](completion/96-p04-embedding-lifecycle.md): exact59 actual120s/review/export,64-record bound/navigation/real permission removal pass5 including package identity,0 inspector console warnings/errors. Qualified510 source/test hashes,archives/install/both hosts unchanged; no new source suite/build or broad matrix rerun. Historical58 FAIL29/timeout preserved, cause unestablished. P04/C07/H08/ONE parent review remain open,18/29 unchanged. Next bounded primary native picker entry diagnosis, then named H07-H09 reconciliation.

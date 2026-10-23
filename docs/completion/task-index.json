@@ -3275,8 +3275,8 @@
       "deliverable": "U06-designed QA production observation/handoff flow, read-only collector distinct from intentional edits",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "P04.4d.3 remaining H08 embedding deadline review/export/lifecycle; primary picker diagnosis and ONE parent review remain",
-      "execution_record": "95-p04-input-reporter-coexistence.md",
+      "active_slice": "P04.4d.4 primary native picker entry diagnosis; remaining named H07-H09 reconciliation and ONE parent review remain",
+      "execution_record": "96-p04-embedding-lifecycle.md",
       "implementation_plan": "../superpowers/plans/2026-10-22-p04-input-coexistence.md",
       "current_checkpoint": {
         "id": "P04.4d.2-input-reporter-coexistence",
@@ -3500,9 +3500,22 @@
           "whole_tasks_complete": 18,
           "next_item": "P04.4d.3 remaining H08 embedding deadline review/export/lifecycle; primary picker diagnosis and ONE parent review remain",
           "boundary": "Current59 same-inspector H09 on synthetic trusted HTTPS through actual Settings confirmations/Live/Draft UI: source2374/focused157/types2/admission9/build/native17 both hosts PASS. Original point/words/window retained; execution cleared immediately on exact owned-window notice; generic/foreign invalidation and exact input ownership remain. Actual failed Undo to minlength-invalid AB retained, not positive restoration proof. Unapplied draft stays local; default-private report/passive reader/revoke preserve unknown effects. Screenshots candidates, prior failures retained; H08/picker/full P04/C07/release remain open.18/29 unchanged; L02 mandatory/open/A05 mandatory/scoped complete/A02 open. No SDK/publication/redesign/other repository/human blocker."
+        },
+        {
+          "id": "P04.4d.3-remaining-embedding-lifecycle",
+          "status": "complete-bounded-embedding-lifecycle-not-whole-H08-P04",
+          "record": "96-p04-embedding-lifecycle.md",
+          "verification": ".artifacts/p04/window-matrix/verification59-embedding.json",
+          "native_remaining_embedding_checks": 5,
+          "unchanged_candidate": "0.1.0-candidate.20261021.59",
+          "retained_source_checks": 2374,
+          "fresh_source_run": false,
+          "full_P04_acceptance": false,
+          "whole_tasks_complete": 18,
+          "next_item": "P04.4d.4 primary native picker entry diagnosis; remaining named H07-H09 reconciliation and ONE parent review remain"
         }
       ],
-      "remaining_acceptance": "Remaining actual H08 native lifecycle, primary picker entry diagnosis and ONE whole-P04 review; H09 current bounded coexistence credited in95",
+      "remaining_acceptance": "Primary picker entry diagnosis, remaining named H07-H09 coverage reconciliation and ONE whole-P04 review; bounded H09/embedding lifecycle credited in95/96",
       "native_matrix_progress": {
         "record": "93-p04-native-window-matrix-progress.md",
         "status": "partial-not-H08-H09-P04-acceptance",
@@ -3511,7 +3524,17 @@
         "successful_checks": 29,
         "reused_successful_subchecks": 1,
         "native_status": "FAIL",
-        "open": "Embedding deadline review/export and later lifecycle after Input.dispatchMouseEvent timeout; primary picker native entry unresolved"
+        "open": "Primary picker entry diagnosis; remaining named H07-H09 reconciliation and ONE parent review. Historical58 FAIL29 remains unchanged.",
+        "remaining_embedding": {
+          "record": "96-p04-embedding-lifecycle.md",
+          "status": "complete-bounded-embedding-lifecycle-not-whole-H08-P04",
+          "verification": ".artifacts/p04/window-matrix/verification59-embedding.json",
+          "receipt": ".artifacts/p04/window-matrix-native/2026-10-23T07-13-00-824Z/results.json",
+          "new_checks": 5,
+          "candidate": "0.1.0-candidate.20261021.59",
+          "console_warnings_errors": 0,
+          "old_timeout_cause_established": false
+        }
       },
       "evening_handoff": "94-p04-evening-handoff.md",
       "next_implementation_status": "P04.4d.2 implemented and scoped-qualified on59; remaining H08/picker/parent review open"
@@ -6137,7 +6160,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Current59 H09 same-inspector coexistence scoped complete: source2374/focused157/types2/admission9/native17 both hosts. Failed Undo preserved as constraint refusal; no hidden Draft Apply.93 H08 partial and picker unresolved; next H08 embedding completion.18/29 unchanged.",
+    "current_activity_note": "Current59 H09 credited in95;96 completes only remaining embedding real120s/review/export/64-record/navigation/permission checks5, no source/build rerun (510 inputs unchanged). Historical58 FAIL29 remains. Next primary picker entry diagnosis; whole P04/C07/review and18/29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "P04"
