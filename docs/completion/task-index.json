@@ -4195,73 +4195,89 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.7",
-        "title": "Warm source preview/settled lexical analysis and map cache/cancellation",
-        "status": "finite-measurements-accepted-one-review-one-minor-correction-product64-unchanged",
-        "plan": "../superpowers/plans/2026-10-23-v02-warm-source.md",
-        "preparation_addendum": "../superpowers/plans/2026-10-23-v02-warm-source-preparation.md",
-        "retained_phase_addendum": "../superpowers/plans/2026-10-23-v02-warm-source-remainder.md"
+        "id": "V02.8",
+        "title": "Live/Draft timing, ledger/native Close and superseded inspection error correction",
+        "status": "implemented-and-measured-one-whole-review-pending",
+        "plan": "../superpowers/plans/2026-10-23-v02-input-modes.md",
+        "retained_phase_addendum": "../superpowers/plans/2026-10-23-v02-input-modes-remainder.md",
+        "product_correction_addendum": "../superpowers/plans/2026-10-23-v02-input-stale-load.md"
       },
-      "execution_record": "107-v02-warm-source-and-map-resources.md",
+      "execution_record": "108-v02-input-modes-and-stale-load.md",
       "current_checkpoint": {
-        "id": "V02.7-warm-source64",
-        "status": "accepted-bounded-measurement-not-whole-V02",
-        "record": "107-v02-warm-source-and-map-resources.md",
-        "candidate": "0.1.0-candidate.20261021.64",
-        "verification": ".artifacts/v02/warm-source/2026-10-23/verification64-warm-source-reviewed.json",
-        "focused_source_checks": 41,
-        "new_warm_checks": 7,
-        "retained_full_source_checks": 2424,
-        "fresh_full_source_run": false,
-        "fresh_build": false,
-        "source_inputs": 880,
-        "raw_samples": 92,
+        "id": "V02.8-input65",
+        "status": "implemented-measured-not-reviewed-not-whole-V02",
+        "record": "108-v02-input-modes-and-stale-load.md",
+        "candidate": "0.1.0-candidate.20261021.65",
+        "handoff": ".artifacts/atom/2026-10-23T13-08-24-618Z/atom-handoff.json",
+        "verification": ".artifacts/v02/input-modes/2026-10-23/verification65.json",
+        "revision": "fa9515743a76b9ff48beeddd93735cbda8725fed",
+        "source_inputs": 887,
+        "focused_source_checks": 119,
+        "new_inspector_regressions_controls": 7,
+        "full_source_checks": 2454,
+        "strict_types": 2,
+        "package_admission": 9,
+        "affected_native_H09": 17,
+        "fresh_native_rows": 92,
         "measured_samples": 80,
         "warmup_samples": 12,
-        "retained_standalone_warm_rows": 46,
-        "fresh_embedding_warm_rows": 46,
-        "fresh_cache_import_clear_pairs": 18,
-        "fresh_started_parser_cancellations": 2,
-        "warm_preview_p95_ms": {
-          "synthetic": {
-            "standalone": 197,
-            "embedding": 230.8
+        "ledger_checkpoints": 132,
+        "untimed_fill_writes": 36,
+        "history_limit_refusals": 2,
+        "actual_native_Close_controls": 2,
+        "paint_ms": {
+          "standalone": {
+            "live": {
+              "n": 20,
+              "min": 1671.2999999970198,
+              "p50": 2199.5,
+              "p95": 3905.60000000149,
+              "max": 4602.199999999255
+            },
+            "draftLocal": {
+              "n": 20,
+              "min": 16.800000000745058,
+              "p50": 21.700000001117587,
+              "p95": 28.300000000745058,
+              "max": 29.099999997764826
+            },
+            "draftApply": {
+              "n": 20,
+              "min": 1446,
+              "p50": 1947.8499999996275,
+              "p95": 3023.300000000745,
+              "max": 3311.199999999255
+            }
           },
-          "javascript_es6": {
-            "standalone": 196.8,
-            "embedding": 213.2
+          "embedding": {
+            "live": {
+              "n": 20,
+              "min": 1357.9000000022352,
+              "p50": 1482.1500000003725,
+              "p95": 2057.199999999255,
+              "max": 2323.699999999255
+            },
+            "draftLocal": {
+              "n": 20,
+              "min": 19.699999999254942,
+              "p50": 23.09999999962747,
+              "p95": 24.799999997019768,
+              "max": 24.900000002235174
+            },
+            "draftApply": {
+              "n": 20,
+              "min": 1197.5999999977648,
+              "p50": 1404.449999999255,
+              "p95": 1662,
+              "max": 1748.699999999255
+            }
           }
         },
-        "warm_settled_analysis_p95_ms": {
-          "synthetic_Available": {
-            "standalone": 280.8,
-            "embedding": 331.5
-          },
-          "javascript_es6_Partial": {
-            "standalone": 314,
-            "embedding": 331.2
-          }
-        },
-        "declared_warm_p95_targets_met": true,
         "performance_acceptance": false,
         "targets_waived": false,
         "whole_task_complete": false,
-        "next_bounded_step": "V02.8 Live/Draft gesture/local-ready/ack timing, accounted64-history growth/refusal and actual unsent-Close; preserve historical U02/A05 resource evidence and104 misses",
-        "verification_original": ".artifacts/v02/warm-source/2026-10-23/verification64-warm-source.json",
-        "focused_source_checks_at_measurement": 40,
-        "unchanged_frozen_native_inputs": 878,
-        "historical_changed_harness_inputs": 2,
-        "review": {
-          "critical": 0,
-          "important": 0,
-          "minor": 1,
-          "minor_corrected_once": true,
-          "independent_focused": 40,
-          "correction_focused": 41,
-          "native_rerun": false,
-          "serialized_92_rows_unaffected": true,
-          "report": ".artifacts/v02/warm-source/2026-10-23/review/report.md"
-        }
+        "historical64_evidence": "Original Basic/active/warm/input data preserved, not fresh65 target qualification; 104 misses remain open",
+        "next_bounded_step": "ONE whole V02.8 review, then dependency-ready V01 CI/native/packed lane reconciliation"
       },
       "completed_slices": [
         {
@@ -4505,6 +4521,66 @@
             "correction_required": false,
             "report": ".artifacts/v02/attachment-floor/2026-10-23/review/report.md"
           }
+        },
+        {
+          "id": "V02.7-warm-source64",
+          "status": "accepted-bounded-measurement-not-whole-V02",
+          "record": "107-v02-warm-source-and-map-resources.md",
+          "candidate": "0.1.0-candidate.20261021.64",
+          "verification": ".artifacts/v02/warm-source/2026-10-23/verification64-warm-source-reviewed.json",
+          "focused_source_checks": 41,
+          "new_warm_checks": 7,
+          "retained_full_source_checks": 2424,
+          "fresh_full_source_run": false,
+          "fresh_build": false,
+          "source_inputs": 880,
+          "raw_samples": 92,
+          "measured_samples": 80,
+          "warmup_samples": 12,
+          "retained_standalone_warm_rows": 46,
+          "fresh_embedding_warm_rows": 46,
+          "fresh_cache_import_clear_pairs": 18,
+          "fresh_started_parser_cancellations": 2,
+          "warm_preview_p95_ms": {
+            "synthetic": {
+              "standalone": 197,
+              "embedding": 230.8
+            },
+            "javascript_es6": {
+              "standalone": 196.8,
+              "embedding": 213.2
+            }
+          },
+          "warm_settled_analysis_p95_ms": {
+            "synthetic_Available": {
+              "standalone": 280.8,
+              "embedding": 331.5
+            },
+            "javascript_es6_Partial": {
+              "standalone": 314,
+              "embedding": 331.2
+            }
+          },
+          "declared_warm_p95_targets_met": true,
+          "performance_acceptance": false,
+          "targets_waived": false,
+          "whole_task_complete": false,
+          "next_bounded_step": "V02.8 Live/Draft gesture/local-ready/ack timing, accounted64-history growth/refusal and actual unsent-Close; preserve historical U02/A05 resource evidence and104 misses",
+          "verification_original": ".artifacts/v02/warm-source/2026-10-23/verification64-warm-source.json",
+          "focused_source_checks_at_measurement": 40,
+          "unchanged_frozen_native_inputs": 878,
+          "historical_changed_harness_inputs": 2,
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 1,
+            "minor_corrected_once": true,
+            "independent_focused": 40,
+            "correction_focused": 41,
+            "native_rerun": false,
+            "serialized_92_rows_unaffected": true,
+            "report": ".artifacts/v02/warm-source/2026-10-23/review/report.md"
+          }
         }
       ]
     },
@@ -4710,8 +4786,8 @@
     "document": "107-v02-warm-source-and-map-resources.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.7-warm-source64-accepted-one-review-one-minor-fixed",
-    "next_item": "V02.8 Live/Draft gesture/local-ready/ack timing, accounted64-history growth/refusal and actual unsent-Close; preserve historical U02/A05 resource evidence and104 misses",
+    "current_increment": "V02.8-input65-implemented-measured-review-pending",
+    "next_item": "V01 CI native lanes and packed contracts after ONE V02.8 review",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6695,11 +6771,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.7 accepted after ONE review0/0/1, one testedMinor overlap-guard correction RED->GREEN41;independent40/880+879+878 hashes/92joined/18cache/2started-cancels verified. Native serialized92 unaffected/no rerun; frozen2harnessinputs verifiedhistorical,current880 separate. Declaredwarmtargetsmet,TodoMVCPartial retained;104 embeddingBasic/active missesunwaived,19/29 unchanged. NextV02.8 finiteLive/Draft timing/ledger/nativeClose;U02/A05 historicalproof preserved.",
+    "current_activity_note": "Atom65 fixes source-reproduced superseded state-error/pending explicit-inspection races; focused119/full2454/types2/admission9/H0917 PASS. Fresh92rows/132ledger/2HISTORY_LIMIT/2nativeClose and887 frozen inputs verified. Live/Apply several-second tails descriptive, no new SLO/pass. Original64 incomplete attempts and earlier target misses preserved;19/29 unchanged. ONE whole review next, then dependency-ready V01.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "156bde5 (product64 unchanged);6f742e0 (V02.7 harness)",
+    "current_source_revision": "fa9515743a76b9ff48beeddd93735cbda8725fed",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V02.8 Live/Draft gesture/local-ready/ack timing, accounted64-history growth/refusal and actual unsent-Close; preserve historical U02/A05 resource evidence and104 misses"
+    "next_bounded_step": "ONE whole V02.8 review, then dependency-ready V01 CI/native/packed lane reconciliation"
   },
   "next_task": "V02"
 }

@@ -10,13 +10,15 @@ is now complete; [P02](completion/82-p02-whole-item-review.md) is complete withi
 its brief. [P03](completion/85-p03-trusted-https-workflow.md) now completes its
 finite trusted-HTTPS/local-artifact workflow. [P04](completion/100-p04-whole-item-review.md)
 now completes its bounded production observation/handoff scope after ONE review:
-19/29 whole tasks (~66% equal count), not release readiness. Current [V02.7](completion/107-v02-warm-source-and-map-resources.md)
-measures existing warm preview versus settled lexical analysis separately:40focused/880hashes,
-92 joined rows (46 retained standalone+46 fresh embedding),18cache pairs/2started-parser cancels.
-Declared warm p95 targets met; TodoMVC remains Partial. ONE review0/0/1 accepted
-with a tested Minor overlap-guard correction (41focused); native serialized92 unaffected.
-Next V02.8 Live/Draft timing, accounted ledger growth and native unsent-Close. Product64 unchanged;104 embedding Basic p95=2021.8ms
-and active/off25.08/26.87% still miss. No waiver or release claim.
+19/29 whole tasks (~66% equal count), not release readiness. Current [V02.8](completion/108-v02-input-modes-and-stale-load.md)
+fixes superseded inspection errors and defers background state reads during explicit
+selection replacement. Atom65: focused119/full2454/types2/admission9/native H0917
+PASS. Fresh Live/Draft92 rows,132 ledger checkpoints,2 actual history-limit refusals
+and2 native unsent-Close controls complete;887 frozen inputs/archive/install/hosts
+verified. Live/Apply acknowledgement still has several-second tails; descriptive
+measurements do not pass whole V02. ONE whole-item review next, then dependency-ready
+V01 CI/native/packed lanes. Original64 Basic/active/warm-source/input results remain
+historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the
 [preregistered finite protocol](superpowers/plans/2026-10-23-v02-basic-observer.md).
 The [first baseline](completion/101-v02-basic-observer-baseline.md) completed198 raw
@@ -1938,3 +1940,5 @@ V02.6 ONE fresh review accepted finite diagnostic,0/0/0/no correction; independe
 [V02.7 current64 warm/map measurements](completion/107-v02-warm-source-and-map-resources.md):40focused/880 current inputs,92 joined warm rows (original standalone46 retained unchanged, fresh embedding46),18 original-corpus cache/Clear pairs and2 actual started-parser cancels;0 inspector/parser console/errors. Warm preview p95=197/230.8ms synthetic,196.8/213.2ms real; settled analysis p95=280.8/331.5ms Available synthetic,314/331.2ms Partial real. Cache proxies<=8MiB then0; no heap/no-leak claim. Two harness preparation INCOMPLETE attempts preserved, no old fail upgraded or valid warm phase repeated. ONE review next;104 misses/19of29 unchanged.
 
 V02.7 ONE review0/0/1 accepted; double-click harness guard corrected once RED0vs1->GREEN41. Serialized92 native rows unaffected/no rerun.880 current hashes separately captured,2 original helper/test hashes verifiedGit6f742e0; original raw/receipts/plans untouched.8 declined boundaries ruled; no re-review/count upgrade. Next V02.8 finite Live/Draft latency/ledger/nativeClose; original U02/A05 timing/resources remain historical,104 misses open.
+
+[V02.8 Atom65](completion/108-v02-input-modes-and-stale-load.md): source-proven old-state-error and pending-explicit-selection UI races fixed;119 focused/2454 full/types2/admission9/H0917 PASS. Fresh unchanged input protocol completes92rows/132ledger/2limits/2Close;887 frozen inputs and exact artifacts/hosts verified. Original64 failed attempts/data retained, no new Live SLO or current65 Basic/active/warm-source pass. ONE review pending; next V01 dependency-ready CI/native/packed lanes.19/29 unchanged.
