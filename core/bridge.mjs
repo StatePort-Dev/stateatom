@@ -3,7 +3,9 @@ import {appOrigin} from '../packages/atom/src/origin-policy.mjs';
 import {verifyFirstRead} from "../src/first-read/verify.mjs";
 import {loadFirstReadCompilation} from "../src/first-read/profile-channel.mjs";
 import {sourceSlice,validateTrace} from "../src/engine/slice.mjs";
-import {realpath,readFile,readdir,stat} from 'node:fs/promises';
+import {readFile,stat} from 'node:fs/promises';
+import {safePath,readWorkspaceSources} from './workspace-sources.mjs';
+export {safePath} from './workspace-sources.mjs';
 import path from 'node:path';
 import {timingSafeEqual,randomUUID,createHash} from 'node:crypto';
 import http from 'node:http';
@@ -18,15 +20,12 @@ export function validateRequest(headers,cfg,operation){
  if(token.length!==cfg.token.length||!timingSafeEqual(Buffer.from(token),Buffer.from(cfg.token)))throw Error('Token denied');
  if(operation!=='pair'&&!operations.has(operation))throw Error('Operation denied');return true;
 }
-export async function safePath(root,relative){
- if(typeof relative!=='string'||relative.includes('%')||relative.includes('\\')||relative.split('/').includes('..')||path.isAbsolute(relative))throw Error('Path denied');
- const base=await realpath(root),full=await realpath(path.resolve(base,relative));
- if(!(full===base&&relative==='.')&&!full.startsWith(base+path.sep))throw Error('Outside workspace');return full;
-}
-async function sourceFiles(root,subdir){
- const base=await safePath(root,subdir),out=[];let bytes=0;
- async function walk(dir){for(const entry of await readdir(dir,{withFileTypes:true})){if(['node_modules','.git','dist','artifacts'].includes(entry.name)||entry.isSymbolicLink())continue;const name=path.join(dir,entry.name);if(entry.isDirectory())await walk(name);else if(/\.(jsx?|tsx?|vue|svelte)$/.test(name)&&out.length<160){const size=(await stat(name)).size;if(size>256000||bytes+size>2000000)continue;bytes+=size;out.push({file:path.relative(root,name),text:await readFile(name,'utf8')});}}}
- await walk(base);return out;
+function sourceHints(selection,trace){
+ const hints=new Set(),add=file=>{if(hints.size<160&&typeof file==='string')hints.add(file);};
+ if(typeof selection?.marker==='string')add(selection.marker.split(':')[0]);
+ add(trace?.target?.file);add(trace?.commit?.source?.file);
+ for(const n of Array.isArray(trace?.nodes)?trace.nodes:[]){if(hints.size>=160)break;add(n?.file);}
+ return [...hints];
 }
 export function instrumentedSources(files,marker){const [file,,hash]=String(marker).split(':');return files.filter(f=>f.file===file&&digest(f.text).slice(0,12)===hash);}
 export function startBridge({root,port=47731,token,onOpen,onDefinitions,onReferences,isAllowed=()=>true}){
@@ -48,7 +47,7 @@ export function startBridge({root,port=47731,token,onOpen,onDefinitions,onRefere
    }else{
     const sourceRoot=bindings.get(body.origin);if(!sourceRoot)throw Error('Origin not mapped');
     if(op==='analyze'){
-     const files=await sourceFiles(root,sourceRoot),samples=body.samples||[];
+     const files=await readWorkspaceSources(root,sourceRoot,{priorityFiles:sourceHints(body.selection,body.deepTrace),isAllowed}),samples=body.samples||[];
 
      // File-level binding: unrelated loaded scripts cannot validate another file.
      const eligible=(body.selection.marker?instrumentedSources(files,body.selection.marker):files.filter(f=>sourceBinding(f.text,samples))).map(f=>{const matching=samples.filter(s=>sourceBinding(f.text,[s]));const executable=matching.some(s=>(body.proofs||[]).some(p=>p.digest===digest(s)&&p.kind==='executable'));return {...f,freshness:body.selection.marker?'instrumented-source-digest':executable?'executable-AST-matched':'map-claimed-unverified'};});

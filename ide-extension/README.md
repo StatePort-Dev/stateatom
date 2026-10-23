@@ -40,3 +40,12 @@ command. Installed-VSIX acceptance is the distribution test. `npm run
 pack:development` creates local immutable VSIX/plugin artifacts after a build;
 it does not publish them. Source helper retains historical MIT and original
 Apache-2.0 notices, with THIRD_PARTY_LICENSES generated from its actual bundle.
+
+Source analysis first reads safe selected/trace file candidates, then uses the
+remaining background budget. The combined limit remains160 files,256000 bytes per
+file and2000000 bytes total. Page paths do not grant filesystem access: only regular
+source files inside the explicitly mapped folder are eligible; symlinks and
+node_modules/.git/dist/artifacts are excluded. Missing, oversized, replaced or
+unvalidated files do not become known source evidence. Trust loss stops reads and
+closes acquired descriptors. Exact digest/range checks still apply; this lookup
+does not establish supported syntax, runtime ownership or a complete source path.
