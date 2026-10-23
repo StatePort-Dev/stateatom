@@ -88,7 +88,11 @@ const appDOM = () => panel.evaluate(async ({id, input, count}) => (await chrome.
   label:document.querySelector(count)?.closest('.n-statistic')?.querySelector('.n-statistic__label')?.textContent.trim(),
   statistics:[...document.querySelectorAll('.n-statistic-value__content')].map(e => e.textContent.trim()), body:document.body.innerText.slice(0,15000)
 }), args:[input,count]}))[0].result, {id:tabId, input:scenario.inputSelector, count:scenario.countSelector});
-const appCommand = (method, params) => panel.evaluate(async ({id,method,params}) => chrome.debugger.sendCommand({tabId:id}, method, params), {id:tabId,method,params});
+const appCommand = async (method, params) => {
+  const command=result.lastAppCommand={method,startedAt:new Date().toISOString()};
+  const value=await panel.evaluate(async ({id,method,params}) => chrome.debugger.sendCommand({tabId:id}, method, params), {id:tabId,method,params});
+  command.finishedAt=new Date().toISOString();return value;
+};
 async function pointer(selector) {
   const point = await panel.evaluate(async ({id,selector}) => {
     await chrome.tabs.update(id, {active:true});
@@ -201,7 +205,9 @@ try {
   await connectSource();
   await appCommand('Emulation.setDeviceMetricsOverride',{...scenario.viewport,deviceScaleFactor:1,mobile:false});
   await check('original text-statistics page renders empty textarea and Character count0',async()=>{result.appBefore=await appDOM();assert.equal(result.appBefore.url,result.appOrigin+scenario.route);assert.equal(result.appBefore.inputCount,1);assert.equal(result.appBefore.disabled,false);assert.equal(result.appBefore.count,'0');assert.deepEqual(result.appBefore.statistics,['0','0','0','0 Bytes']);});
-  await writeFile(out+'/app-first-viewport.png',Buffer.from((await appCommand('Page.captureScreenshot',{format:'png'})).data,'base64'));
+  await panel.evaluate(id=>chrome.tabs.update(id,{active:true}),tabId);await appCommand('Page.bringToFront',{});
+  await waitFor(async()=>await panel.evaluate(async id=>(await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:()=>document.visibilityState}))[0].result,tabId)==='visible');
+  await writeFile(out+'/app-first-viewport.png',Buffer.from((await appCommand('Page.captureScreenshot',{format:'png',captureBeyondViewport:false})).data,'base64'));
   await ui.select('property',scenario.property);await ui.waitOK();await ui.click('pick');await waitFor(async()=>(await state()).picker.status==='picking');await pointer(scenario.selectionSelector);await waitFor(async()=>(await state()).selection);
   await check('native picker and installed helper bind exact textarea disabled expression and original scalar read',async()=>{
     const s=await state();await selectedSource(s);result.selectionBefore=s.selection;
