@@ -1,7 +1,7 @@
 # V03.7 — native reflected disabled controls, in progress
 
 2026-10-24 local / UTC2026-10-23; scope-review-1; base c699b25/main.
-**Source implemented, package/native qualification due.** Whole20/29 and full
+**Source and finite native catalogue verified; independent source gate FAIL.** Whole20/29 and full
 V03/C09/A02/L02/V02 stay open. No new installed-control/source claim from tests.
 
 [Executor design](../superpowers/specs/2026-10-24-v03-native-disabled-controls-design.md),
@@ -76,3 +76,53 @@ The source catalogue and current new native controls do not establish those gate
 ONE final whole-increment review remains due, with at most one tested correction
 pass and no re-review. No full project audit, SDK, redesign, publication, account/
 certificate/user-profile or other repository change.
+
+## Fresh installed catalogue result
+
+Source commit `20cb320`, clean producer, exact packet
+`.artifacts/atom/2026-10-23T20-37-33-035Z/atom-handoff.json`:
+Atom69 SHA `6bc5ce39cf82e16dafc2d4f98e386f0df001924d2d5de95524716d5b712ba237`,
+unchanged UI2 SHA `2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5`.
+Actual strict consumers2 and package admission9 PASS. All222 helper5 source inputs
+still match; no helper rebuild, original dependency acquisition or reinstall.
+
+`node tests/integration/native-disabled-controls.mjs <exact69 handoff>`:
+**19 native checks PASS**, result
+`.artifacts/v03/native-disabled-controls/2026-10-23T20-40-29-762Z/results.json`.
+Actual Chrome catalogue:11 positive controls,3 unsupported controls, distinct
+repeated-false input identities and retained text fallback. Fieldset own-false/
+effective-true and all3 namespaced-attribute lookalikes pass the registered values.
+Prototype/own/global-constructor counters all0, application actions `{}`, scoped
+errors/warnings absent. Exact336 execution inputs, archives and installed standalone
+host match before/after. Own browser and loopback server closed. Viewports1100/440
+have no horizontal overflow, root13px; narrow candidate viewed by agent, no human
+visual acceptance. This proves the finite synthetic Basic/read-only catalogue;
+it does not prove independent Vue source/read/IDE or finite first-read profiling.
+
+Original case69 is preregistered in `e84582d`; only `expectedAtomVersion` differs
+from case68. The unchanged independent source driver terminated FAIL at the next digest gate.
+
+## Unchanged independent application result
+
+`node tests/integration/independent-vue-source-native.mjs <exact69 handoff>
+<retained dependency-prep receipt> docs/testing/independent-vue-source-case69.json`
+terminated1. Result
+`.artifacts/v03/independent-vue-source/2026-10-23T20-41-11-852Z/results.json`:
+**4 setup checks PASS, selected-source check FAIL**. Exact installed VSIX/private
+receipt/native source connection and original empty app baseline actually pass.
+The picker now reaches original textarea disabled=false with selected marker;
+`selectedSource` rejects runtime `Stale` where the registered criterion requires
+`Observed`. Retained failure UI says “workspace digest differs from executed
+instrumentation”. This is the reported rejection, not a proven root cause.
+No source-expression/digest/scalar-read/IDE-range/input/export/recipient acceptance
+is inferred after that failure. All378 execution inputs match before/after;
+immutable498 original files unchanged, working497 original files unchanged with
+only the previously known generated components.d.ts delta retained. Own Vite exits0,
+helper cleanup recorded; private receipt remains local.
+
+Next bounded dependency-valid work is **V03.8: diagnose the exact retained
+workspace/executed-instrumentation digest mismatch** on that original selection.
+Preserve expected SFC, expression, scalar read, source digest, IDE range and timeout;
+no substitute target, default/parent ownership claim, app patch or broad re-audit.
+The finite native-disabled prerequisite is verified, full V03/C09 remain open.
+ONE final whole-increment engineering review is still pending.
