@@ -55,7 +55,8 @@ Legacy-v1, byte/depth/text, duplicate/schema/privacy/evidence boundaries remain.
 Source653 focused/2494 full PASS; all778 actual projected fields survive detailed
 encoding and exact-parent input composition. Seven current source files differ
 from original65; that old package/runtime failure is unchanged. New package/native
-handoff acceptance is next V03.4 after ONE source review, not inferred from tests.
+handoff acceptance is next V03.4. ONE source review0/0/0 accepted the finite
+correction; no correction pass/re-review. Native success is not inferred from tests.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

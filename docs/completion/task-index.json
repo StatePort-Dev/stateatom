@@ -4755,20 +4755,7 @@
       "optional": false,
       "execution_record": "116-v03-handoff-structure-budget.md",
       "implementation_plan": "../superpowers/plans/2026-10-23-v03-handoff-structure-budget.md",
-      "active_slice": {
-        "id": "V03.3",
-        "title": "Retained detailed-report structure correction",
-        "status": "source-corrected-tested-pending-one-review",
-        "plan": "../superpowers/plans/2026-10-23-v03-handoff-structure-budget.md",
-        "record": "116-v03-handoff-structure-budget.md",
-        "focused_source_checks": 653,
-        "full_source_checks": 2494,
-        "retained_source_fields": 778,
-        "retained_source_evidence": ".artifacts/v03/handoff-structure-budget/2026-10-23/retained-correction-v2/results.json",
-        "product_source_deltas_from_Atom65": 7,
-        "new_packed_native_acceptance": false,
-        "full_V03_acceptance": false
-      },
+      "active_slice": null,
       "completed_slices": [
         {
           "id": "V03.1-installed-guide",
@@ -4815,6 +4802,28 @@
             "minor_reporting_corrected": true,
             "re_review": false
           }
+        },
+        {
+          "id": "V03.3-handoff-structure-budget",
+          "title": "Retained detailed-report structure correction",
+          "status": "complete-source-correction-not-packed-native-or-full-V03",
+          "plan": "../superpowers/plans/2026-10-23-v03-handoff-structure-budget.md",
+          "record": "116-v03-handoff-structure-budget.md",
+          "focused_source_checks": 653,
+          "full_source_checks": 2494,
+          "retained_source_fields": 778,
+          "retained_source_evidence": ".artifacts/v03/handoff-structure-budget/2026-10-23/retained-correction-v2/results.json",
+          "product_source_deltas_from_Atom65": 7,
+          "new_packed_native_acceptance": false,
+          "full_V03_acceptance": false,
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 0,
+            "correction_passes": 0,
+            "re_review": false
+          },
+          "verification": ".artifacts/v03/handoff-structure-budget/2026-10-23/final-verification.json"
         }
       ],
       "current_checkpoint": {
@@ -7018,14 +7027,29 @@
         "verification": ".artifacts/v03/independent-basic-final/2026-10-23/verification-post-review.json",
         "full_task_complete": false,
         "next_independent_item": "V03.3"
+      },
+      {
+        "id": "V03.3",
+        "status": "complete-source-not-packed-native-or-full-V03",
+        "execution_record": "116-v03-handoff-structure-budget.md",
+        "verification": ".artifacts/v03/handoff-structure-budget/2026-10-23/final-verification.json",
+        "source_checks": 2494,
+        "focused_checks": 653,
+        "whole_review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 0
+        },
+        "full_task_complete": false,
+        "next_independent_item": "V03.4"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.3 source correction retains every detailed field and original evidence/omissions on retained before-Cart input. Explicit v2 mixed-node ceiling10000 to20000 derived from unchanged10000 member cap plus new9999 aggregate array-entry cap; legacy10000 and other checks preserved. Focused653/full2494 pass; actual778fields/17joins/752omissions roundtrip in source. Seven current source deltas from original65; old archives/runtime remain unchanged and failed detailed65 run remains FAIL. Pending ONE source review, then V03.4 new exact package and targeted native handoff. FullV03/A02/L02/V02 open20/29.",
+    "current_activity_note": "V03.3 source correction complete after ONE review0/0/0; no correction pass/re-review. Explicit v2 aggregate ceiling10000 to20000 derives from member10000 and aggregatearray9999 caps. Source653/full2494 pass; exact retained778fields/17joins/752omissions preserved. Seven core deltas from old65; original old65 runtime failure remains FAIL. No new pair/native qualified. Next V03.4 new immutable Atom/UI pair and targeted detailed current-report/download/fresh-reader route. FullV03/A02/L02/V02 open20/29.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "b9f5e0d plan plus current seven core decoder/budget changes; original Atom65 artifacts unchanged",
+    "current_source_revision": "dc53c70 corrected codec source; original Atom65 artifacts unchanged",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V03.4 after ONE V03.3 review: new immutable pair and affected detailed-report/native recipient path only"
+    "next_bounded_step": "V03.4: new immutable pair and affected detailed-report/native recipient path only"
   },
   "next_task": "V03"
 }

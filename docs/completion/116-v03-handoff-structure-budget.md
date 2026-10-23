@@ -100,8 +100,8 @@ reserve run follows from these source results.
 
 ## Disposition
 
-ONE fresh whole-increment review is pending. The intended next bounded item after
-source review is **V03.4**: prepare a new exact Atom/UI pair and exercise only the
+ONE fresh whole-increment review accepted this source correction,0 Critical/
+0 Important/0 Minor. The next bounded item is **V03.4**: prepare a new exact Atom/UI pair and exercise only the
 affected detailed current-report → download → fresh-reader route, preserving the
 original65 failure. Reuse the already pinned app/dependencies/data and completed
 Basic evidence; repeat only what the changed handoff bytes require. No old matrix,
@@ -109,3 +109,31 @@ CA/setup, SDK, another repository or publication is authorized by this correctio
 
 Full V03/A02/L02/V02 and the baseline gates remain open. The source correction and
 passing codec tests alone do not prove the new installed feature works.
+
+## ONE whole-increment review
+
+Range65dea62..dc53c70, report:
+`.artifacts/v03/handoff-structure-budget/2026-10-23/review/review.md`.
+Fresh reviewer6/6 tests,331 registered hashes and7 log/output hashes pass; retained
+778-field/17-join/752-omission projection and exact-parent linkage independently
+match. Focused653/full2494 are inspected original run results, not suite reruns.
+No correction pass or re-review was required.
+
+Rulings on every Declined item:
+
+- D1: retain these explicit bounded implementation defaults for this local
+  candidate under the defect-fix scope. They are not prior user approval or an
+  immutable universal product policy; future budget changes need their own checks.
+- D2: V03.4 owns new packed/native success. Original65 detailed FAIL stays FAIL.
+- D3: require the new matching reader for enlarged reports. Old65 compatibility
+  or future release negotiation is not inferred from unchanged format names.
+- D4: retain all independent caps and the separate input-packet limit. No promise
+  that every projection below2048 rows fits, or that packet capacities all expand.
+- D5: fullV03/A02/L02/V02 and native/platform/runtime gates stay open; empty-history
+  composition and source counts cannot replace their evidence.
+- D6: keep the helper internal to parsed inert JSON callers. No general app-object,
+  getter/proxy/cycle inspection capability is introduced or claimed.
+
+Source checkpoint `source-checkpoint.json` seals source/logs without claiming final
+document hashes. `final-verification.json` separately seals the final review and
+current documents after these rulings. No native evidence is regenerated.
