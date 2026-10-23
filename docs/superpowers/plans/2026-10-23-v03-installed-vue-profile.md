@@ -31,7 +31,7 @@ qualified Atom input hashes remain exact; if they drift, record and address it.
 
 ## 2. New actual installed artifact
 
-Existing pack:development creates plugin2 and companion helper receipt. Do not
+Existing pack:development creates the new plugin and companion helper receipt. Do not
 claim a reused helper byte identity unless hashes actually match. Qualify plugin
 archive/source-manifest/metadata/notices, install under Node18 in a fresh private
 npm consumer with private empty configs/cache, exact Vite4.4.9, engine-strict,
