@@ -152,9 +152,10 @@ Whole20/29 (~69%), V03/C09/A02/L02/V02 unchanged; no new feature-readiness claim
 rules: actual RED6=1PASS5FAIL→focused39/full2585 PASS. Exact helper8 original native
 15 gates PASS/378 stable, including exact expression/digest/Observed scalar read,
 actual IDE range156:9–174:11, ordinary input/clear, Save/native Download126525B and
-passive fresh reader. Final zero-app-console gate FAIL24 intlify localization
-warnings; cause not established, inspector console/errors0. No combined green,
-consumer lineage or full V03/C09 claim. ONE review due; next V03.11 compares
+passive fresh reader. Final zero-app-console gate FAIL24 warnings (16 intlify translations,8 Vue
+component-prop type); cause not established, inspector console/errors0. No combined green,
+consumer lineage or full V03/C09 claim. ONE review0/0/0 accepted the bounded parser,
+no correction/re-review; integrity verified. Next V03.11 compares
 uninstrumented/instrumented original app warnings without suppression or gate
 waiver. Atom70/plugin5/whole20/29 unchanged; historical FAILs retained.
 Original64 Basic/active/warm-source/input results remain

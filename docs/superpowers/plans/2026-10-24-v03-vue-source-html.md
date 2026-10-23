@@ -49,5 +49,5 @@ unchanged; parse existing template content through compiler-dom parse.
 - [x] Preregister only required new helper/development/consumer identities in original case, unchanged question/criteria; commit before native execution.
 - [x] Run unchanged independent-vue-source-native.mjs on exact70/new helper and original dependency receipt; inspect actual output/screenshots/IDE range or retain exact FAIL.
 - [x] Record123/current routing/corpus append-only with actual outcome, source/native/historical boundaries and one next dependency-valid unresolved item.
-- [ ] ONE fresh review base3ff130a..current head; rule declined boundaries, at most one RED→GREEN correction pass/full suite; no re-review.
-- [ ] Final read-only integrity aggregate from actual receipts, task-done, local commit/clean tree. Preserve ledger/evidence; whole-count changes only after complete original gates, goal remains active until deadline.
+- [x] ONE fresh review base3ff130a..current head; rule declined boundaries, at most one RED→GREEN correction pass/full suite; no re-review.
+- [x] Final read-only integrity aggregate from actual receipts, task-done, local commit/clean tree. Preserve ledger/evidence; whole-count changes only after complete original gates, goal remains active until deadline.

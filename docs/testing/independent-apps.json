@@ -420,7 +420,7 @@
       "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
       "execution_record": "../completion/123-v03-vue-source-html.md",
       "evidence": ".artifacts/v03/independent-vue-source/2026-10-23T21-53-15-845Z/results.json",
-      "status": "FAIL_FINAL_APP_CONSOLE24_INTLIFY_WARNINGS",
+      "status": "FAIL_FINAL_APP_CONSOLE24_WARNINGS_16_INTLIFY_8_VUE_PROP_TYPE",
       "prior_checks_passed": 15,
       "registered_inputs": 378,
       "inputs_stable_during_run": true,
@@ -439,7 +439,11 @@
       "app_console_warnings": 24,
       "warning_cause_established": false,
       "whole_V03_complete": false,
-      "combined_green_run": false
+      "combined_green_run": false,
+      "app_warning_classes": {
+        "intlify_missing_translation": 16,
+        "vue_component_prop_type": 8
+      }
     }
   ]
 }

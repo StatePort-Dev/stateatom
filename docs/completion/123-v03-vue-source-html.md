@@ -1,6 +1,9 @@
-# V03.10 — selected Vue source-template HTML parsing, in progress
+# V03.10 — selected Vue source-template HTML parsing, engineering complete
 
-2026-10-24 local, base3ff130a/main, scope-review-1. Previous V03.9 engineering
+2026-10-24 local, base3ff130a/main, scope-review-1. ONE review0/0/0 accepted
+the bounded parser, no correction/re-review. Native15 positive gates pass but
+final app-console gate remains FAIL. Earlier sections retain their historical
+then-pending steps. Previous V03.9 engineering
 complete; corrected helper7 original native4 setup PASS/378 stable then exact
 source links0/required1 FAIL. Whole20/29 (~69%) and full V03/C09 unchanged.
 
@@ -68,8 +71,9 @@ source browser shutdown pass. Reader claims stay historical/untrusted and acquir
 no authority or outside import requests. No parent/default/composable/NaiveUI
 consumer lineage or full C09/V03 is inferred from this selected read.
 
-The final required healthy-log check finds **24 original-app intlify warnings**
-about missing English tool title/description translations. Inspector console and
+The final required healthy-log check finds **24 original-app warnings**:
+16 intlify missing-English-tool-translation warnings and8 Vue component-prop
+Expected Object/got Function warnings. Inspector console and
 errors are0. The native result remains FAIL; warning cause is not established.
 No warning filtering, locale patch, criterion reduction or combined green claim.
 All498 immutable originals and working497+same components.d.ts delta unchanged;
@@ -81,4 +85,30 @@ Next bounded item **V03.11: read-only uninstrumented/instrumented original-app
 warning comparison**, preserving the zero-console gate and actual fifteen positive
 subchecks. It must identify whether the warnings pre-exist or are introduced;
 neither outcome is assumed approved or already established. ONE final review of
-this parser increment remains due. Whole20/29 (~69%) unchanged.
+this parser increment is accepted0/0/0 with no correction/re-review.
+Whole20/29 (~69%) unchanged.
+
+## Final review and integrity closeout
+
+ONE fresh readonly astra/high review3ff130a..fbbad42 reports0Critical/0Important/
+0Minor; no correction pass or re-review. Reviewer independently ran source21 and
+filesystem/HTTP18 controls (39PASS; five initial sandbox EPERM were infrastructure
+only), checked223 helper/327 Atom/19 plugin/14 installed files/all9 VSIX payload
+entries/archive hashes/native378/15 positive gates/download126525B/exact IDE range.
+No full/native rerun or full-feature acceptance is attributed to that review.
+
+Report/outcome and six executor rulings are preserved in the local plan ledger
+and artifact directory. Warning cause, broader consumer lineage/configurations,
+visual/human acceptance and complete V03/C09 remain outside established proof.
+Independent human participation is not a blocker. Final integrity checkpoint checks
+the actual retained receipts/current exact hashes and historical FAILs; it is not
+a new functional/native success. Corpus was appended only after native frozen
+before/after inputs; its original bytes remain checked at Git4b4e536.
+
+The first aggregate incorrectly assumed all24 warnings were intlify; its script/
+failure log are preserved. Full inspection establishes16 intlify and8 Vue prop
+warnings. Corrected aggregate verifies both groups without suppressing warnings,
+altering the native driver or changing overall FAIL. The initial grouped wording
+was a reporting mistake, not evidence of a new product failure. Plan/ledger/evidence
+remain retained, local commits only; next V03.11, no SDK/publication/redesign/other
+repository/account/certificate/user profile changes.
