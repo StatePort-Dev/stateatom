@@ -283,6 +283,25 @@
       "IDE_started": true,
       "source_positive_gate_reached": false,
       "whole_V03_complete": false
+    },
+    {
+      "id": "V03.6-atom68-textarea-disabled",
+      "application": "CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "execution_record": "../completion/119-v03-installed-vue-profile.md",
+      "evidence": ".artifacts/v03/independent-vue-source/2026-10-23T20-05-41-907Z/results.json",
+      "status": "FAIL_UNSUPPORTED_TEXTAREA_DISABLED_NATIVE_IDENTITY_NO_SELECTED_SOURCE_ACCEPTANCE",
+      "prior_checks_passed": 4,
+      "registered_inputs": 378,
+      "inputs_stable_during_run": true,
+      "immutable_original_files": 498,
+      "working_original_unchanged": 497,
+      "normal_generated_deltas": [
+        "components.d.ts"
+      ],
+      "IDE_started": true,
+      "source_positive_gate_reached": false,
+      "whole_V03_complete": false
     }
   ]
 }

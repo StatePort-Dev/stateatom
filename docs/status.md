@@ -114,6 +114,12 @@ reproduced and corrected in one tested pass: queued map cancellation/replacement
 and final synchronous native-dispatch guard after async authority checks. Legacy
 hosts without that guarantee refuse queued reads. Corrected full2533 PASS; new68
 package/native qualification remains due, no re-review or selected-source credit.
+V03.6 engineering increment is now complete with native acceptance explicitly
+partial/unaccepted: corrected68/UI2 types2/package9 PASS, original native4 setup
+checks PASS/378stable thenFAIL at unsupported textarea disabled. Both review
+Important fixed in one tested pass/full2533, no re-review. NextV03.7 defines/tests
+that separate native form-control property adapter before the unchanged source/
+scalar-read/IDE question can pass. Whole20/29 and original evidence stay unchanged.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

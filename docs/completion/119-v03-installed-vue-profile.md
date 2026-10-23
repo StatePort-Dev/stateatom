@@ -1,12 +1,14 @@
 # V03.6 — installed Vue profile and source backpressure; native partial
 
-2026-10-23, scope-review-1, base df68377. **Engineering increment closing;
-selected-source native acceptance FAIL.** Experimental installed Vue profile,
-minimal compiler corrections and bounded Atom source acquisition are implemented.
-Source2524 PASS, exact plugin5/helper5 admission, new Atom67/UI2 types2/package9 PASS.
-Latest original-app native run has4 PASS then rejects the textarea disabled target.
-No selected-source/read/IDE-range/input/export success is claimed. ONE whole code
-review remains due. Full V03/C09 and20/29 whole tasks stay unchanged.
+2026-10-23, scope-review-1, base df68377. **Engineering increment complete;
+selected-source native acceptance remains FAIL/partial.** Installed Vue profile,
+minimal compiler fixes and bounded guarded source acquisition are implemented.
+Corrected source2533 PASS; exact plugin5/helper5 admission; Atom68/UI2 types2 and
+package9 PASS. ONE whole review found2 Important; both fixed in one tested pass,
+no re-review. Actual68 native has4 PASS then rejects the original textarea disabled
+target. No selected-source/read/IDE-range/input/export success is claimed.
+Next separate item V03.7 is the native form-control property prerequisite.
+Full V03/C09 and20/29 whole tasks remain unchanged.
 
 [Executor design](../superpowers/specs/2026-10-23-v03-installed-vue-profile-design.md),
 [plan](../superpowers/plans/2026-10-23-v03-installed-vue-profile.md),
@@ -352,3 +354,42 @@ helper5 proof inputs still exact, no rebuild required. Case68 changes only Atom
 identity from case67. Affected native installed-host check follows; its unchanged
 textarea-disabled positive gate is still unsupported and must remain FAIL. This
 run checks the new packaged guard path and cannot be used to close that gate.
+
+## Final correction qualification and closure
+
+Exact68 native result
+`.artifacts/v03/independent-vue-source/2026-10-23T20-05-41-907Z/results.json`
+remains **FAIL**,4 actual checks PASS,378 registered inputs stable. Actual installed
+helper/private receipt/native connection and cache/reload-only development mode
+(readOnly false) pass; original enabled textarea and0/0/0/0Bytes render. New queued
+source calls run through the supplied guarded host/broker path. The screenshot
+succeeds, real picker gesture completes, then the same existing HTMLButtonElement-
+only disabled identity boundary refuses the selected textarea. No successful
+selected source/read/IDE range, native input/baseline for this source case, save/
+export/reader or clean app-log/visual acceptance follows. No known fail is waived.
+Owned Chrome/Vite/IDE close, Vite0/null; original498 immutable and497 working plus
+registered components.d.ts remain exact. Neither final snapshot nor test counts
+establish a new form-control capability.
+
+ONE review remains0 Critical/2 Important found/0 Minor, both Important fixed and
+verified by unchanged reviewer actual-runtime probes2 PASS, additional Cancel/
+Clear/replacement/capacity/fallback/guardian/legacy controls, corrected full2533
+PASS, exact68 typed/package admission and this scoped native setup result. There
+is no second review or fabricated all-native-green verdict. No deferred minors.
+The original checkpoint remains an immutable pre-correction67 observation; new
+correction verification records68 separately. All failure logs/receipts remain.
+
+Next **V03.7**: the separately registered ordinary form-control disabled adapter
+and original question, with exact native identity, no additional application getter
+execution, supported own-property semantics and explicit Unsupported negatives.
+Its design/RED/implementation/new artifact/native evidence are still due. This
+increment did not implement it. No SDK, redesign, publication or other repository.
+
+Read-only correction checkpoint
+`.artifacts/v03/installed-vue-profile/2026-10-23/correction-checkpoint.json`
+passes exact68/UI2/current327 inputs, helper222, typed/package receipts, all eight
+retained failed native runs and unchanged reviewer probes. It preserves the
+pre-correction67 checkpoint separately. Only the subsequently appended corpus
+registration differs from the latest native input snapshot. This current record
+adds the checkpoint link afterward; final routing/document hashes are sealed
+separately, without rewriting the run or checkpoint. No feature acceptance follows.
