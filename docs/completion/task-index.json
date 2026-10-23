@@ -4155,33 +4155,31 @@
       "deliverable": "Candidate-scoped CI/native/type and package evidence",
       "status": "in_progress",
       "optional": false,
-      "execution_record": "110-v01-native-candidate-lane.md",
+      "execution_record": "111-v01-installed-maintainer-and-whole-review.md",
       "active_slice": {
-        "id": "V01.2",
-        "title": "Sequential native browser candidate matrix with fresh-profile Basic reader",
-        "status": "locally-verified-joined-retained23-fresh39-not-whole-V01",
-        "plan": "../superpowers/plans/2026-10-23-v01-native-candidate.md",
-        "remainder_plan": "../superpowers/plans/2026-10-23-v01-native-remainder.md"
+        "id": "V01.3",
+        "title": "Actual installed VSIX Linux maintainer route and whole V01 review",
+        "status": "local-implementation-verified-one-whole-review-pending",
+        "plan": "../superpowers/plans/2026-10-23-v01-installed-maintainer.md"
       },
       "current_checkpoint": {
-        "id": "V01.2-native65",
-        "record": "110-v01-native-candidate-lane.md",
-        "verification": ".artifacts/v01/packed-ci/2026-10-23/verification-native65.json",
-        "candidate": "0.1.0-candidate.20261021.65",
-        "source_inputs": 341,
-        "focused_source_checks": 24,
-        "native_checks": 62,
-        "retained_Basic_checks": 23,
-        "fresh_maps_checks": 39,
-        "headless_new_real_MV3": true,
-        "fresh_reader_profile_both_hosts": true,
-        "errors": 0,
-        "console_warnings_errors": 0,
-        "original_failed_lane_preserved": true,
-        "product_unchanged": true,
+        "id": "V01-whole-local-review-pending",
+        "record": "111-v01-installed-maintainer-and-whole-review.md",
+        "verification": ".artifacts/v01/packed-ci/2026-10-23/whole-verification.json",
+        "full_source_checks": 2469,
+        "source_inputs": 901,
+        "native_retained_Basic": 23,
+        "native_fresh_maps": 39,
+        "native_inputs": 341,
+        "actual_installed_VSIX_checks": 10,
+        "installed_inputs": 15,
+        "installed_helper_version": "0.1.3",
+        "actual_VSCode_version": "1.142.0",
+        "controlled_protocol_not_Atom_UI_source_association": true,
+        "whole_review_pending": true,
         "remote_CI_executed": false,
         "whole_task_complete": false,
-        "next_bounded_step": "V01.3 actual installed VSIX maintainer route, then ONE whole V01 review"
+        "next_bounded_step": "ONE whole V01 review; after acceptance dependency-ready A02 current unproved ordinary lineage path"
       },
       "completed_slices": [
         {
@@ -4197,6 +4195,26 @@
           "remote_CI_executed": false,
           "whole_task_complete": false,
           "next_bounded_step": "V01.2 exact-candidate native browser lane; keep actual installed-VSIX and remote execution gaps explicit"
+        },
+        {
+          "id": "V01.2-native65",
+          "record": "110-v01-native-candidate-lane.md",
+          "verification": ".artifacts/v01/packed-ci/2026-10-23/verification-native65.json",
+          "candidate": "0.1.0-candidate.20261021.65",
+          "source_inputs": 341,
+          "focused_source_checks": 24,
+          "native_checks": 62,
+          "retained_Basic_checks": 23,
+          "fresh_maps_checks": 39,
+          "headless_new_real_MV3": true,
+          "fresh_reader_profile_both_hosts": true,
+          "errors": 0,
+          "console_warnings_errors": 0,
+          "original_failed_lane_preserved": true,
+          "product_unchanged": true,
+          "remote_CI_executed": false,
+          "whole_task_complete": false,
+          "next_bounded_step": "V01.3 actual installed VSIX maintainer route, then ONE whole V01 review"
         }
       ]
     },
@@ -4838,11 +4856,11 @@
     ]
   },
   "reconciliation": {
-    "document": "110-v01-native-candidate-lane.md",
+    "document": "111-v01-installed-maintainer-and-whole-review.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V01.2-native65-local-joined23-plus39",
-    "next_item": "V01.3 actual installed VSIX maintainer route, then ONE whole V01 review",
+    "current_increment": "V01-local-lanes-and-installed-VSIX-ready-one-review",
+    "next_item": "ONE whole V01 review; after acceptance dependency-ready A02 current unproved ordinary lineage path",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6826,11 +6844,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V01.2 actual native Basic23 both hosts/fresh reader retained unchanged plus39 fresh maps,341 current frozen inputs/exact65 archives/install/hosts and24 focused controls verified;0errors/console. First FAIL preserved: obsolete Unsafe predicate corrected to current closed SOURCE_PARSE_INVALID, no product guard change. Same-pair native CI configured with allowlisted synthetic result retention, no remote run/upload/push.19/29 unchanged; V01.3 installed VSIX next, then whole V01 review.",
+    "current_activity_note": "V01.1-.3 local checks complete,ONE whole review pending: full2469/901 current hashes, browser23retained+39fresh/341 inputs, actual installed VSIX0.1.3 in VSCode1.142.0/10checks/15inputs. Controlled helper protocol Open is not Atom UI source association. No remote CI/upload/push/release/new performance credit;19/29 until review. Next dependency-ready A02 after verdict; I03 still depends on external I02 and open V02.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "00884e5 (native harness); fa95157 product65 unchanged",
+    "current_source_revision": "b61daa9 (V01 tools); fa95157 product65 unchanged",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V01.3 actual installed VSIX maintainer route, then ONE whole V01 review"
+    "next_bounded_step": "ONE whole V01 review; after acceptance dependency-ready A02 current unproved ordinary lineage path"
   },
   "next_task": "V01"
 }

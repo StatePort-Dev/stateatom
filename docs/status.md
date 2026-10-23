@@ -21,7 +21,10 @@ corrected without product/native rerun. [V01.1](completion/109-v01-packed-ci-lan
 a separate immutable packed-contract CI job, locally syntax/selector/negative/check:ui
 verified. [V01.2](completion/110-v01-native-candidate-lane.md) now verifies local native
 Basic23 (retained unchanged) plus maps39 fresh,341 frozen inputs and24 controls.
-Remote CI/whole V01 remain open; next V01.3 actual installed VSIX maintainer route. Original64 Basic/active/warm-source/input results remain
+[V01.3](completion/111-v01-installed-maintainer-and-whole-review.md) adds actual
+installed VSIX0.1.3/VSCode1.142.0 acceptance10 checks/15 inputs. Whole source2469
+passes with901 frozen current inputs; ONE whole V01 review pending. No remote CI
+or full browser/IDE user-flow claim; next dependency-ready A02 after that review. Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the
 [preregistered finite protocol](superpowers/plans/2026-10-23-v02-basic-observer.md).
@@ -1952,3 +1955,5 @@ V02.8 ONE review accepted0/0/2, both reporting Minors corrected: all887 hashes a
 [V01.1 CI configuration](completion/109-v01-packed-ci-lane.md): fast install/unit/build retained plus check:ui; separate exact-pair pack/types/admission job, clean GITHUB_SHA/immutable-path selection and read-only/nonpersistent credentials. Actual YAML shell positive+wrong-revision controls and UI generation PASS. No remote CI or fresh product/full/native qualification claimed; candidate65/19of29 unchanged. Next V01.2 native browser lane, with installed-VSIX remaining separate.
 
 [V01.2 native candidate](completion/110-v01-native-candidate-lane.md): retained23 Basic/fresh-reader checks plus39 fresh maps checks,341 current hashes/exact65 pair/hosts and24 focused source controls PASS;0errors/console. Initial FAIL and partial maps preserved; old raw Unsafe message predicate corrected to current closed parser refusal, no product weakening. Same-pair sequential CI/native and allowlisted result retention configured, no remote run/upload. Next V01.3 installed VSIX maintainer route, then ONE whole review; V01/V02 open,19/29 unchanged.
+
+[V01.3/whole checkpoint](completion/111-v01-installed-maintainer-and-whole-review.md): exact installed VSIX0.1.3/VSCode1.142.0 actual GUI10/15 input identities, synthetic source range audited; controlled Node protocol is not Atom UI/source-association proof. Foreign-port negative control blocks before install/GUI; private receipts excluded from public result. Final full2469/901 current hashes PASS, existing browser23retained+39fresh/341 preserved. ONE whole V01 review pending;19/29 unchanged until verdict. Next dependency-ready A02, no external I02/I03 dependency bypass.
