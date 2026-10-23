@@ -184,7 +184,9 @@ try {
   vite.once('error',e=>{viteFailure=e;}); for (const stream of [vite.stdout,vite.stderr]) stream.on('data',d=>{viteOutput+=d;});
   await waitFor(()=>{if(viteFailure)throw viteFailure;if(vite.exitCode!==null||vite.signalCode!==null)throw Error('Owned Vite exited before readiness');const plain=stripVTControlCharacters(viteOutput);return plain.includes('Local:')&&plain.includes(result.appOrigin+'/');},scenario.startupTimeoutMs);
   result.command.ownedPid=vite.pid;
-  browser=await startNativeBrowser(out+'/profiles','origin',true,false,[],{extensionPath:h.hosts.standalone}); result.browser=browser.context.browser().version();
+  // Browser stderr captures pre-attach module errors without an app CDP sidecar
+  // or injected application listeners. Acceptance order and timeout stay intact.
+  browser=await startNativeBrowser(out+'/profiles','origin',true,false,['--enable-logging=stderr','--log-level=0'],{extensionPath:h.hosts.standalone}); result.browser=browser.context.browser().version();
   panel=await browser.context.newPage(); await panel.goto('chrome-extension://'+browser.id+'/panel.html'); ui=await observe(panel,'inspector'); downloads=await nativeDownloads(out+'/profiles/origin',out+'/downloads');
   await check('fresh profile has no saved reports or tab authority',async()=>{assert.deepEqual((await rpc(panel,{op:'list-handoffs'})).entries,[]);assert.deepEqual(await panel.evaluate(async()=>Object.keys((await chrome.storage.session.get('stateport.atom.v1.tabs'))['stateport.atom.v1.tabs']||{})),[]);});
   tabId=await panel.evaluate(async url=>(await chrome.tabs.create({url})).id,result.appOrigin+scenario.route); result.tabId=tabId;
