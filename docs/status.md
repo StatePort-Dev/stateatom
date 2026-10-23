@@ -72,8 +72,10 @@ standalone native13 PASS,335 stable inputs; original text statistics0→8→0 vi
 ordinary trusted app input, exact38743B v1 export and passive fresh reader.497 of498
 working appfiles unchanged, sole normal components.d.ts generation retained; all498
 immutable originals exact. Source/runtime/consumer stays Unknown; no Live/Draft or
-fullVue/V03 credit. ONE review pending. NextV03.6 establishes exact helper/plugin
-and matching-build prerequisites for independent Vue source-connected positives.
+fullVue/V03 credit. ONE whole review accepted0/0/0, all six scope rulings recorded;
+no correction/re-review. NextV03.6 addresses installed Vue profile compatibility:
+supplied plugin Node24/Vite7 recipe does not admit the original Node18/Vite4 app.
+No unsupported installed runtime or new source-positive claim is supplied.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

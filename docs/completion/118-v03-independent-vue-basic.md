@@ -94,14 +94,41 @@ acceptance. No CSS/tokens/shared UI/contract changed; no redesign is supplied.
 
 ## Review and next dependency-valid step
 
-ONE fresh whole-increment review is pending. Current artifact/source hashes and
+ONE fresh whole-increment review accepted **0 Critical / 0 Important / 0 Minor**,
+range a1d1f76..f241c0f. No correction pass or re-review. Report:
+`.artifacts/v03/independent-vue-basic/2026-10-23T17-30-12-907Z/review/review.md`.
+Current artifact/source hashes and
 raw receipts remain separate from later documentation checkpoints. Original React65
 failures, accepted V03.3/4 evidence and all original criteria remain unchanged.
 Read-only hash/parser/source/authority assertions passed in the retained
 `verify-checkpoint.mjs`; `checkpoint.json` seals the13 native checks,335 run inputs,
 326 current product inputs and original/generated application-file identities.
 
-Next V03.6: establish existing open helper/plugin compatibility and exact matching
+Executor rulings on all six Declined items:
+
+1. Vue source/runtime/property-consumer and C09 remain Unknown/unaccepted here;
+   the installed compatibility and positive path need separate evidence.
+2. Native app input/baseline do not grant Atom Live/Draft/undo or producer causality.
+3. Existing v1 export is the accepted route. U06 detailed/simple acceptance is
+   separate; the dense reader selector stays a named UX limitation, not human approval.
+4. Reader import and app-from-attach monitoring do not establish browser-wide or
+   startup-wide guarantees.
+5. Human/Chrome install UI/embedding/macOS/production/model/performance and whole
+   V03/A02/L02/V02 remain open,20/29 unchanged.
+6. Other app/backend, reserve and future profile implementation were not audited.
+   Later protocols must account for the retained generated working-file delta.
+
+`final-verification.json` beside the native result seals this record, current
+routing, accepted review and retained checkpoint without rewriting old receipts.
+
+Read-only next-kit inspection verifies the supplied plugin/VSIX bytes and zero
+plugin source-manifest drift. The actual plugin archive declares Node>=24<25 and
+Vite7.3.7, with a React18 installed recipe; the app uses Node18.18.2/Vite4.4.9.
+This is an **unadmitted installed Vue profile**, not a failed Vue runtime or
+authority to claim it supported. Metadata is retained in `next-kit-prerequisites.json`;
+no new configuration, install, app/browser run or package rebuild was performed.
+
+Next V03.6: resolve that bounded installed-profile compatibility gap and exact matching
 build prerequisites for the independent Vue source-connected positive route before
 running it. This Basic result does not fill C09 template/composable/instance or
 real-library property-consumer gates. Reserve Excalidraw stays unexecuted. Embedding
