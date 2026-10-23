@@ -1,6 +1,6 @@
 # V02.7 — warm source and map resource measurements
 
-2026-10-23, scope-review-1. Finite measurements complete; ONE review pending.
+2026-10-23, scope-review-1. Finite measurements accepted after ONE review and one Minor correction.
 Product64/UI2 unchanged,19/29 whole tasks unchanged. This is a declared local
 reference route, not whole V02 acceptance or a waiver of104's remaining misses.
 
@@ -19,7 +19,9 @@ Exact unchanged Atom0.1.0-candidate.20261021.64/UI0.2.0-candidate.20261018.2:
 `.artifacts/atom/2026-10-23T11-08-43-890Z/atom-handoff.json`.
 269 bundled sources/326 overlapping build inputs (union326), archives/installed
 pair/complete both host manifests match.880 current inputs before/after match,
-including all836 prior diagnostic inputs unchanged. No rebuild/new product bytes,
+including all836 prior diagnostic inputs unchanged at measurement. After the
+harness-only review correction below,878 frozen inputs still match current bytes;
+original helper/test hashes are verified against Git6f742e0. No rebuild/new product bytes,
 dependency/UI contract/style change or fresh full-suite claim. Original64
 full2424/types2/admission9/native H0917/198 target rows remain original104 evidence.
 
@@ -149,9 +151,23 @@ before/after maps, `verify.mjs` and `verification64-warm-source.json`:
 
 ## ONE next unfinished item
 
-ONE fresh whole bounded V02.7 review next; one material correction pass at most.
-Then **V02.8**: preregister mode-specific Live/Draft and Action Trace resource/
-latency measurements on existing accepted editable/trace fixtures. Model timing
+ONE fresh whole bounded review accepted the finite slice:0Critical/0Important/
+1Minor. Independent40 focused/880+879+878 hashes/92rows/18cache/2cancels and
+original104 target rows verified. The Minor overlap guard was unreachable after
+the first click cleared armed; one new double-click control RED0vs1 then GREEN41
+(new7) fixes its order. The actual serialized92-row dataset never overlapped,
+so no native/full/build rerun or new product is claimed. Original raw/verification/
+preregistration/plan bytes remain frozen; current880 and the2 changed historical
+harness inputs are recorded separately in `verification64-warm-source-reviewed.json`.
+All8 declined boundaries have executor rulings in `review/report.md` beside it.
+No re-review or deferred finding.
+
+Next **V02.8**: preregister Live/Draft gesture-to-ack/local-ready paint, accounted
+ledger growth/64limit and actual native unsent-Close controls on the existing
+accepted native-form fixture. Existing U02 dispatch/coalescing/flush and A05
+record51's42 resource interactions/cancel remain historical, not blindly repeated
+or renamed fresh/current workload-overhead acceptance. Trace's remaining current
+mode requirements and dependency-ready V01 CI lanes are separate. Model timing
 remains separate with L02 usefulness open; no blind new inference campaign.
 Current104 Basic p95=683.1/2021.8ms and active/off25.08/26.87% remain unchanged:
 embedding Basic and both10% overhead targets miss. No denominator swap/maintainer

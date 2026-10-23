@@ -4197,7 +4197,7 @@
       "active_slice": {
         "id": "V02.7",
         "title": "Warm source preview/settled lexical analysis and map cache/cancellation",
-        "status": "finite-measurements-complete-review-pending-product64-unchanged",
+        "status": "finite-measurements-accepted-one-review-one-minor-correction-product64-unchanged",
         "plan": "../superpowers/plans/2026-10-23-v02-warm-source.md",
         "preparation_addendum": "../superpowers/plans/2026-10-23-v02-warm-source-preparation.md",
         "retained_phase_addendum": "../superpowers/plans/2026-10-23-v02-warm-source-remainder.md"
@@ -4205,12 +4205,12 @@
       "execution_record": "107-v02-warm-source-and-map-resources.md",
       "current_checkpoint": {
         "id": "V02.7-warm-source64",
-        "status": "ready-one-parent-review",
+        "status": "accepted-bounded-measurement-not-whole-V02",
         "record": "107-v02-warm-source-and-map-resources.md",
         "candidate": "0.1.0-candidate.20261021.64",
-        "verification": ".artifacts/v02/warm-source/2026-10-23/verification64-warm-source.json",
-        "focused_source_checks": 40,
-        "new_warm_checks": 6,
+        "verification": ".artifacts/v02/warm-source/2026-10-23/verification64-warm-source-reviewed.json",
+        "focused_source_checks": 41,
+        "new_warm_checks": 7,
         "retained_full_source_checks": 2424,
         "fresh_full_source_run": false,
         "fresh_build": false,
@@ -4246,7 +4246,22 @@
         "performance_acceptance": false,
         "targets_waived": false,
         "whole_task_complete": false,
-        "next_bounded_step": "V02.8 preregister existing Live/Draft and Action Trace mode-specific resource/latency measurements; preserve104 Basic/active misses and L02 gap"
+        "next_bounded_step": "V02.8 Live/Draft gesture/local-ready/ack timing, accounted64-history growth/refusal and actual unsent-Close; preserve historical U02/A05 resource evidence and104 misses",
+        "verification_original": ".artifacts/v02/warm-source/2026-10-23/verification64-warm-source.json",
+        "focused_source_checks_at_measurement": 40,
+        "unchanged_frozen_native_inputs": 878,
+        "historical_changed_harness_inputs": 2,
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 1,
+          "minor_corrected_once": true,
+          "independent_focused": 40,
+          "correction_focused": 41,
+          "native_rerun": false,
+          "serialized_92_rows_unaffected": true,
+          "report": ".artifacts/v02/warm-source/2026-10-23/review/report.md"
+        }
       },
       "completed_slices": [
         {
@@ -4695,8 +4710,8 @@
     "document": "107-v02-warm-source-and-map-resources.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.7-warm-source64-ready-review",
-    "next_item": "V02.8 preregister existing Live/Draft and Action Trace mode-specific resource/latency measurements; preserve104 Basic/active misses and L02 gap",
+    "current_increment": "V02.7-warm-source64-accepted-one-review-one-minor-fixed",
+    "next_item": "V02.8 Live/Draft gesture/local-ready/ack timing, accounted64-history growth/refusal and actual unsent-Close; preserve historical U02/A05 resource evidence and104 misses",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6680,11 +6695,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.7 finite warm/map measurements complete, ONE review next:40focused/880current hashes/92 joined rows (46 retained standalone+46 fresh embedding)/18cache pairs/2started-parser cancels. Declared warm p95 targets met, TodoMVC Partial retained. Original104 embeddingBasic and both active/off misses remain unwaived;19/29 unchanged. L02/A02/integration/release open.",
+    "current_activity_note": "V02.7 accepted after ONE review0/0/1, one testedMinor overlap-guard correction RED->GREEN41;independent40/880+879+878 hashes/92joined/18cache/2started-cancels verified. Native serialized92 unaffected/no rerun; frozen2harnessinputs verifiedhistorical,current880 separate. Declaredwarmtargetsmet,TodoMVCPartial retained;104 embeddingBasic/active missesunwaived,19/29 unchanged. NextV02.8 finiteLive/Draft timing/ledger/nativeClose;U02/A05 historicalproof preserved.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "156bde5 (product64 unchanged);6f742e0 (V02.7 harness)",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V02.8 preregister existing Live/Draft and Action Trace mode-specific resource/latency measurements; preserve104 Basic/active misses and L02 gap"
+    "next_bounded_step": "V02.8 Live/Draft gesture/local-ready/ack timing, accounted64-history growth/refusal and actual unsent-Close; preserve historical U02/A05 resource evidence and104 misses"
   },
   "next_task": "V02"
 }

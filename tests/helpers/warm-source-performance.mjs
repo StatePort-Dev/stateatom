@@ -18,7 +18,7 @@ export function installWarmSourceTiming(){
  if(!preview||!location||!analysis)throw Error('Own source UI required');
  let armed=null,pending=null,epoch=0;const samples=[],errors=[];
  const fail=message=>{errors.push(message);pending=null;armed=null;epoch++;};
- const click=event=>{if(!event.target.closest('[data-atom-id="native-source-0"]')||!armed)return;if(pending){fail('Overlapping warm gesture');return;}if(!event.isTrusted){fail('Untrusted warm gesture');return;}pending={...armed,start:performance.now(),epoch:++epoch,trusted:true,newPreview:false,analysisStarted:false,exactMatch:false};armed=null;};
+ const click=event=>{if(!event.target.closest('[data-atom-id="native-source-0"]'))return;if(pending){fail('Overlapping warm gesture');return;}if(!armed)return;if(!event.isTrusted){fail('Untrusted warm gesture');return;}pending={...armed,start:performance.now(),epoch:++epoch,trusted:true,newPreview:false,analysisStarted:false,exactMatch:false};armed=null;};
  const complete=t=>{if(pending!==t||!t.previewPaintMs||!t.analysisPaintMs)return;const{start,epoch:_,...row}=t;samples.push({...row,status:'complete'});pending=null;};
  const paint=(t,kind,text)=>requestAnimationFrame(()=>requestAnimationFrame(()=>{if(pending!==t||epoch!==t.epoch)return;const node=kind==='preview'?preview:analysis;if(node.textContent!==text){fail('Content changed before '+kind+' paint');return;}t[kind+'PaintMs']=performance.now()-t.start;complete(t);}));
  const observer=new MutationObserver(records=>{const t=pending;if(!t)return;const newPreview=records.some(r=>r.target===preview||preview.contains(r.target)),text=preview.textContent;
