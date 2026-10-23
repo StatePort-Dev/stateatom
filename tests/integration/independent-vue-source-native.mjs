@@ -122,7 +122,9 @@ async function connectSource(){
   result.installedHelper=JSON.parse(await readFile(runtime+'/installed-helper-host.json'));
   assert.equal(result.installedHelper.loadedFromIsolatedInstallation,true);assert.equal(result.installedHelper.vsixSha256,development.helper.sha256);
   assert.equal(ide.conn.root,app.workingCopy);assert.equal(new URL(ide.conn.url).port,String(helperPort));
-  const raw=await readFile(runtime+'/private-receipt.json','utf8'),receipt=JSON.parse(raw);
+  // The host writes connection.json before the public copy-receipt command
+  // finishes. Wait for its complete private output, never synthesize a receipt.
+  const {raw,receipt}=await waitFor(async()=>{const raw=await readFile(runtime+'/private-receipt.json','utf8');return{raw,receipt:JSON.parse(raw)};});
   assert.equal(receipt.origin,result.appOrigin);assert.equal(receipt.sourceRoot,'.');assert.equal(receipt.helper.session,ide.conn.helper.session);
   await ui.fill('connection-receipt',raw);await ui.click('connect-receipt');await ui.waitOK();
   assert.equal(await panel.evaluate(s=>document.querySelector(s).value,ui.q('connection-receipt')),'');

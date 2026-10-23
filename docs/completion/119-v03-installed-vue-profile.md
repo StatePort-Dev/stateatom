@@ -257,3 +257,12 @@ Helper5 remains exact: all222 source-proof inputs have zero drift since its
 reproduction, so no rebuild or inherited different-payload claim. Case67 changes
 only expectedAtomVersion from case5; plugin5/helper5/question/budgets/criteria
 remain identical. Native retry and ONE whole review remain due.
+
+First67 native `.artifacts/v03/independent-vue-source/2026-10-23T19-39-14-003Z/results.json`
+is FAIL with378 stable inputs. It progresses past Attach; original baseline renders
+and actual VS Code Extension API verifies installed VSIX e90c4b73/bundle4abca6c4.
+Driver reads private receipt too early: connection.json precedes completion of
+public Copy connection receipt. ENOENT is retained; actual600-mode receipt exists
+by cleanup. Driver now waits for complete actual JSON using its existing20s wait,
+without synthesizing secrets, increasing acceptance limits or changing question.
+Native continuation/review remain due; source-positive gate not reached.
