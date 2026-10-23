@@ -13,17 +13,21 @@ import {parseDiagnostic} from '../../core/diagnostic.mjs';
 import {parseHandoffReport} from '../../core/handoff-files.mjs';
 import {nativeInspectorUI,nativeDownloads} from '../helpers/native-inspector-ui.mjs';
 
-const [handoffFile,dependencyFile]=process.argv.slice(2);
-assert(handoffFile&&dependencyFile&&process.argv.length===4,'Exact Atom handoff and prepared dependency receipt required');
+const [handoffFile,dependencyFile,caseArgument]=process.argv.slice(2);
+assert(handoffFile&&dependencyFile&&[4,5].includes(process.argv.length),'Exact Atom handoff, prepared dependency receipt and optional registered case required');
 const h=JSON.parse(await readFile(handoffFile)),dependencies=JSON.parse(await readFile(dependencyFile));
 const app=dependencies.apps.find(a=>a.slug==='Serkanbyx--e-commerce-frontend');
 assert(app?.originalSourceAndLockFilesMatch&&app.status==='PASS_FROZEN_DEPENDENCY_PREPARATION_NOT_APP_ACCEPTANCE');
-const caseFile='docs/testing/independent-react-basic-case.json',scenario=JSON.parse(await readFile(caseFile));
+const caseFile=caseArgument||'docs/testing/independent-react-basic-case.json',scenario=JSON.parse(await readFile(caseFile));
+if(scenario.expectedAtomVersion)assert.equal(h.package.version,scenario.expectedAtomVersion);
+if(scenario.expectedUIVersion)assert.equal(h.ui.version,scenario.expectedUIVersion);
+const previous=scenario.previousReaderHandoff?JSON.parse(await readFile(scenario.previousReaderHandoff)):null;
+if(previous)assert.equal(previous.package.version,'0.1.0-candidate.20261021.65');
 const sourceManifest=JSON.parse(await readFile(app.sourceManifest));
 const out=path.resolve('.artifacts/v03/independent-react-basic/'+new Date().toISOString().replace(/[:.]/g,'-'));
 await mkdir(out,{recursive:true});
 await writeFile(out+'/driver.mjs',await readFile(new URL(import.meta.url)));
-const registered=[...new Set([...Object.keys({...h.sourceManifest,...h.buildSources.manifest}),caseFile,'docs/testing/independent-apps.json','tests/integration/independent-react-basic-native.mjs','tests/helpers/native-inspector-ui.mjs','scripts/native-browser.mjs','scripts/harness.mjs',app.sourceManifest,dependencyFile,handoffFile])];
+const registered=[...new Set([...Object.keys({...h.sourceManifest,...h.buildSources.manifest}),caseFile,'docs/testing/independent-apps.json','tests/integration/independent-react-basic-native.mjs','tests/helpers/native-inspector-ui.mjs','scripts/native-browser.mjs','scripts/harness.mjs',app.sourceManifest,dependencyFile,handoffFile,...(previous?[scenario.previousReaderHandoff]:[])])];
 const inputs=async()=>Object.fromEntries(await Promise.all(registered.map(async f=>[f,sha256(await readFile(f))])));
 async function originalSources(){for(const [f,hash] of Object.entries(sourceManifest)){assert.equal(sha256(await readFile(path.join(app.workingCopy,f))),hash,'working source '+f);assert.equal(sha256(await readFile(path.join(app.immutableSource,f))),hash,'immutable source '+f);}return Object.keys(sourceManifest).length;}
 const result={schema:'stateatom.v03-independent-react-basic/1',status:'RUNNING',startedAt:new Date().toISOString(),revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceDirty:!!execFileSync('git',['status','--porcelain'],{encoding:'utf8'}).trim(),handoff:{file:handoffFile,package:h.package,ui:h.ui},application:{repository:'https://github.com/'+scenario.application,revision:scenario.revision,workingCopy:app.workingCopy,installedVersions:app.installedVersions},configuration:scenario.environment,limits:scenario.limits,checks:[],errors:[],console:[],traffic:[],inputsBefore:await inputs()};
@@ -43,6 +47,7 @@ try{
     await verifyArtifactHashes([h.package,h.ui]);await inspectInstalledPair(h.consumer,h.consumerReceipt);
     for(const [f,v] of Object.entries({...h.sourceManifest,...h.buildSources.manifest}))assert.equal(sha256(await readFile(f)),v,f);
     assert.deepEqual(await fileManifest(h.hosts.standalone),h.consumerReceipt.hostFiles.standalone);
+    if(previous){await verifyArtifactHashes([previous.package,previous.ui]);assert.deepEqual(await fileManifest(previous.hosts.standalone),previous.consumerReceipt.hostFiles.standalone);}
     result.originalSourceFiles=await originalSources();
   });
   api=createServer((req,res)=>{
@@ -77,6 +82,7 @@ try{
   failureAppProbe=appDOM;
   await waitFor(async()=>{const v=await appDOM();return v.ready==='complete'&&v.add?.includes('Add to Cart');},30000);
   await ui.click('refresh-tabs');await ui.waitOK();await ui.select('tabs',tabId);await ui.waitOK();await ui.click('attach');await ui.waitOK();
+  if(scenario.appViewport)await panel.evaluate(async({id,viewport})=>chrome.debugger.sendCommand({tabId:id},'Emulation.setDeviceMetricsOverride',{...viewport,deviceScaleFactor:1,mobile:false}),{id:tabId,viewport:scenario.appViewport});
   const state=()=>rpc(panel,{op:'state',tabId,refreshDeep:false});
   await panel.evaluate(async id=>{
     globalThis.__v03AppLogs=[];chrome.debugger.onEvent.addListener((source,method,p)=>{if(source.tabId===id&&(method==='Runtime.exceptionThrown'||method==='Runtime.consoleAPICalled'&&['error','warning','warn'].includes(p.type)||method==='Log.entryAdded'&&['error','warning'].includes(p.entry.level)))globalThis.__v03AppLogs.push({method,params:p});});
@@ -88,6 +94,7 @@ try{
     for(const type of['mouseMoved','mousePressed','mouseReleased'])await chrome.debugger.sendCommand({tabId:id},'Input.dispatchMouseEvent',{type,...point,...(type==='mouseMoved'?{}:{button:'left',clickCount:1})});return point;
   },{id:tabId,selector});}
   await check('actual independent shop renders synthetic products and original cart control',async()=>{result.appBefore=await appDOM();assert.equal(result.appBefore.url,result.appOrigin+'/');assert.equal(result.appBefore.title,'ShopHub - Your Modern E-commerce Store');assert.equal(result.appBefore.cart,'Cart');assert.match(result.appBefore.body,/V03 synthetic blue mug/);});
+  if(scenario.requireLoadedImages)await check('registered synthetic images decode in the actual shop viewport',async()=>{result.appImages=await waitFor(()=>panel.evaluate(async id=>(await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:()=>{const images=[...document.querySelectorAll('img')];return images.length===2&&images.every(i=>i.complete&&i.naturalWidth>0)?images.map(i=>({alt:i.alt,width:i.naturalWidth,height:i.naturalHeight})):null;}}))[0].result,tabId));});
   const appShot=await panel.evaluate(async id=>(await chrome.debugger.sendCommand({tabId:id},'Page.captureScreenshot',{format:'png'})).data,tabId);await writeFile(out+'/app-first-viewport.png',Buffer.from(appShot,'base64'));
   await ui.click('pick');await waitFor(async()=>(await state()).picker.status==='picking');await pointer(scenario.cartSelector);await waitFor(async()=>(await state()).selection);
   result.initialPick=(await state()).selection;result.refinements=[];
@@ -112,6 +119,7 @@ try{
   if(reviewOutcome==='limit'){
     result.detailedReport={status:'FAIL',reason:'HANDOFF_LIMIT',message:await ui.text('handoff-status'),fallback:'explicit existing simple report; not detailed path acceptance'};
     result.checks.push({name:'original detailed current report path',...result.detailedReport});console.log('FAIL_RETAINED detailed current report HANDOFF_LIMIT');
+    assert.notEqual(scenario.requireDetailed,true,'Registered detailed acceptance cannot substitute a simple report');
     assert.deepEqual(downloads.ids(),prior);await ui.click('handoff-simple');await ui.click('handoff-preview');await waitFor(()=>panel.evaluate(s=>!document.querySelector(s).disabled,ui.q('handoff-save')));
   }else result.detailedReport={status:'PASS'};
   result.reviewSummary=await ui.text('handoff-summary');
@@ -126,18 +134,34 @@ try{
     else{assert.equal(r.report.target.value.state,'omitted');assert.equal(r.profile,'input-evidence/1');assert.equal(r.inputEvidence.projection.selectedObservation.value.state,'omitted');rows=r.report.technicalEvidence.fields;assert(!rows.some(f=>f.category&&['selectedText','selectionDetails','sourceLocations','sourceExcerpts','runtimeValues','responseBodies','networkLocations','routePaths','originalNotes','diagnosticDetails'].includes(f.category)&&['included','filtered','replaced'].includes(f.state)));}
     result.report={file:download.file,sha256:sha256(download.raw),bytes:Buffer.byteLength(download.raw),profile:r.profile,trust:parsed.trust,selectedValue:r.report.target.value,sourceDiagnostic:r.report.sourceDiagnostic,technicalRows:rows.length};
   });
+  if(scenario.requireDetailed)await check('actual detailed file exceeds the old mixed-node limit and retains the exact selected occurrence',async()=>{
+    let nodes=0,members=0,arrayEntries=0;const stack=[r];while(stack.length){const value=stack.pop();nodes++;if(value&&typeof value==='object'){if(Array.isArray(value))arrayEntries+=value.length;else members+=Object.keys(value).length;stack.push(...Object.values(value));}}
+    assert.equal(result.detailedReport.status,'PASS');assert(nodes>=scenario.reportNodeMinimum);assert(nodes<=20000);assert(members<=10000);assert(arrayEntries<=9999);assert.equal(r.report.sourceDiagnostic.capturedAt,result.selectionAfter.observedAt);assert.equal(r.report.technicalEvidence.state,'reviewed-projection');assert(r.report.technicalEvidence.joins.some(j=>j.kind==='map'&&j.evidenceKind==='Unknown/Unsupported'));result.report.structure={nodes,members,arrayEntries};
+  });
   result.appConsole=await panel.evaluate(()=>globalThis.__v03AppLogs);await ui.close();ui=null;downloads.close();downloads=null;await browser.context.close();browser=null;
   await stopVite();await stopAPI();const requestsBeforeReader=result.traffic.length;
   browser=await startNativeBrowser(out+'/profiles','recipient',true,false,[],{extensionPath:h.hosts.standalone});result.readerBrowser=browser.context.browser().version();const reader=await browser.context.newPage();await reader.goto('chrome-extension://'+browser.id+'/reader.html');ui=await observe(reader,'fresh-reader');
   const live=()=>reader.evaluate(async()=>({appTabs:(await chrome.tabs.query({})).filter(t=>/^https?:/.test(t.url||'')).length,storedTabs:Object.keys((await chrome.storage.session.get('stateport.atom.v1.tabs'))['stateport.atom.v1.tabs']||{})}));
+  const authority=page=>page.evaluate(async()=>({session:await chrome.storage.session.get(null),local:await chrome.storage.local.get(null)}));
   await check('recipient is fresh with original browser and app/API stopped',async()=>{assert.equal(result.readerBrowser,result.browser);assert.deepEqual(await live(),{appTabs:0,storedTabs:[]});assert.equal(api.listening,false);assert(vite.exitCode!==null||vite.signalCode!==null);});
+  const readerRequests=[];
+  if(scenario.requireExactReaderAuthority){result.readerAuthorityBefore=await waitFor(async()=>{const a=await authority(reader);return a.local['stateport.atom.v1.migration']===1?a:null;});assert.deepEqual(result.readerAuthorityBefore,{session:{},local:{'stateport.atom.v1.diagnostics':[],'stateport.atom.v1.migration':1}});ui.p.on('Network.requestWillBeSent',e=>readerRequests.push({url:e.request.url,method:e.request.method}));await ui.p.send('Network.enable');}
   await ui.files('#diagnostic-file',[download.file]);await waitFor(()=>reader.evaluate(()=>document.getElementById('reader-status').textContent.startsWith('Historical issue report')));
   await check('fresh recipient reads historical reporter words and explicit omissions without authority',async()=>{
     result.reader=await reader.evaluate(()=>({status:document.getElementById('reader-status').textContent,summary:document.getElementById('reader-summary').textContent}));assert.match(result.reader.status,/untrusted claims.*not reverified/);assert.match(result.reader.summary,/V03 cart interaction demonstration/);assert.match(result.reader.summary,/successful scenario/);assert.match(result.reader.summary,/omitted|excluded/i);assert.deepEqual(await live(),{appTabs:0,storedTabs:[]});assert.equal(result.traffic.length,requestsBeforeReader);
     await ui.p.send('Emulation.setDeviceMetricsOverride',{width:1100,height:900,deviceScaleFactor:1,mobile:false});await reader.evaluate(async()=>{await document.fonts.ready;await new Promise(requestAnimationFrame);});await reader.screenshot({path:out+'/reader-desktop.png'});
   });
   await check('extension healthy, logs captured and original app/build/archive bytes unchanged',async()=>{assert.deepEqual(result.errors,[]);assert.deepEqual(result.console,[]);assert.deepEqual(result.appConsole,[]);assert.equal(await originalSources(),65);assert.deepEqual(await fileManifest(h.hosts.standalone),h.consumerReceipt.hostFiles.standalone);assert.equal(result.screenshots.desktop.overflow,false);assert.equal(result.screenshots.narrow.overflow,false);});
+  if(scenario.requireExactReaderAuthority)await check('detailed import leaves exact storage authority unchanged and makes no external reader-target request',async()=>{result.readerAuthorityAfter=await authority(reader);assert.deepEqual(result.readerAuthorityAfter,result.readerAuthorityBefore);assert.deepEqual(readerRequests.filter(r=>!r.url.startsWith('chrome-extension://'+browser.id+'/')),[]);result.readerRequests=readerRequests;});
+  if(previous){
+    await ui.close();ui=null;await browser.context.close();browser=null;
+    browser=await startNativeBrowser(out+'/profiles','previous-reader-control',true,false,[],{extensionPath:previous.hosts.standalone});const oldReader=await browser.context.newPage();await oldReader.goto('chrome-extension://'+browser.id+'/reader.html');ui=await observe(oldReader,'previous-reader-control');
+    const before=await waitFor(async()=>{const a=await authority(oldReader);return a.local['stateport.atom.v1.migration']===1?a:null;});assert.deepEqual(before,{session:{},local:{'stateport.atom.v1.diagnostics':[],'stateport.atom.v1.migration':1}});
+    await ui.files('#diagnostic-file',[download.file]);await waitFor(()=>oldReader.evaluate(()=>document.getElementById('reader-status').textContent.startsWith('Rejected diagnostic:')));
+    await check('exact old65 reader refuses this newly generated larger file without acquiring authority',async()=>{result.previousReader={handoff:scenario.previousReaderHandoff,package:previous.package,reader:await oldReader.evaluate(()=>({status:document.getElementById('reader-status').textContent,summary:document.getElementById('reader-summary').textContent,body:document.body.innerText})),authorityBefore:before,authorityAfter:await authority(oldReader)};assert.equal(result.previousReader.reader.status,'Rejected diagnostic: HANDOFF_LIMIT');assert.equal(result.previousReader.reader.summary,'');assert.deepEqual(result.previousReader.authorityAfter,before);assert.equal(await oldReader.evaluate(async()=>(await chrome.tabs.query({})).filter(t=>/^https?:/.test(t.url||'')).length),0);assert.deepEqual(await fileManifest(previous.hosts.standalone),previous.consumerReceipt.hostFiles.standalone);assert.deepEqual(result.errors,[]);assert.deepEqual(result.console,[]);await oldReader.screenshot({path:out+'/previous-reader-refusal.png'});});
+  }
   result.status=result.detailedReport.status==='FAIL'?'PARTIAL_BASIC_AND_EXPLICIT_SIMPLE_READER_DETAILED_LIMIT':'PASS_BOUNDED_INDEPENDENT_BASIC_NOT_FULL_V03';
+  if(scenario.requireDetailed)result.status='PASS_PACKED_DETAILED_REPORT_AND_MATCHING_READER_NOT_FULL_V03';
   if(result.detailedReport.status==='FAIL')process.exitCode=2;
 }catch(error){result.status='FAIL';result.error=error.stack;process.exitCode=1;console.error(error);}
 finally{
