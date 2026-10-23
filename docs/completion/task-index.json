@@ -4753,9 +4753,24 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "116-v03-handoff-structure-budget.md",
-      "implementation_plan": "../superpowers/plans/2026-10-23-v03-handoff-structure-budget.md",
-      "active_slice": null,
+      "execution_record": "117-v03-packed-detailed-report.md",
+      "implementation_plan": "../superpowers/plans/2026-10-23-v03-packed-detailed-report.md",
+      "active_slice": {
+        "id": "V03.4",
+        "title": "New immutable pair and actual detailed-report transfer",
+        "status": "packed-native-standalone-pass-pending-one-review",
+        "record": "117-v03-packed-detailed-report.md",
+        "plan": "../superpowers/plans/2026-10-23-v03-packed-detailed-report.md",
+        "handoff": ".artifacts/atom/2026-10-23T17-00-44-907Z/atom-handoff.json",
+        "evidence": ".artifacts/v03/independent-react-basic/2026-10-23T17-02-33-483Z/results.json",
+        "native_checks": 16,
+        "native_registered_inputs": 336,
+        "packed_type_consumers": 2,
+        "package_admission_checks": 9,
+        "source_tests_retained": 2494,
+        "embedding_native": false,
+        "full_V03_acceptance": false
+      },
       "completed_slices": [
         {
           "id": "V03.1-installed-guide",
@@ -4827,9 +4842,9 @@
         }
       ],
       "current_checkpoint": {
-        "record": "116-v03-handoff-structure-budget.md",
-        "status": "source-corrected-detailed-codec-not-new-packed-runtime",
-        "next_bounded_step": "V03.4 new immutable Atom/UI pair and targeted detailed current-report/download/fresh-reader acceptance after ONE source review; no old whole-matrix replay"
+        "record": "117-v03-packed-detailed-report.md",
+        "status": "new66-detailed-standalone-path-pass-not-full-V03",
+        "next_bounded_step": "V03.5 first independent non-React app path on pinned Vue/Pinia; establish actual prerequisites and preregister case before execution"
       }
     },
     {
@@ -7045,11 +7060,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.3 source correction complete after ONE review0/0/0; no correction pass/re-review. Explicit v2 aggregate ceiling10000 to20000 derives from member10000 and aggregatearray9999 caps. Source653/full2494 pass; exact retained778fields/17joins/752omissions preserved. Seven core deltas from old65; original old65 runtime failure remains FAIL. No new pair/native qualified. Next V03.4 new immutable Atom/UI pair and targeted detailed current-report/download/fresh-reader route. FullV03/A02/L02/V02 open20/29.",
+    "current_activity_note": "V03.4 exact new66/UI2 built from accepted V03.3 source:2types/9admission and16standalone native checks pass;336inputs stable during run,65 original appfiles unchanged. Detailed317667B/778fields/12649nodes actual Review/Save/Download/freshreader passes; no authority/request resume, old65 rejects samefile HANDOFF_LIMIT. Original65FAIL unchanged, UI2samebytes. Source2494 retained with3packagingmetadata deltas only; nativeembedding/source/ChromeUIinstall/Vue/macOS/model/performance/fullV03 still open. Pending ONE V03.4review, nextV03.5 pinned nonReact app.20/29.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "dc53c70 corrected codec source; original Atom65 artifacts unchanged",
+    "current_source_revision": "d679fb7 prereg plus three Atom66 version/lock/changelog edits; corrected codec dc53c70 unchanged",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V03.4: new immutable pair and affected detailed-report/native recipient path only"
+    "next_bounded_step": "V03.5 after ONE V03.4 review: pinned independent Vue/Pinia first path, no reserve or old whole-matrix replay"
   },
   "next_task": "V03"
 }

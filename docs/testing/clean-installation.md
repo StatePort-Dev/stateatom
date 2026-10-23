@@ -88,3 +88,19 @@ no external import requests and unchanged empty authority are scoped agent-opera
 checks, not human acceptance. Vue and reserved Excalidraw remain unexecuted. Full
 V03/A02/L02/V02 and20/29 are unchanged. Next V03.3 diagnoses the retained detailed
 report limit before further browser execution; it does not silently widen a bound.
+
+## Subsequent V03.3/V03.4 correction and matching-reader checkpoint
+
+[V03.3](../completion/116-v03-handoff-structure-budget.md) identifies the exact
+mixed-node guard and explicitly corrects its bounded policy; source653/full2494
+pass after ONE review0/0/0. [V03.4](../completion/117-v03-packed-detailed-report.md)
+packs new Atom66 with unchanged UI2: types2/admission9 and actual standalone
+native16 pass. Detailed317667B/778-field report is saved/downloaded and read in a
+fresh matching66 session without resumed authority. Same file is rejected by65
+with HANDOFF_LIMIT; original65 failure and simple fallback remain historical.
+
+This supplies a complete green affected report route for66, not retroactive success
+for65 or full clean installation. CLI preload remains declared assistance, native
+embedding/source-connected/macOS/model/performance and other baseline gates stay
+separate. Next V03.5 is the already pinned non-React app's first scoped execution;
+reserve remains unexecuted. FullV03/A02/L02/V02 and20/29 are unchanged.

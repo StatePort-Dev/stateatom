@@ -116,5 +116,22 @@
     "reserve_executed": false,
     "combined_green_origin_run": false,
     "full_V03_accepted": false
-  }
+  },
+  "runtime_checkpoints": [
+    {
+      "id": "V03.4",
+      "record": "../completion/117-v03-packed-detailed-report.md",
+      "scope": "New exact Atom66/UI2 standalone detailed-report route; old V03.2 checkpoint above remains historical",
+      "evidence": ".artifacts/v03/independent-react-basic/2026-10-23T17-02-33-483Z/results.json",
+      "checks": 16,
+      "native_inputs": 336,
+      "app_original_source_files_unchanged": 65,
+      "detailed_file_bytes": 317667,
+      "detailed_rows": 778,
+      "old65_same_file_reader_status": "Rejected diagnostic: HANDOFF_LIMIT",
+      "vue_executed": false,
+      "reserve_executed": false,
+      "full_V03_accepted": false
+    }
+  ]
 }

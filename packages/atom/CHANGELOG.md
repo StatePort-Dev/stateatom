@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.66
+
+- Preserve full detailed handoff projections across reviewed/source/input/action/
+  observation codecs with separate10000 object-member and9999 total array-entry
+  budgets; the aggregate node ceiling explicitly changes10000 to20000. No fields
+  are truncated or silently replaced by a simple report.
+- Retain byte/depth/text, duplicate/key/schema/privacy/evidence/digest constraints
+  and the legacy-v1 mixed10000-node guard. Source653 focused/2494 full checks pass;
+  new packed/native qualification is separate.
+- Newly supported larger reports require a matching reader; old65 may refuse
+  them. Original65 artifacts/results remain unchanged. No visual contract, account,
+  permission, source resolver or runtime-lineage capability is added.
+
 ## 0.1.0-candidate.20261021.65
 
 - Defer background state reads while an explicit element inspection is pending;
