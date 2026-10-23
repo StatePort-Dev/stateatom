@@ -343,3 +343,12 @@ assisted installation/screenshots are not human acceptance; excluded production/
 Live/AI/SDK/publication/account/certificate/other-repo scope stays separate; the
 original empty-DOM/screenshot timeout causes remain unproven. Each costs retained
 unqualified coverage rather than an invented pass. All original thresholds stand.
+
+Correction sourceabd50a4 produced immutable68/UI2 at
+`.artifacts/atom/2026-10-23T20-04-17-913Z/atom-handoff.json`: Atom877895B, SHA91bca7d0;
+UI2 exact2bfc8229,327 product/build inputs. Types2 and package9 PASS
+(`.artifacts/atom/compatibility/2026-10-23T20-04-53-364Z/result.json`). All222
+helper5 proof inputs still exact, no rebuild required. Case68 changes only Atom
+identity from case67. Affected native installed-host check follows; its unchanged
+textarea-disabled positive gate is still unsupported and must remain FAIL. This
+run checks the new packaged guard path and cannot be used to close that gate.
