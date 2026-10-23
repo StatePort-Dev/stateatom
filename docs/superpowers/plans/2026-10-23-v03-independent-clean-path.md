@@ -65,3 +65,14 @@ Vue property proof, Live/Draft production/map/Action Trace/model/macOS/full QA
 acceptance is silently inferred from this Basic increment. Its missing rows stay
 for their actual owning stage. One whole finite review after actual bounded work,
 at most one correction pass/no re-review; task→checks→local commits persist.
+
+## Execution ruling
+
+The first app produced an actual detailed-current-report HANDOFF_LIMIT after
+Basic/picker/refresh succeeded. Preserve that failure; execute only the existing
+explicit simple-report fallback as a separately registered follow-up. A later
+harness null-vs-omitted assertion failed after real UI save/download. Continue
+with that exact retained file in a fresh recipient rather than restarting app
+steps. This is partial path evidence, not a green combined run or full V03.
+Record115 retains every attempt and schema/default-migration correction. Next
+V03.3 is the exact retained codec-bound diagnosis; Vue/reserve remain unexecuted.

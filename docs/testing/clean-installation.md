@@ -1,10 +1,10 @@
-# V03 clean installation and first user path — prepared, not executed
+# V03 clean installation and first user path — scoped execution and remaining gaps
 
 2026-10-23, scope-review-1. This records questions and evidence requirements for
 the [installed-preview guide](../installed-preview.md). V03 is **in progress**;
 20/29 whole tasks remain complete. A new guide is not capability acceptance.
 
-## Current prepared inputs
+## Original V03.1 prepared inputs
 
 The local current browser kit is the exact Atom65/UI2 pair from
 `.artifacts/atom/2026-10-23T13-08-24-618Z/atom-handoff.json`; its standalone host
@@ -69,3 +69,22 @@ was retrieved via Context7. These are preparation/source/identity checks. No new
 browser/IDE/HTTPS/model experiment, install walkthrough, screenshot or human result
 follows from them. The next bounded item is V03.2 corpus pinning and the first
 clean guide-operated path, with scope narrowed to what the selected kit can admit.
+
+## Subsequent V03.2 execution checkpoint
+
+[Actual record](../completion/115-v03-independent-basic-and-report-limit.md): both
+private source/dependency intakes now completed without original source changes.
+The independent React commerce app ran with its documented API override and fixed
+synthetic local data. Actual native picker/parent/Cancel, local Cart snapshot,
+ordinary add and Inspect again worked with explicit Unknown source/lineage.
+Detailed current Review report returned HANDOFF_LIMIT. The explicit simple fallback
+was saved/downloaded and its actual file was imported in a separate fresh recipient
+without restarting the app or granting authority. Original failed runs and harness
+corrections remain recorded; there is no single complete green originating run.
+
+Chrome CLI preload is setup assistance; Chrome Load unpacked UI installation and
+source-connected guide operation remain unverified. Reader1100/440px candidates,
+no external import requests and unchanged empty authority are scoped agent-operated
+checks, not human acceptance. Vue and reserved Excalidraw remain unexecuted. Full
+V03/A02/L02/V02 and20/29 are unchanged. Next V03.3 diagnoses the retained detailed
+report limit before further browser execution; it does not silently widen a bound.

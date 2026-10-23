@@ -103,5 +103,18 @@
     "Controlled product API must be disclosed before future React app run",
     "Known TodoMVC remains regression, not this new corpus",
     "V03/A02/L02/V02 remain incomplete; no human recruitment gate"
-  ]
+  ],
+  "historical_intake_flags": "The primaries fields describe the original source-intake checkpoint; later dependency/runtime evidence is appended separately, never backdated.",
+  "subsequent_execution": {
+    "record": "../completion/115-v03-independent-basic-and-report-limit.md",
+    "dependencies": ".artifacts/v03/dependency-prep/2026-10-23T15-48-05-165Z/results.json",
+    "react_origin": ".artifacts/v03/independent-react-basic/2026-10-23T16-11-42-067Z/results.json",
+    "react_origin_status": "FAIL detailed HANDOFF_LIMIT; explicit simple UI file produced; harness omitted-schema assertion failed after save/download",
+    "simple_recipient": ".artifacts/v03/passive-recipient/2026-10-23T16-15-40-225Z/results.json",
+    "simple_recipient_checks": 6,
+    "vue_executed": false,
+    "reserve_executed": false,
+    "combined_green_origin_run": false,
+    "full_V03_accepted": false
+  }
 }

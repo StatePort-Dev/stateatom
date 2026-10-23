@@ -39,8 +39,15 @@ separates supplied candidate installation from contributor fixtures/builds and
 records the actual clean-path questions. ONE docs review0/0/1 accepted with local
 retention clarified; exact pair/326 inputs/labels/links checked. This is preparation,
 not a clean guide-operated or combined plugin/helper/browser acceptance. V03 remains
-in progress; next V03.2 new independent corpus/non-React/reserve pinning before
-resolver tailoring, then the first admitted clean path. Original64 Basic/active/warm-source/input results remain
+in progress. [V03.2](completion/115-v03-independent-basic-and-report-limit.md)
+now pins independent React/Vue sources plus an unexecuted structural reserve;
+locked dependencies leave all65+498 original files unchanged. Actual React-shop
+Basic/picker/Cancel/Cart→1Cart refresh passed with Unknown lineage. Detailed current
+Review report hit HANDOFF_LIMIT; the explicit simple file was produced, then6
+recipient-continuation checks passed in a fresh profile without app/storage authority
+or requests. Original failures remain FAIL; no combined green run, guide UI install,
+Vue/reserve/runtime-adapter/full V03 acceptance is inferred. Next V03.3 is the exact
+retained codec-limit diagnosis before more browser work;20/29 unchanged. Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the
 [preregistered finite protocol](superpowers/plans/2026-10-23-v02-basic-observer.md).

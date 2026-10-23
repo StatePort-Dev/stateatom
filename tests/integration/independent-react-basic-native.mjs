@@ -122,7 +122,7 @@ try{
   await check('download is exact saved reviewed bytes with default selected text exclusion and historical trust',async()=>{
     assert.equal(download.raw,saved.raw);assert.equal(parsed.trust,'historical-untrusted');assert.equal(r.report.issue.title,scenario.issue.title);assert.equal(r.report.issue.actual,scenario.issue.actual);assert.equal(r.report.target.property,'text');
     let rows=[];
-    if(result.detailedReport.status==='FAIL'){assert.equal(r.profile,'minimal-snapshot/1');assert.equal(r.report.technicalEvidence.state,'omitted');assert.equal(r.report.target.value,null);assert.equal(Object.hasOwn(r,'inputEvidence'),false);}
+    if(result.detailedReport.status==='FAIL'){assert.equal(r.profile,'minimal-snapshot/1');assert.equal(r.report.technicalEvidence.state,'omitted');assert.deepEqual(r.report.target.value,{state:'omitted',reason:'private-content-default'});assert.equal(Object.hasOwn(r,'inputEvidence'),false);}
     else{assert.equal(r.report.target.value.state,'omitted');assert.equal(r.profile,'input-evidence/1');assert.equal(r.inputEvidence.projection.selectedObservation.value.state,'omitted');rows=r.report.technicalEvidence.fields;assert(!rows.some(f=>f.category&&['selectedText','selectionDetails','sourceLocations','sourceExcerpts','runtimeValues','responseBodies','networkLocations','routePaths','originalNotes','diagnosticDetails'].includes(f.category)&&['included','filtered','replaced'].includes(f.state)));}
     result.report={file:download.file,sha256:sha256(download.raw),bytes:Buffer.byteLength(download.raw),profile:r.profile,trust:parsed.trust,selectedValue:r.report.target.value,sourceDiagnostic:r.report.sourceDiagnostic,technicalRows:rows.length};
   });

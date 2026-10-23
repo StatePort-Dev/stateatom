@@ -79,6 +79,11 @@ automatically. The recipient can open the supplied **Open diagnostic reader** an
 import the file in a separate session. Imported observations are historical; they
 do not resume collection, source access or edits. This is not a StatePort State Card.
 
+If **Review report** reports `HANDOFF_LIMIT`, the detailed report could not be
+prepared. You can explicitly choose the offered simple report and **Review report**
+again. That file omits technical details and input history; it does not prove the
+detailed transfer succeeded. Review the exclusions and your words before download.
+
 Where **Optional observation window** is available, **Start window**, reproduce
 the issue yourself, then **Stop and review**. **Read selected state** adds a sampled
 read rather than performing the application action. Review the resulting window

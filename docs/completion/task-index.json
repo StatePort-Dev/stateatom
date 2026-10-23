@@ -4753,16 +4753,21 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "114-v03-installed-guide-preparation.md",
-      "implementation_plan": "../superpowers/plans/2026-10-23-v03-installed-guide.md",
+      "execution_record": "115-v03-independent-basic-and-report-limit.md",
+      "implementation_plan": "../superpowers/plans/2026-10-23-v03-independent-clean-path.md",
       "active_slice": {
         "id": "V03.2",
         "title": "Pinned independent corpus and first clean Basic guide path",
-        "status": "pinned-private-dependencies-ready-no-app-run",
+        "status": "executed-partial-detailed-report-limit-under-one-review",
         "plan": "../superpowers/plans/2026-10-23-v03-independent-clean-path.md",
         "source_registration": "../testing/independent-apps.json",
         "source_intake_evidence": ".artifacts/v03/independent-corpus/2026-10-23T15-40-52-439Z/results.json",
-        "dependency_preparation_evidence": ".artifacts/v03/dependency-prep/2026-10-23T15-48-05-165Z/results.json"
+        "dependency_preparation_evidence": ".artifacts/v03/dependency-prep/2026-10-23T15-48-05-165Z/results.json",
+        "execution_record": "115-v03-independent-basic-and-report-limit.md",
+        "native_origin_evidence": ".artifacts/v03/independent-react-basic/2026-10-23T16-11-42-067Z/results.json",
+        "passive_recipient_evidence": ".artifacts/v03/passive-recipient/2026-10-23T16-15-40-225Z/results.json",
+        "combined_green_run": false,
+        "full_V03_acceptance": false
       },
       "completed_slices": [
         {
@@ -4792,9 +4797,9 @@
         }
       ],
       "current_checkpoint": {
-        "record": "114-v03-installed-guide-preparation.md",
-        "status": "guide-prepared-execution-unverified",
-        "next_bounded_step": "Freeze synthetic local product API and app-specific cases, then actual first clean Basic/picker/report/fresh-reader path on Reactcommerce; no source plugin or full V03 credit"
+        "record": "115-v03-independent-basic-and-report-limit.md",
+        "status": "partial-independent-basic-and-explicit-simple-reader-detailed-limit",
+        "next_bounded_step": "V03.3 diagnose exact detailed HANDOFF_LIMIT with retained independent-app diagnostic and pure codecs before more native execution; preserve current bounds, omissions and original failed cases"
       }
     },
     {
