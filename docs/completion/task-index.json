@@ -4757,7 +4757,7 @@
       "active_slice": {
         "id": "V03.12",
         "title": "Actual guide-operated browser extension installation and existing React handoff",
-        "status": "engineering-complete-two-native-ui-installs-and-assisted-react-handoff-review-pending",
+        "status": "complete-bounded-native-install-and-assisted-react-handoff",
         "record": "125-v03-guide-browser-install.md",
         "design": "../superpowers/specs/2026-10-24-v03-guide-browser-install-design.md",
         "plan": "../superpowers/plans/2026-10-24-v03-guide-browser-install.md",
@@ -4777,7 +4777,45 @@
           "extension URL inspector launch",
           "CDP reader file input"
         ],
-        "review_pending": true
+        "review_pending": false,
+        "review": {
+          "schema": "stateatom.v03-guide-install-review/1",
+          "reviewer": "/root/v0312_whole_review",
+          "model": "gpt-6-astra",
+          "reasoning": "high",
+          "base": "39c5171e4d543c7103fd4585d3137b7ebe077cff",
+          "head": "e46a663b0c6b64314ef280bdd82719326ed2c821",
+          "critical": 0,
+          "important": 1,
+          "minor": 1,
+          "correction_passes": 1,
+          "re_review": false,
+          "important_correction": "Post-start admission refusal awaits own-browser close and preserves original error; failed close transfers handle to outer finally",
+          "synthetic_regression": {
+            "red": {
+              "pass": 1,
+              "fail": 3
+            },
+            "green": {
+              "pass": 4,
+              "fail": 0
+            },
+            "native_run": false
+          },
+          "minor_disposition": "Reporting clarification of inherited old65 sentence; immutable cases unchanged, old experiment unexecuted here",
+          "reviewer_aggregate": "PASS_AFTER_READONLY_ESCALATION",
+          "fresh_product_suite_or_native_after_correction": false,
+          "actual_native_revision": "43448fc",
+          "declined_boundaries_ruled_in": "docs/completion/125-v03-guide-browser-install.md",
+          "whole_V03_complete": false
+        },
+        "failure_cleanup_controls": {
+          "kind": "synthetic-extracted-actual-function-no-browser",
+          "red_pass": 1,
+          "red_fail": 3,
+          "green_pass": 4
+        },
+        "actual_native_revision": "43448fc"
       },
       "completed_slices": [
         {
@@ -5186,15 +5224,78 @@
             "declined_boundaries_ruled_in": "docs/completion/124-v03-warning-baseline.md",
             "full_V03_complete": false
           }
+        },
+        {
+          "id": "V03.12",
+          "title": "Actual guide-operated browser extension installation and existing React handoff",
+          "status": "complete-bounded-native-install-and-assisted-react-handoff",
+          "record": "125-v03-guide-browser-install.md",
+          "design": "../superpowers/specs/2026-10-24-v03-guide-browser-install-design.md",
+          "plan": "../superpowers/plans/2026-10-24-v03-guide-browser-install.md",
+          "whole_V03_complete": false,
+          "product_source_changed": false,
+          "previous_slice": "V03.11 complete at39c5171; native zero-console FAIL unchanged",
+          "registered_question": "../testing/independent-react-guide-install-case-stable-controls.json",
+          "runtime_result": ".artifacts/v03/independent-react-basic/2026-10-23T23-41-45-324Z/results.json",
+          "verification": ".artifacts/v03/guide-install/2026-10-24/native-checkpoint.json",
+          "native_ui_installs": 2,
+          "other_native_named_gates": 15,
+          "registered_inputs": 339,
+          "original_source_files": 65,
+          "report_bytes": 317667,
+          "report_technical_rows": 778,
+          "remaining_assistance": [
+            "extension URL inspector launch",
+            "CDP reader file input"
+          ],
+          "review_pending": false,
+          "review": {
+            "schema": "stateatom.v03-guide-install-review/1",
+            "reviewer": "/root/v0312_whole_review",
+            "model": "gpt-6-astra",
+            "reasoning": "high",
+            "base": "39c5171e4d543c7103fd4585d3137b7ebe077cff",
+            "head": "e46a663b0c6b64314ef280bdd82719326ed2c821",
+            "critical": 0,
+            "important": 1,
+            "minor": 1,
+            "correction_passes": 1,
+            "re_review": false,
+            "important_correction": "Post-start admission refusal awaits own-browser close and preserves original error; failed close transfers handle to outer finally",
+            "synthetic_regression": {
+              "red": {
+                "pass": 1,
+                "fail": 3
+              },
+              "green": {
+                "pass": 4,
+                "fail": 0
+              },
+              "native_run": false
+            },
+            "minor_disposition": "Reporting clarification of inherited old65 sentence; immutable cases unchanged, old experiment unexecuted here",
+            "reviewer_aggregate": "PASS_AFTER_READONLY_ESCALATION",
+            "fresh_product_suite_or_native_after_correction": false,
+            "actual_native_revision": "43448fc",
+            "declined_boundaries_ruled_in": "docs/completion/125-v03-guide-browser-install.md",
+            "whole_V03_complete": false
+          },
+          "failure_cleanup_controls": {
+            "kind": "synthetic-extracted-actual-function-no-browser",
+            "red_pass": 1,
+            "red_fail": 3,
+            "green_pass": 4
+          },
+          "actual_native_revision": "43448fc"
         }
       ],
       "current_checkpoint": {
         "record": "125-v03-guide-browser-install.md",
-        "status": "engineering-complete-two-native-ui-installs-and-assisted-react-handoff-review-pending",
-        "verification": ".artifacts/v03/guide-install/2026-10-24/native-checkpoint.json",
-        "next_bounded_step": "ONE final V03.12 review, then V03.13 actual toolbar/reader native import controls; preserve completed app/source/codec/Vue evidence"
+        "status": "complete-bounded-native-install-and-assisted-react-handoff",
+        "verification": ".artifacts/v03/guide-install/2026-10-24/final-checkpoint.json",
+        "next_bounded_step": "V03.13: actual toolbar/menu inspector launch and native reader file chooser, preserving completed installation/app/codec/source/Vue evidence"
       },
-      "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-warning-baseline.md",
+      "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-guide-browser-install.md",
       "implementation_plan": "../superpowers/plans/2026-10-24-v03-guide-browser-install.md"
     },
     {
@@ -5354,8 +5455,8 @@
     "document": "125-v03-guide-browser-install.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.12-engineering-complete-actual-UI-install2-native15-review-pending",
-    "next_item": "V03.13: actual toolbar/menu launch and reader native file chooser after V03.12 review",
+    "current_increment": "V03.12-complete-native-install2-app-reader15-one-review-cleanup-correction",
+    "next_item": "V03.13: actual toolbar/menu inspector launch and native reader file chooser",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7495,11 +7596,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.12 actual Chromium153 Developer mode/Load unpacked/native folder selection passes in2 empty profiles;15 existing independent React Basic/detailed/passive-reader gates pass;339 stable inputs/65 original files/Atom327 unchanged. Actual317667B/778rows/exact empty authority/no import requests/owned cleanup. First setup failures retained. ONE final review pending; sourcefull2616 retained, no product change. Toolbar launch/reader CDP file assistance and fullV03 dependencies remain;whole20/29 unchanged.",
+    "current_activity_note": "V03.12 actual43448fc UI installs2/native15/339stable/65original/Atom327 unchanged. ONE review0Critical/1Important/1reportingMinor: post-start admission cleanup corrected with4 synthetic controls (RED1pass3fail\u2192GREEN4), original error preserved; inherited old65 sentence annotated historical/unexecuted, immutable cases retained. No new native/full product suite. Actual317667B/778rows/passive empty authority/no requests/owned cleanup remain scoped to recorded native revision. Whole20/29/fullV03 dependencies and explicit remaining entry assistance unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "43448fc actual preregistered run; Atom70/UI2 unchanged, no product source/build",
+    "current_source_revision": "Actual native43448fc; current driver has only reviewed post-start cleanup correction (4 synthetic controls), product Atom70/UI2 unchanged",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "ONE final V03.12 review, then V03.13 actual toolbar/reader native import controls; preserve completed app/source/codec/Vue evidence"
+    "next_bounded_step": "V03.13: actual toolbar/menu inspector launch and native reader file chooser, preserving completed installation/app/codec/source/Vue evidence"
   },
   "next_task": "V03"
 }

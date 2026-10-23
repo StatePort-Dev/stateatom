@@ -48,5 +48,5 @@ steps/chooser/card; the integration driver stores it separately from app evidenc
 - [x] Preregister exact70/UI2/guide/driver/helper inputs and existing questions before execution; commit.
 - [x] Run node tests/integration/independent-react-basic-native.mjs .artifacts/atom/2026-10-23T20-57-18-973Z/atom-handoff.json .artifacts/v03/dependency-prep/2026-10-23T15-48-05-165Z/results.json docs/testing/independent-react-guide-install-case.json. Expected: actual UI installation gate(s) plus existing Basic/detailed/passive-reader assertions, unchanged files/owned cleanup; failures retained.
 - [x] Inspect actual DOM/chooser/loaded/inspector/reader screenshots and raw results; record exactly what passed and all assistance/failures, with no full-guide claim.
-- [ ] ONE fresh whole-increment review39c5171..head; rule declined boundaries, at most one verified correction pass/no re-review.
-- [ ] Final scoped aggregate/current routing/corpus append/local commit/clean tree. Identify one next dependency-valid item; whole20/29/fullV03 gates unchanged unless actually proven.
+- [x] ONE fresh whole-increment review39c5171..head; rule declined boundaries, at most one verified correction pass/no re-review.
+- [x] Final scoped aggregate/current routing/corpus append/local commit/clean tree. Identify one next dependency-valid item; whole20/29/fullV03 gates unchanged unless actually proven.

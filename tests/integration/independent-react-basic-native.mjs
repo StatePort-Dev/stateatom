@@ -56,8 +56,13 @@ async function openBrowser(role){
   }});
  }
  const b=await startNativeBrowser(out+'/profiles',role,true,false,[],options);
- if(guide){assert.equal(b.context.browser().version(),guide.expectedBrowser);assert.equal(b.command.extensionSetup,'guide-ui');assert(result.guideInstallations.at(-1).installed.cards.some(c=>c.id===b.id&&c.name==='StateAtom'));(result.guideWorkerAdmissions??=[]).push({role,extensionId:b.id,worker:b.extensionWorker});}
- return b;
+ try{
+  if(guide){assert.equal(b.context.browser().version(),guide.expectedBrowser);assert.equal(b.command.extensionSetup,'guide-ui');assert(result.guideInstallations.at(-1).installed.cards.some(c=>c.id===b.id&&c.name==='StateAtom'));(result.guideWorkerAdmissions??=[]).push({role,extensionId:b.id,worker:b.extensionWorker});}
+  return b;
+ }catch(error){
+  try{await b.context.close();}catch(cleanupError){result.browserAdmissionCleanupError=String(cleanupError.stack||cleanupError);browser=b;}
+  throw error;
+ }
 }
 async function stopAPI(){if(!api?.listening)return;api.closeAllConnections();await new Promise(resolve=>api.close(resolve));}
 try{

@@ -1,4 +1,4 @@
-# V03.12 — guide-operated browser installation, in progress
+# V03.12 — bounded guide-operated browser installation, complete
 
 2026-10-24 local, base39c5171/main, scope-review-1. V03.11 is complete; do not repeat
 its cold scanner/warning matrix. FullV03/C09/A02/L02/V02 and whole20/29 remain open.
@@ -109,3 +109,68 @@ native import-chooser usability acceptance. After ONE final review, next one ite
 V03.13 addresses those two actual entry controls without replaying completed app/
 codec/source/Vue campaigns. FullV03/C09/A02/L02/V02, Linux/macOS and all original
 native/zero-console gates remain open; whole20/29 unchanged.
+
+## ONE final review and one bounded correction pass
+
+Fresh read-only gpt-6-astra/high `/root/v0312_whole_review`,39c5171..e46a663:
+**0 Critical/1 Important/1 reporting Minor**, with fixes. Report/receipt retained
+under `.artifacts/v03/guide-install/2026-10-24/review/`. Reviewer syntax/diff and
+aggregate PASS after one readonly escalation; initial sandbox git-spawnEPERM is
+not an app failure. No native/app/build/install workflow was repeated.
+
+Important: successful browser start followed by rejected card/worker/version
+admission could lose its cleanup handle before caller assignment. Actual extracted
+openBrowser synthetic controls reproduce3 failures/1 success. One correction awaits
+local browser close before rethrowing the original admission error. If that close
+fails, record the cleanup error and retain the handle for outer final cleanup.
+Corrected4 synthetic controls PASS (version refusal, worker/card refusal, failed
+first close with outer cleanup, successful admission). This is failure-path source
+evidence without launching Chrome, not4 additional native checks.
+
+The successful UI/app/reader result stays tied to actual43448fc, not a fresh run
+of the corrected driver. Aggregate proves the entire current driver differs from
+that recorded source ONLY in this post-start cleanup block; product327/kit/helper/
+other339 inputs retain their recorded boundaries. Full2616 remains retained product
+source evidence. No repeat of the successful browser campaign or re-review.
+
+Reporting erratum: both immutable guide case `cases` arrays inherit the sentence
+"Old65 reader refuses same new file". The preregistered spec/configuration and
+absence of previousReaderHandoff explicitly excluded that already completed codec
+experiment before execution. The inherited sentence is historical and UNEXECUTED
+in V03.12, not a passed gate. Registrations stay unchanged; omit it from future
+derivatives. This Minor remains an annotated immutable inventory defect, not a
+new acceptance criterion or a reason to rerun old65.
+
+Executor rulings for all declined boundaries (cost if wrong):
+
+1. Toolbar/menu launch is nextV03.13; URL assistance stays explicit. Cost: this
+   installation gate cannot be used as actual toolbar-entry acceptance.
+2. Native reader chooser is nextV03.13. Cost: CDP file selection is not its proof.
+3. Whole guide/human visual fidelity stay unverified; human participation remains
+   optional. Cost: screenshots/agent work do not prove adoption or visual fidelity.
+4. Linux Chromium153 is the tested environment. Cost: no OS/version/locale/theme
+   portability credit; original macOS requirement remains open.
+5. GTK Recent disclosure remains; Chrome isolation is not clean OS isolation.
+   Cost: raw chooser images remain private, unsuitable as public examples.
+6. App generated cache/post-attach logs remain scoped. Cost: no cold-start,
+   pre-attach zero-console or performance credit.
+7. Source integration/causality/lineage/model/full-baseline gates stay open. Cost:
+   native Basic/report acceptance does not close V03/C09/A02/L02/V02.
+8. Old65 refusal on this file is unexecuted despite inherited sentence. Cost: only
+   the historical distinct codec evidence can support its original claim.
+9. No fresh full suite/build/package campaign after unchanged product identities.
+   Cost: source2616/old package qualification is retained, not fresh runtime proof.
+10. Broader pre-existing helper disconnect/launch/desktop robustness stays outside
+    this fix; new admission handling has4 synthetic controls. Cost: no universal
+    cleanup guarantee or requalification of all historical failures.
+11. Callback is trusted test orchestration, not a security sandbox. Cost: arbitrary
+    future callbacks/flags need their own qualification and cannot borrow this run.
+12. Publication/Store/accounts/certificates/other repositories remain excluded.
+    Cost: no external delivery or integration acceptance is claimed.
+
+Final verify-final.mjs/final-checkpoint.json PASS: actual native revision339/327/65/
+317667 bytes, exact cleanup-only driver difference plus4 current synthetic controls,
+ONE review/ONE correction/no re-review,20 prior corpus entries preserved+1 append,
+3 original case files unchanged, all current routing/whole20-of29 consistent. No
+new full suite/build/browser run after correction. Bounded V03.12 is complete;
+full guide/V03 remain open. Next one item is V03.13, local timed work stays active.

@@ -551,7 +551,9 @@
       ],
       "whole_guide_accepted": false,
       "whole_V03_complete": false,
-      "review_pending": true
+      "review_pending": false,
+      "review_receipt": ".artifacts/v03/guide-install/2026-10-24/review/receipt.json",
+      "native_revision": "43448fc"
     }
   ]
 }

@@ -182,7 +182,10 @@ reader checks PASS;339 inputs stable/65 originals exact/Atom327 unchanged. Actua
 317667B/778-row report downloads and reads passively with exact empty authority and
 no external reader-target request; recorded post-attach app/inspector/reader logs0.
 Screens are candidates; GTK Recent inherits host labels, so raw chooser screens
-remain private and are not clean-OS evidence. ONE final review pending. Full-guide
+remain private and are not clean-OS evidence. ONE review0Critical/1Important/1 reporting
+Minor closes after one admission-cleanup correction (4 synthetic controls) and an
+old65 inventory erratum. Actual native evidence remains tied to43448fc, no new
+workflow/suite run. Full-guide
 entry assistance remains: extension-URL inspector launch/CDP reader file input.
 Next boundedV03.13 tests toolbar and native import entry; whole20/29/fullV03 gates
 remain open. No product source/build/certificates/accounts/publication changed.

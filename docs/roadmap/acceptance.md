@@ -5,7 +5,8 @@ and [V03.11](../completion/124-v03-warning-baseline.md): installed6 cold startup
 and the finite original warning comparison are verified after ONE review and
 a current-routing correction. [V03.12](../completion/125-v03-guide-browser-install.md)
 now passes actual Chrome UI installation2 and assisted independent React/reader15,
-with final review pending. NextV03.13 is toolbar/native import entry; full-guide
+after ONE review and one admission-cleanup correction (4 synthetic controls);
+the actual native run remains43448fc. NextV03.13 is toolbar/native import entry; full-guide
 assistance and other baseline gates remain.
 The original zero-console FAIL and full V03/C09 remain open; the procedures below
 retain their historical first-read scope and are not fresh qualification.

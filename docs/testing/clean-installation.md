@@ -112,7 +112,9 @@ supplied standalone folder through Developer mode/Load unpacked/native folder
 selection in empty reporter/recipient Chrome profiles. First drawer-motion miss
 stays FAIL; stable hit geometry succeeds. Exact339 inputs/Atom327/65 original app
 files, existing React Basic/detailed report and passive317667B/778-row recipient
-checks pass, with ONE final review pending. No CLI preload/private load API provides
+checks pass, with ONE review and a tested admission-cleanup correction. Actual
+native evidence remains43448fc; no repeat is inferred. The inherited old65 case-list
+sentence is explicitly historical/unexecuted here. No CLI preload/private load API provides
 installation. Original app logs cover after Atom attach, not all startup console.
 
 Inspector extension-URL launch and reader CDP file input remain explicit assistance,
