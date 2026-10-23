@@ -1,7 +1,7 @@
 # StateAtom open Vite development plugin (local candidate)
 
 The default installed-artifact recipe below is the experimental React18/classic
-host-props profile. Candidate4 additionally contains the explicit experimental
+host-props profile. Candidate5 additionally contains the explicit experimental
 Vue profile described below. A source checkout also has a separately documented
 [ordinary React19 contributor recipe](../../docs/testing/ordinary-react.md#contributor-recipe-ordinary-react19)
 for automatic JSX and source/read fragments. Its current checkout/native evidence
@@ -62,7 +62,7 @@ package licenses. It does not ship a production SDK or enable production changes
 
 ## Experimental Vue development profile
 
-Candidate `0.1.0-candidate.20261021.4` adds an explicit `profile:'vue3'` option.
+Candidate `0.1.0-candidate.20261021.5` adds an explicit `profile:'vue3'` option.
 Its declared tuple is Node18.18.2, Vite4.4.9 in app and plugin, Vue3.3.4 and
 @vitejs/plugin-vue4.3.2. Keep the original Vue compiler plugin/configuration:
 
@@ -84,7 +84,9 @@ complete value ancestry. Other Vue versions/pipelines and arbitrary component
 prop forwarding remain unqualified. The compiler dependencies bundled by Atom
 remain separately pinned; they do not replace the application's Vue compiler.
 Candidate3 failed actual startup on ordinary HTML void tags; candidate4 uses
-the DOM-aware template parser. That source correction alone is not native support.
+the DOM-aware template parser. Candidate4 then exposed a named-export linkage
+rewrite error in an original utility module; candidate5 preserves export specifiers
+and live-binding semantics. These source corrections alone are not native support.
 Actual qualification and failures belong in repository completion record119;
 metadata and this recipe alone do not establish a successful installed workflow.
 No new public release or publication is established.

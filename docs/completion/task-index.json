@@ -4758,12 +4758,12 @@
       "active_slice": {
         "id": "V03.6",
         "title": "Explicit installed Vue profile and independent source-connected route",
-        "status": "in-progress-actual-candidate3-startup-failed-DOM-correction-source-pass-new4-due",
+        "status": "in-progress-candidate4-export-startup-failure-correction-source-pass-new5-due",
         "record": "119-v03-installed-vue-profile.md",
         "plan": "../superpowers/plans/2026-10-23-v03-installed-vue-profile.md",
         "design": "../superpowers/specs/2026-10-23-v03-installed-vue-profile-design.md",
-        "focused_source_checks": 61,
-        "full_source_checks": 2517,
+        "focused_source_checks": 270,
+        "full_source_checks": 2521,
         "installed_admission_checks": 2,
         "metadata_probe_groups": 6,
         "consumer_receipt": ".artifacts/v03/installed-vue-consumer/2026-10-23T18-08-27-909Z/result.json",
@@ -4774,10 +4774,12 @@
         "full_V03_acceptance": false,
         "failed_candidate3_native": ".artifacts/v03/independent-vue-source/2026-10-23T18-24-16-171Z/results.json",
         "native_positive_gate_reached": false,
-        "new_candidate4_pending": true,
+        "new_candidate4_pending": false,
         "owned_source_controls": 9,
         "owned_native_controls": 4,
-        "owned_native_evidence": ".runtime/first-profile-runs/2026-10-23T18-45-50-672Z/results.json"
+        "owned_native_evidence": ".runtime/first-profile-runs/2026-10-23T19-12-31-744Z/results.json",
+        "failed_candidate4_native": ".artifacts/v03/independent-vue-source/2026-10-23T18-56-18-484Z/results.json",
+        "new_candidate5_pending": true
       },
       "completed_slices": [
         {
@@ -4900,8 +4902,8 @@
       ],
       "current_checkpoint": {
         "record": "119-v03-installed-vue-profile.md",
-        "status": "in-progress-actual-candidate3-startup-failed-DOM-correction-source-pass-new4-due",
-        "next_bounded_step": "V03.6 rebuild current helper via existing shared build, pack/admit new4 then same-question independent Vue native retry; no source/lock edits or Unknown substitution"
+        "status": "in-progress-candidate4-export-startup-failure-correction-source-pass-new5-due",
+        "next_bounded_step": "V03.6 rebuild helper/package5 after ESM export-linkage correction, strict installed admission then same-criteria independent Vue source/IDE native retry; preserve3/4FAIL and all Unknown boundaries"
       }
     },
     {
@@ -7149,11 +7151,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.6 in progress. Actual installed3 native startupFAIL on original HTMLvoidtags:2priorchecks/377stable, IDE/sourcegate not reached, app source unchanged. MinimalDOMparser correction regression4/source-focused61/full2517 PASS; original compiler3.3.4 roundtrip3 originalSFCs PASS. Exactownedrecipe plugin+self pins rebound only, normalized comparison/tool/binary/verifier thresholds preserved; ownedsource9/native4PASS with stable inputs. Newhelper/current4packet/native and ONEwhole review due. Source/metadata3 alone never countedruntimepositive; oldFAILs retained. Whole20/29, fullV03/A02/L02/V02 open.",
+    "current_activity_note": "V03.6 actual3startupFAIL DOMvoidparser fixed; actual4startupFAIL ESM export-specifier rewrite in originalrandom.ts. Both2priorchecks/377stable, noIDE/sourcepositivegate. Minimalexport metadata exclusion now4regression/270focused/full2521PASS; exact recipe+self pin transition only, affectedownednative4PASS/stable. Newhelper/packet5/native/ONEwhole review due. Original497+knowngenerated/498immutable files unchanged, Atom66inputs326 unchanged. Whole20/29, fullV03/A02/L02/V02 open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "efe4949 clean native3 failure; pending two-line DOM parser fix/exact recipe-self pin transition and tests; Atom66 input set unchanged",
+    "current_source_revision": "1037a27 clean native4 failure; pending single ExportSpecifier exclusion/exact recipe-self pin transition/tests and version5 metadata; Atom66 inputs unchanged",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V03.6 rebuild current helper via existing shared build, pack/admit new4 then same-question independent Vue native retry; no source/lock edits or Unknown substitution"
+    "next_bounded_step": "V03.6 rebuild helper/package5 after ESM export-linkage correction, strict installed admission then same-criteria independent Vue source/IDE native retry; preserve3/4FAIL and all Unknown boundaries"
   },
   "next_task": "V03"
 }

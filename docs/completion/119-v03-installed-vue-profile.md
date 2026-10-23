@@ -3,8 +3,9 @@
 2026-10-23, scope-review-1, base df68377. **In progress.** Source/profile admission
 passes, but the first actual candidate3 application startup **failed** before the
 IDE/source-positive gate. Its exact failure is retained; the bounded DOM-parser
-correction now passes61 focused/full2517 source checks. New candidate4 and a
-corrected native run remain due. No full V03/C09 or new Vue runtime acceptance.
+correction passed61 focused/full2517 source checks. Candidate4 then exposed a
+separate ordinary ESM export-linkage defect before IDE. That minimal correction
+now passes270 focused/full2521; new5 and a corrected native run remain due. No full V03/C09 or new Vue runtime acceptance.
 20/29 whole tasks unchanged.
 
 [Executor design](../superpowers/specs/2026-10-23-v03-installed-vue-profile-design.md),
@@ -129,9 +130,45 @@ paths remain recorded; this Vue route does not qualify those installed paths.
 The new helper needs a new exact source/payload/installed-host check, not merely
 the unchanged0.1.3 version string.
 
+## Candidate4 packet and second startup defect
+
+After source fix5a3b5f0, existing build:extensions rebuilt the current helper;
+pack4 receipt measures clean sourceDirty false. Exact4 packet is
+`.artifacts/development/2026-10-23T18-51-27-348Z/handoff.json`:
+plugin SHA4c46092f / helper SHA562bdf21, helper bundlef5f4760c. Its strict consumer
+`.artifacts/v03/installed-vue-consumer/2026-10-23T18-52-32-269Z/result.json` passed
+installation/profile admission. Helper's exact output also reproduces in memory
+from222 source inputs; both existing CJS warnings are retained. These are source/
+package results, not inherited old helper or application acceptance.
+
+Case4 committed1037a27 changes only five artifact-identity fields, preserving the
+source question, scalar read, exact selected marker/IDE and original budgets.
+Actual native `.artifacts/v03/independent-vue-source/2026-10-23T18-56-18-484Z/results.json`
+is **FAIL**,2 prior checks/377 stable inputs; original app remains497+known generated
+working files/498 immutable originals. It progresses past the DOM-parser failure,
+but ordinary `src/utils/random.ts` named exports trigger Babel's ExportSpecifier
+local-Identifier validation. Browser/Vite stop0/null, IDE/source gate not reached.
+No source/lock/dependency or source-question criterion is changed to bypass it.
+
+Shared transformer was treating export linkage as an executable Identifier read.
+A single early exclusion for ExportSpecifier retains actual runtime reads and
+export-default expression semantics. Synthetic regression4 was4FAIL, now4PASS,
+including actual ESM live binding update, function alias identity, exact default
+object identity and one original getter read. The unchanged original random.ts
+also transforms/parses with all seven export links retained, without executing any
+of its application code. Expanded affected engine/Vue/profile270 PASS; full2521
+PASS includes original owned source controls. Only the shared-transform recipe pin
+and builder self hash were rebound; normalized comparison proves all other builder
+bytes/tool/binary/verifier criteria unchanged. Four affected owned native controls PASS sequentially at
+`.runtime/first-profile-runs/2026-10-23T19-12-31-744Z/results.json`, stable inputs
+and empty errors. New5/helper packaging and the unchanged-question native case
+remain due.
+Evidence: `.artifacts/v03/export-bindings/2026-10-23/`.
+
 ## Current next step and retained boundaries
 
-Build and admit corrected4, then register its exact new packet identities with
+Build and admit corrected5 after the affected owned controls, then register its
+exact new packet identities with
 the same source question and driver before the affected native retry. Use the
 installed corrected plugin and exact rebuilt companion VSIX, isolated
 owned helper endpoint/VS Code, native private-receipt connect and exact-origin dev
