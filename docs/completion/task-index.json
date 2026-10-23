@@ -4196,34 +4196,27 @@
       ],
       "active_slice": {
         "id": "V02.2",
-        "title": "Bounded Basic latency and transport/event cost diagnosis",
-        "predecessor": "V02.1 measurement complete, both targets missed and not waived",
-        "status": "next"
+        "title": "Bounded transport and Basic request-phase diagnosis",
+        "status": "diagnostics-complete-review-pending",
+        "plans": [
+          "../superpowers/plans/2026-10-23-v02-transport-diagnosis.md",
+          "../superpowers/plans/2026-10-23-v02-basic-phase-probe.md"
+        ]
       },
-      "execution_record": "101-v02-basic-observer-baseline.md",
+      "execution_record": "102-v02-transport-and-request-phases.md",
       "current_checkpoint": {
-        "id": "V02.1-baseline",
-        "status": "measurement-complete-targets-missed-reviewed",
-        "record": "101-v02-basic-observer-baseline.md",
+        "id": "V02.2-diagnosis",
+        "status": "diagnostics-complete-review-pending",
+        "record": "102-v02-transport-and-request-phases.md",
         "candidate": "0.1.0-candidate.20261021.60",
-        "raw_samples": 198,
-        "measured_samples": 180,
-        "warmup_samples": 18,
-        "source_checks": 37,
-        "performance_targets_met": false,
+        "transport_raw_samples": 224,
+        "phase_raw_samples": 30,
+        "source_checks": 13,
+        "product_changed": false,
+        "performance_acceptance": false,
         "targets_waived": false,
         "whole_task_complete": false,
-        "next_bounded_step": "V02.2 Basic latency and transport/event cost diagnosis",
-        "source_checks_after_review": 2385,
-        "review": {
-          "count": 1,
-          "fresh_context": true,
-          "critical": 0,
-          "important": 1,
-          "minor": 0,
-          "correction_passes": 1,
-          "corrected": "Exact zero-gap schema required; RED/GREEN6 and full2385, all198 raw rows revalidated; native baseline identities retained"
-        }
+        "next_bounded_step": "V02.3 preserve successful explicit inspection snapshot without immediate duplicate deep refresh"
       },
       "completed_slices": [
         {
@@ -4451,10 +4444,10 @@
     ]
   },
   "reconciliation": {
-    "document": "101-v02-basic-observer-baseline.md",
+    "document": "102-v02-transport-and-request-phases.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.1-measurement-complete-targets-missed",
+    "current_increment": "V02.2-diagnostic-complete-review-pending",
     "next_item": "V02.1 preregistered Basic/active-observer latency and overhead measurements",
     "new_full_task_acceptances": [
       "F01",
@@ -6441,9 +6434,9 @@
     "scope_adoption_record": "13-scope-reconciliation.md",
     "current_activity_note": "P04 accepted after ONE fresh-context review with0 actionable findings; current60 source2379/review171/native13+17+25+7 scopes verified. Historical reuse/failures remain explicit.19/29 complete (~66% equal count), not readiness; next V02.1 preregistered Basic/observer measurements. L02/A02/integration/release remain open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "3604d69 (harness review correction follows; product60 unchanged)",
+    "current_source_revision": "46397c8 (diagnostics only, product60 unchanged)",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V02.2 Basic latency and transport/event cost diagnosis"
+    "next_bounded_step": "V02.3 preserve successful explicit inspection snapshot without immediate duplicate deep refresh"
   },
   "next_task": "V02"
 }

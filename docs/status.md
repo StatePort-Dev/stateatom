@@ -17,7 +17,10 @@ The [first baseline](completion/101-v02-basic-observer-baseline.md) completed198
 samples on unchanged60: both hosts miss the1000ms Basic route p95 and10% active/off
 median targets. ONE review correction is complete;2385 current source checks PASS
 and all198 original rows strictly revalidate. V02 stays open; next V02.2 bounded
-Basic latency/transport diagnosis. The subsequent
+Basic latency/transport diagnosis. The [controlled V02.2 diagnostics](completion/102-v02-transport-and-request-phases.md)
+now retain224 transport-control workloads and30 request-phase lookups: the immediate
+deep-state request costs roughly240ms on this fixture. ONE diagnostic review pending;
+product60 and previous target misses unchanged. The subsequent
 [F01 implementation](completion/14-f01-capability-contracts.md) consolidates
 capability policy and checks packed declarations on candidate `.20261019.3`:
 586 unit, 48 contract, 34 two-host, 26 Basic, 32 Actions and 19 source-map checks
