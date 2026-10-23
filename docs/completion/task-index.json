@@ -4753,17 +4753,16 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "120-v03-native-disabled-controls.md",
+      "execution_record": "121-v03-target-source-scan-diagnosis.md",
       "active_slice": {
-        "id": "V03.8",
-        "title": "Diagnose exact retained original workspace versus executed instrumentation digest mismatch",
-        "status": "planned-bounded-diagnosis",
-        "predecessor": "V03.7 engineering complete; independent selected source FAIL retained",
-        "record": "120-v03-native-disabled-controls.md",
+        "id": "V03.9",
+        "title": "Bounded selected workspace-source acquisition before background index exhaustion",
+        "status": "planned-bounded-implementation",
+        "predecessor": "V03.8 read-only diagnosis complete; original independent selected-source FAIL retained",
+        "record": "121-v03-target-source-scan-diagnosis.md",
         "design_pending": true,
-        "same_question_required": true,
         "registered_question": "../testing/independent-vue-source-case70.json",
-        "retained_failure": ".artifacts/v03/independent-vue-source/2026-10-23T20-58-40-652Z/results.json",
+        "same_question_required": true,
         "full_V03_acceptance": false
       },
       "completed_slices": [
@@ -4974,13 +4973,33 @@
           "finite_first_read_native_qualified": false,
           "full_task_complete": false,
           "verification": ".artifacts/v03/native-disabled-controls/2026-10-24/correction-checkpoint.json"
+        },
+        {
+          "id": "V03.8",
+          "title": "Diagnose exact retained original workspace versus executed instrumentation digest mismatch",
+          "status": "complete-read-only-diagnosis-not-product-fix",
+          "predecessor": "V03.7 engineering complete; independent selected source FAIL retained",
+          "record": "121-v03-target-source-scan-diagnosis.md",
+          "design_pending": false,
+          "same_question_required": true,
+          "registered_question": "../testing/independent-vue-source-case70.json",
+          "retained_failure": ".artifacts/v03/independent-vue-source/2026-10-23T20-58-40-652Z/results.json",
+          "full_V03_acceptance": false,
+          "verification": ".artifacts/v03/target-source-scan/2026-10-24/retained-scan-diagnosis.json",
+          "indexed_files": 160,
+          "indexed_bytes": 333727,
+          "selected_file_included": false,
+          "trace_nodes_with_matching_original_digest": 6,
+          "product_changed": false,
+          "native_rerun": false,
+          "full_task_complete": false
         }
       ],
       "current_checkpoint": {
-        "record": "120-v03-native-disabled-controls.md",
-        "status": "engineering-complete-native-catalogue-pass-independent-source-fail",
-        "next_bounded_step": "V03.8: diagnose retained exact original textarea workspace/executed-instrumentation digest mismatch without changing original expression/scalar-read/source-digest/IDE-range/timeout criteria; full V03/C09 remain open",
-        "verification": ".artifacts/v03/native-disabled-controls/2026-10-24/correction-checkpoint.json"
+        "record": "121-v03-target-source-scan-diagnosis.md",
+        "status": "complete-read-only-diagnosis-not-product-fix",
+        "verification": ".artifacts/v03/target-source-scan/2026-10-24/retained-scan-diagnosis.json",
+        "next_bounded_step": "V03.9 implement bounded selected-file acquisition within existing160-file/256000B-file/2000000B-total limits and mapped-root/symlink/trust/digest safeguards; new exact helper required only after source changes; unchanged original question must actually pass or remain FAIL"
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-native-disabled-controls.md"
     },
@@ -5138,11 +5157,11 @@
     ]
   },
   "reconciliation": {
-    "document": "120-v03-native-disabled-controls.md",
+    "document": "121-v03-target-source-scan-diagnosis.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.7-engineering-complete-native-catalogue-not-independent-source-or-V03",
-    "next_item": "V03.8 exact retained workspace/executed instrumentation digest diagnosis",
+    "current_increment": "V03.8-read-only-source-scan-diagnosis-complete-not-product-fix",
+    "next_item": "V03.9 bounded selected workspace-source acquisition",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7234,14 +7253,22 @@
         "verification": ".artifacts/v03/native-disabled-controls/2026-10-24/correction-checkpoint.json",
         "full_task_complete": false,
         "next_independent_item": "V03.8"
+      },
+      {
+        "id": "V03.8",
+        "status": "complete-read-only-diagnosis-not-product-fix",
+        "execution_record": "121-v03-target-source-scan-diagnosis.md",
+        "verification": ".artifacts/v03/target-source-scan/2026-10-24/retained-scan-diagnosis.json",
+        "full_task_complete": false,
+        "next_independent_item": "V03.9"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.7 ONE review0Critical/2Important/0Minor; both Important fixed in one pass/no re-review. Corrected33/affected1230/full2561/types2/admission9 and exact70 Basic native19PASS/336stable. Original source4setupPASS/378stable then FAIL requiredObserved versusStale workspace/executed digest; rawtrace is not accepted source. Full20/29 unchanged, finitefirstread70/codehistory unqualified; next boundedV03.8 retained digest diagnosis.",
+    "current_activity_note": "V03.8 read-only reproduction: exact helper source reader indexes160files/333727B and omits original selected SFC; all6 trace-node digests match unchanged original. Existing validateTrace Stale becomesObserved only in synthetic missing-file injection control, not product/native acceptance. Original70 FAIL retained. NextV03.9 bounded lookup fix/new exact helper after real source drift; Atom70/UI2/plugin5 reuse conditional on hashes; whole20/29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "0469675 clean producer Atom70/UI2; native results and current routing in record120",
+    "current_source_revision": "10409c9, product0469675 Atom70 unchanged; read-only source-scan diagnosis record121",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.8: diagnose retained exact original textarea workspace/executed-instrumentation digest mismatch without changing original expression/scalar-read/source-digest/IDE-range/timeout criteria; full V03/C09 remain open"
+    "next_bounded_step": "V03.9 implement bounded selected-file acquisition within existing160-file/256000B-file/2000000B-total limits and mapped-root/symlink/trust/digest safeguards; new exact helper required only after source changes; unchanged original question must actually pass or remain FAIL"
   },
   "next_task": "V03"
 }

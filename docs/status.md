@@ -131,6 +131,13 @@ FAIL: Stale workspace/executed instrumentation digest mismatch. Raw Observed pag
 trace is not accepted source/read/IDE/input/export proof. Journal256/source-budget/
 script-budget gaps leave finite first-read70 unqualified. Next bounded V03.8 diagnoses
 that exact retained mismatch with original criteria. Whole20/29/fullV03/C09 unchanged.
+[V03.8 read-only diagnosis](completion/121-v03-target-source-scan-diagnosis.md)
+reproduces the actual helper160-file scan omitting the selected SFC (333727B used,
+byte cap not reached). All6 retained trace-node digests match the original file;
+synthetically supplying it changes source validation Stale→Observed. This is a
+source control, no product fix or installed acceptance. Original70 FAIL remains;
+next V03.9 safely acquires the selected source within existing budgets before broad
+index exhaustion, with a new exact helper only when its source changes.20/29 unchanged.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the
