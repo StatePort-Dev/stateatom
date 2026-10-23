@@ -42,3 +42,22 @@ completed historical codec evidence and is not repeated. Original generated Vite
 cache is reused as before; fresh browser profiles are mandatory, but this is not a
 cold-start/performance qualification. Both reporter/recipient require UI install.
 Commit this registration before execution; no UI runtime result is claimed yet.
+
+## First actual UI attempt — retained preparation failure
+
+Preregistere7c1d84, actual37851/exit1:
+`.artifacts/v03/independent-react-basic/2026-10-23T23-39-33-744Z/results.json`.
+One source/pair gate passes,65 originals unchanged, registered inputs stable;
+Chrome153 actual executable/argv/no-preload proof and empty extensions page pass.
+Developer mode toggles. Load click is recorded at viewportY28 while the final
+button is at84: drawer transition moved it. No native folder chooser/installed
+card/app/reader evidence, not a product-install PASS. Failure screenshot actually
+viewed shows empty Extensions page; all owned resources close, Vite143 intentional
+SIGTERM, desktop socket closed; inspector warnings/errors0 because not opened.
+
+New separately registered stable-controls case preserves the old case/result and
+adds stable geometry plus deep-shadow hit verification before trusted UI input.
+Require3 stable polling intervals, unchanged overall timeouts; no extra app warmup
+or lowering of installation requirements. No product source/build/native old-route
+repeat. Current UI attempt is terminal before another run; original missing gate
+and existing app/reader questions remain due.
