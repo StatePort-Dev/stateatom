@@ -92,6 +92,15 @@ diagnostics plus migration1. This is import-scoped, not browser-wide traffic pro
 Console/errors are empty for the owned inspector/reader and app **from attach**;
 this does not claim startup-wide app console coverage.
 
+The owned Vite child exits143 after the driver's intentional SIGTERM; installed
+Vite7.3.1 translates the signal to128+15. An extra record-checker first expected
+a raw signal field and then incorrectly expected zero; both assumptions failed.
+Their checker copies/failure note are retained. Exact source and the actual exit
+record were checked before the corrected checkpoint passed; no app/browser was
+rerun and no raw result changed. The evidence commit preceded that extra checkpoint
+completion, an ordering error; its type/admission/native claims were already backed
+by the completed commands. `checkpoint.json` now verifies those actual outcomes.
+
 The **same new file** in a fresh exact65 reader produces
 `Rejected diagnostic: HANDOFF_LIMIT`, empty summary and unchanged empty authority.
 Its original archive/host bytes match. This new cross-version control demonstrates
