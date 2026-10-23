@@ -27,7 +27,13 @@ render-occurrence snapshots retain ordinary deep refresh. Current unchanged-prot
 198-sample results: Basic route p95=1864.9/517ms (standalone miss/embedding met),
 active/off20.30/27.66% still misses10%. The separate phase median fell from~240ms to
 47–51ms; it does not replace the full-run miss. ONE fresh V02.3 review accepted with no findings; next V02.4 publication amplification;
-19/29 and V02 open.61 results remain explicitly historical. The subsequent
+19/29 and V02 open.61 results remain explicitly historical. [V02.4 current63](completion/104-v02-observation-publication.md) now coalesces only overlapping native event publication:
+source2420/focused183/types2/admission9/native H09 reporter17 PASS;828 inputs and
+both exact hosts match. Unchanged198 measurements give Basic p95=565.3/515ms
+(both met), active/off26.86/29.79% (both missed).60 concurrent submissions in a
+gated20-request source burst become one flight plus latest follow-up, all events
+retained. This is not proof of whole performance readiness; ONE parent review next,
+then V02.5 Basic-selected overhead diagnosis.19/29 unchanged. The subsequent
 [F01 implementation](completion/14-f01-capability-contracts.md) consolidates
 capability policy and checks packed declarations on candidate `.20261019.3`:
 586 unit, 48 contract, 34 two-host, 26 Basic, 32 Actions and 19 source-map checks

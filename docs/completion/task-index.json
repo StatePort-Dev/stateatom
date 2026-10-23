@@ -4195,51 +4195,41 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.3",
-        "title": "Successful explicit inspection with identity-only native guard",
-        "status": "finite-slice-reviewed-targets-missed",
-        "plan": "../superpowers/plans/2026-10-23-v02-fresh-inspection-state.md"
+        "id": "V02.4",
+        "title": "Bounded native observation publication",
+        "status": "candidate63-qualified-overhead-missed-review-pending",
+        "plan": "../superpowers/plans/2026-10-23-v02-observation-publication.md"
       },
-      "execution_record": "103-v02-fresh-inspection-state.md",
+      "execution_record": "104-v02-observation-publication.md",
       "current_checkpoint": {
-        "id": "V02.3-candidate62",
-        "status": "scoped-implementation-reviewed-targets-missed",
-        "record": "103-v02-fresh-inspection-state.md",
-        "candidate": "0.1.0-candidate.20261021.62",
-        "source_checks": 2411,
-        "source_inputs": 822,
+        "id": "V02.4-candidate63",
+        "status": "ready-one-parent-review",
+        "record": "104-v02-observation-publication.md",
+        "candidate": "0.1.0-candidate.20261021.63",
+        "verification": ".artifacts/v02/observation-publication/2026-10-23/verification63.json",
+        "source_checks": 2420,
+        "focused_checks": 183,
+        "source_inputs": 828,
         "strict_types": 2,
         "package_admission": 9,
-        "native_identity_checks": 11,
+        "native_reporter_checks": 17,
         "raw_performance_samples": 198,
-        "raw_phase_samples": 30,
         "basic_route_p95_ms": {
-          "standalone": 1864.9,
-          "embedding": 517
+          "standalone": 565.3,
+          "embedding": 515
         },
         "basic_route_target_by_host": {
-          "standalone": false,
+          "standalone": true,
           "embedding": true
         },
-        "active_off_target_met": false,
         "active_off_percent": {
-          "standalone": 20.29850746,
-          "embedding": 27.65957447
+          "standalone": 26.85571309,
+          "embedding": 29.78902954
         },
+        "active_off_target_met": false,
         "targets_waived": false,
         "whole_task_complete": false,
-        "historical61": "Plain-DOM p95=452/433 retained, not a current62 pass. Source marker guard corrected with ordinary deep fallback in62. H09/map17/7 remain explicitly historical61 controls.",
-        "next_bounded_step": "V02.4 reproduce and remedy bounded observation publication amplification",
-        "review": {
-          "count": 1,
-          "fresh_context": true,
-          "critical": 0,
-          "important": 0,
-          "minor": 0,
-          "independent_source_checks": 86,
-          "correction_passes": 0,
-          "report": ".artifacts/v02/fresh-inspection/2026-10-23/review/report.md"
-        }
+        "next_bounded_step": "V02.5 isolate Basic-selected overhead with a concrete counter/control before changing code"
       },
       "completed_slices": [
         {
@@ -4287,6 +4277,46 @@
             "minor": 0,
             "correction_passes": 0,
             "accepted_scope": "Finite diagnostic/reporting only; no V02/target/product-fix acceptance"
+          }
+        },
+        {
+          "id": "V02.3-candidate62",
+          "status": "scoped-implementation-reviewed-targets-missed",
+          "record": "103-v02-fresh-inspection-state.md",
+          "candidate": "0.1.0-candidate.20261021.62",
+          "source_checks": 2411,
+          "source_inputs": 822,
+          "strict_types": 2,
+          "package_admission": 9,
+          "native_identity_checks": 11,
+          "raw_performance_samples": 198,
+          "raw_phase_samples": 30,
+          "basic_route_p95_ms": {
+            "standalone": 1864.9,
+            "embedding": 517
+          },
+          "basic_route_target_by_host": {
+            "standalone": false,
+            "embedding": true
+          },
+          "active_off_target_met": false,
+          "active_off_percent": {
+            "standalone": 20.29850746,
+            "embedding": 27.65957447
+          },
+          "targets_waived": false,
+          "whole_task_complete": false,
+          "historical61": "Plain-DOM p95=452/433 retained, not a current62 pass. Source marker guard corrected with ordinary deep fallback in62. H09/map17/7 remain explicitly historical61 controls.",
+          "next_bounded_step": "V02.4 reproduce and remedy bounded observation publication amplification",
+          "review": {
+            "count": 1,
+            "fresh_context": true,
+            "critical": 0,
+            "important": 0,
+            "minor": 0,
+            "independent_source_checks": 86,
+            "correction_passes": 0,
+            "report": ".artifacts/v02/fresh-inspection/2026-10-23/review/report.md"
           }
         }
       ]
@@ -4490,11 +4520,11 @@
     ]
   },
   "reconciliation": {
-    "document": "103-v02-fresh-inspection-state.md",
+    "document": "104-v02-observation-publication.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.3-candidate62-reviewed-targets-missed",
-    "next_item": "V02.4 reproduce observation publication amplification, preserve conservative invalidation and exact state/owner/cleanup semantics",
+    "current_increment": "V02.4-candidate63-ready-review-overhead-missed",
+    "next_item": "V02.5 isolate Basic-selected overhead with a concrete counter/control before changing code",
     "new_full_task_acceptances": [
       "F01",
       "F02",
