@@ -84,6 +84,8 @@ then exact before/after equality across import. This failure is also retained.
 No app/API or originating profile was restarted. Native file input renders the
 reporter's words, historical/untrusted/not-reverified status and explicit omissions.
 No HTTP app tabs, session state, additional local state or network requests appear.
+Request observation is scoped to the reader target after Network.enable; this is
+not browser-wide/service-worker/startup traffic certification.
 Bundled font loads;1100px/440px screenshots have no horizontal overflow; reader
 console/errors are empty. Those console results belong to this recipient, not a
 claim about the originating app's entire startup or an uncompleted combined run.
@@ -115,5 +117,38 @@ No larger limits, invisible truncation, resolver tailoring or product support cl
 is authorized merely by this failure. First preserve a failing/control case and
 choose a bounded correction or explicit unsupported result from that evidence.
 
-ONE fresh whole-increment review is pending; its result and line-by-line rulings
-will be recorded here without re-review.
+## ONE whole-increment review and correction pass
+
+Rangef92edbd..786e1fc: **0 Critical/0 Important/2 Minor**, accepted as a finite
+partial investigation subject to reporting corrections. Report:
+`.artifacts/v03/independent-basic-final/2026-10-23/review/review.md`.
+
+M1 corrected the current reconciliation fields that still said no app/browser run
+and directed the next session to V03.2. Historical prep entries remain unchanged;
+current summaries now name the originating FAIL, separate recipient and V03.3.
+M2 keeps the earlier verification.json as its pre-final-document checkpoint: its
+record115 hash predates the added verification paragraph. A separately appended
+`verification-post-review.json` seals these final documents after rulings; it does
+not overwrite native results or generate new runtime acceptance.
+
+Explicit rulings on every Declined line:
+
+- D1 accepted: original detailed/origin FAIL stays FAIL. Simple-file recipient is
+  separate; no combined green run is claimed.
+- D2 accepted: the strict omitted object and exact empty migration defaults match
+  source/schema; privacy and before/after authority checks remain strict.
+- D3 accepted: no-request evidence is reader-target/import scoped. No browser-wide
+  network or general security certification is inferred.
+- D4 accepted: synthetic API/CLI preload/native automation are declared assistance;
+  source65 is exact and unsupported producer/source remains Unknown.
+- D5 accepted: origin console coverage remains incomplete. Repeating that origin
+  solely for a healthy-console claim is outside this completed finite increment.
+- D6 accepted: owned Vite/API cleanup and strictPort/readiness are scoped controls;
+  unchanged generic helper fault injection is not added as a new gate.
+- D7 accepted: imported licensed code remains private/ignored, outside product and
+  public uploads; no redistribution, relicensing or legal clearance is claimed.
+- D8 accepted: continuation is exact-file evidence, not a general authenticated
+  importer or adversarial parent trust boundary. Broader use needs its own scope.
+
+One reporting correction pass; no re-review and no additional browser/application
+run. Full V03 remains open,20/29 unchanged. V03.3 is the next bounded item.

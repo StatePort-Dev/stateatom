@@ -4755,20 +4755,7 @@
       "optional": false,
       "execution_record": "115-v03-independent-basic-and-report-limit.md",
       "implementation_plan": "../superpowers/plans/2026-10-23-v03-independent-clean-path.md",
-      "active_slice": {
-        "id": "V03.2",
-        "title": "Pinned independent corpus and first clean Basic guide path",
-        "status": "executed-partial-detailed-report-limit-under-one-review",
-        "plan": "../superpowers/plans/2026-10-23-v03-independent-clean-path.md",
-        "source_registration": "../testing/independent-apps.json",
-        "source_intake_evidence": ".artifacts/v03/independent-corpus/2026-10-23T15-40-52-439Z/results.json",
-        "dependency_preparation_evidence": ".artifacts/v03/dependency-prep/2026-10-23T15-48-05-165Z/results.json",
-        "execution_record": "115-v03-independent-basic-and-report-limit.md",
-        "native_origin_evidence": ".artifacts/v03/independent-react-basic/2026-10-23T16-11-42-067Z/results.json",
-        "passive_recipient_evidence": ".artifacts/v03/passive-recipient/2026-10-23T16-15-40-225Z/results.json",
-        "combined_green_run": false,
-        "full_V03_acceptance": false
-      },
+      "active_slice": null,
       "completed_slices": [
         {
           "id": "V03.1-installed-guide",
@@ -4792,6 +4779,27 @@
             "important": 0,
             "minor": 1,
             "minor_addressed": true,
+            "re_review": false
+          }
+        },
+        {
+          "id": "V03.2-independent-basic-partial",
+          "title": "Pinned independent corpus and first clean Basic guide path",
+          "status": "complete-finite-investigation-partial-origin-not-full-V03",
+          "plan": "../superpowers/plans/2026-10-23-v03-independent-clean-path.md",
+          "source_registration": "../testing/independent-apps.json",
+          "source_intake_evidence": ".artifacts/v03/independent-corpus/2026-10-23T15-40-52-439Z/results.json",
+          "dependency_preparation_evidence": ".artifacts/v03/dependency-prep/2026-10-23T15-48-05-165Z/results.json",
+          "execution_record": "115-v03-independent-basic-and-report-limit.md",
+          "native_origin_evidence": ".artifacts/v03/independent-react-basic/2026-10-23T16-11-42-067Z/results.json",
+          "passive_recipient_evidence": ".artifacts/v03/passive-recipient/2026-10-23T16-15-40-225Z/results.json",
+          "combined_green_run": false,
+          "full_V03_acceptance": false,
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 2,
+            "minor_reporting_corrected": true,
             "re_review": false
           }
         }
@@ -6987,14 +6995,24 @@
         "new_runtime_acceptance": false,
         "full_task_complete": false,
         "next_independent_item": "V03.2"
+      },
+      {
+        "id": "V03.2",
+        "status": "complete-finite-partial-not-full-V03",
+        "execution_record": "115-v03-independent-basic-and-report-limit.md",
+        "origin_status": "FAIL detailed HANDOFF_LIMIT; simple UI file created before harness schema failure",
+        "recipient_checks": 6,
+        "verification": ".artifacts/v03/independent-basic-final/2026-10-23/verification-post-review.json",
+        "full_task_complete": false,
+        "next_independent_item": "V03.3"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.2 pinned new Reactcommerce/VueITTools and structural reserve. Frozen lifecycle-disabled dependency installs in private working copies pass, all65+498 original source/lock files unchanged; ReactNode24/npm11 and VueNode18.18.2/pnpm9.11 from project pins. No app/browser run yet, no current combined plugin/helper/browser or wholeV03 claim. Next freeze local product API/scenarios and run first admitted clean Basic path. FullA02/L02/V02/V03 open20/29; no human blocker/globalmanager activation/publication.",
+    "current_activity_note": "V03.2 finite independent-corpus/first Basic investigation complete with partial results after ONE review0/0/2 reporting corrections. Original React shop source65 unchanged; native picker/parent/Cancel/Cart to1Cart refresh passed with Unknown lineage. Detailed current Review report HANDOFF_LIMIT remains FAIL; explicit simple file produced and separate fresh recipient6 checks/333 inputs pass. No combined green origin or origin console acceptance, no Chrome UI installation/source-connected/Vue/reserve/macOS/full V03 credit. Product65/UI2 and326 inputs unchanged;20/29. Next V03.3 retained pure-codec limit diagnosis before more browser work.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "fd160d0 guide; b50b26e experimental companion; fa95157 product65 unchanged",
+    "current_source_revision": "786e1fc V03.2 finite partial evidence; fa95157 product65 unchanged",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V03.2 independent corpus pinning and first clean guide-operated path"
+    "next_bounded_step": "V03.3 diagnose retained detailed HANDOFF_LIMIT with pure codecs; no limit widening or new browser run inferred"
   },
   "next_task": "V03"
 }

@@ -76,3 +76,9 @@ with that exact retained file in a fresh recipient rather than restarting app
 steps. This is partial path evidence, not a green combined run or full V03.
 Record115 retains every attempt and schema/default-migration correction. Next
 V03.3 is the exact retained codec-bound diagnosis; Vue/reserve remain unexecuted.
+
+Whole finite review f92edbd..786e1fc:0 Critical/0 Important/2 reporting Minors.
+Both corrected in one pass: stale current-summary routing and separate final
+document-hash receipt. All8 Declined lines explicitly ruled in115. Finite item
+accepted with partial path evidence; original detailed/origin failures unchanged,
+fullV03/20of29 unchanged. No re-review, app restart or native matrix rerun.
