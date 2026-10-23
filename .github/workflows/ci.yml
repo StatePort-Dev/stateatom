@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
@@ -16,3 +18,41 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npm test
       - run: npm run build
+      - run: npm run check:ui
+  packed-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Build immutable Atom and UI pair
+        run: npm run pack:atom
+      - name: Select this job's immutable candidate
+        id: candidate
+        run: |
+          node --input-type=module <<'JS'
+          import assert from 'node:assert/strict';
+          import {readFileSync, appendFileSync} from 'node:fs';
+          import {dirname, join, relative} from 'node:path';
+          const latest = JSON.parse(readFileSync('.artifacts/atom/atom-handoff.json', 'utf8'));
+          assert.equal(latest.sourceRevision, process.env.GITHUB_SHA);
+          assert.equal(latest.sourceDirty, false);
+          const handoff = relative(process.cwd(), join(dirname(latest.package.file), 'atom-handoff.json'));
+          assert.match(handoff, /^\.artifacts\/atom\/[\dTZ-]+\/atom-handoff\.json$/);
+          assert.deepEqual(JSON.parse(readFileSync(handoff, 'utf8')), latest);
+          appendFileSync(process.env.GITHUB_OUTPUT, 'handoff=' + handoff + '\n');
+          console.log(handoff);
+          JS
+      - name: Compile packed public declarations
+        env:
+          ATOM_HANDOFF: ${{ steps.candidate.outputs.handoff }}
+        run: npm run verify:atom-types -- "$ATOM_HANDOFF"
+      - name: Verify exact installed pair, exports and peers
+        env:
+          ATOM_HANDOFF: ${{ steps.candidate.outputs.handoff }}
+        run: npm run verify:atom-package -- "$ATOM_HANDOFF"

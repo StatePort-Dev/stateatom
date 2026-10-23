@@ -17,7 +17,9 @@ PASS. Fresh Live/Draft92 rows,132 ledger checkpoints,2 actual history-limit refu
 and2 native unsent-Close controls complete;887 frozen inputs/archive/install/hosts
 verified. Live/Apply acknowledgement still has several-second tails; descriptive
 measurements do not pass whole V02. ONE whole-item review accepted0Critical/0Important/2 reporting Minors, both
-corrected without product/native rerun. Next dependency-ready V01 CI/native/packed lanes. Original64 Basic/active/warm-source/input results remain
+corrected without product/native rerun. [V01.1](completion/109-v01-packed-ci-lane.md) now adds deterministic UI and
+a separate immutable packed-contract CI job, locally syntax/selector/negative/check:ui
+verified. Remote CI and whole V01 remain unverified; next V01.2 native lane. Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the
 [preregistered finite protocol](superpowers/plans/2026-10-23-v02-basic-observer.md).
@@ -1944,3 +1946,5 @@ V02.7 ONE review0/0/1 accepted; double-click harness guard corrected once RED0vs
 [V02.8 Atom65](completion/108-v02-input-modes-and-stale-load.md): source-proven old-state-error and pending-explicit-selection UI races fixed;119 focused/2454 full/types2/admission9/H0917 PASS. Fresh unchanged input protocol completes92rows/132ledger/2limits/2Close;887 frozen inputs and exact artifacts/hosts verified. Original64 failed attempts/data retained, no new Live SLO or current65 Basic/active/warm-source pass. ONE review pending; next V01 dependency-ready CI/native/packed lanes.19/29 unchanged.
 
 V02.8 ONE review accepted0/0/2, both reporting Minors corrected: all887 hashes are current (edited reporting files are outside that set), current reconciliation points to108. Independent119 and exact65/raw92/132/2limits/2Close verified; no product correction/rebuild/full/native rerun or re-review. Next V01 starts with deterministic UI/packed contracts in CI; whole V02 and19/29 unchanged.
+
+[V01.1 CI configuration](completion/109-v01-packed-ci-lane.md): fast install/unit/build retained plus check:ui; separate exact-pair pack/types/admission job, clean GITHUB_SHA/immutable-path selection and read-only/nonpersistent credentials. Actual YAML shell positive+wrong-revision controls and UI generation PASS. No remote CI or fresh product/full/native qualification claimed; candidate65/19of29 unchanged. Next V01.2 native browser lane, with installed-VSIX remaining separate.
