@@ -4764,7 +4764,7 @@
         "plan": "../superpowers/plans/2026-10-24-v03-warning-baseline.md",
         "registered_question": "../testing/independent-vue-warning-case-full-chromium.json",
         "whole_V03_complete": false,
-        "product_source_changed": false,
+        "product_source_changed": true,
         "diagnostic_order": [
           "off",
           "on",
@@ -4800,7 +4800,16 @@
         "scan_frontier_control_result": ".artifacts/v03/warning-baseline/2026-10-23T23-02-07-747Z/results.json",
         "scan_frontier_control_status": "PASS_SINGLE_CONTROL_200_READY24_NOT_PRODUCT_FIX_OR_ABBA",
         "prerequisite": "Bounded installed Vue default scanner correction preserving explicit user policies, then exact new installed treatment and original ABBA; no private override in acceptance",
-        "control_verification": ".artifacts/v03/warning-baseline/2026-10-24/cold-controls-checkpoint.json"
+        "control_verification": ".artifacts/v03/warning-baseline/2026-10-24/cold-controls-checkpoint.json",
+        "installed_prerequisite": {
+          "version": "0.1.0-candidate.20261021.6",
+          "handoff": ".artifacts/development/2026-10-23T23-16-57-006Z/handoff.json",
+          "consumer_receipt": ".artifacts/v03/installed-vue-consumer/2026-10-23T23-17-16-400Z/result.json",
+          "source_checks": 2616,
+          "focused_checks": 50,
+          "runtime_qualification": "DUE"
+        },
+        "new_matrix_case": "../testing/independent-vue-warning-case-plugin6.json"
       },
       "completed_slices": [
         {

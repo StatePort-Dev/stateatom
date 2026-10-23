@@ -47,9 +47,9 @@ counts, no app side effects or product exports.
 - [x] Preregister exact supplied identities, original case, order/window and diagnostic constraints; commit driver/case/plan before execution.
 - [x] Preregister one separate cold-On trace after retained504 failure: same original tuple/timeout, passive local Network/HMR/navigation plus vite:deps debug, failure DOM/screenshot and after-response metadata; no warmup/reload. Run the trace without counting it as the original ABBA comparison.
 - [x] Retain original-CLI failure and one-variable HTML+Vue scanner control; record actual200/ready24 without original-matrix credit.
-- [ ] Write installed-wrapper scan-policy RED tests; implement only enabled vue3 defaults preserving explicit/accessor/custom entries/input/optimizer policies and underlying hook.
-- [ ] Focused GREEN/full source suite; commit source, pack exact new plugin, strict Node18 install and reuse unchanged helper8/Atom70 by hashes.
-- [ ] Register new treatment identities separately from historical native case, original CLI, no private scanner override; commit before four fresh trials.
+- [x] Write installed-wrapper scan-policy RED tests; implement only enabled vue3 defaults preserving explicit/accessor/custom entries/input/optimizer policies and underlying hook.
+- [x] Focused GREEN/full source suite; commit source, pack exact new plugin, strict Node18 install and reuse unchanged helper8/Atom70 by hashes.
+- [x] Register new treatment identities separately from historical native case, original CLI, no private scanner override; commit before four fresh trials.
 - [ ] Run node tests/integration/independent-vue-warning-baseline.mjs docs/testing/independent-vue-warning-case.json; inspect actual phase results, raw warnings, artifacts and cleanup. Do not restart a live handle or retry to improve output.
 - [ ] Summarize within-condition, cross-condition and original-native differences separately; keep original15-positive/overall-FAIL result unchanged.
 - [ ] Update record124/current task routing/corpus append-only, identify one dependency-valid next item from actual result.

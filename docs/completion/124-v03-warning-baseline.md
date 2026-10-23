@@ -161,3 +161,15 @@ No unrelated getter implementation was changed. Candidate6 source/default scanne
 policy is implemented; new package/install/original ABBA/runtime acceptance remain
 due. Atom327/helper223 current inputs and exact old archives still match, allowing
 scoped reuse without rebuilding or promoting historical native evidence.
+
+Clean source commit e3f4255 produces exact candidate6 archive SHA
+909eea5aea434beed365ff4a97d0710d57c58b93cc3a950c020ba92e626ed224,
+19 source inputs. Standard pack also emits a new helper archive; all9 entry bytes
+match helper8 exactly, with a different zip SHA. No new helper native acceptance
+is claimed. Strict actual Node18.18.2/npm9.8.1 install (ignore-scripts/engine-strict)
+passes with14 installed plugin files and6 metadata admission/refusal probe groups:
+`.artifacts/v03/installed-vue-consumer/2026-10-23T23-17-16-400Z/result.json`.
+Original app dependencies/source stay unchanged. New plugin6 warning case keeps
+historical native scenario/result intact, independently pins installed treatment,
+uses original project Vite CLI and forbids a private scanner override. Four cold
+Off/On/On/Off trials, same timeouts/window/Chrome/route/caps; commit before execution.
