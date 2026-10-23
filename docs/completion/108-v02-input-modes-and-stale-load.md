@@ -1,7 +1,7 @@
 # V02.8 — Live/Draft measurements and superseded inspection errors
 
-2026-10-23, scope-review-1. Bounded implementation and measurements complete;
-ONE whole-item review pending. Whole V02 remains open,19/29 whole tasks unchanged.
+2026-10-23, scope-review-1. Bounded implementation and measurements accepted after ONE review;
+0 Critical/0 Important/2 reporting-only Minor corrections recorded below. Whole V02 remains open,19/29 whole tasks unchanged.
 
 ## Product result
 
@@ -53,9 +53,10 @@ access and distinct Settings production confirmations, recording, Live/Draft,
 downloaded reader and revocation; this is scoped regression, not all P04 rerun.
 887 frozen inputs match before/after full and native measurement; archives,
 installed pair and complete host manifests match. These include source, harness
-and plan inputs, not887 independently tested capabilities. Subsequent edits to
-status/roadmap/task index are reporting changes; frozen versions remain in Git
-fa95157. The original full/build/native inputs and receipts remain untouched.
+and plan inputs, not887 independently tested capabilities. All887 also match current files after reporting edits. Status/roadmap/task index
+are outside that frozen set; the earlier ledger assertion that they require a
+three-file historical exception was incorrect. Original full/build/native inputs
+and receipts remain untouched.
 
 ## Finite input protocol and results
 
@@ -133,8 +134,18 @@ results and U02/A05 earlier checks are not silently current65 qualification.
 
 ## Remaining work and one next item
 
-ONE fresh whole V02.8 review follows this checkpoint; at most one material
-correction pass, no re-review. Review findings/rulings will be appended here.
+ONE fresh-context read-only whole V02.8 review accepted the finite item:
+0Critical/0Important/2Minor. Independent119 source checks and independent
+887 current hashes/exact packages/hosts/raw92/132/2limits/2Close recomputation PASS.
+Both Minors are reporting-only: clarify all887 remain current (the three edited
+report files were never in that set), and point reconciliation.document to108.
+Both are corrected while recording this verdict, not by changing product bytes.
+No product correction/rebuild/full/native rerun or re-review. Original review
+report, all10 declined boundaries and explicit executor rulings/costs are retained
+in `.artifacts/v02/input-modes/2026-10-23/review/report.md`; derived acceptance
+`verification65-reviewed.json` preserves the original qualification receipt.
+No deferred finding. These rulings preserve all stated measurement boundaries;
+none grants a performance exception or new authority.
 Whole V02 still requires its remaining mode/workload/performance acceptance;
 L02 mandatory usefulness,A02,integration/clean-platform/release gaps remain open.
 Independent human is not a blocker. No SDK/publication/redesign/other repository.

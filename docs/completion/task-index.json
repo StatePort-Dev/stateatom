@@ -4197,7 +4197,7 @@
       "active_slice": {
         "id": "V02.8",
         "title": "Live/Draft timing, ledger/native Close and superseded inspection error correction",
-        "status": "implemented-and-measured-one-whole-review-pending",
+        "status": "bounded-item-accepted-one-review-two-reporting-minors-corrected",
         "plan": "../superpowers/plans/2026-10-23-v02-input-modes.md",
         "retained_phase_addendum": "../superpowers/plans/2026-10-23-v02-input-modes-remainder.md",
         "product_correction_addendum": "../superpowers/plans/2026-10-23-v02-input-stale-load.md"
@@ -4205,11 +4205,11 @@
       "execution_record": "108-v02-input-modes-and-stale-load.md",
       "current_checkpoint": {
         "id": "V02.8-input65",
-        "status": "implemented-measured-not-reviewed-not-whole-V02",
+        "status": "accepted-bounded-input-fix-and-measurement-not-whole-V02",
         "record": "108-v02-input-modes-and-stale-load.md",
         "candidate": "0.1.0-candidate.20261021.65",
         "handoff": ".artifacts/atom/2026-10-23T13-08-24-618Z/atom-handoff.json",
-        "verification": ".artifacts/v02/input-modes/2026-10-23/verification65.json",
+        "verification": ".artifacts/v02/input-modes/2026-10-23/verification65-reviewed.json",
         "revision": "fa9515743a76b9ff48beeddd93735cbda8725fed",
         "source_inputs": 887,
         "focused_source_checks": 119,
@@ -4277,7 +4277,18 @@
         "targets_waived": false,
         "whole_task_complete": false,
         "historical64_evidence": "Original Basic/active/warm/input data preserved, not fresh65 target qualification; 104 misses remain open",
-        "next_bounded_step": "ONE whole V02.8 review, then dependency-ready V01 CI/native/packed lane reconciliation"
+        "next_bounded_step": "V01 CI native lanes and packed contracts; begin deterministic UI/packed contract CI slice",
+        "review": {
+          "count": 1,
+          "fresh_context": true,
+          "critical": 0,
+          "important": 0,
+          "minor": 2,
+          "reporting_only_minor_corrections": 2,
+          "product_correction_passes": 0,
+          "native_rerun": false,
+          "report": ".artifacts/v02/input-modes/2026-10-23/review/report.md"
+        }
       },
       "completed_slices": [
         {
@@ -4783,11 +4794,11 @@
     ]
   },
   "reconciliation": {
-    "document": "107-v02-warm-source-and-map-resources.md",
+    "document": "108-v02-input-modes-and-stale-load.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.8-input65-implemented-measured-review-pending",
-    "next_item": "V01 CI native lanes and packed contracts after ONE V02.8 review",
+    "current_increment": "V02.8-input65-accepted-one-review-reporting-corrections",
+    "next_item": "V01 CI native lanes and packed contracts",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -4810,7 +4821,7 @@
       "P04"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "V02",
+    "active_item": "V01",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -6771,11 +6782,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Atom65 fixes source-reproduced superseded state-error/pending explicit-inspection races; focused119/full2454/types2/admission9/H0917 PASS. Fresh92rows/132ledger/2HISTORY_LIMIT/2nativeClose and887 frozen inputs verified. Live/Apply several-second tails descriptive, no new SLO/pass. Original64 incomplete attempts and earlier target misses preserved;19/29 unchanged. ONE whole review next, then dependency-ready V01.",
+    "current_activity_note": "Atom65 fixes source-reproduced superseded state-error/pending explicit-inspection races; focused119/full2454/types2/admission9/H0917 PASS. Fresh92rows/132ledger/2HISTORY_LIMIT/2nativeClose and887 frozen inputs verified. Live/Apply several-second tails descriptive, no new SLO/pass. Original64 incomplete attempts and earlier target misses preserved;19/29 unchanged. ONE whole review next, then dependency-ready V01. ONE whole review accepted0Critical/0Important/2Minor, both reporting metadata corrected; all887 CURRENT hashes match. No product correction/rebuild/native/full rerun. NextV01.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "fa9515743a76b9ff48beeddd93735cbda8725fed",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "ONE whole V02.8 review, then dependency-ready V01 CI/native/packed lane reconciliation"
+    "next_bounded_step": "V01 CI native lanes and packed contracts; begin deterministic UI/packed contract CI slice"
   },
-  "next_task": "V02"
+  "next_task": "V01"
 }
