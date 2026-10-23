@@ -11,7 +11,11 @@ its brief. [P03](completion/85-p03-trusted-https-workflow.md) now completes its
 finite trusted-HTTPS/local-artifact workflow. [P04](completion/100-p04-whole-item-review.md)
 now completes its bounded production observation/handoff scope after ONE review:
 19/29 whole tasks (~66% equal count), not release readiness. Next V02.1 bounded
-Basic/active-observer latency and overhead measurements. The subsequent
+Basic/active-observer latency and overhead measurements are now in progress under the
+[preregistered finite protocol](superpowers/plans/2026-10-23-v02-basic-observer.md).
+The [first baseline](completion/101-v02-basic-observer-baseline.md) completed198 raw
+samples on unchanged60: both hosts miss the1000ms Basic route p95 and10% active/off
+median targets. V02 stays open; ONE slice review pending. The subsequent
 [F01 implementation](completion/14-f01-capability-contracts.md) consolidates
 capability policy and checks packed declarations on candidate `.20261019.3`:
 586 unit, 48 contract, 34 two-host, 26 Basic, 32 Actions and 19 source-map checks

@@ -2120,7 +2120,7 @@
           "type_consumers": 2,
           "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
           "standalone_read_inject_native_checks": 3,
-          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
           "runtime_race_checks": 14,
           "isolated_bug_mutations_rejected": 6,
           "native_checks": 29,
@@ -3776,7 +3776,7 @@
       "implementation_plan": "../superpowers/plans/2026-10-21-l02-real-local-model.md",
       "remaining_acceptance": [
         "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
-        "Final candidate actual factual/concision/usefulness comparison preserving historical20–30 and>=25/5incomplete/5untrusted criteria",
+        "Final candidate actual factual/concision/usefulness comparison preserving historical20\u201330 and>=25/5incomplete/5untrusted criteria",
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
@@ -4185,7 +4185,7 @@
         "npm run verify:production-source-mapping"
       ],
       "deliverable": "Lifecycle/privacy controls and approved latency/overhead targets or explicit maintainer exceptions",
-      "status": "planned",
+      "status": "in_progress",
       "optional": false,
       "additional_final_scope_dependencies": [
         "F05",
@@ -4193,7 +4193,29 @@
         "U05",
         "A05",
         "L02"
-      ]
+      ],
+      "active_slice": {
+        "id": "V02.1",
+        "title": "Preregistered Basic manual DOM lookup and bounded-observer workload measurements",
+        "plan": "../superpowers/plans/2026-10-23-v02-basic-observer.md",
+        "candidate": "0.1.0-candidate.20261021.60",
+        "scope": "Two hosts; fixed original20-request workload;30 interleaved measured blocks plus3 fixed warmup blocks. No full V02 or full Basic corpus acceptance."
+      },
+      "execution_record": "101-v02-basic-observer-baseline.md",
+      "current_checkpoint": {
+        "id": "V02.1-baseline",
+        "status": "measurement-complete-targets-missed-review-pending",
+        "record": "101-v02-basic-observer-baseline.md",
+        "candidate": "0.1.0-candidate.20261021.60",
+        "raw_samples": 198,
+        "measured_samples": 180,
+        "warmup_samples": 18,
+        "source_checks": 37,
+        "performance_targets_met": false,
+        "targets_waived": false,
+        "whole_task_complete": false,
+        "next_bounded_step": "V02.2 Basic latency and transport/event cost diagnosis"
+      }
     },
     {
       "id": "V03",
@@ -4326,7 +4348,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK — separate StatePort project",
+      "title": "Production SDK \u2014 separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",
@@ -5092,7 +5114,7 @@
         "type_consumers": 2,
         "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
         "standalone_read_inject_native_checks": 3,
-        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
         "runtime_race_checks": 14,
         "isolated_bug_mutations_rejected": 6,
         "native_checks": 29,
