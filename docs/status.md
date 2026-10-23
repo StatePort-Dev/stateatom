@@ -26,7 +26,7 @@ now has2411 source/2 strict packed types/9 admission/11 actual native identity c
 render-occurrence snapshots retain ordinary deep refresh. Current unchanged-protocol
 198-sample results: Basic route p95=1864.9/517ms (standalone miss/embedding met),
 active/off20.30/27.66% still misses10%. The separate phase median fell from~240ms to
-47–51ms; it does not replace the full-run miss. ONE whole V02.3 review pending;
+47–51ms; it does not replace the full-run miss. ONE fresh V02.3 review accepted with no findings; next V02.4 publication amplification;
 19/29 and V02 open.61 results remain explicitly historical. The subsequent
 [F01 implementation](completion/14-f01-capability-contracts.md) consolidates
 capability policy and checks packed declarations on candidate `.20261019.3`:

@@ -14,20 +14,20 @@
 
 **Files:** modify `tests/atom/inspector-ui.test.mjs`, `packages/atom/src/ui.mjs`, runtime/transport/types, strict browser consumer; create `tests/atom/inspection-identity-refresh.test.mjs`. Reuse existing source runtime fixture, no new test framework.
 
-- [ ] RED: for manual lookup and Inspect again, one explicit inspection followed by shallow metadata, retaining its exact native point/read time/Unknowns. A real source-runtime control counts exactly the original explicit DOM/deep-read pair rather than a third deep read. No artificial delay benchmark assertion.
-- [ ] RED: failed inspection keeps deep recovery and original error; late tab/selection/property change cannot borrow the success flag; ordinary refresh/invalidation still deep, existing no-app-action/ownership tests retained.
-- [ ] GREEN: track only local successful completion plus captured tab/selection intent after clearing; immediate load uses identity-only state (no deep/script/action re-observation) only if still matching. Preserve existing error/finally and tab behavior, no runtime/native guard removal or target rebinding. Node/value replacement after a snapshot still marks Stale rather than silently rebinding; explicit next inspection verifies the new node. Preserve active-window/editor/history/permission skip guards.
-- [ ] Focused inspector/UI/runtime/observation checks, syntax/diff, then local commit. No CSS/tokens/sharedUI change. Update Atom changelog/package and lockfile to new .61 identity before packing.
+- [x] RED: for manual lookup and Inspect again, one explicit inspection followed by shallow metadata, retaining its exact native point/read time/Unknowns. A real source-runtime control counts exactly the original explicit DOM/deep-read pair rather than a third deep read. No artificial delay benchmark assertion.
+- [x] RED: failed inspection keeps deep recovery and original error; late tab/selection/property change cannot borrow the success flag; ordinary refresh/invalidation still deep, existing no-app-action/ownership tests retained.
+- [x] GREEN: track only local successful completion plus captured tab/selection intent after clearing; immediate load uses identity-only state (no deep/script/action re-observation) only if still matching. Preserve existing error/finally and tab behavior, no runtime/native guard removal or target rebinding. Node/value replacement after a snapshot still marks Stale rather than silently rebinding; explicit next inspection verifies the new node. Preserve active-window/editor/history/permission skip guards.
+- [x] Focused inspector/UI/runtime/observation checks, syntax/diff, then local commit. No CSS/tokens/sharedUI change. Update Atom changelog/package and lockfile to new .61 identity before packing.
 
 ## Task2 — qualify .61 and repeat unchanged measurements
 
 **Files:** existing package metadata/changelog/lockfile; new numbered completion record and task-index/status/roadmap.
 
-- [ ] Full source suite, packed strict types/admission/build on .61 and exact installed pair/both hosts. Preserve every original failure; no hiding misses behind counts.
-- [ ] New .61 handoff passed to existing `basic-observer-performance-native.mjs` with unchanged fixture20GET,30 measured/3warmup blocks, three modes, all original thresholds and stricter zero-gap check. This preregistration changes only candidate identity deliberately; .60 results remain original, not overwritten. Full V02/modes/corpus stay open even if this scoped route passes.
-- [ ] Actual two-host native node/value replacement identity-guard control, then request phase probe on .61 to verify immediate state.refreshDeep=false and reduced observed phase, separately diagnostic, not a target substitute. Run other changed-area native controls only for concrete context/reporter regressions exposed by affected UI handlers; no broad P04 redo.
-- [ ] Compare raw distributions/identities and any remaining target misses. No workload scaling, warmup tuning, denominator swap or unapproved waiver.
-- [ ] ONE fresh-context whole V02.3 review, one material correction pass at most with RED/GREEN and relevant suite. Commit results/dependencies and name ONE next bounded unresolved item;19/29 remains until actual whole-task acceptance.
+- [x] Full source suite, packed strict types/admission/build on .61 and exact installed pair/both hosts. Preserve every original failure; no hiding misses behind counts.
+- [x] New .61 handoff passed to existing `basic-observer-performance-native.mjs` with unchanged fixture20GET,30 measured/3warmup blocks, three modes, all original thresholds and stricter zero-gap check. This preregistration changes only candidate identity deliberately; .60 results remain original, not overwritten. Full V02/modes/corpus stay open even if this scoped route passes.
+- [x] Actual two-host native node/value replacement identity-guard control, then request phase probe on .61 to verify immediate state.refreshDeep=false and reduced observed phase, separately diagnostic, not a target substitute. Run other changed-area native controls only for concrete context/reporter regressions exposed by affected UI handlers; no broad P04 redo.
+- [x] Compare raw distributions/identities and any remaining target misses. No workload scaling, warmup tuning, denominator swap or unapproved waiver.
+- [x] ONE fresh-context whole V02.3 review, one material correction pass at most with RED/GREEN and relevant suite. Commit results/dependencies and name ONE next bounded unresolved item;19/29 remains until actual whole-task acceptance.
 
 Review Focus: only a successful same-intent snapshot can skip redundant deep work; failures/context changes must not borrow success. Identity-only state retains exact evidence, stale/unknown semantics and permission/capability/native DOM checks; no live/current claim is introduced. Native package and unchanged measurement thresholds are separate from source tests; target misses stay open.
 
