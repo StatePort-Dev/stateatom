@@ -444,6 +444,55 @@
         "intlify_missing_translation": 16,
         "vue_component_prop_type": 8
       }
+    },
+    {
+      "id": "V03.11-warning-baseline-preparation-edition-fail",
+      "application": "CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "execution_record": "../completion/124-v03-warning-baseline.md",
+      "evidence": ".artifacts/v03/warning-baseline/2026-10-23T22-19-53-624Z/results.json",
+      "status": "FAIL_PREPARATION_BROWSER_EDITION_BEFORE_APP_NAVIGATION",
+      "app_warning_capture_valid": false,
+      "product_source_changed": false,
+      "whole_V03_complete": false
+    },
+    {
+      "id": "V03.11-warning-baseline-off-pass-on-504-partial",
+      "application": "CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "execution_record": "../completion/124-v03-warning-baseline.md",
+      "evidence": ".artifacts/v03/warning-baseline/2026-10-23T22-23-03-718Z/results.json",
+      "status": "FAIL_PARTIAL_VALID_OFF24_ON_COLD_START_504",
+      "registered_inputs": 50,
+      "inputs_stable_during_run": true,
+      "valid_startup_trials": 1,
+      "invalid_startup_trials": 1,
+      "remaining_unexecuted_trials": [
+        2,
+        3
+      ],
+      "off_primary_warning_classes": {
+        "intlify": 16,
+        "vue_component_prop_type": 8
+      },
+      "off_vs_historical_native_full_arguments_equal": false,
+      "argument_deltas": {
+        "native_only": 4,
+        "off_only": 4
+      },
+      "on_warning_comparison_valid": false,
+      "on_504_dependencies": [
+        "marked",
+        "dompurify"
+      ],
+      "initiating_cause_established": false,
+      "immutable_original_files": 498,
+      "working_original_unchanged": 497,
+      "normal_generated_deltas": [
+        "components.d.ts"
+      ],
+      "whole_V03_complete": false,
+      "full_diagnostic_complete": false
     }
   ]
 }

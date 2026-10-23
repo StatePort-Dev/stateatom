@@ -4757,7 +4757,7 @@
       "active_slice": {
         "id": "V03.11",
         "title": "Read-only original Vue warning baseline comparison",
-        "status": "preparation-edition-fail-new-full-chromium-case-preregistered",
+        "status": "in-progress-partial-off24-on-cold-start-504-comparison-incomplete",
         "predecessor": "V03.10 bounded parser complete; native15-positive/final-console-FAIL retained",
         "record": "124-v03-warning-baseline.md",
         "design": "../superpowers/specs/2026-10-24-v03-warning-baseline-design.md",
@@ -4772,7 +4772,23 @@
           "off"
         ],
         "focused_comparator_checks": 7,
-        "preparation_failure": ".artifacts/v03/warning-baseline/2026-10-23T22-19-53-624Z/results.json"
+        "preparation_failure": ".artifacts/v03/warning-baseline/2026-10-23T22-19-53-624Z/results.json",
+        "diagnostic_result": ".artifacts/v03/warning-baseline/2026-10-23T22-23-03-718Z/results.json",
+        "partial_verification": ".artifacts/v03/warning-baseline/2026-10-24/partial-checkpoint.json",
+        "valid_trials": 1,
+        "invalid_trials": 1,
+        "unexecuted_trial_indices": [
+          2,
+          3
+        ],
+        "off_primary_warning_classes": {
+          "intlify": 16,
+          "vue_component_prop_type": 8
+        },
+        "off_vs_historical_native_full_arguments_equal": false,
+        "on_cold_start_failure": "504 Outdated Optimize Dep: marked.js and dompurify.js",
+        "initiating_cause_established": false,
+        "review_pending": true
       },
       "completed_slices": [
         {
@@ -5248,8 +5264,8 @@
     "document": "124-v03-warning-baseline.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.11-preregistered-warning-comparison-not-executed",
-    "next_item": "V03.11 execute original off/on/on/off warning baseline",
+    "current_increment": "V03.11-partial-diagnostic-off24-on-504-not-complete",
+    "next_item": "Continue V03.11: diagnose retained cold-on optimizer504 prerequisite before completing original ABBA comparison",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7389,11 +7405,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.11 read-only diagnostic preregisters four fresh original app off/on/on/off trials, raw CDP console/exception/Log capture, blank positive control,1000ms finite window and full argument/multiplicity comparison. Comparator7 PASS, missing-module RED retained as preparation only. No product source/build/dependency changes or original native FAIL waiver; whole20/29 unchanged. First preparation failed browser edition before app navigation (0 app evidence); new preregistered full Chromium executable/hash/channel corrects that setup without changing criteria.",
+    "current_activity_note": "V03.11 full Chromium diagnostic executes2/4 trials: Off valid startup shows16 intlify+8 Vue prop warnings; historical native full-argument multiset differs4vs4 because instrumentation attrs appear in Vue context. On cold startup FAIL at2 Vite504 Outdated Optimize Dep requests (marked/dompurify), no valid On warning comparison.50inputs stable/source498+497 unchanged/all owned children closed. Original overall nativeFAIL/20of29 and V03.11 incomplete; ONE final review not yet dispatched.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "d40a503 product proof retained, plus V03.11 diagnostic driver/comparator/tests/spec/plan/case only",
+    "current_source_revision": "74a681e diagnostic preregistration; product d40a503/helper8/Atom70/plugin5 exact327/223/19/14 inputs unchanged",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "Commit registered diagnostic before execution, run exact original warning matrix, inspect all raw outcomes/current source/tuple/cleanup checks and comparisons; keep native15-positive/overall-FAIL unchanged; ONE whole review and one next item from actual result."
+    "next_bounded_step": "Within V03.11, localize retained cold-On Vite4 outdated dependency request failure with failure DOM/Network/HMR/optimizer evidence before further execution. Current metadata snapshot is not metadata-at-request; initiating cause and instrumentation delta unknown. Preserve cold protocol/timeouts, no unregistered warmup/reload or suppression; then resume the original four-trial question. V03.11 remains unfinished, final review/task-done pending."
   },
   "next_task": "V03"
 }

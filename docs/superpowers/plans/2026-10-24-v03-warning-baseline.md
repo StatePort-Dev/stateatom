@@ -41,10 +41,10 @@ task/status/corpus after actual terminal outcome only.
 descriptors; compareMessages(left,right) returns equal/onlyLeft/onlyRight with
 counts, no app side effects or product exports.
 
-- [ ] Write comparator negative/control tests; run node --test --test-isolation=none tests/vue/warning-comparison.test.mjs, retain RED before implementation.
-- [ ] Implement the comparator and bounded integration driver with raw capture, source/tuple/treatment checks and owned cleanup.
-- [ ] Run focused comparator tests; retain current full2585/product evidence because no product source changes; no rebuild or old full native replay.
-- [ ] Preregister exact supplied identities, original case, order/window and diagnostic constraints; commit driver/case/plan before execution.
+- [x] Write comparator negative/control tests; run node --test --test-isolation=none tests/vue/warning-comparison.test.mjs, retain RED before implementation.
+- [x] Implement the comparator and bounded integration driver with raw capture, source/tuple/treatment checks and owned cleanup.
+- [x] Run focused comparator tests; retain current full2585/product evidence because no product source changes; no rebuild or old full native replay.
+- [x] Preregister exact supplied identities, original case, order/window and diagnostic constraints; commit driver/case/plan before execution.
 - [ ] Run node tests/integration/independent-vue-warning-baseline.mjs docs/testing/independent-vue-warning-case.json; inspect actual phase results, raw warnings, artifacts and cleanup. Do not restart a live handle or retry to improve output.
 - [ ] Summarize within-condition, cross-condition and original-native differences separately; keep original15-positive/overall-FAIL result unchanged.
 - [ ] Update record124/current task routing/corpus append-only, identify one dependency-valid next item from actual result.

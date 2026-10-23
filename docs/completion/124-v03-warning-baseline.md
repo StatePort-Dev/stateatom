@@ -33,3 +33,41 @@ New full-chromium case pins the full original Chromium executable/hash plus
 documented chromium channel/new headless and new driver hash, retaining order,
 window, app/tuple, caps and all comparison/original-native criteria. Register
 this preparation correction before execution; no browser version/edition waiver.
+
+## Actual partial full-Chromium diagnostic — not complete
+
+New case preregistered74a681e; actual terminal33788/exit1:
+`.artifacts/v03/warning-baseline/2026-10-23T22-23-03-718Z/results.json`.
+Only2/4 trials executed. **Off valid; On fails startup; trials2/3 not executed.**
+50 before/after inputs match. All498 immutable originals/working497+same generated
+components.d.ts delta unchanged. Owned full Chrome153 and Vite close in both trials
+(Vite0/null); no event overflow/drop. No product/build/dependency change.
+
+Off has marker absent and reproduces16 intlify and8 Vue component-prop warning
+headers without instrumentation,0 exception/Log errors. This proves both primary
+warning groups occur in at least this uninstrumented startup. It does not prove
+every argument is identical: full vectors versus historical helper8 native differ
+4 native-only/4 off-only entries. Native Vue component contexts include the added
+data-stateatom/data-xray-source attributes; Off shows original component attrs.
+The comparator retains these differences; no normalization/filter or full-equality
+claim. Raw events and explicit deltas are preserved in partial-diagnosis.json.
+
+On never reaches required app readiness. Raw Log contains two actual504 Outdated
+Optimize Dep errors for marked.js?v=b811137d and dompurify.js?v=c4eb7017. It is an
+invalid startup comparison, not a zero-warning pass. Snapshot of final optimizer
+metadata is preserved (browserHash c25a285c). It is not metadata at request time,
+and neither the initiating optimizer cause nor a plugin-induced delta is proven.
+Installed Vite4.4.9 source40368/40385/40398 throws outdated-request errors on
+version/metadata/cache-load paths; middleware64374 translates those to this504.
+Current metadata/hash inequality alone cannot select which path happened.
+
+Partial checkpoint verifies all50 inputs, actual Off classes/full-vector delta,
+invalid On/remaining unexecuted trials, original FAIL and unchanged Atom327/helper
+223/plugin19/installed14 inputs/archives. This is evidence integrity only.
+**V03.11 remains unfinished; no task-done or final review yet.** Plan retains the
+original four-trial question and cold/timeouts/zero-console requirements.
+
+Next within V03.11: localize the retained cold-On504 with failure DOM, Network/HMR
+and optimizer evidence before more execution. A reload/warmup/longer timeout is
+not silently accepted as the solution. No original app patch, message suppression,
+completed-feature count or full native acceptance is introduced. Whole20/29 stays.
