@@ -64,3 +64,60 @@ span gate must pass or remain FAIL. The likely next parser boundary stays separa
 no app patch, target substitute, budget increase, SDK, design, account/certificate/
 user profile or other repository change. ONE whole-increment review and at most
 one tested correction pass remain due, with all evidence preserved.
+
+## New immutable artifacts and original case registration
+
+Source commit271b183 is clean producer for
+`.artifacts/development/2026-10-23T21-23-20-987Z/handoff.json`.
+Existing build:extensions and pack:development terminated0. New helper VSIX0.1.3
+SHA `fb4135633b5701e83169e54847402fd3da6b71e1253ea8c476c2a3e3d108ca7f`,
+bundle `3b7e4922f4ed102daec06b2feb22970008b453454584c1821921d8d3f47d176f`,
+5073051B/223 current inputs reproduced exactly. The two existing CJS import.meta
+warnings remain recorded, not suppressed or qualified by this source fix.
+
+Repacked plugin5 is byte-identical to supplied5, SHA
+`a6362897971eecdc0f0cd66a9cf25a4473be8224704e2a635cd4bbe7bf887453`;
+its19 inputs and14 installed files match. Atom70/UI2 archives and327 source/build
+inputs also match. No original app or plugin dependency install is repeated.
+`consumer-reuse.json` explicitly distinguishes inherited strict Node18/npm9/profile
+checks from two fresh artifact/installed-payload identity checks. It initially
+marks the new helper NOT installed/native-qualified. All9 VSIX entries, package,
+bundle and licenses are checked. Two preliminary verifier failures (sandbox
+spawn and stored Node version's optional v prefix) remain in logs; the final
+identity verifier actually terminates0. These are not product/native failures.
+
+Preregistered commit8fb5795 adds
+`docs/testing/independent-vue-source-case70-helper6.json`, changing only
+`developmentHandoff`, `consumerReceipt`, `expectedHelperSha256`. Every original
+question/assertion/target/expression/scalar/digest/range/timeout/action stays intact.
+The first preparation attempt and corrected-context native run are recorded below.
+
+## Actual new helper installed result
+
+First registered case6 run failed preflight before browser/IDE/app creation:
+`.artifacts/v03/independent-vue-source/2026-10-23T21-26-28-485Z/results.json`,
+0 checks,378 stable inputs. Derived receipt omitted original `appRoot`. Preserve
+that preparation FAIL and immutable receipt. Corrected derived receipt additionally
+retains verified original appRoot/dependencyFile; all five fields read by the
+native driver are checked. New case70-helper6-context changes only receipt path
+and is preregistered in a4cca02. No helper/app/plugin rebuild or criterion change.
+
+Actual corrected-context result
+`.artifacts/v03/independent-vue-source/2026-10-23T21-28-25-366Z/results.json`:
+**4 setup PASS /378 stable execution inputs, then selected-source FAIL**.
+Actual installed isolated VSIX SHA and bundle match exact new helper6; private
+receipt/source connection and empty original app baseline pass. Original textarea/
+disabled=false/selected marker and helper-validated runtime Observed now pass,
+removing the prior missing-source Stale barrier. Exact original source expression
+still has zero links (required1), so the original question remains FAIL. No scalar-
+read, exact IDE range, input, save/export or recipient acceptance is credited.
+Immutable498 unchanged, working497+known components.d.ts delta unchanged; own
+Vite exits0/null and helper closes. Old helper5/Atom70 Stale failures remain intact.
+The new journal still has256 captures/source-budget/script-budget/anonymous/isolated
+limitations, no finite first-read/code-history qualification from this increment.
+
+ONE final whole-increment review remains due. Next bounded dependency-valid item
+is **V03.10: correct the selected SFC source parser's HTML void-element handling**,
+with actual original source/range/Observed-read/IDE criteria unchanged. Generic
+baseParse rejects the original ordinary input; no original app rewrite or target
+substitution is proposed. This is separate from the safe source acquisition fix.
