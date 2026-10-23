@@ -29,6 +29,10 @@ The current dependency-repair candidate uses Vite 7.3.7 and Vue compilers 3.5.44
 while retaining React/ReactDOM 18.3.1 dev. Historical reports below retain their
 original tested versions. See [dependency repair and compiler limits](docs/roadmap/2026-10-18-dependency-candidate.md).
 
+For a supplied local browser folder and optional installed helper/plugin, use the
+[installed preview guide](docs/installed-preview.md). The contributor commands
+below are a separate route; the guide's clean user-path acceptance remains open.
+
 Current source locations are documented in the [repository layout](docs/repository-layout.md).
 
 ## Develop locally
