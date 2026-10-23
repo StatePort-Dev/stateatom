@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import path from 'node:path';
 import {createServer} from 'node:http';
 import {spawn,execFileSync} from 'node:child_process';
+import {stripVTControlCharacters} from 'node:util';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {startNativeBrowser} from '../../scripts/native-browser.mjs';
 import {rpc,waitFor} from '../../scripts/harness.mjs';
@@ -27,7 +28,7 @@ const inputs=async()=>Object.fromEntries(await Promise.all(registered.map(async 
 async function originalSources(){for(const [f,hash] of Object.entries(sourceManifest)){assert.equal(sha256(await readFile(path.join(app.workingCopy,f))),hash,'working source '+f);assert.equal(sha256(await readFile(path.join(app.immutableSource,f))),hash,'immutable source '+f);}return Object.keys(sourceManifest).length;}
 const result={schema:'stateatom.v03-independent-react-basic/1',status:'RUNNING',startedAt:new Date().toISOString(),revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceDirty:!!execFileSync('git',['status','--porcelain'],{encoding:'utf8'}).trim(),handoff:{file:handoffFile,package:h.package,ui:h.ui},application:{repository:'https://github.com/'+scenario.application,revision:scenario.revision,workingCopy:app.workingCopy,installedVersions:app.installedVersions},configuration:scenario.environment,limits:scenario.limits,checks:[],errors:[],console:[],traffic:[],inputsBefore:await inputs()};
 const check=async(name,fn)=>{await fn();result.checks.push({name,status:'PASS'});console.log('PASS',name);};
-let api,vite,browser,ui,downloads,viteOutput='',viteFailure;
+let api,vite,browser,ui,downloads,viteOutput='',viteFailure,failureAppProbe,failureAppShot;
 async function observe(page,surface){
   page.on('pageerror',e=>result.errors.push({surface,message:e.message}));
   const driver=await nativeInspectorUI(page,browser);
@@ -63,7 +64,7 @@ try{
   const args=[path.join(app.workingCopy,'node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port',String(port),'--strictPort'];
   vite=spawn(process.execPath,args,{cwd:app.workingCopy,env:{PATH:path.dirname(process.execPath)+':/usr/bin:/bin',LANG:'C.UTF-8',CI:'1',VITE_API_BASE_URL:result.apiOrigin},stdio:['ignore','pipe','pipe']});
   vite.once('error',e=>{viteFailure=e;});for(const stream of[vite.stdout,vite.stderr])stream.on('data',data=>{viteOutput+=data;});
-  await waitFor(()=>{if(viteFailure)throw viteFailure;if(vite.exitCode!==null||vite.signalCode!==null)throw Error('Owned Vite exited before readiness');return viteOutput.includes(result.appOrigin+'/')&&viteOutput.includes('Local:');},30000);
+  await waitFor(()=>{if(viteFailure)throw viteFailure;if(vite.exitCode!==null||vite.signalCode!==null)throw Error('Owned Vite exited before readiness');const plain=stripVTControlCharacters(viteOutput);return plain.includes(result.appOrigin+'/')&&plain.includes('Local:');},30000);
   await writeFile(out+'/vite-command.json',JSON.stringify({executable:process.execPath,node:process.version,args,cwd:app.workingCopy,env:{PATH:path.dirname(process.execPath)+':/usr/bin:/bin',LANG:'C.UTF-8',CI:'1',VITE_API_BASE_URL:result.apiOrigin},ownedPid:vite.pid,readiness:'strictPort + this live child stdout exact Local URL; no foreign listener adoption'},null,2));
   browser=await startNativeBrowser(out+'/profiles','origin',true,false,[],{extensionPath:h.hosts.standalone});result.browser=browser.context.browser().version();
   const panel=await browser.context.newPage();await panel.goto('chrome-extension://'+browser.id+'/panel.html');ui=await observe(panel,'inspector');downloads=await nativeDownloads(out+'/profiles/origin',out+'/downloads');
@@ -73,6 +74,7 @@ try{
   });
   const tabId=await panel.evaluate(async url=>(await chrome.tabs.create({url})).id,result.appOrigin+'/');result.tabId=tabId;
   const appDOM=()=>panel.evaluate(async({id,cart,add})=>(await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:(cart,add)=>({url:location.href,title:document.title,cart:document.querySelector(cart)?.textContent,add:document.querySelector(add)?.textContent,body:document.body.innerText.slice(0,15000),ready:document.readyState}),args:[cart,add]}))[0].result,{id:tabId,cart:scenario.cartSelector,add:scenario.addSelector});
+  failureAppProbe=appDOM;
   await waitFor(async()=>{const v=await appDOM();return v.ready==='complete'&&v.add?.includes('Add to Cart');},30000);
   await ui.click('refresh-tabs');await ui.waitOK();await ui.select('tabs',tabId);await ui.waitOK();await ui.click('attach');await ui.waitOK();
   const state=()=>rpc(panel,{op:'state',tabId,refreshDeep:false});
@@ -80,8 +82,9 @@ try{
     globalThis.__v03AppLogs=[];chrome.debugger.onEvent.addListener((source,method,p)=>{if(source.tabId===id&&(method==='Runtime.exceptionThrown'||method==='Runtime.consoleAPICalled'&&['error','warning','warn'].includes(p.type)||method==='Log.entryAdded'&&['error','warning'].includes(p.entry.level)))globalThis.__v03AppLogs.push({method,params:p});});
     await chrome.debugger.sendCommand({tabId:id},'Runtime.enable');await chrome.debugger.sendCommand({tabId:id},'Log.enable');
   },tabId);
+  failureAppShot=async()=>{const data=await panel.evaluate(async id=>(await chrome.debugger.sendCommand({tabId:id},'Page.captureScreenshot',{format:'png'})).data,tabId);await writeFile(out+'/failure-app.png',Buffer.from(data,'base64'));};
   async function pointer(selector){return panel.evaluate(async({id,selector})=>{
-    await chrome.tabs.update(id,{active:true});const point=(await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:selector=>{const e=document.querySelector(selector);if(!e)throw Error('Missing app target '+selector);e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2};},args:[selector]}))[0].result;
+    await chrome.tabs.update(id,{active:true});const point=(await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:async selector=>{const e=document.querySelector(selector);if(!e)throw Error('Missing app target '+selector);e.scrollIntoView({block:'center'});let previous,stable=0;for(let i=0;i<120;i++){await new Promise(requestAnimationFrame);const r=e.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2,hit=document.elementFromPoint(x,y);stable=previous&&Math.abs(previous.x-x)<0.1&&Math.abs(previous.y-y)<0.1?stable+1:0;previous={x,y};if(stable>=3&&r.width>0&&r.height>0&&(hit===e||e.contains(hit)))return{x,y};}throw Error('App target did not settle or is obscured: '+selector);},args:[selector]}))[0].result;
     for(const type of['mouseMoved','mousePressed','mouseReleased'])await chrome.debugger.sendCommand({tabId:id},'Input.dispatchMouseEvent',{type,...point,...(type==='mouseMoved'?{}:{button:'left',clickCount:1})});return point;
   },{id:tabId,selector});}
   await check('actual independent shop renders synthetic products and original cart control',async()=>{result.appBefore=await appDOM();assert.equal(result.appBefore.url,result.appOrigin+'/');assert.equal(result.appBefore.title,'ShopHub - Your Modern E-commerce Store');assert.equal(result.appBefore.cart,'Cart');assert.match(result.appBefore.body,/V03 synthetic blue mug/);});
@@ -100,18 +103,27 @@ try{
   await ui.click('diagnostic-toggle');await ui.fill('diagnostic-notes','V03 independent app: original cart observation before adding one synthetic item');await ui.click('save-report');await waitFor(async()=>(await ui.text('diagnostic-status')).startsWith('Saved'));
   const oldEntry=(await rpc(panel,{op:'list-handoffs'})).entries.find(e=>e.version===1);assert(oldEntry);const old=await rpc(panel,{op:'open-handoff',id:oldEntry.id});const oldDiagnostic=parseDiagnostic(old.raw);
   await check('old locally saved snapshot is historical Cart with Unknown runtime',async()=>{assert.equal(oldDiagnostic.target.value,'Cart');assert.equal(oldDiagnostic.kind,'historical-diagnostic');assert.equal(oldDiagnostic.runtime.status,'Unknown/Unsupported');result.oldSnapshot={id:oldEntry.id,sha256:sha256(old.raw),capturedAt:oldDiagnostic.capturedAt};await writeFile(out+'/before.stateatom.json',old.raw);});
-  await pointer(scenario.addSelector);await waitFor(async()=>(await appDOM()).cart==='1Cart');await ui.click('load');await ui.waitOK();
+  result.addPointer=await pointer(scenario.addSelector);await waitFor(async()=>(await appDOM()).cart==='1Cart');await ui.click('load');await ui.waitOK();
   await check('ordinary app action changes count; Inspect again observes 1Cart without fabricated lineage',async()=>{const s=await state();assert.equal(s.selection.value,'1Cart');assert.notEqual(s.selection.observedAt,result.selectionBefore.observedAt);assert.equal(s.readOnly,true);assert.equal(s.analysis.stateatom.runtime.status,'Unknown/Unsupported');assert.equal((await appDOM()).url,result.appOrigin+'/');assert.equal((await rpc(panel,{op:'open-handoff',id:oldEntry.id})).raw,old.raw);result.selectionAfter=s.selection;});
   await ui.click('handoff-current');await waitFor(()=>panel.evaluate(s=>!document.querySelector(s).disabled,ui.q('handoff-preview')));
   for(const k of['title','actual','expected'])await ui.fill('handoff-'+k,scenario.issue[k]);await ui.fill('handoff-steps',scenario.issue.steps.join('\n'));
-  const prior=downloads.ids();await ui.click('handoff-preview');await waitFor(()=>panel.evaluate(s=>!document.querySelector(s).disabled,ui.q('handoff-save')));result.reviewSummary=await ui.text('handoff-summary');
+  const prior=downloads.ids();await ui.click('handoff-preview');
+  const reviewOutcome=await waitFor(()=>panel.evaluate(({save,status,simple})=>!document.querySelector(save).disabled?'ready':document.querySelector(status).textContent.startsWith('HANDOFF_LIMIT')&&!document.querySelector(simple).hidden?'limit':null,{save:ui.q('handoff-save'),status:ui.q('handoff-status'),simple:ui.q('handoff-simple')}));
+  if(reviewOutcome==='limit'){
+    result.detailedReport={status:'FAIL',reason:'HANDOFF_LIMIT',message:await ui.text('handoff-status'),fallback:'explicit existing simple report; not detailed path acceptance'};
+    result.checks.push({name:'original detailed current report path',...result.detailedReport});console.log('FAIL_RETAINED detailed current report HANDOFF_LIMIT');
+    assert.deepEqual(downloads.ids(),prior);await ui.click('handoff-simple');await ui.click('handoff-preview');await waitFor(()=>panel.evaluate(s=>!document.querySelector(s).disabled,ui.q('handoff-save')));
+  }else result.detailedReport={status:'PASS'};
+  result.reviewSummary=await ui.text('handoff-summary');
   await check('explicit review shows reporter words and omissions before any download',async()=>{assert.deepEqual(downloads.ids(),prior);assert.match(result.reviewSummary,/V03 cart interaction demonstration/);assert.match(result.reviewSummary,/successful scenario/);assert.match(result.reviewSummary,/historical|Recorded/);result.screenshots.review=await ui.screenshot(out+'/review-narrow.png',{width:440,focus:'handoff-heading'});});
   await ui.click('handoff-save');await waitFor(async()=>(await ui.text('handoff-status')).startsWith('Saved'));
   const reportEntry=(await rpc(panel,{op:'list-handoffs'})).entries.find(e=>e.version===2);assert(reportEntry);const saved=await rpc(panel,{op:'open-handoff',id:reportEntry.id});
   await ui.click('handoff-download');const download=await downloads.next(prior);const parsed=await parseHandoffReport(download.raw),r=parsed.record;
   await check('download is exact saved reviewed bytes with default selected text exclusion and historical trust',async()=>{
-    assert.equal(download.raw,saved.raw);assert.equal(parsed.trust,'historical-untrusted');assert.equal(r.report.issue.title,scenario.issue.title);assert.equal(r.report.issue.actual,scenario.issue.actual);assert.equal(r.report.target.property,'text');assert.equal(r.report.target.value.state,'omitted');assert.equal(r.profile,'input-evidence/1');assert.equal(r.inputEvidence.projection.selectedObservation.value.state,'omitted');
-    const rows=r.report.technicalEvidence.fields;assert(!rows.some(f=>f.category&&['selectedText','selectionDetails','sourceLocations','sourceExcerpts','runtimeValues','responseBodies','networkLocations','routePaths','originalNotes','diagnosticDetails'].includes(f.category)&&['included','filtered','replaced'].includes(f.state)));
+    assert.equal(download.raw,saved.raw);assert.equal(parsed.trust,'historical-untrusted');assert.equal(r.report.issue.title,scenario.issue.title);assert.equal(r.report.issue.actual,scenario.issue.actual);assert.equal(r.report.target.property,'text');
+    let rows=[];
+    if(result.detailedReport.status==='FAIL'){assert.equal(r.profile,'minimal-snapshot/1');assert.equal(r.report.technicalEvidence.state,'omitted');assert.equal(r.report.target.value,null);assert.equal(Object.hasOwn(r,'inputEvidence'),false);}
+    else{assert.equal(r.report.target.value.state,'omitted');assert.equal(r.profile,'input-evidence/1');assert.equal(r.inputEvidence.projection.selectedObservation.value.state,'omitted');rows=r.report.technicalEvidence.fields;assert(!rows.some(f=>f.category&&['selectedText','selectionDetails','sourceLocations','sourceExcerpts','runtimeValues','responseBodies','networkLocations','routePaths','originalNotes','diagnosticDetails'].includes(f.category)&&['included','filtered','replaced'].includes(f.state)));}
     result.report={file:download.file,sha256:sha256(download.raw),bytes:Buffer.byteLength(download.raw),profile:r.profile,trust:parsed.trust,selectedValue:r.report.target.value,sourceDiagnostic:r.report.sourceDiagnostic,technicalRows:rows.length};
   });
   result.appConsole=await panel.evaluate(()=>globalThis.__v03AppLogs);await ui.close();ui=null;downloads.close();downloads=null;await browser.context.close();browser=null;
@@ -125,10 +137,11 @@ try{
     await ui.p.send('Emulation.setDeviceMetricsOverride',{width:1100,height:900,deviceScaleFactor:1,mobile:false});await reader.evaluate(async()=>{await document.fonts.ready;await new Promise(requestAnimationFrame);});await reader.screenshot({path:out+'/reader-desktop.png'});
   });
   await check('extension healthy, logs captured and original app/build/archive bytes unchanged',async()=>{assert.deepEqual(result.errors,[]);assert.deepEqual(result.console,[]);assert.deepEqual(result.appConsole,[]);assert.equal(await originalSources(),65);assert.deepEqual(await fileManifest(h.hosts.standalone),h.consumerReceipt.hostFiles.standalone);assert.equal(result.screenshots.desktop.overflow,false);assert.equal(result.screenshots.narrow.overflow,false);});
-  result.status='PASS_BOUNDED_INDEPENDENT_BASIC_NOT_FULL_V03';
+  result.status=result.detailedReport.status==='FAIL'?'PARTIAL_BASIC_AND_EXPLICIT_SIMPLE_READER_DETAILED_LIMIT':'PASS_BOUNDED_INDEPENDENT_BASIC_NOT_FULL_V03';
+  if(result.detailedReport.status==='FAIL')process.exitCode=2;
 }catch(error){result.status='FAIL';result.error=error.stack;process.exitCode=1;console.error(error);}
 finally{
-  if(ui&&browser){try{result.failureUI=await ui.p.send('Runtime.evaluate',{expression:'document.body.innerText',returnByValue:true});}catch{}}
+  if(result.status==='FAIL'&&ui&&browser){try{result.failureUI=await ui.p.send('Runtime.evaluate',{expression:'document.body.innerText',returnByValue:true});}catch{}try{result.failureAppDOM=await failureAppProbe?.();await failureAppShot?.();}catch{}}
   await ui?.close().catch(()=>{});downloads?.close();await browser?.context.close().catch(()=>{});await stopVite();await stopAPI();
   await writeFile(out+'/vite.log',viteOutput);result.viteLogSha256=sha256(viteOutput);result.inputsAfter=await inputs();
   if(JSON.stringify(result.inputsAfter)!==JSON.stringify(result.inputsBefore)){result.status='FAIL';result.inputDrift=true;process.exitCode=1;}

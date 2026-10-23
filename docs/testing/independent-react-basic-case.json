@@ -38,6 +38,12 @@
     "expected": "For this demonstration the cart should show 1 after one Add to Cart action.",
     "steps": ["Open the locally configured independent shop", "Select and save the cart text", "Add the first synthetic product", "Inspect again and review this historical report"]
   },
+  "registeredFollowup": {
+    "retainedOriginalFailure": ".artifacts/v03/independent-react-basic/2026-10-23T16-09-05-348Z/results.json",
+    "observed": "Cart action and refresh passed; detailed current Review report returned HANDOFF_LIMIT and offered the existing simple report button",
+    "action": "Keep the detailed path failed. Explicitly choose the existing simple report, review again, save/download it and try the fresh passive reader",
+    "acceptance": "Any success is only the simple fallback; the original detailed path and full V03 remain incomplete. Exit2 and PARTIAL result retain this distinction"
+  },
   "limits": [
     "Native automation is agent-operated, not human visual acceptance",
     "CLI extension preload is setup assistance, not Chrome Load unpacked UI evidence",
