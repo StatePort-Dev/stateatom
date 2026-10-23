@@ -148,11 +148,15 @@ source links0/required1 FAIL. Scalar-read/IDE/input/export remain unaccepted; ol
 helper5/6 failures preserved. Next bounded V03.10 fixes the source parser rejecting
 ordinary HTML void input; no original app patch or target/criterion substitution.
 Whole20/29 (~69%), V03/C09/A02/L02/V02 unchanged; no new feature-readiness claim.
-[V03.10](completion/123-v03-vue-source-html.md) source parser now uses locked Vue
-DOM rules. Actual RED6=1PASS5FAIL→focused39 PASS; unchanged original source replay
-links exact disabled expression/digest/range156:9–174:11, source-only Code-linked.
-Full2585 PASS; new exact helper/original native/ONE review remain due. Original helper7
-native FAIL and20/29 remain unchanged; no scalar/IDE/workflow acceptance inferred.
+[V03.10](completion/123-v03-vue-source-html.md) source parser uses locked Vue DOM
+rules: actual RED6=1PASS5FAIL→focused39/full2585 PASS. Exact helper8 original native
+15 gates PASS/378 stable, including exact expression/digest/Observed scalar read,
+actual IDE range156:9–174:11, ordinary input/clear, Save/native Download126525B and
+passive fresh reader. Final zero-app-console gate FAIL24 intlify localization
+warnings; cause not established, inspector console/errors0. No combined green,
+consumer lineage or full V03/C09 claim. ONE review due; next V03.11 compares
+uninstrumented/instrumented original app warnings without suppression or gate
+waiver. Atom70/plugin5/whole20/29 unchanged; historical FAILs retained.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

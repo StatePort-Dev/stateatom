@@ -413,6 +413,33 @@
       "selected_source_links": 0,
       "required_selected_source_links": 1,
       "raw_page_trace_is_accepted_source": false
+    },
+    {
+      "id": "V03.10-helper8-original-selected-route-console-fail",
+      "application": "CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "execution_record": "../completion/123-v03-vue-source-html.md",
+      "evidence": ".artifacts/v03/independent-vue-source/2026-10-23T21-53-15-845Z/results.json",
+      "status": "FAIL_FINAL_APP_CONSOLE24_INTLIFY_WARNINGS",
+      "prior_checks_passed": 15,
+      "registered_inputs": 378,
+      "inputs_stable_during_run": true,
+      "immutable_original_files": 498,
+      "working_original_unchanged": 497,
+      "normal_generated_deltas": [
+        "components.d.ts"
+      ],
+      "IDE_started": true,
+      "source_positive_gate_reached": true,
+      "exact_original_scalar_read_verified": true,
+      "exact_original_IDE_range_verified": true,
+      "original_input_clear_verified": true,
+      "native_save_download_fresh_reader_verified": true,
+      "inspector_console_errors": 0,
+      "app_console_warnings": 24,
+      "warning_cause_established": false,
+      "whole_V03_complete": false,
+      "combined_green_run": false
     }
   ]
 }

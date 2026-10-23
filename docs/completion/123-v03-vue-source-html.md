@@ -52,3 +52,33 @@ dependencyFile. It does not claim helper native qualification. New original case
 70-helper8 changes only developmentHandoff/consumerReceipt/expectedHelperSha256;
 original app/target/expression/scalar/digest/range/timeout/actions/driver unchanged.
 Commit registration before executing the original installed question.
+
+## Actual installed original workflow
+
+Preregistered4b4e536, terminal24479/exit1. Immutable result:
+`.artifacts/v03/independent-vue-source/2026-10-23T21-53-15-845Z/results.json`.
+**15 actual gates PASS/378 stable inputs; final zero-app-console gate FAIL.**
+Exact isolated installed helper8 VSIX/bundle match. The original selected textarea
+has disabled=false, its exact selected marker, one original disabled expression
+with the original digest, Observed scalar read, and actual VS Code selection
+156:9–174:11. Ordinary input produces8/2/1/8 Bytes, clear returns0/0/0/0 Bytes.
+Cancel, historical snapshots, current-vs-saved separation, disconnect-to-Basic,
+v1 Save/review/native Download126525B and fresh passive reader after origin/IDE/
+source browser shutdown pass. Reader claims stay historical/untrusted and acquire
+no authority or outside import requests. No parent/default/composable/NaiveUI
+consumer lineage or full C09/V03 is inferred from this selected read.
+
+The final required healthy-log check finds **24 original-app intlify warnings**
+about missing English tool title/description translations. Inspector console and
+errors are0. The native result remains FAIL; warning cause is not established.
+No warning filtering, locale patch, criterion reduction or combined green claim.
+All498 immutable originals and working497+same components.d.ts delta unchanged;
+own Vite0/null/helper closed. Desktop1100/narrow440 root13px have no overflow;
+actual desktop/narrow/reader screenshots inspected, candidates only. There is no
+new visual design or human acceptance. Code-history/first-read limits remain.
+
+Next bounded item **V03.11: read-only uninstrumented/instrumented original-app
+warning comparison**, preserving the zero-console gate and actual fifteen positive
+subchecks. It must identify whether the warnings pre-exist or are introduced;
+neither outcome is assumed approved or already established. ONE final review of
+this parser increment remains due. Whole20/29 (~69%) unchanged.

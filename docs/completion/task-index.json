@@ -4753,23 +4753,25 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "122-v03-selected-source-budget.md",
+      "execution_record": "123-v03-vue-source-html.md",
       "active_slice": {
-        "id": "V03.9",
-        "title": "Bounded selected workspace-source acquisition before background index exhaustion",
-        "status": "source-pass-new-helper-native-and-review-due",
-        "predecessor": "V03.8 read-only diagnosis complete; original independent selected-source FAIL retained",
-        "record": "122-v03-selected-source-budget.md",
-        "design_pending": false,
-        "registered_question": "../testing/independent-vue-source-case70.json",
+        "id": "V03.10",
+        "title": "Selected Vue source-template HTML parsing",
+        "status": "engineering-source-pass-native15-partial-console-gate-fail-review-due",
+        "predecessor": "V03.9 bounded source acquisition complete; helper7 source0/1 FAIL retained",
+        "record": "123-v03-vue-source-html.md",
+        "design": "../superpowers/specs/2026-10-24-v03-vue-source-html-design.md",
+        "plan": "../superpowers/plans/2026-10-24-v03-vue-source-html.md",
+        "registered_question": "../testing/independent-vue-source-case70-helper8.json",
         "same_question_required": true,
+        "focused_source_checks": 39,
+        "full_source_checks": 2585,
+        "native_checks_passed": 15,
+        "native_status": "FAIL_FINAL_APP_CONSOLE24_INTLIFY_WARNINGS",
+        "native_evidence": ".artifacts/v03/independent-vue-source/2026-10-23T21-53-15-845Z/results.json",
+        "source_positive_gate_reached": true,
         "full_V03_acceptance": false,
-        "design": "../superpowers/specs/2026-10-24-v03-selected-source-budget-design.md",
-        "plan": "../superpowers/plans/2026-10-24-v03-selected-source-budget.md",
-        "focused_source_checks": 25,
-        "full_source_checks": 2575,
-        "source_replay_status": "PARTIAL_READER_TRACE_VALIDATION_PASS_SOURCE_LINK_UNAVAILABLE",
-        "native_rerun": false
+        "review_pending": true
       },
       "completed_slices": [
         {
@@ -4999,6 +5001,52 @@
           "product_changed": false,
           "native_rerun": false,
           "full_task_complete": false
+        },
+        {
+          "id": "V03.9",
+          "title": "Bounded selected workspace-source acquisition before background index exhaustion",
+          "status": "engineering-complete-independent-source-fail",
+          "predecessor": "V03.8 read-only diagnosis complete; original independent selected-source FAIL retained",
+          "record": "122-v03-selected-source-budget.md",
+          "design_pending": false,
+          "registered_question": "../testing/independent-vue-source-case70.json",
+          "same_question_required": true,
+          "full_V03_acceptance": false,
+          "design": "../superpowers/specs/2026-10-24-v03-selected-source-budget-design.md",
+          "plan": "../superpowers/plans/2026-10-24-v03-selected-source-budget.md",
+          "focused_source_checks": 29,
+          "full_source_checks": 2579,
+          "source_replay_status": "PARTIAL_READER_TRACE_VALIDATION_PASS_SOURCE_LINK_UNAVAILABLE",
+          "native_rerun": true,
+          "native_setup_checks": 4,
+          "native_status": "FAIL_EXACT_SELECTED_SOURCE_LINK_ZERO_REQUIRED_ONE",
+          "native_evidence": ".artifacts/v03/independent-vue-source/2026-10-23T21-40-16-363Z/results.json",
+          "verification": ".artifacts/v03/selected-source-budget/2026-10-24/final-checkpoint.json",
+          "whole_review": {
+            "critical": 0,
+            "important": 1,
+            "fixed_important": 1,
+            "minor": 0,
+            "correction_passes": 1,
+            "re_review": false
+          },
+          "pre_review_source_snapshot": {
+            "id": "V03.9",
+            "title": "Bounded selected workspace-source acquisition before background index exhaustion",
+            "status": "source-pass-new-helper-native-and-review-due",
+            "predecessor": "V03.8 read-only diagnosis complete; original independent selected-source FAIL retained",
+            "record": "122-v03-selected-source-budget.md",
+            "design_pending": false,
+            "registered_question": "../testing/independent-vue-source-case70.json",
+            "same_question_required": true,
+            "full_V03_acceptance": false,
+            "design": "../superpowers/specs/2026-10-24-v03-selected-source-budget-design.md",
+            "plan": "../superpowers/plans/2026-10-24-v03-selected-source-budget.md",
+            "focused_source_checks": 25,
+            "full_source_checks": 2575,
+            "source_replay_status": "PARTIAL_READER_TRACE_VALIDATION_PASS_SOURCE_LINK_UNAVAILABLE",
+            "native_rerun": false
+          }
         }
       ],
       "current_checkpoint": {
@@ -5167,8 +5215,8 @@
     "document": "123-v03-vue-source-html.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.10-source-html-parser-implemented-not-new-native-acceptance",
-    "next_item": "V03.10 exact new helper and original source/scalar/IDE workflow",
+    "current_increment": "V03.10-parser-source-and-native15-pass-final-app-console-fail-review-due",
+    "next_item": "V03.10 ONE final review, then V03.11 original app warning baseline diagnosis",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7290,11 +7338,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.10 switches source-template parsing to locked Vue DOM parse; actual RED6=1PASS5FAIL -> focused39/full2585PASS. Retained original source replay now links exact expression/digest/range156:9-174:11, source-only. New exact helper/original native/ONE review due; historical FAILs and whole20/29 unchanged.",
+    "current_activity_note": "V03.10 parser RED6=1PASS5FAIL -> focused39/full2585PASS. Exact helper8 native15 gates PASS/378 stable including original selected expression/scalar/IDE/input/save/export/passive reader, then final zero-app-console gate FAIL24 intlify warnings. Warning cause not established; no combined green or full V03/C09. ONE final review due; next V03.11 read-only baseline comparison. Whole20/29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "3ff130a plus pending V03.10 core/vue-source.mjs/tests/spec/plan; Atom70/plugin5 inputs exclude this source pending exact rechecks",
+    "current_source_revision": "20fc8ec4a9add2128816dcd4b4b50635b35759c4 helper8 producer; original native preregistration4b4e536; Atom70/plugin5 inputs verified unchanged",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.10 finish actual full source checks, build/reproduce new helper, verify unchanged Atom70/plugin5 before reuse, preregister only new artifact/receipt identities, run unchanged original source/scalar/IDE/input/export question and preserve any FAIL; ONE whole review, at most one tested correction pass."
+    "next_bounded_step": "Finish ONE V03.10 whole review and integrity closeout; then V03.11 diagnose 24 retained original-app intlify warnings with uninstrumented/instrumented baseline control. Preserve original zero-console gate, selected source/scalar/range/IDE/input/export criteria and all historical FAILs; no app patch or warning suppression."
   },
   "next_task": "V03"
 }
