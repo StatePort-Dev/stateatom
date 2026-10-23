@@ -116,3 +116,9 @@ client.request({op:'observation-stop',tabId:1,ownerId:'view',windowId:'12345678-
 client.request({op:'observation-stop',tabId:1,ownerId:'view',windowId:'12345678-1234-1234-1234-123456789abc',reason:'permission-lost'});
 // @ts-expect-error Reads cannot supply a stopping reason.
 client.request({op:'observation-read',tabId:1,ownerId:'view',windowId:'12345678-1234-1234-1234-123456789abc',reason:'tab-switch'});
+
+client.request({op:'state',tabId:1,refreshDeep:false,refreshIdentity:true});
+// @ts-expect-error Native identity refresh is a state-only option.
+client.request({op:'metrics',tabId:1,refreshIdentity:true});
+// @ts-expect-error The identity option is boolean.
+client.request({op:'state',tabId:1,refreshIdentity:'yes'});

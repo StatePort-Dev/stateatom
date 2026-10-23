@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.61
+
+- Successful same-intent manual lookup and Inspect again retain their completed
+  snapshot and use a native DOM identity/value check for the immediate state
+  response, avoiding a second deep observation/action metadata acquisition.
+  Replaced nodes/values still become Stale; errors/context changes and ordinary
+  refresh retain their existing paths. Snapshot timestamps/Unknowns stay literal.
+- Additive state-only boolean `refreshIdentity` performs no app script/action and
+  does not override deep refresh, active-editor/window/history or permission
+  guards. No CSS/token/visual contract or editing-authority change. Performance
+  outcomes require separate native measurements; no target waiver is implied.
+
 ## 0.1.0-candidate.20261021.60
 
 - Selected-tab changes now retain the actual tab-switch stop reason. Other view

@@ -54,7 +54,8 @@ export type AtomOperation=
  |{op:'source-map-clear';tabId:number}
  |{op:'detach'|'restore'|'metrics';tabId:number}
  |{op:'pick'|'cancel-pick';tabId:number;pickerId?:string}
- |{op:'state';tabId:number;ownerId?:string;observationOwnerId?:string;refreshDeep?:boolean}
+ /** Native DOM identity/value guard only; deep refresh takes precedence. No deep re-observation. */
+ |{op:'state';tabId:number;ownerId?:string;observationOwnerId?:string;refreshDeep?:boolean;refreshIdentity?:boolean}
  |{op:'inspect-selector';tabId:number;selector:string}
  |{op:'refine-pick';tabId:number;pickerId:string;index:number}
  |{op:'selected';tabId:number;selector:string;token:string;documentId?:string}
