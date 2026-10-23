@@ -143,3 +143,17 @@ qualification. Corrected retained replay still indexes160/338501B, exact origina
 selected digest and Observed validation; source0 remains PARTIAL/exit1. New exact
 corrected helper/native execution follows;
 helper6 results above stay historical for its precise pre-correction bytes.
+
+## Corrected helper7 exact registration
+
+Clean producer `2c888e296c8bacb98f6f6b780457da2d036b225e`; declared build/pack,
+exact byte reproduction and identity derivation all terminate0. Immutable handoff
+`.artifacts/development/2026-10-23T21-39-11-444Z/handoff.json`:
+VSIX SHA `354f49d78d0b437bdbf0e6e03b82fa28b017323c2413a7bbea575dd294ae378f`,
+bundle `dbc127ec8b2ec4e2d9604604697a5b0563efbc9417ffa2a5dd6d816ceb7389be`,
+5073818B/223 exact inputs; two existing CJS warnings retained. Plugin5 archive,
+19 inputs/14 installed files and Atom70/UI2 archives/327 inputs match unchanged.
+New `consumer-reuse-helper7.json` explicitly inherits prior strict plugin admission
+and retains verified original appRoot/dependencyFile; no reinstall/native pass.
+Case70-helper7 changes only handoff/receipt/helperSHA from helper6-context and is
+committed before execution. Original app, driver, question and criteria unchanged.

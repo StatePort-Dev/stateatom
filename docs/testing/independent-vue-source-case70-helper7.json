@@ -1,0 +1,81 @@
+{
+  "schema": "stateatom.v03-independent-vue-source-case/1",
+  "application": "CorentinTh/it-tools",
+  "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+  "expectedAtomVersion": "0.1.0-candidate.20261021.70",
+  "expectedUIVersion": "0.2.0-candidate.20261018.2",
+  "developmentHandoff": ".artifacts/development/2026-10-23T21-39-11-444Z/handoff.json",
+  "consumerReceipt": ".artifacts/v03/selected-source-budget/2026-10-24/consumer-reuse-helper7.json",
+  "expectedPluginVersion": "0.1.0-candidate.20261021.5",
+  "expectedPluginSha256": "a6362897971eecdc0f0cd66a9cf25a4473be8224704e2a635cd4bbe7bf887453",
+  "expectedHelperVersion": "0.1.3",
+  "expectedHelperSha256": "354f49d78d0b437bdbf0e6e03b82fa28b017323c2413a7bbea575dd294ae378f",
+  "nodeExecutable": "/home/roman/.config/nvm/versions/node/v18.18.2/bin/node",
+  "nodeVersion": "v18.18.2",
+  "viteVersion": "4.4.9",
+  "vueVersion": "3.3.4",
+  "vuePluginVersion": "4.3.2",
+  "route": "/text-statistics",
+  "inputSelector": "textarea[placeholder='Your text...']",
+  "selectionSelector": "textarea[placeholder='Your text...']",
+  "property": "disabled",
+  "expectedValue": false,
+  "expectedSource": "src/ui/c-input-text/c-input-text.vue",
+  "expectedExpression": "disabled",
+  "requiredObservedScalarRead": {
+    "expression": "disabled",
+    "value": false
+  },
+  "requireMarkerOnSelected": true,
+  "requireExactIDESelection": true,
+  "developmentActions": [
+    "cache",
+    "reload"
+  ],
+  "overrideOrReplayPermissionRequested": false,
+  "expectedDevelopmentReadOnly": false,
+  "input": "Atom Vue",
+  "expectedStatistics": [
+    "8",
+    "2",
+    "1",
+    "8 Bytes"
+  ],
+  "countSelector": ".n-statistic .n-statistic-value__content",
+  "initialGeneratedDeltas": [
+    {
+      "file": "components.d.ts",
+      "sha256": "0ad7e9aa704a3fcef8cb14c6bb66371947b3f7c070c2f565908760ce104b2a9f"
+    }
+  ],
+  "generatedSourceExceptions": [
+    ".eslintrc-auto-import.json",
+    "auto-imports.d.ts",
+    "components.d.ts"
+  ],
+  "startupTimeoutMs": 30000,
+  "appReadyTimeoutMs": 120000,
+  "viewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "cases": [
+    "Exact immutable plugin3 installed in private Node18/npm9 consumer, actual installed helper VSIX and exact66/UI2 standalone",
+    "Explicit consumer config imports original Vite config and prepends installed plugin; source/lock/dependencies remain original and generated deltas named",
+    "Owned strict-port app and helper, actual isolated VS Code installation and Copy connection receipt, native inspector receipt connect and secret clears",
+    "Separate exact-origin development cache/reload admission via inspector; no override/replay or production change confirmations",
+    "Native picker selects original textarea disabled=false, exact selected marker and SFC source/expression/digest, original selected scalar read disabled=false",
+    "Native Open in IDE matches original full source range and actual editor selection, not a nearby ancestor/component",
+    "Ordinary native text input yields8/2/1/8Bytes; Inspect again is a new selected occurrence, disabled remainsfalse, saved earlier bytes remain historical",
+    "Ordinary clear returns baseline; current and saved evidence kinds stay distinct; no Atom Live/Draft/undo or NaiveUI producer claim",
+    "Actual v1 Save/review/Download with default content exclusions; after all owned origin/helper/browser shutdown fresh reader remains historical/untrusted with no resumed authority",
+    "Disconnect source retains Basic and refuses live source; candidate screenshots, no horizontal overflow, console scope from attach and exact generated-file manifest"
+  ],
+  "limits": [
+    "Config overlay/CLI preload and agent operation are assistance, not normal project installation UI or human acceptance",
+    "Expected enabled input condition is a new preregistered source question; previous NaiveUI text counter producer remains Unknown",
+    "A selected source/read fragment is not parent prop/default consumer provenance or C09 complete real-library coverage",
+    "Newly packed helper version0.1.3 has different payload bytes from historical helper; qualification must use exact new SHA and no old combined-runtime credit",
+    "No SDK, other repository, redesigned UI, production edits, model, performance, embedding native, macOS or full V03 acceptance"
+  ]
+}
