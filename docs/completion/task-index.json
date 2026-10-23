@@ -4790,8 +4790,10 @@
         "initiating_cause_established": false,
         "review_pending": true,
         "prerequisite_trace_case": "../testing/independent-vue-cold-on-trace-case.json",
-        "prerequisite_trace_status": "preregistered-not-executed",
-        "focused_diagnostic_checks": 12
+        "prerequisite_trace_status": "FAIL_REPRODUCED_MISSING_PREBUNDLES_EMPTY_APP_HMR_CONNECTED_NO_FULL_RELOAD",
+        "focused_diagnostic_checks": 12,
+        "prerequisite_trace_result": ".artifacts/v03/warning-baseline/2026-10-23T22-43-22-932Z/results.json",
+        "launch_fidelity_control_case": "../testing/independent-vue-cold-on-original-cli-case.json"
       },
       "completed_slices": [
         {
@@ -7412,7 +7414,7 @@
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "74a681e diagnostic preregistration; product d40a503/helper8/Atom70/plugin5 exact327/223/19/14 inputs unchanged",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "Execute the preregistered single cold-On trace after local commit; inspect actual optimized requests/HMR/navigation/failure DOM and after-response metadata, preserving the original failed matrix and cold/timeout constraints. Original V03.11 ABBA/final review/task-done remain pending."
+    "next_bounded_step": "Preregister/run one cold-On trace using original project Vite CLI (same Vite4 code, original transitive context), not private consumer CLI; no dependency/config/timeout/warmup/reload change. Test launch fidelity before attributing repeated missing marked/dompurify optimizer outputs. Original V03.11 matrix/final review/task-done remain incomplete."
   },
   "next_task": "V03"
 }

@@ -81,3 +81,10 @@ metadata reads recorded as AFTER those events, never atomic metadata-at-request.
 Failure DOM/overlay/screenshot is acquired before owned browser shutdown when
 possible; unavailable acquisition is explicit. Original raw warnings stay separate.
 CDP protocol documentation fetched via Context7 confirms passive event methods.
+
+The trace reproduces missing prebundle outputs. A launch-fidelity control changes
+only the Vite CLI/dependency context from private consumer to the actual prepared
+project, as the original dev script resolves it. Vite4.4.9 CLI/core bytes and
+esbuild version match, Rollup/PostCSS metadata differ. Pin original CLI/hash and
+realpath-resolved dependency metadata; do not reinstall or replace dependencies.
+No causal finding from version differences alone; original matrix not requalified.

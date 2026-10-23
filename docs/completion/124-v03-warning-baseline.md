@@ -85,3 +85,29 @@ this probe neither substitutes the original ABBA trials nor clears any old FAIL.
 Original warning caps unchanged; auxiliary10000-event/16MiB cap invalidates on
 overflow. No request/response body/header copy, response override, warmup or reload.
 Commit registration before execution; V03.11/final review/task-done still pending.
+
+Trace2283abe actually fails again at readiness:
+`.artifacts/v03/warning-baseline/2026-10-23T22-43-22-932Z/results.json`.
+52 inputs stable,512 local trace events/no overflow/drop. Actual failure DOM is
+complete but empty div#app. HMR connected and delivered9 update messages; no
+full-reload or second document navigation observed. Vite debug reports initial
+post-scan optimizer adoption then dependencies optimized, followed by marked/
+dompurify504. Both504 after-response metadata snapshots lack those optimized
+entries, and neither expected bundle file exists at retained end. This narrows
+the failure to missing optimized outputs; precise initiating race remains unproven.
+No lost-HMR/full-reload assumption, cached ready state or successful On claimed.
+
+An additional read-only launch check finds the driver uses the private consumer's
+Vite CLI. Original project and consumer both have identical Vite4.4.9 CLI/core
+bytes/esbuild0.18.20, but actual realpath dependency metadata differs: original
+Rollup3.28.0/PostCSS8.4.28 versus consumer3.30.0/8.5.31. Initial lexical-symlink
+metadata probing resolved the wrong ancestor context and hit package exports;
+correct realpath/metadata-only lookup is recorded in vite-launch-identities.json.
+No browser/app result is attributed to that failed metadata probe.
+
+One new preregistered cold-On original-cli control uses the actual project CLI
+that its unchanged dev script resolves, with pinned CLI/metadata identities.
+Same source/installed plugin/config/cache/browser/timeouts and tracing; no package
+or dependency replacement. This tests launch fidelity, not an approved fix or a
+claim that Rollup/PostCSS caused504. It remains separate from the original ABBA
+question and all old FAILs. No manual reload, warmup, timer increase or suppression.
