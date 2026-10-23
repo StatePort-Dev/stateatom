@@ -3275,8 +3275,8 @@
       "deliverable": "U06-designed QA production observation/handoff flow, read-only collector distinct from intentional edits",
       "status": "in-progress",
       "optional": false,
-      "active_slice": "P04.4d.4 primary native picker entry diagnosis; remaining named H07-H09 reconciliation and ONE parent review remain",
-      "execution_record": "96-p04-embedding-lifecycle.md",
+      "active_slice": "P04.4d.5 actual primary-picked reporter journey/Continue keyboard and remaining H08 tab-switch/denial guards",
+      "execution_record": "97-p04-picker-entry-diagnosis.md",
       "implementation_plan": "../superpowers/plans/2026-10-22-p04-input-coexistence.md",
       "current_checkpoint": {
         "id": "P04.4d.2-input-reporter-coexistence",
@@ -3513,9 +3513,21 @@
           "full_P04_acceptance": false,
           "whole_tasks_complete": 18,
           "next_item": "P04.4d.4 primary native picker entry diagnosis; remaining named H07-H09 reconciliation and ONE parent review remain"
+        },
+        {
+          "id": "P04.4d.4-primary-picker-diagnosis",
+          "status": "complete-primary-native-selection-not-full-reporter",
+          "record": "97-p04-picker-entry-diagnosis.md",
+          "verification": ".artifacts/p04/picker-diagnosis/verification59.json",
+          "native59_both_hosts": 3,
+          "unchanged_candidate": "0.1.0-candidate.20261021.59",
+          "product_patch": false,
+          "full_P04_acceptance": false,
+          "whole_tasks_complete": 18,
+          "next_item": "P04.4d.5 actual primary-picked reporter journey/Continue keyboard and remaining H08 tab-switch/denial guards"
         }
       ],
-      "remaining_acceptance": "Primary picker entry diagnosis, remaining named H07-H09 coverage reconciliation and ONE whole-P04 review; bounded H09/embedding lifecycle credited in95/96",
+      "remaining_acceptance": "Actual primary-picked reporter journey, remaining H07-H09 coverage and ONE whole-P04 review; primary X11 selection diagnosed/qualified in97",
       "native_matrix_progress": {
         "record": "93-p04-native-window-matrix-progress.md",
         "status": "partial-not-H08-H09-P04-acceptance",
@@ -3524,7 +3536,7 @@
         "successful_checks": 29,
         "reused_successful_subchecks": 1,
         "native_status": "FAIL",
-        "open": "Primary picker entry diagnosis; remaining named H07-H09 reconciliation and ONE parent review. Historical58 FAIL29 remains unchanged.",
+        "open": "Actual primary-picked reporter journey, remaining H07-H09 coverage and ONE whole-P04 review; primary X11 selection diagnosed/qualified in97",
         "remaining_embedding": {
           "record": "96-p04-embedding-lifecycle.md",
           "status": "complete-bounded-embedding-lifecycle-not-whole-H08-P04",
@@ -3534,6 +3546,14 @@
           "candidate": "0.1.0-candidate.20261021.59",
           "console_warnings_errors": 0,
           "old_timeout_cause_established": false
+        },
+        "picker_entry": {
+          "record": "97-p04-picker-entry-diagnosis.md",
+          "verification": ".artifacts/p04/picker-diagnosis/verification59.json",
+          "status": "complete-primary-native-selection-not-full-reporter",
+          "native59_both_hosts": 3,
+          "historical58_control": true,
+          "product_patch": false
         }
       },
       "evening_handoff": "94-p04-evening-handoff.md",
@@ -6160,7 +6180,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Current59 H09 credited in95;96 completes only remaining embedding real120s/review/export/64-record/navigation/permission checks5, no source/build rerun (510 inputs unchanged). Historical58 FAIL29 remains. Next primary picker entry diagnosis; whole P04/C07/review and18/29 unchanged.",
+    "current_activity_note": "Current59 H09/remaining embedding lifecycle credited in95/96;97 diagnoses picker-entry readiness race, actual X11 disabled target both hosts3 PASS and immutable58 control. No product picker patch. Next primary-picked reporter/keyboard/H08 guards; whole P04/C07/review and18/29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md"
   },
   "next_task": "P04"

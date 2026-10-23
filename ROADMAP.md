@@ -1172,3 +1172,8 @@ repository or independent-human blocker.
 ### 2026-10-23 — P04.4d.3 remaining embedding lifecycle
 
 [Remaining embedding checks](docs/completion/96-p04-embedding-lifecycle.md): exact59 actual120s/review/export,64-record bound/navigation/real permission removal pass5 including package identity,0 inspector console warnings/errors. Qualified510 source/test hashes,archives/install/both hosts unchanged; no new source suite/build or broad matrix rerun. Historical58 FAIL29/timeout preserved, cause unestablished. P04/C07/H08/ONE parent review remain open,18/29 unchanged. Next bounded primary native picker entry diagnosis, then named H07-H09 reconciliation.
+
+
+### 2026-10-23 — P04 primary picker entry diagnosis
+
+[Picker diagnosis](docs/completion/97-p04-picker-entry-diagnosis.md): corrected driver waits for actual picking state. X11 disabled Confirm selects in both exact59 hosts3 PASS,0 inspector console warnings/errors; unchanged historical58 control also passes after separately restored exact installed consumer. No product picker patch or old receipt rewrite; source2374/build59 retained with510 inputs unchanged. Primary selection is qualified, subsequent reporter journey remains next with Continue keyboard/H08 guards. P04/C07/ONE review remain open;18/29 unchanged.
