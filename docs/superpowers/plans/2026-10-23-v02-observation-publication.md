@@ -23,21 +23,21 @@
 **Files:** modify packages/atom/src/runtime.mjs; create packages/atom/src/observation-publisher.mjs and tests/atom/observation-publisher.test.mjs; extend tests/atom/production-observation-runtime.test.mjs; candidate metadata/changelog/lockfile.
 **Interfaces:** consumes persist():Promise<void> and notify():void (runtime wrapper already handles async Chrome errors); produces internal createObservationPublisher({persist,notify}):()=>Promise<void>. No public export/type contract.
 
-- [ ] RED integrated original runtime: gate session writes after Start; emit20 complete native requests; assert one publication in flight, all20 records/zero gaps preserved, at most one current-state follow-up and one settled notice. Observe old write/notice counts, not timing-only assertions. Expected old implementation fails with60 in-flight submissions.
-- [ ] RED helper controls: same flight for burst, exactly one latest follow-up, new mark during notice/settlement not lost, failure without unbounded retry, failure plus later dirty request can retry, independent publisher routing. Expected missing implementation failures, followed by meaningful behavioral failures if needed.
-- [ ] GREEN minimal constant-state owner publisher; replace only collectObservation event publication. Ordinary direct calls and timer unchanged. No snapshot captured by publisher.
-- [ ] Integrated controls: delayed old publication cannot block Stop/Clear/new Start or permission removal; releasing it cannot resurrect old private/window state; two owned tabs route notices correctly; context closure still immediate; existing unowned/foreign UI notice invalidation test retained unchanged. Full focused observation/UI/privacy/runtime checks. Expected PASS.
-- [ ] New candidate63 identity/changelog/lockfile, syntax/diff and local source commit. If qualification needs a correction, mint a later identity rather than rebuilding issued bytes.
+- [x] RED integrated original runtime: gate session writes after Start; emit20 complete native requests; assert one publication in flight, all20 records/zero gaps preserved, at most one current-state follow-up and one settled notice. Observe old write/notice counts, not timing-only assertions. Expected old implementation fails with60 in-flight submissions.
+- [x] RED helper controls: same flight for burst, exactly one latest follow-up, new mark during notice/settlement not lost, failure without unbounded retry, failure plus later dirty request can retry, independent publisher routing. Expected missing implementation failures, followed by meaningful behavioral failures if needed.
+- [x] GREEN minimal constant-state owner publisher; replace only collectObservation event publication. Ordinary direct calls and timer unchanged. No snapshot captured by publisher.
+- [x] Integrated controls: delayed old publication cannot block Stop/Clear/new Start or permission removal; releasing it cannot resurrect old private/window state; two owned tabs route notices correctly; context closure still immediate; existing unowned/foreign UI notice invalidation test retained unchanged. Full focused observation/UI/privacy/runtime checks. Expected PASS.
+- [x] New candidate63 identity/changelog/lockfile, syntax/diff and local source commit. If qualification needs a correction, mint a later identity rather than rebuilding issued bytes.
 
 ## Task2 — qualify unchanged workload and accept finite scope
 
 **Files:** numbered completion104, task-index/status/root roadmap; ignored raw evidence and ledger.
 **Interfaces:** exact candidate63 handoff/new immutable source/build hashes, independent installed pair and both host manifests; same native measurement protocol/targets as101 and103.
 
-- [ ] Freeze all Git-listed source/build inputs before full suite and native execution; full source suite, pack:atom, packed types and9 admission controls. Expected all PASS, no skipped failures; preserve RED logs.
-- [ ] Actual both-host native H09 reporter/control lifecycle and unchanged basic-observer-performance-native workload on exact63. Expected completed evidence, not assumed performance PASS. Raw198 samples/66 complete zero-gap windows, all tails retained; keep every target miss open. Only further changed-area native checks for a concrete uncovered boundary, no broad P04 repeat.
-- [ ] Verify before/after source/build/archive/install/host identities; recompute raw distributions and event invariants. No fresh credit for historical62 identity/source paths. Record package size and current resource context separately from subsystem attribution.
-- [ ] ONE fresh-context whole-parent review, one test-backed material correction pass at most; explicit executor rulings for declined boundaries; commit finite acceptance and name ONE next unfinished item.19/29 stays until actual whole V02 acceptance.
+- [x] Freeze all Git-listed source/build inputs before full suite and native execution; full source suite, pack:atom, packed types and9 admission controls. Expected all PASS, no skipped failures; preserve RED logs.
+- [x] Actual both-host native H09 reporter/control lifecycle and unchanged basic-observer-performance-native workload on exact63. Expected completed evidence, not assumed performance PASS. Raw198 samples/66 complete zero-gap windows, all tails retained; keep every target miss open. Only further changed-area native checks for a concrete uncovered boundary, no broad P04 repeat.
+- [x] Verify before/after source/build/archive/install/host identities; recompute raw distributions and event invariants. No fresh credit for historical62 identity/source paths. Record package size and current resource context separately from subsystem attribution.
+- [x] ONE fresh-context whole-parent review, one test-backed material correction pass at most; explicit executor rulings for declined boundaries; commit finite acceptance and name ONE next unfinished item.19/29 stays until actual whole V02 acceptance.
 
 ## Review Focus
 

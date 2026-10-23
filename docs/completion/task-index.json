@@ -4197,39 +4197,50 @@
       "active_slice": {
         "id": "V02.4",
         "title": "Bounded native observation publication",
-        "status": "candidate63-qualified-overhead-missed-review-pending",
+        "status": "finite-reviewed-corrected-targets-missed",
         "plan": "../superpowers/plans/2026-10-23-v02-observation-publication.md"
       },
       "execution_record": "104-v02-observation-publication.md",
       "current_checkpoint": {
-        "id": "V02.4-candidate63",
-        "status": "ready-one-parent-review",
+        "id": "V02.4-candidate64",
+        "status": "finite-slice-reviewed-corrected-targets-missed",
         "record": "104-v02-observation-publication.md",
-        "candidate": "0.1.0-candidate.20261021.63",
-        "verification": ".artifacts/v02/observation-publication/2026-10-23/verification63.json",
-        "source_checks": 2420,
-        "focused_checks": 183,
+        "candidate": "0.1.0-candidate.20261021.64",
+        "verification": ".artifacts/v02/observation-publication/2026-10-23/verification64.json",
+        "source_checks": 2424,
+        "focused_checks": 187,
         "source_inputs": 828,
         "strict_types": 2,
         "package_admission": 9,
         "native_reporter_checks": 17,
         "raw_performance_samples": 198,
         "basic_route_p95_ms": {
-          "standalone": 565.3,
-          "embedding": 515
+          "standalone": 683.1,
+          "embedding": 2021.8
         },
         "basic_route_target_by_host": {
           "standalone": true,
-          "embedding": true
+          "embedding": false
         },
         "active_off_percent": {
-          "standalone": 26.85571309,
-          "embedding": 29.78902954
+          "standalone": 25.08305647,
+          "embedding": 26.86567164
         },
         "active_off_target_met": false,
         "targets_waived": false,
         "whole_task_complete": false,
-        "next_bounded_step": "V02.5 isolate Basic-selected overhead with a concrete counter/control before changing code"
+        "next_bounded_step": "V02.5 passive DOM-agent/native-point versus raw attach-domain diagnostic on unchanged64; no product domain disable",
+        "review": {
+          "count": 1,
+          "critical": 0,
+          "important": 2,
+          "minor": 0,
+          "correction_passes": 1,
+          "fixed_with_red_green": 2,
+          "regressions": 4,
+          "re_review": false
+        },
+        "historical63": ".artifacts/v02/observation-publication/2026-10-23/verification63-historical.json"
       },
       "completed_slices": [
         {
@@ -4317,6 +4328,43 @@
             "independent_source_checks": 86,
             "correction_passes": 0,
             "report": ".artifacts/v02/fresh-inspection/2026-10-23/review/report.md"
+          }
+        },
+        {
+          "id": "V02.4-candidate63",
+          "status": "historical63-not-parent-accepted-review-found2",
+          "record": "104-v02-observation-publication.md",
+          "candidate": "0.1.0-candidate.20261021.63",
+          "verification": ".artifacts/v02/observation-publication/2026-10-23/verification63.json",
+          "source_checks": 2420,
+          "focused_checks": 183,
+          "source_inputs": 828,
+          "strict_types": 2,
+          "package_admission": 9,
+          "native_reporter_checks": 17,
+          "raw_performance_samples": 198,
+          "basic_route_p95_ms": {
+            "standalone": 565.3,
+            "embedding": 515
+          },
+          "basic_route_target_by_host": {
+            "standalone": true,
+            "embedding": true
+          },
+          "active_off_percent": {
+            "standalone": 26.85571309,
+            "embedding": 29.78902954
+          },
+          "active_off_target_met": false,
+          "targets_waived": false,
+          "whole_task_complete": false,
+          "next_bounded_step": "V02.5 isolate Basic-selected overhead with a concrete counter/control before changing code",
+          "review": {
+            "count": 1,
+            "critical": 0,
+            "important": 2,
+            "minor": 0,
+            "correction_required": true
           }
         }
       ]
@@ -4523,8 +4571,8 @@
     "document": "104-v02-observation-publication.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.4-candidate63-ready-review-overhead-missed",
-    "next_item": "V02.5 isolate Basic-selected overhead with a concrete counter/control before changing code",
+    "current_increment": "V02.4-candidate64-reviewed-corrected-targets-missed",
+    "next_item": "V02.5 passive DOM-agent/native-point versus raw attach-domain diagnostic on unchanged64; no product domain disable",
     "new_full_task_acceptances": [
       "F01",
       "F02",
