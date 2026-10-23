@@ -173,6 +173,12 @@ Atom70/helper8 inputs327/223 unchanged; new helper zip has identical9 payload en
 no new helper native acceptance. Original plugin5/overall native FAILs remain.
 Whole20/29/fullV03/C09/A02/L02/V02 unchanged. Next V03.12 is the
 bounded guide-operated browser installation/independent React Basic handoff route.
+[V03.12](completion/125-v03-guide-browser-install.md) now prepares the actual
+Chrome Developer mode/Load unpacked/native chooser gate on unchanged70/UI2,
+with separately fresh reporter/recipient profiles. Shared-helper control
+initially fails a new exact-argv metadata assumption because Chromium rewrites its
+process title; corrected raw-process/default-launch control passes. Both remain
+preparation; the registered UI route is unexecuted and not accepted.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

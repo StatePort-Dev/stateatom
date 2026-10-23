@@ -1,0 +1,117 @@
+{
+  "schema": "stateatom.v03-independent-detailed-case/1",
+  "application": "Serkanbyx/e-commerce-frontend",
+  "revision": "653ce1095bcd6b1c3a1c21d4f01f85953c9eb20f",
+  "environment": {
+    "command": "node node_modules/vite/bin/vite.js --host 127.0.0.1 --port <owned-port> --strictPort",
+    "commandRelation": "Original package dev script is vite; direct child permits owned readiness and cleanup",
+    "apiConfiguration": "Original VITE_API_BASE_URL override points to an owned loopback synthetic API",
+    "upstreamBackend": false,
+    "appSourceEdits": false,
+    "extension": "Exact supplied Atom70/UI2 standalone folder installed through Chrome Developer mode / Load unpacked / native folder chooser in empty owned graphical profiles",
+    "sourcePlugin": false,
+    "IDE": false,
+    "model": false,
+    "certificates": false,
+    "guideInstallUIRequirement": "Both reporter/recipient installations must be proven by actual results; registration is not proof"
+  },
+  "syntheticProducts": [
+    {
+      "id": 1,
+      "title": "V03 synthetic blue mug",
+      "price": 12.5,
+      "description": "Synthetic local validation data. No purchase or payment.",
+      "category": "electronics",
+      "imagePath": "/synthetic.svg",
+      "rating": {
+        "rate": 4,
+        "count": 3
+      }
+    },
+    {
+      "id": 2,
+      "title": "V03 synthetic green notebook",
+      "price": 7,
+      "description": "Synthetic local validation data. No purchase or payment.",
+      "category": "electronics",
+      "imagePath": "/synthetic.svg",
+      "rating": {
+        "rate": 3,
+        "count": 2
+      }
+    }
+  ],
+  "syntheticImage": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"128\" height=\"128\"><rect x=\"24\" y=\"24\" width=\"80\" height=\"80\" rx=\"12\" fill=\"#4388aa\"/></svg>",
+  "cartSelector": "header a[href='/cart'] button",
+  "addSelector": "a[href='/product/1'] button",
+  "cases": [
+    "Fresh reporter and recipient Chrome argv has no extension preload; rendered empty extensions page, trusted Developer mode/Load unpacked and native folder selection precede actual StateAtom card/worker",
+    "Fresh profile has no stored app authority or reports; actual app title/body/products are present",
+    "Native picker selects cart descendant, actual UI parent refinement reaches that button; selection does not navigate or add a cart badge",
+    "Actual inspector Cancel preserves selection; visible URL/cart control remains unchanged",
+    "Save original Cart text locally; ordinary native Add to Cart; Inspect again observes 1Cart and keeps unsupported source/producer Unknown",
+    "Original saved diagnostic bytes remain unchanged and historical after new observation",
+    "Prepare current issue with explicit synthetic demonstration words; default technical categories remain excluded; Review then Save and Download preserve exact bytes",
+    "Close origin browser and stop app/API; fresh recipient imports passive report without app tab or stored authority",
+    "Capture candidate first viewport, inspector desktop/narrow and report/reader; console coverage begins after Atom attach",
+    "Detailed file is input-evidence/1 and at least10001 mixed nodes, within10000 member/9999 array-entry/20000 total bounds",
+    "Matching reader import leaves exact full session/local state unchanged and makes no external reader-target request after Network.enable",
+    "Old65 reader refuses same new file with HANDOFF_LIMIT, empty summary and no authority"
+  ],
+  "issue": {
+    "title": "V03 cart interaction demonstration",
+    "actual": "Synthetic demonstration: after adding one local item the cart showed 1. This is a successful scenario, not a reported application bug.",
+    "expected": "For this demonstration the cart should show 1 after one Add to Cart action.",
+    "steps": [
+      "Open the locally configured independent shop",
+      "Select and save the cart text",
+      "Add the first synthetic product",
+      "Inspect again and review this historical report"
+    ]
+  },
+  "limits": [
+    "Native automation is agent-operated, not human visual acceptance",
+    "Visible URL/cart checks are not universal callback-count or hover-effect proof",
+    "Basic DOM observations do not establish Redux ownership, causal lineage or installed React19 adapter support",
+    "No Vue/reserve runtime, full V03, performance, production edits, source maps, Action Trace, model or macOS acceptance",
+    "No toolbar/Extensions-menu launch usability claim; inspector extension URL is explicit setup assistance",
+    "Reader file import uses existing CDP file input, not native chooser usability proof",
+    "No independent human gate or whole guide/full V03/C09 acceptance from this bounded route"
+  ],
+  "expectedAtomVersion": "0.1.0-candidate.20261021.70",
+  "expectedUIVersion": "0.2.0-candidate.20261018.2",
+  "requireDetailed": true,
+  "reportNodeMinimum": 10001,
+  "requireExactReaderAuthority": true,
+  "requireLoadedImages": true,
+  "appViewport": {
+    "width": 1280,
+    "height": 900
+  },
+  "configurationChangesFrom66": [
+    "Supplied current70/UI2 folder, no product build/source change",
+    "Reporter and recipient both install by Developer mode/Load unpacked/native folder chooser in fresh graphical profiles",
+    "Old65 refusal control is already complete and deliberately not repeated; historical case/result unchanged",
+    "Same original app/source/API synthetic data/Basic/report/reader assertions and Unknown",
+    "Extension-URL inspector launch and reader CDP file input remain declared assistance, not full guide usability"
+  ],
+  "guideInstall": {
+    "mode": "chrome-ui-native-folder",
+    "expectedBrowser": "Chrome/153.0.8010.12",
+    "expectedExecutableSha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e",
+    "inputHashes": {
+      "tests/integration/independent-react-basic-native.mjs": "6c19c794ee946b4d59071ba006e550fb4a73da93cd62ae2c10fcb77b85e046e2",
+      "tests/helpers/guide-extension-install.mjs": "462b16c5cdae67abd17b358d60ed7ee784a8911c57b4d70429a3cfc3ed05f9f3",
+      "tests/helpers/source-access-native-desktop.mjs": "089c04a488302f94469384dc64e2dd061ba1b5c6e71d30996387283019ead1ee",
+      "scripts/native-browser.mjs": "37d16c781c5eb5fc402a5e0ebc47f0fdf5f2321b484dae6e6b5e75fe30c039d7",
+      "docs/installed-preview.md": "d057c35b5f779ebf54bb996b1e662d43ffea2f257915ceb03bafdae80e8d1237"
+    },
+    "forbiddenInstallAssistance": [
+      "CLI extension flags",
+      "private developerPrivate or CDP extension load API",
+      "preseeded profile preferences",
+      "DOM file input injection for installation"
+    ],
+    "nativeChooser": "Owned nested display only, actual folder entry and mouse confirmation"
+  }
+}

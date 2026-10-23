@@ -4753,107 +4753,17 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "124-v03-warning-baseline.md",
+      "execution_record": "125-v03-guide-browser-install.md",
       "active_slice": {
-        "id": "V03.11",
-        "title": "Read-only original Vue warning baseline comparison",
-        "status": "complete-bounded-packaged-startup-warning-comparison",
-        "predecessor": "V03.10 bounded parser complete; native15-positive/final-console-FAIL retained",
-        "record": "124-v03-warning-baseline.md",
-        "design": "../superpowers/specs/2026-10-24-v03-warning-baseline-design.md",
-        "plan": "../superpowers/plans/2026-10-24-v03-warning-baseline.md",
-        "registered_question": "../testing/independent-vue-warning-case-full-chromium.json",
+        "id": "V03.12",
+        "title": "Actual guide-operated browser extension installation and existing React handoff",
+        "status": "in-progress-preparation-no-runtime-claim",
+        "record": "125-v03-guide-browser-install.md",
+        "design": "../superpowers/specs/2026-10-24-v03-guide-browser-install-design.md",
+        "plan": "../superpowers/plans/2026-10-24-v03-guide-browser-install.md",
         "whole_V03_complete": false,
-        "product_source_changed": true,
-        "diagnostic_order": [
-          "off",
-          "on",
-          "on",
-          "off"
-        ],
-        "focused_comparator_checks": 7,
-        "preparation_failure": ".artifacts/v03/warning-baseline/2026-10-23T22-19-53-624Z/results.json",
-        "diagnostic_result": ".artifacts/v03/warning-baseline/2026-10-23T22-23-03-718Z/results.json",
-        "partial_verification": ".artifacts/v03/warning-baseline/2026-10-24/partial-checkpoint.json",
-        "valid_trials": 1,
-        "invalid_trials": 1,
-        "unexecuted_trial_indices": [
-          2,
-          3
-        ],
-        "off_primary_warning_classes": {
-          "intlify": 16,
-          "vue_component_prop_type": 8
-        },
-        "off_vs_historical_native_full_arguments_equal": false,
-        "on_cold_start_failure": "504 Outdated Optimize Dep: marked.js and dompurify.js",
-        "initiating_cause_established": false,
-        "review_pending": false,
-        "prerequisite_trace_case": "../testing/independent-vue-cold-on-trace-case.json",
-        "prerequisite_trace_status": "FAIL_REPRODUCED_MISSING_PREBUNDLES_EMPTY_APP_HMR_CONNECTED_NO_FULL_RELOAD",
-        "focused_diagnostic_checks": 12,
-        "prerequisite_trace_result": ".artifacts/v03/warning-baseline/2026-10-23T22-43-22-932Z/results.json",
-        "launch_fidelity_control_case": "../testing/independent-vue-cold-on-original-cli-case.json",
-        "launch_fidelity_control_result": ".artifacts/v03/warning-baseline/2026-10-23T22-56-19-425Z/results.json",
-        "launch_fidelity_control_status": "FAIL_SAME_MISSING_PREBUNDLE_504",
-        "scan_frontier_control_case": "../testing/independent-vue-cold-on-scan-frontier-case.json",
-        "scan_frontier_control_result": ".artifacts/v03/warning-baseline/2026-10-23T23-02-07-747Z/results.json",
-        "scan_frontier_control_status": "PASS_SINGLE_CONTROL_200_READY24_NOT_PRODUCT_FIX_OR_ABBA",
-        "prerequisite": "Bounded installed Vue default scanner correction preserving explicit user policies, then exact new installed treatment and original ABBA; no private override in acceptance",
-        "control_verification": ".artifacts/v03/warning-baseline/2026-10-24/cold-controls-checkpoint.json",
-        "installed_prerequisite": {
-          "version": "0.1.0-candidate.20261021.6",
-          "handoff": ".artifacts/development/2026-10-23T23-16-57-006Z/handoff.json",
-          "consumer_receipt": ".artifacts/v03/installed-vue-consumer/2026-10-23T23-17-16-400Z/result.json",
-          "source_checks": 2616,
-          "focused_checks": 50,
-          "runtime_qualification": "PASS_FOUR_COLD_SCOPED_STARTUPS_NOT_FULL_NATIVE"
-        },
-        "new_matrix_case": "../testing/independent-vue-warning-case-plugin6.json",
-        "new_matrix_result": ".artifacts/v03/warning-baseline/2026-10-23T23-18-17-486Z/results.json",
-        "new_matrix_verification": ".artifacts/v03/warning-baseline/2026-10-24/matrix-checkpoint.json",
-        "new_matrix_valid_trials": 4,
-        "new_matrix_full_argument_off_repeat_equal": true,
-        "new_matrix_full_argument_on_repeat_equal": false,
-        "new_matrix_full_argument_cross_deltas": {
-          "only_left": 4,
-          "only_right": 4
-        },
-        "original_native_overall_status": "FAIL",
-        "review": {
-          "schema": "stateatom.v03-whole-increment-review/1",
-          "reviewer": "/root/v0311_whole_review",
-          "model": "gpt-6-astra",
-          "reasoning": "high",
-          "base": "d40a5036885ff0529b7c30fb195529ca77edd080",
-          "head": "5765c91",
-          "critical": 0,
-          "important": 1,
-          "minor": 0,
-          "findings": [
-            {
-              "kind": "Important",
-              "file": "docs/completion/task-index.json",
-              "lines": [
-                5298,
-                7439
-              ],
-              "summary": "Current global reconciliation routing still points at completed partial/cold controls",
-              "correction": "Five current fields aligned; exact other fields preserved",
-              "red": ".artifacts/v03/warning-baseline/2026-10-24/review/routing-red.log",
-              "green": ".artifacts/v03/warning-baseline/2026-10-24/review/routing-green.log"
-            }
-          ],
-          "correction_passes": 1,
-          "re_review": false,
-          "new_product_source_in_correction": false,
-          "focused_reviewer_checks": 31,
-          "all_installed_archive_members_equal": 14,
-          "reviewer_aggregate": "PARTIAL_TO_CHILD_EPERM_NOT_END_TO_END_PASS",
-          "executor_aggregate": "PASS_AUTHORIZED_OWNED_CHILD",
-          "declined_boundaries_ruled_in": "docs/completion/124-v03-warning-baseline.md",
-          "full_V03_complete": false
-        }
+        "product_source_changed": false,
+        "previous_slice": "V03.11 complete at39c5171; native zero-console FAIL unchanged"
       },
       "completed_slices": [
         {
@@ -5265,13 +5175,12 @@
         }
       ],
       "current_checkpoint": {
-        "record": "124-v03-warning-baseline.md",
-        "status": "complete-bounded-packaged-startup-warning-comparison",
-        "verification": ".artifacts/v03/warning-baseline/2026-10-24/matrix-checkpoint.json",
-        "next_bounded_step": "V03.12: follow supplied-browser guide through Chrome Developer mode/Load unpacked in an owned empty graphical profile, then existing independent React Basic/handoff route. Preserve original source/questions/history and Unknown; no certificates/accounts/SDK/publication/redesign/other repo. Do not repeat completed scanner controls or old full native workflows."
+        "record": "125-v03-guide-browser-install.md",
+        "status": "in-progress-preparation-no-runtime-claim",
+        "next_bounded_step": "Prepare/register owned Chrome UI installation, then actual existing independent React Basic/detailed handoff route; no completed experiment replay"
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-warning-baseline.md",
-      "implementation_plan": "../superpowers/plans/2026-10-24-v03-warning-baseline.md"
+      "implementation_plan": "../superpowers/plans/2026-10-24-v03-guide-browser-install.md"
     },
     {
       "id": "V04",
@@ -5427,10 +5336,10 @@
     ]
   },
   "reconciliation": {
-    "document": "124-v03-warning-baseline.md",
+    "document": "125-v03-guide-browser-install.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.11-engineering-complete-packaged-ABBA4-one-review-routing-correction",
+    "current_increment": "V03.12-browser-guide-install-preparation",
     "next_item": "V03.12: guide-operated Chrome Load unpacked installation and existing independent React Basic/handoff in an owned fresh profile",
     "new_full_task_acceptances": [
       "F01",
@@ -7571,11 +7480,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.11 actual original-CLI packaged6 cold ABBA4 PASS;56 stable inputs;24 console warnings each (16 intlify+8 Vue prop),0exceptions/Logerrors. Off full vectors repeat; On/cross/native differences4vs4 retained. Source2616/focused50 and strict Node18 install pass. ONE review0Critical/1Important/0Minor found only stale current routing, corrected in one metadata pass; original plugin5/native FAILs and whole20/29 remain. No source/browser rerun indicated.",
+    "current_activity_note": "V03.11 complete at39c5171 after one review/routing correction. V03.12 now prepares actual Chrome UI installation on unchanged70/UI2 in owned fresh reporter/recipient profiles; runtime unexecuted, no acceptance claimed. Whole20/29/fullV03 dependencies unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "e3f4255 source/packaged plugin6; unchanged Atom70/helper8 inputs327/223, installed plugin19-source/14-payload",
+    "current_source_revision": "39c5171 base; product Atom70/helper8/plugin6 unchanged, no new runtime claim",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.12: follow supplied-browser guide through Chrome Developer mode/Load unpacked in an owned empty graphical profile, then existing independent React Basic/handoff route. Preserve original source/questions/history and Unknown; no certificates/accounts/SDK/publication/redesign/other repo. Do not repeat completed scanner controls or old full native workflows."
+    "next_bounded_step": "Prepare/register owned Chrome UI installation, then actual existing independent React Basic/detailed handoff route; no completed experiment replay"
   },
   "next_task": "V03"
 }

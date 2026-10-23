@@ -5,8 +5,10 @@ import path from 'node:path';
 import {createServer} from 'node:http';
 import {spawn,execFileSync} from 'node:child_process';
 import {stripVTControlCharacters} from 'node:util';
-import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,stat} from 'node:fs/promises';
 import {startNativeBrowser} from '../../scripts/native-browser.mjs';
+import {sourceAccessDesktop} from '../helpers/source-access-native-desktop.mjs';
+import {installGuideExtension} from '../helpers/guide-extension-install.mjs';
 import {rpc,waitFor} from '../../scripts/harness.mjs';
 import {sha256,fileManifest,verifyArtifactHashes,inspectInstalledPair} from '../../scripts/atom-package-receipt.mjs';
 import {parseDiagnostic} from '../../core/diagnostic.mjs';
@@ -21,17 +23,20 @@ assert(app?.originalSourceAndLockFilesMatch&&app.status==='PASS_FROZEN_DEPENDENC
 const caseFile=caseArgument||'docs/testing/independent-react-basic-case.json',scenario=JSON.parse(await readFile(caseFile));
 if(scenario.expectedAtomVersion)assert.equal(h.package.version,scenario.expectedAtomVersion);
 if(scenario.expectedUIVersion)assert.equal(h.ui.version,scenario.expectedUIVersion);
+const guide=scenario.guideInstall;
+if(guide){assert.equal(guide.mode,'chrome-ui-native-folder');assert(!scenario.previousReaderHandoff,'Old reader refusal is historical, not part of this installation question');for(const[f,hash]of Object.entries(guide.inputHashes))assert.equal(sha256(await readFile(f)),hash,f);}
 const previous=scenario.previousReaderHandoff?JSON.parse(await readFile(scenario.previousReaderHandoff)):null;
 if(previous)assert.equal(previous.package.version,'0.1.0-candidate.20261021.65');
 const sourceManifest=JSON.parse(await readFile(app.sourceManifest));
 const out=path.resolve('.artifacts/v03/independent-react-basic/'+new Date().toISOString().replace(/[:.]/g,'-'));
 await mkdir(out,{recursive:true});
 await writeFile(out+'/driver.mjs',await readFile(new URL(import.meta.url)));
-const registered=[...new Set([...Object.keys({...h.sourceManifest,...h.buildSources.manifest}),caseFile,'docs/testing/independent-apps.json','tests/integration/independent-react-basic-native.mjs','tests/helpers/native-inspector-ui.mjs','scripts/native-browser.mjs','scripts/harness.mjs',app.sourceManifest,dependencyFile,handoffFile,...(previous?[scenario.previousReaderHandoff]:[])])];
+const registered=[...new Set([...Object.keys({...h.sourceManifest,...h.buildSources.manifest}),caseFile,'docs/testing/independent-apps.json','tests/integration/independent-react-basic-native.mjs','tests/helpers/native-inspector-ui.mjs','scripts/native-browser.mjs','scripts/harness.mjs',app.sourceManifest,dependencyFile,handoffFile,...(previous?[scenario.previousReaderHandoff]:[]),...(guide?Object.keys(guide.inputHashes):[])])];
 const inputs=async()=>Object.fromEntries(await Promise.all(registered.map(async f=>[f,sha256(await readFile(f))])));
 async function originalSources(){for(const [f,hash] of Object.entries(sourceManifest)){assert.equal(sha256(await readFile(path.join(app.workingCopy,f))),hash,'working source '+f);assert.equal(sha256(await readFile(path.join(app.immutableSource,f))),hash,'immutable source '+f);}return Object.keys(sourceManifest).length;}
 const result={schema:'stateatom.v03-independent-react-basic/1',status:'RUNNING',startedAt:new Date().toISOString(),revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceDirty:!!execFileSync('git',['status','--porcelain'],{encoding:'utf8'}).trim(),handoff:{file:handoffFile,package:h.package,ui:h.ui},application:{repository:'https://github.com/'+scenario.application,revision:scenario.revision,workingCopy:app.workingCopy,installedVersions:app.installedVersions},configuration:scenario.environment,limits:scenario.limits,checks:[],errors:[],console:[],traffic:[],inputsBefore:await inputs()};
 const check=async(name,fn)=>{await fn();result.checks.push({name,status:'PASS'});console.log('PASS',name);};
+let desktop;
 let api,vite,browser,ui,downloads,viteOutput='',viteFailure,failureAppProbe,failureAppShot;
 async function observe(page,surface){
   page.on('pageerror',e=>result.errors.push({surface,message:e.message}));
@@ -41,6 +46,19 @@ async function observe(page,surface){
   await driver.p.send('Runtime.enable');await driver.p.send('Log.enable');return driver;
 }
 async function stopVite(){if(!vite)return;if(vite.exitCode===null&&vite.signalCode===null){vite.kill('SIGTERM');try{await waitFor(()=>vite.exitCode!==null||vite.signalCode!==null,5000);}catch{vite.kill('SIGKILL');await waitFor(()=>vite.exitCode!==null||vite.signalCode!==null,5000);}}result.viteExit={code:vite.exitCode,signal:vite.signalCode};}
+async function openBrowser(role){
+ const options={extensionPath:h.hosts.standalone};
+ if(guide){
+  desktop??=await sourceAccessDesktop(out);
+  Object.assign(options,{headless:false,display:desktop.display,beforeExtensionLoad:async context=>{
+   const installation=await installGuideExtension(context,{folder:h.hosts.standalone,desktop,out,role,expectedBrowser:guide.expectedBrowser,expectedExecutableSha256:guide.expectedExecutableSha256});
+   (result.guideInstallations??=[]).push(installation);
+  }});
+ }
+ const b=await startNativeBrowser(out+'/profiles',role,true,false,[],options);
+ if(guide){assert.equal(b.context.browser().version(),guide.expectedBrowser);assert.equal(b.command.extensionSetup,'guide-ui');assert(result.guideInstallations.at(-1).installed.cards.some(c=>c.id===b.id&&c.name==='StateAtom'));(result.guideWorkerAdmissions??=[]).push({role,extensionId:b.id,worker:b.extensionWorker});}
+ return b;
+}
 async function stopAPI(){if(!api?.listening)return;api.closeAllConnections();await new Promise(resolve=>api.close(resolve));}
 try{
   await check('exact supplied pair, standalone bytes, build inputs and untouched independent source',async()=>{
@@ -71,7 +89,7 @@ try{
   vite.once('error',e=>{viteFailure=e;});for(const stream of[vite.stdout,vite.stderr])stream.on('data',data=>{viteOutput+=data;});
   await waitFor(()=>{if(viteFailure)throw viteFailure;if(vite.exitCode!==null||vite.signalCode!==null)throw Error('Owned Vite exited before readiness');const plain=stripVTControlCharacters(viteOutput);return plain.includes(result.appOrigin+'/')&&plain.includes('Local:');},30000);
   await writeFile(out+'/vite-command.json',JSON.stringify({executable:process.execPath,node:process.version,args,cwd:app.workingCopy,env:{PATH:path.dirname(process.execPath)+':/usr/bin:/bin',LANG:'C.UTF-8',CI:'1',VITE_API_BASE_URL:result.apiOrigin},ownedPid:vite.pid,readiness:'strictPort + this live child stdout exact Local URL; no foreign listener adoption'},null,2));
-  browser=await startNativeBrowser(out+'/profiles','origin',true,false,[],{extensionPath:h.hosts.standalone});result.browser=browser.context.browser().version();
+  browser=await openBrowser('origin');result.browser=browser.context.browser().version();
   const panel=await browser.context.newPage();await panel.goto('chrome-extension://'+browser.id+'/panel.html');ui=await observe(panel,'inspector');downloads=await nativeDownloads(out+'/profiles/origin',out+'/downloads');
   await check('isolated origin profile has no prior reports or app authority',async()=>{
     assert.deepEqual((await rpc(panel,{op:'list-handoffs'})).entries,[]);
@@ -140,7 +158,7 @@ try{
   });
   result.appConsole=await panel.evaluate(()=>globalThis.__v03AppLogs);await ui.close();ui=null;downloads.close();downloads=null;await browser.context.close();browser=null;
   await stopVite();await stopAPI();const requestsBeforeReader=result.traffic.length;
-  browser=await startNativeBrowser(out+'/profiles','recipient',true,false,[],{extensionPath:h.hosts.standalone});result.readerBrowser=browser.context.browser().version();const reader=await browser.context.newPage();await reader.goto('chrome-extension://'+browser.id+'/reader.html');ui=await observe(reader,'fresh-reader');
+  browser=await openBrowser('recipient');result.readerBrowser=browser.context.browser().version();const reader=await browser.context.newPage();await reader.goto('chrome-extension://'+browser.id+'/reader.html');ui=await observe(reader,'fresh-reader');
   const live=()=>reader.evaluate(async()=>({appTabs:(await chrome.tabs.query({})).filter(t=>/^https?:/.test(t.url||'')).length,storedTabs:Object.keys((await chrome.storage.session.get('stateport.atom.v1.tabs'))['stateport.atom.v1.tabs']||{})}));
   const authority=page=>page.evaluate(async()=>({session:await chrome.storage.session.get(null),local:await chrome.storage.local.get(null)}));
   await check('recipient is fresh with original browser and app/API stopped',async()=>{assert.equal(result.readerBrowser,result.browser);assert.deepEqual(await live(),{appTabs:0,storedTabs:[]});assert.equal(api.listening,false);assert(vite.exitCode!==null||vite.signalCode!==null);});
@@ -162,11 +180,13 @@ try{
   }
   result.status=result.detailedReport.status==='FAIL'?'PARTIAL_BASIC_AND_EXPLICIT_SIMPLE_READER_DETAILED_LIMIT':'PASS_BOUNDED_INDEPENDENT_BASIC_NOT_FULL_V03';
   if(scenario.requireDetailed)result.status='PASS_PACKED_DETAILED_REPORT_AND_MATCHING_READER_NOT_FULL_V03';
+  if(guide){assert.equal(result.guideInstallations.length,2);assert(result.guideInstallations.every(i=>i.status==='PASS_RENDERED_UI_AND_NATIVE_CHOOSER_NOT_TOOLBAR_USABILITY'));result.guideInstallUIProved=true;result.status='PASS_GUIDE_UI_INSTALL_AND_ASSISTED_BASIC_HANDOFF_NOT_FULL_V03';}
   if(result.detailedReport.status==='FAIL')process.exitCode=2;
 }catch(error){result.status='FAIL';result.error=error.stack;process.exitCode=1;console.error(error);}
 finally{
   if(result.status==='FAIL'&&ui&&browser){try{result.failureUI=await ui.p.send('Runtime.evaluate',{expression:'document.body.innerText',returnByValue:true});}catch{}try{result.failureAppDOM=await failureAppProbe?.();await failureAppShot?.();}catch{}}
   await ui?.close().catch(()=>{});downloads?.close();await browser?.context.close().catch(()=>{});await stopVite();await stopAPI();
+  if(desktop){try{await desktop.close();await waitFor(async()=>{try{await stat('/tmp/.X11-unix/X'+desktop.display.slice(1));return false;}catch(e){return e.code==='ENOENT';}});result.ownedDesktopClosed=true;}catch(e){result.status='FAIL';result.desktopCleanupError=e.stack;process.exitCode=1;}}
   await writeFile(out+'/vite.log',viteOutput);result.viteLogSha256=sha256(viteOutput);result.inputsAfter=await inputs();
   if(JSON.stringify(result.inputsAfter)!==JSON.stringify(result.inputsBefore)){result.status='FAIL';result.inputDrift=true;process.exitCode=1;}
   try{result.sourceFilesAfter=await originalSources();}catch(e){result.status='FAIL';result.sourceError=e.stack;process.exitCode=1;}
