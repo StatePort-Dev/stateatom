@@ -1,7 +1,7 @@
-# V03.7 — native reflected disabled controls, in progress
+# V03.7 — native reflected disabled controls, bounded engineering complete
 
 2026-10-24 local / UTC2026-10-23; scope-review-1; base c699b25/main.
-**Source and finite native catalogue verified; independent source gate FAIL.** Whole20/29 and full
+**Corrected source and exact70 finite native catalogue verified; independent source gate FAIL.** Whole20/29 and full
 V03/C09/A02/L02/V02 stay open. No new installed-control/source claim from tests.
 
 [Executor design](../superpowers/specs/2026-10-24-v03-native-disabled-controls-design.md),
@@ -125,7 +125,7 @@ workspace/executed-instrumentation digest mismatch** on that original selection.
 Preserve expected SFC, expression, scalar read, source digest, IDE range and timeout;
 no substitute target, default/parent ownership claim, app patch or broad re-audit.
 The finite native-disabled prerequisite is verified, full V03/C09 remain open.
-ONE final whole-increment engineering review is still pending.
+ONE final whole-increment engineering review is recorded below; both Important findings were corrected in one tested pass.
 
 ## ONE final review and single correction pass
 
@@ -189,3 +189,45 @@ No Minors deferred, no second review. Candidate70 preregisters only new Atom
 identity in both native cases. The independent driver's failure path additionally
 retains a passive `state(refreshDeep:false)` snapshot for precise digest/code-journal
 diagnosis; no success predicate, target or timeout changes.
+
+## Corrected exact70 and final native boundary
+
+Correction commit `0469675` is the clean producer for
+`.artifacts/atom/2026-10-23T20-57-18-973Z/atom-handoff.json`, Atom70 SHA
+`86b0eac00d7c1fe7751684846ede034cee981d468cf6febad24dc731aa7c5cde`;
+UI2 unchanged. Source33 focused/1230 affected/**2561 full PASS**, types2 and
+admission9 PASS. Exact70 actual Basic catalogue **19 PASS /336 stable inputs**,
+zero poisoned getter/constructor/action counters and no scoped errors/overflow:
+`.artifacts/v03/native-disabled-controls/2026-10-23T20-58-05-546Z/results.json`.
+The Basic catalogue does not exercise optional source tracing or native A/B/A.
+Those mutation controls remain source-model proof, not native race acceptance.
+
+Corrected original exact70 result:
+`.artifacts/v03/independent-vue-source/2026-10-23T20-58-40-652Z/results.json`.
+**4 setup PASS, then selected-source FAIL** at the same requiredObserved versus
+actualStale digest gate. All378 execution inputs remain stable; immutable498/
+working497+known generated file unchanged, own Vite0/null and helper closed.
+The retained passive failureState contains original textarea/false/selected marker,
+exact native node and raw Observed trace target for the original disabled expression;
+the helper's verified workspace analysis still rejects it as Stale. Raw page trace
+is not accepted source evidence. Original source/Observed scalar/IDE-range/input/
+export/reader checks are not passed or waived.
+
+The actual code journal has256 captures/253 hashed, source-budget/script-budget/
+anonymous/isolated gaps, and no captured owned deep-helper entry. The prior raw
+function declaration does not exempt the new helper from byte/context matching.
+Finite first-read and complete code history on70 remain unqualified. Neither the
+source controls nor the native setup/catalogue fills those gaps.
+
+The final read-only correction checkpoint separately verifies the exact70 packet,
+327 current product/build inputs,222 unchanged helper inputs, native19 and original
+FAIL receipts, original source files and actual source logs. It retains69's prior
+checkpoint as history rather than rerunning it against changed70 source. Later
+append-only corpus registration is the sole expected post-run independent-input
+drift. This aggregate integrity check does not manufacture feature proof.
+
+This bounded engineering increment is complete after one review/one correction
+pass, no re-review or deferred Minor. Preserve the plan ledger/evidence per user
+instructions. **Next: V03.8 exact retained workspace/executed digest diagnosis.**
+Whole20/29 (~69% equal count), fullV03/C09/A02/L02/V02 and original question remain
+open. The deadline/autonomous goal is still active; no publication or other repo.

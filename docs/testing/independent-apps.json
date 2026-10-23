@@ -322,6 +322,28 @@
       "source_positive_gate_reached": false,
       "whole_V03_complete": false,
       "native_disabled_selection_reached": true
+    },
+    {
+      "id": "V03.7-atom70-digest-stale",
+      "application": "CorentinTh/it-tools",
+      "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+      "execution_record": "../completion/120-v03-native-disabled-controls.md",
+      "evidence": ".artifacts/v03/independent-vue-source/2026-10-23T20-58-40-652Z/results.json",
+      "status": "FAIL_STALE_WORKSPACE_EXECUTED_DIGEST_NO_SELECTED_SOURCE_ACCEPTANCE",
+      "prior_checks_passed": 4,
+      "registered_inputs": 378,
+      "inputs_stable_during_run": true,
+      "immutable_original_files": 498,
+      "working_original_unchanged": 497,
+      "normal_generated_deltas": [
+        "components.d.ts"
+      ],
+      "IDE_started": true,
+      "source_positive_gate_reached": false,
+      "whole_V03_complete": false,
+      "native_disabled_selection_reached": true,
+      "corrected_native_catalogue": ".artifacts/v03/native-disabled-controls/2026-10-23T20-58-05-546Z/results.json",
+      "raw_page_trace_is_accepted_source": false
     }
   ]
 }

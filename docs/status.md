@@ -120,15 +120,17 @@ checks PASS/378stable thenFAIL at unsupported textarea disabled. Both review
 Important fixed in one tested pass/full2533, no re-review. NextV03.7 defines/tests
 that separate native form-control property adapter before the unchanged source/
 scalar-read/IDE question can pass. Whole20/29 and original evidence stay unchanged.
-[V03.7](completion/120-v03-native-disabled-controls.md): source1241/full2550,
-exact clean Atom69/UI2 types2/admission9 and actual native catalogue19 PASS.
-Three reflected-disabled kinds retain zero app getter/constructor/action counts;
-336 execution inputs stable. Original it-tools textarea now reaches the next gate:
-4 setup PASS/378 stable inputs, then selected-source FAIL with runtime Stale,
-workspace/executed instrumentation digest mismatch. Source/read/IDE/input/export
-remain unaccepted. ONE final review running; next bounded V03.8 diagnoses that
-retained mismatch with original criteria. Finite first-read69 remains unqualified;
-whole20/29 and fullV03/C09 unchanged.
+[V03.7](completion/120-v03-native-disabled-controls.md) bounded engineering is
+complete after ONE review and one correction pass:0Critical/2Important fixed/0Minor,
+no re-review. Corrected33/affected1230/full2561, exact clean Atom70/UI2 types2/
+admission9 and actual Basic native catalogue19 PASS/336 stable inputs. Missing
+attribute acquisition stays unknown; optional tracing binds the exact native node
+and invalidates native mutations, including value restoration. Basic omits the deep
+MAIN helper. Original it-tools remains4 setup PASS/378 stable then selected-source
+FAIL: Stale workspace/executed instrumentation digest mismatch. Raw Observed page
+trace is not accepted source/read/IDE/input/export proof. Journal256/source-budget/
+script-budget gaps leave finite first-read70 unqualified. Next bounded V03.8 diagnoses
+that exact retained mismatch with original criteria. Whole20/29/fullV03/C09 unchanged.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

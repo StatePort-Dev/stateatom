@@ -48,30 +48,45 @@ same trusted native queue used by picker. identifySelection still returns only
 {document,node,property,value}|null. observeDeep retains its result/trace schema;
 no new browser DTO, evaluator, evidence kind or mutation authority.
 
-- [ ] Write native identity and deep-value/poisoning/race tests before product code.
-- [ ] Run node --test --test-isolation=none tests/engine/selection-identity.test.mjs tests/engine/disabled-observation.test.mjs; retain actual RED.
+- [x] Write native identity and deep-value/poisoning/race tests before product code.
+- [x] Run node --test --test-isolation=none tests/engine/selection-identity.test.mjs tests/engine/disabled-observation.test.mjs; retain actual RED.
   Expected: new input/textarea identity and no-getter/deep-value controls FAIL;
   original button/text controls retain their original behavior.
-- [ ] Implement exact native catalogue, shared queue, Boolean helper argument,
+- [x] Implement exact native catalogue, shared queue, Boolean helper argument,
   before/after fences and bounded unavailable-disabled error. Keep text unchanged.
-- [ ] Repeat focused source controls. Expected: all PASS; no getter calls or stale
+- [x] Repeat focused source controls. Expected: all PASS; no getter calls or stale
   known value. Run affected engine/Atom/worker controls and full existing npm test.
-- [ ] Write/register synthetic native driver/case before app/browser execution.
+- [x] Write/register synthetic native driver/case before app/browser execution.
   Use native-inspector-ui and startNativeBrowser; Basic readonly, no helper,
   exact standalone installed host and own loopback server/profile. Preserve gate
   for zero app actions and zero poisoned getters. Commit source/driver/case.
-- [ ] npm run pack:atom; use exact new handoff. Run existing verify:atom-types
+- [x] npm run pack:atom; use exact new handoff. Run existing verify:atom-types
   and verify:atom-package with that file. Expected2/9 PASS and exact UI2; no native
   acceptance from these checks. Verify helper222 inputs before reuse.
-- [ ] node tests/integration/native-disabled-controls.mjs <exact69 handoff>.
+- [x] node tests/integration/native-disabled-controls.mjs <exact69 handoff>.
   Expected catalogue matches, negative targets refused, getter/action counts0,
   inputs/archives/install/host stable; screenshots candidates only.
-- [ ] Clone independent-vue-source-case68.json changing only expectedAtomVersion
+- [x] Clone independent-vue-source-case68.json changing only expectedAtomVersion
   to69; commit before running unchanged independent-vue-source-native.mjs on69.
   Expected source-positive/IDE gates must actually pass or remain FAIL. Never
   modify app/selector/expression/Observed scalar/digest/range/timeout to pass.
-- [ ] Record120 and routing with actual source/native outcomes; read-only seal of
+- [x] Record120 and routing with actual source/native outcomes; read-only seal of
   exact current inputs, original sources and receipts. ONE final fresh review
   c699b25..final implementation head, one tested correction pass at most.
-- [ ] Local final commit; preserve evidence/worktree. Name one next dependency-
+- [x] Local final commit; preserve evidence/worktree. Name one next dependency-
   valid unresolved item from the actual result. No whole-task credit from docs.
+
+## Actual correction and completion boundary
+
+ONE review0/2Important/0; one tested correction pass0469675, no re-review.
+Corrected33/affected1230/full2561 PASS, exact70 types2/admission9/native19 PASS.
+Original exact70 unchanged question4setupPASS then workspace/executed digest Stale
+FAIL retained, no source/read/IDE/input/export acceptance. Codejournal script/source
+budget gaps leave finite-firstread70 unqualified. Scope20/29 unchanged.
+
+Final aggregate verification command: `node .artifacts/v03/native-disabled-controls/
+2026-10-24/verify-correction-checkpoint.mjs` (one path, no newline in command).
+This verifies immutable receipts/current hashes and actual source logs; it does not
+repeat successful expensive functional/native runs or create new capability proof.
+It is the task-done check under the user's preserve-evidence/no-repeat instruction.
+Local final routing commit follows the integrity check; next bounded item V03.8.
