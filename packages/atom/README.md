@@ -36,6 +36,17 @@ register global listeners on import. `contract.json` fixes API/wire version 1,
 UI contract 2.1.0 and the exact peer package version. Styles are scoped, not
 Shadow DOM protection from hostile host CSS.
 
+Background source acquisition requires the trusted optional host method
+`AtomPlatform.readScriptSource(tabId, scriptId, assertCurrent)`. The supplied
+Chrome platform and both brokers run its synchronous guard immediately before
+native dispatch, after awaited permission/lease admission. Custom brokers must
+explicitly provide `nativeCommandGuard: true` and honor the final fourth argument
+to `DebuggerLease.command`; the existing third admission callback may be async.
+Without that guarantee, queued source acquisition is explicitly unavailable;
+ordinary control/cleanup commands keep their existing contract. Cancellation or
+map replacement removes waiting reads, and every returned body is revalidated.
+No source body or authorization grant is cached by the queue.
+
 Wire v1 has additive capability discovery v1. Import
 `supportsCapabilityPolicy` from `@stateport/atom/transport`, then request
 `client.request({op:'capabilities',tabId,capabilityVersion:1})`. The validated

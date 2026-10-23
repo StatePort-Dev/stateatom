@@ -6,7 +6,7 @@ import {createAtomRuntime} from '../../packages/atom/src/runtime.mjs';
 import {createChromePlatform,createDebuggerBroker,createEventHub} from '../../packages/atom/src/platform.mjs';
 const tick=()=>new Promise(r=>setImmediate(r));
 const message=payload=>({version:1,id:crypto.randomUUID(),session:'source-burst',payload});
-async function fixture(t){
+async function fixture(t,{legacy=false}={}){
  const origin='http://127.0.0.1:4173',data={'stateport.atom.v1.connections':[{origin,mode:'development',actions:['cache','reload']}]};
  const area={async get(keys){return Object.fromEntries(keys.filter(k=>k in data).map(k=>[k,data[k]]));},async set(v){Object.assign(data,v);}};
  let release,active=0,peak=0,blocked=true;const gate=new Promise(r=>release=r),sources=[],controls=[];
@@ -16,7 +16,9 @@ async function fixture(t){
    if(method==='Debugger.getScriptSource'){sources.push(params.scriptId);active++;peak=Math.max(peak,active);try{if(blocked)await gate;return{scriptSource:'const original = 1;'};}finally{active--;}}
    controls.push(method);return method==='Page.getFrameTree'?{frameTree:{frame:{id:'frame',loaderId:'loader'}}}:{};
   }},scripting:{executeScript:async()=>[]}};
- const events=createEventHub(),platform=createChromePlatform(api,{events,broker:createDebuggerBroker(api.debugger)}),runtime=createAtomRuntime(platform);
+ const events=createEventHub(),broker=createDebuggerBroker(api.debugger);
+ if(legacy){const acquire=broker.acquire.bind(broker);broker.acquire=async options=>{const lease=await acquire(options);delete lease.nativeCommandGuard;return lease;};}
+ const platform=createChromePlatform(api,{events,broker}),runtime=createAtomRuntime(platform);
  const emit=(method,params)=>events.emit({type:'debugger',source:{tabId:1},method,params});
  const unblock=()=>{blocked=false;release();};t.after(async()=>{unblock();await runtime.shutdown();});
  await runtime.request(message({op:'attach',tabId:1}));
@@ -42,4 +44,8 @@ test('source burst overflow stays explicit and cannot block detach',async t=>{
  const f=await fixture(t);f.burst(300);for(let i=0;i<30;i++)await tick();
  const s=await f.runtime.request(message({op:'state',tabId:1}));assert(s.events.some(e=>e.error==='Script source read queue budget reached'),'overflow must be retained as an unavailable read');
  await f.runtime.request(message({op:'detach',tabId:1}));f.unblock();for(let i=0;i<30;i++)await tick();assert(f.sources.length<=4);
+});
+test('custom legacy broker without synchronous guard refuses queued source acquisition only',async t=>{
+ const f=await fixture(t,{legacy:true});await assert.rejects(f.platform.readScriptSource(1,'old-script',()=>{}),{code:'SOURCE_READ_UNAVAILABLE'});
+ assert.deepEqual(f.sources,[]);await f.platform.chrome.debugger.sendCommand({tabId:1},'Performance.getMetrics');assert(f.controls.includes('Performance.getMetrics'));
 });

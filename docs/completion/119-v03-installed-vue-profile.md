@@ -301,3 +301,45 @@ and no getter reevaluation or mutation. Then qualify a new exact candidate and
 resume the same question; source/read/IDE gates and any subsequent failure remain
 independent. V03.6 native acceptance stays partial/unaccepted. This is a dependency
 split, not removal of a requirement or completion of full V03/C09.
+
+## ONE whole review and single tested correction pass
+
+Review df68377..6cb03af: **0 Critical /2 Important /0 Minor, With fixes**.
+Report `.artifacts/v03/installed-vue-profile/2026-10-23/review/whole-increment-review.md`.
+No second reviewer or re-review. Both Important are accepted: a cancelled queued
+source-map request could still perform its native read; a navigation while async
+permission checks were pending could dispatch an old scriptId into the replacement
+context. Post-read fences prevented publication in both reproductions; no stale
+accepted evidence or source leak is asserted.
+
+Executor independently repeated the final actual-runtime probes RED2/2. Their
+immutable before-correction snapshots and hashes are retained separately. Permanent
+runtime/queue controls were4RED; both broker final guards and legacy refusal added
+3 more expected failures. The single correction pass propagates map signal and
+current-generation guards, removes cancelled waiting jobs immediately, reclaims
+capacity and checks again at dequeue/return. The optional trusted host method
+readScriptSource uses a distinct synchronous final broker guard after all awaited
+authority checks. Both supplied brokers declare that contract. Legacy custom
+brokers without nativeCommandGuard, or hosts without the new optional reader,
+refuse acquisition explicitly; ordinary commands/cleanup keep their existing
+contract. Types and package README document the additive host boundary; no browser
+message accepts a function or grants new authority.
+
+Both unchanged reviewer actual-runtime probes now2 PASS. Queue Cancel/Clear/map
+replacement and capacity/listener controls pass; fallback and guardian final guards
+and legacy refusal pass. Affected focused63 PASS. First full correction run was
+2524 PASS/9 FAIL: the separate in-process native-source host model lacked the new
+optional service. It now implements the synchronous model hook without altering
+its original source/anchor/getter/negative/privacy assertions. Corrected full source2533 PASS, zero failures/skips. Logs `.artifacts/v03/source-burst/2026-10-23/review-*` retain every
+failure and correction; original67/checkpoint archives remain unchanged.
+
+This correction changes Atom inputs, so new68 needs its own packet/types/admission
+and affected native check. It does not add textarea/input disabled support and
+cannot turn V03.6's source question into PASS. No full project re-audit or prior
+matrix rerun is requested. Declined D1–D7 are ruled individually in the executor
+ledger: native adapter separately V03.7; downstream gates remain unaccepted;
+parent/default/NaiveUI/C09 remain Unknown; old host/performance matrices unrerun;
+assisted installation/screenshots are not human acceptance; excluded production/
+Live/AI/SDK/publication/account/certificate/other-repo scope stays separate; the
+original empty-DOM/screenshot timeout causes remain unproven. Each costs retained
+unqualified coverage rather than an invented pass. All original thresholds stand.

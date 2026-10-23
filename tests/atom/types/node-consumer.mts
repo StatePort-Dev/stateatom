@@ -112,3 +112,10 @@ client.request({op:'inputs-capture',tabId:1,ownerId:'view',investigationId:'i'})
 client.request({op:'inputs-capture',tabId:1,ownerId:'view',snapshot:{}});
 // @ts-expect-error Only explicit outcome review categories exist.
 client.request({op:'inputs-capture',tabId:1,ownerId:'view',includeCategories:['grants']});
+
+// Trusted host-only source guard; no browser operation accepts this callback.
+const guardedSource:Promise<{scriptSource:string}>|undefined=platform.readScriptSource?.(1,'1',()=>{});
+void guardedSource;
+const guardedLease=await broker.acquire({tabId:1,owner:'typed',capabilities:['read']});
+const synchronousGuard:true|undefined=guardedLease.nativeCommandGuard;
+void guardedLease.command('DOM.getDocument',{},async()=>{},()=>{});void synchronousGuard;

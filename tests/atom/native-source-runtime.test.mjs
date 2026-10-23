@@ -42,7 +42,7 @@ async function fixture(t,{listeners,marker='occurrence:1',pause,react=false,fram
   if(method==='Debugger.getScriptSource')return{scriptSource:scriptSources?.[p.scriptId]??'function t(){return 1}'};
   return{};
  }},scripting:{executeScript:async()=>{throw Error('Application injection forbidden in source read');}}};
- const platform={chrome,ready:Promise.resolve(),fetch:()=>{throw Error('IDE/network forbidden');},events:{subscribe(fn){notify=fn;return()=>{};}},authorize:async(_,grant)=>{calls.push('grant:'+grant);},owns:()=>true,describeTarget:async()=>({url:'https://app.invalid/',permission:true,readOnlySites:true,grants:['read','inject'],lease:s.attached?'owned':'none'}),shutdown:async()=>{}};
+ const platform={chrome,async readScriptSource(id,scriptId,assertCurrent){assertCurrent();return chrome.debugger.sendCommand({tabId:id},'Debugger.getScriptSource',{scriptId});},ready:Promise.resolve(),fetch:()=>{throw Error('IDE/network forbidden');},events:{subscribe(fn){notify=fn;return()=>{};}},authorize:async(_,grant)=>{calls.push('grant:'+grant);},owns:()=>true,describeTarget:async()=>({url:'https://app.invalid/',permission:true,readOnlySites:true,grants:['read','inject'],lease:s.attached?'owned':'none'}),shutdown:async()=>{}};
  // Explicit in-process boundary model only; actual owned Worker is a separate gate.
  if(!withoutParser)platform.parseSourceArtifact=(operation,bytes)=>runSourceParseJob({operation,bytes});
  const runtime=createAtomRuntime(platform,{readOnlySites:true});t.after(()=>runtime.shutdown());await runtime.ready;

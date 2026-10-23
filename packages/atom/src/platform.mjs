@@ -18,9 +18,9 @@ export function createDebuggerBroker(debuggerAPI){
   if(leases.has(tabId))throw atomError('BUSY','Debugger resource busy');
   let active=true,attached=false,closing=false,attachment=null,releasing=null;const token={owner};leases.set(tabId,token);
   const assert=cap=>{if(!active||closing||leases.get(tabId)!==token)throw atomError('LEASE_EXPIRED');if(cap&&!grants.includes(cap))throw atomError('CAPABILITY_DENIED',cap+' capability required');};
-  return {tabId,documentId,assert,
+  return {tabId,documentId,nativeCommandGuard:true,assert,
    async attach(){assert('read');if(!attached){attachment??=(async()=>{try{await debuggerAPI.attach({tabId},'1.3');attached=true;}catch(e){if(/already attached|another debugger/i.test(e.message))throw atomError('BUSY','Native debugger resource busy');throw e;}})();await attachment;}assert('read');},
-   async command(method,params={},beforeNative){const cap=commandCapability(method);assert(cap);if(!attached)throw atomError('LEASE_EXPIRED','Debugger is not attached');if(beforeNative!==undefined){if(typeof beforeNative!=='function')throw atomError('INVALID_PLATFORM');await beforeNative();assert(cap);}return debuggerAPI.sendCommand({tabId},method,params);},
+   async command(method,params={},beforeNative,assertCurrent){const cap=commandCapability(method);assert(cap);if(!attached)throw atomError('LEASE_EXPIRED','Debugger is not attached');if(assertCurrent!==undefined&&typeof assertCurrent!=='function')throw atomError('INVALID_PLATFORM');if(beforeNative!==undefined){if(typeof beforeNative!=='function')throw atomError('INVALID_PLATFORM');await beforeNative();assert(cap);}assertCurrent?.();return debuggerAPI.sendCommand({tabId},method,params);},
    release(){if(releasing)return releasing;if(!active)return Promise.resolve();assert();closing=true;releasing=(async()=>{try{await attachment?.catch(()=>{});if(attached)await debuggerAPI.detach({tabId});}finally{attached=false;active=false;if(leases.get(tabId)===token)leases.delete(tabId);}})();return releasing;},
    invalidate(){active=false;attached=false;if(leases.get(tabId)===token)leases.delete(tabId);}
   };
@@ -91,11 +91,20 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
   return acquiring.get(id);
  }
  async function requireLease(id,cap,options){if(stopped)throw atomError('DISPOSED');const e=leases.get(id);if(!e)throw atomError('LEASE_REQUIRED');return check(id,e,cap,options);}
+ async function debuggerCommand(tabId,m,p,assertCurrent){
+  const cap=commandCapability(m),options={cleanup:['Fetch.disable','Fetch.continueRequest'].includes(m)},l=await requireLease(tabId,cap,options);
+  if(assertCurrent&&l.nativeCommandGuard!==true)throw atomError('SOURCE_READ_UNAVAILABLE','Broker has no synchronous native source guard');
+  const result=await l.command(m,p,()=>requireLease(tabId,cap,options),assertCurrent);
+  try{await requireLease(tabId,cap,options);}catch(e){e.nativeMayHaveApplied=true;throw e;}return result;
+ }
  const chrome={runtime:{id:api.runtime.id,sendMessage:m=>api.runtime.sendMessage(m)},storage:{local:namespacedStorage(api.storage.local,namespace),session:storage},
-  debugger:{attach:async({tabId})=>{const l=await lease(tabId);try{await l.attach();await requireLease(tabId,'read');}catch(e){await revoke(tabId);throw e;}},sendCommand:async({tabId},m,p)=>{const cap=commandCapability(m),options={cleanup:['Fetch.disable','Fetch.continueRequest'].includes(m)},l=await requireLease(tabId,cap,options);const result=await l.command(m,p,()=>requireLease(tabId,cap,options));try{await requireLease(tabId,cap,options);}catch(e){e.nativeMayHaveApplied=true;throw e;}return result;},getTargets:()=>api.debugger.getTargets(),detach:async({tabId})=>{await productionHost.revoke(tabId,'debugger-detached');return revoke(tabId);}},
+  debugger:{attach:async({tabId})=>{const l=await lease(tabId);try{await l.attach();await requireLease(tabId,'read');}catch(e){await revoke(tabId);throw e;}},sendCommand:({tabId},m,p)=>debuggerCommand(tabId,m,p),getTargets:()=>api.debugger.getTargets(),detach:async({tabId})=>{await productionHost.revoke(tabId,'debugger-detached');return revoke(tabId);}},
   scripting:{executeScript:async op=>{const l=await lease(op.target.tabId);l.assert('inject');const result=await api.scripting.executeScript(op);await requireLease(op.target.tabId,'inject');return result;}},
   tabs:{get:id=>api.tabs.get(id),query:q=>api.tabs.query(q),reload:async(id,o)=>{await requireLease(id,'reload');return api.tabs.reload(id,o);},sendMessage:async(id,m)=>{(await lease(id)).assert('read');return api.tabs.sendMessage(id,m);},onUpdated:api.tabs.onUpdated}};
- return {ready,approvedSite,get sourceParsingAvailable(){return broker.sourceParsing?.configured===true;},parseSourceArtifact:(operation,bytes,options)=>broker.sourceParsing?.run(operation,bytes,options)??Promise.reject(atomError('SOURCE_PARSE_UNAVAILABLE','Source artifact parsing unavailable')),productionChanges:{available:productionHost.available,transition:productionHost.transition,cancel:productionHost.cancel,close:productionHost.close,revoke:productionHost.revoke},get nativeControlsAvailable(){return controlOwner?.available===true&&typeof api.scripting?.executeScript==='function';},
+ return {ready,approvedSite,async readScriptSource(tabId,scriptId,assertCurrent){
+  if(typeof scriptId!=='string'||!scriptId||scriptId.length>160||typeof assertCurrent!=='function')throw atomError('INVALID_PLATFORM');
+  return debuggerCommand(tabId,'Debugger.getScriptSource',{scriptId},assertCurrent);
+ },get sourceParsingAvailable(){return broker.sourceParsing?.configured===true;},parseSourceArtifact:(operation,bytes,options)=>broker.sourceParsing?.run(operation,bytes,options)??Promise.reject(atomError('SOURCE_PARSE_UNAVAILABLE','Source artifact parsing unavailable')),productionChanges:{available:productionHost.available,transition:productionHost.transition,cancel:productionHost.cancel,close:productionHost.close,revoke:productionHost.revoke},get nativeControlsAvailable(){return controlOwner?.available===true&&typeof api.scripting?.executeScript==='function';},
   async openNativeControls({target,verify,onLost=()=>{}}={}){
    if(controlOwner?.available!==true||typeof api.scripting?.executeScript!=='function')throw atomError('CONTROL_OWNER_UNAVAILABLE');
    if(!target||typeof verify!=='function'||typeof onLost!=='function')throw atomError('INVALID_PLATFORM');

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.68
+
+- Carry source-map cancellation/generation guards through queued acquisition;
+  cancelled waiting reads release capacity without later native dispatch.
+- Run a synchronous exact-session guard at the final native boundary after all
+  async permission/lease checks in both supplied brokers. The optional trusted
+  readScriptSource host hook refuses legacy brokers without that guarantee.
+  Keep ordinary command/cleanup and async admission callback contracts intact.
+- Preserve67 and its partial native results. Two review regressions reproduced
+  unwanted native reads, with no stale result publication; both are corrected
+  in this version. New package/native qualification remains separate. No visual,
+  form-control adapter, evidence threshold or public feature support is added.
+
 ## 0.1.0-candidate.20261021.67
 
 - Bound background Debugger.getScriptSource acquisition to four active reads and

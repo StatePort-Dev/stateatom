@@ -109,6 +109,11 @@ and baseline render pass; selected source/read/IDE range remain unaccepted.
 V03.6 engineering closes with partial native evidence and ONE code review due.
 NextV03.7 is that bounded native form-control property prerequisite, preserving
 the same original source question. No Unsupported path is credited as passed.
+ONE V03.6 review found2 Important acquisition gaps,0Critical/0Minor. Both were
+reproduced and corrected in one tested pass: queued map cancellation/replacement
+and final synchronous native-dispatch guard after async authority checks. Legacy
+hosts without that guarantee refuse queued reads. Corrected full2533 PASS; new68
+package/native qualification remains due, no re-review or selected-source credit.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

@@ -122,3 +122,7 @@ client.request({op:'state',tabId:1,refreshDeep:false,refreshIdentity:true});
 client.request({op:'metrics',tabId:1,refreshIdentity:true});
 // @ts-expect-error The identity option is boolean.
 client.request({op:'state',tabId:1,refreshIdentity:'yes'});
+
+// Trusted host-only source guard; no browser operation accepts this callback.
+const guardedSource:Promise<{scriptSource:string}>|undefined=platform.readScriptSource?.(1,'1',()=>{});
+void guardedSource;
