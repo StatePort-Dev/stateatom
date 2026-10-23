@@ -33,3 +33,22 @@ The first replay preparation guessed the end at176:11 and failed against actual
 174:11. Preserve initial script/log. Corrected oracle calculates the literal
 unchanged textarea span and independently asserts156:9–174:11. No product/driver/
 native criterion was changed, and the initial failure is not called a product bug.
+
+## Exact helper8 and registration
+
+Clean producer `20fc8ec4a9add2128816dcd4b4b50635b35759c4`. Declared build and
+pack terminate0. Immutable development handoff
+`.artifacts/development/2026-10-23T21-51-54-126Z/handoff.json` has helper VSIX SHA
+`d471fcab1b00f65c59f61cb47fba581d42d635cacb3160d55d23a905cf86542a`,
+exact reproduced bundle `dc5bc6a0870022b55c0f4da3ca699ee71c13dbabb755f8e3e12dee7a74fd5bac`,
+5073814B/223 inputs. Two existing CJS import.meta warnings remain retained.
+VSIX9 entries/package/bundle/licenses checked. Plugin5 archive byte-identical,
+19 source inputs/14 installed payload files and Atom70/UI2 archives/327 inputs
+unchanged. No app/plugin dependency installation repeated.
+
+Derived consumer-reuse-helper8 receipt explicitly distinguishes inherited strict
+plugin admission from fresh artifact identity, retaining verified original appRoot/
+dependencyFile. It does not claim helper native qualification. New original case
+70-helper8 changes only developmentHandoff/consumerReceipt/expectedHelperSha256;
+original app/target/expression/scalar/digest/range/timeout/actions/driver unchanged.
+Commit registration before executing the original installed question.
