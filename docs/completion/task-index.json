@@ -4758,10 +4758,11 @@
       "active_slice": {
         "id": "V03.2",
         "title": "Pinned independent corpus and first clean Basic guide path",
-        "status": "source-intake-verified-runtime-unexecuted",
+        "status": "pinned-private-dependencies-ready-no-app-run",
         "plan": "../superpowers/plans/2026-10-23-v03-independent-clean-path.md",
         "source_registration": "../testing/independent-apps.json",
-        "source_intake_evidence": ".artifacts/v03/independent-corpus/2026-10-23T15-40-52-439Z/results.json"
+        "source_intake_evidence": ".artifacts/v03/independent-corpus/2026-10-23T15-40-52-439Z/results.json",
+        "dependency_preparation_evidence": ".artifacts/v03/dependency-prep/2026-10-23T15-48-05-165Z/results.json"
       },
       "completed_slices": [
         {
@@ -4793,7 +4794,7 @@
       "current_checkpoint": {
         "record": "114-v03-installed-guide-preparation.md",
         "status": "guide-prepared-execution-unverified",
-        "next_bounded_step": "Establish exact project tooling/dependencies in isolated working copies, then preregister first app-specific clean Basic cases; no execution credit from intake"
+        "next_bounded_step": "Freeze synthetic local product API and app-specific cases, then actual first clean Basic/picker/report/fresh-reader path on Reactcommerce; no source plugin or full V03 credit"
       }
     },
     {
@@ -6984,7 +6985,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.2 plan03a3f48 pins Reactcommerce653ce109/MIT and VueITToolsd505845f/GPL3 plus metadata-only Excalidrawreserveb7de45e8 before execution/tailoring. Private source intakes65+498files/hash/licenses checked; no dependency install/app run/coverage credit yet. V03.1 guide accepted; fullV03/A02/L02/V02 open20/29. Next exacttooling+firstregisteredcleanBasicpath; no human blocker or publication.",
+    "current_activity_note": "V03.2 pinned new Reactcommerce/VueITTools and structural reserve. Frozen lifecycle-disabled dependency installs in private working copies pass, all65+498 original source/lock files unchanged; ReactNode24/npm11 and VueNode18.18.2/pnpm9.11 from project pins. No app/browser run yet, no current combined plugin/helper/browser or wholeV03 claim. Next freeze local product API/scenarios and run first admitted clean Basic path. FullA02/L02/V02/V03 open20/29; no human blocker/globalmanager activation/publication.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "fd160d0 guide; b50b26e experimental companion; fa95157 product65 unchanged",
     "current_record_date": "2026-10-23",
