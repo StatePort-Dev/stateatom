@@ -3,7 +3,7 @@
 // Use the package's self-contained ESM parser in the IDE bundle. The Node CJS
 // entry also contains optional template preprocessor requires unrelated to parse.
 import {parse as parseSFC} from '@vue/compiler-sfc/dist/compiler-sfc.esm-browser.js';
-import {baseParse} from '@vue/compiler-dom';
+import {parse as parseVueTemplate} from '@vue/compiler-dom';
 import {parse} from '@babel/parser';
 
 export function vueSourceUnit(file,text){
@@ -17,7 +17,9 @@ export function vueSourceUnit(file,text){
   // Retain legacy template navigation even when callback ownership cannot be
   // resolved. An Options API/module name is not a template lexical binding.
   ast=parse(!actionBoundary?text.slice(0,script.loc.start.offset).replace(/[^\n]/g,' ')+script.content:'',{sourceType:'module',plugins:['typescript']});
-  tree=baseParse(descriptor.template.content);
+  // Use DOM rules for original void tags, namespaces and raw text. Do not
+  // rewrite source markup: all target/event spans address the unchanged SFC.
+  tree=parseVueTemplate(descriptor.template.content);
  }catch{return null;}
  const start=descriptor.template.loc.start.offset,targets=[];
  const position=offset=>{const head=text.slice(0,offset);return {line:head.split('\n').length,column:offset-head.lastIndexOf('\n')};};

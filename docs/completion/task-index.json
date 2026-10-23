@@ -5164,11 +5164,11 @@
     ]
   },
   "reconciliation": {
-    "document": "122-v03-selected-source-budget.md",
+    "document": "123-v03-vue-source-html.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.9-engineering-complete-corrected-helper-native-source-partial",
-    "next_item": "V03.10 selected Vue source parser HTML void-element handling",
+    "current_increment": "V03.10-source-html-parser-implemented-not-new-native-acceptance",
+    "next_item": "V03.10 exact new helper and original source/scalar/IDE workflow",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7290,11 +7290,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.9 safe candidate-first acquisition and ONE review correction complete: earlier admitted paths/metadata revalidated after later awaits; RED14=10PASS4FAIL -> focused29/full2579PASS. Corrected helper7 exact installed native4 setup PASS/378 stable, runtime Observed but selected source links0 required1 FAIL. Original source/scalar/IDE/input/export question unaccepted; whole20/29 unchanged; next V03.10 HTML void source parser.",
+    "current_activity_note": "V03.10 switches source-template parsing to locked Vue DOM parse; actual RED6=1PASS5FAIL -> focused39/full2585PASS. Retained original source replay now links exact expression/digest/range156:9-174:11, source-only. New exact helper/original native/ONE review due; historical FAILs and whole20/29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "2c888e296c8bacb98f6f6b780457da2d036b225e corrected helper producer; original native preregistration12f2c8a; Atom70/plugin5 inputs verified unchanged",
+    "current_source_revision": "3ff130a plus pending V03.10 core/vue-source.mjs/tests/spec/plan; Atom70/plugin5 inputs exclude this source pending exact rechecks",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.10 fix generic Vue source-template parser rejecting original ordinary non-self-closing HTML input, preserving exact selected SFC/expression/scalar/digest/range/IDE/input/export gates and original app; new exact helper qualification required for changed helper inputs. No full V03/C09 credit until actual original gates pass."
+    "next_bounded_step": "V03.10 finish actual full source checks, build/reproduce new helper, verify unchanged Atom70/plugin5 before reuse, preregister only new artifact/receipt identities, run unchanged original source/scalar/IDE/input/export question and preserve any FAIL; ONE whole review, at most one tested correction pass."
   },
   "next_task": "V03"
 }
