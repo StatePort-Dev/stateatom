@@ -63,7 +63,7 @@ async function stopWindow(tabId,initial){
 async function appClick(tabId){
  await panel.evaluate(id=>chrome.tabs.update(id,{active:true}),tabId);
  const point=await panel.evaluate(async id=>(await chrome.scripting.executeScript({target:{tabId:id,frameIds:[0]},world:'ISOLATED',func:async()=>{const e=document.getElementById('run');if(e.disabled)throw Error('Workload still busy');e.scrollIntoView({block:'center'});await new Promise(requestAnimationFrame);const r=e.getBoundingClientRect();return{x:screenX+(outerWidth-innerWidth)/2+r.x+r.width/2,y:screenY+outerHeight-innerHeight+r.y+r.height/2};}}))[0].result,tabId);
- const win=desktop.native(['search','--onlyvisible','--name','^V02 fixed workload$']).split('\n')[0];assert(win,'Native app window missing');desktop.native(['windowfocus','--sync',win]);desktop.native(['mousemove',String(Math.round(point.x)),String(Math.round(point.y))]);desktop.native(['mousedown','1']);desktop.native(['mouseup','1']);
+ const win=await waitFor(()=>{try{return desktop.native(['search','--onlyvisible','--name','V02 fixed workload']).split('\n')[0];}catch{return null;}});result.nativeAppWindowTitle=desktop.native(['getwindowname',win]);desktop.native(['windowfocus','--sync',win]);desktop.native(['mousemove',String(Math.round(point.x)),String(Math.round(point.y))]);desktop.native(['mousedown','1']);desktop.native(['mouseup','1']);
 }
 async function closeBrowser(){await d?.close().catch(()=>{});d=null;await browser?.context.close();browser=null;}
 try{
