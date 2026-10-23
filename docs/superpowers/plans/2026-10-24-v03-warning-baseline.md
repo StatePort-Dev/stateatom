@@ -50,8 +50,8 @@ counts, no app side effects or product exports.
 - [x] Write installed-wrapper scan-policy RED tests; implement only enabled vue3 defaults preserving explicit/accessor/custom entries/input/optimizer policies and underlying hook.
 - [x] Focused GREEN/full source suite; commit source, pack exact new plugin, strict Node18 install and reuse unchanged helper8/Atom70 by hashes.
 - [x] Register new treatment identities separately from historical native case, original CLI, no private scanner override; commit before four fresh trials.
-- [ ] Run node tests/integration/independent-vue-warning-baseline.mjs docs/testing/independent-vue-warning-case.json; inspect actual phase results, raw warnings, artifacts and cleanup. Do not restart a live handle or retry to improve output.
-- [ ] Summarize within-condition, cross-condition and original-native differences separately; keep original15-positive/overall-FAIL result unchanged.
-- [ ] Update record124/current task routing/corpus append-only, identify one dependency-valid next item from actual result.
+- [x] Run node tests/integration/independent-vue-warning-baseline.mjs docs/testing/independent-vue-warning-case-plugin6.json; inspect actual phase results, raw warnings, artifacts and cleanup. Do not restart a live handle or retry to improve output.
+- [x] Summarize within-condition, cross-condition and original-native differences separately; keep original15-positive/overall-FAIL result unchanged.
+- [x] Update record124/current task routing/corpus append-only, identify one dependency-valid next item from actual result.
 - [ ] ONE fresh whole-increment review d40a503..current head; rule declined boundaries, at most one tested correction pass for actual findings, no re-review.
 - [ ] Final read-only aggregate from actual receipts, task-done/local commit/clean tree; retain ledger/history, whole20/29 and active goal unless their true gates change.

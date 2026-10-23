@@ -1,5 +1,11 @@
 # Local developer-preview acceptance
 
+Current approved-scope execution is tracked in [completion status](../status.md)
+and [V03.11](../completion/124-v03-warning-baseline.md): installed6 cold startup
+and the finite original warning comparison are verified, final review pending.
+The original zero-console FAIL and full V03/C09 remain open; the procedures below
+retain their historical first-read scope and are not fresh qualification.
+
 Latest execution: [closed first-read checkpoint](2026-10-18-closed-first-read.md).
 The authorized agent-operated procedure now includes a separately scoped complete
 P2/P1 path and an actual installed helper. It does not establish independent human

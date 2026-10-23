@@ -4757,7 +4757,7 @@
       "active_slice": {
         "id": "V03.11",
         "title": "Read-only original Vue warning baseline comparison",
-        "status": "in-progress-partial-off24-on-cold-start-504-comparison-incomplete",
+        "status": "engineering-complete-packaged-cold-abba4-warning-deltas-review-pending",
         "predecessor": "V03.10 bounded parser complete; native15-positive/final-console-FAIL retained",
         "record": "124-v03-warning-baseline.md",
         "design": "../superpowers/specs/2026-10-24-v03-warning-baseline-design.md",
@@ -4807,9 +4807,19 @@
           "consumer_receipt": ".artifacts/v03/installed-vue-consumer/2026-10-23T23-17-16-400Z/result.json",
           "source_checks": 2616,
           "focused_checks": 50,
-          "runtime_qualification": "DUE"
+          "runtime_qualification": "PASS_FOUR_COLD_SCOPED_STARTUPS_NOT_FULL_NATIVE"
         },
-        "new_matrix_case": "../testing/independent-vue-warning-case-plugin6.json"
+        "new_matrix_case": "../testing/independent-vue-warning-case-plugin6.json",
+        "new_matrix_result": ".artifacts/v03/warning-baseline/2026-10-23T23-18-17-486Z/results.json",
+        "new_matrix_verification": ".artifacts/v03/warning-baseline/2026-10-24/matrix-checkpoint.json",
+        "new_matrix_valid_trials": 4,
+        "new_matrix_full_argument_off_repeat_equal": true,
+        "new_matrix_full_argument_on_repeat_equal": false,
+        "new_matrix_full_argument_cross_deltas": {
+          "only_left": 4,
+          "only_right": 4
+        },
+        "original_native_overall_status": "FAIL"
       },
       "completed_slices": [
         {
@@ -5120,13 +5130,13 @@
         }
       ],
       "current_checkpoint": {
-        "record": "122-v03-selected-source-budget.md",
-        "status": "source-pass-new-helper-native-and-review-due",
-        "verification": ".artifacts/v03/target-source-scan/2026-10-24/retained-scan-diagnosis.json",
-        "next_bounded_step": "V03.9 build/qualify new exact helper and unchanged Atom70/plugin5 inputs, run original source question without changing criteria, ONE final review; retain source-only parser boundary as separate unresolved work"
+        "record": "124-v03-warning-baseline.md",
+        "status": "engineering-complete-packaged-cold-abba4-warning-deltas-review-pending",
+        "verification": ".artifacts/v03/warning-baseline/2026-10-24/matrix-checkpoint.json",
+        "next_bounded_step": "ONE whole-increment review, then V03.12 guide-operated browser installation/independent React Basic handoff in an owned fresh profile; no original gate waiver"
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-native-disabled-controls.md",
-      "implementation_plan": "../superpowers/plans/2026-10-24-v03-selected-source-budget.md"
+      "implementation_plan": "../superpowers/plans/2026-10-24-v03-warning-baseline.md"
     },
     {
       "id": "V04",

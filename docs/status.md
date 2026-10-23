@@ -158,16 +158,20 @@ consumer lineage or full V03/C09 claim. ONE review0/0/0 accepted the bounded par
 no correction/re-review; integrity verified. Next V03.11 compares
 uninstrumented/instrumented original app warnings without suppression or gate
 waiver. Atom70/plugin5/whole20/29 unchanged; historical FAILs retained.
-[V03.11](completion/124-v03-warning-baseline.md) remains unfinished. Comparator7
-PASS; corrected full-Chromium diagnostic executes2/4 trials,50 stable inputs.
-Off reproduces16 intlify+8 Vue prop warning headers without instrumentation;
-full arguments versus historical native differ4vs4 through added marker attrs.
-On fails cold startup on two Vite504 Outdated Optimize Dep requests (marked/
-dompurify); no valid On comparison or final review/task-done. All owned children
-closed/source498+497 unchanged/product327/223/19/14 unchanged. Next localize this
-retained optimizer failure before finishing the original matrix; no unregistered
-warmup/reload/timeout increase or original zero-console waiver. Original native15
-positive/overallFAIL and whole20/29 unchanged.
+[V03.11](completion/124-v03-warning-baseline.md) now completes its bounded engineering
+question, ONE final review pending. Cold trace and original-project CLI control
+retain missing-prebundle504 failures; one private HTML+Vue scan control succeeds.
+Installed6 then extends default Vue SFC scanning while preserving explicit user
+entries/input/optimizer/accessor policies: focused50/corrected full2616 PASS,
+strict Node18 install/14 payload files/6 admission probes. Fresh registered original
+CLI Off/On/On/Off all4 render,56 stable inputs, unchanged498/497 source/owned cleanup.
+Each has24 warnings (16 intlify+8 Vue prop),0 exceptions/Log errors. Off repeats
+exactly; On/cross/native full vectors deliberately differ4vs4 including instrumented
+component contexts/run IDs. No full-message equivalence or zero-console waiver.
+Atom70/helper8 inputs327/223 unchanged; new helper zip has identical9 payload entries,
+no new helper native acceptance. Original plugin5/overall native FAILs remain.
+Whole20/29/fullV03/C09/A02/L02/V02 unchanged. After ONE review, next V03.12 is the
+bounded guide-operated browser installation/independent React Basic handoff route.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

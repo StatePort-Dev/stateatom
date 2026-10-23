@@ -173,3 +173,41 @@ Original app dependencies/source stay unchanged. New plugin6 warning case keeps
 historical native scenario/result intact, independently pins installed treatment,
 uses original project Vite CLI and forbids a private scanner override. Four cold
 Off/On/On/Off trials, same timeouts/window/Chrome/route/caps; commit before execution.
+
+## Actual packaged comparison — engineering complete, review pending
+
+Preregisterdd975cd, terminal27961/exit0:
+`.artifacts/v03/warning-baseline/2026-10-23T23-18-17-486Z/results.json`.
+Four fresh cold Off/On/On/Off starts pass exact readiness. All56 registered inputs
+stable; source498/working497+same generated delta; owned Chrome153/Vite close in
+all4 phases. No DEBUG, private optimizeDeps override, reload, warmup, Atom or IDE.
+Both On phases use only the installed6 default scanner correction. Screenshot
+1-on/app-startup.png was viewed: original empty text-statistics page; candidate,
+not human usability acceptance. Source full2616/focused50 and exact package/install
+checks are separate from these actual browser observations.
+
+Each phase records24 console warnings,0 exceptions/Log warnings/errors:16 intlify
+and8 Vue component-prop primary headers. Both groups pre-exist in both Off trials.
+Full multiset Off-repeat equality is true. On-repeat, both cross-condition pairs,
+native-versus-Off and native-versus-On each retain4-only-left/4-only-right differences.
+Raw differing Vue component contexts include added data-stateatom/data-xray-source
+attributes and On run UUIDs. No equality normalization/filter, deduplication or
+warning suppression was introduced. Equal primary counts are not full-vector
+transparency. Neither this finite window nor isolated plugin comparison establishes
+all later warnings or full extension/helper/native behavior.
+
+Readonly matrix-checkpoint.json recomputes all6 full comparisons from raw events,
+checks56 before/after inputs,19 plugin sources/14 installed files, current source
+logs, unchanged327 Atom/223 helper inputs/archives and unchanged historical native
+FAIL/15 positives. Initial aggregate child spawn was sandbox-EPERM before writing
+a checkpoint; the same checker completed under authorized owned-child execution.
+This preparation failure is retained separately from actual browser results.
+
+Original plugin5 cold FAILs and original zero-app-console FAIL24 remain unchanged.
+The cold-start prerequisite and original warning question are now answered in this
+finite new treatment, not as a retroactive plugin5 pass. ONE whole-increment review
+is next; no task count or full V03/C09 claim. After review, one next bounded item is
+V03.12: guide-operated browser artifact installation and existing independent React
+Basic/handoff path in an owned fresh profile, preserving already completed source/
+Vue controls and all unresolved full-baseline dependencies. No certificate/account
+setup, SDK/publication/redesign or other repository change belongs to that item.

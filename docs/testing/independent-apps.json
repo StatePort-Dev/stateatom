@@ -493,6 +493,42 @@
       ],
       "whole_V03_complete": false,
       "full_diagnostic_complete": false
+    },
+    {
+      "id": "V03.11-cold-start-controls",
+      "application": "CorentinTh/it-tools",
+      "execution_record": "../completion/124-v03-warning-baseline.md",
+      "evidence": ".artifacts/v03/warning-baseline/2026-10-24/cold-controls-checkpoint.json",
+      "status": "TWO_COLD_504_FAILURES_THEN_PRIVATE_SCAN_CONTROL200_READY24",
+      "product_fix_at_control_time": false,
+      "original_matrix_complete": false,
+      "initiating_internal_race_proven": false
+    },
+    {
+      "id": "V03.11-installed6-cold-abba-warning-comparison",
+      "application": "CorentinTh/it-tools",
+      "execution_record": "../completion/124-v03-warning-baseline.md",
+      "evidence": ".artifacts/v03/warning-baseline/2026-10-23T23-18-17-486Z/results.json",
+      "status": "PASS_BOUNDED_WARNING_COMPARISON_NOT_NATIVE_ACCEPTANCE",
+      "plugin_candidate": "0.1.0-candidate.20261021.6",
+      "registered_inputs": 56,
+      "inputs_stable_during_run": true,
+      "valid_startup_trials": 4,
+      "warnings_each": {
+        "intlify": 16,
+        "vue_prop": 8
+      },
+      "full_argument_off_repeat_equal": true,
+      "full_argument_on_repeat_equal": false,
+      "cross_condition_deltas": {
+        "only_left": 4,
+        "only_right": 4
+      },
+      "source_checks": 2616,
+      "focused_checks": 50,
+      "original_native_overall_status": "FAIL",
+      "whole_V03_complete": false,
+      "review_pending": true
     }
   ]
 }
