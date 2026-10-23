@@ -53,5 +53,5 @@ counts, no app side effects or product exports.
 - [x] Run node tests/integration/independent-vue-warning-baseline.mjs docs/testing/independent-vue-warning-case-plugin6.json; inspect actual phase results, raw warnings, artifacts and cleanup. Do not restart a live handle or retry to improve output.
 - [x] Summarize within-condition, cross-condition and original-native differences separately; keep original15-positive/overall-FAIL result unchanged.
 - [x] Update record124/current task routing/corpus append-only, identify one dependency-valid next item from actual result.
-- [ ] ONE fresh whole-increment review d40a503..current head; rule declined boundaries, at most one tested correction pass for actual findings, no re-review.
-- [ ] Final read-only aggregate from actual receipts, task-done/local commit/clean tree; retain ledger/history, whole20/29 and active goal unless their true gates change.
+- [x] ONE fresh whole-increment review d40a503..current head; rule declined boundaries, at most one tested correction pass for actual findings, no re-review.
+- [x] Final read-only aggregate from actual receipts, task-done/local commit/clean tree; retain ledger/history, whole20/29 and active goal unless their true gates change.

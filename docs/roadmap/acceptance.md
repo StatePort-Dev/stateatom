@@ -2,7 +2,8 @@
 
 Current approved-scope execution is tracked in [completion status](../status.md)
 and [V03.11](../completion/124-v03-warning-baseline.md): installed6 cold startup
-and the finite original warning comparison are verified, final review pending.
+and the finite original warning comparison are verified after ONE review and
+a current-routing correction. NextV03.12 is guide-operated browser installation.
 The original zero-console FAIL and full V03/C09 remain open; the procedures below
 retain their historical first-read scope and are not fresh qualification.
 

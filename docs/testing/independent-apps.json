@@ -528,7 +528,8 @@
       "focused_checks": 50,
       "original_native_overall_status": "FAIL",
       "whole_V03_complete": false,
-      "review_pending": true
+      "review_pending": false,
+      "review_receipt": ".artifacts/v03/warning-baseline/2026-10-24/review/receipt.json"
     }
   ]
 }

@@ -1,4 +1,4 @@
-# V03.11 — original Vue warning comparison, in progress
+# V03.11 — bounded original Vue warning comparison, complete
 
 2026-10-24 local, base d40a503/main, scope-review-1. Previous bounded parser is
 complete with full2585/review0/0/0 and helper8 native15 positive subchecks. Overall
@@ -211,3 +211,62 @@ V03.12: guide-operated browser artifact installation and existing independent Re
 Basic/handoff path in an owned fresh profile, preserving already completed source/
 Vue controls and all unresolved full-baseline dependencies. No certificate/account
 setup, SDK/publication/redesign or other repository change belongs to that item.
+
+## ONE final review and one routing correction
+
+Read-only fresh-context gpt-6-astra/high `/root/v0311_whole_review`, range
+d40a503..5765c91: **0 Critical/1 Important/0 Minor**, with fixes. Report retained
+in `.artifacts/v03/warning-baseline/2026-10-24/review/report.md`. Fresh31 focused
+PASS, direct unchanged327/223 archive verification PASS, independent tar comparison
+all14 installed members equal. Reviewer aggregate checks reach its child call and
+hit sandboxEPERM; no fresh reviewer end-to-end aggregate PASS is claimed. Executor
+already ran the same aggregate successfully with authorized owned-child execution.
+No reviewer browser/full/native/build/install repeat.
+
+Important: global reconciliation.current_increment/next_item/current_activity_note/
+current_source_revision/next_bounded_step still described the partial plugin5
+matrix/private scanner control. One metadata correction aligns all five with actual
+packaged6 ABBA4 and single nextV03.12. Retained checker first fails on the stale
+increment, then passes and proves all other plan/history/evidence fields identical.
+No product/runtime change: source2616 remains retained; no redundant full/browser
+repeat or re-review. Review finding is addressed; no deferred Minors.
+
+Executor rulings for every declined boundary (cost if wrong):
+
+1. Full V03/C09/whole project remain open; independent gates are mandatory. Cost:
+   a bounded startup result cannot be used as baseline acceptance.
+2. Original zero-console FAIL24 remains binding. Cost: no combined native PASS.
+3. General transparency remains unproven; full vectors differ. Cost: other semantic
+   effects need their own observed countercase and checks.
+4. Later warnings/routes/interactions/lifecycle remain unmeasured. Cost: no inference
+   beyond the registered startup window.
+5. Candidate6 extension/IDE/helper combined path is not replayed here. Cost:
+   separate changed-route qualification remains necessary where applicable.
+6. Atom/helper exact identities support historical reuse only. Cost: no fresh
+   installed-host/native acceptance from matching hashes.
+7. Initiating Vite race remains unknown. Cost: sufficient scanner intervention
+   is not proof of one internal failure path or all possible startup races.
+8. Extra SFC startup cost is not performance-qualified. Cost: V02 stays open.
+9. Other tuples/arbitrary generated policies remain outside qualification. Cost:
+   strict admission/custom policy preservation can refuse unsupported setups.
+10. All-vendor payload qualification is not repeated. Cost: only locks/named metadata
+    and pinned package files carry the stated integrity checks.
+11. Remote console objects remain passive descriptors/unavailable values. Cost:
+    their full mutable state is not compared or actively read.
+12. Existing spread/getter snapshot is unchanged and not used as config-result
+    proof. Cost: no fix or new guarantee for that unrelated behavior.
+13. Screens are candidates; human usability remains optional/unmeasured. Actual
+    guide-operated installation is next, not already passed. Cost: automation
+    does not establish human adoption or visual fidelity.
+14. SDK/publication/certificates/accounts/other repositories stay excluded. Cost:
+    no external integration or distribution claim is added.
+
+The bounded V03.11 engineering item is complete after this one correction;
+fullV03/native zero-console/whole20-of29 remain unchanged. Next is only V03.12.
+
+Final aggregate verify-final.mjs/final-checkpoint.json passes after correction:
+actual ABBA4/raw deltas, all current package/source/installed identities,5 original
+case bytes,18 prior corpus entries unchanged with2 scoped appends, exact old archives,
+review/correction disposition, current routing and whole20/29. No additional browser,
+source-suite or product build occurred for metadata correction. All original FAILs
+and full-baseline dependencies remain. Local commits only; active timed work continues.
