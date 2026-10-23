@@ -4195,52 +4195,39 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.4",
-        "title": "Bounded native observation publication",
-        "status": "finite-reviewed-corrected-targets-missed",
-        "plan": "../superpowers/plans/2026-10-23-v02-observation-publication.md"
+        "id": "V02.5",
+        "title": "Passive DOM/native-point versus raw attach-domain diagnostic",
+        "status": "diagnostic-complete-review-pending-product64-unchanged",
+        "plan": "../superpowers/plans/2026-10-23-v02-dom-floor.md"
       },
-      "execution_record": "104-v02-observation-publication.md",
+      "execution_record": "105-v02-dom-domain-diagnostic.md",
       "current_checkpoint": {
-        "id": "V02.4-candidate64",
-        "status": "finite-slice-reviewed-corrected-targets-missed",
-        "record": "104-v02-observation-publication.md",
+        "id": "V02.5-dom-floor64",
+        "status": "ready-one-parent-review",
+        "record": "105-v02-dom-domain-diagnostic.md",
         "candidate": "0.1.0-candidate.20261021.64",
-        "verification": ".artifacts/v02/observation-publication/2026-10-23/verification64.json",
-        "source_checks": 2424,
-        "focused_checks": 187,
-        "source_inputs": 828,
-        "strict_types": 2,
-        "package_admission": 9,
-        "native_reporter_checks": 17,
-        "raw_performance_samples": 198,
-        "basic_route_p95_ms": {
-          "standalone": 683.1,
-          "embedding": 2021.8
+        "verification": ".artifacts/v02/dom-floor/2026-10-23/verification64-dom.json",
+        "focused_source_checks": 14,
+        "new_dom_checks": 5,
+        "retained_full_source_checks": 2424,
+        "fresh_full_source_run": false,
+        "fresh_build": false,
+        "source_inputs": 832,
+        "raw_samples": 224,
+        "measured_samples": 192,
+        "warmup_samples": 32,
+        "dom_vs_full_percent": {
+          "standalone": 4.9012934,
+          "embedding": -0.330033
         },
-        "basic_route_target_by_host": {
-          "standalone": true,
-          "embedding": false
+        "raw_full_vs_off_percent": {
+          "standalone": 8.57354028,
+          "embedding": 28.38983051
         },
-        "active_off_percent": {
-          "standalone": 25.08305647,
-          "embedding": 26.86567164
-        },
-        "active_off_target_met": false,
+        "performance_acceptance": false,
         "targets_waived": false,
         "whole_task_complete": false,
-        "next_bounded_step": "V02.5 passive DOM-agent/native-point versus raw attach-domain diagnostic on unchanged64; no product domain disable",
-        "review": {
-          "count": 1,
-          "critical": 0,
-          "important": 2,
-          "minor": 0,
-          "correction_passes": 1,
-          "fixed_with_red_green": 2,
-          "regressions": 4,
-          "re_review": false
-        },
-        "historical63": ".artifacts/v02/observation-publication/2026-10-23/verification63-historical.json"
+        "next_bounded_step": "V02.6 Off/Network-only/Debugger-only/full-attach diagnostic on unchanged64; no product change from negative DOM result"
       },
       "completed_slices": [
         {
@@ -4366,6 +4353,47 @@
             "minor": 0,
             "correction_required": true
           }
+        },
+        {
+          "id": "V02.4-candidate64",
+          "status": "finite-slice-reviewed-corrected-targets-missed",
+          "record": "104-v02-observation-publication.md",
+          "candidate": "0.1.0-candidate.20261021.64",
+          "verification": ".artifacts/v02/observation-publication/2026-10-23/verification64.json",
+          "source_checks": 2424,
+          "focused_checks": 187,
+          "source_inputs": 828,
+          "strict_types": 2,
+          "package_admission": 9,
+          "native_reporter_checks": 17,
+          "raw_performance_samples": 198,
+          "basic_route_p95_ms": {
+            "standalone": 683.1,
+            "embedding": 2021.8
+          },
+          "basic_route_target_by_host": {
+            "standalone": true,
+            "embedding": false
+          },
+          "active_off_percent": {
+            "standalone": 25.08305647,
+            "embedding": 26.86567164
+          },
+          "active_off_target_met": false,
+          "targets_waived": false,
+          "whole_task_complete": false,
+          "next_bounded_step": "V02.5 passive DOM-agent/native-point versus raw attach-domain diagnostic on unchanged64; no product domain disable",
+          "review": {
+            "count": 1,
+            "critical": 0,
+            "important": 2,
+            "minor": 0,
+            "correction_passes": 1,
+            "fixed_with_red_green": 2,
+            "regressions": 4,
+            "re_review": false
+          },
+          "historical63": ".artifacts/v02/observation-publication/2026-10-23/verification63-historical.json"
         }
       ]
     },
@@ -4568,11 +4596,11 @@
     ]
   },
   "reconciliation": {
-    "document": "104-v02-observation-publication.md",
+    "document": "105-v02-dom-domain-diagnostic.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.4-candidate64-reviewed-corrected-targets-missed",
-    "next_item": "V02.5 passive DOM-agent/native-point versus raw attach-domain diagnostic on unchanged64; no product domain disable",
+    "current_increment": "V02.5-dom-floor64-ready-review",
+    "next_item": "V02.6 Off/Network-only/Debugger-only/full-attach diagnostic on unchanged64; no product change from negative DOM result",
     "new_full_task_acceptances": [
       "F01",
       "F02",
