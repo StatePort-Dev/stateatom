@@ -3,7 +3,8 @@
 2026-10-23, scope-review-1; base32858b0. The first V03 developer-path dependencies
 are complete; full baseline additionally requires unfinished A02/L02 and other
 named gates. **V03 is in progress;20/29 whole tasks unchanged.** ONE bounded guide
-review pending. No public release or independent-human gate is introduced.
+review accepted; its Minor retention clarification is applied. No public release
+or independent-human gate is introduced.
 
 [Plan](../superpowers/plans/2026-10-23-v03-installed-guide.md),
 [installed-user guide](../installed-preview.md),
@@ -60,3 +61,32 @@ Next **V03.2**: select/pin at least two independent applications including non-R
 reserve a structurally different control before resolver tailoring, then run the
 first clean guide-operated path on admitted artifacts. Preserve unsupported answers
 and actual failed steps. No SDK/redesign/publication/other repository modification.
+
+## ONE documentation review
+
+Range32858b0..fd160d0 review:0 Critical/0 Important/1 Minor, **Yes** within this
+preparation scope. Report:
+`.artifacts/v03/installed-guide/2026-10-23/review/review.md`. The Minor is corrected:
+the first local diagnostic save now states the displayed8-report/2MiB/7-day history
+limits and recommends reviewed download for longer retention. No runtime change,
+native repeat or re-review. Current four guide/preparation hashes and the same
+link/label/product/archive checks pass in `verify-reviewed.mjs` /
+`verification-reviewed.json`; original preparation receipt remains unchanged.
+
+Executor rulings on all six declined boundaries:
+
+1. Clean installation/UI/keyboard/layout/reader/usability: still unexecuted through
+   this guide. Source label/link checks are preparation only; no screenshot upgrade.
+2. Current browser/plugin/helper combined path and other recipes: not qualified
+   here. Keep original version-specific installed results separate from the guide.
+3. New independent applications/reserve: not yet selected or accepted; nextV03.2
+   must pin them before resolver tailoring, without renaming known regressions.
+4. Full V03/baseline/macOS/device/A02/L02/V02: remain their actual evidence gates.
+   The count stays20/29; no independent-human participant is made a blocker.
+5. Real StatePort/Capture and public distribution: separate dependencies and scope;
+   no integration, upload, publication or release occurred.
+6. Future private reports/screenshots: not evaluated by this synthetic-free prose
+   review. A future actual operator must review their material before sharing;
+   no automatic transmission or universal privacy certification is inferred.
+
+V03.1 preparation is complete within this boundary; V03 remains in progress.

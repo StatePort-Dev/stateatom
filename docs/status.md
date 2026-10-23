@@ -34,7 +34,13 @@ consumer oracle: native22 retained; corrected full2488/908 inputs and16 source
 controls pass after ONE review/correction. Same-object unresolved revisions cannot
 borrow old update origin; public hook kind/selected-property origin/ownership/prop
 transfer remain Unknown. Product19/full A02 and V02/L02 remain open;20/29 unchanged.
-Next independent V03.1 installed-user guide/clean-path reconciliation. Original64 Basic/active/warm-source/input results remain
+[V03.1 installed guide](completion/114-v03-installed-guide-preparation.md) now
+separates supplied candidate installation from contributor fixtures/builds and
+records the actual clean-path questions. ONE docs review0/0/1 accepted with local
+retention clarified; exact pair/326 inputs/labels/links checked. This is preparation,
+not a clean guide-operated or combined plugin/helper/browser acceptance. V03 remains
+in progress; next V03.2 new independent corpus/non-React/reserve pinning before
+resolver tailoring, then the first admitted clean path. Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the
 [preregistered finite protocol](superpowers/plans/2026-10-23-v02-basic-observer.md).

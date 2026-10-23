@@ -63,7 +63,9 @@ certificate trust. For HTTPS, use an application with a normally trusted certifi
 ## Save a snapshot or prepare an issue
 
 Open **Save and export a diagnostic**. **Save locally** stores a historical snapshot;
-it does not send anything. **Review / export selected** opens the selected diagnostic
+it does not send anything. Local diagnostic history is limited to **8 reports,
+2 MiB and 7 days**. Download a reviewed file to keep it beyond that history.
+**Review / export selected** opens the selected diagnostic
 for review before **Download reviewed JSON**. Review target values, notes and URLs
 as well as optional source/response excerpts. Removing excerpts alone is not a
 guarantee that your own words or remaining values contain no private information.

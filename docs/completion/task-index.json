@@ -4740,7 +4740,7 @@
       ],
       "existing_commands": [],
       "deliverable": "Clean artifact installation and actual user flows on independent apps; agent operation allowed, another person not required",
-      "status": "planned",
+      "status": "in-progress",
       "additional_final_scope_dependencies": [
         "A02",
         "A04",
@@ -4752,7 +4752,42 @@
         "F05",
         "L02"
       ],
-      "optional": false
+      "optional": false,
+      "execution_record": "114-v03-installed-guide-preparation.md",
+      "implementation_plan": "../superpowers/plans/2026-10-23-v03-installed-guide.md",
+      "active_slice": null,
+      "completed_slices": [
+        {
+          "id": "V03.1-installed-guide",
+          "status": "complete-documentation-preparation-not-clean-UI-or-V03",
+          "record": "114-v03-installed-guide-preparation.md",
+          "guide": "../installed-preview.md",
+          "questions": "../testing/clean-installation.md",
+          "verification": ".artifacts/v03/installed-guide/2026-10-23/verification-reviewed.json",
+          "checked_document_hashes": 4,
+          "actual_template_labels": 35,
+          "dynamic_labels": 2,
+          "unchanged_product_inputs": 326,
+          "guide_operated_run": false,
+          "combined_plugin_helper_browser_UI_requalified": false,
+          "new_independent_corpus_selected": false,
+          "reserved_control_selected": false,
+          "macOS_installed_verified": false,
+          "whole_V03_complete": false,
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 1,
+            "minor_addressed": true,
+            "re_review": false
+          }
+        }
+      ],
+      "current_checkpoint": {
+        "record": "114-v03-installed-guide-preparation.md",
+        "status": "guide-prepared-execution-unverified",
+        "next_bounded_step": "V03.2 pin independent applications including non-React and structurally different reserve before tailoring, then first clean guide-operated path"
+      }
     },
     {
       "id": "V04",
@@ -4908,11 +4943,11 @@
     ]
   },
   "reconciliation": {
-    "document": "113-a02-ordinary-reducer-acquisition.md",
+    "document": "114-v03-installed-guide-preparation.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.3-finite-ordinary-native-acquisition-accepted-not-full-A02",
-    "next_item": "V03.1 installed-user guide and clean-profile first developer path reconciliation",
+    "current_increment": "V03.1-installed-guide-preparation-complete-not-V03",
+    "next_item": "V03.2 independent corpus pinning and first clean guide-operated path",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6930,14 +6965,23 @@
         "retained_native_checks": 22,
         "full_task_complete": false,
         "next_independent_item": "V03.1"
+      },
+      {
+        "id": "V03.1",
+        "status": "complete-documentation-preparation-not-full-V03",
+        "execution_record": "114-v03-installed-guide-preparation.md",
+        "verification": ".artifacts/v03/installed-guide/2026-10-23/verification-reviewed.json",
+        "new_runtime_acceptance": false,
+        "full_task_complete": false,
+        "next_independent_item": "V03.2"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.3 finite ordinary native acquisition accepted after ONE review0Critical/1Important/1Minor and one correction pass. Full2488/908current; native22 retained with3explicit source deltas; corrected unresolved-revision refusal source-only. Exact original app/vendor/product326 unchanged; no oracle. FullA02/L02/V02 remain open,20/29. Next independent V03.1 guide/cleanpath from completed base dependencies; no human blocker or publication.",
+    "current_activity_note": "V03.1 preparation accepted ONE docsreview0Critical/0Important/1Minor retention clarification addressed. Guide/links/35labels+2dynamic/exact65+UI2+326 inputs/originalseparateVSIX/plugin checked. No new guide-operated clean UI/combined kit/independent corpus/macOS/model/native acceptance. V03/A02/L02/V02 open20/29. NextV03.2 pin new independent apps/nonReact/reserve before tailoring and execute actual admitted path; no human blocker/publication.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "b50b26e experimental companion; fa95157 product65 unchanged",
+    "current_source_revision": "fd160d0 guide; b50b26e experimental companion; fa95157 product65 unchanged",
     "current_record_date": "2026-10-23",
-    "next_bounded_step": "V03.1 installed-user guide and clean-path reconciliation"
+    "next_bounded_step": "V03.2 independent corpus pinning and first clean guide-operated path"
   },
   "next_task": "V03"
 }
