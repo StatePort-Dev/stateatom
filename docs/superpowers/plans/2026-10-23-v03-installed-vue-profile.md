@@ -7,7 +7,11 @@ publication, account/certificate/user-profile or other repository changes.
 Execution update: candidate2 failed its actual installed metadata probe on package
 exports before any app/browser. Failed result/archive stay immutable. Corrected3
 adds bounded nonexecuting metadata lookup with new RED→GREEN/strict consumer proof;
-all subsequent native steps use3.
+candidate3 then failed actual DOM parsing and candidate4 failed ordinary ESM
+export linkage. Both failures are retained. Corrected5 has source2521 PASS, four
+affected owned controls PASS, strict consumer admission and exact helper byte
+reproduction. Case5 changes only five packet-identity fields; all native acceptance
+criteria and original-app boundaries remain unchanged. Subsequent native steps use5.
 
 ## 1. Profile contract RED → GREEN
 

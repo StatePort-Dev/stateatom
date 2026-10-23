@@ -188,3 +188,15 @@ ONE whole-increment review remains due **after** the native phase; no premature
 review acceptance or completed V03.6 claim. Full V03/A02/L02/V02, local AI,
 production/model/performance/macOS/embedding and Chrome installation UI stay open.
 No SDK, new design, push/publication or other repository changes.
+
+## Candidate5 identity preregistration
+
+Source98ca688 produced clean sourceDirty false packet
+`.artifacts/development/2026-10-23T19-23-45-661Z/handoff.json`. Plugin5 SHAa6362897;
+companion VSIX SHAe90c4b73, bundle4abca6c4. Strict private consumer
+`.artifacts/v03/installed-vue-consumer/2026-10-23T19-24-04-566Z/result.json` passes
+two checks/six metadata probe groups. Exact VSIX bundle matches dist and the
+existing recipe reproduced in memory from222 current inputs; two existing CJS
+warnings remain recorded. New case5 changes only the five packet-identity fields
+from case4. Neither admission nor source reproduction establishes app/IDE runtime
+acceptance. Native execution and ONE whole-increment review remain due.
