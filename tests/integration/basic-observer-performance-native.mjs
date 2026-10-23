@@ -57,8 +57,8 @@ async function stopWindow(tabId,initial){
  await waitFor(async()=>{const w=await windowState(tabId);assert.equal(w.windowId,initial.windowId);assert.equal(w.status,'recording','Collector stopped before explicit Stop');return w.counts.completed===20;});
  await d.click('handoff-current');await waitFor(()=>panel.evaluate(()=>document.querySelector('[data-atom-id="handoff-dialog"]').open));await d.click('observation-stop');
  const w=await waitFor(async()=>{const w=await windowState(tabId);return w?.status==='stopped'?w:null;});assert.equal(w.windowId,initial.windowId);assert.equal(w.stopReason,'user');
- const saved={windowId:w.windowId,status:w.status,stopReason:w.stopReason,counts:w.counts,gaps:w.gaps,records:w.records.length,bytes:Buffer.byteLength(JSON.stringify(w)),initial};
- await waitFor(()=>panel.evaluate(()=>!document.querySelector('[data-atom-id="observation-clear"]').disabled));await d.click('observation-clear');await waitFor(async()=>!await windowState(tabId));await d.click('handoff-cancel');await waitFor(()=>panel.evaluate(()=>!document.querySelector('[data-atom-id="handoff-dialog"]').open));return saved;
+ const saved={windowId:w.windowId,status:w.status,stopReason:w.stopReason,counts:w.counts,gaps:w.gaps,records:w.records.length,bytes:Buffer.byteLength(JSON.stringify(w)),initial};result.currentTrial.window=saved;await appendFile(out+'/windows.jsonl',JSON.stringify(saved)+'\n');
+ await waitFor(()=>panel.evaluate(()=>!document.querySelector('[data-atom-id="observation-clear"]').disabled));await d.click('observation-clear');await waitFor(async()=>{const cleared=await windowState(tabId);return cleared?.status==='deleted'&&cleared.windowId===null&&cleared.identity===null&&cleared.records.length===0;});await d.click('handoff-cancel');await waitFor(()=>panel.evaluate(()=>!document.querySelector('[data-atom-id="handoff-dialog"]').open));return saved;
 }
 async function appClick(tabId){
  await panel.evaluate(id=>chrome.tabs.update(id,{active:true}),tabId);
