@@ -1879,3 +1879,8 @@ repository or independent-human blocker.
 ### 2026-10-23 — P04 primary picker entry diagnosis
 
 [Picker diagnosis](completion/97-p04-picker-entry-diagnosis.md): corrected driver waits for actual picking state. X11 disabled Confirm selects in both exact59 hosts3 PASS,0 inspector console warnings/errors; unchanged historical58 control also passes after separately restored exact installed consumer. No product picker patch or old receipt rewrite; source2374/build59 retained with510 inputs unchanged. Primary selection is qualified, subsequent reporter journey remains next with Continue keyboard/H08 guards. P04/C07/ONE review remain open;18/29 unchanged.
+
+
+### 2026-10-23 — P04 primary reporter and truthful tab cleanup
+
+[Current60](completion/98-p04-primary-reporter-and-context-stop.md): actual selected-tab cleanup records tab-switch, generic view context uses context-changed; legacy explicit Stop/first closing reason/exact ownership remain. Source2378/focused107/types2/admission9/build/native13 primary-X11/keyboard/denial/tab-switch plus17 affected H09 checks both hosts PASS,0 inspector console warnings/errors. Genuine59 reason failure/driver wording failure and first full fixed-port4173 failure retained; unchanged full retry passes. No new design/token/CSS/authority. Next named H07-H09 coverage reconciliation/actual gaps before ONE whole-P04 review. P04/C07 remain open;18/29 unchanged, mandatory L02 open/A05 scoped complete/A02 open.

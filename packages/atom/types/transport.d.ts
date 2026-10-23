@@ -26,7 +26,8 @@ export type AtomOperation=
  |InputCaptureRequest
  |ObservationCaptureRequest
  |{op:'observation-start';tabId:number;ownerId:string}
- |{op:'observation-read'|'observation-stop'|'observation-clear'|'observation-checkpoint';tabId:number;ownerId:string;windowId:string}
+ |{op:'observation-read'|'observation-clear'|'observation-checkpoint';tabId:number;ownerId:string;windowId:string}
+ |{op:'observation-stop';tabId:number;ownerId:string;windowId:string;reason?:'context-changed'|'tab-switch'}
  |{op:'actions-arm';tabId:number;ownerId:string}
  |{op:'actions-read'|'actions-cancel'|'actions-clear';tabId:number;ownerId:string;traceId:string}
  |{op:'production-begin'|'production-close'|'production-revoke';tabId:number;ownerId:string}

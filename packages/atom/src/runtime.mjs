@@ -205,7 +205,7 @@ async function observationOperation(id,m,context){
    if(native.value!==previous.state.selection?.value){previous.state.observationStaleInspection=previous.state.inspectionGeneration;previous.state.observationStaleKind='checkpoint';}
    previous.controller.checkpoint({at:native.observedAt,readStartedAt:native.readStartedAt,node:native.node,changeKind:'snapshot',...(native.property==='disabled'?{value:native.value}:{})});
   }
-  else if(m.op==='observation-stop')stopObservation(id,'user');
+  else if(m.op==='observation-stop')stopObservation(id,m.reason??'user');
   else if(m.op==='observation-clear'){clearTimeout(previous.timer);previous.controller.clear();syncObservation(id,previous);observationOwners.delete(id);}
   else if(previous.controller.snapshot().status==='recording'){
    try{await previous.verify();}catch(e){if(observationOwners.get(id)!==previous)throw atomError('STALE_TARGET','Observation replaced while reading');stopObservation(id,e.code==='OBSERVATION_TARGET_UNAVAILABLE'?'target-unavailable':'target-replaced',false,previous);}

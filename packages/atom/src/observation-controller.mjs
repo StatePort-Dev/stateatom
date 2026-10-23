@@ -24,13 +24,13 @@ export function createObservationController({client,onChange=()=>{}}={}){
   const descriptors=options&&Object.getOwnPropertyDescriptors(options);if(!descriptors||Reflect.ownKeys(descriptors).length!==1||!Object.hasOwn(descriptors,'tabId')||!Object.hasOwn(descriptors.tabId,'value')||!Number.isSafeInteger(descriptors.tabId.value)||descriptors.tabId.value<1)return Promise.reject(error('INVALID_MESSAGE'));
   return perform('observation-start',descriptors.tabId.value);
  }
- function cancel({forget=false}={}){
+ function cancel({forget=false,reason}={}){
   if(cleanup)return cleanup.then(()=>{if(forget){tabId=null;noticeTabId=null;window=null;emit();}return snapshot();});
   const old=pending;epoch++;old?.abort.abort();pending=null;if(old?.op==='observation-start'){window=null;tabId=null;}
   const selected=window,selectedTab=tabId,at=epoch;
   if(!selected||selected.status!=='recording'||connectionLost){if(forget){tabId=null;noticeTabId=null;window=null;}emit();return Promise.resolve(snapshot());}
   let finish;cleanup=new Promise(r=>finish=r);const closing=cleanup;emit();
-  void (async()=>{try{const reply=await client.request({op:'observation-stop',tabId:selectedTab,ownerId,windowId:selected.windowId});if(epoch===at&&!connectionLost&&window?.windowId===selected.windowId)window=valid(reply,'observation-stop',selected.windowId);}catch(e){if(epoch===at&&!connectionLost)failure={code:e.code||'OPERATION_FAILED',message:String(e.message||'Stop was not confirmed').slice(0,1024)};}finally{if(forget&&epoch===at){tabId=null;noticeTabId=null;window=null;}cleanup=null;emit();finish(snapshot());}})();return closing;
+  void (async()=>{try{const reply=await client.request({op:'observation-stop',tabId:selectedTab,ownerId,windowId:selected.windowId,...(reason?{reason}:{})});if(epoch===at&&!connectionLost&&window?.windowId===selected.windowId)window=valid(reply,'observation-stop',selected.windowId);}catch(e){if(epoch===at&&!connectionLost)failure={code:e.code||'OPERATION_FAILED',message:String(e.message||'Stop was not confirmed').slice(0,1024)};}finally{if(forget&&epoch===at){tabId=null;noticeTabId=null;window=null;}cleanup=null;emit();finish(snapshot());}})();return closing;
  }
  function advances(before,after){
   if(before.status==='stopped'&&after.status!=='stopped'||after.records.length<before.records.length||(after.lastObservedAt??-1)<(before.lastObservedAt??-1))return false;
@@ -45,5 +45,5 @@ export function createObservationController({client,onChange=()=>{}}={}){
  }
  const off=client.subscribeConnection?.(()=>{if(disposed||connectionLost)return;connectionLost=true;failure={code:'INSPECTOR_DISCONNECTED',message:'Inspector connection ended. Collection cannot be resumed here.'};epoch++;pending?.abort.abort();pending=null;emit();})||(()=>{});
  function dispose(){if(disposed)return cleanup||Promise.resolve(snapshot());const result=cancel({forget:true});disposed=true;off();return result;}
- return Object.freeze({snapshot,start,checkpoint:()=>perform('observation-checkpoint'),stop:()=>perform('observation-stop'),clear:()=>perform('observation-clear'),cancel,contextChanged:()=>cancel({forget:true}),update,dispose});
+ return Object.freeze({snapshot,start,checkpoint:()=>perform('observation-checkpoint'),stop:()=>perform('observation-stop'),clear:()=>perform('observation-clear'),cancel,contextChanged:(reason='context-changed')=>['context-changed','tab-switch'].includes(reason)?cancel({forget:true,reason}):Promise.reject(error('INVALID_MESSAGE')),update,dispose});
 }

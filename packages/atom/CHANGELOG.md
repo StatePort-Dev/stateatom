@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.60
+
+- Selected-tab changes now retain the actual tab-switch stop reason. Other view
+  context changes record context-changed, rather than ordinary user Stop. Only
+  these two optional reasons are accepted on the existing owned Stop request;
+  explicit Stop, exact owner/window guards and first closing reason remain intact.
+- Primary-picker/keyboard/initial site-denial/tab-switch verification continues
+  the bounded P04 workflow; no token, CSS, permission or editing-authority change.
+
 ## 0.1.0-candidate.20261021.59
 
 - Recording can continue in the same inspector while the issue dialog is closed

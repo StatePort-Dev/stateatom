@@ -110,3 +110,9 @@ void privateObservation;void originalInputCapture;
 void client.request({op: 'state', tabId: 1, observationOwnerId: 'observer-view', refreshDeep: false});
 
 client.subscribe(event => { const windowId: string | undefined = event.windowId; const scope: 'production-observation' | 'input-history' | undefined = event.scope; void windowId; void scope; });
+
+client.request({op:'observation-stop',tabId:1,ownerId:'view',windowId:'12345678-1234-1234-1234-123456789abc',reason:'tab-switch'});
+// @ts-expect-error Only view-context reasons are accepted on this command.
+client.request({op:'observation-stop',tabId:1,ownerId:'view',windowId:'12345678-1234-1234-1234-123456789abc',reason:'permission-lost'});
+// @ts-expect-error Reads cannot supply a stopping reason.
+client.request({op:'observation-read',tabId:1,ownerId:'view',windowId:'12345678-1234-1234-1234-123456789abc',reason:'tab-switch'});
