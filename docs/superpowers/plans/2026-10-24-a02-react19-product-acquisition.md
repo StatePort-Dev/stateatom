@@ -74,3 +74,23 @@ commit beforeoneactualnative; pollsamehandle/preserveFAIL, no blindcampaignrepea
 - [ ] Independent saved resultverifier/negativecontrols andactualrecord beforeONEfresh
 whole-itemreview. One testedImportantCriticalpass onlyifrequired; finalaggregate/
 task-done/localcommit/clean withone nextitem. NeverupgradefullA02/V03 ontheseprerequisites.
+
+### Task3 actual-startup checkpoint and next bounded substep
+
+First frozen case ran exactly once on63c1c5b and is retained INCOMPLETE1of10,
+0app inputs/observations, all3216 inputs unchanged and cleanup complete. No native
+criterion was waived. Independent failure verifier12negative controls/checkpoint
+preserve the original. The screenshot shows cache unchecked; exact native button
+denial reason was not captured. Existing platform/policy source requires cache for
+normal HTTP Attach, and the original protocol omitted it. Source probe confirms
+that necessary missing grant without changing product behavior.
+
+Task3b next is bounded: test the actual mounted Attach presentation with/without
+its existing required cache grant. Only after that succeeds, a separate corrected
+setup case may explicitly choose that one owned-local-app Settings action, capture
+actual admission reason before clicking, and retain all ten original feature/
+cleanup criteria. Preserve original case/result/code/checkpoint; no rerun of that
+case, no blind retry or production/guard bypass. A source/harness delta and new
+registration are required before any new native attempt. This is a justified
+protocol correction under the user's autonomous scope, not permission to expand
+feature scope. Whole Task3/A02.4 and the one final review remain pending.

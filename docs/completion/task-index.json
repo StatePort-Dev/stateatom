@@ -1666,7 +1666,7 @@
       "active_slice": {
         "id": "A02.4",
         "title": "Bounded ordinary React19 product acquisition integration",
-        "status": "in-progress-product-source-and-packages-ready-native-qualification-pending",
+        "status": "in-progress-first-native-startup-failed-attach-admission-control-next",
         "record": "141-a02-react19-product-acquisition.md",
         "design": "../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md",
         "plan": "../superpowers/plans/2026-10-24-a02-react19-product-acquisition.md",
@@ -1680,7 +1680,7 @@
         "selected_node_wired": true,
         "product_UI_verified": false,
         "new_package_built": true,
-        "new_native_run": false,
+        "new_native_run": true,
         "whole_item_review_pending": true,
         "full_A02_acceptance": false,
         "product_React19_support": false,
@@ -1697,7 +1697,19 @@
         "native_preflight_inputs": 3216,
         "native_preflight_tool_links": 17,
         "current_candidate": "0.1.0-candidate.20261021.75",
-        "plugin_candidate": "0.1.0-candidate.20261021.7"
+        "plugin_candidate": "0.1.0-candidate.20261021.7",
+        "native_status": "INCOMPLETE_PRODUCT_QUALIFICATION_NOT_A02",
+        "native_checks_passed": 1,
+        "native_checks_required": 10,
+        "native_app_inputs": 0,
+        "native_observation_count": 0,
+        "native_inputs_unchanged": 3216,
+        "native_failure_verifier_negative_controls": 12,
+        "native_result": ".artifacts/a02/react19-product/2026-10-24T07-40-59-380Z/results.json",
+        "native_result_sha256": "9f955338bbad571145b2ed882947b9835c1b93dab42c9bf6dd3b6a9aba1bf4d6",
+        "native_denial_reason_captured": false,
+        "source_cache_admission_control": "no cache denies / cache admits; unchanged policy source only",
+        "native_handles_live": false
       },
       "completed_slices": [
         {
@@ -1800,8 +1812,8 @@
       },
       "current_checkpoint": {
         "record": "141-a02-react19-product-acquisition.md",
-        "status": "in-progress-product-source-and-packages-ready-native-qualification-pending",
-        "next_bounded_step": "A02.4 Task3 one frozen actual Atom75/plugin7 qualification, saved-evidence verification and one final whole-item review; no property-lineage promotion"
+        "status": "in-progress-first-native-startup-failed-attach-admission-control-next",
+        "next_bounded_step": "A02.4 Task3b source/mounted UI Attach/cache admission control, then separately frozen corrected setup; preserve first native1of10/zero-app-input failure and all criteria"
       },
       "stopping_point_history": [
         {
@@ -6370,8 +6382,8 @@
     "document": "141-a02-react19-product-acquisition.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.4-product-source-and-packages-ready-native-qualification-pending",
-    "next_item": "A02.4 Task3 one frozen actual Atom75/plugin7 qualification, saved-evidence verification and one final whole-item review; no property-lineage promotion",
+    "current_increment": "A02.4-first-native-startup-failed-attach-admission-control-next",
+    "next_item": "A02.4 Task3b source/mounted UI Attach/cache admission control, then separately frozen corrected setup; preserve first native1of10/zero-app-input failure and all criteria",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6398,7 +6410,7 @@
     "active_item": {
       "id": "A02",
       "record": "141-a02-react19-product-acquisition.md",
-      "status": "in-progress-product-source-and-packages-ready-native-qualification-pending"
+      "status": "in-progress-first-native-startup-failed-attach-admission-control-next"
     },
     "completed_increments": [
       {
@@ -9093,11 +9105,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.4 Tasks1-2 complete229focused; Task3 product display and explicit v1 ancestor omission implemented. Final75 fullsource2912PASS, presentation74PASS, new harness refusals2PASS, packed types2/admission9PASS; Atom75/UI2/plugin7 immutable local artifacts, source preflight3216inputs/17links. Actual native case and one whole-item review pending; no browser launched/no product-native or full A02/V03 acceptance;20of29 unchanged.74 built intermediate retained without native proof.",
+    "current_activity_note": "A02.4 Tasks1-2 complete229focused; Task3 final75 source2912PASS/presentation74/CLI2/types2/admission9. First actual63c1c5b attempt INCOMPLETE at Attach:1of10/0app inputs/0native ancestor observations; actual cache unchecked, exact native denial reason not captured.3216inputs/17links stable, all resources closed/PIDs absent, saved failure verifier12negatives PASS preservation only. Existing policy source requires cache; original protocol omitted it. Next bounded Task3b source/mounted UI admission control before any separately frozen correction. No new product-native/full A02/V03 acceptance;20of29 unchanged; no final reviewer yet.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "a87a75e12cf9c11099a1fccd62de46ca19274217",
+    "current_source_revision": "63c1c5b",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "A02.4 Task3 one frozen actual Atom75/plugin7 qualification, saved-evidence verification and one final whole-item review; no property-lineage promotion"
+    "next_bounded_step": "A02.4 Task3b source/mounted UI Attach/cache admission control, then separately frozen corrected setup; preserve first native1of10/zero-app-input failure and all criteria"
   },
   "next_task": "A02"
 }

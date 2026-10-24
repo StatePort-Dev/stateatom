@@ -1,6 +1,6 @@
 # A02.4 — product React19 acquisition (in progress)
 
-Current: **Tasks1–2 complete; Task3 implementation and local packages are source-tested. Actual native qualification and final review remain pending.**
+Current: **Tasks1–2 complete; Task3 source/packages tested. First native attempt stopped at Attach before feature gates. Qualification and final review remain pending.**
 Scope-review-1; main0328993 baseline. No installed React19 support, full A02,
 V03 or new whole-task acceptance is established by this prerequisite. Still20/29.
 [Design](../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md),
@@ -153,10 +153,53 @@ static app dependencies, installed tooling and original/copied app. A clean code
 commit is required before the one actual run. The source/package checkpoint does
 not establish the new native product route or full A02/V03 acceptance.
 
+## First actual native attempt — startup gate not passed
+
+Exact code/case commit **63c1c5b**, original case
+`A02.4-product-native-ancestors`, one actual run, tool session47354, exit1:
+`.artifacts/a02/react19-product/2026-10-24T07-40-59-380Z/results.json`.
+Result SHA256 **9f955338bbad571145b2ed882947b9835c1b93dab42c9bf6dd3b6a9aba1bf4d6**.
+
+Literal status is **INCOMPLETE_PRODUCT_QUALIFICATION_NOT_A02**. Only the artifact/
+registration check passed: **1of10**, no app observation and **0app inputs**. The
+second setup check timed out trying to activate Attach, before private helper
+pairing or the TodoMVC operations. Screenshot `failure-candidate.png` is actual,
+not a rendered mockup. It shows unchecked cache permission and Not attached.
+The native button denial code/title was not captured. No ancestor, same-value,
+visual/report/stop or product acceptance follows from this attempt.
+
+All3216 inputs and17 tool links matched afterward. Helper, Chrome, Vite, Xephyr,
+UI/observer handles and logs were closed. Chrome1093807/Vite1093569 were absent;
+no browser/IDE profile or certificate GUI was opened. Vite actually chose5173 for
+its port0 configuration; the observed origin is recorded, not called an ephemeral
+assigned port. Ordinary cases were not exercised or counted as passed.
+
+Independent saved-result verification passed **12 negative controls** with status
+`PASS_RETAINED_STARTUP_FAILURE_NOT_PRODUCT_ACCEPTANCE`, at
+`startup-verification/verification.json`. This proves preservation of the failure
+record, not success of the native criterion. Its strict verifier/checkpoint binds
+all3216 current inputs before any protocol change; later source drift must not be
+passed off as a fresh reproduction of that original code. The clean pre-change
+checkpoint is `startup-verification/pre-change-checkpoint.json`.
+
+A separate source-only probe of unchanged `capabilities.mjs` confirms that normal
+HTTP Attach requires read/inject/**cache**: without cache it returns
+CAPABILITY_DENIED / "cache capability required"; with cache it becomes available.
+`platform.mjs` filters optional grants by exactly checked site actions. The original
+protocol checked none; the actual screenshot is consistent with that omission.
+This is a concrete source-supported setup defect, not a captured native denial
+reason or proof that all remaining setup will pass. Probe:
+`startup-verification/attach-source-probe.json`. Product policy/guards remain intact.
+
 ## Remaining work in this same item
 
-Next step: **A02.4 Task3 — run the frozen exact75/plugin7 native case once, retain
-literal outcomes, independently verify saved evidence and request one final review.**
+Next bounded step: **A02.4 Task3b — source/mounted UI Attach/cache admission control,
+then a separately frozen corrected setup case if that control passes.** Keep the
+first case, result, screenshots, inputs and criteria unchanged. No immediate rerun,
+no generic permission bypass and no changing read-only/production policy. The same
+ten native feature/cleanup checks remain required before this item can be called
+delivered. One final whole-item reviewer remains pending; none was dispatched early.
+
 Full A02/V03/V02/L02/C09 remain open;20/29 unchanged. The original V03 input failures,
 Unknowns and deferred native Node-admission Minor remain preserved. The new driver's
 actual Node check does not repair or upgrade that old harness. No input guard,
