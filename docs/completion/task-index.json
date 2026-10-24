@@ -1766,7 +1766,7 @@
       "current_checkpoint": {
         "record": "113-a02-ordinary-reducer-acquisition.md",
         "status": "finite-acquisition-accepted-full-A02-unresolved",
-        "next_bounded_step": "V03.1 independent guide/clean-path reconciliation; preserve A02 ownership stopping rule"
+        "next_bounded_step": "A02.4 bounded ordinary React19 product acquisition integration; preserve ownership/prop-transfer/selected-origin Unknown and existing stopping rule"
       },
       "stopping_point_history": [
         {
@@ -1778,7 +1778,9 @@
           "experiment_record": "68-a02-react19-reducer-identity-experiment.md",
           "experiment_result": "Pinned synthetic derivative PASS14 only; actual rebase clone update origin Unknown, product/ordinary app integration/ownership/transfer unresolved"
         }
-      ]
+      ],
+      "queued_next_slice": "A02.4",
+      "queued_next_reason": "V03.18 source-order controls preserve conflict, no proven model defect; reuse accepted A02.3 acquisition to address explicit product19 integration gap, no general ownership infrastructure."
     },
     {
       "id": "A03",
@@ -5353,89 +5355,26 @@
       "optional": false,
       "execution_record": "127-v03-ide-entry.md",
       "active_slice": {
-        "id": "V03.17",
-        "title": "Native control revision and stale-draft diagnosis",
-        "status": "bounded-mutation-facts-and-failure-record-complete-native-criterion-not-met",
-        "record": "139-v03-control-revision-diagnosis.md",
-        "design": "../superpowers/specs/2026-10-24-v03-control-revision-diagnosis-design.md",
-        "plan": "../superpowers/plans/2026-10-24-v03-control-revision-diagnosis.md",
-        "case": "../testing/control-revision-diagnosis-case73.json",
-        "previous_slice": "V03.16 boundedengineering complete2d9b308/originalguideFAIL/fouractualFAILs retained",
+        "id": "V03.18",
+        "title": "Source-level clean/dirty snapshot ordering diagnosis",
+        "status": "bounded-source-diagnosis-complete-no-new-product-capability",
+        "record": "140-v03-input-snapshot-ordering.md",
+        "source_revision": "73e7303163007e9b18dfd08991260c888c5bfd07",
         "product_source_changed": false,
-        "new_build": false,
-        "candidate": "0.1.0-candidate.20261021.73",
-        "native_executed": true,
-        "review_pending": false,
-        "whole_V03_complete": false,
-        "registered_inputs": 442,
-        "product_inputs": 327,
-        "helper_inputs": 223,
-        "original_source_files": 65,
-        "new_source_controls": 26,
-        "fresh_focused_checks": 58,
-        "original_criteria_waived": false,
-        "new_timing_policy_approved": false,
-        "planned_native_inserts": [
-          10,
-          20
-        ],
-        "sample_windows_ms": [
-          1200,
-          1200
-        ],
-        "mutation_writer": "Unknown",
-        "first_native_status": "FAIL_LOCAL_PORT_VARIABLE_SHADOWS_PROBE_BEFORE_EDITS",
-        "first_native_result": ".artifacts/v03/control-revision-diagnosis/2026-10-24T06-27-10-305Z/results.json",
-        "first_native_verification": ".artifacts/v03/control-revision-diagnosis/2026-10-24/preprobe-failure-checkpoint.json",
-        "first_native_revision": "13f349816989f05049fab69743e419662a7083ab",
-        "first_native_inserts": 0,
-        "first_native_probe_installed": false,
-        "corrected_case": "../testing/control-revision-diagnosis-corrected-case73.json",
-        "corrected_registered_inputs": 446,
-        "corrected_native_executed": true,
-        "corrected_native_revision": "0d699b79bf2882c5068529175a4d8d4258a118e7",
-        "corrected_native_status": "FAIL_INCOMPLETE_CLASSIFIER_GENERIC_FIELD_ERROR",
-        "corrected_native_result": ".artifacts/v03/control-revision-diagnosis/2026-10-24T06-29-47-836Z/results.json",
-        "corrected_native_verification": ".artifacts/v03/control-revision-diagnosis/2026-10-24/native-checkpoint.json",
-        "actual_native_inserts": 2,
-        "actual_applied_writes": 1,
-        "sample_counts": [
-          10,
-          10
-        ],
-        "sample_window_durations_ms": [
-          1299,
-          1251
-        ],
-        "probe_records": 10,
-        "ack_mutation_count": 7,
-        "later_mutation_count": 10,
-        "observed_late_attribute_sequence": [
-          "name",
-          "type",
-          "name"
-        ],
-        "second_raw_value": 20,
-        "second_native_value": 10,
-        "second_ui_status": "Review 1 field error.",
-        "raw_error_code_observed": false,
+        "native_executed": false,
+        "source_cases": 3,
+        "registered_inputs": 333,
+        "product_inputs_unchanged": 327,
+        "backend_requests": 0,
+        "application_writes": 0,
+        "synthetic_plan_ids_explicit": true,
+        "native_local_model_ordering_proven": false,
+        "model_defect_demonstrated": false,
         "original_guide_status": "FAIL",
-        "independent_negative_controls": 20,
-        "all_owned_cleanup": true,
-        "review": {
-          "critical": 0,
-          "important": 0,
-          "minor": 1,
-          "code_correction_passes": 0,
-          "re_review": false,
-          "deferred_minors": [
-            "M1 enforce actualNode executable admission and verifier negativecontrol"
-          ],
-          "report": ".artifacts/v03/control-revision-diagnosis/2026-10-24/review/report.md"
-        },
-        "recorded_node_identity_checked": true,
-        "registered_diagnostic_criterion_met": false,
-        "final_verification": ".artifacts/v03/control-revision-diagnosis/2026-10-24/final-checkpoint.json"
+        "whole_V03_complete": false,
+        "verification": ".artifacts/v03/input-snapshot-ordering/2026-10-24/checkpoint.json",
+        "new_reviewer_dispatched": false,
+        "next_item": "A02.4 bounded ordinary React19 product acquisition integration; preserve ownership/prop-transfer/selected-origin Unknown and existing stopping rule"
       },
       "completed_slices": [
         {
@@ -6144,15 +6083,102 @@
             "report": ".artifacts/v03/independent-input-guide/2026-10-24/review/report.md"
           },
           "final_verification": ".artifacts/v03/independent-input-guide/2026-10-24/final-checkpoint.json"
+        },
+        {
+          "id": "V03.17",
+          "title": "Native control revision and stale-draft diagnosis",
+          "status": "bounded-mutation-facts-and-failure-record-complete-native-criterion-not-met",
+          "record": "139-v03-control-revision-diagnosis.md",
+          "design": "../superpowers/specs/2026-10-24-v03-control-revision-diagnosis-design.md",
+          "plan": "../superpowers/plans/2026-10-24-v03-control-revision-diagnosis.md",
+          "case": "../testing/control-revision-diagnosis-case73.json",
+          "previous_slice": "V03.16 boundedengineering complete2d9b308/originalguideFAIL/fouractualFAILs retained",
+          "product_source_changed": false,
+          "new_build": false,
+          "candidate": "0.1.0-candidate.20261021.73",
+          "native_executed": true,
+          "review_pending": false,
+          "whole_V03_complete": false,
+          "registered_inputs": 442,
+          "product_inputs": 327,
+          "helper_inputs": 223,
+          "original_source_files": 65,
+          "new_source_controls": 26,
+          "fresh_focused_checks": 58,
+          "original_criteria_waived": false,
+          "new_timing_policy_approved": false,
+          "planned_native_inserts": [
+            10,
+            20
+          ],
+          "sample_windows_ms": [
+            1200,
+            1200
+          ],
+          "mutation_writer": "Unknown",
+          "first_native_status": "FAIL_LOCAL_PORT_VARIABLE_SHADOWS_PROBE_BEFORE_EDITS",
+          "first_native_result": ".artifacts/v03/control-revision-diagnosis/2026-10-24T06-27-10-305Z/results.json",
+          "first_native_verification": ".artifacts/v03/control-revision-diagnosis/2026-10-24/preprobe-failure-checkpoint.json",
+          "first_native_revision": "13f349816989f05049fab69743e419662a7083ab",
+          "first_native_inserts": 0,
+          "first_native_probe_installed": false,
+          "corrected_case": "../testing/control-revision-diagnosis-corrected-case73.json",
+          "corrected_registered_inputs": 446,
+          "corrected_native_executed": true,
+          "corrected_native_revision": "0d699b79bf2882c5068529175a4d8d4258a118e7",
+          "corrected_native_status": "FAIL_INCOMPLETE_CLASSIFIER_GENERIC_FIELD_ERROR",
+          "corrected_native_result": ".artifacts/v03/control-revision-diagnosis/2026-10-24T06-29-47-836Z/results.json",
+          "corrected_native_verification": ".artifacts/v03/control-revision-diagnosis/2026-10-24/native-checkpoint.json",
+          "actual_native_inserts": 2,
+          "actual_applied_writes": 1,
+          "sample_counts": [
+            10,
+            10
+          ],
+          "sample_window_durations_ms": [
+            1299,
+            1251
+          ],
+          "probe_records": 10,
+          "ack_mutation_count": 7,
+          "later_mutation_count": 10,
+          "observed_late_attribute_sequence": [
+            "name",
+            "type",
+            "name"
+          ],
+          "second_raw_value": 20,
+          "second_native_value": 10,
+          "second_ui_status": "Review 1 field error.",
+          "raw_error_code_observed": false,
+          "original_guide_status": "FAIL",
+          "independent_negative_controls": 20,
+          "all_owned_cleanup": true,
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 1,
+            "code_correction_passes": 0,
+            "re_review": false,
+            "deferred_minors": [
+              "M1 enforce actualNode executable admission and verifier negativecontrol"
+            ],
+            "report": ".artifacts/v03/control-revision-diagnosis/2026-10-24/review/report.md"
+          },
+          "recorded_node_identity_checked": true,
+          "registered_diagnostic_criterion_met": false,
+          "final_verification": ".artifacts/v03/control-revision-diagnosis/2026-10-24/final-checkpoint.json"
         }
       ],
       "current_checkpoint": {
-        "record": "139-v03-control-revision-diagnosis.md",
-        "status": "bounded-mutation-facts-and-failure-record-complete-native-criterion-not-met",
-        "next_bounded_step": "V03.18 source-level clean/dirty snapshot ordering diagnosis before any recovery change; no native rerun or guard weakening"
+        "record": "140-v03-input-snapshot-ordering.md",
+        "status": "bounded-source-diagnosis-complete-original-guide-FAIL-retained",
+        "next_bounded_step": "A02.4 bounded ordinary React19 product acquisition integration; preserve ownership/prop-transfer/selected-origin Unknown and existing stopping rule"
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-guide-source-connection.md",
-      "implementation_plan": "../superpowers/plans/2026-10-24-v03-control-revision-diagnosis.md"
+      "implementation_plan": null,
+      "last_implementation_plan": "../superpowers/plans/2026-10-24-v03-control-revision-diagnosis.md",
+      "analysis_protocol": ".artifacts/v03/input-snapshot-ordering/2026-10-24/registration.json"
     },
     {
       "id": "V04",
@@ -6308,11 +6334,11 @@
     ]
   },
   "reconciliation": {
-    "document": "139-v03-control-revision-diagnosis.md",
+    "document": "140-v03-input-snapshot-ordering.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.17-bounded-mutation-facts-complete-native-criterion-FAIL-retained",
-    "next_item": "V03.18 source-level clean/dirty snapshot ordering diagnosis before any recovery change; no native rerun or guard weakening",
+    "current_increment": "V03.18-bounded-source-ordering-diagnosis-complete-native-guide-FAIL-retained",
+    "next_item": "A02.4 bounded ordinary React19 product acquisition integration; preserve ownership/prop-transfer/selected-origin Unknown and existing stopping rule",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6336,7 +6362,11 @@
       "V01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "V03",
+    "active_item": {
+      "id": "V03",
+      "record": "140-v03-input-snapshot-ordering.md",
+      "status": "bounded-source-diagnosis-complete-A02-next"
+    },
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -9030,11 +9060,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.17 0d699b7 nativeFAIL classifier expected applied/specificstale butactualReview1field error. Missingfactsobserved:2nativeinserts/1appliedwrite/2x10samples1299+1251ms/10probe records, ack7→10late name/type/name whilevalue10 remains. Secondraw20/app10/history1/nooverwrite.446stable/B327/helper223/65originals/strictconsole0/probestopped/allcleanup/20negativecontrols. OriginalguideFAIL/writerUnknown/20of29unchanged; ONEreview0C0I1M(Nodeadmissiondeferred)/recordedNodepathhashmatches/next18sourceorderinganalysis; no morenativeretry17.",
+    "current_activity_note": "V03.18 actualsource threeorders/333stableinputs/B327 unchanged: freshbeforeedit preparescurrentplan; freshafteredit orbeforelateack preservesraw20/conflict. SyntheticplanIDs explicit, nativeordering/modelcauseUnknown. No product/browser/backend/write/build/wholeacceptance. V03.17/nativeoriginalguideFAIL retained/20of29; nextdependencyreadyA02.4 product19 acquisitionintegration preserving ownershipstoppingrule.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "3248a10130f63b40dc818489261410b827432a94",
+    "current_source_revision": "73e7303163007e9b18dfd08991260c888c5bfd07",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.18 source-level clean/dirty snapshot ordering diagnosis before any recovery change; no native rerun or guard weakening"
+    "next_bounded_step": "A02.4 bounded ordinary React19 product acquisition integration; preserve ownership/prop-transfer/selected-origin Unknown and existing stopping rule"
   },
-  "next_task": "V03"
+  "next_task": "A02"
 }
