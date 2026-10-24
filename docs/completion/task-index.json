@@ -4309,85 +4309,36 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.15",
-        "title": "Original Basic/observer gate on exact immutable72",
-        "status": "complete-original-measurement-overhead-targets-missed",
-        "record": "134-v02-current-basic-observer.md",
-        "design": "../superpowers/specs/2026-10-24-v02-current-basic-observer-design.md",
-        "plan": "../superpowers/plans/2026-10-24-v02-current-basic-observer.md",
-        "case": "../testing/basic-observer-current-case.json",
-        "source_checks": 2697,
-        "focused_checks": 35,
-        "new_harness_controls": 13,
+        "id": "V02.16",
+        "title": "Current DOM-enabled transport cost discrimination",
+        "status": "preregistered-source-verified-native-due",
+        "record": "135-v02-dom-domain-cost.md",
+        "design": "../superpowers/specs/2026-10-24-v02-dom-domain-cost-design.md",
+        "plan": "../superpowers/plans/2026-10-24-v02-dom-domain-cost.md",
+        "case": "../testing/dom-domain-cost-case.json",
+        "source_checks": 2720,
+        "focused_checks": 45,
+        "new_source_controls": 23,
         "candidate": "0.1.0-candidate.20261021.72",
         "candidate_sha256": "c95fdfd4c61a4eb15eddd0101da97c9bb61cac7d809d547ec82de96eb4648106",
         "ui_sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
-        "planned_rows": 198,
-        "planned_warmup_rows": 18,
-        "planned_measured_rows": 180,
-        "planned_active_windows": 66,
-        "registered_inputs": 404,
+        "planned_rows": 224,
+        "planned_warmup_rows": 32,
+        "planned_measured_rows": 192,
+        "registered_inputs": 413,
         "product_inputs_unchanged": 327,
         "helper_inputs_unchanged": 223,
         "whole_V02_complete": false,
         "performance_acceptance": false,
         "targets_waived": false,
-        "review_pending": false,
-        "native_executed": true,
-        "tls_setup": "Exact retained single synthetic CA database seed into fresh ownprofiles; ordinary TLS; no import UI/new certificates/user or systemtrust changes",
-        "measurement_complete": true,
-        "targets_met": false,
-        "basic_p95_ms": {
-          "standalone": 433.8,
-          "embedding": 419.5
-        },
-        "active_off_percent": {
-          "standalone": 26.64418213,
-          "embedding": 29.32469936
-        },
-        "basic_latency_target_met": {
-          "standalone": true,
-          "embedding": true
-        },
-        "active_overhead_target_met": {
-          "standalone": false,
-          "embedding": false
-        },
-        "native_rows": 198,
-        "warmup_rows": 18,
-        "measured_rows": 180,
-        "active_windows": 66,
-        "protocol_negative_controls": 16,
-        "actual_native_revision": "6447a26",
-        "runtime_result": ".artifacts/v02/basic-observer-current/2026-10-24T03-53-07-652Z/results.json",
-        "verification": ".artifacts/v02/current-basic-observer/2026-10-24/final-checkpoint.json",
-        "review": {
-          "schema": "stateatom.current-basic-observer-review/1",
-          "reviewer": "/root/v0215_whole_review",
-          "model": "gpt-6-astra",
-          "reasoning": "high",
-          "base": "03a8147dce36b15d39543ab785dc092ab4cc91c2",
-          "head": "46caee5f8456b263fb58d5edc160081ab79cfc8c",
-          "critical": 0,
-          "important": 0,
-          "minor": 1,
-          "correction_passes": 0,
-          "re_review": false,
-          "native_repeated": false,
-          "actual_native_revision": "6447a26",
-          "source_checks": 2697,
-          "focused_checks": 35,
-          "new_harness_controls": 13,
-          "reviewer_fresh_controls": 19,
-          "minor_addressed": "Currentstatus synchronized to completed measurement/missed overhead/completedreview; record134 preparationdue explicitlyhistorical",
-          "reportSha256": "ad3d7caf1e47a14b9360d92b669a0b52121fe16f3d564e15a30a646994d764ed"
-        }
+        "review_pending": true,
+        "native_executed": false
       },
-      "execution_record": "134-v02-current-basic-observer.md",
+      "execution_record": "135-v02-dom-domain-cost.md",
       "current_checkpoint": {
-        "record": "134-v02-current-basic-observer.md",
-        "status": "complete-original-measurement-overhead-targets-missed",
-        "next_bounded_step": "V02.16 select/register one bounded current attachedBasic/DOMinstrumentation cost discrimination before optimization; retain original102 context/current15 gate, all guards/records/ownership and unchanged thresholds; no assumedcause or broadoldtransport rerun"
+        "record": "135-v02-dom-domain-cost.md",
+        "status": "preregistered-source-verified-native-due",
+        "next_bounded_step": "Execute one registered V02.16 current missingDOM control comparison without changing originalworkload/guards/ownership/TLS or15targetmisses; ONE final review and nextitem fromactualresult"
       },
       "completed_slices": [
         {
@@ -5216,7 +5167,7 @@
         }
       ],
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v02-current-basic-observer.md",
-      "implementation_plan": "../superpowers/plans/2026-10-24-v02-current-basic-observer.md"
+      "implementation_plan": "../superpowers/plans/2026-10-24-v02-dom-domain-cost.md"
     },
     {
       "id": "V03",
@@ -6043,11 +5994,11 @@
     ]
   },
   "reconciliation": {
-    "document": "134-v02-current-basic-observer.md",
+    "document": "135-v02-dom-domain-cost.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.15-complete-original-measurement-overhead-targets-missed",
-    "next_item": "V02.16 select/register one bounded current attachedBasic/DOMinstrumentation cost discrimination before optimization; retain original102 context/current15 gate, all guards/records/ownership and unchanged thresholds; no assumedcause or broadoldtransport rerun",
+    "current_increment": "V02.16-preregistered-source-verified-native-due",
+    "next_item": "Execute one registered V02.16 current missingDOM control comparison without changing originalworkload/guards/ownership/TLS or15targetmisses; ONE final review and nextitem fromactualresult",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8656,11 +8607,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.15 complete finite originalmeasurement198rows/66windows/404stableinputs/327product/223helper; Basicp95433.8/419.5ms meets1s, active/off26.6442/29.3247% misses10%. ONEreview0Critical/0Important/1Minor, reportingwordingfixed/no sourcefix/native repeat. Full2697/focused35/newharness13/independent16negativecontrols. ExactretainedsyntheticTLScopy/no certificateGUI/newcert, no freshUXproof. Whole20/29/fullV02 unchanged.",
+    "current_activity_note": "New missingDOM control replacesold102network-only: fixed224rows/32warm192measured/rawFull-vsFullDOM-vsactualBasic/Off registered413inputs. Full2720/focused45/new23sourcecontrols PASS; immutable72/product327/helper223 unchanged. Native/result/review due, original15gate Basicp95met/overheadmiss unchanged and20-of29/fullV02 open. No productoptimization/certificateGUI/newcert campaign.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "46caee5",
+    "current_source_revision": "b0c5e2e",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V02.16 select/register one bounded current attachedBasic/DOMinstrumentation cost discrimination before optimization; retain original102 context/current15 gate, all guards/records/ownership and unchanged thresholds; no assumedcause or broadoldtransport rerun"
+    "next_bounded_step": "Execute one registered V02.16 current missingDOM control comparison without changing originalworkload/guards/ownership/TLS or15targetmisses; ONE final review and nextitem fromactualresult"
   },
   "next_task": "V02"
 }

@@ -2239,3 +2239,12 @@ bounded current attachedBasic/DOMinstrumentation cost discrimination before any
 optimization; no assumedcause/guardshortcut/thresholdwaiver. Historicalmisses and
 whole20/29/fullV02/V03/C09/A02/L02 stay open; A05 remains scopedcomplete and mandatory,
 SDK outsideAtom, independenthuman nonblocker.
+
+
+[V02.16](completion/135-v02-dom-domain-cost.md) registers one missingDOM control on
+unchanged72: rawFull/rawFullDOM/actualBasic/Off,224fixedrows/32warm192measured,
+413inputs/327product/223helper. Full2720/focused45/new23sourcecontrols PASS; native
+and ONEreview stilldue. This is preparation, not cause/safeoptimization/performance
+acceptance. Original15gate overheadmisses/whole20-of29/fullV02 remain open. Same
+retainedsyntheticTLS/ownprofile seed, no newcert/importGUI/usertrust/profile or product
+change; no broadoldtransport/certificate/IDE/model campaign.
