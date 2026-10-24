@@ -1,6 +1,7 @@
 # V03.17 — native control revision diagnosis
 
-Current: prepared, native execution and ONE whole-item review due. Main2d9b308,
+Current: first native retained pre-probe harness FAIL; tested local-variable
+correction/new registration prepared, affected native and ONE review due. Main2d9b308,
 scope-review-1; latest user autonomous work until Oct25 evening. This is one missing
 attribute-observation diagnosis after [V03.16](138-v03-independent-input-guide.md),
 whose four actual FAILs remain immutable. Original guide remains FAIL, whole20/29,
@@ -44,3 +45,17 @@ all ordered snapshots and literal transactions/revision differences/unknowns,
 complete untruncated probe/pendingdrain/cleanup/console and negativecontrols. No
 successfuloriginalguide/globalrestore/Reactwriter/sourceReduxnetwork/C09/human/
 cleanOS/Mac/fullV03 credit follows from diagnostic completion.
+
+## Retained pre-probe native failure and bounded correction
+
+94794 terminal1 at13f3498/clean,06:27:10 results: two positive setup gates then
+“probe is not a function”. Local port-reservation server shadows outer observer
+function inside try. No observer installed/no input edits, not productfailure.
+BEFOREcorrection checkpoint verifies442stable/B327/helper223/original65/console0/
+allownedcleanup/Chrome754009,Vite753988absent/no kill. Originalregistration/result
+preserved. Actual port-block source regression RED16PASS1FAIL sameTypeError→one
+localvariable rename→GREEN17/focused58. Observer/product/protocol unchanged.
+[Supplement](../superpowers/specs/2026-10-24-v03-control-revision-port-correction-design.md),
+[corrected fixed case](../testing/control-revision-diagnosis-corrected-case73.json)
+freeze446inputs/twoharnessdeltas andpreservedFAIL beforeONEaffectedfollowup, not
+blindtimeoutrepeat. Fullproduct2799notrerun orrenamed; actualnativeoutcome/reviewdue.

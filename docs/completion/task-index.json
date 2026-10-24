@@ -5355,7 +5355,7 @@
       "active_slice": {
         "id": "V03.17",
         "title": "Native control revision and stale-draft diagnosis",
-        "status": "prepared-native-and-review-due",
+        "status": "retained-preprobe-harness-fail-corrected-followup-and-review-due",
         "record": "139-v03-control-revision-diagnosis.md",
         "design": "../superpowers/specs/2026-10-24-v03-control-revision-diagnosis-design.md",
         "plan": "../superpowers/plans/2026-10-24-v03-control-revision-diagnosis.md",
@@ -5364,15 +5364,15 @@
         "product_source_changed": false,
         "new_build": false,
         "candidate": "0.1.0-candidate.20261021.73",
-        "native_executed": false,
+        "native_executed": true,
         "review_pending": true,
         "whole_V03_complete": false,
         "registered_inputs": 442,
         "product_inputs": 327,
         "helper_inputs": 223,
         "original_source_files": 65,
-        "new_source_controls": 25,
-        "fresh_focused_checks": 57,
+        "new_source_controls": 26,
+        "fresh_focused_checks": 58,
         "original_criteria_waived": false,
         "new_timing_policy_approved": false,
         "planned_native_inserts": [
@@ -5383,7 +5383,16 @@
           1200,
           1200
         ],
-        "mutation_writer": "Unknown"
+        "mutation_writer": "Unknown",
+        "first_native_status": "FAIL_LOCAL_PORT_VARIABLE_SHADOWS_PROBE_BEFORE_EDITS",
+        "first_native_result": ".artifacts/v03/control-revision-diagnosis/2026-10-24T06-27-10-305Z/results.json",
+        "first_native_verification": ".artifacts/v03/control-revision-diagnosis/2026-10-24/preprobe-failure-checkpoint.json",
+        "first_native_revision": "13f349816989f05049fab69743e419662a7083ab",
+        "first_native_inserts": 0,
+        "first_native_probe_installed": false,
+        "corrected_case": "../testing/control-revision-diagnosis-corrected-case73.json",
+        "corrected_registered_inputs": 446,
+        "corrected_native_executed": false
       },
       "completed_slices": [
         {
