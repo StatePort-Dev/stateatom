@@ -1,6 +1,6 @@
 # V03.21 — current owned-editor reply delivery (in progress)
 
-Current: **source/full2989/packed77 qualification ready; one frozen affected native case and final review remain pending**. Baseline570b796. Source20 confirms a superseded reply can be
+Current: **actual Atom77 native qualification passes6/6; independent saved verification passes. ONE final whole-item review remains pending**. Baseline570b796. Source20 confirms a superseded reply can be
 discarded before updating a clean active editor, unlike a latest reply. Native19
 records the conflict path but its RPC schedule is unproven. Original guide17 FAIL
 and20/29 unchanged. [Design](../superpowers/specs/2026-10-24-v03-owned-editor-reply-design.md),
@@ -91,3 +91,44 @@ product pass. No original guide/Undo/Draft/baseline/mutation campaign rerun.
 
 Commit source/case before max1 actual run, then independent verifier and ONE final
 whole-item review. No new native or delivered-correction claim yet.
+
+## Actual affected77 native result
+
+One run on **b2aa44a**, terminal
+`PASS_BOUNDED_EDITOR_REPLY_NATIVE_NOT_FULL_V03`, **6/6 PASS**.
+Output `.artifacts/v03/owned-editor-reply/2026-10-24T12-55-30-969Z/results.json`;
+SHA256 **72b875219c7610ac16c97ca56861d0adf135141c022f664e1a80787fbf505f6c**.
+
+The original late native metadata change remains present: first applied receipt
+revision ends2:7:2:1, afterFirst resource2:10:2:1. **Before second native typing**,
+the model already holds that newer revision, raw10/clean/no conflict. The actual
+prepared second plan uses resource value10/revision10 and new value20; its id and
+investigation join the second actual applied receipt. Application DOM is20,
+products[], current resource20, local raw20/clean/no error/aria-invalidfalse. Both
+inputs use normal Live, no Enter/blur, refresh, discard, rebase or guard override.
+
+There are **24 complete records**, two projected actual prepared plans, two applied
+receipts, six exact77 sites. Final trace is STOPPED and validated before final
+capture/classification, no fabricated ACTIVE status. Two windows each have ten
+samples over1292/1286ms. Second observable backend/local readiness is1716ms after
+insert under this instrumented collection; this is one descriptive measurement,
+not p95/latency or performance acceptance. Fields are interval bounded, not atomic.
+
+Viewed actual row screenshot:20→20 and no field error, remains a candidate. Its
+independent inspection footer still shows Working/No observation yet; this case
+accepts the input correction, not global inspection-ready state or its latency.
+Source TDD proves the superseded-reply branch. Native records prove fresh model
+state before second edit; they do not attribute every receive to a particular
+load-generation branch, prove uninstrumented timing or identify a React writer.
+
+All523 inputs/original65 files/archives/both host manifests match; attached console
+warnings/errors0. Collector, inspector, browser, Vite/log, API and Xephyr closed;
+Chrome2083160/Vite2083135 absent. Independent saved verifier **20negative controls
+PASS**, file `verification/verify.mjs` with `verification.json` in this output.
+It independently checks stopped data, actual plan/receipt/revision/native target
+joins, windows, types/admission/source hashes, final field/DOM and cleanup.
+
+No old case/result was rerun or upgraded. Original guide17, Undo/Draft/baseline,
+latency, wholeV03/A02/V02/L02/C09 and installed official-host/helper/human gates
+remain separate.20/29 unchanged. Task2 is ready for ONE fresh final review; no
+implementation correction pass or reviewer has been dispatched yet.
