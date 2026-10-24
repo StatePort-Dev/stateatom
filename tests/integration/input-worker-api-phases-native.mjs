@@ -55,7 +55,7 @@ await writeFile(out+'/preregistration.json',JSON.stringify(preregistration,null,
   await checkpoint(0,'opened');await panel.evaluate(installInputModeTiming);const installed=await d.p.send('Runtime.evaluate',{expression:'window.v02Probe=('+installInspectorRPCProbe.toString()+')(globalThis,{operations:["inputs-apply","state","capabilities"]});true;',returnByValue:true});assert(!installed.exceptionDetails);assert.equal(installed.result.value,true);
   entry.workerTarget={...browser.extensionWorker};assert.equal(entry.workerTarget.type,'service_worker');assert.equal(new URL(entry.workerTarget.url).host,browser.id);
   worker=await browser.extensionWorkerSession();await worker.send('Runtime.enable');worker.on('Runtime.exceptionThrown',event=>result.errors.push({host,surface:'own-worker',message:event.exceptionDetails.text}));
-  async function workerValue(expression){const reply=await worker.send('Runtime.evaluate',{expression,returnByValue:true});assert(!reply.exceptionDetails,'Own worker diagnostic evaluation failed');return JSON.parse(reply.result.value);}
+  async function workerValue(expression){const reply=await worker.send('Runtime.evaluate',{expression:'"use strict";'+expression,returnByValue:true});assert(!reply.exceptionDetails,'Own worker diagnostic evaluation failed');return JSON.parse(reply.result.value);}
   const initialWorker=await workerValue('globalThis.v02WorkerProbe=('+installWorkerAPIProbe.toString()+')(globalThis,{tabId:'+tabId+',limit:2048});JSON.stringify(globalThis.v02WorkerProbe.snapshot());');workerRestorePending=true;
   entry.workerClock=initialWorker.clock;entry.inspectorClock=await panel.evaluate(()=>({timeOrigin:performance.timeOrigin,crossOriginIsolated:globalThis.crossOriginIsolated}));
   for(const trial of order()){

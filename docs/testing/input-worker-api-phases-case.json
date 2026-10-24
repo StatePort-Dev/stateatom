@@ -9,7 +9,7 @@
     "executableSha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e"
   },
   "inputHashes": {
-    "tests/integration/input-worker-api-phases-native.mjs": "d8ccdb9ab9b36a2466b83c3f123e4405ed2767f25be3d18400e9c4e2b3013fc7",
+    "tests/integration/input-worker-api-phases-native.mjs": "5faaac01cc1e195a45c119d96e6dc3103333ae2424ff08816a9d116415e7a2a0",
     "tests/helpers/worker-api-phase-probe.mjs": "b0d6d10144495a6bc3f0efa1ab4b57c73eaa6998fa02c26039474cab285408d8",
     "tests/helpers/worker-api-phase-summary.mjs": "c0f3eccf251850c1e87a70373a4700394f74278b490d5a5abe891e03f3ee7122",
     "tests/atom/worker-api-phase-probe.test.mjs": "3ba0d2a6c9ffe928fe6a7138ff3941857e9432b3011621c2c1874e2a001cec3d",
@@ -31,7 +31,8 @@
     ".artifacts/v02/worker-api-phases/2026-10-24/startup-controls.test.mjs": "bdb26adc325902b6a793ec8baa37ca84ebf11c244bbe05e1d5780b7f0d443c30",
     "package.json": "9e17e86330ce8f604d9a081da7ab650453ec79cfcb660467f342822cf480aa8b",
     "package-lock.json": "f954745163c31e68db231dd9b8f4447aeb7698787888c00ea9628cc982c761c7",
-    ".artifacts/atom/2026-10-24T01-26-15-352Z/atom-handoff.json": "394d13dbcb264a4dcc1f08b61c4814add8a54e3ba4c7070ef3072af67378b645"
+    ".artifacts/atom/2026-10-24T01-26-15-352Z/atom-handoff.json": "394d13dbcb264a4dcc1f08b61c4814add8a54e3ba4c7070ef3072af67378b645",
+    ".artifacts/v02/worker-api-phases/2026-10-24/serialized-probe.test.mjs": "8b1d6db2e6384e49811567acc9b4610f5258f25aa7d1d9485ec57975311c5eb3"
   },
   "protocol": {
     "cases": [
@@ -108,5 +109,6 @@
     "Intrinsic Promise observers may alter unhandled-rejection reporting; instrumented worker console is not uninstrumented exception-completeness proof",
     "No original performance-target/SLO/250ms policy or unapproved Live/production/handoff decision; whole20/29/fullV02/V03/C09/A02/L02 stay open",
     "No prior matrix/64-limit/Close/HTTPS/certificates/IDE/model/app-source/Capture/SDK/publication/other-repository repeat"
-  ]
+  ],
+  "preNativeDriverCorrection": "Strict evaluation retains original ES module function receiver semantics; source RED→GREEN in separate VM, no native attempt yet"
 }

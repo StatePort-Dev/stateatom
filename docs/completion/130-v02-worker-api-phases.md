@@ -81,3 +81,11 @@ unwrapped work; it is not automatically any one of them.
 Actual native result and ONE final fresh review remain pending. Documents and source
 checks alone establish neither the measurement nor full feature readiness. Keep
 historical evidence/cases/criteria, deferred old Minors and local-only commits.
+
+Before the first native attempt, an additional actual-evaluator VM control exposed
+that function serialization lost ES-module strict receiver semantics. RED observed
+a global receiver instead of undefined; strict Runtime.evaluate prefix gives GREEN,
+including exact undefined/null forwarding. Driver controls now7PASS (six startup/
+cleanup plus this VM control). The case's driver hash is updated before execution,
+with the original registration retained in Git; no native result or criterion is
+rewritten. Product327/source module tests/full2654 remain unchanged.
