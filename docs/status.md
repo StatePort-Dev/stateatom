@@ -2365,3 +2365,15 @@ inspector-only observation technique, preserve old native FAILs and all guards.
 inside the owned inspector; later one registered native question only if that
 technique passes. No new native result/product change. Old guide/native17 FAIL,
 18 source-only findings, guards and20-of29 remain unchanged.
+
+### 2026-10-24 — V03.19 actual inspector order captured
+
+[Native facts](completion/142-v03-inspector-input-order.md): one six-check diagnostic
+on1f592ee, exact76/578inputs stable. First ack clears draft at revision7; second edit
+creates raw20 from7, then receive10 preserves draft7 and sets conflict. Actual row
+“Field changed elsewhere. Discard this draft.” is visible; backend/app stay10 with
+one transaction, backend error code Unknown. Six sites/ten records/no pause or
+truncation, two ten-sample1258/1234ms diagnostic windows; console0/allcleanup.
+Independent verifier20negative controls PASS; ONE final review pending. No product
+change, original guide/native17 still FAIL,20-of29 unchanged. Next source question:
+clean editor snapshot delivery before a Live edit; no guard waiver/rebase assumed.

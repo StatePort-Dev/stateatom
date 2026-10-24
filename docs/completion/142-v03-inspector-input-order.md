@@ -1,6 +1,6 @@
 # V03.19 — inspector input ordering (in progress)
 
-Current: beginning the test-only observation technique; **no new native result**.
+Current: **Native ordering/visible-row facts captured; ONE final review pending.** The original guide and native17 remain FAIL; no product fix or full V03 acceptance.
 Baseline843a648; A02.4 bounded complete, whole20/29 unchanged. V03.17/native guide
 FAIL and V03.18 source-only ordering results remain unchanged. Goal is actual
 inspector receive/edit/ack order and the visible per-row refusal, not a guard or
@@ -81,3 +81,53 @@ the old deferred Node-admission issue only in the new driver, not retroactively.
 Next: commit exact case/driver then execute once. Source-controller control stays
 separate, original guide/native17 remain FAIL. No automatic refresh/rebase/discard,
 Undo/Draft/baseline/mutation-probe/whole guide retry or new timing/production policy.
+
+## Task2 actual native result
+
+One registered run on **1f592ee** terminates
+`DIAGNOSIS_CAPTURE_COMPLETE_NOT_GUIDE_ACCEPTANCE`, **6/6 named checks**.
+Output `.artifacts/v03/inspector-input-order/2026-10-24T10-13-15-954Z/results.json`;
+SHA256 **1a25865a240334c0a9fb5a8c16c0094efbd39dcfe80549ecf0bf6c41577904ce**.
+Exact76/UI2,327 product/223 source-inventory/original65 copied and immutable files,
+578 total inputs unchanged. Vite actual /proc executable matches executing Node;
+six actual packed-bundle locations match the source hash. Observer runs only on
+the owned inspector, no source replacement or application Debugger collector.
+
+Ten ordered records establish THIS instrumented run's actual path:
+
+1. First native edit creates raw10 from baseline0. A same-resource receive occurs
+   before the first acknowledgement and does not conflict.
+2. First settle records the actual plan/receipt, resource revision ending
+   `2:7:2:1`, value10; dirty clears and no draft remains.
+3. During the first window the backend snapshot reaches `2:10:2:1` with value10.
+   The inspector trace still has six records; its last model resource is revision7.
+4. Second native edit creates raw20/draft from revision7, initially conflictfalse.
+5. The next controller receive supplies revision10. After that call the resource
+   is10, draft revision remains7, raw20 survives and conflict becomes true.
+
+Actual row is visible/focused/aria-invalid=true, message **“Field changed elsewhere.
+Discard this draft.”**, summary “Review 1 field error.” Backend retains one applied
+transaction/value10, application native value10/products[1]; no second write.
+Outcome `LOCAL_CONFLICT_REFUSED_WITHOUT_WRITE` describes local captured facts;
+backend error code remains **Unknown**, not an invented `STALE_RESOURCE` receipt.
+The row screenshot was viewed and remains a candidate.
+
+Two windows each retain ten samples over **1258/1234ms**. These are fixed diagnostic
+windows under observer overhead, not an approved timing policy/performance result.
+Captures of backend/DOM/UI/trace are interval bounded, not atomic. First ack already
+records native10 while the application's product list can still be[1,2]; products
+become[1] by afterFirst. The initial independent verifier incorrectly expected the
+post-debounce list at ack too; it was corrected to the registered after-window
+criterion. Actual raw result was never changed and no native run repeated.
+
+No unexpected pause, overflow, projection error or attached console warning/error.
+Stopped trace has all ten identical records, own slot removed, all independent
+cleanup steps pass; Chrome1529317/Vite1529276 absent. Saved independent verifier
+**20negative controls PASS** checks actual order/row/revision joins, windows, exact
+source/inputs, old hashes, actualNode and cleanup; files in output `verification/`.
+It does not accept the original guide or retroactively determine native17's order.
+
+ONE final review is now due. No product source/package/guard/timing/permissions
+changed. The next bounded source question is why the clean inspector model still
+held7 while a sampled backend snapshot already held10, before proposing any
+synchronization change. No automatic rebase or another native guide campaign.
