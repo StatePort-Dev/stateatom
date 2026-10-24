@@ -4309,70 +4309,36 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.16",
-        "title": "Current DOM-enabled transport cost discrimination",
-        "status": "complete-finite-dom-discrimination-not-performance-acceptance",
-        "record": "135-v02-dom-domain-cost.md",
-        "design": "../superpowers/specs/2026-10-24-v02-dom-domain-cost-design.md",
-        "plan": "../superpowers/plans/2026-10-24-v02-dom-domain-cost.md",
-        "case": "../testing/dom-domain-cost-case.json",
-        "source_checks": 2720,
-        "focused_checks": 45,
-        "new_source_controls": 23,
+        "id": "V02.17",
+        "title": "Performance collection enabled/disabled configuration discriminator",
+        "status": "preregistered-source-verified-native-due",
+        "record": "136-v02-performance-domain-cost.md",
+        "design": "../superpowers/specs/2026-10-24-v02-performance-domain-cost-design.md",
+        "plan": "../superpowers/plans/2026-10-24-v02-performance-domain-cost.md",
+        "case": "../testing/performance-domain-cost-case.json",
+        "source_checks": 2741,
+        "focused_checks": 50,
+        "new_source_controls": 21,
         "candidate": "0.1.0-candidate.20261021.72",
         "candidate_sha256": "c95fdfd4c61a4eb15eddd0101da97c9bb61cac7d809d547ec82de96eb4648106",
         "ui_sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
-        "planned_rows": 224,
-        "planned_warmup_rows": 32,
-        "planned_measured_rows": 192,
-        "registered_inputs": 413,
+        "planned_rows": 162,
+        "planned_warmup_rows": 18,
+        "planned_measured_rows": 144,
+        "registered_inputs": 419,
         "product_inputs_unchanged": 327,
         "helper_inputs_unchanged": 223,
         "whole_V02_complete": false,
         "performance_acceptance": false,
         "targets_waived": false,
-        "review_pending": false,
-        "native_executed": true,
-        "native_rows": 224,
-        "warmup_rows": 32,
-        "measured_rows": 192,
-        "server_sample_requests": 4480,
-        "protocol_negative_controls": 28,
-        "actual_native_revision": "1c2432e",
-        "runtime_result": ".artifacts/v02/dom-domain-cost/2026-10-24T04-15-23-659Z/results.json",
-        "verification": ".artifacts/v02/dom-domain-cost/2026-10-24/final-checkpoint.json",
-        "dom_hypothesis_established": false,
-        "full_dom_vs_full_percent": {
-          "standalone": -1.90197512,
-          "embedding": 2.99079754
-        },
-        "review": {
-          "schema": "stateatom.dom-domain-cost-review/1",
-          "reviewer": "/root/v0216_whole_review",
-          "model": "gpt-6-astra",
-          "reasoning": "high",
-          "base": "b0c5e2e011e3d609660b9d12662d24b5c066d03d",
-          "head": "0f06db1fe86e56efc6430225159b599f09c588b4",
-          "critical": 0,
-          "important": 0,
-          "minor": 1,
-          "correction_passes": 0,
-          "re_review": false,
-          "native_repeated": false,
-          "actual_native_revision": "1c2432e",
-          "source_checks": 2720,
-          "focused_checks": 45,
-          "new_source_controls": 23,
-          "reviewer_fresh_controls": 23,
-          "minor_addressed": "Currentstatus synchronized to completeddiagnostic/review; record135 preparationdue explicitlyhistorical",
-          "reportSha256": "bb51501f05d6dbd2b3374bd25737824422518cdc69866a698fbfc596508f55bf"
-        }
+        "review_pending": true,
+        "native_executed": false
       },
-      "execution_record": "135-v02-dom-domain-cost.md",
+      "execution_record": "136-v02-performance-domain-cost.md",
       "current_checkpoint": {
-        "record": "135-v02-dom-domain-cost.md",
-        "status": "complete-finite-dom-discrimination-not-performance-acceptance",
-        "next_bounded_step": "V02.17 select/register one Performance-enabled vs otherwiseidentical rawFull control before productoptimization; preserve15/16results/originaltargets/guards/ownership/records/metricsmeaning, no assumedcause or deferred-metrics approval"
+        "record": "136-v02-performance-domain-cost.md",
+        "status": "preregistered-source-verified-native-due",
+        "next_bounded_step": "Execute once registered V02.17 Performance-enable/disable rawconfiguration control; retain original15/16 gate/results and allworkload/ownership/metricssemantics, then ONE review and nextitem fromactualevidence"
       },
       "completed_slices": [
         {
@@ -5261,7 +5227,7 @@
         }
       ],
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v02-dom-domain-cost.md",
-      "implementation_plan": "../superpowers/plans/2026-10-24-v02-dom-domain-cost.md"
+      "implementation_plan": "../superpowers/plans/2026-10-24-v02-performance-domain-cost.md"
     },
     {
       "id": "V03",
@@ -6088,11 +6054,11 @@
     ]
   },
   "reconciliation": {
-    "document": "135-v02-dom-domain-cost.md",
+    "document": "136-v02-performance-domain-cost.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.16-complete-finite-dom-discrimination",
-    "next_item": "V02.17 select/register one Performance-enabled vs otherwiseidentical rawFull control before productoptimization; preserve15/16results/originaltargets/guards/ownership/records/metricsmeaning, no assumedcause or deferred-metrics approval",
+    "current_increment": "V02.17-preregistered-source-verified-native-due",
+    "next_item": "Execute once registered V02.17 Performance-enable/disable rawconfiguration control; retain original15/16 gate/results and allworkload/ownership/metricssemantics, then ONE review and nextitem fromactualevidence",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8761,11 +8727,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.16 finiteDOMdiscriminator complete224rows/4480serverrequests/413stableinputs/B327/helper223/allreleases-cleanup. FullDOM/Full -1.90/+2.99%, largeDOMcause notestablished/no safeoptimization/targetpass. ONEreview0Critical/0Important/1Minor reportingfixed/no sourcecorrection/native repeat. Full2720/focus45/new23/independent28negativecontrols. Original15overheadmisses and20-of29/fullV02 unchanged; next17singlePerformancecontrol notproductpolicy.",
+    "current_activity_note": "NewsinglePerformanceconfiguration control prereg419inputs/rawAtomdetached/162rows18warm144measured/n24; full2741/focused50/new21sourcecontrols PASS. Exact72/product327/helper223 unchanged/TLSretained/no newcert/importGUI. Native/reviewdue; original15overheadmisses/16negativeDOMhypothesis/20-of29/fullV02 unchanged, no productmetricssemanticchange approved.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "0f06db1",
+    "current_source_revision": "c6c5e4f",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V02.17 select/register one Performance-enabled vs otherwiseidentical rawFull control before productoptimization; preserve15/16results/originaltargets/guards/ownership/records/metricsmeaning, no assumedcause or deferred-metrics approval"
+    "next_bounded_step": "Execute once registered V02.17 Performance-enable/disable rawconfiguration control; retain original15/16 gate/results and allworkload/ownership/metricssemantics, then ONE review and nextitem fromactualevidence"
   },
   "next_task": "V02"
 }

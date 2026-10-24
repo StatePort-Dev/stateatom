@@ -2252,3 +2252,12 @@ andwhole20/29/fullV02/V03/C09/A02/L02 unchanged. NextONEV02.17 registers one raw
 Performance-enabled control before productoptimization/metricssemanticchanges.
 Sameownprofile retainedsyntheticTLS/no newcert/importGUI/usertrust/profile campaign;
 no fullscope/SDK/otherrepo/publication authority or independenthuman blocker.
+
+
+[V02.17](completion/136-v02-performance-domain-cost.md) registers onePerformance
+collection configuration control on exact72: Off/rawdisabled/rawenabled whileAtom
+detached,162rows/18warm144measured/419inputs/327product/223helper. Full2741/focused50/
+new21sourcecontrols PASS. Native and ONEreview remain pending at this checkpoint;
+no capability/causal/metricssemantic/targetacceptance from registration. Original15
+misses/16negativeDOMhypothesis/20-of29/fullV02 retained, no product/newcert/importGUI/
+usertrust/profile/SDK/otherrepo/publication campaign.
