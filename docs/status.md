@@ -1,5 +1,15 @@
 # Project status
 
+Active bounded work: [A02.8](completion/149-original-launch-witness.md), public
+owner-process original invocation witness feasibility. Planning only; at most one
+new metadata-only case after source/full/frozen gates. All earlier cases exhausted.
+A02.7 closes at6f696c7 with33focused/full3184PASS, ONE review0C/2I/1M; bothImportant
+fixed once. Its actual blank Chrome result remains Refused, invocation/profile/
+headed mode/root cause Unknown. No app/product/fullA02 credit;20/29 unchanged.
+No extension/IDE/certificate/trust/account/publication work in this item.
+
+Historical pre-native A02.7 pointer (preserved, superseded by149):
+
 Active bounded work: [A02.7](completion/148-owned-process-diagnostic.md), scoped
 owned-process identity diagnosis.27 source/3178 full controls pass; at most one
 new blank diagnostic after source/full gates and frozen case. Both A02.6 cases

@@ -1661,52 +1661,19 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "implementation_plan": "../superpowers/plans/2026-10-24-owned-process-diagnostic.md",
-      "execution_record": "148-owned-process-diagnostic.md",
+      "implementation_plan": "../superpowers/plans/2026-10-24-original-launch-witness.md",
+      "execution_record": "149-original-launch-witness.md",
       "active_slice": {
-        "id": "A02.7",
-        "status": "bounded-process-diagnostic-complete-refused-no-app",
-        "record": "148-owned-process-diagnostic.md",
-        "base": "58796e7",
+        "id": "A02.8",
+        "status": "planning-original-launch-witness-feasibility",
+        "record": "149-original-launch-witness.md",
+        "base": "6f696c7",
         "product_changed": false,
-        "native_executed": true,
-        "full_A02": false,
+        "native_executed": false,
+        "native_attempts": 0,
         "maximum_native_runs": 1,
-        "native_attempts": 1,
-        "scope": "Retain actual scoped process facts; at most one blank-browser diagnostic, no app run",
-        "source_focused": 33,
-        "full_source_controls": 3184,
-        "full_source_failures": 0,
-        "full_source_cancelled": 0,
-        "source_inputs_unchanged": {
-          "product": 327,
-          "old": 9,
-          "A02.6_final_source": 8
-        },
-        "case": "../testing/owned-process-diagnostic-case.json",
-        "native_output": ".artifacts/a02/owned-process-diagnostic-native/2026-10-24T17-23-00Z",
-        "frozen_inputs": 370,
-        "source_revision": "f0917b6360ea5c20f077fb73e691fc983a50e99a",
-        "native_status": "DIAGNOSTIC_REFUSED_NO_APP",
-        "native_result_sha256": "4a1d447fad7b347049370a42806bd6ea00d470763c4cebbefda6fa027e6f02d7",
-        "reported_pid_equals_direct_child": true,
-        "exact_pinned_chrome": true,
-        "actual_profile_or_headed_mode": "Unknown/Unsupported",
-        "independent_saved_inputs": 370,
-        "independent_negative_controls": 12,
-        "next_dependency": "A02.8 bounded original launch-argument witness feasibility; no old case rerun or assumption that proc title preserves argv",
-        "review": {
-          "count": 1,
-          "critical": 0,
-          "important": 2,
-          "important_fixed": 2,
-          "minor": 1,
-          "correction_passes": 1,
-          "rereview": false,
-          "report": ".artifacts/a02/owned-process-diagnostic-review/2026-10-24/report.md",
-          "deferred_minor": "M1 current docs/status paragraph stale; reconcile on next active-work handoff"
-        },
-        "final_checkpoint": ".artifacts/a02/owned-process-diagnostic-review/2026-10-24/final-checkpoint.json"
+        "full_A02": false,
+        "source_implementation_started": false
       },
       "completed_slices": [
         {
@@ -2035,6 +2002,51 @@
             "deferred_minor": "M1 stale current_checkpoint pointer; active_slice/record select A02.7 and forbid third A02.6 attempt"
           },
           "final_checkpoint": ".artifacts/a02/array-callsite-review/2026-10-24/final-checkpoint.json"
+        },
+        {
+          "id": "A02.7",
+          "status": "bounded-process-diagnostic-complete-refused-no-app",
+          "record": "148-owned-process-diagnostic.md",
+          "base": "58796e7",
+          "product_changed": false,
+          "native_executed": true,
+          "full_A02": false,
+          "maximum_native_runs": 1,
+          "native_attempts": 1,
+          "scope": "Retain actual scoped process facts; at most one blank-browser diagnostic, no app run",
+          "source_focused": 33,
+          "full_source_controls": 3184,
+          "full_source_failures": 0,
+          "full_source_cancelled": 0,
+          "source_inputs_unchanged": {
+            "product": 327,
+            "old": 9,
+            "A02.6_final_source": 8
+          },
+          "case": "../testing/owned-process-diagnostic-case.json",
+          "native_output": ".artifacts/a02/owned-process-diagnostic-native/2026-10-24T17-23-00Z",
+          "frozen_inputs": 370,
+          "source_revision": "f0917b6360ea5c20f077fb73e691fc983a50e99a",
+          "native_status": "DIAGNOSTIC_REFUSED_NO_APP",
+          "native_result_sha256": "4a1d447fad7b347049370a42806bd6ea00d470763c4cebbefda6fa027e6f02d7",
+          "reported_pid_equals_direct_child": true,
+          "exact_pinned_chrome": true,
+          "actual_profile_or_headed_mode": "Unknown/Unsupported",
+          "independent_saved_inputs": 370,
+          "independent_negative_controls": 12,
+          "next_dependency": "A02.8 bounded original launch-argument witness feasibility; no old case rerun or assumption that proc title preserves argv",
+          "review": {
+            "count": 1,
+            "critical": 0,
+            "important": 2,
+            "important_fixed": 2,
+            "minor": 1,
+            "correction_passes": 1,
+            "rereview": false,
+            "report": ".artifacts/a02/owned-process-diagnostic-review/2026-10-24/report.md",
+            "deferred_minor": "M1 current docs/status paragraph stale; reconcile on next active-work handoff"
+          },
+          "final_checkpoint": ".artifacts/a02/owned-process-diagnostic-review/2026-10-24/final-checkpoint.json"
         }
       ],
       "remaining_acceptance": [
@@ -2046,13 +2058,13 @@
         "general_ownership_infrastructure_prohibited": true,
         "full_lineage_open": true,
         "prior_record": "113-a02-ordinary-reducer-acquisition.md",
-        "bounded_next_experiment": "A02.7 scoped owned-process identity diagnosis, max1 blank case only after source gates",
+        "bounded_next_experiment": "A02.8 public owner-process original argument witness feasibility; max1 new metadata-only case after gates",
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "148-owned-process-diagnostic.md",
-        "status": "planning-owned-process-discrepancy-diagnostic",
-        "next_bounded_step": "TDD scoped process fact retention and pure admission; source/full checks and frozen case before max1 blank diagnostic. Both A02.6 cases exhausted; no app/IDE/extension/certificate change"
+        "record": "149-original-launch-witness.md",
+        "status": "planning-original-launch-witness-feasibility",
+        "next_bounded_step": "TDD public owner ChildProcess invocation snapshot and independent metadata guards, no title-to-argv reconstruction. Source/full/clean/frozen before max1 new metadata-only case. All three earlier cases exhausted; no app/trust/IDE change."
       },
       "stopping_point_history": [
         {
@@ -2070,9 +2082,16 @@
           "prior_record": "113-a02-ordinary-reducer-acquisition.md",
           "bounded_next_experiment": "A02.6 bounded source call-site bridge feasibility with original evaluation/callback semantics, wrapper/Stop limits; no approved full React/native/causal integration",
           "experiment_native_executed": false
+        },
+        {
+          "general_ownership_infrastructure_prohibited": true,
+          "full_lineage_open": true,
+          "prior_record": "113-a02-ordinary-reducer-acquisition.md",
+          "bounded_next_experiment": "A02.7 scoped owned-process identity diagnosis, max1 blank case only after source gates",
+          "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "TDD scoped process fact retention and pure admission; source/full checks and frozen case before max1 blank diagnostic. Both A02.6 cases exhausted; no app/IDE/extension/certificate change",
+      "next_bounded_step": "TDD public owner ChildProcess invocation snapshot and independent metadata guards, no title-to-argv reconstruction. Source/full/clean/frozen before max1 new metadata-only case. All three earlier cases exhausted; no app/trust/IDE change.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -2106,6 +2125,11 @@
           "record": "147-a02-array-callsite-bridge.md",
           "status": "actual-native-prerequisite-failure-before-app-phases",
           "next_bounded_step": "One tested process identity collector correction; preserve exhausted old case and preregister separate affected process-case, no browser flag/criterion change"
+        },
+        {
+          "record": "148-owned-process-diagnostic.md",
+          "status": "planning-owned-process-discrepancy-diagnostic",
+          "next_bounded_step": "TDD scoped process fact retention and pure admission; source/full checks and frozen case before max1 blank diagnostic. Both A02.6 cases exhausted; no app/IDE/extension/certificate change"
         }
       ]
     },
