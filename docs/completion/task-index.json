@@ -6332,7 +6332,16 @@
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-guide-source-connection.md",
       "implementation_plan": null,
       "last_implementation_plan": "../superpowers/plans/2026-10-24-v03-control-revision-diagnosis.md",
-      "analysis_protocol": ".artifacts/v03/input-snapshot-ordering/2026-10-24/registration.json"
+      "analysis_protocol": ".artifacts/v03/input-snapshot-ordering/2026-10-24/registration.json",
+      "current_bounded_diagnostic": {
+        "id": "V03.19",
+        "status": "in-progress-technique-source-controls",
+        "record": "142-v03-inspector-input-order.md",
+        "base": "843a6481cee4f71cfcbcd4e4067d7d0de6dac928",
+        "product_changed": false,
+        "native_started": false,
+        "full_V03_acceptance": false
+      }
     },
     {
       "id": "V04",
@@ -6488,10 +6497,10 @@
     ]
   },
   "reconciliation": {
-    "document": "141-a02-react19-product-acquisition.md",
+    "document": "142-v03-inspector-input-order.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.4-complete-bounded-native76-one-review",
+    "current_increment": "V03.19-inspector-order-technique-in-progress",
     "next_item": "V03.19 collect actual inspector receive/edit/ack order and visible row error in one bounded diagnostic; no guard relaxation, rebase or original guide PASS assumption",
     "new_full_task_acceptances": [
       "F01",
@@ -6517,9 +6526,9 @@
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
-      "id": "A02",
-      "record": "141-a02-react19-product-acquisition.md",
-      "status": "bounded-A02.4-complete-full-A02-open"
+      "id": "V03",
+      "record": "142-v03-inspector-input-order.md",
+      "status": "in-progress-test-only-observation-technique"
     },
     "completed_increments": [
       {
@@ -9214,9 +9223,9 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.4 bounded complete after ONE review0Critical0Important1reportingMinor reconciled. Exact76/plugin7 product path; ten original criteria via strict retained75 semantics/same76 visual candidates/fresh actual v1 download-reader and publicdevstop. Current6of6 native/3232inputs17links/20-negative composed verifier/allcleanup. Full source2915 before last3 controls, finalfocused80/types2/admission9; reviewerfresh60. Old three partials unchanged; selected-property origin/field ownership/state-to-prop/public hook kind Unknown/fullPathfalse. No general React19/VSIX/Store/IDEtrust/human/wholeA02 acceptance.20of29 unchanged.",
+    "current_activity_note": "A02.4 bounded closed843a648 after ONE review; full20of29 unchanged. V03.19 begins source-only test of exact-script inspector false conditional breakpoint collection for receive/edit/settle and actual row error. No new native result/product change/guard waiver; old guide17 FAIL and18 source controls retained. Native case only after technique control and separately frozen protocol.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "4d56b056ef40d7ac013663810d0ead60d2806fce",
+    "current_source_revision": "843a6481cee4f71cfcbcd4e4067d7d0de6dac928",
     "current_record_date": "2026-10-24",
     "next_bounded_step": "V03.19 collect actual inspector receive/edit/ack order and visible row error in one bounded diagnostic; no guard relaxation, rebase or original guide PASS assumption"
   },

@@ -2357,3 +2357,11 @@ bounded item; producer/ownership/state-to-prop/public-hook remain Unknown. Whole
 A02/V03/V02/L02/C09 and20-of29 unchanged. Next V03.19 bounded actual inspector
 receive/edit/ack order and visible row-refusal collection; first prove the owned
 inspector-only observation technique, preserve old native FAILs and all guards.
+
+### 2026-10-24 — V03.19 inspector-order technique
+
+[New bounded diagnostic](completion/142-v03-inspector-input-order.md) starts at
+843a648. First source-control exact-script false conditional breakpoint collection
+inside the owned inspector; later one registered native question only if that
+technique passes. No new native result/product change. Old guide/native17 FAIL,
+18 source-only findings, guards and20-of29 remain unchanged.
