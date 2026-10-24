@@ -1,7 +1,6 @@
 # V03.21 — current owned-editor reply delivery (in progress)
 
-Current: beginning source TDD; **no product correction or new candidate/native
-acceptance yet**. Baseline570b796. Source20 confirms a superseded reply can be
+Current: **source/full2989/packed77 qualification ready; one frozen affected native case and final review remain pending**. Baseline570b796. Source20 confirms a superseded reply can be
 discarded before updating a clean active editor, unlike a latest reply. Native19
 records the conflict path but its RPC schedule is unproven. Original guide17 FAIL
 and20/29 unchanged. [Design](../superpowers/specs/2026-10-24-v03-owned-editor-reply-design.md),
@@ -51,3 +50,44 @@ version and behavior-only changelog advanced; shared UI2, CSS/template/tokens,
 plugin and helper unchanged. Full `npm test` on this code: **2989PASS/0FAIL/
 0cancelled/0SKIP**,99.29s. This is fresh source evidence, not package/native proof.
 Commit metadata before local packing so sourceRevision/sourceDirty are unambiguous.
+
+## Exact77 package and finite affected protocol
+
+Atom77 built from clean **9d1052ebf0fd278e1125fcccca7c1636839339a2** at
+`.artifacts/atom/2026-10-24T12-38-57-201Z/atom-handoff.json`;
+SHA256 **60960dbc7ad7ad1eabe11a4a2565e0897028af0901e6629e44e1eb7bbf16311a**.
+All327 build inputs bind current product bytes. UI2 remains
+**2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5**.
+Packed NodeNext/browser consumers2PASS, admission9PASS at
+`.artifacts/atom/compatibility/2026-10-24T12-39-49-718Z`. No helper/plugin rebuild.
+
+The emitted77 controller uses the same six callable bindings as76, inspected from
+its own bundle. A new explicit packed77 test-observer layout additionally projects
+the actual prepared plan's id/investigation/mode/resource id/value/revision and new
+scalar. It does not copy full target/unknown fields or evaluate app data. Existing
+layouts retain their earlier projection; historical raw results are untouched.
+Projection tests15PASS4RED→19GREEN plus an actual serialized77-condition VM test;
+qualification guard17missing-driver RED plus existing-site control1PASS→22GREEN.
+Final relevant focused controls **179PASS**. Full product source2989 predates these
+new test-only controls; it is not relabelled a larger full run.
+
+One new case `docs/testing/owned-editor-reply-case77.json` freezes exact77/UI2,
+original65/app dependencies, actualNode/Vite identity, source327/hosts/archives,
+retained hashes and final trace/cleanup. Preflight **523inputs PASS**, no resources.
+Own output `.artifacts/v03/owned-editor-reply/2026-10-24T12-55-30-969Z`.
+This Basic input qualification runs no helper; old19's source-helper inventory stays
+in its old case, not presented as new installed-helper evidence.
+
+Concrete executor protocol: two native Live inputs10/20, no Enter/blur. First
+actual acknowledgement then1200ms window; second waits at most20s for the observable
+actual backend+local acknowledgement or a terminal visible row refusal, then1200ms
+window. This is harness readiness/collection, not a new debounce or latency target.
+The collector is stopped and its complete trace validated **before** final cached
+outcome capture/classification; statuses are retained as STOPPED, not relabelled.
+Both actual prepared plans and receipts must join, model must have consumed the
+newer revision before second edit and actual app/backend must reach20 with a clean
+local field. Refusal/unknown/invalid collection is INCOMPLETE, never a substituted
+product pass. No original guide/Undo/Draft/baseline/mutation campaign rerun.
+
+Commit source/case before max1 actual run, then independent verifier and ONE final
+whole-item review. No new native or delivered-correction claim yet.

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Test-only. Execute only on the owned inspector, never on an application target.
 import assert from'node:assert/strict';import{createHash}from'node:crypto';
-export function inputOrderProbe({action='read',phase,draft,incoming=null,planId=null,raw=null}={}){
+export function inputOrderProbe({action='read',phase,draft,incoming=null,planId=null,raw=null,plan=null}={}){
  const key='__stateatom_v0319_inspector_input_order_v1',existing=Object.getOwnPropertyDescriptor(globalThis,key);
  if(action==='start'){
   if(existing)throw Error('ORDER_PROBE_ALREADY_ACTIVE');
@@ -17,20 +17,22 @@ export function inputOrderProbe({action='read',phase,draft,incoming=null,planId=
     if(!phases.has(data.phase))throw Error('INVALID_PHASE');const row=one(data.draft?.entries),r=resource(row.resource);
     const projected={id:bounded(row.id,160),raw:typeof row.raw==='string'?bounded(row.raw,128):scalar(row.raw),value:r.value,resourceRevision:r.revision,draftResourceRevision:bounded(row.draftResource?.revision,2048),draftResourceValue:row.draftResource?scalar(row.draftResource.value):null,dirty:!!row.dirty,valid:!!row.valid,conflict:!!row.conflict,error:bounded(row.error,128)};
     let next=null;if(data.incoming!==null&&data.incoming!==undefined){const value=data.incoming,ir=resource(one(value.resources).resource);if(!Number.isSafeInteger(value.revision)||!Array.isArray(value.history))throw Error('INVALID_INCOMING');next={investigationId:bounded(value.investigationId,160),revision:value.revision,historyLength:value.history.length,row:ir};}
-    records.push({index:records.length+1,phase:data.phase,row:projected,incoming:next,planId:bounded(data.planId,160),raw:data.raw===null||data.raw===undefined?null:bounded(data.raw,128)});
+    let projectedPlan;
+    if(data.plan!==null&&data.plan!==undefined){const p=data.plan;if(!Array.isArray(p.changes)||p.changes.length!==1||p.id!==data.planId||typeof p.investigationId!=='string'||!p.investigationId||!['live','draft'].includes(p.mode))throw Error('INVALID_PLAN');const pr=resource(p.changes[0].resource);if(pr.id!==projected.id)throw Error('FOREIGN_PLAN_RESOURCE');projectedPlan={id:bounded(p.id,160),investigationId:bounded(p.investigationId,160),mode:p.mode,change:{resource:pr,value:scalar(p.changes[0].value)}};}
+    records.push({index:records.length+1,phase:data.phase,row:projected,incoming:next,planId:bounded(data.planId,160),raw:data.raw===null||data.raw===undefined?null:bounded(data.raw,128),...(projectedPlan?{plan:projectedPlan}:{})});
    }catch{if(!errors.includes('PROJECTION_INVALID'))errors.push('PROJECTION_INVALID');}return false;
   },invalidate(){if(!errors.includes('OBSERVER_FAILED'))errors.push('OBSERVER_FAILED');return false;},read(){return{schema:1,status:overflow||errors.length?'INVALID':stopped?'STOPPED':'ACTIVE',seen,overflow,records:structuredClone(records),errors:[...errors],applicationTarget:false};},stop(){stopped=true;if(Object.getOwnPropertyDescriptor(globalThis,key)?.value===api)delete globalThis[key];return api.read();}};
   Object.defineProperty(globalThis,key,{value:api,configurable:true,enumerable:false,writable:false});return api.read();
  }
  const api=existing?.value;if(!api||api.owner!=='stateatom-v0319')throw Error('ORDER_PROBE_NOT_ACTIVE');
- if(action==='record')return api.record({phase,draft,incoming,planId,raw});if(action==='error')return api.invalidate();if(action==='stop')return api.stop();if(action==='read')return api.read();throw Error('INVALID_ORDER_ACTION');
+ if(action==='record')return api.record({phase,draft,incoming,planId,raw,plan});if(action==='error')return api.invalidate();if(action==='stop')return api.stop();if(action==='read')return api.read();throw Error('INVALID_ORDER_ACTION');
 }
 const hash=s=>createHash('sha256').update(s).digest('hex');
 export function inputOrderSites(source,layout){
- assert.equal(typeof source,'string');assert(['source','packed76'].includes(layout),'Unsupported order source layout');
+ assert.equal(typeof source,'string');assert(['source','packed76','packed77'].includes(layout),'Unsupported order source layout');
  const startNeedle='function createInputController(',start=source.indexOf(startNeedle);assert(start>=0&&source.indexOf(startNeedle,start+1)===-1,'Ambiguous controller source');
- const end=layout==='packed76'?source.indexOf('function createInputUI(',start):source.length;assert(end>start,'Missing controller boundary');const region=source.slice(start,end),packed=layout==='packed76',value=packed?'value6':'value',id=packed?'id2':'id';
- const pairs=[['receive','model.receive('+value+');',packed?'\n    if (value6.closed)':'if(value.closed)',{incoming:value}],['edit','model.edit('+id+', raw);'.replace(', ',packed?', ':','),packed?'\n    failure3 = null;':'failure=null;', {raw:'raw'}],['settle','model.settle(prepared.ticket,'+(packed?' ':'')+value+');',packed?'\n        if (!last || value6.revision >= last.revision)':'if(!last||value.revision>=last.revision)',{incoming:value,planId:'prepared.plan.id'}]];
+ const end=layout!=='source'?source.indexOf('function createInputUI(',start):source.length;assert(end>start,'Missing controller boundary');const region=source.slice(start,end),packed=layout!=='source',value=packed?'value6':'value',id=packed?'id2':'id';
+ const pairs=[['receive','model.receive('+value+');',packed?'\n    if (value6.closed)':'if(value.closed)',{incoming:value}],['edit','model.edit('+id+', raw);'.replace(', ',packed?', ':','),packed?'\n    failure3 = null;':'failure=null;', {raw:'raw'}],['settle','model.settle(prepared.ticket,'+(packed?' ':'')+value+');',packed?'\n        if (!last || value6.revision >= last.revision)':'if(!last||value.revision>=last.revision)',{incoming:value,planId:'prepared.plan.id',...(layout==='packed77'?{plan:'prepared.plan'}:{})}]];
  function position(offset){const before=source.slice(0,offset),lineNumber=before.split('\n').length-1,columnNumber=offset-(before.lastIndexOf('\n')+1);return{lineNumber,columnNumber};}
  const sites=[];
  for(const[name,call,after,extra]of pairs){const needle=call+after,at=region.indexOf(needle);assert(at>=0&&region.indexOf(needle,at+1)===-1,'Missing or duplicate '+name+' anchor');
