@@ -1,5 +1,13 @@
 # Project status
 
+Current work, 2026-10-24: [A02.5](completion/146-a02-array-transfer-technique.md)
+adds a source-only callback identity technique.22 focused/3038 full source tests
+pass;327 product/seven old experiment/app inputs unchanged. Causal storage transfer,
+ownership/current membership/React binding/selected producer stay Unknown. ONE
+final review pending; no new product, native run or whole-task credit. Original
+V03 Undo is still ineligible after external revisions, so its old failed guide was
+not blindly relaunched.20/29 whole tasks (~69%) unchanged.
+
 Current bounded checkpoint, 2026-10-24: [V03.21](completion/144-v03-owned-editor-reply.md)
 completes repeated Live input correction on exact Atom77: actual10→20, two applied
 receipts,24 stopped records/523 stable inputs. ONE review0Critical/0Important/1

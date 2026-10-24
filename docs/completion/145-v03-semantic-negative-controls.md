@@ -58,3 +58,16 @@ and finite. The10→20 correction justifies an affected continuation; old guide 
 Undo/Draft/baseline, global inspection-ready/latency and all original assertions
 remain unaccepted until actually checked. No automatic guard relaxation or broad
 campaign is authorized by this record. Whole20/29 remains unchanged.
+
+### Subsequent dependency preflight: do not launch the old failed restoration
+
+Before starting proposed V03.23, focused source/data reads show its prerequisite
+is still unmet. In actual77 afterFirst and afterSecond, minPrice externalRevision
+is true; final current revision ends4:20:3:2 while its applied receipt ends4:17:3:2.
+Unchanged `core/control-ledger.mjs` rejects restoration when the observed epoch or
+owned resource differs. The new UI receiver does not change that check. This is
+a source-based eligibility conclusion, **not a newly executed native Undo**.
+No new experiment or native guide run is needed to rediscover this known boundary.
+Original restoration criterion/FAIL remain. Next dependency-ready bounded work is
+A02.5 array callback identity-transfer technique, retaining ownership/producer
+Unknown and A02's prohibition on general ownership infrastructure.
