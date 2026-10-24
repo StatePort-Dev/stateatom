@@ -1666,7 +1666,7 @@
       "active_slice": {
         "id": "A02.4",
         "title": "Bounded ordinary React19 product acquisition integration",
-        "status": "in-progress-corrected-attach-protocol-source-tested-native-pending",
+        "status": "in-progress-native6-font-failure-remaining-ui-report-stop-pending",
         "record": "141-a02-react19-product-acquisition.md",
         "design": "../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md",
         "plan": "../superpowers/plans/2026-10-24-a02-react19-product-acquisition.md",
@@ -1699,22 +1699,59 @@
         "current_candidate": "0.1.0-candidate.20261021.75",
         "plugin_candidate": "0.1.0-candidate.20261021.7",
         "native_status": "INCOMPLETE_PRODUCT_QUALIFICATION_NOT_A02",
-        "native_checks_passed": 1,
+        "native_checks_passed": 6,
         "native_checks_required": 10,
-        "native_app_inputs": 0,
-        "native_observation_count": 0,
-        "native_inputs_unchanged": 3216,
-        "native_failure_verifier_negative_controls": 12,
-        "native_result": ".artifacts/a02/react19-product/2026-10-24T07-40-59-380Z/results.json",
-        "native_result_sha256": "9f955338bbad571145b2ed882947b9835c1b93dab42c9bf6dd3b6a9aba1bf4d6",
-        "native_denial_reason_captured": false,
+        "native_app_inputs": "two ordinary adds and two ordinary edits; stopped case not executed",
+        "native_observation_count": 5,
+        "native_inputs_unchanged": 3217,
+        "native_failure_verifier_negative_controls": 16,
+        "native_result": ".artifacts/a02/react19-product-cache/2026-10-24T08-20-31-062Z/results.json",
+        "native_result_sha256": "2f700269712695cf5e418cbc6901fc9e92285c1dc78bf5e6af570c4ab46574d2",
+        "native_denial_reason_captured": true,
         "source_cache_admission_control": "no cache denies / cache admits; unchanged policy source only",
         "native_handles_live": false,
         "task3b_source_controls": 77,
-        "corrected_native_started": false,
+        "corrected_native_started": true,
         "corrected_native_preflight_inputs": 3217,
         "corrected_native_case": "../testing/react19-product-cache-case.json",
-        "product_permission_policy_changed": false
+        "product_permission_policy_changed": false,
+        "native_attempts": [
+          {
+            "case": "A02.4-product-native-ancestors",
+            "source": "63c1c5b",
+            "result": ".artifacts/a02/react19-product/2026-10-24T07-40-59-380Z/results.json",
+            "sha256": "9f955338bbad571145b2ed882947b9835c1b93dab42c9bf6dd3b6a9aba1bf4d6",
+            "status": "INCOMPLETE_PRODUCT_QUALIFICATION_NOT_A02",
+            "passed": 1,
+            "required": 10,
+            "app_inputs": 0,
+            "native_denial_reason_captured": false,
+            "inputs_unchanged": 3216,
+            "verifier_negatives": 12,
+            "all_resources_closed": true
+          },
+          {
+            "case": "A02.4-product-native-ancestors-cache-admission",
+            "source": "dc835d35256b18931aed0b8e33aa0fe516581aac",
+            "result": ".artifacts/a02/react19-product-cache/2026-10-24T08-20-31-062Z/results.json",
+            "sha256": "2f700269712695cf5e418cbc6901fc9e92285c1dc78bf5e6af570c4ab46574d2",
+            "status": "INCOMPLETE_PRODUCT_QUALIFICATION_NOT_A02",
+            "passed": 6,
+            "required": 10,
+            "semantic_scenarios": 4,
+            "selected_snapshots": 5,
+            "actual_cache_admission_before_after": true,
+            "failure": "actual new paragraph font11px != required13px",
+            "UI_candidates_executed": false,
+            "saved_report_executed": false,
+            "observer_stop_executed": false,
+            "inputs_unchanged": 3217,
+            "verifier_negatives": 16,
+            "all_resources_closed": true
+          }
+        ],
+        "native_semantic_scenarios": 4,
+        "actual_cache_admission_control": true
       },
       "completed_slices": [
         {
@@ -1817,8 +1854,8 @@
       },
       "current_checkpoint": {
         "record": "141-a02-react19-product-acquisition.md",
-        "status": "in-progress-corrected-attach-protocol-source-tested-native-pending",
-        "next_bounded_step": "A02.4 Task3b run separately frozen corrected Attach/cache case once after commit; preserve original1of10/zero-app-input failure, all ten criteria and one final review"
+        "status": "in-progress-native6-font-failure-remaining-ui-report-stop-pending",
+        "next_bounded_step": "A02.4 Task3c scoped13px token-based font correction, rendered check and remaining UI/report/stop qualification; credit unchanged mechanism evidence explicitly, preserve both partial FAILs"
       },
       "stopping_point_history": [
         {
@@ -6387,8 +6424,8 @@
     "document": "141-a02-react19-product-acquisition.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.4-corrected-attach-protocol-source-tested-native-pending",
-    "next_item": "A02.4 Task3b run separately frozen corrected Attach/cache case once after commit; preserve original1of10/zero-app-input failure, all ten criteria and one final review",
+    "current_increment": "A02.4-native6-font-failure-remaining-ui-report-stop-pending",
+    "next_item": "A02.4 Task3c scoped13px token-based font correction, rendered check and remaining UI/report/stop qualification; credit unchanged mechanism evidence explicitly, preserve both partial FAILs",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6415,7 +6452,7 @@
     "active_item": {
       "id": "A02",
       "record": "141-a02-react19-product-acquisition.md",
-      "status": "in-progress-corrected-attach-protocol-source-tested-native-pending"
+      "status": "in-progress-native6-font-failure-remaining-ui-report-stop-pending"
     },
     "completed_increments": [
       {
@@ -9110,11 +9147,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.4 final75 product source2912PASS/presentation74/CLI2/types2/admission9. Original63c1c5b native INCOMPLETE Attach1of10/0app inputs/observations,3216stable/allcleanup/verifier12negativecontrols; remains literal. Task3b actual mounted Attach/cache source control plus capability/CLI77PASS, separately frozen corrected setup with real before/after admission capture and all10criteria unchanged. Preflight3217inputs/17links, no corrected browser run yet. Product policy/source/archives unchanged; two historical harness/preparer input deltas pinned to original Git blobs. Next commit then one corrected case; one final reviewer still pending/20of29 unchanged.",
+    "current_activity_note": "A02.4 final75 product source2912PASS/types2/admission9 retained. Corrected native dc835d3:6of10 gates, actual cache denial then Settings grant admits Attach; four native equal/unmarked/same-value/changed-other scenarios and5selected snapshots pass, property origin/ownership/public hook/lineage Unknown. Literal INCOMPLETE at computed paragraph font11px!=13px. Normal/hover/keyboard/narrow/report/stop not executed.3217inputs17links stable/allcleanup/16negative verifier PASS preservation only. Original1of10 Attach FAIL unchanged. Next Task3c scoped body-token font correction plus remaining gates, explicit unchanged-code credit; no final reviewer/whole-item acceptance;20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "0e4add7",
+    "current_source_revision": "dc835d35256b18931aed0b8e33aa0fe516581aac",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "A02.4 Task3b run separately frozen corrected Attach/cache case once after commit; preserve original1of10/zero-app-input failure, all ten criteria and one final review"
+    "next_bounded_step": "A02.4 Task3c scoped13px token-based font correction, rendered check and remaining UI/report/stop qualification; credit unchanged mechanism evidence explicitly, preserve both partial FAILs"
   },
   "next_task": "A02"
 }

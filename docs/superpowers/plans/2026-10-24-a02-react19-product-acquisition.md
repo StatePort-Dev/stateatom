@@ -94,3 +94,22 @@ case, no blind retry or production/guard bypass. A source/harness delta and new
 registration are required before any new native attempt. This is a justified
 protocol correction under the user's autonomous scope, not permission to expand
 feature scope. Whole Task3/A02.4 and the one final review remain pending.
+
+### Task3b actual partial result and Task3c boundary
+
+Corrected max1 case on dc835d3 ends literal INCOMPLETE6of10: actual no-cache
+CAPABILITY_DENIED -> one public Settings cache grant -> admission; four native
+ancestor scenarios/five exact snapshots passed. New paragraph computed11px despite
+removing its hint class; parent .sp-atom-boundaries supplies11px. No remaining UI
+candidate/report/stop gates executed. All3217inputs/17links stable, allcleanup/PIDs
+absent, independent partial verifier16negatives PASS preservation only; clean
+pre-font-change checkpoint saved. No criterion or old result is rewritten.
+
+Task3c is bounded to the paragraph's existing body font token and remaining
+rendered/report/stop checks, with a new immutable candidate. Compare the actual
+unchanged mechanism/source inputs before crediting prior75 scenarios; do not label
+them newly executed on another candidate and never reuse old occurrence IDs.
+Choose/freeze a finite remaining protocol after that source comparison. All ten
+original item criteria remain mandatory as explicitly scoped evidence; do not
+repeat already established mechanism questions without an affected reason. One
+final whole-item review remains after completion, not at this partial checkpoint.

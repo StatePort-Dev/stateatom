@@ -1,6 +1,6 @@
 # A02.4 — product React19 acquisition (in progress)
 
-Current: **Tasks1–2 complete; Task3 source/packages tested. First native attempt stopped at Attach before feature gates. Qualification and final review remain pending.**
+Current: **Task3 corrected setup reached four native ancestor scenarios. Six of ten gates passed; the actual 11px/13px font mismatch remains FAIL. UI/report/stop qualification and final review are pending.**
 Scope-review-1; main0328993 baseline. No installed React19 support, full A02,
 V03 or new whole-task acceptance is established by this prerequisite. Still20/29.
 [Design](../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md),
@@ -218,13 +218,62 @@ in `startup-verification/protocol-source-delta-final.json`. The prior strict
 3216-input clean checkpoint, literal failed result and original case are intact.
 This is historical source preservation, not a fresh run of original code.
 
+## Corrected actual native attempt — six gates, font FAIL
+
+Code **dc835d35256b18931aed0b8e33aa0fe516581aac**, corrected case
+`A02.4-product-native-ancestors-cache-admission`, one actual attempt, tool52897
+terminal exit1. Literal result **INCOMPLETE_PRODUCT_QUALIFICATION_NOT_A02**:
+`.artifacts/a02/react19-product-cache/2026-10-24T08-20-31-062Z/results.json`,
+SHA256 **2f700269712695cf5e418cbc6901fc9e92285c1dc78bf5e6af570c4ab46574d2**.
+
+**6of10 gates passed**. In this fresh owned profile, the actual policy/button first
+reported CAPABILITY_DENIED / "cache capability required", disabled with cache
+unchecked. After checking only that action in normal Settings, actual admission
+became available and the button enabled. Attach and the existing HTTP source helper
+connection then succeeded. This fresh controlled native comparison is separate
+from the first run's uncaptured denial reason; the first FAIL remains unchanged.
+
+Four actual native scenarios passed with five exact selected snapshots:
+
+- Equal titles select different actual native host IDs with one shared ancestor
+  queue; ancestor co-location does not establish either row's property producer.
+- After the declared compiler-marker deletion, fresh selection of the same second
+  host retains native ancestry while source target/property producer stay Unknown.
+- Real same-value edit creates a different applied result/revision/update; its
+  opaque native input ID equals the preceding result ID.
+- Changing first title while second stays equal retains the second host and common
+  queue, with the next native applied input/result identity. No row-field origin,
+  public hook kind, state-to-prop transfer or full lineage is inferred.
+
+The next gate failed immediately on actual computed typography:
+**11px != required13px** for the new paragraph. Removing its hint class in75 was
+insufficient: the existing parent `.sp-atom-boundaries` sets11px. The source
+selector/measurement identifies a bounded presentation defect; it does not justify
+changing the required size or claiming visual fidelity. `failure-candidate.png`
+is actual and was viewed. The intended normal/hover/keyboard/narrow candidate set,
+saved/downloaded v1 report/reader, and observer Stop/post-stop input were **not
+executed**. No report file, State Card or passed screenshot was fabricated.
+
+All**3217inputs/17links** matched after cleanup. Chrome1152274/Vite1152206 absent;
+helper, browser, Vite, Xephyr and UI/log handles closed. No certificates/IDE GUI or
+production changes. Independent saved verification **16negative controls PASS**
+with label `PASS_RETAINED_NATIVE6_FONT_FAIL_NOT_ITEM_ACCEPTANCE`; this preserves the
+partial successes and literal font failure, not a whole-item pass. It and the clean
+pre-font-change checkpoint are in that output's `verification/` directory. Both
+old cases/results/archives and original ten criteria remain intact.
+
 ## Remaining work in this same item
 
-Next bounded step: **run the separately frozen corrected Attach/cache case once
-after committing this source delta; independently verify its literal saved result.**
-The original case's single attempt remains exhausted. No new native attempt has
-started for the corrected case yet. All ten feature/cleanup criteria and the one
-final whole-item review remain required; A02.4 is not delivered on source controls.
+Next bounded step: **A02.4 Task3c — correct this paragraph to the existing13px body
+token, verify its rendered style, then qualify remaining UI/report/stop controls.**
+Issue new immutable Atom bytes under a new identity; keep75 and both failed runs.
+Credit already exercised75 scenarios only after explicit comparison of unchanged
+mechanism code, never as newly executed observations on a later candidate. Any new
+native UI/report/stop witness must belong to its own actual selected node/revision;
+old opaque IDs cannot be copied into it. Freeze the concrete remaining protocol
+before another attempt. All ten item criteria remain required across explicit
+scoped evidence; the old partial run never becomes PASS. One final whole-item
+review is still pending; none was dispatched before these gates were reached.
 
 Full A02/V03/V02/L02/C09 remain open;20/29 unchanged. The original V03 input failures,
 Unknowns and deferred native Node-admission Minor remain preserved. The new driver's
