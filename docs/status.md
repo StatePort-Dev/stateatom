@@ -2294,3 +2294,9 @@ owner-state/admission-key corrections now pass source2799/focused178/controlledr
 New immutable73/UI2 types2/admission9 PASS,422inputsfollowup preservesoriginalprotocol/
 criteria/65originalfiles; corrected native and ONE review due. No timing/permission
 waiver, original72FAIL/20of29/fullV03 retained.
+
+Actual73 V03.16 preservesLivefocus and showsprice10/onecard, thenUndo honestly
+refuses a changed native revision. Originalroute remainsFAIL/8phasesunexecuted,
+422stableinputs/console0/allcleanup. Separate428inputdiagnostic will observe
+remainingDraft/Apply/Close with threeexplicitrestorationrefusals, expectedPARTIAL/
+exit1; originalrestore0/history7criteria notwaived. No newproductbuild/guardchange.

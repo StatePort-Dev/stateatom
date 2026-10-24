@@ -1,7 +1,8 @@
 # V03.16 — independent app input guide case
 
 2026-10-24/maina397a59/scope-review-1. In progress: original72native focus FAIL
-retained; corrected73 affected native run and ONE review due.
+retained; corrected73 native focus passes but Undo refuses a newer revision.
+Remaining-operation diagnostic and ONE review are due; originalroute remainsFAIL.
 [Design](../superpowers/specs/2026-10-24-v03-independent-input-guide-design.md),
 [plan](../superpowers/plans/2026-10-24-v03-independent-input-guide.md),
 [fixed case](../testing/independent-input-guide-case.json).
@@ -107,3 +108,33 @@ exactarchives/install/hosts/Chrome/Node/source delta/priorfailure/qualification;
 originaltenphases/7tx/1100Draft/focus/unknown/console/permissions/products remainexact.
 Source/case73 committedBEFOREnewaffectedrun. Native73 and ONEfinalwhole-itemreview
 remain due; newrun reason is testedproductchange, never observationtimeout restart.
+
+## Actual73 fixes focus; original Undo criterion still fails
+
+Newaffected15810 terminal1 at21f4496/clean:
+`.artifacts/v03/independent-input-guide/2026-10-24T05-45-51-666Z/results.json`.
+NativeLive10focus nowtrue afterack, appfield10/cards[1], sameexactsource/protocol.
+UndoUI then explicitly says “A newer external value cannot be overwritten by undo.”
+No newtransaction/write, value10/card1 remains; exactnativeid/value/locator unchanged,
+revision mutationcount7→10 and externalRevisiontrue. Exactattributes/sourceofmutations
+notcollected/Unknown; do not infer Reactcausality or weakenattribute/ABA guards.
+Originalsuccessful-restoration/ten-phase question remainsFAIL,8phasesunexecuted.
+422inputs/327product/223helper/65originals stable, console0 andallcleanup pass,
+independent73-undo-refusal-checkpoint retained/ownPIDsabsent/no kill.
+
+This is a safety refusal, not permission to force input0 or relabelrestoration as
+success. [Diagnostic continuation](../superpowers/specs/2026-10-24-v03-input-refusal-continuation-design.md)
+registers only missing lateroperations with explicitrefusals. Newdriver/case retains
+BOTH originalphaseexpectations and separatediagnosticactualexpectations. Expected
+PARTIAL/exit1,originalProtocolFullyMetfalse/originalCriteriaWaivedfalse. Tenactions
+canthenbe observed withoutreset/reload/privateappsetter: Live10;UndoRefused10;
+Draft20localatactual10 untilApply20;UndoRefused20;Live10then20;BaselineRefused20;
+Close leaves20/no cards and retireswriter. Fouractualwrites/threerefusals, original
+history7/restore0 criteria remainunmet; never use newhistory4 as an accepteddenominator.
+
+[Diagnostic case73](../testing/independent-input-refusal-case73.json) freezes428inputs,
+sameimmutable73/UI2/product327/helper223/source65/permissions/timing/products/protocol.
+No additionalproductchange/build or oldcampaign. Actualrefusalguard REDmissingdriver8FAIL
+→GREEN8/freshfocused91PASS/0FAIL0SKIP plus original source2799full/178focused unchanged.
+These are sourceguards, not additionalnativeacceptance. Diagnosticnative and ONE
+whole-itemreview due; remainingoriginalcorrectness/usefulness gaps stayopen.
