@@ -13,7 +13,7 @@ import {sha256,fileManifest,verifyArtifactHashes,inspectInstalledPair} from '../
 import {sourceAccessDesktop} from '../helpers/source-access-native-desktop.mjs';
 import {nativeInspectorUI} from '../helpers/native-inspector-ui.mjs';
 import {admitInspectorOrderNode,cleanupInspectorOrder as cleanupRestoreAvailability} from './inspector-input-order-native.mjs';
-import {guardRestoreAvailability as guardPassiveRestoreAvailability,finalizeRestoreAvailability as finalizePassiveRestoreAvailability,restoreAvailabilityPass as passiveRestoreAvailabilityPass,guardExternalRestoreAvailability,finalizeExternalRestoreAvailability,externalRestoreAvailabilityPass} from '../../experiments/restore-availability-qualification.mjs';
+import {guardRestoreAvailability as guardPassiveRestoreAvailability,finalizeRestoreAvailability as finalizePassiveRestoreAvailability,restoreAvailabilityPass as passiveRestoreAvailabilityPass,guardExternalRestoreAvailability,finalizeExternalRestoreAvailability,externalRestoreAvailabilityPass,guardRestoreExternalEditSnapshot} from '../../experiments/restore-availability-qualification.mjs';
 export {cleanupRestoreAvailability};
 
 const root=process.cwd();
@@ -94,7 +94,7 @@ export async function performRestoreExternalABA(record,ownValue,ops){
  const now=ops.now||Date.now,x={captureStatus:'Partial',ownValue,startedAt:now(),appEdits:[]};record.externalInteractions.push(x);
  try{
   await ops.capture(x,'before');
-  for(const value of [ownValue+1,ownValue]){const e={captureStatus:'Partial',value,method:'CDP.Input.insertText',startedAt:now()};x.appEdits.push(e);try{e.dom=await ops.appEdit(value);e.captureStatus='Complete';}finally{e.finishedAt=now();}}
+  for(const value of [ownValue+1,ownValue]){const e={captureStatus:'Partial',value,method:'CDP.Input.insertText',startedAt:now()};x.appEdits.push(e);try{e.dom=await ops.appEdit(value);assert.equal(e.dom.minValue,String(value));assert.equal(e.dom.minFocused,true);await ops.capture(e,'snapshot');guardRestoreExternalEditSnapshot(e.snapshot,x.before,ownValue,value,record.panelURL);e.captureStatus='Complete';}finally{e.finishedAt=now();}}
   const read={captureStatus:'Partial',method:'native-input-ui-button',control:'input-read',directInputReadRPC:false,startedAt:now()};x.read=read;try{await ops.readUI();read.captureStatus='Complete';}finally{read.finishedAt=now();}
   await ops.capture(x,'after');x.captureStatus='Complete';return x;
  }finally{x.finishedAt=now();}
@@ -157,7 +157,7 @@ export async function runRestoreAvailabilityNative(argv=process.argv.slice(2),mo
  async function appEdit(value){
   await panel.evaluate(id=>chrome.tabs.update(id,{active:true}),tabId);await appCommand('Page.bringToFront');
   const point=(await appCommand('Runtime.evaluate',{expression:`(()=>{const e=document.querySelector('#minPrice');if(!e||e.disabled)throw Error('Original native input unavailable');e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2};})()`,returnByValue:true})).result.value;
-  await dispatchRestoreApplicationText(value,point,appCommand);const d=await appDOM();assert.equal(d.minValue,String(value));assert.equal(d.minFocused,true);return d;
+  await dispatchRestoreApplicationText(value,point,appCommand);return appDOM();
  }
  async function editPhase(value,count){await fill(value);if(external){await ownApplied(count,value);await performRestoreExternalABA(r,value,{capture,appEdit,readUI:async()=>{await ui.click('input-read');await settled(count,value);}});}else await settled(count,value);await windowSamples(count===1?'firstWindow':'secondWindow');await capture(r,count===1?'afterFirst':'afterSecond');}
  try{

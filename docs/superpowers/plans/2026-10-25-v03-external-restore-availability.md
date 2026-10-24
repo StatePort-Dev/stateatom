@@ -37,9 +37,9 @@
 **Files:** new docs/testing/external-restore-availability-case78.json; fresh ignored output/completion153/current metadata.
 **Interfaces:** exact new mode consumes same immutable pair and updated source helpers. New native schema/status stays distinct from old case; original guide FAIL/fullV03false.
 
-- [ ] Prepare new exact physical frozen case including old raw/case/source-checkpoint hashes; --preflight ->PASS/no browser. Commit case before ONE native invocation, poll same handle; no retry. Source/template/metadata packet does not establish native readiness.
-- [ ] Independent saved verifier recomputes actual app edits/UI read/history/revisions/flags/closed ownership/fields/windows/console stop/cleanup and hash preservation; isolated negative controls. Inspect actual1100/390 field/actions candidates when produced, otherwise record NOT_EXECUTED/partial view only. Record literal PASS/INCOMPLETE without old guide/whole-task credit. Local result commit/task-done with focused new source command; no fullsuite repeat for unchanged code.
+- [x] Prepare new exact physical frozen case including old raw/case/source-checkpoint hashes; --preflight ->PASS/no browser. Commit case before ONE native invocation, poll same handle; no retry. Source/template/metadata packet does not establish native readiness.
+- [x] Independent saved verifier recomputes actual app edits/UI read/history/revisions/flags/closed ownership/fields/windows/console stop/cleanup and hash preservation; isolated negative controls. Inspect actual1100/390 field/actions candidates when produced, otherwise record NOT_EXECUTED/partial view only. Record literal PASS/INCOMPLETE without old guide/whole-task credit. Local result commit/task-done with focused new source command; no fullsuite repeat for unchanged code.
 
 ## Final closeout
 
-- [ ] ONE fresh whole-item review, effect regrade, at most one tested I/C fix pass/no rereview/native repeat. Record all rulings/Minors, archive/hash/remove only own workspace, clean local checkpoint/commit and one next dependency.
+- [x] ONE fresh whole-item review, effect regrade, at most one tested I/C fix pass/no rereview/native repeat. Record all rulings/Minors, archive/hash/remove only own workspace, clean local checkpoint/commit and one next dependency.

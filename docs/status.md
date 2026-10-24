@@ -1,13 +1,13 @@
 # Project status
 
-Active bounded work: [V03.25](completion/153-v03-external-restore-availability.md),
-ONE explicit external native case78 exhausted/INCOMPLETE; final review pending.
-Both external ABA/read interactions observed disabled restoration and preserved
-Live10/20 history. Strict guard rejected early second-window products[1] at20;
-last samples/final/Close20 products[]. Four1100/390 candidates agent-inspected.
-Independent verifier563physical/13oldraw/21negatives PASS;9cleanupflags/PIDsAbsent.
-Source137/full3445PASS, old100/current327/78/UI2 preserved; no retry/rebuild/product
-change/fullV03/original-guide or whole20of29 credit.
+Completed bounded attempt: [V03.25](completion/153-v03-external-restore-availability.md).
+ONE explicit external78 native remains INCOMPLETE; four recorded gates and final
+Close20/[] observed, strict early second-window product criterion failed. Per-edit
+scope/history snapshots absent in historical raw, not inferred. ONE review0C/2I fixed
+once/0M; RED37PASS19FAIL ->156focused/full3464PASS. No native repeat/rebuild/product
+change or whole20of29 credit. Next ONE V03.26: separately registered observed app
+convergence before strict window/product gates, with corrected per-edit collection.
+Original successful-restoration guideFAIL/fullV03 open; historical case exhausted.
 
 Completed bounded attempt: [V03.24](completion/152-v03-packed-restore-availability.md).
 Exact78 native result remains INCOMPLETE: first10 applied/current own receipt,

@@ -92,6 +92,18 @@ function guardBehaviorFacts(r){
  return restoreAvailabilityPass;
 }
 export function guardRestoreAvailability(r){assert.equal(r.schema,'stateatom.restore-availability-native/1');guardBehaviorFacts(r);return restoreAvailabilityPass;}
+export function guardRestoreExternalEditSnapshot(p,before,ownValue,appValue,panelURL){
+ assert.equal(p.captureStatus,'Complete');assert.equal(before.captureStatus,'Complete');requiredSnapshotIdentity(p);requiredSnapshotIdentity(before);
+ assert(Number.isFinite(p.startedAt)&&Number.isFinite(p.finishedAt)&&p.finishedAt>=p.startedAt);
+ assert.equal(p.inputs.investigationId,before.inputs.investigationId);for(const k of physical)assert.equal(p.inputs.target[k],before.inputs.target[k]);
+ for(const k of ['document','node','property'])assert.equal(p.selection.domIdentity[k],before.inputs.target[k]);
+ assert.deepEqual(identity(currentResource(p).resource),identity(currentResource(before).resource));assert.deepEqual(p.inputs.history,before.inputs.history);
+ assert.equal(p.inputs.closed,false);assert.equal(p.inputs.cleanup,'active');assert.equal(p.inputs.tainted,false);assert.equal(p.inputs.pending,null);
+ assert.equal(p.dom.minValue,String(appValue));assert.equal(p.dom.minFocused,true);assert.equal(p.dom.ready,'complete');assert.equal(p.dom.errorOverlay,false);assert.equal(p.dom.imagesReady,true);
+ const f=p.field;assert.equal(f.document.url,panelURL);assert.equal(f.document.mainPresent,true);assert.equal(f.document.noOverlay,true);
+ assert.equal(f.rowPresent,true);assert.equal(f.value,String(ownValue));assert.equal(f.disabled,false);assert.equal(f.dirty,false);assert.equal(f.ariaInvalid,'false');assert.equal(f.rowErrorVisible,false);assert.equal(f.rowError,'');
+ return true;
+}
 export function guardExternalRestoreAvailability(r){
  assert.equal(r.schema,'stateatom.external-restore-availability-native/1');assert.equal(r.protocolMode,'external-aba');guardBehaviorFacts(r);
  assert(Array.isArray(r.externalInteractions)&&r.externalInteractions.length===2);
@@ -108,7 +120,7 @@ export function guardExternalRestoreAvailability(r){
   }
   assert(Array.isArray(x.appEdits)&&x.appEdits.length===2);
   for(const[i,value]of[ownValue+1,ownValue].entries()){
-   const e=x.appEdits[i];previous=complete(e,previous);assert.equal(e.value,value);assert.equal(e.method,'CDP.Input.insertText');assert.equal(e.dom.minValue,String(value));assert.equal(e.dom.minFocused,true);assert.equal(e.dom.ready,'complete');assert.equal(e.dom.errorOverlay,false);assert.equal(e.dom.imagesReady,true);assert.deepEqual(e.dom.products,index?[]:[1]);
+   const e=x.appEdits[i];previous=complete(e,previous);assert.equal(e.value,value);assert.equal(e.method,'CDP.Input.insertText');assert.equal(e.dom.minValue,String(value));assert.equal(e.dom.minFocused,true);assert.equal(e.dom.ready,'complete');assert.equal(e.dom.errorOverlay,false);assert.equal(e.dom.imagesReady,true);assert.deepEqual(e.dom.products,index?[]:[1]);guardRestoreExternalEditSnapshot(e.snapshot,x.before,ownValue,value,r.panelURL);assert(e.snapshot.startedAt>=e.startedAt&&e.snapshot.finishedAt<=e.finishedAt);
   }
   previous=complete(x.read,previous);assert.equal(x.read.method,'native-input-ui-button');assert.equal(x.read.control,'input-read');assert.equal(x.read.directInputReadRPC,false);
   previous=complete(x.after,previous);assert(x.finishedAt>=previous&&x.finishedAt<=window.startedAt);

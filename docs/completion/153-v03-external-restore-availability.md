@@ -1,4 +1,4 @@
-# V03.25 — explicit external ABA and native read (native attempt; final review pending)
+# V03.25 — explicit external ABA and native read (bounded attempt complete; native incomplete)
 
 Starts a245ffc: V03.24 closes as a bounded source/native attempt, native INCOMPLETE.
 First10 applied, final cached resource equals own receipt/externalRevisionfalse,
@@ -91,3 +91,48 @@ generic keyboard coverage or user-install proof. Independent human is not a bloc
 
 Next: Task2focused completion command and ONE fresh whole-item review; no new Native.
 Whole20/29 (~69%) unchanged. A02/L02/V02/V03 and integration dependencies remain open.
+
+
+Final ONE read-only whole-item review a245ffc..878a8a7:0Critical/2Important/0Minor;
+report `.artifacts/v03/external-restore-availability-review/2026-10-25/report.md`.
+Both Important findings accepted by effect and fixed in ONE source pass:
+I1 per-app-edit complete bounded snapshots now retain investigation/physical target/
+resource/selected occurrence/history and are checked BEFORE proceeding. Missing,
+foreign, changed-history, closed/pending/tainted, dirty or outside-step snapshots
+refuse. I2 actual appEdit returns acquired DOM before the orchestrator validates
+value/focus, so failed observations survive Partial and no later edit/read runs.
+RED37PASS/19FAIL ->GREEN156PASS (old100 preserved +56new); full npm test3464PASS,
+0FAIL/0cancelled/0SKIP101.23s terminal5781. Reviewer sandbox childspawnEPERM is not a
+source regression; actual executor escalated focused/full runs above passed.
+No re-review or native repeat. No product/build/UI/SDK/otherrepo/trust changes.
+
+Historical native raw has NO per-edit inspector snapshots: its scope/history
+preservation is observed before/after the complete ABA/read sequence only. Do not
+claim the strengthened per-edit source contract was executed in that run. Its
+literal incomplete/product delays and original criteria remain unchanged. Saved
+verifier/report are original physical563-time records; after the review source
+corrections, current physical/historical Git reconciliation is a separate checkpoint.
+
+Final declined judgments ruled: actual debounce/product execution cause stays
+Unknown (cost: no causal diagnosis from source alone); general restoration/original
+guide/fullV03/platform/user installation stay unqualified (cost: no release/support
+claim); human visual/generic keyboard acceptance stays unverified (cost: screenshots
+are candidates only, independent human not blocker); global console outside explicit
+collector interval stays Unknown (cost:0deliveries does not prove global health).
+No deferred Minors. Main/local, finite two modes, exact78/UI2 reuse, explicit native
+input/UI read, bounded collector and strict product/window requirements stand under
+the recorded task rulings; parameters are executor choices, not product policy.
+
+Closeout checkpoint `.artifacts/v03/external-restore-availability-review/2026-10-25/final-checkpoint.json`
+reconciles558current physical+5exact historical Git inputs (563native total), only declared review source/plan changes
+against exact d32d499 Git blobs, with current327 product/13oldraw+newraw stable.
+Only this plan's workspace is archived/hashed/removed; sibling work untouched.
+
+ONE next dependency-ready item V03.26: source and preregistration for explicit
+observed application convergence BEFORE the unchanged strict product/window gates,
+using the stronger per-edit evidence collector. Retained ProductFilters.tsx declares
+500ms debounce; that source supports separating immediate native value from rendered
+product convergence, but does not prove the recorded runtime cause. No longer timeout,
+guard waiver, blind old-case retry or new Live policy. Any later actual run must have
+its own fixed new case/inputs/max1; the exhausted25case never runs again. Full20/29
+(~69%) unchanged, mandatory L02 and remaining A02/V02/integration/fullV03 stay open.

@@ -9,11 +9,27 @@ function fixture(){
  r.firstWindow.startedAt+=10;r.firstWindow.finishedAt+=10;for(const p of r.firstWindow.samples){p.startedAt+=10;p.finishedAt+=10;}
  r.externalInteractions=[10,20].map((value,index)=>{
   const final=index?r.afterSecond:r.afterFirst,start=index?1302:3,before=structuredClone(final),after=structuredClone(final);before.startedAt=start+1;before.finishedAt=start+2;before.inputs.resources[0].resource=structuredClone(final.inputs.history[index].outcomes[0].after);before.inputs.resources[0].externalRevision=false;before.inputs.canUndo=true;before.inputs.canRestoreBaseline=true;before.field.undo.disabled=false;before.field.baseline.disabled=false;after.startedAt=start+9;after.finishedAt=start+10;
-  return {captureStatus:'Complete',ownValue:value,startedAt:start,finishedAt:start+11,before,appEdits:[value+1,value].map((v,i)=>({captureStatus:'Complete',value:v,method:'CDP.Input.insertText',startedAt:start+3+i*2,finishedAt:start+4+i*2,dom:{ready:'complete',minValue:String(v),minFocused:true,products:index?[]:[1],imagesReady:true,errorOverlay:false}})),read:{captureStatus:'Complete',method:'native-input-ui-button',control:'input-read',directInputReadRPC:false,startedAt:start+7,finishedAt:start+8},after};
+  return {captureStatus:'Complete',ownValue:value,startedAt:start,finishedAt:start+11,before,appEdits:[value+1,value].map((v,i)=>({captureStatus:'Complete',value:v,method:'CDP.Input.insertText',startedAt:start+3+i*2,finishedAt:start+4+i*2,dom:{ready:'complete',minValue:String(v),minFocused:true,products:index?[]:[1],imagesReady:true,errorOverlay:false},snapshot:{...structuredClone(before),startedAt:start+3+i*2,finishedAt:start+4+i*2,dom:{ready:'complete',minValue:String(v),minFocused:true,products:index?[]:[1],imagesReady:true,errorOverlay:false}}})),read:{captureStatus:'Complete',method:'native-input-ui-button',control:'input-read',directInputReadRPC:false,startedAt:start+7,finishedAt:start+8},after};
  });return r;
 }
 test('new protocol requires its own actual external observations and cannot be judged as the passive case',()=>{const r=fixture(),before=JSON.stringify(r);assert.equal(guardExternalRestoreAvailability(r),PASS);assert.equal(finalizeExternalRestoreAvailability(r),PASS);assert.equal(JSON.stringify(r),before);assert.throws(()=>guardRestoreAvailability(r));assert.equal(r.fullV03,false);assert.equal(r.originalGuide,'FAIL');});
 for(const[name,mutate]of[
+ ['missing per-edit snapshot',r=>delete r.externalInteractions[0].appEdits[0].snapshot],
+ ['partial per-edit snapshot',r=>r.externalInteractions[0].appEdits[0].snapshot.captureStatus='Partial'],
+ ['foreign per-edit investigation',r=>r.externalInteractions[0].appEdits[0].snapshot.inputs.investigationId='foreign'],
+ ['foreign per-edit target',r=>r.externalInteractions[0].appEdits[0].snapshot.inputs.target.node='foreign'],
+ ['foreign per-edit selected occurrence',r=>r.externalInteractions[0].appEdits[0].snapshot.selection.domIdentity.node='foreign'],
+ ['foreign per-edit resource',r=>r.externalInteractions[0].appEdits[0].snapshot.inputs.resources[0].resource.id='foreign'],
+ ['missing per-edit revision',r=>delete r.externalInteractions[0].appEdits[0].snapshot.inputs.resources[0].resource.revision],
+ ['changed per-edit history',r=>r.externalInteractions[0].appEdits[0].snapshot.inputs.history=[]],
+ ['closed per-edit investigation',r=>r.externalInteractions[0].appEdits[0].snapshot.inputs.closed=true],
+ ['pending per-edit investigation',r=>r.externalInteractions[0].appEdits[0].snapshot.inputs.pending={}],
+ ['tainted per-edit investigation',r=>r.externalInteractions[0].appEdits[0].snapshot.inputs.tainted=true],
+ ['dirty per-edit field',r=>r.externalInteractions[0].appEdits[0].snapshot.field.dirty=true],
+ ['per-edit snapshot before stimulus',r=>r.externalInteractions[0].appEdits[0].snapshot.startedAt=0],
+ ['per-edit snapshot after recorded step',r=>r.externalInteractions[0].appEdits[0].snapshot.finishedAt=100],
+ ['per-edit changed DOM value',r=>r.externalInteractions[0].appEdits[0].snapshot.dom.minValue='12'],
+ ['per-edit lost app focus',r=>r.externalInteractions[0].appEdits[0].snapshot.dom.minFocused=false],
  ['passive schema',r=>r.schema='stateatom.restore-availability-native/1'],
  ['passive mode',r=>r.protocolMode='passive'],
  ['missing interaction',r=>r.externalInteractions.pop()],
