@@ -34,3 +34,16 @@ profile/flags, PID/start/exe/hash/document/digest negatives and late metadata
 controls pass. Fresh npm test3230PASS/0FAIL/0cancelled/0SKIP99.32s terminal55037.
 Product327/old9/A026source8/A027source4/raw3 unchanged. NeedTask1commit/taskdone,
 thenTask2native driver/case; newChrome0.
+
+
+Task2 source gate: missing-driver RED13FAIL (first source-check approval review
+expired before execution; permitted one retry ran, no unsafe classification or
+native attempt). Initial driver59PASS. Saved version/diagnostic marker controls
+RED57PASS/3FAIL included two intended gaps and one incorrect test mutation targeting
+case.browserVersion instead of case.browser.version. Correct fixture plus guards
+and fixed option-name text diagnostics →60PASS. Markers are text only, never argv
+reconstruction or an admission shortcut; exact displayed digest remains mandatory.
+New helper metadata field is Task2 diagnostic enrichment, not a Task1 rerun/native
+upgrade. Full npm test3244PASS/0FAIL/0cancelled/0SKIP98.49s terminal57594.
+Product327/old9/A026source8/A027source4/raw3 unchanged. Native0; clean sourcecommit,
+resource-freeprepare and casecommit must precede max1actual metadata diagnostic.

@@ -37,7 +37,7 @@
 **Files:** new experiments/browser-launch-witness-run.mjs, tests/engine/browser-launch-witness-driver.test.mjs; docs/testing/browser-launch-witness-case.json; completion149/current metadata; unique ignored outputs.
 **Interfaces:** consumes Task1 witness/metadata/admission and immutable A02.7 collectOwnedBrowserProcess/ownedProcessDeadline; --prepare CASE OUT / --preflight CASE / CASE. Emit registration/raw witness/proc/metadata/result/cleanup before qualification; never persist websocket.
 
-- [ ] TDD driver CLI/case/provenance/save-before-refusal/independent owner cleanup/fallback/error retention/input drift RED→GREEN. Implement 127.0.0.1/port0/managed generated profile; no app or old source change. Affected/full source gates -> PASS; clean local source commit.
+- [x] TDD driver CLI/case/provenance/save-before-refusal/independent owner cleanup/fallback/error retention/input drift RED→GREEN. Implement 127.0.0.1/port0/managed generated profile; no app or old source change. Affected/full source gates -> PASS; clean local source commit.
 - [ ] Resource-free prepare/inspect/freeze/commit strict max1 case. ONE actual launch/poll same handle; save literal partial/refusal and original source. Independent saved facts/input/cleanup verifier and negative controls, no blind repeat.
 - [ ] Relevant final aggregate/local commit/task-done; actual launch/metadata route only, no app/product/fullA02 credit.
 
