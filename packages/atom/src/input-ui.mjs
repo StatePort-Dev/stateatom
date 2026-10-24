@@ -90,6 +90,10 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
   text('input-observation',e?.observation?'Observed '+e.target.property+' = '+short(e.observation.value)+' · '+e.observation.status+' · dependency unknown.':'');
   const unavailable=e?.unsupported||[];$('input-unavailable').hidden=!unavailable.length;text('input-unavailable-title',unavailable.length+' unavailable '+(unavailable.length===1?'input':'inputs'));$('input-unavailable-list').replaceChildren(...unavailable.map(r=>node('li',(r.selector||'Input')+' · '+r.reason)));
  }
+ function stateReplyReceiver(){
+  const admit=controller.stateReplyGuard();
+  return next=>{if(disposed||!admit(next))return false;update(next);return true;};
+ }
  function update(next){
   state=next;controller.update(next||{});visible=preview||supportsCapabilityPolicy(next?.capabilityPolicy)&&['inputs.live','inputs.draft-apply'].some(id=>next.capabilityPolicy.features[id].code!=='NOT_IMPLEMENTED')||visible&&!!controller.snapshot().draft?.dirtyCount;
   const key=capabilityKey(next);if(key!==capKey){capKey=key;if(visible)ask();else{caps=null;++capEpoch;}}render();
@@ -99,5 +103,5 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
  for(const m of['live','draft'])$('input-mode-'+m).onclick=()=>run(()=>controller.setMode(m));
  for(const[id,fn]of[['input-apply',()=>controller.apply()],['input-discard',()=>controller.discard()],['input-read',()=>controller.refresh()],['input-undo',()=>controller.undo()],['input-baseline',()=>controller.baseline()],['input-close',()=>controller.close()]])$(id).onclick=()=>run(fn);
  $('input-reconnect').onclick=()=>run(()=>onReconnect?.());
- return Object.freeze({update,capture:options=>controller.capture(options),captureObservation:options=>controller.captureObservation(options),close:reason=>controller.close(reason),dispose(){if(disposed)return;disposed=true;++capEpoch;return controller.dispose();},snapshot:controller.snapshot});
+ return Object.freeze({update,stateReplyReceiver,capture:options=>controller.capture(options),captureObservation:options=>controller.captureObservation(options),close:reason=>controller.close(reason),dispose(){if(disposed)return;disposed=true;++capEpoch;return controller.dispose();},snapshot:controller.snapshot});
 }

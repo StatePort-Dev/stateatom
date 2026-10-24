@@ -12,6 +12,21 @@ export function createInputController({client,onChange=()=>{},clock={setTimeout:
  function clearTimer(id){const timer=timers.get(id);if(timer!==undefined)clock.clearTimeout(timer);timers.delete(id);}
  function cancelScheduled(){for(const id of timers.keys())clearTimer(id);queued.clear();}
  function fail(e){failure={code:e.code||'OPERATION_FAILED',message:String(e.message||e.code||'Input operation failed').slice(0,1024)};emit();}
+ // Admission for an already requested state reply; no rendering or model mutation.
+ function stateReplyGuard(){
+  if(!active())return()=>false;
+  const own=scope,investigationId=last.investigationId,target=last.target,keys=['tabId','origin','run','document','node','selector','property','build'];
+  const sameTarget=value=>!!value&&keys.every(key=>value[key]===target[key]);
+  return state=>{
+   if(scope!==own||!active()||own.abort.signal.aborted||last.investigationId!==investigationId||!sameTarget(last.target))return false;
+   const value=state?.inputs;
+   if(state?.tabId!==own.tabId||state?.run!==target.run||value?.investigationId!==investigationId||value?.sourceKind!==own.sourceKind||!sameTarget(value?.target))return false;
+   if(!Number.isSafeInteger(value.revision)||value.revision<last.revision||['starting','picking','resolving'].includes(state.picker?.status))return false;
+   const selected=state.selection?.domIdentity;
+   if(selected&&['document','node','property'].some(key=>selected[key]!==target[key]))return false;
+   return true;
+  };
+ }
  function receive(value){
   if(!last||value?.investigationId!==last.investigationId||value.revision<last.revision)return false;
   last=clone(value);model.receive(value);if(value.closed){cancelScheduled();scope?.abort.abort();}emit();return true;
@@ -113,5 +128,5 @@ export function createInputController({client,onChange=()=>{},clock={setTimeout:
   return captureData(options,{ownerId:observationOwnerId,windowId});
  }
  function dispose(){if(disposed)return closing||Promise.resolve(snapshot());disposed=true;off();return close('Input view disposed');}
- return Object.freeze({open,edit,flush,setMode,discard,apply,refresh,capture,captureObservation,undo:()=>restore('inputs-undo'),baseline:()=>restore('inputs-baseline'),update,close,dispose,snapshot});
+ return Object.freeze({open,edit,flush,setMode,discard,apply,refresh,capture,captureObservation,undo:()=>restore('inputs-undo'),baseline:()=>restore('inputs-baseline'),update,close,dispose,snapshot,stateReplyGuard});
 }
