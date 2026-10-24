@@ -28,7 +28,9 @@ try{
  result.browser=browser.version();assert.equal('Chrome/'+result.browser,scenario.browser.version);
  const context=await browser.newContext(),page=await context.newPage();await page.goto(origin);
  const cdp=await context.newCDPSession(page);
- await cdp.send('DOM.disable');const {root}=await cdp.send('DOM.getDocument',{depth:0});
+ // A fresh CDP session is already cold. Chrome refuses DOM.disable before any
+ // enable/getDocument; subsequent rows explicitly disable the bootstrapped agent.
+ const {root}=await cdp.send('DOM.getDocument',{depth:0});
  const bootstrap=await cdp.send('DOM.querySelector',{nodeId:root.nodeId,selector:'#button-empty'});
  assert(bootstrap.nodeId>0);result.implicitBootstrap={documentBackend:root.backendNodeId,selectedNode:bootstrap.nodeId,explicitEnable:false};
  for(const row of scenario.controls){
