@@ -2159,6 +2159,7 @@ No original target/250ms/guard/full-task count changes or V03/IDE/certificate re
 20 Apply,42 state,2 capabilities,341 stable inputs/327 product/0 inspector errors.
 Apply RPC medians~824–863ms, non-RPC Apply residual~22–25ms; Live retains250ms
 debounce, overlapping state is not summed or declared causal.3 source-only cleanup
-controls correct a finalizer failure path; actual runtime stays15a084a. ONE review
-pending. Original65 tails/targets/whole20-of29 remain unchanged. Next V02.10 profiles
+controls correct a finalizer failure path; actual runtime stays15a084a. ONE review1Important startup fix/20 current source controls; one sparse-options
+Minor deferred, dense native list unaffected. No native rerun. Original65 tails/
+targets/whole20-of29 remain unchanged. Next V02.10 profiles
 internal native-command phases before any product optimization or guard change.
