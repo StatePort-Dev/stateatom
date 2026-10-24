@@ -70,3 +70,58 @@ Native and ONE finalfreshreview due. Commitcase/code BEFORE launch, pollsamehand
 no timeoutrestart or oldwide/native/IDE/source/model/certificate campaign. At mostONE
 testedImportantCriticalfix/no rereview. Product/authority/UI/API/Live/grant/handoff/
 SDK/redesign/publication/push/otherrepo unchanged. NextONEitem fromactualresult.
+
+
+## Actual fixed discriminator — DOM hypothesis not established
+
+Native55425 terminal0 at1c2432e/clean:
+`.artifacts/v02/dom-domain-cost/2026-10-24T04-15-23-659Z/results.json`.
+COMPLETE224rows/32warm192measured/n24perhostcondition,413stableinputs/327product/
+223helper, every observednative/Atom releasefalse and allraw/browser/display/server
+finalizers successful.4486servermetadata entries include exactly4480sample requests;
+eachrow's exclusive chronologicalrange has trial=id and n0..19 once. No extra sample
+requests, currentcounter/actions/bytes/trusted checks pass. Bothfreshprofiles use
+exactretainedsynthetictrustDB/ordinaryTLS/siteAllow/no editinggrant/newcertificateGUI.
+0recorded inspector exceptions/warning-error console; no worker/guardiancompleteness.
+
+| Current workload ms p50 / p95 / max | Standalone | Embedding |
+| --- | ---: | ---: |
+| Off |51.65 /69.50 /74.10 |54.75 /72.80 /73.60 |
+| Raw Full |68.35 /80.10 /86.70 |65.20 /73.40 /74.00 |
+| Raw Full+DOM |67.05 /74.40 /74.60 |67.15 /82.70 /86.70 |
+| Actual Atom Basic |68.70 /70.50 /70.60 |66.40 /77.20 /107.10 |
+
+| Descriptive ratio of medians | Standalone | Embedding |
+| --- | ---: | ---: |
+| Full/Off |32.33301066% |19.08675800% |
+| FullDOM/Off |29.81606971% |22.64840182% |
+| AtomBasic/Off |33.01064861% |21.27853880% |
+| FullDOM/Full |−1.90197512% |2.99079754% |
+| AtomBasic/FullDOM |2.46085011% |−1.11690247% |
+
+Allfixedwarmups/tails/pairedblockratios retained. DOMaddition effect is small and has
+opposite signs acrosshosts in this finite dataset; it does not establish DOM as the
+large currentattachedcost cause, prove no DOMcost or identify workerCPU/criticalpath.
+RawFull already shows an attachedcost of similar magnitude here, unlike old102's
+historical6%Full/off; no old/current comparison is a productimprovement or inherent
+browserfloor claim. RawFullDOM includes native setup and extension eventrouting/
+guards; actualBasic mode is not causally equivalent to a rawharness connection.
+Original15Basicp95pass/active-off26.64/29.32%miss remain the unchanged primarygate,
+not replaced by this diagnostic or its rawdenominators.
+
+Savedindependent verifier53097 terminal0 PASS:224rows/attempts/workloads/nativeDOM
+metadata/commandsequences/modeownership/releases;4480serverrequests in exactordered
+rowranges; independently enumerated24permutations/median/nearest-rankp95/pairedratios;
+28negativecontrols, frozenfixture/413inputs/327product/223helper/archives/install/
+hosts/Chrome/TLS/ownedcleanup. Native-checkpoint retained at
+`.artifacts/v02/dom-domain-cost/2026-10-24/native-checkpoint.json`.
+Sourcefull2720/focused45/new23 controls remain; no new product/package qualification.
+This is finite diagnostic evidence, not originalperformance/fullV02 acceptance.
+
+ONE finalfreshreadonlyreview due. Candidate next ONE **V02.17** selects/registers a
+single additional enabled-domain control before optimizing: Performance.enabled vs
+otherwiseidenticalrawFull. Currentruntime enables Performance at Attach and reads
+metrics only for explicitmetrics operation (runtime372/630); this is a sourcefact,
+not proof of overhead or approval to change metrics lifetime/meaning. Preserve all
+originalcriteria/guards/records/ownership and oldresults; no broadoldfloor rerun or
+preapproved lazy-domain behavior/product change.

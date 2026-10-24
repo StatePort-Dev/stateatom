@@ -4311,7 +4311,7 @@
       "active_slice": {
         "id": "V02.16",
         "title": "Current DOM-enabled transport cost discrimination",
-        "status": "preregistered-source-verified-native-due",
+        "status": "finite-diagnostic-complete-review-due",
         "record": "135-v02-dom-domain-cost.md",
         "design": "../superpowers/specs/2026-10-24-v02-dom-domain-cost-design.md",
         "plan": "../superpowers/plans/2026-10-24-v02-dom-domain-cost.md",
@@ -4332,13 +4332,26 @@
         "performance_acceptance": false,
         "targets_waived": false,
         "review_pending": true,
-        "native_executed": false
+        "native_executed": true,
+        "native_rows": 224,
+        "warmup_rows": 32,
+        "measured_rows": 192,
+        "server_sample_requests": 4480,
+        "protocol_negative_controls": 28,
+        "actual_native_revision": "1c2432e",
+        "runtime_result": ".artifacts/v02/dom-domain-cost/2026-10-24T04-15-23-659Z/results.json",
+        "verification": ".artifacts/v02/dom-domain-cost/2026-10-24/native-checkpoint.json",
+        "dom_hypothesis_established": false,
+        "full_dom_vs_full_percent": {
+          "standalone": -1.90197512,
+          "embedding": 2.99079754
+        }
       },
       "execution_record": "135-v02-dom-domain-cost.md",
       "current_checkpoint": {
         "record": "135-v02-dom-domain-cost.md",
-        "status": "preregistered-source-verified-native-due",
-        "next_bounded_step": "Execute one registered V02.16 current missingDOM control comparison without changing originalworkload/guards/ownership/TLS or15targetmisses; ONE final review and nextitem fromactualresult"
+        "status": "finite-diagnostic-complete-review-due",
+        "next_bounded_step": "ONE final V02.16 review then V02.17 select/register one rawFull Performance-enabled control before optimization; existing15gate misses/guards/ownership/metrics semantics preserved, no assumedcause or preapproved domain-policy change"
       },
       "completed_slices": [
         {
@@ -5997,8 +6010,8 @@
     "document": "135-v02-dom-domain-cost.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.16-preregistered-source-verified-native-due",
-    "next_item": "Execute one registered V02.16 current missingDOM control comparison without changing originalworkload/guards/ownership/TLS or15targetmisses; ONE final review and nextitem fromactualresult",
+    "current_increment": "V02.16-finite-diagnostic-complete-review-due",
+    "next_item": "ONE final V02.16 review then V02.17 select/register one rawFull Performance-enabled control before optimization; existing15gate misses/guards/ownership/metrics semantics preserved, no assumedcause or preapproved domain-policy change",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8607,11 +8620,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "New missingDOM control replacesold102network-only: fixed224rows/32warm192measured/rawFull-vsFullDOM-vsactualBasic/Off registered413inputs. Full2720/focused45/new23sourcecontrols PASS; immutable72/product327/helper223 unchanged. Native/result/review due, original15gate Basicp95met/overheadmiss unchanged and20-of29/fullV02 open. No productoptimization/certificateGUI/newcert campaign.",
+    "current_activity_note": "Current72DOMdiscriminator COMPLETE224rows/32warm192measured/4480serverrequests/413stableinputs/allreleases-cleanup; independent28negativecontrols PASS. FullDOM/Full -1.90/+2.99%, oppositehostsigns: DOMlargecause notestablished. Full/Off32.33/19.09%, no inherentbrowserfloor/CPU/optimization claim. Original15gateoverheadmisses/20-of29/fullV02 unchanged. ONEreviewdue.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "b0c5e2e",
+    "current_source_revision": "1c2432e",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "Execute one registered V02.16 current missingDOM control comparison without changing originalworkload/guards/ownership/TLS or15targetmisses; ONE final review and nextitem fromactualresult"
+    "next_bounded_step": "ONE final V02.16 review then V02.17 select/register one rawFull Performance-enabled control before optimization; existing15gate misses/guards/ownership/metrics semantics preserved, no assumedcause or preapproved domain-policy change"
   },
   "next_task": "V02"
 }
