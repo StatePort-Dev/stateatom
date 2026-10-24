@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.72
+
+- Perform each live registry verification and its fresh redacted snapshot in one
+  private dedicated-worker message. Preserve both operations, all authority and
+  cleanup barriers, legacy adapter fallback and existing request budgets.
+- Refuse malformed or old unboxed fast replies before removing the pending request.
+  Source transport counts do not establish native latency targets or broad speedup;
+  qualification of this immutable candidate is recorded separately.
+
 ## 0.1.0-candidate.20261021.71
 
 - Read native `disabled` identity through `DOM.getDocument`'s implicit domain

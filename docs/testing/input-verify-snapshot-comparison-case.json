@@ -1,0 +1,209 @@
+{
+  "browser": {
+    "version": "Chrome/153.0.8010.12",
+    "executableSha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e"
+  },
+  "clock": {
+    "translation": "own worker/offscreen timeOrigin - inspector.timeOrigin, same-UA W3C high-resolution time",
+    "source": "https://w3c.github.io/hr-time/#examples",
+    "precision": "COARSENED_UNKNOWN_BROWSER_PRECISION",
+    "aggregation": "API, registry and combined clipped interval unions inside Apply; never add overlapping totals",
+    "causality": "UNKNOWN_CONCURRENT_STATE_AND_HEALTH_INCLUDED"
+  },
+  "schema": "stateatom.input-verify-snapshot-comparison-case/1",
+  "base": "62fa55d4af04225d6a8a26084f7d0ec0cf81a91b",
+  "handoffs": {
+    "A": ".artifacts/atom/2026-10-24T01-26-15-352Z/atom-handoff.json",
+    "B": ".artifacts/atom/2026-10-24T03-16-49-091Z/atom-handoff.json"
+  },
+  "declaredCandidateDelta": {
+    "sourceManifest": [
+      "core/guardian-session.mjs",
+      "core/guardian-worker-wire.mjs"
+    ],
+    "buildManifest": [
+      "core/guardian-session.mjs",
+      "core/guardian-worker-wire.mjs",
+      "package-lock.json",
+      "packages/atom/CHANGELOG.md",
+      "packages/atom/package.json"
+    ]
+  },
+  "inputHashes": {
+    "tests/helpers/worker-api-phase-probe.mjs": "685264289382992dd18e6ea4f862dcbaca346a941e813b41527e1d05092febdd",
+    "tests/helpers/worker-api-phase-summary.mjs": "a45ec40f17f0267f479c040f8cbdab88c3bc5d344ae4f17c43062cbcc2081808",
+    "tests/atom/worker-api-phase-probe.test.mjs": "a37edd604536fcf4ab3ed9ebbf303784f8de27ba57ac8423c785861db05211f0",
+    "tests/atom/worker-api-phase-summary.test.mjs": "350445e56abbb49e9c4ebe0686862ede082d08fa7bcef560aecfd1b4cf46fe8a",
+    "tests/atom/native-worker-session.test.mjs": "79a982830f3f3b844e80e19205ec6ceb07067f1b029b53dd263eec5ff0b9b2f5",
+    "tests/atom/native-harness-failure.test.mjs": "9f8159443789a4fa2fd281b089824c881f713af34216170644ce3a5222b67204",
+    "tests/helpers/inspector-rpc-phase-probe.mjs": "dc8832e63861a912744adbb1dcc51750c2048c82fa5cc68c4a609755196c2cdd",
+    "tests/atom/inspector-rpc-phase-probe.test.mjs": "6b957bad6c2e3f7bea8c51f8a7988b5bd454f9cd234ed7caeda8c98296e5247e",
+    "tests/helpers/input-mode-performance.mjs": "7edfdd39dc0675b74e1d7926a1e99ddd44d1a254078f51897e4d47dc21e0dff9",
+    "tests/atom/input-mode-performance.test.mjs": "ae7118fb33cf15d66778ae41fa2352352fc458571ab1fad9224159871f51d30d",
+    "tests/helpers/native-inspector-ui.mjs": "2a82f3a643bbbacd9a6f8ed7e798f77b1416f110f1828ac23fd97b24bc8109b9",
+    "tests/helpers/source-access-native-desktop.mjs": "786011664d68f658bd1d5e7c002963642a50a16661d7f67b2413ac8aef182f57",
+    "scripts/native-browser.mjs": "449328d4858f058e0b75a4f82b56cee724c0b185f834d6e747890f513ed4747b",
+    "scripts/harness.mjs": "3796e76b60f450b46cde335521efb9fd1dcf3aa1305501f30c2af61627f2d7ec",
+    "scripts/atom-package-receipt.mjs": "f54a3c72c65b5f032a2936b0a216b2516016fa8c356388bf33dfc9397a0b4d7c",
+    "tests/fixtures/native-controls/index.html": "6ef8450b4060e9708047aea43f4529668ffd9fdb6caf3ee37a526d56d4e8f8be",
+    "package.json": "9e17e86330ce8f604d9a081da7ab650453ec79cfcb660467f342822cf480aa8b",
+    "package-lock.json": "b63b62059e9d610dd3fc0efa0376eaf7dd1ae07678e6be43515018bc4592aafd",
+    ".artifacts/atom/2026-10-24T01-26-15-352Z/atom-handoff.json": "394d13dbcb264a4dcc1f08b61c4814add8a54e3ba4c7070ef3072af67378b645",
+    "tests/helpers/guardian-registry-phase-probe.mjs": "9f1e2ba72d37db795a3b59734189bc170d4fd2abe644d9f2e8d2929a8fca7dfe",
+    "tests/helpers/guardian-registry-phase-summary.mjs": "24551d53963ffcc4a66a5dd6a241870c331cade2e46c7c9c67d2bfd2c1c7d3c3",
+    "tests/atom/guardian-registry-phase-probe.test.mjs": "eb658223b62df7a1a4115c694053dc9e828d164df61f8aca2d18c0cff0e66b05",
+    "tests/atom/guardian-registry-phase-summary.test.mjs": "25e53ed76cddc3bd90ed1d0dc28a6c0b78d99b71c487b76531a71530cb459f28",
+    "tests/integration/input-verify-snapshot-comparison-native.mjs": "dabd29e998e4800f80c82478a397d0cc7b5e305f75419f3c62f6b6ba8c2107e1",
+    "docs/superpowers/specs/2026-10-24-v02-packed-verify-snapshot-design.md": "e6c29784ad69196dbc2a5bab3c11f3398d44afe5e16645c70058c882f9a70c26",
+    "docs/superpowers/plans/2026-10-24-v02-packed-verify-snapshot.md": "e56028fb84f5c5c76917ee61ec888a1dc956b2f3d069efd8bf19756abf70c354",
+    "tests/guardian-verify-snapshot.test.mjs": "656edee3c97805c124d5fb900e7e999e4aa4b05e93d3108479e95116241304af",
+    ".artifacts/atom/2026-10-24T03-16-49-091Z/atom-handoff.json": "42f27521134d27ac9b2ecbdcdb7946d508f2161626e1c07833f111f7395e0ff1",
+    ".artifacts/v02/packed-verify-snapshot/2026-10-24/protocol-controls.test.mjs": "c41000e9fff6d90af983bc672c5ad2ba1c2c50559a04f91dc1fc7e27613f5989",
+    ".artifacts/v02/packed-verify-snapshot/2026-10-24/startup-controls.test.mjs": "4e8225dc8ea6837cdb2b39130474bf78b8ca92b06ffb0ca10ff1ee7929bb0bf7",
+    ".artifacts/v02/packed-verify-snapshot/2026-10-24/serialized-probe.test.mjs": "a6f2c153858680a9e3c5d38f3c3fba36b578ff420e0a252afe8d1e507a83f5fd",
+    ".artifacts/v02/packed-verify-snapshot/2026-10-24/trace-retention.test.mjs": "d574fe979cb71f0e3412f70b3fc9eade05dd05307e346cc509cf608f6dd06610",
+    ".artifacts/v02/packed-verify-snapshot/2026-10-24/review-retention.test.mjs": "3fda68d2ef7c1d473ff739adf631d4d893e66f4411e654e42fb06c2bc5c60dfb",
+    "tests/integration/input-inspector.mjs": "401deffc1d84e454368a83d89a25681ecf96c3dc716235e57c1aca02519a11ac",
+    "scripts/verify-atom-types.mjs": "4e0a1d20f6da1d21b06fcb25dfbb4bd40e09d53c22e160bbac319287cd55689e",
+    "scripts/verify-atom-package.mjs": "9152a6457ee39cd8b5520aac32e9f5dbc0f2dab255b2e464e3ef1fa4e6c5e38b",
+    "tests/atom/types/node-consumer.mts": "fd6506e669292da6d0c2e6b735d549854be5cfa9e562b0aa27de58def1ba0131",
+    "tests/atom/types/browser-consumer.ts": "fa1ef8701302ff3f2e2b5d2d663242a20e0769233e1d585d899d6bbcabcbca2d",
+    "tests/fixtures/input-editor/index.html": "77c88b6843912f13f8f7c1835f079f73d5b704e743f04ce580db3864213a2430"
+  },
+  "protocol": {
+    "cases": [
+      {
+        "host": "standalone",
+        "condition": "A",
+        "caseIndex": 0
+      },
+      {
+        "host": "standalone",
+        "condition": "B",
+        "caseIndex": 1
+      },
+      {
+        "host": "standalone",
+        "condition": "B",
+        "caseIndex": 2
+      },
+      {
+        "host": "standalone",
+        "condition": "A",
+        "caseIndex": 3
+      },
+      {
+        "host": "embedding",
+        "condition": "B",
+        "caseIndex": 4
+      },
+      {
+        "host": "embedding",
+        "condition": "A",
+        "caseIndex": 5
+      },
+      {
+        "host": "embedding",
+        "condition": "A",
+        "caseIndex": 6
+      },
+      {
+        "host": "embedding",
+        "condition": "B",
+        "caseIndex": 7
+      }
+    ],
+    "blocksPerCase": 3,
+    "warmupBlocks": 1,
+    "totalRows": 48,
+    "warmupRows": 16,
+    "measuredRows": 32,
+    "order": "block0 live/draft; block1 draft/live; block2 live/draft",
+    "phaseCap": 32,
+    "phaseOperations": [
+      "inputs-apply",
+      "state",
+      "capabilities"
+    ],
+    "workerAPICap": 16384,
+    "workerAPIs": [
+      "debugger.sendCommand",
+      "tabs.get",
+      "permissions.contains",
+      "scripting.executeScript",
+      "storage.session.get",
+      "storage.session.set",
+      "storage.local.get",
+      "storage.local.set",
+      "runtime.sendMessage"
+    ],
+    "nativeMethodWhitelist": [
+      "DOM.enable",
+      "DOM.getDocument",
+      "DOM.querySelector",
+      "DOM.describeNode",
+      "DOM.pushNodesByBackendIdsToFrontend",
+      "DOM.resolveNode",
+      "DOM.requestNode",
+      "Runtime.callFunctionOn",
+      "Runtime.releaseObjectGroup",
+      "Debugger.getScriptSource"
+    ],
+    "workerAPIOutcomes": "Boolean true/false settled outcomes retained and counted, null/unsupported/pending/overflow invalidate; outer Apply/ack must succeed",
+    "applyCountPerGesture": 1,
+    "defaultLiveDebounceMs": 250,
+    "performanceAcceptance": false,
+    "targetsWaived": false,
+    "workerAPIMaxLimitOptIn": 16384,
+    "rawWorkerSnapshotBeforeValidation": true,
+    "registryCap": 16384,
+    "registryOps": [
+      "connect",
+      "acquire",
+      "verify",
+      "begin",
+      "finish",
+      "release",
+      "disconnect",
+      "claimCleanup",
+      "finishCleanup",
+      "retryCleanup",
+      "status",
+      "snapshot"
+    ],
+    "rawRegistrySnapshotBeforeValidation": true,
+    "profiles": 8,
+    "nPerHostConditionMode": 4,
+    "conditionVersions": {
+      "A": "0.1.0-candidate.20261021.71",
+      "B": "0.1.0-candidate.20261021.72"
+    },
+    "pairedObservationsBeforeValidation": true,
+    "bestEffortFailureRetention": true
+  },
+  "setupAssistance": [
+    "CLI extension preload in fresh owned profiles; existing trusted fixture/input/inspector actor; no human clean-guide claim",
+    "Own worker existing API probe plus fixed owned guardian offscreen document CDP session; app solely Atom-owned",
+    "Wrap existing Worker.prototype.postMessage/listen existing replies in own guardian, never construct worker/send extra request",
+    "Exact loopback development permission only; no production/account/certificate/IDE/user profile action"
+  ],
+  "boundaries": [
+    "ImmutableA71 never rebuilt; exact newB72/UI2/archives/installedhosts/currentB327/helper223 checked; actualnew72 types2/admission9/backend13 separately retained",
+    "Only reviewed2core logicalchanges plus version/changelog/rootlock metadata; same verify+freshsnapshot, allauthority/cleanup/policies remain",
+    "Fixed8freshprofilesABBA/BAAB/48rows16warm32measured/n4 perhostconditionmode,3alternatingblocks; same250ms/oneApply/currentack/Draftunchanged/unrelated/getter0/ledger56",
+    "API/registry16384/inspector32, no pending/overflow/unsupported; privatepayload-free originalprobes and pairedraw beforevalidation/pending/cleanup, allfailedattemptsretained",
+    "Threecoarsenedclocks/partialregistry/concurrentstate-health; intervalunions notsum/CPU/criticalpath/Apply-onlycausality; instrumentedrejectionreportinglimit retained",
+    "Descriptive syntheticinstrumentedn4 comparison, no originalSLO/p95/universal/uninstrumentedspeedup/fullV02 or whole20-of29 credit",
+    "No oldcold22/wholematrix/HTTPS/IDE/certificate/model/app-source/SDK/Capture/redesign/publication/otherrepo/userprofile campaign"
+  ],
+  "packedQualification": {
+    "types": ".artifacts/atom/2026-10-24T03-16-49-091Z/type-consumer-result.json",
+    "admission": ".artifacts/atom/compatibility/2026-10-24T03-18-11-623Z/result.json",
+    "backend": ".artifacts/u02/input-inspector/native/2026-10-24T03-18-15-577Z/results.json"
+  },
+  "packedQualificationSha256": {
+    "types": "efdcdc5216e10fa0b6bb153ebede6bb1665f53b9417e8ee4d1c6d277c16aa9ba",
+    "admission": "208c659b41cb79df34af29d511ced730858af1bef483c2f1d1d37f01ffb161f6",
+    "backend": "2a10a99feae98deb82fdd5f848247d58399ce7684977e0d11d5b331189134600"
+  }
+}
