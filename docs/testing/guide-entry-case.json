@@ -1,0 +1,72 @@
+{
+  "schema": "stateatom.v03-native-entry-case/1",
+  "handoff": ".artifacts/atom/2026-10-23T20-57-18-973Z/atom-handoff.json",
+  "sourceResult": ".artifacts/v03/independent-react-basic/2026-10-23T23-41-45-324Z/results.json",
+  "profileSnapshot": ".artifacts/v03/guide-entry/2026-10-24/profile-snapshot.json",
+  "browser": "Chrome/153.0.8010.12",
+  "executableSha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e",
+  "report": {
+    "file": "/home/roman/projects/stateatom/.artifacts/v03/independent-react-basic/2026-10-23T23-41-45-324Z/downloads/stateatom-issue-f734e227-a2fb-430b-a052-c810fda32670.stateatom.json",
+    "sha256": "71feaf7215d726b68f1284def217c15a9e72d9ba47e24c5d7cbd0e960caa5e0b",
+    "bytes": 317667,
+    "profile": "input-evidence/1",
+    "trust": "historical-untrusted",
+    "selectedValue": {
+      "category": "selectedText",
+      "evidenceKind": "Observed",
+      "id": "f0",
+      "label": "Selected value",
+      "reason": "private-content-default",
+      "scope": "Historical selected condition; no producer or value ancestry established.",
+      "sourcePointer": "/target/value",
+      "state": "omitted",
+      "type": "text"
+    },
+    "sourceDiagnostic": {
+      "build": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "capturedAt": 1792798915595,
+      "createdAt": "2026-10-23T23:41:56.084Z",
+      "digest": "78ea4aebfe6067852271e1103d0174e2f07980a0f0505f03d69fb972ec0b5887",
+      "freshness": "Recorded",
+      "id": "3cf0bc54-2af4-4bc2-970b-4a5bfcd8f868",
+      "schema": "stateatom.diagnostic",
+      "trust": "untrusted-historical-reference",
+      "version": 1
+    },
+    "technicalRows": 778,
+    "structure": {
+      "nodes": 12649,
+      "members": 9535,
+      "arrayEntries": 3113
+    }
+  },
+  "questions": [
+    "Preserve accepted recipient profile bytes; clone only sealed persistent state, omit stale endpoint/locks",
+    "Actual toolbar X11 click creates inspector, no direct panel navigation/action API",
+    "Actual Open diagnostic reader control creates reader, no direct reader navigation",
+    "Actual native Open File chooser selects exact old317667-byte report, no DOM file injection",
+    "Historical displayed payload matches actual file; authority/no external reader requests/no HTTP app targets preserved",
+    "Close only owned resources; preserve original profile/report/kit/source bytes"
+  ],
+  "nonClaims": [
+    "New or virgin installation",
+    "Repeated independent app/source/codec/Vue execution",
+    "Whole-guide/human/OS/model/performance/fullV03 acceptance"
+  ],
+  "operatorProtocol": {
+    "phase": "toolbar",
+    "maxWaitMs": 120000,
+    "oneImageHashedNativePoint": true,
+    "displayOnly": "owned nested Xephyr"
+  },
+  "inputHashes": {
+    "tests/integration/guide-entry-native.mjs": "a29355eba67c8cd64abe7571ab3362f9042593bcf3a7dc729250b21568dc715a",
+    "scripts/native-browser.mjs": "37d16c781c5eb5fc402a5e0ebc47f0fdf5f2321b484dae6e6b5e75fe30c039d7",
+    "tests/helpers/source-access-native-desktop.mjs": "089c04a488302f94469384dc64e2dd061ba1b5c6e71d30996387283019ead1ee",
+    "scripts/harness.mjs": "3796e76b60f450b46cde335521efb9fd1dcf3aa1305501f30c2af61627f2d7ec",
+    "core/handoff-files.mjs": "833d14f886b83ebc38245548c288bf3efec1513e40d490e4b76dcc9507f630d2",
+    "docs/installed-preview.md": "bbc35e3cc505fb36e2c5cc64cb109386eb36855a80792f12a2326ab22118e46b"
+  },
+  "sourceResultSha256": "482f8e3d106743a70f7923e752a81d9765ab420b224f1237c47348ac051a555b",
+  "profileSnapshotSha256": "12d5f1761769b174bd6068461834c82113c358e723a8016b7b29e5462d2ecf08"
+}

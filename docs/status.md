@@ -189,6 +189,9 @@ workflow/suite run. Full-guide
 entry assistance remains: extension-URL inspector launch/CDP reader file input.
 Next boundedV03.13 tests toolbar and native import entry; whole20/29/fullV03 gates
 remain open. No product source/build/certificates/accounts/publication changed.
+[V03.13](completion/126-v03-native-entry.md) now prepares actual toolbar launch and
+native report import on a hashed copy of the accepted private recipient state.
+No original profile mutation/new installation/app repeat is claimed; runtime due.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the
