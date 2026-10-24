@@ -1,5 +1,12 @@
 # Project status
 
+Active bounded work: [A02.6](completion/147-a02-array-callsite-bridge.md) source
+call-site bridge. Frame API and conservative Babel transform pass57 focused/
+3095 full source controls;327 product/nine historical inputs unchanged. Actual
+receiver/argument/callback semantics are checked, including the prototype's stack
+counterexample. Native original/off/on qualification is not run yet. No product
+integration or new whole-task credit;20/29 unchanged.
+
 Current work, 2026-10-24: [A02.5](completion/146-a02-array-transfer-technique.md)
 completes a source-only callback identity technique.22 focused/3038 full source
 tests pass;327 product/seven old experiment/app inputs unchanged. ONE review0/0/1
