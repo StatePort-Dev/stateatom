@@ -1,5 +1,10 @@
 # Project status
 
+Active bounded work: [L02.10](completion/155-l02-recorded-model-comparison.md),
+source-only versioned recorded-boolean/copied-model comparison and strict opaque
+annotation contract. No newimplementation/model evidence from planning; original
+L02.9 0addedusefulness/quality/device/product gates unchanged. No provider/UI switch.
+
 Completed bounded attempt: [V03.26](completion/154-v03-converged-restore-availability.md).
 ONE converged78 native remains INCOMPLETE/exhausted; firstexternal11 has3retained
 scope/history samples, cleanfield/currentresource10,10,11 vsownreceipt10. No further
