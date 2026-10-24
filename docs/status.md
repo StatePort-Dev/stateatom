@@ -2305,3 +2305,5 @@ V03.16 diagnostic observes Live/Draftlocal/Apply and two explicitUndo refusals,
 then timesout on a background lazyimage after a laterLive write already succeeded.
 All428inputs/console0/cleanup retained; a newpost-ack visibility barrier preserves
 strictimages/restorecriteria, no product change. Affectedfollowup and ONEreview due.
+
+V03.16 visible diagnostic150d93a terminalFAIL/7phases: Livefocus+Draftlocal1121ms/9samples+Apply+2UndoRefusals/3writes observed. Imagevisibility repaired onlyafterack; nextLive20 remainsstaledraft/raw20/app10/history3, no overwrite. BaselineRestore/Close unexecuted.432stableinputs/327product/223helper/65originals/console0/allcleanup/independent20negativecontrols. OriginalrestorecriteriaFAIL unchanged; no more retry inthisitem. ONEwhole-itemreviewdue; next boundedV03.17 native-revision/staledraft diagnosis.20/29/fullV03 unchanged.

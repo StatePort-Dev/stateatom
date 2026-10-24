@@ -158,3 +158,35 @@ inspector, no input/reload/reset/extraHTTPprobe. FirstLivefocus proof unchanged;
 blurpendingLive early. ActualwaitOutcome control RED8/1→GREEN9/focused92PASS. No
 product/revisionguard/package change; preserve allthreeearlieractualFAILs. Newcase/
 code committedBEFOREoneaffecteddiagnosticrun; not a blindtimeoutrestart.
+
+## Visible diagnostic terminal result — no further retry in this item
+
+Owned native handle19228 terminal1 at150d93a5071f92273d946c77948ec7463b629e64/clean:
+`.artifacts/v03/independent-input-refusal/2026-10-24T06-04-57-318Z/results.json`.
+Seven diagnostic phases/five positive gates. Same73: baseline0; unblurredLive10 with
+focus retained/app10/card1; Undo refuses and keeps10; Draft20 remains local at10 for
+1121ms/9samples/history1/noownAPIrequests; explicitApply20 removescards; Undo refuses
+and keeps20; laterLive10 applies/history3/card1. Three actualwrites live10/draft20/live10.
+One recorded after-ack appvisibility barrier loads normal lazyimage (false→true),
+keepsinput10/card1 andreturns inspector. Image criterion remains strict.
+
+Fourth nativeinsert20 is focused/noEnter/noBlur but does NOTapply: inspector says
+“This field changed. Discard the stale draft.”, raw20; app10/card1/imagesReadytrue,
+history3 unchanged/externalRevisiontrue. No force/reload/reset/discard/rebase.
+Exactmutatedattributes/initiatingwriter Unknown. Diagnosticremaining liveAgain20,
+baselineRestore andclosed phases unexecuted; no thirdrefusal orownerretirement credit.
+Original7tx/restore0 criterion stillFAIL: only2originalphasecomparisons pass,5observed
+comparisons fail and3unexecuted. ExpecteddiagnosticPARTIAL was NOTreached; actualFAIL
+retained. This bounded item stops expanding followups; next separateV03.17 diagnoses
+native revision/stale-draft origin before any proposed restorepolicy change.
+
+Independent saved `verify-native.mjs`/`native-checkpoint.json` recomputes retained
+phases/transactionprefixes/unknowns/originalcomparisons/Draftallsamples/refusals/
+visibilitybarrier/failedfourthinsert;20negative controls reject corruptions. Exact432
+registeredinputs/327product/223helper/65originalfiles and installed73/UI2host unchanged,
+originalthreeFAILs+theirbefore-changecheckpoints hashed. Attachedconsole0; allowned
+cleanup complete; Chrome679165/Vite679062 absent readonly/no kill. Source full2799 is
+before nine newdiagnostic controls; freshfocused92, not a fabricatedfull2808 run.
+ProductonlytwoUIchanges+threeversionmetadatafiles; no nativebackend/revisionguard/
+SDK/design/productionpolicy change. ONE whole-item review pending. FullV03/open task
+count20/29 unchanged; documents and diagnosticFAIL do not establish featureacceptance.
