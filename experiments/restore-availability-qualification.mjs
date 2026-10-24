@@ -3,8 +3,10 @@
 import assert from 'node:assert/strict';
 
 export const restoreAvailabilityPass='PASS_RESTORE_AVAILABILITY_NOT_FULL_V03';
+export const externalRestoreAvailabilityPass='PASS_EXPLICIT_EXTERNAL_RESTORE_AVAILABILITY_NOT_FULL_V03';
 const incomplete='INCOMPLETE_RESTORE_AVAILABILITY';
 const checks=['exact78-package-and-node-admission','original-picker-and-open','live10-and-disabled-restoration','live20-and-disabled-restoration','native-close-preserves-value','console-host-and-rendered-checks'];
+const externalChecks=[...checks];externalChecks[2]='live10-external-aba-read-and-disabled-restoration';externalChecks[3]='live20-external-aba-read-and-disabled-restoration';
 const cleanup=['appConsole','inspector','browser','vite','viteLogWrite','viteLogClose','api','desktop','pidsAbsent'];
 const physical=['tabId','origin','run','document','node','selector','property','build'];
 const identity=r=>({id:r.id,kind:r.kind,type:r.type,writable:r.writable,locator:r.locator});
@@ -31,8 +33,8 @@ function documentAndField(p,panelURL,value,closed){
   assert.equal(f[button].exists,true);assert.equal(f[button].visible,true);assert.equal(f[button].disabled,true);
  }
 }
-export function guardRestoreAvailability(r){
- assert.equal(r.schema,'stateatom.restore-availability-native/1');assert.equal(r.diagnosticOnly,true);
+function guardBehaviorFacts(r){
+ assert.equal(r.diagnosticOnly,true);
  assert.equal(r.originalCriteriaWaived,false);assert.equal(r.originalGuide,'FAIL');assert.equal(r.fullV03,false);
  assert.equal(r.traceInstrumented,false);assert.equal(r.productionChanges,false);assert.equal(r.selectedControlMatchesOriginal,true);
  assert.match(r.panelURL,/^chrome-extension:\/\/[a-p]{32}\/panel\.html$/);
@@ -89,15 +91,44 @@ export function guardRestoreAvailability(r){
  }
  return restoreAvailabilityPass;
 }
-export function finalizeRestoreAvailability(r){
+export function guardRestoreAvailability(r){assert.equal(r.schema,'stateatom.restore-availability-native/1');guardBehaviorFacts(r);return restoreAvailabilityPass;}
+export function guardExternalRestoreAvailability(r){
+ assert.equal(r.schema,'stateatom.external-restore-availability-native/1');assert.equal(r.protocolMode,'external-aba');guardBehaviorFacts(r);
+ assert(Array.isArray(r.externalInteractions)&&r.externalInteractions.length===2);
+ const base=currentResource(r.baseline).resource,target=r.baseline.inputs.target;
+ const complete=(p,previous)=>{assert.equal(p.captureStatus,'Complete');assert(Number.isFinite(p.startedAt)&&Number.isFinite(p.finishedAt)&&p.startedAt>=previous&&p.finishedAt>=p.startedAt);return p.finishedAt;};
+ for(const[index,ownValue]of[10,20].entries()){
+  const x=r.externalInteractions[index],prior=index?r.afterFirst:r.baseline,final=index?r.afterSecond:r.afterFirst,window=index?r.secondWindow:r.firstWindow;
+  assert.equal(x.ownValue,ownValue);complete(x,prior.finishedAt);
+  let previous=complete(x.before,x.startedAt);
+  for(const p of [x.before,x.after]){
+   requiredSnapshotIdentity(p);assert.equal(p.inputs.investigationId,r.baseline.inputs.investigationId);for(const k of physical)assert.equal(p.inputs.target[k],target[k]);for(const k of ['document','node','property'])assert.equal(p.selection.domIdentity[k],target[k]);
+   assert.deepEqual(identity(currentResource(p).resource),identity(base));assert.equal(currentResource(p).resource.value,ownValue);assert.deepEqual(p.inputs.history,final.inputs.history);assert.equal(p.inputs.closed,false);assert.equal(p.inputs.tainted,false);assert.equal(p.inputs.pending,null);assert.equal(p.inputs.cleanup,'active');
+   assert.equal(p.dom.minValue,String(ownValue));assert.equal(p.field.rowPresent,true);assert.equal(p.field.value,String(ownValue));assert.equal(p.field.dirty,false);assert.equal(p.field.ariaInvalid,'false');assert.equal(p.field.rowErrorVisible,false);
+  }
+  assert(Array.isArray(x.appEdits)&&x.appEdits.length===2);
+  for(const[i,value]of[ownValue+1,ownValue].entries()){
+   const e=x.appEdits[i];previous=complete(e,previous);assert.equal(e.value,value);assert.equal(e.method,'CDP.Input.insertText');assert.equal(e.dom.minValue,String(value));assert.equal(e.dom.minFocused,true);assert.equal(e.dom.ready,'complete');assert.equal(e.dom.errorOverlay,false);assert.equal(e.dom.imagesReady,true);assert.deepEqual(e.dom.products,index?[]:[1]);
+  }
+  previous=complete(x.read,previous);assert.equal(x.read.method,'native-input-ui-button');assert.equal(x.read.control,'input-read');assert.equal(x.read.directInputReadRPC,false);
+  previous=complete(x.after,previous);assert(x.finishedAt>=previous&&x.finishedAt<=window.startedAt);
+  const after=currentResource(x.after),before=currentResource(x.before).resource,owned=final.inputs.history.at(-1).outcomes[0].after;
+  assert.equal(after.externalRevision,true);assert.notEqual(after.resource.revision,before.revision);assert.notEqual(after.resource.revision,owned.revision);assert.equal(x.after.inputs.canUndo,false);assert.equal(x.after.inputs.canRestoreBaseline,false);documentAndField(x.after,r.panelURL,ownValue,false);
+ }
+ return externalRestoreAvailabilityPass;
+}
+function finalizeFacts(r,external){
+ const pass=external?externalRestoreAvailabilityPass:restoreAvailabilityPass,fail=external?'INCOMPLETE_EXTERNAL_RESTORE_AVAILABILITY':incomplete;
  try{
-  assert.equal(r.status,restoreAvailabilityPass);guardRestoreAvailability(r);
+  assert.equal(r.status,pass);(external?guardExternalRestoreAvailability:guardRestoreAvailability)(r);
   for(const k of ['console','appConsole','errors'])assert.deepEqual(r[k],[]);
   const c=r.appConsoleCollection;assert.equal(c.schema,'stateatom.restore-app-console/1');assert.equal(c.status,'Stopped');assert.equal(c.tabId,r.tabId);assert.equal(c.overflow,false);assert.equal(c.seen,r.appConsole.length);assert.deepEqual(c.records,r.appConsole);assert(Number.isFinite(c.startedAt)&&c.startedAt<=r.baseline.startedAt&&Number.isFinite(c.stoppedAt)&&c.stoppedAt>=r.closed.finishedAt);
-  assert.deepEqual(r.checks,checks.map(name=>({name,status:'PASS'})));
+  assert.deepEqual(r.checks,(external?externalChecks:checks).map(name=>({name,status:'PASS'})));
   for(const k of cleanup)assert.equal(r.cleanup[k],true);
   assert.equal(r.inputsUnchanged,true);assert(r.inputsBefore&&Object.keys(r.inputsBefore).length>0);assert.deepEqual(r.inputsAfter,r.inputsBefore);
   assert.deepEqual(r.views.map(v=>v.width),[1100,390]);for(const v of r.views){assert.equal(v.overflow,false);assert.equal(v.rootFont,'13px');}
-  return r.status=restoreAvailabilityPass;
- }catch{return r.status=incomplete;}
+  return r.status=pass;
+ }catch{return r.status=fail;}
 }
+export function finalizeRestoreAvailability(r){return finalizeFacts(r,false);}
+export function finalizeExternalRestoreAvailability(r){return finalizeFacts(r,true);}

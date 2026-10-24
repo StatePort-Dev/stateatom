@@ -13,19 +13,21 @@ import {sha256,fileManifest,verifyArtifactHashes,inspectInstalledPair} from '../
 import {sourceAccessDesktop} from '../helpers/source-access-native-desktop.mjs';
 import {nativeInspectorUI} from '../helpers/native-inspector-ui.mjs';
 import {admitInspectorOrderNode,cleanupInspectorOrder as cleanupRestoreAvailability} from './inspector-input-order-native.mjs';
-import {guardRestoreAvailability,finalizeRestoreAvailability,restoreAvailabilityPass} from '../../experiments/restore-availability-qualification.mjs';
+import {guardRestoreAvailability as guardPassiveRestoreAvailability,finalizeRestoreAvailability as finalizePassiveRestoreAvailability,restoreAvailabilityPass as passiveRestoreAvailabilityPass,guardExternalRestoreAvailability,finalizeExternalRestoreAvailability,externalRestoreAvailabilityPass} from '../../experiments/restore-availability-qualification.mjs';
 export {cleanupRestoreAvailability};
 
-const root=process.cwd(),casePath=path.join(root,'docs/testing/restore-availability-case78.json');
+const root=process.cwd();
 export const restoreAvailabilityCandidateSha='8e2d67e68a0ef2a798409156c581629adb3cd2e37f06e8bb3ef7c3c0d16bcf4a';
 export const restoreAvailabilityUISha='2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5';
 const error=code=>Object.assign(Error(code),{code}),json=async f=>JSON.parse(await readFile(f));
 const git=args=>execFileSync('git',args,{cwd:root,encoding:'utf8',timeout:5000,maxBuffer:4*1024*1024,stdio:['ignore','pipe','pipe']}).trim();
-export function parseRestoreAvailabilityArgs(args){
+function assertMode(mode){if(!['passive','external-aba'].includes(mode))throw error('INVALID_MODE');}
+export function parseRestoreAvailabilityArgs(args,mode='passive'){
+ assertMode(mode);const casePath=path.join(root,mode==='external-aba'?'docs/testing/external-restore-availability-case78.json':'docs/testing/restore-availability-case78.json');
  if(!Array.isArray(args)||!(args.length===1||args.length===2&&args[1]==='--preflight')||typeof args[0]!=='string'||!args[0]||args[0].startsWith('--'))throw error('INVALID_ARGUMENTS');
  if(path.resolve(args[0])!==casePath)throw error('CASE_SCOPE');return {caseFile:casePath,preflight:args.length===2};
 }
-export function restoreAvailabilityProtocol(){return {nativeInserts:[10,20],mode:'live',enter:false,blur:false,windowMs:1200,sampleIntervalMs:100,maxSamples:64,maximumReadyMs:20000,inputReadRefresh:false,rebase:false,discard:false,undo:false,restoreBaseline:false,close:true,productionChanges:false,certificateChanges:false,inputOrderTrace:false,newLiveTimingPolicy:false,extensionSetup:'historical-cli-preload',viewWidths:[1100,390]};}
+export function restoreAvailabilityProtocol(mode='passive'){assertMode(mode);const p={nativeInserts:[10,20],mode:'live',enter:false,blur:false,windowMs:1200,sampleIntervalMs:100,maxSamples:64,maximumReadyMs:20000,inputReadRefresh:false,rebase:false,discard:false,undo:false,restoreBaseline:false,close:true,productionChanges:false,certificateChanges:false,inputOrderTrace:false,newLiveTimingPolicy:false,extensionSetup:'historical-cli-preload',viewWidths:[1100,390]};return mode==='external-aba'?{...p,inputReadRefresh:true,externalAppEdits:[[11,10],[21,20]],externalInputMethod:'CDP.Input.insertText',explicitReadMethod:'native-input-ui-button'}:p;}
 export function admitRestoreAvailabilityPackage({h,types,admission,handoffSha256}){
  assert.equal(h.sourceDirty,false);assert.equal(h.package.version,'0.1.0-candidate.20261021.78');assert.equal(h.package.sha256,restoreAvailabilityCandidateSha);assert.equal(h.ui.sha256,restoreAvailabilityUISha);
  assert.equal(h.contract.apiVersion,1);assert.equal(h.contract.wireVersion,1);assert.equal(h.contract.uiContract,'2.1.0');
@@ -87,10 +89,26 @@ export async function sealRestoreAvailabilityAppConsole(record,panel){
   record.appConsoleCollection=c;record.appConsole=[...c.records];return c;
  }catch(e){record.appConsoleCollection={status:'Unknown/Unsupported'};throw e;}
 }
+export async function performRestoreExternalABA(record,ownValue,ops){
+ record.externalInteractions??=[];if(!([10,20][record.externalInteractions.length]===ownValue))throw error('STIMULUS_ORDER');
+ const now=ops.now||Date.now,x={captureStatus:'Partial',ownValue,startedAt:now(),appEdits:[]};record.externalInteractions.push(x);
+ try{
+  await ops.capture(x,'before');
+  for(const value of [ownValue+1,ownValue]){const e={captureStatus:'Partial',value,method:'CDP.Input.insertText',startedAt:now()};x.appEdits.push(e);try{e.dom=await ops.appEdit(value);e.captureStatus='Complete';}finally{e.finishedAt=now();}}
+  const read={captureStatus:'Partial',method:'native-input-ui-button',control:'input-read',directInputReadRPC:false,startedAt:now()};x.read=read;try{await ops.readUI();read.captureStatus='Complete';}finally{read.finishedAt=now();}
+  await ops.capture(x,'after');x.captureStatus='Complete';return x;
+ }finally{x.finishedAt=now();}
+}
+export async function dispatchRestoreApplicationText(value,point,send){
+ if(![10,11,20,21].includes(value)||!point||![point.x,point.y].every(Number.isFinite))throw error('INPUT_FORMAT');
+ for(const type of ['mouseMoved','mousePressed','mouseReleased'])await send('Input.dispatchMouseEvent',{type,...point,...(type==='mouseMoved'?{}:{button:'left',clickCount:1})});
+ for(const p of [{type:'rawKeyDown',key:'Control',code:'ControlLeft',windowsVirtualKeyCode:17,modifiers:2},{type:'rawKeyDown',key:'a',code:'KeyA',windowsVirtualKeyCode:65,modifiers:2},{type:'keyUp',key:'a',code:'KeyA',windowsVirtualKeyCode:65,modifiers:2},{type:'keyUp',key:'Control',code:'ControlLeft',windowsVirtualKeyCode:17,modifiers:0}])await send('Input.dispatchKeyEvent',p);
+ await send('Input.insertText',{text:String(value)});
+}
 
-async function preflight(caseFile){
- const s=await json(caseFile);assert.equal(s.schema,'stateatom.restore-availability-case/1');assert.equal(s.maximumNativeRuns,1);assert.deepEqual(s.protocol,restoreAvailabilityProtocol());
- assert(path.isAbsolute(s.out)&&s.out.startsWith(root+'/.artifacts/v03/restore-availability/'));assert.equal(s.atomSha256,restoreAvailabilityCandidateSha);assert.equal(s.uiSha256,restoreAvailabilityUISha);
+async function preflight(caseFile,mode){
+ const external=mode==='external-aba',s=await json(caseFile);assert.equal(s.schema,external?'stateatom.external-restore-availability-case/1':'stateatom.restore-availability-case/1');assert.equal(s.maximumNativeRuns,1);assert.deepEqual(s.protocol,restoreAvailabilityProtocol(mode));
+ assert(path.isAbsolute(s.out)&&s.out.startsWith(root+'/.artifacts/v03/'+(external?'external-restore-availability':'restore-availability')+'/'));assert.equal(s.atomSha256,restoreAvailabilityCandidateSha);assert.equal(s.uiSha256,restoreAvailabilityUISha);
  const actualNode={execPath:await realpath(process.execPath),procExe:await realpath('/proc/self/exe'),sha256:sha256(await readFile('/proc/self/exe'))};admitInspectorOrderNode(actualNode,s.node);
  const h=await json(s.atomHandoff),types=await json(s.packedTypes),admission=await json(s.packedAdmission);
  admitRestoreAvailabilityPackage({h,types,admission,handoffSha256:sha256(await readFile(s.atomHandoff))});
@@ -107,17 +125,18 @@ async function preflight(caseFile){
  return {s,h,app,actualNode,inputs};
 }
 
-async function main(){
- const args=parseRestoreAvailabilityArgs(process.argv.slice(2)),{s,h,app,actualNode,inputs}=await preflight(args.caseFile);
- if(args.preflight){console.log(JSON.stringify({status:'PASS_RESTORE_AVAILABILITY_PREFLIGHT_ONLY',inputs:Object.keys(inputs).length,browserStarted:false,originalFiles:65}));return;}
+export async function runRestoreAvailabilityNative(argv=process.argv.slice(2),mode='passive'){
+ const args=parseRestoreAvailabilityArgs(argv,mode),external=mode==='external-aba',{s,h,app,actualNode,inputs}=await preflight(args.caseFile,mode);
+ const restoreAvailabilityPass=external?externalRestoreAvailabilityPass:passiveRestoreAvailabilityPass,guardRestoreAvailability=external?guardExternalRestoreAvailability:guardPassiveRestoreAvailability,finalizeRestoreAvailability=external?finalizeExternalRestoreAvailability:finalizePassiveRestoreAvailability,incomplete=external?'INCOMPLETE_EXTERNAL_RESTORE_AVAILABILITY':'INCOMPLETE_RESTORE_AVAILABILITY';
+ if(args.preflight){console.log(JSON.stringify({status:external?'PASS_EXTERNAL_RESTORE_AVAILABILITY_PREFLIGHT_ONLY':'PASS_RESTORE_AVAILABILITY_PREFLIGHT_ONLY',inputs:Object.keys(inputs).length,browserStarted:false,originalFiles:65}));return;}
  assert.equal(git(['status','--porcelain']),'','Commit frozen case before its one run');
- await registerRestoreAvailabilityRun(s.out,{schema:'stateatom.restore-availability-registration/1',sourceRevision:git(['rev-parse','HEAD']),case:s,caseFile:args.caseFile,actualNode,browserNotStarted:true,inputsBefore:inputs});
- const r={schema:'stateatom.restore-availability-native/1',status:'RUNNING',out:s.out,diagnosticOnly:true,originalCriteriaWaived:false,originalGuide:'FAIL',fullV03:false,traceInstrumented:false,productionChanges:false,actualNode,checks:[],edits:[],views:[],console:[],appConsole:[],appConsoleCollection:{status:'NotStarted'},errors:[],traffic:[],cleanup:{},inputsBefore:inputs,collectionMeaning:'Exact78 owned CLI-preload harness, no inspector trace. Snapshot fields are interval-bounded, not atomic; app-console scope ends at its explicit delivery collector stop. No React writer/model schedule or user-install proof.'};
+ await registerRestoreAvailabilityRun(s.out,{schema:external?'stateatom.external-restore-availability-registration/1':'stateatom.restore-availability-registration/1',sourceRevision:git(['rev-parse','HEAD']),case:s,caseFile:args.caseFile,actualNode,browserNotStarted:true,inputsBefore:inputs});
+ const r={schema:external?'stateatom.external-restore-availability-native/1':'stateatom.restore-availability-native/1',protocolMode:mode,status:'RUNNING',out:s.out,diagnosticOnly:true,originalCriteriaWaived:false,originalGuide:'FAIL',fullV03:false,traceInstrumented:false,productionChanges:false,actualNode,checks:[],edits:[],externalInteractions:[],views:[],console:[],appConsole:[],appConsoleCollection:{status:'NotStarted'},errors:[],traffic:[],cleanup:{},inputsBefore:inputs,collectionMeaning:'Exact78 owned CLI-preload harness, no inspector trace. Snapshot fields are interval-bounded, not atomic; app-console scope ends at its explicit delivery collector stop. No React writer/model schedule or user-install proof.'};
  let api,vite,viteLog,viteOutput='',viteError,browser,desktop,panel,ui,tabId;
  const check=async(name,fn)=>{r.phase=name;await fn();r.checks.push({name,status:'PASS'});console.log('PASS',name);};
  const state=()=>rpc(panel,{op:'state',tabId,refreshDeep:false});
  const appCommand=(method,params={})=>panel.evaluate(async({id,method,params})=>chrome.debugger.sendCommand({tabId:id},method,params),{id:tabId,method,params});
- const appDOM=()=>panel.evaluate(async id=>(await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:()=>({ready:document.readyState,minValue:document.querySelector('#minPrice')?.value,products:[...document.querySelectorAll('a[href^="/product/"]')].map(e=>Number(e.getAttribute('href').split('/').at(-1))).sort((a,b)=>a-b),imagesReady:[...document.querySelectorAll('a[href^="/product/"] img')].every(e=>e.complete&&e.naturalWidth>0),errorOverlay:!!document.querySelector('vite-error-overlay, #webpack-dev-server-client-overlay, nextjs-portal')})}))[0].result,tabId);
+ const appDOM=()=>panel.evaluate(async id=>(await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:()=>({ready:document.readyState,minValue:document.querySelector('#minPrice')?.value,minFocused:document.activeElement===document.querySelector('#minPrice'),products:[...document.querySelectorAll('a[href^="/product/"]')].map(e=>Number(e.getAttribute('href').split('/').at(-1))).sort((a,b)=>a-b),imagesReady:[...document.querySelectorAll('a[href^="/product/"] img')].every(e=>e.complete&&e.naturalWidth>0),errorOverlay:!!document.querySelector('vite-error-overlay, #webpack-dev-server-client-overlay, nextjs-portal')})}))[0].result,tabId);
  const fieldSelector='[data-input-selector="#minPrice"] input',field=()=>panel.evaluate(readRestoreAvailabilityField,fieldSelector);
  const ops={state,dom:appDOM,field};
  const capture=(record,key)=>captureRestoreAvailabilitySnapshot(record,key,ops);
@@ -134,6 +153,13 @@ async function main(){
  async function settled(count,value){
   return waitFor(async()=>{const st=await state(),f=await field(),row=st.inputs?.resources.find(x=>x.resource.locator.selector==='#minPrice'),tx=st.inputs?.history.at(-1);if(f.rowErrorVisible)throw Error('Visible native field refusal');return st.inputs?.history.length===count&&tx.phase==='applied'&&!st.inputs.pending&&row.resource.value===value&&row.resource.revision!==tx.outcomes[0].after.revision&&row.externalRevision===true&&st.inputs.canUndo===false&&st.inputs.canRestoreBaseline===false&&f.undo.disabled===true&&f.baseline.disabled===true&&!f.dirty&&f.value===String(value);},20000);
  }
+ async function ownApplied(count,value){return waitFor(async()=>{const st=await state(),f=await field(),row=st.inputs?.resources.find(x=>x.resource.locator.selector==='#minPrice'),tx=st.inputs?.history.at(-1);if(f.rowErrorVisible)throw Error('Visible native field refusal');return st.inputs?.history.length===count&&tx.phase==='applied'&&!st.inputs.pending&&row.resource.value===value&&!f.dirty&&f.value===String(value)&&f.ariaInvalid==='false';},20000);}
+ async function appEdit(value){
+  await panel.evaluate(id=>chrome.tabs.update(id,{active:true}),tabId);await appCommand('Page.bringToFront');
+  const point=(await appCommand('Runtime.evaluate',{expression:`(()=>{const e=document.querySelector('#minPrice');if(!e||e.disabled)throw Error('Original native input unavailable');e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2};})()`,returnByValue:true})).result.value;
+  await dispatchRestoreApplicationText(value,point,appCommand);const d=await appDOM();assert.equal(d.minValue,String(value));assert.equal(d.minFocused,true);return d;
+ }
+ async function editPhase(value,count){await fill(value);if(external){await ownApplied(count,value);await performRestoreExternalABA(r,value,{capture,appEdit,readUI:async()=>{await ui.click('input-read');await settled(count,value);}});}else await settled(count,value);await windowSamples(count===1?'firstWindow':'secondWindow');await capture(r,count===1?'afterFirst':'afterSecond');}
  try{
   await check('exact78-package-and-node-admission',async()=>{r.browserNotStarted=true;assert.equal(h.package.version,'0.1.0-candidate.20261021.78');});
   api=createServer((req,res)=>{r.traffic.push({method:req.method,url:req.url});res.setHeader('access-control-allow-origin','*');res.setHeader('cache-control','no-store');if(req.method!=='GET'){res.writeHead(405);res.end();return;}if(req.url==='/synthetic.svg'){res.setHeader('content-type','image/svg+xml');res.end(s.syntheticImage);return;}const products=s.syntheticProducts.map(({imagePath,...p})=>({...p,image:r.apiOrigin+imagePath})),data=req.url==='/products'?products:req.url==='/products/categories'?['electronics']:req.url==='/products/1'?products[0]:null;if(data===null){res.writeHead(404);res.end();return;}res.setHeader('content-type','application/json');res.end(JSON.stringify(data));});
@@ -155,14 +181,14 @@ async function main(){
    r.selectedControlMatchesOriginal=await panel.evaluate(async({id,selector})=>(await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:sel=>document.querySelector(sel)===document.querySelector('#minPrice'),args:[selector]}))[0].result,{id:tabId,selector:st.selection.selector});assert.equal(r.selectedControlMatchesOriginal,true);
    await ui.click('inputs-nav');await ui.select('input-source','dom-control');await waitFor(async()=>!await panel.evaluate(sel=>document.querySelector(sel).disabled,ui.q('input-open')));await ui.click('input-open');await waitFor(async()=>(await state()).inputs?.resources.some(x=>x.resource.locator.selector==='#minPrice'));await waitFor(()=>panel.evaluate(sel=>document.querySelector(sel).getAttribute('aria-busy')==='false',ui.q('input-editor')));await capture(r,'baseline');assert.equal(r.baseline.inputs.history.length,0);
   });
-  await check('live10-and-disabled-restoration',async()=>{await fill(10);await settled(1,10);await windowSamples('firstWindow');await capture(r,'afterFirst');});
-  await check('live20-and-disabled-restoration',async()=>{await fill(20);await settled(2,20);await windowSamples('secondWindow');await capture(r,'afterSecond');});
+  await check(external?'live10-external-aba-read-and-disabled-restoration':'live10-and-disabled-restoration',()=>editPhase(10,1));
+  await check(external?'live20-external-aba-read-and-disabled-restoration':'live20-and-disabled-restoration',()=>editPhase(20,2));
   // Screenshots are candidate evidence of the active editor before Close.
-  for(const width of [1100,390]){const file=s.out+'/inputs-'+width+'-candidate.png',view=await ui.screenshot(file,{width,focus:'inputs-section'});r.views.push(view);await copyFile(file,'/tmp/stateatom-restore-availability-'+width+'-candidate.png');}
+  for(const width of [1100,390]){let view;const screenshots=[];for(const focus of external?['inputs-section','input-read']:['inputs-section']){const label=focus==='input-read'?'actions':'fields',file=s.out+'/inputs-'+label+'-'+width+'-candidate.png',current=await ui.screenshot(file,{width,focus});view??=current;screenshots.push({file,sha256:sha256(await readFile(file)),focus,...current});await copyFile(file,'/tmp/stateatom-'+(external?'external-':'')+'restore-availability-'+path.basename(s.out)+'-'+label+'-'+width+'-candidate.png');}r.views.push({...view,screenshots});}
   await check('native-close-preserves-value',async()=>{await ui.click('input-close');await waitFor(async()=>{const st=await state();return st.inputs?.closed===true&&st.inputs.cleanup==='closed';});await capture(r,'closed');guardRestoreAvailability(r);});
   await check('console-host-and-rendered-checks',async()=>{assert.deepEqual(await fileManifest(h.hosts.standalone),h.consumerReceipt.hostFiles.standalone);await sealRestoreAvailabilityAppConsole(r,panel);assert.deepEqual(r.appConsole,[]);assert.equal(r.appConsoleCollection.overflow,false);assert.deepEqual(r.console,[]);assert.deepEqual(r.errors,[]);});
   r.status=restoreAvailabilityPass;
- }catch(e){r.errors.push(String(e.stack||e));r.status='INCOMPLETE_RESTORE_AVAILABILITY';process.exitCode=1;if(panel&&tabId)try{await capture(r,'failure');await panel.screenshot({path:s.out+'/failure-candidate.png'});}catch(e){r.errors.push('Partial capture: '+e.message);}}
+ }catch(e){r.errors.push(String(e.stack||e));r.status=incomplete;process.exitCode=1;if(panel&&tabId)try{await capture(r,'failure');await panel.screenshot({path:s.out+'/failure-candidate.png'});}catch(e){r.errors.push('Partial capture: '+e.message);}}
  finally{
   await cleanupRestoreAvailability([
    ['appConsole',()=>sealRestoreAvailabilityAppConsole(r,panel)],
@@ -177,4 +203,5 @@ async function main(){
   r.finishedAt=new Date().toISOString();await writeFile(s.out+'/results.json',JSON.stringify(r,null,2)+'\n',{flag:'wx'});console.log(r.status,s.out+'/results.json');
  }
 }
-if(process.argv[1]&&pathToFileURL(path.resolve(process.argv[1])).href===import.meta.url)main().catch(e=>{const allowed=['INVALID_ARGUMENTS','CASE_SCOPE','FROZEN_INPUT_DRIFT','INPUT_FORMAT','OUTPUT_SCOPE','EEXIST','ENOENT','EACCES'];console.error('RESTORE_AVAILABILITY_ERROR',allowed.includes(e?.code)?e.code:'FAILED');process.exitCode=1;});
+export function restoreAvailabilityDriverError(e){const allowed=['INVALID_ARGUMENTS','INVALID_MODE','CASE_SCOPE','FROZEN_INPUT_DRIFT','INPUT_FORMAT','OUTPUT_SCOPE','EEXIST','ENOENT','EACCES'];return allowed.includes(e?.code)?e.code:'FAILED';}
+if(process.argv[1]&&pathToFileURL(path.resolve(process.argv[1])).href===import.meta.url)runRestoreAvailabilityNative().catch(e=>{console.error('RESTORE_AVAILABILITY_ERROR',restoreAvailabilityDriverError(e));process.exitCode=1;});

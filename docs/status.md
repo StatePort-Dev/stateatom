@@ -1,8 +1,9 @@
 # Project status
 
 Active bounded work: [V03.25](completion/153-v03-external-restore-availability.md),
-explicit native app ABA plus Read current values on unchanged78/UI2. Source gates
-and new committed max1 case first; no native started/product behavior change.
+explicit native app ABA plus Read current values on unchanged78/UI2. Source137/
+full3445PASS; old100 controls/current327/13oldraw preserved. New frozen physical case,
+preflight/commit then max1native remain. No native started/product change/rebuild.
 V03.24 stays exhausted/INCOMPLETE; original guide FAIL/whole20of29 unchanged.
 
 Completed bounded attempt: [V03.24](completion/152-v03-packed-restore-availability.md).

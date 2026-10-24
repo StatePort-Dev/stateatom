@@ -5801,14 +5801,22 @@
       "active_slice": {
         "id": "V03.25",
         "record": "153-v03-external-restore-availability.md",
-        "status": "planning-explicit-external-aba-and-ui-read",
+        "status": "explicit-external-source-gates-complete-case-due",
         "base": "a245ffc",
         "candidate": "0.1.0-candidate.20261021.78",
         "candidate_rebuilt": false,
         "native_started": false,
         "maximum_native_runs": 1,
         "full_V03_acceptance": false,
-        "existing_guards_relaxed": false
+        "existing_guards_relaxed": false,
+        "source_focused": 137,
+        "new_source_guard_controls": 28,
+        "new_source_harness_controls": 9,
+        "prior_source_controls_preserved": 100,
+        "full_source_tests": 3445,
+        "full_source_failures": 0,
+        "full_source_cancelled": 0,
+        "product_changed": false
       },
       "completed_slices": [
         {
@@ -6734,8 +6742,8 @@
       ],
       "current_checkpoint": {
         "record": "153-v03-external-restore-availability.md",
-        "status": "planning-explicit-external-aba-and-ui-read",
-        "next_bounded_step": "Task1 source TDD for closed external mode/app ABA/UI read and distinct guarded schema; preserve old100controls/current327/unchanged78 pair. No native yet."
+        "status": "explicit-external-source-gates-complete-case-due",
+        "next_bounded_step": "Task2 prepare new external78 case, source-only --preflight, commit case before ONE native run; no old case/candidate rebuild."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-semantic-negative-controls.md",
       "implementation_plan": "../superpowers/plans/2026-10-25-v03-external-restore-availability.md",
@@ -7036,8 +7044,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.25-planning-explicit-external-aba",
-    "next_item": "Task1 source TDD for closed external mode/app ABA/UI read and distinct guarded schema; preserve old100controls/current327/unchanged78 pair. No native yet.",
+    "current_increment": "V03.25-source-gates-complete-case-due",
+    "next_item": "Task2 prepare new external78 case, source-only --preflight, commit case before ONE native run; no old case/candidate rebuild.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7064,7 +7072,7 @@
     "active_item": {
       "id": "V03",
       "record": "153-v03-external-restore-availability.md",
-      "status": "planning-explicit-external-aba-and-ui-read"
+      "status": "explicit-external-source-gates-complete-case-due"
     },
     "completed_increments": [
       {
@@ -9759,11 +9767,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.24 closesa245ffc source100/full3408/review0C3Ifixed0M, NativeIncomplete/rawunchanged. NewV03.25 explicitnativeappABA+normalUIread withsame78/UI2; source/preflight/freshcasecommitgates beforemax1newNative, nooldcaseretry/productchange. Whole20of29 unchanged.",
+    "current_activity_note": "V03.25 source137/full3445PASS, old100 controls preserved, current327/78/UI2/13raw unchanged. Fixed externalABA/read mode/newschema ready for new physicalcase/preflight/commit then max1Native. No productchange/rebuild/oldcaseretry/fullV03 or20of29 credit.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "a245ffc",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "Task1 source TDD for closed external mode/app ABA/UI read and distinct guarded schema; preserve old100controls/current327/unchanged78 pair. No native yet.",
+    "next_bounded_step": "Task2 prepare new external78 case, source-only --preflight, commit case before ONE native run; no old case/candidate rebuild.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
