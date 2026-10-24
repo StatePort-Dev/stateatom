@@ -45,7 +45,7 @@ Actualnative siteAllow/read-only admission remains, not a production editing gra
 This is setupreuse, no freshcertificate/permissionUX acceptance. Setup failure must
 remainINCOMPLETE; no HTTP/TLSbypass/certificateGUI retry campaign.
 
-## Before the one native run
+## Before the one native run — historical preregistration state
 
 Actual newdriver seed/initialinventory/independentcleanup controls RED0PASS/13FAIL
 →GREEN13; combined originalprotocol19PASS; focused35PASS; fullsource2697PASS,
@@ -56,7 +56,8 @@ commit precedes native. Protected earlycase/handoff/Git/input failure terminal r
 originalprimaryerror and independent acquired-owner cleanup retained. All attempts/
 workloads/windows/samples/preregistration/driver/fixture kept, failures not discarded.
 
-Native run and ONE fresh final review are due. No appCDP, workerphaseprobe, extra
+At preregistration, native run and ONE fresh final review were due. The actual
+result and final review below govern the current state. No appCDP, workerphaseprobe, extra
 request/instrumentation, model/ActionTrace/Live/source/SDK/UI/redesign/IDE/publication/
 otherrepo campaign. Inspector console/exception coverage only; no worker/guardian
 console completeness, nativefault/CPU/universal performance/fullBasiccorpus or fullV02
@@ -104,3 +105,47 @@ ONE final fresh readonly review due. Candidate next ONE **V02.16** selects/regis
 bounded diagnosis of current attached Basic cost behind23.52/23.68% Basic/off,
 retaining original102 as context and current15 as unchanged primary gate; no source
 optimization, guard removal, workload/denominator/threshold waiver is pre-approved.
+
+
+## Final review and bounded completion
+
+ONE fresh readonly /root/v0215_whole_review (gpt-6-astra/high),03a8147..46caee5:
+0Critical/0Important/1Minor. Minorstatus wording could cause a duplicate run; current
+status now explicitly states completedmeasurement/overheadmisses/completedreview,
+and the preparationdue text is labelled historical. No product/source correctionpass,
+secondreview or native repeat. Actualsource2697/focused35/newharness13 and saved
+independent16negativecontrols remain; reviewer freshly19sourcechecks and savednative
+verifier match. Report+SHAreceipt retained in artifactreview directory.
+
+Every declined scope ruling is explicit, with its evidence cost:
+
+- Rootcause/optimization: no causal instrumentation; attachedBasic cost requires a
+  separate bounded diagnosis before any product change.
+- General performance/CPU/otherworkloads/fullBasiccorpus: only this registered
+  synthetic gate is measured, no universal or fullV02 readiness.
+- Freshcertificate/permissionUX: setupreuse is accepted here, no freshimportUX proof.
+- AllOS/browsertrustreads: ordinaryChrome platform behavior not audited; ownprofile
+  executor operations do not establish complete OS-read isolation.
+- Nativefault/terminationcleanup: actualsource controls prove sequencing/errorhandling,
+  not every nativefailure or processkill outcome.
+- PersistedHTTPtraffic: actualdriver servercount assertion retained; no independent
+  persisted servertrace reconstruction.
+- Worker/guardian exception/rejectioncompleteness: inspector-only collection, no
+  allsurface clean-run claim.
+- Humanvisual/UX: candidates only, no humanapproval; independenthuman is nonblocker.
+- Inheritedtypes/admission/backend: exactqualifiedbytes and receipts verified,
+  unchanged suites not rerun; no additional generalbehavior qualification.
+- WholeV02/V03/C09/A02/L02/publicAPI/SDK/release/publication: no new wholeacceptance.
+  Exactscope ruling: L02/A05 remain mandatory; A05 remains complete within its
+  existingbrief (not reopened), L02 open; SDK remains outsideAtom with no new blocker.
+
+One next **V02.16**: select/register a bounded discrimination of current attached
+Basic cost before optimizing. Focused source preparation found no demonstrated
+Basic readonly Network-event persistence duplication in runtime's inspected branch.
+Basic text inspection enables DOM; original102 rawFull floor omitted DOM while the
+originalworkload changes counterDOM20times. A DOMinstrumentation/event-cost hypothesis
+therefore merits a separate controlled question; it is not an established cause,
+approved guard shortcut or reason to repeat the old broadtransport campaign.
+Keep current15 gate, originalthresholds/ownership/authority/records/Unknown intact.
+No protocol/source/native change for16 was implemented by this item. Whole20/29
+unchanged, currentBasicp95 met here, active/off stillmissed, fullV02 open. Localonly.

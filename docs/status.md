@@ -2226,11 +2226,16 @@ registers the original Basic/observer latency-overhead gate on72 without thresho
 changes/waivers or an IDE/certificate/user-profile/broad-matrix campaign.
 
 
-[V02.15](completion/134-v02-current-basic-observer.md) registers original Basic/
-observer gate on unchanged72:198rows/66windows, Basicp95≤1000ms and active/off≤10%
-remain original. Full2697/focused35/newactualharness13 sourcePASS. Fixed404inputs/
-327product/223helper/archive/install unchanged. Exact retained syntheticTLS and
-singleCA database are copied only to fresh ownprofiles, no certificateGUI/newcert/
-user/systemtrust campaign. Native gate and ONE review still due; preparation/source
-checks do not establish currenttarget acceptance. V02.14 and historical misses remain
-recorded, whole20/29/fullV02 unchanged.
+[V02.15](completion/134-v02-current-basic-observer.md) completes the original
+Basic/observer measurement on unchanged72:198rows/18warm180measured/66windows,
+404stableinputs/327product/223helper/allownedcleanup. Basicp95433.8/419.5ms meets1s;
+active/off26.6442/29.3247% **misses10%**, targetsMetfalse/fullperformancegateopen.
+Full2697/focused35/newharness13 and independent16negativecontrols PASS. Exact retained
+syntheticTLS/singleCA database seed succeeded in freshownprofiles without newcert/
+certificateGUI/user-systemtrust changes; no freshcertificateUX acceptance. ONE final
+review0Critical/0Important/1Minor accepted finiteevidence; currentstatus/historicaldue
+wording synchronized, no sourcecorrection/native repeat. NextONEV02.16 selects a
+bounded current attachedBasic/DOMinstrumentation cost discrimination before any
+optimization; no assumedcause/guardshortcut/thresholdwaiver. Historicalmisses and
+whole20/29/fullV02/V03/C09/A02/L02 stay open; A05 remains scopedcomplete and mandatory,
+SDK outsideAtom, independenthuman nonblocker.
