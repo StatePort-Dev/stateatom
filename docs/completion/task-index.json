@@ -4311,7 +4311,7 @@
       "active_slice": {
         "id": "V02.11",
         "title": "Own-worker API phases during existing input gestures",
-        "status": "first-native-overflow-FAIL-capacity-case-prepared",
+        "status": "native-complete-review-due",
         "record": "130-v02-worker-api-phases.md",
         "design": "../superpowers/specs/2026-10-24-v02-worker-api-phases-design.md",
         "plan": "../superpowers/plans/2026-10-24-v02-worker-api-phases.md",
@@ -4320,22 +4320,39 @@
         "source_checks": 2656,
         "focused_checks": 57,
         "driver_failure_controls": 8,
-        "native_rows_due": 12,
         "performance_acceptance": false,
         "targets_waived": false,
         "review_pending": true,
         "first_native_result": ".artifacts/v02/input-worker-api-phases/2026-10-24T02-08-40-191Z/results.json",
         "first_native_status": "FAIL",
-        "accepted_native_rows": 0,
+        "accepted_native_rows": 12,
         "capacity_case": "../testing/input-worker-api-phases-capacity-case.json",
         "recording_capacity": 16384,
-        "default_recording_capacity": 2048
+        "default_recording_capacity": 2048,
+        "native_rows": 12,
+        "warmup_rows": 4,
+        "measured_rows": 8,
+        "owned_rpc_rows": 40,
+        "apply_rpc_rows": 12,
+        "state_rpc_rows": 26,
+        "capability_rpc_rows": 2,
+        "worker_api_rows": 24466,
+        "worker_api_peak_per_window": 2598,
+        "worker_api_rejections": 0,
+        "registered_inputs": 351,
+        "product_inputs_unchanged": 327,
+        "helper_inputs_unchanged": 223,
+        "protocol_negative_controls": 15,
+        "independent_interval_sweep": true,
+        "runtime_result": ".artifacts/v02/input-worker-api-phases/2026-10-24T02-15-52-693Z/results.json",
+        "verification": ".artifacts/v02/worker-api-phases/2026-10-24/native-checkpoint.json",
+        "actual_native_revision": "8673fe1"
       },
       "execution_record": "130-v02-worker-api-phases.md",
       "current_checkpoint": {
         "record": "130-v02-worker-api-phases.md",
-        "status": "first-native-overflow-FAIL-capacity-case-prepared",
-        "next_bounded_step": "Complete separately registered12-row capacity16384 diagnosis after source gates; retain original2048 FAIL and no-overflow rule, ONE final review"
+        "status": "native-complete-review-due",
+        "next_bounded_step": "ONE final V02.11 review, then V02.12 choose/register narrow guardian-RPC timing control for uncovered Apply interval; no guard removal/old matrix rerun"
       },
       "completed_slices": [
         {
@@ -5677,8 +5694,8 @@
     "document": "130-v02-worker-api-phases.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.11-first-native-FAIL-capacity-case-prepared",
-    "next_item": "Complete separately registered12-row capacity16384 diagnosis after source gates; retain original2048 FAIL and no-overflow rule, ONE final review",
+    "current_increment": "V02.11-native-complete-review-due",
+    "next_item": "ONE final V02.11 review, then V02.12 choose/register narrow guardian-RPC timing control for uncovered Apply interval; no guard removal/old matrix rerun",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7970,11 +7987,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "First2048 recording overflows/FAIL0accepted; preserved with missing-raw-data limitation. Explicit separate16384 case and pre-validation retention,57 controls pass; no original acceptance waiver.",
+    "current_activity_note": "Separate16384 case12rows/24466API/40RPC/351inputs PASS; first2048 FAIL retained. Current source2656/57controls and saved sweep/15negative checks PASS; ONE review due, whole20/29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "e21f10b2b4d2099471735561ffef42e7f4610c5e",
+    "current_source_revision": "8673fe1",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "Complete separately registered12-row capacity16384 diagnosis after source gates; retain original2048 FAIL and no-overflow rule, ONE final review"
+    "next_bounded_step": "ONE final V02.11 review, then V02.12 choose/register narrow guardian-RPC timing control for uncovered Apply interval; no guard removal/old matrix rerun"
   },
   "next_task": "V02"
 }

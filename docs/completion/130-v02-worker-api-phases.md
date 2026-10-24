@@ -115,3 +115,50 @@ slow/tail/unknown data. The separate current run is still due.
 Current full source after retention/capacity change:2656PASS/0FAIL/0SKIP,
 `full-source-capacity.log`; combined57 source/driver/VM controls PASS. The earlier
 2654 result belongs to the original2048 implementation. Both remain retained.
+
+## Actual separate capacity result
+
+Actual8673fe1/handle90727/exit0:
+`.artifacts/v02/input-worker-api-phases/2026-10-24T02-15-52-693Z/results.json`,
+`PASS_WORKER_API_PHASE_DIAGNOSIS_NOT_PERFORMANCE_ACCEPTANCE`.
+All12rows/4warmup/8measured,2fresh hosts/14ledger checkpoints,40 owned inspector
+RPCs=12Apply+26state+2capabilities.24,466worker API rows,0rejected,0pending/overflow/
+unsupported, peak2598 (first warmup), within separately fixed16384. Measured whole
+windows contain1922Live/1932Draft API rows, including concurrent state. The first
+2048 FAIL is still FAIL; new counts are not reconstructed evidence for that run.
+
+351 preregistered inputs stable; exact327 product inputs/helper223/71/UI2/installed
+pair/both hosts verified without rebuilding.0instrumented inspector/worker errors
+and console; every current ack, Draft-before-Apply unchanged state, unrelated output/
+getter0 and persisted non-executable summary passes. Own worker sessions, browser,
+display and server close. Original types/admission/backend/native22 are retained,
+not rerun or upgraded. All raw worker snapshots are written before validation and
+agree exactly with each successful sample/terminal result.
+
+Medians, milliseconds, **2 measured samples per host/mode**:
+
+| Host | Mode | Apply RPC | API interval union inside Apply | Uncovered Apply interval |
+| --- | --- | ---: | ---: | ---: |
+| standalone |Live |746.30 |256.20 |490.10 |
+| standalone |Draft/Apply |747.70 |253.70 |494.00 |
+| embedding |Live |736.65 |254.70 |481.95 |
+| embedding |Draft/Apply |791.95 |277.05 |514.90 |
+
+Native-command API union medians52.30–57.20ms; selected-tab lookup126–143ms and
+worker-wide permission62–69ms are separately retained in the checkpoint. Do not
+sum these categories: their operations can overlap with each other and state.
+This does not assign the uncovered interval to guardian RPC, JS, queues or one
+request, or prove that removing authority checks is safe. It does not qualify an
+uninstrumented p95 target, demonstrate a new speedup or invent a Live/Apply SLO.
+Clock origins/raw precision and every tail remain recorded; no quantization bound
+or cross-process causal identity is inferred.
+
+Saved-result verifier `.artifacts/v02/worker-api-phases/2026-10-24/verify-native.mjs`
+passes exact input/archive/install/trace/ledger checks and15 deliberately malformed
+protocol controls. A second sweep-line implementation independently reproduces
+all clipped API unions/uncovered intervals. Checkpoint native-checkpoint.json binds
+actual result/commit and every raw count, without another native execution.
+ONE final fresh review is now due. The next bounded candidate after that review is
+V02.12: choose/register a narrow guardian-RPC timing control for the still-uncovered
+Apply interval before any new product optimization. The recording method is not
+claimed already approved or implemented; no guard removal or old matrix rerun.
