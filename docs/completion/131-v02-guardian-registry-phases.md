@@ -89,3 +89,51 @@ source control for redundant registry snapshots on unchanged-lease verification;
 first establish which operations mutate authority and preserve every revalidation,
 recovery and cleanup barrier. This is an executor candidate, not an approved shortcut,
 implemented optimization, changed grant policy or permission to remove guards.
+
+
+## Final review and source-only failure-retention correction
+
+ONE fresh readonly review `/root/v0212_whole_review` (gpt-6-astra/high),
+532f4dc..6fd0169:0Critical/1Important/0newMinor. Important: the worker trace was
+validated before collecting registry, and a registry pending wait preceded its
+persistence. Actual joined-source controls reproduced both missing streams, beyond
+the original individually settled line controls. The retained successfulda87a6f
+measurement remains supported; no failed trace is fabricated or native rerun needed.
+
+ONE correction pass: acquire both available snapshots independently; retain each in
+terminal/current trace and new raw `probe-observations.jsonl` BEFORE either schema
+summary or pending-wait refusal. On earlier trial failure, make one best-effort
+paired snapshot attempt before context cleanup; secondary read/write failure remains
+separate from the primary error. Snapshot/read/raw-append failures cannot suppress
+the other available stream. Joined actual driver summary/pending controls and pending/
+independent-write/primary-error controls RED0PASS6FAIL→GREEN6; driver16/combined82/
+full2673PASS/0FAIL/0SKIP. Original12driver/78combined/2673full logs remain historical.
+
+Actual native code staysda87a6f. Explicit before/after hashes/copies for driver plus
+two registered synthetic-control files (351 other preregistered inputs unchanged)
+and one added control are in
+`.artifacts/v02/guardian-registry-phases/2026-10-24/post-run-harness-correction.json`.
+Original native verifier/checkpoint unchanged; exact-allowance saved verifier passes
+all original354identity/trace/archive/install/ledger/25negative/sweep gates, stores
+post-review-checkpoint.json. This is source evidence for failure retention, not new
+native execution of the corrected driver.
+
+Review boundary rulings and costs: full tasks/original targets remain open; partial
+concurrent occupancy does not prove entire guardian/CPU/criticalpath/Apply causality/
+between-run speedup. Hostile Proxy/intrinsic/spoofed-event realms are outside the
+trusted diagnostic. Public row cap does not bound internal IDs/listeners for arbitrary
+unbounded workloads; this fixed finite case supplies no such guarantee. Failed native
+listener removal is terminalFAIL with owned browser closure, not generic retryable
+cleanup: a failed listener can remain until that context closes. V02.13 remains a
+separate source design/control candidate. Existing Promise-observer rejection limit
+and sparse-options Minor stay documented; no uninstrumented completeness or sparse
+configuration support. Historical pending prose is preregistration history; final
+routing governs. New native/other-browser/host/human/release/SDK/IDE/account/certificate/
+other-repo acceptance is neither added nor made a blocker. Costs/decisions are in
+retained ledger; earlier reporting/sparse Minors deferred, no newMinor.
+
+V02.12 is complete as a finite registry interval diagnosis. Whole20/29 (~69%), full
+V02 and original thresholds unchanged. Next one **V02.13**: bounded source controls
+for redundant registry snapshots while preserving every live verification, recovery,
+revocation and cleanup barrier. Choose/design it before implementation; no approved
+shortcut or product speedup is inferred from this record.

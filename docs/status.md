@@ -2186,3 +2186,16 @@ full2657/combined58; actual native8673fe1 retained with exact helper/test post-r
 correction, no repeat. No fullV02/performance/human/release credit;20/29 unchanged.
 NextV02.12 chooses/registers guardian-RPC timing for the uncovered interval before
 another optimization; no guard removal, IDE, certificate or broad matrix campaign.
+
+
+[V02.12](completion/131-v02-guardian-registry-phases.md) completes finite guardian
+registry-worker timing on unchanged71/UI2:12rows/21876registry+24465API/40RPC/
+354stableinputs/14ledgers PASS. Registry union241.50–266.40ms and combinedAPI+registry
+493.15–526.90ms leave234.15–258.15ms Unknown, n2 perhostmode. Partial guardian segment/
+state/health/coarsening limits remain; no entireRPC/CPU/cause/speedup acceptance.
+ONE review1Important corrected paired failure/pending raw retention once with actual
+joined-source RED→GREEN, full2673/combined82/driver16. Native da87a6f and original
+checkpoint preserved with exact3harness/control changes declared; no repeat. Whole
+20/29/fullV02/V03/C09/A02/L02 unchanged. NextV02.13 chooses/designs bounded source
+controls for redundant registry snapshots, preserving all live authority/recovery/
+revocation/cleanup barriers; no approved shortcut, IDE or certificate campaign.
