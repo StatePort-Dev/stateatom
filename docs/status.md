@@ -1,14 +1,13 @@
 # Project status
 
 Active bounded work: [A02.6](completion/147-a02-array-callsite-bridge.md) source
-call-site bridge. Frame API, conservative Babel transform and finite source driver
-pass111 focused/3149 full source controls;327 product/nine historical inputs unchanged. Actual
-receiver/argument/callback semantics are checked, including the prototype's stack
-counterexample. First native attempt341dd50 is literal INCOMPLETE before any app
-phase: gated Browser.getBrowserCommandLine requires an absent automation flag.
-407 frozen inputs/owned cleanup verified; source-only identity-collector correction
-is next. No source/UI qualification or product
-integration or new whole-task credit;20/29 unchanged.
+call-site bridge, final review due.112 focused/3150 full source controls pass;
+327 product/nine historical inputs unchanged. Both allowed native attempts ended
+before app phases: first a gated identity command, second owned-profile mismatch.
+Literal Incomplete results retained; second saved413 inputs and11 partial controls
+verified independently. No third A02.6 attempt, no native acquisition/product/full
+A02 credit;20/29 unchanged. Next dependency is bounded owned-process identity
+diagnosis, not another app run or changes to certificates/trust settings.
 
 Current work, 2026-10-24: [A02.5](completion/146-a02-array-transfer-technique.md)
 completes a source-only callback identity technique.22 focused/3038 full source

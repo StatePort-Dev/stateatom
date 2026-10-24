@@ -1665,7 +1665,7 @@
       "execution_record": "147-a02-array-callsite-bridge.md",
       "active_slice": {
         "id": "A02.6",
-        "status": "corrected-process-case-frozen-before-one-run",
+        "status": "bounded-source-implemented-two-native-prerequisite-failures-final-review-due",
         "record": "147-a02-array-callsite-bridge.md",
         "base": "40146b7",
         "product_changed": false,
@@ -1684,7 +1684,7 @@
         "native_output": "/home/roman/projects/stateatom/.artifacts/a02/array-callsite-native/2026-10-24T16-40-09Z",
         "source_revision": "1fbd2ac1ce6ec57fbaa9a1ef24c70ad155d8ab57",
         "maximum_native_runs": 1,
-        "native_attempts": 1,
+        "native_attempts": 2,
         "native_status": "INCOMPLETE_SOURCE_ARRAY_CALLSITE_NOT_FULL_A02",
         "native_checks_passed": 1,
         "native_app_phases": 0,
@@ -1699,9 +1699,18 @@
           "output": "/home/roman/projects/stateatom/.artifacts/a02/array-callsite-native/2026-10-24T16-59-40Z",
           "source_revision": "925b0dbc99f04246852b277e6643c896e467c063",
           "maximum_runs": 1,
-          "native_attempts": 0,
-          "frozen_inputs": 413
-        }
+          "native_attempts": 1,
+          "frozen_inputs": 413,
+          "status": "INCOMPLETE_SOURCE_ARRAY_CALLSITE_NOT_FULL_A02",
+          "app_modes": 0,
+          "named_checks": 1,
+          "result_sha256": "e2dacd83b98b7cab65734cb3cebb5d1ad8a836ad765d52b563e5da5808e8f46c",
+          "error": "Owned process profile mismatch",
+          "pid": "Unknown/Unsupported",
+          "independent_saved_inputs": 413,
+          "partial_negative_controls": 11
+        },
+        "next_dependency": "A02.7 bounded owned-process identity discrepancy diagnosis; no further A02.6 launch or app/lineage credit"
       },
       "completed_slices": [
         {

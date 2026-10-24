@@ -40,9 +40,9 @@
 
 - [x] Implement finite source-engine driver/admission/classification/independent cleanup controls with RED→GREEN. Preserve original/off/on phases and measured original28-file TodoMVC source manifest. Bind actual Node/Chrome and declared no extension/helper/IDE route.
 - [x] Build/freeze initial original/transformed case; one attempt stopped at gated Chrome identity command before app phases. Preserve case/result/checkpoint unchanged.
-- [ ] Test corrected process collector, full source checks/clean commit; freeze separate process-case with prior failure pinned and unchanged launch/app criteria before its max1 attempt.
-- [ ] Run once/poll same handle, preserve literal FAIL/partial. Independent saved verifier/negative controls and integrity/cleanup/PIDs; no native repeat.
-- [ ] Relevant final aggregate/task-done/local commit; no broad claim. Then final review global closeout.
+- [x] Test corrected process collector, full source checks/clean commit; freeze separate process-case with prior failure pinned and unchanged launch/app criteria before its max1 attempt.
+- [x] Run corrected case once/poll same handle: literal Incomplete/profile mismatch before app phases. Saved independent413-input verification/11 partial controls/exact-owned-profile scan; positive-window questions unexecuted, PID remains Unknown. No third native attempt.
+- [x] Relevant aggregate112/full3150 passed; local commit then task-done. Bounded engineering/partial record only, no native acquisition or fullA02 completion. Final review remains below.
 
 ## Final closeout
 

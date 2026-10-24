@@ -144,3 +144,28 @@ checkpoint retained. Launch flags/app criteria are unchanged; no third attempt.
 Corrected-process source gate: aggregate112PASS; full npm test3150PASS/0FAIL/0cancelled/0SKIP112.25s, terminal10745. Product327+old9 physical hashes unchanged. Originalcase406sourceinputs:402physical+4 declaredhistoricalGit(driver/test/spec/plan); oldcasebytes/raw preserved separately. No new native yet. process-source-verification.json records exact distinction.
 
 Corrected process case prepared67135/preflight16876 terminal0: source925b0db/clean,412sourceinputs/413includingcase/eightsites. All fourbundlehashes, source-sites, originaldependencies, Node/Chrome/flags/protocol identical to firstcase. Transformenumerationorder differs only; records equal sortedbyfile (initial unsorted comparison correctly failed). Priorfailure/raw/checkpoint pinned. Browsernotstarted. Directory timestamp is a unique label; actual preparation/registration timestamps are authoritative. Commitcase thenmax1 run; do not editfrozen source/spec/plan.
+
+## Corrected process attempt: literal profile mismatch, no app execution
+
+Source925b0db; frozen case95c9092; actual job30978 terminal exit1. Status remains
+`INCOMPLETE_SOURCE_ARRAY_CALLSITE_NOT_FULL_A02`, checks1, app modes/phases0.
+Actual collector passed executable/hash admission then refused `Owned process
+profile mismatch`; the actual argument mismatch bytes were not retained. This
+record does not guess which profile/argument form or PID caused the mismatch.
+Raw resultSHA **e2dacd83b98b7cab65734cb3cebb5d1ad8a836ad765d52b563e5da5808e8f46c**.
+Context/server close true, console0; PID remains `unknown-pid-not-collected`, not
+proved absent by the collector. Separate exact-two-owned-profile /proc scan found
+zero current matches; it cannot explain the earlier discrepancy or attest a
+foreign profile. No certificate/settings/IDE/extension operation occurred.
+
+Independent saved verifier (no observer/driver/qualification imports) checked all
+**413 physical inputs**, registration/case/raw hashes and old failed result. Eleven
+isolated partial controls reject changed status/scope/app execution/error/checks/
+console/cleanup/PID claim/input flag/hash/Node. Initial control harness rejected
+JSON map enumeration order; fixed to compare exact key/value sets, no digest or
+acceptance criterion waived. Positive native-window controls remain **unexecuted**,
+not passed. Files: `.artifacts/a02/array-callsite-saved-verification/2026-10-24/`.
+Both immutable cases are exhausted; **no third A02.6 launch**. Research source
+engineering/partial record is ready for ONE final review; real original-app
+acquisition/fullA02 remain open. Next bounded dependency: diagnose owned-process
+identity discrepancy and preserve failure diagnostics before any future new case.
