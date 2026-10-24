@@ -1665,7 +1665,7 @@
       "execution_record": "147-a02-array-callsite-bridge.md",
       "active_slice": {
         "id": "A02.6",
-        "status": "corrected-process-source-ready-new-case-not-prepared",
+        "status": "corrected-process-case-frozen-before-one-run",
         "record": "147-a02-array-callsite-bridge.md",
         "base": "40146b7",
         "product_changed": false,
@@ -1693,7 +1693,15 @@
         "frozen_inputs_before_fix": 407,
         "owned_profile_processes_after_run": 0,
         "maximum_total_native_attempts": 2,
-        "process_source_verification": ".artifacts/a02/array-callsite-source/2026-10-24/process-source-verification.json"
+        "process_source_verification": ".artifacts/a02/array-callsite-source/2026-10-24/process-source-verification.json",
+        "corrected_process_case": {
+          "case": "../testing/array-callsite-process-case.json",
+          "output": "/home/roman/projects/stateatom/.artifacts/a02/array-callsite-native/2026-10-24T16-59-40Z",
+          "source_revision": "925b0dbc99f04246852b277e6643c896e467c063",
+          "maximum_runs": 1,
+          "native_attempts": 0,
+          "frozen_inputs": 413
+        }
       },
       "completed_slices": [
         {

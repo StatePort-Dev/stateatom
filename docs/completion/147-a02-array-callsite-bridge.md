@@ -142,3 +142,5 @@ case (two attempts total, max1 each); first raw failure and407-input pre-fix
 checkpoint retained. Launch flags/app criteria are unchanged; no third attempt.
 
 Corrected-process source gate: aggregate112PASS; full npm test3150PASS/0FAIL/0cancelled/0SKIP112.25s, terminal10745. Product327+old9 physical hashes unchanged. Originalcase406sourceinputs:402physical+4 declaredhistoricalGit(driver/test/spec/plan); oldcasebytes/raw preserved separately. No new native yet. process-source-verification.json records exact distinction.
+
+Corrected process case prepared67135/preflight16876 terminal0: source925b0db/clean,412sourceinputs/413includingcase/eightsites. All fourbundlehashes, source-sites, originaldependencies, Node/Chrome/flags/protocol identical to firstcase. Transformenumerationorder differs only; records equal sortedbyfile (initial unsorted comparison correctly failed). Priorfailure/raw/checkpoint pinned. Browsernotstarted. Directory timestamp is a unique label; actual preparation/registration timestamps are authoritative. Commitcase thenmax1 run; do not editfrozen source/spec/plan.
