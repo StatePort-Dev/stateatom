@@ -68,3 +68,15 @@ banner Manage and Workspace Trust editor instead. Do not disable Workspace Trust
 or preset trusted identities. New immutable trust-editor registration retains both
 FAILs and pins the small guide clarification and driver change. No successful IDE
 entry or old app experiment is being repeated; console error remains unwaived.
+
+
+## Actual Trust editor scope observation
+
+Preregister73f80ce, actual15046/exit1/result00-35-51:403 stable inputs/65 originals,
+owned shared store/cleanup intact. Actual Restricted Mode → Manage opens Workspace
+Trust with the Trust button and empty trusted-folders list. Its UI does not print
+this workspace's full absolute path before Trust; the added path-text assertion
+refuses before Trust/VSIX/copy. This observer assumption is not a product failure.
+New immutable workspace-record case joins the actual owned Code workspace.json
+folder URI with exact launch root, recorded restricted UI and later receipt workspace
+ID. It does not fabricate path text or preset trust. Third FAIL remains unchanged.
