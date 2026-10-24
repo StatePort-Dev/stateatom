@@ -95,3 +95,24 @@ New immutable native-open case preserves this FAIL and requires a screenshot-has
 matched agent point on visible native Open (finite120s), not guessed Return behavior,
 private install API or file injection. This explicit operator assistance is scoped
 Linux UI operation and will be joined to the actual runtime record.
+
+
+## Actual UI installation credited with exact offline payload check
+
+Preregister5a61f5c, actual47242/exit1/result00-39-09:405 stable inputs/65 originals,
+actual trust/palette/VSIX chooser and screenshot-bound Open1075,799 occur. Viewed
+failure screen explicitly says Completed installing extension. The observer then
+fails on lowercase license.txt: vsce readZip lowercases names, installed LICENSE.txt
+preserves archive case. Original FAIL stays; this is not a missing license claim.
+Offline verify-installed.mjs/installed-payload.json joins that exact result/Open
+image/action to installed package metadata, bundle,7 payload files and .vsixmanifest
+bytes. PASS, no native relaunch; initial expected file-count7 also omitted the
+installed .vsixmanifest and is corrected in this offline observer only.
+
+Do not reinstall or repeat successful Trust just for Copy receipt. New bounded
+receipt-only driver/case copies108 hashed regular user/extensions/shared files from
+the closed owned profile into a unique destination. Exclude stale DevToolsActivePort
+and Singleton symlinks; original remains read-only, all108 are registered inputs.
+Copied trusted installed state is explicit, not a new installation. Only actual
+public Copy connection receipt/owned clipboard remains to execute. Prepared fresh
+helperPort is explicit setup; no browser/app/source campaign or product change.
