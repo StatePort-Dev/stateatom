@@ -1,7 +1,7 @@
 # V03.17 — native control revision diagnosis
 
-Current: first native retained pre-probe harness FAIL; tested local-variable
-correction/new registration prepared, affected native and ONE review due. Main2d9b308,
+Current: mutation facts captured; native result remains FAIL because its fixed
+classifier did not accept the generic field-error presentation. ONE review due. Main2d9b308,
 scope-review-1; latest user autonomous work until Oct25 evening. This is one missing
 attribute-observation diagnosis after [V03.16](138-v03-independent-input-guide.md),
 whose four actual FAILs remain immutable. Original guide remains FAIL, whole20/29,
@@ -59,3 +59,43 @@ localvariable rename→GREEN17/focused58. Observer/product/protocol unchanged.
 [corrected fixed case](../testing/control-revision-diagnosis-corrected-case73.json)
 freeze446inputs/twoharnessdeltas andpreservedFAIL beforeONEaffectedfollowup, not
 blindtimeoutrepeat. Fullproduct2799notrerun orrenamed; actualnativeoutcome/reviewdue.
+
+## Actual corrected native result — captured attributes, classifier remains FAIL
+
+63585 terminal1 at0d699b79bf2882c5068529175a4d8d4258a118e7/clean, result:
+`.artifacts/v03/control-revision-diagnosis/2026-10-24T06-29-47-836Z/results.json`.
+Four positive named gates; both native inspector inserts10then20 focused/noEnter/
+noBlur. First actualwrite live10 acknowledged; at ack native revision counters
+(events,mutations,values,writes)=(2,7,2,1), probe7records. Two fixed samplingwindows
+retain10samples each over1299ms/1251ms; no explicitinput-read/rebase/discard bydriver.
+Normal product UI may perform its own reads; cachedprobe requests do not prohibit it.
+
+Later passive records8–10 are exactly `name`, `type`, `name`, oldvalues null/number/
+emptystring and deliveryvalues null/number/null. Native field stays10, sameid/locator/
+numbertype; native revision becomes(2,10,2,1), externalRevisiontrue. Independentprobe
+count7→10 matches native count. Delivery timestamp is not exact mutation time; batch
+oldValues reveal transient name state, newValueAtDelivery does not reconstruct every
+intermediatevalue. No min/max/step/value mutation in these lastthree records. Exact
+initiating writer remains Unknown. Pinned ReactDOM developmentsource updateInput
+at1644–1690 contains compatible name/type writes/removal; this is a code-linked
+possibleproducer, NOT observed execution attribution or permission to ignore thechanges.
+
+Secondraw20 remains inspector-local, app10/card1/history1. UI goes from “1 local edit
+pending.” to “Review 1 field error.”; no secondappliedtransaction or nativevalue20.
+Fixedclassifier accepted onlyapplied orspecificstale textfrom16, so reportsINCOMPLETE
+and guardactualFAIL, not expecteddiagnosiscompletion. Do NOT rewrite this native
+status, substitute the missing errorcode/rowconflict as observed, or runagain just to
+turn itgreen. Rowmessage/modelcause were notcollected andremainUnknown. Existing
+source input-ui.mjs canrendergenericcount for conflict/error; that alone does not
+establish which localmodel path occurred. Next source-levelordering diagnosis in18
+before proposing a recoverychange, no attribute/ABA guard relaxation here.
+
+Independent saved verify-native.mjs/native-checkpoint.json recomputes allrecords/
+orderedprefixes/20samples/nativecounterjoin/sameidentity/one literaltransaction and
+unknowns/actualgenericpresentation/retainedFAIL with20negativecontrols. Exact446
+inputs/B327/helper223/original65/installed73/UI2/Chrome/Node andoldfourFAILs plus
+preprobeFAIL/checkpoint/hash deltas stable. No truncation or node replacement.
+Strictattachedconsole0; probeSTOPPED withall10records; allownedcleanup complete;
+recordedChrome/VitePIDsabsentreadonly/no kill. Fullproduct2799 stayshistorical, fresh
+source58PASS notan inventedfullsuite. No product/build/guard/policy change; no more
+native retry in17. ONE whole-item review andfinalaggregate due. Whole20/29/V03open.
