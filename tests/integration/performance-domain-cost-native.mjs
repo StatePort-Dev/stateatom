@@ -30,8 +30,8 @@ async function rawAttach(id,mode){
 }
 async function rawDetach(){if(rawTab!==null){const id=rawTab;await panel.evaluate(id=>chrome.debugger.detach({tabId:id}),id);rawTab=null;}}
 async function closeBrowser(){
- const errors=[];try{await d?.close();}catch(e){errors.push(e);}finally{d=null;}
- try{await browser?.context.close();}catch(e){errors.push(e);}finally{browser=null;panel=null;}
+ const errors=[];try{await d?.close();d=null;}catch(e){errors.push(e);}
+ try{await browser?.context.close();browser=null;panel=null;}catch(e){errors.push(e);}
  if(errors.length)throw new AggregateError(errors,'Owned browser cleanup: '+errors.map(e=>e.message).join('; '));
 }
 // End independent browser cleanup
@@ -65,7 +65,7 @@ try{
 finally{
  const failed=(stage,error)=>{result.status='INCOMPLETE';result.measurementComplete=false;result.errors.push({stage,message:error.message,stack:error.stack});process.exitCode=1;};
  try{await rawDetach();result.ownedRawAttachmentClosed=true;}catch(e){failed('raw-detach-cleanup',e);}
- try{await closeBrowser();result.ownedBrowserClosed=true;}catch(e){failed('browser-cleanup',e);}
+ try{await closeBrowser();result.ownedBrowserClosed=true;}catch(e){result.ownedBrowserClosed=false;failed('browser-cleanup',e);}
  try{await desktop?.close();result.ownedDesktopClosed=true;}catch(e){failed('desktop-cleanup',e);}
  try{if(server){server.closeAllConnections();if(server.listening)await new Promise((resolve,reject)=>server.close(e=>e?reject(e):resolve()));}result.ownedServerClosed=true;}catch(e){failed('server-cleanup',e);}
  try{if(result.initialInventoryComplete){result.inputsAfter=await inputs();assert.deepEqual(result.inputsAfter,preregistration.inputs,'Measurement inputs changed');}else result.inputInventoryUnavailable=true;}catch(e){failed('final-input-inventory',e);}
