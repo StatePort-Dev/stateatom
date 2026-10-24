@@ -1665,7 +1665,7 @@
       "execution_record": "148-owned-process-diagnostic.md",
       "active_slice": {
         "id": "A02.7",
-        "status": "planning-owned-process-discrepancy-diagnostic",
+        "status": "source-ready-before-blank-case",
         "record": "148-owned-process-diagnostic.md",
         "base": "58796e7",
         "product_changed": false,
@@ -1673,7 +1673,16 @@
         "full_A02": false,
         "maximum_native_runs": 1,
         "native_attempts": 0,
-        "scope": "Retain actual scoped process facts; at most one blank-browser diagnostic, no app run"
+        "scope": "Retain actual scoped process facts; at most one blank-browser diagnostic, no app run",
+        "source_focused": 27,
+        "full_source_controls": 3178,
+        "full_source_failures": 0,
+        "full_source_cancelled": 0,
+        "source_inputs_unchanged": {
+          "product": 327,
+          "old": 9,
+          "A02.6_final_source": 8
+        }
       },
       "completed_slices": [
         {

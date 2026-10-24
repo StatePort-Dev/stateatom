@@ -1,7 +1,7 @@
 # Project status
 
 Active bounded work: [A02.7](completion/148-owned-process-diagnostic.md), scoped
-owned-process identity diagnosis. Source implementation not started; at most one
+owned-process identity diagnosis.27 source/3178 full controls pass; at most one
 new blank diagnostic after source/full gates and frozen case. Both A02.6 cases
 remain exhausted, native app acquisition Incomplete/fullA02 open/20of29 unchanged.
 No app/extension/IDE/certificate/trust settings work in this item.

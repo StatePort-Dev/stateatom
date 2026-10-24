@@ -1,4 +1,4 @@
-# A02.7 — owned-process identity diagnostic (planning)
+# A02.7 — owned-process identity diagnostic (source implementation)
 
 Starts from A02.6/58796e7: source113/full3151PASS, ONE review0/1/1 with I1fixed;
 both native attempts literal Incomplete/appmodes0. Final integrity: product327/old9,
@@ -19,3 +19,15 @@ userDataDir and context close. Local pinned coreBundle passes user-data-dir=path
 this static source is not proof of actual failed command-line bytes or root cause.
 Review M1's stale duplicate current pointer is reconciled at this new-work handoff,
 retaining its historical value below. No A02.6 source/result is changed.
+
+## Source implementation checkpoint
+
+Collector missing-module RED→20PASS; driver missing-module6FAIL→combined26PASS.
+Malformed separate-token flag control20PASS/1FAIL→accurate summary→27PASS.
+Actual owned Node child proves only process IO/child relationship, not Chrome.
+Full npm test running; source/local commit/frozen native case still due. Product327,
+old9 and A02.6 final source8 hashes unchanged; both raw failures retained.
+Separate process facts/save-before-admission/strict case and independent cleanup
+are implemented. No browser/application/server/UI operation yet.
+
+Final source gate27PASS; full npm test3178PASS/0FAIL/0cancelled/0SKIP98.07s terminal84206. No native yet. Need clean sourcecommit then resource-freeprepare/freeze/newcasecommit/max1blankdiagnostic.
