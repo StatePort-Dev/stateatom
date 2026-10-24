@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.77
+
+- Admit already requested state replies for the same active input-editor scope
+  when only the inspection render was superseded. Keep the inspection generation
+  gate, exact target/revision checks, capability refresh and dirty-draft conflicts.
+- Add no polling or debounce changes and keep native input/ABA guards unchanged.
+  Source controls are separate from packed/native qualification of this candidate.
+
 ## 0.1.0-candidate.20261021.76
 
 - Set the native ancestor paragraph to the existing body-size token in its own

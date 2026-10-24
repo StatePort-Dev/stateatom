@@ -43,3 +43,11 @@ records remain unchanged. Current product sources have changed; old76 qualificat
 is historical. A new candidate/full source/types/admission and ONE affected actual
 native case are still required before bounded product delivery, followed by ONE
 final review. No new whole-task acceptance or general Live/latency/lineage claim.
+
+## Task2 source checkpoint before packaging
+
+Unused candidate77 selected after checking issued top-level handoffs. Package/lock
+version and behavior-only changelog advanced; shared UI2, CSS/template/tokens,
+plugin and helper unchanged. Full `npm test` on this code: **2989PASS/0FAIL/
+0cancelled/0SKIP**,99.29s. This is fresh source evidence, not package/native proof.
+Commit metadata before local packing so sourceRevision/sourceDirty are unambiguous.
