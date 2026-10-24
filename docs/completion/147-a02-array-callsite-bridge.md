@@ -133,3 +133,12 @@ and use its actual /proc executable/hash/arguments for the same profile/headless
 sandbox assertions. Avoid the gated command without adding automation flags or
 changing browser configuration. Actual-process source controls and a separate
 newly frozen affected process-case are required. No pass from this document.
+
+Collector source correction: owned Node child with real /proc bytes, foreign
+profile/hash/executable negative controls, gated CDP command deliberately absent.
+RED25PASS/1FAIL missing helper → GREEN26PASS. This is process IO source evidence,
+not Chrome acquisition. Spec/plan permit one separately frozen corrected process
+case (two attempts total, max1 each); first raw failure and407-input pre-fix
+checkpoint retained. Launch flags/app criteria are unchanged; no third attempt.
+
+Corrected-process source gate: aggregate112PASS; full npm test3150PASS/0FAIL/0cancelled/0SKIP112.25s, terminal10745. Product327+old9 physical hashes unchanged. Originalcase406sourceinputs:402physical+4 declaredhistoricalGit(driver/test/spec/plan); oldcasebytes/raw preserved separately. No new native yet. process-source-verification.json records exact distinction.

@@ -14,7 +14,7 @@
 - No extra app field read, duplicate original expression/getter, skipped branch or altered receiver/argument/callback behavior.
 - 64calls/512yields per declared window; weak identities; Stop permanent/old tokens invalid.
 - Causal storage/current membership/ownership/state revision/React props/selected producer Unknown/fullPathfalse.
-- One actual native experiment only after source gate/clean frozen commit; strict data/cleanup/refusals and no blind retry.
+- Max1 per immutable case after source gate/clean frozen commit; original case exhausted before app phases. One separately frozen process-case after the tested collector fix, at most TWO native attempts total; no third attempt or blind retry. See spec prerequisite correction.
 
 ## Review Focus
 
@@ -39,7 +39,8 @@
 **Interfaces:** consume Task1 source APIs, original TodoMVC source/dependencies and existing owned browser primitives; emit immutable registration/results/source-site/phase window reports, no product/package delivery.
 
 - [x] Implement finite source-engine driver/admission/classification/independent cleanup controls with RED→GREEN. Preserve original/off/on phases and measured original28-file TodoMVC source manifest. Bind actual Node/Chrome and declared no extension/helper/IDE route.
-- [ ] Build original and transformed bundles from original immutable source; inspect sites and freeze exact source/bundles/config/expected joins/limits before max1 launch. Full source checks for changed harness; clean local commit first.
+- [x] Build/freeze initial original/transformed case; one attempt stopped at gated Chrome identity command before app phases. Preserve case/result/checkpoint unchanged.
+- [ ] Test corrected process collector, full source checks/clean commit; freeze separate process-case with prior failure pinned and unchanged launch/app criteria before its max1 attempt.
 - [ ] Run once/poll same handle, preserve literal FAIL/partial. Independent saved verifier/negative controls and integrity/cleanup/PIDs; no native repeat.
 - [ ] Relevant final aggregate/task-done/local commit; no broad claim. Then final review global closeout.
 

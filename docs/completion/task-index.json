@@ -1665,14 +1665,14 @@
       "execution_record": "147-a02-array-callsite-bridge.md",
       "active_slice": {
         "id": "A02.6",
-        "status": "actual-native-prerequisite-failure-before-app-phases",
+        "status": "corrected-process-source-ready-new-case-not-prepared",
         "record": "147-a02-array-callsite-bridge.md",
         "base": "40146b7",
         "product_changed": false,
         "native_executed": true,
         "full_A02": false,
-        "source_focused": 111,
-        "full_source_controls": 3149,
+        "source_focused": 112,
+        "full_source_controls": 3150,
         "full_source_failures": 0,
         "full_source_cancelled": 0,
         "product_inputs_unchanged": 327,
@@ -1691,7 +1691,9 @@
         "native_result": ".artifacts/a02/array-callsite-native/2026-10-24T16-40-09Z/results.json",
         "native_result_sha256": "9fda880a7b7afefd95df7c21e69882c3383da92b9c520e001995cfb2dc58829b",
         "frozen_inputs_before_fix": 407,
-        "owned_profile_processes_after_run": 0
+        "owned_profile_processes_after_run": 0,
+        "maximum_total_native_attempts": 2,
+        "process_source_verification": ".artifacts/a02/array-callsite-source/2026-10-24/process-source-verification.json"
       },
       "completed_slices": [
         {

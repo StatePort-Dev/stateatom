@@ -116,3 +116,16 @@ owned browser PID/exe checks. Literal FAIL/partial retained; no restart or crite
 waiver. Independently verify saved links/source/window/order and negative controls.
 ONE final fresh whole-item review, one tested Important/Critical pass maximum, no
 rereview; Minors explicit. No complete A02/feature claim from docs/tests alone.
+
+## Prerequisite correction after the exhausted first case
+
+The first case341dd50 was attempted once and ended before any app phase because
+Browser.getBrowserCommandLine requires a missing --enable-automation flag. Keep
+its literal Incomplete result9fda880a7b7afefd95df7c21e69882c3383da92b9c520e001995cfb2dc58829b
+and pre-fix407-input checkpoint unchanged. No app/acquisition question passed.
+One separately frozen `array-callsite-process-case.json` is permitted after the
+tested collector correction: SystemInfo.getProcessInfo supplies the PID, actual
+/proc bytes supply executable/hash/arguments. Browser launch flags, profile,
+sandbox and all original app questions/limits remain unchanged. This is at most
+TWO native attempts total for this item, max1 per immutable case. No third attempt
+even if the corrected case fails; report its partial and identify the next item.
