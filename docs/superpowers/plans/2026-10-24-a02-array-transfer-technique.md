@@ -34,4 +34,4 @@
 
 ## Final closeout (after implementation task-done)
 
-- [ ] Resolve at most one tested Important/Critical correction; preserve declined judgments/minors and no rereview. Final local commit/clean checkpoint, name one next bounded dependency only.
+- [x] Resolve at most one tested Important/Critical correction; preserve declined judgments/minors and no rereview. Final local commit/clean checkpoint, name one next bounded dependency only.

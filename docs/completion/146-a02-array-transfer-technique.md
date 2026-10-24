@@ -1,4 +1,4 @@
-# A02.5 — array callback identity-transfer technique (in progress)
+# A02.5 — array callback identity technique (bounded research complete, one Minor)
 
 Base f3782a8, research-only source technique. A02.4 exact product profile is complete;
 field ownership/state-row-to-prop/selected producer remain Unknown/fullA02 open.
@@ -64,3 +64,71 @@ Record only exact ordered callback identities, not causal storage transfer; sour
 queries/fixtures are synthetic. No new Atom/plugin/helper build or browser/IDE
 run, no UI/certificate/profile/otherrepo change. ONE fresh final whole-item review
 now remains; no correction pass used. Whole20/29 and all historical results stay.
+
+## Final review and bounded closeout
+
+ONE fresh read-only review atfb89b06: **0Critical/0Important/1Minor**, ready within
+the source research boundary. Reviewer freshly ran22 controls, checked syntax/diff,
+327 product/seven original sources/four new source-spec-plan hashes/nine artifacts,
+and the saved full3038 log/hash. No native or full-suite reviewer repetition.
+Report `.artifacts/a02/array-transfer-technique-review/2026-10-24/report.md`;
+clean reviewed checkpoint and immutable verification copy are alongside it.
+
+**Deferred Minor M1:** Stop invoked from the argument-tuple getter occurs after
+the initial admission check, so one empty weak record can be added after Stop.
+Reviewer reproduced retention calls1/yields0/stoppedtrue; actual callback still
+executes once/returns original item and snapshot remains Unknown. Ordinary Stop
+controls pass; this reentrant retention cleanup case is **not passed**. Grade
+remains Minor by effect: no positive evidence revival, strong application reference
+or product path. Cost: stopped retention count can be nonzero. Future call-site
+bridge must address it before relying on reentrant cleanup; no correction pass
+or rereview here. This does not waive full A02 or native/lifecycle criteria.
+
+Executor rulings, preserving every decision and its cost:
+
+1. Keep main/existing checkout/local commits per explicit autonomy. Cost: no
+   isolated branch or integration/publication claim; shared work is preserved.
+2. Research-only synthetic native calls, no app/compiler/vendor/product hook,
+   respect the general-ownership stopping rule. Cost: no independent-app/React,
+   selected producer or fullA02 credit.
+3. Do not relaunch original V03 restoration: actual77 external revisions and
+   unchanged epoch guard still exclude it. Cost: original guide FAIL remains;
+   no new native Undo claim.
+4. Narrow Observed to ordered callback identity; Proxy storage counterexample
+   leaves causalTransfer/resultStorage Unknown. Cost: no causal handoff/current
+   membership/ownership/lineage acceptance.
+5. Wrapper frames exclude generic stack/reflection-dependent use. Cost: future
+   source bridge must establish semantic admission; no automatic deployment.
+6. Helper ledger was initialized late and says so; registration/logs preserve
+   actual chronology. Cost: weaker in-flight ledger recovery before checkpoint,
+   never a fabricated task-start or restarted task.
+7. Move final-review checkbox to global closeout, avoiding a task-done/review
+   cycle. Cost: implementation task-done alone did not finish the reviewed item.
+
+Rulings on every declined judgment from final review:
+
+1. Independent React/compiler/call-site/product/native/browser/IDE integration
+   remains unimplemented here. Cost: source fixtures cannot supply those gates.
+2. Causal storage/current membership/ownership/selected producer/full lineage
+   stay Unknown. Cost: fullA02 remains open even on a positive callback link.
+3. Stack/reflection-dependent callbacks remain outside semantic admission.
+   Cost: the prototype is not a generic transparent observer.
+4. Intrinsic replacement/hostile page remains unverified in this trusted-host
+   technique. Cost: no adversarial integrity assurance.
+5. Actual GC, forced allocation failure and quantitative performance were not
+   measured. Cost: weak refs/finite limits are source properties, not measured
+   retention/performance guarantees.
+6. Old A02.4 and V03 Undo retain original evidence/source boundaries. Cost: no
+   fresh replay of prior acceptance or new restoration qualification.
+7. Reviewer freshly ran22, author ran full3038; reviewer checked full log/hash.
+   Cost: no second independent full run, avoiding an unjustified repeat.
+8. Publication/SDK/UI/public readiness remain outside the work. Cost: no new
+   product/release/visual delivery claim.
+
+Source syntax/diff/current327+seven inputs remain verified. Only completion
+documentation changes after reviewed code; preserve the reviewed plan hash in
+its exact Git blob rather than relabelling that checkbox edit as unchanged bytes.
+Whole20/29 unchanged. One next bounded dependency: **A02.6 source call-site bridge
+feasibility**, preserving original callee/receiver/argument evaluation and callback
+behavior, explicitly addressing the prototype's wrapper/Stop boundaries. No actual
+React/native integration or complete causal solution is approved by this choice.

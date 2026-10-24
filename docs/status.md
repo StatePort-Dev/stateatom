@@ -1,10 +1,12 @@
 # Project status
 
 Current work, 2026-10-24: [A02.5](completion/146-a02-array-transfer-technique.md)
-adds a source-only callback identity technique.22 focused/3038 full source tests
-pass;327 product/seven old experiment/app inputs unchanged. Causal storage transfer,
-ownership/current membership/React binding/selected producer stay Unknown. ONE
-final review pending; no new product, native run or whole-task credit. Original
+completes a source-only callback identity technique.22 focused/3038 full source
+tests pass;327 product/seven old experiment/app inputs unchanged. ONE review0/0/1
+accepted, with reentrant Stop's empty weak record retained as an explicit Minor.
+Causal storage/ownership/current membership/React binding/selected producer stay
+Unknown. No new product, native run or whole-task credit. Next A02.6 is source
+call-site bridge feasibility, not approved full integration. Original
 V03 Undo is still ineligible after external revisions, so its old failed guide was
 not blindly relaunched.20/29 whole tasks (~69%) unchanged.
 
@@ -14,8 +16,9 @@ receipts,24 stopped records/523 stable inputs. ONE review0Critical/0Important/1
 test-coverage Minor. [V03.22](completion/145-v03-semantic-negative-controls.md)
 resolves that Minor: seven semantic negatives and seven predicate-removal controls
 pass independently, copied verifier23 negatives/521 physical+2 historical inputs,
-fresh fullsource3016PASS. No product/driver change or native repeat. Next **V03.23**
-is a finite resumption of the original independent input guide on77. Global
+fresh fullsource3016PASS. No product/driver change or native repeat. Proposed
+original-guide resumption stopped at source preflight:77 external revision still
+excludes Undo under the unchanged guard; no new native guide was launched. Global
 inspection Working/latency and original guide/Undo/Draft/baseline remain open;
 20/29 whole tasks (~69%) unchanged. Historical entries follow.
 
