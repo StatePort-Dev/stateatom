@@ -31,3 +31,10 @@ cannot hide behind a count mismatch. Fresh npm test3282PASS/0FAIL/0cancelled/0SK
 or new native/model/app proof. Product327/old9/priorresearch16/raw4 unchanged.
 Legacy strict guard/source/cases unchanged; inputs/provenance verifier/writer is
 Task2. NeedlocalTask1commit/taskdone thenTask2.
+
+Task2 source checkpoint: missing-driver RED11FAIL (module absent), then affected
+classifier+driver46PASS. Fresh npm test3293PASS/0FAIL/0cancelled/0SKIP,99.17s,
+terminal25544. Product327/old9/priorresearch16/raw4 unchanged. Finite source-only
+reader verifies raw/case/registration and exact frozen Git blobs, fresh wx output;
+no launcher import, no browser/app/model executed. Retained annotation run and
+independent saved-output verification remain due after this clean source commit.

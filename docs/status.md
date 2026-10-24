@@ -1,8 +1,8 @@
 # Project status
 
 Active bounded work: [A02.9](completion/150-launch-evidence-lanes.md), source-only
-claim-scoped description of retained launch records. Classifier35focused/full3282PASS;
-retained-data writer remains due, no native/app/model.
+claim-scoped description of retained launch records. Classifier/reader46focused/full3293PASS;
+ONE retained-data annotation and independent verification due, no native/app/model.
 A02.8 closes at0c6963d:63focused/full3247PASS, ONE review0C/1I/2M/I1fixed once.
 Its one native case remains Incomplete/METADATA_ARGUMENTS and exhausted. Original
 owner metadata45args vsproc1 observed; independent exe/profile/document matched,
