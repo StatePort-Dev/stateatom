@@ -50,3 +50,34 @@ This uses actual source-controller modules with synthetic backend/scripted edits
 no native application or installed-product acceptance is claimed. Old native facts,
 model/guard behavior and timing remain unchanged. The technique now permits Task2
 preparation of one adequately collected native ordering/visible-row question.
+
+## Task2 frozen native question
+
+New driver/classifier/admission controls13 missing-module RED→13PASS; independent
+cleanup fault control RED13PASS1FAIL→GREEN14. Combined with Task1: **29PASS**.
+The classifier requires actual paired trace, two literal native edits, transaction/
+resource joins and actual visible row message for local conflict. It does not
+invent a backend error code or rewrite old native classifier failure.
+
+Preparation initially refused a stale copied source hash before any resources:
+old V03 helper-source inventory pins first-read/build-profile before A02.4's exact
+recipe/self-pin refresh. A follow-up source check incorrectly looked for this
+builder in Atom's payload manifest; it is not there. The actual current A02.4
+source-helper inventory supplies the exact new hash. New case explicitly records
+this one historical source difference, with both old/current hashes. Product
+payload/source has no new change; this extra source inventory is not a claim of
+new installed helper/VSIX qualification. No helper/IDE process runs here. Both
+preparation failures occurred before a native registration/resource; no old map
+or result was rewritten.
+
+`docs/testing/inspector-input-order-case76.json` freezes max1 run, current76/UI2,
+327 product inputs,223 source-inventory inputs,36 other pinned inputs and both
+65-file original/copied source maps plus packed host files. Preflight **578 inputs
+PASS**, no browser/server launched. Output reserved at
+`.artifacts/v03/inspector-input-order/2026-10-24T10-13-15-954Z`.
+Actual driver/proc and Vite/proc executable admission are required; this addresses
+the old deferred Node-admission issue only in the new driver, not retroactively.
+
+Next: commit exact case/driver then execute once. Source-controller control stays
+separate, original guide/native17 remain FAIL. No automatic refresh/rebase/discard,
+Undo/Draft/baseline/mutation-probe/whole guide retry or new timing/production policy.

@@ -6335,12 +6335,19 @@
       "analysis_protocol": ".artifacts/v03/input-snapshot-ordering/2026-10-24/registration.json",
       "current_bounded_diagnostic": {
         "id": "V03.19",
-        "status": "in-progress-technique-source-controls",
+        "status": "in-progress-native-protocol-frozen",
         "record": "142-v03-inspector-input-order.md",
         "base": "843a6481cee4f71cfcbcd4e4067d7d0de6dac928",
         "product_changed": false,
         "native_started": false,
-        "full_V03_acceptance": false
+        "full_V03_acceptance": false,
+        "technique_source_controls": 15,
+        "technique_browser_control": "PASS_SOURCE_CONTROLLER_TRACE_TECHNIQUE_ONLY",
+        "technique_verifier_negatives": 10,
+        "driver_controls": 14,
+        "focused_controls": 29,
+        "native_preflight_inputs": 578,
+        "native_case": "../testing/inspector-input-order-case76.json"
       }
     },
     {
@@ -9223,7 +9230,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.4 bounded closed843a648 after ONE review; full20of29 unchanged. V03.19 begins source-only test of exact-script inspector false conditional breakpoint collection for receive/edit/settle and actual row error. No new native result/product change/guard waiver; old guide17 FAIL and18 source controls retained. Native case only after technique control and separately frozen protocol.",
+    "current_activity_note": "V03.19 source-controller technique PASS6sites10records/no pause/9inputs/10negative verifier. New driver/classifier14 plus helper15 controls29PASS. Frozen current76 max1 case578inputs preflight PASS, original65/app/deps retained; explicit single A02.4 first-read builder source-inventory delta, no helper/IDE runtime. No new product source/payload or native result yet. Commit then one actual receive-edit-settle/visible row question; old guide17 FAIL/18 source controls and20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "843a6481cee4f71cfcbcd4e4067d7d0de6dac928",
     "current_record_date": "2026-10-24",
