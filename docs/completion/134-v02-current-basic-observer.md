@@ -61,3 +61,46 @@ request/instrumentation, model/ActionTrace/Live/source/SDK/UI/redesign/IDE/publi
 otherrepo campaign. Inspector console/exception coverage only; no worker/guardian
 console completeness, nativefault/CPU/universal performance/fullBasiccorpus or fullV02
 claim. Independenthuman is not a blocker and screenshots remain candidates.
+
+
+## Actual current72 finite gate — original overhead targets missed
+
+Actual native40941 terminal0,6447a26/clean:
+`.artifacts/v02/basic-observer-current/2026-10-24T03-53-07-652Z/results.json`.
+COMPLETE/measurementComplete=true, **targetsMet=false**.198rawrows/18warm180measured,
+66unique activewindows each20complete+1checkpoint/21records/exact9zero-gapkeys,
+404stable registered inputs/327product/223helper. Newownprofiles successfully used
+exact retainedsynthetictrustDB with ordinary TLS, no certificate-manager import or
+newcertificate generation. Actual siteAllow/read-only, no production editing grant.
+Owned browsers/display/server close successfully.0 recorded inspector exceptions/
+warning/error console; worker/guardian console/rejection completeness notcollected.
+
+| Original current72 metric, ms unless percent | Standalone | Embedding | Original threshold |
+| --- | ---: | ---: | --- |
+| Basic lookup p50 / p95 / max |382.85 /433.80 /532.70 |376.10 /419.50 /516.20 |p95≤1000: met / met |
+| Off workload p50 / p95 / max |59.30 /75.10 /77.90 |54.05 /67.80 /72.10 |reference |
+| Basic workload p50 / p95 / max |73.25 /80.80 /106.60 |66.85 /75.50 /81.20 |diagnostic |
+| Active workload p50 / p95 / max |75.10 /79.40 /79.60 |69.90 /78.60 /84.50 |measured |
+| Active/off median degradation |26.64418213% |29.32469936% |≤10%: **MISS / MISS** |
+| Basic/off diagnostic |23.52445195% |23.68177613% |not a target waiver |
+| Active/Basic diagnostic |2.52559727% |4.56245326% |not the approved denominator |
+
+All30measured samples perendpoint and allfixedwarmups/tails retained; no adaptive
+retry/discard/delay/workload scaling or criterion exception. Standalonewindowbytes
+max8507, embedding8515, eachwellbelow65536 with21records; no limit-based fastpath.
+Freshsaved independentverifier16929 terminal0 PASS:198rows/rawattempts/workloads/
+windows, independent nearest-rank/medians/active-off ratio and alltargetbooleans,
+16negativecontrols, frozenprotocol/fixture/inputs/Chrome/archives/install/hosts/
+retainedTLS/newprofiles/cleanup checks. `.artifacts/v02/current-basic-observer/2026-10-24/native-checkpoint.json`
+retains `PASS_COMPLETE_MEASUREMENT_ORIGINAL_TARGETS_MISSED`. This is a verified
+measurement with misses, not a passing performance gate. Workloadserver20requests
+pergesture is asserted by actualdriver; independent persisted server-traffic trace
+was not collected. Old101/104/108 misses and102transport controls stay historical.
+CurrentBasic/off overhead suggests a remaining attached-path cost, without proving
+its cause or allowing any authority/event/record suppression. No CPU/criticalpath/
+universal performance/fullBasiccorpus/fullV02 acceptance is inferred.
+
+ONE final fresh readonly review due. Candidate next ONE **V02.16** selects/registers
+bounded diagnosis of current attached Basic cost behind23.52/23.68% Basic/off,
+retaining original102 as context and current15 as unchanged primary gate; no source
+optimization, guard removal, workload/denominator/threshold waiver is pre-approved.

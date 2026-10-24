@@ -4311,7 +4311,7 @@
       "active_slice": {
         "id": "V02.15",
         "title": "Original Basic/observer gate on exact immutable72",
-        "status": "preregistered-source-verified-native-due",
+        "status": "measurement-complete-targets-missed-review-due",
         "record": "134-v02-current-basic-observer.md",
         "design": "../superpowers/specs/2026-10-24-v02-current-basic-observer-design.md",
         "plan": "../superpowers/plans/2026-10-24-v02-current-basic-observer.md",
@@ -4333,14 +4333,40 @@
         "performance_acceptance": false,
         "targets_waived": false,
         "review_pending": true,
-        "native_executed": false,
-        "tls_setup": "Exact retained single synthetic CA database seed into fresh ownprofiles; ordinary TLS; no import UI/new certificates/user or systemtrust changes"
+        "native_executed": true,
+        "tls_setup": "Exact retained single synthetic CA database seed into fresh ownprofiles; ordinary TLS; no import UI/new certificates/user or systemtrust changes",
+        "measurement_complete": true,
+        "targets_met": false,
+        "basic_p95_ms": {
+          "standalone": 433.8,
+          "embedding": 419.5
+        },
+        "active_off_percent": {
+          "standalone": 26.64418213,
+          "embedding": 29.32469936
+        },
+        "basic_latency_target_met": {
+          "standalone": true,
+          "embedding": true
+        },
+        "active_overhead_target_met": {
+          "standalone": false,
+          "embedding": false
+        },
+        "native_rows": 198,
+        "warmup_rows": 18,
+        "measured_rows": 180,
+        "active_windows": 66,
+        "protocol_negative_controls": 16,
+        "actual_native_revision": "6447a26",
+        "runtime_result": ".artifacts/v02/basic-observer-current/2026-10-24T03-53-07-652Z/results.json",
+        "verification": ".artifacts/v02/current-basic-observer/2026-10-24/native-checkpoint.json"
       },
       "execution_record": "134-v02-current-basic-observer.md",
       "current_checkpoint": {
         "record": "134-v02-current-basic-observer.md",
-        "status": "preregistered-source-verified-native-due",
-        "next_bounded_step": "Execute one registered V02.15 original Basic/observer current72 gate, preserve every miss/setupfailure and source/native distinction; then ONE final review and choose one next item from actual result"
+        "status": "measurement-complete-targets-missed-review-due",
+        "next_bounded_step": "ONE final V02.15 review, then V02.16 select/register bounded diagnosis of current attached Basic cost behind23.52/23.68% Basic/off, preserving original102 context and current15 gate; no preapproved optimization/guard removal or threshold/workload waiver"
       },
       "completed_slices": [
         {
@@ -5924,8 +5950,8 @@
     "document": "134-v02-current-basic-observer.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.15-preregistered-source-verified-native-due",
-    "next_item": "Execute one registered V02.15 original Basic/observer current72 gate, preserve every miss/setupfailure and source/native distinction; then ONE final review and choose one next item from actual result",
+    "current_increment": "V02.15-measurement-complete-targets-missed-review-due",
+    "next_item": "ONE final V02.15 review, then V02.16 select/register bounded diagnosis of current attached Basic cost behind23.52/23.68% Basic/off, preserving original102 context and current15 gate; no preapproved optimization/guard removal or threshold/workload waiver",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8459,11 +8485,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.15 original criteria registered404inputs/current72: full2697/focused35/newharness13 sourcePASS; unchanged198rowHTTPS workload and p95≤1000ms/active-off≤10%. Reuse exact retained synthetic trust database in fresh ownprofiles, no certificateGUI/newcertificate campaign. Native/currenttarget evidence not yet available; V02.14 complete and historical misses preserved. Whole20/29/fullV02 unchanged.",
+    "current_activity_note": "Actualcurrent72/clean6447a26original198rowgate COMPLETE/targetsMetfalse: Basicp95433.8/419.5ms meets1s, active/off26.6442/29.3247% misses10%.66windows/404stableinputs/allownedcleanup/independent16negativecontrols PASS. RetainedsyntheticDBseed worked without certificateGUI/newcert; full2697/focused35/13newsourcecontrols. ONE review due; fullV02/20-of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "03a8147",
+    "current_source_revision": "6447a26",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "Execute one registered V02.15 original Basic/observer current72 gate, preserve every miss/setupfailure and source/native distinction; then ONE final review and choose one next item from actual result"
+    "next_bounded_step": "ONE final V02.15 review, then V02.16 select/register bounded diagnosis of current attached Basic cost behind23.52/23.68% Basic/off, preserving original102 context and current15 gate; no preapproved optimization/guard removal or threshold/workload waiver"
   },
   "next_task": "V02"
 }
