@@ -97,10 +97,48 @@ Chrome/TLS/cleanup. Artifactnative-checkpoint retained. Full2741/focused50/new21
 sourcecontrols remain actualsource, not nativefault recovery or featureacceptance.
 No product/package/helpercode change or newimmutablebuild.
 
-ONE finalfreshreadonlyreview due. No furtherdomainmatrix bydefault: nextcandidate
+ONE finalfreshreadonlyreview completed (0Critical/1Important/0Minor). No furtherdomainmatrix bydefault: next
 ONE **V03.15**, bounded remaining combined installed-helper/browser source-connection
 guide flow. First reconcile only missingsteps against127's retainedinstalledVSIX/
 publicreceipt proof; do not reinstall/repeat oldappcampaign bydefault. Copilot's
 originalexternalconsoleFAIL remainsFAIL/unwaived, no otherrepository/userprofile/
 IDEinstallation change. Exactprotocol/newliveconnection choices belong in that task,
 not pre-approved here. FullV02performancegap staysopen; no metrics-policy waiver.
+
+
+## ONE final review and single correction pass
+
+Fresh read-only /root/v0217_whole_review (gpt-6-astra/high), c6c5e4f..69cda84,
+found one Important: an inter-host close refusal discarded browser/session handles;
+the terminal finalizer could then falsely set ownedBrowserClosed=true. Actual joined
+closeBrowser/catch/finally controls reproduced it: RED18PASS/2FAIL. Correction077584e
+clears each handle only after successful close, independently attempts both resources,
+retries retained handles in the finalizer, and explicitly records false on persistent
+refusal. Transient/persistent refusal controls now PASS; primary error survives and
+all other independent cleanup stages still execute. GREEN23new/focused52/full2743,
+0FAIL/0SKIP. These are substituted-boundary source controls, not native fault recovery.
+
+Original successful native remains c64417e with exact immutable result/preregistration/
+driver/checkpoint. No native rerun or second review. Post-review receipt preserves
+before/after copies for exactly driver and existing harness test:417of419inputs
+unchanged,2declared harness changes,327product/223helper unchanged. Original verifier
+is preserved; an explicitly named after-review copy permits only those two exact
+hash changes and still verifies27negativecontrols/allraw/traffic/identity. All old
+15/16 positive runs remain historical; their source failure controls are not upgraded
+by this new inter-host refusal regression. No old campaign is restarted.
+
+[Saved review](../../.artifacts/v02/performance-domain-cost/2026-10-24/review/report.md)
+records all nine declined boundaries and executor rulings: no review native/build/
+full-suite repetition; no newcert/import/trust/profile/fallback; no extraDOM/metrics/
+timeDomain/body/parallelCDP/HTTP probes; no raw-to-product mode substitution; no
+trimming/workload/threshold/denominator waiver; no lazycollection/baseline/lifetime/
+meaning policy change; no blindmatrix or future15implementation; no worker/nativefault/
+human/broadfeature proof; no secondreview/revieweredit/publication/otherrepo work.
+Costs remain explicit: finite configuration result only, original overhead misses,
+Copilot FAIL and full20/29 status unchanged. Executor source regression for this
+correction is separate from review checks. V03.15 must define its own remaining live
+connection protocol; installation/copy/old app successes are credited without repetition.
+
+Aggregate verifies frozen case/spec/plan, approved scope, original15gate, exactdeclared
+source deltas, review/source logs, native rows/traffic/27negatives and dependency-valid
+V03 routing. Local commits only; no new public package, release or broad readiness.

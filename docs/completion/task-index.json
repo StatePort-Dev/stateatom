@@ -4311,14 +4311,14 @@
       "active_slice": {
         "id": "V02.17",
         "title": "Performance collection enabled/disabled configuration discriminator",
-        "status": "finite-performance-configuration-diagnostic-complete-review-due",
+        "status": "complete-bounded-performance-configuration-diagnostic",
         "record": "136-v02-performance-domain-cost.md",
         "design": "../superpowers/specs/2026-10-24-v02-performance-domain-cost-design.md",
         "plan": "../superpowers/plans/2026-10-24-v02-performance-domain-cost.md",
         "case": "../testing/performance-domain-cost-case.json",
-        "source_checks": 2741,
-        "focused_checks": 50,
-        "new_source_controls": 21,
+        "source_checks": 2743,
+        "focused_checks": 52,
+        "new_source_controls": 23,
         "candidate": "0.1.0-candidate.20261021.72",
         "candidate_sha256": "c95fdfd4c61a4eb15eddd0101da97c9bb61cac7d809d547ec82de96eb4648106",
         "ui_sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
@@ -4331,7 +4331,7 @@
         "whole_V02_complete": false,
         "performance_acceptance": false,
         "targets_waived": false,
-        "review_pending": true,
+        "review_pending": false,
         "native_executed": true,
         "native_rows": 162,
         "warmup_rows": 18,
@@ -4340,18 +4340,31 @@
         "protocol_negative_controls": 27,
         "actual_native_revision": "c64417e",
         "runtime_result": ".artifacts/v02/performance-domain-cost/2026-10-24T04-33-16-998Z/results.json",
-        "verification": ".artifacts/v02/performance-domain-cost/2026-10-24/native-checkpoint.json",
+        "verification": ".artifacts/v02/performance-domain-cost/2026-10-24/post-review-checkpoint.json",
         "enabled_vs_disabled_percent": {
           "standalone": 1.82615047,
           "embedding": 8.45070422
         },
-        "performance_policy_changed": false
+        "performance_policy_changed": false,
+        "source_correction_revision": "077584e242b15e16ce5b3a2313b652a072f4a4ec",
+        "post_review_unchanged_inputs": 417,
+        "post_review_declared_harness_changes": 2,
+        "review": {
+          "critical": 0,
+          "important": 1,
+          "important_fixed": 1,
+          "minor": 0,
+          "correction_passes": 1,
+          "re_review": false,
+          "native_repeated": false,
+          "report": ".artifacts/v02/performance-domain-cost/2026-10-24/review/report.md"
+        }
       },
       "execution_record": "136-v02-performance-domain-cost.md",
       "current_checkpoint": {
         "record": "136-v02-performance-domain-cost.md",
-        "status": "finite-performance-configuration-diagnostic-complete-review-due",
-        "next_bounded_step": "ONE final V02.17 review, then V03.15 reconcile/register only remaining combined installed-helper/browser source-connection guide flow from127 evidence; preserve externalCopilotFAIL andV02targetmisses, no reinstall/oldappcampaign/userprofile/metrics-policy change bydefault"
+        "status": "complete-bounded-performance-configuration-diagnostic",
+        "next_bounded_step": "V03.15: reconcile/register only remaining combined installed-helper/browser source-connection guide flow from127 evidence; preserve externalCopilotFAIL andV02targetmisses, no reinstall/oldappcampaign/userprofile/metrics-policy change bydefault"
       },
       "completed_slices": [
         {
@@ -5237,9 +5250,61 @@
             "minor_addressed": "Currentstatus synchronized to completeddiagnostic/review; record135 preparationdue explicitlyhistorical",
             "reportSha256": "bb51501f05d6dbd2b3374bd25737824422518cdc69866a698fbfc596508f55bf"
           }
+        },
+        {
+          "id": "V02.17",
+          "title": "Performance collection enabled/disabled configuration discriminator",
+          "status": "complete-bounded-performance-configuration-diagnostic",
+          "record": "136-v02-performance-domain-cost.md",
+          "design": "../superpowers/specs/2026-10-24-v02-performance-domain-cost-design.md",
+          "plan": "../superpowers/plans/2026-10-24-v02-performance-domain-cost.md",
+          "case": "../testing/performance-domain-cost-case.json",
+          "source_checks": 2743,
+          "focused_checks": 52,
+          "new_source_controls": 23,
+          "candidate": "0.1.0-candidate.20261021.72",
+          "candidate_sha256": "c95fdfd4c61a4eb15eddd0101da97c9bb61cac7d809d547ec82de96eb4648106",
+          "ui_sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+          "planned_rows": 162,
+          "planned_warmup_rows": 18,
+          "planned_measured_rows": 144,
+          "registered_inputs": 419,
+          "product_inputs_unchanged": 327,
+          "helper_inputs_unchanged": 223,
+          "whole_V02_complete": false,
+          "performance_acceptance": false,
+          "targets_waived": false,
+          "review_pending": false,
+          "native_executed": true,
+          "native_rows": 162,
+          "warmup_rows": 18,
+          "measured_rows": 144,
+          "server_sample_requests": 3240,
+          "protocol_negative_controls": 27,
+          "actual_native_revision": "c64417e",
+          "runtime_result": ".artifacts/v02/performance-domain-cost/2026-10-24T04-33-16-998Z/results.json",
+          "verification": ".artifacts/v02/performance-domain-cost/2026-10-24/post-review-checkpoint.json",
+          "enabled_vs_disabled_percent": {
+            "standalone": 1.82615047,
+            "embedding": 8.45070422
+          },
+          "performance_policy_changed": false,
+          "source_correction_revision": "077584e242b15e16ce5b3a2313b652a072f4a4ec",
+          "post_review_unchanged_inputs": 417,
+          "post_review_declared_harness_changes": 2,
+          "review": {
+            "critical": 0,
+            "important": 1,
+            "important_fixed": 1,
+            "minor": 0,
+            "correction_passes": 1,
+            "re_review": false,
+            "native_repeated": false,
+            "report": ".artifacts/v02/performance-domain-cost/2026-10-24/review/report.md"
+          }
         }
       ],
-      "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v02-dom-domain-cost.md",
+      "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v02-performance-domain-cost.md",
       "implementation_plan": "../superpowers/plans/2026-10-24-v02-performance-domain-cost.md"
     },
     {
@@ -5908,7 +5973,7 @@
       "current_checkpoint": {
         "record": "127-v03-ide-entry.md",
         "status": "engineering-complete-scoped-entry-evidence-native-console-FAIL",
-        "next_bounded_step": "V02.9: diagnose retained V02.8 Live/Apply latency phases; preserve targets/distributions, choose one causal correction/control before fresh measurements"
+        "next_bounded_step": "V03.15: reconcile/register only remaining combined installed-helper/browser source-connection guide flow from127 evidence; preserve externalCopilotFAIL andV02targetmisses, no reinstall/oldappcampaign/userprofile/metrics-policy change bydefault"
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-ide-entry.md",
       "implementation_plan": "../superpowers/plans/2026-10-24-v03-ide-entry.md"
@@ -6070,8 +6135,8 @@
     "document": "136-v02-performance-domain-cost.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.17-finite-performance-configuration-complete-review-due",
-    "next_item": "ONE final V02.17 review, then V03.15 reconcile/register only remaining combined installed-helper/browser source-connection guide flow from127 evidence; preserve externalCopilotFAIL andV02targetmisses, no reinstall/oldappcampaign/userprofile/metrics-policy change bydefault",
+    "current_increment": "V02.17-complete-bounded-performance-configuration-diagnostic",
+    "next_item": "V03.15: reconcile/register only remaining combined installed-helper/browser source-connection guide flow from127 evidence; preserve externalCopilotFAIL andV02targetmisses, no reinstall/oldappcampaign/userprofile/metrics-policy change bydefault",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6095,7 +6160,7 @@
       "V01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "V02",
+    "active_item": "V03",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -8737,14 +8802,36 @@
           "minor_addressed": "Currentstatus synchronized to completeddiagnostic/review; record135 preparationdue explicitlyhistorical",
           "reportSha256": "bb51501f05d6dbd2b3374bd25737824422518cdc69866a698fbfc596508f55bf"
         }
+      },
+      {
+        "id": "V02.17",
+        "status": "complete-bounded-performance-configuration-diagnostic",
+        "record": "136-v02-performance-domain-cost.md",
+        "source_revision": "077584e242b15e16ce5b3a2313b652a072f4a4ec",
+        "actual_native_revision": "c64417e",
+        "whole_V02_complete": false,
+        "performance_acceptance": false,
+        "targets_waived": false,
+        "source_checks": 2743,
+        "native_rows": 162,
+        "review": {
+          "critical": 0,
+          "important": 1,
+          "important_fixed": 1,
+          "minor": 0,
+          "correction_passes": 1,
+          "re_review": false,
+          "native_repeated": false,
+          "report": ".artifacts/v02/performance-domain-cost/2026-10-24/review/report.md"
+        }
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.17 actual162rows/3240requests/419stableinputs/allreleases-cleanup; independent27negativecontrols PASS. PerformanceEnabled/Disabled1.83/8.45%, host-dependentfiniteeffect notallcost/safeoptimization/metrics-policy approval. Original15targetmisses/20-of29/fullV02 unchanged, ONEreviewdue; nextcandidateV03.15remainingcombinedguideflow, no blindfurtherdomainmatrix.",
+    "current_activity_note": "V02.17 complete162rows/3240requests/419stable nativeinputs; ONEreview0C1I0M fixed with2 actualjoinedfailure controls/source2743/focused52/new23 PASS. Postrun417unchanged/2declaredharnesschanges; originalnativec64417e unchanged/no repeat. Performanceeffect1.83/8.45% notallcost/metrics-policy approval; original15targetmisses/fullV02/20of29 unchanged. NextONEV03.15remainingcombinedguideflow, no blinddomainmatrix.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "c64417e",
+    "current_source_revision": "077584e242b15e16ce5b3a2313b652a072f4a4ec",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "ONE final V02.17 review, then V03.15 reconcile/register only remaining combined installed-helper/browser source-connection guide flow from127 evidence; preserve externalCopilotFAIL andV02targetmisses, no reinstall/oldappcampaign/userprofile/metrics-policy change bydefault"
+    "next_bounded_step": "V03.15: reconcile/register only remaining combined installed-helper/browser source-connection guide flow from127 evidence; preserve externalCopilotFAIL andV02targetmisses, no reinstall/oldappcampaign/userprofile/metrics-policy change bydefault"
   },
-  "next_task": "V02"
+  "next_task": "V03"
 }

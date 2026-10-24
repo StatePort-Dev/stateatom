@@ -2259,7 +2259,10 @@ configuration measurement on unchanged72:162rows/18warm144measured/n24,3240reque
 419stableinputs/327product/223helper/allreleases-cleanup. Enabled/Disabled medians
 +1.83/+8.45% (1.25/5.40ms), hostdependent andnotallremainingcost; no metricsbaseline/
 lifetime/meaning change/safeoptimization/targetpass approved. Independent27negative
-controls/full2741/focused50/new21sourcecontrols PASS. ONEfinalreview due; original15
+controls and original source2741/focused50/new21 PASS. ONEreview0C1I0M corrected
+inter-host close-refusal cleanup (077584e): actualjoinedRED18/2→GREEN23, focused52/
+full2743 PASS. Nativec64417e remainsunchanged;417of419inputs unchanged and2declared
+harness deltas, no native/rereview/productchange. Original15
 overheadmisses/20-of29/fullV02 unchanged. NextcandidateV03.15 onlyremainingcombined
 installed-helper/browser guideconnection, preserve127externalCopilotFAIL/oldproof,
 no blinddomainmatrix/reinstall/oldappcampaign/userprofile/otherrepo change bydefault.
