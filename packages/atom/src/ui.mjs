@@ -56,7 +56,7 @@ async function load(options={}){
  const id=tab(),generation=++loadGeneration;
  if(pendingProperties.has(id)||pendingInspections.has(id))return;
  if(!Number.isSafeInteger(id)||id<=0){selectedState=null;analysis=null;renderInspection();return;}
- const request={op:'state',tabId:id,observationOwnerId,refreshDeep:options?.refreshDeep!==false,...(options?.refreshIdentity===true?{refreshIdentity:true}:{})};
+ const input=inputUI.snapshot(),request={op:'state',tabId:id,observationOwnerId,...(input.active||input.opening?{ownerId:input.ownerId}:{}),refreshDeep:options?.refreshDeep!==false,...(options?.refreshIdentity===true?{refreshIdentity:true}:{})};
  const current=()=>!disposed&&generation===loadGeneration&&id===tab()&&!pendingProperties.has(id)&&!pendingInspections.has(id);
  let state;
  try{state=await rpc(request);}

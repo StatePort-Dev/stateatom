@@ -2287,3 +2287,10 @@ Live/Draft/Apply/Undo/baseline tenphases/seventransactions are preregistered, no
 native proof. Source23/focused60/full2795 PASS/409inputs/327product/223helper/65originals
 unchanged. CurrentUI250ms/app500ms/1100msDraft observation is not newtimingpolicy or
 V02targetpass. No IDE/certificates/oldcampaign repeat, whole20/29/fullV03 unchanged.
+
+V03.16 first72 native run actually FAILs after Live acknowledgement loses fieldfocus;
+app10/onecard/literalappliedtx is retained, remaining8phases unexecuted. Causal
+owner-state/admission-key corrections now pass source2799/focused178/controlledrealDOM8.
+New immutable73/UI2 types2/admission9 PASS,422inputsfollowup preservesoriginalprotocol/
+criteria/65originalfiles; corrected native and ONE review due. No timing/permission
+waiver, original72FAIL/20of29/fullV03 retained.

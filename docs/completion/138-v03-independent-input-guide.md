@@ -1,6 +1,7 @@
 # V03.16 — independent app input guide case
 
-2026-10-24/maina397a59/scope-review-1. In progress; native/review due.
+2026-10-24/maina397a59/scope-review-1. In progress: original72native focus FAIL
+retained; corrected73 affected native run and ONE review due.
 [Design](../superpowers/specs/2026-10-24-v03-independent-input-guide-design.md),
 [plan](../superpowers/plans/2026-10-24-v03-independent-input-guide.md),
 [fixed case](../testing/independent-input-guide-case.json).
@@ -54,3 +55,55 @@ Fixed409registeredinputs/327product/223helper/65originalfiles/exactarchive/insta
 host/Chrome/Node/appCLIandcriticalReactpayload identities checked. Case/source
 committedBEFOREoneactualrun. No newimmutablebuild/productchange. Native/saved
 independentphase/draft/traffic/ledgernegativeverification/ONEfinalreview are due.
+
+## First actual native focus failure and causal correction prerequisite
+
+Native16582 terminal1 atpreregistereda50e8d0/clean:
+`.artifacts/v03/independent-input-guide/2026-10-24T05-23-36-134Z/results.json`.
+Three named gates pass; baselineandlive10 recorded. Actual native insertion retains
+focus initially; appliedack changes originalminPrice10 and visiblecards[1], but
+inspector fieldfocus becomesfalse. Strictfocusassertion FAIL; Undo/Draft/baseline/
+Closeguidephases remainunexecuted, no criterionwaiver or full guidecredit.409inputs/
+327product/223helper/65originals were verifiedstable BEFOREproductedits; allowned
+cleanup passes andbothrecordedChrome/VitePIDsabsentreadonly/no kill. Exactfirstfailure
+checkpoint retained; a laterdifferentcandidate doesnot rewrite this .72 outcome.
+
+[Focused correction supplement](../superpowers/specs/2026-10-24-v03-input-focus-correction-design.md)
+records the affected reason for continuing the same originalquestion. MainUIstate
+loads lack active inputownerId, and inputUIkeeps its pre-open admission cache key
+although freshowncapabilityreply has already described the openededitor. First
+stateecho clears currentadmission/temporarilydisablesfield. No selectedphysical
+node/property/contextchange occurred. This is an actualproductprerequisite, not
+permission to tune timing or stop at an easier successful prefix.
+
+ExistingrealDOMcontrolledrender withowner-sensitivepolicy initially8PASSdidnot
+reproduce: instantmockreply and old sent-apply-onlywait missedrefresh. Latched30ms
+metadata/postreplycheck actuallyFAIL1gate. Sourceowner-requestRED→GREEN; owner-only
+render stillFAIL. Additionalfirst-editor-echoRED→GREEN fixes freshbinding. Intermediate
+observer timeout waitedfor the redundantquery thefixremoves; another readonlyreason
+assert ranwhilequerypending. Correctedobserver waitsactualstate/anypendingpolicy and
+originalreadonlyreason. Finalsamecontrolledrender8PASS (12976terminal0). All logs/
+failed artifacts retained; controlledclient proof is notnativeadapteracceptance.
+Browserplugin/browser skill absent, existingPlaywrightsandboxedownprofile used.
+
+Two logicalproductchanges only: ui.mjs sends existingownerId while inputactive/opening,
+keeps separateobserverId and omitsinputownerwheninactive; input-ui.mjs keys successful
+freshownadmission against its openededitor. Context/policy/changednode/foreigneditor
+checks still reject orclose. No newwirefield/API/timing/grant/runtimewriter/CSS/token/
+layout change. Four newsourcecontrols plus guide23: focused178/full2799PASS/0FAIL0SKIP
+(full67666terminal0), includingchangednode/foreigninvestigation closure. Changelogand
+localAtomversion73/lock metadata explicit; originalcase/spec/plan immutable.
+
+New73 AtomSHA9cc52c9beede0c3ce84423c92072e65b5a54c057d123224f1b86792f696eb95a/
+sameUI2SHA2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5,
+localhandoff `.artifacts/atom/2026-10-24T05-42-06-019Z/atom-handoff.json`.
+Two strictpackedtypeconsumers and9admissioncontrols pass.327productinputs contain
+exact2UIlogical/3versionmetadata changes; helper223/source65 unchanged. Unchanged
+nativebackend/Runtime/Platform/controller/H09 implementation is not rerun as a broad
+campaign, nor old72evidence renamed as73 nativequalification.
+
+[Corrected case73](../testing/independent-input-guide-case73.json) freezes422inputs/
+exactarchives/install/hosts/Chrome/Node/source delta/priorfailure/qualification;
+originaltenphases/7tx/1100Draft/focus/unknown/console/permissions/products remainexact.
+Source/case73 committedBEFOREnewaffectedrun. Native73 and ONEfinalwhole-itemreview
+remain due; newrun reason is testedproductchange, never observationtimeout restart.

@@ -5355,13 +5355,13 @@
       "active_slice": {
         "id": "V03.16",
         "title": "Independent native input guide operation",
-        "status": "source-prepared-native-and-review-due",
+        "status": "focus-corrected73-native-and-review-due",
         "record": "138-v03-independent-input-guide.md",
         "design": "../superpowers/specs/2026-10-24-v03-independent-input-guide-design.md",
         "plan": "../superpowers/plans/2026-10-24-v03-independent-input-guide.md",
         "case": "../testing/independent-input-guide-case.json",
         "previous_slice": "V03.15 bounded guide join completea397a59/nativeconsoleFAIL retained; no old campaign repeat",
-        "product_source_changed": false,
+        "product_source_changed": true,
         "whole_V03_complete": false,
         "review_pending": true,
         "native_executed": false,
@@ -5369,13 +5369,33 @@
         "product_inputs_unchanged": 327,
         "helper_inputs_unchanged": 223,
         "original_source_files": 65,
-        "source_checks": 2795,
-        "focused_checks": 60,
-        "new_source_controls": 23,
+        "source_checks": 2799,
+        "focused_checks": 178,
+        "new_source_controls": 27,
         "planned_phases": 10,
         "planned_transactions": 7,
         "original_criteria_waived": false,
-        "new_timing_policy_approved": false
+        "new_timing_policy_approved": false,
+        "candidate": "0.1.0-candidate.20261021.73",
+        "candidate_sha256": "9cc52c9beede0c3ce84423c92072e65b5a54c057d123224f1b86792f696eb95a",
+        "corrected_case": "../testing/independent-input-guide-case73.json",
+        "correction_design": "../superpowers/specs/2026-10-24-v03-input-focus-correction-design.md",
+        "first_native_executed": true,
+        "first_native_status": "FAIL_FOCUS_AFTER_LIVE_ACK",
+        "first_native_positive_gates": 3,
+        "first_native_phases_observed": 2,
+        "first_native_remaining_phases_unexecuted": 8,
+        "first_native_revision": "a50e8d0",
+        "first_native_result": ".artifacts/v03/independent-input-guide/2026-10-24T05-23-36-134Z/results.json",
+        "first_native_verification": ".artifacts/v03/independent-input-guide/2026-10-24/first-focus-failure-checkpoint.json",
+        "corrected_native_executed": false,
+        "corrected_registered_inputs": 422,
+        "product_inputs": 327,
+        "logical_product_changes": 2,
+        "metadata_changes": 3,
+        "rendered_owner_controls": 8,
+        "types_checks": 2,
+        "admission_checks": 9
       },
       "completed_slices": [
         {
@@ -5995,8 +6015,8 @@
       ],
       "current_checkpoint": {
         "record": "138-v03-independent-input-guide.md",
-        "status": "source-prepared-native-and-review-due",
-        "next_bounded_step": "V03.16 run only preregistered independent minPrice Live/Draft/Apply/Undo/baseline native field guide case, preserve current timing/permissions/Unknown and all failures; then ONE final review"
+        "status": "focus-corrected73-native-and-review-due",
+        "next_bounded_step": "V03.16 exact new73 affected native case after actualfocuscorrection; original10phases/7tx/focus/Unknown/timing/permissions unchanged, preserve original72FAIL and then ONE whole-item review"
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-guide-source-connection.md",
       "implementation_plan": "../superpowers/plans/2026-10-24-v03-independent-input-guide.md"
@@ -6158,8 +6178,8 @@
     "document": "138-v03-independent-input-guide.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.16-source-prepared-native-and-review-due",
-    "next_item": "V03.16 run only preregistered independent minPrice Live/Draft/Apply/Undo/baseline native field guide case, preserve current timing/permissions/Unknown and all failures; then ONE final review",
+    "current_increment": "V03.16-focus-corrected73-native-and-review-due",
+    "next_item": "V03.16 exact new73 affected native case after actualfocuscorrection; original10phases/7tx/focus/Unknown/timing/permissions unchanged, preserve original72FAIL and then ONE whole-item review",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8877,11 +8897,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.16 source23/focused60/full2795 PASS, native/review due;409registeredinputs/327product/223helper/65originals unchanged. One native minPrice input guide case10phases/7tx; current250ms/app500ms/fixed1100msDraftwindow notnewpolicy/performancepass. No IDE/certificate/oldinstall/report/source campaign; whole20/29 unchanged.",
+    "current_activity_note": "V03.16 original72nativeFAIL focusafterLiveack despiteactualapp10/onecard/appliedtx;409inputs stablebeforeedits,8phasesunexecuted. TwoUIcausalcorrections/source2799/focused178/render8/new73types2+admission9 PASS;422inputsfollowup sameprotocol/no waiver. New73affectednative+ONEreviewdue; no newpolicy/oldcampaignrepeat/20of29 upgrade.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "46980e14363706f2c273937e9a9b74889dfe8dd9",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.16 run only preregistered independent minPrice Live/Draft/Apply/Undo/baseline native field guide case, preserve current timing/permissions/Unknown and all failures; then ONE final review"
+    "next_bounded_step": "V03.16 exact new73 affected native case after actualfocuscorrection; original10phases/7tx/focus/Unknown/timing/permissions unchanged, preserve original72FAIL and then ONE whole-item review"
   },
   "next_task": "V03"
 }

@@ -29,10 +29,14 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
  const controller=createInputController({client,onChange:render});
  function run(fn){localError=null;return Promise.resolve().then(fn).catch(e=>{localError=explanation(e.code,e.message);render();});}
  function decision(op){return caps?.operations?.[op];}
+ function capabilityKey(next,ownedPolicy=null){
+  const own=controller.snapshot(),input=ownedPolicy&&own.active?own.editor:next?.inputs,policy=ownedPolicy||next?.capabilityPolicy;
+  return JSON.stringify([next?.tabId,next?.run,next?.selection?.domIdentity,next?.property,next?.attached,next?.readOnly,policy?.operations?.['inputs-open'],policy?.operations?.['inputs-apply'],next?.connection,next?.stale?.at,input?.investigationId,input?.closed,visible,$('input-source').value]);
+ }
  function ask(){
   const id=state?.tabId,epoch=++capEpoch;caps=null;
   if(!Number.isSafeInteger(id)||id<1||!supportsCapabilityPolicy(state?.capabilityPolicy)){render();return;}
-  void client.request({op:'capabilities',tabId:id,ownerId:controller.snapshot().ownerId,sourceKind:$('input-source').value}).then(value=>{if(disposed||epoch!==capEpoch)return;caps=supportsCapabilityPolicy(value)?value:null;render();},e=>{if(disposed||epoch!==capEpoch)return;localError=explanation(e.code,e.message);render();});render();
+  void client.request({op:'capabilities',tabId:id,ownerId:controller.snapshot().ownerId,sourceKind:$('input-source').value}).then(value=>{if(disposed||epoch!==capEpoch)return;caps=supportsCapabilityPolicy(value)?value:null;capKey=capabilityKey(state,caps);render();},e=>{if(disposed||epoch!==capEpoch)return;localError=explanation(e.code,e.message);render();});render();
  }
  function makeRow(entry){
   const r=fieldResource(entry),name=label(r),el=node('article',undefined,'sp-atom-input-row');el.setAttribute('data-input-resource',entry.id);el.setAttribute('data-input-selector',r.locator.selector||'');
@@ -88,7 +92,7 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
  }
  function update(next){
   state=next;controller.update(next||{});visible=preview||supportsCapabilityPolicy(next?.capabilityPolicy)&&['inputs.live','inputs.draft-apply'].some(id=>next.capabilityPolicy.features[id].code!=='NOT_IMPLEMENTED')||visible&&!!controller.snapshot().draft?.dirtyCount;
-  const key=JSON.stringify([next?.tabId,next?.run,next?.selection?.domIdentity,next?.property,next?.attached,next?.readOnly,next?.capabilityPolicy?.operations?.['inputs-open'],next?.capabilityPolicy?.operations?.['inputs-apply'],next?.connection,next?.stale?.at,next?.inputs?.investigationId,next?.inputs?.closed,visible,$('input-source').value]);if(key!==capKey){capKey=key;if(visible)ask();else{caps=null;++capEpoch;}}render();
+  const key=capabilityKey(next);if(key!==capKey){capKey=key;if(visible)ask();else{caps=null;++capEpoch;}}render();
  }
  $('input-source').value='json-response';$('input-source').onchange=()=>{const s=controller.snapshot();if(s.active&&s.draft?.dirtyCount){$('input-source').value=s.sourceKind;localError='Apply or discard the current draft before changing sources.';render();return;}ask();if(s.active)void run(()=>controller.open({tabId:state.tabId,sourceKind:$('input-source').value}));};
  $('input-open').onclick=()=>run(async()=>{await controller.open({tabId:state.tabId,sourceKind:$('input-source').value});ask();});

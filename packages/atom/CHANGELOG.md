@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.73
+
+- Keep Live input focus across the first state refresh by reading state for the
+  active input view and binding fresh owner-scoped admission to its opened editor.
+  Preserve separate observation ownership, inactive-view behavior, real permission
+  changes, foreign-investigation refusal and existing runtime write guards.
+- The original .72 independent input run retains its focus failure. Controlled
+  rendered checks do not establish the corrected packed native workflow or latency
+  targets. No token, CSS, layout, API or permission-policy change.
+
 ## 0.1.0-candidate.20261021.72
 
 - Perform each live registry verification and its fresh redacted snapshot in one
