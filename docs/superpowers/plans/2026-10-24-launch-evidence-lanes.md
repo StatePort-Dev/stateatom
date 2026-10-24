@@ -41,4 +41,4 @@
 
 ## Final closeout
 
-- [ ] ONE fresh final review; effect regrade, one tested I/C correction pass maximum/no rereview. All rulings/Minors explicit, archive own workspace, clean final checkpoint and one next dependency without automatic app/threshold authorization.
+- [x] ONE fresh final review; effect regrade, one tested I/C correction pass maximum/no rereview. All rulings/Minors explicit, archive own workspace, clean final checkpoint and one next dependency without automatic app/threshold authorization.

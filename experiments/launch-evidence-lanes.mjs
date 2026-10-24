@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // Source-only historical description, never a replacement acceptance or live state.
-import path from'node:path';import{admitBrowserLaunchWitness}from'./browser-launch-witness.mjs';
+import path from'node:path';import{createHash}from'node:crypto';import{admitBrowserLaunchWitness}from'./browser-launch-witness.mjs';
 const sha=x=>typeof x==='string'&&/^[a-f0-9]{64}$/.test(x),revision=x=>typeof x==='string'&&/^[a-f0-9]{40}$/.test(x),legacyStatus='INCOMPLETE_ORIGINAL_LAUNCH_WITNESS_NO_APP',historicalPaths=new Set(['experiments/browser-launch-witness-run.mjs','tests/engine/browser-launch-witness-driver.test.mjs','docs/superpowers/plans/2026-10-24-original-launch-witness.md']),markers=new Set(['headless','user-data-dir','no-sandbox','ignore-certificate-errors','disable-web-security','load-extension','flag-switches-begin','flag-switches-end','ozone-platform','enable-automation']);
 const freeze=x=>{if(x&&typeof x==='object'){for(const value of Object.values(x))freeze(value);Object.freeze(x);}return x;};
 const unknowns=()=>[
@@ -27,7 +27,7 @@ export function describeLaunchEvidence(input){
   check(inputOK,'INPUT_PROVENANCE');
   const p={executable:s.browser?.executable,sha256:s.browser?.sha256,profileRoot:s.profilePolicy?.root,profilePrefix:s.profilePolicy?.prefix,metadataURL:s.metadataURL};try{strict=admitBrowserLaunchWitness(r.witness,r.proc,r.metadata,p);}catch{}
   check(strict?.status==='REFUSED_ORIGINAL_INVOCATION_FACTS'&&strict.failures.length===1&&strict.failures[0]==='METADATA_ARGUMENTS'&&r.browserVersion===s.browser?.version,'UNSUPPORTED_GUARD_FAILURE');
-  const w=r.witness,m=r.metadata;check(sha(m?.commandLineDigest)&&Number.isSafeInteger(m?.commandLineLength)&&m.commandLineLength>0&&m.commandLineLength<=65536&&sha(w?.commandLineDigest)&&Number.isSafeInteger(w?.commandLineLength)&&w.commandLineLength>0,'DISPLAY_UNAVAILABLE');check(m?.commandLineDigest!==w?.commandLineDigest,'NOT_DIFFERENT_TEXT');
+  const w=r.witness,m=r.metadata;check(sha(w?.profileDigest)&&typeof w?.profile==='string'&&w.profileDigest===createHash('sha256').update(w.profile).digest('hex'),'ORIGINAL_PROFILE_DIGEST');check(sha(m?.commandLineDigest)&&Number.isSafeInteger(m?.commandLineLength)&&m.commandLineLength>0&&m.commandLineLength<=65536&&sha(w?.commandLineDigest)&&Number.isSafeInteger(w?.commandLineLength)&&w.commandLineLength>0,'DISPLAY_UNAVAILABLE');check(m?.commandLineDigest!==w?.commandLineDigest,'NOT_DIFFERENT_TEXT');
   check(Array.isArray(m?.commandLineTextMarkers)&&m.commandLineTextMarkers.length<=markers.size&&new Set(m.commandLineTextMarkers).size===m.commandLineTextMarkers.length&&m.commandLineTextMarkers.every(x=>markers.has(x)),'MARKER_SCOPE');
   const d=m?.document;check(d?.before?.url===s.metadataURL&&d?.after?.url===s.metadataURL,'OBSERVATION_SCOPE');check(typeof r.finishedAt==='string'&&r.finishedAt.length<=64&&Number.isFinite(Date.parse(r.finishedAt)),'OBSERVATION_SCOPE');
   const c=r.cleanup;check(['pageSession','browserSession','page','context','client','owner'].every(k=>c?.[k]===true)&&c?.ownerKill==='not-needed'&&c?.generatedProfileRemoved===true&&c?.processExit?.pid===w?.pid&&c?.processExit?.expectedStartTime===r.proc?.reported?.startTime&&['Absent','DifferentProcess'].includes(c?.processExit?.state),'CLOSED_SCOPE');

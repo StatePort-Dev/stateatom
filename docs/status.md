@@ -1,9 +1,11 @@
 # Project status
 
-Active bounded work: [A02.9](completion/150-launch-evidence-lanes.md), source-only
-claim-scoped description of retained launch records. Classifier/reader46focused/full3293PASS;
+Completed bounded work: [A02.9](completion/150-launch-evidence-lanes.md), source-only
+claim-scoped description of retained launch records. Classifier/reader50focused/full3297PASS;
 Retained annotation9ca3e3c verifies377physical+3Git and14 independent negatives;
-ONE final review due, no native/app/model.
+ONE review0C/1I fixed once/0M, no native/app/model.
+Next V03.23: restore availability reporting; deterministic external-revision
+refusal preserves safety, while canUndo currently still true. No guard relaxation.
 A02.8 closes at0c6963d:63focused/full3247PASS, ONE review0C/1I/2M/I1fixed once.
 Its one native case remains Incomplete/METADATA_ARGUMENTS and exhausted. Original
 owner metadata45args vsproc1 observed; independent exe/profile/document matched,

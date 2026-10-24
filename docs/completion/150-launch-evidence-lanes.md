@@ -1,4 +1,4 @@
-# A02.9 — retained launch evidence claim separation (retained analysis complete, final review due)
+# A02.9 — retained launch evidence claim separation (complete within source-only historical scope)
 
 Starts0c6963d: A02.8 source63/full3247PASS, ONE review0C/1I/2M, I1fixed once,
 all source/raw preserved. Native record2801... remains Incomplete/METADATA_ARGUMENTS;
@@ -52,3 +52,30 @@ METADATA_ARGUMENTS acceptedfalse, fullA02false, no native reexecution.
 Independent Python reader (no source imports) verify-saved.py checks saved facts,
 revisions/hashes/physical-vs-Git/source/raw4 and rejects14 literal negative controls.
 Source327/old9/priorresearch16 preserved. ONE final fresh whole-item review due.
+
+Final fresh review /root/a029_whole_review (astra/high), af9258b..24de624:
+0Critical/1Important/0Minor. I1 accepted: original profileDigest was copied without
+checking format or exact SHA256(profile). Missing/wrong/private payload on retained
+DTO copies could become Observed; the pinned actual saved artifact is correct.
+ONE correction pass: four regressions RED35PASS/4FAIL (incorrect annotation) ->
+new classifier-only profile digest check -> focused50PASS. Fresh npm test3297PASS/
+0FAIL/0cancelled/0SKIP,99.58s terminal64809. Old strict helper/cases/raw unchanged;
+no native/app/model rerun, no rereview, no deferred Minors.
+Report/rulings: `.artifacts/a02/launch-evidence-lanes-review/2026-10-24/report.md`.
+Declined judgments stand: no fresh product/current argv/causal/executable proof;
+reader authenticates JSON DTO provenance, not arbitrary objects; finite local
+reader is not generic public intake, hostile concurrent files/getters/proxies
+outside contract; no publication/human visual acceptance. Costs remain explicit.
+Original annotation/manifest retain9ca3e3c analysis source; after this tested fix
+those four historical analysis source files are2physical+2exact Git, not fresh4.
+Final checkpoint must compare stricter classifier output in memory to immutable
+old annotation and verify327product/9old/16priorresearch/raw4 and377+3 frozeninputs.
+
+One next dependency-ready item: V03.23 native-control restoration availability.
+Preliminary source-only copies of retained V03.21 resources/acknowledgements show
+canUndo/canRestoreBaseline true despite deterministic EXTERNAL_REVISION refusal;
+exact owned snapshots still prepare Undo. Synthetic plan/receipt ids, no native
+write. Fix availability reporting/controls without relaxing epoch/ownership guards;
+old successful-restoration guide remains FAIL and fullV03/fullA02/whole20/29 open.
+This is executor-selected bounded scope under autonomous instruction, not human
+approval of new Live timing, production grants, handoff UX or relaxed restore.
