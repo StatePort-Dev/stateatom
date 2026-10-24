@@ -109,7 +109,9 @@ relying on a plugin/helper/browser combination: the old plugin acceptance and th
 current Atom65/helper-only protocol check do not establish a fresh combined UI run.
 
 1. In VS Code, open **Extensions: Install from VSIX** from the Command Palette and
-   select the supplied helper file. Open and trust only the intended workspace.
+   select the supplied helper file. Open only the intended workspace. If it opens
+   in **Restricted Mode**, use the banner’s **Manage** link and trust that workspace
+   in the Workspace Trust editor.
    This is an installed helper, not an Extension Development Host launch.
 2. Follow the supplied plugin recipe in that application's own project, using its
    local tarball and explicit configuration. It is an opt-in development integration;

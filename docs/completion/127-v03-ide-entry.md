@@ -54,3 +54,17 @@ refusing host shared-store access. D-Bus points to a short nonexistent task-spec
 socket (no daemon/global config/certificate/account change). Original case/result
 remain unchanged. These are launch corrections before any successful entry action,
 not a product change or UI criterion waiver. Console outcomes remain actual.
+
+
+## Own storage confirmed; outdated trust observer refused
+
+Preregister982e22f, actual69101/exit1, result00-34-07:402 inputs/65 originals stable,
+actual own sharedStorage path observed and no host shared-store path in startup log.
+All owned resources/ports close. It still fails before VSIX/receipt because the
+observer expects the old startup trust modal. Actual viewed failure screen shows
+Restricted Mode with Manage, not that modal. Current official workspace-trust docs
+and exact installed workbench source set startupPrompt default never; use actual
+banner Manage and Workspace Trust editor instead. Do not disable Workspace Trust
+or preset trusted identities. New immutable trust-editor registration retains both
+FAILs and pins the small guide clarification and driver change. No successful IDE
+entry or old app experiment is being repeated; console error remains unwaived.
