@@ -18,8 +18,9 @@ export async function startNativeBrowser(runtime,name,_withExtension,_headed,ext
  if(beforeExtensionLoad!==undefined&&(typeof beforeExtensionLoad!=='function'||headless||extra.some(a=>/^--(?:load-extension|disable-extensions(?:-except)?)(?:=|$)/.test(a))))throw Error('Guide installation requires headful owned UI setup without extension CLI flags');
  const profile=runtime+'/'+name;await mkdir(profile,{recursive:true});let executable=chromium.executablePath();if(existsSync(root+'/.browsers')){const dir=(await readdir(root+'/.browsers')).find(n=>/^chromium-/.test(n));if(dir)executable=root+'/.browsers/'+dir+'/chrome-linux64/chrome';}
  const args=[...(headless?['--headless=new']:[]),'--remote-debugging-port=0','--user-data-dir='+profile,...(beforeExtensionLoad?[]:['--disable-extensions-except='+extensionPath,'--load-extension='+extensionPath]),'--no-first-run','--no-default-browser-check','--disable-dev-shm-usage',...extra,'about:blank'];
- const log=await open(profile+'/chrome.log','a'),child=spawn(executable,args,{stdio:['ignore',log.fd,log.fd],env:{...process.env,...(display?{DISPLAY:display}:{}),...(!headless&&display?{DBUS_SESSION_BUS_ADDRESS:'unix:path='+path.resolve(profile,'no-shared-session-bus'),GTK_USE_PORTAL:'0'}:{})}});
- const command={executable,args:[...args],profile,pid:child.pid,extensionSetup:beforeExtensionLoad?'guide-ui':'historical-cli-preload'};
+ const launchEnvironment={...process.env,...(display?{DISPLAY:display}:{}),...(!headless&&display?{DBUS_SESSION_BUS_ADDRESS:'unix:path='+path.resolve(profile,'no-shared-session-bus'),GTK_USE_PORTAL:'0'}:{})};
+ const log=await open(profile+'/chrome.log','a'),child=spawn(executable,args,{stdio:['ignore',log.fd,log.fd],env:launchEnvironment});
+ const command={executable,args:[...args],profile,pid:child.pid,extensionSetup:beforeExtensionLoad?'guide-ui':'historical-cli-preload',...(beforeExtensionLoad?{configuredGuiEnvironment:Object.fromEntries(['XDG_DATA_HOME','XDG_CONFIG_HOME','XDG_CACHE_HOME','DISPLAY'].map(k=>[k,launchEnvironment[k]??null]))}:{})};
  let cdp,closed=false;const pages=[];
  const close=async()=>{if(closed)return;closed=true;try{await cdp?.send('Browser.close');}catch{}if(child.exitCode===null){child.kill('SIGTERM');try{await waitFor(()=>child.exitCode!==null,5000);}catch{child.kill('SIGKILL');}}cdp?.socket.close();await log.close();};
  try{

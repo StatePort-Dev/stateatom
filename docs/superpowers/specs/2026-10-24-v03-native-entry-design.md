@@ -25,7 +25,9 @@ symlinks. A fresh owned browser process writes its own endpoint; CLI extension
 preload stays absent. Verify browser/executable/worker/kit/report identities.
 
 Use owned nested Xephyr and task-local XDG_DATA_HOME/XDG_CONFIG_HOME/XDG_CACHE_HOME
-for this process only. Record the actual whitelisted child environment; no global
+for this process only. Record whitelisted actual spawn-option environment and any available runtime
+/proc observation separately; missing runtime keys stay Unknown, not proof of
+GTK effects. Observe the native chooser and any task-local Recent file. No global
 settings are changed. Observe the native dialog; do not infer clean OS/privacy
 merely from environment names. Existing screenshots/history remain unchanged.
 No active HTTP application tab or restored debugger/edit/source authority is allowed.
