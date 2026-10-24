@@ -8,19 +8,22 @@ import {chromium} from 'playwright';
 import {createBrowserEngine} from '../../src/engine/browser.mjs';
 import {sha256} from '../../scripts/atom-package-receipt.mjs';
 
-const [stage,caseFile]=process.argv.slice(2),scenario=JSON.parse(await readFile(caseFile));
-assert(['baseline','candidate'].includes(stage));
+const [stage,caseFile]=process.argv.slice(2);let scenario;
 const out='.artifacts/v02/disabled-domain/'+new Date().toISOString().replace(/[:.]/g,'-');
 await mkdir(out,{recursive:true});
 const engine='src/engine/browser.mjs',hashes=async()=>Object.fromEntries(await Promise.all(Object.keys(scenario.inputHashes).map(async p=>[p,sha256(await readFile(p))])));
-const result={schema:'stateatom.disabled-domain-native/1',stage,status:'RUNNING',revision:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),startedAt:new Date().toISOString(),caseFile,caseSha256:sha256(await readFile(caseFile)),engineSha256:sha256(await readFile(engine)),rows:[],errors:[],configuration:{soleHarnessTarget:true,atomLoaded:false,fixtureSetupScripts:true,acquisitionScripts:false,coldDomainBeforeEach:true,sandbox:true}};
-await writeFile(out+'/driver.mjs',await readFile(new URL(import.meta.url)));
+const result={schema:'stateatom.disabled-domain-native/1',stage,status:'RUNNING',revision:null,initialInventoryComplete:false,initializationPhase:'pending',startedAt:new Date().toISOString(),caseFile,caseSha256:null,engineSha256:null,rows:[],errors:[],configuration:{soleHarnessTarget:true,atomLoaded:false,fixtureSetupScripts:true,acquisitionScripts:false,coldDomainBeforeEach:true,sandbox:true}};
 let browser,server;
 const html='<!doctype html><title>Disabled domain control</title><div id="controls"></div><div id="open"></div><div id="closed"></div><div id="text"><span>Alpha</span> <span>Beta</span></div><script>window.getterReads=0;for(const [kind,values]of [["button",["absent","empty","false","disabled","namespace"]],["input",["absent","empty","false","disabled","namespace"]],["textarea",["absent","empty","false","disabled","namespace"]]])for(const variant of values){const e=document.createElement(kind);e.id=kind+"-"+variant;if(variant==="namespace")e.setAttributeNS("urn:stateatom:control","disabled","");else if(variant!=="absent")e.setAttribute("disabled",variant==="empty"?"":variant);Object.defineProperty(e,"disabled",{get(){window.getterReads++;throw Error("Getter must not run")}});document.querySelector("#controls").append(e)}for(const [id,mode]of [["open","open"],["closed","closed"]]){const root=document.querySelector("#"+id).attachShadow({mode});root.innerHTML="<button id=off>Off</button><button id=on disabled>On</button>";for(const e of root.children)Object.defineProperty(e,"disabled",{get(){window.getterReads++;throw Error("Getter must not run")}})}document.querySelector("#controls").insertAdjacentHTML("beforeend","<select id=unsupported></select><button id=replace>Replace</button>");<\/script>';
 try{
+ result.initializationPhase='case';assert(['baseline','candidate'].includes(stage));scenario=JSON.parse(await readFile(caseFile));result.caseSha256=sha256(await readFile(caseFile));
+ result.initializationPhase='revision';result.revision=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
+ result.initializationPhase='engine';result.engineSha256=sha256(await readFile(engine));
+ result.initializationPhase='inputs';await writeFile(out+'/driver.mjs',await readFile(new URL(import.meta.url)));
  assert.equal(scenario.schema,'stateatom.disabled-domain-case/1');
  assert.deepEqual(await hashes(),scenario.inputHashes);assert.equal(result.engineSha256,scenario.engineHashes[stage]);
  assert.equal(sha256(await readFile(scenario.browser.executable)),scenario.browser.executableSha256);
+ result.initialInventoryComplete=true;result.initializationPhase=null;
  server=createServer((_req,res)=>{res.setHeader('content-type','text/html');res.setHeader('cache-control','no-store');res.end(html);});
  await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',()=>{server.removeListener('error',reject);resolve();});});
  const origin='http://127.0.0.1:'+server.address().port;
@@ -55,6 +58,6 @@ try{
 }catch(error){result.status='FAIL';result.errors.push({name:error.name,message:error.message,stack:error.stack});process.exitCode=1;}
 finally{
  for(const [name,close]of [['browser',()=>browser?.close()],['server',()=>server&&new Promise((resolve,reject)=>server.close(error=>error?reject(error):resolve()))]])try{await close();result[name+'Closed']=true;}catch(error){result.status='FAIL';result.errors.push({phase:'cleanup-'+name,message:error.message});process.exitCode=1;}
- try{result.inputsAfter=await hashes();assert.deepEqual(result.inputsAfter,scenario.inputHashes);assert.equal(sha256(await readFile(engine)),result.engineSha256);}catch(error){result.status='FAIL';result.errors.push({phase:'final-inputs',message:error.message});process.exitCode=1;}
+ try{if(result.initialInventoryComplete){result.inputsAfter=await hashes();assert.deepEqual(result.inputsAfter,scenario.inputHashes);assert.equal(sha256(await readFile(engine)),result.engineSha256);}else result.inputInventoryUnavailable=true;}catch(error){result.status='FAIL';result.errors.push({phase:'final-inputs',message:error.message});process.exitCode=1;}
  result.finishedAt=new Date().toISOString();await writeFile(out+'/results.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({out,status:result.status,rows:result.rows.length,errors:result.errors.map(e=>e.message)}));
 }

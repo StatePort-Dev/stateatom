@@ -137,3 +137,79 @@ initially hit EPERM; identical read-only verifier passed with local escalation,
 without another native run. ONE final review is pending. Next bounded item after
 review: V02.11, isolate remaining internal Apply phases on current71 before choosing
 another correction; no original matrix/corpus/IDE rerun is implied.
+
+## ONE review and one correction pass
+
+Fresh readonly `/root/v0210_whole_review` (gpt-6-astra/high), exact
+507420d..6aa9370:0Critical/2Important/1Minor. It independently passed the saved
+native verifier without recreating the result. Report/receipt:
+`.artifacts/v02/disabled-domain/2026-10-24/review/`.
+
+Both Important findings concern harness failure paths, not the product branch:
+
+1. Native browser spawn could emit an unhandled child error before the outer
+   finally. Acquisition now awaits spawn/error inside try; synchronous/asynchronous
+   failure rejects with the original error. Cleanup independently attempts child,
+   CDP socket and owned log, and attaches cleanup failure without replacing startup.
+2. Initial case/engine/fixture/Git/inventory reads were outside terminal handling.
+   Both new drivers now create minimal result after acquiring their output directory,
+   protect initialization/preregistration, record its phase/incomplete inventory,
+   and attempt a terminal failure record. Final unavailable inventory does not mask
+   the initial error. The comparison retains native startup cleanup details.
+
+Twelve actual-source synthetic controls use substituted process/filesystem boundaries,
+with no browser/profile/display/server: RED3PASS/9FAIL →GREEN12PASS; expanded focused94
+PASS. Current full source suite is recorded below after completion. Original source
+and metadata-only71 package stay exact; no repack/types/admission/backend/native repeat.
+Original native driver/helper bytes and case files remain preserved. Only three
+post-run harness files differ, explicitly bound before/after in
+`.artifacts/v02/disabled-domain/2026-10-24/post-run-harness-correction.json`.
+`verify-after-review.mjs` checks these declared corrections while retaining every
+original native criterion; historical `verify-native.mjs` and checkpoint are unchanged.
+Corrected failure paths have source-only proof, not a newly executed native run.
+
+Minor deferred: the earlier pending sentences describe preregistration state and
+remain historical wording; this final section and machine routing determine current
+status. No product/evidence effect. V02.9 sparse-options Minor also remains deferred.
+No re-review or second correction pass is used.
+
+The review's declined boundaries were ruled as follows; none silently disappears:
+
+- Full V02/universal speedup: retain open targets and per-condition4-sample
+  distributions; cost if treated as general: unsupported performance assurance.
+- Internal CPU/guard attribution: remains unisolated until V02.11; cost: remaining
+  latency cannot yet be assigned to a particular operation.
+- Direct native CDP versus installed broker: keep22controls separate from backend13;
+  cost: neither substitutes for missing real product paths.
+- New native ABA: only registered replacement controls ran; retain narrower source
+  ABA controls without upgrading them; cost: no new native ABA coverage claim.
+- Other versions/OS/hardware: only exact Chrome153/Linux checked; cost: portability
+  and broader installation targets remain unverified.
+- Iframes/custom controls/closed roots: no support expansion; explicit Unsupported
+  stands; cost: users of those paths still lack a supported result.
+- Widgets/human/visual/guide: trusted actor/backend proof is narrower; no human
+  blocker introduced; cost: no broad usability or visual-fidelity assurance.
+- HTTPS/H09/production/certificates/accounts/IDE/model/Capture/other repo: unchanged
+  historical boundaries; cost: their open gates cannot be closed by this item.
+- Corpus/limit/Close/original targets: no repeat or waiver; cost: existing misses
+  and historical-candidate limits remain visible.
+- Sparse operations: fixed dense native list unaffected; Minor deferred; cost:
+  unsupported sparse diagnostic configuration still needs a later refusal control.
+- Shared helper redesign: only startup ownership correction needed here; cost:
+  unrelated helper behaviors are not newly qualified.
+- Release/publication/fullV03/C09/A02/L02: no upgrade or external mutation; cost:
+  distribution and full acceptance remain open.
+- Forced termination/unwritable storage/machine failure: ordinary errors attempt
+  serialization; no impossible durability guarantee; cost: external interruption
+  can still prevent a terminal file.
+
+Finishing keeps main and local commits under existing authorization, without branch
+switch/integration menu/push/deletion. Cost: hosted/merged/release validation remains
+unclaimed. Existing evidence/workspace are preserved. Scope-review-1, mandatory
+L02/A05, two-stage production and unresolved exact parameters remain unchanged.
+
+Actual full source after the single correction pass: **2633PASS/0FAIL/0SKIP**,
+`npm test`, log `.superpowers/sdd/2026-10-24-v02-disabled-domain/full-after-review.log`.
+Original2621/82 and corrected2633/94 remain distinct evidence; twelve added controls
+exercise failed harness startup/inventory only. The finite native results retain
+actual5f4e788 and their original input/driver bytes. No native re-review/re-execution.
