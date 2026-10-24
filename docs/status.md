@@ -1,6 +1,12 @@
 # Project status
 
-Active bounded work: [A02.6](completion/147-a02-array-callsite-bridge.md) source
+Active bounded work: [A02.7](completion/148-owned-process-diagnostic.md), scoped
+owned-process identity diagnosis. Source implementation not started; at most one
+new blank diagnostic after source/full gates and frozen case. Both A02.6 cases
+remain exhausted, native app acquisition Incomplete/fullA02 open/20of29 unchanged.
+No app/extension/IDE/certificate/trust settings work in this item.
+
+Prior bounded work: [A02.6](completion/147-a02-array-callsite-bridge.md) source
 call-site bridge engineering complete, native acquisition Incomplete.113 focused/3151 full source controls pass;
 327 product/nine historical inputs unchanged. Both allowed native attempts ended
 before app phases: first a gated identity command, second owned-profile mismatch.
