@@ -80,3 +80,18 @@ refuses before Trust/VSIX/copy. This observer assumption is not a product failur
 New immutable workspace-record case joins the actual owned Code workspace.json
 folder URI with exact launch root, recorded restricted UI and later receipt workspace
 ID. It does not fabricate path text or preset trust. Third FAIL remains unchanged.
+
+
+## Native chooser reached; Return is not Open
+
+Preregister3133518, actual64849 terminal143 (script records FAIL before terminal),
+result00-36-58:404 inputs/65 originals stable, actual UI Trust and selected owned
+workspace record pass. Actual Install from VSIX palette opens native chooser;
+location typing succeeds but Return leaves it open, so installation wait expires.
+No installed payload/receipt credit. Own Code/display/ports close, console diagnostic
+remains. Agent viewed native entered/current image; a later attempted native Open
+was refused because result already terminal, so no input was delivered after close.
+New immutable native-open case preserves this FAIL and requires a screenshot-hash-
+matched agent point on visible native Open (finite120s), not guessed Return behavior,
+private install API or file injection. This explicit operator assistance is scoped
+Linux UI operation and will be joined to the actual runtime record.
