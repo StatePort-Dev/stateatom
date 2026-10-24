@@ -1,0 +1,123 @@
+{
+  "schema": "stateatom.input-worker-api-phases-case/1",
+  "base": "e21f10b2b4d2099471735561ffef42e7f4610c5e",
+  "handoffs": {
+    "C": ".artifacts/atom/2026-10-24T01-26-15-352Z/atom-handoff.json"
+  },
+  "browser": {
+    "version": "Chrome/153.0.8010.12",
+    "executableSha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e"
+  },
+  "inputHashes": {
+    "tests/integration/input-worker-api-phases-native.mjs": "25375648defb1d1a414f9ba7beaa19d547765972880806e68f4e706ab23c0cd4",
+    "tests/helpers/worker-api-phase-probe.mjs": "685264289382992dd18e6ea4f862dcbaca346a941e813b41527e1d05092febdd",
+    "tests/helpers/worker-api-phase-summary.mjs": "a45ec40f17f0267f479c040f8cbdab88c3bc5d344ae4f17c43062cbcc2081808",
+    "tests/atom/worker-api-phase-probe.test.mjs": "a37edd604536fcf4ab3ed9ebbf303784f8de27ba57ac8423c785861db05211f0",
+    "tests/atom/worker-api-phase-summary.test.mjs": "350445e56abbb49e9c4ebe0686862ede082d08fa7bcef560aecfd1b4cf46fe8a",
+    "tests/atom/native-worker-session.test.mjs": "6d685dbf616b2a4225d80be6e34a628d4f990783e4dfe2b6b4dbe3b7a7dd4400",
+    "tests/atom/native-harness-failure.test.mjs": "9f8159443789a4fa2fd281b089824c881f713af34216170644ce3a5222b67204",
+    "tests/helpers/inspector-rpc-phase-probe.mjs": "dc8832e63861a912744adbb1dcc51750c2048c82fa5cc68c4a609755196c2cdd",
+    "tests/atom/inspector-rpc-phase-probe.test.mjs": "6b957bad6c2e3f7bea8c51f8a7988b5bd454f9cd234ed7caeda8c98296e5247e",
+    "tests/helpers/input-mode-performance.mjs": "7edfdd39dc0675b74e1d7926a1e99ddd44d1a254078f51897e4d47dc21e0dff9",
+    "tests/atom/input-mode-performance.test.mjs": "ae7118fb33cf15d66778ae41fa2352352fc458571ab1fad9224159871f51d30d",
+    "tests/helpers/native-inspector-ui.mjs": "2a82f3a643bbbacd9a6f8ed7e798f77b1416f110f1828ac23fd97b24bc8109b9",
+    "tests/helpers/source-access-native-desktop.mjs": "786011664d68f658bd1d5e7c002963642a50a16661d7f67b2413ac8aef182f57",
+    "scripts/native-browser.mjs": "02a90576271323acc34f75e6af1d076cfec327b9b85fd89973578ad9ee6ffe87",
+    "scripts/harness.mjs": "3796e76b60f450b46cde335521efb9fd1dcf3aa1305501f30c2af61627f2d7ec",
+    "scripts/atom-package-receipt.mjs": "f54a3c72c65b5f032a2936b0a216b2516016fa8c356388bf33dfc9397a0b4d7c",
+    "tests/fixtures/native-controls/index.html": "6ef8450b4060e9708047aea43f4529668ffd9fdb6caf3ee37a526d56d4e8f8be",
+    "docs/superpowers/specs/2026-10-24-v02-worker-api-phases-design.md": "09435a6dc803e8758184068685435016fd2d0c8dec669dc50f530f5e50a56b99",
+    "docs/superpowers/plans/2026-10-24-v02-worker-api-phases.md": "ca32ca978dbacbf05546a86db7465ba8719be450c8272ebbe3acb8e4934ba652",
+    ".artifacts/v02/worker-api-phases/2026-10-24/startup-controls.test.mjs": "bdb26adc325902b6a793ec8baa37ca84ebf11c244bbe05e1d5780b7f0d443c30",
+    "package.json": "9e17e86330ce8f604d9a081da7ab650453ec79cfcb660467f342822cf480aa8b",
+    "package-lock.json": "f954745163c31e68db231dd9b8f4447aeb7698787888c00ea9628cc982c761c7",
+    ".artifacts/atom/2026-10-24T01-26-15-352Z/atom-handoff.json": "394d13dbcb264a4dcc1f08b61c4814add8a54e3ba4c7070ef3072af67378b645",
+    ".artifacts/v02/worker-api-phases/2026-10-24/serialized-probe.test.mjs": "8b1d6db2e6384e49811567acc9b4610f5258f25aa7d1d9485ec57975311c5eb3",
+    "docs/testing/input-worker-api-phases-capacity.md": "d6fb032964615590a68bbecf0d3d3a19675420f4da0cd058ab4af8af40f3a388",
+    ".artifacts/v02/worker-api-phases/2026-10-24/trace-retention.test.mjs": "4a678ba47333bbe4ea19c0efbd34559745682e28e534b60e5766979060be42c9"
+  },
+  "protocol": {
+    "cases": [
+      {
+        "host": "standalone",
+        "condition": "C",
+        "caseIndex": 0
+      },
+      {
+        "host": "embedding",
+        "condition": "C",
+        "caseIndex": 1
+      }
+    ],
+    "blocksPerCase": 3,
+    "warmupBlocks": 1,
+    "totalRows": 12,
+    "warmupRows": 4,
+    "measuredRows": 8,
+    "order": "block0 live/draft; block1 draft/live; block2 live/draft",
+    "phaseCap": 32,
+    "phaseOperations": [
+      "inputs-apply",
+      "state",
+      "capabilities"
+    ],
+    "workerAPICap": 16384,
+    "workerAPIs": [
+      "debugger.sendCommand",
+      "tabs.get",
+      "permissions.contains",
+      "scripting.executeScript",
+      "storage.session.get",
+      "storage.session.set",
+      "storage.local.get",
+      "storage.local.set",
+      "runtime.sendMessage"
+    ],
+    "nativeMethodWhitelist": [
+      "DOM.enable",
+      "DOM.getDocument",
+      "DOM.querySelector",
+      "DOM.describeNode",
+      "DOM.pushNodesByBackendIdsToFrontend",
+      "DOM.resolveNode",
+      "DOM.requestNode",
+      "Runtime.callFunctionOn",
+      "Runtime.releaseObjectGroup",
+      "Debugger.getScriptSource"
+    ],
+    "workerAPIOutcomes": "Boolean true/false settled outcomes retained and counted, null/unsupported/pending/overflow invalidate; outer Apply/ack must succeed",
+    "applyCountPerGesture": 1,
+    "defaultLiveDebounceMs": 250,
+    "performanceAcceptance": false,
+    "targetsWaived": false,
+    "workerAPIMaxLimitOptIn": 16384,
+    "rawWorkerSnapshotBeforeValidation": true
+  },
+  "clock": {
+    "translation": "worker.timeOrigin - inspector.timeOrigin, same-UA W3C high-resolution time",
+    "source": "https://w3c.github.io/hr-time/#examples",
+    "precision": "COARSENED_UNKNOWN_BROWSER_PRECISION",
+    "aggregation": "clipped interval union within Apply RPC, never sum overlaps",
+    "causality": "UNKNOWN_CONCURRENT_STATE_INCLUDED"
+  },
+  "setupAssistance": [
+    "CLI extension preload in fresh owned profiles; no new guide-installation claim",
+    "Exact loopback development permissions use existing helper before timing; no production/account/certificate/IDE",
+    "Native inspector direct extension URL, fixture selectors and paced input helpers; no human usability claim",
+    "Own extension service-worker CDP metadata API wrapper; inspected app remains solely Atom-owned; no host-copy or immutable package edit"
+  ],
+  "boundaries": [
+    "Product327/helper223/UI2 and exact71 archive/installed hosts unchanged; original types2/admission9/backend13/native22/full2633 retained, not rerun",
+    "Only fixed worker API metadata, no args/results/private params/keys/values/tokens/plans/error content; Promise/receiver/arguments/error identity preserved",
+    "Worker-wide permission/storage/runtime APIs and concurrent state remain; no exact Apply-only request attribution, CPU/guardian/JS/queue cause or critical-path claim",
+    "Intrinsic Promise observers may alter unhandled-rejection reporting; instrumented worker console is not uninstrumented exception-completeness proof",
+    "No original performance-target/SLO/250ms policy or unapproved Live/production/handoff decision; whole20/29/fullV02/V03/C09/A02/L02 stay open",
+    "No prior matrix/64-limit/Close/HTTPS/certificates/IDE/model/app-source/Capture/SDK/publication/other-repository repeat",
+    "Separate opt-in diagnostic max16384; default2048/2049-refusal and first actual2048 overflow FAIL remain intact; no overflow accepted or original performance gate waived"
+  ],
+  "preNativeDriverCorrection": "Strict evaluation retains original ES module function receiver semantics; source RED→GREEN in separate VM, no native attempt yet",
+  "originalRegistration": "docs/testing/input-worker-api-phases-case.json",
+  "priorFailedResult": ".artifacts/v02/input-worker-api-phases/2026-10-24T02-08-40-191Z/results.json",
+  "priorFailureSha256": "54337dc080fde429c83b506839c910edc1a21b529025aebe1a88f3e29d4ec752",
+  "capacityDecision": "docs/testing/input-worker-api-phases-capacity.md"
+}

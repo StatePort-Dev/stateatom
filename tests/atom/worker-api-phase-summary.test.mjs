@@ -21,3 +21,6 @@ test('settled internal API rejections retain occupied time and explicit failure 
 test('unknown clocks, target, shape, duration, cap, pending, unsupported and reordered rows refuse',()=>{
  const mutations=[x=>x.clock.timeOrigin=NaN,x=>x.tabId=99,x=>x.rows[0].value='private',x=>x.rows[0].durationMs++,x=>x.overflow=true,x=>x.inflight=1,x=>x.unsupported=true,x=>x.rows[0].ok=null,x=>x.rows[0].supported=false,x=>x.rows[0].api='private',x=>x.rows[0].method='private',x=>x.rows[0].ordinal=9,x=>x.rows=[],x=>x.limit=0,x=>[x.rows[0],x.rows[1]]=[x.rows[1],x.rows[0]]];for(const mutate of mutations){const f=fixture();mutate(f);assert.throws(()=>summarize(f));}assert.throws(()=>summarizeWorkerAPIPhases(fixture(),apply,{inspectorOrigin:NaN,tabId:9}));assert.throws(()=>summarizeWorkerAPIPhases(fixture(),{...apply,durationMs:21},{inspectorOrigin:900,tabId:9}));
 });
+test('larger declared capacity needs explicit validator opt-in and never accepts overflow',()=>{
+ const f=fixture();f.limit=16384;assert.throws(()=>summarize(f));const options={inspectorOrigin:900,tabId:9,maxLimit:16384};assert.equal(summarizeWorkerAPIPhases(f,apply,options).apiUnionMs,20);f.overflow=true;assert.throws(()=>summarizeWorkerAPIPhases(f,apply,options));
+});

@@ -89,3 +89,29 @@ including exact undefined/null forwarding. Driver controls now7PASS (six startup
 cleanup plus this VM control). The case's driver hash is updated before execution,
 with the original registration retained in Git; no native result or criterion is
 rewritten. Product327/source module tests/full2654 remain unchanged.
+
+## First actual attempt — retained FAIL, no API attribution
+
+Actualfea1a96/handle31003/exit1:
+`.artifacts/v02/input-worker-api-phases/2026-10-24T02-08-40-191Z/results.json`.
+First standalone Live warmup exceeds the2048-record cap; summary refusal is correct,
+0accepted rows. Inspector/worker errors and console are empty, input maps stable;
+own worker/browser/display/server close. The driver failed to retain the raw
+snapshot before validation, so the exact count/API breakdown cannot be recovered.
+Do not reconstruct it or turn this attempt into a pass.
+
+A pre-validation retention control fails on original driver and passes after saving
+raw snapshots/current failure before every validation. Original case/source/result
+remain unchanged in Git/artifacts. The separately preregistered
+[capacity addendum](../testing/input-worker-api-phases-capacity.md) and
+[new case](../testing/input-worker-api-phases-capacity-case.json) opt in to a fixed
+16384 metadata ceiling for the same12-row question. Default2048 and its2049-refusal
+remain; both source probe and validator demand explicit larger-budget opt-in and
+continue rejecting overflow. Source capacity RED20PASS/2FAIL→GREEN; combined57
+source/driver controls PASS. No original V02/SLO/authority/privacy threshold changes.
+Cost is larger bounded recording/memory/observer overhead, not a permitted loss of
+slow/tail/unknown data. The separate current run is still due.
+
+Current full source after retention/capacity change:2656PASS/0FAIL/0SKIP,
+`full-source-capacity.log`; combined57 source/driver/VM controls PASS. The earlier
+2654 result belongs to the original2048 implementation. Both remain retained.

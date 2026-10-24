@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Own trusted extension worker only. No request, params, result or error content.
-export function installWorkerAPIProbe(scope=globalThis,{tabId,limit=2048}={}){
- if(!Number.isSafeInteger(tabId)||tabId<1||!Number.isSafeInteger(limit)||limit<1||limit>2048)throw Error('Invalid worker probe configuration');
+export function installWorkerAPIProbe(scope=globalThis,{tabId,limit=2048,maxLimit=2048}={}){
+ if(!Number.isSafeInteger(tabId)||tabId<1||![2048,16384].includes(maxLimit)||!Number.isSafeInteger(limit)||limit<1||limit>maxLimit)throw Error('Invalid worker probe configuration');
  const paths=['debugger.sendCommand','tabs.get','permissions.contains','scripting.executeScript','storage.session.get','storage.session.set','storage.local.get','storage.local.set','runtime.sendMessage'];
  const nativeMethods=new Set(['DOM.enable','DOM.getDocument','DOM.querySelector','DOM.describeNode','DOM.pushNodesByBackendIdsToFrontend','DOM.resolveNode','DOM.requestNode','Runtime.callFunctionOn','Runtime.releaseObjectGroup','Debugger.getScriptSource']);
  const clock={timeOrigin:scope.performance.timeOrigin,crossOriginIsolated:scope.crossOriginIsolated===true};if(!Number.isFinite(clock.timeOrigin)||clock.timeOrigin<=0)throw Error('Worker clock unavailable');

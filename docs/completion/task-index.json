@@ -4311,25 +4311,31 @@
       "active_slice": {
         "id": "V02.11",
         "title": "Own-worker API phases during existing input gestures",
-        "status": "source-prepared-native-review-due",
+        "status": "first-native-overflow-FAIL-capacity-case-prepared",
         "record": "130-v02-worker-api-phases.md",
         "design": "../superpowers/specs/2026-10-24-v02-worker-api-phases-design.md",
         "plan": "../superpowers/plans/2026-10-24-v02-worker-api-phases.md",
         "product_source_changed": false,
         "whole_V02_complete": false,
-        "source_checks": 2654,
-        "focused_checks": 47,
-        "driver_failure_controls": 6,
+        "source_checks": 2656,
+        "focused_checks": 57,
+        "driver_failure_controls": 8,
         "native_rows_due": 12,
         "performance_acceptance": false,
         "targets_waived": false,
-        "review_pending": true
+        "review_pending": true,
+        "first_native_result": ".artifacts/v02/input-worker-api-phases/2026-10-24T02-08-40-191Z/results.json",
+        "first_native_status": "FAIL",
+        "accepted_native_rows": 0,
+        "capacity_case": "../testing/input-worker-api-phases-capacity-case.json",
+        "recording_capacity": 16384,
+        "default_recording_capacity": 2048
       },
       "execution_record": "130-v02-worker-api-phases.md",
       "current_checkpoint": {
         "record": "130-v02-worker-api-phases.md",
-        "status": "source-prepared-native-review-due",
-        "next_bounded_step": "Execute fixed12-row current71 worker API diagnosis, retain concurrency/clocks/raw outcomes, ONE review; no old campaign rerun"
+        "status": "first-native-overflow-FAIL-capacity-case-prepared",
+        "next_bounded_step": "Complete separately registered12-row capacity16384 diagnosis after source gates; retain original2048 FAIL and no-overflow rule, ONE final review"
       },
       "completed_slices": [
         {
@@ -5671,8 +5677,8 @@
     "document": "130-v02-worker-api-phases.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.11-worker-api-phases-source-prepared",
-    "next_item": "Execute fixed12-row current71 worker API diagnosis, retain concurrency/clocks/raw outcomes, ONE review; no old campaign rerun",
+    "current_increment": "V02.11-first-native-FAIL-capacity-case-prepared",
+    "next_item": "Complete separately registered12-row capacity16384 diagnosis after source gates; retain original2048 FAIL and no-overflow rule, ONE final review",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7964,11 +7970,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Current71/UI2 unchanged; source2654/focused47/newdriver6 PASS; finite12-row native diagnosis and review due. Whole20/29 unchanged.",
+    "current_activity_note": "First2048 recording overflows/FAIL0accepted; preserved with missing-raw-data limitation. Explicit separate16384 case and pre-validation retention,57 controls pass; no original acceptance waiver.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "e21f10b2b4d2099471735561ffef42e7f4610c5e",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "Execute fixed12-row current71 worker API diagnosis, retain concurrency/clocks/raw outcomes, ONE review; no old campaign rerun"
+    "next_bounded_step": "Complete separately registered12-row capacity16384 diagnosis after source gates; retain original2048 FAIL and no-overflow rule, ONE final review"
   },
   "next_task": "V02"
 }

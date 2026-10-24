@@ -39,3 +39,6 @@ test('invalid config refuses before mutation, partial installation rolls back an
  const scope=setup(),original=scope.chrome.debugger.sendCommand;Object.defineProperty(scope.chrome.permissions,'contains',{writable:false});assert.throws(()=>installWorkerAPIProbe(scope,{tabId:9}));assert.equal(scope.chrome.debugger.sendCommand,original);
  const other=setup(),probe=installWorkerAPIProbe(other,{tabId:9}),foreign=()=>Promise.resolve();other.chrome.tabs.get=foreign;assert.throws(()=>probe.restore());assert.equal(other.chrome.tabs.get,foreign);
 });
+test('larger diagnostic capacity is explicit and bounded while original default remains2048',async()=>{
+ const scope=setup();assert.throws(()=>installWorkerAPIProbe(scope,{tabId:9,limit:2049}));assert.throws(()=>installWorkerAPIProbe(scope,{tabId:9,limit:16385,maxLimit:16384}));const p=installWorkerAPIProbe(scope,{tabId:9,limit:16384,maxLimit:16384});p.reset('expanded');await call(scope,'tabs.get');await Promise.resolve();assert.equal(p.snapshot().limit,16384);assert.equal(p.snapshot().overflow,false);p.restore();
+});
