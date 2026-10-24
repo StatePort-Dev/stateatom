@@ -52,3 +52,48 @@ Actualpost-identity-assertfocused34 PASS. No product/build/helper change.
 
 Freeze case/source BEFOREoneactualrun; retain allpartialresults/strictFAIL and poll
 samehandle. Independent artifactverification and ONEfreshfinalreview remain due.
+
+## Actual one new guide connection, strict FAIL retained
+
+Preregistered2a3a224/clean; native99339 terminal1, exact440inputs unchanged:
+`.artifacts/v03/guide-source-connection/2026-10-24T04-59-46-554Z/results.json`.
+Seven positive named gates pass: exact identities, own Code/shared storage and new
+Vue Trust, actual public409-byte private receipt, native Connect/secretclear/separate
+cache+reload admission, exactselectedsource/read, actualOpenIDE/nativeeditorcopy,
+and disconnect-to-Basic.327product/223helper/exact72/UI2/installed6/8 unchanged.
+All498immutable and497working originals+exactknowncomponents.d.ts retained. No app
+source rewrite/plugin upgrade/new install/rebuild/certificate action occurs.
+
+Original selected `src/ui/c-input-text/c-input-text.vue` sourceDigest matches the
+immutable original. Actual installed helper /open callback selects156:9–174:11;
+body231bytes, exact665-byte selected original fragment SHA11149c421927955eb3735899543eaeed3cbed39dbb7d28e326dc7030c5767948
+matches real own-display native Copy after actual source button. Editor filename
+is observed in Code DOM. Source remains supported selectedfragment/read evidence,
+not NaiveUI parent/default/consumer/field-to-network producer or fullC09 proof.
+No request headers/bodies/session secret/extraHTTP are retained by the observer.
+
+Overallnative remains FAIL at strict finalconsole assertion: one built-in Code
+Copilot API-proposal mismatch and24 Vue warnings retained; no filter/exception/
+warning waiver or single green originatingrun. Zero new workbench/inspector exception
+is inferred only within attached observer scope; all-worker/lifetime completeness
+is not claimed. The private receipt409B is0600 with matching origin/workspace/new
+live session and cleared UI secret; result/logs exclude its token.
+
+Own Chrome/Code/Vite/display/ports close. Three recorded owned PIDs were absent in
+readonly postterminal checks, no processkill/globalcleanup by that check. Saved
+independent verifier35750 terminal0 PASS reconciles seven positivegates, all440
+inputs/327product/223helper/498originals/exactpayloads/config/CLI/ownstorage/consoleFAIL/
+receipt/private mode/actual source/open/fullrange/fragment/cleanup with17negativecontrols.
+It validates this finite evidence join with overallFAIL, not native acceptance.
+
+Actually viewed `exact-source-selection-private-candidate.png` shows foreground
+Chrome inspector, despite its inherited editorScreenshot label. It does NOT prove
+editor visibility or visual selection. Actual range evidence is installed callback
+plus editor DOM and exact native clipboard fragment; image remains private agent
+candidate, no human/usability/fidelity approval or fresh screenshot rerun.
+
+ONE finalfreshreadonlyreview due. Next candidate boundedV03.16: reconcile remaining
+independent application's Live and Draft/Apply/Undo guide operation from existing
+U02/guide proofs, then register only the missing eligible input case. No new timing/
+production-grant/handoff policy is approved, no default IDE/certificate/oldreport/
+source campaign repetition. FullV03/V02/A02/L02/C09 andwhole20/29 remain open.
