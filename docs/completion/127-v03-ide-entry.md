@@ -1,4 +1,4 @@
-# V03.14 — actual VSIX and private receipt guide entry, prepared
+# V03.14 — actual VSIX and private receipt entry observed; console FAIL retained
 
 2026-10-24 local/main1025c9b/scope-review-1. V03.13 actual browser/report entry
 and failure-path correction are complete. Do not repeat its browser/app workflow.
@@ -25,7 +25,7 @@ display), certificate/account/system trust/other repository/publication changes.
 
 Exact327 Atom and223 helper inputs match retained artifacts. Product unchanged;
 no rebuild/full2616/source/app/Vue rerun is justified. Syntax/input checks prepare
-the run; documents are not runtime proof. Native execution/ONE review remain due.
+the run; documents are not runtime proof. Actual scoped entry evidence is below; ONE final review remains due.
 Full guide/V03/C09/A02/L02/V02 and whole20/29 remain open, prior Vue FAIL retained.
 
 
@@ -116,3 +116,49 @@ and Singleton symlinks; original remains read-only, all108 are registered inputs
 Copied trusted installed state is explicit, not a new installation. Only actual
 public Copy connection receipt/owned clipboard remains to execute. Prepared fresh
 helperPort is explicit setup; no browser/app/source campaign or product change.
+
+
+## Actual public Copy receipt and unchanged console failure
+
+Preregister457ea21, actual15268/exit1:
+`.artifacts/v03/guide-ide-receipt/2026-10-24T00-41-56-837Z/results.json`.
+Three named positive gates pass: exact inputs/new owned destination; copied exact
+installed helper payload; actual public Copy connection receipt command and real
+private clipboard. Native overall remains FAIL at the subsequent console assertion:
+one built-in github.copilot-chat API-proposal mismatch,0 workbench exceptions.
+No warning filter, disabled built-in, timeout change or acceptance waiver is used.
+This third-party Code error is not repaired by changing Atom/another repository.
+
+Actual palette choice is StateAtom: Copy connection receipt. The notification is
+visible; raw408-byte receipt is private0600 and never printed/pasted in screenshots.
+Digest ae2ca0edbafe0dfccedfed4021fc20dfd4357a41ccf395706402c50773e53aac,
+helper0.1.3/session/token shape, exact configured origin/sourceRoot/fresh helperPort,
+and selected workspace ID/name all match. Copied installed state108 files is
+explicit, not a new install or Extension API loaded-path observation.516 registered
+inputs and all65 original app source/lock files remain unchanged. Own shared-store
+path is observed, own Code/display close, both debug/helper ports release. Original
+profile files stay read-only and hash-identical. No browser/source HTTP/app command
+is run. Atom327/helper223 inputs remain identical to retained artifacts.
+
+Scoped verify-receipt.mjs/native-checkpoint.json PASS means this evidence join and
+its preserved native FAIL are valid; it does NOT mean a green native campaign.
+Its first aggregate attempt used an incorrect manually transcribed full Git hash;
+corrected observer derives the exact recorded commit from Git, retains original
+log, and launches no process. All5 entry attempts and receipt FAIL remain immutable.
+The installation receipt joins actual native Open/install notification to exact7
+payload files plus .vsixmanifest and package metadata. There is no single fully
+green originating run. Original64/65/Vue console criteria remain unchanged.
+
+Actually viewed restricted/editor/native-entered/installed-notification/receipt
+notification screens support those scoped actions; images remain private agent
+candidates. First Code common-store WAL write is an explicit isolation defect of
+that failed preparation, not an untouched-user-profile claim or rollback promise.
+Later own shared-store paths do not prove clean OS, all service isolation or lifetime
+network silence. Prepared settings remain assistance; browser connection/source
+ranges, combined plugin6 runtime, macOS, lineage/model/performance and full guide
+are unverified here. Whole20/29/fullV03/C09/A02/L02/V02 remain open.
+
+Next one dependency-valid bounded item: V02.9, diagnose Live/Apply latency from the
+retained V02.8 rows/phase evidence and identify one scoped correction/control.
+Preserve all original distributions and targets; do not repeat the whole performance
+matrix, old V03 app campaign or tune the model without a new causal basis.

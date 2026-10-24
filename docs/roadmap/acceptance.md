@@ -213,3 +213,13 @@ no HTTP. Copied installed state, agent operation and unavailable GTK env effects
 remain scoped. ONE final review2Important corrected with9 synthetic controls; actual runtime staysb794fb5. Whole20/29/fullV03/C09/A02/L02/V02 and all
 historical criteria/results are unchanged. Next one bounded item is V03.14 actual
 VS Code VSIX installation/receipt guide entry, with exact scope still to register.
+
+
+[V03.14 actual entry evidence](../completion/127-v03-ide-entry.md) now observes public VSIX palette/native Open
+installation with exact7 payload files/metadata, then public Copy receipt408B/private
+0600 on copied installed state108 files.516 inputs/source65 remain unchanged and
+own resources/ports close. Overall native FAIL1 built-in Code Copilot API mismatch
+stays unwaived; earlier observer/isolation failures and first common-store WAL write
+are explicit. No full green originating run, product rebuild/app/source campaign or
+full guide/V03/20-of29 upgrade. ONE review pending. Next one V02.9 diagnoses retained
+Live/Apply latency phases before any new performance campaign.

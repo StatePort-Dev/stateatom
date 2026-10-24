@@ -579,6 +579,30 @@
       "review_receipt": ".artifacts/v03/guide-entry/2026-10-24/review/receipt.json",
       "synthetic_failure_controls": 9,
       "correction_native_repeated": false
+    },
+    {
+      "id": "V03.14-IDE-VSIX-and-private-receipt-entry",
+      "application": "Existing private65-file React workspace; no application execution",
+      "execution_record": "../completion/127-v03-ide-entry.md",
+      "evidence": ".artifacts/v03/guide-ide-receipt/2026-10-24T00-41-56-837Z/results.json",
+      "verification": ".artifacts/v03/guide-ide-entry/2026-10-24/native-checkpoint.json",
+      "status": "PARTIAL_ACTUAL_UI_ENTRY_EVIDENCE_NATIVE_CONSOLE_FAIL_NOT_FULL_V03",
+      "installation_result": ".artifacts/v03/guide-ide-entry/2026-10-24T00-39-09-254Z/results.json",
+      "installation_revision": "5a61f5c",
+      "installed_payload_files": 7,
+      "installed_metadata_files": 1,
+      "receipt_revision": "457ea21",
+      "receipt_native_positive_gates": 3,
+      "registered_inputs": 516,
+      "private_receipt_bytes": 408,
+      "private_receipt_mode": "0600",
+      "original_persistent_profile_files_unchanged": 108,
+      "original_source_files_unchanged": 65,
+      "code_console_errors": 1,
+      "original_native_status": "FAIL",
+      "whole_guide_accepted": false,
+      "whole_V03_complete": false,
+      "review_pending": true
     }
   ]
 }

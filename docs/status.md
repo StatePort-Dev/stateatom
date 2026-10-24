@@ -2135,3 +2135,13 @@ V02.8 ONE review accepted0/0/2, both reporting Minors corrected: all887 hashes a
 receipt commands in owned Code1.142 user-data/extensions/display, exact helper8
 and unchanged65-file project. Settings are prepared assistance; no app/browser
 source/certificate/account/user-profile changes or runtime claim. Full gates stay.
+
+
+[V03.14 actual entry evidence](completion/127-v03-ide-entry.md) now observes public VSIX palette/native Open
+installation with exact7 payload files/metadata, then public Copy receipt408B/private
+0600 on copied installed state108 files.516 inputs/source65 remain unchanged and
+own resources/ports close. Overall native FAIL1 built-in Code Copilot API mismatch
+stays unwaived; earlier observer/isolation failures and first common-store WAL write
+are explicit. No full green originating run, product rebuild/app/source campaign or
+full guide/V03/20-of29 upgrade. ONE review pending. Next one V02.9 diagnoses retained
+Live/Apply latency phases before any new performance campaign.

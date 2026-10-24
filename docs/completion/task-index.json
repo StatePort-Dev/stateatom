@@ -4757,13 +4757,25 @@
       "active_slice": {
         "id": "V03.14",
         "title": "Actual VS Code VSIX and private Copy connection receipt guide entry",
-        "status": "in-progress-preparation-no-IDE-entry-runtime-claim",
+        "status": "engineering-entry-evidence-complete-native-console-FAIL-review-pending",
         "record": "127-v03-ide-entry.md",
         "design": "../superpowers/specs/2026-10-24-v03-ide-entry-design.md",
         "plan": "../superpowers/plans/2026-10-24-v03-ide-entry.md",
         "previous_slice": "V03.13 complete1025c9b; no old browser/app/source/codec/Vue repeat",
         "product_source_changed": false,
-        "whole_V03_complete": false
+        "whole_V03_complete": false,
+        "registered_question": "../testing/guide-ide-receipt-case.json",
+        "runtime_result": ".artifacts/v03/guide-ide-receipt/2026-10-24T00-41-56-837Z/results.json",
+        "verification": ".artifacts/v03/guide-ide-entry/2026-10-24/native-checkpoint.json",
+        "original_native_status": "FAIL",
+        "retained_code_console_errors": 1,
+        "receipt_native_positive_gates": 3,
+        "registered_inputs": 516,
+        "original_source_files": 65,
+        "copied_original_profile_files_unchanged": 108,
+        "private_receipt_bytes": 408,
+        "new_installation_claim": false,
+        "review_pending": true
       },
       "completed_slices": [
         {
@@ -5283,8 +5295,8 @@
       ],
       "current_checkpoint": {
         "record": "127-v03-ide-entry.md",
-        "status": "in-progress-preparation-no-IDE-entry-runtime-claim",
-        "next_bounded_step": "V03.14: actual owned Code Install from VSIX and Copy connection receipt; exact helper8, no app/browser source or user-profile changes"
+        "status": "engineering-entry-evidence-complete-native-console-FAIL-review-pending",
+        "next_bounded_step": "V02.9: diagnose retained V02.8 Live/Apply latency phases; preserve targets/distributions, choose one causal correction/control before fresh measurements"
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-native-entry.md",
       "implementation_plan": "../superpowers/plans/2026-10-24-v03-ide-entry.md"
@@ -5446,8 +5458,8 @@
     "document": "127-v03-ide-entry.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.14-IDE-entry-preparation",
-    "next_item": "V03.14: actual owned Code Install from VSIX and Copy connection receipt; exact helper8, no app/browser source or user-profile changes",
+    "current_increment": "V03.14-IDE-entry-evidence-complete-native-console-FAIL-review-pending",
+    "next_item": "V02.9: diagnose retained V02.8 Live/Apply latency phases; preserve targets/distributions, choose one causal correction/control before fresh measurements",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7615,11 +7627,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.13 complete1025c9b with native6 and9 synthetic failure controls. V03.14 prepares actual VSIX/Copy receipt UI on owned IDE/exact helper8/unchanged65-file project; runtime due, settings explicit assistance. Product327/helper223/whole20/29/fullV03 dependencies unchanged.",
+    "current_activity_note": "V03.14 actual public VSIX/native Open installation and exact7 payload/metadata verified; actual Copy receipt408/private0600 on copied108 files/516 stable inputs/source65. Native overall FAIL1 built-in Code Copilot proposal mismatch retained, first shared-store isolation failure explicit. ONE review pending; whole20/29/fullV03 unchanged. Next V02.9 retained input-latency diagnosis.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "1025c9b base; no product source/build change",
+    "current_source_revision": "5a61f5c actual install;457ea21 actual receipt; no product source/build change",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.14: actual owned Code Install from VSIX and Copy connection receipt; exact helper8, no app/browser source or user-profile changes"
+    "next_bounded_step": "V02.9: diagnose retained V02.8 Live/Apply latency phases; preserve targets/distributions, choose one causal correction/control before fresh measurements"
   },
   "next_task": "V03"
 }

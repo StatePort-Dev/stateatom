@@ -138,3 +138,13 @@ or human-usability proof. This uses copied installed test state, not a fresh ins
 No app/source/codec/Vue or product build repeat. ONE final review2Important corrected with9 synthetic controls; actual runtime staysb794fb5. Next one
 bounded gap is V03.14 actual VS Code VSIX and Copy connection receipt guide controls
 on owned IDE state; full guide/V03/20-of29 criteria remain unchanged.
+
+
+[V03.14 actual entry evidence](../completion/127-v03-ide-entry.md) now observes public VSIX palette/native Open
+installation with exact7 payload files/metadata, then public Copy receipt408B/private
+0600 on copied installed state108 files.516 inputs/source65 remain unchanged and
+own resources/ports close. Overall native FAIL1 built-in Code Copilot API mismatch
+stays unwaived; earlier observer/isolation failures and first common-store WAL write
+are explicit. No full green originating run, product rebuild/app/source campaign or
+full guide/V03/20-of29 upgrade. ONE review pending. Next one V02.9 diagnoses retained
+Live/Apply latency phases before any new performance campaign.
