@@ -1,10 +1,11 @@
 # Project status
 
 Active bounded work: [V03.26](completion/154-v03-converged-restore-availability.md),
-source202/full3510PASS for observed app convergence before unchanged strict product/
-window predicates. Same78/UI2/product327/14oldraw unchanged, no productchange/native.
-Next new frozenphysicalcase/preflight/commit before max1new run; both older cases
-remain exhausted/INCOMPLETE. Full20/29 unchanged.
+ONE converged78 case exhausted/INCOMPLETE; final review pending. First external11
+retained3scope/history samples: cleaneditor/currentresource10,10,11 while ownLive
+receipt remains10. Guard expected old10 and stopped; no next input/read/windows/
+Close/1100+390 QA. Independent571physical/14oldraw/18negatives/cleanup verified.
+Source202/full3510PASS; no native retry/product change or full20of29/V03 credit.
 
 Completed bounded attempt: [V03.25](completion/153-v03-external-restore-availability.md).
 ONE explicit external78 native remains INCOMPLETE; four recorded gates and final

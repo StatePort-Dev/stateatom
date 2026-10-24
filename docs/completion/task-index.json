@@ -5801,11 +5801,11 @@
       "active_slice": {
         "id": "V03.26",
         "record": "154-v03-converged-restore-availability.md",
-        "status": "convergence-source-gates-complete-case-due",
+        "status": "converged-native-incomplete-review-pending",
         "base": "01ac34a",
         "candidate": "0.1.0-candidate.20261021.78",
         "candidate_rebuilt": false,
-        "native_started": false,
+        "native_started": true,
         "maximum_native_runs": 1,
         "full_V03_acceptance": false,
         "existing_guards_relaxed": false,
@@ -5814,7 +5814,27 @@
         "prior_source_controls_preserved": 156,
         "full_source_tests": 3510,
         "full_source_failures": 0,
-        "product_changed": false
+        "product_changed": false,
+        "native_runs": 1,
+        "native_case_exhausted": true,
+        "native_result": "INCOMPLETE_CONVERGED_RESTORE_AVAILABILITY",
+        "native_source_revision": "65e05a2",
+        "native_raw_sha256": "0b0d7ce57fd8ed08fb90102816ca03f3943d0c1197f38680825be5f1ee5e7258",
+        "recorded_checks_pass": 2,
+        "complete_retained_convergence_samples": 3,
+        "observed_editor_values": [
+          10,
+          10,
+          11
+        ],
+        "own_applied_history_values": [
+          10
+        ],
+        "explicit_UI_read_executed": false,
+        "independent_saved_verification_inputs": 571,
+        "independent_negative_controls": 18,
+        "rendered_dedicated_candidates": 0,
+        "final_review_pending": true
       },
       "completed_slices": [
         {
@@ -6782,8 +6802,8 @@
       ],
       "current_checkpoint": {
         "record": "154-v03-converged-restore-availability.md",
-        "status": "convergence-source-gates-complete-case-due",
-        "next_bounded_step": "Task2 new converged78 physicalcase/preflight/browserfalse/commit before max1Native; no oldcase retry/rebuild."
+        "status": "converged-native-incomplete-review-pending",
+        "next_bounded_step": "Task2 focused completion then ONE fresh whole-item review; native case exhausted/no retry. Next mandatory L02 after bounded closeout."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-25-v03-external-restore-availability.md",
       "implementation_plan": "../superpowers/plans/2026-10-25-v03-converged-restore-availability.md",
@@ -7084,8 +7104,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.26-source-gates-complete-case-due",
-    "next_item": "V03.26 Task2 new frozen converged78 case/preflight/commit then ONE actual run and literal verification.",
+    "current_increment": "V03.26-native-incomplete-review-pending",
+    "next_item": "V03.26 Task2 focused completion/ONE whole-item review; then mandatoryL02 bounded follow-up, no old Native retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7112,7 +7132,7 @@
     "active_item": {
       "id": "V03",
       "record": "154-v03-converged-restore-availability.md",
-      "status": "convergence-source-gates-complete-case-due"
+      "status": "converged-native-incomplete-review-pending"
     },
     "completed_increments": [
       {
@@ -9807,11 +9827,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.26 source202/full3510PASS, old156preserved/product327/78/UI2/14oldraw unchanged. Bounded complete convergences retain immediate DOM/pending samples and first3matches; oldstrictwindow/product criteria intact. Task2newfixedcase/preflight/commit beforemax1Native due; no product/model/trust/profile change/fullV03 or20of29 credit.",
+    "current_activity_note": "V03.26 ONE native65e05a2 INCOMPLETE/exhausted; external11 retained3complete scope/history samples, cleaneditor/currentresource10/10/11 versus unchanged ownreceipt10. Guardexpectedold10 stops before nextstep; no read/window/Close/QA. Independent571physical/14raw/18negative/9cleanup verified. Source202/full3510; finalreviewdue/no retry/fullV03 or20of29 credit.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "01ac34a",
+    "current_source_revision": "65e05a2",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "Task2 new converged78 physicalcase/preflight/browserfalse/commit before max1Native; no oldcase retry/rebuild.",
+    "next_bounded_step": "Task2 focused completion then ONE fresh whole-item review; native case exhausted/no retry. Next mandatory L02 after bounded closeout.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
