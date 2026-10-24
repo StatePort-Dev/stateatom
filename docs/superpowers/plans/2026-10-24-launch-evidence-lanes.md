@@ -28,8 +28,8 @@
 **Files:** new experiments/launch-evidence-lanes.mjs, tests/engine/launch-evidence-lanes.test.mjs; completion150/current metadata.
 **Interfaces:** describeLaunchEvidence({result,caseRecord,provenance,analysisRevision}) -> frozen schema/annotationKind/sourceOnlyAnalysis/nativeReexecuted/legacy/claims/unknowns/freshness/fullA02. provenance includes rawSha256/caseSha256/observationRevision/inputsVerifiedtrue/physicalInputCount/historicalInputs. Invalid input returns status Refused/claims[]; valid status AnnotatedRetainedFactsOnly, legacy.acceptedfalse. Existing strict guard unchanged.
 
-- [ ] TDD missing-module RED; coherent retained-record copies and isolated status/scope/failure/identity/metadata/missing text/provenance/cleanup/secret/mutation controls. Implement claim-level historical DTO, no original guard edit. Focused `node --test --test-isolation=none tests/engine/launch-evidence-lanes.test.mjs` -> PASS.
-- [ ] Full npm test/retained source/raw integrity -> PASS; local source commit/task-done. No fresh native proof.
+- [x] TDD missing-module RED; coherent retained-record copies and isolated status/scope/failure/identity/metadata/missing text/provenance/cleanup/secret/mutation controls. Implement claim-level historical DTO, no original guard edit. Focused `node --test --test-isolation=none tests/engine/launch-evidence-lanes.test.mjs` -> PASS.
+- [x] Full npm test/retained source/raw integrity -> PASS; local source commit/task-done. No fresh native proof.
 
 ### Task 2: Finite retained-dataset verifier and annotation artifact
 

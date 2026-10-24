@@ -1665,7 +1665,7 @@
       "execution_record": "150-launch-evidence-lanes.md",
       "active_slice": {
         "id": "A02.9",
-        "status": "planning-source-only-historical-claim-description",
+        "status": "historical-claim-classifier-source-complete-retained-writer-due",
         "record": "150-launch-evidence-lanes.md",
         "base": "0c6963d",
         "product_changed": false,
@@ -1673,7 +1673,11 @@
         "native_allowed": false,
         "native_reexecuted": false,
         "full_A02": false,
-        "legacy_protocol_accepted": false
+        "legacy_protocol_accepted": false,
+        "source_focused": 35,
+        "full_source_controls": 3282,
+        "full_source_failures": 0,
+        "full_source_cancelled": 0
       },
       "completed_slices": [
         {
@@ -2121,8 +2125,8 @@
       },
       "current_checkpoint": {
         "record": "150-launch-evidence-lanes.md",
-        "status": "planning-source-only-historical-claim-description",
-        "next_bounded_step": "TDD source-only claim-scoped annotation + finite retained-data integrity/writer. Old Incomplete/METADATA_ARGUMENTS acceptedfalse; no native/app/old case or policy change."
+        "status": "historical-claim-classifier-source-complete-retained-writer-due",
+        "next_bounded_step": "Task2 finite retained-data integrity/writer and independent annotation verification; no native/app/model and no change to original refusal."
       },
       "stopping_point_history": [
         {
