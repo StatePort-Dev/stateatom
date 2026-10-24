@@ -47,3 +47,5 @@ New helper metadata field is Task2 diagnostic enrichment, not a Task1 rerun/nati
 upgrade. Full npm test3244PASS/0FAIL/0cancelled/0SKIP98.49s terminal57594.
 Product327/old9/A026source8/A027source4/raw3 unchanged. Native0; clean sourcecommit,
 resource-freeprepare and casecommit must precede max1actual metadata diagnostic.
+
+Prepare33589/preflight8379terminal0/noresources. Sourcebe0077fclean/379sourceinputs/380includingcase, Node24/Chrome153 exactpins, managed/tmp dynamicprofile rule/public owner route/localhost127port0/onlymetadataURL/max1. Threeoldcases/raw retained. Commitcase beforeactual; do not editfrozen source/spec/plan.

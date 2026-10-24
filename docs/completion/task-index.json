@@ -1665,7 +1665,7 @@
       "execution_record": "149-original-launch-witness.md",
       "active_slice": {
         "id": "A02.8",
-        "status": "finite-public-owner-driver-source-ready-before-native",
+        "status": "public-owner-case-frozen-before-one-run",
         "record": "149-original-launch-witness.md",
         "base": "6f696c7",
         "product_changed": false,
@@ -1680,7 +1680,11 @@
         "full_source_cancelled": 0,
         "product_inputs_unchanged": 327,
         "old_inputs_unchanged": 9,
-        "prior_research_source_unchanged": 12
+        "prior_research_source_unchanged": 12,
+        "native_case": "../testing/browser-launch-witness-case.json",
+        "native_output": ".artifacts/a02/original-launch-witness-native/2026-10-24T18-40-00Z",
+        "source_revision": "be0077f13fd5484efc7b196593e548dc11026edd",
+        "frozen_inputs": 380
       },
       "completed_slices": [
         {
@@ -2070,8 +2074,8 @@
       },
       "current_checkpoint": {
         "record": "149-original-launch-witness.md",
-        "status": "finite-public-owner-driver-source-ready-before-native",
-        "next_bounded_step": "Clean source commit then resource-free freeze/commit ONE metadata-only BrowserServer case; no app/old case replay. Public owner route is not yet native-qualified."
+        "status": "public-owner-case-frozen-before-one-run",
+        "next_bounded_step": "Commit frozen case then ONE public-owner metadata diagnostic; no app or old case run. Preserve literal refusal/partial, no retry."
       },
       "stopping_point_history": [
         {
