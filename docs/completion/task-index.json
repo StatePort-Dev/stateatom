@@ -4247,7 +4247,7 @@
       "active_slice": {
         "id": "L02.11",
         "record": "156-l02-comparison-provider.md",
-        "status": "provider-source-complete-evaluation-page-due",
+        "status": "source-tasks-complete-source-slice-review-pending",
         "base": "f940b15",
         "model_calls": 0,
         "product_provider_selected": false,
@@ -4255,11 +4255,17 @@
         "whole_L02_review_consumed": false,
         "provider_source_tests": 76,
         "new_provider_source_tests": 12,
-        "full_source_status": "due-after-evaluation-page-task",
+        "full_source_status": "PASS",
         "prior_source_current": 17,
         "prior_source_historical_git": 1,
         "current_product_inputs_unchanged": 327,
-        "actual_inferences": 0
+        "actual_inferences": 0,
+        "evaluation_page_new_tests": 15,
+        "focused_source_tests": 95,
+        "full_source_tests": 3560,
+        "source_field_privacy_checked": true,
+        "native_runs": 0,
+        "evaluation_page_product_UI": false
       },
       "implementation_plan": "../superpowers/plans/2026-10-25-l02-comparison-provider.md",
       "remaining_acceptance": [
@@ -4271,8 +4277,8 @@
       "execution_record": "156-l02-comparison-provider.md",
       "current_checkpoint": {
         "record": "156-l02-comparison-provider.md",
-        "status": "provider-source-complete-evaluation-page-due",
-        "next_bounded_step": "Task2 fixed actual comparison evaluationpage/controller sourceTDD, then focused/full source once; no model/browser/UI switch."
+        "status": "source-tasks-complete-source-slice-review-pending",
+        "next_bounded_step": "Task2 sourcecommit/task-done then ONE source-slice review; no model/browser. Separate fixed/preregistered realcachedmodel candidate afterward."
       },
       "completed_slices": [
         {
@@ -7170,8 +7176,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "L02.11-provider-source-complete-page-due",
-    "next_item": "L02.11 Task2 fixed actual comparison evaluationpage/controller source tests and full suite; no model/browser now.",
+    "current_increment": "L02.11-source-tasks-complete-review-pending",
+    "next_item": "L02.11 Task2 sourcecommit/task-done/ONE source-slice review; then separate fixedpreregistered cachedrealmodel candidate, no sourceasquality claim.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7198,7 +7204,7 @@
     "active_item": {
       "id": "L02",
       "record": "156-l02-comparison-provider.md",
-      "status": "provider-source-complete-evaluation-page-due"
+      "status": "source-tasks-complete-source-slice-review-pending"
     },
     "completed_increments": [
       {
@@ -9893,7 +9899,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "L02.11 Task1privateclosedv1/v2provider source76PASS(new12+old64), purecontracts/current327/rawgroups retained,17prior sourcephysical+1Git. Task2fixed actualevaluationpage source/full due; modelcalls0/no browser/profile/download/UI or20of29 credit.",
+    "current_activity_note": "L02.11 source95/full3560PASS, namedv2provider and actualfixed34page with fakeDOM/API controls, no actualmodel/native. Lateprompt/createevents preserved/onceDestroy/settingsUnknownsafe/textContent/cachedonly;17oldsourcephysical+1Git/current327/rawgroups retained. Source-slice finalreviewdue/not wholeL02review/no20of29 credit.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "f940b15",
     "current_record_date": "2026-10-25",

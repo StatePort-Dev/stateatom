@@ -1,10 +1,11 @@
 # Project status
 
 Active bounded work: [L02.11](completion/156-l02-comparison-provider.md),
-sourceprovider complete76PASS (new12+64old controls), pagecontroller Task2due.
-Closed v1/v2lifecycle retains prior options/freshness/ownership; current327/rawgroups
-unchanged,17prior sourcephysical+1historicalGit. Fullsuite due afterpage, modelcalls0/
-no browser/profile/download/UI selection or mandatoryL02/20of29 acceptance.
+source tasks complete95focused/full3560PASS; ONEsource-slice review pending.
+Namedv2provider/fixed34evaluationpage retain oldv1behavior, faithfulAPI forwarding,
+lateevents/ownedcleanup/textContent/cachedonly.17prior sourcephysical+1Git/current327/
+rawgroups stable. No model/browser/profile/download/product UI selection or fullL02/
+20of29 acceptance. Next separate realcachedmodel candidate only aftercloseout/prereg.
 
 Completed bounded source slice: [L02.10](completion/155-l02-recorded-model-comparison.md).
 New23/focused68/full3533PASS, ONEsource-slice review0C/0I/0M. Typedv2comparison is
