@@ -1,6 +1,6 @@
-# V03.19 — inspector input ordering (in progress)
+# V03.19 — bounded inspector ordering diagnosis complete
 
-Current: **Native ordering/visible-row facts captured; ONE final review pending.** The original guide and native17 remain FAIL; no product fix or full V03 acceptance.
+Current: **Bounded diagnosis complete after ONE review and one tested Important correction pass.** Actual ten-record order/visible local conflict preserved; finalization guard corrected. Original guide/native17 remain FAIL; no product fix or full V03 acceptance.
 Baseline843a648; A02.4 bounded complete, whole20/29 unchanged. V03.17/native guide
 FAIL and V03.18 source-only ordering results remain unchanged. Goal is actual
 inspector receive/edit/ack order and the visible per-row refusal, not a guard or
@@ -131,3 +131,61 @@ ONE final review is now due. No product source/package/guard/timing/permissions
 changed. The next bounded source question is why the clean inspector model still
 held7 while a sampled backend snapshot already held10, before proposing any
 synchronization change. No automatic rebase or another native guide campaign.
+
+## Final review and one correction pass
+
+ONE fresh astra/high read-only review on843a648..23cd8a7: **0Critical/1Important/
+0Minor**, fresh29PASS and read-only native verifier/20negative controls PASS.
+Report `.artifacts/v03/inspector-input-order-review/2026-10-24/report.md`.
+I1: late collection errors/overflow/extra records between classified read and Stop
+could retain COMPLETE because cleanup checked only unexpected pauses. The saved
+native run is unaffected: all final ten records match and validity fields pass.
+Clean pre-fix checkpoint at23cd8a7 verifies all578 inputs before any edits.
+
+Actual old cleanup/finalizer logic exposed to focused tests produces **16PASS/
+6FAIL** for late overflow/projection/count/extra/changed-record/still-active states.
+The corrected guard requires STOPPED, no errors/overflow/pauses, a consistent finite
+count and exact equality with the classified records; mismatches make trace cleanup
+fail and final status INCOMPLETE, while every other cleanup still runs. Final
+focused **37PASS**. One tested correction pass; no rereview or native repetition.
+
+The initial full source run was interrupted during an existing observation test:
+1027PASS/0FAIL/1919cancelled; this is not a passing full run or established product
+regression. Its log explicitly says “Interrupted while running,” consistent with
+the external turn interruption. That file alone27PASS; with both new files64PASS.
+The subsequent uninterrupted `npm test` completes **2955PASS/0FAIL/0cancelled/
+0SKIP**,104.23s. Both logs remain under this plan's workspace.
+
+`verify-fix.mjs` and `fix-verification.json` in the review output validate the
+unchanged saved result with the stronger guard and six negative controls. All
+**576 physical frozen inputs +2 registered historical Git blobs** match the
+pre-fix checkpoint; exactly the driver and its tests differ. Product source/
+payload changes0, no package rebuild/native repeat. Old strict pre-fix verifier
+is historical after these known test-file edits; it is not falsely labelled a
+fresh physical578-input run. Current fixed guard accepts all ten saved records.
+
+Executor rulings on all review declined boundaries (with cost):
+
+1. Clean-model delivery cause/fix remains the next source question. Cost: this
+   diagnosis does not claim to cure repeated Live editing.
+2. Conditional-breakpoint order is scoped to this run. Cost: no uninstrumented
+   timing/performance or React-writer attribution.
+3. Preserve original guide/native17 FAIL and all remaining baseline gates. Cost:
+   no new whole-task acceptance;20/29 unchanged.
+4. Screenshot is a candidate, not human fidelity acceptance. Cost: no human study;
+   independent human participation is still not a blocker.
+5. Extra helper-source inventory is source identity only. Cost: no new installed
+   helper/VSIX/IDE-trust support claim.
+
+Other executor choices: keep main/local commits and retained scratch/history under
+the user's explicit autonomous/shared-checkout instructions; no branch/menu/push/
+publication. Use an inspector-only observer rather than product API/source rewrite,
+with explicit overhead and hard projection limits. Preserve the original native
+artifact and bound the finalization fix with historical source equality rather
+than repeat the campaign. The frozen plan/case remain unchanged; completion is
+recorded here and in the execution ledger. No deferred Minors.
+
+One next item: **V03.20 source diagnosis of clean editor snapshot delivery before
+a second Live edit**. Read the existing runtime/editor/UI path and build only the
+missing bounded source control before choosing any synchronization change. No
+new timing policy, automatic rebasing, revision/ABA waiver or blind native retry.
