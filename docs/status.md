@@ -1,5 +1,10 @@
 # Project status
 
+Active bounded work: [L02.12](completion/157-l02-comparison-native-candidate.md),
+new fixedcachedmodel candidate planning/sourcegates beforeone actualrun. Original30+4/
+10eligible24fallback/qualitycriteria/current78/UI2/oldresults preserved. No actualmodel/
+profile/browser/download fromplanning; mandatoryL02 and whole20/29 remain open.
+
 Completed bounded source slice: [L02.11](completion/156-l02-comparison-provider.md).
 Namedv2provider/fixed34evaluationdocument95focused/full3560PASS, ONEsource-slice
 review0C/0I/1M(selector/resultcaseclarity deferred; records correctlyIDed). No model/
