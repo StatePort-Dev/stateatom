@@ -1665,14 +1665,14 @@
       "execution_record": "147-a02-array-callsite-bridge.md",
       "active_slice": {
         "id": "A02.6",
-        "status": "bounded-source-implemented-two-native-prerequisite-failures-final-review-due",
+        "status": "bounded-source-engineering-complete-native-acquisition-incomplete",
         "record": "147-a02-array-callsite-bridge.md",
         "base": "40146b7",
         "product_changed": false,
         "native_executed": true,
         "full_A02": false,
-        "source_focused": 112,
-        "full_source_controls": 3150,
+        "source_focused": 113,
+        "full_source_controls": 3151,
         "full_source_failures": 0,
         "full_source_cancelled": 0,
         "product_inputs_unchanged": 327,
@@ -1710,7 +1710,19 @@
           "independent_saved_inputs": 413,
           "partial_negative_controls": 11
         },
-        "next_dependency": "A02.7 bounded owned-process identity discrepancy diagnosis; no further A02.6 launch or app/lineage credit"
+        "next_dependency": "A02.7 bounded owned-process identity discrepancy diagnosis; no further A02.6 launch or app/lineage credit",
+        "review": {
+          "count": 1,
+          "critical": 0,
+          "important": 1,
+          "minor": 1,
+          "important_fixed": 1,
+          "correction_passes": 1,
+          "rereview": false,
+          "report": ".artifacts/a02/array-callsite-review/2026-10-24/report.md",
+          "deferred_minor": "M1 stale current_checkpoint pointer; active_slice/record select A02.7 and forbid third A02.6 attempt"
+        },
+        "final_checkpoint": ".artifacts/a02/array-callsite-review/2026-10-24/final-checkpoint.json"
       },
       "completed_slices": [
         {

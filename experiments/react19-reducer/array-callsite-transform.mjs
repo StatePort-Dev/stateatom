@@ -27,7 +27,7 @@ export function instrumentArrayCallsites(source,file,{enabled=false,sourceType='
   else if(cb.node.params.length!==1||!t.isIdentifier(cb.node.params[0]))reason='One simple original callback parameter required';
   else if(cb.node.body.directives?.length)reason='Callback directive incompatible with rest capture';
   else reason=ownerBoundary(owner);
-  if(!reason){let finalizer=false,nested=false;cb.traverse({Function(q){q.skip();},TryStatement(q){if(q.node.finalizer)finalizer=true;}});cb.traverse({CallExpression(q){if(kindOf(q.node))nested=true;},OptionalCallExpression(q){if(kindOf(q.node))nested=true;}});if(finalizer)reason='Callback finalizer can replace returned value';else if(nested)reason='Nested array call callback outside this observation profile';}
+  if(!reason){let finalizer=false,nested=false,hoisted=false;cb.traverse({Function(q){if(q.isFunctionDeclaration())hoisted=true;q.skip();},TryStatement(q){if(q.node.finalizer)finalizer=true;}});cb.traverse({CallExpression(q){if(kindOf(q.node))nested=true;},OptionalCallExpression(q){if(kindOf(q.node))nested=true;}});if(hoisted)reason='Callback hoisted function declaration can replace original parameter';else if(finalizer)reason='Callback finalizer can replace returned value';else if(nested)reason='Nested array call callback outside this observation profile';}
   records.set(n,{path:p,node:n,kind,cb,owner,site:at,reason});if(reason)unsupported.push({...at,reason});
  }
  traverse(ast,{CallExpression:collect,OptionalCallExpression:collect});

@@ -46,4 +46,4 @@
 
 ## Final closeout
 
-- [ ] ONE fresh final review; regrade by actual effects; one tested Important/Critical pass maximum/no rereview. Record all declined rulings/deferred Minors, local clean final checkpoint and ONE next dependency item.
+- [x] ONE fresh final review; regrade by actual effects; one tested Important/Critical pass maximum/no rereview. Record all declined rulings/deferred Minors, local clean final checkpoint and ONE next dependency item.

@@ -1,13 +1,15 @@
 # Project status
 
 Active bounded work: [A02.6](completion/147-a02-array-callsite-bridge.md) source
-call-site bridge, final review due.112 focused/3150 full source controls pass;
+call-site bridge engineering complete, native acquisition Incomplete.113 focused/3151 full source controls pass;
 327 product/nine historical inputs unchanged. Both allowed native attempts ended
 before app phases: first a gated identity command, second owned-profile mismatch.
 Literal Incomplete results retained; second saved413 inputs and11 partial controls
 verified independently. No third A02.6 attempt, no native acquisition/product/full
 A02 credit;20/29 unchanged. Next dependency is bounded owned-process identity
-diagnosis, not another app run or changes to certificates/trust settings.
+diagnosis, not another app run or changes to certificates/trust settings. ONE review
+0Critical/1Important/1Minor; false callback identity from hoisted declarations fixed
+RED→GREEN in one pass, stale duplicate checkpoint pointer Minor deferred.
 
 Current work, 2026-10-24: [A02.5](completion/146-a02-array-transfer-technique.md)
 completes a source-only callback identity technique.22 focused/3038 full source

@@ -1,4 +1,4 @@
-# A02.6 — original array call-site bridge (in progress)
+# A02.6 — source bridge complete; native acquisition Incomplete
 
 Base40146b7; latest human autonomy through Oct25 evening/scope-review-1/20of29.
 [Design](../superpowers/specs/2026-10-24-a02-array-callsite-bridge-design.md),
@@ -12,7 +12,7 @@ experiment if semantic gates pass. Native original callbacks must execute direct
 causal storage/state revision/React props/ownership/selected producer remain Unknown.
 No product/plugin/SDK/UI/otherrepo/publication or old native campaign change.
 
-Current evidence: source inspection and official Babel Context7 docs only; no new
+Historical planning checkpoint: source inspection and official Babel Context7 docs only; no new
 code/tests/native outcome yet. Relevant existing call/temp/scope patterns read in
 src/engine/script-transform.mjs and action-transform.mjs; neither is modified.
 Planning is not implementation or capability readiness.
@@ -169,3 +169,59 @@ Both immutable cases are exhausted; **no third A02.6 launch**. Research source
 engineering/partial record is ready for ONE final review; real original-app
 acquisition/fullA02 remain open. Next bounded dependency: diagnose owned-process
 identity discrepancy and preserve failure diagnostics before any future new case.
+
+## Final review and single correction pass
+
+ONE fresh read-only astra/high review:0Critical/1Important/1Minor; report in
+`.artifacts/a02/array-callsite-review/2026-10-24/report.md`. Important I1 reproduced
+false Observed callback identity: callback-local `function row(){}` shadows the
+actual native-delivered parameter before inserted capture. Conservative callback
+hoisted-declaration exclusion now preserves original/off/on output and records
+Unsupported/no fabricated filter or map link. RED37PASS/1FAIL→aggregate113PASS;
+full **3151PASS/0FAIL/0cancelled/0SKIP**,96.29s, terminal91809. Single correction
+pass; no re-review or native repeat. Both native cases used earlier frozen source;
+these new source checks do not upgrade their appmodes0 results.
+
+Deferred Minor M1: duplicate A02.current_checkpoint still points to the exhausted
+process-case preparation. Active slice/status/this record correctly prohibit a
+third A02.6 run and select A02.7. Reconcile the duplicate at next-work handoff.
+The review's110PASS/2 sandbox subprocess failures were independently reduced to
+EPERM; they are separate from parent's escalated113/full3151 evidence.
+
+Bounded source engineering is complete; native original-app acquisition remains
+**Incomplete**, fullA02 open,20/29 unchanged. Next: A02.7 bounded owned-process
+identity discrepancy diagnosis, with failure metadata retained before admission.
+No product, SDK, otherrepo, UI, certificate/trust/settings or publication change.
+
+## Decisions and unverified boundaries retained at closeout
+
+- Ruling: main/existingcheckout/localcommits — explicitautonomy/sharedrepo — cost:no branch/push/publication/integrationclaim.
+- Ruling: ONEnew original/off/on source-app experiment aftersemanticgate, instead of stoppingatNodefixtures — newcallsite acquisitionneeds actualindependentcode evidence; originaloperationsrepeatedonlytoqualifynewmechanism — cost:sourceengine research only, no product/Reactprops/state/selectedproducer/causalstorage credit.
+- Ruling: separate frame-only recorder/newtransform; oldprototypeuntouchedincludingM1 — avoidpersistentJSwrapperframesandpreserveoldsource/evidence — cost:twoexperimentalrecordersuntilfutureintegration, oldM1isnotfixedorcountedaspassed.
+- Ruling: conservative inlinearrow/function-owner admission/directnativeReflect.apply/per-ownertry-finallycleanup — preserveoriginalcallee/getter/args/callback/order withoutJSwrapperframe — cost:unsupportedforms explicituntouched/Unknown, no universaltransparentinstrumentationclaim.
+- Ruling: causalstorage/currentmembership/ownership/state revision/Reactprops/selectedproducer Unknown onpositivecallbacklinks — identitycallobservationsdo notexcludeProxy/interveningwriters — cost:fullA02open.
+- Ruling: reject outer callbacks with target calls at any nested-function depth — otherwise callbackcloningdropsnestedownerdeclarations — cost:outer site explicitUnsupported while inner source executescorrectly/no silent positive.
+- Ruling: capture opaqueIDs at entry/yield/completion and expose full bounded inert audit — saved native verification cannot depend on later WeakRef liveness or reconstruct app objects — cost:historicalidentityonly/currentmembership/GCbehaviorunproven, no executable state restoration.
+- Ruling: addexplicitsealWindow before native classification — liveprefixcanmisslaterinvalidrecords, priorV0319failuremode — cost:onlyclosedwindowdataqualified; pendingsealIncomplete/no globalcontinuousobservationclaim.
+- Ruling: split toggle andactive-route into two sealed windows; setupfirstrowbeforeequalwindow — native sourcecode/StrictMode mayduplicateactualcalls; validateallgroupswithoutselectingoneascommittedproducer — cost:sixfiniteUIphasesdeclaredbeforelaunch, no originalcampaigncriteriarewritten/fullV03claim.
+- Ruling: final expected case hash captured from same preflight bytes, never recalculated as expected after run — otherwise changedcasecomparedagainstitsnewself — cost:realcase/source drift mustmakeIncomplete, no self-reportedunchangedclaim.
+- Ruling: persist actual phase beforeguard and failure snapshot/frame/screenshotbeforeclosingpage — failedquestiondata mustsurviveclassification — cost:partial/refusedphase remains literal, no extra positivecredit or actualnativefault-recoveryclaim.
+- Ruling: setupcollector initiallysealed; ONreadiness observescompletedMainmapmetadata+UI beforeatomicallysealing — same-valuedUI alone cannot show newcallcaptured — cost:fixed20s harnessreadinessonly/no producttimingwaiver/old guide retry.
+- Ruling: allow ONE separate corrected-process case after literal prerequisite failure, maxTWO total native attempts/max1 per immutablecase/no third — gatedcommand prevented all appquestions; actualprocbytes can retain original launch/sandbox criteria without automationflag — cost:second bounded attempt only, firstIncomplete preserved/no evidence upgrade.
+- Ruling: close bounded engineering with literal nativeIncomplete and select A02.7 identitydiagnosis — both casebudgets exhausted; actualprofilebytes absent so rootcauseunknown — cost:no original-app/native acquisition/fullA02 credit, no thirdlaunch inthisitem.
+- Final: minor (deferred): M1 A02.current_checkpoint pointer stale; active_slice/status/record prohibit thirdrun and select A02.7. No immediate source/native effect; next active-work handoff must reconcile it.
+- Final: Ruling: original-app acquisition/UI parity — both actualruns0appmodes; Unknown/unexecuted — cost:no nativecredit.
+- Final: Ruling: profile mismatch rootcause — actualrejectedbytesabsent; diagnose next — cost:no guessedfix or thirdrun.
+- Final: Ruling: historical PIDabsence — missingPIDnotrestoredbycontextclose/laterprofilescan — cost:historicalPIDUnknown.
+- Final: Ruling: nativepositivewindowcontrols — unexecuted; partial11controls/sourceDTOonly — cost:no positive runtimequalification.
+- Final: Ruling: causalstorage/interveningwrites — callbackidentitynotcausalstorage — cost:fullA02open.
+- Final: Ruling: membership/fieldownership — savedidentitynotcurrentcontents — cost:Unknown retained.
+- Final: Ruling: state revision/Reactprops/selectedDOM — no mechanismadded — cost:all remainUnknown.
+- Final: Ruling: GC/executablerecovery — weakconstructionnotmeasuredGC — cost:historicallabelsonly.
+- Final: Ruling: universalsyntax/context — fallbackpreservationrequired; hoistingdefectfixed notwaived — cost:conservativelyUnsupportedcallbackdeclarations.
+- Final: Ruling: hostileintrinsics/source-stackreflection — declaredtrusted-hostresearchboundary — cost:no universaltransparency.
+- Final: Ruling: timing/productlatency — finite20sreadinessnotproductpolicy — cost:no latencyacceptance.
+- Final: Ruling: Webpackequivalence — declareesbuild/automaticJSXoverlay/vendorpreservation — cost:no originalbuildpipelineequivalence.
+- Final: Ruling: installedAtom/helper/IDE/release — no delivery/run changed — cost:no feature/readinesscredit.
+- Final: Ruling: oldA025StopMinor — preserveoldmodule/raw — cost:oldM1stillopen.
+- Final: Ruling: reviewerfull3150notrerun — parentactual3150separate; correctionfullnewrunrequired — cost:no claimreviewerranfullsuite.

@@ -67,7 +67,7 @@ returns original bytes. Reject reserved binding collision and dynamic eval/with.
 Target only ordinary nonoptional noncomputed .filter/.map with inline synchronous
 arrow callback having exactly one simple identifier parameter. Leave excluded
 forms untouched with a reason: spread/async/generator/destructured/default callback,
-callback finalizer or own strict directive, parameter/class/program contexts,
+callback hoisted function declaration, finalizer or own strict directive, parameter/class/program contexts,
 unsupported owner or nested hoisted function/dynamic scope.
 
 Evaluate original receiver once, original method lookup once, then original args
