@@ -113,3 +113,30 @@ Choose/freeze a finite remaining protocol after that source comparison. All ten
 original item criteria remain mandatory as explicitly scoped evidence; do not
 repeat already established mechanism questions without an affected reason. One
 final whole-item review remains after completion, not at this partial checkpoint.
+
+### Task3c source checkpoint and finite remaining protocol
+
+Scoped font rule/class: actual source-template CSS RED11px -> GREEN13px at440/360,
+parent11 and adjacent host16 unchanged/no overflow. New immutable76/UI2; plugin7
+unchanged. Current product full source2915PASS, focused79 (includes2new entry
+refusals after full run), types2/admission9. No native76 result yet.
+
+Exact source/payload proof uses old native75 checkpoint/Git blobs/current sources:
+five source changes only class/token rule/version/added changelog. UI bundle differs
+by one class literal, CSS by one scoped rule; all other runtime/worker/reader
+payloads and plugin/helper/app/tooling unchanged. First literal-encoding proof
+failure kept; corrected predicate checks actual plain HTML generated literal.
+
+Ruling: retain the already observed four75 semantic cases under this strict code
+identity proof and run only remaining76 gates — user explicitly requires credit
+for completed unchanged behavior and no repeated experiments without cause — cost:
+no fresh76 semantic observation claim; old partial FONTFAIL stays literal, and
+new UI/report/stop witnesses must come from a distinct fresh page/node/revision.
+All ten original criteria remain in the explicit table, not reduced to six.
+
+Remaining case docs/testing/react19-remaining-case.json has max1 native run and
+maps each original criterion to retained75 or fresh76 evidence. Source preparation
+.artifacts/a02/react19-remaining/2026-10-24T09-10-56-113Z/prepared.json reused app/
+consumer, no reinstall. Final preflight3219inputs/17links includes original28-file
+identity/no native resources. Commit source/case then one actual remaining run,
+independent saved verifier and ONE final whole-item review as originally required.

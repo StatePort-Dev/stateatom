@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.76
+
+- Set the native ancestor paragraph to the existing body-size token in its own
+  scoped class. The Evidence parent uses 11px; removing the hint class in75 did
+  not override that inheritance. Other Evidence/host typography stays unchanged.
+- Preserve75 native6/font failure and earlier startup failure. The controlled
+  source CSS check and remaining native UI/report/stop checks are separate evidence;
+  no ancestor, producer or permission semantics change.
+
 ## 0.1.0-candidate.20261021.75
 
 - Keep the new native ancestor information at ordinary 13px body size, without the

@@ -1,6 +1,6 @@
 # A02.4 — product React19 acquisition (in progress)
 
-Current: **Task3 corrected setup reached four native ancestor scenarios. Six of ten gates passed; the actual 11px/13px font mismatch remains FAIL. UI/report/stop qualification and final review are pending.**
+Current: **Four native75 scenarios retained; the old 11px font failure remains literal. Scoped76 font correction/source checks/packages are ready; remaining native UI/report/stop and final review are pending.**
 Scope-review-1; main0328993 baseline. No installed React19 support, full A02,
 V03 or new whole-task acceptance is established by this prerequisite. Still20/29.
 [Design](../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md),
@@ -262,20 +262,58 @@ partial successes and literal font failure, not a whole-item pass. It and the cl
 pre-font-change checkpoint are in that output's `verification/` directory. Both
 old cases/results/archives and original ten criteria remain intact.
 
+## Task3c font correction and retained-mechanism proof
+
+The new paragraph has a dedicated scoped `sp-atom-native-state` class with
+`font-size:var(--sp-font-size-body)`. Shared tokens/components and other Evidence
+text remain unchanged. A controlled rendering of the actual source template/CSS
+with copied historical summary text first measured11px and failed, then passed at
+**440/360px** with paragraph13px, parent11px, adjacent host16px and no paragraph
+overflow. These are source-render candidates, not native acquisition or full
+fidelity proof. RED/GREEN outputs:
+`.artifacts/a02/react19-font/2026-10-24T08-40-18-157Z` and
+`.artifacts/a02/react19-font/2026-10-24T08-41-07-626Z`. Both browsers closed.
+
+Atom76 immutable handoff:
+`.artifacts/atom/2026-10-24T08-43-51-780Z/atom-handoff.json`, tarballSHA256
+**681df733ca4ccfb1865b53ffd457c2907f6572a19260e52fa42da0422d7831c6**.
+UI2 and plugin7 are unchanged. Full source **2915PASS/0FAIL/0SKIP**,93.34s on this
+product code; then two more remaining-driver refusal controls were added and pass
+in the final **79 focused controls**. The2915 run is not relabelled2917. Packed
+NodeNext/browser types **2PASS**, admission **9PASS**. Old75 archives/results stay
+untouched; no unchanged helper VSIX or plugin was rebuilt.
+
+The exact75→76 proof verifies **five source changes**: one template class, one
+scoped CSS rule, package/lock candidate version and added changelog entry. Raw
+historical Git blobs, current sources and payloads are checked, not just filenames.
+The complete UI JS bundle differs by that single class literal; CSS differs by that
+single token rule. All remaining runtime/platform/transport/worker/reader payloads
+and unchanged host files match byte-for-byte. Plugin/acquisition/observer, source
+helper, app and installed tooling are unchanged. The first proof attempt used the
+wrong escaping for the generated HTML literal and failed; correction matched the
+actual generated literal without relaxing the single-change predicate.
+
+Final proof/preparation:
+`.artifacts/a02/react19-remaining/2026-10-24T09-10-56-113Z/mechanism-credit.json`
+and `prepared.json`. No app/tooling reinstall or old native scenario was repeated.
+The recorded75 semantic cases are retained at their original node/revision; they
+are **not** labelled newly executed on76. Any new76 witness must be fresh and use
+a different actual page/occurrence. Both original partial runs remain INCOMPLETE.
+
+`react19-remaining-case.json` freezes one six-check remaining run and explicitly
+maps all ten original criteria: fresh76 artifacts/attach, retained75 four semantics
+under the exact proof, fresh76 font/normal/narrow/hover/keyboard, actual v1 saved/
+downloaded omission+reader, Stop/post-stop input, and exact inputs/cleanup. This
+preserves every original criterion without re-running unaffected semantics or
+copying old IDs. Preflight includes the original28-file identity check and passes
+**3219inputs/17links**, no browser/server started. Native run requires a clean code
+commit. One fresh whole-item review still follows the completed evidence.
+
 ## Remaining work in this same item
 
-Next bounded step: **A02.4 Task3c — correct this paragraph to the existing13px body
-token, verify its rendered style, then qualify remaining UI/report/stop controls.**
-Issue new immutable Atom bytes under a new identity; keep75 and both failed runs.
-Credit already exercised75 scenarios only after explicit comparison of unchanged
-mechanism code, never as newly executed observations on a later candidate. Any new
-native UI/report/stop witness must belong to its own actual selected node/revision;
-old opaque IDs cannot be copied into it. Freeze the concrete remaining protocol
-before another attempt. All ten item criteria remain required across explicit
-scoped evidence; the old partial run never becomes PASS. One final whole-item
-review is still pending; none was dispatched before these gates were reached.
-
-Full A02/V03/V02/L02/C09 remain open;20/29 unchanged. The original V03 input failures,
-Unknowns and deferred native Node-admission Minor remain preserved. The new driver's
-actual Node check does not repair or upgrade that old harness. No input guard,
-Live/production policy, SDK, publication, other repository or redesign changed.
+Next bounded step: **commit76 source/case, then execute the one frozen remaining
+native run and independently verify literal results and the ten-row evidence table.**
+No native76 UI/report/stop success is claimed yet. Full A02/V03/V02/L02/C09 remain
+open;20/29 unchanged. Historical V03 failures/Unknowns and deferred native Node
+Minor stay intact. No input guard, Live/production policy, SDK, publication, other
+repository or redesign changed.

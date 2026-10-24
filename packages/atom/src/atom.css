@@ -38,6 +38,7 @@
 [data-sp-ui][data-atom-root] .sp-atom-empty { color:var(--sp-color-muted); font-size:11px; padding:12px 0; margin:0; border-bottom:1px solid var(--sp-color-border); }
 [data-sp-ui][data-atom-root] p:empty { display:none; }
 [data-sp-ui][data-atom-root] .sp-atom-boundaries { margin-top:18px; padding-top:14px; border-top:1px solid var(--sp-color-border); font-size:11px; line-height:1.65; }
+[data-sp-ui][data-atom-root] .sp-atom-native-state { font-size:var(--sp-font-size-body); }
 [data-sp-ui][data-atom-root] [data-atom-id="atom-summary"] { font-weight:550; }
 [data-sp-ui][data-atom-root] [data-atom-id="first-read-summary"] { color:var(--sp-color-muted); font-size:10px; }
 [data-sp-ui][data-atom-root] [data-atom-id="first-read-joins"] { padding-left:16px; font-size:10px; }

@@ -1666,7 +1666,7 @@
       "active_slice": {
         "id": "A02.4",
         "title": "Bounded ordinary React19 product acquisition integration",
-        "status": "in-progress-native6-font-failure-remaining-ui-report-stop-pending",
+        "status": "in-progress-font76-source-ready-remaining-native-pending",
         "record": "141-a02-react19-product-acquisition.md",
         "design": "../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md",
         "plan": "../superpowers/plans/2026-10-24-a02-react19-product-acquisition.md",
@@ -1689,14 +1689,14 @@
         "general_prop_transfer": "Unknown/Unsupported",
         "selected_property_origin": "Unknown/Unsupported",
         "product_UI_implemented": true,
-        "full_source_controls": 2912,
+        "full_source_controls": 2915,
         "task3_presentation_controls": 74,
         "harness_entry_controls": 2,
         "packed_type_consumers": 2,
         "package_admission_controls": 9,
         "native_preflight_inputs": 3216,
         "native_preflight_tool_links": 17,
-        "current_candidate": "0.1.0-candidate.20261021.75",
+        "current_candidate": "0.1.0-candidate.20261021.76",
         "plugin_candidate": "0.1.0-candidate.20261021.7",
         "native_status": "INCOMPLETE_PRODUCT_QUALIFICATION_NOT_A02",
         "native_checks_passed": 6,
@@ -1751,7 +1751,25 @@
           }
         ],
         "native_semantic_scenarios": 4,
-        "actual_cache_admission_control": true
+        "actual_cache_admission_control": true,
+        "task3c_focused_controls": 79,
+        "remaining_native_started": false,
+        "remaining_native_preflight_inputs": 3219,
+        "remaining_native_preflight_links": 17,
+        "source_font_RED": "11px !=13px",
+        "source_font_GREEN": {
+          "widths": [
+            440,
+            360
+          ],
+          "paragraph": "13px",
+          "parent": "11px",
+          "outside_host": "16px"
+        },
+        "mechanism_credit": ".artifacts/a02/react19-remaining/2026-10-24T09-10-56-113Z/mechanism-credit.json",
+        "retained_75_semantic_scenarios": 4,
+        "new_76_semantic_scenarios_reexecuted": 0,
+        "remaining_case": "../testing/react19-remaining-case.json"
       },
       "completed_slices": [
         {
@@ -1854,8 +1872,8 @@
       },
       "current_checkpoint": {
         "record": "141-a02-react19-product-acquisition.md",
-        "status": "in-progress-native6-font-failure-remaining-ui-report-stop-pending",
-        "next_bounded_step": "A02.4 Task3c scoped13px token-based font correction, rendered check and remaining UI/report/stop qualification; credit unchanged mechanism evidence explicitly, preserve both partial FAILs"
+        "status": "in-progress-font76-source-ready-remaining-native-pending",
+        "next_bounded_step": "A02.4 Task3c commit76 source/case then one frozen remaining native UI/report/stop run; verify composed ten-criterion table with scoped retained75 evidence and one final review"
       },
       "stopping_point_history": [
         {
@@ -6424,8 +6442,8 @@
     "document": "141-a02-react19-product-acquisition.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.4-native6-font-failure-remaining-ui-report-stop-pending",
-    "next_item": "A02.4 Task3c scoped13px token-based font correction, rendered check and remaining UI/report/stop qualification; credit unchanged mechanism evidence explicitly, preserve both partial FAILs",
+    "current_increment": "A02.4-font76-source-ready-remaining-native-pending",
+    "next_item": "A02.4 Task3c commit76 source/case then one frozen remaining native UI/report/stop run; verify composed ten-criterion table with scoped retained75 evidence and one final review",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6452,7 +6470,7 @@
     "active_item": {
       "id": "A02",
       "record": "141-a02-react19-product-acquisition.md",
-      "status": "in-progress-native6-font-failure-remaining-ui-report-stop-pending"
+      "status": "in-progress-font76-source-ready-remaining-native-pending"
     },
     "completed_increments": [
       {
@@ -9147,11 +9165,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.4 final75 product source2912PASS/types2/admission9 retained. Corrected native dc835d3:6of10 gates, actual cache denial then Settings grant admits Attach; four native equal/unmarked/same-value/changed-other scenarios and5selected snapshots pass, property origin/ownership/public hook/lineage Unknown. Literal INCOMPLETE at computed paragraph font11px!=13px. Normal/hover/keyboard/narrow/report/stop not executed.3217inputs17links stable/allcleanup/16negative verifier PASS preservation only. Original1of10 Attach FAIL unchanged. Next Task3c scoped body-token font correction plus remaining gates, explicit unchanged-code credit; no final reviewer/whole-item acceptance;20of29 unchanged.",
+    "current_activity_note": "A02.4 native75 four semantic scenarios retained with literal6of10/font FAIL.76 scoped body-token font fix controlledRED11->GREEN13 at440/360, parent11/outside16 unchanged. Full2915PASS then79focused including2newCLIcontrols; types2/admission9. Exact raw-source/payload comparison: only class/CSS rule/version/changelog; all mechanism/plugin/helper/app/tooling unchanged, no75scenarios reexecuted as76. New remaining-case maps all10criteria explicitly, preflight3219inputs17links; no76native yet. Commit then one remaining UI/report/stop case plus saved verification/final single review.20of29 unchanged/no full A02/V03 acceptance.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "dc835d35256b18931aed0b8e33aa0fe516581aac",
+    "current_source_revision": "1cd2f4f",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "A02.4 Task3c scoped13px token-based font correction, rendered check and remaining UI/report/stop qualification; credit unchanged mechanism evidence explicitly, preserve both partial FAILs"
+    "next_bounded_step": "A02.4 Task3c commit76 source/case then one frozen remaining native UI/report/stop run; verify composed ten-criterion table with scoped retained75 evidence and one final review"
   },
   "next_task": "A02"
 }
