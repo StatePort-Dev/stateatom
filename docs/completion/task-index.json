@@ -1661,9 +1661,34 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "implementation_plan": "../superpowers/plans/2026-10-23-a02-ordinary-reducer-acquisition.md",
+      "implementation_plan": "../superpowers/plans/2026-10-24-a02-react19-product-acquisition.md",
       "execution_record": "113-a02-ordinary-reducer-acquisition.md",
-      "active_slice": null,
+      "active_slice": {
+        "id": "A02.4",
+        "title": "Bounded ordinary React19 product acquisition integration",
+        "status": "in-progress-private-collector-tested-profile-and-product-path-pending",
+        "record": "141-a02-react19-product-acquisition.md",
+        "design": "../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md",
+        "plan": "../superpowers/plans/2026-10-24-a02-react19-product-acquisition.md",
+        "base": "0328993cf5154b2fb24c990bfd91fb55d2243f03",
+        "current_task": 1,
+        "collector_implemented": true,
+        "new_source_controls": 22,
+        "focused_source_controls": 38,
+        "profile_wired": false,
+        "observer_wired": false,
+        "selected_node_wired": false,
+        "product_UI_verified": false,
+        "new_package_built": false,
+        "new_native_run": false,
+        "whole_item_review_pending": true,
+        "full_A02_acceptance": false,
+        "product_React19_support": false,
+        "field_ownership": "Unknown/Unsupported",
+        "public_hook_kind": "Unknown/Unsupported",
+        "general_prop_transfer": "Unknown/Unsupported",
+        "selected_property_origin": "Unknown/Unsupported"
+      },
       "completed_slices": [
         {
           "id": "A02.1",
@@ -1764,9 +1789,9 @@
         "next_independent_dependency_ready_item": "V03.1 installed-user guide and clean-path reconciliation"
       },
       "current_checkpoint": {
-        "record": "113-a02-ordinary-reducer-acquisition.md",
-        "status": "finite-acquisition-accepted-full-A02-unresolved",
-        "next_bounded_step": "A02.4 bounded ordinary React19 product acquisition integration; preserve ownership/prop-transfer/selected-origin Unknown and existing stopping rule"
+        "record": "141-a02-react19-product-acquisition.md",
+        "status": "in-progress-private-collector-tested-profile-and-product-path-pending",
+        "next_bounded_step": "A02.4 Task2 strict pinned React19.2.5 profile and observer/exact-selected-node wiring, preserving independent ancestor scope and existing profiles"
       },
       "stopping_point_history": [
         {
@@ -1778,9 +1803,7 @@
           "experiment_record": "68-a02-react19-reducer-identity-experiment.md",
           "experiment_result": "Pinned synthetic derivative PASS14 only; actual rebase clone update origin Unknown, product/ordinary app integration/ownership/transfer unresolved"
         }
-      ],
-      "queued_next_slice": "A02.4",
-      "queued_next_reason": "V03.18 source-order controls preserve conflict, no proven model defect; reuse accepted A02.3 acquisition to address explicit product19 integration gap, no general ownership infrastructure."
+      ]
     },
     {
       "id": "A03",
@@ -6334,11 +6357,11 @@
     ]
   },
   "reconciliation": {
-    "document": "140-v03-input-snapshot-ordering.md",
+    "document": "141-a02-react19-product-acquisition.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.18-bounded-source-ordering-diagnosis-complete-native-guide-FAIL-retained",
-    "next_item": "A02.4 bounded ordinary React19 product acquisition integration; preserve ownership/prop-transfer/selected-origin Unknown and existing stopping rule",
+    "current_increment": "A02.4-private-product-collector-tested-rest-of-item-pending",
+    "next_item": "A02.4 Task2 strict pinned React19.2.5 profile and observer/exact-selected-node wiring, preserving independent ancestor scope and existing profiles",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6363,9 +6386,9 @@
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
-      "id": "V03",
-      "record": "140-v03-input-snapshot-ordering.md",
-      "status": "bounded-source-diagnosis-complete-A02-next"
+      "id": "A02",
+      "record": "141-a02-react19-product-acquisition.md",
+      "status": "in-progress-private-collector-tested-profile-and-product-path-pending"
     },
     "completed_increments": [
       {
@@ -9060,11 +9083,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.18 actualsource threeorders/333stableinputs/B327 unchanged: freshbeforeedit preparescurrentplan; freshafteredit orbeforelateack preservesraw20/conflict. SyntheticplanIDs explicit, nativeordering/modelcauseUnknown. No product/browser/backend/write/build/wholeacceptance. V03.17/nativeoriginalguideFAIL retained/20of29; nextdependencyreadyA02.4 product19 acquisitionintegration preserving ownershipstoppingrule.",
+    "current_activity_note": "A02.4 activeTask1: privateproductcollector22newsourcecontrols/38focusedPASS, inert/nooracleglobals/opaqueweaknativeidentities/strictcurrenttree/capacity/Unknowns. Task2profile+observer+selectednode andTask3UI/handoff/immutable/native/review remainpending. No product19orfullA02/V03acceptance/20of29change; exactcurrent73archivesunchanged/unshippedcollector.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "73e7303163007e9b18dfd08991260c888c5bfd07",
+    "current_source_revision": "0328993cf5154b2fb24c990bfd91fb55d2243f03",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "A02.4 bounded ordinary React19 product acquisition integration; preserve ownership/prop-transfer/selected-origin Unknown and existing stopping rule"
+    "next_bounded_step": "A02.4 Task2 strict pinned React19.2.5 profile and observer/exact-selected-node wiring, preserving independent ancestor scope and existing profiles"
   },
   "next_task": "A02"
 }
