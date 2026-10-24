@@ -1,5 +1,13 @@
 # Project status
 
+Current bounded checkpoint, 2026-10-24: [V03.21](completion/144-v03-owned-editor-reply.md)
+completes repeated Live input correction on exact Atom77: actual10→20, two applied
+receipts,24 stopped records/523 stable inputs. ONE review0Critical/0Important/1
+test-coverage Minor; no product correction or native repeat. Next **V03.22**
+strengthens semantic negative controls whose trace-copy mismatch currently masks
+the named check. Global inspection Working/latency and original guide/Undo/Draft/
+baseline remain open;20/29 whole tasks (~69%) unchanged. Historical entries follow.
+
 Active delivery scope: approved **`scope-review-1`** on 2026-10-19; see the
 [completion contract](completion/02-release-scope.md) and
 [current reconciliation](completion/13-scope-reconciliation.md). This supersedes

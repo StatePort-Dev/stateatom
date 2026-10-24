@@ -1,6 +1,6 @@
-# V03.21 — current owned-editor reply delivery (in progress)
+# V03.21 — current owned-editor reply delivery (bounded correction complete)
 
-Current: **actual Atom77 native qualification passes6/6; independent saved verification passes. ONE final whole-item review remains pending**. Baseline570b796. Source20 confirms a superseded reply can be
+Current: **actual Atom77 native qualification passes6/6; independent saved verification and ONE final whole-item review complete**. Baseline570b796. Source20 confirms a superseded reply can be
 discarded before updating a clean active editor, unlike a latest reply. Native19
 records the conflict path but its RPC schedule is unproven. Original guide17 FAIL
 and20/29 unchanged. [Design](../superpowers/specs/2026-10-24-v03-owned-editor-reply-design.md),
@@ -11,8 +11,8 @@ Exact scope/investigation/target/revision checks must preserve close/reopen and
 foreign/stale refusal. Existing input update handles policy/disabled UI and dirty
 conflicts; inspection/source render keeps its generation gate. No new polling,
 timing policy, automatic rebase, native guard relaxation or visual design change.
-Source tests alone will not establish product delivery; immutable package and
-one registered affected native acceptance plus ONE final review remain required.
+The implementation, immutable package, one affected native acceptance and final
+review below establish this bounded correction, not whole V03 acceptance.
 
 ## Task1 source implementation
 
@@ -130,5 +130,36 @@ joins, windows, types/admission/source hashes, final field/DOM and cleanup.
 
 No old case/result was rerun or upgraded. Original guide17, Undo/Draft/baseline,
 latency, wholeV03/A02/V02/L02/C09 and installed official-host/helper/human gates
-remain separate.20/29 unchanged. Task2 is ready for ONE fresh final review; no
-implementation correction pass or reviewer has been dispatched yet.
+remain separate.20/29 unchanged.
+
+## Final whole-item review and closeout
+
+ONE fresh read-only review on71325e6: **0Critical/0Important/1Minor**, ready for
+bounded V03.21. Reviewer independently ran the six-file aggregate179PASS and
+input-draft19PASS, checked diff/clean tree and rechecked523 inputs/host artifacts.
+Report `.artifacts/v03/owned-editor-reply-review/2026-10-24/report.md`.
+
+M1 is deferred to one bounded next item, **V03.22 semantic negative controls**:
+several test mutations change only one trace copy, so trace/stoppedTrace equality
+rejects them before their named later semantic assertion; plan copies also need
+paired changes. The independent saved verifier has the same test-coverage weakness.
+Cost of deferral: those negatives do not independently demonstrate their stated
+predicate. Positive native facts remain independently checked; no claim that the
+later predicates are absent or that a product/native rerun is required. Preserve
+all old raw/case/verifier results; strengthen controls using copies and explicit
+historical Git provenance for the test-only source delta. No correction pass or
+rereview in V03.21.
+
+All declined judgments remain explicit: global inspection-ready/latency, native
+load-generation attribution, uninstrumented p95, React writer/causal lineage,
+original guide/Undo/Draft/baseline/wholeV03, official installed host/helper/VSIX and
+human visual review. Local main commits only; no merge/push/publication, new
+branch, user profile, certificate or other repository change. Continue under the
+latest autonomous-work instruction through Oct25 evening. Whole20/29 unchanged.
+
+Before closeout edits the saved verifier again passed523 physical inputs. Marking
+the frozen plan's completion checkboxes changes one documentation input; checkpoint
+`pre-test-change-checkpoint.json` in the review directory records522 physical plus
+that exact historical Git blob at71325e6. The raw result/case/archive/old verifier
+are unchanged. Do not call the old strict physical verifier fresh523 after this
+document edit; future test changes require their own explicit provenance delta.

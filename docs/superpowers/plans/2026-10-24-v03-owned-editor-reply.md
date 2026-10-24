@@ -28,17 +28,17 @@
 **Files:** packages/atom/src/input-controller.mjs, input-ui.mjs, ui.mjs; tests/atom/input-controller.test.mjs, input-ui.test.mjs, inspector-ui.test.mjs; record144/current metadata.
 **Interfaces:** controller.stateReplyGuard() -> scope-bound predicate; inputUI.stateReplyReceiver() -> predicate+existing update closure; load captures receiver pre-request and invokes it only on superseded successful reply.
 
-- [ ] Write controller guard tests first, observe missing-method RED, implement exact active scope/target/investigation/revision refusal with no model mutation.
-- [ ] Add input UI receiver tests before implementation: accept and refresh normal capability path once; refusal leaves state untouched; dirty draft remains conflicted. Observe RED→GREEN.
-- [ ] Add actual mounted superseded-state/normal Live regression and context/source non-resurrection tests before wiring load; observe current old-plan7 failure→new-plan10. Use existing fixture and synthetic pending requests, no actual applied receipt.
-- [ ] Run focused input-controller/input-UI/inspector tests, syntax/diffcheck, record actual source proof and local commit/task-done. Native/product correction not yet complete.
+- [x] Write controller guard tests first, observe missing-method RED, implement exact active scope/target/investigation/revision refusal with no model mutation.
+- [x] Add input UI receiver tests before implementation: accept and refresh normal capability path once; refusal leaves state untouched; dirty draft remains conflicted. Observe RED→GREEN.
+- [x] Add actual mounted superseded-state/normal Live regression and context/source non-resurrection tests before wiring load; observe current old-plan7 failure→new-plan10. Use existing fixture and synthetic pending requests, no actual applied receipt.
+- [x] Run focused input-controller/input-UI/inspector tests, syntax/diffcheck, record actual source proof and local commit/task-done. Native/product correction not yet complete.
 
 ### Task 2: Immutable artifact and one affected native acceptance
 
 **Files:** Atom package/version/lock/changelog, existing package scripts, new case/driver preparation and limited entry/acceptance controls as required; record144/current metadata.
 **Interfaces:** consume Task1 code; exact new Atom/UI2, new bundle anchors for existing test-only collector, frozen original commerce65/tool/Node inputs and final stopped-trace validity; no old case rewrite.
 
-- [ ] Advance unused Atom candidate77 with behavior changelog; full source suite, exact local pack/types/admission and source manifest checks. Preserve76/old results. No helper/plugin rebuild.
-- [ ] Freeze one finite affected native two-Live-input case and exact bundle/Node/archives/source/cleanup assertions; source tests for new entry/refusal/classifier before launch, commit clean. Current collector may need a version-specific exact layout after inspecting emitted bytes, not guesswork.
-- [ ] Execute once, poll same handle, preserve literal partial/FAIL. Require actual applied20 with exact two plan/receipt/revision joins and complete valid final trace/console/cleanup; do not invent original guide success or retry.
-- [ ] Independent saved verifier/negative controls, final focused aggregate/task-done/commit; ONE fresh final review and one tested Important-Critical pass only if needed, then final clean local commit with one next dependency item. No broad old campaigns repeated.
+- [x] Advance unused Atom candidate77 with behavior changelog; full source suite, exact local pack/types/admission and source manifest checks. Preserve76/old results. No helper/plugin rebuild.
+- [x] Freeze one finite affected native two-Live-input case and exact bundle/Node/archives/source/cleanup assertions; source tests for new entry/refusal/classifier before launch, commit clean. Current collector may need a version-specific exact layout after inspecting emitted bytes, not guesswork.
+- [x] Execute once, poll same handle, preserve literal partial/FAIL. Require actual applied20 with exact two plan/receipt/revision joins and complete valid final trace/console/cleanup; do not invent original guide success or retry.
+- [x] Independent saved verifier/negative controls, final focused aggregate/task-done/commit; ONE fresh final review and one tested Important-Critical pass only if needed, then final clean local commit with one next dependency item. No broad old campaigns repeated.
