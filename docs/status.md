@@ -4,8 +4,10 @@ Active bounded work: [A02.6](completion/147-a02-array-callsite-bridge.md) source
 call-site bridge. Frame API, conservative Babel transform and finite source driver
 pass111 focused/3149 full source controls;327 product/nine historical inputs unchanged. Actual
 receiver/argument/callback semantics are checked, including the prototype's stack
-counterexample. Driver/source admission is ready; native original/off/on qualification
-is not prepared or run yet. No product
+counterexample. First native attempt341dd50 is literal INCOMPLETE before any app
+phase: gated Browser.getBrowserCommandLine requires an absent automation flag.
+407 frozen inputs/owned cleanup verified; source-only identity-collector correction
+is next. No source/UI qualification or product
 integration or new whole-task credit;20/29 unchanged.
 
 Current work, 2026-10-24: [A02.5](completion/146-a02-array-transfer-technique.md)

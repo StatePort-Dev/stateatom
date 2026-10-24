@@ -109,3 +109,27 @@ and unchanged second reference; active filter retains second at original index1;
 Stop must leave Unknown/no data while original UI continues. Same-value UI alone
 does not satisfy source readiness. Console/inputs/actual process/cleanup guards
 remain mandatory. No browser run or result yet; commit case before execution.
+
+## First actual attempt: Chrome identity collector refuses before app phases
+
+Case committed **341dd50**, actual Node job36684 is terminal exit1:
+`INCOMPLETE_SOURCE_ARRAY_CALLSITE_NOT_FULL_A02`, **1 named check passed**, zero
+app modes/phases. Raw result in the frozen output above, SHA256
+**9fda880a7b7afefd95df7c21e69882c3383da92b9c520e001995cfb2dc58829b**.
+Exact error: Browser.getBrowserCommandLine refuses because --enable-automation
+is not set. No source/React/UI behavior was tested by this attempt.
+
+Browser context and server close returned successfully, attached console0. PID
+discovery followed the refused command, so no PID was captured; raw cleanup value
+"not-started" describes missing PID and must **not** be used to claim Chrome never
+launched. Read-only current /proc inspection finds no process using the exact
+owned-profile argument. All **407 physical inputs** and original raw/preparation/
+registration/start files were checked before any source fix; clean checkpoint
+`pre-process-fix-checkpoint.json` records these facts. Original case is exhausted,
+not rerun or relabelled; all positive acquisition questions remain unexecuted.
+
+Bounded prerequisite correction: discover owned browser PID via SystemInfo first
+and use its actual /proc executable/hash/arguments for the same profile/headless/
+sandbox assertions. Avoid the gated command without adding automation flags or
+changing browser configuration. Actual-process source controls and a separate
+newly frozen affected process-case are required. No pass from this document.

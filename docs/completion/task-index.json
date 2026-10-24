@@ -1665,11 +1665,11 @@
       "execution_record": "147-a02-array-callsite-bridge.md",
       "active_slice": {
         "id": "A02.6",
-        "status": "native-case-prepared-preflight-pass-commit-before-one-run",
+        "status": "actual-native-prerequisite-failure-before-app-phases",
         "record": "147-a02-array-callsite-bridge.md",
         "base": "40146b7",
         "product_changed": false,
-        "native_executed": false,
+        "native_executed": true,
         "full_A02": false,
         "source_focused": 111,
         "full_source_controls": 3149,
@@ -1683,7 +1683,15 @@
         "native_inputs": 407,
         "native_output": "/home/roman/projects/stateatom/.artifacts/a02/array-callsite-native/2026-10-24T16-40-09Z",
         "source_revision": "1fbd2ac1ce6ec57fbaa9a1ef24c70ad155d8ab57",
-        "maximum_native_runs": 1
+        "maximum_native_runs": 1,
+        "native_attempts": 1,
+        "native_status": "INCOMPLETE_SOURCE_ARRAY_CALLSITE_NOT_FULL_A02",
+        "native_checks_passed": 1,
+        "native_app_phases": 0,
+        "native_result": ".artifacts/a02/array-callsite-native/2026-10-24T16-40-09Z/results.json",
+        "native_result_sha256": "9fda880a7b7afefd95df7c21e69882c3383da92b9c520e001995cfb2dc58829b",
+        "frozen_inputs_before_fix": 407,
+        "owned_profile_processes_after_run": 0
       },
       "completed_slices": [
         {
@@ -1967,8 +1975,8 @@
       },
       "current_checkpoint": {
         "record": "147-a02-array-callsite-bridge.md",
-        "status": "native-case-prepared-preflight-pass-commit-before-one-run",
-        "next_bounded_step": "Commit immutable case and execute ONCE; preserve literal partial/FAIL and verify saved facts before final review"
+        "status": "actual-native-prerequisite-failure-before-app-phases",
+        "next_bounded_step": "One tested process identity collector correction; preserve exhausted old case and preregister separate affected process-case, no browser flag/criterion change"
       },
       "stopping_point_history": [
         {
