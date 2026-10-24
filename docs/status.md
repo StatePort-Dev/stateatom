@@ -2397,3 +2397,13 @@ latest reply and a superseded reply while a later read remains pending. Record
 actual prepared resource revision; no real write/applied receipt or native run.
 Current load-generation gate can discard a reply before inputUI.update; whether
 this explains native19's schedule is unproven. No product/guard/policy change.
+
+### 2026-10-24 — V03.20 source delivery gap confirmed
+
+[Actual mounted UI source controls](completion/143-v03-editor-snapshot-delivery.md):
+latestreply10→synthetic planr10; deliveredreply10 superseded by a still pending read
+is discarded before editor update, so typing20→planr7; later reply10 preservesraw20
+and sets conflict. Two cases/332stable inputs/10negative verifier PASS, no backend
+write/ack/native/product change. This is a source-reproduced gap, not proof of
+native19's RPC schedule. Next bounded V03.21 owned-editor reply admission while
+preserving inspection generation, exact scope/target and draft/revision/ABA guards.
