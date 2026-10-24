@@ -4311,7 +4311,7 @@
       "active_slice": {
         "id": "V02.13",
         "title": "Same live verify and fresh snapshot in one private registry message",
-        "status": "source-complete-review-due-not-packed-native",
+        "status": "complete-source-not-packed-native-or-performance-acceptance",
         "record": "132-v02-verify-snapshot.md",
         "design": "../superpowers/specs/2026-10-24-v02-verify-snapshot-design.md",
         "plan": "../superpowers/plans/2026-10-24-v02-verify-snapshot.md",
@@ -4328,16 +4328,36 @@
         "whole_V02_complete": false,
         "performance_acceptance": false,
         "targets_waived": false,
-        "review_pending": true,
+        "review_pending": false,
         "native_repeated": false,
         "packed_native_qualification": false,
-        "verification": ".artifacts/v02/verify-snapshot/2026-10-24/source-delta.json"
+        "verification": ".artifacts/v02/verify-snapshot/2026-10-24/final-checkpoint.json",
+        "review": {
+          "schema": "stateatom.verify-snapshot-review/1",
+          "reviewer": "/root/v0213_whole_review",
+          "model": "gpt-6-astra",
+          "reasoning": "high",
+          "base": "bdccd0600a73ed4c4cdf68af96281f2860717d11",
+          "head": "4a413ca56e0d7dadbac8209e9f946d72a88a2d2a",
+          "critical": 0,
+          "important": 0,
+          "minor": 0,
+          "correction_passes": 0,
+          "re_review": false,
+          "source_only": true,
+          "native_repeated": false,
+          "source_checks": 2684,
+          "focused_checks": 131,
+          "new_transport_controls": 11,
+          "reviewer_fresh_checks": 24,
+          "reportSha256": "0afe91b8fdec808eb69a7ee7be3a99362768d560823f241318fc411d1a6581e5"
+        }
       },
       "execution_record": "130-v02-worker-api-phases.md",
       "current_checkpoint": {
         "record": "132-v02-verify-snapshot.md",
-        "status": "source-complete-review-due-not-packed-native",
-        "next_bounded_step": "ONE final V02.13 source review, then V02.14 immutable candidate and affected installed-native qualification for atomic verify+fresh snapshot; register exact protocol before native"
+        "status": "complete-source-not-packed-native-or-performance-acceptance",
+        "next_bounded_step": "V02.14 choose/register exact immutable new candidate and affected installed-native qualification for atomic verify+fresh snapshot; no broad old matrix or source-only speedup credit"
       },
       "completed_slices": [
         {
@@ -4971,6 +4991,51 @@
           "original_focused_checks": 78,
           "original_driver_failure_controls": 12,
           "post_run_harness_correction": ".artifacts/v02/guardian-registry-phases/2026-10-24/post-run-harness-correction.json"
+        },
+        {
+          "id": "V02.13",
+          "title": "Same live verify and fresh snapshot in one private registry message",
+          "status": "complete-source-not-packed-native-or-performance-acceptance",
+          "record": "132-v02-verify-snapshot.md",
+          "design": "../superpowers/specs/2026-10-24-v02-verify-snapshot-design.md",
+          "plan": "../superpowers/plans/2026-10-24-v02-verify-snapshot.md",
+          "product_source_changed": true,
+          "changed_product_files": [
+            "core/guardian-worker-wire.mjs",
+            "core/guardian-session.mjs"
+          ],
+          "product_inputs": 327,
+          "unchanged_product_inputs": 325,
+          "source_checks": 2684,
+          "focused_checks": 131,
+          "new_transport_controls": 11,
+          "whole_V02_complete": false,
+          "performance_acceptance": false,
+          "targets_waived": false,
+          "review_pending": false,
+          "native_repeated": false,
+          "packed_native_qualification": false,
+          "verification": ".artifacts/v02/verify-snapshot/2026-10-24/final-checkpoint.json",
+          "review": {
+            "schema": "stateatom.verify-snapshot-review/1",
+            "reviewer": "/root/v0213_whole_review",
+            "model": "gpt-6-astra",
+            "reasoning": "high",
+            "base": "bdccd0600a73ed4c4cdf68af96281f2860717d11",
+            "head": "4a413ca56e0d7dadbac8209e9f946d72a88a2d2a",
+            "critical": 0,
+            "important": 0,
+            "minor": 0,
+            "correction_passes": 0,
+            "re_review": false,
+            "source_only": true,
+            "native_repeated": false,
+            "source_checks": 2684,
+            "focused_checks": 131,
+            "new_transport_controls": 11,
+            "reviewer_fresh_checks": 24,
+            "reportSha256": "0afe91b8fdec808eb69a7ee7be3a99362768d560823f241318fc411d1a6581e5"
+          }
         }
       ],
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v02-disabled-domain.md",
@@ -5804,8 +5869,8 @@
     "document": "132-v02-verify-snapshot.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.13-source-complete-review-due",
-    "next_item": "ONE final V02.13 source review, then V02.14 immutable candidate and affected installed-native qualification for atomic verify+fresh snapshot; register exact protocol before native",
+    "current_increment": "V02.13-complete-source-only",
+    "next_item": "V02.14 choose/register exact immutable new candidate and affected installed-native qualification for atomic verify+fresh snapshot; no broad old matrix or source-only speedup credit",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8219,14 +8284,59 @@
         "original_focused_checks": 78,
         "original_driver_failure_controls": 12,
         "post_run_harness_correction": ".artifacts/v02/guardian-registry-phases/2026-10-24/post-run-harness-correction.json"
+      },
+      {
+        "id": "V02.13",
+        "title": "Same live verify and fresh snapshot in one private registry message",
+        "status": "complete-source-not-packed-native-or-performance-acceptance",
+        "record": "132-v02-verify-snapshot.md",
+        "design": "../superpowers/specs/2026-10-24-v02-verify-snapshot-design.md",
+        "plan": "../superpowers/plans/2026-10-24-v02-verify-snapshot.md",
+        "product_source_changed": true,
+        "changed_product_files": [
+          "core/guardian-worker-wire.mjs",
+          "core/guardian-session.mjs"
+        ],
+        "product_inputs": 327,
+        "unchanged_product_inputs": 325,
+        "source_checks": 2684,
+        "focused_checks": 131,
+        "new_transport_controls": 11,
+        "whole_V02_complete": false,
+        "performance_acceptance": false,
+        "targets_waived": false,
+        "review_pending": false,
+        "native_repeated": false,
+        "packed_native_qualification": false,
+        "verification": ".artifacts/v02/verify-snapshot/2026-10-24/final-checkpoint.json",
+        "review": {
+          "schema": "stateatom.verify-snapshot-review/1",
+          "reviewer": "/root/v0213_whole_review",
+          "model": "gpt-6-astra",
+          "reasoning": "high",
+          "base": "bdccd0600a73ed4c4cdf68af96281f2860717d11",
+          "head": "4a413ca56e0d7dadbac8209e9f946d72a88a2d2a",
+          "critical": 0,
+          "important": 0,
+          "minor": 0,
+          "correction_passes": 0,
+          "re_review": false,
+          "source_only": true,
+          "native_repeated": false,
+          "source_checks": 2684,
+          "focused_checks": 131,
+          "new_transport_controls": 11,
+          "reviewer_fresh_checks": 24,
+          "reportSha256": "0afe91b8fdec808eb69a7ee7be3a99362768d560823f241318fc411d1a6581e5"
+        }
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.13 source-only atomic same verify+fresh snapshot:2684full/131focused/11new controls PASS,2productfiles changed/325unchanged,helper223/installed71 retained. ONE review due; no new packed/native/speedup/fullV02 credit. Whole20/29 unchanged.",
+    "current_activity_note": "V02.13 source complete after ONE review0/0/0,2684full/131focused/11new controls; exact2productfiles changed/325unchanged/helper223/installed71 retained. No new packed/native/speedup/fullV02 credit;20/29 unchanged. NextV02.14.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "bdccd06+working-source-delta",
+    "current_source_revision": "4a413ca",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "ONE final V02.13 source review, then V02.14 immutable candidate and affected installed-native qualification for atomic verify+fresh snapshot; register exact protocol before native"
+    "next_bounded_step": "V02.14 choose/register exact immutable new candidate and affected installed-native qualification for atomic verify+fresh snapshot; no broad old matrix or source-only speedup credit"
   },
   "next_task": "V02"
 }

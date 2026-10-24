@@ -69,3 +69,35 @@ strict flag/getter/size/sequence/common64budget and malformed/legacy reply chann
 loss. These are controlled source executions, with no new native/packed acceptance.
 Exact325unchanged/2changed product/helper223/archive/install receipt remains valid.
 ONE readonly review due; V02.14 unchanged as the next native candidate qualification.
+
+
+## Final source review
+
+ONE fresh readonly `/root/v0213_whole_review` (gpt-6-astra/high),
+bdccd06..4a413ca:0Critical/0Important/0Minor. No correction pass/re-review. Reviewer
+fresh24actual source tests PASS; supplementary real dispatcher/client/session controls
+observe pre-dispatch revocation→CLIENT_EXPIRED/no snapshot and post-dispatch session
+close→SESSION_CLOSED.330pins/bothproduct SHA and diffcheck/cleanHEAD match. Original
+131focused/2684full logs inspected, not rerun. A supplementary race double initially
+violated existing sequence order; only the ephemeral fixture was corrected, not the
+product. This failure is not hidden or credited as a product regression/verification.
+
+Accepted review boundaries/costs: custom non-cloning Worker-like accessor/proxy
+responses are outside the actual structured-clone data transport; arbitrary such
+adapters receive no guarantee against repeated getters. Dispatcher registry is the
+existing synchronous guardian; arbitrary async dispatcher producers are not supported,
+while asynchronous session fallback remains tested. Nested snapshot schema/old broker
+malformed-response hardening and compromised/prototype-mutated worker realms were
+not re-audited: trusted producer structure is unchanged, with no new demonstrated
+reachable path. These remain scope limits rather than universal hardening claims.
+Native scheduling/performance/installed/package compatibility requires V02.14; source
+message counts cannot qualify it. WholeV02/V03/C09/A02/L02/original targets stay open.
+Every ruling and its cost is in the retained ledger. No newMinor; inherited historical
+pending wording and sparse diagnostic-option Minor remain deferred.
+
+**V02.13 source increment complete.** Same verify+freshsnapshot now uses one private
+worker message, with source131focused/2684full/11new controls and exact2productfiles/
+325unchanged/helper223/oldarchives/install. No new candidate/native speedup credit.
+Next one **V02.14**: choose/register the exact immutable new candidate and affected
+installed-native qualification. No broad old matrix, SDK, redesign, publications,
+IDE/certificate/account/user profile/other repository work is implied.

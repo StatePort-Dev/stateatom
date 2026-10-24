@@ -2199,3 +2199,15 @@ checkpoint preserved with exact3harness/control changes declared; no repeat. Who
 20/29/fullV02/V03/C09/A02/L02 unchanged. NextV02.13 chooses/designs bounded source
 controls for redundant registry snapshots, preserving all live authority/recovery/
 revocation/cleanup barriers; no approved shortcut, IDE or certificate campaign.
+
+
+[V02.13](completion/132-v02-verify-snapshot.md) completes source-only atomic live
+verify+fresh registry snapshot in one private worker message. Every actual verify/
+snapshot/authority/recovery/cleanup barrier remains; legacy registry2call path and
+ordinary replies unchanged. Malformed/old fast replies reject allpending before
+entry deletion, not cachedsuccess. New11/guardianfocused131/full2684 PASS; exact2of327
+productfiles changed/325unchanged/helper223/archives/installed71 unchanged. ONE source
+review0/0/0,24freshreviewchecks, no correction/rereview. This is no new installed/native
+speedup or target acceptance. Whole20/29/fullV02/V03/C09/A02/L02 unchanged. NextV02.14
+chooses/registers immutable newcandidate and affected installed-native qualification;
+no broad oldmatrix/SDK/design/publication/IDE/certificate/otherrepo campaign.
