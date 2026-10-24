@@ -30,7 +30,7 @@
 **Interfaces:** guardRestoreAvailability(result) -> literal PASS_RESTORE_AVAILABILITY_NOT_FULL_V03 or throws; finalizeRestoreAvailability(result) -> same only when guard/all named checks/cleanup/console/frozen inputs pass, else INCOMPLETE_RESTORE_AVAILABILITY. No native on import.
 
 - [x] TDD coherent synthetic source result and isolated target/receipt/value/revision/flag/button/Close/history/local-field/console/cleanup drift negatives. `node --test --test-isolation=none tests/engine/restore-availability-qualification.test.mjs` -> RED absent module, then meaningful guard predicates -> PASS.
-- [ ] Change only candidate version77→78/lock/Unreleased heading, scoped local source commit. `npm run pack:atom` -> fresh deterministic local pair/clean handoff; `node scripts/verify-atom-types.mjs HANDOFF` ->2PASS; `node scripts/verify-atom-package.mjs HANDOFF` ->9PASS. UI SHA unchanged. Source59focused PASS, protected old raw/archive hashes match. Commit actual result/task-done with focused guard tests. No native inTask1.
+- [x] Change only candidate version77→78/lock/Unreleased heading, scoped local source commit. `npm run pack:atom` -> fresh deterministic local pair/clean handoff; `node scripts/verify-atom-types.mjs HANDOFF` ->2PASS; `node scripts/verify-atom-package.mjs HANDOFF` ->9PASS. UI SHA unchanged. Source59focused PASS, protected old raw/archive hashes match. Commit actual result/task-done with focused guard tests. No native inTask1.
 
 ### Task 2: New finite case and one native qualification
 

@@ -34,14 +34,13 @@ Missing/refused/stale/overflow/console/cleanup/input drift is INCOMPLETE, not a
 renamed accepted denominator or reason for blind retry. Maximum1 new native run.
 
 Own sandboxed pinned Chrome153, Xephyr/XDG profile, loopback API and Vite only;
-reuse retained app/dependencies/source65 and standard extension install route.
+reuse retained app/dependencies/source65 and existing declared CLI-preload harness route (not end-user installation proof).
 Pin executing Node/proc executable/hash, exact tarball/types/admission/build/host
 hashes and all frozen inputs before the one run. No app-source or dependency edits.
 Close every owned resource independently and retain partial failure before final
 classification. Reuse existing cleanup/native UI helpers, not a new trust setup.
 
-Browser plugin/browser skill absent; use the repo's existing Playwright/native
-harness, not CUA/user browser. Apply frontend-testing-debugging for real UI checks.
+Browser plugin/browser skill absent; use the repo's existing native CDP harness with Playwright-pinned Chromium, not CUA/user browser. Apply frontend-testing-debugging for real UI checks.
 Save first relevant input viewport at1100 and390 width, font/overflow/console,
 identity/nonblank/no overlay and interaction state. Reference set from V03.23 stays
 authoritative; existing disabled styling/layout only. Screenshots are candidates,

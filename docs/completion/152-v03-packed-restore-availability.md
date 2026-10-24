@@ -26,3 +26,25 @@ Final guard52PASS. New guard is research/source-only, no runtime on import/no na
 Version metadata77→78 and lock/changelog identity are prepared; exact pack/types/
 admission remain due after clean source commit. Original59source/full3308 retain
 prior revision; not a claimed new fullsuite. No behavior/guard relaxation.
+
+Task1 exact local pack completed from clean54cde48. Immutable handoff
+`.artifacts/atom/2026-10-24T20-09-40-323Z/atom-handoff.json`;
+Atom78SHA8e2d67e68a0ef2a798409156c581629adb3cd2e37f06e8bb3ef7c3c0d16bcf4a,
+UI2SHA2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5 unchanged.
+Actual pack deterministic duplicate bytes, current327 build-source hashes match;
+NodeNext/browser type consumers2PASS, package/admission9PASS (compatibility
+2026-10-24T20-10-24-797Z/result.json). Combined guard52+existing source59=111PASS.
+No new fullsuite claim:3308 remains prior V03.23; Task2 must run full changed set.
+
+Protected pre-item product324 physical+3 declared version/lock/changelog deltas;
+old9/A02.6–9 research20/V03.23 source4/raw5/old77 archives and handoff unchanged.
+Package collection uses UTC timestampOct24; work date is localOct25, not a clock
+or provenance rewrite. No browser/native started, no publishing/SDK/otherrepo.
+Task2 finite source-tested driver/preparer, frozen case and one new run remain due.
+
+Implementation clarification before native: existing startNativeBrowser route
+used by V03.21 is explicitly historical-cli-preload in an owned sandboxed Chrome,
+not end-user/clean installation. Reuse that exact supported research harness route,
+record command.extensionSetup literally. No new install experiment/GUI permissions/
+user profile work. Earlier spec's vague “standard extension install route” is now
+corrected; no user approval of that missing detail is invented.

@@ -2,7 +2,8 @@
 
 Active bounded work: [V03.24](completion/152-v03-packed-restore-availability.md),
 new exact local78/UI2 qualification of disabled restoration controls and safe Close.
-Source/package/frozen-case gates first; no native started, maximum1 new case.
+Exact78/UI2 local pack/types2/admission9/guard52+source59PASS; finite driver and
+frozen-case gates remain. No native started, maximum1 new case.
 Original guide FAIL/restore guards/whole20of29 unchanged.
 
 Completed bounded work: [V03.23](completion/151-v03-restore-availability.md), exact
