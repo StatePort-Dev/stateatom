@@ -1,0 +1,159 @@
+{
+  "schema": "stateatom.disabled-domain-case/1",
+  "base": "507420d7bcb43b73b2b297ec6a29ea1dad553310",
+  "browser": {
+    "executable": "/home/roman/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome",
+    "version": "Chrome/153.0.8010.12",
+    "executableSha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e"
+  },
+  "engineHashes": {
+    "baseline": "e143518567a14e5faeebddf67031ee4a16e7c42c5a4287dc20293eb9bf1f2975",
+    "candidate": "ebedb4fbc1dcae0edc916e5eb6f9316d56ab7aec8467fd48b5897fea5b90bc27"
+  },
+  "inputHashes": {
+    "tests/integration/disabled-domain-native.mjs": "a93b939f4482fa659dcbfad133b27f595126c217761e2bc12fa56a3e5a4780ad",
+    "docs/superpowers/specs/2026-10-24-v02-disabled-domain-design.md": "09448823a00851a2d1832d7262c882ca4441b6b65086eaee7c2761416da9ce7c",
+    "docs/superpowers/plans/2026-10-24-v02-disabled-domain.md": "a7444eca3d18a4f0f55ded1d9043f46a820bbb27d48f2076dd36966023baa439",
+    "scripts/atom-package-receipt.mjs": "f54a3c72c65b5f032a2936b0a216b2516016fa8c356388bf33dfc9397a0b4d7c",
+    "browser-extension/picker.mjs": "6631aa1dc5a3ea75cb7c5519aac38347f92a1eb05ce133466df32e5871f5ad16",
+    "package.json": "9e17e86330ce8f604d9a081da7ab650453ec79cfcb660467f342822cf480aa8b",
+    "package-lock.json": "e272cc4821dcb4fe3405aab38fe688431bf89cf86ffe8626e333328708a221fc"
+  },
+  "controls": [
+    {
+      "id": "button-absent",
+      "selector": "#button-absent",
+      "property": "disabled",
+      "expected": false
+    },
+    {
+      "id": "button-empty",
+      "selector": "#button-empty",
+      "property": "disabled",
+      "expected": true
+    },
+    {
+      "id": "button-false",
+      "selector": "#button-false",
+      "property": "disabled",
+      "expected": true
+    },
+    {
+      "id": "button-disabled",
+      "selector": "#button-disabled",
+      "property": "disabled",
+      "expected": true
+    },
+    {
+      "id": "button-namespace",
+      "selector": "#button-namespace",
+      "property": "disabled",
+      "expected": false
+    },
+    {
+      "id": "input-absent",
+      "selector": "#input-absent",
+      "property": "disabled",
+      "expected": false
+    },
+    {
+      "id": "input-empty",
+      "selector": "#input-empty",
+      "property": "disabled",
+      "expected": true
+    },
+    {
+      "id": "input-false",
+      "selector": "#input-false",
+      "property": "disabled",
+      "expected": true
+    },
+    {
+      "id": "input-disabled",
+      "selector": "#input-disabled",
+      "property": "disabled",
+      "expected": true
+    },
+    {
+      "id": "input-namespace",
+      "selector": "#input-namespace",
+      "property": "disabled",
+      "expected": false
+    },
+    {
+      "id": "textarea-absent",
+      "selector": "#textarea-absent",
+      "property": "disabled",
+      "expected": false
+    },
+    {
+      "id": "textarea-empty",
+      "selector": "#textarea-empty",
+      "property": "disabled",
+      "expected": true
+    },
+    {
+      "id": "textarea-false",
+      "selector": "#textarea-false",
+      "property": "disabled",
+      "expected": true
+    },
+    {
+      "id": "textarea-disabled",
+      "selector": "#textarea-disabled",
+      "property": "disabled",
+      "expected": true
+    },
+    {
+      "id": "textarea-namespace",
+      "selector": "#textarea-namespace",
+      "property": "disabled",
+      "expected": false
+    },
+    {
+      "id": "open-off",
+      "selector": "#open >>> #off",
+      "property": "disabled",
+      "expected": false
+    },
+    {
+      "id": "open-on",
+      "selector": "#open >>> #on",
+      "property": "disabled",
+      "expected": true
+    },
+    {
+      "id": "closed",
+      "selector": "#closed >>> #off",
+      "property": "disabled",
+      "expected": null
+    },
+    {
+      "id": "unsupported",
+      "selector": "#unsupported",
+      "property": "disabled",
+      "expected": null
+    },
+    {
+      "id": "node-replacement",
+      "selector": "#replace",
+      "property": "disabled",
+      "mutation": "node",
+      "expected": null
+    },
+    {
+      "id": "document-replacement",
+      "selector": "#replace",
+      "property": "disabled",
+      "mutation": "document",
+      "expected": null
+    },
+    {
+      "id": "whitespace-text",
+      "selector": "#text",
+      "property": "text",
+      "expected": "Alpha Beta"
+    }
+  ],
+  "scope": "22 fixed native identity controls plus separate implicit-domain bootstrap; sole harness CDP, not installed Atom/broker; expected unsupported preserved"
+}
