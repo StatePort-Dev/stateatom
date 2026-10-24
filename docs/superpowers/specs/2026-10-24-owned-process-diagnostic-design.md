@@ -46,3 +46,13 @@ launch, strict input hashes/result retention/cleanup and independent saved check
 If refused, explain only actual retained facts; no guessed cause or second run.
 ONE final fresh read-only whole-item review, one tested Important/Critical fix
 pass maximum, no rereview. Minors explicit; human participation not blocker.
+
+
+Post-attempt source correction: read argument bytes through EOF, with65536-byte
+capacity and explicit incomplete-vector errors. Preserve byte count/digest/argument
+count in future facts without serializing full arguments. Real short-read file
+control proves a forbidden suffix cannot be omitted. The one executed native case
+used earlier single-read source and is not repeated or upgraded by this fix.
+Linux process titles may replace the original argv representation; absence of
+recognized flags must not be described as actual headed mode/profile non-use.
+Original invocation evidence is a separate next feasibility question, not waived.

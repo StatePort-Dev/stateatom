@@ -1665,17 +1665,17 @@
       "execution_record": "148-owned-process-diagnostic.md",
       "active_slice": {
         "id": "A02.7",
-        "status": "blank-diagnostic-case-frozen-before-one-run",
+        "status": "blank-diagnostic-refused-source-complete-final-review-due",
         "record": "148-owned-process-diagnostic.md",
         "base": "58796e7",
         "product_changed": false,
-        "native_executed": false,
+        "native_executed": true,
         "full_A02": false,
         "maximum_native_runs": 1,
-        "native_attempts": 0,
+        "native_attempts": 1,
         "scope": "Retain actual scoped process facts; at most one blank-browser diagnostic, no app run",
-        "source_focused": 27,
-        "full_source_controls": 3178,
+        "source_focused": 29,
+        "full_source_controls": 3180,
         "full_source_failures": 0,
         "full_source_cancelled": 0,
         "source_inputs_unchanged": {
@@ -1686,7 +1686,15 @@
         "case": "../testing/owned-process-diagnostic-case.json",
         "native_output": ".artifacts/a02/owned-process-diagnostic-native/2026-10-24T17-23-00Z",
         "frozen_inputs": 370,
-        "source_revision": "f0917b6360ea5c20f077fb73e691fc983a50e99a"
+        "source_revision": "f0917b6360ea5c20f077fb73e691fc983a50e99a",
+        "native_status": "DIAGNOSTIC_REFUSED_NO_APP",
+        "native_result_sha256": "4a1d447fad7b347049370a42806bd6ea00d470763c4cebbefda6fa027e6f02d7",
+        "reported_pid_equals_direct_child": true,
+        "exact_pinned_chrome": true,
+        "actual_profile_or_headed_mode": "Unknown/Unsupported",
+        "independent_saved_inputs": 370,
+        "independent_negative_controls": 12,
+        "next_dependency": "A02.8 bounded original launch-argument witness feasibility; no old case rerun or assumption that proc title preserves argv"
       },
       "completed_slices": [
         {

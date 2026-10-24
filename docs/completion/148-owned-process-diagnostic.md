@@ -33,3 +33,40 @@ are implemented. No browser/application/server/UI operation yet.
 Final source gate27PASS; full npm test3178PASS/0FAIL/0cancelled/0SKIP98.07s terminal84206. No native yet. Need clean sourcecommit then resource-freeprepare/freeze/newcasecommit/max1blankdiagnostic.
 
 Resource-freeprepare62580/preflight65558terminal0: f0917b6clean/369sourceinputs/370includingcase. CoreBundle/localmodulegraph/Node/Chrome/source/tests/spec/plan and oldraw/checkpoints pinned. args[]/headless/sandbox/onlyaboutblank/max1; profileabsent; no browseryet. Commitcase thenONErun, preserveallliteraloutcomes.
+
+## One actual blank diagnostic: literal refusal with owned PID confirmed
+
+Sourcef0917b6/case439f645; job3891 terminalexit1, **DIAGNOSTIC_REFUSED_NO_APP**.
+Chrome153.0.8010.12/exact8c599d43 binary, CDP PID2930867 equals current driver's
+only direct child, same start identity12703612 and before/after executable. Only
+about:blank; no app/server/extension/helper/IDE operation. Recorded process summary
+has profileOptions[] and headlessfalse; admission refuses PROFILE_MISMATCH and
+HEADLESS_MISSING. This means those flags were not recognized by that reader;
+**actual profile use/headed mode remain Unknown**, not asserted absent/unsafe.
+Session/context close true; the exact recorded PID is subsequently Absent/ENOENT.
+Owned profile has LocalState/Default Preferences files, which alone do not attest
+command-line identity. No reported PID was killed or other browser scanned.
+
+Raw resultSHA4a1d447fad7b347049370a42806bd6ea00d470763c4cebbefda6fa027e6f02d7;
+facts-before-admissionSHA85cffdc2ac94d36c3bd45aad3e5a04e20d5a0e0e0d21f69a0ce3615c08021ef3.
+Independent verifier (no collector/driver imports) checks370physical frozeninputs,
+exact raw-before-admit/registration/priorraw2 and12isolated negatives. Output in
+`.artifacts/a02/owned-process-diagnostic-saved-verification/2026-10-24`.
+
+Source limitation found after the attempt: one file read can return a prefix.
+Missing-export RED→bounded EOF reader GREEN29; real temporary-file short reads
+retain a later forbidden flag and oversized input refuses. Full **3180PASS/0FAIL/
+0cancelled/0SKIP**,97.43s terminal19866. Future metadata includes byte/digest/arg
+counts and incomplete vectors refuse. The historical raw has no counts and used
+single-read code; do not reinterpret it as a complete argv measurement. No native
+repeat or retroactive process-flag/profile acceptance. Both A02.6 raw failures and
+source remain unchanged. Next prerequisite is original launch argument provenance,
+not another blind app case, a whitespace split or criteria relaxation.
+
+Possible representation limitation, not a confirmed cause of this run: current
+[Chromium SetProcessTitleFromCommandLine source](https://chromium.googlesource.com/chromium/src/base/+/main/process/set_process_title.cc)
+constructs a process title from argument text; [Linux implementation](https://chromium.googlesource.com/chromium/src/+/HEAD/base/process/set_process_title_linux.cc)
+replaces argument memory. The main/HEAD sources are not mapped to this exact binary
+and the current raw omitted argument-count/representation bytes. They justify
+checking a separate original-invocation witness; they do not establish the cause,
+recover old argv boundaries or authorize parsing a title as a true argument vector.

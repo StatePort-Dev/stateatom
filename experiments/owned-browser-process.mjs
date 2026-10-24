@@ -3,6 +3,7 @@
 import fs from 'node:fs/promises';import{createHash}from'node:crypto';
 const validPid=p=>Number.isSafeInteger(p)&&p>0&&p<=2147483647;
 const detail=e=>typeof e?.code==='string'?e.code:'READ_FAILED';
+export async function readOwnedProcessArgumentBytes(handle){const bytes=Buffer.alloc(65537);let total=0;for(;;){const{bytesRead}=await handle.read(bytes,total,bytes.length-total,total);if(!Number.isSafeInteger(bytesRead)||bytesRead<0||bytesRead>bytes.length-total)throw Error('Invalid argument read count');if(bytesRead===0)return bytes.subarray(0,total);total+=bytesRead;if(total>65536)throw Error('Argument bytes exceed diagnostic capacity');}}
 export function summarizeOwnedProcessArguments(args){
  const profileOptions=[],forbiddenFlags=[];let headless=false;
  for(let i=0;i<args.length;i++){const a=args[i];if(a.startsWith('--user-data-dir='))profileOptions.push({syntax:'equals',value:a.slice('--user-data-dir='.length)});else if(a==='--user-data-dir')profileOptions.push({syntax:'separate',value:args[i+1]??null});if(a.startsWith('--headless'))headless=true;const match=/no-sandbox|ignore-certificate-errors|disable-web-security|load-extension/.exec(a);if(match&&!forbiddenFlags.includes(match[0]))forbiddenFlags.push(match[0]);}
@@ -10,12 +11,12 @@ export function summarizeOwnedProcessArguments(args){
 }
 function startTime(stat,pid){const end=stat.lastIndexOf(')'),prefix=stat.slice(0,stat.indexOf(' '));if(prefix!==String(pid)||end<0)throw Error('Invalid proc stat');const fields=stat.slice(end+2).trim().split(/\s+/),value=fields[19];if(!/^\d+$/.test(value||''))throw Error('Invalid proc start time');return value;}
 async function readProcess(pid){
- const base='/proc/'+pid,f={pid,startTime:null,startTimeStable:false,procExe:null,sha256:null,profileOptions:[],headless:false,forbiddenFlags:[],errors:[]};let before,after,exeAfter;
+ const base='/proc/'+pid,f={pid,startTime:null,startTimeStable:false,procExe:null,sha256:null,argumentBytes:null,argumentDigest:null,argumentCount:null,profileOptions:[],headless:false,forbiddenFlags:[],errors:[]};let before,after,exeAfter;
  const attempt=async(code,fn)=>{try{return await fn();}catch(e){f.errors.push({code,detail:detail(e)});return null;}};
  before=await attempt('PROC_START_ERROR',async()=>startTime(await fs.readFile(base+'/stat','utf8'),pid));f.startTime=before;
  f.procExe=await attempt('PROC_EXE_ERROR',()=>fs.realpath(base+'/exe'));
  f.sha256=await attempt('PROC_BINARY_ERROR',async()=>createHash('sha256').update(await fs.readFile(base+'/exe')).digest('hex'));
- const args=await attempt('PROC_ARGUMENTS_ERROR',async()=>{const handle=await fs.open(base+'/cmdline','r');try{const data=Buffer.alloc(65537),{bytesRead}=await handle.read(data,0,data.length,0);if(bytesRead>65536)throw Error('Argument bytes exceed diagnostic capacity');return data.subarray(0,bytesRead).toString('utf8').split('\0').filter(Boolean);}finally{await handle.close();}});
+ const args=await attempt('PROC_ARGUMENTS_ERROR',async()=>{const handle=await fs.open(base+'/cmdline','r');try{const data=await readOwnedProcessArgumentBytes(handle);f.argumentBytes=data.length;f.argumentDigest=createHash('sha256').update(data).digest('hex');if(!data.length||data.at(-1)!==0)throw Error('Incomplete argument vector');const args=data.toString('utf8').split('\0').filter(Boolean);f.argumentCount=args.length;return args;}finally{await handle.close();}});
  if(args)Object.assign(f,summarizeOwnedProcessArguments(args));
  exeAfter=await attempt('PROC_EXE_RECHECK_ERROR',()=>fs.realpath(base+'/exe'));
  after=await attempt('PROC_START_RECHECK_ERROR',async()=>startTime(await fs.readFile(base+'/stat','utf8'),pid));

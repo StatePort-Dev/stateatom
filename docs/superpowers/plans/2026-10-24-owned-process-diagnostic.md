@@ -30,8 +30,8 @@
 
 - [x] TDD missing module RED; real owned Node child proc IO plus exact/foreign profile/exe/hash, missing/ambiguous PID/read errors, forbidden flags, separate-token syntax, child/CDP mismatch and finite private-data controls. Implement collector/pure admission without changing old files. Run `node --test --test-isolation=none tests/engine/owned-browser-process.test.mjs` -> PASS.
 - [x] TDD finite driver/CLI/refusal persistence/cleanup/hash controls RED→GREEN. Implement clean frozen preparation/strict preflight/exclusive run/save-before-admit/all cleanup with no server/app launch. Affected tests and `npm test` -> PASS, original product/old source/raw hashes unchanged; local source commit.
-- [ ] Resource-free prepare/inspect/commit exact case; at most ONE run/poll same handle. Preserve literal refusal/partial. Independent saved input/process/result/cleanup checks and isolated negative controls; no app credit.
-- [ ] Relevant final aggregate/local commit/task-done; literal diagnostic only, no app/product credit.
+- [x] Resource-free prepare/inspect/commit exact case; at most ONE run/poll same handle. Preserve literal refusal/partial. Independent saved input/process/result/cleanup checks and isolated negative controls; no app credit.
+- [x] Relevant final aggregate/local commit/task-done; literal diagnostic only, no app/product credit.
 
 ## Final closeout
 
