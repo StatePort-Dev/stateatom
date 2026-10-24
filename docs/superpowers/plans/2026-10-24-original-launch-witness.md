@@ -29,8 +29,8 @@
 **Files:** new experiments/browser-launch-witness.mjs, tests/engine/browser-launch-witness.test.mjs; completion149/current metadata.
 **Interfaces:** captureBrowserLaunchWitness(child,policy) -> inert {pid,executable,profile,argumentCount,vectorDigest,commandLineDigest,flags,errors}; captureChromeVersionMetadata(page,{timeoutMs=5000}) -> {url,executableDigest,profileDigest,commandLineDigest,commandLineLength,errors}; Task2 adds document:{before:{frameId,loaderId,targetId},after:same-shape,mainOnly}, managedProfile:{realPath,isDirectory,isSymbolicLink}; admitBrowserLaunchWitness(witness,proc,metadata,policy) -> scoped DTO status/failures/nativeRuntimeProvenfalse/appExecutedfalse. policy exact executable/hash/profileRoot/profilePrefix/metadataURL. No launch on import.
 
-- [ ] TDD missing-module RED; original/offline descriptor snapshot/getter avoidance/copy privacy, managed-profile/flag boundaries, pure PID/start/exe/hash/metadata/document guards. Implement helper without modifying old modules. Run `node --test --test-isolation=none tests/engine/browser-launch-witness.test.mjs` -> PASS.
-- [ ] Real owned Node child process.title rewrite vs preserved spawnargs; synthetic UI hashes/source-only label. Unresolved/late metadata controls and exact EOF/private-data boundaries. Focused/full npm test -> PASS; retained source/raw integrity/local source commit/task-done. No Chrome credit.
+- [x] TDD missing-module RED; original/offline descriptor snapshot/getter avoidance/copy privacy, managed-profile/flag boundaries, pure PID/start/exe/hash/metadata/document guards. Implement helper without modifying old modules. Run `node --test --test-isolation=none tests/engine/browser-launch-witness.test.mjs` -> PASS.
+- [x] Real owned Node child process.title rewrite vs preserved spawnargs; synthetic UI hashes/source-only label. Unresolved/late metadata controls and exact EOF/private-data boundaries. Focused/full npm test -> PASS; retained source/raw integrity/local source commit/task-done. No Chrome credit.
 
 ### Task 2: One frozen public BrowserServer metadata diagnostic
 

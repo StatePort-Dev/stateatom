@@ -23,3 +23,14 @@ product/SDK/otherrepo/UI/ext/helper/IDE/trust/account/publication changes.20/29 
 
 A02.7M1 current status is reconciled at this new-work handoff; the prior paragraph
 and checkpoint are kept as historical records. New active pointer is planning only.
+
+Task1 source checkpoint: helper missing-module RED(onefile/noexecutedtests)→46PASS.
+Real owned Node process.title rewrite produces one proc title element/no parsed
+profile/headless, while parent's original ChildProcess vector stays intact. Old
+proc classifier remainsRefused; syntheticUI qualification explicitly nativeRuntime
+Provenfalse/appExecutedfalse. This is not Chrome/UI/runtime acquisition proof.
+Descriptor getters not invoked; copied/frozen private snapshots, exact managed
+profile/flags, PID/start/exe/hash/document/digest negatives and late metadata
+controls pass. Fresh npm test3230PASS/0FAIL/0cancelled/0SKIP99.32s terminal55037.
+Product327/old9/A026source8/A027source4/raw3 unchanged. NeedTask1commit/taskdone,
+thenTask2native driver/case; newChrome0.

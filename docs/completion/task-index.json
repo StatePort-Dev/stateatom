@@ -1665,7 +1665,7 @@
       "execution_record": "149-original-launch-witness.md",
       "active_slice": {
         "id": "A02.8",
-        "status": "planning-original-launch-witness-feasibility",
+        "status": "task1-source-helper-complete-native-driver-not-implemented",
         "record": "149-original-launch-witness.md",
         "base": "6f696c7",
         "product_changed": false,
@@ -1673,7 +1673,14 @@
         "native_attempts": 0,
         "maximum_native_runs": 1,
         "full_A02": false,
-        "source_implementation_started": false
+        "source_implementation_started": true,
+        "source_focused": 46,
+        "full_source_controls": 3230,
+        "full_source_failures": 0,
+        "full_source_cancelled": 0,
+        "product_inputs_unchanged": 327,
+        "old_inputs_unchanged": 9,
+        "prior_research_source_unchanged": 12
       },
       "completed_slices": [
         {
@@ -2063,8 +2070,8 @@
       },
       "current_checkpoint": {
         "record": "149-original-launch-witness.md",
-        "status": "planning-original-launch-witness-feasibility",
-        "next_bounded_step": "TDD public owner ChildProcess invocation snapshot and independent metadata guards, no title-to-argv reconstruction. Source/full/clean/frozen before max1 new metadata-only case. All three earlier cases exhausted; no app/trust/IDE change."
+        "status": "task1-source-helper-complete-native-driver-not-implemented",
+        "next_bounded_step": "Task2 finite public BrowserServer metadata driver; source/full/clean/frozen gate before max1 new metadata case. New helper is source-only, no actual Chrome witness yet."
       },
       "stopping_point_history": [
         {

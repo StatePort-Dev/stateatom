@@ -1,7 +1,8 @@
 # Project status
 
 Active bounded work: [A02.8](completion/149-original-launch-witness.md), public
-owner-process original invocation witness feasibility. Planning only; at most one
+owner-process original invocation witness feasibility. Helper46focused/full3230PASS;
+finite native driver not implemented yet. At most one
 new metadata-only case after source/full/frozen gates. All earlier cases exhausted.
 A02.7 closes at6f696c7 with33focused/full3184PASS, ONE review0C/2I/1M; bothImportant
 fixed once. Its actual blank Chrome result remains Refused, invocation/profile/
