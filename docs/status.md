@@ -2224,3 +2224,13 @@ and checkpoint retained with363unchanged registered inputs/1declared harness cha
 no native repeat. Whole20/29/fullV02/V03/C09/A02/L02 unchanged. NextV02.15 selects and
 registers the original Basic/observer latency-overhead gate on72 without threshold
 changes/waivers or an IDE/certificate/user-profile/broad-matrix campaign.
+
+
+[V02.15](completion/134-v02-current-basic-observer.md) registers original Basic/
+observer gate on unchanged72:198rows/66windows, Basicp95≤1000ms and active/off≤10%
+remain original. Full2697/focused35/newactualharness13 sourcePASS. Fixed404inputs/
+327product/223helper/archive/install unchanged. Exact retained syntheticTLS and
+singleCA database are copied only to fresh ownprofiles, no certificateGUI/newcert/
+user/systemtrust campaign. Native gate and ONE review still due; preparation/source
+checks do not establish currenttarget acceptance. V02.14 and historical misses remain
+recorded, whole20/29/fullV02 unchanged.
