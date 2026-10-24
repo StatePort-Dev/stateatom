@@ -1,6 +1,7 @@
 # V03.15 — remaining combined installed guide source connection
 
-2026-10-24/mainf346e0e/scope-review-1. In progress; native/review due.
+2026-10-24/mainf346e0e/scope-review-1. Bounded engineering complete after ONE review;
+seven positive native gates, strict overall console FAIL retained.
 [Design](../superpowers/specs/2026-10-24-v03-guide-source-connection-design.md),
 [plan](../superpowers/plans/2026-10-24-v03-guide-source-connection.md),
 [fixed case](../testing/guide-source-connection-case.json).
@@ -9,7 +10,10 @@ complete, L02mandatoryopen, independenthuman nonblocker. Document/harness prepar
 is not runtime support. Prior installation/entry/reader/report successes and all
 failures retain exact identities/criteria and are not restarted.
 
-One gap: actual public new live helper receipt → browser Connect receipt → exact
+## Historical preregistration and source checkpoint
+
+The following describes preparation BEFORE actual native execution; the actual and
+final sections below govern current state. One gap: actual public new live helper receipt → browser Connect receipt → exact
 selected source and Open in IDE. Prior React-commerce workspace is React19/automatic
 JSX; installed plugin6 default admits React18/classic, so no unsupported forced
 recipe/app rewrite. Choose alreadyqualified original Vue3.3.4/Vite4.4.9/Node18.18.2,
@@ -92,8 +96,55 @@ editor visibility or visual selection. Actual range evidence is installed callba
 plus editor DOM and exact native clipboard fragment; image remains private agent
 candidate, no human/usability/fidelity approval or fresh screenshot rerun.
 
-ONE finalfreshreadonlyreview due. Next candidate boundedV03.16: reconcile remaining
+ONE finalfreshreadonlyreview completed with one correction pass (below). Next boundedV03.16: reconcile remaining
 independent application's Live and Draft/Apply/Undo guide operation from existing
 U02/guide proofs, then register only the missing eligible input case. No new timing/
 production-grant/handoff policy is approved, no default IDE/certificate/oldreport/
 source campaign repetition. FullV03/V02/A02/L02/C09 andwhole20/29 remain open.
+
+
+## ONE final review and single secret-failure correction
+
+Fresh /root/v0315_whole_review (gpt-6-astra/high),f346e0e..6dccdab:
+0Critical/1Important/2Minor. Reviewer24sourcecontrols/plain saved17negative aggregate/
+diffcheck PASS after readonlyGitEPERM escalation; additional artifact/log/Chrome-log
+scan found no actualtoken outsideprivate receipt. No native/build/fullsuite rerun.
+[Saved report](../../.artifacts/v03/guide-source-connection/2026-10-24/review/report.md)
+records all14declinedboundaries and executor rulings/costs.
+
+I1: ordinary native input readback or secret-clear assert could include raw receipt
+in error.message, then failed()/console persisted/printed it. Actual importedfill+
+substitutedDOM/CDP+actualdriverreporter synthetic sentinel controls reproduce four
+leaks:RED15PASS4FAIL. Correction46980e1 wraps fill/connect/wait/clear in a secret-free
+stage/code boundary with no original message/cause, reads only a boolean when
+checking clearing. Five new controls include successful nonleaking path. Initial
+GREEN exposed fakeDOM returningstrings for the new boolean expression; stub now
+executes that actual expression on fakeDOM. GREENfocused39/new29/full2772PASS,
+0FAIL0SKIP (full9567terminal0), syntax/diffcheckPASS. No actualtoken printed in tests.
+These source controls do not establish native fault recovery or a new native run.
+
+M1 deferred: a Vite log-write refusal skips its descriptor close because write/close
+share one try; Code log close still runs. Descriptor normally closes at process exit,
+no lastingnativeleak demonstrated. Keep this explicit; no extra sourcefix beyond I1.
+M2 historical preparation/current-native wording clarified during required final
+metadata synchronization; original pre-run evidence remains historical.
+
+Actualnative remains2a3a224/overallFAIL, successful source join unchanged. Original
+verifier/checkpoint/result/driver retained; separately named after-review verifier
+permits only exactdriver+existingharnesstest changes with before/aftercopies:438of440
+registeredinputs unchanged,327product/223helper unchanged. All17negativecontrols/
+rawjoins/source/payload/secretmode/cleanup still reconcile. No rereview/native rerun.
+
+All14declinedrulings accepted: reusedinstallation notfresh/cleanOS; Vue notReact19;
+settings/preload/overlayassistance notunaidedUI; onecontextnototherplatforms; callback/
+DOM/clipboardnotadditionaleditorAPIwitness; Chromeimage notIDEvisual/humanproof;
+attachedconsoleintervals notallworkers/lifetime; Copilot/VueFAIL unwaived; sourcecontrols
+notnativefaults; selectedfragment notparent/default/consumer/C09; oldcampaignscredited
+notrequalified; externalcertificate/account/systemtrust/userprofile/release/SDKscope
+excluded; nextLiveDraft/timing/grant/handoffchoices unapprovedhere; fullV03/V02/A02/
+L02/C09 and20of29 remainopen/unchanged. Costs are those missing acceptance claims.
+
+Final saved aggregate/task-done verifies routing/dependencies, immutable prereg/approved
+scope, exactdeclaredsource deltas, originalnativeFAIL/previousV02misses and source/
+review receipts. Localcommits only. ONE next item V03.16 remaining independent guide
+Live/Draft/Apply/Undo case, no default IDE/certificate/source/report campaign repeat.
