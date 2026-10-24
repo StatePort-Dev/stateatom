@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 import test from 'node:test';import assert from 'node:assert/strict';import{readFile}from'node:fs/promises';import{EventEmitter}from'node:events';
 const AsyncFunction=Object.getPrototypeOf(async function(){}).constructor,source=await readFile('scripts/native-browser.mjs','utf8'),body=source.slice(source.indexOf('export async function startNativeBrowser'),source.indexOf('export async function nativeChooseTab')).replace('export async function','return async function');
-async function launched(){
+async function launched(guardianTargets=[]){
  const attached=[],worker={targetId:'owned-worker',type:'service_worker',url:'chrome-extension://owned/worker.js'};let closed=0;
  class Socket{addEventListener(type,fn){if(type==='open')queueMicrotask(fn);}close(){}}
- class CDP{constructor(socket){this.socket=socket;}async send(method){if(method==='Browser.getVersion')return{product:'Chrome/test'};if(method==='Target.getTargets')return{targetInfos:[{targetId:'app',type:'page',url:'http://127.0.0.1/'},worker]};return{};}async session(id){attached.push(id);return{detach:async()=>{}};}}
+ class CDP{constructor(socket){this.socket=socket;}async send(method){if(method==='Browser.getVersion')return{product:'Chrome/test'};if(method==='Target.getTargets')return{targetInfos:[{targetId:'app',type:'page',url:'http://127.0.0.1/'},worker,...guardianTargets]};return{};}async session(id){attached.push(id);return{detach:async()=>{}};}}
  const bindings={spawn(){const c=new EventEmitter();Object.assign(c,{pid:42,exitCode:null,signalCode:null,kill(){this.exitCode=0;return true;}});queueMicrotask(()=>c.emit('spawn'));return c;},mkdir:async()=>{},chromium:{executablePath:()=>'/own/chrome'},existsSync:()=>false,root:'/repo',readdir:async()=>[],path:{resolve:(...p)=>p.join('/')},process:{env:{}},open:async()=>({fd:5,async close(){closed++;}}),waitFor:async fn=>{const value=await fn();assert(value);return value;},readFile:async p=>p.endsWith('manifest.json')?JSON.stringify({background:{service_worker:'worker.js'}}):'1234\n/own-browser',WebSocket:Socket,NativeCDP:CDP};
  const start=await new AsyncFunction(...Object.keys(bindings),body)(...Object.values(bindings)),browser=await start('/own/runtime','case',true,false,[],{extensionPath:'/own/extension'});
  return {browser,worker,attached,closed:()=>closed};
@@ -24,4 +24,13 @@ test('public worker metadata cannot redirect the session to another target',asyn
  await browser.extensionWorkerSession();
  assert.deepEqual(attached,['owned-worker','owned-worker']);
  await browser.context.close();
+});
+
+test('guardian accessor chooses only the single owned fixed document and cannot accept another target argument',async()=>{
+ const target={targetId:'guardian',type:'other',url:'chrome-extension://owned/atom-guardian.html'},foreign={targetId:'foreign',type:'other',url:'chrome-extension://other/atom-guardian.html'},wrongPath={targetId:'other-page',type:'page',url:'chrome-extension://owned/panel.html'};
+ const {browser,attached}=await launched([foreign,wrongPath,target]);
+ const session=await browser.extensionGuardianSession('app');assert.deepEqual(session.target,{targetId:'guardian',type:'other',url:'chrome-extension://owned/atom-guardian.html'});assert.notEqual(session.target,target);session.target.targetId='app';await browser.extensionGuardianSession('app');assert.deepEqual(attached,['guardian','guardian']);await browser.context.close();
+});
+test('guardian accessor refuses absent and ambiguous owned documents without attaching elsewhere',async()=>{
+ for(const targets of [[],[{targetId:'a',type:'other',url:'chrome-extension://owned/atom-guardian.html'},{targetId:'b',type:'other',url:'chrome-extension://owned/atom-guardian.html'}]]){const {browser,attached}=await launched(targets);await assert.rejects(()=>browser.extensionGuardianSession());assert.deepEqual(attached,[]);await browser.context.close();}
 });

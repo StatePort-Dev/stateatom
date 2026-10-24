@@ -1,0 +1,136 @@
+{
+  "handoffs": {
+    "C": ".artifacts/atom/2026-10-24T01-26-15-352Z/atom-handoff.json"
+  },
+  "browser": {
+    "version": "Chrome/153.0.8010.12",
+    "executableSha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e"
+  },
+  "schema": "stateatom.input-guardian-registry-phases-case/1",
+  "base": "532f4dc4b19fa12685e9c1b9ac8fbc98c9ba06d9",
+  "inputHashes": {
+    "tests/helpers/worker-api-phase-probe.mjs": "685264289382992dd18e6ea4f862dcbaca346a941e813b41527e1d05092febdd",
+    "tests/helpers/worker-api-phase-summary.mjs": "a45ec40f17f0267f479c040f8cbdab88c3bc5d344ae4f17c43062cbcc2081808",
+    "tests/atom/worker-api-phase-probe.test.mjs": "a37edd604536fcf4ab3ed9ebbf303784f8de27ba57ac8423c785861db05211f0",
+    "tests/atom/worker-api-phase-summary.test.mjs": "350445e56abbb49e9c4ebe0686862ede082d08fa7bcef560aecfd1b4cf46fe8a",
+    "tests/atom/native-worker-session.test.mjs": "79a982830f3f3b844e80e19205ec6ceb07067f1b029b53dd263eec5ff0b9b2f5",
+    "tests/atom/native-harness-failure.test.mjs": "9f8159443789a4fa2fd281b089824c881f713af34216170644ce3a5222b67204",
+    "tests/helpers/inspector-rpc-phase-probe.mjs": "dc8832e63861a912744adbb1dcc51750c2048c82fa5cc68c4a609755196c2cdd",
+    "tests/atom/inspector-rpc-phase-probe.test.mjs": "6b957bad6c2e3f7bea8c51f8a7988b5bd454f9cd234ed7caeda8c98296e5247e",
+    "tests/helpers/input-mode-performance.mjs": "7edfdd39dc0675b74e1d7926a1e99ddd44d1a254078f51897e4d47dc21e0dff9",
+    "tests/atom/input-mode-performance.test.mjs": "ae7118fb33cf15d66778ae41fa2352352fc458571ab1fad9224159871f51d30d",
+    "tests/helpers/native-inspector-ui.mjs": "2a82f3a643bbbacd9a6f8ed7e798f77b1416f110f1828ac23fd97b24bc8109b9",
+    "tests/helpers/source-access-native-desktop.mjs": "786011664d68f658bd1d5e7c002963642a50a16661d7f67b2413ac8aef182f57",
+    "scripts/native-browser.mjs": "449328d4858f058e0b75a4f82b56cee724c0b185f834d6e747890f513ed4747b",
+    "scripts/harness.mjs": "3796e76b60f450b46cde335521efb9fd1dcf3aa1305501f30c2af61627f2d7ec",
+    "scripts/atom-package-receipt.mjs": "f54a3c72c65b5f032a2936b0a216b2516016fa8c356388bf33dfc9397a0b4d7c",
+    "tests/fixtures/native-controls/index.html": "6ef8450b4060e9708047aea43f4529668ffd9fdb6caf3ee37a526d56d4e8f8be",
+    "package.json": "9e17e86330ce8f604d9a081da7ab650453ec79cfcb660467f342822cf480aa8b",
+    "package-lock.json": "f954745163c31e68db231dd9b8f4447aeb7698787888c00ea9628cc982c761c7",
+    ".artifacts/atom/2026-10-24T01-26-15-352Z/atom-handoff.json": "394d13dbcb264a4dcc1f08b61c4814add8a54e3ba4c7070ef3072af67378b645",
+    "tests/integration/input-guardian-registry-phases-native.mjs": "c6b89c7a1aa2d0c4feb65f247411fef42efbec0e76df2325f1b4f4d309cd9863",
+    "tests/helpers/guardian-registry-phase-probe.mjs": "9f1e2ba72d37db795a3b59734189bc170d4fd2abe644d9f2e8d2929a8fca7dfe",
+    "tests/helpers/guardian-registry-phase-summary.mjs": "24551d53963ffcc4a66a5dd6a241870c331cade2e46c7c9c67d2bfd2c1c7d3c3",
+    "tests/atom/guardian-registry-phase-probe.test.mjs": "eb658223b62df7a1a4115c694053dc9e828d164df61f8aca2d18c0cff0e66b05",
+    "tests/atom/guardian-registry-phase-summary.test.mjs": "25e53ed76cddc3bd90ed1d0dc28a6c0b78d99b71c487b76531a71530cb459f28",
+    "docs/superpowers/specs/2026-10-24-v02-guardian-registry-phases-design.md": "0967e13675edd9f5b3529c3596866227d4b8f0ad35ba87e90aecce78a90b8be7",
+    "docs/superpowers/plans/2026-10-24-v02-guardian-registry-phases.md": "de1cef807a771e99f2bbb05edf37b83bf13ec9e6d0f297afd951b7ed9359a5ba",
+    ".artifacts/v02/guardian-registry-phases/2026-10-24/startup-controls.test.mjs": "9fcdfef44e55570a06d10c289c1a47d2cbb8703bd5b9e2734141e4341f9a22df",
+    ".artifacts/v02/guardian-registry-phases/2026-10-24/serialized-probe.test.mjs": "bb286229f132f2568e077d4cf4e22cfcf4086542a81b9756dcd35694dc8cba09",
+    ".artifacts/v02/guardian-registry-phases/2026-10-24/trace-retention.test.mjs": "924c4740adae24abbfe6eb5671a701c1dd1049e0e22a62c7095cc3d04b5786ef"
+  },
+  "protocol": {
+    "cases": [
+      {
+        "host": "standalone",
+        "condition": "C",
+        "caseIndex": 0
+      },
+      {
+        "host": "embedding",
+        "condition": "C",
+        "caseIndex": 1
+      }
+    ],
+    "blocksPerCase": 3,
+    "warmupBlocks": 1,
+    "totalRows": 12,
+    "warmupRows": 4,
+    "measuredRows": 8,
+    "order": "block0 live/draft; block1 draft/live; block2 live/draft",
+    "phaseCap": 32,
+    "phaseOperations": [
+      "inputs-apply",
+      "state",
+      "capabilities"
+    ],
+    "workerAPICap": 16384,
+    "workerAPIs": [
+      "debugger.sendCommand",
+      "tabs.get",
+      "permissions.contains",
+      "scripting.executeScript",
+      "storage.session.get",
+      "storage.session.set",
+      "storage.local.get",
+      "storage.local.set",
+      "runtime.sendMessage"
+    ],
+    "nativeMethodWhitelist": [
+      "DOM.enable",
+      "DOM.getDocument",
+      "DOM.querySelector",
+      "DOM.describeNode",
+      "DOM.pushNodesByBackendIdsToFrontend",
+      "DOM.resolveNode",
+      "DOM.requestNode",
+      "Runtime.callFunctionOn",
+      "Runtime.releaseObjectGroup",
+      "Debugger.getScriptSource"
+    ],
+    "workerAPIOutcomes": "Boolean true/false settled outcomes retained and counted, null/unsupported/pending/overflow invalidate; outer Apply/ack must succeed",
+    "applyCountPerGesture": 1,
+    "defaultLiveDebounceMs": 250,
+    "performanceAcceptance": false,
+    "targetsWaived": false,
+    "workerAPIMaxLimitOptIn": 16384,
+    "rawWorkerSnapshotBeforeValidation": true,
+    "registryCap": 16384,
+    "registryOps": [
+      "connect",
+      "acquire",
+      "verify",
+      "begin",
+      "finish",
+      "release",
+      "disconnect",
+      "claimCleanup",
+      "finishCleanup",
+      "retryCleanup",
+      "status",
+      "snapshot"
+    ],
+    "rawRegistrySnapshotBeforeValidation": true
+  },
+  "clock": {
+    "translation": "own worker/offscreen timeOrigin - inspector.timeOrigin, same-UA W3C high-resolution time",
+    "source": "https://w3c.github.io/hr-time/#examples",
+    "precision": "COARSENED_UNKNOWN_BROWSER_PRECISION",
+    "aggregation": "API, registry and combined clipped interval unions inside Apply; never add overlapping totals",
+    "causality": "UNKNOWN_CONCURRENT_STATE_AND_HEALTH_INCLUDED"
+  },
+  "setupAssistance": [
+    "CLI extension preload in fresh owned profiles; existing trusted fixture/input/inspector actor; no human clean-guide claim",
+    "Own worker existing API probe plus fixed owned guardian offscreen document CDP session; app solely Atom-owned",
+    "Wrap existing Worker.prototype.postMessage/listen existing replies in own guardian, never construct worker/send extra request",
+    "Exact loopback development permission only; no production/account/certificate/IDE/user profile action"
+  ],
+  "boundaries": [
+    "Exact71/UI2/product327/helper223/archive/installed hosts unchanged; no rebuild/old campaign repeat",
+    "Registry rows contain fixed op/ordinal/times/Boolean only; internal matchingID never serialized; no args/value/code/nonce/capability/snapshot content read",
+    "Registry interval is offscreen-to-dedicated-worker roundtrip only; Chrome Port/document/service-worker JS/queue remain unobserved",
+    "One matching registry worker, 16384cap/no pending/overflow/unsupported, state/health concurrent,3coarsenedclocks/no causal/CPU/criticalpath/speedup/SLO claim",
+    "Original2048 FAIL and separate16384V02.11 result unchanged; originaltargets/250ms/guards/whole20-of29/fullV02/V03/C09/A02/L02 unchanged",
+    "No SDK/redesign/push/release/otherrepo/app-source/Capture/model/HTTPS/certificate/IDE campaign"
+  ]
+}
