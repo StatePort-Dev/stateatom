@@ -2279,3 +2279,11 @@ new24 original PASS. ONEreview0C1I2M: receiptfailure boundary fixed46980e1, sour
 focused39/new29 PASS;438unchanged/2declaredharnessdeltas/no nativererun. Logdescriptor
 Minor deferred; preparation wording clarified. NextV03.16remainingindependentLiveDraftguidecase,
 whole20/29/fullV03 unchanged; no certificate GUI/systemtrust.
+
+
+[V03.16](completion/138-v03-independent-input-guide.md) is in progress: one original
+independent React19 minPrice native-control guide case, no source-plugin/IDE claim.
+Live/Draft/Apply/Undo/baseline tenphases/seventransactions are preregistered, not yet
+native proof. Source23/focused60/full2795 PASS/409inputs/327product/223helper/65originals
+unchanged. CurrentUI250ms/app500ms/1100msDraft observation is not newtimingpolicy or
+V02targetpass. No IDE/certificates/oldcampaign repeat, whole20/29/fullV03 unchanged.
