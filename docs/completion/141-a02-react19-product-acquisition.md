@@ -1,8 +1,7 @@
-# A02.4 — product React19 acquisition (in progress)
+# A02.4 — bounded product React19 acquisition complete
 
-Current: **Four native75 scenarios retained; the old 11px font failure remains literal. Scoped76 font correction/source checks/packages are ready; remaining native UI/report/stop and final review are pending.**
-Scope-review-1; main0328993 baseline. No installed React19 support, full A02,
-V03 or new whole-task acceptance is established by this prerequisite. Still20/29.
+Current: **Bounded A02.4 complete after ONE fresh review:0Critical/0Important/1 reporting Minor reconciled.** Exact76/plugin7 development route and composed ten criteria verified; all three historical partial failures remain literal. General React19 support, installed VSIX/Store/IDE trust, full A02/V03 and new whole-task acceptance are not established. Still20/29.
+Scope-review-1; main0328993 baseline.
 [Design](../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md),
 [plan](../superpowers/plans/2026-10-24-a02-react19-product-acquisition.md).
 
@@ -405,3 +404,40 @@ Task3 implementation/evidence is ready for **ONE fresh whole-item review** befor
 bounded A02.4 completion. Full A02/ownership/selected-property producer, full V03,
 installed IDE/Store, general React19 builds, human usability and public release
 are not established by this evidence.20/29 whole items unchanged.
+
+## Final review and closeout
+
+ONE fresh astra/high read-only review at4d56b05 accepts bounded A02.4:
+**0Critical/0Important/1Minor**. Fresh reviewer controls60PASS, range diffcheck,
+6 artifact hashes/3232 registered inputs/17links and retained evidence match.
+No native rerun, no implementation correction pass, no rereview. M1 is current
+reporting drift: header/index now identify the actual report/Stop pass and reviewed
+completion; all chronological partials remain intact. Review report:
+`.artifacts/a02/react19-product-review/2026-10-24/report.md`.
+
+Executor rulings on the review's seven declined boundaries (with cost):
+
+1. Ownership/state-to-prop/selected producer remain Unknown; ancestor co-location
+   cannot supply these edges. Cost: full A02 remains open.
+2. Exact pinned development profile, single root and finite capacities remain the
+   advertised boundary. Cost: other versions/production/nonHTML/multiple roots
+   have no support credit and must refuse.
+3. Primitive-state identity remains unsupported. Cost: fewer positive cases, no
+   value-equality substitute for identity.
+4. Instrumented-page evidence is not hostile-page attestation or proof under
+   global intrinsic replacement. Cost: no adversarial assurance; missing/changed
+   environment cannot be promoted into a trusted proof.
+5. Source HTTP helper and CLI preload qualify this declared product route. Cost:
+   installed VSIX/Store/IDE trust require separate real-host acceptance.
+6. Screenshots remain candidates; human/full-prototype fidelity is unverified.
+   Cost: no human study claim; independent person is still not a blocker.
+7. Retain75 semantic evidence only through exact source/payload comparison. Cost:
+   no fresh76 semantic execution claim and no rewriting old partial failures.
+
+One next work item: **V03.19 — collect actual inspector receive/edit/ack ordering
+and the visible per-row refusal message in one bounded native diagnostic.**
+V03.18 source controls prove model safety for three orders but did not collect
+the actual native order. Reuse unchanged input controller/model and actual76
+artifact; first validate a bounded inspector-only observation technique. No
+blind original guide/certificate/IDE campaign, new Live timing, guard waiver,
+automatic rebase or recovery change follows from choosing this diagnostic.

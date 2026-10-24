@@ -32,10 +32,10 @@
 IDs/ancestors/update-origin or Unknown, alwaysselectedPropertyOrigin/stateToProp/
 fieldOwnership/publicHookKind Unknown/fullPathfalse; no native refs/raw app values.
 
-- [ ] Readbrief/BASE/ledger; write tests beforemodule, observe missingmoduleRED.
-- [ ] Implement from established A02.3 mechanism without altering experiment files;
+- [x] Readbrief/BASE/ledger; write tests beforemodule, observe missingmoduleRED.
+- [x] Implement from established A02.3 mechanism without altering experiment files;
 verify all above identity/semantics/capacity cases with actual imported factory.
-- [ ] Run node --test --test-isolation=none tests/engine/react19-acquisition.test.mjs;
+- [x] Run node --test --test-isolation=none tests/engine/react19-acquisition.test.mjs;
 syntax/diffcheck and existing A02sourcecontrols as appropriate. Commit this tested
 prerequisite; mark Task1only complete, keepA02.4inprogress andnative/productroute pending.
 
@@ -69,9 +69,9 @@ preregistered UI result with unknowns/refusals/cleanup/sourceidentity.
 primitives, changelog and meaningful targetedtests/normal-hover-keyboard/narrow checks.
 - [x] Implement display/handoff with TDD if behaviorchanges. Choose actual supported
 sourceconnection/startup fromcurrentcode; freeze concrete nativeprotocol beforelaunch.
-- [ ] Runfinalfocused/fullsource/typedcontracts/localpackedadmission andmanifestchecks;
+- [x] Runfinalfocused/fullsource/typedcontracts/localpackedadmission andmanifestchecks;
 commit beforeoneactualnative; pollsamehandle/preserveFAIL, no blindcampaignrepeat.
-- [ ] Independent saved resultverifier/negativecontrols andactualrecord beforeONEfresh
+- [x] Independent saved resultverifier/negativecontrols andactualrecord beforeONEfresh
 whole-itemreview. One testedImportantCriticalpass onlyifrequired; finalaggregate/
 task-done/localcommit/clean withone nextitem. NeverupgradefullA02/V03 ontheseprerequisites.
 
@@ -158,3 +158,5 @@ All ten criteria remain covered explicitly:75 semantics via strict byte proof,
 New case max1 docs/testing/react19-report-case.json; prepared09-39-44-647Z,
 3232inputs17links/preflight only. Product payload/source changes0. Final focused80
 PASS, no full-suite rerun for harness-only change. ONE final review remains due.
+
+Final: ONE review0Critical/0Important/1reportingMinor reconciled in closeout; no implementation correction pass or rereview. Bounded A02.4 complete; full A02 open. Native6of6/current3232inputs17links/composed20negative controls, retained prior evidence and historical failures unchanged.
