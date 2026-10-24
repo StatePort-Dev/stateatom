@@ -1,4 +1,4 @@
-# V03.23 — native-control restoration availability (source complete, final review due)
+# V03.23 — native-control restoration availability (source complete)
 
 Starts4dd7c13 after A02.9 source-only historical description:50focused/full3297PASS,
 ONE review0C/1I fixed/0M, no native/app/model. A02.9 old output/status unchanged;
@@ -50,3 +50,27 @@ unchanged. A02.9 checkpoint4dd7c13 remains a historical clean checkpoint; its
 source-frozen cases are not fresh physical matches after this declared product
 change. No generic Git exception is added to the old reader or its acceptance.
 ONE fresh final whole-item review due after local commit/task-done.
+
+## Final review and next dependency
+
+ONE fresh review /root/v0323_whole_review (astra/high),4dd7c13..7fef1c0:
+0Critical/0Important/0Minor, ready source-only. Reviewer59focusedPASS; independent
+closed-after-owned, tainted-after-owned and partial-baseline retry controls PASS;
+seven sealed source hashes/current325+2 declared deltas/old9/prior20/V03raw match.
+No correction pass/rereview/deferred Minors. Report/rulings:
+`.artifacts/v03/undo-eligibility-review/2026-10-24/report.md`.
+
+Declined judgments remain: no native/installed/visual/keyboard/narrow acceptance;
+original successful-restoration guide FAIL; A02.9 frozen-current input drift stays
+explicit, no retroactive waiver; full3308 is executor evidence, not reviewer rerun.
+Final clean checkpoint and archived/hash-verified own SDD workspace are under
+`.artifacts/v03/undo-eligibility-review/2026-10-24/`.
+
+One next dependency-ready item: V03.24 qualify this correction in a new exact local
+packed candidate with a narrowly preregistered affected input UI case. Verify
+current flags and actual disabled controls after newer external metadata, retaining
+real Live effects/history/Close/cleanup and old guide FAIL. No old campaign repeat,
+no successful restore over foreign revision, no certificate/IDE/user-profile work.
+New native details/candidate/limits require their own source gates/preregistration;
+they are not claimed already approved by the user. No SDK/publication/otherrepo.
+FullV03/A02/L02/V02 and whole20/29 unchanged.
