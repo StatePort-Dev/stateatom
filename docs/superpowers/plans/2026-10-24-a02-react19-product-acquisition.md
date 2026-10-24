@@ -49,11 +49,11 @@ refs to the single product collector; observer supplies independent
 nativeStateAncestors snapshot to exact actual selected node. Existing schema/status/
 commit producer semantics remain unchanged; inactive/missing/unsupported staysUnknown.
 
-- [ ] WriteRED admission/transformsemantic/initorder tests before implementation;
+- [x] WriteRED admission/transformsemantic/initorder tests before implementation;
 assert old React18default andfirst-read still useexactoldcontracts.
-- [ ] Wire collector into observer lifecycle and selected-node reads without
+- [x] Wire collector into observer lifecycle and selected-node reads without
 marker/producer borrowing; testwrongnodes/sourceUnknown/stale/stop/budgets.
-- [ ] Finish the supported profile tuple/automaticJSX/runtime init route; run focused
+- [x] Finish the supported profile tuple/automaticJSX/runtime init route; run focused
 engine/browser/old affected semantic controls, commit. Productdelivery still pending.
 
 ### Task 3: Scoped product display, handoff, package and actual acceptance

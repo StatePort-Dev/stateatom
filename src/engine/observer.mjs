@@ -1,3 +1,4 @@
+import {createReact19Acquisition} from './react19-acquisition.mjs';
 import {createQueryLedger} from './query-handoff.mjs';
 import {createStateHandoffLedger} from './react-state.mjs';
 import {captureBrowserActionObservation} from './action-observer.mjs';
@@ -31,11 +32,12 @@ const telemetryOps=(()=>{
   });
 })();
 // Dev-only synchronous observations; no application object serialization or extra body reads.
-export function createObserver(w,{sourceConsumption=false,fetchInitiators=false,reactStateHandoffs=false,sourceWrites=false,queryHandoffs=false,queryCallCensus=false,writeAccessGuards=false,actionTrace=false}={}) {
+export function createObserver(w,{sourceConsumption=false,fetchInitiators=false,reactStateHandoffs=false,sourceWrites=false,queryHandoffs=false,queryCallCensus=false,writeAccessGuards=false,actionTrace=false,react19StateAncestors=false}={}) {
   const retained=lookupObserver(w);
   if(retained?.phase==='publishing')throw new Error('StateAtom observer initialization in progress');
   const existing=retained?.api;
-  if(existing?.active){if(existing.sourceConsumption!==sourceConsumption||existing.fetchInitiators!==fetchInitiators||existing.reactStateHandoffs!==reactStateHandoffs||existing.sourceWrites!==sourceWrites||existing.queryHandoffs!==queryHandoffs||existing.queryCallCensus!==queryCallCensus||existing.writeAccessGuards!==writeAccessGuards||existing.actionTrace!==actionTrace)throw new Error('StateAtom observation mode mismatch; reload the page before switching modes');return existing;}
+  if(existing?.active){if(existing.sourceConsumption!==sourceConsumption||existing.fetchInitiators!==fetchInitiators||existing.reactStateHandoffs!==reactStateHandoffs||existing.sourceWrites!==sourceWrites||existing.queryHandoffs!==queryHandoffs||existing.queryCallCensus!==queryCallCensus||existing.writeAccessGuards!==writeAccessGuards||existing.actionTrace!==actionTrace||existing.nativeStateAcquisition!==react19StateAncestors)throw new Error('StateAtom observation mode mismatch; reload the page before switching modes');return existing;}
+  if(react19StateAncestors&&(reactStateHandoffs||fetchInitiators||sourceWrites||queryHandoffs||queryCallCensus||writeAccessGuards||actionTrace))throw new Error('React19 acquisition does not admit mixed legacy observation modes');
   if(writeAccessGuards&&(!sourceWrites||!sourceConsumption))throw new Error('Write-access guards require source writes and source consumption');
   if(queryCallCensus&&!queryHandoffs)throw new Error('Native call census requires Query handoffs');
   if(queryHandoffs&&!sourceConsumption)throw new Error('Query handoffs require source consumption');
@@ -89,6 +91,9 @@ export function createObserver(w,{sourceConsumption=false,fetchInitiators=false,
   let hostProbe=null,hostPropsSerial=0,hostNodeSerial=0,hostRootSerial=0,hostAppliedSerial=0;
   const hostLimits={nodes:256,fibers:512},missingField=Symbol('missing native field');
   const field=(value,key)=>{const d=ownDescriptor(value,key);return d&&'value'in d?d.value:missingField;};
+  const react19Collector=react19StateAncestors?createReact19Acquisition({page,weakRef:NativeWeakRef}):null;
+  let react19Admitted=false,react19Configured=false;
+  function nativeStateSnapshot(element){const result=react19Collector.snapshot(react19Admitted?element:null);if(!react19Admitted)result.reason='React19 acquisition contract unavailable';return result;}
   const stateLedger=reactStateHandoffs?createStateHandoffLedger({page,field,isFiber:v=>nativeFibers.has(v),origin:v=>origins.get(v),add,weakRef:NativeWeakRef}):null;
   const queryLedger=queryHandoffs?createQueryLedger({page,origin:v=>origins.get(v),weakRef:NativeWeakRef,callCensus:queryCallCensus}):null;
   const rootKey=(meta,scope)=>scope+':'+meta.file+':'+meta.key;
@@ -230,7 +235,15 @@ export function createObserver(w,{sourceConsumption=false,fetchInitiators=false,
   }
   function actionTraceInfo(){const info=nativeCreate(null);info.schema=1;info.enabled=actionTrace;info.available=active&&!stale&&actionTrace&&!actionUnavailable&&actionFactory.available&&telemetryOps.mapSize(actionSites)>0;info.siteCount=telemetryOps.mapSize(actionSites);info.reason=!active?'Observer stopped':stale||actionUnavailable||(!actionTrace?'Action instrumentation disabled':!actionFactory.available?'Native event observation unavailable':!telemetryOps.mapSize(actionSites)?'No supported action source registered':null);info.mechanism='opt-in-original-event-synchronous-body/1';return info;}
   function actionTraceRead(){if(serializationHook()){const unavailable=nativeCreate(null);unavailable.schema=1;unavailable.status='Unknown/Unsupported';unavailable.reason='Application serialization hook unsupported';return unavailable;}return actionCollector?.snapshot()||{schema:1,status:!active?'stopped':stale?'stale':'idle',reason:actionTraceInfo().reason,records:[],runtimeFunctionObjectIdentity:'Unavailable',asyncEffects:'Unlinked',completeListenerCoverage:false,actionUndone:false};}
-  const api={version:1,get actionTrace(){return actionTrace;},actionTraceInfo,actionTraceRead,
+  const api={version:1,nativeStateAcquisition:react19StateAncestors,
+    enableReact19Probe(contract){
+      if(!active||stale||!react19Collector)return;
+      if(react19Configured){react19Admitted=false;react19Collector.stop();return;}
+      react19Configured=true;
+      const data=(o,k)=>o&&(typeof o==='object'||typeof o==='function')?ownDataValue(ownDescriptor(o,k)):undefined,versions=data(contract,'versions');
+      react19Admitted=data(contract,'status')==='Observed'&&data(contract,'adapter')==='react19-state-ancestors/1'&&data(versions,'react')==='19.2.5'&&data(versions,'react-dom')==='19.2.5';
+    },
+    react19NativeTap(...refs){if(active&&!stale&&react19Admitted)react19Collector.tap(...refs);},get actionTrace(){return actionTrace;},actionTraceInfo,actionTraceRead,
     registerActionSites(batch){
       if(!active||!actionTrace||actionUnavailable)return;
       try{if(!actionArray(batch)||batch.length>256)throw Error();let added=false;
@@ -387,7 +400,7 @@ export function createObserver(w,{sourceConsumption=false,fetchInitiators=false,
     },
     snapshot(instance,property,element){
       if(serializationHook()){const unavailable=nativeCreate(null);unavailable.schema=1;unavailable.page=page;unavailable.status='Unknown/Unsupported';unavailable.reason='Application prototype serialization hook unsupported; not invoked for inspection';unavailable.target=null;return unavailable;}
-      if(!active)return {schema:1,page,status:'Unknown/Unsupported',reason:'observer stopped; old history is not current',target:null,nodes:[],recentExchanges:[],retention:{hostNodes:hostNodes.size,reactRoots:reactRoots.size},limits};
+      if(!active)return {schema:1,page,...(react19Collector?{nativeStateAncestors:nativeStateSnapshot(element)}:{}),status:'Unknown/Unsupported',reason:'observer stopped; old history is not current',target:null,nodes:[],recentExchanges:[],retention:{hostNodes:hostNodes.size,reactRoots:reactRoots.size},limits};
       const binding=element&&mapRead(committed.get(element),property);
       let commit={status:'Unknown/Unsupported',reason:'No supported React commit binding for this actual DOM node/property'};
       if(binding){const {root,ref,record}=binding;
@@ -402,16 +415,16 @@ export function createObserver(w,{sourceConsumption=false,fetchInitiators=false,
       if(missing&&commit.status==='Observed')commit={...commit,status:'Unknown/Unsupported',reason:'Committed execution closure/retention budget'};
       const producerUnknown=hostProbe?commit.status!=='Observed'||commit.producer?.status!=='Observed':commit.status==='Observed'&&commit.producer?.status!=='Observed';
       const stateHandoffs=stateLedger&&commit.status==='Observed'?stateLedger.witness(out,new Set((mapRead(hostCommits.get(element),property)?.ancestors||[]).map(r=>r.deref()).filter(Boolean))):null;
-      const result={schema:1,page,...(actionTrace?{actionTrace:{availability:actionTraceInfo(),observation:actionTraceRead()}}:{}),...(stateHandoffs?{stateHandoffs}:{}),status:stale?'Stale':target&&!missing&&!producerUnknown?'Observed':'Unknown/Unsupported',reason:stale||(missing?'trace closure/retention budget':!target?'No dev target execution observed':producerUnknown?(commit.reason||commit.producer?.reason||'Final host producer unavailable'):null),target:target||null,commit,nodes:out,
+      const result={schema:1,page,...(react19Collector?{nativeStateAncestors:nativeStateSnapshot(element)}:{}),...(actionTrace?{actionTrace:{availability:actionTraceInfo(),observation:actionTraceRead()}}:{}),...(stateHandoffs?{stateHandoffs}:{}),status:stale?'Stale':target&&!missing&&!producerUnknown?'Observed':'Unknown/Unsupported',reason:stale||(missing?'trace closure/retention budget':!target?'No dev target execution observed':producerUnknown?(commit.reason||commit.producer?.reason||'Final host producer unavailable'):null),target:target||null,commit,nodes:out,
         independentObservations:[...nodes.values()].filter(n=>n.scope===target?.scope&&n.kind==='binding'&&!seen.has(n.id)).slice(-20).map(n=>({...n,separateFromTarget:true})),
         exchanges:exchanges.filter(e=>out.some(n=>n.origin?.exchangeId===e.id)),recentExchanges:exchanges.slice(-32),dropped,missing,
         retention:{nodes:nodes.size,captures:captures.size,bindings:bindings.size,targets:targets.size,reactRoots:reactRoots.size,hostNodes:hostNodes.size,objectRoots:[...captures.values()].filter(c=>c.object).length},boundaries:[...new Set([...out.map(n=>n.boundary).filter(Boolean),...(sourceWrites?['Completed property-write coverage incomplete: computed keys, logical assignments, class initializers, aliased/unrecognized native/opaque writes and missing earlier history remain unsupported.']:[]),...(writeAccessGuards?['Potential write-access guards conservatively invalidate eligible source receivers; optional/super/implicit-field/native/opaque/history gaps remain.']:[])])],limits};
       if(JSON.stringify(result).length>limits.exportBytes)return {schema:1,page,status:'Unknown/Unsupported',reason:'export byte budget',target:null,nodes:[],exchanges:[],recentExchanges:[],limits};return result;
     },
-    invalidate(reason){stale=reason;actionCollector?.invalidate();},
+    invalidate(reason){stale=reason;actionCollector?.invalidate();react19Collector?.stop();},
     stop(){
       active=false;
-      for(const cleanup of[()=>actionCollector?.stop(),()=>stateLedger?.stop(),()=>queryLedger?.stop(),()=>headGuard?.disconnect(),()=>rootGuard?.disconnect()])try{cleanup();}catch{}
+      for(const cleanup of[()=>react19Collector?.stop(),()=>actionCollector?.stop(),()=>stateLedger?.stop(),()=>queryLedger?.stop(),()=>headGuard?.disconnect(),()=>rootGuard?.disconnect()])try{cleanup();}catch{}
       try{for(const record of hostNodes.values()){record.active=false;try{record.observer.disconnect();}catch{}}}catch{}try{hostNodes.clear();}catch{}
       try{for(const root of reactRoots.values()){root.active=false;try{root.mutations?.disconnect();}catch{}}}catch{}try{reactRoots.clear();}catch{}
       restoreHook(w,'fetch',wrappedFetch,fetchDescriptor);restoreHook(proto,'json',wrappedJSON,jsonDescriptor);

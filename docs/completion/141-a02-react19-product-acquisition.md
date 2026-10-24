@@ -1,6 +1,6 @@
 # A02.4 — product React19 acquisition (in progress)
 
-Current: **Task1 implemented and source-tested; Tasks2–3 remain pending.**
+Current: **Tasks1–2 implemented and source-tested; Task3 product delivery remains pending.**
 Scope-review-1; main0328993 baseline. No installed React19 support, full A02,
 V03 or new whole-task acceptance is established by this prerequisite. Still20/29.
 [Design](../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md),
@@ -45,21 +45,58 @@ promoted to current product proof. Syntax/diff checks passed. Full source suite,
 package/build/type/admission, actual product UI and final review remain due after
 wiring; historical full2799 is not claimed as a fresh run here.
 
-## Remaining work in this same item
+## Task2: strict profile and exact selected-node wiring
 
-Task2 wires this collector into a strict opt-in React19.2.5 development profile,
-the existing observer lifecycle and exact selected-node route. Existing React18,
-Vue and first-read contracts must remain isolated. Automatic JSX must be preserved;
-unsupported compiler/profile combinations must refuse explicitly.
+Source now admits the explicit `react19-state-ancestors` profile with Node24,
+Vite7.3.7 in app/plugin, React/react-dom19.2.5 and both original A02.3 dev-source
+hashes. It refuses conflicting legacy options or mismatched vendor bytes, including
+at dependency load. Automatic JSX stays intact. Vite's pre HTML hook prepends the
+runtime module; the native tap bridge resolves only own data methods at tap time,
+keeps the original receiver/return/error behavior and exposes no research globals.
+HTML injection and synthetic ordering controls are not yet actual browser proof.
+
+The product observer owns one collector, separately admits its adapter, refuses
+mode reuse, and invalidates/stops native evidence on HMR/stop/reconfiguration.
+Deep text/disabled readers can ask this explicit runtime about an unmarked actual
+node. Existing native disabled identity/ABA guards remain. Independent
+`nativeStateAncestors` never creates a source target or committed property producer.
+Missing/wrong node/contract, stopped state, absent WeakRef and capacities stay Unknown.
+
+New controls: initial34 ran **4PASS/30FAIL** before implementation; one failure was
+a test that read an install-wrapper getter copied before config, corrected to test
+the actual source plugin contract. After implementation, the JSX-preservation
+assertion was corrected to allow existing data markers; **34/34 passed**. Two further
+admission/reconfiguration controls pass, for **36 new controls** in total. Focused
+regressions **227PASS/0FAIL/0SKIP** preceded those last two controls; the final
+admission subset is24PASS. Actual command and full logs are in the SDD ledger.
+No full source suite or installed product acceptance is claimed at this step.
+
+Adding the runtime import exposed fixed import lists in three source harnesses:
+operand6FAIL and entry/receipt8FAIL were retained before correcting only their
+module resolution. First-read's compiler recipe refused the changed plugin hash,
+as intended. Its plugin pin and self hash were refreshed to the actual edited
+source; guards, limits, contracts and vendor pins are unchanged. The channel test
+was then denied by the filesystem sandbox's local listener restriction; the same
+focused suite passed with the temporary loopback listener permitted. No browser,
+IDE profile, certificate or system-trust change occurred.
+
+Both actual local React19.2.5 vendor sources were transformed through the new probe:
+source hashes and native site counts match the retained A02.3 recipe,2files/2loads.
+This is a source-transform comparison only. Original experiments/results are
+unchanged; no old native campaign was repeated. The development packer's copy and
+source-manifest lists now include the new runtime dependency, avoiding a missing
+module in its next build. No artifact was rebuilt under an existing identity.
+
+## Remaining work in this same item
 
 Task3 supplies a compact scoped product presentation/handoff, versioned local
 artifacts and a preregistered actual UI qualification. The current73 package does
 not contain or call this collector. No source-resolver authority, producer edge or
-new capability may be inferred from its library export or source tests. One fresh
-whole-item review happens after those tasks, with one tested Important/Critical
-correction pass at most; no per-subtask reviewer is dispatched.
+new capability may be inferred from its source tests. One fresh whole-item review
+happens after Task3, with one tested Important/Critical correction pass at most;
+no per-subtask reviewer is dispatched.
 
-Next step: **A02.4 Task2 — strict pinned profile and observer/selected-node wiring.**
+Next step: **A02.4 Task3 — product display/handoff, immutable packages and finite actual qualification.**
 SDK, publication, other repositories and redesign remain excluded. A02's general
 ownership stopping rule and L02's no-blind-tuning stopping point remain in force.
 All V03 input failures, Unknowns and deferred native Node-admission Minor remain

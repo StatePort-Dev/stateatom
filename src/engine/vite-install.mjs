@@ -4,7 +4,7 @@ import {stateatomPlugin as implementation} from './plugin.mjs';
 import {createRequire} from 'node:module';
 import {readFileSync} from 'node:fs';
 import path from 'node:path';
-import {assertVue3Profile,assertDefaultProfile} from './vite-install-profile.mjs';
+import {assertVue3Profile,assertDefaultProfile,assertReact19Profile} from './vite-install-profile.mjs';
 const ownRequire=createRequire(import.meta.url);
 function version(require,name){
  try{
@@ -38,7 +38,7 @@ function unconfigured(object,keys){
 }
 export function stateatomPlugin(options={}){
  if(options.firstReadContracts)throw Error('Controlled first-read is a separate specialised source-checkout profile, not this installed plugin recipe');
- if(options.profile!==undefined&&options.profile!=='vue3')throw Error('Unknown StateAtom installed profile; the explicit experimental profile is vue3, or omit profile for the default recipe');
+ if(options.profile!==undefined&&options.profile!=='vue3'&&options.profile!=='react19-state-ancestors')throw Error('Unknown StateAtom installed profile; the explicit experimental profiles are vue3 and react19-state-ancestors, or omit profile for the default recipe');
  if(options.enabled&&options.profile==='vue3')for(const name of ['reactCommit','reactHostProps','fetchInitiators','reactStateHandoffs','sourceWrites','queryHandoffs','queryCallCensus','writeAccessGuards','queryWriteAccessGuards','reactWriteAccessGuards','actionTrace'])if(options[name])throw Error('StateAtom Vue profile does not admit option '+name+'; use the documented selected source/read profile');
  const plugin=implementation(options);
  return {...plugin,config(config,environment){
@@ -56,8 +56,9 @@ export function stateatomPlugin(options={}){
   try{
    const appRequire=createRequire(path.resolve(config.root||options.root||process.cwd(),'package.json'));
    environment={node:process.versions.node,vite:version(ownRequire,'vite'),appVite:version(appRequire,'vite')};
+   if(options.profile==='react19-state-ancestors')Object.assign(environment,{react:version(appRequire,'react'),reactDOM:version(appRequire,'react-dom')});
    if(options.profile==='vue3')Object.assign(environment,{vue:version(appRequire,'vue'),vuePlugin:version(appRequire,'@vitejs/plugin-vue')});
   }catch{throw Error('StateAtom installed profile cannot resolve original app/plugin version metadata; install the documented dependencies in the chosen app and restart, or disable StateAtom');}
-  if(options.profile==='vue3')assertVue3Profile(environment);else assertDefaultProfile(environment);
+  if(options.profile==='vue3')assertVue3Profile(environment);else if(options.profile==='react19-state-ancestors')assertReact19Profile(environment);else assertDefaultProfile(environment);
  }};
 }

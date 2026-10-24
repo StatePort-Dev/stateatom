@@ -1666,18 +1666,18 @@
       "active_slice": {
         "id": "A02.4",
         "title": "Bounded ordinary React19 product acquisition integration",
-        "status": "in-progress-private-collector-tested-profile-and-product-path-pending",
+        "status": "in-progress-profile-observer-selected-node-source-tested-product-delivery-pending",
         "record": "141-a02-react19-product-acquisition.md",
         "design": "../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md",
         "plan": "../superpowers/plans/2026-10-24-a02-react19-product-acquisition.md",
         "base": "0328993cf5154b2fb24c990bfd91fb55d2243f03",
-        "current_task": 1,
+        "current_task": 3,
         "collector_implemented": true,
-        "new_source_controls": 22,
-        "focused_source_controls": 38,
-        "profile_wired": false,
-        "observer_wired": false,
-        "selected_node_wired": false,
+        "new_source_controls": 58,
+        "focused_source_controls": 227,
+        "profile_wired": true,
+        "observer_wired": true,
+        "selected_node_wired": true,
         "product_UI_verified": false,
         "new_package_built": false,
         "new_native_run": false,
@@ -1790,8 +1790,8 @@
       },
       "current_checkpoint": {
         "record": "141-a02-react19-product-acquisition.md",
-        "status": "in-progress-private-collector-tested-profile-and-product-path-pending",
-        "next_bounded_step": "A02.4 Task2 strict pinned React19.2.5 profile and observer/exact-selected-node wiring, preserving independent ancestor scope and existing profiles"
+        "status": "in-progress-profile-observer-selected-node-source-tested-product-delivery-pending",
+        "next_bounded_step": "A02.4 Task3 scoped product display/handoff, versioned immutable packages and finite actual UI qualification; independent ancestor scope only"
       },
       "stopping_point_history": [
         {
@@ -6360,8 +6360,8 @@
     "document": "141-a02-react19-product-acquisition.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.4-private-product-collector-tested-rest-of-item-pending",
-    "next_item": "A02.4 Task2 strict pinned React19.2.5 profile and observer/exact-selected-node wiring, preserving independent ancestor scope and existing profiles",
+    "current_increment": "A02.4-profile-observer-selected-node-source-tested-product-delivery-pending",
+    "next_item": "A02.4 Task3 scoped product display/handoff, versioned immutable packages and finite actual UI qualification; independent ancestor scope only",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6388,7 +6388,7 @@
     "active_item": {
       "id": "A02",
       "record": "141-a02-react19-product-acquisition.md",
-      "status": "in-progress-private-collector-tested-profile-and-product-path-pending"
+      "status": "in-progress-profile-observer-selected-node-source-tested-product-delivery-pending"
     },
     "completed_increments": [
       {
@@ -9083,11 +9083,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.4 activeTask1: privateproductcollector22newsourcecontrols/38focusedPASS, inert/nooracleglobals/opaqueweaknativeidentities/strictcurrenttree/capacity/Unknowns. Task2profile+observer+selectednode andTask3UI/handoff/immutable/native/review remainpending. No product19orfullA02/V03acceptance/20of29change; exactcurrent73archivesunchanged/unshippedcollector.",
+    "current_activity_note": "A02.4 Tasks1-2 source-tested: private collector plus strict React19.2.5/Node24/Vite7.3.7 opt-in, observer lifecycle and exact selected-node route. 36 new Task2 controls; focused227PASS before last2 controls/admission subset24PASS. Task3 UI/handoff/versioned immutable artifacts/actual native qualification/final review pending. No product19/full A02/V03 acceptance or 20of29 change; current73 archives unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "0328993cf5154b2fb24c990bfd91fb55d2243f03",
+    "current_source_revision": "b64004c4825aa366af6aab8dc6a0376d99825c7e",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "A02.4 Task2 strict pinned React19.2.5 profile and observer/exact-selected-node wiring, preserving independent ancestor scope and existing profiles"
+    "next_bounded_step": "A02.4 Task3 scoped product display/handoff, versioned immutable packages and finite actual UI qualification; independent ancestor scope only"
   },
   "next_task": "A02"
 }

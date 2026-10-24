@@ -11,3 +11,9 @@ export function assertDefaultProfile({node,vite,appVite}) {
     throw Error('StateAtom default installed profile requires Node24 and Vite7.3.7 in app and plugin. The separate experimental Vue profile requires profile:"vue3" and its exact documented versions. Disable StateAtom for other pipelines.');
   }
 }
+
+export function assertReact19Profile({node,vite,appVite,react,reactDOM}) {
+ if(!/^24\.\d+\.\d+$/.test(node)||vite!=='7.3.7'||appVite!=='7.3.7'||react!=='19.2.5'||reactDOM!=='19.2.5') {
+  throw Error('StateAtom React19 ancestor profile requires Node24, Vite7.3.7 in app and plugin, React19.2.5 and react-dom19.2.5. Disable StateAtom for unsupported pipelines; do not replace application dependencies to bypass this check.');
+ }
+}

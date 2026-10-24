@@ -9,7 +9,7 @@ const meta={file:'controlled.ts',key:'m',expression:'object.quota'};
 let moduleSerial=0;
 async function setup(){
  const transformed=instrumentEntries(source);assert.equal(transformed.transformed,1,'actual observer member body must be instrumented');
- let text=transformed.code;for(const file of['query-handoff.mjs','react-state.mjs','action-observer.mjs'])text=text.replace(`'./${file}'`,JSON.stringify(new URL("../src/engine/"+file,import.meta.url).href)).replace(`"./${file}"`,JSON.stringify(new URL("../src/engine/"+file,import.meta.url).href));
+ let text=transformed.code;for(const file of['query-handoff.mjs','react-state.mjs','action-observer.mjs','react19-acquisition.mjs'])text=text.replace(`'./${file}'`,JSON.stringify(new URL("../src/engine/"+file,import.meta.url).href)).replace(`"./${file}"`,JSON.stringify(new URL("../src/engine/"+file,import.meta.url).href));
  const module=await import('data:text/javascript;base64,'+Buffer.from(text+'\nexport const testLog=__sa_invocation_log;').toString('base64')+'#'+(++moduleSerial));return{factory:module.createObserver,log:module.testLog};
 }
 test('entry record retains exact member function and returned node without reading a getter twice',async()=>{
