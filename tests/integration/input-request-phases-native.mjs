@@ -58,7 +58,8 @@ try{
  assert.equal(result.samples.length,20);assert.equal(result.errors.length,0);assert.equal(result.console.length,0);result.status='PASS_INPUT_RPC_PHASE_DIAGNOSIS_NOT_PERFORMANCE_ACCEPTANCE';
 }catch(e){result.status='FAIL';result.error=e.stack;if(e.desktopCleanupError)result.desktopStartupCleanupError=e.desktopCleanupError;process.exitCode=1;console.error(e.message);try{if(panel)await panel.screenshot({path:out+'/failure.png'});}catch(f){result.failureScreenshotError=f.message;}}
 finally{
- try{await d?.close();await browser?.context.close();result.ownedBrowserClosed=true;}catch(e){result.status='FAIL';result.browserCleanupError=e.stack;process.exitCode=1;}
+ try{await d?.close();}catch(e){result.status='FAIL';result.sessionCleanupError=e.stack;process.exitCode=1;}
+ try{await browser?.context.close();result.ownedBrowserClosed=true;}catch(e){result.status='FAIL';result.browserCleanupError=e.stack;process.exitCode=1;}
  try{if(desktop){await desktop.close();result.ownedDesktopClosed=true;}}catch(e){result.status='FAIL';result.desktopCleanupError=e.stack;process.exitCode=1;}
  try{if(server)await new Promise((resolve,reject)=>server.close(e=>e?reject(e):resolve()));result.ownedServerClosed=true;}catch(e){result.status='FAIL';result.serverCleanupError=e.stack;process.exitCode=1;}
  try{result.inputsAfter=await inputs();if(JSON.stringify(preregistration.inputs)!==JSON.stringify(result.inputsAfter)){result.status='FAIL';result.inputDrift=true;process.exitCode=1;}}catch(e){result.status='FAIL';result.inputReadError=e.stack;process.exitCode=1;}

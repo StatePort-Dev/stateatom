@@ -224,3 +224,11 @@ are explicit. No full green originating run, product rebuild/app/source campaign
 full guide/V03/20-of29 upgrade. ONE review2Important/2Minor corrected once with12 synthetic+2 reporting controls;
 no new native run. Next one V02.9 diagnoses retained
 Live/Apply latency phases before any new performance campaign.
+
+[V02.9 actual phases](../completion/128-v02-input-request-phases.md) complete20 rows/64 owned RPCs on unchanged70/UI2:
+20 Apply,42 state,2 capabilities,341 stable inputs/327 product/0 inspector errors.
+Apply RPC medians~824–863ms, non-RPC Apply residual~22–25ms; Live retains250ms
+debounce, overlapping state is not summed or declared causal.3 source-only cleanup
+controls correct a finalizer failure path; actual runtime stays15a084a. ONE review
+pending. Original65 tails/targets/whole20-of29 remain unchanged. Next V02.10 profiles
+internal native-command phases before any product optimization or guard change.

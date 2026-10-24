@@ -2154,3 +2154,11 @@ input/Apply phase rows on unchanged70/UI2. Optional timing whitelist source14 ch
 PASS; native timings remain due. It separates existing Apply/state/capability
 requests, not internal guard/CPU cause or uninstrumented performance acceptance.
 No original target/250ms/guard/full-task count changes or V03/IDE/certificate repeat.
+
+[V02.9 actual phases](completion/128-v02-input-request-phases.md) complete20 rows/64 owned RPCs on unchanged70/UI2:
+20 Apply,42 state,2 capabilities,341 stable inputs/327 product/0 inspector errors.
+Apply RPC medians~824–863ms, non-RPC Apply residual~22–25ms; Live retains250ms
+debounce, overlapping state is not summed or declared causal.3 source-only cleanup
+controls correct a finalizer failure path; actual runtime stays15a084a. ONE review
+pending. Original65 tails/targets/whole20-of29 remain unchanged. Next V02.10 profiles
+internal native-command phases before any product optimization or guard change.

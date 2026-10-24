@@ -4311,18 +4311,36 @@
       "active_slice": {
         "id": "V02.9",
         "title": "Own-inspector input request phase diagnosis",
-        "status": "in-progress-preregistered-no-native-timing-claim",
+        "status": "finite-diagnostic-runtime-complete-final-review-pending",
         "record": "128-v02-input-request-phases.md",
         "design": "../superpowers/specs/2026-10-24-v02-input-phases-design.md",
         "plan": "../superpowers/plans/2026-10-24-v02-input-phases.md",
         "product_source_changed": false,
-        "whole_V02_complete": false
+        "whole_V02_complete": false,
+        "runtime_result": ".artifacts/v02/input-phases/2026-10-24T00-57-39-389Z/results.json",
+        "verification": ".artifacts/v02/input-phases/2026-10-24/native-checkpoint.json",
+        "native_rows": 20,
+        "measured_rows": 16,
+        "warmup_rows": 4,
+        "owned_rpc_rows": 64,
+        "apply_rpc_rows": 20,
+        "state_rpc_rows": 42,
+        "capability_rpc_rows": 2,
+        "registered_inputs": 341,
+        "product_inputs_unchanged": 327,
+        "source_checks": 14,
+        "protocol_negative_controls": 10,
+        "cleanup_controls": 3,
+        "actual_native_revision": "15a084a",
+        "performance_acceptance": false,
+        "targets_waived": false,
+        "review_pending": true
       },
       "execution_record": "128-v02-input-request-phases.md",
       "current_checkpoint": {
         "record": "128-v02-input-request-phases.md",
-        "status": "in-progress-preregistered-no-native-timing-claim",
-        "next_bounded_step": "V02.9 finite20-row owned Apply/state/capabilities phase probe on unchanged70; no old matrix repeat or guard removal"
+        "status": "finite-diagnostic-runtime-complete-final-review-pending",
+        "next_bounded_step": "V02.10: profile native-command phases inside observed Apply RPC before choosing one optimization; retain all guards, no full matrix/app/IDE rerun"
       },
       "completed_slices": [
         {
@@ -4625,6 +4643,93 @@
             "native_rerun": false,
             "serialized_92_rows_unaffected": true,
             "report": ".artifacts/v02/warm-source/2026-10-23/review/report.md"
+          }
+        },
+        {
+          "id": "V02.8-input65",
+          "status": "accepted-bounded-input-fix-and-measurement-not-whole-V02",
+          "record": "108-v02-input-modes-and-stale-load.md",
+          "candidate": "0.1.0-candidate.20261021.65",
+          "handoff": ".artifacts/atom/2026-10-23T13-08-24-618Z/atom-handoff.json",
+          "verification": ".artifacts/v02/input-modes/2026-10-23/verification65-reviewed.json",
+          "revision": "fa9515743a76b9ff48beeddd93735cbda8725fed",
+          "source_inputs": 887,
+          "focused_source_checks": 119,
+          "new_inspector_regressions_controls": 7,
+          "full_source_checks": 2454,
+          "strict_types": 2,
+          "package_admission": 9,
+          "affected_native_H09": 17,
+          "fresh_native_rows": 92,
+          "measured_samples": 80,
+          "warmup_samples": 12,
+          "ledger_checkpoints": 132,
+          "untimed_fill_writes": 36,
+          "history_limit_refusals": 2,
+          "actual_native_Close_controls": 2,
+          "paint_ms": {
+            "standalone": {
+              "live": {
+                "n": 20,
+                "min": 1671.2999999970198,
+                "p50": 2199.5,
+                "p95": 3905.60000000149,
+                "max": 4602.199999999255
+              },
+              "draftLocal": {
+                "n": 20,
+                "min": 16.800000000745058,
+                "p50": 21.700000001117587,
+                "p95": 28.300000000745058,
+                "max": 29.099999997764826
+              },
+              "draftApply": {
+                "n": 20,
+                "min": 1446,
+                "p50": 1947.8499999996275,
+                "p95": 3023.300000000745,
+                "max": 3311.199999999255
+              }
+            },
+            "embedding": {
+              "live": {
+                "n": 20,
+                "min": 1357.9000000022352,
+                "p50": 1482.1500000003725,
+                "p95": 2057.199999999255,
+                "max": 2323.699999999255
+              },
+              "draftLocal": {
+                "n": 20,
+                "min": 19.699999999254942,
+                "p50": 23.09999999962747,
+                "p95": 24.799999997019768,
+                "max": 24.900000002235174
+              },
+              "draftApply": {
+                "n": 20,
+                "min": 1197.5999999977648,
+                "p50": 1404.449999999255,
+                "p95": 1662,
+                "max": 1748.699999999255
+              }
+            }
+          },
+          "performance_acceptance": false,
+          "targets_waived": false,
+          "whole_task_complete": false,
+          "historical64_evidence": "Original Basic/active/warm/input data preserved, not fresh65 target qualification; 104 misses remain open",
+          "next_bounded_step": "V01 CI native lanes and packed contracts; begin deterministic UI/packed contract CI slice",
+          "review": {
+            "count": 1,
+            "fresh_context": true,
+            "critical": 0,
+            "important": 0,
+            "minor": 2,
+            "reporting_only_minor_corrections": 2,
+            "product_correction_passes": 0,
+            "native_rerun": false,
+            "report": ".artifacts/v02/input-modes/2026-10-23/review/report.md"
           }
         }
       ],
@@ -5459,8 +5564,8 @@
     "document": "128-v02-input-request-phases.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.9-input-phase-preregistration",
-    "next_item": "V02.9 finite20-row owned Apply/state/capabilities phase probe on unchanged70; no old matrix repeat or guard removal",
+    "current_increment": "V02.9-input-phases-runtime-complete-review-pending",
+    "next_item": "V02.10: profile native-command phases inside observed Apply RPC before choosing one optimization; retain all guards, no full matrix/app/IDE rerun",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7661,11 +7766,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.14 completee7a6eba within composite UI evidence/native console FAIL. V02.9 source14 checks/probe optional validated whitelist, unchanged70/UI2/327 product; native20-row diagnostic due. No targets/new Live SLO/whole20of29 upgrade.",
+    "current_activity_note": "V02.9 native20/64 owned RPC phases PASS at15a084a;341 stable/327 unchanged product/0 inspector errors. Apply RPC measured~0.82\u20130.86s, local Draft~25ms, overlapping state retained; no internal cause or target pass.3 source-only cleanup controls verify post-run finalizer fix. Historical V02.8 full checkpoint moved unchanged into history; whole20/29 unchanged. ONE review pending; next oneV02.10 native-command phase profile.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "e7a6eba base, no product source/build change",
+    "current_source_revision": "15a084a actual native; only harness finalizer correction afterwards",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V02.9 finite20-row owned Apply/state/capabilities phase probe on unchanged70; no old matrix repeat or guard removal"
+    "next_bounded_step": "V02.10: profile native-command phases inside observed Apply RPC before choosing one optimization; retain all guards, no full matrix/app/IDE rerun"
   },
   "next_task": "V02"
 }

@@ -34,11 +34,15 @@
 
 **Interface:** probe adds operations option default inspect-selector/state, validated bounded whitelist. Native loop installs configured probe in owned inspector and existing input timing; exact one inputs-apply response with zero pending/overflow joins each acknowledged row.
 
-- [ ] Read brief; TDD new whitelist/private-plan transparency/option isolation/refusal controls RED→GREEN; existing probe controls remain green.
-- [ ] Prepare finite20-row native driver and exact input/protocol registration; syntax/source checks/local commit before native execution.
-- [ ] Execute native once per registered attempt, poll same live handle. Expected:20 ordered rows/4warmup/16measured, exactly one apply per row, raw overlaps/no private contents/app outputs and unrelated/getters unchanged,0inspector errors, exact current inputs/cleanup; preserve any FAIL.
-- [ ] Read actual logs/raw traces and recompute separate-host summaries; record phase limits and one next causal step, no target acceptance.
+- [x] Read brief; TDD new whitelist/private-plan transparency/option isolation/refusal controls RED→GREEN; existing probe controls remain green.
+- [x] Prepare finite20-row native driver and exact input/protocol registration; syntax/source checks/local commit before native execution.
+- [x] Execute native once per registered attempt, poll same live handle. Expected:20 ordered rows/4warmup/16measured, exactly one apply per row, raw overlaps/no private contents/app outputs and unrelated/getters unchanged,0inspector errors, exact current inputs/cleanup; preserve any FAIL.
+- [x] Read actual logs/raw traces and recompute separate-host summaries; record phase limits and one next causal step, no target acceptance.
 - [ ] ONE final fresh whole-increment review e7a6eba..head, at most ONE tested fix pass/no re-review.
 - [ ] Read-only aggregate/task-done/current routing/corpus/local commit/clean tree; timed goal active.
 
 Completion aggregate will be a recorded-result verifier, never a browser/app relaunch.
+
+Completion aggregate: `node .artifacts/v02/input-phases/2026-10-24/verify-task.mjs`
+(read-only recorded20/64/341/327 evidence plus3 extracted-source cleanup controls).
+Native remains15a084a; original plan hash used for checkbox-only reporting change.
