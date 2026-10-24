@@ -6,7 +6,8 @@ Vue profile described below. A source checkout also has a separately documented
 [ordinary React19 contributor recipe](../../docs/testing/ordinary-react.md#contributor-recipe-ordinary-react19)
 for automatic JSX and source/read fragments. Its current checkout/native evidence
 does not establish a new installed plugin/VSIX combination or React19 committed
-host-props support.
+host-props support. Candidate7 adds the separate opt-in native ancestor profile
+below; it does not add React19 committed host-property producers.
 
 Install the supplied local tarball in an existing app, without cloning the Atom
 repository: `npm install --save-dev /absolute/path/stateport-vite-plugin-<candidate>.tgz`.
@@ -128,3 +129,45 @@ SyntheticEvent, missing/destructured first parameter, eval/with and opaque bodie
 remain boundaries. Complete listener coverage, function object identity, effects
 and source reflection equivalence are not established. Existing property/runtime
 observations remain separate; no Promise reactions or argument snapshots are added.
+
+## Experimental React19 native state ancestors
+
+Candidate `0.1.0-candidate.20261021.7` adds a separate development-only profile:
+
+```js
+stateatomPlugin({enabled:true,profile:'react19-state-ancestors',root:process.cwd()})
+```
+
+It requires Node24, Vite7.3.7 in app and plugin, and the original React19.2.5 /
+react-dom19.2.5 dev source bytes recorded in its two-file adapter. Version metadata
+alone cannot admit edited bytes. Other versions refuse; do not replace the app's
+dependencies to bypass admission. Keep the application's JSX compiler; automatic
+JSX is supported by this recipe without conversion to classic createElement.
+Conflicting React18/Query/write/Action Trace/first-read options refuse explicitly.
+
+For a Vite HTML entry the plugin prepends the observer's module before app entries.
+Custom non-HTML entry pipelines have not been qualified. Build is excluded by
+`apply:'serve'`; `enabled:false` injects no runtime and transforms no app/vendor.
+Remove the plugin and reload to return to ordinary uninstrumented development.
+
+The observer can report exact current committed DOM ancestors with native
+reducer/state queue, dispatch, applied-input/result/revision and eligible update
+identities. App state fields are opaque and are not read or serialized. Single-root,
+tree512/hook64/ancestor64/event4096 limits fail closed. Public hook kind, field
+ownership, state-to-prop transfer and selected-property origin remain Unknown.
+An observed ancestor is not an input/producer of the selected property's value.
+Stop, HMR, changed identity or unsupported paths invalidate/refuse observations.
+These are instrumented-page reports, not hostile-page attestation or permissions.
+
+Atom's existing development source connection is still required for its optional
+deep path. The plugin does not grant browser, helper or production write access.
+The compact live summary omits opaque IDs; saved v1 diagnostics explicitly omit
+this independent observation and record that limitation. The package build/source
+checks alone do not prove installed operation. Bounded native qualification and
+remaining gaps are recorded in `docs/completion/141-a02-react19-product-acquisition.md`.
+
+To prepare this plugin alone locally, use the root's existing command with the
+explicit mode `npm run pack:development -- --plugin-only`. Its separate
+`plugin-handoff.json` uses schema `stateatom.development-plugin-artifact/1`, includes
+no helper artifact and does not rebuild/reissue an unchanged helper VSIX. The default
+combined command retains its existing receipt format. Neither mode publishes.

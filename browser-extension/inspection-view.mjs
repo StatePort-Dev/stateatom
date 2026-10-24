@@ -6,6 +6,21 @@ export function inspectionDisplayState(state={}) {
  // Keep the original record for Cancel; hide it while another target is pending.
  return {...state,selection:null,analysis:null,stale:null,experiment:null};
 }
+// Independent page-reported native identities. No row/value/property producer
+// inference and no opaque identifier display. This does not attest the page.
+function nativeStateView(raw,selection,runtime,{sourceLinked,stale}){
+ if(!raw)return null;
+ const unknown={status:stale?'Stale':'Unknown/Unsupported',count:0,updateOrigins:0,summary:(stale?'Stale':'Unknown/Unsupported')+' · No current native React state ancestor observation. Selected-property origin remains unknown.'};
+ const page=selection?.page,id=v=>typeof v==='string'&&v.length<=256&&v.startsWith(page+':react19:');
+ if(!sourceLinked||stale||typeof page!=='string'||!page||runtime?.page!==page||raw.page!==page||raw.schema!==1||raw.status!=='Observed'||raw.fullPath!==false||raw.consumerOracle!==false||raw.selectedPropertyOrigin!=='Unknown/Unsupported'||raw.stateToProp!=='Unknown/Unsupported'||raw.fieldOwnership!=='Unknown/Unsupported'||!id(raw.nodeId)||!id(raw.rootId)||!id(raw.commitId)||!Array.isArray(raw.ancestors)||!raw.ancestors.length||raw.ancestors.length>64)return unknown;
+ const hooks=new Set();
+ for(const row of raw.ancestors){
+  if(!row||!['hookId','fiberId','queueId','dispatchId','resultId','revisionId'].every(k=>id(row[k]))||hooks.has(row.hookId)||row.publicHookKind!=='Unknown/Unsupported'||!(row.updateId===null&&row.updateOriginStatus==='Unknown/Unsupported'||id(row.updateId)&&row.updateOriginStatus==='Observed'))return unknown;
+  hooks.add(row.hookId);
+ }
+ const count=raw.ancestors.length,updateOrigins=raw.ancestors.filter(r=>r.updateOriginStatus==='Observed').length;
+ return{status:'Observed',count,updateOrigins,summary:'Observed · '+count+' native React state ancestor'+(count===1?'':'s')+'; '+updateOrigins+' update origin'+(updateOrigins===1?'':'s')+' recorded. Public hook kind and selected-property origin remain unknown. Omitted from saved v1 reports.'};
+}
 export function inspectionView(state={}) {
  state=inspectionDisplayState(state);
  const analysis=state.analysis,runtime=analysis?.stateatom?.runtime;
@@ -22,6 +37,7 @@ export function inspectionView(state={}) {
  const firstReadProfile=profileCurrent?profile:profile?{schema:1,status:profileStale?'Stale':'Unknown/Unsupported',fullPath:false,freshness:profileStale?'Stale':profile.freshness,reason:profileStale?'Inspect again after the change.':profile.reason||'No finite trace bound to the current selected occurrence.'}:{schema:1,status:'Unknown/Unsupported',fullPath:false,reason:'No controlled first-read profile for this selection.'};
  const finiteTraceSupported=firstReadProfile.status==='Supported finite trace'&&firstReadProfile.fullPath===true&&firstReadProfile.sourceProof?.status==='Code-linked'&&firstReadProfile.occurrence?.status==='Observed';
  const view={
+  nativeStateAncestors:nativeStateView(runtime?.nativeStateAncestors,state.selection,runtime,{sourceLinked,stale}),
   firstReadProfile,finiteTraceSupported,
   mode:instrumented?'Instrumented':sourceLinked?'Source-linked':'Basic',
   stale,

@@ -24,6 +24,16 @@ function fixture(request,options={}){
  return {$,state,list,emit:m=>onEvent(m),disconnect:()=>{for(const fn of connectionListeners)fn({state:'closed',code:'INSPECTOR_DISCONNECTED'});},view:mountAtom(host,client,{idPrefix:'',...options})};
 }
 test('mounted Basic reuses its existing summary/action while keeping evidence details available',async()=>{const f=fixture();await f.view.ready;assert.match(f.$('inspection-summary').textContent,/DOM snapshot/);assert.equal(f.$('inspection-next').textContent,'Connect project for source');assert.equal(f.$('property-explanation-block').hidden,true);assert.equal(f.$('explanation-details').hidden,false);await f.view.dispose();});
+test('mounted inspector renders the compact independent ancestor summary and clears it with a new target',async()=>{
+ let present=true;const f=fixture(m=>{
+  if(m.op!=='state')return;
+  const s=f.state(m.tabId);s.selection.page='p';s.analysis.capabilities={sourceResolver:'open-ide'};
+  s.analysis.stateatom.runtime={page:'p',status:'Unknown/Unsupported',nodes:[],...(present?{nativeStateAncestors:{schema:1,page:'p',status:'Observed',nodeId:'p:react19:1',rootId:'p:react19:2',commitId:'p:react19:commit:1',ancestors:[{hookId:'p:react19:3',fiberId:'p:react19:4',queueId:'p:react19:5',dispatchId:'p:react19:6',resultId:'p:react19:7',revisionId:'p:react19:revision:8',updateId:null,updateOriginStatus:'Unknown/Unsupported',publicHookKind:'Unknown/Unsupported'}],selectedPropertyOrigin:'Unknown/Unsupported',stateToProp:'Unknown/Unsupported',fieldOwnership:'Unknown/Unsupported',consumerOracle:false,fullPath:false}}:{})};return s;
+ });
+ try{await f.view.ready;assert.equal(f.$('native-state-summary').hidden,false);assert.match(f.$('native-state-summary').textContent,/1 native React state ancestor/);assert.doesNotMatch(f.$('native-state-summary').textContent,/p:react19/);
+  present=false;await f.$('load').onclick();assert.equal(f.$('native-state-summary').hidden,true);assert.equal(f.$('native-state-summary').textContent,'');
+ }finally{await f.view.dispose();}
+});
 test('changing tab clears explanation and target before pending picker cleanup settles',async()=>{
  const cancel=deferred(),pick=deferred();const f=fixture(m=>m.op==='pick'?pick.promise:m.op==='cancel-pick'?cancel.promise:undefined);await f.view.ready;
  const picking=f.$('pick').onclick();await tick();f.$('action-explain').onclick();assert(f.$('action-explanation').textContent);

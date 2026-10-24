@@ -65,9 +65,9 @@ new bounded nativecase/driver andcompletion record141; status/taskindex current.
 throughexistingproduct flow without producerpromotion; exact immutable artifacts/
 preregistered UI result with unknowns/refusals/cleanup/sourceidentity.
 
-- [ ] ReadsharedUIreferences/contract beforefunctionalvisualedits; useexistingtokens/
+- [x] ReadsharedUIreferences/contract beforefunctionalvisualedits; useexistingtokens/
 primitives, changelog and meaningful targetedtests/normal-hover-keyboard/narrow checks.
-- [ ] Implement display/handoff with TDD if behaviorchanges. Choose actual supported
+- [x] Implement display/handoff with TDD if behaviorchanges. Choose actual supported
 sourceconnection/startup fromcurrentcode; freeze concrete nativeprotocol beforelaunch.
 - [ ] Runfinalfocused/fullsource/typedcontracts/localpackedadmission andmanifestchecks;
 commit beforeoneactualnative; pollsamehandle/preserveFAIL, no blindcampaignrepeat.

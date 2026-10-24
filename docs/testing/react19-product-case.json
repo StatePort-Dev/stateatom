@@ -1,0 +1,48 @@
+{
+  "schema": "stateatom.react19-product-case/1",
+  "id": "A02.4-product-native-ancestors",
+  "scopeRevision": "scope-review-1",
+  "maximumNativeRuns": 1,
+  "configuration": {
+    "atom": "0.1.0-candidate.20261021.75",
+    "plugin": "0.1.0-candidate.20261021.7",
+    "upstream": "ff43b02e59dfa604386bb382034b2cd07c2bcd8a",
+    "profile": "react19-state-ancestors",
+    "jsx": "automatic",
+    "applicationBuild": "Declared Vite7.3.7 qualification overlay; original app uses Webpack",
+    "helper": "Existing source HelperSession HTTP API on one owned copied workspace; not installed VSIX/IDE trust acceptance",
+    "extensionInstallation": "Historical CLI preload of exact packed standalone host; not toolbar/Store/manual installation acceptance",
+    "browserSandbox": true,
+    "certificateChanges": false,
+    "productionChanges": false,
+    "consumerOracle": false,
+    "publicHookKind": "Unknown/Unsupported",
+    "fieldOwnership": "Unknown/Unsupported",
+    "selectedPropertyOrigin": "Unknown/Unsupported",
+    "fullPath": false
+  },
+  "selectors": {
+    "newTodo": ".new-todo",
+    "first": ".todo-list li:nth-of-type(1) label[data-testid=todo-item-label]",
+    "second": ".todo-list li:nth-of-type(2) label[data-testid=todo-item-label]",
+    "edit": ".todo-list li:nth-of-type(1) .edit"
+  },
+  "inputs": {"equalTitle": "A02 equal", "changedTitle": "A02 changed", "afterStop": "A02 after stop"},
+  "declaredInterventions": [
+    "Exactly one DOM.removeAttribute for data-stateatom on the second actual label after equal-node checks. No app source/value/getter modification. Fresh product selection must then exercise the unmarked-node route; this is an instrumentation-metadata fault control, not ordinary unmarked app evidence.",
+    "Public dev observer stop() called once after the saved/visual phases. It is a harness lifecycle intervention, not a product UI Stop action. Actual app user input continues afterward."
+  ],
+  "expectedChecks": [
+    "exact packed artifacts and pre-browser source registration",
+    "product development attach and private source-helper receipt connection",
+    "two equal actual DOM targets retain different native node IDs and one shared ancestor queue",
+    "fresh unmarked-node selection keeps ancestor observation without a selected-property producer",
+    "same-value ordinary edit advances reducer result revision and eligible native update",
+    "changed first row leaves second value equal without assigning row property origin",
+    "normal hover keyboard and narrow inspector candidates contain no opaque ID soup",
+    "actual saved and downloaded v1 diagnostic explicitly omits native ancestor evidence",
+    "public stop refuses old native witnesses while ordinary app input continues",
+    "source package upstream identity and owned-resource cleanup remain exact"
+  ],
+  "stoppingRule": "Preserve the first actual result literally. A failed gate is not waived; no blind rerun, threshold change or global A02/V03 acceptance. Diagnose any concrete failure as a separate bounded step. Human visual review remains candidate review, not a release blocker."
+}

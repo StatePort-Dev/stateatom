@@ -1666,7 +1666,7 @@
       "active_slice": {
         "id": "A02.4",
         "title": "Bounded ordinary React19 product acquisition integration",
-        "status": "in-progress-profile-observer-selected-node-source-tested-product-delivery-pending",
+        "status": "in-progress-product-source-and-packages-ready-native-qualification-pending",
         "record": "141-a02-react19-product-acquisition.md",
         "design": "../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md",
         "plan": "../superpowers/plans/2026-10-24-a02-react19-product-acquisition.md",
@@ -1674,12 +1674,12 @@
         "current_task": 3,
         "collector_implemented": true,
         "new_source_controls": 58,
-        "focused_source_controls": 227,
+        "focused_source_controls": 229,
         "profile_wired": true,
         "observer_wired": true,
         "selected_node_wired": true,
         "product_UI_verified": false,
-        "new_package_built": false,
+        "new_package_built": true,
         "new_native_run": false,
         "whole_item_review_pending": true,
         "full_A02_acceptance": false,
@@ -1687,7 +1687,17 @@
         "field_ownership": "Unknown/Unsupported",
         "public_hook_kind": "Unknown/Unsupported",
         "general_prop_transfer": "Unknown/Unsupported",
-        "selected_property_origin": "Unknown/Unsupported"
+        "selected_property_origin": "Unknown/Unsupported",
+        "product_UI_implemented": true,
+        "full_source_controls": 2912,
+        "task3_presentation_controls": 74,
+        "harness_entry_controls": 2,
+        "packed_type_consumers": 2,
+        "package_admission_controls": 9,
+        "native_preflight_inputs": 3216,
+        "native_preflight_tool_links": 17,
+        "current_candidate": "0.1.0-candidate.20261021.75",
+        "plugin_candidate": "0.1.0-candidate.20261021.7"
       },
       "completed_slices": [
         {
@@ -1790,8 +1800,8 @@
       },
       "current_checkpoint": {
         "record": "141-a02-react19-product-acquisition.md",
-        "status": "in-progress-profile-observer-selected-node-source-tested-product-delivery-pending",
-        "next_bounded_step": "A02.4 Task3 scoped product display/handoff, versioned immutable packages and finite actual UI qualification; independent ancestor scope only"
+        "status": "in-progress-product-source-and-packages-ready-native-qualification-pending",
+        "next_bounded_step": "A02.4 Task3 one frozen actual Atom75/plugin7 qualification, saved-evidence verification and one final whole-item review; no property-lineage promotion"
       },
       "stopping_point_history": [
         {
@@ -6360,8 +6370,8 @@
     "document": "141-a02-react19-product-acquisition.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.4-profile-observer-selected-node-source-tested-product-delivery-pending",
-    "next_item": "A02.4 Task3 scoped product display/handoff, versioned immutable packages and finite actual UI qualification; independent ancestor scope only",
+    "current_increment": "A02.4-product-source-and-packages-ready-native-qualification-pending",
+    "next_item": "A02.4 Task3 one frozen actual Atom75/plugin7 qualification, saved-evidence verification and one final whole-item review; no property-lineage promotion",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6388,7 +6398,7 @@
     "active_item": {
       "id": "A02",
       "record": "141-a02-react19-product-acquisition.md",
-      "status": "in-progress-profile-observer-selected-node-source-tested-product-delivery-pending"
+      "status": "in-progress-product-source-and-packages-ready-native-qualification-pending"
     },
     "completed_increments": [
       {
@@ -9083,11 +9093,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.4 Tasks1-2 source-tested: private collector plus strict React19.2.5/Node24/Vite7.3.7 opt-in, observer lifecycle and exact selected-node route. 36 new Task2 controls; focused227PASS before last2 controls/admission subset24PASS. Task3 UI/handoff/versioned immutable artifacts/actual native qualification/final review pending. No product19/full A02/V03 acceptance or 20of29 change; current73 archives unchanged.",
+    "current_activity_note": "A02.4 Tasks1-2 complete229focused; Task3 product display and explicit v1 ancestor omission implemented. Final75 fullsource2912PASS, presentation74PASS, new harness refusals2PASS, packed types2/admission9PASS; Atom75/UI2/plugin7 immutable local artifacts, source preflight3216inputs/17links. Actual native case and one whole-item review pending; no browser launched/no product-native or full A02/V03 acceptance;20of29 unchanged.74 built intermediate retained without native proof.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "b64004c4825aa366af6aab8dc6a0376d99825c7e",
+    "current_source_revision": "a87a75e12cf9c11099a1fccd62de46ca19274217",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "A02.4 Task3 scoped product display/handoff, versioned immutable packages and finite actual UI qualification; independent ancestor scope only"
+    "next_bounded_step": "A02.4 Task3 one frozen actual Atom75/plugin7 qualification, saved-evidence verification and one final whole-item review; no property-lineage promotion"
   },
   "next_task": "A02"
 }

@@ -1,6 +1,6 @@
 # A02.4 — product React19 acquisition (in progress)
 
-Current: **Tasks1–2 implemented and source-tested; Task3 product delivery remains pending.**
+Current: **Tasks1–2 complete; Task3 implementation and local packages are source-tested. Actual native qualification and final review remain pending.**
 Scope-review-1; main0328993 baseline. No installed React19 support, full A02,
 V03 or new whole-task acceptance is established by this prerequisite. Still20/29.
 [Design](../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md),
@@ -87,17 +87,77 @@ unchanged; no old native campaign was repeated. The development packer's copy an
 source-manifest lists now include the new runtime dependency, avoiding a missing
 module in its next build. No artifact was rebuilt under an existing identity.
 
+## Task3 source/package checkpoint — native not started
+
+The inspector now renders a compact independent ancestor count and eligible update
+origin count. It requires the current source-connected page/occurrence and bounded
+well-formed witnesses; stale, foreign, malformed, duplicate, oversized or promoted
+records cannot display a positive observation. It never turns ancestors into the
+selected property's operands or committed producer. Opaque IDs are not displayed.
+The informational paragraph uses ordinary13px body text and existing composition;
+shared CSS/tokens/contract are unchanged. Supplied HTML/Figma index/reference docs
+were read. The real native mechanism has no equivalent in that synthetic prototype;
+this one information line is an intentional addition. Rendered fidelity remains
+unverified until the actual candidates are captured and reviewed.
+
+For this bounded implementation, saved v1 diagnostics explicitly omit native
+ancestor observations. The live summary and saved limitation disclose the omission;
+the limitation is available in the existing review catalogue. It is not a new report
+schema, a preserved saved native witness, or approval of a general handoff redesign.
+
+Presentation/mounted UI/report controls: **72 ran68PASS/4FAIL before the change,
+then72PASS**. Two more malformed-witness controls give **74PASS/0FAIL/0SKIP**.
+Full source suite on the final Atom75 product code: **2912PASS/0FAIL/0SKIP**,
+133.74s, command `npm test`. The earlier Atom74 full2912 and intermediate package
+are retained separately;74 used an existing11px hint and never had a native run.
+Removing that class required a new immutable75, not rewriting74. Packed75
+TypeScript consumers **2PASS** and package admission **9PASS**. Native-driver
+unknown-option refusal first failed1of2 controls, then passed2of2; these two entry
+controls were added after that full source run. Syntax/diff checks pass.
+
+Exact local artifacts, all built with explicit dirty source receipts before the
+upcoming code commit:
+
+- Atom75: `.artifacts/atom/2026-10-24T07-53-55-011Z/atom-handoff.json`,
+  tarball SHA256 `7ba9226f05ba6136af95104466350976fd90867357e5e488f5450cc2097e0eba`.
+- UI2 unchanged: SHA256 `2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5`.
+- Plugin7: `.artifacts/development/2026-10-24T07-36-48-776Z/plugin-handoff.json`.
+  The new explicit `pack:development -- --plugin-only` mode uses its own receipt
+  schema/file and makes no helper VSIX. Default combined receipt shape is retained;
+  an immutable-artifact check refuses reissued plugin bytes under an old identity.
+- Atom75 packed types: `type-consumer-result.json` beside its handoff. Admission9:
+  `.artifacts/atom/compatibility/2026-10-24T07-57-42-407Z`.
+
+The preparation reused one owned app copy and the already installed exact plugin7;
+no old app campaign or extra dependency install was repeated for the font correction.
+Original TodoMVC28-file upstream manifest, original package/lock and source stay
+unchanged. The declared Vite overlay is qualification tooling for the original
+Webpack application, not its original/clean install build. The HTTP helper uses
+its existing source API; this is not installed VSIX/IDE trust acceptance. No IDE,
+browser-profile GUI, certificate, system-trust, production or external publication
+change occurred. The initial74 preparation is preserved; the75 variant is separate:
+`.artifacts/a02/react19-product/2026-10-24T07-40-59-380Z/prepared75.json`.
+
+A finite ten-check case is frozen in `docs/testing/react19-product-case.json`.
+It declares CLI preload, two real equal titles, one compiler-marker removal control,
+same-value and changed ordinary edits, normal/hover/keyboard/narrow candidates,
+actual saved/downloaded v1 omission, public observer stop and cleanup. Marker removal
+is an explicit metadata fault control, not naturally unmarked app evidence. Stop
+is a harness lifecycle intervention, not a product Stop UI. No callback/getter/value
+or app source is manufactured. First result/FAIL must be retained without waiver.
+
+Pre-native source admission passed for **3216inputs/17tool links** on75/plugin7;
+no browser/server was started by `--preflight`. Inputs include actual process
+executable identity, pinned Chrome, package/installed host bytes, helper/source,
+static app dependencies, installed tooling and original/copied app. A clean code/case
+commit is required before the one actual run. The source/package checkpoint does
+not establish the new native product route or full A02/V03 acceptance.
+
 ## Remaining work in this same item
 
-Task3 supplies a compact scoped product presentation/handoff, versioned local
-artifacts and a preregistered actual UI qualification. The current73 package does
-not contain or call this collector. No source-resolver authority, producer edge or
-new capability may be inferred from its source tests. One fresh whole-item review
-happens after Task3, with one tested Important/Critical correction pass at most;
-no per-subtask reviewer is dispatched.
-
-Next step: **A02.4 Task3 — product display/handoff, immutable packages and finite actual qualification.**
-SDK, publication, other repositories and redesign remain excluded. A02's general
-ownership stopping rule and L02's no-blind-tuning stopping point remain in force.
-All V03 input failures, Unknowns and deferred native Node-admission Minor remain
-preserved; no input guard or recovery policy changed here.
+Next step: **A02.4 Task3 — run the frozen exact75/plugin7 native case once, retain
+literal outcomes, independently verify saved evidence and request one final review.**
+Full A02/V03/V02/L02/C09 remain open;20/29 unchanged. The original V03 input failures,
+Unknowns and deferred native Node-admission Minor remain preserved. The new driver's
+actual Node check does not repair or upgrade that old harness. No input guard,
+Live/production policy, SDK, publication, other repository or redesign changed.

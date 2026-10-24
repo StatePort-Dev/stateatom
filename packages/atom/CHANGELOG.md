@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.75
+
+- Keep the new native ancestor information at ordinary 13px body size, without the
+  existing 11px hint class. Shared tokens and CSS remain unchanged. Candidate74
+  is retained as a built intermediate; it had no native qualification run.
+
+## 0.1.0-candidate.20261021.74
+
+- Show a compact independent React19 native state ancestor summary for an exact
+  current selected node in the opt-in dev profile. Keep the property producer,
+  public hook kind and complete lineage unknown; hide opaque IDs and stale counts.
+  Reuse the existing Evidence hint primitive; no CSS/token/layout contract change.
+- Saved v1 diagnostics explicitly omit these ancestor observations. The live summary
+  and saved limitation disclose the omission; no new report schema or action authority.
+- Source tests do not establish native/installed acceptance. The supplied HTML
+  reference has no real native ancestor engine: this bounded informational line is
+  an intentional composition addition; rendered candidate QA is recorded separately.
+
 ## 0.1.0-candidate.20261021.73
 
 - Keep Live input focus across the first state refresh by reading state for the

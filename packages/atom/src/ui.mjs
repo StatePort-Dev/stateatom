@@ -116,6 +116,8 @@ function renderInspection(){
  $('selection-kind').textContent=presentation.kind;
  if((selectedState&&!selectedState.attached&&!target)||!Number.isSafeInteger(tab())||tab()<=0)$('browser-connection').open=true;
  $('commit-summary').textContent=view.commit.status+' · '+view.commit.reason;
+ $('native-state-summary').hidden=!view.nativeStateAncestors;
+ $('native-state-summary').textContent=view.nativeStateAncestors?.summary||'';
  const profile=view.firstReadProfile;
  $('first-read-summary').textContent=profile.status+' · '+(profile.fullPath?'HTTP field → original read → committed property':profile.reason||'Finite trace unavailable');
  $('first-read-scope').textContent=profile.fullPath?profile.scope+' Snapshot; inspect again after changes.':'';
