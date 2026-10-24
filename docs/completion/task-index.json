@@ -4309,73 +4309,27 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.10",
-        "title": "Cold disabled native identity without redundant domain enable",
-        "status": "complete-bounded-native-comparison-not-performance-acceptance",
-        "record": "129-v02-disabled-domain.md",
-        "design": "../superpowers/specs/2026-10-24-v02-disabled-domain-design.md",
-        "plan": "../superpowers/plans/2026-10-24-v02-disabled-domain.md",
-        "product_source_changed": true,
+        "id": "V02.11",
+        "title": "Own-worker API phases during existing input gestures",
+        "status": "source-prepared-native-review-due",
+        "record": "130-v02-worker-api-phases.md",
+        "design": "../superpowers/specs/2026-10-24-v02-worker-api-phases-design.md",
+        "plan": "../superpowers/plans/2026-10-24-v02-worker-api-phases.md",
+        "product_source_changed": false,
         "whole_V02_complete": false,
-        "source_checks": 2633,
-        "focused_checks": 94,
-        "native_identity_controls_per_engine": 22,
-        "installed_backend_checks": 13,
-        "strict_types": 2,
-        "package_admission": 9,
+        "source_checks": 2654,
+        "focused_checks": 47,
+        "driver_failure_controls": 6,
+        "native_rows_due": 12,
         "performance_acceptance": false,
         "targets_waived": false,
-        "review_pending": false,
-        "runtime_result": ".artifacts/v02/input-domain-comparison/2026-10-24T01-28-22-583Z/results.json",
-        "verification": ".artifacts/v02/disabled-domain/2026-10-24/post-review-checkpoint.json",
-        "comparison_rows": 48,
-        "measured_rows": 32,
-        "warmup_rows": 16,
-        "owned_rpc_rows": 160,
-        "apply_rpc_rows": 48,
-        "state_rpc_rows": 104,
-        "capability_rpc_rows": 8,
-        "registered_inputs": 342,
-        "product_inputs_per_kit": 327,
-        "protocol_negative_controls": 13,
-        "original_source_checks": 2621,
-        "original_focused_checks": 82,
-        "review": {
-          "schema": "stateatom.disabled-domain-review/1",
-          "reviewer": "/root/v0210_whole_review",
-          "model": "gpt-6-astra",
-          "reasoning": "high",
-          "base": "507420d7bcb43b73b2b297ec6a29ea1dad553310",
-          "head": "6aa9370f29ff4a6b49a706a40d0e26c646751aec",
-          "critical": 0,
-          "important": 2,
-          "minor": 1,
-          "correction_passes": 1,
-          "re_review": false,
-          "native_repeated": false,
-          "important_fixed": [
-            "async/sync spawn rejection and independent cleanup retaining original error",
-            "initial inventory within protected terminal-result path"
-          ],
-          "minor_deferred": "Historical pending wording retained and explicitly labelled preregistration state; no product/evidence effect",
-          "reportSha256": "dbffd67e08e39763c19f69fdfd154cc7a82ee4db30f8645ba38257a8a14d5e57",
-          "source_failure_controls": 12,
-          "full_source_after_correction": 2633,
-          "focused_after_correction": 94
-        },
-        "post_run_harness_correction": ".artifacts/v02/disabled-domain/2026-10-24/post-run-harness-correction.json",
-        "failure_controls": 12,
-        "actual_native_revision": "5f4e788",
-        "deferred_minors": [
-          "Historical preregistration pending wording retained; final section/current routing governs",
-          "Inherited V02.9 sparse operations arrays; native list fixed and dense"
-        ]
+        "review_pending": true
       },
-      "execution_record": "129-v02-disabled-domain.md",
+      "execution_record": "130-v02-worker-api-phases.md",
       "current_checkpoint": {
-        "record": "129-v02-disabled-domain.md",
-        "status": "complete-bounded-native-comparison-not-performance-acceptance",
-        "next_bounded_step": "V02.11: isolate remaining internal Apply phases on current71 before choosing another correction; retain all guards and original targets, no broad matrix/app/IDE rerun"
+        "record": "130-v02-worker-api-phases.md",
+        "status": "source-prepared-native-review-due",
+        "next_bounded_step": "Execute fixed12-row current71 worker API diagnosis, retain concurrency/clocks/raw outcomes, ONE review; no old campaign rerun"
       },
       "completed_slices": [
         {
@@ -4887,7 +4841,7 @@
         }
       ],
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v02-disabled-domain.md",
-      "implementation_plan": "../superpowers/plans/2026-10-24-v02-disabled-domain.md"
+      "implementation_plan": "../superpowers/plans/2026-10-24-v02-worker-api-phases.md"
     },
     {
       "id": "V03",
@@ -5714,11 +5668,11 @@
     ]
   },
   "reconciliation": {
-    "document": "129-v02-disabled-domain.md",
+    "document": "130-v02-worker-api-phases.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.10-disabled-domain-complete",
-    "next_item": "V02.11: isolate remaining internal Apply phases on current71 before choosing another correction; retain all guards and original targets, no broad matrix/app/IDE rerun",
+    "current_increment": "V02.11-worker-api-phases-source-prepared",
+    "next_item": "Execute fixed12-row current71 worker API diagnosis, retain concurrency/clocks/raw outcomes, ONE review; no old campaign rerun",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8010,11 +7964,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "One redundant disabled command removed; actual22each/48comparison rows and installedbackend13 PASS. ONE review2Important fixed/1Minor deferred, source2633; whole20/29 unchanged.",
+    "current_activity_note": "Current71/UI2 unchanged; source2654/focused47/newdriver6 PASS; finite12-row native diagnosis and review due. Whole20/29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "66e53d35543d9b3387a7f6775a87b1dc1ce5832c",
+    "current_source_revision": "e21f10b2b4d2099471735561ffef42e7f4610c5e",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V02.11: isolate remaining internal Apply phases on current71 before choosing another correction; retain all guards and original targets, no broad matrix/app/IDE rerun"
+    "next_bounded_step": "Execute fixed12-row current71 worker API diagnosis, retain concurrency/clocks/raw outcomes, ONE review; no old campaign rerun"
   },
   "next_task": "V02"
 }
