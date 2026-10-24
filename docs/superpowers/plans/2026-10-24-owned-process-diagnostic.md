@@ -35,4 +35,4 @@
 
 ## Final closeout
 
-- [ ] ONE fresh final review; one tested I/C pass maximum/no rereview, explicit rulings/Minors, archive own workspace, clean final checkpoint and one next dependency.
+- [x] ONE fresh final review; one tested I/C pass maximum/no rereview, explicit rulings/Minors, archive own workspace, clean final checkpoint and one next dependency.

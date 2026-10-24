@@ -1,4 +1,4 @@
-# A02.7 — owned-process identity diagnostic (source implementation)
+# A02.7 — owned-process identity diagnostic (bounded diagnostic complete; admission Refused)
 
 Starts from A02.6/58796e7: source113/full3151PASS, ONE review0/1/1 with I1fixed;
 both native attempts literal Incomplete/appmodes0. Final integrity: product327/old9,
@@ -70,3 +70,45 @@ replaces argument memory. The main/HEAD sources are not mapped to this exact bin
 and the current raw omitted argument-count/representation bytes. They justify
 checking a separate original-invocation witness; they do not establish the cause,
 recover old argv boundaries or authorize parsing a title as a true argument vector.
+
+## ONE final review and single tested correction pass
+
+Fresh read-only astra/high review0Critical/2Important/1Minor. I1 malformed separate
+profile option copied a following credential token into saved metadata: regression
+now records null and omits the token while retaining later flag recognition.
+I2 CDP send/session acquisition/detach could remain unresolved indefinitely: bounded
+capture/cleanup now records timeouts and continues independent context closure.
+Late completion cannot revive facts/flags. Deadlines5000ms per diagnostic operation,
+launch20000ms (source tests20ms); these are harness settings, not product Live policy
+or cancellation/native fault-recovery guarantees. No reported PID kill.
+
+RED28PASS/3FAIL/2cancelled→**33PASS**; fresh full **3184PASS/0FAIL/0cancelled/0SKIP**,
+101.08s, terminal75290. One fixpass/no rereview/no native repeat. Source deadlines/
+privacy/reader corrections do not upgrade old runtime facts. M1 docs/status current
+paragraph remains stale pre-native; active slice/this record accurate, next active
+handoff will reconcile while preserving history. Review/report and final checkpoint
+in `.artifacts/a02/owned-process-diagnostic-review/2026-10-24`.
+
+The bounded diagnostic is complete with literal **Refused**, original invocation
+provenance/profile/headed mode/root cause still Unknown. Next A02.8 is original
+launch-argument witness feasibility via a public owner-process API; no old case
+repeat, whitespace reconstruction, criterion waiver or product/fullA02 credit.
+
+## Decisions and explicit unverified boundaries
+
+- Ruling: autonomous optout of repeateddesignquestions/inline/main/local — latestexplicitrequest andexistingworkflow — cost:executorchoicesmarked asours, no rootcause/userapproval fabricated.
+- Ruling: separate newdiagnosticinstead of modifyingoldA026helper/cases — original2attemptbudgets exhausted — cost:thirdappattemptprohibited, blankdiagnosticonly/no appcredit.
+- Ruling: record CDP PID and currentdriverdirectchildren beforeadmission; profiletokens only, no fullcmdline/PIDkill — missingfactscausedcurrentunknown — cost:cannotexplainoldbytes retrospectively; newfacts belongonlynewcase.
+- Ruling: retain exact oldprofile/exe/hash/headless/no forbiddenflags, add directchild/startidentity corroboration — strongerownershipdiagnostic, neverwaivecriteria — cost:validbutunattested/detached routes remainRefused.
+- Ruling: A026M1 duplicatecurrentpointer reconciled atnewworkhandoff/historypreserved — currentdependency mustnotrestartoldcase — cost:no retroactivechange toA026review/history.
+- Ruling: pin loaded local node_modules CJS graph only, plus explicit local ESM/source/Node/Chrome — avoid capturing unrelated host preload modules/configuration — cost:not a universal host-attestation claim, actual owned process facts still mandatory.
+- Ruling: preserve single nativeRefused and correct short-readsourcewithout repeat — a prefix can hide forbidden suffix; real filecontrol mustreadEOF/capfailclosed — cost:currentrawremainsoldsource/noargcounts, no actualflagabsence/rootcauseclaim.
+- Ruling: next A028originalinvocationwitnessfeasibility, not whitespacetokenization — Chromiumtitlecanloseargvboundaries; staticmainnotpinnedbinaryproof — cost:ownershipadmission/appacquisitionstillUnknown.
+- Final: minor (deferred): M1 docs/status currentA027 paragraph pre-native27/3178; executionrecord/active_slice correct. Reconcile current paragraph on A028handoff; preserveoldentry, no source/nativeeffect.
+- Final: Ruling: corrected reader Chrome behavior — no correctednativeandbudgetexhausted — cost:sourcecontrols only, no retrospectiveupgrade.
+- Final: Ruling: actualprofile/headed/rootcause — originalargumentbytes/counts absent — cost:Unknown retained, summaryfalse notactualheadedproof.
+- Final: Ruling: invocation/pinnedtitleprovenance — mainHEADnotexactbinary; nextA028witnessfeasibility — cost:no whitespaceargvreconstructionoroldcasepass.
+- Final: Ruling: app/lineage/stateprops/fullA02 — nonewappoperation — cost:20of29/fullA02unchanged.
+- Final: Ruling: atomicadversarialwholehostattestation — onlysampledPID/start/exe relationships — cost:no universalattestationclaim.
+- Final: Ruling: extension/IDE/UI/SDK/release/otherhistoricalstatuses — outsideitem/no edits — cost:no deliveryorreadinesscredit.
+- Final: Ruling: reviewfullsuite — revieweronly29,parentfull3184freshseparate — cost:no claimreviewerranfullsuite.

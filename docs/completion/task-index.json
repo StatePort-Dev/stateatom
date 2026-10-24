@@ -1665,7 +1665,7 @@
       "execution_record": "148-owned-process-diagnostic.md",
       "active_slice": {
         "id": "A02.7",
-        "status": "blank-diagnostic-refused-source-complete-final-review-due",
+        "status": "bounded-process-diagnostic-complete-refused-no-app",
         "record": "148-owned-process-diagnostic.md",
         "base": "58796e7",
         "product_changed": false,
@@ -1674,8 +1674,8 @@
         "maximum_native_runs": 1,
         "native_attempts": 1,
         "scope": "Retain actual scoped process facts; at most one blank-browser diagnostic, no app run",
-        "source_focused": 29,
-        "full_source_controls": 3180,
+        "source_focused": 33,
+        "full_source_controls": 3184,
         "full_source_failures": 0,
         "full_source_cancelled": 0,
         "source_inputs_unchanged": {
@@ -1694,7 +1694,19 @@
         "actual_profile_or_headed_mode": "Unknown/Unsupported",
         "independent_saved_inputs": 370,
         "independent_negative_controls": 12,
-        "next_dependency": "A02.8 bounded original launch-argument witness feasibility; no old case rerun or assumption that proc title preserves argv"
+        "next_dependency": "A02.8 bounded original launch-argument witness feasibility; no old case rerun or assumption that proc title preserves argv",
+        "review": {
+          "count": 1,
+          "critical": 0,
+          "important": 2,
+          "important_fixed": 2,
+          "minor": 1,
+          "correction_passes": 1,
+          "rereview": false,
+          "report": ".artifacts/a02/owned-process-diagnostic-review/2026-10-24/report.md",
+          "deferred_minor": "M1 current docs/status paragraph stale; reconcile on next active-work handoff"
+        },
+        "final_checkpoint": ".artifacts/a02/owned-process-diagnostic-review/2026-10-24/final-checkpoint.json"
       },
       "completed_slices": [
         {

@@ -3,10 +3,11 @@
 import fs from 'node:fs/promises';import{createHash}from'node:crypto';
 const validPid=p=>Number.isSafeInteger(p)&&p>0&&p<=2147483647;
 const detail=e=>typeof e?.code==='string'?e.code:'READ_FAILED';
+export async function ownedProcessDeadline(task,timeoutMs=5000,code='OPERATION_TIMEOUT'){if(!Number.isSafeInteger(timeoutMs)||timeoutMs<1||timeoutMs>30000)throw RangeError('Finite diagnostic deadline required');let timer;try{return await Promise.race([Promise.resolve().then(task),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Object.assign(Error(code),{code})),timeoutMs);})]);}finally{clearTimeout(timer);}}
 export async function readOwnedProcessArgumentBytes(handle){const bytes=Buffer.alloc(65537);let total=0;for(;;){const{bytesRead}=await handle.read(bytes,total,bytes.length-total,total);if(!Number.isSafeInteger(bytesRead)||bytesRead<0||bytesRead>bytes.length-total)throw Error('Invalid argument read count');if(bytesRead===0)return bytes.subarray(0,total);total+=bytesRead;if(total>65536)throw Error('Argument bytes exceed diagnostic capacity');}}
 export function summarizeOwnedProcessArguments(args){
  const profileOptions=[],forbiddenFlags=[];let headless=false;
- for(let i=0;i<args.length;i++){const a=args[i];if(a.startsWith('--user-data-dir='))profileOptions.push({syntax:'equals',value:a.slice('--user-data-dir='.length)});else if(a==='--user-data-dir')profileOptions.push({syntax:'separate',value:args[i+1]??null});if(a.startsWith('--headless'))headless=true;const match=/no-sandbox|ignore-certificate-errors|disable-web-security|load-extension/.exec(a);if(match&&!forbiddenFlags.includes(match[0]))forbiddenFlags.push(match[0]);}
+ for(let i=0;i<args.length;i++){const a=args[i];if(a.startsWith('--user-data-dir='))profileOptions.push({syntax:'equals',value:a.slice('--user-data-dir='.length)});else if(a==='--user-data-dir'){const value=args[i+1];profileOptions.push({syntax:'separate',value:typeof value==='string'&&value&&!value.startsWith('-')?value:null});}if(a.startsWith('--headless'))headless=true;const match=/no-sandbox|ignore-certificate-errors|disable-web-security|load-extension/.exec(a);if(match&&!forbiddenFlags.includes(match[0]))forbiddenFlags.push(match[0]);}
  return{profileOptions,headless,forbiddenFlags};
 }
 function startTime(stat,pid){const end=stat.lastIndexOf(')'),prefix=stat.slice(0,stat.indexOf(' '));if(prefix!==String(pid)||end<0)throw Error('Invalid proc stat');const fields=stat.slice(end+2).trim().split(/\s+/),value=fields[19];if(!/^\d+$/.test(value||''))throw Error('Invalid proc start time');return value;}
@@ -22,9 +23,9 @@ async function readProcess(pid){
  after=await attempt('PROC_START_RECHECK_ERROR',async()=>startTime(await fs.readFile(base+'/stat','utf8'),pid));
  f.startTimeStable=before!==null&&before===after&&f.procExe!==null&&f.procExe===exeAfter;return f;
 }
-export async function collectOwnedBrowserProcess(session,expected){
+export async function collectOwnedBrowserProcess(session,expected,{timeoutMs=5000}={}){
  const f={schema:'stateatom.owned-browser-process-facts/1',driverPid:process.pid,reportedBrowserPids:[],reported:null,directChildren:[],errors:[]};
- try{const r=await session.send('SystemInfo.getProcessInfo');if(!Array.isArray(r.processInfo))throw Error('Missing process info');const browser=r.processInfo.filter(x=>typeof x?.type==='string'&&x.type.toLowerCase()==='browser');if(browser.length>16){f.errors.push({code:'CDP_PID_CAPACITY'});}else f.reportedBrowserPids=browser.map(x=>x.id);if(f.reportedBrowserPids.length===1&&validPid(f.reportedBrowserPids[0]))f.reported=await readProcess(f.reportedBrowserPids[0]);}catch(e){f.errors.push({code:'CDP_ERROR',detail:detail(e)});}
+ try{const r=await ownedProcessDeadline(()=>session.send('SystemInfo.getProcessInfo'),timeoutMs,'CDP_TIMEOUT');if(!Array.isArray(r.processInfo))throw Error('Missing process info');const browser=r.processInfo.filter(x=>typeof x?.type==='string'&&x.type.toLowerCase()==='browser');if(browser.length>16){f.errors.push({code:'CDP_PID_CAPACITY'});}else f.reportedBrowserPids=browser.map(x=>x.id);if(f.reportedBrowserPids.length===1&&validPid(f.reportedBrowserPids[0]))f.reported=await readProcess(f.reportedBrowserPids[0]);}catch(e){f.errors.push({code:e?.code==='CDP_TIMEOUT'?'CDP_TIMEOUT':'CDP_ERROR',detail:detail(e)});}
  try{const data=await fs.readFile('/proc/self/task/'+process.pid+'/children','utf8'),pids=data.trim()?data.trim().split(/\s+/).map(Number):[];if(pids.length>16||pids.some(p=>!validPid(p))){f.errors.push({code:'CHILD_PID_CAPACITY_OR_FORMAT'});}else f.directChildren=await Promise.all(pids.map(readProcess));}catch(e){f.errors.push({code:'CHILD_READ_ERROR',detail:detail(e)});}
  return f;
 }

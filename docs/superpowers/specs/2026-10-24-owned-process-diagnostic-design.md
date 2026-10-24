@@ -56,3 +56,12 @@ used earlier single-read source and is not repeated or upgraded by this fix.
 Linux process titles may replace the original argv representation; absence of
 recognized flags must not be described as actual headed mode/profile non-use.
 Original invocation evidence is a separate next feasibility question, not waived.
+
+
+Final review correction: malformed separate profile option records null if the
+following token is another option, and never copies that unrelated credential.
+Capture/send/session acquisition and each cleanup stage have finite5000ms logical
+deadlines (tests20ms), launch20000ms; timeouts remain Incomplete and later stages
+run. Late completion cannot revive accepted facts/cleanupflags. These diagnostic
+bounds are not cancellation guarantees, native fault-recovery evidence or approved
+product Live/latency parameters. No reported PID kill, native rerun or old upgrade.
