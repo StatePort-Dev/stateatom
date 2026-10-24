@@ -122,3 +122,19 @@ not whole-guide UI acceptance; next boundedV03.13 tests those entry controls. Na
 GTK Recent can show host folder labels: raw chooser screens are private ignored
 artifacts, not public examples or clean-OS proof. No independent-human gate, new
 product build/source, certificates/accounts/publication or fullV03 acceptance.
+
+
+## Subsequent V03.13 actual browser/report entry
+
+[Native entry checkpoint](../completion/126-v03-native-entry.md) closes the previous
+extension-URL launch/CDP file-selection assistance gaps: actual toolbar action,
+reader link and native Open File select the retained317667-byte report. Six gates,
+337 stable inputs/327 unchanged Atom inputs/186 original persistent files, full
+payload equality, empty authority/no reader HTTP and owned cleanup pass. The first
+environment-observer FAIL stays historical. Runtime GUI environment/Recent effects
+remain unavailable; chooser Home labels/raw private screenshots are not clean-OS
+or human-usability proof. This uses copied installed test state, not a fresh install.
+
+No app/source/codec/Vue or product build repeat. ONE final review pending. Next one
+bounded gap is V03.14 actual VS Code VSIX and Copy connection receipt guide controls
+on owned IDE state; full guide/V03/20-of29 criteria remain unchanged.

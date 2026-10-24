@@ -25,7 +25,9 @@ older65 reader's structure limit. This is not a general old-reader compatibility
 promise. [The scoped qualification](completion/117-v03-packed-detailed-report.md)
 records the earlier66 report route. [Current70 browser installation](completion/125-v03-guide-browser-install.md)
 records actual Developer mode/Load unpacked and assisted Basic/report transfer;
-full guide/source/platform acceptance remains incomplete.
+[Actual toolbar and native report entry](completion/126-v03-native-entry.md)
+are separately observed on copied installed state. These scoped checks do not
+establish full guide/source/platform acceptance.
 
 For optional development-source access, obtain the helper VSIX and the separate
 Vite plugin tarball with their own compatibility record. A helper installation

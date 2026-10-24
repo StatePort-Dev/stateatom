@@ -202,3 +202,14 @@ additional document-offline inference. No added usefulness beyond templates; L02
 A02, production and final validation gates remain open. Historical roadmap criteria,
 prior .26 baseline24, and earlier unavailable-device outcomes are unchanged.
 Next is actual installed Atom opt-in/Explain/Cancel/target-change/offline controls.
+
+
+### 2026-10-24 installed entry checkpoint
+
+[V03.13](../completion/126-v03-native-entry.md) separately observes actual Chrome
+toolbar inspector launch and native reader file selection:6 gates/337 stable inputs,
+unchanged product327 and original profile186, full retained report/empty authority/
+no HTTP. Copied installed state, agent operation and unavailable GTK env effects
+remain scoped. ONE final review pending. Whole20/29/fullV03/C09/A02/L02/V02 and all
+historical criteria/results are unchanged. Next one bounded item is V03.14 actual
+VS Code VSIX installation/receipt guide entry, with exact scope still to register.

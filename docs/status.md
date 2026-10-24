@@ -189,9 +189,14 @@ workflow/suite run. Full-guide
 entry assistance remains: extension-URL inspector launch/CDP reader file input.
 Next boundedV03.13 tests toolbar and native import entry; whole20/29/fullV03 gates
 remain open. No product source/build/certificates/accounts/publication changed.
-[V03.13](completion/126-v03-native-entry.md) now prepares actual toolbar launch and
-native report import on a hashed copy of the accepted private recipient state.
-No original profile mutation/new installation/app repeat is claimed; runtime due.
+[V03.13](completion/126-v03-native-entry.md) now passes actual toolbar launch, reader-link opening and native
+Open File import on a hashed copy of accepted private recipient state:6 gates,
+337 stable inputs/327 unchanged product inputs/186 original profile files, exact
+317667-byte payload and empty authority/no HTTP. First environment-observer FAIL
+is retained; runtime GUI env/Recent effect remain unavailable and chooser labels
+preclude clean-OS privacy credit. No new installation/app rerun. ONE review pending;
+next one itemV03.14 is actual VS Code VSIX/receipt entry on owned IDE state. Full
+guide/V03 and whole20/29 remain unchanged.
 Original64 Basic/active/warm-source/input results remain
 historical:104 embedding Basic and both active/off targets still miss, no waiver.
 Historical V02.1 Basic/active-observer measurements began under the

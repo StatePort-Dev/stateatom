@@ -554,6 +554,28 @@
       "review_pending": false,
       "review_receipt": ".artifacts/v03/guide-install/2026-10-24/review/receipt.json",
       "native_revision": "43448fc"
+    },
+    {
+      "id": "V03.13-native-toolbar-link-and-file-entry",
+      "application": "Existing V03.12 retained report; no live app execution",
+      "execution_record": "../completion/126-v03-native-entry.md",
+      "evidence": ".artifacts/v03/guide-entry/2026-10-24T00-11-37-794Z/results.json",
+      "status": "PASS_ACTUAL_TOOLBAR_LINK_AND_NATIVE_FILE_ENTRY_NOT_FULL_V03",
+      "native_named_gates": 6,
+      "registered_inputs": 337,
+      "product_inputs_unchanged": 327,
+      "original_persistent_files_unchanged": 186,
+      "new_installation_claim": false,
+      "download_bytes": 317667,
+      "full_payload_equal": true,
+      "recipient_authority_unchanged": true,
+      "reader_http_requests": 0,
+      "runtime_gui_environment": "UNAVAILABLE",
+      "task_local_recent": "UNAVAILABLE_ENOENT",
+      "whole_guide_accepted": false,
+      "whole_V03_complete": false,
+      "review_pending": true,
+      "native_revision": "b794fb5"
     }
   ]
 }
