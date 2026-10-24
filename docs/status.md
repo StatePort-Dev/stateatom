@@ -2148,3 +2148,9 @@ are explicit. No full green originating run, product rebuild/app/source campaign
 full guide/V03/20-of29 upgrade. ONE review2Important/2Minor corrected once with12 synthetic+2 reporting controls;
 no new native run. Next one V02.9 diagnoses retained
 Live/Apply latency phases before any new performance campaign.
+
+[V02.9](completion/128-v02-input-request-phases.md) is preregistered for20 finite
+input/Apply phase rows on unchanged70/UI2. Optional timing whitelist source14 checks
+PASS; native timings remain due. It separates existing Apply/state/capability
+requests, not internal guard/CPU cause or uninstrumented performance acceptance.
+No original target/250ms/guard/full-task count changes or V03/IDE/certificate repeat.

@@ -4309,100 +4309,20 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.8",
-        "title": "Live/Draft timing, ledger/native Close and superseded inspection error correction",
-        "status": "bounded-item-accepted-one-review-two-reporting-minors-corrected",
-        "plan": "../superpowers/plans/2026-10-23-v02-input-modes.md",
-        "retained_phase_addendum": "../superpowers/plans/2026-10-23-v02-input-modes-remainder.md",
-        "product_correction_addendum": "../superpowers/plans/2026-10-23-v02-input-stale-load.md"
+        "id": "V02.9",
+        "title": "Own-inspector input request phase diagnosis",
+        "status": "in-progress-preregistered-no-native-timing-claim",
+        "record": "128-v02-input-request-phases.md",
+        "design": "../superpowers/specs/2026-10-24-v02-input-phases-design.md",
+        "plan": "../superpowers/plans/2026-10-24-v02-input-phases.md",
+        "product_source_changed": false,
+        "whole_V02_complete": false
       },
-      "execution_record": "108-v02-input-modes-and-stale-load.md",
+      "execution_record": "128-v02-input-request-phases.md",
       "current_checkpoint": {
-        "id": "V02.8-input65",
-        "status": "accepted-bounded-input-fix-and-measurement-not-whole-V02",
-        "record": "108-v02-input-modes-and-stale-load.md",
-        "candidate": "0.1.0-candidate.20261021.65",
-        "handoff": ".artifacts/atom/2026-10-23T13-08-24-618Z/atom-handoff.json",
-        "verification": ".artifacts/v02/input-modes/2026-10-23/verification65-reviewed.json",
-        "revision": "fa9515743a76b9ff48beeddd93735cbda8725fed",
-        "source_inputs": 887,
-        "focused_source_checks": 119,
-        "new_inspector_regressions_controls": 7,
-        "full_source_checks": 2454,
-        "strict_types": 2,
-        "package_admission": 9,
-        "affected_native_H09": 17,
-        "fresh_native_rows": 92,
-        "measured_samples": 80,
-        "warmup_samples": 12,
-        "ledger_checkpoints": 132,
-        "untimed_fill_writes": 36,
-        "history_limit_refusals": 2,
-        "actual_native_Close_controls": 2,
-        "paint_ms": {
-          "standalone": {
-            "live": {
-              "n": 20,
-              "min": 1671.2999999970198,
-              "p50": 2199.5,
-              "p95": 3905.60000000149,
-              "max": 4602.199999999255
-            },
-            "draftLocal": {
-              "n": 20,
-              "min": 16.800000000745058,
-              "p50": 21.700000001117587,
-              "p95": 28.300000000745058,
-              "max": 29.099999997764826
-            },
-            "draftApply": {
-              "n": 20,
-              "min": 1446,
-              "p50": 1947.8499999996275,
-              "p95": 3023.300000000745,
-              "max": 3311.199999999255
-            }
-          },
-          "embedding": {
-            "live": {
-              "n": 20,
-              "min": 1357.9000000022352,
-              "p50": 1482.1500000003725,
-              "p95": 2057.199999999255,
-              "max": 2323.699999999255
-            },
-            "draftLocal": {
-              "n": 20,
-              "min": 19.699999999254942,
-              "p50": 23.09999999962747,
-              "p95": 24.799999997019768,
-              "max": 24.900000002235174
-            },
-            "draftApply": {
-              "n": 20,
-              "min": 1197.5999999977648,
-              "p50": 1404.449999999255,
-              "p95": 1662,
-              "max": 1748.699999999255
-            }
-          }
-        },
-        "performance_acceptance": false,
-        "targets_waived": false,
-        "whole_task_complete": false,
-        "historical64_evidence": "Original Basic/active/warm/input data preserved, not fresh65 target qualification; 104 misses remain open",
-        "next_bounded_step": "V01 CI native lanes and packed contracts; begin deterministic UI/packed contract CI slice",
-        "review": {
-          "count": 1,
-          "fresh_context": true,
-          "critical": 0,
-          "important": 0,
-          "minor": 2,
-          "reporting_only_minor_corrections": 2,
-          "product_correction_passes": 0,
-          "native_rerun": false,
-          "report": ".artifacts/v02/input-modes/2026-10-23/review/report.md"
-        }
+        "record": "128-v02-input-request-phases.md",
+        "status": "in-progress-preregistered-no-native-timing-claim",
+        "next_bounded_step": "V02.9 finite20-row owned Apply/state/capabilities phase probe on unchanged70; no old matrix repeat or guard removal"
       },
       "completed_slices": [
         {
@@ -4707,7 +4627,9 @@
             "report": ".artifacts/v02/warm-source/2026-10-23/review/report.md"
           }
         }
-      ]
+      ],
+      "last_completed_implementation_plan": "../superpowers/plans/2026-10-23-v02-input-stale-load.md",
+      "implementation_plan": "../superpowers/plans/2026-10-24-v02-input-phases.md"
     },
     {
       "id": "V03",
@@ -5534,11 +5456,11 @@
     ]
   },
   "reconciliation": {
-    "document": "127-v03-ide-entry.md",
+    "document": "128-v02-input-request-phases.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.14-entry-evidence-engineering-complete-native-console-FAIL",
-    "next_item": "V02.9: diagnose retained V02.8 Live/Apply latency phases; preserve targets/distributions, choose one causal correction/control before fresh measurements",
+    "current_increment": "V02.9-input-phase-preregistration",
+    "next_item": "V02.9 finite20-row owned Apply/state/capabilities phase probe on unchanged70; no old matrix repeat or guard removal",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -5562,7 +5484,7 @@
       "V01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "V03",
+    "active_item": "V02",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -7739,11 +7661,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.14 scoped entry evidence complete after ONE review/ONE fix: actual VSIX+exact7 payload/metadata, actual Copy receipt408/private0600 on copied108;516 stable/source65. Native FAIL1 Code Copilot remains, first shared-store write explicit.12 synthetic+2 reporting checks; no native rerun/product changes. Whole20/29/fullV03 unchanged. Next oneV02.9 retained input-latency diagnosis.",
+    "current_activity_note": "V03.14 completee7a6eba within composite UI evidence/native console FAIL. V02.9 source14 checks/probe optional validated whitelist, unchanged70/UI2/327 product; native20-row diagnostic due. No targets/new Live SLO/whole20of29 upgrade.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "5a61f5c actual install;457ea21 actual receipt; no product source/build change",
+    "current_source_revision": "e7a6eba base, no product source/build change",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V02.9: diagnose retained V02.8 Live/Apply latency phases; preserve targets/distributions, choose one causal correction/control before fresh measurements"
+    "next_bounded_step": "V02.9 finite20-row owned Apply/state/capabilities phase probe on unchanged70; no old matrix repeat or guard removal"
   },
   "next_task": "V02"
 }

@@ -1,0 +1,62 @@
+{
+  "schema": "stateatom.input-request-phases-case/1",
+  "base": "e7a6ebae87b79cf14b18ff6d27660b34af29b439",
+  "handoff": ".artifacts/atom/2026-10-23T20-57-18-973Z/atom-handoff.json",
+  "browser": {
+    "version": "Chrome/153.0.8010.12",
+    "executableSha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e"
+  },
+  "inputHashes": {
+    "tests/integration/input-request-phases-native.mjs": "5f27a548c440c4efd1c57e9deedd0deacf4b0b4a63b39ffbae8b86009016c9c7",
+    "tests/helpers/inspector-rpc-phase-probe.mjs": "dc8832e63861a912744adbb1dcc51750c2048c82fa5cc68c4a609755196c2cdd",
+    "tests/atom/inspector-rpc-phase-probe.test.mjs": "6b957bad6c2e3f7bea8c51f8a7988b5bd454f9cd234ed7caeda8c98296e5247e",
+    "tests/helpers/input-mode-performance.mjs": "7edfdd39dc0675b74e1d7926a1e99ddd44d1a254078f51897e4d47dc21e0dff9",
+    "tests/atom/input-mode-performance.test.mjs": "ae7118fb33cf15d66778ae41fa2352352fc458571ab1fad9224159871f51d30d",
+    "tests/helpers/native-inspector-ui.mjs": "2a82f3a643bbbacd9a6f8ed7e798f77b1416f110f1828ac23fd97b24bc8109b9",
+    "tests/helpers/source-access-native-desktop.mjs": "786011664d68f658bd1d5e7c002963642a50a16661d7f67b2413ac8aef182f57",
+    "scripts/native-browser.mjs": "93ab1a8f22ef1926708ed4e558e4a7ca036800b079c07876ceacf211d0bee064",
+    "scripts/harness.mjs": "3796e76b60f450b46cde335521efb9fd1dcf3aa1305501f30c2af61627f2d7ec",
+    "scripts/atom-package-receipt.mjs": "f54a3c72c65b5f032a2936b0a216b2516016fa8c356388bf33dfc9397a0b4d7c",
+    "tests/fixtures/native-controls/index.html": "6ef8450b4060e9708047aea43f4529668ffd9fdb6caf3ee37a526d56d4e8f8be",
+    "docs/superpowers/specs/2026-10-24-v02-input-phases-design.md": "d5c169aef0d3d4224f9831f4673aa153155b3d3fbcd4d84a04af995809a4c098",
+    "docs/superpowers/plans/2026-10-24-v02-input-phases.md": "d76da91d8eb8e36991716713cf3257bc5661338fb1e18a8f20e526b8c9f98b71",
+    "package.json": "9e17e86330ce8f604d9a081da7ab650453ec79cfcb660467f342822cf480aa8b",
+    "package-lock.json": "e272cc4821dcb4fe3405aab38fe688431bf89cf86ffe8626e333328708a221fc"
+  },
+  "protocol": {
+    "hosts": [
+      "standalone",
+      "embedding"
+    ],
+    "blocksPerHost": 5,
+    "warmupBlocks": 1,
+    "totalRows": 20,
+    "warmupRows": 4,
+    "measuredRows": 16,
+    "order": "block0 live/draft then alternating draft/live and live/draft",
+    "phaseCap": 32,
+    "phaseOperations": [
+      "inputs-apply",
+      "state",
+      "capabilities"
+    ],
+    "applyCountPerGesture": 1,
+    "defaultLiveDebounceMs": 250,
+    "historyLimitChanged": false,
+    "performanceAcceptance": false,
+    "targetsWaived": false
+  },
+  "setupAssistance": [
+    "CLI extension preload in fresh owned profiles; no new guide-installation claim",
+    "Exact loopback development permissions use existing helper before timing; no production/account/certificate/IDE",
+    "Native inspector direct extension URL, fixture selectors and paced input helpers; no human usability claim"
+  ],
+  "boundaries": [
+    "Owned Promise-only inspector wrapper returns exact original Promise/args/receiver/result/error; no extra request or plan/value/token/response read",
+    "No app-target test CDP, worker instrumentation, source edits, full matrix, old app experiments or arbitrary expressions/getters",
+    "Retained65 measurements stay historical; current instrumented70 phases do not establish an uninstrumented p95 target or internal guard/native/storage/CPU causality",
+    "All raw ordered traces and overlaps/tails remain; cap/pending/missing/failure invalidate trace instead of retry/trimming",
+    "No new Live/Apply SLO, debounce policy, production grant or handoff UX decision",
+    "Whole20/29 and V02/V03/C09/A02/L02 remain open"
+  ]
+}
