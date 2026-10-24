@@ -28,7 +28,7 @@ export function createGuardianSession({registry,executeCleanup}){
  async function request(op,input){
   const args=argumentsOf(op,input);open();if(pending>=64)fail('SESSION_LIMIT');pending++;
   try{
-   await ready;open();const c=await client;open();let value=await registry[op](...(op==='snapshot'?[]:[c]),...args);open();
+   await ready;open();const c=await client;open();if(op==='verify'&&typeof registry.verifyWithSnapshot==='function'){const result=await registry.verifyWithSnapshot(c,...args);open();return result;}let value=await registry[op](...(op==='snapshot'?[]:[c]),...args);open();
    if(op==='release'||op==='retryCleanup')await drain();open();const snapshot=await registry.snapshot();open();
    if(op==='release')value={phase:snapshot.leases.some(l=>l.leaseId===args[0].leaseId)?'closing':'released'};
    return {value,snapshot};

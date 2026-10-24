@@ -4309,73 +4309,35 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.12",
-        "title": "Guardian registry worker intervals during existing input gestures",
-        "status": "complete-finite-registry-diagnostic-not-performance-acceptance",
-        "record": "131-v02-guardian-registry-phases.md",
-        "design": "../superpowers/specs/2026-10-24-v02-guardian-registry-phases-design.md",
-        "plan": "../superpowers/plans/2026-10-24-v02-guardian-registry-phases.md",
-        "product_source_changed": false,
+        "id": "V02.13",
+        "title": "Same live verify and fresh snapshot in one private registry message",
+        "status": "source-complete-review-due-not-packed-native",
+        "record": "132-v02-verify-snapshot.md",
+        "design": "../superpowers/specs/2026-10-24-v02-verify-snapshot-design.md",
+        "plan": "../superpowers/plans/2026-10-24-v02-verify-snapshot.md",
+        "product_source_changed": true,
+        "changed_product_files": [
+          "core/guardian-worker-wire.mjs",
+          "core/guardian-session.mjs"
+        ],
+        "product_inputs": 327,
+        "unchanged_product_inputs": 325,
+        "source_checks": 2684,
+        "focused_checks": 131,
+        "new_transport_controls": 11,
         "whole_V02_complete": false,
         "performance_acceptance": false,
         "targets_waived": false,
-        "review_pending": false,
-        "source_checks": 2673,
-        "focused_checks": 82,
-        "driver_failure_controls": 16,
-        "native_rows": 12,
-        "warmup_rows": 4,
-        "measured_rows": 8,
-        "owned_rpc_rows": 40,
-        "apply_rpc_rows": 12,
-        "state_rpc_rows": 26,
-        "capability_rpc_rows": 2,
-        "worker_api_rows": 24465,
-        "registry_rows": 21876,
-        "registry_peak_rows": 2342,
-        "registry_ops": {
-          "snapshot": 10944,
-          "verify": 7111,
-          "begin": 1910,
-          "finish": 1911
-        },
-        "registered_inputs": 354,
-        "product_inputs_unchanged": 327,
-        "helper_inputs_unchanged": 223,
-        "protocol_negative_controls": 25,
-        "independent_interval_sweep": true,
-        "runtime_result": ".artifacts/v02/input-guardian-registry-phases/2026-10-24T02-45-40-919Z/results.json",
-        "actual_native_revision": "da87a6f",
-        "verification": ".artifacts/v02/guardian-registry-phases/2026-10-24/post-review-checkpoint.json",
-        "review": {
-          "schema": "stateatom.guardian-registry-phase-review/1",
-          "reviewer": "/root/v0212_whole_review",
-          "model": "gpt-6-astra",
-          "reasoning": "high",
-          "base": "532f4dc4b19fa12685e9c1b9ac8fbc98c9ba06d9",
-          "head": "6fd01696f0432aa84c529787bd59fb68813e3d2f",
-          "critical": 0,
-          "important": 1,
-          "minor": 0,
-          "correction_passes": 1,
-          "re_review": false,
-          "native_repeated": false,
-          "actual_native_revision": "da87a6f",
-          "reportSha256": "570b7c9820a900a71cbbb24549ef71ae7541bee30613f38f2b1cefedf4b26575",
-          "important_fixed": "independent paired raw snapshots before validation, pending timeout and best-effort failure retention preserving primary error",
-          "source_checks": 2673,
-          "combined_controls": 82,
-          "driver_controls": 16
-        },
-        "original_focused_checks": 78,
-        "original_driver_failure_controls": 12,
-        "post_run_harness_correction": ".artifacts/v02/guardian-registry-phases/2026-10-24/post-run-harness-correction.json"
+        "review_pending": true,
+        "native_repeated": false,
+        "packed_native_qualification": false,
+        "verification": ".artifacts/v02/verify-snapshot/2026-10-24/source-delta.json"
       },
       "execution_record": "130-v02-worker-api-phases.md",
       "current_checkpoint": {
-        "record": "131-v02-guardian-registry-phases.md",
-        "status": "complete-finite-registry-diagnostic-not-performance-acceptance",
-        "next_bounded_step": "V02.13 choose/design bounded source control for redundant registry snapshots preserving every live verification/recovery/revocation/cleanup barrier; no guard removal or old matrix rerun"
+        "record": "132-v02-verify-snapshot.md",
+        "status": "source-complete-review-due-not-packed-native",
+        "next_bounded_step": "ONE final V02.13 source review, then V02.14 immutable candidate and affected installed-native qualification for atomic verify+fresh snapshot; register exact protocol before native"
       },
       "completed_slices": [
         {
@@ -5839,11 +5801,11 @@
     ]
   },
   "reconciliation": {
-    "document": "131-v02-guardian-registry-phases.md",
+    "document": "132-v02-verify-snapshot.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.12-complete-finite-registry-diagnostic",
-    "next_item": "V02.13 choose/design bounded source control for redundant registry snapshots preserving every live verification/recovery/revocation/cleanup barrier; no guard removal or old matrix rerun",
+    "current_increment": "V02.13-source-complete-review-due",
+    "next_item": "ONE final V02.13 source review, then V02.14 immutable candidate and affected installed-native qualification for atomic verify+fresh snapshot; register exact protocol before native",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8260,11 +8222,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Native12rows/21876registry+24465API/40RPC/354inputs PASS. ONE review1Important failure-retention fix once RED→GREEN/2673full82combined; native da87a6f unchanged. Whole20/29/fullV02 thresholds unchanged. NextV02.13.",
+    "current_activity_note": "V02.13 source-only atomic same verify+fresh snapshot:2684full/131focused/11new controls PASS,2productfiles changed/325unchanged,helper223/installed71 retained. ONE review due; no new packed/native/speedup/fullV02 credit. Whole20/29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "da87a6f",
+    "current_source_revision": "bdccd06+working-source-delta",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V02.13 choose/design bounded source control for redundant registry snapshots preserving every live verification/recovery/revocation/cleanup barrier; no guard removal or old matrix rerun"
+    "next_bounded_step": "ONE final V02.13 source review, then V02.14 immutable candidate and affected installed-native qualification for atomic verify+fresh snapshot; register exact protocol before native"
   },
   "next_task": "V02"
 }
