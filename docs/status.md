@@ -1,10 +1,11 @@
 # Project status
 
 Active bounded work: [A02.6](completion/147-a02-array-callsite-bridge.md) source
-call-site bridge. Frame API and conservative Babel transform pass57 focused/
-3095 full source controls;327 product/nine historical inputs unchanged. Actual
+call-site bridge. Frame API, conservative Babel transform and finite source driver
+pass111 focused/3149 full source controls;327 product/nine historical inputs unchanged. Actual
 receiver/argument/callback semantics are checked, including the prototype's stack
-counterexample. Native original/off/on qualification is not run yet. No product
+counterexample. Driver/source admission is ready; native original/off/on qualification
+is not prepared or run yet. No product
 integration or new whole-task credit;20/29 unchanged.
 
 Current work, 2026-10-24: [A02.5](completion/146-a02-array-transfer-technique.md)

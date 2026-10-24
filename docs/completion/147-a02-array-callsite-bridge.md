@@ -49,3 +49,37 @@ IDs and explicit metadata→final **57PASS**. Fresh final `npm test` **3095PASS/
 `.artifacts/a02/array-callsite-source/2026-10-24`; product327/nine old experiment/app
 files match and no product importer. TodoMVC original manifest has28 files, not
 commerce65. Native0; source/task commit and Task2 frozen acceptance remain due.
+
+## Task2 source driver ready, native not prepared yet
+
+Task1 is committed **5d0955d**; task-done57PASS covers40146b7..5d0955d.
+Task2 extends its recorder with atomic `sealWindow`: close collection/retire tokens,
+retain pending as incomplete, permit only explicit next-window resume. Old A02.5
+stays unchanged. Missing seal API23PASS/26FAIL→API47PASS/2FAIL (live/unsealed
+accepted)→strict guard GREEN. Native window acceptance now requires sealed data,
+collectingfalse/pending0, full source call/yield joins and exact source metadata.
+
+Pure native-data guards: initial25 missing-module failures→25PASS; closure controls
+expand to27. Driver guard/profile/CLI initial20FAIL→19PASS/1 missing driver→all pass.
+Three coherent page/document counterexamples19PASS/4FAIL including missing CLI→fixed
+page label, same loader/frame/target and single-frame binding. A real temporary-file
+case/source drift test23PASS/1FAIL missing helper→pre-run expected hashes retained
+and checked again at finalization. A refused-phase persistence test24PASS/1FAIL
+missing saver→raw facts saved before validation, and mode failure facts/screenshot
+are acquired before closing its page. These are source/filesystem controls, not
+native fault-recovery evidence.
+
+Current driver imports no IDE/extension launcher. Prepare is resource-free and
+requires a clean source commit/new unique output; native execution requires a
+committed case and exclusive run marker. Actual Node/proc identity, Chrome binary/
+owned PID/profile/headless/sandbox, source/bundle/manifest and independent cleanup
+are checked. No certificate or system/user-profile operation. Runtime collection
+starts only at declared windows; setup has collection sealed. Capture waits for
+actual UI plus recorded completed Main map metadata under the fixed20s harness
+timeout, then seals. That timeout is not an approved Live/latency product policy.
+
+Final affected aggregate **111PASS**; current fresh `npm test` **3149PASS/0FAIL/
+0cancelled/0SKIP**,99.71s, terminal92696. Earlier3148/3149 source checkpoints are
+retained in separate logs and not relabelled. Current25 driver controls pass after
+readiness finalization. **No browser/HTTP/native case has started.** Commit this
+source checkpoint, then prepare/pin the ONE case from these clean bytes.

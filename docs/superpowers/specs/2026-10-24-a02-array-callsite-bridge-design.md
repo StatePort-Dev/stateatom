@@ -53,6 +53,11 @@ tokens while retaining weak page-scoped identity labels; never reopens Stop.
 Stop clears records and IDs. Reentrant Stop/rotation between begin and finish
 cannot revive entries. Old A02.5 wrapper remains unchanged, including its Minor.
 
+Task2 boundary: `sealWindow()` returns a closed snapshot/retention record and
+retires tokens. Later calls cannot change it; only an explicit next startWindow
+resumes collection. Pending-at-seal stays incomplete. Native qualification requires
+sealed/collectingfalse/pending0, never a live prefix.
+
 ## Source transform and semantic admission
 
 New `instrumentArrayCallsites(source,file,{enabled=false,sourceType='module'})`
@@ -97,6 +102,12 @@ filter after toggle, stopped observer while app continues. Before each phase an
 explicit bounded window; save each window before rotation. Require exact original
 Main source sites/digests and unique row/element callback links, equal rows distinct,
 new event/window identities, visible output parity and no oracle/app setter.
+Protocol refinement before launch: first row is setup, then equal-window adds the
+second row. Toggle and active-route selection use separately sealed windows,
+giving six accepted UI phases equal/same/changed/toggle/filtered/stopped. Preserve
+all StrictMode groups; validate every complete Main map group in each window.
+At least one new first-row identity per edit and unchanged second-row identity
+are required; no map group is labelled the committed selected DOM producer.
 No state producer or selected DOM identity edge inferred from UI text.
 
 Freeze source/bundles/Node/Chrome/original dependencies and expected assertions

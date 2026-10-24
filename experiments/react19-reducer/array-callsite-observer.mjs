@@ -5,7 +5,7 @@ export function createArrayCallsiteObserver({page,enabled=true}={}){
  const nativeFilter=Array.prototype.filter,nativeMap=Array.prototype.map,apply=Reflect.apply,array=Array.isArray,descriptor=Object.getOwnPropertyDescriptor,Reference=WeakRef;
  const object=x=>x!==null&&(typeof x==='object'||typeof x==='function');
  const scope='Historical original source-call callback identity links; causal storage and selected producer unknown';
- let calls=[],tokens=new WeakMap(),ids=new WeakMap(),identity=0,callSerial=0,generation=0,sequence=0,label='initial',yields=0,stopped=false,overflow=false,invalid=false,reason=null,unsupported=[];
+ let calls=[],tokens=new WeakMap(),ids=new WeakMap(),identity=0,callSerial=0,generation=0,sequence=0,label='initial',yields=0,stopped=false,collecting=true,overflow=false,invalid=false,reason=null,unsupported=[];
  const window=()=>({id:page+':window:'+generation,label});
  const id=value=>{let n=ids.get(value);if(!n){n=page+':object:'+ ++identity;ids.set(value,n);}return n;};
  const ref=value=>object(value)?new Reference(value):null;
@@ -19,7 +19,7 @@ export function createArrayCallsiteObserver({page,enabled=true}={}){
   if(!['line','column','endLine','endColumn'].every(k=>Number.isSafeInteger(s[k])&&s[k]>0)||s.endLine<s.line||s.endLine===s.line&&s.endColumn<s.column)return null;return s;
  }
  function begin(method,receiver,site){
-  if(!enabled||stopped||overflow||invalid)return null;
+  if(!enabled||stopped||!collecting||overflow||invalid)return null;
   try{
    if(method!==nativeFilter&&method!==nativeMap){note(null,'Non-native array method; no execution evidence');return null;}
    const s=sourceSite(site);if(!s){note(null,'Inert exact source site required');return null;}
@@ -29,7 +29,7 @@ export function createArrayCallsiteObserver({page,enabled=true}={}){
   }catch{refuse('Observation bookkeeping unavailable');return null;}
  }
  function yielded(token,item,index,receiver,result){
-  if(!enabled||stopped||overflow||invalid)return result;
+  if(!enabled||stopped||!collecting||overflow||invalid)return result;
   try{
    const entry=object(token)?tokens.get(token):null;if(!entry)return result;
    if(entry.done||receiver!==entry.receiver.deref()||!Number.isSafeInteger(index)||index<0){refuse('Invalid or late original callback frame');return result;}
@@ -40,12 +40,12 @@ export function createArrayCallsiteObserver({page,enabled=true}={}){
   return result;
  }
  function finish(token,result){
-  if(!enabled||stopped||overflow||invalid)return result;
+  if(!enabled||stopped||!collecting||overflow||invalid)return result;
   try{const entry=object(token)?tokens.get(token):null;if(!entry)return result;if(entry.done||!object(result)){refuse('Invalid or repeated call completion');return result;}entry.result=ref(result);entry.resultId=id(result);entry.finished=++sequence;entry.done=true;}catch{refuse('Observation bookkeeping unavailable');}
   return result;
  }
  function abort(token){try{const entry=object(token)?tokens.get(token):null;if(entry&&!entry.done){calls=calls.filter(x=>x!==entry);yields-=entry.yields.length;tokens.delete(token);}}catch{refuse('Observation bookkeeping unavailable');}}
- function startWindow(next){if(stopped||typeof next!=='string'||!next||next.length>80)return null;clear();++generation;label=next;sequence=0;overflow=false;invalid=false;reason=null;unsupported=[];return window();}
+ function startWindow(next){if(stopped||typeof next!=='string'||!next||next.length>80)return null;clear();++generation;label=next;sequence=0;collecting=true;overflow=false;invalid=false;reason=null;unsupported=[];return window();}
  function snapshot(){
   const audit=calls.map(c=>({id:c.id,kind:c.kind,site:{...c.site},sourceId:c.receiverId,resultId:c.resultId,started:c.started,finished:c.finished,status:c.done?'completed':'pending',yields:c.yields.map(y=>({index:y.index,itemId:y.itemId,elementId:y.elementId,accepted:y.accepted}))}));
   const base={schema:'stateatom.array-callsite-observation/1',status:'Unknown/Unsupported',reason:stopped?'Observer stopped':overflow||invalid?reason:!enabled?'Observer disabled':'No unique completed original callback link',scope,page,window:window(),calls:audit,links:[],unsupported:[...unsupported],causalTransfer:'Unknown/Unsupported',resultStorage:'Unknown/Unsupported',currentMembership:'Unknown/Unsupported',fieldOwnership:'Unknown/Unsupported',stateRevision:'Unknown/Unsupported',propTransfer:'Unknown/Unsupported',selectedPropertyOrigin:'Unknown/Unsupported',fullPath:false};
@@ -68,5 +68,7 @@ export function createArrayCallsiteObserver({page,enabled=true}={}){
   }
   return{...base,status:links.length?'Observed':base.status,reason:links.length?null:base.reason,links,unsupported:notes};
  }
- return Object.freeze({apply,begin,yielded,finish,abort,startWindow,snapshot,stop(){stopped=true;clear();ids=new WeakMap();},retention:()=>({calls:calls.length,yields,pending:calls.filter(x=>!x.done).length,stopped,overflow,invalid,window:generation})});
+ const retention=()=>({calls:calls.length,yields,pending:calls.filter(x=>!x.done).length,stopped,collecting,overflow,invalid,window:generation});
+ function sealWindow(){collecting=false;tokens=new WeakMap();return{sealed:true,snapshot:snapshot(),retention:retention()};}
+ return Object.freeze({apply,begin,yielded,finish,abort,startWindow,snapshot,sealWindow,stop(){stopped=true;collecting=false;clear();ids=new WeakMap();},retention});
 }

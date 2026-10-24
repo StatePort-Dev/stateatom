@@ -38,7 +38,7 @@
 **Files:** new experiments/react19-reducer/array-callsite-run.mjs; new source driver controls as needed; docs/testing/array-callsite-case.json and record147/current metadata; new unique ignored output.
 **Interfaces:** consume Task1 source APIs, original TodoMVC source/dependencies and existing owned browser primitives; emit immutable registration/results/source-site/phase window reports, no product/package delivery.
 
-- [ ] Implement finite source-engine driver/admission/classification/independent cleanup controls with RED→GREEN. Preserve original/off/on phases and measured original28-file TodoMVC source manifest. Bind actual Node/Chrome and declared no extension/helper/IDE route.
+- [x] Implement finite source-engine driver/admission/classification/independent cleanup controls with RED→GREEN. Preserve original/off/on phases and measured original28-file TodoMVC source manifest. Bind actual Node/Chrome and declared no extension/helper/IDE route.
 - [ ] Build original and transformed bundles from original immutable source; inspect sites and freeze exact source/bundles/config/expected joins/limits before max1 launch. Full source checks for changed harness; clean local commit first.
 - [ ] Run once/poll same handle, preserve literal FAIL/partial. Independent saved verifier/negative controls and integrity/cleanup/PIDs; no native repeat.
 - [ ] Relevant final aggregate/task-done/local commit; no broad claim. Then final review global closeout.

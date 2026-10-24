@@ -1665,19 +1665,20 @@
       "execution_record": "147-a02-array-callsite-bridge.md",
       "active_slice": {
         "id": "A02.6",
-        "status": "source-bridge-task1-complete-native-preparation-due",
+        "status": "source-driver-ready-clean-commit-then-prepare",
         "record": "147-a02-array-callsite-bridge.md",
         "base": "40146b7",
         "product_changed": false,
         "native_executed": false,
         "full_A02": false,
-        "source_focused": 57,
-        "full_source_controls": 3095,
+        "source_focused": 111,
+        "full_source_controls": 3149,
         "full_source_failures": 0,
         "full_source_cancelled": 0,
         "product_inputs_unchanged": 327,
         "original_inputs_unchanged": 9,
-        "source_verification": ".artifacts/a02/array-callsite-source/2026-10-24/task1-verification.json"
+        "source_verification": ".artifacts/a02/array-callsite-source/2026-10-24/task1-verification.json",
+        "native_prepared": false
       },
       "completed_slices": [
         {
@@ -1961,8 +1962,8 @@
       },
       "current_checkpoint": {
         "record": "147-a02-array-callsite-bridge.md",
-        "status": "source-bridge-task1-complete-native-preparation-due",
-        "next_bounded_step": "Task2 finite source-engine driver/preflight and ONE original/off/on TodoMVC experiment after frozen clean commit"
+        "status": "source-driver-ready-clean-commit-then-prepare",
+        "next_bounded_step": "Commit source; prepare and freeze ONE original/off/on source case on clean bytes, then preflight/commit/run once"
       },
       "stopping_point_history": [
         {
