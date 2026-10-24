@@ -5797,33 +5797,17 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "151-v03-restore-availability.md",
+      "execution_record": "152-v03-packed-restore-availability.md",
       "active_slice": {
-        "id": "V03.23",
-        "record": "151-v03-restore-availability.md",
-        "status": "complete-source-restoration-availability-not-native-acceptance",
+        "id": "V03.24",
+        "record": "152-v03-packed-restore-availability.md",
+        "status": "planning-exact-candidate-native-availability",
+        "base": "5cf379d",
         "native_started": false,
+        "maximum_native_runs": 1,
+        "packed_candidate_due": true,
         "full_V03_acceptance": false,
-        "product_implemented": true,
-        "product_source_changed": true,
-        "focused_tests": 59,
-        "full_source_tests": 3308,
-        "full_source_failures": 0,
-        "full_source_cancelled": 0,
-        "packed_candidate_changed": false,
-        "original_guide_status": "FAIL",
-        "existing_guards_relaxed": false,
-        "retained_source_cases": 4,
-        "review": {
-          "count": 1,
-          "critical": 0,
-          "important": 0,
-          "minor": 0,
-          "correction_passes": 0,
-          "rereview": false,
-          "report": ".artifacts/v03/undo-eligibility-review/2026-10-24/report.md"
-        },
-        "final_checkpoint": ".artifacts/v03/undo-eligibility-review/2026-10-24/final-checkpoint.json"
+        "existing_guards_relaxed": false
       },
       "completed_slices": [
         {
@@ -6664,15 +6648,42 @@
           "review_minor_resolved": true,
           "verification": ".artifacts/v03/owned-editor-reply-semantic-controls/2026-10-24/verification.json",
           "next_item": "Original restoration still excluded by actual77 external revision and unchanged guard; no native repeat. Next independent A02.6 source call-site bridge feasibility"
+        },
+        {
+          "id": "V03.23",
+          "record": "151-v03-restore-availability.md",
+          "status": "complete-source-restoration-availability-not-native-acceptance",
+          "native_started": false,
+          "full_V03_acceptance": false,
+          "product_implemented": true,
+          "product_source_changed": true,
+          "focused_tests": 59,
+          "full_source_tests": 3308,
+          "full_source_failures": 0,
+          "full_source_cancelled": 0,
+          "packed_candidate_changed": false,
+          "original_guide_status": "FAIL",
+          "existing_guards_relaxed": false,
+          "retained_source_cases": 4,
+          "review": {
+            "count": 1,
+            "critical": 0,
+            "important": 0,
+            "minor": 0,
+            "correction_passes": 0,
+            "rereview": false,
+            "report": ".artifacts/v03/undo-eligibility-review/2026-10-24/report.md"
+          },
+          "final_checkpoint": ".artifacts/v03/undo-eligibility-review/2026-10-24/final-checkpoint.json"
         }
       ],
       "current_checkpoint": {
-        "record": "151-v03-restore-availability.md",
-        "status": "complete-source-restoration-availability-not-native-acceptance",
-        "next_bounded_step": "V03.24 new exact local packed-candidate restoration-availability qualification; one new affected native case only after source gates/preregistration, no old guide rerun or guard waiver."
+        "record": "152-v03-packed-restore-availability.md",
+        "status": "planning-exact-candidate-native-availability",
+        "next_bounded_step": "Task1 pure result guard/TDD and exact local78 package/types/admission; no native untilTask2 gates/frozen case."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-semantic-negative-controls.md",
-      "implementation_plan": "../superpowers/plans/2026-10-24-v03-restore-availability.md",
+      "implementation_plan": "../superpowers/plans/2026-10-25-v03-packed-restore-availability.md",
       "last_implementation_plan": "../superpowers/plans/2026-10-24-v03-semantic-negative-controls.md",
       "analysis_protocol": ".artifacts/v03/input-snapshot-ordering/2026-10-24/registration.json",
       "current_bounded_diagnostic": {
@@ -6970,8 +6981,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.23-source-complete",
-    "next_item": "V03.24 new exact local packed-candidate restoration-availability qualification; one new affected native case only after source gates/preregistration, no old guide rerun or guard waiver.",
+    "current_increment": "V03.24-planning-exact-local-candidate",
+    "next_item": "Task1 pure result guard/TDD and exact local78 package/types/admission; no native untilTask2 gates/frozen case.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6997,8 +7008,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "V03",
-      "record": "151-v03-restore-availability.md",
-      "status": "complete-source-restoration-availability-not-native-acceptance"
+      "record": "152-v03-packed-restore-availability.md",
+      "status": "planning-exact-candidate-native-availability"
     },
     "completed_increments": [
       {
@@ -9693,11 +9704,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.23 source complete59focused/full3308PASS; ONE review0C/0I/0M. Exact restoration flags corrected, no guard waiver/new candidate/native. NextV03.24 separate exact-candidate qualification, old guideFAIL/whole20of29 unchanged.",
+    "current_activity_note": "V03.23 closes5cf379d59focused/full3308PASS/review0/0/0. V03.24 exact local78/UI2 affected flag/disabled-control/Close native qualification only after source/package/frozen-case gates, max1newcase. Original guide FAIL/guards/whole20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "7fef1c0",
-    "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.24 new exact local packed-candidate restoration-availability qualification; one new affected native case only after source gates/preregistration, no old guide rerun or guard waiver.",
+    "current_source_revision": "5cf379d",
+    "current_record_date": "2026-10-25",
+    "next_bounded_step": "Task1 pure result guard/TDD and exact local78 package/types/admission; no native untilTask2 gates/frozen case.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
