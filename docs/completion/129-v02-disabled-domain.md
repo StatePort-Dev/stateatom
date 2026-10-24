@@ -99,3 +99,41 @@ original p95 qualification or assume a universal speedup. Native comparison pend
 ONE fresh final review and scoped aggregate are still due. Documents alone establish
 neither the pending comparison nor full V02 acceptance. One next item will follow
 the actual comparison and review, without repeating unaffected campaigns.
+
+## Actual interleaved result
+
+Actual5f4e788/handle38845/exit0:
+`.artifacts/v02/input-domain-comparison/2026-10-24T01-28-22-583Z/results.json`,
+`PASS_INTERLEAVED_INPUT_DOMAIN_COMPARISON_NOT_PERFORMANCE_ACCEPTANCE`.
+Exactly48 ordered rows/16warmup/32measured in8 fresh cases,56 ledger checkpoints;
+160 owned RPCs=48Apply+104state+8capabilities.342 registered inputs stable,
+327 product/build inputs per kit, archives/installed hosts and declared4-input delta
+verified.0 inspector console/errors, acknowledgements, unchanged pre-Apply Draft,
+unrelated outputs/getter0, metadata cap and no pending/overflow pass. Own browser,
+desktop and server close. No fill/limit/Close campaign or app/IDE/certificate repeat.
+
+Medians in milliseconds;4 measured rows per host/condition/mode:
+
+| Host | Candidate | Live paint | Live Apply RPC | Draft Apply paint | Draft Apply RPC | Local Draft paint |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| standalone |70 |1090.50 |807.90 |846.75 |820.85 |25.25 |
+| standalone |71 |1032.45 |752.65 |754.90 |727.10 |23.75 |
+| embedding |70 |1123.75 |842.75 |863.20 |842.10 |25.25 |
+| embedding |71 |1008.85 |727.75 |772.35 |744.65 |23.40 |
+
+All48 raw samples/order, state overlap/tails and per-condition distributions remain
+in result and `.artifacts/v02/disabled-domain/2026-10-24/native-checkpoint.json`.
+Concurrent state durations are not summed or declared causal. There is a measured
+reduction here, with differing case order/load; one command removal is proven by
+native command traces, but these small instrumented synthetic samples do not
+establish universal speedup or original performance-target acceptance.71 still
+spends~727–753ms median in Apply RPC under these conditions. Existing250ms Live
+policy is unchanged and unapproved exact future parameters remain undecided.
+
+Independent saved-result verifier binds both immutable kits, installed trees,
+source branch, native cold controls, backend/type/admission receipts and raw rows;
+13 deliberate protocol mutations are refused. Restricted Git child-spawn check
+initially hit EPERM; identical read-only verifier passed with local escalation,
+without another native run. ONE final review is pending. Next bounded item after
+review: V02.11, isolate remaining internal Apply phases on current71 before choosing
+another correction; no original matrix/corpus/IDE rerun is implied.
