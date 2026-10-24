@@ -2388,3 +2388,12 @@ repeat. Saved actual ten records remain valid under the stronger guard;576physic
 +2historical Git inputs and six fix negatives pass. No product/package change,
 original guide/native17 still FAIL,20-of29 unchanged. Next V03.20 source diagnosis
 of clean editor snapshot delivery before second Live edit, without assuming a fix.
+
+### 2026-10-24 — V03.20 source-only editor delivery question
+
+[Bounded source controls](completion/143-v03-editor-snapshot-delivery.md) start at
+0eda3f6. Actual mounted UI with synthetic deferred state replies will compare a
+latest reply and a superseded reply while a later read remains pending. Record
+actual prepared resource revision; no real write/applied receipt or native run.
+Current load-generation gate can discard a reply before inputUI.update; whether
+this explains native19's schedule is unproven. No product/guard/policy change.
