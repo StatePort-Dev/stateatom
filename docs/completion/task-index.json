@@ -1663,40 +1663,7 @@
       "optional": false,
       "implementation_plan": "../superpowers/plans/2026-10-24-launch-evidence-lanes.md",
       "execution_record": "150-launch-evidence-lanes.md",
-      "active_slice": {
-        "id": "A02.9",
-        "status": "complete-bounded-historical-description-not-native-acceptance",
-        "record": "150-launch-evidence-lanes.md",
-        "base": "0c6963d",
-        "product_changed": false,
-        "native_executed": false,
-        "native_allowed": false,
-        "native_reexecuted": false,
-        "full_A02": false,
-        "legacy_protocol_accepted": false,
-        "source_focused": 50,
-        "full_source_controls": 3297,
-        "full_source_failures": 0,
-        "full_source_cancelled": 0,
-        "analysis_revision": "9ca3e3c822dab95bd186a6765b45a9eb697b1fd2",
-        "observation_revision": "99f7651c43157831a0f0ea9c0c49f6e7b3f18666",
-        "output": ".artifacts/a02/launch-evidence-lanes/2026-10-24T19-45-00Z",
-        "annotation_sha256": "e6e1f5dc3ffaaf2c3331ad077f2428d74136095a5cad77b794bfe4f30c42a611",
-        "physical_inputs": 377,
-        "historical_git_inputs": 3,
-        "independent_negative_controls": 14,
-        "review": {
-          "count": 1,
-          "critical": 0,
-          "important": 1,
-          "important_fixed": 1,
-          "minor": 0,
-          "correction_passes": 1,
-          "rereview": false,
-          "report": ".artifacts/a02/launch-evidence-lanes-review/2026-10-24/report.md"
-        },
-        "final_checkpoint": ".artifacts/a02/launch-evidence-lanes-review/2026-10-24/final-checkpoint.json"
-      },
+      "active_slice": null,
       "completed_slices": [
         {
           "id": "A02.1",
@@ -2127,6 +2094,40 @@
             ],
             "historical_verifier_physical": 380
           }
+        },
+        {
+          "id": "A02.9",
+          "status": "complete-bounded-historical-description-not-native-acceptance",
+          "record": "150-launch-evidence-lanes.md",
+          "base": "0c6963d",
+          "product_changed": false,
+          "native_executed": false,
+          "native_allowed": false,
+          "native_reexecuted": false,
+          "full_A02": false,
+          "legacy_protocol_accepted": false,
+          "source_focused": 50,
+          "full_source_controls": 3297,
+          "full_source_failures": 0,
+          "full_source_cancelled": 0,
+          "analysis_revision": "9ca3e3c822dab95bd186a6765b45a9eb697b1fd2",
+          "observation_revision": "99f7651c43157831a0f0ea9c0c49f6e7b3f18666",
+          "output": ".artifacts/a02/launch-evidence-lanes/2026-10-24T19-45-00Z",
+          "annotation_sha256": "e6e1f5dc3ffaaf2c3331ad077f2428d74136095a5cad77b794bfe4f30c42a611",
+          "physical_inputs": 377,
+          "historical_git_inputs": 3,
+          "independent_negative_controls": 14,
+          "review": {
+            "count": 1,
+            "critical": 0,
+            "important": 1,
+            "important_fixed": 1,
+            "minor": 0,
+            "correction_passes": 1,
+            "rereview": false,
+            "report": ".artifacts/a02/launch-evidence-lanes-review/2026-10-24/report.md"
+          },
+          "final_checkpoint": ".artifacts/a02/launch-evidence-lanes-review/2026-10-24/final-checkpoint.json"
         }
       ],
       "remaining_acceptance": [
@@ -5796,31 +5797,14 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "127-v03-ide-entry.md",
+      "execution_record": "151-v03-restore-availability.md",
       "active_slice": {
-        "id": "V03.22",
-        "record": "145-v03-semantic-negative-controls.md",
-        "status": "complete-test-only-no-new-native",
-        "base": "ed9e2a6",
-        "product_implemented": false,
-        "product_source_changed": false,
+        "id": "V03.23",
+        "record": "151-v03-restore-availability.md",
+        "status": "planning-source-restoration-availability",
         "native_started": false,
         "full_V03_acceptance": false,
-        "previous_review_minor": "V03.21 M1 trace-copy mismatch masks named semantic negatives",
-        "new_review": false,
-        "source_controls": 22,
-        "semantic_controls": 7,
-        "source_predicate_removals_caught": 7,
-        "independent_verifier_negatives": 23,
-        "independent_verifier_semantic_removals_caught": 7,
-        "physical_frozen_inputs": 521,
-        "historical_git_inputs": 2,
-        "full_source_controls": 3016,
-        "full_source_failures": 0,
-        "full_source_cancelled": 0,
-        "review_minor_resolved": true,
-        "verification": ".artifacts/v03/owned-editor-reply-semantic-controls/2026-10-24/verification.json",
-        "next_item": "Original restoration still excluded by actual77 external revision and unchanged guard; no native repeat. Next independent A02.6 source call-site bridge feasibility"
+        "product_implemented": false
       },
       "completed_slices": [
         {
@@ -6636,15 +6620,40 @@
           "verification": ".artifacts/v03/input-snapshot-ordering/2026-10-24/checkpoint.json",
           "new_reviewer_dispatched": false,
           "next_item": "A02.4 bounded ordinary React19 product acquisition integration; preserve ownership/prop-transfer/selected-origin Unknown and existing stopping rule"
+        },
+        {
+          "id": "V03.22",
+          "record": "145-v03-semantic-negative-controls.md",
+          "status": "complete-test-only-no-new-native",
+          "base": "ed9e2a6",
+          "product_implemented": false,
+          "product_source_changed": false,
+          "native_started": false,
+          "full_V03_acceptance": false,
+          "previous_review_minor": "V03.21 M1 trace-copy mismatch masks named semantic negatives",
+          "new_review": false,
+          "source_controls": 22,
+          "semantic_controls": 7,
+          "source_predicate_removals_caught": 7,
+          "independent_verifier_negatives": 23,
+          "independent_verifier_semantic_removals_caught": 7,
+          "physical_frozen_inputs": 521,
+          "historical_git_inputs": 2,
+          "full_source_controls": 3016,
+          "full_source_failures": 0,
+          "full_source_cancelled": 0,
+          "review_minor_resolved": true,
+          "verification": ".artifacts/v03/owned-editor-reply-semantic-controls/2026-10-24/verification.json",
+          "next_item": "Original restoration still excluded by actual77 external revision and unchanged guard; no native repeat. Next independent A02.6 source call-site bridge feasibility"
         }
       ],
       "current_checkpoint": {
-        "record": "145-v03-semantic-negative-controls.md",
-        "status": "complete-test-only-no-new-native",
-        "next_bounded_step": "Original restoration still excluded by actual77 external revision and unchanged guard; no native repeat. Next independent A02.6 source call-site bridge feasibility"
+        "record": "151-v03-restore-availability.md",
+        "status": "planning-source-restoration-availability",
+        "next_bounded_step": "TDD exact restoration availability; preserve all backend ownership/epoch guards, no native rerun."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-semantic-negative-controls.md",
-      "implementation_plan": null,
+      "implementation_plan": "../superpowers/plans/2026-10-24-v03-restore-availability.md",
       "last_implementation_plan": "../superpowers/plans/2026-10-24-v03-semantic-negative-controls.md",
       "analysis_protocol": ".artifacts/v03/input-snapshot-ordering/2026-10-24/registration.json",
       "current_bounded_diagnostic": {
@@ -6942,8 +6951,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.21-native77-pass-final-review-pending",
-    "next_item": "V03.21 ONE fresh final whole-item review, then at most one tested Important/Critical pass and final clean local commit with one next item",
+    "current_increment": "V03.23-source-restoration-availability",
+    "next_item": "TDD exact restoration availability; preserve all backend ownership/epoch guards, no native rerun.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6969,8 +6978,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "V03",
-      "record": "144-v03-owned-editor-reply.md",
-      "status": "in-progress-source-tdd"
+      "record": "151-v03-restore-availability.md",
+      "status": "planning-source-restoration-availability"
     },
     "completed_increments": [
       {
@@ -9665,11 +9674,20 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.21 actual77 b2aa44a native6of6 PASS, 24sealedSTOPPEDrecords/two actualpreparedplans/two appliedreceipts. Originalmetadata7->10 stillpresent; model10clean beforesecondnative20, actualplan20from10; backend/app20/products0/localfieldclean. 523inputs/original65/source327/archive/host stable/console0/allcleanup; independent20negative verifierPASS. Two10samplewindows1292/1286ms; readiness1716ms descriptive only, screenshotglobalinspectionstillWorking/notglobalready. Fullproductsource2989 thenfocused179/types2/admission9; no oldcase upgraded/fullV03/20of29 change. ONE final review due.",
+    "current_activity_note": "A02.9 bounded source-only complete50focused/full3297PASS;20of29 unchanged. V03.23 corrects false restoration availability on known external revision; source-only, no guard waiver or old native rerun. Prior original guide FAIL retained.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "b2aa44a",
+    "current_source_revision": "4dd7c13",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.21 ONE fresh final whole-item review, then at most one tested Important/Critical pass and final clean local commit with one next item"
+    "next_bounded_step": "TDD exact restoration availability; preserve all backend ownership/epoch guards, no native rerun.",
+    "historical_active_pointer_before_V03_23": {
+      "current_increment": "V03.21-native77-pass-final-review-pending",
+      "active_item": {
+        "id": "V03",
+        "record": "144-v03-owned-editor-reply.md",
+        "status": "in-progress-source-tdd"
+      },
+      "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
+    }
   },
   "next_task": "V03"
 }
