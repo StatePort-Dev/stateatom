@@ -135,6 +135,6 @@ environment-observer FAIL stays historical. Runtime GUI environment/Recent effec
 remain unavailable; chooser Home labels/raw private screenshots are not clean-OS
 or human-usability proof. This uses copied installed test state, not a fresh install.
 
-No app/source/codec/Vue or product build repeat. ONE final review pending. Next one
+No app/source/codec/Vue or product build repeat. ONE final review2Important corrected with9 synthetic controls; actual runtime staysb794fb5. Next one
 bounded gap is V03.14 actual VS Code VSIX and Copy connection receipt guide controls
 on owned IDE state; full guide/V03/20-of29 criteria remain unchanged.

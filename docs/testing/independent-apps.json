@@ -574,8 +574,11 @@
       "task_local_recent": "UNAVAILABLE_ENOENT",
       "whole_guide_accepted": false,
       "whole_V03_complete": false,
-      "review_pending": true,
-      "native_revision": "b794fb5"
+      "review_pending": false,
+      "native_revision": "b794fb5",
+      "review_receipt": ".artifacts/v03/guide-entry/2026-10-24/review/receipt.json",
+      "synthetic_failure_controls": 9,
+      "correction_native_repeated": false
     }
   ]
 }

@@ -6,14 +6,28 @@ import {access,open} from 'node:fs/promises';
 import {waitFor} from '../../scripts/harness.mjs';
 export async function sourceAccessDesktop(out){
  let n=97;while(await access('/tmp/.X11-unix/X'+n).then(()=>true,()=>false))n++;
- const display=':'+n,log=await open(out+'/xephyr.log','a'),child=spawn('Xephyr',[display,'-screen','1100x900','-nolisten','tcp','-noreset','-ac'],{stdio:['ignore',log.fd,log.fd]});
- await waitFor(()=>access('/tmp/.X11-unix/X'+n).then(()=>true,()=>false));
- const native=args=>execFileSync('xdotool',args,{env:{...process.env,DISPLAY:display},timeout:3000,stdio:'pipe'}).toString().trim();
- // Discard the first live X11 frames after native tab/dialog transitions; this
- // is capture stabilization, never TLS/permission preapproval or a timing metric.
- const shot=file=>execFileSync('ffmpeg',['-hide_banner','-loglevel','error','-f','x11grab','-video_size','1100x900','-i',display,'-ss','0.25','-frames:v','1',file],{timeout:5000,stdio:'pipe'});
- return{display,native,shot,async decide(file,decision,{delay=1000}={}){await new Promise(r=>setTimeout(r,delay));shot(file);native(['mousemove',decision==='deny'?'628':'704','281','click','1']);},async close(){if(child.exitCode===null)child.kill('SIGTERM');await log.close();}};
+ const display=':'+n,log=await open(out+'/xephyr.log','a');let child,closing;
+ const close=()=>closing??=(async()=>{
+  const failures=[];
+  try{if(child?.pid&&child.exitCode===null&&child.signalCode===null){child.kill('SIGTERM');try{await waitFor(()=>child.exitCode!==null||child.signalCode!==null,5000);}catch{child.kill('SIGKILL');await waitFor(()=>child.exitCode!==null||child.signalCode!==null,5000);}}}catch(e){failures.push(e);}
+  try{await log.close();}catch(e){failures.push(e);}
+  if(failures.length)throw new AggregateError(failures,'Owned desktop cleanup failed: '+failures.map(e=>e.message).join('; '));
+ })();
+ try{
+  child=spawn('Xephyr',[display,'-screen','1100x900','-nolisten','tcp','-noreset','-ac'],{stdio:['ignore',log.fd,log.fd]});
+  let startupError;child.once('error',e=>{startupError=e;});
+  // Resolve readiness polling on child failure too, so waitFor does not swallow
+  // the original spawn error until its timeout. Ownership already exists here.
+  await waitFor(async()=>startupError||child.exitCode!==null||child.signalCode!==null||await access('/tmp/.X11-unix/X'+n).then(()=>true,()=>false));
+  if(startupError)throw startupError;
+  if(child.exitCode!==null||child.signalCode!==null)throw Error('Owned Xephyr exited before readiness: '+child.exitCode+'/'+child.signalCode);
+  const native=args=>execFileSync('xdotool',args,{env:{...process.env,DISPLAY:display},timeout:3000,stdio:'pipe'}).toString().trim();
+  // Discard first frames after native transitions; no permission/timing claim.
+  const shot=file=>execFileSync('ffmpeg',['-hide_banner','-loglevel','error','-f','x11grab','-video_size','1100x900','-i',display,'-ss','0.25','-frames:v','1',file],{timeout:5000,stdio:'pipe'});
+  return{display,native,shot,async decide(file,decision,{delay=1000}={}){await new Promise(r=>setTimeout(r,delay));shot(file);native(['mousemove',decision==='deny'?'628':'704','281','click','1']);},close};
+ }catch(error){try{await close();}catch(cleanupError){error.desktopCleanupError=cleanupError.stack;}throw error;}
 }
+
 export async function importProfileRoot(browser,desktop,root,out){
  const cert=await browser.context.newPage();await cert.goto('chrome://certificate-manager/localcerts/usercerts');
  // These exact controls were observed in this Chrome153 native Certificate Manager.

@@ -4757,7 +4757,7 @@
       "active_slice": {
         "id": "V03.13",
         "title": "Actual toolbar inspector launch and native reader file chooser",
-        "status": "runtime-complete-final-review-pending-not-full-V03",
+        "status": "complete-bounded-native-entry",
         "record": "126-v03-native-entry.md",
         "design": "../superpowers/specs/2026-10-24-v03-native-entry-design.md",
         "plan": "../superpowers/plans/2026-10-24-v03-native-entry.md",
@@ -4770,7 +4770,33 @@
         "registered_inputs": 337,
         "original_persistent_files_unchanged": 186,
         "new_installation_claim": false,
-        "review_pending": true
+        "review_pending": false,
+        "review": {
+          "schema": "stateatom.v03-native-entry-review/1",
+          "reviewer": "/root/v0313_whole_review",
+          "model": "gpt-6-astra",
+          "reasoning": "high",
+          "base": "19e3638db9beab35a8253e00decf4699e7303e47",
+          "head": "b625abe114fbe3c029be2f4d8fb1bdbabc9ec580",
+          "critical": 0,
+          "important": 2,
+          "minor": 0,
+          "correction_passes": 1,
+          "re_review": false,
+          "synthetic_green": 9,
+          "native_repeated": false,
+          "product_changed": false,
+          "actual_native_revision": "b794fb5",
+          "declined_boundaries_ruled_in": "docs/completion/126-v03-native-entry.md"
+        },
+        "failure_path_controls": {
+          "kind": "synthetic-extracted-actual-source-no-process",
+          "green": 9,
+          "red_original_pass": 2,
+          "red_original_fail": 6,
+          "additional_reporting_red": true
+        },
+        "actual_native_revision": "b794fb5"
       },
       "completed_slices": [
         {
@@ -5242,14 +5268,58 @@
             "green_pass": 4
           },
           "actual_native_revision": "43448fc"
+        },
+        {
+          "id": "V03.13",
+          "title": "Actual toolbar inspector launch and native reader file chooser",
+          "status": "complete-bounded-native-entry",
+          "record": "126-v03-native-entry.md",
+          "design": "../superpowers/specs/2026-10-24-v03-native-entry-design.md",
+          "plan": "../superpowers/plans/2026-10-24-v03-native-entry.md",
+          "previous_slice": "V03.12 complete at19e3638; no old app/source/codec/Vue repeat",
+          "product_source_changed": false,
+          "whole_V03_complete": false,
+          "runtime_result": ".artifacts/v03/guide-entry/2026-10-24T00-11-37-794Z/results.json",
+          "verification": ".artifacts/v03/guide-entry/2026-10-24/native-checkpoint.json",
+          "native_named_gates": 6,
+          "registered_inputs": 337,
+          "original_persistent_files_unchanged": 186,
+          "new_installation_claim": false,
+          "review_pending": false,
+          "review": {
+            "schema": "stateatom.v03-native-entry-review/1",
+            "reviewer": "/root/v0313_whole_review",
+            "model": "gpt-6-astra",
+            "reasoning": "high",
+            "base": "19e3638db9beab35a8253e00decf4699e7303e47",
+            "head": "b625abe114fbe3c029be2f4d8fb1bdbabc9ec580",
+            "critical": 0,
+            "important": 2,
+            "minor": 0,
+            "correction_passes": 1,
+            "re_review": false,
+            "synthetic_green": 9,
+            "native_repeated": false,
+            "product_changed": false,
+            "actual_native_revision": "b794fb5",
+            "declined_boundaries_ruled_in": "docs/completion/126-v03-native-entry.md"
+          },
+          "failure_path_controls": {
+            "kind": "synthetic-extracted-actual-source-no-process",
+            "green": 9,
+            "red_original_pass": 2,
+            "red_original_fail": 6,
+            "additional_reporting_red": true
+          },
+          "actual_native_revision": "b794fb5"
         }
       ],
       "current_checkpoint": {
         "record": "126-v03-native-entry.md",
-        "status": "runtime-complete-final-review-pending-not-full-V03",
+        "status": "complete-bounded-native-entry",
         "next_bounded_step": "V03.14: actual VS Code Install from VSIX and Copy connection receipt guide controls on owned IDE state/exact helper8; register connection scope first, no completed app/source campaign repeat"
       },
-      "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-guide-browser-install.md",
+      "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-native-entry.md",
       "implementation_plan": "../superpowers/plans/2026-10-24-v03-native-entry.md"
     },
     {
@@ -5409,7 +5479,7 @@
     "document": "126-v03-native-entry.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.13-native-entry-runtime-complete-review-pending",
+    "current_increment": "V03.13-native-entry-complete",
     "next_item": "V03.14: actual VS Code Install from VSIX and Copy connection receipt guide controls on owned IDE state/exact helper8; register connection scope first, no completed app/source campaign repeat",
     "new_full_task_acceptances": [
       "F01",
@@ -7547,10 +7617,38 @@
         },
         "full_task_complete": false,
         "next_independent_item": "V03.11"
+      },
+      {
+        "id": "V03.13",
+        "status": "complete-bounded-native-entry",
+        "execution_record": "126-v03-native-entry.md",
+        "verification": ".artifacts/v03/guide-entry/2026-10-24/final-checkpoint.json",
+        "native_checks_passed": 6,
+        "synthetic_failure_controls": 9,
+        "whole_review": {
+          "schema": "stateatom.v03-native-entry-review/1",
+          "reviewer": "/root/v0313_whole_review",
+          "model": "gpt-6-astra",
+          "reasoning": "high",
+          "base": "19e3638db9beab35a8253e00decf4699e7303e47",
+          "head": "b625abe114fbe3c029be2f4d8fb1bdbabc9ec580",
+          "critical": 0,
+          "important": 2,
+          "minor": 0,
+          "correction_passes": 1,
+          "re_review": false,
+          "synthetic_green": 9,
+          "native_repeated": false,
+          "product_changed": false,
+          "actual_native_revision": "b794fb5",
+          "declined_boundaries_ruled_in": "docs/completion/126-v03-native-entry.md"
+        },
+        "full_task_complete": false,
+        "next_independent_item": "V03.14"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.13 actual toolbar/link/native chooser6 PASS atb794fb5;337 stable/327 unchanged Atom/186 unchanged original profile/full317667-byte report/empty authority/no HTTP. Copied installed state; runtime GUI env/Recent unavailable; first FAIL retained. ONE review pending; whole20/29/fullV03 dependencies unchanged.",
+    "current_activity_note": "V03.13 complete: actual toolbar/link/native chooser6 PASS atb794fb5;337 stable/327 unchanged Atom/186 unchanged original/full317667-byte report/empty authority/no import HTTP. ONE review2Important corrected once with9 synthetic failure controls, no native repeat. Copied state/runtime GUI env/Recent Unknown/first FAIL retained; whole20/29/fullV03 unchanged. Next oneV03.14 owned IDE VSIX/receipt UI.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "b794fb5 actual native; no product source/build change",
     "current_record_date": "2026-10-24",

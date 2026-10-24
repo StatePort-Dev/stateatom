@@ -210,6 +210,6 @@ Next is actual installed Atom opt-in/Explain/Cancel/target-change/offline contro
 toolbar inspector launch and native reader file selection:6 gates/337 stable inputs,
 unchanged product327 and original profile186, full retained report/empty authority/
 no HTTP. Copied installed state, agent operation and unavailable GTK env effects
-remain scoped. ONE final review pending. Whole20/29/fullV03/C09/A02/L02/V02 and all
+remain scoped. ONE final review2Important corrected with9 synthetic controls; actual runtime staysb794fb5. Whole20/29/fullV03/C09/A02/L02/V02 and all
 historical criteria/results are unchanged. Next one bounded item is V03.14 actual
 VS Code VSIX installation/receipt guide entry, with exact scope still to register.

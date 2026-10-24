@@ -50,9 +50,13 @@ its owned toolbar. Reader interaction uses real visible controls and native choo
 - [x] Register exact case/driver/helper/guide/report/profile identities and new entry questions; commit before actual browser execution.
 - [x] Run node tests/integration/guide-entry-native.mjs docs/testing/guide-entry-case.json. Expected: own live handle waits for agent's screenshot-grounded toolbar point, actual new inspector/reader targets, native file selection/exact historical payload, unchanged authority/no HTTP, original bytes intact/owned cleanup. Never restart a live handle on observation timeout.
 - [x] Inspect native toolbar/inspector/chooser/reader screenshots and actual logs/results; retain any failure and explicit remaining assistance without a whole-guide/count claim.
-- [ ] ONE final fresh whole-increment review19e3638..head, at most one verified correction pass/no re-review.
-- [ ] Final scoped aggregate/metadata/corpus/local commit/clean tree; one next dependency-valid item, goal active until declared boundary.
+- [x] ONE final fresh whole-increment review19e3638..head, at most one verified correction pass/no re-review.
+- [x] Final scoped aggregate/metadata/corpus/local commit/clean tree; one next dependency-valid item, goal active until declared boundary.
 
 Completion aggregate: `node .artifacts/v03/guide-entry/2026-10-24/verify-native.mjs`
 (read-only recorded-result checks, no browser relaunch). Corrected actual case is
 `docs/testing/guide-entry-case-environment-observation.json`; first case FAIL retained.
+
+ONE review2Important fixed in one pass: desktop acquisition/close and final input
+read-failure recording. Nine extracted-source synthetic controls PASS; native
+evidence remains b794fb5, no product/suite/build/native repeat or re-review.

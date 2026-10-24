@@ -194,7 +194,7 @@ Open File import on a hashed copy of accepted private recipient state:6 gates,
 337 stable inputs/327 unchanged product inputs/186 original profile files, exact
 317667-byte payload and empty authority/no HTTP. First environment-observer FAIL
 is retained; runtime GUI env/Recent effect remain unavailable and chooser labels
-preclude clean-OS privacy credit. No new installation/app rerun. ONE review pending;
+preclude clean-OS privacy credit. No new installation/app rerun. ONE review2Important corrected with9 synthetic controls; actual runtime staysb794fb5;
 next one itemV03.14 is actual VS Code VSIX/receipt entry on owned IDE state. Full
 guide/V03 and whole20/29 remain unchanged.
 Original64 Basic/active/warm-source/input results remain
@@ -2121,7 +2121,7 @@ V02.6 ONE fresh review accepted finite diagnostic,0/0/0/no correction; independe
 
 V02.7 ONE review0/0/1 accepted; double-click harness guard corrected once RED0vs1->GREEN41. Serialized92 native rows unaffected/no rerun.880 current hashes separately captured,2 original helper/test hashes verifiedGit6f742e0; original raw/receipts/plans untouched.8 declined boundaries ruled; no re-review/count upgrade. Next V02.8 finite Live/Draft latency/ledger/nativeClose; original U02/A05 timing/resources remain historical,104 misses open.
 
-[V02.8 Atom65](completion/108-v02-input-modes-and-stale-load.md): source-proven old-state-error and pending-explicit-selection UI races fixed;119 focused/2454 full/types2/admission9/H0917 PASS. Fresh unchanged input protocol completes92rows/132ledger/2limits/2Close;887 frozen inputs and exact artifacts/hosts verified. Original64 failed attempts/data retained, no new Live SLO or current65 Basic/active/warm-source pass. ONE review pending; next V01 dependency-ready CI/native/packed lanes.19/29 unchanged.
+[V02.8 Atom65](completion/108-v02-input-modes-and-stale-load.md): source-proven old-state-error and pending-explicit-selection UI races fixed;119 focused/2454 full/types2/admission9/H0917 PASS. Fresh unchanged input protocol completes92rows/132ledger/2limits/2Close;887 frozen inputs and exact artifacts/hosts verified. Original64 failed attempts/data retained, no new Live SLO or current65 Basic/active/warm-source pass. ONE review2Important corrected with9 synthetic controls; actual runtime staysb794fb5; next V01 dependency-ready CI/native/packed lanes.19/29 unchanged.
 
 V02.8 ONE review accepted0/0/2, both reporting Minors corrected: all887 hashes are current (edited reporting files are outside that set), current reconciliation points to108. Independent119 and exact65/raw92/132/2limits/2Close verified; no product correction/rebuild/full/native rerun or re-review. Next V01 starts with deterministic UI/packed contracts in CI; whole V02 and19/29 unchanged.
 
