@@ -2163,3 +2163,14 @@ controls correct a finalizer failure path; actual runtime stays15a084a. ONE revi
 Minor deferred, dense native list unaffected. No native rerun. Original65 tails/
 targets/whole20-of29 remain unchanged. Next V02.10 profiles
 internal native-command phases before any product optimization or guard change.
+
+[V02.10](completion/129-v02-disabled-domain.md) completes one disabled-acquisition
+optimization: native getDocument bootstraps the domain; text keeps explicit whitespace
+setup and all guards remain. Local71/UI2, native22each, types2/admission9/backend13,
+interleaved70/71 comparison48rows/160RPC/342stableinputs pass. Descriptive Draft Apply
+medians846.75→754.90ms standalone and863.20→772.35ms embedding; no universal speedup
+or original target acceptance. ONE review2Important harness error-preservation fixes,
+12source regressions RED→GREEN, full2633/focused94;1reporting Minor deferred. Native
+results remain exact5f4e788 with three declared harness-only post-run corrections,
+no native repeat. Whole20/29/fullV02/V03/C09/A02/L02 stay open. NextV02.11 isolates
+remaining Apply RPC cost on current71; no corpus/IDE/certificate campaign implied.
