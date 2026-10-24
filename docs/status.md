@@ -2174,3 +2174,15 @@ or original target acceptance. ONE review2Important harness error-preservation f
 results remain exact5f4e788 with three declared harness-only post-run corrections,
 no native repeat. Whole20/29/fullV02/V03/C09/A02/L02 stay open. NextV02.11 isolates
 remaining Apply RPC cost on current71; no corpus/IDE/certificate campaign implied.
+
+
+[V02.11](completion/130-v02-worker-api-phases.md) completes a finite own-worker API
+interval diagnosis on unchanged71/UI2. First2048-cap FAIL0 remains unreconstructed;
+separate preregistered16384 case12rows/4warm8measured/40RPC/24466API/14ledgers/
+351stable inputs PASS. Apply medians736.65–791.95ms contain253.70–277.05ms API union
+and481.95–514.90ms uncovered interval, n2 per host/mode; concurrent-state/timer/cause
+limits explicit. ONE review1Important mutable-target fix verified once RED→GREEN,
+full2657/combined58; actual native8673fe1 retained with exact helper/test post-run
+correction, no repeat. No fullV02/performance/human/release credit;20/29 unchanged.
+NextV02.12 chooses/registers guardian-RPC timing for the uncovered interval before
+another optimization; no guard removal, IDE, certificate or broad matrix campaign.

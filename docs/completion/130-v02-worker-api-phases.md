@@ -162,3 +162,46 @@ ONE final fresh review is now due. The next bounded candidate after that review 
 V02.12: choose/register a narrow guardian-RPC timing control for the still-uncovered
 Apply interval before any new product optimization. The recording method is not
 claimed already approved or implemented; no guard removal or old matrix rerun.
+
+
+## Final review and source-only correction
+
+ONE fresh read-only review `/root/v0211_whole_review` (gpt-6-astra/high),
+e21f10b..3a38ae0:0Critical/1Important/0newMinor. Important: the returned worker
+metadata aliased the object captured by the session accessor. Caller mutation of
+its targetId could redirect a subsequent attachment. Actual-source synthetic test
+reproduced attachment to `app` (1PASS/1FAIL); capture of a private observed target ID
+and a separate returned metadata copy makes it pass. Arbitrary accessor arguments
+and later changes to the original observation also cannot redirect attachment.
+
+ONE correction pass; combined58PASS/full2657PASS/0FAIL/0SKIP. Sandbox-blocked test
+launch/full suite are retained as environment failures, not functional RED. Actual
+mutation RED and final unrestricted source logs are distinct. No new native run,
+product327/package/helper change or second reviewer. Native remains8673fe1; the
+actual driver never mutated returned worker metadata. Explicit before/after hashes,
+source/test copies and exact two-file allowance are in
+`.artifacts/v02/worker-api-phases/2026-10-24/post-run-harness-correction.json`.
+Original native verifier/checkpoint remain unchanged. `verify-after-review.mjs`
+checks all remaining349 registered inputs unchanged and exactly those two declared
+changes, plus every original protocol/row/archive/install/ledger/15negative control;
+post-review-checkpoint.json PASS. No product evidence is inferred from this test fix.
+
+Review boundaries accepted with their costs: instrumented n2 cannot accept fullV02
+or speedup; concurrent API occupancy cannot identify Apply-only causality, CPU,
+critical path or uncovered cause; origins/coarsening do not supply a timer error
+bound; rejection observers cannot prove uninstrumented console completeness.
+Modified Promise species/intrinsics, Proxy traps/inherited target containers and
+hostile temporary API replacement are outside the trusted diagnostic, so neither
+universal semantics nor tamper-proof integrity is claimed. The missing first failed
+snapshot is irrecoverable, so its exact counts stay unavailable. The helper fix has
+source evidence only; prior native22/types/admission/backend/campaigns remain their
+original revisions. No broad inherited helper audit, UI/human/clean-host/IDE/SDK/
+release/fullV03/C09/A02/L02 acceptance is added. Earlier historical-pending wording
+and V02.9 sparse optional-operation Minor remain deferred; native lists are dense.
+V02.12's guardian recording method is still a separate design choice, not approval
+from this review. Each boundary/cost is recorded in the retained ledger.
+
+V02.11 is complete as a finite worker API interval diagnosis. Whole20/29 (~69%),
+fullV02 and original thresholds unchanged. Next bounded item **V02.12** chooses and
+registers a narrow guardian-RPC timing control for the uncovered Apply interval;
+no authority check removal, full matrix, IDE, certificates or other repo work.
