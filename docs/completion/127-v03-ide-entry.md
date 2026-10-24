@@ -20,12 +20,14 @@ setup assistance, not Settings UI/browser pairing/source usability acceptance.
 Native process endpoint comes only from its own exclusive log with occupied49331
 refusal. Ownership/cleanup precede waits; final read failures preserve FAIL records.
 Receipt raw bytes stay ignored/private0600 and out of screens/logs; only digest
-and nonsecret matching metadata are reported. No user IDE/clipboard (only nested
-display), certificate/account/system trust/other repository/publication changes.
+and nonsecret matching metadata are reported. Preparation intent, not an untouched-profile assurance: clipboard actions are on
+the nested display, and no certificate/account/system trust/other repository or
+publication action is performed. The first actual launch wrote to the shared Code
+store as recorded below. Subsequent runs require their own observed shared path.
 
 Exact327 Atom and223 helper inputs match retained artifacts. Product unchanged;
 no rebuild/full2616/source/app/Vue rerun is justified. Syntax/input checks prepare
-the run; documents are not runtime proof. Actual scoped entry evidence is below; ONE final review remains due.
+the run; documents are not runtime proof. Actual scoped entry evidence is below; ONE final review and correction are recorded below.
 Full guide/V03/C09/A02/L02/V02 and whole20/29 remain open, prior Vue FAIL retained.
 
 
@@ -162,3 +164,60 @@ Next one dependency-valid bounded item: V02.9, diagnose Live/Apply latency from 
 retained V02.8 rows/phase evidence and identify one scoped correction/control.
 Preserve all original distributions and targets; do not repeat the whole performance
 matrix, old V03 app campaign or tune the model without a new causal basis.
+
+
+## ONE final review and one diagnostic correction pass
+
+Fresh readonly gpt-6-astra/high `/root/v0314_whole_review`,1025c9b..f8157be:
+0 Critical/2 Important/2 Minor, with fixes. Reviewer syntax/diff/installed verification
+and receipt aggregate PASS after readonly Git escalation; sandbox EPERM is not an
+app failure. Reviewer also checks both65-file source trees and views2 existing
+notification candidates. Report/receipt under guide-ide-entry/2026-10-24/review/.
+
+I1: both drivers now propagate the exact original ENOENT/EACCES Code spawn error
+through owned-endpoint acquisition, retaining cleanup separately. I2: clipboard
+polls retain only safe stage/code/status/signal or the parser's fixed nonsecret
+message; retries remain, but terminal failure carries that cause. Raw output,
+subprocess stdout and arbitrary error text are excluded; successful recovery clears
+the retained failure. Twelve extracted-source controls reproduce10 original failures/
+2 transient-success controls, then12/12 pass with zero skipped and no process launch.
+
+Executor regrades M1 and M2 Important by effect: stale next_task could repeat already
+completed work, and the unqualified untouched-profile statement was false assurance
+about user state. Root next_task now agrees with V02.9, preparation statements are
+historical intent and explicitly name the first shared-store write. Two reporting
+controls RED0/2 → GREEN2/2. All4 findings corrected in ONE pass; no deferred Minor.
+Current drivers differ only in spawn/clipboard diagnostics from actual recorded
+sources. Original5 cases plus receipt case and all actual FAILs stay immutable.
+No new native run, full2616 suite/build/pack or product327/helper223 change is claimed.
+
+Executor rulings for all12 declined boundaries (cost if wrong):
+
+1. Built-in Copilot issue stays external and FAIL unwaived; cost: no green native
+   or zero-console completion until separately resolved under valid scope.
+2. Historical lowercase-license observer stays a failed registration, joined with
+   exact offline payload checks; cost: composite proof, not a green install run.
+3. Full guide/V03 and whole20/29 stay open; cost: UI entry evidence cannot close
+   original broader capability/clean-install requirements.
+4. No fresh app/plugin6/browser/source-range/lineage/model campaign; cost: none of
+   those runtime/causal capabilities gains acceptance from this work.
+5. V02.9 is next unexecuted work; cost: no latency improvement attributed yet.
+6. Settings remain prepared file assistance; cost: no Settings UI usability proof.
+7. Installed bytes/public receipt do not identify an Extension API loaded path;
+   cost: no claim of that unimplemented observation.
+8. Linux agent pointer path is tested; cost: macOS/Windows/keyboard/human acceptance
+   remain unavailable, screenshots candidates only.
+9. Own store/workbench logs have bounded observation windows; cost: no clean OS,
+   lifetime network silence or all-service zero-console claim.
+10. First common-store write contents remain unknown; no user-store dump/rollback;
+    cost: no untouched-state or restoration claim, avoid disrupting active user data.
+11. Prior Vue/native/source/full-suite results stay historical; cost: no requalification
+    or threshold waiver by reinterpretation of old data.
+12. No release/publication/account/certificate/other-repository action; cost: no
+    external readiness or delivery credit.
+
+The limited entry-evidence item is engineering-complete after review/correction;
+its native console gate remains FAIL and full guide/V03 remain incomplete. Final
+aggregate joins recorded sources/current diagnostic-only differences,12 synthetic/
+2 reporting controls, preserved corpus22+1/cases6/routing and unchanged artifacts.
+Next one item is V02.9 retained input-latency diagnosis; timed goal remains active.

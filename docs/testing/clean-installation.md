@@ -146,5 +146,6 @@ installation with exact7 payload files/metadata, then public Copy receipt408B/pr
 own resources/ports close. Overall native FAIL1 built-in Code Copilot API mismatch
 stays unwaived; earlier observer/isolation failures and first common-store WAL write
 are explicit. No full green originating run, product rebuild/app/source campaign or
-full guide/V03/20-of29 upgrade. ONE review pending. Next one V02.9 diagnoses retained
+full guide/V03/20-of29 upgrade. ONE review2Important/2Minor corrected once with12 synthetic+2 reporting controls;
+no new native run. Next one V02.9 diagnoses retained
 Live/Apply latency phases before any new performance campaign.

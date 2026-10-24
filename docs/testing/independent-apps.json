@@ -602,7 +602,11 @@
       "original_native_status": "FAIL",
       "whole_guide_accepted": false,
       "whole_V03_complete": false,
-      "review_pending": true
+      "review_pending": false,
+      "review_receipt": ".artifacts/v03/guide-ide-entry/2026-10-24/review/receipt.json",
+      "synthetic_failure_controls": 12,
+      "reporting_controls": 2,
+      "native_rerun_after_review": false
     }
   ]
 }
