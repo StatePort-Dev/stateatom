@@ -36,6 +36,7 @@ export function guardRestoreAvailability(r){
  const phases=[[r.baseline,0,0,false],[r.afterFirst,10,1,false],[r.afterSecond,20,2,false],[r.closed,20,2,true]];
  let previousEnd=-Infinity;
  for(const[p,value,count,closed]of phases){
+  assert.equal(p.captureStatus,'Complete');
   assert(Number.isFinite(p.startedAt)&&Number.isFinite(p.finishedAt)&&p.startedAt>=previousEnd&&p.finishedAt>=p.startedAt);previousEnd=p.finishedAt;
   const s=p.inputs,row=currentResource(p),resource=row.resource;
   assert.equal(s.investigationId,baseline.investigationId);assert.equal(s.closed,closed);assert.equal(s.tainted,false);assert.equal(s.pending,null);assert.equal(s.cleanup,closed?'closed':'active');
@@ -62,6 +63,7 @@ export function guardRestoreAvailability(r){
   assert.equal(w.requestedMs,1200);assert(Number.isFinite(w.startedAt)&&w.startedAt>=initial.finishedAt);assert(Number.isFinite(w.finishedAt)&&w.finishedAt-w.startedAt>=1200&&w.finishedAt<=final.startedAt);
   assert(Array.isArray(w.samples)&&w.samples.length>=2&&w.samples.length<=64);let previous=w.startedAt;
   for(const sample of w.samples){
+   assert.equal(sample.captureStatus,'Complete');
    assert(Number.isFinite(sample.startedAt)&&sample.startedAt>=previous&&Number.isFinite(sample.finishedAt)&&sample.finishedAt>=sample.startedAt&&sample.finishedAt<=w.finishedAt);previous=sample.finishedAt;
    assert.equal(sample.inputs.investigationId,baseline.investigationId);assert.equal(sample.inputs.history.length,count);assert.deepEqual(sample.inputs.history,final.inputs.history);
    for(const k of physical)assert.equal(sample.inputs.target[k],target[k]);

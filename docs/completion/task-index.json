@@ -5801,7 +5801,7 @@
       "active_slice": {
         "id": "V03.24",
         "record": "152-v03-packed-restore-availability.md",
-        "status": "exact78-package-source-gates-complete-native-driver-due",
+        "status": "finite-driver-source-gates-complete-frozen-case-due",
         "base": "5cf379d",
         "native_started": false,
         "maximum_native_runs": 1,
@@ -5814,10 +5814,15 @@
         "handoff": ".artifacts/atom/2026-10-24T20-09-40-323Z/atom-handoff.json",
         "packed_types": 2,
         "package_admission": 9,
-        "source_guard_controls": 52,
+        "source_guard_controls": 54,
         "source_aggregate": 111,
         "full_source_tests_historical": 3308,
-        "extension_setup": "historical-cli-preload-harness-not-user-install"
+        "extension_setup": "historical-cli-preload-harness-not-user-install",
+        "source_driver_controls": 12,
+        "source_focused": 66,
+        "full_source_tests": 3374,
+        "full_source_failures": 0,
+        "full_source_cancelled": 0
       },
       "completed_slices": [
         {
@@ -6689,8 +6694,8 @@
       ],
       "current_checkpoint": {
         "record": "152-v03-packed-restore-availability.md",
-        "status": "exact78-package-source-gates-complete-native-driver-due",
-        "next_bounded_step": "Task2 finite driver/preparer TDD/full source gates/frozen case, then max1 new affected native case."
+        "status": "finite-driver-source-gates-complete-frozen-case-due",
+        "next_bounded_step": "Prepare exact frozen78 case, source-only --preflight, commit case, then ONE native run. No old case or native retry."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-semantic-negative-controls.md",
       "implementation_plan": "../superpowers/plans/2026-10-25-v03-packed-restore-availability.md",
@@ -6991,8 +6996,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.24-exact78-source-gates-complete",
-    "next_item": "Task2 finite driver/preparer TDD/full source gates/frozen case, then max1 new affected native case.",
+    "current_increment": "V03.24-source-gates-complete-case-due",
+    "next_item": "Prepare exact frozen78 case, source-only --preflight, commit case, then ONE native run. No old case or native retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9714,11 +9719,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.24 clean54cde48 Atom78 local pack/UI2 unchanged, current327 build inputs/types2/admission9; guard52+source59=111PASS, historical full3308. No native started. Historical CLI-preload owned harness declared, no end-user install proof. Driver/frozen case due; whole20of29 unchanged.",
+    "current_activity_note": "V03.24 exact78/UI2/type2/admission9; finite driver66focused/full3374PASS. Partial capture/acquisition uncertainty and wx/frozen/cleanup controls source-tested. Current327 bundle inputs stable; no native started. Freeze/preflight/commit case before max1new run. Whole20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "5cf379d",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "Task2 finite driver/preparer TDD/full source gates/frozen case, then max1 new affected native case.",
+    "next_bounded_step": "Prepare exact frozen78 case, source-only --preflight, commit case, then ONE native run. No old case or native retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

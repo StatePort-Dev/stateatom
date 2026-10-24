@@ -48,3 +48,22 @@ not end-user/clean installation. Reuse that exact supported research harness rou
 record command.extensionSetup literally. No new install experiment/GUI permissions/
 user profile work. Earlier spec's vague “standard extension install route” is now
 corrected; no user approval of that missing detail is invented.
+
+Task2 source gates: initial52PASS/12FAIL (missing driver10 and two incomplete-
+capture counterexamples); finite driver/captureStatus guard ->64PASS. Read-only
+whole-source3372PASS/0FAIL/0cancelled/0SKIP100.40s terminal98827 before acquisition
+hardening. Two compound acquisition controls10PASS/2FAIL on the earlier loaded
+module -> explicit browser/desktop Acquiring/Acquired/FailedCleanupUnknown and
+non-replay boundary ->66focusedPASS. A failed acquisition without a returned owner
+cannot become a skipped successful close or confirmed PID absence. No native fault
+was injected: source functions/owned fake handles only.
+
+Final fresh npm test3374PASS/0FAIL/0cancelled/0SKIP,99.99s terminal68487. Native field
+collector reads actual own-extension disabled/visibility/dirty/error/document data;
+partial capture retains earlier reads immediately. CLI rejects unknown arguments
+before IO; exact current input bytes only/no Git fallback; wx run registration,
+all independent cleanup stages. Source parse/diff checks PASS. Current327 exact
+package source hashes/protected old source/raw5 unchanged; new driver/preparer/
+guard/tests are outside the issued bundle. Actual78 remains immutable54cde48 pack.
+Fixed new case/native preflight/commit and ONE real run remain due. No browser/
+app/production/profile/trust/SDK/otherrepo/publication started by these checks.
