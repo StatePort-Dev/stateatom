@@ -2592,7 +2592,7 @@
           "type_consumers": 2,
           "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
           "standalone_read_inject_native_checks": 3,
-          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
           "runtime_race_checks": 14,
           "isolated_bug_mutations_rejected": 6,
           "native_checks": 29,
@@ -4248,7 +4248,7 @@
       "implementation_plan": "../superpowers/plans/2026-10-21-l02-real-local-model.md",
       "remaining_acceptance": [
         "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
-        "Final candidate actual factual/concision/usefulness comparison preserving historical20–30 and>=25/5incomplete/5untrusted criteria",
+        "Final candidate actual factual/concision/usefulness comparison preserving historical20\u201330 and>=25/5incomplete/5untrusted criteria",
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
@@ -5801,11 +5801,11 @@
       "active_slice": {
         "id": "V03.25",
         "record": "153-v03-external-restore-availability.md",
-        "status": "explicit-external-source-gates-complete-case-due",
+        "status": "explicit-external-native-incomplete-review-pending",
         "base": "a245ffc",
         "candidate": "0.1.0-candidate.20261021.78",
         "candidate_rebuilt": false,
-        "native_started": false,
+        "native_started": true,
         "maximum_native_runs": 1,
         "full_V03_acceptance": false,
         "existing_guards_relaxed": false,
@@ -5816,7 +5816,17 @@
         "full_source_tests": 3445,
         "full_source_failures": 0,
         "full_source_cancelled": 0,
-        "product_changed": false
+        "product_changed": false,
+        "native_runs": 1,
+        "native_case_exhausted": true,
+        "native_result": "INCOMPLETE_EXTERNAL_RESTORE_AVAILABILITY",
+        "native_source_revision": "d32d499",
+        "native_raw_sha256": "be67770204b6e8e1bce9649a19a03b827c78a47e47759d287cd5f23388d9daa0",
+        "recorded_checks_pass": 4,
+        "independent_saved_verification_inputs": 563,
+        "independent_negative_controls": 21,
+        "rendered_candidates": 4,
+        "final_review_pending": true
       },
       "completed_slices": [
         {
@@ -6742,8 +6752,8 @@
       ],
       "current_checkpoint": {
         "record": "153-v03-external-restore-availability.md",
-        "status": "explicit-external-source-gates-complete-case-due",
-        "next_bounded_step": "Task2 prepare new external78 case, source-only --preflight, commit case before ONE native run; no old case/candidate rebuild."
+        "status": "explicit-external-native-incomplete-review-pending",
+        "next_bounded_step": "Task2 saved native verification complete; focused completion command then ONE fresh whole-item review. No native retry."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-semantic-negative-controls.md",
       "implementation_plan": "../superpowers/plans/2026-10-25-v03-external-restore-availability.md",
@@ -6973,7 +6983,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK — separate StatePort project",
+      "title": "Production SDK \u2014 separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",
@@ -7044,8 +7054,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.25-source-gates-complete-case-due",
-    "next_item": "Task2 prepare new external78 case, source-only --preflight, commit case before ONE native run; no old case/candidate rebuild.",
+    "current_increment": "V03.25-native-incomplete-review-pending",
+    "next_item": "Task2 saved native verification complete; focused completion command then ONE fresh whole-item review. No native retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7072,7 +7082,7 @@
     "active_item": {
       "id": "V03",
       "record": "153-v03-external-restore-availability.md",
-      "status": "explicit-external-source-gates-complete-case-due"
+      "status": "explicit-external-native-incomplete-review-pending"
     },
     "completed_increments": [
       {
@@ -7744,7 +7754,7 @@
         "type_consumers": 2,
         "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
         "standalone_read_inject_native_checks": 3,
-        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
         "runtime_race_checks": 14,
         "isolated_bug_mutations_rejected": 6,
         "native_checks": 29,
@@ -9767,11 +9777,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.25 source137/full3445PASS, old100 controls preserved, current327/78/UI2/13raw unchanged. Fixed externalABA/read mode/newschema ready for new physicalcase/preflight/commit then max1Native. No productchange/rebuild/oldcaseretry/fullV03 or20of29 credit.",
+    "current_activity_note": "V03.25 ONE external78 nativeINCOMPLETE:10/20 externalABA/read flags and real buttons disabled, strict guard rejected early second-window products[1] at20. Final/Close20/products[] observed. Independent563physical/13raw/21negatives;4rendered candidates/cleanup verified. Source137/full3445. Finalreview due; no retry/rebuild/productchange/fullV03 or20of29 credit.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "a245ffc",
+    "current_source_revision": "d32d499",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "Task2 prepare new external78 case, source-only --preflight, commit case before ONE native run; no old case/candidate rebuild.",
+    "next_bounded_step": "Task2 saved native verification complete; focused completion command then ONE fresh whole-item review. No native retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

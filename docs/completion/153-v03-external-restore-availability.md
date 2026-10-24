@@ -1,4 +1,4 @@
-# V03.25 — explicit external ABA and native read (planning)
+# V03.25 — explicit external ABA and native read (native attempt; final review pending)
 
 Starts a245ffc: V03.24 closes as a bounded source/native attempt, native INCOMPLETE.
 First10 applied, final cached resource equals own receipt/externalRevisionfalse,
@@ -41,3 +41,53 @@ reuse; old source remains exact in Git. No candidate rebuild/types/admission rep
 model/SDK/otherrepo/trust/user-profile/product behavior change. Exact physical case
 preflight, commit, then ONE real new native case remain Task2; source checks do not
 establish new UI/native readiness. No approval of general policy is inferred.
+
+
+Task2: preparation/preflight PASS563 physical inputs,65 original files, browserStartedfalse;
+new case committed d32d499 before ONE native invocation/session54895 terminalexit1.
+Output `.artifacts/v03/external-restore-availability/2026-10-24T21-48-34-187Z`.
+Literal `INCOMPLETE_EXTERNAL_RESTORE_AVAILABILITY`, rawSHA
+`be67770204b6e8e1bce9649a19a03b827c78a47e47759d287cd5f23388d9daa0`.
+Case exhausted. No native retry, candidate rebuild or old-case repeat.
+
+Four recorded checks PASS: exact78 admission, original picker/open, external10,
+external20. Two normal app native ABA pairs11→10/21→20 and normal Read current values
+observed new revisions, preserved exact investigation/physical target/resource and
+Live applied history1/2, externalRevisiontrue/backend restoration flagsfalse/real
+Undo+baseline buttonsdisabled/clean values. These are scoped observed facts, not
+whole native acceptance: the final strict behavioral guard rejected second-window
+product-list samples. Window1 has11 samples at10/products[1]; window2 has10 at20,
+first7 products[1], last3 empty. Both final captures at10/[1] and20/[] respectively.
+Even the immediate second app-edit captures at21 and20 have products[1], so the
+new explicit-interaction product predicates are not established either. Preserve
+these original required predicates; do not call delayed products a proved cause
+or successful convergence throughout the window. No unseen callback/event schedule
+or writer attribution is inferred.
+
+The failing final guard was invoked in the native-close-preserves-value phase;
+that phase label does not mean Close caused the earlier product observations.
+Actual closed capture:20/products[], closedtrue/cleanupclosed, same history2,
+resources unchanged and both restoration buttonsdisabled. No successful restoration,
+original-guide pass or fullV03 follows. Console-host-and-rendered-checks gate was
+NOT_EXECUTED after the guard exception. Finally stopped/sealed app delivery collector
+has0 records/overflowfalse; attached inspector console0; all9cleanupflags true and
+fresh ownedChrome3751743/Vite3751691 PID checksAbsent. No global app-health claim.
+
+Independent saved Python verifier imports no source helper:
+`.artifacts/v03/external-restore-availability-saved-verification/2026-10-25/{verify.py,report.json}`;
+563 frozen physical inputs/327 product inputs/13 retained raw results unchanged,
+21 isolated negative controls; strict literal incomplete and partial-success facts
+verified. Source/Native/package/history revisions remain distinct.
+
+Four actual1100/390 fields/actions PNG candidates hash/dimensions verified and
+agent-inspected: root13px, no horizontal overflow, fields20/1000 and disabled
+Undo/baseline legible, narrow actions wrap to next line without clipping. Existing
+header/footer/Atom layout preserved, no style change. Actions view intentionally
+scrolls to controls and fields are above; fields view supplies the corresponding
+field evidence. Data-source/action stale notices concern prior inspection, separate
+from acknowledged input edits; no new whole-action evidence. References remain the
+supplied extension-ui source/screens; no claim of new visual fidelity/human acceptance,
+generic keyboard coverage or user-install proof. Independent human is not a blocker.
+
+Next: Task2focused completion command and ONE fresh whole-item review; no new Native.
+Whole20/29 (~69%) unchanged. A02/L02/V02/V03 and integration dependencies remain open.

@@ -1,10 +1,13 @@
 # Project status
 
 Active bounded work: [V03.25](completion/153-v03-external-restore-availability.md),
-explicit native app ABA plus Read current values on unchanged78/UI2. Source137/
-full3445PASS; old100 controls/current327/13oldraw preserved. New frozen physical case,
-preflight/commit then max1native remain. No native started/product change/rebuild.
-V03.24 stays exhausted/INCOMPLETE; original guide FAIL/whole20of29 unchanged.
+ONE explicit external native case78 exhausted/INCOMPLETE; final review pending.
+Both external ABA/read interactions observed disabled restoration and preserved
+Live10/20 history. Strict guard rejected early second-window products[1] at20;
+last samples/final/Close20 products[]. Four1100/390 candidates agent-inspected.
+Independent verifier563physical/13oldraw/21negatives PASS;9cleanupflags/PIDsAbsent.
+Source137/full3445PASS, old100/current327/78/UI2 preserved; no retry/rebuild/product
+change/fullV03/original-guide or whole20of29 credit.
 
 Completed bounded attempt: [V03.24](completion/152-v03-packed-restore-availability.md).
 Exact78 native result remains INCOMPLETE: first10 applied/current own receipt,
