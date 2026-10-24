@@ -1,11 +1,11 @@
 # Project status
 
-Active bounded work: [L02.11](completion/156-l02-comparison-provider.md),
-source tasks complete95focused/full3560PASS; ONEsource-slice review pending.
-Namedv2provider/fixed34evaluationpage retain oldv1behavior, faithfulAPI forwarding,
-lateevents/ownedcleanup/textContent/cachedonly.17prior sourcephysical+1Git/current327/
-rawgroups stable. No model/browser/profile/download/product UI selection or fullL02/
-20of29 acceptance. Next separate realcachedmodel candidate only aftercloseout/prereg.
+Completed bounded source slice: [L02.11](completion/156-l02-comparison-provider.md).
+Namedv2provider/fixed34evaluationdocument95focused/full3560PASS, ONEsource-slice
+review0C/0I/1M(selector/resultcaseclarity deferred; records correctlyIDed). No model/
+browser/profile/download/esbuild/product selection.17oldsourcephysical+1Git/current327/
+rawgroups preserved. MandatoryL02/20of29 unchanged. Next ONE L02.12: fixed/preregistered
+realcachedmodel candidate aftersource/physical/ownedprofile gates, no oldcampaignretry.
 
 Completed bounded source slice: [L02.10](completion/155-l02-recorded-model-comparison.md).
 New23/focused68/full3533PASS, ONEsource-slice review0C/0I/0M. Typedv2comparison is

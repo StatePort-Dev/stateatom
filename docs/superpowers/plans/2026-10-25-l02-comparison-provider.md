@@ -44,4 +44,4 @@
 
 ## Final closeout
 
-- [ ] ONE fresh whole-source-slice review/effect regrade/ONEtestedI/Cpass/no rereview/model; allrulings/minors retained. Ownworkspace archived/hashed/removed, cleanlocalcheckpoint/commit, ONE nextstep: separately fixed/preregistered actual cachedmodel candidate, not automatic prompt retry.
+- [x] ONE fresh whole-source-slice review/effect regrade/ONEtestedI/Cpass/no rereview/model; allrulings/minors retained. Ownworkspace archived/hashed/removed, cleanlocalcheckpoint/commit, ONE nextstep: separately fixed/preregistered actual cachedmodel candidate, not automatic prompt retry.
