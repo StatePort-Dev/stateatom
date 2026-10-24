@@ -2334,3 +2334,14 @@ corrected harness awaits modal/nonempty JSON and binds fresh saved identity.
 Focused80PASS; new report/Stop-only case preflight3232inputs17links, same76 archive,
 retained76 visual/75 unchanged semantics, no product fix/reinstall. Commit then one
 native report/Stop case, saved verification and ONE final review.20/29 unchanged.
+
+### 2026-10-24 — A02.4 remaining native report/Stop pass, review pending
+
+[Actual bounded acceptance](completion/141-a02-react19-product-acquisition.md):
+report/Stop case on653e39b **6/6 PASS**, actual28409byte v1 download/reader with
+explicit native-ancestor omission; public dev stop makes witness Unknown/empty
+while app input continues.3232inputs17links stable/console0/allcleanup. Saved
+independent verifier20negative controls PASS; ten criteria explicitly combine
+unchanged75 semantic cases, same76 visual candidates and fresh report/Stop evidence.
+All three old partial runs unchanged. ONE final whole-item review pending;
+wholeA02/20-of29 unchanged. No certificate/system/IDE profile changes.

@@ -1666,7 +1666,7 @@
       "active_slice": {
         "id": "A02.4",
         "title": "Bounded ordinary React19 product acquisition integration",
-        "status": "in-progress-native76-visual-pass-report-readiness-pending",
+        "status": "in-progress-native76-report-stop-pass-final-review-pending",
         "record": "141-a02-react19-product-acquisition.md",
         "design": "../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md",
         "plan": "../superpowers/plans/2026-10-24-a02-react19-product-acquisition.md",
@@ -1872,8 +1872,8 @@
       },
       "current_checkpoint": {
         "record": "141-a02-react19-product-acquisition.md",
-        "status": "in-progress-native76-visual-pass-report-readiness-pending",
-        "next_bounded_step": "A02.4 Task3d commit harness dialog-readiness correction then one report/Stop-only native case; retain actual76 visual and strict unchanged75 semantic evidence, verify ten criteria and ONE final review"
+        "status": "in-progress-native76-report-stop-pass-final-review-pending",
+        "next_bounded_step": "A02.4 ONE final whole-item review of private collector/profile/UI and composed actual acceptance; then one tested Important/Critical pass if needed, local final commit and next dependency item"
       },
       "stopping_point_history": [
         {
@@ -6442,8 +6442,8 @@
     "document": "141-a02-react19-product-acquisition.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.4-native76-visual-pass-report-readiness-pending",
-    "next_item": "A02.4 Task3d commit harness dialog-readiness correction then one report/Stop-only native case; retain actual76 visual and strict unchanged75 semantic evidence, verify ten criteria and ONE final review",
+    "current_increment": "A02.4-native76-report-stop-pass-final-review-pending",
+    "next_item": "A02.4 ONE final whole-item review of private collector/profile/UI and composed actual acceptance; then one tested Important/Critical pass if needed, local final commit and next dependency item",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6470,7 +6470,7 @@
     "active_item": {
       "id": "A02",
       "record": "141-a02-react19-product-acquisition.md",
-      "status": "in-progress-native76-visual-pass-report-readiness-pending"
+      "status": "in-progress-native76-report-stop-pass-final-review-pending"
     },
     "completed_increments": [
       {
@@ -9169,7 +9169,7 @@
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "1cd2f4f",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "A02.4 Task3d commit harness dialog-readiness correction then one report/Stop-only native case; retain actual76 visual and strict unchanged75 semantic evidence, verify ten criteria and ONE final review"
+    "next_bounded_step": "A02.4 ONE final whole-item review of private collector/profile/UI and composed actual acceptance; then one tested Important/Critical pass if needed, local final commit and next dependency item"
   },
   "next_task": "A02"
 }

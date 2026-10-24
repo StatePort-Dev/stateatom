@@ -361,3 +361,47 @@ verifies the single registered harness delta; product source/payload changes0.
 Preflight **3232inputs/17links PASS**, no native resources. Commit before the one
 new case, then independent composed evidence verification and ONE final review.
 Old cases/results remain INCOMPLETE and exhausted.20/29 unchanged.
+
+## Task3d actual report/Stop acceptance and composed evidence
+
+The new max1 case ran on **653e39b** and is terminal:
+`PASS_SCOPED_REMAINING_NATIVE_NOT_FULL_A02`, **6/6 PASS**.
+Output `.artifacts/a02/react19-report/2026-10-24T09-39-44-647Z/results.json`;
+SHA256 **856f4ef5ce93899e9e904fcb812d5f72a1ccab60fa946115468113bc614e9cf9**.
+Fresh attach/helper/occurrence is distinct from both earlier pages. Actual modal
+readiness and saved id/page/value/property/selector/capture-time joins pass.
+The real downloaded v1 file is **28409bytes**, SHA256
+**71d50f24b392fd95936261441816a5e50ed757607387f7c6d35be6e4aac8bcd8**;
+it explicitly omits native ancestor observations, contains no opaque React19 IDs,
+and opens in the inert reader. Actual reader screenshot viewed; it remains a
+candidate, historical/untrusted and provides no actions or revalidation.
+
+Public dev observer `stop()` yields **Unknown/Unsupported / Observer stopped**,
+zero ancestors, and a subsequent actual TodoMVC input still works. This is the
+preregistered harness lifecycle intervention, not a new product Stop button.
+All **3232inputs/17links** match; console warnings/errors0; owned browser/helper/
+Vite/Xephyr/UI/log handles closed, Chrome1415255/Vite1415088 absent.
+Independent saved verifier **20negative controls PASS**:
+`verification/verify.mjs` and `verification/verification.json` in this output.
+It checks actual downloaded bytes and fresh saved joins, old literal partials,
+old75 semantic relationships, same76 visual artifact, inputs/links and cleanup.
+
+| Original criterion | Evidence credited |
+| --- | --- |
+| 1 artifacts/registration | Fresh76 report/Stop run, exact76/UI2/plugin7 hashes |
+| 2 actual source connection | Fresh76 own HTTP HelperSession plus public attach |
+| 3 equal nodes | Retained75 native different nodes/common queue under strict unchanged mechanism proof |
+| 4 unmarked target | Retained75 declared metadata fault, source target/global Unknown, native ancestor retained |
+| 5 same-value update | Retained75 native new result/revision/update and preceding-result input identity |
+| 6 changed first/unchanged second | Retained75 same second host/common queue, next applied input/result |
+| 7 normal/hover/keyboard/narrow | Retained actual76 partial3, same exact76 archive,13px/440/360/focus-visible2px; candidates |
+| 8 saved/downloaded/reader | Fresh76 actual v1 file and inert reader, explicit ancestor omission |
+| 9 Stop/application continues | Fresh76 public dev stop, Unknown/zero ancestors, actual post-stop input |
+| 10 immutability/cleanup | Fresh76 3232inputs/17links/all owned resources closed |
+
+No old75 semantic or76 visual scenario was rerun. Original startup1/10, font6/10
+and export3/6 runs remain literal INCOMPLETE; no old occurrence is reused.
+Task3 implementation/evidence is ready for **ONE fresh whole-item review** before
+bounded A02.4 completion. Full A02/ownership/selected-property producer, full V03,
+installed IDE/Store, general React19 builds, human usability and public release
+are not established by this evidence.20/29 whole items unchanged.
