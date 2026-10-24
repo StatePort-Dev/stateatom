@@ -17,3 +17,12 @@ button agreement after two Live writes and safe Close, never successful restorat
 over an external revision. Fresh raw/result/negative controls and candidate rendered
 QA must decide the literal outcome. Browser plugin absent; existing repo Playwright
 fallback, screenshots remain candidates, no human acceptance blocker.
+
+Task1 BASEbd26f4b, brief read before tests. Missing-module RED(onefile/noexecuted
+unitcases); first guard evaluation37PASS/15FAIL exposed incoherent synthetic second
+window timestamp, not a native result. Correct only fixture time ordering; synchronize
+semantic receipt copies so mode/phase negatives assert their own scalar rejection.
+Final guard52PASS. New guard is research/source-only, no runtime on import/no native.
+Version metadata77→78 and lock/changelog identity are prepared; exact pack/types/
+admission remain due after clean source commit. Original59source/full3308 retain
+prior revision; not a claimed new fullsuite. No behavior/guard relaxation.

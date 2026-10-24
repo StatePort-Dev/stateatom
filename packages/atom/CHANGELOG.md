@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.0-candidate.20261021.78
 
 - Report native Undo and Restore baseline as unavailable when exact ownership or
   the existing pending/closed/uncertain/history limits already prevent restoration.
