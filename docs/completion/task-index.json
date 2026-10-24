@@ -1666,7 +1666,7 @@
       "active_slice": {
         "id": "A02.4",
         "title": "Bounded ordinary React19 product acquisition integration",
-        "status": "in-progress-first-native-startup-failed-attach-admission-control-next",
+        "status": "in-progress-corrected-attach-protocol-source-tested-native-pending",
         "record": "141-a02-react19-product-acquisition.md",
         "design": "../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md",
         "plan": "../superpowers/plans/2026-10-24-a02-react19-product-acquisition.md",
@@ -1709,7 +1709,12 @@
         "native_result_sha256": "9f955338bbad571145b2ed882947b9835c1b93dab42c9bf6dd3b6a9aba1bf4d6",
         "native_denial_reason_captured": false,
         "source_cache_admission_control": "no cache denies / cache admits; unchanged policy source only",
-        "native_handles_live": false
+        "native_handles_live": false,
+        "task3b_source_controls": 77,
+        "corrected_native_started": false,
+        "corrected_native_preflight_inputs": 3217,
+        "corrected_native_case": "../testing/react19-product-cache-case.json",
+        "product_permission_policy_changed": false
       },
       "completed_slices": [
         {
@@ -1812,8 +1817,8 @@
       },
       "current_checkpoint": {
         "record": "141-a02-react19-product-acquisition.md",
-        "status": "in-progress-first-native-startup-failed-attach-admission-control-next",
-        "next_bounded_step": "A02.4 Task3b source/mounted UI Attach/cache admission control, then separately frozen corrected setup; preserve first native1of10/zero-app-input failure and all criteria"
+        "status": "in-progress-corrected-attach-protocol-source-tested-native-pending",
+        "next_bounded_step": "A02.4 Task3b run separately frozen corrected Attach/cache case once after commit; preserve original1of10/zero-app-input failure, all ten criteria and one final review"
       },
       "stopping_point_history": [
         {
@@ -6382,8 +6387,8 @@
     "document": "141-a02-react19-product-acquisition.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.4-first-native-startup-failed-attach-admission-control-next",
-    "next_item": "A02.4 Task3b source/mounted UI Attach/cache admission control, then separately frozen corrected setup; preserve first native1of10/zero-app-input failure and all criteria",
+    "current_increment": "A02.4-corrected-attach-protocol-source-tested-native-pending",
+    "next_item": "A02.4 Task3b run separately frozen corrected Attach/cache case once after commit; preserve original1of10/zero-app-input failure, all ten criteria and one final review",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6410,7 +6415,7 @@
     "active_item": {
       "id": "A02",
       "record": "141-a02-react19-product-acquisition.md",
-      "status": "in-progress-first-native-startup-failed-attach-admission-control-next"
+      "status": "in-progress-corrected-attach-protocol-source-tested-native-pending"
     },
     "completed_increments": [
       {
@@ -9105,11 +9110,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.4 Tasks1-2 complete229focused; Task3 final75 source2912PASS/presentation74/CLI2/types2/admission9. First actual63c1c5b attempt INCOMPLETE at Attach:1of10/0app inputs/0native ancestor observations; actual cache unchecked, exact native denial reason not captured.3216inputs/17links stable, all resources closed/PIDs absent, saved failure verifier12negatives PASS preservation only. Existing policy source requires cache; original protocol omitted it. Next bounded Task3b source/mounted UI admission control before any separately frozen correction. No new product-native/full A02/V03 acceptance;20of29 unchanged; no final reviewer yet.",
+    "current_activity_note": "A02.4 final75 product source2912PASS/presentation74/CLI2/types2/admission9. Original63c1c5b native INCOMPLETE Attach1of10/0app inputs/observations,3216stable/allcleanup/verifier12negativecontrols; remains literal. Task3b actual mounted Attach/cache source control plus capability/CLI77PASS, separately frozen corrected setup with real before/after admission capture and all10criteria unchanged. Preflight3217inputs/17links, no corrected browser run yet. Product policy/source/archives unchanged; two historical harness/preparer input deltas pinned to original Git blobs. Next commit then one corrected case; one final reviewer still pending/20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "63c1c5b",
+    "current_source_revision": "0e4add7",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "A02.4 Task3b source/mounted UI Attach/cache admission control, then separately frozen corrected setup; preserve first native1of10/zero-app-input failure and all criteria"
+    "next_bounded_step": "A02.4 Task3b run separately frozen corrected Attach/cache case once after commit; preserve original1of10/zero-app-input failure, all ten criteria and one final review"
   },
   "next_task": "A02"
 }

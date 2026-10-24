@@ -191,14 +191,40 @@ This is a concrete source-supported setup defect, not a captured native denial
 reason or proof that all remaining setup will pass. Probe:
 `startup-verification/attach-source-probe.json`. Product policy/guards remain intact.
 
+## Task3b source admission control and corrected registration
+
+The existing mounted inspector was exercised with the actual capability policy:
+read/inject without cache shows Attach disabled with title "cache capability
+required"; adding only the required checked cache action enables Attach. This is
+source/mounted UI evidence, not a native reason retroactively assigned to the first
+failed run. Focused inspector/capability controls **75PASS**, then with native CLI
+refusals **77PASS/0FAIL/0SKIP**. No product/runtime/CSS/permission policy changed.
+
+A separate case `react19-product-cache-case.json` retains all ten original feature/
+cleanup checks and max1run. It first records the actual no-cache denial, then checks
+cache in the existing exact-local-site Settings and records available admission
+before clicking Attach. It cannot silently force availability or bypass a guard.
+The preparer defaults to this explicit corrected case; the original case remains
+unchanged. Both before/after admission records must be retained even on failure.
+
+The fresh output/cache/profile preparation reuses the unchanged copied app,
+installed plugin7 and exact Atom75/UI2 archives, with no reinstall or new package
+version. Its path is
+`.artifacts/a02/react19-product-cache/2026-10-24T08-20-31-062Z/prepared.json`.
+Preflight: **3217inputs/17links PASS**, no browser started. Only the new case adds
+an input; the existing source-harness/preparer changes are explicit. Original native
+inputs now have3214 physical matches plus2 old Git blobs verified at63c1c5b, recorded
+in `startup-verification/protocol-source-delta-final.json`. The prior strict
+3216-input clean checkpoint, literal failed result and original case are intact.
+This is historical source preservation, not a fresh run of original code.
+
 ## Remaining work in this same item
 
-Next bounded step: **A02.4 Task3b — source/mounted UI Attach/cache admission control,
-then a separately frozen corrected setup case if that control passes.** Keep the
-first case, result, screenshots, inputs and criteria unchanged. No immediate rerun,
-no generic permission bypass and no changing read-only/production policy. The same
-ten native feature/cleanup checks remain required before this item can be called
-delivered. One final whole-item reviewer remains pending; none was dispatched early.
+Next bounded step: **run the separately frozen corrected Attach/cache case once
+after committing this source delta; independently verify its literal saved result.**
+The original case's single attempt remains exhausted. No new native attempt has
+started for the corrected case yet. All ten feature/cleanup criteria and the one
+final whole-item review remain required; A02.4 is not delivered on source controls.
 
 Full A02/V03/V02/L02/C09 remain open;20/29 unchanged. The original V03 input failures,
 Unknowns and deferred native Node-admission Minor remain preserved. The new driver's

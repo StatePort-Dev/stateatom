@@ -24,6 +24,15 @@ function fixture(request,options={}){
  return {$,state,list,emit:m=>onEvent(m),disconnect:()=>{for(const fn of connectionListeners)fn({state:'closed',code:'INSPECTOR_DISCONNECTED'});},view:mountAtom(host,client,{idPrefix:'',...options})};
 }
 test('mounted Basic reuses its existing summary/action while keeping evidence details available',async()=>{const f=fixture();await f.view.ready;assert.match(f.$('inspection-summary').textContent,/DOM snapshot/);assert.equal(f.$('inspection-next').textContent,'Connect project for source');assert.equal(f.$('property-explanation-block').hidden,true);assert.equal(f.$('explanation-details').hidden,false);await f.view.dispose();});
+test('existing normal HTTP Attach stays disabled without its checked cache grant and enables with only that required action',async()=>{
+ const {describeCapabilities}=await import('../../packages/atom/src/capabilities.mjs');
+ for(const cache of[false,true]){
+  const grants=['read','inject',...(cache?['cache']:[])],policy=describeCapabilities({url:'http://127.0.0.1:5173/',permission:true,lease:'none',attached:false,readOnly:false,grants});
+  let f;f=fixture(m=>m.op==='state'?{...f.state(m.tabId),attached:false,readOnly:false,connection:{origin:'http://127.0.0.1:5173',mode:'development',actions:cache?['cache']:[]},capabilityPolicy:policy}:undefined);
+  try{await f.view.ready;assert.equal(f.$('source-map-readonly').checked||false,false);assert.equal(f.$('site-cache').checked,cache);assert.equal(f.$('attach').disabled,!cache);assert.equal(f.$('attach').title,cache?'':'cache capability required');assert.deepEqual(policy.operations.attach.requiredGrants,['read','inject','cache']);}
+  finally{await f.view.dispose();}
+ }
+});
 test('mounted inspector renders the compact independent ancestor summary and clears it with a new target',async()=>{
  let present=true;const f=fixture(m=>{
   if(m.op!=='state')return;

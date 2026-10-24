@@ -9,13 +9,14 @@ import {parseDiagnostic} from '../../core/diagnostic.mjs';
 const root=process.cwd(),sha=b=>createHash('sha256').update(b).digest('hex'),json=async f=>JSON.parse(await readFile(f));
 const preparedFile=process.argv[2];assert(preparedFile,'Pass the exact prepared.json; no automatic environment rebuild');
 const preflight=process.argv[3]==='--preflight';assert(process.argv.length===3||process.argv.length===4&&preflight,'Unexpected native driver option');
-const prepared=await json(preparedFile),out=prepared.out,spec=await json(root+'/docs/testing/react19-product-case.json');
+const prepared=await json(preparedFile),out=prepared.out,caseFile=prepared.caseFile||root+'/docs/testing/react19-product-case.json',spec=await json(caseFile);
 assert.equal(prepared.schema,'stateatom.react19-product-preparation/1');assert.equal(prepared.browserStarted,false);
 assert.equal(spec.maximumNativeRuns,1);assert.equal(prepared.atom.package.version,spec.configuration.atom);assert.equal(prepared.plugin.plugin.version,spec.configuration.plugin);
 if(!preflight)assert.equal(execFileSync('git',['status','--porcelain'],{encoding:'utf8'}),'','Commit source and case before the native run');
 const product={...prepared.atom.buildSources.manifest,...prepared.plugin.sourceManifest,...prepared.helperInputs},extra=['tests/integration/react19-product.mjs','scripts/prepare-react19-product.mjs','docs/testing/react19-product-case.json','scripts/native-browser.mjs','scripts/harness.mjs','scripts/owned-ide-endpoint.mjs','tests/helpers/source-access-native-desktop.mjs','tests/helpers/native-inspector-ui.mjs'];
 const inputs={};for(const[file,hash]of Object.entries(product)){const absolute=path.resolve(root,file);assert.equal(sha(await readFile(absolute)),hash,'Prepared product drift: '+file);inputs[absolute]=hash;}
 for(const file of extra)inputs[root+'/'+file]=sha(await readFile(root+'/'+file));
+inputs[path.resolve(caseFile)]=sha(await readFile(caseFile));
 for(const manifest of[prepared.copiedOriginals,prepared.vendorFiles,prepared.installedFiles,prepared.appDependencyInputs,prepared.toolInputs])for(const[file,hash]of Object.entries(manifest)){assert.equal(sha(await readFile(file)),hash,file);inputs[file]=hash;}
 for(const[file,target]of Object.entries(prepared.toolLinks))assert.equal(await realpath(file),target,'Tool link changed');
 for(const[file,hash]of Object.entries(prepared.atom.consumerReceipt.hostFiles.standalone)){const absolute=prepared.atom.hosts.standalone+'/'+file;assert.equal(sha(await readFile(absolute)),hash,'Packed host drift: '+file);inputs[absolute]=hash;}
@@ -54,6 +55,12 @@ try{
  app=await browser.context.newPage();await app.goto(ready.origin+'/');panel=await browser.context.newPage();panel.on('pageerror',e=>result.errors.push(sanitize(e)));await panel.goto('chrome-extension://'+browser.id+'/panel.html');ui=await nativeInspectorUI(panel,browser);
  await check(spec.expectedChecks[1],async()=>{
   result.tabId=await waitFor(()=>panel.evaluate(async origin=>{const r=await chrome.runtime.sendMessage({op:'tabs'});if(!r.ok)throw Error(r.error);const matches=r.result.filter(t=>new URL(t.url).origin===origin);if(matches.length>1)throw Error('Ambiguous owned app tab');return matches[0]?.id;},ready.origin));await ui.click('setup-toggle');await ui.click('refresh-tabs');await ui.waitOK();await ui.select('tabs',result.tabId);await ui.waitOK();await ui.select('site-mode','development');await ui.click('save-site');await ui.waitOK();
+  async function attachAdmission(){const s=await rpc({op:'state',tabId:result.tabId});return{policy:s.capabilityPolicy.operations.attach,ui:await panel.evaluate(()=>({disabled:document.querySelector('[data-atom-id=attach]').disabled,title:document.querySelector('[data-atom-id=attach]').title,cache:document.querySelector('[data-atom-id=site-cache]').checked,readOnly:document.querySelector('[data-atom-id=source-map-readonly]').checked}))};}
+  result.attachAdmission={before:await attachAdmission()};
+  if(spec.configuration.cachePermission===true){
+   assert.equal(result.attachAdmission.before.ui.cache,false);assert.equal(result.attachAdmission.before.ui.readOnly,false);assert.equal(result.attachAdmission.before.policy.available,false);assert.equal(result.attachAdmission.before.policy.code,'CAPABILITY_DENIED');assert.equal(result.attachAdmission.before.policy.reason,'cache capability required');assert.equal(result.attachAdmission.before.ui.disabled,true);
+   await ui.click('site-cache');await ui.click('save-site');await ui.waitOK();result.attachAdmission.after=await attachAdmission();assert.equal(result.attachAdmission.after.ui.cache,true);assert.equal(result.attachAdmission.after.ui.readOnly,false);assert.equal(result.attachAdmission.after.policy.available,true);assert.equal(result.attachAdmission.after.ui.disabled,false);
+  }
   await ui.click('attach');await ui.waitOK();assert.equal((await rpc({op:'state',tabId:result.tabId})).attached,true);
   await ui.fill('connection-receipt',JSON.stringify(receipt));await ui.click('connect-receipt');await ui.waitOK();
   appSession=await app.session();await appSession.send('Runtime.enable');appSession.on('Runtime.consoleAPICalled',e=>{if(['warning','error'].includes(e.type))result.console.push({type:e.type,text:e.args.map(x=>x.value??x.description??'').join(' ')});});app.on('pageerror',e=>result.errors.push(sanitize(e)));
