@@ -2266,3 +2266,11 @@ harness deltas, no native/rereview/productchange. Original15
 overheadmisses/20-of29/fullV02 unchanged. NextcandidateV03.15 onlyremainingcombined
 installed-helper/browser guideconnection, preserve127externalCopilotFAIL/oldproof,
 no blinddomainmatrix/reinstall/oldappcampaign/userprofile/otherrepo change bydefault.
+
+
+[V03.15](completion/137-v03-guide-source-connection.md) is in progress: only the remaining
+public live helper receipt/browser/source/Open in IDE join. Existing React19 commerce
+profile is outside installed React18/classic recipe, so use alreadyqualified Vue
+tuple/installed6/helper8/current72; no app rewrite or old installation/report/ABBA
+repeat. Source24/focused34 PASS, native/review due. Strict Vue/Copilot console FAIL
+criteria remain unwaived, whole20/29/fullV03 unchanged; no certificate GUI/systemtrust.
