@@ -38,9 +38,9 @@
 **Files:** docs/testing/converged-restore-availability-case78.json; fresh ignored outputs/completion154/current pointers.
 **Interfaces:** exact new protocol consumes source helper/current unchangedpair; historical25inputs preserved against01ac34a checkpoint/Git for declared research deltas.
 
-- [ ] Prepare fresh physical inputs/65original/preflightPASS/browserfalse; commit case before ONE actualnative/pollsamehandle/no retry. Oldcases exhausted.
-- [ ] Independent saved verifier/no sourceimports rechecks literal groups/immediate values/scopes/history/deadlines/windows/flags/Close/console/cleanup/hashprovenance/isolatednegatives; inspect actual1100/390 fields/actions PNG ifproduced, elseNOT_EXECUTED. Record PASS/INCOMPLETE honestly; local result commit/task-done with named focused source command.
+- [x] Prepare fresh physical inputs/65original/preflightPASS/browserfalse; commit case before ONE actualnative/pollsamehandle/no retry. Oldcases exhausted.
+- [x] Independent saved verifier/no sourceimports rechecks literal groups/immediate values/scopes/history/deadlines/windows/flags/Close/console/cleanup/hashprovenance/isolatednegatives; inspect actual1100/390 fields/actions PNG ifproduced, elseNOT_EXECUTED. Record PASS/INCOMPLETE honestly; local result commit/task-done with named focused source command.
 
 ## Final closeout
 
-- [ ] ONE fresh whole-item review; effect regrade/ONE tested I/C pass/no rereview/native repeat, allrulings/minors retained; ownworkspace archive/hash/remove; clean local commit/checkpoint and ONE nextdependency.
+- [x] ONE fresh whole-item review; effect regrade/ONE tested I/C pass/no rereview/native repeat, allrulings/minors retained; ownworkspace archive/hash/remove; clean local commit/checkpoint and ONE nextdependency.

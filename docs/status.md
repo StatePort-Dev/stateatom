@@ -1,11 +1,12 @@
 # Project status
 
-Active bounded work: [V03.26](completion/154-v03-converged-restore-availability.md),
-ONE converged78 case exhausted/INCOMPLETE; final review pending. First external11
-retained3scope/history samples: cleaneditor/currentresource10,10,11 while ownLive
-receipt remains10. Guard expected old10 and stopped; no next input/read/windows/
-Close/1100+390 QA. Independent571physical/14oldraw/18negatives/cleanup verified.
-Source202/full3510PASS; no native retry/product change or full20of29/V03 credit.
+Completed bounded attempt: [V03.26](completion/154-v03-converged-restore-availability.md).
+ONE converged78 native remains INCOMPLETE/exhausted; firstexternal11 has3retained
+scope/history samples, cleanfield/currentresource10,10,11 vsownreceipt10. No further
+native stages/dedicatedQA. ONE review0C/0I/1M documentationminor deferred; source202/
+full3510PASS, independent571physical/14oldraw/18negatives/cleanup verified. No native
+retry/productchange/fullV03 or20of29 credit. Next ONE mandatoryL02.10 source-only
+recorded boolean versus copied-model comparison, with privacy/identity/unknown gates.
 
 Completed bounded attempt: [V03.25](completion/153-v03-external-restore-availability.md).
 ONE explicit external78 native remains INCOMPLETE; four recorded gates and final

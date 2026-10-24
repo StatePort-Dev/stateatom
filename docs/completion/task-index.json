@@ -5801,7 +5801,7 @@
       "active_slice": {
         "id": "V03.26",
         "record": "154-v03-converged-restore-availability.md",
-        "status": "converged-native-incomplete-review-pending",
+        "status": "complete-bounded-source-and-native-attempt-not-full-V03",
         "base": "01ac34a",
         "candidate": "0.1.0-candidate.20261021.78",
         "candidate_rebuilt": false,
@@ -5834,7 +5834,19 @@
         "independent_saved_verification_inputs": 571,
         "independent_negative_controls": 18,
         "rendered_dedicated_candidates": 0,
-        "final_review_pending": true
+        "final_review_pending": false,
+        "review": {
+          "count": 1,
+          "critical": 0,
+          "important": 0,
+          "minor": 1,
+          "minor_deferred": [
+            "M1 original prospective paragraph clarity"
+          ],
+          "correction_passes": 0,
+          "rereview": false
+        },
+        "final_checkpoint": ".artifacts/v03/converged-restore-availability-review/2026-10-25/final-checkpoint.json"
       },
       "completed_slices": [
         {
@@ -6802,8 +6814,8 @@
       ],
       "current_checkpoint": {
         "record": "154-v03-converged-restore-availability.md",
-        "status": "converged-native-incomplete-review-pending",
-        "next_bounded_step": "Task2 focused completion then ONE fresh whole-item review; native case exhausted/no retry. Next mandatory L02 after bounded closeout."
+        "status": "complete-bounded-source-and-native-attempt-not-full-V03",
+        "next_bounded_step": "L02.10 source-only separately versioned admitted recorded/model boolean comparison; privacy/identity/unknown controls, no model/UI switch or old-case retry."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-25-v03-external-restore-availability.md",
       "implementation_plan": "../superpowers/plans/2026-10-25-v03-converged-restore-availability.md",
@@ -7104,8 +7116,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.26-native-incomplete-review-pending",
-    "next_item": "V03.26 Task2 focused completion/ONE whole-item review; then mandatoryL02 bounded follow-up, no old Native retry.",
+    "current_increment": "V03.26-complete-native-incomplete-source-reviewed",
+    "next_item": "L02.10 source-only typed recorded/model comparison, field privacy and exact unknown/current-identity controls; preserve old corpus/providers/results.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7132,7 +7144,7 @@
     "active_item": {
       "id": "V03",
       "record": "154-v03-converged-restore-availability.md",
-      "status": "converged-native-incomplete-review-pending"
+      "status": "complete-bounded-source-and-native-attempt-not-full-V03"
     },
     "completed_increments": [
       {
@@ -9827,11 +9839,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.26 ONE native65e05a2 INCOMPLETE/exhausted; external11 retained3complete scope/history samples, cleaneditor/currentresource10/10/11 versus unchanged ownreceipt10. Guardexpectedold10 stops before nextstep; no read/window/Close/QA. Independent571physical/14raw/18negative/9cleanup verified. Source202/full3510; finalreviewdue/no retry/fullV03 or20of29 credit.",
+    "current_activity_note": "V03.26 boundedattempt complete/source202/full3510/ONEreview0C0I1Mdeferred; literalNativeINCOMPLETE/exhausted retained, external11 intermediatefield10,10,11 and no downstreamnativeQA. Next mandatoryL02.10 source-only typed recorded/model comparison, no realmodel orUI switch. Whole20/29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "65e05a2",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "Task2 focused completion then ONE fresh whole-item review; native case exhausted/no retry. Next mandatory L02 after bounded closeout.",
+    "next_bounded_step": "L02.10 source-only separately versioned admitted recorded/model boolean comparison; privacy/identity/unknown controls, no model/UI switch or old-case retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
