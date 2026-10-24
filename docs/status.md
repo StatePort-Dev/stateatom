@@ -1,5 +1,10 @@
 # Project status
 
+Active bounded work: [V03.25](completion/153-v03-external-restore-availability.md),
+explicit native app ABA plus Read current values on unchanged78/UI2. Source gates
+and new committed max1 case first; no native started/product behavior change.
+V03.24 stays exhausted/INCOMPLETE; original guide FAIL/whole20of29 unchanged.
+
 Completed bounded attempt: [V03.24](completion/152-v03-packed-restore-availability.md).
 Exact78 native result remains INCOMPLETE: first10 applied/current own receipt,
 externalRevisionfalse; backend/UI restoration available. Required external revision,

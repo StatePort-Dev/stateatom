@@ -5797,60 +5797,18 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "152-v03-packed-restore-availability.md",
+      "execution_record": "153-v03-external-restore-availability.md",
       "active_slice": {
-        "id": "V03.24",
-        "record": "152-v03-packed-restore-availability.md",
-        "status": "complete-bounded-source-and-native-attempt-native-availability-unqualified",
-        "base": "5cf379d",
-        "native_started": true,
-        "maximum_native_runs": 1,
-        "packed_candidate_due": false,
-        "full_V03_acceptance": false,
-        "existing_guards_relaxed": false,
+        "id": "V03.25",
+        "record": "153-v03-external-restore-availability.md",
+        "status": "planning-explicit-external-aba-and-ui-read",
+        "base": "a245ffc",
         "candidate": "0.1.0-candidate.20261021.78",
-        "atom_sha256": "8e2d67e68a0ef2a798409156c581629adb3cd2e37f06e8bb3ef7c3c0d16bcf4a",
-        "ui_sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
-        "handoff": ".artifacts/atom/2026-10-24T20-09-40-323Z/atom-handoff.json",
-        "packed_types": 2,
-        "package_admission": 9,
-        "source_guard_controls": 84,
-        "source_aggregate": 111,
-        "full_source_tests_historical": 3308,
-        "extension_setup": "historical-cli-preload-harness-not-user-install",
-        "source_driver_controls": 16,
-        "source_focused": 100,
-        "full_source_tests": 3408,
-        "full_source_failures": 0,
-        "full_source_cancelled": 0,
-        "native_attempts": 1,
-        "native_source_revision": "d12d6fc238f58d625ed404ec278f7d7d5b871992",
-        "native_status": "INCOMPLETE_RESTORE_AVAILABILITY",
-        "native_result_sha256": "8b6d25d9d7d1d7745ea2110bb7d3ea31a2078d1ba14b2bbdc1a9f52420b333a5",
-        "native_positive_gates": 2,
-        "native_edits": 1,
-        "observed_first_applied_value": 10,
-        "required_external_revision_established": false,
-        "actual_resource_equals_own_receipt": true,
-        "rendered_1100_390": "NOT_EXECUTED",
-        "native_close": "NOT_EXECUTED",
-        "app_console_health": "Unknown/NotCollected",
-        "independent_saved_inputs": 555,
-        "independent_negative_controls": 16,
-        "native_repeated": false,
-        "review": {
-          "count": 1,
-          "critical": 0,
-          "important": 3,
-          "important_fixed": 3,
-          "minor": 0,
-          "correction_passes": 1,
-          "rereview": false,
-          "report": ".artifacts/v03/restore-availability-review/2026-10-25/report.md"
-        },
-        "current_physical_inputs": 549,
-        "current_historical_git_inputs": 6,
-        "final_checkpoint": ".artifacts/v03/restore-availability-review/2026-10-25/final-checkpoint.json"
+        "candidate_rebuilt": false,
+        "native_started": false,
+        "maximum_native_runs": 1,
+        "full_V03_acceptance": false,
+        "existing_guards_relaxed": false
       },
       "completed_slices": [
         {
@@ -6718,15 +6676,69 @@
             "report": ".artifacts/v03/undo-eligibility-review/2026-10-24/report.md"
           },
           "final_checkpoint": ".artifacts/v03/undo-eligibility-review/2026-10-24/final-checkpoint.json"
+        },
+        {
+          "id": "V03.24",
+          "record": "152-v03-packed-restore-availability.md",
+          "status": "complete-bounded-source-and-native-attempt-native-availability-unqualified",
+          "base": "5cf379d",
+          "native_started": true,
+          "maximum_native_runs": 1,
+          "packed_candidate_due": false,
+          "full_V03_acceptance": false,
+          "existing_guards_relaxed": false,
+          "candidate": "0.1.0-candidate.20261021.78",
+          "atom_sha256": "8e2d67e68a0ef2a798409156c581629adb3cd2e37f06e8bb3ef7c3c0d16bcf4a",
+          "ui_sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+          "handoff": ".artifacts/atom/2026-10-24T20-09-40-323Z/atom-handoff.json",
+          "packed_types": 2,
+          "package_admission": 9,
+          "source_guard_controls": 84,
+          "source_aggregate": 111,
+          "full_source_tests_historical": 3308,
+          "extension_setup": "historical-cli-preload-harness-not-user-install",
+          "source_driver_controls": 16,
+          "source_focused": 100,
+          "full_source_tests": 3408,
+          "full_source_failures": 0,
+          "full_source_cancelled": 0,
+          "native_attempts": 1,
+          "native_source_revision": "d12d6fc238f58d625ed404ec278f7d7d5b871992",
+          "native_status": "INCOMPLETE_RESTORE_AVAILABILITY",
+          "native_result_sha256": "8b6d25d9d7d1d7745ea2110bb7d3ea31a2078d1ba14b2bbdc1a9f52420b333a5",
+          "native_positive_gates": 2,
+          "native_edits": 1,
+          "observed_first_applied_value": 10,
+          "required_external_revision_established": false,
+          "actual_resource_equals_own_receipt": true,
+          "rendered_1100_390": "NOT_EXECUTED",
+          "native_close": "NOT_EXECUTED",
+          "app_console_health": "Unknown/NotCollected",
+          "independent_saved_inputs": 555,
+          "independent_negative_controls": 16,
+          "native_repeated": false,
+          "review": {
+            "count": 1,
+            "critical": 0,
+            "important": 3,
+            "important_fixed": 3,
+            "minor": 0,
+            "correction_passes": 1,
+            "rereview": false,
+            "report": ".artifacts/v03/restore-availability-review/2026-10-25/report.md"
+          },
+          "current_physical_inputs": 549,
+          "current_historical_git_inputs": 6,
+          "final_checkpoint": ".artifacts/v03/restore-availability-review/2026-10-25/final-checkpoint.json"
         }
       ],
       "current_checkpoint": {
-        "record": "152-v03-packed-restore-availability.md",
-        "status": "complete-bounded-source-and-native-attempt-native-availability-unqualified",
-        "next_bounded_step": "V03.25 explicit native app ABA + Read current values UI on unchanged78/UI2; new source gates/preregistration/max1 case, no old-case repeat or guard relaxation."
+        "record": "153-v03-external-restore-availability.md",
+        "status": "planning-explicit-external-aba-and-ui-read",
+        "next_bounded_step": "Task1 source TDD for closed external mode/app ABA/UI read and distinct guarded schema; preserve old100controls/current327/unchanged78 pair. No native yet."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-semantic-negative-controls.md",
-      "implementation_plan": "../superpowers/plans/2026-10-25-v03-packed-restore-availability.md",
+      "implementation_plan": "../superpowers/plans/2026-10-25-v03-external-restore-availability.md",
       "last_implementation_plan": "../superpowers/plans/2026-10-24-v03-semantic-negative-controls.md",
       "analysis_protocol": ".artifacts/v03/input-snapshot-ordering/2026-10-24/registration.json",
       "current_bounded_diagnostic": {
@@ -7024,8 +7036,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.24-source-corrected-native-incomplete",
-    "next_item": "V03.25 explicit native app ABA + Read current values UI on unchanged78/UI2; new source gates/preregistration/max1 case, no old-case repeat or guard relaxation.",
+    "current_increment": "V03.25-planning-explicit-external-aba",
+    "next_item": "Task1 source TDD for closed external mode/app ABA/UI read and distinct guarded schema; preserve old100controls/current327/unchanged78 pair. No native yet.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7051,8 +7063,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "V03",
-      "record": "152-v03-packed-restore-availability.md",
-      "status": "complete-bounded-source-and-native-attempt-native-availability-unqualified"
+      "record": "153-v03-external-restore-availability.md",
+      "status": "planning-explicit-external-aba-and-ui-read"
     },
     "completed_increments": [
       {
@@ -9747,11 +9759,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.24 bounded attempt closes: actualNativeIncomplete/first10ownreceipt, no required foreign revision/second/Close/narrowQA. ONE review0C/3I fixed once/0M; source100/full3408PASS, originalraw unchanged, current549physical+6exactGit/nativehistorical555. Same78/UI2/current327 stable. NextV03.25 explicit native external ABA + UI read with new case/gates; whole20of29 unchanged.",
+    "current_activity_note": "V03.24 closesa245ffc source100/full3408/review0C3Ifixed0M, NativeIncomplete/rawunchanged. NewV03.25 explicitnativeappABA+normalUIread withsame78/UI2; source/preflight/freshcasecommitgates beforemax1newNative, nooldcaseretry/productchange. Whole20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "d12d6fc",
+    "current_source_revision": "a245ffc",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "V03.25 explicit native app ABA + Read current values UI on unchanged78/UI2; new source gates/preregistration/max1 case, no old-case repeat or guard relaxation.",
+    "next_bounded_step": "Task1 source TDD for closed external mode/app ABA/UI read and distinct guarded schema; preserve old100controls/current327/unchanged78 pair. No native yet.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -9761,8 +9773,9 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "historical-native-observation-before-review-fix",
-    "current_source_checkpoint": ".artifacts/v03/restore-availability-review/2026-10-25/final-checkpoint.json"
+    "current_source_revision_kind": "last bounded source closeout; new source work pending",
+    "current_source_checkpoint": ".artifacts/v03/restore-availability-review/2026-10-25/final-checkpoint.json",
+    "current_source_checkpoint_kind": "last completed item V03.24"
   },
   "next_task": "V03"
 }
