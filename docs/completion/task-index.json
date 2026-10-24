@@ -1665,7 +1665,7 @@
       "execution_record": "149-original-launch-witness.md",
       "active_slice": {
         "id": "A02.8",
-        "status": "public-owner-observed-strict-display-comparison-incomplete-final-review-due",
+        "status": "bounded-original-invocation-research-complete-strict-native-protocol-incomplete",
         "record": "149-original-launch-witness.md",
         "base": "6f696c7",
         "product_changed": false,
@@ -1674,8 +1674,8 @@
         "maximum_native_runs": 1,
         "full_A02": false,
         "source_implementation_started": true,
-        "source_focused": 60,
-        "full_source_controls": 3244,
+        "source_focused": 63,
+        "full_source_controls": 3247,
         "full_source_failures": 0,
         "full_source_cancelled": 0,
         "product_inputs_unchanged": 327,
@@ -1694,7 +1694,32 @@
         "strict_protocol_passed": false,
         "independent_saved_inputs": 380,
         "independent_negative_controls": 21,
-        "next_dependency": "Proposed A02.9 source-only separation of original invocation facts and current browser display on retained data; no reclassification of old protocol as passed or automatic native repeat"
+        "next_dependency": "Proposed A02.9 source-only separation of original invocation facts and current browser display on retained data; no reclassification of old protocol as passed or automatic native repeat",
+        "review": {
+          "count": 1,
+          "critical": 0,
+          "important": 1,
+          "important_fixed": 1,
+          "minor": 2,
+          "correction_passes": 1,
+          "rereview": false,
+          "report": ".artifacts/a02/original-launch-witness-review/2026-10-24/report.md",
+          "deferred_minors": [
+            "M1 prospective status pointer; next active handoff reconciles",
+            "M2 historical physical-verifier wording; fresh checkpoint distinguishes current hashes"
+          ]
+        },
+        "final_checkpoint": ".artifacts/a02/original-launch-witness-review/2026-10-24/final-checkpoint.json",
+        "current_integrity": {
+          "physical": 377,
+          "historical_git": 3,
+          "declared_changes": [
+            "driver",
+            "driver tests",
+            "plan"
+          ],
+          "historical_verifier_physical": 380
+        }
       },
       "completed_slices": [
         {
@@ -2084,8 +2109,8 @@
       },
       "current_checkpoint": {
         "record": "149-original-launch-witness.md",
-        "status": "public-owner-observed-strict-display-comparison-incomplete-final-review-due",
-        "next_bounded_step": "Close Task2 with literal Incomplete, ONE final review. One next dependency proposed: source-only evidence-lane separation on retained records, no new browser/app case or threshold waiver."
+        "status": "bounded-original-invocation-research-complete-strict-native-protocol-incomplete",
+        "next_bounded_step": "A02.9 proposed source-only separation of original invocation and current display on retained evidence. No old protocol Pass, no new native/app run, no criterion waiver."
       },
       "stopping_point_history": [
         {

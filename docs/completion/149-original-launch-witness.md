@@ -1,4 +1,4 @@
-# A02.8 — original launch witness feasibility (planning)
+# A02.8 — original launch witness feasibility (bounded research complete; strict native protocol Incomplete)
 
 Starts6f696c7 after A02.7:33focused/full3184PASS, ONE review0C/2I/1M, bothImportant
 fixed once/no rereview. One actual blank case stays Refused; exact CDP/driver-child
@@ -84,3 +84,56 @@ browser-displayed text on retained evidence. Keep this raw/status/strict guard
 unchanged; do not assume their equivalence, waive a release criterion, fabricate
 an approved solution or launch another case from this proposal. FullA02/app
 acquisition/ownership/React props/selected producer remain Unknown;20/29 unchanged.
+
+## ONE final review and single correction pass
+
+Fresh read-only astra/high0Critical/1Important/2Minor. Important I1 reproduced by
+executing the exact driver run body with substituted source protocol boundaries:
+post-field frame timeout lost already captured metadata; readiness failure could
+also be lost before later target-info failure. RED60PASS/3FAIL→incremental record,
+metadata-fields-before-postcheck checkpoint, partial final metadata with explicit
+unknown post-frame, and immediate readiness recording→**63PASS**. Late frame reply
+cannot revive fields or acceptance; independent cleanup still reaches all handles.
+Fresh full **3247PASS/0FAIL/0cancelled/0SKIP**,98.56s terminal63771. One fixpass,
+no rereview/native repeat; this is source fault handling, not native fault recovery.
+Strict displayed-line criterion and raw2801.../originalIncomplete remain unchanged.
+
+Deferred Minor M1: current status paragraph is prospective; next A029handoff will
+reconcile and retain it historically. Deferred M2: historical380physical verifier
+wording remains; that check ran before checklist/correction changes. At review HEAD
+it was379physical+1exactGitplan(be0077f/SHA636e5797b8c13766a5e963f83e3efe6481e9c4c246e2541621f62c08af0c9c24).
+The fresh planned closeout checkpoint now distinguishes **377physical+3exact frozen
+Git inputs** (driver, driver test, plan). Original case/report/hashes are untouched.
+Earlier cases remain401+6,409+4,364+6 physical+historical; product327/old9/A026source8/
+A027source4 unchanged. Checkpoint/review/archive in
+`.artifacts/a02/original-launch-witness-review/2026-10-24`.
+
+Bounded source engineering and one finite research run complete; the original
+strict native protocol is still **Incomplete**, no app/fullA02/release credit.
+One next dependency proposed: A02.9 source-only explicit evidence-lane separation
+on retained data, with legacy refusal preserved and no new browser/application.
+This proposal is not review approval of a replacement acceptance model.
+
+## Decisions and explicit unverified boundaries retained
+
+- Ruling: autonomousinline/main/local withoutrepeateddesignapproval — latestexplicitautonomy/optout — cost:executorchoicesours, not fabricatedhumanapproval/rootcause.
+- Ruling: publicBrowserServer.process/NodeChildProcessoriginalargv insteadof titleparse/privatehook — officialContext7contracts, lostargvboundariespossible — cost:newresearchroute only/max1newmetadata case/no oldresultupgrade.
+- Ruling: automaticmanaged/tmp profile fixedrule insteadof guessedexactfuturebasename — publiclauncherownsresource/mkdtempsource, independentUI/procstillmandatory — cost:freshnessnotindependentlypreobserved, no userprofile/adversarialwholehostattestationclaim.
+- Ruling: chromeversionfieldIDs are unverifiedcandidates — primaryHTMLfetchsuppliedno reference — cost:missingfield/digest/documentmismatchmustRefuse, no silentfallbackororacle.
+- Ruling: no fullargv/endpoint/credentialstringsserialized; rawUIstringsmemoryonly/digests — privacyafterA027I1 — cost:cannot reconstructoldrawboundariesorinspectsecretoptionslater.
+- Ruling: ownBrowserServer.killAPI onlyifownclosefails, never guessedreportedPID — ownedresourcecleanupwithprimaryfailurepreserved — cost:sourcefaultcontrolsnotactualfaultrecovery; anyfallbackleavesIncomplete.
+- Ruling: A027M1currentstatusreconciledatnewhandoff/historypreserved — preventstale27/3178pre-nativepointer — cost:no retroactiveA027reviewchange.
+- Ruling: partialadmission with metadata=null may gate only named WITNESS_INVALID/PROCESS_BINDING failures before opening metadata page — no syntheticmetadataorwholePass — cost:all metadata failures remainUnknown untilactualUI/CDP/FSfacts, fullguardstillmandatory.
+- Ruling: generatedprofile remains/tmp/libmkdtemp-owned; no TMPDIR/HOME/env/profileoverride — avoidhoststatechange — cost:ifpublicroute/prefix/metadatafails, literalIncomplete/no criteriaweakening or retry.
+- Ruling: privatewebsocketURI and rawexceptionmessages memory-only; finalerrors fixedstage/code whitelist — publicAPIerrorsmaycontainnonce/argv — cost:privateerror detail omitted rather than exposed, sourcefaultcontrolsnotnativefaultproof.
+- Ruling: keep METADATA_ARGUMENTS refusal and proposed source-only lane separation — actual original45/proc1/displaytextdiff observed; equivalence criterion failed — cost:no wholeprotocolPass/appcredit, no secondcase or inferred oldrunrootcause.
+- Final: minor (deferred): M1 active docs/status paragraph still prospective beforehandoff; active_slice/record literalIncomplete correct. Reconcile at A029handoff/preservehistory; cost:no source/nativeeffect, duplicatepointercanmislead.
+- Final: minor (deferred): M2 historical380physical verifier wording notexplicitlydated; frozenreport/caseunchanged. Planned finalcheckpoint recordscurrent377physical+3exactGit(driver/test/plan); historicalparagraph left intact. Cost:readers mustuse newcheckpoint forcurrentintegrity.
+- Final: Ruling: actual displayedCLI differences/whichcode — digests/markers showdifference notcause — cost:no origin/canonicalizationclaimorargvreconstruction.
+- Final: Ruling: A029 replacementmodel — proposedfuture source-onlywork, notapprovedbyreview — cost:no newrulepassorautomaticNativeauthorizationfromreview.
+- Final: Ruling: app/producer/Reactprops/ownership/fullA02 — no appoperation — cost:fullA02/20of29unchanged.
+- Final: Ruling: A026/A027 retrospectiveacceptance/rootcause — preserveimmutableexhaustedcases — cost:no oldFailureupgrade.
+- Final: Ruling: adversarialwholehost/tmp/intrinsics — boundedtrustedsampledownerroute — cost:no atomicorhostcompromiseattestation.
+- Final: Ruling: ownerkillfaultrecovery — sourcecontrolsonly/nativefallbackunused — cost:no actualfaultrecoveryclaim.
+- Final: Ruling: crossplatform/version/publication/package/extension/IDE/visual — pinnedLinuxresearchonly — cost:no support/delivery/visualreadinesscredit.
+- Final: Ruling: broad A027collectorredesign — reusedimmutablecontractsoutsidecurrentitem — cost:no historicalmoduleaudit/rewrite.

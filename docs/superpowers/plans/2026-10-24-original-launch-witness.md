@@ -43,4 +43,4 @@
 
 ## Final closeout
 
-- [ ] ONE fresh final read-only whole-item review; regrade effects, one tested I/C correction pass maximum/no rereview. Explicit all rulings/deferred Minors, archive own workspace, clean final checkpoint and one next dependency.
+- [x] ONE fresh final read-only whole-item review; regrade effects, one tested I/C correction pass maximum/no rereview. Explicit all rulings/deferred Minors, archive own workspace, clean final checkpoint and one next dependency.
