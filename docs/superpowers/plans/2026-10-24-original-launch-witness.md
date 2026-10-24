@@ -38,8 +38,8 @@
 **Interfaces:** consumes Task1 witness/metadata/admission and immutable A02.7 collectOwnedBrowserProcess/ownedProcessDeadline; --prepare CASE OUT / --preflight CASE / CASE. Emit registration/raw witness/proc/metadata/result/cleanup before qualification; never persist websocket.
 
 - [x] TDD driver CLI/case/provenance/save-before-refusal/independent owner cleanup/fallback/error retention/input drift RED→GREEN. Implement 127.0.0.1/port0/managed generated profile; no app or old source change. Affected/full source gates -> PASS; clean local source commit.
-- [ ] Resource-free prepare/inspect/freeze/commit strict max1 case. ONE actual launch/poll same handle; save literal partial/refusal and original source. Independent saved facts/input/cleanup verifier and negative controls, no blind repeat.
-- [ ] Relevant final aggregate/local commit/task-done; actual launch/metadata route only, no app/product/fullA02 credit.
+- [x] Resource-free prepare/inspect/freeze/commit strict max1 case. ONE actual launch/poll same handle; save literal partial/refusal and original source. Independent saved facts/input/cleanup verifier and negative controls, no blind repeat.
+- [x] Relevant final aggregate/local commit/task-done; actual launch/metadata route only, no app/product/fullA02 credit.
 
 ## Final closeout
 

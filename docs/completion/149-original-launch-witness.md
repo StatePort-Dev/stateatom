@@ -49,3 +49,38 @@ Product327/old9/A026source8/A027source4/raw3 unchanged. Native0; clean sourcecom
 resource-freeprepare and casecommit must precede max1actual metadata diagnostic.
 
 Prepare33589/preflight8379terminal0/noresources. Sourcebe0077fclean/379sourceinputs/380includingcase, Node24/Chrome153 exactpins, managed/tmp dynamicprofile rule/public owner route/localhost127port0/onlymetadataURL/max1. Threeoldcases/raw retained. Commitcase beforeactual; do not editfrozen source/spec/plan.
+
+## ONE actual public-owner run: strict protocol remains Incomplete
+
+Frozen case99f7651/sourcebe0077f; job29482 terminalexit1. Raw status
+**INCOMPLETE_ORIGINAL_LAUNCH_WITNESS_NO_APP**, SHA256
+**2801aa6c5b535573a094974485094be921915fee411b48cbc116e099319889b9**.
+Public owner witness CAPTURED_ORIGINAL_INVOCATION:45original arguments,
+1704-byte flattened text, headlessflag present/forbiddenflags[]/one managed profile.
+CDP PID equals actual owner/direct child with stable executable/start/hash.
+Proc argumentCount1/1813bytes confirms a different representation in THIS run;
+no original-boundary reconstruction or retrospective old-run cause is claimed.
+
+Actual chrome://version/ candidate fields were present on this pinned binary,
+no field/readiness errors. Executable/profile digests and pre/post frame/loader/
+target match; physical managed profile was a real nonsymlink directory. Displayed
+command-line1882bytes has a different digest from original flattened text. The
+single refusal is **METADATA_ARGUMENTS**; the exact original criterion stays active,
+not weakened or relabelled. Fixed text markers include headless/user-data-dir/
+flag-switches-begin/end/ozone-platform; marker presence is not parsed argv, does
+not identify all differences or establish which runtime code changed the text.
+
+All page/session/context/client/owner closes returned true; no kill fallback,
+exact owner PID subsequently Absent and generated profile removed. Endpoint was
+memory-only. Source/input graph unchanged; no app/extension/helper/IDE/trust action.
+Independent saved verifier checks **380 physical inputs**, all3raw stages, earlier
+raw3 and **21 isolated literal-record controls**. It establishes saved facts and
+original Incomplete, not an alternative protocol Pass. Files:
+`.artifacts/a02/original-launch-witness-saved-verification/2026-10-24/`.
+
+The case is exhausted; no repeat. Proposed next dependency after final review:
+A02.9 source-only explicit separation of original owner invocation and current
+browser-displayed text on retained evidence. Keep this raw/status/strict guard
+unchanged; do not assume their equivalence, waive a release criterion, fabricate
+an approved solution or launch another case from this proposal. FullA02/app
+acquisition/ownership/React props/selected producer remain Unknown;20/29 unchanged.
