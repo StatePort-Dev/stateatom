@@ -33,3 +33,20 @@ source/served bytes/old seed/actualNode/Chrome identities. This will establish o
 that six breakpoint sites and ten pre/post records behave as intended, never a
 new native commerce result. Own headless sandboxed Chrome; no extensions or
 certificates. Original product and all old records unchanged.
+
+## Task1 actual source-controller technique control
+
+On7e7e691, one owned sandboxed headless Chrome control passes
+`PASS_SOURCE_CONTROLLER_TRACE_TECHNIQUE_ONLY`. Output:
+`.artifacts/v03/inspector-order-control/2026-10-24T10-02-25-811Z/`.
+Six resolved sites produce ten ordered pre/post records: first edit, first settle,
+accepted receive, second edit, second settle. Raw0→10→20, own acknowledgement clears
+dirty state, received revision changes before the next edit, final value20/history2.
+No unexpected pause/overflow/projection error or console warning/error. Own slot
+removed; controller, CDP session, context, browser and loopback server closed.
+All9 registered inputs match. Independent saved verifier10negative controls PASS.
+
+This uses actual source-controller modules with synthetic backend/scripted edits;
+no native application or installed-product acceptance is claimed. Old native facts,
+model/guard behavior and timing remain unchanged. The technique now permits Task2
+preparation of one adequately collected native ordering/visible-row question.
