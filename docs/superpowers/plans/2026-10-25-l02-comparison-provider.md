@@ -31,8 +31,8 @@
 **Files:** core/derived-model-provider.mjs; new tests/comparison-model-provider.test.mjs; completion156/current pointers.
 **Interfaces:** existing ChromeDerivedAnnotation stays v1; new ChromeComparisonAnnotation uses v2pure functions and fixed new system options under same private lifecycle. No publicstrategy arg. Default provider remains original/unselected.
 
-- [ ] Readbrief/BASE. TDD new provider absence, v2route/options/schema/token gates, unsupported/unactivated/download optin/abort/stale/latecreate/current cached facts/onceDestroy/concurrency; oldv1 controls preserved. `node --test --test-isolation=none tests/comparison-model-provider.test.mjs tests/derived-model-provider.test.mjs tests/derived-comparisons.test.mjs tests/derived-annotations.test.mjs` ->RED thenPASS.
-- [ ] Implement closed sharing only; current327/corpus/raw/originalpurecontracts unchanged except declared providerfile, exactoldGit hash. Syntax/diff/local sourcecommit/task-done. No fullsuite repeat yet, Task2interfaces share same namedprovider and schema2.
+- [x] Readbrief/BASE. TDD new provider absence, v2route/options/schema/token gates, unsupported/unactivated/download optin/abort/stale/latecreate/current cached facts/onceDestroy/concurrency; oldv1 controls preserved. `node --test --test-isolation=none tests/comparison-model-provider.test.mjs tests/derived-model-provider.test.mjs tests/derived-comparisons.test.mjs tests/derived-annotations.test.mjs` ->RED thenPASS.
+- [x] Implement closed sharing only; current327/corpus/raw/originalpurecontracts unchanged except declared providerfile, exactoldGit hash. Syntax/diff/local sourcecommit/task-done. No fullsuite repeat yet, Task2interfaces share same namedprovider and schema2.
 
 ### Task 2: Fixed actual evaluation document/controller, source only
 

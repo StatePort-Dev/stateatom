@@ -1,9 +1,10 @@
 # Project status
 
 Active bounded work: [L02.11](completion/156-l02-comparison-provider.md),
-source-only separate comparisonprovider and fixed evaluation document. No new source/
-model evidence from planning; old v1behavior/corpus/results/current327 protected.
-No browser/profile/download/UI selection; mandatoryL02/20of29 unchanged.
+sourceprovider complete76PASS (new12+64old controls), pagecontroller Task2due.
+Closed v1/v2lifecycle retains prior options/freshness/ownership; current327/rawgroups
+unchanged,17prior sourcephysical+1historicalGit. Fullsuite due afterpage, modelcalls0/
+no browser/profile/download/UI selection or mandatoryL02/20of29 acceptance.
 
 Completed bounded source slice: [L02.10](completion/155-l02-recorded-model-comparison.md).
 New23/focused68/full3533PASS, ONEsource-slice review0C/0I/0M. Typedv2comparison is
