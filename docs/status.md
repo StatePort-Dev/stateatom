@@ -2254,10 +2254,12 @@ Sameownprofile retainedsyntheticTLS/no newcert/importGUI/usertrust/profile campa
 no fullscope/SDK/otherrepo/publication authority or independenthuman blocker.
 
 
-[V02.17](completion/136-v02-performance-domain-cost.md) registers onePerformance
-collection configuration control on exact72: Off/rawdisabled/rawenabled whileAtom
-detached,162rows/18warm144measured/419inputs/327product/223helper. Full2741/focused50/
-new21sourcecontrols PASS. Native and ONEreview remain pending at this checkpoint;
-no capability/causal/metricssemantic/targetacceptance from registration. Original15
-misses/16negativeDOMhypothesis/20-of29/fullV02 retained, no product/newcert/importGUI/
-usertrust/profile/SDK/otherrepo/publication campaign.
+[V02.17](completion/136-v02-performance-domain-cost.md) completes finitePerformance
+configuration measurement on unchanged72:162rows/18warm144measured/n24,3240requests/
+419stableinputs/327product/223helper/allreleases-cleanup. Enabled/Disabled medians
++1.83/+8.45% (1.25/5.40ms), hostdependent andnotallremainingcost; no metricsbaseline/
+lifetime/meaning change/safeoptimization/targetpass approved. Independent27negative
+controls/full2741/focused50/new21sourcecontrols PASS. ONEfinalreview due; original15
+overheadmisses/20-of29/fullV02 unchanged. NextcandidateV03.15 onlyremainingcombined
+installed-helper/browser guideconnection, preserve127externalCopilotFAIL/oldproof,
+no blinddomainmatrix/reinstall/oldappcampaign/userprofile/otherrepo change bydefault.

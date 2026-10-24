@@ -52,3 +52,55 @@ independent reconciliation. Inspector-onlyconsole/errors, no worker/guardian
 completeness/humanusability proof. Case/code committedBEFORE the one native run.
 At registration native and ONE finalreview were due; later sections govern currentstate.
 No product/UI/API/SDK/redesign/otherrepo/publication/account changes.
+
+
+## Actual finite Performance configuration result
+
+Native47260 terminal0 atc64417e/clean:
+`.artifacts/v02/performance-domain-cost/2026-10-24T04-33-16-998Z/results.json`.
+COMPLETE162rows/18warm144measured/n24perhostcondition,419stableinputs/327product/
+223helper. Successfulnativeissuedcommands include exactlastPerformance.enable({})
+or disable({}); no DOM/timeDomain/getMetrics probe, Atom staysdetached/no grants/
+observer inallconditions. Everyrow verifiednative/Atomreleasefalse.3246servermetadata
+entries include exactly3240sample requests, eachrow's chronologicalrange exacttrial
+andn0..19once. Bothfreshprofiles/retainedsyntheticTLS/normalTLS/siteAllowread-only,
+allownedraw/browser/display/servercleanup pass.0recordedinspectorexceptions/warning-
+errorconsole; worker/guardiancompleteness notcollected. BothrecordedownChromePIDs
+were absent in a readonlypostterminalcheck, no processkill/globalcleanup performed.
+
+| Current ms p50 / p95 / max | Standalone | Embedding |
+| --- | ---: | ---: |
+| Off |57.90 /71.60 /75.70 |58.85 /66.20 /69.50 |
+| Raw Performance disabled |68.45 /81.20 /90.40 |63.90 /72.90 /75.40 |
+| Raw Performance enabled |69.70 /81.30 /84.10 |69.30 /74.50 /75.10 |
+
+| Descriptive ratio of medians | Standalone | Embedding |
+| --- | ---: | ---: |
+| Disabled/Off |18.22107080% |8.58113850% |
+| Enabled/Off |20.37996545% |17.75700935% |
+| Enabled/Disabled |1.82615047% |8.45070422% |
+
+Allfixedwarmups/tails/pairedratios retained. Enabled-minus-disabledmedian difference
+is1.25/5.40ms with host-dependent magnitude. This narrows a finiteconfiguration effect,
+not purebrowserCPU/inherentfloor/universalstatistical/safeproductoptimization proof.
+It does not explain allremainingattachedcost, establish actualActive overhead below
+10%, or approve lazycollection/changingmetricsbaseline/lifetime/meaning. Rawdisabled/
+Off8.58% onembedding is NOT the product's accepteddenominator or a passing15gate.
+Original15actualactive/off26.64/29.32% misses andBasicp95pass remain unchanged;
+old102/16data remainhistoricalwithin their boundaries, not a new comparison baseline.
+
+Savedindependent verifier95002 terminal0 PASS: all162raw/attempts/workloads/issued
+nativeparams/modes/ownership/releases,3240serverrequests inexactorderedranges,
+independently enumerated6permutationcycles/median/nearest-rankp95/pairedratios,
+27negativecontrols, frozenfixture/419inputs/327product/223helper/archives/install/
+Chrome/TLS/cleanup. Artifactnative-checkpoint retained. Full2741/focused50/new21
+sourcecontrols remain actualsource, not nativefault recovery or featureacceptance.
+No product/package/helpercode change or newimmutablebuild.
+
+ONE finalfreshreadonlyreview due. No furtherdomainmatrix bydefault: nextcandidate
+ONE **V03.15**, bounded remaining combined installed-helper/browser source-connection
+guide flow. First reconcile only missingsteps against127's retainedinstalledVSIX/
+publicreceipt proof; do not reinstall/repeat oldappcampaign bydefault. Copilot's
+originalexternalconsoleFAIL remainsFAIL/unwaived, no otherrepository/userprofile/
+IDEinstallation change. Exactprotocol/newliveconnection choices belong in that task,
+not pre-approved here. FullV02performancegap staysopen; no metrics-policy waiver.

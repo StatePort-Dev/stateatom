@@ -4311,7 +4311,7 @@
       "active_slice": {
         "id": "V02.17",
         "title": "Performance collection enabled/disabled configuration discriminator",
-        "status": "preregistered-source-verified-native-due",
+        "status": "finite-performance-configuration-diagnostic-complete-review-due",
         "record": "136-v02-performance-domain-cost.md",
         "design": "../superpowers/specs/2026-10-24-v02-performance-domain-cost-design.md",
         "plan": "../superpowers/plans/2026-10-24-v02-performance-domain-cost.md",
@@ -4332,13 +4332,26 @@
         "performance_acceptance": false,
         "targets_waived": false,
         "review_pending": true,
-        "native_executed": false
+        "native_executed": true,
+        "native_rows": 162,
+        "warmup_rows": 18,
+        "measured_rows": 144,
+        "server_sample_requests": 3240,
+        "protocol_negative_controls": 27,
+        "actual_native_revision": "c64417e",
+        "runtime_result": ".artifacts/v02/performance-domain-cost/2026-10-24T04-33-16-998Z/results.json",
+        "verification": ".artifacts/v02/performance-domain-cost/2026-10-24/native-checkpoint.json",
+        "enabled_vs_disabled_percent": {
+          "standalone": 1.82615047,
+          "embedding": 8.45070422
+        },
+        "performance_policy_changed": false
       },
       "execution_record": "136-v02-performance-domain-cost.md",
       "current_checkpoint": {
         "record": "136-v02-performance-domain-cost.md",
-        "status": "preregistered-source-verified-native-due",
-        "next_bounded_step": "Execute once registered V02.17 Performance-enable/disable rawconfiguration control; retain original15/16 gate/results and allworkload/ownership/metricssemantics, then ONE review and nextitem fromactualevidence"
+        "status": "finite-performance-configuration-diagnostic-complete-review-due",
+        "next_bounded_step": "ONE final V02.17 review, then V03.15 reconcile/register only remaining combined installed-helper/browser source-connection guide flow from127 evidence; preserve externalCopilotFAIL andV02targetmisses, no reinstall/oldappcampaign/userprofile/metrics-policy change bydefault"
       },
       "completed_slices": [
         {
@@ -6057,8 +6070,8 @@
     "document": "136-v02-performance-domain-cost.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.17-preregistered-source-verified-native-due",
-    "next_item": "Execute once registered V02.17 Performance-enable/disable rawconfiguration control; retain original15/16 gate/results and allworkload/ownership/metricssemantics, then ONE review and nextitem fromactualevidence",
+    "current_increment": "V02.17-finite-performance-configuration-complete-review-due",
+    "next_item": "ONE final V02.17 review, then V03.15 reconcile/register only remaining combined installed-helper/browser source-connection guide flow from127 evidence; preserve externalCopilotFAIL andV02targetmisses, no reinstall/oldappcampaign/userprofile/metrics-policy change bydefault",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8727,11 +8740,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "NewsinglePerformanceconfiguration control prereg419inputs/rawAtomdetached/162rows18warm144measured/n24; full2741/focused50/new21sourcecontrols PASS. Exact72/product327/helper223 unchanged/TLSretained/no newcert/importGUI. Native/reviewdue; original15overheadmisses/16negativeDOMhypothesis/20-of29/fullV02 unchanged, no productmetricssemanticchange approved.",
+    "current_activity_note": "V02.17 actual162rows/3240requests/419stableinputs/allreleases-cleanup; independent27negativecontrols PASS. PerformanceEnabled/Disabled1.83/8.45%, host-dependentfiniteeffect notallcost/safeoptimization/metrics-policy approval. Original15targetmisses/20-of29/fullV02 unchanged, ONEreviewdue; nextcandidateV03.15remainingcombinedguideflow, no blindfurtherdomainmatrix.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "c6c5e4f",
+    "current_source_revision": "c64417e",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "Execute once registered V02.17 Performance-enable/disable rawconfiguration control; retain original15/16 gate/results and allworkload/ownership/metricssemantics, then ONE review and nextitem fromactualevidence"
+    "next_bounded_step": "ONE final V02.17 review, then V03.15 reconcile/register only remaining combined installed-helper/browser source-connection guide flow from127 evidence; preserve externalCopilotFAIL andV02targetmisses, no reinstall/oldappcampaign/userprofile/metrics-policy change bydefault"
   },
   "next_task": "V02"
 }
