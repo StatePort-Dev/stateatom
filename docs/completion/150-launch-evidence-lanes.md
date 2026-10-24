@@ -1,4 +1,4 @@
-# A02.9 — retained launch evidence claim separation (planning)
+# A02.9 — retained launch evidence claim separation (retained analysis complete, final review due)
 
 Starts0c6963d: A02.8 source63/full3247PASS, ONE review0C/1I/2M, I1fixed once,
 all source/raw preserved. Native record2801... remains Incomplete/METADATA_ARGUMENTS;
@@ -38,3 +38,17 @@ terminal25544. Product327/old9/priorresearch16/raw4 unchanged. Finite source-onl
 reader verifies raw/case/registration and exact frozen Git blobs, fresh wx output;
 no launcher import, no browser/app/model executed. Retained annotation run and
 independent saved-output verification remain due after this clean source commit.
+
+Task2 actual retained analysis: clean9ca3e3c, output
+`.artifacts/a02/launch-evidence-lanes/2026-10-24T19-45-00Z/`;
+annotationSHA e6e1f5dc3ffaaf2c3331ad077f2428d74136095a5cad77b794bfe4f30c42a611.
+Observation99f7651 (case-registration execution revision) remains distinct from
+analysis9ca3e3c; earlier source preparationbe0077f is not the execution revision.
+377physical+3actual exact Git blobs=380. Three historical Observed claims only:
+original owner invocation metadata/browser-displayed metadata/different flattened
+text (versioned digest comparison). All runtime/current/causal/producer/ownership/
+prop-transfer/effective-mode omissions remain Unknown. Legacy Incomplete/
+METADATA_ARGUMENTS acceptedfalse, fullA02false, no native reexecution.
+Independent Python reader (no source imports) verify-saved.py checks saved facts,
+revisions/hashes/physical-vs-Git/source/raw4 and rejects14 literal negative controls.
+Source327/old9/priorresearch16 preserved. ONE final fresh whole-item review due.
