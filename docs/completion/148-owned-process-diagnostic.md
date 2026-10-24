@@ -31,3 +31,5 @@ Separate process facts/save-before-admission/strict case and independent cleanup
 are implemented. No browser/application/server/UI operation yet.
 
 Final source gate27PASS; full npm test3178PASS/0FAIL/0cancelled/0SKIP98.07s terminal84206. No native yet. Need clean sourcecommit then resource-freeprepare/freeze/newcasecommit/max1blankdiagnostic.
+
+Resource-freeprepare62580/preflight65558terminal0: f0917b6clean/369sourceinputs/370includingcase. CoreBundle/localmodulegraph/Node/Chrome/source/tests/spec/plan and oldraw/checkpoints pinned. args[]/headless/sandbox/onlyaboutblank/max1; profileabsent; no browseryet. Commitcase thenONErun, preserveallliteraloutcomes.

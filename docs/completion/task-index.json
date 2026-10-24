@@ -1665,7 +1665,7 @@
       "execution_record": "148-owned-process-diagnostic.md",
       "active_slice": {
         "id": "A02.7",
-        "status": "source-ready-before-blank-case",
+        "status": "blank-diagnostic-case-frozen-before-one-run",
         "record": "148-owned-process-diagnostic.md",
         "base": "58796e7",
         "product_changed": false,
@@ -1682,7 +1682,11 @@
           "product": 327,
           "old": 9,
           "A02.6_final_source": 8
-        }
+        },
+        "case": "../testing/owned-process-diagnostic-case.json",
+        "native_output": ".artifacts/a02/owned-process-diagnostic-native/2026-10-24T17-23-00Z",
+        "frozen_inputs": 370,
+        "source_revision": "f0917b6360ea5c20f077fb73e691fc983a50e99a"
       },
       "completed_slices": [
         {
