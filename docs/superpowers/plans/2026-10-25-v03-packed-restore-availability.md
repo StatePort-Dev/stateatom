@@ -38,8 +38,8 @@
 **Interfaces:** consumes guard/finalizer and immutable candidate receipt fromTask1. CLI exact CASE [--preflight], reject unknown before IO. Export finite source-testable argument/freeze/field/cleanup boundaries as needed, no general browser framework.
 
 - [x] TDD missing driver/unknown CLI/frozen drift/output nonoverwrite/preserved partial failure/independent cleanup controls RED→GREEN. Actual runtime field collector includes disabled/visible controls, field/error/focus and identity/overlay; no synthetic native writes. Focused `node --test --test-isolation=none tests/engine/restore-availability-qualification.test.mjs tests/atom/restore-availability-harness.test.mjs` ->PASS; `npm test` -> allPASS; scoped source commit.
-- [ ] Prepare exact frozen case from immutable78/types/admission/retained app; source-only --preflight ->PASS/no browser. Commit case BEFORE native. Run ONCE, poll same handle; save literal raw/partial failure/independent cleanup. Do not retry a failed case.
-- [ ] Independently verify saved result/source/hash/raw/status/negative controls and retained old archives/cases/raw; inspect rendered1100/390 candidates, record reference deviations/console/identity/nonblank/overlay/interaction. Native refusal remains incomplete, no reclassification. Local result commit/task-done with focused source command.
+- [x] Prepare exact frozen case from immutable78/types/admission/retained app; source-only --preflight ->PASS/no browser. Commit case BEFORE native. Run ONCE, poll same handle; save literal raw/partial failure/independent cleanup. Do not retry a failed case.
+- [x] Independently verify saved result/source/hash/raw/status/negative controls and retained old archives/cases/raw; inspect rendered1100/390 candidates when produced; on an earlier finite failure record these gates NOT_EXECUTED and inspect the partial candidate without acceptance credit. Record reference deviations/console/identity/nonblank/overlay/interaction only where actually collected. Native refusal remains incomplete, no reclassification. Local result commit/task-done with focused source command.
 
 ## Closeout
 

@@ -5801,9 +5801,9 @@
       "active_slice": {
         "id": "V03.24",
         "record": "152-v03-packed-restore-availability.md",
-        "status": "finite-driver-source-gates-complete-frozen-case-due",
+        "status": "bounded-native-attempt-complete-native-availability-unqualified-final-review-due",
         "base": "5cf379d",
-        "native_started": false,
+        "native_started": true,
         "maximum_native_runs": 1,
         "packed_candidate_due": false,
         "full_V03_acceptance": false,
@@ -5822,7 +5822,22 @@
         "source_focused": 66,
         "full_source_tests": 3374,
         "full_source_failures": 0,
-        "full_source_cancelled": 0
+        "full_source_cancelled": 0,
+        "native_attempts": 1,
+        "native_source_revision": "d12d6fc238f58d625ed404ec278f7d7d5b871992",
+        "native_status": "INCOMPLETE_RESTORE_AVAILABILITY",
+        "native_result_sha256": "8b6d25d9d7d1d7745ea2110bb7d3ea31a2078d1ba14b2bbdc1a9f52420b333a5",
+        "native_positive_gates": 2,
+        "native_edits": 1,
+        "observed_first_applied_value": 10,
+        "required_external_revision_established": false,
+        "actual_resource_equals_own_receipt": true,
+        "rendered_1100_390": "NOT_EXECUTED",
+        "native_close": "NOT_EXECUTED",
+        "app_console_health": "Unknown/NotCollected",
+        "independent_saved_inputs": 555,
+        "independent_negative_controls": 16,
+        "native_repeated": false
       },
       "completed_slices": [
         {
@@ -6694,8 +6709,8 @@
       ],
       "current_checkpoint": {
         "record": "152-v03-packed-restore-availability.md",
-        "status": "finite-driver-source-gates-complete-frozen-case-due",
-        "next_bounded_step": "Prepare exact frozen78 case, source-only --preflight, commit case, then ONE native run. No old case or native retry."
+        "status": "bounded-native-attempt-complete-native-availability-unqualified-final-review-due",
+        "next_bounded_step": "ONE fresh final whole-item review, no native repeat; preserve actual own-resource flags and missing external-revision condition."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-semantic-negative-controls.md",
       "implementation_plan": "../superpowers/plans/2026-10-25-v03-packed-restore-availability.md",
@@ -6996,8 +7011,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.24-source-gates-complete-case-due",
-    "next_item": "Prepare exact frozen78 case, source-only --preflight, commit case, then ONE native run. No old case or native retry.",
+    "current_increment": "V03.24-native-incomplete-final-review-due",
+    "next_item": "ONE fresh final whole-item review, no native repeat; preserve actual own-resource flags and missing external-revision condition.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9719,11 +9734,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.24 exact78/UI2/type2/admission9; finite driver66focused/full3374PASS. Partial capture/acquisition uncertainty and wx/frozen/cleanup controls source-tested. Current327 bundle inputs stable; no native started. Freeze/preflight/commit case before max1new run. Whole20of29 unchanged.",
+    "current_activity_note": "V03.24 actual78 one run INCOMPLETE: first native10 applied/clean, final current resource exactly own receipt/externalRevisionfalse, backend/UI restoration available. Required external revision not established; no second/Close/1100+390 QA. Cleanup/PIDs555inputs/12oldraw preserved; independent16negatives. Source66/full3374, whole20of29 unchanged; one final review due, no repeat.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "5cf379d",
+    "current_source_revision": "d12d6fc",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "Prepare exact frozen78 case, source-only --preflight, commit case, then ONE native run. No old case or native retry.",
+    "next_bounded_step": "ONE fresh final whole-item review, no native repeat; preserve actual own-resource flags and missing external-revision condition.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

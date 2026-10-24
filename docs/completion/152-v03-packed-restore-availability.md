@@ -1,4 +1,4 @@
-# V03.24 — packed restoration availability qualification (planning)
+# V03.24 — packed restoration availability qualification (bounded attempt complete; native acceptance incomplete)
 
 Starts5cf379d after V03.23 source correction59focused/full3308PASS, ONE fresh
 review0C/0I/0M. Source availability fixed, installed/browser controls unverified.
@@ -67,3 +67,50 @@ package source hashes/protected old source/raw5 unchanged; new driver/preparer/
 guard/tests are outside the issued bundle. Actual78 remains immutable54cde48 pack.
 Fixed new case/native preflight/commit and ONE real run remain due. No browser/
 app/production/profile/trust/SDK/otherrepo/publication started by these checks.
+
+## ONE actual native attempt — literal INCOMPLETE
+
+Case committed atd12d6fc238f58d625ed404ec278f7d7d5b871992 before actual invocation;
+terminal68769 exits1. Raw `.artifacts/v03/restore-availability/2026-10-24T20-28-40-052Z/results.json`,
+SHA8b6d25d9d7d1d7745ea2110bb7d3ea31a2078d1ba14b2bbdc1a9f52420b333a5.
+Exact78 and actual original picker/open gates PASS; first native unblurred/focused
+Live10 really applies, app10/products[1], one applied Live receipt, clean local10.
+Wait20s expires in live10-and-disabled-restoration. In final captured failure:
+resource is EXACTLY its own applied receipt, revision ends2:7:2:1, externalRevision
+false; backend Undo/baseline true and actual laid-out UI buttons enabled. The required
+newer external observed revision was not established. Do NOT call this an incorrect
+availability decision or infer why it differs from the earlier instrumented run.
+No intermediate settled-poll history/native event trace was retained.
+
+Native result remains INCOMPLETE, not a new accepted denominator. Two positive gates
+of six, one native input, no first1200ms window/second20/external disabled controls/
+explicit Close/1100+390 rendered QA. Those gates are NOT_EXECUTED, not passed or
+waived. Failure screenshot inspected: retained10 field/focus, normal Inputs surface,
+stale inspection notice separate from active editor. It is a candidate/default-
+viewport partial view, not normal/narrow/keyboard/fidelity/global-ready acceptance.
+Attached inspector console[] was collected; app-console retrieval gate never ran,
+so its initial empty array is NOT proof of app console health (NotCollected).
+
+All independent cleanup flags true, browser/desktop acquired, own Chrome3507410/
+Vite3507372 absent at run end and fresh read-only check. Actual555 physical inputs
+unchanged;12 retained raw results unchanged. No native repeat, app setter, source
+mutation, production/SDK/otherrepo/user-profile/trust/publication change.
+Independent Python (no source imports) verifies literal failure, raw/case/registration/
+555 input hashes/12 retained results/first effect/own receipt/flags/cleanup and rejects
+16 negatives. Report `.artifacts/v03/restore-availability-saved-verification/2026-10-25/report.json`.
+This verifies the negative/partial record, never native qualification. Native case
+is exhausted. Source54guard+12driver=66/full3374 remains its actual source evidence.
+
+Auxiliary pre-launch ownership bookkeeping initially compared a relative immutable
+path to an absolute prefix, then used a relative dependency-receipt key against an
+absolute raw map. The tool cell continued to the already authorized case commit/
+run after that auxiliary error; mandatory555preflight and case commit were already
+valid. Corrected read-only canonical-path/hash checks pass: working and immutable
+copies both inside this repo, receipt exactly matches original77. No effect on raw,
+source or app, no repeat. Subsequent dependent tool mutations stop on command error.
+
+Ruling: finite failed case stops positive UI QA; record NOT_EXECUTED and inspect
+partial candidate only — existing max1/stopping rule wins over forcing a successful
+campaign — cost:native/Close/rendered acceptance remains incomplete. Clarify plan's
+method accordingly without weakening its positive/native predicates or old scope.
+ONE fresh final whole-item review due after bounded-attempt result commit/task-done.
