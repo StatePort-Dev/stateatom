@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Report native Undo and Restore baseline as unavailable when exact ownership or
+  the existing pending/closed/uncertain/history limits already prevent restoration.
+  Existing input buttons consume these flags with their native disabled state.
+- Keep external revision/ABA guards and fresh backend preflight. A new owned edit
+  may be undoable while its earlier baseline remains unavailable. No automatic
+  rebase, application restoration, layout/token change or new packaged acceptance.
+
 ## 0.1.0-candidate.20261021.77
 
 - Admit already requested state replies for the same active input-editor scope

@@ -5801,10 +5801,19 @@
       "active_slice": {
         "id": "V03.23",
         "record": "151-v03-restore-availability.md",
-        "status": "planning-source-restoration-availability",
+        "status": "source-availability-correction-complete-final-review-due",
         "native_started": false,
         "full_V03_acceptance": false,
-        "product_implemented": false
+        "product_implemented": true,
+        "product_source_changed": true,
+        "focused_tests": 59,
+        "full_source_tests": 3308,
+        "full_source_failures": 0,
+        "full_source_cancelled": 0,
+        "packed_candidate_changed": false,
+        "original_guide_status": "FAIL",
+        "existing_guards_relaxed": false,
+        "retained_source_cases": 4
       },
       "completed_slices": [
         {
@@ -6649,8 +6658,8 @@
       ],
       "current_checkpoint": {
         "record": "151-v03-restore-availability.md",
-        "status": "planning-source-restoration-availability",
-        "next_bounded_step": "TDD exact restoration availability; preserve all backend ownership/epoch guards, no native rerun."
+        "status": "source-availability-correction-complete-final-review-due",
+        "next_bounded_step": "ONE fresh final whole-item review, then at most one tested I/C pass; no native/candidate rerun."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-semantic-negative-controls.md",
       "implementation_plan": "../superpowers/plans/2026-10-24-v03-restore-availability.md",
@@ -6951,8 +6960,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.23-source-restoration-availability",
-    "next_item": "TDD exact restoration availability; preserve all backend ownership/epoch guards, no native rerun.",
+    "current_increment": "V03.23-source-complete-final-review-due",
+    "next_item": "ONE fresh final whole-item review, then at most one tested I/C pass; no native/candidate rerun.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6979,7 +6988,7 @@
     "active_item": {
       "id": "V03",
       "record": "151-v03-restore-availability.md",
-      "status": "planning-source-restoration-availability"
+      "status": "source-availability-correction-complete-final-review-due"
     },
     "completed_increments": [
       {
@@ -9674,11 +9683,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.9 bounded source-only complete50focused/full3297PASS;20of29 unchanged. V03.23 corrects false restoration availability on known external revision; source-only, no guard waiver or old native rerun. Prior original guide FAIL retained.",
+    "current_activity_note": "V03.23 exact restoration flags corrected:49PASS10FAIL->59PASS, full3308PASS; source-only. Four saved-data source preparation outcomes unchanged, flags reflect ownership. Product325unchanged+2declared deltas/old9/priorresearch20/raw5 stable; original guide FAIL, whole20of29 unchanged. ONE final review due.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "4dd7c13",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "TDD exact restoration availability; preserve all backend ownership/epoch guards, no native rerun.",
+    "next_bounded_step": "ONE fresh final whole-item review, then at most one tested I/C pass; no native/candidate rerun.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

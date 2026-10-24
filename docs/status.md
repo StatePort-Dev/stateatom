@@ -1,8 +1,9 @@
 # Project status
 
 Active bounded work: [V03.23](completion/151-v03-restore-availability.md), exact
-native-control restoration availability; source TDD due, no guard waiver or native
-rerun. Original successful-restoration guide remains FAIL. Whole20/29 unchanged.
+native-control restoration availability;59focused/full3308PASS, ONE final review
+due. No guard waiver/native rerun/new candidate. Original successful-restoration
+guide remains FAIL. Whole20/29 unchanged.
 
 Completed bounded work: [A02.9](completion/150-launch-evidence-lanes.md), source-only
 claim-scoped description of retained launch records. Classifier/reader50focused/full3297PASS;

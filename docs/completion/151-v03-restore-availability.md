@@ -1,4 +1,4 @@
-# V03.23 — native-control restoration availability (planning)
+# V03.23 — native-control restoration availability (source complete, final review due)
 
 Starts4dd7c13 after A02.9 source-only historical description:50focused/full3297PASS,
 ONE review0C/1I fixed/0M, no native/app/model. A02.9 old output/status unchanged;
@@ -22,3 +22,31 @@ plans/receipt IDs; no browser/backend/application write or original native repla
 Existing reference/native-disabled contract retained; source tests will verify
 functional disabled state only. Rendered visual/keyboard/narrow/native/installed
 acceptance is not established by the plan or controlled DOM checks.
+
+## Source result
+
+Task1 BASEeaf0976, brief read before tests. Eleven new cases; actual initial
+focused49PASS/10FAIL (incorrect eligibility flags/disabled-state assertions), then
+shared private entries/ownership predicate ->59PASS/0FAIL/0cancelled/0SKIP. Existing
+preparation preflight/error order preserved; no writer, target, epoch, ABA or
+capability relaxation. New owned edit can undo itself while old baseline remains
+blocked; external unwritten sibling does not block valid restoration. Pending,
+history64, partial retry, missing/replaced/options-changed/ABA guards exercised.
+Actual mounted controlled DOM derives both disabled buttons from the real ledger;
+passive state update sends zero apply/undo/baseline requests. These are source/UI
+model controls, not rendered or installed browser evidence.
+
+Fresh npm test3308PASS/0FAIL/0cancelled/0SKIP,98.67s terminal39441.
+`.artifacts/v03/undo-eligibility/2026-10-24T19-47-00Z/sealed.json` preserves the
+preliminary file, records seven executing source hashes and unchanged retained
+rawSHA72b875... . Four preparation outcomes remain prepare/refuse/prepare/refuse;
+flags now (Undo,baseline)=(true,true)/(false,false)/(true,false)/(false,false).
+Synthetic plans/receipts, no native dispatch. Old guide FAIL remains; no promised
+restore over changed metadata, no new candidate/native/visual acceptance.
+
+Current product cohort325 unchanged+2 declared source deltas (control-ledger and
+Atom Unreleased changelog); old9, priorresearch20 (A02.6–9) and five rawresults
+unchanged. A02.9 checkpoint4dd7c13 remains a historical clean checkpoint; its
+source-frozen cases are not fresh physical matches after this declared product
+change. No generic Git exception is added to the old reader or its acceptance.
+ONE fresh final whole-item review due after local commit/task-done.
