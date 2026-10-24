@@ -5355,7 +5355,7 @@
       "active_slice": {
         "id": "V03.16",
         "title": "Independent native input guide operation",
-        "status": "native73-focus-fixed-undo-refused-diagnostic-and-review-due",
+        "status": "diagnostic-live-draft-observed-image-visibility-followup-and-review-due",
         "record": "138-v03-independent-input-guide.md",
         "design": "../superpowers/specs/2026-10-24-v03-independent-input-guide-design.md",
         "plan": "../superpowers/plans/2026-10-24-v03-independent-input-guide.md",
@@ -5406,9 +5406,20 @@
         "original_protocol_fully_met": false,
         "diagnostic_case": "../testing/independent-input-refusal-case73.json",
         "diagnostic_registered_inputs": 428,
-        "diagnostic_executed": false,
-        "additional_diagnostic_source_controls": 8,
-        "fresh_diagnostic_focused_checks": 91
+        "diagnostic_executed": true,
+        "additional_diagnostic_source_controls": 9,
+        "fresh_diagnostic_focused_checks": 92,
+        "diagnostic_status": "FAIL_PENDING_LAZY_IMAGE_AFTER_LATER_LIVE_ACK",
+        "diagnostic_phases_observed": 6,
+        "diagnostic_positive_gates": 5,
+        "diagnostic_draft_samples": 9,
+        "diagnostic_restore_refusals": 2,
+        "diagnostic_result": ".artifacts/v03/independent-input-refusal/2026-10-24T05-55-56-008Z/results.json",
+        "diagnostic_verification": ".artifacts/v03/independent-input-guide/2026-10-24/refusal-image-failure-checkpoint.json",
+        "diagnostic_remaining_phases_unexecuted": 4,
+        "visible_followup_case": "../testing/independent-input-refusal-visible-case73.json",
+        "visible_followup_registered_inputs": 432,
+        "visible_followup_executed": false
       },
       "completed_slices": [
         {
@@ -6028,8 +6039,8 @@
       ],
       "current_checkpoint": {
         "record": "138-v03-independent-input-guide.md",
-        "status": "native73-focus-fixed-undo-refused-diagnostic-and-review-due",
-        "next_bounded_step": "V03.16 execute only preregistered remaining-operation diagnostic on same73 with original restore criteria still FAIL, no guard waiver/rebase/reset, then ONE whole-item review"
+        "status": "diagnostic-live-draft-observed-image-visibility-followup-and-review-due",
+        "next_bounded_step": "V03.16 one affected remaining-operation diagnostic with post-ack lazy-image visibility, strict images and original restore criteria retained; then ONE whole-item review"
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-guide-source-connection.md",
       "implementation_plan": "../superpowers/plans/2026-10-24-v03-independent-input-guide.md"
@@ -6191,8 +6202,8 @@
     "document": "138-v03-independent-input-guide.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.16-native73-focus-fixed-undo-refused-diagnostic-and-review-due",
-    "next_item": "V03.16 execute only preregistered remaining-operation diagnostic on same73 with original restore criteria still FAIL, no guard waiver/rebase/reset, then ONE whole-item review",
+    "current_increment": "V03.16-diagnostic-live-draft-observed-image-visibility-followup-and-review-due",
+    "next_item": "V03.16 one affected remaining-operation diagnostic with post-ack lazy-image visibility, strict images and original restore criteria retained; then ONE whole-item review",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8910,11 +8921,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.16 actual73Livefocusfixed/app10/card1/appliedtx, UndoUIrefusesnewerrevision/mutation7→10/samevalue10. OriginalrouteFAIL/8phasesunexecuted;422stableinputs/allcleanup/console0. New428inputseparatediagnostic retainsoriginalphaseFAILs whileobservinglaterDraft/Apply/Close/threehonestrefusals, expectedPARTIAL/exit1. No newproductbuild/guardwaiver/reset/newpolicy; whole20/29 unchanged, ONEreviewdueafterdiagnostic.",
+    "current_activity_note": "V03.16 diagnostic actualLive/Draftlocal/Apply/twoUndoRefusals observed/6phases, laterLive10applied butpendinglazyimagebackground causesobserverFAIL.428stableinputs/allcleanup/console0. Sourcevisibilitybarrier RED8/1→GREEN9/focused92; no product/newpolicy/imagecriterionwaiver. Newfixedfollowup afterack appvisibility only, originalrouteFAIL/20of29 unchanged; ONEreviewdue.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "21f4496",
+    "current_source_revision": "41a2dd7",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.16 execute only preregistered remaining-operation diagnostic on same73 with original restore criteria still FAIL, no guard waiver/rebase/reset, then ONE whole-item review"
+    "next_bounded_step": "V03.16 one affected remaining-operation diagnostic with post-ack lazy-image visibility, strict images and original restore criteria retained; then ONE whole-item review"
   },
   "next_task": "V03"
 }

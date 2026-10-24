@@ -138,3 +138,23 @@ No additionalproductchange/build or oldcampaign. Actualrefusalguard REDmissingdr
 →GREEN8/freshfocused91PASS/0FAIL0SKIP plus original source2799full/178focused unchanged.
 These are sourceguards, not additionalnativeacceptance. Diagnosticnative and ONE
 whole-itemreview due; remainingoriginalcorrectness/usefulness gaps stayopen.
+
+## First remaining-operation diagnostic and image observer failure
+
+30008 terminal1 at41a2dd7/clean/result05-55-56: six phases/five named gates, actual
+Livefocus/effect, Draft20localatactual10 for9samples≥1100ms/noownAPI requests, explicit
+Apply20/no cards, twohonestUndo refusals. LaterLive10 alsoapplied/history3/card1 but
+lazyimage imagesReady=false while appbackground, so observer timesout before phase7.
+This is a harness visibility error, not a failedinputwrite or originalroutePASS.
+All428inputs/327product/223helper/65originals/console0/cleanupstable; independent
+refusal-image-failure-checkpoint retained andownPIDsabsent. Fourdiagnosticphases
+remainunexecuted; alloriginalsuccessful-restorecriteria stillFAIL.
+
+[Visibility supplement](../superpowers/specs/2026-10-24-v03-input-visible-images-design.md)
+and [newfixedcase](../testing/independent-input-refusal-visible-case73.json) keep exact
+image readiness requirement andbothoriginal/diagnosticprotocols. Onlyafteracknowledged
+field/cardoutcome, ifimagepending, makeownappvisible fornormal lazyloading thenreturn
+inspector, no input/reload/reset/extraHTTPprobe. FirstLivefocus proof unchanged; don't
+blurpendingLive early. ActualwaitOutcome control RED8/1→GREEN9/focused92PASS. No
+product/revisionguard/package change; preserve allthreeearlieractualFAILs. Newcase/
+code committedBEFOREoneaffecteddiagnosticrun; not a blindtimeoutrestart.

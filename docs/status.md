@@ -2300,3 +2300,8 @@ refuses a changed native revision. Originalroute remainsFAIL/8phasesunexecuted,
 422stableinputs/console0/allcleanup. Separate428inputdiagnostic will observe
 remainingDraft/Apply/Close with threeexplicitrestorationrefusals, expectedPARTIAL/
 exit1; originalrestore0/history7criteria notwaived. No newproductbuild/guardchange.
+
+V03.16 diagnostic observes Live/Draftlocal/Apply and two explicitUndo refusals,
+then timesout on a background lazyimage after a laterLive write already succeeded.
+All428inputs/console0/cleanup retained; a newpost-ack visibility barrier preserves
+strictimages/restorecriteria, no product change. Affectedfollowup and ONEreview due.
