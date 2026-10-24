@@ -1,0 +1,64 @@
+{
+  "schema": "stateatom.react19-remaining-case/1",
+  "id": "A02.4-report-stop-76-dialog-ready",
+  "maximumNativeRuns": 1,
+  "configuration": {
+    "atom": "0.1.0-candidate.20261021.76",
+    "plugin": "0.1.0-candidate.20261021.7",
+    "cachePermission": true,
+    "browserSandbox": true,
+    "certificateChanges": false,
+    "productionChanges": false,
+    "consumerOracle": false,
+    "fullPath": false,
+    "helper": "Existing source HTTP HelperSession, not installed VSIX/IDE acceptance",
+    "extensionInstallation": "Exact packed standalone host via historical CLI preload, not Store/manual installation acceptance",
+    "applicationBuild": "Declared Vite7.3.7/automatic JSX overlay; original TodoMVC uses Webpack"
+  },
+  "selectors": {
+    "newTodo": ".new-todo",
+    "target": ".todo-list li:nth-of-type(1) label[data-testid=todo-item-label]"
+  },
+  "inputs": {
+    "title": "A02 remaining",
+    "afterStop": "A02 stopped"
+  },
+  "expectedChecks": [
+    "exact76 artifacts and unchanged mechanism credit preserve original partial failure",
+    "fresh76 development attach source connection and native witness belong to a new occurrence",
+    "retained actual76 visual candidates on the identical artifact without reexecution",
+    "actual saved downloaded v1 diagnostic and inert reader disclose omitted ancestors",
+    "public dev observer stop invalidates the fresh witness while app input continues",
+    "exact inputs links archives and owned resource cleanup"
+  ],
+  "originalTenCriteriaCoverage": {
+    "1": "fresh76 artifact/registration check",
+    "2": "fresh76 development attach/source-helper connection",
+    "3": "retained75 equal-node scenario, immutable partial result plus exact unchanged mechanism/UI single-class proof; not a fresh76 scenario",
+    "4": "retained75 metadata-fault unmarked scenario, same scoped unchanged-code credit",
+    "5": "retained75 same-value native input/result/revision/update scenario, same scoped unchanged-code credit",
+    "6": "retained75 changed-first/unchanged-second scenario, same scoped unchanged-code credit",
+    "7": "retained actual76 font/normal/narrow/hover/keyboard from immutable partial3, same exact artifact; not freshly executed",
+    "8": "fresh76 saved/downloaded v1 omission and reader",
+    "9": "fresh76 Stop/post-stop input",
+    "10": "fresh76 exact inputs and cleanup"
+  },
+  "retained": {
+    "result": ".artifacts/a02/react19-product-cache/2026-10-24T08-20-31-062Z/results.json",
+    "sha256": "2f700269712695cf5e418cbc6901fc9e92285c1dc78bf5e6af570c4ab46574d2",
+    "status": "INCOMPLETE_PRODUCT_QUALIFICATION_NOT_A02",
+    "nativeScenarios": 4,
+    "currentNativeScenariosReexecuted": 0,
+    "requireMechanismByteComparison": true,
+    "copyOldOccurrenceIDs": false
+  },
+  "declaredInterventions": [
+    "One public dev observer stop() after the actual saved/report checks; harness lifecycle intervention, not a product Stop UI."
+  ],
+  "stoppingRule": "Preserve this first literal result. No inherited observation is labelled fresh76. No old failed run becomes PASS. All ten item criteria remain required through the explicit scoped table. Any source/payload difference beyond the single class/token rule and declared version metadata refuses retained credit. Human screenshot review remains candidate review, not an independent-person blocker. The prior76 case is exhausted. This new report/Stop case changes only harness readiness after a mounted delayed-open control; no product change. It must bind the reviewed JSON to the newly saved id, selected value/page and capturedAt before an actual file download.",
+  "retainedVisual": {
+    "result": ".artifacts/a02/react19-remaining/2026-10-24T09-10-56-113Z/results.json",
+    "sha256": "6958668b20058aa8412ca40b8b94d0a659264edb2342fe5df97cf23fac1cf8f7",
+    "currentVisualScenariosReexecuted": 0
+  }
+}

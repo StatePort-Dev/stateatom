@@ -2321,3 +2321,16 @@ V03.17 boundedmutationfacts/failure-record complete, nativecriterionstillFAIL/IN
 [V03.18](completion/140-v03-input-snapshot-ordering.md) completes a source-level ordering diagnosis on73e7303: three cases/333stableinputs/B327 unchanged. Freshbeforeedit allows a current plan; freshafteredit/beforelateack preserves raw20 and refuses conflict. SyntheticplanIDs explicit; actualnativeordering/modelcauseUnknown, originalguide/native17FAIL unchanged. No product/browser/build/newwholeacceptance.20/29. NextA02.4 integrates existingboundedordinaryReact19 acquisition into product, retaining ownership/prop-transfer/selected-origin Unknown and A02 stopping rule; L02 blindtuning stop retained.
 
 [A02.4](completion/141-a02-react19-product-acquisition.md) remains active. Native75 four semantic scenarios/6of10 plus font FAIL retained.76 scoped font correction controlledRED11→GREEN13 at440/360 (parent11/outside16 unchanged); full2915PASS, focused79 incl2laterCLIcontrols, types2/admission9. Exact source/payload proof limits delta to class/CSS rule/version/changelog; mechanism/plugin/helper/app/tools unchanged. No old semantics repeated or old IDs copied. One frozen remaining case maps all10criteria; preflight3219inputs17links/no76native yet. Next commit then actual UI/report/stop/verifier/final single review.20/29 unchanged; full A02/V03 remain open.
+
+### 2026-10-24 — A02.4 actual76 visual QA, export barrier
+
+[Current bounded item](completion/141-a02-react19-product-acquisition.md) remains
+in progress. Actual76 remaining case3/6: fresh native occurrence,13px/440/360/
+hover/keyboard candidates pass; harness read empty JSON before async dialog opened.
+Actual failure image later shows populated v1 review. No download/Stop success.
+3219inputs17links stable/allcleanup; partial verifier12negative controls and clean
+checkpoint retained. Mounted delayed-open control57PASS confirms async cause;
+corrected harness awaits modal/nonempty JSON and binds fresh saved identity.
+Focused80PASS; new report/Stop-only case preflight3232inputs17links, same76 archive,
+retained76 visual/75 unchanged semantics, no product fix/reinstall. Commit then one
+native report/Stop case, saved verification and ONE final review.20/29 unchanged.

@@ -123,10 +123,10 @@ test('a late Restore cannot claim success for a newer explicit selection even af
  const pending=deferred();let selected='#target-1',f;f=fixture(m=>{if(m.op==='restore')return pending.promise;if(m.op==='inspect-selector'){selected=m.selector;return{};}if(m.op==='state')return{...f.state(m.tabId),origin:'http://127.0.0.1:4173',selection:{...f.state(m.tabId).selection,selector:selected}};});await f.view.ready;const restoring=f.$('atom-restore').onclick();f.$('selector').value='#new-target';await f.$('inspect-selector').onclick();f.emit({event:'state-invalidated',tabId:1});await tick();pending.resolve({value:'Tab 1'});await restoring;assert.doesNotMatch(f.$('atom-result').textContent,/^Restored/);assert.match(f.$('selected').textContent,/#new-target/);await f.view.dispose();
 });
 
-async function historicalFixture(version=1){
+async function historicalFixture(version=1,openGate=null){
  let stored=null;const store=createHandoffStore({read:async()=>stored,write:async raw=>stored=raw});const original='\n'+JSON.stringify(makeDiagnostic({selection:{selector:'#private-original',property:'disabled',value:true,observedAt:Date.now()}}))+'\n';let raw=original;
  if(version===2){const draft=await createHandoffDraft(original,{title:'Saved readable issue',actual:'Cannot confirm'});await draft.freeze({expectedRevision:0});raw=await createHandoffReport(original,JSON.stringify(draft.read().baseline));}
- await store.save(raw);const request=m=>m.op==='list-handoffs'?store.list():m.op==='list-diagnostics'?store.list().then(async list=>{const out=[];for(const e of list.entries.filter(e=>e.version===1))out.push((await store.open(e.id)).record);return out;}):m.op==='open-handoff'?store.open(m.id):m.op==='save-handoff'?store.save(m.raw):m.op==='delete-handoff'?store.remove(m.id,m.expectedDigest):undefined;
+ await store.save(raw);const request=m=>m.op==='list-handoffs'?store.list():m.op==='list-diagnostics'?store.list().then(async list=>{const out=[];for(const e of list.entries.filter(e=>e.version===1))out.push((await store.open(e.id)).record);return out;}):m.op==='open-handoff'?(openGate?openGate.promise.then(()=>store.open(m.id)):store.open(m.id)):m.op==='save-handoff'?store.save(m.raw):m.op==='delete-handoff'?store.remove(m.id,m.expectedDigest):undefined;
  const f=fixture(request);await f.view.ready;for(let i=0;i<30&&(f.$('report-select').children.length===0||f.$('export-report').disabled!==false);i++)await tick();return{...f,store,original,raw};
 }
 test('mounted inspector Save wires the reviewed v2 file to storage with exact original v1 source digest',async()=>{
@@ -255,4 +255,11 @@ test('main state refresh uses this active input view owner without borrowing obs
  const policy=()=>describeCapabilities({url:inputTarget.origin+'/',permission:true,grants:['read','inject','cache','reload','override','replay'],lease:'owned',attached:true,hasSelection:true,hasAnalysis:true,nativeInputOwner:true,workerIndependent:true,inputSourceKind:'dom-control',hasInputEditor:opened});
  f=fixture(m=>{calls.push(structuredClone(m));if(m.op==='state')return{...f.state(1),run:'r',property:'disabled',selection:{selector:'#target-1',property:'disabled',value:false,observedAt:100,domIdentity:{document:'d',node:'n',property:'disabled'}},capabilityPolicy:policy(),inputs:opened?snap():null};if(m.op==='capabilities')return policy();if(m.op==='inputs-open'){owner=m.ownerId;opened=true;return snap();}if(m.op==='inputs-close'){opened=false;return snap();}});
  try{await f.view.ready;await tick();assert.equal(calls.find(m=>m.op==='state').ownerId,undefined);f.$('input-source').value='dom-control';f.$('input-source').onchange();await tick();await f.$('input-open').onclick();assert.equal(typeof owner,'string');f.emit({event:'state-invalidated',tabId:1});await tick();await tick();const active=calls.filter(m=>m.op==='state').at(-1);assert.equal(active.ownerId,owner);assert.equal(typeof active.observationOwnerId,'string');assert.notEqual(active.observationOwnerId,owner);await f.$('input-close').onclick();f.emit({event:'state-invalidated',tabId:1});await tick();await tick();assert.equal(calls.filter(m=>m.op==='state').at(-1).ownerId,undefined);}finally{await f.view.dispose();}
+});
+
+// Native click dispatch completes before the asynchronous storage reply.
+test('legacy review is empty until open-handoff replies and then opens with the exact saved JSON',async()=>{
+ const gate=deferred(),f=await historicalFixture(1,gate);
+ try{const pending=f.$('export-report').onclick();await tick();assert.equal(f.$('export-review').open,false);assert.equal(f.$('export-json').value,'');gate.resolve();await pending;assert.equal(f.$('export-review').open,true);assert.equal(f.$('export-json').value,f.original);assert.equal(JSON.parse(f.$('export-json').value).id,JSON.parse(f.original).id);}
+ finally{gate.resolve();await f.view.dispose();}
 });

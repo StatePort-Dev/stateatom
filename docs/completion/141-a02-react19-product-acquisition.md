@@ -317,3 +317,47 @@ No native76 UI/report/stop success is claimed yet. Full A02/V03/V02/L02/C09 rema
 open;20/29 unchanged. Historical V03 failures/Unknowns and deferred native Node
 Minor stay intact. No input guard, Live/production policy, SDK, publication, other
 repository or redesign changed.
+
+## Task3c actual76 partial and Task3d export-readiness correction
+
+At c939733 the frozen remaining case ended literal
+`INCOMPLETE_REMAINING_NATIVE_NOT_A02`, **3/6 PASS**. Output:
+`.artifacts/a02/react19-remaining/2026-10-24T09-10-56-113Z`;
+resultSHA256 **6958668b20058aa8412ca40b8b94d0a659264edb2342fe5df97cf23fac1cf8f7**.
+Fresh76 attach/helper/native target passed on a distinct page. Actual paragraph
+**13px**,440/360 no overflow, keyboard SUMMARY focus-visible2px and hover candidates
+passed. Five screenshots are candidates. Viewed first viewport and360 Evidence
+against supplied Atom Inputs reference: existing header/tabs,13px body and control
+alignment remain; current real source selector/Unknown boundaries and independent
+paragraph intentionally differ from the synthetic API/local-state prototype. This
+is scoped visual QA, not full prototype fidelity or human approval.
+
+The report gate failed `Unexpected end of JSON input`: the driver read the JSON
+field immediately after click, before async `open-handoff` replied. Actual failure
+screenshot shows the review modal subsequently populated with v1 JSON and the
+explicit ancestor omission. No actual download/reader or Stop ran. All3219inputs/
+17links stable; Chrome1343044/Vite1342901 absent and all owned handles closed.
+Independent partial verifier **12negative controls PASS**, preservation only;
+clean pre-export-readiness checkpoint saved before registered source changed.
+The retained75 artifact/base preparation bindings were also checked against the
+actual75 native registration, not inferred from filenames.
+
+Mounted actual inspector/storage control with a deferred `open-handoff` response
+confirms empty/closed before reply, then exact saved JSON/open modal: **57PASS**.
+No product fix is needed. Driver now waits for the actual open modal plus nonempty
+JSON and binds report id, capture time, selector/property/value/page to the fresh
+saved occurrence before download. No fixed delay or schema/criterion change.
+Initial focused invocation misspelled the presentation test path and actually ran
+61 controls; corrected exact-path final invocation is **80PASS/0FAIL/0SKIP**.
+
+New max1 case `docs/testing/react19-report-case.json` retains actual76 visual QA on
+identical76 archive, with checkpoint/artifact hashes. Four75 semantic cases remain
+retained under the prior strict source/payload proof. Neither set is reexecuted or
+labelled fresh. Necessary new setup acquires its own occurrence, distinct from
+both prior pages; only actual v1 download/reader and public dev Stop remain.
+Preparation `.artifacts/a02/react19-report/2026-10-24T09-39-44-647Z/prepared.json`
+reuses same archives/app/consumer, no reinstall. Historical c939733 driver blob
+verifies the single registered harness delta; product source/payload changes0.
+Preflight **3232inputs/17links PASS**, no native resources. Commit before the one
+new case, then independent composed evidence verification and ONE final review.
+Old cases/results remain INCOMPLETE and exhausted.20/29 unchanged.

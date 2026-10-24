@@ -140,3 +140,21 @@ maps each original criterion to retained75 or fresh76 evidence. Source preparati
 consumer, no reinstall. Final preflight3219inputs/17links includes original28-file
 identity/no native resources. Commit source/case then one actual remaining run,
 independent saved verifier and ONE final whole-item review as originally required.
+
+### Task3d — actual export-dialog readiness, report and Stop only
+
+Actual76 partial3/6 at c939733 proves13px/440/360/hover/keyboard candidates on the
+exact76 artifact. Export JSON was read before async storage reply; actual failure
+image shows later populated modal.12-negative partial verifier and clean checkpoint
+precede all source edits. No product defect inferred. Delayed-open mounted control
+passes57. Harness must await open modal/nonempty field and bind fresh saved id,
+selected page/value/property/selector and capturedAt before actual download.
+
+Ruling: retain same76 visual QA unchanged and run only report/Stop with necessary
+fresh setup — concrete missing observable async barrier, not a blind old-case retry
+— cost: old3/6 remains literal, no download/Stop credit until the new actual case.
+All ten criteria remain covered explicitly:75 semantics via strict byte proof,
+76 visual via same-archive checkpoint, fresh report/Stop and final input cleanup.
+New case max1 docs/testing/react19-report-case.json; prepared09-39-44-647Z,
+3232inputs17links/preflight only. Product payload/source changes0. Final focused80
+PASS, no full-suite rerun for harness-only change. ONE final review remains due.

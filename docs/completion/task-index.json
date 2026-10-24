@@ -1666,7 +1666,7 @@
       "active_slice": {
         "id": "A02.4",
         "title": "Bounded ordinary React19 product acquisition integration",
-        "status": "in-progress-font76-source-ready-remaining-native-pending",
+        "status": "in-progress-native76-visual-pass-report-readiness-pending",
         "record": "141-a02-react19-product-acquisition.md",
         "design": "../superpowers/specs/2026-10-24-a02-react19-product-acquisition-design.md",
         "plan": "../superpowers/plans/2026-10-24-a02-react19-product-acquisition.md",
@@ -1872,8 +1872,8 @@
       },
       "current_checkpoint": {
         "record": "141-a02-react19-product-acquisition.md",
-        "status": "in-progress-font76-source-ready-remaining-native-pending",
-        "next_bounded_step": "A02.4 Task3c commit76 source/case then one frozen remaining native UI/report/stop run; verify composed ten-criterion table with scoped retained75 evidence and one final review"
+        "status": "in-progress-native76-visual-pass-report-readiness-pending",
+        "next_bounded_step": "A02.4 Task3d commit harness dialog-readiness correction then one report/Stop-only native case; retain actual76 visual and strict unchanged75 semantic evidence, verify ten criteria and ONE final review"
       },
       "stopping_point_history": [
         {
@@ -6442,8 +6442,8 @@
     "document": "141-a02-react19-product-acquisition.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.4-font76-source-ready-remaining-native-pending",
-    "next_item": "A02.4 Task3c commit76 source/case then one frozen remaining native UI/report/stop run; verify composed ten-criterion table with scoped retained75 evidence and one final review",
+    "current_increment": "A02.4-native76-visual-pass-report-readiness-pending",
+    "next_item": "A02.4 Task3d commit harness dialog-readiness correction then one report/Stop-only native case; retain actual76 visual and strict unchanged75 semantic evidence, verify ten criteria and ONE final review",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6470,7 +6470,7 @@
     "active_item": {
       "id": "A02",
       "record": "141-a02-react19-product-acquisition.md",
-      "status": "in-progress-font76-source-ready-remaining-native-pending"
+      "status": "in-progress-native76-visual-pass-report-readiness-pending"
     },
     "completed_increments": [
       {
@@ -9165,11 +9165,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.4 native75 four semantic scenarios retained with literal6of10/font FAIL.76 scoped body-token font fix controlledRED11->GREEN13 at440/360, parent11/outside16 unchanged. Full2915PASS then79focused including2newCLIcontrols; types2/admission9. Exact raw-source/payload comparison: only class/CSS rule/version/changelog; all mechanism/plugin/helper/app/tooling unchanged, no75scenarios reexecuted as76. New remaining-case maps all10criteria explicitly, preflight3219inputs17links; no76native yet. Commit then one remaining UI/report/stop case plus saved verification/final single review.20of29 unchanged/no full A02/V03 acceptance.",
+    "current_activity_note": "A02.4 native76 partial3of6 proves fresh occurrence/13px/440-360/hover/keyboard candidates. Export read before async open-handoff reply; later populated actual modal, no download/Stop.3219 stable/cleanup/12-negative partial verifier/clean checkpoint. Mounted delayed-open57PASS; corrected exact-path focused80PASS. New report-Stop case3232inputs17links preflight, same76 product bytes; retain prior76 visual and unchanged75 semantics without reexecution. Commit then one actual case plus composed verifier/ONE final review.20of29 unchanged/full A02 open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "1cd2f4f",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "A02.4 Task3c commit76 source/case then one frozen remaining native UI/report/stop run; verify composed ten-criterion table with scoped retained75 evidence and one final review"
+    "next_bounded_step": "A02.4 Task3d commit harness dialog-readiness correction then one report/Stop-only native case; retain actual76 visual and strict unchanged75 semantic evidence, verify ten criteria and ONE final review"
   },
   "next_task": "A02"
 }
