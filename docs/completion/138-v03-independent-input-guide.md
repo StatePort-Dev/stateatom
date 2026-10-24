@@ -1,8 +1,10 @@
 # V03.16 — independent app input guide case
 
-2026-10-24/maina397a59/scope-review-1. In progress: original72native focus FAIL
-retained; corrected73 native focus passes but Undo refuses a newer revision.
-Remaining-operation diagnostic and ONE review are due; originalroute remainsFAIL.
+2026-10-24/scope-review-1. Bounded engineering and failure record complete;
+original successful-restoration guide remains FAIL. Candidate73 preserves Livefocus,
+Draft/Apply observed; Undo refuses changed revision and laterLive remains stale.
+ONE review:0Critical/0Important/1reportingMinor; current pointers finalized below.
+Next V03.17: focused revision/stale-draft diagnosis, no forced restoration.
 [Design](../superpowers/specs/2026-10-24-v03-independent-input-guide-design.md),
 [plan](../superpowers/plans/2026-10-24-v03-independent-input-guide.md),
 [fixed case](../testing/independent-input-guide-case.json).
@@ -190,3 +192,32 @@ before nine newdiagnostic controls; freshfocused92, not a fabricatedfull2808 run
 ProductonlytwoUIchanges+threeversionmetadatafiles; no nativebackend/revisionguard/
 SDK/design/productionpolicy change. ONE whole-item review pending. FullV03/open task
 count20/29 unchanged; documents and diagnosticFAIL do not establish featureacceptance.
+
+## Final review and current routing
+
+ONE fresh readonlyastra/highreview atdce0729:0Critical/0Important/1Minor. Fresh92source
+checks andplainnativeverifier pass; no code correction pass/native repeat/rereview.
+M1 current-summarylag is resolved by this required final report/currentrouting update;
+chronologicalpreregistration andfouractualFAIL records remainunchanged. Reviewreport:
+`.artifacts/v03/independent-input-guide/2026-10-24/review/report.md`.
+Finalaggregate recomputes exactcurrent inputs/retainedFAIL andreview, notoriginalguidePASS.
+
+Reviewer boundaries retained: original10phase/7txsuccessfulUndoRestoreClose remains
+FAIL; attributes/writer/harmlessness Unknown; continuationafterstale/thirdrefusal/
+ownerretirement unexecuted; substitutedcleanupcontrols notgeneralnativefaultproof;
+unchangedbackend/platformcampaigns notnew73qualification; nohumanvisual/keyboardnarrow/
+cleaninstall/userbrowserIDE/crossplatform acceptance; no production/newLivetiming/
+performance/sourceReduxnetwork/globalrestore/publication/fullV03 claims. Aggregate
+only becomes evidence when actually executed. Whole20/29/fullV03 remainsopen.
+
+Executor rulings and costs: autonomousmain/local/ONEreview underuserauthorization
+(noapprovednewpolicy); originalReact19 nativeDOMcase (nosourceplugin/Redux/C09credit);
+exactcache+replaydevelopment (noproduction/responseediting); observed250/500ms and1100ms
+hold (notnewtiming/performanceacceptance); literalinput/card outcomes/unknownledger
+(noglobalrestore); ownHTTP/Xephyr/preload (noIDE/certtrust/install/humanproof); separate
+newlogcleanup (old15Minorstilldeferred); focusednew73 afternativefocusFAIL (old72FAIL
+unchanged); sandboxedcontrolledPlaywright (notnative/human); noattribute/ABAguardwaiver
+(originalUndoFAIL stays); separatediagnostic (notnewaccepted4txdenominator); afterack
+visibility (assisted/notunaided andstrictimagecriterion); stop16atstaleFAIL (missing
+baseline/Closemove to boundeddiagnosis ratherthanforcedscript); retainworkspace/history
+(userpreservation overrides genericscratchdeletion). No new deferredcodeMinor in16.

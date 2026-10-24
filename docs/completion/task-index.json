@@ -5355,7 +5355,7 @@
       "active_slice": {
         "id": "V03.16",
         "title": "Independent native input guide operation",
-        "status": "bounded-operation-evidence-recorded-original-route-fails-review-due",
+        "status": "bounded-engineering-and-failure-record-complete-original-guide-not-accepted",
         "record": "138-v03-independent-input-guide.md",
         "design": "../superpowers/specs/2026-10-24-v03-independent-input-guide-design.md",
         "plan": "../superpowers/plans/2026-10-24-v03-independent-input-guide.md",
@@ -5363,7 +5363,7 @@
         "previous_slice": "V03.15 bounded guide join completea397a59/nativeconsoleFAIL retained; no old campaign repeat",
         "product_source_changed": true,
         "whole_V03_complete": false,
-        "review_pending": true,
+        "review_pending": false,
         "native_executed": true,
         "registered_inputs": 409,
         "product_inputs_unchanged": 327,
@@ -5433,7 +5433,17 @@
         "visible_followup_visibility_barriers": 1,
         "visible_followup_negative_verifier_controls": 20,
         "mutation_attributes": "Unknown",
-        "mutation_writer": "Unknown"
+        "mutation_writer": "Unknown",
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 1,
+          "code_correction_passes": 0,
+          "re_review": false,
+          "reporting_pointers_finalized": true,
+          "report": ".artifacts/v03/independent-input-guide/2026-10-24/review/report.md"
+        },
+        "final_verification": ".artifacts/v03/independent-input-guide/2026-10-24/final-checkpoint.json"
       },
       "completed_slices": [
         {
@@ -6053,8 +6063,8 @@
       ],
       "current_checkpoint": {
         "record": "138-v03-independent-input-guide.md",
-        "status": "diagnostic-live-draft-observed-image-visibility-followup-and-review-due",
-        "next_bounded_step": "V03.16 ONE whole-item review of retained original FAIL and visible diagnostic stale-draft FAIL; next V03.17 focused native revision/stale-draft diagnosis, no forced restore"
+        "status": "bounded-engineering-and-failure-record-complete-original-guide-not-accepted",
+        "next_bounded_step": "V03.17 focused native revision/stale-draft diagnosis before any restoration policy change; preserve original guide FAIL"
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-guide-source-connection.md",
       "implementation_plan": "../superpowers/plans/2026-10-24-v03-independent-input-guide.md"
@@ -6216,8 +6226,8 @@
     "document": "138-v03-independent-input-guide.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.16-operation-evidence-recorded-original-restore-and-next-Live-stale-gaps-review-due",
-    "next_item": "V03.16 ONE whole-item review of retained original FAIL and visible diagnostic stale-draft FAIL; next V03.17 focused native revision/stale-draft diagnosis, no forced restore",
+    "current_increment": "V03.16-bounded-engineering-complete-original-guide-FAIL-next-Live-stale-gap-open",
+    "next_item": "V03.17 focused native revision/stale-draft diagnosis before any restoration policy change; preserve original guide FAIL",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8935,11 +8945,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.16 original72 focusFAIL ->73 focusfixed/UndoRefused; separate visible diagnostic150d93a actualFAIL at7phases: Live/Draftlocal1121ms9samples/Apply/2UndoRefusals/3writes, fourth nativeinsert stale andnotapplied. 432stableinputs/327product/223helper/65originals/strictconsole0/allcleanup/20negativeverifiercontrols. BaselineRestore/Close unexecuted; originalrouteFAIL unwaived. ONEreviewdue; wholeV03 and20of29 unchanged.",
+    "current_activity_note": "V03.16 original72 focusFAIL ->73 focusfixed/UndoRefused; separate visible diagnostic150d93a actualFAIL at7phases: Live/Draftlocal1121ms9samples/Apply/2UndoRefusals/3writes, fourth nativeinsert stale andnotapplied. 432stableinputs/327product/223helper/65originals/strictconsole0/allcleanup/20negativeverifiercontrols. BaselineRestore/Close unexecuted; originalrouteFAIL unwaived. ONEreview0Critical0Important1Minor/current-reporting-finalized/no-codepass; nextV03.17revisiondiagnosis; wholeV03 and20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "41a2dd7",
+    "current_source_revision": "dce0729d273f16aa941616d4d6c20fc3045be76a",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.16 ONE whole-item review of retained original FAIL and visible diagnostic stale-draft FAIL; next V03.17 focused native revision/stale-draft diagnosis, no forced restore"
+    "next_bounded_step": "V03.17 focused native revision/stale-draft diagnosis before any restoration policy change; preserve original guide FAIL"
   },
   "next_task": "V03"
 }
