@@ -5,13 +5,22 @@ import assert from 'node:assert/strict';
 export const restoreAvailabilityPass='PASS_RESTORE_AVAILABILITY_NOT_FULL_V03';
 const incomplete='INCOMPLETE_RESTORE_AVAILABILITY';
 const checks=['exact78-package-and-node-admission','original-picker-and-open','live10-and-disabled-restoration','live20-and-disabled-restoration','native-close-preserves-value','console-host-and-rendered-checks'];
-const cleanup=['inspector','browser','vite','viteLogWrite','viteLogClose','api','desktop','pidsAbsent'];
+const cleanup=['appConsole','inspector','browser','vite','viteLogWrite','viteLogClose','api','desktop','pidsAbsent'];
 const physical=['tabId','origin','run','document','node','selector','property','build'];
 const identity=r=>({id:r.id,kind:r.kind,type:r.type,writable:r.writable,locator:r.locator});
+const text=(v,max=256)=>typeof v==='string'&&v.length>0&&v.length<=max;
+const revision=v=>Number.isSafeInteger(v)&&v>=0||text(v,512);
 function currentResource(p){
  assert(Array.isArray(p.inputs.resources)&&p.inputs.resources.length<=32);
  const rows=p.inputs.resources.filter(x=>x.resource.locator.selector==='#minPrice');
  assert.equal(rows.length,1);return rows[0];
+}
+function requiredSnapshotIdentity(p){
+ const s=p.inputs,t=s.target;assert(text(s.investigationId));
+ assert(Number.isSafeInteger(t.tabId)&&t.tabId>=0);for(const k of ['origin','run','document','node','selector','property'])assert(text(t[k],512));
+ assert(t.build===null||typeof t.build==='string'&&/^[a-f0-9]{64}$/.test(t.build));
+ for(const k of ['document','node','property'])assert(text(p.selection.domIdentity[k]));
+ assert(revision(currentResource(p).resource.revision));
 }
 function documentAndField(p,panelURL,value,closed){
  const f=p.field;assert.equal(f.document.url,panelURL);assert.equal(typeof f.document.title,'string');assert(f.document.title.length>0);
@@ -28,6 +37,7 @@ export function guardRestoreAvailability(r){
  assert.equal(r.traceInstrumented,false);assert.equal(r.productionChanges,false);assert.equal(r.selectedControlMatchesOriginal,true);
  assert.match(r.panelURL,/^chrome-extension:\/\/[a-p]{32}\/panel\.html$/);
  const baseline=r.baseline.inputs,base=currentResource(r.baseline).resource,target=baseline.target;
+ assert.equal(r.tabId,target.tabId);
  assert.equal(target.selector,'#minPrice');assert.equal(target.property,'disabled');
  const origin=new URL(target.origin);assert.equal(origin.hostname,'127.0.0.1');assert.equal(origin.protocol,'http:');
  assert.equal(base.kind,'dom-control');assert.equal(base.type,'number');assert.equal(base.writable,true);
@@ -37,6 +47,7 @@ export function guardRestoreAvailability(r){
  let previousEnd=-Infinity;
  for(const[p,value,count,closed]of phases){
   assert.equal(p.captureStatus,'Complete');
+  requiredSnapshotIdentity(p);
   assert(Number.isFinite(p.startedAt)&&Number.isFinite(p.finishedAt)&&p.startedAt>=previousEnd&&p.finishedAt>=p.startedAt);previousEnd=p.finishedAt;
   const s=p.inputs,row=currentResource(p),resource=row.resource;
   assert.equal(s.investigationId,baseline.investigationId);assert.equal(s.closed,closed);assert.equal(s.tainted,false);assert.equal(s.pending,null);assert.equal(s.cleanup,closed?'closed':'active');
@@ -47,7 +58,7 @@ export function guardRestoreAvailability(r){
   assert.equal(p.dom.ready,'complete');assert.equal(p.dom.minValue,String(value));assert.deepEqual(p.dom.products,value===0?[1,2]:value===10?[1]:[]);assert.equal(p.dom.imagesReady,true);assert.equal(p.dom.errorOverlay,false);
   documentAndField(p,r.panelURL,value,closed);
   if(count){
-   assert.equal(row.externalRevision,true);const owned=s.history.at(-1).outcomes[0].after;
+   assert.equal(row.externalRevision,true);const owned=s.history.at(-1).outcomes[0].after;assert(revision(owned.revision));
    assert.notEqual(resource.revision,owned.revision);assert.equal(resource.value,owned.value);
   }
  }
@@ -56,7 +67,7 @@ export function guardRestoreAvailability(r){
  const history=r.afterSecond.inputs.history;assert.notEqual(history[0].id,history[1].id);
  for(const[i,value]of[10,20].entries()){
   const tx=history[i];assert.equal(typeof tx.id,'string');assert(tx.id.length>0);assert.equal(tx.kind,'apply');assert.equal(tx.mode,'live');assert.equal(tx.phase,'applied');assert.equal(tx.atomic,false);assert.equal(tx.applicationRestored,false);
-  assert.equal(tx.outcomes.length,1);const o=tx.outcomes[0];assert.equal(o.phase,'applied');assert.equal(o.resourceId,base.id);assert.equal(o.value,value);assert.equal(o.after.value,value);assert.deepEqual(identity(o.after),identity(base));
+  assert.equal(tx.outcomes.length,1);const o=tx.outcomes[0];assert.equal(o.phase,'applied');assert.equal(o.resourceId,base.id);assert.equal(o.value,value);assert.equal(o.after.value,value);assert(revision(o.after.revision));assert.deepEqual(identity(o.after),identity(base));
  }
  assert.deepEqual(r.edits.map(e=>e.value),[10,20]);assert(r.edits.every(e=>e.enter===false&&e.blur===false&&e.focused===true));
  for(const[w,final,initial,value,count]of [[r.firstWindow,r.afterFirst,r.baseline,10,1],[r.secondWindow,r.afterSecond,r.afterFirst,20,2]]){
@@ -64,10 +75,16 @@ export function guardRestoreAvailability(r){
   assert(Array.isArray(w.samples)&&w.samples.length>=2&&w.samples.length<=64);let previous=w.startedAt;
   for(const sample of w.samples){
    assert.equal(sample.captureStatus,'Complete');
+   requiredSnapshotIdentity(sample);
    assert(Number.isFinite(sample.startedAt)&&sample.startedAt>=previous&&Number.isFinite(sample.finishedAt)&&sample.finishedAt>=sample.startedAt&&sample.finishedAt<=w.finishedAt);previous=sample.finishedAt;
    assert.equal(sample.inputs.investigationId,baseline.investigationId);assert.equal(sample.inputs.history.length,count);assert.deepEqual(sample.inputs.history,final.inputs.history);
    for(const k of physical)assert.equal(sample.inputs.target[k],target[k]);
-   const resource=currentResource(sample).resource;assert.deepEqual(identity(resource),identity(base));assert.equal(resource.value,value);assert.equal(sample.dom.minValue,String(value));
+   const row=currentResource(sample),resource=row.resource;assert.deepEqual(identity(resource),identity(base));assert.equal(resource.value,value);
+   assert.equal(sample.inputs.closed,false);assert.equal(sample.inputs.tainted,false);assert.equal(sample.inputs.pending,null);assert.equal(sample.inputs.cleanup,'active');assert.equal(sample.inputs.canUndo,false);assert.equal(sample.inputs.canRestoreBaseline,false);
+   for(const k of ['document','node','property'])assert.equal(sample.selection.domIdentity[k],target[k]);
+   assert.equal(row.externalRevision,true);const owned=sample.inputs.history.at(-1).outcomes[0].after;assert(revision(owned.revision));assert.notEqual(resource.revision,owned.revision);assert.equal(resource.value,owned.value);
+   assert.equal(sample.dom.ready,'complete');assert.equal(sample.dom.minValue,String(value));assert.deepEqual(sample.dom.products,value===10?[1]:[]);assert.equal(sample.dom.imagesReady,true);assert.equal(sample.dom.errorOverlay,false);
+   documentAndField(sample,r.panelURL,value,false);
   }
  }
  return restoreAvailabilityPass;
@@ -76,6 +93,7 @@ export function finalizeRestoreAvailability(r){
  try{
   assert.equal(r.status,restoreAvailabilityPass);guardRestoreAvailability(r);
   for(const k of ['console','appConsole','errors'])assert.deepEqual(r[k],[]);
+  const c=r.appConsoleCollection;assert.equal(c.schema,'stateatom.restore-app-console/1');assert.equal(c.status,'Stopped');assert.equal(c.tabId,r.tabId);assert.equal(c.overflow,false);assert.equal(c.seen,r.appConsole.length);assert.deepEqual(c.records,r.appConsole);assert(Number.isFinite(c.startedAt)&&c.startedAt<=r.baseline.startedAt&&Number.isFinite(c.stoppedAt)&&c.stoppedAt>=r.closed.finishedAt);
   assert.deepEqual(r.checks,checks.map(name=>({name,status:'PASS'})));
   for(const k of cleanup)assert.equal(r.cleanup[k],true);
   assert.equal(r.inputsUnchanged,true);assert(r.inputsBefore&&Object.keys(r.inputsBefore).length>0);assert.deepEqual(r.inputsAfter,r.inputsBefore);

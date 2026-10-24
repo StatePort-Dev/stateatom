@@ -23,6 +23,17 @@ applied Live receipts -> second1200ms window -> same conservative disabled contr
 No driver inputs-read/rebase/discard/Undo/baseline/reset/reload/MAIN setter.
 No debugger trace/breakpoint or old model scheduling/producer claim in this item.
 
+Post-review source correction: every window sample must satisfy the active-phase
+identity/known-revision/owner/field/button predicates, not only its final snapshot.
+App diagnostics are collected as bounded Chrome debugger deliveries from explicit
+start through an atomic stop/drain after final host verification and before detach.
+Record Stopped/completeness/overflow and fail on unknown sealing. After a failed
+step, independently attempt one drain before closing the page; never turn a lost
+seal acknowledgement into successful collection by retry. This scope is delivery
+collection through the recorded stop, not global app event-time completeness or
+post-stop health. The original actual incomplete run retains its older source and
+uncollected app-console field; this source fix adds no native evidence or retry.
+
 New pure guard requires exact investigation/physical target/resource identity,
 complete ordered snapshots, two literal applied receipts and native edits with
 focus retained/no Enter/blur. Each final resource revision differs from its own

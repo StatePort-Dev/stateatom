@@ -1,12 +1,13 @@
 # Project status
 
-Active bounded work: [V03.24](completion/152-v03-packed-restore-availability.md),
-final review of one exact78 native attempt. Source66/full3374/types2/admission9 PASS.
-Native d12d6fc INCOMPLETE: first10 applied, captured current resource equals own
-receipt/externalRevisionfalse, backend/UI restoration available. Required external
-revision not established. Cleanup/555input hashes/12oldraw stable;16 independent
-negative controls. No second/explicit Close/1100+390 QA; case exhausted/no repeat.
-Original guide FAIL/restore guards/whole20of29 unchanged.
+Completed bounded attempt: [V03.24](completion/152-v03-packed-restore-availability.md).
+Exact78 native result remains INCOMPLETE: first10 applied/current own receipt,
+externalRevisionfalse; backend/UI restoration available. Required external revision,
+second Live/explicit Close/1100+390 QA not established. Source review0C/3I fixed once/
+0M;100focused/full3408PASS. Old raw untouched; current549physical+6exact historical
+Git inputs (historical native555), current327 package inputs stable. Next V03.25:
+new explicit app ABA + normal Read current values qualification on unchanged78/UI2.
+No old-case retry/guard waiver; original guide FAIL/whole20of29 unchanged.
 
 Completed bounded work: [V03.23](completion/151-v03-restore-availability.md), exact
 native-control restoration availability;59focused/full3308PASS, ONE review

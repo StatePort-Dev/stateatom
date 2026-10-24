@@ -114,3 +114,43 @@ partial candidate only — existing max1/stopping rule wins over forcing a succe
 campaign — cost:native/Close/rendered acceptance remains incomplete. Clarify plan's
 method accordingly without weakening its positive/native predicates or old scope.
 ONE fresh final whole-item review due after bounded-attempt result commit/task-done.
+
+## Final source correction and bounded closeout
+
+ONE final review0Critical/3Important/0Minor, all three Important accepted/fixed in
+ONE pass.34 actual regressions RED66PASS/34FAIL ->GREEN100; fresh npm test3408PASS/
+0FAIL/0cancelled/0SKIP99.48s terminal70532. No rereview, no native repeat. I1 applies
+active identity/owner/local field/button predicates to every window sample. I2
+requires present investigation/occurrence/current and receipt revisions, preserving
+explicit nullable build; coherent missing fields cannot compare as known identities.
+I3 source-block audit injects a late app error during awaited host verification:
+new explicit stop/drain includes it and refuses success. Collection status/identity/
+counts/overflow are checked; failed seal remains Unknown and cannot be retried into
+success. Earlier failure independently drains once before detach where possible.
+Coverage is attached debugger deliveries through its explicit stop, never all app
+event-time/post-stop health. All controls here are source-only; old run's app-console
+retrieval stays NotCollected. Report:
+`.artifacts/v03/restore-availability-review/2026-10-25/report.md`.
+
+Original case/raw/archives/12retained results remain immutable. Current frozen input
+integrity after correction is549 physical+6 exact historical Git blobs atd12d6fc
+(plan/spec/guard/native driver/two tests); actual run and independent literal verifier
+had555 physical at their historical checkpoint. No generic fallback or old case
+retry is added. Exact78/UI2 current327 build-source hashes remain physical matches;
+new guard/collector code was NOT executed in that old native run. Native source d12,
+package source54cde48, fixed source revision in final-checkpoint.json are distinct.
+
+Declined judgments retained: no causal explanation of the old instrumented difference,
+intermediate polls/events, second Live, explicit Close,1100+390 QA/app-console health,
+end-user install/other platforms/successful restore/fullV03. No deferred Minors.
+Original guide FAIL and fullV03/A02/L02/V02/whole20of29 remain open/unchanged.
+
+One next dependency-ready item: V03.25 explicit native external ABA plus normal
+“Read current values” UI qualification on the same unchanged78/UI2. Native app
+input11→10 after own10 (and21→20 after own20), followed by an explicit UI read, is a
+new controlled external stimulus/observation, not a longer wait or old-case retry.
+The source native listener increments event revision; the native read updates the
+ledger. Preregister exact actions/source gates/new max1 case before any run; no
+private setter/MAIN rewrite/rebase/guard relaxation/production policy. This is an
+executor-selected test proposal under autonomy, not user approval of a general
+recovery/timing/handoff policy. Old V03.24 stays INCOMPLETE/exhausted.

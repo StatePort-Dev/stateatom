@@ -43,4 +43,4 @@
 
 ## Closeout
 
-- [ ] ONE fresh whole-item review, effect regrade, at most one tested I/C pass/no rereview/native repeat; deferred Minors/rulings explicit, archive/hash/remove own workspace, clean final checkpoint/local commit and one next dependency.
+- [x] ONE fresh whole-item review, effect regrade, at most one tested I/C pass/no rereview/native repeat; deferred Minors/rulings explicit, archive/hash/remove own workspace, clean final checkpoint/local commit and one next dependency.

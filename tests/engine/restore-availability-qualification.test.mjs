@@ -14,7 +14,7 @@ function fixture(){
  const phase=(value,revision,count,start,closed=false)=>({captureStatus:'Complete',startedAt:start,finishedAt:start+1,inputs:{investigationId:'i',target:{...target},closed,tainted:false,pending:null,cleanup:closed?'closed':'active',resources:[{resource:resource(value,revision),externalRevision:count>0}],history:structuredClone(history.slice(0,count)),canUndo:false,canRestoreBaseline:false},selection:{domIdentity:{document:'doc',node:'selected',property:'disabled'}},dom:{ready:'complete',minValue:String(value),products:value===0?[1,2]:value===10?[1]:[],imagesReady:true,errorOverlay:false},field:{rowPresent:true,value:String(value),focused:!closed,disabled:closed,dirty:false,ariaInvalid:'false',rowErrorVisible:false,rowError:'',undo:{exists:true,visible:true,disabled:true},baseline:{exists:true,visible:true,disabled:true},document:{url:panelURL,title:'StateAtom',mainPresent:true,noOverlay:true}}});
  const baseline=phase(0,'initial',0,1),afterFirst=phase(10,'external:1',1,1300),afterSecond=phase(20,'external:2',2,2700),closed=phase(20,'external:2',2,2800,true);
  const window=(value,revision,count,start)=>({startedAt:start,finishedAt:start+1201,requestedMs:1200,samples:[phase(value,revision,count,start+1),phase(value,revision,count,start+1200)]});
- return {schema:'stateatom.restore-availability-native/1',status:PASS,diagnosticOnly:true,originalCriteriaWaived:false,originalGuide:'FAIL',fullV03:false,traceInstrumented:false,productionChanges:false,selectedControlMatchesOriginal:true,panelURL,baseline,afterFirst,afterSecond,closed,firstWindow:window(10,'external:1',1,10),secondWindow:window(20,'external:2',2,1400),edits:[10,20].map(value=>({value,enter:false,blur:false,focused:true})),views:[1100,390].map(width=>({width,overflow:false,rootFont:'13px'})),console:[],appConsole:[],errors:[],checks:['exact78-package-and-node-admission','original-picker-and-open','live10-and-disabled-restoration','live20-and-disabled-restoration','native-close-preserves-value','console-host-and-rendered-checks'].map(name=>({name,status:'PASS'})),cleanup:Object.fromEntries(['inspector','browser','vite','viteLogWrite','viteLogClose','api','desktop','pidsAbsent'].map(k=>[k,true])),inputsUnchanged:true,inputsBefore:{'/synthetic/source':'a'.repeat(64)},inputsAfter:{'/synthetic/source':'a'.repeat(64)}};
+ return {schema:'stateatom.restore-availability-native/1',status:PASS,diagnosticOnly:true,originalCriteriaWaived:false,originalGuide:'FAIL',fullV03:false,traceInstrumented:false,productionChanges:false,selectedControlMatchesOriginal:true,tabId:1,panelURL,baseline,afterFirst,afterSecond,closed,firstWindow:window(10,'external:1',1,10),secondWindow:window(20,'external:2',2,1400),edits:[10,20].map(value=>({value,enter:false,blur:false,focused:true})),views:[1100,390].map(width=>({width,overflow:false,rootFont:'13px'})),console:[],appConsole:[],appConsoleCollection:{schema:'stateatom.restore-app-console/1',status:'Stopped',tabId:1,seen:0,records:[],overflow:false,startedAt:1,stoppedAt:3000},errors:[],checks:['exact78-package-and-node-admission','original-picker-and-open','live10-and-disabled-restoration','live20-and-disabled-restoration','native-close-preserves-value','console-host-and-rendered-checks'].map(name=>({name,status:'PASS'})),cleanup:Object.fromEntries(['appConsole','inspector','browser','vite','viteLogWrite','viteLogClose','api','desktop','pidsAbsent'].map(k=>[k,true])),inputsUnchanged:true,inputsBefore:{'/synthetic/source':'a'.repeat(64)},inputsAfter:{'/synthetic/source':'a'.repeat(64)}};
 }
 test('coherent synthetic behavior qualifies only the affected scope, without mutating it',()=>{const r=fixture(),before=JSON.stringify(r);assert.equal(guardRestoreAvailability(r),PASS);assert.equal(JSON.stringify(r),before);assert.equal(finalizeRestoreAvailability(r),PASS);assert.equal(r.fullV03,false);assert.equal(r.originalGuide,'FAIL');});
 for(const[name,mutate]of[
@@ -81,3 +81,38 @@ for(const[name,mutate]of[
  ['narrow overflow',r=>r.views[1].overflow=true],
  ['missing narrow view',r=>r.views.pop()]
 ])test('finalization refuses '+name+' after valid behavior facts',()=>{const r=fixture();mutate(r);assert.equal(guardRestoreAvailability(r),PASS);assert.equal(finalizeRestoreAvailability(r),INCOMPLETE);});
+
+for(const[name,mutate]of[
+ ['enabled Undo',p=>p.field.undo.disabled=false],
+ ['missing baseline',p=>p.field.baseline.exists=false],
+ ['hidden Undo',p=>p.field.undo.visible=false],
+ ['stale dirty field',p=>{p.field.value='0';p.field.dirty=true;}],
+ ['stale clean field',p=>p.field.value='0'],
+ ['tainted owner',p=>p.inputs.tainted=true],
+ ['closed owner',p=>p.inputs.closed=true],
+ ['pending batch',p=>p.inputs.pending={kind:'apply',remaining:1}],
+ ['backend Undo available',p=>p.inputs.canUndo=true],
+ ['backend baseline available',p=>p.inputs.canRestoreBaseline=true],
+ ['foreign selection',p=>p.selection.domIdentity.node='foreign'],
+ ['foreign document',p=>p.field.document.url='https://foreign.invalid'],
+ ['no external observation',p=>p.inputs.resources[0].externalRevision=false],
+ ['missing observed revision',p=>delete p.inputs.resources[0].resource.revision]
+])test('review I1/I2: window '+name+' cannot be hidden by valid final snapshots',()=>{const r=fixture();mutate(r.firstWindow.samples[0]);assert.throws(()=>guardRestoreAvailability(r));assert.equal(finalizeRestoreAvailability(r),INCOMPLETE);});
+const allSnapshots=r=>[r.baseline,r.afterFirst,r.afterSecond,r.closed,...r.firstWindow.samples,...r.secondWindow.samples];
+for(const name of ['investigation','run','node','tab','build'])test('review I2: synchronized absent '+name+' is not a matching identity',()=>{const r=fixture();for(const p of allSnapshots(r)){
+ if(name==='investigation')delete p.inputs.investigationId;
+ if(name==='run')delete p.inputs.target.run;
+ if(name==='node'){delete p.inputs.target.node;delete p.selection.domIdentity.node;}
+ if(name==='tab')delete p.inputs.target.tabId;
+ if(name==='build')delete p.inputs.target.build;
+}assert.throws(()=>guardRestoreAvailability(r));assert.equal(finalizeRestoreAvailability(r),INCOMPLETE);});
+for(const value of [undefined,null,false,''])test('review I2: absent or invalid current revision '+String(value)+' is not external evidence',()=>{const r=fixture();if(value===undefined)delete r.afterFirst.inputs.resources[0].resource.revision;else r.afterFirst.inputs.resources[0].resource.revision=value;assert.throws(()=>guardRestoreAvailability(r));assert.equal(finalizeRestoreAvailability(r),INCOMPLETE);});
+test('review I2: coherently missing owned receipt revision cannot establish a difference',()=>{const r=fixture();delete r.afterSecond.inputs.history[1].outcomes[0].after.revision;r.closed.inputs.history=structuredClone(r.afterSecond.inputs.history);for(const p of r.secondWindow.samples)p.inputs.history=structuredClone(r.afterSecond.inputs.history);assert.throws(()=>guardRestoreAvailability(r));assert.equal(finalizeRestoreAvailability(r),INCOMPLETE);});
+for(const[name,mutate]of[
+ ['not collected',r=>r.appConsoleCollection={status:'NotStarted'}],
+ ['unknown collection',r=>r.appConsoleCollection={status:'Unknown/Unsupported'}],
+ ['active collector',r=>r.appConsoleCollection.status='Active'],
+ ['overflow',r=>r.appConsoleCollection.overflow=true],
+ ['unjoined records',r=>{r.appConsoleCollection.records=[{method:'Runtime.exceptionThrown'}];r.appConsoleCollection.seen=1;}],
+ ['foreign app',r=>r.appConsoleCollection.tabId=2]
+])test('review I3: finalization requires a complete stopped app-console collection: '+name,()=>{const r=fixture();mutate(r);assert.equal(guardRestoreAvailability(r),PASS);assert.equal(finalizeRestoreAvailability(r),INCOMPLETE);});
