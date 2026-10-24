@@ -30,8 +30,8 @@
 **Files:** experiments/restore-availability-qualification.mjs; tests/integration/restore-availability-native.mjs; scripts/prepare-restore-availability.mjs; new fixed converged wrappers plus tests/engine/converged-restore-availability-qualification.test.mjs and tests/atom/converged-restore-availability-harness.test.mjs; completion154/current pointers.
 **Interfaces:** performConvergedRestoreExternalABA shares retained native entry; observeRestoreAppConvergence records bounded complete scopes before next action. New guard/finalizer require newschema/mode, immediate acquired data and convergence groups plus all old facts. Old two public guard/protocol/routes remain exact. Preparer verifies current exact327/78/UI2 and declared prior researchsource deltas +14retainedraw, never rebuilds.
 
-- [ ] New source-only tests RED: mode/case/CLI, pending→3matched/firststreak/reset/deadline/cap/Partial/wrongscope/history/focus/no continuation/retained immediate failure; guard malformed/missing/stale/changed group/time/final-observation negatives. `node --test --test-isolation=none tests/engine/converged-restore-availability-qualification.test.mjs tests/atom/converged-restore-availability-harness.test.mjs` ->RED thenPASS.
-- [ ] Implement finite source paths. Preserve old156 with four existingfiles; npm test once allPASS, syntax/diff/exact327/78/UI2/oldraw unchanged. Local source commit/task-done; no native inTask1.
+- [x] New source-only tests RED: mode/case/CLI, pending→3matched/firststreak/reset/deadline/cap/Partial/wrongscope/history/focus/no continuation/retained immediate failure; guard malformed/missing/stale/changed group/time/final-observation negatives. `node --test --test-isolation=none tests/engine/converged-restore-availability-qualification.test.mjs tests/atom/converged-restore-availability-harness.test.mjs` ->RED thenPASS.
+- [x] Implement finite source paths. Preserve old156 with four existingfiles; npm test once allPASS, syntax/diff/exact327/78/UI2/oldraw unchanged. Local source commit/task-done; no native inTask1.
 
 ### Task 2: New frozen converged native case and literal verification
 

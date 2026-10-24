@@ -5801,14 +5801,20 @@
       "active_slice": {
         "id": "V03.26",
         "record": "154-v03-converged-restore-availability.md",
-        "status": "planning-source-not-native",
+        "status": "convergence-source-gates-complete-case-due",
         "base": "01ac34a",
         "candidate": "0.1.0-candidate.20261021.78",
         "candidate_rebuilt": false,
         "native_started": false,
         "maximum_native_runs": 1,
         "full_V03_acceptance": false,
-        "existing_guards_relaxed": false
+        "existing_guards_relaxed": false,
+        "source_focused": 202,
+        "new_source_controls": 46,
+        "prior_source_controls_preserved": 156,
+        "full_source_tests": 3510,
+        "full_source_failures": 0,
+        "product_changed": false
       },
       "completed_slices": [
         {
@@ -6776,8 +6782,8 @@
       ],
       "current_checkpoint": {
         "record": "154-v03-converged-restore-availability.md",
-        "status": "planning-source-not-native",
-        "next_bounded_step": "Task1 finite converged collector/guard/preparer TDD and unchanged156/full source gates; no native."
+        "status": "convergence-source-gates-complete-case-due",
+        "next_bounded_step": "Task2 new converged78 physicalcase/preflight/browserfalse/commit before max1Native; no oldcase retry/rebuild."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-25-v03-external-restore-availability.md",
       "implementation_plan": "../superpowers/plans/2026-10-25-v03-converged-restore-availability.md",
@@ -7078,8 +7084,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.26-planning-source-not-native",
-    "next_item": "V03.26 Task1 source convergence collector, guard and fixed new-case route/preparer.",
+    "current_increment": "V03.26-source-gates-complete-case-due",
+    "next_item": "V03.26 Task2 new frozen converged78 case/preflight/commit then ONE actual run and literal verification.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7106,7 +7112,7 @@
     "active_item": {
       "id": "V03",
       "record": "154-v03-converged-restore-availability.md",
-      "status": "planning-source-not-native"
+      "status": "convergence-source-gates-complete-case-due"
     },
     "completed_increments": [
       {
@@ -9801,11 +9807,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.25 closeout01ac34a/source156/full3464/ONEreview2Ifixed/nativeexhaustedINCOMPLETE preserved. New26 planned observedconvergence before strictwindow/productgates, same78/UI2/product327/14oldraw. No new code/native/fullV03 or20of29 credit.",
+    "current_activity_note": "V03.26 source202/full3510PASS, old156preserved/product327/78/UI2/14oldraw unchanged. Bounded complete convergences retain immediate DOM/pending samples and first3matches; oldstrictwindow/product criteria intact. Task2newfixedcase/preflight/commit beforemax1Native due; no product/model/trust/profile change/fullV03 or20of29 credit.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "01ac34a",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "Task1 finite converged collector/guard/preparer TDD and unchanged156/full source gates; no native.",
+    "next_bounded_step": "Task2 new converged78 physicalcase/preflight/browserfalse/commit before max1Native; no oldcase retry/rebuild.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

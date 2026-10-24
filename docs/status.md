@@ -1,9 +1,10 @@
 # Project status
 
 Active bounded work: [V03.26](completion/154-v03-converged-restore-availability.md),
-source/preregistration for observed app convergence before unchanged strict product/
-window predicates. Same78/UI2; no new code/native evidence from planning. Older
-25case remains exhausted/INCOMPLETE; full20/29 unchanged.
+source202/full3510PASS for observed app convergence before unchanged strict product/
+window predicates. Same78/UI2/product327/14oldraw unchanged, no productchange/native.
+Next new frozenphysicalcase/preflight/commit before max1new run; both older cases
+remain exhausted/INCOMPLETE. Full20/29 unchanged.
 
 Completed bounded attempt: [V03.25](completion/153-v03-external-restore-availability.md).
 ONE explicit external78 native remains INCOMPLETE; four recorded gates and final

@@ -4,9 +4,11 @@ import assert from 'node:assert/strict';
 
 export const restoreAvailabilityPass='PASS_RESTORE_AVAILABILITY_NOT_FULL_V03';
 export const externalRestoreAvailabilityPass='PASS_EXPLICIT_EXTERNAL_RESTORE_AVAILABILITY_NOT_FULL_V03';
+export const convergedRestoreAvailabilityPass='PASS_CONVERGED_EXTERNAL_RESTORE_AVAILABILITY_NOT_FULL_V03';
 const incomplete='INCOMPLETE_RESTORE_AVAILABILITY';
 const checks=['exact78-package-and-node-admission','original-picker-and-open','live10-and-disabled-restoration','live20-and-disabled-restoration','native-close-preserves-value','console-host-and-rendered-checks'];
 const externalChecks=[...checks];externalChecks[2]='live10-external-aba-read-and-disabled-restoration';externalChecks[3]='live20-external-aba-read-and-disabled-restoration';
+const convergedChecks=[...externalChecks];convergedChecks[2]='live10-converged-external-aba-read-and-disabled-restoration';convergedChecks[3]='live20-converged-external-aba-read-and-disabled-restoration';
 const cleanup=['appConsole','inspector','browser','vite','viteLogWrite','viteLogClose','api','desktop','pidsAbsent'];
 const physical=['tabId','origin','run','document','node','selector','property','build'];
 const identity=r=>({id:r.id,kind:r.kind,type:r.type,writable:r.writable,locator:r.locator});
@@ -104,8 +106,8 @@ export function guardRestoreExternalEditSnapshot(p,before,ownValue,appValue,pane
  assert.equal(f.rowPresent,true);assert.equal(f.value,String(ownValue));assert.equal(f.disabled,false);assert.equal(f.dirty,false);assert.equal(f.ariaInvalid,'false');assert.equal(f.rowErrorVisible,false);assert.equal(f.rowError,'');
  return true;
 }
-export function guardExternalRestoreAvailability(r){
- assert.equal(r.schema,'stateatom.external-restore-availability-native/1');assert.equal(r.protocolMode,'external-aba');guardBehaviorFacts(r);
+function guardExternalBehaviorFacts(r){
+ guardBehaviorFacts(r);
  assert(Array.isArray(r.externalInteractions)&&r.externalInteractions.length===2);
  const base=currentResource(r.baseline).resource,target=r.baseline.inputs.target;
  const complete=(p,previous)=>{assert.equal(p.captureStatus,'Complete');assert(Number.isFinite(p.startedAt)&&Number.isFinite(p.finishedAt)&&p.startedAt>=previous&&p.finishedAt>=p.startedAt);return p.finishedAt;};
@@ -129,13 +131,31 @@ export function guardExternalRestoreAvailability(r){
  }
  return externalRestoreAvailabilityPass;
 }
-function finalizeFacts(r,external){
- const pass=external?externalRestoreAvailabilityPass:restoreAvailabilityPass,fail=external?'INCOMPLETE_EXTERNAL_RESTORE_AVAILABILITY':incomplete;
+export function guardExternalRestoreAvailability(r){assert.equal(r.schema,'stateatom.external-restore-availability-native/1');assert.equal(r.protocolMode,'external-aba');return guardExternalBehaviorFacts(r);}
+export function guardConvergedRestoreAvailability(r){
+ assert.equal(r.schema,'stateatom.converged-restore-availability-native/1');assert.equal(r.protocolMode,'converged-external-aba');guardExternalBehaviorFacts(r);
+ for(const x of r.externalInteractions)for(const e of x.appEdits){
+  const d=e.immediateDom;assert.equal(d.minValue,String(e.value));assert.equal(d.minFocused,true);assert.equal(d.ready,'complete');assert.equal(d.imagesReady,true);assert.equal(d.errorOverlay,false);
+  assert(Number.isFinite(e.immediateObservedAt)&&e.immediateObservedAt>=e.startedAt);
+  const g=e.convergence;assert.equal(g.captureStatus,'Complete');assert.equal(g.sampleIntervalMs,100);assert.equal(g.consecutiveMatches,3);assert.equal(g.maxSamples,50);assert.equal(g.maxElapsedMs,5000);
+  assert(Number.isFinite(g.startedAt)&&g.startedAt>=e.immediateObservedAt&&Number.isFinite(g.finishedAt)&&g.finishedAt>=g.startedAt&&g.finishedAt-g.startedAt<=5000&&g.finishedAt<=e.finishedAt);
+  assert(Array.isArray(g.samples)&&g.samples.length>=3&&g.samples.length<=50);let previous=g.startedAt,previousStart,streak=0;
+  for(const [index,p]of g.samples.entries()){
+   guardRestoreExternalEditSnapshot(p,x.before,x.ownValue,e.value,r.panelURL);assert(p.startedAt>=previous&&p.finishedAt<=g.finishedAt);if(previousStart!==undefined)assert(p.startedAt-previousStart>=100);previous=p.finishedAt;previousStart=p.startedAt;
+   assert(Array.isArray(p.dom.products)&&p.dom.products.length<=2&&p.dom.products.every((v,i,a)=>[1,2].includes(v)&&(i===0||a[i-1]<v)));
+   const match=JSON.stringify(p.dom.products)===JSON.stringify(x.ownValue===10?[1]:[]);streak=match?streak+1:0;if(streak===3)assert.equal(index,g.samples.length-1);
+  }
+  assert.equal(streak,3);assert.deepEqual(e.snapshot,g.samples.at(-1));assert.deepEqual(e.dom,e.snapshot.dom);
+ }
+ return convergedRestoreAvailabilityPass;
+}
+function finalizeFacts(r,external,converged=false){
+ const pass=converged?convergedRestoreAvailabilityPass:external?externalRestoreAvailabilityPass:restoreAvailabilityPass,fail=converged?'INCOMPLETE_CONVERGED_RESTORE_AVAILABILITY':external?'INCOMPLETE_EXTERNAL_RESTORE_AVAILABILITY':incomplete;
  try{
-  assert.equal(r.status,pass);(external?guardExternalRestoreAvailability:guardRestoreAvailability)(r);
+  assert.equal(r.status,pass);(converged?guardConvergedRestoreAvailability:external?guardExternalRestoreAvailability:guardRestoreAvailability)(r);
   for(const k of ['console','appConsole','errors'])assert.deepEqual(r[k],[]);
   const c=r.appConsoleCollection;assert.equal(c.schema,'stateatom.restore-app-console/1');assert.equal(c.status,'Stopped');assert.equal(c.tabId,r.tabId);assert.equal(c.overflow,false);assert.equal(c.seen,r.appConsole.length);assert.deepEqual(c.records,r.appConsole);assert(Number.isFinite(c.startedAt)&&c.startedAt<=r.baseline.startedAt&&Number.isFinite(c.stoppedAt)&&c.stoppedAt>=r.closed.finishedAt);
-  assert.deepEqual(r.checks,(external?externalChecks:checks).map(name=>({name,status:'PASS'})));
+  assert.deepEqual(r.checks,(converged?convergedChecks:external?externalChecks:checks).map(name=>({name,status:'PASS'})));
   for(const k of cleanup)assert.equal(r.cleanup[k],true);
   assert.equal(r.inputsUnchanged,true);assert(r.inputsBefore&&Object.keys(r.inputsBefore).length>0);assert.deepEqual(r.inputsAfter,r.inputsBefore);
   assert.deepEqual(r.views.map(v=>v.width),[1100,390]);for(const v of r.views){assert.equal(v.overflow,false);assert.equal(v.rootFont,'13px');}
@@ -144,3 +164,5 @@ function finalizeFacts(r,external){
 }
 export function finalizeRestoreAvailability(r){return finalizeFacts(r,false);}
 export function finalizeExternalRestoreAvailability(r){return finalizeFacts(r,true);}
+
+export function finalizeConvergedRestoreAvailability(r){return finalizeFacts(r,true,true);}
