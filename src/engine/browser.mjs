@@ -86,7 +86,7 @@ async function identifySelection(id,selector,property){
  const validId=v=>Number.isSafeInteger(v)&&v>0;
  try{
   if(!['text','disabled'].includes(property))return null;
-  await send('DOM.enable',{includeWhitespace:'all'});
+  if(property==='text')await send('DOM.enable',{includeWhitespace:'all'});
   const {root}=await send('DOM.getDocument',{depth:0});if(!validId(root?.nodeId)||!validId(root.backendNodeId))return null;
   const parts=selector.split(' >>> ');
   async function selected(disabledAttribute=false){

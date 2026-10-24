@@ -5,10 +5,10 @@ import {createBrowserEngine,isSameSelection} from '../../src/engine/browser.mjs'
 
 const text=value=>({nodeId:3,backendNodeId:103,nodeType:3,nodeName:'#text',localName:'',nodeValue:value});
 const button=()=>({nodeId:2,backendNodeId:102,nodeType:1,nodeName:'BUTTON',localName:'button',nodeValue:'',attributes:[],childNodeCount:2,children:[text('  Confirm '),{nodeId:4,backendNodeId:104,nodeType:8,nodeName:'#comment',localName:'',nodeValue:'not text content'}]});
-function nativeDOM({node=button(),afterQuery,documentId=101,whitespace=false,ownDisabled}={}){
+function nativeDOM({node=button(),afterQuery,documentId=101,whitespace=false,ownDisabled,enableUnavailable=false}={}){
  let queries=0,allWhitespace=false;const methods=[];
  const chrome={scripting:{executeScript(){throw Error('DOM identity must not compile or execute a page script');}},debugger:{async sendCommand(target,method,params){assert.equal(target.tabId,9);methods.push(method);
-  if(method==='DOM.enable'){allWhitespace=params.includeWhitespace==='all';return {}; }
+  if(method==='DOM.enable'){if(enableUnavailable)throw Error('Explicit domain enable unavailable in this fault control');allWhitespace=params.includeWhitespace==='all';return {}; }
   if(method==='DOM.getDocument')return {root:{nodeId:1,backendNodeId:documentId,nodeType:9,nodeName:'#document',localName:'',nodeValue:''}};
   if(method==='DOM.querySelector'){queries++;return {nodeId:afterQuery?.(queries)??(params.selector.endsWith('[disabled]')?(ownDisabled??node.attributes?.includes('disabled'))?node.nodeId:0:node.nodeId)};}
   if(method==='DOM.describeNode')return {node:whitespace&&!allWhitespace?{...node,children:node.children.filter(n=>n.nodeValue.trim()),childNodeCount:2}:node};
@@ -42,6 +42,21 @@ test('missing, truncated and over-budget native text never become an empty known
 test('native text acquisition includes whitespace-only nodes between children',async()=>{
  const node={...button(),childNodeCount:3,children:[text('Alpha'),text(' '),text('Beta')]};
  assert.equal((await nativeDOM({node,whitespace:true}).identifySelection(9,'#confirm','text')).value,'Alpha Beta');
+});
+
+test('disabled attribute acquisition remains available without explicit domain enable',async()=>{
+ // CDP getDocument bootstraps the DOM domain. An optional whitespace setup
+ // failure must not hide a native attribute value; this models a fault, not
+ // a claim that Chrome lacks DOM.enable.
+ const dom=nativeDOM({enableUnavailable:true});
+ assert.equal((await dom.identifySelection(9,'#confirm','disabled'))?.value,false);
+ dom.node.attributes=['disabled','false'];
+ assert.equal((await dom.identifySelection(9,'#confirm','disabled'))?.value,true);
+});
+
+test('text stays unavailable if mandatory whitespace configuration fails',async()=>{
+ const node={...button(),childNodeCount:3,children:[text('Alpha'),text(' '),text('Beta')]};
+ assert.equal(await nativeDOM({node,whitespace:true,enableUnavailable:true}).identifySelection(9,'#confirm','text'),null);
 });
 
 for(const kind of ['button','input','textarea'])test(kind+' native disabled reflects attribute presence without a page getter',async()=>{

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-candidate.20261021.71
+
+- Read native `disabled` identity through `DOM.getDocument`'s implicit domain
+  enable, without a redundant whitespace setup command. Preserve explicit
+  `includeWhitespace: all` for text, every node/document/namespace guard and
+  admission/queue boundary. No cached identity or getter evaluation.
+- This removes one native command per disabled acquisition. It does not by
+  itself establish a latency target, lineage, or broader performance acceptance.
+
 ## 0.1.0-candidate.20261021.70
 
 - Refuse malformed/unavailable disabled-attribute queries instead of treating
