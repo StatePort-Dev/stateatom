@@ -2241,10 +2241,14 @@ whole20/29/fullV02/V03/C09/A02/L02 stay open; A05 remains scopedcomplete and man
 SDK outsideAtom, independenthuman nonblocker.
 
 
-[V02.16](completion/135-v02-dom-domain-cost.md) registers one missingDOM control on
-unchanged72: rawFull/rawFullDOM/actualBasic/Off,224fixedrows/32warm192measured,
-413inputs/327product/223helper. Full2720/focused45/new23sourcecontrols PASS; native
-and ONEreview stilldue. This is preparation, not cause/safeoptimization/performance
-acceptance. Original15gate overheadmisses/whole20-of29/fullV02 remain open. Same
-retainedsyntheticTLS/ownprofile seed, no newcert/importGUI/usertrust/profile or product
-change; no broadoldtransport/certificate/IDE/model campaign.
+[V02.16](completion/135-v02-dom-domain-cost.md) completes the new missingDOM control
+on unchanged72:224rows/32warm192measured/n24,4480serverrequests/413stableinputs/
+327product/223helper/allreleases-ownedcleanup. Independent28negativecontrols and
+full2720/focused45/new23sourcecontrols PASS. FullDOM/Full −1.90/+2.99%, oppositehost
+signs: largeDOMcause notestablished, no safeoptimization/purebrowserCPU/targetpass
+claim. ONEreview0Critical/0Important/1Minor acceptedfiniteevidence; reportingdue text
+synchronized/historical, no sourcecorrection/native repeat. Original15overheadmisses
+andwhole20/29/fullV02/V03/C09/A02/L02 unchanged. NextONEV02.17 registers one rawFull
+Performance-enabled control before productoptimization/metricssemanticchanges.
+Sameownprofile retainedsyntheticTLS/no newcert/importGUI/usertrust/profile campaign;
+no fullscope/SDK/otherrepo/publication authority or independenthuman blocker.

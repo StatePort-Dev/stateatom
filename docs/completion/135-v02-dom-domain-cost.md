@@ -48,7 +48,7 @@ userprofile/OSchange/TLSbypass; ordinaryChromeOS trustreads not comprehensivelya
 ActualsiteAllow read-only/no editinggrant; no freshcertificate/permissionUX proof.
 Setupfail remainsINCOMPLETE/no certificateGUI/HTTP fallbackcampaign.
 
-## Source verification before native
+## Source verification before native — historical preregistration state
 
 Missingnewhelper module RED→GREEN5; newactualdriver controls RED14FAIL→GREEN18
 (including four added actualserializedrawfull/DOM/partialfailure/detachrefusal cases).
@@ -66,7 +66,8 @@ request-pathI/O; perrowranges permit independent20request checks. Originalrowcou
 requests/trusted/action/bytes checks remain. Inspector-onlyerrors/console, no worker/
 guardianexceptioncompleteness/nativefault/humanusability claim.
 
-Native and ONE finalfreshreview due. Commitcase/code BEFORE launch, pollsamehandle,
+At preregistration, native and ONE finalfreshreview were due. Actualresult and
+finalreview below govern currentstate. Commitcase/code BEFORE launch, pollsamehandle,
 no timeoutrestart or oldwide/native/IDE/source/model/certificate campaign. At mostONE
 testedImportantCriticalfix/no rereview. Product/authority/UI/API/Live/grant/handoff/
 SDK/redesign/publication/push/otherrepo unchanged. NextONEitem fromactualresult.
@@ -125,3 +126,43 @@ metrics only for explicitmetrics operation (runtime372/630); this is a sourcefac
 not proof of overhead or approval to change metrics lifetime/meaning. Preserve all
 originalcriteria/guards/records/ownership and oldresults; no broadoldfloor rerun or
 preapproved lazy-domain behavior/product change.
+
+
+## Final review and bounded completion
+
+ONE freshreadonly /root/v0216_whole_review (gpt-6-astra/high),b0c5e2e..0f06db1:
+0Critical/0Important/1Minor. Suppliedreviewpackage matchesdiff. ReportingMinor could
+scheduleduplicatecampaign; currentstatus now says completeddiagnostic/review and
+sourcepreparationdue text explicitlyhistorical. No sourcecorrectionpass, rereview or
+native repeat. Reviewfresh23controls+plain savednativeverifier/28negativecontrols/
+identitydiffchecks pass; full2720/focused45 remain actualrecorded, notfreshreviewerruns.
+Report+digestreceipt in artifactreview. Postterminalreadonlycheck additionally found
+bothrecordedownChromePIDs absent at04:22:07UTC; no processkill/globalcleanup performed.
+This is observedChromeexit atchecktime, not everyterminationfault or otherprocessproof.
+
+All nine declinedscope rulings and practicalcosts are retained:
+
+- Freshnativebehavior: review inherits actualrun/verifier, no secondnativeobservation.
+- Broadregression/package: exactqualifiedbytes/retainedchecks, no newfull/build/
+  types/admission/backend revieweracceptance.
+- GeneralDOM: synthetic#run only; no broadsubtree/shadow/frame/changingdocument proof.
+- EveryBasiccommand/domain: source+installedidentity+observedstate, no complete
+  commandtrace/rawcontrol equivalence.
+- CPU/inherentbrowserfloor/statisticalgeneralization/safeoptimization: finite routing/
+  guard/setup-inclusive comparisons only, Performancepolicy stillunapproved.
+- Originalperformance: diagnostics do not replace15's originaloverheadmisses.
+- Nativefault/completeexceptions: actualsource substituted-boundary controls/inspector
+  coverage only, no completenativefault or worker/guardianexception proof.
+- Trust/permissionUX: retainedsyntheticTLS/freshownprofiles verified; no allOStrustread
+  isolation or freshcertificate/permissionUX pass.
+- Humanvisual/otherhosts/wholecompletion: screenshotscandidates/nonblocker, no full
+  V02/V03/C09/A02/L02/release-publication qualification;20/29 unchanged. A05 remains
+  mandatory/scopedcomplete, L02mandatoryopen, SDKoutsideAtom; no newblocker inferred.
+
+One next **V02.17** selects/registers one Performance-enabled vs otherwiseidentical
+rawFull control before any productoptimization. OfficialPerformance docs say enable
+collects/reportsmetrics and disable stopscollection; this does not approve deferred
+metrics collection, changedbaseline/lifetime/meaning or removal of Attach barriers.
+Preserve current15/16results, alloriginalcriteria, guard/ownership/event/record
+semantics andUnknown. No additionalnativeexperiment or productchange for17 here.
+Localcommits only, no UI/SDK/redesign/otherrepo/publication/account/userprofilechange.
