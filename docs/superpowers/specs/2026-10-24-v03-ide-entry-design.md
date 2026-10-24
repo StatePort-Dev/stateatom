@@ -19,7 +19,7 @@ and original Vue24-console FAIL remain immutable. Whole20/29 stays unchanged.
 
 ## Owned environment and secrets
 
-Use fresh unique user-data/extensions/log dirs and an owned nested display. Refuse
+Use fresh unique user-data/extensions/shared-data/log dirs and an owned nested display. Refuse
 occupied49331; accept debugger endpoint only from this exact child/exclusive log,
 never port discovery. Pin actual Code executable/version/product commit. No
 extensionDevelopmentPath/extensionTestsPath/--install-extension/security bypass
@@ -62,3 +62,7 @@ installation/receipt screens and exact identities, then ONE final fresh read-onl
 whole-increment reviewer, at most ONE tested correction pass/no re-review. No
 product change/full suite/build/package/old app campaign just for entry control.
 Keep original failures, explicit assistance, Unknown and full completion gates.
+
+Startup ruling: exact Code mainImpl.js registers --shared-data-dir; user-data alone
+shares its application database. Corrected registration requires actual own shared
+store path. First failed launch and built-in Copilot error remain immutable.

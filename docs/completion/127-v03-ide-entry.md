@@ -27,3 +27,30 @@ Exact327 Atom and223 helper inputs match retained artifacts. Product unchanged;
 no rebuild/full2616/source/app/Vue rerun is justified. Syntax/input checks prepare
 the run; documents are not runtime proof. Native execution/ONE review remain due.
 Full guide/V03/C09/A02/L02/V02 and whole20/29 remain open, prior Vue FAIL retained.
+
+
+## First actual startup failure; no IDE-entry credit
+
+Preregister12b92de, actual45427/exit1:
+`.artifacts/v03/guide-ide-entry/2026-10-24T00-31-55-826Z/results.json`.
+One identity/fresh-directory check passes, then workspace trust control is absent.
+No VSIX installation/receipt action occurs.400 inputs/65 original files remain
+unchanged, owned Code/display close and helper/debug ports release.
+
+Actual Code log shows common /home/roman/.vscode-shared/sharedStorage access despite
+separate user-data/extensions dirs; its WAL mtime changes during this launch. This
+is an isolation setup defect, not evidence that user settings/trust stayed untouched;
+no content dump or rollback of the user's active store is attempted. Fresh-profile
+trust cannot be inferred. Workbench also records a built-in github.copilot-chat API
+proposal mismatch error; this is retained and will not be filtered into zero errors.
+Native D-Bus config path also exceeded socket-name length (startup stderr).
+
+Bounded source inspection of exact installed Code out/mainImpl.js shows registered
+string --shared-data-dir and appSharedDataHome use it; official current Context7
+user-data isolation docs alone did not describe this common database. New immutable
+owned-storage case pins that installed source and first FAIL. New direct child adds
+--shared-data-dir under unique owned output and requires its actual startup log path,
+refusing host shared-store access. D-Bus points to a short nonexistent task-specific
+socket (no daemon/global config/certificate/account change). Original case/result
+remain unchanged. These are launch corrections before any successful entry action,
+not a product change or UI criterion waiver. Console outcomes remain actual.
