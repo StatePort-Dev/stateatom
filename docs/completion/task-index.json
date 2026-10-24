@@ -7039,7 +7039,7 @@
     "active_item": {
       "id": "V03",
       "record": "152-v03-packed-restore-availability.md",
-      "status": "planning-exact-candidate-native-availability"
+      "status": "bounded-native-attempt-complete-native-availability-unqualified-final-review-due"
     },
     "completed_increments": [
       {

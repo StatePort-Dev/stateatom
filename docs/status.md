@@ -1,9 +1,11 @@
 # Project status
 
 Active bounded work: [V03.24](completion/152-v03-packed-restore-availability.md),
-new exact local78/UI2 qualification of disabled restoration controls and safe Close.
-Exact78/UI2 local pack/types2/admission9; driver66focused/full3374PASS.
-Frozen-case/preflight/commit gates remain. No native started, maximum1 new case.
+final review of one exact78 native attempt. Source66/full3374/types2/admission9 PASS.
+Native d12d6fc INCOMPLETE: first10 applied, captured current resource equals own
+receipt/externalRevisionfalse, backend/UI restoration available. Required external
+revision not established. Cleanup/555input hashes/12oldraw stable;16 independent
+negative controls. No second/explicit Close/1100+390 QA; case exhausted/no repeat.
 Original guide FAIL/restore guards/whole20of29 unchanged.
 
 Completed bounded work: [V03.23](completion/151-v03-restore-availability.md), exact
