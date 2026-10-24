@@ -4753,50 +4753,17 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "126-v03-native-entry.md",
+      "execution_record": "127-v03-ide-entry.md",
       "active_slice": {
-        "id": "V03.13",
-        "title": "Actual toolbar inspector launch and native reader file chooser",
-        "status": "complete-bounded-native-entry",
-        "record": "126-v03-native-entry.md",
-        "design": "../superpowers/specs/2026-10-24-v03-native-entry-design.md",
-        "plan": "../superpowers/plans/2026-10-24-v03-native-entry.md",
-        "previous_slice": "V03.12 complete at19e3638; no old app/source/codec/Vue repeat",
+        "id": "V03.14",
+        "title": "Actual VS Code VSIX and private Copy connection receipt guide entry",
+        "status": "in-progress-preparation-no-IDE-entry-runtime-claim",
+        "record": "127-v03-ide-entry.md",
+        "design": "../superpowers/specs/2026-10-24-v03-ide-entry-design.md",
+        "plan": "../superpowers/plans/2026-10-24-v03-ide-entry.md",
+        "previous_slice": "V03.13 complete1025c9b; no old browser/app/source/codec/Vue repeat",
         "product_source_changed": false,
-        "whole_V03_complete": false,
-        "runtime_result": ".artifacts/v03/guide-entry/2026-10-24T00-11-37-794Z/results.json",
-        "verification": ".artifacts/v03/guide-entry/2026-10-24/native-checkpoint.json",
-        "native_named_gates": 6,
-        "registered_inputs": 337,
-        "original_persistent_files_unchanged": 186,
-        "new_installation_claim": false,
-        "review_pending": false,
-        "review": {
-          "schema": "stateatom.v03-native-entry-review/1",
-          "reviewer": "/root/v0313_whole_review",
-          "model": "gpt-6-astra",
-          "reasoning": "high",
-          "base": "19e3638db9beab35a8253e00decf4699e7303e47",
-          "head": "b625abe114fbe3c029be2f4d8fb1bdbabc9ec580",
-          "critical": 0,
-          "important": 2,
-          "minor": 0,
-          "correction_passes": 1,
-          "re_review": false,
-          "synthetic_green": 9,
-          "native_repeated": false,
-          "product_changed": false,
-          "actual_native_revision": "b794fb5",
-          "declined_boundaries_ruled_in": "docs/completion/126-v03-native-entry.md"
-        },
-        "failure_path_controls": {
-          "kind": "synthetic-extracted-actual-source-no-process",
-          "green": 9,
-          "red_original_pass": 2,
-          "red_original_fail": 6,
-          "additional_reporting_red": true
-        },
-        "actual_native_revision": "b794fb5"
+        "whole_V03_complete": false
       },
       "completed_slices": [
         {
@@ -5315,12 +5282,12 @@
         }
       ],
       "current_checkpoint": {
-        "record": "126-v03-native-entry.md",
-        "status": "complete-bounded-native-entry",
-        "next_bounded_step": "V03.14: actual VS Code Install from VSIX and Copy connection receipt guide controls on owned IDE state/exact helper8; register connection scope first, no completed app/source campaign repeat"
+        "record": "127-v03-ide-entry.md",
+        "status": "in-progress-preparation-no-IDE-entry-runtime-claim",
+        "next_bounded_step": "V03.14: actual owned Code Install from VSIX and Copy connection receipt; exact helper8, no app/browser source or user-profile changes"
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-native-entry.md",
-      "implementation_plan": "../superpowers/plans/2026-10-24-v03-native-entry.md"
+      "implementation_plan": "../superpowers/plans/2026-10-24-v03-ide-entry.md"
     },
     {
       "id": "V04",
@@ -5476,11 +5443,11 @@
     ]
   },
   "reconciliation": {
-    "document": "126-v03-native-entry.md",
+    "document": "127-v03-ide-entry.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.13-native-entry-complete",
-    "next_item": "V03.14: actual VS Code Install from VSIX and Copy connection receipt guide controls on owned IDE state/exact helper8; register connection scope first, no completed app/source campaign repeat",
+    "current_increment": "V03.14-IDE-entry-preparation",
+    "next_item": "V03.14: actual owned Code Install from VSIX and Copy connection receipt; exact helper8, no app/browser source or user-profile changes",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7648,11 +7615,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.13 complete: actual toolbar/link/native chooser6 PASS atb794fb5;337 stable/327 unchanged Atom/186 unchanged original/full317667-byte report/empty authority/no import HTTP. ONE review2Important corrected once with9 synthetic failure controls, no native repeat. Copied state/runtime GUI env/Recent Unknown/first FAIL retained; whole20/29/fullV03 unchanged. Next oneV03.14 owned IDE VSIX/receipt UI.",
+    "current_activity_note": "V03.13 complete1025c9b with native6 and9 synthetic failure controls. V03.14 prepares actual VSIX/Copy receipt UI on owned IDE/exact helper8/unchanged65-file project; runtime due, settings explicit assistance. Product327/helper223/whole20/29/fullV03 dependencies unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "b794fb5 actual native; no product source/build change",
+    "current_source_revision": "1025c9b base; no product source/build change",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.14: actual VS Code Install from VSIX and Copy connection receipt guide controls on owned IDE state/exact helper8; register connection scope first, no completed app/source campaign repeat"
+    "next_bounded_step": "V03.14: actual owned Code Install from VSIX and Copy connection receipt; exact helper8, no app/browser source or user-profile changes"
   },
   "next_task": "V03"
 }

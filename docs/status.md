@@ -2130,3 +2130,8 @@ V02.8 ONE review accepted0/0/2, both reporting Minors corrected: all887 hashes a
 [V01.2 native candidate](completion/110-v01-native-candidate-lane.md): retained23 Basic/fresh-reader checks plus39 fresh maps checks,341 current hashes/exact65 pair/hosts and24 focused source controls PASS;0errors/console. Initial FAIL and partial maps preserved; old raw Unsafe message predicate corrected to current closed parser refusal, no product weakening. Same-pair sequential CI/native and allowlisted result retention configured, no remote run/upload. Next V01.3 installed VSIX maintainer route, then ONE whole review; V01/V02 open,19/29 unchanged.
 
 [V01.3/whole checkpoint](completion/111-v01-installed-maintainer-and-whole-review.md): exact installed VSIX0.1.3/VSCode1.142.0 actual GUI10/15 input identities, synthetic source range audited; controlled Node protocol is not Atom UI/source-association proof. Foreign-port negative control blocks before install/GUI; private receipts excluded from public result. Final full2469/901 current hashes PASS, existing browser23retained+39fresh/341 preserved. ONE whole V01 review pending;19/29 unchanged until verdict. Next dependency-ready A02, no external I02/I03 dependency bypass.
+
+[V03.14](completion/127-v03-ide-entry.md) now prepares actual public VSIX/Copy
+receipt commands in owned Code1.142 user-data/extensions/display, exact helper8
+and unchanged65-file project. Settings are prepared assistance; no app/browser
+source/certificate/account/user-profile changes or runtime claim. Full gates stay.
