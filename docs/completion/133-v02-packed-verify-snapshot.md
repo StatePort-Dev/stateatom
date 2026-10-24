@@ -59,3 +59,58 @@ actualdriver17controls PASS. Exactcase preflight364registered inputs/B327/helper
 issuedA/B archives/install/hosts and oldbaseline5delta source hashes atbdccd06 PASS.
 Newtypes2/admission9/backend13 result SHA pinned in case; originalruntime notupgraded.
 The fixedcase/code/metadata are committed before the one48row native comparison.
+
+
+## Actual finite71/72 comparison
+
+Actual2f1b01b/clean, native27728 terminal0:
+`.artifacts/v02/input-verify-snapshot-comparison/2026-10-24T03-23-13-414Z/results.json`,
+`PASS_INTERLEAVED_VERIFY_SNAPSHOT_COMPARISON_NOT_PERFORMANCE_ACCEPTANCE`.
+48ordered rows/16fixedwarmup/32measured,8fresh profiles/56ledger checkpoints,
+364unchanged registered inputs/B327/helper223/issuedA/B archives/install/hosts.
+160inspectorRPC=48Apply+104state+8capabilities.97860APIrows and73228registry rows,
+0rejected/unfinished/overflow/unsupported; registry peak2324/APIpeak2657.
+Remote verify/begin/finish/snapshot observed eachwindow; app solelyAtom-owned.
+Every trusted/current ack, Draft unchanged beforeApply, unrelated/getter0 and persisted
+non-executable ledger check passes. Own guardian/worker sessions, browsers/display/
+server close. No recorded inspector warning/error console or inspector-page/worker/
+guardian uncaught-exception events; worker/guardian console completeness was not
+collected and is not claimed. Existing APIobserver reporting limitation remains.
+
+Descriptive medians milliseconds, **n4 measured per host/condition/mode**:
+
+| Host | Mode |71 ApplyRPC |72 ApplyRPC |71 registry union |72 registry union |
+| --- | --- | ---: | ---: | ---: | ---: |
+| standalone |Live |730.10 |721.60 |247.75 |225.15 |
+| standalone |Draft/Apply |738.85 |712.75 |258.60 |233.10 |
+| embedding |Live |735.00 |715.90 |245.25 |220.20 |
+| embedding |Draft/Apply |739.10 |711.30 |253.45 |231.60 |
+
+Live window median verify/begin/finish counts stay559/150/150 onboth; separate
+snapshot-message median860→301standalone/300.5embedding (health concurrency can
+contributehalf medians). Draft562/151/151 stays; separate snapshot864.5→303.
+Registry rows1719→1160/1159.5Live and1728.5→1167Draft. These are fewer separate
+worker messages, not omitted live verification or omitted fresh snapshots: new
+verifiedoperation returns its own fresh snapshot. Existing API medians1922Live/
+1932Draft rows stay; no argument/result/private snapshot content is inspected.
+
+Apply medians lower8.50–27.80ms in this fixed instrumented synthetic comparison;
+alltails/warmups retained. It does not establish an originalSLO/p95, CPU/criticalpath,
+exact Apply-only ownership, uninstrumented/universal speedup or a changedLive policy.
+72 combined-union medians469.80–478.20ms and uncovered234.15–244.15ms retain unknown
+ChromePort/document/serviceworkerJS/queue cause. Category medians are separate and
+must not be summed; each rawrow union is recomputed directly on translated intervals.
+Originaltargets and65historicalmisses remain untouched; fullV02/whole20-of29 unchanged.
+
+Saved native verifier97385 terminal0 PASS: independent sweep-line ofall3clock
+API/registry/combined unions,28negative protocol controls, allraw/ledger/delta/input/
+archive/install/newtypes/admission/backend checks. Native-checkpoint.json retained.
+Separate raw-observation verifier PASS:96observations/48pairs exactlymatch all96final
+surface traces,4deliberate bad-observation controls refused. Current paired-retention
+positive path now has native evidence; pending/error paths remain actual-source
+synthetic controls17, not fabricated nativefault injections. No native rerun.
+
+ONE final fresh review is due. Next candidate **V02.15** selects/registers only the
+remaining original Basic/observer latency-overhead gate on current72, using approved
+criteria and explaining affected-runtime reason before any run. It does not invent
+new thresholds, grant exceptions or reopen oldwholematrix/IDE/certificate campaigns.

@@ -4311,7 +4311,7 @@
       "active_slice": {
         "id": "V02.14",
         "title": "Immutable72 and affected interleaved71/72 qualification",
-        "status": "packed-backend-verified-comparison-preregistered",
+        "status": "native-complete-review-due-not-whole-performance-acceptance",
         "record": "133-v02-packed-verify-snapshot.md",
         "design": "../superpowers/specs/2026-10-24-v02-packed-verify-snapshot-design.md",
         "plan": "../superpowers/plans/2026-10-24-v02-packed-verify-snapshot.md",
@@ -4336,14 +4336,31 @@
         "performance_acceptance": false,
         "targets_waived": false,
         "review_pending": true,
-        "comparison_executed": false,
-        "verification": ".artifacts/v02/packed-verify-snapshot/2026-10-24/preflight.json"
+        "comparison_executed": true,
+        "verification": ".artifacts/v02/packed-verify-snapshot/2026-10-24/native-checkpoint.json",
+        "comparison_rows": 48,
+        "warmup_rows": 16,
+        "measured_rows": 32,
+        "ledger_checkpoints": 56,
+        "owned_rpc_rows": 160,
+        "apply_rpc_rows": 48,
+        "state_rpc_rows": 104,
+        "capability_rpc_rows": 8,
+        "worker_api_rows": 97860,
+        "registry_rows": 73228,
+        "registry_peak_rows": 2324,
+        "protocol_negative_controls": 28,
+        "paired_observation_controls": 4,
+        "raw_observations": 96,
+        "independent_interval_sweep": true,
+        "runtime_result": ".artifacts/v02/input-verify-snapshot-comparison/2026-10-24T03-23-13-414Z/results.json",
+        "actual_native_revision": "2f1b01b"
       },
       "execution_record": "130-v02-worker-api-phases.md",
       "current_checkpoint": {
         "record": "133-v02-packed-verify-snapshot.md",
-        "status": "packed-backend-verified-comparison-preregistered",
-        "next_bounded_step": "Run committed fixed V02.14 48row71/72 comparison once, preserve handle/results/raw/criteria; ONE final review then choose one next bounded item from actual result"
+        "status": "native-complete-review-due-not-whole-performance-acceptance",
+        "next_bounded_step": "ONE final V02.14 review, then V02.15 select/register only remaining original Basic/observer latency-overhead gate on current72; unchanged approved criteria/no new thresholds or waivers"
       },
       "completed_slices": [
         {
@@ -5855,8 +5872,8 @@
     "document": "133-v02-packed-verify-snapshot.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.14-comparison-preregistered",
-    "next_item": "Run committed fixed V02.14 48row71/72 comparison once, preserve handle/results/raw/criteria; ONE final review then choose one next bounded item from actual result",
+    "current_increment": "V02.14-native-complete-review-due",
+    "next_item": "ONE final V02.14 review, then V02.15 select/register only remaining original Basic/observer latency-overhead gate on current72; unchanged approved criteria/no new thresholds or waivers",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8318,11 +8335,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Newimmutable72/UI2:types2/admission9/nativebackend13 PASS; source2684/focused214/driver17 and364input/B327/helper223 preflight PASS. Fixed48row ABBA/BAAB comparison notyetexecuted; no newperformance/fullV02 credit. Whole20/29 unchanged.",
+    "current_activity_note": "New72types2/admission9/backend13 and interleaved71/72native48rows/56ledgers/364inputs/160RPC/97860API/73228registry PASS; savedindependentunions28negative+4observationcontrols PASS. DescriptiveApplymedians lower8.5–27.8ms n4, originaltargets/fullV02/20-of29 unchanged. ONE review due.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "62fa55d+registered72metadata",
+    "current_source_revision": "2f1b01b",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "Run committed fixed V02.14 48row71/72 comparison once, preserve handle/results/raw/criteria; ONE final review then choose one next bounded item from actual result"
+    "next_bounded_step": "ONE final V02.14 review, then V02.15 select/register only remaining original Basic/observer latency-overhead gate on current72; unchanged approved criteria/no new thresholds or waivers"
   },
   "next_task": "V02"
 }
