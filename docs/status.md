@@ -1,5 +1,16 @@
 # Project status
 
+Active bounded work: [A02.9](completion/150-launch-evidence-lanes.md), source-only
+claim-scoped description of retained launch records. Planning; no native/app/model.
+A02.8 closes at0c6963d:63focused/full3247PASS, ONE review0C/1I/2M/I1fixed once.
+Its one native case remains Incomplete/METADATA_ARGUMENTS and exhausted. Original
+owner metadata45args vsproc1 observed; independent exe/profile/document matched,
+full displayed-text equality failed. No accepted replacement rule or wholeA02
+credit;20/29 unchanged. Current final integrity377physical+3exact frozenGit inputs;
+the earlier380physical verifier is historical and unmodified.
+
+Historical A02.8 active pointer (superseded by150; case already exhausted):
+
 Active bounded work: [A02.8](completion/149-original-launch-witness.md), public
 owner-process original invocation witness feasibility. Public owner driver60focused/full3244PASS;
 native route not yet qualified. At most one

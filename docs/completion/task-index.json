@@ -1661,65 +1661,19 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "implementation_plan": "../superpowers/plans/2026-10-24-original-launch-witness.md",
-      "execution_record": "149-original-launch-witness.md",
+      "implementation_plan": "../superpowers/plans/2026-10-24-launch-evidence-lanes.md",
+      "execution_record": "150-launch-evidence-lanes.md",
       "active_slice": {
-        "id": "A02.8",
-        "status": "bounded-original-invocation-research-complete-strict-native-protocol-incomplete",
-        "record": "149-original-launch-witness.md",
-        "base": "6f696c7",
+        "id": "A02.9",
+        "status": "planning-source-only-historical-claim-description",
+        "record": "150-launch-evidence-lanes.md",
+        "base": "0c6963d",
         "product_changed": false,
-        "native_executed": true,
-        "native_attempts": 1,
-        "maximum_native_runs": 1,
+        "native_executed": false,
+        "native_allowed": false,
+        "native_reexecuted": false,
         "full_A02": false,
-        "source_implementation_started": true,
-        "source_focused": 63,
-        "full_source_controls": 3247,
-        "full_source_failures": 0,
-        "full_source_cancelled": 0,
-        "product_inputs_unchanged": 327,
-        "old_inputs_unchanged": 9,
-        "prior_research_source_unchanged": 12,
-        "native_case": "../testing/browser-launch-witness-case.json",
-        "native_output": ".artifacts/a02/original-launch-witness-native/2026-10-24T18-40-00Z",
-        "source_revision": "be0077f13fd5484efc7b196593e548dc11026edd",
-        "frozen_inputs": 380,
-        "native_status": "INCOMPLETE_ORIGINAL_LAUNCH_WITNESS_NO_APP",
-        "native_result_sha256": "2801aa6c5b535573a094974485094be921915fee411b48cbc116e099319889b9",
-        "original_argument_count": 45,
-        "proc_argument_count": 1,
-        "owner_binding_passed": true,
-        "independent_exe_profile_document_matched": true,
-        "strict_protocol_passed": false,
-        "independent_saved_inputs": 380,
-        "independent_negative_controls": 21,
-        "next_dependency": "Proposed A02.9 source-only separation of original invocation facts and current browser display on retained data; no reclassification of old protocol as passed or automatic native repeat",
-        "review": {
-          "count": 1,
-          "critical": 0,
-          "important": 1,
-          "important_fixed": 1,
-          "minor": 2,
-          "correction_passes": 1,
-          "rereview": false,
-          "report": ".artifacts/a02/original-launch-witness-review/2026-10-24/report.md",
-          "deferred_minors": [
-            "M1 prospective status pointer; next active handoff reconciles",
-            "M2 historical physical-verifier wording; fresh checkpoint distinguishes current hashes"
-          ]
-        },
-        "final_checkpoint": ".artifacts/a02/original-launch-witness-review/2026-10-24/final-checkpoint.json",
-        "current_integrity": {
-          "physical": 377,
-          "historical_git": 3,
-          "declared_changes": [
-            "driver",
-            "driver tests",
-            "plan"
-          ],
-          "historical_verifier_physical": 380
-        }
+        "legacy_protocol_accepted": false
       },
       "completed_slices": [
         {
@@ -2093,6 +2047,64 @@
             "deferred_minor": "M1 current docs/status paragraph stale; reconcile on next active-work handoff"
           },
           "final_checkpoint": ".artifacts/a02/owned-process-diagnostic-review/2026-10-24/final-checkpoint.json"
+        },
+        {
+          "id": "A02.8",
+          "status": "bounded-original-invocation-research-complete-strict-native-protocol-incomplete",
+          "record": "149-original-launch-witness.md",
+          "base": "6f696c7",
+          "product_changed": false,
+          "native_executed": true,
+          "native_attempts": 1,
+          "maximum_native_runs": 1,
+          "full_A02": false,
+          "source_implementation_started": true,
+          "source_focused": 63,
+          "full_source_controls": 3247,
+          "full_source_failures": 0,
+          "full_source_cancelled": 0,
+          "product_inputs_unchanged": 327,
+          "old_inputs_unchanged": 9,
+          "prior_research_source_unchanged": 12,
+          "native_case": "../testing/browser-launch-witness-case.json",
+          "native_output": ".artifacts/a02/original-launch-witness-native/2026-10-24T18-40-00Z",
+          "source_revision": "be0077f13fd5484efc7b196593e548dc11026edd",
+          "frozen_inputs": 380,
+          "native_status": "INCOMPLETE_ORIGINAL_LAUNCH_WITNESS_NO_APP",
+          "native_result_sha256": "2801aa6c5b535573a094974485094be921915fee411b48cbc116e099319889b9",
+          "original_argument_count": 45,
+          "proc_argument_count": 1,
+          "owner_binding_passed": true,
+          "independent_exe_profile_document_matched": true,
+          "strict_protocol_passed": false,
+          "independent_saved_inputs": 380,
+          "independent_negative_controls": 21,
+          "next_dependency": "Proposed A02.9 source-only separation of original invocation facts and current browser display on retained data; no reclassification of old protocol as passed or automatic native repeat",
+          "review": {
+            "count": 1,
+            "critical": 0,
+            "important": 1,
+            "important_fixed": 1,
+            "minor": 2,
+            "correction_passes": 1,
+            "rereview": false,
+            "report": ".artifacts/a02/original-launch-witness-review/2026-10-24/report.md",
+            "deferred_minors": [
+              "M1 prospective status pointer; next active handoff reconciles",
+              "M2 historical physical-verifier wording; fresh checkpoint distinguishes current hashes"
+            ]
+          },
+          "final_checkpoint": ".artifacts/a02/original-launch-witness-review/2026-10-24/final-checkpoint.json",
+          "current_integrity": {
+            "physical": 377,
+            "historical_git": 3,
+            "declared_changes": [
+              "driver",
+              "driver tests",
+              "plan"
+            ],
+            "historical_verifier_physical": 380
+          }
         }
       ],
       "remaining_acceptance": [
@@ -2104,13 +2116,13 @@
         "general_ownership_infrastructure_prohibited": true,
         "full_lineage_open": true,
         "prior_record": "113-a02-ordinary-reducer-acquisition.md",
-        "bounded_next_experiment": "A02.8 public owner-process original argument witness feasibility; max1 new metadata-only case after gates",
+        "bounded_next_experiment": "A02.9 source-only historical claim description on retained data; no browser/native",
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "149-original-launch-witness.md",
-        "status": "bounded-original-invocation-research-complete-strict-native-protocol-incomplete",
-        "next_bounded_step": "A02.9 proposed source-only separation of original invocation and current display on retained evidence. No old protocol Pass, no new native/app run, no criterion waiver."
+        "record": "150-launch-evidence-lanes.md",
+        "status": "planning-source-only-historical-claim-description",
+        "next_bounded_step": "TDD source-only claim-scoped annotation + finite retained-data integrity/writer. Old Incomplete/METADATA_ARGUMENTS acceptedfalse; no native/app/old case or policy change."
       },
       "stopping_point_history": [
         {
@@ -2135,9 +2147,16 @@
           "prior_record": "113-a02-ordinary-reducer-acquisition.md",
           "bounded_next_experiment": "A02.7 scoped owned-process identity diagnosis, max1 blank case only after source gates",
           "experiment_native_executed": false
+        },
+        {
+          "general_ownership_infrastructure_prohibited": true,
+          "full_lineage_open": true,
+          "prior_record": "113-a02-ordinary-reducer-acquisition.md",
+          "bounded_next_experiment": "A02.8 public owner-process original argument witness feasibility; max1 new metadata-only case after gates",
+          "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "TDD public owner ChildProcess invocation snapshot and independent metadata guards, no title-to-argv reconstruction. Source/full/clean/frozen before max1 new metadata-only case. All three earlier cases exhausted; no app/trust/IDE change.",
+      "next_bounded_step": "TDD source-only claim-scoped annotation + finite retained-data integrity/writer. Old Incomplete/METADATA_ARGUMENTS acceptedfalse; no native/app/old case or policy change.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -2176,6 +2195,11 @@
           "record": "148-owned-process-diagnostic.md",
           "status": "planning-owned-process-discrepancy-diagnostic",
           "next_bounded_step": "TDD scoped process fact retention and pure admission; source/full checks and frozen case before max1 blank diagnostic. Both A02.6 cases exhausted; no app/IDE/extension/certificate change"
+        },
+        {
+          "record": "149-original-launch-witness.md",
+          "status": "bounded-original-invocation-research-complete-strict-native-protocol-incomplete",
+          "next_bounded_step": "A02.9 proposed source-only separation of original invocation and current display on retained evidence. No old protocol Pass, no new native/app run, no criterion waiver."
         }
       ]
     },
