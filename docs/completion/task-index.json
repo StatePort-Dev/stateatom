@@ -5355,7 +5355,7 @@
       "active_slice": {
         "id": "V03.17",
         "title": "Native control revision and stale-draft diagnosis",
-        "status": "native-attribute-sequence-observed-classifier-fail-retained-review-due",
+        "status": "bounded-mutation-facts-and-failure-record-complete-native-criterion-not-met",
         "record": "139-v03-control-revision-diagnosis.md",
         "design": "../superpowers/specs/2026-10-24-v03-control-revision-diagnosis-design.md",
         "plan": "../superpowers/plans/2026-10-24-v03-control-revision-diagnosis.md",
@@ -5365,7 +5365,7 @@
         "new_build": false,
         "candidate": "0.1.0-candidate.20261021.73",
         "native_executed": true,
-        "review_pending": true,
+        "review_pending": false,
         "whole_V03_complete": false,
         "registered_inputs": 442,
         "product_inputs": 327,
@@ -5421,7 +5421,21 @@
         "raw_error_code_observed": false,
         "original_guide_status": "FAIL",
         "independent_negative_controls": 20,
-        "all_owned_cleanup": true
+        "all_owned_cleanup": true,
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 1,
+          "code_correction_passes": 0,
+          "re_review": false,
+          "deferred_minors": [
+            "M1 enforce actualNode executable admission and verifier negativecontrol"
+          ],
+          "report": ".artifacts/v03/control-revision-diagnosis/2026-10-24/review/report.md"
+        },
+        "recorded_node_identity_checked": true,
+        "registered_diagnostic_criterion_met": false,
+        "final_verification": ".artifacts/v03/control-revision-diagnosis/2026-10-24/final-checkpoint.json"
       },
       "completed_slices": [
         {
@@ -6134,8 +6148,8 @@
       ],
       "current_checkpoint": {
         "record": "139-v03-control-revision-diagnosis.md",
-        "status": "native-attribute-sequence-observed-classifier-fail-retained-review-due",
-        "next_bounded_step": "V03.17 ONE whole-item review of observed name/type/name revision change and retained native classifier FAIL; then V03.18 source-level clean/dirty snapshot ordering diagnosis before any recovery change"
+        "status": "bounded-mutation-facts-and-failure-record-complete-native-criterion-not-met",
+        "next_bounded_step": "V03.18 source-level clean/dirty snapshot ordering diagnosis before any recovery change; no native rerun or guard weakening"
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-guide-source-connection.md",
       "implementation_plan": "../superpowers/plans/2026-10-24-v03-control-revision-diagnosis.md"
@@ -6297,8 +6311,8 @@
     "document": "139-v03-control-revision-diagnosis.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.17-attribute-sequence-observed-native-classifier-FAIL-review-due",
-    "next_item": "V03.17 ONE whole-item review of observed name/type/name revision change and retained native classifier FAIL; then V03.18 source-level clean/dirty snapshot ordering diagnosis before any recovery change",
+    "current_increment": "V03.17-bounded-mutation-facts-complete-native-criterion-FAIL-retained",
+    "next_item": "V03.18 source-level clean/dirty snapshot ordering diagnosis before any recovery change; no native rerun or guard weakening",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9016,11 +9030,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.17 0d699b7 nativeFAIL classifier expected applied/specificstale butactualReview1field error. Missingfactsobserved:2nativeinserts/1appliedwrite/2x10samples1299+1251ms/10probe records, ack7→10late name/type/name whilevalue10 remains. Secondraw20/app10/history1/nooverwrite.446stable/B327/helper223/65originals/strictconsole0/probestopped/allcleanup/20negativecontrols. OriginalguideFAIL/writerUnknown/20of29unchanged; ONEreviewdue; no morenativeretry17.",
+    "current_activity_note": "V03.17 0d699b7 nativeFAIL classifier expected applied/specificstale butactualReview1field error. Missingfactsobserved:2nativeinserts/1appliedwrite/2x10samples1299+1251ms/10probe records, ack7→10late name/type/name whilevalue10 remains. Secondraw20/app10/history1/nooverwrite.446stable/B327/helper223/65originals/strictconsole0/probestopped/allcleanup/20negativecontrols. OriginalguideFAIL/writerUnknown/20of29unchanged; ONEreview0C0I1M(Nodeadmissiondeferred)/recordedNodepathhashmatches/next18sourceorderinganalysis; no morenativeretry17.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "0d699b79bf2882c5068529175a4d8d4258a118e7",
+    "current_source_revision": "3248a10130f63b40dc818489261410b827432a94",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V03.17 ONE whole-item review of observed name/type/name revision change and retained native classifier FAIL; then V03.18 source-level clean/dirty snapshot ordering diagnosis before any recovery change"
+    "next_bounded_step": "V03.18 source-level clean/dirty snapshot ordering diagnosis before any recovery change; no native rerun or guard weakening"
   },
   "next_task": "V03"
 }

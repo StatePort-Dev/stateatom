@@ -1,7 +1,8 @@
 # V03.17 — native control revision diagnosis
 
 Current: mutation facts captured; native result remains FAIL because its fixed
-classifier did not accept the generic field-error presentation. ONE review due. Main2d9b308,
+classifier did not accept the generic field-error presentation. ONE review complete:
+0Critical/0Important/1Minor. Bounded facts/failure record complete; nativecriterionunmet. Main2d9b308,
 scope-review-1; latest user autonomous work until Oct25 evening. This is one missing
 attribute-observation diagnosis after [V03.16](138-v03-independent-input-guide.md),
 whose four actual FAILs remain immutable. Original guide remains FAIL, whole20/29,
@@ -99,3 +100,32 @@ Strictattachedconsole0; probeSTOPPED withall10records; allownedcleanup complete;
 recordedChrome/VitePIDsabsentreadonly/no kill. Fullproduct2799 stayshistorical, fresh
 source58PASS notan inventedfullsuite. No product/build/guard/policy change; no more
 native retry in17. ONE whole-item review andfinalaggregate due. Whole20/29/V03open.
+
+## Final readonly review, retained limitation and next step
+
+ONEfreshastra/highreview at3248a10 coversall12files/requirements/actualresults/verifier.
+0Critical/0Important/1Minor; source58freshPASS/plainnativeverifier20negativesPASS.
+No source correctionpass/native repeat/rereview. M1 deferred: automaticNodeadmission
+onlyhashesdeclaredbinary, notactualprocess.execPath; futureharness/verifier needs
+pathbinding/negativecontrol. Reviewerandseparate recorded-node-check.json confirm
+THISsavedrun actualViteexecutable equalscaseNodepath/hash inbothregisteredinventories.
+This factcheckdoesnotfixgeneraladmissiongap; no runtime/guard/package change.
+
+Review report `.artifacts/v03/control-revision-diagnosis/2026-10-24/review/report.md`.
+Finalaggregate mustactuallyrunafterthismetadata; it verifies boundedfacts/retained
+FAIL, never registereddiagnosticcriterion/originalguide/fullV03 acceptance. Native
+window capturefields areasync/intervalbounded, notatomic. Writer/time/errorcode/
+modelcause remainUnknown; no staleclassification/secondwrite/restoration credit.
+No uninstrumentedoverhead/performance/nativefaultrecovery/fullproductfreshregression/
+IDE/helper/cleanOS/Mac/humanacceptance. Whole20/29unchanged.
+
+Rulings/costs: main/local/inline/autonomy andONEreview (executorprotocolnotnewpolicy);
+onepassivecase/twoLiveinserts/windows (necessarynewmutationfacts, no oldguidecredit);
+no setters/MAIN/pause/getters/writerattribution (deliverytime/observereffect scoped);
+compareindependentandnativecounts (nocountalignmentassumption); oneportcollision
+followupafterRED→GREEN (firstFAIL/noedits retained); retaingenericclassificationFAIL
+(no greenrerun/waiver, completedatafactsbutnativecriterionunmet); Reactpatternonly
+potentialproducer (noattribute/ABAguardwaiver); retainhistoricalworkspace/scratch
+(userinstructionovergenericdeletion); ONEreviewboundaries stand (no extrapolation).
+DeferredMinorM1recordedabove, noothernewMinors. NextV03.18source-levelclean/dirty
+snapshotorderingdiagnosis beforeanyrecoveryproposal; no blindnativecampaignretry.
