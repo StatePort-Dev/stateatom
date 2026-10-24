@@ -27,13 +27,35 @@ const cases=['A','B','B','A'].map((condition,caseIndex)=>({host:'standalone',con
 const result={schema:'stateatom.input-verify-snapshot-comparison/1',status:'RUNNING',out,revision:null,initialInventoryComplete:false,initializationPhase:'pending',preregistrationSha256:null,cases:[],samples:[],ledger:[],errors:[],console:[],performanceAcceptance:false,targetsWaived:false};let server,desktop,browser,panel,d,worker,workerRestorePending=false,guardian,guardianRestorePending=false,readWorkerProbe,readRegistryProbe,activeProbeMetadata;const traffic=[];
 async function retainProbeSnapshots(phase){
  const meta=result.currentTrial||activeProbeMetadata;if(!meta)return{};
+ // Retain bounded diagnostic metadata without evaluating error accessors or payloads.
+ const own=(value,key)=>{try{return Object.getOwnPropertyDescriptor(value,key)?.value;}catch{return undefined;}};
+ function diagnostic(error,depth=2){
+  const message=own(error,'message'),code=own(error,'code'),record={message:typeof message==='string'?message.slice(0,2048):null};
+  if(typeof message==='string'&&message.length>2048)record.messageTruncated=true;
+  if(typeof code==='string'){record.code=code.slice(0,256);if(code.length>256)record.codeTruncated=true;}
+  const cause=own(error,'cause'),children=own(error,'errors');
+  if(cause!==undefined){if(depth)record.cause=diagnostic(cause,depth-1);else record.causeTruncated=true;}
+  if(Array.isArray(children)){
+   const length=own(children,'length');record.errors=[];
+   if(Number.isSafeInteger(length)&&length>=0){
+    if(depth)for(let i=0;i<Math.min(length,4);i++)record.errors.push(diagnostic(own(children,String(i)),depth-1));
+    if(length>(depth?4:0))record.errorsTruncated=true;
+   }
+  }
+  return record;
+ }
+ const failure=(surface,operation,error)=>{
+  const records=result.probeRetentionFailures??=[];
+  if(records.length<16)records.push({surface,operation,phase,error:diagnostic(error)});
+  else result.probeRetentionFailuresTruncated=true;
+ };
  const available=[['worker',readWorkerProbe],['registry',readRegistryProbe]].filter(([,read])=>typeof read==='function');
  const captured=await Promise.allSettled(available.map(([,read])=>Promise.resolve().then(read))),errors=[],snapshots={};
  for(const[i,item]of captured.entries()){
-  const [surface]=available[i];if(item.status==='rejected'){errors.push(item.reason);continue;}
+  const [surface]=available[i];if(item.status==='rejected'){errors.push(item.reason);failure(surface,'read',item.reason);continue;}
   const trace=item.value,record={host:meta.host,condition:meta.condition,caseIndex:meta.caseIndex,ordinal:meta.ordinal,phase,trace};
   snapshots[surface+'Trace']=trace;result[surface==='worker'?'currentWorkerTrace':'currentRegistryTrace']=record;
-  try{await appendFile(out+'/probe-observations.jsonl',JSON.stringify({surface,...record})+'\n');}catch(e){errors.push(e);}
+  try{await appendFile(out+'/probe-observations.jsonl',JSON.stringify({surface,...record})+'\n');}catch(e){errors.push(e);failure(surface,'append',e);}
  }
  if(errors.length)throw new AggregateError(errors,'Paired probe retention failed');return snapshots;
 }
