@@ -35,4 +35,4 @@
 
 ## Final closeout
 
-- [ ] ONE fresh whole-source-slice review; effect regrade/atmostONE testedI/C pass/no rereview/model run. Record allrulings/minors; archive/hash/remove ownworkspace; clean localcommit/checkpoint; ONE nextdependency (separate provider/evaluation decision, no presumed quality).
+- [x] ONE fresh whole-source-slice review; effect regrade/atmostONE testedI/C pass/no rereview/model run. Record allrulings/minors; archive/hash/remove ownworkspace; clean localcommit/checkpoint; ONE nextdependency (separate provider/evaluation decision, no presumed quality).

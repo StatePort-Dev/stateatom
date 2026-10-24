@@ -4247,7 +4247,7 @@
       "active_slice": {
         "id": "L02.10",
         "record": "155-l02-recorded-model-comparison.md",
-        "status": "source-complete-source-slice-review-pending",
+        "status": "complete-unselected-source-slice-not-L02",
         "base": "0b97e23",
         "model_calls": 0,
         "product_provider_selected": false,
@@ -4262,7 +4262,18 @@
         "separate_body_supplement": 4,
         "actual_inferences": 0,
         "usefulness_proven": false,
-        "whole_L02_review_consumed": false
+        "whole_L02_review_consumed": false,
+        "review": {
+          "kind": "source-slice-only",
+          "count": 1,
+          "critical": 0,
+          "important": 0,
+          "minor": 0,
+          "correction_passes": 0,
+          "rereview": false,
+          "whole_L02_review_consumed": false
+        },
+        "final_checkpoint": ".artifacts/l02/recorded-model-comparison-review/2026-10-25/final-checkpoint.json"
       },
       "implementation_plan": "../superpowers/plans/2026-10-25-l02-recorded-model-comparison.md",
       "remaining_acceptance": [
@@ -4274,8 +4285,8 @@
       "execution_record": "155-l02-recorded-model-comparison.md",
       "current_checkpoint": {
         "record": "155-l02-recorded-model-comparison.md",
-        "status": "source-complete-source-slice-review-pending",
-        "next_bounded_step": "Task1 sourcecommit/focused task-done then ONE source-slice review; no model/provider/UI switch or fullL02 acceptance review."
+        "status": "complete-unselected-source-slice-not-L02",
+        "next_bounded_step": "L02.11 separate v2comparison provider/fixednew evaluation candidate; preserve explicitoptin/fallback/currentidentity/sessionownership. Sourcegates/prereg before actualmodel."
       },
       "completed_slices": [
         {
@@ -7141,8 +7152,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "L02.10-source-complete-review-pending",
-    "next_item": "L02.10 sourcecommit/task-done/ONE source-slice finalreview; then separate provider/evaluation decision, no model now.",
+    "current_increment": "L02.10-complete-source-slice-no-model",
+    "next_item": "L02.11 separate v2comparison provider and fixednew evaluation candidate; source/privacy/opt-in/lifecycle gates before any realmodel.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7169,7 +7180,7 @@
     "active_item": {
       "id": "L02",
       "record": "155-l02-recorded-model-comparison.md",
-      "status": "source-complete-source-slice-review-pending"
+      "status": "complete-unselected-source-slice-not-L02"
     },
     "completed_increments": [
       {
@@ -9864,7 +9875,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "L02.10 newpurev2comparison23new/68focused/full3533PASS, original12source/current327/15V03raw/10L02records unchanged. Source10eligible/original30+4/modelcalls0/usefulnessunproven. Source-slice finalreview due, reserved wholeL02review notconsumed; no provider/UI/native/product acceptance or20of29 credit.",
+    "current_activity_note": "L02.10 boundedsourcecomplete/new23/focused68/full3533/ONEsource-slice0C0I0M, no wholeL02reviewconsumed/modelcalls0/usefulnessunproven. Original12source/current327/15V03raw/10L02records retained. Next L02.11 separate comparisonprovider/fixednew evaluationcandidate aftersourcegates/prereg; no providerUI/nativequality or20of29 credit.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "0b97e23",
     "current_record_date": "2026-10-25",
