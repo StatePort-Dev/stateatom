@@ -2146,7 +2146,7 @@
           "type_consumers": 2,
           "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
           "standalone_read_inject_native_checks": 3,
-          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
           "runtime_race_checks": 14,
           "isolated_bug_mutations_rejected": 6,
           "native_checks": 29,
@@ -3802,7 +3802,7 @@
       "implementation_plan": "../superpowers/plans/2026-10-21-l02-real-local-model.md",
       "remaining_acceptance": [
         "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
-        "Final candidate actual factual/concision/usefulness comparison preserving historical20\u201330 and>=25/5incomplete/5untrusted criteria",
+        "Final candidate actual factual/concision/usefulness comparison preserving historical20–30 and>=25/5incomplete/5untrusted criteria",
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
@@ -4309,65 +4309,30 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.9",
-        "title": "Own-inspector input request phase diagnosis",
-        "status": "complete-finite-phase-diagnostic-not-performance-acceptance",
-        "record": "128-v02-input-request-phases.md",
-        "design": "../superpowers/specs/2026-10-24-v02-input-phases-design.md",
-        "plan": "../superpowers/plans/2026-10-24-v02-input-phases.md",
-        "product_source_changed": false,
+        "id": "V02.10",
+        "title": "Cold disabled native identity without redundant domain enable",
+        "status": "in-progress-comparison-review-due",
+        "record": "129-v02-disabled-domain.md",
+        "design": "../superpowers/specs/2026-10-24-v02-disabled-domain-design.md",
+        "plan": "../superpowers/plans/2026-10-24-v02-disabled-domain.md",
+        "product_source_changed": true,
         "whole_V02_complete": false,
-        "runtime_result": ".artifacts/v02/input-phases/2026-10-24T00-57-39-389Z/results.json",
-        "verification": ".artifacts/v02/input-phases/2026-10-24/native-checkpoint.json",
-        "native_rows": 20,
-        "measured_rows": 16,
-        "warmup_rows": 4,
-        "owned_rpc_rows": 64,
-        "apply_rpc_rows": 20,
-        "state_rpc_rows": 42,
-        "capability_rpc_rows": 2,
-        "registered_inputs": 341,
-        "product_inputs_unchanged": 327,
-        "source_checks": 20,
-        "protocol_negative_controls": 10,
-        "cleanup_controls": 3,
-        "actual_native_revision": "15a084a",
+        "source_checks": 2621,
+        "focused_checks": 82,
+        "native_identity_controls_per_engine": 22,
+        "installed_backend_checks": 13,
+        "strict_types": 2,
+        "package_admission": 9,
+        "comparison_rows_due": 48,
         "performance_acceptance": false,
         "targets_waived": false,
-        "review_pending": false,
-        "review": {
-          "schema": "stateatom.input-phase-review/1",
-          "reviewer": "/root/v029_whole_review",
-          "model": "gpt-6-astra",
-          "reasoning": "high",
-          "base": "e7a6ebae87b79cf14b18ff6d27660b34af29b439",
-          "head": "a8d6a539d2dbd823d5b19e92f997bdf6f6398ae2",
-          "critical": 0,
-          "important": 1,
-          "minor": 1,
-          "correction_passes": 1,
-          "important_fixed": "Asynchronous listen error rejects original acquisition and reaches terminal catch/finally",
-          "minor_deferred": "Sparse operations arrays bypass optional probe whitelist; default and recorded dense list unaffected, unsupported diagnostic configuration",
-          "source_suite": 20,
-          "protocol_negative_controls": 10,
-          "re_review": false,
-          "native_repeated": false,
-          "actual_native_revision": "15a084a",
-          "declined_boundaries_ruled_in": "docs/completion/128-v02-input-request-phases.md"
-        },
-        "source_failure_controls": {
-          "pre_review_cleanup": 3,
-          "post_review_listen": 3
-        },
-        "deferred_minors": [
-          "Sparse operations arrays bypass optional probe whitelist; default and recorded dense list unaffected, unsupported diagnostic configuration"
-        ]
+        "review_pending": true
       },
-      "execution_record": "128-v02-input-request-phases.md",
+      "execution_record": "129-v02-disabled-domain.md",
       "current_checkpoint": {
-        "record": "128-v02-input-request-phases.md",
-        "status": "complete-finite-phase-diagnostic-not-performance-acceptance",
-        "next_bounded_step": "V02.10: profile native-command phases inside observed Apply RPC before choosing one optimization; retain all guards, no full matrix/app/IDE rerun"
+        "record": "129-v02-disabled-domain.md",
+        "status": "in-progress-comparison-review-due",
+        "next_bounded_step": "Complete registered48-row interleaved70/71 comparison and ONE final review; no old campaign repeat"
       },
       "completed_slices": [
         {
@@ -4816,7 +4781,7 @@
         }
       ],
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v02-input-phases.md",
-      "implementation_plan": "../superpowers/plans/2026-10-24-v02-input-phases.md"
+      "implementation_plan": "../superpowers/plans/2026-10-24-v02-disabled-domain.md"
     },
     {
       "id": "V03",
@@ -5575,7 +5540,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK \u2014 separate StatePort project",
+      "title": "Production SDK — separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",
@@ -5643,11 +5608,11 @@
     ]
   },
   "reconciliation": {
-    "document": "128-v02-input-request-phases.md",
+    "document": "129-v02-disabled-domain.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.9-input-phases-complete",
-    "next_item": "V02.10: profile native-command phases inside observed Apply RPC before choosing one optimization; retain all guards, no full matrix/app/IDE rerun",
+    "current_increment": "V02.10-disabled-domain-in-progress",
+    "next_item": "Complete registered48-row interleaved70/71 comparison and ONE final review; no old campaign repeat",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -6342,7 +6307,7 @@
         "type_consumers": 2,
         "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
         "standalone_read_inject_native_checks": 3,
-        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
         "runtime_race_checks": 14,
         "isolated_bug_mutations_rejected": 6,
         "native_checks": 29,
@@ -7876,11 +7841,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.9 finite phase diagnosis complete: native15a084a20rows64RPC341stable327product/0inspectorerrors; ONE review1Important startup fix (20 current source controls),1 sparse-options Minor deferred. Exact two-block harness-only difference/no native rerun. No internal guard/CPU cause or performance acceptance, original V02.8 checkpoint/corpus23/history/whole20of29 preserved. Next oneV02.10 native-command diagnosis.",
+    "current_activity_note": "Source2621/native22each/packed2+9/installedbackend13 pass; registered comparison48 and review still due. Whole20/29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "15a084a actual native; only harness finalizer correction afterwards",
+    "current_source_revision": "8980010",
     "current_record_date": "2026-10-24",
-    "next_bounded_step": "V02.10: profile native-command phases inside observed Apply RPC before choosing one optimization; retain all guards, no full matrix/app/IDE rerun"
+    "next_bounded_step": "Complete registered48-row interleaved70/71 comparison and ONE final review; no old campaign repeat"
   },
   "next_task": "V02"
 }
