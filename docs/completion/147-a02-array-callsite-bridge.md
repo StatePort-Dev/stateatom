@@ -83,3 +83,29 @@ Final affected aggregate **111PASS**; current fresh `npm test` **3149PASS/0FAIL/
 retained in separate logs and not relabelled. Current25 driver controls pass after
 readiness finalization. **No browser/HTTP/native case has started.** Commit this
 source checkpoint, then prepare/pin the ONE case from these clean bytes.
+
+## Frozen source-engine case, before browser launch
+
+Clean source driver **1fbd2ac1ce6ec57fbaa9a1ef24c70ad155d8ab57** prepared
+`docs/testing/array-callsite-case.json` and unique output
+`.artifacts/a02/array-callsite-native/2026-10-24T16-40-09Z` without resources.
+406 input hashes plus case itself are checked by preflight. Original28 manifest
+is **React13 + Vue14 + license**; only React executes. All original files remain
+unchanged; no Vue/native/product coverage is inferred.
+
+Eight admitted source sites; exact original Main digest
+09164b4bb70f4162ca2d32e3961133653fd0f9934244ba21eb85477218008a28,
+filter13:13–21:15 and map43:18–45:19. Original/observed JS digests respectively
+20dd33100cdff8735823c1aec9bd38259e5e43bc6595fb17d4590e1d09711a7d and
+c500d3f2ed52a7441be267bce30ee65e9ec17bd73472910e0196caf15bd78d0c;
+both CSS9345bytes/digest962f80e6140eef0228ace22464a406e603c556c5b59dc510c7947d19e5353e40.
+Unmodified React/ReactDOM19.2.5 vendor bytes; automatic JSX/esbuild overlay is not
+original Webpack, installed Atom/plugin/helper or normal-user guide acceptance.
+
+Native max1/exclusive marker, original/off/on and six sealed windows fixed. Every
+Main map group is checked from raw call/yield/source/page/window identities; no
+latest-group-to-selected-DOM inference. Equal rows distinct; new first-row reference
+and unchanged second reference; active filter retains second at original index1;
+Stop must leave Unknown/no data while original UI continues. Same-value UI alone
+does not satisfy source readiness. Console/inputs/actual process/cleanup guards
+remain mandatory. No browser run or result yet; commit case before execution.

@@ -1665,7 +1665,7 @@
       "execution_record": "147-a02-array-callsite-bridge.md",
       "active_slice": {
         "id": "A02.6",
-        "status": "source-driver-ready-clean-commit-then-prepare",
+        "status": "native-case-prepared-preflight-pass-commit-before-one-run",
         "record": "147-a02-array-callsite-bridge.md",
         "base": "40146b7",
         "product_changed": false,
@@ -1678,7 +1678,12 @@
         "product_inputs_unchanged": 327,
         "original_inputs_unchanged": 9,
         "source_verification": ".artifacts/a02/array-callsite-source/2026-10-24/task1-verification.json",
-        "native_prepared": false
+        "native_prepared": true,
+        "native_case": "../testing/array-callsite-case.json",
+        "native_inputs": 407,
+        "native_output": "/home/roman/projects/stateatom/.artifacts/a02/array-callsite-native/2026-10-24T16-40-09Z",
+        "source_revision": "1fbd2ac1ce6ec57fbaa9a1ef24c70ad155d8ab57",
+        "maximum_native_runs": 1
       },
       "completed_slices": [
         {
@@ -1962,8 +1967,8 @@
       },
       "current_checkpoint": {
         "record": "147-a02-array-callsite-bridge.md",
-        "status": "source-driver-ready-clean-commit-then-prepare",
-        "next_bounded_step": "Commit source; prepare and freeze ONE original/off/on source case on clean bytes, then preflight/commit/run once"
+        "status": "native-case-prepared-preflight-pass-commit-before-one-run",
+        "next_bounded_step": "Commit immutable case and execute ONCE; preserve literal partial/FAIL and verify saved facts before final review"
       },
       "stopping_point_history": [
         {
