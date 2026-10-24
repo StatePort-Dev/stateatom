@@ -5797,48 +5797,18 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "153-v03-external-restore-availability.md",
+      "execution_record": "154-v03-converged-restore-availability.md",
       "active_slice": {
-        "id": "V03.25",
-        "record": "153-v03-external-restore-availability.md",
-        "status": "complete-bounded-source-and-native-attempt-not-full-V03",
-        "base": "a245ffc",
+        "id": "V03.26",
+        "record": "154-v03-converged-restore-availability.md",
+        "status": "planning-source-not-native",
+        "base": "01ac34a",
         "candidate": "0.1.0-candidate.20261021.78",
         "candidate_rebuilt": false,
-        "native_started": true,
+        "native_started": false,
         "maximum_native_runs": 1,
         "full_V03_acceptance": false,
-        "existing_guards_relaxed": false,
-        "source_focused": 156,
-        "new_source_guard_controls": 28,
-        "new_source_harness_controls": 9,
-        "prior_source_controls_preserved": 100,
-        "full_source_tests": 3464,
-        "full_source_failures": 0,
-        "full_source_cancelled": 0,
-        "product_changed": false,
-        "native_runs": 1,
-        "native_case_exhausted": true,
-        "native_result": "INCOMPLETE_EXTERNAL_RESTORE_AVAILABILITY",
-        "native_source_revision": "d32d499",
-        "native_raw_sha256": "be67770204b6e8e1bce9649a19a03b827c78a47e47759d287cd5f23388d9daa0",
-        "recorded_checks_pass": 4,
-        "independent_saved_verification_inputs": 563,
-        "independent_negative_controls": 21,
-        "rendered_candidates": 4,
-        "final_review_pending": false,
-        "new_source_controls": 56,
-        "review": {
-          "count": 1,
-          "critical": 0,
-          "important": 2,
-          "important_fixed": 2,
-          "minor": 0,
-          "correction_passes": 1,
-          "rereview": false
-        },
-        "historical_per_edit_inspector_snapshots": "NOT_COLLECTED",
-        "final_checkpoint": ".artifacts/v03/external-restore-availability-review/2026-10-25/final-checkpoint.json"
+        "existing_guards_relaxed": false
       },
       "completed_slices": [
         {
@@ -6760,15 +6730,57 @@
           "current_physical_inputs": 549,
           "current_historical_git_inputs": 6,
           "final_checkpoint": ".artifacts/v03/restore-availability-review/2026-10-25/final-checkpoint.json"
+        },
+        {
+          "id": "V03.25",
+          "record": "153-v03-external-restore-availability.md",
+          "status": "complete-bounded-source-and-native-attempt-not-full-V03",
+          "base": "a245ffc",
+          "candidate": "0.1.0-candidate.20261021.78",
+          "candidate_rebuilt": false,
+          "native_started": true,
+          "maximum_native_runs": 1,
+          "full_V03_acceptance": false,
+          "existing_guards_relaxed": false,
+          "source_focused": 156,
+          "new_source_guard_controls": 28,
+          "new_source_harness_controls": 9,
+          "prior_source_controls_preserved": 100,
+          "full_source_tests": 3464,
+          "full_source_failures": 0,
+          "full_source_cancelled": 0,
+          "product_changed": false,
+          "native_runs": 1,
+          "native_case_exhausted": true,
+          "native_result": "INCOMPLETE_EXTERNAL_RESTORE_AVAILABILITY",
+          "native_source_revision": "d32d499",
+          "native_raw_sha256": "be67770204b6e8e1bce9649a19a03b827c78a47e47759d287cd5f23388d9daa0",
+          "recorded_checks_pass": 4,
+          "independent_saved_verification_inputs": 563,
+          "independent_negative_controls": 21,
+          "rendered_candidates": 4,
+          "final_review_pending": false,
+          "new_source_controls": 56,
+          "review": {
+            "count": 1,
+            "critical": 0,
+            "important": 2,
+            "important_fixed": 2,
+            "minor": 0,
+            "correction_passes": 1,
+            "rereview": false
+          },
+          "historical_per_edit_inspector_snapshots": "NOT_COLLECTED",
+          "final_checkpoint": ".artifacts/v03/external-restore-availability-review/2026-10-25/final-checkpoint.json"
         }
       ],
       "current_checkpoint": {
-        "record": "153-v03-external-restore-availability.md",
-        "status": "complete-bounded-source-and-native-attempt-not-full-V03",
-        "next_bounded_step": "V03.26: observed application convergence source/preregistration before unchanged strict window/product predicates; new fixed case only, no exhausted-case repeat."
+        "record": "154-v03-converged-restore-availability.md",
+        "status": "planning-source-not-native",
+        "next_bounded_step": "Task1 finite converged collector/guard/preparer TDD and unchanged156/full source gates; no native."
       },
-      "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v03-semantic-negative-controls.md",
-      "implementation_plan": "../superpowers/plans/2026-10-25-v03-external-restore-availability.md",
+      "last_completed_implementation_plan": "../superpowers/plans/2026-10-25-v03-external-restore-availability.md",
+      "implementation_plan": "../superpowers/plans/2026-10-25-v03-converged-restore-availability.md",
       "last_implementation_plan": "../superpowers/plans/2026-10-24-v03-semantic-negative-controls.md",
       "analysis_protocol": ".artifacts/v03/input-snapshot-ordering/2026-10-24/registration.json",
       "current_bounded_diagnostic": {
@@ -7066,8 +7078,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.25-complete-native-incomplete-source-reviewed",
-    "next_item": "V03.26: observed application convergence source/preregistration before unchanged strict window/product predicates; new fixed case only, no exhausted-case repeat.",
+    "current_increment": "V03.26-planning-source-not-native",
+    "next_item": "V03.26 Task1 source convergence collector, guard and fixed new-case route/preparer.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7093,8 +7105,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "V03",
-      "record": "153-v03-external-restore-availability.md",
-      "status": "complete-bounded-source-and-native-attempt-not-full-V03"
+      "record": "154-v03-converged-restore-availability.md",
+      "status": "planning-source-not-native"
     },
     "completed_increments": [
       {
@@ -9789,11 +9801,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.25 bounded attempt complete, native literalINCOMPLETE/exhausted, no per-edit intermediate scope/history collection in raw. ONE review0C2Ifixed/0M, focused156/full3464PASS; actual native not repeated/product327/78/UI2 and oldraw retained. Next ONE V03.26: separately preregistered observed convergence before strictproduct/window predicates. Whole20/29 unchanged.",
+    "current_activity_note": "V03.25 closeout01ac34a/source156/full3464/ONEreview2Ifixed/nativeexhaustedINCOMPLETE preserved. New26 planned observedconvergence before strictwindow/productgates, same78/UI2/product327/14oldraw. No new code/native/fullV03 or20of29 credit.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "d32d499",
+    "current_source_revision": "01ac34a",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "V03.26: observed application convergence source/preregistration before unchanged strict window/product predicates; new fixed case only, no exhausted-case repeat.",
+    "next_bounded_step": "Task1 finite converged collector/guard/preparer TDD and unchanged156/full source gates; no native.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
