@@ -1,10 +1,13 @@
 # Project status
 
 Active bounded work: [A02.16](completion/166-a02-original-main-jsx-native.md).
-Finite originalMain acquisition candidate with current corrected callback-JSX source
-mechanism. New publicCDP identity lanes/frozen original-off-on protocol before max1
-new owned sandboxed headless run. No runtime proof yet/legacywaiver/blankretry/
-cert/trust/userprofile/install/model/SDK/publication;20/29/fullA02 unchanged.
+Current source stable217focused/full4184PASS; protected460files including82prior
+research/327payload unchanged. RealMain source overlay/source-witness/partial fault
+controls ready; no original Main body/browser yet. Next resource-free prepare/
+preflight+casecommit BEFORE max1new owned sandboxed headless original/off/on case.
+Public startup reports stay separate from original/proc lanes; old4cases exhausted,
+no legacywaiver/blankretry/flags/install/cert/trust/userprofile/model/SDK/publication.
+Whole20/29/fullA02 unchanged/five prior minors deferred.
 
 Completed bounded source slice: [A02.15](completion/165-a02-callback-jsx-interval.md).
 ONEreview0C1I0M; rejected-metadata owner replacement fixed once, RED36/6->GREEN42/

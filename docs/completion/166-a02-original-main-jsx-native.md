@@ -34,3 +34,41 @@ No browser/resources/compiledMain/model/nativewriter run. Fullsuite deferred Tas
 stable. Next Task2 frozen actualMain sourceoverlay/driverfault controls and max1new
 headless nativecase only after source/full/preflight/casecommit. No cert/trust/profile/
 keyring/install or legacycriteria change.20/29/fullA02 unchanged/five minors deferred.
+
+Task2 stable source checkpoint before any nativecase: new fixed Main+JSX-only overlay
+builder, prepare/preflight/run driver and explicit SOURCE_CONTROL_NOT_NATIVE_PROOF
+injected fault tests. Source builder reads actual28corpus/dependencies, pins Core4325/
+JSXdd50/DOM806b, one originalMain interval/two array sites/two compiled branch config
+sites, exact compiler input versus physical source hashes. Original/observed JS+CSS,
+factory/bootstrap/intermediates/loaded Node graph will freeze before native launch.
+No originalMain body/browser from this compiler/source qualification.
+
+Missingdriver RED1file; then .mjs input was refused by own extensionpolicy and off
+test wrongly matched reserved-name collisioncheck. Support retained .mjs/.cjs and
+test hook-definition specifically ->117sourcePASS. Concrete CDP-loaded-source
+receipt integration adds5controls RED99PASS5FAIL. Actual current default frame/
+target/context must match exact bundle/bootstrap getScriptSource bytes; no nearest/
+normalized server-GET substitute. Task1 own qualifier extended for this shared
+interface, prior82registered researchsource unchanged.
+
+LateCDPdetach/pending-disposal/preciseoperation and unknowncleanup gaps RED125PASS/
+3FAIL corrected. Valid actual-source case fixture plus10omitted/contradicted binary/
+nativepin/compilerInput/bootstrap/site-source controls RED24PASS10FAIL ->strong
+resource-free guard. Timed-out handles selfclose; unknown pending cleanup cannotPass.
+Partial metadata/DOM/completed phases survive later failure; source controls attempt
+one fake launch only and explicitly never constitute a native result.
+
+Safe diagnostic addition: initial testregex syntax error(no predicate), corrected
+RED34PASS1FAIL ->217affectedPASS2655.198ms. Records bounded allowlisted OS/API
+diagnostic enums +message digest and exact operation stage; private raw message/
+WebSocket endpoint never persisted. Prediagnostic full4183PASS109912.592ms is
+historical for that source stage; corrected stable full npm test4184PASS/0fail/
+0cancel/0skip111077.204ms (terminal87276exit0). Syntax/diff/protected460 PASS.
+Physical bundled153.0.8010.12 executable exists (source-only stat,0launch).
+Current82oldsource/327payload/alloldraw/exhaustedcases intact, no declaredold delta.
+
+Next after this sourcecommit: resource-free prepare/preflight and frozen casecommit,
+then at most ONE new sandboxed owned headless original/off/on native case. Case not
+prepared/run yet; no actual Main/native/product/wholeA02 capability proof from this
+packet.20/29 unchanged/five minors deferred; no flags/install/cert/trust/userprofile/
+keyring/model/SDK/otherrepo/publication changes.

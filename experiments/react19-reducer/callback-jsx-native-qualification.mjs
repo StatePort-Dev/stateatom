@@ -90,6 +90,9 @@ export function classifyCallbackJSXNativeRun(r,s){
    if(run.mode!=='original'){assert.equal(run.setup.observation.retention.frames,0);assert.equal(run.setup.observation.retention.collecting,false);assert.equal(run.setup.observation.retention.configInput.configs,0);}
    assert.deepEqual(run.console,[]);assert.deepEqual(run.pageErrors,[]);for(const k of ['pageSession','page','context'])assert.equal(run.cleanup[k],true);
    const doc=run.document;assert.equal(doc.mainOnly,true);for(const k of Object.keys(documents)){assert.equal(typeof doc[k],'string');assert(doc[k].length>0&&doc[k].length<=512);documents[k].add(doc[k]);}
+   const witness=run.sourceWitness;assert.equal(witness.schema,'stateatom.callback-jsx-loaded-source/1');assert.equal(witness.status,'EXACT_LOADED_MAIN_BUNDLE_AND_BOOTSTRAP');for(const k of ['frameId','targetId','browserContextId'])assert.equal(witness[k],doc[k]);assert(Number.isSafeInteger(witness.executionContextId)&&witness.executionContextId>0);
+   const bundleName=run.mode==='original'?'original.js':'observed.js',bundle=witness.bundle;assert.equal(bundle.sha256,s.bundles[bundleName].sha256);assert.equal(bundle.url,r.origin+'/'+bundleName);assert.equal(bundle.executionContextId,witness.executionContextId);assert(typeof bundle.scriptId==='string'&&bundle.scriptId.length>0);
+   if(run.mode==='original')assert.equal(witness.bootstrap,null);else{assert.equal(witness.bootstrap.sha256,s.bootstrapDigests[run.mode]);assert.equal(witness.bootstrap.url,'stateatom-owned://a0216/'+run.mode+'/bootstrap.js');assert.equal(witness.bootstrap.executionContextId,witness.executionContextId);assert(typeof witness.bootstrap.scriptId==='string'&&witness.bootstrap.scriptId.length>0&&witness.bootstrap.scriptId!==bundle.scriptId);}
    assert.deepEqual(run.phases.map(x=>x.id),s.protocol.phases.map(x=>x.id));
    for(let i=0;i<s.protocol.phases.length;i++){
     const p=s.protocol.phases[i],v=run.phases[i];assert.equal(v.completed,true);assert.deepEqual(v.document,doc);assert.deepEqual(v.dom,{texts:p.texts,checked:p.checked});
@@ -98,7 +101,7 @@ export function classifyCallbackJSXNativeRun(r,s){
     else{scope(v.capture.snapshot,run.pageId);assert.equal(v.capture.snapshot.status,unknown);assert.equal(v.capture.snapshot.links.length,0);assert.equal(v.capture.retention.frames,0);assert.equal(v.capture.retention.configInput.configs,0);assert.equal(v.capture.retention.active,0);assert.equal(v.capture.retention.collecting,false);assert.equal(v.capture.retention.stopped,p.id==='stopped');}
    }
   }
-  assert.equal(pages.size,3);for(const k of Object.keys(documents))assert.equal(documents[k].size,3);for(const k of ['browserSession','client','owner','httpServer','ownerProcessExited','managedProfileRemoved'])assert.equal(r.cleanup[k],true);assert.equal(r.cleanup.ownerKill,'not-needed');
+  assert.equal(pages.size,3);for(const k of Object.keys(documents))assert.equal(documents[k].size,3);for(const k of ['browserSession','client','owner','httpServer','ownerProcessExited','managedProfileRemoved','pendingResources'])assert.equal(r.cleanup[k],true);assert.equal(r.cleanup.ownerKill,'not-needed');
  }catch(error){failures.push({code:'NATIVE_CASE_INCOMPLETE',message:error.message});}
  return{status:failures.length?'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02':'PASS_BOUNDED_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02',failures,installedRuntimeProven:false,fullA02:false};
 }

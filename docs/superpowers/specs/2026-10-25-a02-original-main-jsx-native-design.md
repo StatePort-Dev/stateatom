@@ -31,6 +31,15 @@ Use launchServer headless true/chromiumSandbox true/args[]/host127.0.0.1/port0,
 matching existing Playwright defaults; require automation in actual report or fail.
 No permission/certificate/trust flags, user browser/IDE/keyring/account changes.
 
+Require same-current-default-execution-context CDP scriptParsed +getScriptSource
+hash for served bundle and (off/on) owned bootstrap sourceURL; exact case bytes,
+not server-GET alone. No normalization/nearest-script match. Metadata reads do not
+re-evaluate app expressions. Initial app empty DOM and newcontextIDs recorded.
+Default root acquisition must not leak late handles: timed-out returned handles
+close themselves, pending cleanup staysUnknown/Incomplete, never revives success.
+Injected driver test operations must label SOURCE_CONTROL_NOT_NATIVE_PROOF and
+must never write an actual native result or claim a real browser was started.
+
 One actual original/off/on case only after sourcecommit, prepare/preflight and
 casecommit; marker BEFORE launch, started/completed counters, partial failures saved.
 Temp generated /tmp/playwright_chromiumdev_profile-* only, endpoint memory-only.

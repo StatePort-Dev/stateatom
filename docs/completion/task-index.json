@@ -1665,13 +1665,14 @@
       "active_slice": {
         "id": "A02.16",
         "record": "166-a02-original-main-jsx-native.md",
-        "status": "task1-pure-qualifier-complete-task2-pending",
+        "status": "source-stable-awaiting-one-frozen-native-case",
         "base": "bac767d494646b831d059082b0357438800c4f6c",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
-        "focused_checks": 141
+        "focused_checks": 217,
+        "full_source_checks": 4184
       },
       "completed_slices": [
         {
@@ -2301,8 +2302,8 @@
       },
       "current_checkpoint": {
         "record": "166-a02-original-main-jsx-native.md",
-        "status": "task1-pure-qualifier-complete-task2-pending",
-        "next_bounded_step": "Task2 frozen actualMain overlay/driverfault controls, fullsuite/sourcecommit then prepare/preflight/casecommit beforemax1ownedheadless run. No native yet."
+        "status": "source-stable-awaiting-one-frozen-native-case",
+        "next_bounded_step": "Resource-free prepare/preflight aftersourcecommit; commit frozen case BEFORE max1ownedheadless original/off/on run. No native/Main runtime proof yet."
       },
       "stopping_point_history": [
         {
