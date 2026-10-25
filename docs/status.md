@@ -1,11 +1,11 @@
 # Project status
 
-A02.34 sourcePASS/ONEreview pending: [bounded research retention](completion/190-a02-bounded-app-element-retention.md).
+A02.34 source complete/ONEreview0C0I0newM/14old deferred: [bounded research retention](completion/190-a02-bounded-app-element-retention.md).
 FourNEWfiles/old139research+327product+482protected unchanged. Explicit research
 mode holds<=64accepted App JSX roots perwindow; stop/restart/failure release, original
 Unknown/guards/DTOs unchanged.18new/119focused/4994fullPASS; ownedNodeGCcontrol only,
 no originalApp/browser/model/native cause/fullA02 proof. Graphbytes/performanceUnknown.
-20of29/14deferred unchanged; nextONE source review then distinct acquisition decision.
+20of29/14deferred unchanged; nextONE separately scoped declared-retention original-gate acquisition decision.
 
 L02.15 bounded attempt closed, ONEreview0C0I0newM/14old deferred:
 [current80 cached comparison](completion/189-l02-current-path-comparison.md).

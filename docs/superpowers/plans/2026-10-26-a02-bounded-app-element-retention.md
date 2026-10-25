@@ -27,10 +27,10 @@ NEWtests/helpers/app-element-retention-fixture.mjs; NEWtests/helpers/app-element
 NEWtests/engine/react19-app-element-retaining-observer.test.mjs; docs/completion/190-a02-bounded-app-element-retention.md; docs/status.md; docs/completion/task-index.json.
 **Interfaces:** createAppElementRetainingObserver existing-hook-compatible calls,
 old exact snapshot/lookup/seal outputs, readonly separate retention metadata.
-- [ ] task-start/read brief/register4a8current139/product327/priorA02+L02evidence.
-- [ ] RED missingwrapper/owned lifetime test, then implement minimalprivate retention
+- [x] task-start/read brief/register4a8current139/product327/priorA02+L02evidence.
+- [x] RED missingwrapper/owned lifetime test, then implement minimalprivate retention
 with captured intrinsics, acceptedconfig identity and old observers unchanged.
-- [ ] GREEN new+old focused/full npm test/syntax/diff/hash checks; no browser/App/native.
-- [ ] Record exact source results/limitations, localcommit/task-done.
-- [ ] ONE whole review, ONE tested I/C pass, minors defer; archive ownworkspace
+- [x] GREEN new+old focused/full npm test/syntax/diff/hash checks; no browser/App/native.
+- [x] Record exact source results/limitations, localcommit/task-done.
+- [x] ONE whole review, ONE tested I/C pass, minors defer; archive ownworkspace
 CRC/everybyte/identity/protected checks/remove onlyown; closecommit and ONE nextitem.
