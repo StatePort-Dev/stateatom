@@ -2461,7 +2461,7 @@
       },
       "current_checkpoint": {
         "record": "180-a02-native-state-return-native.md",
-        "status": "planning-one-native-state-return-reference-acquisition",
+        "status": "source-checks-complete-native-case-pending",
         "next_bounded_step": "ONE native integration/acquisition case max; private reference premise only, all stronger originsUnknown."
       },
       "stopping_point_history": [
@@ -2591,13 +2591,16 @@
       "active_slice": {
         "id": "A02.30",
         "record": "180-a02-native-state-return-native.md",
-        "status": "planning",
+        "status": "source-checks-complete",
         "base": "84f0d50f30b59dd825d6a0758ead3735de63c736",
         "native_runs": 0,
         "maximum_native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_checks": 53,
+        "full_checks": 4701,
+        "observed_compiler_inputs": 4
       }
     },
     {

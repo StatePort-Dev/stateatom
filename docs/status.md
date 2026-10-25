@@ -1,5 +1,10 @@
 # Project status
 
+A02.30 source checks complete, ONE native run pending: [native returned-state acquisition](completion/180-a02-native-state-return-native.md).
+SixNEWfiles,53focused/4701fullPASS,4compiler overlays, originalbundle unchanged.
+123research/327product/priorraw unchanged. Same private App token; separate source
+and native-reference companions, stronger originsUnknown/fullA02open/20of29 unchanged.
+
 A02.29 source checks/review complete (0C2Ifixed0newM,11oldminors deferred): [native returned-state reference](completion/179-a02-native-state-return-source.md).
 Four NEW files;55focused/4648fullPASS,18OWNEDsemanticVMs, actualReactDOM/App
 compile-only.119research/327payload/priorraw unchanged; no native acquisition.
