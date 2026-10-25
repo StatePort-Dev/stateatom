@@ -1,4 +1,9 @@
-# A02.30 — native returned-state reference acquisition (source checkpoint)
+# A02.30 — native returned-state reference acquisition
+
+Current result: bounded native acquisition PASS; fullA02 remains open. See actual
+native result below. Source/native revisions and the limits of each are separate.
+
+## Historical source checkpoint before native execution
 
 Six NEW files;123currentresearch/product327/allpriorraw unchanged,1212registered
 hash comparisons equal. Source base84f0d50f30b59dd825d6a0758ead3735de63c736.
@@ -7,7 +12,7 @@ separate companion captures, no ID join or selectedDOM/native-state-origin upgra
 
 53focusedPASS3018.208468ms/full4701PASS120687.598876ms,0fail0skip/exit0.
 Six syntax checks/diff check PASS. Overlay compilation only, exactly4changed inputs:
-App/Main/JSX/ReactDOM; originalbundle unchanged. No real retained invocation yet.
+App/Main/JSX/ReactDOM; originalbundle unchanged. No real retained invocation had occurred at this source checkpoint.
 12 helper functions byte-identical, native operations equivalent except actual
 native-global-presence capture/copy; copied classifiers change only actual new
 case path/function name. Prior source/driver/raw criteria retained.
@@ -17,8 +22,8 @@ before run at .artifacts/a02/native-state-return-native-saved-verification/2026-
 old strict218negative controls retained, native reference checks added. Exact
 case/revision/inputcount will be frozen before execution. Runtime PID/start/vector/
 origin metadata crosschecked between actual providers, no effective-mode claim.
-No native execution/readiness credit at this checkpoint; fullA02false/20of29 and
-11oldminors unchanged. Case preparation, actual acquisition and final review pending.
+No native execution/readiness credit at this source checkpoint; fullA02false/20of29
+and11oldminors unchanged. Case/acquisition were then pending; completed below.
 
 ## Actual native result
 
