@@ -1,5 +1,13 @@
 # Project status
 
+A02.25 checkpoint before final review: [App/Main source attempt](completion/175-a02-app-main-props.md)
+INCOMPLETE3/54contexts/17unvisitedcases/0acceptedAppMainlinks, no retry. Appbinding1/
+config-nativeprops1 recorded; owned adapter dropped fourth Main source-site arg.
+Tested correction53focused/4537fullPASS, current source not requalified. Saved
+reader1000then-currentphysical/111negative; old106research/product327 unchanged.
+Next ONE separately frozen corrected-source qualification, native waits.20/29/
+fullA02 unchanged,9minors deferred; no browser/cert/trust/profile/product change.
+
 Completed bounded source task: [A02.24](completion/174-a02-app-hook-binding.md).
 ONEreview0C0I0newM/no correctionpass; actual54VM18cases/9positive11SOURCEbindings/
 9Unknown,913before-afterhashes/saved104negative;55focused/4484fullPASS. Native/index/
