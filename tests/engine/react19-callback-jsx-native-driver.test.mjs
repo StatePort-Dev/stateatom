@@ -76,11 +76,11 @@ test('late CDP session is detached and pending disposal is observable',async()=>
 test('failed phase records the precise operation stage without exposing its private message',async()=>{const{s,ops}=sourceOps({fail:'action'}),r=await runCallbackJSXNativeStages(s,ops);assert(r.errors.some(e=>e.stage==='on:changed:perform'));assert.doesNotMatch(JSON.stringify(r.errors),/private-owned/);});
 
 async function validSourceCase(version=1){
- const r=await sourceOverlay(),out=path.resolve(version===2?'.artifacts/a02/callback-jsx-main-automation-native/source-fixture':'.artifacts/a02/callback-jsx-main-native/source-fixture'),pagePrefix='source-fixture',factory=callbackJSXNativeFactory(),sourceRegistration=path.resolve(version===2?'.artifacts/a02/callback-jsx-explicit-source/2026-10-25/registration.json':'.artifacts/a02/callback-jsx-native-source/2026-10-25/registration.json'),inputHashes={...r.physicalInputs},sourceRegistrationSha256=hash(await readFile(sourceRegistration));
+ const r=await sourceOverlay(),out=path.resolve(version===3?'.artifacts/a02/callback-jsx-main-fragment-native/source-fixture':version===2?'.artifacts/a02/callback-jsx-main-automation-native/source-fixture':'.artifacts/a02/callback-jsx-main-native/source-fixture'),pagePrefix='source-fixture',factory=callbackJSXNativeFactory(),sourceRegistration=path.resolve(version===3?'.artifacts/a02/callback-jsx-fragment-source/2026-10-25/registration.json':version===2?'.artifacts/a02/callback-jsx-explicit-source/2026-10-25/registration.json':'.artifacts/a02/callback-jsx-native-source/2026-10-25/registration.json'),inputHashes={...r.physicalInputs},sourceRegistrationSha256=hash(await readFile(sourceRegistration));
  const bundles={};for(const[name,b]of Object.entries(r.bundles)){bundles[name]={file:out+'/'+name,sha256:b.sha256,bytes:b.bytes};inputHashes[out+'/'+name]=b.sha256;}
  inputHashes[out+'/observer-factory.js']=hash(factory);inputHashes['/owned/chrome']='1'.repeat(64);inputHashes['/owned/node']='2'.repeat(64);inputHashes[sourceRegistration]=sourceRegistrationSha256;inputHashes[out+'/main-config.js']=r.main.configDigest;inputHashes[out+'/transformed-jsx.cjs']=r.nativeJSX.outputDigest;
  const bootstrapDigests={};for(const mode of ['off','on']){bootstrapDigests[mode]=hash(callbackJSXNativeBootstrap(factory,{page:pagePrefix+':'+mode,mode}));inputHashes[out+'/'+mode+'-bootstrap.js']=bootstrapDigests[mode];}
- return{schema:version===2?'stateatom.callback-jsx-native-case/2':'stateatom.callback-jsx-native-case/1',maximumNativeRuns:1,out,preparedAtRevision:'d'.repeat(40),preparedDirty:false,upstreamRevision:'ff43b02e59dfa604386bb382034b2cd07c2bcd8a',originalManifest:JSON.parse(await readFile('.runtime/todomvc/SOURCE_SHA256.json','utf8')),pagePrefix,protocol:callbackJSXNativeProtocol(),profilePolicy:{root:'/tmp',prefix:'playwright_chromiumdev_profile-'},transport:{host:'127.0.0.1',port:0},node:{executable:'/owned/node',sha256:'2'.repeat(64),version:process.version},browser:{executable:'/owned/chrome',sha256:'1'.repeat(64),version:'153.0.8010.12',headless:true,chromiumSandbox:true,args:version===2?['--enable-automation']:[],timeout:20000},withExtension:false,withHelper:false,withIDE:false,productSupport:false,fullA02:false,sourceCounts:{priorResearch:version===2?86:82,productInputs:327,originalCorpus:28},sourceRegistrationSha256,sitePolicy:{mapSite:r.main.intervalSites[0],jsxSites:r.main.configSites},main:r.main,nativeJSX:r.nativeJSX,loadedInputs:r.loadedInputs,bundles,factory:{file:out+'/observer-factory.js',sha256:hash(factory)},bootstrapDigests,inputHashes};
+ return{schema:version===3?'stateatom.callback-jsx-native-case/3':version===2?'stateatom.callback-jsx-native-case/2':'stateatom.callback-jsx-native-case/1',maximumNativeRuns:1,out,preparedAtRevision:'d'.repeat(40),preparedDirty:false,upstreamRevision:'ff43b02e59dfa604386bb382034b2cd07c2bcd8a',originalManifest:JSON.parse(await readFile('.runtime/todomvc/SOURCE_SHA256.json','utf8')),pagePrefix,protocol:callbackJSXNativeProtocol(),profilePolicy:{root:'/tmp',prefix:'playwright_chromiumdev_profile-'},transport:{host:'127.0.0.1',port:0},node:{executable:'/owned/node',sha256:'2'.repeat(64),version:process.version},browser:{executable:'/owned/chrome',sha256:'1'.repeat(64),version:'153.0.8010.12',headless:true,chromiumSandbox:true,args:version>=2?['--enable-automation']:[],timeout:20000},withExtension:false,withHelper:false,withIDE:false,productSupport:false,fullA02:false,sourceCounts:{priorResearch:version>=2?86:82,productInputs:327,originalCorpus:28},sourceRegistrationSha256,sitePolicy:{mapSite:r.main.intervalSites[0],jsxSites:r.main.configSites},main:r.main,nativeJSX:r.nativeJSX,loadedInputs:r.loadedInputs,bundles,factory:{file:out+'/observer-factory.js',sha256:hash(factory)},bootstrapDigests,inputHashes};
 }
 test('resource-free case shape is constructed from actual current source build receipts',async()=>{const s=await validSourceCase();assert.doesNotThrow(()=>guardCallbackJSXNativeCase(s));});
 
@@ -182,3 +182,22 @@ for(const [label,change]of [
   assert.equal(typeof q,'function');assert.throws(()=>q(f.frame,f.target,f.policy));
  });
 }
+
+// A02.18: fixed new case, not a retry of either exhausted historical case.
+test('schema3 fixed profile accepts the same explicit safe public launch options',async()=>{
+ const s=await validSourceCase(3);assert.doesNotThrow(()=>guardCallbackJSXNativeCase(s));
+ const o=callbackJSXNativeLaunchOptions(s);assert.deepEqual(o.args,['--enable-automation']);assert.equal(o.chromiumSandbox,true);assert.equal(o.headless,true);
+});
+test('schema3 cannot borrow old output/registration or accept arbitrary arguments',async()=>{
+ const s=await validSourceCase(3);
+ for(const change of [x=>x.out=x.out.replace('fragment-native','automation-native'),x=>x.inputHashes={},x=>x.browser.args=[],x=>x.browser.args.push('--ignore-certificate-errors')]){
+  const c=copy(s);change(c);assert.throws(()=>guardCallbackJSXNativeCase(c));
+ }
+});
+test('schema3 refusal of original delivery stops before public facts HTTP or app',async()=>{
+ const{s,ops,calls}=sourceOps();s.schema='stateatom.callback-jsx-native-case/3';
+ ops.readRequestedAutomation=async()=>({status:'REQUIRED_AUTOMATION_ARGUMENT_REFUSED'});
+ const r=await runCallbackJSXNativeStages(s,ops);
+ assert.equal(r.modesStarted,0);assert.equal(calls.includes('http'),false);assert.equal(calls.includes('proc'),false);
+ assert.equal(r.startup.requestedAutomation.status,'REQUIRED_AUTOMATION_ARGUMENT_REFUSED');assert.equal(r.browserLaunchesStarted,1);
+});

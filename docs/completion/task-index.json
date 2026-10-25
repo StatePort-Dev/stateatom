@@ -2356,8 +2356,8 @@
       },
       "current_checkpoint": {
         "record": "168-a02-fragment-main-native.md",
-        "status": "registered-before-source",
-        "next_bounded_step": "Closed corrected-fragment Main case; source/frozen gates beforemax1native. Oldcases exhausted; no interval proof yet."
+        "status": "source-qualified-pending-frozen-case",
+        "next_bounded_step": "Prepare/preflight fixed schema3 and commitcase before ONE actual Main original/off/on; same18phases/currentURLfacts. No nativeproofyet."
       },
       "stopping_point_history": [
         {
@@ -2441,12 +2441,15 @@
       "active_slice": {
         "id": "A02.18",
         "record": "168-a02-fragment-main-native.md",
-        "status": "registered-before-source",
+        "status": "source-qualified-pending-frozen-case",
         "base": "7d1660442aa4a72b2eb1f2ceeddee6f9d8537a6b",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_checks": 226,
+        "full_source_checks": 4270,
+        "undeclared_inputs_unchanged": 466
       }
     },
     {

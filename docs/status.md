@@ -1,8 +1,8 @@
 # Project status
 
 Active bounded task: [A02.18](completion/168-a02-fragment-main-native.md).
-Registered before source edits: closed corrected-fragment Main case, same18phases,
-additional strict saved URL fields. Source/frozen gates before max1newnative;
+Closed corrected-fragment Main source:226focused/4270fullPASS; same18phases,
+additional strict saved URL fields/receipt gate. Frozen gates before max1newnative;
 no new runtime proof yet.20/29/fullA02 unchanged;6minors deferred.
 
 Completed bounded attempt: [A02.17](completion/167-a02-explicit-startup-main.md).

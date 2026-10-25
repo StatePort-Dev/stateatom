@@ -80,6 +80,20 @@ export function guardCallbackJSXNativeWindow(c,phase,policy){
  }
  assert.deepEqual(indices.sort((a,b)=>a-b),Array.from({length:phase.rowCount},(_,i)=>i));return c;
 }
+export function guardCallbackJSXNativeURLReadings(run,origin){
+ const u=new URL(origin);assert.equal(u.protocol,'http:');assert.equal(u.hostname,'127.0.0.1');assert.equal(u.origin,origin);assert(u.port);
+ assert(['original','off','on'].includes(run.mode));
+ const rows=run.documentURLReadings,base=origin+'/?mode='+run.mode;
+ assert(Array.isArray(rows)&&rows.length===8);
+ for(let i=0;i<rows.length;i++){
+  const row=rows[i];assert.equal(typeof row.urlFragmentPresent,'boolean');
+  if(row.urlFragmentPresent)assert.equal(typeof row.urlFragment,'string');else assert(!Object.hasOwn(row,'urlFragment'));
+  const fragment=row.urlFragmentPresent?row.urlFragment:'';
+  assert.equal(fragment,i<6?'':'#/active');
+  assert.equal(row.frameURL,base);assert.equal(row.targetURL,base+fragment);assert.equal(row.pageURL,base+fragment);
+ }
+ return true;
+}
 export function classifyCallbackJSXNativeRun(r,s){
  const failures=[];
  try{
@@ -89,13 +103,14 @@ export function classifyCallbackJSXNativeRun(r,s){
   for(const k of ['modelCalls','nativeWriterCalls'])assert.equal(r[k],0);
   for(const[k,n]of [['browserLaunchesStarted',1],['browserLaunchesCompleted',1],['modesStarted',3],['modesCompleted',3],['phasesStarted',18],['phasesCompleted',18]])assert.equal(r[k],n);
   assert.deepEqual(s.protocol,callbackJSXNativeProtocol());assert.equal(r.startupQualification.status,'QUALIFIED_PUBLIC_STARTUP_AND_OWNER_PROCESS_FACTS_ONLY');assert.deepEqual(r.startupQualification.failures,[]);assert.equal(r.startupQualification.effectiveMode,unknown);assert.equal(r.startupQualification.procArgumentObservation,unknown);
-  if(s.schema==='stateatom.callback-jsx-native-case/2'){
+  if(['stateatom.callback-jsx-native-case/2','stateatom.callback-jsx-native-case/3'].includes(s.schema)){
    const original=r.startup?.owner,receipt=r.startup?.requestedAutomation;
    assert.equal(receipt?.schema,'stateatom.callback-jsx-requested-automation/1');assert.equal(receipt.source,'BrowserServer.process().spawnargs');assert.equal(receipt.status,'REQUIRED_AUTOMATION_ARGUMENT_OBSERVED');assert.deepEqual(receipt.errors,[]);assert.equal(receipt.pid,original.pid);assert.equal(receipt.vectorDigest,original.vectorDigest);assert.equal(receipt.argumentCount,original.argumentCount);assert(Number.isSafeInteger(receipt.pid)&&receipt.pid>0&&receipt.pid<=2147483647);assert(digest(receipt.vectorDigest));assert(Number.isSafeInteger(receipt.argumentCount)&&receipt.argumentCount>=2&&receipt.argumentCount<=256);assert.equal(receipt.automationOptionCount,1);assert.equal(receipt.automationExact,true);
   }
   assert.deepEqual(r.networkDenied,[]);assert(Array.isArray(r.traffic)&&r.traffic.length>0);for(const t of r.traffic){assert.equal(t.method,'GET');assert.equal(t.ownedOrigin,true);}
   assert.deepEqual(r.runs.map(x=>x.mode),s.protocol.modes);const pages=new Set(),documents={targetId:new Set(),frameId:new Set(),loaderId:new Set(),browserContextId:new Set()};
   for(const run of r.runs){
+   if(s.schema==='stateatom.callback-jsx-native-case/3')guardCallbackJSXNativeURLReadings(run,r.origin);
    assert.equal(run.pageId,s.pagePrefix+':'+run.mode);pages.add(run.pageId);assert.deepEqual(run.initialDom,{texts:[],checked:[]});assert.deepEqual(run.setup.dom,s.protocol.setup);assert.equal(run.setup.sourceWindowNotAccepted,true);
    if(run.mode!=='original'){assert.equal(run.setup.observation.retention.frames,0);assert.equal(run.setup.observation.retention.collecting,false);assert.equal(run.setup.observation.retention.configInput.configs,0);}
    assert.deepEqual(run.console,[]);assert.deepEqual(run.pageErrors,[]);for(const k of ['pageSession','page','context'])assert.equal(run.cleanup[k],true);

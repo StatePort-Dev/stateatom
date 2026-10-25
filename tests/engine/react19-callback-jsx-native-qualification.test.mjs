@@ -166,3 +166,44 @@ for(const[name,mutate]of [
  ['errors',r=>r.startup.requestedAutomation.errors=['UNKNOWN']]
 ])test('v2 saved result refuses original delivery '+name,()=>{const{r,s}=explicitWholeRun();mutate(r);assert.equal(classifyCallbackJSXNativeRun(r,s).status,'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');});
 for(const kind of ['PID','digest','count'])test('v2 matching malformed original and receipt '+kind+' cannot qualify',()=>{const{r,s}=copy(explicitWholeRun()),owner=r.startup.owner,receipt=r.startup.requestedAutomation;if(kind==='PID')owner.pid=receipt.pid=true;else if(kind==='digest')owner.vectorDigest=receipt.vectorDigest='invalid';else owner.argumentCount=receipt.argumentCount=true;assert.equal(classifyCallbackJSXNativeRun(r,s).status,'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');});
+
+// A02.18 saved URL facts are explicit CDP fields, never reconstructed from a digest.
+function fragmentWholeRun(){
+ const {r,s}=copy(explicitWholeRun());s.schema='stateatom.callback-jsx-native-case/3';
+ for(const run of r.runs){
+  const base=r.origin+'/?mode='+run.mode;
+  run.documentURLReadings=Array.from({length:8},(_,i)=>i<6?{frameURL:base,urlFragmentPresent:false,targetURL:base,pageURL:base}:{frameURL:base,urlFragmentPresent:true,urlFragment:'#/active',targetURL:base+'#/active',pageURL:base+'#/active'});
+ }
+ return {r,s};
+}
+test('schema3 explicit separate URL facts qualify the scoped saved structure',()=>{
+ const {r,s}=fragmentWholeRun();assert.equal(classifyCallbackJSXNativeRun(r,s).status,'PASS_BOUNDED_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');
+});
+for(const [label,mutate]of [
+ ['no readings',run=>delete run.documentURLReadings],
+ ['missing reading',run=>run.documentURLReadings.pop()],
+ ['extra reading',run=>run.documentURLReadings.push({...run.documentURLReadings[0]})],
+ ['foreign base',run=>run.documentURLReadings[0].frameURL='http://foreign/'],
+ ['embedded fragment',run=>run.documentURLReadings[6].frameURL+='#/active'],
+ ['missing fragment',run=>delete run.documentURLReadings[6].urlFragment],
+ ['false fragment presence',run=>run.documentURLReadings[6].urlFragmentPresent=false],
+ ['null fragment',run=>run.documentURLReadings[6].urlFragment=null],
+ ['wrong fragment',run=>run.documentURLReadings[6].urlFragment='#/completed'],
+ ['early fragment',run=>Object.assign(run.documentURLReadings[0],{urlFragmentPresent:true,urlFragment:'#/active'})],
+ ['target mismatch',run=>run.documentURLReadings[6].targetURL=run.documentURLReadings[6].frameURL],
+ ['page mismatch',run=>run.documentURLReadings[6].pageURL=run.documentURLReadings[6].frameURL],
+ ['reordered reading',run=>[run.documentURLReadings[0],run.documentURLReadings[6]]=[run.documentURLReadings[6],run.documentURLReadings[0]]],
+ ['unmarked optional value',run=>run.documentURLReadings[0].urlFragment=''],
+ ['nonboolean presence',run=>run.documentURLReadings[0].urlFragmentPresent=0],
+]){
+ test('schema3 saved URL evidence refuses '+label,()=>{
+  const{r,s}=fragmentWholeRun();mutate(r.runs[0]);assert.equal(classifyCallbackJSXNativeRun(r,s).status,'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');
+ });
+}
+test('schema3 accepts explicit empty optional fragments in unfiltered readings',()=>{
+ const{r,s}=fragmentWholeRun();for(const run of r.runs)for(const row of run.documentURLReadings.slice(0,6))Object.assign(row,{urlFragmentPresent:true,urlFragment:''});
+ assert.equal(classifyCallbackJSXNativeRun(r,s).status,'PASS_BOUNDED_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');
+});
+test('schema3 cannot drop the independent original requested-argument receipt',()=>{
+ const{r,s}=fragmentWholeRun();delete r.startup.requestedAutomation;assert.equal(classifyCallbackJSXNativeRun(r,s).status,'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');
+});
