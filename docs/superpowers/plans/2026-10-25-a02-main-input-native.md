@@ -32,7 +32,7 @@
 **Files NEW:** experiments/react19-reducer/main-input-native-run.mjs; main-input-native-qualification.mjs; tests/engine/react19-main-input-native-driver.test.mjs; react19-main-input-native-qualification.test.mjs. Updatecompletion173/status/index; fixedcase only aftersourcecommit.
 **Interfaces:** Same nativewriter parse/prepare/preflight/run/stage APIs under newmodule; newguard/classifyMainInputNativeRun and purecallbackprojection. Existingobserver/transform/legacyclassifier unchanged.
 
-- [ ] task-start/readbrief/BASE/registerbeforecode. RED pureMainpositive/refusal/scopedIDs/Stop/off/projection/sourceControl/strongclaim/afterhash inputs and driverfixedcase/launch/bootstrap/compile/privateprotocol controls. Implement fournewfiles only; inspectfinitecopydiff; focusedGREEN/syntax/diff/full npmPASS/protect95/327/raw/sourcecommit.
+- [x] task-start/readbrief/BASE/registerbeforecode. RED pureMainpositive/refusal/scopedIDs/Stop/off/projection/sourceControl/strongclaim/afterhash inputs and driverfixedcase/launch/bootstrap/compile/privateprotocol controls. Implement fournewfiles only; inspectfinitecopydiff; focusedGREEN/syntax/diff/full npmPASS/protect95/327/raw/sourcecommit.
 - [ ] Resourcefreeprepare/preflight originalMain/App/react19/95source/327payload/browser/Node/compiler/factory/bootstrap/sourcepolicy; casecommit beforelaunch. Task-done focusedPASS; no browser inTask1.
 
 ### Task 2: ONE actual native handoff and saved-byte closeout

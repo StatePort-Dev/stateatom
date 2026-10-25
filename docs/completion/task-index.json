@@ -2461,7 +2461,7 @@
       },
       "current_checkpoint": {
         "record": "173-a02-main-input-native.md",
-        "status": "registered-before-source",
+        "status": "source-gates-passed-before-native-preparation",
         "next_bounded_step": "A02.23 newfixed native Maininputhandoff case;95research/327payload protected; real retained hooks/router, same strictnativeprotocol/max1run; no oldcase retry."
       },
       "stopping_point_history": [
@@ -2556,12 +2556,15 @@
       "active_slice": {
         "id": "A02.23",
         "record": "173-a02-main-input-native.md",
-        "status": "registered-before-source",
+        "status": "source-gates-passed-before-native-preparation",
         "base": "551014f",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_tests_passed": 385,
+        "new_tests": 47,
+        "full_tests_passed": 4429
       }
     },
     {
