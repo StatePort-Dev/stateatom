@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "181-a02-native-state-source-path.md",
-        "status": "source-checks-complete-native-association-case-pending",
-        "next_bounded_step": "ONE private token/config/element reference association + native qualification; selectedDOM/ownership originsUnknown."
+        "status": "bounded-native-attempt-incomplete-full-reader-refused",
+        "next_bounded_step": "ONE source-only App/Main complete weak-reference gate availability diagnostic using saved data/owned controls; no assumed GC fix, criteria lowering or native rerun."
       },
       "stopping_point_history": [
         {
@@ -2596,9 +2596,9 @@
       "active_slice": {
         "id": "A02.31",
         "record": "181-a02-native-state-source-path.md",
-        "status": "source-checks-complete",
+        "status": "native-attempt-incomplete-final-review-pending",
         "base": "22e1f320c5afefcf58fdc6744163a82fa88c9f37",
-        "native_runs": 0,
+        "native_runs": 1,
         "maximum_native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
@@ -2606,7 +2606,20 @@
         "focused_checks": 68,
         "full_checks": 4769,
         "observed_compiler_inputs": 4,
-        "observed_bundle_unchanged_from_A0230": true
+        "observed_bundle_unchanged_from_A0230": true,
+        "modes_completed": 2,
+        "phases_completed": 14,
+        "phases_started": 15,
+        "qualified_windows": 0,
+        "qualified_links": 0,
+        "candidate_observed_windows": 2,
+        "candidate_observed_links": 4,
+        "registered_runtime_inputs": 1416,
+        "full_reader_rejected": true,
+        "posthoc_structural_controls": 27,
+        "native_result": ".artifacts/a02/native-state-source-path/2026-10-25T18-41-00Z/results.json",
+        "execution_revision": "3c8c6b9ff54c4066949f297558db7cf5778056f7",
+        "prepared_revision": "7bddb1b62527ee99bea9b9480348f27a48c3355e"
       }
     },
     {

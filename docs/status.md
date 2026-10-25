@@ -1,9 +1,13 @@
 # Project status
 
-A02.31 source checks complete, ONE native run pending: [native state/source-element association](completion/181-a02-native-state-source-path.md).
-68focused/4769fullPASS; private config/App/Main/callback/element refs join exact
-subproofs.129research/327product/priorraw unchanged; four compiler inputs and both
-bundles identicalA02.30. Stronger originsUnknown/fullA02open/20of29 unchanged.
+A02.31 native attempt INCOMPLETE, final review pending: [private source association](completion/181-a02-native-state-source-path.md).
+ONElaunch/2modescompleted14phases, stoppedonchanged. equal/same2windows4candidate
+links unqualified; changedAppMainUnknown despite AppBinding/MainInput/nativeReturn
+Observed; jointUnknown0/accepted0.1416hashesequal/cleanupPIDprofileAbsent.
+Fullprewritten reader refused unchanged; posthoc27structural controls preserve
+incomplete data only.68focused/4769fullPASS;129research/327payload/priorraw
+unchanged. CauseUnknown, no retry.20of29/fullA02 unchanged. NextONEsource-only
+App/Main complete-gate availability diagnosis, no assumed GC/host-origin upgrade.
 
 A02.30 actualnative PASS (ONEreview0C0I0newM/11oldminors deferred): [native returned-state acquisition](completion/180-a02-native-state-return-native.md).
 ONElaunch3modes18phases; native4windows4links, App4/8/Main5/9 separately.

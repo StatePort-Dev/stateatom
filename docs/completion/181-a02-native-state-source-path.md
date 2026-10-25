@@ -1,6 +1,8 @@
 # A02.31 — native state/Main source-element association
 
-Current checkpoint: source checks complete; ONE actual native run pending.
+Current result: native attempt INCOMPLETE, no accepted joint paths; final review pending.
+
+## Historical source checkpoint before native execution
 SixNEWfiles/129currentresearch/product327/allpriorraw unchanged,1338registered
 hash comparisons equal. Source base22e1f320c5afefcf58fdc6744163a82fa88c9f37.
 
@@ -27,3 +29,43 @@ retains all339prior negative controls and adds joint-association corruptions.
 Exact case/revision/input count/reader hash to be frozen before ONE native run.
 No reader retuning or native retry. No product/UI/SDK/otherrepo/publication/
 cert/trust/userprofile changes.20of29/11oldminors/fullA02 unchanged.
+
+## Actual attempt — incomplete
+
+ONE run, literal INCOMPLETE_NATIVE_STATE_SOURCE_PATH_NOT_FULL_A02, stopped at
+on:changed:capture (ASSERTION_FAILED).1launch/3modesstarted2completed/
+15phasesstarted14completed. Original6/Off6/On equal+same completed; changed captured
+but not completed, On toggle/filtered/stopped unvisited. Accepted windows/links0.
+Two earlier On windows each showed2joint candidate links; these are unqualified
+partial observations. Changed wholeAppMain Unknown0, despite nested AppBinding1,
+MainInput2/nativeReturn1 Observed; joint correctly Unknown0. No native retry.
+
+Execution3c8c6b9ff54c4066949f297558db7cf5778056f7, prepared/source
+7bddb1b62527ee99bea9b9480348f27a48c3355e.
+Case docs/testing/native-state-source-path-case.json SHA256
+00942ef624e66138bed93b33b26ec1c32e1f51c4dbcb3a0f98279fd952fb95c9.
+Raw .artifacts/a02/native-state-source-path/2026-10-25T18-41-00Z/results.json SHA256
+0ff34db2a0d87e0c4e86d63254695a3ec2e0f206febb1c8ad047ab4f301dc1fe.
+
+1415prepared/1416preflight+runtime hashes all before/after equal, typed errors{}.
+Owned process PID3235684/start21821998 absent/profile removed/allcleanup/noKill;
+9local ownedGET/0denied. Source/observer bytes unchanged after native attempt.
+Exact unavailable reference/cause not recorded: whole App/Main gate failed, but
+the raw has no per-reference availability witness. GC or a specific lost object
+is a hypothesis, not an established cause.
+
+Prewritten full verifier FIRST pass refused INCOMPLETE, exit1, unchanged SHA256
+5eb2222e350f7f93a5d30303adbca6f99a85aba0a949399917181ed1bd2215fa.
+All17old reader functions/full339negative block byte-identical;339not run asPASS.
+No retuning. Separate POSTHOC incomplete-preservation reader verifies1416physical
+hashes/27structural negative cases/cleanup; qualification:false. It does not replace
+the339full criteria. Reader SHA256
+1caa52c996c9fd6b4e88113b5f53f3896bcbc7762deb491cd33559038da87c3a;
+incomplete-report.json under
+.artifacts/a02/native-state-source-path-saved-verification/2026-10-25/.
+No project import/VM/App/native/model rerun in either reader.
+
+All stronger originsUnknown/fullA02false/20of29/11oldminors unchanged. Final review
+pending. Next ONE source-only diagnostic of the existing App/Main complete weak-
+reference gate using saved evidence/owned controls; no assumed GC fix, no weaker
+criteria, no new native/host-producer experiment in this item.
