@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "179-a02-native-state-return-source.md",
-        "status": "planning-native-return-reference-source-premise",
-        "next_bounded_step": "Source-only exact native-return expression/App-function recipes and observer; native acquisition separate."
+        "status": "source-checks-complete-final-review-pending",
+        "next_bounded_step": "ONE separately scoped native integration and actual returned-state-reference acquisition qualification; all stronger origins remainUnknown."
       },
       "stopping_point_history": [
         {
@@ -2586,12 +2586,16 @@
       "active_slice": {
         "id": "A02.29",
         "record": "179-a02-native-state-return-source.md",
-        "status": "planning",
+        "status": "source-checks-complete-final-review-pending",
         "base": "3d4214dd7674e680cf01ab4c9913b5113811aa60",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_checks": 52,
+        "full_checks": 4645,
+        "owned_vm_contexts": 16,
+        "actual_retained_inputs": "compile-only"
       }
     },
     {

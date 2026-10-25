@@ -1,5 +1,11 @@
 # Project status
 
+A02.29 source checks complete, final review pending: [native returned-state reference](completion/179-a02-native-state-return-source.md).
+Four NEW files;52focused/4645fullPASS,16OWNEDsemanticVMs, actualReactDOM/App
+compile-only.119research/327payload/priorraw unchanged; no native acquisition.
+Private exact-reference association only, allstrongoriginsUnknown/fullA02open.
+20/29 unchanged. NextONEseparate native integration/acquisition qualification.
+
 Completed A02.28 source-fix (ONEreview0C0I0newM/11oldminorsdeferred): [disabled source tap](completion/178-a02-disabled-source-tap.md).
 Disabledtap now returns before delegation; nestedconfig/events/proxyreads0.
 Enabled-invalidApp retains Main1.26observer/109affected/4593fullPASS; no native/
