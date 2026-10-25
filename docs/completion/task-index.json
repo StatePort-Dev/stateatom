@@ -4661,8 +4661,18 @@
       "deliverable": "Real-device useful local explanations and complete model-free fallback; unavailability alone does not pass",
       "status": "in-progress",
       "optional": false,
-      "active_slice": null,
-      "implementation_plan": null,
+      "active_slice": {
+        "id": "L02.15",
+        "record": "189-l02-current-path-comparison.md",
+        "status": "source-complete-native-pending",
+        "source_checks": 4976,
+        "focused_checks": 228,
+        "maximum_native_runs": 1,
+        "native_runs": 0,
+        "model_calls": 0,
+        "full_L02": false
+      },
+      "implementation_plan": "../superpowers/plans/2026-10-26-l02-current-path-comparison.md",
       "remaining_acceptance": [
         "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
         "Final candidate actual factual/concision/usefulness comparison preserving historical20–30 and>=25/5incomplete/5untrusted criteria",
@@ -4671,9 +4681,9 @@
       ],
       "execution_record": "188-l02-worker-independent-discovery.md",
       "current_checkpoint": {
-        "record": "188-l02-worker-independent-discovery.md",
-        "status": "complete-source-only-native-unverified",
-        "next_bounded_step": "ONE separately sealed current80 cached comparison candidate using corrected initialized exact-path discovery; preserve exhausted12/13cases. No native before fixed inputs, no download/cert/trust or availability-only acceptance."
+        "record": "189-l02-current-path-comparison.md",
+        "status": "source-complete-native-pending",
+        "next_bounded_step": "Prepare/preflight/fix NEWcurrent80case and prewritten offline reader/contract; ONE cached-only native maximum, no old case retry/download/cert/trust."
       },
       "completed_slices": [
         {
