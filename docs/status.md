@@ -1,9 +1,14 @@
 # Project status
 
-Active bounded task: [A02.19](completion/169-a02-literal-main-native.md).
-Closed literal-bootstrap Main case, same18phases/strictreceipt/pairedURL/source criteria.
-Source252focused/4296fullPASS; frozen prepare/preflight/casecommit before max1native.
-No new runtime proof yet;20/29/fullA02 unchanged;7minors deferred.
+Active bounded attempt: [A02.19](completion/169-a02-literal-main-native.md).
+ONE native:6original phases/exactMain source/8URLfacts complete; offopen fails with
+missing observer-global ReferenceError/textbox timeout, no offdocument/source/phase;
+onunvisited.2modesstarted1complete/6phasecomplete/12unvisited/nointervalproof.
+Allcleanup/PIDprofileAbsent. Sourcecandidate missing Page.enable on injection session,
+backed by version-matching Chromium/installedlauncher, not nativecommand recovery.
+252source/4296fullPASS; saved571physical40negative. Next ONE finalfreshreview/source
+fixpass, no native retry.20/29/fullA02 unchanged;7minors deferred.
+No cert/trust/userprofile/account/model/SDK/publication changes.
 
 Completed bounded attempt: [A02.18](completion/168-a02-fragment-main-native.md).
 ONE review0C2I1M; one tested correction registers literal default-world bootstrap

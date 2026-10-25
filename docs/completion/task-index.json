@@ -2391,8 +2391,8 @@
       },
       "current_checkpoint": {
         "record": "169-a02-literal-main-native.md",
-        "status": "source-qualified-pending-frozen-case",
-        "next_bounded_step": "Prepare/preflight fixed schema4 and commitcase before ONE actual Main18phase acquisition, same receipt/URL/source gates, no newnativeproofyet."
+        "status": "original-six-phases-qualified-off-open-failed-pending-one-review",
+        "next_bounded_step": "ONE finalfreshreview; missing Page.enable on injection session sourcecorrection ifconfirmed. Currentcase exhausted6originalphases/offopenfailed/onunvisited, no retry/rawupgrade."
       },
       "stopping_point_history": [
         {
@@ -2476,15 +2476,27 @@
       "active_slice": {
         "id": "A02.19",
         "record": "169-a02-literal-main-native.md",
-        "status": "source-qualified-pending-frozen-case",
+        "status": "original-six-phases-qualified-off-open-failed-pending-one-review",
         "base": "32cbbf8cc0ea80374b8480fd4120a86a00f4dcad",
-        "native_runs": 0,
+        "native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
         "focused_checks": 252,
         "full_source_checks": 4296,
-        "undeclared_inputs_unchanged": 478
+        "undeclared_inputs_unchanged": 478,
+        "native_modes_started": 2,
+        "native_modes_completed": 1,
+        "native_phases_started": 6,
+        "native_phases_completed": 6,
+        "native_phases_unvisited": 12,
+        "native_intervals_acquired": 0,
+        "native_result": "INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02",
+        "native_raw_sha256": "8ea64478b86a76ab7dd136e984a7dea77c6a14474d3a7a1ba302a02c94c602ae",
+        "prepared_source_revision": "685e2a9cf82dacd459f4f54ae3963be88099c468",
+        "execution_revision": "70773cd870c909e000b94ea5669a9d47b60f9b4e",
+        "saved_negative_controls": 40,
+        "JSX_product_supported": false
       }
     },
     {
