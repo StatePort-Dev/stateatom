@@ -25,6 +25,7 @@ export function guardComparisonRunRecord(r,expected,s){
  assert.deepEqual(event(r,'create-start').options,s.expectedCreateOptions);
  const settings=event(r,'create-resolved').returnedSettings;assert(['Observed','Unknown/Unsupported'].includes(settings.status));
  assert(settings.topK===null||Number.isFinite(settings.topK));assert(settings.temperature===null||Number.isFinite(settings.temperature));
+ if(settings.topK!==null)assert.equal(settings.topK,s.expectedCreateOptions.topK);if(settings.temperature!==null)assert.equal(settings.temperature,s.expectedCreateOptions.temperature);
  if(settings.status==='Observed'){assert.equal(settings.topK,s.expectedCreateOptions.topK);assert.equal(settings.temperature,s.expectedCreateOptions.temperature);}else assert(settings.topK===null||settings.temperature===null);
  const sent=event(r,'prompt-start'),returned=event(r,'prompt-resolved');assert.equal(sent.prompt,expected.prompt);assert.deepEqual(sent.requestedConstraint,expected.constraint);assert.deepEqual(sent.constraint,expected.constraint);assert.equal(sent.signalPresent,true);assert.equal(returned.rawType,'string');assert.equal(typeof returned.raw,'string');assert.equal(returned.signalAbortedAtReturn,false);assert.equal(r.inferenceReturned,true);
  const c=localDerivedCorpus()[expected.index];assert.equal(c.id,expected.id);let validated,invalid=false;

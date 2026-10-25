@@ -1,4 +1,4 @@
-# L02.12 — fixed cached-model comparison candidate (one native attempt exhausted; review pending)
+# L02.12 — fixed cached-model comparison candidate (bounded attempt closed; native incomplete)
 
 Startsffb9815: L02.11 source95/full3560/ONEsource-slice0C0I1M complete/unselected,
 17prior sourcephysical+1Git/current327/78/UI2/oldrawgroups stable. M1selector/resultcase
@@ -74,3 +74,33 @@ Its report verifies this refusal, never native/model acceptance. `clauses.json`
 records actual zero-output/unvisited status against registered templates. No PNG
 was produced to inspect. Review must assess the preparation TMPDIR length defect;
 no weakening the original case or resurrecting exhausted old campaigns.
+
+ONE fresh whole-bounded-item read-only review `l0212_whole_review` (Astra/high),
+ffb9815..c87e10a:0Critical/2Important/1Minor, no native/preparer/model/subagents or
+source mutation. Independent rawhash and436frozen inputs excludingcase match,
+with intentionally updated plan verified as exactf83241a historical bytes. I2 was
+reproduced with pure source DTO only; no actual sampling observation exists.
+
+ONE correction pass: I1 adds shared UTF8/NUL-aware Linux singleton path budget to
+preparation (before mkdir) and native preflight (before registration/profile/browser).
+The observed133-byte path and107/108-byte boundary/nonASCII/NUL controls are retained;
+current deep layout now refuses explicitly `TEMP_PATH_UNSUPPORTED`. This is fail-fast
+admission, not an implemented shorter temp route or a successful Chrome launch.
+I2 independently compares every non-null exposed topK/temperature with registered
+values; matching partial and wholly unknown metadata remain unknown, never fabricated.
+M1 current_activity_note regraded Important for factual current-state reporting under
+the user mandate: no-browser/profile wording contradicted actual owned-cache lease/
+endpoint operations; summary and adjacent reviewed-source pointer corrected. No
+mirrored documentation test added for this reversible factual edit.
+
+RED121PASS/4FAIL ->GREEN125PASS, full `npm test`3658PASS/0fail/0cancel/0skip,
+106588.995ms (terminal46839). Syntax/diff PASS. No second review/native invocation,
+no model-output/quality/wholeL02 acceptance. Current raw/case remain untouched; all
+six reviewer-declined domains stay unproved or outside this bounded item: actual AI,
+successful browser/runtime, whole-process/globalhealth, visual/keyboard/human checks,
+prior minors, and product/fullL02/SDK/release/otherrepo scope. Historical selector
+clarity and V03.26 prose-label minors remain deferred.
+
+ONE next dependency: L02.13 short owned temporary-path source/preflight, then a newly
+registered case only if preparation proves a feasible route. The exhausted12 case
+never resets/reruns, historical AI quality remains historical, whole20of29 unchanged.

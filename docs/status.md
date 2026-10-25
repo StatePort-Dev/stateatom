@@ -1,13 +1,14 @@
 # Project status
 
-Active bounded work: [L02.12](completion/157-l02-comparison-native-candidate.md),
-ONE attempted case exhausted/INCOMPLETE before browser attestation: installed Chrome156
-fatal socket path too long under private TMPDIR. Source118/full3651PASS and437physical
-preflight do not establish model readiness.0APIcalls/0fallbackrows, all30+4unvisited,
-known launcher/desktop retired+lease released; console/browser health NotCollected.
-Saved-source-free437hash/23negative verification supports refusal only. ONE bounded
-review next, including concrete preparation defect; no native retry. Whole20/29 and
-mandatoryL02 remain open.
+Completed bounded attempt: [L02.12](completion/157-l02-comparison-native-candidate.md).
+ONE case exhausted/INCOMPLETE before browser attestation: installed Chrome156 fatal
+socket path too long.0APIcalls/0executed fallbackrows, all30+4unvisited; known2root
+processes retired/lease released, browser/console health NotCollected. Saved437hash/
+23negative verification supports refusal only. ONEreview0C2I1M, current-state factual
+minor regraded Important, one source correction pass: fail-fast UTF8/NUL path budget
+and independent partial-sampling checks. Focused125/full3658PASS; no native repeat.
+ONE next L02.13 short owned temporary route/source admission before any newly frozen
+case. MandatoryL02 and whole20/29 remain open; no SDK/release/otherrepo/security change.
 
 Completed bounded source slice: [L02.11](completion/156-l02-comparison-provider.md).
 Namedv2provider/fixed34evaluationdocument95focused/full3560PASS, ONEsource-slice
