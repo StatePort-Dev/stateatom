@@ -1,10 +1,13 @@
 # Project status
 
 Active bounded source slice: [A02.11](completion/161-a02-callback-copy-interval.md).
-Exact original callback entry/return/exit to copy-input feasibility; new modules
-only, preregistered oldsource/current327/raw. Task1 historical31PASS; current exact-call
-recorder/recipe75PASS after reproduced intrinsic dependency fix. Retained-source
-qualification/fullsuite still pending. No browser/certificate/installation work.
+Source-qualified clean2f120af retainedReact19.2.5/18owned cases/54VM contexts:
+11positive cases/12exact callback-copy intervals,7expected refusals.75focused and
+full3832PASS; source-free saved428stage/39negative controls. New captured native-call
+runtime removes reproduced late intrinsic callbacks; old56source/current327/raw
+unchanged. No browser/certificate/installation/native/model/product importer. ONE
+final whole-source review next; storage/ownership/state/selectedproducer/fullA02 and
+whole20/29 (~69%) remain open. Source VM is not installed capability acceptance.
 
 Completed bounded source slice: [A02.10](completion/160-a02-react19-prop-copy-input.md).
 ONE review0C1I0M, one fixed-arity helper correction pass;62focused/full3757PASS.

@@ -1666,13 +1666,18 @@
       "active_slice": {
         "id": "A02.11",
         "record": "161-a02-callback-copy-interval.md",
-        "status": "source75-retained-qualification-pending",
+        "status": "source-qualified54-full3832-review-pending",
         "base": "d57c022",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
-        "focused_checks": 75
+        "focused_checks": 75,
+        "source_revision": "2f120afda0192ed74839636e88b2c12c63fd81fa",
+        "source_vm_cases": 18,
+        "source_vm_contexts": 54,
+        "source_raw_sha256": "b399b65aaed24a61257a08f9651dbb175e42707802518e9d094f7e9633548b28",
+        "full_source_checks": 3832
       },
       "completed_slices": [
         {
@@ -2178,8 +2183,8 @@
       },
       "current_checkpoint": {
         "record": "161-a02-callback-copy-interval.md",
-        "status": "source75-retained-qualification-pending",
-        "next_bounded_step": "Commit stable source, ONE registered retained React source18case54context matrix, saved verification/fullsuite and ONE final review; no browser/native/model."
+        "status": "source-qualified54-full3832-review-pending",
+        "next_bounded_step": "ONE fresh bounded whole-item source review; source-only callback-copy interval qualification, no native/browser/model/rereview."
       },
       "stopping_point_history": [
         {

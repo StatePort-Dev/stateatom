@@ -1,4 +1,4 @@
-# A02.11 — callback interval to copy input (preregistered source-only slice)
+# A02.11 — callback interval to copy input (source-qualified; final review pending)
 
 BASEd57c022. A02.10 closed after one iterator correction,62focused/full3757PASS;
 corrected48sourceVM contexts/raw23c... preserved. Current arrays record callback
@@ -52,3 +52,37 @@ Eighteen authored config cases now include those two replacements; no actual ret
 vendor VM yet. New runtime provides no filter-result ancestry or storage proof.
 Next commit stable source, then one registered retained-source54-context matrix and
 fullsuite/saved-reader/final single review. No browser/native/model/install/cert work.
+
+
+Actual retained source qualification clean `2f120afda0192ed74839636e88b2c12c63fd81fa`:
+`node experiments/react19-reducer/callback-copy-source-run.mjs` exit0, output
+`.artifacts/a02/callback-copy-source/2026-10-25/qualification-2026-10-25T02-11-13-255Z/`.
+RawSHA256 `b399b65aaed24a61257a08f9651dbb175e42707802518e9d094f7e9633548b28`;
+literal `RETAINED_REACT_CALLBACK_INTERVAL_SOURCE_VM_QUALIFIED_NOT_NATIVE_A02`.
+All428physical inputs before/after unchanged,18authored config cases × original/off/on
+=54NodeVM contexts. Eleven positive cases/12exact interval links,7expected refusals:
+before/sibling/nested reuse/wrong-equal/throw/Stop/seal. Actual retained React19.2.5
+source used, with owned authored filter/map app/config source in the SAME VM realm;
+component body never called, no DOM/ReactDOM/browser/native writer/model/product.
+
+All original/off/on output/trace/exception/stack controls agree; late iterator,
+WeakMap.get and Array.push callbacks0. Setter yields a qualified copy INPUT while
+own todo is absent; prop storage/transfer/field ownership/state/selected producer
+remain Unknown/fullPathfalse. Reused nested element stays refused despite correct
+props. This is callback interval/identity correspondence, not complete causal path.
+
+Independent Python stdlib reader
+`.artifacts/a02/callback-copy-saved-verification/2026-10-25/{verify.py,report.json}`
+checks saved428physical/18cases/54contexts, emitted vendor/app hashes, preserved
+56source/current327/15V03raw/12L02records/4case-marker/2A02.10raw and39isolated negative
+controls, without project source imports/VM reruns. It validates recorded structure
+and fixture oracles; JSON does not independently recover live references or origin.
+This saved physical stage is before the subsequent plan checklist edit; final current
+reconciliation must distinguish that edit, not silently rewrite the old report.
+
+Focused75PASS; full `npm test`3832PASS/0fail/0cancel/0skip107242.300ms, terminal14767
+exit0. Invalid CLI exits1/INVALID_ARGUMENTS before registration/VM; syntax/diff PASS.
+Old modules/product/raw/vendor pins unchanged. ONE final whole-source-item review
+pending; no re-review/native/browser/installation/certificate/model work scheduled.
+Whole A02 and20/29 (~69%) remain open. Package/source documents alone do not prove
+new installed capabilities. ONE next missing dependency will follow review findings.

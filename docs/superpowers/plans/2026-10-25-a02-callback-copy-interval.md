@@ -39,7 +39,7 @@
 **Interfaces:** instrumentCallbackCopyIntervals(source,file,options) returns code/sites/receipt/refusal; existing array runtime and new callback interval runtime remain separate. Zero-option source run registers/hash-checks exact pinned inputs and new outputs before sourceVM.
 
 - [x] task-start/readbrief/BASE; TDD original/off/on source outputs/getters/throws/stack/lexical this-arguments/length1, binding/site/all-arrow/refusal/collision controls; new synthetic fixtures not vendor copies. Focused tests RED->GREEN.
-- [ ] Commit stable source then ONE registered retained React CJS sourceVM matrix and independent saved reader/negative controls, focused/full npm test/preservation/syntax/diff/resultcommit/task-done. No oldnative/browser/model repeat or wholeA02 credit.
+- [x] Commit stable source then ONE registered retained React CJS sourceVM matrix and independent saved reader/negative controls, focused/full npm test/preservation/syntax/diff/resultcommit/task-done. No oldnative/browser/model repeat or wholeA02 credit.
 
 ## Final Closeout
 
