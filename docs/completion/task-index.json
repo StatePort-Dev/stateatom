@@ -2460,9 +2460,9 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "180-a02-native-state-return-native.md",
-        "status": "complete-bounded-native-return-reference-acquisition",
-        "next_bounded_step": "ONE bounded private native-return to existing source-path association, actual references/tokens only; all stronger ownership/selectedDOM originsUnknown."
+        "record": "181-a02-native-state-source-path.md",
+        "status": "planning-private-native-state-source-path-association",
+        "next_bounded_step": "ONE private token/config/element reference association + native qualification; selectedDOM/ownership originsUnknown."
       },
       "stopping_point_history": [
         {
@@ -2585,42 +2585,24 @@
           "record": "179-a02-native-state-return-source.md",
           "status": "complete-bounded-native-return-reference-source-checks",
           "next_bounded_step": "ONE separately scoped native integration and actual returned-state-reference acquisition qualification; all stronger origins remainUnknown."
+        },
+        {
+          "record": "180-a02-native-state-return-native.md",
+          "status": "complete-bounded-native-return-reference-acquisition",
+          "next_bounded_step": "ONE bounded private native-return to existing source-path association, actual references/tokens only; all stronger ownership/selectedDOM originsUnknown."
         }
       ],
-      "implementation_plan": "../superpowers/plans/2026-10-25-a02-native-state-return-native.md",
+      "implementation_plan": "../superpowers/plans/2026-10-25-a02-native-state-source-path.md",
       "active_slice": {
-        "id": "A02.30",
-        "record": "180-a02-native-state-return-native.md",
-        "status": "complete-bounded-native-reference-acquisition",
-        "base": "84f0d50f30b59dd825d6a0758ead3735de63c736",
-        "native_runs": 1,
+        "id": "A02.31",
+        "record": "181-a02-native-state-source-path.md",
+        "status": "planning",
+        "base": "22e1f320c5afefcf58fdc6744163a82fa88c9f37",
+        "native_runs": 0,
         "maximum_native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false,
-        "focused_checks": 53,
-        "full_checks": 4701,
-        "observed_compiler_inputs": 4,
-        "native_windows": 4,
-        "native_links": 4,
-        "app_windows": 4,
-        "app_links": 8,
-        "main_windows": 5,
-        "main_links": 9,
-        "registered_runtime_inputs": 1290,
-        "saved_negative_controls": 339,
-        "native_result": ".artifacts/a02/native-state-return-native/2026-10-25T18-18-00Z/results.json",
-        "execution_revision": "8e69297c619cb69814b0e7931148d470bd42470e",
-        "prepared_revision": "581786b3efc58e88c423a3da7d75c707eaf29cca",
-        "review": {
-          "Critical": 0,
-          "Important": 0,
-          "Minor": 0,
-          "correction_passes": 0,
-          "rereview": false,
-          "deferred_minors_total": 11
-        },
-        "native_reruns_after_review": 0
+        "full_A02": false
       }
     },
     {
