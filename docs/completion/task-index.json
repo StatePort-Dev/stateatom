@@ -2426,8 +2426,8 @@
       },
       "current_checkpoint": {
         "record": "170-a02-page-enabled-main-native.md",
-        "status": "source-qualified-pending-frozen-case",
-        "next_bounded_step": "Prepare/preflight fixed schema5 and commitcase before ONE original/off/on18phase acquisition; same receipt/URL/source gates, no nativeproofyet."
+        "status": "bounded-original-main-callback-jsx-native-pass-pending-one-review",
+        "next_bounded_step": "ONE finalfreshreview of full18phase Main interval acquisition; then ONE next ordinary-lineage dependency. No currentcase retry or product/fullA02 upgrade."
       },
       "stopping_point_history": [
         {
@@ -2511,15 +2511,28 @@
       "active_slice": {
         "id": "A02.20",
         "record": "170-a02-page-enabled-main-native.md",
-        "status": "source-qualified-pending-frozen-case",
+        "status": "bounded-original-main-callback-jsx-native-pass-pending-one-review",
         "base": "6f01c0fee44f57aa0b14d96a509c06a83c1d3814",
-        "native_runs": 0,
+        "native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
         "focused_checks": 263,
         "full_source_checks": 4307,
-        "undeclared_inputs_unchanged": 490
+        "undeclared_inputs_unchanged": 490,
+        "native_modes_started": 3,
+        "native_modes_completed": 3,
+        "native_phases_started": 18,
+        "native_phases_completed": 18,
+        "native_phases_unvisited": 0,
+        "native_intervals_acquired": 9,
+        "native_accepted_windows": 5,
+        "native_result": "PASS_BOUNDED_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02",
+        "native_raw_sha256": "3bf5a1d85d5f5b695d069234b9dea524ffa2086c3f18a3a666a93973711f1533",
+        "prepared_source_revision": "7bc8b17d6dc12cbf50f32df869171764d9800a55",
+        "execution_revision": "f14cd919a31e89ce0996349ff70562d9bfba6608",
+        "saved_negative_controls": 61,
+        "JSX_product_supported": false
       }
     },
     {
