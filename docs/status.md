@@ -1,5 +1,12 @@
 # Project status
 
+A02.32 source diagnostics complete, final review pending: [App/Main availability](completion/182-a02-app-main-availability.md).
+33focused/4776fullPASS;5OWNEDscenarios preserve exact WeakRef trace/legacyhashes,
+true/false/NotChecked metadata only.2research changes/133unchanged/327payload/raw
+unchanged; no native/App/model/oldreader. A02.31 cause stillUnknown; selective
+App-element loss is a controlled equivalent, not realGCproof. OldA02.30/31 native
+inputs2exactpreparedGit now historical.20of29/fullA02 unchanged.
+
 A02.31 native attempt INCOMPLETE (ONEreview0C0I0newM/11oldminors deferred): [private source association](completion/181-a02-native-state-source-path.md).
 ONElaunch/2modescompleted14phases, stoppedonchanged. equal/same2windows4candidate
 links unqualified; changedAppMainUnknown despite AppBinding/MainInput/nativeReturn

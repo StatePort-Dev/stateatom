@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "182-a02-app-main-availability.md",
-        "status": "planning-source-only-original-gate-availability",
-        "next_bounded_step": "ONE source-only original App/Main closure availability diagnostics with exact predicate/WeakRef-read parity; no native retry or actualGC inference."
+        "status": "source-diagnostics-complete-final-review-pending",
+        "next_bounded_step": "ONE separately scoped actual availability-observation decision with new gate metadata; no automatic retry/presumed positive/GC/selectedDOM claim."
       },
       "stopping_point_history": [
         {
@@ -2601,7 +2601,7 @@
       "active_slice": {
         "id": "A02.32",
         "record": "182-a02-app-main-availability.md",
-        "status": "planning",
+        "status": "source-checks-complete-final-review-pending",
         "base": "98e3458ce944567acc1de43ca4bd41709e1713d0",
         "native_runs": 0,
         "maximum_native_runs": 0,
@@ -2611,7 +2611,12 @@
           "experiments/react19-reducer/app-main-props-observer.mjs",
           "tests/engine/react19-app-main-props-observer.test.mjs"
         ],
-        "full_A02": false
+        "full_A02": false,
+        "focused_checks": 33,
+        "full_checks": 4776,
+        "owned_parity_scenarios": 5,
+        "weak_read_trace_parity": true,
+        "actual_failure_cause": "Unknown"
       }
     },
     {

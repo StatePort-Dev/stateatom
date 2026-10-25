@@ -23,8 +23,8 @@ No SDK/product/UI/otherrepo/publish/userprofile/cert/trust.20of29/11oldminors/fu
 
 ### Task 1: Original-gate availability metadata and parity controls
 **MODIFY ONLY:** experiments/react19-reducer/app-main-props-observer.mjs; tests/engine/react19-app-main-props-observer.test.mjs. Record182/status/index.
-- [ ] task-start/preregister135/327/raw/2deltas, capture owned prepatch weak-read trace; add RED diagnostic/selective loss/NotChecked/privacy/lifecycle tests.
-- [ ] Instrument existing predicate booleans only, exact trace/status parity; focused/syntax/diff/fullPASS/protected133+2/nativepreparedGit accounting; sourcecommit/task-done.
+- [x] task-start/preregister135/327/raw/2deltas, capture owned prepatch weak-read trace; add RED diagnostic/selective loss/NotChecked/privacy/lifecycle tests.
+- [x] Instrument existing predicate booleans only, exact trace/status parity; focused/syntax/diff/fullPASS/protected133+2/nativepreparedGit accounting; sourcecommit/task-done.
 
 ## Final Closeout
 - [ ] ONE fresh finalreview/allrulings/ONEtestedI-Cpass/no rereview/native. Archive ownworkspaceCRC/allbytes/identity/protected/prepared inputs, removeonlyown; cleancommit/ONE bounded next step.
