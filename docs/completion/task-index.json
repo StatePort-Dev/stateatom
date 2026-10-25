@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "180-a02-native-state-return-native.md",
-        "status": "source-checks-complete-native-case-pending",
-        "next_bounded_step": "ONE native integration/acquisition case max; private reference premise only, all stronger originsUnknown."
+        "status": "native-reference-acquisition-pass-final-review-pending",
+        "next_bounded_step": "ONE bounded private native-return to existing source-path association, actual references/tokens only; all stronger ownership/selectedDOM originsUnknown."
       },
       "stopping_point_history": [
         {
@@ -2591,16 +2591,27 @@
       "active_slice": {
         "id": "A02.30",
         "record": "180-a02-native-state-return-native.md",
-        "status": "source-checks-complete",
+        "status": "native-pass-final-review-pending",
         "base": "84f0d50f30b59dd825d6a0758ead3735de63c736",
-        "native_runs": 0,
+        "native_runs": 1,
         "maximum_native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
         "focused_checks": 53,
         "full_checks": 4701,
-        "observed_compiler_inputs": 4
+        "observed_compiler_inputs": 4,
+        "native_windows": 4,
+        "native_links": 4,
+        "app_windows": 4,
+        "app_links": 8,
+        "main_windows": 5,
+        "main_links": 9,
+        "registered_runtime_inputs": 1290,
+        "saved_negative_controls": 339,
+        "native_result": ".artifacts/a02/native-state-return-native/2026-10-25T18-18-00Z/results.json",
+        "execution_revision": "8e69297c619cb69814b0e7931148d470bd42470e",
+        "prepared_revision": "581786b3efc58e88c423a3da7d75c707eaf29cca"
       }
     },
     {

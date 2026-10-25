@@ -1,9 +1,11 @@
 # Project status
 
-A02.30 source checks complete, ONE native run pending: [native returned-state acquisition](completion/180-a02-native-state-return-native.md).
-SixNEWfiles,53focused/4701fullPASS,4compiler overlays, originalbundle unchanged.
-123research/327product/priorraw unchanged. Same private App token; separate source
-and native-reference companions, stronger originsUnknown/fullA02open/20of29 unchanged.
+A02.30 actualnative PASS, final review pending: [native returned-state acquisition](completion/180-a02-native-state-return-native.md).
+ONElaunch3modes18phases; native4windows4links, App4/8/Main5/9 separately.
+1290before-after equal/saved339negative; PID/profile absent, allcleanup. Offglobal
+absent/0events; StopclearedUnknown0.53focused/4701fullPASS;123research/327payload/
+priorraw unchanged. Bounded reference acquisition only, stronger originsUnknown/
+fullA02open/20of29 unchanged. NextONEprivate native-reference/source-path join.
 
 A02.29 source checks/review complete (0C2Ifixed0newM,11oldminors deferred): [native returned-state reference](completion/179-a02-native-state-return-source.md).
 Four NEW files;55focused/4648fullPASS,18OWNEDsemanticVMs, actualReactDOM/App
