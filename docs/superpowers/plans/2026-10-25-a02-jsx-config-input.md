@@ -29,8 +29,8 @@
 **Files:** create experiments/react19-reducer/jsx-config-observer.mjs and tests/engine/react19-jsx-config-observer.test.mjs; completion164/current pointers.
 **Interfaces:** createJSXConfigInputObserver({page}) -> tap(kind,value,config,site), snapshot/lookup/sealWindow/startWindow/stop/retention; Task2 source helper/native return feed this schema unchanged.
 
-- [ ] task-start/readbrief/BASE/preregister oldcurrent source/product/raw/pins beforecode. TDD exact config/props/element identity, separate equal objects, copied props/duplicates/pending/Stop/windows/capacity/privacy/late intrinsics, Unknown storage/freeze counterexample. `node --test --test-isolation=none tests/engine/react19-jsx-config-observer.test.mjs` RED->GREEN.
-- [ ] Minimal new recorder, focused/preservation/syntax/diff/localcommit/task-done; no native vendorVM/browser. Fullsuite deferredTask2stable.
+- [x] task-start/readbrief/BASE/preregister oldcurrent source/product/raw/pins beforecode. TDD exact config/props/element identity, separate equal objects, copied props/duplicates/pending/Stop/windows/capacity/privacy/late intrinsics, Unknown storage/freeze counterexample. `node --test --test-isolation=none tests/engine/react19-jsx-config-observer.test.mjs` RED->GREEN.
+- [x] Minimal new recorder, focused/preservation/syntax/diff/localcommit/task-done; no native vendorVM/browser. Fullsuite deferredTask2stable.
 
 ### Task 2: Private fresh-config guard, pinned native JSX return and source qualification
 

@@ -1665,12 +1665,13 @@
       "active_slice": {
         "id": "A02.14",
         "record": "164-a02-jsx-config-input.md",
-        "status": "preregistered-source-only",
+        "status": "task1-recorder31-task2-pending",
         "base": "b26cbb2",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_checks": 31
       },
       "completed_slices": [
         {
@@ -2248,8 +2249,8 @@
       },
       "current_checkpoint": {
         "record": "164-a02-jsx-config-input.md",
-        "status": "preregistered-source-only",
-        "next_bounded_step": "Task1 weak JSXconfig input recorder TDD; source-only freshliteral/nativeprops identity, storageUnknown, no product/browser."
+        "status": "task1-recorder31-task2-pending",
+        "next_bounded_step": "Task2 private fresh-literal JSXconfig source guard and exact pinned JSX return/sourceVM qualification; no product/native/browser claim."
       },
       "stopping_point_history": [
         {
