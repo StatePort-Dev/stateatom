@@ -2461,7 +2461,7 @@
       },
       "current_checkpoint": {
         "record": "183-a02-native-state-source-availability.md",
-        "status": "planning-one-current-availability-observation",
+        "status": "source-checks-complete-current-availability-case-pending",
         "next_bounded_step": "ONE newly instrumented actual availability observation; strict full qualification or explicit incomplete prefix, no oldcase retry/threshold lowering."
       },
       "stopping_point_history": [
@@ -2606,13 +2606,17 @@
       "active_slice": {
         "id": "A02.33",
         "record": "183-a02-native-state-source-availability.md",
-        "status": "planning",
+        "status": "source-checks-complete",
         "base": "7c72903776f28f3664c64ea28bf22b5fac3e1191",
         "native_runs": 0,
         "maximum_native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_checks": 68,
+        "full_checks": 4844,
+        "full_reader_negative_rules": 495,
+        "readers_prewritten": 2
       }
     },
     {

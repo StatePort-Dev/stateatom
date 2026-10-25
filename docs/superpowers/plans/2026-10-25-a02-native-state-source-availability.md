@@ -23,8 +23,8 @@ fullA02/20of29/12minors unchanged. No SDK/product/UI/otherrepo/publish/cert/trus
 
 ### Task 1: Current diagnostic native driver and strict guards
 **NEWfiles:** experiments/react19-reducer/native-state-source-availability-run.mjs; native-state-source-availability-qualification.mjs; tests/engine/react19-native-state-source-availability-driver.test.mjs; react19-native-state-source-availability-qualification.test.mjs.
-- [ ] task-start/preregistercurrent135/327/raw/4newfiles. RED metadata/profile/guard/CLI controls; implement with13exact native helpers/operations and old strict classifiers.
-- [ ] Focused/4inputcompile/bundle parity/syntax/diff/protected/fullnpmPASS; sourcecommit/task-done. Native/App0 beforecase.
+- [x] task-start/preregistercurrent135/327/raw/4newfiles. RED metadata/profile/guard/CLI controls; implement with13exact native helpers/operations and old strict classifiers.
+- [x] Focused/4inputcompile/bundle parity/syntax/diff/protected/fullnpmPASS; sourcecommit/task-done. Native/App0 beforecase.
 
 ### Task 2: ONE actual availability observation, bounded full or incomplete result
 **Files:** docs/testing/native-state-source-availability-case.json; record183/status/index; own prewritten full and nonqualifying preservation readers/contracts/artifacts.
