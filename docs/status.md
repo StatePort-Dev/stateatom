@@ -1,6 +1,6 @@
 # Project status
 
-A02.31 native attempt INCOMPLETE, final review pending: [private source association](completion/181-a02-native-state-source-path.md).
+A02.31 native attempt INCOMPLETE (ONEreview0C0I0newM/11oldminors deferred): [private source association](completion/181-a02-native-state-source-path.md).
 ONElaunch/2modescompleted14phases, stoppedonchanged. equal/same2windows4candidate
 links unqualified; changedAppMainUnknown despite AppBinding/MainInput/nativeReturn
 Observed; jointUnknown0/accepted0.1416hashesequal/cleanupPIDprofileAbsent.

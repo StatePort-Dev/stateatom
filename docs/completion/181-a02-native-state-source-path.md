@@ -1,6 +1,6 @@
 # A02.31 — native state/Main source-element association
 
-Current result: native attempt INCOMPLETE, no accepted joint paths; final review pending.
+Current result: native attempt INCOMPLETE, no accepted joint paths; final review complete (0C0I0newM, bounded incomplete-attempt closeout only).
 
 ## Historical source checkpoint before native execution
 SixNEWfiles/129currentresearch/product327/allpriorraw unchanged,1338registered
@@ -65,7 +65,13 @@ incomplete-report.json under
 .artifacts/a02/native-state-source-path-saved-verification/2026-10-25/.
 No project import/VM/App/native/model rerun in either reader.
 
-All stronger originsUnknown/fullA02false/20of29/11oldminors unchanged. Final review
-pending. Next ONE source-only diagnostic of the existing App/Main complete weak-
+All stronger originsUnknown/fullA02false/20of29/11oldminors unchanged.
+ONEfresh final review gpt-6-astra/high0Critical0Important0newMinor, no corrections/
+rereview. Bounded incomplete-attempt closeout accepted; feature qualification NO.
+Twelve declined domains have effect/cost rulings: exactweak/GCcause, native
+qualification/unvisitedphases, independenttests/339negative execution/physicalaudit,
+strongorigins, performance/GC, hostile/effective/widerapps, installedrelease,
+11oldminors and archive. No missing evidence was credited. Frozen prepared plan
+bytes remainunchanged; actual completion recorded in ledger/record. Next ONE source-only diagnostic of the existing App/Main complete weak-
 reference gate using saved evidence/owned controls; no assumed GC fix, no weaker
 criteria, no new native/host-producer experiment in this item.

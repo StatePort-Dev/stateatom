@@ -2461,7 +2461,7 @@
       },
       "current_checkpoint": {
         "record": "181-a02-native-state-source-path.md",
-        "status": "bounded-native-attempt-incomplete-full-reader-refused",
+        "status": "closed-bounded-native-attempt-incomplete-no-qualification",
         "next_bounded_step": "ONE source-only App/Main complete weak-reference gate availability diagnostic using saved data/owned controls; no assumed GC fix, criteria lowering or native rerun."
       },
       "stopping_point_history": [
@@ -2596,7 +2596,7 @@
       "active_slice": {
         "id": "A02.31",
         "record": "181-a02-native-state-source-path.md",
-        "status": "native-attempt-incomplete-final-review-pending",
+        "status": "closed-bounded-attempt-native-incomplete",
         "base": "22e1f320c5afefcf58fdc6744163a82fa88c9f37",
         "native_runs": 1,
         "maximum_native_runs": 1,
@@ -2619,7 +2619,17 @@
         "posthoc_structural_controls": 27,
         "native_result": ".artifacts/a02/native-state-source-path/2026-10-25T18-41-00Z/results.json",
         "execution_revision": "3c8c6b9ff54c4066949f297558db7cf5778056f7",
-        "prepared_revision": "7bddb1b62527ee99bea9b9480348f27a48c3355e"
+        "prepared_revision": "7bddb1b62527ee99bea9b9480348f27a48c3355e",
+        "feature_qualification": false,
+        "review": {
+          "Critical": 0,
+          "Important": 0,
+          "Minor": 0,
+          "correction_passes": 0,
+          "rereview": false,
+          "deferred_minors_total": 11
+        },
+        "native_reruns_after_review": 0
       }
     },
     {
