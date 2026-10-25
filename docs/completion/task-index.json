@@ -1661,38 +1661,16 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "166-a02-original-main-jsx-native.md",
+      "execution_record": "167-a02-explicit-startup-main.md",
       "active_slice": {
-        "id": "A02.16",
-        "record": "166-a02-original-main-jsx-native.md",
-        "status": "complete-bounded-source-one-correction-native-incomplete",
-        "base": "bac767d494646b831d059082b0357438800c4f6c",
-        "native_runs": 1,
+        "id": "A02.17",
+        "record": "167-a02-explicit-startup-main.md",
+        "status": "active-preregistered-before-code",
+        "base": "c64edc65ba6c6d6dff0c1e046776f578efc4718c",
+        "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false,
-        "focused_checks": 233,
-        "full_source_checks": 4200,
-        "native_modes_visited": 0,
-        "native_phases_visited": 0,
-        "native_phases_unvisited": 18,
-        "native_result": "INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02",
-        "native_raw_sha256": "e0f31256c7a64346597bfb783b221202d4993d0c5e6801a45747c0119384dca7",
-        "prepared_source_revision": "5837358bd51b7c7ef4bfdf2add71c91d81228af7",
-        "execution_revision": "eda4cd45604a738ef0025ebd6641bb291f26a60a",
-        "saved_negative_controls": 44,
-        "JSX_product_supported": false,
-        "review": {
-          "Critical": 0,
-          "Important": 3,
-          "Minor": 1,
-          "correction_passes": 1,
-          "I1": "bounded operations/stageleases/late disposal",
-          "I2": "native occurrence identity uniqueness/currentnamespace window",
-          "I3": "truthful partial execution milestones",
-          "M1": "currentStage startup label deferred; total6minors"
-        },
-        "native_retry": false
+        "full_A02": false
       },
       "completed_slices": [
         {
@@ -2306,6 +2284,38 @@
             "correction_passes": 1,
             "I1": "canonical sourceSite shared once; invalid input cannot replace configowner; RED36PASS6FAIL->GREEN42/affected256/full4044; actual93VMhistorical/no replay"
           }
+        },
+        {
+          "id": "A02.16",
+          "record": "166-a02-original-main-jsx-native.md",
+          "status": "complete-bounded-source-one-correction-native-incomplete",
+          "base": "bac767d494646b831d059082b0357438800c4f6c",
+          "native_runs": 1,
+          "model_calls": 0,
+          "product_code_changed": false,
+          "full_A02": false,
+          "focused_checks": 233,
+          "full_source_checks": 4200,
+          "native_modes_visited": 0,
+          "native_phases_visited": 0,
+          "native_phases_unvisited": 18,
+          "native_result": "INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02",
+          "native_raw_sha256": "e0f31256c7a64346597bfb783b221202d4993d0c5e6801a45747c0119384dca7",
+          "prepared_source_revision": "5837358bd51b7c7ef4bfdf2add71c91d81228af7",
+          "execution_revision": "eda4cd45604a738ef0025ebd6641bb291f26a60a",
+          "saved_negative_controls": 44,
+          "JSX_product_supported": false,
+          "review": {
+            "Critical": 0,
+            "Important": 3,
+            "Minor": 1,
+            "correction_passes": 1,
+            "I1": "bounded operations/stageleases/late disposal",
+            "I2": "native occurrence identity uniqueness/currentnamespace window",
+            "I3": "truthful partial execution milestones",
+            "M1": "currentStage startup label deferred; total6minors"
+          },
+          "native_retry": false
         }
       ],
       "remaining_acceptance": [
@@ -2321,9 +2331,9 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "166-a02-original-main-jsx-native.md",
-        "status": "complete-bounded-source-one-correction-native-incomplete",
-        "next_bounded_step": "A02.17 new separatelyfrozen Maincase with explicit required --enable-automation, closed argv/schema/deliveryreceipt beforemax1newlaunch. Reuse corrected driver/observer, no blankretry/legacywaiver/security/userprofile changes."
+        "record": "167-a02-explicit-startup-main.md",
+        "status": "active-preregistered-before-code",
+        "next_bounded_step": "Closed v2 explicit --enable-automation and actual original-argument delivery receipt, TDD/sourcecommit/fullsuite beforemax1newfrozen Maincase. Oldv1exhausted."
       },
       "stopping_point_history": [
         {
