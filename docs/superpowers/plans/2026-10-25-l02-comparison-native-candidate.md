@@ -41,8 +41,8 @@
 **Files:** new tests/integration/local-comparison-native.mjs, tests/helpers/comparison-native-desktop.mjs, tests/local-comparison-native-owner.test.mjs; completion157/current pointers.
 **Interfaces:** strictnewCLI/preflight/runmarker; authenticatedowneddisplay/browser/lease/proc attestation/PlaywrightnoDefaults; actualnormalfolderdrop/newworker/JSsourceSHA+nonce; fixed34nativeRuns/stoponmissingreturn; sourcequalifiedcollection/console-stop/cleanup/provenance.
 
-- [ ] TDD parser/noimport-launch/maxone/acquisition/unknownownership/PIDreuse/independentcleanup/loadedbyteproof/actualrunevents/partialstop/no retry/latecollector tests withfakesonly. `node --test --test-isolation=none tests/local-comparison-native-case.test.mjs tests/local-comparison-native-owner.test.mjs tests/comparison-model-provider.test.mjs tests/local-comparison-evaluation-page.test.mjs` ->RED thenPASS.
-- [ ] Stablefull npm testoncePASS; oldcontracts/current327/78/UI2/oldraw unchangedexceptdeclaredresearchdelta; source syntax/diff/localcommit/task-done. No model/browser in sourcechecks; no unneededpriorcampaign/fullsuite repeat.
+- [x] TDD parser/noimport-launch/maxone/acquisition/unknownownership/PIDreuse/independentcleanup/loadedbyteproof/actualrunevents/partialstop/no retry/latecollector tests withfakesonly. `node --test --test-isolation=none tests/local-comparison-native-case.test.mjs tests/local-comparison-native-owner.test.mjs tests/comparison-model-provider.test.mjs tests/local-comparison-evaluation-page.test.mjs` ->RED thenPASS.
+- [x] Stablefull npm testoncePASS; oldcontracts/current327/78/UI2/oldraw unchangedexceptdeclaredresearchdelta; source syntax/diff/localcommit/task-done. No model/browser in sourcechecks; no unneededpriorcampaign/fullsuite repeat.
 
 ### Task 3: One frozen prepared candidate, actual run and literal grading
 

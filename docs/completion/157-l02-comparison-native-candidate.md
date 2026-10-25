@@ -28,3 +28,19 @@ passes88/88,0fail/0cancel/0skip (761.8ms). Syntax/diff checks pass;25prior sourc
 (24physical+1exactGit before getter),327current product inputs,15V03raw,10L02records
 remain unchanged. No actual preparation/esbuild/model/profile/browser yet.
 Task2 owned runner/cleanup remains before full source suite and Task3 single candidate.
+
+Task2 source: separate inert driver/authenticated desktop helpers implement fixed-case
+entry, exclusive run/lease, fresh endpoint, read-only /proc UID/exe/start/parent ownership
+before UI, ordinary Gtk folder drop, actual JS/nonce proof before Run, exact34 once,
+retained partial rows, explicit console stop and ten independent cleanup receipts.
+Origin: normal folder-drop/Xauth route from unchanged legacy local-model-native;
+the old top-level runner is neither imported nor invoked. Official Playwright1.63/CDP
+and Prompt API docs were refreshed before implementation; noDefaults is explicit.
+
+RED missing helper, present-proc/unreadable-exe and registered visual-hook controls
+preserved. Final focused118/118PASS (1781.8ms), final stable `npm test`3651PASS,
+0fail/0cancel/0skip (105146.7ms, terminal79017). Earlier3650PASS lacks the final hook
+and is retained separately; restricted child-CLI failures also remain, same commands
+pass with child execution enabled. Syntax and diff checks pass; source/product/raw
+preservation matches Task1 (25/327/15/10). No browser/profile/preparation/model yet.
+Next Task3: actual preparation/physical preflight/committed fixed case, then max1 run.
