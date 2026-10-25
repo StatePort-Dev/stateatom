@@ -1,5 +1,10 @@
 # Project status
 
+Active bounded task: [A02.21](completion/171-a02-main-input-bridge.md).
+Source-only same-Main parameter/filter/map reference handoff; old86source/327payload/
+A02.20native preserved,7NEWfiles/0oldsource deltas. No newruntimeproof; ownedhook
+controls do not establish ordinary lifecycle.20/29/fullA02 unchanged,7minors deferred.
+
 Completed bounded acquisition: [A02.20](completion/170-a02-page-enabled-main-native.md).
 ONE finalreview0C0I0newM/no correctionpass; actual3modes18phasescomplete/5positive
 windows/9callback-JSXlinks, off0/StopclearedUnknown0.141unsupported events unaccepted.
