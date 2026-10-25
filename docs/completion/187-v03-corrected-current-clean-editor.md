@@ -54,3 +54,38 @@ contract/control hashes included in fixedcase before commit; postcommit launch r
 will bind exactcase/contract/revision, without independent timestamp claim.
 No native run yet, no TLS/certificates/profile/policy or product change. MaximumONE
 new invocation; if incomplete close this mechanism campaign, no further retrycase.
+
+
+## ONE native PASS, original independent control refusal retained
+Actuald48598a/clean, native5199terminal0, literal
+PASS_CORRECTED_CURRENT_CLEAN_EDITOR_CONTRACT_NOT_FULL_V03. Six checks: exact80/
+picker-open/own10externalABA+Read/own20externalABA+Read/Close/finalconsole-host all
+recordedPASS. RawSHA
+ecbbe9d98a319343e281d6102c596840ac3a7d4ca4413f6d47f76ffb6f40a8a6.
+587before/after/current physical inputs equal,327product/16oldraw unchanged.
+External groups10/20 complete, step samplecounts5/6 and5/5; strictwindows10samples
+1211/1212ms. Ownhistory stays10/20, external equal-value return does not restore
+ownership. Close leaves20/history2 and closes investigation. No causal writer/
+application restoration/originalguide/fullV03 claim.
+
+All9cleanuptrue, knownChrome3685923/Vite3685876 freshlyAbsent (PID-only, not whole
+tree),0inspector/appconsole/errors; stopped attached app collector/overflowfalse.
+Four1100/390fields/actions PNGs acquired/hashchecked/agentviewed: minPrice20,
+maxPrice1000, disabledUndo/baseline, narrowbuttons wrap; stale execution explanation
+is explicit. Rootfont13px/nohorizontaloverflow measured. Screenshots candidates,
+not humanfidelity/installeduser/allplatform acceptance; no UI design change.
+
+Frozen fullreader firstexit1 AFTER exactbindings and positive factual validate(r)
+PASSED, at negative accepted:field. It assigned fieldvalue10 to first valid pending
+sample which already had10: no corruption occurred. Other first-sample control
+mutations can likewise be noops while refresh is pending.31actual fullnegative
+controls did NOT complete;31prewritten owned-source controls remain source-only.
+Frozen preservation firstexit0/qualification:false/587physical/2knownPIDsAbsent.
+Preregistered fullreader qualification remainsfalse; no rerun/retuning/extra browser.
+
+Known reader-control source finding goes to ONEfinalreview/singlefixpass. Any
+corrected verification must be a NEWnamed offline/posthoc artifact, preserve old
+reader/case/raw/firstfailure, and keep the positive predicate core byte-identical.
+No threshold/criterion weakening or preregistered-reader PASS can be manufactured.
+The actual native workflow completed; overall wholeV03/originalguide and20of29
+remain unchanged. No more native case needed for this control-generator defect.

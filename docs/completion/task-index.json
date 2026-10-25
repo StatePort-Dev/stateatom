@@ -6354,14 +6354,14 @@
       "active_slice": {
         "id": "V03.29",
         "title": "Separately frozen corrected current-clean acquisition",
-        "status": "case587-readers-frozen-native0",
+        "status": "native-pass-independent-control-refusal-review-pending",
         "record": "187-v03-corrected-current-clean-editor.md",
         "design": "../superpowers/specs/2026-10-26-v03-corrected-current-clean-editor-design.md",
         "plan": "../superpowers/plans/2026-10-26-v03-corrected-current-clean-editor.md",
         "focused_checks": 241,
         "product_inputs_unchanged": 327,
         "retained_raw": 16,
-        "native_runs": 0,
+        "native_runs": 1,
         "maximum_native_runs": 1,
         "whole_V03_complete": false,
         "source_checks": 4933,
@@ -6371,7 +6371,16 @@
           "full_negative": 31,
           "preservation_structural": 14,
           "all_four_final_dom_predicates": true
-        }
+        },
+        "native_status": "PASS_CORRECTED_CURRENT_CLEAN_EDITOR_CONTRACT_NOT_FULL_V03",
+        "native_driver_qualification": true,
+        "preregistered_full_reader_qualification": false,
+        "positive_independent_predicates_passed": true,
+        "full_reader_exit_code": 1,
+        "known_source_finding": "Negative controls target first pending sample; settingfield10 can be noop. Frozen reader/case/raw unchanged; any correction NEWoffline/posthoc with identical positive predicates, no native rerun.",
+        "raw_sha256": "ecbbe9d98a319343e281d6102c596840ac3a7d4ca4413f6d47f76ffb6f40a8a6",
+        "native_checks": 6,
+        "review_pending": true
       },
       "completed_slices": [
         {
@@ -7444,8 +7453,8 @@
       ],
       "current_checkpoint": {
         "record": "187-v03-corrected-current-clean-editor.md",
-        "status": "case587-readers-frozen-native0",
-        "next_bounded_step": "Finish source/full checks; freeze distinct corrected80case and prewritten readers before maxONEnewnative; old28exhausted. Close mechanism campaign if incomplete."
+        "status": "native-pass-independent-control-refusal-review-pending",
+        "next_bounded_step": "ONEfinalwhole review/source-only negative-generator correction via NEWoffline/posthoc artifact if accepted; keep originalfullreader refusal/qualificationfalse/no newbrowser."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-v03-current-clean-editor.md",
       "implementation_plan": null,
@@ -7746,8 +7755,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.29-case587-readers-frozen-native0",
-    "next_item": "Finish source/full checks; freeze distinct corrected80case and prewritten readers before maxONEnewnative; old28exhausted. Close mechanism campaign if incomplete.",
+    "current_increment": "V03.29-nativePASS-independent-control-refusal",
+    "next_item": "ONEfinalwhole review/source-only negative-generator correction via NEWoffline/posthoc artifact if accepted; keep originalfullreader refusal/qualificationfalse/no newbrowser.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7774,7 +7783,7 @@
     "active_item": {
       "id": "V03",
       "record": "187-v03-corrected-current-clean-editor.md",
-      "status": "case587-readers-frozen-native0"
+      "status": "native-pass-independent-control-refusal-review-pending"
     },
     "completed_increments": [
       {
@@ -10469,11 +10478,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Newclosed corrected case route/private factual reuse;241focusedPASS/product327/16raw/frozen28readers stable; 4933fullPASS/587preflight/readersfrozen/native0. Old28INCOMPLETE preserved/20of29unchanged.",
+    "current_activity_note": "ONEnative sixstepPASS/587stable/Close+QA/cleanup, positiveindependentpredicatesPASS but frozenfullreader failsnoopfield10 negative. Preregisteredqualificationfalse/sourcecontrolfindingreviewpending; no retune/browserretry/20of29upgrade.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "69bf98fe32778de181e7ddf934ce35ce8dccb4b0",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "Finish source/full checks; freeze distinct corrected80case and prewritten readers before maxONEnewnative; old28exhausted. Close mechanism campaign if incomplete.",
+    "next_bounded_step": "ONEfinalwhole review/source-only negative-generator correction via NEWoffline/posthoc artifact if accepted; keep originalfullreader refusal/qualificationfalse/no newbrowser.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

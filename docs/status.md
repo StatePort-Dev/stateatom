@@ -1,9 +1,12 @@
 # Project status
 
-V03.29 corrected-source separate case in preparation: [source status](completion/187-v03-corrected-current-clean-editor.md).
-241focusedPASS; old/new closedheaders/routes separate, physical acquisition unchanged.
-327product80/16oldraw/frozen28readers stable;4933fullsourcePASS/587preflight/readersfrozen/native0.
-Old28INCOMPLETE unchanged; no timing/permission/SDK/UI/cert/trust changes.
+V03.29 actual native six-step PASS; independent control-generator refusal/review pending:
+[corrected current-clean workflow](completion/187-v03-corrected-current-clean-editor.md).
+Own10/20 externalABA+Read/Close/1100+390QA/console complete,587inputs stable,
+all9cleanup/2knownPIDAbsent. Positive independent predicates passed; fullreader
+failed no-op negative(field10 alreadypending10), so preregistered fullqualification
+false. Frozen bytes/result retained, no browser rerun.4933source/241focusedPASS;
+327product80/oldraw unchanged.20of29/fullV03/originalguideFAIL unchanged.
 
 V03.28 bounded attempt/source correction complete, native remains INCOMPLETE:
 [current clean-editor contract](completion/186-v03-current-clean-editor.md).
