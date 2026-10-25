@@ -2460,9 +2460,9 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "181-a02-native-state-source-path.md",
-        "status": "closed-bounded-native-attempt-incomplete-no-qualification",
-        "next_bounded_step": "ONE source-only App/Main complete weak-reference gate availability diagnostic using saved data/owned controls; no assumed GC fix, criteria lowering or native rerun."
+        "record": "182-a02-app-main-availability.md",
+        "status": "planning-source-only-original-gate-availability",
+        "next_bounded_step": "ONE source-only original App/Main closure availability diagnostics with exact predicate/WeakRef-read parity; no native retry or actualGC inference."
       },
       "stopping_point_history": [
         {
@@ -2590,46 +2590,28 @@
           "record": "180-a02-native-state-return-native.md",
           "status": "complete-bounded-native-return-reference-acquisition",
           "next_bounded_step": "ONE bounded private native-return to existing source-path association, actual references/tokens only; all stronger ownership/selectedDOM originsUnknown."
+        },
+        {
+          "record": "181-a02-native-state-source-path.md",
+          "status": "closed-bounded-native-attempt-incomplete-no-qualification",
+          "next_bounded_step": "ONE source-only App/Main complete weak-reference gate availability diagnostic using saved data/owned controls; no assumed GC fix, criteria lowering or native rerun."
         }
       ],
-      "implementation_plan": "../superpowers/plans/2026-10-25-a02-native-state-source-path.md",
+      "implementation_plan": "../superpowers/plans/2026-10-25-a02-app-main-availability.md",
       "active_slice": {
-        "id": "A02.31",
-        "record": "181-a02-native-state-source-path.md",
-        "status": "closed-bounded-attempt-native-incomplete",
-        "base": "22e1f320c5afefcf58fdc6744163a82fa88c9f37",
-        "native_runs": 1,
-        "maximum_native_runs": 1,
+        "id": "A02.32",
+        "record": "182-a02-app-main-availability.md",
+        "status": "planning",
+        "base": "98e3458ce944567acc1de43ca4bd41709e1713d0",
+        "native_runs": 0,
+        "maximum_native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false,
-        "focused_checks": 68,
-        "full_checks": 4769,
-        "observed_compiler_inputs": 4,
-        "observed_bundle_unchanged_from_A0230": true,
-        "modes_completed": 2,
-        "phases_completed": 14,
-        "phases_started": 15,
-        "qualified_windows": 0,
-        "qualified_links": 0,
-        "candidate_observed_windows": 2,
-        "candidate_observed_links": 4,
-        "registered_runtime_inputs": 1416,
-        "full_reader_rejected": true,
-        "posthoc_structural_controls": 27,
-        "native_result": ".artifacts/a02/native-state-source-path/2026-10-25T18-41-00Z/results.json",
-        "execution_revision": "3c8c6b9ff54c4066949f297558db7cf5778056f7",
-        "prepared_revision": "7bddb1b62527ee99bea9b9480348f27a48c3355e",
-        "feature_qualification": false,
-        "review": {
-          "Critical": 0,
-          "Important": 0,
-          "Minor": 0,
-          "correction_passes": 0,
-          "rereview": false,
-          "deferred_minors_total": 11
-        },
-        "native_reruns_after_review": 0
+        "declared_research_deltas": [
+          "experiments/react19-reducer/app-main-props-observer.mjs",
+          "tests/engine/react19-app-main-props-observer.test.mjs"
+        ],
+        "full_A02": false
       }
     },
     {
