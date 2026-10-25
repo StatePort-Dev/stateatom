@@ -1666,7 +1666,7 @@
       "active_slice": {
         "id": "A02.10",
         "record": "160-a02-react19-prop-copy-input.md",
-        "status": "source-recorder32-recipe-pending-no-native",
+        "status": "source-recorder-recipe60-before-retained-vm",
         "base": "f48be1a",
         "native_runs": 0,
         "model_calls": 0,
@@ -2153,8 +2153,8 @@
       },
       "current_checkpoint": {
         "record": "160-a02-react19-prop-copy-input.md",
-        "status": "source-recorder32-recipe-pending-no-native",
-        "next_bounded_step": "A02.10 Task1recorder32PASS/current47source/327product/raw intact; next Task2 exact pinned classicReact19 expression recipe/retainedCJS VM/fullsource. No browser/launcher/native/cert/install/model or stronger lineage."
+        "status": "source-recorder-recipe60-before-retained-vm",
+        "next_bounded_step": "A02.10 source recorder/recipe60PASS; commit source checkpoint then one retained pinnedReact19 CJS VM original/off/on qualification/fullsource. No browser/native/model or field-storage/ownership upgrade."
       },
       "stopping_point_history": [
         {
@@ -7247,8 +7247,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.10-source-recorder32-recipe-pending",
-    "next_item": "A02.10 Task1recorder32PASS/current47source/327product/raw intact; next Task2 exact pinned classicReact19 expression recipe/retainedCJS VM/fullsource. No browser/launcher/native/cert/install/model or stronger lineage.",
+    "current_increment": "A02.10-source60-before-retained-vm",
+    "next_item": "A02.10 source recorder/recipe60PASS; commit source checkpoint then one retained pinnedReact19 CJS VM original/off/on qualification/fullsource. No browser/native/model or field-storage/ownership upgrade.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7275,7 +7275,7 @@
     "active_item": {
       "id": "A02",
       "record": "160-a02-react19-prop-copy-input.md",
-      "status": "source-recorder32-recipe-pending-no-native"
+      "status": "source-recorder-recipe60-before-retained-vm"
     },
     "completed_increments": [
       {
@@ -9970,11 +9970,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.10 new source-only recorder32PASS; exact weak copy-input history/seal/Stop/privacy/late intrinsic controls, stronger lineage/nativeOrigin remainUnknown/NotAttested. Existing47source/current327/15V03raw/12L02records/4oldcase-marker/vendor unchanged. Next new pinned recipe/retainedCJS VM/fullsource; no native/browser/launcher/cert/install/model/product change, whole20of29 open.",
+    "current_activity_note": "A02.10 recorder+exact classic prop-copy recipe60sourcePASS; synthetic grammar not native-admitted, getter/setter/Proxy/stack/error/ordering controls preserve behavior. Source-only VM runner ready but not executed; no browser/native/model/installation/product importer. Existing47source/current327/raw retained, storage/transfer/ownership/selectedproducer remainUnknown and whole20of29 open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "f48be1a",
+    "current_source_revision": "954e2d5",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "A02.10 Task1recorder32PASS/current47source/327product/raw intact; next Task2 exact pinned classicReact19 expression recipe/retainedCJS VM/fullsource. No browser/launcher/native/cert/install/model or stronger lineage.",
+    "next_bounded_step": "A02.10 source recorder/recipe60PASS; commit source checkpoint then one retained pinnedReact19 CJS VM original/off/on qualification/fullsource. No browser/native/model or field-storage/ownership upgrade.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -9984,7 +9984,7 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "last bounded source-contract diagnosis; new isolated prop-copy implementation pending",
+    "current_source_revision_kind": "committed recorder source; recipe60 tested before source checkpoint commit",
     "current_source_checkpoint": ".artifacts/v03/clean-editor-contract/2026-10-25/final-checkpoint.json",
     "current_source_checkpoint_kind": "last completed bounded source diagnosis V03.27"
   },

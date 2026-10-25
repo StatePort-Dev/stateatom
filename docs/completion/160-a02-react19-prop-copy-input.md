@@ -1,4 +1,4 @@
-# A02.10 — one native prop-copy input occurrence (source recorder32; recipe pending)
+# A02.10 — one native prop-copy input occurrence (source recorder/recipe60; retained-source qualification pending)
 
 Historical preregistration at8d1c9a0 starts f48be1a. V03.27 source diagnosis preserves clean current fields/dirty local
 text/owned history and old26failure; no product or guard change. A02.4 ancestor and
@@ -32,3 +32,19 @@ No native/VM vendor execution/model/product behavior yet. Fullsuite deferred unt
 Task2 recipe stable; old same-byte3695suite remains historical proof of old code.
 Next Task2 new separately pinned expression recipe and retained-source qualification,
 no browser/installation/argv/certificate work. Whole20of29 and A02 remain open.
+
+Task2 source checkpoint (before retained vendor execution): separate recipe wraps
+only original new-props/copy-assignment/ReactElement-return expressions. Whole native
+assignment executes before metadata helper, preserving getter/setter/throw/receiver
+semantics; three exact sites, function bindings/caller and source digest refuse drift.
+Original product/vendor/array adapters remain untouched. Shared authored synthetic
+controls helper adds no copied vendor runtime. Synthetic grammar always native pin
+unadmitted. Accessor/missing/throwing bootstrap tap and stack-sensitive getter controls
+pass without adding an observer callback frame while the getter runs.
+
+Recipe/helper59PASS1missing runner ->zero-option source runner/import/CLI implemented,
+final focused60PASS. Source runner registers exact source revision/dirty state/current
+file hashes before trusted retained CJS VM original/off/on, not a security sandbox.
+No actual retained-source VM has executed yet; fullsuite deferred until that source
+qualification and stable Task2. No native/browser/model/installation or new product
+readiness; same setter/input-versus-storage Unknown boundary applies.
