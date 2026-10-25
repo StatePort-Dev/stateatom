@@ -1,4 +1,4 @@
-# L02.13 — short owned comparison route (one native attempt exhausted; review pending)
+# L02.13 — short owned comparison route (bounded attempt closed; native incomplete)
 
 Historical preregistration at7a2fae5 starts c799ad5 after [L02.12](157-l02-comparison-native-candidate.md): one exhausted
 startup refusal, actual socket133UTF8 bytes under long TMPDIR,0APIcalls/all34unvisited.
@@ -71,3 +71,27 @@ No sampling/latency/model-build/product/fullL02 acceptance; whole20of29 unchange
 Next ONE bounded review of this item. Then return to source work on V03's clean-editor
 contract after foreign application edits; retain26's exact guard/failedraw rather than
 chase another installation/AI launch. Original L02 quality/lifecycle gates stay open.
+
+ONE fresh final bounded review `l0213_whole_review` Astra/high c799ad5..a401291:
+0Critical/0Important/1Minor. Reviewer fresh focused162PASS outside restricted child
+sandbox (initial3CLI stderr failures were environmental, not a full passing run),
+raw/source/host/evidence/4known PID absence/diff/clean checkout verified. No native,
+model, preparation, full-suite repeat, file mutation or subagents. No correction
+pass/re-review/native rerun. All six declined domains remain unproved or outside:
+installation cause, AI quality, visual/keyboard/human, global/process-tree cleanup,
+fullL02/oldminors and future V03 source behavior. No hidden acceptance expansion.
+
+M1 deferred: original saved-verifier paragraph lacks explicit historical timestamp;
+its444physical result was obtained before Task2 checkbox updates. The separate final
+checkpoint records443current physical +1exact frozen dad294a plan (native total444),
+without modifying old report/case or using old source in a new execution. Reader
+must distinguish the historical strict saved-reader invocation from final current
+reconciliation. Prior L02.11 selector/result-case and V03.26 historical-label minors
+also remain deferred. This is a documentation clarity cost, not a lowered gate.
+
+Final local closeout archives/hashes/removes only this own plan workspace, preserving
+current327/15V03raw/11priorL02records+newraw/oldcase+marker and all source/host bytes.
+ONE next V03.27 bounded source-only diagnosis of clean-editor refresh versus retained
+local dirty input/own history. Existing source currently derives a clean field from
+observed resource; do not silently make26's ownValue experiment into general UX policy.
+No new browser/installation/certificate work in that source step.20of29 unchanged.

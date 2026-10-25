@@ -1,13 +1,14 @@
 # Project status
 
-Active bounded work: [L02.13](completion/158-l02-short-owned-comparison.md), one
-short-route attempt exhausted/INCOMPLETE at new-worker wait,0API/all34unvisited.
-Actual ownedChrome156 now attested; no socket fatal. Native Gtk mouse sequence is
-not proof of installation, cause Unknown/no PNG. Fourknown roots retired/lease
-released;9cleanuptrue/console NotCollected. Source162/full3695 and saved444physical/
-37negative checks support source/partial refusal only. ONE bounded review next;
-then V03 clean-editor source contract after foreign edits, no installation retry.
-Whole20/29/mandatoryL02 unchanged; no cert/security/userprofile/download/SDK/publish.
+Completed bounded attempt: [L02.13](completion/158-l02-short-owned-comparison.md).
+One short-route case exhausted/INCOMPLETE at new-worker wait,0API/all34unvisited.
+OwnedChrome156 attested/no socket fatal; installation cause Unknown/no PNG. Fourknown
+roots retired/lease released;9cleanuptrue/console NotCollected. Source162/full3695
+and saved444physical/37negative checks support source/partial refusal only. ONEreview
+0C0I1Mhistorical saved-verifier label deferred, no correction/re-review/native rerun.
+Final current443physical+1frozenplan reconciliation separate from old saved report.
+Next ONE V03.27 source-only clean-editor/dirty-draft contract diagnosis, no browser.
+Whole20/29/mandatoryL02 unchanged; no cert/security/userprofile/requesteddownload/SDK/publish.
 
 Completed bounded attempt: [L02.12](completion/157-l02-comparison-native-candidate.md).
 ONE case exhausted/INCOMPLETE before browser attestation: installed Chrome156 fatal

@@ -44,4 +44,4 @@
 
 ## Final closeout
 
-- [ ] ONE fresh whole-bounded review/effectregrade/ONEtestedI/Cpass/no re-review/native; allrulings/minors recorded, ownworkspacearchive/hash/remove/cleanlocalcommit/checkpoint. ONE nextdependency from actualevidence, no endless retry/tuning.
+- [x] ONE fresh whole-bounded review/effectregrade/ONEtestedI/Cpass/no re-review/native; allrulings/minors recorded, ownworkspacearchive/hash/remove/cleanlocalcommit/checkpoint. ONE nextdependency from actualevidence, no endless retry/tuning.
