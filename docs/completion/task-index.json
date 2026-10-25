@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "173-a02-main-input-native.md",
-        "status": "source-gates-passed-before-native-preparation",
-        "next_bounded_step": "A02.23 newfixed native Maininputhandoff case;95research/327payload protected; real retained hooks/router, same strictnativeprotocol/max1run; no oldcase retry."
+        "status": "native-main-input-qualified-before-final-review",
+        "next_bounded_step": "ONE final fresh review then bounded state-array→App/Main upstream handoff dependency; native Main local path does not prove state ownership/selectedDOM/product support."
       },
       "stopping_point_history": [
         {
@@ -2556,15 +2556,34 @@
       "active_slice": {
         "id": "A02.23",
         "record": "173-a02-main-input-native.md",
-        "status": "source-gates-passed-before-native-preparation",
+        "status": "native-main-input-qualified-before-final-review",
         "base": "551014f",
-        "native_runs": 0,
+        "native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
         "focused_tests_passed": 385,
         "new_tests": 47,
-        "full_tests_passed": 4429
+        "full_tests_passed": 4429,
+        "source_revision": "1abdf64",
+        "case_revision": "1c1e554",
+        "browser_launches": 1,
+        "modes_complete": 3,
+        "phases_complete": 18,
+        "positive_main_windows": 5,
+        "main_links": 9,
+        "off_links": 0,
+        "stop_links": 0,
+        "stop_tombstone_sealed": false,
+        "unsupported_jsx_events_unaccepted": 141,
+        "input_hashes_before_after": 819,
+        "saved_byte_inputs": 819,
+        "saved_negative_controls": 133,
+        "real_hook_and_router_executed": true,
+        "general_hook_lifecycle_proven": false,
+        "qualification_result": ".artifacts/a02/main-input-native/2026-10-25T10-49-00Z/results.json",
+        "qualification_sha256": "58b823930e3518c2eac82c07516e062115bca766191a41a678ac749357275a8a",
+        "installed_runtime_proven": false
       }
     },
     {

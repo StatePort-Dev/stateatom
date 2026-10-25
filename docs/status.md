@@ -1,11 +1,12 @@
 # Project status
 
 Active bounded task: [A02.23](completion/173-a02-main-input-native.md).
-Newfixed nativeMaininputhandoff,95research/327payload/priorraw registeredbeforecode;
-fourNEWfiles/0oldsource deltas.385focused/4429fullPASS; nativecase not yetprepared.
-Sameownedlaunch/localhost/
-Page.enable/source/URL/cleanup guards; no userprofile/cert/trust/SDK/product/publish.
-20/29/fullA02 unchanged;8deferredminors.
+ONE nativeMainhandoff PASS:1launch/3modes/18phases/5positivewindows9links; off0/
+StopunsealedUnknown0. RealretainedApp/Main/Item/hooks/router/ReactDOM executed,
+819before-afterhashesunchanged/saved133negative.385focused/4429fullPASS. Allcleanup/
+PIDprofileAbsent;141unsupportedJSXeventsunaccepted. Finalreviewpending; no installed/
+state/ownership/selectedDOM/fullA02 upgrade.95research/327payload/priorrawunchanged;
+20/29 unchanged,8minorsdeferred. No oldcase retry or cert/trust/userprofile/publish.
 
 Completed bounded source task: [A02.22](completion/172-a02-cleanup-main-source.md).
 ONE review0C0I1newM/no correctionpass; actual54VMcontexts/18cases/7positive8links/

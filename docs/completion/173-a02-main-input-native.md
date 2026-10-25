@@ -1,4 +1,4 @@
-# A02.23 — bounded native Main input handoff (active; source gates passed)
+# A02.23 — bounded native Main input handoff (native acquisition qualified; final review pending)
 
 ## Historical pre-code checkpoint
 
@@ -31,3 +31,42 @@ offfixture incorrectly sent JSXtap despite absent actualoffhook; correctedfixtur
 toenabled-only, keeping strict0disabledconfigs. Nativecase not prepared/launched yet.
 
 Whole20/29/fullA02 unchanged;8priorminorsdeferred.
+
+## ONE actual native Main handoff
+
+Source1abdf64; prepare818inputs0browser/preflight819includingcasePASS; frozen case
+1c1e554. Task1done385PASS3929.014711ms. Task2BASE1c1e554; ONE native terminal3032
+exit0, literal PASS_BOUNDED_MAIN_INPUT_CALLBACK_JSX_NOT_FULL_A02.1browserlaunch/
+3modes/18phasescomplete/0errors/unvisited. Fiveonwindows [2,2,2,2,1] =9Mainlinks,
+Mainframecounts[1,1,1,1,1,0]; off0/StopunsealedUnknowncleared0. ActualretainedApp/
+Main/Item/React19hooks/router/ReactDOM executed under automaticJSX/esbuildoverlay;
+no ownedhook/router/Item substitutes. Legacycallbacksubqualification alsoPASS,
+plus newMain guards/actualdriver/before-afterhashmap gates. No broaderReactlifecycle
+conformance, originalWebpack/installedAtom, state/storage/transfer/ownership/selected
+DOM/componentinstance/fullA02 support claimed. NativeOriginNotAttested retained.
+
+Raw .artifacts/a02/main-input-native/2026-10-25T10-49-00Z/results.json,
+SHA25658b823930e3518c2eac82c07516e062115bca766191a41a678ac749357275a8a.
+All819 actualbefore/afterphysicalhashes match. Originalbundle20dd3310...711a7d
+unchanged; observed759db48d...712da9; bootstraps off171855f2...21e882/on6c9d0df1...84754b.
+Strictdefaultcontexts/documents/loadedscript+bootstrap exactbytes/eightURLreadingpairs/
+DOMcheckboxphases/uniqueModeIDs retained.141unsupportedJSXevents[28,35,35,28,15,0]
+remainUNACCEPTED, not broadercoveragePASS. Setupexcluded.
+
+Origin127.0.0.1:35403,9ownedGETs/no deniednetwork/errors. OwnedPID2036681/start
+18980418Absent; allmode/rootcleanuptrue, noKill,pendingcomplete,profilegone. Original
+owner46/public53argumentvectors independentlycaptured/different digests; no effective
+mode/kernelattestation inferred. No userbrowser/cert/trust/profile/security changes.
+
+Independent standalone savedreader: .artifacts/a02/main-input-native-saved-verification/
+2026-10-25/{verify.py,report.json}.819physicalinputs/133meaningful corruptionsrejected
+(61legacycallback/nativefact+72Main/input/strongscope);0projectimports/browser/native/
+app/model execution. Copied strict legacyfactchecks operate on a pure projection;
+all actualnativefacts preserved, newMainrawchecked separately. No oldreader executed.
+Live reference equality not reconstructed; savedserializedscope only. CurrentownedPID/
+profileabsence independentlychecked. No readerdraftcorrection needed.
+
+Current95research/327payload/120A0220/28A0221/79A0222evidence unchanged; no oldcase/
+native/sourcequalification rerun. Whole20/29/fullA02 unchanged;8priorminorsdeferred.
+Finalreview/ONE I-Cpass ifneeded pending; state-row→App/Main upstream link remains
+a concrete next bounded dependency even after this successfulMain-localhandoff.
