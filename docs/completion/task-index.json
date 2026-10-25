@@ -2461,7 +2461,7 @@
       },
       "current_checkpoint": {
         "record": "174-a02-app-hook-binding.md",
-        "status": "registered-before-source",
+        "status": "source-gates-passed-before-App-qualification",
         "next_bounded_step": "A02.24 exactApphook-callresult/already-boundvalues source-only; nativeState/tupleIndex/props/Main upstream unknown;99research/327payload protected, no native rerun."
       },
       "stopping_point_history": [
@@ -2561,12 +2561,16 @@
       "active_slice": {
         "id": "A02.24",
         "record": "174-a02-app-hook-binding.md",
-        "status": "registered-before-source",
+        "status": "source-gates-passed-before-App-qualification",
         "base": "48cc6af",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_tests_passed": 55,
+        "full_tests_passed": 4484,
+        "tuple_index_origin": "Unknown/Unsupported",
+        "native_state_origin": "Unknown/Unsupported"
       }
     },
     {

@@ -1,0 +1,46 @@
+// SPDX-License-Identifier: Apache-2.0
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {parse} from '@babel/parser';
+import vm from 'node:vm';
+import {transform} from 'esbuild';
+import {appHookBindingFactory,prepareAppHookBindingApplication} from '../helpers/react19-app-hook-binding-controls.mjs';
+import {instrumentAppHookBinding} from '../../experiments/react19-reducer/app-hook-binding-transform.mjs';
+const file='.runtime/todomvc/examples/react/src/todo/app.jsx',source=await readFile(file,'utf8'),hash=s=>createHash('sha256').update(s).digest('hex');
+test('disabled App source profile preserves exact bytes',()=>{const r=instrumentAppHookBinding(source,file);assert.equal(r.code,source);assert.equal(r.appSite,null);assert.equal(r.bindingSite,null);});
+test('original App source admits one same-function result/binding policy with primitive tags',()=>{const r=instrumentAppHookBinding(source,file,{enabled:true});assert.equal(r.skipped,false);assert.equal(r.sourceDigest,hash(source));assert.equal(r.appSite.functionName,'App');assert.equal(r.bindingSite.callName,'useReducer');assert.equal(r.bindingSite.todosBinding,'todos');assert.equal(r.bindingSite.dispatchBinding,'dispatch');assert.equal(r.appSite.sourceDigest,r.bindingSite.sourceDigest);assert.match(r.code,/\.appEnter\(/);assert.match(r.code,/\.result\(/);assert.match(r.code,/\.bound\(/);assert.match(r.code,/\.appReturned\(/);assert.match(r.code,/\.appExit\(/);assert.match(r.code,/finally/);assert.equal(r.nativeRuntimeProven,false);parse(r.code,{sourceType:'module',plugins:['jsx']});});
+test('App remains one original normal function with unchanged name/parameter count',()=>{const r=instrumentAppHookBinding(source,file,{enabled:true}),ast=parse(r.code,{sourceType:'module',plugins:['jsx']}),app=ast.program.body.find(n=>n.type==='ExportNamedDeclaration'&&n.declaration?.id?.name==='App').declaration;assert.equal(app.type,'FunctionDeclaration');assert.equal(app.params.length,0);assert.equal(app.async,false);assert.equal(app.generator,false);});
+for(const[name,change]of [
+ ['async',s=>s.replace('function App','async function App')],['generator',s=>s.replace('function App','function* App')],['parameters',s=>s.replace('App()','App(props)')],['alias import',s=>s.replace('{ useReducer }','{ useReducer as useHook }')],['rest binding',s=>s.replace('[todos, dispatch]','[todos, ...dispatch]')],['default binding',s=>s.replace('[todos, dispatch]','[todos = [], dispatch]')],['extra element',s=>s.replace('[todos, dispatch]','[todos, dispatch, extra]')],['missing dispatch',s=>s.replace('[todos, dispatch]','[todos]')],['var',s=>s.replace('const [todos','var [todos')],['reserved global',s=>'const __sa_app_hook_binding={};\n'+s],['eval',s=>s.replace('const [todos',"eval('x');const [todos")],['own finally',s=>s.replace('const [todos','try { const [todos').replace(/\n}\s*$/,'\n} finally { throw sentinel; }\n}')],['hoisted function',s=>s.replace('const [todos','function owned(){};const [todos')],['extra hook call',s=>s.replace('return (','useReducer(todoReducer, []); return (')],['non-JSX return',s=>s.replace('return (','return ()=>0; /*').replace(/\n}\s*$/,'*/\n}')],['no App',s=>s.replace('function App','function Other')]
+])test('App source refuses '+name+' as whole original bytes',()=>{const bad=change(source),r=instrumentAppHookBinding(bad,file,{enabled:true});assert.equal(r.skipped,true);assert.equal(r.code,bad);assert(r.unsupported.length);});
+test('script source is outside the original strict module profile',()=>{const r=instrumentAppHookBinding(source,file,{enabled:true,sourceType:'script'});assert.equal(r.skipped,true);assert.equal(r.code,source);});
+test('nested arrow finally is not an App finalizer and generated IDs avoid existing locals',()=>{const input=source.replace('const [todos','const _saAppFrame=1,_saAppMethod=2,_saAppTuple=3,_saAppResult=4;const ownedNested=()=>{try{return 1;}finally{throw 2;}};const [todos'),r=instrumentAppHookBinding(input,file,{enabled:true});assert.equal(r.skipped,false);parse(r.code,{sourceType:'module',plugins:['jsx']});assert.match(r.code,/ownedNested/);});
+
+function ownedAppSource(){return [
+ 'import {useReducer} from "react";import {todoReducer} from "./reducer";',
+ 'export function App(){globalThis.ownedFlags=[this===ownedOwner,arguments[0]===ownedArg,new.target===undefined,new.target===App];const [todos,dispatch]=useReducer(todoReducer,[]);return <main todos={todos} dispatch={dispatch}/>;}'
+].join('\n');}
+async function executeOwnedApp(caseName,mode){
+ const input=ownedAppSource(),r=instrumentAppHookBinding(input,'owned-app-semantics.jsx',{enabled:mode!=='original'});if(mode!=='original')assert.equal(r.skipped,false,JSON.stringify(r.unsupported));
+ const context=vm.createContext({caseName}),script=(text,name)=>new vm.Script(text,{filename:name}).runInContext(context,{timeout:1000});
+ script(["'use strict';globalThis.ownedOwner={};globalThis.ownedArg={};globalThis.ownedSentinel={};globalThis.ownedTrace=[];globalThis.ownedReads={hook:0,element:0,iterator:0,next:0};globalThis.ownedHookThis=true;globalThis.ownedIteratorThis=true;globalThis.ownedHelperFrame=false;",
+ "globalThis.ownedTodos=[{private:'owned-state'}];globalThis.ownedDispatch=function dispatch(){};globalThis.ownedTuple=[ownedTodos,ownedDispatch];globalThis.ownedReducer=function reducer(){throw Error('unexecuted');};",
+ "if(caseName==='element-getter')Object.defineProperty(ownedTuple,'0',{get(){ownedReads.element++;ownedTrace.push('element');ownedHelperFrame=ownedHelperFrame||/appReturned|appEnter|appExit|Object\\.(result|bound)/.test(String(new Error().stack));return ownedTodos;}});",
+ "if(caseName==='throw-iterator')Object.defineProperty(ownedTuple,Symbol.iterator,{get(){ownedReads.iterator++;ownedTrace.push('iterator');throw ownedSentinel;}});",
+ "globalThis.ownedHook=function hook(){ownedReads.hook++;ownedHookThis=ownedHookThis&&this===undefined;ownedTrace.push('hook');if(caseName==='throw-hook')throw ownedSentinel;return ownedTuple;};globalThis.ownedFacade={};Object.defineProperty(ownedFacade,'useReducer',{enumerable:true,get(){ownedTrace.push('callee');return ownedHook;}});",
+ "globalThis.ownedJSX={jsx(type,props){return {type,props};}};globalThis.ownedModule={exports:{}};"
+ ].join('\n'),'owned-bootstrap.js');
+ if(mode!=='original')script('globalThis.__sa_app_hook_binding=('+appHookBindingFactory()+')('+JSON.stringify({page:'owned-app-semantics',enabled:mode==='on',policy:{appSite:r.appSite,bindingSite:r.bindingSite}})+');__sa_app_hook_binding.startWindow("case");','owned-observer.js');
+ const code=(await transform(r.code,{loader:'jsx',jsx:'automatic',format:'cjs',target:'es2022',tsconfigRaw:{compilerOptions:{}}})).code;
+ script('(function(require,exports,module){"use strict";'+code+'\n})(name=>{if(name==="react")return ownedFacade;if(name==="./reducer")return {todoReducer:ownedReducer};if(name==="react/jsx-runtime")return ownedJSX;throw Error("unknown");},ownedModule.exports,ownedModule);','strict-owned-App.cjs');
+ script('globalThis.ownedRoot=null;globalThis.ownedSameThrown=false;try{ownedRoot=caseName==="construct"?new ownedModule.exports.App(ownedArg):ownedModule.exports.App.call(ownedOwner,ownedArg);}catch(e){ownedSameThrown=e===ownedSentinel;if(!ownedSameThrown)throw e;}globalThis.ownedSummary={flags:ownedFlags,reads:ownedReads,trace:ownedTrace,hookThis:ownedHookThis,helperFrame:ownedHelperFrame,sameThrown:ownedSameThrown,stateIsOriginal:!!ownedRoot&&ownedRoot.props.todos===ownedTodos,dispatchIsOriginal:!!ownedRoot&&ownedRoot.props.dispatch===ownedDispatch,name:ownedModule.exports.App.name,length:ownedModule.exports.App.length};','owned-call.js');
+ return JSON.parse(JSON.stringify({summary:context.ownedSummary,snapshot:mode==='original'?null:context.__sa_app_hook_binding.sealWindow().snapshot}));
+}
+for(const name of ['ordinary','element-getter','throw-hook','throw-iterator','construct'])test('strict owned App source preserves original/off/on call, getter, this, arguments, new.target and throws: '+name,async()=>{
+ const original=await executeOwnedApp(name,'original'),off=await executeOwnedApp(name,'off'),on=await executeOwnedApp(name,'on');assert.deepEqual(off.summary,original.summary);assert.deepEqual(on.summary,original.summary);assert.equal(on.summary.helperFrame,false);assert.equal(on.summary.hookThis,true);assert.equal(on.summary.name,'App');assert.equal(on.summary.length,0);assert.equal(on.summary.reads.hook,1);assert.equal(on.snapshot.status,name.startsWith('throw-')?'Unknown/Unsupported':'Observed');
+});
+test('actual App compilation receipt freezes explicit strict-wrapper requirement and no native hook support',async()=>{
+ const r=await prepareAppHookBindingApplication(source,file);assert.equal(r.receipt.sourceDigest,hash(source));assert.equal(r.receipt.appModuleWrapper,'strict CJS compatibility wrapper for original ESM');assert.equal(r.receipt.ownedUseReducerControlsRequired,true);assert.equal(r.receipt.actualNativeHookExecuted,false);assert.equal(r.receipt.ReactDOMExecuted,false);assert.equal(hash(r.originalCode),r.receipt.originalCompiledDigest);assert.equal(hash(r.observedCode),r.receipt.observedCompiledDigest);assert.deepEqual(r.policy.appSite,r.receipt.appSite);
+});

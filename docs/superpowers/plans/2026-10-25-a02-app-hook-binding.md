@@ -31,7 +31,7 @@
 **Files NEW:** experiments/react19-reducer/app-hook-binding-observer.mjs; app-hook-binding-transform.mjs; app-hook-binding-source-run.mjs; tests/engine/react19-app-hook-binding-observer.test.mjs; react19-app-hook-binding-transform.test.mjs; react19-app-hook-binding-driver.test.mjs; tests/helpers/react19-app-hook-binding-controls.mjs. docs/testing/app-hook-binding-source-case.json only aftersourcecommit; completion174/status/index updates.
 **Interfaces:** createAppHookBindingObserver({page,enabled,policy}) appEnter/result/bound/appReturned/appExit, lookupFrame/Tuple/Todos/snapshot/lifecycle; instrumentAppHookBinding returnsoriginaldigest/sites/code/refusal; fixedprepare/preflight/run max1sourceCLI.
 
-- [ ] task-start/readbrief/BASE/registerbeforecode. RED identity/ambiguity/no-slot/getter/proxy/intrinsic/lifecycle/capacity controls, transformclosedgrammar/semantics/strictwrapper/temp controls, CLI/input/profileguards. Implementsevennewfiles only ->focusedGREEN/syntax/diff/full npmPASS/protectalloldinputs/sourcecommit.
+- [x] task-start/readbrief/BASE/registerbeforecode. RED identity/ambiguity/no-slot/getter/proxy/intrinsic/lifecycle/capacity controls, transformclosedgrammar/semantics/strictwrapper/temp controls, CLI/input/profileguards. Implementsevennewfiles only ->focusedGREEN/syntax/diff/full npmPASS/protectalloldinputs/sourcecommit.
 - [ ] Resourcefreeprepare/preflight/frozenactualsource+compiler+strictwrapper+fixtureoutputs/casecommit; ONE18×3sourceVMmatrix. Recordliteralresult/partialcounters/exactafterhashmap/output/trace/getter/throw equivalence/native-indexUnknown. Independentstdlibsavedreader/corruptions/no imports/VM/browser/app/model rerun. Resultscommit/task-done focusedPASS.
 
 ## Final Closeout
