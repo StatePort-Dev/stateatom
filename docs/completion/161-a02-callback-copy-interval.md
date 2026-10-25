@@ -1,4 +1,4 @@
-# A02.11 — callback interval to copy input (source-qualified; final review pending)
+# A02.11 — bounded source callback-copy interval complete
 
 BASEd57c022. A02.10 closed after one iterator correction,62focused/full3757PASS;
 corrected48sourceVM contexts/raw23c... preserved. Current arrays record callback
@@ -86,3 +86,23 @@ Old modules/product/raw/vendor pins unchanged. ONE final whole-source-item revie
 pending; no re-review/native/browser/installation/certificate/model work scheduled.
 Whole A02 and20/29 (~69%) remain open. Package/source documents alone do not prove
 new installed capabilities. ONE next missing dependency will follow review findings.
+
+
+ONE fresh final review `a0211_whole_review` Astra/high d57c022..1b01f83:
+0Critical/0Important/0Minor, no correction pass/re-review. Independent75PASS1114.999ms,
+six additional authored var/shadowing/name/catch/label/closure controls preserve
+outputs and one exact interval. Rawb399... recomputed; saved428/54/18/12/39 records
+read, not replayed. No source/Git mutation, retained vendorVM/fullsuite/native/model
+rerun or subagents. All8declined domains accepted within explicit source boundaries:
+installed/product execution; stronger lineage; hostile public hooks; preinit/Proxy
+metadata; GC/heap; reflective textual equivalence; external instrumentation coverage;
+legacy runtime/prior3minors. No new minors, old three still deferred.
+
+Final current frozen-input reconciliation:427physical plus exact plan at clean2f120af
+for the source-run428stage. Checklist edits are not a fresh execution of changed
+plan bytes. Verified own workspace archive/hash and clean local checkpoint live at
+`.artifacts/a02/callback-copy-source-review/2026-10-25/`. Existing56source/current327/
+15V03raw/12L02records/4case-marker/2A02.10raw/vendor pins preserved. FullA02 and20/29
+remain open. ONE next bounded item: reproduce late-iterator effects in existing
+product React19 vendor/runtime/collector forwarding before selecting a narrow fix;
+no browser/cert/install/new general ownership framework.
