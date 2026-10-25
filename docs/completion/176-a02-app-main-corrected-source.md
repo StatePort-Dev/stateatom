@@ -86,3 +86,5 @@ independently attested timestamp from its code/report alone.
 Next ONE separately scoped native App/Main props qualification; sourcepositive
 is a prerequisite, not native state/index/ownership/selectedDOM/product readiness.
 20/29/fullA02 unchanged; no cert/trust/userprofile/SDK/otherrepo/publication change.
+
+Final checkpoint at 1b891e10c8c1ef10d16e4ad9635789b5fb0acad8:1032currentphysicalinputs/0source deltas, old113research/product327/allpriorrawunchanged. Own workspace17files archived andCRC/everybyte/planidentity verified before only that directory removal. ArchiveSHA256 0e20d15ba4d32554563ead207c710431cfb7a17bfb95a356db157ff1f6d429ce. Artifacts .artifacts/a02/app-main-props-corrected-review/2026-10-25/report.md/final-checkpoint.json/workspace.zip. NextONEboundednativeAppMainprops; qualification not repeated.
