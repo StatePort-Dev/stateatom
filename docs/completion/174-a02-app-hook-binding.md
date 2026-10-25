@@ -78,3 +78,5 @@ No implementationchange afterqualification. Old99research/327payload/priorrawunc
 Next ONE bounded source association: Appboundvalue→freshMainJSXconfig/nativeprops→
 sameMainargument, carrying current Unknowns; not a native state/ownership solution.
 Whole20/29/fullA02open; no product/UI/SDK/otherrepo/security/publication change.
+
+Final checkpoint at 323361337495ddfba3d87f5cc14c1a9e3be42e72:913currentphysicalinputs/0oldsource deltas,99research/327payload/allpriorraw unchanged. Ownworkspace20files archived andCRC/everybyte/planidentity verified, thenonlythat temporaryfolder removed. ArchiveSHA256 c76a9807fe829af5327fc88ddf3b91aa0f371b64a94ae91d74dc5796ce5e6119. final-checkpoint.json/workspace.zip at .artifacts/a02/app-hook-binding-review/2026-10-25/. Cleancloseout; nextONEboundedApp→JSXprops→Mainsourceassociation.
