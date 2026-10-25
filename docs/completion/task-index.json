@@ -5300,7 +5300,8 @@
           "correction_passes": 1,
           "re_review": false,
           "report": ".artifacts/v02/recording-publication-turn-review/2026-10-26/report.md"
-        }
+        },
+        "source_revision": "194a4de45ab56a0c9a921ec974b512e8e93251a6"
       },
       "execution_record": "136-v02-performance-domain-cost.md",
       "current_checkpoint": {
@@ -6267,7 +6268,8 @@
             "correction_passes": 1,
             "re_review": false,
             "report": ".artifacts/v02/recording-publication-turn-review/2026-10-26/report.md"
-          }
+          },
+          "source_revision": "194a4de45ab56a0c9a921ec974b512e8e93251a6"
         }
       ],
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-v02-recording-publication-turn.md",
@@ -10376,7 +10378,7 @@
     "scope_adoption_record": "13-scope-reconciliation.md",
     "current_activity_note": "V02.18 publication task batching and disposed-runtime guard complete;78focused/4854fullPASS;ONEreview0C1Ifixed0newM,13oldminors deferred. No native/package/performance acceptance; original15misses and20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "1c41015420ae992fa772de9da3c8203b9d0650cd",
+    "current_source_revision": "194a4de45ab56a0c9a921ec974b512e8e93251a6",
     "current_record_date": "2026-10-26",
     "next_bounded_step": "Freeze exact new package/admission before separately preregistered original performance measurement; no native run insideV02.18",
     "historical_active_pointer_before_V03_23": {
@@ -10388,7 +10390,7 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "BASE before uncommitted V02.18 source candidate, not qualification revision",
+    "current_source_revision_kind": "exact checked source correction; later closeout documentation only",
     "current_source_checkpoint": ".artifacts/v02/recording-publication-turn-source/2026-10-26/post-review-checkpoint.json",
     "current_source_checkpoint_kind": "bounded current-source verification; no new package/native evidence",
     "historical_active_pointer_before_V02_18": {
