@@ -27,10 +27,10 @@ async function currentInputs(reg){
 function verifyCase(row){
  const {id,original,off,on}=row;
  assert.deepEqual(off.summary,original.summary);assert.deepEqual(on.summary,original.summary);assert.deepEqual(off.trace,original.trace);assert.deepEqual(on.trace,original.trace);
- assert.equal(on.getterHelperFrame,false);assert.equal(on.proxyValueTraps,0);assert.equal(on.hookGetterReads,0);assert.equal(on.sourceOnly,true);assert.equal(on.fixtureInputsOnly,true);assert.equal(on.browserStarted,false);assert.equal(on.nativeWriterCalls,0);
+ assert.equal(on.getterHelperFrame,false);assert.equal(on.proxyValueTraps,0);assert.equal(on.summary.iteratorCalls,0);assert.equal(on.hookGetterReads,0);assert.equal(on.sourceOnly,true);assert.equal(on.fixtureInputsOnly,true);assert.equal(on.browserStarted,false);assert.equal(on.nativeWriterCalls,0);
  assert.doesNotMatch(JSON.stringify(on.snapshot),/synthetic-private/);
  for(const key of ['propStorage','propTransfer','fieldOwnership','stateRevision','selectedPropertyOrigin'])assert.equal(on.snapshot[key],'Unknown/Unsupported');assert.equal(on.snapshot.nativeOrigin,'NotAttested');assert.equal(on.snapshot.fullPath,false);
- const positive=['object','equal-two','getter','proxy-config','proxy-value','stack-getter','prototype-setter'].includes(id);
+ const positive=['object','equal-two','getter','proxy-config','proxy-value','stack-getter','prototype-setter','iterator-mutate','iterator-throw'].includes(id);
  assert.equal(on.selected.status,positive?'Observed':'Unknown/Unsupported');
  if(id==='equal-two'){assert.equal(on.snapshot.links.length,2);assert.notEqual(on.snapshot.links[0].valueId,on.snapshot.links[1].valueId);}
  if(id==='prototype-setter'){assert.equal(on.summary.ownsTodo,false);assert.equal(on.copyIntoSelectedProps,true);assert.equal(on.snapshot.propStorage,'Unknown/Unsupported');}

@@ -1,4 +1,4 @@
-# A02.10 — one native prop-copy input occurrence (bounded source qualification complete; review pending)
+# A02.10 — one native prop-copy input occurrence (review I1 source correction62; fresh source qualification pending)
 
 Historical preregistration at8d1c9a0 starts f48be1a. V03.27 source diagnosis preserves clean current fields/dirty local
 text/owned history and old26failure; no product or guard change. A02.4 ancestor and
@@ -82,3 +82,19 @@ marker files and retained vendor pins unchanged. No oldsource delta or product
 importer introduced. Source recorder/recipe/control helper only; no native/browser/
 certificates/installation/network/model/SDK/otherrepo/publication. ONE final bounded
 source review next; fullA02 and whole20of29 remain open.
+
+ONE fresh source review `a0210_whole_review` Astra/high f48be1a..cc74db0:
+0Critical/1Important/0Minor. Fresh60sourcePASS (initial restricted child CLI failure
+is environmental and retained), raw544... hash unchanged; no retained vendor VM,
+fullsuite, native/model/source mutation or subagents. I1 is a real semantic defect:
+rest-spread in helper callback invocation runs a replaced Array iterator after
+bootstrap. Synthetic reproduction: original/off0iterator callbacks/firsttodo;
+on3callbacks/secondtodo. Catching an exception cannot undo iterator side effects.
+
+ONE correction pass in progress: two after-bootstrap mutation/throw controls
+RED60PASS2FAIL -> fixed helper `(kind,value,props,key)` and direct four-argument call,
+GREEN62PASS. No rest-array iteration in the runtime helper. Old13case/42context/
+3755source qualification is retained historical evidence and does not prove this
+corrected recipe. A separate fresh15case/48context retained-source check and whole
+suite must pass before current-source closeout. This is an explicitly allowed
+source correction check, no old result overwrite, second review or browser/native.

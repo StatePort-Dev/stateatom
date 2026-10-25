@@ -1666,7 +1666,7 @@
       "active_slice": {
         "id": "A02.10",
         "record": "160-a02-react19-prop-copy-input.md",
-        "status": "source-qualified60-full3755-final-review-pending",
+        "status": "one-review-I1-fixed62-corrected-source-qualification-pending",
         "base": "f48be1a",
         "native_runs": 0,
         "model_calls": 0,
@@ -2156,8 +2156,8 @@
       },
       "current_checkpoint": {
         "record": "160-a02-react19-prop-copy-input.md",
-        "status": "source-qualified60-full3755-final-review-pending",
-        "next_bounded_step": "ONE final bounded A02.10 source review; no native/browser/model/re-review loop. Then one next missing source dependency from retained actual source qualification; storage/transfer/ownership/selectedproducer stayUnknown."
+        "status": "one-review-I1-fixed62-corrected-source-qualification-pending",
+        "next_bounded_step": "ONE review0C1I0M accepted semantic iterator defect; fixed4args62PASS. Commit correction source then fresh retained-source15cases48contexts and fullsuite; old544.../3755 historical only. No rereview/native/browser/model."
       },
       "stopping_point_history": [
         {
@@ -7250,8 +7250,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.10-source-qualified60-full3755-review-pending",
-    "next_item": "ONE final bounded A02.10 source review; no native/browser/model/re-review loop. Then one next missing source dependency from retained actual source qualification; storage/transfer/ownership/selectedproducer stayUnknown.",
+    "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
+    "next_item": "ONE review0C1I0M accepted semantic iterator defect; fixed4args62PASS. Commit correction source then fresh retained-source15cases48contexts and fullsuite; old544.../3755 historical only. No rereview/native/browser/model.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7278,7 +7278,7 @@
     "active_item": {
       "id": "A02",
       "record": "160-a02-react19-prop-copy-input.md",
-      "status": "source-qualified60-full3755-final-review-pending"
+      "status": "one-review-I1-fixed62-corrected-source-qualification-pending"
     },
     "completed_increments": [
       {
@@ -9973,11 +9973,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.10 source recorder/recipe60/full3755PASS; clean19edb1c exact retainedReact source qualified13synthetic cases/3tap controls/42NodeVM contexts,7inputObserved/6Unsupported. Setter input exists with no ownstoredtodo, clone/default cannot borrow. Independent saved417physical stage/27negative verification. No componentrender/ReactDOM/native/browser/model/product importer/cert/install/SDK/otherrepo/publish. Old47source/current327/raw unchanged, stronger storage/transfer/ownership/selectedproducer Unknown; ONE final source review next, whole20of29 open.",
+    "current_activity_note": "A02.10 ONEsourceReview0C1I0M found lateArray.iterator rest-spread app sideeffect. RED60PASS2FAIL -> fixed4arg helper62PASS; commit/fresh corrected retained-source15cases48contexts/fullsuite pending. Prior clean19edb1c raw544.../13cases42VM/3755PASS preserved as historical, not corrected recipe proof. No native/browser/model/re-review; old47source/current327/raw stable, stronger lineage Unknown/full20of29 open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "19edb1c",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "ONE final bounded A02.10 source review; no native/browser/model/re-review loop. Then one next missing source dependency from retained actual source qualification; storage/transfer/ownership/selectedproducer stayUnknown.",
+    "next_bounded_step": "ONE review0C1I0M accepted semantic iterator defect; fixed4args62PASS. Commit correction source then fresh retained-source15cases48contexts and fullsuite; old544.../3755 historical only. No rereview/native/browser/model.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

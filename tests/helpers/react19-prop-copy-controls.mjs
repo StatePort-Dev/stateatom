@@ -14,9 +14,9 @@ exports.createElement = function (type, config, children) {
  return ReactElement(type, null, i, null, null, null);
 };
 exports.cloneElement = function (element, config) {var props=Object.assign({},element.props,config); return ReactElement(element.type,null,props,null,null,null);};`;
-export const propCopyCases=Object.freeze(['object','equal-two','getter','proxy-config','proxy-value','stack-getter','throw-getter','prototype-setter','stop-getter','seal-getter','default-todo','clone','primitive']);
+export const propCopyCases=Object.freeze(['object','equal-two','getter','proxy-config','proxy-value','stack-getter','throw-getter','prototype-setter','stop-getter','seal-getter','default-todo','clone','primitive','iterator-mutate','iterator-throw']);
 const scenario=`'use strict';
-var trace=[], row={text:'synthetic-private-value'}, secondRow={text:'synthetic-private-value'}, finalElement, firstElement, sentinel=Object.freeze({fixtureError:true}), sameThrown=false, getterHelperFrame=false, proxyValueTraps=0;
+var trace=[], row={text:'synthetic-private-value'}, secondRow={text:'synthetic-private-value'}, finalElement, firstElement, sentinel=Object.freeze({fixtureError:true}), sameThrown=false, getterHelperFrame=false, proxyValueTraps=0, iteratorCalls=0, originalIterator;
 function Todo(){throw Error('Component must not execute in a construction-input source control');}
 var config={todo:row};
 if(caseName==='getter'||caseName==='stack-getter'||caseName==='stop-getter'||caseName==='seal-getter'||caseName==='throw-getter'){
@@ -27,15 +27,16 @@ if(caseName==='proxy-value'){row=new Proxy(row,{get(){proxyValueTraps++;throw Er
 if(caseName==='prototype-setter')Object.defineProperty(Object.prototype,'todo',{configurable:true,set(value){trace.push('set:todo');this.escaped=value;}});
 if(caseName==='default-todo'){Todo.defaultProps={todo:row};config={};}
 if(caseName==='primitive')config={todo:'synthetic-private-scalar'};
+if(caseName==='iterator-mutate'||caseName==='iterator-throw'){originalIterator=Array.prototype[Symbol.iterator];Array.prototype[Symbol.iterator]=function(){iteratorCalls++;if(caseName==='iterator-throw')throw sentinel;config.todo=secondRow;return originalIterator.call(this);};}
 try{
  if(caseName==='equal-two'){firstElement=exports.createElement(Todo,{todo:row});finalElement=exports.createElement(Todo,{todo:secondRow});}
  else if(caseName==='clone'){firstElement=exports.createElement(Todo,{todo:row});finalElement=exports.cloneElement(firstElement,{todo:secondRow});}
  else finalElement=exports.createElement(Todo,config);
 }catch(error){sameThrown=error===sentinel;if(!sameThrown)throw error;}
-finally{if(caseName==='prototype-setter')delete Object.prototype.todo;}
+finally{if(caseName==='prototype-setter')delete Object.prototype.todo;if(originalIterator)Array.prototype[Symbol.iterator]=originalIterator;}
 var ownTodo=finalElement?Object.getOwnPropertyDescriptor(finalElement.props,'todo'):null;
 var expectedRow=caseName==='equal-two'||caseName==='clone'?secondRow:row;
-var summary={hasElement:!!finalElement,ownsTodo:!!ownTodo,todoMatches:!!ownTodo&&ownTodo.value===expectedRow,todoType:ownTodo?typeof ownTodo.value:'missing',sameThrown,distinctRows:row!==secondRow};
+var summary={hasElement:!!finalElement,ownsTodo:!!ownTodo,todoMatches:!!ownTodo&&ownTodo.value===expectedRow,todoType:ownTodo?typeof ownTodo.value:'missing',sameThrown,distinctRows:row!==secondRow,iteratorCalls};
 `;
 export function executePropCopySource({source,caseName,mode='on',hook='normal'}){
  if(!propCopyCases.includes(caseName)||!['original','off','on'].includes(mode)||!['normal','missing','accessor','throwing'].includes(hook))throw Error('Unknown owned source-control mode');

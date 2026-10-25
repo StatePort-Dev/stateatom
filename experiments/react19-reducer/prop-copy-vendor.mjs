@@ -12,7 +12,7 @@ export const propCopyProfile=Object.freeze({recipe:'react19-classic-prop-copy-in
 const helper=`const __saPropCopyOwn=Object.getOwnPropertyDescriptor;
 const __saPropCopyDescriptor=__saPropCopyOwn(globalThis,'__STATEATOM_REACT19_PROP_COPY__');
 const __saPropCopyObserver=__saPropCopyDescriptor&&__saPropCopyOwn(__saPropCopyDescriptor,'value')?.value;
-function __saPropCopyTap(kind,value,...refs){try{if(typeof __saPropCopyObserver==='function')__saPropCopyObserver(kind,value,...refs);}catch{}return value;}`;
+function __saPropCopyTap(kind,value,props,key){try{if(typeof __saPropCopyObserver==='function')__saPropCopyObserver(kind,value,props,key);}catch{}return value;}`;
 const isID=(node,name)=>t.isIdentifier(node,{name});
 const parameterNames=['type','key','props','owner','debugStack','debugTask'];
 function fail(what){throw Error('Prop-copy recipe shape/site-count/binding mismatch: '+what);}
