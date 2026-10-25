@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "171-a02-main-input-bridge.md",
-        "status": "registered-before-source",
-        "next_bounded_step": "Source-only same-Main parameter/filter/map identity bridge,7newfiles/0oldsource deltas; no browser/native/ordinarylifecycle claim."
+        "status": "source-gates-passed-before-qualification",
+        "next_bounded_step": "Freeze source-only 18-case/3-mode Main matrix after source commit; no browser/native/app lifecycle claim."
       },
       "stopping_point_history": [
         {
@@ -2542,16 +2542,19 @@
           "next_bounded_step": "A02.9 proposed source-only separation of original invocation and current display on retained evidence. No old protocol Pass, no new native/app run, no criterion waiver."
         }
       ],
-      "implementation_plan": "../superpowers/plans/2026-10-25-a02-jsx-config-input.md",
+      "implementation_plan": "../superpowers/plans/2026-10-25-a02-main-input-bridge.md",
       "active_slice": {
         "id": "A02.21",
         "record": "171-a02-main-input-bridge.md",
-        "status": "registered-before-source",
+        "status": "source-gates-passed-before-qualification",
         "base": "612687dfb331063236590479f908f1d9cf838642",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_tests_passed": 52,
+        "full_tests_passed": 4359,
+        "source_revision": "24e40b2"
       }
     },
     {
