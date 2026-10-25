@@ -1,8 +1,8 @@
 # Project status
 
 Active bounded work: [L02.13](completion/158-l02-short-owned-comparison.md), short
-owned output/tmp route after the explicit socket-path refusal. Planning/source first;
-no new native/model/profile from this packet. Same facts/options/runtime/pins/quality.
+owned output/tmp route after the explicit socket-path refusal. Task1source162/full3695PASS;
+no new native/model/profile yet. Next prepare/physicalpreflight/newcasecommit. Same facts/options/runtime/pins/quality.
 One new case only after source/full/preflight/commit; original12 never resets/reruns.
 
 Completed bounded attempt: [L02.12](completion/157-l02-comparison-native-candidate.md).

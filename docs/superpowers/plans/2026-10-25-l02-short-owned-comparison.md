@@ -30,8 +30,8 @@
 **Files:** scripts/comparison-evaluation-case.mjs, scripts/prepare-comparison-evaluation.mjs; new scripts/prepare-comparison-short-evaluation.mjs, tests/local-comparison-short-case.test.mjs; completion158/current pointers.
 **Interfaces:** closed2case mapping/fixednewCLI/outputpolicy/source-registration/baseline; old helper signatures preserved by default; unchanged runtime consumes same sealed protocol and expected34.
 
-- [ ] task-start/readbrief/BASE, register prior current source/product/oldraw including12actual; TDD closedpaths/malformed nonce/mixedid/sourceReg/escape/strictoptions/importpure/shortbytebudget/collision/no oldreset controls. `node --test --test-isolation=none tests/local-comparison-short-case.test.mjs tests/local-comparison-native-case.test.mjs tests/local-comparison-native-owner.test.mjs tests/comparison-model-provider.test.mjs tests/local-comparison-evaluation-page.test.mjs` ->RED thenPASS.
-- [ ] Implement only closed plumbing/zero-option new entry, no actual preparation/profile/browser/model. Same old runtime/provider/corpus/page/guard source/current327/oldraw preserved except2declared research deltas. Syntax/diff/focused and stable `npm test`oncePASS, localcommit/task-done.
+- [x] task-start/readbrief/BASE, register prior current source/product/oldraw including12actual; TDD closedpaths/malformed nonce/mixedid/sourceReg/escape/strictoptions/importpure/shortbytebudget/collision/no oldreset controls. `node --test --test-isolation=none tests/local-comparison-short-case.test.mjs tests/local-comparison-native-case.test.mjs tests/local-comparison-native-owner.test.mjs tests/comparison-model-provider.test.mjs tests/local-comparison-evaluation-page.test.mjs` ->RED thenPASS.
+- [x] Implement only closed plumbing/zero-option new entry, no actual preparation/profile/browser/model. Same old runtime/provider/corpus/page/guard source/current327/oldraw preserved except2declared research deltas. Syntax/diff/focused and stable `npm test`oncePASS, localcommit/task-done.
 
 ### Task 2: One new frozen short candidate and literal actual attempt
 
