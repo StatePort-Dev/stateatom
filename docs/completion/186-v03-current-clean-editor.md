@@ -61,3 +61,42 @@ PASS, explicitly not native evidence. Frozen reader contract included in case;
 postcasecommit launch record binds exact revision/case/contract before invocation,
 no independent timestamp claim. Inputs585preflight PASS; no TLS/certificates or
 product change. MaximumONEfuture native invocation remains; docs prove no new UX.
+
+
+## ONE native outcome — INCOMPLETE, no retry
+Actual67d06a6/clean, session64256terminalexit1, literal
+INCOMPLETE_CURRENT_CLEAN_EDITOR_CONTRACT. Raw SHA
+f57dc0dd4b810d46bbfeaf9e643890f33a20926f977a9edf94bec05733d16c66.
+585before/after/currentphysical inputs equal,327product/15retainedraw unchanged.
+Driverchecks exact80admission/picker-open/live10current-clean group recordedPASS;
+wholecase qualificationfalse/accepted0. Own10→external11 retained2pending+3current
+samples; return10 retained3pending+3current samples; first strict window10samples/
+1219ms complete. These observations do not qualify fullcase or originalguide.
+
+Own20 acknowledgement/history2 then external21 acquired one complete pending
+snapshot: resource20/cleanfield20/currentrevision==lastownreceipt, canUndo:true/
+canRestoreBaseline:false; visibleUndo enabled/baseline disabled agree. However
+externalRevision:true, so new guard114 falsely assumed ownrevision implies
+externalRevision:false and stopped. This is a research guard assumption, not a
+shown product button mismatch. Actual core/control-ledger.mjs19 uses r.epoch>0;
+external epoch is historical, and own acknowledgement45 does not reset it. New
+owned edit can be undoable while baseline ownership remains lost. Known source
+finding goes to the ONE final whole-item review/single correction pass; do not
+retune frozen readers/case or upgrade this INCOMPLETE result.
+
+External21/return20/fullsecondwindow/Close/dedicated1100+390QA/finalconsole-host
+check remain unvisited. Fullreader firstexit1 refused literal status before26actual
+negative controls;26prewritten owned-source controls remain source-only. Frozen
+preservation firstexit0 verifies585physical/prefix/cleanup, qualification:false;
+14prewritten structural controls are owned-source checks, not fullnativeacceptance.
+All9cleanup flags true, app-console collector stopped/0deliveries/overflowfalse;
+inspectorconsole0 and one recorded assertion error. No worker/globalhealth claim.
+KnownChrome3578897/Vite3578875 freshlyAbsent (PID-only observation, not whole-tree
+attestation), no unrelated process cleanup. FailurePNG inspected as agent candidate:
+separate later capture shows21/21, not atomic with earlier20snapshot. No dedicated
+font/fidelity/narrow/focus QA claimed. Independent human remains nonblocker.
+
+[Native checkpoint](../../.artifacts/v03/current-clean-editor-source/2026-10-26/native-checkpoint.json)
+and prewritten readers preserve source/native/evidence boundaries. Boundedincomplete
+acquisitionTask3 complete, but source finding/finalreview remain.20of29/fullV03/
+originalguideFAIL unchanged. No native retry/browser/certificate/SDK/otherrepo change.

@@ -6354,7 +6354,7 @@
       "active_slice": {
         "id": "V03.28",
         "title": "Current clean-editor external ABA contract",
-        "status": "case585-readers-frozen-native0",
+        "status": "bounded-native-attempt-incomplete-known-source-finding-review-pending",
         "record": "186-v03-current-clean-editor.md",
         "design": "../superpowers/specs/2026-10-26-v03-current-clean-editor-design.md",
         "plan": "../superpowers/plans/2026-10-26-v03-current-clean-editor.md",
@@ -6362,7 +6362,7 @@
         "new_guard_controls": 29,
         "new_driver_checks": 31,
         "product_inputs_unchanged": 327,
-        "native_runs": 0,
+        "native_runs": 1,
         "maximum_native_runs": 1,
         "whole_V03_complete": false,
         "source_checks": 4914,
@@ -6371,7 +6371,13 @@
         "reader_controls_source_only": {
           "full_negative": 26,
           "preservation_structural": 14
-        }
+        },
+        "native_status": "INCOMPLETE_CURRENT_CLEAN_EDITOR_CONTRACT",
+        "native_qualification": false,
+        "raw_sha256": "f57dc0dd4b810d46bbfeaf9e643890f33a20926f977a9edf94bec05733d16c66",
+        "completed_native_checks": 3,
+        "known_source_finding": "Own revision does not imply externalRevision:false; flag reflects historical r.epoch>0. Preserve incomplete case; source correction via ONEfinalreview pass only.",
+        "review_pending": true
       },
       "completed_slices": [
         {
@@ -7397,8 +7403,8 @@
       ],
       "current_checkpoint": {
         "record": "186-v03-current-clean-editor.md",
-        "status": "case585-readers-frozen-native0",
-        "next_bounded_step": "Finish new driver/fullsource checks, then freeze distinct80case and both readers before maximumONEowned HTTP native qualification; no oldcase retry/policy/cert changes."
+        "status": "bounded-native-attempt-incomplete-known-source-finding-review-pending",
+        "next_bounded_step": "ONEfinalwhole-itemreview, source correction for invalid own-epoch flag assumption if accepted; preserve frozen585case/readers/raw/no native retry."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-25-v03-converged-restore-availability.md",
       "implementation_plan": null,
@@ -7699,8 +7705,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.28-case585-readers-frozen-native0",
-    "next_item": "Finish new driver/fullsource checks, then freeze distinct80case and both readers before maximumONEowned HTTP native qualification; no oldcase retry/policy/cert changes.",
+    "current_increment": "V03.28-native-INCOMPLETE-known-source-finding",
+    "next_item": "ONEfinalwhole-itemreview, source correction for invalid own-epoch flag assumption if accepted; preserve frozen585case/readers/raw/no native retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7727,7 +7733,7 @@
     "active_item": {
       "id": "V03",
       "record": "186-v03-current-clean-editor.md",
-      "status": "case585-readers-frozen-native0"
+      "status": "bounded-native-attempt-incomplete-known-source-finding-review-pending"
     },
     "completed_increments": [
       {
@@ -10422,11 +10428,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Current clean-resource field/external-epoch qualification source191guards/31driverPASS; sixNEWresearch files/327product80 stable; 4914fullPASS/585preflight/readersfrozen/native0; old26INCOMPLETE/guideFAIL/full20of29 unchanged.",
+    "current_activity_note": "ONEnative585stable/own10ABAobserved/own20pending refused by newguard false assumption about sticky externalRevision; backend/UIagree. Fullreader refused/preservation nonqual/cleanup knownPIDsAbsent; no native retry, ONEreview/source correction pending,20of29unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "add75a73e8f5d95899a98a525fc516481e93addf",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "Finish new driver/fullsource checks, then freeze distinct80case and both readers before maximumONEowned HTTP native qualification; no oldcase retry/policy/cert changes.",
+    "next_bounded_step": "ONEfinalwhole-itemreview, source correction for invalid own-epoch flag assumption if accepted; preserve frozen585case/readers/raw/no native retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
