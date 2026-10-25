@@ -2460,9 +2460,9 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "178-a02-disabled-source-tap.md",
-        "status": "complete-bounded-disabled-source-tap-fix",
-        "next_bounded_step": "ONE bounded native state-reference premise selection; no genericownershipkernel or historicalnative upgrade."
+        "record": "179-a02-native-state-return-source.md",
+        "status": "planning-native-return-reference-source-premise",
+        "next_bounded_step": "Source-only exact native-return expression/App-function recipes and observer; native acquisition separate."
       },
       "stopping_point_history": [
         {
@@ -2575,39 +2575,23 @@
           "record": "177-a02-app-main-native.md",
           "status": "complete-bounded-native-AppMain-source-path",
           "next_bounded_step": "ONE bounded source disabled-tap collection fix from A02.26; no oldnative retry/genericownership/stateupgrade."
+        },
+        {
+          "record": "178-a02-disabled-source-tap.md",
+          "status": "complete-bounded-disabled-source-tap-fix",
+          "next_bounded_step": "ONE bounded native state-reference premise selection; no genericownershipkernel or historicalnative upgrade."
         }
       ],
-      "implementation_plan": "../superpowers/plans/2026-10-25-a02-disabled-source-tap.md",
+      "implementation_plan": "../superpowers/plans/2026-10-25-a02-native-state-return-source.md",
       "active_slice": {
-        "id": "A02.28",
-        "record": "178-a02-disabled-source-tap.md",
-        "status": "complete-bounded-disabled-source-tap-fix",
-        "base": "fc8620914f721421680331856cf54ca06929f851",
+        "id": "A02.29",
+        "record": "179-a02-native-state-return-source.md",
+        "status": "planning",
+        "base": "3d4214dd7674e680cf01ab4c9913b5113811aa60",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false,
-        "declared_research_deltas": [
-          "experiments/react19-reducer/app-main-props-observer.mjs",
-          "tests/engine/react19-app-main-props-observer.test.mjs"
-        ],
-        "observer_tests_passed": 26,
-        "affected_tests_passed": 109,
-        "full_tests_passed": 4593,
-        "actual_native_hook_executed": false,
-        "source_qualification_runs": 0,
-        "historical_native_proof": "9bf056c/c8350fc",
-        "historical_native_current_physical_inputs": 1143,
-        "historical_native_exact_prepared_git_inputs": 2,
-        "product_privacy_qualified": false,
-        "review": {
-          "critical": 0,
-          "important": 0,
-          "new_minor": 0,
-          "total_deferred_minor": 11,
-          "correction_passes": 0,
-          "re_review": false
-        }
+        "full_A02": false
       }
     },
     {
