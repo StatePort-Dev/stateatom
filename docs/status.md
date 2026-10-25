@@ -1,11 +1,11 @@
 # Project status
 
-Active bounded task: [A02.22](completion/172-a02-cleanup-main-source.md).
-ONE corrected-source Main matrix PASS:54contexts/18cases/7positive8links/11Unknown
-refusals,0errors/unvisited.706before-afterhashes match; savedreader706physical77negative.
-75focused/4382fullPASS, finalreviewpending. Ownedhook/routercontrols only: no actual
-Reactlifecycle/ReactDOM/app/native/installedsupport.93research/327payload/oldA02.21/
-A02.20evidence unchanged.20/29/fullA02 unchanged;7minorsdeferred.
+Completed bounded source task: [A02.22](completion/172-a02-cleanup-main-source.md).
+ONE review0C0I1newM/no correctionpass; actual54VMcontexts/18cases/7positive8links/
+11Unknownrefusals,706inputshashesunchanged/saved77negative.75focused/4382fullPASS.
+Source-only ownedhook/routercontrols; no native/realReactlifecycle/installedclaim.
+93research/327payload/120A0220/28A0221 evidenceunchanged.20/29/fullA02 unchanged;
+8deferredminors. Next ONE native Maininputhandoff qualification under boundedplan.
 
 Completed bounded attempt: [A02.21](completion/171-a02-main-input-bridge.md).
 ONE review0C2I0newM/ONE tested correction pass: normal token cleanup preserved,

@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "172-a02-cleanup-main-source.md",
-        "status": "source-qualification-passed-before-final-review",
-        "next_bounded_step": "ONE fresh final review/source-only correction ifneeded; then native Main input handoff qualification dependency, no oldcase retry."
+        "status": "complete-bounded-source-only-main-input-qualification",
+        "next_bounded_step": "ONE bounded native Main input handoff qualification with real React hook/router execution; preserve source/exhausted/native historical cases, no broaderownership/product upgrade."
       },
       "stopping_point_history": [
         {
@@ -2551,7 +2551,7 @@
       "active_slice": {
         "id": "A02.22",
         "record": "172-a02-cleanup-main-source.md",
-        "status": "source-qualification-passed-before-final-review",
+        "status": "complete-bounded-source-only-main-input-qualification",
         "base": "80e8bc2",
         "native_runs": 0,
         "model_calls": 0,
@@ -2572,7 +2572,16 @@
         "saved_negative_controls": 77,
         "qualification_result": ".artifacts/a02/main-input-cleanup-bridge/2026-10-25T10-15-00Z/results.json",
         "qualification_sha256": "c68be5ff6c92979c18fc80e1df9b8278fa945b2ef05e442d936b05451901df0e",
-        "real_hook_lifecycle_proven": false
+        "real_hook_lifecycle_proven": false,
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "new_minor": 1,
+          "total_deferred_minor": 8,
+          "correction_passes": 0,
+          "re_review": false
+        },
+        "qualification_repeated": false
       }
     },
     {
