@@ -1,5 +1,13 @@
 # Project status
 
+A02.28 source-fix PASS, finalreviewpending: [disabled source tap](completion/178-a02-disabled-source-tap.md).
+Disabledtap now returns before delegation; nestedconfig/events/proxyreads0.
+Enabled-invalidApp retains Main1.26observer/109affected/4593fullPASS; no native/
+sourcequalification/browser/model/reader rerun. Exactly2source/test changes,
+117otherresearch/327payload/priorraw unchanged. NativeA02.27 proof historical
+9bf/c835 (1143currentphysical+2exactpreparedGit), not current-byte qualification.
+20/29/fullA02/productprivacy remainopen. NextONEbounded state-reference premise.
+
 Completed A02.27 actualnative PASS (ONEreview0C0I0newM/11oldminorsdeferred): [App/Main source path](completion/177-a02-app-main-native.md).
 One launch/3modes/18phases; App4statewindows8links/Main5windows9links. Filtered
 AppUnknown0(no freshApp), Main1 separately qualified; Off no globaltap/all0, Stop

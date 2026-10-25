@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "178-a02-disabled-source-tap.md",
-        "status": "planning-bounded-disabled-source-tap-fix",
-        "next_bounded_step": "TDD disabled config/proxy no-delegation, preserve enabled-invalid Main1; source only/no qualification."
+        "status": "disabled-source-tap-fixed-source-PASS-review-pending",
+        "next_bounded_step": "ONE bounded native state-reference premise selection; no genericownershipkernel or historicalnative upgrade."
       },
       "stopping_point_history": [
         {
@@ -2581,7 +2581,7 @@
       "active_slice": {
         "id": "A02.28",
         "record": "178-a02-disabled-source-tap.md",
-        "status": "planning",
+        "status": "disabled-source-tap-fixed-review-pending",
         "base": "fc8620914f721421680331856cf54ca06929f851",
         "native_runs": 0,
         "model_calls": 0,
@@ -2590,7 +2590,16 @@
         "declared_research_deltas": [
           "experiments/react19-reducer/app-main-props-observer.mjs",
           "tests/engine/react19-app-main-props-observer.test.mjs"
-        ]
+        ],
+        "observer_tests_passed": 26,
+        "affected_tests_passed": 109,
+        "full_tests_passed": 4593,
+        "actual_native_hook_executed": false,
+        "source_qualification_runs": 0,
+        "historical_native_proof": "9bf056c/c8350fc",
+        "historical_native_current_physical_inputs": 1143,
+        "historical_native_exact_prepared_git_inputs": 2,
+        "product_privacy_qualified": false
       }
     },
     {
