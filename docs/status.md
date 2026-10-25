@@ -1,5 +1,11 @@
 # Project status
 
+Active bounded task: [A02.24](completion/174-a02-app-hook-binding.md).
+Source-only Apphook-callresult→already-boundtodos/dispatch; native/indexorigin
+Unknown, no App→Main/ownership/selectedDOM upgrade.99research/327payload/priorraw
+registeredbeforecode, sevenNEWfiles/0oldsource deltas; no newruntimeexecutedyet.
+20/29/fullA02 unchanged,9priorminorsdeferred; no browser/cert/trust/SDK/publish.
+
 Completed bounded native task: [A02.23](completion/173-a02-main-input-native.md).
 ONE review0C0I1newM/no correctionpass. Actual1launch/3modes/18phases/5Mainwindows
 9links/off0/StopunsealedUnknown0;819before-afterhashes/saved133negative, allcleanup/
