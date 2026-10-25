@@ -1,5 +1,14 @@
 # Project status
 
+A02.27 actualnative PASS, finalreviewpending: [App/Main source path](completion/177-a02-app-main-native.md).
+One launch/3modes/18phases; App4statewindows8links/Main5windows9links. Filtered
+AppUnknown0(no freshApp), Main1 separately qualified; Off no globaltap/all0, Stop
+unsealedclearedUnknown0.1145before-afterhashes/saved218negative, allcleanup/PIDprofile
+Absent;47focused/4590fullPASS. ActualfullApp/hooks/router/ReactDOM, source-path
+semantics only; native state/index/ownership/selectedDOM originsUnknown/fullA02open.
+Old115research/product327/priorrawunchanged,20/29unchanged. NextONEdisabledsource
+tap boundary fix; no oldnative retry/SDK/otherrepo/cert/trust/publication change.
+
 Completed A02.26 source qualification (ONEreview0C0I1newM/11deferred): [corrected App/Main adapter](completion/176-a02-app-main-corrected-source.md).
 54VM18cases/6positive9SOURCElinks/12Unknown;1032before-afterhashes/saved110negative;
 59focused/4543fullPASS. Source-owned hooks/router/directMain calls; native state/

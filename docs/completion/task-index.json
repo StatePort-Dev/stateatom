@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "177-a02-app-main-native.md",
-        "status": "planning-bounded-native-AppMain-source-path",
-        "next_bounded_step": "TDD3inputoverlay/bootstrap/Main5of9+App4of8fixedscope; ONEownednativeaftergates, no native state/ownership claim."
+        "status": "native-AppMain-source-path-PASS-review-pending",
+        "next_bounded_step": "ONE bounded source disabled-tap collection fix from A02.26; no oldnative retry/genericownership/stateupgrade."
       },
       "stopping_point_history": [
         {
@@ -2576,12 +2576,34 @@
       "active_slice": {
         "id": "A02.27",
         "record": "177-a02-app-main-native.md",
-        "status": "planning",
+        "status": "native-AppMain-source-path-PASS-review-pending",
         "base": "49e075785f3fdea9ff2863807f22dfc43f3bc695",
-        "native_runs": 0,
+        "native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_tests_passed": 47,
+        "full_tests_passed": 4590,
+        "source_revision": "9bf056c",
+        "case_revision": "c8350fc",
+        "browser_launches": 1,
+        "modes_complete": 3,
+        "phases_complete": 18,
+        "accepted_App_windows": 4,
+        "accepted_App_links": 8,
+        "accepted_Main_windows": 5,
+        "accepted_Main_links": 9,
+        "filtered_App_status": "Unknown/Unsupported",
+        "filtered_App_links_accepted": 0,
+        "saved_byte_inputs": 1145,
+        "saved_negative_controls": 218,
+        "qualification_result": ".artifacts/a02/app-main-props-native/2026-10-25T16-24-00Z/results.json",
+        "qualification_sha256": "1527e56578e407e6d3e77be8dd5abdee5eb2afaf40e86c1fc0e56aa683306d9f",
+        "actual_native_hook_executed": true,
+        "native_state_origin": "Unknown/Unsupported",
+        "tuple_index_origin": "Unknown/Unsupported",
+        "post_qualification_source_changed": false,
+        "native_qualification_repeated": false
       }
     },
     {
