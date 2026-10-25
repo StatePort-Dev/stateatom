@@ -1665,13 +1665,21 @@
       "active_slice": {
         "id": "A02.14",
         "record": "164-a02-jsx-config-input.md",
-        "status": "source85-retained-qualification-pending",
+        "status": "source-qualified63-full3948-review-pending",
         "base": "b26cbb2",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
-        "focused_checks": 85
+        "focused_checks": 85,
+        "source_revision": "ea5d8cb6baf9f10beae0d7b7bd024c18cfbcb5d9",
+        "source_vm_cases": 20,
+        "source_vm_contexts_started": 63,
+        "source_vm_contexts": 63,
+        "source_raw_sha256": "ae58f3a3eb2be280bcf09b1b39c1e18714506d5eab3bbda200b75dbf95a5dab8",
+        "full_source_checks": 3948,
+        "saved_negative_controls": 44,
+        "JSX_product_supported": false
       },
       "completed_slices": [
         {
@@ -2249,8 +2257,8 @@
       },
       "current_checkpoint": {
         "record": "164-a02-jsx-config-input.md",
-        "status": "source85-retained-qualification-pending",
-        "next_bounded_step": "Commit stable source, ONE registered actual retained React+JSX20case63context source qualification with exact compiled inputs; saved reader/fullsuite/ONE finalreview, no product/browser."
+        "status": "source-qualified63-full3948-review-pending",
+        "next_bounded_step": "ONE fresh bounded source review; actual retainedReact+JSX source20/63 and historicalinput only, no product/browser/ownership upgrade or source retry."
       },
       "stopping_point_history": [
         {

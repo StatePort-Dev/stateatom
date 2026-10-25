@@ -1,4 +1,4 @@
-# A02.14 — fresh automatic-JSX config input (preregistered source-only slice)
+# A02.14 — fresh automatic-JSX config input (source-qualified; review pending)
 
 BASEb26cbb2. A02.13 static diagnosis identifies actualMain automaticJSX freshconfig
 and duplicateinstrumented/offbranches; no runtimeJSXsupport claimed. A02.12 source
@@ -63,3 +63,56 @@ preserved partial failures. Stable source must be committed before one registere
 20case63context retained source qualification. Fullsuite remains deferred until
 that execution. Current71source/327payload/oldraw/cases/Main/CJS/JSX/package intact;
 syntax/diff PASS. No product importer/browser/native/ReactDOM/model/install/cert work.
+
+
+Actual retained source qualification clean `ea5d8cb6baf9f10beae0d7b7bd024c18cfbcb5d9`:
+`node experiments/react19-reducer/jsx-config-source-run.mjs` exit0,
+`.artifacts/a02/jsx-config-input/2026-10-25/qualification-2026-10-25T03-19-25-037Z/`.
+Raw SHA256 `ae58f3a3eb2be280bcf09b1b39c1e18714506d5eab3bbda200b75dbf95a5dab8`;
+literal `RETAINED_REACT_JSX_CONFIG_INPUT_SOURCE_VM_QUALIFIED_NOT_PRODUCT_A02`.
+All512physical inputs before/after unchanged, including60compiled config cases and
+one transformed JSX source file;20cases × original/off/on plus3tap controls =63
+started/63completed VM contexts. Actual retained unmodified React19.2.5 CJS +pinned
+JSX dev source loaded in sameVM; only owned authored configs, no original Main body,
+component/ReactDOM/DOM/browser/native writer/model or installed product execution.
+
+Nine scoped positive selected-input cases/11expected unsupported cases. Two fresh
+configs retain distinct input/value/element IDs; cloned element cannot borrow the
+original history. Prototype-key copying creates a distinct native props object and
+refuses association. Freeze mutation is decisive: nativeprops===config and input was
+original row, while stored todo becomes second; storage/ownership remainUnknown.
+Expression/key getters execute once, accessor config getter0, valueProxy0traps,
+foreignconfigProxy original trace unchanged; iterator/descriptor replacements and
+missing/accessor/throwing hooks add0app callbacks/reads and preserve outputs/errors.
+Actual Main source is only statically requalified1original/2branch sites, not rendered.
+
+Independent Python stdlib saved reader
+`.artifacts/a02/jsx-config-saved-verification/2026-10-25/{verify.py,report.json}` checks
+512physical/60compiled files/20cases/63contexts/44negative controls and preserves
+71oldcurrent source/327payload/15V03raw/12L02records/4markers/2+1+2A02raw/Main/CJS/JSX/
+package/diagnosis. No source imports/VM/native reruns. Saved structure/fixture oracles
+do not reconstruct live references or complete provenance. This512physical stage is
+before later plan checklists; final current reconciliation must distinguish that.
+
+Focused85PASS; full `npm test`3948PASS/0fail/0cancel/0skip121616.691ms (terminal34935
+exit0). InvalidCLI exits1/INVALID_ARGUMENTS before registration/marker/VM; syntax/diff
+PASS. ONE fresh final whole-source review next, no native/source retry scheduled.
+Current product/profile/payload untouched, JSXProductSupportedfalse/fullA02false;
+whole20of29 (~69%) unchanged. Five prior minors remain deferred. New source packet
+and qualification do not establish a shipped JSX capability or selected DOM lineage.
+
+Additional required original-exception boundary checks (separate from63retained
+contexts): `.artifacts/a02/jsx-config-input/2026-10-25/original-exception-controls-v2/`,
+rawSHA256 `af9db6274dbe19f79a53b42afd1d864fc1cad548c5956ca77b0f0b2f9ef0f4c8`. Three authored
+throwing-expression/key/freeze cases ×original/off/on =9completed syntheticVM
+contexts. All throw the original sentinel, no element-return is fabricated; original
+JSX constructor is not called for argument throws, called once for freeze throw.
+Pending inputs are correctly0/1/1. Actual runtime/test bytes match ea5d8cb; source
+files/tests and3948suite unchanged, no retainedReact or fullsuite rerun. Native
+version admittedfalse here; not extra actual-framework acceptance.
+
+First private exception-control preflight trimmed git porcelain's leading status
+space and misclassified documentation-only edits; it stopped BEFORE any VM. Its
+script/log/compiled outputs remain separate. Corrected private guard preserves
+porcelain spacing and records documentation-dirty status honestly. No product
+mechanism or original native qualification was changed/reclassified.

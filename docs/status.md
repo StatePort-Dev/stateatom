@@ -1,11 +1,13 @@
 # Project status
 
 Active bounded source slice: [A02.14](completion/164-a02-jsx-config-input.md).
-Fresh automaticJSX own-data config-input/privatehelper/pinned native-return recipe
-Task1 recorder31PASS;71current source/327payload/raw/Main/vendor protected.
-Task2 privateguard/native recipe85sourcePASS; actual retained qualification/fullsuite
-pending, ONE finalreview afterthat. No product/JSXsupport/browser/model/
-cert/install/SDK/otherrepo/publication. WholeA02/20of29 unchanged, five minors deferred.
+Private freshconfig helper/new pinned JSX return recipe85focused/full3948PASS.
+Actual retainedReact19.2.5+JSX source clean ea5d8cb:20owned cases/63started-completed
+VM contexts,9positive selected-input/11expectedUnsupported,512physical input hashes.
+Saved reader44negative controls, old71source/327payload/raw/Main/vendor preserved.
+Freeze mutation proves input≠storedfield; stronger lineage Unknown. Actual Main is
+static1original/2branchsites only, no component/browser/product execution. ONE final
+source review next; five prior minors deferred/fullA02/20of29 (~69%) unchanged.
 
 Completed bounded source diagnosis: [A02.13](completion/163-a02-automatic-jsx-input-boundary.md).
 Actual TodoMVC Main lowers to automatic jsx(Item,{todo,dispatch},todo.id); original
