@@ -1,5 +1,13 @@
 # Project status
 
+A02.35 source complete/native pending: [retained original gate](completion/191-a02-retained-app-state-source.md).
+FourNEWsiblings, old143research/327product unchanged.205focused/5080fullPASS;
+exact nativeops/compiler/bundle parity, currentretention guards add to originalfull
+criteria. NEWreaders preserve495old controls+51retention rules; ownedpartial51 PASS
+is source-only, not native.493protected/13L02raw/17V03raw bound; no App/browser/model.
+Nextfixnewcase thenONEdeclared-mode native maximum; no oldweak/model/cert retry.
+20of29/fullA02 unchanged,14minors deferred.
+
 A02.34 source complete/ONEreview0C0I0newM/14old deferred: [bounded research retention](completion/190-a02-bounded-app-element-retention.md).
 FourNEWfiles/old139research+327product+482protected unchanged. Explicit research
 mode holds<=64accepted App JSX roots perwindow; stop/restart/failure release, original
