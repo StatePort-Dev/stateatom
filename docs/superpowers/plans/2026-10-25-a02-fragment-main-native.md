@@ -30,7 +30,7 @@
 **Interfaces:** schema3 fixed profile and current86 registration; receipt gate same as v2; guardCallbackJSXNativeURLReadings(run,origin) requires exactly8 literal field records, including filtered/stopped '#/active'. Pure classifier invokes it for v3 only. Legacy criteria retained.
 
 - [x] task-start/read brief/BASE; register current inputs before code. Add failing closed-profile/receipt and URL fact tests; minimal implementation; expected RED from unknown schema/missing fact guard or missing gate, then targeted GREEN. Syntax/diff/full npm test PASS; current source commit.
-- [ ] Resource-free prepare/preflight new fixed case (no browser); case commit. ONE native invocation only; expected literal status from actual result, never assumed PASS. Independent saved-byte reader with corruption controls; validate scopes/counters/rawSHA/cleanup/input revisions and explicit unsupported fields; no rerun. Results commit, task-done targeted source tests PASS.
+- [x] Resource-free prepare/preflight new fixed case (no browser); case commit. ONE native invocation only; expected literal status from actual result, never assumed PASS. Independent saved-byte reader with corruption controls; validate scopes/counters/rawSHA/cleanup/input revisions and explicit unsupported fields; no rerun. Results commit, task-done targeted source tests PASS.
 
 ## Final Closeout
 

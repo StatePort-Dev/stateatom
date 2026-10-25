@@ -1,9 +1,13 @@
 # Project status
 
-Active bounded task: [A02.18](completion/168-a02-fragment-main-native.md).
-Closed corrected-fragment Main source:226focused/4270fullPASS; same18phases,
-additional strict saved URL fields/receipt gate. Frozen gates before max1newnative;
-no new runtime proof yet.20/29/fullA02 unchanged;6minors deferred.
+Active bounded attempt: [A02.18](completion/168-a02-fragment-main-native.md).
+One native: all6originalMain phases/current8URLreadings qualified, exact loaded
+Main/DOM/defaultcontext. Off app/document observed but sourcecheck failed; no
+off/on interval proof.2modesstarted1complete/6phasescomplete/12unvisited. Exhausted
+case stays Incomplete; allcleanup/PIDprofileAbsent. Source diagnosis matches pinned
+Playwright bootstrap wrapper hash, not raw CDP reconstruction.226source/4270fullPASS;
+saved559physical38negative. Next ONE finalreview/sourcefixpass, no native retry.
+Whole20/29/fullA02 unchanged;6minors deferred; no cert/trust/userprofile/SDK/model/publish.
 
 Completed bounded attempt: [A02.17](completion/167-a02-explicit-startup-main.md).
 ONE review 0C/1I/0newM; one tested correction preserves separate CDP URL fragment,
