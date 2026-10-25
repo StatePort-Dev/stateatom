@@ -1,5 +1,11 @@
 # Project status
 
+Active bounded work: [A02.16](completion/166-a02-original-main-jsx-native.md).
+Finite originalMain acquisition candidate with current corrected callback-JSX source
+mechanism. New publicCDP identity lanes/frozen original-off-on protocol before max1
+new owned sandboxed headless run. No runtime proof yet/legacywaiver/blankretry/
+cert/trust/userprofile/install/model/SDK/publication;20/29/fullA02 unchanged.
+
 Completed bounded source slice: [A02.15](completion/165-a02-callback-jsx-interval.md).
 ONEreview0C1I0M; rejected-metadata owner replacement fixed once, RED36/6->GREEN42/
 affected256/full4044PASS. Defaultclassic preserved; exact callback-JSX references
