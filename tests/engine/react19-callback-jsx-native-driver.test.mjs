@@ -201,3 +201,54 @@ test('schema3 refusal of original delivery stops before public facts HTTP or app
  assert.equal(r.modesStarted,0);assert.equal(calls.includes('http'),false);assert.equal(calls.includes('proc'),false);
  assert.equal(r.startup.requestedAutomation.status,'REQUIRED_AUTOMATION_ARGUMENT_REFUSED');assert.equal(r.browserLaunchesStarted,1);
 });
+
+
+// A02.18 ONE final review pass: execute the actual private harness methods with
+// resource-free CDP/page controls. No bootstrap/app expression is evaluated.
+async function actualNativeMethod(name,bindings){
+ const source=await readFile('experiments/react19-reducer/callback-jsx-native-run.mjs','utf8'),ast=parse(source,{sourceType:'module'});
+ const owner=ast.program.body.find(n=>n.type==='FunctionDeclaration'&&n.id.name==='createNativeOperations');
+ const methods=owner.body.body.find(n=>n.type==='ReturnStatement').argument.properties;
+ const method=methods.find(n=>n.type==='ObjectMethod'&&n.key.name===name);assert(method);
+ const body=source.slice(method.start,method.end).replace('async '+name+'(','async function '+name+'(');
+ return new vm.Script('('+body+')').runInContext(vm.createContext({assert,URL,...bindings}));
+}
+async function actualOpenControl({mode='off',reply={identifier:'owned-script-registration'}}={}){
+ const calls=[],events=[],origin='http://127.0.0.1:12345',bootstrap=mode==='original'?'':callbackJSXNativeBootstrap(callbackJSXNativeFactory(),{page:'owned:'+mode,mode}),run={mode},session={on(){},async send(method,params){calls.push({method,params});return method==='Page.addScriptToEvaluateOnNewDocument'?reply:{};}};
+ let created=false;
+ const page={setDefaultTimeout(){},on(){},async goto(){calls.push({method:'goto'});},getByRole(){return{async waitFor(){calls.push({method:'ready'});}};}};
+ const context={pages(){return created?[page]:[];},on(){},async route(){},async addInitScript(){calls.push({method:'context.addInitScript'});},async newPage(){created=true;return page;},async newCDPSession(){return session;}};
+ const doc={targetId:'target',frameId:'frame',loaderId:'loader',browserContextId:'context',mainOnly:true};
+ const call=await actualNativeMethod('openMode',{
+  s:{out:'/owned/case',bootstrapDigests:{[mode]:hash(bootstrap)}},h:{client:{async newContext(){return context;}}},
+  modeHandles:new Map(),result:{origin,errors:[]},hash,
+  fs:{async readFile(file){assert.equal(file,'/owned/case/'+mode+'-bootstrap.js');events.push('read-bootstrap');return bootstrap;}},
+  activeLease:l=>assert.equal(l.active,true),activeStep:async(l,task)=>{assert.equal(l.active,true);return task();},
+  acquire:async(bag,key,fn)=>{bag[key]=await fn();return bag[key];},documentFor:async()=>doc
+ });
+ return{run,calls,events,bootstrap,invoke:()=>call(run,{active:true})};
+}
+test('review18 I1 actual openMode registers exact literal default-world CDP source before navigation',async()=>{
+ const c=await actualOpenControl();await c.invoke();
+ const registration=c.calls.find(x=>x.method==='Page.addScriptToEvaluateOnNewDocument');assert(registration);
+ assert.deepEqual(copy(registration.params),{source:c.bootstrap,runImmediately:false});
+ assert(c.calls.indexOf(registration)<c.calls.findIndex(x=>x.method==='goto'));
+ assert.equal(c.calls.some(x=>x.method==='context.addInitScript'),false);
+ assert.deepEqual(c.events,['read-bootstrap']);
+});
+test('review18 I1 original mode never injects bootstrap',async()=>{
+ const c=await actualOpenControl({mode:'original'});await c.invoke();
+ assert.equal(c.calls.some(x=>x.method==='Page.addScriptToEvaluateOnNewDocument'||x.method==='context.addInitScript'),false);assert.deepEqual(c.events,[]);
+});
+for(const reply of [{},{identifier:''},{identifier:4},null])test('review18 I1 malformed public registration reply prevents navigation '+JSON.stringify(reply),async()=>{
+ const c=await actualOpenControl({reply});await assert.rejects(c.invoke());
+ assert.equal(c.calls.some(x=>x.method==='goto'),false);
+});
+test('review18 I2 actual capture phase URL cannot contradict its saved CDP URL reading',async()=>{
+ const {guardCallbackJSXNativeURLReadings:guard}=await import('../../experiments/react19-reducer/callback-jsx-native-qualification.mjs');
+ const origin='http://127.0.0.1:12345',base=origin+'/?mode=original',protocol=callbackJSXNativeProtocol(),doc={mainOnly:true};
+ const run={mode:'original',documentURLReadings:Array.from({length:8},(_,i)=>({frameURL:base,urlFragmentPresent:i>=6,...(i>=6?{urlFragment:'#/active'}:{}),targetURL:base+(i>=6?'#/active':''),pageURL:base+(i>=6?'#/active':'')})),phases:protocol.phases.map((p,i)=>({id:p.id,url:base+(i>=4?'#/active':'')}))};
+ const phase=protocol.phases[4],v=run.phases[4],m={page:{async evaluate(){return{dom:{texts:phase.texts,checked:phase.checked},capture:null};},url(){return base+'#/completed';}}};
+ const call=await actualNativeMethod('capturePhase',{modeHandles:new Map([['original',m]]),activeStep:async(l,task)=>task(),save:async()=>{},activeLease:l=>assert.equal(l.active,true),documentFor:async()=>doc});
+ await call(run,phase,v,{active:true});assert.equal(v.url,base+'#/completed');assert.throws(()=>guard(run,origin));
+});

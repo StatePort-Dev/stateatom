@@ -1,13 +1,14 @@
 # Project status
 
-Active bounded attempt: [A02.18](completion/168-a02-fragment-main-native.md).
-One native: all6originalMain phases/current8URLreadings qualified, exact loaded
-Main/DOM/defaultcontext. Off app/document observed but sourcecheck failed; no
-off/on interval proof.2modesstarted1complete/6phasescomplete/12unvisited. Exhausted
-case stays Incomplete; allcleanup/PIDprofileAbsent. Source diagnosis matches pinned
-Playwright bootstrap wrapper hash, not raw CDP reconstruction.226source/4270fullPASS;
-saved559physical38negative. Next ONE finalreview/sourcefixpass, no native retry.
-Whole20/29/fullA02 unchanged;6minors deferred; no cert/trust/userprofile/SDK/model/publish.
+Completed bounded attempt: [A02.18](completion/168-a02-fragment-main-native.md).
+ONE review0C2I1M; one tested correction registers literal default-world bootstrap
+through public CDP before navigation and pairs phase/URLreading evidence.245focused/
+4289fullPASS. Native case remains exhausted/Incomplete:6originalMain phases passed,
+offsourcecheckpartial/onunvisited, no intervalproof; allcleanup/PIDprofileAbsent.
+Saved559physical38negative report historical; final current/prepared hashes separate.
+Next ONE unfinished dependency: new separately frozen literal-bootstrap Main case,
+same18phase criteria, no observer/flags/waiver.20/29/fullA02 unchanged;7minors deferred.
+No cert/trust/userprofile/account/model/SDK/release/publication work.
 
 Completed bounded attempt: [A02.17](completion/167-a02-explicit-startup-main.md).
 ONE review 0C/1I/0newM; one tested correction preserves separate CDP URL fragment,

@@ -34,4 +34,4 @@
 
 ## Final Closeout
 
-- [ ] ONE fresh final whole-item review; severity/declined-domain effect rulings, ONE tested I-C pass ifneeded, no rereview/native retry. Archive/CRC/allbytes/identityverify/remove own workspace, clean checkpoint, ONE next unfinished dependency.
+- [x] ONE fresh final whole-item review; severity/declined-domain effect rulings, ONE tested I-C pass ifneeded, no rereview/native retry. Archive/CRC/allbytes/identityverify/remove own workspace, clean checkpoint, ONE next unfinished dependency.

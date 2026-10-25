@@ -1,4 +1,4 @@
-# A02.18 — corrected fragment Main case (active)
+# A02.18 — six original Main phases and corrected bootstrap source gate
 
 Continues A02.17 at 7d16604; previous exhausted native remains Incomplete with
 4/18 phases completed and no off/on interval proof. Its one tested URL correction
@@ -63,3 +63,30 @@ actual six phases/partialoff/12unvisited/scopes/hash/revisions/cleanup. Raw has 
 afterhashmap; boolinputcheck and later physical verification stay distinct.
 No cert/trust/userprofile/account/model/SDK/release/publication work.
 Next ONE final fresh review and, if confirmed, one tested source correction pass.
+
+ONE final fresh whole-item review: 0 Critical / 2 Important / 1 Minor.
+I1 confirms Playwright wrapper breaks literal-bootstrap source gate; I2 confirms
+v3 classifier accepted a phase.url contradicting its corresponding URL reading.
+
+ONE correction pass:
+- Register exact bootstrap source through public CDP
+  Page.addScriptToEvaluateOnNewDocument before navigation, omitted worldName
+  (default world), runImmediately:false; validate returned identifier.
+  Original mode injects nothing. Strict current-context getScriptSource hash retained.
+- v3 pairs all six named phase URL fields with their positional URL readings and
+  expected protocol URL. Missing or contradictory URLs refuse; legacy criteria retained.
+Actual private openMode/capturePhase source bodies are exercised with resource-free
+controls, never evaluating bootstrap/app expressions. RED226/19 included one
+original-mode fixture error (bootstrap factory admits off/on only); corrected proper
+RED227/18 ->GREEN245/2451839.266854ms. Full npm test4289/4289PASS112144.127572ms,
+terminal29418exit0,0fail/cancel/skip. Syntax/diffPASS. No native/oldreader rerun/rereview.
+
+New Minor M1 deferred: retain partial successful/failing source-read metadata on
+a future refusal; qualified sourceWitness remains null now. Prior6+1=7 minors
+deferred. Full review/effect rulings in
+.artifacts/a02/callback-jsx-fragment-review/2026-10-25/report.md.
+Actual currentcase stays exhausted/Incomplete:6original phases complete, off setup
+incomplete/onunvisited, no callback-JSX interval proof. Whole20/29/fullA02 unchanged.
+Next ONE unfinished dependency: separately frozen literal-bootstrap Main acquisition
+case on corrected source, same18original/off/on phase/source/URL/identity criteria.
+No new observer, flags, general infrastructure or historical evidence upgrade.

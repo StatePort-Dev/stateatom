@@ -2356,8 +2356,8 @@
       },
       "current_checkpoint": {
         "record": "168-a02-fragment-main-native.md",
-        "status": "original-six-phases-qualified-off-source-incomplete-pending-one-review",
-        "next_bounded_step": "ONE finalfreshreview; sourcecorrect bootstrap byte mismatch ifconfirmed. All6originalphases passed, offsetupincomplete/onunvisited; currentcase exhausted, no retry or raw upgrade."
+        "status": "bounded-attempt-complete-literal-bootstrap-source-corrected-native-case-exhausted",
+        "next_bounded_step": "ONE separately frozen literal-bootstrap Main acquisition case, same18phase/URL/source/identity criteria. Currentcase exhausted6originalphases/offpartial/onunvisited; no native retry or oldraw upgrade."
       },
       "stopping_point_history": [
         {
@@ -2441,14 +2441,14 @@
       "active_slice": {
         "id": "A02.18",
         "record": "168-a02-fragment-main-native.md",
-        "status": "original-six-phases-qualified-off-source-incomplete-pending-one-review",
+        "status": "bounded-attempt-complete-literal-bootstrap-source-corrected-native-case-exhausted",
         "base": "7d1660442aa4a72b2eb1f2ceeddee6f9d8537a6b",
         "native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
-        "focused_checks": 226,
-        "full_source_checks": 4270,
+        "focused_checks": 245,
+        "full_source_checks": 4289,
         "undeclared_inputs_unchanged": 466,
         "native_modes_started": 2,
         "native_modes_completed": 1,
@@ -2461,7 +2461,17 @@
         "prepared_source_revision": "f5fa41649e337c7275fa30d8bd8fde495bee44b5",
         "execution_revision": "bbd5e0c10e1ba73a5acc4f2de9d60496e2cb6378",
         "saved_negative_controls": 38,
-        "JSX_product_supported": false
+        "JSX_product_supported": false,
+        "focused_checks_before_review": 226,
+        "review": {
+          "Critical": 0,
+          "Important": 2,
+          "Minor": 1,
+          "correction_passes": 1,
+          "rereview": false,
+          "deferred_minors_total": 7
+        },
+        "native_reruns_after_fix": 0
       }
     },
     {

@@ -172,6 +172,7 @@ function fragmentWholeRun(){
  const {r,s}=copy(explicitWholeRun());s.schema='stateatom.callback-jsx-native-case/3';
  for(const run of r.runs){
   const base=r.origin+'/?mode='+run.mode;
+  for(let i=0;i<run.phases.length;i++)run.phases[i].url=base+(i>=4?'#/active':'');
   run.documentURLReadings=Array.from({length:8},(_,i)=>i<6?{frameURL:base,urlFragmentPresent:false,targetURL:base,pageURL:base}:{frameURL:base,urlFragmentPresent:true,urlFragment:'#/active',targetURL:base+'#/active',pageURL:base+'#/active'});
  }
  return {r,s};
@@ -207,3 +208,13 @@ test('schema3 accepts explicit empty optional fragments in unfiltered readings',
 test('schema3 cannot drop the independent original requested-argument receipt',()=>{
  const{r,s}=fragmentWholeRun();delete r.startup.requestedAutomation;assert.equal(classifyCallbackJSXNativeRun(r,s).status,'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');
 });
+
+for(const mode of ['original','off','on'])for(const kind of ['missing','foreign','contradictory-filter','contradictory-stopped']){
+ test('review18 I2 schema3 refuses '+mode+' phase URL '+kind,()=>{
+  const{r,s}=fragmentWholeRun(),run=r.runs.find(x=>x.mode===mode);
+  if(kind==='missing')delete run.phases[0].url;
+  else if(kind==='foreign')run.phases[0].url='http://foreign/';
+  else run.phases[kind==='contradictory-filter'?4:5].url=r.origin+'/?mode='+mode+'#/completed';
+  assert.equal(classifyCallbackJSXNativeRun(r,s).status,'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');
+ });
+}

@@ -84,13 +84,14 @@ export function guardCallbackJSXNativeURLReadings(run,origin){
  const u=new URL(origin);assert.equal(u.protocol,'http:');assert.equal(u.hostname,'127.0.0.1');assert.equal(u.origin,origin);assert(u.port);
  assert(['original','off','on'].includes(run.mode));
  const rows=run.documentURLReadings,base=origin+'/?mode='+run.mode;
- assert(Array.isArray(rows)&&rows.length===8);
+ assert(Array.isArray(rows)&&rows.length===8);assert(Array.isArray(run.phases)&&run.phases.length===6);
  for(let i=0;i<rows.length;i++){
   const row=rows[i];assert.equal(typeof row.urlFragmentPresent,'boolean');
   if(row.urlFragmentPresent)assert.equal(typeof row.urlFragment,'string');else assert(!Object.hasOwn(row,'urlFragment'));
   const fragment=row.urlFragmentPresent?row.urlFragment:'';
   assert.equal(fragment,i<6?'':'#/active');
   assert.equal(row.frameURL,base);assert.equal(row.targetURL,base+fragment);assert.equal(row.pageURL,base+fragment);
+  if(i>=2){const phase=run.phases[i-2];assert.equal(phase.id,callbackJSXNativeProtocol().phases[i-2].id);assert.equal(phase.url,row.pageURL);}
  }
  return true;
 }
