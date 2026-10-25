@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: Apache-2.0
 // Research-only SAME callback interval/input identities, never property ownership.
 import {createPropCopyObserver} from './prop-copy-observer.mjs';
-export function createCallbackCopyObserver({page}={}){
+export function createCallbackCopyObserver({page,enabled=true}={}){
  const copy=createPropCopyObserver({page});
  const Map=WeakMap,Ref=WeakRef,apply=Reflect.apply,get=WeakMap.prototype.get,set=WeakMap.prototype.set,deref=WeakRef.prototype.deref;
+ const nativeMap=Array.prototype.map,nativeFilter=Array.prototype.filter;
  const create=Object.create,define=Object.defineProperty,freeze=Object.freeze,keys=Object.keys,descriptor=Object.getOwnPropertyDescriptor,isArray=Array.isArray,isInteger=Number.isSafeInteger;
  const object=x=>x!==null&&(typeof x==='object'||typeof x==='function');
  const read=(m,k)=>apply(get,m,[k]),put=(m,k,v)=>apply(set,m,[k,v]);
@@ -11,30 +12,49 @@ export function createCallbackCopyObserver({page}={}){
  const dto=fields=>{const out=create(null),names=keys(fields);for(let i=0;i<names.length;i++)define(out,names[i],data(fields[names[i]],true));return freeze(out);};
  const list=()=>{const out=[];define(out,'toJSON',data(undefined));return out;};
  const append=(a,v)=>define(a,a.length,data(v,true,true,true));
- let frames=list(),stack=list(),tokens=new Map(),props=new Map(),elements=new Map(),ids=new Map(),handles=new Map();
+ let calls=list(),frames=list(),stack=list(),tokens=new Map(),props=new Map(),elements=new Map(),ids=new Map(),handles=new Map();
  let generation=0,serial=0,identity=0,events=0,stopped=false,collecting=true,overflow=false,invalid=false,reason=null,label='initial';
  const window=()=>dto({id:page+':callback-copy:window:'+generation,label});
  function id(value){let n=read(ids,value);if(!n){n=page+':callback-copy:'+generation+':object:'+ ++identity;put(ids,value,n);}return n;}
- function clear(){frames=list();stack=list();tokens=new Map();props=new Map();elements=new Map();ids=new Map();handles=new Map();}
+ function clear(){calls=list();frames=list();stack=list();tokens=new Map();props=new Map();elements=new Map();ids=new Map();handles=new Map();}
  function refuse(why,capacity=false){reason=why;if(capacity)overflow=true;else invalid=true;clear();}
- const live=()=>!stopped&&collecting&&!overflow&&!invalid;
+ const live=()=>enabled&&!stopped&&collecting&&!overflow&&!invalid;
  function tick(){if(events>=4096){refuse('Interval event capacity refused',true);return false;}events++;return true;}
- function siteView(input){
+ function siteView(input,kind='map'){
   if(!object(input))return null;const s=create(null);
   const names=['id','file','sourceDigest','kind','line','column','endLine','endColumn'];
   for(let i=0;i<names.length;i++){const k=names[i],d=descriptor(input,k);if(!d||!descriptor(d,'value'))return null;s[k]=d.value;}
-  if(s.kind!=='map'||typeof s.id!=='string'||!s.id||s.id.length>200||typeof s.file!=='string'||!s.file||s.file.length>1024||typeof s.sourceDigest!=='string'||s.sourceDigest.length!==64)return null;
+  if(s.kind!==kind||typeof s.id!=='string'||!s.id||s.id.length>200||typeof s.file!=='string'||!s.file||s.file.length>1024||typeof s.sourceDigest!=='string'||s.sourceDigest.length!==64)return null;
   for(let i=0;i<64;i++){const c=s.sourceDigest[i];if(!(c>='a'&&c<='f'||c>='0'&&c<='9'))return null;}
   for(let i=4;i<names.length;i++)if(!isInteger(s[names[i]])||s[names[i]]<1)return null;
   if(s.endLine<s.line||s.endLine===s.line&&s.endColumn<s.column)return null;return dto(s);
  }
+ // A narrow captured-intrinsic runtime for the ORIGINAL native array call.
+ // This is not the legacy array ancestry recorder and emits no filter/map chain.
+ function begin(method,array,site){
+  if(!live())return null;
+  try{
+   if(!tick()||!isArray(array)||method!==nativeMap&&method!==nativeFilter)return null;
+   const kind=method===nativeMap?'map':'filter',s=siteView(site,kind);if(!s)return null;
+   if(calls.length>=64){refuse('Native call capacity refused',true);return null;}
+   const token=create(null),row={callId:page+':callback-copy:'+generation+':call:'+ ++serial,kind,site:s,array:new Ref(array),arrayId:id(array),done:false,aborted:false};
+   append(calls,row);put(tokens,token,row);return token;
+  }catch{refuse('Native call bookkeeping unavailable');return null;}
+ }
+ function finish(token,value){
+  if(!live())return value;
+  try{if(!tick())return value;const row=object(token)?read(tokens,token):null;if(!row)return value;if(row.done||row.aborted){refuse('Repeated or aborted native call completion');return value;}row.done=true;}catch{refuse('Native call bookkeeping unavailable');}
+  return value;
+ }
+ function abort(token){if(!live())return;try{const row=object(token)?read(tokens,token):null;if(row&&!row.done)row.aborted=true;}catch{refuse('Native call bookkeeping unavailable');}}
+ function yielded(token,item,index,array,value){return value;}
+ const arrayRuntime=dto({apply,begin,finish,abort,yielded});
  function enter(token,site,item,index,array){
   if(!live())return null;
   try{
-   if(!tick())return null;const s=siteView(site);if(!object(token)||!s||!object(item)||!isInteger(index)||index<0||!isArray(array))return null;
+   if(!tick())return null;const s=siteView(site),call=object(token)?read(tokens,token):null;if(!call||call.done||call.aborted||!s||call.kind!=='map'||call.site.id!==s.id||call.site.sourceDigest!==s.sourceDigest||!object(item)||!isInteger(index)||index<0||!isArray(array)||apply(deref,call.array,[])!==array)return null;
    if(frames.length>=512){refuse('Callback frame capacity refused',true);return null;}
-   let callId=read(tokens,token);if(!callId){callId=page+':callback-copy:'+generation+':call:'+ ++serial;put(tokens,token,callId);}
-   const handle=create(null),row={frameId:page+':callback-copy:'+generation+':frame:'+ ++serial,callId,site:s,itemId:id(item),mapIndex:index,arrayId:id(array),returnedId:null,candidate:null,returned:false,closed:false};
+   const handle=create(null),row={frameId:page+':callback-copy:'+generation+':frame:'+ ++serial,call,callId:call.callId,site:s,itemId:id(item),mapIndex:index,arrayId:id(array),returnedId:null,candidate:null,returned:false,closed:false};
    put(handles,handle,row);append(frames,row);append(stack,row);return handle;
   }catch{refuse('Interval bookkeeping unavailable');return null;}
  }
@@ -71,7 +91,7 @@ export function createCallbackCopyObserver({page}={}){
   const eligible=!stopped&&!collecting&&!overflow&&!invalid&&stack.length===0&&copyView.status==='Observed';
   for(let i=0;i<frames.length;i++){
    const f=frames[i];append(audit,dto({frameId:f.frameId,callId:f.callId,site:f.site,itemId:f.itemId,mapIndex:f.mapIndex,arrayId:f.arrayId,returnedId:f.returnedId,returned:f.returned,closed:f.closed}));
-   if(!eligible||!f.closed||!f.returned||!f.candidate)continue;
+   if(!eligible||!f.closed||!f.returned||!f.candidate||!f.call.done||f.call.aborted)continue;
    let aliases=0;for(let j=0;j<frames.length;j++)if(frames[j].returnedId===f.returnedId)aliases++;
    if(aliases!==1)continue;const c=f.candidate,element=apply(deref,c.element,[]);if(!element||selected&&selected!==element)continue;
    const native=copy.lookup(element);if(native.status!=='Observed'||native.links.length!==1)continue;
@@ -81,9 +101,9 @@ export function createCallbackCopyObserver({page}={}){
  }
  function snapshot(){return snapshotFor();}
  function lookup(element){if(!object(element)){const v=snapshotFor();return dto({...v,status:'Unknown/Unsupported',links:freeze(list())});}return snapshotFor(element);}
- function retention(){return dto({frames:frames.length,active:stack.length,events,stopped,collecting,overflow,invalid,window:generation,copy:copy.retention()});}
+ function retention(){return dto({calls:calls.length,frames:frames.length,active:stack.length,events,stopped,collecting,overflow,invalid,window:generation,copy:copy.retention()});}
  function sealWindow(){if(stopped)return dto({sealed:false,snapshot:snapshot(),retention:retention()});if(stack.length)refuse('Callback interval incomplete at seal');collecting=false;copy.sealWindow();return dto({sealed:true,snapshot:snapshot(),retention:retention()});}
  function startWindow(next){if(stopped||typeof next!=='string'||!next||next.length>80)return null;clear();generation++;serial=0;identity=0;events=0;label=next;overflow=false;invalid=false;reason=null;collecting=true;copy.startWindow(next);return window();}
  function stop(){stopped=true;collecting=false;clear();copy.stop();}
- return dto({enter,returned,exit,tap,snapshot,lookup,retention,sealWindow,startWindow,stop});
+ return dto({arrayRuntime,enter,returned,exit,tap,snapshot,lookup,retention,sealWindow,startWindow,stop});
 }

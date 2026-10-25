@@ -2,8 +2,9 @@
 
 Active bounded source slice: [A02.11](completion/161-a02-callback-copy-interval.md).
 Exact original callback entry/return/exit to copy-input feasibility; new modules
-only, preregistered oldsource/current327/raw. Task1 weak interval recorder31PASS;
-Task2 recipe/source qualification pending. No browser/certificate/installation work.
+only, preregistered oldsource/current327/raw. Task1 historical31PASS; current exact-call
+recorder/recipe75PASS after reproduced intrinsic dependency fix. Retained-source
+qualification/fullsuite still pending. No browser/certificate/installation work.
 
 Completed bounded source slice: [A02.10](completion/160-a02-react19-prop-copy-input.md).
 ONE review0C1I0M, one fixed-arity helper correction pass;62focused/full3757PASS.

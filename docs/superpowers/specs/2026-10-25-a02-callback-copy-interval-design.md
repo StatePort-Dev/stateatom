@@ -22,10 +22,17 @@ callback-copy-source-run.mjs under experiments/react19-reducer; matching observe
 transform test files and tests/helpers/react19-callback-copy-controls.mjs. No product
 importer/old source edits. New modules reuse old array transform and prop recorder.
 
-Observer API createCallbackCopyObserver({page}) -> enter(token,site,item,index,array),
+Observer API createCallbackCopyObserver({page,enabled=true}) -> arrayRuntime and
+enter(token,site,item,index,array),
 returned(frame,result), exit(frame), tap(kind,value,props,key), snapshot/lookup,
 sealWindow/startWindow/stop/retention. enter returns opaque frame; all values remain
 weak identities/WeakRefs. No app fields/getters/Proxy traps/scalars enter DTOs.
+arrayRuntime exposes captured apply/begin/yielded/finish/abort for the existing
+wrapperless expression recipe, with64call cap and genuine weak pending call tokens.
+It does not reuse legacy array telemetry: new RED controls show late WeakMap.get or
+Array.push replacements execute app callbacks through that old recorder. The narrow
+new runtime fixes this source path without changing the old module or historical
+claims. Map call must complete; an aborted call cannot promote prior callbacks.
 Only map frames with exact nonnegative index/source metadata, original same frame
 creation/copy/element-return AND callback return can qualify after seal. Old props,
 other frame, wrong object, reused returned element, pending/aborted frame, late
@@ -39,7 +46,8 @@ arrow keeps its identity/length1/lexical this/arguments; prepend metadata enter 
 use try/finally exit, wrap only yielded's value argument after original evaluation.
 No callback wrapper or app-expression repeat. Reject reserved binding/dynamic grammar,
 wrong generated binding/site or coverage mismatch; never partially instrument.
-Existing unsupported finalizers/async/generators/nested array profiles remain so.
+Existing unsupported finalizers/async/generators/nested array profiles remain so;
+any underlying unsupported array site refuses this entire new file profile.
 
 Qualification: source synthetic controls first; then one new registered retained
 React19.2.5 CJS NodeVM matrix with authored filter/map source and configs. Both factories

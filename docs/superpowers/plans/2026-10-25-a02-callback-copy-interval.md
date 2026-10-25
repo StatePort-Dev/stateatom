@@ -10,6 +10,7 @@
 ## Global Constraints
 
 - New source files only; oldsource/current327/native/raw preserved. No product importer/UI/browser/native/model/SDK/otherrepo/cert/profile/installation/security/release/account.
+- New recorder arrayRuntime only: captured apply/begin/yielded/finish/abort,64native calls, genuine same-call receiver/site token; completed map required, aborted/pending map refuses. Legacy recorder unchanged.
 - Same arrow callback, original expressions once, helper only after value evaluation, original exception identity/lexical this/arguments/length1 preserved; no callback wrapper.
 - Exact token/site/item/index/receiver/frame and native props/copy/element/callback-return association; no ID-string or nearest/latest join. Duplicate/reused/cross-frame/partial/Stop/window refuse.
 - Weak identity/WeakRefs only; no app reads/getters/Proxy traps/scalars/strong retention in history.512frames/4096interval events plus64props/4096copy events.
@@ -37,7 +38,7 @@
 **Files:** create experiments/react19-reducer/callback-copy-transform.mjs, callback-copy-source-run.mjs, tests/engine/react19-callback-copy-transform.test.mjs, tests/helpers/react19-callback-copy-controls.mjs; completion161/current pointers.
 **Interfaces:** instrumentCallbackCopyIntervals(source,file,options) returns code/sites/receipt/refusal; existing array runtime and new callback interval runtime remain separate. Zero-option source run registers/hash-checks exact pinned inputs and new outputs before sourceVM.
 
-- [ ] task-start/readbrief/BASE; TDD original/off/on source outputs/getters/throws/stack/lexical this-arguments/length1, binding/site/all-arrow/refusal/collision controls; new synthetic fixtures not vendor copies. Focused tests RED->GREEN.
+- [x] task-start/readbrief/BASE; TDD original/off/on source outputs/getters/throws/stack/lexical this-arguments/length1, binding/site/all-arrow/refusal/collision controls; new synthetic fixtures not vendor copies. Focused tests RED->GREEN.
 - [ ] Commit stable source then ONE registered retained React CJS sourceVM matrix and independent saved reader/negative controls, focused/full npm test/preservation/syntax/diff/resultcommit/task-done. No oldnative/browser/model repeat or wholeA02 credit.
 
 ## Final Closeout
