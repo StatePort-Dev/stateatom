@@ -1,6 +1,6 @@
 # Project status
 
-A02.28 source-fix PASS, finalreviewpending: [disabled source tap](completion/178-a02-disabled-source-tap.md).
+Completed A02.28 source-fix (ONEreview0C0I0newM/11oldminorsdeferred): [disabled source tap](completion/178-a02-disabled-source-tap.md).
 Disabledtap now returns before delegation; nestedconfig/events/proxyreads0.
 Enabled-invalidApp retains Main1.26observer/109affected/4593fullPASS; no native/
 sourcequalification/browser/model/reader rerun. Exactly2source/test changes,

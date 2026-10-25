@@ -2461,7 +2461,7 @@
       },
       "current_checkpoint": {
         "record": "178-a02-disabled-source-tap.md",
-        "status": "disabled-source-tap-fixed-source-PASS-review-pending",
+        "status": "complete-bounded-disabled-source-tap-fix",
         "next_bounded_step": "ONE bounded native state-reference premise selection; no genericownershipkernel or historicalnative upgrade."
       },
       "stopping_point_history": [
@@ -2581,7 +2581,7 @@
       "active_slice": {
         "id": "A02.28",
         "record": "178-a02-disabled-source-tap.md",
-        "status": "disabled-source-tap-fixed-review-pending",
+        "status": "complete-bounded-disabled-source-tap-fix",
         "base": "fc8620914f721421680331856cf54ca06929f851",
         "native_runs": 0,
         "model_calls": 0,
@@ -2599,7 +2599,15 @@
         "historical_native_proof": "9bf056c/c8350fc",
         "historical_native_current_physical_inputs": 1143,
         "historical_native_exact_prepared_git_inputs": 2,
-        "product_privacy_qualified": false
+        "product_privacy_qualified": false,
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "new_minor": 0,
+          "total_deferred_minor": 11,
+          "correction_passes": 0,
+          "re_review": false
+        }
       }
     },
     {
