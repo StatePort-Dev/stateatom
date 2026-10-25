@@ -33,3 +33,33 @@ Current71source/327payload/oldraw/cases/Main/nativeReact+JSX/package pins unchan
 syntax/diff PASS. No retainedvendorVM/app/browser/model; no product importer/profile
 change. Fullsuite deferredTask2stable. NextTask2 private freshliteral sourceguard and
 exact native JSX return recipe/sourcequalification, one finalreview afterthat.
+
+Task2 source checkpoint before actual retained execution: new private config helper
+only wraps exact lexical jsx/jsxs import calls with one fresh own-data todo literal.
+Aliases/spreads/accessors/methods/computed/proto/key/ref/children/duplicate/dynamic/
+optional/collision targets refuse the whole new file profile; non-todo fixed configs
+remain untouched. Object input only; scalar values never enter hook histories.
+Captured own descriptor reads the already-evaluated fresh plain config, never an
+arbitrary source object. No expression/getter repeat; key argument stays later.
+
+Separate pinned JSX recipe validates ReactElement6parameters/type-props binding/
+unique original return and exact dd50sourceSHA; synthetic grammar native-admittedfalse.
+Original return completes before fixed-arity metadata hook. No existing profile or
+classic schema change. Actual Main statically admits1original/2callback-branch config
+sites with distinct compiled IDs; no Main/component execution from that check.
+
+Missingrecipe RED1file while31recorderPASS ->61source controls. New authored config
+matrix+3missing/accessor/throwing hook controls ->83PASS1missingrunner; runner added,
+then additional Proxy-config refusal/trace control ->85PASS/0fail/0cancel/0skip
+759.536ms. Getter-expression/key order, accessor-not-read, opaque value Proxy0traps,
+alias Proxy original traces, iterator/descriptor replacements0added callbacks,
+clone/copy/Stop/seal refusal and freeze-mutation historicalinput/Unknownstorage pass
+on authored synthetic runtime. These are NOT actual retainedReact/JSX execution.
+
+Zero-option source runner prepares every compiled case/hash before VM, hashes exact
+React core/JSX/Main bytes used, explicit process.env development, separate started/
+completed counters, exclusive one-run marker, original/off/on+tap controls and
+preserved partial failures. Stable source must be committed before one registered
+20case63context retained source qualification. Fullsuite remains deferred until
+that execution. Current71source/327payload/oldraw/cases/Main/CJS/JSX/package intact;
+syntax/diff PASS. No product importer/browser/native/ReactDOM/model/install/cert work.

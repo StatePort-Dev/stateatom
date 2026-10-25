@@ -1665,13 +1665,13 @@
       "active_slice": {
         "id": "A02.14",
         "record": "164-a02-jsx-config-input.md",
-        "status": "task1-recorder31-task2-pending",
+        "status": "source85-retained-qualification-pending",
         "base": "b26cbb2",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
-        "focused_checks": 31
+        "focused_checks": 85
       },
       "completed_slices": [
         {
@@ -2249,8 +2249,8 @@
       },
       "current_checkpoint": {
         "record": "164-a02-jsx-config-input.md",
-        "status": "task1-recorder31-task2-pending",
-        "next_bounded_step": "Task2 private fresh-literal JSXconfig source guard and exact pinned JSX return/sourceVM qualification; no product/native/browser claim."
+        "status": "source85-retained-qualification-pending",
+        "next_bounded_step": "Commit stable source, ONE registered actual retained React+JSX20case63context source qualification with exact compiled inputs; saved reader/fullsuite/ONE finalreview, no product/browser."
       },
       "stopping_point_history": [
         {

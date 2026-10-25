@@ -3,7 +3,8 @@
 Active bounded source slice: [A02.14](completion/164-a02-jsx-config-input.md).
 Fresh automaticJSX own-data config-input/privatehelper/pinned native-return recipe
 Task1 recorder31PASS;71current source/327payload/raw/Main/vendor protected.
-Task2 guard/native recipe/sourcequalification pending, ONE finalreview afterthat. No product/JSXsupport/browser/model/
+Task2 privateguard/native recipe85sourcePASS; actual retained qualification/fullsuite
+pending, ONE finalreview afterthat. No product/JSXsupport/browser/model/
 cert/install/SDK/otherrepo/publication. WholeA02/20of29 unchanged, five minors deferred.
 
 Completed bounded source diagnosis: [A02.13](completion/163-a02-automatic-jsx-input-boundary.md).

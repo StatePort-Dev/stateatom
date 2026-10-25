@@ -37,8 +37,8 @@
 **Files:** create experiments/react19-reducer/jsx-config-transform.mjs, jsx-config-vendor.mjs, jsx-config-source-run.mjs, tests/engine/react19-jsx-config-recipes.test.mjs, tests/helpers/react19-jsx-config-controls.mjs; completion164/current pointers.
 **Interfaces:** instrumentJSXConfigInputs(source,file,options) ->code/sites/unsupported/sourceDigest; transformPinnedJSXConfig(source,file) source receipt; authored controls helper/zero-option guarded sourceVM runner. Existing current71source untouched.
 
-- [ ] task-start/readbrief/BASE. TDD real lexical imports/fresh literals/duplicate branch sites/alias-spread-accessor-key-ref-children-computed-proto-dynamic-collision refusal; original/off/on getter/key/Proxy/exception/iterator and freeze mutation, missing/accessor/throwing tap; exact native file/pin/binding/count guard. Actual Main static compile admitted with1original/2interval branch sites, no component execution.
-- [ ] Minimal recipes/helper/runner, focused/preservation/syntax/diff and sourcecommit before actual retained-sourceVM. Current config values never re-evaluated by recorder/helper.
+- [x] task-start/readbrief/BASE. TDD real lexical imports/fresh literals/duplicate branch sites/alias-spread-accessor-key-ref-children-computed-proto-dynamic-collision refusal; original/off/on getter/key/Proxy/exception/iterator and freeze mutation, missing/accessor/throwing tap; exact native file/pin/binding/count guard. Actual Main static compile admitted with1original/2interval branch sites, no component execution.
+- [x] Minimal recipes/helper/runner, focused/preservation/syntax/diff and sourcecommit before actual retained-sourceVM. Current config values never re-evaluated by recorder/helper.
 - [ ] ONE registered actual retained React+JSX sourceVM original/off/on with authored configs and explicit development process, exact source/compiled hashes/started-completed counts, save refusal/partial failures; independent source-free saved reader/negative controls. Full npm test once stable, resultcommit/task-done. No product/native/oldcase retry or wholeA02 credit.
 
 ## Final Closeout
