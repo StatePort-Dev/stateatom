@@ -1,5 +1,10 @@
 # Project status
 
+Active bounded source slice: [A02.11](completion/161-a02-callback-copy-interval.md).
+Exact original callback entry/return/exit to copy-input feasibility; new modules
+only, preregistered oldsource/current327/raw. No new implementation or acceptance
+evidence yet; one finite plan/two tasks, no browser/certificate/installation work.
+
 Completed bounded source slice: [A02.10](completion/160-a02-react19-prop-copy-input.md).
 ONE review0C1I0M, one fixed-arity helper correction pass;62focused/full3757PASS.
 Corrected retained React19.2.5 source NodeVM qualification clean8169d8d:

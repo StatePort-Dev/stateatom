@@ -1661,31 +1661,17 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "implementation_plan": "../superpowers/plans/2026-10-25-a02-react19-prop-copy-input.md",
-      "execution_record": "160-a02-react19-prop-copy-input.md",
+      "implementation_plan": "../superpowers/plans/2026-10-25-a02-callback-copy-interval.md",
+      "execution_record": "161-a02-callback-copy-interval.md",
       "active_slice": {
-        "id": "A02.10",
-        "record": "160-a02-react19-prop-copy-input.md",
-        "status": "complete-bounded-source-not-native-A02",
-        "base": "f48be1a",
+        "id": "A02.11",
+        "record": "161-a02-callback-copy-interval.md",
+        "status": "preregistered-source-only",
+        "base": "d57c022",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false,
-        "source_vm_contexts": 48,
-        "source_vm_cases": 15,
-        "source_vm_tap_controls": 3,
-        "source_revision": "8169d8d6be0fb035cd17230bb793fde5d3e43308",
-        "focused_checks": 62,
-        "full_source_checks": 3757,
-        "review": {
-          "Critical": 0,
-          "Important": 1,
-          "Minor": 0,
-          "correction_passes": 1,
-          "I1": "fixed-arity helper; iterator RED60/2 to GREEN62"
-        },
-        "source_raw_sha256": "23c55a6ff4bfb98ade84e4901cc04b6f2a56044c4bc4d3717506124491968c59"
+        "full_A02": false
       },
       "completed_slices": [
         {
@@ -2151,6 +2137,30 @@
             "report": ".artifacts/a02/launch-evidence-lanes-review/2026-10-24/report.md"
           },
           "final_checkpoint": ".artifacts/a02/launch-evidence-lanes-review/2026-10-24/final-checkpoint.json"
+        },
+        {
+          "id": "A02.10",
+          "record": "160-a02-react19-prop-copy-input.md",
+          "status": "complete-bounded-source-not-native-A02",
+          "base": "f48be1a",
+          "native_runs": 0,
+          "model_calls": 0,
+          "product_code_changed": false,
+          "full_A02": false,
+          "source_vm_contexts": 48,
+          "source_vm_cases": 15,
+          "source_vm_tap_controls": 3,
+          "source_revision": "8169d8d6be0fb035cd17230bb793fde5d3e43308",
+          "focused_checks": 62,
+          "full_source_checks": 3757,
+          "review": {
+            "Critical": 0,
+            "Important": 1,
+            "Minor": 0,
+            "correction_passes": 1,
+            "I1": "fixed-arity helper; iterator RED60/2 to GREEN62"
+          },
+          "source_raw_sha256": "23c55a6ff4bfb98ade84e4901cc04b6f2a56044c4bc4d3717506124491968c59"
         }
       ],
       "remaining_acceptance": [
@@ -2166,9 +2176,9 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "160-a02-react19-prop-copy-input.md",
-        "status": "complete-bounded-source-not-native-A02",
-        "next_bounded_step": "ONE source feasibility: exact original array callback occurrence to prop-copy input, preserving native callbacks and rejecting reused-element borrowing; no browser/native/installation or whole A02 credit."
+        "record": "161-a02-callback-copy-interval.md",
+        "status": "preregistered-source-only",
+        "next_bounded_step": "Task1 weak callback interval recorder TDD; preserve old source/product/raw, no browser/native."
       },
       "stopping_point_history": [
         {
