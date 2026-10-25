@@ -63,7 +63,15 @@ Reader/contract written before native marker; this is retained chronology, not
 an independently timestamped witness. No project imports/VM/App/native/model run
 in reader. Native raw/reports remain immutable.
 
-20/29/fullA02 and11oldminors unchanged. Final whole-item review pending.
+20/29/fullA02 and11oldminors unchanged. Final whole-item review complete:
+ONEfresh gpt-6-astra/high0Critical0Important0newMinor; no correction/rereview.
+Twenty declined domains have effect/cost rulings in the ledger/review archive:
+private source association; committedDOM; state/index/hook; revision; ownership;
+authenticity; intrinsics; GC/performance; scheduling; unsupportedprofiles/events;
+filteredfreshness; effective mode; independentchronology; historicalproof; installed/
+UI; excludedSDK/model/otherrepo/cert/trust; oldminors; frozencheckboxes; archive.
+No scoped-out behavior receives evidence credit. Frozen prepared plan checkboxes
+remain unchanged; ledger carries completed tasks to preserve1290current inputs.
 Next ONE bounded item: private native-return-to-existing-source-path association;
 use actual App tokens/config/element refs, never serialized IDs. No generic
 ownership infrastructure or current committed selectedDOM claim.

@@ -2461,7 +2461,7 @@
       },
       "current_checkpoint": {
         "record": "180-a02-native-state-return-native.md",
-        "status": "native-reference-acquisition-pass-final-review-pending",
+        "status": "complete-bounded-native-return-reference-acquisition",
         "next_bounded_step": "ONE bounded private native-return to existing source-path association, actual references/tokens only; all stronger ownership/selectedDOM originsUnknown."
       },
       "stopping_point_history": [
@@ -2591,7 +2591,7 @@
       "active_slice": {
         "id": "A02.30",
         "record": "180-a02-native-state-return-native.md",
-        "status": "native-pass-final-review-pending",
+        "status": "complete-bounded-native-reference-acquisition",
         "base": "84f0d50f30b59dd825d6a0758ead3735de63c736",
         "native_runs": 1,
         "maximum_native_runs": 1,
@@ -2611,7 +2611,16 @@
         "saved_negative_controls": 339,
         "native_result": ".artifacts/a02/native-state-return-native/2026-10-25T18-18-00Z/results.json",
         "execution_revision": "8e69297c619cb69814b0e7931148d470bd42470e",
-        "prepared_revision": "581786b3efc58e88c423a3da7d75c707eaf29cca"
+        "prepared_revision": "581786b3efc58e88c423a3da7d75c707eaf29cca",
+        "review": {
+          "Critical": 0,
+          "Important": 0,
+          "Minor": 0,
+          "correction_passes": 0,
+          "rereview": false,
+          "deferred_minors_total": 11
+        },
+        "native_reruns_after_review": 0
       }
     },
     {

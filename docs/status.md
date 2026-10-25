@@ -1,6 +1,6 @@
 # Project status
 
-A02.30 actualnative PASS, final review pending: [native returned-state acquisition](completion/180-a02-native-state-return-native.md).
+A02.30 actualnative PASS (ONEreview0C0I0newM/11oldminors deferred): [native returned-state acquisition](completion/180-a02-native-state-return-native.md).
 ONElaunch3modes18phases; native4windows4links, App4/8/Main5/9 separately.
 1290before-after equal/saved339negative; PID/profile absent, allcleanup. Offglobal
 absent/0events; StopclearedUnknown0.53focused/4701fullPASS;123research/327payload/
