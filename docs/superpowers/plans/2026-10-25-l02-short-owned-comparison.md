@@ -38,9 +38,9 @@
 **Files:** docs/testing/l02-comparison-short-case78.json; fresh short ignored output/completion158/current pointers.
 **Interfaces:** exact prepared host/privatepaths/socketbudget/binaries/profile ownership/current physical inputs/new case before max1effect.
 
-- [ ] Readbrief/BASE; prepare exact2file addon/private short output; physicalpreflight browserfalse/modelfalse; commitnewcase. Originalcase/marker/raw untouched. ONE actual invocation only, pollsamehandle/no retry. Failure/unavailability stays literal, no workaround.
-- [ ] Sourcefree saved verifier/meaningful negatives/rehashedsource+raw+runtime; actual clause-v-template factual/unknown/concision/usefulness table; separate34rows/unvisited/10eligible24fallback/latencies. Inspectactual registered PNG candidates if produced. Noquality from structure/fixtures/collection.
-- [ ] Localresultcommit/task-done with focusedsource check; no full/model repeat forunchangedsource. FullL02/originalquality thresholds/unprovedlifecycle/whole20of29 remain explicit.
+- [x] Readbrief/BASE; prepare exact2file addon/private short output; physicalpreflight browserfalse/modelfalse; commitnewcase. Originalcase/marker/raw untouched. ONE actual invocation only, pollsamehandle/no retry. Failure/unavailability stays literal, no workaround.
+- [x] Sourcefree saved verifier/meaningful negatives/rehashedsource+raw+runtime; actual clause-v-template factual/unknown/concision/usefulness table; separate34rows/unvisited/10eligible24fallback/latencies. Inspectactual registered PNG candidates if produced. Noquality from structure/fixtures/collection.
+- [x] Localresultcommit/task-done with focusedsource check; no full/model repeat forunchangedsource. FullL02/originalquality thresholds/unprovedlifecycle/whole20of29 remain explicit.
 
 ## Final closeout
 

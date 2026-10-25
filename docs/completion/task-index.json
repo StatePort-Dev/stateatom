@@ -4247,14 +4247,16 @@
       "active_slice": {
         "id": "L02.13",
         "record": "158-l02-short-owned-comparison.md",
-        "status": "prepared-short101-physical444-before-one-native",
+        "status": "one-short-native-exhausted-zero-api-owned-browser",
         "base": "c799ad5",
         "maximum_native_runs": 1,
-        "native_started": false,
+        "native_started": true,
         "model_calls": 0,
         "full_L02_acceptance": false,
         "product_provider_selected": false,
-        "whole_L02_review_consumed": false
+        "whole_L02_review_consumed": false,
+        "native_runs": 1,
+        "case_exhausted": true
       },
       "implementation_plan": "../superpowers/plans/2026-10-25-l02-short-owned-comparison.md",
       "remaining_acceptance": [
@@ -4266,8 +4268,8 @@
       "execution_record": "158-l02-short-owned-comparison.md",
       "current_checkpoint": {
         "record": "158-l02-short-owned-comparison.md",
-        "status": "prepared-short101-physical444-before-one-native",
-        "next_bounded_step": "L02.13 prepared short101/socket budget/current444 preflightPASS browserfalse/modelfalse; commitcase before max1actualrun. Original12 exhausted/immutable; no download/security/workaround/retry."
+        "status": "one-short-native-exhausted-zero-api-owned-browser",
+        "next_bounded_step": "ONE bounded L02.13 review/source correction only; no new browser/install retry. Next V03 clean-editor source contract after foreign app edit, retain26guard/raw."
       },
       "completed_slices": [
         {
@@ -7221,8 +7223,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "L02.13-prepared-short101-physical444-before-native",
-    "next_item": "L02.13 prepared short101/socket budget/current444 preflightPASS browserfalse/modelfalse; commitcase before max1actualrun. Original12 exhausted/immutable; no download/security/workaround/retry.",
+    "current_increment": "L02.13-one-short-native-exhausted-zero-api-owned-browser",
+    "next_item": "ONE bounded L02.13 review/source correction only; no new browser/install retry. Next V03 clean-editor source contract after foreign app edit, retain26guard/raw.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7249,7 +7251,7 @@
     "active_item": {
       "id": "L02",
       "record": "158-l02-short-owned-comparison.md",
-      "status": "source162-full3695-no-native"
+      "status": "one-short-native-exhausted-zero-api-owned-browser"
     },
     "completed_increments": [
       {
@@ -9944,11 +9946,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "L02.13 source162/full3695PASS; actual preparation completed in owned .artifacts/l02/c/d91e9234, singleton101bytes, current444physical preflightPASS browserfalse/modelfalse/short private dirs confirmed. Same addonJS/prompt/options/provider/runtime/current327/78/UI2. No new native/profile-write/model yet. Original12 refusal/case/marker unchanged. WholeL02/20of29 open; no cert/security/userprofile/download/SDK/otherrepo/publication.",
+    "current_activity_note": "L02.13 ONE short-route attempt dad294a exhausted/INCOMPLETE at exact-new-worker wait; ownedChrome156 UID/exe/start/parent attested, native X11 sequence recorded, install/delivery cause Unknown.0API/0fallback/all34unvisited, no loadedJS/PNG. Fourknown roots retired+lease released, console NotCollected. Source162/full3695 and saved444/37negative verify partial refusal only. Own-cache/UI/lease operations occurred; automatic keyring cancelled diagnostic retained, no agent credentials/keyring-targeted action/cert/security/userprofile/requested-model-download/SDK/otherrepo/publish. Old12 raw/case/marker preserved; wholeL02/20of29 open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "a9649d3",
+    "current_source_revision": "dad294a",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "L02.13 prepared short101/socket budget/current444 preflightPASS browserfalse/modelfalse; commitcase before max1actualrun. Original12 exhausted/immutable; no download/security/workaround/retry.",
+    "next_bounded_step": "ONE bounded L02.13 review/source correction only; no new browser/install retry. Next V03 clean-editor source contract after foreign app edit, retain26guard/raw.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -9958,7 +9960,7 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "current tested short-route source before one frozen candidate",
+    "current_source_revision_kind": "exact source/frozen case used by the one actual L02.13 attempt",
     "current_source_checkpoint": ".artifacts/l02/comparison-native-review/2026-10-25/final-checkpoint.json",
     "current_source_checkpoint_kind": "last completed bounded item L02.12 c799ad5"
   },

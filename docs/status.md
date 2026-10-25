@@ -1,9 +1,13 @@
 # Project status
 
-Active bounded work: [L02.13](completion/158-l02-short-owned-comparison.md), short
-owned output/tmp route after the explicit socket-path refusal. Task1source162/full3695PASS;
-no new native/model/profile yet. Next prepare/physicalpreflight/newcasecommit. Same facts/options/runtime/pins/quality.
-One new case only after source/full/preflight/commit; original12 never resets/reruns.
+Active bounded work: [L02.13](completion/158-l02-short-owned-comparison.md), one
+short-route attempt exhausted/INCOMPLETE at new-worker wait,0API/all34unvisited.
+Actual ownedChrome156 now attested; no socket fatal. Native Gtk mouse sequence is
+not proof of installation, cause Unknown/no PNG. Fourknown roots retired/lease
+released;9cleanuptrue/console NotCollected. Source162/full3695 and saved444physical/
+37negative checks support source/partial refusal only. ONE bounded review next;
+then V03 clean-editor source contract after foreign edits, no installation retry.
+Whole20/29/mandatoryL02 unchanged; no cert/security/userprofile/download/SDK/publish.
 
 Completed bounded attempt: [L02.12](completion/157-l02-comparison-native-candidate.md).
 ONE case exhausted/INCOMPLETE before browser attestation: installed Chrome156 fatal
