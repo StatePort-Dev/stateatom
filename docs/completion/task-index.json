@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "171-a02-main-input-bridge.md",
-        "status": "source-qualification-exhausted-incomplete-before-final-review",
-        "next_bounded_step": "ONE final review and tested I/C correction; no qualification rerun. Then separately frozen Main input case if dependency remains."
+        "status": "bounded-source-attempt-closed-qualification-incomplete-two-review-fixes",
+        "next_bounded_step": "A02.22 ONE separately preregistered corrected-source Main input qualification; preserve exhausted A02.21/raw/nativeA02.20, no oldreader/native retry."
       },
       "stopping_point_history": [
         {
@@ -2546,14 +2546,14 @@
       "active_slice": {
         "id": "A02.21",
         "record": "171-a02-main-input-bridge.md",
-        "status": "source-qualification-exhausted-incomplete-before-final-review",
+        "status": "bounded-source-attempt-closed-qualification-incomplete-two-review-fixes",
         "base": "612687dfb331063236590479f908f1d9cf838642",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
-        "focused_tests_passed": 52,
-        "full_tests_passed": 4359,
+        "focused_tests_passed": 58,
+        "full_tests_passed": 4365,
         "source_revision": "24e40b2",
         "case_revision": "59d032d",
         "source_runs": 1,
@@ -2564,7 +2564,18 @@
         "saved_byte_inputs": 676,
         "saved_negative_controls": 45,
         "qualification_result": ".artifacts/a02/main-input-bridge/2026-10-25T09-55-00Z/results.json",
-        "qualification_sha256": "a072780a54f3050662bb9d6cbddd6550a77345f477fa0c35c0207562f7236193"
+        "qualification_sha256": "a072780a54f3050662bb9d6cbddd6550a77345f477fa0c35c0207562f7236193",
+        "review": {
+          "critical": 0,
+          "important": 2,
+          "important_fixed": 2,
+          "new_minor": 0,
+          "correction_passes": 1,
+          "re_review": false
+        },
+        "qualification_repeated": false,
+        "current_physical_inputs": 672,
+        "exact_prepared_git_inputs": 4
       }
     },
     {

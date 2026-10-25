@@ -95,8 +95,9 @@ export function createMainInputObserver({page,enabled=true,policy}={}){
  }
  function abort(token){
   apply(baseAbort,undefined,arguments);
-  if(!live())return;
-  try{if(!tick())return;const row=object(token)?read(callHandles,token):null;if(!row||row.main!==current()||row.done){refuse('Invalid native abort');return;}row.aborted=true;refuse('Native call did not complete');}
+  // The unchanged recipe clears an absent token before begin and after finish.
+  if(!live()||token===null||token===undefined)return;
+  try{const row=object(token)?read(callHandles,token):null;if(!row){refuse('Invalid native abort');return;}if(row.done)return;if(!tick())return;if(row.main!==current()||row.aborted){refuse('Invalid native abort');return;}row.aborted=true;refuse('Native call did not complete');}
   catch{refuse('Main abort bookkeeping unavailable');}
  }
  function enter(token,tag,item,index,array){

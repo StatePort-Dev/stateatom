@@ -30,8 +30,8 @@ export function instrumentMainInputBridge(source,file,{enabled=false,sourceType=
   if(p.key.name==='todos')hasTodos=true;
  }
  if(!hasTodos||main.scope.getBinding('todos')?.kind!=='param')return refuse('Original todos parameter binding required');
- main.get('body').traverse({Function(p){p.skip();},VariableDeclaration(p){if(p.node.kind==='var')unsafe=true;},FunctionDeclaration(p){if(p.node.id?.name==='todos')unsafe=true;}});
- if(unsafe)return refuse('Main body var/redeclared binding not admitted');
+ main.get('body').traverse({Function(p){p.skip();},VariableDeclaration(p){if(p.node.kind==='var')unsafe=true;},FunctionDeclaration(p){if(p.node.id?.name==='todos')unsafe=true;},TryStatement(p){if(p.node.finalizer)unsafe=true;}});
+ if(unsafe)return refuse('Main body var/redeclared binding or finalizer not admitted');
  const loc=main.node.loc;
  const mainSite={id:hash(sourceDigest+':Main:todos:'+main.node.start+':'+main.node.end),file,sourceDigest,kind:'main-input',line:loc.start.line,column:loc.start.column+1,endLine:loc.end.line,endColumn:loc.end.column+1,functionName:'Main',parameter:'todos'};
  const base=instrumentCallbackCopyIntervals(source,file,{enabled:true,sourceType});

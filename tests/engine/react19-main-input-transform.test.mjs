@@ -77,3 +77,23 @@ test('actual Main compiler preparation is source-only and freezes both module fo
  assert.equal(r.receipt.sourceOnly,true);assert.equal(r.receipt.ReactDOMExecuted,false);assert.equal(r.receipt.nativeRuntimeProven,false);assert.equal(r.receipt.ownedHookControlsRequired,true);
  assert.deepEqual(r.policy.mainSite,r.receipt.mainSite);
 });
+
+test('Main-owned finally refuses whole source before a cancelled return can be recorded as successful',()=>{
+ const source='export function Main({todos}) { const visible=todos.filter(todo=>true); try { return visible.map(todo=>({todo})); } finally { throw sentinel; } }';
+ const r=instrumentMainInputBridge(source,'owned-finally-main.jsx',{enabled:true});assert.equal(r.skipped,true);assert.equal(r.code,source);assert.equal(r.mainSite,null);assert(r.unsupported.length);
+});
+test('finally inside a nested function does not change the admitted outer Main grammar',()=>{
+ const nested=source.replace('const { pathname:', 'const ownedNested=()=>{try{return 1;}finally{throw 2;}}; const { pathname:');
+ const r=instrumentMainInputBridge(nested,file,{enabled:true});assert.equal(r.skipped,false);parse(r.code,{sourceType:'module',plugins:['jsx']});assert.match(r.code,/const ownedNested/);
+});
+test('owned JSX integration accepts actual generated absent/completed cleanup through two Main invocations',async()=>{
+ const owned='const Item=function Item(){};export function Main({todos,dispatch}){const visible=todos.filter(todo=>true);return <main>{visible.map(todo=><Item todo={todo} key={todo.id} dispatch={dispatch}/>)}</main>;}';
+ const prepared=await prepareMainInputApplication(owned,'owned-cleanup-main.jsx'),context=vm.createContext({});
+ const boot='globalThis.__sa_callback_copy=('+mainInputFactory()+')('+JSON.stringify({page:'owned-generated-cleanup',enabled:true,policy:prepared.policy})+');globalThis.__sa_array_calls=__sa_callback_copy.arrayRuntime;globalThis.__STATEATOM_REACT19_JSX_INPUT__=__sa_callback_copy.tap;__sa_callback_copy.startWindow("owned");globalThis.ownedJSX={jsx(type,props){const element={type,props};__sa_callback_copy.tap("jsx-element-return",element,props);return element;}};globalThis.ownedModule={exports:{}};';
+ new vm.Script(boot).runInContext(context,{timeout:1000});
+ new vm.Script('(function(require,exports,module){'+prepared.observedCode+'\n})(name=>{if(name==="react/jsx-runtime")return ownedJSX;throw Error("Unknown owned dependency");},ownedModule.exports,ownedModule);').runInContext(context,{timeout:1000});
+ new vm.Script('globalThis.ownedProps={todos:[{id:"a"}],dispatch(){throw Error("no dispatch");}};globalThis.ownedRoots=[ownedModule.exports.Main(ownedProps),ownedModule.exports.Main(ownedProps)];globalThis.ownedSeal=__sa_callback_copy.sealWindow();').runInContext(context,{timeout:1000});
+ const s=JSON.parse(JSON.stringify(context.ownedSeal));assert.equal(s.snapshot.status,'Observed');assert.equal(s.snapshot.mainFrames.length,2);assert.equal(s.snapshot.links.length,2);assert.equal(s.retention.invalid,false);assert.equal(s.retention.active,0);
+ assert.equal(s.snapshot.callbackInterval.links.length,2);assert.notEqual(s.snapshot.links[0].mainFrameId,s.snapshot.links[1].mainFrameId);assert.equal(s.snapshot.links[0].parameterId,s.snapshot.links[1].parameterId);
+ for(const l of s.snapshot.links){assert.equal(l.filterReceiverId,l.parameterId);assert.equal(l.filterResultId,l.mapReceiverId);}assert.equal(s.snapshot.fullPath,false);
+});

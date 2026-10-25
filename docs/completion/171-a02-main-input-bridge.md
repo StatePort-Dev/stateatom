@@ -1,4 +1,4 @@
-# A02.21 — source-only Main parameter/filter/map bridge (qualification exhausted; final review pending)
+# A02.21 — source-only Main parameter/filter/map bridge (bounded attempt closed; qualification remains INCOMPLETE)
 
 Continues612687d/closedA02.20: actual3modes18phases5positivewindows9callback-JSXlinks,
 0C0I0newM review. Existing native evidence stays immutable; fullA02/20of29 unchanged.
@@ -54,3 +54,35 @@ in running.json and3completed in results.json. No bridge criteria changed.
 
 Whole20/29/fullA02 remain unchanged; 7prior minors deferred. No UI/SDK/product/
 otherrepo/browser/certificate/trust/account/publication changes.
+
+## Final review and one correction pass
+
+ONE fresh read-only Astra/high review:0Critical/2Important/0newMinor. Both Important
+findings fixed in ONE author pass, no rereview. Report and exhaustive declined-domain
+rulings: .artifacts/a02/main-input-source-review/2026-10-25/report.md and archivedledger.
+
+I1 harmless abort(undefined/null/completed-owned-token) cleanup now preserves the
+bridge; active incomplete/foreign/previous-generation tokens still refuse. An owned
+JSX-stub integration executes actual generated cleanup through two Main invocations
+and expects2scoped links. It executes no retained Main/Core/JSX or React lifecycle.
+I2 original Main-own finally now refuses whole source before transformation; nested
+function finalizers remain eligible under existing narrow grammar.
+
+Controlled RED54PASS/4FAIL; GREEN58/58 PASS750.403465ms. First RED fixture also
+used a hoisted nested function already unsupported by unchanged oldarrayprofile;
+corrected to nestedarrow BEFORE implementation, preserved both logs.
+Full npm test4365/4365 PASS112266.627097ms, terminal32788exit0,0skips/fails.
+git diff --check PASS. Only four current new-stage source/test files changed after
+qualification; prepared versions remain verified through exact ef7168c Git bytes.
+All original86research/327payload/120A02.20evidence unchanged. The savedreader's
+676physical count is its pre-correction historical stage, not current physicalproof.
+No source qualification, oldreader or native rerun. INCOMPLETE/0wholebridgecredit
+remain unchanged after the source fixes; source tests do not make unvisited cases PASS.
+
+Next ONE dependency: A02.22 separately preregistered corrected-source Main input
+qualification, preserving this exhausted case/raw and the nativeA02.20 result.
+
+Deferred prior minors (unchanged): L02.11picker/resultselector; V03.26historicallabel;
+L02.13historicalreaderlabel; A02.12weakexceptiontest; A02.12historicalstagewording;
+A02.16globalstartupstagelabel; A02.18partialsourcefailurefactsdiscarded.
+Whole20/29 (~69%)/fullA02 open. No publication/productcapability readiness claimed.

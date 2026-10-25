@@ -1,11 +1,13 @@
 # Project status
 
-Active bounded task: [A02.21](completion/171-a02-main-input-bridge.md).
-Source52focused/4359full PASS, source24e40b2/case59d032d. ONE source-only Main
-qualification INCOMPLETE:3contextscomplete/51unvisited,0wholebridgecredit; new
-compositor rejects recipe's initial abort(undefined).676inputhashes unchanged;
-savedreader676physical/45negative, no VM rerun. Finalreview/one I-Cpass pending.
-A02.20native preserved.20/29/fullA02 unchanged;7minors deferred; no browser/cert/trust.
+Completed bounded attempt: [A02.21](completion/171-a02-main-input-bridge.md).
+ONE review0C2I0newM/ONE tested correction pass: normal token cleanup preserved,
+Main-own finally refuses whole source.58focused/4365full PASS. Source qualification
+remains INCOMPLETE:3contextscomplete/51unvisited/0wholebridgecredit, no rerun.
+Savedreader676physical45negative is historical; current672physical+4exactpreparedGit
+inputs.86research/327payload/120A02.20 evidence unchanged.20/29/fullA02 unchanged,
+7minors deferred. Next ONE A02.22 separately preregistered corrected-source Main
+qualification; no browser/cert/trust/SDK/product/otherrepo/publication changes.
 
 Completed bounded acquisition: [A02.20](completion/170-a02-page-enabled-main-native.md).
 ONE finalreview0C0I0newM/no correctionpass; actual3modes18phasescomplete/5positive

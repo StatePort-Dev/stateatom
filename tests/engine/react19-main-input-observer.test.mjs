@@ -88,3 +88,14 @@ test('same-source filter/map metadata still must lie inside the declared Main ra
   const p=policy();change(p);assert.throws(()=>createMainInputObserver({page:'owned',policy:p}));
  }
 });
+
+test('generated absent-token cleanup is harmless before native begin and after a completed Main',()=>{
+ const{o,p}=control();o.arrayRuntime.abort(undefined);o.arrayRuntime.abort(null);program(o,p);o.arrayRuntime.abort(null);assert.equal(view(o).status,'Observed');
+});
+test('completed owned native token cleanup preserves its same-invocation handoff',()=>{
+ const{o,p}=control(),todos=[{}],arg={todos},main=o.mainEnter(arg,todos,p.mainSite.id),f=o.arrayRuntime.begin(nativeFilter,todos,p.filterSite.id),visible=apply(nativeFilter,todos,[()=>true]);
+ o.arrayRuntime.finish(f,visible);o.arrayRuntime.abort(f);const elements=renderMap(o,p,visible);o.mainReturned(main,{elements});o.mainExit(main);o.arrayRuntime.abort(f);assert.equal(view(o).status,'Observed');
+});
+test('foreign and previous-generation native cleanup tokens still refuse the bridge',()=>{
+ for(const stale of [false,true]){const{o,p}=control(),todos=[{}],arg={todos};o.mainEnter(arg,todos,p.mainSite.id);const f=o.arrayRuntime.begin(nativeFilter,todos,p.filterSite.id);o.arrayRuntime.finish(f,[]);if(stale)o.startWindow('next');o.arrayRuntime.abort(stale?f:{});unknown(view(o));assert.equal(o.retention().invalid,true);}
+});
