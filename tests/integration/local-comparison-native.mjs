@@ -52,21 +52,19 @@ export async function driveComparisonRows({s,r,run,save,checkStop=()=>{},afterRo
 }
 // Read only the exact prepared path from Chrome WebUI; internal shape drift is Unknown.
 export function readComparisonExtensionUI(expectedPath){
- let ready=!!document.querySelector('extensions-manager');const items=[];
- function visit(root){
-  for(const node of root.querySelectorAll('*')){
-   if(node.localName==='extensions-item'){
-    const data=node.data;
-    if(!data)ready=false;
-    else if(typeof data.path!=='string'){
-     // ExtensionInfo.path is optional; only unpacked/unknown-shape rows need it.
-     if(!['FROM_STORE','THIRD_PARTY','INSTALLED_BY_DEFAULT','UNKNOWN'].includes(data.location))ready=false;
-    }else if(data.path===expectedPath)items.push({id:data.id,path:data.path,state:data.state,location:data.location});
-   }
-   if(node.shadowRoot)visit(node.shadowRoot);
-  }
+ const manager=document.querySelector('extensions-manager');
+ // Chrome sets didInitPage_ only after populating both backing inventories.
+ // Rendered rows can lag or be filtered; their absence is not inventory absence.
+ if(manager?.didInitPage_!==true||!Array.isArray(manager.extensions_)||!Array.isArray(manager.apps_))return {ready:false,items:[]};
+ let ready=true;const items=[];
+ for(const data of [...manager.extensions_,...manager.apps_]){
+  if(!data)ready=false;
+  else if(typeof data.path!=='string'){
+   // ExtensionInfo.path is optional for unrelated non-unpacked entries.
+   if(!['FROM_STORE','THIRD_PARTY','INSTALLED_BY_DEFAULT','UNKNOWN'].includes(data.location))ready=false;
+  }else if(data.path===expectedPath)items.push({id:data.id,path:data.path,state:data.state,location:data.location});
  }
- visit(document);return {ready,items};
+ return {ready,items};
 }
 export function assertComparisonExtensionAbsent(snapshot,expectedPath){
  assert.equal(snapshot?.ready,true,'Extension UI inventory unavailable before drop');

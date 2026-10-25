@@ -69,33 +69,45 @@ test('duplicate matching paths and replayed baseline are refused even if IDs agr
  assert.doesNotThrow(()=>m.assertComparisonExtensionAbsent({ready:true,items:[]},discoveryPath));
  assert.throws(()=>m.assertComparisonExtensionAbsent({ready:false,items:[]},discoveryPath));
 });
-test('WebUI snapshot walks shadow roots but returns only exact-path identity fields',async()=>{
- const m=await discovery(),{runInNewContext}=await import('node:vm');
+test('WebUI snapshot uses initialized backing inventory and returns only exact-path identity fields',async()=>{
  const row=discoveryRow(),foreign={...row,path:'/private/foreign',secret:'must-not-copy'};
- const item=data=>({localName:'extensions-item',data});
- const doc={querySelector:s=>s==='extensions-manager'?{}:null,querySelectorAll:()=>[
-  {shadowRoot:{querySelectorAll:()=>[item({...row,secret:'must-not-copy'}),item(foreign)]}}
- ]};
- const result=runInNewContext('('+m.readComparisonExtensionUI.toString()+')(expectedPath)',{document:doc,expectedPath:discoveryPath});
- assert.deepEqual(JSON.parse(JSON.stringify(result)),{ready:true,items:[row]});
+ const result=await snapshotWithManager({didInitPage_:true,extensions_:[{...row,secret:'must-not-copy'},foreign],apps_:[]});
+ assert.deepEqual(result,{ready:true,items:[row]});
 });
-test('changed or missing WebUI shape does not report a ready inventory',async()=>{
- const m=await discovery(),{runInNewContext}=await import('node:vm');
- for(const doc of [
-  {querySelector:()=>null,querySelectorAll:()=>[]},
-  {querySelector:()=>({}),querySelectorAll:()=>[{localName:'extensions-item',data:{id:'a'.repeat(32)}}]},
-  {querySelector:()=>({}),querySelectorAll:()=>[{localName:'extensions-item',data:{location:'UNPACKED'}}]}
+test('changed or missing WebUI inventory shape does not report a ready inventory',async()=>{
+ for(const manager of [null,{},
+  {didInitPage_:true,extensions_:[{id:'a'.repeat(32)}],apps_:[]},
+  {didInitPage_:true,extensions_:[{location:'UNPACKED'}],apps_:[]}
  ]){
-  const result=runInNewContext('('+m.readComparisonExtensionUI.toString()+')(expectedPath)',{document:doc,expectedPath:discoveryPath});
-  assert.equal(result.ready,false);assert.equal(result.items.length,0);
+  const result=await snapshotWithManager(manager);assert.equal(result.ready,false);assert.equal(result.items.length,0);
  }
 });
 test('WebUI optional directory path on unrelated store item cannot block exact unpacked discovery',async()=>{
+ const row=discoveryRow(),result=await snapshotWithManager({didInitPage_:true,extensions_:[
+  {id:'c'.repeat(32),location:'FROM_STORE'},row
+ ],apps_:[]});
+ assert.deepEqual(result,{ready:true,items:[row]});
+});
+const snapshotWithManager=async manager=>{
  const m=await discovery(),{runInNewContext}=await import('node:vm');
- const row=discoveryRow(),doc={querySelector:()=>({}),querySelectorAll:()=>[
-  {localName:'extensions-item',data:{id:'c'.repeat(32),location:'FROM_STORE'}},
-  {localName:'extensions-item',data:row}
- ]};
- const result=runInNewContext('('+m.readComparisonExtensionUI.toString()+')(expectedPath)',{document:doc,expectedPath:discoveryPath});
- assert.deepEqual(JSON.parse(JSON.stringify(result)),{ready:true,items:[row]});
+ return JSON.parse(JSON.stringify(runInNewContext('('+m.readComparisonExtensionUI.toString()+')(expectedPath)',{
+  document:{querySelector:()=>manager,querySelectorAll:()=>[]},expectedPath:discoveryPath
+ })));
+};
+test('I1 manager presence without completed inventory cannot authorize baseline absence',async()=>{
+ const m=await discovery();
+ for(const manager of [{},{didInitPage_:false,extensions_:[],apps_:[]},{didInitPage_:true,extensions_:[]}]){
+  const snapshot=await snapshotWithManager(manager);assert.equal(snapshot.ready,false);
+  assert.throws(()=>m.assertComparisonExtensionAbsent(snapshot,discoveryPath));
+ }
+ const empty=await snapshotWithManager({didInitPage_:true,extensions_:[],apps_:[]});
+ assert.equal(empty.ready,true);assert.doesNotThrow(()=>m.assertComparisonExtensionAbsent(empty,discoveryPath));
+});
+test('I1 initialized backing inventory exposes pre-existing host before delayed DOM row renders',async()=>{
+ const m=await discovery(),manager={didInitPage_:false,extensions_:[],apps_:[]};
+ assert.throws(()=>m.assertComparisonExtensionAbsent({ready:false,items:[]},discoveryPath));
+ manager.extensions_.push(discoveryRow());manager.didInitPage_=true;
+ const snapshot=await snapshotWithManager(manager);
+ assert.deepEqual(snapshot.items,[discoveryRow()]);
+ assert.throws(()=>m.assertComparisonExtensionAbsent(snapshot,discoveryPath));
 });

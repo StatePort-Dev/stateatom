@@ -4,7 +4,7 @@
 
 **Goal:** Remove active-worker-only identity dependency from one research driver.
 **Architecture:** Exact-path read-only Chrome WebUI snapshot plus strict node guard;
-existing loaded nonce/JS proof remains the authority before model API calls.
+existing loaded nonce/JS proof remains the authority before the explicit driver availability poll and trusted Run/create/prompt.
 **Tech Stack:** Existing Node/assert/Playwright; no dependencies or API migration.
 **Spec:** ../specs/2026-10-26-l02-worker-independent-discovery-design.md
 
@@ -17,7 +17,7 @@ L02.13 load cause unknown; fullL02 and useful model acceptance remain open.
 - Exact full path, unique valid ID, enabled unpacked row; no worker/name guessing.
 - Missing/changed WebUI fields refuse rather than invent browser compatibility.
 - Baseline replay cannot masquerade as fresh drop; snapshots leak no unrelated data.
-- Loaded nonce/bytes remain required before any model API; no acceptance relaxation.
+- Loaded nonce/bytes remain required before the explicit driver availability poll and trusted Run/create/prompt; no acceptance relaxation.
 - Old frozen inputs fail closed; no silent native retry or upgraded historical proof.
 
 ### Task 1: Bounded worker-independent discovery source

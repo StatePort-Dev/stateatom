@@ -1,10 +1,12 @@
 # Project status
 
-L02.14 sourcePASS, ONEreview pending: [exact-path discovery](completion/188-l02-worker-independent-discovery.md).
-Prepared host identified by strict exact-path WebUI row, not activeworker alone;
-nonce/loaded-JS proof unchanged.14new/184focused/4947fullPASS;327product/32historical
-unchanged. No native/model/install/cert/trust changes or old158cause inference.
-20of29/fullL02 open; nextONE source review/local closeout before native selection.
+L02.14 source complete, ONEreview0C2Ifixed0newM (14old deferred):
+[exact-path discovery](completion/188-l02-worker-independent-discovery.md).
+Initialized complete WebUI inventory required; worker-only identity gate removed.
+Inherited startupavailability precedesproof; explicitpoll/Run/create/prompt remain
+after nonce/loadedJS proof.16new/186focused/4949fullPASS;327product/32historical
+unchanged. No browser/model/native/install/cert/trust or historical158cause claim.
+20of29/fullL02 open; nextONE separately frozen current80 cached comparison case.
 
 V03.29 bounded native PASS + NEWposthoc saved-fact/control verification complete:
 [corrected current-clean workflow](completion/187-v03-corrected-current-clean-editor.md).
