@@ -1,5 +1,14 @@
 # Project status
 
+Completed bounded source diagnosis: [A02.13](completion/163-a02-automatic-jsx-input-boundary.md).
+Actual TodoMVC Main lowers to automatic jsx(Item,{todo,dispatch},todo.id); original
+plus instrumented/off branches statically identified. Native JSX may alias config
+or copy it; classiccreateElement hook misses this path.445current static-input hashes/
+71known source/327payload preserved,0app/vendor/VM/browser/model execution. No JSX
+support/ownership claim; next ONE A02.14 finite fresh-config input/pinned JSX hook
+source controls. Existing3863suite reused same-byte code, five minors deferred;
+fullA02/20of29 unchanged. No cert/install/publication or oldnative retry.
+
 Completed bounded source fix: [A02.12](completion/162-a02-product-native-forwarding.md).
 Three engine forwarders use captured apply/ownarguments;65focused/full3863PASS.
 Actual retainedReact19.2.5/current observer sourceVM clean d3646a2:15owned cases/
