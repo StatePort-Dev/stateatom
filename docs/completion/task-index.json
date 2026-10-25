@@ -1661,22 +1661,16 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "163-a02-automatic-jsx-input-boundary.md",
+      "execution_record": "164-a02-jsx-config-input.md",
       "active_slice": {
-        "id": "A02.13",
-        "record": "163-a02-automatic-jsx-input-boundary.md",
-        "status": "complete-bounded-readonly-source-diagnosis-not-runtime",
-        "base": "d195f1f",
-        "app_executed": false,
-        "vendor_executed": false,
-        "source_vm_contexts": 0,
+        "id": "A02.14",
+        "record": "164-a02-jsx-config-input.md",
+        "status": "preregistered-source-only",
+        "base": "b26cbb2",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false,
-        "static_inputs": 445,
-        "JSX_runtime_supported": false,
-        "raw_sha256": "8c6c8728ddb13ad29ab07cd97c3a09633dd4d9f6b13ae978805a8e8983e84bdc"
+        "full_A02": false
       },
       "completed_slices": [
         {
@@ -2222,6 +2216,22 @@
             ]
           },
           "implementation_plan": "../superpowers/plans/2026-10-25-a02-product-native-forwarding.md"
+        },
+        {
+          "id": "A02.13",
+          "record": "163-a02-automatic-jsx-input-boundary.md",
+          "status": "complete-bounded-readonly-source-diagnosis-not-runtime",
+          "base": "d195f1f",
+          "app_executed": false,
+          "vendor_executed": false,
+          "source_vm_contexts": 0,
+          "native_runs": 0,
+          "model_calls": 0,
+          "product_code_changed": false,
+          "full_A02": false,
+          "static_inputs": 445,
+          "JSX_runtime_supported": false,
+          "raw_sha256": "8c6c8728ddb13ad29ab07cd97c3a09633dd4d9f6b13ae978805a8e8983e84bdc"
         }
       ],
       "remaining_acceptance": [
@@ -2237,9 +2247,9 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "163-a02-automatic-jsx-input-boundary.md",
-        "status": "complete-bounded-readonly-source-diagnosis-not-runtime",
-        "next_bounded_step": "A02.14 finite fresh own-data JSX config-input recorder/private source guard and separately pinned JSX return recipe, preserving alias/spread/accessor/key-copy/storage Unknown and oldcriteria; no browser/native/JSX support until actualqualification."
+        "record": "164-a02-jsx-config-input.md",
+        "status": "preregistered-source-only",
+        "next_bounded_step": "Task1 weak JSXconfig input recorder TDD; source-only freshliteral/nativeprops identity, storageUnknown, no product/browser."
       },
       "stopping_point_history": [
         {
@@ -2318,7 +2328,8 @@
           "status": "bounded-original-invocation-research-complete-strict-native-protocol-incomplete",
           "next_bounded_step": "A02.9 proposed source-only separation of original invocation and current display on retained evidence. No old protocol Pass, no new native/app run, no criterion waiver."
         }
-      ]
+      ],
+      "implementation_plan": "../superpowers/plans/2026-10-25-a02-jsx-config-input.md"
     },
     {
       "id": "A03",
