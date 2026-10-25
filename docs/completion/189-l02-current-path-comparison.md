@@ -1,4 +1,4 @@
-# L02.15 — current80 cached comparison, source complete / native pending
+# L02.15 — bounded native attempt INCOMPLETE / source complete
 
 Resume496947a. New closed current-owned route uses immutable candidate80 handoff
 2026-10-25T20-19-03-321Z, Atom0d128ea36b1a508c471f8b42c5a7fa3ff310b34119da9a4a1774b90b3c589ba1,
@@ -46,3 +46,36 @@ exact-path identity -> loaded nonce/JS -> availability -> trusted Run per34rows.
 Browser plugin not available; use the existing repository Playwright/native E2E
 harness for the exact owned Chrome/profile/real Prompt API route. No personal browser
 tab or profile is used; OS credential/keyring prompts will not be handled.
+
+## ONE actual run, no retry
+Revision45b49d2b477a2c9588f7fb7eb9a2bfb818f6c092, actual Node nativePID3880760.
+2026-10-25T22:31:48.346Z–22:32:13.272Z; CLIexit1, literal
+`INCOMPLETE_COMPARISON_CANDIDATE_NOT_L02`. Raw `.artifacts/l02/c2/83780456/results.json`,
+SHA256 a1d4a2073229e144e3be22c82c801bdaee668271b29373b8bf1d3a7fbea2275b.
+
+Browser attestation observed actual Chrome156.0.8078.47 under owned profile, private
+authenticated X/DBus. Developer mode true, prior evaluation disabled. Native GTK
+source/drag coordinates executed; delivery/load not established. Corrected UI
+snapshot recognized initialized manager inventory before/after, each exact-path
+items empty. It timed out at driver155 waiting for path identity, not worker target.
+No selected ID, evaluationpage/runtimeproof, availability/inference or row acquired;
+0model API calls,0rows,34unvisited. No PNG, console NotCollected (cleanup.console=false),
+not a clean-console claim. No credential supplied, manual OS prompt handling or
+cert/trust changes; cause of missing host remains Unknown.
+
+All474physical frozen inputs remained equal. Other9cleanup predicates true; no
+cleanupErrors; lease releaseConfirmed. Known process identities retired and saved
+reader in hostPID namespace4026531836 found all4Absent: browser3880870/start23192055,
+launcher3880868/start23192052, desktop3880864/start23192045, dragSource3881268/start23192242.
+This concerns those known owned identities, not global OS/background/heap health.
+
+Original prewritten saved reader exit0: `SAVED_INCOMPLETE_NOT_QUALIFIED`,474bindings,
+rows0/unvisited34/qualityfalse. `saved-verification.json` explicitly says
+collectionQualified:false; no positive full collection predicate executed on absent
+data. Raw/case/reader/contract unchanged; no fallback-reader retuning, native rerun,
+quality assessment or fullL02 approval. Package80/UI2/product327/raw29 remain unchanged.
+
+This current install/acquisition campaign is closed; do not create another native
+retrycase here. ONE final bounded-item review remains, then nextONEdependency-ready
+A02 source question from retained exact-source/native handoff gaps, not weakref
+diagnostic repetition or another model/certificate campaign.20of29/fullL02 unchanged.

@@ -1,10 +1,12 @@
 # Project status
 
-L02.15 source complete/native pending: [current80 cached comparison](completion/189-l02-current-path-comparison.md).
-Closed80pins/newcase route; current-only saved discovery facts add to unchanged
-collection predicates.228focused/4976fullPASS;33before/327product/12L02raw/17V03raw/
-23protected stable. No browser/model/quality claim. Nextprepare/fixcase thenONEnew
-cached native maximum; no old12/13retry/download/cert/trust.20of29/fullL02 unchanged.
+L02.15 bounded native INCOMPLETE/source complete, ONEreview pending:
+[current80 cached comparison](completion/189-l02-current-path-comparison.md).
+Actual Chrome156 initialized UI recognized, expectedpath never appeared afterdrag;
+0API/0rows/34unvisited, no PNG/consoleNotCollected.474frozenbindings stable;
+9othercleanup/lease/all4knownPIDAbsent. Prewrittenreader preservationONLY, no quality.
+228focused/4976fullsourcePASS;327product/oldraw stable. Campaignclosed/no retry.
+20of29/fullL02 open; nextONEfinal boundedreview then A02 distinct source handoff question.
 
 L02.14 source complete, ONEreview0C2Ifixed0newM (14old deferred):
 [exact-path discovery](completion/188-l02-worker-independent-discovery.md).
