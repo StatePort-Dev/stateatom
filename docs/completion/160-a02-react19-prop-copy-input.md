@@ -1,6 +1,6 @@
-# A02.10 — one native prop-copy input occurrence (source planning)
+# A02.10 — one native prop-copy input occurrence (source recorder32; recipe pending)
 
-Starts f48be1a. V03.27 source diagnosis preserves clean current fields/dirty local
+Historical preregistration at8d1c9a0 starts f48be1a. V03.27 source diagnosis preserves clean current fields/dirty local
 text/owned history and old26failure; no product or guard change. A02.4 ancestor and
 A02.6 wrapperless array observations remain scoped; field ownership/prop transfer/
 selected producer Unknown. No new argv/browser/installation/cert work in this item.
@@ -13,3 +13,22 @@ input without re-reading app getters/props or adding callback wrapper frames.
 Storage/transfer/field ownership/state/selected producer remain Unknown; a matching
 value or prototype setter cannot supply causal ownership. No product provider switch,
 new SDK, browser/model/native/publication evidence or whole20of29 credit from this packet.
+
+Task1 source recorder: new isolated module, no existing source/product change. WeakMap
+identity keys only; no app properties/Proxy traps/scalars/strong references enter
+records. Exact creation/copy/return/sealed-window controls, pending/duplicate/foreign/
+Stop/capacity refusal, full stronger-lineage Unknown boundaries. Identity history is
+not native-origin, storage, current membership or GC evidence. Output snapshots are
+immutable; telemetry uses captured intrinsics and safe own metadata descriptors.
+
+Missing-module RED (one file/no executed predicates) then31PASS. Additional late
+Object.prototype descriptor-getter control RED31PASS1FAIL: ordinary descriptor
+construction invoked an inherited accessor and could make refusal throw. Null-proto
+metadata descriptors fix that path, final32PASS/0fail/0cancel/0skip28.881ms. No fixture
+waiver; undefined primitive fixture preserves explicit undefined instead of a helper
+parameter default. Syntax/diff PASS. Existing47source/current327/15V03raw/12L02records/
+4oldcase-marker files and exact retained vendor source/package hashes unchanged.
+No native/VM vendor execution/model/product behavior yet. Fullsuite deferred until
+Task2 recipe stable; old same-byte3695suite remains historical proof of old code.
+Next Task2 new separately pinned expression recipe and retained-source qualification,
+no browser/installation/argv/certificate work. Whole20of29 and A02 remain open.

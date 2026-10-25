@@ -1,9 +1,9 @@
 # Project status
 
 Active bounded source work: [A02.10](completion/160-a02-react19-prop-copy-input.md),
-fixed classicReact19 todo copy-input identity recorder/recipe. Existing element/props
+fixed classicReact19 todo copy-input recorder32sourcePASS; recipe next. Existing element/props
 hook reused; no app reflection/getter reevaluation/callback wrapper or stronger
-lineage claim. Planning only; no browser/native/installation/cert/model/product change.
+lineage claim. New isolated source only; no browser/native/installation/cert/model/product change.
 Same current327/oldsource/raw; whole20/29 unchanged.
 
 Completed bounded diagnosis: [V03.27](completion/159-v03-clean-editor-contract.md).

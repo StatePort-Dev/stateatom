@@ -29,8 +29,8 @@
 **Files:** new experiments/react19-reducer/prop-copy-observer.mjs and tests/engine/react19-prop-copy-observer.test.mjs; completion160/current pointers.
 **Interfaces:** createPropCopyObserver/tap/snapshot/lookup/window/seal/Stop/retention; schema/Unknown boundaries consumed unchanged by recipe/qualification.
 
-- [ ] task-start/readbrief/BASE; preregister current relevant source/product/raw. TDD exact order/identity/equal values/unknown/duplicate/foreign/primitive/no getters/Proxy/scalar privacy/weak retention/64cap/seal/pending/Stop/window/lateintrinsic controls. `node --test --test-isolation=none tests/engine/react19-prop-copy-observer.test.mjs` ->RED thenPASS.
-- [ ] Minimal recorder/source-only verification/preservation/syntax/diff/localcommit/task-done; no vendor transform execution/browser/model. Fullsuite deferred untilTask2stable.
+- [x] task-start/readbrief/BASE; preregister current relevant source/product/raw. TDD exact order/identity/equal values/unknown/duplicate/foreign/primitive/no getters/Proxy/scalar privacy/weak retention/64cap/seal/pending/Stop/window/lateintrinsic controls. `node --test --test-isolation=none tests/engine/react19-prop-copy-observer.test.mjs` ->RED thenPASS.
+- [x] Minimal recorder/source-only verification/preservation/syntax/diff/localcommit/task-done; no vendor transform execution/browser/model. Fullsuite deferred untilTask2stable.
 
 ### Task 2: Pinned native-expression recipe and retained source qualification
 
