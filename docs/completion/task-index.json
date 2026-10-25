@@ -6354,7 +6354,7 @@
       "active_slice": {
         "id": "V03.28",
         "title": "Current clean-editor external ABA contract",
-        "status": "source-complete-preparation-pending-native0",
+        "status": "case585-readers-frozen-native0",
         "record": "186-v03-current-clean-editor.md",
         "design": "../superpowers/specs/2026-10-26-v03-current-clean-editor-design.md",
         "plan": "../superpowers/plans/2026-10-26-v03-current-clean-editor.md",
@@ -6365,7 +6365,13 @@
         "native_runs": 0,
         "maximum_native_runs": 1,
         "whole_V03_complete": false,
-        "source_checks": 4914
+        "source_checks": 4914,
+        "registered_inputs": 585,
+        "case": "../testing/current-clean-editor-case80.json",
+        "reader_controls_source_only": {
+          "full_negative": 26,
+          "preservation_structural": 14
+        }
       },
       "completed_slices": [
         {
@@ -7391,7 +7397,7 @@
       ],
       "current_checkpoint": {
         "record": "186-v03-current-clean-editor.md",
-        "status": "source-complete-preparation-pending-native0",
+        "status": "case585-readers-frozen-native0",
         "next_bounded_step": "Finish new driver/fullsource checks, then freeze distinct80case and both readers before maximumONEowned HTTP native qualification; no oldcase retry/policy/cert changes."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-25-v03-converged-restore-availability.md",
@@ -7693,7 +7699,7 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.28-source-complete-native0",
+    "current_increment": "V03.28-case585-readers-frozen-native0",
     "next_item": "Finish new driver/fullsource checks, then freeze distinct80case and both readers before maximumONEowned HTTP native qualification; no oldcase retry/policy/cert changes.",
     "new_full_task_acceptances": [
       "F01",
@@ -7721,7 +7727,7 @@
     "active_item": {
       "id": "V03",
       "record": "186-v03-current-clean-editor.md",
-      "status": "source-complete-preparation-pending-native0"
+      "status": "case585-readers-frozen-native0"
     },
     "completed_increments": [
       {
@@ -10416,7 +10422,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Current clean-resource field/external-epoch qualification source191guards/31driverPASS; sixNEWresearch files/327product80 stable; 4914fullPASS/native0; old26INCOMPLETE/guideFAIL/full20of29 unchanged.",
+    "current_activity_note": "Current clean-resource field/external-epoch qualification source191guards/31driverPASS; sixNEWresearch files/327product80 stable; 4914fullPASS/585preflight/readersfrozen/native0; old26INCOMPLETE/guideFAIL/full20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "add75a73e8f5d95899a98a525fc516481e93addf",
     "current_record_date": "2026-10-26",

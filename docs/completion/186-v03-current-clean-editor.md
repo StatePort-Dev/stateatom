@@ -46,3 +46,18 @@ completeV03. Original overall guide and failedcases remain historical unchanged.
 Task2 current complete-source state: sixNEWresearch files, no oldsource/product
 change;1794protected comparisons/327payload/15retainedraw unchanged. Syntax/diff
 PASS. Prepare/preflight/newcase/readers and maximumONEactualnative remain due.
+
+
+## Preregistered current native case, not yet run
+Task2 source263e372 full4914PASS, taskdone222focusedPASS3263.661602ms.
+New case current-clean-editor-case80.json prepared at owned output
+.artifacts/v03/current-clean-editor/2026-10-25T20-38-14-394Z. Initialpreflight579,
+then585physical inputs after adding six prewritten reader/contract/owned-control
+files; original65/product327/15retainedraw, browserStarted:false. No native marker.
+Case SHA df537dd6fd7526efb635d808a5a1e5f6ce10aedfcd9fb9dc4cd04b2d36735f28.
+Both independent stdlib full/refusal and nonqualifying preservation readers written
+BEFORE run; source-owned positive+26fullnegative/14preservation structural controls
+PASS, explicitly not native evidence. Frozen reader contract included in case;
+postcasecommit launch record binds exact revision/case/contract before invocation,
+no independent timestamp claim. Inputs585preflight PASS; no TLS/certificates or
+product change. MaximumONEfuture native invocation remains; docs prove no new UX.
