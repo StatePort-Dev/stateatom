@@ -1,5 +1,11 @@
 # Project status
 
+Active bounded task: [A02.23](completion/173-a02-main-input-native.md).
+Newfixed nativeMaininputhandoff,95research/327payload/priorraw registeredbeforecode;
+fourNEWfiles/0oldsource deltas. No newnative runyet. Sameownedlaunch/localhost/
+Page.enable/source/URL/cleanup guards; no userprofile/cert/trust/SDK/product/publish.
+20/29/fullA02 unchanged;8deferredminors.
+
 Completed bounded source task: [A02.22](completion/172-a02-cleanup-main-source.md).
 ONE review0C0I1newM/no correctionpass; actual54VMcontexts/18cases/7positive8links/
 11Unknownrefusals,706inputshashesunchanged/saved77negative.75focused/4382fullPASS.
