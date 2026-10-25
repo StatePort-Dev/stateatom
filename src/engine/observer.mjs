@@ -243,7 +243,7 @@ export function createObserver(w,{sourceConsumption=false,fetchInitiators=false,
       const data=(o,k)=>o&&(typeof o==='object'||typeof o==='function')?ownDataValue(ownDescriptor(o,k)):undefined,versions=data(contract,'versions');
       react19Admitted=data(contract,'status')==='Observed'&&data(contract,'adapter')==='react19-state-ancestors/1'&&data(versions,'react')==='19.2.5'&&data(versions,'react-dom')==='19.2.5';
     },
-    react19NativeTap(...refs){if(active&&!stale&&react19Admitted)react19Collector.tap(...refs);},get actionTrace(){return actionTrace;},actionTraceInfo,actionTraceRead,
+    react19NativeTap(){if(active&&!stale&&react19Admitted)nativeApply(react19Collector.tap,react19Collector,arguments);},get actionTrace(){return actionTrace;},actionTraceInfo,actionTraceRead,
     registerActionSites(batch){
       if(!active||!actionTrace||actionUnavailable)return;
       try{if(!actionArray(batch)||batch.length>256)throw Error();let added=false;

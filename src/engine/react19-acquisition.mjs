@@ -3,7 +3,7 @@
 // Native ancestor observations only; no fixture oracle or selected-property origin.
 export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
  if(typeof page!=='string'||!page||page.length>160)throw Error('React19 acquisition requires a bounded page identity');
- const describe=Object.getOwnPropertyDescriptor,same=Object.is,isArray=Array.isArray;
+ const describe=Object.getOwnPropertyDescriptor,same=Object.is,isArray=Array.isArray,invoke=Reflect.apply;
  const object=v=>v!==null&&(typeof v==='object'||typeof v==='function');
  const own=(v,k)=>{if(!object(v))return;const d=describe(v,k);return d&&Object.hasOwn(d,'value')?d.value:undefined;};
  const fibers=new WeakSet(),roots=new WeakSet(),ids=new WeakMap(),queues=new WeakMap(),hooks=new WeakMap(),updates=new WeakMap();
@@ -55,7 +55,7 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
    current={root:ref(a),finished:ref(b),commitId:page+':react19:commit:'+(++commitSerial)};
   }
  }
- function tap(...args){try{receive(...args);}catch{unavailable='Native metadata acquisition unavailable';current=null;}}
+ function tap(){try{invoke(receive,undefined,arguments);}catch{unavailable='Native metadata acquisition unavailable';current=null;}}
  function read(node){
   if(stopped||capped||!supported||unavailable)return unknown(stopped?'Observer stopped':capped?'Observation capacity refused':unavailable||'WeakRef unavailable');
   if(multipleRoots)return unknown('Multiple committed native roots outside this profile');

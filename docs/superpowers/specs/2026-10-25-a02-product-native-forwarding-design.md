@@ -13,7 +13,8 @@ modules. Existing source/evidence remain historical; do not relabel them as corr
 
 Chosen fix: captured native Reflect.apply with each function's own arguments object
 (arraylike, never iterated). Vendor helper retains runtime receiver and exact dynamic
-argument count/order; observer forwards to its private collector with its existing
+argument count/order (including the existing minimum kind/value pair for0or1
+arguments); observer forwards to its private collector with its existing
 captured nativeApply; collector captures apply at initialization and forwards its own
 arguments to receive. Preserve function.length where possible (vendor2, API0,tap0),
 return-original behavior, runtime admission/freshness/Stop, caught metadata failure,

@@ -19,7 +19,7 @@ const expectedDOM={fiber:1,root:1,'state-result:mountReducer':1,'state-result:up
 export const react19Adapter='react19-state-ancestors/1';
 const helper=`const __sa19Own=Object.getOwnPropertyDescriptor,__sa19Apply=Reflect.apply;
 function __sa19Data(object,key){const d=object&&__sa19Own(object,key);return d&&__sa19Own(d,'value')?.value;}
-function __sa19Tap(kind,value,...refs){try{const runtime=__sa19Data(globalThis,'__STATEATOM__'),tap=__sa19Data(runtime,'react19NativeTap');if(typeof tap==='function')__sa19Apply(tap,runtime,[kind,value,...refs]);}catch{}return value;}`;
+function __sa19Tap(kind,value){try{const runtime=__sa19Data(globalThis,'__STATEATOM__'),tap=__sa19Data(runtime,'react19NativeTap');if(typeof tap==='function')__sa19Apply(tap,runtime,arguments.length<2?[kind,value]:arguments);}catch{}return value;}`;
 export function transformReact19Grammar(source,file){
  if(source.includes('__sa19'))throw Error('React19 profile helper collision');
  const dom=file==='react-dom/cjs/react-dom-client.development.js';
