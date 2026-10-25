@@ -29,7 +29,7 @@
 **Files:** native driver/qualifier/two tests; docs/testing/callback-jsx-main-page-enabled-case.json aftersourcecommit; completion170/status/index.
 **Interfaces:** schema5 fixedprofile/current86registration; inherited receipt/eightURL-sixphase/source/context/cleanup qualification, unchanged actual observer/recipes/publicinit.
 
-- [ ] task-start/readbrief/BASE, registration beforecode; TDD newprofile+inherited receipt/URL refusals, legacycontrols. Expected unknownprofile/bypassedgates RED -> minimal GREEN; syntax/diff/full npm test PASS+sourcecommit.
+- [x] task-start/readbrief/BASE, registration beforecode; TDD newprofile+inherited receipt/URL refusals, legacycontrols. Expected unknownprofile/bypassedgates RED -> minimal GREEN; syntax/diff/full npm test PASS+sourcecommit.
 - [ ] Resource-free prepare/preflight/casecommit before ONE native. Literal measured status only; saved-byte reader/corruptions/rawSHA/counters/source/reference scopes/input revisions/cleanup, no browser/app/model reexecution. Results commit/task-done targeted source checks PASS.
 
 ## Final Closeout

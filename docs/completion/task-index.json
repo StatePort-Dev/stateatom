@@ -2426,8 +2426,8 @@
       },
       "current_checkpoint": {
         "record": "170-a02-page-enabled-main-native.md",
-        "status": "registered-before-source",
-        "next_bounded_step": "Closed Page-enabled Main case, source/frozen gates beforemax1native; oldcases exhausted, no intervalproofyet."
+        "status": "source-qualified-pending-frozen-case",
+        "next_bounded_step": "Prepare/preflight fixed schema5 and commitcase before ONE original/off/on18phase acquisition; same receipt/URL/source gates, no nativeproofyet."
       },
       "stopping_point_history": [
         {
@@ -2511,12 +2511,15 @@
       "active_slice": {
         "id": "A02.20",
         "record": "170-a02-page-enabled-main-native.md",
-        "status": "registered-before-source",
+        "status": "source-qualified-pending-frozen-case",
         "base": "6f01c0fee44f57aa0b14d96a509c06a83c1d3814",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_checks": 263,
+        "full_source_checks": 4307,
+        "undeclared_inputs_unchanged": 490
       }
     },
     {

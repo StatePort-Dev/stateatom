@@ -231,3 +231,15 @@ for(const[label,change]of [
 ])test('schema4 refuses '+label,()=>{
  const{r,s}=literalWholeRun();change(r);assert.equal(classifyCallbackJSXNativeRun(r,s).status,'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');
 });
+
+function pageEnabledWholeRun(){const c=fragmentWholeRun();c.s.schema='stateatom.callback-jsx-native-case/5';return c;}
+test('schema5 complete synthetic saved structure retains inherited bounded scope',()=>{
+ const{r,s}=pageEnabledWholeRun();assert.equal(classifyCallbackJSXNativeRun(r,s).status,'PASS_BOUNDED_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');
+});
+for(const[label,change]of [
+ ['missing original receipt',r=>delete r.startup.requestedAutomation],
+ ['missing URL facts',r=>delete r.runs[1].documentURLReadings],
+ ['contradictory phase URL',r=>r.runs[2].phases[4].url=r.origin+'/?mode=on#/completed']
+])test('schema5 refuses '+label,()=>{
+ const{r,s}=pageEnabledWholeRun();change(r);assert.equal(classifyCallbackJSXNativeRun(r,s).status,'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');
+});
