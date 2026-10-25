@@ -1,0 +1,44 @@
+// SPDX-License-Identifier: Apache-2.0
+// OWNED serialized/declared source association controls only.
+import test from 'node:test';import assert from 'node:assert/strict';import path from 'node:path';
+import {createNativeStateSourcePathObserver} from '../../experiments/react19-reducer/native-state-source-path-observer.mjs';
+import {guardNativeStateSourceWindow,guardNativeStateSourceOffWindow,classifyNativeStateSourceRun,projectNativeStateSourceCase,projectNativeStateSourceResult} from '../../experiments/react19-reducer/native-state-source-path-qualification.mjs';
+const U='Unknown/Unsupported',site=(id,kind,file='owned-Main.jsx',digest='a')=>({id:id.repeat(64),file,sourceDigest:digest.repeat(64),kind,line:1,column:1,endLine:20,endColumn:1});
+function ownedWindow({enabled=true,stopped=false,n=2,label='equal',freshApp=true}={}){
+ const page='owned-native-app-main',policy={page,mainSite:{...site('1','main-input'),functionName:'Main',parameter:'todos'},filterSite:site('2','filter'),mapSite:site('3','map'),jsxSites:[{id:'4'.repeat(64),file:'owned-lowered.js',sourceDigest:'b'.repeat(64),line:1,column:1,endLine:1,endColumn:40}],app:{appSite:{...site('5','app-hook-function','owned-App.jsx','c'),functionName:'App'},bindingSite:{...site('6','app-hook-binding','owned-App.jsx','c'),callName:'useReducer',todosBinding:'todos',dispatchBinding:'dispatch'}},configSite:{...site('7','app-main-config','owned-App-lowered.js','d'),appSiteId:'5'.repeat(64),bindingSiteId:'6'.repeat(64),field:'todos',component:'Main'}};
+ const ns=(id,kind,functionName)=>({...site(id,kind,'owned-native.js','e'),functionName});policy.native={file:'owned-native.js',sourceDigest:'e'.repeat(64),version:'19.2.5',nativeVersionAdmitted:false,returnSites:[ns('8','native-state-return','mountReducer'),ns('9','native-state-return','updateReducerImpl'),ns('a','native-state-return','rerenderReducer')],renderSites:[ns('b','native-render-component','renderWithHooks'),ns('c','native-render-component','renderWithHooksAgain')]};const o=createNativeStateSourcePathObserver({page,enabled,policy:{app:policy.app,main:policy,configSite:policy.configSite,native:policy.native}});o.sealWindow();
+ const todos=Array.from({length:n},()=>({owned:true})),dispatch=()=>{},tuple=[todos,dispatch],arg={todos,dispatch},appElement={props:arg},hook=()=>tuple;
+ function app(){const fiber={};o.nativeTap('render-component',fiber,app,policy.native.renderSites[0].id);const a=o.appHook,t=a.appEnter(policy.app.appSite.id,app);o.nativeTap('state-result',tuple,{},fiber,policy.native.returnSites[0].id,todos,dispatch);a.result(t,tuple,hook,policy.app.bindingSite.id);a.bound(t,tuple,todos,dispatch,policy.app.bindingSite.id);a.config(t,arg,policy.configSite.id);if(enabled)o.tap('jsx-element-return',appElement,arg);a.appReturned(t,appElement);a.appExit(t);}
+ if(!freshApp)app();o.startWindow(label);if(freshApp)app();const m=o.mainInput,frame=m.mainEnter(arg,todos,policy.mainSite.id);m.arrayRuntime.abort(undefined);const f=m.arrayRuntime.begin(Array.prototype.filter,todos,policy.filterSite.id),visible=todos.filter(()=>true);m.arrayRuntime.finish(f,visible);m.arrayRuntime.abort(null);const map=m.arrayRuntime.begin(Array.prototype.map,visible,policy.mapSite.id),elements=visible.map((item,index,array)=>{const h=m.enter(map,policy.mapSite.id,item,index,array),c={todo:item},e={props:c};if(enabled){o.tap('config-input',item,c,policy.jsxSites[0]);o.tap('jsx-element-return',e,c);}m.returned(h,e);m.exit(h);return e;});m.arrayRuntime.finish(map,elements);m.arrayRuntime.abort(null);const root={elements};m.mainReturned(frame,root);m.mainExit(frame);if(stopped)o.stop();return{capture:{...JSON.parse(JSON.stringify(o.sealWindow())),nativeTapPresent:enabled},policy,phase:{id:label,rowCount:n},keep:[todos,tuple,arg,appElement,visible,elements,root]};
+}
+for(const label of ['equal','same','changed','toggle'])test('joint native/source OWNED positive: '+label,()=>{const c=ownedWindow({label});assert.equal(guardNativeStateSourceWindow(c.capture,c.phase,c.policy),c.capture);assert.equal(c.capture.stateSource.snapshot.links.length,2);});
+test('filtered joint scope stays audit-only',()=>{const c=ownedWindow({label:'filtered',n:1,freshApp:false});assert.equal(guardNativeStateSourceWindow(c.capture,c.phase,c.policy),c.capture);assert.equal(c.capture.stateSource.snapshot.links.length,0);});
+test('Stop joint records cleared/unsealed',()=>{const c=ownedWindow({label:'stopped',stopped:true});assert.equal(guardNativeStateSourceWindow(c.capture,c.phase,c.policy),c.capture);});
+for(const stopped of [false,true])test('Off every joint record/event zero: '+stopped,()=>{const c=ownedWindow({enabled:false,stopped,label:stopped?'stopped':'equal'});assert.equal(guardNativeStateSourceOffWindow(c.capture,c.phase,c.policy),c.capture);});
+for(const[name,change]of [
+ ['missing stateSource',c=>delete c.capture.stateSource],
+ ['no joint proof',c=>c.capture.stateSource.snapshot.status=U],
+ ['wrong nested native frame',c=>c.capture.stateSource.snapshot.links[0].nativeReturnedStateReference.frameId='foreign'],
+ ['wrong nested source occurrence',c=>c.capture.stateSource.snapshot.links[0].appMainSourceOccurrence.sourceElementId='foreign'],
+ ['split App identity',c=>c.capture.stateSource.snapshot.links[1].appAssociationId='foreign'],
+ ['split Main identity',c=>c.capture.stateSource.snapshot.links[1].mainAssociationId='foreign'],
+ ['duplicate callback identity',c=>c.capture.stateSource.snapshot.links[1].callbackAssociationId=c.capture.stateSource.snapshot.links[0].callbackAssociationId],
+ ['extra callback',c=>c.capture.stateSource.retention.callbacks=3],
+ ['missing link',c=>c.capture.stateSource.snapshot.links.pop()],
+ ['stale window',c=>c.capture.stateSource.retention.window++],
+ ['unsealed',c=>c.capture.stateSource.sealed=false],
+ ['invalid',c=>c.capture.stateSource.retention.invalid=true],
+ ['active',c=>c.capture.stateSource.retention.active=1],
+ ['state origin upgrade',c=>c.capture.stateSource.snapshot.nativeStateOrigin='Observed'],
+ ['ownership upgrade',c=>c.capture.stateSource.snapshot.fieldOwnership='Observed'],
+ ['DOM upgrade',c=>c.capture.stateSource.snapshot.selectedPropertyOrigin='Observed'],
+ ['fullpath',c=>c.capture.stateSource.snapshot.fullPath=true],
+ ['native attestation',c=>c.capture.stateSource.snapshot.nativeOrigin='Attested'],
+ ['no source scope',c=>c.capture.stateSource.snapshot.sourceOnly=false],
+ ['child joint upgrade',c=>c.capture.stateSource.snapshot.links[0].nativeStateOrigin='Observed'],
+ ['lost native subproof',c=>c.capture.nativeReturn.snapshot.status=U],
+ ['lost App/Main subproof',c=>c.capture.snapshot.status=U]
+])test('joint native/source guard refuses '+name,()=>{const c=ownedWindow();change(c);assert.throws(()=>guardNativeStateSourceWindow(c.capture,c.phase,c.policy));});
+test('Off rejects joint-only diagnostic retention',()=>{const c=ownedWindow({enabled:false});c.capture.stateSource.retention.events=1;assert.throws(()=>guardNativeStateSourceOffWindow(c.capture,c.phase,c.policy));});
+test('typed projection preserves native/source facts and actual new case identity',()=>{const inputs={},runs=[],s={schema:'stateatom.native-state-source-path-case/1',inputHashes:inputs},r={schema:'stateatom.native-state-source-path-result/1',inputsBefore:inputs,runs};assert.equal(projectNativeStateSourceCase(s).schema,'stateatom.native-state-return-native-case/1');const p=projectNativeStateSourceResult(r);assert.equal(p.schema,'stateatom.native-state-return-native-result/1');assert.equal(p.inputsBefore,inputs);assert.equal(p.runs,runs);assert.throws(()=>projectNativeStateSourceCase({schema:'foreign'}));});
+for(const field of ['actualBrowserStarted','appExecuted','ReactDOMExecuted','originalMainExecuted','inputsUnchanged'])test('incomplete result cannot acquire joined native/source claim: '+field,()=>{const r={schema:'stateatom.native-state-source-path-result/1',execution:'ACTUAL_OWNED_PUBLIC_DRIVER',actualBrowserStarted:true,browserStarted:true,appExecuted:true,ReactDOMExecuted:true,originalMainExecuted:true,inputsUnchanged:true,runs:[]};r[field]=false;const q=classifyNativeStateSourceRun(r,{schema:'stateatom.native-state-source-path-case/1',sitePolicy:{},inputHashes:{},protocol:{phases:[]}});assert.equal(q.status,'INCOMPLETE_NATIVE_STATE_SOURCE_PATH_NOT_FULL_A02');assert(q.failures.length);assert.equal(q.acceptedStateSourceLinks,0);assert.equal(q.fullA02,false);});

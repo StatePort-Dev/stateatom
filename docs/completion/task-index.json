@@ -2461,7 +2461,7 @@
       },
       "current_checkpoint": {
         "record": "181-a02-native-state-source-path.md",
-        "status": "planning-private-native-state-source-path-association",
+        "status": "source-checks-complete-native-association-case-pending",
         "next_bounded_step": "ONE private token/config/element reference association + native qualification; selectedDOM/ownership originsUnknown."
       },
       "stopping_point_history": [
@@ -2596,13 +2596,17 @@
       "active_slice": {
         "id": "A02.31",
         "record": "181-a02-native-state-source-path.md",
-        "status": "planning",
+        "status": "source-checks-complete",
         "base": "22e1f320c5afefcf58fdc6744163a82fa88c9f37",
         "native_runs": 0,
         "maximum_native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_checks": 68,
+        "full_checks": 4769,
+        "observed_compiler_inputs": 4,
+        "observed_bundle_unchanged_from_A0230": true
       }
     },
     {

@@ -23,8 +23,8 @@ after source/full checks/casecommit. No SDK/product/UI/otherrepo/publish/cert/tr
 
 ### Task 1: Private association observer and native qualification source
 **NEWfiles:** experiments/react19-reducer/native-state-source-path-observer.mjs; native-state-source-path-run.mjs; native-state-source-path-qualification.mjs; tests/engine/react19-native-state-source-path-observer.test.mjs; react19-native-state-source-path-driver.test.mjs; react19-native-state-source-path-qualification.test.mjs.
-- [ ] task-start/preregister129/327/allraw. RED exact-token/twoApp/reversed/copy/refusal/lifecycle/weak/Proxy/cap controls; implement6newfiles.
-- [ ] Focused/syntax/diff/4inputcompile/protected/fullnpmPASS/sourcecommit/task-done; no actual retained invocation.
+- [x] task-start/preregister129/327/allraw. RED exact-token/twoApp/reversed/copy/refusal/lifecycle/weak/Proxy/cap controls; implement6newfiles.
+- [x] Focused/syntax/diff/4inputcompile/protected/fullnpmPASS/sourcecommit/task-done; no actual retained invocation.
 
 ### Task 2: ONE actual native association acquisition
 **Files:** docs/testing/native-state-source-path-case.json; record181/status/index; own prewritten saved-reader/contract/artifacts.
