@@ -1,12 +1,13 @@
 # Project status
 
-V03.29 actual native six-step PASS; independent control-generator refusal/review pending:
+V03.29 bounded native PASS + NEWposthoc saved-fact/control verification complete:
 [corrected current-clean workflow](completion/187-v03-corrected-current-clean-editor.md).
-Own10/20 externalABA+Read/Close/1100+390QA/console complete,587inputs stable,
-all9cleanup/2knownPIDAbsent. Positive independent predicates passed; fullreader
-failed no-op negative(field10 alreadypending10), so preregistered fullqualification
-false. Frozen bytes/result retained, no browser rerun.4933source/241focusedPASS;
-327product80/oldraw unchanged.20of29/fullV03/originalguideFAIL unchanged.
+Sixnative steps/587stable/own10+20externalABA+Read/Close/1100+390/cleanup. ONEreview
+0C2Ifixed0newM(14olddeferred);offline4tests/31changedcontrolsPASS, originalpositive
+core imported unchanged. Frozenfullreaderexit1/noop refusal/preregisteredqualification
+false retained; no native rerun or broad readiness.4933source/241focused retained.
+327product80/oldraw unchanged;20of29/fullV03/guideFAIL unchanged. NextONEmandatoryL02
+source blocker selection from existing evidence, no oldAI install/cert campaign.
 
 V03.28 bounded attempt/source correction complete, native remains INCOMPLETE:
 [current clean-editor contract](completion/186-v03-current-clean-editor.md).

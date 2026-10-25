@@ -89,3 +89,42 @@ reader/case/raw/firstfailure, and keep the positive predicate core byte-identica
 No threshold/criterion weakening or preregistered-reader PASS can be manufactured.
 The actual native workflow completed; overall wholeV03/originalguide and20of29
 remain unchanged. No more native case needed for this control-generator defect.
+
+
+## ONE review; one NEW offline/post-hoc control correction
+Fresh readonly /root/v0329_whole_review Astra/high605d36f..9fa5304:0Critical/
+2Important/0newMinor. I1: six firstpending-sample mutations can be noops. I2: old
+rollback copied pendingO five times, so no actual E→O transition/finalready streak.
+Both acceptedImportant; fix ONLY in NEW clearly posthoc artifact, not frozen files.
+
+Four complete offline tests: RED1PASS3FAIL→GREEN4PASS(0.296s, final0.329s).
+Newfactory validates positive baseline, selects first qualified externalsample
+(index2actual), asserts all31corruptions really change data before requiring rejection.
+Newrollback control is locally valid/time-consistent E→O→E→E→E. Original unchanged
+positive core rejects it; a TESTONLY in-memory diagnostic disabling exactly its one
+epoch predicate accepts it, proving sensitivity. This diagnostic never validates
+actual evidence, runs application code, or weakens the real predicates.
+
+Actual savedrecord/587physical inputs/327payload/16oldraw/4PNGs validated again offline
+using the EXACT original positive functions imported from the hash-pinned frozen
+module, with source/code identity unchanged.31changed/rejected controls complete.
+NEW [posthoc report](../../.artifacts/v03/corrected-current-clean-editor-posthoc-verification/2026-10-26/report.json)
+statusPASS_POSTHOC_SAVED_FACTS_AND_REPAIRED_CONTROLS explicitly retains
+preregisteredFullReaderQualification:false/originalfullreaderexit1. Positive predicate
+SHA1883785530158251e3c7908d6db61350405a455c1223127645cbdda8b5223a4c;
+frozen moduleSHAe559ef05bab3142ae6ed6d0b94b3651251c90f807933ff1d35812567c8ec9d72.
+No originalreader rerun/retuning/no newnative/reclassification. This is posthoc saved-
+fact/control validation, never a claim that original preregistered fullreader passed.
+
+Host-escalated readonly offline verifier separately confirms Chrome3685923/Vite3685876
+Absent at2026-10-25T21:42:14Z in hostPIDnamespace; originalreader PIDabsence is scoped
+to its execution namespace and native runner recorded its own cleanup. No globaltree/
+console health attestation. No project/product source changed in this artifact-only
+fix pass, so4933/241 source runs retained; complete relevantoffline4test suitePASS,
+not another npmfullrun. [ONEreview and every effect/cost ruling](../../.artifacts/v03/corrected-current-clean-editor-review/2026-10-26/report.md).
+14oldminors unchanged, original28INCOMPLETE/guideFAIL/fullV03/20of29 unchanged.
+
+Native and offline mechanism campaign closed. One next dependency-ready unfinished
+item is mandatoryL02 (L01complete): reconcile existing quality/lifecycle evidence and
+select one remaining concrete source blocker before any new model/install/browser
+experiment. Credit oldproof; do not restart failed13AI install or certificate work.
