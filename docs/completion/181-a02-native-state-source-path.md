@@ -75,3 +75,12 @@ strongorigins, performance/GC, hostile/effective/widerapps, installedrelease,
 bytes remainunchanged; actual completion recorded in ledger/record. Next ONE source-only diagnostic of the existing App/Main complete weak-
 reference gate using saved evidence/owned controls; no assumed GC fix, no weaker
 criteria, no new native/host-producer experiment in this item.
+
+Closeout .artifacts/a02/native-state-source-path-review/2026-10-25/ contains
+review/source/native summaries/checkpoint and workspace.zip31files SHA256
+032dd3d9ee0a9f8e4dc56f12491ab8e0a9b6ef6cf4a156d495138d83398ff61d.
+CRC/every byte/ledger identity verified;1335immutable registered comparisons,
+all1416native input files CURRENT physical, raw/case/fullreader/posthoc hashes equal.
+No source change after attempt/review. Only own workspace removed. ONE native/
+ONEfullreaderrefusal/ONEposthocpreservation checker, no rerun/retuning. FullA02
+and feature qualification remainfalse;20of29/11oldminors unchanged.
