@@ -36,3 +36,21 @@ another retrycase. No native outcome or readiness from this document/source test
 
 Source syntax/diff checks PASS; payload327 and oldraw16/frozen28readers unchanged.
 Nextprepare/preflight/readers/casecommit precede maxONEnewnative.
+
+
+## New case and readers frozen before invocation
+Sourceb105448/clean sourcechecks4933; finaltaskdone241PASS4867.736083ms.
+Prepared distinct corrected-current-clean-editor-case80.json/out
+.artifacts/v03/corrected-current-clean-editor/2026-10-25T21-16-53-226Z.
+Initial581physical then587after sixNEWreader/contract/owned-control files.
+PreflightPASS/browserStarted:false/original65/product327/16oldraw. CaseSHA
+5ef7be86b58235b007b50fd45c89dc1880f30ea00533c4df791a7c718db28080.
+Both independent full/nonqualifying preservation readers and all predicates written
+BEFORE native marker. Source-only owned controls31fullnegative/14preservationstructural
+PASS, historical-own-flag pendingaccepted/notready, firstlegrollback rejected, allfour
+required finalDOM groups covered. Frozen28reader remains unchanged; this does not
+repair its historical M14 limitation or upgrade old acceptance. Newreader/code/
+contract/control hashes included in fixedcase before commit; postcommit launch record
+will bind exactcase/contract/revision, without independent timestamp claim.
+No native run yet, no TLS/certificates/profile/policy or product change. MaximumONE
+new invocation; if incomplete close this mechanism campaign, no further retrycase.

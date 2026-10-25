@@ -2,7 +2,7 @@
 
 V03.29 corrected-source separate case in preparation: [source status](completion/187-v03-corrected-current-clean-editor.md).
 241focusedPASS; old/new closedheaders/routes separate, physical acquisition unchanged.
-327product80/16oldraw/frozen28readers stable;4933fullsourcePASS/native0.
+327product80/16oldraw/frozen28readers stable;4933fullsourcePASS/587preflight/readersfrozen/native0.
 Old28INCOMPLETE unchanged; no timing/permission/SDK/UI/cert/trust changes.
 
 V03.28 bounded attempt/source correction complete, native remains INCOMPLETE:

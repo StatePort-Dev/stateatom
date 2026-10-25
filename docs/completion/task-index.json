@@ -6354,7 +6354,7 @@
       "active_slice": {
         "id": "V03.29",
         "title": "Separately frozen corrected current-clean acquisition",
-        "status": "source-complete-preparation-pending-native0",
+        "status": "case587-readers-frozen-native0",
         "record": "187-v03-corrected-current-clean-editor.md",
         "design": "../superpowers/specs/2026-10-26-v03-corrected-current-clean-editor-design.md",
         "plan": "../superpowers/plans/2026-10-26-v03-corrected-current-clean-editor.md",
@@ -6364,7 +6364,14 @@
         "native_runs": 0,
         "maximum_native_runs": 1,
         "whole_V03_complete": false,
-        "source_checks": 4933
+        "source_checks": 4933,
+        "case": "../testing/corrected-current-clean-editor-case80.json",
+        "registered_inputs": 587,
+        "reader_controls_source_only": {
+          "full_negative": 31,
+          "preservation_structural": 14,
+          "all_four_final_dom_predicates": true
+        }
       },
       "completed_slices": [
         {
@@ -7437,7 +7444,7 @@
       ],
       "current_checkpoint": {
         "record": "187-v03-corrected-current-clean-editor.md",
-        "status": "source-complete-preparation-pending-native0",
+        "status": "case587-readers-frozen-native0",
         "next_bounded_step": "Finish source/full checks; freeze distinct corrected80case and prewritten readers before maxONEnewnative; old28exhausted. Close mechanism campaign if incomplete."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-v03-current-clean-editor.md",
@@ -7739,7 +7746,7 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.29-source-complete-native0",
+    "current_increment": "V03.29-case587-readers-frozen-native0",
     "next_item": "Finish source/full checks; freeze distinct corrected80case and prewritten readers before maxONEnewnative; old28exhausted. Close mechanism campaign if incomplete.",
     "new_full_task_acceptances": [
       "F01",
@@ -7767,7 +7774,7 @@
     "active_item": {
       "id": "V03",
       "record": "187-v03-corrected-current-clean-editor.md",
-      "status": "source-complete-preparation-pending-native0"
+      "status": "case587-readers-frozen-native0"
     },
     "completed_increments": [
       {
@@ -10462,7 +10469,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Newclosed corrected case route/private factual reuse;241focusedPASS/product327/16raw/frozen28readers stable; 4933fullPASS/native0. Old28INCOMPLETE preserved/20of29unchanged.",
+    "current_activity_note": "Newclosed corrected case route/private factual reuse;241focusedPASS/product327/16raw/frozen28readers stable; 4933fullPASS/587preflight/readersfrozen/native0. Old28INCOMPLETE preserved/20of29unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "69bf98fe32778de181e7ddf934ce35ce8dccb4b0",
     "current_record_date": "2026-10-26",
