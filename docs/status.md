@@ -1,6 +1,6 @@
 # Project status
 
-A02.27 actualnative PASS, finalreviewpending: [App/Main source path](completion/177-a02-app-main-native.md).
+Completed A02.27 actualnative PASS (ONEreview0C0I0newM/11oldminorsdeferred): [App/Main source path](completion/177-a02-app-main-native.md).
 One launch/3modes/18phases; App4statewindows8links/Main5windows9links. Filtered
 AppUnknown0(no freshApp), Main1 separately qualified; Off no globaltap/all0, Stop
 unsealedclearedUnknown0.1145before-afterhashes/saved218negative, allcleanup/PIDprofile

@@ -2461,7 +2461,7 @@
       },
       "current_checkpoint": {
         "record": "177-a02-app-main-native.md",
-        "status": "native-AppMain-source-path-PASS-review-pending",
+        "status": "complete-bounded-native-AppMain-source-path",
         "next_bounded_step": "ONE bounded source disabled-tap collection fix from A02.26; no oldnative retry/genericownership/stateupgrade."
       },
       "stopping_point_history": [
@@ -2576,7 +2576,7 @@
       "active_slice": {
         "id": "A02.27",
         "record": "177-a02-app-main-native.md",
-        "status": "native-AppMain-source-path-PASS-review-pending",
+        "status": "complete-bounded-native-AppMain-source-path",
         "base": "49e075785f3fdea9ff2863807f22dfc43f3bc695",
         "native_runs": 1,
         "model_calls": 0,
@@ -2603,7 +2603,15 @@
         "native_state_origin": "Unknown/Unsupported",
         "tuple_index_origin": "Unknown/Unsupported",
         "post_qualification_source_changed": false,
-        "native_qualification_repeated": false
+        "native_qualification_repeated": false,
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "new_minor": 0,
+          "total_deferred_minor": 11,
+          "correction_passes": 0,
+          "re_review": false
+        }
       }
     },
     {
