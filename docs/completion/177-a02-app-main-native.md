@@ -100,3 +100,5 @@ cleanup facts remain distinct. No codechange afterqualification, no product/UI/
 native state/index/ownership/selectedDOM/fullA02 readiness upgrade.20/29unchanged.
 Next ONE bounded disabled source-tap collection fix from A02.26; On historical
 native proof stays at9bf056c/c8350fc and is not silently upgraded to future bytes.
+
+Finalcheckpoint at 921e602a7e64275719a0f7c0a52ea91000d2fad0:1145currentphysicalinputs/0source deltas, old115research/product327/allpriorrawunchanged. Ownworkspace23files archived andCRC/everybyte/planidentity verified before only that directory removal. ArchiveSHA256 0a8a0eeba1975817730a9d12edad27b695a968c7fd29d6ded3dbe0f7c616d814. Artifacts .artifacts/a02/app-main-props-native-review/2026-10-25/report.md/final-checkpoint.json/workspace.zip. Native qualification not repeated.
