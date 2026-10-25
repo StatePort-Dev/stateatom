@@ -1,5 +1,12 @@
 # Project status
 
+V02.18 source candidate checks complete, review pending: [recording publication](completion/184-v02-recording-publication-turn.md).
+One event-loop task combines fast-ack recording saves; collection/terminal writes
+remain immediate.9publisher/77focused/4853fullPASS; ONEreview pending.
+No native/performance/package claim;20of29/fullV02 unchanged. Old327payload now
+326current+ONEdeclared publisher change; original packages historical unchanged.
+
+
 A02.33 actual availability observed, fullpath INCOMPLETE (ONEreview0C0I1M/13deferredtotal): [App/Main availability](completion/183-a02-native-state-source-availability.md).
 ONElaunch2modescomplete14phases; NEW changed appElementAvailable:false, otherconfig/
 Mainchecks true. AppBinding/MainInput/nativeReturnObserved, fullAppMain/jointUnknown0.

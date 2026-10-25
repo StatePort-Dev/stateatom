@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Coalesce publication, never observation. The caller updates its bounded
 // ledger synchronously; persist always reads CURRENT state, not a queued copy.
-export function createObservationPublisher({persist,notify}){
+export function createObservationPublisher({persist,notify,schedule=task=>setTimeout(task,0)}){
  let flight=null,dirty=false;
  return function publish(){
   dirty=true;if(flight)return flight;
@@ -9,7 +9,7 @@ export function createObservationPublisher({persist,notify}){
   // Native event callers are fire-and-forget. Handle rejection once per new
   // flight, while keeping the original rejected Promise available to awaiters.
   void result.catch(()=>{});
-  void (async()=>{
+  const run=async()=>{
    try{
     while(dirty){
      dirty=false;
@@ -19,7 +19,10 @@ export function createObservationPublisher({persist,notify}){
     // Clear before resolving: a request at settlement must start a new flight.
     flight=null;resolve();
    }catch(error){flight=null;reject(error);}
-  })();
+  };
+  // Defer only the first save. Collection already updated current bounded state.
+  // A single queued task also combines requests when storage acknowledges fast.
+  try{schedule(()=>{void run();});}catch(error){flight=null;reject(error);}
   return result;
  };
 }

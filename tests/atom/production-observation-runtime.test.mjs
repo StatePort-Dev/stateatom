@@ -103,7 +103,9 @@ test('gap-only native traffic retains at most one rejection subscription on each
  f.platform.chrome.storage.session.set=async value=>{writes++;await ack.promise;return originalSet(value);};
  Promise.prototype.catch=function(...args){const n=(counts.get(this)||0)+1;counts.set(this,n);maxSubscriptions=Math.max(maxSubscriptions,n);return Reflect.apply(originalCatch,this,args);};
  try{
-  for(let i=0;i<1000;i++)f.events.emit({type:'debugger',source:{tabId:1},method:'Network.loadingFinished',params:{requestId:'unmatched-'+i,timestamp:50}});
+  f.events.emit({type:'debugger',source:{tabId:1},method:'Network.loadingFinished',params:{requestId:'unmatched-0',timestamp:50}});
+  await new Promise(setImmediate);await new Promise(resolve=>setTimeout(resolve,0));assert.equal(writes,1,'Exercise the old in-flight case after the new scheduling boundary');
+  for(let i=1;i<1000;i++)f.events.emit({type:'debugger',source:{tabId:1},method:'Network.loadingFinished',params:{requestId:'unmatched-'+i,timestamp:50}});
   await new Promise(setImmediate);assert.equal(writes,1);assert.equal(maxSubscriptions,1,'No per-event rejection handlers may accumulate on a shared delayed flight');
  }finally{Promise.prototype.catch=originalCatch;ack.resolve();}
  for(let i=0;i<5;i++)await new Promise(setImmediate);const saved=f.data['stateport.atom.v1.tabs'][1].productionObservation;assert.equal(saved.records.length,0);assert.equal(saved.gaps.unmatched,1000);assert.equal(writes,2);
@@ -118,4 +120,42 @@ for(const ending of['context','record-limit','pending-limit'])test('same-owner '
  }else{await f.network('before-context');await f.emit('Runtime.executionContextsCleared',{});}
  const saved=f.data['stateport.atom.v1.tabs'][1].productionObservation;assert.equal(saved.windowId,w.windowId);assert.equal(saved.status,'stopped','A terminal native transition must be saved before the old recording write is released');assert.equal(saved.stopReason,ending==='context'?'context-changed':ending);assert.equal(writes,2);assert.equal(notices.length,1);if(ending==='record-limit')assert.equal(saved.records.length,64);if(ending==='pending-limit')assert.equal(saved.records.length,32);
  ack.resolve();for(let i=0;i<5;i++)await new Promise(setImmediate);assert.equal(f.data['stateport.atom.v1.tabs'][1].productionObservation.status,'stopped');assert.equal(f.data['stateport.atom.v1.tabs'][1].productionObservation.stopReason,saved.stopReason);
+});
+
+for(const ending of ['replace','permission','context','record-limit','pending-limit'])test('queued recording save cannot delay or resurrect '+ending,async t=>{
+ const f=await fixture(t),a=await f.request({op:'observation-start'}),scheduled=[],originalTimeout=globalThis.setTimeout,originalSet=f.platform.chrome.storage.session.set;
+ let writes=0;
+ f.platform.chrome.storage.session.set=async value=>{writes++;return originalSet(value);};
+ globalThis.setTimeout=(callback,delay,...args)=>delay===0?(scheduled.push(()=>callback(...args)),-1):originalTimeout(callback,delay,...args);
+ const emit=(method,params)=>f.events.emit({type:'debugger',source:{tabId:1},method,params});
+ const start=n=>emit('Network.requestWillBeSent',{requestId:'queued-'+n,frameId:'main',loaderId:'loader',timestamp:50,wallTime:(performance.timeOrigin+performance.now())/1000,request:{url:origin+'/private',method:'GET'}});
+ try{
+  start(0);await Promise.resolve();await Promise.resolve();
+  assert.equal(writes,0,'Recording storage starts only after its queued task');assert.equal(scheduled.length,1);
+  if(ending==='replace'){
+   await f.request({op:'observation-stop',windowId:a.windowId});
+   assert.equal(f.data['stateport.atom.v1.tabs'][1].productionObservation.status,'stopped');
+   await f.request({op:'observation-clear',windowId:a.windowId});
+   const b=await f.request({op:'observation-start'});assert.notEqual(b.windowId,a.windowId);
+  }else if(ending==='permission'){
+   f.deny();f.events.emit({type:'permissions-removed'});for(let i=0;i<5;i++)await new Promise(setImmediate);
+  }else if(ending==='context'){
+   emit('Runtime.executionContextsCleared',{});for(let i=0;i<5;i++)await Promise.resolve();
+  }else if(ending==='pending-limit'){
+   for(let i=1;i<33;i++)start(i);for(let i=0;i<5;i++)await Promise.resolve();
+  }else{
+   // Finish the initial record, then deliver 64 more complete requests.
+   emit('Network.loadingFinished',{requestId:'queued-0',timestamp:50});
+   for(let i=1;i<65;i++){start(i);emit('Network.loadingFinished',{requestId:'queued-'+i,timestamp:50});}
+   for(let i=0;i<5;i++)await Promise.resolve();
+  }
+  assert(writes>0,'Terminal/explicit writes do not wait for recording scheduling');
+  const before=structuredClone(f.data['stateport.atom.v1.tabs'][1].productionObservation);
+  if(ending==='permission')assert.equal(before,undefined);
+  else if(ending==='replace'){assert.notEqual(before.windowId,a.windowId);assert.equal(before.records.length,0);}
+  else{assert.equal(before.status,'stopped');assert.equal(before.stopReason,ending==='context'?'context-changed':ending);assert.equal(before.records.length,ending==='record-limit'?64:ending==='pending-limit'?32:1);}
+  assert.equal(scheduled.length,1,'One queued publication across all same-owner event revisions');
+  scheduled.shift()();for(let i=0;i<8;i++)await new Promise(setImmediate);
+  assert.deepEqual(f.data['stateport.atom.v1.tabs'][1].productionObservation,before,'Late save reads current state, never the queued old window');
+ }finally{globalThis.setTimeout=originalTimeout;}
 });
