@@ -1,4 +1,4 @@
-# A02.21 — source-only Main parameter/filter/map bridge (active)
+# A02.21 — source-only Main parameter/filter/map bridge (qualification exhausted; final review pending)
 
 Continues612687d/closedA02.20: actual3modes18phases5positivewindows9callback-JSXlinks,
 0C0I0newM review. Existing native evidence stays immutable; fullA02/20of29 unchanged.
@@ -22,3 +22,35 @@ Actual retained Main+Core+JSX qualification has NOT run yet. Owned semantic/stub
 VM controls do not establish React/Router/DOM/app lifecycle or new product support.
 Earlier failed controls and fixture preparation errors remain in this plan's ledger
 and logs; no old evidence or criteria were changed.
+
+## Frozen qualification — INCOMPLETE, no positive bridge credit
+
+Source24e40b2; documentationcheckpoint ef7168c; fixedcase59d032d. Prepare675inputs/
+0VM, preflight676includingcase PASS. Default sandbox first refused spawnSync git
+with EPERM before any registration/VM marker; identical frozen command with local
+child-process authorization began the ONE source qualification. No case retuning.
+
+Literal MAIN_INPUT_SOURCE_QUALIFICATION_INCOMPLETE, terminal6761exit1.3VM contexts
+started/completed for ordinary-one original/off/on;51unvisitedcontexts/17cases,
+0accepted wholebridgecases/links. Original/off/on output, trace, getter counts and
+exception flags match. On snapshot Unknown with Invalid native abort; old nested
+callback-JSX subproof separately Observed1 and does not prove the new handoff.
+All676 before/after physical hashes match.
+
+Raw: .artifacts/a02/main-input-bridge/2026-10-25T09-55-00Z/results.json,
+SHA256 a072780a54f3050662bb9d6cbddd6550a77345f477fa0c35c0207562f7236193.
+The unchanged generated recipe calls abort(undefined) before its first native begin;
+the new compositor treats it as invalid. This is source-code diagnosis, not a new
+execution or tested correction. Final review and one tested I/C correction remain;
+the exhausted frozen qualification will not be repeated or upgraded afterward.
+
+Standalone saved-byte verifier/report:
+.artifacts/a02/main-input-source-saved-verification/2026-10-25/{verify.py,report.json}.
+676physicalinputs/45meaningful corruptions rejected;0sourceimports/VM/browser/app/
+model/native-writer calls. Serialized partial result only, no recovered live identity.
+Initial reader draft mistakenly equated the pre-context running snapshot with final
+rows; it and failure log are preserved. The corrected chronology expects2completed
+in running.json and3completed in results.json. No bridge criteria changed.
+
+Whole20/29/fullA02 remain unchanged; 7prior minors deferred. No UI/SDK/product/
+otherrepo/browser/certificate/trust/account/publication changes.

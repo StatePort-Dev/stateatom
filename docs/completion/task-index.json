@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "171-a02-main-input-bridge.md",
-        "status": "source-gates-passed-before-qualification",
-        "next_bounded_step": "Freeze source-only 18-case/3-mode Main matrix after source commit; no browser/native/app lifecycle claim."
+        "status": "source-qualification-exhausted-incomplete-before-final-review",
+        "next_bounded_step": "ONE final review and tested I/C correction; no qualification rerun. Then separately frozen Main input case if dependency remains."
       },
       "stopping_point_history": [
         {
@@ -2546,7 +2546,7 @@
       "active_slice": {
         "id": "A02.21",
         "record": "171-a02-main-input-bridge.md",
-        "status": "source-gates-passed-before-qualification",
+        "status": "source-qualification-exhausted-incomplete-before-final-review",
         "base": "612687dfb331063236590479f908f1d9cf838642",
         "native_runs": 0,
         "model_calls": 0,
@@ -2554,7 +2554,17 @@
         "full_A02": false,
         "focused_tests_passed": 52,
         "full_tests_passed": 4359,
-        "source_revision": "24e40b2"
+        "source_revision": "24e40b2",
+        "case_revision": "59d032d",
+        "source_runs": 1,
+        "contexts_started": 3,
+        "contexts_completed": 3,
+        "contexts_unvisited": 51,
+        "whole_bridge_links": 0,
+        "saved_byte_inputs": 676,
+        "saved_negative_controls": 45,
+        "qualification_result": ".artifacts/a02/main-input-bridge/2026-10-25T09-55-00Z/results.json",
+        "qualification_sha256": "a072780a54f3050662bb9d6cbddd6550a77345f477fa0c35c0207562f7236193"
       }
     },
     {
