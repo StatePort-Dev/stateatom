@@ -33,8 +33,14 @@ Old A02.30 native1290inputs now1288currentphysical+2exactpreparedGit581786b;
 old A02.31 native1416inputs now1414currentphysical+2exactpreparedGit7bddb1b.
 Those2paths are observer/test only. Historical raw/case/reader bytes are preserved;
 old native outcomes do not qualify new diagnostic source bytes. No native/App/
-ReactDOM/model/oldreader run in this item.20of29/fullA02/11oldminors unchanged.
+ReactDOM/model/oldreader run in this item.20of29/fullA02 unchanged;11oldminors retained, review adds M12 below.
 
-Final review pending. Next ONE bounded actual availability-observation decision:
+ONEfresh final review gpt-6-astra/high0Critical0Important1Minor; no correction/
+rereview. M12 deferred: line9 uniform diagnostic-type wording should distinguish
+availability predicate values from child status/link-count summaries. Runtime
+acceptance unaffected.11oldminors retained, total12.
+Eight declined domains have effect/cost rulings: actualoldcause; changed-source
+native behavior; realhostGC/performance; exhaustive combinations; oldreaders;
+product/strongorigins/release; oldminors; archive. No absent evidence credited. Next ONE bounded actual availability-observation decision:
 newly instrumented gate can provide exact missing-reference metadata in a separately
 registered run; no automatic retry or presumed positive/GC/selectedDOM claim.

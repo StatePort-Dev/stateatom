@@ -2461,7 +2461,7 @@
       },
       "current_checkpoint": {
         "record": "182-a02-app-main-availability.md",
-        "status": "source-diagnostics-complete-final-review-pending",
+        "status": "complete-bounded-source-only-availability-diagnostics",
         "next_bounded_step": "ONE separately scoped actual availability-observation decision with new gate metadata; no automatic retry/presumed positive/GC/selectedDOM claim."
       },
       "stopping_point_history": [
@@ -2601,7 +2601,7 @@
       "active_slice": {
         "id": "A02.32",
         "record": "182-a02-app-main-availability.md",
-        "status": "source-checks-complete-final-review-pending",
+        "status": "complete-bounded-source-diagnostics",
         "base": "98e3458ce944567acc1de43ca4bd41709e1713d0",
         "native_runs": 0,
         "maximum_native_runs": 0,
@@ -2616,7 +2616,15 @@
         "full_checks": 4776,
         "owned_parity_scenarios": 5,
         "weak_read_trace_parity": true,
-        "actual_failure_cause": "Unknown"
+        "actual_failure_cause": "Unknown",
+        "review": {
+          "Critical": 0,
+          "Important": 0,
+          "Minor": 1,
+          "correction_passes": 0,
+          "rereview": false,
+          "deferred_minors_total": 12
+        }
       }
     },
     {

@@ -1,6 +1,6 @@
 # Project status
 
-A02.32 source diagnostics complete, final review pending: [App/Main availability](completion/182-a02-app-main-availability.md).
+A02.32 source diagnostics complete (ONEreview0C0I1M/12deferredtotal): [App/Main availability](completion/182-a02-app-main-availability.md).
 33focused/4776fullPASS;5OWNEDscenarios preserve exact WeakRef trace/legacyhashes,
 true/false/NotChecked metadata only.2research changes/133unchanged/327payload/raw
 unchanged; no native/App/model/oldreader. A02.31 cause stillUnknown; selective
