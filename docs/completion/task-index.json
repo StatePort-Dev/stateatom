@@ -1661,9 +1661,18 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "implementation_plan": "../superpowers/plans/2026-10-24-launch-evidence-lanes.md",
-      "execution_record": "150-launch-evidence-lanes.md",
-      "active_slice": null,
+      "implementation_plan": "../superpowers/plans/2026-10-25-a02-react19-prop-copy-input.md",
+      "execution_record": "160-a02-react19-prop-copy-input.md",
+      "active_slice": {
+        "id": "A02.10",
+        "record": "160-a02-react19-prop-copy-input.md",
+        "status": "source-planning-prop-copy-input-only",
+        "base": "f48be1a",
+        "native_runs": 0,
+        "model_calls": 0,
+        "product_code_changed": false,
+        "full_A02": false
+      },
       "completed_slices": [
         {
           "id": "A02.1",
@@ -2143,9 +2152,9 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "150-launch-evidence-lanes.md",
-        "status": "complete-bounded-historical-description-not-native-acceptance",
-        "next_bounded_step": "V03.23 restore availability reporting for deterministic external-revision refusal, preserving guards; no native retry or A02 threshold change."
+        "record": "160-a02-react19-prop-copy-input.md",
+        "status": "source-planning-prop-copy-input-only",
+        "next_bounded_step": "A02.10 Task1 inert todo copy-input recorder then Task2 separately pinned classicReact19 recipe/retained-source VM; no product import/browser/launcher/native/cert/install/model. All stronger lineage Unknown."
       },
       "stopping_point_history": [
         {
@@ -7238,8 +7247,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.27-existing-clean-editor-source-contract-diagnosed",
-    "next_item": "ONE A02.10 bounded source-only field/prop-transfer gap selection from existing implementation/tests; no generic launcher/oldargv retry/browser/cert/install. Fix only a concrete regression under a bounded plan.",
+    "current_increment": "A02.10-prop-copy-input-source-planning",
+    "next_item": "A02.10 Task1 inert todo copy-input recorder then Task2 separately pinned classicReact19 recipe/retained-source VM; no product import/browser/launcher/native/cert/install/model. All stronger lineage Unknown.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7264,9 +7273,9 @@
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
-      "id": "V03",
-      "record": "159-v03-clean-editor-contract.md",
-      "status": "complete-source-only-diagnosis"
+      "id": "A02",
+      "record": "160-a02-react19-prop-copy-input.md",
+      "status": "source-planning-prop-copy-input-only"
     },
     "completed_increments": [
       {
@@ -9961,11 +9970,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.27 source-only diagnosis: clean raw follows observed resource11, history retains own10/Undo refused; local dirty20 survives foreign12 with conflict. Five real module/source-fixture phases, no native/app/cause/visual proof, no product/guard/policy change. Same9source hashes matcha9649d3/reused actual3695PASS; current327/15V03raw/12L02records preserved. Original26 remains exhaustedFAILcriterion; L02.13 raw untouched. Next bounded A02.10 source gap selection only, no new browser/cert/install/argv retry. Whole20of29/L02/A02/V03 open.",
+    "current_activity_note": "A02.10 source planning: existing nativeReactElement/props pair lacks config-to-props copy inputs. New isolated fixedtodo object-identity recorder plus pinned classic19.2.5 expression recipe/retainedCJS VM only. Original expressions/getters once/no app reflection; storage/transfer/ownership/selectedproducer remainUnknown. No new source/native/VM result from packet, no product327/oldsource/raw/browser/launch/cert/install/model/download/userprofile/SDK/otherrepo/publish change. Prior V03.27 source contract and L02.12/13 exhausted results retained; whole20of29 open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "a9649d3",
+    "current_source_revision": "f48be1a",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "ONE A02.10 bounded source-only field/prop-transfer gap selection from existing implementation/tests; no generic launcher/oldargv retry/browser/cert/install. Fix only a concrete regression under a bounded plan.",
+    "next_bounded_step": "A02.10 Task1 inert todo copy-input recorder then Task2 separately pinned classicReact19 recipe/retained-source VM; no product import/browser/launcher/native/cert/install/model. All stronger lineage Unknown.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -9975,9 +9984,9 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "last tested short-route behavior source; one native case frozen atdad294a",
-    "current_source_checkpoint": ".artifacts/l02/short-comparison-review/2026-10-25/final-checkpoint.json",
-    "current_source_checkpoint_kind": "last completed bounded item L02.13, native incomplete"
+    "current_source_revision_kind": "last bounded source-contract diagnosis; new isolated prop-copy implementation pending",
+    "current_source_checkpoint": ".artifacts/v03/clean-editor-contract/2026-10-25/final-checkpoint.json",
+    "current_source_checkpoint_kind": "last completed bounded source diagnosis V03.27"
   },
   "next_task": "V03"
 }
