@@ -1,5 +1,10 @@
 # Project status
 
+Active bounded bugfix: [A02.12](completion/162-a02-product-native-forwarding.md).
+Confirmed source forwarding invokes app iterator vendor1/collector1/API2; off0.
+Exactly3engine source deltas planned, current327/raw preserved; no implementation
+success yet. No browser/cert/install/SDK/publication or new lineage claim.
+
 Completed bounded source slice: [A02.11](completion/161-a02-callback-copy-interval.md).
 Clean2f120af retainedReact19.2.5/18owned cases/54VM contexts:11positive cases/12exact
 callback-copy intervals,7expected refusals.75focused/full3832PASS; source-free saved
