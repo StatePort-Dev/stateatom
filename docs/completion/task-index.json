@@ -1665,13 +1665,21 @@
       "active_slice": {
         "id": "A02.15",
         "record": "165-a02-callback-jsx-interval.md",
-        "status": "task1-source-recorder-complete-task2-pending",
+        "status": "source-qualified-pending-one-final-review",
         "base": "0cc2457e1ef6e7950bf9b043a0dece29fb7bff7d",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
-        "focused_checks": 208
+        "focused_checks": 243,
+        "full_source_checks": 4031,
+        "source_revision": "25587c0cf59e2401256b6796ff5202996d3ff938",
+        "source_vm_cases": 30,
+        "source_vm_contexts_started": 93,
+        "source_vm_contexts": 93,
+        "source_raw_sha256": "add8cc28ab6a0802da4d90948201f99265e8d73d6042afe88d64b74cc885e5e1",
+        "saved_negative_controls": 55,
+        "JSX_product_supported": false
       },
       "completed_slices": [
         {
@@ -2275,8 +2283,8 @@
       },
       "current_checkpoint": {
         "record": "165-a02-callback-jsx-interval.md",
-        "status": "task1-source-recorder-complete-task2-pending",
-        "next_bounded_step": "Task2 composed original/off/on JSX callback source controls and ONE newly registered retained-source qualification; no browser."
+        "status": "source-qualified-pending-one-final-review",
+        "next_bounded_step": "ONE final fresh A02.15 review; then ONE actual original Main acquisition prerequisite, no generic lineage kernel/oldcase replay."
       },
       "stopping_point_history": [
         {

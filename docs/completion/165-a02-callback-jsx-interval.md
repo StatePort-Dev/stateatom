@@ -44,3 +44,37 @@ Zero-option source runner inert/import and invalidargs guard pass. New registrat
 currentcorrected physicalsource hashes, all compiled inputs beforeVM, separate
 started/completed counters, exclusive one-run marker and partialresults implemented.
 Next ONE retainedCore+JSX matrix after this sourcecommit; no oldcase rerun.
+
+Actual retained source qualification on clean25587c0cf59e2401256b6796ff5202996d3ff938:
+node experiments/react19-reducer/callback-jsx-source-run.mjs exit0; output
+.artifacts/a02/callback-jsx-interval/2026-10-25/qualification-2026-10-25T04-25-10-201Z/.
+RawSHA256 add8cc28ab6a0802da4d90948201f99265e8d73d6042afe88d64b74cc885e5e1.
+Literal RETAINED_REACT_CALLBACK_JSX_SOURCE_VM_QUALIFIED_NOT_PRODUCT_A02.
+30cases ×3 plus3hook controls =93started/93completed same-realm VM contexts;
+550physical before/after inputs unchanged, including90compiled app cases and2native
+transformedfiles. Actual retained19.2.5 Core4325+JSXdd50 nativepins admitted. Each CJS
+module uses an independent lexical wrapper. No Main/component/ReactDOM/browser.
+
+13scoped positive cases/15exact historical callback-input intervals (including1fresh
+classic control);17expected refusals. Wrong/reassigned item, before/sibling/nested
+reuse, native copiedprops, clone, Stop/seal, originalthrows/partialaborted map and
+alias/spread/accessor grammar never borrow an interval. Nested own returns2distinct
+frames even though outer result retains only1. Originalcallback length1/lexical this/
+arguments/new.target preserved; expression/key getter1, opaque value0traps, late
+iterator/WeakMap/Arraypush/descriptor0appcallbacks. Missing/accessor/throwing metadata
+does not alter result or invoke accessor. Freeze mutation stores second while exact
+original input interval remains historical; storage/ownership/state/selectedDOM Unknown.
+
+Independent Python stdlib saved reader at
+.artifacts/a02/callback-jsx-saved-verification/2026-10-25/{verify.py,report.json}
+verifies550physical/90compiled/30cases/93previouscontexts/55negative controls,0source
+imports/VM reruns. This validates saved receipts/owned oracles, not reconstructed
+live references or installed/Main/DOM proof. Current77other source/327payload/oldraw/
+Main/pins preserved; one observer delta declared from0cc2457, history kept inGit.
+Saved550physical stage is before later plan checklists; reconcile final drift honestly.
+
+Affected243PASS; full npm test4031PASS/0fail/0cancel/0skip154062.993ms, terminal69191
+exit0. Syntax/diff PASS. ONE final fresh whole-item review next; no native or source
+replay scheduled. Whole20/29 (~69%)/fullA02 unchanged; source packet is not shipped
+JSX capability. Five prior minors deferred. Next finalreview, then select ONE actual
+original-Main acquisition prerequisite rather than adding a general lineage kernel.

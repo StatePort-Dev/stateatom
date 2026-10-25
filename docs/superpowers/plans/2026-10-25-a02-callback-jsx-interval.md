@@ -36,8 +36,8 @@
 **Files:** create tests/helpers/react19-callback-jsx-controls.mjs, tests/engine/react19-callback-jsx-recipes.test.mjs, experiments/react19-reducer/callback-jsx-source-run.mjs; completion165/current pointers.
 **Interfaces:** existing instrumentCallbackCopyIntervals ->automatic JSX ESM lowering ->instrumentJSXConfigInputs ->CJS module wrapper; same-realm actual factory serialization+native JSX hook+array runtime. prepare/execute separate so all compiled inputs hashed before VM. One fresh classic source control within new matrix.
 
-- [ ] task-start/read brief/BASE. TDD owned original/off/on cases with actual callback frames/length/lexical this/arguments/new.target, wrong equal/reassign/nested/reused/clone/pending/throw/native-key/freeze/Stop/seal/getters/opaque Proxy and lateiterator. Helpers preserve original sentinel and native exceptions. Missing/accessor/throwing tap controls. Static actualMain1/2sites, no body execution.
-- [ ] Minimal guarded zero-option runner, current-source/hash checks, explicit development environment, started/completed/partial/exclusive marker. Focused RED->GREEN/sourcecommit, then ONE newly registered actual retained Core+JSX matrix and fresh classic control; independent source-free saved reader and meaningful negatives; full npm test stable, resultcommit/task-done.
+- [x] task-start/read brief/BASE. TDD owned original/off/on cases with actual callback frames/length/lexical this/arguments/new.target, wrong equal/reassign/nested/reused/clone/pending/throw/native-key/freeze/Stop/seal/getters/opaque Proxy and lateiterator. Helpers preserve original sentinel and native exceptions. Missing/accessor/throwing tap controls. Static actualMain1/2sites, no body execution.
+- [x] Minimal guarded zero-option runner, current-source/hash checks, explicit development environment, started/completed/partial/exclusive marker. Focused RED->GREEN/sourcecommit, then ONE newly registered actual retained Core+JSX matrix and fresh classic control; independent source-free saved reader and meaningful negatives; full npm test stable, resultcommit/task-done.
 
 ## Final Closeout
 
