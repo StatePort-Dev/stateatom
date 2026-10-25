@@ -55,7 +55,7 @@ serialized integrity only; runtime reference comparisons not reexecuted.
 Initial reader draft incorrectly required sealedTrue on Stop and failed before
 reportcreation. Frozen Stop criterion is clearing/Unknown; actual tombstones sealedFalse.
 Draft+SHA/reason retained in ownworkspace. Corrected reader validates explicit
-stoppedFalse-sealed shape and only5positivewindows, no originalcriterionlowering.
+stopped=True, sealed=False shape and only5positivewindows, no originalcriterionlowering.
 Raw has no afterhashmap; inputcheckbool and later currentphysical remain distinct.
 Whole20/29/fullA02 unchanged,7minors deferred. No cert/trust/userprofile/account/model/
 SDK/release/publication changes. Next ONE finalfreshreview, then ONE unfinished
