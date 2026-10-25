@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "172-a02-cleanup-main-source.md",
-        "status": "source-gates-passed-before-qualification",
-        "next_bounded_step": "A02.22 separately fixed corrected-source Main matrix;93research/327payload protected; no old qualification/native retry."
+        "status": "source-qualification-passed-before-final-review",
+        "next_bounded_step": "ONE fresh final review/source-only correction ifneeded; then native Main input handoff qualification dependency, no oldcase retry."
       },
       "stopping_point_history": [
         {
@@ -2551,14 +2551,28 @@
       "active_slice": {
         "id": "A02.22",
         "record": "172-a02-cleanup-main-source.md",
-        "status": "source-gates-passed-before-qualification",
+        "status": "source-qualification-passed-before-final-review",
         "base": "80e8bc2",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
         "focused_tests_passed": 75,
-        "full_tests_passed": 4382
+        "full_tests_passed": 4382,
+        "source_revision": "d429d00",
+        "case_revision": "e8d1dba",
+        "source_runs": 1,
+        "contexts_started": 54,
+        "contexts_completed": 54,
+        "positive_source_cases": 7,
+        "source_bridge_links": 8,
+        "counterexample_refusals": 11,
+        "unvisited_contexts": 0,
+        "saved_byte_inputs": 706,
+        "saved_negative_controls": 77,
+        "qualification_result": ".artifacts/a02/main-input-cleanup-bridge/2026-10-25T10-15-00Z/results.json",
+        "qualification_sha256": "c68be5ff6c92979c18fc80e1df9b8278fa945b2ef05e442d936b05451901df0e",
+        "real_hook_lifecycle_proven": false
       }
     },
     {

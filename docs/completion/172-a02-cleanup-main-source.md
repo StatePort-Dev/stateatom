@@ -1,4 +1,4 @@
-# A02.22 — corrected Main source qualification (registered before code)
+# A02.22 — corrected Main source qualification (source qualification passed; final review pending)
 
 Continues80e8bc2, fixes6888ae0 already58focused/4365fullPASS. Prior A02.21 qualification
 remains exhausted INCOMPLETE3contexts/51unvisited/0bridgecredit. No old case/evidence
@@ -12,3 +12,31 @@ No native/browser/model/product/UI/SDK/otherrepo/cert/trust/profile/publication.
 Whole20/29/fullA02 unchanged;7prior minors deferred.
 
 Source gates:75focused PASS1139.68688ms (17newdriver+58existingbridge controls); npm test4382/4382 PASS112858.186498ms terminal35479exit0/0skips. Syntax/diffcheckPASS. Finite writer-copy diff inspected: only declaredfixedpaths/schemas/count86→93/own2files/A0221protection/newplan-specpins/loglabels; sharedmatrix/helper/guard unchanged. Current93research/327payload/120A0220/28A0221 evidence0drift. No actualMain qualification executed yet.
+
+## Actual ONE source qualification
+
+Source d429d00; prepare705inputs0VM/preflight706includingcasePASS; case e8d1dba.
+ONE qualification terminal20387exit0, literal
+RETAINED_MAIN_INPUT_SOURCE_VM_QUALIFIED_NOT_NATIVE_A02.54contextsstarted/completed,
+18cases,7positivecases/8links,11counterexamplesUnknown,0errors/unvisitedcontexts.
+All706before/afterhashes match. Original/off/on output/trace/getter/exceptionidentity
+match. All stronger state/storage/transfer/ownership/selectedDOM/instance claims
+Unknown; NativeOriginNotAttested/fullPathFalse. Actual retainedMain function source
+with retainedCore/JSX under OWNEDhook/router controls and unexecutedItem only;
+no realReactlifecycle/ReactDOM/originalapp/native/installedproduct readiness.
+
+Raw .artifacts/a02/main-input-cleanup-bridge/2026-10-25T10-15-00Z/results.json,
+SHA256 c68be5ff6c92979c18fc80e1df9b8278fa945b2ef05e442d936b05451901df0e.
+No oldA02.21 qualification or successfulnativeA02.20 rerun/upgrade.
+
+Independent saved-byte reader/report:
+.artifacts/a02/main-input-cleanup-saved-verification/2026-10-25/{verify.py,report.json}.
+706physicalinputs/77corruptionsrejected,0sourceimports/VM/app/browser/model/native
+writer executions. Serializedhistoricalfacts only; no liveidentity reconstruction.
+First reader draft expected1completedgetterread; originalMain filter and toggle-all
+visibleTodos.every each readit, so original/off/on correctly2reads withmatchingtrace.
+Initialdraft and failurelog preserved; readercorrected to source-defined2reads, no
+implementation/case/acceptance threshold change and no qualificationretry.
+
+Current93research/327payload/120A02.20/28A02.21evidence unchanged. Full20/29/fullA02
+remainopen;7priorminorsdeferred. Finalreview/oneI-Cpass ifneeded pending.

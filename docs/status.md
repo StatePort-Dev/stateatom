@@ -1,11 +1,11 @@
 # Project status
 
 Active bounded task: [A02.22](completion/172-a02-cleanup-main-source.md).
-Separately frozen corrected-source Main qualification;93research/327payload/all
-A02.21 evidence registered beforecode, twoNEWfiles/0oldsource deltas.75focused/
-4382full PASS; source qualification not yet run. No newruntime
-proof yet; no native/browser/model/product/SDK/cert/trust/profile/publication.
-20/29/fullA02 unchanged;7minors deferred.
+ONE corrected-source Main matrix PASS:54contexts/18cases/7positive8links/11Unknown
+refusals,0errors/unvisited.706before-afterhashes match; savedreader706physical77negative.
+75focused/4382fullPASS, finalreviewpending. Ownedhook/routercontrols only: no actual
+Reactlifecycle/ReactDOM/app/native/installedsupport.93research/327payload/oldA02.21/
+A02.20evidence unchanged.20/29/fullA02 unchanged;7minorsdeferred.
 
 Completed bounded attempt: [A02.21](completion/171-a02-main-input-bridge.md).
 ONE review0C2I0newM/ONE tested correction pass: normal token cleanup preserved,
