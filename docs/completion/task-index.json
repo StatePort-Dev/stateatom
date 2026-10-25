@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "183-a02-native-state-source-availability.md",
-        "status": "source-checks-complete-current-availability-case-pending",
-        "next_bounded_step": "ONE newly instrumented actual availability observation; strict full qualification or explicit incomplete prefix, no oldcase retry/threshold lowering."
+        "status": "actual-availability-observed-fullpath-incomplete-review-pending",
+        "next_bounded_step": "Close weak-reference diagnostic campaign; ONE dependency-ready V02 source-only actualActive overhead hotpath selection from existing misses/code, preserve metrics/targets/no TLS or old experiment reruns."
       },
       "stopping_point_history": [
         {
@@ -2606,9 +2606,9 @@
       "active_slice": {
         "id": "A02.33",
         "record": "183-a02-native-state-source-availability.md",
-        "status": "source-checks-complete",
+        "status": "native-availability-observed-fullpath-incomplete-final-review-pending",
         "base": "7c72903776f28f3664c64ea28bf22b5fac3e1191",
-        "native_runs": 0,
+        "native_runs": 1,
         "maximum_native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
@@ -2616,7 +2616,21 @@
         "focused_checks": 68,
         "full_checks": 4844,
         "full_reader_negative_rules": 495,
-        "readers_prewritten": 2
+        "readers_prewritten": 2,
+        "modes_completed": 2,
+        "phases_started": 15,
+        "phases_completed": 14,
+        "qualified_windows": 0,
+        "qualified_links": 0,
+        "new_availability_observation": "changed appElementAvailable:false; all earlier config/Main checks true",
+        "full_reader_rejected": true,
+        "full_negative_controls_executed_as_pass": false,
+        "preservation_qualification": false,
+        "preservation_structural_controls": 15,
+        "registered_runtime_inputs": 1534,
+        "native_result": ".artifacts/a02/native-state-source-availability/2026-10-25T19-32-00Z/results.json",
+        "execution_revision": "7f54edf8404efb8d4580f336dcf52093b2b390d0",
+        "prepared_revision": "a0361e488dbee4f7def6f0d3e345649f82f0c445"
       }
     },
     {

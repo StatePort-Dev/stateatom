@@ -1,11 +1,13 @@
 # Project status
 
-A02.33 source checks complete, ONE current availability run pending: [original-gate observation](completion/183-a02-native-state-source-availability.md).
-68focused/4844fullPASS; old gates/nativeops/bundles preserved, metadata consistency
-added.135currentresearch/327product/allraw unchanged. BOTH readers prewritten;
-full495negative rules vs separate nonqualifying prefix/cleanup preservation.
-No actualApp/native yet, no threshold lowering/oldcase retry/GC cause inference.
-20of29/fullA02/12minors unchanged.
+A02.33 actual availability observed, fullpath INCOMPLETE/final review pending: [App/Main availability](completion/183-a02-native-state-source-availability.md).
+ONElaunch2modescomplete14phases; NEW changed appElementAvailable:false, otherconfig/
+Mainchecks true. AppBinding/MainInput/nativeReturnObserved, fullAppMain/jointUnknown0.
+1534hashesequal/cleanupPIDprofileAbsent. Fullreader refused unchanged before495;
+prewritten preservation15structural controls qualification:false.68focused/4844full
+PASS;135research/327payload/raw unchanged. No retry/GCevent/oldcause inference.
+20of29/fullA02/12minors unchanged. Diagnosticbranch closed; nextONEV02 currentActive
+overhead source hotpath selection, no metric-policy/TLS change or oldexperiment rerun.
 
 A02.32 source diagnostics complete (ONEreview0C0I1M/12deferredtotal): [App/Main availability](completion/182-a02-app-main-availability.md).
 33focused/4776fullPASS;5OWNEDscenarios preserve exact WeakRef trace/legacyhashes,
