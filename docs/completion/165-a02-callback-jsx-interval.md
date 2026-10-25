@@ -22,3 +22,25 @@ freeze-mutation historicalinputObserved/storageUnknown; borrowing/copy/clone/reu
 pending/aborted/Stop/window/capacity refuse.430registered otherfiles unchanged plus
 native/main/product pins; no retained frameworkVM/browser/native/model executed.
 Fullsuite deferred stableTask2. Next Task2 composedsource harness/qualification.
+
+Task2 source checkpoint:30new owned cases (including one freshclassic control) and
+missing/accessor/throwing tap controls compose existing wrapperless callback recipe,
+automaticJSX lowering and private freshconfig helper. Same-realm CJS modules now
+have independent lexical wrappers. Component bodies never execute. Actual Main
+statically admits1original/2interval branches only, not a rendered app.
+
+Missinghelper RED1file/no predicates; syntheticclassic fixture initially used var
+initializer while pinned grammar requires assignment, stopped before sourcecases.
+Correctedfixture then33PASS2FAIL: runner absent and nestedown reference oracle only
+inspected top-level result. Recorder already retained2distinct intervals; oracle
+now checks actual native returns including ignored inner result. No product change.
+New35checks/affected243PASS4890.680ms, nofail/cancel/skip. Originals/off/on preserve
+getter/key/throw/lexical this/arguments/new.target/length1 and lateintrinsic semantics;
+partial-aborted map, borrowed/reused/clone/wrongitem/copiedprops/refusedgrammar remain
+unsupported. Freeze mutates storedfield but historical input only can qualify.
+These are authored synthetic grammar controls, not actual retainedReact execution.
+
+Zero-option source runner inert/import and invalidargs guard pass. New registration,
+currentcorrected physicalsource hashes, all compiled inputs beforeVM, separate
+started/completed counters, exclusive one-run marker and partialresults implemented.
+Next ONE retainedCore+JSX matrix after this sourcecommit; no oldcase rerun.
