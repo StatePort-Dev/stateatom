@@ -43,4 +43,4 @@
 
 ## Final Closeout
 
-- [ ] ONEfreshwholebounded-source review/effectregrade/ONEtestedI/Cpass/no re-review/native; allrulings/minors recorded, ownworkspacearchived/hashed/removed/cleanlocalcheckpoint. ONEnextmissingdependency from source evidence only.
+- [x] ONEfreshwholebounded-source review/effectregrade/ONEtestedI/Cpass/no re-review/native; allrulings/minors recorded, ownworkspacearchived/hashed/removed/cleanlocalcheckpoint. ONEnextmissingdependency from source evidence only.

@@ -1666,15 +1666,26 @@
       "active_slice": {
         "id": "A02.10",
         "record": "160-a02-react19-prop-copy-input.md",
-        "status": "one-review-I1-fixed62-corrected-source-qualification-pending",
+        "status": "complete-bounded-source-not-native-A02",
         "base": "f48be1a",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
-        "source_vm_contexts": 42,
-        "source_vm_cases": 13,
-        "source_vm_tap_controls": 3
+        "source_vm_contexts": 48,
+        "source_vm_cases": 15,
+        "source_vm_tap_controls": 3,
+        "source_revision": "8169d8d6be0fb035cd17230bb793fde5d3e43308",
+        "focused_checks": 62,
+        "full_source_checks": 3757,
+        "review": {
+          "Critical": 0,
+          "Important": 1,
+          "Minor": 0,
+          "correction_passes": 1,
+          "I1": "fixed-arity helper; iterator RED60/2 to GREEN62"
+        },
+        "source_raw_sha256": "23c55a6ff4bfb98ade84e4901cc04b6f2a56044c4bc4d3717506124491968c59"
       },
       "completed_slices": [
         {
@@ -2156,8 +2167,8 @@
       },
       "current_checkpoint": {
         "record": "160-a02-react19-prop-copy-input.md",
-        "status": "one-review-I1-fixed62-corrected-source-qualification-pending",
-        "next_bounded_step": "ONE review0C1I0M accepted semantic iterator defect; fixed4args62PASS. Commit correction source then fresh retained-source15cases48contexts and fullsuite; old544.../3755 historical only. No rereview/native/browser/model."
+        "status": "complete-bounded-source-not-native-A02",
+        "next_bounded_step": "ONE source feasibility: exact original array callback occurrence to prop-copy input, preserving native callbacks and rejecting reused-element borrowing; no browser/native/installation or whole A02 credit."
       },
       "stopping_point_history": [
         {
@@ -2604,7 +2615,7 @@
           "type_consumers": 2,
           "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
           "standalone_read_inject_native_checks": 3,
-          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
           "runtime_race_checks": 14,
           "isolated_bug_mutations_rejected": 6,
           "native_checks": 29,
@@ -4260,7 +4271,7 @@
       "implementation_plan": "../superpowers/plans/2026-10-25-l02-short-owned-comparison.md",
       "remaining_acceptance": [
         "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
-        "Final candidate actual factual/concision/usefulness comparison preserving historical20\u201330 and>=25/5incomplete/5untrusted criteria",
+        "Final candidate actual factual/concision/usefulness comparison preserving historical20–30 and>=25/5incomplete/5untrusted criteria",
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
@@ -7179,7 +7190,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK \u2014 separate StatePort project",
+      "title": "Production SDK — separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",
@@ -7950,7 +7961,7 @@
         "type_consumers": 2,
         "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
         "standalone_read_inject_native_checks": 3,
-        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
         "runtime_race_checks": 14,
         "isolated_bug_mutations_rejected": 6,
         "native_checks": 29,

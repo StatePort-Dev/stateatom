@@ -1,4 +1,4 @@
-# A02.10 — one native prop-copy input occurrence (review I1 source correction62; fresh source qualification pending)
+# A02.10 — bounded source copy-input qualification complete after one correction pass
 
 Historical preregistration at8d1c9a0 starts f48be1a. V03.27 source diagnosis preserves clean current fields/dirty local
 text/owned history and old26failure; no product or guard change. A02.4 ancestor and
@@ -98,3 +98,33 @@ GREEN62PASS. No rest-array iteration in the runtime helper. Old13case/42context/
 corrected recipe. A separate fresh15case/48context retained-source check and whole
 suite must pass before current-source closeout. This is an explicitly allowed
 source correction check, no old result overwrite, second review or browser/native.
+
+
+Final corrected source qualification (supersedes the initial recipe only): clean
+`8169d8d6be0fb035cd17230bb793fde5d3e43308`, exit0 at2026-10-25T01:48:52.703Z,
+`.artifacts/a02/prop-copy-source/2026-10-25/qualification-2026-10-25T01-48-52-703Z/`.
+Raw SHA256 `23c55a6ff4bfb98ade84e4901cc04b6f2a56044c4bc4d3717506124491968c59`;
+literal `RETAINED_REACT_SOURCE_VM_QUALIFIED_NOT_NATIVE_A02`. All417physical inputs
+matched before/after execution. Fifteen synthetic config cases × original/off/on
+plus3tap controls =48NodeVM contexts;9selected input occurrences Observed and6
+expected Unsupported. Both late iterator cases have0iterator callbacks and preserve
+the original object. Source semantic controls PASS; no native/browser execution.
+
+Independent new `corrected-verify.py`/`corrected-report.json` in the saved-verification
+folder checks this corrected417physical stage and29negative controls without source
+imports or VM reruns. Initial raw544... and its original reader/report remain
+unchanged and historical. Final `npm test`:3757PASS/0fail/0cancel/0skip105170.757ms
+(terminal62981 exit0); focused62PASS. ONE I1 correction pass is complete, no second
+review. All11review scope rulings accepted; prior three unrelated minors deferred.
+Old47source/current327/15V03raw/12L02records/4case-marker/vendor pins preserved.
+
+Closeout changes only the plan checklist among the corrected417frozen inputs:
+416current physical plus exact frozen plan from8169d8d. Initial qualification is
+reconciled separately against its19edb1c inputs; changed sources are never counted
+as current physical matches. Final checkpoint and verified own-workspace archive
+are under `.artifacts/a02/prop-copy-source-review/2026-10-25/`. No old experiment
+rerun, product importer, installed acceptance, field ownership, JSX/default/clone,
+storage transfer or whole A02 credit. Whole20/29 (~69%) unchanged. ONE next bounded
+step: source feasibility of connecting the original array callback occurrence to
+this copy-input occurrence, preserving callbacks and rejecting reused elements;
+no browser launch or automatic integration authorization from this source result.

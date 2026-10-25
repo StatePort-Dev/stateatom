@@ -1,13 +1,15 @@
 # Project status
 
-Active bounded source work: [A02.10](completion/160-a02-react19-prop-copy-input.md).
-Recorder/recipe60focused/full3755PASS; actual retained React19.2.5 source NodeVM
-qualification clean19edb1c,13synthetic semantic cases/3tap controls/42contexts PASS.
-Seven selected input cases Observed,6unsupported; setter disproves inferred storage.
-Source-free saved417stage/27negative checks support source qualification only.
-Current327/oldsource/raw unchanged, no product importer/browser/native/model/cert/
-installation. ONE bounded source review next; field/prop/state/selectedproducer and
-fullA02/whole20/29 remain open. New documents/source VM do not prove product readiness.
+Completed bounded source slice: [A02.10](completion/160-a02-react19-prop-copy-input.md).
+ONE review0C1I0M, one fixed-arity helper correction pass;62focused/full3757PASS.
+Corrected retained React19.2.5 source NodeVM qualification clean8169d8d:
+15synthetic cases/3tap controls/48contexts,9selected inputs Observed/6Unsupported,
+417physical before/after stable; source-free saved verification29negative controls.
+Initial13case/raw544... retained historical. Setter prevents storage inference.
+Current327/oldsource/raw unchanged; no product importer/browser/native/model/cert/
+installation. FullA02/whole20/29 (~69%) remain open. Next ONE source feasibility:
+array-callback occurrence to prop-copy input, reject reused-element borrowing and
+preserve callback semantics. Documents/source VM do not prove product readiness.
 
 Completed bounded diagnosis: [V03.27](completion/159-v03-clean-editor-contract.md).
 Existing clean field follows current resource; own history/epoch guards remain; dirty
