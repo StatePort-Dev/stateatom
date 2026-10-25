@@ -1,4 +1,4 @@
-# A02.12 — product React19 argument forwarding (confirmed bug; preregistered fix)
+# A02.12 — product React19 argument forwarding (source-qualified; review pending)
 
 BASEbcb734d. A02.11 closed source-only75/full3832/ONEreview0C0I0M; no native/product
 lineage upgrade. Current product vendor/helper, observer and collector still forward
@@ -54,3 +54,39 @@ Both started/completed VM context counters now recorded. This is deterministic
 fixture-cause correction, not permission for blind/native retries. Sourcecommit and
 corrected registration precede new VM execution. Fullsuite remains pending stable
 qualification. Original limited native/browser experiments remain exhausted.
+
+
+Corrected actual qualification clean `d3646a20b7333c07db36ddbcf2ac3b4b881446dc`:
+`node experiments/react19-reducer/product-forwarding-source-run.mjs` exit0,
+`.artifacts/a02/product-native-forwarding/2026-10-25/qualification-2026-10-25T02-32-45-534Z/`.
+Raw SHA256 `bb19a5b26dfdeda490cada9f34aebce94b510d147aaacf80c6db976bf867a0b3`;
+literal `RETAINED_REACT_PRODUCT_FORWARDING_SOURCE_VM_QUALIFIED_NOT_INSTALLED_A02`.
+All445actual current physical inputs before/after match;7bundle modules match the
+actual bytes loaded by esbuild. Corrected3engine files are actual physical inputs;
+their before-version Git copies only preserve history and never run as new fallback.
+Fifteen owned config cases × original/off/on =45started/45completed VM contexts;
+all original output/trace/getter/exception/Proxy controls PASS. Actual retained React
+19.2.5 CJS used, actual current product observer bundled; no ReactDOM/component/DOM/
+browser/native writer/model/installed acceptance or state/property lineage claim.
+
+Mutating/throwing iterator callbacks and app mutations0, correct element/props/this/
+arity3 at native element hook; missing/accessor/getter-throw controls0events, ordinary
+including throwing telemetry11cases preserve one native event. Off observer still
+has a harmless metadata entry but no collector ancestry; original uninstrumented
+React has0events. Stop/stale/unadmitted stay Unknown; no ancestry is fabricated.
+Unit synthetic metadata separately checks minimum-pair/2..11arity and9reducer slots;
+that does not claim actual ReactDOM reducer execution in this source matrix.
+
+Independent stdlib reader
+`.artifacts/a02/product-forwarding-saved-verification/2026-10-25/{verify.py,report.json}`
+checked445physical/7loaded source hashes/15cases/45contexts/40negative controls,
+retained failedb8raw, exclusive attempt marker/current-source registration and3exact
+baseGit historical source copies without source imports or VM reruns. Current327
+payload/oldraw/case/vendor pins unchanged. JSON structural checks cannot reconstruct
+live references or causal origin. Saved445physical stage is BEFORE later plan edits;
+final current reconciliation must use an explicit exactGit plan, not old fallback.
+
+Focused65PASS; full `npm test`3863PASS/0fail/0cancel/0skip114960.006ms (terminal61599
+exit0). InvalidCLI exits1/INVALID_ARGUMENTS before new registration/marker/VM; syntax/
+diff PASS. ONE fresh final whole-source review pending, no further source/native
+attempt or browser/model/installation work. WholeA02/20of29 (~69%) unchanged.

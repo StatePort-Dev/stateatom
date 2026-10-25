@@ -1666,7 +1666,7 @@
       "active_slice": {
         "id": "A02.12",
         "record": "162-a02-product-native-forwarding.md",
-        "status": "source65-environment-fixed-corrected-attempt-pending",
+        "status": "source-qualified45-full3863-review-pending",
         "base": "bcb734d",
         "native_runs": 0,
         "model_calls": 0,
@@ -1675,8 +1675,15 @@
         "full_A02": false,
         "issued_atom_payload_changed": false,
         "focused_checks": 65,
-        "source_attempts_completed": 0,
-        "source_attempts_incomplete": 1
+        "source_attempts_completed": 1,
+        "source_attempts_incomplete": 1,
+        "source_revision": "d3646a20b7333c07db36ddbcf2ac3b4b881446dc",
+        "source_vm_cases": 15,
+        "source_vm_contexts_started": 45,
+        "source_vm_contexts": 45,
+        "source_raw_sha256": "bb19a5b26dfdeda490cada9f34aebce94b510d147aaacf80c6db976bf867a0b3",
+        "full_source_checks": 3863,
+        "saved_negative_controls": 40
       },
       "completed_slices": [
         {
@@ -2205,8 +2212,8 @@
       },
       "current_checkpoint": {
         "record": "162-a02-product-native-forwarding.md",
-        "status": "source65-environment-fixed-corrected-attempt-pending",
-        "next_bounded_step": "Commit environment/started-counter source fix, register ONE corrected15case45context sourceVM attempt with exact current hashes/exclusive marker; b8f...firstfailure preserved. No browser/native/criteria change."
+        "status": "source-qualified45-full3863-review-pending",
+        "next_bounded_step": "ONE fresh bounded source review; keep b8firstINCOMPLETE separate from corrected bb19source45PASS; no native/browser/installation or wholeA02 upgrade."
       },
       "stopping_point_history": [
         {

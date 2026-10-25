@@ -30,7 +30,7 @@
 
 - [x] task-start/readbrief/BASE/preregisterbefore3deltas andoldsource/current327/raw. TDD reproduce actual helper/collector/API iterator mutate/throw callbackcounts/arity/receiver/Stop/admission/9slots; meaningful existing product suites retained. `node --test --test-isolation=none tests/engine/react19-native-forwarding.test.mjs tests/engine/react19-product-vendor.test.mjs tests/engine/react19-product-observer.test.mjs` RED->GREEN.
 - [x] Minimal3forward fixes; focused source controls/current preservation/syntax/diff, commit corrected source. No native/VM before current inputs and recipe hash frozen.
-- [ ] Original incomplete attempt preserved, ONE corrected registered sourceVM matrix original/off/on with actual bundled product observer +ownedconfigs, save all controls/no ReactDOM claim; independent saved reader/negative controls, full npm test once stable, resultcommit/task-done.
+- [x] Original incomplete attempt preserved, ONE corrected registered sourceVM matrix original/off/on with actual bundled product observer +ownedconfigs, save all controls/no ReactDOM claim; independent saved reader/negative controls, full npm test once stable, resultcommit/task-done.
 
 ## Final Closeout
 
