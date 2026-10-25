@@ -1,4 +1,4 @@
-# L02.12 — fixed cached-model comparison candidate (source gates in progress)
+# L02.12 — fixed cached-model comparison candidate (one native attempt exhausted; review pending)
 
 Startsffb9815: L02.11 source95/full3560/ONEsource-slice0C0I1M complete/unselected,
 17prior sourcephysical+1Git/current327/78/UI2/oldrawgroups stable. M1selector/resultcase
@@ -44,3 +44,33 @@ and is retained separately; restricted child-CLI failures also remain, same comm
 pass with child execution enabled. Syntax and diff checks pass; source/product/raw
 preservation matches Task1 (25/327/15/10). No browser/profile/preparation/model yet.
 Next Task3: actual preparation/physical preflight/committed fixed case, then max1 run.
+
+Task3 actual attempt (not a successful model evaluation): prepared output
+`.artifacts/l02/comparison-native/2026-10-25T00-12-15-579Z`, exact2file addon, installed
+CLI Chrome156.0.8078.47 (historical baseline155 remains historical),437physical-input
+preflightPASS/browserfalse/modelfalse, fixedcase committedf83241a before launch.
+`node tests/integration/local-comparison-native.mjs docs/testing/l02-comparison-case78.json`
+ran once (terminal70267,exit1), rawSHA256
+`1c0bcda6e409435c6722f29d54163a9bee512240187b09be1541e06e8fc57afd`, literal
+`INCOMPLETE_COMPARISON_CANDIDATE_NOT_L02`. Case is exhausted; no retry.
+
+Acquired authenticated Xephyr and DBus launcher only. Chrome log explicitly reports
+`FATAL ... Socket path too long` beneath the registered private TMPDIR; driver times
+out waiting for DevTools endpoint at line92. No owned-browser attestation, extension
+installation, loaded-JS proof, API availability, request, return or screenshot exists.
+All30main+4separate cases unvisited,0executed fallback rows; registered10eligible/
+24template-only counts are not execution results. No model-output clauses or latency
+exist to grade. Factuality/concision NOT_EVALUATED and usefulness NOT_DEMONSTRATED
+for all34, not a finding that the unexecuted model is useless. No prompt tuning or
+model download/security/cert/userprofile changes; current327 and oldraw unchanged.
+
+Known launcher4183723/start15158934 and desktop4183719/start15158926 retired/Absent;
+lease released. Eight cleanup flags true, browser/console false (not acquired/health
+NotCollected); do not call this all-clean/browser-health PASS. Source-free Python
+saved reader `.artifacts/l02/comparison-native-saved-verification/2026-10-25/verify.py`
+rehashes437 current physical inputs/327product/29hostfiles (27original+2addon),
+15V03raw/10L02records,23negative controls and current host-PID absence PASS.
+Its report verifies this refusal, never native/model acceptance. `clauses.json`
+records actual zero-output/unvisited status against registered templates. No PNG
+was produced to inspect. Review must assess the preparation TMPDIR length defect;
+no weakening the original case or resurrecting exhausted old campaigns.

@@ -49,9 +49,9 @@
 **Files:** docs/testing/l02-comparison-case78.json; freshignoredoutput/completion157/current pointers.
 **Interfaces:** preparedexactsource+host+binaries/profilewitness; nativeactualeffectsdistinctfromsourcechecks/oldcampaigns.
 
-- [ ] Prepare exact2fileaddon/nonce/currenttooling/hashes/profileownership; physicalpreflightPASS/browserfalse, commitcase beforeONEactualrun. Pollsamehandle/no retry. Cached unavailable/busy/setupfailure preserved; no changedsecurity/trust/profileoutsideownedcache/download.
-- [ ] Sourcefree saved verifier hashes/APIevents/loadedbyteproof/IDs/clientrejections/cleanup/negativecontrols; agentper-clause factual/unknown/concision/usefulness table over actualoutputs vsoldtemplates. Originalall30+separate4/unvisited/10eligible24templates explicit. InspectactualregisteredPNGcandidates ifproduced. Literalcollection/incomplete and qualityfailures stay; no product/fullL02 credit.
-- [ ] Localresultcommit/task-done with focusedsource command, no modelrepeat/fullsuite forunchangedsource.
+- [x] Prepare exact2fileaddon/nonce/currenttooling/hashes/profileownership; physicalpreflightPASS/browserfalse, commitcase beforeONEactualrun. Pollsamehandle/no retry. Cached unavailable/busy/setupfailure preserved; no changedsecurity/trust/profileoutsideownedcache/download.
+- [x] Sourcefree saved verifier hashes/APIevents/loadedbyteproof/IDs/clientrejections/cleanup/negativecontrols; agentper-clause factual/unknown/concision/usefulness table over actualoutputs vsoldtemplates. Originalall30+separate4/unvisited/10eligible24templates explicit. InspectactualregisteredPNGcandidates ifproduced. Literalcollection/incomplete and qualityfailures stay; no product/fullL02 credit.
+- [x] Localresultcommit/task-done with focusedsource command, no modelrepeat/fullsuite forunchangedsource.
 
 ## Final closeout
 

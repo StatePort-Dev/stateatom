@@ -4247,10 +4247,12 @@
       "active_slice": {
         "id": "L02.12",
         "record": "157-l02-comparison-native-candidate.md",
-        "status": "source118-full3651-no-model",
+        "status": "one-native-exhausted-incomplete-zero-api",
         "base": "ffb9815",
         "model_calls": 0,
-        "native_started": false,
+        "native_started": true,
+        "native_runs": 1,
+        "case_exhausted": true,
         "maximum_native_runs": 1,
         "full_L02_acceptance": false,
         "product_provider_selected": false,
@@ -4266,8 +4268,8 @@
       "execution_record": "157-l02-comparison-native-candidate.md",
       "current_checkpoint": {
         "record": "157-l02-comparison-native-candidate.md",
-        "status": "source118-full3651-no-model",
-        "next_bounded_step": "Source118/full3651PASS; prepare/physicalpreflight/commit new fixedcase, then max1actualrun."
+        "status": "one-native-exhausted-incomplete-zero-api",
+        "next_bounded_step": "ONEcase exhausted/INCOMPLETE, socket path too long before browser/API; next ONE bounded review/concrete source preparation defect, no native retry."
       },
       "completed_slices": [
         {
@@ -7202,8 +7204,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "L02.12-task2-source118-full3651-no-model",
-    "next_item": "L02.12 Task1/2 source118/full3651PASS; next preparation/physicalpreflight/casecommit before max1actualcase.",
+    "current_increment": "L02.12-one-native-exhausted-incomplete-zero-api",
+    "next_item": "L02.12 onecase exhausted: Chrome socket path too long before attestation/API; source118/full3651 and saved437/23negative verified. Next ONE bounded review/concrete preparation defect, no native retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7230,7 +7232,7 @@
     "active_item": {
       "id": "L02",
       "record": "157-l02-comparison-native-candidate.md",
-      "status": "source118-full3651-no-model"
+      "status": "one-native-exhausted-incomplete-zero-api"
     },
     "completed_increments": [
       {
@@ -9929,7 +9931,7 @@
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "ffb9815",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "L02.12 Task1/2 source118/full3651PASS; next preparation/physicalpreflight/casecommit before max1actualcase.",
+    "next_bounded_step": "L02.12 onecase exhausted: Chrome socket path too long before attestation/API; source118/full3651 and saved437/23negative verified. Next ONE bounded review/concrete preparation defect, no native retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

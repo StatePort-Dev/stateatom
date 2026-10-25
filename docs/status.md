@@ -1,9 +1,13 @@
 # Project status
 
 Active bounded work: [L02.12](completion/157-l02-comparison-native-candidate.md),
-Task1/2 fixedcase+ownedrunner118focused/full3651PASS. Next preparation/physical preflight/committed case beforeone actualrun. Original30+4/
-10eligible24fallback/qualitycriteria/current78/UI2/oldresults preserved. No actualmodel/
-profile/browser/download fromplanning; mandatoryL02 and whole20/29 remain open.
+ONE attempted case exhausted/INCOMPLETE before browser attestation: installed Chrome156
+fatal socket path too long under private TMPDIR. Source118/full3651PASS and437physical
+preflight do not establish model readiness.0APIcalls/0fallbackrows, all30+4unvisited,
+known launcher/desktop retired+lease released; console/browser health NotCollected.
+Saved-source-free437hash/23negative verification supports refusal only. ONE bounded
+review next, including concrete preparation defect; no native retry. Whole20/29 and
+mandatoryL02 remain open.
 
 Completed bounded source slice: [L02.11](completion/156-l02-comparison-provider.md).
 Namedv2provider/fixed34evaluationdocument95focused/full3560PASS, ONEsource-slice
