@@ -1,7 +1,7 @@
 # Project status
 
-A02.29 source checks complete, final review pending: [native returned-state reference](completion/179-a02-native-state-return-source.md).
-Four NEW files;52focused/4645fullPASS,16OWNEDsemanticVMs, actualReactDOM/App
+A02.29 source checks/review complete (0C2Ifixed0newM,11oldminors deferred): [native returned-state reference](completion/179-a02-native-state-return-source.md).
+Four NEW files;55focused/4648fullPASS,18OWNEDsemanticVMs, actualReactDOM/App
 compile-only.119research/327payload/priorraw unchanged; no native acquisition.
 Private exact-reference association only, allstrongoriginsUnknown/fullA02open.
 20/29 unchanged. NextONEseparate native integration/acquisition qualification.

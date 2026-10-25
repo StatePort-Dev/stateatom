@@ -31,8 +31,8 @@ No native/sourcequalification/browser/model/product/UI/SDK/otherrepo/publication
 **Files NEW:** experiments/react19-reducer/native-state-return-transform.mjs; native-state-return-observer.mjs; tests/engine/react19-native-state-return-transform.test.mjs; react19-native-state-return-observer.test.mjs. Record179/status/index and registration.
 **Interfaces:** instrumentNativeStateReturnGrammar, transformPinnedNativeStateReturn, prepareNativeStateApp; createNativeStateReturnObserver({page,enabled,policy}), appEnter/result/bound/returned/exit,nativeTap,snapshot/lookupFrame/lifecycle. Grammar returns code/policy/receipt/sourceOnly/refusal; pinned wrapper admits exact vendor only.
 
-- [ ] task-start/readbrief/BASE/preregister119/327/A0228beforecode. RED exact references/weak/off/lifecycle/metadata/payload/semantic/collision/refusal controls; implement4newfiles only; focused/syntax/diff/current protected hashes/full npmPASS.
-- [ ] Record source-only outputs/results/protection/strongUnknown and actual ownedVM counts; sourcecommit/task-done focusedPASS. No real native/App/ReactDOM or qualification.
+- [x] task-start/readbrief/BASE/preregister119/327/A0228beforecode. RED exact references/weak/off/lifecycle/metadata/payload/semantic/collision/refusal controls; implement4newfiles only; focused/syntax/diff/current protected hashes/full npmPASS.
+- [x] Record source-only outputs/results/protection/strongUnknown and actual ownedVM counts; sourcecommit/task-done focusedPASS. No real native/App/ReactDOM or qualification.
 
 ## Final Closeout
 

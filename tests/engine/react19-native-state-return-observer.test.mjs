@@ -32,3 +32,10 @@ test('constructor policy is copied and cannot mutate event admission later',()=>
 test('foreign native policy source/function shapes refuse constructor',()=>{for(const change of [p=>p.native.returnSites[0].sourceDigest='f'.repeat(64),p=>p.native.returnSites[0].functionName='Other',p=>p.native.renderSites.pop(),p=>p.native.version='20.0.0']){const p=policy();change(p);assert.throws(()=>createNativeStateReturnObserver({page:'owned',policy:p}));}});
 test('captured weak-map and array intrinsics ignore later application replacement',()=>{const{o,p}=setup(),get=WeakMap.prototype.get,push=Array.prototype.push,it=Array.prototype[Symbol.iterator];let calls=0,s;try{WeakMap.prototype.get=()=>{calls++;throw Error('get');};Array.prototype.push=()=>{calls++;throw Error('push');};Array.prototype[Symbol.iterator]=()=>{calls++;throw Error('iterator');};program(o,p);s=o.sealWindow().snapshot;}finally{WeakMap.prototype.get=get;Array.prototype.push=push;Array.prototype[Symbol.iterator]=it;}assert.equal(calls,0);assert.equal(s.status,'Observed');});
 test('finite App frame and native-render metadata capacities refuse without retention growth',()=>{for(const type of ['frames','renders']){const{o,p}=setup();if(type==='frames')for(let i=0;i<65;i++)program(o,p);else for(let i=0;i<129;i++)o.nativeTap('render-component',{},function App(){},p.native.renderSites[0].id);unknown(o.sealWindow().snapshot);assert.equal(o.retention().overflow,true);assert(o.retention().frames<=64);assert(o.retention().renders<=128);}});
+
+test('duplicate known native tuple after App exit and before seal invalidates the window',()=>{
+ const{o,p}=setup(),v=program(o,p);o.nativeTap('state-result',v.tuple,{},v.fiber,p.native.returnSites[0].id,v.state,v.dispatch);unknown(o.sealWindow().snapshot);assert.equal(o.retention().invalid,true);
+});
+test('unrelated out-of-frame tuple does not invalidate a completed association',()=>{
+ const{o,p}=setup();program(o,p);o.nativeTap('state-result',[[],()=>{}],{},{},p.native.returnSites[0].id,[],()=>{});assert.equal(o.sealWindow().snapshot.status,'Observed');
+});

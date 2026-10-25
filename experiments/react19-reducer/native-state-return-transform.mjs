@@ -17,7 +17,7 @@ export function instrumentNativeStateReturnGrammar(source,file,{originalSource=s
   const ast=parse(source,{sourceType:'script'}),original=parse(originalSource,{sourceType:'script'}),owners=functions(ast),originals=functions(original),returnSites=[],renderSites=[];let unsafe=false;
   for(const [name,p]of owners){
    const expected=parameters[name];if(p.node.async||p.node.generator||p.node.params.length!==expected.length||p.node.params.some((n,i)=>!t.isIdentifier(n,{name:expected[i]})))throw Error('Native owner parameter mismatch');
-   p.get('body').traverse({Function(q){q.skip();},CallExpression(q){if(t.isIdentifier(q.node.callee,{name:'eval'}))unsafe=true;},WithStatement(){unsafe=true;}});
+   p.get('body').traverse({CallExpression(q){if(t.isIdentifier(q.node.callee,{name:'eval'}))unsafe=true;},WithStatement(){unsafe=true;}});
    if(unsafe)throw Error('Dynamic native scope refused');
   }
   for(const name of returnNames){

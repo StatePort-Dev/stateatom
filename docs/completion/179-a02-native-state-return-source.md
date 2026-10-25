@@ -14,14 +14,14 @@ it reads no tuple slots or hook/queue/fiber payload properties. Duplicate,
 mismatched, missing, stale, stopped, weak-unavailable and capped paths refuse.
 
 Checks: node --test --test-isolation=none tests/engine/react19-native-state-return-*.test.mjs
-52/52 PASS,1564.245294ms. npm test4645/4645 PASS,0failed/0skipped,
-116511.342075ms,exit0. Four syntax checks and git diff --check exit0.
+Initial52/52PASS1564.245294ms/full4645PASS116511.342075ms. After review,
+55/55PASS1598.090896ms/full4648/4648PASS0failed0skipped118273.137462ms,exit0. Four syntax checks and git diff --check exit0.
 1203 registered hash comparisons equal, including119currentresearch/327product,
 all historical groups and3pre-code documents. Exact checks/logs retained in the
 plan workspace pending final review/archive.
 
-The semantic controls used16 OWNED VM contexts:12 native original/transformed,
-one App identity and three composed controls. They cover getter count/order,
+The semantic controls used18 OWNED VM contexts per final test pass:12 native original/transformed,
+one App identity, three composed and two nested-eval semantic controls. They cover getter count/order,
 throw identity, function shapes, lexical collisions, proxy opacity, mismatches,
 Off/Stop/windows and weak/bound constraints. Actual retained ReactDOM and App
 were compiled/parsed ONLY. Initial RED imports established missing modules,
@@ -34,7 +34,18 @@ revision/storage/ownership/instance/selectedDOM Unknown, fullA02 false. No nativ
 qualification, browser, real App invocation, model or saved-reader run occurred.
 No product capability or readiness credit follows from these source checks.
 
-20/29/fullA02 and11 old deferred minors unchanged. Final review pending.
+Final review: ONE fresh gpt-6-astra/high,0Critical2Important0newMinor. Both
+Important fixed in ONE tested pass: nested direct eval/getters/closures now cause
+whole-source refusal; duplicate native tuple after App exit/before seal invalidates.
+Both new behavioral controls failed before fixes (53PASS2FAIL) and passed after.
+Unrelated out-of-frame tuples remain accepted as irrelevant. No rereview.
+Sixteen declined review domains have explicit effect/cost rulings in the ledger:
+native/installed execution; event authenticity; state/index/hook kind; commit/revision;
+ownership/DOM; scheduling; production wiring; unsupported profiles; preinstalled
+intrinsics; GC/performance; independent repeats; historical-current proof; oldminors;
+UI/model/SDK/release; archive closeout. No missing premise is converted to evidence.
+
+20/29/fullA02 and11 old deferred minors unchanged. Review correction complete.
 Next ONE bounded step: separately scoped native integration and actual acquisition
 qualification of this exact returned-state-reference premise; no generic ownership
 kernel, oldnative retry, SDK, otherrepo, publication or user-profile changes.

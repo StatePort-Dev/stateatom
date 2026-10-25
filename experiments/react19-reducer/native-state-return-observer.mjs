@@ -48,6 +48,7 @@ export function createNativeStateReturnObserver({page,enabled=true,policy}={}){
     renderCount++;put(renderMap,a,{id:number('render'),component:new Ref(b),componentId:id(b),fiberId:id(a),site:s});return a;
    }
    if(kind!=='state-result')return a;
+   if(object(a)&&read(tupleMap,a)){refuse('Duplicate native return tuple within window');return a;}
    const owner=current();if(!owner)return a;if(!tick())return a;
    const s=typeof d==='string'&&d.length===64?returnTags[d]:null,render=object(c)?read(renderMap,c):null;
    if(!s||owner.returned||owner.closed||owner.native||!isArray(a)||!object(b)||!object(c)||!isArray(e)||typeof f!=='function'||!render||weak(render.component)!==weak(owner.component)||read(tupleMap,a)){refuse('No unique same-App native return reference');return a;}
