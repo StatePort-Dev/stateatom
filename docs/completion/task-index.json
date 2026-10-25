@@ -6352,51 +6352,19 @@
       "optional": false,
       "execution_record": "159-v03-clean-editor-contract.md",
       "active_slice": {
-        "id": "V03.28",
-        "title": "Current clean-editor external ABA contract",
-        "status": "closed-bounded-attempt-native-incomplete-source-I1-I2-fixed",
-        "record": "186-v03-current-clean-editor.md",
-        "design": "../superpowers/specs/2026-10-26-v03-current-clean-editor-design.md",
-        "plan": "../superpowers/plans/2026-10-26-v03-current-clean-editor.md",
-        "guard_source_checks": 191,
-        "new_guard_controls": 29,
-        "new_driver_checks": 31,
+        "id": "V03.29",
+        "title": "Separately frozen corrected current-clean acquisition",
+        "status": "source-complete-preparation-pending-native0",
+        "record": "187-v03-corrected-current-clean-editor.md",
+        "design": "../superpowers/specs/2026-10-26-v03-corrected-current-clean-editor-design.md",
+        "plan": "../superpowers/plans/2026-10-26-v03-corrected-current-clean-editor.md",
+        "focused_checks": 241,
         "product_inputs_unchanged": 327,
-        "native_runs": 1,
+        "retained_raw": 16,
+        "native_runs": 0,
         "maximum_native_runs": 1,
         "whole_V03_complete": false,
-        "source_checks": 4918,
-        "registered_inputs": 585,
-        "case": "../testing/current-clean-editor-case80.json",
-        "reader_controls_source_only": {
-          "full_negative": 26,
-          "preservation_structural": 14
-        },
-        "native_status": "INCOMPLETE_CURRENT_CLEAN_EDITOR_CONTRACT",
-        "native_qualification": false,
-        "raw_sha256": "f57dc0dd4b810d46bbfeaf9e643890f33a20926f977a9edf94bec05733d16c66",
-        "completed_native_checks": 3,
-        "known_source_finding": "Own revision does not imply externalRevision:false; flag reflects historical r.epoch>0. Preserve incomplete case; source correction via ONEfinalreview pass only.",
-        "review_pending": false,
-        "focused_checks": 64,
-        "review": {
-          "critical": 0,
-          "important": 2,
-          "important_fixed": 2,
-          "minor": 1,
-          "deferred_total": 14,
-          "correction_passes": 1,
-          "re_review": false,
-          "native_repeated": false,
-          "report": ".artifacts/v03/current-clean-editor-review/2026-10-26/report.md"
-        },
-        "native_input_evidence": {
-          "original": 585,
-          "current_physical": 580,
-          "exact_prepared_git": 5,
-          "qualification": false
-        },
-        "corrected_source_revision": "69bf98fe32778de181e7ddf934ce35ce8dccb4b0"
+        "source_checks": 4933
       },
       "completed_slices": [
         {
@@ -7468,9 +7436,9 @@
         }
       ],
       "current_checkpoint": {
-        "record": "186-v03-current-clean-editor.md",
-        "status": "closed-bounded-attempt-native-incomplete-source-I1-I2-fixed",
-        "next_bounded_step": "ONEV03.29 separately freeze corrected-source current-clean case/readers with full DOM/epoch predicates; old28exhausted/no retry, no TLS/trust/otherrepo/policy changes."
+        "record": "187-v03-corrected-current-clean-editor.md",
+        "status": "source-complete-preparation-pending-native0",
+        "next_bounded_step": "Finish source/full checks; freeze distinct corrected80case and prewritten readers before maxONEnewnative; old28exhausted. Close mechanism campaign if incomplete."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-v03-current-clean-editor.md",
       "implementation_plan": null,
@@ -7771,8 +7739,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.28-closed-native-incomplete-source-I1-I2-fixed",
-    "next_item": "ONEV03.29 separately freeze corrected-source current-clean case/readers with full DOM/epoch predicates; old28exhausted/no retry, no TLS/trust/otherrepo/policy changes.",
+    "current_increment": "V03.29-source-complete-native0",
+    "next_item": "Finish source/full checks; freeze distinct corrected80case and prewritten readers before maxONEnewnative; old28exhausted. Close mechanism campaign if incomplete.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7798,8 +7766,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "V03",
-      "record": "186-v03-current-clean-editor.md",
-      "status": "closed-bounded-attempt-native-incomplete-source-I1-I2-fixed"
+      "record": "187-v03-corrected-current-clean-editor.md",
+      "status": "source-complete-preparation-pending-native0"
     },
     "completed_increments": [
       {
@@ -10494,11 +10462,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "ONEreview0C2Ifixed1newM(total14deferred);64focused/4918fullsourcePASS; product327stable, native585now580current+5preparedGit/INCOMPLETE unchanged. Oldreader refusal preserved/no rerun, unvisited20/Close/QA unqualified,20of29unchanged.",
+    "current_activity_note": "Newclosed corrected case route/private factual reuse;241focusedPASS/product327/16raw/frozen28readers stable; 4933fullPASS/native0. Old28INCOMPLETE preserved/20of29unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "69bf98fe32778de181e7ddf934ce35ce8dccb4b0",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONEV03.29 separately freeze corrected-source current-clean case/readers with full DOM/epoch predicates; old28exhausted/no retry, no TLS/trust/otherrepo/policy changes.",
+    "next_bounded_step": "Finish source/full checks; freeze distinct corrected80case and prewritten readers before maxONEnewnative; old28exhausted. Close mechanism campaign if incomplete.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

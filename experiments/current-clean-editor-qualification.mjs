@@ -8,9 +8,12 @@ const externalRestoreAvailabilityPass='PASS_EXPLICIT_EXTERNAL_RESTORE_AVAILABILI
 const convergedRestoreAvailabilityPass='PASS_CONVERGED_EXTERNAL_RESTORE_AVAILABILITY_NOT_FULL_V03';
 export const currentCleanEditorPass='PASS_CURRENT_CLEAN_EDITOR_CONTRACT_NOT_FULL_V03';
 const currentIncomplete='INCOMPLETE_CURRENT_CLEAN_EDITOR_CONTRACT';
+export const correctedCurrentCleanEditorPass='PASS_CORRECTED_CURRENT_CLEAN_EDITOR_CONTRACT_NOT_FULL_V03';
+const correctedIncomplete='INCOMPLETE_CORRECTED_CURRENT_CLEAN_EDITOR_CONTRACT';
 const checks=['exact80-package-and-node-admission','original-picker-and-open','live10-and-disabled-restoration','live20-and-disabled-restoration','native-close-preserves-value','console-host-and-rendered-checks'];
 const externalChecks=[...checks];externalChecks[2]='live10-external-aba-read-and-disabled-restoration';externalChecks[3]='live20-external-aba-read-and-disabled-restoration';
 const convergedChecks=[...externalChecks];convergedChecks[2]='live10-current-clean-external-aba-read-and-disabled-restoration';convergedChecks[3]='live20-current-clean-external-aba-read-and-disabled-restoration';
+const correctedChecks=[...convergedChecks];correctedChecks[2]='live10-corrected-current-clean-external-aba-read-and-disabled-restoration';correctedChecks[3]='live20-corrected-current-clean-external-aba-read-and-disabled-restoration';
 const cleanup=['appConsole','inspector','browser','vite','viteLogWrite','viteLogClose','api','desktop','pidsAbsent'];
 const physical=['tabId','origin','run','document','node','selector','property','build'];
 const identity=r=>({id:r.id,kind:r.kind,type:r.type,writable:r.writable,locator:r.locator});
@@ -142,8 +145,8 @@ function guardExternalBehaviorFacts(r){
  }
  return externalRestoreAvailabilityPass;
 }
-export function guardCurrentCleanEditor(r){
- assert.equal(r.schema,'stateatom.current-clean-editor-native/1');assert.equal(r.protocolMode,'current-clean-external-aba');guardExternalBehaviorFacts(r);
+function guardCurrentCleanEditorFacts(r){
+ guardExternalBehaviorFacts(r);
  for(const x of r.externalInteractions)for(const e of x.appEdits){
   const d=e.immediateDom;assert.equal(d.minValue,String(e.value));assert.equal(d.minFocused,true);assert.equal(d.ready,'complete');assert.equal(d.imagesReady,true);assert.equal(d.errorOverlay,false);
   assert(Number.isFinite(e.immediateObservedAt)&&e.immediateObservedAt>=e.startedAt);
@@ -160,23 +163,27 @@ export function guardCurrentCleanEditor(r){
   }
   assert.equal(streak,3);assert.deepEqual(e.snapshot,g.samples.at(-1));assert.deepEqual(e.dom,e.snapshot.dom);
  }
- return currentCleanEditorPass;
+ return true;
 }
+export function guardCurrentCleanEditor(r){assert.equal(r.schema,'stateatom.current-clean-editor-native/1');assert.equal(r.protocolMode,'current-clean-external-aba');guardCurrentCleanEditorFacts(r);return currentCleanEditorPass;}
+export function guardCorrectedCurrentCleanEditor(r){assert.equal(r.schema,'stateatom.corrected-current-clean-editor-native/1');assert.equal(r.protocolMode,'corrected-current-clean-external-aba');guardCurrentCleanEditorFacts(r);return correctedCurrentCleanEditorPass;}
 export function currentCleanConvergenceReady(p,before,ownValue,appValue,panelURL){
  guardCurrentCleanEditSnapshot(p,before,ownValue,appValue,panelURL);
  assert(Array.isArray(p.dom.products)&&p.dom.products.length<=2&&p.dom.products.every((v,i,a)=>[1,2].includes(v)&&(i===0||a[i-1]<v)));
  const row=currentResource(p),owned=before.inputs.history.at(-1).outcomes[0].after;
  return row.resource.value===appValue&&row.resource.revision!==owned.revision&&row.externalRevision===true&&JSON.stringify(p.dom.products)===JSON.stringify(ownValue===10?[1]:[]);
 }
-export function finalizeCurrentCleanEditor(r){
+function finalizeCurrentCleanEditorFacts(r,pass,incomplete,guard,expectedChecks){
  try{
-  assert.equal(r.status,currentCleanEditorPass);guardCurrentCleanEditor(r);
+  assert.equal(r.status,pass);guard(r);
   for(const k of ['console','appConsole','errors'])assert.deepEqual(r[k],[]);
   const c=r.appConsoleCollection;assert.equal(c.schema,'stateatom.restore-app-console/1');assert.equal(c.status,'Stopped');assert.equal(c.tabId,r.tabId);assert.equal(c.overflow,false);assert.equal(c.seen,r.appConsole.length);assert.deepEqual(c.records,r.appConsole);assert(Number.isFinite(c.startedAt)&&c.startedAt<=r.baseline.startedAt&&Number.isFinite(c.stoppedAt)&&c.stoppedAt>=r.closed.finishedAt);
-  assert.deepEqual(r.checks,convergedChecks.map(name=>({name,status:'PASS'})));
+  assert.deepEqual(r.checks,expectedChecks.map(name=>({name,status:'PASS'})));
   for(const k of cleanup)assert.equal(r.cleanup[k],true);
   assert.equal(r.inputsUnchanged,true);assert(r.inputsBefore&&Object.keys(r.inputsBefore).length>0);assert.deepEqual(r.inputsAfter,r.inputsBefore);
   assert.deepEqual(r.views.map(v=>v.width),[1100,390]);for(const v of r.views){assert.equal(v.overflow,false);assert.equal(v.rootFont,'13px');}
-  return r.status=currentCleanEditorPass;
- }catch{return r.status=currentIncomplete;}
+  return r.status=pass;
+ }catch{return r.status=incomplete;}
 }
+export function finalizeCurrentCleanEditor(r){return finalizeCurrentCleanEditorFacts(r,currentCleanEditorPass,currentIncomplete,guardCurrentCleanEditor,convergedChecks);}
+export function finalizeCorrectedCurrentCleanEditor(r){return finalizeCurrentCleanEditorFacts(r,correctedCurrentCleanEditorPass,correctedIncomplete,guardCorrectedCurrentCleanEditor,correctedChecks);}
