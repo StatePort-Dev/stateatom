@@ -51,3 +51,15 @@ browser sandbox/headless/automation flags stay unchanged; no NodeGCflag, model,
 cert/trust/credential/userprofile/SDK/otherrepo/publish/UI work. IfINCOMPLETE, retain
 accepted0/unvisited/reader refusal and close this acquisition campaign without retry.
 No source test or this document qualifies actual App/reference lineage or fullA02.
+
+## Fixed case before native
+Prepare94ab692 and actualpreflight PASS,1643unique runtime inputs including case.
+Case docs/testing/retained-app-state-source-case.json SHA256
+1cff80c2bd8e528feef50b2d58b194a101b5963c735a0f73bc4de28c4ce9273a.
+Output `.artifacts/a02/retained-app-state-source/2026-10-25T23-43-35Z`.
+ActualfactorySHA9c20b0e2abe3a043455b12728fd0fe8cbfa4f2c3bf0d329a6a33de92069f22fe.
+Both prewritten readers, controlscript/report and ASTparity/diffs are frozen inputs.
+Case explicitly records strongresearch retention limit64/Unknown graphbytes and
+productPolicyApproved:false. Native marker absent at this checkpoint.
+One original/off/on acquisition follows this fixedcase; all original thresholds
+and sandbox/headless/automation/loopback transport unchanged. No GCflag in browser.
