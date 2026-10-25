@@ -1,13 +1,14 @@
 # Project status
 
-Active bounded work: [A02.16](completion/166-a02-original-main-jsx-native.md).
-Current source stable217focused/full4184PASS; protected460files including82prior
-research/327payload unchanged. RealMain source overlay/source-witness/partial fault
-controls ready; no original Main body/browser yet. Next resource-free prepare/
-preflight+casecommit BEFORE max1new owned sandboxed headless original/off/on case.
-Public startup reports stay separate from original/proc lanes; old4cases exhausted,
-no legacywaiver/blankretry/flags/install/cert/trust/userprofile/model/SDK/publication.
-Whole20/29/fullA02 unchanged/five prior minors deferred.
+Active bounded attempt: [A02.16](completion/166-a02-original-main-jsx-native.md).
+217focused/full4184 sourcePASS, nativecase exhausted/INCOMPLETE before app:
+public startup API unavailable (automation prerequisite),0modes/0of18phases.
+Owner/CDP/PID/start/exe/profile matched, all launched resources closed/profile/PID
+Absent; HTTP/app contexts neverstarted. Saved542physical/44negative controls, no
+native rerun. Planning missed an already known API prerequisite; next ONE final
+fresh review, then source-only exact launcher/switch provenance before any newcase.
+Oldcases/criteria unchanged, no title reconstruction/flagretune/install/cert/trust/
+userprofile/keyring/model/SDK/publication.20/29/fullA02 unchanged/five prior minors.
 
 Completed bounded source slice: [A02.15](completion/165-a02-callback-jsx-interval.md).
 ONEreview0C1I0M; rejected-metadata owner replacement fixed once, RED36/6->GREEN42/

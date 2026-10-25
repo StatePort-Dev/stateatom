@@ -39,7 +39,7 @@
 **Interfaces:** --prepare CASE OUT and --preflight CASE are resource-free; run CASE clean/frozen/exclusive. Prepare2bundles original/observed +Main/nativeJSX receipts/factory/loaded input hashes/pins/actual Node+browser identity; policyTask1. BrowserServer.process+publicCDP+proc binder, own localserver/contexts/UI phases/saved literal results/cleanup.
 
 - [x] task-start/read brief/BASE. TDD CLI inert/default-refusal, changed/extra source and pin/recipe/compiled/factory/case refusal; source build actualMain static receipts without app execution; actual driver boundary fault controls preserve partial metadata/phases, counters/deadline, Stop/document/network/cleanup. No test launches browser. RED->GREEN; sourcecommit/full npm test stable, no native proof yet.
-- [ ] Prepare exactcase/uniqueout/actualsourcegraph, resource-free preflight, commitcase BEFORE native. ONE new headless owned original/off/on run; preserve literal INCOMPLETE if fails, no retry/changedflags. Source-free saved reader checks hashes/exact current-or-historical revisions/counters/scoped native facts/negatives/cleanup, no rerun. Results localcommit/task-done.
+- [x] Prepare exactcase/uniqueout/actualsourcegraph, resource-free preflight, commitcase BEFORE native. ONE new headless owned original/off/on run; preserve literal INCOMPLETE if fails, no retry/changedflags. Source-free saved reader checks hashes/exact current-or-historical revisions/counters/scoped native facts/negatives/cleanup, no rerun. Results localcommit/task-done.
 
 ## Final Closeout
 

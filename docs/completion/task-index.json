@@ -1665,14 +1665,23 @@
       "active_slice": {
         "id": "A02.16",
         "record": "166-a02-original-main-jsx-native.md",
-        "status": "source-stable-awaiting-one-frozen-native-case",
+        "status": "source-complete-native-startup-incomplete-pending-one-review",
         "base": "bac767d494646b831d059082b0357438800c4f6c",
-        "native_runs": 0,
+        "native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
         "focused_checks": 217,
-        "full_source_checks": 4184
+        "full_source_checks": 4184,
+        "native_modes_visited": 0,
+        "native_phases_visited": 0,
+        "native_phases_unvisited": 18,
+        "native_result": "INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02",
+        "native_raw_sha256": "e0f31256c7a64346597bfb783b221202d4993d0c5e6801a45747c0119384dca7",
+        "prepared_source_revision": "5837358bd51b7c7ef4bfdf2add71c91d81228af7",
+        "execution_revision": "eda4cd45604a738ef0025ebd6641bb291f26a60a",
+        "saved_negative_controls": 44,
+        "JSX_product_supported": false
       },
       "completed_slices": [
         {
@@ -2302,8 +2311,8 @@
       },
       "current_checkpoint": {
         "record": "166-a02-original-main-jsx-native.md",
-        "status": "source-stable-awaiting-one-frozen-native-case",
-        "next_bounded_step": "Resource-free prepare/preflight aftersourcecommit; commit frozen case BEFORE max1ownedheadless original/off/on run. No native/Main runtime proof yet."
+        "status": "source-complete-native-startup-incomplete-pending-one-review",
+        "next_bounded_step": "ONE final fresh review; currentcase exhausted0app18unvisited. Then exact source-only launcher/startup-switch provenance before any new separatelybounded Maincase; no retry/retune/legacywaiver."
       },
       "stopping_point_history": [
         {

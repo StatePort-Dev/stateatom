@@ -72,3 +72,46 @@ then at most ONE new sandboxed owned headless original/off/on native case. Case 
 prepared/run yet; no actual Main/native/product/wholeA02 capability proof from this
 packet.20/29 unchanged/five minors deferred; no flags/install/cert/trust/userprofile/
 keyring/model/SDK/otherrepo/publication changes.
+
+Resource-free preparation clean5837358bd51b7c7ef4bfdf2add71c91d81228af7 captured541
+physical inputs; preflight542includingcase passed, no browser. Frozen casecommit
+eda4cd45604a738ef0025ebd6641bb291f26a60a, docs/testing/callback-jsx-main-native-case.json;
+out .artifacts/a02/callback-jsx-main-native/2026-10-25T05-24-00Z/. Native-start marker
+and before-browser manifest written before ONE actual launch (terminal1048exit1).
+
+ONE case exhausted: literal INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02,
+rawSHA256 e0f31256c7a64346597bfb783b221202d4993d0c5e6801a45747c0119384dca7.
+Browser1started/1completed, modes0/3, phases0/18: every original/off/on app phase
+unvisited, no Main/ReactDOM execution/source-witness/DOM/JSX interval acquired.
+Public Browser.getBrowserCommandLine refused with the automation prerequisite
+(AUTOMATION_API_UNAVAILABLE); startup qualification failed PUBLIC_STARTUP_REPORT.
+No public argv was returned. It does not prove original argv absence, effective
+mode or the cause of any title/argument difference. The code retained args[] and
+did not retune flags, retry or use a fallback.
+
+Original owner/CDP/directdriverchild PID1030867/start17052665/exe/hash matched.
+Actual product Chrome153.0.8010.12/clientversion153.0.8010.12 captured, physical
+managed profile matched, initial page/extensiontargets0. Proc observed1argument,
+not reconstructed. Browser session/client/owner all closed, no kill fallback;
+exact PID subsequentlyAbsent, managedprofile removed, pendingresources complete.
+App page/context/session/localHTTP never started; no certificate/trust/keyring/
+userprofile/extension/model/nativewriter activity. CurrentStage='launch' is a
+known diagnostic limitation in this raw although specific first error correctly
+names startup:publicReport; retain literal raw instead of rewriting it.
+
+Independent Python saved refusal reader
+.artifacts/a02/callback-jsx-native-saved-verification/2026-10-25/{verify.py,report.json}
+verified542currentphysical hashes/frozen case/source-execution revisions/strict
+counter types/scoped process facts/44negative controls, independently confirmed
+current PID/profile absence,0sourceimports/native/model reruns. Native raw stores
+inputsUnchanged=true after code rehash, but no explicit after-hash map; reader's
+current542physical check is a later scoped check, not reconstruction of run-end
+hashes. This source packet and refused launch do not establish new capabilities.
+
+Author planning error: previous failure already identified this API prerequisite;
+I should have verified the actual current launcher startup-switch policy before
+freezing another args[] case. Do not infer official defaults or mark this unknown
+as approved configuration. Currentcase exhausted/no retry. Next ONE final fresh
+whole-item review. Afterclose, exact source-only launcher/switch provenance is the
+next dependency before any separately bounded new Main case, not a blank-browser
+retry campaign or permission/certificate work.20/29/fullA02 unchanged/five minors.
