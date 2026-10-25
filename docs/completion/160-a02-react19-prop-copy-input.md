@@ -1,4 +1,4 @@
-# A02.10 — one native prop-copy input occurrence (source recorder/recipe60; retained-source qualification pending)
+# A02.10 — one native prop-copy input occurrence (bounded source qualification complete; review pending)
 
 Historical preregistration at8d1c9a0 starts f48be1a. V03.27 source diagnosis preserves clean current fields/dirty local
 text/owned history and old26failure; no product or guard change. A02.4 ancestor and
@@ -48,3 +48,37 @@ file hashes before trusted retained CJS VM original/off/on, not a security sandb
 No actual retained-source VM has executed yet; fullsuite deferred until that source
 qualification and stable Task2. No native/browser/model/installation or new product
 readiness; same setter/input-versus-storage Unknown boundary applies.
+
+Task2 actual retained-source qualification at2026-10-25T01:30:43.304Z, clean19edb1c:
+`node experiments/react19-reducer/prop-copy-source-run.mjs` (exit0). Fresh output
+`.artifacts/a02/prop-copy-source/2026-10-25/qualification-2026-10-25T01-30-43-304Z/`,
+rawSHA256`544047816e8b844b30674337d445ac1d876ef96e1d6f6b2980919b107874f3fa`.
+Literal `RETAINED_REACT_SOURCE_VM_QUALIFIED_NOT_NATIVE_A02`;417physical current inputs
+were hashed before and after this invocation, before later plan checklist edits.
+Actual retained React19.2.5 source4325e626... executes in42NodeVM contexts:13owned
+synthetic config cases × original/off/on plus3tap controls. All13semantic comparisons
+and3tap controls PASS;7selected copy-input cases Observed,6expected unsupported.
+No source/native/browser/model/product cases are relabelled or rerun.
+
+The prototype-setter case is decisive: original native assignment completes and its
+object input is recorded, while returned props lacks own todo. Storage/ownership stay
+Unknown. Default/clone may have correct props but lack this exact copy occurrence;
+lookup refuses rather than borrowing a nearby earlier element. Two equal-looking
+objects remain distinct. Getter/Proxy traces/stack-sensitive behavior and original
+thrown object agree off/on; absent/accessor/throwing tap changes no app result.
+No component render, ReactDOM commit, field write ownership/state/selected producer,
+installed runtime, JSX/default/clone support, heap/GC or public platform claim.
+
+Independent Python stdlib saved reader at
+`.artifacts/a02/prop-copy-saved-verification/2026-10-25/{verify.py,report.json}` checked
+that saved417physical-input stage,13cases/3tapcontrols/42contexts and27isolated
+negative mutations without project source imports/VM/native reruns. Old actual
+native cases remain exhausted and old evidence criteria unchanged. This verifies
+source qualification, not application/native acceptance.
+
+Final stable `npm test`3755PASS/0fail/0cancel/0skip105370.483ms (terminal24394),
+focused60PASS; syntax/diff PASS. Old47source/current327/15V03raw/12L02records/4case+
+marker files and retained vendor pins unchanged. No oldsource delta or product
+importer introduced. Source recorder/recipe/control helper only; no native/browser/
+certificates/installation/network/model/SDK/otherrepo/publication. ONE final bounded
+source review next; fullA02 and whole20of29 remain open.

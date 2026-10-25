@@ -1,10 +1,13 @@
 # Project status
 
-Active bounded source work: [A02.10](completion/160-a02-react19-prop-copy-input.md),
-fixed classicReact19 todo copy-input recorder32sourcePASS; recipe next. Existing element/props
-hook reused; no app reflection/getter reevaluation/callback wrapper or stronger
-lineage claim. New isolated source only; no browser/native/installation/cert/model/product change.
-Same current327/oldsource/raw; whole20/29 unchanged.
+Active bounded source work: [A02.10](completion/160-a02-react19-prop-copy-input.md).
+Recorder/recipe60focused/full3755PASS; actual retained React19.2.5 source NodeVM
+qualification clean19edb1c,13synthetic semantic cases/3tap controls/42contexts PASS.
+Seven selected input cases Observed,6unsupported; setter disproves inferred storage.
+Source-free saved417stage/27negative checks support source qualification only.
+Current327/oldsource/raw unchanged, no product importer/browser/native/model/cert/
+installation. ONE bounded source review next; field/prop/state/selectedproducer and
+fullA02/whole20/29 remain open. New documents/source VM do not prove product readiness.
 
 Completed bounded diagnosis: [V03.27](completion/159-v03-clean-editor-contract.md).
 Existing clean field follows current resource; own history/epoch guards remain; dirty

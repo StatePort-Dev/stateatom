@@ -38,8 +38,8 @@
 **Interfaces:** three hooks feedTask1schema; transformPropCopyGrammar/transformPinnedPropCopy source receipts; zero-option sourceVM original/off/on with registered exact source/outputs.
 
 - [x] task-start/readbrief/BASE; TDD grammar3sites/binding/count/pin/collision/helperdata/accessor/throw/oncegetter/receiver/assignment/stack/error/ordering/foreign/default/clone controls. `node --test --test-isolation=none tests/engine/react19-prop-copy-observer.test.mjs tests/engine/react19-prop-copy-vendor.test.mjs` ->RED thenPASS.
-- [ ] Run one registered retained pinnedReact sourceVM qualification original/off/on with ownedsynthetic inputs; complete raw literal/save zero browser/writer/model. Check source privacy/identities/getterProxytraces/setter-no-storage/Stop/seal/no extra native claims; failure stays source failure.
-- [ ] Focused+stable npm testoncePASS/preservationcurrent327/oldsource/15V03raw/12L02records, syntax/diff/localcommit/task-done. No actual browser/oldexperiment retry/wholeA02 acceptance.
+- [x] Run one registered retained pinnedReact sourceVM qualification original/off/on with ownedsynthetic inputs; complete raw literal/save zero browser/writer/model. Check source privacy/identities/getterProxytraces/setter-no-storage/Stop/seal/no extra native claims; failure stays source failure.
+- [x] Focused+stable npm testoncePASS/preservationcurrent327/oldsource/15V03raw/12L02records, syntax/diff/localcommit/task-done. No actual browser/oldexperiment retry/wholeA02 acceptance.
 
 ## Final Closeout
 
