@@ -1661,7 +1661,7 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "168-a02-fragment-main-native.md",
+      "execution_record": "169-a02-literal-main-native.md",
       "completed_slices": [
         {
           "id": "A02.1",
@@ -2340,6 +2340,41 @@
             "deferred_minors_total": 6
           },
           "native_reruns_after_fix": 0
+        },
+        {
+          "id": "A02.18",
+          "record": "168-a02-fragment-main-native.md",
+          "status": "bounded-attempt-complete-literal-bootstrap-source-corrected-native-case-exhausted",
+          "base": "7d1660442aa4a72b2eb1f2ceeddee6f9d8537a6b",
+          "native_runs": 1,
+          "model_calls": 0,
+          "product_code_changed": false,
+          "full_A02": false,
+          "focused_checks": 245,
+          "full_source_checks": 4289,
+          "undeclared_inputs_unchanged": 466,
+          "native_modes_started": 2,
+          "native_modes_completed": 1,
+          "native_phases_started": 6,
+          "native_phases_completed": 6,
+          "native_phases_unvisited": 12,
+          "native_intervals_acquired": 0,
+          "native_result": "INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02",
+          "native_raw_sha256": "05c2a3e8ae2b5a24e5e442411d0133cf7e6fc4f3d07a397c2d806a5020ee075c",
+          "prepared_source_revision": "f5fa41649e337c7275fa30d8bd8fde495bee44b5",
+          "execution_revision": "bbd5e0c10e1ba73a5acc4f2de9d60496e2cb6378",
+          "saved_negative_controls": 38,
+          "JSX_product_supported": false,
+          "focused_checks_before_review": 226,
+          "review": {
+            "Critical": 0,
+            "Important": 2,
+            "Minor": 1,
+            "correction_passes": 1,
+            "rereview": false,
+            "deferred_minors_total": 7
+          },
+          "native_reruns_after_fix": 0
         }
       ],
       "remaining_acceptance": [
@@ -2355,9 +2390,9 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "168-a02-fragment-main-native.md",
-        "status": "bounded-attempt-complete-literal-bootstrap-source-corrected-native-case-exhausted",
-        "next_bounded_step": "ONE separately frozen literal-bootstrap Main acquisition case, same18phase/URL/source/identity criteria. Currentcase exhausted6originalphases/offpartial/onunvisited; no native retry or oldraw upgrade."
+        "record": "169-a02-literal-main-native.md",
+        "status": "registered-before-source",
+        "next_bounded_step": "Closed literal-bootstrap Main case, source/frozen gates beforemax1native, oldcases exhausted, no newintervalproof."
       },
       "stopping_point_history": [
         {
@@ -2439,39 +2474,14 @@
       ],
       "implementation_plan": "../superpowers/plans/2026-10-25-a02-jsx-config-input.md",
       "active_slice": {
-        "id": "A02.18",
-        "record": "168-a02-fragment-main-native.md",
-        "status": "bounded-attempt-complete-literal-bootstrap-source-corrected-native-case-exhausted",
-        "base": "7d1660442aa4a72b2eb1f2ceeddee6f9d8537a6b",
-        "native_runs": 1,
+        "id": "A02.19",
+        "record": "169-a02-literal-main-native.md",
+        "status": "registered-before-source",
+        "base": "32cbbf8cc0ea80374b8480fd4120a86a00f4dcad",
+        "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false,
-        "focused_checks": 245,
-        "full_source_checks": 4289,
-        "undeclared_inputs_unchanged": 466,
-        "native_modes_started": 2,
-        "native_modes_completed": 1,
-        "native_phases_started": 6,
-        "native_phases_completed": 6,
-        "native_phases_unvisited": 12,
-        "native_intervals_acquired": 0,
-        "native_result": "INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02",
-        "native_raw_sha256": "05c2a3e8ae2b5a24e5e442411d0133cf7e6fc4f3d07a397c2d806a5020ee075c",
-        "prepared_source_revision": "f5fa41649e337c7275fa30d8bd8fde495bee44b5",
-        "execution_revision": "bbd5e0c10e1ba73a5acc4f2de9d60496e2cb6378",
-        "saved_negative_controls": 38,
-        "JSX_product_supported": false,
-        "focused_checks_before_review": 226,
-        "review": {
-          "Critical": 0,
-          "Important": 2,
-          "Minor": 1,
-          "correction_passes": 1,
-          "rereview": false,
-          "deferred_minors_total": 7
-        },
-        "native_reruns_after_fix": 0
+        "full_A02": false
       }
     },
     {
