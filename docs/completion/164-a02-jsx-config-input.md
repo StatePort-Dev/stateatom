@@ -1,4 +1,4 @@
-# A02.14 — fresh automatic-JSX config input (source-qualified; review pending)
+# A02.14 — fresh automatic-JSX config input (one review correction complete)
 
 BASEb26cbb2. A02.13 static diagnosis identifies actualMain automaticJSX freshconfig
 and duplicateinstrumented/offbranches; no runtimeJSXsupport claimed. A02.12 source
@@ -116,3 +116,46 @@ space and misclassified documentation-only edits; it stopped BEFORE any VM. Its
 script/log/compiled outputs remain separate. Corrected private guard preserves
 porcelain spacing and records documentation-dirty status honestly. No product
 mechanism or original native qualification was changed/reclassified.
+
+
+ONE final fresh review `a0214_whole_review` Astra/high b26cbb2..a7e7682:0Critical/
+1Important/0Minor, fresh85PASS699.296ms. I1 is an actual admitted-source semantic
+defect: prepended helper Object/globalThis references can resolve through a module
+lexical/import/var/function binding, causing TDZ/error before original JSX executes
+even with no tap. Original synthetic modules call JSX1; instrumented0/ReferenceError.
+This is ordinary source binding, not excluded compromised initialization. Raw63/
+exception-control hashes and then511physical+1exactea5plan verified; no replay.
+
+ONE I1 correction pass: new source/behavior controls RED86PASS18FAIL ->104PASS777.967ms.
+Caller recipe refuses module-scope Object/globalThis dependencies before injection,
+keeping original bytes;12lexical/import/var/function cases run original JSX once.
+Nested Object/globalThis bindings remain admitted. Same ambient-dependency guard
+protects the new unqualified native grammar helper; actual dd50native pin untouched.
+Current full `npm test`3967PASS/0fail/0cancel/0skip129494.829ms, terminal15558exit0.
+No re-review or retained-source/native/browser/model rerun. No new minors; prior5
+remain deferred. All6declined domains accepted with their source-only boundaries.
+
+Pure compilation/hash equivalence after fix at
+`.artifacts/a02/jsx-config-source-review/2026-10-25/emitted-equivalence-v2.json`
+confirms all60previously qualified compiled app outputs, one native JSX output and
+actualMain1/2static site receipts are identical.0VM/native executions. First private
+equivalence check stopped on metadata shape (`code:undefined` is omitted by saved
+JSON); log/script preserved, normalized JSON receipt comparison then passed. Byte
+digests were never relaxed. Old63qualification stays historicalatEa5, not a fresh
+run on the changed compiler source; exact emitted-byte equality supports reuse of
+its scoped runtime observations, while new refusal behavior has its own104checks.
+
+Final current512stage reconciliation:508physical+4exactea5Git inputs (callerrecipe,
+nativegrammarvalidator,testfile,plan); other71registered source/current327payload/
+oldraw/Main/CJS/JSX/package remainphysicalunchanged. Current corrections are distinct
+from frozen evidence; no new-run historical fallback. Final ownworkspace archive/
+hashes/clean checkpoint under `.artifacts/a02/jsx-config-source-review/2026-10-25/`.
+Historical input, storage/ownership/state/selectedDOM/fullA02 boundaries unchanged.
+Whole20of29 (~69%) unchanged; no shipped JSX capability from this packet.
+
+
+ONE next unfinished dependency A02.15: exact original array callback interval ->
+fresh JSX config input -> exact returned native JSX element. Compose the existing
+source mechanisms by actual references/occurrences, never cross-family ID strings
+or nearest history. Preserve classic default/schema behavior, original callback
+frames and input-versus-storage Unknown; no product/browser/DOM/fullA02 upgrade.

@@ -17,7 +17,8 @@ export function instrumentJSXConfigInputs(source,file,{enabled=false}={}){
  const refuse=reason=>({...empty,skipped:true,unsupported:[{file,reason}]});
  if(typeof file!=='string'||!file||file.length>1024||Buffer.byteLength(source)>1024*1024)return refuse('Bounded source file/grammar required');
  let ast;try{ast=parse(source,{sourceType:'module',plugins:['jsx']});}catch{return refuse('Compiled module grammar not admitted');}
- let collision=false,dynamic=false;traverse(ast,{Identifier(p){if(p.node.name.startsWith('__saJSXCfg'))collision=true;},WithStatement(){dynamic=true;},CallExpression(p){if(t.isIdentifier(p.node.callee,{name:'eval'}))dynamic=true;}});
+ let collision=false,dynamic=false,ambient=false;traverse(ast,{Program(p){ambient=!!(p.scope.getOwnBinding('Object')||p.scope.getOwnBinding('globalThis'));},Identifier(p){if(p.node.name.startsWith('__saJSXCfg'))collision=true;},WithStatement(){dynamic=true;},CallExpression(p){if(t.isIdentifier(p.node.callee,{name:'eval'}))dynamic=true;}});
+ if(ambient)return refuse('Module ambient Object/globalThis binding shadows JSX helper dependencies');
  if(collision||dynamic)return refuse(collision?'Private JSX helper binding collision':'Dynamic source scope unsupported');
  const records=[],unsupported=[];
  function inspect(p){

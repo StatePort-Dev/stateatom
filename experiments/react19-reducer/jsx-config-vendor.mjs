@@ -15,7 +15,7 @@ export function transformJSXConfigGrammar(source,file=jsxConfigProfile.file){
  if(file!==jsxConfigProfile.file)throw Error('Unknown JSX config native file');
  if(typeof source!=='string'||Buffer.byteLength(source)>1024*1024||source.includes('__saJSXNative'))throw Error('JSX native source/helper grammar refused');
  const ast=parse(source,{sourceType:'script'}),owners=[];let count=0;
- traverse(ast,{Function(p){if(p.node.id?.name==='ReactElement')owners.push(p);}});
+ traverse(ast,{Program(p){if(p.scope.getOwnBinding('Object')||p.scope.getOwnBinding('globalThis'))throw Error('JSX native ambient Object/globalThis binding shadows helper dependencies');},Function(p){if(p.node.id?.name==='ReactElement')owners.push(p);}});
  if(owners.length!==1)throw Error('JSX native owner count mismatch');const p=owners[0],names=['type','key','props','owner','debugStack','debugTask'];
  if(p.node.async||p.node.generator||p.node.params.length!==6||p.node.params.some((n,i)=>!t.isIdentifier(n,{name:names[i]})))throw Error('JSX native parameter binding mismatch');
  const props=p.scope.getBinding('props'),type=p.scope.getBinding('type');if(props?.kind!=='param'||type?.kind!=='param')throw Error('JSX native binding unavailable');

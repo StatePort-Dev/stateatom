@@ -1,13 +1,16 @@
 # Project status
 
-Active bounded source slice: [A02.14](completion/164-a02-jsx-config-input.md).
-Private freshconfig helper/new pinned JSX return recipe85focused/full3948PASS.
-Actual retainedReact19.2.5+JSX source clean ea5d8cb:20owned cases/63started-completed
-VM contexts,9positive selected-input/11expectedUnsupported,512physical input hashes.
-Saved reader44negative controls, old71source/327payload/raw/Main/vendor preserved.
-Freeze mutation proves input≠storedfield; stronger lineage Unknown. Actual Main is
-static1original/2branchsites only, no component/browser/product execution. ONE final
-source review next; five prior minors deferred/fullA02/20of29 (~69%) unchanged.
+Completed bounded source slice: [A02.14](completion/164-a02-jsx-config-input.md).
+ONEreview0C1I0M, one ambient-binding guard fix RED86/18->GREEN104/full3967PASS.
+Lexical/import/var/function Object/globalThis shadows now preserve original bytes;
+nested bindings remain admitted. Prior actualReact19+JSX63VM sourcequalification at
+Ea5 retained; all60app+1native emitted outputs/Main1/2sites compile-identical afterfix,
+no VM rerun.512frozen inputs now508physical+4exactGit; source-free saved44negative
+controls historical. Source input≠storedfield, broaderlineage Unknown, current71old
+source/327payload/raw preserved. No product/browser/installed upgrade/fullA02 or
+whole20/29 (~69%) credit; five prior minors remain deferred. Next ONE A02.15 exact
+array-callback interval ->fresh JSXconfig input ->native returned element, with
+classicdefault preserved/storageUnknown; no browser/oldnative retry.
 
 Completed bounded source diagnosis: [A02.13](completion/163-a02-automatic-jsx-input-boundary.md).
 Actual TodoMVC Main lowers to automatic jsx(Item,{todo,dispatch},todo.id); original
