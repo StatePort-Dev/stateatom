@@ -29,7 +29,7 @@
 **Files NEW:** experiments/react19-reducer/main-input-cleanup-source-run.mjs; tests/engine/react19-main-input-cleanup-driver.test.mjs. docs/testing/main-input-cleanup-source-case.json only aftersourcecommit. Updatecompletion172/status/index.
 **Interfaces:** Same exported parse/guard/prepare/preflight/run/inputverify signatures; new fixedprofile only. Originalhelpers/guards unchanged.93source/327payload/28corpus counts.
 
-- [ ] task-start/readbrief/BASE/registerbeforecode. RED new-driver import or controls, copy minimally; focused new/affected bridge controls GREEN; inspect source-copy diff; syntax/diff/full npm test PASS; protectalloldinputs/sourcecommit.
+- [x] task-start/readbrief/BASE/registerbeforecode. RED new-driver import or controls, copy minimally; focused new/affected bridge controls GREEN; inspect source-copy diff; syntax/diff/full npm test PASS; protectalloldinputs/sourcecommit.
 - [ ] Resource-free prepare/preflight; casecommit; ONE18×3sourceVM qualification. Record literalstatus/partialcounters/afterhashmap; no retry. Standalone savedreader/corruptions/no runtime imports; resultcommit/task-done focusedPASS.
 
 ## Final Closeout

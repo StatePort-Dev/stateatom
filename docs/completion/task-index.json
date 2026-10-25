@@ -2461,7 +2461,7 @@
       },
       "current_checkpoint": {
         "record": "172-a02-cleanup-main-source.md",
-        "status": "registered-before-source",
+        "status": "source-gates-passed-before-qualification",
         "next_bounded_step": "A02.22 separately fixed corrected-source Main matrix;93research/327payload protected; no old qualification/native retry."
       },
       "stopping_point_history": [
@@ -2551,12 +2551,14 @@
       "active_slice": {
         "id": "A02.22",
         "record": "172-a02-cleanup-main-source.md",
-        "status": "registered-before-source",
+        "status": "source-gates-passed-before-qualification",
         "base": "80e8bc2",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_tests_passed": 75,
+        "full_tests_passed": 4382
       }
     },
     {
