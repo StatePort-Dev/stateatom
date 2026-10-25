@@ -1,4 +1,4 @@
-# A02.20 — Page-enabled literal Main case (active)
+# A02.20 — bounded Main callback-to-JSX native acquisition complete
 
 Continues6f01c0f/closedA02.19:6original phases proved, offopenfailed/onunvisited;
 ONE Page-agent source correction,256focused/4300fullPASS. Prior case exhausted,
@@ -60,3 +60,17 @@ Raw has no afterhashmap; inputcheckbool and later currentphysical remain distinc
 Whole20/29/fullA02 unchanged,7minors deferred. No cert/trust/userprofile/account/model/
 SDK/release/publication changes. Next ONE finalfreshreview, then ONE unfinished
 dependency based on actual surviving ordinary-lineage gap; no repeat of this case.
+
+ONE finalfreshreview0Critical/0Important/0newMinor, bounded acceptance confirmed;
+no sourcecorrection/test/native/oldreader rerun required. Source/context/reference/
+crossfile counters/Stopreader boundaries verified. Sevenprior minors deferred.
+Review and effect rulings:
+.artifacts/a02/callback-jsx-page-enabled-review/2026-10-25/report.md.
+Next ONE unfinished dependency A02.21: source-only exact Main parameter todos ->
+native filter result ->map receiver identity handoff. Main7/12-24/43 shows this
+inputpath; existing interval arrayRuntime.finish37-52 discards result and emits no
+filter/map chain. Do not infer that gap from equal values/IDstrings or nearby
+execution. Same-invocation weak reference proof and memo-skip/stale/cross-frame
+refusals required; state ownership/selected DOM remain Unknown. No general owner
+infrastructure or another native rerun in this next finite source slice.
+Whole20/29/fullA02 unchanged; this bounded callback-JSX acquisition itself is complete.

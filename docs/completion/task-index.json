@@ -2426,8 +2426,8 @@
       },
       "current_checkpoint": {
         "record": "170-a02-page-enabled-main-native.md",
-        "status": "bounded-original-main-callback-jsx-native-pass-pending-one-review",
-        "next_bounded_step": "ONE finalfreshreview of full18phase Main interval acquisition; then ONE next ordinary-lineage dependency. No currentcase retry or product/fullA02 upgrade."
+        "status": "bounded-original-main-callback-jsx-native-complete",
+        "next_bounded_step": "A02.21 source-only exact Main parameter todos -> native filter result -> map receiver handoff; same-invocation references, memo-skip/stale/cross-frame/equalcopy refusals, no state/ownership/selectedDOM upgrade or native retry."
       },
       "stopping_point_history": [
         {
@@ -2511,7 +2511,7 @@
       "active_slice": {
         "id": "A02.20",
         "record": "170-a02-page-enabled-main-native.md",
-        "status": "bounded-original-main-callback-jsx-native-pass-pending-one-review",
+        "status": "bounded-original-main-callback-jsx-native-complete",
         "base": "6f01c0fee44f57aa0b14d96a509c06a83c1d3814",
         "native_runs": 1,
         "model_calls": 0,
@@ -2532,7 +2532,16 @@
         "prepared_source_revision": "7bc8b17d6dc12cbf50f32df869171764d9800a55",
         "execution_revision": "f14cd919a31e89ce0996349ff70562d9bfba6608",
         "saved_negative_controls": 61,
-        "JSX_product_supported": false
+        "JSX_product_supported": false,
+        "review": {
+          "Critical": 0,
+          "Important": 0,
+          "Minor": 0,
+          "correction_passes": 0,
+          "rereview": false,
+          "deferred_minors_total": 7
+        },
+        "native_reruns_after_review": 0
       }
     },
     {

@@ -34,4 +34,4 @@
 
 ## Final Closeout
 
-- [ ] ONE fresh finalreview/effectrulings/ONEtestedI-Cpass ifneeded, no rereview/native/oldreader retry. Archive/CRC/allbytes/identityverify/remove ownworkspace; cleancheckpoint/ONE next unfinished dependency.
+- [x] ONE fresh finalreview/effectrulings/ONEtestedI-Cpass ifneeded, no rereview/native/oldreader retry. Archive/CRC/allbytes/identityverify/remove ownworkspace; cleancheckpoint/ONE next unfinished dependency.
