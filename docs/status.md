@@ -1,5 +1,11 @@
 # Project status
 
+Active bounded task: [A02.22](completion/172-a02-cleanup-main-source.md).
+Separately frozen corrected-source Main qualification;93research/327payload/all
+A02.21 evidence registered beforecode, twoNEWfiles/0oldsource deltas. No newruntime
+proof yet; no native/browser/model/product/SDK/cert/trust/profile/publication.
+20/29/fullA02 unchanged;7minors deferred.
+
 Completed bounded attempt: [A02.21](completion/171-a02-main-input-bridge.md).
 ONE review0C2I0newM/ONE tested correction pass: normal token cleanup preserved,
 Main-own finally refuses whole source.58focused/4365full PASS. Source qualification
