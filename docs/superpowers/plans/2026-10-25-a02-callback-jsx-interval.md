@@ -41,4 +41,4 @@
 
 ## Final Closeout
 
-- [ ] ONE fresh whole-item review/effect rulings/ONEtestedI-Cpass/no rereview/oldcase replay; archive/hash/verify/remove ownworkspace, clean localcheckpoint and ONE next dependency. No wholeA02/20of29 upgrade.
+- [x] ONE fresh whole-item review/effect rulings/ONEtestedI-Cpass/no rereview/oldcase replay; archive/hash/verify/remove ownworkspace, clean localcheckpoint and ONE next dependency. No wholeA02/20of29 upgrade.

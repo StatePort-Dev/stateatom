@@ -37,3 +37,18 @@ test('opaque application value config element and array cause no reflection trap
 test('late intrinsic replacements do not invoke application callbacks',()=>{const o=fresh(),item={},f=begin(o,item),el={},config={},saved=[Array.prototype.push,Array.prototype[Symbol.iterator],WeakMap.prototype.get,WeakMap.prototype.set,WeakRef.prototype.deref,Object.getOwnPropertyDescriptor];let calls=0,view;try{Array.prototype.push=Array.prototype[Symbol.iterator]=WeakMap.prototype.get=WeakMap.prototype.set=WeakRef.prototype.deref=Object.getOwnPropertyDescriptor=function(){calls++;throw Error('late application hook');};o.tap('config-input',item,config,inputSite);o.tap('jsx-element-return',el,config);o.returned(f.handle,el);o.exit(f.handle);o.arrayRuntime.finish(f.token,[]);o.sealWindow();view=o.lookup(el);}finally{Array.prototype.push=saved[0];Array.prototype[Symbol.iterator]=saved[1];WeakMap.prototype.get=saved[2];WeakMap.prototype.set=saved[3];WeakRef.prototype.deref=saved[4];Object.getOwnPropertyDescriptor=saved[5];}assert.equal(calls,0);assert.equal(view.status,'Observed');});
 test('delegate config capacity invalidates all earlier callback links',()=>{const o=fresh(),item={},f=begin(o,item);let el;for(let i=0;i<65;i++)el=element(o,item);close(o,f,el);absent(o,el);assert.equal(o.retention().configInput.overflow,true);});
 test('inactive JSX mode carries no interval even with completed delegate input',()=>{const o=createCallbackCopyObserver({page:'off',inputProfile:'jsx-config',enabled:false}),item={},f=begin(o,item),el=element(o,item);assert.equal(f.handle,null);close(o,f,el);absent(o,el);});
+
+// I1: a delegate-rejected event cannot replace or supply the interval's occurrence.
+const malformedSites={
+ missing:()=>undefined,
+ null:()=>null,
+ digest:()=>({...inputSite,sourceDigest:'bad'}),
+ line:()=>({...inputSite,line:0}),
+ id:()=>({...inputSite,id:''}),
+ accessor:counter=>({...inputSite,get id(){counter.reads++;return inputSite.id;}})
+};
+for(const[name,bad]of Object.entries(malformedSites)){
+ test('I1 valid outside-frame input then malformed '+name+' cannot borrow later callback',()=>{const o=fresh(),first={},second={},config={},el={},counter={reads:0};o.tap('config-input',first,config,inputSite);const f=begin(o,second);o.tap('config-input',second,config,bad(counter));o.tap('jsx-element-return',el,config);close(o,f,el);absent(o,el);assert.equal(counter.reads,0);});
+ test('I1 malformed '+name+' then valid different input cannot retain earlier callback item',()=>{const o=fresh(),first={},second={},config={},el={},counter={reads:0},f=begin(o,first);o.tap('config-input',first,config,bad(counter));o.tap('config-input',second,config,inputSite);o.tap('jsx-element-return',el,config);close(o,f,el);absent(o,el);assert.equal(counter.reads,0);});
+}
+test('I1 a later valid fresh input still qualifies its own actual callback after malformed unrelated event',()=>{const o=fresh(),first={},second={},config={},el={};o.tap('config-input',first,config,undefined);const f=begin(o,second);o.tap('config-input',second,config,inputSite);o.tap('jsx-element-return',el,config);close(o,f,el);o.sealWindow();assert.equal(o.lookup(el).status,'Observed');assert.equal(o.retention().configInput.unsupported,1);});

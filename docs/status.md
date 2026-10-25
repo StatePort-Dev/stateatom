@@ -1,12 +1,15 @@
 # Project status
 
-Active bounded source slice: [A02.15](completion/165-a02-callback-jsx-interval.md).
-Exact original callback ->fresh JSXconfig ->native returned element sourcequalified
-on clean25587c0/actual retainedReact19.2.5:30cases/93VMcontexts/550physical inputs,
-13positive/15intervals/17expected refusals, classicdefault/schema preserved.243focused/
-4031fullPASS; saved55negative controls/noVMrerun. ONE finalreview next. Sourceinput
-is not storage/selectedDOM/installed product; fullA02/20of29 unchanged/five minors.
-No browser/native/model/cert/security/install/userprofile/SDK/publication work.
+Completed bounded source slice: [A02.15](completion/165-a02-callback-jsx-interval.md).
+ONEreview0C1I0M; rejected-metadata owner replacement fixed once, RED36/6->GREEN42/
+affected256/full4044PASS. Defaultclassic preserved; exact callback-JSX references
+only. Prior actualReact19.2.5 source93VM/30cases/13positive15links17refusals stays
+historicalat25587c0; no replay after correction.550frozen inputs now547physical+
+3exactGit; saved55negative report remains historical. Stronger storage/DOM/installed
+claims Unknown; fullA02/20of29 (~69%) unchanged/five prior minors deferred.
+Next ONE A02.16 finite originalMain acquisition candidate: source/public-CDP identity
+guard then at most1new frozen original/off/on owned headless run. No separate blank
+retry campaign/legacy criteria rewrite/cert/trust/userprofile/SDK/release work.
 
 Completed bounded source slice: [A02.14](completion/164-a02-jsx-config-input.md).
 ONEreview0C1I0M, one ambient-binding guard fix RED86/18->GREEN104/full3967PASS.

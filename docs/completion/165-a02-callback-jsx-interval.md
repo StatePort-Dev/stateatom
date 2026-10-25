@@ -78,3 +78,34 @@ exit0. Syntax/diff PASS. ONE final fresh whole-item review next; no native or so
 replay scheduled. Whole20/29 (~69%)/fullA02 unchanged; source packet is not shipped
 JSX capability. Five prior minors deferred. Next finalreview, then select ONE actual
 original-Main acquisition prerequisite rather than adding a general lineage kernel.
+
+ONE finalreview a0215_whole_review Astra/high0Critical/1Important/0newMinor,
+fresh64PASS2339.954ms. I1 accepted: malformed site event replaced interval owner
+while delegate retained prior valid config input, creating false Observed for another
+callback/item. Direct recorder reproduction only, no native/source replay.
+
+ONE correction pass adds13controls:6malformed classes in both orderings plus valid
+later own-input control. RED36PASS6FAIL ->GREEN42PASS57.628ms; inverse-order cases
+already passed original but prevent a naive immutable-first-only fix. Both recorders
+now consume one canonical immutable source site; invalid events never allocate own
+config rows, valid row is immutable. App config/value remain unreflected, no IDstring
+join. Affected256PASS4130.536ms; corrected full npm test4044PASS/0fail/0cancel/0skip
+133336.995ms, terminal74792exit0. No rereview/native/retainedmatrix rerun.
+
+Report/rulings .artifacts/a02/callback-jsx-source-review/2026-10-25/report.md accepts
+all5declined domains: Main/DOM/installed unknown; othergrammar/version unsupported;
+performance/security/release unproved; prior5minors deferred; no oldsource reexecution.
+Original93actual contexts remain historical at25587c0, not a fresh actual-framework
+run after correction. Current correction has new direct/synthetic/source/full checks;
+unchanged native/source recipe outputs and valid compiled-site semantics do not
+upgrade that historical recorder revision. Saved550physical stage now547physical+
+3exact255Git inputs (intervalobserver,newrecordertest,plan). Final source-free hash
+reconciliation/archive/cleanup is distinct from the old immutable Python report.
+
+A02.15 bounded implementation/review complete; no product importer/JSX shipment,
+fullA02/20of29 (~69%) progress credit. ONE next A02.16: finite actual original Main
+callback-JSX acquisition candidate, starting with source/public-CDP identity guard
+and new frozen original/off/on protocol. No separate blank-browser retry campaign,
+no legacy criteria/raw reclassification; max1new owned sandboxed headless run only
+after its source/preflight/frozen gates. Certificates/trust/userprofiles untouched.
+This is executor-selected technical scope, not approved Live/production/handoff policy.

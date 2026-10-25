@@ -25,11 +25,11 @@ export function createCallbackCopyObserver({page,enabled=true,inputProfile='clas
  function tick(){if(events>=4096){refuse('Interval event capacity refused',true);return false;}events++;return true;}
  function siteView(input,kind='map'){
   if(!object(input))return null;const s=create(null);
-  const names=['id','file','sourceDigest','kind','line','column','endLine','endColumn'];
+  const names=kind===null?['id','file','sourceDigest','line','column','endLine','endColumn']:['id','file','sourceDigest','kind','line','column','endLine','endColumn'];
   for(let i=0;i<names.length;i++){const k=names[i],d=descriptor(input,k);if(!d||!descriptor(d,'value'))return null;s[k]=d.value;}
-  if(s.kind!==kind||typeof s.id!=='string'||!s.id||s.id.length>200||typeof s.file!=='string'||!s.file||s.file.length>1024||typeof s.sourceDigest!=='string'||s.sourceDigest.length!==64)return null;
+  if(kind!==null&&s.kind!==kind||typeof s.id!=='string'||!s.id||s.id.length>200||typeof s.file!=='string'||!s.file||s.file.length>1024||typeof s.sourceDigest!=='string'||s.sourceDigest.length!==64)return null;
   for(let i=0;i<64;i++){const c=s.sourceDigest[i];if(!(c>='a'&&c<='f'||c>='0'&&c<='9'))return null;}
-  for(let i=4;i<names.length;i++)if(!isInteger(s[names[i]])||s[names[i]]<1)return null;
+  for(let i=kind===null?3:4;i<names.length;i++)if(!isInteger(s[names[i]])||s[names[i]]<1)return null;
   if(s.endLine<s.line||s.endLine===s.line&&s.endColumn<s.column)return null;return dto(s);
  }
  // A narrow captured-intrinsic runtime for the ORIGINAL native array call.
@@ -62,14 +62,19 @@ export function createCallbackCopyObserver({page,enabled=true,inputProfile='clas
   }catch{refuse('Interval bookkeeping unavailable');return null;}
  }
  function tap(kind,value,container,key){
-  // Delegate owns native construction validity; interval metadata cannot upgrade it.
-  copy.tap(kind,value,container,key);
+  // Both recorders consume the SAME inert admitted source site. A rejected event
+  // must not replace interval ownership while the delegate retains an earlier input.
+  let inputSite=key;
+  if(jsx&&kind==='config-input'&&live()){
+   try{inputSite=siteView(key,null);}catch{refuse('JSX input source metadata unavailable');inputSite=null;}
+  }
+  copy.tap(kind,value,container,inputSite);
   if(!live())return value;
   try{
    if(jsx){
     if(kind!=='config-input'&&kind!=='jsx-element-return')return value;
     if(!tick())return value;const owner=stack.length?stack[stack.length-1]:null;
-    if(kind==='config-input'){if(object(value)&&object(container))put(props,container,{owner,valueId:id(value),elementId:null,element:null});return value;}
+    if(kind==='config-input'){if(inputSite&&object(value)&&object(container)&&!read(props,container))put(props,container,{owner,valueId:id(value),elementId:null,element:null});return value;}
     const row=object(container)?read(props,container):null;
     if(row&&object(value)&&row.owner===owner){row.elementId=id(value);row.element=new Ref(value);put(elements,value,row);}
     return value;
