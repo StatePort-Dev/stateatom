@@ -42,8 +42,8 @@ Setup one SAME todo with recorder sealed. Each mode then equal add SAME; same-ti
 edit; change first to CHANGED; toggle first; active filter; Stop then add AFTER_STOP.
 Expected visible rows respectively2/2/2/2/1/2 and checkbox state falsefalse/
 falsefalse/falsefalse/truefalse/false/falsefalse. Each phase start fresh collection
-window before original UI action, seal only after expected DOM, keep exact target/
-frame/loader. on nonStop requires exact original Main map site and native config
+window before original UI action, seal only after expected DOM, keep exact nonempty target/
+frame/loader/browserContextId, each distinct across modes. on nonStop requires exact original Main map site and native config
 site (both branch sites registered), completed closed callback frames, distinct
 item/frame/element IDs, matching input ID within interval family and independent
 delegate occurrence. Two equal labels must retain distinct object identities.

@@ -1665,12 +1665,13 @@
       "active_slice": {
         "id": "A02.16",
         "record": "166-a02-original-main-jsx-native.md",
-        "status": "active-preregistered-before-code",
+        "status": "task1-pure-qualifier-complete-task2-pending",
         "base": "bac767d494646b831d059082b0357438800c4f6c",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_checks": 141
       },
       "completed_slices": [
         {
@@ -2300,8 +2301,8 @@
       },
       "current_checkpoint": {
         "record": "166-a02-original-main-jsx-native.md",
-        "status": "active-preregistered-before-code",
-        "next_bounded_step": "Task1 public startup/finite nativephase qualifier TDD, no browser; Task2 new frozen originalMaincase beforemax1ownedheadless launch."
+        "status": "task1-pure-qualifier-complete-task2-pending",
+        "next_bounded_step": "Task2 frozen actualMain overlay/driverfault controls, fullsuite/sourcecommit then prepare/preflight/casecommit beforemax1ownedheadless run. No native yet."
       },
       "stopping_point_history": [
         {

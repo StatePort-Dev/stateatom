@@ -30,8 +30,8 @@
 **Files:** create experiments/react19-reducer/callback-jsx-native-qualification.mjs, tests/engine/react19-callback-jsx-native-qualification.test.mjs; completion166/currentpointers.
 **Interfaces:** capturePublicCallbackJSXStartup(arguments,expected) sanitized separate public report; qualifyCallbackJSXStartup({owner,proc,publicReport,managedProfile,browserVersion},policy) original/directPID/start/exe/hash/profile-only join without proc argv guard; callbackJSXNativeProtocol() fixed6phases; guardCallbackJSXNativeWindow(capture,phase,sitePolicy) exact matching callbacks/JSX occurrences, retain Unknown claims; classifyCallbackJSXNativeRun(run,case) literal source/native/counters/parity/cleanup/frozen contract.
 
-- [ ] task-start/read brief/BASE and current82source/327/raw/priorcases registration beforecode. TDD public vectors/contradictions/metadata privacy, phase/window positive/negative equalIDs/foreignsite/duplicates/aborted/seal/Stop/Unknown and whole-run partial/refusal. Missingmodule RED->meaningful GREEN.
-- [ ] Minimal pure module, source-only targeted checks/preservation/syntax/diff/localcommit/task-done. No resources/browser/model. Fullsuite after Task2 stable.
+- [x] task-start/read brief/BASE and current82source/327/raw/priorcases registration beforecode. TDD public vectors/contradictions/metadata privacy, phase/window positive/negative equalIDs/foreignsite/duplicates/aborted/seal/Stop/Unknown and whole-run partial/refusal. Missingmodule RED->meaningful GREEN.
+- [x] Minimal pure module, source-only targeted checks/preservation/syntax/diff/localcommit/task-done. No resources/browser/model. Fullsuite after Task2 stable.
 
 ### Task 2: Frozen original Main overlay driver and ONE native qualification
 
