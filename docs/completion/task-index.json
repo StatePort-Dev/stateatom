@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "176-a02-app-main-corrected-source.md",
-        "status": "planning-corrected-source-AppMain-qualification",
-        "next_bounded_step": "ONE fixed corrected-source matrix, no oldretry/native/product claim."
+        "status": "corrected-source-qualification-PASS-final-review-pending",
+        "next_bounded_step": "ONE separately scoped native App/Main props qualification after review; state/ownership/selectedDOM origins remainUnknown."
       },
       "stopping_point_history": [
         {
@@ -2571,12 +2571,34 @@
       "active_slice": {
         "id": "A02.26",
         "record": "176-a02-app-main-corrected-source.md",
-        "status": "planning",
+        "status": "corrected-source-qualification-PASS-review-pending",
         "base": "1afebd5a8f88d344f448ac7f510eea03f3eed12c",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_tests_passed": 59,
+        "full_tests_passed": 4543,
+        "source_revision": "ef00361",
+        "case_revision": "c12ebc1",
+        "source_runs": 1,
+        "VM_contexts_complete": 54,
+        "cases_complete": 18,
+        "positive_source_cases": 6,
+        "App_Main_source_links": 9,
+        "Unknown_cases": 12,
+        "controlled_App_invocations": 60,
+        "controlled_Main_invocations": 60,
+        "saved_byte_inputs": 1032,
+        "saved_negative_controls": 110,
+        "qualification_result": ".artifacts/a02/app-main-props-corrected/2026-10-25T15-51-00Z/results.json",
+        "qualification_sha256": "3cf4d0469d26db408351c390744f31dd94f857900cd70f2cb75127b553e74798",
+        "source_qualification_repeated": false,
+        "post_qualification_source_changed": false,
+        "actual_native_hook_executed": false,
+        "global_Off_privacy_qualified": false,
+        "native_state_origin": "Unknown/Unsupported",
+        "tuple_index_origin": "Unknown/Unsupported"
       }
     },
     {

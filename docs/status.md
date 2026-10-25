@@ -1,5 +1,13 @@
 # Project status
 
+A02.26 source qualification PASS, finalreviewpending: [corrected App/Main adapter](completion/176-a02-app-main-corrected-source.md).
+54VM18cases/6positive9SOURCElinks/12Unknown;1032before-afterhashes/saved110negative;
+59focused/4543fullPASS. Source-owned hooks/router/directMain calls; native state/
+index/ownership/selectedDOM Unknown. Off0 refers outer associations, not global
+privacy (fixture delegatedJSXdiagnostic retains1); oldnativeOff remainsseparate.
+Old113research/product327/A0225failure unchanged;20/29/fullA02 unchanged.
+Next ONE bounded nativeApp/Mainprops afterreview; no SDK/publication/otherrepo.
+
 Closed bounded A02.25 attempt: [App/Main source attempt](completion/175-a02-app-main-props.md)
 INCOMPLETE3/54contexts/17unvisitedcases/0acceptedAppMainlinks, no retry. Appbinding1/
 config-nativeprops1 recorded; owned adapter dropped fourth Main source-site arg.
