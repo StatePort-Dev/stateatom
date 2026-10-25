@@ -34,4 +34,4 @@
 
 ## Final Closeout
 
-- [ ] ONE fresh final whole-item review/effect rulings; ONE tested I-C pass ifneeded, no rereview/native/old-reader retry. Archive/CRC/allbytes/identityverify/remove ownworkspace; cleancheckpoint and ONE next unfinished dependency.
+- [x] ONE fresh final whole-item review/effect rulings; ONE tested I-C pass ifneeded, no rereview/native/old-reader retry. Archive/CRC/allbytes/identityverify/remove ownworkspace; cleancheckpoint and ONE next unfinished dependency.

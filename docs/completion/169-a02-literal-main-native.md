@@ -1,4 +1,4 @@
-# A02.19 — literal-bootstrap Main case (active)
+# A02.19 — literal Main case and Page-agent prerequisite correction
 
 Continues closed A02.18 at 32cbbf8: six original Main phases proved, off source
 check incomplete/onunvisited; one tested public literal-bootstrap/phase URL source
@@ -60,3 +60,20 @@ counted asnegative. Raw has noafterhashmap; inputbool/latercurrentphysical disti
 Whole20/29/fullA02 unchanged;7minors deferred. No cert/trust/userprofile/account/model/
 SDK/publication changes. Next ONE finalfreshreview/ONEtestedI-Cpass ifconfirmed,
 no exhaustedcase retry or oldraw upgrade.
+
+ONE fresh final review0Critical/1Important/0newMinor. I1 confirms missing Page.enable
+on the separate injection session. ONE guarded call now precedes exact bootstrap
+registration/navigation for off/on; original mode unchanged. Default world,
+runImmediately:false and strict loaded-source bytes/context/hash gates retained.
+Actual private openMode source-body controls enforce same-session ordering/exact
+source and rejection preventing registration/navigation: proper RED252/4 ->
+GREEN256/2561928.417813ms. Full npm test4300/4300PASS110542.403051ms,
+terminal31904exit0,0fail/cancel/skip. Syntax/diffPASS. No native/oldreader/rereview.
+Existing7minors deferred; no partial-source-fact feature added.
+Review/effect rulings:
+.artifacts/a02/callback-jsx-literal-review/2026-10-25/report.md.
+Actual currentcase remains exhausted/Incomplete,6originalphases/offopenfailed/
+onunvisited/nointervalproof; source correction does not establish fixedruntime.
+Whole20/29/fullA02 unchanged. Next ONE unfinished dependency: separately frozen
+Page-enabled literal Main acquisition, same18phase/receipt/URL/source/identity gates,
+no observer/newflags/criterionwaiver or oldraw upgrade.

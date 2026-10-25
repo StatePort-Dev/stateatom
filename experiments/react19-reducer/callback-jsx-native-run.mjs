@@ -279,6 +279,7 @@ function createNativeOperations(s,inputs){
    m.pageSession.on('Debugger.scriptParsed',e=>{if(e.url===result.origin+'/'+(run.mode==='original'?'original.js':'observed.js')||e.url==='stateatom-owned://a0216/'+run.mode+'/bootstrap.js'){if(m.scripts.length>=16)result.errors.push({stage:run.mode,code:'SCRIPT_CAPACITY'});else m.scripts.push({scriptId:e.scriptId,url:e.url,executionContextId:e.executionContextId});}});
    await activeStep(lease,()=>m.pageSession.send('Runtime.enable'));await activeStep(lease,()=>m.pageSession.send('Debugger.enable'));
    if(run.mode!=='original'){
+    await activeStep(lease,()=>m.pageSession.send('Page.enable'));
     const bootstrap=await activeStep(lease,()=>fs.readFile(s.out+'/'+run.mode+'-bootstrap.js','utf8'));assert.equal(hash(bootstrap),s.bootstrapDigests[run.mode]);
     const registration=await activeStep(lease,()=>m.pageSession.send('Page.addScriptToEvaluateOnNewDocument',{source:bootstrap,runImmediately:false}));
     assert(typeof registration?.identifier==='string'&&registration.identifier.length>0&&registration.identifier.length<=512);

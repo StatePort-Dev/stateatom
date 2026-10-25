@@ -213,8 +213,8 @@ async function actualNativeMethod(name,bindings){
  const body=source.slice(method.start,method.end).replace('async '+name+'(','async function '+name+'(');
  return new vm.Script('('+body+')').runInContext(vm.createContext({assert,URL,...bindings}));
 }
-async function actualOpenControl({mode='off',reply={identifier:'owned-script-registration'}}={}){
- const calls=[],events=[],origin='http://127.0.0.1:12345',bootstrap=mode==='original'?'':callbackJSXNativeBootstrap(callbackJSXNativeFactory(),{page:'owned:'+mode,mode}),run={mode},session={on(){},async send(method,params){calls.push({method,params});return method==='Page.addScriptToEvaluateOnNewDocument'?reply:{};}};
+async function actualOpenControl({mode='off',reply={identifier:'owned-script-registration'},enableError=false}={}){
+ const calls=[],events=[],origin='http://127.0.0.1:12345',bootstrap=mode==='original'?'':callbackJSXNativeBootstrap(callbackJSXNativeFactory(),{page:'owned:'+mode,mode}),run={mode},session={on(){},async send(method,params){calls.push({method,params});if(method==='Page.enable'&&enableError)throw Error('Page-enable control failure');return method==='Page.addScriptToEvaluateOnNewDocument'?reply:{};}};
  let created=false;
  const page={setDefaultTimeout(){},on(){},async goto(){calls.push({method:'goto'});},getByRole(){return{async waitFor(){calls.push({method:'ready'});}};}};
  const context={pages(){return created?[page]:[];},on(){},async route(){},async addInitScript(){calls.push({method:'context.addInitScript'});},async newPage(){created=true;return page;},async newCDPSession(){return session;}};
@@ -269,3 +269,19 @@ test('schema4 original argument refusal stops before public facts HTTP or app',a
  const{s,ops,calls}=sourceOps();s.schema='stateatom.callback-jsx-native-case/4';ops.readRequestedAutomation=async()=>({status:'REQUIRED_AUTOMATION_ARGUMENT_REFUSED'});
  const r=await runCallbackJSXNativeStages(s,ops);assert.equal(r.modesStarted,0);assert.equal(calls.includes('proc'),false);assert.equal(calls.includes('http'),false);assert.equal(r.startup.requestedAutomation.status,'REQUIRED_AUTOMATION_ARGUMENT_REFUSED');
 });
+
+
+// A02.19 ONE final Important correction. This is the actual private harness body,
+// with a resource-free same-session protocol control; no bootstrap/app executes.
+for(const mode of ['off','on']){
+ test('review19 I1 '+mode+' enables its Page session before literal registration and navigation',async()=>{
+  const c=await actualOpenControl({mode});await c.invoke();
+  const enable=c.calls.findIndex(x=>x.method==='Page.enable'),register=c.calls.findIndex(x=>x.method==='Page.addScriptToEvaluateOnNewDocument'),navigate=c.calls.findIndex(x=>x.method==='goto');
+  assert(enable>=0);assert(enable<register&&register<navigate);assert.equal(c.calls.filter(x=>x.method==='Page.enable').length,1);
+  assert.deepEqual(copy(c.calls[register].params),{source:c.bootstrap,runImmediately:false});
+ });
+ test('review19 I1 '+mode+' Page-enable rejection prevents registration and navigation',async()=>{
+  const c=await actualOpenControl({mode,enableError:true});await assert.rejects(c.invoke(),/Page-enable control failure/);
+  assert.equal(c.calls.some(x=>x.method==='Page.addScriptToEvaluateOnNewDocument'||x.method==='goto'),false);
+ });
+}
