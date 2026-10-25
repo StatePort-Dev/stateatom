@@ -7202,8 +7202,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "L02.12-planning-fixed-candidate-no-model",
-    "next_item": "L02.12 Task1 fixedcase/preparer/collectionguard, Task2ownedrunner/fullsource; max1actualcase afterphysicalpreflight/commit.",
+    "current_increment": "L02.12-task1-source88-no-model",
+    "next_item": "L02.12 Task1 source88PASS; next Task2ownedrunner/fullsource, max1actualcase afterphysicalpreflight/commit.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9929,7 +9929,7 @@
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "ffb9815",
     "current_record_date": "2026-10-25",
-    "next_bounded_step": "L02.12 Task1 fixedcase/preparer/collectionguard, Task2ownedrunner/fullsource; max1actualcase afterphysicalpreflight/commit.",
+    "next_bounded_step": "L02.12 Task1 source88PASS; next Task2ownedrunner/fullsource, max1actualcase afterphysicalpreflight/commit.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

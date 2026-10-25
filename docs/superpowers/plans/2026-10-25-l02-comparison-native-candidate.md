@@ -33,8 +33,8 @@
 **Files:** new scripts/comparison-evaluation-case.mjs, scripts/prepare-comparison-evaluation.mjs, experiments/comparison-evaluation-qualification.mjs, tests/local-comparison-native-case.test.mjs; tinyreadonlyconfig accessor in core/derived-model-provider.mjs; completion157/current pointers.
 **Interfaces:** fixed expected34case generator/currentgenuinefacts; source protocol/canonicalCLI/admission/frozenhashes/ownedprofile; two-fileaddon prep withnonce; independent runtime collection guard/finalizer. Getter returns immutablecomparisonoptions only, no semantics change.
 
-- [ ] Readbrief/BASE; sourceTDD fixedcase/options/refusal/maxone/source-onlyimport/configgetter/profilepath/UID/lock/frozenbytes, correctAPIrecord/clientaccept-vs-reject/oldschema/missingidentity/wrongcase/activation/lateevents/settingsUnknown/cleanup negatives. `node --test --test-isolation=none tests/local-comparison-native-case.test.mjs tests/comparison-model-provider.test.mjs tests/local-comparison-evaluation-page.test.mjs` ->RED thenPASS.
-- [ ] Implement boundedsource only, sourcebefore/current327/raw preservation exceptdeclaredgetter researchdelta; syntax/diff/targeted oldprovider+v2controls; localsourcecommit/task-done. No actualbundle/native yet; Task2consumes exactsamecase/schema/protocol.
+- [x] Readbrief/BASE; sourceTDD fixedcase/options/refusal/maxone/source-onlyimport/configgetter/profilepath/UID/lock/frozenbytes, correctAPIrecord/clientaccept-vs-reject/oldschema/missingidentity/wrongcase/activation/lateevents/settingsUnknown/cleanup negatives. `node --test --test-isolation=none tests/local-comparison-native-case.test.mjs tests/comparison-model-provider.test.mjs tests/local-comparison-evaluation-page.test.mjs` ->RED thenPASS.
+- [x] Implement boundedsource only, sourcebefore/current327/raw preservation exceptdeclaredgetter researchdelta; syntax/diff/targeted oldprovider+v2controls; localsourcecommit/task-done. No actualbundle/native yet; Task2consumes exactsamecase/schema/protocol.
 
 ### Task 2: Owned cached Chrome driver and independent cleanup
 
