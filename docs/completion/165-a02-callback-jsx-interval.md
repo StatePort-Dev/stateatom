@@ -10,3 +10,15 @@ All other current sources/327payload/oldraw/Main/pins registered beforecode unde
 .artifacts/a02/callback-jsx-interval/2026-10-25/registration.json. No implementation
 or new runtime evidence yet. No product/browser/native/model/cert/security/install/
 SDK/publication. Whole20/29 unchanged/five minors deferred. Next Task1 recorderTDD.
+
+Task1 closed profile implemented in the one declared research module. Defaultclassic
+schema/IDs/fields/retention preserved; explicit JSX uses separate interval schema,
+configInputOccurrence/configInputId and actual weak references. Native map token,
+same active callback, input identity, native element return, unique callback result
+and independent delegate lookup all required. No crossfamily string-ID matching.
+TDD17PASS12FAIL ->29PASS40.162ms; legacyclassic75+JSX104+new29 =208PASS1875.119ms.
+Opaque appvalue/config/element/array0traps; late metadata intrinsics0app callbacks,
+freeze-mutation historicalinputObserved/storageUnknown; borrowing/copy/clone/reuse/
+pending/aborted/Stop/window/capacity refuse.430registered otherfiles unchanged plus
+native/main/product pins; no retained frameworkVM/browser/native/model executed.
+Fullsuite deferred stableTask2. Next Task2 composedsource harness/qualification.

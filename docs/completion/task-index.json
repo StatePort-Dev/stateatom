@@ -1665,12 +1665,13 @@
       "active_slice": {
         "id": "A02.15",
         "record": "165-a02-callback-jsx-interval.md",
-        "status": "active-preregistered-before-code",
+        "status": "task1-source-recorder-complete-task2-pending",
         "base": "0cc2457e1ef6e7950bf9b043a0dece29fb7bff7d",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_checks": 208
       },
       "completed_slices": [
         {
@@ -2274,8 +2275,8 @@
       },
       "current_checkpoint": {
         "record": "165-a02-callback-jsx-interval.md",
-        "status": "active-preregistered-before-code",
-        "next_bounded_step": "Task1 closed JSX callback recorder mode TDD; classicdefault/schema preserved; no browser."
+        "status": "task1-source-recorder-complete-task2-pending",
+        "next_bounded_step": "Task2 composed original/off/on JSX callback source controls and ONE newly registered retained-source qualification; no browser."
       },
       "stopping_point_history": [
         {

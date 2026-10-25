@@ -28,8 +28,8 @@
 **Files:** modify experiments/react19-reducer/callback-copy-observer.mjs; create tests/engine/react19-callback-jsx-observer.test.mjs; completion165/status/index.
 **Interfaces:** createCallbackCopyObserver({page,enabled=true,inputProfile='classic-copy'}), optional jsx-config delegates actual JSX recorder. Existing arrayRuntime/enter/returned/exit unchanged; JSX tap config-input/jsx-element-return, snapshot link configInputOccurrence/configInputId.
 
-- [ ] task-start/read brief/BASE and registration beforecode. TDD exact positive, all borrowing/reuse/refusal/lifecycle/capacity/privacy/lateintrinsic controls plus classic default compatibility. Run new test RED then GREEN; old75+new104 regression.
-- [ ] Minimal closed mode, syntax/diff/preservation, localcommit/task-done. No retained framework/browser run here.
+- [x] task-start/read brief/BASE and registration beforecode. TDD exact positive, all borrowing/reuse/refusal/lifecycle/capacity/privacy/lateintrinsic controls plus classic default compatibility. Run new test RED then GREEN; old75+new104 regression.
+- [x] Minimal closed mode, syntax/diff/preservation, localcommit/task-done. No retained framework/browser run here.
 
 ### Task 2: Composed wrapperless JSX source qualification
 
