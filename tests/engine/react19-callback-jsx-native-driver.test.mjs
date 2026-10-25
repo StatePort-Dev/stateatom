@@ -3,6 +3,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
+import vm from 'node:vm';
+import {parse} from '@babel/parser';
+import {ownedProcessDeadline} from '../../experiments/owned-browser-process.mjs';
 import {readFile,mkdtemp,writeFile,rm} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {setTimeout as delay} from 'node:timers/promises';
@@ -131,3 +134,51 @@ test('private original argument values never enter the sanitized receipt',()=>{c
 test('v2 delivery refusal stops before process/publicAPI/HTTP/app with no launch retry',async()=>{const{s,ops,calls}=sourceOps();s.schema='stateatom.callback-jsx-native-case/2';let processReads=0;ops.readProcess=async()=>{processReads++;throw Error();};ops.readRequestedAutomation=async()=>({status:'REQUIRED_AUTOMATION_ARGUMENT_REFUSED',errors:['CONTROL']});const r=await runCallbackJSXNativeStages(s,ops);assert.equal(r.startup.requestedAutomation.status,'REQUIRED_AUTOMATION_ARGUMENT_REFUSED');assert.equal(processReads,0);assert.equal(calls.includes('http'),false);assert.equal(r.modesStarted,0);assert.equal(r.browserLaunchesStarted,1);assert.equal(calls.at(-1),'close-root');});
 test('legacy schema1 never borrows the explicit v2 argument',async()=>{const s=copy(await validSourceCase());s.browser.args=['--enable-automation'];assert.throws(()=>guardCallbackJSXNativeCase(s));assert.throws(()=>callbackJSXNativeLaunchOptions(s));});
 test('v2 valid original receipt precedes process/public/app stages in source control',async()=>{const{s,ops,calls}=sourceOps();s.schema='stateatom.callback-jsx-native-case/2';const readProcess=ops.readProcess;ops.readRequestedAutomation=async owner=>{calls.push('requested-argument');const child={pid:owner.pid,spawnargs:[owner.executable,'--headless','--enable-automation','--user-data-dir='+owner.profile]};return captureCallbackJSXAutomationRequest(child,owner);};ops.readProcess=async()=>{calls.push('process-read');return readProcess();};const r=await runCallbackJSXNativeStages(s,ops);assert.equal(r.status,'SOURCE_CONTROL_COMPLETED_NOT_NATIVE_PROOF');assert(calls.indexOf('requested-argument')<calls.indexOf('process-read'));assert(calls.indexOf('process-read')<calls.indexOf('http'));assert.equal(r.startup.requestedAutomation.source,'BrowserServer.process().spawnargs');assert.equal(r.phasesCompleted,18);assert.equal(r.actualBrowserStarted,false);});
+
+
+// ONE final A02.17 review I1: execute the actual private documentFor body.
+async function actualDocumentControl({fragment,includeFragment=true,targetOverride}={}){
+ const module=await import('../../experiments/react19-reducer/callback-jsx-native-run.mjs'),source=await readFile('experiments/react19-reducer/callback-jsx-native-run.mjs','utf8'),ast=parse(source,{sourceType:'module'}),owner=ast.program.body.find(n=>n.type==='FunctionDeclaration'&&n.id.name==='createNativeOperations'),fn=owner.body.body.find(n=>n.type==='FunctionDeclaration'&&n.id.name==='documentFor');
+ assert(fn);const origin='http://127.0.0.1:44513',base=origin+'/?mode=original',full=base+(fragment??''),target={type:'page',targetId:'target',browserContextId:'context',url:targetOverride??full},frame={id:'frame',loaderId:'loader',url:base};if(includeFragment)frame.urlFragment=fragment;
+ const m={pageSession:{async send(name){if(name==='Target.getTargetInfo')return{targetInfo:target};if(name==='Page.getFrameTree')return{frameTree:{frame}};throw Error('Unexpected source-control method');}},context:{pages(){return[{}];}},page:{frames(){return[{}];},url(){return full;}}};
+ const c=vm.createContext({URL,assert,modeHandles:new Map([['original',m]]),result:{origin},activeLease(lease){assert.equal(lease.active,true);},activeStep:async(lease,task)=>{assert.equal(lease.active,true);return task();},ownedProcessDeadline,qualifyCallbackJSXFrameURL:module.qualifyCallbackJSXFrameURL});
+ const run={mode:'original'},facts={},call=new vm.Script('('+source.slice(fn.start,fn.end)+')').runInContext(c);return{run,facts,invoke:()=>call(run,{active:true},facts)};
+}
+test('I1 actual documentFor accepts a conforming separate fragment while preserving IDs',async()=>{const c=await actualDocumentControl({fragment:'#/active'}),d=await c.invoke();assert.deepEqual(copy(d),{targetId:'target',frameId:'frame',loaderId:'loader',browserContextId:'context',mainOnly:true});});
+test('I1 actual documentFor baseline without fragment still works',async()=>{const c=await actualDocumentControl({includeFragment:false});assert.equal((await c.invoke()).mainOnly,true);});
+
+test('I1 refused actual document keeps explicit CDP URL facts without changing identity',async()=>{
+ const c=await actualDocumentControl({fragment:'#/active',targetOverride:'http://127.0.0.1:44513/?mode=original#/wrong'});
+ await assert.rejects(c.invoke());
+ assert.equal(c.facts.frameURL,'http://127.0.0.1:44513/?mode=original');
+ assert.equal(c.facts.urlFragment,'#/active');
+ assert.equal(c.facts.targetURL,'http://127.0.0.1:44513/?mode=original#/wrong');
+ assert.equal(c.facts.pageURL,'http://127.0.0.1:44513/?mode=original#/active');
+});
+test('I1 explicit Frame URL composition accepts only exact allowed fragment fields',async()=>{
+ const {qualifyCallbackJSXFrameURL:q}=await import('../../experiments/react19-reducer/callback-jsx-native-run.mjs');
+ const base='http://127.0.0.1:44513/?mode=original',policy={origin:'http://127.0.0.1:44513',mode:'original'};
+ for(const fragment of [undefined,'','#/','#/active']){
+  const frame={url:base};if(fragment!==undefined)frame.urlFragment=fragment;
+  assert.equal(q(frame,base+(fragment??''),{...policy,pageURL:base+(fragment??'')}),base+(fragment??''));
+ }
+});
+for(const [label,change]of [
+ ['null fragment',f=>f.frame.urlFragment=null],
+ ['numeric fragment',f=>f.frame.urlFragment=4],
+ ['unapproved fragment',f=>f.frame.urlFragment='#/completed'],
+ ['unmarked fragment',f=>f.frame.urlFragment='/active'],
+ ['embedded fragment',f=>f.frame.url+='#/active'],
+ ['foreign origin',f=>f.frame.url='http://127.0.0.1:44514/?mode=original'],
+ ['foreign path',f=>f.frame.url='http://127.0.0.1:44513/other?mode=original'],
+ ['foreign mode',f=>f.frame.url='http://127.0.0.1:44513/?mode=on'],
+ ['extra query',f=>f.frame.url+='&extra=1'],
+ ['mismatched target fragment',f=>f.target='http://127.0.0.1:44513/?mode=original'],
+ ['mismatched page fragment',f=>f.policy.pageURL='http://127.0.0.1:44513/?mode=original#/'],
+]){
+ test('I1 URL qualification refuses '+label,async()=>{
+  const {qualifyCallbackJSXFrameURL:q}=await import('../../experiments/react19-reducer/callback-jsx-native-run.mjs');
+  const full='http://127.0.0.1:44513/?mode=original#/active',f={frame:{url:'http://127.0.0.1:44513/?mode=original',urlFragment:'#/active'},target:full,policy:{origin:'http://127.0.0.1:44513',mode:'original',pageURL:full}};change(f);
+  assert.equal(typeof q,'function');assert.throws(()=>q(f.frame,f.target,f.policy));
+ });
+}

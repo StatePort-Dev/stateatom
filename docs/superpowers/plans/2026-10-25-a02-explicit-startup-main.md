@@ -34,4 +34,4 @@
 
 ## Final Closeout
 
-- [ ] ONE fresh whole-item review/effectrulings/ONEtestedI-Cpass/no rereview/native retry; ownworkspace archive/CRC/allbytes/identityverify/remove; cleancheckpoint/ONE next unfinished dependency. No wholeA02/20of29 upgrade inferred.
+- [x] ONE fresh whole-item review/effectrulings/ONEtestedI-Cpass/no rereview/native retry; ownworkspace archive/CRC/allbytes/identityverify/remove; cleancheckpoint/ONE next unfinished dependency. No wholeA02/20of29 upgrade inferred.

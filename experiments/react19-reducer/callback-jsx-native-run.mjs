@@ -87,6 +87,16 @@ export async function buildCallbackJSXMainOverlay(){
  for(const p of Object.keys(pins))assert(physical[app+'/node_modules/'+p]);
  return{schema:'stateatom.callback-jsx-main-source-overlay/1',sourceOnly:true,appExecuted:false,browserStarted:false,physicalInputs:physical,loadedInputs,bundles,metafiles,main:{originalDigest:hash(mainSource),intervalSites:interval.intervalSites,arraySites:interval.sites,intervalDigest:hash(interval.code),loweredDigest:hash(lowered.code),configDigest:hash(config.code),configSites:config.sites},mainOutputs:{'main-interval.jsx':interval.code,'main-lowered.js':lowered.code,'main-config.js':config.code},nativeJSX:{...nativeJSX,code:undefined},nativeJSXCode:nativeJSX.code,factory:callbackJSXNativeFactory()};
 }
+// CDP Page.Frame.url excludes the fragment; urlFragment, when present, includes '#'.
+export function qualifyCallbackJSXFrameURL(frame,targetURL,{origin,mode,pageURL}){
+ assert(['original','off','on'].includes(mode));
+ assert.equal(frame.url,origin+'/?mode='+mode);
+ const fragment=frame.urlFragment===undefined?'':frame.urlFragment;
+ assert(['','#/','#/active'].includes(fragment));
+ const completeURL=frame.url+fragment;
+ assert.equal(targetURL,completeURL);assert.equal(pageURL,completeURL);
+ return completeURL;
+}
 export async function verifyCallbackJSXNativeInputs(expected){const actual={};assert(expected&&typeof expected==='object'&&Object.keys(expected).length>0);for(const[p,d]of Object.entries(expected)){assert(path.isAbsolute(p)&&/^[a-f0-9]{64}$/.test(d));actual[p]=hash(await fs.readFile(p));assert.equal(actual[p],d,'Frozen current input drift');}return actual;}
 export function guardCallbackJSXNativeCase(s){
  const profile=caseProfile(s.schema);assert.equal(s.maximumNativeRuns,1);assert(path.resolve(s.out).startsWith(profile.outputPrefix));assert.equal(s.preparedDirty,false);assert(/^[a-f0-9]{40}$/.test(s.preparedAtRevision));assert.equal(s.upstreamRevision,'ff43b02e59dfa604386bb382034b2cd07c2bcd8a');assert.equal(Object.keys(s.originalManifest).length,28);
@@ -225,11 +235,18 @@ function createNativeOperations(s,inputs){
  })();
  const dom=page=>page.evaluate(()=>({texts:[...document.querySelectorAll('[data-testid="todo-item-label"]')].map(n=>n.textContent),checked:[...document.querySelectorAll('[data-testid="todo-item-toggle"]')].map(n=>n.checked)}));
  const waitDOM=(page,expected)=>page.waitForFunction(e=>JSON.stringify([...document.querySelectorAll('[data-testid="todo-item-label"]')].map(n=>n.textContent))===JSON.stringify(e.texts)&&JSON.stringify([...document.querySelectorAll('[data-testid="todo-item-toggle"]')].map(n=>n.checked))===JSON.stringify(e.checked),expected,{timeout:20000});
- async function documentFor(run,lease){
+ async function documentFor(run,lease,urlFacts={}){
   activeLease(lease);
-  const m=modeHandles.get(run.mode),target=(await activeStep(lease,()=>ownedProcessDeadline(()=>m.pageSession.send('Target.getTargetInfo'),5000,'METADATA_TIMEOUT'))).targetInfo,tree=(await activeStep(lease,()=>ownedProcessDeadline(()=>m.pageSession.send('Page.getFrameTree'),5000,'METADATA_TIMEOUT'))).frameTree;
+  const m=modeHandles.get(run.mode);
+  run.documentURLReadings??=[];assert(run.documentURLReadings.length<8);run.documentURLReadings.push(urlFacts);
+  const target=(await activeStep(lease,()=>ownedProcessDeadline(()=>m.pageSession.send('Target.getTargetInfo'),5000,'METADATA_TIMEOUT'))).targetInfo;
+  urlFacts.targetURL=target.url;
+  const tree=(await activeStep(lease,()=>ownedProcessDeadline(()=>m.pageSession.send('Page.getFrameTree'),5000,'METADATA_TIMEOUT'))).frameTree;
+  urlFacts.frameURL=tree.frame.url;urlFacts.urlFragmentPresent=Object.hasOwn(tree.frame,'urlFragment');
+  if(urlFacts.urlFragmentPresent)urlFacts.urlFragment=tree.frame.urlFragment;
+  urlFacts.pageURL=m.page.url();
   assert.equal(target.type,'page');assert(!target.openerId&&!target.openerFrameId);assert.equal(m.context.pages().length,1);assert.equal(m.page.frames().length,1);assert.equal((tree.childFrames||[]).length,0);assert(!tree.frame.parentId);
-  const u=new URL(tree.frame.url);assert.equal(u.origin,result.origin);assert.equal(u.pathname,'/');assert.equal(u.search,'?mode='+run.mode);assert(['','#/','#/active'].includes(u.hash));assert.equal(target.url,tree.frame.url);
+  qualifyCallbackJSXFrameURL(tree.frame,target.url,{origin:result.origin,mode:run.mode,pageURL:urlFacts.pageURL});
   return{targetId:target.targetId,frameId:tree.frame.id,loaderId:tree.frame.loaderId,browserContextId:target.browserContextId,mainOnly:true};
  }
  return{

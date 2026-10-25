@@ -1,13 +1,15 @@
 # Project status
 
-Active bounded attempt: [A02.17](completion/167-a02-explicit-startup-main.md).
-Explicit argument/source receipt/publicAPI now actualqualified; originalMain+
-ReactDOM executed with exact loadedbundle/defaultcontext.4originalUI phases complete,
-filteredDOMsaved/documentcheckFAILED,13phases unvisited/off-on0; no JSXinterval proof.
-Root issue matches URL fragment API contract/source comparison; literalIncomplete/
-caseexhausted, cleanup/PIDprofileAbsent.267source/full4234PASS/saved548physical40negative.
-Next ONE freshreview/sourcefixpass, no native retry/criteriawaiver.20/29/fullA02
-unchanged,6minors deferred; no cert/trust/userprofile/SDK/model/publication changes.
+Completed bounded attempt: [A02.17](completion/167-a02-explicit-startup-main.md).
+ONE review 0C/1I/0newM; one tested correction preserves separate CDP URL fragment,
+strict target/page URL equality and document identity, with prevalidation URL facts.
+205 focused / 4249 full checks PASS. Actual startup/Main+ReactDOM/source qualified;
+4 original phases complete, filtered DOM partial, off/on unvisited. Exhausted case
+remains INCOMPLETE; no native/reader rerun or retroactive pass. Six prior minors
+deferred. Whole plan 20/29; full A02 and product lineage remain open.
+Next one unfinished dependency: separately frozen Main case on corrected URL source,
+same 18-phase original/off/on criteria. No new observer/flags/cert/trust/userprofile/
+SDK/model/publication work.
 
 Completed bounded attempt: [A02.16](completion/166-a02-original-main-jsx-native.md).
 ONEreview0C3I1M, one tested sourcefixpass233focused/full4200PASS: finite operation

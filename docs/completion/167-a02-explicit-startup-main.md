@@ -1,4 +1,4 @@
-# A02.17 — explicit startup Main case (active preregistration)
+# A02.17 — explicit startup Main case and confirmed URL correction
 
 BASE c64edc65ba6c6d6dff0c1e046776f578efc4718c. A02.16 sourcefixes complete/full4200, nativecase exhausted0/18;
 missed publicAPIprerequisite. Exact installed source lacks defaultflag literal and
@@ -86,3 +86,21 @@ Native run-end afterhashmap notstored; input-check booltrue and later548physical
 reader remain distinct. Whole20/29/fullA02/product unsupported unchanged/6minors.
 Next ONE finalfreshreview, then one tested sourceI-Cpass ifneeded; no currentcase
 reexecution or criterion lowering.
+
+ONE fresh final review: 0 Critical / 1 Important / 0 new Minor. I1 confirms the
+document URL API mismatch. Actual private documentFor source-body test reproduced
+it RED65/1. Added strict helper/facts controls RED65/14 includes missing helper and
+missing saved facts, not fourteen independent native failures. ONE source fix
+composes explicit Page.Frame.url + allowed urlFragment, compares exact target and
+page URL, and retains strict owned origin/root/mode query and document identity.
+Bounded per-mode URL readings are retained before validation in future runs.
+Focused205/205 PASS1720.916435ms; complete regression recorded below. Existing raw,
+reader and exhausted case remain unchanged; no native/reader rerun or re-review.
+Six existing minors stay deferred. Reviewer declined domains and author rulings
+are in .artifacts/a02/callback-jsx-explicit-review/2026-10-25/report.md.
+
+Next one unfinished dependency: separately freeze an actual Main acquisition case
+on the corrected URL source. Same original/off/on six-phase criteria; no new
+observer, arbitrary flags, criterion waiver or old-run reclassification.
+
+Final correction regression: npm test 4249/4249 PASS, 0 fail/cancel/skip, 110098.995703ms, terminal31653 exit0. Syntax/diff PASS. No native retry or rereview.
