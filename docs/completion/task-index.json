@@ -2460,9 +2460,9 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "174-a02-app-hook-binding.md",
-        "status": "complete-bounded-App-source-binding",
-        "next_bounded_step": "ONE Appboundvalue→freshMainJSXconfig/nativeprops→sameMainargument sourceassociation; native/index/state/ownership remainsUnknown, no genericownershipframework."
+        "record": "175-a02-app-main-props.md",
+        "status": "planning-bounded-App-Main-props-source",
+        "next_bounded_step": "TDD weak exact App/config/nativeprops/Main source association; no native/state or product upgrade."
       },
       "stopping_point_history": [
         {
@@ -2555,46 +2555,23 @@
           "record": "173-a02-main-input-native.md",
           "status": "complete-bounded-native-main-input-qualification",
           "next_bounded_step": "ONE bounded source handoff state-array→already-bound App todos→Main props/parameter; no generalownershipkernel/state/selectedDOM/product claim from Main-local success."
+        },
+        {
+          "record": "174-a02-app-hook-binding.md",
+          "status": "complete-bounded-App-source-binding",
+          "next_bounded_step": "ONE Appboundvalue→freshMainJSXconfig/nativeprops→sameMainargument sourceassociation; native/index/state/ownership remainsUnknown, no genericownershipframework."
         }
       ],
-      "implementation_plan": "../superpowers/plans/2026-10-25-a02-app-hook-binding.md",
+      "implementation_plan": "../superpowers/plans/2026-10-25-a02-app-main-props.md",
       "active_slice": {
-        "id": "A02.24",
-        "record": "174-a02-app-hook-binding.md",
-        "status": "complete-bounded-App-source-binding",
-        "base": "48cc6af",
+        "id": "A02.25",
+        "record": "175-a02-app-main-props.md",
+        "status": "planning",
+        "base": "a7836b983eef2eed08e21f0fbdd127b2e82e20e8",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false,
-        "focused_tests_passed": 55,
-        "full_tests_passed": 4484,
-        "tuple_index_origin": "Unknown/Unsupported",
-        "native_state_origin": "Unknown/Unsupported",
-        "source_revision": "0544712",
-        "case_revision": "5134cf7",
-        "source_runs": 1,
-        "VM_contexts_complete": 54,
-        "cases_complete": 18,
-        "positive_source_cases": 9,
-        "source_binding_links": 11,
-        "Unknown_cases": 9,
-        "controlled_App_invocations": 60,
-        "saved_byte_inputs": 913,
-        "saved_negative_controls": 104,
-        "qualification_result": ".artifacts/a02/app-hook-binding/2026-10-25T11-55-00Z/results.json",
-        "qualification_sha256": "b6ae9426d419983036a4d2a7c24d00f50e0c21beda21e049e5c58ecea8d4d999",
-        "actual_native_hook_executed": false,
-        "review": {
-          "critical": 0,
-          "important": 0,
-          "new_minor": 0,
-          "total_deferred_minor": 9,
-          "correction_passes": 0,
-          "re_review": false
-        },
-        "source_qualification_repeated": false,
-        "post_qualification_source_changed": false
+        "full_A02": false
       }
     },
     {
