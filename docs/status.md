@@ -1,5 +1,10 @@
 # Project status
 
+Active bounded task: [A02.18](completion/168-a02-fragment-main-native.md).
+Registered before source edits: closed corrected-fragment Main case, same18phases,
+additional strict saved URL fields. Source/frozen gates before max1newnative;
+no new runtime proof yet.20/29/fullA02 unchanged;6minors deferred.
+
 Completed bounded attempt: [A02.17](completion/167-a02-explicit-startup-main.md).
 ONE review 0C/1I/0newM; one tested correction preserves separate CDP URL fragment,
 strict target/page URL equality and document identity, with prevalidation URL facts.
