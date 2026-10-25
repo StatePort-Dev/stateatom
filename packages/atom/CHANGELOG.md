@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.0-candidate.20261026.80
+
+- Coalesce the first recording publication at one event-loop task boundary, including
+  quickly acknowledged saves. Collect every event synchronously and keep explicit
+  Stop, Clear, permission and limit persistence independent.
+- Make queued recording saves and notifications inert once their runtime is stopped,
+  preserving replacement session metadata. No metric/domain/Live-policy or production
+  permission change. Source checks are separate from packed/native qualification.
+- Candidate79 is an immutable intermediate with incomplete local version metadata;
+  version80 records the matching lock entry and this changelog. Neither package
+  establishes new performance, installed workflow or release acceptance by itself.
+
 ## 0.1.0-candidate.20261021.78
 
 - Report native Undo and Restore baseline as unavailable when exact ownership or
