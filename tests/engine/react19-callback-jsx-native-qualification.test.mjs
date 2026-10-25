@@ -149,3 +149,20 @@ for(const key of ['inputId','configId','valueId','elementId'])test('I2 distinct 
 test('I2 copied whole native occurrence cannot qualify two outer rows',()=>{const phase=callbackJSXNativeProtocol().phases[0],c=copy(capture(phase));c.snapshot.links[1].configInputOccurrence=copy(c.snapshot.links[0].configInputOccurrence);assert.throws(()=>guardCallbackJSXNativeWindow(c,phase,sites));});
 for(const kind of ['page','window'])test('I2 native occurrence from foreign '+kind+' refuses despite matching outer frame',()=>{const phase=callbackJSXNativeProtocol().phases[0],c=copy(capture(phase)),n=c.snapshot.links[0].configInputOccurrence;for(const key of ['inputId','configId','valueId','elementId'])n[key]=kind==='page'?n[key].replace(sites.page,'foreign-page'):n[key].replace(':jsx-config:1:',':jsx-config:2:');assert.throws(()=>guardCallbackJSXNativeWindow(c,phase,sites));});
 test('I2 native retention window must be current collector generation',()=>{const phase=callbackJSXNativeProtocol().phases[0],c=copy(capture(phase));c.retention.configInput.window++;assert.throws(()=>guardCallbackJSXNativeWindow(c,phase,sites));});
+
+
+// A02.17: a successful saved v2 result must retain the independent original receipt.
+function explicitWholeRun(){const{r,s}=wholeRun();s.schema='stateatom.callback-jsx-native-case/2';r.startup=startup();const owner=r.startup.owner;r.startup.requestedAutomation={schema:'stateatom.callback-jsx-requested-automation/1',source:'BrowserServer.process().spawnargs',status:'REQUIRED_AUTOMATION_ARGUMENT_OBSERVED',pid:owner.pid,argumentCount:owner.argumentCount,vectorDigest:owner.vectorDigest,automationOptionCount:1,automationExact:true,errors:[]};return{r,s};}
+test('v2 original delivery receipt is distinct from public startup report and permits scoped saved structure',()=>{const{r,s}=explicitWholeRun();assert.equal(classifyCallbackJSXNativeRun(r,s).status,'PASS_BOUNDED_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');});
+for(const[name,mutate]of [
+ ['missing',r=>delete r.startup.requestedAutomation],
+ ['wrong source',r=>r.startup.requestedAutomation.source='Browser.getBrowserCommandLine'],
+ ['wrong PID',r=>r.startup.requestedAutomation.pid=333],
+ ['wrong digest',r=>r.startup.requestedAutomation.vectorDigest='0'.repeat(64)],
+ ['wrong count',r=>r.startup.requestedAutomation.argumentCount++],
+ ['duplicate switch',r=>r.startup.requestedAutomation.automationOptionCount=2],
+ ['not exact',r=>r.startup.requestedAutomation.automationExact=false],
+ ['refused',r=>r.startup.requestedAutomation.status='REQUIRED_AUTOMATION_ARGUMENT_REFUSED'],
+ ['errors',r=>r.startup.requestedAutomation.errors=['UNKNOWN']]
+])test('v2 saved result refuses original delivery '+name,()=>{const{r,s}=explicitWholeRun();mutate(r);assert.equal(classifyCallbackJSXNativeRun(r,s).status,'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');});
+for(const kind of ['PID','digest','count'])test('v2 matching malformed original and receipt '+kind+' cannot qualify',()=>{const{r,s}=copy(explicitWholeRun()),owner=r.startup.owner,receipt=r.startup.requestedAutomation;if(kind==='PID')owner.pid=receipt.pid=true;else if(kind==='digest')owner.vectorDigest=receipt.vectorDigest='invalid';else owner.argumentCount=receipt.argumentCount=true;assert.equal(classifyCallbackJSXNativeRun(r,s).status,'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');});

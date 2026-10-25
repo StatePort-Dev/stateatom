@@ -1665,12 +1665,14 @@
       "active_slice": {
         "id": "A02.17",
         "record": "167-a02-explicit-startup-main.md",
-        "status": "active-preregistered-before-code",
+        "status": "source-stable-before-new-frozen-case",
         "base": "c64edc65ba6c6d6dff0c1e046776f578efc4718c",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_checks": 267,
+        "full_source_checks": 4234
       },
       "completed_slices": [
         {
@@ -2332,8 +2334,8 @@
       },
       "current_checkpoint": {
         "record": "167-a02-explicit-startup-main.md",
-        "status": "active-preregistered-before-code",
-        "next_bounded_step": "Closed v2 explicit --enable-automation and actual original-argument delivery receipt, TDD/sourcecommit/fullsuite beforemax1newfrozen Maincase. Oldv1exhausted."
+        "status": "source-stable-before-new-frozen-case",
+        "next_bounded_step": "Resource-free v2prepare/preflight aftersourcecommit, then casecommit BEFORE max1new originalMainrun with explicit --enable-automation and original deliveryreceipt. No native yet."
       },
       "stopping_point_history": [
         {

@@ -89,6 +89,10 @@ export function classifyCallbackJSXNativeRun(r,s){
   for(const k of ['modelCalls','nativeWriterCalls'])assert.equal(r[k],0);
   for(const[k,n]of [['browserLaunchesStarted',1],['browserLaunchesCompleted',1],['modesStarted',3],['modesCompleted',3],['phasesStarted',18],['phasesCompleted',18]])assert.equal(r[k],n);
   assert.deepEqual(s.protocol,callbackJSXNativeProtocol());assert.equal(r.startupQualification.status,'QUALIFIED_PUBLIC_STARTUP_AND_OWNER_PROCESS_FACTS_ONLY');assert.deepEqual(r.startupQualification.failures,[]);assert.equal(r.startupQualification.effectiveMode,unknown);assert.equal(r.startupQualification.procArgumentObservation,unknown);
+  if(s.schema==='stateatom.callback-jsx-native-case/2'){
+   const original=r.startup?.owner,receipt=r.startup?.requestedAutomation;
+   assert.equal(receipt?.schema,'stateatom.callback-jsx-requested-automation/1');assert.equal(receipt.source,'BrowserServer.process().spawnargs');assert.equal(receipt.status,'REQUIRED_AUTOMATION_ARGUMENT_OBSERVED');assert.deepEqual(receipt.errors,[]);assert.equal(receipt.pid,original.pid);assert.equal(receipt.vectorDigest,original.vectorDigest);assert.equal(receipt.argumentCount,original.argumentCount);assert(Number.isSafeInteger(receipt.pid)&&receipt.pid>0&&receipt.pid<=2147483647);assert(digest(receipt.vectorDigest));assert(Number.isSafeInteger(receipt.argumentCount)&&receipt.argumentCount>=2&&receipt.argumentCount<=256);assert.equal(receipt.automationOptionCount,1);assert.equal(receipt.automationExact,true);
+  }
   assert.deepEqual(r.networkDenied,[]);assert(Array.isArray(r.traffic)&&r.traffic.length>0);for(const t of r.traffic){assert.equal(t.method,'GET');assert.equal(t.ownedOrigin,true);}
   assert.deepEqual(r.runs.map(x=>x.mode),s.protocol.modes);const pages=new Set(),documents={targetId:new Set(),frameId:new Set(),loaderId:new Set(),browserContextId:new Set()};
   for(const run of r.runs){

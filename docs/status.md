@@ -1,9 +1,10 @@
 # Project status
 
 Active bounded work: [A02.17](completion/167-a02-explicit-startup-main.md).
-Explicit required observability input/new closed Maincase+original deliveryreceipt;
-legacy case remains exhausted. Registration beforecode, max1newcase aftergates.
-No new runtime proof or product/fullA02 credit;20/29 unchanged/6minors deferred.
+Closed schema2/exact --enable-automation and original PID/vector-bound delivery
+receipt sourcecomplete267focused/full4234PASS. Old464undeclared inputs/327payload/
+exhaustedv1 preserved. Next prepare/preflight+casecommit BEFOREmax1new Maincase.
+No new native proof/product/fullA02 credit;20/29 unchanged/6minors deferred.
 
 Completed bounded attempt: [A02.16](completion/166-a02-original-main-jsx-native.md).
 ONEreview0C3I1M, one tested sourcefixpass233focused/full4200PASS: finite operation
