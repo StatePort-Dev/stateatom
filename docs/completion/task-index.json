@@ -4700,7 +4700,9 @@
             "rereview": false,
             "native": false,
             "wholeL02ReviewConsumed": false
-          }
+          },
+          "source_fix": "d9bb204",
+          "final_checkpoint": ".artifacts/l02/worker-independent-discovery-review/2026-10-26/final-checkpoint.json"
         },
         {
           "id": "L02.13",

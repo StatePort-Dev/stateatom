@@ -56,3 +56,8 @@ All327product+32historical+2current source hashes verified. Review report/ruling
 NextONE: separately plan/seal current80 cached comparison case for this corrected
 route. No old158 retry, no availability-only pass, no model download/cert/trust work;
 maximum one new native attempt only after its fixed inputs and source checks exist.
+
+Closed source fix d9bb204ebe5dcf682fcbcf04688891cf47f2d57d. Own workspace archived
+and removed only after CRC/every-byte/identity checks: `.artifacts/l02/worker-independent-discovery-review/2026-10-26/workspace.zip`
+(18files), SHA256 `fcc3c53f78756d06614480048847a1487beef221047403cc6eea4a60adba8edc`. Final checkpoint beside archive.
+No sibling workspace or retained model cache modified.

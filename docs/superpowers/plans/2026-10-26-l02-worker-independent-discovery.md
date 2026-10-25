@@ -25,10 +25,10 @@ L02.13 load cause unknown; fullL02 and useful model acceptance remain open.
 **Interfaces:** readComparisonExtensionUI(expectedPath) browser function returns
 {ready,items}; selectComparisonExtension(snapshot,expectedPath,previousID) returns
 strict selected identity or null; assertComparisonExtensionAbsent handles baseline.
-- [ ] Register base/protected product and old raw/case hashes; task-start/read brief.
-- [ ] RED exact-path/worker-absent/control tests, then minimal snapshot/guard/poll integration.
-- [ ] GREEN focused existing/new controls, full npm test, syntax/diff/protected hashes.
-- [ ] Record source-only result and limitations, localcommit/task-done.
-- [ ] ONE whole review, one tested I/C correction pass, defer minors; archive/remove
+- [x] Register base/protected product and old raw/case hashes; task-start/read brief.
+- [x] RED exact-path/worker-absent/control tests, then minimal snapshot/guard/poll integration.
+- [x] GREEN focused existing/new controls, full npm test, syntax/diff/protected hashes.
+- [x] Record source-only result and limitations, localcommit/task-done.
+- [x] ONE whole review, one tested I/C correction pass, defer minors; archive/remove
 only own workspace and commit closeout. NextONE L02 discovery native preflight
 selection only if justified; no retry158 or quality readiness from these docs.
