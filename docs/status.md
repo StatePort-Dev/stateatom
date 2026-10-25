@@ -1,12 +1,12 @@
 # Project status
 
-V03.28 one native attempt INCOMPLETE; source finding/finalreview pending:
+V03.28 bounded attempt/source correction complete, native remains INCOMPLETE:
 [current clean-editor contract](completion/186-v03-current-clean-editor.md).
-585inputs/327product/15oldraw equal; own10ABA observed, own20pending refused by
-newguard wrong assumption that historical externalRevision must clear after ownack.
-Backend/UI agree; oldcase/readers unchanged, fullreader refused/preservation nonqual.
-All9cleanup/2knownPIDsAbsent; no retry/Close/QA/fullV03 upgrade.
-4914fullsource proof remains separate from native refusal.20of29 unchanged.
+ONEreview0C2Ifixed1newM(total14deferred);64focused/4918fullsourcePASS. Historical
+external flag preserved; firstleg epoch rollback refused.327product80/oldraw unchanged.
+Native585now580current+5exact67d06Git; originalfullreader refusal preserved/no retry.
+Own10ABA observed, secondphase/Close/QA unqualified.20of29/fullV03 unchanged.
+NextONEV03.29 separately frozen corrected-source case, no oldcase/cert/trust work.
 
 V02.19 local80 package admission complete, ONEreview0C0I0newM: [package evidence](completion/185-v02-publication-package.md).
 Cleanadd75a7/AtomSHA0d128ea/UI2unchanged; types2/admission9/receipt11PASS.

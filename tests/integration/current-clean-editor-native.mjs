@@ -94,13 +94,15 @@ export function performRestoreExternalABA(record,ownValue,ops){return performExt
 export function performConvergedRestoreExternalABA(record,ownValue,ops){return performExternalABA(record,ownValue,ops,true);}
 export async function observeRestoreAppConvergence(step,before,ownValue,ops){
  assert([10,20].includes(ownValue)&&[ownValue,ownValue+1].includes(step.value));
- const now=ops.now||Date.now,sleep=ops.sleep||(ms=>new Promise(resolve=>setTimeout(resolve,ms))),g={captureStatus:'Partial',startedAt:now(),sampleIntervalMs:100,consecutiveMatches:3,maxSamples:50,maxElapsedMs:5000,samples:[]};step.convergence=g;let streak=0;
+ const now=ops.now||Date.now,sleep=ops.sleep||(ms=>new Promise(resolve=>setTimeout(resolve,ms))),g={captureStatus:'Partial',startedAt:now(),sampleIntervalMs:100,consecutiveMatches:3,maxSamples:50,maxElapsedMs:5000,samples:[]};step.convergence=g;let streak=0,externalSeen=step.value===ownValue;
  try{
   while(g.samples.length<50){
    await ops.capture(g.samples,g.samples.length);const p=g.samples.at(-1);guardRestoreExternalEditSnapshot(p,before,ownValue,step.value,ops.panelURL);
    if(now()-g.startedAt>5000)throw error('CONVERGENCE_TIMEOUT');
    assert(Array.isArray(p.dom.products)&&p.dom.products.length<=2&&p.dom.products.every((v,i,a)=>[1,2].includes(v)&&(i===0||a[i-1]<v)));
-   if(step.value===ownValue){const row=p.inputs.resources.find(x=>x.resource.locator.selector==='#minPrice');assert.notEqual(row.resource.revision,before.inputs.history.at(-1).outcomes[0].after.revision,'ABA cannot roll back the observed external epoch');}
+   const currentRevision=p.inputs.resources.find(x=>x.resource.locator.selector==='#minPrice').resource.revision,ownRevision=before.inputs.history.at(-1).outcomes[0].after.revision;
+   if(externalSeen)assert.notEqual(currentRevision,ownRevision,'Observed external epoch cannot roll back to the own receipt');
+   if(currentRevision!==ownRevision)externalSeen=true;
    streak=currentCleanConvergenceReady(p,before,ownValue,step.value,ops.panelURL)?streak+1:0;
    if(streak===3){step.snapshot=p;step.dom=p.dom;g.captureStatus='Complete';return g;}
    if(g.samples.length===50||now()-g.startedAt+100>5000)throw error('CONVERGENCE_TIMEOUT');await sleep(100);

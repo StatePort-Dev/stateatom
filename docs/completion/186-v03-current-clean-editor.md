@@ -100,3 +100,40 @@ font/fidelity/narrow/focus QA claimed. Independent human remains nonblocker.
 and prewritten readers preserve source/native/evidence boundaries. Boundedincomplete
 acquisitionTask3 complete, but source finding/finalreview remain.20of29/fullV03/
 originalguideFAIL unchanged. No native retry/browser/certificate/SDK/otherrepo change.
+
+
+## ONE final review and single source correction pass
+Fresh read-only /root/v0328_whole_review Astra/high33e3056..9ec4c67:
+0Critical/2Important/1newMinor. I1 accepted: historical external flag need not clear
+on ownack; exact ownvalue/revision and button agreement remain, pendingneverready.
+Fixture own20 now retains historical external flag and baseline ownership loss.
+Real ledger/draft synthetic receipts reproduce own10→external11→external10→own20,
+unchanged first history, Undoavailable/baselineunavailable, valid pending21.
+I2 accepted: firstleg previously allowed external11→oldown10→threeexternal11 samples.
+Both acquisition and full-record guard now track observed nonown revision per current
+own receipt, independently of products/historical flag, rejecting rollback and
+resetting only for genuinely new own20. Existing secondleg refusal remains.
+
+Proper hostRED64tests61PASS3FAIL: real ledger pending20 wrongly refused; firstleg
+rollback wrongly admitted in acquisition/fullrecord. Before that, restricted child
+CLI failures and missing synthetic target value/observedAt were corrected as test
+setup, no implementation change before properRED. Single fix GREEN64PASS
+3185.962045ms/full4918PASS0FAIL0SKIP128829.647291ms terminal0(session71482).
+No secondreview/native retry or product/UI/policy change. Frozen case/spec/readers/
+raw remain unchanged; the prepared spec's own-flag false premise is historical,
+superseded for corrected SOURCE by this explicit ruling. No general policy decision.
+
+Five newresearch files changed: current585native inputs now580physical+5exact
+67d06a6 Git blobs. All1794oldprotected/327payload/15retainedraw unchanged. Original
+prewritten fullreader refusal and nonqualifying preservation remain first actual
+outcomes; no post-fix fullreader rerun or uniform current585qualification claimed.
+Source correction cannot fill unvisited21/20/Close/QA or turn old INCOMPLETE intoPASS.
+
+M14(newreview M1) deferred: frozen Python fullreader omits final-phase app DOM
+predicates for baseline/afterFirst/afterSecond/closed. ActualINCOMPLETE refused
+before them, Closeunvisited, JSqualifier retains the checks; no false acceptance
+shown. Preserve bytes and oldoutcome; future reader must include those predicates.
+Total14deferredminors. [Review and all declined effect/cost rulings](../../.artifacts/v03/current-clean-editor-review/2026-10-26/report.md).
+NextONEboundedV03.29: separately register the corrected source's current clean-editor
+acquisition, freeze a distinct case/readers with all required DOM/epoch predicates,
+and maxONEnew native. Old28 stays exhausted; no cert/trust/otherrepo/policy changes.

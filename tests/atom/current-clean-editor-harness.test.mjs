@@ -59,3 +59,9 @@ test('ten actual native acquisition helpers preserve exact original source bytes
  const body=(source,name)=>{const starts=['export async function '+name+'(','export function '+name+'('],start=Math.max(...starts.map(x=>source.indexOf(x)));assert(start>=0,name);const end=source.indexOf('\n}',start);assert(end>start,name);return source.slice(start,end+2);};
  for(const name of ['verifyRestoreAvailabilityFrozenInputs','registerRestoreAvailabilityRun','captureRestoreAvailabilitySnapshot','acquireRestoreAvailabilityOwner','closeRestoreAvailabilityOwner','readRestoreAvailabilityField','startRestoreAvailabilityAppConsole','stopRestoreAvailabilityAppConsole','sealRestoreAvailabilityAppConsole','dispatchRestoreApplicationText'])assert.equal(body(current,name),body(original,name),name);
 });
+
+test('first-leg observed external epoch cannot roll back to own revision; offending sample stays Partial',async()=>{
+ const m=await load(),f=sourceOps([[1]]),capture=f.ops.capture;let n=0;
+ f.ops.capture=async(o,key)=>{await capture(o,key);if(n++===1){const p=o[key];p.inputs.resources=structuredClone(f.before.inputs.resources);p.inputs.canUndo=f.before.inputs.canUndo;p.inputs.canRestoreBaseline=f.before.inputs.canRestoreBaseline;p.field=structuredClone(f.before.field);}};
+ const e=step();await assert.rejects(m.observeRestoreAppConvergence(e,f.before,10,f.ops));assert.equal(e.convergence.captureStatus,'Partial');assert.equal(e.convergence.samples.length,2);assert.equal(e.convergence.samples[1].field.value,'10');assert.equal(e.snapshot,undefined);
+});

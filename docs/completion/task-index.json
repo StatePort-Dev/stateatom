@@ -6354,7 +6354,7 @@
       "active_slice": {
         "id": "V03.28",
         "title": "Current clean-editor external ABA contract",
-        "status": "bounded-native-attempt-incomplete-known-source-finding-review-pending",
+        "status": "closed-bounded-attempt-native-incomplete-source-I1-I2-fixed",
         "record": "186-v03-current-clean-editor.md",
         "design": "../superpowers/specs/2026-10-26-v03-current-clean-editor-design.md",
         "plan": "../superpowers/plans/2026-10-26-v03-current-clean-editor.md",
@@ -6365,7 +6365,7 @@
         "native_runs": 1,
         "maximum_native_runs": 1,
         "whole_V03_complete": false,
-        "source_checks": 4914,
+        "source_checks": 4918,
         "registered_inputs": 585,
         "case": "../testing/current-clean-editor-case80.json",
         "reader_controls_source_only": {
@@ -6377,7 +6377,25 @@
         "raw_sha256": "f57dc0dd4b810d46bbfeaf9e643890f33a20926f977a9edf94bec05733d16c66",
         "completed_native_checks": 3,
         "known_source_finding": "Own revision does not imply externalRevision:false; flag reflects historical r.epoch>0. Preserve incomplete case; source correction via ONEfinalreview pass only.",
-        "review_pending": true
+        "review_pending": false,
+        "focused_checks": 64,
+        "review": {
+          "critical": 0,
+          "important": 2,
+          "important_fixed": 2,
+          "minor": 1,
+          "deferred_total": 14,
+          "correction_passes": 1,
+          "re_review": false,
+          "native_repeated": false,
+          "report": ".artifacts/v03/current-clean-editor-review/2026-10-26/report.md"
+        },
+        "native_input_evidence": {
+          "original": 585,
+          "current_physical": 580,
+          "exact_prepared_git": 5,
+          "qualification": false
+        }
       },
       "completed_slices": [
         {
@@ -7403,8 +7421,8 @@
       ],
       "current_checkpoint": {
         "record": "186-v03-current-clean-editor.md",
-        "status": "bounded-native-attempt-incomplete-known-source-finding-review-pending",
-        "next_bounded_step": "ONEfinalwhole-itemreview, source correction for invalid own-epoch flag assumption if accepted; preserve frozen585case/readers/raw/no native retry."
+        "status": "closed-bounded-attempt-native-incomplete-source-I1-I2-fixed",
+        "next_bounded_step": "ONEV03.29 separately freeze corrected-source current-clean case/readers with full DOM/epoch predicates; old28exhausted/no retry, no TLS/trust/otherrepo/policy changes."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-25-v03-converged-restore-availability.md",
       "implementation_plan": null,
@@ -7705,8 +7723,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.28-native-INCOMPLETE-known-source-finding",
-    "next_item": "ONEfinalwhole-itemreview, source correction for invalid own-epoch flag assumption if accepted; preserve frozen585case/readers/raw/no native retry.",
+    "current_increment": "V03.28-closed-native-incomplete-source-I1-I2-fixed",
+    "next_item": "ONEV03.29 separately freeze corrected-source current-clean case/readers with full DOM/epoch predicates; old28exhausted/no retry, no TLS/trust/otherrepo/policy changes.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7733,7 +7751,7 @@
     "active_item": {
       "id": "V03",
       "record": "186-v03-current-clean-editor.md",
-      "status": "bounded-native-attempt-incomplete-known-source-finding-review-pending"
+      "status": "closed-bounded-attempt-native-incomplete-source-I1-I2-fixed"
     },
     "completed_increments": [
       {
@@ -10428,11 +10446,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "ONEnative585stable/own10ABAobserved/own20pending refused by newguard false assumption about sticky externalRevision; backend/UIagree. Fullreader refused/preservation nonqual/cleanup knownPIDsAbsent; no native retry, ONEreview/source correction pending,20of29unchanged.",
+    "current_activity_note": "ONEreview0C2Ifixed1newM(total14deferred);64focused/4918fullsourcePASS; product327stable, native585now580current+5preparedGit/INCOMPLETE unchanged. Oldreader refusal preserved/no rerun, unvisited20/Close/QA unqualified,20of29unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "add75a73e8f5d95899a98a525fc516481e93addf",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONEfinalwhole-itemreview, source correction for invalid own-epoch flag assumption if accepted; preserve frozen585case/readers/raw/no native retry.",
+    "next_bounded_step": "ONEV03.29 separately freeze corrected-source current-clean case/readers with full DOM/epoch predicates; old28exhausted/no retry, no TLS/trust/otherrepo/policy changes.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -10443,8 +10461,8 @@
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
     "current_source_revision_kind": "exact clean immutable80 package source; later results docs only",
-    "current_source_checkpoint": ".artifacts/v02/publication-package/2026-10-26/checkpoint.json",
-    "current_source_checkpoint_kind": "fresh immutable archive/installed types/admission binding, no native",
+    "current_source_checkpoint": ".artifacts/v03/current-clean-editor-source/2026-10-26/post-review-checkpoint.json",
+    "current_source_checkpoint_kind": "post-review corrected source, native remains historical67d06INCOMPLETE",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
       "active_item": {

@@ -31,6 +31,7 @@ function originalConvergedFixture(){
 export function currentCleanEditorResultFixture(){
  const r=originalConvergedFixture();r.schema='stateatom.current-clean-editor-native/1';r.protocolMode='current-clean-external-aba';r.status=PASS;
  r.checks[0].name='exact80-package-and-node-admission';r.checks[2].name='live10-current-clean-external-aba-read-and-disabled-restoration';r.checks[3].name='live20-current-clean-external-aba-read-and-disabled-restoration';
+ for(const x of r.externalInteractions)if(x.ownValue===20){x.before.inputs.resources[0].externalRevision=true;x.before.inputs.canRestoreBaseline=false;x.before.field.baseline.disabled=true;}
  for(const x of r.externalInteractions)for(const [step,e]of x.appEdits.entries()){
   for(const p of e.convergence.samples){const row=p.inputs.resources[0];row.resource.value=e.value;row.resource.revision=100+x.ownValue+step;row.externalRevision=true;p.inputs.canUndo=false;p.inputs.canRestoreBaseline=false;p.field.value=String(e.value);p.field.undo.disabled=true;p.field.baseline.disabled=true;}
   e.snapshot=structuredClone(e.convergence.samples.at(-1));e.dom=structuredClone(e.snapshot.dom);

@@ -111,7 +111,9 @@ export function guardCurrentCleanEditSnapshot(p,before,ownValue,appValue,panelUR
  assert([ownValue,ownValue+1].includes(row.resource.value));
  assert.equal(typeof p.inputs.canUndo,'boolean');assert.equal(typeof p.inputs.canRestoreBaseline,'boolean');
  for(const [button,flag]of [['undo','canUndo'],['baseline','canRestoreBaseline']]){assert.equal(f[button].exists,true);assert.equal(f[button].visible,true);assert.equal(f[button].disabled,!p.inputs[flag]);}
- if(row.resource.revision===owned.revision){assert.equal(row.resource.value,ownValue);assert.equal(row.externalRevision,false);}
+ // This flag records historical external epochs and can remain true after a new own acknowledgement.
+ assert.equal(typeof row.externalRevision,'boolean');
+ if(row.resource.revision===owned.revision){assert.equal(row.resource.value,ownValue);}
  else{assert.equal(row.externalRevision,true);assert.equal(p.inputs.canUndo,false);assert.equal(p.inputs.canRestoreBaseline,false);}
  return true;
 }
@@ -147,11 +149,13 @@ export function guardCurrentCleanEditor(r){
   assert(Number.isFinite(e.immediateObservedAt)&&e.immediateObservedAt>=e.startedAt);
   const g=e.convergence;assert.equal(g.captureStatus,'Complete');assert.equal(g.sampleIntervalMs,100);assert.equal(g.consecutiveMatches,3);assert.equal(g.maxSamples,50);assert.equal(g.maxElapsedMs,5000);
   assert(Number.isFinite(g.startedAt)&&g.startedAt>=e.immediateObservedAt&&Number.isFinite(g.finishedAt)&&g.finishedAt>=g.startedAt&&g.finishedAt-g.startedAt<=5000&&g.finishedAt<=e.finishedAt);
-  assert(Array.isArray(g.samples)&&g.samples.length>=3&&g.samples.length<=50);let previous=g.startedAt,previousStart,streak=0;
+  assert(Array.isArray(g.samples)&&g.samples.length>=3&&g.samples.length<=50);let previous=g.startedAt,previousStart,streak=0,externalSeen=e.value===x.ownValue;
   for(const [index,p]of g.samples.entries()){
    guardCurrentCleanEditSnapshot(p,x.before,x.ownValue,e.value,r.panelURL);assert(p.startedAt>=previous&&p.finishedAt<=g.finishedAt);if(previousStart!==undefined)assert(p.startedAt-previousStart>=100);previous=p.finishedAt;previousStart=p.startedAt;
    assert(Array.isArray(p.dom.products)&&p.dom.products.length<=2&&p.dom.products.every((v,i,a)=>[1,2].includes(v)&&(i===0||a[i-1]<v)));
-   if(e.value===x.ownValue)assert.notEqual(currentResource(p).resource.revision,x.before.inputs.history.at(-1).outcomes[0].after.revision,'ABA cannot return to the own epoch after the first observed external edit');
+   const currentRevision=currentResource(p).resource.revision,ownRevision=x.before.inputs.history.at(-1).outcomes[0].after.revision;
+   if(externalSeen)assert.notEqual(currentRevision,ownRevision,'Observed external epoch cannot roll back to the own receipt');
+   if(currentRevision!==ownRevision)externalSeen=true;
    const match=currentCleanConvergenceReady(p,x.before,x.ownValue,e.value,r.panelURL);streak=match?streak+1:0;if(streak===3)assert.equal(index,g.samples.length-1);
   }
   assert.equal(streak,3);assert.deepEqual(e.snapshot,g.samples.at(-1));assert.deepEqual(e.dom,e.snapshot.dom);
