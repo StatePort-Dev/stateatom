@@ -88,3 +88,5 @@ stateRevision/storage/transfer/fieldOwnership/selectedDOM/componentinstance gaps
 No generalownershipframework or installed/product/fullA02 readiness inferred.
 Whole20/29 (~69%)/fullA02open; independenthuman notblocking; no SDK/otherrepo/
 UI/product/cert/trust/userprofile/model/publication changes.
+
+Final current checkpoint at 00fcabaee57323f53ac62d3e67c00dfef559f705:819physicalinputs match,0oldsource deltas;95research/327payload/120A0220/28A0221/79A0222evidence unchanged. Ownworkspace22files archived, CRC/allbytes/planidentity verified, then only that temporaryfolder removed. ArchiveSHA256 7faadc28ef7d92c650dce6ec6eb6c3896b74d7eecc13f752a93c4a8cf87f886f. final-checkpoint.json/workspace.zip at .artifacts/a02/main-input-native-review/2026-10-25/. NativePID2036681/profileabsent checked, no browser rerun.
