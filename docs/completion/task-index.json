@@ -2391,8 +2391,8 @@
       },
       "current_checkpoint": {
         "record": "169-a02-literal-main-native.md",
-        "status": "registered-before-source",
-        "next_bounded_step": "Closed literal-bootstrap Main case, source/frozen gates beforemax1native, oldcases exhausted, no newintervalproof."
+        "status": "source-qualified-pending-frozen-case",
+        "next_bounded_step": "Prepare/preflight fixed schema4 and commitcase before ONE actual Main18phase acquisition, same receipt/URL/source gates, no newnativeproofyet."
       },
       "stopping_point_history": [
         {
@@ -2476,12 +2476,15 @@
       "active_slice": {
         "id": "A02.19",
         "record": "169-a02-literal-main-native.md",
-        "status": "registered-before-source",
+        "status": "source-qualified-pending-frozen-case",
         "base": "32cbbf8cc0ea80374b8480fd4120a86a00f4dcad",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false
+        "full_A02": false,
+        "focused_checks": 252,
+        "full_source_checks": 4296,
+        "undeclared_inputs_unchanged": 478
       }
     },
     {

@@ -29,7 +29,7 @@
 **Files:** native driver/qualifier and two existing tests; docs/testing/callback-jsx-main-literal-case.json aftersourcecommit; completion169/status/index.
 **Interfaces:** schema4 fixed profile/newregistration, sameargs/current86source; startup receipt gate and saved classifier require all v3 URL/phase/source requirements. No new recorder or transform.
 
-- [ ] task-start/readbrief/BASE and registration beforecode; TDD newclosedprofile, inherited receipt/URLrefusal and legacy controls. Expected unknownprofile/bypassedcriteria RED, then minimal GREEN; syntax/diff/full npm test PASS and sourcecommit.
+- [x] task-start/readbrief/BASE and registration beforecode; TDD newclosedprofile, inherited receipt/URLrefusal and legacy controls. Expected unknownprofile/bypassedcriteria RED, then minimal GREEN; syntax/diff/full npm test PASS and sourcecommit.
 - [ ] Resource-free prepare/preflight newcase, casecommit before ONE actual native. Expected literal measured status, not assumed PASS; independent saved-byte reader with meaningful corruptions, rawSHA/counters/source/reference scopes/hash stages/cleanup. Results commit/task-done targeted source checks PASS.
 
 ## Final Closeout

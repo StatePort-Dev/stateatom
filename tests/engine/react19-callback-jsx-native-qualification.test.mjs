@@ -218,3 +218,16 @@ for(const mode of ['original','off','on'])for(const kind of ['missing','foreign'
   assert.equal(classifyCallbackJSXNativeRun(r,s).status,'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');
  });
 }
+
+// A02.19 saved schema4 never bypasses the corrected schema3 acceptance.
+function literalWholeRun(){const c=fragmentWholeRun();c.s.schema='stateatom.callback-jsx-native-case/4';return c;}
+test('schema4 complete synthetic saved shape retains all scoped controls without native proof',()=>{
+ const{r,s}=literalWholeRun();assert.equal(classifyCallbackJSXNativeRun(r,s).status,'PASS_BOUNDED_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');
+});
+for(const[label,change]of [
+ ['missing original receipt',r=>delete r.startup.requestedAutomation],
+ ['missing URL facts',r=>delete r.runs[0].documentURLReadings],
+ ['contradictory phase URL',r=>r.runs[2].phases[4].url=r.origin+'/?mode=on#/completed']
+])test('schema4 refuses '+label,()=>{
+ const{r,s}=literalWholeRun();change(r);assert.equal(classifyCallbackJSXNativeRun(r,s).status,'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');
+});
