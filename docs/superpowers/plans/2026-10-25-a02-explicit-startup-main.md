@@ -30,7 +30,7 @@
 **Interfaces:** native case schema1 still args[] and oldpath; schema2 exactflag/newpath/new86source registration. callbackJSXNativeLaunchOptions(case) closed public options; captureCallbackJSXAutomationRequest(child,owner) sanitized original-argument receipt. Default launch uses options; stages read/check receipt beforeCDP and pure whole-result qualifier requires it forv2.
 
 - [x] task-start/readbrief/BASE and registration beforecode; TDD closed schemas/path/args/options, descriptor/getter/duplicate/vector/PID privacy and v2 result missing/forged receipt controls; legacysource controls remain. Source RED->GREEN, preserve old82+payload/remaining86undeclared inputs, syntax/diff/full npm test/current sourcecommit.
-- [ ] Resource-free prepare/preflight newcase, commitcase beforemax1actual source-overlay original/off/on launch. Preserve literal outcome/0unvisited iffails; no retries or profile/flagretune. Independent saved reader/hash/counter/source/cleanup/negative controls; results localcommit/task-done.
+- [x] Resource-free prepare/preflight newcase, commitcase beforemax1actual source-overlay original/off/on launch. Preserve literal outcome/0unvisited iffails; no retries or profile/flagretune. Independent saved reader/hash/counter/source/cleanup/negative controls; results localcommit/task-done.
 
 ## Final Closeout
 

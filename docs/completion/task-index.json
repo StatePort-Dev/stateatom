@@ -1665,14 +1665,26 @@
       "active_slice": {
         "id": "A02.17",
         "record": "167-a02-explicit-startup-main.md",
-        "status": "source-stable-before-new-frozen-case",
+        "status": "startup-qualified-partial-original-native-pending-one-review",
         "base": "c64edc65ba6c6d6dff0c1e046776f578efc4718c",
-        "native_runs": 0,
+        "native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
         "focused_checks": 267,
-        "full_source_checks": 4234
+        "full_source_checks": 4234,
+        "native_modes_started": 1,
+        "native_modes_completed": 0,
+        "native_phases_started": 5,
+        "native_phases_completed": 4,
+        "native_phases_unvisited": 13,
+        "native_intervals_acquired": 0,
+        "native_result": "INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02",
+        "native_raw_sha256": "cc88b718c7f3490f2466fe99a0752a6c4c3e46d73827d6effb54ed2ce527872d",
+        "prepared_source_revision": "0f815fd8bb2fa4f92310bff7c30f6b0ce2d87301",
+        "execution_revision": "e26d21519c16b62048bd9adaf53b1cdca992399f",
+        "saved_negative_controls": 40,
+        "JSX_product_supported": false
       },
       "completed_slices": [
         {
@@ -2334,8 +2346,8 @@
       },
       "current_checkpoint": {
         "record": "167-a02-explicit-startup-main.md",
-        "status": "source-stable-before-new-frozen-case",
-        "next_bounded_step": "Resource-free v2prepare/preflight aftersourcecommit, then casecommit BEFORE max1new originalMainrun with explicit --enable-automation and original deliveryreceipt. No native yet."
+        "status": "startup-qualified-partial-original-native-pending-one-review",
+        "next_bounded_step": "ONE finalfreshreview; document fragment API comparison bug sourcefix ifconfirmed. Currentcase exhausted:4originalphases/filteredDOMpartial/13unvisited/off-on0. No native retry or oldraw upgrade."
       },
       "stopping_point_history": [
         {

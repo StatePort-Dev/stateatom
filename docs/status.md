@@ -1,10 +1,13 @@
 # Project status
 
-Active bounded work: [A02.17](completion/167-a02-explicit-startup-main.md).
-Closed schema2/exact --enable-automation and original PID/vector-bound delivery
-receipt sourcecomplete267focused/full4234PASS. Old464undeclared inputs/327payload/
-exhaustedv1 preserved. Next prepare/preflight+casecommit BEFOREmax1new Maincase.
-No new native proof/product/fullA02 credit;20/29 unchanged/6minors deferred.
+Active bounded attempt: [A02.17](completion/167-a02-explicit-startup-main.md).
+Explicit argument/source receipt/publicAPI now actualqualified; originalMain+
+ReactDOM executed with exact loadedbundle/defaultcontext.4originalUI phases complete,
+filteredDOMsaved/documentcheckFAILED,13phases unvisited/off-on0; no JSXinterval proof.
+Root issue matches URL fragment API contract/source comparison; literalIncomplete/
+caseexhausted, cleanup/PIDprofileAbsent.267source/full4234PASS/saved548physical40negative.
+Next ONE freshreview/sourcefixpass, no native retry/criteriawaiver.20/29/fullA02
+unchanged,6minors deferred; no cert/trust/userprofile/SDK/model/publication changes.
 
 Completed bounded attempt: [A02.16](completion/166-a02-original-main-jsx-native.md).
 ONEreview0C3I1M, one tested sourcefixpass233focused/full4200PASS: finite operation
