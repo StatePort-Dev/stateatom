@@ -1661,32 +1661,16 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "164-a02-jsx-config-input.md",
+      "execution_record": "165-a02-callback-jsx-interval.md",
       "active_slice": {
-        "id": "A02.14",
-        "record": "164-a02-jsx-config-input.md",
-        "status": "complete-bounded-source-one-guard-correction-not-product",
-        "base": "b26cbb2",
+        "id": "A02.15",
+        "record": "165-a02-callback-jsx-interval.md",
+        "status": "active-preregistered-before-code",
+        "base": "0cc2457e1ef6e7950bf9b043a0dece29fb7bff7d",
         "native_runs": 0,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false,
-        "focused_checks": 104,
-        "source_revision": "ea5d8cb6baf9f10beae0d7b7bd024c18cfbcb5d9",
-        "source_vm_cases": 20,
-        "source_vm_contexts_started": 63,
-        "source_vm_contexts": 63,
-        "source_raw_sha256": "ae58f3a3eb2be280bcf09b1b39c1e18714506d5eab3bbda200b75dbf95a5dab8",
-        "full_source_checks": 3967,
-        "saved_negative_controls": 44,
-        "JSX_product_supported": false,
-        "review": {
-          "Critical": 0,
-          "Important": 1,
-          "Minor": 0,
-          "correction_passes": 1,
-          "I1": "root ambientbinding refusal; RED86PASS18FAIL->GREEN104; emitted60+1outputs unchanged; noVMrerun"
-        }
+        "full_A02": false
       },
       "completed_slices": [
         {
@@ -2248,6 +2232,32 @@
           "static_inputs": 445,
           "JSX_runtime_supported": false,
           "raw_sha256": "8c6c8728ddb13ad29ab07cd97c3a09633dd4d9f6b13ae978805a8e8983e84bdc"
+        },
+        {
+          "id": "A02.14",
+          "record": "164-a02-jsx-config-input.md",
+          "status": "complete-bounded-source-one-guard-correction-not-product",
+          "base": "b26cbb2",
+          "native_runs": 0,
+          "model_calls": 0,
+          "product_code_changed": false,
+          "full_A02": false,
+          "focused_checks": 104,
+          "source_revision": "ea5d8cb6baf9f10beae0d7b7bd024c18cfbcb5d9",
+          "source_vm_cases": 20,
+          "source_vm_contexts_started": 63,
+          "source_vm_contexts": 63,
+          "source_raw_sha256": "ae58f3a3eb2be280bcf09b1b39c1e18714506d5eab3bbda200b75dbf95a5dab8",
+          "full_source_checks": 3967,
+          "saved_negative_controls": 44,
+          "JSX_product_supported": false,
+          "review": {
+            "Critical": 0,
+            "Important": 1,
+            "Minor": 0,
+            "correction_passes": 1,
+            "I1": "root ambientbinding refusal; RED86PASS18FAIL->GREEN104; emitted60+1outputs unchanged; noVMrerun"
+          }
         }
       ],
       "remaining_acceptance": [
@@ -2263,9 +2273,9 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "164-a02-jsx-config-input.md",
-        "status": "complete-bounded-source-one-guard-correction-not-product",
-        "next_bounded_step": "A02.15 exact original array callback interval ->fresh JSXconfig input ->exact returned native JSXelement by actual references, preserve classic default/schema and storage/state/DOM Unknown; no product/browser/native upgrade."
+        "record": "165-a02-callback-jsx-interval.md",
+        "status": "active-preregistered-before-code",
+        "next_bounded_step": "Task1 closed JSX callback recorder mode TDD; classicdefault/schema preserved; no browser."
       },
       "stopping_point_history": [
         {
@@ -2713,7 +2723,7 @@
           "type_consumers": 2,
           "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
           "standalone_read_inject_native_checks": 3,
-          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
           "runtime_race_checks": 14,
           "isolated_bug_mutations_rejected": 6,
           "native_checks": 29,
@@ -4369,7 +4379,7 @@
       "implementation_plan": "../superpowers/plans/2026-10-25-l02-short-owned-comparison.md",
       "remaining_acceptance": [
         "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
-        "Final candidate actual factual/concision/usefulness comparison preserving historical20–30 and>=25/5incomplete/5untrusted criteria",
+        "Final candidate actual factual/concision/usefulness comparison preserving historical20\u201330 and>=25/5incomplete/5untrusted criteria",
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
@@ -7288,7 +7298,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK — separate StatePort project",
+      "title": "Production SDK \u2014 separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",
@@ -8059,7 +8069,7 @@
         "type_consumers": 2,
         "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
         "standalone_read_inject_native_checks": 3,
-        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
         "runtime_race_checks": 14,
         "isolated_bug_mutations_rejected": 6,
         "native_checks": 29,

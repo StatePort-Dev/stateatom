@@ -1,5 +1,10 @@
 # Project status
 
+Active bounded source slice: [A02.15](completion/165-a02-callback-jsx-interval.md).
+Exact original callback ->fresh JSXconfig input ->native returned element, classic
+default preserved. Two tasks; preregistration beforecode, source-only/no browser.
+No new runtime or wholeA02 evidence yet;20/29 unchanged/five minors deferred.
+
 Completed bounded source slice: [A02.14](completion/164-a02-jsx-config-input.md).
 ONEreview0C1I0M, one ambient-binding guard fix RED86/18->GREEN104/full3967PASS.
 Lexical/import/var/function Object/globalThis shadows now preserve original bytes;
