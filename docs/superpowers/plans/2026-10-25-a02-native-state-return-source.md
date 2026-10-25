@@ -36,4 +36,4 @@ No native/sourcequalification/browser/model/product/UI/SDK/otherrepo/publication
 
 ## Final Closeout
 
-- [ ] ONEfreshreview/effectrulings; ONEtestedI-Cpassifneeded/no rereview/qualification. ArchiveownworkspaceCRC/allbytes/identity/protectedbytes/remove; cleancommit/ONE next native integration prerequisite.
+- [x] ONEfreshreview/effectrulings; ONEtestedI-Cpassifneeded/no rereview/qualification. ArchiveownworkspaceCRC/allbytes/identity/protectedbytes/remove; cleancommit/ONE next native integration prerequisite.
