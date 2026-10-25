@@ -1,5 +1,10 @@
 # Project status
 
+V03.28 in progress, source only: [current clean-editor contract](completion/186-v03-current-clean-editor.md).
+Distinct current-field/resource/external-epoch gate; old26failure/criteria retained.
+191guard/31newdriver/4914fullsourcePASS; native not started.
+SixNEWresearch files;327product80/oldresearch/raw unchanged.20of29 unchanged.
+
 V02.19 local80 package admission complete, ONEreview0C0I0newM: [package evidence](completion/185-v02-publication-package.md).
 Cleanadd75a7/AtomSHA0d128ea/UI2unchanged; types2/admission9/receipt11PASS.
 327buildinputs322unchanged+5declared. Intermediate79 preserved, not admitted.

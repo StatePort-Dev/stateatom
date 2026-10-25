@@ -6351,7 +6351,22 @@
       ],
       "optional": false,
       "execution_record": "159-v03-clean-editor-contract.md",
-      "active_slice": null,
+      "active_slice": {
+        "id": "V03.28",
+        "title": "Current clean-editor external ABA contract",
+        "status": "source-complete-preparation-pending-native0",
+        "record": "186-v03-current-clean-editor.md",
+        "design": "../superpowers/specs/2026-10-26-v03-current-clean-editor-design.md",
+        "plan": "../superpowers/plans/2026-10-26-v03-current-clean-editor.md",
+        "guard_source_checks": 191,
+        "new_guard_controls": 29,
+        "new_driver_checks": 31,
+        "product_inputs_unchanged": 327,
+        "native_runs": 0,
+        "maximum_native_runs": 1,
+        "whole_V03_complete": false,
+        "source_checks": 4914
+      },
       "completed_slices": [
         {
           "id": "V03.1-installed-guide",
@@ -7375,15 +7390,9 @@
         }
       ],
       "current_checkpoint": {
-        "record": "159-v03-clean-editor-contract.md",
-        "status": "complete-source-only-existing-contract-diagnosis-no-product-change",
-        "source_only": true,
-        "native_runs": 0,
-        "product_code_changed": false,
-        "existing_full_tests_reused": 3695,
-        "new_synthetic_source_phases": 5,
-        "original26guard_unchanged": true,
-        "next_bounded_step": "ONE A02.10 bounded source-only field/prop-transfer gap selection from existing implementation/tests; no generic launcher/oldargv retry/browser/cert/install. Fix only a concrete regression under a bounded plan."
+        "record": "186-v03-current-clean-editor.md",
+        "status": "source-complete-preparation-pending-native0",
+        "next_bounded_step": "Finish new driver/fullsource checks, then freeze distinct80case and both readers before maximumONEowned HTTP native qualification; no oldcase retry/policy/cert changes."
       },
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-25-v03-converged-restore-availability.md",
       "implementation_plan": null,
@@ -7684,8 +7693,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.19-package-complete-one-review0C0I0newM",
-    "next_item": "ONEV03 bounded current clean-editor contract qualification design from159/current80; credit old outcomes, no certificate/official host/otherrepo change.",
+    "current_increment": "V03.28-source-complete-native0",
+    "next_item": "Finish new driver/fullsource checks, then freeze distinct80case and both readers before maximumONEowned HTTP native qualification; no oldcase retry/policy/cert changes.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7710,9 +7719,9 @@
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
-      "id": "V02",
-      "record": "185-v02-publication-package.md",
-      "status": "complete-immutable-package-admission-native-unqualified"
+      "id": "V03",
+      "record": "186-v03-current-clean-editor.md",
+      "status": "source-complete-preparation-pending-native0"
     },
     "completed_increments": [
       {
@@ -10407,11 +10416,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Local80 cleanadd75a7/types2/admission9/receipt11PASS; intermediate79immutable; retainedTLSexpired/no browser; current performance unqualified/original misses preserved/20of29unchanged.",
+    "current_activity_note": "Current clean-resource field/external-epoch qualification source191guards/31driverPASS; sixNEWresearch files/327product80 stable; 4914fullPASS/native0; old26INCOMPLETE/guideFAIL/full20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "add75a73e8f5d95899a98a525fc516481e93addf",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONEV03 bounded current clean-editor contract qualification design from159/current80; credit old outcomes, no certificate/official host/otherrepo change.",
+    "next_bounded_step": "Finish new driver/fullsource checks, then freeze distinct80case and both readers before maximumONEowned HTTP native qualification; no oldcase retry/policy/cert changes.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
