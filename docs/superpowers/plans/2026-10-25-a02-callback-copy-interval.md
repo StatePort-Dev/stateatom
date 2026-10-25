@@ -29,8 +29,8 @@
 **Files:** create experiments/react19-reducer/callback-copy-observer.mjs; tests/engine/react19-callback-copy-observer.test.mjs; completion161/current pointers.
 **Interfaces:** createCallbackCopyObserver({page}), enter(token,site,item,index,array), returned(frame,result), exit(frame), tap(kind,value,props,key), snapshot/lookup/sealWindow/startWindow/stop/retention. Existing prop recorder reused unchanged.
 
-- [ ] task-start/readbrief/BASE/preregister oldsource/current327/raw/new source pins before code. TDD positive exact interval, preexisting/reused/sibling/nested/wrong-equal/pending/throw/Stop/seal/window/capacity/lateintrinsic/privacy controls. `node --test --test-isolation=none tests/engine/react19-callback-copy-observer.test.mjs` RED ->GREEN.
-- [ ] Implement minimal weak composer, focused/syntax/diff/preservation/localcommit/task-done. No transform/vendor VM/browser; fullsuite deferredTask2stable.
+- [x] task-start/readbrief/BASE/preregister oldsource/current327/raw/new source pins before code. TDD positive exact interval, preexisting/reused/sibling/nested/wrong-equal/pending/throw/Stop/seal/window/capacity/lateintrinsic/privacy controls. `node --test --test-isolation=none tests/engine/react19-callback-copy-observer.test.mjs` RED ->GREEN.
+- [x] Implement minimal weak composer, focused/syntax/diff/preservation/localcommit/task-done. No transform/vendor VM/browser; fullsuite deferredTask2stable.
 
 ### Task 2: Wrapperless callback hooks and source qualification
 

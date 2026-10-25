@@ -1666,7 +1666,7 @@
       "active_slice": {
         "id": "A02.11",
         "record": "161-a02-callback-copy-interval.md",
-        "status": "preregistered-source-only",
+        "status": "task1-source31-task2-pending",
         "base": "d57c022",
         "native_runs": 0,
         "model_calls": 0,
@@ -2177,8 +2177,8 @@
       },
       "current_checkpoint": {
         "record": "161-a02-callback-copy-interval.md",
-        "status": "preregistered-source-only",
-        "next_bounded_step": "Task1 weak callback interval recorder TDD; preserve old source/product/raw, no browser/native."
+        "status": "task1-source31-task2-pending",
+        "next_bounded_step": "Task2 separate checked wrapperless interval recipe and new retained-source qualification; oldsource/raw/current327 unchanged, no browser/native."
       },
       "stopping_point_history": [
         {

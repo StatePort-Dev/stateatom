@@ -14,3 +14,20 @@ choice under autonomy, no claimed approved new Live/production/handoff parameter
 Source correspondence only; storage/fieldownership/state/selectedproducer Unknown,
 no product importer/SDK/security/cert/install/browser/otherrepo/publication. Whole
 A02 and20/29 stay open. One final whole-slice review after both bounded source tasks.
+
+Task1 new weak interval composer implemented; existing copy recorder reused unchanged.
+Opaque per-callback frames/direct item/copy/element weak identities; exact nested
+entry/return/exit, same-frame creation/copy/return, sealed native delegate receipt.
+Preexisting/sibling/wrong-equal/reused result/partial native/aborted/pending/late/
+Stop/window/capacity/cross-active-frame inputs refuse; nested genuine outputs remain
+separate.512frames/4096interval events plus original copy caps. No app fields/Proxy
+traps/scalars/strong app references in output; WeakRefs do not prove GC or membership.
+Origin NotAttested and all stronger lineage/storage Unknown. No map completion or
+selected DOM claim follows from a callback interval.
+
+Missing-module RED1file (no executed predicates), then27controlsPASS; four additional
+capacity/native-duplicate/scalar/cross-frame controls ->31PASS/0fail/0cancel/0skip
+67.370ms. Late public Array/WeakMap/WeakRef changes invoke0app callbacks; privacy
+Proxy control0traps. Existing56source/current327/15V03raw/12L02records/4case-marker/
+2A02.10raw/vendor pins unchanged. Syntax/diff PASS; no source vendorVM/browser/native/
+model/product importer yet. Fullsuite deferred Task2stable. Next Task2 source recipe.
