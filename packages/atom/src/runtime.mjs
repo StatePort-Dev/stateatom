@@ -165,7 +165,9 @@ function stopObservation(id,reason,forget=false,expected=null){
 function publishObservation(id,owner){
  // One constant-state flight per private owner, no historical event/snapshot
  // queue. Direct Stop/Clear/revoke writes stay independent of this flight.
- owner.publish??=createObservationPublisher({persist,notify:()=>notifyObservation(id)});
+ // A queued publication may outlive its owner/runtime. Never let a disposed
+ // instance save over a replacement runtime's namespace or announce old work.
+ owner.publish??=createObservationPublisher({persist:()=>stopped?Promise.resolve():persist(),notify:()=>{if(!stopped)notifyObservation(id);}});
  owner.publish();
 }
 function collectObservation(id,source,method,p){

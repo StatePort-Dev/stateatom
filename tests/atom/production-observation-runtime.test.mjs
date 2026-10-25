@@ -159,3 +159,25 @@ for(const ending of ['replace','permission','context','record-limit','pending-li
   assert.deepEqual(f.data['stateport.atom.v1.tabs'][1].productionObservation,before,'Late save reads current state, never the queued old window');
  }finally{globalThis.setTimeout=originalTimeout;}
 });
+
+test('queued recording publication becomes inert after shutdown and cannot overwrite replacement storage',async t=>{
+ const f=await fixture(t);await f.request({op:'observation-start'});
+ const tasks=[],originalTimeout=globalThis.setTimeout,originalSet=f.platform.chrome.storage.session.set;
+ let writes=0,notices=0;
+ f.platform.chrome.storage.session.set=async value=>{writes++;return originalSet(value);};
+ f.api.runtime.sendMessage=async()=>{notices++;};
+ globalThis.setTimeout=(callback,delay,...args)=>delay===0?(tasks.push(()=>callback(...args)),-1):originalTimeout(callback,delay,...args);
+ try{
+  f.events.emit({type:'debugger',source:{tabId:1},method:'Network.requestWillBeSent',params:{requestId:'old-runtime',frameId:'main',loaderId:'loader',timestamp:50,wallTime:(performance.timeOrigin+performance.now())/1000,request:{url:origin+'/private',method:'GET'}}});
+  await Promise.resolve();await Promise.resolve();assert.equal(tasks.length,1);assert.equal(writes,0);
+  await f.runtime.shutdown();
+  // A replacement writer in the same session namespace owns this newer data.
+  const replacement={tabs:{replacement:{run:'new-runtime',productionObservation:{status:'deleted',records:[]}}},pairing:{origin:'http://127.0.0.1:4174',owner:'replacement'}};
+  await f.platform.chrome.storage.session.set(replacement);
+  const before=structuredClone(f.data),writesBefore=writes,noticesBefore=notices;
+  tasks.shift()();for(let i=0;i<8;i++)await new Promise(setImmediate);
+  assert.equal(writes,writesBefore,'Disposed queued publisher must issue no storage submission');
+  assert.equal(notices,noticesBefore,'Disposed queued publisher must issue no notification');
+  assert.deepEqual(f.data,before,'Replacement namespace must survive delivery of the old callback');
+ }finally{globalThis.setTimeout=originalTimeout;}
+});

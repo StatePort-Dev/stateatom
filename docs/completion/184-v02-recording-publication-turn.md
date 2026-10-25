@@ -69,3 +69,24 @@ certificate/profile action, SDK, other repo or publication in this source item.
 Protected checkpoint:1440path comparisons,1436unchanged and4declared comparison
 deltas representing3unique files (absolute/relative publisher aliases). Product
 326current unchanged/ONEpublisher delta; protected raw/research unchanged.
+
+
+## ONE final review and correction in progress
+Fresh read-only /root/v0218_whole_review (gpt-6-astra/high),1c41015..d8327d9:
+0Critical/1Important/0newMinor,13oldminors deferred. I1 accepted: queued recording
+callback may outlive runtime shutdown, overwrite a replacement namespace and notify.
+Single correction adds stopped guard to runtime publication persist/notify wrappers;
+terminal/shutdown persistence remains immediate. Regression reproduced3writes vs2,
+then78focusedPASS6491.700905ms including exact replacement state/no late write or
+notice. Post-fix fullsuite4854PASS/0FAIL0SKIP124427.789462ms terminal0(session82400). No rereview/native run. Timer can dispatch but
+disposed recording publisher is inert; no native suspension guarantee follows.
+
+Runtime.mjs is the declared review-scope extension: four changed source/testfiles,
+two changed product files; old327product becomes325current+2historical prepared
+inputs. Original registration/earlier source result preserved, new checkpoint
+binds correction hashes. [Review and effect/cost rulings](../../.artifacts/v02/recording-publication-turn-review/2026-10-26/report.md).
+
+Final source correction checks:78focused/4854fullPASS; syntax/diff PASS.
+1440protected path comparisons1435unchanged/5declared comparisons=4unique files;
+325product current+2exactBASEGit blobs verified. All other raw/research inputs
+unchanged. ONEreview/ONEtested correction pass complete; no new minor/rereview/native.

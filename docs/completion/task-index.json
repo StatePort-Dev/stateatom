@@ -5281,22 +5281,31 @@
       "active_slice": {
         "id": "V02.18",
         "title": "Recording publication at an event-loop task boundary",
-        "status": "source-checks-complete-review-pending",
+        "status": "complete-source-optimization-native-qualification-pending",
         "record": "184-v02-recording-publication-turn.md",
         "design": "../superpowers/specs/2026-10-26-v02-recording-publication-turn-design.md",
         "plan": "../superpowers/plans/2026-10-26-v02-recording-publication-turn.md",
-        "focused_checks": 77,
+        "focused_checks": 78,
         "native_executed": false,
         "performance_acceptance": false,
         "whole_V02_complete": false,
         "targets_waived": false,
-        "review_pending": true,
-        "source_checks": 4853
+        "review_pending": false,
+        "source_checks": 4854,
+        "review": {
+          "critical": 0,
+          "important": 1,
+          "important_fixed": 1,
+          "minor": 0,
+          "correction_passes": 1,
+          "re_review": false,
+          "report": ".artifacts/v02/recording-publication-turn-review/2026-10-26/report.md"
+        }
       },
       "execution_record": "136-v02-performance-domain-cost.md",
       "current_checkpoint": {
         "record": "184-v02-recording-publication-turn.md",
-        "status": "source-checks-complete-review-pending",
+        "status": "complete-source-optimization-native-qualification-pending",
         "next_bounded_step": "Freeze exact new package/admission before separately preregistered original performance measurement; no native run insideV02.18"
       },
       "completed_slices": [
@@ -6235,9 +6244,33 @@
             "native_repeated": false,
             "report": ".artifacts/v02/performance-domain-cost/2026-10-24/review/report.md"
           }
+        },
+        {
+          "id": "V02.18",
+          "title": "Recording publication at an event-loop task boundary",
+          "status": "complete-source-optimization-native-qualification-pending",
+          "record": "184-v02-recording-publication-turn.md",
+          "design": "../superpowers/specs/2026-10-26-v02-recording-publication-turn-design.md",
+          "plan": "../superpowers/plans/2026-10-26-v02-recording-publication-turn.md",
+          "focused_checks": 78,
+          "native_executed": false,
+          "performance_acceptance": false,
+          "whole_V02_complete": false,
+          "targets_waived": false,
+          "review_pending": false,
+          "source_checks": 4854,
+          "review": {
+            "critical": 0,
+            "important": 1,
+            "important_fixed": 1,
+            "minor": 0,
+            "correction_passes": 1,
+            "re_review": false,
+            "report": ".artifacts/v02/recording-publication-turn-review/2026-10-26/report.md"
+          }
         }
       ],
-      "last_completed_implementation_plan": "../superpowers/plans/2026-10-24-v02-performance-domain-cost.md",
+      "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-v02-recording-publication-turn.md",
       "implementation_plan": "../superpowers/plans/2026-10-24-v02-performance-domain-cost.md"
     },
     {
@@ -7618,7 +7651,7 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.18-source-checked-review-pending",
+    "current_increment": "V02.18-source-complete-one-review-I1-fixed",
     "next_item": "Freeze exact new package/admission before separately preregistered original performance measurement; no native run insideV02.18",
     "new_full_task_acceptances": [
       "F01",
@@ -7646,7 +7679,7 @@
     "active_item": {
       "id": "V02",
       "record": "184-v02-recording-publication-turn.md",
-      "status": "source-checks-complete-review-pending"
+      "status": "complete-source-optimization-native-qualification-pending"
     },
     "completed_increments": [
       {
@@ -10341,7 +10374,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.18 fast-ack recording publication batching source candidate;9publisher/77focusedPASS,4853fullPASS/review pending;no native/performance acceptance,20of29unchanged. PreviousA02.33closed at unavailable weakAppElement witness; no retry.",
+    "current_activity_note": "V02.18 publication task batching and disposed-runtime guard complete;78focused/4854fullPASS;ONEreview0C1Ifixed0newM,13oldminors deferred. No native/package/performance acceptance; original15misses and20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "1c41015420ae992fa772de9da3c8203b9d0650cd",
     "current_record_date": "2026-10-26",
@@ -10356,8 +10389,8 @@
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
     "current_source_revision_kind": "BASE before uncommitted V02.18 source candidate, not qualification revision",
-    "current_source_checkpoint": ".artifacts/v03/clean-editor-contract/2026-10-25/final-checkpoint.json",
-    "current_source_checkpoint_kind": "last completed bounded source diagnosis V03.27",
+    "current_source_checkpoint": ".artifacts/v02/recording-publication-turn-source/2026-10-26/post-review-checkpoint.json",
+    "current_source_checkpoint_kind": "bounded current-source verification; no new package/native evidence",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
       "active_item": {
