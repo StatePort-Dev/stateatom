@@ -1,5 +1,13 @@
 # Project status
 
+Completed bounded diagnosis: [V03.27](completion/159-v03-clean-editor-contract.md).
+Existing clean field follows current resource; own history/epoch guards remain; dirty
+local text survives external changes with conflict. Five source-fixture phases pass,
+existing same-byte3695suite reused. No product/guard/policy change, native/cause/visual
+proof or browser work; old26case remains exhausted. Current327/oldraw preserved.
+Next ONE A02.10 bounded source gap selection from current field/prop-transfer code,
+no generic launch framework/oldargv retry/cert/install work. Whole20/29 unchanged.
+
 Completed bounded attempt: [L02.13](completion/158-l02-short-owned-comparison.md).
 One short-route case exhausted/INCOMPLETE at new-worker wait,0API/all34unvisited.
 OwnedChrome156 attested/no socket fatal; installation cause Unknown/no PNG. Fourknown
