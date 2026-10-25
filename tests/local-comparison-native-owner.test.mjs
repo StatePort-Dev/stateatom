@@ -39,3 +39,63 @@ test('a present proc entry with unreadable executable is Unknown, never absent',
 });
 test('console URL drift cannot silently adopt another document',async()=>{const page=new Page(),c=collectComparisonConsole(page,page.url());page.url=()=> 'https://foreign.invalid/';page.emit('console',message());const r=await c.stop();assert.equal(r.status,'Unknown');assert.equal(r.records.length,0);});
 test('registered visual candidate hook runs only after an acquired row passes its guard',async()=>{const {caseData:s,result:r}=comparisonCollectionFixture(),rows=r.runs;r.runs=[];const seen=[];await driveComparisonRows({s,r,run:async index=>structuredClone(rows[index]),save:async()=>{},afterRow:async(row,expected)=>{if(expected.id==='unknown-left')seen.push([row.id,expected.index]);}});assert.deepEqual(seen,[['unknown-left',22]]);});
+
+// Synthetic WebUI shapes exercise discovery rules, not actual Chrome installation.
+const discovery=()=>import('./integration/local-comparison-native.mjs');
+const discoveryPath='/owned/evaluation-host';
+const discoveryPrior='b'.repeat(32);
+const discoveryRow=()=>({id:'a'.repeat(32),path:discoveryPath,state:'ENABLED',location:'UNPACKED'});
+test('exact enabled unpacked host discovery needs no service worker target',async()=>{
+ const m=await discovery(),row=discoveryRow();
+ assert.deepEqual(m.selectComparisonExtension({ready:true,items:[row]},discoveryPath,discoveryPrior),row);
+ assert.equal(m.selectComparisonExtension({ready:true,items:[{...row,path:discoveryPath+'-foreign'}]},discoveryPath,discoveryPrior),null);
+ assert.equal(m.selectComparisonExtension({ready:false,items:[]},discoveryPath,discoveryPrior),null);
+ assert.equal(m.selectComparisonExtension({ready:true,items:[]},discoveryPath,discoveryPrior),null);
+});
+for(const [label,change] of [
+ ['prior identity',r=>r.id=discoveryPrior],['malformed ID',r=>r.id='unknown'],
+ ['missing ID',r=>delete r.id],['disabled',r=>r.state='DISABLED'],
+ ['terminated',r=>r.state='TERMINATED'],['blocked',r=>r.state='BLOCKLISTED'],
+ ['unknown state',r=>delete r.state],['store extension',r=>r.location='FROM_STORE'],
+ ['missing location',r=>delete r.location]
+])test('exact-path discovery refuses '+label,async()=>{
+ const m=await discovery(),row=discoveryRow();change(row);
+ assert.throws(()=>m.selectComparisonExtension({ready:true,items:[row]},discoveryPath,discoveryPrior));
+});
+test('duplicate matching paths and replayed baseline are refused even if IDs agree',async()=>{
+ const m=await discovery(),row=discoveryRow(),s={ready:true,items:[row]};
+ assert.throws(()=>m.selectComparisonExtension({...s,items:[row,{...row}]},discoveryPath,discoveryPrior));
+ assert.throws(()=>m.assertComparisonExtensionAbsent(s,discoveryPath));
+ assert.doesNotThrow(()=>m.assertComparisonExtensionAbsent({ready:true,items:[]},discoveryPath));
+ assert.throws(()=>m.assertComparisonExtensionAbsent({ready:false,items:[]},discoveryPath));
+});
+test('WebUI snapshot walks shadow roots but returns only exact-path identity fields',async()=>{
+ const m=await discovery(),{runInNewContext}=await import('node:vm');
+ const row=discoveryRow(),foreign={...row,path:'/private/foreign',secret:'must-not-copy'};
+ const item=data=>({localName:'extensions-item',data});
+ const doc={querySelector:s=>s==='extensions-manager'?{}:null,querySelectorAll:()=>[
+  {shadowRoot:{querySelectorAll:()=>[item({...row,secret:'must-not-copy'}),item(foreign)]}}
+ ]};
+ const result=runInNewContext('('+m.readComparisonExtensionUI.toString()+')(expectedPath)',{document:doc,expectedPath:discoveryPath});
+ assert.deepEqual(JSON.parse(JSON.stringify(result)),{ready:true,items:[row]});
+});
+test('changed or missing WebUI shape does not report a ready inventory',async()=>{
+ const m=await discovery(),{runInNewContext}=await import('node:vm');
+ for(const doc of [
+  {querySelector:()=>null,querySelectorAll:()=>[]},
+  {querySelector:()=>({}),querySelectorAll:()=>[{localName:'extensions-item',data:{id:'a'.repeat(32)}}]},
+  {querySelector:()=>({}),querySelectorAll:()=>[{localName:'extensions-item',data:{location:'UNPACKED'}}]}
+ ]){
+  const result=runInNewContext('('+m.readComparisonExtensionUI.toString()+')(expectedPath)',{document:doc,expectedPath:discoveryPath});
+  assert.equal(result.ready,false);assert.equal(result.items.length,0);
+ }
+});
+test('WebUI optional directory path on unrelated store item cannot block exact unpacked discovery',async()=>{
+ const m=await discovery(),{runInNewContext}=await import('node:vm');
+ const row=discoveryRow(),doc={querySelector:()=>({}),querySelectorAll:()=>[
+  {localName:'extensions-item',data:{id:'c'.repeat(32),location:'FROM_STORE'}},
+  {localName:'extensions-item',data:row}
+ ]};
+ const result=runInNewContext('('+m.readComparisonExtensionUI.toString()+')(expectedPath)',{document:doc,expectedPath:discoveryPath});
+ assert.deepEqual(JSON.parse(JSON.stringify(result)),{ready:true,items:[row]});
+});

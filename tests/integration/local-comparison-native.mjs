@@ -50,6 +50,43 @@ export async function driveComparisonRows({s,r,run,save,checkStop=()=>{},afterRo
  }
  r.currentAttempt=null;
 }
+// Read only the exact prepared path from Chrome WebUI; internal shape drift is Unknown.
+export function readComparisonExtensionUI(expectedPath){
+ let ready=!!document.querySelector('extensions-manager');const items=[];
+ function visit(root){
+  for(const node of root.querySelectorAll('*')){
+   if(node.localName==='extensions-item'){
+    const data=node.data;
+    if(!data)ready=false;
+    else if(typeof data.path!=='string'){
+     // ExtensionInfo.path is optional; only unpacked/unknown-shape rows need it.
+     if(!['FROM_STORE','THIRD_PARTY','INSTALLED_BY_DEFAULT','UNKNOWN'].includes(data.location))ready=false;
+    }else if(data.path===expectedPath)items.push({id:data.id,path:data.path,state:data.state,location:data.location});
+   }
+   if(node.shadowRoot)visit(node.shadowRoot);
+  }
+ }
+ visit(document);return {ready,items};
+}
+export function assertComparisonExtensionAbsent(snapshot,expectedPath){
+ assert.equal(snapshot?.ready,true,'Extension UI inventory unavailable before drop');
+ assert(Array.isArray(snapshot.items),'Malformed extension UI inventory');
+ assert(!snapshot.items.some(item=>item?.path===expectedPath),'Prepared host already present before drop');
+}
+export function selectComparisonExtension(snapshot,expectedPath,previousId){
+ assert.equal(typeof expectedPath,'string');assert(expectedPath.startsWith('/'));
+ assert.match(previousId,/^[a-p]{32}$/);
+ assert(Array.isArray(snapshot?.items),'Malformed extension UI inventory');
+ if(snapshot.ready!==true)return null;
+ const items=snapshot.items.filter(item=>item?.path===expectedPath);
+ assert(items.length<=1,'Ambiguous prepared host in extension UI');
+ if(!items.length)return null;
+ const item=items[0];assert.match(item.id,/^[a-p]{32}$/);
+ assert.notEqual(item.id,previousId,'Previous extension identity cannot identify the new host');
+ assert.equal(item.location,'UNPACKED','Prepared host is not unpacked');
+ assert.equal(item.state,'ENABLED','Prepared host is not enabled');
+ return {id:item.id,path:item.path,state:item.state,location:item.location};
+}
 function extensionUI(){
  const manager=document.querySelector('extensions-manager'),toolbar=manager?.shadowRoot?.querySelector('extensions-toolbar'),toggle=toolbar?.shadowRoot?.querySelector('#devMode'),rect=toggle?.getBoundingClientRect();
  return {ready:!!toggle,checked:toggle?.checked,point:rect?{x:rect.x+rect.width/2,y:rect.y+rect.height/2}:null};
@@ -106,7 +143,9 @@ export async function runComparisonNative(args=process.argv.slice(2)){
   if(prior.checked){checkStop();await extensions.mouse.click(prior.point.x,prior.point.y);}
   const disabled=await observe(async()=>{const v=await extensions.evaluate(previousToggle,s.profile.previousExtensionId);return v.absent||v.checked===false?v:null;});r.previousExtensionObserved=disabled;r.installation.previousState=disabled.absent?'absent':'disabled';
   await observe(async()=>!(await rootSession.send('Target.getTargets')).targetInfos.some(t=>t.type==='service_worker'&&t.url.startsWith('chrome-extension://'+s.profile.previousExtensionId+'/')));
-  const baseline=(await rootSession.send('Target.getTargets')).targetInfos;r.targetsBefore=baseline;
+  r.targetsBefore=(await rootSession.send('Target.getTargets')).targetInfos;
+  r.extensionDiscovery={method:'exact-prepared-path-in-extension-ui',before:await bounded(extensions.evaluate(readComparisonExtensionUI,s.hostPath),5000),latest:null,selected:null};
+  assertComparisonExtensionAbsent(r.extensionDiscovery.before,s.hostPath);
   await extensions.bringToFront();checkStop();
   dragSource=spawn('/usr/bin/python3',['tests/helpers/native-folder-source.py',s.hostPath],{env:{...desktop.env,DBUS_SESSION_BUS_ADDRESS:'unix:path='+s.out+'/no-source-bus',NO_AT_BRIDGE:'1'},stdio:['ignore',chromeLog.fd,chromeLog.fd]});
   dragSource.once('error',e=>{r.errors.push('Drag source: '+e.message);stopped=true;});onOwned('dragSource',await observe(()=>readComparisonProcess(dragSource.pid),2000));
@@ -115,9 +154,13 @@ export async function runComparisonNative(args=process.argv.slice(2)){
   assert.equal(Number(xdo(['getwindowpid',windowID])),dragSource.pid);r.dragWindowID=windowID;await comparisonPause(400);checkStop();
   r.nativeDrop={sourceWindowPID:dragSource.pid,startedAt:new Date().toISOString(),path:s.hostPath,coordinates:[]};
   try{xdo(['mousemove','900','370','mousedown','1']);for(const x of [890,850,750,650,550,450,400]){r.nativeDrop.coordinates.push([x,370]);xdo(['mousemove',String(x),'370']);await comparisonPause(120);}}finally{xdo(['mouseup','1']);}
-  const manifest=JSON.parse(await readFile(s.hostPath+'/manifest.json','utf8')),known=new Set(baseline.map(t=>t.targetId));
-  const worker=await observe(async()=>{const targets=(await rootSession.send('Target.getTargets')).targetInfos;r.targetsAfter=targets;const found=targets.filter(t=>!known.has(t.targetId)&&t.type==='service_worker'&&t.url.startsWith('chrome-extension://')&&t.url.endsWith('/'+manifest.background.service_worker));assert(found.length<=1,'Ambiguous newly installed host');return found[0];},20000);
-  r.extensionId=new URL(worker.url).hostname;assert.match(r.extensionId,/^[a-p]{32}$/);r.evalURL='chrome-extension://'+r.extensionId+'/l02-eval.html';await extensions.screenshot({path:s.out+'/extensions-candidate.png'});
+  const selected=await observe(async()=>{
+   const snapshot=await extensions.evaluate(readComparisonExtensionUI,s.hostPath);
+   r.extensionDiscovery.latest={at:new Date().toISOString(),...snapshot};
+   return selectComparisonExtension(snapshot,s.hostPath,s.profile.previousExtensionId);
+  },20000);
+  r.extensionDiscovery.selected=selected;r.targetsAfter=(await rootSession.send('Target.getTargets')).targetInfos;
+  r.extensionId=selected.id;r.evalURL='chrome-extension://'+r.extensionId+'/l02-eval.html';await extensions.screenshot({path:s.out+'/extensions-candidate.png'});
   checkStop();page=await context.newPage();consoleCollector=collectComparisonConsole(page,r.evalURL);await page.goto(r.evalURL,{timeout:10000});
   await observe(()=>page.evaluate(()=>window.l02Evaluation?.ready===true));pageSession=await context.newCDPSession(page);
   r.runtimeProof=await bounded(proveComparisonLoadedScript({session:pageSession,page,s,extensionId:r.extensionId}),10000);r.originalHostUnchanged=JSON.stringify(await fileManifest(s.hostPath))===JSON.stringify(s.hostFiles);assert.equal(r.originalHostUnchanged,true);

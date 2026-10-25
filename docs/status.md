@@ -1,5 +1,11 @@
 # Project status
 
+L02.14 sourcePASS, ONEreview pending: [exact-path discovery](completion/188-l02-worker-independent-discovery.md).
+Prepared host identified by strict exact-path WebUI row, not activeworker alone;
+nonce/loaded-JS proof unchanged.14new/184focused/4947fullPASS;327product/32historical
+unchanged. No native/model/install/cert/trust changes or old158cause inference.
+20of29/fullL02 open; nextONE source review/local closeout before native selection.
+
 V03.29 bounded native PASS + NEWposthoc saved-fact/control verification complete:
 [corrected current-clean workflow](completion/187-v03-corrected-current-clean-editor.md).
 Sixnative steps/587stable/own10+20externalABA+Read/Close/1100+390/cleanup. ONEreview
