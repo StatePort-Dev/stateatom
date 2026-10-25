@@ -2460,9 +2460,9 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "179-a02-native-state-return-source.md",
-        "status": "complete-bounded-native-return-reference-source-checks",
-        "next_bounded_step": "ONE separately scoped native integration and actual returned-state-reference acquisition qualification; all stronger origins remainUnknown."
+        "record": "180-a02-native-state-return-native.md",
+        "status": "planning-one-native-state-return-reference-acquisition",
+        "next_bounded_step": "ONE native integration/acquisition case max; private reference premise only, all stronger originsUnknown."
       },
       "stopping_point_history": [
         {
@@ -2580,31 +2580,24 @@
           "record": "178-a02-disabled-source-tap.md",
           "status": "complete-bounded-disabled-source-tap-fix",
           "next_bounded_step": "ONE bounded native state-reference premise selection; no genericownershipkernel or historicalnative upgrade."
+        },
+        {
+          "record": "179-a02-native-state-return-source.md",
+          "status": "complete-bounded-native-return-reference-source-checks",
+          "next_bounded_step": "ONE separately scoped native integration and actual returned-state-reference acquisition qualification; all stronger origins remainUnknown."
         }
       ],
-      "implementation_plan": "../superpowers/plans/2026-10-25-a02-native-state-return-source.md",
+      "implementation_plan": "../superpowers/plans/2026-10-25-a02-native-state-return-native.md",
       "active_slice": {
-        "id": "A02.29",
-        "record": "179-a02-native-state-return-source.md",
-        "status": "complete-bounded-source-checks",
-        "base": "3d4214dd7674e680cf01ab4c9913b5113811aa60",
+        "id": "A02.30",
+        "record": "180-a02-native-state-return-native.md",
+        "status": "planning",
+        "base": "84f0d50f30b59dd825d6a0758ead3735de63c736",
         "native_runs": 0,
+        "maximum_native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
-        "full_A02": false,
-        "focused_checks": 55,
-        "full_checks": 4648,
-        "owned_vm_contexts": 18,
-        "actual_retained_inputs": "compile-only",
-        "review": {
-          "Critical": 0,
-          "Important": 2,
-          "Important_fixed": 2,
-          "Minor": 0,
-          "correction_passes": 1,
-          "rereview": false,
-          "deferred_minors_total": 11
-        }
+        "full_A02": false
       }
     },
     {
