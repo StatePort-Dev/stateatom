@@ -43,4 +43,4 @@
 
 ## Final Closeout
 
-- [ ] ONE fresh whole-item review/effectrulings/ONEtestedI-Cpass/no rereview/native repeat; archive/CRC/allbytes/identity verify/remove ownworkspace, clean checkpoint and ONE next dependency. Source+native scopes separate, fullA02/20of29 not inferred.
+- [x] ONE fresh whole-item review/effectrulings/ONEtestedI-Cpass/no rereview/native repeat; archive/CRC/allbytes/identity verify/remove ownworkspace, clean checkpoint and ONE next dependency. Source+native scopes separate, fullA02/20of29 not inferred.

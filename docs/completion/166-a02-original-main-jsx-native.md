@@ -115,3 +115,43 @@ as approved configuration. Currentcase exhausted/no retry. Next ONE final fresh
 whole-item review. Afterclose, exact source-only launcher/switch provenance is the
 next dependency before any separately bounded new Main case, not a blank-browser
 retry campaign or permission/certificate work.20/29/fullA02 unchanged/five minors.
+
+ONE finalfresh review a0216_whole_review Astra/high bac767d..308b6ce:0Critical/
+3Important/1Minor, fresh140PASS1063.738ms plus source-only reproductions. I1 browser
+operations could hang outside any deadline/finally; I2 nested native occurrence IDs
+could be reused by distinct outer rows; I3 partial setup falsely kept noexecution.
+All three accepted Important by effect. M1 currentStage launch diagnostic is Minor,
+firstspecificerror correct; deferred with prior5, total6. No minor-onlyfix/rereview.
+
+ONE correction pass:16newcontrols RED141PASS15FAIL (pre-navigation false control
+alreadypassed) ->233affectedPASS3300.478ms. Operations now have finite stage leases
+(actual30s/metadata5s), guarded awaited browser continuations; expired/closed mode/
+root cannot acquire active resources, late handles dispose under tracked cleanup.
+Known partial execution milestones aggregate across modes; possible unattributed
+navigation isUnknown, exact loadedsource+Main DOM readiness records known execution
+before setup action. I2 enforces independent native input/config/value/element IDs
+and current namespace/window, separately from outer IDs; no crossnamespace join.
+Full corrected npm test4200PASS/0fail/0cancel/0skip110964.765ms terminal91602exit0.
+No native retry/oldreader rerun or second review. Actual0/18 observation remains
+historical ateda4cd4/source5837358; corrections have source tests only, no fresh
+actual-framework/Main qualification. All82oldsource/327payload/raw/cases remainintact.
+
+Report/rulings .artifacts/a02/callback-jsx-native-review/2026-10-25/report.md accept
+all7declined domains with Unknown/unvisited/product/visual/hash boundaries. Native
+542stage now537physical+5exact583Git inputs (two code/two tests/plan); old reader's
+542physical report is immutable, not rerun under current source. Final source-free
+hash reconciliation and ownworkspace archive/cleanup are separate current checks.
+
+Exact pinned installed launcher default-switch slice contains0enableautomation
+literal; CR innerDefaultArgs appends explicit args. Bounded read-only source note
+(no code evaluation/new browser) is preserved with the final review artifacts.
+This is Code-linked preparation diagnosis, not reconstructed prior argv/effective
+flags, not an approved general startup/security/production policy.
+
+A02.16 finite implementation/review/attempt complete, native Main acquisition still
+INCOMPLETE/unvisited and case exhausted;20/29 (~69%)/fullA02 unchanged. ONE next
+A02.17: new separately frozen originalMain case with explicit required observability
+argument --enable-automation, closed schema/argv control and argument-delivery
+receipt before max1new launch. Reuse corrected driver/recorder; no new generic
+recorder or blank retry campaign, no sandbox/cert/trust/userprofile/SDK/release
+changes. This is executor-selected technical scope under autonomy, successUnknown.

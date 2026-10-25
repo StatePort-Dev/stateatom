@@ -143,3 +143,9 @@ for(const[name,mutate]of [
 ])test('whole native fact requires '+name,()=>{const{r,s}=wholeRun();mutate(r);assert.equal(classifyCallbackJSXNativeRun(r,s).status,'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');});
 
 test('unknown pending resource cleanup cannot complete a native result',()=>{const{r,s}=wholeRun();r.cleanup.pendingResources='Unknown';assert.equal(classifyCallbackJSXNativeRun(r,s).status,'INCOMPLETE_ORIGINAL_MAIN_CALLBACK_JSX_NOT_FULL_A02');});
+
+// Final review I2: uniqueness and scope inside the independent native ID family.
+for(const key of ['inputId','configId','valueId','elementId'])test('I2 distinct outer rows cannot reuse native '+key,()=>{const phase=callbackJSXNativeProtocol().phases[0],c=copy(capture(phase));c.snapshot.links[1].configInputOccurrence[key]=c.snapshot.links[0].configInputOccurrence[key];assert.throws(()=>guardCallbackJSXNativeWindow(c,phase,sites));});
+test('I2 copied whole native occurrence cannot qualify two outer rows',()=>{const phase=callbackJSXNativeProtocol().phases[0],c=copy(capture(phase));c.snapshot.links[1].configInputOccurrence=copy(c.snapshot.links[0].configInputOccurrence);assert.throws(()=>guardCallbackJSXNativeWindow(c,phase,sites));});
+for(const kind of ['page','window'])test('I2 native occurrence from foreign '+kind+' refuses despite matching outer frame',()=>{const phase=callbackJSXNativeProtocol().phases[0],c=copy(capture(phase)),n=c.snapshot.links[0].configInputOccurrence;for(const key of ['inputId','configId','valueId','elementId'])n[key]=kind==='page'?n[key].replace(sites.page,'foreign-page'):n[key].replace(':jsx-config:1:',':jsx-config:2:');assert.throws(()=>guardCallbackJSXNativeWindow(c,phase,sites));});
+test('I2 native retention window must be current collector generation',()=>{const phase=callbackJSXNativeProtocol().phases[0],c=copy(capture(phase));c.retention.configInput.window++;assert.throws(()=>guardCallbackJSXNativeWindow(c,phase,sites));});

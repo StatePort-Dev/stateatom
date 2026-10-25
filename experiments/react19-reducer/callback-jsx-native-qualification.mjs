@@ -64,12 +64,18 @@ export function guardCallbackJSXNativeWindow(c,phase,policy){
  assert.equal(s.frames.length,phase.rowCount);assert.equal(s.links.length,phase.rowCount);
  for(const key of ['frameId','itemId','elementId'])assert.equal(new Set(s.links.map(l=>l[key])).size,phase.rowCount);
  assert.equal(new Set(s.links.map(l=>l.callId)).size,1);assert.equal(new Set(s.links.map(l=>l.arrayId)).size,1);
+ assert.equal(r.configInput.window,r.window);
+ for(const key of ['inputId','configId','valueId','elementId'])assert.equal(new Set(s.links.map(l=>l.configInputOccurrence[key])).size,phase.rowCount);
+ const scopedID=(id,family,role)=>{const prefix=policy.page+':'+family+':'+r.window+':'+role+':';assert(typeof id==='string'&&id.startsWith(prefix));const serial=id.slice(prefix.length);assert(/^[1-9][0-9]*$/.test(serial)&&count(Number(serial),4096));};
  const indices=[];
  for(const l of s.links){
+  for(const[key,role]of [['frameId','frame'],['callId','call'],['arrayId','object'],['itemId','object'],['elementId','object']])scopedID(l[key],'callback-jsx-config',role);
   sameSite(l.site,policy.mapSite);assert.equal(l.itemId,l.configInputId);
   const f=s.frames.find(f=>f.frameId===l.frameId);assert(f);assert.equal(f.closed,true);assert.equal(f.returned,true);assert.equal(f.returnedId,l.elementId);assert.equal(f.itemId,l.itemId);assert.equal(f.callId,l.callId);assert.equal(f.arrayId,l.arrayId);assert.equal(f.mapIndex,l.mapIndex);sameSite(f.site,policy.mapSite);
   const n=l.configInputOccurrence;assert(n);assert.equal(n.inputKind,'source-fresh-own-data-config');assert.equal(n.field,'todo');assert.equal(n.status,'completed');
   assert(policy.jsxSites.some(site=>JSON.stringify(site)===JSON.stringify(n.site)));for(const k of ['inputId','configId','valueId','elementId']){assert.equal(typeof n[k],'string');assert(n[k].length>0&&n[k].length<=512);}
+  for(const[key,role]of [['inputId','input'],['configId','object'],['valueId','object'],['elementId','object']])scopedID(n[key],'jsx-config',role);
+  assert.equal(new Set([n.configId,n.valueId,n.elementId]).size,3);
   assert.equal(l.copyOccurrence,undefined);indices.push(l.mapIndex);
  }
  assert.deepEqual(indices.sort((a,b)=>a-b),Array.from({length:phase.rowCount},(_,i)=>i));return c;

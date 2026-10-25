@@ -1,14 +1,16 @@
 # Project status
 
-Active bounded attempt: [A02.16](completion/166-a02-original-main-jsx-native.md).
-217focused/full4184 sourcePASS, nativecase exhausted/INCOMPLETE before app:
-public startup API unavailable (automation prerequisite),0modes/0of18phases.
-Owner/CDP/PID/start/exe/profile matched, all launched resources closed/profile/PID
-Absent; HTTP/app contexts neverstarted. Saved542physical/44negative controls, no
-native rerun. Planning missed an already known API prerequisite; next ONE final
-fresh review, then source-only exact launcher/switch provenance before any newcase.
-Oldcases/criteria unchanged, no title reconstruction/flagretune/install/cert/trust/
-userprofile/keyring/model/SDK/publication.20/29/fullA02 unchanged/five prior minors.
+Completed bounded attempt: [A02.16](completion/166-a02-original-main-jsx-native.md).
+ONEreview0C3I1M, one tested sourcefixpass233focused/full4200PASS: finite operation
+leases/late disposal, independent scoped native IDs, truthful partial execution.
+One nativecase stays exhausted/INCOMPLETE,0modes/0of18phases; publicAPIautomation
+prerequisite unavailable, rootcleanup verified/PIDprofileAbsent. Raw immutable;
+542frozen inputs now537physical+5exact583Git, saved44negative report historical.
+Pinned launcher defaultlist lacks requiredflag literal; explicitargs append source
+verified, not priorargv reconstruction. Whole20/29/fullA02 unchanged,6minors deferred.
+Next ONE A02.17 separately frozen Maincase with explicit --enable-automation and
+deliveryreceipt, max1newcase aftersourcegates. Reuse current mechanism; no blank
+retry/legacywaiver/sandbox/cert/trust/userprofile/SDK/publication changes.
 
 Completed bounded source slice: [A02.15](completion/165-a02-callback-jsx-interval.md).
 ONEreview0C1I0M; rejected-metadata owner replacement fixed once, RED36/6->GREEN42/

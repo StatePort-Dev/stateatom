@@ -27,7 +27,7 @@ const hash=s=>createHash('sha256').update(s).digest('hex'),json=async p=>JSON.pa
 const pins={'react/cjs/react.development.js':'4325e6263375459503858c0982d50bbc25bc33e66676954698c67221d2ee8b72','react/cjs/react-jsx-runtime.development.js':'dd50fd0db2fba44e0eee66243a45c81cfa3774cf41e4e6c0c080a601815c694d','react-dom/cjs/react-dom-client.development.js':'806b25cf84808a5ae0104e81633caabb1aa11fce71e72ef7afe4c1f8d2ebec08'};
 const fault=code=>Object.assign(Error(code),{code});
 function safeError(error,stage){
- const allowed=new Set(['CONTROL_FAIL','METADATA_TIMEOUT','HANDLE_TIMEOUT','CLEANUP_TIMEOUT','SOURCE_MISMATCH','STARTUP_REFUSED','SOURCE_CONTROL_ONLY','CASE_INCOMPLETE','ENOENT','EEXIST','ECONNRESET','ECONNREFUSED']);let code='STAGE_FAILED',message=null;
+ const allowed=new Set(['CONTROL_FAIL','STAGE_TIMEOUT','METADATA_TIMEOUT','HANDLE_TIMEOUT','CLEANUP_TIMEOUT','SOURCE_MISMATCH','STARTUP_REFUSED','SOURCE_CONTROL_ONLY','CASE_INCOMPLETE','ENOENT','EEXIST','ECONNRESET','ECONNREFUSED']);let code='STAGE_FAILED',message=null;
  try{const d=Object.getOwnPropertyDescriptor(error,'code');if(d&&Object.hasOwn(d,'value')){if(allowed.has(d.value))code=d.value;else if(d.value==='ERR_ASSERTION')code='ASSERTION_FAILED';}const m=Object.getOwnPropertyDescriptor(error,'message');if(m&&Object.hasOwn(m,'value')&&typeof m.value==='string'&&Buffer.byteLength(m.value)<=65536)message=m.value;}catch{}
  const diagnostics=[];if(message)for(const[pattern,label]of [[/Failed to move to .*namespace|Failed to move to a new namespace/i,'NAMESPACE_UNAVAILABLE'],[/Operation not permitted/i,'OPERATION_NOT_PERMITTED'],[/No usable sandbox/i,'SANDBOX_UNAVAILABLE'],[/Target page, context or browser has been closed/i,'TARGET_CLOSED'],[/Timeout.*exceeded/i,'OPERATION_TIMEOUT'],[/getBrowserCommandLine.*enable-automation/i,'AUTOMATION_API_UNAVAILABLE']])if(pattern.test(message))diagnostics.push(label);
  return{stage,code,diagnostics,messageDigest:message===null?null:hash(message)};
@@ -93,32 +93,34 @@ export function guardCallbackJSXNativeCase(s){
  assert.equal(s.loadedInputs.filter(x=>x.mode==='observed'&&x.transformed).length,2);assert(typeof s.pagePrefix==='string'&&s.pagePrefix.length>0&&s.pagePrefix.length<110);
  return s;
 }
-export async function acquireCallbackJSXNativeHandle(handles,key,task,{timeoutMs=5000,closeMethod='close',onPending=()=>{},onLate=()=>{}}={}){
+export async function acquireCallbackJSXNativeHandle(handles,key,task,{timeoutMs=5000,closeMethod='close',isActive=()=>true,onPending=()=>{},onLate=()=>{}}={}){
  assert(['close','detach'].includes(closeMethod));let active=true;
- const pending=Promise.resolve().then(task).then(async handle=>{if(active){handles[key]=handle;return handle;}try{await ownedProcessDeadline(()=>handle[closeMethod](),5000,'CLEANUP_TIMEOUT');onLate(true);}catch{onLate(false);}return undefined;});
+ const pending=Promise.resolve().then(task).then(async handle=>{if(active&&isActive()){handles[key]=handle;return handle;}try{await ownedProcessDeadline(()=>handle[closeMethod](),5000,'CLEANUP_TIMEOUT');onLate(true);}catch{onLate(false);}return undefined;});
  onPending(pending);try{return await ownedProcessDeadline(()=>pending,timeoutMs,'HANDLE_TIMEOUT');}finally{active=false;}
 }
 export async function runCallbackJSXNativeStages(s,ops){
  const timeout=ops.sourceControl?ops.timeoutMs:5000;
  const r={schema:'stateatom.callback-jsx-native-result/1',status:'RUNNING',execution:ops.sourceControl?'SOURCE_CONTROL_NOT_NATIVE_PROOF':'ACTUAL_OWNED_PUBLIC_DRIVER',actualBrowserStarted:false,sourceRevision:ops.sourceControl?'0'.repeat(40):git(['rev-parse','HEAD']),preparedAtRevision:s.preparedAtRevision,sourceDirty:false,inputsUnchanged:false,browserStarted:false,appExecuted:false,ReactDOMExecuted:false,originalMainExecuted:false,browserLaunchesStarted:0,browserLaunchesCompleted:0,modesStarted:0,modesCompleted:0,phasesStarted:0,phasesCompleted:0,startup:{owner:null,proc:null,publicReport:null,managedProfile:null,browserVersion:null},startupQualification:null,runs:[],traffic:[],networkDenied:[],errors:[],cleanup:{},withExtension:false,withHelper:false,withIDE:false,productSupport:false,modelCalls:0,nativeWriterCalls:0,installedRuntimeProven:false,JSXProductSupported:false,fullA02:false};
  ops.bindResult?.(r);
- const save=async(name,value)=>ops.save(name,value),read=async(name,fn)=>{try{r.startup[name]=await ownedProcessDeadline(fn,timeout,'METADATA_TIMEOUT');}catch(e){r.errors.push(safeError(e,'startup:'+name));}await save('startup-'+name,r.startup[name]);};
+ const bounded=async(fn,metadata=false)=>{const lease={active:true};try{return await ownedProcessDeadline(()=>fn(lease),ops.sourceControl?timeout:metadata?5000:30000,metadata?'METADATA_TIMEOUT':'STAGE_TIMEOUT');}finally{lease.active=false;}};
+ const executionKeys=['appExecuted','ReactDOMExecuted','originalMainExecuted'],syncExecution=()=>{for(const key of executionKeys){const values=r.runs.map(run=>run.executionMilestones?.[key]);r[key]=values.some(v=>v===true)?true:values.some(v=>v!==false)?'Unknown/Unsupported':false;}};
+ const save=async(name,value)=>ops.save(name,value),read=async(name,fn)=>{try{r.startup[name]=await bounded(fn,true);}catch(e){r.errors.push(safeError(e,'startup:'+name));}await save('startup-'+name,r.startup[name]);};
  try{
-  r.currentStage='launch';r.browserLaunchesStarted++;if(!ops.sourceControl){r.browserStarted='Unknown/Unsupported';r.actualBrowserStarted='Unknown/Unsupported';}await ops.launch();r.browserStarted=true;r.actualBrowserStarted=!ops.sourceControl;r.browserLaunchesCompleted++;
-  await read('owner',()=>ops.readOwner());await save('owner-before-admission',r.startup.owner);
+  r.currentStage='launch';r.browserLaunchesStarted++;if(!ops.sourceControl){r.browserStarted='Unknown/Unsupported';r.actualBrowserStarted='Unknown/Unsupported';}await bounded(lease=>ops.launch(lease));r.browserStarted=true;r.actualBrowserStarted=!ops.sourceControl;r.browserLaunchesCompleted++;
+  await read('owner',lease=>ops.readOwner(lease));await save('owner-before-admission',r.startup.owner);
   if(r.startup.owner?.status!=='CAPTURED_ORIGINAL_INVOCATION')throw fault('STARTUP_REFUSED');
   const policy={executable:s.browser.executable,sha256:s.browser.sha256,profile:r.startup.owner.profile,browserVersion:s.browser.version};
-  await read('proc',()=>ops.readProcess());await read('publicReport',()=>ops.readPublic(policy));await read('managedProfile',()=>ops.readManaged());await read('browserVersion',()=>ops.readVersion());
+  await read('proc',lease=>ops.readProcess(lease));await read('publicReport',lease=>ops.readPublic(policy,lease));await read('managedProfile',lease=>ops.readManaged(lease));await read('browserVersion',lease=>ops.readVersion(lease));
   r.startupQualification=qualifyCallbackJSXStartup(r.startup,policy);await save('startup-qualification',r.startupQualification);
   if(r.startupQualification.status!=='QUALIFIED_PUBLIC_STARTUP_AND_OWNER_PROCESS_FACTS_ONLY'||r.errors.length)throw fault('STARTUP_REFUSED');
-  const http=await ops.openHTTP();r.origin=http.origin;
+  const http=await bounded(lease=>ops.openHTTP(lease));r.origin=http.origin;
   for(const mode of s.protocol.modes){
-   r.modesStarted++;const run={mode,pageId:s.pagePrefix+':'+mode,document:null,initialDom:null,setup:null,sourceWitness:null,phases:[],console:[],pageErrors:[],cleanup:{}};r.runs.push(run);
+   r.modesStarted++;const run={mode,pageId:s.pagePrefix+':'+mode,document:null,initialDom:null,setup:null,sourceWitness:null,executionMilestones:{appExecuted:'Unknown/Unsupported',ReactDOMExecuted:'Unknown/Unsupported',originalMainExecuted:'Unknown/Unsupported'},phases:[],console:[],pageErrors:[],cleanup:{}};r.runs.push(run);syncExecution();
    try{
-    r.currentStage=mode+':open';await ops.openMode(run);r.currentStage=mode+':setup';await ops.setupMode(run);r.appExecuted=true;r.ReactDOMExecuted=true;r.originalMainExecuted=true;await save(mode+'-setup',run);
+    r.currentStage=mode+':open';await bounded(lease=>ops.openMode(run,lease));r.currentStage=mode+':setup';await bounded(lease=>ops.setupMode(run,lease));if(run.setup?.dom&&run.sourceWitness?.status==='EXACT_LOADED_MAIN_BUNDLE_AND_BOOTSTRAP')for(const key of executionKeys)run.executionMilestones[key]=true;syncExecution();await save(mode+'-setup',run);
     for(const phase of s.protocol.phases){
      r.phasesStarted++;const v={id:phase.id,completed:false,startedAt:new Date().toISOString()};run.phases.push(v);await save(mode+'-'+phase.id+'-started',v);
-     r.currentStage=mode+':'+phase.id+':perform';await ops.performPhase(run,phase);r.currentStage=mode+':'+phase.id+':capture';await ops.capturePhase(run,phase,v);await save(mode+'-'+phase.id+'-observed',v);
+     r.currentStage=mode+':'+phase.id+':perform';await bounded(lease=>ops.performPhase(run,phase,lease));r.currentStage=mode+':'+phase.id+':capture';await bounded(lease=>ops.capturePhase(run,phase,v,lease));await save(mode+'-'+phase.id+'-observed',v);
      assert.deepEqual(v.document,run.document);assert.deepEqual(v.dom,{texts:phase.texts,checked:phase.checked});
      if(mode==='on')guardCallbackJSXNativeWindow(v.capture,phase,{...s.sitePolicy,page:run.pageId});
      else if(mode==='original')assert.equal(v.capture,null);
@@ -126,12 +128,12 @@ export async function runCallbackJSXNativeStages(s,ops){
      v.completed=true;v.finishedAt=new Date().toISOString();r.phasesCompleted++;await save(mode+'-'+phase.id,v);await save('running',r);
     }
     r.modesCompleted++;
-   }finally{try{await ops.closeMode(run);}catch(e){r.errors.push(safeError(e,'cleanup:'+mode));}await save(mode+'-closed',run);}
+   }finally{syncExecution();try{await bounded(lease=>ops.closeMode(run,lease));}catch(e){r.errors.push(safeError(e,'cleanup:'+mode));}await save(mode+'-closed',run);}
   }
  }catch(e){r.errors.push(safeError(e,r.currentStage??'run'));}
  finally{
-  try{await ops.closeRoot(r);}catch(e){r.errors.push(safeError(e,'cleanup:root'));}
-  try{r.inputsUnchanged=await ops.verifyInputs();assert.equal(r.inputsUnchanged,true);}catch(e){r.inputsUnchanged=false;r.errors.push(safeError(e,'inputs'));}
+  try{await bounded(lease=>ops.closeRoot(r,lease));}catch(e){r.errors.push(safeError(e,'cleanup:root'));}
+  try{r.inputsUnchanged=await bounded(lease=>ops.verifyInputs(lease));assert.equal(r.inputsUnchanged,true);}catch(e){r.inputsUnchanged=false;r.errors.push(safeError(e,'inputs'));}
   r.qualification=classifyCallbackJSXNativeRun(r,s);r.status=r.qualification.status;
   if(ops.sourceControl)r.status=r.errors.length||r.qualification.failures.length?'SOURCE_CONTROL_INCOMPLETE_NOT_NATIVE_PROOF':'SOURCE_CONTROL_COMPLETED_NOT_NATIVE_PROOF';
   r.finishedAt=new Date().toISOString();await save('results',r);
@@ -139,9 +141,10 @@ export async function runCallbackJSXNativeStages(s,ops){
  return r;
 }
 
-export async function readCallbackJSXLoadedSource(session,{document,contexts,scripts,origin,mode,bundleHash,bootstrapHash}){
+export async function readCallbackJSXLoadedSource(session,{document,contexts,scripts,origin,mode,bundleHash,bootstrapHash,lease}){
+ activeLease(lease);
  const defaults=contexts.filter(c=>c.auxData?.frameId===document.frameId&&c.auxData?.isDefault===true&&c.origin===origin);assert.equal(defaults.length,1);const contextId=defaults[0].id;assert(Number.isSafeInteger(contextId)&&contextId>0);
- const read=async(url,expected)=>{const candidates=scripts.filter(s=>s.url===url&&s.executionContextId===contextId);assert.equal(candidates.length,1,'No unique exact current-context script');const parsed=candidates[0],actual=await ownedProcessDeadline(()=>session.send('Debugger.getScriptSource',{scriptId:parsed.scriptId}),5000,'METADATA_TIMEOUT');assert(typeof actual.scriptSource==='string'&&Buffer.byteLength(actual.scriptSource)<=8*1024*1024);assert.equal(hash(actual.scriptSource),expected,'Exact loaded source mismatch');return{scriptId:parsed.scriptId,executionContextId:contextId,url,sha256:expected};};
+ const read=async(url,expected)=>{activeLease(lease);const candidates=scripts.filter(s=>s.url===url&&s.executionContextId===contextId);assert.equal(candidates.length,1,'No unique exact current-context script');const parsed=candidates[0],actual=await ownedProcessDeadline(()=>session.send('Debugger.getScriptSource',{scriptId:parsed.scriptId}),5000,'METADATA_TIMEOUT');activeLease(lease);assert(typeof actual.scriptSource==='string'&&Buffer.byteLength(actual.scriptSource)<=8*1024*1024);assert.equal(hash(actual.scriptSource),expected,'Exact loaded source mismatch');return{scriptId:parsed.scriptId,executionContextId:contextId,url,sha256:expected};};
  const bundle=await read(origin+'/'+(mode==='original'?'original.js':'observed.js'),bundleHash),bootstrap=mode==='original'?null:await read('stateatom-owned://a0216/'+mode+'/bootstrap.js',bootstrapHash);
  return{schema:'stateatom.callback-jsx-loaded-source/1',status:'EXACT_LOADED_MAIN_BUNDLE_AND_BOOTSTRAP',frameId:document.frameId,targetId:document.targetId,browserContextId:document.browserContextId,executionContextId:contextId,bundle,bootstrap};
 }
@@ -185,64 +188,69 @@ async function procState(pid,expectedStartTime){
  try{const raw=await fs.readFile('/proc/'+pid+'/stat','utf8');assert.equal(raw.slice(0,raw.indexOf(' ')),String(pid));const start=raw.slice(raw.lastIndexOf(')')+2).trim().split(/\s+/)[19];assert(/^\d+$/.test(start));return{pid,expectedStartTime,actualStartTime:start,state:expectedStartTime&&start!==expectedStartTime?'DifferentProcess':'Present'};}catch(e){return{pid,expectedStartTime,state:e.code==='ENOENT'?'Absent':'Unknown'};}
 }
 async function awaitExit(pid,start){let value;for(let i=0;i<100;i++){value=await procState(pid,start);if(['Absent','DifferentProcess'].includes(value.state))return value;await new Promise(resolve=>setTimeout(resolve,50));}return value;}
+function activeLease(lease){if(lease&&lease.active!==true)throw fault('STAGE_TIMEOUT');}
+async function activeStep(lease,fn){activeLease(lease);const value=await fn();activeLease(lease);return value;}
 function createNativeOperations(s,inputs){
- const h={},modeHandles=new Map(),pending=new Set();let result,connectPromise;
+ const h={active:true},modeHandles=new Map(),pending=new Set();let result,connectPromise;
  const save=async(name,value)=>fs.writeFile(s.out+'/'+name+'.json',JSON.stringify(value,null,2)+'\n',name==='running'?{}:{flag:'wx'});
- const acquire=(bag,key,fn,closeMethod='close',timeoutMs=5000)=>acquireCallbackJSXNativeHandle(bag,key,fn,{timeoutMs,closeMethod,onPending:p=>{pending.add(p);p.then(()=>pending.delete(p),()=>pending.delete(p));},onLate:ok=>{result.errors.push({stage:'late:'+key,code:ok?'LATE_HANDLE_CLOSED':'LATE_HANDLE_CLEANUP_UNKNOWN'});}});
- const session=()=>connectPromise??=(async()=>{
+ const acquire=async(bag,key,fn,closeMethod='close',timeoutMs=5000,lease)=>{activeLease(lease);if(bag.active===false)throw fault('STAGE_TIMEOUT');const value=await acquireCallbackJSXNativeHandle(bag,key,()=>{activeLease(lease);return fn();},{timeoutMs,closeMethod,isActive:()=>bag.active!==false&&(!lease||lease.active),onPending:p=>{pending.add(p);p.then(()=>pending.delete(p),()=>pending.delete(p));},onLate:ok=>{result.errors.push({stage:'late:'+key,code:ok?'LATE_HANDLE_CLOSED':'LATE_HANDLE_CLEANUP_UNKNOWN'});}});activeLease(lease);return value;};
+ const session=lease=>connectPromise??=(async()=>{
   const endpoint=h.owner.wsEndpoint(),u=new URL(endpoint);assert.equal(u.protocol,'ws:');assert.equal(u.hostname,'127.0.0.1');assert(!u.username&&!u.password&&!u.search&&!u.hash);
-  await acquire(h,'client',()=>chromium.connect(endpoint,{timeout:10000}),'close',12000);assert.equal(h.client.contexts().length,0);await acquire(h,'browserSession',()=>h.client.newBrowserCDPSession(),'detach');return h.browserSession;
+  await acquire(h,'client',()=>chromium.connect(endpoint,{timeout:10000}),'close',12000,lease);assert.equal(h.client.contexts().length,0);await acquire(h,'browserSession',()=>h.client.newBrowserCDPSession(),'detach',5000,lease);return h.browserSession;
  })();
  const dom=page=>page.evaluate(()=>({texts:[...document.querySelectorAll('[data-testid="todo-item-label"]')].map(n=>n.textContent),checked:[...document.querySelectorAll('[data-testid="todo-item-toggle"]')].map(n=>n.checked)}));
  const waitDOM=(page,expected)=>page.waitForFunction(e=>JSON.stringify([...document.querySelectorAll('[data-testid="todo-item-label"]')].map(n=>n.textContent))===JSON.stringify(e.texts)&&JSON.stringify([...document.querySelectorAll('[data-testid="todo-item-toggle"]')].map(n=>n.checked))===JSON.stringify(e.checked),expected,{timeout:20000});
- async function documentFor(run){
-  const m=modeHandles.get(run.mode),target=(await ownedProcessDeadline(()=>m.pageSession.send('Target.getTargetInfo'),5000,'METADATA_TIMEOUT')).targetInfo,tree=(await ownedProcessDeadline(()=>m.pageSession.send('Page.getFrameTree'),5000,'METADATA_TIMEOUT')).frameTree;
+ async function documentFor(run,lease){
+  activeLease(lease);
+  const m=modeHandles.get(run.mode),target=(await activeStep(lease,()=>ownedProcessDeadline(()=>m.pageSession.send('Target.getTargetInfo'),5000,'METADATA_TIMEOUT'))).targetInfo,tree=(await activeStep(lease,()=>ownedProcessDeadline(()=>m.pageSession.send('Page.getFrameTree'),5000,'METADATA_TIMEOUT'))).frameTree;
   assert.equal(target.type,'page');assert(!target.openerId&&!target.openerFrameId);assert.equal(m.context.pages().length,1);assert.equal(m.page.frames().length,1);assert.equal((tree.childFrames||[]).length,0);assert(!tree.frame.parentId);
   const u=new URL(tree.frame.url);assert.equal(u.origin,result.origin);assert.equal(u.pathname,'/');assert.equal(u.search,'?mode='+run.mode);assert(['','#/','#/active'].includes(u.hash));assert.equal(target.url,tree.frame.url);
   return{targetId:target.targetId,frameId:tree.frame.id,loaderId:tree.frame.loaderId,browserContextId:target.browserContextId,mainOnly:true};
  }
  return{
   sourceControl:false,bindResult:r=>{result=r;},save,
-  async launch(){await acquire(h,'owner',()=>chromium.launchServer({executablePath:s.browser.executable,headless:true,chromiumSandbox:true,args:[],timeout:20000,host:'127.0.0.1',port:0}),'close',22000);},
-  async readOwner(){const w=captureBrowserLaunchWitness(h.owner.process(),{...s.browser,profileRoot:'/tmp',profilePrefix:s.profilePolicy.prefix});result.launchProcess={pid:w.pid,expectedStartTime:null};const p=await procState(w.pid,null);if(p.actualStartTime)result.launchProcess.expectedStartTime=p.actualStartTime;return w;},
-  async readProcess(){return collectOwnedBrowserProcess(await session(),s.browser);},
-  async readPublic(policy){const cdp=await session(),version=await cdp.send('Browser.getVersion');result.startup.browserReportedProduct=version.product;assert(['Chrome/'+s.browser.version,'HeadlessChrome/'+s.browser.version].includes(version.product));await save('public-browser-protocol',{product:version.product,protocolVersion:version.protocolVersion});const targets=(await cdp.send('Target.getTargets')).targetInfos;assert(Array.isArray(targets)&&targets.length<=128);const pages=targets.filter(t=>t.type==='page'),extensions=targets.filter(t=>typeof t.url==='string'&&t.url.startsWith('chrome-extension://'));await save('public-initial-target-counts',{pages:pages.length,extensionTargets:extensions.length});assert.equal(pages.length,0);assert.equal(extensions.length,0);const line=await cdp.send('Browser.getBrowserCommandLine');return capturePublicCallbackJSXStartup(line.arguments,policy);},
-  async readManaged(){return readManagedLaunchProfile(result.startup.owner.profile,s.profilePolicy);},
-  async readVersion(){await session();return h.client.version();},
-  async openHTTP(){
-   const buffers={};for(const[name,b]of Object.entries(s.bundles)){const data=await fs.readFile(b.file);assert.equal(hash(data),b.sha256);buffers['/'+name]=data;}
+  async launch(lease){await acquire(h,'owner',()=>chromium.launchServer({executablePath:s.browser.executable,headless:true,chromiumSandbox:true,args:[],timeout:20000,host:'127.0.0.1',port:0}),'close',22000,lease);},
+  async readOwner(lease){activeLease(lease);const w=captureBrowserLaunchWitness(h.owner.process(),{...s.browser,profileRoot:'/tmp',profilePrefix:s.profilePolicy.prefix});result.launchProcess={pid:w.pid,expectedStartTime:null};const p=await activeStep(lease,()=>procState(w.pid,null));if(p.actualStartTime)result.launchProcess.expectedStartTime=p.actualStartTime;return w;},
+  async readProcess(lease){const cdp=await activeStep(lease,()=>session(lease));return activeStep(lease,()=>collectOwnedBrowserProcess(cdp,s.browser));},
+  async readPublic(policy,lease){const cdp=await activeStep(lease,()=>session(lease)),version=await activeStep(lease,()=>cdp.send('Browser.getVersion'));result.startup.browserReportedProduct=version.product;assert(['Chrome/'+s.browser.version,'HeadlessChrome/'+s.browser.version].includes(version.product));await save('public-browser-protocol',{product:version.product,protocolVersion:version.protocolVersion});activeLease(lease);const targets=(await activeStep(lease,()=>cdp.send('Target.getTargets'))).targetInfos;assert(Array.isArray(targets)&&targets.length<=128);const pages=targets.filter(t=>t.type==='page'),extensions=targets.filter(t=>typeof t.url==='string'&&t.url.startsWith('chrome-extension://'));await save('public-initial-target-counts',{pages:pages.length,extensionTargets:extensions.length});assert.equal(pages.length,0);assert.equal(extensions.length,0);activeLease(lease);const line=await activeStep(lease,()=>cdp.send('Browser.getBrowserCommandLine'));return capturePublicCallbackJSXStartup(line.arguments,policy);},
+  async readManaged(lease){return activeStep(lease,()=>readManagedLaunchProfile(result.startup.owner.profile,s.profilePolicy));},
+  async readVersion(lease){await activeStep(lease,()=>session(lease));return h.client.version();},
+  async openHTTP(lease){
+   activeLease(lease);
+   const buffers={};for(const[name,b]of Object.entries(s.bundles)){const data=await activeStep(lease,()=>fs.readFile(b.file));assert.equal(hash(data),b.sha256);buffers['/'+name]=data;}
    const server=createServer((req,res)=>{const u=new URL(req.url,'http://127.0.0.1');result.traffic.push({method:req.method,ownedOrigin:true,path:Object.hasOwn(buffers,u.pathname)||['/','/favicon.ico'].includes(u.pathname)?u.pathname:undefined,pathDigest:hash(u.pathname)});res.setHeader('cache-control','no-store');if(req.method!=='GET'){res.writeHead(405).end();return;}if(u.pathname==='/favicon.ico'){res.writeHead(204).end();return;}if(u.pathname==='/'){const mode=u.searchParams.get('mode');if(!s.protocol.modes.includes(mode)){res.writeHead(400).end();return;}const bundle=mode==='original'?'original':'observed';res.setHeader('content-type','text/html; charset=utf-8');res.end('<!doctype html><meta charset="utf-8"><title>Original Main JSX source experiment</title><link rel="stylesheet" href="/'+bundle+'.css"><div id="root"></div><script src="/'+bundle+'.js"></script>');return;}if(!Object.hasOwn(buffers,u.pathname)){res.writeHead(404).end();return;}res.setHeader('content-type',u.pathname.endsWith('.js')?'text/javascript':'text/css');res.end(buffers[u.pathname]);});h.httpServer=server;
-   await ownedProcessDeadline(()=>new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve);}),5000,'HANDLE_TIMEOUT');return{origin:'http://127.0.0.1:'+server.address().port};
+   await ownedProcessDeadline(()=>new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',()=>{if(!lease.active||h.active===false){server.close(()=>{});reject(fault('STAGE_TIMEOUT'));}else resolve();});}),5000,'HANDLE_TIMEOUT');activeLease(lease);return{origin:'http://127.0.0.1:'+server.address().port};
   },
-  async openMode(run){
-   const m={contexts:new Map(),scripts:[]};modeHandles.set(run.mode,m);await acquire(m,'context',()=>h.client.newContext({viewport:{width:1280,height:900},serviceWorkers:'block'}));assert.equal(m.context.pages().length,0);
-   await m.context.route('**/*',async route=>{const request=route.request(),u=new URL(request.url());if(u.origin!==result.origin||request.method()!=='GET'){result.networkDenied.push({method:request.method(),urlDigest:hash(request.url())});await route.abort();}else await route.continue();});
+  async openMode(run,lease){
+   activeLease(lease);run.executionMilestones={appExecuted:false,ReactDOMExecuted:false,originalMainExecuted:false};const m={active:true,contexts:new Map(),scripts:[]};modeHandles.set(run.mode,m);await acquire(m,'context',()=>h.client.newContext({viewport:{width:1280,height:900},serviceWorkers:'block'}),'close',5000,lease);assert.equal(m.context.pages().length,0);
+   await activeStep(lease,()=>m.context.route('**/*',async route=>{if(!m.active){await route.abort().catch(()=>{});return;}const request=route.request(),u=new URL(request.url());if(u.origin!==result.origin||request.method()!=='GET'){result.networkDenied.push({method:request.method(),urlDigest:hash(request.url())});await route.abort();}else await route.continue();}));
    m.context.on('page',()=>{if(m.context.pages().length>1)result.errors.push({stage:run.mode,code:'EXTRA_PAGE'});});
-   if(run.mode!=='original'){const bootstrap=await fs.readFile(s.out+'/'+run.mode+'-bootstrap.js','utf8');assert.equal(hash(bootstrap),s.bootstrapDigests[run.mode]);await m.context.addInitScript({content:bootstrap});}
-   await acquire(m,'page',()=>m.context.newPage());m.page.setDefaultTimeout(20000);m.page.on('pageerror',e=>run.pageErrors.push({name:e.name,message:e.message}));m.page.on('console',message=>{if(['warning','error'].includes(message.type()))run.console.push({type:message.type(),text:message.text()});});
-   await acquire(m,'pageSession',()=>m.context.newCDPSession(m.page),'detach');m.pageSession.on('Runtime.executionContextCreated',e=>{if(m.contexts.size>=32)result.errors.push({stage:run.mode,code:'CONTEXT_CAPACITY'});else m.contexts.set(e.context.id,e.context);});m.pageSession.on('Runtime.executionContextDestroyed',e=>m.contexts.delete(e.executionContextId));m.pageSession.on('Runtime.executionContextsCleared',()=>m.contexts.clear());
+   if(run.mode!=='original'){const bootstrap=await activeStep(lease,()=>fs.readFile(s.out+'/'+run.mode+'-bootstrap.js','utf8'));assert.equal(hash(bootstrap),s.bootstrapDigests[run.mode]);await activeStep(lease,()=>m.context.addInitScript({content:bootstrap}));}
+   await acquire(m,'page',()=>m.context.newPage(),'close',5000,lease);m.page.setDefaultTimeout(20000);m.page.on('pageerror',e=>run.pageErrors.push({name:e.name,message:e.message}));m.page.on('console',message=>{if(['warning','error'].includes(message.type()))run.console.push({type:message.type(),text:message.text()});});
+   await acquire(m,'pageSession',()=>m.context.newCDPSession(m.page),'detach',5000,lease);m.pageSession.on('Runtime.executionContextCreated',e=>{if(m.contexts.size>=32)result.errors.push({stage:run.mode,code:'CONTEXT_CAPACITY'});else m.contexts.set(e.context.id,e.context);});m.pageSession.on('Runtime.executionContextDestroyed',e=>m.contexts.delete(e.executionContextId));m.pageSession.on('Runtime.executionContextsCleared',()=>m.contexts.clear());
    m.pageSession.on('Debugger.scriptParsed',e=>{if(e.url===result.origin+'/'+(run.mode==='original'?'original.js':'observed.js')||e.url==='stateatom-owned://a0216/'+run.mode+'/bootstrap.js'){if(m.scripts.length>=16)result.errors.push({stage:run.mode,code:'SCRIPT_CAPACITY'});else m.scripts.push({scriptId:e.scriptId,url:e.url,executionContextId:e.executionContextId});}});
-   await m.pageSession.send('Runtime.enable');await m.pageSession.send('Debugger.enable');await m.page.goto(result.origin+'/?mode='+run.mode,{waitUntil:'load',timeout:20000});await m.page.getByRole('textbox',{name:'New Todo Input'}).waitFor();run.document=await documentFor(run);
+   await activeStep(lease,()=>m.pageSession.send('Runtime.enable'));await activeStep(lease,()=>m.pageSession.send('Debugger.enable'));run.executionMilestones={appExecuted:'Unknown/Unsupported',ReactDOMExecuted:'Unknown/Unsupported',originalMainExecuted:'Unknown/Unsupported'};await activeStep(lease,()=>m.page.goto(result.origin+'/?mode='+run.mode,{waitUntil:'load',timeout:20000}));await activeStep(lease,()=>m.page.getByRole('textbox',{name:'New Todo Input'}).waitFor());run.executionMilestones.appExecuted=true;run.document=await documentFor(run,lease);
   },
-  async setupMode(run){
-   const m=modeHandles.get(run.mode);run.initialDom=await dom(m.page);assert.deepEqual(run.initialDom,{texts:[],checked:[]});const bundle=s.bundles[run.mode==='original'?'original.js':'observed.js'];
-   run.sourceWitness=await readCallbackJSXLoadedSource(m.pageSession,{document:run.document,contexts:[...m.contexts.values()],scripts:m.scripts,origin:result.origin,mode:run.mode,bundleHash:bundle.sha256,bootstrapHash:s.bootstrapDigests[run.mode]});await save(run.mode+'-loaded-source',run.sourceWitness);
-   const add=m.page.getByRole('textbox',{name:'New Todo Input'});await add.fill('SAME');await add.press('Enter');await waitDOM(m.page,s.protocol.setup);run.setup={dom:await dom(m.page),sourceWindowNotAccepted:true,observation:run.mode==='original'?null:await m.page.evaluate(()=>globalThis.__sa_callback_copy.sealWindow())};assert.deepEqual(await documentFor(run),run.document);
+  async setupMode(run,lease){
+   const m=modeHandles.get(run.mode);run.initialDom=await activeStep(lease,()=>dom(m.page));assert.deepEqual(run.initialDom,{texts:[],checked:[]});const bundle=s.bundles[run.mode==='original'?'original.js':'observed.js'];
+   run.sourceWitness=await activeStep(lease,()=>readCallbackJSXLoadedSource(m.pageSession,{document:run.document,contexts:[...m.contexts.values()],scripts:m.scripts,origin:result.origin,mode:run.mode,bundleHash:bundle.sha256,bootstrapHash:s.bootstrapDigests[run.mode],lease}));assert.equal(await activeStep(lease,()=>m.page.locator('[data-testid="main"]').count()),1);
+   run.executionMilestones={appExecuted:true,ReactDOMExecuted:true,originalMainExecuted:true};await save(run.mode+'-loaded-source',run.sourceWitness);activeLease(lease);
+   const add=m.page.getByRole('textbox',{name:'New Todo Input'});await activeStep(lease,()=>add.fill('SAME'));await activeStep(lease,()=>add.press('Enter'));await activeStep(lease,()=>waitDOM(m.page,s.protocol.setup));const observed=await activeStep(lease,()=>dom(m.page)),observation=run.mode==='original'?null:await activeStep(lease,()=>m.page.evaluate(()=>globalThis.__sa_callback_copy.sealWindow()));run.setup={dom:observed,sourceWindowNotAccepted:true,observation};assert.deepEqual(await documentFor(run,lease),run.document);
   },
-  async performPhase(run,phase){
-   const m=modeHandles.get(run.mode),page=m.page,add=page.getByRole('textbox',{name:'New Todo Input'});
-   if(run.mode!=='original')await page.evaluate(label=>globalThis.__sa_callback_copy.startWindow(label),phase.id);
-   if(phase.id==='equal'){await add.fill('SAME');await add.press('Enter');}
-   else if(['same','changed'].includes(phase.id)){await page.locator('[data-testid="todo-item-label"]').first().dblclick();const edit=page.getByRole('textbox',{name:'Edit todo',exact:true});await edit.fill(phase.id==='same'?'SAME':'CHANGED');await edit.press('Enter');await edit.waitFor({state:'detached'});}
-   else if(phase.id==='toggle')await page.locator('[data-testid="todo-item-toggle"]').first().check();
-   else if(phase.id==='filtered')await page.locator('a[href="#/active"]').click();
-   else{if(run.mode!=='original')await page.evaluate(()=>globalThis.__sa_callback_copy.stop());await add.fill('AFTER_STOP');await add.press('Enter');}
-   await waitDOM(page,{texts:phase.texts,checked:phase.checked});
+  async performPhase(run,phase,lease){
+   activeLease(lease);const m=modeHandles.get(run.mode),page=m.page,add=page.getByRole('textbox',{name:'New Todo Input'});
+   if(run.mode!=='original')await activeStep(lease,()=>page.evaluate(label=>globalThis.__sa_callback_copy.startWindow(label),phase.id));
+   if(phase.id==='equal'){await activeStep(lease,()=>add.fill('SAME'));await activeStep(lease,()=>add.press('Enter'));}
+   else if(['same','changed'].includes(phase.id)){await activeStep(lease,()=>page.locator('[data-testid="todo-item-label"]').first().dblclick());const edit=page.getByRole('textbox',{name:'Edit todo',exact:true});await activeStep(lease,()=>edit.fill(phase.id==='same'?'SAME':'CHANGED'));await activeStep(lease,()=>edit.press('Enter'));await activeStep(lease,()=>edit.waitFor({state:'detached'}));}
+   else if(phase.id==='toggle')await activeStep(lease,()=>page.locator('[data-testid="todo-item-toggle"]').first().check());
+   else if(phase.id==='filtered')await activeStep(lease,()=>page.locator('a[href="#/active"]').click());
+   else{if(run.mode!=='original')await activeStep(lease,()=>page.evaluate(()=>globalThis.__sa_callback_copy.stop()));await activeStep(lease,()=>add.fill('AFTER_STOP'));await activeStep(lease,()=>add.press('Enter'));}
+   await activeStep(lease,()=>waitDOM(page,{texts:phase.texts,checked:phase.checked}));
   },
-  async capturePhase(run,phase,v){const m=modeHandles.get(run.mode);const values=await m.page.evaluate(()=>({dom:{texts:[...document.querySelectorAll('[data-testid="todo-item-label"]')].map(n=>n.textContent),checked:[...document.querySelectorAll('[data-testid="todo-item-toggle"]')].map(n=>n.checked)},capture:globalThis.__sa_callback_copy?.sealWindow()??null}));v.dom=values.dom;v.capture=values.capture;v.url= m.page.url();await save(run.mode+'-'+phase.id+'-before-document',v);v.document=await documentFor(run);},
-  async closeMode(run){const m=modeHandles.get(run.mode);if(m)await closeLaunchWitnessHandles(m,run.cleanup,result.errors);},
+  async capturePhase(run,phase,v,lease){const m=modeHandles.get(run.mode);const values=await activeStep(lease,()=>m.page.evaluate(()=>({dom:{texts:[...document.querySelectorAll('[data-testid="todo-item-label"]')].map(n=>n.textContent),checked:[...document.querySelectorAll('[data-testid="todo-item-toggle"]')].map(n=>n.checked)},capture:globalThis.__sa_callback_copy?.sealWindow()??null})));v.dom=values.dom;v.capture=values.capture;v.url=m.page.url();await save(run.mode+'-'+phase.id+'-before-document',v);activeLease(lease);v.document=await documentFor(run,lease);},
+  async closeMode(run){const m=modeHandles.get(run.mode);if(m){m.active=false;await closeLaunchWitnessHandles(m,run.cleanup,result.errors);}},
   async closeRoot(r){
-   await closeLaunchWitnessHandles(h,r.cleanup,r.errors);
+   h.active=false;await closeLaunchWitnessHandles(h,r.cleanup,r.errors);
    try{if(h.httpServer){await ownedProcessDeadline(()=>new Promise((resolve,reject)=>h.httpServer.close(e=>e?reject(e):resolve())),5000,'CLEANUP_TIMEOUT');r.cleanup.httpServer=true;}else r.cleanup.httpServer='not-started';}catch(e){r.cleanup.httpServer=false;r.errors.push(safeError(e,'cleanup:http'));}
    try{await ownedProcessDeadline(()=>Promise.allSettled([...pending]),5000,'CLEANUP_TIMEOUT');r.cleanup.pendingResources=pending.size===0;if(!r.cleanup.pendingResources)throw fault('CLEANUP_TIMEOUT');}catch(e){r.cleanup.pendingResources=false;r.errors.push(safeError(e,'cleanup:pending'));}
    const pid=r.startup.owner?.pid??r.launchProcess?.pid,start=r.startup.proc?.reported?.startTime??r.launchProcess?.expectedStartTime??null;r.cleanup.processExit=await awaitExit(pid,start);r.cleanup.ownerProcessExited=['Absent','DifferentProcess'].includes(r.cleanup.processExit.state);

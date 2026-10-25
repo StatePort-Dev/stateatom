@@ -1665,14 +1665,14 @@
       "active_slice": {
         "id": "A02.16",
         "record": "166-a02-original-main-jsx-native.md",
-        "status": "source-complete-native-startup-incomplete-pending-one-review",
+        "status": "complete-bounded-source-one-correction-native-incomplete",
         "base": "bac767d494646b831d059082b0357438800c4f6c",
         "native_runs": 1,
         "model_calls": 0,
         "product_code_changed": false,
         "full_A02": false,
-        "focused_checks": 217,
-        "full_source_checks": 4184,
+        "focused_checks": 233,
+        "full_source_checks": 4200,
         "native_modes_visited": 0,
         "native_phases_visited": 0,
         "native_phases_unvisited": 18,
@@ -1681,7 +1681,18 @@
         "prepared_source_revision": "5837358bd51b7c7ef4bfdf2add71c91d81228af7",
         "execution_revision": "eda4cd45604a738ef0025ebd6641bb291f26a60a",
         "saved_negative_controls": 44,
-        "JSX_product_supported": false
+        "JSX_product_supported": false,
+        "review": {
+          "Critical": 0,
+          "Important": 3,
+          "Minor": 1,
+          "correction_passes": 1,
+          "I1": "bounded operations/stageleases/late disposal",
+          "I2": "native occurrence identity uniqueness/currentnamespace window",
+          "I3": "truthful partial execution milestones",
+          "M1": "currentStage startup label deferred; total6minors"
+        },
+        "native_retry": false
       },
       "completed_slices": [
         {
@@ -2311,8 +2322,8 @@
       },
       "current_checkpoint": {
         "record": "166-a02-original-main-jsx-native.md",
-        "status": "source-complete-native-startup-incomplete-pending-one-review",
-        "next_bounded_step": "ONE final fresh review; currentcase exhausted0app18unvisited. Then exact source-only launcher/startup-switch provenance before any new separatelybounded Maincase; no retry/retune/legacywaiver."
+        "status": "complete-bounded-source-one-correction-native-incomplete",
+        "next_bounded_step": "A02.17 new separatelyfrozen Maincase with explicit required --enable-automation, closed argv/schema/deliveryreceipt beforemax1newlaunch. Reuse corrected driver/observer, no blankretry/legacywaiver/security/userprofile changes."
       },
       "stopping_point_history": [
         {
