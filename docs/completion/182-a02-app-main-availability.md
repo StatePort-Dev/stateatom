@@ -44,3 +44,12 @@ native behavior; realhostGC/performance; exhaustive combinations; oldreaders;
 product/strongorigins/release; oldminors; archive. No absent evidence credited. Next ONE bounded actual availability-observation decision:
 newly instrumented gate can provide exact missing-reference metadata in a separately
 registered run; no automatic retry or presumed positive/GC/selectedDOM claim.
+
+Closeout .artifacts/a02/app-main-availability-review/2026-10-25/ contains
+review/source/protection/checkpoint and workspace.zip17files SHA256
+92e1dcee22587b883d065af11ddd128cbe728c2b06e3c976f7ef8bf89d7b0683.
+CRC/everybyte/ledgeridentity verified;1449comparison closeout accounts2declared
+source deltas/133otherresearch/327product/allraw equal, old native1288+2Git and
+1414+2Git exactprepared verified. Only ownworkspace removed. Sourcec7c6668,
+final task-done33PASS77.784462ms; native/model/oldreader0.20of29/fullA02 unchanged,
+12deferredminors including M12 documentation precision.
