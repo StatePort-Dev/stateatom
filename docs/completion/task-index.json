@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "174-a02-app-hook-binding.md",
-        "status": "App-source-binding-qualified-before-final-review",
-        "next_bounded_step": "ONE fresh finalreview then bounded Appboundvalue→freshJSX/nativeprops→Mainargument source association; native state/index remainsUnknown, no generalownershipframework."
+        "status": "complete-bounded-App-source-binding",
+        "next_bounded_step": "ONE Appboundvalue→freshMainJSXconfig/nativeprops→sameMainargument sourceassociation; native/index/state/ownership remainsUnknown, no genericownershipframework."
       },
       "stopping_point_history": [
         {
@@ -2561,7 +2561,7 @@
       "active_slice": {
         "id": "A02.24",
         "record": "174-a02-app-hook-binding.md",
-        "status": "App-source-binding-qualified-before-final-review",
+        "status": "complete-bounded-App-source-binding",
         "base": "48cc6af",
         "native_runs": 0,
         "model_calls": 0,
@@ -2584,7 +2584,17 @@
         "saved_negative_controls": 104,
         "qualification_result": ".artifacts/a02/app-hook-binding/2026-10-25T11-55-00Z/results.json",
         "qualification_sha256": "b6ae9426d419983036a4d2a7c24d00f50e0c21beda21e049e5c58ecea8d4d999",
-        "actual_native_hook_executed": false
+        "actual_native_hook_executed": false,
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "new_minor": 0,
+          "total_deferred_minor": 9,
+          "correction_passes": 0,
+          "re_review": false
+        },
+        "source_qualification_repeated": false,
+        "post_qualification_source_changed": false
       }
     },
     {

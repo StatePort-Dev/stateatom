@@ -1,12 +1,12 @@
 # Project status
 
-Active bounded task: [A02.24](completion/174-a02-app-hook-binding.md).
-ONEAppsourcequalification PASS54contexts/18cases/9positive11SOURCEbindings/9Unknown,
-913before-afterhashes/saved104negative.55focused/4484fullPASS; finalreviewpending.
-Customiteratorcopy/foreign Sourcevalues recorded, tupleIndex/nativeState/publicHook
-kind/props/Main/ownership/selectedDOM remainUnknown; ownedhook/unexecutedtypes only.
-99research/327payload/priorraw unchanged;20/29/fullA02 unchanged,9minorsdeferred.
-No newnative/browser/product/UI/SDK/model/cert/trust/profile/publish.
+Completed bounded source task: [A02.24](completion/174-a02-app-hook-binding.md).
+ONEreview0C0I0newM/no correctionpass; actual54VM18cases/9positive11SOURCEbindings/
+9Unknown,913before-afterhashes/saved104negative;55focused/4484fullPASS. Native/index/
+state/props/Main/ownership/selectedDOM originUnknown, ownedhook/unexecutedtypes only.
+Old99research/327payload/priorraw unchanged;20/29/fullA02unchanged,9minorsdeferred.
+Next ONEAppboundvalue→freshJSXconfig/nativeprops→sameMainargument sourceassociation.
+No native/browser/product/UI/SDK/model/cert/trust/profile/publication changes.
 
 Completed bounded native task: [A02.23](completion/173-a02-main-input-native.md).
 ONE review0C0I1newM/no correctionpass. Actual1launch/3modes/18phases/5Mainwindows
