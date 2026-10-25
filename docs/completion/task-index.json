@@ -1666,7 +1666,7 @@
       "active_slice": {
         "id": "A02.12",
         "record": "162-a02-product-native-forwarding.md",
-        "status": "source-qualified45-full3863-review-pending",
+        "status": "complete-bounded-source-fix-not-installed-A02",
         "base": "bcb734d",
         "native_runs": 0,
         "model_calls": 0,
@@ -1683,7 +1683,17 @@
         "source_vm_contexts": 45,
         "source_raw_sha256": "bb19a5b26dfdeda490cada9f34aebce94b510d147aaacf80c6db976bf867a0b3",
         "full_source_checks": 3863,
-        "saved_negative_controls": 40
+        "saved_negative_controls": 40,
+        "review": {
+          "Critical": 0,
+          "Important": 0,
+          "Minor": 2,
+          "correction_passes": 0,
+          "deferred": [
+            "M1 failure-test trap unreachable; actualsourceisolationconfirmed",
+            "M2 historicalstage present-tense label"
+          ]
+        }
       },
       "completed_slices": [
         {
@@ -2212,8 +2222,8 @@
       },
       "current_checkpoint": {
         "record": "162-a02-product-native-forwarding.md",
-        "status": "source-qualified45-full3863-review-pending",
-        "next_bounded_step": "ONE fresh bounded source review; keep b8firstINCOMPLETE separate from corrected bb19source45PASS; no native/browser/installation or wholeA02 upgrade."
+        "status": "complete-bounded-source-fix-not-installed-A02",
+        "next_bounded_step": "ONE automatic-JSX config-input source acquisition boundary on actual compiled TodoMVC Main and pinned JSX runtime; classiccopy proof does not cover it, no native/browser or storage/fullA02 upgrade."
       },
       "stopping_point_history": [
         {

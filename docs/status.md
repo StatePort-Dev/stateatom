@@ -1,13 +1,16 @@
 # Project status
 
-Active bounded bugfix: [A02.12](completion/162-a02-product-native-forwarding.md).
-Three product engine forwarders now use captured apply/ownarguments;65focused/full
-3863PASS. Actual retainedReact19.2.5 +current product observer sourceVM clean d3646a2:
-15owned config cases/45started-completed contexts,445physical inputs,7loaded modules,
-0added app iterator callbacks. First missing-process INCOMPLETE preserved separately;
-new environment regression/one guarded corrected attempt. Saved-reader40negative
-controls, old65source62physical+3baseGit/current327/raw preserved. ONE final source
-review next. No browser/ReactDOM/installed acceptance; fullA02/20of29 stayopen.
+Completed bounded source fix: [A02.12](completion/162-a02-product-native-forwarding.md).
+Three engine forwarders use captured apply/ownarguments;65focused/full3863PASS.
+Actual retainedReact19.2.5/current observer sourceVM clean d3646a2:15owned cases/
+45started-completed contexts,445physical/7loaded modules,0app iterator callbacks.
+First missing-process INCOMPLETE retained; new regression and one guarded correction.
+Saved-reader40negative controls, ONEreview0C0I2M/65freshPASS; test-strength/history-label
+minors deferred, actual exception isolation independently confirmed. Before65source
+62physical+3baseGit/current327/raw preserved; final444physical+1exactd364plan.
+Next ONE automatic-JSX config-input source boundary on actual compiled TodoMVC Main;
+classiccreateElement proof does not cover it. No browser/ReactDOM/installed upgrade,
+fullA02 or20/29 (~69%) progress credit from sourcefix. Five deferred minors total.
 
 Completed bounded source slice: [A02.11](completion/161-a02-callback-copy-interval.md).
 Clean2f120af retainedReact19.2.5/18owned cases/54VM contexts:11positive cases/12exact

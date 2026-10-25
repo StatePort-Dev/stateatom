@@ -1,4 +1,4 @@
-# A02.12 — product React19 argument forwarding (source-qualified; review pending)
+# A02.12 — bounded product source forwarding fix complete
 
 BASEbcb734d. A02.11 closed source-only75/full3832/ONEreview0C0I0M; no native/product
 lineage upgrade. Current product vendor/helper, observer and collector still forward
@@ -90,3 +90,35 @@ Focused65PASS; full `npm test`3863PASS/0fail/0cancel/0skip114960.006ms (terminal
 exit0). InvalidCLI exits1/INVALID_ARGUMENTS before new registration/marker/VM; syntax/
 diff PASS. ONE fresh final whole-source review pending, no further source/native
 attempt or browser/model/installation work. WholeA02/20of29 (~69%) unchanged.
+
+
+Final ONE fresh review `a0212_whole_review` Astra/high bcb734d..f445bc0:
+0Critical/0Important/2Minor. No mandatory correction pass, no re-review/source/native
+rerun. Fresh65PASS424.214ms; both raw hashes/7compiled module hashes/327payload/
+444physical+1exactd364plan checked, clean checkout. Independent additional synthetic
+control confirms collector exception isolation: unregistered fiber0traps; registered
+fiber1trap/no escape/availabilityfalse. This supports source catch behavior, not
+native ReactDOM execution.
+
+Deferred M1: unit test's failure proxy uses unregistered fiber, so its asserted
+no-throw does not exercise the throwing trap; future regression strength should
+register the fiber/assert1trap/refusal. Actual implementation independently works,
+so no product correctness issue inferred. Deferred M2: original stage paragraphs
+use present-tense pending language; historical raw and later completed checkpoint
+are correct. No test/code/report-stage rewrite in this minor-only closeout. Prior
+three unrelated L02/V03 minors remain deferred; five deferred minors total.
+
+All5declined domains accepted: real ReactDOM/installed/browser; stronger provenance;
+broad hostile intrinsics/timing; live identity reconstruction from JSON; prior minors.
+FullA02 and whole20/29 unchanged. Final current reconciliation is444physical+1exact
+frozen plan atd3646a2 for successful445stage; failed443stage reconciled separately.
+Before65source is62physical+3exactbcbGit history, while new qualification hashed the
+actual corrected3current sources. Verified own workspace archive/clean checkpoint
+under `.artifacts/a02/product-forwarding-source-review/2026-10-25/`. No payload bump,
+installed upgrade, browser/cert/install/model/SDK/otherrepo/publication.
+
+ONE next bounded source item: establish the automatic-JSX config-input acquisition
+boundary on the actual TodoMVC compiled Main and pinned JSX runtime. Current classic
+createElement source results do not cover that path; alias/spread/accessor/overrides
+and actual field storage must remain unsupported/Unknown until separately justified.
+No new browser launch or wholeA02 readiness follows from this source fix.

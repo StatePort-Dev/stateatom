@@ -34,4 +34,4 @@
 
 ## Final Closeout
 
-- [ ] ONE fresh bounded whole-item review/effect rulings/ONEtestedI/Cpass/no re-review/native; all rulings/minors ledgered, ownworkspace archived/hashed/removed, clean checkpoint and ONE next unresolved dependency.
+- [x] ONE fresh bounded whole-item review/effect rulings/ONEtestedI/Cpass/no re-review/native; all rulings/minors ledgered, ownworkspace archived/hashed/removed, clean checkpoint and ONE next unresolved dependency.
