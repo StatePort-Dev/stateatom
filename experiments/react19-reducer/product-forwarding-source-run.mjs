@@ -10,7 +10,7 @@ import {build} from 'esbuild';
 import {react19Profile,transformPinnedReact19} from '../../src/engine/react19-vendor.mjs';
 import {nativeForwardingCases,executeNativeForwardingSource} from '../../tests/helpers/react19-native-forwarding-controls.mjs';
 const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
-const root=process.cwd(),base=path.resolve('.artifacts/a02/product-native-forwarding/2026-10-25'),registrationFile=base+'/registration.json';
+const root=process.cwd(),base=path.resolve('.artifacts/a02/product-native-forwarding/2026-10-25'),registrationFile=base+'/registration.json',correctionFile=base+'/corrected-attempt-registration.json';
 const deltas=['src/engine/react19-vendor.mjs','src/engine/observer.mjs','src/engine/react19-acquisition.mjs'].map(p=>path.resolve(p));
 const ownFiles=['experiments/react19-reducer/product-forwarding-source-run.mjs','tests/engine/react19-native-forwarding.test.mjs','tests/helpers/react19-native-forwarding-controls.mjs','docs/superpowers/specs/2026-10-25-a02-product-native-forwarding-design.md','docs/superpowers/plans/2026-10-25-a02-product-native-forwarding.md','package.json','package-lock.json','node_modules/esbuild/package.json','node_modules/@babel/parser/package.json','node_modules/@babel/traverse/package.json','node_modules/@babel/generator/package.json','node_modules/@babel/types/package.json'];
 async function registerCurrent(reg,bundleInputs){
@@ -28,7 +28,7 @@ async function registerCurrent(reg,bundleInputs){
  for(const[file,digest]of Object.entries(pinned)){assert(!deltas.includes(file),'Issued payload unexpectedly contains changed engine source');assert.equal(hash(await readFile(file)),digest,'Protected artifact/payload/vendor drift');inputs[file]=digest;}
  assert.equal(reg.vendor.file,path.resolve('.runtime/todomvc/examples/react/node_modules/react/cjs/react.development.js'));assert.equal(reg.vendor.sha256,react19Profile.files['react/cjs/react.development.js']);assert.equal(reg.vendor.version,'19.2.5');
  assert.equal(hash(await readFile(base+'/reproduction.json')),reg.reproductionSha256);
- for(const file of [...ownFiles,registrationFile,base+'/reproduce.mjs',base+'/reproduction.json',...bundleInputs]){
+ for(const file of [...ownFiles,registrationFile,correctionFile,base+'/reproduce.mjs',base+'/reproduction.json',base+'/qualification-2026-10-25T02-29-42-583Z/results.json',...bundleInputs]){
   const absolute=path.resolve(file);assert(absolute.startsWith(root+'/'));inputs[absolute]=hash(await readFile(absolute));
  }
  return{inputs,historicalSource};
@@ -50,7 +50,10 @@ function verifyCase(row){
 export async function runProductForwardingSourceQualification(args=process.argv.slice(2)){
  if(!Array.isArray(args)||args.length!==0)throw Object.assign(Error('INVALID_ARGUMENTS'),{code:'INVALID_ARGUMENTS'});
  const sourceRevision=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8',timeout:5000}).trim(),sourceDirty=execFileSync('git',['status','--porcelain','--untracked-files=normal'],{encoding:'utf8',timeout:5000}).trim()!=='';
- const reg=JSON.parse(await readFile(registrationFile));
+ const reg=JSON.parse(await readFile(registrationFile)),correction=JSON.parse(await readFile(correctionFile));
+ assert.equal(correction.schema,'stateatom.product-forwarding-corrected-attempt/1');assert.equal(correction.sourceRevision,sourceRevision);assert.equal(sourceDirty,false);assert.equal(correction.maximumRuns,1);
+ const failedFile=base+'/qualification-2026-10-25T02-29-42-583Z/results.json';assert.equal(hash(await readFile(failedFile)),'b8f90b96d9f0dc8de6cc8a681ad0d1d7b5cf308ea47dc3f4f325240d15c8cdac');
+ for(const[file,digest]of Object.entries(correction.currentSourceHashes))assert.equal(hash(await readFile(file)),digest,'Corrected source registration drift');
  const loadedInputHashes={};
  const capture={name:'owned-product-source-bytes',setup(b){b.onLoad({filter:/\.mjs$/},async args=>{assert(args.path.startsWith(root+'/'));const bytes=await readFile(args.path);loadedInputHashes[args.path]=hash(bytes);return{contents:bytes.toString('utf8'),loader:'js',resolveDir:path.dirname(args.path)};});}};
  const built=await build({entryPoints:[path.resolve('src/engine/observer.mjs')],bundle:true,write:false,format:'iife',globalName:'__StateAtomForwardingProduct',platform:'browser',target:'es2022',legalComments:'inline',metafile:true,plugins:[capture]});
@@ -62,9 +65,11 @@ export async function runProductForwardingSourceQualification(args=process.argv.
  const node={version:process.version,executable:await realpath(process.execPath),sha256:hash(await readFile('/proc/self/exe'))},bundleReceipt={sha256:hash(observerBundle),inputs:bundleInputs,loadedInputHashes,metafile:built.metafile,configuration:'actual product observer browser IIFE, sourceVM only'},recipeReceipt={...transformed,code:undefined};
  await writeFile(out+'/registered-before-vm.json',JSON.stringify({schema:'stateatom.product-forwarding-vm-registration/1',at:new Date().toISOString(),sourceRevision,sourceDirty,inputs,historicalSource,bundleReceipt,recipeReceipt,cases:nativeForwardingCases,modes:['original','off','on'],sourceOnly:true,fixtureInputsOnly:true,VMContextsBeforeExecution:0,browserStarted:false,nativeWriterCalls:0,modelCalls:0,node},null,2)+'\n',{flag:'wx'});
  await writeFile(out+'/product-observer.js',observerBundle,{flag:'wx'});await writeFile(out+'/transformed-react.cjs',transformed.code,{flag:'wx'});
- const result={schema:'stateatom.product-forwarding-source-qualification/1',status:'SOURCE_QUALIFICATION_INCOMPLETE',sourceRevision,sourceDirty,node,inputsBefore:inputs,inputsAfter:null,inputsUnchanged:false,historicalSource,bundleReceipt,recipeReceipt,rows:[],VMContextsExecuted:0,sourceOnly:true,fixtureInputsOnly:true,browserStarted:false,nativeWriterCalls:0,modelCalls:0,ReactDOMExecuted:false,installedRuntimeProven:false,fullA02:false,errors:[]};
+ const attemptMarker={schema:'stateatom.product-forwarding-corrected-attempt-started/1',sourceRevision,out,at:new Date().toISOString(),correctionSha256:hash(await readFile(correctionFile)),priorFailureSha256:'b8f90b96d9f0dc8de6cc8a681ad0d1d7b5cf308ea47dc3f4f325240d15c8cdac',maximumRuns:1};
+ await writeFile(base+'/corrected-attempt-started.json',JSON.stringify(attemptMarker,null,2)+'\n',{flag:'wx'});
+ const result={schema:'stateatom.product-forwarding-source-qualification/1',attemptMarker,status:'SOURCE_QUALIFICATION_INCOMPLETE',sourceRevision,sourceDirty,node,inputsBefore:inputs,inputsAfter:null,inputsUnchanged:false,historicalSource,bundleReceipt,recipeReceipt,rows:[],VMContextsStarted:0,VMContextsExecuted:0,sourceOnly:true,fixtureInputsOnly:true,browserStarted:false,nativeWriterCalls:0,modelCalls:0,ReactDOMExecuted:false,installedRuntimeProven:false,fullA02:false,errors:[]};
  try{
-  for(const id of nativeForwardingCases){const row={id,currentMode:null};result.rows.push(row);for(const mode of ['original','off','on']){row.currentMode=mode;row[mode]=executeNativeForwardingSource({source:mode==='original'?source:transformed.code,observerBundle,caseName:id,mode});result.VMContextsExecuted++;}row.currentMode=null;verifyCase(row);row.status='PASS_SOURCE_CONTROL';await writeFile(out+'/running.json',JSON.stringify(result,null,2)+'\n');}
+  for(const id of nativeForwardingCases){const row={id,currentMode:null};result.rows.push(row);for(const mode of ['original','off','on']){row.currentMode=mode;result.VMContextsStarted++;row[mode]=executeNativeForwardingSource({source:mode==='original'?source:transformed.code,observerBundle,caseName:id,mode});result.VMContextsExecuted++;}row.currentMode=null;verifyCase(row);row.status='PASS_SOURCE_CONTROL';await writeFile(out+'/running.json',JSON.stringify(result,null,2)+'\n');}
   result.status='RETAINED_REACT_PRODUCT_FORWARDING_SOURCE_VM_QUALIFIED_NOT_INSTALLED_A02';
  }catch(error){result.errors.push({name:error.name,message:error.message,stack:error.stack});}
  finally{

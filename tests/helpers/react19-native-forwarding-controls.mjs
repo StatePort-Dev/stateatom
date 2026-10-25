@@ -26,7 +26,7 @@ api.stop();
 `;
 export function executeNativeForwardingSource({source,observerBundle,caseName,mode='on'}){
  if(!nativeForwardingCases.includes(caseName)||!['original','off','on'].includes(mode))throw Error('Unknown owned native forwarding control');
- const context=vm.createContext({exports:{},caseName,crypto,fetch,Response,console:{log(){},warn(){},error(){}},WeakRef});
+ const context=vm.createContext({exports:{},caseName,process:{env:{NODE_ENV:'development'}},crypto,fetch,Response,console:{log(){},warn(){},error(){}},WeakRef});
  new vm.Script(observerBundle,{filename:'actual-product-observer-bundle.js'}).runInContext(context,{timeout:5000});
  const bootstrap=`'use strict';const nativeApply=Reflect.apply;const w={crypto,fetch,Response,WeakRef,location:{href:'http://127.0.0.1:4173/'}};
 var api=__StateAtomForwardingProduct.createObserver(w,{react19StateAncestors:${mode==='on'}});

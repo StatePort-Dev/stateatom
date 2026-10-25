@@ -52,3 +52,4 @@ for(const id of nativeForwardingCases)test('actual bundled observer/source confi
  if(id==='throw-getter')assert.equal(on.summary.sameThrown,true);if(id==='getter')assert.equal(on.summary.getterReads,1);
 });
 test('qualification runner import is inert and flags refuse before source/bundle/VM work',async()=>{const {runProductForwardingSourceQualification}=await import('../../experiments/react19-reducer/product-forwarding-source-run.mjs');await assert.rejects(runProductForwardingSourceQualification(['--unknown']),e=>e.code==='INVALID_ARGUMENTS');});
+test('source harness supplies explicit development environment before vendor evaluation',()=>{const source="if(process.env.NODE_ENV!=='development')throw Error('development source mode required');"+nativeForwardingGrammar;const r=executeNativeForwardingSource({source,observerBundle:productBundle,caseName:'ordinary',mode:'original'});assert.equal(r.summary.hasElement,true);assert.equal(r.summary.todoMatches,true);});

@@ -13,7 +13,7 @@
 - No rest-array spread/iterator in this forwarding chain; preserve argument count/order, runtime receiver, hook/reducer/getter/exception/return behavior and length2/0/0, gates/Stop/freshness/error isolation. No app reads/wrappers/strong retention/new events.
 - No new JSX/prop/ownership/instrumentation grammar or broad primordial guarantees; storage/selectedproducer/state/fullA02 Unknown. VM source matrix is not browser/ReactDOM/product installed acceptance.
 - No UI/tokens/package/version/newtarball/browser/native writer/model/cert/security/install/userprofile/SDK/otherrepo/release/account. Current issued327 unaffected.
-- One stable fullsuite, ONE new registered retained-source VM matrix after sourcecommit, independent saved reader; ONE fresh final whole-slice review/ONEtestedI/Cpass/no re-review/native. Prior3minors deferred.
+- One stable fullsuite, original sourceVM attempt preserved INCOMPLETE (missing development process); ONE corrected registered attempt after the new RED64/1->GREEN65 environment regression, exclusive marker/no automatic retry, independent saved reader; ONE fresh final whole-slice review/ONEtestedI/Cpass/no re-review/native. Prior3minors deferred.
 
 ## Review Focus
 
@@ -29,8 +29,8 @@
 **Interfaces:** existing transformPinnedReact19/createObserver.react19NativeTap/createReact19Acquisition.tap unchanged; actual dynamic arguments forwarded by captured nativeApply, no new product API. New zero-option source runner hashes source/bundle/retained vendor then sourceVM with synthetic configs.
 
 - [x] task-start/readbrief/BASE/preregisterbefore3deltas andoldsource/current327/raw. TDD reproduce actual helper/collector/API iterator mutate/throw callbackcounts/arity/receiver/Stop/admission/9slots; meaningful existing product suites retained. `node --test --test-isolation=none tests/engine/react19-native-forwarding.test.mjs tests/engine/react19-product-vendor.test.mjs tests/engine/react19-product-observer.test.mjs` RED->GREEN.
-- [ ] Minimal3forward fixes; focused source controls/current preservation/syntax/diff, commit corrected source. No native/VM before current inputs and recipe hash frozen.
-- [ ] ONE new registered retained sourceVM matrix original/off/on with actual bundled product observer +ownedconfigs, save all controls/no ReactDOM claim; independent saved reader/negative controls, full npm test once stable, resultcommit/task-done.
+- [x] Minimal3forward fixes; focused source controls/current preservation/syntax/diff, commit corrected source. No native/VM before current inputs and recipe hash frozen.
+- [ ] Original incomplete attempt preserved, ONE corrected registered sourceVM matrix original/off/on with actual bundled product observer +ownedconfigs, save all controls/no ReactDOM claim; independent saved reader/negative controls, full npm test once stable, resultcommit/task-done.
 
 ## Final Closeout
 

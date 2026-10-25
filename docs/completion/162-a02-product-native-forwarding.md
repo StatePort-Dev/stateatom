@@ -38,3 +38,19 @@ before VM, uses corrected current3physical sources (no historical fallback), and
 rechecks after VM. Old source claims remain historical. Next sourcecommit then one
 new15case45context retainedReact sourceVM matrix, independent saved reader/fullsuite,
 ONE final review. No browser/native/ReactDOM/model/certificate/installation work.
+
+First actual source attempt clean1aa1a7a was INCOMPLETE at first React evaluation:
+ReferenceError process is not defined. Outputqualification-2026-10-25T02-29-42-583Z,
+rawb8f90b96d9f0dc8de6cc8a681ad0d1d7b5cf308ea47dc3f4f325240d15c8cdac.443physical
+inputs before/after matched. Counter0 means0completed cases; a VM/bootstrap and
+React source script DID start, as the saved stack/currentMode show. No app case or
+ReactDOM/browser/model result is established. Failed raw remains unchanged.
+
+New authored native-environment control RED64PASS1FAIL ->65PASS404.822ms; missing
+process.env development object supplied in harness. No product source fix changed.
+Plan amended for exactly ONE separately registered corrected-source attempt (same
+15cases/criteria/pin), current revision/hash checks and exclusive started marker.
+Both started/completed VM context counters now recorded. This is deterministic
+fixture-cause correction, not permission for blind/native retries. Sourcecommit and
+corrected registration precede new VM execution. Fullsuite remains pending stable
+qualification. Original limited native/browser experiments remain exhausted.
