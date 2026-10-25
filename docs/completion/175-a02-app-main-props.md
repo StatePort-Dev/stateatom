@@ -96,3 +96,11 @@ Closed as bounded failed-attempt/source-fix item, not a new feature readiness cl
 Next ONE separately preregistered corrected-source App/Main props matrix. Native
 qualification waits. Overall20/29/fullA02 unchanged; no product/UI/SDK/otherrepo/
 security/cert/trust/profile/publication changes.
+
+Final physical checkpoint at27d8939:998currentphysical+2exactpreparedGit5538278
+(helper/test post-correction); old106research/product327/priorraw unchanged.
+Own workspace23files archived, CRC/everybyte/planidentity verified before only
+that temporary directory removal. ArchiveSHA256
+2b68d928963abc02303145b3f91ad9ad2f1470bc513aa9b775e41f45902eee1a.
+Artifacts .artifacts/a02/app-main-props-review/2026-10-25/
+report.md/final-checkpoint.json/workspace.zip. Source qualification not retried.
