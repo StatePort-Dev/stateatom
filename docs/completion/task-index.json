@@ -2461,8 +2461,8 @@
       },
       "current_checkpoint": {
         "record": "174-a02-app-hook-binding.md",
-        "status": "source-gates-passed-before-App-qualification",
-        "next_bounded_step": "A02.24 exactApphook-callresult/already-boundvalues source-only; nativeState/tupleIndex/props/Main upstream unknown;99research/327payload protected, no native rerun."
+        "status": "App-source-binding-qualified-before-final-review",
+        "next_bounded_step": "ONE fresh finalreview then bounded Appboundvalue→freshJSX/nativeprops→Mainargument source association; native state/index remainsUnknown, no generalownershipframework."
       },
       "stopping_point_history": [
         {
@@ -2561,7 +2561,7 @@
       "active_slice": {
         "id": "A02.24",
         "record": "174-a02-app-hook-binding.md",
-        "status": "source-gates-passed-before-App-qualification",
+        "status": "App-source-binding-qualified-before-final-review",
         "base": "48cc6af",
         "native_runs": 0,
         "model_calls": 0,
@@ -2570,7 +2570,21 @@
         "focused_tests_passed": 55,
         "full_tests_passed": 4484,
         "tuple_index_origin": "Unknown/Unsupported",
-        "native_state_origin": "Unknown/Unsupported"
+        "native_state_origin": "Unknown/Unsupported",
+        "source_revision": "0544712",
+        "case_revision": "5134cf7",
+        "source_runs": 1,
+        "VM_contexts_complete": 54,
+        "cases_complete": 18,
+        "positive_source_cases": 9,
+        "source_binding_links": 11,
+        "Unknown_cases": 9,
+        "controlled_App_invocations": 60,
+        "saved_byte_inputs": 913,
+        "saved_negative_controls": 104,
+        "qualification_result": ".artifacts/a02/app-hook-binding/2026-10-25T11-55-00Z/results.json",
+        "qualification_sha256": "b6ae9426d419983036a4d2a7c24d00f50e0c21beda21e049e5c58ecea8d4d999",
+        "actual_native_hook_executed": false
       }
     },
     {

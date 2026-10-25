@@ -1,4 +1,4 @@
-# A02.24 — App hook result and already-bound values (active; source gates passed)
+# A02.24 — App hook result and already-bound values (source qualification passed; final review pending)
 
 ## Historical pre-code checkpoint
 
@@ -30,4 +30,38 @@ App CJScompatibilitywrapper explicitlystrict, originalvendorCJS mode unchanged.
 Receipt/wrapper mismatch refusesbeforeVM. Newprofile inputverifier retainsmeasured
 hashes+typedmismatch/readerrors even when refusaloccurs; no oldnativeM1 patch.
 No native/browser/product/UI/SDK/otherrepo/model/cert/trust/profile/publication.
+Whole20/29/fullA02 unchanged;9prior minorsdeferred.
+
+## ONE retained App source qualification
+
+Source0544712; prepare912inputs0VM/preflight913includingcasePASS; case5134cf7.
+ONE source qualification terminal17211exit0, literal
+RETAINED_APP_HOOK_BINDING_SOURCE_QUALIFIED_NOT_NATIVE_STATE_A02.54contexts/18cases
+complete,60originalAppfunctioninvocations and60OWNEDhookcontrolcalls acrossmodes;
+9positiveSOURCEcases11bindings,9Unknownrefusers,0errors/unvisitedcontexts. Original/
+off/on outputs/traces/getters/iteratorclose/throws/unboundcallee-this/args agree.
+All913before/afterhashes match; structuredmismatch/readerrorlists empty.
+
+Raw .artifacts/a02/app-hook-binding/2026-10-25T11-55-00Z/results.json,
+SHA256b6ae9426d419983036a4d2a7c24d00f50e0c21beda21e049e5c58ecea8d4d999.
+ActualAppFUNCTIONSOURCE/retainedCoreJSX withstrictAppcompatibilitywrapper; OWNED
+useReducer/unexecutedHeader/Main/Footer/reducer. No nativehook/ReactDOM/router/
+originalwholeapp/installedsupport. No browser/model/native run.
+
+Iterator-copy/foreigncases accuratelyrecord already-boundSourceArray yet retain
+tupleIndexOrigin/nativeStateOrigin/publicHookKind andall strongerstate/props/ownership/
+instance/selectedDOM Unknown; NativeOriginNotAttested/fullPathFalse. Sharedtuple
+produces2distinctcallrecords, reference-onlytuple/todoslookupsUnknownambiguous0;
+exactprivateframe lookup1each. Neverrereads tuple slots/iterators/statecontents.
+
+Standalone savedreader .artifacts/a02/app-hook-binding-saved-verification/2026-10-25/
+{verify.py,report.json}:913physicalinputs/104meaningful corruptionsrejected;0source
+imports/VM/app/browser/native/model reruns. All54storedmodefiles/runningrows match.
+Originalgetter/iterator/close/copy/foreignoracles pinnedwithout re-readingAppvalues.
+Savedserializedscope only, no reconstructedlive refs/native origin. FirstreaderPASS,
+no draftcorrection or criterionchange.99oldresearch/327payload/allpriorraw unchanged.
+
+Nextboundeddependency afterreview: Appboundvalue/freshJSXconfig/nativeprops→sameMain
+argument association, or separately sourcednative-returnbrand; no generalownership
+framework or alreadyapproved native-state solution inferred from this intermediate.
 Whole20/29/fullA02 unchanged;9prior minorsdeferred.
