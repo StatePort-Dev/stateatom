@@ -2461,7 +2461,7 @@
       },
       "current_checkpoint": {
         "record": "183-a02-native-state-source-availability.md",
-        "status": "actual-availability-observed-fullpath-incomplete-review-pending",
+        "status": "closed-actual-availability-diagnostic-fullpath-incomplete",
         "next_bounded_step": "Close weak-reference diagnostic campaign; ONE dependency-ready V02 source-only actualActive overhead hotpath selection from existing misses/code, preserve metrics/targets/no TLS or old experiment reruns."
       },
       "stopping_point_history": [
@@ -2606,7 +2606,7 @@
       "active_slice": {
         "id": "A02.33",
         "record": "183-a02-native-state-source-availability.md",
-        "status": "native-availability-observed-fullpath-incomplete-final-review-pending",
+        "status": "closed-bounded-diagnostic-acquisition-fullpath-incomplete",
         "base": "7c72903776f28f3664c64ea28bf22b5fac3e1191",
         "native_runs": 1,
         "maximum_native_runs": 1,
@@ -2630,7 +2630,17 @@
         "registered_runtime_inputs": 1534,
         "native_result": ".artifacts/a02/native-state-source-availability/2026-10-25T19-32-00Z/results.json",
         "execution_revision": "7f54edf8404efb8d4580f336dcf52093b2b390d0",
-        "prepared_revision": "a0361e488dbee4f7def6f0d3e345649f82f0c445"
+        "prepared_revision": "a0361e488dbee4f7def6f0d3e345649f82f0c445",
+        "review": {
+          "Critical": 0,
+          "Important": 0,
+          "Minor": 1,
+          "correction_passes": 0,
+          "rereview": false,
+          "deferred_minors_total": 13
+        },
+        "native_reruns_after_review": 0,
+        "feature_qualification": false
       }
     },
     {
