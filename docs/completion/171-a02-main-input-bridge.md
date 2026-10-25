@@ -86,3 +86,5 @@ Deferred prior minors (unchanged): L02.11picker/resultselector; V03.26historical
 L02.13historicalreaderlabel; A02.12weakexceptiontest; A02.12historicalstagewording;
 A02.16globalstartupstagelabel; A02.18partialsourcefailurefactsdiscarded.
 Whole20/29 (~69%)/fullA02 open. No publication/productcapability readiness claimed.
+
+Final source correction: 6888ae036d2f2178649e3b0f2afbb406646d00dc. Clean physical checkpoint:672current/4exactpreparedGit inputs, protected86research/327payload/120A02.20 evidence unchanged. Ownworkspace archived34files, CRC/everybyte/planidentity verified, then only that temporary directory removed. ArchiveSHA256 05611ffe174d26c2b329f4795bf1c13ebd1c9261897a9da2b512533c48e02b89. Final checkpoint and workspace.zip: .artifacts/a02/main-input-source-review/2026-10-25/. No pending implementation changes remain in this bounded attempt; its qualification remains INCOMPLETE.
