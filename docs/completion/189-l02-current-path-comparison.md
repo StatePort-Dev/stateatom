@@ -30,3 +30,19 @@ or usefulness proof. PID checks require actual host namespace. No native/model y
 at this source checkpoint; no download/cert/trust/credential/userprofile work.
 20of29/fullL02 remain open. Native failure closes this install/acquisition campaign,
 not another retry; any collected raw text gets a separate factual/usefulness review.
+
+## Fixed new native case (before launch)
+Actual preparation/preflight PASS on Chrome156.0.8078.47, binarySHA
+95dc9473b4f904cb3ab0800fc7206081fcae12abc094a088bd741a13f1747b72.
+`docs/testing/l02-comparison-path-case80.json` SHA256
+0a85b6e0a1265f7bc9b76b175075b295c7cf0b2b5a773c4d83b81e4cd94c5ed8;
+output `.artifacts/l02/c2/83780456`.152case input hashes plus327product hashes
+resolve to474unique frozen inputs includingcase. Prewrittenreader/contract hashes
+are explicit inputs. Private temporary socket budget passes. No native marker yet
+at this checkpoint; cached-only/downloadfalse/max1 remain unchanged.
+
+Flow: owned Chrome extension manager -> one native exact-folder drop -> initialized
+exact-path identity -> loaded nonce/JS -> availability -> trusted Run per34rows.
+Browser plugin not available; use the existing repository Playwright/native E2E
+harness for the exact owned Chrome/profile/real Prompt API route. No personal browser
+tab or profile is used; OS credential/keyring prompts will not be handled.
