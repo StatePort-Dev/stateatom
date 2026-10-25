@@ -55,4 +55,4 @@
 
 ## Final closeout
 
-- [ ] ONEfreshwholeboundedreview/effectregrade/ONEtestedI/Cpass/no rereview/native; allrulings/minors preserved, ownworkspacearchived/hashed/removed, cleanlocalcheckpoint/commit. ONE nextdependency fromactualquality/provenance result only.
+- [x] ONEfreshwholeboundedreview/effectregrade/ONEtestedI/Cpass/no rereview/native; allrulings/minors preserved, ownworkspacearchived/hashed/removed, cleanlocalcheckpoint/commit. ONE nextdependency fromactualquality/provenance result only.

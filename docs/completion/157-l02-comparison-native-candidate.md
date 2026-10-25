@@ -104,3 +104,8 @@ clarity and V03.26 prose-label minors remain deferred.
 ONE next dependency: L02.13 short owned temporary-path source/preflight, then a newly
 registered case only if preparation proves a feasible route. The exhausted12 case
 never resets/reruns, historical AI quality remains historical, whole20of29 unchanged.
+
+Source correction committed9ac4572. Final local closeout retains raw/case unchanged,
+archives only this plan workspace and records current physical versus exact historical
+frozen source separately in `.artifacts/l02/comparison-native-review/2026-10-25/`.
+Historical frozen inputs are not substituted for current bytes in a new run.
