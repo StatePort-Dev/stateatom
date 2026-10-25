@@ -2461,7 +2461,7 @@
       },
       "current_checkpoint": {
         "record": "175-a02-app-main-props.md",
-        "status": "source-attempt-INCOMPLETE-owned-adapter-fixed-review-pending",
+        "status": "closed-INCOMPLETE-source-attempt-tested-adapter-fix",
         "next_bounded_step": "ONE separately preregistered corrected-source App/Main props matrix; native qualification waits for source prerequisite."
       },
       "stopping_point_history": [
@@ -2566,7 +2566,7 @@
       "active_slice": {
         "id": "A02.25",
         "record": "175-a02-app-main-props.md",
-        "status": "INCOMPLETE-qualification-source-adapter-fixed-review-pending",
+        "status": "closed-INCOMPLETE-source-attempt-tested-adapter-fix",
         "base": "a7836b983eef2eed08e21f0fbdd127b2e82e20e8",
         "native_runs": 0,
         "model_calls": 0,
@@ -2591,7 +2591,15 @@
         "source_qualification_repeated": false,
         "actual_native_hook_executed": false,
         "tuple_index_origin": "Unknown/Unsupported",
-        "native_state_origin": "Unknown/Unsupported"
+        "native_state_origin": "Unknown/Unsupported",
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "new_minor": 1,
+          "total_deferred_minor": 10,
+          "correction_passes": 0,
+          "re_review": false
+        }
       }
     },
     {

@@ -77,3 +77,22 @@ forwarding only, not the exhausted qualification result. Saved reader's1000
 physical inputs describe its pre-correction checkpoint; helper and driver tests
 now differ and their prepared bytes remain exactly in Git5538278. Final review
 will examine the INCOMPLETE attempt plus tested correction, not approve a feature.
+
+## Final review and bounded closeout
+
+ONE fresh /root/a0225_whole_review Astra/high:0C0I1newMinor. No final corrective
+pass/re-review/qualification retry. All13 declined-domain effect/cost rulings
+retained in archived ledger/report. Total deferred minors10 (prior9 unchanged).
+Current source53focused/4537fullPASS; task-done53PASS910.161978ms. Capability
+qualification remainsINCOMPLETE3VM/17unvisitedcases/0acceptedAppMainlinks.
+
+Minor provenance note: frozen registration.base612687dfb331063236590479f908f1d9cf838642
+is an inherited origin baseline, NOT this item's baseline. Actual item/sourceBase
+a7836b983eef2eed08e21f0fbdd127b2e82e20e8; prepared5538278/executed7ff8939 are
+authoritative for this attempt. Frozen registration/case remain unchanged; next
+registration will use its actual item base. Historical ambiguity stays deferred.
+
+Closed as bounded failed-attempt/source-fix item, not a new feature readiness claim.
+Next ONE separately preregistered corrected-source App/Main props matrix. Native
+qualification waits. Overall20/29/fullA02 unchanged; no product/UI/SDK/otherrepo/
+security/cert/trust/profile/publication changes.
