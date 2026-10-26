@@ -1,13 +1,97 @@
-# Connect the verified public Atom package to the official StatePort host
+# Intake current Atom/UI into the official StatePort host
 
-Implement this task in the official StatePort repository in a separate authorized change. This task does not authorize publication or changes to accounts. The current public Atom work does not modify that repository or implement Capture.
+This is the reviewable I01 handoff for a separate authorized host change. It does
+not authorize modifying the StatePort checkout, publishing, or account changes.
+The existing October18 integration remains credited for its own pair. Updating
+this instruction and verifying archives does not complete I01/I02 or prove host
+runtime support. Full approved scope remains20of29; SDK remains outside Atom.
 
-Consume local candidate `0.1.0-candidate.20261018.1` from the handoff tarball, SHA-256 `eee61cf7fe5f505865cefefbedcf80ed562a9c0f2ab3bb704f0518f10a27a0d5`. API/wire contract 1, UI contract 1.0.0 and exact extension-ui peer 0.1.0-candidate.20261018.1. Verify the handoff and source-manifest before starting; a newer candidate requires its own verification record.
+## Exact input pair — October27 preparation
 
-1. Add the pinned Atom and extension-ui artifacts as build-time dependencies. Import the shared foundation once in the official page; mount `@stateport/atom/ui` into the existing Atom container. Preserve host navigation and all evidence wording. Do not copy the inspector or create a private resolver.
-2. Keep the existing official worker as the single Chrome entrypoint. Synchronously register/route events, authenticate the exact official extension page URL, restrict content to its frame-0 picker channel and native document identity, and pass the public platform/event adapter to `createAtomRuntime`. Keep Atom storage namespaced. Credentials, native host identity and the production permission policy remain owned by StatePort.
-3. Connect the official host's debugger resource manager to the Atom lease contract. Every existing Capture acquisition/release must participate in the same manager. While Capture owns a tab, Atom must return BUSY before attach, injection, reload, cache/storage reset or override. Atom shutdown/unmount must leave Capture's native session and interceptors intact. This is resource arbitration with the existing Capture, not a new Capture implementation. A host manager may expose its existing richer Capture operations privately while exposing only Atom's scoped capabilities to the public runtime.
-4. Keep the public IDE/source implementation optional. Existing Desktop/Native Messaging can remain available to its own features; it must not become a mandatory closed Atom analyzer or source resolver.
-5. Re-run the public two-host contract cases against the official host: basic without IDE, selected text/disabled -> source/observations -> actual IDE document and range -> re-inspect; HMR/navigation/tab switching; repeated mount/dispose/panel close; real worker stop/restart; permission denial; save/review/export/fresh offline reader. Add real Capture-active arbitration and official Native Messaging regression checks. Compare canonical evidence and neighboring CSS at 960/360, not screenshot appearance alone. Preserve Vue PARTIAL and all finite-trace limitations.
+| Input | Version / SHA256 |
+| --- | --- |
+| Atom | `0.1.0-candidate.20261026.82` / `823171ce44ffd8f8a10f79c66ccafc855456bcab9f9ea8068e48d831c735afa4` |
+| extension-ui | `0.2.0-candidate.20261018.2` / `2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5` |
+| Producer source | `cb2a750cab3313ac6a80b0e2be8a6815744d4dc4`, clean at packing |
+| Contract | API1 / wire1 / UI2.1.0; exact UI peer above |
 
-Deliver one scoped official-host change with dependency digests, exact commands, native Capture/Atom ownership evidence, shared CSS ownership, screenshots marked as candidates until human review, and explicit remaining gaps. Do not claim public Atom's example verifies the official host, Capture, production origins or Native Messaging.
+Local delivery: `.artifacts/atom/2026-10-26T17-06-59-661Z/atom-handoff.json`.
+Resolve the archive paths from that immutable receipt and verify their digests,
+exported inventory, installed payload, full contract and source/build input maps.
+Current327 build inputs match; later experimental A02 changes are outside this
+package. Reuse these bytes while that remains true. A newer product input requires
+a separately verified pair. Type/admission/backend/performance evidence retains
+its own scopes in [record214](../completion/214-v02-publication-original-performance.md).
+
+## Bounded host adaptation
+
+1. Update the existing package intake and lock atomically from this pair. Preserve
+   old archives/receipts and hash/peer/feature/payload validation. API/wire1 alone
+   does not establish compatibility with UI2.1 or new worker features. Record all
+   packaged runtime/UI input identities in the official build receipt.
+2. Copy every declared guardian/source worker asset and required notice from the
+   installed package. Preserve URL relationships: the default guardian document
+   is `atom-guardian.html`; exported `guardian.html` resolves to that filename in
+   the package. The document/entry/worker paths and source workers must agree with
+   the broker and UI's actual URLs. Add manifest `offscreen` support for the
+   declared WORKERS reason. Preserve CSP, official extension/native-host identity,
+   Capture manifest needs, and exact origin grants. Do not copy the public test ID.
+3. Adapt the existing shared debugger manager for the live guardian contract,
+   preserving one resource domain for Capture and Atom. Forward its readiness,
+   worker-independence, source parser service, ownership status and synchronous
+   native source guard truthfully. A custom manager cannot merely advertise these
+   fields while retaining only the old storage-marker recovery path. Do not wrap
+   a second independent Atom broker beside Capture. Preserve Capture's private
+   command surface without widening Atom's allowlist. Exercise BUSY before any
+   attach/injection/reload/interception, owned cleanup and actual worker restart.
+4. Wire current `createNativeControlOwner` and authenticated inspector connections
+   in the sole official worker. Follow the existing public worker/embedding source
+   and shipped types for exact options and methods. Relay full debugger source
+   identity (including child session), detach, navigation, permission-removal and
+   tab-removal events. Authenticate the exact official page and frame-0 picker
+   channel; preserve native document/target identity. Page close disposes its own
+   mount/client; runtime shutdown and Capture cleanup remain separate. Update the
+   frame-0 content matcher from the old fixed-port list to the actual admitted
+   origin policy, retaining current tab/document and pending picker checks.
+5. Opt the host platform/runtime into supported read-only HTTPS through the same
+   explicit site permission gesture and current capability policy. Provide the
+   mount's origin-request callback, correct packaged reader URL and
+   `sourceAnalysisWorkerURL` when assets use a nondefault location. Source/helper
+   access does not enable production changes. Retain two sequential Settings
+   confirmations for supported production writes and the implemented grant
+   lifecycle; do not invent new Live/grant/handoff decisions. Basic stays usable
+   without Desktop, account or closed resolver.
+6. Load the current shared tokens, optional local fonts, components and Atom CSS
+   exactly once. Serve Inter at the fonts.css relative path and carry OFL notices.
+   Preserve reader stylesheet links too: it now references tokens, fonts and
+   components; fonts.css must resolve its relative local asset from both pages.
+   Give the existing Atom container its defined height; preserve host navigation,
+   root CSS scope and evidence language. This task introduces no replacement UI.
+
+## Validation and stopping boundary
+
+Use actual scripts from the authorized host's package.json/current instructions;
+this handoff invents no host command. Retain old accepted checks as historical.
+Check correct pair and refusal of wrong digest/peer/contract/missing feature,
+missing guardian/source worker/reader/font asset and stale cached build. Then build
+and run the actual official UI through Basic and an Action/source-map path, not
+only a synthetic RPC. Run affected free Capture/Atom acquisition, BUSY, shutdown,
+restart and permission regressions. Current public standalone/embedding evidence
+cannot substitute for that official-host run. Current type compatibility alone
+cannot establish live guardian or control-owner behavior.
+
+Record exact host revision, commands, package pair/build receipt, native ownership
+and interruption results, plus scoped visual/keyboard/narrow evidence against the
+existing reference. Agent screenshots remain candidates; another person is not a
+release blocker. Preserve Vue PARTIAL and all finite lineage/trace limitations.
+I02/U04 and broader V03 remain separate dependencies. V02's original candidate82
+active overhead still misses10%; mandatory L02 remains open. A successful intake
+would not waive them or authorize distribution/publication.
+
+## Historical input
+
+The preceding task consumed Atom/UI `0.1.0-candidate.20261018.1`, UI contract1.0.0,
+AtomSHA `eee61cf7fe5f505865cefefbedcf80ed562a9c0f2ab3bb704f0518f10a27a0d5`.
+That original instruction is retained in Git before this preparation and as an
+exact local artifact beside the preparation receipt. Its recorded29two-host/2native
+results remain evidence only for that pair, with their original limits.

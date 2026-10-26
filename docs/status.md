@@ -1,5 +1,12 @@
 # Project status
 
+I01 [current82 handoff preparation complete](completion/221-i01-current82-handoff-preparation.md).
+Public task updated from old pair;327 product inputs/two archives/exact handoff/
+9 host source files+clean revision/links verified. Host install/build/runtime not run,
+I01 not accepted.20of29/fullscope unchanged. Actual host adaptation requires a separate
+scope decision because the current Atom task excludes other-repository changes.
+V02 source inspection found no justified new correction or unchanged-candidate rerun.
+
 A02.52 [selected native/source callback verified](completion/220-a02-selected-source-isolation.md).
 8new/67focused/5794fullPASS; exact existing element index isolates native subproof
 from unrelated fiber loss. Base source all-row/global/selected gates unchanged.

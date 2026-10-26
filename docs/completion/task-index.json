@@ -6006,7 +6006,17 @@
           "full_host_build": false,
           "native_executed": false
         }
-      }
+      },
+      "current_preparation": {
+        "record": "221-i01-current82-handoff-preparation.md",
+        "status": "handoff-prepared-not-host-intake",
+        "candidate": "0.1.0-candidate.20261026.82",
+        "host_revision": "a9f993f9dcfb6a3a3367273d333a3bbda6f1a67b",
+        "host_modified": false,
+        "actual_intake_accepted": false,
+        "requires_separate_host_scope": true
+      },
+      "next_bounded_step": "Separately authorized current82 host intake/adaptation and affected existing Capture/Atom checks; current Atom scope excludes other-repository mutation."
     },
     {
       "id": "I02",
@@ -9065,8 +9075,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.52-closed-bounded-source-only",
-    "next_item": "ONE bounded V02 current event-routing inspection; no unchanged-candidate rerun.",
+    "current_increment": "I01-current82-handoff-prepared-not-host-intake",
+    "next_item": "Separately authorized current82 I01 host adaptation; other-repository mutation excluded by current Atom continuation.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9091,34 +9101,9 @@
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
-      "id": "A02.52",
-      "record": "220-a02-selected-source-isolation.md",
-      "status": "closed-bounded-source-only",
-      "review_pending": false,
-      "source_revision": "92235d7",
-      "review": {
-        "critical": 0,
-        "important": 0,
-        "minor": 0
-      },
-      "archive": {
-        "schema": "stateatom.selected-source-review-closeout/1",
-        "archive": ".artifacts/a02/selected-source-review/2026-10-27/workspace.zip",
-        "sha256": "8069aec6d7ee6a0c53881ed114e06f93c91c579106c62c63acd318711340f826",
-        "files": 5,
-        "crcAndAllBytes": true,
-        "planIdentity": "docs/superpowers/plans/2026-10-27-a02-selected-source-isolation.md",
-        "review": {
-          "critical": 0,
-          "important": 0,
-          "minor": 0
-        },
-        "correctionPasses": 0,
-        "rereviews": 0,
-        "nativeRuns": 0,
-        "modelCalls": 0,
-        "fullA02": false
-      }
+      "id": "I01-preparation",
+      "record": "221-i01-current82-handoff-preparation.md",
+      "status": "complete-preparation-only"
     },
     "completed_increments": [
       {
@@ -12119,11 +12104,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Exact existing element index isolates selected native callback subproof;8new/67focused/5794fullPASS, ONEreview0C0I0M/closed. Base-source all-row/global/selected guards preserved. Native0/model0/no50cause attribution/current327+archives unchanged,20of29/fullA02/L02/18deferred unchanged.",
+    "current_activity_note": "Public host task updated to exact82/UI2;327/twoarchives/handoff/ninehostfiles+cleanrevision/links PASS. Host unchanged/no build/native. FullI01 notaccepted/20of29/fullscope unchanged. V02 source inspection no justified optimization/repeat.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "92235d7",
     "current_record_date": "2026-10-27",
-    "next_bounded_step": "ONE bounded V02 current event-routing inspection; no unchanged-candidate rerun.",
+    "next_bounded_step": "Separately authorized current82 I01 host adaptation; other-repository mutation excluded by current Atom continuation.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -12133,7 +12118,7 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "Reviewed experimental selected-source correction, source-only, no native/lineage proof",
+    "current_source_revision_kind": "No product/source implementation change in I01 preparation;92235d7 remains latest experimental source checkpoint.",
     "current_source_checkpoint": ".artifacts/a02/selected-source-source/2026-10-27/checkpoint.json",
     "current_source_checkpoint_kind": "Source-only experimental observer correction; no native/field/lineage qualification",
     "historical_active_pointer_before_V02_18": {
