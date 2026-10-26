@@ -12,7 +12,8 @@ export function createCommittedSourcePathObserver({page,enabled=true,policy,weak
  const read=(m,k)=>apply(get,m,[k]),put=(m,k,v)=>apply(set,m,[k,v]),supported=typeof Ref==='function',deref=supported?own(Ref.prototype,'deref'):null,weak=r=>r?apply(deref,r,[]):undefined;
  const source=createNativeStateSourcePathObserver({page,enabled,policy:{app:own(policy,'app'),main:own(policy,'main'),configSite:own(policy,'configSite'),native:own(policy,'native')}});
  let elementPolicy;try{elementPolicy=own(policy,'elementFiber');}catch{}
- const native=createNativeElementFiberObserver({page,enabled,policy:elementPolicy,weakRef:Ref}),m=source.mainInput;
+ let memoPolicy;try{const d=describe(policy,'memoBranch');if(d)memoPolicy=has(d,'value')?d.value:null;}catch{memoPolicy=null;}
+ const native=createNativeElementFiberObserver({page,enabled,policy:elementPolicy,memoPolicy,weakRef:Ref}),m=source.mainInput;
  let rows=list(),byElement=new WM(),collecting=true,stopped=false,invalid=false,reason=null,generation=0,lastCommit=null;
  function clear(){rows=list();byElement=new WM();}
  function refuse(why){invalid=true;reason=why;clear();}
@@ -46,19 +47,30 @@ export function createCommittedSourcePathObserver({page,enabled=true,policy,weak
    if(!enabled||stopped||collecting||invalid||!supported)return output(U,!enabled?'Observer disabled':stopped?'Observer stopped':invalid?reason:!supported?'WeakRef unavailable':'Source window not sealed');
    const c=native.currentCommit();if(c.status!=='Observed')return output(U,c.reason);
    const ret=source.retention();if(!rows.length||ret.stateSource.callbacks!==rows.length)return output(U,'Complete source callback reference coverage unavailable');
-   const links=list();
+   const complete=list();
    for(let i=0;i<rows.length;i++){
     const row=rows[i],element=weak(row.element);if(!object(element)||!row.nativeSeen||row.confirmedCommit!==c.commitId)return output(U,'Complete fresh source/native element interval unavailable');
     const exact=source.lookupStateSource(element);if(exact.status!=='Observed'||exact.links.length!==1)return output(U,'Original complete source/native gate unavailable');
+    append(complete,{row,element,stateSource:exact.links[0]});
+   }
+   const links=list();let boundary=null;
+   for(let i=0;i<complete.length;i++){
+    const{row,element,stateSource}=complete[i];
     const observed=native.match(node,element);
     if(observed.status!=='Observed'){
      if(observed.reason==='No complete exact current native element association')continue;
+     if(observed.reason==='Incoming memo element props were not retained'){
+      const proof=observed.memoOutcome;if(!proof||proof.propsReference!=='Different'||proof.commitId!==row.confirmedCommit)return output(U,'Complete current memo nonconsumption evidence unavailable');
+      if(boundary||links.length)return output(U,'Ambiguous selected source/native element join');
+      boundary=dto({stateSource,nativeMemo:proof});continue;
+     }
      return output(U,'Incomplete or ambiguous current native element evidence');
     }
     if(observed.match.commitId!==row.confirmedCommit)return output(U,'Selected commit differs from confirmed source/native interval');
-    if(links.length)return output(U,'Ambiguous selected source/native element join');
-    append(links,dto({stateSource:exact.links[0],nativeElement:observed.match,selectedCommittedSourceAssociation:'Observed',nativeStateOrigin:U,tupleIndexOrigin:U,fieldOwnership:U,selectedPropertyOrigin:U}));
+    if(links.length||boundary)return output(U,'Ambiguous selected source/native element join');
+    append(links,dto({stateSource,nativeElement:observed.match,...(observed.memoOutcome?{nativeMemo:observed.memoOutcome}:{}),selectedCommittedSourceAssociation:'Observed',nativeStateOrigin:U,tupleIndexOrigin:U,fieldOwnership:U,selectedPropertyOrigin:U}));
    }
+   if(boundary)return dto({...output(U,'Incoming memo element props were not retained'),memoBoundary:boundary});
    return links.length?output('Observed',null,links):output(U,'No exact selected complete source/native element join');
   }catch{return output(U,'Complete source/native selected lookup unavailable');}
  }
