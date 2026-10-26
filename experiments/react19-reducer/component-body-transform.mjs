@@ -4,7 +4,7 @@ import {parse} from '@babel/parser';import traverseModule from '@babel/traverse'
 const traverse=traverseModule.default||traverseModule,generate=generatorModule.default||generatorModule,hash=s=>createHash('sha256').update(s).digest('hex'),prefix='__saComponentBody';
 const helper=`const __saComponentBodyOwn=Object.getOwnPropertyDescriptor,__saComponentBodyApply=Reflect.apply,__saComponentBodyCreate=Object.create;
 const __saComponentBodyTap=(()=>{try{const d=__saComponentBodyOwn(globalThis,'__STATEATOM_COMPONENT_BODY_TAP__'),f=d&&__saComponentBodyOwn(d,'value')?.value;return typeof f==='function'?f:null;}catch{return null;}})();
-function __saComponentBodyEntry(self,a,b,site){if(!__saComponentBodyTap)return null;try{const r=__saComponentBodyCreate(null);try{r.token=__saComponentBodyApply(__saComponentBodyTap,undefined,['component-body-entry',self,a,b,site]);}catch{}return r;}catch{return null;}}
+function __saComponentBodyEntry(self,a,b,site){if(!__saComponentBodyTap)return null;try{const r=__saComponentBodyCreate(null);try{r.token=__saComponentBodyApply(__saComponentBodyTap,undefined,['component-body-entry',self,a,b,site]);}catch{}return r.token===undefined?null:r;}catch{return null;}}
 function __saComponentBodyReturn(r,value,site){if(r)try{__saComponentBodyApply(__saComponentBodyTap,undefined,['component-body-return',r.token,value,site]);}catch{}return value;}`;
 export function instrumentComponentBody(source,file){
  if(typeof source!=='string'||typeof file!=='string')throw TypeError('Source and file required');
@@ -15,7 +15,8 @@ export function instrumentComponentBody(source,file){
   const ast=parse(source,{sourceType:'unambiguous',plugins:['jsx']}),candidates=[];let unsafe=false;
   traverse(ast,{
    Program(p){for(const n of ['Object','Reflect','globalThis','undefined'])if(p.scope.getBinding(n))unsafe=true;},
-   Identifier(p){if(p.node.name.startsWith(prefix))unsafe=true;},WithStatement(){unsafe=true;},
+   Identifier(p){if(p.node.name.startsWith(prefix)||['eval','Function'].includes(p.node.name))unsafe=true;},WithStatement(){unsafe=true;},
+   'MemberExpression|OptionalMemberExpression'(p){if(t.isStringLiteral(p.node.property)&&['eval','Function'].includes(p.node.property.value))unsafe=true;},
    'CallExpression|OptionalCallExpression|NewExpression'(p){if(t.isIdentifier(p.node.callee)&&['eval','Function'].includes(p.node.callee.name))unsafe=true;},
    Function(p){if(p.node.id&&p.node.params.length===1&&t.isObjectPattern(p.node.params[0]))candidates.push(p);}
   });
