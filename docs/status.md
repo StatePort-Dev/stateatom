@@ -1,13 +1,14 @@
 # Project status
 
-A02.35 actual bounded original-gate PASS, ONEreview pending:
+A02.35 bounded native acquisition closed, ONEreview0C0I1M/15deferred:
 [declared retention acquisition](completion/191-a02-retained-app-state-source.md).
 ONElaunch/3modes/18phases (28pinned sourcefiles); native4/4,App4/8,Main5/9,joint4/8 acquired.
 ActualApp pins1 in4positive phases; Off/filter/Stop0.1643current hashes/firstfrozen
 fullreader546negative controls PASS; preservation25qualificationfalse. Console/errors[]/
 ownedPID/profile/resourcesclosed. No oldcase rerun/GCcause or fullA02/selectedDOM/
 ownership upgrade.205focused/5080fullsource retained;143oldresearch/327product unchanged.
-20of29/14minors unchanged; nextONEfinalreview then committed-instance source feasibility.
+20of29/fullA02 unchanged; nextONEcommitted-instance source feasibility. M15policy
+Boolean0/false check deferred; actualcorrect/nativeJSstrict/readers unchanged.
 
 A02.34 source complete/ONEreview0C0I0newM/14old deferred: [bounded research retention](completion/190-a02-bounded-app-element-retention.md).
 FourNEWfiles/old139research+327product+482protected unchanged. Explicit research
