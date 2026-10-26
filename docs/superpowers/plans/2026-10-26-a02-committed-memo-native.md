@@ -45,16 +45,17 @@ committed-memo-native{,-saved-verification,-preservation}/...; record/status/tas
 **Interfaces:** exact committed source case/input hashes/current policies→immutable native run;
 prewritten full reader imports/copied original strict serialized functions with exact newcase binding,
 adds new memo guards/negative controls; separate preservation-only reader qualificationfalse.
-- [ ] task-start/read brief; prepare immutable case from clean source commit. Write full and
+- [x] task-start/read brief; prepare immutable case from clean source commit. Write full and
 preservation readers/contracts BEFORE launch; pin exact helper/source/case/reader bindings.
-- [ ] Preflight original criteria, unchanged sources/flags/path, one-attempt marker. Expected
+- [x] Preflight original criteria, unchanged sources/flags/path, one-attempt marker. Expected
 admission or explicit no-run refusal; never mutate security/config/oldcases to gain admission.
-- [ ] If admitted, one owned host-side launch; preserve all mode/phase partials and cleanup.
-Expected real observations or honest incomplete outcome, never guaranteed Memo hypotheses.
-- [ ] Run first frozen full reader ONCE, preserve exit/output/rawSHA; only if accepted run all
-changed controls as prewritten. If refused, preservation-only proof/host cleanup, no retune/retry.
-- [ ] Verify known host PID/start/profile/resources absent, record exact revisions/counts/limits;
-local results commit/task-done saved binder. No new source suite unless source changes justify it.
+- [x] NOT ADMITTED: preflight missing-policy TypeError before markers/launch. Native0/all18unvisited;
+frozen case unchanged/no retry, no simulated native observations or cleanup proof.
+- [x] No raw result: full/preservation reader executions0. Both frozen scripts/contracts preserved;
+no native qualification, no posthoc reader retune or repeated case.
+- [x] No browser/PID/profile created: preflight refusal/marker/raw absence verified; no fabricated cleanup PASS.
+Corrected source2RED→GREEN/322focused5424fullPASS; distinct final binder preserves original
+source/case/readers. Local corrective/results commit and task-done final binder.
 
 ## Final gate
 ONE fresh final whole-item review of BASE→source/results. ONE tested I/Cpass only;

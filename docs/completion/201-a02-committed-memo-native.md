@@ -53,3 +53,43 @@ Native runs0; no native result, full reader or current runtime claim yet.
 Task1 source checkpoint `.artifacts/a02/committed-memo-native-source/2026-10-26/source-checkpoint.json`;
 source binder PASS1838protectedtracked/1642priorcurrent/4new codefiles. NextTask2
 freeze case and prewritten readers from clean source commit before max1launch.
+
+## Frozen case outcome: no native launch
+
+SourceTask1 a7658cc471db19ace83620260fc69c177413a9a7; case commit
+fe6f1e99c64923898ed2f5f270400265e101292e. New prepared output
+`.artifacts/a02/committed-memo-native/2026-10-26T04-09-16Z`,1687inputs+case1688.
+CaseSHAdc04a9dcf73bf3b764da96d36d3a5a5e58995dd61fc95fdee562ebf3900086b2.
+Full reader3670a425078e952e535c93db31f4486c34e36e453f225683b77178c36fd1a029,
+preservation1ef2d2c09e51d3cad8dafa75cbda54f909479c2471860ad3b2e98248ce3ee39f.
+Contract/21original predicate ASTs/546original control classes+new memo controls
+frozen before launch. New no-op checks compare canonical JSON to preserve boolean
+versus number distinctions; old predicates including15deferred limitations unchanged.
+
+Preflight refused BEFORE registration/attempt marker/browser: TypeError
+Owned metadata object required, from copied preflight calling the new policy-dependent
+callbackJSXNativeFactory() without its argument. Exported read-only diagnostic gave
+exact stack; refusal saved as `preflight-refusal.json`. Native0/all18phasesunvisited,
+rawAbsent/fullReader0/preservationReader0. No owned browser PID/profile was created;
+no successful cleanup or reader qualification is fabricated. Frozen case/contract/
+readers unchanged, no retry. This is a source binding defect, not a permission,
+certificate, sandbox, product UI or actual React failure.
+
+Corrective source: callbackJSXPreparedPrograms passes exact frozen sitePolicy into
+factory and both On/Off bootstraps; preflight retains its exact hash comparisons.
+Removed the incorrect preflight byte-parity promise; all other listed pure helpers
+and native resource function (except declared capture) still match. Owned On/Off
+control RED2FAIL→GREEN2PASS473.275337ms;68new/322focusedPASS10143.074226ms.
+Corrected full5424PASS143851.079279ms exit0; syntax/diffPASS. Original5422/320checkpoint/logs preserved.
+Prepared inputs now1686current+2exact a7658ccGit source files before plan closeout;
+no old prepared source is presented as current native qualification.
+
+Next: finish corrected source checks and ONE whole review, close the no-run item,
+then ONE separately frozen corrected-source acquisition case with original criteria
+and prepare/preflight source roundtrip. No oldcase/cert/install retry.
+
+Final source checkpoint `.artifacts/a02/committed-memo-native-source/2026-10-26/source-checkpoint-final.json`;
+final binder preserves refusal/unchanged case+reader contract, native0/readers0,
+1838protectedtracked/1642priorcurrent,1685prepared inputs current+3exacta7658ccGit
+(two changed source files and plan metadata). ONE whole review pending. No actual
+native/loaded/frame/property/ownership/MemoItem or fullA02 qualification.
