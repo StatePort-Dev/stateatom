@@ -1661,7 +1661,7 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "201-a02-committed-memo-native.md",
+      "execution_record": "202-a02-corrected-committed-memo-native.md",
       "completed_slices": [
         {
           "id": "A02.45",
@@ -2849,9 +2849,9 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "201-a02-committed-memo-native.md",
-        "status": "closed-no-native-refusal-source-correction-verified",
-        "next_bounded_step": "ONE separately frozen corrected-source committed Memo acquisition case: preserve A02.45 no-run refusal, verify prepare-to-preflight roundtrip on explicit policy, fresh case/source/readers, same original gates and max1new owned launch. No oldcase/cert/install retry."
+        "record": "202-a02-corrected-committed-memo-native.md",
+        "status": "source-complete-native-preparation-pending",
+        "next_bounded_step": "A02.46 finish source/full checks and clean commit; actual new prepare-to-preflight source roundtrip BEFORE newcase/reader freeze, then max1owned launch with unchanged original gates/explicit Memo boundaries. Never old45case/cert/install retry."
       },
       "stopping_point_history": [
         {
@@ -2885,7 +2885,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "ONE separately frozen corrected-source committed Memo acquisition case: preserve A02.45 no-run refusal, verify prepare-to-preflight roundtrip on explicit policy, fresh case/source/readers, same original gates and max1new owned launch. No oldcase/cert/install retry.",
+      "next_bounded_step": "A02.46 finish source/full checks and clean commit; actual new prepare-to-preflight source roundtrip BEFORE newcase/reader freeze, then max1owned launch with unchanged original gates/explicit Memo boundaries. Never old45case/cert/install retry.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -3040,10 +3040,29 @@
           "record": "200-a02-memo-overlay.md",
           "status": "closed-bounded-source-only",
           "next_bounded_step": "ONE separately scoped actual complete memo integration/acquisition case: prewritten original-gate and new selected-reference criteria/readers, frozen current source and at most one owned browser launch. Preserve explicit retained-props Unknown; no oldcase/cert/install retry."
+        },
+        {
+          "record": "201-a02-committed-memo-native.md",
+          "status": "closed-no-native-refusal-source-correction-verified",
+          "next_bounded_step": "ONE separately frozen corrected-source committed Memo acquisition case: preserve A02.45 no-run refusal, verify prepare-to-preflight roundtrip on explicit policy, fresh case/source/readers, same original gates and max1new owned launch. No oldcase/cert/install retry."
         }
       ],
-      "implementation_plan": null,
-      "active_slice": null
+      "implementation_plan": "../superpowers/plans/2026-10-26-a02-corrected-committed-memo-native.md",
+      "active_slice": {
+        "id": "A02.46",
+        "record": "202-a02-corrected-committed-memo-native.md",
+        "status": "source-complete-native-preparation-pending",
+        "base": "22ecb5d94c0d01ee4ffeaf2f591388e056d41651",
+        "new_code_files": 3,
+        "new_source_tests": 11,
+        "focused_checks": 333,
+        "native_runs": 0,
+        "maximum_native_runs": 1,
+        "retained_MemoItem_qualified": false,
+        "full_A02": false,
+        "review_pending": true,
+        "full_checks": 5435
+      }
     },
     {
       "id": "A03",
@@ -8283,8 +8302,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.45-closed-no-native-refusal-source-correction-verified",
-    "next_item": "ONE separately frozen corrected-source committed Memo acquisition case: preserve A02.45 no-run refusal, verify prepare-to-preflight roundtrip on explicit policy, fresh case/source/readers, same original gates and max1new owned launch. No oldcase/cert/install retry.",
+    "current_increment": "A02.46-source-complete-native-preparation-pending",
+    "next_item": "A02.46 finish source/full checks and clean commit; actual new prepare-to-preflight source roundtrip BEFORE newcase/reader freeze, then max1owned launch with unchanged original gates/explicit Memo boundaries. Never old45case/cert/install retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8310,8 +8329,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "A02",
-      "record": "201-a02-committed-memo-native.md",
-      "status": "closed-no-native-refusal-source-correction-verified"
+      "record": "202-a02-corrected-committed-memo-native.md",
+      "status": "source-complete-native-preparation-pending"
     },
     "completed_increments": [
       {
@@ -11267,11 +11286,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.45 closed no-native refusal/source correction. Native0/readers0/18unvisited/rawAbsent, frozen packet unchanged/no retry.68new/322focused5424fullPASS; ONEreview0C0I1Mhistoricaldeferred/15prior retained, no reviewfix/rereview.1838protectedtracked/1642priorcurrent;1685casecurrent+3exactGit; archive7CRC/bytes/identity/ownremovalPASS.20of29/fullA02 unchanged.",
+    "current_activity_note": "11new/333focused/5435fullPASS; actual prepare-to-preflight source roundtrip next. Corrected45behavior unchanged except typed identities.1846protectedtracked/1642priorcurrent/34frozen45 preserved. No native/MemoItem/property/fullA02;20of29/16historicaldeferred unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "99d20d86f5d00229cbb431fc0d82b8c63e60a01a",
+    "current_source_revision": "22ecb5d94c0d01ee4ffeaf2f591388e056d41651",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONE separately frozen corrected-source committed Memo acquisition case: preserve A02.45 no-run refusal, verify prepare-to-preflight roundtrip on explicit policy, fresh case/source/readers, same original gates and max1new owned launch. No oldcase/cert/install retry.",
+    "next_bounded_step": "A02.46 finish source/full checks and clean commit; actual new prepare-to-preflight source roundtrip BEFORE newcase/reader freeze, then max1owned launch with unchanged original gates/explicit Memo boundaries. Never old45case/cert/install retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -11281,9 +11300,9 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "verified corrected source; frozen refused-case fe6 separate, no native qualification",
-    "current_source_checkpoint": ".artifacts/a02/committed-memo-native-review/2026-10-26/final-checkpoint.json",
-    "current_source_checkpoint_kind": "source tests/no-run refusal/ONEreview/archive verified; no reader or native execution",
+    "current_source_revision_kind": "base before three new closed corrected-source qualification siblings",
+    "current_source_checkpoint": ".artifacts/a02/corrected-committed-memo-native-source/2026-10-26/source-checkpoint.json",
+    "current_source_checkpoint_kind": "actual source logs/hashes, no roundtrip/case/native yet",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
       "active_item": {
