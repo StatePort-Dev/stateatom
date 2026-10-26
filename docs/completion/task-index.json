@@ -5255,12 +5255,12 @@
       "active_slice": {
         "id": "L02.18",
         "record": "217-l02-portal-chooser.md",
-        "status": "frozen-native-pending",
+        "status": "native-incomplete-review-pending",
         "base": "2aea834478144b419603eb7594aac6967f8470df",
         "new_source_checks": 20,
-        "native_runs": 0,
+        "native_runs": 1,
         "maximum_native_runs": 1,
-        "remaining_native_runs": 1,
+        "remaining_native_runs": 0,
         "model_calls": 0,
         "full_L02": false,
         "review_pending": true,
@@ -5268,7 +5268,14 @@
         "full_checks": 5756,
         "source_revision": "6dbd45c6d833c9382d4a600ac3daa05832463d1f",
         "frozen_bindings": 611,
-        "case_sha256": "a5131ff8aff50ae680c1910ef2b66e053d09e9bb6458e344bee327a4b4ed4a34"
+        "case_sha256": "a5131ff8aff50ae680c1910ef2b66e053d09e9bb6458e344bee327a4b4ed4a34",
+        "case_exhausted": true,
+        "rows": 0,
+        "unvisited": 34,
+        "first_reader_exit": 0,
+        "collection_qualified": false,
+        "portal_ownership_observed": true,
+        "directory_selection_accepted": false
       },
       "implementation_plan": "../superpowers/plans/2026-10-26-l02-portal-chooser.md",
       "remaining_acceptance": [
@@ -5744,7 +5751,7 @@
       "historical_execution_records": [
         "189-l02-current-path-comparison.md"
       ],
-      "next_bounded_step": "ONE L02.18 finalsource verification and frozen current82 portal case before maxONE cached-only acquisition.",
+      "next_bounded_step": "ONE L02.19 agent-reviewed post-input native snapshot and ordinary Select source/case, after18 finalreview.",
       "historical_checkpoint_before_L02_16": {
         "record": "189-l02-current-path-comparison.md",
         "status": "closed-bounded-native-incomplete-source-complete",
@@ -8930,8 +8937,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "L02.18-portal-owner-source-verification",
-    "next_item": "ONE L02.18 finalsource verification and frozen current82 portal case before maxONE cached-only acquisition.",
+    "current_increment": "L02.18-one-portal-attempt-incomplete-review-pending",
+    "next_item": "ONE L02.19 agent-reviewed post-input native snapshot and ordinary Select source/case, after18 finalreview.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8958,7 +8965,7 @@
     "active_item": {
       "id": "L02.18",
       "record": "217-l02-portal-chooser.md",
-      "status": "frozen-native-pending"
+      "status": "native-incomplete-review-pending"
     },
     "completed_increments": [
       {
@@ -11959,11 +11966,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "New portal-aware owned chooser source;20new/256focused/5756full sourcePASS, native0/model0. Pre-exec witness and independent daemon/service ownership before input. FullL02/20of29/17deferred unchanged.",
+    "current_activity_note": "ONE actual privatebus/GTK ownership+before-input checks succeeded; Returndidnotdismiss, no selectedextension/eval/API/rows. FIRSTreader611PASS/collectionfalse; source20/256/5756PASS,20of29/fullL02 unchanged. Nextbounded ordinarySelect from reviewed native snapshot.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "6dbd45c6d833c9382d4a600ac3daa05832463d1f",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONE L02.18 finalsource verification and frozen current82 portal case before maxONE cached-only acquisition.",
+    "next_bounded_step": "ONE L02.19 agent-reviewed post-input native snapshot and ordinary Select source/case, after18 finalreview.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -11974,8 +11981,8 @@
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
     "current_source_revision_kind": "Portal ownership research source; current82 product327 unchanged, native pending",
-    "current_source_checkpoint": ".artifacts/l02/portal-chooser-source/2026-10-26/checkpoint.json",
-    "current_source_checkpoint_kind": "Portal source only; native0/model0, original criteria preserved",
+    "current_source_checkpoint": ".artifacts/l02/portal-chooser-source/2026-10-26/native-checkpoint.json",
+    "current_source_checkpoint_kind": "Actual incomplete portal attempt; safe owner prerequisites observed, no model/install acceptance",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
       "active_item": {

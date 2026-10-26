@@ -1,6 +1,6 @@
 # L02.18 — portal-owned normal chooser comparison
 
-Current phase: source verified; native0/model0.
+Current phase: ONE actual attempt INCOMPLETE; source verified, model0.
 Base main2aea834; local commits only. FullL02/20of29 unchanged,17deferred retained.
 
 17 observed an actual focused GTKportal directory dialog, not Chrome-PID-owned.
@@ -75,3 +75,46 @@ Case `docs/testing/l02-comparison-portal-case82.json`, SHA `a5131ff8aff50ae680c1
 Prewritten reader5purefunctions exact/2positive3negative sourcecontrols; original row
 and common collection hashes retained. MaxONE cached-only actual attempt next, no
 oldcase/reader retry or new CA/trust/provider/prompt changes. Collection is not L02.
+
+## ONE actual attempt — INCOMPLETE, no retry
+
+Execution `94efc234e5071ab29972049f7e33c4439e46067e`, 2026-10-26T19:43:06.108Z–19:43:34.668Z,
+nativePID3376857, CLIexit1. Raw `.artifacts/l02/pq/cee16159/results.json`, SHA
+`5332a842c5e551ec78aedb05183c8c986c94409b9496d3c30fc8b80114bad455`.
+
+The new prerequisite succeeded: pre-exec witness PID3376944/start30819832 matches
+attested Chrome156 and launcher3376942/start30819830. Independently owned daemon
+3376943/start30819831, exact private Unix bus, GTKservice3377223/start30819925,
+window18874371/title Select the extension directory. and private display/auth are
+confirmed in initial authorization and three before-input checks. Current focus
+was rechecked after awaited receipt persistence. CtrlL/exact-folder/Return commands
+executed in this owned portal window; no credential/permission/keyring input.
+These receipts do not independently prove which field accepted the typed text.
+
+After Return the matching dialog did not disappear in15s. Stage submitted=true,
+dismissed=false; timeout at helper33. No selected path/id, evaluation page, loaded
+runtime, availability/create/prompt, rows or quality data.0rows/34unvisited/0harness
+model calls. Cause of non-dismissal remains Unknown: no after-submit screenshot or
+entry/accessibility state was collected. Do not label this model/API failure or
+successful folder selection. The screenshot is before-path after CtrlL, not a
+post-submit view; GTKsource alone did not prove installed Enter behavior.
+
+FIRST prewritten frozen reader exit0 SAVED_INCOMPLETE_NOT_QUALIFIED,611bindings PASS,
+collectionQualified=false/fullL02=false. Full collection predicate did not execute
+on absent rows. Original5purefunctions/2positive3negative sourcecontrols and20source/
+256focused/5756full remain source evidence. No raw text exists for factual/concision/
+usefulness assessment. Old67/16/17 results untouched; no reader/native retune or retry.
+
+Known Chrome3376944/start30819832, launcher3376942/start30819830 and desktop3376938/
+start30819822 retired; FIRSTreader host namespace4026531836 found all3Absent. Nine
+cleanupflags true, console=false/NotCollected (no evaluation page), cleanupErrorsempty,
+lease released. Separate exact-known daemon3376943 and portal3377223 PID/start probe
+at19:48:07UTC found bothAbsent; this is not a reader rerun or global descendant proof.
+Current327/archives2 and all611physicalinputs unchanged. Browserbackground uncollected.
+FullL02/20of29/17deferred unchanged.
+
+ONE bounded final review follows. NextONE19 source for an agent-reviewed post-input
+native snapshot and one ordinary Select click, still private-owner/focus/geometry/
+case-bound with exact enabled-path verification afterward. This is a new finite
+workflow correction prompted by actual non-dismissal; no guessed hotkey fallback,
+no direct install API, no oldcase retry, no human-acceptance or handoff-product policy.
