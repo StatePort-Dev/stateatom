@@ -1,10 +1,11 @@
 # Project status
 
-A02.37 source checks in progress: [native element/fiber recipe](completion/193-a02-native-element-fiber.md).
-Three new research/fixture/test files; actual native arguments/results at3closed sites,
-provisional render refs only.33new/97focused/5150fullPASS, ONEreview pending; old product/
-research/raw/cases/readers unchanged. No actualReact/native/browser/model/package/UI.
-20of29/fullA02/property origins/15deferred unchanged; nextONE committed-reference consumer.
+A02.37 source complete, ONEreview0C1Ifixed0newM/15deferred: [native element/fiber recipe](completion/193-a02-native-element-fiber.md).
+Three new codefiles,36new/100focused/5153fullPASS. Direct creation/return guard fixes
+three actualRED unsafe grammar forms; exact retained source compile-only still admitted.
+1794tracked/1642currentprior-native unchanged; archive6CRC/bytes/identity/ownremoval PASS.
+No product wiring/actualReact/native/browser/model/package/UI or committed identity proof.
+20of29/fullA02 unchanged; nextONE committed-reference consumer, not event→commit inference.
 
 A02.36 source complete, ONEreview0C1Ifixed0newM/15deferred: [selected committed props](completion/192-a02-committed-props.md).
 Shared committed-tree selector/new strict supplied-props matcher;37new/59focused/

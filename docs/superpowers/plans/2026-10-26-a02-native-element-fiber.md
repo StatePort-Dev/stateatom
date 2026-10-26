@@ -34,5 +34,5 @@ nativeVersionAdmitted false for grammar and true only for exact pinned byte reci
 - [x] GREEN semantic and refusal controls, actual retained compile-only, focused/full
 tests, syntax/diff/protected hashes. Expected: source-only PASS, zero native runs.
 - [x] Record exact logs/hashes/limits; local commit and task-done saved-source binder.
-- [ ] ONE whole review; one tested I/C pass/minors defer; archive/verify/remove own
+- [x] ONE whole review; one tested I/C pass/minors defer; archive/verify/remove own
 workspace, close commit and continue one distinct committed-reference consumer item.
