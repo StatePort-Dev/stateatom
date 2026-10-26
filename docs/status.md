@@ -1,10 +1,12 @@
 # Project status
 
-A02.45 no-native preflight refusal/source correction complete, review pending: [committed Memo case](completion/201-a02-committed-memo-native.md).
-Frozenfe6f1e9 case refused missing factory policy before any launch/marker; native0,
-all18unvisited/readers0/rawAbsent. Corrected binding RED2→GREEN2,68new/322focusedPASS;
-corrected5424fullPASS/ONEreview pending. Frozen packet preserved/no retry.
-1838protectedtracked/1642priorcurrent unchanged;20of29/fullA02/15deferred unchanged.
+A02.45 closed no-native refusal + verified source correction, ONEreview0C0I1M:
+[committed Memo case](completion/201-a02-committed-memo-native.md). Frozenfe6case
+preflight refused missing factory policy BEFORE markers/launch, native0/readers0/
+18unvisited/rawAbsent. Policy binding fixed2RED→GREEN,68new/322focused/5424fullPASS.
+1838protectedtracked/1642priorcurrent unchanged;1685prepared current+3exactGit.
+Archive7CRC/bytes/identity/ownremovalPASS;M16historical metadata deferred/15prior retained.
+20of29/fullA02 unchanged. NextONE fresh corrected-source case/prepare-preflight roundtrip.
 
 A02.44 source complete, ONEreview0C0I0newM/15deferred: [complete pinned memo overlay](completion/200-a02-memo-overlay.md).
 9new/326focused/5356fullPASS;1833protectedtracked/1642priorcurrent unchanged.

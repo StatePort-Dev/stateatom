@@ -1664,6 +1664,41 @@
       "execution_record": "201-a02-committed-memo-native.md",
       "completed_slices": [
         {
+          "id": "A02.45",
+          "record": "201-a02-committed-memo-native.md",
+          "status": "closed-no-native-refusal-source-correction-verified",
+          "base": "cb529a4599f383fd73abe6f3a8a95b4f80571432",
+          "planned_new_code_files": 4,
+          "native_runs": 0,
+          "maximum_native_runs": 1,
+          "retained_MemoItem_qualified": false,
+          "full_A02": false,
+          "review_pending": false,
+          "new_code_files": 4,
+          "new_source_tests": 68,
+          "focused_checks": 322,
+          "full_checks": 5424,
+          "original_full_checks": 5422,
+          "all_phases_unvisited": 18,
+          "full_reader_executions": 0,
+          "preservation_reader_executions": 0,
+          "case_commit": "fe6f1e99c64923898ed2f5f270400265e101292e",
+          "preflight_refusal": ".artifacts/a02/committed-memo-native/2026-10-26T04-09-16Z/preflight-refusal.json",
+          "source_corrective_checks": 2,
+          "original_source_revision": "a7658cc471db19ace83620260fc69c177413a9a7",
+          "source_revision": "99d20d86f5d00229cbb431fc0d82b8c63e60a01a",
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 1,
+            "correction_passes": 0,
+            "rereview": false,
+            "deferred_total": 16,
+            "minor_deferred": "M16 review-time metadata lag; historical99 snapshot retained, normal closeout advances active pointers"
+          },
+          "final_checkpoint": ".artifacts/a02/committed-memo-native-review/2026-10-26/final-checkpoint.json"
+        },
+        {
           "id": "A02.44",
           "record": "200-a02-memo-overlay.md",
           "status": "closed-bounded-source-only",
@@ -2815,8 +2850,8 @@
       },
       "current_checkpoint": {
         "record": "201-a02-committed-memo-native.md",
-        "status": "no-native-refusal-source-correction-complete-review-pending",
-        "next_bounded_step": "Finish corrected source tests and ONE whole review for A02.45 no-native refusal; nextONE separately frozen corrected-source committed Memo acquisition case with prepare/preflight source roundtrip, original gates and no oldcase/cert/install retry."
+        "status": "closed-no-native-refusal-source-correction-verified",
+        "next_bounded_step": "ONE separately frozen corrected-source committed Memo acquisition case: preserve A02.45 no-run refusal, verify prepare-to-preflight roundtrip on explicit policy, fresh case/source/readers, same original gates and max1new owned launch. No oldcase/cert/install retry."
       },
       "stopping_point_history": [
         {
@@ -2850,7 +2885,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "Finish corrected source tests and ONE whole review for A02.45 no-native refusal; nextONE separately frozen corrected-source committed Memo acquisition case with prepare/preflight source roundtrip, original gates and no oldcase/cert/install retry.",
+      "next_bounded_step": "ONE separately frozen corrected-source committed Memo acquisition case: preserve A02.45 no-run refusal, verify prepare-to-preflight roundtrip on explicit policy, fresh case/source/readers, same original gates and max1new owned launch. No oldcase/cert/install retry.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -2878,7 +2913,7 @@
         "public_hook_kind": "Unknown/Unsupported",
         "full_A02": false
       },
-      "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-a02-memo-overlay.md",
+      "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-a02-committed-memo-native.md",
       "current_checkpoint_history": [
         {
           "record": "147-a02-array-callsite-bridge.md",
@@ -3007,31 +3042,8 @@
           "next_bounded_step": "ONE separately scoped actual complete memo integration/acquisition case: prewritten original-gate and new selected-reference criteria/readers, frozen current source and at most one owned browser launch. Preserve explicit retained-props Unknown; no oldcase/cert/install retry."
         }
       ],
-      "implementation_plan": "../superpowers/plans/2026-10-26-a02-committed-memo-native.md",
-      "active_slice": {
-        "id": "A02.45",
-        "record": "201-a02-committed-memo-native.md",
-        "status": "no-native-refusal-source-correction-complete-review-pending",
-        "base": "cb529a4599f383fd73abe6f3a8a95b4f80571432",
-        "planned_new_code_files": 4,
-        "native_runs": 0,
-        "maximum_native_runs": 1,
-        "retained_MemoItem_qualified": false,
-        "full_A02": false,
-        "review_pending": true,
-        "new_code_files": 4,
-        "new_source_tests": 68,
-        "focused_checks": 322,
-        "full_checks": 5424,
-        "original_full_checks": 5422,
-        "all_phases_unvisited": 18,
-        "full_reader_executions": 0,
-        "preservation_reader_executions": 0,
-        "case_commit": "fe6f1e99c64923898ed2f5f270400265e101292e",
-        "preflight_refusal": ".artifacts/a02/committed-memo-native/2026-10-26T04-09-16Z/preflight-refusal.json",
-        "source_corrective_checks": 2,
-        "original_source_revision": "a7658cc471db19ace83620260fc69c177413a9a7"
-      }
+      "implementation_plan": null,
+      "active_slice": null
     },
     {
       "id": "A03",
@@ -8271,8 +8283,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.45-no-native-refusal-source-correction-complete-review-pending",
-    "next_item": "Finish corrected source tests and ONE whole review for A02.45 no-native refusal; nextONE separately frozen corrected-source committed Memo acquisition case with prepare/preflight source roundtrip, original gates and no oldcase/cert/install retry.",
+    "current_increment": "A02.45-closed-no-native-refusal-source-correction-verified",
+    "next_item": "ONE separately frozen corrected-source committed Memo acquisition case: preserve A02.45 no-run refusal, verify prepare-to-preflight roundtrip on explicit policy, fresh case/source/readers, same original gates and max1new owned launch. No oldcase/cert/install retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8299,7 +8311,7 @@
     "active_item": {
       "id": "A02",
       "record": "201-a02-committed-memo-native.md",
-      "status": "no-native-refusal-source-correction-complete-review-pending"
+      "status": "closed-no-native-refusal-source-correction-verified"
     },
     "completed_increments": [
       {
@@ -11217,14 +11229,49 @@
           "deferred_total": 15
         },
         "final_checkpoint": ".artifacts/a02/memo-overlay-review/2026-10-26/final-checkpoint.json"
+      },
+      {
+        "id": "A02.45",
+        "record": "201-a02-committed-memo-native.md",
+        "status": "closed-no-native-refusal-source-correction-verified",
+        "base": "cb529a4599f383fd73abe6f3a8a95b4f80571432",
+        "planned_new_code_files": 4,
+        "native_runs": 0,
+        "maximum_native_runs": 1,
+        "retained_MemoItem_qualified": false,
+        "full_A02": false,
+        "review_pending": false,
+        "new_code_files": 4,
+        "new_source_tests": 68,
+        "focused_checks": 322,
+        "full_checks": 5424,
+        "original_full_checks": 5422,
+        "all_phases_unvisited": 18,
+        "full_reader_executions": 0,
+        "preservation_reader_executions": 0,
+        "case_commit": "fe6f1e99c64923898ed2f5f270400265e101292e",
+        "preflight_refusal": ".artifacts/a02/committed-memo-native/2026-10-26T04-09-16Z/preflight-refusal.json",
+        "source_corrective_checks": 2,
+        "original_source_revision": "a7658cc471db19ace83620260fc69c177413a9a7",
+        "source_revision": "99d20d86f5d00229cbb431fc0d82b8c63e60a01a",
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 1,
+          "correction_passes": 0,
+          "rereview": false,
+          "deferred_total": 16,
+          "minor_deferred": "M16 review-time metadata lag; historical99 snapshot retained, normal closeout advances active pointers"
+        },
+        "final_checkpoint": ".artifacts/a02/committed-memo-native-review/2026-10-26/final-checkpoint.json"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Frozenfe6f1e9 case missing-policy preflight refusal/native0/all18unvisited/readers0/rawAbsent/no retry. Corrected program binding2RED→GREEN/68new322focused5424fullPASS; ONEreview pending.1838protectedtracked/1642priorcurrent preserved;1685casecurrent+3exactpreparedGit.20of29/fullA02/15deferred unchanged.",
+    "current_activity_note": "A02.45 closed no-native refusal/source correction. Native0/readers0/18unvisited/rawAbsent, frozen packet unchanged/no retry.68new/322focused5424fullPASS; ONEreview0C0I1Mhistoricaldeferred/15prior retained, no reviewfix/rereview.1838protectedtracked/1642priorcurrent;1685casecurrent+3exactGit; archive7CRC/bytes/identity/ownremovalPASS.20of29/fullA02 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "fe6f1e99c64923898ed2f5f270400265e101292e",
+    "current_source_revision": "99d20d86f5d00229cbb431fc0d82b8c63e60a01a",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "Finish corrected source tests and ONE whole review for A02.45 no-native refusal; nextONE separately frozen corrected-source committed Memo acquisition case with prepare/preflight source roundtrip, original gates and no oldcase/cert/install retry.",
+    "next_bounded_step": "ONE separately frozen corrected-source committed Memo acquisition case: preserve A02.45 no-run refusal, verify prepare-to-preflight roundtrip on explicit policy, fresh case/source/readers, same original gates and max1new owned launch. No oldcase/cert/install retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -11234,9 +11281,9 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "frozen refused case; corrective source uncommitted/pending full tests",
-    "current_source_checkpoint": ".artifacts/a02/committed-memo-native-source/2026-10-26/source-checkpoint-final.json",
-    "current_source_checkpoint_kind": "corrected source logs/hashes/no-run refusal, native and readers not executed",
+    "current_source_revision_kind": "verified corrected source; frozen refused-case fe6 separate, no native qualification",
+    "current_source_checkpoint": ".artifacts/a02/committed-memo-native-review/2026-10-26/final-checkpoint.json",
+    "current_source_checkpoint_kind": "source tests/no-run refusal/ONEreview/archive verified; no reader or native execution",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
       "active_item": {
@@ -11263,6 +11310,12 @@
       "current_source_revision_kind": "exact checked shared research source; nativecase d48598a, later results/posthoc/docs only",
       "current_source_checkpoint": ".artifacts/v03/corrected-current-clean-editor-posthoc-verification/2026-10-26/report.json",
       "current_source_checkpoint_kind": "NEW posthoc analysis; original preregistered fullreader refusal retained"
+    },
+    "historical_refused_case_pointer_before_A02_45_closeout": {
+      "current_source_revision": "fe6f1e99c64923898ed2f5f270400265e101292e",
+      "current_source_revision_kind": "frozen refused case; corrective source uncommitted/pending full tests",
+      "reviewedRevision": "99d20d86f5d00229cbb431fc0d82b8c63e60a01a",
+      "minor": "M16 review-time stale pointer, deferred historical metadata"
     }
   },
   "next_task": "A02"
