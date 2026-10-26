@@ -34,3 +34,8 @@ inventory, FIRST saved verification, one bounded whole-item review. No blind ins
 model retry or changes to old failed criteria. Subsequent fix depends on actual facts.
 
 References checked: [GLib gdbus](https://github.com/GNOME/glib/blob/main/docs/reference/gio/gdbus.rst), [D-Bus existing connection PID](https://dbus.freedesktop.org/doc/dbus-specification.html#bus-messages-get-connection-unix-process-id), and installed xdotool manpage for maxdepth1. Queries use an explicit owned Unix bus address, no interactive/system/session defaults or activation method.
+
+## Frozen execution checkpoint
+
+Source `53e74c5e6009c2c5526d695a4d5eaff6871fd41e`; actual prepare/preflight exit0, browser/model0.
+Case `docs/testing/l02-chooser-inventory-case.json`, SHA `21cee88fc688b21ae34f9d74a3e329e02add141729567ae11cc797dc17bfde2d`,365bindings including case. Output `.artifacts/l02/iv/921be9d0/`. Prewritten first reader/source controls are frozen inputs. ONE actual observation next; no folder/credential/model input or retry.
