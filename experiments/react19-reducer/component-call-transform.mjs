@@ -11,16 +11,19 @@ function __saComponentCallReturn(r,value){if(r)try{__saComponentCallApply(r.fn,u
 function __saComponentCallThrow(r,error){if(r)try{__saComponentCallApply(r.fn,undefined,['component-call-throw',r.token,error,r.site]);}catch{}}
 function __saComponentCallEnd(r){if(r)try{__saComponentCallApply(r.fn,undefined,['component-call-end',r.token,r.site]);}catch{}}`;
 function targets(ast){
- const found=new Map();let reserved=false;
- traverse(ast,{Identifier(p){if(p.node.name.startsWith(prefix))reserved=true;},FunctionDeclaration(p){const name=p.node.id?.name;if(!Object.hasOwn(owners,name))return;if(found.has(name))throw Error('Duplicate native call owner');found.set(name,p);}});
- if(reserved||found.size!==2)throw Error('Closed native owner/helper namespace required');
+ const found=new Map();let reserved=false,unsafe=false;
+ // Helpers resolve these free references in Program scope. Native owners and
+ // nested closures must not use eval/with to observe fresh lexical bindings.
+ const dynamic=p=>{if(t.isIdentifier(p.node.callee,{name:'eval'}))unsafe=true;};
+ traverse(ast,{Program(p){for(const name of ['Object','Reflect','globalThis','undefined'])if(p.scope.getBinding(name))reserved=true;},Identifier(p){if(p.node.name.startsWith(prefix))reserved=true;},WithStatement(){unsafe=true;},CallExpression:dynamic,OptionalCallExpression:dynamic,FunctionDeclaration(p){const name=p.node.id?.name;if(!Object.hasOwn(owners,name))return;if(found.has(name))throw Error('Duplicate native call owner');found.set(name,p);}});
+ if(reserved||unsafe||found.size!==2)throw Error('Closed native owner/helper/global scope required');
  const result=[];
  for(const [name,shape]of Object.entries(owners)){
   const fn=found.get(name),params=shape.params;if(fn.node.async||fn.node.generator||fn.node.params.length!==params.length||!params.every((n,i)=>t.isIdentifier(fn.node.params[i],{name:n})))throw Error('Closed native owner parameters required');
   const bindings={};for(const key of ['workInProgress','Component','props','secondArg']){const b=fn.scope.getBinding(key);if(b?.kind!=='param'||!b.constant)throw Error('Stable native invocation references required');bindings[key]=b;}
-  const calls=[];let unsafe=false;
-  fn.get('body').traverse({Function(p){p.skip();},WithStatement(){unsafe=true;},CallExpression(p){if(t.isIdentifier(p.node.callee,{name:'eval'}))unsafe=true;if(t.isIdentifier(p.node.callee,{name:'callComponentInDEV'}))calls.push(p);}});
-  if(unsafe||calls.length!==1)throw Error('One non-dynamic original native call required');
+  const calls=[];
+  fn.get('body').traverse({Function(p){p.skip();},CallExpression(p){if(t.isIdentifier(p.node.callee,{name:'callComponentInDEV'}))calls.push(p);}});
+  if(calls.length!==1)throw Error('One original native owner call required');
   const call=calls[0],callee=call.scope.getBinding('callComponentInDEV');if(!callee?.constant||callee.scope!==fn.scope.parent||call.node.optional||call.node.arguments.length!==3)throw Error('Original native callee binding required');
   for(const [i,key]of ['Component','props','secondArg'].entries())if(!t.isIdentifier(call.node.arguments[i],{name:key})||call.scope.getBinding(key)!==bindings[key])throw Error('Exact original call operands required');
   if(call.scope.getBinding('workInProgress')!==bindings.workInProgress)throw Error('Exact injected native fiber binding required');
