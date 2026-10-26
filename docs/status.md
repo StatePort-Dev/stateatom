@@ -3,8 +3,10 @@
 V02.20 [current80 original-workload source ready](completion/207-v02-current80-original-performance.md):
 7new/26focused/5532fullPASS. Original15source exact except four identities and
 corrected17handle-retaining cleanup.1865protected/327product/2archives/33oldnative stable.
-No new native/performance/TLS claim;206CA/import answer pending. Missing exact80
-backend13 is an independent prerequisite.20of29/fullscope/16historicaldeferred unchanged.
+Actual independent80backend13PASS/publicexampleembedding+standalone,6changed saved
+controls; type2/admission9 reused, no profile process refs at hostprobe. No fieldwidget/
+officialhost/performance/TLS claim;206CA/import answer pending/measurement0.
+20of29/fullscope/16historicaldeferred unchanged.
 
 Release2026-10-28: [focused nine-open-gate assessment](completion/205-release-date-decision.md).
 Fullscope retained/Basic-only suggestion withdrawn;20of29 complete. Current80 archives

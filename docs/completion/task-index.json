@@ -5878,18 +5878,25 @@
         "new_source_tests": 7,
         "focused_checks": 26,
         "source_checks": 5532,
-        "native_runs": 0,
+        "native_runs": 1,
         "tls_approval": "pending",
         "measurement_executed": false,
         "performance_acceptance": false,
         "whole_V02_complete": false,
-        "review_pending": true
+        "review_pending": true,
+        "native_backend_runs": 1,
+        "measurement_runs": 0,
+        "backend_checks": 13,
+        "backend_checkpoint": ".artifacts/v02/current80-performance-source/2026-10-26/backend-checkpoint.json",
+        "backend_raw_sha256": "727f71aa52e5ef7348f2f43c58fda5cb9626bdf837991838971efe703f8669a6",
+        "reused_types": 2,
+        "reused_admission": 9
       },
       "execution_record": "207-v02-current80-original-performance.md",
       "current_checkpoint": {
         "record": "207-v02-current80-original-performance.md",
-        "status": "source-complete-prerequisites-pending",
-        "next_bounded_step": "Missing current80 backend13 can be checked independently; no CA/key/import/dependentbrowser/measurement before206answer. Freeze exact case/reader beforeONE originalworkload measurement."
+        "status": "source-and-independent-backend-complete-TLS-answer-pending",
+        "next_bounded_step": "Required206answer before freshCA/key/import/dependentmeasurement. Current80backend13 now actualPASS; types2/admission9 exact reused. Source/case/reader freezing must precedeONE original-workload measure."
       },
       "completed_slices": [
         {
@@ -11427,11 +11434,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "7new/26focused/5532full sourcePASS; identity-only current80 original15driver plus exactcorrected17cleanup.327product/2archives/33oldnative stable. No native/TLS/performance claim;20of29 unchanged.206approval pending, independent current80backend13 missing.",
+    "current_activity_note": "V02.20source7/26/5532PASS; independent actualcurrent80backend13PASS on clean7499420,6changedsavedcontrols,327current/archives exact, type2/admission9 reused. Publicexampleembedding only/notofficialhost. TLSanswerpending,0measurement/0newCA/trust;20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "4afee97ae0ca3df1273163956bfb0c39001798c6",
+    "current_source_revision": "74994204bff73a017e18bd9843e7bc41f7d79b4a",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "Missing current80 backend13 can be checked independently; no CA/key/import/dependentbrowser/measurement before206answer. Freeze exact case/reader beforeONE originalworkload measurement.",
+    "next_bounded_step": "Required206answer before freshCA/key/import/dependentmeasurement. Current80backend13 now actualPASS; types2/admission9 exact reused. Source/case/reader freezing must precedeONE original-workload measure.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -11441,7 +11448,7 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "base before two new measurement sourcefiles; current exact file hashes in checkpoint",
+    "current_source_revision_kind": "committed measurement sibling source plus actual independent backend run; not performance result",
     "current_source_checkpoint": ".artifacts/v02/current80-performance-source/2026-10-26/source-checkpoint.json",
     "current_source_checkpoint_kind": "owned source cleanup/CLI refusal tests only; no native measurement",
     "historical_active_pointer_before_V02_18": {
