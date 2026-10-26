@@ -41,15 +41,15 @@ new unique .artifacts/a02/corrected-committed-memo-native{,-saved-verification,-
 record/status/task-index updates only.
 **Interfaces:** committed current source→prepare/preflight source roundtrip→newcase commit→
 exact prewritten21predicate/546old+newcontrols readers/contracts→one frozen run.
-- [ ] task-start/read brief; prepare/preflight actual CLI source roundtrip before case freeze.
+- [x] task-start/read brief; prepare/preflight actual CLI source roundtrip before case freeze.
 Expected new admission or honest no-run refusal, never old packet/security changes.
-- [ ] If admitted, commit newcase, copy old reader rules to new identity pins, verify21original
+- [x] If admitted, commit newcase, copy old reader rules to new identity pins, verify21original
 predicate ASTs unchanged and canonical JSON changed controls, freeze reader contract before marker.
-- [ ] Max1owned host launch; original/off/on18phases/loaded source/process/leases/cleanup.
+- [x] Max1owned host launch; original/off/on18phases/loaded source/process/leases/cleanup.
 Expected observed reference/known boundary or honest incomplete result, not promised hypotheses.
-- [ ] First frozen full reader ONCE on exact rawSHA; preserve refusal, no retune/retry;
+- [x] First frozen full reader ONCE on exact rawSHA; preserve refusal, no retune/retry;
 preservation-only reader unqualified. Verify actual known hostPID/start/profile/resources.
-- [ ] Record exact source/case/execution revisions/results/limits, source/hash/saved binder,
+- [x] Record exact source/case/execution revisions/results/limits, source/hash/saved binder,
 local results commit/task-done; no source rerun absent changes/new failures.
 
 ## Final gate

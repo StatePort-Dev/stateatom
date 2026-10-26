@@ -1,10 +1,11 @@
 # Project status
 
-A02.46 source complete/native preparation pending: [corrected-source Memo case](completion/202-a02-corrected-committed-memo-native.md).
-11new/333focused/5435fullPASS; actual source roundtrip pending. NEW closed identity siblings reuse
-corrected45policy/preflight/criteria/resource behavior;1846protectedtracked/1642priorcurrent/
-34frozen45 files unchanged. No source roundtrip/case/native run yet.
-20of29/fullA02/16historicaldeferred unchanged. Next actual prepare→preflight then freshfreeze/max1launch.
+A02.46 bounded native PASS/ONEreview pending: [corrected-source Memo case](completion/202-a02-corrected-committed-memo-native.md).
+Actual prepare→preflight then ONElaunch/3modes/18phases; original native4/4/App4/8/
+Main5/9/joint4/8 retained. SelectedMemo4positive+4separateDifferent/bailout boundaries.
+Frozen fullreader FIRSTpass838changedcontrols(546old+292new), preservation25unqualified;
+1725hashes equal/hostPIDprofilegone/resourcesclosed.11new/333focused/5435full source.
+No property/ownership/installed/fullA02 upgrade;20of29/16historicaldeferred unchanged.
 
 A02.45 closed no-native refusal + verified source correction, ONEreview0C0I1M:
 [committed Memo case](completion/201-a02-committed-memo-native.md). Frozenfe6case
