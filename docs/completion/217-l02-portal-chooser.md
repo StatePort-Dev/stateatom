@@ -66,3 +66,12 @@ Prewritten reader retains five exact pure hash/uniqueJSON/process functions and
 2positive/3negative source controls. It uses the appended portal collection guard
 with all original common predicates, and binds actual bridge argv/environment witness
 without treating this as independent semantic/model acceptance. No native/reader yet.
+
+## Frozen execution checkpoint
+
+Source `6dbd45c6d833c9382d4a600ac3daa05832463d1f`; actual prepare/preflight exit0, browser/model0.
+Case `docs/testing/l02-comparison-portal-case82.json`, SHA `a5131ff8aff50ae680c1910ef2b66e053d09e9bb6458e344bee327a4b4ed4a34`,611frozenbindings including case/current327/newreader/contract. Output
+`.artifacts/l02/pq/cee16159/`,27original hostfiles unchanged plus2research addon files.
+Prewritten reader5purefunctions exact/2positive3negative sourcecontrols; original row
+and common collection hashes retained. MaxONE cached-only actual attempt next, no
+oldcase/reader retry or new CA/trust/provider/prompt changes. Collection is not L02.

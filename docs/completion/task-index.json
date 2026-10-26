@@ -5255,7 +5255,7 @@
       "active_slice": {
         "id": "L02.18",
         "record": "217-l02-portal-chooser.md",
-        "status": "source-complete-native-pending",
+        "status": "frozen-native-pending",
         "base": "2aea834478144b419603eb7594aac6967f8470df",
         "new_source_checks": 20,
         "native_runs": 0,
@@ -5265,7 +5265,10 @@
         "full_L02": false,
         "review_pending": true,
         "focused_checks": 256,
-        "full_checks": 5756
+        "full_checks": 5756,
+        "source_revision": "6dbd45c6d833c9382d4a600ac3daa05832463d1f",
+        "frozen_bindings": 611,
+        "case_sha256": "a5131ff8aff50ae680c1910ef2b66e053d09e9bb6458e344bee327a4b4ed4a34"
       },
       "implementation_plan": "../superpowers/plans/2026-10-26-l02-portal-chooser.md",
       "remaining_acceptance": [
@@ -8955,7 +8958,7 @@
     "active_item": {
       "id": "L02.18",
       "record": "217-l02-portal-chooser.md",
-      "status": "source-complete-native-pending"
+      "status": "frozen-native-pending"
     },
     "completed_increments": [
       {
@@ -11958,7 +11961,7 @@
     "scope_adoption_record": "13-scope-reconciliation.md",
     "current_activity_note": "New portal-aware owned chooser source;20new/256focused/5756full sourcePASS, native0/model0. Pre-exec witness and independent daemon/service ownership before input. FullL02/20of29/17deferred unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "2e1dce958f268ec8b5f8d9b51740e3fb1152a94b",
+    "current_source_revision": "6dbd45c6d833c9382d4a600ac3daa05832463d1f",
     "current_record_date": "2026-10-26",
     "next_bounded_step": "ONE L02.18 finalsource verification and frozen current82 portal case before maxONE cached-only acquisition.",
     "historical_active_pointer_before_V03_23": {
@@ -11970,7 +11973,7 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "Current diagnostic ownership source; native17 historical before I1fix, no product change",
+    "current_source_revision_kind": "Portal ownership research source; current82 product327 unchanged, native pending",
     "current_source_checkpoint": ".artifacts/l02/portal-chooser-source/2026-10-26/checkpoint.json",
     "current_source_checkpoint_kind": "Portal source only; native0/model0, original criteria preserved",
     "historical_active_pointer_before_V02_18": {
