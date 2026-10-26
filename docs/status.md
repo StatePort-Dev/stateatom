@@ -1,5 +1,12 @@
 # Project status
 
+A02.36 source checks in progress: [selected committed props](completion/192-a02-committed-props.md).
+Shared existing committed-tree selector/new strict supplied-props matcher; no UI/native/
+source-element or property-origin claim.27new/49focused/5107fullPASS; ONEreview pending.
+Old snapshot predicates preserved; new65ancestor boundary corrected after actualRED.
+20of29/fullA02/15deferred unchanged. Prior frozen collector source is historical, not
+current native qualification; no old experiment/cert/trust/package work.
+
 A02.35 bounded native acquisition closed, ONEreview0C0I1M/15deferred:
 [declared retention acquisition](completion/191-a02-retained-app-state-source.md).
 ONElaunch/3modes/18phases (28pinned sourcefiles); native4/4,App4/8,Main5/9,joint4/8 acquired.

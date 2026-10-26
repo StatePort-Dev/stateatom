@@ -1661,8 +1661,22 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "191-a02-retained-app-state-source.md",
+      "execution_record": "192-a02-committed-props.md",
       "completed_slices": [
+        {
+          "id": "A02.36",
+          "status": "source-complete-review-pending",
+          "record": "192-a02-committed-props.md",
+          "base": "afa3d634bb201a6aa514074eb78e95bbb78bd02e",
+          "new_source_tests": 27,
+          "focused_checks": 49,
+          "full_checks": 5107,
+          "native_runs": 0,
+          "full_A02": false,
+          "source_element_identity": "Unknown/Unsupported",
+          "supplied_reference_only": true,
+          "review_pending": true
+        },
         {
           "id": "A02.35",
           "record": "191-a02-retained-app-state-source.md",
@@ -2730,8 +2744,12 @@
           "next_bounded_step": "ONE separately scoped actual availability-observation decision with new gate metadata; no automatic retry/presumed positive/GC/selectedDOM claim."
         }
       ],
-      "implementation_plan": null,
-      "active_slice": null
+      "implementation_plan": "../superpowers/plans/2026-10-26-a02-committed-props.md",
+      "active_slice": {
+        "id": "A02.36",
+        "status": "source-complete-review-pending",
+        "record": "192-a02-committed-props.md"
+      }
     },
     {
       "id": "A03",
@@ -7971,8 +7989,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V03.29-closed-nativePASS-posthoc-controls-verified",
-    "next_item": "ONEmandatoryL02, L01complete: reconcile retained quality/lifecycle evidence and choose one concrete remaining source blocker; no old13AI install/model/cert experiment restart bydefault.",
+    "current_increment": "A02.36-source-complete-review-pending",
+    "next_item": "ONE source reference admission to exact selected committed props matcher; no source-element identity inference or oldcase rerun.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -7997,9 +8015,9 @@
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
-      "id": "V03",
-      "record": "187-v03-corrected-current-clean-editor.md",
-      "status": "closed-bounded-native-pass-posthoc-controls-verified"
+      "id": "A02",
+      "record": "192-a02-committed-props.md",
+      "status": "source-complete-review-pending"
     },
     "completed_increments": [
       {
@@ -10694,11 +10712,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Native6stepPASS/587stable; ONEreview0C2Ifixed0newM, offline4tests/31changedcontrolsPASS using unchanged frozenpositivecore. Originalfullreaderexit1/preregisteredqualificationfalse retained/no native repeat.327product/oldraw stable,20of29/fullV03/guideFAIL unchanged.",
+    "current_activity_note": "27new/49focused/5107fullPASS; ONEreview pending. Supplied props/type references only; exact selected ancestor, source/property origins Unknown. Prior A02.35 native gate acquired independently.20of29/15deferred unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "b105448eeb60aa62bfd5790703a42be5fa917871",
+    "current_source_revision": "afa3d634bb201a6aa514074eb78e95bbb78bd02e",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONEmandatoryL02, L01complete: reconcile retained quality/lifecycle evidence and choose one concrete remaining source blocker; no old13AI install/model/cert experiment restart bydefault.",
+    "next_bounded_step": "Complete current source checks/ONE review/local commit then ONE source-reference admission item.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -10708,9 +10726,9 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "exact checked shared research source; nativecase d48598a, later results/posthoc/docs only",
-    "current_source_checkpoint": ".artifacts/v03/corrected-current-clean-editor-posthoc-verification/2026-10-26/report.json",
-    "current_source_checkpoint_kind": "NEW posthoc analysis; original preregistered fullreader refusal retained",
+    "current_source_revision_kind": "base before declared source changes; uncommitted current-source work",
+    "current_source_checkpoint": ".artifacts/a02/committed-props-source/2026-10-26/source-checkpoint.json",
+    "current_source_checkpoint_kind": "actual source logs/hashes; no native qualification",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
       "active_item": {
@@ -10721,7 +10739,23 @@
       "next_item": "ONE review0C1I0M accepted semantic iterator defect; fixed4args62PASS. Commit correction source then fresh retained-source15cases48contexts and fullsuite; old544.../3755 historical only. No rereview/native/browser/model.",
       "current_activity_note": "A02.10 ONEsourceReview0C1I0M found lateArray.iterator rest-spread app sideeffect. RED60PASS2FAIL -> fixed4arg helper62PASS; commit/fresh corrected retained-source15cases48contexts/fullsuite pending. Prior clean19edb1c raw544.../13cases42VM/3755PASS preserved as historical, not corrected recipe proof. No native/browser/model/re-review; old47source/current327/raw stable, stronger lineage Unknown/full20of29 open.",
       "next_bounded_step": "ONE review0C1I0M accepted semantic iterator defect; fixed4args62PASS. Commit correction source then fresh retained-source15cases48contexts and fullsuite; old544.../3755 historical only. No rereview/native/browser/model."
+    },
+    "historical_global_pointer_before_A02_36": {
+      "current_increment": "V03.29-closed-nativePASS-posthoc-controls-verified",
+      "active_item": {
+        "id": "V03",
+        "record": "187-v03-corrected-current-clean-editor.md",
+        "status": "closed-bounded-native-pass-posthoc-controls-verified"
+      },
+      "next_item": "ONEmandatoryL02, L01complete: reconcile retained quality/lifecycle evidence and choose one concrete remaining source blocker; no old13AI install/model/cert experiment restart bydefault.",
+      "current_activity_note": "Native6stepPASS/587stable; ONEreview0C2Ifixed0newM, offline4tests/31changedcontrolsPASS using unchanged frozenpositivecore. Originalfullreaderexit1/preregisteredqualificationfalse retained/no native repeat.327product/oldraw stable,20of29/fullV03/guideFAIL unchanged.",
+      "current_source_revision": "b105448eeb60aa62bfd5790703a42be5fa917871",
+      "current_record_date": "2026-10-26",
+      "next_bounded_step": "ONEmandatoryL02, L01complete: reconcile retained quality/lifecycle evidence and choose one concrete remaining source blocker; no old13AI install/model/cert experiment restart bydefault.",
+      "current_source_revision_kind": "exact checked shared research source; nativecase d48598a, later results/posthoc/docs only",
+      "current_source_checkpoint": ".artifacts/v03/corrected-current-clean-editor-posthoc-verification/2026-10-26/report.json",
+      "current_source_checkpoint_kind": "NEW posthoc analysis; original preregistered fullreader refusal retained"
     }
   },
-  "next_task": "L02"
+  "next_task": "A02"
 }

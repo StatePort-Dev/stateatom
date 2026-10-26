@@ -56,20 +56,28 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
   }
  }
  function tap(){try{invoke(receive,undefined,arguments);}catch{unavailable='Native metadata acquisition unavailable';current=null;}}
- function read(node){
+ function committedTree(node,strict=false){
   if(stopped||capped||!supported||unavailable)return unknown(stopped?'Observer stopped':capped?'Observation capacity refused':unavailable||'WeakRef unavailable');
   if(multipleRoots)return unknown('Multiple committed native roots outside this profile');
   const root=current?.root.deref(),finished=current?.finished.deref();
   if(!object(node)||!root||!finished||own(root,'current')!==finished)return unknown('No matching current committed root');
   const pending=[{fiber:finished,parent:null}],seen=new Set(),parents=new Map();let selected=null;
   while(pending.length){
-   const{fiber,parent}=pending.pop();if(!fibers.has(fiber))continue;
+   const{fiber,parent}=pending.pop();if(!fibers.has(fiber)){if(strict)return unknown('Unregistered committed native tree edge');continue;}
    if(seen.has(fiber))return unknown('Ambiguous or cyclic committed native tree');
    seen.add(fiber);parents.set(fiber,parent);if(seen.size>512)return unknown('Committed tree capacity refused');
    if(own(fiber,'tag')===5&&own(fiber,'stateNode')===node){if(selected)return unknown('Ambiguous native host identity');selected=fiber;}
-   const child=own(fiber,'child'),sibling=own(fiber,'sibling');if(object(child))pending.push({fiber:child,parent:fiber});if(object(sibling))pending.push({fiber:sibling,parent});
+   const edge=k=>{if(strict){const d=describe(fiber,k);if(d&&!Object.hasOwn(d,'value'))throw Error('Committed tree edge unavailable');}return own(fiber,k);};
+   const child=edge('child'),sibling=edge('sibling');
+   if(strict&&(child!=null&&!object(child)||sibling!=null&&!object(sibling)))return unknown('Invalid committed native tree edge');
+   if(object(child))pending.push({fiber:child,parent:fiber});if(object(sibling))pending.push({fiber:sibling,parent});
   }
   if(!selected)return unknown('Selected DOM node absent from current committed tree');
+  return{root,finished,selected,parents};
+ }
+ function read(node){
+  const tree=committedTree(node);if(tree.status)return tree;
+  const{root,finished,selected,parents}=tree;
   const ancestors=[],walked=new Set();let fiber=selected;
   while(fibers.has(fiber)&&walked.size<64&&!walked.has(fiber)){
    walked.add(fiber);let hook=[0,11,15].includes(own(fiber,'tag'))?own(fiber,'memoizedState'):null;const visited=new Set();
@@ -88,5 +96,23 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
   if(!ancestors.length)return unknown('No exact eligible native reducer ancestor result');
   return{...unknown(null),status:'Observed',nodeId:id(node),rootId:id(root),commitId:current.commitId,ancestors};
  }
- return Object.freeze({tap,snapshot(node){try{return read(node);}catch{return unknown('Native metadata snapshot unavailable');}},stop(){stopped=true;current=null;},retention(){return{events,queues:queueCount,updates:updateCount,stopped,capped,available:supported&&!unavailable};}});
+ const propsUnknown=reason=>({schema:'stateatom.committed-props-reference/1',page,status:'Unknown/Unsupported',reason,scope:'Supplied props/type references on the exact selected current function-component ancestor; source element and property origins unknown',match:null,suppliedReferenceOnly:true,sourceElementIdentity:'Unknown/Unsupported',selectedPropertyOrigin:'Unknown/Unsupported',stateToProp:'Unknown/Unsupported',fieldOwnership:'Unknown/Unsupported',fullPath:false});
+ function matchCommittedProps(node,props,component){
+  try{
+   if(!object(props)||typeof component!=='function')return propsUnknown('Opaque props object and function component references required');
+   const tree=committedTree(node,true);if(tree.status)return propsUnknown(tree.reason);
+   const{root,finished,selected,parents}=tree,walked=new Set();let fiber=selected,matched=null;
+   while(fibers.has(fiber)&&walked.size<64&&!walked.has(fiber)){
+    walked.add(fiber);
+    if(own(fiber,'tag')===0&&own(fiber,'memoizedProps')===props&&own(fiber,'type')===component){
+     if(matched)return propsUnknown('Ambiguous matching committed props ancestors');matched=fiber;
+    }
+    if(fiber===finished)break;fiber=parents.get(fiber);
+   }
+   if(fiber!==finished||!walked.has(finished))return propsUnknown('Selected ancestor chain does not reach current root');
+   if(!matched)return propsUnknown('No exact supplied props/type ancestor reference');
+   return{...propsUnknown(null),status:'Observed',match:{nodeId:id(node),rootId:id(root),commitId:current.commitId,fiberId:id(matched),propsId:id(props),componentId:id(component)}};
+  }catch{return propsUnknown('Committed props metadata unavailable');}
+ }
+ return Object.freeze({tap,snapshot(node){try{return read(node);}catch{return unknown('Native metadata snapshot unavailable');}},matchCommittedProps,stop(){stopped=true;current=null;},retention(){return{events,queues:queueCount,updates:updateCount,stopped,capped,available:supported&&!unavailable};}});
 }
