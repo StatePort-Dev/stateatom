@@ -63,3 +63,39 @@ Task1 result remains separate. Actual native BACKENDruns1; performance runs0.
 TLS206answer still pending, no newCA/key/import/dependentmeasurement. No performance,
 field-widget/fullV02/V03/I02/release upgrade;20of29 unchanged. Next independent task
 may proceed while required TLS answer remains pending.
+
+## Explicitly approved TLS setup and frozen current80 case
+
+User answered206: “Да, выполнить изолированную подготовку и новый замер по исходным
+критериям”. `tls-authorization.json` records that exact bounded authority. ONEnew
+synthetic CA/server pair and ONEfresh seed profile were prepared with unchanged
+existing helper2dayRSA2048/SHA256. Root/server valid2026-10-26 08:38:10 through
+2026-10-28 08:38:10UTC. This is test material, not a shipping certificate.
+Chain/hostnamePASS; readonlySQLite confirms exactlyONEcert matching generatedrootDER,
+trustsettings byte-identical to original accepted seed. Privatekeys0600/ownrootdir0700.
+OwnXDG/private nesteddisplay/Chrome153; no personal/defaultprofile or systemtrust action.
+Preparation server/browser/display closed, Chrome1383969/start observed in actual
+host namespace4026531836 and absent at preparation exit. No measurement from setup.
+
+Newcase `docs/testing/basic-observer-current80-case.json` SHA
+ead32ce642aed0b61fb2fe1134966ef6ce82831cb0f0a577329c9cde6dcb3d75.
+421registered inputs, including327current product inputs; original241role inputs
+mapped to actual80/type2/admission9/backend13/newTLS and new frozenreader/contract.
+Among unmapped historical helper paths, exactly build-profile.mjs differs from72:
+only BUILDER_PIN/plugin hash literals changed before this item. No IDE/first-read
+builder executes in this performance workload; current helper bytes are frozen,
+not called223unchanged. Original15source otherwise exact except four identities
+and corrected17cleanup; no product/source instrumentation/metric policy change.
+
+Prewritten reader `.artifacts/v02/current80-performance-saved-verification/2026-10-26/`
+independently enumerates protocol/order/median/nearest-rankp95/paired distributions/
+windows/input hashes/ordinaryTLS/context/cleanup and persisted sample/workload/attempt/
+window alignment. Owned synthetic198rows/32CHANGEDnegative controlsPASS before actual
+run; this is source-only reader control, no runtime qualification. First FULLreader
+has an exclusive marker; no retuning after outcome. No persisted server trace exists
+in original15driver:3960requests derive from198×20 with original live per-row server
+count assertion preserved. No independent persisted per-request reconstruction claim.
+
+Case/source/reader are now prepared; actualmeasurement0 at this checkpoint. Execution
+revision/clean tree/case+reader hashes will be registered immediately before maxONErun.
+Same1s/10%/198rows/18warm180measured/66windows/twohosts; original72miss stays historical.

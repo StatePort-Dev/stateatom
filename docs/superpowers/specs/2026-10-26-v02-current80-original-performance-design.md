@@ -30,7 +30,8 @@ must be explicit; actual process absence requires host namespace evidence.
 Before new run: actual current80 type/admission receipts reused if exactbytes; inherited
 backend controls must correspond to current80 (run missing current-byte checks only).
 Prewritten frozen saved reader must validate exactcase/source/archives/cert/trust/327
-inputs, all198ordered rows/attempts/workloads/3960samples/66windows, correct histogram
+inputs, all198ordered rows/attempts/workloads/66windows and3960derivedrequests with the
+original live per-row server-count assertion (no persisted server trace), correct histogram
 and target recomputation, inputafter/cleanup and changed negative controls. Register
 reader hash and source/case/execute identities before run. No retuning after outcome.
 
