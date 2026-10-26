@@ -6036,84 +6036,40 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.24",
-        "record": "214-v02-publication-original-performance.md",
-        "status": "closed-complete-measurement-original-targets-missed",
-        "base": "ff2109bc2037c96d0f52f04e31b329c425ea3b03",
-        "candidate": "0.1.0-candidate.20261026.82",
-        "new_source_tests": 8,
-        "focused_checks": 33,
-        "native_runs": 2,
-        "backend_runs": 1,
-        "measurement_runs": 1,
-        "maximum_backend_runs": 1,
-        "maximum_measurement_runs": 1,
+        "id": "V02.25",
+        "record": "215-v02-webrequest-feasibility.md",
+        "status": "closed-bounded-source-api-feasibility-no-dropin-parity",
+        "source_only": true,
+        "source_contract_witnesses": 1,
+        "native_runs": 0,
         "model_calls": 0,
-        "new_CAs": 0,
-        "new_imports": 0,
+        "product_changes": 0,
+        "permission_changes": 0,
         "performance_acceptance": false,
         "whole_V02_complete": false,
-        "review_pending": false,
-        "source_checks": 5720,
-        "source_checkpoint": ".artifacts/v02/publication-performance-source/2026-10-26/source-checkpoint.json",
-        "source_revision": "cb2a750cab3313ac6a80b0e2be8a6815744d4dc4",
-        "backend_checks": 13,
-        "backend_saved_negative_controls": 6,
-        "types_checks": 2,
-        "admission_checks": 9,
-        "handoff": ".artifacts/atom/2026-10-26T17-06-59-661Z/atom-handoff.json",
-        "package_sha256": "823171ce44ffd8f8a10f79c66ccafc855456bcab9f9ea8068e48d831c735afa4",
-        "backend_checkpoint": ".artifacts/v02/publication-performance-source/2026-10-26/backend-checkpoint.json",
-        "both_backend_main_pids_captured": false,
-        "known_backend_main_pids_retired": 1,
-        "owned_backend_profile_references_after_exit": 0,
-        "case": "../testing/basic-observer-publication-case.json",
-        "case_sha256": "887dd6cde7d50a5cb16c616f1b2b2d238854c3f5f316f9daf413f6613e4ee248",
-        "registered_inputs": 442,
-        "prewritten_reader_controls": 32,
-        "first_frozen_reader_pending": false,
-        "measurement_executed": true,
-        "measurement_complete": true,
-        "measurement_rows": 198,
-        "warmup_rows": 18,
-        "measured_rows": 180,
-        "active_windows": 66,
-        "first_frozen_reader": true,
-        "reader_negative_controls": 32,
-        "frozen_inputs_current": 442,
-        "raw_sha256": "05319594db74a5b77c120810ee36d5cc9abbbdcc08d10cc7181cbbb273bb5126",
-        "basic_p95_ms": {
-          "standalone": 402.69999998807907,
-          "embedding": 399.19999998807907
-        },
-        "active_off_percent": {
-          "standalone": 28.11355311,
-          "embedding": 21.05704694
-        },
-        "targets_met": false,
-        "targets_waived": false,
-        "native_checkpoint": ".artifacts/v02/publication-performance-source/2026-10-26/native-checkpoint.json",
-        "execution_revision": "d06234d26898f304f96579d53a06b70ed72fc4ef",
-        "case_exhausted": true,
-        "remaining_backend_runs": 0,
-        "remaining_measurement_runs": 0,
-        "remaining_full_reader_runs": 0,
-        "review": {
-          "critical": 0,
-          "important": 0,
-          "minor": 0,
-          "source_correction_passes": 0,
-          "rereview": false,
-          "historical_deferred_unchanged": 16
-        }
+        "decision": "No drop-in parity established under unchanged current host permissions; no new performance case or scope waiver."
       },
-      "execution_record": "214-v02-publication-original-performance.md",
+      "execution_record": "215-v02-webrequest-feasibility.md",
       "current_checkpoint": {
-        "record": "214-v02-publication-original-performance.md",
-        "status": "closed-complete-measurement-original-targets-missed",
-        "next_bounded_step": "ONE V02.25 source/API feasibility: currentframe/origin metadata coverage vs webRequest target+initiator host permissions; no productpermission/narrowercoverage/newbench assumed. Original10%miss/no waiver."
+        "record": "215-v02-webrequest-feasibility.md",
+        "status": "closed-bounded-source-api-feasibility-no-dropin-parity",
+        "next_bounded_step": "ONE L02.17 ownedChrome Loadunpacked dialog inventory sourcepreparation; actualwindow/owner/privatebus/display evidence only, no path/credential/install/model/CA or exhaustedcase retry."
       },
       "completed_slices": [
+        {
+          "id": "V02.25",
+          "record": "215-v02-webrequest-feasibility.md",
+          "status": "closed-bounded-source-api-feasibility-no-dropin-parity",
+          "source_only": true,
+          "source_contract_witnesses": 1,
+          "native_runs": 0,
+          "model_calls": 0,
+          "product_changes": 0,
+          "permission_changes": 0,
+          "performance_acceptance": false,
+          "whole_V02_complete": false,
+          "decision": "No drop-in parity established under unchanged current host permissions; no new performance case or scope waiver."
+        },
         {
           "id": "V02.24",
           "record": "214-v02-publication-original-performance.md",
@@ -7392,6 +7348,11 @@
         "status": "closed-bounded-source-complete-native-pending",
         "next_bounded_step": "ONE V02.24 newimmutable82/type2/admission9/changed-byte correctness then frozen original198row gate on retainedvalid206TLSseed, no newCA/import/model or oldcase/native retry.",
         "source_revision": "eafb3b18c410c4916f8750c472521bd5a475bbac"
+      },
+      "historical_checkpoint_before_V02_25": {
+        "record": "214-v02-publication-original-performance.md",
+        "status": "closed-complete-measurement-original-targets-missed",
+        "next_bounded_step": "ONE V02.25 source/API feasibility: currentframe/origin metadata coverage vs webRequest target+initiator host permissions; no productpermission/narrowercoverage/newbench assumed. Original10%miss/no waiver."
       }
     },
     {
@@ -8906,8 +8867,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.24-closed-original-targets-missed",
-    "next_item": "ONE V02.25 source/API feasibility: currentframe/origin metadata coverage vs webRequest target+initiator host permissions; no productpermission/narrowercoverage/newbench assumed. Original10%miss/no waiver.",
+    "current_increment": "V02.25-closed-source-api-feasibility",
+    "next_item": "ONE L02.17 ownedChrome Loadunpacked dialog inventory sourcepreparation; actualwindow/owner/privatebus/display evidence only, no path/credential/install/model/CA or exhaustedcase retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8933,8 +8894,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "V02",
-      "record": "214-v02-publication-original-performance.md",
-      "status": "closed-complete-measurement-original-targets-missed"
+      "record": "215-v02-webrequest-feasibility.md",
+      "status": "closed-bounded-source-api-feasibility-no-dropin-parity"
     },
     "completed_increments": [
       {
@@ -11935,11 +11896,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.24 new82/source5720/type2/admission9/backend13,ONE198row/66windows/FIRSTreader32controls/442bindingsPASS. Basicp95402.7/399.2PASS1s; active/off28.1136/21.0570%MISS10/no waiver. Budgets/reader exhausted, raw2ChromePIDsAbsent/no startfingerprints/inspectorconsoleonly. No newCA/import/model;20of29/fullV02/16deferred unchanged. ONEreview0C0I0M/no corrections/rereview/native retry;16deferred unchanged.",
+    "current_activity_note": "V02.25 primaryChromeAPI+currentframe/loader sourcewitness: webRequest destination+initiator host grants cannot silently replace currentcross-origin coverage. No product/permission/threshold/newbenchmark change; native0/model0/fullV02open/20of29/16deferred unchanged. NextsingleL02dialoginventory prep, not modelacquisition retry.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "cb2a750cab3313ac6a80b0e2be8a6815744d4dc4",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONE V02.25 source/API feasibility: currentframe/origin metadata coverage vs webRequest target+initiator host permissions; no productpermission/narrowercoverage/newbench assumed. Original10%miss/no waiver.",
+    "next_bounded_step": "ONE L02.17 ownedChrome Loadunpacked dialog inventory sourcepreparation; actualwindow/owner/privatebus/display evidence only, no path/credential/install/model/CA or exhaustedcase retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -11988,5 +11949,5 @@
     "current_release_assessment": "205-release-date-decision.md",
     "current_release_assessment_snapshot": ".artifacts/release/2026-10-26-open-gates-assessment/snapshot.json"
   },
-  "next_task": "V02"
+  "next_task": "L02"
 }

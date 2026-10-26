@@ -1,5 +1,11 @@
 # Project status
 
+V02.25 [passive API drop-in parity not established](completion/215-v02-webrequest-feasibility.md).
+ChromewebRequest visibility requires destination+initiator host grants; currentframe/
+loader collector admits cross-origin routes. Ownedsourcewitness PASS, not nativeproof.
+No permission/coverage/transport/threshold/productchange or newbenchmark;20of29/fullV02 unchanged.
+NextONE L02.17 ownednative dialog inventory source preparation, no path/credential/model input.
+
 V02.24 [ONE new82 original measurement COMPLETE, target missed](completion/214-v02-publication-original-performance.md).
 New82/current327/type2/admission9/ONEbackend13PASS; source8/33/5720PASS.
 ONE198rows/18warm180measured/66windows/FIRSTreader32controls/442bindingsPASS.
