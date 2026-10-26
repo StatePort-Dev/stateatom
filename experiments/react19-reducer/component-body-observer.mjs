@@ -6,8 +6,9 @@ export function createComponentBodyObserver({page,nativeCalls,policy,enabled=tru
  const WM=WeakMap,get=WM.prototype.get,set=WM.prototype.set,Ref=weakRef,U='Unknown/Unsupported';
  const object=v=>v!==null&&(typeof v==='object'||typeof v==='function');
  const own=(o,k)=>{if(!object(o))throw Error('Own metadata required');const d=describe(o,k);if(!d||!has(d,'value'))throw Error('Own data required');return d.value;};
- const exact=(o,fields)=>{const names=keys(o);if(names.length!==fields.length||names.some(n=>!fields.includes(n)))throw Error('Closed metadata required');for(const n of fields)own(o,n);};
- const dto=fields=>{const out=create(null);for(const k of keys(fields)){const d=create(null);d.value=fields[k];d.enumerable=true;define(out,k,d);}return freeze(out);};
+ const exact=(o,fields)=>{const names=keys(o);if(names.length!==fields.length)throw Error('Closed metadata required');for(let i=0;i<names.length;i++){let found=false;for(let j=0;j<fields.length;j++)if(fields[j]===names[i]){found=true;break;}if(!found)throw Error('Closed metadata required');}for(let i=0;i<fields.length;i++)own(o,fields[i]);};
+ const dto=fields=>{const out=create(null),names=keys(fields);for(let i=0;i<names.length;i++){const k=names[i],d=create(null);d.value=fields[k];d.enumerable=true;define(out,k,d);}return freeze(out);};
+ const append=(a,v)=>{const d=create(null);d.value=v;d.enumerable=true;d.writable=true;d.configurable=true;define(a,a.length,d);};
  const read=(map,k)=>apply(get,map,[k]),put=(map,k,v)=>apply(set,map,[k,v]);
  let entries=new WM(),frames=new WM(),current=null,nativeMatch=null,deref=null,unavailable=null,entrySite=null,returnSite=null,labels=null,events=0,serial=0,stopped=false,capped=false,fault=null;
  const clear=()=>{entries=new WM();frames=new WM();};
@@ -19,12 +20,12 @@ export function createComponentBodyObserver({page,nativeCalls,policy,enabled=tru
   if(own(policy,'schema')!=='stateatom.component-body-source/1'||typeof file!=='string'||!file||file.length>1024||!hex(digest)||typeof owner!=='string'||!owner||owner.length>256)throw Error('Body source metadata required');
   const params=own(policy,'parameters'),sites=own(policy,'sites');
   if(!isArray(params)||own(params,'length')!==2||!isArray(sites)||own(sites,'length')!==2)throw Error('Two parameters/sites required');
-  const names=[];for(let i=0;i<2;i++){const p=own(params,String(i));exact(p,['key','binding']);const key=own(p,'key'),binding=own(p,'binding');if(typeof key!=='string'||!key||key.length>256||typeof binding!=='string'||!binding||binding.length>256)throw Error('Parameter labels required');names.push(dto({key,binding}));}
+  const names=[];for(let i=0;i<2;i++){const p=own(params,String(i));exact(p,['key','binding']);const key=own(p,'key'),binding=own(p,'binding');if(typeof key!=='string'||!key||key.length>256||typeof binding!=='string'||!binding||binding.length>256)throw Error('Parameter labels required');append(names,dto({key,binding}));}
   if(names[0].key===names[1].key||names[0].binding===names[1].binding)throw Error('Distinct parameters required');
   for(let i=0;i<2;i++){
    const s=own(sites,String(i));exact(s,['id','file','sourceDigest','kind','owner','line','column','endLine','endColumn']);
    const id=own(s,'id'),kind=own(s,'kind');if(!hex(id)||own(s,'file')!==file||own(s,'sourceDigest')!==digest||own(s,'owner')!==owner)throw Error('Exact source site required');
-   for(const k of ['line','column','endLine','endColumn'])if(!integer(own(s,k))||own(s,k)<1)throw Error('Source coordinates required');
+   const coordinates=['line','column','endLine','endColumn'];for(let j=0;j<coordinates.length;j++){const k=coordinates[j];if(!integer(own(s,k))||own(s,k)<1)throw Error('Source coordinates required');}
    if(own(s,'endLine')<own(s,'line')||own(s,'endLine')===own(s,'line')&&own(s,'endColumn')<own(s,'column'))throw Error('Source range required');
    if(kind==='component-body-entry'&&!entrySite)entrySite=id;else if(kind==='component-body-return'&&!returnSite)returnSite=id;else throw Error('Unique body sites required');
   }
@@ -59,7 +60,7 @@ export function createComponentBodyObserver({page,nativeCalls,policy,enabled=tru
    const group=read(frames,native),row=group?.only;
    if(!group||group.count!==1||group.depth!==0||!row?.returned||!row.a||!row.b||!row.result)return unknown('Unique complete body entry unavailable');
    const refs=[weak(row.self),weak(row.a),weak(row.b),weak(row.result)];
-   if(!refs.every(object)||refs[0]!==self||refs[1]!==a||refs[2]!==b||refs[3]!==result)return unknown('Exact live body references unavailable');
+   if(!object(refs[0])||!object(refs[1])||!object(refs[2])||!object(refs[3])||refs[0]!==self||refs[1]!==a||refs[2]!==b||refs[3]!==result)return unknown('Exact live body references unavailable');
    const nativeDTO=apply(nativeMatch,nativeCalls,[native,fiber,self,props,result]);if(own(nativeDTO,'status')!=='Observed')return unknown('Complete native interval unavailable');
    return dto({...unknown(null),status:'Observed',match:dto({id:row.id,source:labels,nativeFrame:own(own(nativeDTO,'match'),'frameId')})});
   }catch{return unknown('Body reference match unavailable');}

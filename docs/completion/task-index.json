@@ -1661,7 +1661,7 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "220-a02-selected-source-isolation.md",
+      "execution_record": "222-a02-body-array-intrinsics.md",
       "completed_slices": [
         {
           "id": "A02.49",
@@ -2970,7 +2970,7 @@
         "bounded_next_experiment": "A02.9 source-only historical claim description on retained data; no browser/native",
         "experiment_native_executed": false
       },
-      "current_checkpoint": "220-a02-selected-source-isolation.md",
+      "current_checkpoint": "222-a02-body-array-intrinsics.md",
       "stopping_point_history": [
         {
           "invoked": true,
@@ -3003,7 +3003,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "ONE final source review then V02 current event-routing inspection; no oldnative/GC campaign.",
+      "next_bounded_step": "ONE final bounded source review; I01 separate host scope pending, no oldnative repeats.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -3181,43 +3181,20 @@
           "next_bounded_step": "ONE cohesive exact retained Item parameter-reference integration/acquisition with existing complete committed Memo/source gates, frozen criteria/readers and max1 new owned launch. Preserve property origin/field ownership Unknown; no oldcase rerun."
         }
       ],
-      "implementation_plan": "../superpowers/plans/2026-10-27-a02-selected-source-isolation.md",
+      "implementation_plan": "../superpowers/plans/2026-10-27-a02-body-array-intrinsics.md",
       "active_slice": {
-        "id": "A02.52",
-        "record": "220-a02-selected-source-isolation.md",
-        "status": "closed-bounded-source-only",
-        "base": "e2ec49e1eac368b9704cfccf919f4b52477be19a",
-        "new_source_tests": 8,
-        "focused_checks": 67,
-        "full_checks": 5794,
+        "id": "A02.53",
+        "record": "222-a02-body-array-intrinsics.md",
+        "status": "source-complete-review-pending",
+        "base": "5f13eb52024896b0951c023a345564d170b77596",
+        "declared_source_deltas": 4,
+        "new_source_tests": 20,
+        "focused_checks": 258,
+        "full_checks": 5814,
         "native_runs": 0,
         "model_calls": 0,
         "full_A02": false,
-        "review_pending": false,
-        "source_revision": "92235d7",
-        "review": {
-          "critical": 0,
-          "important": 0,
-          "minor": 0
-        },
-        "archive": {
-          "schema": "stateatom.selected-source-review-closeout/1",
-          "archive": ".artifacts/a02/selected-source-review/2026-10-27/workspace.zip",
-          "sha256": "8069aec6d7ee6a0c53881ed114e06f93c91c579106c62c63acd318711340f826",
-          "files": 5,
-          "crcAndAllBytes": true,
-          "planIdentity": "docs/superpowers/plans/2026-10-27-a02-selected-source-isolation.md",
-          "review": {
-            "critical": 0,
-            "important": 0,
-            "minor": 0
-          },
-          "correctionPasses": 0,
-          "rereviews": 0,
-          "nativeRuns": 0,
-          "modelCalls": 0,
-          "fullA02": false
-        }
+        "review_pending": true
       },
       "historical_checkpoint_before_A02_51": {
         "active_slice": {
@@ -3312,6 +3289,46 @@
           }
         },
         "current_checkpoint": "219-a02-selected-frame-isolation.md"
+      },
+      "historical_checkpoint_before_A02_53": {
+        "active_slice": {
+          "id": "A02.52",
+          "record": "220-a02-selected-source-isolation.md",
+          "status": "closed-bounded-source-only",
+          "base": "e2ec49e1eac368b9704cfccf919f4b52477be19a",
+          "new_source_tests": 8,
+          "focused_checks": 67,
+          "full_checks": 5794,
+          "native_runs": 0,
+          "model_calls": 0,
+          "full_A02": false,
+          "review_pending": false,
+          "source_revision": "92235d7",
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 0
+          },
+          "archive": {
+            "schema": "stateatom.selected-source-review-closeout/1",
+            "archive": ".artifacts/a02/selected-source-review/2026-10-27/workspace.zip",
+            "sha256": "8069aec6d7ee6a0c53881ed114e06f93c91c579106c62c63acd318711340f826",
+            "files": 5,
+            "crcAndAllBytes": true,
+            "planIdentity": "docs/superpowers/plans/2026-10-27-a02-selected-source-isolation.md",
+            "review": {
+              "critical": 0,
+              "important": 0,
+              "minor": 0
+            },
+            "correctionPasses": 0,
+            "rereviews": 0,
+            "nativeRuns": 0,
+            "modelCalls": 0,
+            "fullA02": false
+          }
+        },
+        "current_checkpoint": "220-a02-selected-source-isolation.md"
       }
     },
     {
@@ -9075,8 +9092,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "I01-current82-handoff-prepared-not-host-intake",
-    "next_item": "Separately authorized current82 I01 host adaptation; other-repository mutation excluded by current Atom continuation.",
+    "current_increment": "A02.53-body-array-source-complete-review-pending",
+    "next_item": "ONE final bounded source review then pending I01 separate host scope decision; no old experiments rerun.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9101,9 +9118,9 @@
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
-      "id": "I01-preparation",
-      "record": "221-i01-current82-handoff-preparation.md",
-      "status": "complete-preparation-only"
+      "id": "A02.53",
+      "record": "222-a02-body-array-intrinsics.md",
+      "status": "source-complete-review-pending"
     },
     "completed_increments": [
       {
@@ -12104,11 +12121,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Public host task updated to exact82/UI2;327/twoarchives/handoff/ninehostfiles+cleanrevision/links PASS. Host unchanged/no build/native. FullI01 notaccepted/20of29/fullscope unchanged. V02 source inspection no justified optimization/repeat.",
+    "current_activity_note": "20new/258focused/5814fullPASS,4exact declared Array dispatch rewrites/source-only/current327+archives exact. Native0/model0/no50cause/fullA02 proof. ONEreview next; separate I01 scope pending/20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "92235d7",
     "current_record_date": "2026-10-27",
-    "next_bounded_step": "Separately authorized current82 I01 host adaptation; other-repository mutation excluded by current Atom continuation.",
+    "next_bounded_step": "ONE final bounded source review then pending I01 separate host scope decision; no old experiments rerun.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -12119,7 +12136,7 @@
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
     "current_source_revision_kind": "No product/source implementation change in I01 preparation;92235d7 remains latest experimental source checkpoint.",
-    "current_source_checkpoint": ".artifacts/a02/selected-source-source/2026-10-27/checkpoint.json",
+    "current_source_checkpoint": ".artifacts/a02/body-array-intrinsics-source/2026-10-27/checkpoint.json",
     "current_source_checkpoint_kind": "Source-only experimental observer correction; no native/field/lineage qualification",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",

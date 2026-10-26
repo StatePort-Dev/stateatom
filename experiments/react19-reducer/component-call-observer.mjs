@@ -8,8 +8,8 @@ export function createNativeComponentCallObserver({page,enabled=true,policy,weak
  const U='Unknown/Unsupported',object=v=>v!==null&&(typeof v==='object'||typeof v==='function');
  const own=(o,k)=>{if(!object(o))throw TypeError('Owned metadata required');const d=describe(o,k);if(!d||!has(d,'value'))throw TypeError('Own data required');return d.value;};
  const data=value=>{const d=create(null);d.value=value;d.enumerable=true;return d;};
- const dto=fields=>{const out=create(null);for(const k of keys(fields))define(out,k,data(fields[k]));return freeze(out);};
- const exact=(o,names)=>{const k=keys(o);if(k.length!==names.length)throw Error('Closed source metadata required');for(const n of k)if(!names.includes(n))throw Error('Closed source field required');for(const n of names)own(o,n);};
+ const dto=fields=>{const out=create(null),names=keys(fields);for(let i=0;i<names.length;i++){const k=names[i];define(out,k,data(fields[k]));}return freeze(out);};
+ const exact=(o,names)=>{const k=keys(o);if(k.length!==names.length)throw Error('Closed source metadata required');for(let i=0;i<k.length;i++){let found=false;for(let j=0;j<names.length;j++)if(names[j]===k[i]){found=true;break;}if(!found)throw Error('Closed source field required');}for(let i=0;i<names.length;i++)own(o,names[i]);};
  const read=(map,key)=>apply(get,map,[key]),put=(map,key,value)=>apply(set,map,[key,value]);
  let deref=null;try{if(typeof Ref==='function')deref=own(own(Ref,'prototype'),'deref');}catch{}
  const supported=typeof deref==='function',weak=r=>apply(deref,r,[]),sites=create(null);
@@ -20,7 +20,7 @@ export function createNativeComponentCallObserver({page,enabled=true,policy,weak
  const hex=v=>typeof v==='string'&&/^[a-f0-9]{64}$/.test(v),file='react-dom/cjs/react-dom-client.development.js',digest='806b25cf84808a5ae0104e81633caabb1aa11fce71e72ef7afe4c1f8d2ebec08';
  if(enabled)try{
   const admitted=own(policy,'nativeVersionAdmitted');if(typeof admitted!=='boolean')throw Error('Source version flag required');
-  exact(policy,['schema','file','sourceDigest','sites','nativeVersionAdmitted',...(admitted?['version']:[])]);
+  exact(policy,admitted?['schema','file','sourceDigest','sites','nativeVersionAdmitted','version']:['schema','file','sourceDigest','sites','nativeVersionAdmitted']);
   const sourceDigest=own(policy,'sourceDigest');
   if(own(policy,'schema')!=='stateatom.native-component-call-source/1'||own(policy,'file')!==file||!hex(sourceDigest))throw Error('Component source policy required');
   if(admitted&&(sourceDigest!==digest||own(policy,'version')!=='19.2.5'))throw Error('Pinned source metadata required');
@@ -30,7 +30,7 @@ export function createNativeComponentCallObserver({page,enabled=true,policy,weak
    const s=own(rows,String(i));exact(s,['id','file','sourceDigest','kind','owner','role','callee','line','column','endLine','endColumn']);
    const id=own(s,'id'),role=own(s,'role');
    if(!hex(id)||has(sites,id)||typeof role!=='string'||!has(owners,role)||has(seen,role)||own(s,'owner')!==owners[role]||own(s,'callee')!=='callComponentInDEV'||own(s,'kind')!=='native-component-call'||own(s,'file')!==file||own(s,'sourceDigest')!==sourceDigest)throw Error('Unique closed component source site required');
-   for(const k of ['line','column','endLine','endColumn'])if(!integer(own(s,k))||own(s,k)<1)throw Error('Source coordinates required');
+   const coordinates=['line','column','endLine','endColumn'];for(let j=0;j<coordinates.length;j++){const k=coordinates[j];if(!integer(own(s,k))||own(s,k)<1)throw Error('Source coordinates required');}
    if(own(s,'endLine')<own(s,'line')||own(s,'endLine')===own(s,'line')&&own(s,'endColumn')<own(s,'column'))throw Error('Source range required');
    sites[id]=role;seen[role]=true;
   }

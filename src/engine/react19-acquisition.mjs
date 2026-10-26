@@ -3,7 +3,8 @@
 // Native ancestor observations only; no fixture oracle or selected-property origin.
 export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
  if(typeof page!=='string'||!page||page.length>160)throw Error('React19 acquisition requires a bounded page identity');
- const describe=Object.getOwnPropertyDescriptor,same=Object.is,isArray=Array.isArray,invoke=Reflect.apply;
+ const describe=Object.getOwnPropertyDescriptor,same=Object.is,isArray=Array.isArray,invoke=Reflect.apply,define=Object.defineProperty,create=Object.create;
+ const append=(a,v)=>{const d=create(null);d.value=v;d.enumerable=true;d.writable=true;d.configurable=true;define(a,a.length,d);};
  const object=v=>v!==null&&(typeof v==='object'||typeof v==='function');
  const own=(v,k)=>{if(!object(v))return;const d=describe(v,k);return d&&Object.hasOwn(d,'value')?d.value:undefined;};
  const strictOwn=(v,k,required=false)=>{const d=describe(v,k);if(!d){if(required)throw Error('Required native metadata unavailable');return;}if(!Object.hasOwn(d,'value'))throw Error('Native metadata accessor unavailable');return d.value;};
@@ -19,7 +20,7 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
   if(stopped||capped||!supported||unavailable)return;
   if(kind==='fiber'){if(object(a))fibers.add(a);return;}
   if(kind==='root'){if(object(a))roots.add(a);return;}
-  if(!['dispatch','begin','reducer-applied','reducer-ignored','render-phase-unresolved','state-result','root-current'].includes(kind))return;
+  if(kind!=='dispatch'&&kind!=='begin'&&kind!=='reducer-applied'&&kind!=='reducer-ignored'&&kind!=='render-phase-unresolved'&&kind!=='state-result'&&kind!=='root-current')return;
   if(kind!=='begin'&&!tick())return;
   if(kind==='dispatch'){
    const q=queues.get(a);if(!q||!object(b)||!fibers.has(c))return;
@@ -73,14 +74,14 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
   const{root,finished}=c;
   const pending=[{fiber:finished,parent:null}],seen=new Set(),parents=new Map();let selected=null;
   while(pending.length){
-   const{fiber,parent}=pending.pop();if(!fibers.has(fiber)){if(strict)return unknown('Unregistered committed native tree edge');continue;}
+   const entry=pending[pending.length-1];pending.length--;const{fiber,parent}=entry;if(!fibers.has(fiber)){if(strict)return unknown('Unregistered committed native tree edge');continue;}
    if(seen.has(fiber))return unknown('Ambiguous or cyclic committed native tree');
    seen.add(fiber);parents.set(fiber,parent);if(seen.size>512)return unknown('Committed tree capacity refused');
    const tag=strict?strictOwn(fiber,'tag',true):own(fiber,'tag');
    if(tag===5&&(strict?strictOwn(fiber,'stateNode',true):own(fiber,'stateNode'))===node){if(selected)return unknown('Ambiguous native host identity');selected=fiber;}
    const child=strict?strictOwn(fiber,'child'):own(fiber,'child'),sibling=strict?strictOwn(fiber,'sibling'):own(fiber,'sibling');
    if(strict&&(child!=null&&!object(child)||sibling!=null&&!object(sibling)))return unknown('Invalid committed native tree edge');
-   if(object(child))pending.push({fiber:child,parent:fiber});if(object(sibling))pending.push({fiber:sibling,parent});
+   if(object(child))append(pending,{fiber:child,parent:fiber});if(object(sibling))append(pending,{fiber:sibling,parent});
   }
   if(!selected)return unknown('Selected DOM node absent from current committed tree');
   return{root,finished,selected,parents};
@@ -90,12 +91,12 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
   const{root,finished,selected,parents}=tree;
   const ancestors=[],walked=new Set();let fiber=selected;
   while(fibers.has(fiber)&&walked.size<64&&!walked.has(fiber)){
-   walked.add(fiber);let hook=[0,11,15].includes(own(fiber,'tag'))?own(fiber,'memoizedState'):null;const visited=new Set();
+   walked.add(fiber);const tag=own(fiber,'tag');let hook=tag===0||tag===11||tag===15?own(fiber,'memoizedState'):null;const visited=new Set();
    while(object(hook)&&visited.size<64&&!visited.has(hook)){
     visited.add(hook);const h=hooks.get(hook),state=h?.state?.deref(),queue=h?.queue.ref.deref(),dispatch=h?.dispatch?.deref();
     if(h?.checked&&state&&queue&&dispatch&&related(fiber,h.fiber.deref())&&own(hook,'memoizedState')===state&&own(hook,'queue')===queue&&own(queue,'dispatch')===dispatch&&h.revision.resultId===id(state)){
      if(ancestors.length===64)return unknown('Ancestor result capacity refused');
-     ancestors.push({hookId:id(hook),fiberId:id(fiber),queueId:h.queue.id,dispatchId:id(dispatch),inputId:h.revision.inputId||null,inputIdentityStatus:h.revision.inputIdentityStatus||'Unknown/Unsupported',reducerId:h.revision.reducerId||null,resultId:id(state),revisionId:h.revision.id,updateId:h.revision.updateId,updateOriginStatus:h.revision.updateId?'Observed':'Unknown/Unsupported',publicHookKind:'Unknown/Unsupported',scope});
+     append(ancestors,{hookId:id(hook),fiberId:id(fiber),queueId:h.queue.id,dispatchId:id(dispatch),inputId:h.revision.inputId||null,inputIdentityStatus:h.revision.inputIdentityStatus||'Unknown/Unsupported',reducerId:h.revision.reducerId||null,resultId:id(state),revisionId:h.revision.id,updateId:h.revision.updateId,updateOriginStatus:h.revision.updateId?'Observed':'Unknown/Unsupported',publicHookKind:'Unknown/Unsupported',scope});
     }
     hook=own(hook,'next');
    }

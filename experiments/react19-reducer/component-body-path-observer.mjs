@@ -7,10 +7,11 @@ export function createComponentBodyPathObserver({page,base,callPolicy,bodyPolicy
  const create=Object.create,describe=Object.getOwnPropertyDescriptor,define=Object.defineProperty,freeze=Object.freeze,keys=Object.keys,has=Object.hasOwn,apply=Reflect.apply,Ref=weakRef,WM=WeakMap,get=WM.prototype.get,set=WM.prototype.set,U='Unknown/Unsupported';
  const object=v=>v!==null&&(typeof v==='object'||typeof v==='function');
  const own=(o,k)=>{if(!object(o))throw Error('Owned observer API required');const d=describe(o,k);if(!d||!has(d,'value'))throw Error('Own observer API data required');return d.value;};
- const dto=fields=>{const o=create(null);for(const k of keys(fields)){const d=create(null);d.value=fields[k];d.enumerable=true;define(o,k,d);}return freeze(o);};
- const copy=o=>{const r=create(null);for(const k of keys(o))r[k]=own(o,k);return r;};
+ const dto=fields=>{const o=create(null),names=keys(fields);for(let i=0;i<names.length;i++){const k=names[i],d=create(null);d.value=fields[k];d.enumerable=true;define(o,k,d);}return freeze(o);};
+ const append=(a,v)=>{const d=create(null);d.value=v;d.enumerable=true;d.writable=true;d.configurable=true;define(a,a.length,d);};
+ const copy=o=>{const r=create(null),names=keys(o);for(let i=0;i<names.length;i++){const k=names[i];r[k]=own(o,k);}return r;};
  const m=own(base,'mainInput'),enterBase=own(m,'enter'),returnedBase=own(m,'returned'),startBase=own(base,'startWindow'),sealBase=own(base,'sealWindow'),stopBase=own(base,'stop'),referenceBase=own(base,'referenceTap'),nativeBase=own(base,'nativeTap'),lookupBase=own(base,'lookupNode'),queryBase=own(base,'matchInvocationNode'),commitBase=own(base,'currentReferenceCommit');
- for(const f of [enterBase,returnedBase,startBase,sealBase,stopBase,referenceBase,nativeBase,lookupBase,queryBase,commitBase])if(typeof f!=='function')throw TypeError('Complete owned source API required');
+ const methods=[enterBase,returnedBase,startBase,sealBase,stopBase,referenceBase,nativeBase,lookupBase,queryBase,commitBase];for(let i=0;i<methods.length;i++)if(typeof methods[i]!=='function')throw TypeError('Complete owned source API required');
  let calls=null,body=null,sources=[],nativeRows=[],byHandle=new WM(),byToken=new WM(),collecting=false,stopped=false,fault=null,capped=false,lastCommit=null;
  let deref=null;try{deref=own(own(Ref,'prototype'),'deref');}catch{}
  const read=(map,k)=>apply(get,map,[k]),put=(map,k,v)=>apply(set,map,[k,v]),weak=r=>r?apply(deref,r,[]):undefined;
@@ -25,7 +26,7 @@ export function createComponentBodyPathObserver({page,base,callPolicy,bodyPolicy
  function afterReference(args){
   if(!active()||args[0]!=='root-current')return;
   const c=currentCommit();if(c?.status!=='Observed'||c.commitId===lastCommit)return;
-  for(const row of nativeRows)if(row.ended&&row.confirmed===null&&row.before!==c.commitId)row.confirmed=c.commitId;
+  for(let i=0;i<nativeRows.length;i++){const row=nativeRows[i];if(row.ended&&row.confirmed===null&&row.before!==c.commitId)row.confirmed=c.commitId;}
   lastCommit=c.commitId;
  }
  function referenceTap(){const r=apply(referenceBase,base,arguments);try{afterReference(arguments);}catch{fail('Commit confirmation unavailable');}return r;}
@@ -33,7 +34,7 @@ export function createComponentBodyPathObserver({page,base,callPolicy,bodyPolicy
  function enter(){const handle=apply(enterBase,m,arguments);if(active())try{
   if(sources.length>=512){capped=true;fail('Body source research capacity refused');return handle;}
   if(!object(handle)||!object(arguments[2])||read(byHandle,handle))throw Error('Unique callback item required');
-  const row={item:new Ref(arguments[2]),element:null,returned:false};sources.push(row);put(byHandle,handle,row);
+  const row={item:new Ref(arguments[2]),element:null,returned:false};append(sources,row);put(byHandle,handle,row);
  }catch{fail('Body callback source unavailable');}return handle;}
  function returned(){const result=apply(returnedBase,m,arguments);if(active())try{
   const row=object(arguments[0])?read(byHandle,arguments[0]):null;
@@ -48,7 +49,7 @@ export function createComponentBodyPathObserver({page,base,callPolicy,bodyPolicy
    if(kind==='component-call-begin'&&object(token)){
     if(nativeRows.length>=512){capped=true;fail('Body native research capacity refused');return undefined;}
     const c=currentCommit(),row={token,fiber:new Ref(arguments[1]),self:new Ref(arguments[2]),props:new Ref(arguments[3]),result:null,a:null,b:null,before:c?.status==='Observed'?c.commitId:null,confirmed:null,ended:false};
-    nativeRows.push(row);put(byToken,token,row);
+    append(nativeRows,row);put(byToken,token,row);
    }else if(kind==='component-call-return'){
     const row=object(arguments[1])?read(byToken,arguments[1]):null;if(row&&object(arguments[2]))row.result=new Ref(arguments[2]);
    }else if(kind==='component-call-end'){
@@ -76,9 +77,9 @@ export function createComponentBodyPathObserver({page,base,callPolicy,bodyPolicy
    const original=apply(lookupBase,base,[node]);if(original.status!=='Observed')return unknown('Original complete selected source gate unavailable');
    const c=currentCommit();if(c?.status!=='Observed')return unknown('Current commit unavailable');
    let selected=null;
-   for(const source of sources){
+   for(let i=0;i<sources.length;i++){const source=sources[i];
     const item=weak(source.item),element=weak(source.element);if(!source.returned||!object(item)||!object(element))return unknown('Complete live callback references unavailable');
-    for(const row of nativeRows){
+    for(let j=0;j<nativeRows.length;j++){const row=nativeRows[j];
      if(!row.ended||row.confirmed!==c.commitId)continue;
      const fiber=weak(row.fiber),self=weak(row.self),props=weak(row.props);if(!object(fiber)||typeof self!=='function'||!object(props))continue;
      const exact=apply(queryBase,base,[node,element,fiber,self,props]);if(exact.status!=='Observed')continue;
