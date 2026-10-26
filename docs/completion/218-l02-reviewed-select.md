@@ -1,6 +1,6 @@
 # L02.19 — reviewed native field and ordinary Select
 
-Current phase: source verified; native0/model0. Base main9878767.
+Current phase: ONE actual attempt INCOMPLETE; entry target declined before folder text, model0. Base main9878767.
 Cutoff stays27Oct09Mauritius/05UTC after local date rollover. Local commits only.
 FullL02/20of29 unchanged;18deferred retained.
 
@@ -79,3 +79,49 @@ Case `docs/testing/l02-comparison-reviewed-select-case82.json`, SHA `2c35aa1f8b7
 Output `.artifacts/l02/rs/94662b30/`, original27hostfiles plus2researchaddon files.
 Two90s agent image reviews/oneentryclick/oneSelectclick only, no Enter fallback.
 This checkpoint preregisters execution; it is not installation/model acceptance.
+
+## ONE actual attempt — entry declined, no retry
+
+Execution `f05741c8bf35196bb4d8ea629802f8604bf2c01c`, 2026-10-26T20:41:05.675Z–20:41:52.327Z,
+nativePID3553172, CLIexit1. Raw `.artifacts/l02/rs/94662b30/results.json`, SHA
+`886ff68db15545f4157efa1d7a2ace90f181047e288d86314789b54f6c58b956`.
+
+Attested Chrome3553247/start31167782, launcher3553245/start31167781, private daemon
+3553246/start31167782 and GTKportal3553559/start31167871 confirmed. Exact title/window
+18874371/focus remained in owned private display. Actual chooser geometry before/after
+is x0,y0,1096x822/screen0, fully inside1100x1000: no normalization/move/resize ran.
+This rules out an offscreen geometry condition in this occurrence, not every cause
+of the missing control. One guarded CtrlL command preceded image capture.
+
+The exact entry image SHA `d925501bc1344a1af82e658338cf091d9da6897d3049db3f43fec5a6a02e8aca`
+shows Recent/sidebar/file list and Cancel/disabled Select, with no visible location
+entry to identify. Root agent viewed it and wrote one atomic case/image/identity/
+geometry-bound DECLINED response, consumed before expiry (35.634s after request).
+No point/rectangle/path value was approved. Stageentry-declined; control flow threw
+EXECUTOR_DECLINED_entry before entry click, CtrlA, folder-text routine or Select.
+No second review request, extension installation, evaluation page, availability/
+create/prompt, rows or quality text.0rows/34unvisited/0harness model requests. This is
+an agent-operated refusal, not human acceptance or demonstrated normal selection.
+Keyboard delivery/inner widget state and cause remainUnknown; do not infer a specific
+credential/grab/GTK/API/model failure from this screenshot. No credential handling.
+
+FIRST prewritten reader exit0 SAVED_INCOMPLETE_NOT_QUALIFIED,672frozenbindings PASS,
+collectionQualified=false. Dynamic request/response/consumed marker/image hashes and
+nativePID/phase/case bindings checked. Only entry-phase decline exists; fullcollection
+predicate did not run on missing34rows. Original5purefunctions/2positive3negative
+controls and24source/280focused/5780full remain distinct source evidence.
+
+Known browser3553247/start31167782, launcher3553245/start31167781 and desktop3553241/
+start31167776 retired; FIRSTreader hostnamespace4026531836 found all3Absent. Nine
+cleanupflags true, console=false/NotCollected, cleanupErrorsempty/lease released.
+Separate exact-known daemon/portal probe at20:51:15UTC found bothAbsent. No global
+background/descendant or complete console assurance. Current327/archives2 and all672
+physicalinputs remain unchanged. Old16/17/18 packets/criteria/readers preserved.
+FullL02/20of29/18deferred unchanged, no factual/usefulness data to assess.
+
+ONE bounded final review follows. Stop this native-loader campaign: no further UI
+variant/native/model retry this night without a concrete new prerequisite. Retain L02
+mandatory/open and the visible-field prerequisite unconfirmed. NextONE independent
+A02.51: inspect the exact failed body/committed-field premise from209/current source,
+choose a bounded source correction or control supported by that evidence; no old
+native/reader replay and no guessed GC/rootcause. SDK/otherrepo/publication remain out.

@@ -1,9 +1,11 @@
 # Project status
 
-L02.19 [reviewed native field/Select source verification](completion/218-l02-reviewed-select.md).
-Two agent-reviewed private snapshots before folder text and ordinary Select; no Enter
-fallback.24new/280focused/5780full sourcePASS; native0/model0/current82/327 unchanged.
-20of29/fullL02/18deferred unchanged; exact installedpath/runtime proof still required.
+L02.19 [ONE entry review declined before path](completion/218-l02-reviewed-select.md).
+Private owner/focus/fullyvisiblegeometry confirmed; no visible location field after
+CtrlL, so agent declined before text/pointer/Select.0rows34unvisited0model; FIRSTreader
+672PASS/collectionfalse, source24/280/5780PASS. Known3roles+separatedaemon/portalAbsent,
+consoleNotCollected/globalcleanupunproved. ONEfinalreview pending;20of29/fullL02/
+18deferred unchanged. Stop loader variants; nextindependentA02.51 source premise.
 
 L02.18 [ONE portal attempt INCOMPLETE](completion/217-l02-portal-chooser.md).
 Private bus/GTK owner+focus checks succeeded; Returndidnotdismiss, no installation/
