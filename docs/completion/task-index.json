@@ -3185,7 +3185,7 @@
       "active_slice": {
         "id": "A02.53",
         "record": "222-a02-body-array-intrinsics.md",
-        "status": "source-complete-review-pending",
+        "status": "closed-bounded-source-only",
         "base": "5f13eb52024896b0951c023a345564d170b77596",
         "declared_source_deltas": 4,
         "new_source_tests": 20,
@@ -3194,7 +3194,35 @@
         "native_runs": 0,
         "model_calls": 0,
         "full_A02": false,
-        "review_pending": true
+        "review_pending": false,
+        "source_revision": "34a2875",
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 1,
+          "finding": "M19 historical stale current-source pointer",
+          "deferredHistoricalTotal": 19
+        },
+        "archive": {
+          "schema": "stateatom.body-array-review-closeout/1",
+          "archive": ".artifacts/a02/body-array-intrinsics-review/2026-10-27/workspace.zip",
+          "sha256": "181e0a9f62595b7e161b7bb5ecaefc30febe7e23c9cfa83adb9d629201c9234c",
+          "files": 5,
+          "crcAndAllBytes": true,
+          "planIdentity": "docs/superpowers/plans/2026-10-27-a02-body-array-intrinsics.md",
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 1,
+            "finding": "M19 historical stale current-source pointer",
+            "deferredHistoricalTotal": 19
+          },
+          "correctionPasses": 0,
+          "rereviews": 0,
+          "nativeRuns": 0,
+          "modelCalls": 0,
+          "fullA02": false
+        }
       },
       "historical_checkpoint_before_A02_51": {
         "active_slice": {
@@ -9092,8 +9120,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.53-body-array-source-complete-review-pending",
-    "next_item": "ONE final bounded source review then pending I01 separate host scope decision; no old experiments rerun.",
+    "current_increment": "A02.53-closed-bounded-source-only",
+    "next_item": "Pending separate-scope I01 host task; meanwhile only a concrete independent Atom prerequisite, no exhausted case repeats.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9120,7 +9148,36 @@
     "active_item": {
       "id": "A02.53",
       "record": "222-a02-body-array-intrinsics.md",
-      "status": "source-complete-review-pending"
+      "status": "closed-bounded-source-only",
+      "review_pending": false,
+      "source_revision": "34a2875",
+      "review": {
+        "critical": 0,
+        "important": 0,
+        "minor": 1,
+        "finding": "M19 historical stale current-source pointer",
+        "deferredHistoricalTotal": 19
+      },
+      "archive": {
+        "schema": "stateatom.body-array-review-closeout/1",
+        "archive": ".artifacts/a02/body-array-intrinsics-review/2026-10-27/workspace.zip",
+        "sha256": "181e0a9f62595b7e161b7bb5ecaefc30febe7e23c9cfa83adb9d629201c9234c",
+        "files": 5,
+        "crcAndAllBytes": true,
+        "planIdentity": "docs/superpowers/plans/2026-10-27-a02-body-array-intrinsics.md",
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 1,
+          "finding": "M19 historical stale current-source pointer",
+          "deferredHistoricalTotal": 19
+        },
+        "correctionPasses": 0,
+        "rereviews": 0,
+        "nativeRuns": 0,
+        "modelCalls": 0,
+        "fullA02": false
+      }
     },
     "completed_increments": [
       {
@@ -12121,11 +12178,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "20new/258focused/5814fullPASS,4exact declared Array dispatch rewrites/source-only/current327+archives exact. Native0/model0/no50cause/fullA02 proof. ONEreview next; separate I01 scope pending/20of29 unchanged.",
+    "current_activity_note": "Source34a2875/20new258focused5814fullPASS/ONEreview0C0I1M/M19historicaldeferredtotal19. Bounded53closed,4exactdeltas/current327+archives exact/native0/model0/fullA02false/20of29 unchanged. Separate I01 scope answer pending.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "92235d7",
+    "current_source_revision": "34a2875",
     "current_record_date": "2026-10-27",
-    "next_bounded_step": "ONE final bounded source review then pending I01 separate host scope decision; no old experiments rerun.",
+    "next_bounded_step": "Pending separate-scope I01 host task; meanwhile only a concrete independent Atom prerequisite, no exhausted case repeats.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -12135,7 +12192,7 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "No product/source implementation change in I01 preparation;92235d7 remains latest experimental source checkpoint.",
+    "current_source_revision_kind": "Reviewed four-file private Array dispatch correction; absent from current82 product327 manifest, no installed/native/lineage acceptance.",
     "current_source_checkpoint": ".artifacts/a02/body-array-intrinsics-source/2026-10-27/checkpoint.json",
     "current_source_checkpoint_kind": "Source-only experimental observer correction; no native/field/lineage qualification",
     "historical_active_pointer_before_V02_18": {
