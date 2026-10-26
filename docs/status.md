@@ -4,10 +4,11 @@ V02.20 [actual current80 measurement complete, target missed](completion/207-v02
 ONE198rows/18warm180measured/66windows, FIRSTfrozenreader32changedcontrols/421currentPASS.
 Basicp95515.3/400.1ms passes1s for thiscase; active/off23.9865/28.6835% misses10%.
 ApprovedoneisolatedCA/singleCAseed; knownrawChromePIDs absenthost; no personal/systemtrust.
-Source7/26/5532PASS/current80backend13/type2/admission9. ONEwhole review pending;
+Source7/26/5532PASS/current80backend13/type2/admission9. ONEreview0C0I1Minor clarified;
 no waiver/fullV02/release upgrade,20of29 unchanged. NextONE source inspection/correction
 for unnecessary attached/runtime work, preserving source/Trace/freshness/metrics.
 
+Historical V02.20 source checkpoint BEFORE the completed measurement:
 V02.20 [current80 original-workload source ready](completion/207-v02-current80-original-performance.md):
 7new/26focused/5532fullPASS. Original15source exact except four identities and
 corrected17handle-retaining cleanup.1865protected/327product/2archives/33oldnative stable.

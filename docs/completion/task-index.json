@@ -5881,7 +5881,7 @@
       "active_slice": {
         "id": "V02.20",
         "record": "207-v02-current80-original-performance.md",
-        "status": "measurement-complete-original-targets-missed-review-pending",
+        "status": "closed-complete-measurement-original-targets-missed",
         "base": "4afee97ae0ca3df1273163956bfb0c39001798c6",
         "new_source_tests": 7,
         "focused_checks": 26,
@@ -5891,7 +5891,7 @@
         "measurement_executed": true,
         "performance_acceptance": false,
         "whole_V02_complete": false,
-        "review_pending": true,
+        "review_pending": false,
         "native_backend_runs": 1,
         "measurement_runs": 1,
         "backend_checks": 13,
@@ -5925,13 +5925,25 @@
         },
         "targets_met": false,
         "targets_waived": false,
-        "native_checkpoint": ".artifacts/v02/current80-performance-source/2026-10-26/native-checkpoint.json"
+        "native_checkpoint": ".artifacts/v02/current80-performance-source/2026-10-26/native-checkpoint.json",
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 1,
+          "minor_clarified_in_closeout": 1,
+          "source_correction_passes": 0,
+          "rereview": false,
+          "historical_deferred_unchanged": 16
+        },
+        "source_revision": "74994204bff73a017e18bd9843e7bc41f7d79b4a",
+        "execution_revision": "e5601fc9681635a9e8ec7032fb872f1ff9339421",
+        "final_checkpoint": ".artifacts/v02/current80-performance-review/2026-10-26/final-checkpoint.json"
       },
       "execution_record": "207-v02-current80-original-performance.md",
       "current_checkpoint": {
         "record": "207-v02-current80-original-performance.md",
-        "status": "measurement-complete-original-targets-missed-review-pending",
-        "next_bounded_step": "ONEwhole final review/closeout, then ONE source inspection for unnecessary attached/runtime work preserving source/Trace/freshness/metric semantics. No broadmatrix or10%waiver."
+        "status": "closed-complete-measurement-original-targets-missed",
+        "next_bounded_step": "ONE source-only inspection and justified bounded product correction for unnecessary attached/runtime work, preserving source/Trace/freshness/metric semantics; current80 original gate23.9865/28.6835% MISSES10%. No blindmatrix/repeat/waiver."
       },
       "completed_slices": [
         {
@@ -8440,8 +8452,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.20-actual198complete-overhead-missed-firstreader32-review-pending",
-    "next_item": "ONEwholeV02.20bounded review/closeout, then source work on actual performance blocker.",
+    "current_increment": "V02.20-closed-original-overhead-miss-one-reviewed",
+    "next_item": "ONE concrete source inspection/correction for unnecessary attachedruntime work.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8468,7 +8480,7 @@
     "active_item": {
       "id": "V02",
       "record": "207-v02-current80-original-performance.md",
-      "status": "measurement-complete-original-targets-missed-review-pending"
+      "status": "closed-complete-measurement-original-targets-missed"
     },
     "completed_increments": [
       {
@@ -11469,11 +11481,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Actual current80ONEmeasurement198/18warm180measured/66windows, firstfrozenreader32changedcontrols/421currentPASS. Basicp95515.3/400.1ms passes1s; active/off23.9865/28.6835% misses10%. UserapprovedoneCA isolatedprep, knownrawPIDs absenthost. Source5532/backend13/types2/admission9. No waiver/fullV02;20of29 unchanged.",
+    "current_activity_note": "Actual80one198complete/firstfrozen32/421current; Basicp95PASS, active/off23.9865/28.6835%MISS10%. ONEreview0C0I1reportingMinor clarified/no sourcefix/rereview; archive8verified/ownremoved.16historicaldeferred/20of29 unchanged; next source work on runtime cost.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "74994204bff73a017e18bd9843e7bc41f7d79b4a",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONEwhole final review/closeout, then ONE source inspection for unnecessary attached/runtime work preserving source/Trace/freshness/metric semantics. No broadmatrix or10%waiver.",
+    "next_bounded_step": "ONE source-only inspection and justified bounded product correction for unnecessary attached/runtime work, preserving source/Trace/freshness/metric semantics; current80 original gate23.9865/28.6835% MISSES10%. No blindmatrix/repeat/waiver.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

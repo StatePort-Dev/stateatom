@@ -3,7 +3,7 @@
 **Current result:** ONE actual current80measurement complete, original overhead target
 MISSED in both hosts. First frozen readerPASS32changed controls/421current inputs.
 Basicp95 515.3/400.1ms meets1s for this case; Active/Off23.98648647/28.68352220%
-misses10%. WholeV02/20of29 unchanged. ONEfinal whole-item review pending.
+misses10%. WholeV02/20of29 unchanged. ONEwhole review0C0I1reportingMinor, clarified at closeout.
 
 BASE4afee97ae0ca3df1273163956bfb0c39001798c6/main/localcommits. Current80/UI2 archives
 and327of327product inputs exact; no rebuild. TWOnewcodefiles only: current80native
@@ -149,6 +149,17 @@ is historical source-stage evidence, distinct from backend1 and measurement1.
 No wholeV02/V03/I02/U04/A02/L02/release upgrade. NextONE source-level inspection of
 unnecessary attached/runtime work, preserving source/Trace/freshness/metric semantics;
 then a justified bounded product correction if supported. Do not run another broad
-transport/domain matrix or silently waive10%. ONEwhole review still pending here.
+transport/domain matrix or silently waive10%. ONEwhole review completed; details below.
 Frozen plan/spec/case remain prepared bytes; actual completion lives in archived
 ledger and this record, avoiding postrun input drift from checkbox edits.
+
+## ONE review and closeout
+
+Fresh read-only v0220_whole_review0C0I1Minor, no sourcecorrection/rereview.
+M1 historicalsource status block clarified in normal metadata closeout; reviewed65155
+snapshot retained.16historicaldeferred unchanged. All10declined-domain effect/cost
+rulings saved in review report/archive. Workspace archive8files CRC/everybyte/planidentity/
+savedbinderPASS, own workspace removed. ArchiveSHA51e9fbb27536cb194e6b4ec243c99aa966cee05b1ad0c6057cafb08b17d3de13.
+Final checkpoint `.artifacts/v02/current80-performance-review/2026-10-26/final-checkpoint.json`.
+Frozen plan/spec/case/reader unchanged; original performance target still MISSED,
+fullV02/20of29 unchanged. NextONE source inspection/correction for attachedruntime work.
