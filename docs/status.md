@@ -1,10 +1,11 @@
 # Project status
 
-A02.40 source checks in progress: [memo branch-return recipe](completion/196-a02-memo-branch-source.md).
-Three new codefiles; actual original function-update/bailout callee return and local
-props refs,30new/192focused/5245fullPASS; ONEreview pending. Bailout/scheduled controls keep
-previous props distinct from incoming. Real19.2.5 source compiled/parsed only; no
-MemoItem/native/selected-property support claim.20of29/fullA02/15deferred unchanged.
+A02.40 source complete, ONEreview0C1Ifixed0newM + executorI2fixed/15deferred: [memo branch-return recipe](completion/196-a02-memo-branch-source.md).
+35new/197focused/5250fullPASS; five actualRED injected-binding/helper collision
+controls fixed inONEpass, no rereview. Actual previousprops retained, no forcedbranch.
+1812tracked/1642currentprior paths unchanged; archive5CRC/bytes/identity/ownremovalPASS.
+No MemoItem/native/commit/property qualification;20of29/fullA02 unchanged. NextONE
+memo-reference consumer source with actual native outcomes/refs, no browser retry.
 
 A02.39 source complete, ONEreview0C0I0newM/15deferred: [complete source/current reference join](completion/195-a02-committed-source-join.md).
 Original full gates/delegated DTOs preserved; actual weak refs/first subsequent commit,
