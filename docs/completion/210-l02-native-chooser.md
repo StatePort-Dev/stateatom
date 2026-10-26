@@ -1,6 +1,6 @@
 # L02.16 — normal Load unpacked comparison route
 
-Current phase: source ready, native/model execution0. Base main
+Current phase: case frozen/preflight passed, native/model execution0. Base main
 b431606f650fb2c1daa1bef7e4e09565aff923c7; local commits only. Full L02 remains open;
 20/29 whole tasks and16historical deferred findings unchanged.
 
@@ -62,3 +62,15 @@ of189, no model warming/download, prompt tuning or request retry. Missing choose
 API/model or rows remain INCOMPLETE. Any recorded outputs get a separate unchanged
 rubric assessment; source/collection do not establish useful AI or full L02.
 One final bounded-item review follows this result; whole-L02 acceptance is separate.
+
+## Frozen execution checkpoint
+
+Source `fd837030db9ad4e1ccd7e51bb42e2d7726260376`; actual preparer and closed-driver
+`--preflight` both exit0. Case `docs/testing/l02-comparison-chooser-case80.json`,
+SHA `2ca6daf5fee0f33177f75b5b8de26b41b68a1ddaa6b941d304cf38337067a8d8`,
+499 frozen bindings including case. Output `.artifacts/l02/nc/92ab7c82/`.
+Prewritten reader/contract and2positive/3negative source controls are case inputs;
+reader pure hash/unique-JSON/process functions match the previous saved reader.
+Its controls differ only in the new identity; no model-quality predicate changed.
+Reader has an exclusive first-attempt marker. Source prepare/preflight started no
+browser/model and did not mutate the cache. MaxONE actual cached-only attempt next.

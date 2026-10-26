@@ -8555,8 +8555,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "L02.16-normal-chooser-source-ready",
-    "next_item": "Freeze new normal native chooser case/readers and maxONE cached-only current80 comparison; preserve original34rows/10eligible24template, no download/request retries. Collection and usefulness remain separate.",
+    "current_increment": "L02.16-normal-chooser-frozen",
+    "next_item": "ONE frozen normal-chooser cached-only current80 comparison; FIRST saved reader and separate original quality rubric if outputs exist. No download/request/native retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8583,7 +8583,7 @@
     "active_item": {
       "id": "L02",
       "record": "210-l02-native-chooser.md",
-      "status": "source-passed-native-pending"
+      "status": "case-frozen-native-pending"
     },
     "completed_increments": [
       {
@@ -11584,11 +11584,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "L02.16 source42/235/5693PASS; asyncfocusrace corrected with2RED→GREEN, old40/233/5691/snapshot retained. Native/model0; normalLoadunpacked replaces unconfirmeddrag, samecurrent80/34rows/options/no-download. Old189Chromealive/hostabsent is not API failure;20of29/fullL02/16deferred unchanged.",
+    "current_activity_note": "L02.16 source42/235/5693PASS, fd837 committed; actual prepare/preflight499PASS and saved reader/contract frozen before maxONE native. Native/model0; current80/34rows/originalcriteria unchanged.20of29/fullL02/16deferred unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "f3cad0eea3e48ac86c2963b592870faa467319e3",
+    "current_source_revision": "fd837030db9ad4e1ccd7e51bb42e2d7726260376",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "Freeze new normal native chooser case/readers and maxONE cached-only current80 comparison; preserve original34rows/10eligible24template, no download/request retries. Collection and usefulness remain separate.",
+    "next_bounded_step": "ONE frozen normal-chooser cached-only current80 comparison; FIRST saved reader and separate original quality rubric if outputs exist. No download/request/native retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
