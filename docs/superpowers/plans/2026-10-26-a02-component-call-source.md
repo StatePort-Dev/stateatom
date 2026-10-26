@@ -34,6 +34,6 @@ optional captured __STATEATOM_COMPONENT_CALL_TAP__ begin/outcome/end with opaque
 - [x] Implement minimal AST inline bracket/captured hook helpers and pinned chain, no old file edits.
 - [x] GREEN new+related/full/source syntax/diff/hashes; actual retained source compile ONLY. Expected
 same original calls/results/throws/getters and source-only2sites, no new native execution.
-- [ ] Save logs/hashes/checkpoint/binder/localcommit/task-done, ONE whole review/one tested I/Cpass/
+- [x] Save logs/hashes/checkpoint/binder/localcommit/task-done, ONE whole review/one tested I/Cpass/
 minorsdefer/norereview; verified archive/remove own workspace/close localcommit.
 NextONE bounded reentrant frame consumer before Item parameter binding, not a native repeat.

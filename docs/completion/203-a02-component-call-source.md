@@ -38,4 +38,14 @@ NextONE bounded exact reentrant native frame-token consumer before Item paramete
 destructure association; no skipped-function, field/property/ownership or fullA02 upgrade.
 
 Source checkpoint/binder `.artifacts/a02/component-call-source/2026-10-26/`:1853protectedtracked/
-1724nativecurrent+1exacthistoricalGit/128frozen46 unchanged. ONE whole review pending.
+1724nativecurrent+1exacthistoricalGit/128frozen46 unchanged. ONE whole review0C2I0newM; I1/I2 fixed in ONE tested pass, no rereview.
+
+I1 source Program global bindings (including escaped names) now refuse admission;
+I2 full-AST nested eval/with scan cannot skip lexical observation from closures.
+Eight original-success controls RED→GREEN;44new/285focused13661.654257ms/
+5479full148880.30272ms PASS. Corrected source 19fa47f8bbca36299dd25e18ed3ea83fea986b69.
+Originale1b44c2 checkpoint/logs preserved; final-source-checkpoint.json and verify-final.py
+bind corrected source, original exactGit and final saved checks. Review archive6files
+CRC/everybyte/planidentity/binderPASS, own workspace removed.
+Final checkpoint `.artifacts/a02/component-call-review/2026-10-26/final-checkpoint.json`.
+16historicaldeferred/20of29/fullA02 remain unchanged.

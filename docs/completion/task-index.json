@@ -3101,16 +3101,27 @@
       "active_slice": {
         "id": "A02.47",
         "record": "203-a02-component-call-source.md",
-        "status": "source-complete-review-pending",
+        "status": "closed-bounded-source-only",
         "base": "7d69881421dbd0b04e778f551a03453fe85db6f9",
         "new_code_files": 3,
-        "new_source_tests": 36,
+        "new_source_tests": 44,
         "native_runs": 0,
         "component_invocation_runtime_qualified": false,
         "full_A02": false,
-        "review_pending": true,
-        "focused_checks": 277,
-        "full_checks": 5471
+        "review_pending": false,
+        "focused_checks": 285,
+        "full_checks": 5479,
+        "source_revision": "19fa47f8bbca36299dd25e18ed3ea83fea986b69",
+        "review": {
+          "critical": 0,
+          "important": 2,
+          "important_fixed": 2,
+          "minor": 0,
+          "correction_passes": 1,
+          "rereview": false,
+          "deferred_total": 16
+        },
+        "final_checkpoint": ".artifacts/a02/component-call-review/2026-10-26/final-checkpoint.json"
       }
     },
     {
@@ -8351,7 +8362,7 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.47-source-complete-review-pending",
+    "current_increment": "A02.47-closed-source-one-review-two-fixed",
     "next_item": "ONE bounded synchronous/reentrant native frame-token consumer before Item parameter/destructure association. Preserve actual currentMemo reference evidence separately; no field/property/ownership promotion or oldnative repeat.",
     "new_full_task_acceptances": [
       "F01",
@@ -8379,7 +8390,7 @@
     "active_item": {
       "id": "A02",
       "record": "203-a02-component-call-source.md",
-      "status": "source-complete-review-pending"
+      "status": "closed-bounded-source-only"
     },
     "completed_increments": [
       {
@@ -11380,9 +11391,9 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "36new/277focused/5471fullPASS; ONEreview pending. Original call stays in native owner, stable hook/opaque token/outcome/end, caller/getter/throw/reentrancy/skip preserved in owned controls;2source sites.1853tracked/1724nativecurrent+1Gitplan/128frozen46 unchanged. No new Native/parameter/property/fullA02;20of29/16historicaldeferred unchanged.",
+    "current_activity_note": "44new/285focused/5479fullPASS; ONEreview0C2Ifixed0newM,8actualRED→ONEpass/no rereview.1853protected/1724nativecurrent+1Gitplan/128frozen unchanged. SourceONLY/no new runtime/property/fullA02;20of29/16historicaldeferred unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "7d69881421dbd0b04e778f551a03453fe85db6f9",
+    "current_source_revision": "19fa47f8bbca36299dd25e18ed3ea83fea986b69",
     "current_record_date": "2026-10-26",
     "next_bounded_step": "ONE bounded synchronous/reentrant native frame-token consumer before Item parameter/destructure association. Preserve actual currentMemo reference evidence separately; no field/property/ownership promotion or oldnative repeat.",
     "historical_active_pointer_before_V03_23": {
@@ -11394,8 +11405,8 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "base before three new source-only component-call recipe files",
-    "current_source_checkpoint": ".artifacts/a02/component-call-source/2026-10-26/source-checkpoint.json",
+    "current_source_revision_kind": "corrected component-call source after ONE tested review fix pass",
+    "current_source_checkpoint": ".artifacts/a02/component-call-source/2026-10-26/final-source-checkpoint.json",
     "current_source_checkpoint_kind": "actual ownedVM/compile-only source tests and protected hashes; no invocation runtime proof",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
