@@ -6,7 +6,8 @@ ONE198rows/18warm180measured/66windows; FIRSTreader32controls/432bindingsPASS.
 Basicp95382.9/449.4ms PASS1s; active/off24.3861/22.8143% MISS10%.
 No causal speedup/waiver; knownraw2ChromePIDsAbsent/no startfingerprints, inspectorconsoleempty only.
 Retained206TLSseed/2freshownedprofilecopies/newCA/import/model0; no native/reader retry.
-20of29/fullV02/16deferred unchanged; ONE bounded finalreview next.
+ONEreview0C0I1Minor clarified historicalopening; no sourcefix/rereview/retry.
+20of29/fullV02/16deferred unchanged. NextONE V02.23 source publication across separate tasks.
 
 V02.21 [passive network-buffer correction source passed](completion/211-v02-passive-network-buffers.md).
 Read-only/no grant reserves0extra payload bytes, local/grant-bearing usesoriginal2MB/512KB.

@@ -1,5 +1,13 @@
 # V02.22 — new81 changed bytes and unchanged original performance gate
 
+Current: bounded item CLOSED after ONE backend and ONE original198rowmeasurement.
+Basicp95382.9/449.4msPASS1s; active/off24.3861/22.8143%MISS10. FIRSTreader32controls/
+432bindingsPASS. Bothnativebudgets exhausted/remaining0; no native or readerretry.
+ONEreview0C0I1Minor clarified historicalopening below, no sourcefix/rereview.
+20of29/fullV02/16historicaldeferred unchanged; no waiver/causalspeedup/releaseclaim.
+
+## Historical preparation checkpoint
+
 Main16afe6a/source preparation in progress;20of29/fullV02/16deferred unchanged.
 [Spec](../superpowers/specs/2026-10-26-v02-passive-original-performance-design.md),
 [plan](../superpowers/plans/2026-10-26-v02-passive-original-performance.md).
@@ -115,3 +123,18 @@ and1measurement, no retry or readerretune.20of29/fullV02/16deferred unchanged.
 The original gate remains open without maintainer waiver. ONE final bounded review
 follows; next chooseONE justified source correction from actual unused/publication
 work or an independent dependency-ready item, not anotherblind domain matrix.
+
+## Closed bounded item
+
+ONE fresh read-only review0Critical/0Important/1Minor accepted exactdriver/pin/protocol/
+criteria preservation and honestmiss. Historicalopening nowlabelled withcurrentresult
+first; no sourcecorrection/native rerun/readerretune/rereview.16deferred unchanged.
+NextONE V02.23 boundedsource question: recording publication across separate event
+tasks with faststorage acknowledges currently drains almostper-event. Reproduce and
+reduce redundant backgroundsave/notification work while everyevent/ledger update and
+explicit/terminal Stop/Clear/revoke remains immediate. No newmeasurement/matrix until
+a justifiedtested productchange/newcandidate; no metric/threshold/Live-policy waiver.
+
+Ownworkspace archived 12files to `.artifacts/v02/passive-performance-review/2026-10-26/workspace.zip`, SHA
+`d4c2d4187bd399a6177314a1d7972a8bfaf086c7b50614d58595afeec9001ea9`; CRC/everybyte/ledgeridentity/savedbinderPASS beforeonlyownworkspace
+removal. All432frozeninputs current/raw/case/reader exact. Localcommits/no publication.
