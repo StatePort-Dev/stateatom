@@ -1,5 +1,10 @@
 # Project status
 
+A02.51 [selected frame isolation source verified](completion/219-a02-selected-frame-isolation.md).
+6new/96focused/5786fullPASS; scopedlookup ignores unrelated weakref loss while global
+snapshot/own-row/globalinvalid gates remain exact. Native0/model0/not50causeproof.
+Current327/archives2 unchanged;20of29/fullA02/fullL02/18deferred unchanged. ONEreview next.
+
 L02.19 [ONE entry review declined before path](completion/218-l02-reviewed-select.md).
 Private owner/focus/fullyvisiblegeometry confirmed; no visible location field after
 CtrlL, so agent declined before text/pointer/Select.0rows34unvisited0model; FIRSTreader

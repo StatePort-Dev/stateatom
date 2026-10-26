@@ -1661,7 +1661,7 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "209-a02-component-body-native.md",
+      "execution_record": "219-a02-selected-frame-isolation.md",
       "completed_slices": [
         {
           "id": "A02.49",
@@ -2970,14 +2970,7 @@
         "bounded_next_experiment": "A02.9 source-only historical claim description on retained data; no browser/native",
         "experiment_native_executed": false
       },
-      "current_checkpoint": {
-        "record": "209-a02-component-body-native.md",
-        "status": "closed-native-incomplete-not-qualified",
-        "source_revision": "f3cad0eea3e48ac86c2963b592870faa467319e3",
-        "execution_revision": "03628a3d6a87a1f9d926186dfb62860a0a2fab69",
-        "accepted_component_body_links": 0,
-        "next_bounded_step": "Finite50 native campaign closed incomplete; no weak-ref/GC/native retry. ONE mandatory L02 saved-startup blocker investigation, dependencies L01 complete; original A02 missing ownership/parameters remain open."
-      },
+      "current_checkpoint": "219-a02-selected-frame-isolation.md",
       "stopping_point_history": [
         {
           "invoked": true,
@@ -3010,7 +3003,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "Finite50 native campaign closed incomplete; no weak-ref/GC/native retry. ONE mandatory L02 saved-startup blocker investigation, dependencies L01 complete; original A02 missing ownership/parameters remain open.",
+      "next_bounded_step": "ONE selected-source callback eligibility source inspection if separate counterexample; no oldnative/GC campaign.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -3188,50 +3181,73 @@
           "next_bounded_step": "ONE cohesive exact retained Item parameter-reference integration/acquisition with existing complete committed Memo/source gates, frozen criteria/readers and max1 new owned launch. Preserve property origin/field ownership Unknown; no oldcase rerun."
         }
       ],
-      "implementation_plan": "../superpowers/plans/2026-10-26-a02-component-body-native.md",
+      "implementation_plan": "../superpowers/plans/2026-10-27-a02-selected-frame-isolation.md",
       "active_slice": {
-        "id": "A02.50",
-        "record": "209-a02-component-body-native.md",
-        "status": "closed-native-incomplete-not-qualified",
-        "base": "e5619fc9e3ad7e4c9c417400e2212b253622f204",
-        "new_code_files": 6,
-        "declared_research_deltas": 2,
-        "new_source_tests": 43,
-        "focused_checks": 368,
-        "native_runs": 1,
-        "maximum_native_runs": 1,
-        "component_body_qualified": false,
+        "id": "A02.51",
+        "record": "219-a02-selected-frame-isolation.md",
+        "status": "source-complete-review-pending",
+        "base": "c23bf592add3d7a67c98900744d5cc217fe240f5",
+        "new_source_tests": 6,
+        "focused_checks": 96,
+        "full_checks": 5786,
+        "native_runs": 0,
+        "model_calls": 0,
         "full_A02": false,
-        "review_pending": false,
-        "full_checks": 5651,
-        "prepared_revision": "f3cad0eea3e48ac86c2963b592870faa467319e3",
-        "frozen_inputs": 1734,
-        "case_sha256": "08097a9f4249f16913c9174dd370d613ded7dee58b9bfd3a72d4af072c8b21af",
-        "original_reader_functions_unchanged": 34,
-        "original_negative_controls": 546,
-        "memo_negative_controls": 292,
-        "body_negative_controls": 177,
-        "reader_source_controls": 159,
-        "phases_started": 13,
-        "phases_completed": 12,
-        "modes_completed": 2,
-        "accepted_component_body_links": 0,
-        "full_reader_first_pass": false,
-        "full_reader_exit": 1,
-        "full_reader_native_controls_executed": 0,
-        "preservation_controls": 25,
-        "preservation_qualification": false,
-        "raw_sha256": "f05bb478b617bf50be765b18bbd5066ef2450e871445bad28d3cd59667e3c698",
-        "execution_revision": "03628a3d6a87a1f9d926186dfb62860a0a2fab69",
-        "review": {
-          "critical": 0,
-          "important": 0,
-          "minor": 0,
-          "correctionPasses": 0,
-          "rereview": false,
-          "historicalDeferred": 16
+        "review_pending": true
+      },
+      "historical_checkpoint_before_A02_51": {
+        "active_slice": {
+          "id": "A02.50",
+          "record": "209-a02-component-body-native.md",
+          "status": "closed-native-incomplete-not-qualified",
+          "base": "e5619fc9e3ad7e4c9c417400e2212b253622f204",
+          "new_code_files": 6,
+          "declared_research_deltas": 2,
+          "new_source_tests": 43,
+          "focused_checks": 368,
+          "native_runs": 1,
+          "maximum_native_runs": 1,
+          "component_body_qualified": false,
+          "full_A02": false,
+          "review_pending": false,
+          "full_checks": 5651,
+          "prepared_revision": "f3cad0eea3e48ac86c2963b592870faa467319e3",
+          "frozen_inputs": 1734,
+          "case_sha256": "08097a9f4249f16913c9174dd370d613ded7dee58b9bfd3a72d4af072c8b21af",
+          "original_reader_functions_unchanged": 34,
+          "original_negative_controls": 546,
+          "memo_negative_controls": 292,
+          "body_negative_controls": 177,
+          "reader_source_controls": 159,
+          "phases_started": 13,
+          "phases_completed": 12,
+          "modes_completed": 2,
+          "accepted_component_body_links": 0,
+          "full_reader_first_pass": false,
+          "full_reader_exit": 1,
+          "full_reader_native_controls_executed": 0,
+          "preservation_controls": 25,
+          "preservation_qualification": false,
+          "raw_sha256": "f05bb478b617bf50be765b18bbd5066ef2450e871445bad28d3cd59667e3c698",
+          "execution_revision": "03628a3d6a87a1f9d926186dfb62860a0a2fab69",
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 0,
+            "correctionPasses": 0,
+            "rereview": false,
+            "historicalDeferred": 16
+          },
+          "final_checkpoint": ".artifacts/a02/component-body-native-review/2026-10-26/final-checkpoint.json"
         },
-        "final_checkpoint": ".artifacts/a02/component-body-native-review/2026-10-26/final-checkpoint.json"
+        "current_checkpoint": {
+          "record": "209-a02-component-body-native.md",
+          "status": "closed-native-incomplete-not-qualified",
+          "source_revision": "f3cad0eea3e48ac86c2963b592870faa467319e3",
+          "execution_revision": "03628a3d6a87a1f9d926186dfb62860a0a2fab69",
+          "accepted_component_body_links": 0,
+          "next_bounded_step": "Finite50 native campaign closed incomplete; no weak-ref/GC/native retry. ONE mandatory L02 saved-startup blocker investigation, dependencies L01 complete; original A02 missing ownership/parameters remain open."
+        }
       }
     },
     {
@@ -8985,8 +9001,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "L02.19-closed-entry-declined-no-loader-retry",
-    "next_item": "ONE A02.51 selected-frame lookup isolation source correction/control if reproduced; original50nativecause remainsUnknown/no native replay.",
+    "current_increment": "A02.51-selected-frame-source-complete-review-pending",
+    "next_item": "ONE selected-source callback eligibility source inspection if separate counterexample; no oldnative/GC campaign.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9011,10 +9027,9 @@
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
-      "id": "L02.19",
-      "record": "218-l02-reviewed-select.md",
-      "status": "closed-bounded-native-incomplete",
-      "final_checkpoint": ".artifacts/l02/reviewed-select-review/2026-10-27/final-checkpoint.json"
+      "id": "A02.51",
+      "record": "219-a02-selected-frame-isolation.md",
+      "status": "source-complete-review-pending"
     },
     "completed_increments": [
       {
@@ -12015,11 +12030,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "ONEactualentrydeclinedbeforetext/Select0rows34unvisited0model; FIRSTreader672PASS/collectionfalse, source24/280/5780PASS. ONEreview0C0I0M/no corrections/rereview/retry;18deferred/20of29/fullL02unchanged. NextA02.51 selected-frame source premise, no GC guess.",
+    "current_activity_note": "ScopedlookupFrame no longer poisoned by unrelated weakref loss.6new/96focused/5786fullPASS, global snapshot/own-row/globalvalidity criteria exact; native0/model0/no50cause attribution. Current327/archives unchanged,20of29/fullA02/fullL02/18deferred unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "01ebeced6126e8503468ba962e9fc2d1dfed9738",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONE A02.51 selected-frame lookup isolation source correction/control if reproduced; original50nativecause remainsUnknown/no native replay.",
+    "next_bounded_step": "ONE selected-source callback eligibility source inspection if separate counterexample; no oldnative/GC campaign.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -12030,8 +12045,8 @@
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
     "current_source_revision_kind": "Reviewed native input source01ebece; actual19entry-declinedINCOMPLETE, not pending or model acceptance",
-    "current_source_checkpoint": ".artifacts/l02/reviewed-select-source/2026-10-27/native-checkpoint.json",
-    "current_source_checkpoint_kind": "Actual bounded refusal before folder input; original model criteria not exercised",
+    "current_source_checkpoint": ".artifacts/a02/selected-frame-source/2026-10-27/checkpoint.json",
+    "current_source_checkpoint_kind": "Source-only experimental observer correction; no native/field/lineage qualification",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
       "active_item": {
