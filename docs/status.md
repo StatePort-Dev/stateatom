@@ -1,12 +1,19 @@
 # Project status
 
+A02.49 [body parameter/return source checks passed](completion/208-a02-component-body-binding.md).
+Original destructuring/return preserved; weak exact refs plus one complete native frame.
+67new/157focused/5599fullPASS; retained Item compile only, no new browser/native/product proof.
+1874protectedtracked/current327/archives/oldnative/closedV02 results unchanged.
+ONEwhole-item review pending;20of29/fullA02/V02 overhead gap remain open.
+NextONE cohesive retained Item parameter-reference integration/acquisition with original gates.
+
 V02.20 [actual current80 measurement complete, target missed](completion/207-v02-current80-original-performance.md).
 ONE198rows/18warm180measured/66windows, FIRSTfrozenreader32changedcontrols/421currentPASS.
 Basicp95515.3/400.1ms passes1s for thiscase; active/off23.9865/28.6835% misses10%.
 ApprovedoneisolatedCA/singleCAseed; knownrawChromePIDs absenthost; no personal/systemtrust.
 Source7/26/5532PASS/current80backend13/type2/admission9. ONEreview0C0I1Minor clarified;
-no waiver/fullV02/release upgrade,20of29 unchanged. NextONE source inspection/correction
-for unnecessary attached/runtime work, preserving source/Trace/freshness/metrics.
+no waiver/fullV02/release upgrade,20of29 unchanged. Source inspection found no justification for speculative Debugger removal (old106
+shows no consistent Debugger-only penalty). No new performance run/policy change.
 
 Historical V02.20 source checkpoint BEFORE the completed measurement:
 V02.20 [current80 original-workload source ready](completion/207-v02-current80-original-performance.md):
