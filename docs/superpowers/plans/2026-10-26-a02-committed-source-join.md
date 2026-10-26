@@ -33,5 +33,5 @@ preserves old hooks and exposes referenceTap/lookupNode/referenceRetention.
 - [x] GREEN old/new focused/full tests/syntax/diff/protected hashes. Expected: complete source-only
 positive plus strict incomplete/stale/equal/sibling/alternate/weak/off/stop refusals, zero native runs.
 - [x] Record actual evidence/limits, local commit/task-done saved-source binder.
-- [ ] ONE whole review/one tested I/C pass/minors defer; archive/verify/remove ownworkspace,
+- [x] ONE whole review/one tested I/C pass/minors defer; archive/verify/remove ownworkspace,
 close commit and choose one distinct qualification/integration item without oldcase rerun.
