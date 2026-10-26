@@ -1,5 +1,11 @@
 # Project status
 
+A02.40 source checks in progress: [memo branch-return recipe](completion/196-a02-memo-branch-source.md).
+Three new codefiles; actual original function-update/bailout callee return and local
+props refs,30new/192focused/5245fullPASS; ONEreview pending. Bailout/scheduled controls keep
+previous props distinct from incoming. Real19.2.5 source compiled/parsed only; no
+MemoItem/native/selected-property support claim.20of29/fullA02/15deferred unchanged.
+
 A02.39 source complete, ONEreview0C0I0newM/15deferred: [complete source/current reference join](completion/195-a02-committed-source-join.md).
 Original full gates/delegated DTOs preserved; actual weak refs/first subsequent commit,
 no stalewindow borrowing.25new/162focused/5215fullPASS;1805tracked/1642currentprior
