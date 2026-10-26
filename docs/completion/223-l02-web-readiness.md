@@ -49,3 +49,39 @@ Source `d82168e`; actual prepare/preflight PASS, browserStarted:false. Newcase
 noncece9b22221783ec37a61dd3a8f76df51a. Prewritten reader/contract frozen in inputmap.
 Profile remains original explicitly owned idle test cache, live lease pending actual
 run. Launch1/availability1/create0/prompt0/downloadfalse. No runtime outcome yet.
+
+## ONE actual observation — INCOMPLETE, no retry
+
+Execution `57e95ef` clean;21:59:54.269–22:00:11.028UTC October26. NativePID3796923,
+ONE Chrome launch, CLI1. Generic `WEB_READINESS_TIMEOUT` before browser owner
+attestation; exact pending operation and cause were not collected, remainUnknown.
+Initial commentary named the CDP connection timeout; only this broader recorded
+stage is established. No page/session/availability receipt acquired; traffic0,
+availability/create/prompt drivercalls0. API exposure/readiness remainsUnknown, not
+unavailable. No model-quality/actual options/installed Atom acceptance follows.
+Raw `.artifacts/l02/wr/ce9b2222/results.json`, SHA256
+`11b04e3518af3b5dbc5fb68c8abd778f22e209abb5f1d366c303a370de2ae3ba`. Native budget exhausted; no samecase/loader/web/model retry.
+
+FIRST prewritten independent reader ONCE exit0:SAVED_INCOMPLETE_WEB_READINESS_NOT_L02,
+391physical bindings PASS, observationnull/qualificationfalse/fullL02false. Its
+complete-observation branch did not execute on missing data. Source-owned reader
+controls4states/16changed negatives+duplicate refusal are not native facts. Raw
+source/case/readers/firstmarker remain exact; no posthoc qualification or retuning.
+
+Raw cleanup7true/2false(browser+daemon); no cleanupErrors. Known original launcher
+3797017/start31640645 and Xephyr3797013/start31640637 Absent in reader hostnamespace
+pid:[4026531836]. The native Node3796923 and ChromePID3797081 from owned log were
+separately Absent; no original Chrome start witness was acquired, so it is not a
+retrospective original-owner proof or whole-tree health claim. Lease released.
+
+Private daemon3797018/start31640646 remained after its launcher exited. Separate
+pre-retirement evidence matches exactUID1000/exe+SHA, unique out/xauth/runtime/tmp
+environment, start after known launcher and PID in owned log; reparenting is explicit.
+Only this confirmed private daemon was retired with identity recheck, resultAbsent.
+Supplemental receipts saved beside raw; original browser:false/daemon:false remain
+unchanged. No global descendant/console/background-model health claim.
+
+Existing source35/79/5849 and current327/archives2 remain distinct from the incomplete
+run. Source/native binders PASS without re-running native or original reader. ONE
+whole-item final review next; one testedI/Cpass/minorsdefer/no rereview/native repeat.
+No further web route unless a concrete new prerequisite is separately established.
