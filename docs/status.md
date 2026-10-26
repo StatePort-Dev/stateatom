@@ -4,7 +4,8 @@ V02.22 [new81 source/package preparation](completion/212-v02-passive-original-pe
 8new driver controls RED→GREEN,27focused/5709fullPASS; pack81/type2/admission9/backend13PASS; measurement0.
 Original80 driver exact except4identity substitutions; workload/targets unchanged.
 Exact retained206CA/seed hashes+chain+hostname/currentvalidityPASS, newCA/import0.
-New81pair/current327 + one actualbackend13/6savedcontrolsPASS; frozen original198row gate next.
+New81pair/current327 + one actualbackend13/6savedcontrolsPASS; newcase432bindings frozen.
+13readerpurefunctions exact/32sourcecontrolsPASS; maxONEoriginal198row gate next.
 Host known1main+NodeAbsent; secondmainPIDnotcaptured, no sameUIDtestprofile refs after exit.
 20of29/fullV02/16deferred unchanged.
 

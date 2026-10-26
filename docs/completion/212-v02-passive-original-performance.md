@@ -56,3 +56,21 @@ process references under the exact two-profileprefix after exit. Profiles retain
 no globaldescendant/heap/allconsole claim; recordedpageerrors empty only. NewCA/import/
 measurement/model0. Pack/type/admission/backend checkpoint saved; next frozenONE
 original198rowcase/reader. Successfulpack/backend alone is no performance proof.
+
+## Frozen new81 original-gate case
+
+`docs/testing/basic-observer-passive-case.json`, SHA
+`262116f74bcef8228ff8d34db2ffdb8c3f23a39fe72fb802aecc9cf5e6714c22`;432frozenbindings,270case inputs+new327
+product/source union. Source-only preparation/hash preflight PASS; original protocol/
+order/fixture/198rows/18warm180measured/66windows exact. No changed original input
+remains under an old role. Newcase binds exactnew81/type/admission/backend and retained
+206TLS/seed; oldcases/readers/markers untouched.
+
+New saved reader/contract frozen in `.artifacts/v02/passive-performance-saved-verification/2026-10-26/`.
+13non-mainfunctions AST-exact; whole-reader change only paths/newAtomSHA. Original
+independent32negative sourcecontrols PASS on198syntheticrows (no native qualification).
+First contract assembly expected selftest JSON file, but unchanged reader emits stdout
+only; failedbeforecontract/case/native. Preserve actualstdout verbatim as JSON; no
+selftest/reader/native rerun. FIRSTfullreader stillpending; exclusivefirst-attempt marker.
+Measurement0 at preregistration; maxONE198rowrun next aftercasecommit/cleanGit/exclusivemarker.
+No target/runtime/pass claim from case/contract.

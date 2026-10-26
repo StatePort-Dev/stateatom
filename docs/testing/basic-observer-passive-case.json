@@ -1,0 +1,942 @@
+{
+  "schema": "stateatom.basic-observer-passive-case/1",
+  "handoff": ".artifacts/atom/2026-10-26T16-16-04-899Z/atom-handoff.json",
+  "handoffSha256": "e9502e5bfd41b0c27d45664d2d8b2c0d1de796c355a654f1538b1ecaf7f0a361",
+  "packageSha256": "8224f111a1f2bbb6219a450606e1ebe04284fca93bb3e46b73125fca9233b7f5",
+  "uiSha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+  "browser": {
+    "version": "Chrome/153.0.8010.12",
+    "executable": "/home/roman/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome",
+    "executableSha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e"
+  },
+  "protocol": {
+    "schema": "stateatom.basic-observer-performance/1",
+    "requests": 20,
+    "responseBytes": 1024,
+    "warmupBlocks": 3,
+    "measuredBlocks": 30,
+    "basicP95Ms": 1000,
+    "activeOverheadPercent": 10
+  },
+  "order": [
+    {
+      "ordinal": 0,
+      "warmup": true,
+      "block": 0,
+      "mode": "off"
+    },
+    {
+      "ordinal": 1,
+      "warmup": true,
+      "block": 0,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 2,
+      "warmup": true,
+      "block": 0,
+      "mode": "active"
+    },
+    {
+      "ordinal": 3,
+      "warmup": true,
+      "block": 1,
+      "mode": "off"
+    },
+    {
+      "ordinal": 4,
+      "warmup": true,
+      "block": 1,
+      "mode": "active"
+    },
+    {
+      "ordinal": 5,
+      "warmup": true,
+      "block": 1,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 6,
+      "warmup": true,
+      "block": 2,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 7,
+      "warmup": true,
+      "block": 2,
+      "mode": "off"
+    },
+    {
+      "ordinal": 8,
+      "warmup": true,
+      "block": 2,
+      "mode": "active"
+    },
+    {
+      "ordinal": 9,
+      "warmup": false,
+      "block": 0,
+      "mode": "off"
+    },
+    {
+      "ordinal": 10,
+      "warmup": false,
+      "block": 0,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 11,
+      "warmup": false,
+      "block": 0,
+      "mode": "active"
+    },
+    {
+      "ordinal": 12,
+      "warmup": false,
+      "block": 1,
+      "mode": "off"
+    },
+    {
+      "ordinal": 13,
+      "warmup": false,
+      "block": 1,
+      "mode": "active"
+    },
+    {
+      "ordinal": 14,
+      "warmup": false,
+      "block": 1,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 15,
+      "warmup": false,
+      "block": 2,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 16,
+      "warmup": false,
+      "block": 2,
+      "mode": "off"
+    },
+    {
+      "ordinal": 17,
+      "warmup": false,
+      "block": 2,
+      "mode": "active"
+    },
+    {
+      "ordinal": 18,
+      "warmup": false,
+      "block": 3,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 19,
+      "warmup": false,
+      "block": 3,
+      "mode": "active"
+    },
+    {
+      "ordinal": 20,
+      "warmup": false,
+      "block": 3,
+      "mode": "off"
+    },
+    {
+      "ordinal": 21,
+      "warmup": false,
+      "block": 4,
+      "mode": "active"
+    },
+    {
+      "ordinal": 22,
+      "warmup": false,
+      "block": 4,
+      "mode": "off"
+    },
+    {
+      "ordinal": 23,
+      "warmup": false,
+      "block": 4,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 24,
+      "warmup": false,
+      "block": 5,
+      "mode": "active"
+    },
+    {
+      "ordinal": 25,
+      "warmup": false,
+      "block": 5,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 26,
+      "warmup": false,
+      "block": 5,
+      "mode": "off"
+    },
+    {
+      "ordinal": 27,
+      "warmup": false,
+      "block": 6,
+      "mode": "off"
+    },
+    {
+      "ordinal": 28,
+      "warmup": false,
+      "block": 6,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 29,
+      "warmup": false,
+      "block": 6,
+      "mode": "active"
+    },
+    {
+      "ordinal": 30,
+      "warmup": false,
+      "block": 7,
+      "mode": "off"
+    },
+    {
+      "ordinal": 31,
+      "warmup": false,
+      "block": 7,
+      "mode": "active"
+    },
+    {
+      "ordinal": 32,
+      "warmup": false,
+      "block": 7,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 33,
+      "warmup": false,
+      "block": 8,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 34,
+      "warmup": false,
+      "block": 8,
+      "mode": "off"
+    },
+    {
+      "ordinal": 35,
+      "warmup": false,
+      "block": 8,
+      "mode": "active"
+    },
+    {
+      "ordinal": 36,
+      "warmup": false,
+      "block": 9,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 37,
+      "warmup": false,
+      "block": 9,
+      "mode": "active"
+    },
+    {
+      "ordinal": 38,
+      "warmup": false,
+      "block": 9,
+      "mode": "off"
+    },
+    {
+      "ordinal": 39,
+      "warmup": false,
+      "block": 10,
+      "mode": "active"
+    },
+    {
+      "ordinal": 40,
+      "warmup": false,
+      "block": 10,
+      "mode": "off"
+    },
+    {
+      "ordinal": 41,
+      "warmup": false,
+      "block": 10,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 42,
+      "warmup": false,
+      "block": 11,
+      "mode": "active"
+    },
+    {
+      "ordinal": 43,
+      "warmup": false,
+      "block": 11,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 44,
+      "warmup": false,
+      "block": 11,
+      "mode": "off"
+    },
+    {
+      "ordinal": 45,
+      "warmup": false,
+      "block": 12,
+      "mode": "off"
+    },
+    {
+      "ordinal": 46,
+      "warmup": false,
+      "block": 12,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 47,
+      "warmup": false,
+      "block": 12,
+      "mode": "active"
+    },
+    {
+      "ordinal": 48,
+      "warmup": false,
+      "block": 13,
+      "mode": "off"
+    },
+    {
+      "ordinal": 49,
+      "warmup": false,
+      "block": 13,
+      "mode": "active"
+    },
+    {
+      "ordinal": 50,
+      "warmup": false,
+      "block": 13,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 51,
+      "warmup": false,
+      "block": 14,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 52,
+      "warmup": false,
+      "block": 14,
+      "mode": "off"
+    },
+    {
+      "ordinal": 53,
+      "warmup": false,
+      "block": 14,
+      "mode": "active"
+    },
+    {
+      "ordinal": 54,
+      "warmup": false,
+      "block": 15,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 55,
+      "warmup": false,
+      "block": 15,
+      "mode": "active"
+    },
+    {
+      "ordinal": 56,
+      "warmup": false,
+      "block": 15,
+      "mode": "off"
+    },
+    {
+      "ordinal": 57,
+      "warmup": false,
+      "block": 16,
+      "mode": "active"
+    },
+    {
+      "ordinal": 58,
+      "warmup": false,
+      "block": 16,
+      "mode": "off"
+    },
+    {
+      "ordinal": 59,
+      "warmup": false,
+      "block": 16,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 60,
+      "warmup": false,
+      "block": 17,
+      "mode": "active"
+    },
+    {
+      "ordinal": 61,
+      "warmup": false,
+      "block": 17,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 62,
+      "warmup": false,
+      "block": 17,
+      "mode": "off"
+    },
+    {
+      "ordinal": 63,
+      "warmup": false,
+      "block": 18,
+      "mode": "off"
+    },
+    {
+      "ordinal": 64,
+      "warmup": false,
+      "block": 18,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 65,
+      "warmup": false,
+      "block": 18,
+      "mode": "active"
+    },
+    {
+      "ordinal": 66,
+      "warmup": false,
+      "block": 19,
+      "mode": "off"
+    },
+    {
+      "ordinal": 67,
+      "warmup": false,
+      "block": 19,
+      "mode": "active"
+    },
+    {
+      "ordinal": 68,
+      "warmup": false,
+      "block": 19,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 69,
+      "warmup": false,
+      "block": 20,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 70,
+      "warmup": false,
+      "block": 20,
+      "mode": "off"
+    },
+    {
+      "ordinal": 71,
+      "warmup": false,
+      "block": 20,
+      "mode": "active"
+    },
+    {
+      "ordinal": 72,
+      "warmup": false,
+      "block": 21,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 73,
+      "warmup": false,
+      "block": 21,
+      "mode": "active"
+    },
+    {
+      "ordinal": 74,
+      "warmup": false,
+      "block": 21,
+      "mode": "off"
+    },
+    {
+      "ordinal": 75,
+      "warmup": false,
+      "block": 22,
+      "mode": "active"
+    },
+    {
+      "ordinal": 76,
+      "warmup": false,
+      "block": 22,
+      "mode": "off"
+    },
+    {
+      "ordinal": 77,
+      "warmup": false,
+      "block": 22,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 78,
+      "warmup": false,
+      "block": 23,
+      "mode": "active"
+    },
+    {
+      "ordinal": 79,
+      "warmup": false,
+      "block": 23,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 80,
+      "warmup": false,
+      "block": 23,
+      "mode": "off"
+    },
+    {
+      "ordinal": 81,
+      "warmup": false,
+      "block": 24,
+      "mode": "off"
+    },
+    {
+      "ordinal": 82,
+      "warmup": false,
+      "block": 24,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 83,
+      "warmup": false,
+      "block": 24,
+      "mode": "active"
+    },
+    {
+      "ordinal": 84,
+      "warmup": false,
+      "block": 25,
+      "mode": "off"
+    },
+    {
+      "ordinal": 85,
+      "warmup": false,
+      "block": 25,
+      "mode": "active"
+    },
+    {
+      "ordinal": 86,
+      "warmup": false,
+      "block": 25,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 87,
+      "warmup": false,
+      "block": 26,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 88,
+      "warmup": false,
+      "block": 26,
+      "mode": "off"
+    },
+    {
+      "ordinal": 89,
+      "warmup": false,
+      "block": 26,
+      "mode": "active"
+    },
+    {
+      "ordinal": 90,
+      "warmup": false,
+      "block": 27,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 91,
+      "warmup": false,
+      "block": 27,
+      "mode": "active"
+    },
+    {
+      "ordinal": 92,
+      "warmup": false,
+      "block": 27,
+      "mode": "off"
+    },
+    {
+      "ordinal": 93,
+      "warmup": false,
+      "block": 28,
+      "mode": "active"
+    },
+    {
+      "ordinal": 94,
+      "warmup": false,
+      "block": 28,
+      "mode": "off"
+    },
+    {
+      "ordinal": 95,
+      "warmup": false,
+      "block": 28,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 96,
+      "warmup": false,
+      "block": 29,
+      "mode": "active"
+    },
+    {
+      "ordinal": 97,
+      "warmup": false,
+      "block": 29,
+      "mode": "basic"
+    },
+    {
+      "ordinal": 98,
+      "warmup": false,
+      "block": 29,
+      "mode": "off"
+    }
+  ],
+  "hosts": [
+    "standalone",
+    "embedding"
+  ],
+  "totalRows": 198,
+  "warmupRows": 18,
+  "measuredRows": 180,
+  "activeWindows": 66,
+  "fixture": {
+    "html": "200d3f0dca7c7ffcac64ce5f127132e5818d39cd77e54d95b2d8407cc2bd645a",
+    "script": "ec3ac2de0caa596d8d47d145187c6ac2f432a13aa806aff8071cb7cefde054c2"
+  },
+  "tls": {
+    "root": {
+      "file": ".artifacts/v02/current80-tls/2026-10-26T08-38-10-304Z/pki/root.pem",
+      "sha256": "bbba323a089ab1920e6188a1f5b4b77653afff702c373d58849ab72e6a01d574"
+    },
+    "certificate": {
+      "file": ".artifacts/v02/current80-tls/2026-10-26T08-38-10-304Z/pki/server.pem",
+      "sha256": "ce3e024225657dabae9a448b055433d885b36a3a6a7874679ce1dd32dfbe2760"
+    },
+    "key": {
+      "file": ".artifacts/v02/current80-tls/2026-10-26T08-38-10-304Z/pki/server.key",
+      "sha256": "9bdbdcabed0175ce76ec58b9de0cf1110fbd3476432ac7b1ad69a3ab77d19a6b"
+    },
+    "trustDatabase": {
+      "file": ".artifacts/v02/current80-tls/2026-10-26T08-38-10-304Z/profiles/seed/Default/ServerCertificate",
+      "sha256": "10b428e1d7ab35b97496124eebe5ffa2173deb8cb5ce72fa04a4c22b10fda74b"
+    }
+  },
+  "tlsMethod": "EXACT_RETAINED_APPROVED_SINGLE_CA_SEED_COPY_NO_NEW_CERTIFICATES_OR_IMPORT",
+  "tlsSourceNativeRun": ".artifacts/v02/current80-tls/2026-10-26T08-38-10-304Z",
+  "sourceSetupDifference": "New81 runtime21 change, identity-only original80 driver. Exact206approved stillvalid root/cert/key/singleCAseed retained, copy only into newowned profiles. No newCA/key/importGUI/system/personaltrust/securityflags. Original fixture/order/workload/metrics/threshold/cleanup unchanged.",
+  "packedQualification": {
+    "types": ".artifacts/atom/2026-10-26T16-16-04-899Z/type-consumer-result.json",
+    "admission": ".artifacts/atom/compatibility/2026-10-26T16-16-40-613Z/result.json",
+    "backend": ".artifacts/u02/input-inspector/native/2026-10-26T16-18-15-037Z/results.json"
+  },
+  "packedQualificationSha256": {
+    "types": "ff3251cba093e025c0ee1c89f02edd62ffd7ccbe49b22dd53c7bb348c211e37c",
+    "admission": "5dbed8639b07d187a87610ef91389a89d3fc38de5dd929d5761987a7f3a10942",
+    "backend": "9da100b1477aea41042f08adc4a6dea13ec4d6239a5002fa36ec2a07f0296efb"
+  },
+  "inputHashes": {
+    ".artifacts/atom/2026-10-26T16-16-04-899Z/atom-handoff.json": "e9502e5bfd41b0c27d45664d2d8b2c0d1de796c355a654f1538b1ecaf7f0a361",
+    ".artifacts/atom/2026-10-26T16-16-04-899Z/type-consumer-result.json": "ff3251cba093e025c0ee1c89f02edd62ffd7ccbe49b22dd53c7bb348c211e37c",
+    ".artifacts/atom/compatibility/2026-10-26T16-16-40-613Z/result.json": "5dbed8639b07d187a87610ef91389a89d3fc38de5dd929d5761987a7f3a10942",
+    ".artifacts/u02/input-inspector/native/2026-10-26T16-18-15-037Z/results.json": "9da100b1477aea41042f08adc4a6dea13ec4d6239a5002fa36ec2a07f0296efb",
+    ".artifacts/v02/current80-performance-source/2026-10-26/backend-checkpoint.json": "a2170969a207d2d4415cece1b5059e5043a6841a49d36c27236873e9a0c96670",
+    ".artifacts/v02/current80-performance-source/2026-10-26/prepare-tls.mjs": "ba45cfed2210ebee5d7baaa3f9f21f3079f5d50b92b0af1c4de0cbd14ac2e27a",
+    ".artifacts/v02/current80-performance-source/2026-10-26/source-parity.json": "489fde099ad8357b5746fa5f54ce7b680c96ac61f08bd23cc9dd6ea41fcfa8d6",
+    ".artifacts/v02/current80-performance-source/2026-10-26/tls-authorization.json": "d2b0704cd4aa6782e9410a224cbd6c462b996162aaffb79ed4677e4766c0b4ea",
+    ".artifacts/v02/current80-tls/2026-10-26T08-38-10-304Z/pki/root.pem": "bbba323a089ab1920e6188a1f5b4b77653afff702c373d58849ab72e6a01d574",
+    ".artifacts/v02/current80-tls/2026-10-26T08-38-10-304Z/pki/server.key": "9bdbdcabed0175ce76ec58b9de0cf1110fbd3476432ac7b1ad69a3ab77d19a6b",
+    ".artifacts/v02/current80-tls/2026-10-26T08-38-10-304Z/pki/server.pem": "ce3e024225657dabae9a448b055433d885b36a3a6a7874679ce1dd32dfbe2760",
+    ".artifacts/v02/current80-tls/2026-10-26T08-38-10-304Z/preparation-result.json": "3f6d64bcad0cced9e58c2f64de0681ffed7935da93c0159b88633219d4088bd5",
+    ".artifacts/v02/current80-tls/2026-10-26T08-38-10-304Z/profiles/seed/Default/ServerCertificate": "10b428e1d7ab35b97496124eebe5ffa2173deb8cb5ce72fa04a4c22b10fda74b",
+    ".artifacts/v02/passive-performance-saved-verification/2026-10-26/preparation-note.json": "387137f97e767606d5185928f244a7a3c32165ad8f99f9081ad8eec61d24bef9",
+    ".artifacts/v02/passive-performance-saved-verification/2026-10-26/reader-contract.json": "0881894152d59816892179f233805596a5b9fc42e31cc3d78455a4c34108484a",
+    ".artifacts/v02/passive-performance-saved-verification/2026-10-26/reader-source-equivalence.json": "facdfcb9d7deebe884e772b9f0f6a49e56c829b2c79f4ded01cb6df07a7da7e1",
+    ".artifacts/v02/passive-performance-saved-verification/2026-10-26/self-test.json": "b75f67966b3f7a2f41eeb98f6c19882c3758d8da680781f4d2fc006fad9ea927",
+    ".artifacts/v02/passive-performance-saved-verification/2026-10-26/verify.py": "b87b7f3d24824e0854bdbd29c40c865015d83f52f060ec5b87199520f3c7790f",
+    ".artifacts/v02/passive-performance-source/2026-10-26/backend-checkpoint.json": "d11f187f43284a0e178a9c84fb95e5270965ce8b9d80691159930fd00d0908aa",
+    ".artifacts/v02/passive-performance-source/2026-10-26/backend-host-cleanup.json": "cc7e182c9b229e16793e5c5a348fb9c8a370fb76e015253119de99915e906e54",
+    ".artifacts/v02/passive-performance-source/2026-10-26/backend-profile-references.json": "cdf4a3cc8f051d28ccbc3c7655c0189bf755a3282c8d4aef8cc8dd1659f791a6",
+    ".artifacts/v02/passive-performance-source/2026-10-26/backend-registration.json": "1f76ff0d76d242d07e80cbca67a8101bd721075517b94e5d47f2679f32bac6fc",
+    ".artifacts/v02/passive-performance-source/2026-10-26/prepare-case.py": "e3ea3fd3bb0213f614b334ddb73fc929acb3b61759bdb50561ac82e490d651f0",
+    ".artifacts/v02/passive-performance-source/2026-10-26/registration.json": "34248d19920e73ee25ea0e22d18b2384a073589945a5d7f6c4d47f8e796d9a98",
+    ".artifacts/v02/passive-performance-source/2026-10-26/retained-tls-validation.json": "fa81c55bdf3d9b10b983c8174aa86804355f1fe5fb55d818bc414c294120207c",
+    ".artifacts/v02/passive-performance-source/2026-10-26/source-checkpoint.json": "a381b53ad0dae528c3f88bf45fb88540f3fa90835b5b197cbeec28484e4bc272",
+    "/home/roman/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e",
+    "core/action-analysis-pure.mjs": "ef683920ea1ceb4360248363d53399f754e51edeb88160757b3f299689ff437b",
+    "core/action-analysis.mjs": "97a366b4bd1674a454a59f4d6987614ed979e48347382a1758fa95cdeacacd61",
+    "core/action-source-path.mjs": "f0db6a6b6603c50b3f0c1874602d0988b5eb093d5f9083ac1fd36f8f69466d7d",
+    "core/analyzer.mjs": "9283ca1461533fb81e5594e5c90dd088216c27f45838d375802943db4d31a99d",
+    "core/bridge.mjs": "c2ec180513231cbcf635d749110bd39465799bb7210a93560ae6f0fb43d4a85e",
+    "core/evidence.mjs": "b13d145c90629f6f54801f2bce84dfe2308a40929cf735cbfb31b37b36ef3844",
+    "core/project-connection.mjs": "4901626b91fba591c1135607c360fcc395ca049f838db81a3bbd4133dd91b860",
+    "core/vue-source.mjs": "49523742515414c68b91874d81f8b991b5e94689a89206e3aa1c65d94ac0910e",
+    "core/workspace-sources.mjs": "31212d5b9fdd2e68f040c8025dca059268e16de5fb83f4b4fae9bdb8110ed90a",
+    "docs/completion/206-v02-current80-measurement-prerequisite.md": "2a8c183d88b5669afd056d871d5c2134153e2a01e00338d81e613c6cbbe01485",
+    "docs/superpowers/plans/2026-10-23-v02-basic-observer.md": "d6953c4bd332172f66aee71702509737ab36b62a18a1aadd88410209365cc016",
+    "docs/superpowers/plans/2026-10-24-v02-current-basic-observer.md": "f814d92335cb6f52ffad0e145bae5e4a3c326f30e5b6f2b48bafc984ca9754b4",
+    "docs/superpowers/plans/2026-10-26-v02-current80-original-performance.md": "a747b97ccf429f4c21a35b20d052dc795866182502d0bf30ae2df4cf3691506f",
+    "docs/superpowers/plans/2026-10-26-v02-passive-original-performance.md": "60e96667edfc791b64c78a2418b39c4d0e856a55b3c8a63a151bb9aaaa0cd691",
+    "docs/superpowers/specs/2026-10-24-v02-current-basic-observer-design.md": "d975b6cb2529a2d5bef13e569a656fbf527bdcc933b4b89cace856d38413f8d9",
+    "docs/superpowers/specs/2026-10-26-v02-current80-original-performance-design.md": "7c4100154104ad26b95e178b71c978c92eef85177f02d5b50a3a6a66141285eb",
+    "docs/superpowers/specs/2026-10-26-v02-passive-original-performance-design.md": "872b574824cc031d2cb8695b2baadb42cf03e0214d601214de68cef377bd1500",
+    "ide-extension/extension.mjs": "d72cb2b2dc9db4ca854b58c9b110cfc745551384cd7f463bee064c705c2a7cdb",
+    "ide-extension/session.mjs": "8d4efeff3205c605385b82ac7057ddb9111c089079e0b0bc8768e72267b507d8",
+    "node_modules/@babel/code-frame/lib/index.js": "313711c78293dfc83beb2ce5d6846a539235fc48fdd507361b59db8aaba2b186",
+    "node_modules/@babel/generator/lib/buffer.js": "f51f2cef71b84754b964e09971b658a9995fbf3a889b1bbb14340ef1913102cc",
+    "node_modules/@babel/generator/lib/generators/base.js": "f0cba6a039f96c1e245d6d778b9fa3ec36961a1f8840fd88251539df7d666f19",
+    "node_modules/@babel/generator/lib/generators/classes.js": "d7cc4771dea4921949917ad45f7fee97975b597ed5ad43816361f776a2318c29",
+    "node_modules/@babel/generator/lib/generators/deprecated.js": "0b9f888e915dd71164d3dfd78394acd15f215bd8592d8d627757aeb9c7f6544e",
+    "node_modules/@babel/generator/lib/generators/expressions.js": "e29cd8effe5622a44eec97df0a3f2e5eda3b864d9af477ccd20b337d3eb6fd73",
+    "node_modules/@babel/generator/lib/generators/flow.js": "d730dfc1eb1284724f64d5e1e3bef7eafcd3cc7f323ae8c83a36dff5a517a438",
+    "node_modules/@babel/generator/lib/generators/index.js": "e86e6e2f58829b30d9e5d4232404a2925cefe09c2345a4abc83072c7b1f2fb34",
+    "node_modules/@babel/generator/lib/generators/jsx.js": "6e9fa068cd121d59c2c91c170140f845558149fefd6ccab255267a86dbffa405",
+    "node_modules/@babel/generator/lib/generators/methods.js": "944975239553f0a4ed8b938fc8a0aa3af7c9a0f23ef77ae155e908fbcbd3d706",
+    "node_modules/@babel/generator/lib/generators/modules.js": "39dd14f3e802afe6e55d7a69365e997395020fa577cf2964b808d36fc583812f",
+    "node_modules/@babel/generator/lib/generators/statements.js": "669dfbab95417562a0cd4ac54ed1500b8544746fc3159519b8656bbb9b487ab5",
+    "node_modules/@babel/generator/lib/generators/template-literals.js": "957342c2b2369590dec2d236f153c1ad7dfda490a3f41530ac6a9b5f060ff1e4",
+    "node_modules/@babel/generator/lib/generators/types.js": "bbfd954da6b9ba64f5b667531803061c093abab028881d3f4a27c65b6078b11c",
+    "node_modules/@babel/generator/lib/generators/typescript.js": "a8a246465f7a85708e3ff733724624014aa270733ba788ac61b1558534b2399d",
+    "node_modules/@babel/generator/lib/index.js": "8b14cedcc66fc84d424b5890c135ad77bb5978adb177fe7063e831cc9358af04",
+    "node_modules/@babel/generator/lib/node/index.js": "a737a3f2ab582897bb2a46c0137ce2b5d3d92503754bcc6bacb3aaa864431b42",
+    "node_modules/@babel/generator/lib/node/parentheses.js": "4e322e029ce2730aee9c8d99e1dbeaa0e142660a162da6775030007c5e7f99b0",
+    "node_modules/@babel/generator/lib/node/whitespace.js": "838027e06fa5ac5028fa879da0e0ecbceb0dfe96d06fffd67f941678bdd66c5a",
+    "node_modules/@babel/generator/lib/printer.js": "de16ad149f493828c18043a774a45463c99c57031029642b35890f447a7618e8",
+    "node_modules/@babel/generator/lib/source-map.js": "c0f35f0ddaee1a8034dd60298b5c8b4c4b5cef0e5b8e9ab2705974159a62ba45",
+    "node_modules/@babel/generator/lib/token-map.js": "8d1e77f760457fa121fca5dade80ecf4b37e624e534558b96142fb08233209c4",
+    "node_modules/@babel/helper-globals/data/builtin-lower.json": "10a1d28c90e86d70e31fd9d21c60adcb7f134959bc64a64254fa3d9952be16b9",
+    "node_modules/@babel/helper-globals/data/builtin-upper.json": "49de1ac44975edbb209431cb75f2174a5507e6714985d40cebc822d5ae1beaed",
+    "node_modules/@babel/helper-string-parser/lib/index.js": "c1b1b25a48d3b44710984b894db71f5e8c335ca52c35da43e73967c20cf18bfd",
+    "node_modules/@babel/helper-validator-identifier/lib/identifier.js": "1f6f6c5d3b2ed3bc6613ad93fc0c9eb54c04be5013241bf391f3825c16b4432c",
+    "node_modules/@babel/helper-validator-identifier/lib/index.js": "98df6c259dc29b4082858573ffd24930ca68a7bf531a10f48d856ae813b9acbb",
+    "node_modules/@babel/helper-validator-identifier/lib/keyword.js": "1f27b5bd2ad2601730b85d1391a242604414a66026651d762179d5639b0b4c73",
+    "node_modules/@babel/parser/lib/index.js": "4fad5d076afb8c346159a06bb942d6e14c6167d590082b7c3bdebd4c108af201",
+    "node_modules/@babel/template/lib/builder.js": "70e99636118c7cbbe0d89564d747dccc6e2f88087df067c822b2f72caf41f4ff",
+    "node_modules/@babel/template/lib/formatters.js": "76ba96dcbc958906465e9848ffa717d70664e33752ed5dda7e1ba7ee2885dc55",
+    "node_modules/@babel/template/lib/index.js": "afa3d50840abdd95e81d3e00dd8539c448b533767f899dcedf4dac776ddff9a7",
+    "node_modules/@babel/template/lib/literal.js": "806ab870bc8c219035d237b69bf82b2a406413907a25ea377fd1daa7678d9a6d",
+    "node_modules/@babel/template/lib/options.js": "6ccc52bdbc647a402860400b427f2db2bae027aa069403a8615ecb79b129d413",
+    "node_modules/@babel/template/lib/parse.js": "a9893d72434528cda653ab8fdcb788d09cd191e660055ba0804e2dbe26f3ca39",
+    "node_modules/@babel/template/lib/populate.js": "d5908f45bd42d37feee9cd8ad2b1b000619dabdd2a44f794e479649ef14af04b",
+    "node_modules/@babel/template/lib/string.js": "d50c4190b5aa5da0d01b5e3ded6e53d1c0739eec8aecd0b633e3567b26b1dca9",
+    "node_modules/@babel/template/node_modules/@babel/parser/lib/index.js": "82d72e197e27bf909ae10ffc8d1a969aeb94fe96ec96c4e9cb685a0a8229e40c",
+    "node_modules/@babel/traverse/lib/cache.js": "a75e3c4caa6faae0bc2835df475602c15fee7309c31361eba78d2f14d2ca6637",
+    "node_modules/@babel/traverse/lib/context.js": "3b449e4e623e3e086f177426232ea422edaf03f189cfa7f92825ac34d0dc072a",
+    "node_modules/@babel/traverse/lib/hub.js": "bd60df819fe6e9bb658139d57a253b2d9fb7899541e8f4f65bcf7ee88ad01a7a",
+    "node_modules/@babel/traverse/lib/index.js": "49ae3f03a47b7e52f15d4ae6c6032fb180ac1e1ba8dd803a906fc8c36a009694",
+    "node_modules/@babel/traverse/lib/path/ancestry.js": "b15b8a29b1abdacbdc1c94a7b70ebda028f9f95c65e24cff6d1f911e753697ce",
+    "node_modules/@babel/traverse/lib/path/comments.js": "7aeff97defe6a3f3ae9d32d3741407d3697ce37a3edc29f76633cad2cbd44092",
+    "node_modules/@babel/traverse/lib/path/context.js": "ed52278954c2e3942e958339643f526bbba2f6baf30f4e70808bb406299a025b",
+    "node_modules/@babel/traverse/lib/path/conversion.js": "1ffcb15d52d99e7fc4ee04a789d7f23f74e4d91af4559f966cb7375f8ccc6ca4",
+    "node_modules/@babel/traverse/lib/path/evaluation.js": "09571699aa131c34e3c285e6f72c9e0ae746292e9cae52703b758559e01e1131",
+    "node_modules/@babel/traverse/lib/path/family.js": "3a15514cd4b078f99a4bbfe058253acb7026e911109152afa11211c76608351f",
+    "node_modules/@babel/traverse/lib/path/index.js": "2b1c745c9781e1636f37be18fd150fc1cb1c93778950e9818128fdbd5c226850",
+    "node_modules/@babel/traverse/lib/path/inference/index.js": "3be0c3e5d93ad61f4f5cdd81931ff105bfc66b0c682d2998a58e4e968620ba96",
+    "node_modules/@babel/traverse/lib/path/inference/inferer-reference.js": "6c435b1561c94ba3cfcff79d7acc3d36dd0f0e961f4344265699f6e111532c0e",
+    "node_modules/@babel/traverse/lib/path/inference/inferers.js": "f7e1d9b6a10b54f9a8e2efea4ce9220a8d52433c115092d42a863f2b0c3b6cc0",
+    "node_modules/@babel/traverse/lib/path/inference/util.js": "c5db5552e66310f8895f00d8a195dc431fd0bb798fc141483e226055df4cb59d",
+    "node_modules/@babel/traverse/lib/path/introspection.js": "ab007cac5b69966cc9d5ff064edff9084f3740fe0c22e6e822dbaffdd4fa7d75",
+    "node_modules/@babel/traverse/lib/path/lib/hoister.js": "1b2a6c39b19aa8718b43619d45bc314fdb6d80b9907a1ff7e2da1fe95a88c14b",
+    "node_modules/@babel/traverse/lib/path/lib/removal-hooks.js": "02939b9a138bb0503bea64a0741bf7045a260a97d5f73fdfeda398f2dc470bcb",
+    "node_modules/@babel/traverse/lib/path/lib/virtual-types-validator.js": "37378315bd25cfd700d014029d6b0e7ae264fae2dca03f580e7e60854dc49d00",
+    "node_modules/@babel/traverse/lib/path/lib/virtual-types.js": "8fdb98e41abb086c6019b611adbed559faa0223b0ad35ec836fb4cb5d2f8276e",
+    "node_modules/@babel/traverse/lib/path/modification.js": "26b38cf5d554809a9cd01a07f230a1bfb1174dc23b68aa97857dc7e8278a2dbf",
+    "node_modules/@babel/traverse/lib/path/removal.js": "3cc09e484d3e7f5e7bfec4152e1fe00e8c6b326fb5ac8d8eb87f367e20b19f7a",
+    "node_modules/@babel/traverse/lib/path/replacement.js": "e46e02b21576ef1164512c31e4f8d0033b4833dd136688895cda678f2f374bef",
+    "node_modules/@babel/traverse/lib/scope/binding.js": "96b682a8cb76d0842f8aa05c9867b872127cc928c243730e0577ba7db176cc41",
+    "node_modules/@babel/traverse/lib/scope/index.js": "ab2a29155bb827ac40054bfb262ee61869c3eb76740119a77087d2c9de72fb9f",
+    "node_modules/@babel/traverse/lib/scope/lib/renamer.js": "6af241ef0af8bd64474b6638705850f5d8abfe66e3111905f34974c3eab0dd1b",
+    "node_modules/@babel/traverse/lib/scope/traverseForScope.js": "91d8a958d6b379f6f5465a4070afa275daa425d63c3e1f231e8a3e66a6150498",
+    "node_modules/@babel/traverse/lib/traverse-node.js": "42519af551cb1b696baa922057a2045a0f01e30229e6fe7e88e31ad4b357bd33",
+    "node_modules/@babel/traverse/lib/visitors.js": "facad4c8fba6afed59ed992b5c7bc96ea16aef00cf2399525655c14144d46397",
+    "node_modules/@babel/types/lib/asserts/assertNode.js": "f5daa3d19be4871e94dc56fc97b412c9a2db30e60d3431d5e21b4a8f15fc254a",
+    "node_modules/@babel/types/lib/asserts/generated/index.js": "0be5395e6c70928b772a0dce8e7783e9ddc9322e3a1a5f0c9643cb2ddfd9a4ed",
+    "node_modules/@babel/types/lib/builders/flow/createFlowUnionType.js": "d956848a9ebd7c485908f46c0ce527c83509e952872b4aec8de995434f2369a1",
+    "node_modules/@babel/types/lib/builders/flow/createTypeAnnotationBasedOnTypeof.js": "5a48d7d1ffabb37f39398d080ced7dab04f45a45b0e373b1c90b2bd8f36ed727",
+    "node_modules/@babel/types/lib/builders/generated/index.js": "a7c533725a73a24bff6d299f056c977204ee53ee4180d007b6c2f74b6c8ef142",
+    "node_modules/@babel/types/lib/builders/generated/lowercase.js": "665aaab2c379fc7f2975fb3d690af397ad95e7b2a8c6761a9208229b63946f41",
+    "node_modules/@babel/types/lib/builders/generated/uppercase.js": "f4ec3b4f98b9d6f4af4eebd4e81f4529097b8eb8d908a8a49f3ba137237a9108",
+    "node_modules/@babel/types/lib/builders/productions.js": "ade4f557ede9b5efc677944db55387d17d34787f259b6cb4a69334b52f84a224",
+    "node_modules/@babel/types/lib/builders/react/buildChildren.js": "80cee92f7e6c583065b8b10e83b1d0f90ae5b54e41052e452fb08463945c272a",
+    "node_modules/@babel/types/lib/builders/typescript/createTSUnionType.js": "0b8303cee403bcd242adac77b969b3470935469a530f4241675015235e827e10",
+    "node_modules/@babel/types/lib/clone/clone.js": "e111ca75eaceb1f7df18f83ddea547562e9f7fb344e6a9b14b613a587b34bbaf",
+    "node_modules/@babel/types/lib/clone/cloneDeep.js": "952c6eec4f23534d5a3f8ce0902fde9473ddd8f19a51a8ec841f414acc3bea1c",
+    "node_modules/@babel/types/lib/clone/cloneDeepWithoutLoc.js": "1262732b2d97398c6fc1347cf749a4a7e35b8fc13e24cf0563544e26f52f395a",
+    "node_modules/@babel/types/lib/clone/cloneNode.js": "7db899dfa4caeade05d282c25f3dafe4ce296cfc6c011658b455f46e12a5273d",
+    "node_modules/@babel/types/lib/clone/cloneWithoutLoc.js": "11400139de42cb806781efe3f1ef1c37868be98574faba096e46abab67ccb404",
+    "node_modules/@babel/types/lib/comments/addComment.js": "f1e5431cba374c103a614e1db06e197fb9c99feb0c09fb81617eb5941717a3ab",
+    "node_modules/@babel/types/lib/comments/addComments.js": "7a421e7c608ac0ca7790fd17a1abc2e48367f56eb1f99d4de6eeaaef99d7590d",
+    "node_modules/@babel/types/lib/comments/inheritInnerComments.js": "e4f19c43943fb5b6877396941ad43d5b8870fcdcf20ab741456d29f38b857b46",
+    "node_modules/@babel/types/lib/comments/inheritLeadingComments.js": "31839b52f4d08f4a1e1dd91ce812c51e329b2f942840e683bfa5395a97b8fdd8",
+    "node_modules/@babel/types/lib/comments/inheritTrailingComments.js": "33c5268d1904b88b29766c60324a2e5711628b0be643e25b3fd2b9b48fa430d3",
+    "node_modules/@babel/types/lib/comments/inheritsComments.js": "bdb71fca3509759b0d865d69f3245df126aa3d822748f0ecc8e716f28876a31f",
+    "node_modules/@babel/types/lib/comments/removeComments.js": "0eef78919eccd6ae358620c4c11ed72f31ba302b3cf194143b45556e73c354f3",
+    "node_modules/@babel/types/lib/constants/generated/index.js": "539fecb078ee358d5fe9c5a011237481589c829c28d7775d00675fd1e4d63ddb",
+    "node_modules/@babel/types/lib/constants/index.js": "299fe69d83a7611c257e86d8fa2ebaea69aa7291a3ab265cd20d3e36958050a4",
+    "node_modules/@babel/types/lib/converters/ensureBlock.js": "d18069705c1be7f10c5e2c2123abdfdfd5182bea1b5c16903c5e5150bbac2262",
+    "node_modules/@babel/types/lib/converters/gatherSequenceExpressions.js": "a5d59cdaa56e7c7a40e7bbb131417c19ac2dbd56948f41c410d90937a2948b2a",
+    "node_modules/@babel/types/lib/converters/toBindingIdentifierName.js": "1b838848c87490d0b24ce4cd1d0f40619810e90cf69d8e6dae6b87642427e465",
+    "node_modules/@babel/types/lib/converters/toBlock.js": "6cee442fe41f7775d2086eff3fc3d1617c45c3958408c314824020ee262529ca",
+    "node_modules/@babel/types/lib/converters/toComputedKey.js": "c54a9b025a4c5e7ec4c9b93e9f2b795aa8a6f928e0de1793590f012c78e01b46",
+    "node_modules/@babel/types/lib/converters/toExpression.js": "6c836808e3deaf27abb812cdb8fa481c9e075ae1608c5fc4fef441b2742b1281",
+    "node_modules/@babel/types/lib/converters/toIdentifier.js": "d7cdc2be7b2f4fb21ee65727893880a33d18582bf6d01f7f24b9b6c4ecbf441c",
+    "node_modules/@babel/types/lib/converters/toKeyAlias.js": "35ab0be1595ec7ba03a2c25e5ee865fa73656e50b7ea8a44867268a2b930f62f",
+    "node_modules/@babel/types/lib/converters/toSequenceExpression.js": "be7b9a125dc7e2ac25181d766b1cf5c7cf176e09e682aa7f7b57b696c7fde825",
+    "node_modules/@babel/types/lib/converters/toStatement.js": "af4719777970692f5a17a549a585eeb93c604cdd7697da3816deb52add4cee11",
+    "node_modules/@babel/types/lib/converters/valueToNode.js": "553b89b77a6d123fcfb1318f7d00261d2bcb1f1f9ace4007e54cbbeba70dd403",
+    "node_modules/@babel/types/lib/definitions/core.js": "9e93a0b84114f2e5f72e15bf18562dfd8ec84848d981e9677e20da682787cb1d",
+    "node_modules/@babel/types/lib/definitions/deprecated-aliases.js": "a5e38c38380667ea4573622ff0661e6bc9b98c967c68789463773d60f72e9852",
+    "node_modules/@babel/types/lib/definitions/experimental.js": "1ea71bade729a27a22217f93d9b465b5cbfef33b833840489daf5158c130e82c",
+    "node_modules/@babel/types/lib/definitions/flow.js": "38b7051e26c448f4696a4c9a0e3c1ee539d23c34dd2fa3c5d1817bf922a415d3",
+    "node_modules/@babel/types/lib/definitions/index.js": "7e8c2e0f299ba5e7871ed4667fc7a33256056917c7960d930c96f1f90bb95e0f",
+    "node_modules/@babel/types/lib/definitions/jsx.js": "2454af3ab8ae6d43fd8d53fcb5043feaa1a4cbb34d341c34a7629cabf4d5aea8",
+    "node_modules/@babel/types/lib/definitions/misc.js": "606ea8b29f67f66939f04d6d362e7f7a154bad7ddaf749fcd37b7609e942daee",
+    "node_modules/@babel/types/lib/definitions/placeholders.js": "01152a0cefd7494a25b1a76a89294d89cfa8b59f3443baa5278d2a9d1932d3a4",
+    "node_modules/@babel/types/lib/definitions/typescript.js": "fbb7f546b449698e6615ffbde4e7649b9bda0c4621ad360fc2da7ecd8ed340d3",
+    "node_modules/@babel/types/lib/definitions/utils.js": "75abf6f8c7a04776867a1c0891684c4a0e090743cd8a6dc9d127bc957888908f",
+    "node_modules/@babel/types/lib/index.js": "21af18add84dbb64a624552e04abad89a40affacf701776d4a662aedef6accfd",
+    "node_modules/@babel/types/lib/modifications/appendToMemberExpression.js": "51af6c925e4f4e14331a4c54367ee5d394ba078383ca859e0bc581c43dc022bf",
+    "node_modules/@babel/types/lib/modifications/flow/removeTypeDuplicates.js": "a12aeb6657af4ad7f5eea9ac5f8cc684a687ca586616bd745254b10faeb86e98",
+    "node_modules/@babel/types/lib/modifications/inherits.js": "8fa7c6417ccadb35ec3900deb4daa612c186ba957b539ad0656c4cb7698b09c5",
+    "node_modules/@babel/types/lib/modifications/prependToMemberExpression.js": "1789396d148146e2685138e11edad51986c30d0f2c051071ac4c1da4408e01bc",
+    "node_modules/@babel/types/lib/modifications/removeProperties.js": "714f0cbd42d973ade613b6814c9a07bf8238535ce8c9b597b434a8b23e4d4b94",
+    "node_modules/@babel/types/lib/modifications/removePropertiesDeep.js": "ddcfeee97410e2b2aa35222224f0ff8edd89560f01188853dcc9cde1b2abdfb6",
+    "node_modules/@babel/types/lib/modifications/typescript/removeTypeDuplicates.js": "42bfd0042bb92172fac115f2e3ded4fa313a02557a4b70b6f11485fa527b56f9",
+    "node_modules/@babel/types/lib/retrievers/getAssignmentIdentifiers.js": "6790244265636511a227992e7dab908dad0a1029ff9a1503cd009e7fced08178",
+    "node_modules/@babel/types/lib/retrievers/getBindingIdentifiers.js": "2318058e37fb5116fec4a8e76a7a8ee0996d5ef75642b4a8d1f10b761eaa73da",
+    "node_modules/@babel/types/lib/retrievers/getFunctionName.js": "36ee7283e1ed17e87af9fd5fc64b5b6d7ab63ecb3a9d48814dbdc23060fd441c",
+    "node_modules/@babel/types/lib/retrievers/getOuterBindingIdentifiers.js": "9d7e2c5923df3c7e51b4f75e29772a7f824a98395fe70a7ad0134b6ec812a954",
+    "node_modules/@babel/types/lib/traverse/traverse.js": "7d4292d3b498d77982806c864dda6f39f6b6f1cc758ba117b66cc0430d45986e",
+    "node_modules/@babel/types/lib/traverse/traverseFast.js": "ef4a51459c82a1b9471a55fb09bf763f8c6fa4000418256c78511e479161ac4e",
+    "node_modules/@babel/types/lib/utils/deprecationWarning.js": "862ddff494adab4e5e9000da2c44c373a76f54670489a79b590ac91264f72a7a",
+    "node_modules/@babel/types/lib/utils/inherit.js": "2c9e7f2b7ce5a57441c4ced2077059d32fc41e38975c8f4a52b6723767d85e33",
+    "node_modules/@babel/types/lib/utils/react/cleanJSXElementLiteralChild.js": "595c06790b4cefa2e47ca3758eb51b9d2db1d5b230260d05a5f80fe777839d3d",
+    "node_modules/@babel/types/lib/utils/shallowEqual.js": "6ab4703ffc14fb106909ec9be593b6aa0d39e157995dc5b9ea7f8b0f1d85c15c",
+    "node_modules/@babel/types/lib/validators/buildMatchMemberExpression.js": "7ff24ec89331024cb6422d4d6ade44f4ade60116df4f6e3b6fd9485ece7f2c59",
+    "node_modules/@babel/types/lib/validators/generated/index.js": "f2b78a20cc9fa7d3b83a60cb12253523262ad2f689f36456caf7ce72a2e307f9",
+    "node_modules/@babel/types/lib/validators/is.js": "89ddaccb18dc3625cf702e8f66a33d909831b4dd93ac3590cd0ad399b24fb800",
+    "node_modules/@babel/types/lib/validators/isBinding.js": "2b64706bb281368be68016f12d62b4fe45de096c71645ba284604211aa8459e7",
+    "node_modules/@babel/types/lib/validators/isBlockScoped.js": "c35fefb463b241d03e0b83d42aec85159d1895d89aff9937b604d20f5cb55d02",
+    "node_modules/@babel/types/lib/validators/isImmutable.js": "b4663c9b9c8f11807f0eff92b31e03015201ebb42aedde754f9f94a154c97ea3",
+    "node_modules/@babel/types/lib/validators/isLet.js": "3c75b0ff25ffbb6793ed34139b4679b0a7faa0c18c9137e01784703dd0466b6a",
+    "node_modules/@babel/types/lib/validators/isNode.js": "d242dc73415c4647b3e88f559a5763572363ae01e478d7a1aa2e7d480bf096b1",
+    "node_modules/@babel/types/lib/validators/isNodesEquivalent.js": "c4908e3249f4e93cdaad3e7efa92277d0fd62cdefc1bc2c3cc18ad8c0ba5d569",
+    "node_modules/@babel/types/lib/validators/isPlaceholderType.js": "59c03db071add873f0ca6ff79745a665601a0ee8e28e6a620dee536461b1b7d2",
+    "node_modules/@babel/types/lib/validators/isReferenced.js": "992376883825ab5701ef51fb2960da07e96e67e76d45a557c5ab8ca00eb8ff0b",
+    "node_modules/@babel/types/lib/validators/isScope.js": "f97deafe49aaca76c24143e861038f1e69642462a37d8cfdb5c6d98c41fc9ad4",
+    "node_modules/@babel/types/lib/validators/isSpecifierDefault.js": "db7aa4126961faae630f403eeef141303433b2876f211e03c225eb42bfbbfeb2",
+    "node_modules/@babel/types/lib/validators/isType.js": "989abd2b9fd3d8eccd07747ce1b02b00394072772c5b9d9e6e0c7a06350ae181",
+    "node_modules/@babel/types/lib/validators/isValidES3Identifier.js": "3b140e2e1f8196b5512e39482ca86816e935f5da044a2bf98592f54c6aeb3243",
+    "node_modules/@babel/types/lib/validators/isValidIdentifier.js": "bd3786c08dfc34a4c3d7a91dead2eb4b5019feff9b9b5142be239dc131540b18",
+    "node_modules/@babel/types/lib/validators/isVar.js": "90543c9b06bff6cb76a51bc683ae4a157be17894c207e9990c2392c14414810c",
+    "node_modules/@babel/types/lib/validators/matchesPattern.js": "faa0f46205a18caed21f64bfd188ddec38385ec4e0434d4a6b60416cd3121347",
+    "node_modules/@babel/types/lib/validators/react/isCompatTag.js": "7e84ca002aa1b6a2f32c789fdffd270fe09cfcf77d6cb0e3a6293abc9b49f764",
+    "node_modules/@babel/types/lib/validators/react/isReactComponent.js": "281f08ec2c69731afd438f59f338230ee86e1cc763227ddc4a9685cbc0ad8e7e",
+    "node_modules/@babel/types/lib/validators/validate.js": "33812a6c26391ae424b121032b6c8817b2165bb03c368f0751d9e54c62031092",
+    "node_modules/@jridgewell/gen-mapping/dist/gen-mapping.umd.js": "1d501e1cc3755fbc9a1b12a8722fc87930c71b15e1d21a664ddfa4fed0d5fad7",
+    "node_modules/@jridgewell/resolve-uri/dist/resolve-uri.umd.js": "2d46a62531a9ffa1e6e04995a94ae35d7a10869e2116132068a8755a15d46663",
+    "node_modules/@jridgewell/sourcemap-codec/dist/sourcemap-codec.umd.js": "36f67483c3beef15e041483b68e1b66e8b6b3e6c50ab654a5e97464082324cc9",
+    "node_modules/@jridgewell/trace-mapping/dist/trace-mapping.umd.js": "5ad4ec0709f78aa806c70965d4c162270e1df605f5572aa3a1ced31fe73dd07a",
+    "node_modules/@vue/compiler-core/dist/compiler-core.cjs.js": "647678ef0f60abb8ab81127e6642a332a5b04bd432aa9362bb08a30435e87198",
+    "node_modules/@vue/compiler-core/dist/compiler-core.cjs.prod.js": "81844168c1deec98655066a200def5783b53e149a7c8ef04ab4a7704eaabfc66",
+    "node_modules/@vue/compiler-core/index.js": "ccc969ede88026f2168f8a6ca482913664ac12b2e0cfe1e34cd211767e521a60",
+    "node_modules/@vue/compiler-core/node_modules/@babel/parser/lib/index.js": "82d72e197e27bf909ae10ffc8d1a969aeb94fe96ec96c4e9cb685a0a8229e40c",
+    "node_modules/@vue/compiler-dom/dist/compiler-dom.cjs.js": "c5ab161569a169bb77782172c64238fd3ff85e1f8eef2971439367415c4a9e61",
+    "node_modules/@vue/compiler-dom/dist/compiler-dom.cjs.prod.js": "7050c8a11f4db5d14fbb1ec2798409a7e41157c0b578b3cf742250f2ece28b8f",
+    "node_modules/@vue/compiler-dom/index.js": "21407fc5cebe255208627dd039f2284156be88abbd9123281a79581d349b48c1",
+    "node_modules/@vue/compiler-sfc/dist/compiler-sfc.esm-browser.js": "82f276b0defde9450c0c7a8e74f62288997860742e577fb62bbf15625b4f2156",
+    "node_modules/@vue/shared/dist/shared.cjs.js": "55e994ba36d0dedd0c2859160caba175ca81d00a101b1213389c7d150d06a2b2",
+    "node_modules/@vue/shared/dist/shared.cjs.prod.js": "40d389f498fc2834e5714788e5b6bf80cea31b3d8d3af19e5ffa67cc6cf4f989",
+    "node_modules/@vue/shared/index.js": "22aeabedc1f2782f67b05c54df4382d4e52a0e0c384ff02349372e2acd9974ed",
+    "node_modules/debug/src/browser.js": "19920671f5902f64ad8ea11767fa50ea9d7a71ae0b7dff7ba5693c0075afc763",
+    "node_modules/debug/src/common.js": "dbe83d2bb5837f3c4d7fe537b8004c585987270eceed5b06b8e078deb0ae214a",
+    "node_modules/debug/src/index.js": "aa127ff1752b7d9c7415c5c7bb6994d9aa722b81bcbcab4bd48316b013d23bf3",
+    "node_modules/debug/src/node.js": "d7b26d7c92f8ea7794b77ce11f3c11cd18c9084df7c357e3c7025344fa28aac6",
+    "node_modules/entities/dist/commonjs/decode-codepoint.js": "98d97fd43e4db015e5afa7c69b1055cd1ade8114530ea01734add86184125271",
+    "node_modules/entities/dist/commonjs/decode.js": "e318cd751279428b7d7e6e9e4c0dc7cc8a4c78e8c2bd00d42da9f8e7b3ef5c07",
+    "node_modules/entities/dist/commonjs/generated/decode-data-html.js": "80b85ad02696af10d597c1353db7eb01fbbe4db5b922ac8693c29cbe18d53ac4",
+    "node_modules/entities/dist/commonjs/generated/decode-data-xml.js": "07e89fa83ca837b188e4cc52a8d6d2b6983fc5a63b15abad789da9be2ea777b6",
+    "node_modules/entities/dist/commonjs/internal/bin-trie-flags.js": "ddb6a8fcaab3a1fb6d60c576bf10302a554d71869b6466a14fc11a800264559a",
+    "node_modules/entities/dist/commonjs/internal/decode-shared.js": "e68061084a578fa4f95bd96407f2a4e272bb38615ae1b1076d1181981ce95549",
+    "node_modules/estree-walker/dist/umd/estree-walker.js": "183597c40a43d2a2ebda3dc85ae2dd70e107b3e5cec305b02a5bffa54e0f4b9b",
+    "node_modules/js-tokens/index.js": "b6f81c0531fc09be2f8a26059a5cb9f47150e550471da0ace5705a26d3c6268e",
+    "node_modules/jsesc/jsesc.js": "03c367cbd13dc753bb8fc6c8ec3a01078c3ee142ee3f747c0490d311bc80a3b3",
+    "node_modules/ms/index.js": "e5f0b6a946a9b2b356a28557728410717df54ea2f599edb619f9839df6b7b0e9",
+    "node_modules/picocolors/picocolors.js": "213bb870fcaad4def0215fe34fbb0f529836cc4d2462e02f14f1a49d09781625",
+    "node_modules/source-map-js/lib/array-set.js": "163bb3055aaea7140167740036a83161fd912c344b14f992754b80f21477d754",
+    "node_modules/source-map-js/lib/base64-vlq.js": "f3407e528f54ec0787bd0a71eeac0c99fffd98445916fcbe116dc69ca3be928b",
+    "node_modules/source-map-js/lib/base64.js": "651bf433cf05e9ec8cee0b94639483236a605d48279e83d3d5c5de81c21d6599",
+    "node_modules/source-map-js/lib/binary-search.js": "c7f4a47a125af0bd860443dfd71d2f412d1a97dcb53ab7038189d63b91dc32bd",
+    "node_modules/source-map-js/lib/mapping-list.js": "35ddb82861f11a70ab84cb47d620fcb28d7f884bb444644e06bde815b836ef9e",
+    "node_modules/source-map-js/lib/quick-sort.js": "1e2857cc4f6c9c36b764ce529f39b9243bed27aed809e895d7cec04c8a869266",
+    "node_modules/source-map-js/lib/source-map-consumer.js": "9ad10db386da13c1f95e6a680d6298dbb306c77f57a9a3539e4595b723a7654b",
+    "node_modules/source-map-js/lib/source-map-generator.js": "07894c9ea1e674263e2e7694d43d4fb935e98549b93946205b9536c1420696c0",
+    "node_modules/source-map-js/lib/source-node.js": "d1a0ef136bf0e974ba956506c88e91fef5d8681bbf10c486ff9566a7d6d76f3c",
+    "node_modules/source-map-js/lib/util.js": "0629f3ae2f3049cda3a2e87ea651dcf0cc71108f4681795ab989a8ac1573fc03",
+    "node_modules/source-map-js/source-map.js": "dc098456c2d9ab90a4c0a17cca9be16665b9813df20906553a98b0088a157be7",
+    "packages/atom/src/origin-policy.mjs": "e75d364f20301b81f22a7ad59802b7aaa5baf7ef3b0de0b5a76766d6d59d4899",
+    "scripts/atom-package-receipt.mjs": "f54a3c72c65b5f032a2936b0a216b2516016fa8c356388bf33dfc9397a0b4d7c",
+    "scripts/harness.mjs": "3796e76b60f450b46cde335521efb9fd1dcf3aa1305501f30c2af61627f2d7ec",
+    "scripts/native-browser.mjs": "449328d4858f058e0b75a4f82b56cee724c0b185f834d6e747890f513ed4747b",
+    "src/engine/action-transform.mjs": "ff7eb4f075a58ea37b9fee45f3c40953263c31210e4976ced69868588557511b",
+    "src/engine/query-vendor.mjs": "628af6f60568f5eb0d16101ff4db4ef71ce79263746336a7298f121abb286061",
+    "src/engine/react-host-vendor.mjs": "a350aa4d271d034a8e458947291b9c4e705621ce63ebcd44e93c9bc25aae1361",
+    "src/engine/script-transform.mjs": "80ead8568bcc85cbb6312d407fa43ff76c20bdff7b683b6aab15a8ab2c074957",
+    "src/engine/slice.mjs": "984d9069ea54245c828a79ee853102ccb754567e57a614e131768eae0bfd75ef",
+    "src/engine/write-access.mjs": "07e6e811213b29aada895572caf1f415805f7157574bc09e76b84656ec278b06",
+    "src/first-read/browser-input-pins.json": "b03c916cf888bd535660f23267d0df8544ccac8ac6a8fc1ac33e59c7ffebe90f",
+    "src/first-read/build-profile.mjs": "3af1076722ecc8068816d9312cb4314a67ab5caeaa6a74c88ebaba11774a597d",
+    "src/first-read/controlled-session.mjs": "a7d1bfabcae1ad4506ca1a763da911d3716f3440accfe031ce51242cbf11c6cd",
+    "src/first-read/join.mjs": "35c969269467f5e9d2badf9c90481721666fe977857e28274ca1ef59a28f21ff",
+    "src/first-read/model.mjs": "404d8685e53e9925d7393fbfe98fdd1a26b48d2f14ee06b5044e3b6cab1467d2",
+    "src/first-read/observer-receipts.mjs": "6e6c2267eb2a3b519fd4c9e31efbbcfbba780daf91f618523841a2d61b0e9e36",
+    "src/first-read/profile-channel.mjs": "534230f198bea6efae4d479ba1e11e495afacce25d0b1e79596973226f17c707",
+    "src/first-read/profile-proof.mjs": "39ac04c531954a2bcf1a87857dce42fe4da79aeff2f300d344f70f50e974db7d",
+    "src/first-read/query-contracts.mjs": "1f88237975eacca9dd4e87309c9849499bd3ffa09a4b6ffa6f80ca48a3fc4b22",
+    "src/first-read/react-contracts.mjs": "529b15b907504260d6f420685e6bc84cc4edbd121375c2f19dff2252205b4161",
+    "src/first-read/source-region.mjs": "0e07ecbc1f945ef0abdea3d3607b01a7d436086607d8e8fc476513bcd29f2a35",
+    "src/first-read/target-history.mjs": "67ef65162c4a9c4a1ea70ee19ede25c93c484bca1774c40ef562325fed2101bc",
+    "src/first-read/verify.mjs": "8588f9104b85085be7ad9ed293693228af4992a16c1fc98ca15c5d83329552ae",
+    "tests/atom/basic-observer-passive-harness.test.mjs": "d9bd95f63327283a0aa623474bccf4ab37b6ff691621f94e339920bf2700fceb",
+    "tests/atom/basic-observer-performance.test.mjs": "5110c454f856a26f2132630ed241e2352503684233c88669cdceda29477cdf22",
+    "tests/helpers/basic-observer-performance.mjs": "734c694f776649111f0b6cbd483e4fa921f8189f3fa118e2014c7c01547d97df",
+    "tests/helpers/native-inspector-ui.mjs": "2a82f3a643bbbacd9a6f8ed7e798f77b1416f110f1828ac23fd97b24bc8109b9",
+    "tests/helpers/source-access-native-desktop.mjs": "786011664d68f658bd1d5e7c002963642a50a16661d7f67b2413ac8aef182f57",
+    "tests/integration/basic-observer-current-native.mjs": "eb5a5fccae25fc70f0df2350e18e199c12469cefc534b91978d5dd89e14b919d",
+    "tests/integration/basic-observer-passive-native.mjs": "7287f8414f3200395f2250982f6b5a1ab7454ee41d10c12aa48d9ea387f09950",
+    "tests/integration/basic-observer-performance-native.mjs": "8c15e586557d8290278f114b062060a9643d1985d23927965d01adfc45f8452e",
+    "tests/integration/performance-domain-cost-native.mjs": "407b221d7980975c23452d9fc4e0ea96d01ccd05e1ad12f5d48af1e3f3c2516e"
+  },
+  "wholeV02Complete": false,
+  "targetsWaived": false,
+  "preparedRevision": "80031b4da991b3917119bff0842a01adeb3e0357",
+  "sourceRevision": "6b4d321582141ddc08f93a9346dce38a65b490f7",
+  "readerFile": ".artifacts/v02/passive-performance-saved-verification/2026-10-26/verify.py",
+  "readerContract": ".artifacts/v02/passive-performance-saved-verification/2026-10-26/reader-contract.json",
+  "readerContractSha256": "0881894152d59816892179f233805596a5b9fc42e31cc3d78455a4c34108484a",
+  "sourcePreparationCheckpoint": ".artifacts/v02/passive-performance-source/2026-10-26/source-checkpoint.json",
+  "tlsAuthorization": ".artifacts/v02/current80-performance-source/2026-10-26/tls-authorization.json",
+  "tlsAuthorizationSha256": "d2b0704cd4aa6782e9410a224cbd6c462b996162aaffb79ed4677e4766c0b4ea"
+}

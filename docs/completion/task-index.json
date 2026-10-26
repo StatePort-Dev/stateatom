@@ -6038,7 +6038,7 @@
       "active_slice": {
         "id": "V02.22",
         "record": "212-v02-passive-original-performance.md",
-        "status": "new81-packed-backend-passed-measurement-pending",
+        "status": "new81-case-frozen-measurement-pending",
         "base": "16afe6ab52e0debc924ffdec12654f49ad94e1e8",
         "candidate": "0.1.0-candidate.20261026.81",
         "new_source_tests": 8,
@@ -6066,13 +6066,18 @@
         "backend_checkpoint": ".artifacts/v02/passive-performance-source/2026-10-26/backend-checkpoint.json",
         "both_backend_main_pids_captured": false,
         "known_backend_main_pids_retired": 1,
-        "owned_backend_profile_references_after_exit": 0
+        "owned_backend_profile_references_after_exit": 0,
+        "case": "../testing/basic-observer-passive-case.json",
+        "case_sha256": "262116f74bcef8228ff8d34db2ffdb8c3f23a39fe72fb802aecc9cf5e6714c22",
+        "registered_inputs": 432,
+        "prewritten_reader_controls": 32,
+        "first_frozen_reader_pending": true
       },
       "execution_record": "212-v02-passive-original-performance.md",
       "current_checkpoint": {
         "record": "212-v02-passive-original-performance.md",
-        "status": "new81-packed-backend-passed-measurement-pending",
-        "next_bounded_step": "Task2 freeze new81 original198row case and firstreader, retainedvalidTLS only; maxONEmeasurement/no retry/newCA/import/model."
+        "status": "new81-case-frozen-measurement-pending",
+        "next_bounded_step": "Commit frozen432bindingcase/reader then exclusive maxONEoriginal198row performance run; FIRSTreader, no newCA/import/native/reader retry."
       },
       "completed_slices": [
         {
@@ -8681,8 +8686,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.22-new81-source-package-preparation",
-    "next_item": "Task2 freeze new81 original198row case and firstreader, retainedvalidTLS only; maxONEmeasurement/no retry/newCA/import/model.",
+    "current_increment": "V02.22-new81-frozen-original-gate",
+    "next_item": "Commit frozen432bindingcase/reader then exclusive maxONEoriginal198row performance run; FIRSTreader, no newCA/import/native/reader retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8709,7 +8714,7 @@
     "active_item": {
       "id": "V02",
       "record": "212-v02-passive-original-performance.md",
-      "status": "new81-packed-backend-passed-measurement-pending"
+      "status": "new81-case-frozen-measurement-pending"
     },
     "completed_increments": [
       {
@@ -11710,11 +11715,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.22 source8/27/5709PASS, new81Atom8224f111/UI2exact/current327/type2/admission9 andONEactualbackend13/6savedcontrolsPASS. KnownNode+1mainAbsent; secondmainPIDnotcaptured, sameUIDownedprofile refs0 afterexit. Measurement/model/newCA/import0;20of29/fullV02/16deferred unchanged.",
+    "current_activity_note": "V02.22 source8/27/5709PASS, new81Atom8224f111/UI2exact/current327/type2/admission9 andONEactualbackend13/6savedcontrolsPASS. KnownNode+1mainAbsent; secondmainPIDnotcaptured, sameUIDownedprofile refs0 afterexit. Measurement/model/newCA/import0;20of29/fullV02/16deferred unchanged. New81case432bindings frozen,13pure-readerfunctions exact/32sourcecontrolsPASS; firstactualreader/measurementpending0. No originalcriteria change.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "6b4d321582141ddc08f93a9346dce38a65b490f7",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "Task2 freeze new81 original198row case and firstreader, retainedvalidTLS only; maxONEmeasurement/no retry/newCA/import/model.",
+    "next_bounded_step": "Commit frozen432bindingcase/reader then exclusive maxONEoriginal198row performance run; FIRSTreader, no newCA/import/native/reader retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
