@@ -2971,10 +2971,12 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "208-a02-component-body-binding.md",
-        "status": "closed-bounded-source-only",
-        "source_revision": "70685d73ce81a6c5791ce85cbbbc3b4035bc4ca0",
-        "next_bounded_step": "ONE cohesive exact retained Item parameter-reference integration/acquisition with existing complete committed Memo/source gates, frozen criteria/readers and max1 new owned launch. Preserve property origin/field ownership Unknown; no oldcase rerun."
+        "record": "209-a02-component-body-native.md",
+        "status": "closed-native-incomplete-not-qualified",
+        "source_revision": "f3cad0eea3e48ac86c2963b592870faa467319e3",
+        "execution_revision": "03628a3d6a87a1f9d926186dfb62860a0a2fab69",
+        "accepted_component_body_links": 0,
+        "next_bounded_step": "Finite50 native campaign closed incomplete; no weak-ref/GC/native retry. ONE mandatory L02 saved-startup blocker investigation, dependencies L01 complete; original A02 missing ownership/parameters remain open."
       },
       "stopping_point_history": [
         {
@@ -3178,13 +3180,19 @@
           "record": "203-a02-component-call-source.md",
           "status": "source-complete-review-pending",
           "next_bounded_step": "ONE bounded synchronous/reentrant native frame-token consumer before Item parameter/destructure association. Preserve actual currentMemo reference evidence separately; no field/property/ownership promotion or oldnative repeat."
+        },
+        {
+          "record": "208-a02-component-body-binding.md",
+          "status": "closed-bounded-source-only",
+          "source_revision": "70685d73ce81a6c5791ce85cbbbc3b4035bc4ca0",
+          "next_bounded_step": "ONE cohesive exact retained Item parameter-reference integration/acquisition with existing complete committed Memo/source gates, frozen criteria/readers and max1 new owned launch. Preserve property origin/field ownership Unknown; no oldcase rerun."
         }
       ],
       "implementation_plan": "../superpowers/plans/2026-10-26-a02-component-body-native.md",
       "active_slice": {
         "id": "A02.50",
         "record": "209-a02-component-body-native.md",
-        "status": "native-incomplete-review-pending",
+        "status": "closed-native-incomplete-not-qualified",
         "base": "e5619fc9e3ad7e4c9c417400e2212b253622f204",
         "new_code_files": 6,
         "declared_research_deltas": 2,
@@ -3194,7 +3202,7 @@
         "maximum_native_runs": 1,
         "component_body_qualified": false,
         "full_A02": false,
-        "review_pending": true,
+        "review_pending": false,
         "full_checks": 5651,
         "prepared_revision": "f3cad0eea3e48ac86c2963b592870faa467319e3",
         "frozen_inputs": 1734,
@@ -3214,7 +3222,16 @@
         "preservation_controls": 25,
         "preservation_qualification": false,
         "raw_sha256": "f05bb478b617bf50be765b18bbd5066ef2450e871445bad28d3cd59667e3c698",
-        "execution_revision": "03628a3d6a87a1f9d926186dfb62860a0a2fab69"
+        "execution_revision": "03628a3d6a87a1f9d926186dfb62860a0a2fab69",
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 0,
+          "correctionPasses": 0,
+          "rereview": false,
+          "historicalDeferred": 16
+        },
+        "final_checkpoint": ".artifacts/a02/component-body-native-review/2026-10-26/final-checkpoint.json"
       }
     },
     {
@@ -8521,7 +8538,7 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.50-one-native-incomplete-review-pending",
+    "current_increment": "A02.50-closed-native-incomplete-one-reviewed",
     "next_item": "Finite50 native campaign closed incomplete; no weak-ref/GC/native retry. ONE mandatory L02 saved-startup blocker investigation, dependencies L01 complete; original A02 missing ownership/parameters remain open.",
     "new_full_task_acceptances": [
       "F01",
@@ -8549,7 +8566,7 @@
     "active_item": {
       "id": "A02",
       "record": "209-a02-component-body-native.md",
-      "status": "native-incomplete-review-pending"
+      "status": "closed-native-incomplete-not-qualified"
     },
     "completed_increments": [
       {
@@ -11550,9 +11567,9 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "ONE50native at03628a3:13started/12complete, On equal originalApp/native weak-reference premise unavailable (which ref/GCcauseUnknown), five On unvisited. Newbody accepted0. FIRSTfullreaderexit1, preservation1734/25qualificationfalse; knownhostPID/start absent/profile removed. Source43/368/5651PASS;20of29/fullA02 unchanged.",
+    "current_activity_note": "A02.50 closed0C0I0newM, nofix/rereview/native retry; archive verified/ownremoved. Native1/12complete/On originalweak premise unavailable; FIRSTfullreaderexit1 preserved, preservation1734/25qualificationfalse, acceptedbody0. Source43/368/5651/current327/archives unchanged;20of29/fullA02/16deferred remain. NextONE L02 saved installation failure (Chrome alive, new host not discovered).",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "70685d73ce81a6c5791ce85cbbbc3b4035bc4ca0",
+    "current_source_revision": "f3cad0eea3e48ac86c2963b592870faa467319e3",
     "current_record_date": "2026-10-26",
     "next_bounded_step": "Finite50 native campaign closed incomplete; no weak-ref/GC/native retry. ONE mandatory L02 saved-startup blocker investigation, dependencies L01 complete; original A02 missing ownership/parameters remain open.",
     "historical_active_pointer_before_V03_23": {
@@ -11564,9 +11581,9 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "Corrected49source; no new native acquisition",
-    "current_source_checkpoint": ".artifacts/a02/component-body-binding-source/2026-10-26/final-source-checkpoint.json",
-    "current_source_checkpoint_kind": "Source only; old V02 actual measurement unchanged",
+    "current_source_revision_kind": "Research source; frozen native03628a3 incomplete, no product upgrade",
+    "current_source_checkpoint": ".artifacts/a02/component-body-native-source/2026-10-26/native-checkpoint.json",
+    "current_source_checkpoint_kind": "Saved incomplete native/preservation; original source-stage5651 distinct",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
       "active_item": {
