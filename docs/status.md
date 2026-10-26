@@ -1,10 +1,12 @@
 # Project status
 
-A02.44 source complete/review pending: [complete pinned memo overlay](completion/200-a02-memo-overlay.md).
-9new/326focused/5356fullPASS; ONEreview pending. Actual retained source COMPILED ONLY,
+A02.44 source complete, ONEreview0C0I0newM/15deferred: [complete pinned memo overlay](completion/200-a02-memo-overlay.md).
+9new/326focused/5356fullPASS;1833protectedtracked/1642priorcurrent unchanged.
+Archive5CRC/bytes/identity/ownremovalPASS. Actual retained source COMPILED ONLY,
 30compiler dependencies/60receipts; sole changed observed ReactDOM input,
 original/App/Main/JSX/CSS exact. Factory policies match emitted native AST sites.
-No actualReact/native/MemoItem/property/fullA02 qualification;20of29/15deferred unchanged.
+No actualReact/native/MemoItem/property/fullA02 qualification;20of29 unchanged.
+NextONE separate bounded native case/reader/sourcefreeze, at most one new owned launch.
 
 A02.43 source complete, ONEreview0C0I0newM/15deferred: [standalone memo bootstrap](completion/199-a02-memo-bootstrap.md).
 33new/372focused/5347fullPASS through actual emitted hooks in OWNED VM.
