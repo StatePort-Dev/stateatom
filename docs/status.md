@@ -1,5 +1,10 @@
 # Project status
 
+L02.18 [portal-owner source verification](completion/217-l02-portal-chooser.md).
+Pre-exec private environment/independent daemon/GTK owner/focus before native input;
+20new/256focused/5756full sourcePASS; native0/model0. Current82/327
+unchanged, old guards byte-exact, no model usefulness/fullL02 proof;20of29/17deferred.
+
 L02.17 [ONE owned inventory complete](completion/216-l02-owned-chooser-inventory.md).
 Actual directory dialog belongs to GTKportal, so Chrome-only PID guard misses it.
 FIRSTreader365bindingsPASS;12new/54affected/5732full sourcePASS. No folder/model
