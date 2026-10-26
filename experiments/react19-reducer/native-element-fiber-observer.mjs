@@ -69,5 +69,6 @@ export function createNativeElementFiberObserver({page,enabled=true,policy,weakR
   }catch{return unknown('Native element committed lookup unavailable');}
  }
  function stop(){stopped=true;clear();latestCommit=null;previousCommit=null;base.stop();}
- return dto({tap,match,stop,retention:()=>dto({events,bindings,stopped,capped,available:enabled&&supported&&!unavailable,collector:dto(base.retention())})});
+ function currentCommit(){const c=base.currentCommit();return !enabled||stopped||capped||unavailable||!supported?dto({...c,status:U,reason:!enabled?'Observer disabled':stopped?'Observer stopped':capped?'Native element event capacity refused':unavailable||'WeakRef unavailable',rootId:null,commitId:null}):dto(c);}
+ return dto({tap,match,currentCommit,stop,retention:()=>dto({events,bindings,stopped,capped,available:enabled&&supported&&!unavailable,collector:dto(base.retention())})});
 }
