@@ -1,11 +1,12 @@
 # Project status
 
-A02.36 source checks in progress: [selected committed props](completion/192-a02-committed-props.md).
-Shared existing committed-tree selector/new strict supplied-props matcher; no UI/native/
-source-element or property-origin claim.27new/49focused/5107fullPASS; ONEreview pending.
-Old snapshot predicates preserved; new65ancestor boundary corrected after actualRED.
-20of29/fullA02/15deferred unchanged. Prior frozen collector source is historical, not
-current native qualification; no old experiment/cert/trust/package work.
+A02.36 source complete, ONEreview0C1Ifixed0newM/15deferred: [selected committed props](completion/192-a02-committed-props.md).
+Shared committed-tree selector/new strict supplied-props matcher;37new/59focused/
+5117fullPASS. Ten actualRED competing accessor/missing-field cases fixed without getters.
+1788tracked/1641prior-native inputs unchanged; one collector source now historical
+for oldnative/package80, no current native/installed claim. Archive5files/CRC/bytes/
+identity verified, ownworkspace removed.20of29/fullA02/propertyorigin unchanged.
+NextONE actual native JSX-element→fiber source admission, no props-only identity guess.
 
 A02.35 bounded native acquisition closed, ONEreview0C0I1M/15deferred:
 [declared retention acquisition](completion/191-a02-retained-app-state-source.md).

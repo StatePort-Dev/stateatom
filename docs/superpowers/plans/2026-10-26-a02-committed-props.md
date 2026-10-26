@@ -31,5 +31,5 @@ schema stateatom.committed-props-reference/1; original snapshot(node) stays unch
 - [x] GREEN focused legacy/new controls, full npm test, syntax/diff/protected hashes.
 Expected: zero source failures, no undeclared historical changes; no native execution.
 - [x] Record exact results/limits and local commit; task-done uses saved result/hash binder.
-- [ ] ONE whole-item review; ONE tested I/C pass, defer minors; archive only own workspace
+- [x] ONE whole-item review; ONE tested I/C pass, defer minors; archive only own workspace
 with CRC/byte/identity checks, remove own workspace, close commit and continue next item.

@@ -1665,17 +1665,28 @@
       "completed_slices": [
         {
           "id": "A02.36",
-          "status": "source-complete-review-pending",
+          "status": "closed-bounded-source-only",
           "record": "192-a02-committed-props.md",
           "base": "afa3d634bb201a6aa514074eb78e95bbb78bd02e",
-          "new_source_tests": 27,
-          "focused_checks": 49,
-          "full_checks": 5107,
+          "new_source_tests": 37,
+          "focused_checks": 59,
+          "full_checks": 5117,
           "native_runs": 0,
           "full_A02": false,
           "source_element_identity": "Unknown/Unsupported",
           "supplied_reference_only": true,
-          "review_pending": true
+          "review_pending": false,
+          "source_revision": "55126373244b6cc76fe841784a5065df1e038aee",
+          "review": {
+            "critical": 0,
+            "important": 1,
+            "important_fixed": 1,
+            "minor": 0,
+            "correction_passes": 1,
+            "rereview": false,
+            "deferred_total": 15
+          },
+          "final_checkpoint": ".artifacts/a02/committed-props-review/2026-10-26/final-checkpoint.json"
         },
         {
           "id": "A02.35",
@@ -2602,9 +2613,9 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "191-a02-retained-app-state-source.md",
-        "status": "closed-bounded-native-source-association-pass-not-fullA02",
-        "next_bounded_step": "ONE source-only feasibility for exact selected committed DOM instance/props association from existing native observer/core. Preserve propertyorigin/fieldownership Unknown,15deferredminors; no prior native/retention/weak/model/cert rerun."
+        "record": "192-a02-committed-props.md",
+        "status": "closed-bounded-source-only",
+        "next_bounded_step": "ONE native JSX-element→returned-fiber source admission with semantic controls; no props-only identity inference, oldnative/retention/install/model/cert campaign or package/UI change."
       },
       "stopping_point_history": [
         {
@@ -2638,7 +2649,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "V03.23 restore availability reporting for deterministic external-revision refusal, preserving guards; no native retry or A02 threshold change.",
+      "next_bounded_step": "ONE native JSX-element→returned-fiber source admission with semantic controls; no props-only identity inference, oldnative/retention/install/model/cert campaign or package/UI change.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -2666,7 +2677,7 @@
         "public_hook_kind": "Unknown/Unsupported",
         "full_A02": false
       },
-      "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-a02-retained-app-state-source.md",
+      "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-a02-committed-props.md",
       "current_checkpoint_history": [
         {
           "record": "147-a02-array-callsite-bridge.md",
@@ -2742,14 +2753,16 @@
           "record": "182-a02-app-main-availability.md",
           "status": "complete-bounded-source-only-availability-diagnostics",
           "next_bounded_step": "ONE separately scoped actual availability-observation decision with new gate metadata; no automatic retry/presumed positive/GC/selectedDOM claim."
+        },
+        {
+          "record": "191-a02-retained-app-state-source.md",
+          "status": "closed-bounded-native-source-association-pass-not-fullA02",
+          "next_bounded_step": "ONE source-only feasibility for exact selected committed DOM instance/props association from existing native observer/core. Preserve propertyorigin/fieldownership Unknown,15deferredminors; no prior native/retention/weak/model/cert rerun.",
+          "superseded_stale_next_bounded_step": "V03.23 restore availability reporting for deterministic external-revision refusal, preserving guards; no native retry or A02 threshold change."
         }
       ],
-      "implementation_plan": "../superpowers/plans/2026-10-26-a02-committed-props.md",
-      "active_slice": {
-        "id": "A02.36",
-        "status": "source-complete-review-pending",
-        "record": "192-a02-committed-props.md"
-      }
+      "implementation_plan": null,
+      "active_slice": null
     },
     {
       "id": "A03",
@@ -7989,8 +8002,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.36-source-complete-review-pending",
-    "next_item": "ONE source reference admission to exact selected committed props matcher; no source-element identity inference or oldcase rerun.",
+    "current_increment": "A02.36-closed-source-only-one-review-I1-fixed",
+    "next_item": "ONE native JSX-element→returned-fiber source admission with semantic controls; no props-only identity inference, oldnative/retention/install/model/cert campaign or package/UI change.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8017,7 +8030,7 @@
     "active_item": {
       "id": "A02",
       "record": "192-a02-committed-props.md",
-      "status": "source-complete-review-pending"
+      "status": "closed-bounded-source-only"
     },
     "completed_increments": [
       {
@@ -10709,14 +10722,39 @@
           "native_repeated": false,
           "report": ".artifacts/v03/guide-source-connection/2026-10-24/review/report.md"
         }
+      },
+      {
+        "id": "A02.36",
+        "status": "closed-bounded-source-only",
+        "record": "192-a02-committed-props.md",
+        "base": "afa3d634bb201a6aa514074eb78e95bbb78bd02e",
+        "new_source_tests": 37,
+        "focused_checks": 59,
+        "full_checks": 5117,
+        "native_runs": 0,
+        "full_A02": false,
+        "source_element_identity": "Unknown/Unsupported",
+        "supplied_reference_only": true,
+        "review_pending": false,
+        "source_revision": "55126373244b6cc76fe841784a5065df1e038aee",
+        "review": {
+          "critical": 0,
+          "important": 1,
+          "important_fixed": 1,
+          "minor": 0,
+          "correction_passes": 1,
+          "rereview": false,
+          "deferred_total": 15
+        },
+        "final_checkpoint": ".artifacts/a02/committed-props-review/2026-10-26/final-checkpoint.json"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "27new/49focused/5107fullPASS; ONEreview pending. Supplied props/type references only; exact selected ancestor, source/property origins Unknown. Prior A02.35 native gate acquired independently.20of29/15deferred unchanged.",
+    "current_activity_note": "37new/59focused/5117fullPASS; ONEreview0C1Ifixed0newM,15deferred.1788tracked/1641prior-native unchanged, one historical collector source. Archive5CRC/bytes/identity verified/ownworkspace removed. No native/installed/source-element/property-origin/fullA02 claim;20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "afa3d634bb201a6aa514074eb78e95bbb78bd02e",
+    "current_source_revision": "55126373244b6cc76fe841784a5065df1e038aee",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "Complete current source checks/ONE review/local commit then ONE source-reference admission item.",
+    "next_bounded_step": "ONE native JSX-element→returned-fiber source admission with semantic controls; no props-only identity inference, oldnative/retention/install/model/cert campaign or package/UI change.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -10726,9 +10764,9 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "base before declared source changes; uncommitted current-source work",
-    "current_source_checkpoint": ".artifacts/a02/committed-props-source/2026-10-26/source-checkpoint.json",
-    "current_source_checkpoint_kind": "actual source logs/hashes; no native qualification",
+    "current_source_revision_kind": "current source tested after one review correction; no native qualification",
+    "current_source_checkpoint": ".artifacts/a02/committed-props-review/2026-10-26/final-checkpoint.json",
+    "current_source_checkpoint_kind": "actual source tests/hash preservation and verified workspace archive",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
       "active_item": {
