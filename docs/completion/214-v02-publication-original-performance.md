@@ -47,3 +47,18 @@ read-onlyhostprobe finds no sameUIDprocessreferences underexactbothprofileprefix
 Profilesretained/no globaldescendant/heap/allconsole claim; recordedpageerrors empty.
 Old22missingPID evidence notupgraded. Source5720/type2/admission9/backend13separate;
 measurement/model/newCA/import0. Next frozen82case/reader/originalgate.
+
+## Frozen new82 original case
+
+`docs/testing/basic-observer-publication-case.json` SHA
+`887dd6cde7d50a5cb16c616f1b2b2d238854c3f5f316f9daf413f6613e4ee248`;442frozenbindings/280caseinputhashes/327product
+union. Source-onlyprepare/hashpreflight PASS, no unreplacedold-role drift. Same
+protocol/order/fixture/198/18warm180measured/66windows. Newcase binds exact82/type/
+admission/backend and retained206TLS, no oldacceptance reuse.
+
+Saved reader/contract frozen in `.artifacts/v02/publication-performance-saved-verification/2026-10-26/`;
+13purefunctions AST-exact from22reader, changesonly paths/newAtomSHA. Original32
+negative sourcecontrols on198syntheticrows PASS/nativequalificationfalse. FIRSTfull
+reader notrun; exclusivefirst-attempt marker. MaxONEmeasurement followscasecommit/
+cleanGit/exclusivemarker; no sourcechange/retuning/native/reader retry or newCA/import.
+Packaging/case/sourcecontrols are not performance/feature proof.
