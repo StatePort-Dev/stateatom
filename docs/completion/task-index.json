@@ -6038,13 +6038,13 @@
       "active_slice": {
         "id": "V02.22",
         "record": "212-v02-passive-original-performance.md",
-        "status": "source-passed-package-pending",
+        "status": "new81-packed-backend-passed-measurement-pending",
         "base": "16afe6ab52e0debc924ffdec12654f49ad94e1e8",
         "candidate": "0.1.0-candidate.20261026.81",
         "new_source_tests": 8,
         "focused_checks": 27,
-        "native_runs": 0,
-        "backend_runs": 0,
+        "native_runs": 1,
+        "backend_runs": 1,
         "measurement_runs": 0,
         "maximum_backend_runs": 1,
         "maximum_measurement_runs": 1,
@@ -6055,13 +6055,24 @@
         "whole_V02_complete": false,
         "review_pending": true,
         "source_checks": 5709,
-        "source_checkpoint": ".artifacts/v02/passive-performance-source/2026-10-26/source-checkpoint.json"
+        "source_checkpoint": ".artifacts/v02/passive-performance-source/2026-10-26/source-checkpoint.json",
+        "source_revision": "6b4d321582141ddc08f93a9346dce38a65b490f7",
+        "backend_checks": 13,
+        "backend_saved_negative_controls": 6,
+        "types_checks": 2,
+        "admission_checks": 9,
+        "handoff": ".artifacts/atom/2026-10-26T16-16-04-899Z/atom-handoff.json",
+        "package_sha256": "8224f111a1f2bbb6219a450606e1ebe04284fca93bb3e46b73125fca9233b7f5",
+        "backend_checkpoint": ".artifacts/v02/passive-performance-source/2026-10-26/backend-checkpoint.json",
+        "both_backend_main_pids_captured": false,
+        "known_backend_main_pids_retired": 1,
+        "owned_backend_profile_references_after_exit": 0
       },
       "execution_record": "212-v02-passive-original-performance.md",
       "current_checkpoint": {
         "record": "212-v02-passive-original-performance.md",
-        "status": "source-passed-package-pending",
-        "next_bounded_step": "Commit source then newimmutable81/type2/admission9 and maxONEbackend13; frozen original198row case follows only exact prerequisites. No newCA/import/model/native retry."
+        "status": "new81-packed-backend-passed-measurement-pending",
+        "next_bounded_step": "Task2 freeze new81 original198row case and firstreader, retainedvalidTLS only; maxONEmeasurement/no retry/newCA/import/model."
       },
       "completed_slices": [
         {
@@ -8671,7 +8682,7 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": "V02.22-new81-source-package-preparation",
-    "next_item": "Commit source then newimmutable81/type2/admission9 and maxONEbackend13; frozen original198row case follows only exact prerequisites. No newCA/import/model/native retry.",
+    "next_item": "Task2 freeze new81 original198row case and firstreader, retainedvalidTLS only; maxONEmeasurement/no retry/newCA/import/model.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8698,7 +8709,7 @@
     "active_item": {
       "id": "V02",
       "record": "212-v02-passive-original-performance.md",
-      "status": "source-passed-package-pending"
+      "status": "new81-packed-backend-passed-measurement-pending"
     },
     "completed_increments": [
       {
@@ -11699,11 +11710,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.22 original80driver exactexcept4identities,8newRED→GREEN/27focusedPASS/5709fullPASS/0fail0skip. New81versionmeta+lock+changelog; pack/backend/measurement0. Retained206TLS validhash/chain/hostname, no newCA/import; originalcriteria/20of29/fullV02/16deferred unchanged.",
+    "current_activity_note": "V02.22 source8/27/5709PASS, new81Atom8224f111/UI2exact/current327/type2/admission9 andONEactualbackend13/6savedcontrolsPASS. KnownNode+1mainAbsent; secondmainPIDnotcaptured, sameUIDownedprofile refs0 afterexit. Measurement/model/newCA/import0;20of29/fullV02/16deferred unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "16afe6ab52e0debc924ffdec12654f49ad94e1e8",
+    "current_source_revision": "6b4d321582141ddc08f93a9346dce38a65b490f7",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "Commit source then newimmutable81/type2/admission9 and maxONEbackend13; frozen original198row case follows only exact prerequisites. No newCA/import/model/native retry.",
+    "next_bounded_step": "Task2 freeze new81 original198row case and firstreader, retainedvalidTLS only; maxONEmeasurement/no retry/newCA/import/model.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

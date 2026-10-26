@@ -32,3 +32,27 @@ Sourcecheckpoint:1897protected tracked/current327product/old80archives/21source
 unchanged. PriorL02/V02 frozen input accounting `{"docs/testing/l02-comparison-chooser-case80.json":{"current":495,"historicalDeclaredGit":4},"docs/testing/basic-observer-current80-case.json":{"current":417,"historicalDeclaredGit":4}}`;
 declared runtime/versionmetadata historical exactGit630ee6f, allotherinputs physical.
 No backend/measurement/model yet. Source commit then newimmutablepack/type/admission.
+
+## New immutable81 prerequisite complete
+
+Source `6b4d321582141ddc08f93a9346dce38a65b490f7`; exactcleanGit at pack/backend registration.
+Handoff `.artifacts/atom/2026-10-26T16-16-04-899Z/atom-handoff.json`; Atom81SHA
+`8224f111a1f2bbb6219a450606e1ebe04284fca93bb3e46b73125fca9233b7f5`, UI2SHAunchanged2bfc8229...;327current
+productinputs, reproducibility/installedpair/bothhost manifests verified. Actualtype2
+and admission9PASS. No rebuilding80or publishing.
+
+ONE actual existing backend13PASS on bothstandalone/publicembedding example; raw
+`.artifacts/u02/input-inspector/native/2026-10-26T16-18-15-037Z/results.json`, SHA
+`9da100b1477aea41042f08adc4a6dea13ec4d6239a5002fa36ec2a07f0296efb`,
+2026-10-26T16:18:15.039Z–16:18:29.333Z. SourceDirtytrue hardcodedliteral staysraw;
+separate registration provesactualcleanGit. Six changed saved-controls reject wrong
+package/missing/duplicate/failedcheck/error/inputdrift. Backend is localdevelopment
+response/control lifetime, not newfieldwidgets/HTTPSgrant/officialhost acceptance.
+
+Hostmonitor captured Node2745352/start29590638 (waitedexit0,procabsent) and only
+standaloneChrome2745417/start29590718 (Absent). BothhostexactPID/start capture was
+NOT complete; do not claim2knownPIDs. Separateread-onlyhostprobe found no sameUID
+process references under the exact two-profileprefix after exit. Profiles retained;
+no globaldescendant/heap/allconsole claim; recordedpageerrors empty only. NewCA/import/
+measurement/model0. Pack/type/admission/backend checkpoint saved; next frozenONE
+original198rowcase/reader. Successfulpack/backend alone is no performance proof.
