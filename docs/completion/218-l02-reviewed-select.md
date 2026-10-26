@@ -71,3 +71,11 @@ one testedI/Cpass/minorsdefer/no rereview, verified own archive/cleanup thenONE 
 Prewritten reader retains five exact pure hash/uniqueJSON/process functions and
 2positive/3negative source controls. Dynamic images/requests/responses/consumed markers
 will be checked against this case and owned paths; no native/reader execution yet.
+
+## Frozen checkpoint before the one execution
+
+Source `01ebeced6126e8503468ba962e9fc2d1dfed9738`; actual prepare/preflight exit0, browser/model0.
+Case `docs/testing/l02-comparison-reviewed-select-case82.json`, SHA `2c35aa1f8b73c2dcea91079a8519b524454186f06ad69fbf0bd863446fd3e622`,672frozenbindings including case/current327/reader/contract/new reviewed-input policy.
+Output `.artifacts/l02/rs/94662b30/`, original27hostfiles plus2researchaddon files.
+Two90s agent image reviews/oneentryclick/oneSelectclick only, no Enter fallback.
+This checkpoint preregisters execution; it is not installation/model acceptance.

@@ -5255,7 +5255,7 @@
       "active_slice": {
         "id": "L02.19",
         "record": "218-l02-reviewed-select.md",
-        "status": "source-complete-native-pending",
+        "status": "frozen-native-pending",
         "base": "98787670ffa92f1eb55773dcbc3b954691b86a7f",
         "new_source_checks": 24,
         "native_runs": 0,
@@ -5265,7 +5265,10 @@
         "full_L02": false,
         "review_pending": true,
         "focused_checks": 280,
-        "full_checks": 5780
+        "full_checks": 5780,
+        "source_revision": "01ebeced6126e8503468ba962e9fc2d1dfed9738",
+        "frozen_bindings": 672,
+        "case_sha256": "2c35aa1f8b73c2dcea91079a8519b524454186f06ad69fbf0bd863446fd3e622"
       },
       "implementation_plan": "../superpowers/plans/2026-10-27-l02-reviewed-select.md",
       "remaining_acceptance": [
@@ -8993,7 +8996,7 @@
     "active_item": {
       "id": "L02.19",
       "record": "218-l02-reviewed-select.md",
-      "status": "source-complete-native-pending"
+      "status": "frozen-native-pending"
     },
     "completed_increments": [
       {
@@ -11996,7 +11999,7 @@
     "scope_adoption_record": "13-scope-reconciliation.md",
     "current_activity_note": "New reviewed native field/Select source24new/280focused/5780full sourcePASS; native0/model0. Two bounded agent-image phases, no Enter fallback; current82/product327 and old criteria preserved;20of29/fullL02/18deferred unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "6dbd45c6d833c9382d4a600ac3daa05832463d1f",
+    "current_source_revision": "01ebeced6126e8503468ba962e9fc2d1dfed9738",
     "current_record_date": "2026-10-26",
     "next_bounded_step": "ONE L02.19 finalsource checks/commit, prewritten reader+newcase freeze before maxONE reviewed native selection/cached model acquisition.",
     "historical_active_pointer_before_V03_23": {
@@ -12008,7 +12011,7 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "Portal ownership research source6dbd45c; actual18INCOMPLETE after submitted Return, no model/collection proof",
+    "current_source_revision_kind": "Reviewed native field/Select research source01ebece; native19pending/current82product327unchanged",
     "current_source_checkpoint": ".artifacts/l02/reviewed-select-source/2026-10-27/checkpoint.json",
     "current_source_checkpoint_kind": "Reviewed native field/Select source only; native0/model0, original model criteria unchanged",
     "historical_active_pointer_before_V02_18": {
