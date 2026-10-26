@@ -4,7 +4,8 @@ L02.17 [ONE owned inventory complete](completion/216-l02-owned-chooser-inventory
 Actual directory dialog belongs to GTKportal, so Chrome-only PID guard misses it.
 FIRSTreader365bindingsPASS;12new/54affected/5732full sourcePASS. No folder/model
 input, install/usefulness/fullL02 proof. BusownershipUnknown, known3rolesAbsent;
-ONEfinalreview pending,20of29 unchanged. NextONE18 ownership-witness source fix.
+ONEreview0C1I1M: I1source16/58/5736PASS, no native/reader retry; M17deferred.
+Boundeditemclosed/fullL02open/20of29 unchanged. NextONE18 ownership witness/portal loader.
 
 V02.25 [passive API drop-in parity not established](completion/215-v02-webrequest-feasibility.md).
 ChromewebRequest visibility requires destination+initiator host grants; currentframe/

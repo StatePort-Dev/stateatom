@@ -78,3 +78,31 @@ No fullL02/model usefulness/human acceptance upgrade;20of29/16deferred unchanged
 ONE final bounded-item review next. Next ONE L02.18 portal ownership witness and
 portal-aware normal-loader source correction, preserving refusal for unknown owners;
 no bare title/PID relaxation, no model campaign until its own frozen prerequisites.
+
+## Final bounded review and source correction
+
+ONE fresh read-only review0Critical/1Important/1Minor. I1: a positively foreign/stale
+private bus daemon was downgraded to optional Unknown, so source could proceed after
+an ownership failure. Actual17 refused before every bus query because DISPLAY was
+missing, so this does not prove a foreign query occurred or erase the GTK observation.
+One source correction pass: independently discover an exact daemon child of the
+attested launcher before queries; require PID/start/UID/exe/hash/ancestry, propagate
+ownership/display/service identity violations to stop the driver. Missing metadata
+remains Unknown. Four added source controls include foreign/stale daemon RED→GREEN,
+no-witness no-query, independent children discovery and mismatched daemon response.
+Final16new/58focused/`npm test`5736PASS/0FAIL0SKIP167663.582703ms; syntax/diff PASS.
+The corrected source has no fresh native qualification: no native or firstreader
+retry, no rereview. Original12/54/5732 and first actual365 remain historical.
+
+M17 deferred: unlabelled opening/pre-run-next prose still describes the earlier phase;
+this closeout/status/index state the current result.16historical deferred findings
+retained plus this one new Minor, total17. No cleanup/model/fullL02 upgrade. Declined
+review domains and executor rulings/costs are recorded in the archived ledger/report.
+
+Three intentional research source changes mean old365bindings now resolve362physical
+plus3 exact Git9d5aba2 source versions. Old case/raw/reader/markers/checkpoints remain
+untouched; final source checkpoint/binder separately binds current corrected source.
+Current82/product327/archives2/protected16packet remain physical/current. Boundedscope
+closed after verified own-workspace archive; fullL02/20of29 unchanged. NextONE18
+pre-exec private bus environment witness and portal-aware normal loader; no title-only
+or relaxed owner check, no new CA/trust/account/SDK/otherrepo/publication work.
