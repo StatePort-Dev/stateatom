@@ -1,11 +1,12 @@
 # Project status
 
-A02.46 bounded native PASS/ONEreview pending: [corrected-source Memo case](completion/202-a02-corrected-committed-memo-native.md).
+A02.46 bounded native PASS, ONEreview0C0I0newM/16historicaldeferred: [corrected-source Memo case](completion/202-a02-corrected-committed-memo-native.md).
 Actual prepare→preflight then ONElaunch/3modes/18phases; original native4/4/App4/8/
 Main5/9/joint4/8 retained. SelectedMemo4positive+4separateDifferent/bailout boundaries.
 Frozen fullreader FIRSTpass838changedcontrols(546old+292new), preservation25unqualified;
 1725hashes equal/hostPIDprofilegone/resourcesclosed.11new/333focused/5435full source.
-No property/ownership/installed/fullA02 upgrade;20of29/16historicaldeferred unchanged.
+Archive7CRC/bytes/identity/ownremovalPASS;1846protectedtracked/1642priorcurrent/34frozen45 preserved.
+No property/ownership/installed/fullA02 upgrade;20of29 unchanged. NextONE exact native invocation source recipe.
 
 A02.45 closed no-native refusal + verified source correction, ONEreview0C0I1M:
 [committed Memo case](completion/201-a02-committed-memo-native.md). Frozenfe6case
