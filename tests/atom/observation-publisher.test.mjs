@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
+import * as publicationModule from '../../packages/atom/src/observation-publisher.mjs';
 import test from 'node:test';import assert from 'node:assert/strict';
 import {createObservationPublisher} from '../../packages/atom/src/observation-publisher.mjs';
 const deferred=()=>{let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return{promise,resolve,reject};};
@@ -57,4 +58,26 @@ test('queued publishers route independent current state without holding snapshot
 test('default scheduling waits for a task boundary while retaining one Promise',async()=>{
  let writes=0;const publish=createObservationPublisher({persist:async()=>{writes++;},notify:()=>{}});
  const first=publish();await Promise.resolve();assert.equal(writes,0);assert.equal(publish(),first);await first;assert.equal(writes,1);
+});
+
+// Real default factory with an owned virtual timer; no native timing claim.
+async function virtualPublication(run){
+ const original=globalThis.setTimeout,tasks=[];let now=0;
+ const micro=async()=>{for(let i=0;i<8;i++)await Promise.resolve();};
+ const advance=async at=>{now=at;for(;;){const i=tasks.findIndex(t=>t.at<=now);if(i<0)break;tasks.splice(i,1)[0].callback();await micro();}};
+ globalThis.setTimeout=(callback,delay)=>{tasks.push({at:now+delay,callback,delay});return tasks.length;};
+ try{return await run({tasks,advance,micro,flush:async()=>{while(tasks.length)await advance(Math.min(...tasks.map(t=>t.at)));}});}finally{globalThis.setTimeout=original;}
+}
+test('separate fast-ack event tasks share a first-save window without losing latest state',async()=>{
+ await virtualPublication(async clock=>{
+  let current=0,last;const saved=[],notices=[],publish=createObservationPublisher({persist:async()=>saved.push(current),notify:()=>notices.push(current)});
+  for(let i=0;i<20;i++){current=i;last=publish();await clock.advance(i);}
+  await clock.flush();await last;assert.deepEqual(saved,[16,19]);assert.deepEqual(notices,[16,19]);assert.equal(publicationModule.OBSERVATION_PUBLICATION_DELAY_MS,16);
+ });
+});
+test('default first save waits nominal16ms and persists current state when it dispatches',async()=>{
+ await virtualPublication(async clock=>{
+  let current='first';const saved=[],publish=createObservationPublisher({persist:async()=>saved.push(current),notify:()=>{}}),first=publish();await clock.advance(15);assert.deepEqual(saved,[]);
+  current='latest';assert.equal(publish(),first);await clock.advance(16);await first;assert.deepEqual(saved,['latest']);assert.equal(clock.tasks.length,0);
+ });
 });

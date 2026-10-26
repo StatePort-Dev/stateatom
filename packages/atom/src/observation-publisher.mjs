@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 // Coalesce publication, never observation. The caller updates its bounded
 // ledger synchronously; persist always reads CURRENT state, not a queued copy.
-export function createObservationPublisher({persist,notify,schedule=task=>setTimeout(task,0)}){
+// Nominal internal first-save window, not a Live-edit cadence or hard deadline.
+export const OBSERVATION_PUBLICATION_DELAY_MS=16;
+export function createObservationPublisher({persist,notify,schedule=task=>setTimeout(task,OBSERVATION_PUBLICATION_DELAY_MS)}){
  let flight=null,dirty=false;
  return function publish(){
   dirty=true;if(flight)return flight;

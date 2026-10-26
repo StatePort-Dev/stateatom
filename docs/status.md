@@ -1,5 +1,12 @@
 # Project status
 
+V02.23 [recording publication window source passed](completion/213-v02-publication-window.md).
+Owned20separatetasks/fastack saves20→2/lateststate; all20requests/records synchronous.
+Internalnominal16ms firstsave only, no Livecadence/permission/metric/terminalwritechange.
+3RED→GREEN/59targeted/81focusedPASS;5inflightfixtures nowawaitactualfirstwrite,
+EVERYoriginalassert retained. Full5712PASS/0fail0skip; reviewnext/native0/model0/newcandidate required.
+20of29/fullV02/16deferred unchanged; original24.3861/22.8143%MISS10 remains.
+
 V02.22 [ONE new81 measurement COMPLETE, target missed](completion/212-v02-passive-original-performance.md).
 New81/current327/type2/admission9/ONEbackend13PASS; source8/27/5709PASS.
 ONE198rows/18warm180measured/66windows; FIRSTreader32controls/432bindingsPASS.
