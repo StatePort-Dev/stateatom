@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-candidate.20261026.81
+
+- Avoid reserving inspector response-body payload buffers in passive read-only
+  inspection without production-change permission; keep metadata tracking enabled.
+- Preserve the original bounded body buffers for development and grant-bearing
+  production, including repeated attachment. Grant identity remains a buffer hint;
+  existing body-read and writer authority checks remain required.
+- Source checks passed separately; installed correctness and performance require
+  this new immutable candidate and do not follow from packaging alone.
+
 ## 0.1.0-candidate.20261026.80
 
 - Coalesce the first recording publication at one event-loop task boundary, including

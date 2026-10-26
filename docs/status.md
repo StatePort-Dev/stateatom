@@ -1,5 +1,12 @@
 # Project status
 
+V02.22 [new81 source/package preparation](completion/212-v02-passive-original-performance.md).
+8new driver controls RED→GREEN,27focused/5709fullPASS; pack/backend/measurement0.
+Original80 driver exact except4identity substitutions; workload/targets unchanged.
+Exact retained206CA/seed hashes+chain+hostname/currentvalidityPASS, newCA/import0.
+New81 pair and changed-byte correctness precede frozen maxONE original198row gate.
+20of29/fullV02/16deferred unchanged.
+
 V02.21 [passive network-buffer correction source passed](completion/211-v02-passive-network-buffers.md).
 Read-only/no grant reserves0extra payload bytes, local/grant-bearing usesoriginal2MB/512KB.
 Repeat attach explicitly preserves budget.8new/26targeted/149affected/5701fullPASS.
