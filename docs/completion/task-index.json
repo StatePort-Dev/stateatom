@@ -5380,7 +5380,7 @@
       "active_slice": {
         "id": "L02.20",
         "record": "223-l02-web-readiness.md",
-        "status": "source-complete-case-preparation-pending",
+        "status": "case-frozen-native-pending",
         "base": "0bb4361548b8ab6fd8168913af2bc8cd284d90eb",
         "new_source_tests": 35,
         "focused_checks": 79,
@@ -5390,7 +5390,10 @@
         "model_create_calls": 0,
         "prompt_calls": 0,
         "full_L02": false,
-        "review_pending": true
+        "review_pending": true,
+        "prepared_revision": "d82168e",
+        "case_sha256": "9aacf5f3e6d43ec8165fa4b1f4554fd243b27e641a1b7fa423628b35e2df8b54",
+        "frozen_inputs": 391
       },
       "implementation_plan": "../superpowers/plans/2026-10-27-l02-web-readiness.md",
       "remaining_acceptance": [
@@ -9139,7 +9142,7 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "L02.20-web-readiness-source-complete-case-pending",
+    "current_increment": "L02.20-web-readiness-case-frozen-native-pending",
     "next_item": "Freeze new one-launch web readiness case/readers, preflight/casecommit then ONEavailability; no inference/quality or loader retry.",
     "new_full_task_acceptances": [
       "F01",
@@ -9167,7 +9170,10 @@
     "active_item": {
       "id": "L02.20",
       "record": "223-l02-web-readiness.md",
-      "status": "source-complete-case-preparation-pending"
+      "status": "case-frozen-native-pending",
+      "prepared_revision": "d82168e",
+      "case_sha256": "9aacf5f3e6d43ec8165fa4b1f4554fd243b27e641a1b7fa423628b35e2df8b54",
+      "frozen_inputs": 391
     },
     "completed_increments": [
       {
@@ -12170,7 +12176,7 @@
     "scope_adoption_record": "13-scope-reconciliation.md",
     "current_activity_note": "Source35/79focused/5849fullPASS, existing code/product327+archives unchanged; no native yet. Concrete web API prerequisite distinct from stopped19loader, create/prompt/download0; 20of29/fullL02/19historicaldeferred unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "34a2875",
+    "current_source_revision": "d82168e",
     "current_record_date": "2026-10-27",
     "next_bounded_step": "Freeze new one-launch web readiness case/readers, preflight/casecommit then ONEavailability; no inference/quality or loader retry.",
     "historical_active_pointer_before_V03_23": {
@@ -12182,7 +12188,7 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "Reviewed four-file private Array dispatch correction; absent from current82 product327 manifest, no installed/native/lineage acceptance.",
+    "current_source_revision_kind": "New model-free web availability probe source;391bindings frozen, actual native execution still pending.",
     "current_source_checkpoint": ".artifacts/l02/web-readiness-source/2026-10-27/checkpoint.json",
     "current_source_checkpoint_kind": "Source-only experimental observer correction; no native/field/lineage qualification",
     "historical_active_pointer_before_V02_18": {

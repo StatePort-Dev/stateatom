@@ -40,3 +40,12 @@ casecommit then at mostONEactual observation, retain any failure/no retry. API a
 error, available or download-needed are factual outcomes only, never quality PASS.
 No product selection, web sampling adapter, publication, SDK or otherrepo changes.
 Independent human participation remains nonblocker, not an excuse to invent proof.
+
+## Immutable case before native
+
+Source `d82168e`; actual prepare/preflight PASS, browserStarted:false. Newcase
+`docs/testing/l02-web-readiness-case.json` SHA256
+`9aacf5f3e6d43ec8165fa4b1f4554fd243b27e641a1b7fa423628b35e2df8b54`,391bindings including case, out `.artifacts/l02/wr/ce9b2222/`,
+noncece9b22221783ec37a61dd3a8f76df51a. Prewritten reader/contract frozen in inputmap.
+Profile remains original explicitly owned idle test cache, live lease pending actual
+run. Launch1/availability1/create0/prompt0/downloadfalse. No runtime outcome yet.
