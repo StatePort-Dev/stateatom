@@ -2,7 +2,8 @@
 
 V02.21 [passive network-buffer correction source passed](completion/211-v02-passive-network-buffers.md).
 Read-only/no grant reserves0extra payload bytes, local/grant-bearing usesoriginal2MB/512KB.
-Repeat attach explicitly preserves budget.8new/26targeted/149affected/5701fullPASS; review next.
+Repeat attach explicitly preserves budget.8new/26targeted/149affected/5701fullPASS.
+ONEreview0C0I1Minor clarified in closeout/no sourcefix/rereview; sourceitemclosed.
 Policy/metadata/metrics/source semantics unchanged; native/model0, no performance pass.
 Current80 now326of327build inputs current: NEWcandidate required for installed checks.
 20of29/fullV02/16historicaldeferred unchanged.
