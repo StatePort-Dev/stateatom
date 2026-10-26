@@ -57,11 +57,20 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
   }
  }
  function tap(){try{invoke(receive,undefined,arguments);}catch{unavailable='Native metadata acquisition unavailable';current=null;}}
- function committedTree(node,strict=false){
+ function committedRoot(node,requireNode=false){
   if(stopped||capped||!supported||unavailable)return unknown(stopped?'Observer stopped':capped?'Observation capacity refused':unavailable||'WeakRef unavailable');
   if(multipleRoots)return unknown('Multiple committed native roots outside this profile');
   const root=current?.root.deref(),finished=current?.finished.deref();
-  if(!object(node)||!root||!finished||own(root,'current')!==finished)return unknown('No matching current committed root');
+  if(requireNode&&!object(node)||!root||!finished||own(root,'current')!==finished)return unknown('No matching current committed root');
+  return{root,finished};
+ }
+ function currentCommit(){
+  const empty=reason=>({schema:'stateatom.native-commit/1',page,status:'Unknown/Unsupported',reason,rootId:null,commitId:null});
+  try{const c=committedRoot();return c.status?empty(c.reason):{...empty(null),status:'Observed',rootId:id(c.root),commitId:current.commitId};}catch{return empty('Current native commit metadata unavailable');}
+ }
+ function committedTree(node,strict=false){
+  const c=committedRoot(node,true);if(c.status)return c;
+  const{root,finished}=c;
   const pending=[{fiber:finished,parent:null}],seen=new Set(),parents=new Map();let selected=null;
   while(pending.length){
    const{fiber,parent}=pending.pop();if(!fibers.has(fiber)){if(strict)return unknown('Unregistered committed native tree edge');continue;}
@@ -98,7 +107,7 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
   return{...unknown(null),status:'Observed',nodeId:id(node),rootId:id(root),commitId:current.commitId,ancestors};
  }
  const propsUnknown=reason=>({schema:'stateatom.committed-props-reference/1',page,status:'Unknown/Unsupported',reason,scope:'Supplied props/type references on the exact selected current function-component ancestor; source element and property origins unknown',match:null,suppliedReferenceOnly:true,sourceElementIdentity:'Unknown/Unsupported',selectedPropertyOrigin:'Unknown/Unsupported',stateToProp:'Unknown/Unsupported',fieldOwnership:'Unknown/Unsupported',fullPath:false});
- function matchCommittedProps(node,props,component){
+ function matchCommittedProps(node,props,component,expectedFiber){
   try{
    if(!object(props)||typeof component!=='function')return propsUnknown('Opaque props object and function component references required');
    const tree=committedTree(node,true);if(tree.status)return propsUnknown(tree.reason);
@@ -113,8 +122,9 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
    }
    if(fiber!==finished||!walked.has(finished))return propsUnknown('Selected ancestor chain does not reach current root');
    if(!matched)return propsUnknown('No exact supplied props/type ancestor reference');
+   if(arguments.length>=4&&matched!==expectedFiber)return propsUnknown('Selected committed ancestor differs from supplied fiber reference');
    return{...propsUnknown(null),status:'Observed',match:{nodeId:id(node),rootId:id(root),commitId:current.commitId,fiberId:id(matched),propsId:id(props),componentId:id(component)}};
   }catch{return propsUnknown('Committed props metadata unavailable');}
  }
- return Object.freeze({tap,snapshot(node){try{return read(node);}catch{return unknown('Native metadata snapshot unavailable');}},matchCommittedProps,stop(){stopped=true;current=null;},retention(){return{events,queues:queueCount,updates:updateCount,stopped,capped,available:supported&&!unavailable};}});
+ return Object.freeze({tap,snapshot(node){try{return read(node);}catch{return unknown('Native metadata snapshot unavailable');}},currentCommit,matchCommittedProps,stop(){stopped=true;current=null;},retention(){return{events,queues:queueCount,updates:updateCount,stopped,capped,available:supported&&!unavailable};}});
 }

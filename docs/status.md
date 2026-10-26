@@ -1,5 +1,11 @@
 # Project status
 
+A02.38 source checks in progress: [committed native element consumer](completion/194-a02-committed-element.md).
+Reuse collector currentCommit/strict expected-fiber matcher; research weak consumer,
+37new/137focused/5190fullPASS; ONEreview pending. Actual3RED partial-loss/expired/ambiguity
+controls corrected; no native/source-origin/selected-property or installed proof.
+1802tracked/1642prior-current registered, old evidence preserved;20of29/15minors unchanged.
+
 A02.37 source complete, ONEreview0C1Ifixed0newM/15deferred: [native element/fiber recipe](completion/193-a02-native-element-fiber.md).
 Three new codefiles,36new/100focused/5153fullPASS. Direct creation/return guard fixes
 three actualRED unsafe grammar forms; exact retained source compile-only still admitted.
