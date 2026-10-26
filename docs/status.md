@@ -1,5 +1,8 @@
 # Project status
 
+[Current release checkpoint](completion/224-night-release-checkpoint.md):20/29(~69%),
+9open; exact82/product327+archives current, no full-scope readiness or newfeature credit.
+
 Current: bounded L02.20 closed with incomplete native evidence; latest source8c78dcf.
 Next actual I01 host adaptation needs the separately requested scope approval.
 20of29 full tasks(~69%) accepted; no new feature acceptance from source-only fixes.

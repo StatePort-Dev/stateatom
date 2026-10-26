@@ -3003,7 +3003,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "ONE final bounded source review; I01 separate host scope pending, no oldnative repeats.",
+      "next_bounded_step": "FullA02open: bounded field/writer/parameter/selected-producer prerequisites remain.51–53 source closed,50native budget exhausted; no guessed cause or blind retry. Next independent I01 awaits separate host scope.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -3357,7 +3357,8 @@
           }
         },
         "current_checkpoint": "220-a02-selected-source-isolation.md"
-      }
+      },
+      "historical_next_bounded_step_before_night_checkpoint": "ONE final bounded source review; I01 separate host scope pending, no oldnative repeats."
     },
     {
       "id": "A03",
@@ -7693,6 +7694,12 @@
         "record": "214-v02-publication-original-performance.md",
         "status": "closed-complete-measurement-original-targets-missed",
         "next_bounded_step": "ONE V02.25 source/API feasibility: currentframe/origin metadata coverage vs webRequest target+initiator host permissions; no productpermission/narrowercoverage/newbench assumed. Original10%miss/no waiver."
+      },
+      "current_readiness_note": {
+        "record": "224-night-release-checkpoint.md",
+        "full_item_accepted": false,
+        "historical_results_unchanged": true,
+        "note": "V02 current82 Active overhead still misses10%; V03 full guide/first-reader failures remain, source/posthoc controls do not promote them."
       }
     },
     {
@@ -9047,7 +9054,13 @@
           "next_item": "V03.22 bounded semantic negative controls; preserve historical native/result/verifier and test-only Git provenance, no new native run"
         }
       ],
-      "historical_execution_record_before_open_gates_assessment": "159-v03-clean-editor-contract.md"
+      "historical_execution_record_before_open_gates_assessment": "159-v03-clean-editor-contract.md",
+      "current_readiness_note": {
+        "record": "224-night-release-checkpoint.md",
+        "full_item_accepted": false,
+        "historical_results_unchanged": true,
+        "note": "V02 current82 Active overhead still misses10%; V03 full guide/first-reader failures remain, source/posthoc controls do not promote them."
+      }
     },
     {
       "id": "V04",
@@ -9090,9 +9103,17 @@
         "npm run pack:atom"
       ],
       "deliverable": "Full approved-scope acceptance ledger or an explicitly narrower preview; no silent requirement waivers",
-      "status": "planned",
+      "status": "in-progress",
       "optional": false,
-      "preparation_record": "205-release-date-decision.md"
+      "preparation_record": "205-release-date-decision.md",
+      "historical_status_before_night_checkpoint": "planned",
+      "current_preparation": {
+        "record": "224-night-release-checkpoint.md",
+        "status": "partial-saved-evidence-ledger",
+        "new_feature_acceptances": [],
+        "ready_for_full_scope_release": false
+      },
+      "next_bounded_step": "Final ledger only after actual remaining feature/performance/host/native criteria; partial snapshot is not readiness."
     }
   ],
   "starting_sequence": [
@@ -12359,7 +12380,17 @@
       "minor": "M16 review-time stale pointer, deferred historical metadata"
     },
     "current_release_assessment": "205-release-date-decision.md",
-    "current_release_assessment_snapshot": ".artifacts/release/2026-10-26-open-gates-assessment/snapshot.json"
+    "current_release_assessment_snapshot": ".artifacts/release/2026-10-26-open-gates-assessment/snapshot.json",
+    "release_checkpoint": {
+      "record": "224-night-release-checkpoint.md",
+      "artifact": ".artifacts/release/2026-10-27-night-checkpoint/snapshot.json",
+      "accepted_whole_tasks": 20,
+      "total_whole_tasks": 29,
+      "unweighted_percent": 68.97,
+      "ready_for_full_scope_release": false,
+      "scope_reduced": false,
+      "new_feature_acceptances": []
+    }
   },
   "next_task": "A02"
 }
