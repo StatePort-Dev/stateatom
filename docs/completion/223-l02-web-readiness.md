@@ -85,3 +85,28 @@ Existing source35/79/5849 and current327/archives2 remain distinct from the inco
 run. Source/native binders PASS without re-running native or original reader. ONE
 whole-item final review next; one testedI/Cpass/minorsdefer/no rereview/native repeat.
 No further web route unless a concrete new prerequisite is separately established.
+
+## ONE final review and source-only correction
+
+Review0Critical/2Important/1Minor. I1: Browser.close could be sent before browser
+owner attestation. I2: a timed-out connection/session could resolve after cleanup
+without disposal. Both acceptedImportant; neither identifies the actual timeout
+operation/cause. M20 historical stale pending/source pointers deferred,19prior→20.
+
+ONE tested source correction pass:35PASS5FAIL→40PASS, affected84PASS736.044857ms,
+full5854PASS0FAIL0SKIP166250.953663ms. Native shutdown now requires ownerAttestedtrue;
+unattested connections disconnect only. Late connection/session/page handles are
+closed/detached; timely handles retain identity. Explicit connect timeout15000ms
+with noDefaults:true preserves browser context settings, outer disposal deadline
+17000ms. The private daemon is witnessed before connection so that timeout cannot
+skip its known-resource cleanup. Helpers/normal Chrome arguments/page API budgets
+remain unchanged; no new native/reader invocation or case rewrite follows.
+
+API use checked against installed Playwright1.63 types and Context7's versioned
+primary docs. Source correction does not retroactively prove the old browser's
+settings/cleanup/timeout cause or web API readiness. Original35/79/5849/source d82168e
+and actual57e95ef raw/readers remain historical. Two known source inputs(driver and
+its test) now verify at exactexecutionGit57e95ef; other389of391 currentphysical.
+Originalcase/391map/raw/FIRSTreader/marker and unqualified result remain exact.
+Corrected-source checkpoint and saved-only mixed-version binder are separate.
+No rereview, native retry, model session, prompt, download or readiness promotion.

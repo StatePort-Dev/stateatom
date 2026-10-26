@@ -5380,7 +5380,7 @@
       "active_slice": {
         "id": "L02.20",
         "record": "223-l02-web-readiness.md",
-        "status": "native-incomplete-review-pending",
+        "status": "source-corrections-complete-native-incomplete",
         "base": "0bb4361548b8ab6fd8168913af2bc8cd284d90eb",
         "new_source_tests": 35,
         "focused_checks": 79,
@@ -5390,7 +5390,7 @@
         "model_create_calls": 0,
         "prompt_calls": 0,
         "full_L02": false,
-        "review_pending": true,
+        "review_pending": false,
         "prepared_revision": "d82168e",
         "case_sha256": "9aacf5f3e6d43ec8165fa4b1f4554fd243b27e641a1b7fa423628b35e2df8b54",
         "frozen_inputs": 391,
@@ -5411,6 +5411,27 @@
           "desktop": true,
           "server": true,
           "lease": true
+        },
+        "review": {
+          "critical": 0,
+          "important": 2,
+          "minor": 1,
+          "acceptedImportant": [
+            "I1 owner-gated Browser.close",
+            "I2 late acquired resource disposal/explicit preserving connection timeout"
+          ],
+          "deferredHistoricalMinor": "M20 stale pending/current source pointers",
+          "deferredHistoricalTotal": 20
+        },
+        "correction_passes": 1,
+        "rereview": false,
+        "corrected_new_source_tests": 40,
+        "corrected_focused_checks": 84,
+        "corrected_full_checks": 5854,
+        "historical_native_bindings": {
+          "currentPhysical": 389,
+          "exactExecutionGit": 2,
+          "revision": "57e95ef"
         }
       },
       "implementation_plan": "../superpowers/plans/2026-10-27-l02-web-readiness.md",
@@ -9160,8 +9181,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "L02.20-native-incomplete-final-review-pending",
-    "next_item": "ONE final whole-item review; no native/reader retry. Pending separate I01 host scope decision.",
+    "current_increment": "L02.20-reviewed-source-corrections-native-incomplete",
+    "next_item": "Close verified own workspace; actual I01 host adaptation awaits separate scope approval.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9188,7 +9209,7 @@
     "active_item": {
       "id": "L02.20",
       "record": "223-l02-web-readiness.md",
-      "status": "native-incomplete-review-pending",
+      "status": "source-corrections-complete-native-incomplete",
       "prepared_revision": "d82168e",
       "case_sha256": "9aacf5f3e6d43ec8165fa4b1f4554fd243b27e641a1b7fa423628b35e2df8b54",
       "frozen_inputs": 391,
@@ -9212,6 +9233,28 @@
         "desktop": true,
         "server": true,
         "lease": true
+      },
+      "review_pending": false,
+      "review": {
+        "critical": 0,
+        "important": 2,
+        "minor": 1,
+        "acceptedImportant": [
+          "I1 owner-gated Browser.close",
+          "I2 late acquired resource disposal/explicit preserving connection timeout"
+        ],
+        "deferredHistoricalMinor": "M20 stale pending/current source pointers",
+        "deferredHistoricalTotal": 20
+      },
+      "correction_passes": 1,
+      "rereview": false,
+      "corrected_new_source_tests": 40,
+      "corrected_focused_checks": 84,
+      "corrected_full_checks": 5854,
+      "historical_native_bindings": {
+        "currentPhysical": 389,
+        "exactExecutionGit": 2,
+        "revision": "57e95ef"
       }
     },
     "completed_increments": [
@@ -12213,11 +12256,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "ONEwebreadiness attempt incomplete before browser owner attestation: exact pending/causeUnknown,availability/create/prompt0/traffic0. FIRSTreader391PASS/qualificationfalse/rawcleanup7true2false preserved; known2PIDsAbsent/supplemental exactdaemonretired. Source35/79/5849/current327+archives exact,20of29/fullL02 unchanged.",
+    "current_activity_note": "ONEreview0C2I1M, I1/I2 fixed inONEsourcepass40new84focused5854fullPASS;20historical deferred. NativeINCOMPLETE/availability0/model0 preserved; original391now389physical+2exact57Git, no retry/rereview/readerrerun/fullL02 credit.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "d82168e",
     "current_record_date": "2026-10-27",
-    "next_bounded_step": "ONE final whole-item review; no native/reader retry. Pending separate I01 host scope decision.",
+    "next_bounded_step": "Close verified own workspace; actual I01 host adaptation awaits separate scope approval.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -12228,7 +12271,7 @@
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
     "current_source_revision_kind": "New model-free web availability probe source;391bindings frozen, actual native execution still pending.",
-    "current_source_checkpoint": ".artifacts/l02/web-readiness-source/2026-10-27/checkpoint.json",
+    "current_source_checkpoint": ".artifacts/l02/web-readiness-source/2026-10-27/corrected-source-checkpoint.json",
     "current_source_checkpoint_kind": "Source-only experimental observer correction; no native/field/lineage qualification",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
