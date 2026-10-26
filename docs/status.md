@@ -2,7 +2,7 @@
 
 V02.24 [new82 original-gate preparation](completion/214-v02-publication-original-performance.md).
 8RED→33focused/5720fullPASS; 4identity-only driver/current23source unchanged.
-New82metadata, pack/backend/measurement0; exactretained206TLSvalid/no newCA/import.
+New82Atom823171ce/UI2exact/current327/type2/admission9/ONEbackend13PASS, measurement0; exactretained206TLSvalid/no newCA/import.
 Original198rows/66windows/≤1s/≤10% preserved; old81overheadmiss remains/no waiver.
 20of29/fullV02/16deferred unchanged.
 
