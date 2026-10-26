@@ -3185,7 +3185,7 @@
       "active_slice": {
         "id": "A02.51",
         "record": "219-a02-selected-frame-isolation.md",
-        "status": "source-complete-review-pending",
+        "status": "closed-bounded-source-only",
         "base": "c23bf592add3d7a67c98900744d5cc217fe240f5",
         "new_source_tests": 6,
         "focused_checks": 96,
@@ -3193,7 +3193,31 @@
         "native_runs": 0,
         "model_calls": 0,
         "full_A02": false,
-        "review_pending": true
+        "review_pending": false,
+        "source_revision": "5cb4cf6",
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 0
+        },
+        "archive": {
+          "schema": "stateatom.selected-frame-review-closeout/1",
+          "archive": ".artifacts/a02/selected-frame-review/2026-10-27/workspace.zip",
+          "sha256": "e1522acf274b513a2dd08b6f453ad0a9150de9620052cdf6bfd1ee27f818eddd",
+          "files": 5,
+          "crcAndAllBytes": true,
+          "planIdentity": "docs/superpowers/plans/2026-10-27-a02-selected-frame-isolation.md",
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 0
+          },
+          "correctionPasses": 0,
+          "rereviews": 0,
+          "nativeRuns": 0,
+          "modelCalls": 0,
+          "fullA02": false
+        }
       },
       "historical_checkpoint_before_A02_51": {
         "active_slice": {
@@ -9001,7 +9025,7 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.51-selected-frame-source-complete-review-pending",
+    "current_increment": "A02.51-closed-bounded-source-only",
     "next_item": "ONE selected-source callback eligibility source inspection if separate counterexample; no oldnative/GC campaign.",
     "new_full_task_acceptances": [
       "F01",
@@ -9029,7 +9053,32 @@
     "active_item": {
       "id": "A02.51",
       "record": "219-a02-selected-frame-isolation.md",
-      "status": "source-complete-review-pending"
+      "status": "closed-bounded-source-only",
+      "review_pending": false,
+      "source_revision": "5cb4cf6",
+      "review": {
+        "critical": 0,
+        "important": 0,
+        "minor": 0
+      },
+      "archive": {
+        "schema": "stateatom.selected-frame-review-closeout/1",
+        "archive": ".artifacts/a02/selected-frame-review/2026-10-27/workspace.zip",
+        "sha256": "e1522acf274b513a2dd08b6f453ad0a9150de9620052cdf6bfd1ee27f818eddd",
+        "files": 5,
+        "crcAndAllBytes": true,
+        "planIdentity": "docs/superpowers/plans/2026-10-27-a02-selected-frame-isolation.md",
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 0
+        },
+        "correctionPasses": 0,
+        "rereviews": 0,
+        "nativeRuns": 0,
+        "modelCalls": 0,
+        "fullA02": false
+      }
     },
     "completed_increments": [
       {

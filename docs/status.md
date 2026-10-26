@@ -3,7 +3,9 @@
 A02.51 [selected frame isolation source verified](completion/219-a02-selected-frame-isolation.md).
 6new/96focused/5786fullPASS; scopedlookup ignores unrelated weakref loss while global
 snapshot/own-row/globalinvalid gates remain exact. Native0/model0/not50causeproof.
-Current327/archives2 unchanged;20of29/fullA02/fullL02/18deferred unchanged. ONEreview next.
+Current327/archives2 unchanged;20of29/fullA02/fullL02/18deferred unchanged.
+Source5cb4cf6/ONEreview0C0I0M; bounded51closed, workspace archived/removed.
+Next ONE selected-source callback eligibility investigation on a separate concrete witness.
 
 L02.19 [ONE entry review declined before path](completion/218-l02-reviewed-select.md).
 Private owner/focus/fullyvisiblegeometry confirmed; no visible location field after
