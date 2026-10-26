@@ -174,7 +174,217 @@ const comparisonPortalProtectedFiles=[
  "docs/testing/l02-comparison-path-case80.json",
  "docs/testing/l02-comparison-short-case78.json"
 ];
+export const comparisonReviewedCaseId='L02.19-local82-reviewed-select-comparison';
+const comparisonReviewedProtectedFiles=[
+ ".artifacts/l02/c/d91e9234/native-run-started.json",
+ ".artifacts/l02/c2/83780456/native-run-started.json",
+ ".artifacts/l02/c2/83780456/registered-before-native.json",
+ ".artifacts/l02/c2/83780456/results.json",
+ ".artifacts/l02/c2/83780456/saved-verification.json",
+ ".artifacts/l02/chooser-inventory-review/2026-10-26/final-checkpoint.json",
+ ".artifacts/l02/chooser-inventory-review/2026-10-26/report.md",
+ ".artifacts/l02/chooser-inventory-review/2026-10-26/workspace.zip",
+ ".artifacts/l02/chooser-inventory-saved-verification/2026-10-26/first-reader-attempt.json",
+ ".artifacts/l02/chooser-inventory-saved-verification/2026-10-26/first-reader.log",
+ ".artifacts/l02/chooser-inventory-saved-verification/2026-10-26/result.json",
+ ".artifacts/l02/chooser-inventory-saved-verification/2026-10-26/self-test.json",
+ ".artifacts/l02/chooser-inventory-saved-verification/2026-10-26/verify.py",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/bus-red.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/checkpoint.json",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/driver-red.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/final-source-checkpoint.json",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/focused-final.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/focused.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/frozen-checkpoint.json",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/full-final.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/full.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/helper-green.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/native-checkpoint.json",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/native-cli.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/preflight.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/preparation.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/red.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/registration.json",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/review-fix-first-green.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/review-fix-focused.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/review-fix-full.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/review-fix-red.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/source-final.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/source-first-green.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/source-green.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/top-level-red.log",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/verify-final.py",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/verify-native.py",
+ ".artifacts/l02/chooser-inventory-source/2026-10-26/verify-source.py",
+ ".artifacts/l02/comparison-native/2026-10-25T00-12-15-579Z/native-run-started.json",
+ ".artifacts/l02/current-comparison-review/2026-10-26/final-checkpoint.json",
+ ".artifacts/l02/current-comparison-review/2026-10-26/report.md",
+ ".artifacts/l02/current-comparison-review/2026-10-26/workspace.zip",
+ ".artifacts/l02/current-comparison-saved-verification/2026-10-26/contract.json",
+ ".artifacts/l02/current-comparison-saved-verification/2026-10-26/source-controls.json",
+ ".artifacts/l02/current-comparison-saved-verification/2026-10-26/verify.py",
+ ".artifacts/l02/current-comparison-source/2026-10-26/focused-final.log",
+ ".artifacts/l02/current-comparison-source/2026-10-26/full-final.log",
+ ".artifacts/l02/current-comparison-source/2026-10-26/native-bindings.json",
+ ".artifacts/l02/current-comparison-source/2026-10-26/registration.json",
+ ".artifacts/l02/current-comparison-source/2026-10-26/source-checkpoint.json",
+ ".artifacts/l02/current-comparison-source/2026-10-26/verify-native-bindings.py",
+ ".artifacts/l02/current-comparison-source/2026-10-26/verify-source.py",
+ ".artifacts/l02/iv/921be9d0/after2s-candidate.png",
+ ".artifacts/l02/iv/921be9d0/after6s-candidate.png",
+ ".artifacts/l02/iv/921be9d0/before-candidate.png",
+ ".artifacts/l02/iv/921be9d0/chrome.log",
+ ".artifacts/l02/iv/921be9d0/native-run-started.json",
+ ".artifacts/l02/iv/921be9d0/previous-closed-endpoint.txt",
+ ".artifacts/l02/iv/921be9d0/results-running.json",
+ ".artifacts/l02/iv/921be9d0/results.json",
+ ".artifacts/l02/iv/921be9d0/xauth",
+ ".artifacts/l02/iv/921be9d0/xephyr.log",
+ ".artifacts/l02/native-chooser-review/2026-10-26/final-checkpoint.json",
+ ".artifacts/l02/native-chooser-review/2026-10-26/green-task-budget.log",
+ ".artifacts/l02/native-chooser-review/2026-10-26/red-task-budget.log",
+ ".artifacts/l02/native-chooser-review/2026-10-26/report.md",
+ ".artifacts/l02/native-chooser-review/2026-10-26/verify-task-budget.py",
+ ".artifacts/l02/native-chooser-review/2026-10-26/workspace.zip",
+ ".artifacts/l02/native-chooser-saved-verification/2026-10-26/contract.json",
+ ".artifacts/l02/native-chooser-saved-verification/2026-10-26/first-reader-attempt.json",
+ ".artifacts/l02/native-chooser-saved-verification/2026-10-26/first-reader.exit",
+ ".artifacts/l02/native-chooser-saved-verification/2026-10-26/first-reader.log",
+ ".artifacts/l02/native-chooser-saved-verification/2026-10-26/reader-source-equivalence.json",
+ ".artifacts/l02/native-chooser-saved-verification/2026-10-26/source-controls.json",
+ ".artifacts/l02/native-chooser-saved-verification/2026-10-26/verify.py",
+ ".artifacts/l02/native-chooser-source/2026-10-26/before-native.json",
+ ".artifacts/l02/native-chooser-source/2026-10-26/focused-before-focus-correction.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/focused-final.exit",
+ ".artifacts/l02/native-chooser-source/2026-10-26/focused-final.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/focused.exit",
+ ".artifacts/l02/native-chooser-source/2026-10-26/focused.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/full-before-focus-correction.exit",
+ ".artifacts/l02/native-chooser-source/2026-10-26/full-before-focus-correction.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/full-final.exit",
+ ".artifacts/l02/native-chooser-source/2026-10-26/full-final.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/full.exit",
+ ".artifacts/l02/native-chooser-source/2026-10-26/full.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/green-all.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/green-focus-correction.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/green-helper.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/green-route.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/green-search-params.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/green-source-attempt.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/native-checkpoint.json",
+ ".artifacts/l02/native-chooser-source/2026-10-26/native.exit",
+ ".artifacts/l02/native-chooser-source/2026-10-26/native.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/preflight.exit",
+ ".artifacts/l02/native-chooser-source/2026-10-26/preflight.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/prepare.exit",
+ ".artifacts/l02/native-chooser-source/2026-10-26/prepare.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/red-driver-host.exit",
+ ".artifacts/l02/native-chooser-source/2026-10-26/red-driver-host.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/red-driver.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/red-focus-race.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/red-helper-explicit.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/red-helper.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/red-parser-owner.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/red-receipt.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/red-search-params.log",
+ ".artifacts/l02/native-chooser-source/2026-10-26/registration.json",
+ ".artifacts/l02/native-chooser-source/2026-10-26/source-checkpoint.json",
+ ".artifacts/l02/native-chooser-source/2026-10-26/source-stage-zero-native.json",
+ ".artifacts/l02/native-chooser-source/2026-10-26/verify-native.py",
+ ".artifacts/l02/native-chooser-source/2026-10-26/verify-source.py",
+ ".artifacts/l02/nc/92ab7c82/chrome.log",
+ ".artifacts/l02/nc/92ab7c82/host-provenance.json",
+ ".artifacts/l02/nc/92ab7c82/native-run-started.json",
+ ".artifacts/l02/nc/92ab7c82/preparation.json",
+ ".artifacts/l02/nc/92ab7c82/previous-closed-endpoint.txt",
+ ".artifacts/l02/nc/92ab7c82/registered-before-native.json",
+ ".artifacts/l02/nc/92ab7c82/results-running.json",
+ ".artifacts/l02/nc/92ab7c82/results.json",
+ ".artifacts/l02/nc/92ab7c82/saved-verification.json",
+ ".artifacts/l02/nc/92ab7c82/xauth",
+ ".artifacts/l02/nc/92ab7c82/xephyr.log",
+ ".artifacts/l02/portal-chooser-review/2026-10-26/final-checkpoint.json",
+ ".artifacts/l02/portal-chooser-review/2026-10-26/report.md",
+ ".artifacts/l02/portal-chooser-review/2026-10-26/workspace.zip",
+ ".artifacts/l02/portal-chooser-saved-verification/2026-10-26/contract.json",
+ ".artifacts/l02/portal-chooser-saved-verification/2026-10-26/first-reader-attempt.json",
+ ".artifacts/l02/portal-chooser-saved-verification/2026-10-26/first-reader.log",
+ ".artifacts/l02/portal-chooser-saved-verification/2026-10-26/pure-function-parity.json",
+ ".artifacts/l02/portal-chooser-saved-verification/2026-10-26/source-controls.json",
+ ".artifacts/l02/portal-chooser-saved-verification/2026-10-26/verify.py",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/bridge-first.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/checkpoint.json",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/driver-first-green.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/driver-red.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/focused-current.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/focused-final.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/frozen-checkpoint.json",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/full-current.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/full.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/helper-first.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/known-service-retirement.json",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/native-checkpoint.json",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/native-cli.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/preflight.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/preparation.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/provenance-red.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/red.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/register.mjs",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/registered-protected-relative.json",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/registration-initial-three-deltas.json",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/registration.json",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/registration.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/related-first.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/related-second.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/route-green.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/source-final.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/source-first-green.log",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/verify-native.py",
+ ".artifacts/l02/portal-chooser-source/2026-10-26/verify-source.py",
+ ".artifacts/l02/pq/cee16159/chooser-candidate.png",
+ ".artifacts/l02/pq/cee16159/chrome.log",
+ ".artifacts/l02/pq/cee16159/host-provenance.json",
+ ".artifacts/l02/pq/cee16159/native-run-started.json",
+ ".artifacts/l02/pq/cee16159/preparation.json",
+ ".artifacts/l02/pq/cee16159/previous-closed-endpoint.txt",
+ ".artifacts/l02/pq/cee16159/private-bus-environment.json",
+ ".artifacts/l02/pq/cee16159/registered-before-native.json",
+ ".artifacts/l02/pq/cee16159/results-running.json",
+ ".artifacts/l02/pq/cee16159/results.json",
+ ".artifacts/l02/pq/cee16159/saved-verification.json",
+ ".artifacts/l02/pq/cee16159/xauth",
+ ".artifacts/l02/pq/cee16159/xephyr.log",
+ ".artifacts/l02/short-comparison-saved-verification/2026-10-25/clauses.json",
+ ".artifacts/l02/short-comparison-saved-verification/2026-10-25/report.json",
+ ".artifacts/l02/short-comparison-saved-verification/2026-10-25/verify.py",
+ ".artifacts/l02/worker-independent-discovery-review/2026-10-26/final-checkpoint.json",
+ ".artifacts/l02/worker-independent-discovery-review/2026-10-26/report.md",
+ ".artifacts/l02/worker-independent-discovery-review/2026-10-26/workspace.zip",
+ ".artifacts/l02/worker-independent-discovery-source/2026-10-26/checks-final.json",
+ ".artifacts/l02/worker-independent-discovery-source/2026-10-26/checks.json",
+ ".artifacts/l02/worker-independent-discovery-source/2026-10-26/focused-final.log",
+ ".artifacts/l02/worker-independent-discovery-source/2026-10-26/full-final.log",
+ ".artifacts/l02/worker-independent-discovery-source/2026-10-26/registration-final.json",
+ ".artifacts/l02/worker-independent-discovery-source/2026-10-26/registration.json",
+ ".artifacts/l02/worker-independent-discovery-source/2026-10-26/review-fix-focused.log",
+ ".artifacts/l02/worker-independent-discovery-source/2026-10-26/review-fix-full.log",
+ ".artifacts/l02/worker-independent-discovery-source/2026-10-26/verify-final.py",
+ ".artifacts/l02/worker-independent-discovery-source/2026-10-26/verify.py",
+ "docs/completion/188-l02-worker-independent-discovery.md",
+ "docs/completion/216-l02-owned-chooser-inventory.md",
+ "docs/completion/217-l02-portal-chooser.md",
+ "docs/superpowers/plans/2026-10-26-l02-worker-independent-discovery.md",
+ "docs/superpowers/specs/2026-10-26-l02-worker-independent-discovery-design.md",
+ "docs/testing/l02-chooser-inventory-case.json",
+ "docs/testing/l02-comparison-case78.json",
+ "docs/testing/l02-comparison-chooser-case80.json",
+ "docs/testing/l02-comparison-path-case80.json",
+ "docs/testing/l02-comparison-portal-case82.json",
+ "docs/testing/l02-comparison-short-case78.json"
+];
 export function comparisonCandidate(key='original'){
+ if(key==='reviewed-select'){const prior=comparisonCandidate('portal-chooser');return frozen({...prior,key,id:comparisonReviewedCaseId,caseFile:path.resolve('docs/testing/l02-comparison-reviewed-select-case82.json'),outputRoot:path.resolve('.artifacts/l02/rs'),sourceRegistration:path.resolve('.artifacts/l02/reviewed-select-source/2026-10-27/registration.json'),registrationBase:'98787670ffa92f1eb55773dcbc3b954691b86a7f',protectedInputFiles:comparisonReviewedProtectedFiles.map(f=>path.resolve(f)).sort()});}
+
  if(key==='portal-chooser'){const prior=comparisonCandidate('native-chooser');return frozen({...prior,key,declaredResearchDeltas:['scripts/comparison-evaluation-case.mjs','experiments/comparison-evaluation-qualification.mjs'],id:comparisonPortalCaseId,caseFile:path.resolve('docs/testing/l02-comparison-portal-case82.json'),outputRoot:path.resolve('.artifacts/l02/pq'),sourceRegistration:path.resolve('.artifacts/l02/portal-chooser-source/2026-10-26/registration.json'),registrationBase:'2aea834478144b419603eb7594aac6967f8470df',handoff:path.resolve('.artifacts/atom/2026-10-26T17-06-59-661Z/atom-handoff.json'),admission:path.resolve('.artifacts/atom/compatibility/2026-10-26T17-07-46-177Z/result.json'),atomSha256:'823171ce44ffd8f8a10f79c66ccafc855456bcab9f9ea8068e48d831c735afa4',version:'0.1.0-candidate.20261026.82',protectedInputFiles:comparisonPortalProtectedFiles.map(f=>path.resolve(f)).sort()});}
 
  if(key==='native-chooser'){const prior=comparisonCandidate('current-owned');return frozen({...prior,key,id:comparisonChooserCaseId,caseFile:path.resolve('docs/testing/l02-comparison-chooser-case80.json'),outputRoot:path.resolve('.artifacts/l02/nc'),sourceRegistration:path.resolve('.artifacts/l02/native-chooser-source/2026-10-26/registration.json'),registrationBase:'b431606f650fb2c1daa1bef7e4e09565aff923c7',protectedInputFiles:[...new Set([...prior.protectedInputFiles,...[".artifacts/l02/current-comparison-source/2026-10-26/verify-source.py", ".artifacts/l02/current-comparison-source/2026-10-26/focused-final.log", ".artifacts/l02/current-comparison-source/2026-10-26/registration.json", ".artifacts/l02/current-comparison-source/2026-10-26/full-final.log", ".artifacts/l02/current-comparison-source/2026-10-26/native-bindings.json", ".artifacts/l02/current-comparison-source/2026-10-26/verify-native-bindings.py", ".artifacts/l02/current-comparison-source/2026-10-26/source-checkpoint.json", ".artifacts/l02/current-comparison-review/2026-10-26/report.md", ".artifacts/l02/current-comparison-review/2026-10-26/workspace.zip", ".artifacts/l02/current-comparison-review/2026-10-26/final-checkpoint.json", ".artifacts/l02/current-comparison-saved-verification/2026-10-26/contract.json", ".artifacts/l02/current-comparison-saved-verification/2026-10-26/verify.py", ".artifacts/l02/current-comparison-saved-verification/2026-10-26/source-controls.json", "docs/testing/l02-comparison-path-case80.json", ".artifacts/l02/c2/83780456/results.json", ".artifacts/l02/c2/83780456/native-run-started.json", ".artifacts/l02/c2/83780456/registered-before-native.json", ".artifacts/l02/c2/83780456/saved-verification.json"].map(f=>path.resolve(f))])].sort()});}
@@ -197,15 +407,15 @@ export function comparisonCandidate(key='original'){
  const short=key==='short-owned';return frozen({handoff:comparisonHandoff,admission:comparisonAdmission,atomSha256:comparisonAtomSha,uiSha256:comparisonUISha,version:'0.1.0-candidate.20261021.78',key,id:short?'L02.13-local78-short-temp-comparison':'L02.12-local78-cached-comparison',caseFile:short?comparisonShortCaseFile:comparisonCaseFile,outputRoot:path.resolve(short?'.artifacts/l02/c':'.artifacts/l02/comparison-native'),sourceRegistration:short?path.resolve('.artifacts/l02/short-comparison-source/2026-10-25/registration.json'):comparisonSourceRegistration,registrationBase:short?'c799ad5970c802a4ecc1cd9f73c33fa89cca87f2':'ffb9815f793481146564d7b885f604029e501dcc',declaredResearchDeltas:short?['scripts/comparison-evaluation-case.mjs','scripts/prepare-comparison-evaluation.mjs']:['core/derived-model-provider.mjs'],protectedInputFiles:short?[comparisonCaseFile,path.resolve('.artifacts/l02/comparison-native/2026-10-25T00-12-15-579Z/native-run-started.json')]:[]});
 }
 export function admitComparisonSourceRegistration(reg,candidate){
- const short=candidate.key==='short-owned',portal=candidate.key==='portal-chooser',chooser=candidate.key==='native-chooser',current=candidate.key==='current-owned'||chooser||portal;assert.deepEqual(candidate,comparisonCandidate(candidate.key));assert.equal(reg.schema,portal?'stateatom.portal-comparison-source/1':chooser?'stateatom.chooser-comparison-source/1':current?'stateatom.current-comparison-source/1':short?'stateatom.short-comparison-source/1':'stateatom.comparison-native-source/1');assert.equal(reg.base,candidate.registrationBase);assert.deepEqual(reg.declaredResearchDeltas,candidate.declaredResearchDeltas);
- if(portal)assert.deepEqual(Object.keys(reg.sourceBefore).sort(),comparisonPortalBeforeFiles().map(f=>path.resolve(f)).sort());else assert.equal(Object.keys(reg.sourceBefore).length,current||short?33:25);assert.equal(Object.keys(reg.productInputs).length,327);assert.equal(Object.keys(reg.L02Raw).length,portal?15:chooser?13:current?12:short?11:10);assert.equal(reg.V03Raw.length,current?17:15);
+ const short=candidate.key==='short-owned',reviewed=candidate.key==='reviewed-select',portal=candidate.key==='portal-chooser',chooser=candidate.key==='native-chooser',current=candidate.key==='current-owned'||chooser||portal||reviewed;assert.deepEqual(candidate,comparisonCandidate(candidate.key));assert.equal(reg.schema,reviewed?'stateatom.reviewed-select-source/1':portal?'stateatom.portal-comparison-source/1':chooser?'stateatom.chooser-comparison-source/1':current?'stateatom.current-comparison-source/1':short?'stateatom.short-comparison-source/1':'stateatom.comparison-native-source/1');assert.equal(reg.base,candidate.registrationBase);assert.deepEqual(reg.declaredResearchDeltas,candidate.declaredResearchDeltas);
+ if(reviewed)assert.deepEqual(Object.keys(reg.sourceBefore).sort(),comparisonReviewedBeforeFiles().map(f=>path.resolve(f)).sort());else if(portal)assert.deepEqual(Object.keys(reg.sourceBefore).sort(),comparisonPortalBeforeFiles().map(f=>path.resolve(f)).sort());else assert.equal(Object.keys(reg.sourceBefore).length,current||short?33:25);assert.equal(Object.keys(reg.productInputs).length,327);assert.equal(Object.keys(reg.L02Raw).length,reviewed?16:portal?15:chooser?13:current?12:short?11:10);assert.equal(reg.V03Raw.length,current?17:15);
  for(const rel of candidate.declaredResearchDeltas)assert(Object.hasOwn(reg.sourceBefore,path.resolve(rel)));
  assert.deepEqual(Object.keys(reg.protectedInputs??{}).sort(),[...candidate.protectedInputFiles].sort());
  for(const group of [reg.sourceBefore,reg.productInputs,reg.L02Raw,reg.protectedInputs??{}])for(const[file,hash]of Object.entries(group)){assert(path.isAbsolute(file)&&path.resolve(file)===file&&file.startsWith(comparisonRoot+'/'));assert.match(hash,/^[a-f0-9]{64}$/);}
  if(short){const prior=reg.priorExhaustedCase;assert.equal(prior.case,comparisonCaseFile);assert.equal(prior.raw,path.resolve('.artifacts/l02/comparison-native/2026-10-25T00-12-15-579Z/results.json'));assert.equal(prior.status,'INCOMPLETE_COMPARISON_CANDIDATE_NOT_L02');assert.equal(prior.nativeRuns,1);assert.equal(prior.APIRequests,0);assert.equal(reg.L02Raw[prior.raw],'1c0bcda6e409435c6722f29d54163a9bee512240187b09be1541e06e8fc57afd');}
 }
-export function comparisonCandidateForCase(file){for(const key of ['original','short-owned','current-owned','native-chooser','portal-chooser']){const candidate=comparisonCandidate(key);if(typeof file==='string'&&path.resolve(file)===candidate.caseFile)return candidate;}throw comparisonError('CASE_SCOPE');}
-function comparisonCandidateForID(id){for(const key of ['original','short-owned','current-owned','native-chooser','portal-chooser']){const candidate=comparisonCandidate(key);if(candidate.id===id)return candidate;}throw comparisonError('CASE_SCOPE');}
+export function comparisonCandidateForCase(file){for(const key of ['original','short-owned','current-owned','native-chooser','portal-chooser','reviewed-select']){const candidate=comparisonCandidate(key);if(typeof file==='string'&&path.resolve(file)===candidate.caseFile)return candidate;}throw comparisonError('CASE_SCOPE');}
+function comparisonCandidateForID(id){for(const key of ['original','short-owned','current-owned','native-chooser','portal-chooser','reviewed-select']){const candidate=comparisonCandidate(key);if(candidate.id===id)return candidate;}throw comparisonError('CASE_SCOPE');}
 export function comparisonOutputPath(key,{nonce,at=new Date().toISOString()}={}){const candidate=comparisonCandidate(key);if(typeof nonce!=='string'||!/^[a-f0-9]{32}$/.test(nonce))throw comparisonError('INPUT_FORMAT');return candidate.outputRoot+'/'+(key!=='original'?nonce.slice(0,8):new Date(at).toISOString().replace(/[:.]/g,'-'));}
 
 export const comparisonAtomSha='8e2d67e68a0ef2a798409156c581629adb3cd2e37f06e8bb3ef7c3c0d16bcf4a',comparisonUISha='2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5';
@@ -213,7 +423,7 @@ export const comparisonError=code=>Object.assign(Error(code),{code});
 export const comparisonSha=value=>createHash('sha256').update(value).digest('hex');
 const frozen=value=>{for(const c of Object.values(value))if(c&&typeof c==='object')frozen(c);return Object.freeze(value);};
 export async function comparisonJSON(file){const raw=await readFile(file,'utf8');if(Buffer.byteLength(raw)>16*1024*1024)throw comparisonError('INPUT_FORMAT');assertUniqueHandoffJSONMembers(raw,{maxDepth:24,maxMembers:50000});return JSON.parse(raw);}
-export function parseComparisonNativeArgs(args,{route=null}={}){if(!Array.isArray(args)||!(args.length===1||args.length===2&&args[1]==='--preflight')||typeof args[0]!=='string'||!args[0]||args[0].startsWith('--'))throw comparisonError('INVALID_ARGUMENTS');const candidate=comparisonCandidateForCase(args[0]);if((candidate.key==='native-chooser'&&route!=='native-chooser')||(candidate.key==='portal-chooser'&&route!=='portal-chooser'))throw comparisonError('CASE_SCOPE');return{caseFile:candidate.caseFile,preflight:args.length===2};}
+export function parseComparisonNativeArgs(args,{route=null}={}){if(!Array.isArray(args)||!(args.length===1||args.length===2&&args[1]==='--preflight')||typeof args[0]!=='string'||!args[0]||args[0].startsWith('--'))throw comparisonError('INVALID_ARGUMENTS');const candidate=comparisonCandidateForCase(args[0]);if((candidate.key==='native-chooser'&&route!=='native-chooser')||(candidate.key==='portal-chooser'&&route!=='portal-chooser')||(candidate.key==='reviewed-select'&&route!=='reviewed-select'))throw comparisonError('CASE_SCOPE');return{caseFile:candidate.caseFile,preflight:args.length===2};}
 export function parseComparisonPreparationArgs(args){if(!Array.isArray(args)||args.length!==0)throw comparisonError('INVALID_ARGUMENTS');return{};}
 export function comparisonProtocol(){return frozen({schema:'stateatom.l02-comparison-protocol/1',maximumNativeRuns:1,mainCases:30,separateBodyCases:4,maxPromptCalls:10,allowDownload:false,cachedAvailabilityMs:20000,requestTimeoutMs:30000,observationTimeoutMs:35000,caseBudgetMs:600000,noDefaults:true,initialCancel:false,offline:false,changedFacts:false,originalAcceptanceWaived:false,fullL02:false,actualSettingsWhenUnexposed:'Unknown/Unsupported',qualityAssessedByCollection:false});}
 export function comparisonLaunchArguments(profile){assert.equal(profile,comparisonCacheProfile);return['--remote-debugging-port=0','--user-data-dir='+profile,'--no-first-run','--no-default-browser-check','--lang=en-US','--window-size=1100,1000','chrome://extensions/'];}
@@ -224,7 +434,7 @@ export function admitComparisonProfileWitness({profile,realProfile,uid,ownerRece
 export async function checkComparisonProfileAvailable(profile){assert.equal(profile,comparisonCacheProfile);try{await lstat(profile+'/.stateatom-comparison-lease');throw comparisonError('PROFILE_BUSY');}catch(e){if(e.code!=='ENOENT')throw e;}try{const lock=await readlink(profile+'/SingletonLock'),match=lock.match(/-(\d+)$/);if(!match)throw comparisonError('PROFILE_BUSY');try{process.kill(Number(match[1]),0);throw comparisonError('PROFILE_BUSY');}catch(e){if(e.code!=='ESRCH')throw e;}}catch(e){if(e.code!=='ENOENT')throw e;}}
 export async function verifyComparisonFrozenInputs(expected,{read=readFile}={}){const entries=expected&&typeof expected==='object'&&!Array.isArray(expected)?Object.entries(expected):[];if(!entries.length||entries.length>1000||entries.some(([f,h])=>!path.isAbsolute(f)||path.resolve(f)!==f||typeof h!=='string'||!/^[a-f0-9]{64}$/.test(h)))throw comparisonError('INPUT_FORMAT');const actual={};for(const[f,h]of entries){actual[f]=comparisonSha(await read(f));if(actual[f]!==h)throw comparisonError('FROZEN_INPUT_DRIFT');}return actual;}
 export async function registerComparisonNativeRun(out,registration){await writeFile(out+'/registered-before-native.json',JSON.stringify(registration,null,2)+'\n',{flag:'wx'});await writeFile(out+'/native-run-started.json',JSON.stringify({at:new Date().toISOString(),pid:process.pid,modelCreateNotYetCalled:true})+'\n',{flag:'wx'});}
-export function admitComparisonCaseDefinition(s){assert.equal(s.schema,'stateatom.l02-comparison-case/1');const candidate=comparisonCandidateForID(s.id);assert.equal(s.maximumNativeRuns,1);assert.equal(path.resolve(s.out),s.out);assert.equal(path.dirname(s.out),candidate.outputRoot);if(candidate.key!=='original')assert.equal(s.out,comparisonOutputPath(candidate.key,{nonce:s.nonce}));else assert.match(path.basename(s.out),/^\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z$/);assert.equal(s.hostPath,s.out+'/evaluation-host');assert.match(s.nonce,/^[a-f0-9]{32}$/);assert.deepEqual(s.protocol,comparisonProtocol());assert.deepEqual(s.expectedCases,expectedComparisonCases());assert.deepEqual(s.expectedCreateOptions,expectedComparisonCreateOptions());assert.equal(s.atomHandoff,candidate.handoff);assert.equal(s.packedAdmission,candidate.admission);assert.equal(s.packedTypes,path.dirname(candidate.handoff)+'/type-consumer-result.json');assert.equal(s.atomSha256,candidate.atomSha256);assert.equal(s.uiSha256,candidate.uiSha256);assert.equal(s.profile.path,comparisonCacheProfile);assert.equal(s.profile.previousResult,comparisonPreviousResult);assert.equal(s.sourceRegistration,candidate.sourceRegistration);assert.equal(s.profile.uid,process.getuid());assert.deepEqual(s.launchArguments,comparisonLaunchArguments(s.profile.path));assert.equal(s.chrome.launcher,'/usr/bin/google-chrome-stable');assert.equal(s.chrome.binary,'/opt/google/chrome/chrome');assert.match(s.chrome.version,/^\d+\.\d+\.\d+\.\d+$/);for(const x of[s.chrome.binarySha256,s.chrome.launcherSha256,s.addon.jsSha256,s.addon.htmlSha256,s.node.sha256])assert.match(x,/^[a-f0-9]{64}$/);assert.deepEqual(Object.keys(s.hostFiles).filter(f=>!Object.hasOwn(s.originalHostFiles,f)).sort(),['l02-eval.html','l02-eval.js']);for(const[f,h]of Object.entries(s.originalHostFiles))assert.equal(s.hostFiles[f],h);assert.equal(s.hostFiles['l02-eval.js'],s.addon.jsSha256);assert.equal(s.hostFiles['l02-eval.html'],s.addon.htmlSha256);if(candidate.key==='native-chooser'||candidate.key==='portal-chooser'){if(candidate.key==='portal-chooser')assert.equal(s.tooling.portal.sha256,'ff84ccce8c3e95f0e4beb6c9c9b9327af62abb3ed98424acc5cf249aac426ab3');const tools=comparisonToolsForCandidate(candidate);for(const[name,executable]of Object.entries(tools)){assert.equal(s.tooling[name].executable,executable);assert(path.isAbsolute(s.tooling[name].realExecutable));assert.match(s.tooling[name].sha256,/^[a-f0-9]{64}$/);}}}
+export function admitComparisonCaseDefinition(s){assert.equal(s.schema,'stateatom.l02-comparison-case/1');const candidate=comparisonCandidateForID(s.id);assert.equal(s.maximumNativeRuns,1);assert.equal(path.resolve(s.out),s.out);assert.equal(path.dirname(s.out),candidate.outputRoot);if(candidate.key!=='original')assert.equal(s.out,comparisonOutputPath(candidate.key,{nonce:s.nonce}));else assert.match(path.basename(s.out),/^\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}-\d{3}Z$/);assert.equal(s.hostPath,s.out+'/evaluation-host');assert.match(s.nonce,/^[a-f0-9]{32}$/);assert.deepEqual(s.protocol,comparisonProtocol());assert.deepEqual(s.expectedCases,expectedComparisonCases());assert.deepEqual(s.expectedCreateOptions,expectedComparisonCreateOptions());assert.equal(s.atomHandoff,candidate.handoff);assert.equal(s.packedAdmission,candidate.admission);assert.equal(s.packedTypes,path.dirname(candidate.handoff)+'/type-consumer-result.json');assert.equal(s.atomSha256,candidate.atomSha256);assert.equal(s.uiSha256,candidate.uiSha256);assert.equal(s.profile.path,comparisonCacheProfile);assert.equal(s.profile.previousResult,comparisonPreviousResult);assert.equal(s.sourceRegistration,candidate.sourceRegistration);assert.equal(s.profile.uid,process.getuid());assert.deepEqual(s.launchArguments,comparisonLaunchArguments(s.profile.path));assert.equal(s.chrome.launcher,'/usr/bin/google-chrome-stable');assert.equal(s.chrome.binary,'/opt/google/chrome/chrome');assert.match(s.chrome.version,/^\d+\.\d+\.\d+\.\d+$/);for(const x of[s.chrome.binarySha256,s.chrome.launcherSha256,s.addon.jsSha256,s.addon.htmlSha256,s.node.sha256])assert.match(x,/^[a-f0-9]{64}$/);assert.deepEqual(Object.keys(s.hostFiles).filter(f=>!Object.hasOwn(s.originalHostFiles,f)).sort(),['l02-eval.html','l02-eval.js']);for(const[f,h]of Object.entries(s.originalHostFiles))assert.equal(s.hostFiles[f],h);assert.equal(s.hostFiles['l02-eval.js'],s.addon.jsSha256);assert.equal(s.hostFiles['l02-eval.html'],s.addon.htmlSha256);if(candidate.key==='native-chooser'||candidate.key==='portal-chooser'||candidate.key==='reviewed-select'){if(candidate.key==='portal-chooser'||candidate.key==='reviewed-select')assert.equal(s.tooling.portal.sha256,'ff84ccce8c3e95f0e4beb6c9c9b9327af62abb3ed98424acc5cf249aac426ab3');const tools=comparisonToolsForCandidate(candidate);for(const[name,executable]of Object.entries(tools)){assert.equal(s.tooling[name].executable,executable);assert(path.isAbsolute(s.tooling[name].realExecutable));assert.match(s.tooling[name].sha256,/^[a-f0-9]{64}$/);}}}
 export const comparisonSourceFiles=[
  'scripts/prepare-current-comparison-evaluation.mjs','tests/local-comparison-current-case.test.mjs','docs/superpowers/plans/2026-10-26-l02-current-path-comparison.md','docs/superpowers/specs/2026-10-26-l02-current-path-comparison-design.md',
  'scripts/comparison-evaluation-case.mjs','scripts/prepare-comparison-evaluation.mjs','scripts/prepare-comparison-short-evaluation.mjs','tests/local-comparison-short-case.test.mjs','docs/superpowers/specs/2026-10-25-l02-short-owned-comparison-design.md','docs/superpowers/plans/2026-10-25-l02-short-owned-comparison.md','experiments/comparison-evaluation-qualification.mjs','tests/integration/local-comparison-native.mjs','tests/helpers/comparison-native-desktop.mjs','tests/helpers/comparison-collection-fixture.mjs','tests/local-comparison-native-case.test.mjs','tests/local-comparison-native-owner.test.mjs',
@@ -233,10 +443,12 @@ export const comparisonSourceFiles=[
 ];
 export async function preflightComparisonCase(caseFile){const candidate=comparisonCandidateForCase(caseFile);assert.equal(caseFile,candidate.caseFile);const s=await comparisonJSON(caseFile);admitComparisonCaseDefinition(s);assert.equal(s.id,candidate.id);comparisonPrivateEnvironment(s.out);await verifyComparisonPrivateDirectories(s.out);const h=await comparisonJSON(s.atomHandoff),types=await comparisonJSON(s.packedTypes),admission=await comparisonJSON(s.packedAdmission);admitComparisonIssuedPair({h,types,admission,handoffSha256:comparisonSha(await readFile(s.atomHandoff))},candidate);await verifyArtifactHashes([h.package,h.ui]);assert.deepEqual(s.originalHostFiles,h.consumerReceipt.hostFiles.standalone);assert.deepEqual(s.productInputs,Object.fromEntries(Object.entries(h.buildSources.manifest).map(([f,v])=>[path.resolve(f),v])));const registration=await comparisonJSON(s.sourceRegistration);admitComparisonSourceRegistration(registration,candidate);assert.deepEqual(Object.keys(s.inputHashes).sort(),comparisonFrozenFileList(s,h,registration));const previous=await comparisonJSON(s.profile.previousResult),receipt=await comparisonJSON(path.dirname(s.profile.path)+'/launched-owned-processes.json'),profileStat=await lstat(s.profile.path);assert(profileStat.isDirectory()&&!profileStat.isSymbolicLink());admitComparisonProfileWitness({profile:s.profile.path,realProfile:await realpath(s.profile.path),uid:profileStat.uid,previous,ownerReceipt:receipt});assert.equal(s.profile.previousExtensionId,previous.extensionId);await checkComparisonProfileAvailable(s.profile.path);const node={executable:await realpath(process.execPath),sha256:comparisonSha(await readFile('/proc/self/exe')),version:process.version};assert.deepEqual(node,s.node);assert.deepEqual(await fileManifest(s.hostPath),s.hostFiles);assert.equal((await readFile(s.hostPath+'/l02-eval.html','utf8')).match(/name="stateatom-comparison-case" content="([a-f0-9]{32})"/)?.[1],s.nonce);const inputs={...s.inputHashes,...s.productInputs,[caseFile]:comparisonSha(await readFile(caseFile))};await verifyComparisonFrozenInputs(inputs);return{s,h,inputs,previous,node};}
 export const comparisonToolBinaries={xauth:'/usr/bin/xauth',xephyr:'/usr/bin/Xephyr',xdotool:'/usr/bin/xdotool',dbus:'/usr/bin/dbus-run-session',python:'/usr/bin/python3'};
-export function comparisonToolsForCandidate(candidate){if(candidate.key==='portal-chooser')return {...comparisonToolBinaries,ffmpeg:'/usr/bin/ffmpeg',gdbus:'/usr/bin/gdbus',daemon:'/usr/bin/dbus-daemon',portal:'/usr/libexec/xdg-desktop-portal-gtk'};return candidate.key==='native-chooser'?{...comparisonToolBinaries,ffmpeg:'/usr/bin/ffmpeg'}:comparisonToolBinaries;}
+export function comparisonToolsForCandidate(candidate){if(candidate.key==='portal-chooser'||candidate.key==='reviewed-select')return {...comparisonToolBinaries,ffmpeg:'/usr/bin/ffmpeg',gdbus:'/usr/bin/gdbus',daemon:'/usr/bin/dbus-daemon',portal:'/usr/libexec/xdg-desktop-portal-gtk'};return candidate.key==='native-chooser'?{...comparisonToolBinaries,ffmpeg:'/usr/bin/ffmpeg'}:comparisonToolBinaries;}
 export const comparisonChooserSourceFiles=['tests/helpers/comparison-native-chooser.mjs','tests/integration/local-comparison-chooser-native.mjs','scripts/prepare-chooser-comparison-evaluation.mjs','tests/local-comparison-chooser.test.mjs','docs/superpowers/plans/2026-10-26-l02-native-chooser.md','docs/superpowers/specs/2026-10-26-l02-native-chooser-design.md'];
 export const comparisonPortalSourceFiles=['tests/helpers/portal-browser-launch.py','tests/helpers/portal-native-chooser.mjs','tests/integration/local-comparison-portal-native.mjs','scripts/prepare-portal-comparison-evaluation.mjs','tests/local-comparison-portal.test.mjs','docs/superpowers/plans/2026-10-26-l02-portal-chooser.md','docs/superpowers/specs/2026-10-26-l02-portal-chooser-design.md'];
 export function comparisonPortalBeforeFiles(){return [...new Set([...comparisonSourceFiles,...comparisonChooserSourceFiles,'scripts/chooser-inventory-case.mjs','tests/helpers/chooser-inventory.mjs','tests/integration/chooser-inventory-native.mjs','tests/chooser-inventory.test.mjs'])];}
+export const comparisonReviewedSourceFiles=['tests/helpers/reviewed-select-browser-launch.py','tests/helpers/reviewed-select-chooser.mjs','tests/integration/local-comparison-reviewed-select-native.mjs','scripts/reviewed-select-case.mjs','scripts/prepare-reviewed-select-comparison.mjs','tests/local-comparison-reviewed-select.test.mjs','docs/superpowers/plans/2026-10-27-l02-reviewed-select.md','docs/superpowers/specs/2026-10-27-l02-reviewed-select-design.md'];
+export function comparisonReviewedBeforeFiles(){return [...new Set([...comparisonPortalBeforeFiles(),...comparisonPortalSourceFiles])];}
 // Linux sun_path[108] includes its terminating NUL. The suffix is the observed
 // Chrome156 singleton layout; admission is conservative, not a browser-start proof.
 export function assertComparisonTemporaryPath(tmp){if(typeof tmp!=='string'||!path.isAbsolute(tmp)||tmp.includes('\0')||Buffer.byteLength(tmp+'/com.google.Chrome.XXXXXX/SingletonSocket','utf8')>=108)throw comparisonError('TEMP_PATH_UNSUPPORTED');}
