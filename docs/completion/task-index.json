@@ -1666,7 +1666,7 @@
         {
           "id": "A02.42",
           "record": "198-a02-memo-source-join.md",
-          "status": "source-complete-review-pending",
+          "status": "closed-bounded-source-only",
           "base": "516de2abed4fea808ccbb37fbf38cc3fa85863cb",
           "declared_research_delta": 1,
           "new_code_files": 2,
@@ -1676,7 +1676,17 @@
           "native_runs": 0,
           "retained_MemoItem_qualified": false,
           "full_A02": false,
-          "review_pending": true
+          "review_pending": false,
+          "source_revision": "ad773866558b32913e03ce5d79004386b76bc743",
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 0,
+            "correction_passes": 0,
+            "rereview": false,
+            "deferred_total": 15
+          },
+          "final_checkpoint": ".artifacts/a02/memo-source-join-review/2026-10-26/final-checkpoint.json"
         },
         {
           "id": "A02.41",
@@ -2757,8 +2767,8 @@
       },
       "current_checkpoint": {
         "record": "198-a02-memo-source-join.md",
-        "status": "source-complete-review-pending",
-        "next_bounded_step": "ONE separately scoped qualification/acquisition decision for complete memo reference edge, preserving original gates and actual normal/bailout/retained-props Unknown boundaries. No oldcase/browser retry bydefault."
+        "status": "closed-bounded-source-only",
+        "next_bounded_step": "ONE standalone source factory/bootstrap qualification for complete memo reference edge with the already declared research App retainer; owned VM controls only, preserving old gates/Off/window/Stop. Separate actual native acquisition decision follows; no oldcase/browser retry."
       },
       "stopping_point_history": [
         {
@@ -2792,7 +2802,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "ONE separately scoped qualification/acquisition decision for complete memo reference edge, preserving original gates and actual normal/bailout/retained-props Unknown boundaries. No oldcase/browser retry bydefault.",
+      "next_bounded_step": "ONE standalone source factory/bootstrap qualification for complete memo reference edge with the already declared research App retainer; owned VM controls only, preserving old gates/Off/window/Stop. Separate actual native acquisition decision follows; no oldcase/browser retry.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -2820,7 +2830,7 @@
         "public_hook_kind": "Unknown/Unsupported",
         "full_A02": false
       },
-      "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-a02-memo-reference.md",
+      "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-a02-memo-source-join.md",
       "current_checkpoint_history": [
         {
           "record": "147-a02-array-callsite-bridge.md",
@@ -2934,12 +2944,8 @@
           "next_bounded_step": "ONE complete original source-gate opt-in memo integration with explicit knownnonconsumption. Preserve original complete gates/commit freshness/Unknown source/property fields; no native or oldcase retry."
         }
       ],
-      "implementation_plan": "../superpowers/plans/2026-10-26-a02-memo-source-join.md",
-      "active_slice": {
-        "id": "A02.42",
-        "record": "198-a02-memo-source-join.md",
-        "status": "source-complete-review-pending"
-      }
+      "implementation_plan": null,
+      "active_slice": null
     },
     {
       "id": "A03",
@@ -8179,8 +8185,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.42-source-complete-review-pending",
-    "next_item": "ONE separately scoped qualification/acquisition decision for complete memo reference edge, preserving original gates and actual normal/bailout/retained-props Unknown boundaries. No oldcase/browser retry bydefault.",
+    "current_increment": "A02.42-closed-bounded-source-only",
+    "next_item": "ONE standalone source factory/bootstrap qualification for complete memo reference edge with the already declared research App retainer; owned VM controls only, preserving old gates/Off/window/Stop. Separate actual native acquisition decision follows; no oldcase/browser retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8207,7 +8213,7 @@
     "active_item": {
       "id": "A02",
       "record": "198-a02-memo-source-join.md",
-      "status": "source-complete-review-pending"
+      "status": "closed-bounded-source-only"
     },
     "completed_increments": [
       {
@@ -11052,14 +11058,39 @@
           "deferred_total": 15
         },
         "final_checkpoint": ".artifacts/a02/memo-reference-review/2026-10-26/final-checkpoint.json"
+      },
+      {
+        "id": "A02.42",
+        "record": "198-a02-memo-source-join.md",
+        "status": "closed-bounded-source-only",
+        "base": "516de2abed4fea808ccbb37fbf38cc3fa85863cb",
+        "declared_research_delta": 1,
+        "new_code_files": 2,
+        "new_source_tests": 24,
+        "focused_checks": 261,
+        "full_checks": 5314,
+        "native_runs": 0,
+        "retained_MemoItem_qualified": false,
+        "full_A02": false,
+        "review_pending": false,
+        "source_revision": "ad773866558b32913e03ce5d79004386b76bc743",
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 0,
+          "correction_passes": 0,
+          "rereview": false,
+          "deferred_total": 15
+        },
+        "final_checkpoint": ".artifacts/a02/memo-source-join-review/2026-10-26/final-checkpoint.json"
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "24new261focused5314fullPASS; ONEreview pending. Allsourcegates before native positive/knownUnknownboundary, partial/weak/outcome cannot hide. Defaultordinary preserved; no actualMemoItem/native/property/fullA02,20of29/15deferred unchanged.1825tracked/1642currentprior baseline.",
+    "current_activity_note": "24new/261focused/5314fullPASS; ONEreview0C0I0newM/15deferred, no correction/rereview.1822protectedtracked/1642prior-current unchanged; archive5CRC/bytes/identity/ownremovalPASS. No actualMemoItem/native/property/fullA02,20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "516de2abed4fea808ccbb37fbf38cc3fa85863cb",
+    "current_source_revision": "ad773866558b32913e03ce5d79004386b76bc743",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONE separately scoped qualification/acquisition decision for complete memo reference edge, preserving original gates and actual normal/bailout/retained-props Unknown boundaries. No oldcase/browser retry bydefault.",
+    "next_bounded_step": "ONE standalone source factory/bootstrap qualification for complete memo reference edge with the already declared research App retainer; owned VM controls only, preserving old gates/Off/window/Stop. Separate actual native acquisition decision follows; no oldcase/browser retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -11069,9 +11100,9 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "base before one research memo source-gate delta",
-    "current_source_checkpoint": ".artifacts/a02/memo-source-join-source/2026-10-26/source-checkpoint.json",
-    "current_source_checkpoint_kind": "actual source logs/hashes, no native/MemoItem qualification",
+    "current_source_revision_kind": "verified source implementation, not native qualification",
+    "current_source_checkpoint": ".artifacts/a02/memo-source-join-review/2026-10-26/final-checkpoint.json",
+    "current_source_checkpoint_kind": "ONE clean review/source binder/archive verified; no native/MemoItem qualification",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
       "active_item": {

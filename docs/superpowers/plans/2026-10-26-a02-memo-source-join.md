@@ -32,5 +32,5 @@ positive with optional link.nativeMemo, or Unknown/links[] and optional memoBoun
 - [x] GREEN existing/new focused/full tests/syntax/diff/protected hashes. Expected: conditional
 memo positives and scopedUnknown boundaries/refusals, zero actual native executions.
 - [x] Record actual logs/hashes/limits, local commit/task-done saved-source binder.
-- [ ] ONE whole review/one tested I/Cpass/minors defer; archive/verify/remove ownworkspace,
+- [x] ONE whole review/one tested I/Cpass/minors defer; archive/verify/remove ownworkspace,
 close commit and choose ONE separately scoped qualification/acquisition decision.

@@ -35,6 +35,17 @@ RED24total16PASS8FAIL; firstcombined89PASS695.805064ms.24new/261focusedPASS
 4615.838534ms/full5314PASS136072.031959ms exit0; syntax/diffPASS.1825tracked/
 1642CURRENT prior dependency paths registered. Source predecessor exactbaselineGit
 only, not native qualification. Artifacts `.artifacts/a02/memo-source-join-source/2026-10-26/`.
-ONE whole review pending. NextONE separately scoped qualification/acquisition decision
-for this new complete reference edge, preserving original criteria and actual memo
-normal/bailout/retained-props distinctions; no automatic oldcase/browser retry.
+ONE whole review:0Critical/0Important/0newMinor;15deferred unchanged. No correction
+or rereview. Accepted full source coverage before selected proof/known boundary,
+current exact-ref ambiguity/refusal semantics, opt-in/default compatibility and real
+old-factory owned controls. Declined actual runtime/GC/performance/product/publication
+claims and fresh historical reruns; details in the saved review report.
+
+Source revision ad773866558b32913e03ce5d79004386b76bc743. Final source binder PASS:
+1822protectedtracked/1642CURRENT prior paths unchanged. Archive5files, CRC/allbytes/
+planidentity verified, own workspace removed. SHA256
+29f4a701edcdf508e8aabfcd805d6f6ecd9d3d4fcfbcc5e564f3a0b6a8e20805.
+Final checkpoint `.artifacts/a02/memo-source-join-review/2026-10-26/final-checkpoint.json`.
+NextONE standalone factory/bootstrap source qualification including the already
+declared research App retainer, using owned VM controls. Actual native acquisition
+requires a separate bounded decision; no oldcase/browser retry.
