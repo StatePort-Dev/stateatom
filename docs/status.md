@@ -1,5 +1,11 @@
 # Project status
 
+A02.47 source complete/review pending: [native component-call interval](completion/203-a02-component-call-source.md).
+36new/277focused/5471fullPASS; ONEreview pending. Inline bracket
+keeps original call in native owner, captured optional hook/opaque token/outcome/end.
+Getter/reentrancy/throw/caller/skip and escaped-shadow controls; retained source compile ONLY.
+1853protectedtracked/1724nativecurrent+1Gitplan/128frozen46 preserved;20of29 unchanged.
+
 A02.46 bounded native PASS, ONEreview0C0I0newM/16historicaldeferred: [corrected-source Memo case](completion/202-a02-corrected-committed-memo-native.md).
 Actual prepare→preflight then ONElaunch/3modes/18phases; original native4/4/App4/8/
 Main5/9/joint4/8 retained. SelectedMemo4positive+4separateDifferent/bailout boundaries.

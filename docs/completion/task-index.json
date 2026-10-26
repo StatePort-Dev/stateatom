@@ -1661,7 +1661,7 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "202-a02-corrected-committed-memo-native.md",
+      "execution_record": "203-a02-component-call-source.md",
       "completed_slices": [
         {
           "id": "A02.46",
@@ -2894,9 +2894,9 @@
         "experiment_native_executed": false
       },
       "current_checkpoint": {
-        "record": "202-a02-corrected-committed-memo-native.md",
-        "status": "closed-bounded-native-committed-memo-reference-pass",
-        "next_bounded_step": "ONE source-only exact native component invocation interval recipe/feasibility for renderWithHooks/Again before Item parameter/destructure association. Preserve original call/getter/return/throw/reentrancy and all current Memo/source gates; no field/ownership promotion, oldcase or native repeat."
+        "record": "203-a02-component-call-source.md",
+        "status": "source-complete-review-pending",
+        "next_bounded_step": "ONE bounded synchronous/reentrant native frame-token consumer before Item parameter/destructure association. Preserve actual currentMemo reference evidence separately; no field/property/ownership promotion or oldnative repeat."
       },
       "stopping_point_history": [
         {
@@ -2930,7 +2930,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "ONE source-only exact native component invocation interval recipe/feasibility for renderWithHooks/Again before Item parameter/destructure association. Preserve original call/getter/return/throw/reentrancy and all current Memo/source gates; no field/ownership promotion, oldcase or native repeat.",
+      "next_bounded_step": "ONE bounded synchronous/reentrant native frame-token consumer before Item parameter/destructure association. Preserve actual currentMemo reference evidence separately; no field/property/ownership promotion or oldnative repeat.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -3090,10 +3090,28 @@
           "record": "201-a02-committed-memo-native.md",
           "status": "closed-no-native-refusal-source-correction-verified",
           "next_bounded_step": "ONE separately frozen corrected-source committed Memo acquisition case: preserve A02.45 no-run refusal, verify prepare-to-preflight roundtrip on explicit policy, fresh case/source/readers, same original gates and max1new owned launch. No oldcase/cert/install retry."
+        },
+        {
+          "record": "202-a02-corrected-committed-memo-native.md",
+          "status": "closed-bounded-native-committed-memo-reference-pass",
+          "next_bounded_step": "ONE source-only exact native component invocation interval recipe/feasibility for renderWithHooks/Again before Item parameter/destructure association. Preserve original call/getter/return/throw/reentrancy and all current Memo/source gates; no field/ownership promotion, oldcase or native repeat."
         }
       ],
-      "implementation_plan": null,
-      "active_slice": null
+      "implementation_plan": "../superpowers/plans/2026-10-26-a02-component-call-source.md",
+      "active_slice": {
+        "id": "A02.47",
+        "record": "203-a02-component-call-source.md",
+        "status": "source-complete-review-pending",
+        "base": "7d69881421dbd0b04e778f551a03453fe85db6f9",
+        "new_code_files": 3,
+        "new_source_tests": 36,
+        "native_runs": 0,
+        "component_invocation_runtime_qualified": false,
+        "full_A02": false,
+        "review_pending": true,
+        "focused_checks": 277,
+        "full_checks": 5471
+      }
     },
     {
       "id": "A03",
@@ -8333,8 +8351,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.46-closed-bounded-native-committed-memo-reference-pass",
-    "next_item": "ONE source-only exact native component invocation interval recipe/feasibility for renderWithHooks/Again before Item parameter/destructure association. Preserve original call/getter/return/throw/reentrancy and all current Memo/source gates; no field/ownership promotion, oldcase or native repeat.",
+    "current_increment": "A02.47-source-complete-review-pending",
+    "next_item": "ONE bounded synchronous/reentrant native frame-token consumer before Item parameter/destructure association. Preserve actual currentMemo reference evidence separately; no field/property/ownership promotion or oldnative repeat.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8360,8 +8378,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "A02",
-      "record": "202-a02-corrected-committed-memo-native.md",
-      "status": "closed-bounded-native-committed-memo-reference-pass"
+      "record": "203-a02-component-call-source.md",
+      "status": "source-complete-review-pending"
     },
     "completed_increments": [
       {
@@ -11362,11 +11380,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.46 CLOSED1launch3modes18phases; originalnative4/4/App4/8/Main5/9/joint4/8; new4positives+4explicitDifferent/bailout boundaries. Firstfrozen838controls546old+292new/preservation25unqualified/hostPIDprofilegone.333focused5435fullsource; ONEreview0C0I0M16historical unchanged/archive7CRC/bytes/identity/ownremovalPASS.1846tracked/1642priorcurrent/34frozen45/1724nativecurrent+1Gitplan preserved.20of29/fullA02 unchanged.",
+    "current_activity_note": "36new/277focused/5471fullPASS; ONEreview pending. Original call stays in native owner, stable hook/opaque token/outcome/end, caller/getter/throw/reentrancy/skip preserved in owned controls;2source sites.1853tracked/1724nativecurrent+1Gitplan/128frozen46 unchanged. No new Native/parameter/property/fullA02;20of29/16historicaldeferred unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "4a9ebeef2eed0c74b25f3764961e344d2eb2c875",
+    "current_source_revision": "7d69881421dbd0b04e778f551a03453fe85db6f9",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONE source-only exact native component invocation interval recipe/feasibility for renderWithHooks/Again before Item parameter/destructure association. Preserve original call/getter/return/throw/reentrancy and all current Memo/source gates; no field/ownership promotion, oldcase or native repeat.",
+    "next_bounded_step": "ONE bounded synchronous/reentrant native frame-token consumer before Item parameter/destructure association. Preserve actual currentMemo reference evidence separately; no field/property/ownership promotion or oldnative repeat.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -11376,9 +11394,9 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "exact executed code/case4a9, implementationba3, no source change after actual native qualification",
-    "current_source_checkpoint": ".artifacts/a02/corrected-committed-memo-native-review/2026-10-26/final-checkpoint.json",
-    "current_source_checkpoint_kind": "actual native+first838savedcontrols+hostcleanup+ONEcleanreview+archive; not fullA02/property/installed",
+    "current_source_revision_kind": "base before three new source-only component-call recipe files",
+    "current_source_checkpoint": ".artifacts/a02/component-call-source/2026-10-26/source-checkpoint.json",
+    "current_source_checkpoint_kind": "actual ownedVM/compile-only source tests and protected hashes; no invocation runtime proof",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
       "active_item": {
