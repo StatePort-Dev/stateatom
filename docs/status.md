@@ -1,5 +1,11 @@
 # Project status
 
+A02.41 source checks in progress: [simple-memo reference consumer](completion/197-a02-memo-reference.md).
+Optional native outcomes/opaque wrapper/actual innerfn/props + exactcurrent15fiber;
+40new/237focused/5290fullPASS, ONEreview pending. Different usedprops yields explicitUnknown
+only after current selected proof; no equalvalue substitution. Ordinary defaulttag0
+preserved; no MemoItem/native/property/fullA02 qualification.20of29/15minors unchanged.
+
 A02.40 source complete, ONEreview0C1Ifixed0newM + executorI2fixed/15deferred: [memo branch-return recipe](completion/196-a02-memo-branch-source.md).
 35new/197focused/5250fullPASS; five actualRED injected-binding/helper collision
 controls fixed inONEpass, no rereview. Actual previousprops retained, no forcedbranch.

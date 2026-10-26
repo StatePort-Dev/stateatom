@@ -107,24 +107,30 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
   return{...unknown(null),status:'Observed',nodeId:id(node),rootId:id(root),commitId:current.commitId,ancestors};
  }
  const propsUnknown=reason=>({schema:'stateatom.committed-props-reference/1',page,status:'Unknown/Unsupported',reason,scope:'Supplied props/type references on the exact selected current function-component ancestor; source element and property origins unknown',match:null,suppliedReferenceOnly:true,sourceElementIdentity:'Unknown/Unsupported',selectedPropertyOrigin:'Unknown/Unsupported',stateToProp:'Unknown/Unsupported',fieldOwnership:'Unknown/Unsupported',fullPath:false});
- function matchCommittedProps(node,props,component,expectedFiber){
+ function matchCommittedReferences(node,props,component,expectedFiber,checkFiber,memo=false,elementType=null){
+  const unavailable=why=>memo?{...propsUnknown(why),schema:'stateatom.committed-memo-props-reference/1',scope:'Supplied opaque simple-memo wrapper, actual inner function and props on exact selected current ancestor; origins unknown'}:propsUnknown(why);
   try{
-   if(!object(props)||typeof component!=='function')return propsUnknown('Opaque props object and function component references required');
-   const tree=committedTree(node,true);if(tree.status)return propsUnknown(tree.reason);
+   if(!object(props)||typeof component!=='function')return unavailable('Opaque props object and function component references required');
+   if(memo&&(elementType===null||typeof elementType!=='object'||!object(expectedFiber)))return unavailable('Required opaque native memo references unavailable');
+   const tree=committedTree(node,true);if(tree.status)return unavailable(tree.reason);
    const{root,finished,selected,parents}=tree,walked=new Set();let fiber=selected,matched=null;
    while(fibers.has(fiber)&&walked.size<64&&!walked.has(fiber)){
     walked.add(fiber);
-    if(strictOwn(fiber,'tag',true)===0){
+    if(strictOwn(fiber,'tag',true)===(memo?15:0)){
      const actualProps=strictOwn(fiber,'memoizedProps',true),actualType=strictOwn(fiber,'type',true);
-     if(actualProps===props&&actualType===component){if(matched)return propsUnknown('Ambiguous matching committed props ancestors');matched=fiber;}
+     const wrapper=memo?strictOwn(fiber,'elementType',true):null;
+     if(actualProps===props&&actualType===component&&(!memo||wrapper===elementType)){if(matched)return unavailable('Ambiguous matching committed props ancestors');matched=fiber;}
     }
     if(fiber===finished)break;fiber=parents.get(fiber);
    }
-   if(fiber!==finished||!walked.has(finished))return propsUnknown('Selected ancestor chain does not reach current root');
-   if(!matched)return propsUnknown('No exact supplied props/type ancestor reference');
-   if(arguments.length>=4&&matched!==expectedFiber)return propsUnknown('Selected committed ancestor differs from supplied fiber reference');
-   return{...propsUnknown(null),status:'Observed',match:{nodeId:id(node),rootId:id(root),commitId:current.commitId,fiberId:id(matched),propsId:id(props),componentId:id(component)}};
-  }catch{return propsUnknown('Committed props metadata unavailable');}
+   if(fiber!==finished||!walked.has(finished))return unavailable('Selected ancestor chain does not reach current root');
+   if(!matched)return unavailable(memo?'No exact supplied memo ancestor references':'No exact supplied props/type ancestor reference');
+   if(checkFiber&&matched!==expectedFiber)return unavailable(memo?'Selected committed memo ancestor differs from supplied fiber reference':'Selected committed ancestor differs from supplied fiber reference');
+   const match={nodeId:id(node),rootId:id(root),commitId:current.commitId,fiberId:id(matched),propsId:id(props),componentId:id(component)};if(memo)match.memoElementTypeId=id(elementType);
+   return{...unavailable(null),status:'Observed',match};
+  }catch{return unavailable('Committed props metadata unavailable');}
  }
- return Object.freeze({tap,snapshot(node){try{return read(node);}catch{return unknown('Native metadata snapshot unavailable');}},currentCommit,matchCommittedProps,stop(){stopped=true;current=null;},retention(){return{events,queues:queueCount,updates:updateCount,stopped,capped,available:supported&&!unavailable};}});
+ function matchCommittedProps(node,props,component,expectedFiber){return matchCommittedReferences(node,props,component,expectedFiber,arguments.length>=4);}
+ function matchCommittedMemo(node,props,elementType,component,expectedFiber){return matchCommittedReferences(node,props,component,expectedFiber,true,true,elementType);}
+ return Object.freeze({tap,snapshot(node){try{return read(node);}catch{return unknown('Native metadata snapshot unavailable');}},currentCommit,matchCommittedProps,matchCommittedMemo,stop(){stopped=true;current=null;},retention(){return{events,queues:queueCount,updates:updateCount,stopped,capped,available:supported&&!unavailable};}});
 }
