@@ -33,5 +33,5 @@ optional strict pointer; createNativeElementFiberObserver returns tap/match/stop
 - [x] GREEN focused old/new source controls/full npm test/syntax/diff/protected hashes.
 Expected: source-only PASS, prior native dependencies preserved except exact declared collector source.
 - [x] Record actual logs/hashes/Unknown limits, local commit/task-done source binder.
-- [ ] ONE review/one tested I/C pass/minors defer; archive CRC/bytes/identity/protected checks,
+- [x] ONE review/one tested I/C pass/minors defer; archive CRC/bytes/identity/protected checks,
 remove own workspace only, close commit and continue one complete source-gate join item.
