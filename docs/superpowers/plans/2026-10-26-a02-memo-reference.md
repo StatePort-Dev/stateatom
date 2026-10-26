@@ -33,5 +33,5 @@ research constructor optional memoPolicy; existing match/currentCommit APIs with
 - [x] GREEN old/new focused/full source tests/syntax/diff/protected hashes. Expected: true-ref conditional
 positives and strict missing/stale/substituted/unsupported refusals, zero native runs.
 - [x] Record actual logs/hashes/limits, local commit/task-done saved-source binder.
-- [ ] ONE whole review/one tested I/Cpass/minors defer; archive/verify/remove only ownworkspace,
+- [x] ONE whole review/one tested I/Cpass/minors defer; archive/verify/remove only ownworkspace,
 close commit and continue ONE full original source-gate opt-in integration item.
