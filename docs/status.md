@@ -1,5 +1,11 @@
 # Project status
 
+A02.50 [selected Item parameter integration](completion/209-a02-component-body-native.md) in source verification.
+Same-collector exact refs plus next actual commit; body/parameter edge only.
+43new/368focused/5651fullPASS. Native0; source/case/reader freeze precedes maxONElaunch.
+Two declared existing research deltas; original gates/results/current327/archives preserved.
+20of29/fullA02 unchanged; no product or release upgrade.
+
 A02.49 [body parameter/return source checks passed](completion/208-a02-component-body-binding.md).
 Original destructuring/return preserved; weak exact refs plus one complete native frame.
 76new/166focused/5608fullPASS after ONEreview0C2I0M, both fixed in ONEpass/no rereview.

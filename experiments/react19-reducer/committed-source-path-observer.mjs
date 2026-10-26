@@ -74,9 +74,21 @@ export function createCommittedSourcePathObserver({page,enabled=true,policy,weak
    return links.length?output('Observed',null,links):output(U,'No exact selected complete source/native element join');
   }catch{return output(U,'Complete source/native selected lookup unavailable');}
  }
+ function matchInvocationNode(node,element,fiber,component,props){
+  try{
+   if(arguments.length!==5)return output(U,'Exact invocation query required');
+   const full=lookupNode(node);if(full.status!=='Observed'||full.links.length!==1)return full;
+   const row=object(element)?read(byElement,element):null;
+   if(!row||row.confirmedCommit!==full.links[0].nativeElement.commitId)return output(U,'Different source invocation interval');
+   const r=native.matchInvocation(node,element,fiber,component,props);
+   if(r.status!=='Observed'||r.match.nativeElementId!==full.links[0].nativeElement.nativeElementId||r.match.fiberId!==full.links[0].nativeElement.fiberId||r.match.commitId!==row.confirmedCommit)return output(U,'Different selected source invocation references');
+   return full;
+  }catch{return output(U,'Selected source invocation query unavailable');}
+ }
+ function currentReferenceCommit(){return native.currentCommit();}
  function sealWindow(){const r=source.sealWindow();if(!stopped)collecting=false;return r;}
  function startWindow(label){const r=source.startWindow(label);if(r){clear();generation++;collecting=true;invalid=false;reason=null;}return r;}
  function stop(){stopped=true;collecting=false;clear();lastCommit=null;source.stop();native.stop();}
  const mainInput=dto({arrayRuntime:m.arrayRuntime,mainEnter:m.mainEnter,mainReturned:m.mainReturned,mainExit:m.mainExit,enter:m.enter,returned,exit:m.exit,tap:m.tap});
- return dto({appHook:source.appHook,mainInput,tap:source.tap,config:source.config,nativeTap:source.nativeTap,snapshot:source.snapshot,lookup:source.lookup,lookupStateSource:source.lookupStateSource,retention:source.retention,sealWindow,startWindow,stop,referenceTap,lookupNode,referenceRetention:()=>dto({callbacks:rows.length,window:generation,collecting,stopped,invalid,reason,nativeElement:native.retention()})});
+ return dto({appHook:source.appHook,mainInput,tap:source.tap,config:source.config,nativeTap:source.nativeTap,snapshot:source.snapshot,lookup:source.lookup,lookupStateSource:source.lookupStateSource,retention:source.retention,sealWindow,startWindow,stop,referenceTap,lookupNode,matchInvocationNode,currentReferenceCommit,referenceRetention:()=>dto({callbacks:rows.length,window:generation,collecting,stopped,invalid,reason,nativeElement:native.retention()})});
 }

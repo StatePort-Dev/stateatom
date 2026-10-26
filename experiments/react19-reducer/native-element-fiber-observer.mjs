@@ -65,7 +65,7 @@ export function createNativeElementFiberObserver({page,enabled=true,policy,memoP
  }
  function tap(){try{return apply(receive,undefined,arguments);}catch{unavailable='Native element reference metadata unavailable';clear();return arguments[1];}}
  const unknown=reason=>dto({schema:'stateatom.native-element-committed-reference/1',page,status:U,reason,match:null,nativeElementReferenceAssociation:U,sourceOnly:true,nativeOrigin:'NotAttested',sourceElementOrigin:U,selectedPropertyOrigin:U,fieldOwnership:U,stateToProp:U,fullPath:false});
- function match(node,element){
+ function select(node,element,wanted){
   try{
    if(!enabled||stopped||capped||unavailable||!supported)return unknown(!enabled?'Observer disabled':stopped?'Observer stopped':capped?'Native element event capacity refused':unavailable||'WeakRef unavailable');
    const c=syncCommit();if(c.status!=='Observed'||!object(element))return unknown(c.reason||'Native element reference unavailable');
@@ -88,6 +88,7 @@ export function createNativeElementFiberObserver({page,enabled=true,policy,memoP
      return unknown('Incomplete or ambiguous selected native ancestor association');
     }
     if(result.match.commitId!==latestCommit)return unknown('Native commit changed during selected lookup');
+    if(wanted&&(fiber!==wanted.fiber||component!==wanted.component||actualProps!==wanted.props))continue;
     const proof=outcome?dto({kind:outcome.kind,eventId:outcome.eventId,siteId:outcome.siteId,propsReference:props===actualProps?'Same':'Different',fiberId:result.match.fiberId,commitId:result.match.commitId}):null;
     if(props!==actualProps){if(selected||substituted)return unknown('Ambiguous native element committed associations');substituted=proof;continue;}
     if(selected||substituted)return unknown('Ambiguous native element committed associations');selected=dto({...result.match,nativeElementId:id(element),eventId:row.eventId,siteId:row.siteId});selectedMemo=proof;
@@ -96,7 +97,14 @@ export function createNativeElementFiberObserver({page,enabled=true,policy,memoP
    return substituted?dto({...unknown('Incoming memo element props were not retained'),memoOutcome:substituted}):unknown('No complete exact current native element association');
   }catch{return unknown('Native element committed lookup unavailable');}
  }
+ function match(node,element){return select(node,element,null);}
+ function matchInvocation(node,element,fiber,component,props){
+  if(arguments.length!==5)return unknown('Exact invocation query required');
+  const full=select(node,element,null);if(full.status!=='Observed')return full;
+  const r=select(node,element,{fiber,component,props});
+  return r.status==='Observed'&&r.match.nativeElementId===full.match.nativeElementId&&r.match.fiberId===full.match.fiberId&&r.match.commitId===full.match.commitId?r:unknown('Different native invocation references');
+ }
  function stop(){stopped=true;clear();latestCommit=null;previousCommit=null;base.stop();}
  function currentCommit(){const c=base.currentCommit();return !enabled||stopped||capped||unavailable||!supported?dto({...c,status:U,reason:!enabled?'Observer disabled':stopped?'Observer stopped':capped?'Native element event capacity refused':unavailable||'WeakRef unavailable',rootId:null,commitId:null}):dto(c);}
- return dto({tap,match,currentCommit,stop,retention:()=>dto({events,bindings,memoEnabled,memoOutcomes,stopped,capped,available:enabled&&supported&&!unavailable,collector:dto(base.retention())})});
+ return dto({tap,match,matchInvocation,currentCommit,stop,retention:()=>dto({events,bindings,memoEnabled,memoOutcomes,stopped,capped,available:enabled&&supported&&!unavailable,collector:dto(base.retention())})});
 }
