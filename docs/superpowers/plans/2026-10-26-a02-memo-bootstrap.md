@@ -37,6 +37,6 @@ missing implementation failures, no browser/native process.
 - [x] GREEN new tests plus existing memo/source/native-return/retention/core controls and npm test;
 syntax/diff/protected hashes. Expected complete owned proof and scoped refusals, zero native runs.
 - [x] Save logs/source hashes/checkpoint/binder; local source commit/task-done saved binder.
-- [ ] ONE whole review; ONE tested I/Cpass if needed, all minors defer/no rereview; verified
+- [x] ONE whole review; ONE tested I/Cpass if needed, all minors defer/no rereview; verified
 archive/remove own workspace and close local commit. Next ONE separately scoped actual
 integration/acquisition decision preserving old criteria, not automatic oldcase retry.
