@@ -1,6 +1,8 @@
 # A02.50 — selected Item parameter-reference integration and acquisition
 
-Current phase: source verification. No native browser has been launched for this item.
+Current result: ONE actual native attempt INCOMPLETE; first frozen full reader
+refused it, preservation-only reader passed25controls/qualificationfalse.
+No new parameter-reference edge is qualified. ONE whole-item review is pending.
 Base main `e5619fc9e3ad7e4c9c417400e2212b253622f204`, local commits only.
 Full A02 and 20/29 overall completion remain unchanged. Mandatory L02/A05 and the
 approved scope are unchanged; the historical 16 deferred findings remain recorded.
@@ -77,3 +79,39 @@ owned fixture accidentally shared Python references; JSON roundtrip removes alia
 before mutation controls. The reader was not changed to accept that fixture defect.
 Reader and preservation programs are prewritten; no full reader has executed.
 Host PID namespace4026531836 is recorded for later known-owner cleanup checks.
+
+## ONE actual attempt — INCOMPLETE, no retry
+
+Execution03628a3d6a87a1f9d926186dfb62860a0a2fab69, clean source, one Chrome launch.
+Raw `.artifacts/a02/component-body-native/2026-10-26T14-18-00Z/results.json`, SHA
+f05bb478b617bf50be765b18bbd5066ef2450e871445bad28d3cd59667e3c698.
+13phases started/12completed, original+Off complete; On equal captured but original
+mandatory source/native guard failed, five later On phases unvisited. CLIexit1;
+original source/Memo/new body classifications all INCOMPLETE, accepted links0.
+
+Saved On equal data report private App/Main Unknown and native returned-state
+`Complete current weak references unavailable`. The existing App-element retainer
+still contains one entry; main path is Observed, App subproof is not. New hook
+counters record six call frames/18events and one body entry/two events, with no
+router fault/cap. This does NOT qualify a selected parameter edge. Which weak ref
+was unavailable and any GC/allocation causal explanation were not collected and
+remain Unknown. No new weak-ref/GC diagnostic campaign or browser retry is inferred.
+
+FIRST frozen full reader executed ONCE, exit1 at the original complete-status guard.
+Its177new/546+292retained full-run negative controls did NOT execute on this failed
+case;159owned-row controls remain source-only evidence. Reader source/criteria unchanged.
+Separate prewritten preservation reader exit0 checks all1734input identities and
+25structural controls, explicitly qualificationfalse/accepted new links0. It does
+not repair the full-reader failure or promote the incomplete prefix.
+
+Actual cleanup reports owner/client/sessions/server/pending resources closed,
+no kill needed. Known host Chrome2389193/start28978801 is absent and its exact
+managed profile removed in PIDnamespace4026531836. Scope is that known owner/profile,
+not all descendants or worker/global-console health. Recorded page errors/console
+are empty for these pages only. No personal profile, certificate, IDE or model work.
+Source43/368/5651PASS and current327/archives remain distinct from native failure.
+
+The finite native campaign is closed; review and archive remain. Next dependency-ready
+item is mandatory L02: inspect retained189startup evidence for one concrete local
+Chrome-host blocker, without another blind34-row install/model/certificate campaign.
+Do not create another A02case merely to replace this missing weak-reference result.

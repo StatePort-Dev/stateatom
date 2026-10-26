@@ -1,12 +1,12 @@
 # Project status
 
-A02.50 [selected Item parameter integration](completion/209-a02-component-body-native.md) in source verification.
-Same-collector exact refs plus next actual commit; body/parameter edge only.
-43new/368focused/5651fullPASS. Native0; prepare/preflightPASS/newcase08097a9/1734inputs.
-Independent reader34originalASTs+546/292/177controls prewritten;159ownedrow controlsPASS.
-Case/reader freeze precedes maxONElaunch.
-Two declared existing research deltas; original gates/results/current327/archives preserved.
-20of29/fullA02 unchanged; no product or release upgrade.
+A02.50 [ONE native attempt INCOMPLETE](completion/209-a02-component-body-native.md).
+12/18phases complete; On equal original source/native guard refused unavailable weak refs.
+Which ref/GC cause Unknown; no router fault/cap. New selected parameter links qualified0.
+FIRSTfrozenreaderexit1 retained; preservation1734inputs/25controlsPASS, qualificationfalse.
+Known host owner PID/start absent/profile removed; no retry. Source43/368/5651PASS.
+ONEwhole-item review pending;20of29/fullA02 unchanged. NextONE L02 saved startup blocker.
+
 
 A02.49 [body parameter/return source checks passed](completion/208-a02-component-body-binding.md).
 Original destructuring/return preserved; weak exact refs plus one complete native frame.
