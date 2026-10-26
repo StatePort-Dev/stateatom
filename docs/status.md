@@ -1,5 +1,10 @@
 # Project status
 
+A02.52 [selected native/source callback verified](completion/220-a02-selected-source-isolation.md).
+8new/67focused/5794fullPASS; exact existing element index isolates native subproof
+from unrelated fiber loss. Base source all-row/global/selected gates unchanged.
+Native0/model0/current327/archives2 unchanged. ONEreview next;20of29/fullA02/L02/18deferred unchanged.
+
 A02.51 [selected frame isolation source verified](completion/219-a02-selected-frame-isolation.md).
 6new/96focused/5786fullPASS; scopedlookup ignores unrelated weakref loss while global
 snapshot/own-row/globalinvalid gates remain exact. Native0/model0/not50causeproof.
