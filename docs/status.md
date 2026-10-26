@@ -1,11 +1,12 @@
 # Project status
 
-A02.48 source complete/review pending: [synchronous frame-token consumer](completion/204-a02-component-call-consumer.md).
+A02.48 source closed, ONEreview0C0I0M: [synchronous frame-token consumer](completion/204-a02-component-call-consumer.md).
 46new/191focused/5525fullPASS. Strict opaque token/top/LIFO, weak-only refs,
 normal complete end only; malformed/weak/Stop/off/capacity explicitUnknown.
 1859protectedtracked/1724nativecurrent+1Gitplan/128frozen46/25closed47 unchanged.
 No new native/body/parameter/property/fullA02 proof;20of29/16historicaldeferred unchanged.
-After finite closeout nextONE release-blocker/candidate decision for2026-10-28.
+Archive6CRC/bytes/identity/binder/ownremovalPASS. NextONE focused9open-gate
+assessment for2026-10-28; fullscope binding/Basic-only proposal unapproved.
 
 A02.47 source closed, ONEreview0C2Ifixed0newM/16historicaldeferred: [native component-call interval](completion/203-a02-component-call-source.md).
 Eight actual RED shadow/nested-eval controls→ONEpass;44new/285focused/5479fullPASS.

@@ -33,7 +33,7 @@ tap/currentToken/lookup/match/stop/retention per spec; consumes unmodified47poli
 - [x] Implement minimum closed policy/token/LIFO/weak-only consumer; no old code edits.
 - [x] GREEN new/related/full plus syntax/diff and saved hash binder. Expected exact original
 semantics, positives only complete live-ref normal frames; all losses explicitUnknown.
-- [ ] Save checkpoint/localcommit/task-done, ONEwhole review/one tested I/Cpass/minorsdefer/
+- [x] Save checkpoint/localcommit/task-done, ONEwhole review/one tested I/Cpass/minorsdefer/
 no rereview; archive CRC/everybyte/identity/binder and remove only own workspace; localclosecommit.
 NextONE release-blocker/candidate scope decision after user2026-10-28 deadline steering;
 Item entry/parameter remains next A02 dependency, no native repeat.
