@@ -4,8 +4,8 @@ L02.19 [ONE entry review declined before path](completion/218-l02-reviewed-selec
 Private owner/focus/fullyvisiblegeometry confirmed; no visible location field after
 CtrlL, so agent declined before text/pointer/Select.0rows34unvisited0model; FIRSTreader
 672PASS/collectionfalse, source24/280/5780PASS. Known3roles+separatedaemon/portalAbsent,
-consoleNotCollected/globalcleanupunproved. ONEfinalreview pending;20of29/fullL02/
-18deferred unchanged. Stop loader variants; nextindependentA02.51 source premise.
+consoleNotCollected/globalcleanupunproved. ONEreview0C0I0M/bounded19closed/no correction/rereview/retry.20of29/fullL02/
+18deferred unchanged. Stop loader variants; nextindependentA02.51 selected-frame source.
 
 L02.18 [ONE portal attempt INCOMPLETE](completion/217-l02-portal-chooser.md).
 Private bus/GTK owner+focus checks succeeded; Returndidnotdismiss, no installation/
