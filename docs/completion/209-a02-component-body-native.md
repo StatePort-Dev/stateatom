@@ -54,3 +54,26 @@ toggle row0, four positives and four nonpositive counterpart rows. No after-resu
 threshold tuning, browser retry, new TLS/model/IDE/package/UI/SDK/other-repository/
 account/publication work. Missing positive remains incomplete. ONE final whole-item
 review follows the finite result, with one tested correction pass and no rereview.
+
+## Source roundtrip and new immutable case
+
+Actual source prepare and preflight pass at f3cad0e. The new case is
+`docs/testing/component-body-native-case.json`, SHA08097a9f4249f16913c9174dd370d613ded7dee58b9bfd3a72d4af072c8b21af;
+1733 inputs plus the case itself =1734. No browser/native run yet. Factory and both
+bootstrap programs roundtrip exactly; loaded compiler inputs are five as registered.
+
+Preparation first refused before any case/output directory existed: copied product
+registration keys were relative while the original guard requires absolute paths.
+A source-only diagnostic call exposed that same assertion. Normalize only327 path
+keys, preserving all hashes; no source/threshold/guard change. Failed attempts and
+pre-fix registration/checkpoint are retained. A separate binder path bug on external
+Node was corrected before task completion; its first script/checkpoint remain saved.
+
+The independent reader retains all34 original function ASTs, including the original
+21 predicates and546+292negative classes. Adds177 serialized body controls;159changed
+row controls passed on owned JSON fixtures. Opaque tokens/refs are checked by reviewed
+runtime acquisition and source fault tests, not reconstructed from JSON. The first
+owned fixture accidentally shared Python references; JSON roundtrip removes aliases
+before mutation controls. The reader was not changed to accept that fixture defect.
+Reader and preservation programs are prewritten; no full reader has executed.
+Host PID namespace4026531836 is recorded for later known-owner cleanup checks.

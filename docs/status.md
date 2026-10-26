@@ -2,7 +2,9 @@
 
 A02.50 [selected Item parameter integration](completion/209-a02-component-body-native.md) in source verification.
 Same-collector exact refs plus next actual commit; body/parameter edge only.
-43new/368focused/5651fullPASS. Native0; source/case/reader freeze precedes maxONElaunch.
+43new/368focused/5651fullPASS. Native0; prepare/preflightPASS/newcase08097a9/1734inputs.
+Independent reader34originalASTs+546/292/177controls prewritten;159ownedrow controlsPASS.
+Case/reader freeze precedes maxONElaunch.
 Two declared existing research deltas; original gates/results/current327/archives preserved.
 20of29/fullA02 unchanged; no product or release upgrade.
 

@@ -3184,7 +3184,7 @@
       "active_slice": {
         "id": "A02.50",
         "record": "209-a02-component-body-native.md",
-        "status": "source-passed-native-pending",
+        "status": "prepared-native-not-run",
         "base": "e5619fc9e3ad7e4c9c417400e2212b253622f204",
         "new_code_files": 6,
         "declared_research_deltas": 2,
@@ -3195,7 +3195,15 @@
         "component_body_qualified": false,
         "full_A02": false,
         "review_pending": true,
-        "full_checks": 5651
+        "full_checks": 5651,
+        "prepared_revision": "f3cad0eea3e48ac86c2963b592870faa467319e3",
+        "frozen_inputs": 1734,
+        "case_sha256": "08097a9f4249f16913c9174dd370d613ded7dee58b9bfd3a72d4af072c8b21af",
+        "original_reader_functions_unchanged": 34,
+        "original_negative_controls": 546,
+        "memo_negative_controls": 292,
+        "body_negative_controls": 177,
+        "reader_source_controls": 159
       }
     },
     {
@@ -8530,7 +8538,7 @@
     "active_item": {
       "id": "A02",
       "record": "209-a02-component-body-native.md",
-      "status": "source-passed-native-pending"
+      "status": "prepared-native-not-run"
     },
     "completed_increments": [
       {
@@ -11531,7 +11539,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.50 core/full source integration in progress;43new/368focusedPASS, 5651fullPASS/native pending. Native0. TWO declared existing research deltas; same-collector exact invocation/next-commit/weak body join, no field/writer/property/fullA02 proof;20of29 unchanged.",
+    "current_activity_note": "A02.50 source43/368/5651PASS; actual source prepare/preflightPASS at f3cad0e, newcase08097a9/1734inputs. Reader34originalASTs unchanged,546+292+177controls/159ownedrow source controls. Native0; freeze then max1newlaunch,20of29/fullA02 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "70685d73ce81a6c5791ce85cbbbc3b4035bc4ca0",
     "current_record_date": "2026-10-26",
