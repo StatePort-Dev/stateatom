@@ -1,5 +1,14 @@
 # Project status
 
+Release2026-10-28: [focused nine-open-gate assessment](completion/205-release-date-decision.md).
+Fullscope retained/Basic-only suggestion withdrawn;20of29 complete. Current80 archives
+and327of327 product build inputs match current source: no research-driven repack needed.
+Official host integration exists on old1 pair (29twohost/2native historical); current
+UI2/guardian/workers/permissions intake and acceptance remain. A02/L02/V02 are main
+engineering/quality/performance uncertainties. No confident two-day promise or refusal
+from unweighted task count. NextONE V02 measurement prerequisite decision; no global
+audit, old experiment rerun, personal cert/trust/otherrepo mutation or publication.
+
 A02.48 source closed, ONEreview0C0I0M: [synchronous frame-token consumer](completion/204-a02-component-call-consumer.md).
 46new/191focused/5525fullPASS. Strict opaque token/top/LIFO, weak-only refs,
 normal complete end only; malformed/weak/Stop/off/capacity explicitUnknown.

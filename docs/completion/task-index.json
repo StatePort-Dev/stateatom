@@ -5631,8 +5631,19 @@
       ],
       "existing_commands": [],
       "deliverable": "Actual host consumes the current hash-checked Atom/UI pair",
-      "status": "planned",
-      "optional": false
+      "status": "in-progress",
+      "optional": false,
+      "existing_implementation": {
+        "record": "205-release-date-decision.md",
+        "host_revision": "a9f993f9dcfb6a3a3367273d333a3bbda6f1a67b",
+        "host_package_version": "0.1.0-candidate.20261018.1",
+        "historical_two_host_checks": 29,
+        "historical_native_browser_variants": 2,
+        "current_pair_accepted": false,
+        "fresh_host_runtime_executed": false,
+        "host_modified": false,
+        "meaning": "Existing source integration/old-pair native evidence credited; current exact pair update/acceptance remains open"
+      }
     },
     {
       "id": "I02",
@@ -5655,7 +5666,7 @@
       ],
       "existing_commands": [],
       "deliverable": "Native official host lifecycle/permission/Capture proof",
-      "status": "planned",
+      "status": "in-progress",
       "optional": false,
       "additional_final_scope_dependencies": [
         "F05",
@@ -5666,7 +5677,18 @@
         "L02",
         "P03",
         "P04"
-      ]
+      ],
+      "existing_implementation": {
+        "record": "205-release-date-decision.md",
+        "host_revision": "a9f993f9dcfb6a3a3367273d333a3bbda6f1a67b",
+        "host_package_version": "0.1.0-candidate.20261018.1",
+        "historical_two_host_checks": 29,
+        "historical_native_browser_variants": 2,
+        "current_pair_accepted": false,
+        "fresh_host_runtime_executed": false,
+        "host_modified": false,
+        "meaning": "Existing source integration/old-pair native evidence credited; current exact pair update/acceptance remains open"
+      }
     },
     {
       "id": "I03",
@@ -5876,7 +5898,7 @@
           "report": ".artifacts/v02/publication-package-review/2026-10-26/report.md"
         }
       },
-      "execution_record": "136-v02-performance-domain-cost.md",
+      "execution_record": "185-v02-publication-package.md",
       "current_checkpoint": {
         "record": "185-v02-publication-package.md",
         "status": "complete-immutable-package-admission-native-unqualified",
@@ -6874,7 +6896,8 @@
         }
       ],
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-v02-publication-package.md",
-      "implementation_plan": "../superpowers/plans/2026-10-24-v02-performance-domain-cost.md"
+      "implementation_plan": "../superpowers/plans/2026-10-24-v02-performance-domain-cost.md",
+      "historical_execution_record_before_open_gates_assessment": "136-v02-performance-domain-cost.md"
     },
     {
       "id": "V03",
@@ -6920,7 +6943,7 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "159-v03-clean-editor-contract.md",
+      "execution_record": "187-v03-corrected-current-clean-editor.md",
       "active_slice": {
         "id": "V03.29",
         "title": "Separately frozen corrected current-clean acquisition",
@@ -8227,7 +8250,8 @@
           },
           "next_item": "V03.22 bounded semantic negative controls; preserve historical native/result/verifier and test-only Git provenance, no new native run"
         }
-      ]
+      ],
+      "historical_execution_record_before_open_gates_assessment": "159-v03-clean-editor-contract.md"
     },
     {
       "id": "V04",
@@ -8271,7 +8295,8 @@
       ],
       "deliverable": "Full approved-scope acceptance ledger or an explicitly narrower preview; no silent requirement waivers",
       "status": "planned",
-      "optional": false
+      "optional": false,
+      "preparation_record": "205-release-date-decision.md"
     }
   ],
   "starting_sequence": [
@@ -8386,8 +8411,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "A02.48-closed-source-one-clean-review",
-    "next_item": "ONE focused9open-gate/code/evidence assessment for release2026-10-28, fullscope retained.",
+    "current_increment": "release-nine-open-gates-focused-assessment-complete-fullscope-retained",
+    "next_item": "ONE bounded V02 measurement prerequisite assessment, not another A02 research prerequisite campaign.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -11415,11 +11440,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "46new/191focused/5525fullPASS, ONEreview0C0I0M, archive6verified/ownremoved. No newnative/body/parameter/property/fullA02;20of29/16historical unchanged. Deadline forecast not yet grounded; Basic-only proposal unapproved/fullscope retained.",
+    "current_activity_note": "20of29 unchanged. Current80 archives and327of327 product build inputs exact, no repack needed for laterresearch. Host integration exists on old1 pair (29twohost/2native historical), current UI2/guardian/workers/permissions intake still needed. A02/L02/V02 substantive uncertainties; Basic-only proposal withdrawn, fullscope retained.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "97878b9fed53ef6d0d53fd6fde6d139f71c64f45",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONE focused assessment of ONLY9open release gates with existingcode/evidence; credit actual completed work, no global re-audit or oldexperiments rerun. Fullscope remains binding; no publication/otherrepo mutations.",
+    "next_bounded_step": "ONE V02 original-workload measurement prerequisite decision from retained source/fixture contracts using exact unchanged80; no personal trust/cert change, expiry bypass, oldcase repeat or automatic permission/publication.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -11464,7 +11489,9 @@
       "current_source_revision_kind": "frozen refused case; corrective source uncommitted/pending full tests",
       "reviewedRevision": "99d20d86f5d00229cbb431fc0d82b8c63e60a01a",
       "minor": "M16 review-time stale pointer, deferred historical metadata"
-    }
+    },
+    "current_release_assessment": "205-release-date-decision.md",
+    "current_release_assessment_snapshot": ".artifacts/release/2026-10-26-open-gates-assessment/snapshot.json"
   },
   "next_task": "A02"
 }
