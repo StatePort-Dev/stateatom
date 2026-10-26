@@ -39,3 +39,42 @@ References checked: [GLib gdbus](https://github.com/GNOME/glib/blob/main/docs/re
 
 Source `53e74c5e6009c2c5526d695a4d5eaff6871fd41e`; actual prepare/preflight exit0, browser/model0.
 Case `docs/testing/l02-chooser-inventory-case.json`, SHA `21cee88fc688b21ae34f9d74a3e329e02add141729567ae11cc797dc17bfde2d`,365bindings including case. Output `.artifacts/l02/iv/921be9d0/`. Prewritten first reader/source controls are frozen inputs. ONE actual observation next; no folder/credential/model input or retry.
+
+## ONE actual inventory — diagnostic complete, not L02
+
+Execution `e62e117`, 2026-10-26T19:04:41.247Z–19:04:56.313Z, nativePID3255899,
+CLIexit0. Raw `.artifacts/l02/iv/921be9d0/results.json`, SHA `eb8074f8ed5c8f7f03aeaa87840882e5dad4fad5a5ae5146e547636e968038e7`.
+Three snapshots before/after2000ms/after6001ms; one exact enabled visible normal
+Load unpacked click. No path/credential/native keyboard input, directory submission,
+model API/evaluator calls or installation success. Browser background/console NotCollected.
+
+The actual dialog EXISTS: window18874371, title `Select the extension directory.`,
+PID3256265/start30589466, executable `/usr/libexec/xdg-desktop-portal-gtk`, SHA
+`ff84ccce8c3e95f0e4beb6c9c9b9327af62abb3ed98424acc5cf249aac426ab3`.
+It owns focus in both post-click snapshots. Chrome main is3255956/start30589349.
+Thus the observed platform dialog is not Chrome-PID-owned; this explains why a
+Chrome-only title/PID guard cannot recognize this instance. It does not retroactively
+prove every detail of the previous run, whose inventory was absent. The chooser
+screenshot candidate shows normal Cancel/Select controls, Select disabled before a
+folder selection. Empty root window900 has no PID; that remains Unknown. A separate
+untitled gcr-prompter window is observed, with no input into it.
+
+Private bus metadata remains Unknown: `/proc` environment of attested Chrome did
+not expose the expected DISPLAY key. The collector refused before any bus query;
+no daemon/service ownership was fabricated. This does not establish which Chromium
+mechanism removed/relocated environment metadata. A safe subsequent portal-aware
+loader needs a pre-exec private bus witness and actual daemon/service ownership,
+not a relaxed PID or title-only check. No current source/case/reader retuning or
+retry. Existing GTK_USE_PORTAL=0 remains unchanged.
+
+FIRST frozen reader exit0 `SAVED_OWNED_INVENTORY_NOT_L02`,365bindings PASS, three
+1100x1000 PNG hashes saved. Reader source controls1positive13negative remain separate.
+Known Chrome3255956/start30589349, launcher3255954/start30589346 and desktop3255946/
+start30589336 recorded retired; actual first-reader host namespace found all3Absent.
+All8cleanupflags true, cleanupErrorsempty, profile lease absent. This is known-role
+cleanup only: other descendants/global browser activity were not proven absent.
+No fullL02/model usefulness/human acceptance upgrade;20of29/16deferred unchanged.
+
+ONE final bounded-item review next. Next ONE L02.18 portal ownership witness and
+portal-aware normal-loader source correction, preserving refusal for unknown owners;
+no bare title/PID relaxation, no model campaign until its own frozen prerequisites.

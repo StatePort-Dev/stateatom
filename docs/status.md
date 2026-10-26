@@ -1,9 +1,10 @@
 # Project status
 
-L02.17 [owned chooser inventory source verification](completion/216-l02-owned-chooser-inventory.md).
-12new/54affected/5732full PASS; native0/model0. Closed diagnostic observes
-one normal Loadunpacked click on private owned display/bus; no path/credential/model
-input or installation. Current82/327 and exhausted16 evidence preserved;20of29 unchanged.
+L02.17 [ONE owned inventory complete](completion/216-l02-owned-chooser-inventory.md).
+Actual directory dialog belongs to GTKportal, so Chrome-only PID guard misses it.
+FIRSTreader365bindingsPASS;12new/54affected/5732full sourcePASS. No folder/model
+input, install/usefulness/fullL02 proof. BusownershipUnknown, known3rolesAbsent;
+ONEfinalreview pending,20of29 unchanged. NextONE18 ownership-witness source fix.
 
 V02.25 [passive API drop-in parity not established](completion/215-v02-webrequest-feasibility.md).
 ChromewebRequest visibility requires destination+initiator host grants; currentframe/

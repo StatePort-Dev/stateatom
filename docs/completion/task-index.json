@@ -5255,17 +5255,22 @@
       "active_slice": {
         "id": "L02.17",
         "record": "216-l02-owned-chooser-inventory.md",
-        "status": "source-complete-native-pending",
+        "status": "actual-complete-review-pending",
         "base": "134b2a7",
         "new_source_checks": 12,
         "focused_checks": 54,
-        "native_runs": 0,
+        "native_runs": 1,
         "maximum_native_runs": 1,
-        "remaining_native_runs": 1,
+        "remaining_native_runs": 0,
         "model_calls": 0,
         "full_L02": false,
         "review_pending": true,
-        "full_checks": 5732
+        "full_checks": 5732,
+        "case_exhausted": true,
+        "first_reader_exit": 0,
+        "frozen_bindings": 365,
+        "bus_metadata": "Unknown",
+        "dialog_owner": "xdg-desktop-portal-gtk"
       },
       "implementation_plan": "../superpowers/plans/2026-10-26-l02-owned-chooser-inventory.md",
       "remaining_acceptance": [
@@ -5741,7 +5746,7 @@
       "historical_execution_records": [
         "189-l02-current-path-comparison.md"
       ],
-      "next_bounded_step": "ONE L02.17 finalsource verification/localcommit, freeze case+reader, maxONE owned chooser inventory. No exhaustedcase or model retry.",
+      "next_bounded_step": "ONE L02.18 pre-exec private bus ownership witness and portal-aware normal loader source correction, after17 finalreview.",
       "historical_checkpoint_before_L02_16": {
         "record": "189-l02-current-path-comparison.md",
         "status": "closed-bounded-native-incomplete-source-complete",
@@ -8886,8 +8891,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "L02.17-owned-chooser-inventory-source",
-    "next_item": "ONE L02.17 finalsource verification/localcommit, freeze case+reader, maxONE owned chooser inventory. No exhaustedcase or model retry.",
+    "current_increment": "L02.17-one-owned-inventory-complete-review-pending",
+    "next_item": "ONE L02.18 pre-exec private bus ownership witness and portal-aware normal loader source correction, after17 finalreview.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8914,7 +8919,7 @@
     "active_item": {
       "id": "L02.17",
       "record": "216-l02-owned-chooser-inventory.md",
-      "status": "source-complete-native-pending"
+      "status": "actual-complete-review-pending"
     },
     "completed_increments": [
       {
@@ -11915,11 +11920,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Closed read-only diagnostic source;12new/54affected PASS, 5732full PASS; native0/model0. One owned Loadunpacked click/window/privatebus inventory after freeze, no directory/credential/model input; fullL02/20of29 unchanged.",
+    "current_activity_note": "ONE owned native inventory complete/FIRSTreader365PASS; actual dialog owned by GTKportal, busUnknown due absent ChromeprocDISPLAY. No folder/model input/install proof/fullL02.20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "cb2a750cab3313ac6a80b0e2be8a6815744d4dc4",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONE L02.17 finalsource verification/localcommit, freeze case+reader, maxONE owned chooser inventory. No exhaustedcase or model retry.",
+    "next_bounded_step": "ONE L02.18 pre-exec private bus ownership witness and portal-aware normal loader source correction, after17 finalreview.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -11930,8 +11935,8 @@
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
     "current_source_revision_kind": "Research source; frozen native03628a3 incomplete, no product upgrade",
-    "current_source_checkpoint": ".artifacts/l02/chooser-inventory-source/2026-10-26/checkpoint.json",
-    "current_source_checkpoint_kind": "Owned diagnostic source only; native0/model0, no fullL02 acceptance",
+    "current_source_checkpoint": ".artifacts/l02/chooser-inventory-source/2026-10-26/native-checkpoint.json",
+    "current_source_checkpoint_kind": "Actual owned diagnostic only; not installation/model/fullL02",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
       "active_item": {
