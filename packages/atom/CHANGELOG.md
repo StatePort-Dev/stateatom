@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.0-candidate.20261026.82
+
+- Batch the first recording background save across separate event-loop tasks with
+  a nominal16ms window. Keep every native ledger update synchronous and preserve
+  independent explicit/terminal persistence and inert shutdown callbacks.
+- Keep immediate in-flight follow-ups and current-state reads; this is not a hard
+  timer deadline, minimum save spacing, Live/Draft cadence or production permission.
+- Source checks and controlled save-count reductions are separate from actual
+  installed correctness, native performance and release acceptance.
+
 ## 0.1.0-candidate.20261026.81
 
 - Avoid reserving inspector response-body payload buffers in passive read-only

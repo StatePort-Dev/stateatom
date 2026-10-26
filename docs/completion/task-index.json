@@ -6036,41 +6036,32 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.23",
-        "record": "213-v02-publication-window.md",
-        "status": "closed-bounded-source-complete-native-pending",
-        "base": "aa6f57f00195c97a568de85cfcdb1f477fb9a5db",
-        "new_source_tests": 3,
-        "targeted_checks": 59,
-        "focused_checks": 81,
+        "id": "V02.24",
+        "record": "214-v02-publication-original-performance.md",
+        "status": "source-passed-package-pending",
+        "base": "ff2109bc2037c96d0f52f04e31b329c425ea3b03",
+        "candidate": "0.1.0-candidate.20261026.82",
+        "new_source_tests": 8,
+        "focused_checks": 33,
         "native_runs": 0,
+        "backend_runs": 0,
+        "measurement_runs": 0,
+        "maximum_backend_runs": 1,
+        "maximum_measurement_runs": 1,
         "model_calls": 0,
-        "nominal_first_save_delay_ms": 16,
-        "hard_timer_deadline": false,
-        "Live_policy_change": false,
-        "whole_V02_complete": false,
+        "new_CAs": 0,
+        "new_imports": 0,
         "performance_acceptance": false,
-        "review_pending": false,
-        "source_checks": 5712,
-        "original_assertion_criteria_preserved": 191,
-        "source_checkpoint": ".artifacts/v02/publication-window-source/2026-10-26/source-checkpoint.json",
-        "source_revision": "eafb3b18c410c4916f8750c472521bd5a475bbac",
-        "review": {
-          "critical": 0,
-          "important": 0,
-          "minor": 1,
-          "minor_clarified_in_closeout": 1,
-          "source_correction_passes": 0,
-          "rereview": false,
-          "historical_deferred_unchanged": 16
-        }
+        "whole_V02_complete": false,
+        "review_pending": true,
+        "source_checks": 5720,
+        "source_checkpoint": ".artifacts/v02/publication-performance-source/2026-10-26/source-checkpoint.json"
       },
-      "execution_record": "213-v02-publication-window.md",
+      "execution_record": "214-v02-publication-original-performance.md",
       "current_checkpoint": {
-        "record": "213-v02-publication-window.md",
-        "status": "closed-bounded-source-complete-native-pending",
-        "next_bounded_step": "ONE V02.24 newimmutable82/type2/admission9/changed-byte correctness then frozen original198row gate on retainedvalid206TLSseed, no newCA/import/model or oldcase/native retry.",
-        "source_revision": "eafb3b18c410c4916f8750c472521bd5a475bbac"
+        "record": "214-v02-publication-original-performance.md",
+        "status": "source-passed-package-pending",
+        "next_bounded_step": "Commit verifiedsource/newimmutable82/type2/admission9/ONEbackend13; frozen originalgate afterward. No newCA/import/model or native retry."
       },
       "completed_slices": [
         {
@@ -7257,7 +7248,7 @@
         }
       ],
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-v02-publication-window.md",
-      "implementation_plan": "../superpowers/plans/2026-10-26-v02-publication-window.md",
+      "implementation_plan": "../superpowers/plans/2026-10-26-v02-publication-original-performance.md",
       "historical_execution_record_before_open_gates_assessment": "136-v02-performance-domain-cost.md",
       "historical_checkpoint_before_V02_21": {
         "record": "207-v02-current80-original-performance.md",
@@ -7273,6 +7264,12 @@
         "record": "212-v02-passive-original-performance.md",
         "status": "closed-complete-measurement-original-targets-missed",
         "next_bounded_step": "ONE V02.23 source-only recording publication across separate tasks/fast storage, preserving synchronous collection and independent terminal writes; no newnative/matrix until justified changed candidate. Original24.3861/22.8143% misses10/no waiver."
+      },
+      "historical_checkpoint_before_V02_24": {
+        "record": "213-v02-publication-window.md",
+        "status": "closed-bounded-source-complete-native-pending",
+        "next_bounded_step": "ONE V02.24 newimmutable82/type2/admission9/changed-byte correctness then frozen original198row gate on retainedvalid206TLSseed, no newCA/import/model or oldcase/native retry.",
+        "source_revision": "eafb3b18c410c4916f8750c472521bd5a475bbac"
       }
     },
     {
@@ -8787,8 +8784,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.23-closed-source-complete",
-    "next_item": "ONE V02.24 newimmutable82/type2/admission9/changed-byte correctness then frozen original198row gate on retainedvalid206TLSseed, no newCA/import/model or oldcase/native retry.",
+    "current_increment": "V02.24-source-passed-package-pending",
+    "next_item": "Commit verifiedsource/newimmutable82/type2/admission9/ONEbackend13; frozen originalgate afterward. No newCA/import/model or native retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8814,8 +8811,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "V02",
-      "record": "213-v02-publication-window.md",
-      "status": "closed-bounded-source-complete-native-pending"
+      "record": "214-v02-publication-original-performance.md",
+      "status": "source-passed-package-pending"
     },
     "completed_increments": [
       {
@@ -11816,11 +11813,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.23 actualfactory owned20separatetasks saves20→2/finalstate; new3RED→GREEN/59targeted81focusedPASS/full5712PASS/0fail0skip. Fiveinflightfixtures corrected toactualwriterentry, alloldassertions preserved. Internalnominal16ms firstsave/no Livepolicychange/native0/model0;20of29/fullV02/16deferred unchanged. ONEreview0C0I1Minor current_source_revision corrected to testedimplementationeafb/default16; baseaa6/default0 retained. No sourcefix/rereview/native.",
+    "current_activity_note": "V02.24 new82metadata/current23source unchanged/driver4identity-only,8RED→33focusedPASS/full5720PASS/0fail0skip. Pack/backend/measurement0; retained206TLS hashes/chain/hostname/validityPASS/no newCA/import. Original81overheadmiss/criteria/20of29/fullV02/16deferred unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "eafb3b18c410c4916f8750c472521bd5a475bbac",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONE V02.24 newimmutable82/type2/admission9/changed-byte correctness then frozen original198row gate on retainedvalid206TLSseed, no newCA/import/model or oldcase/native retry.",
+    "next_bounded_step": "Commit verifiedsource/newimmutable82/type2/admission9/ONEbackend13; frozen originalgate afterward. No newCA/import/model or native retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

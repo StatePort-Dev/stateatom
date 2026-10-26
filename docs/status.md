@@ -1,5 +1,11 @@
 # Project status
 
+V02.24 [new82 original-gate preparation](completion/214-v02-publication-original-performance.md).
+8RED→33focused/5720fullPASS; 4identity-only driver/current23source unchanged.
+New82metadata, pack/backend/measurement0; exactretained206TLSvalid/no newCA/import.
+Original198rows/66windows/≤1s/≤10% preserved; old81overheadmiss remains/no waiver.
+20of29/fullV02/16deferred unchanged.
+
 V02.23 [recording publication window source passed](completion/213-v02-publication-window.md).
 Owned20separatetasks/fastack saves20→2/lateststate; all20requests/records synchronous.
 Internalnominal16ms firstsave only, no Livecadence/permission/metric/terminalwritechange.
