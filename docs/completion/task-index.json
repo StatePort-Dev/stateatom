@@ -8555,8 +8555,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "L02.16-normal-chooser-frozen",
-    "next_item": "ONE frozen normal-chooser cached-only current80 comparison; FIRST saved reader and separate original quality rubric if outputs exist. No download/request/native retry.",
+    "current_increment": "L02.16-native-incomplete-review-pending",
+    "next_item": "ONE fresh bounded whole-L02.16 review of source and saved incomplete result; no checks/native/model rerun by reviewer, then one dependency-ready non-model item.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8583,7 +8583,7 @@
     "active_item": {
       "id": "L02",
       "record": "210-l02-native-chooser.md",
-      "status": "case-frozen-native-pending"
+      "status": "bounded-native-incomplete-review-pending"
     },
     "completed_increments": [
       {
@@ -11584,11 +11584,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "L02.16 source42/235/5693PASS, fd837 committed; actual prepare/preflight499PASS and saved reader/contract frozen before maxONE native. Native/model0; current80/34rows/originalcriteria unchanged.20of29/fullL02/16deferred unchanged.",
+    "current_activity_note": "L02.16 ONEchooserNativeexit1 at ownedmatchingdialog timeout afterbutton; no pathinput/submission/API,0rows34unvisited0model. FIRSTreader499bindingsPASS/nonqualified; known3Absent/lease released/consoleNotCollected. Source42/235/5693PASS;20of29/fullL02/16deferred unchanged; no retry.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "fd837030db9ad4e1ccd7e51bb42e2d7726260376",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONE frozen normal-chooser cached-only current80 comparison; FIRST saved reader and separate original quality rubric if outputs exist. No download/request/native retry.",
+    "next_bounded_step": "ONE fresh bounded whole-L02.16 review of source and saved incomplete result; no checks/native/model rerun by reviewer, then one dependency-ready non-model item.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

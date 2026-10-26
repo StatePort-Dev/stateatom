@@ -1,6 +1,6 @@
 # L02.16 — normal Load unpacked comparison route
 
-Current phase: case frozen/preflight passed, native/model execution0. Base main
+Current phase: ONE actual attempt INCOMPLETE; source passed, model execution0. Base main
 b431606f650fb2c1daa1bef7e4e09565aff923c7; local commits only. Full L02 remains open;
 20/29 whole tasks and16historical deferred findings unchanged.
 
@@ -74,3 +74,39 @@ reader pure hash/unique-JSON/process functions match the previous saved reader.
 Its controls differ only in the new identity; no model-quality predicate changed.
 Reader has an exclusive first-attempt marker. Source prepare/preflight started no
 browser/model and did not mutate the cache. MaxONE actual cached-only attempt next.
+
+## ONE actual attempt — INCOMPLETE, no retry
+
+Execution `fdfc360bb7e19f4801513c31e7358b630a5158ad`, 2026-10-26T15:50:13.234Z–15:50:32.431Z;
+nativePID2654647, CLIexit1. Raw `.artifacts/l02/nc/92ab7c82/results.json`, SHA
+`e3e6cd01e49825b66c315526fe8f81a8b019e5336b09300c6c4b97c7a4e1f7df`.
+Chrome156 owner/initialized manager/developer mode observed; old evaluation disabled.
+The enabled visible exact Load unpacked button was clicked. No dialog matching the
+registered Chrome PID/title was recognized before the15s observation timeout at
+helper25. Receipt stays stagebutton: no chooser identity/focus/path input/submission,
+no screenshot, no selected new extension, no evaluation page/runtime proof/API call.
+0rows,34unvisited,0model requests; factual/concision/usefulness assessment has no data.
+
+Cause of absent matching chooser is Unknown: no complete window inventory was saved.
+The Chrome log records private DBus/GTK portal activation and cancelled keyring
+prompting at cleanup. This alone does not establish window owner/title, a credential
+blocker, API availability or an actionable fix. No credentials or manual dialog
+handling occurred. The fail-closed refusal is source safety behavior, not installed
+feature or successful normal-loader evidence. This case is exhausted; no native or
+frozen-reader retry/retuning.
+
+All499actual frozen inputs match before/after and first-reader verification. FIRST
+prewritten reader exit0 `SAVED_INCOMPLETE_NOT_QUALIFIED`; collectionQualifiedfalse,
+qualityfalse/fullL02false. No full positive collection predicate ran on absent rows.
+Known browser2654742/start29422547, launcher2654738/start29422543 and
+desktop2654716/start29422534 retired; first reader in hostPIDnamespace4026531836
+found all3Absent. Other9cleanup flags true, cleanupErrorsempty, lease released.
+Console was NotCollected (`cleanup.console=false`), not a clean-console claim;
+`dragSource=true` means correctly not started. No global background/heap/descendant
+retirement claim. Product327/archives2/olddata unchanged. Source42/235/5693 remains
+source evidence;20of29/fullL02 unchanged.
+
+Saved source/native checkpoints and hash binder are in
+`.artifacts/l02/native-chooser-source/2026-10-26/`; first reader/contract remain in
+`.artifacts/l02/native-chooser-saved-verification/2026-10-26/`. ONE whole-item review
+follows; no next model/install campaign is authorized by this result.

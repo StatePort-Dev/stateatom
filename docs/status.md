@@ -1,11 +1,11 @@
 # Project status
 
-L02.16 [normal Load unpacked route source ready](completion/210-l02-native-chooser.md).
-42new/235focused/5693fullPASS; async focus-race2RED→GREEN before any native input.
-Same80/UI2/provider/prompt/options/34rows; three-role chooser branch, no fake dragSource.
-Native/model0; sourcefd837 committed, new case/reader frozen, actual prepare/preflight499PASS.
-Next maxONE cached-only attempt through the normal directory chooser.
-Old189 proves missing host installation, not unavailable API.20of29/fullL02 unchanged.
+L02.16 [ONE normal-loader attempt INCOMPLETE](completion/210-l02-native-chooser.md).
+Source42/235/5693PASS; normal Load unpacked click reached, matching owned dialog
+not recognized within15s, no path input/submission/runtime/API. Cause Unknown.
+0rows/34unvisited/0model; FIRST reader499bindingsPASS but collectionQualifiedfalse.
+Known3owned processes Absent/lease released; console NotCollected. No native retry.
+20of29/fullL02/16historicaldeferred unchanged; ONE final bounded-item review next.
 
 A02.50 [ONE native attempt INCOMPLETE](completion/209-a02-component-body-native.md).
 12/18phases complete; On equal original source/native guard refused unavailable weak refs.
