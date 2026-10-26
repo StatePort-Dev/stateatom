@@ -1,12 +1,13 @@
 # Project status
 
-A02.35 source complete/native pending: [retained original gate](completion/191-a02-retained-app-state-source.md).
-FourNEWsiblings, old143research/327product unchanged.205focused/5080fullPASS;
-exact nativeops/compiler/bundle parity, currentretention guards add to originalfull
-criteria. NEWreaders preserve495old controls+51retention rules; ownedpartial51 PASS
-is source-only, not native.493protected/13L02raw/17V03raw bound; no App/browser/model.
-Nextfixnewcase thenONEdeclared-mode native maximum; no oldweak/model/cert retry.
-20of29/fullA02 unchanged,14minors deferred.
+A02.35 actual bounded original-gate PASS, ONEreview pending:
+[declared retention acquisition](completion/191-a02-retained-app-state-source.md).
+ONElaunch/3modes/18phases (28pinned sourcefiles); native4/4,App4/8,Main5/9,joint4/8 acquired.
+ActualApp pins1 in4positive phases; Off/filter/Stop0.1643current hashes/firstfrozen
+fullreader546negative controls PASS; preservation25qualificationfalse. Console/errors[]/
+ownedPID/profile/resourcesclosed. No oldcase rerun/GCcause or fullA02/selectedDOM/
+ownership upgrade.205focused/5080fullsource retained;143oldresearch/327product unchanged.
+20of29/14minors unchanged; nextONEfinalreview then committed-instance source feasibility.
 
 A02.34 source complete/ONEreview0C0I0newM/14old deferred: [bounded research retention](completion/190-a02-bounded-app-element-retention.md).
 FourNEWfiles/old139research+327product+482protected unchanged. Explicit research

@@ -2532,8 +2532,8 @@
       },
       "current_checkpoint": {
         "record": "191-a02-retained-app-state-source.md",
-        "status": "source-complete-native-pending",
-        "next_bounded_step": "Prepare/preflight/freeze newcase and readers thenONEdeclared-retention original-gate acquisition; no oldcase/weak/model/cert retry or productpolicy/GCcause inference."
+        "status": "native-bounded-pass-review-pending",
+        "next_bounded_step": "ONE final bounded-item review/closeout, then ONE source feasibility for exact committed DOM instance/props association. No original-gate/weak/retention/model/cert replay or fullA02 upgrade."
       },
       "stopping_point_history": [
         {
@@ -2677,7 +2677,7 @@
       "active_slice": {
         "id": "A02.35",
         "record": "191-a02-retained-app-state-source.md",
-        "status": "source-complete-native-pending",
+        "status": "native-bounded-pass-review-pending",
         "base": "ccad3aa47bb664f18cb8c8d6a640837e28dc3268",
         "new_code_files": 4,
         "new_source_tests": 86,
@@ -2686,16 +2686,40 @@
         "prior_research_unchanged": 143,
         "product_unchanged": 327,
         "protected_unchanged": 493,
-        "native_runs": 0,
+        "native_runs": 1,
         "maximum_native_runs": 1,
         "model_calls": 0,
-        "original_app_executed": false,
+        "original_app_executed": true,
         "full_A02": false,
         "retention_mode": "research-strong-app-elements",
         "maximum_app_roots": 64,
         "old_full_reader_negative_rules": 495,
         "new_retention_reader_rules": 51,
-        "owned_partial_reader_controls": 51
+        "owned_partial_reader_controls": 51,
+        "source_commit": "94ab692",
+        "native_revision": "b07c29b",
+        "case_exhausted": true,
+        "native_status": "PASS_BOUNDED_RETAINED_APP_STATE_SOURCE_NOT_FULL_A02",
+        "frozen_inputs": 1643,
+        "raw_sha256": "3e4fa42caf26157f73091ab60480d93c7ecadcbfa5608af244d17b95990ebf5f",
+        "phases_completed": 18,
+        "modes_completed": 3,
+        "native_reference_windows": 4,
+        "native_reference_links": 4,
+        "app_windows": 4,
+        "app_links": 8,
+        "main_windows": 5,
+        "main_links": 9,
+        "joint_windows": 4,
+        "joint_links": 8,
+        "full_reader_first_pass": true,
+        "full_reader_negative_controls": 546,
+        "preservation_controls": 25,
+        "preservation_qualification": false,
+        "historical_GC_cause_proven": false,
+        "selected_property_origin": "Unknown/Unsupported",
+        "field_ownership": "Unknown/Unsupported",
+        "review_pending": true
       }
     },
     {
