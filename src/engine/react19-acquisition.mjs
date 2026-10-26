@@ -6,6 +6,7 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
  const describe=Object.getOwnPropertyDescriptor,same=Object.is,isArray=Array.isArray,invoke=Reflect.apply;
  const object=v=>v!==null&&(typeof v==='object'||typeof v==='function');
  const own=(v,k)=>{if(!object(v))return;const d=describe(v,k);return d&&Object.hasOwn(d,'value')?d.value:undefined;};
+ const strictOwn=(v,k,required=false)=>{const d=describe(v,k);if(!d){if(required)throw Error('Required native metadata unavailable');return;}if(!Object.hasOwn(d,'value'))throw Error('Native metadata accessor unavailable');return d.value;};
  const fibers=new WeakSet(),roots=new WeakSet(),ids=new WeakMap(),queues=new WeakMap(),hooks=new WeakMap(),updates=new WeakMap();
  let serial=0,events=0,queueCount=0,updateCount=0,stopped=false,capped=false,unavailable=null,current=null,commitSerial=0,multipleRoots=false;
  const supported=typeof weakRef==='function',ref=v=>new weakRef(v),id=v=>{if(!object(v))return'primitive:'+typeof v;let n=ids.get(v);if(!n){n=page+':react19:'+(++serial);ids.set(v,n);}return n;};
@@ -66,9 +67,9 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
    const{fiber,parent}=pending.pop();if(!fibers.has(fiber)){if(strict)return unknown('Unregistered committed native tree edge');continue;}
    if(seen.has(fiber))return unknown('Ambiguous or cyclic committed native tree');
    seen.add(fiber);parents.set(fiber,parent);if(seen.size>512)return unknown('Committed tree capacity refused');
-   if(own(fiber,'tag')===5&&own(fiber,'stateNode')===node){if(selected)return unknown('Ambiguous native host identity');selected=fiber;}
-   const edge=k=>{if(strict){const d=describe(fiber,k);if(d&&!Object.hasOwn(d,'value'))throw Error('Committed tree edge unavailable');}return own(fiber,k);};
-   const child=edge('child'),sibling=edge('sibling');
+   const tag=strict?strictOwn(fiber,'tag',true):own(fiber,'tag');
+   if(tag===5&&(strict?strictOwn(fiber,'stateNode',true):own(fiber,'stateNode'))===node){if(selected)return unknown('Ambiguous native host identity');selected=fiber;}
+   const child=strict?strictOwn(fiber,'child'):own(fiber,'child'),sibling=strict?strictOwn(fiber,'sibling'):own(fiber,'sibling');
    if(strict&&(child!=null&&!object(child)||sibling!=null&&!object(sibling)))return unknown('Invalid committed native tree edge');
    if(object(child))pending.push({fiber:child,parent:fiber});if(object(sibling))pending.push({fiber:sibling,parent});
   }
@@ -104,8 +105,9 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef}={}){
    const{root,finished,selected,parents}=tree,walked=new Set();let fiber=selected,matched=null;
    while(fibers.has(fiber)&&walked.size<64&&!walked.has(fiber)){
     walked.add(fiber);
-    if(own(fiber,'tag')===0&&own(fiber,'memoizedProps')===props&&own(fiber,'type')===component){
-     if(matched)return propsUnknown('Ambiguous matching committed props ancestors');matched=fiber;
+    if(strictOwn(fiber,'tag',true)===0){
+     const actualProps=strictOwn(fiber,'memoizedProps',true),actualType=strictOwn(fiber,'type',true);
+     if(actualProps===props&&actualType===component){if(matched)return propsUnknown('Ambiguous matching committed props ancestors');matched=fiber;}
     }
     if(fiber===finished)break;fiber=parents.get(fiber);
    }

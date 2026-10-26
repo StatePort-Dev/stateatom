@@ -92,9 +92,9 @@ test('tree, ancestry and event limits refuse without partial positive observatio
 test('supported ancestry boundary is inclusive and the next ancestor refuses',()=>{
  const f=fixture();let parent=f.rootFiber;
  // root + 61 wrappers + matching component + selected host = 64 ancestors.
- for(let i=0;i<61;i++){const next={tag:0};f.api.tap('fiber',next);parent.child=next;parent=next;}
+ for(let i=0;i<61;i++){const next={tag:0,type:null,memoizedProps:null};f.api.tap('fiber',next);parent.child=next;parent=next;}
  parent.child=f.fiber;assert.equal(f.match().status,'Observed');
- const extra={tag:0,child:f.fiber};f.api.tap('fiber',extra);parent.child=extra;unknown(f);
+ const extra={tag:0,type:null,memoizedProps:null,child:f.fiber};f.api.tap('fiber',extra);parent.child=extra;unknown(f);
 });
 test('props queries do not alter old native snapshot identity, event counters or state-origin boundaries',()=>{
  const f=fixture(),state={},queue={dispatch(){}},hook={queue,memoizedState:state,next:null};
@@ -105,4 +105,22 @@ test('props queries do not alter old native snapshot identity, event counters or
 });
 test('invalid primitive tree edges refuse for the supplied props method without relaxing old snapshots',()=>{
  for(const key of ['child','sibling']){const f=fixture();f.sibling[key]=1;unknown(f);}
+});
+for(const key of ['memoizedProps','type','tag'])test('I1 unavailable competing ancestor '+key+' cannot establish uniqueness',()=>{
+ let calls=0;const f=fixture(),outer={tag:0,type:f.component,memoizedProps:f.props,child:f.fiber};
+ f.api.tap('fiber',outer);f.rootFiber.child=outer;
+ Object.defineProperty(outer,key,{get(){calls++;throw Error('unavailable competing ancestor');}});
+ unknown(f);assert.equal(calls,0);
+});
+for(const key of ['stateNode','tag'])test('I1 unavailable competing host '+key+' cannot hide another selected host',()=>{
+ let calls=0;const f=fixture();f.sibling.stateNode=f.node;
+ Object.defineProperty(f.sibling,key,{get(){calls++;throw Error('unavailable competing host');}});
+ unknown(f);assert.equal(calls,0);
+});
+for(const key of ['memoizedProps','type','tag'])test('I1 missing competing ancestor '+key+' cannot establish uniqueness',()=>{
+ const f=fixture(),outer={tag:0,type:f.component,memoizedProps:f.props,child:f.fiber};
+ f.api.tap('fiber',outer);f.rootFiber.child=outer;delete outer[key];unknown(f);
+});
+for(const key of ['stateNode','tag'])test('I1 missing competing host '+key+' cannot establish uniqueness',()=>{
+ const f=fixture();delete f.sibling[key];unknown(f);
 });

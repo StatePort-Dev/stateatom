@@ -44,3 +44,16 @@ Package80's immutable bytes and previous admission stay historical for its own s
 Source artifacts: `.artifacts/a02/committed-props-source/2026-10-26/`.
 20of29/fullA02 and15deferred minors remain. Full source checks passed; ONE final review pending. Next one distinct source question: admit actual existing source references
 to this matcher without replacing original complete gates or inferring JSX identity.
+
+## ONE review and correction
+Review c30398b, /root/a0236_whole_review (gpt-6-astra/high), read-only:
+0Critical/1Important/0newMinor. I1: unavailable accessor fields on competing ancestors
+(props/type/tag) or hosts(stateNode/tag) could conceal ambiguity and return Observed.
+Ten added accessor/missing critical-field controls actually failed49PASS/10FAIL.
+The strict new path now distinguishes missing/accessor metadata from known values;
+all relevant tags/host stateNodes and every tag0 ancestor props/type require own data.
+Getters are never called; legacy snapshot still uses its existing own() path.
+Known nonmatching boundaryfixture wrappers explicitly provide null props/type.
+Focused final59PASS64.505476ms/full5117PASS133998.369407ms, exit0. Initial49/5107checkpoint retained
+unchanged; correction gets separate checkpoint/verifier. No rereview/minor fixes.
+Report `.artifacts/a02/committed-props-review/2026-10-26/report.md`.
