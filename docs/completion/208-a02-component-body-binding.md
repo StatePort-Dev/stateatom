@@ -36,7 +36,8 @@ the supported in-process run then showed 54 failures for the missing implementat
 The new implementation passed 67 checks, including 13 additional semantic/policy
 controls, in 441.216723ms. Combined call/body checks: 157 pass in 4368.610018ms.
 Full suite: `npm test`, 5599 pass / 0 fail / 0 skip, 158928.698345ms, exit 0.
-Syntax and diff checks pass. ONE whole-item review is pending; no native execution.
+Syntax and diff checks pass. ONE whole-item review completed: 0 Critical / 2 Important / 0 Minor; both fixed
+in one tested correction pass, no rereview. No native execution.
 
 Artifacts: `.artifacts/a02/component-body-binding-source/2026-10-26/`.
 The fresh resume registration protects existing tracked files, current80's 327
@@ -59,3 +60,27 @@ property/writer Unknown boundaries; no rerun of the old case or claim of full A0
 Verification confirms 1874 protected tracked files, 327 product inputs, two archives,
 1724 current old-native inputs, 35 closed V02 source files, seven saved-reader files
 and the immutable V02 raw result are unchanged. Only status/index metadata may change.
+
+## Review and final corrected source
+
+Review I1: an ignored untracked entry emitted an unmatched return and disabled later
+capture. The producer now omits its return receipt when entry is unaccepted. Actual
+emitted calls before and between tracked calls preserve capture and prior matches.
+Review I2: indirect/member/alias eval and Function references escaped the callee-only
+guard. Recognizable identifier and static computed-key references now refuse source
+admission. This is a conservative grammar guard, not universal dynamic-code analysis.
+
+Both controls failed first: 67 pass / 9 fail. One correction pass: 76 new checks pass
+in 446.497545ms, 166 focused in 4802.401456ms, full5608 in 163171.297051ms; exit0,
+no fail/skip. Original a06ffc5 source and 67/157/5599 logs remain historical and exact.
+Final source `70685d73ce81a6c5791ce85cbbbc3b4035bc4ca0`. Saved final binder checks both revisions separately.
+No new minor; the 16 historical deferred findings remain unchanged.
+
+[Saved review](../../.artifacts/a02/component-body-binding-review/2026-10-26/report.md)
+and final-checkpoint.json retain all nine declined boundaries and executor rulings:
+no actual acquisition/GC/performance/installed proof; selected/property/writer joins
+remain open; bootstrap completion and conditional owned dependencies are prerequisites;
+unchanged47/48 are reused; executor checks hashes while reviewer remains static;
+V02/current80/UI/SDK/other repositories/publication stay outside this increment.
+The archive passed CRC/every-byte/plan-identity/saved-binder checks and only this
+plan's workspace was removed. Main/local commits; no push, publication or branch change.
