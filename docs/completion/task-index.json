@@ -6038,14 +6038,14 @@
       "active_slice": {
         "id": "V02.24",
         "record": "214-v02-publication-original-performance.md",
-        "status": "new82-case-frozen-measurement-pending",
+        "status": "complete-measurement-original-targets-missed-review-pending",
         "base": "ff2109bc2037c96d0f52f04e31b329c425ea3b03",
         "candidate": "0.1.0-candidate.20261026.82",
         "new_source_tests": 8,
         "focused_checks": 33,
-        "native_runs": 1,
+        "native_runs": 2,
         "backend_runs": 1,
-        "measurement_runs": 0,
+        "measurement_runs": 1,
         "maximum_backend_runs": 1,
         "maximum_measurement_runs": 1,
         "model_calls": 0,
@@ -6071,13 +6071,39 @@
         "case_sha256": "887dd6cde7d50a5cb16c616f1b2b2d238854c3f5f316f9daf413f6613e4ee248",
         "registered_inputs": 442,
         "prewritten_reader_controls": 32,
-        "first_frozen_reader_pending": true
+        "first_frozen_reader_pending": false,
+        "measurement_executed": true,
+        "measurement_complete": true,
+        "measurement_rows": 198,
+        "warmup_rows": 18,
+        "measured_rows": 180,
+        "active_windows": 66,
+        "first_frozen_reader": true,
+        "reader_negative_controls": 32,
+        "frozen_inputs_current": 442,
+        "raw_sha256": "05319594db74a5b77c120810ee36d5cc9abbbdcc08d10cc7181cbbb273bb5126",
+        "basic_p95_ms": {
+          "standalone": 402.69999998807907,
+          "embedding": 399.19999998807907
+        },
+        "active_off_percent": {
+          "standalone": 28.11355311,
+          "embedding": 21.05704694
+        },
+        "targets_met": false,
+        "targets_waived": false,
+        "native_checkpoint": ".artifacts/v02/publication-performance-source/2026-10-26/native-checkpoint.json",
+        "execution_revision": "d06234d26898f304f96579d53a06b70ed72fc4ef",
+        "case_exhausted": true,
+        "remaining_backend_runs": 0,
+        "remaining_measurement_runs": 0,
+        "remaining_full_reader_runs": 0
       },
       "execution_record": "214-v02-publication-original-performance.md",
       "current_checkpoint": {
         "record": "214-v02-publication-original-performance.md",
-        "status": "new82-case-frozen-measurement-pending",
-        "next_bounded_step": "Commitfrozen442bindingcase/reader thenexclusive maxONEoriginal198row run; FIRSTreader/no newCA/import/model/native/reader retry."
+        "status": "complete-measurement-original-targets-missed-review-pending",
+        "next_bounded_step": "ONEfinalbounded review ofsource/saved complete targetmiss, no reviewer checks/native reruns. NextONE passivewebRequest feasibility, not anotherblindgate/matrix or waiver."
       },
       "completed_slices": [
         {
@@ -8800,8 +8826,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.24-new82-frozen-original-gate",
-    "next_item": "Commitfrozen442bindingcase/reader thenexclusive maxONEoriginal198row run; FIRSTreader/no newCA/import/model/native/reader retry.",
+    "current_increment": "V02.24-original198-complete-targets-missed",
+    "next_item": "ONEfinalbounded review ofsource/saved complete targetmiss, no reviewer checks/native reruns. NextONE passivewebRequest feasibility, not anotherblindgate/matrix or waiver.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8828,7 +8854,7 @@
     "active_item": {
       "id": "V02",
       "record": "214-v02-publication-original-performance.md",
-      "status": "new82-case-frozen-measurement-pending"
+      "status": "complete-measurement-original-targets-missed-review-pending"
     },
     "completed_increments": [
       {
@@ -11829,11 +11855,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.24 source8/33/5720PASS, new82Atom823171ce/UI2exact/current327/type2/admission9/ONEbackend13+6savedcontrolsPASS. Node+known1ChromeAbsent, secondPIDnotcaptured/no sameUIDownedprofile references. Measurement/model/newCA/import0;20of29/fullV02/16deferred unchanged. New82case442bindings frozen/13readerpurefunctions exact/32sourcecontrolsPASS; firstactualreader/measurementpending0, criteriaunchanged.",
+    "current_activity_note": "V02.24 new82/source5720/type2/admission9/backend13,ONE198row/66windows/FIRSTreader32controls/442bindingsPASS. Basicp95402.7/399.2PASS1s; active/off28.1136/21.0570%MISS10/no waiver. Budgets/reader exhausted, raw2ChromePIDsAbsent/no startfingerprints/inspectorconsoleonly. No newCA/import/model;20of29/fullV02/16deferred unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "cb2a750cab3313ac6a80b0e2be8a6815744d4dc4",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "Commitfrozen442bindingcase/reader thenexclusive maxONEoriginal198row run; FIRSTreader/no newCA/import/model/native/reader retry.",
+    "next_bounded_step": "ONEfinalbounded review ofsource/saved complete targetmiss, no reviewer checks/native reruns. NextONE passivewebRequest feasibility, not anotherblindgate/matrix or waiver.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

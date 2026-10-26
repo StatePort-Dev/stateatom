@@ -1,5 +1,12 @@
 # V02.24 — immutable82 original gate after publication-window correction
 
+Current: ONEbackend andONE198rowmeasurement COMPLETE, FIRSTreader32controls/442bindings
+PASS; Basicp95402.7/399.2msPASS1s, active/off28.1136/21.0570%MISS10%.
+Bothnativebudgets andfirstreader exhausted/remaining0; no native/reader retry.
+20of29/fullV02/16deferred unchanged/no waiver; ONEfinalbounded review next.
+
+## Historical source/package preparation checkpoint
+
 Current:source5720PASS/package pending, pack/backend/measurement0. Baseff2109b/main,
 20of29/fullV02/16deferred unchanged. [Spec](../superpowers/specs/2026-10-26-v02-publication-original-performance-design.md),
 [plan](../superpowers/plans/2026-10-26-v02-publication-original-performance.md).
@@ -62,3 +69,44 @@ negative sourcecontrols on198syntheticrows PASS/nativequalificationfalse. FIRSTf
 reader notrun; exclusivefirst-attempt marker. MaxONEmeasurement followscasecommit/
 cleanGit/exclusivemarker; no sourcechange/retuning/native/reader retry or newCA/import.
 Packaging/case/sourcecontrols are not performance/feature proof.
+
+## Actual immutable82 original-gate result
+
+Execution `d06234d26898f304f96579d53a06b70ed72fc4ef`; preregistration2026-10-26T17:19:04.317Z
+throughfinished2026-10-26T17:22:24.329Z. CLIexit0 means complete measurement.
+Raw `.artifacts/v02/basic-observer-publication/2026-10-26T17-19-04-298Z/results.json`, SHA
+`05319594db74a5b77c120810ee36d5cc9abbbdcc08d10cc7181cbbb273bb5126`.
+198rows/18warm180measured/66windows/3960derivedrequests, original20no-storeGET×1024B/
+trustedX11/100msISOLATEDpoll/twoframes/order/ALLtails preserved. Everyactivewindow
+20requests20completed/onecheckpoint21records/zerogaps. Originalperrowlive servercount
+assertion retained; no persistedservertrace collected.
+
+| Original metric | Standalone | Public embedding example |
+| --- | ---: | ---: |
+| Basic useful-content p95ms |402.70|399.20|
+| Off workload medianms |54.60|59.60|
+| Basic workload medianms |68.45|70.30|
+| Active workload medianms |69.95|72.15|
+| Active/Offmedian% |28.11355311|21.05704694|
+| Basic≤1000ms |PASS|PASS|
+| Active≤10% |MISS|MISS|
+
+FIRSTfrozenreaderexit0/442bindings/independentPythonstatistics/32changedcontrolsPASS.
+Targetsfalse/performanceAcceptanceForThisGatefalse/fullV02false. Originalcriteria/
+workload/denominator/threshold notrelaxed. Old22 andallhistoricalmisses remain exact;
+this isnot controlledA/B or consistentcausalspeedup proof. Ownedsource20→2saves is
+not a measuredCPU/memory benefit. No more repeatedgate withoutnewtechnicalbasis.
+
+RawChromePIDs2934363/2940313 absentinreadonlyhostnamespace4026531836 afterexit;
+nostartfingerprints/globaldescendant/heap guarantee. Rawownedbrowser/desktop/server
+closedtrue. Recordedinspectorwarnings/errors empty; worker/guardiancompleteness
+NotCollected.2freshownedprofiles copied exactretained206seed; no newCA/key/import,
+personal/systemtrust/model. Profiles retained. All442physicalinputs/current327/
+archives/readers/case/oldpackets exact. Source8/33/5720/backend13/type2/admission9
+are separate, not a passing10%gate. Whole20of29/fullV02 unchanged.
+
+ONE finalbounded review follows. NextONEV02.25 boundedfeasibility: determine whether
+Chrome passivewebRequest can preserve exactfuturetab/frame/document/request metadata
+without the CDPNetwork domain. Initiallyexperimental/source/API evidence only; no
+productpermission/SDK/otherrepo change, newbenchmatrix, originalgate waiver or already-
+approved architecture implied. ExactAPI/lifecycle choices belong to that task.

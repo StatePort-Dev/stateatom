@@ -1,11 +1,12 @@
 # Project status
 
-V02.24 [new82 original-gate preparation](completion/214-v02-publication-original-performance.md).
-8RED→33focused/5720fullPASS; 4identity-only driver/current23source unchanged.
-New82Atom823171ce/UI2exact/current327/type2/admission9/ONEbackend13PASS;442bindingcase frozen.
-Reader13purefunctions exact/32sourcecontrolsPASS; maxONEoriginal198rowmeasurement next; exactretained206TLSvalid/no newCA/import.
-Original198rows/66windows/≤1s/≤10% preserved; old81overheadmiss remains/no waiver.
-20of29/fullV02/16deferred unchanged.
+V02.24 [ONE new82 original measurement COMPLETE, target missed](completion/214-v02-publication-original-performance.md).
+New82/current327/type2/admission9/ONEbackend13PASS; source8/33/5720PASS.
+ONE198rows/18warm180measured/66windows/FIRSTreader32controls/442bindingsPASS.
+Basicp95402.7/399.2msPASS1s; active/off28.1136/21.0570%MISS10/no waiver.
+Bothnativebudgets/firstreader exhausted/remaining0, no retry/newCA/import/model.
+Knownraw2ChromePIDsAbsent/no startfingerprints/inspectorconsoleempty only.
+20of29/fullV02/16deferred unchanged; ONEfinalboundedreview then passive-API feasibility.
 
 V02.23 [recording publication window source passed](completion/213-v02-publication-window.md).
 Owned20separatetasks/fastack saves20→2/lateststate; all20requests/records synchronous.
