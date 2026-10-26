@@ -5255,7 +5255,7 @@
       "active_slice": {
         "id": "L02.18",
         "record": "217-l02-portal-chooser.md",
-        "status": "native-incomplete-review-pending",
+        "status": "closed-bounded-native-incomplete",
         "base": "2aea834478144b419603eb7594aac6967f8470df",
         "new_source_checks": 20,
         "native_runs": 1,
@@ -5263,7 +5263,7 @@
         "remaining_native_runs": 0,
         "model_calls": 0,
         "full_L02": false,
-        "review_pending": true,
+        "review_pending": false,
         "focused_checks": 256,
         "full_checks": 5756,
         "source_revision": "6dbd45c6d833c9382d4a600ac3daa05832463d1f",
@@ -5275,7 +5275,17 @@
         "first_reader_exit": 0,
         "collection_qualified": false,
         "portal_ownership_observed": true,
-        "directory_selection_accepted": false
+        "directory_selection_accepted": false,
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 1,
+          "correction_passes": 0,
+          "rereview": false,
+          "deferred_total": 18,
+          "minor_deferred": "M18 unlabelled historical source-phase/pre-run prose in217; ordinary closeout current pointers advanced"
+        },
+        "final_checkpoint": ".artifacts/l02/portal-chooser-review/2026-10-26/final-checkpoint.json"
       },
       "implementation_plan": "../superpowers/plans/2026-10-26-l02-portal-chooser.md",
       "remaining_acceptance": [
@@ -5747,11 +5757,11 @@
         "next_item": "A02.2 isolated pinned React19.2.5 original useReducer queue/update/result to committed-consumer experiment; retain ownership/prop-transfer Unknown",
         "boundary": "Fixed system plus topK1/temp0 accepted/exposed by real Chrome155,10actual returns/10structure accepted and cleanup;8scoped passes/2boundary rejects/0new useful meaning.46focused/1898full source PASS; strict gates unchanged. Focused8main+2positive body, not30+4 or final product. No UI switch/full rerun; L02 mandatory/open, next ready A02.2."
       },
-      "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-l02-owned-chooser-inventory.md",
+      "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-l02-portal-chooser.md",
       "historical_execution_records": [
         "189-l02-current-path-comparison.md"
       ],
-      "next_bounded_step": "ONE L02.19 agent-reviewed post-input native snapshot and ordinary Select source/case, after18 finalreview.",
+      "next_bounded_step": "ONE L02.19 agent-reviewed visible-path/Select snapshot with same private owner/focus/geometry and exact enabled-path verification; no oldcase retry.",
       "historical_checkpoint_before_L02_16": {
         "record": "189-l02-current-path-comparison.md",
         "status": "closed-bounded-native-incomplete-source-complete",
@@ -8937,8 +8947,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "L02.18-one-portal-attempt-incomplete-review-pending",
-    "next_item": "ONE L02.19 agent-reviewed post-input native snapshot and ordinary Select source/case, after18 finalreview.",
+    "current_increment": "L02.18-closed-portal-owner-observed-selection-incomplete",
+    "next_item": "ONE L02.19 agent-reviewed visible-path/Select snapshot with same private owner/focus/geometry and exact enabled-path verification; no oldcase retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8965,7 +8975,8 @@
     "active_item": {
       "id": "L02.18",
       "record": "217-l02-portal-chooser.md",
-      "status": "native-incomplete-review-pending"
+      "status": "closed-bounded-native-incomplete",
+      "final_checkpoint": ".artifacts/l02/portal-chooser-review/2026-10-26/final-checkpoint.json"
     },
     "completed_increments": [
       {
@@ -11966,11 +11977,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "ONE actual privatebus/GTK ownership+before-input checks succeeded; Returndidnotdismiss, no selectedextension/eval/API/rows. FIRSTreader611PASS/collectionfalse; source20/256/5756PASS,20of29/fullL02 unchanged. Nextbounded ordinarySelect from reviewed native snapshot.",
+    "current_activity_note": "ONE actual privateowner/focus prerequisite observed; Returnnon-dismissal/0rows34unvisited0model. FIRSTreader611PASS/collectionfalse, source20/256/5756PASS. ONEreview0C0I1M/M18deferredtotal18/no correction/rereview/retry;20of29/fullL02open.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "6dbd45c6d833c9382d4a600ac3daa05832463d1f",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "ONE L02.19 agent-reviewed post-input native snapshot and ordinary Select source/case, after18 finalreview.",
+    "next_bounded_step": "ONE L02.19 agent-reviewed visible-path/Select snapshot with same private owner/focus/geometry and exact enabled-path verification; no oldcase retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -11980,7 +11991,7 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "Portal ownership research source; current82 product327 unchanged, native pending",
+    "current_source_revision_kind": "Portal ownership research source6dbd45c; actual18INCOMPLETE after submitted Return, no model/collection proof",
     "current_source_checkpoint": ".artifacts/l02/portal-chooser-source/2026-10-26/native-checkpoint.json",
     "current_source_checkpoint_kind": "Actual incomplete portal attempt; safe owner prerequisites observed, no model/install acceptance",
     "historical_active_pointer_before_V02_18": {

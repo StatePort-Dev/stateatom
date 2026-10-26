@@ -118,3 +118,20 @@ native snapshot and one ordinary Select click, still private-owner/focus/geometr
 case-bound with exact enabled-path verification afterward. This is a new finite
 workflow correction prompted by actual non-dismissal; no guessed hotkey fallback,
 no direct install API, no oldcase retry, no human-acceptance or handoff-product policy.
+
+## Final bounded review
+
+ONE fresh read-only review0Critical/0Important/1Minor. No source correction or rereview.
+M18 deferred: unlabelled historical source/pre-run Next/no-native prose and review-time
+nativepending revision-kind wording can confuse phase readers. Ordinary closeout
+advances current status/index; original prose remains historical.17prior deferred
+retained plus this Minor, total18. Declined domains and rulings/costs recorded in
+archived ledger/report. No Return-cause/install/model/quality/human/global-cleanup
+claim added. Native/firstreader budgets remain1/exhausted/remaining0; no retry.
+
+Bounded18 closed; safe private-owner prerequisite observed on real Chrome, directory
+acceptance/model/fullL02 still open.20of29 unchanged. NextONE19 post-input snapshot
+and standard Select action, conditional on agent review of exact visible path/control,
+private-window geometry and renewed owner/focus proof. No guessed input or shortcut.
+
+Own workspace6files archived to `.artifacts/l02/portal-chooser-review/2026-10-26/workspace.zip`, SHA `03a4304dd834a8800e68d1975a133eb7a51ef615621cca07f597f8bf88320b19`; CRC/everybyte/identity and savedsource/native binders PASS before removing only this workspace. Local commits only.

@@ -4,7 +4,8 @@ L02.18 [ONE portal attempt INCOMPLETE](completion/217-l02-portal-chooser.md).
 Private bus/GTK owner+focus checks succeeded; Returndidnotdismiss, no installation/
 evaluation/model/rows (34unvisited). FIRSTreader611PASS/collectionfalse, source20/
 256/5756PASS. Known3roles+separatedaemon/portalAbsent, no globalcleanup/console claim.
-ONEfinalreview pending;20of29/fullL02/17deferred unchanged. NextONE19 reviewedSelect.
+ONEreview0C0I1M/M18deferredtotal18; bounded18closed/no correction/rereview/retry.
+20of29/fullL02 unchanged. NextONE19 reviewed visiblepath/Select with same ownership.
 
 L02.17 [ONE owned inventory complete](completion/216-l02-owned-chooser-inventory.md).
 Actual directory dialog belongs to GTKportal, so Chrome-only PID guard misses it.
