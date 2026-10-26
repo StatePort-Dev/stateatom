@@ -5286,7 +5286,9 @@
           "rereview": false,
           "deferred_total": 17,
           "minor_deferred": "M17 unlabelled historical source-phase opening in216; closeout/status/index current"
-        }
+        },
+        "source_revision": "2e1dce958f268ec8b5f8d9b51740e3fb1152a94b",
+        "final_checkpoint": ".artifacts/l02/chooser-inventory-review/2026-10-26/final-checkpoint.json"
       },
       "implementation_plan": "../superpowers/plans/2026-10-26-l02-owned-chooser-inventory.md",
       "remaining_acceptance": [
@@ -8935,7 +8937,8 @@
     "active_item": {
       "id": "L02.17",
       "record": "216-l02-owned-chooser-inventory.md",
-      "status": "closed-bounded-diagnostic-source-corrected"
+      "status": "closed-bounded-diagnostic-source-corrected",
+      "final_checkpoint": ".artifacts/l02/chooser-inventory-review/2026-10-26/final-checkpoint.json"
     },
     "completed_increments": [
       {
@@ -11938,7 +11941,7 @@
     "scope_adoption_record": "13-scope-reconciliation.md",
     "current_activity_note": "ONE native inventory/FIRSTreader365PASS on historical pre-review source; GTKportal dialog observed, busUnknown beforequery. I1sourcefix16/58/5736PASS/no native or reader retry; M17deferred total17. FullL02/20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "cb2a750cab3313ac6a80b0e2be8a6815744d4dc4",
+    "current_source_revision": "2e1dce958f268ec8b5f8d9b51740e3fb1152a94b",
     "current_record_date": "2026-10-26",
     "next_bounded_step": "ONE L02.18 pre-exec private bus environment witness and portal-aware normal-loader source+frozen prerequisites, preserving original model criteria.",
     "historical_active_pointer_before_V03_23": {
@@ -11950,7 +11953,7 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "Research source; frozen native03628a3 incomplete, no product upgrade",
+    "current_source_revision_kind": "Current diagnostic ownership source; native17 historical before I1fix, no product change",
     "current_source_checkpoint": ".artifacts/l02/chooser-inventory-source/2026-10-26/final-source-checkpoint.json",
     "current_source_checkpoint_kind": "Current corrected ownership source; original native17 historical3Git sources, not new native proof",
     "historical_active_pointer_before_V02_18": {

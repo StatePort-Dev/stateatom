@@ -106,3 +106,5 @@ Current82/product327/archives2/protected16packet remain physical/current. Bounde
 closed after verified own-workspace archive; fullL02/20of29 unchanged. NextONE18
 pre-exec private bus environment witness and portal-aware normal loader; no title-only
 or relaxed owner check, no new CA/trust/account/SDK/otherrepo/publication work.
+
+Own workspace6files archived to `.artifacts/l02/chooser-inventory-review/2026-10-26/workspace.zip`, SHA `a181f192e75ee3e37ad7122c4b2258925cf7d0548920d7c309cbc0e8d74aa78b`; CRC/every-byte/identity and final savedbinder PASS before own removal. Corrected source `2e1dce958f268ec8b5f8d9b51740e3fb1152a94b`; no native/reader retry. Local commits only.
