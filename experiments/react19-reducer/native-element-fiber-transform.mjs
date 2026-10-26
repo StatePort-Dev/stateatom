@@ -26,6 +26,7 @@ function sites(ast){
    if(returns.length!==1||!t.isIdentifier(returns[0].node.argument,{name:'mode'})||!same(returns[0],'mode')||calls.length!==1)throw Error('One original created fiber return required');
    const call=calls[0],n=call.node,b=call.scope.getBinding('createFiberFromTypeAndProps'),a=call.parentPath;
    if(!b?.constant||!b.path.isFunctionDeclaration()||!a.isAssignmentExpression({operator:'='})||!t.isIdentifier(a.node.left,{name:'mode'})||!same(a,'mode')||binding('mode').constantViolations.length!==1||binding('mode').constantViolations[0].node!==a.node||n.arguments.length!==6)throw Error('Closed original fiber creation binding required');
+   if(!a.parentPath.isExpressionStatement()||a.parentPath.parentPath.node!==fn.node.body||fn.node.body.body[0]!==a.parentPath.node||returns[0].parentPath.node!==fn.node.body||fn.node.body.body.at(-1)!==returns[0].node)throw Error('Direct initial creation and final return required');
    for(const [i,key] of ['type','key','props','_owner'].entries())if(!t.isMemberExpression(n.arguments[i],{computed:false})||!t.isIdentifier(n.arguments[i].object,{name:'element'})||!t.isIdentifier(n.arguments[i].property,{name:key})||!same(call,'element'))throw Error('Original element creation operands required');
    if(!t.isIdentifier(n.arguments[4],{name:'mode'})||!t.isIdentifier(n.arguments[5],{name:'lanes'}))throw Error('Original mode/lanes required');
    found.push({role:'create',owner:name,path:returns[0],expression:returns[0].get('argument'),element:'element'});

@@ -62,8 +62,11 @@ for(const [name,change] of [
  ['duplicate reuse',s=>s.replace('if(current)return','current=useFiber(current,element.props);if(current)return')],
  ['wrong reuse target',s=>s.replace('current=useFiber(current,element.props)','lanes=useFiber(current,element.props)')],
  ['changed creation result',s=>s.replace('finish(mode);return mode;','finish(mode);mode={};return mode;')],
+ ['conditional creation',s=>s.replace('mode=createFiberFromTypeAndProps(','if(lanes)mode=createFiberFromTypeAndProps(')],
+ ['creation after return',s=>s.replace(' mode=createFiberFromTypeAndProps(element.type,element.key,element.props,element._owner,mode,lanes);\n finish(mode);return mode;',' finish(mode);return mode;\n mode=createFiberFromTypeAndProps(element.type,element.key,element.props,element._owner,mode,lanes);')],
+ ['conditional creation return',s=>s.replace('finish(mode);return mode;','finish(mode);if(lanes)return mode;')],
  ['helper collision',s=>s+'\nconst __saElementFiberTap=1;'],
-])test('closed native grammar refuses '+name,async()=>{const m=await load(),source=change(elementFiberGrammar),r=m.instrumentElementFiberGrammar(source,file);assert.equal(r.skipped,true);assert.equal(r.code,source);assert.equal(r.nativeVersionAdmitted,false);});
+])test('closed native grammar refuses '+name,async()=>{const m=await load(),source=change(elementFiberGrammar);assert.notEqual(source,elementFiberGrammar);const r=m.instrumentElementFiberGrammar(source,file);assert.equal(r.skipped,true);assert.equal(r.code,source);assert.equal(r.nativeVersionAdmitted,false);});
 test('malformed/foreign/overbound input cannot acquire a native recipe',async()=>{
  const m=await load();for(const [source,name] of [['function {',file],[elementFiberGrammar,'other.js'],['x'.repeat(4*1024*1024+1),file]]){const r=m.instrumentElementFiberGrammar(source,name);assert.equal(r.skipped,true);assert.equal(r.code,source);}
  assert.throws(()=>m.transformPinnedElementFiber(elementFiberGrammar,file));

@@ -40,3 +40,11 @@ NextONE separate item: consume actual native element/fiber refs and invalidate s
 reused and ambiguous associations against the selected committed tree. Neither this
 document nor event emission supplies source-to-commit or selected-property provenance.
 No old native/retention/install/model/cert campaign, package/UI/SDK/otherrepo/publish work.
+
+## ONE review/correction
+Review989daad,0C1I0newM: unpinned creation grammar permitted conditional/after-return
+assignment. Three actual refusal tests97PASS3FAIL RED; constrain creation to first
+direct assignment and last direct return. Exact pinned native source still admitted;
+100focusedPASS1573.420127ms/full5153PASS132595.596745ms, exit0. No general control-flow engine,
+old recipe change, native campaign or rereview. Original97/5150checkpoint unchanged;
+correction uses separate final checkpoint/binder.15deferred unchanged.
