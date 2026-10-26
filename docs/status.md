@@ -5,7 +5,9 @@ V02.20 [current80 original-workload source ready](completion/207-v02-current80-o
 corrected17handle-retaining cleanup.1865protected/327product/2archives/33oldnative stable.
 Actual independent80backend13PASS/publicexampleembedding+standalone,6changed saved
 controls; type2/admission9 reused, no profile process refs at hostprobe. No fieldwidget/
-officialhost/performance/TLS claim;206CA/import answer pending/measurement0.
+officialhost/performance claim.206CA/import explicitly approved; one isolatedfreshCA/
+singleCAseed validated, caseead32.../421inputs frozen, firstreader32sourcecontrols.
+ONE original198row measurement next; no personal/systemtrust, measurement0 beforemarker.
 20of29/fullscope/16historicaldeferred unchanged.
 
 Release2026-10-28: [focused nine-open-gate assessment](completion/205-release-date-decision.md).

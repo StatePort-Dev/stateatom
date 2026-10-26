@@ -5642,7 +5642,15 @@
         "current_pair_accepted": false,
         "fresh_host_runtime_executed": false,
         "host_modified": false,
-        "meaning": "Existing source integration/old-pair native evidence credited; current exact pair update/acceptance remains open"
+        "meaning": "Existing source integration/old-pair native evidence credited; current exact pair update/acceptance remains open",
+        "current80_boundary_typecheck": {
+          "result": ".artifacts/release/2026-10-26-open-gates-assessment/host-abi-result.json",
+          "typescript": "5.9.3",
+          "status": "PASS_PUBLIC_BOUNDARY_TYPES_ONLY",
+          "host_modified": false,
+          "full_host_build": false,
+          "native_executed": false
+        }
       }
     },
     {
@@ -5873,13 +5881,13 @@
       "active_slice": {
         "id": "V02.20",
         "record": "207-v02-current80-original-performance.md",
-        "status": "source-complete-prerequisites-pending",
+        "status": "frozen-approved-case-ready-one-measurement",
         "base": "4afee97ae0ca3df1273163956bfb0c39001798c6",
         "new_source_tests": 7,
         "focused_checks": 26,
         "source_checks": 5532,
         "native_runs": 1,
-        "tls_approval": "pending",
+        "tls_approval": "explicit-user-approved",
         "measurement_executed": false,
         "performance_acceptance": false,
         "whole_V02_complete": false,
@@ -5890,13 +5898,20 @@
         "backend_checkpoint": ".artifacts/v02/current80-performance-source/2026-10-26/backend-checkpoint.json",
         "backend_raw_sha256": "727f71aa52e5ef7348f2f43c58fda5cb9626bdf837991838971efe703f8669a6",
         "reused_types": 2,
-        "reused_admission": 9
+        "reused_admission": 9,
+        "fresh_disposable_ca": 1,
+        "fresh_seed_profiles": 1,
+        "personal_or_system_trust_changed": false,
+        "case": "../testing/basic-observer-current80-case.json",
+        "case_sha256": "ead32ce642aed0b61fb2fe1134966ef6ce82831cb0f0a577329c9cde6dcb3d75",
+        "registered_inputs": 421,
+        "prewritten_reader_controls": 32
       },
       "execution_record": "207-v02-current80-original-performance.md",
       "current_checkpoint": {
         "record": "207-v02-current80-original-performance.md",
-        "status": "source-and-independent-backend-complete-TLS-answer-pending",
-        "next_bounded_step": "Required206answer before freshCA/key/import/dependentmeasurement. Current80backend13 now actualPASS; types2/admission9 exact reused. Source/case/reader freezing must precedeONE original-workload measure."
+        "status": "frozen-approved-case-ready-one-measurement",
+        "next_bounded_step": "ONE original198row current80measurement from exclusive clean execution marker; prewritten frozen reader FIRSTfullrun, original1s/10% preserved."
       },
       "completed_slices": [
         {
@@ -8406,7 +8421,7 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
     "current_increment": "V02.20-source-preparation-complete-TLS-answer-pending",
-    "next_item": "ONE current80 prerequisite completion; respect pending206answer.",
+    "next_item": "ONE original current80performance measurement and first frozen reader; no target waiver.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -11434,11 +11449,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.20source7/26/5532PASS; independent actualcurrent80backend13PASS on clean7499420,6changedsavedcontrols,327current/archives exact, type2/admission9 reused. Publicexampleembedding only/notofficialhost. TLSanswerpending,0measurement/0newCA/trust;20of29 unchanged.",
+    "current_activity_note": "Explicit206CA/profile approval received; one isolatedfreshCA/singleCAseedvalidated, no personal/systemtrust. Case8dff3b5/ead32... frozen421inputs and32sourcecontrols; measurement0 untilexclusiveactualexecution. Current80backend13/type2/admission9 actual/reused;20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "74994204bff73a017e18bd9843e7bc41f7d79b4a",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "Required206answer before freshCA/key/import/dependentmeasurement. Current80backend13 now actualPASS; types2/admission9 exact reused. Source/case/reader freezing must precedeONE original-workload measure.",
+    "next_bounded_step": "ONE original198row current80measurement from exclusive clean execution marker; prewritten frozen reader FIRSTfullrun, original1s/10% preserved.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
