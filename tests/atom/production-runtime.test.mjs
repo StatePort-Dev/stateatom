@@ -47,3 +47,18 @@ for(const stage of ['risk','scope','confirm-retirement'])test('same-document URL
  else{const b=await f.request({op:'production-advance',ticket:a.ticket});if(stage==='scope')await navigate();else{const detach=f.api.debugger.detach;f.api.debugger.detach=async(...args)=>{await detach(...args);await navigate();};}await assert.rejects(f.request({op:'production-confirm',ticket:b.ticket}));}
  assert.equal((await f.request({op:'state'})).productionChange.active,false);assert(!methods(f).includes('Fetch.enable'));
 });
+
+// Buffer configuration follows existing authority transitions; not native proof.
+test('unconfirmed or cancelled production stays passive on every attach',async t=>{
+ const f=fixture();t.after(()=>f.runtime.shutdown());await f.attach();const a=await f.request({op:'production-begin'}),b=await f.request({op:'production-advance',ticket:a.ticket});await f.attach();await f.request({op:'production-cancel',ticket:b.ticket});await f.attach();await f.network(1);
+ assert.deepEqual(f.calls.filter(c=>c.method==='Network.enable').map(c=>c.params),Array(3).fill({maxTotalBufferSize:0,maxResourceBufferSize:0}));assert(!methods(f).includes('Network.getResponseBody'));assert(!methods(f).includes('Fetch.enable'));
+});
+test('double-confirmed production restores original body budgets for future Live and Draft responses',async t=>{
+ for(const mode of ['live','draft']){
+  const f=fixture();t.after(()=>f.runtime.shutdown());await f.enable();await f.inspect();await f.attach();
+  assert.deepEqual(f.calls.filter(c=>c.method==='Network.enable').map(c=>c.params),[{maxTotalBufferSize:0,maxResourceBufferSize:0},{maxTotalBufferSize:2000000,maxResourceBufferSize:512000},{maxTotalBufferSize:2000000,maxResourceBufferSize:512000}]);
+  await f.network(1);let s=await f.request({op:'inputs-open'});assert.equal(s.resources.length,2);s=await f.request({op:'inputs-apply',plan:f.plan(s,mode)});assert.equal(s.history.at(-1).phase,'waiting');
+  await f.network(2,{finish:false});await f.emit('Fetch.requestPaused',{requestId:'buffer-f2',networkId:'q2',frameId:'main',resourceType:'Fetch',request:{url,method:'GET'},responseStatusCode:200,responseHeaders:[{name:'content-type',value:'application/json'}]});assert.equal(JSON.parse(atob(f.calls.find(c=>c.method==='Fetch.fulfillRequest').params.body)).flag,false);
+  await f.request({op:'production-revoke'});await tick();await f.attach();assert.deepEqual(f.calls.filter(c=>c.method==='Network.enable').at(-1).params,{maxTotalBufferSize:0,maxResourceBufferSize:0});const before=methods(f).filter(m=>m==='Network.getResponseBody').length;await f.network(3);assert.equal(methods(f).filter(m=>m==='Network.getResponseBody').length,before);
+ }
+});

@@ -1,5 +1,12 @@
 # Project status
 
+V02.21 [passive network-buffer correction source passed](completion/211-v02-passive-network-buffers.md).
+Read-only/no grant reserves0extra payload bytes, local/grant-bearing usesoriginal2MB/512KB.
+Repeat attach explicitly preserves budget.8new/26targeted/149affected/5701fullPASS; review next.
+Policy/metadata/metrics/source semantics unchanged; native/model0, no performance pass.
+Current80 now326of327build inputs current: NEWcandidate required for installed checks.
+20of29/fullV02/16historicaldeferred unchanged.
+
 L02.16 [ONE normal-loader attempt INCOMPLETE](completion/210-l02-native-chooser.md).
 Source42/235/5693PASS; normal Load unpacked click reached, matching owned dialog
 not recognized within15s, no path input/submission/runtime/API. Cause Unknown.
