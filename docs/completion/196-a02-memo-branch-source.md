@@ -36,3 +36,14 @@ outcome/inner function and actual props refs, current commit/fiber guards. Incom
 props replaced/ignored by native bailout stay distinct; no equality substitution,
 historical source invention or force-render. No actualReact/App/native/browser/model/
 GC/package/UI/SDK/otherrepo/cert/trust/publish or oldcase/weak/install campaign.
+
+## ONE review/correction
+Reviewer f13fb32 range0C1I0newM. I1 bailout wrapper adds Component/nextProps without
+checking their exact bindings; initialized shadows give wrong refs and TDZ shadows
+replace a successful native return with ReferenceError. Executor also found I2 in
+same binding path: escaped local helper name bypasses textcollision guard and can
+replace native result. Five successful-original controls192PASS5FAIL RED, now197
+focusedPASS4576.880011ms. Check all injected owner-param bindings plus absence of
+existing lexical helper binding. One correction pass/no rereview; full5250PASS135137.748538ms exit0.
+Original192/5245checkpoint retained; separate final checkpoint/binder. Pinned source
+has no such shadows; no native execution or old helper/source change.15minors unchanged.

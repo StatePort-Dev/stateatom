@@ -20,6 +20,8 @@ function findSites(ast){
   if(calls[role])throw Error('Duplicate memo branch call');const expected=roles[role],b=p.scope.getBinding(expected.callee);
   if(!b?.constant||!b.path.isFunctionDeclaration()||b.scope!==fn.scope.parent||n.arguments.length!==expected.args.length)throw Error('Closed external memo callee binding required');
   for(let i=0;i<expected.args.length;i++){const name=expected.args[i];if(!t.isIdentifier(n.arguments[i],{name})||p.scope.getBinding(name)!==bindings[name])throw Error('Exact original memo operands required');}
+  for(const name of ['workInProgress','Component','nextProps'])if(p.scope.getBinding(name)!==bindings[name])throw Error('Exact injected memo reference bindings required');
+  if(p.scope.getBinding('__saMemoBranchTap'))throw Error('Lexical memo helper collision');
   const tail=p.parentPath.isSequenceExpression()&&p.parentPath.node.expressions.at(-1)===n?p.parentPath:p;
   if(!tail.parentPath.isReturnStatement()||tail.parentPath.node.argument!==tail.node)throw Error('Original memo branch return position required');
   calls[role]=p;

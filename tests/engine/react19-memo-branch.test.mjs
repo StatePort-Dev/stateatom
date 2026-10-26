@@ -32,6 +32,16 @@ for(const option of ['observerThrows','hookAccessor','missingHook'])test(option+
 test('opaque component/result and late realm mutations do not add app reflection or replace captured intrinsics',async()=>{
  const m=await load(),r=m.instrumentMemoBranchGrammar(memoBranchGrammar,file);for(const mode of ['mount','bailout','scheduled']){const b=execute(r.code,mode,{opaque:true,mutateIntrinsics:true});assert.equal(b.returned,b.result);assert.equal(b.opaqueCalls,0);assert.equal(b.caught,undefined);assert.equal(b.events.length,1);}
 });
+for(const name of ['Component','nextProps'])for(const position of ['initialized','TDZ'])test('I1 bailout refuses '+position+' shadow of injected '+name,async()=>{
+ const m=await load(),call='return bailoutOnAlreadyFinishedWork(current,workInProgress,renderLanes);',declaration='const '+name+'=null;',source=memoBranchGrammar.replace(call,position==='TDZ'?'{'+call+declaration+'}':'{'+declaration+call+'}');
+ const original=execute(source,'bailout');assert.equal(original.returned,original.result);assert.equal(original.caught,undefined);
+ const r=m.instrumentMemoBranchGrammar(source,file);assert.equal(r.skipped,true);assert.equal(r.code,source);assert.equal(r.nativeVersionAdmitted,false);
+});
+test('I2 escaped lexical helper collision cannot replace a successful native return',async()=>{
+ const m=await load(),source=memoBranchGrammar.replace('if(current!==null',String.raw`const __saMemoBr\u0061nchTap=()=>({forged:true});if(current!==null`);assert(!source.includes('__saMemoBranch'));
+ const original=execute(source,'bailout');assert.equal(original.returned,original.result);assert.equal(original.caught,undefined);
+ const r=m.instrumentMemoBranchGrammar(source,file);assert.equal(r.skipped,true);assert.equal(r.code,source);
+});
 test('original comma-expression bailout prelude remains before the one native call',async()=>{
  const m=await load(),source=memoBranchGrammar.replace('return bailoutOnAlreadyFinishedWork(current,workInProgress,renderLanes);','return (tracePrelude(workInProgress),bailoutOnAlreadyFinishedWork(current,workInProgress,renderLanes));'),r=m.instrumentMemoBranchGrammar(source,file);assert.equal(r.skipped,false);
  const a=execute(source,'bailout'),b=execute(r.code,'bailout');assert.deepEqual(b.trace,a.trace);assert.equal(b.returned,b.result);assert.equal(b.events.length,1);assert.equal(b.events[0][3],b.previous);assert.equal(b.trace.filter(x=>x.kind==='bailout-prelude').length,1);
