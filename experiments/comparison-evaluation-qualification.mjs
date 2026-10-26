@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: Apache-2.0
 // Research collection predicates only. DTO fixtures are never native evidence.
-import assert from 'node:assert/strict';import {localDerivedCorpus} from '../tests/fixtures/local-derived-corpus.mjs';
+import assert from 'node:assert/strict';
+import {guardInstallationChooserReceipt} from '../tests/helpers/comparison-native-chooser.mjs';import {localDerivedCorpus} from '../tests/fixtures/local-derived-corpus.mjs';
 import {projectDerivedComparison,validateDerivedComparisonStructure} from '../core/derived-comparisons.mjs';
-import {comparisonProtocol,expectedComparisonCases,expectedComparisonCreateOptions,comparisonSha,comparisonCurrentCaseId,comparisonCandidate} from '../scripts/comparison-evaluation-case.mjs';
+import {comparisonProtocol,expectedComparisonCases,expectedComparisonCreateOptions,comparisonSha,comparisonCurrentCaseId,comparisonChooserCaseId,comparisonCandidate} from '../scripts/comparison-evaluation-case.mjs';
 export const comparisonCollectionStatus='COLLECTED_COMPARISON_CANDIDATE_NOT_L02';
 export const comparisonIncompleteStatus='INCOMPLETE_COMPARISON_CANDIDATE_NOT_L02';
 export const comparisonCleanupKeys=['console','browser','browserConnection','launcher','dragSource','desktop','chromeLog','profileLease','knownOwnedRetired','frozenInputs'];
@@ -43,8 +44,8 @@ export function guardComparisonCollection(r,s){
  for(const[i,p]of b.parentChain.entries()){assert(pid(p.pid)&&pid(p.ppid)&&start(p.startTime));if(i)assert.equal(b.parentChain[i-1].ppid,p.pid);if(p.pid===b.launcherPID)launcher=p;}
  assert(launcher);assert.equal(launcher.startTime,b.launcherStartTime);assert.equal(launcher.ppid,r.nativePID);
  assert.match(r.extensionId,/^[a-p]{32}$/);assert.equal(r.evalURL,'chrome-extension://'+r.extensionId+'/l02-eval.html');
- if(s.id===comparisonCurrentCaseId){
-  const candidate=comparisonCandidate('current-owned');assert.equal(s.atomSha256,candidate.atomSha256);assert.equal(s.uiSha256,candidate.uiSha256);
+ if(s.id===comparisonCurrentCaseId||s.id===comparisonChooserCaseId){
+  const candidate=comparisonCandidate(s.id===comparisonChooserCaseId?'native-chooser':'current-owned');assert.equal(s.atomSha256,candidate.atomSha256);assert.equal(s.uiSha256,candidate.uiSha256);
   const d=r.extensionDiscovery;assert.equal(d?.method,'exact-prepared-path-in-extension-ui');
   assert.equal(d.before.ready,true);assert.deepEqual(d.before.items,[]);
   assert.equal(d.latest.ready,true);assert(text(d.latest.at,64)&&Number.isFinite(Date.parse(d.latest.at)));
@@ -54,13 +55,13 @@ export function guardComparisonCollection(r,s){
  }
 
  const proof=r.runtimeProof;assert(text(proof.scriptId,256));assert.equal(proof.scriptURL,'chrome-extension://'+r.extensionId+'/l02-eval.js');assert(sha(proof.sourceSha256));assert.equal(proof.sourceSha256,s.addon.jsSha256);assert.equal(proof.nonce,s.nonce);assert.equal(proof.loadedFile,s.out+'/loaded-evaluation.js');assert.equal(r.originalHostUnchanged,true);
- assert.equal(r.installation.method,'native-gtk-folder-drop');assert.equal(r.installation.sourceFolder,s.hostPath);assert.equal(r.installation.developerModeObserved,true);assert(['disabled','absent'].includes(r.installation.previousState));assert.equal(r.installation.authenticatedX,true);assert.equal(r.installation.privateDBus,true);
+ if(s.id===comparisonChooserCaseId){assert.equal(r.installation.method,'native-load-unpacked-chooser');guardInstallationChooserReceipt(r.folderChooser,s,b);assert.equal(r.nativeDrop,undefined);assert.equal(r.ownedProcesses.dragSource,undefined);}else assert.equal(r.installation.method,'native-gtk-folder-drop');assert.equal(r.installation.sourceFolder,s.hostPath);assert.equal(r.installation.developerModeObserved,true);assert(['disabled','absent'].includes(r.installation.previousState));assert.equal(r.installation.authenticatedX,true);assert.equal(r.installation.privateDBus,true);
  assert.equal(r.profileLease.acquired,true);assert.equal(r.profileLease.releaseConfirmed,true);assert.equal(r.profileLease.nonce,s.nonce);assert.equal(r.profileLease.profile,s.profile.path);
  assert.equal(r.runs.length,34);let model=0;for(const[i,row]of r.runs.entries()){const result=guardComparisonRunRecord(row,s.expectedCases[i],s);if(result!=='template-outside-scope')model++;}assert.equal(model,10);
  const log=r.consoleCollection;assert.equal(log.schema,'stateatom.l02-comparison-console/1');assert.equal(log.pageURL,r.evalURL);assert.equal(log.status,'Stopped');assert.equal(log.scope,'Evaluation page deliveries until explicit stop');assert.equal(log.overflow,false);assert(Array.isArray(log.records)&&log.records.length<=128);assert.equal(log.seen,log.records.length);assert(log.records.every(x=>x.type==='warning'));assert(Number.isFinite(log.startedAt)&&Number.isFinite(log.stoppedAt)&&log.stoppedAt>=log.startedAt);assert.deepEqual(r.errors,[]);assert.deepEqual(r.pageErrors,[]);
  for(const k of comparisonCleanupKeys)assert.equal(r.cleanup[k],true);
- for(const role of ['browser','launcher','desktop','dragSource'])assert(r.ownedProcesses[role]);
- assert(Array.isArray(r.processRetirement)&&r.processRetirement.length>=4&&r.processRetirement.length<=128);
+ const chooser=s.id===comparisonChooserCaseId;for(const role of (chooser?['browser','launcher','desktop']:['browser','launcher','desktop','dragSource']))assert(r.ownedProcesses[role]);
+ assert(Array.isArray(r.processRetirement)&&r.processRetirement.length>=(chooser?3:4)&&r.processRetirement.length<=128);
  for(const p of Object.values(r.ownedProcesses)){assert(pid(p.pid)&&start(p.startTime));const retired=r.processRetirement.find(q=>q.pid===p.pid&&q.startTime===p.startTime);assert(retired&&['Absent','ReusedDifferentIdentity'].includes(retired.state));}
  assert.equal(r.ownedProcesses.browser.pid,b.pid);assert.equal(r.ownedProcesses.browser.startTime,b.startTime);assert.equal(r.ownedProcesses.launcher.pid,b.launcherPID);assert.equal(r.ownedProcesses.launcher.startTime,b.launcherStartTime);
  assert.equal(r.inputsUnchanged,true);assert(r.inputsBefore&&Object.keys(r.inputsBefore).length>0);assert.deepEqual(r.inputsAfter,r.inputsBefore);

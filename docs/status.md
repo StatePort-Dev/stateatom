@@ -1,5 +1,11 @@
 # Project status
 
+L02.16 [normal Load unpacked route source ready](completion/210-l02-native-chooser.md).
+42new/235focused/5693fullPASS; async focus-race2RED→GREEN before any native input.
+Same80/UI2/provider/prompt/options/34rows; three-role chooser branch, no fake dragSource.
+Native/model0 for this item; next source commit + frozen reader/case then maxONEattempt.
+Old189 proves missing host installation, not unavailable API.20of29/fullL02 unchanged.
+
 A02.50 [ONE native attempt INCOMPLETE](completion/209-a02-component-body-native.md).
 12/18phases complete; On equal original source/native guard refused unavailable weak refs.
 Which ref/GC cause Unknown; no router fault/cap. New selected parameter links qualified0.
