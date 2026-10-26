@@ -6038,14 +6038,14 @@
       "active_slice": {
         "id": "V02.22",
         "record": "212-v02-passive-original-performance.md",
-        "status": "new81-case-frozen-measurement-pending",
+        "status": "complete-measurement-original-targets-missed-review-pending",
         "base": "16afe6ab52e0debc924ffdec12654f49ad94e1e8",
         "candidate": "0.1.0-candidate.20261026.81",
         "new_source_tests": 8,
         "focused_checks": 27,
-        "native_runs": 1,
+        "native_runs": 2,
         "backend_runs": 1,
-        "measurement_runs": 0,
+        "measurement_runs": 1,
         "maximum_backend_runs": 1,
         "maximum_measurement_runs": 1,
         "model_calls": 0,
@@ -6071,13 +6071,35 @@
         "case_sha256": "262116f74bcef8228ff8d34db2ffdb8c3f23a39fe72fb802aecc9cf5e6714c22",
         "registered_inputs": 432,
         "prewritten_reader_controls": 32,
-        "first_frozen_reader_pending": true
+        "first_frozen_reader_pending": false,
+        "measurement_executed": true,
+        "measurement_complete": true,
+        "measurement_rows": 198,
+        "warmup_rows": 18,
+        "measured_rows": 180,
+        "active_windows": 66,
+        "first_frozen_reader": true,
+        "reader_negative_controls": 32,
+        "frozen_inputs_current": 432,
+        "raw_sha256": "42bdcc1845a2392e406db1a1271a3e82762e81ef020f86f1d7ca826384323062",
+        "basic_p95_ms": {
+          "standalone": 382.89999997615814,
+          "embedding": 449.39999997615814
+        },
+        "active_off_percent": {
+          "standalone": 24.38611353,
+          "embedding": 22.81432137
+        },
+        "targets_met": false,
+        "targets_waived": false,
+        "native_checkpoint": ".artifacts/v02/passive-performance-source/2026-10-26/native-checkpoint.json",
+        "execution_revision": "fa850a568c9ff1fdf3eaec6ed635a0988d4803ae"
       },
       "execution_record": "212-v02-passive-original-performance.md",
       "current_checkpoint": {
         "record": "212-v02-passive-original-performance.md",
-        "status": "new81-case-frozen-measurement-pending",
-        "next_bounded_step": "Commit frozen432bindingcase/reader then exclusive maxONEoriginal198row performance run; FIRSTreader, no newCA/import/native/reader retry."
+        "status": "complete-measurement-original-targets-missed-review-pending",
+        "next_bounded_step": "ONE final bounded review/source and saved complete targetmiss, no reviewer native/check reruns. No repeatedgate/reader retune or waived10%."
       },
       "completed_slices": [
         {
@@ -8686,8 +8708,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "V02.22-new81-frozen-original-gate",
-    "next_item": "Commit frozen432bindingcase/reader then exclusive maxONEoriginal198row performance run; FIRSTreader, no newCA/import/native/reader retry.",
+    "current_increment": "V02.22-original198-complete-targets-missed",
+    "next_item": "ONE final bounded review/source and saved complete targetmiss, no reviewer native/check reruns. No repeatedgate/reader retune or waived10%.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -8714,7 +8736,7 @@
     "active_item": {
       "id": "V02",
       "record": "212-v02-passive-original-performance.md",
-      "status": "new81-case-frozen-measurement-pending"
+      "status": "complete-measurement-original-targets-missed-review-pending"
     },
     "completed_increments": [
       {
@@ -11715,11 +11737,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.22 source8/27/5709PASS, new81Atom8224f111/UI2exact/current327/type2/admission9 andONEactualbackend13/6savedcontrolsPASS. KnownNode+1mainAbsent; secondmainPIDnotcaptured, sameUIDownedprofile refs0 afterexit. Measurement/model/newCA/import0;20of29/fullV02/16deferred unchanged. New81case432bindings frozen,13pure-readerfunctions exact/32sourcecontrolsPASS; firstactualreader/measurementpending0. No originalcriteria change.",
+    "current_activity_note": "V02.22 new81/type2/admission9/backend13/source5709, ONE198row/66windows/FIRSTreader32controls/432bindingsPASS. Basicp95382.9/449.4PASS1s; active/off24.3861/22.8143%MISS10. Knownraw2PIDsAbsent/no startfingerprints, inspectorconsoleemptyonly. No retry/newCA/import/model/waiver;20of29/fullV02/16deferred unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "6b4d321582141ddc08f93a9346dce38a65b490f7",
     "current_record_date": "2026-10-26",
-    "next_bounded_step": "Commit frozen432bindingcase/reader then exclusive maxONEoriginal198row performance run; FIRSTreader, no newCA/import/native/reader retry.",
+    "next_bounded_step": "ONE final bounded review/source and saved complete targetmiss, no reviewer native/check reruns. No repeatedgate/reader retune or waived10%.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

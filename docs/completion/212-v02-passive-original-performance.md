@@ -74,3 +74,44 @@ only; failedbeforecontract/case/native. Preserve actualstdout verbatim as JSON; 
 selftest/reader/native rerun. FIRSTfullreader stillpending; exclusivefirst-attempt marker.
 Measurement0 at preregistration; maxONE198rowrun next aftercasecommit/cleanGit/exclusivemarker.
 No target/runtime/pass claim from case/contract.
+
+## ONE actual new81 original-gate measurement — target missed
+
+Execution `fa850a568c9ff1fdf3eaec6ed635a0988d4803ae`,2026-10-26T16:26:11.581Z–16:29:33.213Z.
+Actual CLIexit0 means COMPLETE measurement, not passing thresholds. Raw
+`.artifacts/v02/basic-observer-passive/2026-10-26T16-26-11-581Z/results.json`, SHA
+`42bdcc1845a2392e406db1a1271a3e82762e81ef020f86f1d7ca826384323062`.
+All198rows/18warm180measured/66windows retained;20requests×1024B perrow,3960derived
+requests. Everyoriginal activewindow20requests20completed/onecheckpoint/21records/
+zerogaps qualifies. Original live per-row server count assertion retained; persisted
+servertraceNotCollected. No workload, denominator, trimming, timing or threshold change.
+
+| Original metric | Standalone | Public embedding example |
+| --- | ---: | ---: |
+| Basic useful-content p95ms |382.90|449.40|
+| Off workload medianms |59.05|60.05|
+| Basic workload medianms |70.80|64.85|
+| Active workload medianms |73.45|73.75|
+| Active/Offmedian% |24.38611353|22.81432137|
+| Basic≤1000ms |PASS|PASS|
+| Active≤10% |MISS|MISS|
+
+FIRST prewritten savedreader exit0 validates432current bindings/allrows/windows/raw
+JSONL/independentPythonstatistics and32changednegativecontrols. `targetsMet:false`,
+performanceAcceptanceForThisGate:false/wholeV02false. Source8/27/5709 andbackend13
+are separate evidence. Old207515.3/400.1ms and23.9865/28.6835% remain historical,
+not a controlled A/B attribution. This run doesnot establish a consistent causal
+speedup or solve theoverhead gap. Buffer preservation change retains scopedcorrectness
+on this metadata workload; memory/CPU benefit remains unmeasured.
+
+BothrawChromePIDs2769661/2775605 absent inread-onlyhostPIDnamespace4026531836 after
+exit; PID/start fingerprints were notcollected, no globaldescendant/heap claim.
+Raw ownedBrowser/desktop/serverClosed true; recordedinspector warnings/errors empty,
+worker/guardianconsolecompletenessNotCollected. Profiles retained. Exact206TLSseed
+copied only into2freshowned profiles; no newCA/key/import or personal/systemtrust.
+Current327product/archives/readers/case/olddata unchanged; newsource/item has1backend
+and1measurement, no retry or readerretune.20of29/fullV02/16deferred unchanged.
+
+The original gate remains open without maintainer waiver. ONE final bounded review
+follows; next chooseONE justified source correction from actual unused/publication
+work or an independent dependency-ready item, not anotherblind domain matrix.

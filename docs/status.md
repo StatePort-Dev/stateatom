@@ -1,13 +1,12 @@
 # Project status
 
-V02.22 [new81 source/package preparation](completion/212-v02-passive-original-performance.md).
-8new driver controls RED→GREEN,27focused/5709fullPASS; pack81/type2/admission9/backend13PASS; measurement0.
-Original80 driver exact except4identity substitutions; workload/targets unchanged.
-Exact retained206CA/seed hashes+chain+hostname/currentvalidityPASS, newCA/import0.
-New81pair/current327 + one actualbackend13/6savedcontrolsPASS; newcase432bindings frozen.
-13readerpurefunctions exact/32sourcecontrolsPASS; maxONEoriginal198row gate next.
-Host known1main+NodeAbsent; secondmainPIDnotcaptured, no sameUIDtestprofile refs after exit.
-20of29/fullV02/16deferred unchanged.
+V02.22 [ONE new81 measurement COMPLETE, target missed](completion/212-v02-passive-original-performance.md).
+New81/current327/type2/admission9/ONEbackend13PASS; source8/27/5709PASS.
+ONE198rows/18warm180measured/66windows; FIRSTreader32controls/432bindingsPASS.
+Basicp95382.9/449.4ms PASS1s; active/off24.3861/22.8143% MISS10%.
+No causal speedup/waiver; knownraw2ChromePIDsAbsent/no startfingerprints, inspectorconsoleempty only.
+Retained206TLSseed/2freshownedprofilecopies/newCA/import/model0; no native/reader retry.
+20of29/fullV02/16deferred unchanged; ONE bounded finalreview next.
 
 V02.21 [passive network-buffer correction source passed](completion/211-v02-passive-network-buffers.md).
 Read-only/no grant reserves0extra payload bytes, local/grant-bearing usesoriginal2MB/512KB.
