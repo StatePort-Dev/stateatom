@@ -6,7 +6,8 @@ ONE198rows/18warm180measured/66windows/FIRSTreader32controls/442bindingsPASS.
 Basicp95402.7/399.2msPASS1s; active/off28.1136/21.0570%MISS10/no waiver.
 Bothnativebudgets/firstreader exhausted/remaining0, no retry/newCA/import/model.
 Knownraw2ChromePIDsAbsent/no startfingerprints/inspectorconsoleempty only.
-20of29/fullV02/16deferred unchanged; ONEfinalboundedreview then passive-API feasibility.
+ONEreview0C0I0M/no correction/rereview; boundeditemclosed/16deferred unchanged.
+20of29/fullV02 unchanged; nextONE passiveAPI feasibility before anynewexperiment.
 
 V02.23 [recording publication window source passed](completion/213-v02-publication-window.md).
 Owned20separatetasks/fastack saves20→2/lateststate; all20requests/records synchronous.
