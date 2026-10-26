@@ -1,5 +1,10 @@
 # V02.20 — original performance gate on unchanged current80
 
+**Current result:** ONE actual current80measurement complete, original overhead target
+MISSED in both hosts. First frozen readerPASS32changed controls/421current inputs.
+Basicp95 515.3/400.1ms meets1s for this case; Active/Off23.98648647/28.68352220%
+misses10%. WholeV02/20of29 unchanged. ONEfinal whole-item review pending.
+
 BASE4afee97ae0ca3df1273163956bfb0c39001798c6/main/localcommits. Current80/UI2 archives
 and327of327product inputs exact; no rebuild. TWOnewcodefiles only: current80native
 measurement sibling and owned source fault tests. Old15/17drivers/cases/raw/readers
@@ -99,3 +104,51 @@ count assertion preserved. No independent persisted per-request reconstruction c
 Case/source/reader are now prepared; actualmeasurement0 at this checkpoint. Execution
 revision/clean tree/case+reader hashes will be registered immediately before maxONErun.
 Same1s/10%/198rows/18warm180measured/66windows/twohosts; original72miss stays historical.
+
+## ONE actual original-workload measurement and FIRST frozen reader
+
+Executione5601fc9681635a9e8ec7032fb872f1ff9339421/clean, maxONE frozen case.
+Actual CLIexit0 means complete data, not passed performance target.198rows/18warm/
+180measured/66active windows, Off/Basic/Active on standalone+publicexampleembedding.
+Raw `.artifacts/v02/basic-observer-current80/2026-10-26T09-04-39-726Z/results.json`,
+SHA f0690752c48ee27ddaa2e903e1a3a1f66664648e57640af7ce388097f2f69e22.
+All421input hashes equal before/after/current;327product/archives unchanged. Ordinary
+validTLS and copied singleCAseed, read-only/no production edit grant. No extraHTTP/
+appCDP/metric-lifetime/domain/trimming or workload changes. All original live per-row
+servercount assertions passed; no persisted request trace is invented.
+
+| Current gate | Standalone | Public example embedding |
+|---|---:|---:|
+| Off workload median, ms |59.19999999|57.35000002|
+| Active workload median, ms |73.39999998|73.80000001|
+| Active/Off median degradation |23.98648647%|28.68352220%|
+| Basic useful-result p95, ms |515.30000001|400.09999996|
+| Basic1s target, this manual-lookup case |PASS|PASS|
+| Active10% target |FAIL|FAIL|
+
+Prewritten reader FIRSTfull execution exit0; independent Python permutation/median/
+nearest-rankp95/paired/buffer/target calculations agree, all32CHANGEDnegative controls
+refused. Original source-only selftest is not actual data proof; this raw reader is.
+Frozen reader source and exclusive first-attempt record/report/log retained in saved-
+verification directory. No reader retuning/native repeat or upgrade of old72metrics.
+This actual run shows the current optimization did not eliminate the target miss;
+it does not prove oldcost cause or isolate one component's contribution.
+
+Browser contexts, own desktop and server close paths completed. Actual host namespace
+4026531836 postrun read found raw mainChromePIDs1455962/1461693absent. This is PID-only,
+not start-fingerprint/all-descendant proof. Profiles retained. Inspector exception/
+warning-error lists empty; worker/guardian completenessNotCollected, no allsurface
+clean-console/security claim. SetupChrome1383969/start was separately observed and
+retired before measurement; personal/systemtrust unchanged.
+
+`native-checkpoint.json`/`verify-native.py` bind actualsource/execute/case/reader/raw/
+32controls/421current/source5532/backend13/type2/admission9 and savedhostprobe. Binder
+reads saved evidence; it does not rerun measurement/reader/hostprobe. SourceTask1native0
+is historical source-stage evidence, distinct from backend1 and measurement1.
+
+No wholeV02/V03/I02/U04/A02/L02/release upgrade. NextONE source-level inspection of
+unnecessary attached/runtime work, preserving source/Trace/freshness/metric semantics;
+then a justified bounded product correction if supported. Do not run another broad
+transport/domain matrix or silently waive10%. ONEwhole review still pending here.
+Frozen plan/spec/case remain prepared bytes; actual completion lives in archived
+ledger and this record, avoiding postrun input drift from checkbox edits.
