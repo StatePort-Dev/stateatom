@@ -1,5 +1,11 @@
 # Project status
 
+[I02.28 native DevTools control passed](completion/233-i02-native-devtools-control.md):
+Google35controls, one run/Chromium unselected; actual Elements before/during Capture
+keeps its native lease/isolate. Next bounded [I02.29 canonical full Capture driver
+migration](completion/234-i02-full-capture-driver-migration.md); original full criteria
+and old failures retained, no model/performance campaign or full-task credit.
+
 [Current official Atom83/UI2 refresh accepted, bounded I02.27](completion/232-i02-current83-official-host.md).
 Host75a5ebfa: exact immutable83, frozen1290policies/narrow lock, source73/package9/
 type/build PASS, actual native metadata6 and Capture33×2PASS. Readiness remains

@@ -24,5 +24,12 @@ If only frontend setup fails, preserve that narrower unknown boundary explicitly
 
 ## Result
 
-Pending one native execution; full I02/L02/21of29 unchanged. Chromium is deliberately
-not selected and cannot be counted as a new positive in this Google-only control.
+Closed first/only native execution: GoogleChrome15635PASS, exit0/1testPASS,
+Chromium1deliberately unselected,44.86s. Exact host result
+artifacts/atom-host/i02-current83/devtools-native-2026-10-27T15-48-22-103Z/results.json.
+Before actual Elements ready: native attachedfalse. During real Capture after
+DevTools reopen: attachedtrue with unchanged Capture Runtime isolate/recording.
+Original33downstream controls also complete; no reattach/ownership bypass. Host
+3f567f79 commits the bounded proof; old full-driverFAIL remains distinct.
+Next234I02.29retains its original remaining UI/memory/cancel/interaction criteria in
+an owner-safe canonical driver. Full I02/L02/21of29 unchanged.
