@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.0-candidate.20261027.85
 
 - After30s of opt-in availability metadata waiting, show an Unknown status while
   retaining the template. Retire the owned notice on context/cancellation changes
