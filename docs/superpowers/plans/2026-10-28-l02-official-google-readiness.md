@@ -1,0 +1,9 @@
+# L02.30 — one official87 Google metadata observation
+
+Execute record262 on current main, using exact immutable official87/UI2 in authorized local StatePort checkout (read-only here). No new feature/SDK/UI/host mutation.
+
+1. Register old/current source artifacts, source29, closed19/20 raw/cases/readers, original87 performance and package maps, exact full official distribution and installed Google binary. Preserve all criteria; old results remain historical.
+2. Add source-only RED/GREEN checks for a self-contained metadata observer: four native states/absence/unrecognized/rejection/getter/finite pending/no create or prompt/late rejection cleanup. Driver refuses missing/wrong case/revision before output/resources. No fake model/native evidence from mocks.
+3. Implement bounded observer and one-off driver with original native Google adapter, ownership and nested desktop. Native metadata30s via async own-window witness (canonical CDP command deadline20s must not silently cut observation). Explicit test-only Extensions.loadUnpacked/unsafe-extension-debugging; no other security/model bypass or profile/CA import. One native attempt marker created exclusively before resources; no retry.
+4. Freeze exact case/input hashes/driver/helper and clean local source commit. Verify old/current hashes, exact host HEAD, package pins/full36dist and browser binary immediately before launch. One actual fresh owned Google profile/top-level atom.html observation, maxone availability call, no app/server/model create/prompt/download initiation. Record pending/error separately; no support/usefulness inference.
+5. Clean own resources, preserve profile/raw/case, check all inputs unchanged. ONE final bounded source/result review; maxone tested Important/Critical correction, no native retry/rereview. Archive only own workspace with CRC/all bytes/plan identity, update active plan and local commit. Full21/29/useful0/performanceMISS unchanged; one next bounded item.
