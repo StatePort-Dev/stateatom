@@ -17,7 +17,8 @@ including exact Session verification, protected sign-in and native Journey. Sepa
 POST-native activation PASS23×2; URL-only POST negative remains REPLAY_MISS. Historical
 digest assertion corrected in record227. Popup lifecycle, parallel Basic, real bridge disconnect/absence/reconnect and incompatible
 handshake also verified. Actual reviewed export matches downloaded bytes; official passive
-reader works without Desktop. Next bounded I02.21 official current Action Trace.
+reader works without Desktop. Official Action Trace baseline9/read-inject-only3PASS
+with real IDE/native body evidence. Next bounded I02.23 Action Trace session/lifecycle.
 Original matrix criteria/first failures retained. Full I02 and
 mandatory L02 remain open; full-plan count stays21/29. No new policy or scope cut.
 

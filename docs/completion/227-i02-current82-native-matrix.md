@@ -162,12 +162,38 @@ control due unexplained downloads.html.crdownload; precise origin Unknown and th
 failure retained. Current run additionally records download events and has none until
 Confirm, then only the expected blob JSON/completion. No criterion was weakened.
 
+## I02.21–22 — original native Action Trace on the official host
+
+Hostf6b14c97/3cd1eb72 adapt the existing finite Action Trace tests to one official
+Atom82/UI2 host with actual current VS Code source audit. Baseline9PASS: native source
+picker/Arm/original synchronous body entry/leave, exact IDE body range, Clear/Cancel,
+explicit async body gap and original narrow/control checks. Original eight-check
+baseline predicate SHA256:
+0175f72c0c7e55380f1fd42d13e38fa7584754db21ee0d78cb585318a9e1b170.
+Host result: artifacts/atom-host/i02-current82/actions-native/2026-10-27T12-49-44-810Z/results.json.
+
+Separate read/inject-only profile3PASS: actions[],readOnlytrue, invocation0 before Arm,
+real native click then complete body. Its positive predicate block is unchanged:
+078b4e66818f030b9ad60cad4d725ab61c2b6966f73f7371e95205fd4b875253.
+Host result: artifacts/atom-host/i02-current82/actions-native/2026-10-27T12-58-29-284Z/results.json.
+
+Inputs/official distribution unchanged,errors[]. One native Chromium official host,
+not both Capture browser variants or all A05. No full function identity/async effect/
+HTTP-state ancestry claim. First workspace Path-denied refusal retained; only its
+copied synthetic location moved inside unchanged IDE project root. First read-only
+run stopped on old summary text before Arm; readiness recognizes current explicit
+Registered/non-execution wording. Historical successful readonly control had the same
+Unknown DOM bindings. No getter access, mutation authority or success threshold added.
+
+Current global task-index pointers now select I02 and count accepted I01 (21/29).
+The former incomplete-I01/global-A02 pointer and20/29release checkpoint remain
+historical, alongside unchanged full feature requirements/dependencies/criteria.
+
 ## Next bounded item / remaining acceptance
 
-I02.21: existing scoped native Action Trace controls on the exact official pair,
-including real IDE source identity, native activation and explicit async/body gaps.
-Original full Playwright Capture FAIL2 remains driver debt; migrated controls do not
-automatically establish its complete parity. Full I02 still includes remaining
+I02.23: original finite native Action Trace session/lifecycle matrix on one official
+host. Original full Playwright Capture FAIL2 remains driver debt; migrated controls
+do not automatically establish complete parity. Full I02 still includes remaining
 Action Trace/local-model and installed matrix, including mandatory L02.
 Full count stays21/29. No human recruitment blocker, fallback/model credit,
 performance waiver, new Live/grant/handoff policy, scope reduction, SDK or publication.
