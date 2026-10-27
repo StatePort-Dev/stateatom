@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased — availability metadata UI
+## 0.1.0-candidate.20261027.83
 
 - Show the existing checking status while optional local-model metadata is pending;
   keep the recorded template available and restore template/optional status on opt-out.
