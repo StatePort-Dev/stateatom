@@ -21,8 +21,9 @@ native/speedup/10% acceptance. [V02.32 local87](../completion/257-v02-current87-
 intake/affected native10PASS; readonly/body retention, no fullCapture/model/target credit.
 [V02.33](../completion/259-v02-current87-original-performance.md) complete198rows/
 66windows/reader32 controls, Basic398.9/401msPASS; Active27.2227/27.3554%MISS10%.
-Budget1/1used, no retune/waiver/causal claim. Next L02.28supported-route eligibility
-only; old84MISS/32INCOMPLETE remain.
+Budget1/1used, no retune/waiver/causal claim. L02.28eligibility closes read-only: oldGoogle156alreadytried, metadata153distinct;
+actual model readiness remainsUnknown. Next L02.29experimental Unknown normalization
+source-only, no new native/model campaign. Old84MISS/32INCOMPLETE remain.
 Historical entries retain scope.
 
 Current approved-scope execution is tracked in [completion status](../status.md)

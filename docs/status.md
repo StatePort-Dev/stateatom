@@ -99,10 +99,16 @@ complete198rows/66windows/457bindings/FIRSTreader32negative controls. Basicp95
 speedup; max1measurement/1readerused0remaining. Own recorded PIDs absent in observed
 namespace, no global tree/heap claim. Old84/32raw and current327inputs preserved.
 
-Next bounded **[L02.28 supported browser-route eligibility](completion/260-l02-supported-route-eligibility.md)**,
-retained browser facts/primary API requirements only, no old model/CA/native retry.
-Full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04.
-Autonomy until09:00 Mauritius October28.
+[L02.28 eligibility closed](completion/260-l02-supported-route-eligibility.md): oldC2
+already exact Google156/current binary,0API rows/34unvisited; no brand-switch retry.
+Official metadata was Chromium153, no Google model-readiness proof. Basic Linux CPU/
+storage facts fit documented minima, actual readiness/network/cache remainUnknown.
+Found experimental derived-provider error→unavailable mismatch with productUnknown.
+No new browser/API/model/download/CA operation.
+
+Next bounded **[L02.29 source Unknown fix](completion/261-l02-derived-availability-unknown.md)**
+only; no experimental-provider selection or oldcampaign retry. Full **21/29 (72.41%)**,
+eight open U04,A02,L02,I02,I03,V02,V03,V04. Autonomy until09:00 Mauritius October28.
 
 
 ## Historical checkpoints
