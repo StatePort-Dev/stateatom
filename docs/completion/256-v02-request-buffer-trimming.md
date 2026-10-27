@@ -29,4 +29,43 @@ Full21/29 remains72.41%. Design ../superpowers/specs/2026-10-28-request-buffer-t
 plan ../superpowers/plans/2026-10-28-request-buffer-trimming.md. Registered24inputs/
 327product/full36officialdist/current10payload before edits. First registration
 spawnSyncgitEPERM before any source/before-runtime/registration writes; rerun with
-subprocess permission succeeds. No browser/model/server. Not implemented yet.
+subprocess permission succeeds. No browser/model/server.
+
+## Source result
+
+Implementation6580a46 changes only runtime.mjs plus one new source test file.
+Private scanner consumes the original complete JSON.stringify output; string
+escape/nesting depth identifies only outer array commas. The first fitting suffix
+uses the same UTF16length and preserves exact row identities/order. Empty lists
+skip serialization. Original5minute/32row/256000character criteria stay exact.
+No cached record lengths or additional request/app/source reads.
+
+Initial8controls4PASS4FAIL: all four failures are operation counts (empty1instead0,
+worst overflow33instead1, escaped21instead1, Unicode3instead1), after semantic
+legacy comparisons passed. GREEN8PASS. Two added actual source-runtime/synthetic
+CDP cases retain the correct newest fitting response and drop an oversized escaped
+newest response. Focused118PASS; full `npm test`5937PASS0FAIL0cancel0SKIP,
+164916.945448ms, exit0. Syntax/diff and reversible-source binder PASS.
+These are source/owned VM/synthetic protocol checks, not actual app/browser proof.
+
+Preservation:23registered inputs and326other Atom build inputs unchanged;
+runtime.mjs is the sole declared product difference. Current10payload15/full
+current official86dist36 and historical archives/raw/cases/readers remain exact.
+Artifact `.artifacts/v02/request-buffer-trimming/2026-10-28/` retains original runtime,
+registration/RED/GREEN/focused/full logs and executable exact-reverse-source binder.
+Runtime SHA25668905788a58c6f64ad0e0b1275f02dfc83ba67bb4a42216c78bbcf19d03b1de5;
+test SHA2566031bd7ad9ddf3d92e67ade06b9b8dce55818f8f3c4965cf3c0458f3a0e9a749.
+ONE final source review0Critical/0Important/1Minor; no correction/rereview.
+M1nonblocking test gap deferred: exact256000-character suffix after deleting first
+row is not separately checked (single-row exact boundary is covered). Current
+formula is correct; no product defect or requirement exception was identified.
+No native/model/performance run or target waiver.
+
+Closeout archive own9files passed CRC/everybyte/planidentity before ownworkspace
+removal: `.artifacts/v02/request-buffer-trimming-review/2026-10-28/workspace.zip`,
+SHA256139dc07e39d30493bb545a2eb73fd6111349933d45bb1efea3313056abdb2657.
+Current official86/archives unchanged; full21/29remains72.41%.
+One next bounded **V02.32 local87package prerequisite**: unique local candidate87
+for the reviewed runtime change, same exactUI2/API1/wire1/exports/permissions;
+clean producer/complete input+payload delta/types/admission, no native/host/model/
+performance/publication. Do not claim87exists or is accepted before those checks.

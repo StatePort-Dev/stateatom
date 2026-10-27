@@ -6719,22 +6719,54 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.30",
-        "record": "239-v02-debugger-lifetime-feasibility.md",
-        "status": "closed-bounded-source-api-no-dropin-equivalence",
-        "source_witnesses": 1,
+        "id": "V02.31",
+        "record": "256-v02-request-buffer-trimming.md",
+        "status": "closed-bounded-source-only",
+        "source_revision": "6580a46",
+        "declared_product_deltas": 1,
+        "new_checks": 10,
+        "focused_checks": 118,
+        "full_checks": 5937,
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 1,
+          "deferred": "M1 exact256000 suffix boundary control"
+        },
         "native_runs": 0,
-        "product_changes": 0,
+        "model_calls": 0,
+        "performance_measured": false,
         "performance_acceptance": false,
         "whole_V02_complete": false
       },
-      "execution_record": "239-v02-debugger-lifetime-feasibility.md",
+      "execution_record": "256-v02-request-buffer-trimming.md",
       "current_checkpoint": {
-        "record": "239-v02-debugger-lifetime-feasibility.md",
-        "status": "closed-source-api-decision",
-        "next_bounded_step": "L02.24 source pending metadata/provider/controller lifecycle inspection; retained real readiness Unknown, no native/model/device/CA retry or inferred cause."
+        "record": "256-v02-request-buffer-trimming.md",
+        "status": "closed-source-retention-optimization",
+        "next_bounded_step": "ONE V02.32 unique clean local87 for reviewed runtime trim; preserve86/UI2/history, exact source/payload/contract/consumer/type2/admission9. No native/host/model/performance/publication or target acceptance."
       },
       "completed_slices": [
+        {
+          "id": "V02.31",
+          "record": "256-v02-request-buffer-trimming.md",
+          "status": "closed-bounded-source-only",
+          "source_revision": "6580a46",
+          "declared_product_deltas": 1,
+          "new_checks": 10,
+          "focused_checks": 118,
+          "full_checks": 5937,
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 1,
+            "deferred": "M1 exact256000 suffix boundary control"
+          },
+          "native_runs": 0,
+          "model_calls": 0,
+          "performance_measured": false,
+          "performance_acceptance": false,
+          "whole_V02_complete": false
+        },
         {
           "id": "V02.25",
           "record": "215-v02-webrequest-feasibility.md",
@@ -8119,7 +8151,17 @@
         "measurement_budget_remaining": 0,
         "first_reader_budget_remaining": 0
       },
-      "next_bounded_step": "ONE V02.31 source-only private request-buffer trimming with exact retention and operation-count controls; no claimed cause/speedup/target acceptance or old native/model/performance retry."
+      "next_bounded_step": "ONE V02.32 unique clean local87 for reviewed runtime trim; preserve86/UI2/history, exact source/payload/contract/consumer/type2/admission9. No native/host/model/performance/publication or target acceptance.",
+      "historical_active_before_V02_31": {
+        "id": "V02.30",
+        "record": "239-v02-debugger-lifetime-feasibility.md",
+        "status": "closed-bounded-source-api-no-dropin-equivalence",
+        "source_witnesses": 1,
+        "native_runs": 0,
+        "product_changes": 0,
+        "performance_acceptance": false,
+        "whole_V02_complete": false
+      }
     },
     {
       "id": "V03",
@@ -9741,8 +9783,8 @@
     "document": "254-a02-host-weak-dispatch.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
-    "current_increment": "V03.32-current10-native-incomplete-admission-corrected",
-    "next_item": "V02.31",
+    "current_increment": "V02.31-request-trimming-source-closed",
+    "next_item": "V02.32",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9769,8 +9811,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "V02",
-      "record": "256-v02-request-buffer-trimming.md",
-      "status": "bounded31-source-preparation-next"
+      "record": "257-v02-current87-local-package.md",
+      "status": "bounded32-package-prerequisite-next"
     },
     "completed_increments": [
       {
@@ -12771,11 +12813,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03.32 unique10consumer7+17+13PASS; sole native INCOMPLETE after3checks, Original loaded-module proof lacks readonly journal. Off/On/trap/state-positive unvisited; ONEreview0C1I0M, one pre-browser refusal correction/2PASS, no rerun. Full21/29 unchanged.",
+    "current_activity_note": "V02.31 source6580a46 exact request retention with <=1serialization/nonempty and0empty;8new+2synthetic runtime controls,118affected/full5937PASS/ONEreview0C0I1M.326other product/official86/current10payload unchanged, no native/performance/cause/target credit.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "71b0f2698994220df14f12fd25a085dbc431acff",
+    "current_source_revision": "6580a46",
     "current_record_date": "2026-10-27",
-    "next_bounded_step": "ONE V02.31 source-only private request-buffer trimming with exact retention and operation-count controls; no claimed cause/speedup/target acceptance or old native/model/performance retry.",
+    "next_bounded_step": "ONE V02.32 unique clean local87 for reviewed runtime trim; preserve86/UI2/history, exact source/payload/contract/consumer/type2/admission9. No native/host/model/performance/publication or target acceptance.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -12785,7 +12827,7 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "Preregistered32native driver; post-review admission correction pending local commit, product runtime unchanged.",
+    "current_source_revision_kind": "Reviewed Atom runtime trim source; runtime1of327build/1of270source differs from immutable86. Local87notyetbuilt; native/performance unmeasured.",
     "current_source_checkpoint": ".artifacts/l02/current86-package/2026-10-27/checkpoint.json",
     "current_source_checkpoint_kind": "Local86 exact archive/source/build/payload/contract/type2/admission9, no native/model proof.",
     "historical_active_pointer_before_V02_18": {

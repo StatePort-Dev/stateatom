@@ -76,8 +76,14 @@ trap/state-positive/parity unvisited. ONEreview0C1I0M: readonly/script-body mism
 one source preflight refusal fix/2PASS, no native retry or privacy expansion.
 Current source/archives/327product/official86 unchanged, frozen driver preserved.
 
-Next bounded **V02.31 private request-buffer trimming**: preserve exact retention/
-privacy, reduce repeated serialization source-only. No performance acceptance inferred.
+[V02.31 source trimming closed](completion/256-v02-request-buffer-trimming.md),
+source6580a46: same private5minute/32row/256000character retention; empty array
+serialization1→0, controlled worst overflow33→1. RED4/4→GREEN8, focused118/full5937
+PASS; ONEreview0C0I1M/nonblocking suffix-boundary test deferred. No actual speedup/
+10%target/causal claim/native run.326other product inputs/official86 unchanged.
+
+Next bounded **[V02.32 local87 package](completion/257-v02-current87-local-package.md)**:
+unique clean artifact/types/admission for reviewed runtime, no host/publication.
 Full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04.
 Autonomy until09:00 Mauritius October28.
 
