@@ -1,6 +1,7 @@
 # Local developer-preview acceptance
 
-Latest official-host increment: [I02.36 exact local85↔86 reload/rollback](../completion/250-i02-component-reload-rollback.md),
+Current official87host81bec06e is qualified in [I02.37](../completion/258-i02-current87-host-refresh.md).
+Historical component checkpoint: [I02.36 exact local85↔86 reload/rollback](../completion/250-i02-component-reload-rollback.md),
 host223714a7, corrected actual7PASS/4wholeFAIL retained. Waiting rule retirement,
 local saved snapshot and enabled-target picker on unchanged app document only; no
 Store/Capture-in-progress/fullI02 credit. Current86/UI2 intake remains249. Full21/29
@@ -22,8 +23,11 @@ intake/affected native10PASS; readonly/body retention, no fullCapture/model/targ
 [V02.33](../completion/259-v02-current87-original-performance.md) complete198rows/
 66windows/reader32 controls, Basic398.9/401msPASS; Active27.2227/27.3554%MISS10%.
 Budget1/1used, no retune/waiver/causal claim. L02.28eligibility closes read-only: oldGoogle156alreadytried, metadata153distinct;
-actual model readiness remainsUnknown. Next L02.29experimental Unknown normalization
-source-only, no new native/model campaign. Old84MISS/32INCOMPLETE remain.
+actual model readiness remainsUnknown. [L02.29](../completion/261-l02-derived-availability-unknown.md)
+closes source-only Unknown normalization:45focused/5955fullPASS,673protected/ONEreview
+0C0I0M, outside87maps/native0. Next [L02.30](../completion/262-l02-official-google-readiness.md)
+separately frozen official87top-level Google metadata prerequisite, no create/prompt/
+download or closed19/20retry. Old84MISS/32INCOMPLETE remain.
 Historical entries retain scope.
 
 Current approved-scope execution is tracked in [completion status](../status.md)
