@@ -1,0 +1,343 @@
+{
+  "schema": "stateport.i02-current87-retention-case/1",
+  "out": "/home/roman/projects/scenariodeck/artifacts/atom-host/i02-current87/2026-10-28/native-retention-igrBJr",
+  "budget": "/home/roman/projects/scenariodeck/artifacts/atom-host/i02-current87/2026-10-28/native-attempt.json",
+  "producer": "/home/roman/projects/stateatom",
+  "official": "/home/roman/projects/scenariodeck/apps/chrome-extension/dist",
+  "info": {
+    "ui": {
+      "packageName": "@stateport/extension-ui",
+      "packageVersion": "0.2.0-candidate.20261018.2",
+      "uiContractVersion": "2.1.0",
+      "artifactSha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+      "sourceCommit": "9eafb0e131ffc3abf20c16f7636c65e64760b855",
+      "sourceDirty": true,
+      "sourceTreeDigest": "e361c3c7bb4b84ebce030e457e99d29e9c45e98e2a7c4a897eca948228007d3c",
+      "files": {
+        "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "NOTICE": "d1546935ddf0131576c017b5b35d59978514e06fe73274a446c74a0552b7185a",
+        "dist/components.css": "15cac0fbacb288be7e4483a1b177a1890d0235a3b6709aa6d0e5885b72db8282",
+        "dist/fonts.css": "5fffedd14436a23ab7ab2521a259ba8580034367467542f6887ccaf46c137ef0",
+        "dist/tokens.css": "4403b8a6da0e17ab23442397b20297bcaed1140be317ed93777d537a5c2986ac",
+        "contract.json": "34e32d44e35b0b26764037c07e024f8ec9ee6b3c569098739c8ac6b791a33880",
+        "package.json": "019825662990e6a93ef654f62eeaf67d3fa0f65ea940c4984228b7d2f3d4bd0e",
+        "assets/fonts/provenance.json": "4430cbb4abc59ad16b5df5879e87debd5be06e4477f16edf9689e9c0a977590c",
+        "CHANGELOG.md": "45884a83c14037c55af68dc9c2e305a4c28485158f0d7b1f9311946ed6b2b11b",
+        "README.md": "e8f06bb92026cd54da66db476c530f5bf01270252fd5b8cd0728e7da2b76cae1",
+        "assets/stateport-mark.svg": "d9cf5712f750cb5f8a0674368ca4dbe99052163bfcba8882e34cd9ec149de65d",
+        "assets/fonts/Inter-LICENSE.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "dist/assets/fonts/InterVariable.woff2": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3"
+      }
+    },
+    "atom": {
+      "packageName": "@stateport/atom",
+      "packageVersion": "0.1.0-candidate.20261028.87",
+      "artifactSha256": "6b020d8ff4b221f321d01516fbf6941c6351a0dc6afdc9ff1b6f3c1d74e005ce",
+      "uiArtifactSha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+      "sourceRevision": "a859d9deb9e7bcc33d8a8e2ee5522c1361313510",
+      "sourceDirty": false,
+      "contract": {
+        "apiVersion": 1,
+        "wireVersion": 1,
+        "uiContract": "2.1.0",
+        "uiPackage": "0.2.0-candidate.20261018.2",
+        "storageNamespace": "stateport.atom.v1.",
+        "capabilities": [
+          "read",
+          "inject",
+          "reload",
+          "cache",
+          "override",
+          "replay"
+        ],
+        "origins": [
+          "http://localhost:<port>",
+          "http://127.0.0.1:<port>",
+          "http://[::1]:<port>"
+        ],
+        "capabilityVersion": 1,
+        "features": [
+          "capability-policy-v1",
+          "native-picker-v1",
+          "live-debugger-guardian-v1",
+          "source-analysis-worker-v1",
+          "source-parser-worker-v1"
+        ],
+        "featureDiscovery": {
+          "operation": "capabilities",
+          "requiredVersion": 1,
+          "notEvidence": "Admission and observation availability are separate from source/execution claims"
+        },
+        "sitePolicy": {
+          "scope": "exact scheme, host and port",
+          "default": "read-only",
+          "development": "explicit session connection with individual actions",
+          "production": "read-only by default; separate two-stage production input permission",
+          "helper": "canonical http://127.0.0.1:<port>, separate browser access",
+          "artifacts": "separate exact-origin browser permission"
+        },
+        "guardian": {
+          "protocolVersion": 1,
+          "authority": "live-memory-only",
+          "offscreenReason": "WORKERS",
+          "assets": [
+            "guardian.html",
+            "guardian.js",
+            "guardian-worker.js"
+          ],
+          "scope": "Resource admission and cleanup; not input or execution evidence"
+        },
+        "sourceAnalysis": {
+          "protocolVersion": 1,
+          "assets": [
+            "source-analysis-worker.js"
+          ],
+          "scope": "Explicit transient lexical source context only; no runtime values or execution",
+          "timeBudgetMs": 1500,
+          "resultBytes": 65536
+        },
+        "sourceParser": {
+          "protocolVersion": 1,
+          "assets": [
+            "source-parse-worker.js"
+          ],
+          "scope": "Private session-only artifact parsing in the owned offscreen document; no source execution or public validated-map input",
+          "mapTimeBudgetMs": 1500,
+          "archiveTimeBudgetMs": 2000,
+          "maxConcurrentJobs": 2,
+          "transportBytes": 33554432
+        }
+      },
+      "files": {
+        "CHANGELOG.md": "1addba15d779956abe0778514274c91d50a77344f901f2b7e99120f9717aff01",
+        "LICENSE": "7839a054cc205ef0dc12a6b79f82254fe63852e8a1d827ec7e4e48ec0e1362b9",
+        "LICENSES/Apache-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "NOTICE": "9ef4cf51373f5e1977ca89a0fd9adaa896b5a2fde652973c9d7faecac3d5a2d3",
+        "README.md": "39d167232fe5d40aa2d67ebb529610372c3de702b82eeb3bded670e9c933c5c5",
+        "contract.json": "ccfdac93efaf006eb3bf01e6e559c7ee8520bdd9c696fbbb9a486fb5a58d88fa",
+        "dist/THIRD_PARTY_LICENSES.md": "76fe11294253f8d16558fa06ffcec9e46fc6d8f50a645527e729d73407513690",
+        "dist/atom-guardian-worker.js": "db43b3101a08c3a6fa78467349372a622c1fded453a00c0f14003b7461163882",
+        "dist/atom-guardian.html": "70b71a19f37ae176c10eaa955e06298d9b67ee2a677b67bef6f742ed082e36c1",
+        "dist/atom-guardian.js": "d0ba0092ccc3d152766eb87f0c47bc149dd6d30d16eb2e013cff842de2bcf68a",
+        "dist/atom.css": "58c63727366d0c5951a7052b9a60ee672f74664ec7bb0a42f0c4a8fd84de0d42",
+        "dist/browser-inputs.json": "c507ae026f0b9b875322ee3a9e8221f7885be0dbcbb7a1f5333fd2f45c200a73",
+        "dist/capabilities.d.ts": "3347cff38049d248a52f8fd456a5c1f7cab4e507001d28038ff6c37855364e7b",
+        "dist/content.js": "023b0acb36e21679b053c304d5956dd172faf4288ebc40adc5b58cb6727ac838",
+        "dist/platform.d.ts": "63427df8ad6a23353f09f631aee6d0b3f7bb5ebea0aed9a9209360a965e86d30",
+        "dist/platform.mjs": "07eb6b655f8e3a7052174874acc4fee74be8e9da863e2090be7840ae88c4dff8",
+        "dist/reader.css": "0577d319ba62955eeed9bc84725e994c1612d42ecbb8b2a18e2c13254bcc1f38",
+        "dist/reader.html": "9fdeb1fd1b4b2792dedbdd4485017199075c3bdf718077755ece8e66f600e4ec",
+        "dist/reader.js": "ca5752f072e476c4a6262fd7caa17aa28dfcd47868e6ab574f22b90c5ff78803",
+        "dist/runtime.d.ts": "020a8529ed9d4f6ebfb53593bf4af3c7eaa0685e2a51e6636c460cd477b6d0f7",
+        "dist/runtime.mjs": "f264f726ba1481f27a86c24da5fa37ef910eb4309dc1ff3ab7dde3235c37bc82",
+        "dist/source-analysis-worker-inputs.json": "60c24dbdb5782ea20fa9bdbcbdf29bd5780d39ccaae2a6624d8988dc6fe3b6f1",
+        "dist/source-analysis-worker.js": "1dfaffc2dffce72b935e646436166ae19d8ff87e1103d5b4d9d2e16467db7920",
+        "dist/source-manifest.json": "a0647b4ab80f21ea5dbe21b37efc4a4c60cc578e74082966c28848aed880bf0c",
+        "dist/source-parse-worker-inputs.json": "e9dae55bf7912fb069444951239e6b119692060291d869269509308c978cc4e7",
+        "dist/source-parse-worker.js": "0f28111193035035bb7988a2d9c9659a093a93643385e22e0a377ad5031ce5a8",
+        "dist/transport.d.ts": "33100b1e92cdd74a5503a958e10501827a000837a71fccb670880847d4557ae5",
+        "dist/transport.mjs": "ccf16b3ef0ba6f7da69f6d8b8fbe7d023601494679c3d2e019e4cdb29e7c7a8b",
+        "dist/ui.d.ts": "ceb97186a68ca60ed002e1d8101046f4bcabe57b37e5c9c7f2e68505b966bfc3",
+        "dist/ui.mjs": "0db2dc5e21678712637da880fed7d7b98c393d515caf382b59601a04c8a57972",
+        "package.json": "b971c2ea93da3e58314fef1ef2ca4ede88d0fa0d5b1bbbfbe70e86b263067d7d"
+      }
+    },
+    "browserPackageInputs": [
+      "../../node_modules/.pnpm/@stateport+atom@file+third_party+atom+stateport-atom-0.1.0-candidate.20261028.87.tgz_@s_9e0251e88d457e584d9af79110a5becb/node_modules/@stateport/atom/dist/runtime.mjs",
+      "../../node_modules/.pnpm/@stateport+atom@file+third_party+atom+stateport-atom-0.1.0-candidate.20261028.87.tgz_@s_9e0251e88d457e584d9af79110a5becb/node_modules/@stateport/atom/dist/platform.mjs",
+      "../../node_modules/.pnpm/@stateport+atom@file+third_party+atom+stateport-atom-0.1.0-candidate.20261028.87.tgz_@s_9e0251e88d457e584d9af79110a5becb/node_modules/@stateport/atom/dist/transport.mjs",
+      "../../node_modules/.pnpm/@stateport+atom@file+third_party+atom+stateport-atom-0.1.0-candidate.20261028.87.tgz_@s_9e0251e88d457e584d9af79110a5becb/node_modules/@stateport/atom/dist/ui.mjs"
+    ],
+    "version": "0.1.0-beta.5",
+    "contract": "stateport-capture-bridge/5",
+    "developmentId": "hfaidliegcchcfpbjbjpenegcpbblohl",
+    "bundleBytes": 1445462,
+    "sourceTreeDigestMethod": "SHA-256 of JSON.stringify(sorted [repository-relative path, exact-file SHA-256] entries)",
+    "sourceTreeDigest": "73c6abb547fdb71e488ada3998b7e859b6b070c060613f01dbf50d1743e22535"
+  },
+  "inputs": {
+    "/home/roman/projects/scenariodeck/apps/chrome-extension/scripts/verify-atom-current87-retention.mjs": "edd1222df7d9c835b11c2405cfd95a06483926d1ba0265a8a616a7e9355206d3",
+    "/home/roman/projects/scenariodeck/apps/chrome-extension/scripts/atom-package.mjs": "52838ee854d02fb3aca49c7fc8b3fcdc89152f9af25f3497041e43c3b4d70992",
+    "/home/roman/projects/scenariodeck/apps/chrome-extension/scripts/ui-package.mjs": "e1e2908e2278c27af57b6fd9c8de79a056eaa7e4612e57b54b602653a1c826af",
+    "/home/roman/projects/scenariodeck/third_party/atom/atom-handoff.json": "4f65c94bac39f12f586ffdcf88f73cf64c3c2a310d7e52a1939985843ec493f7",
+    "/home/roman/projects/scenariodeck/third_party/atom/intake.json": "557793758e695ee1f35c3887f0ae971d7d4b23a7d8ebaf72f5cd67ba0997f349",
+    "/home/roman/projects/scenariodeck/third_party/atom/payload-sha256.json": "ce1b77ca83fa8edafc27bcb1e68c8302afffeb2d99349509128212cde61c7224",
+    "/home/roman/projects/scenariodeck/third_party/atom/stateport-atom-0.1.0-candidate.20261028.87.tgz": "6b020d8ff4b221f321d01516fbf6941c6351a0dc6afdc9ff1b6f3c1d74e005ce",
+    "/home/roman/projects/scenariodeck/apps/chrome-extension/package.json": "87885ec0219118734755776c88172a81af770e5a4d45464a8ade1adf7608f244",
+    "/home/roman/projects/scenariodeck/pnpm-lock.yaml": "81385d4af8d25b71fe638af31058ded19c2e2b17cdfad1f364fddfe822dc1ac8",
+    "/home/roman/projects/scenariodeck/pnpm-workspace.yaml": "afa23f0e9b0d5b46c43308315d77c2fb818a1181092cd6784f7ef46184e15a06",
+    "/home/roman/projects/stateatom/scripts/native-browser.mjs": "449328d4858f058e0b75a4f82b56cee724c0b185f834d6e747890f513ed4747b",
+    "/home/roman/projects/stateatom/scripts/harness.mjs": "3796e76b60f450b46cde335521efb9fd1dcf3aa1305501f30c2af61627f2d7ec",
+    "/home/roman/projects/stateatom/scripts/atom-package-receipt.mjs": "f54a3c72c65b5f032a2936b0a216b2516016fa8c356388bf33dfc9397a0b4d7c",
+    "/home/roman/projects/stateatom/tests/helpers/native-inspector-ui.mjs": "2a82f3a643bbbacd9a6f8ed7e798f77b1416f110f1828ac23fd97b24bc8109b9",
+    "/home/roman/projects/stateatom/tests/helpers/native-compilation-admission.mjs": "c3c18722a312308f618a13aa0406090425b3504b1e1b5d31ffb2fb164ad32d83"
+  },
+  "distribution": {
+    "BUILD-INFO.json": "acac54e164aa17413f667e9ba722c63bbcbc345f9d29d6de9bddfe8a99a0806e",
+    "atom/LICENSE": "7839a054cc205ef0dc12a6b79f82254fe63852e8a1d827ec7e4e48ec0e1362b9",
+    "atom/LICENSES/Apache-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "atom/NOTICE": "9ef4cf51373f5e1977ca89a0fd9adaa896b5a2fde652973c9d7faecac3d5a2d3",
+    "atom/THIRD_PARTY_LICENSES.md": "76fe11294253f8d16558fa06ffcec9e46fc6d8f50a645527e729d73407513690",
+    "atom/atom.css": "58c63727366d0c5951a7052b9a60ee672f74664ec7bb0a42f0c4a8fd84de0d42",
+    "atom/content.js": "023b0acb36e21679b053c304d5956dd172faf4288ebc40adc5b58cb6727ac838",
+    "atom/contract.json": "ccfdac93efaf006eb3bf01e6e559c7ee8520bdd9c696fbbb9a486fb5a58d88fa",
+    "atom/reader.css": "0577d319ba62955eeed9bc84725e994c1612d42ecbb8b2a18e2c13254bcc1f38",
+    "atom/reader.html": "4a5883529dd53c2d1cbbe7c229b3573979f98a8d7bb6cbcd028abffbcc4a80b5",
+    "atom/reader.js": "ca5752f072e476c4a6262fd7caa17aa28dfcd47868e6ab574f22b90c5ff78803",
+    "atom-guardian-worker.js": "db43b3101a08c3a6fa78467349372a622c1fded453a00c0f14003b7461163882",
+    "atom-guardian.html": "70b71a19f37ae176c10eaa955e06298d9b67ee2a677b67bef6f742ed082e36c1",
+    "atom-guardian.js": "d0ba0092ccc3d152766eb87f0c47bc149dd6d30d16eb2e013cff842de2bcf68a",
+    "atom-host.css": "b6d1ada8b20858f4dcca9a92f94f4d2e930263a11e7375cac23974314349dfea",
+    "atom-page.js": "68d8d69f8011707420d02f870abbab9be70a883643a16b914f0a4acb9b81fcb1",
+    "atom.html": "d0eec8915ed857fb5e4b3b34bd3e41c214e82bcd806fbfd0006f32b9e716cb3c",
+    "extension-ui/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "extension-ui/NOTICE": "d1546935ddf0131576c017b5b35d59978514e06fe73274a446c74a0552b7185a",
+    "extension-ui/assets/fonts/Inter-LICENSE.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "extension-ui/assets/fonts/InterVariable.woff2": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3",
+    "extension-ui/components.css": "15cac0fbacb288be7e4483a1b177a1890d0235a3b6709aa6d0e5885b72db8282",
+    "extension-ui/contract.json": "34e32d44e35b0b26764037c07e024f8ec9ee6b3c569098739c8ac6b791a33880",
+    "extension-ui/fonts.css": "5fffedd14436a23ab7ab2521a259ba8580034367467542f6887ccaf46c137ef0",
+    "extension-ui/tokens.css": "4403b8a6da0e17ab23442397b20297bcaed1140be317ed93777d537a5c2986ac",
+    "icons/128.png": "5f59b966364c4e989f49472f1e03be734f7135062b98f58c054595a00ee440a8",
+    "icons/16.png": "f37e9f93cbe1600c9623e5476fa33867aa1420c9255b7e59e7479abb1758871a",
+    "icons/32.png": "b2477ed34eb96df60a0eb1c2916deb9c03a1bb56853a093207da79aeaae0d640",
+    "icons/48.png": "156484b67b641d072affd9d2fb99baa6507ede2f88ffed2bfd749fb86f2e434c",
+    "manifest.json": "b044dd95a84ec320c28f6395e8a1282a487b50cfe6960e052e266ae9b4bef139",
+    "popup.css": "61afe40108dc1b9ef5871d26c464831e31655d77de76d4b7efb113ca7978e8b1",
+    "popup.html": "b262cd01d4c8a40b2ec7399e8214810b94f2143e9996f1ae05bdd299d1085a1d",
+    "popup.js": "a727edd128b0a1297cf02bcbe9d52f4c6c9ebe13236f9ab354c5f9239b2b56d8",
+    "service-worker.js": "d9a08a644bda766ebf81c12faa01e1c09a4e408a0275cd573b008b3bd47443f6",
+    "source-analysis-worker.js": "1dfaffc2dffce72b935e646436166ae19d8ff87e1103d5b4d9d2e16467db7920",
+    "source-parse-worker.js": "0f28111193035035bb7988a2d9c9659a093a93643385e22e0a377ad5031ce5a8"
+  },
+  "package": {
+    "name": "@stateport/atom",
+    "version": "0.1.0-candidate.20261028.87",
+    "file": "/home/roman/projects/stateatom/.artifacts/atom/2026-10-27T22-15-04-103Z/stateport-atom-0.1.0-candidate.20261028.87.tgz",
+    "sha256": "6b020d8ff4b221f321d01516fbf6941c6351a0dc6afdc9ff1b6f3c1d74e005ce",
+    "exports": {
+      "./runtime": {
+        "types": "./dist/runtime.d.ts",
+        "default": "./dist/runtime.mjs"
+      },
+      "./ui": {
+        "types": "./dist/ui.d.ts",
+        "default": "./dist/ui.mjs"
+      },
+      "./platform": {
+        "types": "./dist/platform.d.ts",
+        "default": "./dist/platform.mjs"
+      },
+      "./transport": {
+        "types": "./dist/transport.d.ts",
+        "default": "./dist/transport.mjs"
+      },
+      "./atom.css": "./dist/atom.css",
+      "./content.js": "./dist/content.js",
+      "./reader.js": "./dist/reader.js",
+      "./reader.html": "./dist/reader.html",
+      "./reader.css": "./dist/reader.css",
+      "./contract.json": "./contract.json",
+      "./guardian.html": "./dist/atom-guardian.html",
+      "./guardian.js": "./dist/atom-guardian.js",
+      "./guardian-worker.js": "./dist/atom-guardian-worker.js",
+      "./source-analysis-worker.js": "./dist/source-analysis-worker.js",
+      "./source-parse-worker.js": "./dist/source-parse-worker.js"
+    }
+  },
+  "ui": {
+    "file": "/home/roman/projects/stateatom/.artifacts/atom/2026-10-27T22-15-04-103Z/stateport-extension-ui-0.2.0-candidate.20261018.2.tgz",
+    "sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+    "owner": "Host imports tokens.css, optional local fonts.css plus its relative asset, components.css once, then atom.css",
+    "name": "@stateport/extension-ui",
+    "version": "0.2.0-candidate.20261018.2",
+    "uiContractVersion": "2.1.0",
+    "exports": {
+      "./tokens.css": "./dist/tokens.css",
+      "./components.css": "./dist/components.css",
+      "./contract.json": "./contract.json",
+      "./assets/stateport-mark.svg": "./assets/stateport-mark.svg",
+      "./fonts.css": "./dist/fonts.css",
+      "./assets/fonts/InterVariable.woff2": "./dist/assets/fonts/InterVariable.woff2"
+    }
+  },
+  "atomPayload": {
+    "CHANGELOG.md": "1addba15d779956abe0778514274c91d50a77344f901f2b7e99120f9717aff01",
+    "LICENSE": "7839a054cc205ef0dc12a6b79f82254fe63852e8a1d827ec7e4e48ec0e1362b9",
+    "LICENSES/Apache-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "NOTICE": "9ef4cf51373f5e1977ca89a0fd9adaa896b5a2fde652973c9d7faecac3d5a2d3",
+    "README.md": "39d167232fe5d40aa2d67ebb529610372c3de702b82eeb3bded670e9c933c5c5",
+    "contract.json": "ccfdac93efaf006eb3bf01e6e559c7ee8520bdd9c696fbbb9a486fb5a58d88fa",
+    "dist/THIRD_PARTY_LICENSES.md": "76fe11294253f8d16558fa06ffcec9e46fc6d8f50a645527e729d73407513690",
+    "dist/atom-guardian-worker.js": "db43b3101a08c3a6fa78467349372a622c1fded453a00c0f14003b7461163882",
+    "dist/atom-guardian.html": "70b71a19f37ae176c10eaa955e06298d9b67ee2a677b67bef6f742ed082e36c1",
+    "dist/atom-guardian.js": "d0ba0092ccc3d152766eb87f0c47bc149dd6d30d16eb2e013cff842de2bcf68a",
+    "dist/atom.css": "58c63727366d0c5951a7052b9a60ee672f74664ec7bb0a42f0c4a8fd84de0d42",
+    "dist/browser-inputs.json": "c507ae026f0b9b875322ee3a9e8221f7885be0dbcbb7a1f5333fd2f45c200a73",
+    "dist/capabilities.d.ts": "3347cff38049d248a52f8fd456a5c1f7cab4e507001d28038ff6c37855364e7b",
+    "dist/content.js": "023b0acb36e21679b053c304d5956dd172faf4288ebc40adc5b58cb6727ac838",
+    "dist/platform.d.ts": "63427df8ad6a23353f09f631aee6d0b3f7bb5ebea0aed9a9209360a965e86d30",
+    "dist/platform.mjs": "07eb6b655f8e3a7052174874acc4fee74be8e9da863e2090be7840ae88c4dff8",
+    "dist/reader.css": "0577d319ba62955eeed9bc84725e994c1612d42ecbb8b2a18e2c13254bcc1f38",
+    "dist/reader.html": "9fdeb1fd1b4b2792dedbdd4485017199075c3bdf718077755ece8e66f600e4ec",
+    "dist/reader.js": "ca5752f072e476c4a6262fd7caa17aa28dfcd47868e6ab574f22b90c5ff78803",
+    "dist/runtime.d.ts": "020a8529ed9d4f6ebfb53593bf4af3c7eaa0685e2a51e6636c460cd477b6d0f7",
+    "dist/runtime.mjs": "f264f726ba1481f27a86c24da5fa37ef910eb4309dc1ff3ab7dde3235c37bc82",
+    "dist/source-analysis-worker-inputs.json": "60c24dbdb5782ea20fa9bdbcbdf29bd5780d39ccaae2a6624d8988dc6fe3b6f1",
+    "dist/source-analysis-worker.js": "1dfaffc2dffce72b935e646436166ae19d8ff87e1103d5b4d9d2e16467db7920",
+    "dist/source-manifest.json": "a0647b4ab80f21ea5dbe21b37efc4a4c60cc578e74082966c28848aed880bf0c",
+    "dist/source-parse-worker-inputs.json": "e9dae55bf7912fb069444951239e6b119692060291d869269509308c978cc4e7",
+    "dist/source-parse-worker.js": "0f28111193035035bb7988a2d9c9659a093a93643385e22e0a377ad5031ce5a8",
+    "dist/transport.d.ts": "33100b1e92cdd74a5503a958e10501827a000837a71fccb670880847d4557ae5",
+    "dist/transport.mjs": "ccf16b3ef0ba6f7da69f6d8b8fbe7d023601494679c3d2e019e4cdb29e7c7a8b",
+    "dist/ui.d.ts": "ceb97186a68ca60ed002e1d8101046f4bcabe57b37e5c9c7f2e68505b966bfc3",
+    "dist/ui.mjs": "0db2dc5e21678712637da880fed7d7b98c393d515caf382b59601a04c8a57972",
+    "package.json": "b971c2ea93da3e58314fef1ef2ca4ede88d0fa0d5b1bbbfbe70e86b263067d7d"
+  },
+  "maximumBrowserLaunches": 1,
+  "requiredReadonlyLoadedModuleDigests": false,
+  "fixtureSha256": "d5e9a448028759b29e54635db316d6a0641f8e2029da91fee5cfca4c8e436c96",
+  "hostRevision": "223714a70d19fe7c7477aa43f25b5b0016022122",
+  "hostDirty": true,
+  "configuration": {
+    "operator": "agent",
+    "ownedSyntheticHTTP": true,
+    "readOnlyFirst": true,
+    "explicitDevelopmentActions": [
+      "cache"
+    ],
+    "appTargetTestDebugger": false,
+    "appConsole": "NotCollected",
+    "IDE": false,
+    "model": false,
+    "productionGrant": false,
+    "CA": false,
+    "TLS": false,
+    "performance": false,
+    "wholeI02": false,
+    "wholeV02": false
+  },
+  "httpPreflight": {
+    "fixture": true,
+    "fittingOneRow": true,
+    "twoRowsOverflow": true,
+    "escapedRowOverflow": true,
+    "syntheticNotNative": true,
+    "traffic": [
+      {
+        "kind": "fit",
+        "n": 0,
+        "characters": 119017,
+        "sha256": "c0e26b12ba9bf3af47ebd9fff71630a6c490945feb229318b31aa7c9c5ab506d",
+        "at": 1793140497168
+      },
+      {
+        "kind": "oversize",
+        "n": 0,
+        "characters": 120017,
+        "sha256": "7c66620553bff8844d0dc65c8980e8ae0a2d4ad8d68c68414039c691d095a619",
+        "at": 1793140497172
+      }
+    ]
+  }
+}

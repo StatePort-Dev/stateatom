@@ -54,3 +54,29 @@ second application debugger. Fixed read-only app scripting is authored fixture
 observation, not attestation or complete lineage. Errors/partials/unvisited paths
 and scoped browser/server cleanup retained; any native failure closes this case,
 no automatic newtag/timeout/flag retry. No original10% measurement here.
+
+
+## Intake/source preparation before sole native
+
+Exact87accepted locally; old86history20files and full36file actualdist copy retained.
+Frozen offline install passes1290supply-chain entries37.9s/39.1s total, resolution
+skipped,+1/-1. pnpm downloaded1 is a local-file import; no wire-level assertion.
+Lock retains exact6refs+actualSHA512 normalization; age union adds only87.
+Build/types and sequential package2+3+4/source73PASS. Actual full dist differs only
+BUILD-INFO.json/service-worker.js; UI/manifest/guardian/workers/reader/fonts stable.
+Service-worker contains changed Atom runtime; do not claim its entire previous
+Capture native execution is freshly qualified on87. Source/tool rebinding is identity
+only and all previous raw stays historical.
+
+Source/HTTP preflight and3CLI negative admissions PASS, no browser. Intermediate
+preflight and final frozen native-retention-igrBJr case both retained separately;
+only final case is eligible for sole attempt. Native driver requires exact87/assets,
+checks readonly allows no loaded-app module digest premise, and uses fixed campaign
+attempt marker native-attempt.json (exclusive create), maximumONE browser globally
+for this item. Own extension worker compilation digest is checked in its extension
+target; no application test debugger/source-body request is added.
+
+Frozen [official87-retention-case.json](../testing/official87-retention-case.json),
+SHA256 b01f95f493064b2aab7de05045be4313ab78dc4bef8e8f80c1722164b16d1834. Host revision223714a7/sourceDirtytrue,
+not a clean-host acceptance: prepared intake/tool/driver changes are frozen by hashes.
+Producer a859d9d clean packaged87 is separate. Browser not yet launched.
