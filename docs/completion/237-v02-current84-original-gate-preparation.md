@@ -43,3 +43,17 @@ Reader13purefunctions AST-exact,32negative source controls PASS; no first full-r
 marker or measurement marker exists. Retained206TLS4hashes/chain/hostname/checkend3600
 PASS, expires2026-10-28T08:38:10Z; no new key/cert/import/browser. Package84/source327
 remain unchanged. Next freeze case/role mappings/input closure before actual gate.
+
+Closed bounded preparation. New docs/testing/basic-observer-record-size-case.json
+SHA256cb8f5be7bab0559c3d60fadcb9d5782fc81dc2717bc5c9eb12eed2f12b97d9d7;
+449registered bindings/287case inputs/327product current. Role mappings replace
+82handoff/types/admission/backend/archives/reader/driver with exact84inputs; no
+unmapped historical-input drift for this new case. Original198/18/180/66/protocol/
+order/fixture/TLS authorization and10%/1s criteria exact. New reader/contract and
+source-checkpoint/preflight are under .artifacts/v02/record-size-performance-* /
+2026-10-27 (full paths in the case). Firstreader/measurement markers absent.
+verify-frozen-case.py PASS; no build/native/model/measurement in preparation.
+
+One next bounded [V02.29](238-v02-current84-original-gate.md): at mostONE actual
+current84 original198row measurement and its exclusive FIRSTreader. Original82
+MISS remains separate. No newCA/import/threshold relaxation/retuning/rerun/newmatrix.

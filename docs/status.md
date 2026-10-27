@@ -1,18 +1,18 @@
 # Project status
 
-[V02.27 immutable84 local prerequisite complete](completion/236-v02-current84-local-package.md):
-clean6a5d7e9/deterministic offline pack,9admission/2types/13native input-backend PASS.
-New Atom84SHA09d366dd.../same UI2; this backend does not qualify changed production
-ledger or performance. [Source235](completion/235-v02-ledger-byte-sizing.md) has
-7new/169affected/5868full PASS and30000exact differential comparisons.
+[V02.28 new84 original gate preparation complete](completion/237-v02-current84-original-gate-preparation.md):
+casecb8f5be7/449bindings/327product, exact original198rows/order/fixture/thresholds;
+new driver8/affected30source PASS, reader13purefunctions/32negative controls exact.
+Retained206TLS4hash/chain/hostname/checkendPASS; no newCA/import/native measurement.
 
-Official host [I02.29](completion/234-i02-full-capture-driver-migration.md) stays
-on83/UI2 with38/40native controls. Full plan **21/29 (72.41%)**, eight open
-U04,A02,L02,I02,I03,V02,V03,V04; original overhead28.1136/21.0570% MISS10% retained.
+Next bounded **[V02.29 one new original84 gate](completion/238-v02-current84-original-gate.md)**,
+maximum1measurement/1FIRSTreader. New code235/immutable84 justify this separate case;
+old82gate is not rerun. Original28.1136/21.0570% MISS10% remains until new evidence.
 
-Next bounded **[V02.28 new84 original-gate preparation](completion/237-v02-current84-original-gate-preparation.md)**:
-freeze new case/reader, check only retained206TLS hashes/validity. No measurement,
-new CA/import/model/official-host upgrade/SDK/publication in this preparation.
+Official host stays [accepted83/UI2](completion/234-i02-full-capture-driver-migration.md),
+38/40native controls; local84 package has9admission/2types/13input-backend controls,
+not native ledger/performance qualification. Full plan **21/29 (72.41%)**, eight open
+U04,A02,L02,I02,I03,V02,V03,V04. No SDK, publication or automatic host upgrade.
 Autonomy continues until09:00 Mauritius October28.
 
 ## Historical checkpoints

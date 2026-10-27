@@ -6503,25 +6503,25 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.27",
-        "record": "236-v02-current84-local-package.md",
-        "status": "closed-local-package-and-input-backend-prerequisite",
-        "package": "0.1.0-candidate.20261027.84",
-        "package_sha256": "09d366dd97289139ed0287da7d381468e527254da066ae5c61f2f2468d4198be",
-        "source_revision": "6a5d7e979f593edf4514e301dd4179aa810c9ded",
-        "source_dirty": false,
-        "package_checks": 9,
-        "type_checks": 2,
-        "input_backend_controls": 13,
-        "native_ledger_accepted": false,
-        "performance_acceptance": false,
-        "whole_V02_complete": false
+        "id": "V02.28",
+        "record": "237-v02-current84-original-gate-preparation.md",
+        "status": "closed-frozen-new84-case-reader-preparation",
+        "registered_inputs": 449,
+        "product_inputs": 327,
+        "new_harness_controls": 8,
+        "affected_controls": 30,
+        "reader_pure_functions": 13,
+        "reader_negative_controls": 32,
+        "measurement_runs": 0,
+        "new_CAs": 0,
+        "new_imports": 0,
+        "performance_acceptance": false
       },
-      "execution_record": "236-v02-current84-local-package.md",
+      "execution_record": "237-v02-current84-original-gate-preparation.md",
       "current_checkpoint": {
-        "record": "236-v02-current84-local-package.md",
-        "status": "closed-bounded-local-prerequisite",
-        "next_bounded_step": "V02.28 new frozen84 original case/reader and unchanged retained206TLS validity/hash prerequisite; no measurement or new CA/import in preparation."
+        "record": "237-v02-current84-original-gate-preparation.md",
+        "status": "closed-frozen-new84-preparation",
+        "next_bounded_step": "V02.29 at mostONE new original198row measurement and FIRST frozen reader on exact84; no newCA/import/retune/retry/whole-task credit."
       },
       "completed_slices": [
         {
@@ -7850,6 +7850,21 @@
           "minor": 0,
           "rereview": false
         }
+      },
+      "previous_slice_before_V02_28": {
+        "id": "V02.27",
+        "record": "236-v02-current84-local-package.md",
+        "status": "closed-local-package-and-input-backend-prerequisite",
+        "package": "0.1.0-candidate.20261027.84",
+        "package_sha256": "09d366dd97289139ed0287da7d381468e527254da066ae5c61f2f2468d4198be",
+        "source_revision": "6a5d7e979f593edf4514e301dd4179aa810c9ded",
+        "source_dirty": false,
+        "package_checks": 9,
+        "type_checks": 2,
+        "input_backend_controls": 13,
+        "native_ledger_accepted": false,
+        "performance_acceptance": false,
+        "whole_V02_complete": false
       }
     },
     {
@@ -9417,8 +9432,8 @@
     "document": "232-i02-current83-official-host.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
-    "current_increment": "V02.27-current84-local-package-prerequisite-complete",
-    "next_item": "V02.28 new frozen84 original case/reader and unchanged retained206TLS validity/hash prerequisite; no measurement or new CA/import in preparation.",
+    "current_increment": "V02.28-new84-original-gate-preparation-complete",
+    "next_item": "V02.29 at mostONE new original198row measurement and FIRST frozen reader on exact84; no newCA/import/retune/retry/whole-task credit.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9445,8 +9460,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "V02",
-      "record": "237-v02-current84-original-gate-preparation.md",
-      "status": "bounded28-case-preparation-next"
+      "record": "238-v02-current84-original-gate.md",
+      "status": "bounded29-original-gate-next"
     },
     "completed_increments": [
       {
@@ -12447,7 +12462,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Exact84/UI2 clean6a5d7e9 deterministic/offline pack/admission9/types2/input backend13 PASS; this is not native ledger/performance proof. Official83 unchanged,21of29 unchanged. Next new frozen84case/reader and retained TLS precheck, no CA campaign.",
+    "current_activity_note": "New84case cb8f5be7/449bindings/327product/driver4identity-only substitutions/8new30affected/reader13purefunctions32negative source checks frozen; retained206TLS hashes/chain/hostname/checkendPASS,0newCA/import/measurement. Next maximumONE new198row gate andFIRSTreader; original82MISS/full21of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "4ef5d652b17cf4b3446f2f720d964269fe4e68b1",
     "current_record_date": "2026-10-27",
