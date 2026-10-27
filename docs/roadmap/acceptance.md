@@ -1,10 +1,11 @@
 # Local developer-preview acceptance
 
-Latest official-host increment: [I02.27 current83bounded acceptance](../completion/232-i02-current83-official-host.md),
-full21/29tasks unchanged. Fresh native metadata6/Capture33×2 use exact83/UI2. Old82
-Action Trace/Settings/authority/reader results stay historical, no83model readiness
-claim. Full I02/L02/V02remain open. Next I02.28 DevTools/Capture driver parity;
-prior roadmap entries below retain their original scope, not new release qualification.
+Latest official-host increment: [I02.36 exact local85↔86 reload/rollback](../completion/250-i02-component-reload-rollback.md),
+host223714a7, corrected actual7PASS/4wholeFAIL retained. Waiting rule retirement,
+local saved snapshot and enabled-target picker on unchanged app document only; no
+Store/Capture-in-progress/fullI02 credit. Current86/UI2 intake remains249. Full21/29
+unchanged. Next [A02.54 state weak-method dispatch](../completion/251-a02-state-weak-dispatch.md)
+is source-only, not a native/GC/model-install retry. Historical entries retain scope.
 
 Current approved-scope execution is tracked in [completion status](../status.md)
 and [V03.11](../completion/124-v03-warning-baseline.md): installed6 cold startup

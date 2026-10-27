@@ -43,10 +43,15 @@ model off/no metadata request,390/1100root13px. OnlyBuildInfo/atom-page differ; 
 Capture assets identical85. Initial verification-command failures retained. No new
 Unknown-error/native-model/performance or fullI02 qualification inferred.
 
-Next bounded **[I02.36 component reload/rollback](completion/250-i02-component-reload-rollback.md)**:
-exact old85stage first, then local85↔86reload, saved snapshot/no resumed writer and
-picker on existing app. Distinct from worker restart; no Store/installer/Capture-in-
-progress/model/CA claim. Full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04.
+[I02.36 local component reload/rollback closed](completion/250-i02-component-reload-rollback.md),
+host223714a7: corrected actual7PASS exact85↔86, same app document, waiting rules
+retired, saved UUID/raw/digest exact, fresh readonly enabled-target picker/no app action.
+Four wholeFAILs retained;11inputs/current full dist stable. No Store/installer/active
+Capture retention/model/CA/fullI02 acceptance.
+
+Next bounded **[A02.54 state weak-method dispatch](completion/251-a02-state-weak-dispatch.md)**:
+source reproduction/correction only, no new strong pins or50native/GC/model/install
+retry. Full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04.
 Local autonomy until09:00 Mauritius October28; no SDK/push/publication or human gate.
 
 ## Historical checkpoints

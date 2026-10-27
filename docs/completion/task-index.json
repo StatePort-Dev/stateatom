@@ -3003,7 +3003,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "FullA02open: bounded field/writer/parameter/selected-producer prerequisites remain.51–53 source closed,50native budget exhausted; no guessed cause or blind retry. I01 is now accepted (226); current independent I02 native matrix is tracked in227. No new full A02 acceptance.",
+      "next_bounded_step": "A02.54 ONE source-only state handoff late WeakRef method/accessor dispatch reproduction and correction; preserve existing identity/revision gates and lost-ref Unknown, no50native/GC/oldmodel/install retry.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -3182,7 +3182,7 @@
         }
       ],
       "implementation_plan": "../superpowers/plans/2026-10-27-a02-body-array-intrinsics.md",
-      "active_slice": {
+      "historical_active_before_A02_54": {
         "id": "A02.53",
         "record": "222-a02-body-array-intrinsics.md",
         "status": "closed-bounded-source-only",
@@ -3223,6 +3223,13 @@
           "modelCalls": 0,
           "fullA02": false
         }
+      },
+      "active_slice": {
+        "id": "A02.54",
+        "record": "251-a02-state-weak-dispatch.md",
+        "status": "planned-bounded-source-reproduction",
+        "native_runs": 0,
+        "full_A02": false
       },
       "historical_checkpoint_before_A02_51": {
         "active_slice": {
@@ -6471,7 +6478,7 @@
         "host_modified": false,
         "meaning": "Existing source integration/old-pair native evidence credited; current exact pair update/acceptance remains open"
       },
-      "execution_record": "249-i02-current86-host-refresh.md"
+      "execution_record": "250-i02-component-reload-rollback.md"
     },
     {
       "id": "I03",
@@ -9605,6 +9612,16 @@
         ],
         "runtime_capture_assets_identical86": true,
         "fresh86native": false
+      },
+      "local_component_reload_rollback": {
+        "revision": "223714a7",
+        "record": "250-i02-component-reload-rollback.md",
+        "artifact": "artifacts/atom-host/i02-component-reload/checkpoint.json",
+        "native_checks": 7,
+        "transitions": 2,
+        "previous_whole_failures_retained": 4,
+        "full_I02_accepted": false,
+        "Store_qualified": false
       }
     },
     "historical_active_pointer_before_I02_current82": {
@@ -9625,11 +9642,11 @@
       "next_bounded_step": "I01 exact local-file policy/install then current host guardian/lifecycle adaptation; separate scope already authorized.",
       "next_task": "A02"
     },
-    "document": "232-i02-current83-official-host.md",
+    "document": "250-i02-component-reload-rollback.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
-    "current_increment": "I02.35-exact86-official-affected-ui-closed",
-    "next_item": "I02.36 exact local unpacked85↔86 component reload/rollback: saved diagnostic/no resumed waiting writer/picker on existing app; initial exact85dist restoration before native, no model/CA/Store/Capture campaign.",
+    "current_increment": "I02.36-exact-local85-86-reload-rollback-closed",
+    "next_item": "A02.54 ONE source-only state handoff late WeakRef method/accessor dispatch reproduction/correction; no new strong pins or stronger lineage, no50native/GC/model/install retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9655,9 +9672,9 @@
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
-      "id": "I02",
-      "record": "250-i02-component-reload-rollback.md",
-      "status": "bounded36-update-rollback-prerequisite-next"
+      "id": "A02",
+      "record": "251-a02-state-weak-dispatch.md",
+      "status": "bounded54-source-reproduction-next"
     },
     "completed_increments": [
       {
@@ -12658,11 +12675,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Official86/UI2 hostbd3afcdf: frozen1290/strict lock+history25/build/types/package9/source73PASS; sole native free-template5PASS, modeloff/no metadata request. OnlyBuildInfo/atom-page changed, runtime/Capture assets identical85. Initial runner errors preserved; no fullI02/L02/new86performance acceptance.",
+    "current_activity_note": "Host223714a7 I02.36 actual7PASS local exact85↔86reload/rollback: waiting rules retired, same app document, no auto lease, saved raw/digest exact, fresh readonly enabled-target picker.4FAIL retained;11inputs/full dist stable, no model/CA/Store/Capture retention/fullI02 credit. ONE next A02.54 source weak-method dispatch.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "1c3d5126aeda58d5f186e4caf3f767a8e64f87c8",
     "current_record_date": "2026-10-27",
-    "next_bounded_step": "I02.36 exact local unpacked85↔86 component reload/rollback: saved diagnostic/no resumed waiting writer/picker on existing app; initial exact85dist restoration before native, no model/CA/Store/Capture campaign.",
+    "next_bounded_step": "A02.54 ONE source-only state handoff late WeakRef method/accessor dispatch reproduction/correction; no new strong pins or stronger lineage, no50native/GC/model/install retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -12750,5 +12767,5 @@
       }
     }
   },
-  "next_task": "I02"
+  "next_task": "A02"
 }
