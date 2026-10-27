@@ -1,5 +1,13 @@
 # Intake current Atom/UI into the official StatePort host
 
+**Current execution, October27:** [I01 accepted](../completion/226-i01-current82-official-host.md)
+under separate explicit maintainer authorization; full plan21/29. The exact pair below
+is consumed by the official host. [I02 current bounded native matrix](../completion/227-i02-current82-native-matrix.md)
+continues; local-model/full installed/release acceptance remain open. This document
+itself grants no publication, SDK or account authority.
+
+## Historical handoff preparation
+
 This is the reviewable I01 handoff for a separate authorized host change. It does
 not authorize modifying the StatePort checkout, publishing, or account changes.
 The existing October18 integration remains credited for its own pair. Updating

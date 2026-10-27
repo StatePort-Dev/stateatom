@@ -12,13 +12,16 @@ through evening; no additional routine I01 permission needed.
 
 [I02 current native increments](completion/227-i02-current82-native-matrix.md):
 Settings12PASS (real600115ms expiry), authority/site-removal15PASS, compatible
-native Capture/current-code/cold runtime32×2PASS on Chromium153/GoogleChrome156,
+native Capture/current-code/cold runtime33×2PASS on Chromium153/GoogleChrome156,
 including exact Session verification, protected sign-in and native Journey. Separate
 POST-native activation PASS23×2; URL-only POST negative remains REPLAY_MISS. Historical
 digest assertion corrected in record227. Popup lifecycle, parallel Basic, real bridge disconnect/absence/reconnect and incompatible
 handshake also verified. Actual reviewed export matches downloaded bytes; official passive
 reader works without Desktop. Official Action Trace baseline9/read-inject-only3PASS
-with real IDE/native body evidence. Next bounded I02.23 Action Trace session/lifecycle.
+with real IDE/native body evidence; lifecycle19 and fresh free Basic/reader12 also pass.
+Model-disabled template3controls pass but opt-in readiness FAIL3/Unknown; no unavailable
+route/L02 credit or new model campaign. Real optional-origin revoke preserves Capture,
+with explicit readonly Basic reconnect. Next L02.21 source-only availability/epoch controls.
 Original matrix criteria/first failures retained. Full I02 and
 mandatory L02 remain open; full-plan count stays21/29. No new policy or scope cut.
 

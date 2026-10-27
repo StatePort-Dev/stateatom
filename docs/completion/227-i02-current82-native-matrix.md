@@ -189,11 +189,56 @@ Current global task-index pointers now select I02 and count accepted I01 (21/29)
 The former incomplete-I01/global-A02 pointer and20/29release checkpoint remain
 historical, alongside unchanged full feature requirements/dependencies/criteria.
 
+## I02.23–24 — Action Trace lifecycle and fresh free workflow
+
+Host3a7b28b2: original18registered native session cases plus identity19PASS on one
+official host. Peer/keyboard/navigation/HMR/unpair/getter/late-IDE controls retain
+original assertions; copied source is restored and all inputs/distribution unchanged.
+Result: artifacts/atom-host/i02-current82/actions-native/2026-10-27T13-00-28-924Z/results.json.
+
+Hostd18c3612: existing Basic/picker/keyboard/review/export/fresh-reader workflow11checks
+plus immutable identity12PASS, errors/console[]. Only necessary reader route changes
+in the original workflow block; mapped SHA256:
+1ccefea25b031686f025f19a0a00168086a3a056dce2af9ea245574fac2afc91.
+Result: artifacts/atom-host/i02-current82/basic-reader-native/2026-10-27T13-04-25-421Z/results.json.
+No Desktop/IDE/account/model/certificate setup. Actual originating browser closes;
+fresh official reader has0app/stored tabs, imports exact historical Unknown report,
+loads bundled font and makes no app request. Not Store/Desktop-installed acceptance.
+
+## I02.25 — model readiness negative, no unavailable-route/L02 credit
+
+Host72ba59bb retains the explicit-only native failure driver. Official identity,
+default readonly Basic/Unknown and native model-disabled template3checks pass.
+Trusted opt-in has checkedtrue/user activation, LanguageModel typefunction. Its20s
+readiness wait never produces available/unavailable/download UI; previous recorded
+template stays visible. Whether API settlement or a discarded UI callback is the
+cause remains Unknown. Last native result exits1/FAIL3:
+artifacts/atom-host/i02-current82/model-unavailable-native/2026-10-27T13-12-07-710Z/results.json.
+The local-enabled Explain branch was never entered; no create/prompt/download was
+requested by the driver. No forced provider/model API or fallback-only L02 credit.
+The initial fixture-realm failure and ONE opt-in diagnostic remain retained. No more
+profile/feature-flag/native/model variants under this bounded recipe; next L02 source
+prerequisite distinguishes availability settlement from UI-generation invalidation.
+
+## I02.26 — real optional-origin revoke preserves Capture
+
+Host40afa3c3: real preapproval then native Allow site and attach grants optional
+HTTPS access; removal retires every Atom scope/pairing per embedding contract.
+Wait for both runtime retirement and actual native releases. Capture retains the
+same native isolate/owner and recording phase; explicit readonly Basic reconnect
+then succeeds. All original32controls plus this control33each/PASS2,78.73s:
+- artifacts/atom-host/i01-current82/capture-native-2026-10-27T13-26-05-629Z/results.json
+- artifacts/atom-host/i01-current82/capture-native-2026-10-27T13-26-43-255Z/results.json
+Existing synthetic certificate reused with isolated test-certificate browser policy;
+no new CA/trust import or normal permission-prompt acceptance. Original failures
+retain incorrect preapproval/other-Basic assumptions and async native cleanup race;
+no product policy or native-release criterion weakened.
+
 ## Next bounded item / remaining acceptance
 
-I02.23: original finite native Action Trace session/lifecycle matrix on one official
-host. Original full Playwright Capture FAIL2 remains driver debt; migrated controls
-do not automatically establish complete parity. Full I02 still includes remaining
-Action Trace/local-model and installed matrix, including mandatory L02.
-Full count stays21/29. No human recruitment blocker, fallback/model credit,
-performance waiver, new Live/grant/handoff policy, scope reduction, SDK or publication.
+L02.21: source-only availability settlement versus UI-generation controls from the
+negative I02.25; native/model budget0. Original full Playwright Capture FAIL2 remains
+driver debt; migrated controls do not establish full parity. Full I02 includes the
+unresolved current local-model route/mandatory L02 and installed matrix.
+Full count stays21/29. No human recruitment blocker, performance waiver, new Live/
+grant/handoff policy, scope reduction, SDK or publication.

@@ -10,7 +10,8 @@ This is a delivery plan, not a new architecture or a release announcement. It re
 The audit distinguishes implementation read in this revision, results recorded by the repository, and the hosted CI result for this exact commit. No native browser, IDE or local-model test was rerun for that original document package. Subsequent executable increments have separate execution records. See [the audit](01-current-state-audit.md).
 
 Current executable checkpoint: [I01 current official host accepted](226-i01-current82-official-host.md),
-21/29full tasks; next I02 current lifecycle/permission/Capture matrix. Historical
+21/29full tasks; [I02 bounded native progress](227-i02-current82-native-matrix.md) covers
+current Capture/bridge/Action Trace/fresh reader; full I02/local-model remain open. Historical
 sequences below retain their original milestones. Mandatory L02 and V02 remain open;
 no publication follows from this acceptance.
 

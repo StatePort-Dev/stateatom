@@ -3003,7 +3003,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "FullA02open: bounded field/writer/parameter/selected-producer prerequisites remain.51–53 source closed,50native budget exhausted; no guessed cause or blind retry. Next independent I01 is separately authorized and in progress; current native Capture regression remains.",
+      "next_bounded_step": "FullA02open: bounded field/writer/parameter/selected-producer prerequisites remain.51\u201353 source closed,50native budget exhausted; no guessed cause or blind retry. I01 is now accepted (226); current independent I02 native matrix is tracked in227. No new full A02 acceptance.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -3358,7 +3358,8 @@
         },
         "current_checkpoint": "220-a02-selected-source-isolation.md"
       },
-      "historical_next_bounded_step_before_night_checkpoint": "ONE final bounded source review; I01 separate host scope pending, no oldnative repeats."
+      "historical_next_bounded_step_before_night_checkpoint": "ONE final bounded source review; I01 separate host scope pending, no oldnative repeats.",
+      "historical_next_bounded_step_before_I02_current82": "FullA02open: bounded field/writer/parameter/selected-producer prerequisites remain.51\u201353 source closed,50native budget exhausted; no guessed cause or blind retry. Next independent I01 is separately authorized and in progress; current native Capture regression remains."
     },
     {
       "id": "A03",
@@ -5935,7 +5936,7 @@
       "historical_execution_records": [
         "189-l02-current-path-comparison.md"
       ],
-      "next_bounded_step": "MandatoryL02open; web20 and loader19 budgets exhausted, no further variants absent a concrete separate prerequisite. Next independent I01 is separately authorized and in progress; current native Capture regression remains.",
+      "next_bounded_step": "MandatoryL02open; web20 and loader19 budgets exhausted, no further variants absent a concrete separate prerequisite. I01 accepted (226); I02.25 retained native opt-in UI readiness FAIL3/Unknown (227), no create/prompt/download requested. Next source-only prerequisite distinguishes provider availability settlement from UI-generation invalidation before any new native/model attempt; no fallback-only L02 credit.",
       "historical_checkpoint_before_L02_16": {
         "record": "189-l02-current-path-comparison.md",
         "status": "closed-bounded-native-incomplete-source-complete",
@@ -6099,7 +6100,8 @@
         },
         "current_checkpoint": "218-l02-reviewed-select.md",
         "execution_record": "218-l02-reviewed-select.md"
-      }
+      },
+      "historical_next_bounded_step_before_I02_current82": "MandatoryL02open; web20 and loader19 budgets exhausted, no further variants absent a concrete separate prerequisite. Next independent I01 is separately authorized and in progress; current native Capture regression remains."
     },
     {
       "id": "I01",
@@ -6213,13 +6215,16 @@
         "settings": {"host_commit": "b9b82871", "native_checks": 12, "real_expiry_ms": 600115},
         "authority": {"host_commit": "5d608d01", "native_checks": 14},
         "site_permission": {"host_commit": "2c9f4ef7", "native_checks": 15},
-        "compatible_native_capture_replay": {"host_commit": "e5f71e48", "browser_variants": 2, "controls_each": 32, "cold_runtime": true, "exact_session_digest_verified": true, "full_original_capture_matrix": false},
+        "compatible_native_capture_replay": {"host_commit": "40afa3c3", "browser_variants": 2, "controls_each": 33, "cold_runtime": true, "exact_session_digest_verified": true, "full_original_capture_matrix": false},
         "action_trace_baseline": {"host_commit": "f6b14c97", "native_checks": 9, "official_hosts": 1, "baseline_predicates_unchanged": true},
         "action_trace_read_inject_only": {"host_commit": "3cd1eb72", "native_checks": 3, "mutation_actions": [], "positive_predicates_unchanged": true},
+        "action_trace_lifecycle": {"host_commit": "3a7b28b2", "native_checks": 19, "official_hosts": 1, "original_registered_cases": 18},
+        "fresh_basic_reader": {"host_commit": "d18c3612", "native_checks": 12, "original_workflow_checks": 11, "Desktop": false, "fresh_profile": true},
+        "model_readiness_negative": {"host_commit": "72ba59bb", "result": "FAIL3", "cause": "Unknown API settlement versus UI callback", "unavailable_route_accepted": false, "model_run_requested": false, "L02_accepted": false},
         "post_native_activation": {"host_commit": "4471afdb", "browser_variants": 2, "controls_each": 23},
         "post_url_only_negative": {"host_commit": "9d9cb4a3", "result": "NOT_CONFIRMED/REPLAY_MISS", "accepted_positive": false},
         "full_I02_accepted": false,
-        "next_bounded_step": "I02.23 original scoped native Action Trace session/lifecycle matrix on one official host; preserve remaining full I02/local-model/installed gates. Preserve remaining full Capture/Desktop/helper/reader/Action Trace/installed/model matrix criteria."
+        "next_bounded_step": "I02.26 bounded native33x2 accepted. Next source prerequisite L02.21 availability settlement versus UI generation, native/model budget0; full I02/installed/model gates remain. Preserve remaining full Capture/Desktop/helper/reader/Action Trace/installed/model matrix criteria."
       },
       "existing_implementation": {
         "record": "205-release-date-decision.md",
@@ -9271,11 +9276,12 @@
       "record": "226-i01-current82-official-host.md"
     },
     "current_host_checkpoint": {
-      "revision": "3cd1eb72",
+      "revision": "40afa3c3",
       "record": "227-i02-current82-native-matrix.md",
-      "artifact": "artifacts/atom-host/i02-current82/actions-native/2026-10-27T12-58-29-284Z/results.json",
-      "native_checks": 3,
-      "full_I02_accepted": false
+      "artifact": "artifacts/atom-host/i01-current82/capture-native-2026-10-27T13-26-05-629Z/results.json",
+      "native_checks": 33,
+      "full_I02_accepted": false,
+      "browser_variants": 2
     },
     "historical_active_pointer_before_I02_current82": {
       "document": "144-v03-owned-editor-reply.md",
@@ -9298,8 +9304,8 @@
     "document": "227-i02-current82-native-matrix.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
-    "current_increment": "I02.22-current82-official-read-inject-action-trace-accepted-bounded",
-    "next_item": "I02.23 original Action Trace session/lifecycle matrix on the exact official pair; retain full I02/L02/installed acceptance gaps.",
+    "current_increment": "I02.26-current82-native33x2-accepted-model-readiness-negative",
+    "next_item": "L02.21 source-only availability settlement versus UI generation from I02.25; native/model budget0. I02.26 accepted33x2, full I02/L02/installed remain open.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -12328,11 +12334,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "I01 accepted in226; current I02 Capture/current+cold/protected-auth/Journey/bridge/reader32controls on each of2native browsers, plus official Action Trace baseline9/read-inject3PASS at host3cd1eb72. Original negative POST/driver failures retained; full I02/L02 not accepted. Full21of29, no scope reduction/publication.",
+    "current_activity_note": "I01 accepted in226; current I02 Capture/current+cold/protected-auth/Journey/bridge/reader/revoke33controls on each of2native browsers, plus official Action Trace9/3/19 and fresh Basic-reader12PASS; model opt-in readiness FAIL3/Unknown at host72ba59bb, no model run/unavailable-route credit. Original negative POST/driver failures retained; full I02/L02 not accepted. Full21of29, no scope reduction/publication.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "8c78dcf5575c611f7321ba479e9bf7195536d101",
     "current_record_date": "2026-10-27",
-    "next_bounded_step": "I02.23 original Action Trace session/lifecycle matrix on the exact official pair; retain full I02/L02/installed acceptance gaps.",
+    "next_bounded_step": "L02.21 source-only availability settlement versus UI generation from I02.25; native/model budget0. I02.26 accepted33x2, full I02/L02/installed remain open.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

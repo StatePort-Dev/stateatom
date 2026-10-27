@@ -1,8 +1,9 @@
 # Local developer-preview acceptance
 
 Latest official-host increment: [I01 current82 accepted](../completion/226-i01-current82-official-host.md),
-21/29full tasks. Actual native UI9/Capture6 are scoped to this current pair; next I02
-full matrix remains open, including its mandatory L02 dependency. The previous
+21/29full tasks. [I02 current native increments](../completion/227-i02-current82-native-matrix.md)
+verify bounded Capture/bridge/Action Trace/fresh reader on this pair. Its model opt-in
+readiness failure is retained; full I02 and mandatory L02 remain open. The previous
 roadmap entries below remain historical evidence, not a new release qualification.
 
 Current approved-scope execution is tracked in [completion status](../status.md)
