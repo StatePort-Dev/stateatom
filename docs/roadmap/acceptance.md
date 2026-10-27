@@ -16,8 +16,9 @@ consumer7+17+13PASS; sole native INCOMPLETE after3checks, Off/On/trap unvisited.
 ONEreviewI1 readonly/module-proof mismatch fixed by preflight refusal/2source checks;
 no native retry/fullV03 credit. [V02.31](../completion/256-v02-request-buffer-trimming.md) source6580a46 reduces
 serialization with exact retention:118affected/full5937PASS/ONEreview0C0I1M, no
-native/speedup/10% acceptance. Next [V02.32 local87](../completion/257-v02-current87-local-package.md)
-only package/types/admission; old10% performance target/MISS unchanged.
+native/speedup/10% acceptance. [V02.32 local87](../completion/257-v02-current87-local-package.md) closes exact
+270source/327build/31payload/type2/admission9, no native/target credit. Next I02.37
+exact87host intake and affected retention/readonly case. Old10%MISS remains.
 Historical entries retain scope.
 
 Current approved-scope execution is tracked in [completion status](../status.md)
