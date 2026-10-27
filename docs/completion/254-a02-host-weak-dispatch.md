@@ -23,4 +23,46 @@ Spec ../superpowers/specs/2026-10-28-host-weak-dispatch-design.md; plan
 ../superpowers/plans/2026-10-28-host-weak-dispatch.md. RED→GREEN/affected/full/ONE
 source review; no source edits after final checks except tested review correction.
 Local commit, archive only own workspace, one next unfinished item. Whole21/29.
-Source reproduction pending; no browser/IDE/model/CA/SDK/host/publication in55.
+No browser/IDE/model/CA/SDK/host/publication in55.
+
+## Result
+
+Closed source55, d965635. Exactly143/417 replace dynamic private deref with existing
+captured apply/method; original receiver, gates, weak stores and DTOs unchanged.
+13new authored source controls,95affectedPASS; final `npm test`5925PASS/0FAIL/
+0cancel/0SKIP162795.437093ms. Syntax/diff/protection PASS, ONEsource review0C0I0M,
+no correction/rereview. Reviewer inspected source/test only, not logs/archives or
+tests; executor independently checked them.19historical deferred Minors remain.
+
+First full positive fixture passed before implementation. InitialRED6PASS/5FAIL
+contains4actual late-method/getter failures plus one wrong fixture assumption that
+an unobserved direct root.current overwrite would invalidate a prior snapshot.
+That is not an existing complete-writer/attestation guarantee. Corrected BEFORE
+product edits to the original unsupported commit-shape guard; original log retained.
+Add deterministic lost props/ancestor controls: correctedRED9PASS/4FAIL→GREEN95.
+Lost props refuse host evidence; lost ancestor keeps the DOM commit observation
+but refuses state handoff. No global confidence ladder or equality substitution.
+
+Fixture is mock DOM plus authored React-shaped events, not actual React/native/GC.
+No missing capability/constructor purity or general intrinsic tampering guarantee
+added. Source cause of50's native weakref loss remains Unknown; no oldcase/reader
+or model/CA/installation/performance campaign invoked. Original50budget stays closed.
+
+Artifacts `.artifacts/a02/host-weak-dispatch-source/2026-10-28/` contain before-source,
+19input registration, both REDs/95GREEN/5925full and checkpoint. Only declared observer
+source differs;18protected/327Atom86inputs exact,9archive and installed15payload
+unchanged.9source manifest is now historical for observer only;20other paths match.
+It is not relabelled current or rebuilt. Source review declines installed/runtime/
+native/GC/model/oldfindings; cost: those remain unproved by source controls.
+
+Own9file workspace archive SHA256
+`cca4093e2f603d98c865b1c00e7a212cdd0f0675dfb8717410ad2b83fb65b34b`,
+`.artifacts/a02/host-weak-dispatch-review/2026-10-28/workspace.zip`.
+CRC/every-byte/plan identity verified before only own workspace removal; report and
+final checkpoint beside archive. No package/native/fullA02 credit, whole21/29.
+
+Next ONE V03.32: unique current10plugin, same exact consumer criteria plus packaged
+host13controls, then separately frozen maximumONE browser semantic control with
+real React18 and existing official Atom86. Original/off/on user-action parity,
+positive state path before/after late WeakRef trap, no source/HTTP/GC/AI/fullV03 claim.
+Failure closes that native campaign; no automatic newtag/timeout/security-flag retry.

@@ -9,8 +9,10 @@ closed source-only968f062/17new/56affected/5909full/ONEreview0C0I0M; no installe
 native/GC claim. [V03.30](../completion/252-v03-current-development-plugin.md) retains8consumerFAIL;
 [V03.31](../completion/253-v03-plugin-live-status.md) fixes wrapper getters and checks
 unique9:5912source/6consumer+17syntheticcontrols/ONEreview0C0I0M, no native upgrade.
-Next [A02.55](../completion/254-a02-host-weak-dispatch.md) corrects two source caller
-weak-method lookups before any browser. No new SDK/host/native/model.
+[A02.55](../completion/254-a02-host-weak-dispatch.md) closed2source caller lookups,
+13new/95affected/full5925PASS/ONEreview0C0I0M, no native. Next
+[V03.32](../completion/255-v03-current-plugin-native-semantics.md) first prepares
+unique10, then max1new React18 semantic browser control; no oldcase/SDK/model retry.
 Historical entries retain scope.
 
 Current approved-scope execution is tracked in [completion status](../status.md)
