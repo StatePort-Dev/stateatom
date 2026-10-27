@@ -22,6 +22,11 @@ and Query adapter-status getters after configuration. Candidate8's local consume
 check exposed their stale initial values; that archive and failure are retained.
 This correction does not extend the supported profiles or native evidence.
 
+Candidate `0.1.0-candidate.20261028.10` packages the source correction for private
+weak-reference calls in host commit/snapshot collection. Source and local package
+controls remain separate from the bounded browser procedure in completion record255;
+no broader lineage, device or release support follows from the new version.
+
 Install the supplied local tarball in an existing app, without cloning the Atom
 repository: `npm install --save-dev /absolute/path/stateport-vite-plugin-<candidate>.tgz`.
 No registry publication is established. Tested configuration: Node 24, Vite

@@ -13,7 +13,7 @@ const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..');
 const [receiptArg,consumerArg]=process.argv.slice(2);assert(receiptArg&&consumerArg,'Exact receipt and separate consumer required');
 const receipt=resolve(receiptArg),consumer=await realpath(consumerArg),h=JSON.parse(await readFile(receipt));
 assert(!consumer.startsWith(root+'/')&&consumer!==root,'Consumer must be outside source checkout');
-assert.equal(h.schema,'stateatom.development-plugin-artifact/1');assert.equal(h.plugin.version,'0.1.0-candidate.20261028.9');
+assert.equal(h.schema,'stateatom.development-plugin-artifact/1');assert.equal(h.plugin.version,'0.1.0-candidate.20261028.10');
 const out=await mkdtemp(root+'/.artifacts/v03/current-dev-plugin/package-check-'),sha=b=>createHash('sha256').update(b).digest('hex');
 const result={schema:'stateatom.development-plugin-package-check/1',status:'RUNNING',startedAt:new Date().toISOString(),receipt,consumer,producer:h.sourceRevision,producerDirty:h.sourceDirty,configuration:{operator:'agent',NodeOnly:true,browser:false,model:false,helperVSIX:false,wholeV03:false,installedNativeSupport:false},checks:[]};
 await writeFile(out+'/driver.mjs',await readFile(new URL(import.meta.url)));const check=async(name,fn)=>{await fn();result.checks.push({name,status:'PASS'});console.log('PASS',name);};
@@ -88,6 +88,14 @@ try{
   const log=execFileSync(process.execPath,['--test','--test-isolation=none',file],{cwd:consumer,encoding:'utf8'});await writeFile(out+'/packaged-state-controls.log',log);
   assert.match(log,/(?:#|ℹ) tests 17/);assert.match(log,/(?:#|ℹ) pass 17/);assert.match(log,/(?:#|ℹ) fail 0/);
   result.stateControls={sourceTestSha256:sha(original),adaptedTestSha256:sha(adapted),onlyChange:'One import redirects to physically installed module; all17test bodies unchanged',passed:17,syntheticDeclaredEvents:true,GC:false};
+ });
+ await check('all13 exact authored host-caller source controls pass against installed observer module',async()=>{
+  const file=root+'/tests/engine/react-host-weak-dispatch.test.mjs',original=await readFile(file,'utf8'),needle="'../../src/engine/observer.mjs'";
+  assert.equal(original.split(needle).length,2);const adapted=original.replace(needle,JSON.stringify(pathToFileURL(result.packagePath+'/dist/engine/observer.mjs').href));
+  const target=consumer+'/packaged-host-weak-dispatch.test.mjs';await writeFile(target,adapted);
+  const log=execFileSync(process.execPath,['--test','--test-isolation=none',target],{cwd:consumer,encoding:'utf8'});await writeFile(out+'/packaged-host-controls.log',log);
+  assert.match(log,/(?:#|ℹ) tests 13/);assert.match(log,/(?:#|ℹ) pass 13/);assert.match(log,/(?:#|ℹ) fail 0/);
+  result.hostControls={sourceTestSha256:sha(original),adaptedTestSha256:sha(adapted),onlyChange:'One import redirects to installed observer;13test bodies unchanged',passed:13,mockDOMAndAuthoredEvents:true,browser:false,GC:false};
  });
  assert.deepEqual(await fileManifest(result.packagePath),result.payload);await verifyArtifactHashes([h.plugin]);
  assert.equal(sha(await readFile(consumer+'/package-lock.json')),result.consumerLockSha256);
