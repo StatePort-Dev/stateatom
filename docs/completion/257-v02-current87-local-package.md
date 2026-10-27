@@ -20,6 +20,11 @@ The receipt's BUILT_NOT_VERIFIED remains literal; qualification is separate.
 No native/model/download/GC/performance/CA/TLS/trust/host/SDK/publication work here.
 No whole-task credit or acceptance of10%target follows. Full21/29 unchanged.
 
-Plan/registration/metadata work next;87 does not yet exist. Any next authorized
+Plan ../superpowers/plans/2026-10-28-current87-local-package.md; registration
+`.artifacts/v02/current87-package/2026-10-28/registration.json` protects13immutable
+inputs/327currentbuild/full36officialdist/current10payload.87identity was unissued.
+Version/root-lock/new87changelog entry are the only metadata changes; old86entry
+is retained verbatim. Clean metadata producer commit/pack/type/admission next;
+87archive does not yet exist. Any next authorized
 official-host refresh must consume these exact bytes, choose affected checks from
 actual runtime delta, and keep historical86 proof at its original scope.

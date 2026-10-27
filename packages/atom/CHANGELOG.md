@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-candidate.20261028.87
+
+- Trim the private request buffer using one complete serialization and the same
+  retained suffix. Keep the five-minute, 32-record and 256000-character bounds,
+  original record references, capture permissions and read-only policy unchanged.
+- Source operation counts do not establish application speedup or performance
+  target acceptance. Existing candidate86 and historical results remain unchanged.
+
 ## 0.1.0-candidate.20261027.86
 
 - Keep local model availability errors and unrecognized results Unknown, with the
