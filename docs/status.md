@@ -12,10 +12,12 @@ through evening; no additional routine I01 permission needed.
 
 [I02 current native increments](completion/227-i02-current82-native-matrix.md):
 Settings12PASS (real600115ms expiry), authority/site-removal15PASS, compatible
-native Capture/current-code/cold runtime24×2PASS on Chromium153/GoogleChrome156,
+native Capture/current-code/cold runtime32×2PASS on Chromium153/GoogleChrome156,
 including exact Session verification, protected sign-in and native Journey. Separate
 POST-native activation PASS23×2; URL-only POST negative remains REPLAY_MISS. Historical
-digest assertion corrected in record227. Popup closure/reopen also verified. Next bounded I02.17 Basic on a separate tab during Capture.
+digest assertion corrected in record227. Popup lifecycle, parallel Basic, real bridge disconnect/absence/reconnect and incompatible
+handshake also verified. Actual reviewed export matches downloaded bytes; official passive
+reader works without Desktop. Next bounded I02.21 official current Action Trace.
 Original matrix criteria/first failures retained. Full I02 and
 mandatory L02 remain open; full-plan count stays21/29. No new policy or scope cut.
 

@@ -123,13 +123,51 @@ profile24controls each/PASS2,51.05s, host artifacts:
 - artifacts/atom-host/i01-current82/capture-native-2026-10-27T12-30-54-094Z/results.json
 No product change, app pre-attachment or simulated popup hiding/reload.
 
+## I02.17–19 — parallel Basic and real native bridge lifecycle
+
+Host7a666d86/4f5a8e24/108587a7: actual official readonly Basic selects a second tab
+while Capture owns its admitted tab. Closing the inspector and that Basic app tab
+preserves Capture. Closing the actual local bridge during another capture reports
+DISCONNECTED and releases Capture only; separate Basic reinspects successfully.
+Absent bridge preflight refuses admission as BRIDGE_UNAVAILABLE. A real endpoint
+with a deliberately invalid runtime-version handshake gives CONTRACT_MISMATCH with
+no app attach. Restoring the compatible bridge returns idle without silently
+resuming Capture. These are local Native Messaging/runtime controls, not installed
+Desktop GUI, OS-vault or a matrix of old installed helper binaries.
+
+Current default profile30controls each/PASS2,76.78s, host artifacts:
+- artifacts/atom-host/i01-current82/capture-native-2026-10-27T12-39-23-300Z/results.json
+- artifacts/atom-host/i01-current82/capture-native-2026-10-27T12-40-00-258Z/results.json
+
+Retained first failures corrected test setup: local development approval does not
+select read-only automatically; the real checkbox now does. Ordinary Basic is owned
+by its tab/runtime, so inspector view closure is not an automatic detach criterion;
+app-tab closure retires its attachment. After interacting with Basic, Capture
+preflight must explicitly select its app again. No product policy/behavior changed.
+
+## I02.20 — actual reviewed export and official passive reader
+
+Hoste5f71e48: with the Desktop bridge absent, actual Save/review/Confirm downloads
+bytes exactly equal to reviewed JSON. Dedicated directory and bounded browser events
+are empty before confirmation. Target retained, runtime Unknown/Unsupported, IDEfalse,
+content excluded by default; all9raw synthetic seeds absent. Official atom/reader.html
+imports the exact file/ID as historical/untrusted/not-reverified/not-a-State-Card with
+connect-src none. Existing Basic stays attached. Same-profile reader, not fresh
+installed recipient or causal/AI proof. Default profile32controls each/PASS2,75.98s:
+- artifacts/atom-host/i01-current82/capture-native-2026-10-27T12-44-43-781Z/results.json
+- artifacts/atom-host/i01-current82/capture-native-2026-10-27T12-45-20-638Z/results.json
+
+An initial Google Chrome run failed the unchanged pre-confirmation empty-directory
+control due unexplained downloads.html.crdownload; precise origin Unknown and that
+failure retained. Current run additionally records download events and has none until
+Confirm, then only the expected blob JSON/completion. No criterion was weakened.
+
 ## Next bounded item / remaining acceptance
 
-I02.17: Basic on a separate tab during real Capture, including inspector closure
-without disrupting its owner. Original full Playwright Capture FAIL2 remains
-driver debt; migrated controls do not automatically establish its complete parity.
-
-Full I02 still includes remaining Desktop disconnect/incompatible-helper/concurrency/
-reader/Action Trace/local-model and installed matrix, including mandatory L02.
+I02.21: existing scoped native Action Trace controls on the exact official pair,
+including real IDE source identity, native activation and explicit async/body gaps.
+Original full Playwright Capture FAIL2 remains driver debt; migrated controls do not
+automatically establish its complete parity. Full I02 still includes remaining
+Action Trace/local-model and installed matrix, including mandatory L02.
 Full count stays21/29. No human recruitment blocker, fallback/model credit,
 performance waiver, new Live/grant/handoff policy, scope reduction, SDK or publication.
