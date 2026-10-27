@@ -19,3 +19,30 @@ private error omission/no create, current-facts/lifecycle. Focused/full source c
 syntax/diff/preservation, one local source commit and ONE bounded final source review;
 one testedI/C correction if needed, no rereview/native/model/oldreader/corpus retry.
 Full21/29/mandatoryL02/performanceMISS unchanged. Implementation plan next.
+
+## Registered implementation
+
+Plan: `../superpowers/plans/2026-10-28-l02-derived-availability-unknown.md`.
+Local artifacts: `.artifacts/l02/derived-availability-unknown/2026-10-28/`.
+Baseline2d05a97; registration binds673protected inputs, exact current87source270/
+build327, oldC2/web results/cases/readers and current10. Existing provider and two
+provider tests retained byte-for-byte before edits. No package or native rerun.
+
+New tests use eligible locally constructed facts for both constructors, assert
+exactly one metadata call and zero create/prompt after Unknown with allowDownload
+false/true. Four native states, missingAPI, private error omission, activation,
+pre-cancellation and changed-current-facts controls remain explicit. Original
+source with the new tests: RED6PASS/4FAIL; failures are unavailable-vs-unknown and
+incorrect fallback reason. Initial isolated-mode output only counted file wrappers;
+it is retained but is not the RED/GREEN evidence. Configured no-isolation mode:
+GREEN45PASS across new and existing provider suites.
+
+Production edit is only normalization of explicit four states, error→unknown and
+a dedicated Unknown/template early return. Reverse-delta binder restores old
+provider exactly and preserves OPTIONS/languages/sampling/prompts/lifecycle; all
+673protected inputs match. No experimental provider selected in product.
+
+Full configured `npm test`: **5955PASS**,166151.470566ms/exit0. `node --check`
+provider/new tests and `git diff --check` PASS. Post-suite673inputs still exact.
+All new observations are mock/source checks. Native/model/download0; fullL02 open.
+Final bounded source review follows the local source commit.

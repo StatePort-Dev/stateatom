@@ -17,8 +17,8 @@ function createAnnotationProvider(model,comparison){
  const project=comparison?projectDerivedComparison:projectDerivedAnnotation,isCurrent=comparison?isCurrentDerivedComparison:isCurrentDerivedProjection,buildPrompt=comparison?buildDerivedComparisonPrompt:buildDerivedAnnotationPrompt,responseConstraint=comparison?derivedComparisonResponseConstraint:derivedAnnotationResponseConstraint,validate=comparison?validateDerivedComparisonStructure:validateDerivedAnnotationStructure,sessionOptions=comparison?()=>COMPARISON_SESSION_OPTIONS:derivedAnnotationSessionOptions;
 
  async function availability(){
-  try{if(!model)return 'unavailable';const state=await model.availability(OPTIONS);return ['available','downloadable','downloading'].includes(state)?state:'unavailable';}
-  catch{return 'unavailable';}
+  try{if(!model)return 'unavailable';const state=await model.availability(OPTIONS);return ['available','downloadable','downloading','unavailable'].includes(state)?state:'unknown';}
+  catch{return 'unknown';}
  }
  async function explain(facts,{userActivation=false,allowDownload=false,signal,onProgress,onPhase,timeoutMs=30000,getCurrentFacts=()=>facts}={}){
   let current=isLocalExplanationFacts(facts)?facts:inspectionExplanationFacts({});
@@ -54,6 +54,7 @@ function createAnnotationProvider(model,comparison){
    const state=await Promise.race([availability(),stopped]);
    if(!readCurrent())return changed();
    if(state==='unavailable')return fallback('Local model unavailable.');
+   if(state==='unknown')return fallback('Local annotation status unknown; showing the template.');
    if(state!=='available'&&allowDownload!==true)return fallback('Model download requires explicit initiation.');
    notify(onPhase,state==='available'?'initializing':'downloading');ensureLive();
    if(!readCurrent())return changed();
