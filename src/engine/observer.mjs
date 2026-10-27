@@ -140,7 +140,7 @@ export function createObserver(w,{sourceConsumption=false,fetchInitiators=false,
     root.lastScan=reason;drain(root);if(reason)return;
     const commitId=page+':hostCommit'+(++commitSerial);
     for(const {type,node,props,path}of list){const applied=hostNodeRecords.get(node),produced=hostProps.get(props),properties=new Map();
-      if(!applied?.active||applied.propsRef.deref()!==props||hostDirty(applied)||!produced||produced.context.meta.tag!==type||!owns(root,node)){hostCommits.delete(node);continue;}
+      if(!applied?.active||nativeApply(nativeWeakDeref,applied.propsRef,[])!==props||hostDirty(applied)||!produced||produced.context.meta.tag!==type||!owns(root,node)){hostCommits.delete(node);continue;}
       const context=produced.context,ancestors=stateLedger?path.map(f=>new NativeWeakRef(f)):[];
       for(const property of['text','disabled']){const targetId=mapRead(context.ids,property),target=mapRead(nodes,targetId);if(!target||target.aggregateText)continue;
         const raw=field(props,property==='text'?'children':'disabled'),expected=property==='disabled'?(typeof target.value==='boolean'?target.value:null):['string','number'].includes(typeof target.value)?String(target.value).trim():null;
@@ -414,7 +414,7 @@ export function createObserver(w,{sourceConsumption=false,fetchInitiators=false,
       const walk=id=>{if(seen.has(id)||out.length>=limits.closure){if(!seen.has(id))missing=true;return;}seen.add(id);const n=mapRead(nodes,id);if(!n){missing=true;return;}if(n.missingDependencies)missing=true;out.push(n);for(const d of n.deps)walk(d);};if(targetId)walk(targetId);
       if(missing&&commit.status==='Observed')commit={...commit,status:'Unknown/Unsupported',reason:'Committed execution closure/retention budget'};
       const producerUnknown=hostProbe?commit.status!=='Observed'||commit.producer?.status!=='Observed':commit.status==='Observed'&&commit.producer?.status!=='Observed';
-      const stateHandoffs=stateLedger&&commit.status==='Observed'?stateLedger.witness(out,new Set((mapRead(hostCommits.get(element),property)?.ancestors||[]).map(r=>r.deref()).filter(Boolean))):null;
+      const stateHandoffs=stateLedger&&commit.status==='Observed'?stateLedger.witness(out,new Set((mapRead(hostCommits.get(element),property)?.ancestors||[]).map(r=>nativeApply(nativeWeakDeref,r,[])).filter(Boolean))):null;
       const result={schema:1,page,...(react19Collector?{nativeStateAncestors:nativeStateSnapshot(element)}:{}),...(actionTrace?{actionTrace:{availability:actionTraceInfo(),observation:actionTraceRead()}}:{}),...(stateHandoffs?{stateHandoffs}:{}),status:stale?'Stale':target&&!missing&&!producerUnknown?'Observed':'Unknown/Unsupported',reason:stale||(missing?'trace closure/retention budget':!target?'No dev target execution observed':producerUnknown?(commit.reason||commit.producer?.reason||'Final host producer unavailable'):null),target:target||null,commit,nodes:out,
         independentObservations:[...nodes.values()].filter(n=>n.scope===target?.scope&&n.kind==='binding'&&!seen.has(n.id)).slice(-20).map(n=>({...n,separateFromTarget:true})),
         exchanges:exchanges.filter(e=>out.some(n=>n.origin?.exchangeId===e.id)),recentExchanges:exchanges.slice(-32),dropped,missing,
