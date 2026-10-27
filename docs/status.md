@@ -1,9 +1,11 @@
 # Project status
 
 [I01 separately authorized and started](completion/225-i01-authorized-host-intake.md).
-Hostf8040639/ad5b8046: exact82/UI2 archive-consumer4PASS; workspace frozen install
-blocked by narrow local-artifact age-policy/404, dependencies incomplete; host
-broker/lifecycle/build/native remain unfinished. Further I01 scope permission not needed.
+Host7b74d77d/bd2498d0: exact82/UI2 frozen install and supply-chain1290PASS;
+122affected/9package, TypeScript/build PASS. Actual official native UI7PASS
+(Basic/map/guardian/960+360/keyboard/worker-only cleanup). Current native Capture
+regression in progress; old Playwright test pre-attaches app and fails BUSY guard.
+I01 remains open; scope authorization persists, no new full-plan credit.
 
 [Current release checkpoint](completion/224-night-release-checkpoint.md):20/29(~69%),
 9open; exact82/product327+archives current, no full-scope readiness or newfeature credit.

@@ -6,6 +6,32 @@ This supersedes the original other-repository exclusion for I01 alone. No furthe
 scope permission is needed to continue this task. Original approved Atom requirements
 and20of29 accepted count remain unchanged; I01 is not complete.
 
+## Current authorized continuation
+
+Host7b74d77d resolves the install blocker: pnpm's first name match shadowed the
+new exact-version exception. One disjunction per name retains both old and current
+exact exceptions; all1290 supply-chain policies PASS, frozen offline install PASS.
+No global bypass. Hostbd2498d0 wires one live guardian for both consumers, native
+control owner, inspector ownership, current site/picker/lifecycle and existing UI
+container height. Saved-site restoration and guardian readiness are both awaited.
+
+Actual122affected Vitest/9package checks, TypeScript and build PASS. Official native
+UI PASS7 in `artifacts/atom-host/i01-current82/native-2026-10-27T05-51-23-151Z/results.json`
+(host checkout): Basic without IDE/account, declared guardian document, manual exact
+source map retaining absent element anchor, no write authority,960/360 keyboard/font
+layout and actual worker-only interruption/native release. Screenshots are candidates.
+A first diagnostic dynamic-import probe failed and was removed; no guard relaxed.
+
+Existing full Playwright Capture test FAIL2 at native attach. A focused diagnostic
+confirms pre-existing app `attached=true`; current guardian refuses that competing
+owner. A compatible native-backend Capture→Review→Save/coexistence control is now
+in progress. Original full matrix/criteria and historical runs remain separate.
+I01 is still in progress; this progress does not add full-feature acceptance or
+close I02, A02, mandatory L02 or original V02 overhead gate. Next bounded step is
+current Capture regression verification; authorization persists through evening.
+
+## Historical first intake checkpoint (superseded install status)
+
 Host basea9f993f stayed on its existing branch. Commitsf8040639/ad5b8046 preserve the
 old archives/receipts and prepare exactAtom82/UI2, lock/integrity, declared worker/font
 exports and asset/manifest packaging.270 producer source/327 build-input hashes and
