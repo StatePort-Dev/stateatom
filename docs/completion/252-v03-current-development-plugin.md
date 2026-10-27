@@ -26,4 +26,31 @@ from unchanged source54, not rerun or counted as package-native evidence. One fi
 source/package review, local commit and one next unfinished item; no publication.
 
 Plan: ../superpowers/plans/2026-10-28-current-development-plugin.md.
-Result pending.
+## Bounded result: archive built, consumer workflow incomplete
+
+Clean producer a111867, local plugin8 created once:
+`.artifacts/development/2026-10-27T20-37-28-787Z/plugin-handoff.json`, artifactSHA256
+`d37e4a17af5de2cd21a54d254250b631e598cfb324e873835f79b0f2f45e0ee8`.
+21source inputs,15payload files. Existing source unchanged; metadata-only version/
+README checked, original package7/other archives retained.47profile/source checks
+PASS; source54full5909 remains inherited, not a new package/native result.
+
+Fresh `/tmp/stateatom-dev-plugin8-w38s1g` install offline/ignore-scripts/no-audit/
+no-fund:81packages/2s. Actual first consumer run **FAIL after2checks**:
+`.artifacts/v03/current-dev-plugin/package-check-LEhuOV/results.json`, SHA256
+`c43d99f9ad42b8cfc05c50271fe1230e87f453fbc28d814a8bd4a1ba3e838b7b`.
+Full physical installed payload equals archive/current package15files, source21
+exact; dependencies resolve inside consumer, not root/symlink, lockSHA512 matches
+archive. Third check fails reading adapter contract: wrapper's object spread takes
+underlying `reactHost` getter's initial null rather than its later configured value.
+Inspection confirms the same copying issue for `queryHandoffs`. No application/
+browser/IDE/model execution or diagnostic lineage result. Three later checks,
+including packaged17state controls, were not reached; do not count them passed.
+
+No retry/rebuild8 or assertion weakening. Next ONE [V03.31 wrapper getter correction](253-v03-plugin-live-status.md)
+reproduces this exact source defect, preserves existing profiles and restores only
+the two live status properties. Necessary direction change from packaging-only
+registered before editing source. A new unique9 may follow source checks/review;
+8archive/raw/consumer remain historical. This closes the bounded8attempt as
+incomplete, not fullV03. A joint final source/package review belongs to31, after
+the identified defect is corrected; no successful-package review is claimed here.
