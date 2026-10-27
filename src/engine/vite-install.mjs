@@ -41,7 +41,7 @@ export function stateatomPlugin(options={}){
  if(options.profile!==undefined&&options.profile!=='vue3'&&options.profile!=='react19-state-ancestors')throw Error('Unknown StateAtom installed profile; the explicit experimental profiles are vue3 and react19-state-ancestors, or omit profile for the default recipe');
  if(options.enabled&&options.profile==='vue3')for(const name of ['reactCommit','reactHostProps','fetchInitiators','reactStateHandoffs','sourceWrites','queryHandoffs','queryCallCensus','writeAccessGuards','queryWriteAccessGuards','reactWriteAccessGuards','actionTrace'])if(options[name])throw Error('StateAtom Vue profile does not admit option '+name+'; use the documented selected source/read profile');
  const plugin=implementation(options);
- return {...plugin,config(config,environment){
+ return {...plugin,get reactHost(){return plugin.reactHost;},get queryHandoffs(){return plugin.queryHandoffs;},config(config,environment){
   const result=plugin.config.call(this,config,environment);
   if(result!==undefined||!options.enabled||options.profile!=='vue3')return result;
   if(!['entries','noDiscovery','disabled'].every(key=>unconfigured(config,['optimizeDeps',key]))||!unconfigured(config,['build','rollupOptions','input']))return;

@@ -54,8 +54,12 @@ source968f062:17new/56affected/full5909PASS, ONEreview0C0I0M; captures own-data
 deref/apply without late app getter dispatch. Lost refs/revision/state replacements
 remain Unknown.104protected/327product exact; no native/GC/50cause/installed-helper proof.
 
-Next bounded **[V03.30 current dev-plugin local package](completion/252-v03-current-development-plugin.md)**:
-unique immutable existing-plugin archive and separate offline consumer only; no
+[V03.30 local plugin8](completion/252-v03-current-development-plugin.md): exact clean
+archive/15payload/21source and separate offline81-package install; actual consumer
+FAIL after2checks exposes stale null adapter getters. Original8archive/raw retained.
+
+Current bounded **[V03.31 live status getters](completion/253-v03-plugin-live-status.md)**:
+RED1/2→affected50/full5912PASS; unique9consumer pending. No new profiles,
 SDK/VSIX/host/native/model/publication. Full **21/29 (72.41%)**, eight open
 U04,A02,L02,I02,I03,V02,V03,V04. Autonomy until09:00 Mauritius October28.
 

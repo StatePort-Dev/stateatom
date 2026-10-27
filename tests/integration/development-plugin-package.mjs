@@ -5,7 +5,7 @@ import {readFile,writeFile,mkdir,mkdtemp,realpath} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import {createRequire} from 'node:module';
-import {resolve,relative,dirname} from 'node:path';
+import {resolve,dirname} from 'node:path';
 import {pathToFileURL,fileURLToPath} from 'node:url';
 import {fileManifest,verifyArtifactHashes} from '../../scripts/atom-package-receipt.mjs';
 
@@ -13,7 +13,7 @@ const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..');
 const [receiptArg,consumerArg]=process.argv.slice(2);assert(receiptArg&&consumerArg,'Exact receipt and separate consumer required');
 const receipt=resolve(receiptArg),consumer=await realpath(consumerArg),h=JSON.parse(await readFile(receipt));
 assert(!consumer.startsWith(root+'/')&&consumer!==root,'Consumer must be outside source checkout');
-assert.equal(h.schema,'stateatom.development-plugin-artifact/1');assert.equal(h.plugin.version,'0.1.0-candidate.20261028.8');
+assert.equal(h.schema,'stateatom.development-plugin-artifact/1');assert.equal(h.plugin.version,'0.1.0-candidate.20261028.9');
 const out=await mkdtemp(root+'/.artifacts/v03/current-dev-plugin/package-check-'),sha=b=>createHash('sha256').update(b).digest('hex');
 const result={schema:'stateatom.development-plugin-package-check/1',status:'RUNNING',startedAt:new Date().toISOString(),receipt,consumer,producer:h.sourceRevision,producerDirty:h.sourceDirty,configuration:{operator:'agent',NodeOnly:true,browser:false,model:false,helperVSIX:false,wholeV03:false,installedNativeSupport:false},checks:[]};
 await writeFile(out+'/driver.mjs',await readFile(new URL(import.meta.url)));const check=async(name,fn)=>{await fn();result.checks.push({name,status:'PASS'});console.log('PASS',name);};
@@ -23,6 +23,8 @@ try{
   for(const[p,digest]of Object.entries(h.sourceManifest))assert.equal(sha(await readFile(resolve(root,p))),digest,p);
   const list=execFileSync('tar',['-tzf',h.plugin.file],{encoding:'utf8'}).trim().split('\n');
   assert(list.every(p=>p.startsWith('package/')&&!p.split('/').includes('..')));assert.equal(new Set(list).size,list.length);
+  const entries=execFileSync('tar',['-tvzf',h.plugin.file],{encoding:'utf8'}).trim().split('\n');
+  assert.equal(entries.length,list.length);assert(entries.every(line=>line.startsWith('-')),'Only regular package files may be extracted');
   const archive=out+'/unpacked';await mkdir(archive);execFileSync('tar',['-xzf',h.plugin.file,'-C',archive]);
   const packagePath=await realpath(consumer+'/node_modules/@stateport/vite-plugin');
   assert(packagePath.startsWith(consumer+'/node_modules/'),'No symlink to producer/source');
@@ -38,7 +40,8 @@ try{
  await check('all consumed external dependencies resolve inside independent consumer',async()=>{
   const req=createRequire(consumer+'/package.json'),own=createRequire(result.packagePath+'/dist/engine/plugin.mjs');
   result.dependencies={};
-  for(const name of['vite','react','react-dom','@babel/core','@babel/parser','@babel/traverse','@babel/generator','@babel/types','@vue/compiler-dom','@vue/compiler-sfc']){
+  const pkg=JSON.parse(await readFile(result.packagePath+'/package.json'));
+  for(const name of new Set(['vite','react','react-dom',...Object.keys(pkg.dependencies)])){
    const resolved=await realpath(own.resolve(name));assert(resolved.startsWith(consumer+'/node_modules/'),name+' outside consumer');result.dependencies[name]=resolved;
   }
   const path=await realpath(req.resolve('@stateport/vite-plugin'));assert(path.startsWith(result.packagePath+'/'));

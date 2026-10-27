@@ -8141,7 +8141,7 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "252-v03-current-development-plugin.md",
+      "execution_record": "253-v03-plugin-live-status.md",
       "active_slice": {
         "id": "V03.29",
         "title": "Separately frozen corrected current-clean acquisition",
@@ -9677,11 +9677,11 @@
       "next_bounded_step": "I01 exact local-file policy/install then current host guardian/lifecycle adaptation; separate scope already authorized.",
       "next_task": "A02"
     },
-    "document": "251-a02-state-weak-dispatch.md",
+    "document": "253-v03-plugin-live-status.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
-    "current_increment": "A02.54-source-weak-method-dispatch-closed",
-    "next_item": "V03.30 one unique current open dev-plugin local archive, source/payload/separate offline consumer controls; preserve all7/history/Atom86, no VSIX/native/model/SDK/host/publication.",
+    "current_increment": "V03.31-live-getters-source-verification",
+    "next_item": "Finish ONE current V03.31 source wrapper getter fix and unique9package requalification, preserving8FAIL/criteria; no native/model/SDK/host/publication.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9708,8 +9708,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "V03",
-      "record": "252-v03-current-development-plugin.md",
-      "status": "bounded30-local-plugin-package-next"
+      "record": "253-v03-plugin-live-status.md",
+      "status": "bounded31-source-full5912-new9-package-pending"
     },
     "completed_increments": [
       {
@@ -12710,11 +12710,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "A02.54 source968f062: one state ledger captures own-data WeakRef deref/captured apply,17new/56affected/5909fullPASS; originalRED6/9 and descriptorRED15/2 retained. ONEreview0C0I0M,104protected/327product exact; no native/GC/50cause/installed-helper/fullA02 claim. ONE next V03.30 local current dev-plugin package.",
+    "current_activity_note": "V03.30 exact local plugin8clean a111867/21source15payload/offline81packages; actual consumer FAIL after2positive checks, adapter getter null from wrapper spread. Original8raw retained. V03.31 sourceRED1/2→affected50/full5912PASS; new9pending, no installed/native/wholeV03 acceptance.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "968f062",
     "current_record_date": "2026-10-27",
-    "next_bounded_step": "V03.30 one unique current open dev-plugin local archive, source/payload/separate offline consumer controls; preserve all7/history/Atom86, no VSIX/native/model/SDK/host/publication.",
+    "next_bounded_step": "Finish ONE current V03.31 source wrapper getter fix and unique9package requalification, preserving8FAIL/criteria; no native/model/SDK/host/publication.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

@@ -17,6 +17,11 @@ browser, React/Vue workflow or lineage qualification; historical native results
 below retain their original candidates and limits. No new SDK or public release
 is established by this package.
 
+Candidate `0.1.0-candidate.20261028.9` preserves the wrapper's existing live React
+and Query adapter-status getters after configuration. Candidate8's local consumer
+check exposed their stale initial values; that archive and failure are retained.
+This correction does not extend the supported profiles or native evidence.
+
 Install the supplied local tarball in an existing app, without cloning the Atom
 repository: `npm install --save-dev /absolute/path/stateport-vite-plugin-<candidate>.tgz`.
 No registry publication is established. Tested configuration: Node 24, Vite
