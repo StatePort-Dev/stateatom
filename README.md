@@ -7,10 +7,10 @@ The intended workflow is to select a property, inspect the available dependencie
 ## Project status
 
 Current completion checkpoint (2026-10-27): **21/29 whole tasks** in approved
-`scope-review-1`. The [official local85/UI2 integration](docs/completion/242-i02-current85-host-refresh.md)
-has scoped Capture/metadata and [ordinary handoff/window/history](docs/completion/246-i02-official-observation-history.md) proof.
-[Local86](docs/completion/248-l02-current86-local-package.md) corrects availability-error
-Unknown in source/package only; official intake is next. Mandatory L02 usefulness,
+`scope-review-1`. The [official local86/UI2 integration](docs/completion/249-i02-current86-host-refresh.md)
+has affected free-template UI proof; its byte-identical runtime/Capture assets retain
+the separately scoped85 [handoff/window/history](docs/completion/246-i02-official-observation-history.md) and Capture evidence.
+86 corrects availability-error Unknown; no real-model qualification follows. Mandatory L02 usefulness,
 ordinary A02 lineage and original V02 overhead remain open; no full release or SDK
 is established. An independent human is optional evidence, not a release blocker.
 Use [current status](docs/status.md) and the [task index](docs/completion/task-index.json)

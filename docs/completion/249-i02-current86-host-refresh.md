@@ -36,4 +36,37 @@ host commit and public exact result/next pointer, not a release or SDK delivery.
 
 ## Result
 
-Pending exact official intake/build and affected model-disabled UI verification.
+Closed bounded at host **bd3afcdf**, base2eb98f35. Exact86/UI2 installed/built;
+25old85archive/receipt/source/lock/policy files preserved/hash-checked in versioned
+history. Lock6refs+actualSHA512 reverses byte-exact after install; exact age union
+adds86 only. Frozen offline1290policies45.7s/46.9total, resolution skipped,+1/-1,
+pnpm downloaded1 under local-file import; no registry request/wire-level proof.
+Build/types and sequential package2+3+4/source73PASS. Initial Node concurrency raced
+dist rebuild (8PASS1readerENOENT); unconfigured Vitest selected old worktree copies
+and exited1. Preserved as invocation failures, not current project acceptance;
+corrected existing package test:unit config selects only intended7files/73PASS.
+
+Actual host dist changes ONLY BUILD-INFO.json/atom-page.js. Serviceworker/manifest/
+Capture/popup/guardian/reader/styles all identical85. No extra old native/performance
+campaign. Model and parent-specific85drivers stay historical; one unavailable driver
+had no version guard, so an explicit85-only refusal was added and checked before
+output/browser/API setup. No silent Unknown→unavailable or timer-cause acceptance.
+
+Sole fresh native **5PASS**, Chrome153, model-disabled readonly Basic/Actions/Explain,
+native Tab/Space disclosure/unchecked checkbox focus,390/1100root13px/nooverflow,
+fresh reinspect/second template/same DOM/app counters. Two trusted Explain clicks,
+zero checkbox changes; no availability/create/prompt/download/inference requested.
+New Unknown error route is still only source-fake tested, not native/model qualified.
+Raw base2eb98f35/sourceDirtytrue retained, errors/console[],8required input maps and
+whole dist unchanged, driver/browser/HTTPserverclosedtrue. Captured driver equals
+source;270/327product maps checked again at closeout. Candidate390 viewed, no human/
+fullU04, process-tree/global heap or background claim.
+
+Host artifacts/atom-host/i02-current86/checkpoint.json binds actual raw
+native-template/2026-10-27T19-24-43-927Z/results.json,
+SHA17cd80d9ac8ba53f57230c8d05fadc3637d2fe8a18ec008bccfe81480e4bb4e1.
+Report docs/agent/reports/2026-10-27-i02-current86-refresh.md includes commands/limits.
+Old85proof stays original; byte identity supports scoped reuse, not a fictitious
+fresh86full Capture/model/performance matrix. Full21/29 remains. Next ONE **I02.36**,
+record250, local unpacked85↔86reload/update/rollback, saved snapshots/no resumed writer
+and picker on the already open app; no Store/OS/Capture-in-progress claim.

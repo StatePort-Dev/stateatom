@@ -37,11 +37,17 @@ Native/model0. Current source differs2of270source/3of327build from immutable85.
 31payload/270source327build/type2/admission9PASS. Runtime/guardian/workers/reader
 identical85; only UI+package metadata changes. No new native/model qualification.
 
-Next bounded **[I02.35 exact86 official refresh](completion/249-i02-current86-host-refresh.md)**:
-strict preserved85intake/lock/build/source and affected model-disabled template UI.
-Official host still85 at2eb98f35; old native/model/performance proofs not relabelled86.
-Full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04. Local autonomy
-until09:00 Mauritius October28; no SDK/push/publication or mandatory human gate.
+[I02.35 official86](completion/249-i02-current86-host-refresh.md), hostbd3afcdf:
+frozen1290/build/types/package9/source73PASS; sole actual native free-template5PASS,
+model off/no metadata request,390/1100root13px. OnlyBuildInfo/atom-page differ; runtime/
+Capture assets identical85. Initial verification-command failures retained. No new
+Unknown-error/native-model/performance or fullI02 qualification inferred.
+
+Next bounded **[I02.36 component reload/rollback](completion/250-i02-component-reload-rollback.md)**:
+exact old85stage first, then local85↔86reload, saved snapshot/no resumed writer and
+picker on existing app. Distinct from worker restart; no Store/installer/Capture-in-
+progress/model/CA claim. Full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04.
+Local autonomy until09:00 Mauritius October28; no SDK/push/publication or human gate.
 
 ## Historical checkpoints
 

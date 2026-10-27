@@ -6369,7 +6369,7 @@
           "accepted_positive": false
         },
         "full_I02_accepted": false,
-        "next_bounded_step": "I02.35 exact86 official intake/strict lock/build/source checks and affected free model-disabled template UI; runtime identical85, no old Capture/model/CA/performance replay.",
+        "next_bounded_step": "I02.36 exact local unpacked85↔86 component reload/rollback: saved diagnostic/no resumed waiting writer/picker on existing app; initial exact85dist restoration before native, no model/CA/Store/Capture campaign.",
         "native_devtools": {
           "record": "233-i02-native-devtools-control.md",
           "host_commit": "3f567f79",
@@ -6444,6 +6444,20 @@
           "worker_only_checks": 2,
           "single_whole_pass": false,
           "full_I02_accepted": false
+        },
+        "official86_refresh": {
+          "record": "249-i02-current86-host-refresh.md",
+          "host_commit": "bd3afcdf",
+          "package": "0.1.0-candidate.20261027.86",
+          "package_checks": 9,
+          "source_checks": 73,
+          "native_template_checks": 5,
+          "model_metadata_requested": false,
+          "new_unknown_route_qualified": false,
+          "runtime_identical85": true,
+          "fresh86Capture": false,
+          "fresh86Performance": false,
+          "full_I02_accepted": false
         }
       },
       "existing_implementation": {
@@ -6457,7 +6471,7 @@
         "host_modified": false,
         "meaning": "Existing source integration/old-pair native evidence credited; current exact pair update/acceptance remains open"
       },
-      "execution_record": "246-i02-official-observation-history.md"
+      "execution_record": "249-i02-current86-host-refresh.md"
     },
     {
       "id": "I03",
@@ -9573,23 +9587,24 @@
       "record": "226-i01-current82-official-host.md"
     },
     "current_host_checkpoint": {
-      "revision": "1bad6331",
-      "record": "242-i02-current85-host-refresh.md",
-      "artifact": "artifacts/atom-host/i02-current85/checkpoint.json",
-      "native_metadata_checks": 7,
-      "native_capture_controls": [
-        38,
-        40
-      ],
-      "browser_variants": 2,
+      "revision": "bd3afcdf",
+      "record": "249-i02-current86-host-refresh.md",
+      "artifact": "artifacts/atom-host/i02-current86/checkpoint.json",
+      "package": "0.1.0-candidate.20261027.86",
+      "native_template_checks": 5,
+      "browser_variants": 1,
+      "model_metadata_requested": false,
+      "new_unknown_route_qualified": false,
       "full_I02_accepted": false,
-      "context_bar": {
-        "revision": "5f901fab",
-        "record": "243-i02-host-context-bar.md",
-        "artifact": "artifacts/atom-host/i02-host-context/checkpoint.json",
-        "native_checks_each": 5,
-        "runs": 2,
-        "whole_I02_accepted": false
+      "historical_85_capture": {
+        "record": "242-i02-current85-host-refresh.md",
+        "revision": "1bad6331",
+        "controls": [
+          38,
+          40
+        ],
+        "runtime_capture_assets_identical86": true,
+        "fresh86native": false
       }
     },
     "historical_active_pointer_before_I02_current82": {
@@ -9613,8 +9628,8 @@
     "document": "232-i02-current83-official-host.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
-    "current_increment": "L02.27-immutable86-local-prerequisite-closed",
-    "next_item": "I02.35 exact86 official intake/strict lock/build/source checks and affected free model-disabled template UI; runtime identical85, no old Capture/model/CA/performance replay.",
+    "current_increment": "I02.35-exact86-official-affected-ui-closed",
+    "next_item": "I02.36 exact local unpacked85↔86 component reload/rollback: saved diagnostic/no resumed waiting writer/picker on existing app; initial exact85dist restoration before native, no model/CA/Store/Capture campaign.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9641,8 +9656,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "I02",
-      "record": "249-i02-current86-host-refresh.md",
-      "status": "bounded35-current86-refresh-next"
+      "record": "250-i02-component-reload-rollback.md",
+      "status": "bounded36-update-rollback-prerequisite-next"
     },
     "completed_increments": [
       {
@@ -12643,11 +12658,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Local86/UI2 prepared clean1c3d512, exact31payload270source327build; UI+3metadata files differ, runtime/guardian/workers/reader identical85. Type2/admission9PASS/full5892 reused. Official host remains85/2eb98f35; no86native/model/performance qualification.",
+    "current_activity_note": "Official86/UI2 hostbd3afcdf: frozen1290/strict lock+history25/build/types/package9/source73PASS; sole native free-template5PASS, modeloff/no metadata request. OnlyBuildInfo/atom-page changed, runtime/Capture assets identical85. Initial runner errors preserved; no fullI02/L02/new86performance acceptance.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "1c3d5126aeda58d5f186e4caf3f767a8e64f87c8",
     "current_record_date": "2026-10-27",
-    "next_bounded_step": "I02.35 exact86 official intake/strict lock/build/source checks and affected free model-disabled template UI; runtime identical85, no old Capture/model/CA/performance replay.",
+    "next_bounded_step": "I02.36 exact local unpacked85↔86 component reload/rollback: saved diagnostic/no resumed waiting writer/picker on existing app; initial exact85dist restoration before native, no model/CA/Store/Capture campaign.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -12713,6 +12728,26 @@
     "previous_source_before_L02_26": {
       "revision": "b83d9c9bd1e766770248297166b3014d93251927",
       "kind": "Clean immutable Atom85 producer/source-manifest revision; later public docs only. Official host1bad6331 consumed85, consumer composition5f901fab. No model usefulness/fullI02 or new85performance acceptance."
+    },
+    "historical_host_checkpoint_before86": {
+      "revision": "1bad6331",
+      "record": "242-i02-current85-host-refresh.md",
+      "artifact": "artifacts/atom-host/i02-current85/checkpoint.json",
+      "native_metadata_checks": 7,
+      "native_capture_controls": [
+        38,
+        40
+      ],
+      "browser_variants": 2,
+      "full_I02_accepted": false,
+      "context_bar": {
+        "revision": "5f901fab",
+        "record": "243-i02-host-context-bar.md",
+        "artifact": "artifacts/atom-host/i02-host-context/checkpoint.json",
+        "native_checks_each": 5,
+        "runs": 2,
+        "whole_I02_accepted": false
+      }
     }
   },
   "next_task": "I02"
