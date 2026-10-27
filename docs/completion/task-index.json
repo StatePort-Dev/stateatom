@@ -5380,28 +5380,18 @@
       "status": "in-progress",
       "optional": false,
       "active_slice": {
-        "id": "L02.24",
-        "record": "240-l02-pending-readiness-notice.md",
-        "status": "closed-bounded-source-ui-notice",
+        "id": "L02.25",
+        "record": "241-l02-current85-local-package.md",
+        "status": "closed-immutable-local-package-prerequisite",
+        "package": "0.1.0-candidate.20261027.85",
+        "package_sha256": "84b3c5e1bf8d23201b053d5a9d6f8eb41e0dba99751d1bbc42d2cd57730835e6",
+        "source_revision": "b83d9c9bd1e766770248297166b3014d93251927",
+        "package_checks": 9,
+        "type_checks": 2,
+        "runtime_identical84": true,
         "native_product_runs": 0,
         "model_calls": 0,
-        "real_readiness_accepted": false,
-        "whole_L02_complete": false,
-        "new_source_checks": 7,
-        "focused_checks": 30,
-        "affected_checks": 75,
-        "full_source_checks": 5883,
-        "source_rendered_widths": [
-          390,
-          1100
-        ],
-        "real_model_calls": 0,
-        "review": {
-          "critical": 0,
-          "important": 0,
-          "minor": 0,
-          "rereview": false
-        }
+        "whole_L02_complete": false
       },
       "implementation_plan": "../superpowers/plans/2026-10-27-l02-pending-readiness-notice.md",
       "remaining_acceptance": [
@@ -5410,8 +5400,8 @@
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
-      "execution_record": "240-l02-pending-readiness-notice.md",
-      "current_checkpoint": "240-l02-pending-readiness-notice.md",
+      "execution_record": "241-l02-current85-local-package.md",
+      "current_checkpoint": "241-l02-current85-local-package.md",
       "completed_slices": [
         {
           "id": "L02.16",
@@ -6126,7 +6116,31 @@
           "fullL02": false
         }
       },
-      "historical_checkpoint_before_L02_24": "223-l02-web-readiness.md"
+      "historical_checkpoint_before_L02_24": "223-l02-web-readiness.md",
+      "previous_slice_before_L02_25": {
+        "id": "L02.24",
+        "record": "240-l02-pending-readiness-notice.md",
+        "status": "closed-bounded-source-ui-notice",
+        "native_product_runs": 0,
+        "model_calls": 0,
+        "real_readiness_accepted": false,
+        "whole_L02_complete": false,
+        "new_source_checks": 7,
+        "focused_checks": 30,
+        "affected_checks": 75,
+        "full_source_checks": 5883,
+        "source_rendered_widths": [
+          390,
+          1100
+        ],
+        "real_model_calls": 0,
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 0,
+          "rereview": false
+        }
+      }
     },
     {
       "id": "I01",
@@ -9494,8 +9508,8 @@
     "document": "232-i02-current83-official-host.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
-    "current_increment": "L02.24-long-pending-readiness-notice-source-complete",
-    "next_item": "L02.25 new immutable85/unchanged UI2 exact local pack/admission/types; no native/model/CA/host/publication implied.",
+    "current_increment": "L02.25-current85-local-prerequisite-complete",
+    "next_item": "I02.30 exact85host intake/affected checks/native metadata notice conditional branch+canonical Capture; no model inference/download/API override/newCA or full-task acceptance.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9521,9 +9535,9 @@
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
-      "id": "L02",
-      "record": "241-l02-current85-local-package.md",
-      "status": "bounded25-local-package-prerequisite-next"
+      "id": "I02",
+      "record": "242-i02-current85-host-refresh.md",
+      "status": "bounded30-exact85-host-refresh-next"
     },
     "completed_increments": [
       {
@@ -12524,7 +12538,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "UI30sUnknown notice source30/affected75/full5883PASS,source rendered390/1100 keyboard/focus/font/geometry; one scoped review0C0I0M. Provider/API/model deadlines unchanged, no real readiness/usefulness pass. Source drifts84 in UI/changelog only; next local85 prerequisite.21of29 unchanged.",
+    "current_activity_note": "Cleanb83d9c9 exact85/UI2 deterministic/offline package/admission9/types2/current270/327 PASS, only4payload deltas from84 runtime identical. Officialhost83 unchanged; next authorized bounded85host refresh. Full21of29 and84performanceMISS unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "4ef5d652b17cf4b3446f2f720d964269fe4e68b1",
     "current_record_date": "2026-10-27",

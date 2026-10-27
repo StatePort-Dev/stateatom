@@ -1,16 +1,17 @@
 # Project status
 
-[L02.24 owned long-pending readiness notice source complete](completion/240-l02-pending-readiness-notice.md):
-RED23/7→GREEN30,affected75/**full5883PASS**, source rendered390/1100 keyboard/focus/
-Inter/geometry and scoped review0C0I0M. After30s metadata waiting showsUnknown with
-template retained; matching late result works. Provider/generation deadlines unchanged.
-Real model availability/API cause/usefulness remain unqualified; no native/model/CA.
+[L02.25 immutable85 local prerequisite complete](completion/241-l02-current85-local-package.md):
+cleanb83d9c9/deterministic offline pack/admission9/types2/current270source327build.
+Runtime/guardian/workers/reader identical84; UI owned30sUnknown notice is source240
+(7new/75affected/5883full/source rendered390/1100/review0C0I0M), not model readiness.
 
-Next bounded **[L02.25 local immutable85](completion/241-l02-current85-local-package.md)**,
-exact UI2/admission/types. Source UI/changelog drift84; preserve84bytes and official83.
-No automatic host upgrade, SDK or publication. Actual84 performance remains
-20.54356509/27.05667272% MISS10%; full **21/29 (72.41%)**, eight open U04,A02,L02,I02,
-I03,V02,V03,V04. Overnight autonomy until09:00 Mauritius October28 continues.
+Next **[I02.30 exact85 authorized host refresh](completion/242-i02-current85-host-refresh.md)**:
+finite intake/affected/native metadata notice conditional branch and canonical
+Capture38/40criteria. If readiness settles, pending branch NOT_EXERCISED; no API fake,
+model-enabled Explain/download/inference/newCA or new performance campaign.
+Officialhost remains83 until actual intake. Full **21/29 (72.41%)**, eight open
+U04,A02,L02,I02,I03,V02,V03,V04;84overhead20.54356509/27.05667272%MISS10% unwaived.
+Autonomy until09:00 Mauritius October28; local commits only/no SDK/publication.
 
 ## Historical checkpoints
 
