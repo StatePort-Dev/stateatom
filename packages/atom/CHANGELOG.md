@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- After30s of opt-in availability metadata waiting, show an Unknown status while
+  retaining the template. Retire the owned notice on context/cancellation changes
+  and allow a matching late result; model API/generation/download timeouts are unchanged.
+
 - Reuse exact UTF8 byte lengths for frozen observation records while enforcing
   the same complete JSON byte budget. Keep full serialization with inherited
   custom JSON formatting; preserve all records, gaps, limits and stopped states.

@@ -7,12 +7,12 @@ import {renderExplanationDetails} from './inspection-explanation-ui.mjs';
 import {createNativeSourceAnchor,createReactHostSourceAnchor} from '../../../core/source-anchor.mjs';
 export function createActionUI({document,$,rpc,cleanupRpc,tab,action,nativeSource}){
  const traceUI=createActionTraceUI({document,$,rpc,cleanupRpc,tab,action});
- let key,epoch=0,availabilityEpoch=0,controller;
+ let key,epoch=0,availabilityEpoch=0,controller,availabilityNotice;
  const selectionKey=s=>JSON.stringify([s?.tabId??tab(),s?.run,s?.analysis?.actionContext,s?.selection?.domIdentity,s?.selection?.observedAt,s?.selection?.page,s?.selection?.instance,s?.selection?.property,s?.selection?.value]);
  const renderKey=(s,f,permission)=>JSON.stringify([selectionKey(s),explanationIdentity(f),s?.analysis?.actionBindings,s?.stale,permission,s?.sourceMaps,s?.capabilityPolicy?.operations?.['source-map-anchor']]);
  const model=document.defaultView?.location?.protocol==='chrome-extension:'?document.defaultView.LanguageModel:null;
  const provider=ChromeBuiltInExplanation(model),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;};
- function cancel(){controller?.abort();controller=null;}
+ function cancel(){if(availabilityNotice){clearTimeout(availabilityNotice.timer);availabilityNotice=null;}controller?.abort();controller=null;}
  function render(state){
   traceUI.render(state);
   const stale=!!state?.stale||(state?.analysis?.actionBindings||[]).some(b=>b.freshness==='Stale');
@@ -69,7 +69,11 @@ export function createActionUI({document,$,rpc,cleanupRpc,tab,action,nativeSourc
    const own=epoch,metadata=++availabilityEpoch;
    if($('action-local-enabled').checked){
     $('action-local-status').textContent='Checking local model availability…';
-    void provider.availability().then(a=>{if(own===epoch&&metadata===availabilityEpoch&&$('action-local-enabled').checked)$('action-local-status').textContent=a==='available'?'Local model available.':a==='downloadable'||a==='downloading'?'Explain simply starts/resumes the local model download; disk, CPU/GPU and battery may be used.':'Local model unavailable · using templates.';});
+    const currentMetadata=()=>own===epoch&&metadata===availabilityEpoch&&$('action-local-enabled').checked;
+    // This is an owned UI notice, not an API timeout, retry or device verdict.
+    const notice={timer:null};availabilityNotice=notice;
+    notice.timer=setTimeout(()=>{if(availabilityNotice!==notice)return;availabilityNotice=null;if(currentMetadata())$('action-local-status').textContent='Local model status unknown · template still available.';},30000);
+    void provider.availability().then(a=>{if(!currentMetadata())return;if(availabilityNotice===notice){clearTimeout(notice.timer);availabilityNotice=null;}$('action-local-status').textContent=a==='available'?'Local model available.':a==='downloadable'||a==='downloading'?'Explain simply starts/resumes the local model download; disk, CPU/GPU and battery may be used.':'Local model unavailable · using templates.';});
    }else $('action-local-status').textContent=$('action-explanation').textContent?'Recorded snapshot · template explanation; no new application action.':'Optional on-device English explanation · experimental; template always available.';
   };
  }

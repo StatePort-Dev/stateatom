@@ -1,15 +1,16 @@
 # Project status
 
-[V02.30 Debugger lifetime source/API decision complete](completion/239-v02-debugger-lifetime-feasibility.md):
-late enable is not established equivalent to the existing script catalog/live-edit
-invalidation. No domain/product change or new matrix. Actual84 original gate remains
-Basicp95399.7/416.5msPASS1s; Active/Off20.54356509/27.05667272%MISS10%, no waiver/retry.
+[L02.24 owned long-pending readiness notice source complete](completion/240-l02-pending-readiness-notice.md):
+RED23/7→GREEN30,affected75/**full5883PASS**, source rendered390/1100 keyboard/focus/
+Inter/geometry and scoped review0C0I0M. After30s metadata waiting showsUnknown with
+template retained; matching late result works. Provider/generation deadlines unchanged.
+Real model availability/API cause/usefulness remain unqualified; no native/model/CA.
 
-Next bounded **L02.24 source pending readiness lifecycle inspection**: reuse retained
-Unknown/Checking/nativeMetadata6 and provider/controller source timeouts; no native/
-model/device/CA/browser campaign or invented API cause. MandatoryL02 stays open.
-Official host remains83/UI2; full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,
-V02,V03,V04. Local autonomy until09:00 Mauritius October28; no SDK/publication.
+Next bounded **[L02.25 local immutable85](completion/241-l02-current85-local-package.md)**,
+exact UI2/admission/types. Source UI/changelog drift84; preserve84bytes and official83.
+No automatic host upgrade, SDK or publication. Actual84 performance remains
+20.54356509/27.05667272% MISS10%; full **21/29 (72.41%)**, eight open U04,A02,L02,I02,
+I03,V02,V03,V04. Overnight autonomy until09:00 Mauritius October28 continues.
 
 ## Historical checkpoints
 
