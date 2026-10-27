@@ -6,8 +6,11 @@ local saved snapshot and enabled-target picker on unchanged app document only; n
 Store/Capture-in-progress/fullI02 credit. Current86/UI2 intake remains249. Full21/29
 unchanged. [A02.54 state weak-method dispatch](../completion/251-a02-state-weak-dispatch.md)
 closed source-only968f062/17new/56affected/5909full/ONEreview0C0I0M; no installed or
-native/GC claim. Next [V03.30](../completion/252-v03-current-development-plugin.md)
-is an existing-plugin local archive/separate consumer, no new SDK/host/native/model.
+native/GC claim. [V03.30](../completion/252-v03-current-development-plugin.md) retains8consumerFAIL;
+[V03.31](../completion/253-v03-plugin-live-status.md) fixes wrapper getters and checks
+unique9:5912source/6consumer+17syntheticcontrols/ONEreview0C0I0M, no native upgrade.
+Next [A02.55](../completion/254-a02-host-weak-dispatch.md) corrects two source caller
+weak-method lookups before any browser. No new SDK/host/native/model.
 Historical entries retain scope.
 
 Current approved-scope execution is tracked in [completion status](../status.md)

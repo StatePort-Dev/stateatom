@@ -58,10 +58,17 @@ remain Unknown.104protected/327product exact; no native/GC/50cause/installed-hel
 archive/15payload/21source and separate offline81-package install; actual consumer
 FAIL after2checks exposes stale null adapter getters. Original8archive/raw retained.
 
-Current bounded **[V03.31 live status getters](completion/253-v03-plugin-live-status.md)**:
-RED1/2→affected50/full5912PASS; unique9consumer pending. No new profiles,
-SDK/VSIX/host/native/model/publication. Full **21/29 (72.41%)**, eight open
-U04,A02,L02,I02,I03,V02,V03,V04. Autonomy until09:00 Mauritius October28.
+[V03.31 current plugin9 closed](completion/253-v03-plugin-live-status.md), clean91849e5:
+live React/Query getters restored;RED1/2→affected50/full5912PASS. Exact15payload/
+21source and independent offline consumer6PASS+17synthetic state controls; same lock/
+transitive tree after cleanCI. ONEreview0C0I0M.8FAIL/artifact/consumer preserved; no
+installed helper/native/model/GC/performance/fullV03 credit. Atom86/UI2 unchanged.
+
+Next bounded **[A02.55 host weak-method caller](completion/254-a02-host-weak-dispatch.md)**:
+two dynamic private dereferences remain in observer commit/snapshot, discovered
+before browser launch. Source RED/correction only; no old50/GC/AI/install retry.
+Full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04.
+Autonomy until09:00 Mauritius October28; no SDK/VSIX/host/publication.
 
 
 ## Historical checkpoints
