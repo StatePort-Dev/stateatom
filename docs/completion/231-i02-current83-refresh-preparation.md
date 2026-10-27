@@ -1,38 +1,58 @@
-# L02.23 — local immutable candidate for availability metadata UI
+# I02.27 — exact83 official-host refresh, prepared bounded next step
 
-Bounded packaging prerequisite after source229/3867ff9. Prepare Atom
-0.1.0-candidate.20261027.83 with the unchanged exact UI2. Source behavior passed23
-focused/full5861; new version/lock/changelog metadata does not constitute new
-runtime verification. Execute existing pack:atom, exact package admission and type
-consumer commands. Keep identity-reuse protection and every82artifact/result intact.
+Dependency-ready maintenance increment within unfinished I02; accepted I01 extraction
+and guardian wiring are reused. At preparation host40afa3c3 was clean and consumed
+Atom82/UI2. Source229 and local package230 introduce guarded availability metadata UI.
+Full approved scope/thresholds/history stay unchanged; no SDK/redesign/publication.
+Existing maintainer authorization covers local continuation; no new routine approval.
 
-No native/model/browser readiness attempt, official-host intake/upgrade, SDK,
-publication, push, account/permission/trust change or full L02/I02 acceptance.
-An immutable tarball/clean consumer proves packaging only; model readiness remains
-Unknown from I02.25. Official StatePort continues its accepted82pair until a separate
-verified intake. Full approved plan21/29 unchanged.
+## Exact input and existing evidence
 
-## Result
+.artifacts/atom/2026-10-27T13-49-31-004Z/atom-handoff.json, clean producer4ef5d65.
+Atom0.1.0-candidate.20261027.83 SHA256
+c7b20bf960de55083e66175a331849da2804e4830b19226e125893bb4b43ccf4.
+UI2 remains2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5.
+Full contract/exports/peer and payload paths unchanged. Installed delta consists only
+of Atom package metadata, ui.mjs, changelog and source-manifest. Runtime/guardian/
+workers/reader are unchanged. New package9/types2/source327 match; source UI23/full5861.
+These are packaging/source results, not native83/model usefulness.
 
-Closed local package prerequisite. Existing npm run pack:atom succeeds from clean
-source4ef5d652b17cf4b3446f2f720d964269fe4e68b1,sourceDirtyfalse, with deterministic
-repeat packs, offline clean consumer install/build and both example-host receipts.
-Handoff .artifacts/atom/2026-10-27T13-49-31-004Z/atom-handoff.json:
+## One bounded implementation
 
-- Atom83 SHA256 c7b20bf960de55083e66175a331849da2804e4830b19226e125893bb4b43ccf4.
-- UI2 SHA256 2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5,
-  byte-identical to accepted82pair. API1/wire1/UI2.1.0/exports/full contract unchanged.
-- npm run verify:atom-package -- <exact handoff>:9PASS, exact assets plus original
-  incompatible peer/contract/export/font/declaration/worker/digest negative controls.
-- npm run verify:atom-types -- <exact handoff>: packed NodeNext/browser consumers PASS.
-- All327source/build inputs match the new receipt. Only four installed Atom files
-  differ from82: package.json,dist/ui.mjs,CHANGELOG.md,dist/source-manifest.json.
-  Runtime/guardian/workers/reader/UI2payload unchanged; no added/removed payload paths.
+1. Preserve82 vendor tarball/handoff/intake/payload receipt in versioned history.
+   Use exact83 archives/receipts as the sole new input. Keep UI2 bytes and official
+   identity, bridge, manifest permissions and lifecycle wiring. No mutable-source
+   rebuild or substitute.
+2. Update consumer file dependency/lock, exact literal version/hash assertions and
+   affected tests/verification adapters. Current locations: third_party/atom;
+   apps/chrome-extension/package.json; scripts/atom-package.mjs;
+   tests/atom-package.test.mjs; tests/atom-current-intake.test.mjs; current UI,
+   Settings and authority adapter metadata expectations. No runtime redesign.
+3. pnpm-workspace.yaml keeps one exact version-union rule per package name: add83
+   to the existing Atom rule. Never add a shadowed second rule or relax global
+   policies. Final frozen offline dependency-closure install, archive/payload/build
+   assertions and affected host/package/type/build checks must pass.
+4. Fresh native source UI metadata proof on this pair: default template/readonly;
+   opt-in shows Checking while pending or truthful settled metadata; explicit
+   opt-out restores template/optional. No local-enabled Explain/create/prompt/model
+   download, forced available/unavailable result or model API override. Old I02.25
+   unavailable-route FAIL stays FAIL; a separate metadata check cannot pass it.
+5. Fresh compatible actual Capture/guardian33controls on both recorded browser
+   variants. Preserve exact-source/Journey/auth/cold replay/privacy/native permission
+   release criteria and negative URL-only POST. Keep original full-driver debt.
 
-Checkpoint .artifacts/l02/availability-package/2026-10-27/checkpoint.json records
-all exact references. Old82archive/receipt/results remain unchanged. No new83native,
-model, performance or official-host qualification. StatePort still consumes82.
+Do not repeat real600s expiry, CA/trust setup, exhausted model/device campaigns or
+V02 measurements merely because the candidate number changed. Historical results
+and mandatory gates remain distinct. No native83 claim before an actual run.
 
-One next unfinished increment: [I02.27 bounded official-host refresh](231-i02-current83-refresh-preparation.md),
-with exact83intake and affected native metadata/Capture checks. Do not reopen I01
-extraction or relabel82runs as83; full I02/L02/21of29 remain unchanged.
+## Completion boundary
+
+One local host commit with verified exact83 intake and affected current results.
+Still no full I02/L02/installed/performance/release acceptance;21/29 stays until whole
+criteria close. Read only changed context; do not restart the project audit.
+This preparation itself did not implement the host update.
+
+## Handoff correction
+
+The first committed231 accidentally duplicated230. This correction restores the
+bounded reviewable plan; it changes no executable evidence or acceptance criterion.
