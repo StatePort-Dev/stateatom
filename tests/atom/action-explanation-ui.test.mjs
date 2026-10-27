@@ -13,7 +13,7 @@ test('opt-in pending availability preserves the prior template; settlement chang
  const available=deferred(),s=sourceState(),calls=[];let checks=0,creates=0;
  const f=setup(async m=>{calls.push(m);return s;},{availability:()=>{checks++;return available.promise;},create:async()=>{creates++;throw Error('Unexpected model create');}},t);
  f.ui.render(s);await f.$('action-explain').onclick();const before={text:f.$('action-explanation').textContent,status:f.$('action-local-status').textContent};assert.match(before.status,/template explanation/);
- f.$('action-local-enabled').checked=true;f.$('action-local-enabled').onchange();await flushAvailability();assert.equal(checks,1);assert.equal(creates,0);assert.deepEqual({text:f.$('action-explanation').textContent,status:f.$('action-local-status').textContent},before);assert.deepEqual(calls,[{op:'state',tabId:1,refreshDeep:false}]);
+ f.$('action-local-enabled').checked=true;f.$('action-local-enabled').onchange();await flushAvailability();assert.equal(checks,1);assert.equal(creates,0);assert.deepEqual({text:f.$('action-explanation').textContent,status:f.$('action-local-status').textContent},{text:before.text,status:'Checking local model availability…'});assert.deepEqual(calls,[{op:'state',tabId:1,refreshDeep:false}]);
  available.resolve('unavailable');await flushAvailability();assert.equal(f.$('action-local-status').textContent,'Local model unavailable · using templates.');assert.equal(f.$('action-explanation').textContent,before.text);assert.equal(creates,0);assert.equal(calls.length,1);
 });
 test('availability reply from an older rendered context is discarded; the new context visibly clears the previous template',async t=>{
@@ -29,4 +29,18 @@ test('opt-out during metadata availability ignores late downloadable result and 
 test('late availability after disposal cannot replace visible metadata or create a model',async t=>{
  const available=deferred(),s=sourceState();let creates=0;const f=setup(async()=>s,{availability:()=>available.promise,create:async()=>{creates++;throw Error('Unexpected model create');}},t);
  f.ui.render(s);f.$('action-local-enabled').checked=true;f.$('action-local-enabled').onchange();await f.ui.dispose();const before={text:f.$('action-explanation').textContent,status:f.$('action-local-status').textContent};available.resolve('available');await flushAvailability();assert.deepEqual({text:f.$('action-explanation').textContent,status:f.$('action-local-status').textContent},before);assert.equal(creates,0);
+});
+
+test('opt-in availability reports checking and opt-out restores the recorded template status',async t=>{
+ const available=deferred(),s=sourceState(),f=setup(async()=>s,{availability:()=>available.promise},t);f.ui.render(s);await f.$('action-explain').onclick();const text=f.$('action-explanation').textContent;
+ f.$('action-local-enabled').checked=true;f.$('action-local-enabled').onchange();assert.equal(f.$('action-local-status').textContent,'Checking local model availability…');assert.equal(f.$('action-explanation').textContent,text);
+ f.$('action-local-enabled').checked=false;f.$('action-local-enabled').onchange();assert.match(f.$('action-local-status').textContent,/Recorded snapshot.*template explanation/);available.resolve('unavailable');await flushAvailability();assert.match(f.$('action-local-status').textContent,/Recorded snapshot.*template explanation/);
+});
+test('older opt-in availability cannot overwrite a newer off-on request result',async t=>{
+ const first=deferred(),second=deferred(),s=sourceState();let calls=0,creates=0;const f=setup(async()=>s,{availability:()=>++calls===1?first.promise:second.promise,create:async()=>{creates++;throw Error('Unexpected model create');}},t);f.ui.render(s);
+ f.$('action-local-enabled').checked=true;f.$('action-local-enabled').onchange();f.$('action-local-enabled').checked=false;f.$('action-local-enabled').onchange();f.$('action-local-enabled').checked=true;f.$('action-local-enabled').onchange();second.resolve('unavailable');await flushAvailability();const current=f.$('action-local-status').textContent;assert.equal(current,'Local model unavailable · using templates.');first.resolve('available');await flushAvailability();assert.equal(f.$('action-local-status').textContent,current);assert.equal(creates,0);
+});
+test('late opt-in metadata cannot overwrite the generating phase of a later explicit Explain',async t=>{
+ const first=deferred(),ready=deferred(),reply=deferred(),s=sourceState();let checks=0;const model={availability:()=>++checks===1?first.promise:Promise.resolve('available'),create:async()=>({prompt:()=>{ready.resolve();return reply.promise;},destroy(){}})},f=setup(async()=>s,model,t);
+ f.ui.render(s);f.$('action-local-enabled').checked=true;f.$('action-local-enabled').onchange();const pending=f.$('action-explain').onclick();await ready.promise;try{assert.equal(f.$('action-local-status').textContent,'Generating local explanation…');first.resolve('downloadable');await flushAvailability();assert.equal(f.$('action-local-status').textContent,'Generating local explanation…');f.$('action-cancel').onclick();assert.equal(f.$('action-local-status').textContent,'Cancelled · showing template.');}finally{reply.resolve('{}');await pending;}
 });

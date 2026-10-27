@@ -27,6 +27,13 @@ no actual browser readiness or unavailable-route qualification.
 Original matrix criteria/first failures retained. Full I02 and
 mandatory L02 remain open; full-plan count stays21/29. No new policy or scope cut.
 
+[L02.22 source metadata UI fix](completion/229-l02-availability-ui-ownership.md):
+RED20/3→GREEN23; full5861PASS after the recorded sandbox subprocess failures.
+Synthetic source UI before/after390/1100 passes keyboard/focus/font/geometry; no
+native/model qualification. Source action-ui/changelog now differ from the official82
+receipt, whose archive/host stay unchanged. Next L02.23 new local immutable candidate;
+I02.25 readiness cause remains Unknown, full plan21/29 unchanged.
+
 [Prior release checkpoint](completion/224-night-release-checkpoint.md) remains
 historical20/29. Exact82/product327+archives unchanged; V02original10%overhead MISS.
 Bounded L02.20 was closed INCOMPLETE; latest Atom source8c78dcf (no new native/model retry).

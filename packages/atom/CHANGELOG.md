@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased — availability metadata UI
+
+- Show the existing checking status while optional local-model metadata is pending;
+  keep the recorded template available and restore template/optional status on opt-out.
+- Ignore metadata from an older opt-in or before a later explicit Explain so it
+  cannot replace the current availability/generation status. Model opt-in, inference,
+  downloads, timeouts and evidence semantics remain unchanged.
+- Source/rendered-fixture checks are separate from a new immutable candidate and
+  installed/native model readiness; the accepted official Atom82 is unchanged.
+
 ## 0.1.0-candidate.20261026.82
 
 - Batch the first recording background save across separate event-loop tasks with
