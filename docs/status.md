@@ -87,10 +87,16 @@ exact270source/327build/31payload/types2/admission9PASS; UI2/contract/permission
 unchanged. Actual payload delta86 is runtime/source-manifest/version/changelog only.
 No native/real speedup/target credit; official host remains86/223714a7.
 
-Next bounded **I02.37 exact87 official-host refresh** with affected request-buffer/
-readonly verification, no old fullCapture/model/performance retry or publication.
-Full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04.
-Autonomy until09:00 Mauritius October28.
+[I02.37 official87 closed](completion/258-i02-current87-host-refresh.md), host81bec06e:
+frozen1290policies/build/types/package2+3+4/source73, sole native10PASS. Actual owned
+worker matches exact dist; readonly/no-body/picker and explicit cache-only local
+request retention verified with unchanged limits. UI/guardian/reader byte-identical86;
+history/full86dist protected. No fullCapture/model/speedup/target/lineage credit.
+
+Next bounded **[V02.33 current87 original performance eligibility](completion/259-v02-current87-original-performance.md)**:
+retained original contract/seed first; max1new87measurement only if eligible,
+no old84retry/domain/poll/workload/CA change. Full **21/29 (72.41%)**, eight open
+U04,A02,L02,I02,I03,V02,V03,V04. Autonomy until09:00 Mauritius October28.
 
 
 ## Historical checkpoints

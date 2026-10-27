@@ -80,3 +80,43 @@ Frozen [official87-retention-case.json](../testing/official87-retention-case.jso
 SHA256 b01f95f493064b2aab7de05045be4313ab78dc4bef8e8f80c1722164b16d1834. Host revision223714a7/sourceDirtytrue,
 not a clean-host acceptance: prepared intake/tool/driver changes are frozen by hashes.
 Producer a859d9d clean packaged87 is separate. Browser not yet launched.
+
+
+## Result
+
+Closed bounded at host **81bec06e**, main/clean after scoped commit. Raw remains
+base223714a7/sourceDirtytrue; no clean rerun. Sole native Chrome153.0.8010.12
+**10PASS**, PASS_I02_CURRENT87_RETENTION_READONLY_NOT_PERFORMANCE. Actual loaded own
+service-worker SHA256d9a08a644bda766ebf81c12faa01e1c09a4e408a0275cd573b008b3bd47443f6
+matches frozen official code; own worker debugger detached before application work.
+No second application debugger or readonly source-body proof was used.
+
+Readonly picker causes0app actions; first trusted119017-character response completes
+with0retained rows/bufferBytes2. Explicit trusted local development connection grants
+cache ONLY, production inactive; three fitting responses each retain the newest row,
+bufferBytes238380. Escaped120017-character newest response exceeds the complete
+private JSON budget and removes the full over-budget suffix, bufferBytes2. Five
+actual trusted app requests/completions, same document/timeOrigin; final Basic
+reinspection causes no action and leaves source/runtime Unknown.
+
+Raw host artifacts/atom-host/i02-current87/2026-10-28/native-retention-igrBJr/results.json,
+SHA256237c0184897b185c83fe47817babb7be1ef728ff4191b56d5d59418e3215612d.
+Inspector errors/console[], app-console NotCollected. Final app detach and inspector/
+browser/server closes succeed; worker session already retired.15frozen inputs/full
+36dist remain exact. All270source/327producer inputs,20new86history snapshots and
+previous history retained; full actual86dist saved. Metadata/lock normalization
+byte-exact after install. New evidence is synthetic native functionality, not
+independent-code/fullCapture/lineage/heap/real-speedup/10%target acceptance.
+
+Host report [2026-10-28-i02-current87-retention.md](/home/roman/projects/scenariodeck/docs/agent/reports/2026-10-28-i02-current87-retention.md),
+checkpoint/executable binder in host artifacts/atom-host/i02-current87/2026-10-28.
+Focused self-review under host AGENTS, no new separate review/visual ritual. No CA/
+TLS/trust/model/production/SDK/publication or new Live/F05/handoff setting.
+Full21/29 remains72.41%, eight whole items open; old84MISS/32INCOMPLETE unchanged.
+
+One next bounded **V02.33**: current87original-workload eligibility/preparation,
+then at most one separately frozen measurement/reader if the unchanged original
+contract and retained TLS seed are eligible. Reason: reviewed changed runtime is
+now packaged and actually accepted in official host; old84numbers cannot qualify
+new87bytes. No new domain/poll/workload/threshold/CA/trust changes or old84retry,
+and no inference that the source operation-count reduction explains old overhead.
