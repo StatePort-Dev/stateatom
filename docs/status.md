@@ -6,8 +6,8 @@ Host1fe11a00: exact Atom82/UI2 installed/built, native UI9 and real Capture6PASS
 I02 driver debt. No publication/SDK or full I02/production/model acceptance.
 
 **Current full plan:21/29(72.41%),8open**:U04,A02,L02,I02,I03,V02,V03,V04.
-Next dependency-ready item: **L02**, the bounded source-only availability prerequisite
-from the current I02 failure. Full I02/mandatory L02 remain open. Autonomy continues
+Next dependency-ready item: **I02.27**, exact83official-host refresh after the
+completed bounded L02source/package prerequisites. Full I02/mandatory L02 remain open. Autonomy continues
 through evening; no additional routine I01 permission needed.
 
 [I02 current native increments](completion/227-i02-current82-native-matrix.md):
@@ -33,6 +33,12 @@ Synthetic source UI before/after390/1100 passes keyboard/focus/font/geometry; no
 native/model qualification. Source action-ui/changelog now differ from the official82
 receipt, whose archive/host stay unchanged. Next L02.23 new local immutable candidate;
 I02.25 readiness cause remains Unknown, full plan21/29 unchanged.
+
+[L02.23 local Atom83 prepared](completion/230-l02-availability-local-candidate.md):
+clean4ef5d65, exact new tarball/clean consumer, admission9/types2/327inputs match;
+UI2bytes/contract unchanged. Official host stays82, no83native/model qualification.
+Next one unfinished increment: [I02.27 exact83 host refresh](completion/231-i02-current83-refresh-preparation.md).
+Full count remains21/29; old I02.25 readiness failure and V02overhead MISS remain.
 
 [Prior release checkpoint](completion/224-night-release-checkpoint.md) remains
 historical20/29. Exact82/product327+archives unchanged; V02original10%overhead MISS.

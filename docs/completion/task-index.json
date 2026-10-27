@@ -5936,7 +5936,7 @@
       "historical_execution_records": [
         "189-l02-current-path-comparison.md"
       ],
-      "next_bounded_step": "L02.21 source-only availability/generation controls closed20PASS/new4, native/model0, product327 unchanged (228). Next L02.22 truthful existing Checking metadata UI on pending opt-in and template/optional state on opt-out; preserve all epoch/cancellation/template/timeout policies. Separate package/native proof remains required.",
+      "next_bounded_step": "L02.21 source20/new4 and L02.22 sourceUI fix23/full5861 closed; L02.23 immutable clean83package9/types2 complete (230). Native model readiness/usefulness stays Unknown/open. Next exact83native metadata proof only through bounded I02.27; no retry of exhausted loader19/web20 or new model inference.",
       "historical_checkpoint_before_L02_16": {
         "record": "189-l02-current-path-comparison.md",
         "status": "closed-bounded-native-incomplete-source-complete",
@@ -6224,7 +6224,7 @@
         "post_native_activation": {"host_commit": "4471afdb", "browser_variants": 2, "controls_each": 23},
         "post_url_only_negative": {"host_commit": "9d9cb4a3", "result": "NOT_CONFIRMED/REPLAY_MISS", "accepted_positive": false},
         "full_I02_accepted": false,
-        "next_bounded_step": "I02.26 bounded native33x2 accepted. Next source prerequisite L02.21 availability settlement versus UI generation, native/model budget0; full I02/installed/model gates remain. Preserve remaining full Capture/Desktop/helper/reader/Action Trace/installed/model matrix criteria."
+        "next_bounded_step": "I02.27 prepared in231: exact83/UI2 verified consumer refresh and fresh affected native metadata/Capture controls. Existing official82native33x2 remains separately accepted; new83has no native/model evidence. Preserve full I02/L02/installed criteria."
       },
       "existing_implementation": {
         "record": "205-release-date-decision.md",
@@ -9301,11 +9301,11 @@
       "next_bounded_step": "I01 exact local-file policy/install then current host guardian/lifecycle adaptation; separate scope already authorized.",
       "next_task": "A02"
     },
-    "document": "229-l02-availability-ui-ownership.md",
+    "document": "230-l02-availability-local-candidate.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
-    "current_increment": "L02.22-source-availability-ui-ownership-fixed-native-budget0",
-    "next_item": "L02.23 new local immutable Atom candidate for verified source UI metadata fix, retaining UI2; package/types/admission only, no publish/SDK/host upgrade/native model attempt. Full I02/L02 remain open.",
+    "current_increment": "L02.23-local-candidate83-ready-no-native-model-qualification",
+    "next_item": "I02.27 verified exact Atom83/UI2 official-host refresh and fresh affected metadata/Capture native checks; reuse accepted I01, retain old82results and model-unavailable FAIL, no model download/inference/publication.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9331,9 +9331,9 @@
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
-      "id": "L02",
-      "record": "229-l02-availability-ui-ownership.md",
-      "status": "bounded-source-ui-fix-complete-new-candidate-next"
+      "id": "I02",
+      "record": "231-i02-current83-refresh-preparation.md",
+      "status": "bounded-next-step-prepared-not-started"
     },
     "completed_increments": [
       {
@@ -12334,11 +12334,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "I01 accepted21of29; official I02 native33x2, Action Trace9/3/19, fresh Basic-reader12. I02.25 readiness FAIL3/Unknown retained. L02.22 source metadata guard/UI fix passes focused23/full5861 and mocked render390/1100, no native/model qualification. Next local immutable candidate, no publication.",
+    "current_activity_note": "I01 accepted21of29; official82I02native33x2, ActionTrace9/3/19, fresh Basic-reader12; I02.25 readiness FAIL3/Unknown retained. L02source metadata fix23/full5861, clean local83package9/types2/source327 ready. Next bounded I02.27 exact83host refresh, no new model campaign/publication.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "8c78dcf5575c611f7321ba479e9bf7195536d101",
+    "current_source_revision": "4ef5d652b17cf4b3446f2f720d964269fe4e68b1",
     "current_record_date": "2026-10-27",
-    "next_bounded_step": "L02.23 new local immutable Atom candidate for verified source UI metadata fix, retaining UI2; package/types/admission only, no publish/SDK/host upgrade/native model attempt. Full I02/L02 remain open.",
+    "next_bounded_step": "I02.27 verified exact Atom83/UI2 official-host refresh and fresh affected metadata/Capture native checks; reuse accepted I01, retain old82results and model-unavailable FAIL, no model download/inference/publication.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -12348,9 +12348,9 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "Corrected source Action UI metadata ownership, not yet a new installed candidate. Official Atom82 source receipt now differs in action-ui/changelog; no silent rebuild/relabel.",
-    "current_source_checkpoint": ".artifacts/l02/availability-ui/2026-10-27/source-checkpoint.json",
-    "current_source_checkpoint_kind": "Source UI fix RED20/3 GREEN23 full5861PASS plus mocked source render390/1100; no native/model evidence. Official82 unchanged; two product inputs drift and need new candidate.",
+    "current_source_revision_kind": "Clean local Atom83source/package; source UI23/full5861 separate from new package9/types2. No83native/model qualification. Official host remains accepted82.",
+    "current_source_checkpoint": ".artifacts/l02/availability-package/2026-10-27/checkpoint.json",
+    "current_source_checkpoint_kind": "Local immutable candidate83/package/type/327source proof only; sourceDirtyfalse, UI2unchanged, no native/model/consumer upgrade.",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
       "active_item": {
@@ -12398,5 +12398,5 @@
       "historical_only": true
     }
   },
-  "next_task": "L02"
+  "next_task": "I02"
 }
