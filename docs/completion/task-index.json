@@ -6337,7 +6337,7 @@
           "accepted_positive": false
         },
         "full_I02_accepted": false,
-        "next_bounded_step": "I02.31 compact duplicate host context branding, retain Capture instruction/nav and shared typography; no package/model/Capture/performance campaign.",
+        "next_bounded_step": "I02.32 existing minimal reporter to fresh passive reader on official85/UI2; actual UI download/notes/privacy, no new handoff UX or model/Capture/performance campaign.",
         "native_devtools": {
           "record": "233-i02-native-devtools-control.md",
           "host_commit": "3f567f79",
@@ -6372,6 +6372,14 @@
           "notice_source_controls": 8,
           "full_I02_accepted": false,
           "model_readiness_accepted": false
+        },
+        "host_context_bar": {
+          "revision": "5f901fab",
+          "record": "243-i02-host-context-bar.md",
+          "artifact": "artifacts/atom-host/i02-host-context/checkpoint.json",
+          "native_checks_each": 5,
+          "runs": 2,
+          "whole_I02_accepted": false
         }
       },
       "existing_implementation": {
@@ -6385,7 +6393,7 @@
         "host_modified": false,
         "meaning": "Existing source integration/old-pair native evidence credited; current exact pair update/acceptance remains open"
       },
-      "execution_record": "242-i02-current85-host-refresh.md"
+      "execution_record": "243-i02-host-context-bar.md"
     },
     {
       "id": "I03",
@@ -9510,7 +9518,15 @@
         40
       ],
       "browser_variants": 2,
-      "full_I02_accepted": false
+      "full_I02_accepted": false,
+      "context_bar": {
+        "revision": "5f901fab",
+        "record": "243-i02-host-context-bar.md",
+        "artifact": "artifacts/atom-host/i02-host-context/checkpoint.json",
+        "native_checks_each": 5,
+        "runs": 2,
+        "whole_I02_accepted": false
+      }
     },
     "historical_active_pointer_before_I02_current82": {
       "document": "144-v03-owned-editor-reply.md",
@@ -9533,8 +9549,8 @@
     "document": "232-i02-current83-official-host.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
-    "current_increment": "I02.30-current85-official-host-bounded-accepted",
-    "next_item": "I02.31 compact duplicate host context branding, retain Capture instruction/nav and shared typography; no package/model/Capture/performance campaign.",
+    "current_increment": "I02.31-host-context-composition-closed",
+    "next_item": "I02.32 existing minimal reporter to fresh passive reader on official85/UI2; actual UI download/notes/privacy, no new handoff UX or model/Capture/performance campaign.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9561,8 +9577,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "I02",
-      "record": "243-i02-host-context-bar.md",
-      "status": "bounded31-consumer-context-composition-next"
+      "record": "244-i02-official-minimal-handoff.md",
+      "status": "bounded32-native-minimal-handoff-next"
     },
     "completed_increments": [
       {
@@ -12563,11 +12579,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Official85/UI2 accepted bounded: frozen1290/build/types/package9/source73/qualifier8/native metadata7 actualUnknown30.10s/Capture38+40PASS. No useful-model/fullI02/85performance credit; full21of29. Next observed duplicate host context branding cleanup, same85bytes/no AI campaign.",
+    "current_activity_note": "Host5f901fab context bar fix: actual before/after5+5PASS390/1100, realTab, readonly Basic; root13px/button28px unchanged, +50.5px narrow inspector height. Same85/UI2. Full21of29 and original performance/L02 gaps unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "4ef5d652b17cf4b3446f2f720d964269fe4e68b1",
+    "current_source_revision": "b83d9c9bd1e766770248297166b3014d93251927",
     "current_record_date": "2026-10-27",
-    "next_bounded_step": "I02.28 original native DevTools-before/during-Capture control without competing Playwright app session; no old model/performance restart or whole-I02 acceptance.",
+    "next_bounded_step": "I02.32 existing minimal reporter to fresh passive reader on official85/UI2; actual UI download/notes/privacy, no new handoff UX or model/Capture/performance campaign.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -12577,7 +12593,7 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "Clean local Atom83source/package; source UI23/full5861 separate from new package9/types2. No83native/model qualification. Official host remains accepted82.",
+    "current_source_revision_kind": "Clean immutable Atom85 producer/source-manifest revision; later public docs only. Official host1bad6331 consumed85, consumer composition5f901fab. No model usefulness/fullI02 or new85performance acceptance.",
     "current_source_checkpoint": ".artifacts/l02/availability-package/2026-10-27/checkpoint.json",
     "current_source_checkpoint_kind": "Local immutable candidate83/package/type/327source proof only; sourceDirtyfalse, UI2unchanged, no native/model/consumer upgrade.",
     "historical_active_pointer_before_V02_18": {
@@ -12625,7 +12641,11 @@
       "scope_reduced": false,
       "new_feature_acceptances": [],
       "historical_only": true
+    },
+    "historical_source_pointer_before_official85_closeout": {
+      "revision": "4ef5d652b17cf4b3446f2f720d964269fe4e68b1",
+      "kind": "Clean local Atom83source/package; source UI23/full5861 separate from new package9/types2. No83native/model qualification. Official host remains accepted82."
     }
   },
-  "next_task": "V02"
+  "next_task": "I02"
 }

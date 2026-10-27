@@ -6,10 +6,14 @@ host1bad6331: frozen1290/build/types/package9/source73/qualifier8PASS; actual Ca
 opt-out and fresh readonly Basic work. No model-enabled Explain/download/inference,
 real readiness/usefulness or full-I02 acceptance. Original84performance MISS retained.
 
-Next bounded **[I02.31 host context bar](completion/243-i02-host-context-bar.md)**:
-remove duplicated host StatePort/Atom text above package-owned header, preserveCapture
-instruction/navigation and shared root typography. Same85bytes; no new package,
-model/CA/Capture/performance campaign or redesign. Full **21/29 (72.41%)**, eight open
+[I02.31 host context bar complete](completion/243-i02-host-context-bar.md), host5f901fab:
+actual native before/after5+5PASS; duplicate labels removed, Capture hint/navigation
+retained, +50.5px inspector height at390 with root13px/checked button28px unchanged.
+Build/types/package4+3PASS; same85/UI2. Agent screenshots remain candidates.
+
+Next bounded **[I02.32 official minimal handoff](completion/244-i02-official-minimal-handoff.md)**:
+existing reporter→separate clean passive reader via actual reviewed download/notes,
+without new UX/model/CA/Capture/performance. Full **21/29 (72.41%)**, eight open
 U04,A02,L02,I02,I03,V02,V03,V04. Autonomous local work until09:00 Mauritius October28;
 no SDK/push/publication and no mandatory human gate.
 

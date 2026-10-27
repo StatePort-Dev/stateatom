@@ -34,4 +34,24 @@ Full I02/U04/L02/V02 and21/29 unchanged. A fresh human participant is not a gate
 
 ## Result
 
-Pending controlled composition change and actual verification. No full-task credit.
+Closed bounded at host **5f901fab**, base1bad6331. Three composition/changelog files
+plus the focused report; no package/source/runtime change. Actual independent native
+before/after runs each5PASS, Chrome153.0.8010.12, readonly Basic/default modeloff,
+390/1100 first viewport and real Tab→Explain visible outline, fresh reinspect and
+unchanged app counters. Bar86→35.5px at390 and51→35.5px at1100; inspector gains50.5/
+15.5px. Root13pxInter and checked button28px/12px unchanged, no horizontal overflow.
+One package root/header and exact Capture hint/navigation retained. Agent compared
+actual narrow images; screenshots remain candidates, no fullU04/human acceptance.
+
+Host artifacts/atom-host/i02-host-context/checkpoint.json binds literal raw results:
+2026-10-27T18-26-before/results.json and2026-10-27T18-29-after/results.json, exact same
+driver. Each preserves base revision/actualdirty state, BuildInfo and browser command;
+distributionUnchangedtrue/errors[]/driver+browser+HTTPserverclosedtrue. No global
+process-tree or heap claim. Host report docs/agent/reports/2026-10-27-i02-host-context-bar.md.
+Build/types/UIpackage4/Atompackage3/diffPASS. UIpackage test rebuilt identical output
+overlapping the after run; manifests match, no exclusive-build/performance claim.
+
+Same immutable85/UI2 archives/payload unchanged; no modeloptin/API request/inference,
+HTTPS/CA/trust/bridge/Capture/performance campaign. Full21/29/I02/U04/L02/V02 unchanged.
+Next ONE **I02.32**, record244: existing minimal QA reporter→fresh passive reader
+workflow on the actual official host, preserving U06 report/notes/privacy semantics.
