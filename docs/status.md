@@ -6,8 +6,8 @@ Host1fe11a00: exact Atom82/UI2 installed/built, native UI9 and real Capture6PASS
 I02 driver debt. No publication/SDK or full I02/production/model acceptance.
 
 **Current full plan:21/29(72.41%),8open**:U04,A02,L02,I02,I03,V02,V03,V04.
-Next dependency-ready item: **I02**, current official lifecycle/site permission/
-Capture matrix. Its mandatory L02 dependency remains open. Autonomy continues
+Next dependency-ready item: **L02**, the bounded source-only availability prerequisite
+from the current I02 failure. Full I02/mandatory L02 remain open. Autonomy continues
 through evening; no additional routine I01 permission needed.
 
 [I02 current native increments](completion/227-i02-current82-native-matrix.md):
@@ -21,7 +21,9 @@ reader works without Desktop. Official Action Trace baseline9/read-inject-only3P
 with real IDE/native body evidence; lifecycle19 and fresh free Basic/reader12 also pass.
 Model-disabled template3controls pass but opt-in readiness FAIL3/Unknown; no unavailable
 route/L02 credit or new model campaign. Real optional-origin revoke preserves Capture,
-with explicit readonly Basic reconnect. Next L02.21 source-only availability/epoch controls.
+with explicit readonly Basic reconnect. [L02.21 source controls](completion/228-l02-availability-source-controls.md) pass20/new4,
+native/model0 and327product inputs stable. Next L02.22 truthful pending metadata UI;
+no actual browser readiness or unavailable-route qualification.
 Original matrix criteria/first failures retained. Full I02 and
 mandatory L02 remain open; full-plan count stays21/29. No new policy or scope cut.
 
