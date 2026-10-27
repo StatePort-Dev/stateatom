@@ -10,9 +10,12 @@ native/GC claim. [V03.30](../completion/252-v03-current-development-plugin.md) r
 [V03.31](../completion/253-v03-plugin-live-status.md) fixes wrapper getters and checks
 unique9:5912source/6consumer+17syntheticcontrols/ONEreview0C0I0M, no native upgrade.
 [A02.55](../completion/254-a02-host-weak-dispatch.md) closed2source caller lookups,
-13new/95affected/full5925PASS/ONEreview0C0I0M, no native. Next
-[V03.32](../completion/255-v03-current-plugin-native-semantics.md) first prepares
-unique10, then max1new React18 semantic browser control; no oldcase/SDK/model retry.
+13new/95affected/full5925PASS/ONEreview0C0I0M, no native.
+[V03.32](../completion/255-v03-current-plugin-native-semantics.md) closes unique10
+consumer7+17+13PASS; sole native INCOMPLETE after3checks, Off/On/trap unvisited.
+ONEreviewI1 readonly/module-proof mismatch fixed by preflight refusal/2source checks;
+no native retry/fullV03 credit. Next V02.31 source-only private-buffer trim; old10%
+performance target/MISS unchanged.
 Historical entries retain scope.
 
 Current approved-scope execution is tracked in [completion status](../status.md)

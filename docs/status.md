@@ -69,10 +69,17 @@ installed helper/native/model/GC/performance/fullV03 credit. Atom86/UI2 unchange
 host/state fixture reaches both sites; late weak method/getter calls0, lost-reference
 scopes remain Unknown.18protected/327product/9payload exact; no native/GC proof.
 
-Next bounded **[V03.32 current10/native semantic control](completion/255-v03-current-plugin-native-semantics.md)**:
-new immutable10/offline consumer before max1Original/Off/On React18 browser case.
-No old50/AI/install/perf retry or SDK/VSIX/host/publication. Full **21/29 (72.41%)**,
-eight open U04,A02,L02,I02,I03,V02,V03,V04. Autonomy until09:00 Mauritius October28.
+[V03.32 closed](completion/255-v03-current-plugin-native-semantics.md): unique10
+consumer7+17+13PASS; sole native INCOMPLETE after3completed checks. Original picker
+and trusted first input pass; loaded-App proof fails with0script journal. Off/On,
+trap/state-positive/parity unvisited. ONEreview0C1I0M: readonly/script-body mismatch;
+one source preflight refusal fix/2PASS, no native retry or privacy expansion.
+Current source/archives/327product/official86 unchanged, frozen driver preserved.
+
+Next bounded **V02.31 private request-buffer trimming**: preserve exact retention/
+privacy, reduce repeated serialization source-only. No performance acceptance inferred.
+Full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04.
+Autonomy until09:00 Mauritius October28.
 
 
 ## Historical checkpoints

@@ -11,8 +11,13 @@ import {fileManifest,verifyArtifactHashes} from '../../scripts/atom-package-rece
 import {startNativeBrowser} from '../../scripts/native-browser.mjs';
 import {nativeInspectorUI} from '../helpers/native-inspector-ui.mjs';
 import {rpc,waitFor} from '../../scripts/harness.mjs';
+import {assertNativeCompilationEvidence} from '../helpers/native-compilation-admission.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..'),args=process.argv.slice(2),preparing=args[0]==='--prepare',casePath=preparing?null:resolve(args[0]||'.');
+// V03.32 is closed INCOMPLETE. Retain its frozen driver at commit71b0f26 and in
+// its artifact directory. Refuse its incompatible requirements before any new
+// input reads, preparation output, server or single-attempt marker/browser.
+assertNativeCompilationEvidence({readOnly:true,requireModuleDigests:true});
 const sha=b=>createHash('sha256').update(b).digest('hex'),json=async p=>JSON.parse(await readFile(p));
 const modes=['original','off','on'],fixtureDir=root+'/tests/fixtures/inspection/weak-state';
 const helperPaths=['scripts/native-browser.mjs','tests/helpers/native-inspector-ui.mjs','scripts/harness.mjs','scripts/atom-package-receipt.mjs','tests/integration/current-plugin-weak-dispatch.mjs','tests/fixtures/inspection/weak-state/index.html','tests/fixtures/inspection/weak-state/App.jsx'];

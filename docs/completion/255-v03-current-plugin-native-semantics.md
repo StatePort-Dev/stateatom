@@ -71,3 +71,51 @@ installed payload/official86distribution. It is local machine evidence, not a
 portable release fixture. All app state/trap counters remain authored synthetic.
 MaximumONE actual browser attempt pending after this clean preregistration commit.
 Full21/29 unchanged; no packet alone proves new capability.
+
+
+## Sole native result and closure
+
+Clean preregistration/execution71b0f2698994220df14f12fd25a085dbc431acff;
+Chrome153.0.8010.12. MaximumONE browser launch consumed. Actual whole
+**INCOMPLETE**, exit1,3completed checks: frozen inputs and Original readonly enabled
+picker/no app action plus first trusted input (AB→Valid,renders2/lazy1/inputs1).
+Required loaded-App digest check failed: owned journal0scripts, gap late-attach.
+Trap/second input/Off/On/state-positive branch/parity were not visited. Native
+weak-dispatch qualification0. No browser retry, flag/timeout/version workaround.
+
+Raw `.artifacts/v03/current-plugin10/native-IdmV3y/results.json`, SHA256
+`3cd30cb672af0327dbc1f3ac2cd8ec8d9054ccdded79aab598dc32f7af1072c2`.
+All scoped browser/inspector/server closures true; errors/inspector-console empty,
+app-console NotCollected. Inputs/payload/fullofficialdist unchanged at native cleanup.
+Failure screenshot remains an agent candidate, not visual acceptance.
+
+ONE final review0Critical/1Important/0Minor. I1: readonly runtime intentionally
+retains context identities and returns before script-body journal collection
+(runtime409–423); driver required Hashed scripts anyway. This is an incompatible
+case prerequisite, not a runtime/privacy defect. late-attach alone establishes no
+cause; old50weakref cause remainsUnknown. Do not widen readonly collection or turn
+module absence into a pass.
+
+One source-only correction retires the incompatible driver at both CLI admissions,
+before input reads/preparation/server/attempt/browser. Test RED0PASS2FAIL→GREEN2PASS;
+no rereview/native rerun. New helper grants no mode or authority. Frozen driver
+remains exact at71b0f26 and native artifact driver.mjs; current source differs solely
+for this documented admission refusal. Frozen case/raw/oldchecks were not rewritten.
+Full5925 remains inherited source55, not a new full run for this harness change.
+
+Executor preservation PASS:17protected+2declared document updates,21source/327Atom
+product inputs, old9archive+15payload/current10archive+15payload/36officialdist,
+21frozen inputs with exact original driver. Checkpoint
+`.artifacts/v03/current-plugin10/2026-10-28/checkpoint.json`; verifier retains scope,
+not a native qualification. ONEreview own7file archive CRC/everybyte/planidentity
+checked before ownworkspace removal:
+`.artifacts/v03/current-plugin10-review/2026-10-28/workspace.zip`, SHA256
+`a90d3b72e2dfd1d7d7a5a72b8d8cf46dca39dc14a3d5849277ba428d988a0a21`.
+
+Full21/29 stays72.41%, eight whole tasks open. Next bounded **V02.31**: source-only
+request-buffer trimming, preserving exact256000-character/32row/5minute bounds.
+Current cap repeatedly serializes retained prefixes when over budget, and serializes
+an empty request list. Reduce this private extension work with semantic/operation
+controls; no causal claim for the original20.54/27.06%MISS, no native/performance/
+model/old campaign retry and no accepted target exception. Only packageable source
+changes after a separately committed plan; current official86 remains immutable.
