@@ -75,14 +75,61 @@ run evidence. No guide UI/Store/installed acceptance. First compare-output asser
 failures remain: corrected to the actual original status/differences API, with no
 new source policy or acceptance relaxation. Cleanup failures now fail the control.
 
+## I02.7–15 — native forms, protected sign-in and Journey
+
+Host c5155be8 through4471afdb extend the compatible driver with the original native
+form/route controls, excluded iframe and secret-shaped ordinary-artifact guards,
+explicit protected sign-in Save and cold reuse, leading-dot domain cookie mapping,
+exact Session/checkpoint parity with managed Capture and five native navigation
+activations including repeated visits. Protected auth is evaluated before replay app
+code; replay does not seed its own sign-in. Native source owner is released before
+managed replay. Credential storage uses an explicit in-memory validation vault:
+these are synthetic agent-operated controls, not installed OS-vault/account proof.
+
+Default original GET fixture:23controls each/PASS2, exact host artifacts:
+- artifacts/atom-host/i01-current82/capture-native-2026-10-27T08-08-39-513Z/results.json
+- artifacts/atom-host/i01-current82/capture-native-2026-10-27T08-09-02-381Z/results.json
+
+Separate POST fixture with actual native Settings activation:23controls each/PASS2:
+- artifacts/atom-host/i01-current82/capture-native-2026-10-27T12-21-17-807Z/results.json
+- artifacts/atom-host/i01-current82/capture-native-2026-10-27T12-21-44-152Z/results.json
+
+The exact stored Session contains that replayable native activation and its
+correlated navigation outcome. Current Open/Journey and cold replay confirm the
+route/sign-in with0miss/live API. No second recorded response is invented or reused.
+The POST variant with an unowned programmatic URL-only transition remains a retained
+NEGATIVE: NOT_CONFIRMED/REPLAY_MISS, extra POST after document fallback, at
+artifacts/atom-host/i01-current82/capture-native-2026-10-27T07-50-49-083Z/results.json.
+It is not relabeled by the successful native recapture. First missed native input's
+precise cause remains Unknown; correct MAIN-world/hit/readiness witnesses added.
+No replay format, handler injection or product behavior change.
+
+Evidence correction: the early I02.6 copied summary assertion compared absent
+sourceCapsuleDigest fields and is withdrawn as digest proof. Its other route/form/
+revision/receipt/no-live-request checks remain valid. I02.11 instead reads the exact
+stored Card source, requires a nonempty captureSessionDigest/checkpointId, verifies
+the Session file with readCaptureSessionCheckpointSource and repeats it after cold
+restart. The internal checkpoint playback view is not a persisted State Capsule.
+Full chronological evidence, original failures and narrower limits remain in host
+report docs/agent/reports/2026-10-27-i02-current82-browser-capture.md.
+
+## I02.16 — popup closure/reopen during recording
+
+Host d517b852: actual unique official popup target is closed and verified absent;
+new popup reports recording with the same native attachment/isolate/owner markers.
+The same capture then completes real Review/Save/current/cold flow. Default GET
+profile24controls each/PASS2,51.05s, host artifacts:
+- artifacts/atom-host/i01-current82/capture-native-2026-10-27T12-30-29-550Z/results.json
+- artifacts/atom-host/i01-current82/capture-native-2026-10-27T12-30-54-094Z/results.json
+No product change, app pre-attachment or simulated popup hiding/reload.
+
 ## Next bounded item / remaining acceptance
 
-I02.7: preserve actual safe native form input and same-origin route through the
-same native Capture→current-code/cold-runtime replay, using original full test
-criteria. Continue within renewed necessary permissions. Original full Playwright
-Capture FAIL2 remains driver debt, not passed by these smaller native controls.
+I02.17: Basic on a separate tab during real Capture, including inspector closure
+without disrupting its owner. Original full Playwright Capture FAIL2 remains
+driver debt; migrated controls do not automatically establish its complete parity.
 
-Full I02 still includes remaining protected-auth/domain/Journey/installed/Capture/
-permission/Action Trace/local-model matrix and mandatory L02. Full count stays21/29.
-No human recruitment blocker, fallback/model credit, performance waiver, new Live/
-grant/handoff policy, scope reduction, SDK or publication. Original results remain.
+Full I02 still includes remaining Desktop disconnect/incompatible-helper/concurrency/
+reader/Action Trace/local-model and installed matrix, including mandatory L02.
+Full count stays21/29. No human recruitment blocker, fallback/model credit,
+performance waiver, new Live/grant/handoff policy, scope reduction, SDK or publication.
