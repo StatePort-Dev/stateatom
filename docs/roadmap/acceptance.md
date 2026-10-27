@@ -25,9 +25,12 @@ intake/affected native10PASS; readonly/body retention, no fullCapture/model/targ
 Budget1/1used, no retune/waiver/causal claim. L02.28eligibility closes read-only: oldGoogle156alreadytried, metadata153distinct;
 actual model readiness remainsUnknown. [L02.29](../completion/261-l02-derived-availability-unknown.md)
 closes source-only Unknown normalization:45focused/5955fullPASS,673protected/ONEreview
-0C0I0M, outside87maps/native0. Next [L02.30](../completion/262-l02-official-google-readiness.md)
-separately frozen official87top-level Google metadata prerequisite, no create/prompt/
-download or closed19/20retry. Old84MISS/32INCOMPLETE remain.
+0C0I0M, outside87maps/native0. [L02.30](../completion/262-l02-official-google-readiness.md)
+closed actual official87top-level Google156 metadata downloadable1/1343.3ms,4checks/
+738stable/36dist/ONEreview0C0I0M; no modelcreate/prompt/download-initiation. Next
+[L02.31](../completion/263-l02-official-model-initialization.md) one trusted existing
+product opt-in/Explain with literal120s, separately frozen; no useful-quality credit
+or closed19/20corpus retry. Old84MISS/32INCOMPLETE remain.
 Historical entries retain scope.
 
 Current approved-scope execution is tracked in [completion status](../status.md)

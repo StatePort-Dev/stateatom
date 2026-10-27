@@ -31,3 +31,35 @@ clean local commit before native launch. Source refusal must precede browser on
 wrong case/identity/budget. One final bounded source/result review, maxone tested
 Important/Critical correction without native retry/rereview. Record metadata alone
 as a prerequisite; no normal-install/product usefulness/fullL02 credit.
+
+## Closed — actual metadata, not useful-model acceptance
+
+Clean source **a32d1de6f6be941c713bff4d96481b19902db960**, frozen case
+`48bc51508878cb5a862577df7041f335a41c0f98da2ee4355bb9baf8749a96de`. Source observer/admission RED0/9→GREEN9; affected54PASS.
+Initial sandbox child refusal failure is retained; escalated subprocess controls
+PASS. Full5955 remains earlier source29baseline, not a fresh full harness run.
+Syntax/diff and frozen738inputs/full36dist checks PASS. No product/host edit.
+
+Sole native raw `.artifacts/l02/official-google-readiness/2026-10-28/native/results.json`, SHA `65b24cd64ceaae093c16e65840db2dd268b46db68010cc4e52e6173b0e734bf0`. Google156 exact
+owned binary, top-level secure chrome-extension atom.html, runtimeId exact;
+ONE real availability invocation returned **downloadable** in **1343.3ms**,
+with matching English text-only options. Four checks, errors[]; owner endpoint,
+browser and nested desktop closed, recorded PID absent in namespace4026531836.
+No full descendant-tree/heap claim. All738inputs/full36dist unchanged after run.
+No create/prompt/download initiation, model API override, app/CA/trust/profile import.
+
+ONE final bounded source/result review **0C/0I/0M**, no correction/rereview. Reviewer
+read source/logs without executing checks. Own22file workspace archived at
+`.artifacts/l02/official-google-readiness-review/2026-10-28/workspace.zip`, SHA `c9b71d8a318651765234331ef2e664bca18710aacd8ceae22280811bfa627529`; CRC/all bytes/plan identity verified
+before removing only own temporary workspace. Raw/profile retained.
+
+Budget1attempt used/0remaining; no retry. This new route acquired actual metadata;
+it does not turn old19/20 into passes, establish a ready model, normal installation,
+output accuracy or useful additional meaning. Full21/29/mandatoryL02/useful0 and
+original87performanceMISS unchanged.
+
+One next **L02.31** in263: separately preregister the existing product UI's explicit
+local-model download/initiation and finite120second grounded-sentence smoke on this
+owned profile, with actual trusted opt-in/Explain, no new provider/prompt/corpus.
+NetworkManager no-metering result is only a guess; do not claim unlimited tariff.
+No system/network/CA settings change. Product timeout/options stay literal.
