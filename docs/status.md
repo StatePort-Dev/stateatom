@@ -10,6 +10,12 @@ Next dependency-ready item: **I02**, current official lifecycle/site permission/
 Capture matrix. Its mandatory L02 dependency remains open. Autonomy continues
 through evening; no additional routine I01 permission needed.
 
+[I02 current native increments](completion/227-i02-current82-native-matrix.md):
+Settings12PASS (real600115ms expiry) and authority/interruption14PASS on the official
+host; original predicates retained with necessary official page/worker mapping.
+Next bounded I02.3: actual browser site permission removal/reconnect. Full I02 and
+mandatory L02 remain open; full-plan count stays21/29. No new policy or scope cut.
+
 [Prior release checkpoint](completion/224-night-release-checkpoint.md) remains
 historical20/29. Exact82/product327+archives unchanged; V02original10%overhead MISS.
 Bounded L02.20 was closed INCOMPLETE; latest Atom source8c78dcf (no new native/model retry).

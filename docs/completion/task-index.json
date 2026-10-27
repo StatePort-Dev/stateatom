@@ -6208,6 +6208,13 @@
         "full_matrix_accepted": false,
         "old_full_capture_harness": "FAIL2: app pre-attached before Start; retain criteria, adapt driver without weakening BUSY"
       },
+      "current_native_increments": {
+        "record": "227-i02-current82-native-matrix.md",
+        "settings": {"host_commit": "b9b82871", "native_checks": 12, "real_expiry_ms": 600115},
+        "authority": {"host_commit": "5d608d01", "native_checks": 14},
+        "full_I02_accepted": false,
+        "next_bounded_step": "I02.3 actual optional site permission removal during active work; read-only reconnect without resumed production authority. Preserve remaining matrix and original full Capture harness criteria."
+      },
       "existing_implementation": {
         "record": "205-release-date-decision.md",
         "host_revision": "a9f993f9dcfb6a3a3367273d333a3bbda6f1a67b",
