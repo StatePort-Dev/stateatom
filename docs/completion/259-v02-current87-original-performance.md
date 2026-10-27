@@ -82,3 +82,53 @@ separately, no idle-host/controlled A/B claim. TLS checkend3600 is executor evid
 Next exact execution is run-once.mjs under the registered current87source directory,
 maximumONE measurement then ONE FIRSTreader. Clean final case/source commit first.
 No current87performance claim has yet been made; all old raw/results remain literal.
+
+
+## Actual complete measurement — original targets MISSED
+
+Clean execution7e9dca7, one max-original measurement and one FIRSTreader used;
+0remaining budget, no retry/retune. CLI0 means complete data, not acceptance.
+Raw .artifacts/v02/basic-observer-current87/2026-10-27T23-06-34-863Z/results.json,
+SHA2562f4af59d22cfd715d5491c840915fc10d25a141095e01ae85405492cca076104.
+FIRSTreaderexit0:457bindings/current327product/32negative controls/independent Python
+statistics,198rows18warm180measured/66windows. Every active window retains20requests,
+20completed,1checkpoint21records/0gaps;3960derivedrequests. Full JSONL/tails kept;
+persisted servertrace NotCollected, original per-row live20request check unchanged.
+
+| Metric | Standalone | Public embedding |
+| --- | ---: | ---: |
+| Off median ms |54.55|60.50|
+| Basic median ms |69.00|76.35|
+| Active median ms |69.40|77.05|
+| Basic useful-content p95 ms |398.90|401.00|
+| Active/off median % |27.22273149|27.35537186|
+| Basic<=1000ms |PASS|PASS|
+| Active<=10% |MISS|MISS|
+
+Source operation-count reduction33→1/empty1→0 did not establish a passed native
+overhead target. This is not controlled A/B, causal regression/speedup/floor proof,
+or permission to remove observation evidence/retune workload. Old84and82metrics
+remain literal and scoped. FullV02performanceAcceptancefalse, no exception accepted.
+
+Retained exact206seed copied only to two new owned profiles, newCA/key/cert/import0,
+no system/personal trust or security bypass/model request. Inspector errors/console[],
+worker/guardian completeness NotCollected. Raw browser/desktop/serverclose alltrue.
+Read-only postrun in same host PID namespace4026531836: recorded Node158791 and
+Chrome158831/164701 absent; Node start fingerprint captured by wrapper, browser
+fingerprints not collected. No full-descendant/heap/background-health or cleanup of
+unrelated processes inferred. Profiles/raw retained, no killing/deletion.
+
+Postrun preservation PASS21old protected inputs/295caseinputs/current327product;
+new source-preparation checkpoint stays its original pre-measurement snapshot.
+Measurement-checkpoint and reader-report are separate actual results. ONEsource/case
+review0C0I0M was before measurement; no new reviewer, correction/rereview or oldreader
+invocation. Own15file review workspace archive CRC/everybyte/planidentity checked
+before ownworkspace removal, .artifacts/v02/current87-performance-review/2026-10-28/
+workspace.zip, SHA256aebf92995b5c82b5b8bc81cef4d4c1a7717191ba870329827c61dc550eab71ce.
+
+Full21/29(72.41%) and8open tasks remain; mandatoryL02/A02 and10%target are not waived.
+One next bounded **L02.28 supported browser-route eligibility**: inspect retained
+closed campaign browser identities and current official platform requirements/source
+contract. Seek a concrete new supported route/prerequisite before any model/native
+attempt. No blind19/20/old model/CA/prompt/corpus retry and no device-unavailable
+verdict from the old0APIcall/Unknown outcomes. No new provider/UI/SDK decision here.

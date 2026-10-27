@@ -5465,7 +5465,7 @@
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
-      "execution_record": "248-l02-current86-local-package.md",
+      "execution_record": "260-l02-supported-route-eligibility.md",
       "current_checkpoint": "248-l02-current86-local-package.md",
       "completed_slices": [
         {
@@ -5932,7 +5932,7 @@
       "historical_execution_records": [
         "189-l02-current-path-comparison.md"
       ],
-      "next_bounded_step": "Mandatory usefulness/supported-route acceptance remains open;189acquisition campaign closed, no automatic model/device/CA retry or benefit inferred from fallback/source/package checks. Current independent source caller55 is not L02 acceptance.",
+      "next_bounded_step": "ONE read-only L02.28retained browser identity/current primary platform requirements/provider eligibility check. No blind closed19/20/install/model/CA/prompt/corpus retry or new provider/UI/SDK/device verdict.",
       "historical_checkpoint_before_L02_16": {
         "record": "189-l02-current-path-comparison.md",
         "status": "closed-bounded-native-incomplete-source-complete",
@@ -6741,34 +6741,84 @@
       "active_slice": {
         "id": "V02.33",
         "record": "259-v02-current87-original-performance.md",
-        "status": "preregistered-current87-measurement-next",
+        "status": "closed-complete-original-targets-missed",
         "package": "0.1.0-candidate.20261028.87",
-        "case": "../testing/basic-observer-current87-case.json",
-        "registered_inputs": 457,
-        "case_inputs": 295,
-        "backend_native_checks": 13,
-        "affected_runtime_native_checks": 10,
-        "source_checks": 14,
-        "reader_source_controls": 32,
-        "measurement_runs": 0,
-        "maximum_measurement_runs": 1,
-        "first_reader_runs": 0,
-        "maximum_first_reader_runs": 1,
+        "execution_revision": "7e9dca7",
+        "raw_sha256": "2f4af59d22cfd715d5491c840915fc10d25a141095e01ae85405492cca076104",
+        "rows": 198,
+        "warmup_rows": 18,
+        "measured_rows": 180,
+        "active_windows": 66,
+        "bindings": 457,
+        "product_inputs": 327,
+        "reader_negative_controls": 32,
+        "measurement_runs": 1,
+        "first_reader_runs": 1,
+        "remaining_budget": 0,
+        "basic_p95_ms": [
+          398.89999997615814,
+          401
+        ],
+        "active_overhead_percent": [
+          27.22273149,
+          27.35537186
+        ],
+        "active_target_percent": 10,
+        "targets_waived": false,
+        "performance_acceptance": false,
+        "whole_V02_complete": false,
         "review": {
           "critical": 0,
           "important": 0,
-          "minor": 0
-        },
-        "targets_waived": false,
-        "whole_V02_complete": false
+          "minor": 0,
+          "corrections": 0,
+          "rereviews": 0
+        }
       },
       "execution_record": "259-v02-current87-original-performance.md",
       "current_checkpoint": {
-        "record": "256-v02-request-buffer-trimming.md",
-        "status": "closed-source-retention-optimization",
-        "next_bounded_step": "ONE V02.32 unique clean local87 for reviewed runtime trim; preserve86/UI2/history, exact source/payload/contract/consumer/type2/admission9. No native/host/model/performance/publication or target acceptance."
+        "record": "259-v02-current87-original-performance.md",
+        "status": "closed-original-targets-missed",
+        "next_bounded_step": "ONE read-only L02.28retained browser identity/current primary platform requirements/provider eligibility check. No blind closed19/20/install/model/CA/prompt/corpus retry or new provider/UI/SDK/device verdict."
       },
       "completed_slices": [
+        {
+          "id": "V02.33",
+          "record": "259-v02-current87-original-performance.md",
+          "status": "closed-complete-original-targets-missed",
+          "package": "0.1.0-candidate.20261028.87",
+          "execution_revision": "7e9dca7",
+          "raw_sha256": "2f4af59d22cfd715d5491c840915fc10d25a141095e01ae85405492cca076104",
+          "rows": 198,
+          "warmup_rows": 18,
+          "measured_rows": 180,
+          "active_windows": 66,
+          "bindings": 457,
+          "product_inputs": 327,
+          "reader_negative_controls": 32,
+          "measurement_runs": 1,
+          "first_reader_runs": 1,
+          "remaining_budget": 0,
+          "basic_p95_ms": [
+            398.89999997615814,
+            401
+          ],
+          "active_overhead_percent": [
+            27.22273149,
+            27.35537186
+          ],
+          "active_target_percent": 10,
+          "targets_waived": false,
+          "performance_acceptance": false,
+          "whole_V02_complete": false,
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 0,
+            "corrections": 0,
+            "rereviews": 0
+          }
+        },
         {
           "id": "V02.32",
           "record": "257-v02-current87-local-package.md",
@@ -8191,7 +8241,7 @@
         "measurement_budget_remaining": 0,
         "first_reader_budget_remaining": 0
       },
-      "next_bounded_step": "ONE exclusive current87original198row measurement then ONE FIRSTreader on actual output. Preserve COMPLETE/MISS/partial literal; no retry/domain/poll/workload/threshold/CA/trust change or causal speedup/fullV02 inference.",
+      "next_bounded_step": "ONE read-only L02.28retained browser identity/current primary platform requirements/provider eligibility check. No blind closed19/20/install/model/CA/prompt/corpus retry or new provider/UI/SDK/device verdict.",
       "historical_active_before_V02_31": {
         "id": "V02.30",
         "record": "239-v02-debugger-lifetime-feasibility.md",
@@ -9828,8 +9878,8 @@
     "document": "254-a02-host-weak-dispatch.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
-    "current_increment": "V02.33-current87-original-gate-frozen",
-    "next_item": "V02.33",
+    "current_increment": "V02.33-current87-original-targets-missed",
+    "next_item": "L02.28",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9855,9 +9905,9 @@
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
-      "id": "V02",
-      "record": "259-v02-current87-original-performance.md",
-      "status": "bounded33-frozen-gate-execution-next"
+      "id": "L02",
+      "record": "260-l02-supported-route-eligibility.md",
+      "status": "bounded28-read-only-eligibility-next"
     },
     "completed_increments": [
       {
@@ -12858,11 +12908,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.33 current87original case frozen457bindings/295inputs/327product; unchanged198rows/66windows/20GET1024/1s10%. Source14PASS/reader32synthetic/ONEreview0C0I0M, current backend13+official retention10 separate. Existing TLS/hardware eligible; measurement0/FIRSTreader0, max1each. No newCA/old84retry.",
+    "current_activity_note": "V02.33current87 complete198rows/66windows/457bindings/FIRSTreader32negativePASS, Basicp95398.9/401msPASS, active/off27.22273149/27.35537186%MISS10%. Budget1measurement/1readerexhausted. Same declaredhardware/exactretainedTLS, no CA/import/retune/waiver/causalclaim. Old21/current327 preserved.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "a859d9deb9e7bcc33d8a8e2ee5522c1361313510",
     "current_record_date": "2026-10-27",
-    "next_bounded_step": "ONE exclusive current87original198row measurement then ONE FIRSTreader on actual output. Preserve COMPLETE/MISS/partial literal; no retry/domain/poll/workload/threshold/CA/trust change or causal speedup/fullV02 inference.",
+    "next_bounded_step": "ONE read-only L02.28retained browser identity/current primary platform requirements/provider eligibility check. No blind closed19/20/install/model/CA/prompt/corpus retry or new provider/UI/SDK/device verdict.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -12981,5 +13031,5 @@
       }
     }
   },
-  "next_task": "V02"
+  "next_task": "L02"
 }

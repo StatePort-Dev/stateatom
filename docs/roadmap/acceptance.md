@@ -19,8 +19,10 @@ serialization with exact retention:118affected/full5937PASS/ONEreview0C0I1M, no
 native/speedup/10% acceptance. [V02.32 local87](../completion/257-v02-current87-local-package.md) closes exact
 270source/327build/31payload/type2/admission9, no native/target credit. [I02.37](../completion/258-i02-current87-host-refresh.md) host81bec06e closes exact87
 intake/affected native10PASS; readonly/body retention, no fullCapture/model/target credit.
-Next [V02.33](../completion/259-v02-current87-original-performance.md) original-contract/
-retained-seed eligibility for max1new87measurement. Old84MISS/32INCOMPLETE remain.
+[V02.33](../completion/259-v02-current87-original-performance.md) complete198rows/
+66windows/reader32 controls, Basic398.9/401msPASS; Active27.2227/27.3554%MISS10%.
+Budget1/1used, no retune/waiver/causal claim. Next L02.28supported-route eligibility
+only; old84MISS/32INCOMPLETE remain.
 Historical entries retain scope.
 
 Current approved-scope execution is tracked in [completion status](../status.md)

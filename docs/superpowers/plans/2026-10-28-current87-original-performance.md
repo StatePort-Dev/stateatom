@@ -19,10 +19,10 @@ Record259 owns scope; original198rows/protocol/thresholds remain exact.
  of metric/collector/latency/coverage/cleanup criteria. Freeze complete input closure.
 - [x] ONE bounded source/case review before actual measurement, no tests/native/old
  reader by reviewer; correct I/C once if needed, no rereview. Commit clean finalcase.
-- [ ] Exclusive global33measurement marker before maximumONE original198row run;
+- [x] Exclusive global33measurement marker before maximumONE original198row run;
  maximumONE exclusive FIRST frozen reader on that actual output. Complete/MISS/
  errors/partials remain literal; no retry/newtag/timeout/flags/domain/workload change.
-- [ ] Read-only owned PID/profile postrun check in observed host namespace only;
+- [x] Read-only owned PID/profile postrun check in observed host namespace only;
  scoped cleanup/preservation/current ledger/local commit and ONE nextitem.
 
 Original private-key bytes never displayed/committed; exact synthetic seed copied
@@ -32,3 +32,5 @@ Historical206authorization records CA creation/current80, not new87authorization
 current user's autonomous testing authorization covers this local continuation.
 First reader preserves exact original rows/windows/gaps/32negative controls and
 independent statistics. Operation counts/new package are no guarantee of10%PASS.
+
+Closed COMPLETE measurement/reader, original10%targets MISSED27.22273149/27.35537186%; Basicp95PASS398.9/401ms. Budget1/1used0remaining. No correction/rereview/rerun; full21/29unchanged.

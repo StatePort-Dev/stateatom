@@ -93,10 +93,16 @@ worker matches exact dist; readonly/no-body/picker and explicit cache-only local
 request retention verified with unchanged limits. UI/guardian/reader byte-identical86;
 history/full86dist protected. No fullCapture/model/speedup/target/lineage credit.
 
-Next bounded **[V02.33 current87 original performance eligibility](completion/259-v02-current87-original-performance.md)**:
-retained original contract/seed first; max1new87measurement only if eligible,
-no old84retry/domain/poll/workload/CA change. Full **21/29 (72.41%)**, eight open
-U04,A02,L02,I02,I03,V02,V03,V04. Autonomy until09:00 Mauritius October28.
+[V02.33 current87 original gate closed](completion/259-v02-current87-original-performance.md):
+complete198rows/66windows/457bindings/FIRSTreader32negative controls. Basicp95
+398.9/401msPASS; Active/off27.22273149/27.35537186%MISS10%. No retune/waiver/causal
+speedup; max1measurement/1readerused0remaining. Own recorded PIDs absent in observed
+namespace, no global tree/heap claim. Old84/32raw and current327inputs preserved.
+
+Next bounded **[L02.28 supported browser-route eligibility](completion/260-l02-supported-route-eligibility.md)**,
+retained browser facts/primary API requirements only, no old model/CA/native retry.
+Full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04.
+Autonomy until09:00 Mauritius October28.
 
 
 ## Historical checkpoints
