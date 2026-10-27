@@ -1,19 +1,19 @@
 # Project status
 
-[V02.26 exact ledger byte sizing source correction complete](completion/235-v02-ledger-byte-sizing.md).
-Seven new/169affected/**5868full source PASS**,30000differential comparisons exact;
-20request source witness630→79record serializations. One Important fixed with
-RED→GREEN. No fresh native performance proof; original28.1136/21.0570% MISS10% stays.
+[V02.27 immutable84 local prerequisite complete](completion/236-v02-current84-local-package.md):
+clean6a5d7e9/deterministic offline pack,9admission/2types/13native input-backend PASS.
+New Atom84SHA09d366dd.../same UI2; this backend does not qualify changed production
+ledger or performance. [Source235](completion/235-v02-ledger-byte-sizing.md) has
+7new/169affected/5868full PASS and30000exact differential comparisons.
 
-Official host [I02.29](completion/234-i02-full-capture-driver-migration.md) remains
-accepted on immutable83/UI2, Chromium38/Google40 native controls. New producer
-ledger/changelog are not silently installed there. Full plan **21/29 (72.41%)**;
-eight open U04,A02,L02,I02,I03,V02,V03,V04. No whole-I02/L02/V02 credit.
+Official host [I02.29](completion/234-i02-full-capture-driver-migration.md) stays
+on83/UI2 with38/40native controls. Full plan **21/29 (72.41%)**, eight open
+U04,A02,L02,I02,I03,V02,V03,V04; original overhead28.1136/21.0570% MISS10% retained.
 
-Next bounded **[V02.27 immutable84 package prerequisite](completion/236-v02-current84-local-package.md)**:
-clean deterministic local pack, exact admission/types, one existing13control input
-backend. No new CA/trust/model/measurement/SDK/publication or host upgrade. Overnight
-autonomy continues until09:00 Mauritius October28.
+Next bounded **[V02.28 new84 original-gate preparation](completion/237-v02-current84-original-gate-preparation.md)**:
+freeze new case/reader, check only retained206TLS hashes/validity. No measurement,
+new CA/import/model/official-host upgrade/SDK/publication in this preparation.
+Autonomy continues until09:00 Mauritius October28.
 
 ## Historical checkpoints
 

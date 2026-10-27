@@ -6503,28 +6503,25 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.26",
-        "record": "235-v02-ledger-byte-sizing.md",
-        "status": "closed-bounded-source-optimization",
-        "native_runs": 0,
+        "id": "V02.27",
+        "record": "236-v02-current84-local-package.md",
+        "status": "closed-local-package-and-input-backend-prerequisite",
+        "package": "0.1.0-candidate.20261027.84",
+        "package_sha256": "09d366dd97289139ed0287da7d381468e527254da066ae5c61f2f2468d4198be",
+        "source_revision": "6a5d7e979f593edf4514e301dd4179aa810c9ded",
+        "source_dirty": false,
+        "package_checks": 9,
+        "type_checks": 2,
+        "input_backend_controls": 13,
+        "native_ledger_accepted": false,
         "performance_acceptance": false,
-        "source_checks": 7,
-        "affected_checks": 169,
-        "full_source_checks": 5868,
-        "source_differential_comparisons": 30000,
-        "review": {
-          "critical": 0,
-          "important": 1,
-          "fixed": 1,
-          "minor": 0,
-          "rereview": false
-        }
+        "whole_V02_complete": false
       },
-      "execution_record": "235-v02-ledger-byte-sizing.md",
+      "execution_record": "236-v02-current84-local-package.md",
       "current_checkpoint": {
-        "record": "235-v02-ledger-byte-sizing.md",
-        "status": "closed-bounded-source-optimization",
-        "next_bounded_step": "V02.27 new immutable84 with unchanged UI2; package/type/admission and at most one existing13control input lifetime backend. No ledger/performance acceptance."
+        "record": "236-v02-current84-local-package.md",
+        "status": "closed-bounded-local-prerequisite",
+        "next_bounded_step": "V02.28 new frozen84 original case/reader and unchanged retained206TLS validity/hash prerequisite; no measurement or new CA/import in preparation."
       },
       "completed_slices": [
         {
@@ -7835,6 +7832,24 @@
         "record": "215-v02-webrequest-feasibility.md",
         "status": "closed-bounded-source-api-feasibility-no-dropin-parity",
         "next_bounded_step": "ONE L02.17 ownedChrome Loadunpacked dialog inventory sourcepreparation; actualwindow/owner/privatebus/display evidence only, no path/credential/install/model/CA or exhaustedcase retry."
+      },
+      "previous_slice_before_V02_27": {
+        "id": "V02.26",
+        "record": "235-v02-ledger-byte-sizing.md",
+        "status": "closed-bounded-source-optimization",
+        "native_runs": 0,
+        "performance_acceptance": false,
+        "source_checks": 7,
+        "affected_checks": 169,
+        "full_source_checks": 5868,
+        "source_differential_comparisons": 30000,
+        "review": {
+          "critical": 0,
+          "important": 1,
+          "fixed": 1,
+          "minor": 0,
+          "rereview": false
+        }
       }
     },
     {
@@ -9402,8 +9417,8 @@
     "document": "232-i02-current83-official-host.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
-    "current_increment": "V02.26-exact-ledger-byte-sizing-source-complete",
-    "next_item": "V02.27 new immutable84 with unchanged UI2; package/type/admission and at most one existing13control input lifetime backend. No ledger/performance acceptance.",
+    "current_increment": "V02.27-current84-local-package-prerequisite-complete",
+    "next_item": "V02.28 new frozen84 original case/reader and unchanged retained206TLS validity/hash prerequisite; no measurement or new CA/import in preparation.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9430,8 +9445,8 @@
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
       "id": "V02",
-      "record": "236-v02-current84-local-package.md",
-      "status": "bounded27-package-prerequisite-next"
+      "record": "237-v02-current84-original-gate-preparation.md",
+      "status": "bounded28-case-preparation-next"
     },
     "completed_increments": [
       {
@@ -12432,7 +12447,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V02.26 seven new/169affected/5868full source PASS,30000exact differential; one Important corrected with RED→GREEN. Source count630→79 is not native performance. Host83 unchanged,21of29 unchanged. Next bounded immutable84 local prerequisite.",
+    "current_activity_note": "Exact84/UI2 clean6a5d7e9 deterministic/offline pack/admission9/types2/input backend13 PASS; this is not native ledger/performance proof. Official83 unchanged,21of29 unchanged. Next new frozen84case/reader and retained TLS precheck, no CA campaign.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "4ef5d652b17cf4b3446f2f720d964269fe4e68b1",
     "current_record_date": "2026-10-27",

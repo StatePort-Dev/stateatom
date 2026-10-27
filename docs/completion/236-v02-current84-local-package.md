@@ -5,8 +5,8 @@ unchanged UI0.2.0-candidate.20261018.2. No new feature/permission/contract; chan
 ledger byte sizing needs a distinct immutable identity. Preserve83and82 archives,
 receipts, official host and historical results; never silently rebuild83.
 
-Metadata edits only: packages/atom/package.json, matching package-lock entry and
-Unreleased changelog heading84. Existing npm run pack:atom from clean source then
+Metadata edits only: packages/atom/package.json, matching package-lock entry and retain the factual
+source changelog note. Existing npm run pack:atom from clean source then
 npm run verify:atom-package -- <exact handoff> (9admission controls) and
 npm run verify:atom-types -- <exact handoff> (NodeNext/browser). Compare exact
 installed payload/contract/exports/UI peer, source/build inputs and receipts.
@@ -33,5 +33,33 @@ independent authorized work instead of another CA/browser setup campaign.
 
 ## Result
 
-Pending235final source verification/commit,84metadata/package/type/admission and
-one existing backend. Packaging does not completeV02/I02/L02 or change21/29.
+Closed bounded prerequisite, clean source **6a5d7e979f593edf4514e301dd4179aa810c9ded**.
+`npm run pack:atom` PASS with deterministic repeat packs/offline clean consumer and
+both example-host receipts; handoff
+`.artifacts/atom/2026-10-27T16-36-46-098Z/atom-handoff.json`,sourceDirtyfalse.
+
+- Atom84 SHA256 `09d366dd97289139ed0287da7d381468e527254da066ae5c61f2f2468d4198be`.
+- UI2 SHA256 `2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5`, byte-identical.
+- Exact package admission9PASS; packed NodeNext/browser types2PASS (TypeScript5.9.3).
+- All270source/327build inputs match; contract/API1/wire1/UI2.1/exports unchanged.
+-31installed files/no added/removed paths. Only package.json,CHANGELOG.md,
+  dist/source-manifest.json and dist/runtime.mjs differ from83; UI/guardian/reader/
+  workers unchanged.
+- ONE existing backend **13PASS**, both public packed example hosts;
+  `.artifacts/u02/input-inspector/native/2026-10-27T16-38-17-823Z/results.json`.
+  Raw sourceDirtytrue is the driver's pre-existing literal; actual clean Git source
+  is separately recorded, not silently corrected. Source inputs unchanged/no errors.
+  This is private Port/input-lifetime native evidence, not ledger/performance/UI/
+  official-host or full-process-descendant acceptance.
+
+Preparation deviation: the metadata script used a substring count for Unreleased,
+which also matched two historical headings and refused its final heading edit.
+Version/lock were already updated and clean84bytes issued. Keep the honest existing
+Unreleased source note and all historical headings; do not reissue84 or create a
+cosmetic new candidate. This is a recorded routine implementation choice, not an
+approved publication/feature decision or a weaker evidence criterion.
+
+No newCA/TLS/trust/model/official host/publication/measurement. Official StatePort
+remains exact83; fullV02/I02/L02 and21/29 unchanged. One next bounded
+[V02.28](237-v02-current84-original-gate-preparation.md) prepares new frozen84case/
+reader and revalidates retained206TLS; no blind oldcase/campaign restart.
