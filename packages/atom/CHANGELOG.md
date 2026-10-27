@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.0-candidate.20261027.86
 
 - Keep local model availability errors and unrecognized results Unknown, with the
   template available. Explicit unavailable and supported availability states retain
