@@ -1,17 +1,15 @@
 # Project status
 
-[V02.29 actual84 original gate complete, targets MISSED](completion/238-v02-current84-original-gate.md).
-198rows/18warm180measured/66windows/449inputs/FIRSTreader32controls verified. Basic
-p95399.7/416.5msPASS1s; Active/Off **20.54356509% /27.05667272% MISS10%**.
-No retune/retry/waiver. All windows20requests20completed/21records/zero gaps;
-retained206trust only,0newCA/import/model. Native original-workload ledger correctness
-is scoped separately from failing performance and source630→79serialization counts.
+[V02.30 Debugger lifetime source/API decision complete](completion/239-v02-debugger-lifetime-feasibility.md):
+late enable is not established equivalent to the existing script catalog/live-edit
+invalidation. No domain/product change or new matrix. Actual84 original gate remains
+Basicp95399.7/416.5msPASS1s; Active/Off20.54356509/27.05667272%MISS10%, no waiver/retry.
 
-Next bounded **V02.30 source/API Debugger-lifetime feasibility**; preserve map/script/
-Action evidence and reuse106/136historical domain controls, no new native matrix.
-Official host remains accepted83/UI2; local84 is not automatically consumed there.
-Full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04; no new whole task,
-SDK, publication or scope cut. Autonomy until09:00 Mauritius October28 continues.
+Next bounded **L02.24 source pending readiness lifecycle inspection**: reuse retained
+Unknown/Checking/nativeMetadata6 and provider/controller source timeouts; no native/
+model/device/CA/browser campaign or invented API cause. MandatoryL02 stays open.
+Official host remains83/UI2; full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,
+V02,V03,V04. Local autonomy until09:00 Mauritius October28; no SDK/publication.
 
 ## Historical checkpoints
 
