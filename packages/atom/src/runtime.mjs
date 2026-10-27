@@ -26,6 +26,29 @@ import {assessExperiment,flatten,edge} from '../../../core/evidence.mjs';
 import {atomError} from './platform.mjs';
 import {validateRequest} from './transport.mjs';
 import {describeCapabilities,operationPolicy,isDevelopmentOrigin,isInspectionOrigin,isBridgeURL} from './capabilities.mjs';
+// Internal input is JSON.stringify's complete dense request-array output.
+// Scan only that primitive text; never re-read records or cache mutable sizes.
+function requestPrefixDrop(text,limit){
+ let depth=0,quoted=false,escaped=false,removed=0;
+ for(let i=0;i<text.length;i++){
+  const c=text[i];
+  if(quoted){
+   if(escaped)escaped=false;
+   else if(c==='\\')escaped=true;
+   else if(c==='"')quoted=false;
+   continue;
+  }
+  if(c==='"'){quoted=true;continue;}
+  if(c==='['||c==='{'){depth++;continue;}
+  if(c===']'||c==='}'){depth--;continue;}
+  if(c===','&&depth===1){
+   removed++;
+   // Replacing this comma with '[' retains the exact suffix JSON length.
+   if(text.length-i<=limit)return removed;
+  }
+ }
+ return removed+1;
+}
 export function createAtomRuntime(platform, options={}) {
 const chrome=platform.chrome,fetch=platform.fetch;
 const sourceMaps=createSourceMapSession({onChange:id=>notifyInvalidation(id),send:(id,m,p,context)=>send(id,m,p,context),fetch,permitted:origin=>platform.permittedOrigin?.(origin)??Promise.resolve(false),processArtifact:(...args)=>{if(typeof platform.parseSourceArtifact!=='function')throw atomError('SOURCE_PARSE_UNAVAILABLE','Source artifact parsing unavailable');return platform.parseSourceArtifact(...args);}});
@@ -107,7 +130,7 @@ const send=(id,method,params={},{signal,assertCurrent}={})=>{
  return queueSourceRead(async()=>{current();if(typeof platform.readScriptSource!=='function')throw atomError('SOURCE_READ_UNAVAILABLE','Host has no guarded source reader');const result=await platform.readScriptSource(id,params.scriptId,current);current();return result;},{signal,assertCurrent:current});
 };
 function state(id){const s=tabs[id]??={requests:[],pending:{},samples:[],sampleEntries:{},run:crypto.randomUUID(),attached:false,events:[],selection:null,override:null};s.fetchBindings??=newFetchBindings(s.run);s.codeJournal??=codeState(s);s.lastTouched=Date.now();return s;}
-function cap(s){const cutoff=Date.now()-300000;if(s.codeJournal?.startedAt<cutoff)journalGap(s.codeJournal,'expired');if(s.fetchBindings?.startedAt<cutoff)s.fetchBindings={...newFetchBindings(s.run),overflow:true};if(s.diagnosticExperiment?.result.completedAt<cutoff)s.diagnosticExperiment=null;if(s.stale?.at<cutoff)s.stale=null;if(s.sampleEntries){for(const[k,e]of Object.entries(s.sampleEntries))if(e.at<cutoff)delete s.sampleEntries[k];s.samples=Object.values(s.sampleEntries).map(e=>e.text);}if(s.analysisAt&&s.analysisAt<cutoff){s.analysis=null;s.selection=null;s.experiment=null;}if(s.experiment?.completedAt&&s.experiment.completedAt<cutoff)s.experiment=null;s.requests=s.requests.filter(x=>x.time>cutoff).slice(-32);while(JSON.stringify(s.requests).length>256000)s.requests.shift();s.samples=s.samples.slice(-50);while(s.samples.join('').length>800000)s.samples.shift();if(Object.keys(s.pending).length>64)s.pending={};s.events=s.events.slice(-30);}
+function cap(s){const cutoff=Date.now()-300000;if(s.codeJournal?.startedAt<cutoff)journalGap(s.codeJournal,'expired');if(s.fetchBindings?.startedAt<cutoff)s.fetchBindings={...newFetchBindings(s.run),overflow:true};if(s.diagnosticExperiment?.result.completedAt<cutoff)s.diagnosticExperiment=null;if(s.stale?.at<cutoff)s.stale=null;if(s.sampleEntries){for(const[k,e]of Object.entries(s.sampleEntries))if(e.at<cutoff)delete s.sampleEntries[k];s.samples=Object.values(s.sampleEntries).map(e=>e.text);}if(s.analysisAt&&s.analysisAt<cutoff){s.analysis=null;s.selection=null;s.experiment=null;}if(s.experiment?.completedAt&&s.experiment.completedAt<cutoff)s.experiment=null;s.requests=s.requests.filter(x=>x.time>cutoff).slice(-32);if(s.requests.length){const text=JSON.stringify(s.requests);if(text.length>256000)s.requests=s.requests.slice(requestPrefixDrop(text,256000));}s.samples=s.samples.slice(-50);while(s.samples.join('').length>800000)s.samples.shift();if(Object.keys(s.pending).length>64)s.pending={};s.events=s.events.slice(-30);}
 function invalidateScope(id,reason){
  stopObservation(id,'permission-lost',true);
  void stopActionTrace(id,reason);
