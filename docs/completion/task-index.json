@@ -6503,25 +6503,37 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.28",
-        "record": "237-v02-current84-original-gate-preparation.md",
-        "status": "closed-frozen-new84-case-reader-preparation",
+        "id": "V02.29",
+        "record": "238-v02-current84-original-gate.md",
+        "status": "closed-complete-measurement-original-targets-missed",
+        "execution_revision": "c2394bbba0e1fea7fbd360bdebfe29df044510a9",
+        "raw": ".artifacts/v02/basic-observer-record-size/2026-10-27T16-50-11-733Z/results.json",
+        "raw_sha256": "e5a3a1feee562d95f2ec7a5f3a42ee2208f4c2836f3e68d2287f4673766b4771",
+        "rows": 198,
+        "warmup_rows": 18,
+        "measured_rows": 180,
+        "active_windows": 66,
         "registered_inputs": 449,
-        "product_inputs": 327,
-        "new_harness_controls": 8,
-        "affected_controls": 30,
-        "reader_pure_functions": 13,
         "reader_negative_controls": 32,
-        "measurement_runs": 0,
-        "new_CAs": 0,
-        "new_imports": 0,
-        "performance_acceptance": false
+        "basic_p95_ms": [
+          399.7,
+          416.5
+        ],
+        "active_off_percent": [
+          20.54356509,
+          27.05667272
+        ],
+        "targets_waived": false,
+        "performance_acceptance": false,
+        "whole_V02_complete": false,
+        "measurement_budget_remaining": 0,
+        "first_reader_budget_remaining": 0
       },
-      "execution_record": "237-v02-current84-original-gate-preparation.md",
+      "execution_record": "238-v02-current84-original-gate.md",
       "current_checkpoint": {
-        "record": "237-v02-current84-original-gate-preparation.md",
-        "status": "closed-frozen-new84-preparation",
-        "next_bounded_step": "V02.29 at mostONE new original198row measurement and FIRST frozen reader on exact84; no newCA/import/retune/retry/whole-task credit."
+        "record": "238-v02-current84-original-gate.md",
+        "status": "closed-complete-original-gate-MISS",
+        "next_bounded_step": "V02.30 source/API Debugger lifetime feasibility only, preserving script/map/Action evidence; reuse106/136, no native domain matrix or old gate/reader retry."
       },
       "completed_slices": [
         {
@@ -7865,6 +7877,21 @@
         "native_ledger_accepted": false,
         "performance_acceptance": false,
         "whole_V02_complete": false
+      },
+      "previous_slice_before_V02_29": {
+        "id": "V02.28",
+        "record": "237-v02-current84-original-gate-preparation.md",
+        "status": "closed-frozen-new84-case-reader-preparation",
+        "registered_inputs": 449,
+        "product_inputs": 327,
+        "new_harness_controls": 8,
+        "affected_controls": 30,
+        "reader_pure_functions": 13,
+        "reader_negative_controls": 32,
+        "measurement_runs": 0,
+        "new_CAs": 0,
+        "new_imports": 0,
+        "performance_acceptance": false
       }
     },
     {
@@ -9432,8 +9459,8 @@
     "document": "232-i02-current83-official-host.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
-    "current_increment": "V02.28-new84-original-gate-preparation-complete",
-    "next_item": "V02.29 at mostONE new original198row measurement and FIRST frozen reader on exact84; no newCA/import/retune/retry/whole-task credit.",
+    "current_increment": "V02.29-immutable84-original-gate-complete-targets-missed",
+    "next_item": "V02.30 source/API Debugger lifetime feasibility only, preserving script/map/Action evidence; reuse106/136, no native domain matrix or old gate/reader retry.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9461,7 +9488,7 @@
     "active_item": {
       "id": "V02",
       "record": "238-v02-current84-original-gate.md",
-      "status": "bounded29-original-gate-next"
+      "status": "bounded29-closed-next30-source-feasibility"
     },
     "completed_increments": [
       {
@@ -12462,7 +12489,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "New84case cb8f5be7/449bindings/327product/driver4identity-only substitutions/8new30affected/reader13purefunctions32negative source checks frozen; retained206TLS hashes/chain/hostname/checkendPASS,0newCA/import/measurement. Next maximumONE new198row gate andFIRSTreader; original82MISS/full21of29 unchanged.",
+    "current_activity_note": "New84 original198row gate+FIRSTreader complete/449inputs/66windows all20requests21records0gaps. Basicp95399.7/416.5PASS1s, active/off20.54356509/27.05667272MISS10%. Budgets exhausted/no waiver. Next source/API Debugger-lifetime feasibility only; historical106/136 reused, no domain rerun. Full21of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "4ef5d652b17cf4b3446f2f720d964269fe4e68b1",
     "current_record_date": "2026-10-27",

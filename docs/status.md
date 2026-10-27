@@ -1,19 +1,17 @@
 # Project status
 
-[V02.28 new84 original gate preparation complete](completion/237-v02-current84-original-gate-preparation.md):
-casecb8f5be7/449bindings/327product, exact original198rows/order/fixture/thresholds;
-new driver8/affected30source PASS, reader13purefunctions/32negative controls exact.
-Retained206TLS4hash/chain/hostname/checkendPASS; no newCA/import/native measurement.
+[V02.29 actual84 original gate complete, targets MISSED](completion/238-v02-current84-original-gate.md).
+198rows/18warm180measured/66windows/449inputs/FIRSTreader32controls verified. Basic
+p95399.7/416.5msPASS1s; Active/Off **20.54356509% /27.05667272% MISS10%**.
+No retune/retry/waiver. All windows20requests20completed/21records/zero gaps;
+retained206trust only,0newCA/import/model. Native original-workload ledger correctness
+is scoped separately from failing performance and source630→79serialization counts.
 
-Next bounded **[V02.29 one new original84 gate](completion/238-v02-current84-original-gate.md)**,
-maximum1measurement/1FIRSTreader. New code235/immutable84 justify this separate case;
-old82gate is not rerun. Original28.1136/21.0570% MISS10% remains until new evidence.
-
-Official host stays [accepted83/UI2](completion/234-i02-full-capture-driver-migration.md),
-38/40native controls; local84 package has9admission/2types/13input-backend controls,
-not native ledger/performance qualification. Full plan **21/29 (72.41%)**, eight open
-U04,A02,L02,I02,I03,V02,V03,V04. No SDK, publication or automatic host upgrade.
-Autonomy continues until09:00 Mauritius October28.
+Next bounded **V02.30 source/API Debugger-lifetime feasibility**; preserve map/script/
+Action evidence and reuse106/136historical domain controls, no new native matrix.
+Official host remains accepted83/UI2; local84 is not automatically consumed there.
+Full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04; no new whole task,
+SDK, publication or scope cut. Autonomy until09:00 Mauritius October28 continues.
 
 ## Historical checkpoints
 
