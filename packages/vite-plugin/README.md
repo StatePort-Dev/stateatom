@@ -9,6 +9,14 @@ does not establish a new installed plugin/VSIX combination or React19 committed
 host-props support. Candidate7 adds the separate opt-in native ancestor profile
 below; it does not add React19 committed host-property producers.
 
+Candidate `0.1.0-candidate.20261028.8` packages the current source, including the
+state handoff's captured weak-reference method and current private collection
+corrections. Its exports, opt-in profiles, version admission and dependencies are
+unchanged. Local archive/consumer checks are separate from installed helper,
+browser, React/Vue workflow or lineage qualification; historical native results
+below retain their original candidates and limits. No new SDK or public release
+is established by this package.
+
 Install the supplied local tarball in an existing app, without cloning the Atom
 repository: `npm install --save-dev /absolute/path/stateport-vite-plugin-<candidate>.tgz`.
 No registry publication is established. Tested configuration: Node 24, Vite
