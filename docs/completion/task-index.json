@@ -3046,7 +3046,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "FullA02 remains open; source54/55 packaged10 with7+17+13synthetic checks, but sole32native INCOMPLETE before Off/On. No native/GC/body/field/writer/lineage promotion or old50retry. Next independent V02.31 source-only request-buffer trim.",
+      "next_bounded_step": "FullA02 field/writer/parameter/selected-producer mechanism remains open. Source54/55 packaged10, no native weak-dispatch/50cause proof or old50retry. Current independent step V02.33changed87original performance gate.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -6739,23 +6739,30 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.32",
-        "record": "257-v02-current87-local-package.md",
-        "status": "closed-local-package-prerequisite",
-        "source_revision": "a859d9deb9e7bcc33d8a8e2ee5522c1361313510",
+        "id": "V02.33",
+        "record": "259-v02-current87-original-performance.md",
+        "status": "preregistered-current87-measurement-next",
         "package": "0.1.0-candidate.20261028.87",
-        "package_sha256": "6b020d8ff4b221f321d01516fbf6941c6351a0dc6afdc9ff1b6f3c1d74e005ce",
-        "package_checks": 9,
-        "type_checks": 2,
-        "source_inputs": 270,
-        "build_inputs": 327,
-        "payload": 31,
-        "native_runs": 0,
-        "model_calls": 0,
-        "performance_acceptance": false,
+        "case": "../testing/basic-observer-current87-case.json",
+        "registered_inputs": 457,
+        "case_inputs": 295,
+        "backend_native_checks": 13,
+        "affected_runtime_native_checks": 10,
+        "source_checks": 14,
+        "reader_source_controls": 32,
+        "measurement_runs": 0,
+        "maximum_measurement_runs": 1,
+        "first_reader_runs": 0,
+        "maximum_first_reader_runs": 1,
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 0
+        },
+        "targets_waived": false,
         "whole_V02_complete": false
       },
-      "execution_record": "257-v02-current87-local-package.md",
+      "execution_record": "259-v02-current87-original-performance.md",
       "current_checkpoint": {
         "record": "256-v02-request-buffer-trimming.md",
         "status": "closed-source-retention-optimization",
@@ -8184,7 +8191,7 @@
         "measurement_budget_remaining": 0,
         "first_reader_budget_remaining": 0
       },
-      "next_bounded_step": "ONE V02.33 inspect retained original performance contract/seed eligibility for changed87; if eligible freeze max1new measurement/reader. No old84retry/domain/poll/workload/threshold/CA/trust change or cause/10% acceptance inference.",
+      "next_bounded_step": "ONE exclusive current87original198row measurement then ONE FIRSTreader on actual output. Preserve COMPLETE/MISS/partial literal; no retry/domain/poll/workload/threshold/CA/trust change or causal speedup/fullV02 inference.",
       "historical_active_before_V02_31": {
         "id": "V02.30",
         "record": "239-v02-debugger-lifetime-feasibility.md",
@@ -8192,6 +8199,23 @@
         "source_witnesses": 1,
         "native_runs": 0,
         "product_changes": 0,
+        "performance_acceptance": false,
+        "whole_V02_complete": false
+      },
+      "historical_active_before_V02_33": {
+        "id": "V02.32",
+        "record": "257-v02-current87-local-package.md",
+        "status": "closed-local-package-prerequisite",
+        "source_revision": "a859d9deb9e7bcc33d8a8e2ee5522c1361313510",
+        "package": "0.1.0-candidate.20261028.87",
+        "package_sha256": "6b020d8ff4b221f321d01516fbf6941c6351a0dc6afdc9ff1b6f3c1d74e005ce",
+        "package_checks": 9,
+        "type_checks": 2,
+        "source_inputs": 270,
+        "build_inputs": 327,
+        "payload": 31,
+        "native_runs": 0,
+        "model_calls": 0,
         "performance_acceptance": false,
         "whole_V02_complete": false
       }
@@ -9577,7 +9601,7 @@
         "offline_source_tests": 4,
         "project_source_changed_in_fix_pass": false
       },
-      "next_bounded_step": "ONE V02.31 source-only private request-buffer trimming with exact retention and operation-count controls; no claimed cause/speedup/target acceptance or old native/model/performance retry."
+      "next_bounded_step": "FullV03normal-setup/independent-app gates open;32native INCOMPLETE stays, current87backend13 is private-wire/no field widgets. Current independent V02.33original performance gate, no oldcase retry."
     },
     {
       "id": "V04",
@@ -9804,7 +9828,7 @@
     "document": "254-a02-host-weak-dispatch.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
-    "current_increment": "I02.37-official87-retention-closed",
+    "current_increment": "V02.33-current87-original-gate-frozen",
     "next_item": "V02.33",
     "new_full_task_acceptances": [
       "F01",
@@ -9833,7 +9857,7 @@
     "active_item": {
       "id": "V02",
       "record": "259-v02-current87-original-performance.md",
-      "status": "bounded33-prerequisite-inspection-next"
+      "status": "bounded33-frozen-gate-execution-next"
     },
     "completed_increments": [
       {
@@ -12834,11 +12858,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "I02.37 host81bec06e exact87/UI2 frozen1290/build/types/package2+3+4/source73 and sole native10PASS. Readonly0body/picker, cache-only local latest238380chars and oversized-drop2 verified; actual extension worker SHA exact. Oldhistory/full86dist/15caseinputs/270source327build stable. No fullCapture/model/10%/cause credit.",
+    "current_activity_note": "V02.33 current87original case frozen457bindings/295inputs/327product; unchanged198rows/66windows/20GET1024/1s10%. Source14PASS/reader32synthetic/ONEreview0C0I0M, current backend13+official retention10 separate. Existing TLS/hardware eligible; measurement0/FIRSTreader0, max1each. No newCA/old84retry.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "a859d9deb9e7bcc33d8a8e2ee5522c1361313510",
     "current_record_date": "2026-10-27",
-    "next_bounded_step": "ONE V02.33 inspect retained original performance contract/seed eligibility for changed87; if eligible freeze max1new measurement/reader. No old84retry/domain/poll/workload/threshold/CA/trust change or cause/10% acceptance inference.",
+    "next_bounded_step": "ONE exclusive current87original198row measurement then ONE FIRSTreader on actual output. Preserve COMPLETE/MISS/partial literal; no retry/domain/poll/workload/threshold/CA/trust change or causal speedup/fullV02 inference.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

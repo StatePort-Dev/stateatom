@@ -46,3 +46,39 @@ Plan ../superpowers/plans/2026-10-28-current87-original-performance.md. Current
 source/preparation artifacts under .artifacts/v02/current87-performance-source /
 2026-10-28 and current87-performance-saved-verification/2026-10-28. Case/input closure,
 ONEsource/case review and clean preregistration commit remain before any measurement.
+
+
+Prerequisite clarification before any measurement: retain the original backend
+qualification too, instead of treating the differently scoped retention10 as its
+replacement. One max-current87 invocation of the existing13-control input-inspector
+backend across its two packaged public hosts. Reason: shared runtime now changed;
+current87old-client/cleanup/native-control ownership is a relevant safety prerequisite.
+This is not old84raw/reader/measurement replay or full UI acceptance: the original
+private Port wire client/fieldWidgetsfalse scope stays literal, including its authored
+app setup. No new model/TLS/CA/profile permission flow. Register exclusive backend
+attempt and current source/artifact inputs; if failed, stop prerequisite without retry.
+
+
+## Final preregistration before actual measurement
+
+Current87backend13 PASS, raw .artifacts/u02/input-inspector/native/2026-10-27T22-57-03-821Z/results.json,
+SHA2567550bd12eab57a849a498759e15b6de2b933489a00643a6b79ac0d770ff1b469. Original private Port wire
+client/fieldWidgetsfalse scope retained; sourceDirtytrue reflects doc-only preparation.
+This is current87evidence in addition to the official retention10, not old84promotion.
+
+Frozen docs/testing/basic-observer-current87-case.json SHA256
+1c314fed582c5bf957edabd6792775620a98cf20e492dc2ad8508a65b15fef23;
+457bindings/295caseinputs/270source327build. Exact role mapping/current physical
+input refresh has no unmapped historical drift. Original198/18warm/180measured/
+66windows/20GET×1024/1s/10%/TLS/100ms/order/cleanup untouched. New source/frozen-case
+binder PASS; first measurement/reader markers absent before launch.
+
+ONE bounded source/case review0C0I0M; no correction/rereview. Reviewer read/hash
+checked mappings/source identities/criteria and budgets without executing tests,
+model/native/measurement/reader. Executor hardware facts match original declared
+reference (platform/kernel/arch/CPU/logicalCPUs/totalRAM); freeRAM/load recorded
+separately, no idle-host/controlled A/B claim. TLS checkend3600 is executor evidence.
+
+Next exact execution is run-once.mjs under the registered current87source directory,
+maximumONE measurement then ONE FIRSTreader. Clean final case/source commit first.
+No current87performance claim has yet been made; all old raw/results remain literal.

@@ -4,18 +4,20 @@ Existing changed premise: reviewed runtime6580a46, immutable87/a859d9d, actual
 current official87retention10 at81bec06e. Old84gate is closed/exhausted, not rerun.
 Record259 owns scope; original198rows/protocol/thresholds remain exact.
 
-- [ ] Register original84case/raw/driver/reader/markers/contract/seed and current87
+- [x] Register original84case/raw/driver/reader/markers/contract/seed and current87
  archive/source/build/qualification/officialdist. TLS hashes/chain/hostname/checkend
  3600; no new CA/import/trust. Confirm unchanged browser executable hash/hardware.
-- [ ] Separate driver/harness changes only four identities from84; RED new8source
+- [x] Separate driver/harness changes only four identities from84; RED new8source
  controls then GREEN/protocol checks. Keep all old sources/results untouched.
-- [ ] Separate reader: original13purefunctions/32negative controls exact, identities
+- [x] Separate reader: original13purefunctions/32negative controls exact, identities
  only. Owned synthetic selftest, no old fullreader. Freeze source-equivalence proof.
-- [ ] Prepare exact87case/input-role map/qualified type2/admission9 and affected
+- [x] Prepare exact87case/input-role map/qualified type2/admission9 and affected
  runtime native10. Keep old backend13 explicitly historical, never call it fresh87.
- Current changed-area native10 is a differently named prerequisite, no substitution
+ Also run original backend13 once on current87 under its own exclusive prerequisite
+ budget; preserve private-wire/fieldWidgetsfalse scope and actual raw. Current
+ changed-area native10 is an additional differently named prerequisite, no substitution
  of metric/collector/latency/coverage/cleanup criteria. Freeze complete input closure.
-- [ ] ONE bounded source/case review before actual measurement, no tests/native/old
+- [x] ONE bounded source/case review before actual measurement, no tests/native/old
  reader by reviewer; correct I/C once if needed, no rereview. Commit clean finalcase.
 - [ ] Exclusive global33measurement marker before maximumONE original198row run;
  maximumONE exclusive FIRST frozen reader on that actual output. Complete/MISS/
