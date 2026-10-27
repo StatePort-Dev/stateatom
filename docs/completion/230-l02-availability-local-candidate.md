@@ -1,5 +1,8 @@
 # L02.23 — local immutable candidate for availability metadata UI
 
+**Subsequent execution:** [I02.27 accepted on the official host](232-i02-current83-official-host.md),
+host75a5ebfa. Earlier preparation/packaging statements below retain their original scope.
+
 Bounded packaging prerequisite after source229/3867ff9. Prepare Atom
 0.1.0-candidate.20261027.83 with the unchanged exact UI2. Source behavior passed23
 focused/full5861; new version/lock/changelog metadata does not constitute new

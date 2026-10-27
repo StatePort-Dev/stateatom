@@ -1,10 +1,10 @@
 # Local developer-preview acceptance
 
-Latest official-host increment: [I01 current82 accepted](../completion/226-i01-current82-official-host.md),
-21/29full tasks. [I02 current native increments](../completion/227-i02-current82-native-matrix.md)
-verify bounded Capture/bridge/Action Trace/fresh reader on this pair. Its model opt-in
-readiness failure is retained; full I02 and mandatory L02 remain open. The previous
-roadmap entries below remain historical evidence, not a new release qualification.
+Latest official-host increment: [I02.27 current83bounded acceptance](../completion/232-i02-current83-official-host.md),
+full21/29tasks unchanged. Fresh native metadata6/Capture33×2 use exact83/UI2. Old82
+Action Trace/Settings/authority/reader results stay historical, no83model readiness
+claim. Full I02/L02/V02remain open. Next I02.28 DevTools/Capture driver parity;
+prior roadmap entries below retain their original scope, not new release qualification.
 
 Current approved-scope execution is tracked in [completion status](../status.md)
 and [V03.11](../completion/124-v03-warning-baseline.md): installed6 cold startup

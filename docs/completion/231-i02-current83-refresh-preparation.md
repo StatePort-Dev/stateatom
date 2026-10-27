@@ -1,5 +1,8 @@
 # I02.27 — exact83 official-host refresh, prepared bounded next step
 
+**Subsequent execution:** [I02.27 accepted on the official host](232-i02-current83-official-host.md),
+host75a5ebfa. Earlier preparation/packaging statements below retain their original scope.
+
 Dependency-ready maintenance increment within unfinished I02; accepted I01 extraction
 and guardian wiring are reused. At preparation host40afa3c3 was clean and consumed
 Atom82/UI2. Source229 and local package230 introduce guarded availability metadata UI.

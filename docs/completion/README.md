@@ -9,11 +9,11 @@ This is a delivery plan, not a new architecture or a release announcement. It re
 
 The audit distinguishes implementation read in this revision, results recorded by the repository, and the hosted CI result for this exact commit. No native browser, IDE or local-model test was rerun for that original document package. Subsequent executable increments have separate execution records. See [the audit](01-current-state-audit.md).
 
-Current executable checkpoint: [I01 current official host accepted](226-i01-current82-official-host.md),
-21/29full tasks; [I02 bounded native progress](227-i02-current82-native-matrix.md) covers
-current Capture/bridge/Action Trace/fresh reader; full I02/local-model remain open. Historical
-sequences below retain their original milestones. Mandatory L02 and V02 remain open;
-no publication follows from this acceptance.
+Current executable checkpoint: [I02.27 official83bounded refresh](232-i02-current83-official-host.md).
+Full21/29tasks, same approved scope. Native metadata6/Capture33×2 and affected host
+checks pass; actual local-model readiness/whole I02 remain open. Next I02.28 native
+DevTools driver-control parity. Historical sequences below retain their milestones;
+mandatory L02/V02 and no-publication boundary remain.
 
 ## Read and execute
 
