@@ -1,5 +1,9 @@
 # I01 — separately authorized official host intake checkpoint
 
+Historical progress checkpoint; current I01 acceptance is [record226](226-i01-current82-official-host.md),
+and active I02 increments are [record227](227-i02-current82-native-matrix.md).
+The partial/unrun/install-blocked statements below retain their original times.
+
 27October, founder explicitly approved the prepared separate I01 change in
 `/home/roman/projects/scenariodeck`, local commits only, no push/publication/SDK.
 This supersedes the original other-repository exclusion for I01 alone. No further

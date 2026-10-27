@@ -11,9 +11,10 @@ Capture matrix. Its mandatory L02 dependency remains open. Autonomy continues
 through evening; no additional routine I01 permission needed.
 
 [I02 current native increments](completion/227-i02-current82-native-matrix.md):
-Settings12PASS (real600115ms expiry) and authority/interruption14PASS on the official
-host; original predicates retained with necessary official page/worker mapping.
-Next bounded I02.3: actual browser site permission removal/reconnect. Full I02 and
+Settings12PASS (real600115ms expiry), authority/site-removal15PASS, compatible
+native Capture/current-code/cold runtime10×2PASS on Chromium153/GoogleChrome156.
+Original matrix criteria and first failures retained. Next bounded I02.7 safe forms/
+route preservation through the same flow. Full I02 and
 mandatory L02 remain open; full-plan count stays21/29. No new policy or scope cut.
 
 [Prior release checkpoint](completion/224-night-release-checkpoint.md) remains

@@ -39,14 +39,50 @@ prompt acceptance. App probes use fixed fixture scripting; no competing app debu
 Private backend envelopes remain distinct from actual Settings UI evidence. No
 host/product behavior changed, so old model/performance/corpus work was not repeated.
 
+## I02.3 — optional site access removal/recovery, accepted
+
+Host2c9f4ef7, current authority matrix15PASS at
+artifacts/atom-host/i02-current82/authority-native/2026-10-27T06-27-54-083Z/results.json
+(host checkout). Original14retained plus actual permissions.remove while a response
+writer is waiting: containsfalse, native lease/grant/editor retired, stale plan and
+unauthorized attach refused. Real Chrome WebUI preapproval/native UI reconnect stays
+read-only, with no resumed production grant/writer and a baseline later response.
+
+## I02.4–6 — native Capture and current/cold reopen, accepted bounded increments
+
+Host6b38103b adds the same6actual controls on installed GoogleChrome156 alongside
+Chromium153. Host0cc66594 adds actual Atom runtime.shutdown preserving active Capture
+and real saved-Card worker restart (8×2). Host20e43172 adds baseline/current-code
+run receipts/comparison and cold runtime reopen after source browser/bridge closure
+(10×2). Current exact results in the host checkout:
+
+- artifacts/atom-host/i01-current82/capture-native-2026-10-27T06-42-36-929Z/results.json
+- artifacts/atom-host/i01-current82/capture-native-2026-10-27T06-42-43-385Z/results.json
+
+The historical parent directory/status name is retained; these are explicit I02
+increments. Actual native owner/markers survive Atom shutdown; only a disposable
+copy appends the original test's existing-method hook, retaining official worker
+bytes as exact prefix. Production output has no hook. Native app is not pre-attached
+by Playwright. Managed replay starts after native ownership is released. One Card
+renders baseline/current UI with captured data, real checks and distinct receipts;
+original compare asserts equivalent with misses/body/authority differences0. Source
+browser/bridge then close, new runtime reads the same revision1/capsule digest and
+reopens current UI, target live API hits0. No identical-UI or general app claim.
+
+Google Chrome156 uses real Extensions.loadUnpacked in a disposable headful profile
+with a test-only native-backend binary/import adapter; source/adapter SHA copied in
+run evidence. No guide UI/Store/installed acceptance. First compare-output assertion
+failures remain: corrected to the actual original status/differences API, with no
+new source policy or acceptance relaxation. Cleanup failures now fail the control.
+
 ## Next bounded item / remaining acceptance
 
-I02.3: actual optional browser host-permission removal with active input work, native
-release, and later read-only site reconnection without resumed production authority.
-Continue current host tests within the renewed necessary permissions; no additional
-routine authorization required. Retain old full Playwright Capture FAIL2 as driver
-debt with original criteria, not as passed by the smaller native controls.
+I02.7: preserve actual safe native form input and same-origin route through the
+same native Capture→current-code/cold-runtime replay, using original full test
+criteria. Continue within renewed necessary permissions. Original full Playwright
+Capture FAIL2 remains driver debt, not passed by these smaller native controls.
 
-Full I02 still includes the remaining official installed/Capture/replay/permission/
-Action Trace/local-model matrix and mandatory L02. No human recruitment blocker,
-AI fallback credit, performance waiver, new Live/grant/handoff policy or scope cut.
+Full I02 still includes remaining protected-auth/domain/Journey/installed/Capture/
+permission/Action Trace/local-model matrix and mandatory L02. Full count stays21/29.
+No human recruitment blocker, fallback/model credit, performance waiver, new Live/
+grant/handoff policy, scope reduction, SDK or publication. Original results remain.
