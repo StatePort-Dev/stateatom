@@ -1,5 +1,10 @@
 # Local developer-preview acceptance
 
+Latest official-host increment: [I01 current82 accepted](../completion/226-i01-current82-official-host.md),
+21/29full tasks. Actual native UI9/Capture6 are scoped to this current pair; next I02
+full matrix remains open, including its mandatory L02 dependency. The previous
+roadmap entries below remain historical evidence, not a new release qualification.
+
 Current approved-scope execution is tracked in [completion status](../status.md)
 and [V03.11](../completion/124-v03-warning-baseline.md): installed6 cold startup
 and the finite original warning comparison are verified after ONE review and

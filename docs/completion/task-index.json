@@ -6119,7 +6119,7 @@
       ],
       "existing_commands": [],
       "deliverable": "Actual host consumes the current hash-checked Atom/UI pair",
-      "status": "in-progress",
+      "status": "complete",
       "optional": false,
       "existing_implementation": {
         "record": "205-release-date-decision.md",
@@ -6141,19 +6141,20 @@
         }
       },
       "current_preparation": {
-        "record": "225-i01-authorized-host-intake.md",
-        "status": "authorized-host-wired-native-ui7-pass-capture-regression-pending",
+        "record": "226-i01-current82-official-host.md",
+        "status": "accepted-current82-official-host-intake",
         "host_commits": [
           "f8040639",
           "ad5b8046",
           "7b74d77d",
-          "bd2498d0"
+          "bd2498d0",
+          "1fe11a00"
         ],
-        "actual_intake_accepted": false,
+        "actual_intake_accepted": true,
         "separate_host_scope_authorized": true,
         "further_scope_permission_needed": false
       },
-      "next_bounded_step": "Exact pair installed; current host wired and native UI7PASS. Complete compatible native Capture regression without weakening BUSY; preserve old full matrix failures and historical criteria. Already authorized.",
+      "next_bounded_step": "I01 accepted: native UI9, real Capture6, affected122/package9/type/build. Next I02 current official lifecycle/permission/Capture matrix; full Playwright pre-attached-app failures and original criteria remain.",
       "historical_preparation_before_host_authorization": {
         "record": "221-i01-current82-handoff-preparation.md",
         "status": "handoff-prepared-not-host-intake",
@@ -6163,8 +6164,8 @@
         "actual_intake_accepted": false,
         "requires_separate_host_scope": true
       },
-      "current_checkpoint": "225-i01-authorized-host-intake.md",
-      "execution_record": "225-i01-authorized-host-intake.md"
+      "current_checkpoint": "226-i01-current82-official-host.md",
+      "execution_record": "226-i01-current82-official-host.md"
     },
     {
       "id": "I02",
@@ -6199,6 +6200,14 @@
         "P03",
         "P04"
       ],
+      "current_partial_evidence": {
+        "record": "226-i01-current82-official-host.md",
+        "host_revision": "1fe11a00",
+        "native_ui_checks": 9,
+        "native_capture_controls": 6,
+        "full_matrix_accepted": false,
+        "old_full_capture_harness": "FAIL2: app pre-attached before Start; retain criteria, adapt driver without weakening BUSY"
+      },
       "existing_implementation": {
         "record": "205-release-date-decision.md",
         "host_revision": "a9f993f9dcfb6a3a3367273d333a3bbda6f1a67b",

@@ -1,18 +1,18 @@
 # Project status
 
-[I01 separately authorized and started](completion/225-i01-authorized-host-intake.md).
-Host7b74d77d/bd2498d0: exact82/UI2 frozen install and supply-chain1290PASS;
-122affected/9package, TypeScript/build PASS. Actual official native UI7PASS
-(Basic/map/guardian/960+360/keyboard/worker-only cleanup). Current native Capture
-regression in progress; old Playwright test pre-attaches app and fails BUSY guard.
-I01 remains open; scope authorization persists, no new full-plan credit.
+[I01 current82 official intake complete](completion/226-i01-current82-official-host.md).
+Host1fe11a00: exact Atom82/UI2 installed/built, native UI9 and real Capture6PASS;
+122affected/9package/type/build PASS. Old full Playwright Capture FAIL2 retained as
+I02 driver debt. No publication/SDK or full I02/production/model acceptance.
 
-[Current release checkpoint](completion/224-night-release-checkpoint.md):20/29(~69%),
-9open; exact82/product327+archives current, no full-scope readiness or newfeature credit.
+**Current full plan:21/29(72.41%),8open**:U04,A02,L02,I02,I03,V02,V03,V04.
+Next dependency-ready item: **I02**, current official lifecycle/site permission/
+Capture matrix. Its mandatory L02 dependency remains open. Autonomy continues
+through evening; no additional routine I01 permission needed.
 
-Current: bounded L02.20 closed with incomplete native evidence; latest source8c78dcf.
-Historical checkpoint before host authorization: actual I01 scope was then pending.
-20of29 full tasks(~69%) accepted; no new feature acceptance from source-only fixes.
+[Prior release checkpoint](completion/224-night-release-checkpoint.md) remains
+historical20/29. Exact82/product327+archives unchanged; V02original10%overhead MISS.
+Bounded L02.20 was closed INCOMPLETE; latest Atom source8c78dcf (no new native/model retry).
 
 L02.20 [ONE web readiness attempt INCOMPLETE](completion/223-l02-web-readiness.md).
 Generic timeout before browser-owner attestation; exact pending operation/causeUnknown.
