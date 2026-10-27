@@ -1,16 +1,16 @@
 # Intake current Atom/UI into the official StatePort host
 
 **Current execution, October27:** [I01 accepted](../completion/226-i01-current82-official-host.md),
-then [exact83 host refresh](../completion/232-i02-current83-official-host.md) and
-[I02.29 full canonical native Capture controls](../completion/234-i02-full-capture-driver-migration.md)
-at hostcfa55437. Current Atom `0.1.0-candidate.20261027.83` SHA256
-`c7b20bf960de55083e66175a331849da2804e4830b19226e125893bb4b43ccf4`;
+then83intake/canonical Capture and [bounded exact85 official host](../completion/242-i02-current85-host-refresh.md)
+at **1bad6331**. Current Atom `0.1.0-candidate.20261027.85` SHA256
+`84b3c5e1bf8d23201b053d5a9d6f8eb41e0dba99751d1bbc42d2cd57730835e6`;
 UI `0.2.0-candidate.20261018.2` SHA256
 `2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5`.
-Producer handoff `.artifacts/atom/2026-10-27T13-49-31-004Z/atom-handoff.json`.
-Source4ef5d652b17cf4b3446f2f720d964269fe4e68b1, API/wire1/1/UI2.1.0.
-Full plan21/29; L02/V02/full-I02/installed/release gates remain open. Current local
-host work is explicitly authorized; this file does not authorize publication/SDK.
+Producer handoff `.artifacts/atom/2026-10-27T17-25-00-370Z/atom-handoff.json`.
+Sourceb83d9c9bd1e766770248297166b3014d93251927, API/wire1/1/UI2.1.0.
+Native metadata7/CanonicalCapture38+40PASS are scoped UI/coexistence proof, not model
+readiness/performance/release. Full21/29; next consumer-only contextbar243 with same
+85bytes. Separate local host authorization persists; no publication/SDK inferred.
 
 ## Historical handoff preparation
 

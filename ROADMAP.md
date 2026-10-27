@@ -5,10 +5,17 @@
 The approved [completion contract](docs/completion/02-release-scope.md), revision
 `scope-review-1`, and its [decision record](docs/completion/12-scope-decisions.md)
 govern current delivery. Use the [task index](docs/completion/task-index.json) for
-dependencies and the [reconciliation](docs/completion/13-scope-reconciliation.md)
-for credited work and the current stopping point. The earlier roadmap below is
+dependencies and [current status](docs/status.md) for the stopping point. The
+[reconciliation](docs/completion/13-scope-reconciliation.md) preserves the original
+credited baseline. The earlier roadmap below is
 retained as history, including its original experiment criteria and results; its
 human-participant gates and initial-alpha exclusions do not override this scope.
+
+Current October27 checkpoint: **21/29(72.41%)**, official local85/UI2 at host1bad6331
+with [bounded native38/40Capture and7metadata UI controls](docs/completion/242-i02-current85-host-refresh.md).
+This does not completeL02/I02/V02 or certify release. Next consumer contextbar243;
+new-model/old-performance campaigns are not restarted. Separate explicit local
+StatePort I01/I02 authorization is the sole other-repository exception.
 
 - L02 local AI and A05 bounded Action Trace are mandatory deliveries. A05 has its
   bounded acceptance; L02 usefulness remains open. AI use is
@@ -30,7 +37,13 @@ human-participant gates and initial-alpha exclusions do not override this scope.
   optional evidence, not a blocker; agent-operated installation/UI checks must be
   labelled accurately. Source maps remain distinct from runtime/action evidence.
 - The production SDK belongs to StatePort outside Atom and has no active release
-  dependency. Publication, another repository and a new redesign are not authorized.
+  dependency. Publication and a new redesign are not authorized; other-repository work requires
+  its explicit scope (the local StatePort I01/I02 exception is recorded above).
+
+## Historical implementation checkpoints
+
+Counts and next pointers below belong to their recorded dates; the current whole
+count and active item are above/in the linked status, not a restart instruction.
 
 The production source-exploration increment at `f3a7a7e` is complete within its
 original boundary. Credit its map/ZIP import, artifact matching, manual lookup,

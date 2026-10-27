@@ -6,6 +6,14 @@ The intended workflow is to select a property, inspect the available dependencie
 
 ## Project status
 
+Current completion checkpoint (2026-10-27): **21/29 whole tasks** in approved
+`scope-review-1`. The [official local85/UI2 integration](docs/completion/242-i02-current85-host-refresh.md)
+has scoped native Capture and pending-status UI checks. Mandatory L02 usefulness,
+ordinary A02 lineage and original V02 overhead remain open; no full release or SDK
+is established. An independent human is optional evidence, not a release blocker.
+Use [current status](docs/status.md) and the [task index](docs/completion/task-index.json)
+for the active bounded item; dated observations below retain their original scope.
+
 The working local developer preview includes the React inspection loop: select a
 property, inspect its code-linked expression and available observed values, open
 its source in the IDE, change the app, and explicitly **Inspect again**. React dev

@@ -1,17 +1,17 @@
 # Project status
 
-[L02.25 immutable85 local prerequisite complete](completion/241-l02-current85-local-package.md):
-cleanb83d9c9/deterministic offline pack/admission9/types2/current270source327build.
-Runtime/guardian/workers/reader identical84; UI owned30sUnknown notice is source240
-(7new/75affected/5883full/source rendered390/1100/review0C0I0M), not model readiness.
+[I02.30 official85/UI2 bounded acceptance](completion/242-i02-current85-host-refresh.md),
+host1bad6331: frozen1290/build/types/package9/source73/qualifier8PASS; actual Capture
+38Chromium/40Google and metadata7PASS. Unknown notice observed after30.10s; template,
+opt-out and fresh readonly Basic work. No model-enabled Explain/download/inference,
+real readiness/usefulness or full-I02 acceptance. Original84performance MISS retained.
 
-Next **[I02.30 exact85 authorized host refresh](completion/242-i02-current85-host-refresh.md)**:
-finite intake/affected/native metadata notice conditional branch and canonical
-Capture38/40criteria. If readiness settles, pending branch NOT_EXERCISED; no API fake,
-model-enabled Explain/download/inference/newCA or new performance campaign.
-Officialhost remains83 until actual intake. Full **21/29 (72.41%)**, eight open
-U04,A02,L02,I02,I03,V02,V03,V04;84overhead20.54356509/27.05667272%MISS10% unwaived.
-Autonomy until09:00 Mauritius October28; local commits only/no SDK/publication.
+Next bounded **[I02.31 host context bar](completion/243-i02-host-context-bar.md)**:
+remove duplicated host StatePort/Atom text above package-owned header, preserveCapture
+instruction/navigation and shared root typography. Same85bytes; no new package,
+model/CA/Capture/performance campaign or redesign. Full **21/29 (72.41%)**, eight open
+U04,A02,L02,I02,I03,V02,V03,V04. Autonomous local work until09:00 Mauritius October28;
+no SDK/push/publication and no mandatory human gate.
 
 ## Historical checkpoints
 
