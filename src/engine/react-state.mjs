@@ -5,12 +5,17 @@ export function createStateHandoffLedger({page,field,isFiber,origin,add,weakRef,
  const queues=new WeakMap(),hooks=new WeakMap(),updates=new WeakMap(),results=new WeakMap(),reads=new Map(),staged=new Map();
  let serial=0,queueCount=0,updateCount=0,stopped=false;
  const id=kind=>page+':'+kind+(++serial),object=v=>v!==null&&(typeof v==='object'||typeof v==='function');
- const same=Object.is,nativeMapGet=Map.prototype.get,nativeApply=Reflect.apply;
+ const same=Object.is,nativeMapGet=Map.prototype.get,nativeApply=Reflect.apply,nativeOwn=Object.getOwnPropertyDescriptor;
+ const ownData=(obj,key)=>{const d=obj&&nativeOwn(obj,key);return d&&nativeOwn(d,'value')?.value;};
+ const weakPrototype=typeof weakRef==='function'?ownData(weakRef,'prototype'):null;
+ const weakDeref=ownData(weakPrototype,'deref');
+ // Private weak references must not dispatch a later application method/getter.
+ const deref=ref=>ref&&typeof weakDeref==='function'?nativeApply(weakDeref,ref,[]):undefined;
  const mapRead=(map,key)=>nativeApply(nativeMapGet,map,[key]);
  const scope='Actual React useState queue/update/returned object identity; not current field value ancestry';
  const unknown=reason=>({status:'Unknown/Unsupported',scope,reason});
  function tap(kind,a,b,c){
-  if(stopped||!weakRef)return;
+  if(stopped||typeof weakDeref!=='function')return;
   if(kind==='state-mount'){
    if(queueCount>=256||!isFiber(c)||field(a,'queue')!==b||typeof field(b,'dispatch')!=='function')return;
    const queue={id:id('stateQueue'),ref:new weakRef(b),...(objectId?{nativeId:objectId(b)}:{})};queues.set(b,queue);queueCount++;
@@ -31,7 +36,7 @@ export function createStateHandoffLedger({page,field,isFiber,origin,add,weakRef,
     reason:update?.queue!==hook.queue?'Rebased/cloned/unobserved update identity':typeof action==='function'?'Functional updater value ancestry unsupported':!same(action,c)?'Reducer result is not the original direct action':null};return;
   }
   if(kind==='state-result'){
-   const hook=hooks.get(b);if(!hook||!isFiber(c)||field(b,'queue')!==hook.queue.ref.deref()||!same(field(a,'0'),field(b,'memoizedState'))||field(a,'1')!==field(hook.queue.ref.deref(),'dispatch'))return;
+   const hook=hooks.get(b);if(!hook||!isFiber(c)||field(b,'queue')!==deref(hook.queue.ref)||!same(field(a,'0'),field(b,'memoizedState'))||field(a,'1')!==field(deref(hook.queue.ref),'dispatch'))return;
    results.set(a,{hook,hookRef:new weakRef(b),fiberRef:new weakRef(c),revision:hook.revision});
   }
  }
@@ -41,7 +46,7 @@ export function createStateHandoffLedger({page,field,isFiber,origin,add,weakRef,
  }
  function associate(meta,renderScope,value,setter){
   if(stopped)return null;const key=renderScope+':'+meta.binding;let r=mapRead(staged,key);staged.delete(key);
-  const hook=r?.hookRef?.deref(),queue=r?.hook.queue.ref.deref();
+  const hook=deref(r?.hookRef),queue=deref(r?.hook.queue.ref);
   if(r&&(!hook||!queue||!same(value,field(hook,'memoizedState'))||setter!==field(queue,'dispatch')))r={reason:'Actual destructured state/setter differs from retained native hook result'};
   if(r?.hookRef)r={...r,...(object(value)?{valueRef:new weakRef(value)}:{primitive:value})};
   const n=add({...meta,kind:'react-state-read',scope:renderScope},value,[],{boundary:scope+'; raw/equal-value writes remain unobserved'});
@@ -51,12 +56,12 @@ export function createStateHandoffLedger({page,field,isFiber,origin,add,weakRef,
  }
  function witness(nodes,ancestors){
   return nodes.filter(n=>n.kind==='react-state-read').slice(0,32).map(n=>{
-   const r=mapRead(reads,n.id),recordedFiber=r?.fiberRef?.deref(),hook=r?.hookRef?.deref();
+   const r=mapRead(reads,n.id),recordedFiber=deref(r?.fiberRef),hook=deref(r?.hookRef);
    const fiber=ancestors?.has(recordedFiber)?recordedFiber:recordedFiber&&[...(ancestors||[])].find(a=>isFiber(a)&&field(a,'alternate')===recordedFiber&&field(recordedFiber,'alternate')===a);
    if(stopped||!r||!fiber||!hook)return {...unknown(stopped?'Observer stopped':r?.reason||'State read is not in the selected committed ancestor'),readId:n.id};
    let current=field(fiber,'memoizedState'),found=false;const seen=new Set();
    while(object(current)&&seen.size<64&&!seen.has(current)){if(current===hook){found=true;break;}seen.add(current);current=field(current,'next');}
-   if(!found||hooks.get(hook)!==r.hook||r.hook.revision!==r.revision||!same(field(hook,'memoizedState'),r.valueRef?r.valueRef.deref():r.primitive)||field(hook,'queue')!==r.hook.queue.ref.deref())return {...unknown('Committed hook/revision no longer matches'),readId:n.id};
+   if(!found||hooks.get(hook)!==r.hook||r.hook.revision!==r.revision||!same(field(hook,'memoizedState'),r.valueRef?deref(r.valueRef):r.primitive)||field(hook,'queue')!==deref(r.hook.queue.ref))return {...unknown('Committed hook/revision no longer matches'),readId:n.id};
    const revision=r.revision,parsed=revision.parsedObject;
    return {status:revision.updateId?'Observed':'Unknown/Unsupported',scope,reason:revision.reason,readId:n.id,queueId:r.hook.queue.id,hookId:r.hook.id,revisionId:revision.id,updateId:revision.updateId||null,
     ...(objectId?{firstReadNativeIds:{queueId:r.hook.queue.nativeId,updateId:revision.nativeUpdateId||null}}:{}),
