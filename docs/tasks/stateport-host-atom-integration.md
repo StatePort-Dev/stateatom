@@ -1,10 +1,16 @@
 # Intake current Atom/UI into the official StatePort host
 
-**Current execution, October27:** [I01 accepted](../completion/226-i01-current82-official-host.md)
-under separate explicit maintainer authorization; full plan21/29. The exact pair below
-is consumed by the official host. [I02 current bounded native matrix](../completion/227-i02-current82-native-matrix.md)
-continues; local-model/full installed/release acceptance remain open. This document
-itself grants no publication, SDK or account authority.
+**Current execution, October27:** [I01 accepted](../completion/226-i01-current82-official-host.md),
+then [exact83 host refresh](../completion/232-i02-current83-official-host.md) and
+[I02.29 full canonical native Capture controls](../completion/234-i02-full-capture-driver-migration.md)
+at hostcfa55437. Current Atom `0.1.0-candidate.20261027.83` SHA256
+`c7b20bf960de55083e66175a331849da2804e4830b19226e125893bb4b43ccf4`;
+UI `0.2.0-candidate.20261018.2` SHA256
+`2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5`.
+Producer handoff `.artifacts/atom/2026-10-27T13-49-31-004Z/atom-handoff.json`.
+Source4ef5d652b17cf4b3446f2f720d964269fe4e68b1, API/wire1/1/UI2.1.0.
+Full plan21/29; L02/V02/full-I02/installed/release gates remain open. Current local
+host work is explicitly authorized; this file does not authorize publication/SDK.
 
 ## Historical handoff preparation
 
@@ -14,7 +20,7 @@ The existing October18 integration remains credited for its own pair. Updating
 this instruction and verifying archives does not complete I01/I02 or prove host
 runtime support. Full approved scope remains20of29; SDK remains outside Atom.
 
-## Exact input pair — October27 preparation
+## Historical82 input pair — October27 preparation
 
 | Input | Version / SHA256 |
 | --- | --- |

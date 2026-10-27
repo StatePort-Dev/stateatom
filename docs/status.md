@@ -1,5 +1,22 @@
 # Project status
 
+[I02.29 canonical full native Capture driver accepted, bounded](completion/234-i02-full-capture-driver-migration.md).
+Host **cfa55437**, exact83/UI2: Chromium38/Google40 controls PASS, actual floating
+Stop/Cancel, popup/view lifecycle, resources, protected sign-in, exact Session,
+current/cold replay and native DevTools. Original FAIL2/import correction retained;
+affected selection RED→GREEN7, duplicate registration removed. No product/package
+change or V02/L02/full-I02 acceptance. Current full plan **21/29 (72.41%), eight open**.
+
+Next bounded item **V02.25**: source diagnosis using retained original82 performance
+MISS and current publisher/network implementation. No old measurement/model/device
+or CA/trust campaign restart. Overnight autonomy until09:00 Mauritius October28;
+local task/check/commit only, no publication or SDK.
+
+## Historical checkpoints
+
+The records below preserve their original results and next-item pointers at that
+time. The current item and whole-plan count are stated above.
+
 [I02.28 native DevTools control passed](completion/233-i02-native-devtools-control.md):
 Google35controls, one run/Chromium unselected; actual Elements before/during Capture
 keeps its native lease/isolate. Next bounded [I02.29 canonical full Capture driver

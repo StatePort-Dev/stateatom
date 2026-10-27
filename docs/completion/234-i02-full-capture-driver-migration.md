@@ -50,4 +50,42 @@ V02/21of29 stay unchanged even if this driver debt closes.
 
 ## Result
 
-Pending bounded migration and actual verification. No new full-feature acceptance.
+Closed bounded I02.29 at host **cfa55437**. Canonical native-capture.e2e now uses
+native-capture.e2e.fixture; duplicate registration retired, original source frozen
+in Git3f567f79/artifacts. Actual Chromium153 **38PASS**, GoogleChrome156 **40PASS**
+with native Elements before/during Capture. Original120s limits retained; second
+invocation2PASS/101.95s cases/104.53s total.
+
+Exact actual outputs under host artifacts/atom-host/i02-current83/:
+- full-native-chromium-2026-10-27T16-15-03-071Z/results.json
+- full-native-google-chrome-2026-10-27T16-15-53-795Z/results.json
+
+Host legacy-migration/checkpoint.json binds SHA256/raw evidence/driver identities;
+docs/agent/reports/2026-10-27-i02-canonical-native-capture.md records commands/limits.
+Original popup/selected worker, real view lifecycle, floating Stop/Cancel/removal,
+unrelated tab/password and scoped resources restored. Existing33 safe/native/
+auth/Journey/current+cold/reader/bridge controls retained. Interaction baseline
+explicit readonly Atom owner releases before Capture;20foreground raw samples
+include automation latency and are not comparable to old Playwright timings/V02.
+Popup/floating PNGs remain agent candidates; no normal toolbar/Store/human claim.
+Historical toolbar trigger itself was not the target of old popup assertions.
+Existing Store asset flag preserved but not invoked; no Store assets changed.
+
+First invocation FAIL2 is retained (16-12-24-770Z Chromium /16-13-28-619Z Google):
+Vitest rewrote serialized browser import() into __vite_ssr_dynamic_import__. Fixed
+only the own-extension call as a literal browser expression; both unmount/mount
+pairs awaited, one UI root and same Capture owner/isolate asserted. No app test
+session, unknown owner detach, command widening or threshold relaxation.
+
+Affected test selection also had a reproduced RED: shared fixture edits selected[]
+instead of the canonical test. .e2e.fixture.ts now selects the owning package;
+seven selection/shard controls PASS, discovery exactly2native cases. Source tsc
+PASS is extension production-source scope, not fixture type proof. Both native
+cases built and asserted exact83SHA; diff check PASS. Unique CA:FALSE fixture leaf
+asserted, never trusted/imported, private temporary key removed. No new CA campaign.
+
+No product/runtime/package changes, no model inference or performance acceptance.
+Full I02/L02/V02 and21/29 remain unchanged. One next bounded item: **V02.25** source
+diagnosis against retained82 original measurement and current network/publisher
+source. No old measurement/reader/model/device rerun; a new experiment would need
+its own concrete changed prerequisite and preserved original criteria.
