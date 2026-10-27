@@ -1,10 +1,15 @@
 # Project status
 
+[I01 separately authorized and started](completion/225-i01-authorized-host-intake.md).
+Hostf8040639/ad5b8046: exact82/UI2 archive-consumer4PASS; workspace frozen install
+blocked by narrow local-artifact age-policy/404, dependencies incomplete; host
+broker/lifecycle/build/native remain unfinished. Further I01 scope permission not needed.
+
 [Current release checkpoint](completion/224-night-release-checkpoint.md):20/29(~69%),
 9open; exact82/product327+archives current, no full-scope readiness or newfeature credit.
 
 Current: bounded L02.20 closed with incomplete native evidence; latest source8c78dcf.
-Next actual I01 host adaptation needs the separately requested scope approval.
+Historical checkpoint before host authorization: actual I01 scope was then pending.
 20of29 full tasks(~69%) accepted; no new feature acceptance from source-only fixes.
 
 L02.20 [ONE web readiness attempt INCOMPLETE](completion/223-l02-web-readiness.md).

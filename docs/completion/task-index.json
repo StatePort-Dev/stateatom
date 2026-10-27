@@ -6141,6 +6141,18 @@
         }
       },
       "current_preparation": {
+        "record": "225-i01-authorized-host-intake.md",
+        "status": "authorized-host-intake-partial-install-policy-blocked",
+        "host_commits": [
+          "f8040639",
+          "ad5b8046"
+        ],
+        "actual_intake_accepted": false,
+        "separate_host_scope_authorized": true,
+        "further_scope_permission_needed": false
+      },
+      "next_bounded_step": "Resolve exact local tarball age-policy mismatch, finish frozen install, then shared guardian/control-owner/inspector lifecycle and current official UI/Capture checks; already authorized.",
+      "historical_preparation_before_host_authorization": {
         "record": "221-i01-current82-handoff-preparation.md",
         "status": "handoff-prepared-not-host-intake",
         "candidate": "0.1.0-candidate.20261026.82",
@@ -6149,7 +6161,8 @@
         "actual_intake_accepted": false,
         "requires_separate_host_scope": true
       },
-      "next_bounded_step": "Separately authorized current82 host intake/adaptation and affected existing Capture/Atom checks; current Atom scope excludes other-repository mutation."
+      "current_checkpoint": "225-i01-authorized-host-intake.md",
+      "execution_record": "225-i01-authorized-host-intake.md"
     },
     {
       "id": "I02",
@@ -9228,8 +9241,8 @@
     "document": "144-v03-owned-editor-reply.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-19",
-    "current_increment": "L02.20-closed-native-incomplete-source-corrections-verified",
-    "next_item": "Actual I01 current82 official host adaptation per prepared task; separate other-repository scope question pending.",
+    "current_increment": "I01-authorized-host-intake-partial",
+    "next_item": "I01 exact local-file policy/install then current host guardian/lifecycle adaptation; separate scope already authorized.",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -9254,81 +9267,9 @@
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": {
-      "id": "L02.20",
-      "record": "223-l02-web-readiness.md",
-      "status": "closed-native-incomplete-source-corrections-verified",
-      "prepared_revision": "d82168e",
-      "case_sha256": "9aacf5f3e6d43ec8165fa4b1f4554fd243b27e641a1b7fa423628b35e2df8b54",
-      "frozen_inputs": 391,
-      "execution_revision": "57e95ef3ee44e78974509ac4555f14daaf4326d0",
-      "native_runs": 1,
-      "browser_launches": 1,
-      "availability_calls": 0,
-      "model_create_calls": 0,
-      "prompt_calls": 0,
-      "api_readiness": "Unknown/NotCollected",
-      "raw_sha256": "11b04e3518af3b5dbc5fb68c8abd778f22e209abb5f1d366c303a370de2ae3ba",
-      "first_reader_status": "SAVED_INCOMPLETE_WEB_READINESS_NOT_L02",
-      "qualification": false,
-      "raw_cleanup": {
-        "page": true,
-        "browser": false,
-        "connection": true,
-        "launcher": true,
-        "daemon": false,
-        "chromeLog": true,
-        "desktop": true,
-        "server": true,
-        "lease": true
-      },
-      "review_pending": false,
-      "review": {
-        "critical": 0,
-        "important": 2,
-        "minor": 1,
-        "acceptedImportant": [
-          "I1 owner-gated Browser.close",
-          "I2 late acquired resource disposal/explicit preserving connection timeout"
-        ],
-        "deferredHistoricalMinor": "M20 stale pending/current source pointers",
-        "deferredHistoricalTotal": 20
-      },
-      "correction_passes": 1,
-      "rereview": false,
-      "corrected_new_source_tests": 40,
-      "corrected_focused_checks": 84,
-      "corrected_full_checks": 5854,
-      "historical_native_bindings": {
-        "currentPhysical": 389,
-        "exactExecutionGit": 2,
-        "revision": "57e95ef"
-      },
-      "corrected_source_revision": "8c78dcf5575c611f7321ba479e9bf7195536d101",
-      "archive": {
-        "schema": "stateatom.web-readiness-review-closeout/1",
-        "archive": ".artifacts/l02/web-readiness-review/2026-10-27/workspace.zip",
-        "sha256": "3778cafd739ab9417e54908d9ef23acb2b043309d8a85bd799f01cda9f7bc0d9",
-        "files": 5,
-        "crcAndAllBytes": true,
-        "planIdentity": "docs/superpowers/plans/2026-10-27-l02-web-readiness.md",
-        "sourceRevision": "8c78dcf5575c611f7321ba479e9bf7195536d101",
-        "review": {
-          "critical": 0,
-          "important": 2,
-          "importantFixed": 2,
-          "minor": 1,
-          "historicalDeferredTotal": 20
-        },
-        "correctionPasses": 1,
-        "rereviews": 0,
-        "nativeRuns": 1,
-        "nativeRetries": 0,
-        "firstReaderReruns": 0,
-        "availabilityCalls": 0,
-        "modelCreateCalls": 0,
-        "promptCalls": 0,
-        "fullL02": false
-      }
+      "id": "I01",
+      "record": "225-i01-authorized-host-intake.md",
+      "status": "in-progress-install-policy-blocked"
     },
     "completed_increments": [
       {
@@ -12329,11 +12270,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Bounded20closed/source8c78dcf/ONEreview0C2Ifixed1M/40new84focused5854fullPASS/20historicaldeferred. Native1 incomplete before ownerattestation/availability0/model0; oldraw+FIRSTreader exact/current327+archives unchanged.20of29/fullL02 unchanged. ActualI01 awaits separate scope decision.",
+    "current_activity_note": "Hostf8040639/ad5b8046 exact82/UI2 intake preparation; clean archive consumer4PASS after recorded license correction; frozen workspace install rejected age-policy despite exact exclusions, dependencies incomplete/build+native unrun. No I01 acceptance,20of29 unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "8c78dcf5575c611f7321ba479e9bf7195536d101",
     "current_record_date": "2026-10-27",
-    "next_bounded_step": "Actual I01 current82 official host adaptation per prepared task; separate other-repository scope question pending.",
+    "next_bounded_step": "I01 exact local-file policy/install then current host guardian/lifecycle adaptation; separate scope already authorized.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
