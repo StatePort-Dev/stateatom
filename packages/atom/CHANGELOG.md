@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Reuse exact UTF8 byte lengths for frozen observation records while enforcing
+  the same complete JSON byte budget. Keep full serialization with inherited
+  custom JSON formatting; preserve all records, gaps, limits and stopped states.
+- Source operation counts and differential controls do not establish native
+  performance or change the previously accepted immutable candidate83.
+
 ## 0.1.0-candidate.20261027.83
 
 - Show the existing checking status while optional local-model metadata is pending;

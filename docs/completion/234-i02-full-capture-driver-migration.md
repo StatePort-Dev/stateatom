@@ -85,7 +85,14 @@ cases built and asserted exact83SHA; diff check PASS. Unique CA:FALSE fixture le
 asserted, never trusted/imported, private temporary key removed. No new CA campaign.
 
 No product/runtime/package changes, no model inference or performance acceptance.
-Full I02/L02/V02 and21/29 remain unchanged. One next bounded item: **V02.25** source
+Full I02/L02/V02 and21/29 remain unchanged. One next bounded item: **V02.26** source
 diagnosis against retained82 original measurement and current network/publisher
 source. No old measurement/reader/model/device rerun; a new experiment would need
 its own concrete changed prerequisite and preserved original criteria.
+
+Next-pointer correction: V02.25 was already completed in215. Distinct V02.26
+checks exact ledger byte sizing ([235](235-v02-ledger-byte-sizing.md)); no215 replay.
+
+Native raw records preserve tested base3f567f79/sourceDirtytrue; both exact captured
+entry/helper SHA256 match the later committed cfa55437 sources. The commit identifies
+the accepted code, not a fabricated clean-revision rerun.

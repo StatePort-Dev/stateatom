@@ -28,7 +28,21 @@ export function createProductionObservation(input){
  let sequence=0,lastClock=null;const pending=new Map();
  const empty=status=>({schema:'stateatom.production-observation/1',exportable:false,executable:false,status,windowId:null,identity:null,target:null,startedAt:null,endedAt:null,deadlineAt:null,lastObservedAt:null,stopReason:null,missingHistory:{before:true,after:true},causalDependency:'unknown',limits:{...limits},counts:counts(),gaps:gaps(),records:[]});
  let state=freeze(empty('not-recorded'));
- const size=s=>encoder.encode(JSON.stringify(s)).length;
+ // Rows are normalized internal data. Cache only immutable versions; a new
+ // mutable candidate must always be measured before commit freezes it.
+ const recordSizes=new WeakMap();
+ const size=s=>{
+  // Inherited custom JSON formatting may depend on array position/key. Retain
+  // complete serialization in that case; standalone cached rows are not equal.
+  if(Object.getPrototypeOf(Array.prototype)!==Object.prototype||Object.hasOwn(Object.prototype,'toJSON')||Object.hasOwn(Array.prototype,'toJSON'))return encoder.encode(JSON.stringify(s)).length;
+  let total=encoder.encode(JSON.stringify({...s,records:[]})).length;
+  for(const record of s.records){
+   let bytes=recordSizes.get(record);
+   if(bytes===undefined){bytes=encoder.encode(JSON.stringify(record)).length;if(Object.isFrozen(record))recordSizes.set(record,bytes);}
+   total+=bytes;
+  }
+  return total+Math.max(0,s.records.length-1); // Same JSON array comma bytes.
+ };
  function gap(kind){state=freeze({...state,gaps:{...state.gaps,[kind]:Math.min(MAX_COUNT,state.gaps[kind]+1)}});}
  function end(reason,at){pending.clear();state=freeze({...state,status:'stopped',stopReason:reason,endedAt:at,records:state.records.map(r=>r.kind==='network'&&r.completion==='pending'?{...r,completion:'unobserved'}:r)});return state;}
  function tick(){if(state.status!=='recording')return false;let at;try{at=now();}catch{return end('clock-invalid',null),false;}if(!date(at)||at<lastClock)return end('clock-invalid',null),false;lastClock=at;if(at>=state.deadlineAt)return end('time-limit',at),false;return true;}

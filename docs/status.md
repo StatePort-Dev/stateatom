@@ -1,16 +1,19 @@
 # Project status
 
-[I02.29 canonical full native Capture driver accepted, bounded](completion/234-i02-full-capture-driver-migration.md).
-Host **cfa55437**, exact83/UI2: Chromium38/Google40 controls PASS, actual floating
-Stop/Cancel, popup/view lifecycle, resources, protected sign-in, exact Session,
-current/cold replay and native DevTools. Original FAIL2/import correction retained;
-affected selection RED→GREEN7, duplicate registration removed. No product/package
-change or V02/L02/full-I02 acceptance. Current full plan **21/29 (72.41%), eight open**.
+[V02.26 exact ledger byte sizing source correction complete](completion/235-v02-ledger-byte-sizing.md).
+Seven new/169affected/**5868full source PASS**,30000differential comparisons exact;
+20request source witness630→79record serializations. One Important fixed with
+RED→GREEN. No fresh native performance proof; original28.1136/21.0570% MISS10% stays.
 
-Next bounded item **V02.25**: source diagnosis using retained original82 performance
-MISS and current publisher/network implementation. No old measurement/model/device
-or CA/trust campaign restart. Overnight autonomy until09:00 Mauritius October28;
-local task/check/commit only, no publication or SDK.
+Official host [I02.29](completion/234-i02-full-capture-driver-migration.md) remains
+accepted on immutable83/UI2, Chromium38/Google40 native controls. New producer
+ledger/changelog are not silently installed there. Full plan **21/29 (72.41%)**;
+eight open U04,A02,L02,I02,I03,V02,V03,V04. No whole-I02/L02/V02 credit.
+
+Next bounded **[V02.27 immutable84 package prerequisite](completion/236-v02-current84-local-package.md)**:
+clean deterministic local pack, exact admission/types, one existing13control input
+backend. No new CA/trust/model/measurement/SDK/publication or host upgrade. Overnight
+autonomy continues until09:00 Mauritius October28.
 
 ## Historical checkpoints
 
