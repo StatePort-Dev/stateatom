@@ -4,8 +4,11 @@ Latest official-host increment: [I02.36 exact local85↔86 reload/rollback](../c
 host223714a7, corrected actual7PASS/4wholeFAIL retained. Waiting rule retirement,
 local saved snapshot and enabled-target picker on unchanged app document only; no
 Store/Capture-in-progress/fullI02 credit. Current86/UI2 intake remains249. Full21/29
-unchanged. Next [A02.54 state weak-method dispatch](../completion/251-a02-state-weak-dispatch.md)
-is source-only, not a native/GC/model-install retry. Historical entries retain scope.
+unchanged. [A02.54 state weak-method dispatch](../completion/251-a02-state-weak-dispatch.md)
+closed source-only968f062/17new/56affected/5909full/ONEreview0C0I0M; no installed or
+native/GC claim. Next [V03.30](../completion/252-v03-current-development-plugin.md)
+is an existing-plugin local archive/separate consumer, no new SDK/host/native/model.
+Historical entries retain scope.
 
 Current approved-scope execution is tracked in [completion status](../status.md)
 and [V03.11](../completion/124-v03-warning-baseline.md): installed6 cold startup
