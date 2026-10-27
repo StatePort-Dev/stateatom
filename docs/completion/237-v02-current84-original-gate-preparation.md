@@ -33,3 +33,13 @@ promise of measured speedup. Do not start a wider browser/domain matrix.
 ## Result
 
 Pending source/reference/prerequisite inventory and frozen-case preparation.
+
+Source stage: new8harness controls first RED (missing new driver), then GREEN;
+30affected protocol/cleanup/source controls PASS2454.158078ms. Driver exact old82
+bytes after only comment/outputbase/schema/version substitutions; no workload/
+function/metric/cleanup changes. Native CLI source control intentionally refuses
+without a case before browser setup; its INCOMPLETE source output stays retained.
+Reader13purefunctions AST-exact,32negative source controls PASS; no first full-reader
+marker or measurement marker exists. Retained206TLS4hashes/chain/hostname/checkend3600
+PASS, expires2026-10-28T08:38:10Z; no new key/cert/import/browser. Package84/source327
+remain unchanged. Next freeze case/role mappings/input closure before actual gate.
