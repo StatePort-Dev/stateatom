@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Keep local model availability errors and unrecognized results Unknown, with the
+  template available. Explicit unavailable and supported availability states retain
+  their meaning; Unknown never starts model creation or a download. Private API
+  errors are not displayed. The owned waiting notice and generation limits are unchanged.
+
 ## 0.1.0-candidate.20261027.85
 
 - After30s of opt-in availability metadata waiting, show an Unknown status while

@@ -33,7 +33,8 @@ export function validateExplanation(raw,facts){
  return {summary:r.summary,evidenceIds:[...r.evidenceIds],limitations:[...r.limitations]};
 }
 export function ChromeBuiltInExplanation(model=globalThis.LanguageModel){
- async function availability(){try{if(!model)return 'unavailable';const a=await model.availability(options);return ['available','downloadable','downloading'].includes(a)?a:'unavailable';}catch{return 'unavailable';}}
+ // Unknown is our fail-closed state, not an extra native availability result.
+ async function availability(){try{if(!model)return 'unavailable';const a=await model.availability(options);return ['available','downloadable','downloading','unavailable'].includes(a)?a:'unknown';}catch{return 'unknown';}}
  async function explain(facts,{userActivation=false,allowDownload=false,signal,onProgress,onPhase,timeoutMs=30000}={}){
   const fallback=reason=>({...TemplateExplanation(facts),provider:'template',reason});
   if(!userActivation||signal?.aborted)return fallback('Local model was not started.');
@@ -41,7 +42,7 @@ export function ChromeBuiltInExplanation(model=globalThis.LanguageModel){
   const stopped=new Promise((_,reject)=>{controller.signal.addEventListener('abort',()=>reject(Error('Cancelled')),{once:true});timer=setTimeout(abort,Math.min(120000,Math.max(1,timeoutMs)));});
   try{
    onPhase?.('checking');
-   const state=await Promise.race([availability(),stopped]);if(state==='unavailable')return fallback('Local model unavailable.');if(state!=='available'&&!allowDownload)return fallback('Model download requires an explicit click.');
+   const state=await Promise.race([availability(),stopped]);if(state==='unavailable')return fallback('Local model unavailable.');if(state==='unknown')return fallback('Local model status unknown · showing the template.');if(state!=='available'&&!allowDownload)return fallback('Model download requires an explicit click.');
    onPhase?.(state==='available'?'initializing':'downloading');creating=true;
    const creation=model.create({...options,signal:controller.signal,monitor(m){m.addEventListener('downloadprogress',e=>{if(creating&&state!=='available'&&!controller.signal.aborted&&Number.isFinite(e.loaded))onProgress?.(Math.max(0,Math.min(1,e.loaded)));});}});
    Promise.resolve(creation).then(s=>{if(controller.signal.aborted)s.destroy();},()=>{});

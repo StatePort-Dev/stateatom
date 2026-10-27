@@ -73,7 +73,7 @@ export function createActionUI({document,$,rpc,cleanupRpc,tab,action,nativeSourc
     // This is an owned UI notice, not an API timeout, retry or device verdict.
     const notice={timer:null};availabilityNotice=notice;
     notice.timer=setTimeout(()=>{if(availabilityNotice!==notice)return;availabilityNotice=null;if(currentMetadata())$('action-local-status').textContent='Local model status unknown · template still available.';},30000);
-    void provider.availability().then(a=>{if(!currentMetadata())return;if(availabilityNotice===notice){clearTimeout(notice.timer);availabilityNotice=null;}$('action-local-status').textContent=a==='available'?'Local model available.':a==='downloadable'||a==='downloading'?'Explain simply starts/resumes the local model download; disk, CPU/GPU and battery may be used.':'Local model unavailable · using templates.';});
+    void provider.availability().then(a=>{if(!currentMetadata())return;if(availabilityNotice===notice){clearTimeout(notice.timer);availabilityNotice=null;}$('action-local-status').textContent=a==='available'?'Local model available.':a==='downloadable'||a==='downloading'?'Explain simply starts/resumes the local model download; disk, CPU/GPU and battery may be used.':a==='unavailable'?'Local model unavailable · using templates.':'Local model status unknown · template still available.';});
    }else $('action-local-status').textContent=$('action-explanation').textContent?'Recorded snapshot · template explanation; no new application action.':'Optional on-device English explanation · experimental; template always available.';
   };
  }

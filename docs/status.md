@@ -27,11 +27,17 @@ first2 controls from wholeFAIL3 plus separate worker-only2PASS; source suffixes 
 333inputs/current85/UI2 stable. History remains nonexecutable with unknown worker end;
 actual keyboard Read/Delete preserves app. No single wholePASS/fullI02 upgrade.
 
-Next bounded **[L02.26 availability Unknown](completion/247-l02-availability-unknown.md)**:
-fix source API errors/unrecognized metadata being reported as explicit unavailable;
-keep template/no create. No native/model/device/CA/performance campaign. Full **21/29
-(72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04. Local autonomy until09:00 Mauritius
-October28; no SDK/push/publication or mandatory human gate.
+[L02.26 source fix](completion/247-l02-availability-unknown.md): metadata errors and
+unrecognized results stay Unknown/template, never create/download. Explicit native
+states/absence unchanged. Corrected RED31/8→GREEN39, affected93/full5892PASS, one review
+0findings; source-rendered fake-provider390/1100 stable keyboard/type/geometry.
+Native/model0. Current source differs2of270source/3of327build from immutable85.
+
+Next bounded **[L02.27 local86 package](completion/248-l02-current86-local-package.md)**:
+clean exact metadata/pack/type2/admission9 and changed-payload classification.
+Official85/UI2 and historical proofs unchanged; no new native/model/CA/performance
+campaign. Full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04. Local autonomy
+until09:00 Mauritius October28; no SDK/push/publication or mandatory human gate.
 
 ## Historical checkpoints
 
