@@ -25,4 +25,8 @@ This source work does not establish why the original198row active median overhea
 was20.54356509/27.05667272%, does not show a real speedup and cannot satisfy10%target.
 Old84raw/case/readers/failed criteria/exhausted run budget stay unchanged. No native,
 model, GC, CA/TLS/trust, old experiment, package rebuild, host/SDK/publication here.
-Full21/29 remains72.41%. Implementation plan/registration next; not implemented yet.
+Full21/29 remains72.41%. Design ../superpowers/specs/2026-10-28-request-buffer-trimming-design.md;
+plan ../superpowers/plans/2026-10-28-request-buffer-trimming.md. Registered24inputs/
+327product/full36officialdist/current10payload before edits. First registration
+spawnSyncgitEPERM before any source/before-runtime/registration writes; rerun with
+subprocess permission succeeds. No browser/model/server. Not implemented yet.
