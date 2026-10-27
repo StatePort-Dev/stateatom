@@ -13,8 +13,10 @@ human-participant gates and initial-alpha exclusions do not override this scope.
 
 Current October27 checkpoint: **21/29(72.41%)**, official local85/UI2 at host1bad6331
 with [bounded native38/40Capture and7metadata UI controls](docs/completion/242-i02-current85-host-refresh.md).
-This does not completeL02/I02/V02 or certify release. Next consumer contextbar243;
-new-model/old-performance campaigns are not restarted. Separate explicit local
+Host2eb98f35 additionally has bounded contextbar243/handoff244/window245/history246
+proof. Local86 (248) corrects availability-error Unknown, type2/admission9PASS, runtime
+identical85. Next exact official refresh249/free model-disabled template; no old
+Capture/model/performance campaign replay. This does not completeL02/I02/V02 or certify release. Separate explicit local
 StatePort I01/I02 authorization is the sole other-repository exception.
 
 - L02 local AI and A05 bounded Action Trace are mandatory deliveries. A05 has its
