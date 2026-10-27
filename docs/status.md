@@ -11,11 +11,17 @@ actual native before/after5+5PASS; duplicate labels removed, Capture hint/naviga
 retained, +50.5px inspector height at390 with root13px/checked button28px unchanged.
 Build/types/package4+3PASS; same85/UI2. Agent screenshots remain candidates.
 
-Next bounded **[I02.32 official minimal handoff](completion/244-i02-official-minimal-handoff.md)**:
-existing reporter→separate clean passive reader via actual reviewed download/notes,
-without new UX/model/CA/Capture/performance. Full **21/29 (72.41%)**, eight open
-U04,A02,L02,I02,I03,V02,V03,V04. Autonomous local work until09:00 Mauritius October28;
-no SDK/push/publication and no mandatory human gate.
+[I02.32 ordinary handoff](completion/244-i02-official-minimal-handoff.md), host89710e68:
+actual readonly reporter/download from preserved wholeFAIL6 plus separate fresh
+recipient5PASS. Explicit composition, no single wholePASS. Words/privacy/Unknown,
+immutable source/parent and unverified note retained; passive storage/permissions
+unchanged, no external requests. Four preparation errors remain in raw evidence.
+
+Next bounded **[I02.33 owned observation](completion/245-i02-official-owned-observation.md)**:
+existing P04 Start→manual reproduction→Stop→review/download/passive reader on official85,
+controlled HTTP loopback only; no new model/CA/Capture/performance campaign or UX.
+Full **21/29 (72.41%)**, eight open U04,A02,L02,I02,I03,V02,V03,V04. Autonomous local work
+until09:00 Mauritius October28; no SDK/push/publication or mandatory human gate.
 
 ## Historical checkpoints
 
