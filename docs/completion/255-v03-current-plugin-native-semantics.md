@@ -47,4 +47,27 @@ Vite lifecycle docs fetched via Context7: official7.3.5API, confirmed installed7
 types for createServer/configFile/root/listen/httpServer/transformRequest/close.
 Spec ../superpowers/specs/2026-10-28-current-plugin-native-semantics-design.md;
 plan ../superpowers/plans/2026-10-28-current-plugin-native-semantics.md.
-Result pending. Full21/29 unchanged; no packet alone proves new capability.
+Preparation completed before any browser. Producer771a82c; exact10archive SHA256
+`a0a8c000b92abf00b0ed6c3cede5c3fd7984c3b78c04a6c9213b48dca1a6569f`;
+consumer `/tmp/stateatom-dev-plugin10-7HhSc1`, offline install/ci, package7PASS
+plus17state/13host authored controls. Full5925 inherited from source55, not rerun.
+Package result `.artifacts/v03/current-dev-plugin/package-check-fIGZHT/results.json`.
+
+Initial HTTP preparation stopped after Original compile: closing a cold Vite
+optimizer before static-import crawl completed produced canceled-build/unsettled
+await exit13. Raw preparing/driver/Original files retained under native-q6FiHb.
+Two later source/HTTP-only successful preparations native-wJf61X/native-YygdtW
+remain intermediate: final driver now admits only Vite-generated import cache-query
+changes across restarts; actual loaded bytes must still match the owned journal.
+Preflight/native module files use separate names and exclusive writes. No browser
+was used in these preparation steps. Vite waitForRequestsIdle documentation via
+Context7/installed7.3.7 source informed HTTP dependency settlement.
+
+Final HTTP-only preflight all3modes PASS: native-IdmV3y, log
+`.artifacts/v03/current-plugin10/2026-10-28/final-http-preflight.log`.
+Frozen case [current-plugin10-native-case.json](../testing/current-plugin10-native-case.json)
+registers driver/fixture/helper/lock/pinned React source/receipt/archive and full
+installed payload/official86distribution. It is local machine evidence, not a
+portable release fixture. All app state/trap counters remain authored synthetic.
+MaximumONE actual browser attempt pending after this clean preregistration commit.
+Full21/29 unchanged; no packet alone proves new capability.

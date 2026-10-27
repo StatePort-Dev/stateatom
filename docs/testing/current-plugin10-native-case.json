@@ -1,0 +1,296 @@
+{
+  "schema": "stateatom.current-plugin10-native-case/1",
+  "out": "/home/roman/projects/stateatom/.artifacts/v03/current-plugin10/native-IdmV3y",
+  "receipt": "/home/roman/projects/stateatom/.artifacts/development/2026-10-27T21-32-38-677Z/plugin-handoff.json",
+  "consumer": "/tmp/stateatom-dev-plugin10-7HhSc1",
+  "official": "/home/roman/projects/scenariodeck/apps/chrome-extension/dist",
+  "packageResult": "/home/roman/projects/stateatom/.artifacts/v03/current-dev-plugin/package-check-fIGZHT/results.json",
+  "package": {
+    "file": "/home/roman/projects/stateatom/.artifacts/development/2026-10-27T21-32-38-677Z/stateport-vite-plugin-0.1.0-candidate.20261028.10.tgz",
+    "sha256": "a0a8c000b92abf00b0ed6c3cede5c3fd7984c3b78c04a6c9213b48dca1a6569f",
+    "version": "0.1.0-candidate.20261028.10"
+  },
+  "packagePath": "/tmp/stateatom-dev-plugin10-7HhSc1/node_modules/@stateport/vite-plugin",
+  "payload": {
+    "LICENSE": "7839a054cc205ef0dc12a6b79f82254fe63852e8a1d827ec7e4e48ec0e1362b9",
+    "LICENSES/Apache-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "NOTICE": "eef979062fa71fd92c3d695ee41b796165fd9b7b93d75e46b9dbc527c78a6258",
+    "README.md": "78fdcee5cb8be22574ef3a2ef5e163df7d883b30e3508b1fb40ba6c7f819bd34",
+    "core/action-observation.mjs": "e4f4b0840c21ff95055456fce6d1da737955c56197d55cd6274ef8d915722909",
+    "dist/engine/action-observer.mjs": "7aae04323a90648a0c92a43bbcf6aac7bc4a6cecdc1c81105e72cd2ac0779c2f",
+    "dist/engine/observer.mjs": "441cd0f3e3c6cf70fd972550f264c8ed0d0244260cd2f7bc1fd8b29f626bc5d3",
+    "dist/engine/plugin.mjs": "44cb0a8ba84857a39390514d266afaa742d7b39eb492a2198c1d3db0358a0514",
+    "dist/engine/query-calls.mjs": "c993ca5491ef8be801e9ca02ce5bbb053b39ecd95fd3937b2612450e7845f222",
+    "dist/engine/query-handoff.mjs": "6de706c57dcce494d3795aef56452d95cc6d96d5696b19942540c16dca33cc24",
+    "dist/engine/react-state.mjs": "26b9e09120b1a02634424d09f908d85c3971bb82fd81f07a0dba0925af83b3b7",
+    "dist/engine/react19-acquisition.mjs": "20b86bcb2c649f411f3c358a90d25612a455bee4326c5ef54e40e3bfefb30012",
+    "dist/first-read/query-ledger.mjs": "c15b8d0e22b1c43206fbe994c14593b94aac52c05d9d6750a0a10095da02387b",
+    "dist/source-manifest.json": "f0aa7c63ca3f63339b0b612e2e41dc820263d04e0b063f926332fde20de8d11c",
+    "package.json": "eff34c6eaaa82f5343f88dc59529eac5581f7602c5c6092bceca00a157627927"
+  },
+  "officialInfo": {
+    "ui": {
+      "packageName": "@stateport/extension-ui",
+      "packageVersion": "0.2.0-candidate.20261018.2",
+      "uiContractVersion": "2.1.0",
+      "artifactSha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+      "sourceCommit": "9eafb0e131ffc3abf20c16f7636c65e64760b855",
+      "sourceDirty": true,
+      "sourceTreeDigest": "e361c3c7bb4b84ebce030e457e99d29e9c45e98e2a7c4a897eca948228007d3c",
+      "files": {
+        "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "NOTICE": "d1546935ddf0131576c017b5b35d59978514e06fe73274a446c74a0552b7185a",
+        "dist/components.css": "15cac0fbacb288be7e4483a1b177a1890d0235a3b6709aa6d0e5885b72db8282",
+        "dist/fonts.css": "5fffedd14436a23ab7ab2521a259ba8580034367467542f6887ccaf46c137ef0",
+        "dist/tokens.css": "4403b8a6da0e17ab23442397b20297bcaed1140be317ed93777d537a5c2986ac",
+        "contract.json": "34e32d44e35b0b26764037c07e024f8ec9ee6b3c569098739c8ac6b791a33880",
+        "package.json": "019825662990e6a93ef654f62eeaf67d3fa0f65ea940c4984228b7d2f3d4bd0e",
+        "assets/fonts/provenance.json": "4430cbb4abc59ad16b5df5879e87debd5be06e4477f16edf9689e9c0a977590c",
+        "CHANGELOG.md": "45884a83c14037c55af68dc9c2e305a4c28485158f0d7b1f9311946ed6b2b11b",
+        "README.md": "e8f06bb92026cd54da66db476c530f5bf01270252fd5b8cd0728e7da2b76cae1",
+        "assets/stateport-mark.svg": "d9cf5712f750cb5f8a0674368ca4dbe99052163bfcba8882e34cd9ec149de65d",
+        "assets/fonts/Inter-LICENSE.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "dist/assets/fonts/InterVariable.woff2": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3"
+      }
+    },
+    "atom": {
+      "packageName": "@stateport/atom",
+      "packageVersion": "0.1.0-candidate.20261027.86",
+      "artifactSha256": "914f331064c39f924248a3f2477ee12608b650991dbbdbe7b3cae1120cb0271c",
+      "uiArtifactSha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+      "sourceRevision": "1c3d5126aeda58d5f186e4caf3f767a8e64f87c8",
+      "sourceDirty": false,
+      "contract": {
+        "apiVersion": 1,
+        "wireVersion": 1,
+        "uiContract": "2.1.0",
+        "uiPackage": "0.2.0-candidate.20261018.2",
+        "storageNamespace": "stateport.atom.v1.",
+        "capabilities": [
+          "read",
+          "inject",
+          "reload",
+          "cache",
+          "override",
+          "replay"
+        ],
+        "origins": [
+          "http://localhost:<port>",
+          "http://127.0.0.1:<port>",
+          "http://[::1]:<port>"
+        ],
+        "capabilityVersion": 1,
+        "features": [
+          "capability-policy-v1",
+          "native-picker-v1",
+          "live-debugger-guardian-v1",
+          "source-analysis-worker-v1",
+          "source-parser-worker-v1"
+        ],
+        "featureDiscovery": {
+          "operation": "capabilities",
+          "requiredVersion": 1,
+          "notEvidence": "Admission and observation availability are separate from source/execution claims"
+        },
+        "sitePolicy": {
+          "scope": "exact scheme, host and port",
+          "default": "read-only",
+          "development": "explicit session connection with individual actions",
+          "production": "read-only by default; separate two-stage production input permission",
+          "helper": "canonical http://127.0.0.1:<port>, separate browser access",
+          "artifacts": "separate exact-origin browser permission"
+        },
+        "guardian": {
+          "protocolVersion": 1,
+          "authority": "live-memory-only",
+          "offscreenReason": "WORKERS",
+          "assets": [
+            "guardian.html",
+            "guardian.js",
+            "guardian-worker.js"
+          ],
+          "scope": "Resource admission and cleanup; not input or execution evidence"
+        },
+        "sourceAnalysis": {
+          "protocolVersion": 1,
+          "assets": [
+            "source-analysis-worker.js"
+          ],
+          "scope": "Explicit transient lexical source context only; no runtime values or execution",
+          "timeBudgetMs": 1500,
+          "resultBytes": 65536
+        },
+        "sourceParser": {
+          "protocolVersion": 1,
+          "assets": [
+            "source-parse-worker.js"
+          ],
+          "scope": "Private session-only artifact parsing in the owned offscreen document; no source execution or public validated-map input",
+          "mapTimeBudgetMs": 1500,
+          "archiveTimeBudgetMs": 2000,
+          "maxConcurrentJobs": 2,
+          "transportBytes": 33554432
+        }
+      },
+      "files": {
+        "LICENSE": "7839a054cc205ef0dc12a6b79f82254fe63852e8a1d827ec7e4e48ec0e1362b9",
+        "NOTICE": "9ef4cf51373f5e1977ca89a0fd9adaa896b5a2fde652973c9d7faecac3d5a2d3",
+        "dist/atom.css": "58c63727366d0c5951a7052b9a60ee672f74664ec7bb0a42f0c4a8fd84de0d42",
+        "dist/reader.css": "0577d319ba62955eeed9bc84725e994c1612d42ecbb8b2a18e2c13254bcc1f38",
+        "dist/atom-guardian.html": "70b71a19f37ae176c10eaa955e06298d9b67ee2a677b67bef6f742ed082e36c1",
+        "dist/reader.html": "9fdeb1fd1b4b2792dedbdd4485017199075c3bdf718077755ece8e66f600e4ec",
+        "dist/atom-guardian-worker.js": "db43b3101a08c3a6fa78467349372a622c1fded453a00c0f14003b7461163882",
+        "dist/atom-guardian.js": "d0ba0092ccc3d152766eb87f0c47bc149dd6d30d16eb2e013cff842de2bcf68a",
+        "dist/content.js": "023b0acb36e21679b053c304d5956dd172faf4288ebc40adc5b58cb6727ac838",
+        "dist/reader.js": "ca5752f072e476c4a6262fd7caa17aa28dfcd47868e6ab574f22b90c5ff78803",
+        "dist/source-analysis-worker.js": "1dfaffc2dffce72b935e646436166ae19d8ff87e1103d5b4d9d2e16467db7920",
+        "dist/source-parse-worker.js": "0f28111193035035bb7988a2d9c9659a093a93643385e22e0a377ad5031ce5a8",
+        "dist/browser-inputs.json": "c507ae026f0b9b875322ee3a9e8221f7885be0dbcbb7a1f5333fd2f45c200a73",
+        "contract.json": "ccfdac93efaf006eb3bf01e6e559c7ee8520bdd9c696fbbb9a486fb5a58d88fa",
+        "package.json": "80354d5205d60c528a094de37abdd38fc5eddd4edf2c7cf9fb2d43245fa05afa",
+        "dist/source-analysis-worker-inputs.json": "60c24dbdb5782ea20fa9bdbcbdf29bd5780d39ccaae2a6624d8988dc6fe3b6f1",
+        "dist/source-manifest.json": "87606d5b2ccc9f1c02546ce18109d1390c8d13242acab2daaa2413d2b78745c3",
+        "dist/source-parse-worker-inputs.json": "e9dae55bf7912fb069444951239e6b119692060291d869269509308c978cc4e7",
+        "CHANGELOG.md": "334552523afc14863da1a9fcaf76e8316a76c188602155b1adc48e5d1c735267",
+        "README.md": "39d167232fe5d40aa2d67ebb529610372c3de702b82eeb3bded670e9c933c5c5",
+        "dist/THIRD_PARTY_LICENSES.md": "76fe11294253f8d16558fa06ffcec9e46fc6d8f50a645527e729d73407513690",
+        "dist/platform.mjs": "07eb6b655f8e3a7052174874acc4fee74be8e9da863e2090be7840ae88c4dff8",
+        "dist/runtime.mjs": "1f7c4da8a0ab9a78a92ec27e647d7fc4e3cc8d94e3ff5a544bde251fa0fbd4b2",
+        "dist/transport.mjs": "ccf16b3ef0ba6f7da69f6d8b8fbe7d023601494679c3d2e019e4cdb29e7c7a8b",
+        "dist/ui.mjs": "0db2dc5e21678712637da880fed7d7b98c393d515caf382b59601a04c8a57972",
+        "dist/capabilities.d.ts": "3347cff38049d248a52f8fd456a5c1f7cab4e507001d28038ff6c37855364e7b",
+        "dist/platform.d.ts": "63427df8ad6a23353f09f631aee6d0b3f7bb5ebea0aed9a9209360a965e86d30",
+        "dist/runtime.d.ts": "020a8529ed9d4f6ebfb53593bf4af3c7eaa0685e2a51e6636c460cd477b6d0f7",
+        "dist/transport.d.ts": "33100b1e92cdd74a5503a958e10501827a000837a71fccb670880847d4557ae5",
+        "dist/ui.d.ts": "ceb97186a68ca60ed002e1d8101046f4bcabe57b37e5c9c7f2e68505b966bfc3",
+        "LICENSES/Apache-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+      }
+    },
+    "browserPackageInputs": [
+      "../../node_modules/.pnpm/@stateport+atom@file+third_party+atom+stateport-atom-0.1.0-candidate.20261027.86.tgz_@s_2943d1100860e94822ee6465a27bbfd8/node_modules/@stateport/atom/dist/runtime.mjs",
+      "../../node_modules/.pnpm/@stateport+atom@file+third_party+atom+stateport-atom-0.1.0-candidate.20261027.86.tgz_@s_2943d1100860e94822ee6465a27bbfd8/node_modules/@stateport/atom/dist/platform.mjs",
+      "../../node_modules/.pnpm/@stateport+atom@file+third_party+atom+stateport-atom-0.1.0-candidate.20261027.86.tgz_@s_2943d1100860e94822ee6465a27bbfd8/node_modules/@stateport/atom/dist/transport.mjs",
+      "../../node_modules/.pnpm/@stateport+atom@file+third_party+atom+stateport-atom-0.1.0-candidate.20261027.86.tgz_@s_2943d1100860e94822ee6465a27bbfd8/node_modules/@stateport/atom/dist/ui.mjs"
+    ],
+    "version": "0.1.0-beta.5",
+    "contract": "stateport-capture-bridge/5",
+    "developmentId": "hfaidliegcchcfpbjbjpenegcpbblohl",
+    "bundleBytes": 1445129,
+    "sourceTreeDigestMethod": "SHA-256 of JSON.stringify(sorted [repository-relative path, exact-file SHA-256] entries)",
+    "sourceTreeDigest": "5b3fb08444dd99af4c57e648a29f56e4027ba8ba8432cc8af1f3a0cc389e576d"
+  },
+  "distribution": {
+    "BUILD-INFO.json": "40047e29575a09a9d99c6ff5ec02bbb09c7e5933b9884648c7009caced1d5029",
+    "atom/LICENSE": "7839a054cc205ef0dc12a6b79f82254fe63852e8a1d827ec7e4e48ec0e1362b9",
+    "atom/LICENSES/Apache-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "atom/NOTICE": "9ef4cf51373f5e1977ca89a0fd9adaa896b5a2fde652973c9d7faecac3d5a2d3",
+    "atom/THIRD_PARTY_LICENSES.md": "76fe11294253f8d16558fa06ffcec9e46fc6d8f50a645527e729d73407513690",
+    "atom/atom.css": "58c63727366d0c5951a7052b9a60ee672f74664ec7bb0a42f0c4a8fd84de0d42",
+    "atom/content.js": "023b0acb36e21679b053c304d5956dd172faf4288ebc40adc5b58cb6727ac838",
+    "atom/contract.json": "ccfdac93efaf006eb3bf01e6e559c7ee8520bdd9c696fbbb9a486fb5a58d88fa",
+    "atom/reader.css": "0577d319ba62955eeed9bc84725e994c1612d42ecbb8b2a18e2c13254bcc1f38",
+    "atom/reader.html": "4a5883529dd53c2d1cbbe7c229b3573979f98a8d7bb6cbcd028abffbcc4a80b5",
+    "atom/reader.js": "ca5752f072e476c4a6262fd7caa17aa28dfcd47868e6ab574f22b90c5ff78803",
+    "atom-guardian-worker.js": "db43b3101a08c3a6fa78467349372a622c1fded453a00c0f14003b7461163882",
+    "atom-guardian.html": "70b71a19f37ae176c10eaa955e06298d9b67ee2a677b67bef6f742ed082e36c1",
+    "atom-guardian.js": "d0ba0092ccc3d152766eb87f0c47bc149dd6d30d16eb2e013cff842de2bcf68a",
+    "atom-host.css": "b6d1ada8b20858f4dcca9a92f94f4d2e930263a11e7375cac23974314349dfea",
+    "atom-page.js": "68d8d69f8011707420d02f870abbab9be70a883643a16b914f0a4acb9b81fcb1",
+    "atom.html": "d0eec8915ed857fb5e4b3b34bd3e41c214e82bcd806fbfd0006f32b9e716cb3c",
+    "extension-ui/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "extension-ui/NOTICE": "d1546935ddf0131576c017b5b35d59978514e06fe73274a446c74a0552b7185a",
+    "extension-ui/assets/fonts/Inter-LICENSE.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+    "extension-ui/assets/fonts/InterVariable.woff2": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3",
+    "extension-ui/components.css": "15cac0fbacb288be7e4483a1b177a1890d0235a3b6709aa6d0e5885b72db8282",
+    "extension-ui/contract.json": "34e32d44e35b0b26764037c07e024f8ec9ee6b3c569098739c8ac6b791a33880",
+    "extension-ui/fonts.css": "5fffedd14436a23ab7ab2521a259ba8580034367467542f6887ccaf46c137ef0",
+    "extension-ui/tokens.css": "4403b8a6da0e17ab23442397b20297bcaed1140be317ed93777d537a5c2986ac",
+    "icons/128.png": "5f59b966364c4e989f49472f1e03be734f7135062b98f58c054595a00ee440a8",
+    "icons/16.png": "f37e9f93cbe1600c9623e5476fa33867aa1420c9255b7e59e7479abb1758871a",
+    "icons/32.png": "b2477ed34eb96df60a0eb1c2916deb9c03a1bb56853a093207da79aeaae0d640",
+    "icons/48.png": "156484b67b641d072affd9d2fb99baa6507ede2f88ffed2bfd749fb86f2e434c",
+    "manifest.json": "b044dd95a84ec320c28f6395e8a1282a487b50cfe6960e052e266ae9b4bef139",
+    "popup.css": "61afe40108dc1b9ef5871d26c464831e31655d77de76d4b7efb113ca7978e8b1",
+    "popup.html": "b262cd01d4c8a40b2ec7399e8214810b94f2143e9996f1ae05bdd299d1085a1d",
+    "popup.js": "a727edd128b0a1297cf02bcbe9d52f4c6c9ebe13236f9ab354c5f9239b2b56d8",
+    "service-worker.js": "5f2b6bd632e7b987b39cb4a41111f82181853bd1ace9e1ba9ac3e6297c8ff7df",
+    "source-analysis-worker.js": "1dfaffc2dffce72b935e646436166ae19d8ff87e1103d5b4d9d2e16467db7920",
+    "source-parse-worker.js": "0f28111193035035bb7988a2d9c9659a093a93643385e22e0a377ad5031ce5a8"
+  },
+  "inputs": {
+    "/home/roman/projects/stateatom/scripts/native-browser.mjs": "449328d4858f058e0b75a4f82b56cee724c0b185f834d6e747890f513ed4747b",
+    "/home/roman/projects/stateatom/tests/helpers/native-inspector-ui.mjs": "2a82f3a643bbbacd9a6f8ed7e798f77b1416f110f1828ac23fd97b24bc8109b9",
+    "/home/roman/projects/stateatom/scripts/harness.mjs": "3796e76b60f450b46cde335521efb9fd1dcf3aa1305501f30c2af61627f2d7ec",
+    "/home/roman/projects/stateatom/scripts/atom-package-receipt.mjs": "f54a3c72c65b5f032a2936b0a216b2516016fa8c356388bf33dfc9397a0b4d7c",
+    "/home/roman/projects/stateatom/tests/integration/current-plugin-weak-dispatch.mjs": "c6a6f1bae8ed15106598e55ca064cc74f01610ade4b8d1af9b9e418721277aec",
+    "/home/roman/projects/stateatom/tests/fixtures/inspection/weak-state/index.html": "323c08cb2082fd620a15f45f4813db45aa6466126d58154ca9a5501f1de37d4d",
+    "/home/roman/projects/stateatom/tests/fixtures/inspection/weak-state/App.jsx": "fc67c6f6f20d0b23fee6324cf2475bc7f9c2e8645e076a71f87c371372011a78",
+    "/home/roman/projects/stateatom/.artifacts/development/2026-10-27T21-32-38-677Z/plugin-handoff.json": "4c9ac307750970272276ed9db5a608535d043c1d7f497162205179c6d87ed182",
+    "/home/roman/projects/stateatom/.artifacts/development/2026-10-27T21-32-38-677Z/stateport-vite-plugin-0.1.0-candidate.20261028.10.tgz": "a0a8c000b92abf00b0ed6c3cede5c3fd7984c3b78c04a6c9213b48dca1a6569f",
+    "/home/roman/projects/stateatom/.artifacts/v03/current-dev-plugin/package-check-fIGZHT/results.json": "fa3f2cd0009bd6f130d8a214c533fbc392b23a2e714e3344c0927c341c049385",
+    "/tmp/stateatom-dev-plugin10-7HhSc1/package-lock.json": "ab04f4b06611f817f3a8fd5db4d6030d87b0590b1b6014aba81c6bf3e88e9aea",
+    "/tmp/stateatom-dev-plugin10-7HhSc1/package.json": "12df2dedfe32f9645575d8a29e226b479e90b87334b29441460cad859f494d75",
+    "/tmp/stateatom-dev-plugin10-7HhSc1/index.html": "323c08cb2082fd620a15f45f4813db45aa6466126d58154ca9a5501f1de37d4d",
+    "/tmp/stateatom-dev-plugin10-7HhSc1/App.jsx": "fc67c6f6f20d0b23fee6324cf2475bc7f9c2e8645e076a71f87c371372011a78",
+    "/tmp/stateatom-dev-plugin10-7HhSc1/node_modules/react/package.json": "d4e68a5c96babb20cad1daafea8b78822eae45b341552cf5418d06a5304fa64c",
+    "/tmp/stateatom-dev-plugin10-7HhSc1/node_modules/react-dom/package.json": "d2f29e31bd48b833e48cd7bbf41f192e8ee4ff8da249fdbe10d4ac4114b8b12e",
+    "/tmp/stateatom-dev-plugin10-7HhSc1/node_modules/vite/package.json": "aae1f593c0e6f320989b60af6e90f8ed4ea5137e5a0b9db663f9b0088333eb3c",
+    "/tmp/stateatom-dev-plugin10-7HhSc1/node_modules/react/cjs/react.development.js": "1ff3a1d9861a87984329584fa1172aea920855d79eb57dae0d1cebe54093d7e3",
+    "/tmp/stateatom-dev-plugin10-7HhSc1/node_modules/react/cjs/react-jsx-runtime.development.js": "581f93fa33c32b3aa7ea35b85b80258922517de046f5447236047dcc2845d9ff",
+    "/tmp/stateatom-dev-plugin10-7HhSc1/node_modules/react/cjs/react-jsx-dev-runtime.development.js": "cd9394f47e01e9f1d87f7a8adcfc0ad8f8813d5c124ee74627791921f3277ac5",
+    "/tmp/stateatom-dev-plugin10-7HhSc1/node_modules/react-dom/cjs/react-dom.development.js": "1459b808bc6991de5a1ec3a86d8beee32dbb6c14282cf13f84e00dfebfbdc025"
+  },
+  "maxBrowserLaunches": 1,
+  "modes": [
+    "original",
+    "off",
+    "on"
+  ],
+  "configuration": {
+    "operator": "agent",
+    "syntheticReact18": true,
+    "actualReactDOMVersion": "18.3.1",
+    "Vite": "7.3.7",
+    "modelRequested": false,
+    "IDERequested": false,
+    "DesktopRequested": false,
+    "productionGrant": false,
+    "appTargetTestCDP": false,
+    "CA": false,
+    "TLS": false,
+    "wholeV03": false,
+    "fullA02": false,
+    "GCQualified": false,
+    "appConsole": "NotCollected; inspector page errors/console recorded",
+    "performance": false
+  },
+  "preparedAt": "2026-10-27T21:52:59.206Z",
+  "preparationRevision": "771a82c197c7c6ebb7d0d168109b70207dd21b8d",
+  "preflight": {
+    "original": {
+      "appUrl": "/App.jsx",
+      "appSha256": "528dbaadd01c28acc8cda69436b486fc350b46def6e76afad0716349cec81e54",
+      "appBytes": 5122,
+      "appWithoutViteCacheQuerySha256": "a16ca6a5fd80c77e795abe31b9883b8c8861067bda9c0b2f1b8a93e704797bf4",
+      "runtimeUrl": null,
+      "runtimeSha256": null
+    },
+    "off": {
+      "appUrl": "/App.jsx",
+      "appSha256": "01c8824de3f44c7c8b5a0384ef17259a6b2a687e9ac93ac233bd53dc542c0f19",
+      "appBytes": 5112,
+      "appWithoutViteCacheQuerySha256": "6bf5161a8929009bdcbd40b23a85791f51416ad8becb69375b8a5f32af3ece2e",
+      "runtimeUrl": null,
+      "runtimeSha256": null
+    },
+    "on": {
+      "appUrl": "/App.jsx",
+      "appSha256": "a4af5de760e4933034eb1d3480583af21ca3bacfcd0a7490d2988c6b4f556c82",
+      "appBytes": 62030,
+      "appWithoutViteCacheQuerySha256": "c89206a4988a73e4a6413ce4fd9ac77fc60289735f9e1d9d65b03ebd782627f3",
+      "runtimeUrl": "/@id/__x00__stateatom-runtime",
+      "runtimeSha256": "7144ab9384170ee8df69761c90caff10c556a55b777715ec956514d08fa5d5bd",
+      "runtimeBytes": 264378
+    }
+  }
+}

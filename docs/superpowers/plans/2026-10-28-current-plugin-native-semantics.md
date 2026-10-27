@@ -16,14 +16,14 @@ vacuous0getter pass; same-valued property cannot borrow prior revision; no app
 actions from picker/inspection; authored controls/counters never native attestation
 or complete lineage; one actual launch and scoped cleanup/failure semantics.
 
-- [ ] Register source55,9artifact/raw/consumer and current86/historical protections.
-- [ ] Unique10metadata/README, preserve old verifier and extend exact guard/current
+- [x] Register source55,9artifact/raw/consumer and current86/historical protections.
+- [x] Unique10metadata/README, preserve old verifier and extend exact guard/current
   package checks with13host test bodies/import-only adaptation. No product code edits.
-- [ ] Prepare new synthetic fixture/native driver; source/HTTP-only preflight and
+- [x] Prepare new synthetic fixture/native driver; source/HTTP-only preflight and
   meaningful admission controls before browser; no app source getter reevaluation.
-- [ ] Clean local producer commit; pack10once; separate offline install/ci and all
+- [x] Clean local producer commit; pack10once; separate offline install/ci and all
   original consumer criteria/17+13controls; compare delta9, no9rebuild.
-- [ ] Freeze exact case/compiled inputs/helpers/dist/lock and commit preregistration.
+- [x] Freeze exact case/compiled inputs/helpers/dist/lock and commit preregistration.
 - [ ] MaximumONE native browser Original/Off/On; retain actual errors/partials and
   cleanup, never retry native. Independent saved checks only for recorded scope.
 - [ ] ONE final review and at most one tested source I/C correction pass; no
