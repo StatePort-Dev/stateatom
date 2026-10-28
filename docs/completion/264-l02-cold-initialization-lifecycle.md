@@ -30,3 +30,44 @@ reissue, oldcase/fullreader/corpus retry or new performance gate. Later immutabl
 packaging/official host/native verification must be separate bounded dependencies.
 Old31failed initialization stays failed; source tests do not prove a ready/useful
 model. Original30corpus and20–30/>=25/5incomplete/5untrusted criteria unchanged.
+
+## Implemented source policy (not native acceptance)
+
+Plan `../superpowers/plans/2026-10-28-l02-cold-initialization-lifecycle.md`.
+Artifacts `.artifacts/l02/cold-initialization-lifecycle/2026-10-28/`.
+Engineering choice within this task: optional `coldInitializationTimeoutMs`, finite
+cap600000; existing product UI explicitly chooses300000 (5minutes). This is not
+claimed as a founder-approved timeout or platform prescription. Only native
+downloadable/downloading + allowDownload===true + explicit positive finite option
+uses it. Metadata and ready/default calls keep the original timeout; after extended
+cold creation, prompt receives a fresh original work timeout (UI120000). Maximum
+phases remain finite, Cancel remains effective, no retries or new native options.
+
+API lifecycle docs distinguish download, extraction/loading and usable session:
+[Chrome model download](https://developer.chrome.com/docs/ai/inform-users-of-model-download),
+[Prompt API](https://developer.chrome.com/docs/ai/prompt-api), read via Context7.
+They do not prescribe our5minute choice. Existing inference/corpus/quality and
+performance targets stay literal; old31timeout remains failed initialization.
+
+Timer rearming retains one abort controller. Phase-boundary cancellation now
+prevents the next availability/create/prompt even if a test API ignores signals;
+a settled prompt cannot override synchronous cancellation. Late sessions use
+per-request once-only destruction. These are explicit cleanup corrections, not
+a claim that every cancellation edge already behaved this way. English OPTIONS,
+prompt/schema/validation/template/facts/Unknown are byte-preserved outside allowed
+control changes. UI edit is one argument, all rendered text/styles unchanged.
+
+New15source tests include finite cap, long cold preparation, fresh prompt budget,
+ready/default/pending-metadata deadlines, no-download/no-activation/Unknown, phase
+cancel and late/double-destroy controls. Existing UI harness tests300s cold/120s
+warm with stored-state-only RPC. Full original source with complete controls:
+**RED28PASS/9FAIL**; after fix **99affectedPASS**, full configured `npm test`
+**5986PASS /163622.164027ms /exit0**. Initial smaller RED28/8 retained separately.
+Syntax/diff PASS. Post-suite1199protected inputs remain exact.
+
+Current tree intentionally differs from immutable87 in exactly2of270source and
+2of327build inputs; other268/325 remain exact. Archive87/UI2/current10, full official
+dist36, old raw/cases/readers and original30profile434files/3links preserved. No
+package reissue, host/native/model/profile/CA operation or old reader/corpus retry.
+ONE bounded final source review follows the local source commit. Full21/29 and
+ready-model/usefulness acceptance remain unchanged.

@@ -35,23 +35,32 @@ export function validateExplanation(raw,facts){
 export function ChromeBuiltInExplanation(model=globalThis.LanguageModel){
  // Unknown is our fail-closed state, not an extra native availability result.
  async function availability(){try{if(!model)return 'unavailable';const a=await model.availability(options);return ['available','downloadable','downloading','unavailable'].includes(a)?a:'unknown';}catch{return 'unknown';}}
- async function explain(facts,{userActivation=false,allowDownload=false,signal,onProgress,onPhase,timeoutMs=30000}={}){
+ async function explain(facts,{userActivation=false,allowDownload=false,signal,onProgress,onPhase,timeoutMs=30000,coldInitializationTimeoutMs}={}){
   const fallback=reason=>({...TemplateExplanation(facts),provider:'template',reason});
   if(!userActivation||signal?.aborted)return fallback('Local model was not started.');
-  let session,timer,creating=false;const controller=new AbortController(),abort=()=>controller.abort();signal?.addEventListener('abort',abort,{once:true});
-  const stopped=new Promise((_,reject)=>{controller.signal.addEventListener('abort',()=>reject(Error('Cancelled')),{once:true});timer=setTimeout(abort,Math.min(120000,Math.max(1,timeoutMs)));});
+  let session,timer,creating=false;const controller=new AbortController(),abort=()=>controller.abort(),destroyed=new WeakSet();signal?.addEventListener('abort',abort,{once:true});
+  let workBudget;const coldBudget=Number.isFinite(coldInitializationTimeoutMs)&&coldInitializationTimeoutMs>0?Math.min(600000,coldInitializationTimeoutMs):null;
+  const arm=ms=>{clearTimeout(timer);timer=setTimeout(abort,ms);},ensureLive=()=>{if(controller.signal.aborted)throw Error('Cancelled');};
+  const destroy=owned=>{if(!owned||!['object','function'].includes(typeof owned)||destroyed.has(owned))return;destroyed.add(owned);try{owned.destroy();}catch{/* Native abort may already have destroyed it. */}};
+  const stopped=new Promise((_,reject)=>{controller.signal.addEventListener('abort',()=>reject(Error('Cancelled')),{once:true});workBudget=Math.min(120000,Math.max(1,timeoutMs));arm(workBudget);});
+  void stopped.catch(()=>{});
   try{
-   onPhase?.('checking');
+   onPhase?.('checking');ensureLive();
    const state=await Promise.race([availability(),stopped]);if(state==='unavailable')return fallback('Local model unavailable.');if(state==='unknown')return fallback('Local model status unknown · showing the template.');if(state!=='available'&&!allowDownload)return fallback('Model download requires an explicit click.');
-   onPhase?.(state==='available'?'initializing':'downloading');creating=true;
+   ensureLive();
+   // Explicit product opt-in only: model download/extraction is preparation,
+   // separate from the existing warm/default and subsequent inference budget.
+   const separateCold=state!=='available'&&allowDownload===true&&coldBudget!==null;
+   if(separateCold)arm(coldBudget);
+   onPhase?.(state==='available'?'initializing':'downloading');ensureLive();creating=true;
    const creation=model.create({...options,signal:controller.signal,monitor(m){m.addEventListener('downloadprogress',e=>{if(creating&&state!=='available'&&!controller.signal.aborted&&Number.isFinite(e.loaded))onProgress?.(Math.max(0,Math.min(1,e.loaded)));});}});
-   Promise.resolve(creation).then(s=>{if(controller.signal.aborted)s.destroy();},()=>{});
-   session=await Promise.race([creation,stopped]);creating=false;onPhase?.('generating');
+   Promise.resolve(creation).then(s=>{if(controller.signal.aborted)destroy(s);},()=>{});
+   session=await Promise.race([creation,stopped]);creating=false;ensureLive();if(separateCold)arm(workBudget);onPhase?.('generating');ensureLive();
    const schema={type:'object',additionalProperties:false,required:['summary','evidenceIds','limitations'],properties:{summary:{type:'string',enum:facts.summaries},evidenceIds:{type:'array',const:[...facts.evidenceIds],items:{type:'string',enum:facts.evidenceIds.length?facts.evidenceIds:['unused']},maxItems:24},limitations:{type:'array',const:[...facts.limitations],items:{type:'string',enum:facts.limitations},maxItems:8}}};
    const raw=await Promise.race([session.prompt(buildExplanationPrompt(facts),{signal:controller.signal,responseConstraint:schema}),stopped]);
-   return {...validateExplanation(raw,facts),provider:'chrome-built-in'};
+   ensureLive();return {...validateExplanation(raw,facts),provider:'chrome-built-in'};
   }catch{return fallback(controller.signal.aborted?'Local explanation cancelled or timed out.':'Local model output unavailable or rejected; showing the template.');}
-  finally{creating=false;clearTimeout(timer);signal?.removeEventListener('abort',abort);try{session?.destroy();}catch{/* Already destroyed by abort. */}}
+  finally{creating=false;clearTimeout(timer);signal?.removeEventListener('abort',abort);destroy(session);}
  }
  return {availability,explain};
 }

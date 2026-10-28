@@ -83,3 +83,17 @@ test('explicit Explain clears metadata notice without shortening generation dead
  const clock=metadataClock(t),first=deferred(),ready=deferred(),s=sourceState();let checks=0,destroyed=0;const model={availability:()=>++checks===1?first.promise:Promise.resolve('available'),create:async()=>({prompt:()=>{ready.resolve();return new Promise(()=>{});},destroy(){destroyed++;}})},f=setup(async()=>s,model,t);f.ui.render(s);f.$('action-local-enabled').checked=true;f.$('action-local-enabled').onchange();const timer=noticeHandle(clock);assert(timer);
  const pending=f.$('action-explain').onclick();try{await ready.promise;assert(clock.clear.mock.calls.some(c=>c.arguments[0]===timer));assert(clock.set.mock.calls.some(c=>c.arguments[1]===120000));t.mock.timers.tick(30000);assert.match(f.$('action-local-status').textContent,/Generating/);first.resolve('unavailable');await flushAvailability();assert.match(f.$('action-local-status').textContent,/Generating/);}finally{f.$('action-cancel').onclick();await pending;}assert.equal(destroyed,1);
 });
+
+// Cold preparation is an explicit product policy; warm/default inference retains120s.
+test('product opts into a separate300s cold initialization without app refresh or new model prompt',async t=>{
+ const clock=metadataClock(t),s=sourceState(),ready=deferred(),creation=deferred(),calls=[];let prompts=0,destroy=0;const model={availability:async()=> 'downloadable',create(){ready.resolve();return creation.promise;}},f=setup(async m=>{calls.push(m);return s;},model,t);f.ui.render(s);f.$('action-local-enabled').checked=true;const pending=f.$('action-explain').onclick();
+ try{await ready.promise;assert(clock.set.mock.calls.some(c=>c.arguments[1]===300000));t.mock.timers.tick(120000);await flushAvailability();assert.match(f.$('action-local-status').textContent,/Downloading/);assert.equal(f.$('action-explain').disabled,true);assert.deepEqual(calls,[{op:'state',tabId:1,refreshDeep:false}]);}
+ finally{f.$('action-cancel').onclick();creation.resolve({prompt(){prompts++;return '{}';},destroy(){destroy++;}});await pending;await flushAvailability();}
+ assert.equal(prompts,0);assert.equal(destroy,1);
+});
+test('product warm model never arms cold300s budget and still expires at120s',async t=>{
+ const clock=metadataClock(t),s=sourceState(),ready=deferred();let destroy=0;const model={availability:async()=> 'available',create:async()=>({prompt(){ready.resolve();return new Promise(()=>{});},destroy(){destroy++;}})},f=setup(async()=>s,model,t);f.ui.render(s);f.$('action-local-enabled').checked=true;const pending=f.$('action-explain').onclick();
+ try{await ready.promise;assert(!clock.set.mock.calls.some(c=>c.arguments[1]===300000));t.mock.timers.tick(120000);await pending;assert.match(f.$('action-local-status').textContent,/cancelled or timed out/);assert.equal(f.$('action-explain').disabled,false);}
+ finally{f.$('action-cancel').onclick();await pending;}
+ assert.equal(destroy,1);
+});
