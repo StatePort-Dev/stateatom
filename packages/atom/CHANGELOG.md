@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Complete tab-list refresh status in the resulting selection context when the
+  previously selected tab has disappeared. Keep the empty selection and existing
+  pending-action/error guards; no automatic switch to another application.
+
 ## 0.1.0-candidate.20261028.89
 
 - Coalesce dirty observation-publication follow-ups through the existing nominal
