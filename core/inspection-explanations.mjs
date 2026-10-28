@@ -113,4 +113,26 @@ export function inspectionExplanationFacts(state={}, {question='property',histor
  if(question==='action')actionFacts(state,facts);else propertyFacts(state,facts);return finishFacts(facts);
 }
 export function diagnosticExplanationFacts(record){return inspectionExplanationFacts({selection:own(record,'target')},{historical:true});}
+// The existing validated selected closure, projected for the primary inspector.
+// Read locations are navigation targets, never write handles or inferred producers.
+export function inspectionDependencies(state={}){
+ const explanation=inspectionExplanationFacts(state);
+ const admitted=explanation.status==='Supported'?snapshotRoot(state):null;
+ const empty={status:explanation.status==='Stale'?'Stale':'Unavailable',expression:null,source:null,inputs:[]};
+ if(!admitted)return freeze(empty);
+ const {root,closure,location}=admitted,inputs=[],byId=new Map(closure.map(n=>[own(n,'id'),n])),seen=new Set();
+ const scalarRead=n=>['read','member','destructure'].includes(own(n,'kind'))&&own(n,'status')==='Observed'&&primitive(own(n,'value'))&&text(own(n,'expression'));
+ const record=n=>({id:own(n,'id'),expression:own(n,'expression'),status:'Observed',value:own(n,'value'),source:source(n),editable:false});
+ function upstream(n,records=[],visited=new Set()){
+  for(const id of list(own(n,'deps'),80)){if(visited.has(id))continue;visited.add(id);const child=byId.get(id);if(scalarRead(child))records.push(record(child));upstream(child,records,visited);}return records;
+ }
+ function visit(n){
+  if(!n||seen.has(own(n,'id')))return;seen.add(own(n,'id'));
+  if(scalarRead(n)){inputs.push({...record(n),upstream:upstream(n)});return;}
+  for(const id of list(own(n,'deps'),80))visit(byId.get(id));
+ }
+ visit(root);
+ for(const detail of explanation.details)if(detail.kind==='condition-input'&&detail.status==='Unavailable')inputs.push({id:'unavailable:'+inputs.length,expression:detail.expression,status:'Unavailable',source:null,editable:false});
+ return freeze({status:'Observed',expression:text(own(root,'expression')),source:location,inputs});
+}
 export function explanationIdentity(facts){return JSON.stringify({identity:facts.identity,status:facts.status,question:facts.question,evidenceIds:facts.evidenceIds,condition:facts.condition,details:facts.details,summaries:facts.summaries,limitations:facts.limitations});}

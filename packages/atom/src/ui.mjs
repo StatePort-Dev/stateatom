@@ -78,9 +78,9 @@ const actionsUI=createActionUI({document,$,rpc,cleanupRpc:m=>client.request(m),t
 const inputUI=createInputUI({document,$,client,preview:options.inputEditorPreview===true});
 let handoffUI;const observation=createObservationController({client,onChange:s=>handoffUI?.updateObservation(s)}),observationOwnerId=observation.snapshot().ownerId;
 const observationHistoryUI=createObservationHistoryUI({$,client});
-const propertyUI=createElementPropertiesUI({document,$,connectProject:()=>reveal('source-connection'),openSource:source=>action(async()=>{await rpc({op:'open',tabId:tab(),source});})});
+const propertyUI=createElementPropertiesUI({document,$,refresh:()=>$('load').click(),connectProject:()=>reveal('source-connection'),openSource:source=>action(async()=>{await rpc({op:'open',tabId:tab(),source});})});
 const explanationUI=createInspectionExplanationUI({document,$,onNext:id=>{if(id==='connect-project')reveal('source-connection');else if(id==='inspect-again')$('load').click();}});
-const productionUI=createProductionUI({$,client,onRefresh:load,prepareEnable:selectedRecovery,onEnabled:async recovery=>{if(await reconnectSelection(recovery,{readOnly:true}))await inputUI.open();},onAttach:async()=>{await rpc({op:'attach',tabId:tab(),readOnly:true});await load();},onConnection:()=>reveal('browser-connection')});
+const productionUI=createProductionUI({$,client,onRefresh:load,prepareEnable:selectedRecovery,onEnabled:async recovery=>{if(await reconnectSelection(recovery,{readOnly:true})){reveal('input-editing-details');await inputUI.open();}},onAttach:async()=>{await rpc({op:'attach',tabId:tab(),readOnly:true});await load();},onConnection:()=>reveal('browser-connection')});
 function lostConnection(){if(disposed)return;connectionLost=true;ownedPicker?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);inputUI.update(null);$('status').textContent='Inspector connection lost. Reopen this inspector to continue.';}
 const offConnection=client.subscribeConnection?.(lostConnection)||(()=>{});
 $('inspector-reconnect').onclick=()=>{if(typeof options.onReconnect==='function')void options.onReconnect();};
@@ -122,8 +122,8 @@ function renderInspection(){
  const readOnly=selectedState?.readOnly===true&&!selectedState?.productionChange?.active,https=(selectedState?.origin||selectedState?.connection?.origin||'').startsWith('https:');
  $('input-permissions').hidden=!readOnly||!editableFeature||editing.active||!!editing.draft?.dirtyCount;
  $('input-permissions').textContent=https?'Enable editing on this live site':'Switch to editing';
- $('input-permissions').onclick=()=>{if(https)return productionUI.requestEditing();return action(async()=>{const recovery=selectedRecovery();await rpc({op:'connect-site',tabId:tab(),connection:{origin:selectedState.origin||selectedState.connection.origin,mode:'development',actions:['override','replay']}});if(await reconnectSelection(recovery))await inputUI.open();});};
- $('input-editing-help').textContent=readOnly?(https?'This live site is read-only. Enable editing temporarily to try a change.':'Read-only mode is enabled for this page.'):(editing.active?'Applying can trigger app actions. Undo does not reverse server changes.':'Edit a page field, then check how this element responds.');
+ $('input-permissions').onclick=()=>{if(https)return productionUI.requestEditing();return action(async()=>{const recovery=selectedRecovery();await rpc({op:'connect-site',tabId:tab(),connection:{origin:selectedState.origin||selectedState.connection.origin,mode:'development',actions:['override','replay']}});if(await reconnectSelection(recovery)){reveal('input-editing-details');await inputUI.open();}});};
+ $('input-editing-help').textContent=readOnly?(https?'This live site is read-only. Enable editing temporarily to try a change.':'Read-only mode is enabled for this page.'):(editing.active?'Applying can trigger app actions. Undo does not reverse server changes.':'Explore page fields and responses. Their dependency on this element is not established.');
  $('actions-intro').hidden=hasTarget;
  $('actions-intro').textContent=hasTarget?'Explore handlers linked to this element. A source path is not proof that a handler ran.':'Select an element to explore its click handlers and supported interactions.';
  $('inspection-summary').textContent=view.summary;

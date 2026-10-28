@@ -307,3 +307,58 @@ static assets/notices retained, no official host mutation):
 control visibility and retained reference typography. These are agent-operated native
 checks and screenshot candidates, not human usability acceptance. The long packaged
 production expiry matrix is not rerun by these bounded source-runtime checks.
+
+## Dependency-first correction · 28 October
+
+The user's four-step purpose is now the primary hierarchy: select an element, see
+its dependencies, change influencing values, open their code. The prior screenshot
+exposed a product error: repeated DOM values plus an unrelated field catalogue did
+not implement that flow. This correction removes that catalogue from the primary
+screen. It does **not** claim that all four steps are implemented.
+
+1. Selection: one shared element header above the screens; no repeated DOM output
+   cards in Dependencies. Original Text/Disabled observations remain in Details.
+2. Dependencies: project only the existing validated selected computation closure.
+   Direct scalar reads are visible; upstream reads are nested. Missing/skipped values
+   stay unrecorded. A source-only match remains under Source, never a second invented
+   property expression. This fixed a native control where a disabled expression was
+   incorrectly repeated under Text by the earlier presentation fallback.
+3. Editing: **mechanism gap remains**. Existing adapters change native page controls
+   or future JSON responses. They do not supply a write handle for arbitrary observed
+   variable reads or prove their relation to a chosen control. Generic writers remain
+   under Actions → Other page values and are explicitly unlinked. Direct dependency
+   editing is stated unavailable; equal names/values are never treated as a binding.
+4. Source: expression and recorded input names navigate directly to their exact
+   source range. Actual VS Code Extension Host selection was verified, not a mocked
+   open callback alone.
+
+Reference: supplied Atom Inputs expression surface, operand rows, typography and
+shared controls. Deliberate changes are the element-level header, simultaneous scoped
+property groups, no repeated result value, nested upstream reads and secondary generic
+writers. No token/contract changes, simulated source proof or new framework support.
+
+Native source-runtime + real instrumented React + real VS Code:
+`/tmp/stateatom-dependencies/native-1793204665850/result.json` (3 scenario groups PASS).
+The actual selected condition is `creditHold || !canConfirm`: `creditHold=true` is
+observed, `canConfirm` is not read on this branch, and `data.risk.hold` is an upstream
+read. Current HTTP origin is not established by these records. The source click opens
+its precise range, and 360px/keyboard navigation passes. The initial native run
+`native-1793204424917` revealed the duplicated Text source fallback; retain its screenshot
+as control evidence. Final screenshot `04-final.png` is stable after reloading the final
+UI fix. One capture wait expected OK but startup uses Ready; diagnostic proved the
+product had settled, and the driver was corrected. The transient Working screenshot
+`03-open.png` is not the final visual evidence.
+
+Independent review found global stale state could be discarded while scoping a retained
+Observed property row. Regression reproduced RED, fixed, 90 focused checks GREEN.
+The controlled secondary editor passes 8 scenarios:
+`.artifacts/u02/input-fields-ui/2026-10-28T16-21-03-401Z/results.json`.
+`npm test`: final 6300 PASS, zero failures (216.5 seconds), log
+`/tmp/stateatom-dependencies/full-final.log`. Shared UI build-source check and diff
+check pass. Screenshots remain agent-reviewed
+candidates, not human usability acceptance. Only source bundles in an isolated extension
+were changed; immutable candidate90/official host and unrelated engine work stay separate.
+
+The next bounded product task is a real writable dependency binding for one supported
+path, with refresh/undo and exact selected-instance/source revision guards. A UI control
+or a matching field name cannot substitute for that mechanism.

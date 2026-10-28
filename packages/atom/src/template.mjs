@@ -28,7 +28,7 @@ const baseTemplate=`
  </details>
  </div>
  </div>
-<nav class="sp-subnav" aria-label="Inspector sections" role="tablist"><button id="inputs-nav" data-atom-id="inputs-nav" aria-current="location">Values</button><button id="actions-nav" data-atom-id="actions-nav">Actions</button><button id="source-nav" data-atom-id="source-nav">Source</button><button id="evidence-nav" data-atom-id="evidence-nav">Details</button></nav>
+<nav class="sp-subnav" aria-label="Inspector sections" role="tablist"><button id="inputs-nav" data-atom-id="inputs-nav" aria-current="location">Dependencies</button><button id="actions-nav" data-atom-id="actions-nav">Actions</button><button id="source-nav" data-atom-id="source-nav">Source</button><button id="evidence-nav" data-atom-id="evidence-nav">Details</button></nav>
 <div class="sp-extension-body sp-atom-scroll" id="scroll" data-atom-id="scroll" >
 <section id="getting-started" data-atom-id="getting-started" class="sp-atom-welcome" aria-label="Getting started"><p class="sp-atom-eyebrow">Inspect a page, one element at a time</p><h2 id="getting-started-title" data-atom-id="getting-started-title" class="sp-title">Start with a page</h2><p id="getting-started-help" data-atom-id="getting-started-help"></p></section>
 <details id="browser-connection" data-atom-id="browser-connection" class="sp-disclosure"><summary>Page connection</summary><section aria-label="Browser connection" class="sp-atom-toolbar sp-toolbar">
@@ -50,7 +50,7 @@ const baseTemplate=`
   <p class="sp-atom-hint sp-atom-values-note">Only available values from the selected computation are shown. Skipped branches and unsupported values stay unavailable.</p>
 </div>
 </section>
-  <details id="input-editing-details" data-atom-id="input-editing-details" class="sp-disclosure sp-atom-editing-entry" open><summary>Try a change</summary><p id="input-editing-help" data-atom-id="input-editing-help" class="sp-help"></p><button id="input-permissions" data-atom-id="input-permissions" class="sp-button-subtle" hidden>Enable editing on this live site</button>__INPUT_EDITOR__</details>
+
   <details id="explanation-details" data-atom-id="explanation-details" class="sp-atom-handoff-details" hidden><summary>How this answer is supported</summary>
   <div id="explanation-data" data-atom-id="explanation-data"></div></details>
  </section>
@@ -62,6 +62,7 @@ const baseTemplate=`
 </details>
 </section>
  <section id="actions-section" data-atom-id="actions-section" class="sp-atom-boundaries" aria-label="Action inspector" tabindex="-1">
+  <details id="input-editing-details" data-atom-id="input-editing-details" class="sp-disclosure sp-atom-editing-entry"><summary>Other page values</summary><p id="input-editing-help" data-atom-id="input-editing-help" class="sp-help"></p><button id="input-permissions" data-atom-id="input-permissions" class="sp-button-subtle" hidden>Enable editing on this live site</button>__INPUT_EDITOR__</details>
  <div class="sp-section-row"><h3 class="sp-section-title">Actions</h3><span id="action-evidence-kind" data-atom-id="action-evidence-kind" class="sp-atom-column-key"></span></div>
  <p id="actions-intro" data-atom-id="actions-intro" class="sp-help"></p>
  <p id="action-summary" data-atom-id="action-summary" class="sp-atom-hint"></p>
@@ -77,6 +78,7 @@ const baseTemplate=`
  </div>
  </section>
  <section id="evidence-section" data-atom-id="evidence-section" class="sp-atom-boundaries" aria-label="Evidence boundaries" tabindex="-1">
+<div class="sp-toolbar"><button id="diagnostic-toggle" data-atom-id="diagnostic-toggle" class="sp-button-secondary"><svg class="sp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 2H5v20h14V7l-5-5Zm0 0v6h5M8 12h8m-8 4h6"/></svg>Save report</button></div>
   <div class="sp-section-row"><h3 class="sp-section-title">Evidence</h3><span class="sp-atom-column-key">Selected snapshot</span></div>
   <p id="evidence-overview" data-atom-id="evidence-overview" class="sp-help"></p>
   <div id="element-property-evidence" data-atom-id="element-property-evidence" hidden></div><p id="primary-evidence-label" data-atom-id="primary-evidence-label" class="sp-atom-hint" hidden></p><details id="trace-summary-details" data-atom-id="trace-summary-details"><summary>Property trace and coverage</summary>
@@ -98,7 +100,7 @@ const baseTemplate=`
 <footer class="sp-extension-footer sp-atom-footer">
 <p id="freshness" data-atom-id="freshness" class="sp-atom-hint sp-atom-freshness">No observation yet.</p>
  <div class="sp-atom-footer-status"><p id="status" data-atom-id="status" role="status">Choose a local app and attach.</p><span id="connection-label" data-atom-id="connection-label">Not attached</span></div>
- <div class="sp-atom-footer-actions"><button id="inspector-reconnect" data-atom-id="inspector-reconnect" class="sp-button-primary" hidden>Reopen inspector</button><button id="load" data-atom-id="load" class="sp-button-secondary" disabled><svg class="sp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 10a9 9 0 1 1 2 9M3 4v6h6"/></svg>Refresh values</button><button id="diagnostic-toggle" data-atom-id="diagnostic-toggle" class="sp-button-secondary"><svg class="sp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 2H5v20h14V7l-5-5Zm0 0v6h5M8 12h8m-8 4h6"/></svg>Save report</button></div>
+ <div class="sp-atom-footer-actions"><button id="inspector-reconnect" data-atom-id="inspector-reconnect" class="sp-button-primary" hidden>Reopen inspector</button><button id="load" data-atom-id="load" class="sp-button-secondary" disabled><svg class="sp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 10a9 9 0 1 1 2 9M3 4v6h6"/></svg>Refresh values</button></div>
 
 </footer>
 <dialog id="export-review" data-atom-id="export-review" aria-labelledby="export-review-title"><h2 class="sp-title" id="export-review-title" data-atom-id="export-review-title">Review diagnostic export</h2><p id="export-summary" data-atom-id="export-summary"></p><p>Review URLs, paths, notes and application values for private information. You can edit or remove text below. Imported claims remain historical and unverified.</p><label>Exact JSON to download <textarea id="export-json" data-atom-id="export-json" rows="14" spellcheck="false" maxlength="1048576"></textarea></label><p id="export-review-status" data-atom-id="export-review-status" role="status"></p><button id="export-omit-content" data-atom-id="export-omit-content">Remove source and response excerpts</button><button id="export-cancel" data-atom-id="export-cancel">Cancel</button><button id="export-confirm" data-atom-id="export-confirm">Download reviewed JSON</button></dialog>

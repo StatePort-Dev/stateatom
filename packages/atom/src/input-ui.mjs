@@ -73,7 +73,7 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
   if(disclosure&&nextDisclosureState!==disclosureState&&(retained||s.opening))disclosure.open=true;disclosureState=nextDisclosureState;
   const openDecision=decision('inputs-open');
   const targetKey=JSON.stringify([state?.tabId,state?.run,state?.selection?.domIdentity,state?.property]);
-  if(disclosure&&openDecision?.available&&state?.selection&&targetKey!==disclosureKey){disclosureKey=targetKey;disclosure.open=true;}
+  if(targetKey!==disclosureKey)disclosureKey=targetKey;
   const heldClosed=!s.active&&!!d?.dirtyCount,selecting=['starting','picking','resolving'].includes(state?.picker?.status);
   $('input-open').disabled=selecting||s.opening||s.busy||s.connectionLost||heldClosed||!openDecision?.available;
   $('input-open').title=selecting?'Finish or cancel element selection before opening inputs.':heldClosed?'Discard the closed draft before opening another investigation.':openDecision?.reason||'Current capability policy is unavailable';

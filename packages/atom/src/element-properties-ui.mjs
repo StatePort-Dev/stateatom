@@ -1,32 +1,43 @@
 // SPDX-License-Identifier: Apache-2.0
 import {inspectionView} from '../../../browser-extension/inspection-view.mjs';
-import {inspectionExplanationFacts} from '../../../core/inspection-explanations.mjs';
+import {inspectionExplanationFacts,inspectionDependencies} from '../../../core/inspection-explanations.mjs';
 import {renderExplanationDetails} from './inspection-explanation-ui.mjs';
-export function createElementPropertiesUI({document,$,openSource,connectProject}){
+export function createElementPropertiesUI({document,$,openSource,connectProject,refresh=()=>{}}){
  let key,openDecision;
  const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
  function sourceRows(container,view){for(const source of view.sources){const b=el('button',source.file.split('/').at(-1)+':'+source.line,'sp-button-subtle');b.type='button';b.title='Code-linked · '+source.file+':'+source.line+':'+source.column;b.setAttribute('aria-label','Open in IDE: '+source.file+':'+source.line+':'+source.column);b.disabled=!openDecision?.available;if(b.disabled)b.title=openDecision?.reason||'Source opening unavailable';b.onclick=()=>{if(!b.disabled)openSource(source);};const line=el('div',undefined,'sp-section-row');line.append(b,el('span','Code-linked','sp-status'));container.append(line);if(source.expressions?.length)container.append(el('pre',source.expressions.join('\n'),'sp-code'));}}
+ function sourceLink(label,source,className='sp-atom-dependency-link'){
+  const b=el('button',label,className);b.type='button';b.disabled=!source||!openDecision?.available;
+  b.title=source?source.file+':'+source.line+':'+source.column:'Source location unavailable';
+  b.setAttribute('aria-label','Open in code: '+label+(source?' · '+b.title:''));
+  if(b.disabled)b.title=openDecision?.reason||'Source opening unavailable';b.onclick=()=>{if(!b.disabled)openSource(source);};return b;
+ }
  function render(state){
   const bundle=state?.elementInspection,visible=!!bundle&&(!!state.selection||!!state.stale)&&!['starting','picking','resolving'].includes(state.picker?.status);
   for(const id of ['element-properties','element-property-evidence','element-property-sources'])$(id).hidden=!visible;
   if(!visible){key=null;return false;}
-  openDecision=state.capabilityPolicy?.operations?.open;const next=JSON.stringify([bundle,openDecision]);if(key===next)return true;key=next;
-  const inputs=[],evidence=[],sources=[];
+  const globalStale=state.stale||state.analysis?.actionsInvalidated===true||state.analysis?.stateatom?.runtime?.status==='Stale';
+  openDecision=state.capabilityPolicy?.operations?.open;const next=JSON.stringify([bundle,globalStale,openDecision,state.run,state.sourceGeneration,state.inspectionGeneration,state.analysis?.capabilities,state.stale,state.selection,state.attached]);if(key===next)return true;key=next;
+  const inputs=[],evidence=[],sources=[];let missing=0,staleCount=0,recordedInputs=0;
   for(const row of bundle.properties){
-   const name=row.property==='text'?'Text':'Disabled attribute',stale=row.status==='Stale';
-   const scoped={attached:state.attached,selection:row.selection,analysis:stale?null:row.analysis,stale:stale?{target:row.selection,reason:row.reason}:null};
-   const view=inspectionView(scoped),facts=inspectionExplanationFacts(scoped),card=el('section',undefined,'sp-atom-property-card');card.setAttribute('aria-label',name);card.setAttribute('data-property',row.property);
-   const heading=el('div',undefined,'sp-section-row');heading.append(el('h3',name,'sp-section-title'),el('span',stale?(row.latestObservation?'Value checked':'Needs refresh'):row.selection?'':'Not recorded','sp-atom-column-key'));card.append(heading);
-   const value=row.latestObservation?row.latestObservation.value:row.selection?.value;
-   card.append(el('p',!row.selection?'Not recorded':row.property==='text'?(value===''?'Empty text':value):value?'Set':'Not set','sp-atom-property-value'));
-
-   if(stale&&!row.latestObservation||!row.selection)card.append(el('p',row.reason||'Inspect again to record this property.','sp-atom-hint'));
-   else if(facts.status==='Supported')card.append(el('p',facts.summaries[0],'sp-atom-property-answer'));
-
-   sourceRows(card,view);
-   if(view.operands.length){card.append(el('h4','Observed inputs','sp-atom-eyebrow'));const list=el('ul');for(const n of view.operands){const li=el('li',undefined,'sp-data-row');li.append(el('span',n.expression),el('code',JSON.stringify(n.value),'sp-value'));list.append(li);}card.append(list);}
-   inputs.push(card);
-   const group=el('details',undefined,'sp-disclosure');group.append(el('summary',name+' · '+row.status));const body=el('div');
+   const name=row.property==='text'?'Text':'Disabled attribute',stale=row.status==='Stale'||!!globalStale;
+   const scoped={...state,selection:row.selection,analysis:stale?null:row.analysis,stale:stale?{target:row.selection,reason:row.reason||state.stale?.reason||'Inspection changed; inspect again.'}:null};
+   const view=inspectionView(scoped),facts=inspectionExplanationFacts(scoped),dependencies=inspectionDependencies(scoped);
+   const card=el('section',undefined,'sp-atom-property-card');card.setAttribute('aria-label',name);card.setAttribute('data-property',row.property);
+   if(stale||dependencies.status==='Stale'){staleCount++;view.sources=[];}
+   if(dependencies.expression){
+    const heading=el('div',undefined,'sp-section-row');heading.append(el('h3',row.property==='text'?'Text':'Disabled','sp-section-title'),el('span',dependencies.status==='Observed'?'Recorded computation':'Code-linked','sp-atom-column-key'));card.append(heading);
+    card.append(sourceLink(dependencies.expression,dependencies.source,'sp-atom-dependency-expression'));
+    if(dependencies.inputs.length){const list=el('div',undefined,'sp-atom-dependencies');for(const input of dependencies.inputs){
+     const group=el('div'),line=el('div',undefined,'sp-data-row sp-atom-dependency');
+     line.append(input.source?sourceLink(input.expression,input.source):el('span',input.expression,'sp-atom-dependency-name'),el('code',input.status==='Observed'?JSON.stringify(input.value):'Not recorded','sp-value'));group.append(line);
+     if(input.upstream?.length){const chain=el('details',undefined,'sp-atom-dependency-origin');chain.append(el('summary','Upstream reads'));for(const read of input.upstream){const row=el('div',undefined,'sp-data-row sp-atom-dependency');row.append(read.source?sourceLink(read.expression,read.source):el('span',read.expression),el('code',JSON.stringify(read.value),'sp-value'));chain.append(row);}group.append(chain);}
+     list.append(group);
+    }card.append(list);recordedInputs+=dependencies.inputs.length;}
+    else card.append(el('p','No scalar inputs were recorded for this expression.','sp-atom-hint'));
+    inputs.push(card);
+   }else missing++;
+   const group=el('details',undefined,'sp-disclosure');group.append(el('summary',name+' · '+(stale?'Stale':row.status)));const body=el('div');
    if(row.selection)body.append(el('p','Recorded '+new Date(row.selection.observedAt).toLocaleTimeString()+' · '+row.property+' = '+JSON.stringify(row.selection.value),'sp-atom-hint'));
    if(row.latestObservation)body.append(el('p','Separately checked '+new Date(row.latestObservation.observedAt).toLocaleTimeString()+' · '+row.property+' = '+JSON.stringify(row.latestObservation.value)+'. Code explanation has not been refreshed.','sp-atom-hint'));
    if(row.property==='disabled')body.append(el('p','Native disabled attribute only; this does not establish whether the element can be clicked.'));
@@ -36,7 +47,11 @@ export function createElementPropertiesUI({document,$,openSource,connectProject}
    group.append(body);evidence.push(group);
    const locations=el('section',undefined,'sp-atom-property-card');locations.append(el('h4',name,'sp-section-title'));sourceRows(locations,view);if(!view.sources.length)locations.append(el('p',stale?'Snapshot is stale; inspect again.':'No source location linked to this property.','sp-atom-hint'));sources.push(locations);
   }
-  if(state.analysis?.capabilities?.sourceResolver!=='open-ide'&&!state.stale){const connect=el('button','Connect project to explain these values','sp-button-subtle');connect.type='button';connect.onclick=connectProject;sources.push(connect);}
+  if(!inputs.length){
+   const empty=el('section',undefined,'sp-atom-dependencies-empty');empty.append(el('h3',staleCount?'Refresh dependencies':'Dependencies not found','sp-title'),el('p',staleCount?'The page changed. Inspect this element again to update its expression and inputs.':'Atom can see the element, but has not linked it to the code that produces it.','sp-help'));
+   const connected=state.analysis?.capabilities?.sourceResolver==='open-ide';const action=el('button',staleCount?'Inspect again':connected?'Set up runtime inspection':'Connect project','sp-button-primary');action.type='button';action.onclick=staleCount?refresh:connectProject;empty.append(action);inputs.push(empty);
+  }else if(staleCount){const update=el('button','Refresh changed dependencies','sp-button-subtle');update.type='button';update.onclick=refresh;inputs.push(update);}else if(missing)inputs.push(el('p','Some element properties have no recorded dependency information.','sp-atom-hint'));
+  if(recordedInputs)inputs.push(el('p','Recorded inputs · click a name to open its code. Direct editing of these reads is not available.','sp-atom-hint'));
   $('element-properties').replaceChildren(...inputs);$('element-property-evidence').replaceChildren(...evidence);$('element-property-sources').replaceChildren(...sources);return true;
  }
  return {render};

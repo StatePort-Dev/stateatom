@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+- Put recorded dependencies first: one selected-element identity, exact property
+  expression, its scalar reads and direct source links. Nest upstream reads instead
+  of repeating them as peer values; keep skipped inputs explicitly unrecorded.
+- Do not label broad source matches as a selected property's computation. Show one
+  actionable empty state when no exact dependency record is available. Preserve
+  original DOM observations and source-only matches under Details and Source.
+- Move generic page/response editing to Actions → Other page values, collapsed by
+  default, and Save report to Details. These writers do not establish dependencies
+  and do not implement direct mutation of arbitrary observed variable reads.
+- Invalidate the property view on global staleness even when retained rows still
+  carry an Observed status; exact source buttons retain their original ranges.
+
 - Make canonical local HTTP development ready for supported edits after ordinary
   attachment, without a permission checklist, cache clearing or reload. Preserve
   explicit read-only settings and the separate scoped production confirmations.

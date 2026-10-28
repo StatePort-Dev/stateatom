@@ -260,3 +260,19 @@
 
 [data-sp-ui][data-atom-root] .sp-atom-edit-commit:has(button:not([hidden])) { position:sticky; bottom:0; z-index:2; padding:10px 0; margin:0; background:var(--sp-color-surface); border-top:1px solid var(--sp-color-border); }
 [data-sp-ui][data-atom-root] .sp-atom-input-meta:not(:has(button:not([hidden]))) { display:none; }
+
+/* Primary Atom flow: selected element -> expression -> recorded inputs -> code. */
+[data-sp-ui][data-atom-root] .sp-atom-dependency-expression { display:block; width:100%; margin:10px 0 4px; padding:12px; border:0; background:var(--sp-color-code-background); color:var(--sp-color-code-text); font:13px/1.6 var(--sp-font-mono); text-align:left; white-space:pre-wrap; overflow-wrap:anywhere; }
+[data-sp-ui][data-atom-root] .sp-atom-dependency-expression:hover { background:var(--sp-color-code-background); text-decoration:underline; }
+[data-sp-ui][data-atom-root] .sp-atom-dependency-expression:disabled { opacity:1; }
+[data-sp-ui][data-atom-root] .sp-atom-dependency { display:grid; grid-template-columns:minmax(0,1fr) minmax(48px,max-content); gap:16px; align-items:center; padding:12px 0; }
+[data-sp-ui][data-atom-root] .sp-atom-dependency-link { min-width:0; border:0; padding:3px 0; background:transparent; color:var(--sp-color-primary); font:12px/1.6 var(--sp-font-mono); text-align:left; overflow-wrap:anywhere; }
+[data-sp-ui][data-atom-root] .sp-atom-dependency-link:hover { background:transparent; text-decoration:underline; }
+[data-sp-ui][data-atom-root] .sp-atom-dependency .sp-value { max-width:180px; white-space:pre-wrap; overflow-wrap:anywhere; text-align:right; }
+[data-sp-ui][data-atom-root] .sp-atom-dependencies-empty { padding:12px 0 24px; }
+[data-sp-ui][data-atom-root] .sp-atom-dependencies-empty .sp-title { font-size:16px; }
+[data-sp-ui][data-atom-root] .sp-atom-dependencies-empty .sp-help { margin:12px 0 16px; }
+
+[data-sp-ui][data-atom-root] .sp-atom-dependency-name { font:12px/1.6 var(--sp-font-mono); overflow-wrap:anywhere; }
+[data-sp-ui][data-atom-root] .sp-atom-dependency-origin { padding-left:12px; border-left:2px solid var(--sp-color-border); border-bottom:0; margin:0 0 10px; }
+[data-sp-ui][data-atom-root] .sp-atom-dependency-origin > summary { padding:4px 0; }
