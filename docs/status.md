@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 helper route:** [checkpoint301](completion/301-a02-list-helper-native-case.md): authenticated workspace/native-context binding, inspector-owned list journal, historical invalidation and acquired JS/CSS server;46 route checks +21 guardian source checks PASS. Native startup exposed obsolete Playwright/target assumptions; no application or full-chain native acceptance. Continue current native transport integration; whole21/29 unchanged.
+
 **Latest A02 occurrence model:** [checkpoint300](completion/300-a02-selected-list-site-composition.md): original source catalogue, ordered write-to-selected-text model and owned-context composition;91affectedPASS. Runtime instances have distinct page IDs. Actual positive native composition/public UI/export and held-out qualification remain unexecuted; whole21/29 unchanged.
 
 **Latest A02 DOM boundary:** [checkpoint299](completion/299-a02-selected-text-mutation-interval.md): selected text mutations after the acquired React commit refuse the finite profile, including repeated-id reset protection.76affectedPASS; actual Chromium mutation/commit ordering remains unqualified.39-input compilation retained; helper/public/native/held-out acceptance still open, whole21/29.

@@ -17,7 +17,7 @@ async function fixture(t){
  const selection={selector:'#confirm',id:'confirm',tag:'button',classes:[],owners:[],text:'Confirm',property:'disabled',value:false,marker:file+':2:'+digest(text).slice(0,12)+':'+(text.split('\n')[1].indexOf('<button')+1),instance:'instance-A',page:'page-A'};
  const target={id:'target',file,sourceDigest:digest(text),kind:'target',expression:'flag',value:false,deps:['read'],line:2,column:1,status:'Observed'};
  const trace={status:'Observed',target,nodes:[target,{...target,id:'read',kind:'read',deps:[]}],page:'page-A'};
- return{root,file,text,trace,analyze:async deepTrace=>request('analyze',{origin:'http://localhost:5173',selection,deepTrace,samples:[],requests:[],run:'source-priority'})};
+ return{root,file,text,trace,bridge,analyze:async deepTrace=>request('analyze',{origin:'http://localhost:5173',selection,deepTrace,samples:[],requests:[],run:'source-priority'})};
 }
 test('actual helper binds late selected source and validates exact trace after160 unrelated files',async t=>{
  const f=await fixture(t),r=await f.analyze(f.trace);assert.equal(r.ok,true,r.error);assert.deepEqual(r.result.boundFiles,[f.file]);assert.equal(r.result.stateatom.runtime.status,'Observed');assert.equal(r.result.sources.length,1);assert.equal(r.result.sources[0].sourceDigest,digest(f.text));assert(r.result.sources[0].expressions.includes('flag'));
@@ -33,3 +33,6 @@ test('trace hint outside mapped sources remains unvalidated even inside workspac
  const f=await fixture(t),file='outside.js',text='export const privateValue = 0;';await writeFile(f.root+'/'+file,text);
  const r=await f.analyze({...f.trace,nodes:[...f.trace.nodes,{id:'outside',file,sourceDigest:digest(text),kind:'read',status:'Observed'}]});assert.equal(r.ok,true,r.error);assert.equal(r.result.stateatom.runtime.status,'Stale');assert(!r.result.boundFiles.includes(file));
 });
+test('actual helper refuses claimed list lineage without a locally bound owned context',async t=>{const f=await fixture(t),r=await f.analyze({...f.trace,listFieldObservations:{status:'Recorded',fullPath:true},listFieldContext:{status:'Owned list code context'}});assert.equal(r.ok,true,r.error);assert.equal(r.result.stateatom.selectedListProfile.status,'Unknown/Unsupported');assert.equal(r.result.stateatom.selectedListProfile.fullPath,false);});
+
+test('helper native binder rejects serialized context and page proof objects',async t=>{const f=await fixture(t);for(const cap of[{},null,{status:'Owned list code context',fullPath:true}])assert.throws(()=>f.bridge.bindListFieldContext(cap),/Owned list context/);});

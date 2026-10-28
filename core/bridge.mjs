@@ -1,5 +1,6 @@
 import {HELPER_ID,HELPER_VERSION,HELPER_PROTOCOL} from './project-connection.mjs';
 import {appOrigin} from '../packages/atom/src/origin-policy.mjs';
+import {verifyListFieldRoute,listFieldCodeContextView} from '../src/engine/list-field-code.mjs';
 import {verifyFirstRead} from "../src/first-read/verify.mjs";
 import {loadFirstReadCompilation} from "../src/first-read/profile-channel.mjs";
 import {sourceSlice,validateTrace} from "../src/engine/slice.mjs";
@@ -29,6 +30,8 @@ function sourceHints(selection,trace){
 }
 export function instrumentedSources(files,marker){const [file,,hash]=String(marker).split(':');return files.filter(f=>f.file===file&&digest(f.text).slice(0,12)===hash);}
 export function startBridge({root,port=47731,token,onOpen,onDefinitions,onReferences,isAllowed=()=>true}){
+ let listFieldContext=null;
+ const bindListFieldContext=capability=>{if(listFieldCodeContextView(capability).status!=='Owned list code context')throw Error('Owned list context required');listFieldContext=capability;};
  const cfg={port,token,extension:null},bindings=new Map(),helper={id:HELPER_ID,version:HELPER_VERSION,protocol:HELPER_PROTOCOL,session:randomUUID()},workspace={id:createHash('sha256').update(path.resolve(root)).digest('hex'),name:path.basename(root)};
  const server=http.createServer(async(req,res)=>{
   const origin=req.headers.origin;res.setHeader('Vary','Origin');
@@ -54,6 +57,7 @@ export function startBridge({root,port=47731,token,onOpen,onDefinitions,onRefere
      const bound=eligible.length>0;result=analyzeSources(eligible,{...body.selection,unbound:!bound},body.requests||[],{run:body.run,build:digest([...samples].sort().join(''))||'unbound',freshness:bound?'build-observed; source freshness per edge':'unbound'},{projectFiles:files});
      result.stateatom={target:targetIdentity(body.selection),runtime:validateTrace(files,body.deepTrace),slices:result.sources.map(source=>sourceSlice(files,source))};
      if(body.deepTrace?.firstReadObservations){const compilation=await loadFirstReadCompilation(root,body.origin);result.stateatom.firstReadCompilation=compilation;result.stateatom.firstReadProfile=verifyFirstRead({compilation,code:body.firstReadCode,trace:body.deepTrace,selection:body.selection,run:body.run});}
+     if(body.deepTrace?.listFieldObservations)result.stateatom.selectedListProfile=await verifyListFieldRoute(listFieldContext,{root,sourceRoot,origin:body.origin,extensionId:origin.split('://')[1],trace:body.deepTrace,selection:body.selection,code:body.firstReadCode,run:body.run});
      result.boundFiles=eligible.map(f=>f.file);result.bindings=eligible.map(f=>({file:f.file,method:body.selection.marker?'instrumented marker + source digest':sourceBinding(f.text,samples)}));
     }else if(op==='check-action-sources'){
      if(!Array.isArray(body.sources)||body.sources.length>32)throw Error('Action source budget');
@@ -70,5 +74,5 @@ export function startBridge({root,port=47731,token,onOpen,onDefinitions,onRefere
    if(!isAllowed())throw Error('Workspace trust revoked');res.setHeader('Content-Type','application/json');res.end(JSON.stringify({ok:true,result}));
   }catch(e){res.writeHead(403,{'Content-Type':'application/json'});res.end(JSON.stringify({ok:false,error:e.message}));}
  });
- return {server,cfg,helper,workspace,ready:new Promise((resolve,reject)=>server.once('error',reject).listen(port,'127.0.0.1',resolve)),close:()=>new Promise(r=>server.close(r))};
+ return {server,cfg,helper,workspace,bindListFieldContext,ready:new Promise((resolve,reject)=>server.once('error',reject).listen(port,'127.0.0.1',resolve)),close:()=>{listFieldContext=null;return new Promise(r=>server.close(r));}};
 }

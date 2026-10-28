@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 // Reuse only the existing complete code-history predicate and native provisioning
 // witness, never the React18/Query source/effect or occurrence proof.
+import path from 'node:path';
 import {joinListFieldObservations} from './list-field-join.mjs';
 import {checkFirstReadCode} from '../first-read/verify.mjs';
 import {isOwnedControlledBrowserWitness,controlledBrowserView} from '../first-read/controlled-session.mjs';
 import {listFieldEffectsView,validateListFieldEffects} from './list-field-effects.mjs';
-import {validateOwnedListFieldCompilation} from './list-field-compilation.mjs';
+import {validateOwnedListFieldCompilation,listFieldCompilationWorkspace} from './list-field-compilation.mjs';
 const contexts=new WeakMap();
 const unknown=reason=>Object.freeze({status:'Unknown/Unsupported',reason,fullPath:false,currentOwnership:'Unknown/Unsupported'});
 const identityKeys=['witnessId','targetId','extensionId','mainFrameId','contextUniqueId'];
@@ -58,4 +59,13 @@ export async function verifyListFieldSelection(capability,{trace,selection,code,
   code:{status:'Code-linked',journalId:interval.journalId,generation:interval.generation,frame:interval.frame,contextUniqueId:interval.contextUniqueId,witnessId:interval.witnessId,scope:interval.scope},
   scope:'Original reducer field creation to the captured selected committed text, under the finite reviewed source/effect and acquired code/DOM interval. Instrumented-page observations, not native invocation attestation.',
   limits:['Describes the captured inspection, not subsequent renders; re-inspect for a new revision.','No keystroke, HTTP/query or arbitrary application/field ownership claim.','Unknown code, source drift, missing references, changed selected text and unsupported native histories deny current authority.']};
+}
+
+// Local helper routing is bound to the same workspace/source tree and native
+// extension as issuance. Request JSON never supplies the capability itself.
+export async function verifyListFieldRoute(capability,{root,sourceRoot,origin,extensionId,...observations}={}){
+ const c=contexts.get(capability);
+ if(!c)return unknown('No owned list code context');
+ if(typeof root!=='string'||typeof sourceRoot!=='string'||path.resolve(root)!==listFieldCompilationWorkspace(c.compilation)||sourceRoot!==c.compilation.manifest.program.appRoot||origin!=='http://127.0.0.1:4173'||extensionId!==c.native.extensionId)return unknown('List context does not belong to this helper workspace, source mapping or extension');
+ return verifyListFieldSelection(capability,observations);
 }

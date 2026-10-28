@@ -58,3 +58,10 @@ test('event and target budgets stop further retention; close disposes retained s
  const ids=make();replay(ids);let count=0;while(count<200&&ids.observe('created',target('UI'+count++,'browser_ui','chrome://omnibox-popup.top-chrome/omnibox_popup_aim.html'))){}
  assert(count<200);assert.equal(ids.consistent(initial()),false);
 });
+
+const guardianURL=panelURL.replace('panel.html','atom-guardian.html'),guardianWorkerURL=panelURL.replace('panel.html','atom-guardian-worker.js');
+const guardian={documentId:'GUARDIAN',workerId:'GUARDIAN_WORKER',documentURL:guardianURL,workerURL:guardianWorkerURL};
+const currentInitial=()=>[...initial(),target('GUARDIAN','background_page',guardianURL),target('GUARDIAN_WORKER','worker',guardianWorkerURL,{parentId:'GUARDIAN',parentFrameId:'GUARDIAN'})];
+const currentHistory=(list=currentInitial())=>createTargetHistory({appId:'APP',panelId:'PANEL',workerId:'WORKER',panelURL,workerURL,initial:list,guardian,profile:'selected-list'});
+test('pre-acquired exact guardian IDs and parent relation permit current list route only',()=>{const list=currentInitial(),h=currentHistory(list);replay(h,list);for(const url of['http://127.0.0.1:4173/__stateatom/list-start','http://127.0.0.1:4173/list/']){list[0].url=url;assert(h.observe('changed',list[0]));assert(h.consistent(list));}list[0].url='http://127.0.0.1:4173/react/';assert.equal(h.observe('changed',list[0]),false);});
+test('guardian allowance never admits foreign, replaced, extra, wrong-parent or URL-less workers',()=>{for(const changed of[target('FOREIGN','worker',guardianWorkerURL,{parentId:'GUARDIAN',parentFrameId:'GUARDIAN'}),target('GUARDIAN_WORKER','worker',guardianWorkerURL,{parentId:'APP',parentFrameId:'APP'}),target('GUARDIAN_WORKER','worker','',{parentId:'GUARDIAN',parentFrameId:'GUARDIAN'}),target('GUARDIAN','background_page',guardianURL+'?changed')]){const h=currentHistory();replay(h,currentInitial());assert.equal(h.observe('created',changed),false);}for(const kind of['destroyed','crashed']){const h=currentHistory();replay(h,currentInitial());assert.equal(h.observe(kind,{targetId:'GUARDIAN_WORKER'}),false);}});

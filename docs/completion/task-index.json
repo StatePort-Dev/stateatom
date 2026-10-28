@@ -3312,22 +3312,23 @@
       },
       "active_slice": {
         "id": "A02.release-selected-list-integration",
-        "record": "300-a02-selected-list-site-composition.md",
-        "status": "in-progress-task3-occurrence-and-source-site-composition",
-        "affected_pass": 91,
+        "record": "301-a02-list-helper-native-case.md",
+        "status": "in-progress-task3-native-transport-integration",
+        "affected_pass": 67,
         "native_runs": 2,
         "new_native_runs": 0,
         "public_plugin_integrated": false,
         "runtime_premises_discharged": false,
         "full_A02": false,
         "review_pending": "one final whole-integration review",
-        "current_full_verification": "294 shared full failures retained; scoped missing checks passed; no new full run for this compiler-only increment",
+        "current_full_verification": "301 scoped route46 + guardian21 PASS; startup failures retained, no actual app composition or new full-suite claim",
         "compiled_inputs": 39,
         "bundle_sha256": "2f1ecdb42458e65f06166e7778057e9ab1f08f4db432115ab5e523f3b2c11a90",
         "held_out_effect_binding": false,
         "actual_native_code_context_qualified": false,
         "actual_dom_commit_ordering_qualified": false,
-        "actual_positive_helper_composition_qualified": false
+        "actual_positive_helper_composition_qualified": false,
+        "native_startup_attempts": 5
       },
       "historical_checkpoint_before_A02_51": {
         "active_slice": {

@@ -5,9 +5,9 @@ import path from 'node:path';import {createHash} from 'node:crypto';
 import {acquireOwnedCompilationTools} from '../first-read/build-profile.mjs';
 import {prepareListFieldProgram,bindListFieldModule} from './list-field-program.mjs';
 import {transformPinnedFieldVendor} from './react19-field-vendor.mjs';
-const sha=s=>createHash('sha256').update(s).digest('hex'),issued=new WeakMap(),LIMIT=2*1024*1024;
+const sha=s=>createHash('sha256').update(s).digest('hex'),issued=new WeakMap(),workspaces=new WeakMap(),LIMIT=2*1024*1024;
 const runtimeId='stateatom:owned-list-runtime';
-const LIST_BUILDER_PIN = '273fba5a84fbf74184eecb8d2ca00f7286fdad8da267da0f627eee0356e4a7a4';
+const LIST_BUILDER_PIN = '8ac98fb148aa0d2074c597acddac40ca5fc82929f90461966bcddb67714431d7';
 const LIST_RECIPE_PINS={
  "src/engine/react19-devtools-checks.mjs": "7bbe515a78d1313e75d8538a5909c6ac0684851fe447dad90dfdffe30ef39894",
  "src/engine/list-field-program.mjs": "89025f8d8f634e803979911744455441e45156c5540220c31d43c9c1853d738f",
@@ -25,6 +25,7 @@ const nativeFiles=new Set(['react/cjs/react.development.js','react/cjs/react-jsx
 const freeze=value=>{if(value&&typeof value==='object'){for(const child of Object.values(value))freeze(child);Object.freeze(value);}return value;};
 const relative=s=>typeof s==='string'&&s.length>0&&s.length<4096&&!s.includes('\\')&&!s.includes('\0')&&!path.isAbsolute(s)&&s.split('/').every(p=>p&&p!=='.'&&p!=='..');
 export const isOwnedListFieldCompilation=value=>value!==null&&typeof value==='object'&&issued.has(value);
+export const listFieldCompilationWorkspace=value=>issued.has(value)?workspaces.get(value):null;
 export async function validateOwnedListFieldCompilation(value){const check=issued.get(value);if(!check)return false;try{await check();return true;}catch{issued.delete(value);return false;}}
 export async function buildListFieldCompilation({projectRoot=process.cwd(),appRoot,entry,root,field,sources}={}){
  if(!relative(appRoot)||!relative(entry)||!relative(root?.file)||typeof root.export!=='string'||!Array.isArray(sources)||sources.length<1||sources.length>32||sources.some(s=>!relative(s))||new Set(sources).size!==sources.length||!sources.includes(root.file))throw Error('Bounded original source configuration required');
@@ -58,5 +59,5 @@ export async function buildListFieldCompilation({projectRoot=process.cwd(),appRo
  await tools.confirm([...records.values()]);
  const manifest={schema:'stateatom.list-field-compilation/1',programDigest:program.digest,program:{digest:program.digest,appRoot,root,field,modules:program.modules.map(({code,observers,...module})=>module)},bundle:{digest:sha(code),bytes:Buffer.byteLength(code)},assets:assets.map(({code,...meta})=>meta),cssReferences,compiler:{name:'esbuild',version:tools.version,options,...tools.compiler,externalImports:0},trust:{recipe:{builder:LIST_BUILDER_PIN,transforms:LIST_RECIPE_PINS},files:[...tools.files,...recipeRecords]},inputs:[...inputs.values()].sort((a,b)=>a.file.localeCompare(b.file)),scope:'Helper-owned compiled bytes only; source/native effects, complete browser journal and selected occurrence remain separate'};
  manifest.digest=sha(JSON.stringify(manifest));if(Buffer.byteLength(JSON.stringify(manifest))>256*1024)throw Error('Compilation metadata budget exceeded');
- const value=freeze({code,assets,manifest,fieldOwnership:'Unknown/Unsupported',fullPath:false,publicProduct:false});issued.set(value,()=>tools.confirm([...records.values()]));return value;
+ const value=freeze({code,assets,manifest,fieldOwnership:'Unknown/Unsupported',fullPath:false,publicProduct:false});issued.set(value,()=>tools.confirm([...records.values()]));workspaces.set(value,tools.root);return value;
 }

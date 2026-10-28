@@ -106,3 +106,5 @@ test('terminal cleanup independently aborts failed releases without recursive st
  assert.strictEqual(unit.stopTransport(s),stopped);assert.equal(s.transportTasks.size,0);
  assert.deepEqual(commands.map(c=>c.method),['Fetch.continueRequest','Fetch.failRequest','Fetch.disable']);
 });
+
+test('unsupported app profile is rejected before native startup with preserved local cause',async()=>{const {launchControlledFirstReadBrowser}=await import('../src/first-read/controlled-session.mjs');await assert.rejects(launchControlledFirstReadBrowser({appProfile:'arbitrary'}),e=>e.message==='Controlled first-read browser initialization failed'&&e.cause?.message==='Launch options denied');});

@@ -194,7 +194,7 @@ export async function controlledBrowserView(value){
  }catch{stopTransport(s);return null;}
 }
 
-export async function launchControlledFirstReadBrowser({projectRoot=process.cwd(),headed=true}={}){
+export async function launchControlledFirstReadBrowser({projectRoot=process.cwd(),headed=true,appProfile='first-read'}={}){
  let s,browser,cdp,panelCDP,closing;
  async function close(){
   if(closing)return closing;
@@ -212,7 +212,7 @@ export async function launchControlledFirstReadBrowser({projectRoot=process.cwd(
   })();return closing;
  }
  try{
-  if(typeof headed!=='boolean'||typeof projectRoot!=='string')throw Error('Launch options denied');
+  if(typeof headed!=='boolean'||typeof projectRoot!=='string'||!['first-read','selected-list'].includes(appProfile))throw Error('Launch options denied');
   const root=path.resolve(projectRoot);if(await realpath(root)!==root)throw Error('Workspace denied');
   const rootStat=await lstat(root);if(!rootStat.isDirectory()||!owned(rootStat))throw Error('Workspace denied');
   const output=await outputIdentity(root);
@@ -260,6 +260,8 @@ export async function launchControlledFirstReadBrowser({projectRoot=process.cwd(
   if(panel.url()!=='about:blank'||page.url()!=='about:blank')throw Error('Initial panel denied');
   await panel.goto(panelURL);
   panelCDP=await browser.context.newCDPSession(panel);
+  const {acquireGuardianTargets}=await import('./guardian-targets.mjs');
+  const guardian=await acquireGuardianTargets({cdp,extensionWorker:browser.worker,base:output.base,extensionId});
   const [appTarget,panelTarget,panelTree,inventory]=await Promise.all([cdp.send('Target.getTargetInfo'),panelCDP.send('Target.getTargetInfo'),panelCDP.send('Page.getFrameTree'),cdp.send('Target.getTargets')]);
   const panelInfo=panelTarget.targetInfo,panelFrame=panelTree.frameTree?.frame;
   if(page.url()!=='about:blank'||appTarget.targetInfo?.url!=='about:blank'||panel.url()!==panelURL||panelInfo?.type!=='page'||panelInfo.url!==panelURL||!safeString(panelInfo.targetId)||!panelFrame||panelFrame.url!==panelURL||panelFrame.parentId||panelTree.frameTree.childFrames?.length)throw Error('Native panel identity unavailable');
@@ -267,7 +269,7 @@ export async function launchControlledFirstReadBrowser({projectRoot=process.cwd(
   if(!Array.isArray(workers)||workers.length!==1)throw Error('Native worker identity unavailable');
   s.targetId=appTarget.targetInfo.targetId;
   const {createTargetHistory}=await import('./target-history.mjs');
-  s.targetHistory=createTargetHistory({appId:s.targetId,panelId:panelInfo.targetId,workerId:workers[0].targetId,panelURL,workerURL,initial:inventory.targetInfos});
+  s.targetHistory=createTargetHistory({appId:s.targetId,panelId:panelInfo.targetId,workerId:workers[0].targetId,panelURL,workerURL,initial:inventory.targetInfos,guardian,profile:appProfile});
   s.targetHandlers=[];
   for(const [event,kind] of [['Target.targetCreated','created'],['Target.targetInfoChanged','changed'],['Target.targetDestroyed','destroyed'],['Target.targetCrashed','crashed']]){
    const handler=e=>{if(!s.closed&&!s.targetHistory.observe(kind,e?.targetInfo??e))stopTransport(s);};
@@ -298,5 +300,5 @@ export async function launchControlledFirstReadBrowser({projectRoot=process.cwd(
   const witness=Object.freeze({});sessions.set(witness,s);
   if(!active(s))throw Error('Controlled browser revoked');
   return {browser,page,panel,runtime,witness,close};
- }catch{await close().catch(()=>{});throw Error('Controlled first-read browser initialization failed');}
+ }catch(error){await close().catch(()=>{});throw Error('Controlled first-read browser initialization failed',{cause:error});}
 }
