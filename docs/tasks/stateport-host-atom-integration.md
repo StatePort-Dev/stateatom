@@ -8,9 +8,12 @@ UI2same2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5.
 Handoff .artifacts/atom/2026-10-28T00-37-29-101Z/atom-handoff.json; clean20eccd8.
 No fullI02/L02/usefulness/normal-install/release acceptance. Original87cold timeout
 remains literal; minor rawfalse status-change flag retained with separate posthoc
-UI timing, no causal/perf claim. Full21/29, no SDK/publication. Next one
-[L02.34](../completion/267-l02-official-context-comparison-pilot.md) experimentalv2
-pilot on proven cached context; no automatic product selection or new host design.
+UI timing, no causal/perf claim. [L02.34](../completion/267-l02-official-context-comparison-pilot.md)
+now collected10model/24templates but semanticFAIL4scoped/6reject; v2still unselected.
+[L02.35](../completion/268-l02-official-warm-lifecycle.md) adds current88product warm
+cancel/stale/fresh UI controls, native API/destroy/late-return countsUnknown.
+Full21/29, no SDK/publication. Next one [V02.34](../completion/269-v02-active-overhead-diagnostic.md)
+scoped overhead diagnostic eligibility; no original gate retry or new host design.
 
 ## Historical current85 pointer
 

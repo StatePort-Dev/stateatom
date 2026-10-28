@@ -285,3 +285,10 @@ original>=25/useful/fullL02 criteria unmet. Source22/ONEreader/ONEreview0C0I1M r
 no product provider selection, old v1quality/history and closed budgets preserved.
 NextONE L02.35 actual existing product warm cancellation/stale-target/fresh recovery
 on same88/UI2, new owned clone/max1browser3enabledExplain; no prompt/corpus retry.
+
+L02.35 adds exact88real product warm UI controls: actualGenerating→cancel/stale
+selection,51samples/5.07s each with no sampled overwrite; new trusted request gets
+finite validated output4.19s. Native late-return/session-destroy/quality/offline/
+normal-install remain open.52source/full6005/ONEverifier/ONEreview0C0I2M preserved;
+whole21/29 unchanged. NextONE V02.34 scoped overhead diagnostic, not an original
+performance-gate rerun or target exception.

@@ -53,3 +53,72 @@ postrun verifier once:
 Both are hashed in the case. Exit0/signalnull/raw/source/case are required explicitly.
 Native result not presumed. Profile/model bytes remain ignored local artifacts,
 not Git payload. Model build identity stays Unknown.
+
+## Actual result and proof limits
+
+Clean source `5fa1cd01138830969dd501628c58d1890e4dbc34`, hostb9b6e23d unchanged,
+exact88/UI2/full36dist, Google156.0.8078.47. Sole native exit0/signalnull;
+raw `.artifacts/l02/official-warm-lifecycle/2026-10-28/native/results.json`, SHA256
+`777c3e2e17b67ca704922f0a033785dff4a9e0a08fdc670cfbeb679c1bb09ee3`.
+No unvisited controls. Initial metadata available; actual Generating observed before
+both interruptions and recovery. Trusted model-off Explain1, enabledExplain3,
+opt-in1/opt-out1 and Cancel1; all observed active/trusted. No app click/submit/call
+counter changes; own inspector console0/errors0, app/global console not collected.
+
+- Cancel:51identical UI samples,0.753–5070.872ms, largest adjacent gap102.701ms;
+  original template and Cancelled status retained.
+- Change target: original#confirm/nodecdp:28→#container/nodecdp:27 in documentcdp:2;
+  readonly,51identical new-target snapshots,0.561–5066.613ms, maxgap101.710ms.
+  No old explanation displayed at the sampled instants.
+- Recovery: reinspect original target; new trusted Explain/Generating then validated
+  finite product result in4185.640ms. Output equals the original template sentence;
+  it does not demonstrate extra usefulness or a selected v2provider.
+
+Actual late native response arrival/timing/rejection remains Unknown. This is no
+stale overwrite at the sampled points in finite5second windows, not proof of every
+instant or every possible later return. Source-linked epoch/controller guards and
+exact compiled UI support fresh recovery; independent native session correlation
+was not collected. Native availability/create/prompt/destroy counts remain Unknown,
+including native destruction; source max3 and UI3initiations cannot substitute.
+Whole recording lasts~55.9s, not an inference-only/cold/p95 measurement.
+
+Explicit opt-out/detach; driver/control/browser/desktop/server closures plus recorded
+browser PID absence all true. No global process/heap/network cleanup claim. Single
+frozen postrun verifier PASS: actual exit0/signalnull/raw/source/case,1997bindings,
+original604profile files3links/full36dist exact; no old readers executed. Source
+profile retained unchanged. Candidate screenshot is agent evidence, not human visual
+acceptance; only the scrolled status area is visible, not a complete answer demo.
+Native/verifier budgets1/1 consumed,0remaining. No download phase was observed;
+existing product requests still carry its original explicit allowDownload policy.
+No global offline/no-network proof is inferred.
+
+## Review and bounded closure
+
+ONE final bounded review:0Critical/0Important/2Minor, no correction/rereview.
+M1: pure qualifier permits sparse endpoints despite declared100ms polling. Actual
+streams have51samples and~102msmaximum gaps; retain actual streams rather than claim
+the qualifier universally enforces density. M2:300s total limit is cooperative,
+not a guaranteed outer wall-clock stop; actual55.9s run is within it. Both deferred,
+closed native case stays exact. Reviewer ran no tests/native/verifier or full rehash;
+saved executor preservation and fresh source checks remain separately identified.
+
+Declined judgments remain open: native API/destroy/heap/global-network proof; late
+response arrival/rejection outside sampled windows; offline device/normal installation/
+>=25quality/useful provider/model build/fullL02/I02; human visual acceptance and
+unrelated whole-project history. No scope threshold or original model/performance
+result changed. This bounded lifecycle item is complete, mandatoryL02 still open.
+
+Next ONE **V02.34**: a separately preregistered, bounded diagnostic of the existing
+current runtime's active-overhead hotspot using owned synthetic browser activity.
+Original87gate27.2227/27.3554% versus10% remains MISS and its1measurement/1FIRSTreader
+budget remains exhausted. Determine an eligible owned profiling mechanism/inputs
+first; at most one diagnostic collection, no old gate rerun, retune, acceptance
+waiver or guessed cause/speedup. No CA/trust/model/personal profile/SDK/publication.
+Full21/29 remains72.41%.
+
+Final executor checkpoint rechecks1997bindings/original604+3/full36/clean host;
+actual streams density separately calculated above. Own32file review/plan workspace
+archive CRC/everybyte/plan identity verified before only those owned workspaces were
+removed. `.artifacts/l02/official-warm-lifecycle-review/2026-10-28/workspace.zip`,
+SHA256 `371175c040db8419a3d74692a3fa8c72e32f1942caa1897f3b0b963c2730602d`.
+Native profile/weights remain separate ignored artifacts, not Git/archive payload.
