@@ -250,3 +250,60 @@ These are agent-operated checks and screenshot candidates. They do not establish
 human usability acceptance, new framework support, or new finite-trace capabilities.
 The runtime and inspection source files were compiled locally; no public package was
 published and no official host was updated.
+
+## Editing and permission recovery · 28 October
+
+The reported Save → Previous element/Page connection failure was reproduced with
+native Chromium against the preceding source candidate. Saving invalidated runtime
+scope but the UI only loaded the cleared state. Control screenshots:
+`/tmp/stateatom-editing-ux/before-1793201232144/03-after-save.png`.
+The preceding attempt lacked a trusted permission gesture; it is not product evidence.
+
+Changes follow the supplied Atom Inputs reference: shared font, white canvas, blue
+primary action, selected context and separated value rows. User-directed deviations
+are simultaneous native properties, real screens under the selected element and a
+progressively disclosed editor. Canonical HTTP loopback development has automatic
+supported edit capabilities, without cache/storage/reload grants. Explicit read-only
+configuration is respected; arbitrary remote sites are not inferred to be development.
+HTTPS remains read-only until the existing two scoped confirmations.
+
+Save and production enable now reconnect and re-inspect the same native document/node.
+Tab/epoch/origin changes and replacement reject recovery. Independent review found a
+stale-target tab-switch race and a delayed editing warning; both have regression tests.
+Values/Actions/Source/Details use ordinary language. CSS selection lives in Element
+details. Page fields and On Apply are defaults; alternate source, live mode and reset
+controls are under Editing options. Apply/Discard stay visible during scrolling.
+
+The native Apply check exposed a second defect: the real page changed Confirm→Ready,
+but the UI showed Previous element and old values. The new editor refresh records
+separate timed native values under `latestObservation`. It never refreshes the old
+source analysis, occurrence or causal claim. Replacement and detachment clear these
+updates. Details retain both the original value and the subsequent native read; saved
+v1 diagnostics deliberately retain the original historical record, not a new trace.
+Control evidence: `/tmp/stateatom-editing-ux/native-1793202202180/04-applied.png`.
+
+Final source-runtime checks (isolated extension from current source; frozen candidate90
+static assets/notices retained, no official host mutation):
+
+- Local native flow, 8 checks: `/tmp/stateatom-editing-ux/native-1793202956005/result.json`.
+  Default editing, exact-node settings recovery, inert draft, real Apply, current
+  native values, hidden setup, 360px overflow and keyboard tabs. Screens 01–05.
+- Synthetic HTTPS native flow, 9 checks:
+  `/tmp/stateatom-editing-ux/production-1793202990292/result.json`.
+  Two-step production enable returns directly to the same selected node and opens
+  fields; draft/Apply and narrow keyboard flow pass. Test-only TLS certificate and
+  browser-host preapproval are used; ordinary Chrome permission acceptance is not claimed.
+  The first driver attempt expected an obsolete button label and timed out; corrected
+  to the current label without changing product policy.
+- `npm test`: 6290 PASS, zero failures, final log
+  `/tmp/stateatom-editing-ux/full-final.log` (223.7 seconds, source HEAD `bc5bf5c`
+  plus scoped changes and pre-existing unrelated engine work).
+- Focused property/inspector regressions: 92 PASS; review regressions: 110 PASS.
+- Controlled editor renderer: 8 scenarios PASS, retained in
+  `.artifacts/u02/input-fields-ui/2026-10-28T15-41-18-908Z/results.json`.
+- Shared UI generated-source check, source transport declarations and diff check pass.
+
+440×900 and 360×800 renderings were inspected for hierarchy, spacing, value alignment,
+control visibility and retained reference typography. These are agent-operated native
+checks and screenshot candidates, not human usability acceptance. The long packaged
+production expiry matrix is not rerun by these bounded source-runtime checks.

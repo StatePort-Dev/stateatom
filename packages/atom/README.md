@@ -77,7 +77,10 @@ Trace, Live/Draft and production change enablement remained future required task
 The later guarded input workflow and separately enabled production permission
 are described below. Action Trace (A05) remains required future work.
 
-The default embedded host admits ordinary loopback HTTP sites read-only, with explicit development actions.
+Canonical loopback HTTP sites default to development read/inject and supported input
+editing after attachment; explicit read-only site settings take precedence. Ordinary
+attachment needs no cache/storage reset or reload permission. Remote sites are not
+inferred to be development. The UI defaults to page fields and explicit Apply.
 A host may explicitly set `readOnlySites:true` on both `createChromePlatform` and
 `createAtomRuntime` and supply `requestOriginPermission` through the `mountAtom`
 options object to enable permission-gated HTTPS inspection. The standalone host

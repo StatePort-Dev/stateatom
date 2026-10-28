@@ -57,7 +57,7 @@ export type AtomOperation=
  |{op:'cancel-pick';tabId:number;pickerId?:string}
  /** Native DOM identity/value guard only; deep refresh takes precedence. Render occurrence snapshots require deep refresh. */
  |{op:'state';tabId:number;ownerId?:string;observationOwnerId?:string;refreshDeep?:boolean;refreshIdentity?:boolean}
- |{op:'inspect-selector';elementProperties?:boolean;tabId:number;selector:string}
+ |{op:'inspect-selector';elementProperties?:boolean;expectedIdentity?:{document:string;node:string};tabId:number;selector:string}
  |{op:'refine-pick';elementProperties?:boolean;tabId:number;pickerId:string;index:number}
  |{op:'selected';tabId:number;selector:string;token:string;documentId?:string}
  |{op:'property';tabId:number;property:'text'|'disabled'}

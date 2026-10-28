@@ -3,7 +3,7 @@
 const sameNode=(a,b)=>!!a&&!!b&&a.document===b.document&&a.node===b.node;
 const same=(a,b)=>sameNode(a,b)&&a.property===b.property&&a.value===b.value;
 export const hasDisabledProperty=tag=>['button','input','textarea','select','option','optgroup','fieldset'].includes(tag?.toLowerCase());
-export function staleElementProperties(bundle,reason){return bundle?{...bundle,properties:bundle.properties.map(({analysis,...row})=>({...row,status:'Stale',reason}))}:null;}
+export function staleElementProperties(bundle,reason,{preserveLatest=false}={}){return bundle?{...bundle,properties:bundle.properties.map(({analysis,latestObservation,...row})=>({...row,...(preserveLatest&&latestObservation?{latestObservation}:{}),status:'Stale',reason}))}:null;}
 export async function collectElementProperties({selection,analysis,identify,observe,resolve,isCurrent,now=Date.now}){
  const properties=[{property:selection.property,status:'Observed',selection,analysis}];
  const guard=async()=>{if(!isCurrent()||!same(selection.domIdentity,await identify(selection.property))||!isCurrent())throw Error('Element changed during property inspection; inspect again');};
@@ -27,19 +27,23 @@ export async function collectElementProperties({selection,analysis,identify,obse
  }
  await guard();return {schemaVersion:1,properties:properties.sort((a,b)=>a.property==='text'?-1:b.property==='text'?1:0)};
 }
-export async function refreshElementProperties(bundle,identify,isCurrent){
+export async function refreshElementProperties(bundle,identify,isCurrent,{recordLatest=false,now=Date.now}={}){
  if(!bundle)return null;const rows=[];
  for(const row of bundle.properties){
-  if(row.status!=='Observed'){rows.push(row);continue;}
+  if(!row.selection||row.status!=='Observed'&&!recordLatest){rows.push(row);continue;}
   const current=await identify(row.property);if(!isCurrent())throw Error('Element changed during property refresh');
   if(current&&!sameNode(row.selection.domIdentity,current))return staleElementProperties(bundle,'Selected element was replaced; inspect again.');
-  rows.push(same(row.selection.domIdentity,current)?row:{property:row.property,status:'Stale',selection:row.selection,reason:'This value changed or became unavailable; inspect again.'});
+  const {latestObservation:previous,...original}=row;
+  const refreshed=same(row.selection.domIdentity,current)?original:{property:row.property,status:'Stale',selection:row.selection,reason:'This value changed or became unavailable; inspect again.'};
+  // A separate native read, never a refreshed source explanation or render occurrence.
+  rows.push({...refreshed,...(recordLatest&&current?{latestObservation:{value:current.value,observedAt:now(),document:current.document,node:current.node}}:{})});
  }
+ if(recordLatest){const anchor=rows.find(row=>row.latestObservation);if(anchor){const current=await identify(anchor.property);if(!isCurrent())throw Error('Element changed during property refresh');if(!sameNode(anchor.selection.domIdentity,current))return staleElementProperties(bundle,'Selected element was replaced; inspect again.');}}
  return {...bundle,properties:rows};
 }
 export function projectElementProperties(state){
  const bundle=state.elementInspection||state.stale?.elementInspection;if(!bundle)return null;
  const changed=state.inputEditedInspection===state.inspectionGeneration&&state.inspectionGeneration!==undefined||state.observationStaleInspection===state.inspectionGeneration&&state.inspectionGeneration!==undefined||bundle.sourceGeneration!==undefined&&bundle.sourceGeneration!==(state.sourceGeneration||0);
- if(!state.selection||state.stale||changed)return staleElementProperties(bundle,changed?'Inputs, observation or source changed; inspect again.':state.stale?.reason||'Historical observation; inspect again.');
+ if(!state.selection||state.stale||changed)return staleElementProperties(bundle,changed?'Inputs, observation or source changed; inspect again.':state.stale?.reason||'Historical observation; inspect again.',{preserveLatest:!!state.selection&&!state.stale});
  return bundle;
 }

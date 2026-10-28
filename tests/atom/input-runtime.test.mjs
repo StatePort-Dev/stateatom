@@ -121,3 +121,6 @@ test('active editor refresh retires a changed secondary property while preservin
 });
 
 test('a disabled experiment outcome does not block ordinary inspection of a paragraph',async t=>{const f=fixture({tag:'p'});t.after(()=>f.runtime.shutdown());await f.request({op:'attach'});await f.request({op:'property',property:'disabled'});await f.request({op:'inspect-selector',selector:'#confirm',elementProperties:true});const s=await f.request({op:'state'});assert.equal(s.property,'text');assert.equal(s.elementInspection.properties.length,1);assert.equal(s.elementInspection.properties[0].selection.value,'Confirm');});
+test('reconnect inspection refuses a same-selector replacement and accepts the original native node',async t=>{
+ const f=fixture();t.after(()=>f.runtime.shutdown());await f.request({op:'attach'});await f.request({op:'inspect-selector',selector:'#confirm',elementProperties:true});const old=(await f.request({op:'state'})).selection.domIdentity,expectedIdentity={document:old.document,node:old.node};await f.request({op:'inspect-selector',selector:'#confirm',elementProperties:true,expectedIdentity});f.setNode(777);await assert.rejects(f.request({op:'inspect-selector',selector:'#confirm',elementProperties:true,expectedIdentity}),{code:'SELECTION_EXPIRED'});assert.equal((await f.request({op:'state'})).selection,null);
+});

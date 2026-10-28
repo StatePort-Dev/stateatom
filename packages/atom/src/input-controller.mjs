@@ -3,9 +3,9 @@
 // native authority and acknowledgements remain in the runtime adapters.
 import{createInputDraft}from'./input-draft.mjs';
 const error=(code,message=code)=>Object.assign(new Error(message),{code}),clone=v=>structuredClone(v);
-export function createInputController({client,onChange=()=>{},clock={setTimeout:(...args)=>globalThis.setTimeout(...args),clearTimeout:id=>globalThis.clearTimeout(id)},debounceMs=250}={}){
- if(typeof client?.request!=='function'||typeof clock.setTimeout!=='function'||typeof clock.clearTimeout!=='function'||!Number.isFinite(debounceMs)||debounceMs<0)throw error('INVALID_PLATFORM');
- const ownerId=crypto.randomUUID(),timers=new Map(),queued=new Set();let scope=null,last=null,model=null,mode='live',epoch=0,busy=false,opening=null,closing=null,closingCaptureEpoch=null,flight=null,disposed=false,connectionLost=false,failure=null;
+export function createInputController({client,onChange=()=>{},clock={setTimeout:(...args)=>globalThis.setTimeout(...args),clearTimeout:id=>globalThis.clearTimeout(id)},debounceMs=250,initialMode='live'}={}){
+ if(!['live','draft'].includes(initialMode)||typeof client?.request!=='function'||typeof clock.setTimeout!=='function'||typeof clock.clearTimeout!=='function'||!Number.isFinite(debounceMs)||debounceMs<0)throw error('INVALID_PLATFORM');
+ const ownerId=crypto.randomUUID(),timers=new Map(),queued=new Set();let scope=null,last=null,model=null,mode=initialMode,epoch=0,busy=false,opening=null,closing=null,closingCaptureEpoch=null,flight=null,disposed=false,connectionLost=false,failure=null;
  const active=()=>!disposed&&!connectionLost&&!!scope&&!!last&&!last.closed;
  function snapshot(){return clone({ownerId,mode,active:active(),opening:!!opening,busy,connectionLost,editor:last,draft:model?.snapshot()||null,error:failure,sourceKind:scope?.sourceKind||last?.sourceKind||null,tabId:scope?.tabId||last?.target.tabId||null});}
  function emit(){if(disposed)return;try{onChange(snapshot());}catch{}}

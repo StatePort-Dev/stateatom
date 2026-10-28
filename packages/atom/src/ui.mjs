@@ -80,13 +80,14 @@ let handoffUI;const observation=createObservationController({client,onChange:s=>
 const observationHistoryUI=createObservationHistoryUI({$,client});
 const propertyUI=createElementPropertiesUI({document,$,connectProject:()=>reveal('source-connection'),openSource:source=>action(async()=>{await rpc({op:'open',tabId:tab(),source});})});
 const explanationUI=createInspectionExplanationUI({document,$,onNext:id=>{if(id==='connect-project')reveal('source-connection');else if(id==='inspect-again')$('load').click();}});
-const productionUI=createProductionUI({$,client,onRefresh:load,onAttach:async()=>{await rpc({op:'attach',tabId:tab(),readOnly:true});await load();},onConnection:()=>reveal('browser-connection')});
+const productionUI=createProductionUI({$,client,onRefresh:load,prepareEnable:selectedRecovery,onEnabled:async recovery=>{if(await reconnectSelection(recovery,{readOnly:true}))await inputUI.open();},onAttach:async()=>{await rpc({op:'attach',tabId:tab(),readOnly:true});await load();},onConnection:()=>reveal('browser-connection')});
 function lostConnection(){if(disposed)return;connectionLost=true;ownedPicker?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);inputUI.update(null);$('status').textContent='Inspector connection lost. Reopen this inspector to continue.';}
 const offConnection=client.subscribeConnection?.(lostConnection)||(()=>{});
 $('inspector-reconnect').onclick=()=>{if(typeof options.onReconnect==='function')void options.onReconnect();};
 function admission(op){const p=selectedState?.capabilityPolicy;return supportsCapabilityPolicy(p)?p.operations?.[op]:{available:false,reason:'Host does not advertise capability policy v1; update the Atom host'};}
 function gate(id,decision,otherwise=false){$(id).disabled=otherwise||!decision?.available;$(id).title=decision?.available?'':decision?.reason||'Capability unavailable';}
 function attachAvailability(){const p=selectedState?.capabilityPolicy,known=supportsCapabilityPolicy(p),requestAccess=known&&!!options.requestOriginPermission&&p.features['basic.request-site-access'].available;gate('attach',requestAccess?p.features['basic.request-site-access']:$('source-map-readonly').checked&&known?p.features['basic.attach-read-only']:admission('attach'));$('attach').textContent=requestAccess?'Allow site and connect':'Connect to page';}
+function hasSelectedRecord(state){return !!(state.selection||state.stale?.target);}
 function renderInspection(){
  observationHistoryUI.update(selectedState);
  productionUI.update(selectedState);
@@ -97,7 +98,7 @@ function renderInspection(){
  $('project-setup-status').textContent=selectedState?.projectSetup?.reason||'Basic works without the helper. For source access, install matching components and paste a private receipt.';
  const view=inspectionView(displayState),selection=view.target;
  if(selection)navigation.setContext(JSON.stringify([selectedState?.tabId,selectedState?.run,selection.domIdentity?.document??selection.page,selection.domIdentity?.node??selection.instance??selection.selector,selection.property]));
- const explanation=explanationUI.render(displayState,{fallbackPresented:view.nextStep==='connect-project'});
+ const explanation=explanationUI.render(displayState,{fallbackPresented:view.nextStep==='connect-project'});if(!hasSelectedRecord(displayState)){$('property-explanation-block').hidden=true;$('explanation-details').hidden=true;}
  $('mode').textContent=view.mode;
  $('site-origin').textContent=$('tabs').selectedOptions?.[0]?.dataset.origin||'No application selected';
  for(const name of ['cache','reload','override','replay'])$('site-'+name).checked=selectedState?.connection?.actions?.includes(name)===true;
@@ -106,11 +107,11 @@ function renderInspection(){
  $('setup-toggle').setAttribute('aria-controls',$('browser-connection').id);
  $('connection-label').textContent=selectedState?.attached?(selectedState.readOnly?'Attached · read-only':'Attached · this tab'):'Not attached';
  if(view.observedAt)renderedAt=view.observedAt;
- const hasTarget=!!view.target;
- $('getting-started').hidden=!!selectedState?.attached||hasTarget||view.stale;
+ const hasTarget=!!displayState.selection;
+ $('getting-started').hidden=!!selectedState?.attached||hasTarget;
  $('getting-started-title').textContent=selectedState?.attached?'Choose something on the page':'Start with a page';
  $('getting-started-help').textContent=selectedState?.attached?'Click Select page element, then click a button, label or field in your application. Come back here to see what Atom could observe.':'Choose the browser tab you want to understand and connect it below. You can start without an account, IDE or AI model.';
- $('selection-header').hidden=!selectedState?.attached&&!hasTarget&&!view.stale;
+ $('selection-header').hidden=!selectedState?.attached&&!hasTarget&&!displayState.stale?.target;
  $('selection-context').hidden=!hasTarget&&!view.stale;
  $('selection-tools').hidden=!selectedState?.attached;
  $('inputs-empty').hidden=hasTarget||!selectedState?.attached;
@@ -118,10 +119,11 @@ function renderInspection(){
  const editing=inputUI.snapshot();
  const editableFeature=supportsCapabilityPolicy(selectedState?.capabilityPolicy)&&['inputs.live','inputs.draft-apply'].some(id=>selectedState.capabilityPolicy.features[id]?.code!=='NOT_IMPLEMENTED');
  $('input-editing-details').hidden=(!editableFeature&&$('input-editor').hidden)||(!hasTarget&&!editing.active&&!editing.draft?.dirtyCount);
- const readOnly=selectedState?.readOnly===true,https=(selectedState?.origin||selectedState?.connection?.origin||'').startsWith('https:');
+ const readOnly=selectedState?.readOnly===true&&!selectedState?.productionChange?.active,https=(selectedState?.origin||selectedState?.connection?.origin||'').startsWith('https:');
  $('input-permissions').hidden=!readOnly||!editableFeature||editing.active||!!editing.draft?.dirtyCount;
- $('input-permissions').onclick=()=>{if(https)$('settings-toggle').click();else{reveal('browser-connection');$('site-permissions-details').open=true;$('site-permissions-details').querySelector('summary')?.focus();}};
- $('input-editing-help').textContent=readOnly?(https?'This page is read-only. Review the separate, temporary editing permission in Settings.':'This page is read-only. Development editing needs explicit site permissions in Page connection.'):'Optional: try a local input change. Review the scope before editing; app handlers may run and local undo does not undo server changes.';
+ $('input-permissions').textContent=https?'Enable editing on this live site':'Switch to editing';
+ $('input-permissions').onclick=()=>{if(https)return productionUI.requestEditing();return action(async()=>{const recovery=selectedRecovery();await rpc({op:'connect-site',tabId:tab(),connection:{origin:selectedState.origin||selectedState.connection.origin,mode:'development',actions:['override','replay']}});if(await reconnectSelection(recovery))await inputUI.open();});};
+ $('input-editing-help').textContent=readOnly?(https?'This live site is read-only. Enable editing temporarily to try a change.':'Read-only mode is enabled for this page.'):(editing.active?'Applying can trigger app actions. Undo does not reverse server changes.':'Edit a page field, then check how this element responds.');
  $('actions-intro').hidden=hasTarget;
  $('actions-intro').textContent=hasTarget?'Explore handlers linked to this element. A source path is not proof that a handler ran.':'Select an element to explore its click handlers and supported interactions.';
  $('inspection-summary').textContent=view.summary;
@@ -129,7 +131,7 @@ function renderInspection(){
  $('computation-result').hidden=!hasTarget||!view.sources.length&&!view.operands.length;
  $('computation-source').hidden=!view.sources.length;
  $('observed-inputs').hidden=!view.operands.length;
- $('evidence-overview').textContent=view.stale?'This snapshot is stale. Inspect again before drawing conclusions.':hasTarget?'Recorded: '+selection.property+' = '+JSON.stringify(selection.value)+'. '+(view.operands.length?view.operands.length+' input value'+(view.operands.length===1?'':'s')+' observed in the selected computation. ':'')+(view.sources.length?view.sources.length+' code-linked location'+(view.sources.length===1?'':'s')+'. ':'')+(view.finiteTraceSupported?'A finite trace is available below; its scope and limits still apply.':'Complete data origin is not established. See the scoped records below.'):'Select an element to record evidence, then save a report of what was observed.';
+ $('evidence-overview').textContent=view.stale?'This snapshot is stale. Inspect again before drawing conclusions.':selection?'Recorded: '+selection.property+' = '+JSON.stringify(selection.value)+'. '+(view.operands.length?view.operands.length+' input value'+(view.operands.length===1?'':'s')+' observed in the selected computation. ':'')+(view.sources.length?view.sources.length+' code-linked location'+(view.sources.length===1?'':'s')+'. ':'')+(view.finiteTraceSupported?'A finite trace is available below; its scope and limits still apply.':'Complete data origin is not established. See the scoped records below.'):'Select an element to record evidence, then save a report of what was observed.';
  $('inspection-next').hidden=['attach','select-element'].includes(view.nextStep)||explanation.status==='Supported';
  $('detach').hidden=!selectedState?.attached;
  $('load').hidden=connectionLost||!view.target&&!view.stale;
@@ -144,9 +146,11 @@ function renderInspection(){
  const matchingTrial=trial&&selectedState?.deepExperiment?.id===trial.result?.id&&trial.target?.selector===target?.selector&&trial.target?.property===target?.property;
  const restored=restorationNotice&&selectedState?.attached&&restorationNotice.tab===tab()&&restorationNotice.epoch===tabGeneration&&restorationNotice.intent===selectionIntent&&restorationNotice.origin===selectedState.origin&&restorationNotice.selector===target?.selector&&restorationNotice.property===target?.property&&restorationNotice.property===selectedState.property&&(!restorationNotice.id||matchingTrial&&restorationNotice.id===trial.result.id);
  $('atom-result').textContent=restored?restorationNotice.text:matchingTrial?trial.result.status+' · Historical controlled trials · baseline '+JSON.stringify(trial.result.trials?.[0]?.a?.value)+' · '+trial.result.scope:'';
- const presentation=selectionPresentation(selection,{stale:view.stale,picker:selectedState?.picker});
+ const latestText=displayState.elementInspection?.properties.find(row=>row.property==='text')?.latestObservation;
+ const headerSelection=displayState.selection;
+ const presentation=selectionPresentation(headerSelection&&latestText?{...headerSelection,text:latestText.value}:selection||headerSelection,{stale:!headerSelection&&view.stale,picker:selectedState?.picker});
  $('selection-title').textContent=presentation.title;$('selection-title').title=selection?.text||presentation.title;
- $('selection-value').textContent=presentation.value;
+ $('selection-value').textContent=presentation.value;$('selection-value').hidden=!!displayState.elementInspection;
  $('selection-kind').textContent=presentation.kind;
  if((selectedState&&!selectedState.attached&&!target)||!Number.isSafeInteger(tab())||tab()<=0)$('browser-connection').open=true;
  $('setup-toggle').setAttribute('aria-expanded',String(!$('browser-connection').hidden&&$('browser-connection').open));
@@ -173,7 +177,7 @@ function renderInspection(){
  $('picker-choices').replaceChildren(...(picker?.choices||[]).map(choice=>{const button=document.createElement('button');button.type='button';button.dataset.pickerChoice=picker.id+':'+choice.index;button.textContent=choice.label;button.disabled=!admission('refine-pick').available;button.onclick=()=>action(async()=>{const signal=ownPickerRequest(tab(),picker.id);await rpc({op:'refine-pick',tabId:tab(),pickerId:picker.id,index:choice.index},signal);await load();});return button;}));$('picker-choices').hidden=!(picker?.choices?.length);if(focusedChoice){const button=[...$('picker-choices').children].find(b=>b.dataset.pickerChoice===focusedChoice&&!b.disabled);button?.focus({preventScroll:true});}
  gate('inspect-selector',admission('inspect-selector'));attachAvailability();
  $('selected').textContent=selection?selection.selector+' · '+selection.property+' = '+JSON.stringify(selection.value):view.stale?'Previous observation is stale. Select an element or inspect again.':'Select an element on the attached page.';
- $('freshness').textContent=view.stale?'Stale · '+view.reason:view.observedAt?'Snapshot at '+new Date(view.observedAt).toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit',second:'2-digit',fractionalSecondDigits:3})+'. Not live.':'No observation yet.';
+ $('freshness').textContent=latestText?'Page values checked. Refresh to update the explanation.':view.stale?'Stale · '+view.reason:view.observedAt?'Snapshot at '+new Date(view.observedAt).toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit',second:'2-digit',fractionalSecondDigits:3})+'. Not live.':'No observation yet.';
  $('freshness').title='Recorded snapshot. Inspect again after changing the app.';
  $('capabilities').textContent=view.mode==='Instrumented'?'Instrumented snapshot · open IDE + source + dev plugin. Only supported executions are available. A finite supported trace, when available, is shown separately above.':view.mode==='Source-linked'?'Source-linked snapshot · open IDE and source available. Operand values require supported dev instrumentation.':'Basic · DOM observation only. Connect the open IDE for source links; add the open dev plugin for supported operand observations.';
  $('state-handoffs').replaceChildren(...(view.handoffs.length?view.handoffs:[{status:view.stale?'Stale':'Unknown/Unsupported',reason:'No supported native state handoff for this selected trace.'}]).map(h=>{const item=document.createElement('li');item.textContent=h.status+' · '+(h.queueId?'queue '+h.queueId+' · update '+(h.updateId||'unknown')+' · ':'')+(h.parsedObject?'JSON consumption '+h.parsedObject.consumptionId+' · ':'')+(h.reason||h.scope||'')+(view.finiteTraceSupported?' This state handoff alone does not establish current field value ancestry; see the separately scoped finite trace.':' Current field value ancestry is unknown.');return item;}));
@@ -228,9 +232,9 @@ function reveal(id){const e=$(id),scroller=$('scroll');if(id==='browser-connecti
 let fields=[];
 function clearInspection(keepTarget=true,{preserveViewport=false,preserveIntent=false}={}){if(!preserveIntent){++selectionIntent;void observation.contextChanged();}if(!preserveViewport)renderedAt=null;++selectionGeneration;const property=$('property').value;++loadGeneration;selectedState=keepTarget&&selectedState?{...selectedState,selection:null,analysis:null,stale:null}:null;analysis=null;renderInspection();if(keepTarget)$('property').value=property;}
 async function changeContext(){const productionCleanup=productionUI.contextChanged(),observationCleanup=observation.contextChanged('tab-switch'),inputCleanup=inputUI.close('Selected tab changed'),owned=ownedPicker;owned?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);if(owned)await client.request({op:'cancel-pick',tabId:owned.tabId,pickerId:owned.id}).catch(()=>{});await Promise.all([inputCleanup,productionCleanup,observationCleanup]);}
-async function inspectSelection(selector,reason){
+async function inspectSelection(selector,reason,expectedIdentity){
  const id=tab(),inputCleanup=inputUI.close(reason);clearInspection();const intent=selectionIntent;pendingInspections.set(id,intent);let inspected=false;
- try{await inputCleanup;if(id!==tab())return;await rpc({op:'inspect-selector',tabId:id,selector});inspected=true;}
+ try{await inputCleanup;if(id!==tab())return;await rpc({op:'inspect-selector',tabId:id,selector,...(expectedIdentity?{expectedIdentity}:{})});inspected=true;}
  // Preserve the completed snapshot; a later intent or failure uses ordinary recovery.
  finally{if(pendingInspections.get(id)===intent)pendingInspections.delete(id);if(id===tab())await load({refreshDeep:!inspected||intent!==selectionIntent,refreshIdentity:inspected&&intent===selectionIntent});}
 }
@@ -242,7 +246,16 @@ async function inspectAgain(){
 function flatten(v,p='',out=[]){if(v!==null&&typeof v==='object')for(const[k,x]of Object.entries(v))flatten(x,p?p+'.'+k:k,out);else out.push({path:p,value:v});return out;}
 $('connect-receipt').onclick=()=>action(async()=>{try{const r=parseConnectionReceipt($('connection-receipt').value);if(options.requestOriginPermission&&!await options.requestOriginPermission(r.url))throw Error('Helper origin permission denied');await rpc({op:'pair',url:r.url,token:r.token,origin:r.origin,sourceRoot:r.sourceRoot,receipt:r});await load();}finally{$('connection-receipt').value='';}});
 $('pair').onclick=()=>action(async()=>{const url=$('bridge').value,origin=$('origin').value;if(!helperURL(url)||!appOrigin(origin,{exact:true}))throw Error('Enter canonical origins without paths');if(options.requestOriginPermission&&!await options.requestOriginPermission(url))throw Error('Helper origin permission denied');await rpc({op:'pair',url,token:$('token').value,origin,sourceRoot:$('source-root').value});await load();});
-$('save-site').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration,origin=$('tabs').selectedOptions?.[0]?.dataset.origin,mode=$('site-mode').value,actions=mode==='development'?['cache','reload','override','replay'].filter(n=>$('site-'+n).checked):[];if(!appOrigin(origin,{exact:true}))throw Error('Select an exact application origin');if(options.requestOriginPermission&&!await options.requestOriginPermission(origin))throw Error('Site origin permission denied');if(id!==tab()||epoch!==tabGeneration)throw Error('Selected tab changed');await rpc({op:'connect-site',tabId:id,connection:{origin,mode,actions}});await load();});
+function selectedRecovery(){const selection=selectedState?.selection;return{tabId:tab(),epoch:tabGeneration,origin:selectedState?.origin||selectedState?.connection?.origin||$('tabs').selectedOptions?.[0]?.dataset.origin,...(selection?.domIdentity?{selector:selection.selector,expectedIdentity:{document:selection.domIdentity.document,node:selection.domIdentity.node}}:{})};}
+async function reconnectSelection(recovery,{readOnly=false}={}){
+ const id=tab(),epoch=tabGeneration;if(recovery&&(recovery.tabId!==id||recovery.epoch!==epoch))return;
+ const current=()=>!disposed&&id===tab()&&epoch===tabGeneration&&(!recovery?.origin||$('tabs').selectedOptions?.[0]?.dataset.origin===recovery.origin);
+ if(!current())return;await rpc({op:'attach',tabId:id,readOnly});if(!current())return;
+ connectionSettingsOpen=false;$('browser-connection').open=false;$('site-permissions-details').open=false;
+ if(recovery?.selector&&recovery.expectedIdentity)await inspectSelection(recovery.selector,'Connection updated',recovery.expectedIdentity);else await load({refreshDeep:false});
+ if(!current())return;navigation.show('inputs');$('scroll').scrollTop=0;return !!selectedState?.selection;
+}
+$('save-site').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration,recovery=selectedRecovery(),wasAttached=selectedState?.attached,origin=$('tabs').selectedOptions?.[0]?.dataset.origin,mode=$('site-mode').value,actions=mode==='development'?['cache','reload','override','replay'].filter(n=>$('site-'+n).checked):[];if(!appOrigin(origin,{exact:true}))throw Error('Select an exact application origin');if(selectedState?.capabilityPolicy?.features?.['basic.request-site-access']?.available&&options.requestOriginPermission&&!await options.requestOriginPermission(origin))throw Error('Site origin permission denied');if(id!==tab()||epoch!==tabGeneration)return;await rpc({op:'connect-site',tabId:id,connection:{origin,mode,actions}});if(id!==tab()||epoch!==tabGeneration)return;if(wasAttached)await reconnectSelection(recovery,{readOnly:mode==='read-only'});else await load({refreshDeep:false});});
 $('forget-site').onclick=()=>action(async()=>{await rpc({op:'forget-site',tabId:tab()});await load();});
 $('refresh-tabs').onclick=()=>action(async()=>{await tabs();await action(()=>load());});$('tabs').onchange=()=>{const cleanup=changeContext();return action(async()=>{await cleanup;await load();});};$('attach').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration,origin=$('tabs').selectedOptions?.[0]?.dataset.origin;if(selectedState?.capabilityPolicy?.features?.['basic.request-site-access']?.available&&(!options.requestOriginPermission||!await options.requestOriginPermission(origin)))throw Error('Site origin permission denied');await rpc({op:'attach',tabId:id,readOnly:$('source-map-readonly').checked});if(disposed||id!==tab()||epoch!==tabGeneration)return;await load();if(disposed||id!==tab()||epoch!==tabGeneration)return;if(selectedState?.attached&&!$('pick').disabled&&$('browser-connection').contains(document.activeElement))$('pick').focus({preventScroll:true});connectionSettingsOpen=false;$('browser-connection').open=false;$('browser-connection').hidden=selectedState?.attached===true;$('setup-toggle').setAttribute('aria-expanded','false');$('source-connection').open=false;$('scroll').scrollTop=0;});$('pick').onclick=()=>action(async()=>{await inputUI.close('Element selection changed');const cancelling=['starting','picking','resolving'].includes(selectedState?.picker?.status),pickerId=cancelling?selectedState.picker.id:crypto.randomUUID();const signal=cancelling?controller.signal:ownPickerRequest(tab(),pickerId);if(cancelling)ownedPicker?.controller?.abort();await rpc({op:cancelling?'cancel-pick':'pick',tabId:tab(),pickerId},signal);if(cancelling)ownedPicker=null;await load({refreshDeep:!cancelling});});$('inspect-selector').onclick=()=>action(()=>inspectSelection($('selector').value,'Manual selection changed'));$('load').onclick=()=>action(inspectAgain);$('detach').onclick=()=>action(async()=>{await rpc({op:'detach',tabId:tab()});await load();});
 $('experiment').onclick=()=>action(async()=>{const id=tab(),generation=selectionGeneration;const field=fields[Number($('fields').value)];$('experiment-result').textContent='Running…';const result=await rpc({op:'experiment',tabId:tab(),field,value:JSON.parse($('value').value),controlPath:$('control').value,actions:JSON.parse($('actions').value)});if(id!==tab()||generation!==selectionGeneration)return;$('experiment-result').textContent=result.status+': '+result.reason;$('evidence').textContent=JSON.stringify(result,null,2);});

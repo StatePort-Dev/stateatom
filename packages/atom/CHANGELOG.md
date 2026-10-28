@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+- Make canonical local HTTP development ready for supported edits after ordinary
+  attachment, without a permission checklist, cache clearing or reload. Preserve
+  explicit read-only settings and the separate scoped production confirmations.
+- Reconnect the exact native element after changing connection settings or granting
+  production editing; refuse a replaced document/node or a changed tab/origin.
+- Lead with Values, Actions, Source and Details. Move CSS selection and editing
+  modes into contextual disclosures. Default to page fields and explicit Apply;
+  keep Apply/Discard visible while scrolling and show Undo only when available.
+- Keep the selected element and separately checked native values after Apply.
+  Previous source/execution explanations stay stale; distinct observation times
+  and old values remain in Details. Historical reports retain the original record.
+- Remove repeated unsupported explanations and idle editor controls from the first
+  viewport. Preserve the shared visual contract, capability limits and source scope.
+
 - Show Text and applicable native Disabled state together for one selected element;
   remove the global property choice. Keep separately scoped source/inputs/evidence
   and per-property freshness. The shared editor and Actions stay mounted once.

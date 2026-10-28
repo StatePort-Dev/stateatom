@@ -15,9 +15,9 @@ export const productionSettingsTemplate=`
 </dialog>`;
 const defaultClock={now:()=>Date.now(),setTimeout:(...a)=>globalThis.setTimeout(...a),clearTimeout:id=>globalThis.clearTimeout(id)};
 const message=e=>({STALE_CONFIRMATION:'The page changed or confirmation expired. Review again.',INVALID_CONFIRMATION:'This confirmation belongs to another view or step.',CLEANUP_UNCONFIRMED:'Native cleanup is unconfirmed. Return to read-only and reconnect explicitly.',INSPECTOR_DISCONNECTED:'Inspector disconnected. Reopen it to continue.',CAPABILITY_DENIED:'Current change permission is unavailable. Review Settings again.'})[e?.code]||e?.message||'Settings operation failed';
-export function createProductionUI({$,client,onRefresh=async()=>{},onAttach=async()=>{},onConnection=()=>{},clock=defaultClock}={}){
+export function createProductionUI({$,client,onRefresh=async()=>{},onAttach=async()=>{},onConnection=()=>{},prepareEnable=()=>null,onEnabled,clock=defaultClock}={}){
  if(typeof client?.request!=='function')throw Error('Settings client required');
- const ownerId=crypto.randomUUID();let state=null,scope=null,stage='overview',ticket=null,busy=null,pending=null,epoch=0,disposed=false,lost=false,error=null,timer=null,deadline=0,grantId=null,expiryRequested=null,suppressClose=false,disposing=null;
+ const ownerId=crypto.randomUUID();let recovery=null,state=null,scope=null,stage='overview',ticket=null,busy=null,pending=null,epoch=0,disposed=false,lost=false,error=null,timer=null,deadline=0,grantId=null,expiryRequested=null,suppressClose=false,disposing=null;
  const status=()=>state?.productionChange,active=()=>!lost&&status()?.active===true,https=()=>scope?.origin?.startsWith('https:')===true;
  const text=(id,v)=>{$(id).textContent=v;};
  const request=(op,extra={},signal)=>client.request({op,tabId:scope?.tabId,ownerId,...extra},{signal});
@@ -27,9 +27,9 @@ export function createProductionUI({$,client,onRefresh=async()=>{},onAttach=asyn
  function schedule(){if(timer!==null||!active()||disposed)return;timer=clock.setTimeout(()=>{timer=null;if(disposed)return;render();if(!remaining()&&expiryRequested!==grantId){expiryRequested=grantId;void onRefresh().catch(e=>{error=message(e);render();});}},Math.min(1000,Math.max(1,remaining())));}
  function render(){
   if(disposed)return;const enabled=active(),cleanupUnknown=!enabled&&(status()?.cleanup==='unknown'||state?.productionCleanup?.cleanup==='unknown'),cleanupPending=!enabled&&(status()?.cleanup==='pending'||state?.productionCleanup?.cleanup==='pending'),pendingRevoke=busy==='production-revoke',decision=state?.capabilityPolicy?.operations?.['production-begin'];
-  $('settings-toggle').disabled=lost||!scope;
+  $('settings-toggle').hidden=!https();$('settings-toggle').disabled=lost||!scope;
   $('production-state').hidden=!https();$('production-state').setAttribute('data-active',String(enabled));
-  text('production-state-text',lost?'Read-only · inspector disconnected; cleanup unconfirmed':enabled?'Changes enabled · '+countdown():cleanupUnknown?'Read-only · cleanup unconfirmed':cleanupPending?'Read-only · cleanup pending':'Read-only · production');
+  text('production-state-text',lost?'Read-only · inspector disconnected; cleanup unconfirmed':enabled?'Changes enabled · '+countdown():cleanupUnknown?'Read-only · cleanup unconfirmed':cleanupPending?'Read-only · cleanup pending':'Live site · read-only');
   $('production-revoke').hidden=!enabled;$('production-revoke').disabled=lost||pendingRevoke;
   text('production-origin',scope?.origin||'No tab selected');text('production-scope-origin',ticket?.target?.origin||scope?.origin||'');
   text('production-step',stage==='risk'?'Step 1 of 2 · live application risk':stage==='scope'?'Step 2 of 2 · exact scope and undo limits':'Exact origin · separate change permission');
@@ -40,7 +40,7 @@ export function createProductionUI({$,client,onRefresh=async()=>{},onAttach=asyn
   $('production-settings-revoke').hidden=!enabled;$('production-settings-revoke').disabled=lost||pendingRevoke;
   $('production-next').hidden=stage!=='risk';$('production-confirm').hidden=stage!=='scope';$('production-cancel').hidden=stage==='overview'&&!busy;
   for(const id of['production-next','production-confirm'])$(id).disabled=!!busy||lost;
-  text('production-note',error||(lost?'Inspector disconnected. Native cleanup is unconfirmed. Reopen the inspector explicitly.':cleanupUnknown?'Permission revoked; native cleanup is unconfirmed. Reconnect explicitly before further changes; already admitted app or server effects may remain.':cleanupPending?'Permission revoked; native cleanup is pending. New edits are blocked.':busy==='production-revoke'?'Returning to read-only…':busy?'Waiting for the host…':enabled&&!state?.attached?'Permission enabled. Attach this tab, then inspect a current element.':enabled?'Supported edits still check their current target and revision.':!https()?'Production changes require an HTTPS tab. Development permissions are in Browser connection.':!decision?.available?decision?.reason||'Attach the permitted tab first.':'Two separate confirmations are required.'));
+  text('production-note',error||(lost?'Inspector disconnected. Native cleanup is unconfirmed. Reopen the inspector explicitly.':cleanupUnknown?'Permission revoked; native cleanup is unconfirmed. Reconnect explicitly before further changes; already admitted app or server effects may remain.':cleanupPending?'Permission revoked; native cleanup is pending. New edits are blocked.':busy==='production-revoke'?'Returning to read-only…':busy?'Waiting for the host…':enabled&&!state?.attached?'Permission enabled. Attach this tab, then inspect a current element.':enabled?'Supported edits still check their current target and revision.':!https()?'Production changes require an HTTPS tab. Local development is ready to edit without this confirmation.':!decision?.available?decision?.reason||'Attach the permitted tab first.':'Two separate confirmations are required.'));
   if(enabled&&remaining()>0)schedule();else stopTimer();
  }
  function hideDialog(){if($('production-dialog').open){suppressClose=true;$('production-dialog').close();$('settings-toggle').focus();}}
@@ -52,11 +52,11 @@ export function createProductionUI({$,client,onRefresh=async()=>{},onAttach=asyn
   if(staged){await closeView(id);if(!disposed)await onRefresh();}render();
  }
  async function invoke(op,extra={}){
-  if(disposed||lost||busy||!scope)return;const at=epoch,abort=new AbortController();pending=abort;busy=op;error=null;render();
+  if(disposed||lost||busy||!scope)return;const at=epoch,abort=new AbortController();if(op==='production-begin')recovery=prepareEnable();pending=abort;busy=op;error=null;render();
   try{
    const result=await request(op,extra,abort.signal);if(disposed||at!==epoch)return;
    if(op==='production-begin'||op==='production-advance'){ticket=result;stage=result.stage;}
-   else if(op==='production-confirm'){ticket=null;stage='overview';state={...state,attached:false,productionChange:result};deadline=clock.now()+result.remainingMs;grantId=result.grantId;expiryRequested=null;await onRefresh();}
+   else if(op==='production-confirm'){ticket=null;stage='overview';state={...state,attached:false,productionChange:result};deadline=clock.now()+result.remainingMs;grantId=result.grantId;expiryRequested=null;await onRefresh();if(onEnabled&&!disposed&&at===epoch){await onEnabled(recovery);if(!disposed&&at===epoch)hideDialog();}}
   }catch(e){if(!disposed&&at===epoch){error=message(e);if(['STALE_CONFIRMATION','INVALID_CONFIRMATION'].includes(e.code)){stage='overview';ticket=null;}}}
   finally{if(!disposed&&at===epoch){pending=null;busy=null;render();}}
  }
@@ -85,5 +85,5 @@ export function createProductionUI({$,client,onRefresh=async()=>{},onAttach=asyn
  $('production-dialog').addEventListener('cancel',e=>{e.preventDefault();e.stopPropagation();void cancelDialog();});
  $('production-dialog').addEventListener('close',()=>{if(suppressClose){suppressClose=false;return;}if(!disposed)void cancelDialog();});
  const off=client.subscribeConnection?.(()=>{epoch++;pending?.abort();pending=null;busy=null;ticket=null;stage='overview';lost=true;stopTimer();hideDialog();render();})||(()=>{});
- return Object.freeze({update,contextChanged,dispose(){if(disposing)return disposing;const id=scope?.tabId;disposed=true;epoch++;pending?.abort();pending=null;off();stopTimer();hideDialog();return disposing=closeView(id);}});
+ return Object.freeze({update,contextChanged,requestEditing:()=>{if(disposed||lost||!scope)return;error=null;render();if(!$('production-dialog').open)$('production-dialog').showModal();$('production-title').focus();return invoke('production-begin');},dispose(){if(disposing)return disposing;const id=scope?.tabId;disposed=true;epoch++;pending?.abort();pending=null;off();stopTimer();hideDialog();return disposing=closeView(id);}});
 }

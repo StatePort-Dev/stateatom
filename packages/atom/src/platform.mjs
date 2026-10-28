@@ -40,6 +40,8 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
  const leases=new Map(),acquiring=new Map(),connections=new Map();let stopped=false,authorityEpoch=0;
  const storage=namespacedStorage(api.storage.session,namespace);
  const restored=storage.get(['connections']);const ready=(broker.ready?Promise.all([broker.ready,restored]).then(([,x])=>x):restored).then(x=>{for(const raw of x.connections||[]){try{const c=siteRecord({origin:raw.origin,mode:raw.mode,actions:raw.actions});connections.set(c.origin,c);}catch{/* Old or malformed records cannot grant authority. */}}});
+ const localDefaults=new Map();
+ const effectiveConnection=origin=>{if(connections.has(origin))return connections.get(origin);if(!isDevelopmentOrigin(origin))return null;if(!localDefaults.has(origin))localDefaults.set(origin,siteRecord({origin,mode:'development',actions:['override','replay']}));return localDefaults.get(origin);};
  const persistConnections=()=>storage.set({connections:[...connections.values()]});
  const approvedSite=url=>connections.has(appOrigin(url));
  const permission=async origin=>!!origin&&!!await api.permissions?.contains({origins:[origin+'/*']});
@@ -51,7 +53,7 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
  }
  const productionHost=createProductionChangeHost({available:readOnlySites===true&&typeof api.scripting?.executeScript==='function',readTarget:async(id,guard,{ownedLease=true}={})=>{const l=ownedLease?await requireLease(id,'read'):null;guard();const target=await productionTarget(id,guard);l?.assert('read');guard();return target;},retire:revoke,onChange:e=>events.emit(e),...(productionClock?{clock:productionClock}:{})});
  async function basicFacts(id){
-  await ready;const epoch=authorityEpoch,tab=await api.tabs.get(id),origin=appOrigin(tab.url),connection=connections.get(origin)||null;
+  await ready;const epoch=authorityEpoch,tab=await api.tabs.get(id),origin=appOrigin(tab.url),connection=effectiveConnection(origin);
   const supported=isInspectionOrigin(tab.url,readOnlySites)||!!connection&&new URL(origin).protocol==='http:';
   const permitted=supported&&await permission(origin)&&epoch===authorityEpoch&&appOrigin((await api.tabs.get(id)).url)===origin;
   if(!permitted&&connection){connections.delete(origin);await persistConnections();}
@@ -72,7 +74,7 @@ export function createChromePlatform(api,{events,broker,capabilities:grants=capa
  }
  async function check(id,entry,cap,{cleanup=false}={}){
   if(stopped)throw atomError('DISPOSED');const f=await facts(id);
-  if(!f.permission||f.origin!==entry.origin||entry.epoch!==authorityEpoch||(connections.get(entry.origin)||null)!==entry.connection){
+  if(!f.permission||f.origin!==entry.origin||entry.epoch!==authorityEpoch||effectiveConnection(entry.origin)!==entry.connection){
    await revoke(id);throw atomError('ORIGIN_DENIED','Site permission or connection changed; attach again');
   }
   entry.l.assert(cap);if(entry.l.verify)await entry.l.verify(cap);entry.l.assert(cap);

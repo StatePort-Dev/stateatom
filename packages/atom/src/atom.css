@@ -249,3 +249,14 @@
 [data-sp-ui] .sp-atom-property-card ul{padding:0;list-style:none}
 [data-sp-ui] .sp-atom-property-card .sp-data-row{gap:12px;align-items:start;overflow-wrap:anywhere}
 [data-sp-ui] .sp-atom-property-card .sp-value{white-space:pre-wrap;min-width:0}
+/* Keep the ordinary editing path above advanced controls. */
+[data-sp-ui] .sp-atom-editing-entry{margin-top:16px;border-top:1px solid var(--sp-color-border);padding-top:8px}
+[data-sp-ui] .sp-atom-editing-entry>summary{font-size:14px;font-weight:600;color:var(--sp-color-text)}
+[data-sp-ui] .sp-atom-property-card{padding:12px 0}
+[data-sp-ui] .sp-atom-property-value{font-size:16px;margin:5px 0}
+[data-sp-ui] [data-atom-id="element-details"] [data-atom-id="selection-tools"]{margin-top:8px}
+[data-sp-ui] [data-atom-id="input-options"]{margin-top:12px}
+[data-sp-ui] [data-atom-id="input-status"]:empty{display:none}
+
+[data-sp-ui][data-atom-root] .sp-atom-edit-commit:has(button:not([hidden])) { position:sticky; bottom:0; z-index:2; padding:10px 0; margin:0; background:var(--sp-color-surface); border-top:1px solid var(--sp-color-border); }
+[data-sp-ui][data-atom-root] .sp-atom-input-meta:not(:has(button:not([hidden]))) { display:none; }

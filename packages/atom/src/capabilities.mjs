@@ -53,7 +53,7 @@ export function operationPolicy(op,c={}){
  if(op==='attach'){
   const requestedReadOnly=readOnly||c.requestReadOnly===true;
   if(c.attached&&c.readOnly!==requestedReadOnly)return deny('MODE_CONFLICT','Detach before changing inspection mode');
-  required=requestedReadOnly?['read','inject']:['read','inject','cache'];
+  required=['read','inject'];
  }else if(['inspect-selector','selected'].includes(op))required=['read','inject'];
  else if(['pick','refine-pick'].includes(op)||op.startsWith('actions-'))required=['read','inject'];
  else if(inputMutation.has(op))required=c.inputSourceKind==='dom-control'?['read','inject','replay']:['read','override'];

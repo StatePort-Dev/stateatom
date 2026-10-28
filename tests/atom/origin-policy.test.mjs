@@ -17,12 +17,12 @@ test('ordinary loopback ports accepted; lookalikes and URL tricks rejected',()=>
  assert(isBridgeURL('http://127.0.0.1:53009'));
  for(const value of ['http://localhost:47731','http://127.0.0.1:47731/','http://127.0.0.1:47731?x','http://127.0.0.1.evil:47731','http://127.0.0.1:0'])assert.equal(isBridgeURL(value),false,value);
 });
-test('localhost alone admits read-only attach but never cache/storage reset',async()=>{
- const f=fixture();try{const facts=await f.platform.describeTarget(1);assert.deepEqual(facts.grants,['read','inject']);assert.equal(facts.readOnly,true);await assert.rejects(f.platform.authorize(1,'cache'),{code:'CAPABILITY_DENIED'});assert(!f.calls.length);}finally{await f.platform.shutdown();}
+test('localhost defaults to editing without cache/storage authority',async()=>{
+ const f=fixture();try{const facts=await f.platform.describeTarget(1);assert.deepEqual(facts.grants,['read','inject','override','replay']);assert.equal(facts.readOnly,false);await assert.rejects(f.platform.authorize(1,'cache'),{code:'CAPABILITY_DENIED'});assert(!f.calls.length);}finally{await f.platform.shutdown();}
 });
 test('exact project records isolate two ports and keep source separate; HTTPS cannot become development',async()=>{
  const f=fixture();try{await f.platform.connectSite(1,{origin:'http://localhost:53001',mode:'development',actions:['cache','reload']});assert((await f.platform.describeTarget(1)).grants.includes('cache'));assert.equal((await f.platform.describeTarget(1)).connection.source,null);
- f.setURL('http://localhost:53002/app');assert.deepEqual((await f.platform.describeTarget(2)).grants,['read','inject']);
+ f.setURL('http://localhost:53002/app');assert.deepEqual((await f.platform.describeTarget(2)).grants,['read','inject','override','replay']);
  f.setURL('https://example.invalid/');await assert.rejects(f.platform.connectSite(2,{origin:'https://example.invalid',mode:'development',actions:['cache']}),{code:'INVALID_CONNECTION'});
  f.setURL('http://custom.invalid:3000/');assert.equal((await f.platform.describeTarget(2)).siteApproved,false);await f.platform.connectSite(2,{origin:'http://custom.invalid:3000',mode:'development',actions:['cache']});assert.equal((await f.platform.describeTarget(2)).siteApproved,true);
  }finally{await f.platform.shutdown();}
@@ -33,7 +33,7 @@ test('navigation during attach cannot retain or reuse old authority, including r
  }finally{await f.platform.shutdown();}
 });
 test('revocation invalidates cached lease before commands and removes the site approval',async()=>{
- const f=fixture();try{await f.platform.connectSite(1,{origin:'http://localhost:53001',mode:'development',actions:['cache']});await f.platform.chrome.debugger.attach({tabId:1});f.setPermission(false);await assert.rejects(f.platform.chrome.debugger.sendCommand({tabId:1},'Network.clearBrowserCache'),{code:'ORIGIN_DENIED'});f.setPermission(true);assert.deepEqual((await f.platform.describeTarget(1)).grants,['read','inject']);assert(!f.calls.includes('Network.clearBrowserCache'));
+ const f=fixture();try{await f.platform.connectSite(1,{origin:'http://localhost:53001',mode:'development',actions:['cache']});await f.platform.chrome.debugger.attach({tabId:1});f.setPermission(false);await assert.rejects(f.platform.chrome.debugger.sendCommand({tabId:1},'Network.clearBrowserCache'),{code:'ORIGIN_DENIED'});f.setPermission(true);assert.deepEqual((await f.platform.describeTarget(1)).grants,['read','inject','override','replay']);assert(!f.calls.includes('Network.clearBrowserCache'));
  }finally{await f.platform.shutdown();}
 });
 test('source navigation is a separate read-only development authorization; production stays denied',()=>{
@@ -43,7 +43,7 @@ test('delayed command after a browser permission change cannot return private co
  const f=fixture();try{await f.platform.chrome.debugger.attach({tabId:1});f.setPermission(false);await assert.rejects(f.platform.chrome.debugger.sendCommand({tabId:1},'Debugger.getScriptSource',{scriptId:'1'}),{code:'ORIGIN_DENIED'});assert(!f.calls.includes('Debugger.getScriptSource'));}finally{await f.platform.shutdown();}
 });
 test('permissions removal deletes session grants and releases every owned target',async()=>{
- const f=fixture();try{await f.platform.connectSite(1,{origin:'http://localhost:53001',mode:'development',actions:['cache']});await f.platform.chrome.debugger.attach({tabId:1});await f.platform.permissionsRemoved();assert.equal(f.platform.owns(1),false);assert.deepEqual((await f.platform.describeTarget(1)).grants,['read','inject']);}finally{await f.platform.shutdown();}
+ const f=fixture();try{await f.platform.connectSite(1,{origin:'http://localhost:53001',mode:'development',actions:['cache']});await f.platform.chrome.debugger.attach({tabId:1});await f.platform.permissionsRemoved();assert.equal(f.platform.owns(1),false);assert.deepEqual((await f.platform.describeTarget(1)).grants,['read','inject','override','replay']);}finally{await f.platform.shutdown();}
 });
 test('denied access clears retained private data even for a Basic reservation without attach origin',async()=>{
  const {createAtomRuntime}=await import('../../packages/atom/src/runtime.mjs');const f=fixture();
@@ -73,8 +73,14 @@ test('review: pending broker acquisition cannot inherit a replacement connection
  const f=fixture();try{await f.platform.connectSite(1,{origin:'http://localhost:53001',mode:'development',actions:['cache']});let release,started;const begun=new Promise(r=>started=r);f.onAcquire(()=>{started();return new Promise(r=>release=r);});const pending=f.platform.authorize(1,'cache').then(()=>true,e=>e.code);await begun;await f.platform.connectSite(1,{origin:'http://localhost:53001',mode:'read-only',actions:[]});release();assert.equal(await pending,'ORIGIN_DENIED');assert(!f.calls.includes('Network.clearBrowserCache'));}finally{await f.platform.shutdown();}
 });
 test('review: pending connection approval cannot restore grants after permission removal',async()=>{
- const f=fixture();try{let release,started;const begun=new Promise(r=>started=r);f.onPermission(()=>{started();return new Promise(r=>release=r);});const pending=f.platform.connectSite(1,{origin:'http://localhost:53001',mode:'development',actions:['cache']}).then(()=>true,e=>e.code);await begun;await f.platform.permissionsRemoved();f.onPermission(null);release(true);assert.equal(await pending,'ORIGIN_DENIED');assert.deepEqual((await f.platform.describeTarget(1)).grants,['read','inject']);}finally{await f.platform.shutdown();}
+ const f=fixture();try{let release,started;const begun=new Promise(r=>started=r);f.onPermission(()=>{started();return new Promise(r=>release=r);});const pending=f.platform.connectSite(1,{origin:'http://localhost:53001',mode:'development',actions:['cache']}).then(()=>true,e=>e.code);await begun;await f.platform.permissionsRemoved();f.onPermission(null);release(true);assert.equal(await pending,'ORIGIN_DENIED');assert.deepEqual((await f.platform.describeTarget(1)).grants,['read','inject','override','replay']);}finally{await f.platform.shutdown();}
 });
 test('review: platform HTTPS opt-in alone cannot bypass default runtime opt-in',async()=>{
  const {createAtomRuntime}=await import('../../packages/atom/src/runtime.mjs');const f=fixture();f.setURL('https://example.invalid/');const runtime=createAtomRuntime(f.platform);try{const p=await runtime.request(envelope({op:'capabilities',tabId:1}));assert.equal(p.operations.attach.available,false);}finally{await runtime.shutdown();}
+});
+test('local development has editing grants without a site-permissions checklist; HTTPS does not',async()=>{
+ const f=fixture();try{let c=await f.platform.describeTarget(1);assert.equal(c.readOnly,false);assert(c.grants.includes('override'));assert(c.grants.includes('replay'));assert(!c.grants.includes('cache'));assert(!c.grants.includes('reload'));f.setURL('https://app.invalid/');c=await f.platform.describeTarget(1);assert.equal(c.readOnly,true);assert.deepEqual(c.grants,['read','inject']);assert.equal(f.calls.length,0);}finally{await f.platform.shutdown();}
+});
+test('ordinary dev attach works without cache grants and leaves cache/storage alone',async()=>{
+ const {createAtomRuntime}=await import('../../packages/atom/src/runtime.mjs'),f=fixture();await f.platform.connectSite(1,{origin:'http://localhost:53001',mode:'development',actions:['override','replay']});const runtime=createAtomRuntime(f.platform,{readOnlySites:true});try{await runtime.request(envelope({op:'attach',tabId:1}));assert.equal((await runtime.request(envelope({op:'state',tabId:1}))).attached,true);assert(!f.calls.some(c=>/Cache|Storage|reload/.test(c)));}finally{await runtime.shutdown();}
 });
