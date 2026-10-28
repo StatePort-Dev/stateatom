@@ -1,0 +1,123 @@
+// SPDX-License-Identifier: Apache-2.0
+// V02.37 original fixed workload on exact immutable89; retained owned TLS seed only.
+import assert from 'node:assert/strict';
+import {createServer} from 'node:https';
+import {readFile,writeFile,appendFile,mkdir} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import os from 'node:os';
+import {performance} from 'node:perf_hooks';
+import {startNativeBrowser} from '../../scripts/native-browser.mjs';
+import {waitFor,rpc} from '../../scripts/harness.mjs';
+import {sha256,fileManifest,verifyArtifactHashes,inspectInstalledPair} from '../../scripts/atom-package-receipt.mjs';
+import {nativeInspectorUI} from '../helpers/native-inspector-ui.mjs';
+import {sourceAccessDesktop} from '../helpers/source-access-native-desktop.mjs';
+import {PERFORMANCE_PROTOCOL,trialOrder,summarizePerformance,assertPerformanceWindow,performanceFixtureScript,performanceFixtureHTML} from '../helpers/basic-observer-performance.mjs';
+
+const caseFile=process.argv[2],out='.artifacts/v02/basic-observer-current89/'+new Date().toISOString().replace(/[:.]/g,'-');
+await mkdir(out,{recursive:true,mode:0o700});
+let scenario,h,paths,preregistration,server,desktop,browser,panel,d;
+const inputs=async()=>Object.fromEntries(await Promise.all(paths.map(async f=>[f,sha256(await readFile(f))])));
+const environment=()=>({platform:os.platform(),release:os.release(),arch:os.arch(),cpu:os.cpus()[0]?.model,logicalCPUs:os.cpus().length,totalRAM:os.totalmem(),freeRAM:os.freemem(),load:os.loadavg()});
+const result={schema:PERFORMANCE_PROTOCOL.schema,status:'RUNNING',out,initialInventoryComplete:false,initializationPhase:'pending',measurementComplete:false,targetsMet:false,cases:[],samples:[],errors:[],console:[]},traffic=[];
+async function seedOwnedTrust(host){
+ assert(['standalone','embedding'].includes(host),'Owned host required');
+ const seed=scenario.tls.trustDatabase,bytes=await readFile(seed.file);assert.equal(sha256(bytes),seed.sha256,'Retained trust seed hash');
+ const directory=out+'/profiles/'+host+'/Default',file=directory+'/ServerCertificate';await mkdir(directory,{recursive:true,mode:0o700});
+ await writeFile(file,bytes,{flag:'wx',mode:0o600});return{file,sha256:sha256(bytes),source:seed.file,method:'EXACT_RETAINED_OWN_PROFILE_DATABASE_COPY_NO_IMPORT_UI'};
+}
+// End owned trust seed
+async function fixture(tabId){return panel.evaluate(async id=>(await chrome.scripting.executeScript({target:{tabId:id,frameIds:[0]},world:'ISOLATED',func:()=>({ready:document.readyState==='complete',value:JSON.parse(document.getElementById('result').textContent),counter:document.getElementById('counter').textContent,disabled:document.getElementById('run').disabled})}))[0].result,tabId);}
+async function stored(tabId){return panel.evaluate(async id=>(await chrome.storage.session.get('stateport.atom.v1.tabs'))['stateport.atom.v1.tabs']?.[id],tabId);}
+async function windowState(tabId){return (await stored(tabId))?.productionObservation;}
+async function selectTarget(measure){
+ await d.fill('selector','#run');
+ if(measure)await panel.evaluate(()=>{
+  window.v02Latency=null;const q=id=>document.querySelector('[data-atom-id="'+id+'"]'),button=q('inspect-selector');
+  button.addEventListener('pointerdown',event=>{
+   const start=performance.now();let working=false,finishing=false;
+   const observer=new MutationObserver(()=>{
+    const status=q('status').textContent;if(status==='Working…')working=true;
+    if(working&&!finishing&&status==='OK'&&q('selected').textContent.includes('#run')&&q('selected').textContent.includes('Run workload')){
+     finishing=true;requestAnimationFrame(()=>requestAnimationFrame(()=>{observer.disconnect();window.v02Latency={durationMs:performance.now()-start,trusted:event.isTrusted,status:q('status').textContent,selected:q('selected').textContent};}));
+    }
+   });observer.observe(q('status'),{subtree:true,childList:true,characterData:true});
+  },{capture:true,once:true});
+ });
+ await d.click('inspect-selector');await d.waitOK();
+ const latency=measure?await waitFor(()=>panel.evaluate(()=>window.v02Latency)):null;
+ if(measure){assert.equal(latency.trusted,true);assert.equal(latency.status,'OK');}
+ return latency;
+}
+async function openReporter(){await d.click('diagnostic-toggle');await d.click('handoff-current');await waitFor(()=>panel.evaluate(()=>document.querySelector('[data-atom-id="handoff-dialog"]').open&&!document.querySelector('[data-atom-id="observation-start"]').disabled));}
+async function startWindow(tabId){
+ await openReporter();await d.click('observation-start');await waitFor(()=>panel.evaluate(()=>!document.querySelector('[data-atom-id="observation-read"]').disabled));await d.click('observation-read');await waitFor(async()=>{const w=await windowState(tabId);return w?.status==='recording'&&w.counts.checkpoints===1;});await waitFor(()=>panel.evaluate(()=>!document.querySelector('[data-atom-id="observation-continue"]').disabled));await d.click('observation-continue');await waitFor(()=>panel.evaluate(()=>!document.querySelector('[data-atom-id="handoff-dialog"]').open));
+ const w=await windowState(tabId);assert.equal(w.status,'recording');assert.equal(w.counts.requests,0);return{windowId:w.windowId,records:w.records.length,bytes:Buffer.byteLength(JSON.stringify(w)),counts:w.counts};
+}
+async function stopWindow(tabId,initial){
+ await waitFor(async()=>{const w=await windowState(tabId);assert.equal(w.windowId,initial.windowId);assert.equal(w.status,'recording','Collector stopped before explicit Stop');return w.counts.completed===20;});
+ await d.click('handoff-current');await waitFor(()=>panel.evaluate(()=>document.querySelector('[data-atom-id="handoff-dialog"]').open));await d.click('observation-stop');
+ const w=await waitFor(async()=>{const w=await windowState(tabId);return w?.status==='stopped'?w:null;});assert.equal(w.windowId,initial.windowId);assert.equal(w.stopReason,'user');
+ const saved={windowId:w.windowId,status:w.status,stopReason:w.stopReason,counts:w.counts,gaps:w.gaps,records:w.records.length,bytes:Buffer.byteLength(JSON.stringify(w)),initial};result.currentTrial.window=saved;await appendFile(out+'/windows.jsonl',JSON.stringify(saved)+'\n');assertPerformanceWindow(saved);
+ await waitFor(()=>panel.evaluate(()=>!document.querySelector('[data-atom-id="observation-clear"]').disabled));await d.click('observation-clear');await waitFor(async()=>{const cleared=await windowState(tabId);return cleared?.status==='deleted'&&cleared.windowId===null&&cleared.identity===null&&cleared.records.length===0;});await d.click('handoff-cancel');await waitFor(()=>panel.evaluate(()=>!document.querySelector('[data-atom-id="handoff-dialog"]').open));return saved;
+}
+async function appClick(tabId){
+ await panel.evaluate(id=>chrome.tabs.update(id,{active:true}),tabId);
+ const point=await panel.evaluate(async id=>(await chrome.scripting.executeScript({target:{tabId:id,frameIds:[0]},world:'ISOLATED',func:async()=>{const e=document.getElementById('run');if(e.disabled)throw Error('Workload still busy');e.scrollIntoView({block:'center'});await new Promise(requestAnimationFrame);const r=e.getBoundingClientRect();return{x:screenX+(outerWidth-innerWidth)/2+r.x+r.width/2,y:screenY+outerHeight-innerHeight+r.y+r.height/2};}}))[0].result,tabId);
+ const win=await waitFor(()=>{try{return desktop.native(['search','--onlyvisible','--name','V02 fixed workload']).split('\n')[0];}catch{return null;}});result.nativeAppWindowTitle=desktop.native(['getwindowname',win]);desktop.native(['windowfocus','--sync',win]);desktop.native(['mousemove',String(Math.round(point.x)),String(Math.round(point.y))]);desktop.native(['mousedown','1']);desktop.native(['mouseup','1']);
+}
+async function closeBrowser(){
+ const errors=[];try{await d?.close();d=null;}catch(e){errors.push(e);}
+ try{await browser?.context.close();browser=null;panel=null;}catch(e){errors.push(e);}
+ if(errors.length)throw new AggregateError(errors,'Owned browser cleanup: '+errors.map(e=>e.message).join('; '));
+}
+// End independent browser cleanup
+try{
+ result.initializationPhase='case';assert(caseFile&&process.argv.length===3,'Exact current Basic/observer case required');scenario=JSON.parse(await readFile(caseFile));assert.equal(scenario.schema,'stateatom.basic-observer-current89-case/1');
+ result.initializationPhase='handoff';h=JSON.parse(await readFile(scenario.handoff));
+ result.initializationPhase='revision';const revision=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),dirty=execFileSync('git',['status','--porcelain'],{encoding:'utf8'}).trim();result.revision=revision;
+ result.initializationPhase='inputs';paths=[...new Set([caseFile,scenario.handoff,...Object.keys(scenario.inputHashes),...Object.keys(h.sourceManifest),...Object.keys(h.buildSources.manifest)])];
+ preregistration={schema:PERFORMANCE_PROTOCOL.schema,createdAt:new Date().toISOString(),protocol:PERFORMANCE_PROTOCOL,order:trialOrder(),hosts:['standalone','embedding'],revision,dirty,handoff:{file:scenario.handoff,sha256:sha256(await readFile(scenario.handoff)),package:h.package,ui:h.ui},scenario,inputs:await inputs(),environment:environment(),measurements:{workload:'Original trusted handler entry through20 sequential1024-byteHTTPS GETs, DOM counter changes and finaltwo appframes',basicLatency:'Actual manual CSS lookup pointerdown to useful#run text+OK+twoinspectorframes',primaryOverhead:'100*(median(active)/median(off)-1), <=10%',actor:'Same trusted X11 click eachmode;100ms ISOLATED DOM JSON polling, no appCDP',admission:'Retained synthetic own-profile trust seed; actual native siteAllow, no production editing grant',boundary:'Fixed101 P04 collector workload only, no probes/devinstrumentation/ActionTrace/model/Live/source; no fullV02'} ,fixture:{html:sha256(performanceFixtureHTML),script:sha256(performanceFixtureScript)}};
+ await writeFile(out+'/preregistration.json',JSON.stringify(preregistration,null,2),{flag:'wx'});await writeFile(out+'/driver.mjs',await readFile(new URL(import.meta.url)),{flag:'wx'});await writeFile(out+'/fixture.html',performanceFixtureHTML,{flag:'wx'});await writeFile(out+'/app.js',performanceFixtureScript,{flag:'wx'});
+ result.preregistrationSha256=sha256(await readFile(out+'/preregistration.json'));result.initialInventoryComplete=true;result.initializationPhase=null;
+ for(const[f,hash]of Object.entries(scenario.inputHashes))assert.equal(preregistration.inputs[f],hash,'Registered current gate input '+f);
+ assert.deepEqual(scenario.protocol,PERFORMANCE_PROTOCOL);assert.deepEqual(scenario.order,trialOrder());assert.equal(h.package.version,'0.1.0-candidate.20261028.89');assert.equal(h.package.sha256,scenario.packageSha256);assert.equal(h.ui.sha256,scenario.uiSha256);assert.equal(preregistration.fixture.html,scenario.fixture.html);assert.equal(preregistration.fixture.script,scenario.fixture.script);
+ await verifyArtifactHashes([h.package,h.ui]);await inspectInstalledPair(h.consumer,h.consumerReceipt);
+ for(const kind of ['standalone','embedding'])assert.deepEqual(await fileManifest(h.hosts[kind]),h.consumerReceipt.hostFiles[kind]);
+ for(const [f,hash] of Object.entries({...h.sourceManifest,...h.buildSources.manifest}))assert.equal(preregistration.inputs[f],hash,'Frozen candidate input '+f);
+ result.tlsValidation={chainAndHostname:execFileSync('openssl',['verify','-CAfile',scenario.tls.root.file,'-verify_hostname','app.p03.test',scenario.tls.certificate.file],{encoding:'utf8',timeout:3000}).trim(),certificateDates:execFileSync('openssl',['x509','-in',scenario.tls.certificate.file,'-noout','-dates'],{encoding:'utf8',timeout:3000}).trim(),method:'READ_ONLY_RETAINED_SYNTHETIC_TLS_NO_NEW_CERTIFICATES'};
+ for(const[key,name]of [['XDG_DATA_HOME','data'],['XDG_CONFIG_HOME','config'],['XDG_CACHE_HOME','cache']]){const directory=process.cwd()+'/'+out+'/xdg/'+name;await mkdir(directory,{recursive:true,mode:0o700});process.env[key]=directory;}
+ result.ownedXDG=Object.fromEntries(['XDG_DATA_HOME','XDG_CONFIG_HOME','XDG_CACHE_HOME'].map(key=>[key,process.env[key]]));
+ server=createServer({key:await readFile(scenario.tls.key.file),cert:await readFile(scenario.tls.certificate.file)},(req,res)=>{const route=new URL(req.url,'https://fixture').pathname;traffic.push({route,at:Date.now()});res.setHeader('cache-control','no-store');if(route==='/app.js'){res.setHeader('content-type','text/javascript');res.end(performanceFixtureScript);}else if(route==='/sample'){res.setHeader('content-type','text/plain');res.end('V'.repeat(1024));}else if(route==='/favicon.ico'){res.writeHead(204);res.end();}else{res.setHeader('content-type','text/html');res.end(performanceFixtureHTML);}});await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',()=>{server.removeListener('error',reject);resolve();});});const origin='https://app.p03.test:'+server.address().port;result.origin=origin;
+ desktop=await sourceAccessDesktop(out);
+ for(const kind of ['standalone','embedding']){
+  const c={host:kind,environmentBefore:environment()};result.cases.push(c);console.log('SETUP',kind);
+  c.trust=await seedOwnedTrust(kind);browser=await startNativeBrowser(out+'/profiles',kind,true,false,['--no-proxy-server','--host-resolver-rules=MAP app.p03.test 127.0.0.1'],{extensionPath:h.hosts[kind],headless:false,display:desktop.display});c.browser=browser.context.browser().version();c.command=browser.command;assert.equal(c.browser,scenario.browser.version);assert.equal(sha256(await readFile(c.command.executable)),scenario.browser.executableSha256);panel=await browser.context.newPage();panel.on('pageerror',e=>result.errors.push({host:kind,text:e.message}));await panel.goto('chrome-extension://'+browser.id+'/'+(kind==='standalone'?'panel.html':'workspace/inspect.html'));d=await nativeInspectorUI(panel,browser);d.p.on('Runtime.consoleAPICalled',e=>{if(['error','warning','warn'].includes(e.type))result.console.push({host:kind,level:e.type,text:(e.args||[]).map(x=>x.value??x.description??x.type).join(' ').slice(0,1024)});});await d.p.send('Runtime.enable');
+  const tabId=await panel.evaluate(async url=>(await chrome.tabs.create({url})).id,origin+'/');await waitFor(()=>panel.evaluate(async id=>(await chrome.tabs.get(id)).title==='V02 fixed workload',tabId));await d.click('refresh-tabs');await d.waitOK();await d.select('tabs',tabId);await d.waitOK();await d.click('attach');await desktop.decide(out+'/'+kind+'-site-allow-candidate.png','allow');await d.waitOK();await waitFor(async()=>(await fixture(tabId)).ready);await d.click('detach');await d.waitOK();let lastAction=0;
+  for(const trial of trialOrder()){
+   let state=await rpc(panel,{op:'state',tabId,refreshDeep:false});if(state.attached){await d.click('detach');await d.waitOK();}
+   const row={...trial,host:kind,startedAt:new Date().toISOString(),status:'started'};result.currentTrial=row;await appendFile(out+'/attempts.jsonl',JSON.stringify(row)+'\n');let window;
+   if(trial.mode!=='off'){
+    await d.click('attach');await d.waitOK();const timing=await selectTarget(trial.mode==='basic');if(timing){row.basicLatencyMs=timing.durationMs;row.basicLatency=timing;}
+    state=await rpc(panel,{op:'state',tabId,refreshDeep:false});assert.equal(state.attached,true);assert.equal(state.selection.selector,'#run');assert.equal(state.selection.property,'text');assert.equal(state.selection.value,'Run workload');assert.equal(state.productionChange.active,false);
+    if(trial.mode==='active')window=await startWindow(tabId);
+   }else{assert.equal((await rpc(panel,{op:'state',tabId,refreshDeep:false})).attached,false);}
+   const before=await fixture(tabId);assert.equal(before.value?.id??0,lastAction);assert.equal(before.disabled,false);const trafficBefore=traffic.filter(x=>x.route==='/sample').length,wallStart=performance.now();
+   await appClick(tabId);const final=await waitFor(async()=>{const f=await fixture(tabId);return f.value?.id===lastAction+1&&!f.disabled?f:null;},30000);
+   Object.assign(row,final.value,{actions:final.value.id-lastAction,wallGestureToReadbackMs:performance.now()-wallStart});lastAction=final.value.id;assert.equal(row.status,'complete');assert.equal(row.trusted,true);assert.equal(row.requests,20);assert.equal(row.bytes,20480);assert.equal(final.counter,'20');assert.equal(traffic.filter(x=>x.route==='/sample').length-trafficBefore,20);
+   await appendFile(out+'/workloads.jsonl',JSON.stringify(row)+'\n');
+   if(window)row.window=await stopWindow(tabId,window);
+   // Persist before aggregation. A later failure cannot erase valid raw samples.
+   result.samples.push(row);delete result.currentTrial;await appendFile(out+'/samples.jsonl',JSON.stringify(row)+'\n');console.log('SAMPLE',kind,trial.ordinal,trial.warmup?'warmup':'measured',trial.block,trial.mode,row.durationMs.toFixed(2),row.basicLatencyMs?.toFixed(2)??'');
+  }
+  c.summary=summarizePerformance(result.samples,kind);c.environmentAfter=environment();console.log('SUMMARY',kind,JSON.stringify(c.summary));await closeBrowser();
+ }
+ result.inputsAfter=await inputs();assert.deepEqual(result.inputsAfter,preregistration.inputs,'Measurement inputs changed');assert.equal(result.errors.length,0,'Inspector exception');assert.equal(result.console.length,0,'Inspector console warning/error');result.status='COMPLETE';result.measurementComplete=true;result.targetsMet=result.cases.every(c=>c.summary.targets.basicLatencyPass&&c.summary.targets.activeOverheadPass);
+}catch(error){result.status='INCOMPLETE';result.measurementComplete=false;result.targetsMet=false;result.errors.push({message:error.message,stack:error.stack});if(error.desktopCleanupError)result.errors.push({message:error.desktopCleanupError,stage:'desktop-startup-cleanup'});if(error.nativeBrowserCleanupError)result.errors.push({message:error.nativeBrowserCleanupError,stage:'browser-startup-cleanup'});console.error(error.stack);process.exitCode=1;}
+finally{
+ const failed=(stage,error)=>{result.status='INCOMPLETE';result.measurementComplete=false;result.targetsMet=false;result.errors.push({stage,message:error.message,stack:error.stack});process.exitCode=1;};
+ try{await closeBrowser();result.ownedBrowserClosed=true;}catch(e){failed('browser-cleanup',e);}
+ try{await desktop?.close();result.ownedDesktopClosed=true;}catch(e){failed('desktop-cleanup',e);}
+ try{if(server){server.closeAllConnections();if(server.listening)await new Promise((resolve,reject)=>server.close(e=>e?reject(e):resolve()));}result.ownedServerClosed=true;}catch(e){failed('server-cleanup',e);}
+ try{if(result.initialInventoryComplete){result.inputsAfter=await inputs();assert.deepEqual(result.inputsAfter,preregistration.inputs,'Measurement inputs changed');}else result.inputInventoryUnavailable=true;}catch(e){failed('final-input-inventory',e);}
+ result.finishedAt=new Date().toISOString();result.environmentAfter=environment();await writeFile(out+'/results.json',JSON.stringify(result,null,2),{flag:'wx'});console.log('RESULT',result.status,'targetsMet='+result.targetsMet,out);
+}
