@@ -34,3 +34,26 @@ meaning against templates, with original criteria including20–30/>=25 plus5inc
 5untrusted unchanged. Any10-case result is a scoped pilot, not full quality coverage
 or wholeL02 acceptance. Independent person is not a blocker; unmeasured usability
 stays unmeasured. One next bounded item after actual result.
+
+## Frozen source preparation, before native collection
+
+Existing original controller/HTML/provider/projection/corpus/protocol/row predicates
+are unchanged. A separately labelled copy of official88 dist36 adds only an
+existing-controller bundle and HTML nonce/test identifiers (38files). Original
+model-ready266 profile604files/3stale singleton links is retained byte-for-byte;
+only602regular files will be copied into a new owned profile. Model weights are
+hashed as a stream, without loading a4GB file into a single buffer.
+
+Source command: `node --test tests/official-comparison-pilot.test.mjs tests/local-comparison-evaluation-page.test.mjs`:
+22PASS/0FAIL; DTO/controller/CLI controls, not native or semantic evidence.
+`.artifacts/l02/official-comparison-pilot/2026-10-28/source-checkpoint.json`:
+1976input bindings/full36official+38prepared files/original604+3 unchanged;
+no browser/model/reader invocation during preparation. Syntax checks passed.
+Exact case SHA256 `0921c441e4bee7e45610d599967e72be83998bdc764b1628a22a9f1471b32c5e`.
+
+After the clean source commit, the sole native invocation is
+`node .artifacts/l02/official-comparison-pilot/2026-10-28/run-once.mjs`.
+Its child binds the exact clean revision and case, creates the exclusive1/1 marker
+before resources and preserves the driver's exit/raw SHA. The sole saved reader is
+`node scripts/verify-official-comparison-pilot.mjs docs/testing/official-comparison-pilot-case.json .artifacts/l02/official-comparison-pilot/2026-10-28/native/results.json`.
+No native outcome or model quality is claimed at this checkpoint.
