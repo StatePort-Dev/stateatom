@@ -1,5 +1,7 @@
 # I02.42 — official90 intake and concrete remaining release work
 
+**Subsequent maintainer decision:** [record281](281-active-overhead-maintainer-acceptance.md) accepts the reported Active overhead for release. Performance-blocker/no-waiver/optimization-next statements below describe the assessment before that decision and are superseded only in that respect. The intake evidence and other remaining gates are unchanged.
+
 28 October 2026. Exact Atom90 producer69b8d86, archive SHA256 `46b4d4d86461634a40ca28ff71a87def2be32b9d912d2d432fd7c2921a6451f6`; UI2 unchanged. Host intake commit `2dc220c6d1528c60eadcb245d1d1e714da9b7c66`, based on711968a4. This is a local source/build candidate, not an installed or published release.
 
 ## Verified intake

@@ -1,12 +1,20 @@
 # Project status
 
+**Current release decision, 28 October:** the maintainer accepts Active overhead
+10.71737255% standalone / 27.31871841% embedding for release.
+[Decision281 and remaining work](completion/281-active-overhead-maintainer-acceptance.md).
+The recorded MISS against10% remains historical evidence; optimization/remeasurement
+for this deviation is no longer a release prerequisite. Other V02 gates remain.
+Whole21/29 unchanged; next ONE bounded A02 ordinary producer-to-selected-value path.
+
+**Evidence checkpoints below retain their original scope and decision date.**
+
 **28 October — official90 intake complete in scoped source/UI:** host2dc220c6,
 same exact90/UI2; offline1290/build/types/package9/source73 and ONE isolated official
 native7checks PASS. Only BuildInfo/atom-page changed; runtime/worker/permissions
 unchanged89; rollback89 retained. [Concrete remaining gates and read-only performance diagnosis](completion/280-i02-current90-intake-release-path.md).
 No installation/publication/fullI02/U04/V02/V03 claim. Eight mandatory tasks remain;
-substantive gaps are ordinary complete lineage, useful derived local AI and required
-overhead; remaining work primarily final integration/distribution/acceptance. Most
+substantive gaps are ordinary complete lineage and useful derived local AI; remaining work primarily final integration/distribution/acceptance. Most
 saved overhead already appears in Basic attached mode; exact bottleneck not proven.
 No new benchmark or selected post89 performance correction. Whole21/29 unchanged.
 

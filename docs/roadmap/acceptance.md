@@ -1,5 +1,7 @@
 # Local developer-preview acceptance
 
+**Current plan, 28 October:** [record281](../completion/281-active-overhead-maintainer-acceptance.md) accepts measured Active overhead for release; no further optimization/benchmark is required for that deviation. Exact90/UI2 is already packaged and integrated in the official host ([280](../completion/280-i02-current90-intake-release-path.md)). Whole21/29 remains; next ONE bounded A02 ordinary producer-to-selected-value path. A02/L02 product gaps and remaining integration/distribution/UI/lifecycle/installed acceptance stay open. Earlier checkpoints below are historical; their no-waiver and package-next instructions are superseded.
+
 Morning checkpoint: [I02.41](../completion/277-i02-tab-refresh-status.md) sourcecccc90f/76affected/full6031 fixes tab-refresh current-context completion; unbuilt/unpackaged/native0. [V03.34](../completion/276-v03-development-module-native.md) remains wholeINCOMPLETE6, Off/On/parity unvisited; no retry. Current official89/711968a4 and original89ActiveMISS10% preserved. Whole21/29 unchanged. Next ONE V02.38 exactlocal90package eligibility/preparation, preserve prior registry roles.
 
 Current official89host79093c0c; [I02.39](../completion/273-i02-current89-host-refresh.md) source/package9+73 and ONE native10/9original reporter workflow PASS. [V02.37](../completion/272-v02-current89-original-performance.md) closes198rows/66windows: Basic399.1/416.5msPASS, Active10.71737255/27.31871841%MISS10%, no waiver/repeat. I02.40 new89worker-only2checks PASS, original suffix/333inputs/dist36stable.

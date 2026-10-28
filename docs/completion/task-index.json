@@ -3046,7 +3046,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "FullA02 field/writer/parameter/selected-producer mechanism remains open. Source54/55 packaged10, no native weak-dispatch/50cause proof or old50retry. Current independent step V02.33changed87original performance gate.",
+      "next_bounded_step": "A02: bound one ordinary producer-to-selected-value lineage path and its wrong-writer/refetch/alias counterexamples from existing evidence; identify the concrete mechanism gap before implementation, no whole audit or closed native retry.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -3424,7 +3424,8 @@
         "current_checkpoint": "220-a02-selected-source-isolation.md"
       },
       "historical_next_bounded_step_before_night_checkpoint": "ONE final bounded source review; I01 separate host scope pending, no oldnative repeats.",
-      "historical_next_bounded_step_before_I02_current82": "FullA02open: bounded field/writer/parameter/selected-producer prerequisites remain.51–53 source closed,50native budget exhausted; no guessed cause or blind retry. Next independent I01 is separately authorized and in progress; current native Capture regression remains."
+      "historical_next_bounded_step_before_I02_current82": "FullA02open: bounded field/writer/parameter/selected-producer prerequisites remain.51–53 source closed,50native budget exhausted; no guessed cause or blind retry. Next independent I01 is separately authorized and in progress; current native Capture regression remains.",
+      "historical_next_bounded_step_before_overhead_acceptance": "FullA02 field/writer/parameter/selected-producer mechanism remains open. Source54/55 packaged10, no native weak-dispatch/50cause proof or old50retry. Current independent step V02.33changed87original performance gate."
     },
     {
       "id": "A03",
@@ -6117,7 +6118,7 @@
       "historical_execution_records": [
         "189-l02-current-path-comparison.md"
       ],
-      "next_bounded_step": "ONE V02.34 bounded current-runtime active-overhead diagnostic: establish eligible owned profiling mechanism, freeze exact inputs, max1diagnostic collection. Original87gate MISS10%/closed1measurement1FIRSTreader untouched; no guessed cause/speedup/retune/CA/model/SDK/publication.",
+      "next_bounded_step": "Useful bounded derived local explanation and fixed-corpus quality/offline acceptance remain mandatory; no further overhead diagnostic prerequisite. Preserve closed model pilots and template-equivalent results.",
       "historical_checkpoint_before_L02_16": {
         "record": "189-l02-current-path-comparison.md",
         "status": "closed-bounded-native-incomplete-source-complete",
@@ -6482,7 +6483,8 @@
         "normal_installation_qualified": false,
         "usefulness_qualified": false,
         "whole_L02": false
-      }
+      },
+      "historical_next_bounded_step_before_overhead_acceptance": "ONE V02.34 bounded current-runtime active-overhead diagnostic: establish eligible owned profiling mechanism, freeze exact inputs, max1diagnostic collection. Original87gate MISS10%/closed1measurement1FIRSTreader untouched; no guessed cause/speedup/retune/CA/model/SDK/publication."
     },
     {
       "id": "I01",
@@ -8559,10 +8561,10 @@
         "next_bounded_step": "ONE V02.25 source/API feasibility: currentframe/origin metadata coverage vs webRequest target+initiator host permissions; no productpermission/narrowercoverage/newbench assumed. Original10%miss/no waiver."
       },
       "current_readiness_note": {
-        "record": "224-night-release-checkpoint.md",
+        "record": "281-active-overhead-maintainer-acceptance.md",
         "full_item_accepted": false,
         "historical_results_unchanged": true,
-        "note": "V02 current82 Active overhead still misses10%; V03 full guide/first-reader failures remain, source/posthoc controls do not promote them."
+        "note": "Recorded Active overhead accepted for release; remaining lifecycle/privacy/resource and unchanged latency acceptance still required."
       },
       "historical_checkpoint_before_V02_26": {
         "record": "215-v02-webrequest-feasibility.md",
@@ -8644,7 +8646,7 @@
         "measurement_budget_remaining": 0,
         "first_reader_budget_remaining": 0
       },
-      "next_bounded_step": "Official90 UI intake complete280; original89Active10% gate still fails. Read-only raw diagnosis shows most overhead already in Basic attached mode, not localized causally. Select one bounded evidence-backed shared-attached-path diagnostic/source premise before another measurement; no unchanged gate retry/waiver/repack.",
+      "next_bounded_step": "Finish remaining final-input lifecycle/privacy/resource and unchanged latency acceptance; recorded89 overhead accepted in281. No overhead optimization or unchanged benchmark retry is required.",
       "historical_active_before_V02_31": {
         "id": "V02.30",
         "record": "239-v02-debugger-lifetime-feasibility.md",
@@ -8711,7 +8713,7 @@
         }
       },
       "historical_execution_before_V02_34": "259-v02-current87-original-performance.md",
-      "original_current_performance_gate": "259-v02-current87-original-performance.md",
+      "original_current_performance_gate": "272-v02-current89-original-performance.md",
       "package90_ui_acceptance": {
         "record": "279-v02-current90-native-ui.md",
         "status": "pass-changed-ui-only",
@@ -8725,7 +8727,34 @@
         "performance_qualified": false,
         "closed_opener_reopen": "NOT_RUN",
         "error_quality_observation": "Invalid selector surfaces null/unsupported implementation error, recoverable; no correction in this slice."
-      }
+      },
+      "release_performance_decision": {
+        "record": "281-active-overhead-maintainer-acceptance.md",
+        "date": "2026-10-28",
+        "authority": "explicit maintainer instruction in conversation",
+        "status": "accepted-for-release-by-maintainer-exception",
+        "metric": "Active/off median workload degradation",
+        "measured_package": "0.1.0-candidate.20261028.89",
+        "original_target_percent": 10,
+        "active_overhead_percent": {
+          "standalone": 10.71737255,
+          "embedding": 27.31871841
+        },
+        "raw_sha256": "a31b7c29fc3c041bbfe2956b777ebf770110ec471239e2f78f54b817e177c78f",
+        "original_measurement_result": "PASS_COMPLETE_MEASUREMENT_ORIGINAL_TARGETS_MISSED",
+        "blocks_release": false,
+        "further_optimization_required_for_this_deviation": false,
+        "new_measurement": false,
+        "whole_V02_complete": false,
+        "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278–280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
+      },
+      "historical_readiness_note_before_overhead_acceptance": {
+        "record": "224-night-release-checkpoint.md",
+        "full_item_accepted": false,
+        "historical_results_unchanged": true,
+        "note": "V02 current82 Active overhead still misses10%; V03 full guide/first-reader failures remain, source/posthoc controls do not promote them."
+      },
+      "historical_next_bounded_step_before_overhead_acceptance": "Official90 UI intake complete280; original89Active10% gate still fails. Read-only raw diagnosis shows most overhead already in Basic attached mode, not localized causally. Select one bounded evidence-backed shared-attached-path diagnostic/source premise before another measurement; no unchanged gate retry/waiver/repack."
     },
     {
       "id": "V03",
@@ -10104,7 +10133,8 @@
         "offline_source_tests": 4,
         "project_source_changed_in_fix_pass": false
       },
-      "next_bounded_step": "FullV03normal-setup/independent-app gates open;32native INCOMPLETE stays, current87backend13 is private-wire/no field widgets. Current independent V02.33original performance gate, no oldcase retry."
+      "next_bounded_step": "Complete normal-setup/independent-app journeys once relevant inputs stabilize; preserve closed incomplete32/34 cases without unchanged retry. Recorded Active overhead accepted281.",
+      "historical_next_bounded_step_before_overhead_acceptance": "FullV03normal-setup/independent-app gates open;32native INCOMPLETE stays, current87backend13 is private-wire/no field widgets. Current independent V02.33original performance gate, no oldcase retry."
     },
     {
       "id": "V04",
@@ -10157,7 +10187,8 @@
         "new_feature_acceptances": [],
         "ready_for_full_scope_release": false
       },
-      "next_bounded_step": "Final ledger only after actual remaining feature/performance/host/native criteria; partial snapshot is not readiness."
+      "next_bounded_step": "Assemble final ledger after remaining feature/host/UI/lifecycle/distribution/installed criteria; carry accepted overhead deviation281, not a numerical PASS or whole-V02 completion.",
+      "historical_next_bounded_step_before_overhead_acceptance": "Final ledger only after actual remaining feature/performance/host/native criteria; partial snapshot is not readiness."
     }
   ],
   "starting_sequence": [
@@ -10255,7 +10286,29 @@
       "basic_p95_ms": 1000,
       "warm_source_action_p95_ms": 3000,
       "active_observation_median_degradation_percent": 10,
-      "exception": "explicit maintainer agreement"
+      "exception": "explicit maintainer agreement",
+      "accepted_deviations": [
+        {
+          "record": "281-active-overhead-maintainer-acceptance.md",
+          "date": "2026-10-28",
+          "authority": "explicit maintainer instruction in conversation",
+          "status": "accepted-for-release-by-maintainer-exception",
+          "metric": "Active/off median workload degradation",
+          "measured_package": "0.1.0-candidate.20261028.89",
+          "original_target_percent": 10,
+          "active_overhead_percent": {
+            "standalone": 10.71737255,
+            "embedding": 27.31871841
+          },
+          "raw_sha256": "a31b7c29fc3c041bbfe2956b777ebf770110ec471239e2f78f54b817e177c78f",
+          "original_measurement_result": "PASS_COMPLETE_MEASUREMENT_ORIGINAL_TARGETS_MISSED",
+          "blocks_release": false,
+          "further_optimization_required_for_this_deviation": false,
+          "new_measurement": false,
+          "whole_V02_complete": false,
+          "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278–280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
+        }
+      ]
     },
     "exclusions": [
       "Atom cloud backend",
@@ -10275,7 +10328,7 @@
       "unweighted_percent": 72.41,
       "ready_for_full_scope_release": false,
       "scope_reduced": false,
-      "record": "280-i02-current90-intake-release-path.md"
+      "record": "281-active-overhead-maintainer-acceptance.md"
     },
     "current_development_plugin_checkpoint": {
       "revision": "771a82c197c7c6ebb7d0d168109b70207dd21b8d",
@@ -10329,11 +10382,11 @@
       "next_bounded_step": "I01 exact local-file policy/install then current host guardian/lifecycle adaptation; separate scope already authorized.",
       "next_task": "A02"
     },
-    "document": "277-i02-tab-refresh-status.md",
+    "document": "281-active-overhead-maintainer-acceptance.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-28",
-    "current_increment": "I02.42 exact official90 intake and native7 scoped UI PASS;270source327build31payload/package9/source73. Only BuildInfo/atom-page change; runtime/worker/permissions same89. Rollback/history retained; no installed/publication/fullI02/V02 credit.",
-    "next_item": "V02.38",
+    "current_increment": "Maintainer accepts recorded Active overhead for release; documentation only, no new measurement or whole task acceptance.",
+    "next_item": "A02",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -10358,7 +10411,7 @@
       "I01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "I02.41",
+    "active_item": "A02",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -13358,11 +13411,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Exact90 source/package/public UI and official changed-UI preparation completed. Remaining substantive A02/L02/V02 gates and final host/distribution/independent-app/ledger acceptance are mapped in280; no automatic repack or unchanged closed-case retry.",
+    "current_activity_note": "Exact90 official intake already complete within280 scope. Recorded overhead is no longer blocking; A02/L02 product gaps and remaining final acceptance/distribution stay mandatory.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "cccc90f",
     "current_record_date": "2026-10-28",
-    "next_bounded_step": "Select one concrete substantive user-result gap or preregister a bounded shared-attached-path diagnostic from existing89raw; no post89 optimization or new benchmark selected by this intake.",
+    "next_bounded_step": "A02: bound one ordinary producer-to-selected-value lineage path and its wrong-writer/refetch/alias counterexamples from existing evidence; identify the concrete mechanism gap before implementation, no whole audit or closed native retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -13408,8 +13461,7 @@
       "reviewedRevision": "99d20d86f5d00229cbb431fc0d82b8c63e60a01a",
       "minor": "M16 review-time stale pointer, deferred historical metadata"
     },
-    "current_release_assessment": "280-i02-current90-intake-release-path.md",
-    "current_release_assessment_snapshot": ".artifacts/release/2026-10-28-official90-readiness/",
+    "current_release_assessment": "281-active-overhead-maintainer-acceptance.md",
     "release_checkpoint": {
       "record": "224-night-release-checkpoint.md",
       "artifact": ".artifacts/release/2026-10-27-night-checkpoint/snapshot.json",
@@ -13553,7 +13605,37 @@
       "next_bounded_step": "ONE V02.38 exact local90package eligibility/preparation from reviewedcccc90f/full6031: preserve all2040previous registry bindings/role history, reconcile current89host versus historical88dist and generated aliases before metadata/ONEpack/type2/admission9. No native/model/performance retry/SDK/publication.",
       "current_release_assessment": "205-release-date-decision.md",
       "current_release_assessment_snapshot": ".artifacts/release/2026-10-26-open-gates-assessment/snapshot.json"
+    },
+    "historical_plan_pointers_before_overhead_acceptance": {
+      "document": "277-i02-tab-refresh-status.md",
+      "active_item": "I02.41",
+      "next_item": "V02.38",
+      "current_increment": "I02.42 exact official90 intake and native7 scoped UI PASS;270source327build31payload/package9/source73. Only BuildInfo/atom-page change; runtime/worker/permissions same89. Rollback/history retained; no installed/publication/fullI02/V02 credit.",
+      "current_activity_note": "Exact90 source/package/public UI and official changed-UI preparation completed. Remaining substantive A02/L02/V02 gates and final host/distribution/independent-app/ledger acceptance are mapped in280; no automatic repack or unchanged closed-case retry.",
+      "next_bounded_step": "Select one concrete substantive user-result gap or preregister a bounded shared-attached-path diagnostic from existing89raw; no post89 optimization or new benchmark selected by this intake.",
+      "current_release_assessment": "280-i02-current90-intake-release-path.md",
+      "current_release_assessment_snapshot": ".artifacts/release/2026-10-28-official90-readiness/"
+    },
+    "current_performance_decision": {
+      "record": "281-active-overhead-maintainer-acceptance.md",
+      "date": "2026-10-28",
+      "authority": "explicit maintainer instruction in conversation",
+      "status": "accepted-for-release-by-maintainer-exception",
+      "metric": "Active/off median workload degradation",
+      "measured_package": "0.1.0-candidate.20261028.89",
+      "original_target_percent": 10,
+      "active_overhead_percent": {
+        "standalone": 10.71737255,
+        "embedding": 27.31871841
+      },
+      "raw_sha256": "a31b7c29fc3c041bbfe2956b777ebf770110ec471239e2f78f54b817e177c78f",
+      "original_measurement_result": "PASS_COMPLETE_MEASUREMENT_ORIGINAL_TARGETS_MISSED",
+      "blocks_release": false,
+      "further_optimization_required_for_this_deviation": false,
+      "new_measurement": false,
+      "whole_V02_complete": false,
+      "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278–280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
     }
   },
-  "next_task": "V02"
+  "next_task": "A02"
 }

@@ -1,5 +1,7 @@
 # Validation and release — implementation plan
 
+**Current Active-overhead exception (28 October):** [maintainer acceptance](281-active-overhead-maintainer-acceptance.md) removes the recorded89 Active/off deviation from release blockers. Preserve the original 10% protocol/MISS and all remaining V02/V03 criteria; carry the exception in V04.
+
 **Goal:** verify every required outcome against the actual candidate, through declared supported environments and the real user interface.
 
 **Architecture:** retain the unit/native harnesses, group checks by changed capability and join evidence on an immutable candidate. Do not replace the test framework or historical evaluation model.

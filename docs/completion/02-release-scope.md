@@ -1,5 +1,7 @@
 # Release scope and completion contract
 
+**28 October performance decision:** the maintainer accepts the recorded Active overhead (10.71737255% standalone / 27.31871841% embedding) for the planned release. See [the scoped exception](281-active-overhead-maintainer-acceptance.md). The original target and measured MISS remain; this deviation no longer blocks release. Other requirements are unchanged.
+
 **Status:** approved scope, revision `scope-review-1`, incorporating the maintainer's item-by-item decisions. Implementation and release acceptance remain separate. The source audit still concerns `f3a7a7e1ba43bea4e39954eaf49b95266822692b`; no new execution result is implied by this revision.
 
 The [decision record](12-scope-decisions.md) records the changes from the proposed contract. The historical requirement IDs O01/O02 are retained for traceability; both are now mandatory deliverables.
