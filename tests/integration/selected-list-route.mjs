@@ -1,8 +1,10 @@
+import {fork} from 'node:child_process';
+import {startListFieldChannel} from '../../core/list-field-channel.mjs';
 // SPDX-License-Identifier: Apache-2.0
 // Frozen301 conjunction diagnostic: real extension/helper; not installed IDE/UI
 // presentation/export/official-host acceptance and not the full282 matrix.
 import {parseDiagnostic} from '../../core/diagnostic.mjs';
-import assert from 'node:assert/strict';import {mkdir,readFile,writeFile} from 'node:fs/promises';import {createHash,randomBytes} from 'node:crypto';
+import assert from 'node:assert/strict';import {mkdir,readFile,writeFile,readdir} from 'node:fs/promises';import {createHash,randomBytes} from 'node:crypto';
 import {buildListFieldCompilation} from '../../src/engine/list-field-compilation.mjs';
 import {startListFieldServer} from '../../src/engine/list-field-server.mjs';
 import {createListFieldCodeContext,listFieldCodeContextView} from '../../src/engine/list-field-code.mjs';
@@ -11,15 +13,17 @@ import {startBridge} from '../../core/bridge.mjs';
 import {rpc,waitFor} from '../../scripts/harness.mjs';
 import {nativeInspectorUI} from '../helpers/native-inspector-ui.mjs';
 import {nativeApproveDevelopment,nativeChooseTab} from '../../scripts/native-browser.mjs';
-const presentation=process.argv.includes('--presentation'),domControls=process.argv.includes('--dom-controls');
+const presentation=process.argv.includes('--presentation'),domControls=process.argv.includes('--dom-controls'),privateChannel=process.argv.includes('--private-channel');
 const root=process.cwd(),out=root+'/.artifacts/a02/selected-list-route/'+new Date().toISOString().replace(/[:.]/g,'-'),sha=s=>createHash('sha256').update(s).digest('hex');await mkdir(out,{recursive:true});
 const sourceRoot='.runtime/todomvc/examples/react',options={projectRoot:root,appRoot:sourceRoot,entry:'src/index.js',root:{file:'src/todo/app.jsx',export:'App'},field:'title',sources:['src/todo/app.jsx','src/todo/reducer.js','src/todo/components/main.jsx','src/todo/components/item.jsx','src/todo/components/footer.jsx']};
-const result={schema:'stateatom.selected-list-route-diagnostic/1',case:domControls?'docs/completion/305-a02-native-dom-interval-case.md':presentation?'docs/completion/303-a02-selected-list-presentation-case.md':'docs/completion/301-a02-list-helper-native-case.md',out,startedAt:new Date().toISOString(),checks:[],errors:[],fullA02:false,installedIDE:false,publicPresentation:false,officialHost:false};let source,bridge,session,appSession;
+const result={schema:'stateatom.selected-list-route-diagnostic/1',case:privateChannel?'docs/completion/307-a02-private-helper-channel-case.md':domControls?'docs/completion/305-a02-native-dom-interval-case.md':presentation?'docs/completion/303-a02-selected-list-presentation-case.md':'docs/completion/301-a02-list-helper-native-case.md',out,startedAt:new Date().toISOString(),checks:[],errors:[],fullA02:false,installedIDE:false,publicPresentation:false,officialHost:false};let source,bridge,session,appSession,channel;
 async function check(name,fn){await fn();result.checks.push({name,status:'PASS'});console.log('PASS',name);}
 try{
  const compilation=await buildListFieldCompilation(options);await writeFile(out+'/manifest.json',JSON.stringify(compilation.manifest,null,2));await writeFile(out+'/bundle.js',compilation.code);
  await writeFile(out+'/frozen-inputs.json',JSON.stringify({case:sha(await readFile(result.case)),script:sha(await readFile(new URL(import.meta.url))),manifest:compilation.manifest.digest,bundle:compilation.manifest.bundle.digest,extensionWorker:sha(await readFile('dist/browser/worker.js'))},null,2));
- source=await startListFieldServer({compilation});bridge=startBridge({root,port:0,token:randomBytes(32).toString('hex'),onOpen:async()=>({opened:false,reason:'Source-helper diagnostic, no installed IDE'}),onDefinitions:async()=>[],onReferences:async()=>[]});await bridge.ready;bridge.cfg.port=bridge.server.address().port;
+ source=await startListFieldServer({compilation});
+ if(privateChannel){const child=fork(new URL('../helpers/list-channel-bridge.mjs',import.meta.url),[],{stdio:['ignore','ignore','inherit','ipc']});const ready=await new Promise((resolve,reject)=>{const timer=setTimeout(()=>{child.kill('SIGTERM');reject(Error('Separate helper startup timeout'));},10000);child.once('error',reject);child.once('message',m=>{clearTimeout(timer);m.error?reject(Error(m.error)):resolve(m)});child.send({root});});bridge={cfg:{port:ready.port,token:ready.token},helper:ready.helper,workspace:ready.workspace,close:async()=>{if(child.connected)child.send({close:true});try{await waitFor(()=>child.exitCode!==null,10000);}catch{child.kill('SIGTERM');throw Error('Separate helper cleanup timeout');}}};result.separateHelperPid=child.pid;}
+ else{bridge=startBridge({root,port:0,token:randomBytes(32).toString('hex'),onOpen:async()=>({opened:false,reason:'Source-helper diagnostic, no installed IDE'}),onDefinitions:async()=>[],onReferences:async()=>[]});await bridge.ready;bridge.cfg.port=bridge.server.address().port;}
  session=await launchControlledFirstReadBrowser({projectRoot:root,headed:true,appProfile:'selected-list'});const {panel}=session,ui=await nativeInspectorUI(panel,session.browser);
  await ui.click('source-nav');await ui.fill('connection-receipt',JSON.stringify({schemaVersion:1,helper:bridge.helper,workspace:bridge.workspace,url:'http://127.0.0.1:'+bridge.cfg.port,origin:'http://127.0.0.1:4173',token:bridge.cfg.token,sourceRoot}));await ui.click('connect-receipt');await ui.waitOK();
  const tabId=await nativeChooseTab(panel,session.setupURL);await nativeApproveDevelopment(panel,tabId);await rpc(panel,{op:'attach',tabId});
@@ -29,7 +33,11 @@ try{
  async function key(key,code,n,modifiers=0){for(const type of['keyDown','keyUp'])await app.send('Input.dispatchKeyEvent',{type,key,code,windowsVirtualKeyCode:n,modifiers,...(key==='Enter'&&type==='keyDown'?{text:'\r',unmodifiedText:'\r'}:{})});}
  async function fill(selector,value){await app.send('Page.bringToFront');await app.send('DOM.focus',{nodeId:await waitFor(()=>node(selector))});await key('a','KeyA',65,2);await app.send('Input.insertText',{text:value});}
  await app.send('Page.navigate',{url:'http://127.0.0.1:4173/list/'});await waitFor(()=>node('[aria-label="New Todo Input"]'));
- const context=await createListFieldCodeContext({compilation,effects:source.effects,witness:session.witness});result.context=listFieldCodeContextView(context);assert.equal(result.context.status,'Owned list code context',JSON.stringify(result.context));bridge.bindListFieldContext(context);console.log('PASS actual owned context issued');
+ const context=await createListFieldCodeContext({compilation,effects:source.effects,witness:session.witness});result.context=listFieldCodeContextView(context);assert.equal(result.context.status,'Owned list code context',JSON.stringify(result.context));if(privateChannel)channel=await startListFieldChannel({root,context});else bridge.bindListFieldContext(context);console.log('PASS actual owned context issued');
+ if(privateChannel)await check('private verifier denies browser Origin, wrong bearer and wrong Host',async()=>{
+  const dir=root+'/.runtime/selected-list-live',names=(await readdir(dir)).filter(n=>n.endsWith('.json'));assert.equal(names.length,1);const cap=JSON.parse(await readFile(dir+'/'+names[0]));
+  for(const headers of[{origin:'http://127.0.0.1:4173',authorization:'Bearer '+cap.token},{authorization:'Bearer wrong'},{host:'localhost:'+cap.port,authorization:'Bearer '+cap.token}]){const r=await fetch('http://127.0.0.1:'+cap.port+cap.endpoint,{method:'POST',headers,body:'{}'});assert.equal(r.status,403);}
+ });
  async function inspect(name,selector){
   await rpc(panel,{op:'property',tabId,property:'text'});
   const reply=await rpc(panel,{op:'inspect-selector',tabId,selector,...(presentation?{elementProperties:true}:{})});
@@ -81,6 +89,7 @@ try{
   const reader=await session.browser.context.newPage();await reader.goto('chrome-extension://'+session.browser.id+'/reader.html');const readerUI=await nativeInspectorUI(reader,session.browser);
   try{await readerUI.files('#diagnostic-file',[out+'/historical-diagnostic.json']);await waitFor(()=>reader.evaluate(()=>document.getElementById('reader-status').textContent.startsWith('Imported historical diagnostic')));const text=await reader.evaluate(()=>document.getElementById('reader-summary').textContent);assert.match(text,/Historical text origin/);assert.match(text,/reducer.js:50:84/);assert.match(text,/not reverified.*no action authority/);assert.equal(await reader.evaluate(()=>document.querySelectorAll('#reader-summary button').length),0);await reader.screenshot({path:out+'/historical-reader-candidate.png'});await writeFile(out+'/historical-reader.txt',text);}finally{await readerUI.close();}
  });
+ if(privateChannel){await channel.close();await check('closing private verifier denies a fresh separate-helper analysis',async()=>{const denied=await inspect('channel-closed',first);assert.equal(denied.fullPath,false);assert.match(denied.reason,/private.*verifier unavailable/);});}
  assert.deepEqual(result.errors,[]);result.status='PASS_BOUNDED_NATIVE_ROUTE';
 }catch(error){if(appSession)try{const shot=await appSession.send('Page.captureScreenshot',{format:'png'});await writeFile(out+'/failed-app.png',Buffer.from(shot.data,'base64'));const{root:doc}=await appSession.send('DOM.getDocument');const html=await appSession.send('DOM.getOuterHTML',{nodeId:doc.nodeId});await writeFile(out+'/failed-app.html',html.outerHTML);}catch{}result.status='INCOMPLETE';result.error=String(error.stack||error);if(error.cause){result.cause=String(error.cause.stack||error.cause);if(error.cause.nativeTargets)result.nativeTargets=error.cause.nativeTargets;if(error.cause.discoveryError)result.discoveryError=error.cause.discoveryError;if(error.cause.historyDiagnostic)result.historyDiagnostic=error.cause.historyDiagnostic;}process.exitCode=1;}
-finally{for(const[name,resource]of[['browser',session],['helper',bridge],['source',source]])if(resource)try{await resource.close();result[name+'Closed']=true;}catch(error){result.errors.push(name+' cleanup: '+error);process.exitCode=1;}result.completedAt=new Date().toISOString();await writeFile(out+'/results.json',JSON.stringify(result,null,2));console.log(JSON.stringify({out,status:result.status,error:result.error||null,cause:result.cause||null,errors:result.errors}));}
+finally{for(const[name,resource]of[['browser',session],['channel',channel],['helper',bridge],['source',source]])if(resource)try{await resource.close();result[name+'Closed']=true;}catch(error){result.errors.push(name+' cleanup: '+error);process.exitCode=1;}result.completedAt=new Date().toISOString();await writeFile(out+'/results.json',JSON.stringify(result,null,2));console.log(JSON.stringify({out,status:result.status,error:result.error||null,cause:result.cause||null,errors:result.errors}));}

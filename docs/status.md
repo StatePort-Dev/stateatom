@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 helper transport:** [checkpoint308](completion/308-a02-private-helper-channel-result.md): real separate helper reaches the owned verifier through a private workspace channel.19affectedPASS +7native checks PASS; Origin/key/Host/close refusals retained. Installed VSIX/IDE and normal packaged plugin launch remain open; whole21/29 unchanged.
+
 **Latest A02 native DOM boundary:** [checkpoint306](completion/306-a02-native-dom-interval-repair.md): reproduced and fixed a false positive after external text plus a later no-op React commit. External mutation marks now survive until an actual original host write repairs the same subtree.10 native checks PASS;162 affected source cases covered, including a sandbox-blocked server check rerun with loopback. Installed plugin/IDE/official/held-out/full282 remain open; whole21/29 unchanged. Next normal open-plugin route.
 
 **Latest A02 readable chain:** [checkpoint304](completion/304-a02-selected-list-presentation-result.md): compact current text origin, historical source/revision export and passive reader.148affectedPASS +9 actual built standalone/source-helper checks PASS;440/390px candidates and keyboard disclosure checked. Installed plugin/IDE/official/held-out/full282 remain open; whole21/29 unchanged. Next actual post-commit DOM mutation controls.

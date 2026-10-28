@@ -1,3 +1,4 @@
+import {verifyRemoteListField} from './list-field-channel.mjs';
 import {HELPER_ID,HELPER_VERSION,HELPER_PROTOCOL} from './project-connection.mjs';
 import {appOrigin} from '../packages/atom/src/origin-policy.mjs';
 import {verifyListFieldRoute,listFieldCodeContextView} from '../src/engine/list-field-code.mjs';
@@ -57,7 +58,7 @@ export function startBridge({root,port=47731,token,onOpen,onDefinitions,onRefere
      const bound=eligible.length>0;result=analyzeSources(eligible,{...body.selection,unbound:!bound},body.requests||[],{run:body.run,build:digest([...samples].sort().join(''))||'unbound',freshness:bound?'build-observed; source freshness per edge':'unbound'},{projectFiles:files});
      result.stateatom={target:targetIdentity(body.selection),runtime:validateTrace(files,body.deepTrace),slices:result.sources.map(source=>sourceSlice(files,source))};
      if(body.deepTrace?.firstReadObservations){const compilation=await loadFirstReadCompilation(root,body.origin);result.stateatom.firstReadCompilation=compilation;result.stateatom.firstReadProfile=verifyFirstRead({compilation,code:body.firstReadCode,trace:body.deepTrace,selection:body.selection,run:body.run});}
-     if(body.deepTrace?.listFieldObservations)result.stateatom.selectedListProfile=await verifyListFieldRoute(listFieldContext,{root,sourceRoot,origin:body.origin,extensionId:origin.split('://')[1],trace:body.deepTrace,selection:body.selection,code:body.firstReadCode,run:body.run});
+     if(body.deepTrace?.listFieldObservations)result.stateatom.selectedListProfile=await (listFieldContext?options=>verifyListFieldRoute(listFieldContext,options):verifyRemoteListField)({root,sourceRoot,origin:body.origin,extensionId:origin.split('://')[1],trace:body.deepTrace,selection:body.selection,code:body.firstReadCode,run:body.run});
      result.boundFiles=eligible.map(f=>f.file);result.bindings=eligible.map(f=>({file:f.file,method:body.selection.marker?'instrumented marker + source digest':sourceBinding(f.text,samples)}));
     }else if(op==='check-action-sources'){
      if(!Array.isArray(body.sources)||body.sources.length>32)throw Error('Action source budget');
