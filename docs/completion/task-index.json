@@ -6798,7 +6798,7 @@
         "meaning": "Existing source integration/old-pair native evidence credited; current exact pair update/acceptance remains open"
       },
       "execution_record": "277-i02-tab-refresh-status.md",
-      "next_bounded_step": "ONE V02.38 exact local90package eligibility/preparation from reviewedcccc90f/full6031: preserve all2040previous registry bindings/role history, reconcile current89host versus historical88dist and generated aliases before metadata/ONEpack/type2/admission9. No native/model/performance retry/SDK/publication.",
+      "next_bounded_step": "Official90 intake and affected UI complete280. Reuse this exact candidate while inputs stay identical; full official coexistence matrix remains scoped by final substantive A02/L02/V02 acceptance. Do not repeat closed89cases or repackage unchanged inputs.",
       "completed_slices": [
         {
           "id": "I02.38",
@@ -6851,6 +6851,18 @@
           "packaged": false,
           "whole_I02_complete": false
         }
+      },
+      "official90_intake": {
+        "record": "280-i02-current90-intake-release-path.md",
+        "status": "scoped-intake-and-changed-ui-pass-not-whole-I02",
+        "host_source": "2dc220c6d1528c60eadcb245d1d1e714da9b7c66",
+        "package_checks": 9,
+        "source_checks": 73,
+        "native_checks": 7,
+        "timing_controls_in_native_checks": 1,
+        "native_raw_sha256": "baef0639bda1aa9d393edd25a9d3d65fe95cdb3d8e5d1e8b4f6cd9efbba00fc7",
+        "installed_user_changed": false,
+        "full_I02": false
       }
     },
     {
@@ -8632,7 +8644,7 @@
         "measurement_budget_remaining": 0,
         "first_reader_budget_remaining": 0
       },
-      "next_bounded_step": "Exact90 changed-UI evidence recorded279; bounded official90 intake may consume it, preserving89/rollback. FullV02 still fails original89Active10% criterion; select a concrete evidence-backed post89 diagnostic/source premise before any new measurement. No unchanged gate retry, automatic repack, waiver or publication.",
+      "next_bounded_step": "Official90 UI intake complete280; original89Active10% gate still fails. Read-only raw diagnosis shows most overhead already in Basic attached mode, not localized causally. Select one bounded evidence-backed shared-attached-path diagnostic/source premise before another measurement; no unchanged gate retry/waiver/repack.",
       "historical_active_before_V02_31": {
         "id": "V02.30",
         "record": "239-v02-debugger-lifetime-feasibility.md",
@@ -10263,7 +10275,7 @@
       "unweighted_percent": 72.41,
       "ready_for_full_scope_release": false,
       "scope_reduced": false,
-      "record": "226-i01-current82-official-host.md"
+      "record": "280-i02-current90-intake-release-path.md"
     },
     "current_development_plugin_checkpoint": {
       "revision": "771a82c197c7c6ebb7d0d168109b70207dd21b8d",
@@ -10280,21 +10292,24 @@
       "whole_V03": false
     },
     "current_host_checkpoint": {
-      "revision": "711968a4",
-      "native_source_revision": "79093c0c51ccacfcaaefa454e8ec43239a07e77a",
-      "record": "273-i02-current89-host-refresh.md",
-      "package": "0.1.0-candidate.20261028.89",
-      "package_sha256": "57f0f40b02a15935897a3488474ac7d405b36c7fc4c66b7e7d1302952bbd2890",
-      "native_checks": 10,
-      "original_workflow_checks": 9,
+      "revision": "2dc220c6d1528c60eadcb245d1d1e714da9b7c66",
+      "native_source_revision": "2dc220c6d1528c60eadcb245d1d1e714da9b7c66",
+      "record": "280-i02-current90-intake-release-path.md",
+      "package": "0.1.0-candidate.20261028.90",
+      "package_sha256": "46b4d4d86461634a40ca28ff71a87def2be32b9d912d2d432fd7c2921a6451f6",
+      "native_checks": 7,
+      "explicit_real_response_timing_controls": 1,
+      "native_raw_sha256": "baef0639bda1aa9d393edd25a9d3d65fe95cdb3d8e5d1e8b4f6cd9efbba00fc7",
       "source_checks": 73,
       "package_checks": 9,
-      "registered_inputs": 333,
+      "dist_files": 36,
+      "changed_dist_files": [
+        "BUILD-INFO.json",
+        "atom-page.js"
+      ],
       "fresh_model_qualified": false,
       "full_I02_accepted": false,
-      "worker_history_record": "274-i02-current89-worker-history.md",
-      "worker_history_source": "551d90c817a506ddcf2366a965757d5fd77431c3",
-      "worker_history_native_checks": 2
+      "installed_user_changed": false
     },
     "historical_active_pointer_before_I02_current82": {
       "document": "144-v03-owned-editor-reply.md",
@@ -10317,7 +10332,7 @@
     "document": "277-i02-tab-refresh-status.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-28",
-    "current_increment": "I02.41 source fixcccc90f: exact tab-refresh Working→OK RED/76affected/full6031PASS, source270deltaUI1/build327deltaUI+CH2; immutable89pair44/official36/plugin15/raws stable. Unpackaged/native0.",
+    "current_increment": "I02.42 exact official90 intake and native7 scoped UI PASS;270source327build31payload/package9/source73. Only BuildInfo/atom-page change; runtime/worker/permissions same89. Rollback/history retained; no installed/publication/fullI02/V02 credit.",
     "next_item": "V02.38",
     "new_full_task_acceptances": [
       "F01",
@@ -13343,11 +13358,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Source status fix complete; current official host remains89/711968a4. New dev276wholeINCOMPLETE6, Off/On/parity unvisited, budget0. Next ONE exactlocal90package preparation.",
+    "current_activity_note": "Exact90 source/package/public UI and official changed-UI preparation completed. Remaining substantive A02/L02/V02 gates and final host/distribution/independent-app/ledger acceptance are mapped in280; no automatic repack or unchanged closed-case retry.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "cccc90f",
     "current_record_date": "2026-10-28",
-    "next_bounded_step": "ONE V02.38 exact local90package eligibility/preparation from reviewedcccc90f/full6031: preserve all2040previous registry bindings/role history, reconcile current89host versus historical88dist and generated aliases before metadata/ONEpack/type2/admission9. No native/model/performance retry/SDK/publication.",
+    "next_bounded_step": "Select one concrete substantive user-result gap or preregister a bounded shared-attached-path diagnostic from existing89raw; no post89 optimization or new benchmark selected by this intake.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -13393,8 +13408,8 @@
       "reviewedRevision": "99d20d86f5d00229cbb431fc0d82b8c63e60a01a",
       "minor": "M16 review-time stale pointer, deferred historical metadata"
     },
-    "current_release_assessment": "205-release-date-decision.md",
-    "current_release_assessment_snapshot": ".artifacts/release/2026-10-26-open-gates-assessment/snapshot.json",
+    "current_release_assessment": "280-i02-current90-intake-release-path.md",
+    "current_release_assessment_snapshot": ".artifacts/release/2026-10-28-official90-readiness/",
     "release_checkpoint": {
       "record": "224-night-release-checkpoint.md",
       "artifact": ".artifacts/release/2026-10-27-night-checkpoint/snapshot.json",
@@ -13485,12 +13500,14 @@
       "performance_accepted": false
     },
     "current_local_package_checkpoint": {
-      "record": "271-v02-current89-local-package.md",
-      "package": "0.1.0-candidate.20261028.89",
-      "handoff": ".artifacts/atom/2026-10-28T03-50-59-612Z/atom-handoff.json",
-      "producer": "fdc8ec23355403804c61db50305c02544b308b21",
-      "native_qualified": false,
-      "official_host_still": "0.1.0-candidate.20261028.88"
+      "record": "278-v02-current90-local-package.md",
+      "package": "0.1.0-candidate.20261028.90",
+      "handoff": ".artifacts/atom/2026-10-28T06-14-50-819Z/atom-handoff.json",
+      "producer": "69b8d86f6316544611bfd83f53d9bf921c79157d",
+      "full_native_qualified": false,
+      "changed_UI_record": "279-v02-current90-native-ui.md",
+      "scoped_native_checks": 13,
+      "official_host_package": "0.1.0-candidate.20261028.90"
     },
     "historical_host_checkpoint_before_I02_39": {
       "revision": "b9b6e23d",
@@ -13504,6 +13521,38 @@
       "native_api_counters_collected": false,
       "usefulness_qualified": false,
       "full_I02_accepted": false
+    },
+    "historical_before_official90_intake": {
+      "current_host_checkpoint": {
+        "revision": "711968a4",
+        "native_source_revision": "79093c0c51ccacfcaaefa454e8ec43239a07e77a",
+        "record": "273-i02-current89-host-refresh.md",
+        "package": "0.1.0-candidate.20261028.89",
+        "package_sha256": "57f0f40b02a15935897a3488474ac7d405b36c7fc4c66b7e7d1302952bbd2890",
+        "native_checks": 10,
+        "original_workflow_checks": 9,
+        "source_checks": 73,
+        "package_checks": 9,
+        "registered_inputs": 333,
+        "fresh_model_qualified": false,
+        "full_I02_accepted": false,
+        "worker_history_record": "274-i02-current89-worker-history.md",
+        "worker_history_source": "551d90c817a506ddcf2366a965757d5fd77431c3",
+        "worker_history_native_checks": 2
+      },
+      "current_local_package_checkpoint": {
+        "record": "271-v02-current89-local-package.md",
+        "package": "0.1.0-candidate.20261028.89",
+        "handoff": ".artifacts/atom/2026-10-28T03-50-59-612Z/atom-handoff.json",
+        "producer": "fdc8ec23355403804c61db50305c02544b308b21",
+        "native_qualified": false,
+        "official_host_still": "0.1.0-candidate.20261028.88"
+      },
+      "current_increment": "I02.41 source fixcccc90f: exact tab-refresh Working→OK RED/76affected/full6031PASS, source270deltaUI1/build327deltaUI+CH2; immutable89pair44/official36/plugin15/raws stable. Unpackaged/native0.",
+      "current_activity_note": "Source status fix complete; current official host remains89/711968a4. New dev276wholeINCOMPLETE6, Off/On/parity unvisited, budget0. Next ONE exactlocal90package preparation.",
+      "next_bounded_step": "ONE V02.38 exact local90package eligibility/preparation from reviewedcccc90f/full6031: preserve all2040previous registry bindings/role history, reconcile current89host versus historical88dist and generated aliases before metadata/ONEpack/type2/admission9. No native/model/performance retry/SDK/publication.",
+      "current_release_assessment": "205-release-date-decision.md",
+      "current_release_assessment_snapshot": ".artifacts/release/2026-10-26-open-gates-assessment/snapshot.json"
     }
   },
   "next_task": "V02"
