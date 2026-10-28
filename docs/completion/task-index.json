@@ -8721,26 +8721,16 @@
       "optional": false,
       "execution_record": "255-v03-current-plugin-native-semantics.md",
       "active_slice": {
-        "id": "V03.32",
-        "record": "255-v03-current-plugin-native-semantics.md",
-        "status": "closed-native-incomplete-source-admission-corrected",
-        "package_checks": 7,
-        "synthetic_state_controls": 17,
-        "synthetic_host_controls": 13,
-        "native_runs": 1,
-        "native_checks_completed": 3,
+        "id": "V03.34",
+        "record": "276-v03-development-module-native.md",
+        "status": "source-case-frozen-native-pending",
+        "registered_inputs": 372,
+        "source_controls": 2,
+        "native_runs": 0,
         "maximum_native_runs": 1,
-        "whole_V03_complete": false,
-        "native_weak_dispatch_qualified": false,
-        "review": {
-          "critical": 0,
-          "important": 1,
-          "minor": 0,
-          "fixed_source_only": 1,
-          "rereviews": 0
-        },
-        "source_admission_tests": 2,
-        "raw_sha256": "3cd30cb672af0327dbc1f3ac2cd8ec8d9054ccdded79aab598dc32f7af1072c2"
+        "explicit_development": true,
+        "readonly_qualification": false,
+        "whole_V03_complete": false
       },
       "completed_slices": [
         {
@@ -10278,11 +10268,11 @@
       "next_bounded_step": "I01 exact local-file policy/install then current host guardian/lifecycle adaptation; separate scope already authorized.",
       "next_task": "A02"
     },
-    "document": "274-i02-current89-worker-history.md",
+    "document": "276-v03-development-module-native.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-28",
-    "current_increment": "I02.40 exactofficial89 worker-only native2checks/one original suffix PASS;333inputs/dist36stable, no combined history/fullI02 upgrade.",
-    "next_item": "V03.33",
+    "current_increment": "V03.33 source eligibility complete; V03.34 separate explicit-development compilation case source2controls/HTTP-onlypreflight/frozen372inputs, native pending. Original readonly10INCOMPLETE retained.",
+    "next_item": "V03.34",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -10307,7 +10297,7 @@
       "I01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "V03.33",
+    "active_item": "V03.34",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",

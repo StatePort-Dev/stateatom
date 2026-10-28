@@ -22,3 +22,27 @@ readonly driver/fixture/case/raw and current package/docs history unchanged.
 This controlled native case is not ordinary helper/VSIX setup, fullV03/A02/I02 or
 hostile-page attestation. Full21/29 unchanged. Focused source/runtime evidence review;
 no new visual design, SDK/push/publication. Budget stops at this case, not all29tasks.
+
+## Frozen source/preparation
+
+14 declared reversible changes from retired readonly driver: original source/raw
+unchanged. Exact full loaded-module, positive handoff, getter-trap/parity and final
+cleanup predicates retained; only explicitly different mode/setup/identities/cache.
+Initial isolated test runner returned generic file-level failure and is NOT a valid
+RED. Repository-supported --test-isolation=none with only the new owned untracked
+driver temporarily absent gives actual0PASS2FAIL; restored byte-exact →2PASS0FAIL.
+The complete suffix/positive/parity/cleanup controls are source evidence, not native.
+
+First new HTTP-only preflight native-2yCd3a has no browser; inherited unregistered
+Vite cache namespace was noticed before freezing. Historical registered source/
+fixture/lock/payload/case/raw unchanged. New source uses disjoint .vite-stateatom-34-
+development cache; second HTTP-only preparation native-nXZ22V all3modes compiles.
+Both outputs preserved; no application evaluation/browser in either preflight.
+
+Frozen docs/testing/current-plugin10-development-case.json:372registered inputs,
+21plugin source/270Atom source/327build,15installed plugin payload/36official89dist.
+Exact original10rawSHA3cd30cb6 and retired driver/case included as preservation inputs.
+Original/Off/On source preflight byte admission unchanged apart from original Vite
+cache-token normalization; native loaded hashes still full literal bytes. Current
+private helper/fixture/control configuration bound; max1browser/attempt marker.
+No fresh full6020 or model/Capture/performance run; unbundled harness-only change.
