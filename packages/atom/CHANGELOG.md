@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.0-candidate.20261028.88
+
+- Give explicitly enabled cold local-model preparation a separate five-minute
+  limit. Keep ready-model and default callers on their existing deadline; after
+  extended cold preparation, inference retains its original two-minute UI limit.
+- Stop the next model API operation after cancellation and retire a late-created
+  session once. Keep English options, grounding schema, prompts, facts, templates
+  and Unknown behavior unchanged. No automatic retries or evidence promotion.
+- Source checks do not establish native model readiness or useful quality. Keep
+  candidate87 and its observed cold-download timeout unchanged.
+
 ## 0.1.0-candidate.20261028.87
 
 - Trim the private request buffer using one complete serialization and the same
