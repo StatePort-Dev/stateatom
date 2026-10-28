@@ -28,3 +28,12 @@ Current327product/full36dist/history archives remain stable. No model/TLS/privat
 profile/normal-install/fullCapture/P04/I02/U04/performance/release acceptance.
 Focused host self-review, no automatic independent reviewer/visual matrix. Generated
 screenshots candidates only. Whole21/29 unchanged. No SDK/push/publication.
+
+## Source checkpoint
+
+Seven declared reversible adapter deltas; old85adapter unchanged. Dedicated current89
+mode/output/BuildInfo/current273admission/credits. Preparation controls actual RED0/2
+before implementation → GREEN2/0. Source test checks exact complete worker suffix,
+adapted byte digest, current10/9prefix and zero fresh inspector-loss credit; prepare-
+only has no results/browser. Same package/dist; no fullsuite/build repeat justified.
+Native pending after clean source commit. Test preparation output is not native proof.
