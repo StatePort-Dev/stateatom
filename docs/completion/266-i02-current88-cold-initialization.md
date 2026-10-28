@@ -38,3 +38,34 @@ Validated model output, if observed, is real-device smoke only: no normal-instal
 agreed-corpus usefulness/fullL02 or fullI02 acceptance. Keep original20–30/>=25 plus
 5incomplete/5untrusted corpus, V02targets/MISS and old raw/readers literal. One
 next bounded item after result; no all29task implementation in this run.
+
+## Clean host source/package checkpoint and native preregistration
+
+Host **28c563126cca0c5cfa55e78a28f510988c177db1**, main/clean. Offline frozen
+1290policies/build/types/Atom3/UI4/intake2/configured7source suites73PASS. Full
+actual87dist36/newhistory27/older history/nine historical tools preserved. Only
+BUILD-INFO.json/atom-page.js differ; worker/runtime/guardian/reader/fonts/styles/
+manifest identical87. Initial artifact-verifier count mapping mistake retained,
+corrected without rerunning tests. No native/model yet at that host commit.
+
+Root new driver `tests/integration/official88-cold-initialization.mjs` reuses
+reviewed31product controls, explicitly binds88/changed phase policy and adds actual
+compiled own-extension atom-page.js digest, then disables its own-document Debugger
+before app attachment. No app test debugger or API override. New CLIadmission1PASS
+exercises5refusal forms before outputs/resources; syntax/diff and scoped executor
+self-review PASS. Host risk-based policy: no automatic agent/visual review ritual.
+Full5986 remains product source32baseline, not a fresh full harness count.
+
+Frozen case `docs/testing/official88-cold-initialization-case.json`, SHA
+`afc42b2858a0094bad68a474076c56d45d4a041c47940577cfbdbd64b2039cae`,
+1306inputs/full36dist/original434profilefiles3links. New clone432; no partial31cache.
+Finite policy source32: metadata/warm120s, cold preparation300s, then original
+inference120s. Harness observes at most545s from enabled click (derived upper bound
+120+300+120+5s delivery), without changing product timers. Max1native/0used at this
+checkpoint; pending/failure stops, no retry. Quality/corpus/perf criteria unchanged.
+
+Artifacts `.artifacts/i02/current88/cold-initialization/2026-10-28/`. Original31raw
+SHAba9344a6261a08101f120fcfb6be0679c5f9b0116e95bd74400db6b7b18b77b2 remains
+failed initialization; newsource regression cannot rewrite it or establish causal
+download speedup/10%performance acceptance. Real model output/ready/useful remain
+unverified until the single next actual observation.
