@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 prerequisite:** [original reducer field-write sites285](completion/285-a02-reducer-field-write-sites.md): captures the original completed object without replaying its initializer. Actual retained reducer/constants and renamed control tested in source harness;119affected/full6067PASS. One review0C/1I/0M corrected. Compiler-only, not installed or complete lineage. Next exact applied-state receipt and finite writer/alias admission; whole21/29 unchanged.
+
 **Latest source increment:** [U04 selector error recovery284](completion/284-u04-selector-error-recovery.md):82affected/full6043 and source-rendered Chromium10 checks PASS, one review0C0I1M (copy label deferred). Helpful lookup/missing-result messages; no layout/permission change. Unpackaged, official90 unchanged. Next A02 finite writer/escape admission; whole21/29 unchanged.
 
 **Current autonomous execution:** A02 scenario282 approved. [Writer-admission check283](completion/283-a02-title-writer-admission.md):35 source checks PASS; required alias-writer exclusion and selected parameter/read/commit mechanism still missing. Bounded writer/escape-path admission remains to assess; stopping rule not reached. Independent U04 invalid-selector correction next; full21/29 unchanged.
