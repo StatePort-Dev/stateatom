@@ -6997,6 +6997,21 @@
     },
     {
       "id": "V02",
+      "package90_preparation": {
+        "record": "278-v02-current90-local-package.md",
+        "status": "closed-local-package-not-native",
+        "producer": "69b8d86f6316544611bfd83f53d9bf921c79157d",
+        "package": "0.1.0-candidate.20261028.90",
+        "sha256": "46b4d4d86461634a40ca28ff71a87def2be32b9d912d2d432fd7c2921a6451f6",
+        "handoff": ".artifacts/atom/2026-10-28T06-14-50-819Z/atom-handoff.json",
+        "types": 2,
+        "admission": 9,
+        "inherited_source_checks": 6031,
+        "native_runs": 0,
+        "new_performance_runs": 0,
+        "performance_acceptance": false,
+        "old89_and_official_host_preserved": true
+      },
       "title": "Lifecycle privacy and resource acceptance",
       "document": "09-validation-and-release.md",
       "depends_on": [
@@ -8617,7 +8632,7 @@
         "measurement_budget_remaining": 0,
         "first_reader_budget_remaining": 0
       },
-      "next_bounded_step": "ONE I02.39 exact local official89/UI2 intake and affected existing owned reporter workflow. Preserve88/model/history, original89ActiveMISS10.7174/27.3187%, budgets0. No model/TLS/fullCapture/SDK/publication/fullI02 claim.",
+      "next_bounded_step": "ONE bounded current90 changed-UI compatibility preparation in an isolated consumer; fix native scenario/owner/isolation before execution. Preserve official89 and closed276/performance raw evidence; no unchanged failed-case retry, installation, publication or performance waiver.",
       "historical_active_before_V02_31": {
         "id": "V02.30",
         "record": "239-v02-debugger-lifetime-feasibility.md",

@@ -1,6 +1,16 @@
 # Project status
 
-**Current checkpoint, October28 morning:** official89/UI2, host711968a4.
+**28 October — V02.38 local package90 prepared:** clean producer69b8d86, exact
+Atom90/UI2 deterministic pack, offline consumer, packed types2 and admission9 PASS.
+Only compiled UI and its two host UI bundles change from89; runtime/permissions/
+contracts unchanged. Old89consumer, official89dist, plugin10 and closed raws remain
+exact. First qualifier oversized-file error retained; streaming verification passes.
+[Exact evidence and next bounded compatibility step](completion/278-v02-current90-local-package.md).
+Source6031 is inherited; native90 NOT_RUN, installed/official host unchanged.
+Original89Active10.7174/27.3187% MISS10% remains, no rerun/waiver. Whole21/29 unchanged.
+
+
+**Previous checkpoint, October28 morning:** official89/UI2, host711968a4.
 Whole21/29 (72.41%), eight approved tasks remain open; no scope reduction/release.
 [I02.39](completion/273-i02-current89-host-refresh.md) exact intake/package9/source73/
 native10 reporter checks and [I02.40](completion/274-i02-current89-worker-history.md)
