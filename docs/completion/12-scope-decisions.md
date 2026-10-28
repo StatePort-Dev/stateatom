@@ -1,5 +1,8 @@
 # Scope approval record
 
+**28 October macOS decision:** the maintainer removed mandatory pre-release macOS installation validation and will check it manually later. Record macOS installation as unverified/deferred, non-blocking; Linux and other release gates remain. [Decision287](287-macos-install-check-deferred.md).
+
+
 **28 October supplement to decision 26:** explicit maintainer agreement accepts the current measured Active overhead for release; [decision and limits](281-active-overhead-maintainer-acceptance.md). No new universal threshold, fresh measurement or whole-task acceptance is implied.
 
 **Scope revision:** `scope-review-1`. This record reflects the maintainer's item-by-item scope decisions, not new repository inspection or executed tests. The [approved contract](02-release-scope.md) is normative for delivery; the [audit](01-current-state-audit.md) and evidence register remain the original revision-specific record.

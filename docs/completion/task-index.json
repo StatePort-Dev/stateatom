@@ -8801,6 +8801,15 @@
     {
       "id": "V03",
       "title": "Clean installation, real UI and independent-app acceptance",
+      "macos_installation_release_decision": {
+        "record": "287-macos-install-check-deferred.md",
+        "authority": "Explicit maintainer instruction on2026-10-28",
+        "required_before_release": false,
+        "status": "unverified-deferred-to-maintainer",
+        "future_check": "Maintainer manual check; no date or result inferred",
+        "linux_and_other_gates_unchanged": true,
+        "historical_evidence_unchanged": true
+      },
       "document": "09-validation-and-release.md",
       "depends_on": [
         "F03",

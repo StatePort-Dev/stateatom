@@ -1,5 +1,8 @@
 # Validation and release — implementation plan
 
+**28 October macOS decision:** the maintainer removed mandatory pre-release macOS installation validation and will check it manually later. Record macOS installation as unverified/deferred, non-blocking; Linux and other release gates remain. [Decision287](287-macos-install-check-deferred.md).
+
+
 **Current Active-overhead exception (28 October):** [maintainer acceptance](281-active-overhead-maintainer-acceptance.md) removes the recorded89 Active/off deviation from release blockers. Preserve the original 10% protocol/MISS and all remaining V02/V03 criteria; carry the exception in V04.
 
 **Goal:** verify every required outcome against the actual candidate, through declared supported environments and the real user interface.
@@ -84,7 +87,7 @@ Work:
 - Test production first in read-only, then the F05 double-confirmation option on controlled data. Recorder setup must not grant editing. Verify both default refusal and an eligible admitted operation.
 - Evaluate the local model on an actual supported device and retain an unavailable-device fallback case. Lack of a suitable device leaves O01 validation incomplete, not waived. A narrower preview may still be released.
 - Record points where the guide fails, exact useful answers, needed assistance and limitations. An agent-assisted run does not establish human adoption or time savings; those claims would need a separate study.
-- Retain the original plan's Linux and macOS installation targets. Scope discussion did not newly approve a broader OS matrix. Name the tested platform scope per release; Windows requires its own real helper/extension evidence, not package presence.
+- Linux clean installation remains required. By explicit28October [maintainer decision287](287-macos-install-check-deferred.md), macOS installation validation is deferred to the maintainer and does not block this release. Name macOS installation as unverified until actual evidence arrives; do not label it tested from package presence. Windows requires its own real helper/extension evidence and is not added to this release gate.
 
 **Done:** the required clean installation and task paths pass on the declared environment, including the independent-code positive gates. If not, the full baseline stays incomplete or only a narrower preview ships. No recruitment requirement or independent-human sign-off is added.
 
