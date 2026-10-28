@@ -67,7 +67,7 @@ test('native observation burst keeps every record with one in-flight publication
  for(let i=0;i<20;i++)await f.network('burst-'+i);
  assert.equal(maxInflight,1,'Native event publication must not start one concurrent storage submission per event');
  assert.equal(writes,1);assert.equal(notices.length,0,'Only a saved settled view may be announced');
- ack.resolve();for(let i=0;i<5;i++)await new Promise(setImmediate);
+ ack.resolve();await writeEntered(()=>writes===2&&notices.length===1);
  assert.equal(writes,2,'One latest-current-state follow-up after the gated first save');assert.equal(notices.length,1);assert.equal(notices[0].tabId,1);
  const saved=f.data['stateport.atom.v1.tabs'][1].productionObservation;assert.equal(saved.windowId,w.windowId);assert.equal(saved.records.length,20);assert(saved.records.every(r=>r.completion==='finished'));assert(Object.values(saved.gaps).every(n=>n===0));
 });
@@ -111,7 +111,7 @@ test('gap-only native traffic retains at most one rejection subscription on each
   for(let i=1;i<1000;i++)f.events.emit({type:'debugger',source:{tabId:1},method:'Network.loadingFinished',params:{requestId:'unmatched-'+i,timestamp:50}});
   await new Promise(setImmediate);assert.equal(writes,1);assert.equal(maxSubscriptions,1,'No per-event rejection handlers may accumulate on a shared delayed flight');
  }finally{Promise.prototype.catch=originalCatch;ack.resolve();}
- for(let i=0;i<5;i++)await new Promise(setImmediate);const saved=f.data['stateport.atom.v1.tabs'][1].productionObservation;assert.equal(saved.records.length,0);assert.equal(saved.gaps.unmatched,1000);assert.equal(writes,2);
+ await writeEntered(()=>writes===2&&f.data['stateport.atom.v1.tabs'][1].productionObservation.gaps.unmatched===1000);const saved=f.data['stateport.atom.v1.tabs'][1].productionObservation;assert.equal(saved.records.length,0);assert.equal(saved.gaps.unmatched,1000);assert.equal(writes,2);
 });
 for(const ending of['context','record-limit','pending-limit'])test('same-owner '+ending+' persists and notifies independently of an old recording save',{timeout:10000},async t=>{
  const ack=deferred();t.after(()=>ack.resolve());const f=await fixture(t),w=await f.request({op:'observation-start'}),original=f.platform.chrome.storage.session.set,notices=[];let writes=0;
@@ -200,4 +200,22 @@ test('default publication window keeps all20 native-ledger requests before one c
   tasks.shift().run();for(let i=0;i<8;i++)await new Promise(setImmediate);
   assert.equal(writes,1);const saved=f.data['stateport.atom.v1.tabs'][1].productionObservation;assert.equal(saved.counts.requests,20);assert.equal(saved.counts.completed,20);assert.equal(saved.records.length,20);
  }finally{globalThis.setTimeout=originalTimeout;}
+});
+
+// Actual runtime.storage boundary with only the private publication timer virtual.
+// Counts below are storage operations, not publisher invocations or native timings.
+async function publicationClock(run){
+ const original=globalThis.setTimeout,tasks=[];let now=0,dispatches=0;const micro=()=>new Promise(setImmediate);
+ const advance=async at=>{now=at;let count=0;for(;;){const i=tasks.findIndex(t=>t.at<=now);if(i<0)break;assert(++count<=20);const task=tasks.splice(i,1)[0];dispatches++;task.callback();await micro();}await micro();};
+ globalThis.setTimeout=(callback,delay,...args)=>delay===publicationModule.OBSERVATION_PUBLICATION_DELAY_MS?(tasks.push({at:now+delay,callback:()=>callback(...args)}),tasks.length):original(callback,delay,...args);
+ const clock={tasks,advance,micro,get dispatches(){return dispatches;},flush:async()=>{let count=0;while(tasks.length){assert(++count<=20);await advance(Math.min(...tasks.map(t=>t.at)));}}};
+ try{return await run(clock);}finally{globalThis.setTimeout=original;}
+}
+test('overlapping recording acknowledgements coalesce actual storage operations and retain all four requests',async t=>{
+ const ack=deferred();t.after(()=>ack.resolve());const f=await fixture(t),w=await f.request({op:'observation-start'}),original=f.api.storage.session.set;let writes=0;const notices=[];f.api.runtime.sendMessage=async m=>{if(m.scope==='production-observation')notices.push(m);};f.api.storage.session.set=async value=>{if(++writes===1)await ack.promise;return original(value);};
+ await publicationClock(async clock=>{try{await f.network('coalesce-a');await clock.advance(16);assert.equal(writes,1);await f.network('coalesce-b');await f.network('coalesce-c');ack.resolve();await clock.micro();await f.network('coalesce-d');await clock.advance(32);await clock.flush();assert.equal(clock.dispatches,2);assert.equal(writes,2,'Actual storage calls, not merely publisher callbacks');assert.equal(notices.length,1);const saved=f.data['stateport.atom.v1.tabs'][1].productionObservation;assert.equal(saved.windowId,w.windowId);assert.equal(saved.records.length,4);assert.equal(saved.counts.completed,4);assert(saved.records.every(r=>r.completion==='finished'));assert(Object.values(saved.gaps).every(n=>n===0));}finally{ack.resolve();await clock.flush();}});
+});
+test('runtime epoch repairs terminal replacement independently of deferred publisher follow-up',async t=>{
+ const ack=deferred();t.after(()=>ack.resolve());const f=await fixture(t),a=await f.request({op:'observation-start'}),original=f.api.storage.session.set;let writes=0;f.api.storage.session.set=async value=>{if(++writes===1)await ack.promise;return original(value);};
+ await publicationClock(async clock=>{try{await f.network('epoch-a');await clock.advance(16);await f.network('epoch-b');const stopped=await f.request({op:'observation-stop',windowId:a.windowId});assert.equal(stopped.status,'stopped');await f.request({op:'observation-clear',windowId:a.windowId});const b=await f.request({op:'observation-start'});assert.equal(writes,4,'One gated publication plus three direct terminal/replacement writes');ack.resolve();await clock.micro();assert.equal(writes,5,'Runtime epoch repair adds a storage operation before the second publisher dispatch');assert.equal(clock.dispatches,1);let saved=f.data['stateport.atom.v1.tabs'][1].productionObservation;assert.equal(saved.windowId,b.windowId);assert.equal(saved.records.length,0);await clock.advance(32);await clock.flush();assert.equal(clock.dispatches,2);assert.equal(writes,6,'Publisher turns do not bound total storage operations');saved=f.data['stateport.atom.v1.tabs'][1].productionObservation;assert.equal(saved.windowId,b.windowId);assert.equal(saved.status,'recording');assert.equal(saved.records.length,0);}finally{ack.resolve();await clock.flush();}});
 });

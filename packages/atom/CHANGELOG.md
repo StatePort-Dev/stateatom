@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Coalesce dirty observation-publication follow-ups through the existing nominal
+  16 ms scheduler, keeping one shared flight and current-state reads. Preserve
+  synchronous collection, independent terminal writes, runtime epoch repair and
+  exact failure/recovery behavior.
+- Source interleavings reduce redundant storage submissions in their declared
+  scenario; no native speedup or original performance-target acceptance is implied.
+
 ## 0.1.0-candidate.20261028.88
 
 - Give explicitly enabled cold local-model preparation a separate five-minute

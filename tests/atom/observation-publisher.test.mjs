@@ -81,3 +81,16 @@ test('default first save waits nominal16ms and persists current state when it di
   current='latest';assert.equal(publish(),first);await clock.advance(16);await first;assert.deepEqual(saved,['latest']);assert.equal(clock.tasks.length,0);
  });
 });
+
+test('dirty acknowledged follow-up waits the same scheduling window and keeps its flight',async()=>{
+ await virtualPublication(async clock=>{const gate=deferred(),saved=[],notices=[];let current=0,settled=false;const publish=createObservationPublisher({persist:async()=>{saved.push(current);if(saved.length===1)await gate.promise;},notify:()=>notices.push(current)}),first=publish();void first.then(()=>{settled=true;});await clock.advance(16);current=1;assert.equal(publish(),first);gate.resolve();await clock.micro();assert.deepEqual(saved,[0]);assert.equal(settled,false);assert.equal(clock.tasks.length,1);current=2;assert.equal(publish(),first);await clock.advance(31);assert.deepEqual(saved,[0]);current=3;await clock.advance(32);await first;assert.deepEqual(saved,[0,3]);assert.deepEqual(notices,[3]);assert.equal(clock.tasks.length,0);});
+});
+test('dirty rejected save schedules its latest-state retry rather than saving immediately',async()=>{
+ await virtualPublication(async clock=>{const gate=deferred();let writes=0,notices=0;const publish=createObservationPublisher({persist:async()=>{if(++writes===1)await gate.promise;},notify:()=>notices++}),first=publish();await clock.advance(16);assert.equal(publish(),first);gate.reject(Error('first save rejected'));await clock.micro();assert.equal(writes,1);assert.equal(clock.tasks.length,1);await clock.advance(32);await first;assert.equal(writes,2);assert.equal(notices,1);});
+});
+test('reentrant notification leaves the next dirty save scheduled without losing its promise',async()=>{
+ await virtualPublication(async clock=>{const saved=[];let current=1,again;const publish=createObservationPublisher({persist:async()=>saved.push(current),notify:()=>{if(current===1){current=2;again=publish();}}}),first=publish();await clock.advance(16);assert.equal(again,first);assert.deepEqual(saved,[1]);assert.equal(clock.tasks.length,1);await clock.advance(32);await first;assert.deepEqual(saved,[1,2]);});
+});
+test('failure scheduling a dirty follow-up rejects and permits a new independent flight',async()=>{
+ const gate=deferred(),error=Error('follow-up scheduling failed');let schedules=0,writes=0,notices=0;const publish=createObservationPublisher({schedule:task=>{if(++schedules===2)throw error;task();},persist:async()=>{if(++writes===1)await gate.promise;},notify:()=>notices++}),first=publish();assert.equal(publish(),first);const rejected=assert.rejects(first,e=>e===error);gate.resolve();await rejected;assert.equal(writes,1);assert.equal(notices,0);await publish();assert.equal(writes,2);assert.equal(notices,1);
+});
