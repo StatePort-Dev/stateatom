@@ -15,7 +15,7 @@
 ## Task2 — original component read and exact selected host
 - [x] RED original read/compiler and native protocol controls before implementation. Preserve exact getter count/order/error/finally, lexical binding and original JSX return. No guessed selector/nearest component/value match.
 - [x] Capture original destructuring receiver and produced binding scalar, original selected JSX operand/site and native element→props identity at creation. Join actual native component frame and selected host memoizedProps. Do not require a later live source JSX element or reinterpret209's missing-reference failure.
-- [ ] Connect App state/props and Main original native-array row callbacks to Item parameter. Both repeated changed and same-value edits must produce a fresh exact chain; preserved/wrong row must not inherit it.
+- [x] Connect App state/props and Main original native-array row callbacks to Item parameter. Both repeated changed and same-value edits must produce a fresh exact chain; preserved/wrong row must not inherit it.
 
 ## Task3 — complete bounded admission and product route
 - [ ] Discharge ordinary row/field and native-array construction/method premises from original creation/callback operations; no arbitrary app-object reflection/getter replay.
@@ -36,3 +36,5 @@ BASEf2b726e. Existing6125PASS retained; no whole-project audit or old experiment
 Task1 source checkpoint289:136affected/full6148PASS; exact virtual routes + reviewed plugin/builder pins corrected. Native/product/ownership not credited. Task2 in progress; final review remains whole-plan.
 
 Task2 checkpoint291: original read/native selected-host props join, scoped actual case290 PASS after concrete useState correction, full6187PASS. Third Task2 transfer item remains in progress; no ownership/fullPath/public claim. Case290 ran early as a bounded changed-mechanism diagnostic, not Task4 qualification.
+
+Task2 source reference-chain checkpoint292:146affected/full6212PASS and5 latest repeated-update controls. Original callback references are observed; native-array membership belongs to unresolved Task3. No new native/public/package credit. Task3 is the next bounded dependency.

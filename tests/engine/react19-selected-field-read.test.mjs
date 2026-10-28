@@ -31,3 +31,10 @@ test('selected source read and native write join by original row identity, with 
 });
 
 test('public read API never hands raw application rows to a supplied callback',()=>{const f=setup();f.render();let leaked=false;const r=f.api.matchSelectedFieldRead(f.host.stateNode,()=>{leaked=true});assert.equal(r.status,'Observed');assert.equal(leaked,false);});
+
+for(const target of ['array-index','frame-field'])test('private read frames avoid late application prototype accessor: '+target,()=>{
+ const f=setup(),prototype=target==='array-index'?Array.prototype:Object.prototype,key=target==='array-index'?'0':'scalar',descriptor=Object.getOwnPropertyDescriptor(prototype,key);let calls=0,result,error;
+ try{Object.defineProperty(prototype,key,{configurable:true,get(){calls++;throw Error('late private getter')},set(){calls++;throw Error('late private setter')}});try{f.render();result=f.api.matchSelectedFieldRead(f.host.stateNode);}catch(e){error=e;}}
+ finally{if(descriptor)Object.defineProperty(prototype,key,descriptor);else delete prototype[key];}
+ assert.equal(error,undefined);assert.equal(calls,0);assert.equal(result.status,'Observed');
+});

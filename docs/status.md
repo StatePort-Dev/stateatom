@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 reference chain:** [Task2 checkpoint292](completion/292-a02-original-prop-transfer-chain.md), original state/prop/parameter/map-callback references joined to selected Item and exact current native ancestors.146affected/full6212PASS plus5 latest repeated-update controls. Array membership/ordinary data/code and alias exclusion remain Unknown/fullPath=false; no new native/public/package credit. Next Task3 native-array/ordinary-row and complete code-interval authority. Whole21/29 unchanged.
+
 **Latest A02 selected read:** [source/native checkpoint291](completion/291-a02-selected-field-read-native.md): actual Original/Off/On private collector case290 passes after a reproduced useState-interleaving fix; creation/changed/same-value read-write joins and wrong-row/detached/Stop controls. Full6187PASS. Ownership/transfers still Unknown; no public/package/fullA02 credit. Continue App/Main original transfers in current plan; whole21/29 unchanged.
 
 **Current A02 integration:** [native field receipts289](completion/289-a02-native-field-receipt-integration.md), optional collector-owned applied revisions;136affected/full6148PASS after owned virtual-module routing and compiler pin correction. Shared source checkout, no new package/native claim. Task2 original component reads and exact selected host/props continues in the same integration plan; ownership/code premises and final review remain pending. Whole21/29 unchanged.

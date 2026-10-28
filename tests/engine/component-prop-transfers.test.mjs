@@ -1,0 +1,21 @@
+// SPDX-License-Identifier: Apache-2.0
+import test from 'node:test';import assert from 'node:assert/strict';import vm from 'node:vm';import {readFileSync} from 'node:fs';import {transformSync} from 'esbuild';
+import {instrumentComponentPropTransfers} from '../../src/engine/component-prop-transfers.mjs';
+const source='export function Board({entries:rows}) { return <List rows={rows} />; }';
+const options={binding:'Board',inputs:['rows'],outputs:['rows'],observerName:'observe'};
+function execute(code,row){const events=[],List=()=>{},c=vm.createContext({module:{exports:{}},exports:{},List,observe(kind,...args){events.push({kind,args});return kind==='enter'?{}:null;},jsx(type,props){return{type,props}}});vm.runInContext(transformSync(code,{loader:'jsx',format:'cjs',jsxFactory:'jsx'}).code,c);const props={};let reads=0;Object.defineProperty(props,'entries',{get(){reads++;return row}});return{result:c.module.exports.Board(props),events,reads};}
+test('original renamed parameter and JSX prop reference are captured without rereading props',()=>{const r=instrumentComponentPropTransfers(source,'board.jsx',options);assert.equal(r.status,'Code-linked prop transfers');assert.equal(r.site.inputs[0].prop,'entries');assert.equal(r.site.outputs[0].prop,'rows');const rows=[],a=execute(source,rows),b=execute(r.code,rows);assert.equal(a.reads,1);assert.equal(b.reads,1);assert.equal(b.result.props.rows,rows);assert.deepEqual(b.events.map(e=>e.kind),['enter','input','prop','element']);assert.equal(b.events[1].args[2],rows);assert.equal(b.events[2].args[2],rows);assert.equal(r.fullPath,false);});
+test('actual App state binding and Main parameter/map output keep their source boundaries',()=>{const dir='.runtime/todomvc/examples/react/src/todo/';for(const [file,binding,inputs,outputs]of [['app.jsx','App',['todos'],['todos']],['components/main.jsx','Main',['todos'],['todo']]]){const text=readFileSync(dir+file,'utf8'),r=instrumentComponentPropTransfers(text,file,{binding,inputs,outputs,observerName:'observe'});assert.equal(r.status,'Code-linked prop transfers',file);assert.equal(r.site.inputs[0].kind,binding==='App'?'state-binding':'parameter');assert.equal(r.site.outputs.length,binding==='App'?2:1);assert.equal(r.fullPath,false);if(binding==='Main')assert.equal(r.site.outputs[0].callback.method,'map');}});
+for(const [label,text]of [
+ ['mutable input',source.replace('return <List','rows=[]; return <List')],
+ ['spread props',source.replace('rows={rows}','rows={rows} {...extra}')],
+ ['duplicate prop',source.replace('rows={rows}','rows={rows} rows={other}')],
+ ['dynamic input',source.replace('{entries:rows}','{entries:rows=[]}')],
+ ['opaque output',source.replace('rows={rows}','rows={clone(rows)}')],
+ ['observer collision',source.replace('return <List','const observe=()=>{}; return <List')],
+ ['dynamic scope',source.replace('return <List','eval("rows"); return <List')]
+])test(label+' supplies no transfer recipe',()=>{const r=instrumentComponentPropTransfers(text,'board.jsx',options);assert.equal(r.status,'Unknown/Unsupported');assert.equal(r.code,text);});
+
+test('map callback keeps original count, argument identity and produced JSX under observation',()=>{
+ const text='export function Board({entries:rows}){const visible=rows.filter(row=>keep(row));return <section>{visible.map(row=><List entry={row}/>)}</section>}',r=instrumentComponentPropTransfers(text,'board.jsx',{...options,outputs:['entry']});assert.equal(r.status,'Code-linked prop transfers');const rows=[{x:1},{x:2}],events=[],seen=[];const c=vm.createContext({module:{exports:{}},exports:{},List:()=>{},keep:row=>{seen.push(row);return true},observe(kind,...args){events.push({kind,args});return kind==='enter'?{}:null},jsx(type,props,...children){return{type,props,children}}});vm.runInContext(transformSync(r.code,{loader:'jsx',format:'cjs',jsxFactory:'jsx'}).code,c);const output=c.module.exports.Board({entries:rows});assert.deepEqual(seen,rows);const callbacks=events.filter(e=>e.kind==='callback');assert.equal(callbacks.length,2);assert.equal(callbacks[0].args[2],rows[0]);assert.equal(callbacks[1].args[2],rows[1]);assert.equal(callbacks[0].args[3],callbacks[1].args[3]);assert.equal(output.children[0][0].props.entry,rows[0]);assert.equal(output.children[0][1].props.entry,rows[1]);
+});

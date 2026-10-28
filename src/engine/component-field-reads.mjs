@@ -31,7 +31,8 @@ export function instrumentComponentFieldReads(source,file,{binding,parameter,fie
   }
   if(!hosts.length)return empty('No exact direct host text operand');
   const sourceDigest=hash(source),location=(node,kind)=>({id:hash(sourceDigest+':'+node.start+':'+kind),file,sourceDigest,line:node.loc.start.line,column:node.loc.start.column+1,kind});
-  const site={...location(fn.node,'component-field-read'),field,parameter,read:location(read.selected.node,'original-destructured-field'),hosts:hosts.map(h=>location(h.host.node,'host-text-operand'))};
+  const parameterProperty=params.find(p=>p.node.value===row.identifier);
+  const site={...location(fn.node,'component-field-read'),field,parameter,parameterProp:parameterProperty.node.key.name||parameterProperty.node.key.value,read:location(read.selected.node,'original-destructured-field'),hosts:hosts.map(h=>location(h.host.node,'host-text-operand'))};
   const unique=name=>{let n;do{n=program.scope.generateUidIdentifier(name)}while(n.name===observerName);return n;};
   const helper=unique('saFieldReadEvent'),identity=unique('saFieldReadValue'),token=unique('saFieldReadFrame'),kind=unique('kind'),a=unique('a'),b=unique('b'),c=unique('c');
   const event=(type,args)=>t.callExpression(t.cloneNode(helper),[t.stringLiteral(type),...args]);

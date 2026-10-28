@@ -121,7 +121,7 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef,reduce
     visited.add(hook);const h=hooks.get(hook),state=deref(h?.state),queue=deref(h?.queue.ref),dispatch=deref(h?.dispatch);
     if(h?.checked&&state&&queue&&dispatch&&related(fiber,deref(h.fiber))&&own(hook,'memoizedState')===state&&own(hook,'queue')===queue&&own(queue,'dispatch')===dispatch&&h.revision.resultId===id(state)){
      if(ancestors.length===64)return unknown('Ancestor result capacity refused');
-     const observed={hookId:id(hook),fiberId:id(fiber),queueId:h.queue.id,dispatchId:id(dispatch),inputId:h.revision.inputId||null,inputIdentityStatus:h.revision.inputIdentityStatus||'Unknown/Unsupported',reducerId:h.revision.reducerId||null,resultId:id(state),revisionId:h.revision.id,updateId:h.revision.updateId,updateOriginStatus:h.revision.updateId?'Observed':'Unknown/Unsupported',publicHookKind:'Unknown/Unsupported',scope};append(ancestors,observed);if(visit)visit(h,state,observed);
+     const observed={hookId:id(hook),fiberId:id(fiber),queueId:h.queue.id,dispatchId:id(dispatch),inputId:h.revision.inputId||null,inputIdentityStatus:h.revision.inputIdentityStatus||'Unknown/Unsupported',reducerId:h.revision.reducerId||null,resultId:id(state),revisionId:h.revision.id,updateId:h.revision.updateId,updateOriginStatus:h.revision.updateId?'Observed':'Unknown/Unsupported',publicHookKind:'Unknown/Unsupported',scope};append(ancestors,observed);if(visit)visit(h,state,observed,fiber);
     }
     hook=own(hook,'next');
    }
@@ -174,8 +174,32 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef,reduce
     if(fiber===finished)break;fiber=parents.get(fiber);
    }
    if(fiber!==finished||!match)return readUnavailable('No exact completed field read for current selected host');
-   const{row,...read}=match;if(visit)visit(row);return{...readUnavailable(null),status:'Observed',read:{...read,rowId:id(row)},native:{nodeId:id(node),rootId:id(root),commitId:current.commitId,fiberId:id(owner),hostPropsId:id(hostProps)}};
+   const{row,...read}=match;if(visit)visit(row,{fiber:owner,props:strictOwn(owner,'memoizedProps',true),parameterProp:match.parameterProp});return{...readUnavailable(null),status:'Observed',read:{...read,rowId:id(row)},native:{nodeId:id(node),rootId:id(root),commitId:current.commitId,fiberId:id(owner),hostPropsId:id(hostProps)}};
   }catch{return readUnavailable('Current selected field metadata unavailable');}
+ }
+ function registerComponentTransfers(site){return !stopped&&!capped&&!unavailable&&supported&&fieldReads?fieldReads.registerTransfers(site)===true:false;}
+ function componentTransferSource(){return !stopped&&!capped&&!unavailable&&supported&&fieldReads?invoke(fieldReads.transferSource,undefined,arguments):null;}
+ function matchSelectedListTransfers(node){
+  const unknown=reason=>({schema:'stateatom.selected-list-transfers/1',page,status:'Unknown/Unsupported',reason,transfers:[],selected:null,arrayMembership:'Unknown/Unsupported',fieldOwnership:'Unknown/Unsupported',fullPath:false,scope:'Original state/parameter/JSX/map-callback reference joins on exact current native ancestors; array membership/native-method and writer exclusion remain separate'});
+  if(!fieldReads)return unknown('Field observation disabled');
+  try{
+   const joined=matchSelectedFieldWrite(node);if(joined.status!=='Observed')return unknown(joined.reason);
+   let value,child;const selected=matchSelectedFieldRead(node,(row,context)=>{value=row;child=context;});if(selected.status!=='Observed'||selected.native.commitId!==joined.native.selected.commitId)return unknown('Selected read changed');
+   const tree=committedTree(node,true);if(tree.status)return unknown(tree.reason);const transfers=[],seen=makeSet();
+   for(let depth=0;depth<8;depth++){
+    if(!child.parameterProp)return unknown('Original parameter property unavailable');const incoming=fieldReads.incomingTransfer(child.props,child.parameterProp,value);if(!incoming||seen.has(incoming.fiber))return unknown('No unique original incoming prop transfer');seen.add(incoming.fiber);
+    let parent=tree.parents.get(child.fiber),found=false;const walked=makeSet();while(parent&&!walked.has(parent)&&walked.size<64){walked.add(parent);if(parent===incoming.fiber){found=true;break;}parent=tree.parents.get(parent);}
+    const tag=strictOwn(incoming.fiber,'tag',true);if(!found||!fibers.has(incoming.fiber)||(tag!==0&&tag!==15)||strictOwn(incoming.fiber,'type',true)!==incoming.component||strictOwn(incoming.fiber,'memoizedProps',true)!==incoming.props)return unknown('Original sender is not the exact current native ancestor');
+    const callback=incoming.output.callback;append(transfers,{siteId:incoming.output.siteId,prop:incoming.output.prop,valueId:id(value),invocationId:incoming.invocationId,producerFiberId:id(incoming.fiber),input:{siteId:incoming.input.id,kind:incoming.input.kind,prop:incoming.input.prop,valueId:id(incoming.input.value)},callback:callback?{siteId:callback.id,method:callback.method,rowId:id(callback.row),collectionId:id(callback.collection)}:null});
+    if(incoming.input.kind==='state-binding'){
+     let matches=0;const native=read(node,(_h,state,observed,fiber)=>{if(fiber===incoming.fiber&&state===incoming.input.value&&observed.resultId===joined.native.ancestor.resultId&&observed.revisionId===joined.write.revisionId)matches++;});
+     if(native.status!=='Observed'||matches!==1||native.commitId!==selected.native.commitId)return unknown('Original state binding does not match the applied current native result');
+     return{...unknown(null),status:'Observed',transfers,selected:joined};
+    }
+    value=incoming.input.value;child={fiber:incoming.fiber,props:incoming.props,parameterProp:incoming.input.prop};
+   }
+   return unknown('Source transfer depth unavailable');
+  }catch{return unknown('Current original prop transfer metadata unavailable');}
  }
  const fieldUnavailable=reason=>({schema:'stateatom.native-reducer-field-write/1',page,status:'Unknown/Unsupported',reason,write:null,native:null,scope:'Original field creation in an applied call of the exact current selected native ancestor; selected row membership and property origin unproved',currentMembership:'Unknown/Unsupported',fieldOwnership:'Unknown/Unsupported',selectedPropertyOrigin:'Unknown/Unsupported',fullPath:false});
  function registerReducerFields(reducer,sites,field=null){if(stopped||capped||unavailable||!supported||!fields||field!==null&&(typeof field!=='string'||!field||field.length>128))return false;const registered=fields.register(reducer,sites)===true;if(registered&&field)reducerFieldNames.set(reducer,field);return registered;}
@@ -199,5 +223,5 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef,reduce
   if(applied.write.field!==selected.read.field||applied.native.commitId!==selected.native.commitId||applied.native.rootId!==selected.native.rootId)return unknown('Field or current native commit differs');
   return{...unknown(null),status:'Observed',read:selected.read,write:{...applied.write,rowId:id(row)},native:{selected:selected.native,ancestor:applied.native}};
  }
- return Object.freeze({...(fields?{registerReducerFields,reducerFieldSource,matchReducerFieldWrite,registerComponentFields,componentFieldSource,matchSelectedFieldRead(node){return matchSelectedFieldRead(node);},matchSelectedFieldWrite}:{}),tap,snapshot(node){try{return read(node);}catch{return unknown('Native metadata snapshot unavailable');}},currentCommit,matchCommittedProps,matchCommittedMemo,stop(){stopped=true;current=null;if(fields)fields.stop();if(fieldReads)fieldReads.stop();},retention(){return{events,queues:queueCount,updates:updateCount,stopped,capped,available:supported&&!unavailable};}});
+ return Object.freeze({...(fields?{registerReducerFields,reducerFieldSource,matchReducerFieldWrite,registerComponentFields,componentFieldSource,registerComponentTransfers,componentTransferSource,matchSelectedListTransfers,matchSelectedFieldRead(node){return matchSelectedFieldRead(node);},matchSelectedFieldWrite}:{}),tap,snapshot(node){try{return read(node);}catch{return unknown('Native metadata snapshot unavailable');}},currentCommit,matchCommittedProps,matchCommittedMemo,stop(){stopped=true;current=null;if(fields)fields.stop();if(fieldReads)fieldReads.stop();},retention(){return{events,queues:queueCount,updates:updateCount,stopped,capped,available:supported&&!unavailable};}});
 }

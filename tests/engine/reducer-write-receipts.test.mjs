@@ -108,3 +108,10 @@ test('unregistered primitive useState reducer calls do not poison later register
 test('an unregistered nested native frame cannot lend its parent source token',async()=>{
  const f=await setup(),input=[{key:1}],action={data:{key:1,caption:'SAME'}},outer={},foreign={};f.api.begin(outer,f.reducer,input,action);f.api.begin(foreign,()=>true,false,true);const result=f.reducer(input,action);f.api.complete(foreign,true);f.api.complete(outer,result);f.api.applied(outer,{result,input,action,reducer:f.reducer,revisionId:'revision-1'});assert.equal(lookup(f,result[0],result).status,'Unknown/Unsupported');assert.equal(f.api.retention().refused,false);
 });
+
+for(const mode of ['array-index','empty-stack','result-field'])test('private write receipt avoids prototype accessors: '+mode,async()=>{
+ const f=await setup(),prototype=mode==='result-field'?Object.prototype:Array.prototype,key=mode==='result-field'?'result':mode==='empty-stack'?'-1':'0',saved=Object.getOwnPropertyDescriptor(prototype,key);let calls=0,result,error;
+ try{Object.defineProperty(prototype,key,{configurable:true,get(){calls++;throw Error('late private getter')},set(){calls++;throw Error('late private setter')}});try{if(mode==='empty-stack')result=f.api.source('enter',f.reducer,[],{});else{const execution=call(f,[{key:1}],{data:{key:1,caption:'SAME'}});result=lookup(f,execution.result[0],execution.result);}}catch(e){error=e;}}
+ finally{if(saved)Object.defineProperty(prototype,key,saved);else delete prototype[key];}
+ assert.equal(error,undefined);assert.equal(calls,0);if(mode==='empty-stack')assert.equal(result,null);else assert.equal(result.status,'Observed');
+});

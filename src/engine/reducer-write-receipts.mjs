@@ -9,7 +9,8 @@ export function createReducerWriteReceipts({page,weakRef=globalThis.WeakRef}={})
  const ref=v=>new weakRef(v),read=r=>apply(deref,r,[]);
  const collections=capturePrivateCollections(),isArray=Array.isArray;
  let registrations=collections.weakMap(),native=collections.weakMap(),sources=collections.weakMap(),revisions=collections.map(),stack=[];
- const push=Array.prototype.push,pop=Array.prototype.pop;
+ const pop=Array.prototype.pop,define=Object.defineProperty,create=Object.create,assign=Object.assign;
+ const append=(a,v)=>{const d=create(null);d.value=v;d.writable=true;d.enumerable=true;d.configurable=true;define(a,a.length,d);};
  let stopped=false,refused=typeof deref!=='function',reason=refused?'Weak references unavailable':null,serial=0,calls=0,writes=0,appliedCount=0;
  const live=()=>!stopped&&!refused;
  function refuse(why){refused=true;reason=why;stack=[];native=collections.weakMap();sources=collections.weakMap();revisions.clear();}
@@ -23,12 +24,12 @@ export function createReducerWriteReceipts({page,weakRef=globalThis.WeakRef}={})
   if(!object(token)||native.has(token)||typeof reducer!=='function'){refuse('Invalid native call entry');return;}
   const ignored=!registrations.has(reducer);if(!ignored&&(!object(input)||!object(action))){refuse('Invalid registered reducer operands');return;}
   if(++calls>512||stack.length>=16){refuse('Native call capacity exceeded');return;}
-  if(ignored){const frame={ignored:true,phase:'active',invalid:true,writes:[]};native.set(token,frame);apply(push,stack,[frame]);return;}
-  const frame={id:page+':reducer-call:'+ ++serial,reducer:ref(reducer),input:ref(input),action:ref(action),phase:'active',entered:false,exited:false,invalid:false,writes:[]};native.set(token,frame);apply(push,stack,[frame]);
+  if(ignored){const frame=assign(create(null),{ignored:true,phase:'active',invalid:true,writes:[]});native.set(token,frame);append(stack,frame);return;}
+  const frame=assign(create(null),{id:page+':reducer-call:'+ ++serial,reducer:ref(reducer),input:ref(input),action:ref(action),phase:'active',entered:false,exited:false,invalid:false,writes:[]});native.set(token,frame);append(stack,frame);
  });
  const source=safe((kind,a,b,c)=>{
   if(kind==='enter'){
-   const frame=stack[stack.length-1];if(!frame||frame.ignored)return null;
+   const frame=(stack.length?stack[stack.length-1]:null);if(!frame||frame.ignored)return null;
    if(frame.phase!=='active'||frame.entered||read(frame.reducer)!==a||read(frame.input)!==b||read(frame.action)!==c||!registrations.has(a)){frame.invalid=true;return null;}
    frame.entered=true;const token={};sources.set(token,frame);return token;
   }
@@ -36,23 +37,23 @@ export function createReducerWriteReceipts({page,weakRef=globalThis.WeakRef}={})
   // A delayed original callback may still construct a new object after lexical
   // exit: it gets no receipt. Duplicate exit/unknown events invalidate this frame.
   if(frame.phase!=='active'||frame.exited){if(kind!=='write')frame.invalid=true;return null;}
-  if(stack[stack.length-1]!==frame){frame.invalid=true;return null;}
+  if((stack.length?stack[stack.length-1]:null)!==frame){frame.invalid=true;return null;}
   if(kind==='exit'){frame.exited=true;return null;}
   if(kind!=='write'){frame.invalid=true;return null;}
   const reducer=read(frame.reducer),sites=reducer&&registrations.get(reducer);
   if(!sites?.has(b)||!object(c)){frame.invalid=true;return null;}
   if(++writes>2048||frame.writes.length>=128){refuse('Field write capacity exceeded');return null;}
   for(let i=0;i<frame.writes.length;i++)if(read(frame.writes[i].row)===c){frame.invalid=true;return null;}
-  apply(push,frame.writes,[{siteId:b,row:ref(c)}]);return null;
+  append(frame.writes,{siteId:b,row:ref(c)});return null;
  });
  const complete=safe((token,result)=>{
   const frame=object(token)?native.get(token):null;
-  if(!frame||frame.phase!=='active'||stack[stack.length-1]!==frame){refuse('Invalid native call completion');return;}
+  if(!frame||frame.phase!=='active'||(stack.length?stack[stack.length-1]:null)!==frame){refuse('Invalid native call completion');return;}
   apply(pop,stack,[]);frame.phase='complete';if(frame.ignored)return;if(!object(result)||!frame.entered||!frame.exited)frame.invalid=true;else frame.result=ref(result);
  });
  const discard=safe(token=>{
   const frame=object(token)?native.get(token):null;if(!frame)return;
-  if(frame.phase==='active'){if(stack[stack.length-1]!==frame){refuse('Invalid native abort order');return;}apply(pop,stack,[]);}
+  if(frame.phase==='active'){if((stack.length?stack[stack.length-1]:null)!==frame){refuse('Invalid native abort order');return;}apply(pop,stack,[]);}
   if(frame.phase==='applied'){refuse('Applied call discarded');return;}frame.phase='discarded';frame.writes=[];
  });
  const applied=safe((token,{result,input,action,reducer,revisionId}={})=>{
