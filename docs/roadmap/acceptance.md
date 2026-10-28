@@ -1,5 +1,7 @@
 # Local developer-preview acceptance
 
+Morning checkpoint: [I02.41](../completion/277-i02-tab-refresh-status.md) sourcecccc90f/76affected/full6031 fixes tab-refresh current-context completion; unbuilt/unpackaged/native0. [V03.34](../completion/276-v03-development-module-native.md) remains wholeINCOMPLETE6, Off/On/parity unvisited; no retry. Current official89/711968a4 and original89ActiveMISS10% preserved. Whole21/29 unchanged. Next ONE V02.38 exactlocal90package eligibility/preparation, preserve prior registry roles.
+
 Current official89host79093c0c; [I02.39](../completion/273-i02-current89-host-refresh.md) source/package9+73 and ONE native10/9original reporter workflow PASS. [V02.37](../completion/272-v02-current89-original-performance.md) closes198rows/66windows: Basic399.1/416.5msPASS, Active10.71737255/27.31871841%MISS10%, no waiver/repeat. I02.40 new89worker-only2checks PASS, original suffix/333inputs/dist36stable.
 Next ONE V03.33 source-only loaded-module proof eligibility; old10INCOMPLETE retained. Whole21/29 unchanged.
 Historical official87host81bec06e is qualified in [I02.37](../completion/258-i02-current87-host-refresh.md).

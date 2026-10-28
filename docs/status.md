@@ -1,17 +1,21 @@
 # Project status
 
-**Current checkpoint, October28:** official89/UI2 host79093c0c, local89 exact.
-21/29 whole tasks complete (72.41%). [V02.37](completion/272-v02-current89-original-performance.md)
-closed ONE original gate/reader:198rows/66windows, Basic399.1/416.5ms PASS1s,
-Active10.71737255/27.31871841% MISS10%. Original criteria and old87MISS retained;
-no retune/waiver/fullV02 credit. Reviewed publisher source77/full6020PASS.
-Model initialization/warm lifecycle technically passed on88; v2quality4scoped/6reject
-remains unaccepted. I02.39 exact89 official intake closes offline1290/build/types/package9/source73 and
-ONE native10checks (9original reporter steps),333inputs/full36dist stable.
-I02.40 sole native2checks/one complete worker suffix PASS; old history stays
-nonexecutable with unknown end, Read/Delete/app unchanged,333inputs/dist36stable.
-Next ONE V03.33 selected loaded-module proof eligibility, source-only.
-No publication/SDK.
+**Current checkpoint, October28 morning:** official89/UI2, host711968a4.
+Whole21/29 (72.41%), eight approved tasks remain open; no scope reduction/release.
+[I02.39](completion/273-i02-current89-host-refresh.md) exact intake/package9/source73/
+native10 reporter checks and [I02.40](completion/274-i02-current89-worker-history.md)
+worker-only native2checks PASS; old history nonexecutable, no resumed owner.
+[V02.37](completion/272-v02-current89-original-performance.md) complete198rows66windows:
+Basic399.1/416.5msPASS1s; Active10.71737255/27.31871841%MISS10%, budgets0/no waiver.
+[V03.34](completion/276-v03-development-module-native.md) separate dev case INCOMPLETE6:
+Original only; Off setup/On/parity unvisited, zero positive weak-dispatch credit.
+[I02.41](completion/277-i02-tab-refresh-status.md) sourcecccc90f fixes reproduced
+Refresh tabs Working status after old tab disappears:76affected/full6031PASS.
+One product UI source; source fix unbuilt/unpackaged/uninstalled, native0. Exact89
+archives/44consumer/36officialdist/plugin10payload15 and raw history unchanged.
+Model88technical readiness/lifecycle retained; v2quality4scoped/6reject unaccepted.
+Next ONE V02.38 exactlocal90package preparation/role reconciliation before any pack.
+No SDK/push/publication or closed native/model/performance retry.
 
 The scoped increments below retain their original artifact/revision boundaries.
 
