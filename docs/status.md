@@ -3303,3 +3303,12 @@ field clean.24STOPPED records/two plans/two receipts/523stable/original65/consol
 allcleanup; independent20negative verifier PASS. Fullsource2989/focused179/types2/
 admission9 prior; ONE final review pending. Screenshot's separate inspection still
 Working; no global-ready/latency/old guide/Undo/Draft/fullV03 acceptance.20/29 unchanged.
+
+[L02.34 closed](completion/267-l02-official-context-comparison-pilot.md), clean7e97bc7:
+ONE original34-row cached pilot10real APIreturns/24templates;22source checks and ONE
+saved reader PASS/1976bindings+original604profile files3links+official36 unchanged.
+QualityFAIL:4scoped/6rejected,2agent-rated extra-clarity responses (no human usability
+acceptance). ONEreview0C0I1M; actualexit0/signalnull, minor reader-exit assertion gap
+deferred, no retry. Experimental v2 stays outside product. Full21/29 remains72.41%.
+NextONE L02.35 existing official88 product warm cancel/stale/fresh recovery, separately
+preregistered max1browser/3enabledExplain; no provider/prompt/download/host edit.

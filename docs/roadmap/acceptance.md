@@ -278,3 +278,10 @@ controls correct a finalizer failure path; actual runtime stays15a084a. ONE revi
 Minor deferred, dense native list unaffected. No native rerun. Original65 tails/
 targets/whole20-of29 remain unchanged. Next V02.10 profiles
 internal native-command phases before any product optimization or guard change.
+
+L02.34 current official88 cached v2pilot is now collected, not accepted:34original
+rows/10actual returns/24templates; semantic4scoped/6reject,2agent-rated clarity only,
+original>=25/useful/fullL02 criteria unmet. Source22/ONEreader/ONEreview0C0I1M retained;
+no product provider selection, old v1quality/history and closed budgets preserved.
+NextONE L02.35 actual existing product warm cancellation/stale-target/fresh recovery
+on same88/UI2, new owned clone/max1browser3enabledExplain; no prompt/corpus retry.
