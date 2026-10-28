@@ -11,10 +11,10 @@ import {startBridge} from '../../core/bridge.mjs';
 import {rpc,waitFor} from '../../scripts/harness.mjs';
 import {nativeInspectorUI} from '../helpers/native-inspector-ui.mjs';
 import {nativeApproveDevelopment,nativeChooseTab} from '../../scripts/native-browser.mjs';
-const presentation=process.argv.includes('--presentation');
+const presentation=process.argv.includes('--presentation'),domControls=process.argv.includes('--dom-controls');
 const root=process.cwd(),out=root+'/.artifacts/a02/selected-list-route/'+new Date().toISOString().replace(/[:.]/g,'-'),sha=s=>createHash('sha256').update(s).digest('hex');await mkdir(out,{recursive:true});
 const sourceRoot='.runtime/todomvc/examples/react',options={projectRoot:root,appRoot:sourceRoot,entry:'src/index.js',root:{file:'src/todo/app.jsx',export:'App'},field:'title',sources:['src/todo/app.jsx','src/todo/reducer.js','src/todo/components/main.jsx','src/todo/components/item.jsx','src/todo/components/footer.jsx']};
-const result={schema:'stateatom.selected-list-route-diagnostic/1',case:presentation?'docs/completion/303-a02-selected-list-presentation-case.md':'docs/completion/301-a02-list-helper-native-case.md',out,startedAt:new Date().toISOString(),checks:[],errors:[],fullA02:false,installedIDE:false,publicPresentation:false,officialHost:false};let source,bridge,session,appSession;
+const result={schema:'stateatom.selected-list-route-diagnostic/1',case:domControls?'docs/completion/305-a02-native-dom-interval-case.md':presentation?'docs/completion/303-a02-selected-list-presentation-case.md':'docs/completion/301-a02-list-helper-native-case.md',out,startedAt:new Date().toISOString(),checks:[],errors:[],fullA02:false,installedIDE:false,publicPresentation:false,officialHost:false};let source,bridge,session,appSession;
 async function check(name,fn){await fn();result.checks.push({name,status:'PASS'});console.log('PASS',name);}
 try{
  const compilation=await buildListFieldCompilation(options);await writeFile(out+'/manifest.json',JSON.stringify(compilation.manifest,null,2));await writeFile(out+'/bundle.js',compilation.code);
@@ -60,6 +60,21 @@ try{
   });result.publicPresentation=true;
  }
  const untouched=await inspect('untouched',second);await check('untouched equal row never borrows selected first row write',()=>assert.notEqual(untouched?.occurrence?.joins?.revisionId,same.occurrence.joins.revisionId));
+ if(domControls){
+  const initial=await inspect('dom-baseline',first);assert.equal(initial.fullPath,true);
+  async function textNode(selector){const{root}=await app.send('DOM.getDocument',{depth:-1});const{nodeId}=await app.send('DOM.querySelector',{nodeId:root.nodeId,selector});const{node:description}=await app.send('DOM.describeNode',{nodeId,depth:1});const child=description.children?.find(n=>n.nodeType===3);assert(child?.nodeId,'native text node');return child;}
+  const mutate=async(selector,value)=>app.send('DOM.setNodeValue',{nodeId:(await textNode(selector)).nodeId,value});
+  await mutate(second,'unrelated sibling');const sibling=await inspect('dom-sibling',first);
+  await check('unrelated sibling text mutation preserves the exact selected revision',()=>{assert.equal(sibling.fullPath,true,JSON.stringify(sibling));assert.equal(sibling.occurrence.joins.revisionId,initial.occurrence.joins.revisionId);});
+  for(const [name,value]of[['changed','native external text'],['same-value','restored']]){
+   if(name==='same-value'){await edit('changed');const noop=await inspect('dom-noop-commit',first);await check('new React commit without a selected host write cannot clear prior external text',()=>assert.equal(noop.fullPath,false,JSON.stringify(noop)));await edit('restored');const fresh=await inspect('dom-new-commit',first);assert.equal(fresh.fullPath,true,JSON.stringify(fresh));assert.notEqual(fresh.occurrence.joins.commitId,initial.occurrence.joins.commitId);}
+   const before=await textNode(first);await mutate(first,value);const after=await textNode(first);assert.equal(after.nodeValue,value);if(name==='same-value')assert.equal(before.nodeValue,value);
+   const refused=await inspect('dom-'+name,first);
+   await check('post-commit '+name+' native text mutation refuses without unknown MAIN compilation',async()=>{assert.equal(refused.fullPath,false,JSON.stringify(refused));assert.match(refused.reason,/Selected text changed after commit|DOM interval unavailable/);const state=JSON.parse(await readFile(out+'/dom-'+name+'-state.json'));assert.equal(state.analysis.codeJournal.freshness,'Recorded');assert.equal(listFieldCodeContextView(context).status,'Owned list code context');});
+   const repeated=await inspect('dom-'+name+'-repeat',first);assert.equal(repeated.fullPath,false,'reinspection cannot restamp the same commit');
+  }
+  await edit('restored again');const recovered=await inspect('dom-recovered',first);await check('new original React commit establishes a fresh selected DOM interval',()=>assert.equal(recovered.fullPath,true,JSON.stringify(recovered)));
+ }
  await inspect('before-unknown-code',first);try{await app.send('Runtime.evaluate',{expression:'document.documentElement.setAttribute("data-unknown-code-control","executed")'});}finally{/* Own observer closes with the session below. */}
  await waitFor(async()=>(await rpc(panel,{op:'state',tabId})).analysis?.stateatom?.selectedListProfile?.status==='Stale');const denied=await inspect('unknown-code',first);await check('unknown MAIN code stales history and refuses a fresh profile',()=>assert.equal(denied?.fullPath,false,JSON.stringify(denied)));
  if(presentation)await check('built passive reader imports actual saved history with no source action',async()=>{

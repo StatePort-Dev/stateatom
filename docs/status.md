@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 native DOM boundary:** [checkpoint306](completion/306-a02-native-dom-interval-repair.md): reproduced and fixed a false positive after external text plus a later no-op React commit. External mutation marks now survive until an actual original host write repairs the same subtree.10 native checks PASS;162 affected source cases covered, including a sandbox-blocked server check rerun with loopback. Installed plugin/IDE/official/held-out/full282 remain open; whole21/29 unchanged. Next normal open-plugin route.
+
 **Latest A02 readable chain:** [checkpoint304](completion/304-a02-selected-list-presentation-result.md): compact current text origin, historical source/revision export and passive reader.148affectedPASS +9 actual built standalone/source-helper checks PASS;440/390px candidates and keyboard disclosure checked. Installed plugin/IDE/official/held-out/full282 remain open; whole21/29 unchanged. Next actual post-commit DOM mutation controls.
 
 **Latest A02 actual native route:** [checkpoint302](completion/302-a02-native-selected-list-route.md): real owned context + authenticated helper + standalone inspector protocol;5 native checks PASS for create/changed/same-value, untouched-row refusal and unknown-code invalidation. Full chains have actual revisions10/24/36. Readable UI/export, installed open plugin, held-out and full282/official qualification remain open; whole21/29 unchanged.

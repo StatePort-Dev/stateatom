@@ -25,7 +25,7 @@ export function createListFieldRuntime({page}={}){
    boundaries:['The page observer supplies no complete field ownership or full lineage authority.']};
  }
  const runtime=Object.freeze({version:1,page,nativeStateAcquisition:true,
-  react19NativeTap(){if(!stopped&&!invalidated){const result=apply(api.tap,api,arguments);if(arguments[0]==='root-current'){const commit=api.currentCommit();if(commit.status==='Observed')dom.commit(commit.commitId)}return result}},snapshot,
+  react19NativeTap(){if(!stopped&&!invalidated){if(arguments[0]==='list-host-begin')dom.beginHost(arguments[1]);if(arguments[0]==='list-host-end')dom.endHost(arguments[1],arguments[2]);const result=apply(api.tap,api,arguments);if(arguments[0]==='root-current'){const commit=api.currentCommit();if(commit.status==='Observed')dom.commit(commit.commitId)}return result}},snapshot,
   stop(){stopped=true;api.stop();dom.stop()},invalidate(){invalidated=true;api.stop();dom.stop()}
  });
  return Object.freeze({api,runtime});

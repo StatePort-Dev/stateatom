@@ -21,11 +21,24 @@ export function transformFieldJSXGrammar(source){
  if(count!==1)throw Error('One native JSX return required');ast.program.body.unshift(...parse(helper,{sourceType:'script'}).program.body);
  return{code:generate(ast,{comments:true},source).code,counts:{'jsx-element-return':count},sourceDigest:hash(source),nativeVersionAdmitted:false,fullPath:false};
 }
+// Only this optional field derivative brackets original native host calls.
+// Finally preserves returns/throws and never invokes an application expression.
+export function instrumentListHostMutations(source){
+ if(source.includes('__saListHost'))throw Error('List host helper collision');
+ const ast=parse(source,{sourceType:'script'});let count=0;
+ traverse(ast,{Function(p){if(!['setInitialProperties','commitUpdate'].includes(p.node.id?.name))return;
+  if(p.node.async||p.node.generator||!t.isIdentifier(p.node.params[0],{name:'domElement'}))throw Error('Original native host signature required');
+  const body=p.node.body.body,done=t.identifier('__saListHostCompleted'),error=t.identifier('__saListHostError');
+  const tap=(kind,...args)=>t.expressionStatement(t.callExpression(t.identifier('__sa19Tap'),[t.stringLiteral(kind),t.identifier('domElement'),...args]));
+  p.node.body.body=[t.variableDeclaration('let',[t.variableDeclarator(done,t.booleanLiteral(true))]),tap('list-host-begin'),t.tryStatement(t.blockStatement(body),t.catchClause(error,t.blockStatement([t.expressionStatement(t.assignmentExpression('=',done,t.booleanLiteral(false))),t.throwStatement(error)])),t.blockStatement([tap('list-host-end',done)]))];count++;p.skip();
+ }});if(count!==2)throw Error('Exact two original native host functions required');return{code:generate(ast,{comments:true},source).code,count};
+}
 export function transformPinnedFieldVendor(source,file){
  if(file==='react-dom/cjs/react-dom-client.development.js'){
   const reducer=transformPinnedReducerCallFrames(source,file),component=instrumentComponentCallGrammar(reducer.code,file,{originalSource:source});if(component.skipped)throw Error('Pinned original component-call shape refused');
   const environment=instrumentOriginalDevtoolsChecks(component.code);if(environment.counts.total!==4||environment.counts.inject!==1||environment.counts.module!==3)throw Error('Pinned native DevTools grammar differs');
-  return{code:environment.code,devtoolsCounts:environment.counts,sourceDigest:hash(source),outputDigest:hash(environment.code),version:'19.2.5',nativeVersionAdmitted:true,reducerCalls:reducer.calls,componentCounts:component.counts,componentSites:component.policy.sites,fullPath:false};
+  const host=instrumentListHostMutations(environment.code);
+  return{code:host.code,hostMutationBoundaries:host.count,devtoolsCounts:environment.counts,sourceDigest:hash(source),outputDigest:hash(host.code),version:'19.2.5',nativeVersionAdmitted:true,reducerCalls:reducer.calls,componentCounts:component.counts,componentSites:component.policy.sites,fullPath:false};
  }
  if(file==='react/cjs/react.development.js')return transformPinnedReact19(source,file);
  if(!Object.hasOwn(fieldJSXPins,file)||hash(source)!==fieldJSXPins[file])throw Error('Field JSX native file/digest pin mismatch');

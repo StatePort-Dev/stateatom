@@ -7,7 +7,7 @@ import {prepareListFieldProgram,bindListFieldModule} from './list-field-program.
 import {transformPinnedFieldVendor} from './react19-field-vendor.mjs';
 const sha=s=>createHash('sha256').update(s).digest('hex'),issued=new WeakMap(),workspaces=new WeakMap(),LIMIT=2*1024*1024;
 const runtimeId='stateatom:owned-list-runtime';
-const LIST_BUILDER_PIN = '8ac98fb148aa0d2074c597acddac40ca5fc82929f90461966bcddb67714431d7';
+const LIST_BUILDER_PIN = 'b4ff8c76f8b98cd5a3581c160950e1ddfff7ac292a2515f8b4cbbd582578df6e';
 const LIST_RECIPE_PINS={
  "src/engine/react19-devtools-checks.mjs": "7bbe515a78d1313e75d8538a5909c6ac0684851fe447dad90dfdffe30ef39894",
  "src/engine/list-field-program.mjs": "89025f8d8f634e803979911744455441e45156c5540220c31d43c9c1853d738f",
@@ -16,7 +16,7 @@ const LIST_RECIPE_PINS={
  "src/engine/component-field-reads.mjs": "4e13bc19558d2217afb9acd27a21f66a88c18891eb17aa8d6a58d91382ada709",
  "src/engine/component-prop-transfers.mjs": "44ec2ccbb297e2eae2a4d9af366a0720ef550e861305026f32eb0b4859f6f34d",
  "src/engine/reducer-field-writes.mjs": "0a2184f035c2861e4e247a2faac6ab9e6a32493c42c28544136b3684cac2bb6c",
- "src/engine/react19-field-vendor.mjs": "32f9a25b545fdab45843f5eadcf2245253c65b5dc6b338409454ff41503de6d4",
+ "src/engine/react19-field-vendor.mjs": "9d39ba0efa66ef3c8afdf6d15a20fe122c8a148a55349b88b93970c6efb94c47",
  "src/engine/reducer-call-frames.mjs": "36206c1069101d1e7d5e202fbf755cf166cf78261c51dbcce798a66097114947",
  "src/engine/component-call-frames.mjs": "ee9cb1cec79c0ca2f6e40e27970d62f303da99f981d93e4af8d6d893ecae9fa4",
  "src/engine/react19-vendor.mjs": "e798519bd68e8e5476f5065eef37eacb477261f7578c7fecc4cd8c1fd4243bca"
