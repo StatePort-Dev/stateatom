@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.0-candidate.20261028.89
 
 - Coalesce dirty observation-publication follow-ups through the existing nominal
   16 ms scheduler, keeping one shared flight and current-state reads. Preserve
