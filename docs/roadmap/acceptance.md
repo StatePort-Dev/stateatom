@@ -292,3 +292,9 @@ finite validated output4.19s. Native late-return/session-destroy/quality/offline
 normal-install remain open.52source/full6005/ONEverifier/ONEreview0C0I2M preserved;
 whole21/29 unchanged. NextONE V02.34 scoped overhead diagnostic, not an original
 performance-gate rerun or target exception.
+
+V02.34 worker-only diagnostic closed:10profiles/200GET/1619samples, no original
+performance acceptance. Source-linked storage publication path supports one next
+source-only scheduling test, not a27%cause or speedup claim. Distinguish actual
+storage epoch retries from publisher invocations. Original87MISS10%/budgets and
+full21/29 remain; nextONE V02.35. Current88/official assets unchanged.

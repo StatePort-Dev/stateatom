@@ -1,5 +1,14 @@
 # Project status
 
+**Current checkpoint, October28:** official88/UI2, hostb9b6e23d;21/29 whole tasks
+complete (72.41%). Real model initialization and bounded warm cancel/stale/fresh UI
+controls passed; experimental v2quality fails4scoped/6reject. Original87Active
+overhead27.22/27.36% still misses10%. Latest worker-only diagnostic269 identifies
+sampled publication/storage code paths, not the full overhead cause or speedup.
+NextONE V02.35 bounded source-only follow-up coalescing; no publication/SDK.
+
+The scoped increments below retain their original artifact/revision boundaries.
+
 [I02.30 official85/UI2 bounded acceptance](completion/242-i02-current85-host-refresh.md),
 host1bad6331: frozen1290/build/types/package9/source73/qualifier8PASS; actual Capture
 38Chromium/40Google and metadata7PASS. Unknown notice observed after30.10s; template,
@@ -3320,3 +3329,9 @@ fresh finite model answer4185.6ms; trustedenabledExplain3/modeloff1, no app acti
 ONEreview0C0I2M. Native late-arrival/rejection/destroy counters Unknown; answer equals
 template/no usefulness or fullL02 credit. NextONE V02.34 bounded active-overhead
 hotspot diagnostic eligibility/freeze; original87MISS10%/closed gate budget retained.
+
+[V02.34 closed](completion/269-v02-active-overhead-diagnostic.md), clean49628b4:
+ONE worker-only diagnostic10profiles/200GET,1619samples/1539idle/41workerSelf/
+62workerInclusive;18source/ONEreader2025stable/ONEreview0C0I0M. Storage publisher
+path sampled, no native call-count/CPU%/27%cause or10%target acceptance. No old
+matrix/gate/TLS/model rerun. NextONE V02.35 source coalescing controls, source-only.

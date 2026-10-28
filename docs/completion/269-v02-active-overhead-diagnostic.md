@@ -63,3 +63,63 @@ Single frozen postreader:
 `node .artifacts/v02/owned-worker-profile/2026-10-28/verify-saved.mjs`.
 Both scripts are hashed in the case; exit0/signalnull/raw/source/case/profiles and
 preservation are required. Native outcome and hotspot not presumed.
+
+## Actual one collection and scoped conclusion
+
+Clean source `49628b469e9e7b956b89239287099eb19cbafa4d`; exact hostb9b6e23d/88/UI2.
+ONE collection exit0/signalnull,10complete segments/200trusted sampleGETs,
+23resolved Profiler commands,5exact active windows. Raw
+`.artifacts/v02/owned-worker-profile/2026-10-28/native/results.json`, SHA256
+`cef98a13e611377b1f035b503fa4e5c0973c36b55e40d25990134fd8ff3da988`.
+Ten raw `.cpuprofile` files retained, exact own worker/UI hashes and script identity
+verified. ONE saved reader PASS/2025bindings/full36dist unchanged; original87gate
+and every old reader remain untouched. Native/reader budgets1/1consumed,0remaining.
+
+1619total samples,1539idle,41known-worker self and62worker-inclusive samples. These
+are sample counts within the instrumented worker, not exact invocation counts,
+thread/browser CPU percentages or elapsed critical-path costs. Inclusive ancestors
+overlap and cannot be added as independent work. There is no off ratio or target
+acceptance derived from this HTTP/current88/Google156 diagnostic.
+
+Targeted exact-compiled-frame/public-source correspondence (Code-linked):
+
+| Path | Inclusive samples | Interpretation |
+| --- | --- | --- |
+| runtime onDebuggerEvent | 25 | Worker event-processing stack was sampled; not25events/calls. |
+| runtime persist / publisher run | 21 each | Same overlapping deferred publication/storage path; not42separate work units. |
+| session namespace set wrapper | 19 | Forwards to underlying session.set; sampling does not count writes. |
+
+A URL-less native frame labelled setAccessLevel has15self samples below that set
+wrapper. This label is not a native command receipt or proof of repeated access-level
+API calls. Exact native identity stays unknown; no security/access-level change is
+supported. The local call-path assessment retains compiled coordinates; no private
+host implementation extract is published in this document.
+
+All9scoped cleanup fields true: profiler stopped/disabled, worker session detached,
+driver/control/browser/desktop/server closed, recorded browser PID absent. Errors0
+and scoped inspector/worker warning/error journal0, not all app/global logs or heap/
+process-tree health. The recording was~16.9s, with no hard-wall-clock guarantee.
+
+ONE bounded final review0Critical/0Important/0Minor; no correction/rereview. It accepts
+the diagnostic scope and next source-only hypothesis, not performance acceptance.
+Important reasoning constraint (not a finding): runtime.persist has its own epoch
+retry loop; publisher invocation count and actual storage operation count must be
+measured separately in source controls. Source18PASS/inherited6005 and executor
+preservation were not rerun by the reviewer.
+
+Next ONE **V02.35**: source-only follow-up scheduling/operation controls for the
+existing publisher. It currently delays only the first save16ms, then immediately
+resaves when dirty after acknowledgement. Test scheduling dirty follow-ups with the
+same existing16ms coalescing interval, without losing synchronous controller records,
+current-state writes, promise/error/disposal semantics or immediate terminal writes.
+Keep distinct publisher calls versus runtime epoch-driven storage operations. A source
+reduction under fixed interleavings is not native speedup or proof of the original
+27%cause. No original gate rerun, Live-cadence/grant/handoff decision, SDK or publication.
+FullV02 and original10% acceptance remain open; full21/29 stays72.41%.
+
+Final executor preservation checkpoint2025bindings/full36/10rawprofile hashes and
+actual exit0/signalnull checked without reexecuting the reader or profiler. Own43file
+review workspace archive CRC/everybyte/planidentity verified before only that owned
+workspace removal. `.artifacts/v02/owned-worker-profile-review/2026-10-28/workspace.zip`,
+SHA256 `92d85caa62fbc467c981c548dc2b1106de5f7577b50c266b6b0a6655c19bde36`.
+No source/product/package/host mutation occurred in this diagnostic slice.
