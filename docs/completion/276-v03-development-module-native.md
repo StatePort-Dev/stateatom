@@ -46,3 +46,34 @@ Original/Off/On source preflight byte admission unchanged apart from original Vi
 cache-token normalization; native loaded hashes still full literal bytes. Current
 private helper/fixture/control configuration bound; max1browser/attempt marker.
 No fresh full6020 or model/Capture/performance run; unbundled harness-only change.
+
+## Sole native closure — INCOMPLETE, no retry
+
+Clean d36a4692e1dd581e86993bdd8fee4fe3918e8516, Chrome153.0.8010.12;
+ONE attempt04:47:29–04:47:54 UTC, actual tool exit1. Raw
+`.artifacts/v03/current-plugin10-development/native-nXZ22V/results.json`, SHA256
+f49f0e4fd83e588c940fa40d8e7802ec6253599a4f234d2acda3bde042eb8e7d.
+Six completed checks: exact inputs and five Original controls, including actual
+App literal digest/mainframe/defaultworld, picker/trusted inputs/trap/no getter.
+Journal freshness is Stale: retain only the captured historical compilation fact,
+not current source/runtime equivalence. Off reaches setup only; On/observer digest/
+positive instrumented handoff/parity unvisited. No weak-dispatch qualification.
+
+Timeout at driver90:34 is first waitOK after Refresh tabs, before selecting the new
+Off tab. Saved screenshot has blank Application; failure state unattached, no
+selection. Both modes reused5173 after server close; this is recorded, not a cause.
+Source tabs() clears a missing prior selection and calls changeContext; action()
+finally deliberately does not publish completion into a changed context. Together
+this exposes a separate status recovery candidate. Actual status text was not
+recorded, so source reproduction must establish it before a product fix. No browser
+repeat, wait extension, mode reorder or hidden stronger privilege workaround.
+
+All372inputs/15payload/36officialdist unchanged, inspector/browser/server closures
+true, scoped errors/console empty; app console NotCollected. No process-tree/heap
+attestation. Failure screenshot viewed as candidate only, no visual acceptance.
+Focused source/saved-result self-review preserves all declared scopes and literal
+INCOMPLETE; no wholeV03/A02/task count upgrade. Native budget consumed/zero remain.
+
+Next ONE I02.41 source-only tab-refresh status reproduction/fix, current public UI
+only. Preserve no auto-selection and cross-context pending/error guards. No closed
+case retry/normal-install/model/performance/SDK/publication claim; packaging separate.
