@@ -15,7 +15,7 @@ export function supportsCapabilityPolicy(value){
 export function validateRequest(m){
  const bad=()=>{throw atomError('INVALID_MESSAGE');};
  if(!m||m.version!==1||typeof m.id!=='string'||!m.id||m.id.length>100||typeof m.session!=='string'||!m.session||m.session.length>100||!m.payload||typeof m.payload!=='object')bad();
- const p=m.payload;if(!ops.has(p.op)||JSON.stringify(m).length>(p.op==='source-map-import'?11500000:p.op==='save-handoff'?2200000:65536))bad();
+ const p=m.payload;if(p.elementProperties!==undefined&&(typeof p.elementProperties!=='boolean'||!['inspect-selector','pick','refine-pick'].includes(p.op)))bad();if(!ops.has(p.op)||JSON.stringify(m).length>(p.op==='source-map-import'?11500000:p.op==='save-handoff'?2200000:65536))bad();
  if(['save-handoff','list-handoffs','open-handoff','delete-handoff'].includes(p.op)){
   const allowed=p.op==='save-handoff'?['op','raw']:p.op==='list-handoffs'?['op']:p.op==='open-handoff'?['op','id']:['op','id','expectedDigest'];
   if(Object.keys(p).some(k=>!allowed.includes(k)))bad();

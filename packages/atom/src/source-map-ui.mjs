@@ -19,7 +19,7 @@ export const sourceMapTemplate=`
 <p id="source-analysis-status" data-atom-id="source-analysis-status" class="sp-atom-hint" role="status"></p><button id="source-analysis-cancel" data-atom-id="source-analysis-cancel" hidden>Cancel source analysis</button>
 <details id="source-analysis-details" data-atom-id="source-analysis-details" class="sp-disclosure" hidden><summary>Source function and possible calls</summary><p id="source-analysis-summary" data-atom-id="source-analysis-summary" class="sp-atom-hint"></p><ul id="source-analysis-calls" data-atom-id="source-analysis-calls"></ul><p id="source-analysis-identifiers" data-atom-id="source-analysis-identifiers" class="sp-atom-hint"></p><pre id="source-analysis-expression" data-atom-id="source-analysis-expression" class="sp-code"></pre></details>
 </details>`;
-export function createSourceMapUI({document,$,rpc,tab,load,action,requestPermission,sourceAnalysis}){
+export function createSourceMapUI({document,$,rpc,tab,load,action,requestPermission,sourceAnalysis,onReveal=()=>{}}){
  let state=null,key='',disposed=false,generation=0,connectionGeneration=0,previewTimer,controller,adoption;
  const selected=()=>state?.sourceMaps?.scripts?.find(r=>r.scriptId===$('source-map-script').value);
  const clearPreview=()=>{$('source-map-access-status').hidden=true;$('source-map-access-status').textContent='';adoption=null;controller?.abort();controller=null;sourceAnalysis?.cancel();clearTimeout(previewTimer);$('source-map-location').textContent='';$('source-map-preview').textContent='';$('source-analysis-status').textContent='';$('source-analysis-cancel').hidden=true;$('source-analysis-details').hidden=true;$('source-analysis-details').open=false;$('source-analysis-summary').textContent='';$('source-analysis-calls').replaceChildren();$('source-analysis-identifiers').textContent='';$('source-analysis-expression').textContent='';};
@@ -78,11 +78,11 @@ export function createSourceMapUI({document,$,rpc,tab,load,action,requestPermiss
   $('source-analysis-expression').textContent=result.expression||'';
  }
  function current(anchor){const binding=state?.analysis?.actionBindings?.find(b=>b.id===anchor?.acquisition?.bindingId);return !disposed&&state?.attached&&!state?.stale&&isCurrentGeneratedAnchor(anchor,{context:state?.analysis?.actionContext,binding,maps:state?.sourceMaps});}
- function connectNative(anchor){if(!current(anchor))throw Error('Native source context changed; refresh handlers');$('source-map-details').open=true;$('source-map-script').value=anchor.generated.scriptId;show();$('source-map-file').focus();}
+ function connectNative(anchor){if(!current(anchor))throw Error('Native source context changed; refresh handlers');onReveal();$('source-map-details').open=true;$('source-map-script').value=anchor.generated.scriptId;show();$('source-map-file').focus();}
  async function viewNative(anchor){
   if(!current(anchor))throw Error('Native source context changed; refresh handlers');
   const known=supportsCapabilityPolicy(state?.capabilityPolicy),decision=known?state.capabilityPolicy.operations['source-map-anchor']:null;if(!decision?.available)throw Error(decision?.reason||'Host does not advertise native source reading');
-  $('source-map-details').open=true;$('source-map-script').value=anchor.generated.scriptId;show();clearPreview();
+  onReveal();$('source-map-details').open=true;$('source-map-script').value=anchor.generated.scriptId;show();clearPreview();
   const own=new AbortController();controller=own;const id=tab(),g=generation;
   try{const result=await rpc({op:'source-map-anchor',tabId:id,bindingId:anchor.acquisition.bindingId,snapshotId:anchor.acquisition.snapshotId,contextKey:JSON.stringify(anchor.identity),...(sourceAnalysis?.available?{includeAnalysisInput:true}:{})},own.signal);
    if(disposed||own.signal.aborted||id!==tab()||g!==generation)return;adoption={controller:own,anchor:result.anchor};await load({refreshDeep:false});adoption=null;if(disposed||own.signal.aborted||id!==tab()||g!==generation)return;

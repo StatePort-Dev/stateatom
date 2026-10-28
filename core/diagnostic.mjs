@@ -42,12 +42,20 @@ export function makeDiagnostic(s,{includeContent=false,notes='',now=Date.now()}=
  report.runtime.sourceMaps=sourceMapReport(s.sourceMaps);
  const observation=createActionObservationReport(s.actionTrace,{sanitizeText:text});if(observation)report.runtime.actionObservation=observation;
  report.runtime.actionBindings=(a?.actionBindings||s.stale?.actionBindings||[]).slice(0,24).map(b=>actionRecord(b,includeContent));
+ const bundle=s.elementInspection||s.stale?.elementInspection;
+ if(bundle?.schemaVersion===1)report.runtime.elementProperties=bundle.properties.slice(0,2).map(row=>{
+  const entry={property:row.property,status:row.status,reason:text(row.reason,1024)};
+  if(!row.selection)return entry;
+  const child=makeDiagnostic({...s,elementInspection:null,selection:row.selection,analysis:row.status==='Stale'?null:row.analysis,stale:row.status==='Stale'?{target:row.selection,at:row.selection.observedAt,reason:row.reason,identity:row.analysis?.graph?.identity||s.analysis?.graph?.identity||s.stale?.identity}:null,requests:[],actionTrace:null,sourceMaps:null,diagnosticExperiment:null},{includeContent,now});
+  for(const key of ['actionBindings','actionObservation','sourceMaps','codeJournal'])delete child.runtime[key];
+  entry.record=Object.fromEntries(['target','identity','configuration','capturedAt','freshness','sources','runtime'].map(k=>[k,child[k]]));return entry;
+ });
  // Keep identity, limits and the question when optional excerpts exceed the reader budget.
- const budgetOmissions=[];
+ const budgetOmissions=[],records=[report,...(report.runtime.elementProperties||[]).flatMap(row=>row.record?[row.record]:[])];
  const oversized=()=>encoder.encode(JSON.stringify(report)).length>MAX;
  if(oversized()){for(const request of report.network){delete request.body;delete request.bodyTruncated;}budgetOmissions.push('Response excerpts omitted to fit the 1 MiB diagnostic limit.');}
- if(oversized()){for(const source of report.sources)delete source.expressions;budgetOmissions.push('Source expression excerpts omitted to fit the diagnostic limit.');}
- if(oversized()){for(const node of report.runtime.nodes){delete node.expression;delete node.value;}budgetOmissions.push('Runtime expression/value excerpts omitted to fit the diagnostic limit.');}
+ if(oversized()){for(const record of records)for(const source of record.sources)delete source.expressions;budgetOmissions.push('Source expression excerpts omitted to fit the diagnostic limit.');}
+ if(oversized()){for(const record of records)for(const node of record.runtime.nodes){delete node.expression;delete node.value;}budgetOmissions.push('Runtime expression/value excerpts omitted to fit the diagnostic limit.');}
  if(budgetOmissions.length){report.contentPolicy.budgetOmissions=budgetOmissions;report.limitations.push(...budgetOmissions);}
  // The same parser guards produced and imported payloads; never persist an invalid format.
  return parseDiagnostic(JSON.stringify(report));
@@ -66,6 +74,18 @@ export function parseDiagnostic(raw){if(typeof raw!=='string'||encoder.encode(ra
  if(r.runtime.firstReadProfile!=null){const p=r.runtime.firstReadProfile;if(p.schema!==1||!['Supported finite trace','Unknown/Unsupported','Stale'].includes(p.status)||typeof p.fullPath!=='boolean'||!Array.isArray(p.limits)||p.limits.length>8||p.fullPath&&(p.status!=='Supported finite trace'||p.sourceProof?.status!=='Code-linked'||p.occurrence?.status!=='Observed'))throw Error('Invalid diagnostic finite trace');r.runtime.firstReadProfile=finiteTraceRecord(p,r.contentPolicy.includeContent);}
  if(r.runtime.actionObservation!==undefined)r.runtime.actionObservation=parseActionObservationReport(r.runtime.actionObservation);
  if(r.runtime.actionBindings!==undefined){const bs=r.runtime.actionBindings;if(!Array.isArray(bs)||bs.length>24||bs.some(b=>!b||!['react-jsx','vue-template','dom-listener','unknown'].includes(b.mechanism)||b.execution?.status!=='not-observed'||!Array.isArray(b.calls)||b.calls.length>8||!Array.isArray(b.hookRelations)||b.hookRelations.length>8))throw Error('Invalid diagnostic action evidence');r.runtime.actionBindings=bs.map(b=>actionRecord(b,r.contentPolicy.includeContent));}
+ if(r.runtime.elementProperties!==undefined){
+  const rows=r.runtime.elementProperties,seen=new Set();
+  if(!Array.isArray(rows)||rows.length<1||rows.length>2)throw Error('Invalid element property records');
+  for(const row of rows){
+   if(!row||Object.keys(row).some(k=>!['property','status','reason','record'].includes(k))||!['text','disabled'].includes(row.property)||seen.has(row.property)||!['Observed','Stale','Unknown/Unsupported'].includes(row.status)||row.reason!==null&&typeof row.reason!=='string')throw Error('Invalid element property record');seen.add(row.property);
+   if(!row.record){if(row.status==='Observed')throw Error('Missing property observation');continue;}
+   const c=row.record;
+   if(Object.keys(c).some(k=>!['target','identity','configuration','capturedAt','freshness','sources','runtime'].includes(k))||!c.runtime||Object.hasOwn(c.runtime,'elementProperties')||c.target?.property!==row.property||c.target?.selector!==r.target.selector||c.target?.tab!==r.target.tab||c.identity?.run!==r.identity?.run||c.target?.page&&r.target.page&&c.target.page!==r.target.page||row.status==='Stale'&&c.freshness!=='Stale')throw Error('Invalid scoped property record');
+   const validated=parseDiagnostic(JSON.stringify({...r,...c,network:[],experiment:null}));
+   row.record=Object.fromEntries(['target','identity','configuration','capturedAt','freshness','sources','runtime'].map(k=>[k,validated[k]]));
+  }
+ }
  return r;
 }
 export function retainDiagnostics(items,report,now=Date.now()){
@@ -80,6 +100,10 @@ export function serializeDiagnostic(report){return JSON.stringify(parseDiagnosti
 // An explicit review operation; the saved original remains unchanged.
 export function omitDiagnosticContent(report){
  const r=parseDiagnostic(JSON.stringify(report));
+ for(const row of r.runtime.elementProperties||[])if(row.record){
+  const clean=omitDiagnosticContent({...r,...row.record,network:[],experiment:null});
+  row.record=Object.fromEntries(['target','identity','configuration','capturedAt','freshness','sources','runtime'].map(k=>[k,clean[k]]));
+ }
  for(const b of r.runtime.actionBindings||[])if(b.binding)delete b.binding.expression;
  for(const source of r.sources)delete source.expressions;
  for(const node of r.runtime.nodes){delete node.expression;delete node.value;}

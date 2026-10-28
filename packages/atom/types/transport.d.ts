@@ -53,11 +53,12 @@ export type AtomOperation=
  |{op:'source-map-anchor';tabId:number;bindingId:string;snapshotId:string;contextKey:string;includeAnalysisInput?:boolean}
  |{op:'source-map-clear';tabId:number}
  |{op:'detach'|'restore'|'metrics';tabId:number}
- |{op:'pick'|'cancel-pick';tabId:number;pickerId?:string}
+ |{op:'pick';tabId:number;pickerId?:string;elementProperties?:boolean}
+ |{op:'cancel-pick';tabId:number;pickerId?:string}
  /** Native DOM identity/value guard only; deep refresh takes precedence. Render occurrence snapshots require deep refresh. */
  |{op:'state';tabId:number;ownerId?:string;observationOwnerId?:string;refreshDeep?:boolean;refreshIdentity?:boolean}
- |{op:'inspect-selector';tabId:number;selector:string}
- |{op:'refine-pick';tabId:number;pickerId:string;index:number}
+ |{op:'inspect-selector';elementProperties?:boolean;tabId:number;selector:string}
+ |{op:'refine-pick';elementProperties?:boolean;tabId:number;pickerId:string;index:number}
  |{op:'selected';tabId:number;selector:string;token:string;documentId?:string}
  |{op:'property';tabId:number;property:'text'|'disabled'}
  |{op:'save-diagnostic';tabId:number;includeContent?:boolean;notes?:string}

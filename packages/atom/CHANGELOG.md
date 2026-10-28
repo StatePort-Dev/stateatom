@@ -2,6 +2,47 @@
 
 ## Unreleased
 
+- Show Text and applicable native Disabled state together for one selected element;
+  remove the global property choice. Keep separately scoped source/inputs/evidence
+  and per-property freshness. The shared editor and Actions stay mounted once.
+- Opt-in element inspections acquire both results with native node/document guards,
+  without background property switching. Preserve local unsupported results and
+  invalidate changed secondary values even while an input editor remains open.
+- Save, validate, redact and display bounded property records in historical
+  diagnostics; apply excerpt budgets to all records. Keep legacy API v1 clients
+  and the explicitly scoped advanced experiment outcome compatible.
+
+- Place the single selected-element context above its four screens and keep it
+  visible while screen content scrolls. Compact the element metadata; display
+  long recorded values at full row width without truncating evidence.
+- Reset per-screen scroll for a different selected target, preserving the active
+  screen and mounted drafts. Same-target snapshots retain scroll positions.
+- Simplify empty/stale Actions and unavailable recording controls; retain recorded
+  history and distinguish code links from DOM snapshots. Add source exploration
+  for an unknown binding. Restore picker tooltips, connection-panel toggle/ARIA
+  state and keyboard focus after connecting.
+
+- Put recorded expressions and observed scalar inputs directly on Inputs. Keep
+  detailed supporting records collapsed, and hide empty/stale result surfaces.
+  Summarize Evidence before trace details; label the report shortcut “Save report”.
+- Show editable inputs when eligible, hide idle mutation tools, reveal new drafts,
+  and respect an active editor's collapsed state on passive refresh. Read-only
+  inspection shows concise permission guidance instead of a disabled editor;
+  HTTP development and HTTPS temporary permission routes remain distinct.
+
+- Keep Atom picker/connection/settings icons in the Atom module row, not the
+  StatePort brand header. Keep tab-list refresh inside connection setup. Hide
+  connection setup after attach until explicitly requested; no automatic attach
+  or permission change is introduced.
+
+- Replace scrolling section links with four mounted, keyboard-accessible screens.
+  Keep selected context, drafts and evidence across screen changes; route source,
+  diagnostic and limitation shortcuts to their owning screen before focusing.
+- Put page connection and first-use guidance before inspection; collapse advanced
+  permissions, manual pairing and optional input editing. Keep expert source,
+  trace, experiment and export tools in their corresponding screens. Preserve
+  shared visual tokens and evidence meanings; no new runtime support is claimed.
+
 - Show a useful recovery message when a CSS selector cannot be queried or an
   injected selection result is missing. Distinguish an inaccessible/missing target;
   retain selection/context guards and allow a fresh selection without reattaching.

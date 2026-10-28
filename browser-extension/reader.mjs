@@ -14,6 +14,11 @@ function explanation(r){
  section('Explanation limits',facts.limitations,{parent:details});recordedExplanation(r,(title,lines,options={})=>section(title,lines,{...options,parent:details}));summary.append(details);
 }
 function recordedExplanation(r,section){
+ for(const row of r.runtime.elementProperties||[]){
+  const c=row.record;
+  section((row.property==='text'?'Text':'Disabled state')+' · '+row.status,[c?JSON.stringify(c.target.value)+' · captured '+(typeof c.capturedAt==='number'?new Date(c.capturedAt).toISOString():'unknown'):'No recorded value',row.reason||'',...(c?.sources||[]).map(s=>'Code-linked · '+s.file+':'+s.line),...(c?.runtime.nodes||[]).map(n=>n.status+' · '+(n.expression||n.kind)+(Object.hasOwn(n,'value')?' = '+JSON.stringify(n.value):'')),...(c?.runtime.unknownBoundaries||[]),'Independent historical property record; not current or reverified.']);
+ }
+
  const finiteTrace=hasHistoricalFiniteTrace(r);
  section('Investigation question',[typeof r.notes==='string'&&r.notes?r.notes:'No question supplied.']);
  section('Code-linked locations',r.sources.map(s=>s.file+':'+s.line+':'+s.column+' · Code-linked; execution not established by a source link'));

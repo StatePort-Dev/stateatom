@@ -2,11 +2,11 @@
 import{createInputController}from'./input-controller.mjs';import{supportsCapabilityPolicy}from'./transport.mjs';
 export const inputEditorTemplate=`
 <section id="input-editor" data-atom-id="input-editor" class="sp-atom-input-editor" aria-label="Eligible input editing" hidden>
- <div class="sp-section-row"><h3 class="sp-section-title">Inputs</h3><span id="input-preview" data-atom-id="input-preview" class="sp-status">Preview</span></div>
- <div class="sp-atom-input-toolbar"><label>Source <select id="input-source" data-atom-id="input-source"><option value="json-response">Responses</option><option value="dom-control">Form controls</option></select></label><div class="sp-atom-input-modes" role="group" aria-label="Edit mode"><button id="input-mode-live" data-atom-id="input-mode-live" aria-pressed="true">Live</button><button id="input-mode-draft" data-atom-id="input-mode-draft" aria-pressed="false">Draft</button></div></div>
+ <div class="sp-section-row"><h3 class="sp-section-title">Editable inputs</h3><span id="input-preview" data-atom-id="input-preview" class="sp-status">Preview</span></div>
+ <div class="sp-atom-input-toolbar"><label>Source <select id="input-source" data-atom-id="input-source"><option value="json-response">Responses</option><option value="dom-control">Form controls</option></select></label><div id="input-modes" data-atom-id="input-modes" class="sp-atom-input-modes" role="group" aria-label="Edit mode"><button id="input-mode-live" data-atom-id="input-mode-live" aria-pressed="true">Live</button><button id="input-mode-draft" data-atom-id="input-mode-draft" aria-pressed="false">Draft</button></div></div>
  <div class="sp-atom-input-actions"><button id="input-open" data-atom-id="input-open">Open inputs</button><button id="input-close" data-atom-id="input-close" hidden>Close editing</button><button id="input-reconnect" data-atom-id="input-reconnect" hidden>Reopen inspector</button></div>
  <p id="input-note" data-atom-id="input-note" class="sp-atom-hint"></p>
- <div class="sp-section-row sp-atom-input-columns"><span id="input-kind" data-atom-id="input-kind"></span><span id="input-columns" data-atom-id="input-columns">Observed → Draft</span></div>
+ <div id="input-column-headings" data-atom-id="input-column-headings" class="sp-section-row sp-atom-input-columns"><span id="input-kind" data-atom-id="input-kind"></span><span id="input-columns" data-atom-id="input-columns">Observed → Draft</span></div>
  <div id="input-fields" data-atom-id="input-fields"></div>
  <div class="sp-atom-input-actions"><button id="input-apply" data-atom-id="input-apply" class="sp-button-primary" hidden>Apply draft</button><button id="input-discard" data-atom-id="input-discard">Discard draft</button></div>
  <div class="sp-atom-input-actions"><button id="input-read" data-atom-id="input-read">Read current values</button><button id="input-undo" data-atom-id="input-undo">Undo last</button><button id="input-baseline" data-atom-id="input-baseline">Restore baseline</button></div>
@@ -23,7 +23,7 @@ const fieldResource=entry=>entry.conflict&&entry.draftResource||entry.resource;
 const rowKey=r=>JSON.stringify([r.kind,r.type,r.locator.control,r.locator.selector,r.locator.url,r.locator.method,r.locator.pointer]);
 function explanation(code,message){return({DRAFT_PENDING:'Apply or discard the local draft first.',INVALID_CONTROL_VALUE:'Not an allowed value for this control.',STALE_CONTROL:'This control changed. Discard the stale draft.',STALE_RESOURCE:'This field changed. Discard the stale draft.',EXTERNAL_REVISION:'A newer external value cannot be overwritten by undo.',INSPECTOR_DISCONNECTED:'Inspector connection lost. Reopen this inspector.',BUSY:'This input editor is busy or belongs to another view.',OBSERVATION_REQUIRED:'Inspect a current target before opening inputs.',ACK_UNCONFIRMED:'The edit may have had effects; acknowledgement is unavailable.'})[code]||message||code;}
 export function createInputUI({document,$,client,preview=false,onReconnect}={}){
- const rows=new Map();let state=null,caps=null,capKey=null,capEpoch=0,visible=false,disposed=false,localError=null;
+ const rows=new Map();let state=null,caps=null,capKey=null,capEpoch=0,visible=false,disposed=false,localError=null,disclosureKey=null,disclosureState=null;
  const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
  const text=(id,value)=>{const el=$(id);if(el.textContent!==value)el.textContent=value;};
  const controller=createInputController({client,onChange:render});
@@ -58,11 +58,20 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
   return{el,input,buttons,observed,error,reset,location,options:null,key:rowKey(r)};
  }
  function render(){
-  if(disposed)return;const s=controller.snapshot(),d=s.draft,e=s.editor;const region=$('input-editor');region.hidden=!visible;if(!visible)return;
+  if(disposed)return;const s=controller.snapshot(),d=s.draft,e=s.editor;const region=$('input-editor');region.hidden=!visible||state?.readOnly===true&&!s.active&&!d?.dirtyCount;if(!visible)return;
   region.setAttribute('aria-busy',String(s.busy));$('input-preview').hidden=!preview||state?.capabilityPolicy?.features?.['inputs.live']?.available===true;
   for(const m of['live','draft'])$('input-mode-'+m).setAttribute('aria-pressed',String(s.mode===m));
   $('input-source').disabled=s.busy||s.opening||s.connectionLost;
-  const openDecision=decision('inputs-open'),heldClosed=!s.active&&!!d?.dirtyCount,selecting=['starting','picking','resolving'].includes(state?.picker?.status);
+  const retained=s.active||!!d?.dirtyCount;
+  $('input-modes').hidden=!retained;$('input-column-headings').hidden=!retained;
+  for(const id of ['input-read','input-undo','input-baseline'])$(id).hidden=!s.active;
+  $('input-discard').hidden=!d?.dirtyCount;
+  const disclosure=$('input-editing-details'),nextDisclosureState=JSON.stringify([s.active,s.opening,e?.investigationId,d?.dirtyCount]);
+  if(disclosure&&nextDisclosureState!==disclosureState&&(retained||s.opening))disclosure.open=true;disclosureState=nextDisclosureState;
+  const openDecision=decision('inputs-open');
+  const targetKey=JSON.stringify([state?.tabId,state?.run,state?.selection?.domIdentity,state?.property]);
+  if(disclosure&&openDecision?.available&&state?.selection&&targetKey!==disclosureKey){disclosureKey=targetKey;disclosure.open=true;}
+  const heldClosed=!s.active&&!!d?.dirtyCount,selecting=['starting','picking','resolving'].includes(state?.picker?.status);
   $('input-open').disabled=selecting||s.opening||s.busy||s.connectionLost||heldClosed||!openDecision?.available;
   $('input-open').title=selecting?'Finish or cancel element selection before opening inputs.':heldClosed?'Discard the closed draft before opening another investigation.':openDecision?.reason||'Current capability policy is unavailable';
   $('input-open').textContent=s.active?'Read current values':'Open inputs';$('input-open').hidden=s.active;
