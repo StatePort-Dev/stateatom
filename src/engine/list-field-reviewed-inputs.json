@@ -169,6 +169,11 @@
       "transform": "identity"
     },
     {
+      "file": "src/engine/list-field-runtime.mjs",
+      "sourceDigest": "6b8e7a97cc8b9ccc578da91c0923d664b7ab28ec5bb6ab6260896ccbe0ca2de1",
+      "transform": "identity"
+    },
+    {
       "file": "src/engine/private-collections.mjs",
       "sourceDigest": "cae4ca7d51fbc9d2cb01d894139a1d5c8d689175e5823479d9c7420ccd55a869",
       "transform": "identity"
@@ -185,7 +190,7 @@
     },
     {
       "file": "stateatom-owned-list:runtime.mjs",
-      "sourceDigest": "66fe0fe230d94093fb49a022dc70ecfee59b1b43f4f3c87c7e30b4b3ff92b3b0",
+      "sourceDigest": "49aa04f62dc077b78ca14ac3dc212ae80d7d4b098627f24835a52beb26a88448",
       "transform": "owned-bootstrap"
     }
   ]
