@@ -56,3 +56,30 @@ checkpoint hashes bound. Exclusive max1measurement/max1fullreader markers absent
 before clean case commit. ONE actual invocation after commit:
 `node .artifacts/v02/current89-performance-source/2026-10-28/run-once.mjs`.
 No measurement result/target acceptance presumed by this packet.
+
+## Closed actual result
+
+Clean execution a764c3ff6a6da244e6313e296c3399199c7485ad; ONE measurement
+04:13:44–04:17:02 UTC, exit0/signalnull. ONE frozen reader:
+`PASS_COMPLETE_MEASUREMENT_ORIGINAL_TARGETS_MISSED`. Raw
+`.artifacts/v02/basic-observer-current89/2026-10-28T04-13-44-785Z/results.json`,
+SHA256 `a31b7c29fc3c041bbfe2956b777ebf770110ec471239e2f78f54b817e177c78f`.
+198rows/18warm/180measured/66active windows; original guards/cleanup PASS,
+recorded errors/inspectorconsole empty. Standalone Basic p95 399.1ms PASS1s;
+Active/off10.71737255% MISS10%. Embedding Basic416.5ms PASS1s;
+Active/off27.31871841% MISS10%. No threshold waiver, causal speedup or floor claim.
+Old87MISS remains. Measurement/reader budgets exhausted; no retune or repeat.
+
+462bindings/300caseinputs/327product unchanged. Recorded Node/browser PIDs absent
+in the observed namespace; browser start fingerprints/global descendant/heap health
+not collected. No processes killed or profiles removed.
+ONE final bounded review0Critical/0Important/0Minor, no correction/rereview.
+Own review workspace archived1files, CRC/everybyte checked, plan identity
+retained; SHA256 `6b8dd27aed3a8671f560a8dd61896ad05db484e7def69b0fc1c205408d0c0bb3`. Readable report preserved outside removed own workspace.
+Evidence: `.artifacts/v02/current89-performance-source/2026-10-28/measurement-checkpoint.json`
+and `.artifacts/v02/current89-performance-saved-verification/2026-10-28/report.json`.
+Full21/29 (72.41%) unchanged; performance acceptance false/fullV02 open.
+
+Next ONE I02.39: exact local official89/UI2 intake and existing affected owned
+reporter workflow, preserving historical88/dist/model and all original predicates.
+No fresh model/TLS/fullCapture/normal-install/SDK/publication or fullI02 claim.

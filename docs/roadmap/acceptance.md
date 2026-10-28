@@ -1,6 +1,7 @@
 # Local developer-preview acceptance
 
-Current official87host81bec06e is qualified in [I02.37](../completion/258-i02-current87-host-refresh.md).
+Current official88hostb9b6e23d; local89 exact. [V02.37](../completion/272-v02-current89-original-performance.md) closes198rows/66windows: Basic399.1/416.5msPASS, Active10.71737255/27.31871841%MISS10%, no waiver/repeat. Next ONE I02.39 exact89 official intake/affected reporter. Whole21/29 unchanged.
+Historical official87host81bec06e is qualified in [I02.37](../completion/258-i02-current87-host-refresh.md).
 Historical component checkpoint: [I02.36 exact local85↔86 reload/rollback](../completion/250-i02-component-reload-rollback.md),
 host223714a7, corrected actual7PASS/4wholeFAIL retained. Waiting rule retirement,
 local saved snapshot and enabled-target picker on unchanged app document only; no

@@ -1,14 +1,13 @@
 # Project status
 
-**Current checkpoint, October28:** official88/UI2, hostb9b6e23d;21/29 whole tasks
-complete (72.41%). Real model initialization and bounded warm cancel/stale/fresh UI
-controls passed; experimental v2quality fails4scoped/6reject. Original87Active
-overhead27.22/27.36% still misses10%. Latest worker-only diagnostic269 identifies
-sampled publication/storage code paths, not the full overhead cause or speedup.
-Reviewed sourcee6bd00d now coalesces dirty follow-ups;77affected/full6020PASS/ONE
-review0C0I0M. Source differs1of270 from immutable88; no new native effect claimed.
-Local89now exact270source327build44pair/type2/admission9; official host stays88.
-NextONE V02.37 unchanged original-gate89eligibility; no publication/SDK.
+**Current checkpoint, October28:** official88/UI2 hostb9b6e23d; local89 exact.
+21/29 whole tasks complete (72.41%). [V02.37](completion/272-v02-current89-original-performance.md)
+closed ONE original gate/reader:198rows/66windows, Basic399.1/416.5ms PASS1s,
+Active10.71737255/27.31871841% MISS10%. Original criteria and old87MISS retained;
+no retune/waiver/fullV02 credit. Reviewed publisher source77/full6020PASS.
+Model initialization/warm lifecycle technically passed on88; v2quality4scoped/6reject
+remains unaccepted. Next ONE I02.39 exact89 official intake/affected reporter.
+No publication/SDK.
 
 The scoped increments below retain their original artifact/revision boundaries.
 

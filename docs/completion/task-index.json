@@ -7001,7 +7001,7 @@
       "active_slice": {
         "id": "V02.37",
         "record": "272-v02-current89-original-performance.md",
-        "status": "source-case-frozen-awaiting-one89measurement",
+        "status": "closed-complete-original-targets-missed",
         "whole_V02_complete": false,
         "case_sha256": "7dc269996caa9d3e6fa7eb86fa4645474f82b0d5682237ea5715b5d816b78bf1",
         "registered_bindings": 462,
@@ -7012,15 +7012,32 @@
         "source_controls": 14,
         "reader_negative_controls": 32,
         "pure_reader_functions_AST_exact": 13,
-        "measurement_runs": 0,
-        "full_reader_runs": 0,
+        "measurement_runs": 1,
+        "full_reader_runs": 1,
         "maximum_measurement_runs": 1,
         "maximum_full_reader_runs": 1,
         "new_CAs": 0,
-        "new_imports": 0
+        "new_imports": 0,
+        "remaining_budget": 0,
+        "rows": 198,
+        "active_windows": 66,
+        "basic_p95_ms": [
+          399.1,
+          416.5
+        ],
+        "active_overhead_percent": [
+          10.71737255,
+          27.31871841
+        ],
+        "performance_acceptance": false,
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 0
+        }
       },
       "execution_record": "272-v02-current89-original-performance.md",
-      "current_checkpoint": "271-v02-current89-local-package.md",
+      "current_checkpoint": "272-v02-current89-original-performance.md",
       "completed_slices": [
         {
           "id": "V02.33",
@@ -8565,7 +8582,7 @@
         "measurement_budget_remaining": 0,
         "first_reader_budget_remaining": 0
       },
-      "next_bounded_step": "ONE V02.37 exact89 original-performance eligibility/preparation: retained valid syntheticTLS only, current type2/admission9 plus existing backend13 accounted, unchanged original198rows/66windows/20GETx1024/1s/10%/order/poll/guards; max1newbackend ifneeded/1measurement/1reader. Old87budget0/MISS preserved, no CA/model/host/SDK/publication.",
+      "next_bounded_step": "ONE I02.39 exact local official89/UI2 intake and affected existing owned reporter workflow. Preserve88/model/history, original89ActiveMISS10.7174/27.3187%, budgets0. No model/TLS/fullCapture/SDK/publication/fullI02 claim.",
       "historical_active_before_V02_31": {
         "id": "V02.30",
         "record": "239-v02-debugger-lifetime-feasibility.md",
@@ -10235,9 +10252,9 @@
     },
     "document": "272-v02-current89-original-performance.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
-    "date": "2026-10-27",
-    "current_increment": "V02.36 exactlocal89 qualified/270source327build44pair/type2/admission9; runtime-only hosts, official88unchanged, no native/perf credit.",
-    "next_item": "V02.37",
+    "date": "2026-10-28",
+    "current_increment": "V02.37 ONE complete89 gate/reader;198rows66windows; BasicPASS/Active10.7174/27.3187%MISS10%; original budgets0, no waiver/fullV02.",
+    "next_item": "I02.39",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -10262,7 +10279,7 @@
       "I01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "V02.37",
+    "active_item": "I02.39",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -13266,7 +13283,7 @@
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "9938645807d06171be7b5afaba415235a6754c4b",
     "current_record_date": "2026-10-28",
-    "next_bounded_step": "ONE V02.37 exact89 original-performance eligibility/preparation: retained valid syntheticTLS only, current type2/admission9 plus existing backend13 accounted, unchanged original198rows/66windows/20GETx1024/1s/10%/order/poll/guards; max1newbackend ifneeded/1measurement/1reader. Old87budget0/MISS preserved, no CA/model/host/SDK/publication.",
+    "next_bounded_step": "ONE I02.39 exact local official89/UI2 intake and affected existing owned reporter workflow. Preserve88/model/history, original89ActiveMISS10.7174/27.3187%, budgets0. No model/TLS/fullCapture/SDK/publication/fullI02 claim.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
