@@ -52,3 +52,8 @@ changed while subsequent files were being read; invalidated slots are not refill
 This is not an atomic filesystem snapshot or a watch against edits after return.
 Exact digest/range checks still apply; this lookup
 does not establish supported syntax, runtime ownership or a complete source path.
+
+For an isolated helper change, `npm run pack:development -- --helper-only` writes
+only a local VSIX and `helper-handoff.json`. The filename includes its bundle
+hash; the handoff records the exact archive hash and source state. This does not
+replace the paired plugin/Atom handoffs or establish their installed compatibility.

@@ -1676,7 +1676,7 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "308-a02-private-helper-channel-result.md",
+      "execution_record": "310-a02-installed-helper-source-navigation.md",
       "completed_slices": [
         {
           "id": "A02.55",
@@ -3028,7 +3028,7 @@
         "bounded_next_experiment": "A02.9 source-only historical claim description on retained data; no browser/native",
         "experiment_native_executed": false
       },
-      "current_checkpoint": "308-a02-private-helper-channel-result.md",
+      "current_checkpoint": "310-a02-installed-helper-source-navigation.md",
       "stopping_point_history": [
         {
           "invoked": true,
@@ -3312,16 +3312,16 @@
       },
       "active_slice": {
         "id": "A02.release-selected-list-integration",
-        "record": "308-a02-private-helper-channel-result.md",
-        "status": "in-progress-task3-installed-helper",
+        "record": "310-a02-installed-helper-source-navigation.md",
+        "status": "in-progress-task3-packaged-plugin-launch",
         "affected_pass": 19,
-        "native_runs": 9,
+        "native_runs": 10,
         "new_native_runs": 1,
         "public_plugin_integrated": false,
         "runtime_premises_discharged": false,
         "full_A02": false,
         "review_pending": "one final whole-integration review",
-        "current_full_verification": "308 helper/channel19PASS + actual separate-process private-channel7PASS; no installed IDE/normal plugin/official/full-suite claim.",
+        "current_full_verification": "310 actual installed VSIX/source navigation8PASS;308 helper19PASS retained; no ordinary packaged list-plugin/official/full-suite claim.",
         "compiled_inputs": 39,
         "bundle_sha256": "43e02fd7f51d42c25fe7b56f86ab7260a568e00eb4622ec5774314a854ca51f1",
         "held_out_effect_binding": false,
@@ -3329,12 +3329,15 @@
         "actual_dom_commit_ordering_qualified": true,
         "actual_positive_helper_composition_qualified": true,
         "native_startup_attempts": 16,
-        "native_qualification_scope": "Separate Node helper via private owned verifier7PASS; retained306 DOM and304 UI/save/reader scopes. Installed helper/normal plugin/IDE/official/held-out/full282 pending.",
-        "native_record": ".artifacts/a02/selected-list-route/2026-10-28T19-11-39-304Z/results.json",
+        "native_qualification_scope": "Actual installed helper metadata/bytes and IDE source action8PASS through current private verifier. Normal packaged list-plugin, official host, held-out/full282 pending.",
+        "native_record": ".artifacts/a02/selected-list-route/2026-10-28T19-18-32-577Z/results.json",
         "actual_public_presentation_qualified": true,
         "actual_historical_save_reader_qualified": true,
         "dom_qualification_scope": "Original commit, changed/equal external text, retained taint across no-op commit, actual original host repair and sibling text control; actual picker overlay still pending.",
-        "actual_separate_helper_channel_qualified": true
+        "actual_separate_helper_channel_qualified": true,
+        "actual_installed_helper_qualified": true,
+        "actual_ide_source_navigation_qualified": true,
+        "installed_helper_sha256": "c87714e736983c3e34f81977e2842c8bdfe8b8983bdf8da717865894d0cdbe45"
       },
       "historical_checkpoint_before_A02_51": {
         "active_slice": {
@@ -3757,6 +3760,32 @@
         "actual_public_presentation_qualified": true,
         "actual_historical_save_reader_qualified": true,
         "dom_qualification_scope": "Original commit, changed/equal external text, retained taint across no-op commit, actual original host repair and sibling text control; actual picker overlay still pending."
+      },
+      "selected_list_private_channel_checkpoint": {
+        "id": "A02.release-selected-list-integration",
+        "record": "308-a02-private-helper-channel-result.md",
+        "status": "in-progress-task3-installed-helper",
+        "affected_pass": 19,
+        "native_runs": 9,
+        "new_native_runs": 1,
+        "public_plugin_integrated": false,
+        "runtime_premises_discharged": false,
+        "full_A02": false,
+        "review_pending": "one final whole-integration review",
+        "current_full_verification": "308 helper/channel19PASS + actual separate-process private-channel7PASS; no installed IDE/normal plugin/official/full-suite claim.",
+        "compiled_inputs": 39,
+        "bundle_sha256": "43e02fd7f51d42c25fe7b56f86ab7260a568e00eb4622ec5774314a854ca51f1",
+        "held_out_effect_binding": false,
+        "actual_native_code_context_qualified": true,
+        "actual_dom_commit_ordering_qualified": true,
+        "actual_positive_helper_composition_qualified": true,
+        "native_startup_attempts": 16,
+        "native_qualification_scope": "Separate Node helper via private owned verifier7PASS; retained306 DOM and304 UI/save/reader scopes. Installed helper/normal plugin/IDE/official/held-out/full282 pending.",
+        "native_record": ".artifacts/a02/selected-list-route/2026-10-28T19-11-39-304Z/results.json",
+        "actual_public_presentation_qualified": true,
+        "actual_historical_save_reader_qualified": true,
+        "dom_qualification_scope": "Original commit, changed/equal external text, retained taint across no-op commit, actual original host repair and sibling text control; actual picker overlay still pending.",
+        "actual_separate_helper_channel_qualified": true
       }
     },
     {

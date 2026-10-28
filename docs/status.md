@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 installed helper:** [checkpoint310](completion/310-a02-installed-helper-source-navigation.md): actual isolated VSIX matches package bytes; current Atom source link opens original reducer50:84 in real VS Code.8native checks PASS with owned cleanup. Normal packaged selected-list plugin launch, official host, held-out/full282 remain open; whole21/29 unchanged.
+
 **Latest A02 helper transport:** [checkpoint308](completion/308-a02-private-helper-channel-result.md): real separate helper reaches the owned verifier through a private workspace channel.19affectedPASS +7native checks PASS; Origin/key/Host/close refusals retained. Installed VSIX/IDE and normal packaged plugin launch remain open; whole21/29 unchanged.
 
 **Latest A02 native DOM boundary:** [checkpoint306](completion/306-a02-native-dom-interval-repair.md): reproduced and fixed a false positive after external text plus a later no-op React commit. External mutation marks now survive until an actual original host write repairs the same subtree.10 native checks PASS;162 affected source cases covered, including a sandbox-blocked server check rerun with loopback. Installed plugin/IDE/official/held-out/full282 remain open; whole21/29 unchanged. Next normal open-plugin route.

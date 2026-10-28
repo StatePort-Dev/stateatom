@@ -10,19 +10,24 @@ import {startListFieldServer} from '../../src/engine/list-field-server.mjs';
 import {createListFieldCodeContext,listFieldCodeContextView} from '../../src/engine/list-field-code.mjs';
 import {launchControlledFirstReadBrowser} from '../../src/first-read/controlled-session.mjs';
 import {startBridge} from '../../core/bridge.mjs';
-import {rpc,waitFor} from '../../scripts/harness.mjs';
+import {rpc,waitFor,startIDE} from '../../scripts/harness.mjs';
 import {nativeInspectorUI} from '../helpers/native-inspector-ui.mjs';
 import {nativeApproveDevelopment,nativeChooseTab} from '../../scripts/native-browser.mjs';
-const presentation=process.argv.includes('--presentation'),domControls=process.argv.includes('--dom-controls'),privateChannel=process.argv.includes('--private-channel');
+const installedVsix=process.argv.find(a=>a.startsWith('--installed-vsix='))?.slice('--installed-vsix='.length);
+const presentation=process.argv.includes('--presentation'),domControls=process.argv.includes('--dom-controls'),privateChannel=!!installedVsix||process.argv.includes('--private-channel');
 const root=process.cwd(),out=root+'/.artifacts/a02/selected-list-route/'+new Date().toISOString().replace(/[:.]/g,'-'),sha=s=>createHash('sha256').update(s).digest('hex');await mkdir(out,{recursive:true});
 const sourceRoot='.runtime/todomvc/examples/react',options={projectRoot:root,appRoot:sourceRoot,entry:'src/index.js',root:{file:'src/todo/app.jsx',export:'App'},field:'title',sources:['src/todo/app.jsx','src/todo/reducer.js','src/todo/components/main.jsx','src/todo/components/item.jsx','src/todo/components/footer.jsx']};
-const result={schema:'stateatom.selected-list-route-diagnostic/1',case:privateChannel?'docs/completion/307-a02-private-helper-channel-case.md':domControls?'docs/completion/305-a02-native-dom-interval-case.md':presentation?'docs/completion/303-a02-selected-list-presentation-case.md':'docs/completion/301-a02-list-helper-native-case.md',out,startedAt:new Date().toISOString(),checks:[],errors:[],fullA02:false,installedIDE:false,publicPresentation:false,officialHost:false};let source,bridge,session,appSession,channel;
+const result={schema:'stateatom.selected-list-route-diagnostic/1',case:installedVsix?'docs/completion/309-a02-installed-helper-case.md':privateChannel?'docs/completion/307-a02-private-helper-channel-case.md':domControls?'docs/completion/305-a02-native-dom-interval-case.md':presentation?'docs/completion/303-a02-selected-list-presentation-case.md':'docs/completion/301-a02-list-helper-native-case.md',out,startedAt:new Date().toISOString(),checks:[],errors:[],fullA02:false,installedIDE:false,publicPresentation:false,officialHost:false};let source,bridge,session,appSession,channel,ideVerified=false;
 async function check(name,fn){await fn();result.checks.push({name,status:'PASS'});console.log('PASS',name);}
 try{
  const compilation=await buildListFieldCompilation(options);await writeFile(out+'/manifest.json',JSON.stringify(compilation.manifest,null,2));await writeFile(out+'/bundle.js',compilation.code);
  await writeFile(out+'/frozen-inputs.json',JSON.stringify({case:sha(await readFile(result.case)),script:sha(await readFile(new URL(import.meta.url))),manifest:compilation.manifest.digest,bundle:compilation.manifest.bundle.digest,extensionWorker:sha(await readFile('dist/browser/worker.js'))},null,2));
  source=await startListFieldServer({compilation});
- if(privateChannel){const child=fork(new URL('../helpers/list-channel-bridge.mjs',import.meta.url),[],{stdio:['ignore','ignore','inherit','ipc']});const ready=await new Promise((resolve,reject)=>{const timer=setTimeout(()=>{child.kill('SIGTERM');reject(Error('Separate helper startup timeout'));},10000);child.once('error',reject);child.once('message',m=>{clearTimeout(timer);m.error?reject(Error(m.error)):resolve(m)});child.send({root});});bridge={cfg:{port:ready.port,token:ready.token},helper:ready.helper,workspace:ready.workspace,close:async()=>{if(child.connected)child.send({close:true});try{await waitFor(()=>child.exitCode!==null,10000);}catch{child.kill('SIGTERM');throw Error('Separate helper cleanup timeout');}}};result.separateHelperPid=child.pid;}
+ if(installedVsix){
+  const {createServer}=await import('node:net'),reservation=createServer();await new Promise(r=>reservation.listen(0,'127.0.0.1',r));const port=reservation.address().port;await new Promise(r=>reservation.close(r));
+  const runtime=root+'/.runtime/selected-list-ide/'+new Date().toISOString().replace(/[:.]/g,'-');await mkdir(runtime,{recursive:true,mode:0o700});const ide=await startIDE(runtime,{logDir:out,installedVsix,projectRoot:root,ownedEndpoint:true,userSettings:{'stateatom.helperPort':port,'stateatom.appOrigin':'http://127.0.0.1:4173','stateatom.sourceFolder':sourceRoot}});
+  bridge={cfg:{port:Number(new URL(ide.conn.url).port),token:ide.conn.token},helper:ide.conn.helper,workspace:ide.conn.workspace,runtime,ide,close:async()=>{await ide.close(ideVerified);for(const name of['installed-helper-host.json','host-complete.json','offline-host.json','ide-audit.jsonl'])try{await writeFile(out+'/'+name,await readFile(runtime+'/'+name));}catch(e){if(e.code!=='ENOENT')throw e;}}};result.installedVsixSha256=sha(await readFile(installedVsix));
+ }else if(privateChannel){const child=fork(new URL('../helpers/list-channel-bridge.mjs',import.meta.url),[],{stdio:['ignore','ignore','inherit','ipc']});const ready=await new Promise((resolve,reject)=>{const timer=setTimeout(()=>{child.kill('SIGTERM');reject(Error('Separate helper startup timeout'));},10000);child.once('error',reject);child.once('message',m=>{clearTimeout(timer);m.error?reject(Error(m.error)):resolve(m)});child.send({root});});bridge={cfg:{port:ready.port,token:ready.token},helper:ready.helper,workspace:ready.workspace,close:async()=>{if(child.connected)child.send({close:true});try{await waitFor(()=>child.exitCode!==null,10000);}catch{child.kill('SIGTERM');throw Error('Separate helper cleanup timeout');}}};result.separateHelperPid=child.pid;}
  else{bridge=startBridge({root,port:0,token:randomBytes(32).toString('hex'),onOpen:async()=>({opened:false,reason:'Source-helper diagnostic, no installed IDE'}),onDefinitions:async()=>[],onReferences:async()=>[]});await bridge.ready;bridge.cfg.port=bridge.server.address().port;}
  session=await launchControlledFirstReadBrowser({projectRoot:root,headed:true,appProfile:'selected-list'});const {panel}=session,ui=await nativeInspectorUI(panel,session.browser);
  await ui.click('source-nav');await ui.fill('connection-receipt',JSON.stringify({schemaVersion:1,helper:bridge.helper,workspace:bridge.workspace,url:'http://127.0.0.1:'+bridge.cfg.port,origin:'http://127.0.0.1:4173',token:bridge.cfg.token,sourceRoot}));await ui.click('connect-receipt');await ui.waitOK();
@@ -40,7 +45,7 @@ try{
  });
  async function inspect(name,selector){
   await rpc(panel,{op:'property',tabId,property:'text'});
-  const reply=await rpc(panel,{op:'inspect-selector',tabId,selector,...(presentation?{elementProperties:true}:{})});
+  const reply=await rpc(panel,{op:'inspect-selector',tabId,selector,...(presentation||installedVsix?{elementProperties:true}:{})});
   const state=await rpc(panel,{op:'state',tabId});await writeFile(out+'/'+name+'-state.json',JSON.stringify(state,null,2));
   await writeFile(out+'/'+name+'-analysis.json',JSON.stringify(reply,null,2));return state.analysis?.stateatom?.selectedListProfile;
  }
@@ -50,6 +55,11 @@ try{
  async function edit(value){const nodeId=await node(first);await app.send('DOM.scrollIntoViewIfNeeded',{nodeId});const{model}=await app.send('DOM.getBoxModel',{nodeId}),q=model.content,x=(q[0]+q[2])/2,y=(q[1]+q[5])/2;for(const count of[1,2])for(const type of['mousePressed','mouseReleased'])await app.send('Input.dispatchMouseEvent',{type,x,y,button:'left',clickCount:count});await fill('[aria-label="Edit todo"]',value);await key('Enter','Enter',13);await waitFor(async()=>!await node('[aria-label="Edit todo"]'));}
  await edit('changed');const changed=await inspect('changed',first);await check('real changed title has supported exact field chain',()=>assert.equal(changed?.fullPath,true,JSON.stringify(changed)));
  await edit('changed');const same=await inspect('same-value',first);await check('same-value edit has a new exact applied revision',()=>{assert.equal(same?.fullPath,true,JSON.stringify(same));assert.notEqual(changed.occurrence.joins.revisionId,same.occurrence.joins.revisionId);});
+ if(installedVsix)await check('current source link opens its exact range in the actual installed IDE helper',async()=>{
+  await ui.click('refresh-tabs');await waitFor(()=>panel.evaluate(id=>[...document.querySelector('[data-atom-id="tabs"]').options].some(o=>o.value===String(id)),tabId));await ui.select('tabs',String(tabId));await ui.click('load');await ui.waitOK();await ui.click('inputs-nav');
+  await panel.evaluate(()=>{const b=document.querySelector('[data-atom-id="selected-list-origin"] > div button');if(!b||b.disabled)throw Error('Current source action unavailable');b.focus();});await ui.key('Enter','Enter',13);await ui.waitOK();
+  const expected=same.chain[0].source;const opened=await waitFor(async()=>{const rows=String(await readFile(bridge.runtime+'/ide-audit.jsonl')).trim().split('\n').map(JSON.parse);return rows.find(r=>r.file===root+'/'+expected.file&&r.line===expected.line&&r.column===expected.column);});await writeFile(out+'/selected-source-open.json',JSON.stringify(opened,null,2));ideVerified=true;result.installedIDE=true;
+ });
  if(presentation){
   await ui.click('refresh-tabs');await waitFor(()=>panel.evaluate(id=>[...document.querySelector('[data-atom-id="tabs"]').options].some(o=>o.value===String(id)),tabId));await ui.select('tabs',String(tabId));await ui.click('load');await ui.waitOK();await ui.click('inputs-nav');
   await check('mounted current text origin has three readable links and nine folded steps',async()=>{
