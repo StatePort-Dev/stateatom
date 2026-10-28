@@ -17,6 +17,7 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef,reduce
  const fibers=makeWeakSet(),roots=makeWeakSet(),ids=makeWeakMap(),queues=makeWeakMap(),hooks=makeWeakMap(),updates=makeWeakMap();
  const fields=reducerFields===true?createReducerWriteReceipts({page,weakRef}):null;
  const data=fields&&listData===true?createListDataReceipts({page}):null;
+ const environment=data?{sites:makeSet(),checks:0,inject:0,module:0,invalid:false,absent:true}:null;
  const fieldReads=fields?createComponentFieldReceipts({page,weakRef,listData:data}):null;
  const reducerFieldNames=fields?makeWeakMap():null;
  const weakPrototype=typeof weakRef==='function'?describe(weakRef,'prototype')?.value:null,nativeDeref=weakPrototype?describe(weakPrototype,'deref')?.value:null;
@@ -30,6 +31,7 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef,reduce
  function tick(){if(events>=4096){capped=true;current=null;return false;}events++;return true;}
  function receive(kind,a,b,c,d,e,f,g,nativeReducer,nativeCall){
   if(stopped||capped||!supported||unavailable)return;
+  if(environment&&kind==='devtools-type'){if(!tick())return;environment.checks++;if(a!=='undefined')environment.absent=false;if(typeof c!=='string'||!c||c.length>128||environment.sites.has(c)||environment.checks>4)environment.invalid=true;else environment.sites.add(c);if(b==='inject-internals')environment.inject++;else if(b==='module-check')environment.module++;else environment.invalid=true;return;}
   if(fieldReads&&(kind==='component-call-begin'||kind==='component-call-return'||kind==='component-call-throw'||kind==='component-call-end'||kind==='jsx-element-return')){if(!tick())return null;if(kind==='component-call-begin'&&!fibers.has(a))return null;return fieldReads.native(kind,a,b,c);}
   if(fields&&(kind==='reducer-call-begin'||kind==='reducer-call-complete'||kind==='reducer-call-abort')){
    if(!tick())return;
@@ -203,6 +205,12 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef,reduce
    return unknown('Source transfer depth unavailable');
   }catch{return unknown('Current original prop transfer metadata unavailable');}
  }
+ function nativeEnvironment(){
+  const unknown=reason=>({schema:'stateatom.native-list-environment/1',page,status:'Unknown/Unsupported',reason,originalChecksUndefined:null,fieldOwnership:'Unknown/Unsupported',fullPath:false,scope:'Original pinned native DevTools type checks only; complete source/no-write/code interval remains separate'});
+  if(stopped||capped||unavailable||!supported||!environment)return unknown('Native environment observation unavailable');
+  if(environment.invalid||!environment.absent||environment.checks!==4||environment.inject!==1||environment.module!==3)return unknown('Complete unique original native absence checks unavailable');
+  return{...unknown(null),status:'Observed',originalChecksUndefined:true,checks:environment.checks};
+ }
  function registerListData(sites){return !stopped&&!capped&&!unavailable&&supported&&data?data.register(sites)===true:false;}
  function listDataSource(){return !stopped&&!capped&&!unavailable&&supported&&data?invoke(data.source,undefined,arguments):null;}
  function matchSelectedListData(node){
@@ -236,5 +244,5 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef,reduce
   if(applied.write.field!==selected.read.field||applied.native.commitId!==selected.native.commitId||applied.native.rootId!==selected.native.rootId)return unknown('Field or current native commit differs');
   return{...unknown(null),status:'Observed',read:selected.read,write:{...applied.write,rowId:id(row)},native:{selected:selected.native,ancestor:applied.native}};
  }
- return Object.freeze({...(fields?{registerReducerFields,reducerFieldSource,matchReducerFieldWrite,registerComponentFields,componentFieldSource,registerComponentTransfers,componentTransferSource,matchSelectedListTransfers(node){return matchSelectedListTransfers(node);},...(data?{registerListData,listDataSource,matchSelectedListData}:{}),matchSelectedFieldRead(node){return matchSelectedFieldRead(node);},matchSelectedFieldWrite}:{}),tap,snapshot(node){try{return read(node);}catch{return unknown('Native metadata snapshot unavailable');}},currentCommit,matchCommittedProps,matchCommittedMemo,stop(){stopped=true;current=null;if(fields)fields.stop();if(fieldReads)fieldReads.stop();if(data)data.stop();},retention(){return{events,queues:queueCount,updates:updateCount,stopped,capped,available:supported&&!unavailable};}});
+ return Object.freeze({...(fields?{registerReducerFields,reducerFieldSource,matchReducerFieldWrite,registerComponentFields,componentFieldSource,registerComponentTransfers,componentTransferSource,matchSelectedListTransfers(node){return matchSelectedListTransfers(node);},...(data?{registerListData,listDataSource,matchSelectedListData,nativeEnvironment}:{}),matchSelectedFieldRead(node){return matchSelectedFieldRead(node);},matchSelectedFieldWrite}:{}),tap,snapshot(node){try{return read(node);}catch{return unknown('Native metadata snapshot unavailable');}},currentCommit,matchCommittedProps,matchCommittedMemo,stop(){stopped=true;current=null;if(fields)fields.stop();if(fieldReads)fieldReads.stop();if(data)data.stop();},retention(){return{events,queues:queueCount,updates:updateCount,stopped,capped,available:supported&&!unavailable};}});
 }

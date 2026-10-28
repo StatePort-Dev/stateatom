@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 native prerequisite:** [checkpoint296](completion/296-a02-original-native-devtools-checks.md): original React19 DevTools type observations,39affected/14compiler checks PASS. Four undefined results remain scoped observations; no alias-exclusion, browser or full-path authority. Next finite source/native effect account and actual code interval. Whole21/29 unchanged.
+
 **Latest A02 owned compilation:** [Task3 checkpoint295](completion/295-a02-owned-list-compilation.md): actual original-source/native derivative JS+CSS, private immutable compilation capability, source/recipe drift refusal.14affectedPASS; retained37-input JS1244566bytes. Compilation is not loaded-code/effect/ownership evidence; public/official routes remain pending. Next original React19 DevTools check and complete owned browser code/effect interval. Whole21/29 unchanged.
 
 **Latest A02 compiler:** [Task3 checkpoint294](completion/294-a02-list-program-composition.md): lexical structural composition of original writer/read/prop/data recipes, including the unchanged renamed alias control.161affectedPASS. Shared full runs preserved with one concurrent-editor failure and one occupied-port failure; focused current editor9/channel8PASS. No new native/public/package/ownership credit. Continue owned loaded-code/effect interval; whole21/29 unchanged.

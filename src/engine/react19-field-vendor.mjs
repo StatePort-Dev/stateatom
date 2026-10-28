@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Optional exact native derivative. Not installed by the public profile yet.
 import {createHash} from 'node:crypto';import {parse} from '@babel/parser';import traverseModule from '@babel/traverse';import generatorModule from '@babel/generator';import * as t from '@babel/types';
+import {instrumentOriginalDevtoolsChecks} from './react19-devtools-checks.mjs';
 import {transformPinnedReducerCallFrames} from './reducer-call-frames.mjs';import {instrumentComponentCallGrammar} from './component-call-frames.mjs';import {transformPinnedReact19} from './react19-vendor.mjs';
 const traverse=traverseModule.default||traverseModule,generate=generatorModule.default||generatorModule,hash=s=>createHash('sha256').update(s).digest('hex');
 export const fieldJSXPins=Object.freeze({
@@ -23,7 +24,8 @@ export function transformFieldJSXGrammar(source){
 export function transformPinnedFieldVendor(source,file){
  if(file==='react-dom/cjs/react-dom-client.development.js'){
   const reducer=transformPinnedReducerCallFrames(source,file),component=instrumentComponentCallGrammar(reducer.code,file,{originalSource:source});if(component.skipped)throw Error('Pinned original component-call shape refused');
-  return{code:component.code,sourceDigest:hash(source),outputDigest:hash(component.code),version:'19.2.5',nativeVersionAdmitted:true,reducerCalls:reducer.calls,componentCounts:component.counts,componentSites:component.policy.sites,fullPath:false};
+  const environment=instrumentOriginalDevtoolsChecks(component.code);if(environment.counts.total!==4||environment.counts.inject!==1||environment.counts.module!==3)throw Error('Pinned native DevTools grammar differs');
+  return{code:environment.code,devtoolsCounts:environment.counts,sourceDigest:hash(source),outputDigest:hash(environment.code),version:'19.2.5',nativeVersionAdmitted:true,reducerCalls:reducer.calls,componentCounts:component.counts,componentSites:component.policy.sites,fullPath:false};
  }
  if(file==='react/cjs/react.development.js')return transformPinnedReact19(source,file);
  if(!Object.hasOwn(fieldJSXPins,file)||hash(source)!==fieldJSXPins[file])throw Error('Field JSX native file/digest pin mismatch');
