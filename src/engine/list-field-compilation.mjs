@@ -7,7 +7,7 @@ import {prepareListFieldProgram,bindListFieldModule} from './list-field-program.
 import {transformPinnedFieldVendor} from './react19-field-vendor.mjs';
 const sha=s=>createHash('sha256').update(s).digest('hex'),issued=new WeakMap(),LIMIT=2*1024*1024;
 const runtimeId='stateatom:owned-list-runtime';
-const LIST_BUILDER_PIN = '0f66a6e185384ddee3e0ae0e3bda612eea170eed115c6caf1f170990c07c2184';
+const LIST_BUILDER_PIN = 'c1ddc893b09b36d2e0059d629844a1bd5da0b82014f13994d58e3f223382c789';
 const LIST_RECIPE_PINS={
  "src/engine/react19-devtools-checks.mjs": "7bbe515a78d1313e75d8538a5909c6ac0684851fe447dad90dfdffe30ef39894",
  "src/engine/list-field-program.mjs": "89025f8d8f634e803979911744455441e45156c5540220c31d43c9c1853d738f",
@@ -35,8 +35,8 @@ export async function buildListFieldCompilation({projectRoot=process.cwd(),appRo
  const originals=[];for(const file of sources)originals.push({file,text:await read(path.join(app,file))});
  const program=prepareListFieldProgram(originals,{root,field});if(program.status!=='Code-linked list program')throw Error('Original list source program unavailable');
  const modules=new Map(program.modules.map(m=>[path.join(app,m.file),m]));
- const runtime=`import {createReact19Acquisition} from ${JSON.stringify(path.join(tools.root,'src/engine/react19-acquisition.mjs'))};export const api=createReact19Acquisition({page:${JSON.stringify('list-'+program.digest)},reducerFields:true,listData:true});Object.defineProperty(window,'__STATEATOM__',{value:Object.freeze({react19NativeTap:api.tap})});`;
- const bootstrap=`import ${JSON.stringify(runtimeId)};import ${JSON.stringify(path.join(app,entry))};`;
+ const runtime=`import {createReact19Acquisition} from ${JSON.stringify('./src/engine/react19-acquisition.mjs')};export const api=createReact19Acquisition({page:${JSON.stringify('list-'+program.digest)},reducerFields:true,listData:true});Object.defineProperty(window,'__STATEATOM__',{value:Object.freeze({react19NativeTap:api.tap})});`;
+ const bootstrap=`import ${JSON.stringify(runtimeId)};import ${JSON.stringify('./'+entry)};`;
  function recordStage(file,source,code,transform){sourceBytes+=Buffer.byteLength(source);stageBytes+=Buffer.byteLength(code);if(sourceBytes>LIMIT||stageBytes>LIMIT||inputs.size>=160||inputs.has(file))throw Error('Compiled input/stage budget exceeded');inputs.set(file,{file,sourceDigest:sha(source),sourceBytes:Buffer.byteLength(source),stageDigest:sha(code),stageBytes:Buffer.byteLength(code),transform});}
  const options={bundle:true,write:false,metafile:true,preserveSymlinks:true,platform:'browser',format:'iife',target:'chrome153',define:{'process.env.NODE_ENV':'"development"'},jsx:'automatic',jsxDev:true,sourcemap:false,minify:false,legalComments:'inline',charset:'utf8',tsconfigRaw:{}};
  const loader={name:'stateatom-owned-list-inputs',setup(b){

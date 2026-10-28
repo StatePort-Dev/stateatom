@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: Apache-2.0
+import test from 'node:test';import assert from 'node:assert/strict';
+import {buildListFieldCompilation} from '../src/engine/list-field-compilation.mjs';
+const load=()=>import('../src/engine/list-field-effects.mjs');
+const options={appRoot:'.runtime/todomvc/examples/react',entry:'src/index.js',root:{file:'src/todo/app.jsx',export:'App'},field:'title',sources:['src/todo/app.jsx','src/todo/reducer.js','src/todo/components/main.jsx','src/todo/components/item.jsx','src/todo/components/footer.jsx']};
+let build;const compilation=()=>build??=buildListFieldCompilation(options);
+test('reviewed complete input account binds actual owned bytes but cannot grant runtime or full lineage',async()=>{const {establishListFieldEffects,listFieldEffectsView}=await load(),c=await compilation(),proof=await establishListFieldEffects(c),r=listFieldEffectsView(proof);assert.equal(r.status,'Code-linked');assert.equal(r.fullPath,false);assert.equal(r.currentOwnership,'Unknown/Unsupported');assert.equal(r.bundleDigest,c.manifest.bundle.digest);assert.equal(r.scope,'Finite reviewed input graph only');assert(r.requiredRuntimePremises.includes('complete-armed-code-interval'));assert(r.requiredRuntimePremises.includes('original-native-devtools-checks'));assert(r.requiredRuntimePremises.includes('exact-selected-write-transfer-read-commit'));assert(Object.isFrozen(proof));});
+test('serialized compilation or effect DTO is never an owned effect proof',async()=>{const {establishListFieldEffects,listFieldEffectsView}=await load(),c=await compilation();const copy=JSON.parse(JSON.stringify(c));assert.equal(listFieldEffectsView(await establishListFieldEffects(copy)).status,'Unknown/Unsupported');const proof=await establishListFieldEffects(c);assert.equal(listFieldEffectsView(JSON.parse(JSON.stringify(proof))).status,'Unknown/Unsupported');assert.equal(listFieldEffectsView({...listFieldEffectsView(proof),fullPath:true}).status,'Unknown/Unsupported');});
+test('source input binding refuses changed, omitted, extra, duplicate and relocated source records',async()=>{const {reviewedListInputBinding}=await load(),c=await compilation(),manifest=c.manifest;assert.equal(reviewedListInputBinding(manifest).status,'Conditional reviewed input binding');for(const mutate of[
+ m=>{m.inputs[0].sourceDigest='0'.repeat(64)},m=>{m.inputs.pop()},m=>{m.inputs.push({...m.inputs[0],file:'unknown.js'})},m=>{m.inputs[1]={...m.inputs[0]}},m=>{m.inputs[0].file='renamed-without-reviewed-effect-contract.js'},m=>{m.compiler.externalImports=1},m=>{m.bundle.bytes=2*1024*1024+1},m=>{m.inputs[0].transform='unreviewed-transform'}
+]){const m=JSON.parse(JSON.stringify(manifest));mutate(m);assert.equal(reviewedListInputBinding(m).status,'Unknown/Unsupported')}});
+test('even a copied matching manifest supplies only conditional binding and no native/runtime ownership claim',async()=>{const {reviewedListInputBinding}=await load(),c=await compilation(),r=reviewedListInputBinding({...c.manifest,fullPath:true,originalChecksUndefined:true,closedCode:true});assert.equal(r.status,'Conditional reviewed input binding');assert.equal(r.fullPath,false);assert.equal(r.currentOwnership,'Unknown/Unsupported');});
+test('a newly compiled side-effect alias writer is owned code but refused effects; source drift revokes an issued proof',async()=>{
+ const {establishListFieldEffects,listFieldEffectsView,validateListFieldEffects}=await load(),base=await compilation(),{mkdtemp,mkdir,cp,readFile,appendFile,rm}=await import('node:fs/promises'),{default:path}=await import('node:path');
+ const temp=await mkdtemp('/tmp/stateatom-list-effects-'),names=new Set([...base.manifest.trust.files,...base.manifest.inputs].map(i=>i.file).filter(file=>!file.includes(':')&&!file.endsWith('stateatom-owned-list-entry.mjs')));
+ for(const file of [...names]){let dir=path.dirname(file);while(dir!=='.'){try{await readFile(path.join(dir,'package.json'));names.add(dir+'/package.json')}catch{}dir=path.dirname(dir)}}
+ try{for(const file of names){await mkdir(path.dirname(path.join(temp,file)),{recursive:true});await cp(file,path.join(temp,file));}
+  const original=await buildListFieldCompilation({...options,projectRoot:temp}),proof=await establishListFieldEffects(original);assert.equal(listFieldEffectsView(proof).status,'Code-linked');assert(await validateListFieldEffects(proof));
+  // Compiled only, never executed: a second source may reach a row through DOM
+  // Fiber metadata without any lexical row reference in the tracked components.
+  const sideEffect='\ndocument.addEventListener("click", event => { const key=Object.keys(event.target).find(k=>k.startsWith("__reactFiber$")); let fiber=event.target[key]; while(fiber){const row=fiber.memoizedProps?.todo;if(row){row.title=row.title;break}fiber=fiber.return} });\n';
+  await appendFile(path.join(temp,options.appRoot,'src/todo/components/header.jsx'),sideEffect);
+  assert.equal(await validateListFieldEffects(proof),false);assert.equal(listFieldEffectsView(proof).status,'Unknown/Unsupported');
+  const changed=await buildListFieldCompilation({...options,projectRoot:temp}),refusal=await establishListFieldEffects(changed);assert.equal(listFieldEffectsView(refusal).status,'Unknown/Unsupported');assert.match(refusal.reason,/source graph/i);
+ }finally{await rm(temp,{recursive:true,force:true})}
+});

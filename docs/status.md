@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 effects:** [checkpoint297](completion/297-a02-finite-reviewed-list-effects.md): finite37-input source/native account bound to owned compilation;26affectedPASS, including a newly compiled DOM/Fiber alias-writer refusal and drift revocation. Exact reviewed graph only; held-out/native/code interval/public route remain pending, fullPath=false. Whole21/29 unchanged.
+
 **Latest A02 native prerequisite:** [checkpoint296](completion/296-a02-original-native-devtools-checks.md): original React19 DevTools type observations,39affected/14compiler checks PASS. Four undefined results remain scoped observations; no alias-exclusion, browser or full-path authority. Next finite source/native effect account and actual code interval. Whole21/29 unchanged.
 
 **Latest A02 owned compilation:** [Task3 checkpoint295](completion/295-a02-owned-list-compilation.md): actual original-source/native derivative JS+CSS, private immutable compilation capability, source/recipe drift refusal.14affectedPASS; retained37-input JS1244566bytes. Compilation is not loaded-code/effect/ownership evidence; public/official routes remain pending. Next original React19 DevTools check and complete owned browser code/effect interval. Whole21/29 unchanged.

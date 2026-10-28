@@ -46,3 +46,5 @@ Task3 compiler checkpoint294: structurally selected whole source recipe assembly
 Task3 owned compilation checkpoint295:14affectedPASS, actual37-input JS+CSS retained, private issued capability and source/recipe drift checks. Reused only compiler/file acquisition, not old effect proof. Original native DevTools absence still needs observation; complete browser code/effect conjunction, public wiring and native qualification remain open.
 
 Task3 original-native checkpoint296:39affected/14compilerPASS; original four DevTools typeof results, no hook re-read. Source/no-write/browser premises stay open; no new native run or whole-task credit. Continue bounded complete source/native effect account.
+
+Task3 finite source-effect checkpoint297:37-input conditional reviewed binding,26affectedPASS including newly compiled DOM/Fiber alias writer refusal and input drift revocation. Generated imports made workspace-relative after copied-workspace RED; actual JS unchanged. Held-out effect/native and complete actual code interval remain open; no fullPath/public credit.
