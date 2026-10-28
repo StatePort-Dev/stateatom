@@ -30,7 +30,9 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
     card.append(sourceLink(dependencies.expression,dependencies.source,'sp-atom-dependency-expression'));
     if(dependencies.inputs.length){const list=el('div',undefined,'sp-atom-dependencies');for(const input of dependencies.inputs){
      const group=el('div'),line=el('div',undefined,'sp-data-row sp-atom-dependency');
-     line.append(input.source?sourceLink(input.expression,input.source):el('span',input.expression,'sp-atom-dependency-name'),el('code',input.status==='Observed'?JSON.stringify(input.value):'Not recorded','sp-value'));group.append(line);
+     const value=input.status==='Observed'?el('code',JSON.stringify(input.value),'sp-value'):el('span','Not recorded','sp-atom-unavailable-value');
+     if(input.status!=='Observed')value.title='This value was not recorded for the selected execution. Atom has not evaluated it again.';
+     line.append(input.source?sourceLink(input.expression,input.source):el('span',input.expression,'sp-atom-dependency-name'),value);group.append(line);
      if(input.upstream?.length){const chain=el('details',undefined,'sp-atom-dependency-origin');chain.append(el('summary','Read from'));for(const read of input.upstream){const row=el('div',undefined,'sp-data-row sp-atom-dependency');row.append(read.source?sourceLink(read.expression,read.source):el('span',read.expression,'sp-atom-dependency-name'),el('code',JSON.stringify(read.value),'sp-value'));chain.append(row);}group.append(chain);}
      list.append(group);
     }card.append(list);recordedInputs+=dependencies.inputs.length;}

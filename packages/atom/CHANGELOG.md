@@ -2,6 +2,53 @@
 
 ## Unreleased
 
+- UX cycle 10: concise project connection, optional first-time setup steps, and an explicit receipt paste field.
+
+- UX cycle 11: readable production permission consequences and explicit two-step labels; authority rules unchanged.
+
+- UX cycle 12: distinguish acknowledged undo and original-value restoration from applying a new edit.
+
+- UX cycle 13: actionable response waiting feedback and explicit unconfirmed page effect after delivery.
+
+- UX cycle 14: direct handler-name code links and deduplicated Actions cards, retaining execution and source boundaries.
+
+- UX cycle 15: grouped advanced Details records and preserved stale warnings in multi-property inspections.
+
+- UX cycle 16: clear unselected heading and contextual inspection mode under Details.
+
+- UX cycle 17: preserve secondary-screen styles in hosts that prefix Atom element IDs.
+
+- UX cycle 18: useful empty-editor guidance, focus and error precedence without empty value headings.
+
+- UX cycle 19: preserve editable unsent drafts when Refresh, picker or manual selection would replace their target.
+
+- UX cycle 20: remove the unselected-value badge and keep closed element metadata compact after manual selection.
+
+
+- Increase the smallest column, freshness and context labels, keeping narrow tabs
+  and Refresh at a readable size without horizontal overflow.
+
+- Distinguish missing dependency observations from recorded value badges and
+  explain that unavailable reads are not re-evaluated.
+
+- Give long strings and textareas a full-width editing row without replacing
+  the input node or changing its value.
+
+- Fill the gap beneath sticky edit actions and reserve scroll space so keyboard
+  focus does not land behind the action area.
+
+- Keep edit status beside sticky Apply/Discard controls and distinguish discarding
+  unsent edits from undoing the last applied change.
+
+- Put validation beside its field with familiar examples and an explicit per-edit
+  not-applied message; retain exact technical reasons in tooltips.
+
+- Reveal and focus the first editable field after explicit opening and admission,
+  without taking focus back after a user moves elsewhere.
+
+- Reduce shell spacing and arrange footer context beside a named Refresh action
+  in short hosts, preserving text/control sizes and the full accessible name.
+
 - Restore page/response editing beside Dependencies with one mounted editor.
   Start in live mode; retain explicit Apply, held drafts, Undo, owner and production
   permission checks. Show one editable value per field, with last-read data in scope

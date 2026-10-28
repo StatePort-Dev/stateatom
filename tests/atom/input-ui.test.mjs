@@ -47,3 +47,37 @@ test('input controls follow an opened editor; closing hides inactive undo tools 
 test('passive refresh respects a collapsed active editor while a newly edited draft becomes visible',async()=>{const f=await fixture({initialValue:5});try{f.$('input-editing-details').open=false;f.view.update(f.state());assert.equal(f.$('input-editing-details').open,false);await f.$('input-mode-draft').onclick();const input=find(f.row(),'INPUT');input.value='6';input.oninput();assert.equal(f.$('input-editing-details').open,true);}finally{await f.view.dispose();}});
 test('ordinary editor applies valid edits live without a mode choice; opening alone never writes',async()=>{const f=await fixture({initialValue:5});try{assert.equal(f.view.snapshot().mode,'live');assert.equal(f.calls.filter(p=>p.op==='inputs-apply').length,0);assert.equal(f.$('input-columns').textContent,'Next matching response');const field=find(f.row(),'INPUT');field.value='7';field.oninput();await new Promise(r=>setTimeout(r,300));const writes=f.calls.filter(p=>p.op==='inputs-apply');assert.equal(writes.length,1);assert.equal(writes[0].plan.changes[0].value,7);assert.equal(f.$('input-apply').hidden,true);}finally{await f.view.dispose();}});
 test('opening fields keeps the unknown dependency explicit without waiting for outer state refresh',async()=>{const f=await fixture();try{assert.match(f.$('input-editing-help').textContent,/relation to this element not established/);}finally{await f.view.dispose();}});
+
+test('invalid number explains how to fix this field and says this edit was not applied',async()=>{const f=await fixture({initialValue:5});try{const field=find(f.row(),'INPUT');field.value='-';field.oninput();const message=f.row().children.find(n=>n.className==='sp-error');assert(message.textContent.includes('12 or 3.5'));assert.match(message.textContent,/This edit has not been applied/);await new Promise(r=>setTimeout(r,280));assert.equal(f.calls.filter(p=>p.op==='inputs-apply').length,0);assert.equal(field.value,'-');}finally{await f.view.dispose();}});
+
+
+test('acknowledged undo and baseline distinguish restoration from a new edit',async()=>{
+ const f=await fixture({initialValue:5});try{
+  for(const [kind,label] of [['undo','Last field change undone.'],['baseline','Original field values restored.']]){
+   const state=f.state();state.inputs.revision++;state.inputs.history=[{kind,phase:'applied'}];f.view.update(state);
+   assert.equal(f.$('input-status').textContent,label);
+  }
+  assert.equal(f.calls.filter(p=>p.op==='inputs-apply').length,0);
+ }finally{await f.view.dispose();}
+});
+
+
+test('response waiting suggests a page action without claiming delivery or effect',async()=>{
+ const f=await fixture();try{
+  const state=f.state();state.inputs.revision++;state.inputs.history=[{kind:'apply',phase:'waiting'}];f.view.update(state);
+  assert.match(f.$('input-status').textContent,/Use the page to request this data again/);
+  state.inputs.revision++;state.inputs.history[0].phase='delivered';f.view.update(state);
+  assert.match(f.$('input-status').textContent,/effect on the page is not confirmed/);
+  assert.equal(f.calls.filter(p=>p.op==='reload'||p.op==='inputs-apply').length,0);
+ }finally{await f.view.dispose();}
+});
+
+
+test('empty fields hide value headings and do not mask a later permission error',async()=>{
+ const f=await fixture();try{
+  const state=f.state();state.inputs.revision++;state.inputs.resources=[];f.view.update(state);
+  assert.equal(f.$('input-column-headings').hidden,true);assert.match(f.$('input-status').textContent,/No response fields/);
+  const policy=structuredClone(cap);policy.operations['inputs-apply']={...policy.operations['inputs-apply'],available:false,code:'CAPABILITY_DENIED',reason:'Editing revoked'};f.setPolicy(policy);f.view.stateReplyReceiver()({...state,capabilityPolicy:policy});await new Promise(r=>setTimeout(r,0));
+  assert.doesNotMatch(f.$('input-status').textContent,/No response fields/);
+ }finally{await f.view.dispose();}
+});

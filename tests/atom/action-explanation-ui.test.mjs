@@ -99,3 +99,10 @@ test('product warm model never arms cold300s budget and still expires at120s',as
 });
 test('empty and stale Actions hide explanation setup; unknown current binding offers source exploration',async t=>{const f=setup(async()=>({}),undefined,t);f.ui.render({});assert.equal(f.$('action-explanation-tools').hidden,true);assert.equal(f.$('action-source-setup').hidden,true);const s=explanationFixture();f.ui.render(s);assert.equal(f.$('action-explanation-tools').hidden,false);assert.equal(f.$('action-source-setup').hidden,false);assert.equal(f.$('action-evidence-kind').textContent,'Not established');f.ui.render({...s,stale:{reason:'Navigation'}});assert.equal(f.$('action-explanation-tools').hidden,true);assert.equal(f.$('action-source-setup').hidden,true);assert.equal(f.$('action-evidence-kind').textContent,'Stale snapshot');});
 test('source handlers use a scoped code-linked heading rather than a global execution claim',async t=>{const f=setup(async()=>({}),undefined,t);f.ui.render(sourceState());assert.equal(f.$('action-evidence-kind').textContent,'Code-linked');assert.equal(f.$('action-source-setup').hidden,true);});
+
+
+test('handler card avoids a duplicate bare symbol while retaining a distinct binding expression',t=>{
+ const s=sourceState(),f=setup(async()=>s,undefined,t),texts=n=>[n.textContent,...n.children.flatMap(texts)];
+ f.ui.render(s);let parts=texts(f.$('action-handlers'));assert(parts.includes('click → privateHandler'));assert(!parts.includes('privateHandler'));assert.match(f.$('action-summary').textContent,/execution not observed/);
+ s.analysis.actionBindings[0].binding.expression='() => privateHandler()';f.ui.render(s);parts=texts(f.$('action-handlers'));assert(parts.includes('() => privateHandler()'));
+});
