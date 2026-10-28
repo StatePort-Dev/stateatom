@@ -303,3 +303,8 @@ V02.35sourcee6bd00d closed: one publisher source/unchanged16ms value, dirty foll
 coalescing;77affected/full6020PASS/ONEreview0C0I0M. Fixed synthetic-native runtime
 storage3→2, allrecords/gaps/terminal epoch scenario preserved. No native speedup or
 10%acceptance. Source now differs1of270/2of327 from immutable88; nextONE V02.36local89.
+
+V02.36 exact local89/UI2 now qualified270source327build44pair/types2/admission9,
+cleanfdc8ec2. Source/runtime-only change and metadata; public host panels/guardian/
+reader/parser/style unchanged. Official stays88, native/performance credit absent.
+NextONE V02.37unchanged original89gate eligibility; old87MISS/budget0 retained.

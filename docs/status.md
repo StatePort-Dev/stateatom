@@ -7,7 +7,8 @@ overhead27.22/27.36% still misses10%. Latest worker-only diagnostic269 identifie
 sampled publication/storage code paths, not the full overhead cause or speedup.
 Reviewed sourcee6bd00d now coalesces dirty follow-ups;77affected/full6020PASS/ONE
 review0C0I0M. Source differs1of270 from immutable88; no new native effect claimed.
-NextONE V02.36 exact local89pack; no publication/SDK.
+Local89now exact270source327build44pair/type2/admission9; official host stays88.
+NextONE V02.37 unchanged original-gate89eligibility; no publication/SDK.
 
 The scoped increments below retain their original artifact/revision boundaries.
 
@@ -3343,3 +3344,9 @@ same16ms scheduler for dirty follow-ups, exact promises/errors/current-state and
 terminal semantics. RED59/6→77affected/full6020PASS; sourcefixture actual storage
 3→2 with4records/gaps0, epoch scenario6 preserved. ONEreview0C0I0M/2036protected
 bindings with4declared paths. Official88oldbytes unchanged; nextONE exact89package.
+
+[V02.36 local89 closed](completion/271-v02-current89-local-package.md), cleanfdc8ec2:
+Atom89SHA57f0f40b.../sameUI2, dated03:50handoff92105c51...;270source327build44pair/
+type2/admission9PASS. Only runtime+metadata payload changed; public host worker-only.
+2040bindings/onegeneratedalias bound to89, immutable88/official36/plugin10 exact.
+No new native/model/performance acceptance. NextONE V02.37original89gate eligibility.
