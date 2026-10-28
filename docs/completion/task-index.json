@@ -1676,7 +1676,7 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "286-a02-reducer-invocation-receipts.md",
+      "execution_record": "288-a02-list-field-source-admission.md",
       "completed_slices": [
         {
           "id": "A02.55",
@@ -3028,7 +3028,7 @@
         "bounded_next_experiment": "A02.9 source-only historical claim description on retained data; no browser/native",
         "experiment_native_executed": false
       },
-      "current_checkpoint": "286-a02-reducer-invocation-receipts.md",
+      "current_checkpoint": "288-a02-list-field-source-admission.md",
       "stopping_point_history": [
         {
           "invoked": true,
@@ -3061,7 +3061,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "Finite writer/alias admission for actual reducer/App/Main/Item/Footer, including original array/callback/props boundaries and complete-code invalidation; then row/parameter/read/commit integration.286 joins call/write identities only; ownership and membership remain Unknown.",
+      "next_bounded_step": "Join the admitted finite source path and original field/parameter reads to actual native state/row/current selected commit, discharging ordinary-object/native-array/complete-code interval premises before public/official integration.288 is conditional source admission, not no-writer runtime authority.",
       "reducer_field_write_sites": {
         "record": "285-a02-reducer-field-write-sites.md",
         "status": "complete-source-prerequisite-not-integrated",
@@ -3098,7 +3098,7 @@
         "public_hook_kind": "Unknown/Unsupported",
         "full_A02": false
       },
-      "last_completed_implementation_plan": "../superpowers/plans/2026-10-28-reducer-write-receipts.md",
+      "last_completed_implementation_plan": "../superpowers/plans/2026-10-28-list-field-source-admission.md",
       "current_checkpoint_history": [
         {
           "record": "147-a02-array-callsite-bridge.md",
@@ -3246,6 +3246,25 @@
           "status": "closed-bounded-source-only",
           "source_revision": "70685d73ce81a6c5791ce85cbbbc3b4035bc4ca0",
           "next_bounded_step": "ONE cohesive exact retained Item parameter-reference integration/acquisition with existing complete committed Memo/source gates, frozen criteria/readers and max1 new owned launch. Preserve property origin/field ownership Unknown; no oldcase rerun."
+        },
+        {
+          "record": "286-a02-reducer-invocation-receipts.md",
+          "active_slice": {
+            "id": "A02.release-invocation-receipts",
+            "record": "286-a02-reducer-invocation-receipts.md",
+            "status": "complete-private-source-runtime-prerequisite",
+            "affected_pass": 82,
+            "full_source_pass": 6095,
+            "native_runs": 0,
+            "public_plugin_integrated": false,
+            "full_A02": false,
+            "review": {
+              "critical": 0,
+              "important": 2,
+              "important_fixed": 2,
+              "minor": 0
+            }
+          }
         }
       ],
       "implementation_plan": "../superpowers/plans/2026-10-28-host-weak-dispatch.md",
@@ -3292,18 +3311,19 @@
         }
       },
       "active_slice": {
-        "id": "A02.release-invocation-receipts",
-        "record": "286-a02-reducer-invocation-receipts.md",
-        "status": "complete-private-source-runtime-prerequisite",
-        "affected_pass": 82,
-        "full_source_pass": 6095,
+        "id": "A02.release-list-field-source-admission",
+        "record": "288-a02-list-field-source-admission.md",
+        "status": "complete-conditional-source-prerequisite",
+        "affected_pass": 91,
+        "full_source_pass": 6125,
         "native_runs": 0,
         "public_plugin_integrated": false,
+        "runtime_premises_discharged": false,
         "full_A02": false,
         "review": {
           "critical": 0,
-          "important": 2,
-          "important_fixed": 2,
+          "important": 5,
+          "important_fixed": 5,
           "minor": 0
         }
       },

@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 source prerequisite:** [finite list/row admission288](completion/288-a02-list-field-source-admission.md) covers the actual reducer/App/Main/Item/Footer and renamed control conditionally;91affected/full6125PASS. One review0C/5I/0M, all fixed with11RED regressions. Ordinary-field/native-array/complete-code/current-identity premises remain unproved; ownership/selected lineage stay Unknown. Next native selected-row/read/commit integration; no public package change or fullA02 acceptance. Whole21/29 unchanged.
+
 **Latest A02 source/runtime prerequisite:** [invocation receipts286](completion/286-a02-reducer-invocation-receipts.md): exact native call token/source frame/completed result and applied revision inputs; actual retained reducer + synthetic native grammar controls,82affected/full6095PASS. One review0C/2I/0M, both corrected. Private/uninstalled; membership/ownership/selected-read edges remain Unknown. Next finite writer/alias admission across reducer/App/Main/Item/Footer. Full21/29 unchanged.
 
 **Release requirement changed by maintainer:** [macOS installation check287](completion/287-macos-install-check-deferred.md) is deferred to later manual verification and no longer blocks this release. macOS installation remains unverified; Linux/other gates and whole21/29 remain unchanged.
