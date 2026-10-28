@@ -7001,10 +7001,25 @@
       "active_slice": {
         "id": "V02.37",
         "record": "272-v02-current89-original-performance.md",
-        "status": "bounded-next-original-gate-eligibility",
-        "whole_V02_complete": false
+        "status": "source-case-frozen-awaiting-one89measurement",
+        "whole_V02_complete": false,
+        "case_sha256": "7dc269996caa9d3e6fa7eb86fa4645474f82b0d5682237ea5715b5d816b78bf1",
+        "registered_bindings": 462,
+        "case_inputs": 300,
+        "current89_backend_runs": 1,
+        "current89_backend_checks": 13,
+        "historical87_retention_checks_not_fresh89": 10,
+        "source_controls": 14,
+        "reader_negative_controls": 32,
+        "pure_reader_functions_AST_exact": 13,
+        "measurement_runs": 0,
+        "full_reader_runs": 0,
+        "maximum_measurement_runs": 1,
+        "maximum_full_reader_runs": 1,
+        "new_CAs": 0,
+        "new_imports": 0
       },
-      "execution_record": "271-v02-current89-local-package.md",
+      "execution_record": "272-v02-current89-original-performance.md",
       "current_checkpoint": "271-v02-current89-local-package.md",
       "completed_slices": [
         {
@@ -8436,7 +8451,7 @@
         }
       ],
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-28-publication-follow-up-coalescing.md",
-      "implementation_plan": null,
+      "implementation_plan": "../superpowers/plans/2026-10-28-current89-original-performance.md",
       "historical_execution_record_before_open_gates_assessment": "136-v02-performance-domain-cost.md",
       "historical_checkpoint_before_V02_21": {
         "record": "207-v02-current80-original-performance.md",
@@ -10218,7 +10233,7 @@
       "next_bounded_step": "I01 exact local-file policy/install then current host guardian/lifecycle adaptation; separate scope already authorized.",
       "next_task": "A02"
     },
-    "document": "271-v02-current89-local-package.md",
+    "document": "272-v02-current89-original-performance.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
     "current_increment": "V02.36 exactlocal89 qualified/270source327build44pair/type2/admission9; runtime-only hosts, official88unchanged, no native/perf credit.",
@@ -13247,7 +13262,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "ONE V02.37 exact89 original-performance eligibility/preparation: retained valid syntheticTLS only, current type2/admission9 plus existing backend13 accounted, unchanged original198rows/66windows/20GETx1024/1s/10%/order/poll/guards; max1newbackend ifneeded/1measurement/1reader. Old87budget0/MISS preserved, no CA/model/host/SDK/publication.",
+    "current_activity_note": "Frozen89 original gate462bindings/300caseinputs/currentbackend13/type2/admission9/source14/readercontrols32; pendingONEmeasurement after cleancommit. Historical87retention10 not relabelled; original10%target unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "9938645807d06171be7b5afaba415235a6754c4b",
     "current_record_date": "2026-10-28",
