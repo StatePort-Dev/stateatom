@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 readable chain:** [checkpoint304](completion/304-a02-selected-list-presentation-result.md): compact current text origin, historical source/revision export and passive reader.148affectedPASS +9 actual built standalone/source-helper checks PASS;440/390px candidates and keyboard disclosure checked. Installed plugin/IDE/official/held-out/full282 remain open; whole21/29 unchanged. Next actual post-commit DOM mutation controls.
+
 **Latest A02 actual native route:** [checkpoint302](completion/302-a02-native-selected-list-route.md): real owned context + authenticated helper + standalone inspector protocol;5 native checks PASS for create/changed/same-value, untouched-row refusal and unknown-code invalidation. Full chains have actual revisions10/24/36. Readable UI/export, installed open plugin, held-out and full282/official qualification remain open; whole21/29 unchanged.
 
 **Latest A02 helper route:** [checkpoint301](completion/301-a02-list-helper-native-case.md): authenticated workspace/native-context binding, inspector-owned list journal, historical invalidation and acquired JS/CSS server;46 route checks +21 guardian source checks PASS. Native startup exposed obsolete Playwright/target assumptions; no application or full-chain native acceptance. Continue current native transport integration; whole21/29 unchanged.

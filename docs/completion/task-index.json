@@ -1676,7 +1676,7 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "300-a02-selected-list-site-composition.md",
+      "execution_record": "304-a02-selected-list-presentation-result.md",
       "completed_slices": [
         {
           "id": "A02.55",
@@ -3028,7 +3028,7 @@
         "bounded_next_experiment": "A02.9 source-only historical claim description on retained data; no browser/native",
         "experiment_native_executed": false
       },
-      "current_checkpoint": "300-a02-selected-list-site-composition.md",
+      "current_checkpoint": "304-a02-selected-list-presentation-result.md",
       "stopping_point_history": [
         {
           "invoked": true,
@@ -3312,16 +3312,16 @@
       },
       "active_slice": {
         "id": "A02.release-selected-list-integration",
-        "record": "302-a02-native-selected-list-route.md",
-        "status": "in-progress-task3-public-projection-and-distribution",
+        "record": "304-a02-selected-list-presentation-result.md",
+        "status": "in-progress-task3-distribution-and-native-controls",
         "affected_pass": 148,
-        "native_runs": 3,
-        "new_native_runs": 1,
+        "native_runs": 6,
+        "new_native_runs": 3,
         "public_plugin_integrated": false,
         "runtime_premises_discharged": false,
         "full_A02": false,
         "review_pending": "one final whole-integration review",
-        "current_full_verification": "302 affected148PASS + actual native case3015PASS; no new full-suite/installed UI/export/official claim",
+        "current_full_verification": "304 affected148PASS + case303 final9 native checks PASS; no new full-suite/installed IDE/official claim",
         "compiled_inputs": 39,
         "bundle_sha256": "2f1ecdb42458e65f06166e7778057e9ab1f08f4db432115ab5e523f3b2c11a90",
         "held_out_effect_binding": false,
@@ -3329,8 +3329,10 @@
         "actual_dom_commit_ordering_qualified": false,
         "actual_positive_helper_composition_qualified": true,
         "native_startup_attempts": 16,
-        "native_qualification_scope": "Case301 actual source helper + built standalone backend;5checks PASS. UI/export/installed plugin/official/held-out/full282 pending.",
-        "native_record": ".artifacts/a02/selected-list-route/2026-10-28T18-35-08-077Z/results.json"
+        "native_qualification_scope": "Actual source helper + built standalone mounted UI, local Save and passive reader;9checks PASS. Installed plugin/IDE/official/held-out/full282 pending.",
+        "native_record": ".artifacts/a02/selected-list-route/2026-10-28T18-51-33-224Z/results.json",
+        "actual_public_presentation_qualified": true,
+        "actual_historical_save_reader_qualified": true
       },
       "historical_checkpoint_before_A02_51": {
         "active_slice": {
@@ -3682,6 +3684,28 @@
         "held_out_effect_binding": false,
         "actual_native_code_context_qualified": false,
         "actual_dom_commit_ordering_qualified": false
+      },
+      "selected_list_native_route_checkpoint": {
+        "id": "A02.release-selected-list-integration",
+        "record": "302-a02-native-selected-list-route.md",
+        "status": "in-progress-task3-public-projection-and-distribution",
+        "affected_pass": 148,
+        "native_runs": 3,
+        "new_native_runs": 1,
+        "public_plugin_integrated": false,
+        "runtime_premises_discharged": false,
+        "full_A02": false,
+        "review_pending": "one final whole-integration review",
+        "current_full_verification": "302 affected148PASS + actual native case3015PASS; no new full-suite/installed UI/export/official claim",
+        "compiled_inputs": 39,
+        "bundle_sha256": "2f1ecdb42458e65f06166e7778057e9ab1f08f4db432115ab5e523f3b2c11a90",
+        "held_out_effect_binding": false,
+        "actual_native_code_context_qualified": true,
+        "actual_dom_commit_ordering_qualified": false,
+        "actual_positive_helper_composition_qualified": true,
+        "native_startup_attempts": 16,
+        "native_qualification_scope": "Case301 actual source helper + built standalone backend;5checks PASS. UI/export/installed plugin/official/held-out/full282 pending.",
+        "native_record": ".artifacts/a02/selected-list-route/2026-10-28T18-35-08-077Z/results.json"
       }
     },
     {

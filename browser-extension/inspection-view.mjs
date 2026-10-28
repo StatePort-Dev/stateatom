@@ -1,3 +1,4 @@
+import {selectedListView} from '../core/selected-list-view.mjs';
 // SPDX-License-Identifier: Apache-2.0
 // Copyright 2026 StateAtom contributors.
 // Presentation of validated records only. No page reads or expression evaluation.
@@ -36,7 +37,9 @@ export function inspectionView(state={}) {
   (occurrence.observedAt==null||occurrence.observedAt===selection.observedAt);
  const firstReadProfile=profileCurrent?profile:profile?{schema:1,status:profileStale?'Stale':'Unknown/Unsupported',fullPath:false,freshness:profileStale?'Stale':profile.freshness,reason:profileStale?'Inspect again after the change.':profile.reason||'No finite trace bound to the current selected occurrence.'}:{schema:1,status:'Unknown/Unsupported',fullPath:false,reason:'No controlled first-read profile for this selection.'};
  const finiteTraceSupported=firstReadProfile.status==='Supported finite trace'&&firstReadProfile.fullPath===true&&firstReadProfile.sourceProof?.status==='Code-linked'&&firstReadProfile.occurrence?.status==='Observed';
+ const selectedListProfile=selectedListView(state),selectedListSupported=selectedListProfile?.fullPath===true;
  const view={
+  selectedListProfile,selectedListSupported,
   nativeStateAncestors:nativeStateView(runtime?.nativeStateAncestors,state.selection,runtime,{sourceLinked,stale}),
   firstReadProfile,finiteTraceSupported,
   mode:instrumented?'Instrumented':sourceLinked?'Source-linked':'Basic',
@@ -58,8 +61,8 @@ export function inspectionView(state={}) {
   commit:stale?{status:'Stale',reason:'Inspect again after the change.'}:sourceLinked&&runtime?.status==='Observed'&&runtime?.commit?.adapter==='react18-final-host-props/1'&&runtime.commit.status==='Observed'&&runtime.commit.producer?.status==='Observed'&&runtime.commitIdentity?.startsWith('Observed:')?{status:'Observed',reason:'React committed this host prop from the recorded JSX execution. Experimental React 18.3.1 dev adapter; instrumented-page evidence, not runtime attestation. '+(finiteTraceSupported?'This host-property observation alone does not establish complete HTTP provenance; see the separately scoped finite trace.':'Complete HTTP provenance is not established.')}:{status:'Unknown/Unsupported',reason:runtime?.commit?.reason||runtime?.commit?.producer?.reason||'A source marker alone does not identify the committed property producer.'},
   reason:state.stale?.reason||runtime?.reason||'No inspection yet.',
  };
- const summary=!state.attached?'Connect the application tab to inspect an element.':stale?'Previous snapshot is stale.':!view.target?'Select an element to record a snapshot.':!sourceLinked?'DOM snapshot · source and input dependencies are unknown.':view.operands.length?view.operands.length+' observed input'+(view.operands.length===1?'':'s')+' for the selected computation.':instrumented?'No supported scalar input observation for this snapshot.':'Source linked · runtime input values were not observed.';
- const nextStep=!state.attached?'attach':stale?'inspect-again':!view.target?'select-element':!sourceLinked?'connect-project':!instrumented?'start-observation':view.operands.length?'inspect-again':'unsupported';
+ const summary=!state.attached?'Connect the application tab to inspect an element.':stale?'Previous snapshot is stale.':!view.target?'Select an element to record a snapshot.':!sourceLinked?'DOM snapshot · source and input dependencies are unknown.':selectedListSupported?'Text origin recorded · reducer write → component read → selected text.':view.operands.length?view.operands.length+' observed input'+(view.operands.length===1?'':'s')+' for the selected computation.':instrumented?'No supported scalar input observation for this snapshot.':'Source linked · runtime input values were not observed.';
+ const nextStep=!state.attached?'attach':stale?'inspect-again':!view.target?'select-element':!sourceLinked?'connect-project':!instrumented?'start-observation':view.operands.length||selectedListSupported?'inspect-again':'unsupported';
  return {...view,summary,nextStep};
 }
 

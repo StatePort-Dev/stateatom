@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Show the scoped selected-list text origin as three source links, with transfers and evidence limits in a disclosure. Saved diagnostics retain passive historical links and revision metadata; stale or mismatched selections cannot present a current positive chain. Existing shared tokens and layout are unchanged.
+
 - UX cycle 10: concise project connection, optional first-time setup steps, and an explicit receipt paste field.
 
 - UX cycle 11: readable production permission consequences and explicit two-step labels; authority rules unchanged.

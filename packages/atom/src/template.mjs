@@ -42,6 +42,7 @@ const baseTemplate=`
  <p id="inspection-summary" data-atom-id="inspection-summary" class="sp-atom-hint" role="status"></p>
  <button id="inspection-next" data-atom-id="inspection-next" class="sp-button-subtle"></button>
   <div id="property-explanation-block" data-atom-id="property-explanation-block" hidden><p id="property-explanation" data-atom-id="property-explanation" role="status"></p><p id="property-explanation-scope" data-atom-id="property-explanation-scope" class="sp-atom-hint"></p><button id="explanation-next" data-atom-id="explanation-next" class="sp-button-subtle"></button></div>
+  <section id="selected-list-origin" data-atom-id="selected-list-origin" class="sp-atom-property-card" aria-label="Text origin" hidden></section>
   <div id="element-properties" data-atom-id="element-properties" hidden></div><p id="inputs-empty" data-atom-id="inputs-empty" class="sp-atom-empty"></p>
   <section id="computation-result" data-atom-id="computation-result" aria-label="Recorded computation">  <h3 class="sp-visually-hidden">Code-linked expressions</h3>
   <div id="computation-source" data-atom-id="computation-source" class="sp-code sp-atom-code"><section id="sources" data-atom-id="sources" ></section><section id="expressions" data-atom-id="expressions" ></section></div>

@@ -1,3 +1,4 @@
+import {renderSelectedList} from './selected-list-ui.mjs';
 import {createElementPropertiesUI} from './element-properties-ui.mjs';
 import {createObservationHistoryUI} from './observation-history-ui.mjs';
 import {createObservationController} from './observation-controller.mjs';
@@ -97,6 +98,7 @@ function renderInspection(){
  actionsUI.render(displayState);
  $('project-setup-status').textContent=selectedState?.projectSetup?.code==='HELPER_DISCONNECTED'?'':selectedState?.projectSetup?.reason||'';
  const view=inspectionView(displayState),selection=view.target;
+ renderSelectedList(document,$('selected-list-origin'),view.selectedListProfile,{...displayState.capabilityPolicy?.operations?.open,openSource:source=>action(()=>rpc({op:'open',tabId:tab(),source}))});
  if(selection)navigation.setContext(JSON.stringify([selectedState?.tabId,selectedState?.run,selection.domIdentity?.document??selection.page,selection.domIdentity?.node??selection.instance??selection.selector,selection.property]));
  const explanation=explanationUI.render(displayState,{fallbackPresented:view.nextStep==='connect-project'});if(!hasSelectedRecord(displayState)){$('property-explanation-block').hidden=true;$('explanation-details').hidden=true;}
  $('mode').textContent=view.mode;
@@ -131,7 +133,7 @@ function renderInspection(){
  $('computation-result').hidden=!hasTarget||!view.sources.length&&!view.operands.length;
  $('computation-source').hidden=!view.sources.length;
  $('observed-inputs').hidden=!view.operands.length;
- $('evidence-overview').textContent=view.stale?'This snapshot is stale. Inspect again before drawing conclusions.':selection?'Recorded: '+selection.property+' = '+JSON.stringify(selection.value)+'. '+(view.operands.length?view.operands.length+' input value'+(view.operands.length===1?'':'s')+' observed in the selected computation. ':'')+(view.sources.length?view.sources.length+' code-linked location'+(view.sources.length===1?'':'s')+'. ':'')+(view.finiteTraceSupported?'A finite trace is available below; its scope and limits still apply.':'Complete data origin is not established. See the scoped records below.'):'Select an element to record evidence, then save a report of what was observed.';
+ $('evidence-overview').textContent=view.stale?'This snapshot is stale. Inspect again before drawing conclusions.':selection?'Recorded: '+selection.property+' = '+JSON.stringify(selection.value)+'. '+(view.operands.length?view.operands.length+' input value'+(view.operands.length===1?'':'s')+' observed in the selected computation. ':'')+(view.sources.length?view.sources.length+' code-linked location'+(view.sources.length===1?'':'s')+'. ':'')+(view.selectedListSupported?'The recorded text origin is shown in Dependencies.':view.finiteTraceSupported?'A finite trace is available below; its scope and limits still apply.':'Complete data origin is not established. See the scoped records below.'):'Select an element to record evidence, then save a report of what was observed.';
  $('inspection-next').hidden=['attach','select-element'].includes(view.nextStep)||explanation.status==='Supported';
  $('detach').hidden=!selectedState?.attached;
  $('load').hidden=connectionLost||!view.target&&!view.stale;

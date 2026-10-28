@@ -18,11 +18,13 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
   if(!visible){key=null;return false;}
   const globalStale=state.stale||state.analysis?.actionsInvalidated===true||state.analysis?.stateatom?.runtime?.status==='Stale';
   openDecision=state.capabilityPolicy?.operations?.open;const next=JSON.stringify([bundle,globalStale,openDecision,state.run,state.sourceGeneration,state.inspectionGeneration,state.analysis?.capabilities,state.stale,state.selection,state.attached]);if(key===next)return true;key=next;
-  const inputs=[],evidence=[],sources=[],sourceGroups=new Map();let staleCount=0,recordedInputs=0;
+  const inputs=[],evidence=[],sources=[],sourceGroups=new Map();let staleCount=0,recordedInputs=0,selectedListSupported=false;
   for(const row of bundle.properties){
    const name=row.property==='text'?'Text':'Disabled attribute',stale=row.status==='Stale'||!!globalStale;
    const scoped={...state,selection:row.selection,analysis:stale?null:row.analysis,stale:stale?{target:row.selection,reason:row.reason||state.stale?.reason||'Inspection changed; inspect again.'}:null};
    const view=inspectionView(scoped),facts=inspectionExplanationFacts(scoped),dependencies=inspectionDependencies(scoped);
+   selectedListSupported ||= view.selectedListSupported;
+   if(view.selectedListSupported)for(const step of view.selectedListProfile.chain){const source=step.source,id=JSON.stringify(source);if(!sourceGroups.has(id))sourceGroups.set(id,{source,names:[name]});}
    const card=el('section',undefined,'sp-atom-property-card');card.setAttribute('aria-label',name);card.setAttribute('data-property',row.property);
    if(stale||dependencies.status==='Stale'){staleCount++;view.sources=[];}
    if(dependencies.expression){
@@ -52,12 +54,12 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
   for(const {source,names} of sourceGroups.values()){const locations=el('section',undefined,'sp-atom-property-card');locations.append(el('h4',names.join(' · '),'sp-section-title'));sourceRows(locations,{sources:[source]});sources.push(locations);}
   if(!sources.length)sources.push(el('p',staleCount?'Source links are out of date. Refresh the inspection.':'No source locations linked to this element.','sp-help'));
   if(!inputs.length&&staleCount){inputs.push(el('p','Refresh dependencies after changing page values.','sp-help'));}
-  else if(!inputs.length){
+  else if(!inputs.length&&!selectedListSupported){
    const empty=el('section',undefined,'sp-atom-dependencies-empty');empty.append(el('h3',staleCount?'Refresh dependencies':'Dependencies not found','sp-title'),el('p',staleCount?'The page changed. Inspect this element again to update its expression and inputs.':'Atom can see the element, but has not linked it to the code that produces it.','sp-help'));
    const connected=state.analysis?.capabilities?.sourceResolver==='open-ide';const action=el('button',staleCount?'Inspect again':connected?'Set up runtime inspection':'Connect project','sp-button-primary');action.type='button';action.onclick=staleCount?refresh:connectProject;empty.append(action);inputs.push(empty);
   }else if(staleCount){const update=el('button','Refresh changed dependencies','sp-button-subtle');update.type='button';update.onclick=refresh;inputs.push(update);}
   if(recordedInputs)inputs.push(el('p','Recorded values · read-only. Click a name to open code.','sp-atom-hint'));
-  $('element-properties').replaceChildren(...inputs);$('element-property-evidence').replaceChildren(...evidence);$('element-property-sources').replaceChildren(...sources);return true;
+  $('element-properties').replaceChildren(...inputs);$('element-properties').hidden=!inputs.length;$('element-property-evidence').replaceChildren(...evidence);$('element-property-sources').replaceChildren(...sources);return true;
  }
  return {render};
 }
