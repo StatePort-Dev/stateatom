@@ -8632,7 +8632,7 @@
         "measurement_budget_remaining": 0,
         "first_reader_budget_remaining": 0
       },
-      "next_bounded_step": "ONE bounded current90 changed-UI compatibility preparation in an isolated consumer; fix native scenario/owner/isolation before execution. Preserve official89 and closed276/performance raw evidence; no unchanged failed-case retry, installation, publication or performance waiver.",
+      "next_bounded_step": "Exact90 changed-UI evidence recorded279; bounded official90 intake may consume it, preserving89/rollback. FullV02 still fails original89Active10% criterion; select a concrete evidence-backed post89 diagnostic/source premise before any new measurement. No unchanged gate retry, automatic repack, waiver or publication.",
       "historical_active_before_V02_31": {
         "id": "V02.30",
         "record": "239-v02-debugger-lifetime-feasibility.md",
@@ -8699,7 +8699,21 @@
         }
       },
       "historical_execution_before_V02_34": "259-v02-current87-original-performance.md",
-      "original_current_performance_gate": "259-v02-current87-original-performance.md"
+      "original_current_performance_gate": "259-v02-current87-original-performance.md",
+      "package90_ui_acceptance": {
+        "record": "279-v02-current90-native-ui.md",
+        "status": "pass-changed-ui-only",
+        "native_checks": 11,
+        "explicit_real_response_timing_controls": 2,
+        "native_invocations": 1,
+        "prior_setup_failures": 2,
+        "package": "0.1.0-candidate.20261028.90",
+        "raw_sha256": "d02743a8f122b75c6f267d2a525fb02a2479738193c9cbaaa73793b306ee4c6c",
+        "whole_V02": false,
+        "performance_qualified": false,
+        "closed_opener_reopen": "NOT_RUN",
+        "error_quality_observation": "Invalid selector surfaces null/unsupported implementation error, recoverable; no correction in this slice."
+      }
     },
     {
       "id": "V03",

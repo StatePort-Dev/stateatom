@@ -1,5 +1,18 @@
 # Project status
 
+**28 October — V02.39 isolated package90 changed UI:** existing native harness,
+exact public standalone/embedding90/UI2, fresh owned profiles:13 scoped checks PASS
+(11ordinary native +2explicit real-response timing controls), Chrome153, exit0.
+Missing-selected-tab refresh settles OK/empty; picker cancel, reopen, error recovery,
+embedding unmount/remount and context guards checked. Two setup failures retained.
+Malformed selector still shows technical null/unsupported error; quality remains
+open. Missing-opener restore NOT_RUN. No full native/installed/official/performance
+acceptance. Source270/closedraw3/old89/new90/official36 unchanged; owned browsers/server
+closed. [Evidence, eight mandatory gates and finite release path](completion/279-v02-current90-native-ui.md).
+Original89Active10.71737255/27.31871841% MISS10%; no concrete post89 performance fix
+selected in existing plan. Whole21/29 unchanged. No repack, host intake or publication.
+
+**Previous package-only checkpoint follows:**
 **28 October — V02.38 local package90 prepared:** clean producer69b8d86, exact
 Atom90/UI2 deterministic pack, offline consumer, packed types2 and admission9 PASS.
 Only compiled UI and its two host UI bundles change from89; runtime/permissions/
