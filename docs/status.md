@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 selected read:** [source/native checkpoint291](completion/291-a02-selected-field-read-native.md): actual Original/Off/On private collector case290 passes after a reproduced useState-interleaving fix; creation/changed/same-value read-write joins and wrong-row/detached/Stop controls. Full6187PASS. Ownership/transfers still Unknown; no public/package/fullA02 credit. Continue App/Main original transfers in current plan; whole21/29 unchanged.
+
 **Current A02 integration:** [native field receipts289](completion/289-a02-native-field-receipt-integration.md), optional collector-owned applied revisions;136affected/full6148PASS after owned virtual-module routing and compiler pin correction. Shared source checkout, no new package/native claim. Task2 original component reads and exact selected host/props continues in the same integration plan; ownership/code premises and final review remain pending. Whole21/29 unchanged.
 
 **Latest A02 source prerequisite:** [finite list/row admission288](completion/288-a02-list-field-source-admission.md) covers the actual reducer/App/Main/Item/Footer and renamed control conditionally;91affected/full6125PASS. One review0C/5I/0M, all fixed with11RED regressions. Ordinary-field/native-array/complete-code/current-identity premises remain unproved; ownership/selected lineage stay Unknown. Next native selected-row/read/commit integration; no public package change or fullA02 acceptance. Whole21/29 unchanged.

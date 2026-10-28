@@ -20,13 +20,15 @@ export function createReducerWriteReceipts({page,weakRef=globalThis.WeakRef}={})
   registrations.set(reducer,ids);return true;
  });
  const begin=safe((token,reducer,input,action)=>{
-  if(!object(token)||native.has(token)||typeof reducer!=='function'||!object(input)||!object(action)){refuse('Invalid native call entry');return;}
+  if(!object(token)||native.has(token)||typeof reducer!=='function'){refuse('Invalid native call entry');return;}
+  const ignored=!registrations.has(reducer);if(!ignored&&(!object(input)||!object(action))){refuse('Invalid registered reducer operands');return;}
   if(++calls>512||stack.length>=16){refuse('Native call capacity exceeded');return;}
+  if(ignored){const frame={ignored:true,phase:'active',invalid:true,writes:[]};native.set(token,frame);apply(push,stack,[frame]);return;}
   const frame={id:page+':reducer-call:'+ ++serial,reducer:ref(reducer),input:ref(input),action:ref(action),phase:'active',entered:false,exited:false,invalid:false,writes:[]};native.set(token,frame);apply(push,stack,[frame]);
  });
  const source=safe((kind,a,b,c)=>{
   if(kind==='enter'){
-   const frame=stack[stack.length-1];if(!frame)return null;
+   const frame=stack[stack.length-1];if(!frame||frame.ignored)return null;
    if(frame.phase!=='active'||frame.entered||read(frame.reducer)!==a||read(frame.input)!==b||read(frame.action)!==c||!registrations.has(a)){frame.invalid=true;return null;}
    frame.entered=true;const token={};sources.set(token,frame);return token;
   }
@@ -46,7 +48,7 @@ export function createReducerWriteReceipts({page,weakRef=globalThis.WeakRef}={})
  const complete=safe((token,result)=>{
   const frame=object(token)?native.get(token):null;
   if(!frame||frame.phase!=='active'||stack[stack.length-1]!==frame){refuse('Invalid native call completion');return;}
-  apply(pop,stack,[]);frame.phase='complete';if(!object(result)||!frame.entered||!frame.exited)frame.invalid=true;else frame.result=ref(result);
+  apply(pop,stack,[]);frame.phase='complete';if(frame.ignored)return;if(!object(result)||!frame.entered||!frame.exited)frame.invalid=true;else frame.result=ref(result);
  });
  const discard=safe(token=>{
   const frame=object(token)?native.get(token):null;if(!frame)return;
@@ -55,7 +57,7 @@ export function createReducerWriteReceipts({page,weakRef=globalThis.WeakRef}={})
  });
  const applied=safe((token,{result,input,action,reducer,revisionId}={})=>{
   const frame=object(token)?native.get(token):null;
-  if(!frame||frame.phase==='discarded')return;
+  if(!frame||frame.ignored||frame.phase==='discarded')return;
   if(frame.phase!=='complete'||typeof revisionId!=='string'||!revisionId||revisionId.length>160||revisions.has(revisionId)){refuse('Ambiguous applied call or revision');return;}
   frame.phase='applied';
   if(frame.invalid||read(frame.result)!==result||read(frame.input)!==input||read(frame.action)!==action||read(frame.reducer)!==reducer){frame.invalid=true;return;}

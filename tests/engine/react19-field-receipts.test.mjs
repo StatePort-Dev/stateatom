@@ -62,3 +62,7 @@ test('enabled field collection avoids later application Map Set and weak-collect
  finally{for(let i=0;i<changes.length;i++)Object.defineProperty(changes[i][0],changes[i][1],saved[i]);}
  assert.equal(error,undefined);assert.equal(calls,0);assert.equal(result.status,'Observed');
 });
+
+test('unregistered boolean state frame between selection and edit preserves list receipt acquisition',()=>{
+ const f=fixture();f.run();const token={},basicStateReducer=(state,action)=>action;f.api.tap('reducer-call-begin',token,basicStateReducer,false,true);f.api.tap('reducer-call-complete',true,token);f.api.tap('reducer-applied',true,{}, {},{},false,true,f.fiber,basicStateReducer,token);const {result}=f.run();assert.equal(f.api.matchReducerFieldWrite(f.node,result[0]).status,'Observed');
+});

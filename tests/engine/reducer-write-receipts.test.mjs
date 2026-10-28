@@ -100,3 +100,11 @@ test('invocation mode refuses body-level function declarations without changing 
 for(const kind of ['exit','unexpected'])test('malformed source event after exit invalidates current native receipt: '+kind,async()=>{
  const api=(await load()).createReducerWriteReceipts({page:'p'}),reducer=()=>{},input={},action={},token={},row={},result={};api.register(reducer,['site']);api.begin(token,reducer,input,action);const frame=api.source('enter',reducer,input,action);api.source('write',frame,'site',row);api.source('exit',frame);api.source(kind,frame);api.complete(token,result);api.applied(token,{result,input,action,reducer,revisionId:'r'});assert.equal(api.lookup({row,result,reducer,revisionId:'r'}).status,'Unknown/Unsupported');
 });
+
+test('unregistered primitive useState reducer calls do not poison later registered list writes',async()=>{
+ const f=await setup(),other=(state,action)=>action,t={};f.api.begin(t,other,false,true);f.api.complete(t,true);f.api.applied(t,{result:true,input:false,action:true,reducer:other,revisionId:'boolean-state'});
+ const {result}=call(f,[{key:1}],{data:{key:1,caption:'SAME'}});assert.equal(lookup(f,result[0],result).status,'Observed');assert.equal(f.api.retention().refused,false);
+});
+test('an unregistered nested native frame cannot lend its parent source token',async()=>{
+ const f=await setup(),input=[{key:1}],action={data:{key:1,caption:'SAME'}},outer={},foreign={};f.api.begin(outer,f.reducer,input,action);f.api.begin(foreign,()=>true,false,true);const result=f.reducer(input,action);f.api.complete(foreign,true);f.api.complete(outer,result);f.api.applied(outer,{result,input,action,reducer:f.reducer,revisionId:'revision-1'});assert.equal(lookup(f,result[0],result).status,'Unknown/Unsupported');assert.equal(f.api.retention().refused,false);
+});
