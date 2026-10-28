@@ -4,14 +4,14 @@ import {parse} from '@babel/parser';import traverseModule from '@babel/traverse'
 import {instrumentReducerFieldWrites} from './reducer-field-writes.mjs';
 const traverse=traverseModule.default||traverseModule,hash=s=>createHash('sha256').update(s).digest('hex');
 export function admitListFieldSources(files,{root,field,maxSteps=512}={}){
- const modules=new Map(),used=new Set(),edges=[],dataSites=[],unsupported=[],scalarFields=new Set(),kinds=new Map(),queue=[],callbacks=new Map(),nativeSites=new Map(),consumed=new Map();let steps=0,reducerFn;
+ const modules=new Map(),used=new Set(),edges=[],dataSites=[],unsupported=[],scalarFields=new Set(),kinds=new Map(),queue=[],callbacks=new Map(),nativeSites=new Map(),consumed=new Map();let steps=0,reducerFn,compiler=null;
  const premises=[
   'Actual selected field and every listed row field are original ordinary own-data primitive reads; no getter/Proxy or object-valued field is admitted by this source result.',
   'Original array methods and ordinary array construction/species are independently acquired and admitted; syntax does not identify a native implementation.',
   'Complete admitted main-world code and native retention effects, including absence of foreign Fiber/DevTools exposure and unknown code, cover the whole write-to-read interval.',
   'Exact source hashes, applied call/state/row, source callback/props/parameter/read and selected current commit identities match; HMR/Stop/missing references invalidate current authority.'
  ];
- const result=ok=>({status:ok?'Conditional source admission':'Unknown/Unsupported',sourceUsesComplete:ok,scope:'Lexical list/row references within the finite admitted source graph, conditional on every separate runtime premise',modules:[...used].sort().map(file=>({file,sourceDigest:modules.get(file).digest})),edges,dataSites:ok?dataSites:[],scalarFields:[...scalarFields].sort(),unsupported,runtimePremises:premises,fieldOwnership:'Unknown/Unsupported',fullPath:false});
+ const result=ok=>({status:ok?'Conditional source admission':'Unknown/Unsupported',sourceUsesComplete:ok,scope:'Lexical list/row references within the finite admitted source graph, conditional on every separate runtime premise',modules:[...used].sort().map(file=>({file,sourceDigest:modules.get(file).digest})),edges,compiler:ok?compiler:null,dataSites:ok?dataSites:[],scalarFields:[...scalarFields].sort(),unsupported,runtimePremises:premises,fieldOwnership:'Unknown/Unsupported',fullPath:false});
  const fail=(why,p,ctx)=>{unsupported.push({reason:why,...(ctx?{file:ctx.file,sourceDigest:ctx.digest}:{}),...(p?.node?.loc?{line:p.node.loc.start.line,column:p.node.loc.start.column+1}:{})});throw Error('Source admission refused');};
  const tick=(p,ctx)=>{if(++steps>maxSteps)fail('Source-use budget exceeded',p,ctx);};
  const location=(p,ctx,kind,extra={})=>({kind,file:ctx.file,sourceDigest:ctx.digest,line:p.node.loc.start.line,column:p.node.loc.start.column+1,...extra});
@@ -48,7 +48,9 @@ export function admitListFieldSources(files,{root,field,maxSteps=512}={}){
    const receiver=functionOf(name.scope.getBinding(name.node.name),ctx),params=receiver.fn.get('params');if(params.length!==1||!params[0].isObjectPattern())fail('Direct destructured component parameter required',receiver.fn,receiver.ctx);
    const properties=params[0].get('properties');if(properties.some(p=>!p.isObjectProperty()||p.node.computed||!p.get('value').isIdentifier()))fail('Computed, default or rest component props unsupported',params[0],receiver.ctx);
    const matches=properties.filter(p=>(p.node.key.name||p.node.key.value)===prop);if(matches.length!==1)fail('Unique corresponding component prop required',params[0],receiver.ctx);
-   enqueue(receiver.fn.scope.getBinding(matches[0].node.value.name),kind,receiver.ctx);edges.push(location(opening,ctx,'component-prop',{prop,targetFile:receiver.ctx.file,parameter:matches[0].node.value.name}));
+   let sender=opening.getFunctionParent();while(sender&&!sender.node.id&&!sender.parentPath.isVariableDeclarator())sender=sender.getFunctionParent();
+   const senderName=sender?.node.id?.name||(sender?.parentPath.isVariableDeclarator()?sender.parentPath.node.id.name:null);
+   enqueue(receiver.fn.scope.getBinding(matches[0].node.value.name),kind,receiver.ctx);edges.push(location(opening,ctx,'component-prop',{prop,valueKind:kind,sourceBinding:senderName,targetBinding:receiver.fn.node.id?.name||receiver.binding.identifier.name,targetFile:receiver.ctx.file,parameter:matches[0].node.value.name}));
   }
   function returns(fn){if(!fn.get('body').isBlockStatement())return[fn.get('body')];const list=[];fn.get('body').traverse({Function(p){p.skip()},ReturnStatement(p){if(p.node.argument)list.push(p.get('argument'));else list.push(p);}});return list;}
   function mapKind(p,param){if(p.isJSXElement()||p.isJSXFragment())return'elements';if(p.isIdentifier()&&p.scope.getBinding(p.node.name)===param||p.isObjectExpression())return'collection';if(p.isConditionalExpression()){const a=mapKind(p.get('consequent'),param),b=mapKind(p.get('alternate'),param);return a===b?a:null;}return null;}
@@ -117,6 +119,7 @@ export function admitListFieldSources(files,{root,field,maxSteps=512}={}){
   if(calls.length!==1)fail('One root useReducer binding required',owner.fn,owner.ctx);const call=calls[0],decl=call.parentPath,args=call.get('arguments');
   if(args.length!==2||!args[0].isIdentifier()||!args[1].isArrayExpression()||args[1].node.elements.length||!decl.isVariableDeclarator()||decl.parentPath.node.kind!=='const'||!decl.get('id').isArrayPattern()||decl.node.id.elements.length!==2||!decl.node.id.elements.every(n=>t.isIdentifier(n)))fail('Ordinary fresh-list reducer binding required',call,owner.ctx);
   const reducer=functionOf(args[0].scope.getBinding(args[0].node.name),owner.ctx);reducerFn=reducer.fn;if(reducerFn.node.params.length!==2||!reducerFn.node.params.every(n=>t.isIdentifier(n)))fail('Two ordinary reducer parameters required',reducerFn,reducer.ctx);
+  compiler={root:{file:owner.ctx.file,binding:owner.fn.node.id?.name||owner.binding.identifier.name,input:decl.node.id.elements[0].name},reducer:{file:reducer.ctx.file,binding:reducerFn.node.id?.name||reducer.binding.identifier.name,field}};
   const recipe=instrumentReducerFieldWrites(reducer.ctx.text,reducer.ctx.file,{binding:reducer.binding.identifier.name,field,observerName:'__stateatomAdmissionOnly',capture:'invocation'});if(recipe.status!=='Code-linked writer sites')fail('Selected field-creation source recipe unavailable',reducerFn,reducer.ctx);
   enqueue(owner.fn.scope.getBinding(decl.node.id.elements[0].name),'collection',owner.ctx);enqueue(reducerFn.scope.getBinding(reducerFn.node.params[0].name),'collection',reducer.ctx);
   // First discover the receiver/callback/prop graph; then account for each fresh

@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 compiler:** [Task3 checkpoint294](completion/294-a02-list-program-composition.md): lexical structural composition of original writer/read/prop/data recipes, including the unchanged renamed alias control.161affectedPASS. Shared full runs preserved with one concurrent-editor failure and one occupied-port failure; focused current editor9/channel8PASS. No new native/public/package/ownership credit. Continue owned loaded-code/effect interval; whole21/29 unchanged.
+
 **Latest A02 data chain:** [Task3 checkpoint293](completion/293-a02-original-list-data-chain.md): original row/array construction and native callback identities join the exact selected state/props chain in source/protocol controls.146affected/full6263PASS. Current ownership/code interval remain Unknown/fullPath=false; no new native/public/package credit. Next helper-owned source/effect and complete code interval. Whole21/29 unchanged.
 
 **Latest A02 reference chain:** [Task2 checkpoint292](completion/292-a02-original-prop-transfer-chain.md), original state/prop/parameter/map-callback references joined to selected Item and exact current native ancestors.146affected/full6212PASS plus5 latest repeated-update controls. Array membership/ordinary data/code and alias exclusion remain Unknown/fullPath=false; no new native/public/package credit. Next Task3 native-array/ordinary-row and complete code-interval authority. Whole21/29 unchanged.

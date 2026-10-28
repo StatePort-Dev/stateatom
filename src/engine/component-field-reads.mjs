@@ -13,9 +13,11 @@ export function instrumentComponentFieldReads(source,file,{binding,parameter,fie
   if(fn.node.async||fn.node.generator||!t.isBlockStatement(fn.node.body)||fn.node.params.length!==1||!t.isObjectPattern(fn.node.params[0])||!self?.constant||self.identifier!==(fn.node.id||fn.parentPath.node.id))return empty('Named synchronous immutable component binding required');
   const params=fn.get('params.0.properties');if(params.some(p=>!p.isObjectProperty()||p.node.computed||!p.get('value').isIdentifier()))return empty('Direct component parameters required');
   const row=fn.scope.getBinding(parameter);if(!row?.constant||!params.some(p=>p.node.value===row.identifier))return empty('Exact immutable row parameter required');
-  const reads=[];
+  const reads=[],aliases=new Set([row]);
   fn.traverse({Function(p){p.skip();},VariableDeclarator(p){
-   if(!p.get('id').isObjectPattern()||!p.get('init').isIdentifier({name:parameter})||p.scope.getBinding(parameter)!==row)return;
+   const init=p.get('init');if(!init.isIdentifier()||!aliases.has(init.scope.getBinding(init.node.name)))return;
+   if(p.get('id').isIdentifier()){const alias=p.scope.getBinding(p.node.id.name);if(p.parentPath.isVariableDeclaration({kind:'const'})&&p.parentPath.parentPath===fn.get('body')&&alias?.constant&&alias.identifier===p.node.id)aliases.add(alias);return;}
+   if(!p.get('id').isObjectPattern())return;
    const props=p.get('id.properties'),decl=p.parentPath;
    if(!decl.isVariableDeclaration({kind:'const'})||decl.node.declarations.length!==1||decl.parentPath!==fn.get('body')||props.some(q=>!q.isObjectProperty()||q.node.computed||!q.get('value').isIdentifier()))throw Error('Direct ordinary immutable destructure required');
    const targets=props.filter(q=>(q.node.key.name||q.node.key.value)===field);if(targets.length!==1)throw Error('Unique selected field required');const selected=targets[0],scalar=p.scope.getBinding(selected.node.value.name);

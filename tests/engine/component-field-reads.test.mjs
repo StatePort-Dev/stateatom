@@ -27,3 +27,17 @@ for(const [label,text]of [
  ['observer collision',source.replace('const {caption','const observe=()=>{}; const {caption')],
  ['shadowed scalar',source.replace('return <section>','return (()=>{const label="other";return <section>').replace('</section> });','</section>})() });')],
 ])test('unsupported '+label+' preserves original source and supplies no recipe',()=>{const r=instrumentComponentFieldReads(text,'card.jsx',options);assert.equal(r.status,'Unknown/Unsupported');assert.equal(r.code,text);assert.equal(r.sites.length,0);});
+
+test('original immutable local alias chain preserves receiver and one actual field read',()=>{
+ const text=source.replace('const {caption:label,done,id}=entry;','const first=entry;const alias=first;const {caption:label,done,id}=alias;');
+ const r=instrumentComponentFieldReads(text,'renamed.jsx',options);assert.equal(r.status,'Code-linked field reads');
+ let gets=0;const row={get caption(){gets++;return 'same'},done:false,id:1};const a=run(text,{row}),b=run(r.code,{row});assert.equal(gets,2);assert.equal(JSON.stringify(a.value),JSON.stringify(b.value));assert.equal(b.events[0].args[2],row);assert.deepEqual(b.events.map(e=>e.kind),['enter','read','operand','element']);
+});
+for(const [name,decl]of[
+ ['mutable alias','let alias=entry;'],
+ ['reassigned alias','let alias=entry;alias={caption:"same"};'],
+ ['different object','const alias={caption:"same"};'],
+ ['property alias','const alias=entry.other;'],
+ ['function alias','const alias=copy(entry);']
+])test('field reader refuses '+name+' instead of equating its scalar',()=>{const text=source.replace('const {caption:label,done,id}=entry;',decl+'const {caption:label,done,id}=alias;');const r=instrumentComponentFieldReads(text,'alias.jsx',options);assert.equal(r.status,'Unknown/Unsupported');assert.equal(r.code,text)});
+test('alias getter throwing keeps the original exception and produces no successful read',()=>{const text=source.replace('const {caption:label,done,id}=entry;','const alias=entry;const {caption:label,done,id}=alias;');const r=instrumentComponentFieldReads(text,'alias.jsx',options);assert.equal(r.status,'Code-linked field reads');const sentinel={};let gets=0;const b=run(r.code,{row:{get caption(){gets++;throw sentinel}}});assert.equal(b.error,sentinel);assert.equal(gets,1);assert.deepEqual(b.events.map(e=>e.kind),['enter'])});
