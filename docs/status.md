@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 DOM boundary:** [checkpoint299](completion/299-a02-selected-text-mutation-interval.md): selected text mutations after the acquired React commit refuse the finite profile, including repeated-id reset protection.76affectedPASS; actual Chromium mutation/commit ordering remains unqualified.39-input compilation retained; helper/public/native/held-out acceptance still open, whole21/29.
+
 **Latest A02 protocol integration:** [checkpoint298](completion/298-a02-list-code-context-and-snapshot.md): owned source/effect/native-context composition and existing public snapshot adapter;66affectedPASS. Actual native context issuance, trusted journal/bridge route and full occurrence/UI/export proof remain pending.38-input compiled artifact retained; no new browser/package/full-A02 credit.
 
 **Latest A02 effects:** [checkpoint297](completion/297-a02-finite-reviewed-list-effects.md): finite37-input source/native account bound to owned compilation;26affectedPASS, including a newly compiled DOM/Fiber alias-writer refusal and drift revocation. Exact reviewed graph only; held-out/native/code interval/public route remain pending, fullPath=false. Whole21/29 unchanged.

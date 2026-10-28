@@ -2,8 +2,9 @@
 // Public read protocol for the explicitly enabled finite list profile. The
 // source observer cannot issue helper-owned effects or code-history authority.
 import {createReact19Acquisition} from './react19-acquisition.mjs';
+import {createListDOMHistory} from './list-dom-history.mjs';
 export function createListFieldRuntime({page}={}){
- const api=createReact19Acquisition({page,reducerFields:true,listData:true}),apply=Reflect.apply,own=Object.getOwnPropertyDescriptor,create=Object.create,ObjectProto=Object.prototype,ArrayProto=Array.prototype;
+ const api=createReact19Acquisition({page,reducerFields:true,listData:true}),dom=createListDOMHistory(),apply=Reflect.apply,own=Object.getOwnPropertyDescriptor,create=Object.create,ObjectProto=Object.prototype,ArrayProto=Array.prototype;
  let stopped=false,invalidated=false;
  const missing=reason=>({status:'Unknown/Unsupported',reason,fullPath:false,fieldOwnership:'Unknown/Unsupported'});
  function snapshot(_instance,property,node){
@@ -12,16 +13,16 @@ export function createListFieldRuntime({page}={}){
   const serialization=!!(own(ObjectProto,'toJSON')||own(ArrayProto,'toJSON'));
   if(serialization){const result=create(null);result.schema=1;result.page=page;result.status='Unknown/Unsupported';result.reason='Application prototype serialization hook unsupported';result.target=null;return result}
   const reason=stopped?'List observer stopped; old history is not current':invalidated?'List observer invalidated by changed source':property!=='text'?'This finite list profile observes text only':'Selected list facts require current helper-owned source, code and occurrence verification';
-  const available=!serialization&&!stopped&&!invalidated&&property==='text';
+  const available=!serialization&&!stopped&&!invalidated&&property==='text',commit=available?api.currentCommit():missing(reason);
   return{schema:1,page,status:invalidated?'Stale':'Unknown/Unsupported',reason,target:null,nodes:[],exchanges:[],recentExchanges:[],
    listFieldObservations:{schema:'stateatom.selected-list-observation/1',page,property,status:available?'Recorded':'Unknown/Unsupported',reason:available?null:reason,
-    selected:available?api.matchSelectedListData(node):missing(reason),environment:available?api.nativeEnvironment():missing(reason),commit:available?api.currentCommit():missing(reason),fieldOwnership:'Unknown/Unsupported',fullPath:false,
+    selected:available?api.matchSelectedListData(node):missing(reason),environment:available?api.nativeEnvironment():missing(reason),commit,dom:available?dom.snapshot(node,commit.commitId):missing(reason),fieldOwnership:'Unknown/Unsupported',fullPath:false,
     scope:'Original selected list/field facts only; complete source/effect/code authority must come from the trusted helper'},
    boundaries:['The page observer supplies no complete field ownership or full lineage authority.']};
  }
  const runtime=Object.freeze({version:1,page,nativeStateAcquisition:true,
-  react19NativeTap(){if(!stopped&&!invalidated)return apply(api.tap,api,arguments)},snapshot,
-  stop(){stopped=true;api.stop()},invalidate(){invalidated=true;api.stop()}
+  react19NativeTap(){if(!stopped&&!invalidated){const result=apply(api.tap,api,arguments);if(arguments[0]==='root-current'){const commit=api.currentCommit();if(commit.status==='Observed')dom.commit(commit.commitId)}return result}},snapshot,
+  stop(){stopped=true;api.stop();dom.stop()},invalidate(){invalidated=true;api.stop();dom.stop()}
  });
  return Object.freeze({api,runtime});
 }
