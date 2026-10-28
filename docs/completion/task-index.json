@@ -1676,7 +1676,7 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "294-a02-list-program-composition.md",
+      "execution_record": "295-a02-owned-list-compilation.md",
       "completed_slices": [
         {
           "id": "A02.55",
@@ -3028,7 +3028,7 @@
         "bounded_next_experiment": "A02.9 source-only historical claim description on retained data; no browser/native",
         "experiment_native_executed": false
       },
-      "current_checkpoint": "294-a02-list-program-composition.md",
+      "current_checkpoint": "295-a02-owned-list-compilation.md",
       "stopping_point_history": [
         {
           "invoked": true,
@@ -3061,7 +3061,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "Task3 helper-owned compilation and complete loaded-code interval with explicit React19/source retention/effect premises; source program recipes now compose structurally on retained and renamed source. No full ownership/public/native qualification yet.",
+      "next_bounded_step": "Task3 original native DevTools absence observation, then source/native retention proof and complete actual browser code interval bound to the owned compilation; public route and final qualification remain pending.",
       "reducer_field_write_sites": {
         "record": "285-a02-reducer-field-write-sites.md",
         "status": "complete-source-prerequisite-not-integrated",
@@ -3312,19 +3312,18 @@
       },
       "active_slice": {
         "id": "A02.release-selected-list-integration",
-        "record": "294-a02-list-program-composition.md",
-        "status": "in-progress-task3-structural-program-source-checkpoint",
-        "affected_pass": 161,
-        "full_source_pass": 6283,
+        "record": "295-a02-owned-list-compilation.md",
+        "status": "in-progress-task3-owned-compilation-source-checkpoint",
+        "affected_pass": 14,
         "native_runs": 2,
+        "new_native_runs": 0,
         "public_plugin_integrated": false,
         "runtime_premises_discharged": false,
         "full_A02": false,
         "review_pending": "one final whole-integration review",
-        "native_disposition": "one incomplete; one concrete-useState-correction PASS within private receipt scope",
-        "new_native_runs": 0,
-        "full_source_fail": 1,
-        "full_source_disposition": "shared checkout; sole final full failure occupied first-read port; focused current channel8PASS; prior full concurrent-editor failure retained, current editor9PASS"
+        "compiled_inputs": 37,
+        "bundle_sha256": "b0859ab294b246a1ff13bc564ae0c8e51f8e24f57fed8a3736ed1ae38fbba18b",
+        "current_full_verification": "294 shared full failures retained; scoped missing checks passed; no new full run for this compiler-only increment"
       },
       "historical_checkpoint_before_A02_51": {
         "active_slice": {
@@ -3580,6 +3579,22 @@
         "review_pending": "one final whole-integration review",
         "native_disposition": "one incomplete; one concrete-useState-correction PASS within private receipt scope",
         "new_native_runs": 0
+      },
+      "selected_list_program_checkpoint": {
+        "id": "A02.release-selected-list-integration",
+        "record": "294-a02-list-program-composition.md",
+        "status": "in-progress-task3-structural-program-source-checkpoint",
+        "affected_pass": 161,
+        "full_source_pass": 6283,
+        "native_runs": 2,
+        "public_plugin_integrated": false,
+        "runtime_premises_discharged": false,
+        "full_A02": false,
+        "review_pending": "one final whole-integration review",
+        "native_disposition": "one incomplete; one concrete-useState-correction PASS within private receipt scope",
+        "new_native_runs": 0,
+        "full_source_fail": 1,
+        "full_source_disposition": "shared checkout; sole final full failure occupied first-read port; focused current channel8PASS; prior full concurrent-editor failure retained, current editor9PASS"
       }
     },
     {

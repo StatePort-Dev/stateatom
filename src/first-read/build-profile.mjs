@@ -15,7 +15,7 @@ const SOURCE_LIMIT=2*1024*1024;
 // unsupported until their exact native artifacts have independent reviewed pins.
 const API_PIN='0d1241812c443111d39475dfc66836003e9ef8b87e54d990dd67df29d20010e1';
 const BINARY_PIN='bab29b2ca7a9e89b67cf720b77b2d743f9f31f5cf0d5bd74ee8c8de30ced7014';
-const BUILDER_PIN = '5080f492327cdf110cddb6a524679509efe126eb78b865b4f423f068c663b20a';
+const BUILDER_PIN = 'ffca24837a61fa3d85b086e3dd3e85a8175543d06b9f9e6c9d220fecd7b73137';
 const RECIPE_PINS={
   "src/engine/action-transform.mjs": "ff7eb4f075a58ea37b9fee45f3c40953263c31210e4976ced69868588557511b",
   "src/engine/script-transform.mjs": "80ead8568bcc85cbb6312d407fa43ff76c20bdff7b683b6aab15a8ab2c074957",
@@ -498,4 +498,16 @@ export async function buildFirstReadProfile({projectRoot=defaultRoot}={}){
  const manifest={schema:1,id:randomUUID(),profile:'react18-query5-first-data-render/1',createdAt:new Date().toISOString(),bundle:{digest:sha(code),bytes},compiler:{name:'esbuild',version:trust.api.version,host:{node:process.versions.node,v8:process.versions.v8,platform:process.platform,arch:process.arch},entryPoints:["tests/fixtures/inspection/react/App.tsx"],api:{file:trust.apiFile,digest:API_PIN},binary:{file:trust.binaryFile,digest:BINARY_PIN},options,externalImports:external.length},trust:{recipe,files:trust.files},inputs:[...inputs.values()].sort((a,b)=>a.file.localeCompare(b.file)),scope:'Actual closed compilation input/stage/output bytes only; not complete browser graph, pristine realm, aliases/effects or a product certificate'};
  if(Buffer.byteLength(JSON.stringify(manifest))>256*1024)throw Error('Compiler metadata budget exceeded');
  manifest.digest=sha(JSON.stringify(manifest));return{code,manifest,fullPath:false};
+}
+
+// Reuse the verified compiler/file acquisition, never the React18/Query effect
+// derivation. This helper-side handle issues no first-read/profile authority.
+export async function acquireOwnedCompilationTools({projectRoot=defaultRoot}={}){
+ const root=await workspaceRoot(projectRoot),trust=await acquireTrust(root);
+ return {
+  root,build:trust.api.build,version:trust.api.version,files:trust.files,
+  compiler:{api:{file:trust.apiFile,digest:API_PIN},binary:{file:trust.binaryFile,digest:BINARY_PIN}},
+  async read(file,limit=SOURCE_LIMIT){return boundedFile(root,path.resolve(root,file),limit,trust.identities);},
+  async confirm(records=[]){await confirmFiles(root,trust.files,trust.identities);await confirmFiles(root,records,trust.identities);}
+ };
 }
