@@ -120,9 +120,14 @@ actual trusted opt-in/oneenabledExplain, download0–85% then original120s templ
 timeout;6safetychecks/61source/1188stable/36dist/original434profilefiles3links stable/
 ONEreview0C0I0M. No generating/validated output or model readiness/usefulness credit.
 
-Next bounded **[L02.32 cold lifecycle source work](completion/264-l02-cold-initialization-lifecycle.md)**;
-phase budgets to be chosen explicitly within task, warm/inference/criteria retained.
-No native/model/package/host or closed31/19/20 retry in source32. Full **21/29 (72.41%)**,
+[L02.32 source fix closed](completion/264-l02-cold-initialization-lifecycle.md),
+f931645: explicit cold300s separate from existing warm/metadata and original
+inference120s; cancellation boundaries/late destruction corrected.99affected/
+5986fullPASS/1199protected/ONEreview0C0I0M, only2product inputs differ87. No
+new package/native/model or ready/useful credit.
+
+Next bounded **[L02.33 local immutable88/UI2](completion/265-l02-current88-local-package.md)**
+only; no host/native/model/oldcase retry or publication. Full **21/29 (72.41%)**,
 eight open U04,A02,L02,I02,I03,V02,V03,V04. Autonomy until09:00 Mauritius October28.
 
 

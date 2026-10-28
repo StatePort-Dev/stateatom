@@ -30,10 +30,12 @@ closed actual official87top-level Google156 metadata downloadable1/1343.3ms,4che
 738stable/36dist/ONEreview0C0I0M; no modelcreate/prompt/download-initiation.
 [L02.31](../completion/263-l02-official-model-initialization.md) closed one trusted
 existing product opt-in/Explain:85%download then120s template timeout,6safetychecks/
-61source/ONEreview0C0I0M; no modelready/output/usefulness acceptance. Next
-[L02.32](../completion/264-l02-cold-initialization-lifecycle.md) source-only cold
-initialization phase diagnosis/fix; warm/inference/corpus criteria retained, no
-native/model/package/host/closedcase retry. Old84MISS/32INCOMPLETE remain.
+61source/ONEreview0C0I0M; no modelready/output/usefulness acceptance.
+[L02.32](../completion/264-l02-cold-initialization-lifecycle.md) closed source-only
+cold300s option/original warm+inference120s,99focused/5986full/1199protected/
+ONEreview0C0I0M; native/model0, immutable87unchanged. Next
+[L02.33](../completion/265-l02-current88-local-package.md) local unique88/UI2 package
+prerequisite only; no host/native/model or closedcase retry. Old84MISS/32INCOMPLETE remain.
 Historical entries retain scope.
 
 Current approved-scope execution is tracked in [completion status](../status.md)
