@@ -5,7 +5,7 @@ prerequisite, not a repeated closed19/20 comparison/loader/web/model corpus.
 Current official87/UI2 source/options/prompts/120second product deadline unchanged.
 MandatoryL02/useful0/full21of29 and original87performanceMISS remain open.
 
-Bounded next: separately preregister ONE native run on262's retained test-owned
+Bounded next: separately preregister ONE native run on an exact owned clone of262's retained test-owned
 profile, exact Google binary/full36dist/package270/327/current10/history protected.
 Use existing native Google adapter/test-only loadUnpacked and own nested display;
 no personal profile, model/feature/security/TLS bypass, CA/trust/system/network
