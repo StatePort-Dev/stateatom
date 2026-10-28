@@ -8,11 +8,11 @@ import generatorModule from '@babel/generator';
 import * as t from '@babel/types';
 const traverse=traverseModule.default||traverseModule,generate=generatorModule.default||generatorModule;
 const digest=value=>createHash('sha256').update(value).digest('hex');
-export function instrumentReducerFieldWrites(source,file,{binding,field,observerName}={}){
+export function instrumentReducerFieldWrites(source,file,{binding,field,observerName,capture='site'}={}){
  const unknown=reason=>({status:'Unknown/Unsupported',code:source,sites:[],unsupported:[reason],fullPath:false,fieldOwnership:'Unknown/Unsupported'});
  if(typeof source!=='string'||Buffer.byteLength(source)>2*1024*1024||typeof file!=='string'||!file||file.length>4096||
   typeof binding!=='string'||!t.isValidIdentifier(binding)||typeof observerName!=='string'||!t.isValidIdentifier(observerName)||observerName==='arguments'||
-  typeof field!=='string'||!field||field.length>128||['__proto__','constructor','prototype'].includes(field))return unknown('Invalid bounded field-site input');
+  !['site','invocation'].includes(capture)||typeof field!=='string'||!field||field.length>128||['__proto__','constructor','prototype'].includes(field))return unknown('Invalid bounded field-site input');
  try{
   const ast=parse(source,{sourceType:'module',plugins:['jsx','typescript']}),candidates=[],sites=[],targets=[];let program,collision=false,dynamicScope=false;
   traverse(ast,{
@@ -25,6 +25,7 @@ export function instrumentReducerFieldWrites(source,file,{binding,field,observer
   if(candidates.length!==1||!candidates[0].constant)return unknown('Unique immutable reducer binding required');
   const b=candidates[0],fn=b.path.isVariableDeclarator()?b.path.get('init'):b.path;
   if(!(fn.isFunctionDeclaration()||fn.isFunctionExpression()||fn.isArrowFunctionExpression())||fn.node.async||fn.node.generator||fn.node.params.length!==2||!fn.node.params.every(p=>t.isIdentifier(p)))return unknown('Two-parameter synchronous reducer required');
+  if(capture==='invocation'&&t.isBlockStatement(fn.node.body)&&fn.node.body.body.some(n=>t.isFunctionDeclaration(n)))return unknown('Body-level function declaration framing unsupported');
   const action=fn.scope.getBinding(fn.node.params[1].name);
   if(!action||!action.constant)return unknown('Immutable action parameter required');
   const sourceDigest=digest(source);let refusal=null;
@@ -46,19 +47,29 @@ export function instrumentReducerFieldWrites(source,file,{binding,field,observer
   }});
   if(refusal||!sites.length)return unknown(refusal||'No eligible original field definition');
   const privateName=base=>{let name;do{name=program.scope.generateUidIdentifier(base);}while(name.name===observerName);return name;};
-  const helper=privateName('stateatomFieldWrite');
-  // The argument is the completed ORIGINAL object expression. The observer gets
-  // that exact object after all initializer effects, and cannot replace its return.
-  // Observer integration is trusted instrumentation, not page-supplied proof.
+  const helper=privateName('stateatomFieldWrite'),event=privateName('stateatomFieldEvent'),frame=privateName('stateatomFieldFrame');
+  // Original completed expression is evaluated once before any bookkeeping call.
   for(const {path,site}of targets.reverse()){
-   path.replaceWith(t.callExpression(t.cloneNode(helper),[t.valueToNode(site),path.node]));
+   const args=capture==='invocation'?[t.cloneNode(frame),t.stringLiteral(site.id),path.node]:[t.valueToNode(site),path.node];
+   path.replaceWith(t.callExpression(t.cloneNode(helper),args));
   }
-  const meta=privateName('metadata'),value=privateName('value');
-  const declaration=t.functionDeclaration(t.cloneNode(helper),[meta,value],t.blockStatement([
-   t.tryStatement(t.blockStatement([t.expressionStatement(t.callExpression(t.identifier(observerName),[t.cloneNode(meta),t.cloneNode(value)]))]),t.catchClause(null,t.blockStatement([]))),
-   t.returnStatement(t.cloneNode(value))
-  ]));
-  ast.program.body.unshift(declaration);
+  const meta=privateName('metadata'),value=privateName('value'),token=privateName('token');
+  if(capture==='invocation'){
+   const kind=privateName('kind'),a=privateName('a'),b=privateName('b'),c=privateName('c');
+   ast.program.body.unshift(t.functionDeclaration(t.cloneNode(event),[kind,a,b,c],t.blockStatement([
+    t.tryStatement(t.blockStatement([t.returnStatement(t.callExpression(t.identifier(observerName),[kind,a,b,c].map(n=>t.cloneNode(n))))]),t.catchClause(null,t.blockStatement([t.returnStatement(t.nullLiteral())])))
+   ])));
+   const body=fn.node.body,statements=t.isBlockStatement(body)?body.body:[t.returnStatement(body)];
+   fn.node.body=t.blockStatement([
+    t.variableDeclaration('const',[t.variableDeclarator(t.cloneNode(frame),t.callExpression(t.cloneNode(event),[t.stringLiteral('enter'),t.identifier(binding),...fn.node.params.map(n=>t.cloneNode(n))]))]),
+    t.tryStatement(t.blockStatement(statements),null,t.blockStatement([t.expressionStatement(t.callExpression(t.cloneNode(event),[t.stringLiteral('exit'),t.cloneNode(frame)]))]))
+   ]);
+   if(t.isBlockStatement(body))fn.node.body.directives=body.directives;
+  }
+  const observerCall=capture==='invocation'?t.callExpression(t.cloneNode(event),[t.stringLiteral('write'),t.cloneNode(token),t.cloneNode(meta),t.cloneNode(value)]):t.callExpression(t.identifier(observerName),[t.cloneNode(meta),t.cloneNode(value)]);
+  ast.program.body.unshift(t.functionDeclaration(t.cloneNode(helper),capture==='invocation'?[token,meta,value]:[meta,value],t.blockStatement([
+   t.tryStatement(t.blockStatement([t.expressionStatement(observerCall)]),t.catchClause(null,t.blockStatement([]))),t.returnStatement(t.cloneNode(value))
+  ])));
   return{status:'Code-linked writer sites',code:generate(ast,{retainLines:true,comments:true},source).code,sites,unsupported:[],fullPath:false,fieldOwnership:'Unknown/Unsupported',scope:'Original completed object-literal field definitions only; outside writes and applied/selected origin remain unproved'};
  }catch{return unknown('Source parsing or field-site transformation unavailable');}
 }

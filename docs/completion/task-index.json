@@ -1676,7 +1676,7 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "254-a02-host-weak-dispatch.md",
+      "execution_record": "286-a02-reducer-invocation-receipts.md",
       "completed_slices": [
         {
           "id": "A02.55",
@@ -3028,7 +3028,7 @@
         "bounded_next_experiment": "A02.9 source-only historical claim description on retained data; no browser/native",
         "experiment_native_executed": false
       },
-      "current_checkpoint": "254-a02-host-weak-dispatch.md",
+      "current_checkpoint": "286-a02-reducer-invocation-receipts.md",
       "stopping_point_history": [
         {
           "invoked": true,
@@ -3061,7 +3061,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "Join original field-creation receipts to exact applied state/row/revision, then finite writer/alias and selected parameter/read/commit admission.285 is compiler-only,283 preserves existing gap; stopping rule not reached.",
+      "next_bounded_step": "Finite writer/alias admission for actual reducer/App/Main/Item/Footer, including original array/callback/props boundaries and complete-code invalidation; then row/parameter/read/commit integration.286 joins call/write identities only; ownership and membership remain Unknown.",
       "reducer_field_write_sites": {
         "record": "285-a02-reducer-field-write-sites.md",
         "status": "complete-source-prerequisite-not-integrated",
@@ -3098,7 +3098,7 @@
         "public_hook_kind": "Unknown/Unsupported",
         "full_A02": false
       },
-      "last_completed_implementation_plan": "../superpowers/plans/2026-10-28-host-weak-dispatch.md",
+      "last_completed_implementation_plan": "../superpowers/plans/2026-10-28-reducer-write-receipts.md",
       "current_checkpoint_history": [
         {
           "record": "147-a02-array-callsite-bridge.md",
@@ -3292,26 +3292,20 @@
         }
       },
       "active_slice": {
-        "id": "A02.55",
-        "record": "254-a02-host-weak-dispatch.md",
-        "status": "closed-bounded-source-only",
-        "source_revision": "d965635",
-        "declared_source_deltas": 1,
-        "changed_call_sites": 2,
-        "new_source_tests": 13,
-        "focused_checks": 95,
-        "full_checks": 5925,
+        "id": "A02.release-invocation-receipts",
+        "record": "286-a02-reducer-invocation-receipts.md",
+        "status": "complete-private-source-runtime-prerequisite",
+        "affected_pass": 82,
+        "full_source_pass": 6095,
         "native_runs": 0,
-        "model_calls": 0,
+        "public_plugin_integrated": false,
         "full_A02": false,
-        "review_pending": false,
         "review": {
           "critical": 0,
-          "important": 0,
-          "minor": 0,
-          "historicalDeferred": 19
-        },
-        "final_checkpoint": ".artifacts/a02/host-weak-dispatch-review/2026-10-28/final-checkpoint.json"
+          "important": 2,
+          "important_fixed": 2,
+          "minor": 0
+        }
       },
       "historical_checkpoint_before_A02_51": {
         "active_slice": {
@@ -3467,6 +3461,32 @@
         "native_runs": 0,
         "product_changes": 0,
         "full_A02": false
+      },
+      "historical_active_before_release_invocation_receipts": {
+        "active_slice": {
+          "id": "A02.55",
+          "record": "254-a02-host-weak-dispatch.md",
+          "status": "closed-bounded-source-only",
+          "source_revision": "d965635",
+          "declared_source_deltas": 1,
+          "changed_call_sites": 2,
+          "new_source_tests": 13,
+          "focused_checks": 95,
+          "full_checks": 5925,
+          "native_runs": 0,
+          "model_calls": 0,
+          "full_A02": false,
+          "review_pending": false,
+          "review": {
+            "critical": 0,
+            "important": 0,
+            "minor": 0,
+            "historicalDeferred": 19
+          },
+          "final_checkpoint": ".artifacts/a02/host-weak-dispatch-review/2026-10-28/final-checkpoint.json"
+        },
+        "current_checkpoint": "254-a02-host-weak-dispatch.md",
+        "execution_record": "254-a02-host-weak-dispatch.md"
       }
     },
     {

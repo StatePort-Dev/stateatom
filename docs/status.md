@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 source/runtime prerequisite:** [invocation receipts286](completion/286-a02-reducer-invocation-receipts.md): exact native call token/source frame/completed result and applied revision inputs; actual retained reducer + synthetic native grammar controls,82affected/full6095PASS. One review0C/2I/0M, both corrected. Private/uninstalled; membership/ownership/selected-read edges remain Unknown. Next finite writer/alias admission across reducer/App/Main/Item/Footer. Full21/29 unchanged.
+
 **Release requirement changed by maintainer:** [macOS installation check287](completion/287-macos-install-check-deferred.md) is deferred to later manual verification and no longer blocks this release. macOS installation remains unverified; Linux/other gates and whole21/29 remain unchanged.
 
 **Latest A02 prerequisite:** [original reducer field-write sites285](completion/285-a02-reducer-field-write-sites.md): captures the original completed object without replaying its initializer. Actual retained reducer/constants and renamed control tested in source harness;119affected/full6067PASS. One review0C/1I/0M corrected. Compiler-only, not installed or complete lineage. Next exact applied-state receipt and finite writer/alias admission; whole21/29 unchanged.
