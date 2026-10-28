@@ -6999,43 +6999,17 @@
         "L02"
       ],
       "active_slice": {
-        "id": "V02.33",
-        "record": "259-v02-current87-original-performance.md",
-        "status": "closed-complete-original-targets-missed",
-        "package": "0.1.0-candidate.20261028.87",
-        "execution_revision": "7e9dca7",
-        "raw_sha256": "2f4af59d22cfd715d5491c840915fc10d25a141095e01ae85405492cca076104",
-        "rows": 198,
-        "warmup_rows": 18,
-        "measured_rows": 180,
-        "active_windows": 66,
-        "bindings": 457,
-        "product_inputs": 327,
-        "reader_negative_controls": 32,
-        "measurement_runs": 1,
-        "first_reader_runs": 1,
-        "remaining_budget": 0,
-        "basic_p95_ms": [
-          398.89999997615814,
-          401
-        ],
-        "active_overhead_percent": [
-          27.22273149,
-          27.35537186
-        ],
-        "active_target_percent": 10,
-        "targets_waived": false,
-        "performance_acceptance": false,
-        "whole_V02_complete": false,
-        "review": {
-          "critical": 0,
-          "important": 0,
-          "minor": 0,
-          "corrections": 0,
-          "rereviews": 0
-        }
+        "id": "V02.34",
+        "record": "269-v02-active-overhead-diagnostic.md",
+        "status": "source-frozen-awaiting-one-owned-worker-profile",
+        "source_checks": 18,
+        "input_bindings": 2025,
+        "native_runs": 0,
+        "maximum_native_runs": 1,
+        "original_gate_repeated": false,
+        "whole_V02_complete": false
       },
-      "execution_record": "259-v02-current87-original-performance.md",
+      "execution_record": "269-v02-active-overhead-diagnostic.md",
       "current_checkpoint": {
         "record": "259-v02-current87-original-performance.md",
         "status": "closed-original-targets-missed",
@@ -8387,7 +8361,7 @@
         }
       ],
       "last_completed_implementation_plan": "../superpowers/plans/2026-10-26-v02-publication-original-performance.md",
-      "implementation_plan": "../superpowers/plans/2026-10-27-v02-ledger-byte-sizing.md",
+      "implementation_plan": "../superpowers/plans/2026-10-28-v02-owned-worker-profile.md",
       "historical_execution_record_before_open_gates_assessment": "136-v02-performance-domain-cost.md",
       "historical_checkpoint_before_V02_21": {
         "record": "207-v02-current80-original-performance.md",
@@ -8529,7 +8503,46 @@
         "performance_acceptance": false,
         "whole_V02_complete": false
       },
-      "historical_next_bounded_step_before_V02_34": "ONE read-only L02.28retained browser identity/current primary platform requirements/provider eligibility check. No blind closed19/20/install/model/CA/prompt/corpus retry or new provider/UI/SDK/device verdict."
+      "historical_next_bounded_step_before_V02_34": "ONE read-only L02.28retained browser identity/current primary platform requirements/provider eligibility check. No blind closed19/20/install/model/CA/prompt/corpus retry or new provider/UI/SDK/device verdict.",
+      "historical_active_before_V02_34": {
+        "id": "V02.33",
+        "record": "259-v02-current87-original-performance.md",
+        "status": "closed-complete-original-targets-missed",
+        "package": "0.1.0-candidate.20261028.87",
+        "execution_revision": "7e9dca7",
+        "raw_sha256": "2f4af59d22cfd715d5491c840915fc10d25a141095e01ae85405492cca076104",
+        "rows": 198,
+        "warmup_rows": 18,
+        "measured_rows": 180,
+        "active_windows": 66,
+        "bindings": 457,
+        "product_inputs": 327,
+        "reader_negative_controls": 32,
+        "measurement_runs": 1,
+        "first_reader_runs": 1,
+        "remaining_budget": 0,
+        "basic_p95_ms": [
+          398.89999997615814,
+          401
+        ],
+        "active_overhead_percent": [
+          27.22273149,
+          27.35537186
+        ],
+        "active_target_percent": 10,
+        "targets_waived": false,
+        "performance_acceptance": false,
+        "whole_V02_complete": false,
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 0,
+          "corrections": 0,
+          "rereviews": 0
+        }
+      },
+      "historical_execution_before_V02_34": "259-v02-current87-original-performance.md",
+      "original_current_performance_gate": "259-v02-current87-original-performance.md"
     },
     {
       "id": "V03",
@@ -10130,7 +10143,7 @@
       "next_bounded_step": "I01 exact local-file policy/install then current host guardian/lifecycle adaptation; separate scope already authorized.",
       "next_task": "A02"
     },
-    "document": "268-l02-official-warm-lifecycle.md",
+    "document": "269-v02-active-overhead-diagnostic.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-27",
     "current_increment": "L02.35 closed: real product cancel/stale/fresh UI3controls, source52/full6005PASS, one verifier/one review0C0I2M; fullL02 stillopen.",
@@ -13159,7 +13172,7 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "ONE V02.34 bounded current-runtime active-overhead diagnostic: establish eligible owned profiling mechanism, freeze exact inputs, max1diagnostic collection. Original87gate MISS10%/closed1measurement1FIRSTreader untouched; no guessed cause/speedup/retune/CA/model/SDK/publication.",
+    "current_activity_note": "V02.34 source18PASS/frozen2025bindings; ONE own-worker-only sample collection pending cleancommit. Current88/Google156/HTTP diagnostic differs from original87gate; no original threshold or old budget changed.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "9938645807d06171be7b5afaba415235a6754c4b",
     "current_record_date": "2026-10-28",
