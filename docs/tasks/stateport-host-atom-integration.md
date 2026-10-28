@@ -1,15 +1,16 @@
 # Intake current Atom/UI into the official StatePort host
 
-**Current execution, October28:** official host remains exact87/UI2 at81bec06e,
-[I02.37](../completion/258-i02-current87-host-refresh.md) intake/retention10 scoped.
-[Local88 prerequisite](../completion/265-l02-current88-local-package.md) is now
-qualified from clean20eccd8: Atom88f132a0736364a08de5715d54d84fc92831bfde57b019a4ade8b4318081f434ec,
+**Current execution, October28:** official88/UI2 intake/model-smoke source28c56312,
+report closeoutb9b6e23d; [I02.38](../completion/266-i02-current88-cold-initialization.md)
+actual compiledUI digest, one initialized model/validated template-equivalent output,
+7scopedchecks/1306stable/owncleanup. Exact Atom88f132a0736364a08de5715d54d84fc92831bfde57b019a4ade8b4318081f434ec,
 UI2same2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5.
-Dated handoff .artifacts/atom/2026-10-28T00-37-29-101Z/atom-handoff.json.
-Next ONE [I02.38](../completion/266-i02-current88-cold-initialization.md) exact
-official88intake/affected cold regression; original87download85%/120s timeout stays
-literal, not ready/useful-model proof. Full21/29, no SDK/publication. Separate
-authorized local host scope persists; no new Live/F05/handoff policy implied.
+Handoff .artifacts/atom/2026-10-28T00-37-29-101Z/atom-handoff.json; clean20eccd8.
+No fullI02/L02/usefulness/normal-install/release acceptance. Original87cold timeout
+remains literal; minor rawfalse status-change flag retained with separate posthoc
+UI timing, no causal/perf claim. Full21/29, no SDK/publication. Next one
+[L02.34](../completion/267-l02-official-context-comparison-pilot.md) experimentalv2
+pilot on proven cached context; no automatic product selection or new host design.
 
 ## Historical current85 pointer
 

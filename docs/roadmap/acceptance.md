@@ -36,9 +36,13 @@ cold300s option/original warm+inference120s,99focused/5986full/1199protected/
 ONEreview0C0I0M; native/model0, immutable87unchanged.
 [L02.33](../completion/265-l02-current88-local-package.md) closed local unique88/UI2:
 270source/327build/31+44payload/type2/admission9, runtime/worker/style exact87;
-native/model0. Next [I02.38](../completion/266-i02-current88-cold-initialization.md)
-official88intake and separately frozen affected cold regression; no31partial cache
-resume, oldcase/corpus retry or publication. Old84MISS/32INCOMPLETE remain.
+native/model0. [I02.38](../completion/266-i02-current88-cold-initialization.md) closed
+actual official88model initialization/one validated template-equivalent output;7checks/
+1306stable/compiledUIdigest/owncleanup. C0I0M1rawflagfalse retained/posthocUI interval
+157.707s separate; no API/perf/usefulness/normal-install/fullI02/L02 credit. Next
+[L02.34](../completion/267-l02-official-context-comparison-pilot.md) bounded existingv2
+pilot on proven cached context, unchanged corpus/prompts/criteria, no closed19/20
+loader retry or product provider selection. Old84MISS/32INCOMPLETE remain.
 Historical entries retain scope.
 
 Current approved-scope execution is tracked in [completion status](../status.md)

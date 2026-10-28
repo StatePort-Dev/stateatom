@@ -69,3 +69,43 @@ SHAba9344a6261a08101f120fcfb6be0679c5f9b0116e95bd74400db6b7b18b77b2 remains
 failed initialization; newsource regression cannot rewrite it or establish causal
 download speedup/10%performance acceptance. Real model output/ready/useful remain
 unverified until the single next actual observation.
+
+## Closed — one actual initialized model and validated product sentence
+
+Native root source **9938645807d06171be7b5afaba415235a6754c4b**, clean; measured
+host source **28c563126cca0c5cfa55e78a28f510988c177db1**, clean. Host source/package
+and native report closeout **b9b6e23d** changes reports only. Sole raw
+`.artifacts/i02/current88/cold-initialization/2026-10-28/native/results.json`, SHA
+`35734ddf1cb504e5a0f946ba80ff4449c10a8256f82fe3cc833ba34045663ff7`.
+Literal OBSERVED_GROUNDED_MODEL_SMOKE_NOT_USEFULNESS, CLIexit0/seven scoped checks.
+Budget1used/0remaining, no retry.
+
+Actual own-extension compiled UI SHA
+`434f133a3a0acaa7dab5ac6e48f14aa804b8cb6a5093362b54d4594b68c37ceb` matches dist;
+own-document Debugger disabled before app creation. Real model preparation followed
+trusted opt-in/one enabled Explain: Generating UI157825.117ms, validated model result
+162380.813ms. Returned sentence equals recorded template. One initialized-model/
+strict-output smoke on this device/context, not useful additional meaning, agreed
+corpus quality, normal installation or fullI02/L02 acceptance. Native invocation
+counters remain uncollected; source-path maxima are not measured calls.
+
+Readonly/template/app counters0, optout/fresh Basic/detach and driver/control/browser/
+desktop/server closes PASS; recorded PID absent/errors[]. No global process-tree/
+heap claim. All1306bindings/full36dist/original434profilefiles3links unchanged.
+New cached owned profile/raw retained; partial31cache unused. Existing source99/
+full5986 and local package2type/9admission proof retain separate scopes.
+
+Scoped executor post-review **C0/I0/M1**, per host risk policy, no automatic agent
+review. Minor informational flag scans only changed Downloading texts after120s:
+constant90% from101.610s to157.825s left original rawfalse. Raw/driver/case unchanged;
+no classifier retune or native rerun. Clearly separate posthoc-ui-timing.json derives
+firstDownloading→Generating **157707.062ms UI interval**; no exact API latency, p95
+or causal download speedup claim. This flag is not the validated model-output gate.
+
+Old87source/120s timeout stays literal; new300s cold policy observed on exact88,
+without lowering original warm/inference/quality/performance targets. Model build
+identity/normal guide or Store installation/human usability not established here.
+Full **21/29 (72.41%)**, eight open and mandatoryL02/useful-quality gap remain.
+One next **L02.34** in267: separately bounded existingv2comparison evaluation on
+this newly proven cached official context, original prompts/corpus/criteria retained;
+no product provider switch or closed19/20 installation/corpus rerun.
