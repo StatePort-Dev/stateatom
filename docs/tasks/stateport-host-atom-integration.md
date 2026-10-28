@@ -1,5 +1,18 @@
 # Intake current Atom/UI into the official StatePort host
 
+**Current execution, October28:** official host remains exact87/UI2 at81bec06e,
+[I02.37](../completion/258-i02-current87-host-refresh.md) intake/retention10 scoped.
+[Local88 prerequisite](../completion/265-l02-current88-local-package.md) is now
+qualified from clean20eccd8: Atom88f132a0736364a08de5715d54d84fc92831bfde57b019a4ade8b4318081f434ec,
+UI2same2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5.
+Dated handoff .artifacts/atom/2026-10-28T00-37-29-101Z/atom-handoff.json.
+Next ONE [I02.38](../completion/266-i02-current88-cold-initialization.md) exact
+official88intake/affected cold regression; original87download85%/120s timeout stays
+literal, not ready/useful-model proof. Full21/29, no SDK/publication. Separate
+authorized local host scope persists; no new Live/F05/handoff policy implied.
+
+## Historical current85 pointer
+
 **Current execution, October27:** [I01 accepted](../completion/226-i01-current82-official-host.md),
 then83intake/canonical Capture and [bounded exact85 official host](../completion/242-i02-current85-host-refresh.md)
 at **1bad6331**. Current Atom `0.1.0-candidate.20261027.85` SHA256
