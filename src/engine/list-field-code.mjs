@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Reuse only the existing complete code-history predicate and native provisioning
 // witness, never the React18/Query source/effect or occurrence proof.
+import {joinListFieldObservations} from './list-field-join.mjs';
 import {checkFirstReadCode} from '../first-read/verify.mjs';
 import {isOwnedControlledBrowserWitness,controlledBrowserView} from '../first-read/controlled-session.mjs';
 import {listFieldEffectsView,validateListFieldEffects} from './list-field-effects.mjs';
@@ -39,4 +40,22 @@ export async function inspectListFieldCodeContext(capability,{code,run}={}){
  const finalNative=await controlledBrowserView(c.witness);
  if(!sameContext(current,finalNative)){contexts.delete(capability);return unknown('Native frame/context changed during code verification')}
  return result;
+}
+
+// Called only by the authenticated extension/helper path. This records the
+// inspection's original occurrence; it does not promise a perpetually live view.
+export async function verifyListFieldSelection(capability,{trace,selection,code,run}={}){
+ const c=contexts.get(capability);if(!c)return unknown('No owned list code context');
+ const interval=await inspectListFieldCodeContext(capability,{code,run});
+ if(interval.status!=='Conditional list code interval')return interval;
+ const joined=joinListFieldObservations({manifest:c.compilation.manifest,trace,selection});
+ if(joined.status!=='Conditional selected list join')return joined;
+ const source=listFieldEffectsView(c.effects);if(source.status!=='Code-linked')return unknown('Source effect capability revoked');
+ return{schema:'stateatom.selected-list-profile/1',status:'Supported finite trace',fullPath:true,field:joined.field,page:joined.page,freshness:'Recorded',observedAt:selection.observedAt,
+  fieldOwnership:'Code-linked for the recorded write-to-read interval',chain:joined.chain,
+  sourceProof:{status:'Code-linked',profile:source.profile,digest:source.proofDigest,manifestDigest:source.manifestDigest,bundleDigest:source.bundleDigest,scope:source.scope},
+  occurrence:{status:'Observed',joins:joined.joins,scope:'Original acquired write, transfer, read and selected commit at this inspection'},
+  code:{status:'Code-linked',journalId:interval.journalId,generation:interval.generation,frame:interval.frame,contextUniqueId:interval.contextUniqueId,witnessId:interval.witnessId,scope:interval.scope},
+  scope:'Original reducer field creation to the captured selected committed text, under the finite reviewed source/effect and acquired code/DOM interval. Instrumented-page observations, not native invocation attestation.',
+  limits:['Describes the captured inspection, not subsequent renders; re-inspect for a new revision.','No keystroke, HTTP/query or arbitrary application/field ownership claim.','Unknown code, source drift, missing references, changed selected text and unsupported native histories deny current authority.']};
 }

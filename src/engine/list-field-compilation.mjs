@@ -7,7 +7,7 @@ import {prepareListFieldProgram,bindListFieldModule} from './list-field-program.
 import {transformPinnedFieldVendor} from './react19-field-vendor.mjs';
 const sha=s=>createHash('sha256').update(s).digest('hex'),issued=new WeakMap(),LIMIT=2*1024*1024;
 const runtimeId='stateatom:owned-list-runtime';
-const LIST_BUILDER_PIN = 'c88f3d6be2a4af31429ca47ec5d054c5cd0529cff50652357715e301430db7d6';
+const LIST_BUILDER_PIN = '273fba5a84fbf74184eecb8d2ca00f7286fdad8da267da0f627eee0356e4a7a4';
 const LIST_RECIPE_PINS={
  "src/engine/react19-devtools-checks.mjs": "7bbe515a78d1313e75d8538a5909c6ac0684851fe447dad90dfdffe30ef39894",
  "src/engine/list-field-program.mjs": "89025f8d8f634e803979911744455441e45156c5540220c31d43c9c1853d738f",
@@ -56,7 +56,7 @@ export async function buildListFieldCompilation({projectRoot=process.cwd(),appRo
  const js=result.outputFiles.filter(f=>f.path.endsWith('.js'));if(js.length!==1||js[0].contents.length>LIMIT)throw Error('One bounded closed JavaScript bundle required');
  const code=js[0].text,assets=result.outputFiles.filter(f=>!f.path.endsWith('.js')).map(f=>{if(!f.path.endsWith('.css')||f.contents.length>LIMIT)throw Error('Unsupported compiled asset');return{kind:'css',name:path.basename(f.path),code:f.text,digest:sha(f.contents),bytes:f.contents.length}});
  await tools.confirm([...records.values()]);
- const manifest={schema:'stateatom.list-field-compilation/1',programDigest:program.digest,bundle:{digest:sha(code),bytes:Buffer.byteLength(code)},assets:assets.map(({code,...meta})=>meta),cssReferences,compiler:{name:'esbuild',version:tools.version,options,...tools.compiler,externalImports:0},trust:{recipe:{builder:LIST_BUILDER_PIN,transforms:LIST_RECIPE_PINS},files:[...tools.files,...recipeRecords]},inputs:[...inputs.values()].sort((a,b)=>a.file.localeCompare(b.file)),scope:'Helper-owned compiled bytes only; source/native effects, complete browser journal and selected occurrence remain separate'};
+ const manifest={schema:'stateatom.list-field-compilation/1',programDigest:program.digest,program:{digest:program.digest,appRoot,root,field,modules:program.modules.map(({code,observers,...module})=>module)},bundle:{digest:sha(code),bytes:Buffer.byteLength(code)},assets:assets.map(({code,...meta})=>meta),cssReferences,compiler:{name:'esbuild',version:tools.version,options,...tools.compiler,externalImports:0},trust:{recipe:{builder:LIST_BUILDER_PIN,transforms:LIST_RECIPE_PINS},files:[...tools.files,...recipeRecords]},inputs:[...inputs.values()].sort((a,b)=>a.file.localeCompare(b.file)),scope:'Helper-owned compiled bytes only; source/native effects, complete browser journal and selected occurrence remain separate'};
  manifest.digest=sha(JSON.stringify(manifest));if(Buffer.byteLength(JSON.stringify(manifest))>256*1024)throw Error('Compilation metadata budget exceeded');
  const value=freeze({code,assets,manifest,fieldOwnership:'Unknown/Unsupported',fullPath:false,publicProduct:false});issued.set(value,()=>tools.confirm([...records.values()]));return value;
 }
