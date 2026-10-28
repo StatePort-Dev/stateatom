@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+- Show a useful recovery message when a CSS selector cannot be queried or an
+  injected selection result is missing. Distinguish an inaccessible/missing target;
+  retain selection/context guards and allow a fresh selection without reattaching.
+
 ## 0.1.0-candidate.20261028.90
 
 - Complete tab-list refresh status in the resulting selection context when the

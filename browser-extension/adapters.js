@@ -2,7 +2,8 @@
 // Only observations, untrusted data; no bridge credentials and no RPC exposure.
 export function observeElement(selector,framework=true){
  const find=s=>s.split(' >>> ').reduce((root,part,i)=>i?root?.shadowRoot?.querySelector(part):document.querySelector(part),null);
- const el=find(selector);if(!el)return {selector,unsupported:'element unavailable (closed root / removed node)'};
+ let el;try{el=find(selector);}catch{return {selector,unsupported:'Could not use this CSS selector. Check it or use Pick element.'};}
+ if(!el)return {selector,unsupported:'No accessible element matches this selector. Check it or pick an element again.'};
  const owners=[],runtime={},markers=[];let n=el;
  for(let level=0;n&&framework&&level<8;level++,n=n.parentElement){
   const marker=n.getAttribute('data-xray-source');if(marker)markers.push(marker);

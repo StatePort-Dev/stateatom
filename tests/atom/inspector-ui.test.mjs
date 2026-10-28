@@ -286,3 +286,13 @@ test('refresh after selected tab disappears settles the empty context without se
  try{await f.view.ready;assert.equal(f.$('tabs').value,'1');removed=true;await f.$('refresh-tabs').onclick();await tick();assert.equal(f.$('tabs').value,'');assert.doesNotMatch(f.$('selected').textContent,/#target-1|#target-2/);assert.equal(f.$('status').textContent,'OK');}
  finally{await f.view.dispose();}
 });
+
+test('manual selector failure is readable, releases pending work and accepts a fresh selection',async()=>{
+ const message='Could not use this CSS selector. Check it or use Pick element.';let selected=true,fail=true,f;
+ f=fixture(m=>{if(m.op==='inspect-selector'){selected=!fail;if(fail)throw Error(message);return{};}if(m.op==='state')return selected?f.state(m.tabId):{...f.state(m.tabId),selection:null,analysis:null};});
+ try{await f.view.ready;f.$('selector').value='[';await f.$('inspect-selector').onclick();assert.equal(f.$('status').textContent,'Error: '+message);assert.doesNotMatch(f.$('selected').textContent,/#target-1/);fail=false;f.$('selector').value='#target-1';await f.$('inspect-selector').onclick();assert.equal(f.$('status').textContent,'OK');assert.match(f.$('selected').textContent,/#target-1/);}finally{await f.view.dispose();}
+});
+test('late manual selector error cannot replace a different tab status or selection',async()=>{
+ const pending=deferred(),f=fixture(m=>m.op==='inspect-selector'?pending.promise:undefined);
+ try{await f.view.ready;f.$('selector').value='[';const selecting=f.$('inspect-selector').onclick();await tick();f.$('tabs').value='2';await f.$('tabs').onchange();pending.resolve(Promise.reject(Error('Could not use this CSS selector. Check it or use Pick element.')));await selecting;assert.equal(f.$('status').textContent,'OK');assert.match(f.$('selected').textContent,/#target-2/);}finally{await f.view.dispose();}
+});

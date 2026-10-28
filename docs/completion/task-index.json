@@ -1331,8 +1331,23 @@
         "npm run verify:embedding"
       ],
       "deliverable": "Reference and approved new interactions tied to actual runtime states, checked in both hosts without a mandatory second person",
-      "status": "planned",
-      "optional": false
+      "status": "in-progress",
+      "optional": false,
+      "selector_recovery": {
+        "record": "284-u04-selector-error-recovery.md",
+        "status": "source-fix-verified-not-packaged",
+        "affected_checks": 82,
+        "full_source_checks": 6043,
+        "source_rendered_browser_checks": 10,
+        "packaged_native_runs": 0,
+        "whole_U04": false,
+        "review": {
+          "critical": 0,
+          "important": 0,
+          "minor": 1,
+          "minor_disposition": "deferred copy label alignment"
+        }
+      }
     },
     {
       "id": "U05",
@@ -10404,7 +10419,7 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-28",
     "current_increment": "Maintainer accepts recorded Active overhead for release; documentation only, no new measurement or whole task acceptance.",
-    "next_item": "U04",
+    "next_item": "A02",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -10429,7 +10444,7 @@
       "I01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "U04",
+    "active_item": "A02",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -13429,11 +13444,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "282 approved;283 source35PASS shows existing collector insufficiency only. Bounded A02 admission remains unresolved, not exhausted. Independent U04 error correction scheduled.",
+    "current_activity_note": "U04 selector error source fix:82affected/full6043/source-rendered10PASS, review0C0I1M; not packaged/official yet. A02 bounded admission in progress; overhead exception281 retained.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "cccc90f",
     "current_record_date": "2026-10-28",
-    "next_bounded_step": "Independent U04 invalid-selector correction, then finite A02 writer/escape-path admission assessment; no old native retry.",
+    "next_bounded_step": "Finite A02 title writer/escape-path admission and explicit supported source forms; current ancestor collector alone is insufficient283. U04 source fix284 awaits final candidate packaging.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -13655,5 +13670,5 @@
       "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278–280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
     }
   },
-  "next_task": "U04"
+  "next_task": "A02"
 }

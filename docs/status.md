@@ -1,5 +1,7 @@
 # Project status
 
+**Latest source increment:** [U04 selector error recovery284](completion/284-u04-selector-error-recovery.md):82affected/full6043 and source-rendered Chromium10 checks PASS, one review0C0I1M (copy label deferred). Helpful lookup/missing-result messages; no layout/permission change. Unpackaged, official90 unchanged. Next A02 finite writer/escape admission; whole21/29 unchanged.
+
 **Current autonomous execution:** A02 scenario282 approved. [Writer-admission check283](completion/283-a02-title-writer-admission.md):35 source checks PASS; required alias-writer exclusion and selected parameter/read/commit mechanism still missing. Bounded writer/escape-path admission remains to assess; stopping rule not reached. Independent U04 invalid-selector correction next; full21/29 unchanged.
 
 **A02 scenario selected, 28 October:** [edited list-item title](completion/282-a02-first-release-scenario.md), ordinary React local state through props to selected label. Same-value/wrong-row/alias and real packaged UI evidence required; writer ownership remains an unresolved mechanism gate. Specification only, A02 open/21of29 unchanged. Next ONE source-only writer/parameter/commit feasibility item.
