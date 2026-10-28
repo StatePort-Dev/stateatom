@@ -1,6 +1,14 @@
 # Intake current Atom/UI into the official StatePort host
 
-**Current execution, October28:** official88/UI2 intake/model-smoke source28c56312,
+**Current execution, October28:** [I02.39](../completion/273-i02-current89-host-refresh.md)
+official89/UI2 source79093c0c; offline1290/build/types/package9/source73PASS. ONE
+native10 (9original owned reporter steps),333inputs/full36dist unchanged. Only
+BUILD-INFO/service-worker differ88; all oldvendor/history preserved. No fullI02.
+Next ONE I02.40 current89 worker-only lifecycle suffix; no model/TLS/SDK/publication.
+
+## Historical88 model checkpoint
+
+Official88/UI2 intake/model-smoke source28c56312,
 report closeoutb9b6e23d; [I02.38](../completion/266-i02-current88-cold-initialization.md)
 actual compiledUI digest, one initialized model/validated template-equivalent output,
 7scopedchecks/1306stable/owncleanup. Exact Atom88f132a0736364a08de5715d54d84fc92831bfde57b019a4ade8b4318081f434ec,

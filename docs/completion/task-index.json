@@ -6760,6 +6760,20 @@
           "fresh86Capture": false,
           "fresh86Performance": false,
           "full_I02_accepted": false
+        },
+        "official89_refresh": {
+          "revision": "21b2c9fb",
+          "native_source_revision": "79093c0c51ccacfcaaefa454e8ec43239a07e77a",
+          "record": "273-i02-current89-host-refresh.md",
+          "package": "0.1.0-candidate.20261028.89",
+          "package_sha256": "57f0f40b02a15935897a3488474ac7d405b36c7fc4c66b7e7d1302952bbd2890",
+          "native_checks": 10,
+          "original_workflow_checks": 9,
+          "source_checks": 73,
+          "package_checks": 9,
+          "registered_inputs": 333,
+          "fresh_model_qualified": false,
+          "full_I02_accepted": false
         }
       },
       "existing_implementation": {
@@ -6773,8 +6787,8 @@
         "host_modified": false,
         "meaning": "Existing source integration/old-pair native evidence credited; current exact pair update/acceptance remains open"
       },
-      "execution_record": "266-i02-current88-cold-initialization.md",
-      "next_bounded_step": "ONE V02.34 bounded current-runtime active-overhead diagnostic: establish eligible owned profiling mechanism, freeze exact inputs, max1diagnostic collection. Original87gate MISS10%/closed1measurement1FIRSTreader untouched; no guessed cause/speedup/retune/CA/model/SDK/publication.",
+      "execution_record": "273-i02-current89-host-refresh.md",
+      "next_bounded_step": "ONE I02.40 exact89 worker-only interrupted-observation suffix; changed publisher persistence. Preserve original epoch/no-adoption/historical/unknown-end/read-delete predicates. Historical85inspector-loss remains historical, no combined wholePASS/model/TLS/performance rerun/SDK/publication.",
       "completed_slices": [
         {
           "id": "I02.38",
@@ -6816,7 +6830,7 @@
           "performance_acceptance": false
         }
       ],
-      "current_checkpoint": "266-i02-current88-cold-initialization.md"
+      "current_checkpoint": "273-i02-current89-host-refresh.md"
     },
     {
       "id": "I03",
@@ -10220,16 +10234,17 @@
       "whole_V03": false
     },
     "current_host_checkpoint": {
-      "revision": "b9b6e23d",
-      "native_source_revision": "28c563126cca0c5cfa55e78a28f510988c177db1",
-      "record": "266-i02-current88-cold-initialization.md",
-      "package": "0.1.0-candidate.20261028.88",
-      "package_sha256": "f132a0736364a08de5715d54d84fc92831bfde57b019a4ade8b4318081f434ec",
-      "native_checks": 7,
-      "model_initialized_validated_output_observed": true,
-      "model_text_equals_template": true,
-      "native_api_counters_collected": false,
-      "usefulness_qualified": false,
+      "revision": "21b2c9fb",
+      "native_source_revision": "79093c0c51ccacfcaaefa454e8ec43239a07e77a",
+      "record": "273-i02-current89-host-refresh.md",
+      "package": "0.1.0-candidate.20261028.89",
+      "package_sha256": "57f0f40b02a15935897a3488474ac7d405b36c7fc4c66b7e7d1302952bbd2890",
+      "native_checks": 10,
+      "original_workflow_checks": 9,
+      "source_checks": 73,
+      "package_checks": 9,
+      "registered_inputs": 333,
+      "fresh_model_qualified": false,
       "full_I02_accepted": false
     },
     "historical_active_pointer_before_I02_current82": {
@@ -10250,11 +10265,11 @@
       "next_bounded_step": "I01 exact local-file policy/install then current host guardian/lifecycle adaptation; separate scope already authorized.",
       "next_task": "A02"
     },
-    "document": "272-v02-current89-original-performance.md",
+    "document": "273-i02-current89-host-refresh.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-28",
-    "current_increment": "V02.37 ONE complete89 gate/reader;198rows66windows; BasicPASS/Active10.7174/27.3187%MISS10%; original budgets0, no waiver/fullV02.",
-    "next_item": "I02.39",
+    "current_increment": "I02.39 exactofficial89 intake/package9/source73/ONE native10 (9original reporter)PASS;333inputs/dist36stable; no fullI02/model/perf upgrade.",
+    "next_item": "I02.40",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -10279,7 +10294,7 @@
       "I01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "I02.39",
+    "active_item": "I02.40",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -13279,11 +13294,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Frozen89 original gate462bindings/300caseinputs/currentbackend13/type2/admission9/source14/readercontrols32; pendingONEmeasurement after cleancommit. Historical87retention10 not relabelled; original10%target unchanged.",
+    "current_activity_note": "Currentofficial89 reporter closes scoped source/native; historical88model and original89ActiveMISS retained. Next ONE worker-only lifecycle suffix.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "9938645807d06171be7b5afaba415235a6754c4b",
     "current_record_date": "2026-10-28",
-    "next_bounded_step": "ONE I02.39 exact local official89/UI2 intake and affected existing owned reporter workflow. Preserve88/model/history, original89ActiveMISS10.7174/27.3187%, budgets0. No model/TLS/fullCapture/SDK/publication/fullI02 claim.",
+    "next_bounded_step": "ONE I02.40 exact89 worker-only interrupted-observation suffix; changed publisher persistence. Preserve original epoch/no-adoption/historical/unknown-end/read-delete predicates. Historical85inspector-loss remains historical, no combined wholePASS/model/TLS/performance rerun/SDK/publication.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -13427,6 +13442,19 @@
       "producer": "fdc8ec23355403804c61db50305c02544b308b21",
       "native_qualified": false,
       "official_host_still": "0.1.0-candidate.20261028.88"
+    },
+    "historical_host_checkpoint_before_I02_39": {
+      "revision": "b9b6e23d",
+      "native_source_revision": "28c563126cca0c5cfa55e78a28f510988c177db1",
+      "record": "266-i02-current88-cold-initialization.md",
+      "package": "0.1.0-candidate.20261028.88",
+      "package_sha256": "f132a0736364a08de5715d54d84fc92831bfde57b019a4ade8b4318081f434ec",
+      "native_checks": 7,
+      "model_initialized_validated_output_observed": true,
+      "model_text_equals_template": true,
+      "native_api_counters_collected": false,
+      "usefulness_qualified": false,
+      "full_I02_accepted": false
     }
   },
   "next_task": "V02"

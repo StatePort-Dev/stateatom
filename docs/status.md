@@ -1,12 +1,14 @@
 # Project status
 
-**Current checkpoint, October28:** official88/UI2 hostb9b6e23d; local89 exact.
+**Current checkpoint, October28:** official89/UI2 host79093c0c, local89 exact.
 21/29 whole tasks complete (72.41%). [V02.37](completion/272-v02-current89-original-performance.md)
 closed ONE original gate/reader:198rows/66windows, Basic399.1/416.5ms PASS1s,
 Active10.71737255/27.31871841% MISS10%. Original criteria and old87MISS retained;
 no retune/waiver/fullV02 credit. Reviewed publisher source77/full6020PASS.
 Model initialization/warm lifecycle technically passed on88; v2quality4scoped/6reject
-remains unaccepted. Next ONE I02.39 exact89 official intake/affected reporter.
+remains unaccepted. I02.39 exact89 official intake closes offline1290/build/types/package9/source73 and
+ONE native10checks (9original reporter steps),333inputs/full36dist stable.
+Next ONE I02.40 exact89 worker-only interrupted observation.
 No publication/SDK.
 
 The scoped increments below retain their original artifact/revision boundaries.
