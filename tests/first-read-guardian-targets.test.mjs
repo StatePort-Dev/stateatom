@@ -4,7 +4,7 @@ import test from 'node:test';import assert from 'node:assert/strict';import {mkd
 import {acquireGuardianTargets} from '../src/first-read/guardian-targets.mjs';
 test('guardian native acquisition binds exact original script, sole parented worker and cleans child session',async t=>{
  const base=await mkdtemp('/tmp/list-guardian-code-');t.after(()=>rm(base,{recursive:true,force:true}));await writeFile(base+'/atom-guardian-worker.js','void 0;');
- for(const mode of ['valid','changed-bytes','other-script','second-script','wrong-parent','missing-document','script-failed']){
+ for(const mode of ['valid','valid-flat','changed-bytes','other-script','second-script','wrong-parent','missing-document','script-failed']){
   const extensionId='a'.repeat(32),origin='chrome-extension://'+extensionId,documentURL=origin+'/atom-guardian.html',workerURL=origin+'/atom-guardian-worker.js';let detached=false;
   const cdp=new EventEmitter(),worker={targetId:'worker',type:'worker',url:'',parentId:mode==='wrong-parent'?'app':'doc',parentFrameId:'doc'};
   cdp.send=async(method,p)=>{
@@ -18,8 +18,9 @@ test('guardian native acquisition binds exact original script, sole parented wor
     emit({id:message.id,result:message.method==='Debugger.getScriptSource'?{scriptSource:mode==='changed-bytes'?'void 1;':'void 0;'}:{}});return{};
    }throw Error('Unexpected native command');
   };
+  if(mode==='valid-flat'){const child=new EventEmitter();child.send=async method=>{if(method==='Debugger.enable')child.emit('Debugger.scriptParsed',{scriptId:'source',url:workerURL});return method==='Debugger.getScriptSource'?{scriptSource:'void 0;'}:{};};child.detach=async()=>{detached=true;};cdp.session=async id=>{assert.equal(id,'worker');return child;};}
   const invoke=()=>acquireGuardianTargets({cdp,base,extensionId,extensionWorker:{evaluate:async()=>mode==='missing-document'?[]:[{contextType:'OFFSCREEN_DOCUMENT',documentUrl:documentURL}]}});
-  if(mode==='valid'){const result=await invoke();assert.equal(result.workerId,'worker');assert.equal(result.workerTargetURL,'');assert.equal(result.scriptDigest.length,64);}else await assert.rejects(invoke(),/Guardian|guardian/);
+  if(mode==='valid'||mode==='valid-flat'){const result=await invoke();assert.equal(result.workerId,'worker');assert.equal(result.workerTargetURL,'');assert.equal(result.scriptDigest.length,64);}else await assert.rejects(invoke(),/Guardian|guardian/);
   assert.equal(cdp.listenerCount('Target.receivedMessageFromTarget'),0);assert.equal(detached,!['wrong-parent','missing-document'].includes(mode));
  }
 });

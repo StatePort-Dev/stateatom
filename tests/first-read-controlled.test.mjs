@@ -108,3 +108,11 @@ test('terminal cleanup independently aborts failed releases without recursive st
 });
 
 test('unsupported app profile is rejected before native startup with preserved local cause',async()=>{const {launchControlledFirstReadBrowser}=await import('../src/first-read/controlled-session.mjs');await assert.rejects(launchControlledFirstReadBrowser({appProfile:'arbitrary'}),e=>e.message==='Controlled first-read browser initialization failed'&&e.cause?.message==='Launch options denied');});
+
+test('native inventory acquires discovered browser UI explicitly without omitting any producer',async()=>{
+ const {readFile}=await import('node:fs/promises'),source=await readFile(new URL('../src/first-read/controlled-session.mjs',import.meta.url),'utf8'),{nativeInventory}=await import('data:text/javascript;base64,'+Buffer.from(source+'\nexport {nativeInventory};').toString('base64'));
+ const calls=[],app={targetId:'app',type:'page'},toolbar={targetId:'toolbar',type:'browser_ui'},history={diagnostic:()=>({roles:[{id:'app',role:'app'},{id:'toolbar',role:'ui'}]})};
+ const cdp={send:async(method,p)=>{calls.push({method,p});return method==='Target.getTargets'?{targetInfos:[app]}:{targetInfo:toolbar};}};
+ assert.deepEqual((await nativeInventory(cdp,history)).targetInfos,[app,toolbar]);assert.equal(calls[1].p.targetId,'toolbar');
+ await assert.rejects(nativeInventory({send:async method=>method==='Target.getTargets'?{targetInfos:[app]}:{targetInfo:{...toolbar,type:'worker'}}},history),/Native UI target/);
+});
