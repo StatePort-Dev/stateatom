@@ -8,7 +8,7 @@ import generatorModule from '@babel/generator';
 import * as t from '@babel/types';
 const traverse=traverseModule.default||traverseModule,generate=generatorModule.default||generatorModule;
 const digest=value=>createHash('sha256').update(value).digest('hex');
-export function instrumentReducerFieldWrites(source,file,{binding,field,observerName,capture='site'}={}){
+export function instrumentReducerFieldWrites(source,file,{binding,field,observerName,capture='site',includeAst=false}={}){
  const unknown=reason=>({status:'Unknown/Unsupported',code:source,sites:[],unsupported:[reason],fullPath:false,fieldOwnership:'Unknown/Unsupported'});
  if(typeof source!=='string'||Buffer.byteLength(source)>2*1024*1024||typeof file!=='string'||!file||file.length>4096||
   typeof binding!=='string'||!t.isValidIdentifier(binding)||typeof observerName!=='string'||!t.isValidIdentifier(observerName)||observerName==='arguments'||
@@ -70,6 +70,6 @@ export function instrumentReducerFieldWrites(source,file,{binding,field,observer
   ast.program.body.unshift(t.functionDeclaration(t.cloneNode(helper),capture==='invocation'?[token,meta,value]:[meta,value],t.blockStatement([
    t.tryStatement(t.blockStatement([t.expressionStatement(observerCall)]),t.catchClause(null,t.blockStatement([]))),t.returnStatement(t.cloneNode(value))
   ])));
-  return{status:'Code-linked writer sites',code:generate(ast,{retainLines:true,comments:true},source).code,sites,unsupported:[],fullPath:false,fieldOwnership:'Unknown/Unsupported',scope:'Original completed object-literal field definitions only; outside writes and applied/selected origin remain unproved'};
+  return{status:'Code-linked writer sites',...(includeAst?{ast}:{}),code:generate(ast,{retainLines:true,comments:true},source).code,sites,unsupported:[],fullPath:false,fieldOwnership:'Unknown/Unsupported',scope:'Original completed object-literal field definitions only; outside writes and applied/selected origin remain unproved'};
  }catch{return unknown('Source parsing or field-site transformation unavailable');}
 }

@@ -1676,7 +1676,7 @@
       "deliverable": "Named ordinary lineage pattern with write/refetch counterexamples",
       "status": "in-progress",
       "optional": false,
-      "execution_record": "292-a02-original-prop-transfer-chain.md",
+      "execution_record": "293-a02-original-list-data-chain.md",
       "completed_slices": [
         {
           "id": "A02.55",
@@ -3028,7 +3028,7 @@
         "bounded_next_experiment": "A02.9 source-only historical claim description on retained data; no browser/native",
         "experiment_native_executed": false
       },
-      "current_checkpoint": "292-a02-original-prop-transfer-chain.md",
+      "current_checkpoint": "293-a02-original-list-data-chain.md",
       "stopping_point_history": [
         {
           "invoked": true,
@@ -3061,7 +3061,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "Task3 original native-array membership/ordinary-row construction and complete owned source/effect/code interval. Task2 original App/Main/Item reference joins are source-verified, fullPath=false; native291 is historical scoped read/write-host evidence, not current transfer qualification.",
+      "next_bounded_step": "Task3 helper-owned complete source/effect and armed code-interval authority, then public/official/export qualification. Original creation and native-array callback reference chain is source/protocol verified only; no new native/full ownership credit.",
       "reducer_field_write_sites": {
         "record": "285-a02-reducer-field-write-sites.md",
         "status": "complete-source-prerequisite-not-integrated",
@@ -3312,17 +3312,17 @@
       },
       "active_slice": {
         "id": "A02.release-selected-list-integration",
-        "record": "292-a02-original-prop-transfer-chain.md",
-        "status": "in-progress-task2-source-reference-chain-complete",
+        "record": "293-a02-original-list-data-chain.md",
+        "status": "in-progress-task3-conditional-data-chain-source-checkpoint",
         "affected_pass": 146,
-        "full_source_pass": 6212,
+        "full_source_pass": 6263,
         "native_runs": 2,
         "public_plugin_integrated": false,
         "runtime_premises_discharged": false,
         "full_A02": false,
         "review_pending": "one final whole-integration review",
         "native_disposition": "one incomplete; one concrete-useState-correction PASS within private receipt scope",
-        "post_full_focused_pass": 5
+        "new_native_runs": 0
       },
       "historical_checkpoint_before_A02_51": {
         "active_slice": {
@@ -3550,6 +3550,20 @@
         "full_A02": false,
         "review_pending": "one final whole-integration review",
         "native_disposition": "one incomplete; one concrete-useState-correction PASS within private receipt scope"
+      },
+      "selected_list_transfer_checkpoint": {
+        "id": "A02.release-selected-list-integration",
+        "record": "292-a02-original-prop-transfer-chain.md",
+        "status": "in-progress-task2-source-reference-chain-complete",
+        "affected_pass": 146,
+        "full_source_pass": 6212,
+        "native_runs": 2,
+        "public_plugin_integrated": false,
+        "runtime_premises_discharged": false,
+        "full_A02": false,
+        "review_pending": "one final whole-integration review",
+        "native_disposition": "one incomplete; one concrete-useState-correction PASS within private receipt scope",
+        "post_full_focused_pass": 5
       }
     },
     {

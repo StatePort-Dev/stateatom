@@ -59,3 +59,9 @@ test('review regression refuses opaque incoming concat object despite unused val
 test('review regression binds every resolved import-export bridge source revision',async()=>{
  const files=[...mutate('panel.jsx','from"./tile"','from"./bridge"'),{file:'bridge.js',text:'import{Tile as Local}from"./tile";export{Local as Tile};'}],r=await inspect(files);assert.equal(r.status,'Conditional source admission');assert.equal(r.modules.length,5);assert.equal(r.modules.find(m=>m.file==='bridge.js')?.sourceDigest,createHash('sha256').update(files.at(-1).text).digest('hex'));
 });
+
+test('finite data recipe identifies original creation and native call sites by source range',async()=>{
+ const r=await inspect();assert.equal(r.status,'Conditional source admission');assert(Array.isArray(r.dataSites));assert.equal(r.dataSites.filter(s=>s.kind==='empty-array').length,1);assert.equal(r.dataSites.filter(s=>s.kind==='row-literal').length,2);assert.equal(r.dataSites.filter(s=>s.kind==='array-call').length,4);
+ for(const site of r.dataSites){const file=control.find(f=>f.file===site.file);assert.equal(site.sourceDigest,createHash('sha256').update(file.text).digest('hex'));assert(Number.isSafeInteger(site.start));assert(site.end>site.start);assert.equal(typeof site.id,'string');assert(file.text.slice(site.start,site.end).length);}
+ assert.equal(r.fieldOwnership,'Unknown/Unsupported');assert.equal(r.fullPath,false);
+});

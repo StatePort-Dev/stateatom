@@ -64,5 +64,5 @@ test('current virtual React19 source resolves every private field dependency thr
   build.onResolve({filter:/.*/},args=>{if(args.path.startsWith('/@stateatom/runtime')){assert.equal(typeof p.resolveId(args.path),'string',args.path);return{path:args.path,namespace:'owned'}}if(args.namespace==='owned')throw Error('Unresolved relative runtime import: '+args.path);});
   build.onLoad({filter:/.*/,namespace:'owned'},args=>{loaded.push(args.path);const contents=p.load(p.resolveId(args.path));assert.equal(typeof contents,'string');return{contents,loader:'js'}});
  }}]});
- assert.equal(output.errors.length,0);assert(loaded.includes('/@stateatom/runtime/reducer-write-receipts'));assert(loaded.includes('/@stateatom/runtime/private-collections'));
+ assert.equal(output.errors.length,0);assert(loaded.includes('/@stateatom/runtime/reducer-write-receipts'));assert(loaded.includes('/@stateatom/runtime/private-collections'));assert(loaded.includes('/@stateatom/runtime/list-data-receipts'));
 });

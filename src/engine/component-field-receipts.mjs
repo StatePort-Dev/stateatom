@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Private original-read/native-frame bridge; not writer or ordinary-data authority.
 import {capturePrivateCollections} from './private-collections.mjs';
-export function createComponentFieldReceipts({page,weakRef=globalThis.WeakRef}={}){
+export function createComponentFieldReceipts({page,weakRef=globalThis.WeakRef,listData=null}={}){
  const object=v=>v!==null&&(typeof v==='object'||typeof v==='function'),apply=Reflect.apply,same=Object.is,isArray=Array.isArray;
  const describe=Object.getOwnPropertyDescriptor,deref=typeof weakRef==='function'?describe(weakRef.prototype,'deref')?.value:null,ref=v=>new weakRef(v),read=r=>r?apply(deref,r,[]):undefined;
  const collections=capturePrivateCollections(),pop=Array.prototype.pop,define=Object.defineProperty,create=Object.create,assign=Object.assign;
@@ -66,7 +66,7 @@ export function createComponentFieldReceipts({page,weakRef=globalThis.WeakRef}={
   if(!frame.transferEntered||frame.phase!=='active'||(stack.length?stack[stack.length-1]:null)!==frame){frame.invalid=true;return null;}
   if(kind==='input'){if(frame.input||b!==frame.transferSite.input.id||!object(c)){frame.invalid=true;return null;}frame.input=ref(c);return null;}
   const meta=frame.transferSite.outputs.get(b);if(!meta){frame.invalid=true;return null;}
-  if(kind==='callback'){if(!meta.callback||!object(c)||!object(d)||frame.pending.has(b)){frame.invalid=true;return null;}frame.callbacks.set(b,{row:ref(c),collection:ref(d)});return null;}
+  if(kind==='callback'){if(!meta.callback||!object(c)||!object(d)||frame.pending.has(b)){frame.invalid=true;return null;}frame.callbacks.set(b,{row:ref(c),collection:ref(d),capability:listData?listData.currentCallback(d,c):null});return null;}
   if(kind==='prop'){
    const callback=frame.callbacks.get(b);if(!frame.input||frame.pending.has(b)||!object(c)||meta.callback&&(!callback||read(callback.row)!==c)){frame.invalid=true;return null;}
    frame.pending.set(b,{value:ref(c),callback});frame.callbacks.delete(b);return null;
@@ -82,7 +82,7 @@ export function createComponentFieldReceipts({page,weakRef=globalThis.WeakRef}={
   const emission=object(childProps)?emissions.get(childProps):null;if(!emission)return null;const{frame,meta}=emission;
   if(frame.invalid||frame.phase!=='complete'||!frame.transferEntered||frame.pending.size||meta.prop!==prop||read(emission.value)!==value)return null;
   const fiber=read(frame.fiber),component=read(frame.component),props=read(frame.props),input=read(frame.input);if(!fiber||!component||!props||!input||frames.get(fiber)!==frame)return null;
-  let callback=null;if(meta.callback){const row=read(emission.callback?.row),collection=read(emission.callback?.collection);if(!row||!collection)return null;callback={...meta.callback,row,collection};}
+  let callback=null;if(meta.callback){const row=read(emission.callback?.row),collection=read(emission.callback?.collection);if(!row||!collection)return null;callback={...meta.callback,row,collection,capability:emission.callback.capability};}
   return{fiber,component,props,invocationId:frame.id,input:{...frame.transferSite.input,value:input},output:{siteId:meta.id,prop:meta.prop,value,callback}};
  });
  const lookup=safe((fiber,component,props,hostProps)=>{

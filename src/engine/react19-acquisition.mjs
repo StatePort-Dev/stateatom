@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
 // Bounded product collector promoted from the retained A02.3 acquisition mechanism.
 // Native ancestor observations only; no fixture oracle or selected-property origin.
+import {createListDataReceipts} from './list-data-receipts.mjs';
 import {createComponentFieldReceipts} from './component-field-receipts.mjs';
 import {createReducerWriteReceipts} from './reducer-write-receipts.mjs';
 import {capturePrivateCollections} from './private-collections.mjs';
-export function createReact19Acquisition({page,weakRef=globalThis.WeakRef,reducerFields=false}={}){
+export function createReact19Acquisition({page,weakRef=globalThis.WeakRef,reducerFields=false,listData=false}={}){
  if(typeof page!=='string'||!page||page.length>160)throw Error('React19 acquisition requires a bounded page identity');
  const describe=Object.getOwnPropertyDescriptor,same=Object.is,isArray=Array.isArray,invoke=Reflect.apply,define=Object.defineProperty,create=Object.create;
  const append=(a,v)=>{const d=create(null);d.value=v;d.enumerable=true;d.writable=true;d.configurable=true;define(a,a.length,d);};
@@ -15,7 +16,8 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef,reduce
  const makeWeakSet=()=>privateCollections?privateCollections.weakSet():new WeakSet(),makeWeakMap=()=>privateCollections?privateCollections.weakMap():new WeakMap(),makeSet=()=>privateCollections?privateCollections.set():new Set(),makeMap=()=>privateCollections?privateCollections.map():new Map();
  const fibers=makeWeakSet(),roots=makeWeakSet(),ids=makeWeakMap(),queues=makeWeakMap(),hooks=makeWeakMap(),updates=makeWeakMap();
  const fields=reducerFields===true?createReducerWriteReceipts({page,weakRef}):null;
- const fieldReads=fields?createComponentFieldReceipts({page,weakRef}):null;
+ const data=fields&&listData===true?createListDataReceipts({page}):null;
+ const fieldReads=fields?createComponentFieldReceipts({page,weakRef,listData:data}):null;
  const reducerFieldNames=fields?makeWeakMap():null;
  const weakPrototype=typeof weakRef==='function'?describe(weakRef,'prototype')?.value:null,nativeDeref=weakPrototype?describe(weakPrototype,'deref')?.value:null;
  const deref=value=>value&&typeof nativeDeref==='function'?invoke(nativeDeref,value,[]):undefined;
@@ -179,27 +181,38 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef,reduce
  }
  function registerComponentTransfers(site){return !stopped&&!capped&&!unavailable&&supported&&fieldReads?fieldReads.registerTransfers(site)===true:false;}
  function componentTransferSource(){return !stopped&&!capped&&!unavailable&&supported&&fieldReads?invoke(fieldReads.transferSource,undefined,arguments):null;}
- function matchSelectedListTransfers(node){
+ function matchSelectedListTransfers(node,visit){
   const unknown=reason=>({schema:'stateatom.selected-list-transfers/1',page,status:'Unknown/Unsupported',reason,transfers:[],selected:null,arrayMembership:'Unknown/Unsupported',fieldOwnership:'Unknown/Unsupported',fullPath:false,scope:'Original state/parameter/JSX/map-callback reference joins on exact current native ancestors; array membership/native-method and writer exclusion remain separate'});
   if(!fieldReads)return unknown('Field observation disabled');
   try{
    const joined=matchSelectedFieldWrite(node);if(joined.status!=='Observed')return unknown(joined.reason);
    let value,child;const selected=matchSelectedFieldRead(node,(row,context)=>{value=row;child=context;});if(selected.status!=='Observed'||selected.native.commitId!==joined.native.selected.commitId)return unknown('Selected read changed');
-   const tree=committedTree(node,true);if(tree.status)return unknown(tree.reason);const transfers=[],seen=makeSet();
+   const selectedRow=value,callbacks=[];const tree=committedTree(node,true);if(tree.status)return unknown(tree.reason);const transfers=[],seen=makeSet();
    for(let depth=0;depth<8;depth++){
     if(!child.parameterProp)return unknown('Original parameter property unavailable');const incoming=fieldReads.incomingTransfer(child.props,child.parameterProp,value);if(!incoming||seen.has(incoming.fiber))return unknown('No unique original incoming prop transfer');seen.add(incoming.fiber);
     let parent=tree.parents.get(child.fiber),found=false;const walked=makeSet();while(parent&&!walked.has(parent)&&walked.size<64){walked.add(parent);if(parent===incoming.fiber){found=true;break;}parent=tree.parents.get(parent);}
     const tag=strictOwn(incoming.fiber,'tag',true);if(!found||!fibers.has(incoming.fiber)||(tag!==0&&tag!==15)||strictOwn(incoming.fiber,'type',true)!==incoming.component||strictOwn(incoming.fiber,'memoizedProps',true)!==incoming.props)return unknown('Original sender is not the exact current native ancestor');
-    const callback=incoming.output.callback;append(transfers,{siteId:incoming.output.siteId,prop:incoming.output.prop,valueId:id(value),invocationId:incoming.invocationId,producerFiberId:id(incoming.fiber),input:{siteId:incoming.input.id,kind:incoming.input.kind,prop:incoming.input.prop,valueId:id(incoming.input.value)},callback:callback?{siteId:callback.id,method:callback.method,rowId:id(callback.row),collectionId:id(callback.collection)}:null});
+    const callback=incoming.output.callback;if(callback)append(callbacks,callback);append(transfers,{siteId:incoming.output.siteId,prop:incoming.output.prop,valueId:id(value),invocationId:incoming.invocationId,producerFiberId:id(incoming.fiber),input:{siteId:incoming.input.id,kind:incoming.input.kind,prop:incoming.input.prop,valueId:id(incoming.input.value)},callback:callback?{siteId:callback.id,method:callback.method,rowId:id(callback.row),collectionId:id(callback.collection)}:null});
     if(incoming.input.kind==='state-binding'){
      let matches=0;const native=read(node,(_h,state,observed,fiber)=>{if(fiber===incoming.fiber&&state===incoming.input.value&&observed.resultId===joined.native.ancestor.resultId&&observed.revisionId===joined.write.revisionId)matches++;});
      if(native.status!=='Observed'||matches!==1||native.commitId!==selected.native.commitId)return unknown('Original state binding does not match the applied current native result');
-     return{...unknown(null),status:'Observed',transfers,selected:joined};
+     if(visit)visit({row:selectedRow,state:incoming.input.value,callbacks});return{...unknown(null),status:'Observed',transfers,selected:joined};
     }
     value=incoming.input.value;child={fiber:incoming.fiber,props:incoming.props,parameterProp:incoming.input.prop};
    }
    return unknown('Source transfer depth unavailable');
   }catch{return unknown('Current original prop transfer metadata unavailable');}
+ }
+ function registerListData(sites){return !stopped&&!capped&&!unavailable&&supported&&data?data.register(sites)===true:false;}
+ function listDataSource(){return !stopped&&!capped&&!unavailable&&supported&&data?invoke(data.source,undefined,arguments):null;}
+ function matchSelectedListData(node){
+  const unknown=reason=>({schema:'stateatom.selected-list-data/1',page,status:'Unknown/Unsupported',reason,selected:null,data:null,currentMembership:'Unknown/Unsupported',fieldOwnership:'Unknown/Unsupported',fullPath:false,scope:'Original construction and native filter/map callback identities; complete source/no-write/code premises remain required'});
+  if(!data)return unknown('List data observation disabled');
+  try{let refs;const selected=matchSelectedListTransfers(node,value=>{refs=value});if(selected.status!=='Observed'||!refs||refs.callbacks.length!==1)return unknown(selected.reason||'Unique original callback path unavailable');
+   const callback=refs.callbacks[0],path=data.callbackPath(callback.capability,{state:refs.state,filtered:callback.collection,row:refs.row}),state=data.membership(refs.state,refs.row),row=data.row(refs.row);
+   if(path.status!=='Observed'||state.status!=='Observed'||row.status!=='Observed')return unknown(path.reason||state.reason||row.reason);
+   return{...unknown(null),status:'Observed',selected,data:{callback:path,state,row}};
+  }catch{return unknown('Selected original data unavailable');}
  }
  const fieldUnavailable=reason=>({schema:'stateatom.native-reducer-field-write/1',page,status:'Unknown/Unsupported',reason,write:null,native:null,scope:'Original field creation in an applied call of the exact current selected native ancestor; selected row membership and property origin unproved',currentMembership:'Unknown/Unsupported',fieldOwnership:'Unknown/Unsupported',selectedPropertyOrigin:'Unknown/Unsupported',fullPath:false});
  function registerReducerFields(reducer,sites,field=null){if(stopped||capped||unavailable||!supported||!fields||field!==null&&(typeof field!=='string'||!field||field.length>128))return false;const registered=fields.register(reducer,sites)===true;if(registered&&field)reducerFieldNames.set(reducer,field);return registered;}
@@ -223,5 +236,5 @@ export function createReact19Acquisition({page,weakRef=globalThis.WeakRef,reduce
   if(applied.write.field!==selected.read.field||applied.native.commitId!==selected.native.commitId||applied.native.rootId!==selected.native.rootId)return unknown('Field or current native commit differs');
   return{...unknown(null),status:'Observed',read:selected.read,write:{...applied.write,rowId:id(row)},native:{selected:selected.native,ancestor:applied.native}};
  }
- return Object.freeze({...(fields?{registerReducerFields,reducerFieldSource,matchReducerFieldWrite,registerComponentFields,componentFieldSource,registerComponentTransfers,componentTransferSource,matchSelectedListTransfers,matchSelectedFieldRead(node){return matchSelectedFieldRead(node);},matchSelectedFieldWrite}:{}),tap,snapshot(node){try{return read(node);}catch{return unknown('Native metadata snapshot unavailable');}},currentCommit,matchCommittedProps,matchCommittedMemo,stop(){stopped=true;current=null;if(fields)fields.stop();if(fieldReads)fieldReads.stop();},retention(){return{events,queues:queueCount,updates:updateCount,stopped,capped,available:supported&&!unavailable};}});
+ return Object.freeze({...(fields?{registerReducerFields,reducerFieldSource,matchReducerFieldWrite,registerComponentFields,componentFieldSource,registerComponentTransfers,componentTransferSource,matchSelectedListTransfers(node){return matchSelectedListTransfers(node);},...(data?{registerListData,listDataSource,matchSelectedListData}:{}),matchSelectedFieldRead(node){return matchSelectedFieldRead(node);},matchSelectedFieldWrite}:{}),tap,snapshot(node){try{return read(node);}catch{return unknown('Native metadata snapshot unavailable');}},currentCommit,matchCommittedProps,matchCommittedMemo,stop(){stopped=true;current=null;if(fields)fields.stop();if(fieldReads)fieldReads.stop();if(data)data.stop();},retention(){return{events,queues:queueCount,updates:updateCount,stopped,capped,available:supported&&!unavailable};}});
 }

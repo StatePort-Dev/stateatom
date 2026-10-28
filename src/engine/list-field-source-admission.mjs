@@ -4,14 +4,14 @@ import {parse} from '@babel/parser';import traverseModule from '@babel/traverse'
 import {instrumentReducerFieldWrites} from './reducer-field-writes.mjs';
 const traverse=traverseModule.default||traverseModule,hash=s=>createHash('sha256').update(s).digest('hex');
 export function admitListFieldSources(files,{root,field,maxSteps=512}={}){
- const modules=new Map(),used=new Set(),edges=[],unsupported=[],scalarFields=new Set(),kinds=new Map(),queue=[],callbacks=new Map(),nativeSites=new Map(),consumed=new Map();let steps=0,reducerFn;
+ const modules=new Map(),used=new Set(),edges=[],dataSites=[],unsupported=[],scalarFields=new Set(),kinds=new Map(),queue=[],callbacks=new Map(),nativeSites=new Map(),consumed=new Map();let steps=0,reducerFn;
  const premises=[
   'Actual selected field and every listed row field are original ordinary own-data primitive reads; no getter/Proxy or object-valued field is admitted by this source result.',
   'Original array methods and ordinary array construction/species are independently acquired and admitted; syntax does not identify a native implementation.',
   'Complete admitted main-world code and native retention effects, including absence of foreign Fiber/DevTools exposure and unknown code, cover the whole write-to-read interval.',
   'Exact source hashes, applied call/state/row, source callback/props/parameter/read and selected current commit identities match; HMR/Stop/missing references invalidate current authority.'
  ];
- const result=ok=>({status:ok?'Conditional source admission':'Unknown/Unsupported',sourceUsesComplete:ok,scope:'Lexical list/row references within the finite admitted source graph, conditional on every separate runtime premise',modules:[...used].sort().map(file=>({file,sourceDigest:modules.get(file).digest})),edges,scalarFields:[...scalarFields].sort(),unsupported,runtimePremises:premises,fieldOwnership:'Unknown/Unsupported',fullPath:false});
+ const result=ok=>({status:ok?'Conditional source admission':'Unknown/Unsupported',sourceUsesComplete:ok,scope:'Lexical list/row references within the finite admitted source graph, conditional on every separate runtime premise',modules:[...used].sort().map(file=>({file,sourceDigest:modules.get(file).digest})),edges,dataSites:ok?dataSites:[],scalarFields:[...scalarFields].sort(),unsupported,runtimePremises:premises,fieldOwnership:'Unknown/Unsupported',fullPath:false});
  const fail=(why,p,ctx)=>{unsupported.push({reason:why,...(ctx?{file:ctx.file,sourceDigest:ctx.digest}:{}),...(p?.node?.loc?{line:p.node.loc.start.line,column:p.node.loc.start.column+1}:{})});throw Error('Source admission refused');};
  const tick=(p,ctx)=>{if(++steps>maxSteps)fail('Source-use budget exceeded',p,ctx);};
  const location=(p,ctx,kind,extra={})=>({kind,file:ctx.file,sourceDigest:ctx.digest,line:p.node.loc.start.line,column:p.node.loc.start.column+1,...extra});
@@ -135,6 +135,14 @@ export function admitListFieldSources(files,{root,field,maxSteps=512}={}){
   for(const file of used){const ctx=modules.get(file);traverse(ctx.ast,{Identifier(p){
    if(p.node.name==='arguments')fail('Implicit arguments alias unsupported',p,ctx);
    if(p.node.name==='eval'&&!p.scope.getBinding('eval'))fail('Dynamic eval scope unsupported',p,ctx);
+  }});}
+  // Compiler coordinates, not execution or a runtime ownership certificate.
+  for(const file of used){const ctx=modules.get(file);traverse(ctx.ast,{enter(p){
+   let shape=null;const native=nativeSites.get(p.node);
+   if(native)shape={kind:'array-call',...native};
+   else if(p.isObjectExpression()&&consumed.get(p.node)?.has('row'))shape={kind:'row-literal'};
+   else if(p.isArrayExpression()&&!p.node.elements.length&&(p.node===args[1].node||p.getFunctionParent()===reducerFn))shape={kind:'empty-array'};
+   if(shape)dataSites.push({...location(p,ctx,shape.kind),...shape,start:p.node.start,end:p.node.end,id:hash(ctx.digest+':'+p.node.start+':'+p.node.end+':'+shape.kind)});
   }});}
   return result(true);
  }catch(error){if(!unsupported.length)unsupported.push({reason:'Source parse or bounded admission unavailable'});return result(false);}

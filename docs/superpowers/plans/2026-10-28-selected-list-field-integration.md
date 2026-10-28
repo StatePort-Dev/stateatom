@@ -38,3 +38,5 @@ Task1 source checkpoint289:136affected/full6148PASS; exact virtual routes + revi
 Task2 checkpoint291: original read/native selected-host props join, scoped actual case290 PASS after concrete useState correction, full6187PASS. Third Task2 transfer item remains in progress; no ownership/fullPath/public claim. Case290 ran early as a bounded changed-mechanism diagnostic, not Task4 qualification.
 
 Task2 source reference-chain checkpoint292:146affected/full6212PASS and5 latest repeated-update controls. Original callback references are observed; native-array membership belongs to unresolved Task3. No new native/public/package credit. Task3 is the next bounded dependency.
+
+Task3 conditional data checkpoint293: original creation/native method and callback identities now compose with the selected state/props chain;146affected/full6263PASS. The first Task3 checkbox remains open because ordinary construction/current membership still requires complete source/no-write/code authority. No new native/public/package claim. Continue Task3 owned source/effect/code interval.

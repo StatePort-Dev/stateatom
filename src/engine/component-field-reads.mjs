@@ -2,7 +2,7 @@
 // Original destructuring and JSX operands only. No replay or ownership authority.
 import {createHash} from 'node:crypto';import {parse} from '@babel/parser';import traverseModule from '@babel/traverse';import generatorModule from '@babel/generator';import * as t from '@babel/types';
 const traverse=traverseModule.default||traverseModule,generate=generatorModule.default||generatorModule,hash=s=>createHash('sha256').update(s).digest('hex');
-export function instrumentComponentFieldReads(source,file,{binding,parameter,field,observerName}={}){
+export function instrumentComponentFieldReads(source,file,{binding,parameter,field,observerName,includeAst=false}={}){
  const empty=reason=>({status:'Unknown/Unsupported',code:source,sites:[],unsupported:[reason],fullPath:false,fieldOwnership:'Unknown/Unsupported'});
  if(typeof source!=='string'||Buffer.byteLength(source)>2*1024*1024||typeof file!=='string'||!file||file.length>4096||![binding,parameter,observerName].every(s=>typeof s==='string'&&t.isValidIdentifier(s)&&s!=='arguments')||typeof field!=='string'||!field||field.length>128||['__proto__','constructor','prototype'].includes(field))return empty('Invalid bounded field-read input');
  try{
@@ -48,6 +48,6 @@ export function instrumentComponentFieldReads(source,file,{binding,parameter,fie
    t.functionDeclaration(t.cloneNode(helper),[kind,a,b,c].map(n=>t.cloneNode(n)),t.blockStatement([t.tryStatement(t.blockStatement([t.returnStatement(t.callExpression(t.identifier(observerName),[kind,a,b,c].map(n=>t.cloneNode(n))))]),t.catchClause(null,t.blockStatement([t.returnStatement(t.nullLiteral())])))])),
    t.functionDeclaration(t.cloneNode(identity),[kind,a,b,c].map(n=>t.cloneNode(n)),t.blockStatement([t.expressionStatement(t.callExpression(t.cloneNode(helper),[kind,a,b,c].map(n=>t.cloneNode(n)))),t.returnStatement(t.cloneNode(c))]))
   );
-  return{status:'Code-linked field reads',code:generate(ast,{comments:true,retainLines:true},source).code,sites:[site],unsupported:[],fullPath:false,fieldOwnership:'Unknown/Unsupported',scope:'Original produced binding and direct JSX operand only; getter/Proxy safety, source authenticity and selected commit remain separate'};
+  return{status:'Code-linked field reads',...(includeAst?{ast}:{}),code:generate(ast,{comments:true,retainLines:true},source).code,sites:[site],unsupported:[],fullPath:false,fieldOwnership:'Unknown/Unsupported',scope:'Original produced binding and direct JSX operand only; getter/Proxy safety, source authenticity and selected commit remain separate'};
  }catch{return empty('Field-read lexical grammar refused');}
 }

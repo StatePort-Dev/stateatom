@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 data chain:** [Task3 checkpoint293](completion/293-a02-original-list-data-chain.md): original row/array construction and native callback identities join the exact selected state/props chain in source/protocol controls.146affected/full6263PASS. Current ownership/code interval remain Unknown/fullPath=false; no new native/public/package credit. Next helper-owned source/effect and complete code interval. Whole21/29 unchanged.
+
 **Latest A02 reference chain:** [Task2 checkpoint292](completion/292-a02-original-prop-transfer-chain.md), original state/prop/parameter/map-callback references joined to selected Item and exact current native ancestors.146affected/full6212PASS plus5 latest repeated-update controls. Array membership/ordinary data/code and alias exclusion remain Unknown/fullPath=false; no new native/public/package credit. Next Task3 native-array/ordinary-row and complete code-interval authority. Whole21/29 unchanged.
 
 **Latest A02 selected read:** [source/native checkpoint291](completion/291-a02-selected-field-read-native.md): actual Original/Off/On private collector case290 passes after a reproduced useState-interleaving fix; creation/changed/same-value read-write joins and wrong-row/detached/Stop controls. Full6187PASS. Ownership/transfers still Unknown; no public/package/fullA02 credit. Continue App/Main original transfers in current plan; whole21/29 unchanged.

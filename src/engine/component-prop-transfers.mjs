@@ -2,7 +2,7 @@
 // Original produced bindings and component JSX operands, not array/effect proof.
 import {createHash} from 'node:crypto';import {parse} from '@babel/parser';import traverseModule from '@babel/traverse';import generatorModule from '@babel/generator';import * as t from '@babel/types';
 const traverse=traverseModule.default||traverseModule,generate=generatorModule.default||generatorModule,hash=s=>createHash('sha256').update(s).digest('hex');
-export function instrumentComponentPropTransfers(source,file,{binding,inputs,outputs,observerName}={}){
+export function instrumentComponentPropTransfers(source,file,{binding,inputs,outputs,observerName,includeAst=false}={}){
  const refuse=reason=>({status:'Unknown/Unsupported',code:source,site:null,unsupported:[reason],fullPath:false});
  if(typeof source!=='string'||Buffer.byteLength(source)>2*1024*1024||typeof file!=='string'||!file||file.length>4096||![binding,observerName].every(n=>typeof n==='string'&&t.isValidIdentifier(n)&&n!=='arguments')||!Array.isArray(inputs)||!inputs.length||inputs.length>8||!inputs.every(n=>typeof n==='string'&&t.isValidIdentifier(n))||new Set(inputs).size!==inputs.length||!Array.isArray(outputs)||!outputs.length||outputs.length>8||!outputs.every(n=>typeof n==='string'&&t.isValidIdentifier(n))||new Set(outputs).size!==outputs.length)return refuse('Invalid bounded transfer input');
  try{
@@ -42,6 +42,6 @@ export function instrumentComponentPropTransfers(source,file,{binding,inputs,out
    if(target.callback){const body=target.callback.node.body,statement=t.expressionStatement(observe('callback',[t.cloneNode(token),t.stringLiteral(meta.id),t.identifier(meta.callback.parameter),t.identifier(meta.callback.receiver)]));if(t.isBlockStatement(body))target.callback.get('body').unshiftContainer('body',statement);else target.callback.node.body=t.blockStatement([statement,t.returnStatement(body)]);}
   }
   ast.program.body.unshift(t.functionDeclaration(t.cloneNode(event),[kind,a,b,c,d].map(n=>t.cloneNode(n)),t.blockStatement([t.tryStatement(t.blockStatement([t.returnStatement(t.callExpression(t.identifier(observerName),[kind,a,b,c,d].map(n=>t.cloneNode(n))))]),t.catchClause(null,t.blockStatement([t.returnStatement(t.nullLiteral())])))])),t.functionDeclaration(t.cloneNode(identity),[kind,a,b,c].map(n=>t.cloneNode(n)),t.blockStatement([t.expressionStatement(t.callExpression(t.cloneNode(event),[kind,a,b,c].map(n=>t.cloneNode(n)))),t.returnStatement(t.cloneNode(c))])));
-  return{status:'Code-linked prop transfers',code:generate(ast,{comments:true,retainLines:true},source).code,site,unsupported:[],fullPath:false,scope:'Original state/parameter/JSX and callback references only; actual native array method and ownership/commit matching remain separate'};
+  return{status:'Code-linked prop transfers',...(includeAst?{ast}:{}),code:generate(ast,{comments:true,retainLines:true},source).code,site,unsupported:[],fullPath:false,scope:'Original state/parameter/JSX and callback references only; actual native array method and ownership/commit matching remain separate'};
  }catch{return refuse('Original component transfer grammar refused');}
 }
