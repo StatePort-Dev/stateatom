@@ -1,5 +1,7 @@
 # Project status
 
+**Current A02 integration:** [native field receipts289](completion/289-a02-native-field-receipt-integration.md), optional collector-owned applied revisions;136affected/full6148PASS after owned virtual-module routing and compiler pin correction. Shared source checkout, no new package/native claim. Task2 original component reads and exact selected host/props continues in the same integration plan; ownership/code premises and final review remain pending. Whole21/29 unchanged.
+
 **Latest A02 source prerequisite:** [finite list/row admission288](completion/288-a02-list-field-source-admission.md) covers the actual reducer/App/Main/Item/Footer and renamed control conditionally;91affected/full6125PASS. One review0C/5I/0M, all fixed with11RED regressions. Ordinary-field/native-array/complete-code/current-identity premises remain unproved; ownership/selected lineage stay Unknown. Next native selected-row/read/commit integration; no public package change or fullA02 acceptance. Whole21/29 unchanged.
 
 **Latest A02 source/runtime prerequisite:** [invocation receipts286](completion/286-a02-reducer-invocation-receipts.md): exact native call token/source frame/completed result and applied revision inputs; actual retained reducer + synthetic native grammar controls,82affected/full6095PASS. One review0C/2I/0M, both corrected. Private/uninstalled; membership/ownership/selected-read edges remain Unknown. Next finite writer/alias admission across reducer/App/Main/Item/Footer. Full21/29 unchanged.

@@ -57,3 +57,12 @@ test('installed React19 version admission reads the resolved app metadata and le
   assert.throws(()=>p.config(config),/React19|ENOENT/);
  }finally{await rm(root,{recursive:true,force:true});}
 });
+
+test('current virtual React19 source resolves every private field dependency through owned routes',async()=>{
+ const {build}=await import('esbuild'),p=stateatomPlugin({enabled:true,profile,root:'/app'}),loaded=[];
+ const output=await build({stdin:{contents:"import '/@stateatom/runtime/react19-acquisition';",loader:'js',sourcefile:'virtual-consumer.mjs'},bundle:true,write:false,format:'esm',platform:'browser',plugins:[{name:'owned-virtual-runtime',setup(build){
+  build.onResolve({filter:/.*/},args=>{if(args.path.startsWith('/@stateatom/runtime')){assert.equal(typeof p.resolveId(args.path),'string',args.path);return{path:args.path,namespace:'owned'}}if(args.namespace==='owned')throw Error('Unresolved relative runtime import: '+args.path);});
+  build.onLoad({filter:/.*/,namespace:'owned'},args=>{loaded.push(args.path);const contents=p.load(p.resolveId(args.path));assert.equal(typeof contents,'string');return{contents,loader:'js'}});
+ }}]});
+ assert.equal(output.errors.length,0);assert(loaded.includes('/@stateatom/runtime/reducer-write-receipts'));assert(loaded.includes('/@stateatom/runtime/private-collections'));
+});
