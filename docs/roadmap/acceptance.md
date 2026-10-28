@@ -27,10 +27,13 @@ actual model readiness remainsUnknown. [L02.29](../completion/261-l02-derived-av
 closes source-only Unknown normalization:45focused/5955fullPASS,673protected/ONEreview
 0C0I0M, outside87maps/native0. [L02.30](../completion/262-l02-official-google-readiness.md)
 closed actual official87top-level Google156 metadata downloadable1/1343.3ms,4checks/
-738stable/36dist/ONEreview0C0I0M; no modelcreate/prompt/download-initiation. Next
-[L02.31](../completion/263-l02-official-model-initialization.md) one trusted existing
-product opt-in/Explain with literal120s, separately frozen; no useful-quality credit
-or closed19/20corpus retry. Old84MISS/32INCOMPLETE remain.
+738stable/36dist/ONEreview0C0I0M; no modelcreate/prompt/download-initiation.
+[L02.31](../completion/263-l02-official-model-initialization.md) closed one trusted
+existing product opt-in/Explain:85%download then120s template timeout,6safetychecks/
+61source/ONEreview0C0I0M; no modelready/output/usefulness acceptance. Next
+[L02.32](../completion/264-l02-cold-initialization-lifecycle.md) source-only cold
+initialization phase diagnosis/fix; warm/inference/corpus criteria retained, no
+native/model/package/host/closedcase retry. Old84MISS/32INCOMPLETE remain.
 Historical entries retain scope.
 
 Current approved-scope execution is tracked in [completion status](../status.md)

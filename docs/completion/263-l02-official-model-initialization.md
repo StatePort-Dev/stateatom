@@ -37,3 +37,40 @@ old30corpus or20–30/>=25/5incomplete/5untrusted criteria/results alteration.
 One final bounded source/result review; maxone testedI/C correction, no native
 retry/rereview. Archive own workspace/CRC/all bytes/plan identity and local commit.
 Keep fullL02/usefulness/model-readiness claims separate; one next bounded item only.
+
+## Closed — real download progress, product timeout, no inference acceptance
+
+Clean source **6331c9ef0279631e151d718e72d1cb41a869a410**; frozen case
+`1945f33a4415c8422ccba2689a14a6755d1ff6fd7bfc925c08e489ac79f4bb64`. New source qualification/admission RED0/7;61affectedPASS.
+Full5955 remains earlier source29baseline, not new full harness qualification.
+Syntax/diff,1188frozen inputs and exact full36dist PASS before/after native.
+Profile-preservation adjustment occurred before implementation: clone432regular
+files (8.7MiB source) excluding only root port/log and3stale Singleton symlinks.
+Original434files/3links unchanged; no personal or prior old model-cache import.
+
+Sole native raw `.artifacts/l02/official-model-initialization/2026-10-28/native/results.json`, SHA `ba9344a6261a08101f120fcfb6be0679c5f9b0116e95bd74400db6b7b18b77b2`.
+Existing actual product: model-off template; trusted opt-in; trusted enabled Explain
+exactly once. Actual native model download progress observed0–85%;85%at119429.061ms,
+then **Local explanation cancelled or timed out.** at120036.661ms. No generating
+phase or validated model output. Native API counters were not intercepted; source
+path maxima must not be presented as measured calls. Six scoped checks passed
+including safe fallback/optout/freshreadonlyBasic and zero app actions; these do not
+accept model initialization. No source/package/provider/prompt/timeout change.
+
+Detach, driver/control/browser/desktop/server closes successful; recorded PID
+absent, errors[]. No whole process-tree/heap claim. New owned cache/profile/raw
+retained, no retry/reclick/resume/timeout tuning in this case. Budget1used/0remaining.
+Screenshot is an agent candidate showing fallback, not human acceptance.
+
+ONE final bounded source/result review **0C/0I/0M**; no correction/rereview.
+Own22file workspace archive `.artifacts/l02/official-model-initialization-review/2026-10-28/workspace.zip`, SHA `de689d346987bf2df64e586fadabad1dd27dbe1ae6d4788f2e509f9722e0c261`; CRC/all bytes/
+plan identity checked before removing only own temporary workspace. Model weights
+and browser profiles are not part of that review archive or product payload.
+
+Full21/29 (72.41%), mandatoryL02/useful0 and original87performanceMISS unchanged.
+One next **L02.32** in264: bounded cold-initialization lifecycle source diagnosis/
+fix. Existing code has one120s timer shared by metadata, initial model
+preparation and inference. Determine separate cold initialization vs warm/inference
+budgets within that task; no exact new timeout is claimed already approved here.
+Old31timeout and corpus/quality/performance thresholds remain literal; no native
+retry, new package or model run belongs to source32.
