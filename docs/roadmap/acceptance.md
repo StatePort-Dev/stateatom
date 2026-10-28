@@ -1,6 +1,7 @@
 # Local developer-preview acceptance
 
-Current official89host79093c0c; [I02.39](../completion/273-i02-current89-host-refresh.md) source/package9+73 and ONE native10/9original reporter workflow PASS. [V02.37](../completion/272-v02-current89-original-performance.md) closes198rows/66windows: Basic399.1/416.5msPASS, Active10.71737255/27.31871841%MISS10%, no waiver/repeat. Next ONE I02.40 exact89 worker-only interrupted observation. Whole21/29 unchanged.
+Current official89host79093c0c; [I02.39](../completion/273-i02-current89-host-refresh.md) source/package9+73 and ONE native10/9original reporter workflow PASS. [V02.37](../completion/272-v02-current89-original-performance.md) closes198rows/66windows: Basic399.1/416.5msPASS, Active10.71737255/27.31871841%MISS10%, no waiver/repeat. I02.40 new89worker-only2checks PASS, original suffix/333inputs/dist36stable.
+Next ONE V03.33 source-only loaded-module proof eligibility; old10INCOMPLETE retained. Whole21/29 unchanged.
 Historical official87host81bec06e is qualified in [I02.37](../completion/258-i02-current87-host-refresh.md).
 Historical component checkpoint: [I02.36 exact local85↔86 reload/rollback](../completion/250-i02-component-reload-rollback.md),
 host223714a7, corrected actual7PASS/4wholeFAIL retained. Waiting rule retirement,

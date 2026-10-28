@@ -37,3 +37,26 @@ before implementation → GREEN2/0. Source test checks exact complete worker suf
 adapted byte digest, current10/9prefix and zero fresh inspector-loss credit; prepare-
 only has no results/browser. Same package/dist; no fullsuite/build repeat justified.
 Native pending after clean source commit. Test preparation output is not native proof.
+
+## Closed actual worker-only result
+
+Clean host551d90c817a506ddcf2366a965757d5fd77431c3; ONE Chrome153 native04:39:58–
+04:40:00UTC, exit0/signalnull. Two checks: exact89intake and ONE entire original
+worker suffix PASS. Actual forced worker loss preserves old window with unknown
+end/context-changed/historical/nonexecutable/no resumed owner; keyboard Read/Delete
+and unchanged app. Raw host
+`artifacts/atom-host/i02-current89/worker-history-native/2026-10-28T04-39-57-367Z/results.json`,
+SHA2565ec590fedea0dc182a0adc254a78e76ca01140db34ea3aee1f3620e6bfa60313.
+333inputs/full36dist unchanged/errors+scopedconsole empty. Raw sourceDirtytrue
+legacy literal remains; outer marker independently proves both repos clean before
+launch. Existing finally close paths execute; no process-tree/heap attestation.
+Source2controls/reversible7deltas/final scoped self-review PASS; no correction.
+One candidate screenshot, no human/fullU04 acceptance. Max1native consumed; no retry.
+Whole21/29 unchanged. No claim that old85inspector-loss controls ran on89 or that
+all original3interruption controls passed together. No model/TLS/fullI02/release.
+
+Next ONE V03.33: source-only eligibility for selected loaded-module proof in an
+ordinary dev project. Diagnose the documented readonly/journal prerequisite mismatch
+from current code and supported public plugin contracts. Preserve old10INCOMPLETE/
+readonly privacy; no browser/model/oldweakref/oldgate retry or implementation before
+a concrete source-supported route. SDK/publication excluded.
