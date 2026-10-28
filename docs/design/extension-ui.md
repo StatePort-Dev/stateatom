@@ -232,3 +232,31 @@ folds setup and detailed explanations, and keeps contextual actions visible.
 Its height follows the host container, capped at the viewport; standalone host
 CSS supplies the definite height. Navigation scrolls only the inspector. The
 prototype's editing/draft controls are not copied onto read-only observations.
+
+## Atom editing restoration — 2026-10-28
+
+The selected element stays above four mounted screens. Dependencies presents exact
+recorded reads, with source navigation, and one separately scoped page-value editor.
+The editor defaults to live native-control changes; Apply remains available for
+held drafts and grouped changes. Last-read values live inside row details instead
+of repeating the editable value. Exact duplicate source records are grouped across
+properties; distinct locations are retained. Optional action explanations are folded.
+
+Compared with `design/screens/atom/01-inputs.png`, the white sheet, Inter/system
+hierarchy, dark expression, blue links, neutral values and disclosure rhythm are
+retained. The deliberate differences follow user feedback: one element above tabs,
+no global property selector, one editable value per row, and editing controls only
+for actual runtime writers. The prototype's editable arbitrary state/API dependencies
+are not implemented by assigning an unrelated page control to a recorded read.
+No shared tokens or primitive contract changed. Screenshots remain agent-reviewed
+candidates, not human acceptance.
+
+Local checks used source UI/runtime/transport/platform bundles with candidate 90's
+retained static assets in `/tmp/stateatom-dependencies/extension`, not a repackaged
+release. Native React/VS Code evidence is in
+`/tmp/stateatom-polish/native-1793206799783`: exact source navigation, all four
+360px screens, live input effect on a real React button, Undo, drafts across tabs,
+and no selected-header disappearance during edits. HTTPS synthetic-host evidence
+is `/tmp/stateatom-polish/production-1793206656331/result.json`; two confirmations
+still precede editing. The controlled DOM/ledger UI run exercised eight cases in
+`.artifacts/u02/input-fields-ui/2026-10-28T16-50-42-828Z`.

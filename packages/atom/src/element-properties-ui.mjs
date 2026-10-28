@@ -18,7 +18,7 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
   if(!visible){key=null;return false;}
   const globalStale=state.stale||state.analysis?.actionsInvalidated===true||state.analysis?.stateatom?.runtime?.status==='Stale';
   openDecision=state.capabilityPolicy?.operations?.open;const next=JSON.stringify([bundle,globalStale,openDecision,state.run,state.sourceGeneration,state.inspectionGeneration,state.analysis?.capabilities,state.stale,state.selection,state.attached]);if(key===next)return true;key=next;
-  const inputs=[],evidence=[],sources=[];let missing=0,staleCount=0,recordedInputs=0;
+  const inputs=[],evidence=[],sources=[],sourceGroups=new Map();let staleCount=0,recordedInputs=0;
   for(const row of bundle.properties){
    const name=row.property==='text'?'Text':'Disabled attribute',stale=row.status==='Stale'||!!globalStale;
    const scoped={...state,selection:row.selection,analysis:stale?null:row.analysis,stale:stale?{target:row.selection,reason:row.reason||state.stale?.reason||'Inspection changed; inspect again.'}:null};
@@ -31,12 +31,12 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
     if(dependencies.inputs.length){const list=el('div',undefined,'sp-atom-dependencies');for(const input of dependencies.inputs){
      const group=el('div'),line=el('div',undefined,'sp-data-row sp-atom-dependency');
      line.append(input.source?sourceLink(input.expression,input.source):el('span',input.expression,'sp-atom-dependency-name'),el('code',input.status==='Observed'?JSON.stringify(input.value):'Not recorded','sp-value'));group.append(line);
-     if(input.upstream?.length){const chain=el('details',undefined,'sp-atom-dependency-origin');chain.append(el('summary','Upstream reads'));for(const read of input.upstream){const row=el('div',undefined,'sp-data-row sp-atom-dependency');row.append(read.source?sourceLink(read.expression,read.source):el('span',read.expression),el('code',JSON.stringify(read.value),'sp-value'));chain.append(row);}group.append(chain);}
+     if(input.upstream?.length){const chain=el('details',undefined,'sp-atom-dependency-origin');chain.append(el('summary','Read from'));for(const read of input.upstream){const row=el('div',undefined,'sp-data-row sp-atom-dependency');row.append(read.source?sourceLink(read.expression,read.source):el('span',read.expression,'sp-atom-dependency-name'),el('code',JSON.stringify(read.value),'sp-value'));chain.append(row);}group.append(chain);}
      list.append(group);
     }card.append(list);recordedInputs+=dependencies.inputs.length;}
     else card.append(el('p','No scalar inputs were recorded for this expression.','sp-atom-hint'));
     inputs.push(card);
-   }else missing++;
+   }
    const group=el('details',undefined,'sp-disclosure');group.append(el('summary',name+' · '+(stale?'Stale':row.status)));const body=el('div');
    if(row.selection)body.append(el('p','Recorded '+new Date(row.selection.observedAt).toLocaleTimeString()+' · '+row.property+' = '+JSON.stringify(row.selection.value),'sp-atom-hint'));
    if(row.latestObservation)body.append(el('p','Separately checked '+new Date(row.latestObservation.observedAt).toLocaleTimeString()+' · '+row.property+' = '+JSON.stringify(row.latestObservation.value)+'. Code explanation has not been refreshed.','sp-atom-hint'));
@@ -45,13 +45,16 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
    body.append(el('p',view.commit.status+' · '+view.commit.reason,'sp-atom-hint'));
    if(row.analysis){const raw=el('details');raw.append(el('summary','Scoped property records'),el('pre',JSON.stringify({sources:row.analysis.sources,stateatom:row.analysis.stateatom},null,2)));body.append(raw);}
    group.append(body);evidence.push(group);
-   const locations=el('section',undefined,'sp-atom-property-card');locations.append(el('h4',name,'sp-section-title'));sourceRows(locations,view);if(!view.sources.length)locations.append(el('p',stale?'Snapshot is stale; inspect again.':'No source location linked to this property.','sp-atom-hint'));sources.push(locations);
+   for(const source of view.sources){const id=JSON.stringify(source),group=sourceGroups.get(id)||{source,names:[]};if(!group.names.includes(name))group.names.push(name);sourceGroups.set(id,group);}
   }
-  if(!inputs.length){
+  for(const {source,names} of sourceGroups.values()){const locations=el('section',undefined,'sp-atom-property-card');locations.append(el('h4',names.join(' · '),'sp-section-title'));sourceRows(locations,{sources:[source]});sources.push(locations);}
+  if(!sources.length)sources.push(el('p',staleCount?'Source links are out of date. Refresh the inspection.':'No source locations linked to this element.','sp-help'));
+  if(!inputs.length&&staleCount){inputs.push(el('p','Refresh dependencies after changing page values.','sp-help'));}
+  else if(!inputs.length){
    const empty=el('section',undefined,'sp-atom-dependencies-empty');empty.append(el('h3',staleCount?'Refresh dependencies':'Dependencies not found','sp-title'),el('p',staleCount?'The page changed. Inspect this element again to update its expression and inputs.':'Atom can see the element, but has not linked it to the code that produces it.','sp-help'));
    const connected=state.analysis?.capabilities?.sourceResolver==='open-ide';const action=el('button',staleCount?'Inspect again':connected?'Set up runtime inspection':'Connect project','sp-button-primary');action.type='button';action.onclick=staleCount?refresh:connectProject;empty.append(action);inputs.push(empty);
-  }else if(staleCount){const update=el('button','Refresh changed dependencies','sp-button-subtle');update.type='button';update.onclick=refresh;inputs.push(update);}else if(missing)inputs.push(el('p','Some element properties have no recorded dependency information.','sp-atom-hint'));
-  if(recordedInputs)inputs.push(el('p','Recorded inputs · click a name to open its code. Direct editing of these reads is not available.','sp-atom-hint'));
+  }else if(staleCount){const update=el('button','Refresh changed dependencies','sp-button-subtle');update.type='button';update.onclick=refresh;inputs.push(update);}
+  if(recordedInputs)inputs.push(el('p','Recorded values · read-only. Click a name to open code.','sp-atom-hint'));
   $('element-properties').replaceChildren(...inputs);$('element-property-evidence').replaceChildren(...evidence);$('element-property-sources').replaceChildren(...sources);return true;
  }
  return {render};

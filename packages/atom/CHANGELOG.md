@@ -2,6 +2,17 @@
 
 ## Unreleased
 
+- Restore page/response editing beside Dependencies with one mounted editor.
+  Start in live mode; retain explicit Apply, held drafts, Undo, owner and production
+  permission checks. Show one editable value per field, with last-read data in scope
+  details. Recorded dependency reads remain read-only; no writer is inferred.
+- Align code links and unavailable input names; consolidate identical source records
+  without merging distinct locations. Collapse optional action explanations and
+  simplify Details, Source and the post-edit stale notice using shared primitives.
+- Keep the selected element through owned editor refresh notifications. Immediately
+  stale the previous runtime and action evidence, including while refresh is pending;
+  reread native values without treating them as a fresh causal explanation.
+
 - Put recorded dependencies first: one selected-element identity, exact property
   expression, its scalar reads and direct source links. Nest upstream reads instead
   of repeating them as peer values; keep skipped inputs explicitly unrecorded.

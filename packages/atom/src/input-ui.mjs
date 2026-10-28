@@ -4,16 +4,16 @@ export const inputEditorTemplate=`
 <section id="input-editor" data-atom-id="input-editor" class="sp-atom-input-editor" aria-label="Edit page values" hidden>
  <span id="input-preview" data-atom-id="input-preview" class="sp-status" hidden>Preview</span>
  <button id="input-open" data-atom-id="input-open" class="sp-button-primary">Show editable fields</button><button id="input-reconnect" data-atom-id="input-reconnect" hidden>Reopen inspector</button>
- <div id="input-column-headings" data-atom-id="input-column-headings" class="sp-section-row sp-atom-input-columns"><span id="input-kind" data-atom-id="input-kind"></span><span id="input-columns" data-atom-id="input-columns">Current → New value</span></div>
+ <div id="input-column-headings" data-atom-id="input-column-headings" class="sp-section-row sp-atom-input-columns"><span id="input-kind" data-atom-id="input-kind"></span><span id="input-columns" data-atom-id="input-columns">Applies as you type</span></div>
  <div id="input-fields" data-atom-id="input-fields"></div>
  <div class="sp-atom-input-actions sp-atom-edit-commit"><button id="input-apply" data-atom-id="input-apply" class="sp-button-primary" hidden>Apply changes</button><button id="input-discard" data-atom-id="input-discard" class="sp-button-subtle" hidden>Discard</button><button id="input-undo" data-atom-id="input-undo" class="sp-button-subtle" hidden>Undo</button></div>
  <p id="input-status" data-atom-id="input-status" class="sp-atom-input-status" role="status" aria-live="polite"></p>
  <details id="input-options" data-atom-id="input-options" class="sp-disclosure"><summary>Editing options</summary>
- <div class="sp-atom-input-toolbar"><label>Fields from <select id="input-source" data-atom-id="input-source"><option value="dom-control">Page fields</option><option value="json-response">Network responses</option></select></label><div id="input-modes" data-atom-id="input-modes" class="sp-atom-input-modes" role="group" aria-label="When to apply changes"><button id="input-mode-draft" data-atom-id="input-mode-draft" aria-pressed="true">On Apply</button><button id="input-mode-live" data-atom-id="input-mode-live" aria-pressed="false">As I type</button></div></div>
+ <div class="sp-atom-input-toolbar"><label>Fields from <select id="input-source" data-atom-id="input-source"><option value="dom-control">Page fields</option><option value="json-response">Network responses</option></select></label><div id="input-modes" data-atom-id="input-modes" class="sp-atom-input-modes" role="group" aria-label="When to apply changes"><button id="input-mode-draft" data-atom-id="input-mode-draft" aria-pressed="false">On Apply</button><button id="input-mode-live" data-atom-id="input-mode-live" aria-pressed="true">As I type</button></div></div>
  <p id="input-note" data-atom-id="input-note" class="sp-atom-hint"></p>
  <div class="sp-atom-input-actions"><button id="input-read" data-atom-id="input-read">Refresh fields</button><button id="input-baseline" data-atom-id="input-baseline">Restore original values</button><button id="input-close" data-atom-id="input-close" hidden>Stop editing</button></div>
  <p id="input-observation" data-atom-id="input-observation" class="sp-atom-hint"></p>
- <p>Fields are collected from this page; their effect on the selected element is not established. Response replacements wait for the next matching request. Closing removes replacement rules, but does not restore changed values.</p>
+ <p>Changes can trigger app actions. Undo does not reverse server changes. Response replacements wait for the next matching request. Closing removes rules; it does not restore changed values.</p>
  </details>
  <details id="input-unavailable" data-atom-id="input-unavailable" hidden><summary id="input-unavailable-title" data-atom-id="input-unavailable-title">Unavailable fields</summary><ul id="input-unavailable-list" data-atom-id="input-unavailable-list"></ul></details>
 </section>`;
@@ -28,7 +28,7 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
  const rows=new Map();let state=null,caps=null,capKey=null,capEpoch=0,visible=false,disposed=false,localError=null,disclosureKey=null,disclosureState=null;
  const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
  const text=(id,value)=>{const el=$(id);if(el.textContent!==value)el.textContent=value;};
- const controller=createInputController({client,onChange:render,initialMode:'draft'});
+ const controller=createInputController({client,onChange:render,initialMode:'live'});
  function run(fn){localError=null;return Promise.resolve().then(fn).catch(e=>{localError=explanation(e.code,e.message);render();});}
  function decision(op){return caps?.operations?.[op];}
  function capabilityKey(next,ownedPolicy=null){
@@ -42,7 +42,7 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
  }
  function makeRow(entry){
   const r=fieldResource(entry),name=label(r),el=node('article',undefined,'sp-atom-input-row');el.setAttribute('data-input-resource',entry.id);el.setAttribute('data-input-selector',r.locator.selector||'');
-  const top=node('div',undefined,'sp-atom-input-row-top'),title=node('label',name,'sp-atom-input-name'),values=node('div',undefined,'sp-atom-input-values'),observed=node('code',undefined,'sp-atom-input-current'),arrow=node('span','→','sp-atom-input-arrow'),control=node('div',undefined,'sp-atom-input-control'),error=node('p',undefined,'sp-error');
+  const top=node('div',undefined,'sp-atom-input-row-top'),title=node('label',name,'sp-atom-input-name'),values=node('div',undefined,'sp-atom-input-values'),observed=node('code',undefined,'sp-atom-input-current'),control=node('div',undefined,'sp-atom-input-control'),error=node('p',undefined,'sp-error');
   const uid='input-'+crypto.randomUUID();error.id=uid+'-error';error.hidden=true;const common=field=>{field.setAttribute('aria-label',name);field.setAttribute('aria-describedby',error.id);return field;};let input,buttons;
   if(r.type==='boolean'){
    control.setAttribute('role','group');control.setAttribute('aria-label',name);buttons=[true,false].map(value=>{const b=common(node('button',String(value)));b.type='button';b.setAttribute('aria-label',name+': '+value);b.onclick=()=>run(()=>controller.edit(entry.id,value));control.append(b);return b;});
@@ -54,14 +54,14 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
    input.onblur=()=>run(()=>controller.flush(entry.id));input.onkeydown=e=>{if(e.key==='Enter'&&(input.tagName!=='TEXTAREA'||e.ctrlKey)){e.preventDefault();void run(()=>controller.flush(entry.id));}};control.append(input);
   }
   if(input){input.id=uid;title.htmlFor=uid;}else title.setAttribute('id',uid+'-label');
-  values.append(observed,arrow,control);top.append(title,values);el.append(top);
+  values.append(control);top.append(title,values);el.append(top);
   const meta=node('div',undefined,'sp-atom-input-meta'),hint=node('span',r.kind==='dom-control'?'Native '+r.locator.control:'Observed response'),reset=node('button','Discard field','sp-button-subtle');reset.type='button';reset.onclick=()=>run(()=>controller.discard(entry.id));meta.append(reset);el.append(meta,error);
-  const details=node('details'),summary=node('summary','Source / scope'),location=node('code');location.textContent=r.kind==='dom-control'?r.locator.selector:r.locator.method+' '+r.locator.url+' #'+r.locator.pointer;details.append(summary,hint,location,node('p','Consumption and selected-property dependency remain unknown.','sp-atom-hint'));el.append(details);
+  const details=node('details'),summary=node('summary','Source / scope'),location=node('code');location.textContent=r.kind==='dom-control'?r.locator.selector:r.locator.method+' '+r.locator.url+' #'+r.locator.pointer;details.append(summary,hint,location,observed,node('p','Consumption and selected-property dependency remain unknown.','sp-atom-hint'));el.append(details);
   return{el,input,buttons,observed,error,reset,location,options:null,key:rowKey(r)};
  }
  function render(){
   if(disposed)return;const s=controller.snapshot(),d=s.draft,e=s.editor;const region=$('input-editor');region.hidden=!visible||state?.readOnly===true&&!state?.productionChange?.active&&!s.active&&!d?.dirtyCount;if(!visible)return;
-  if(s.active)$('input-editing-help').textContent='Applying can trigger app actions. Undo does not reverse server changes.';
+  if(s.active)$('input-editing-help').textContent=(e?.sourceKind==='json-response'?'Response fields':'Page fields')+' · relation to this element not established.';
   region.setAttribute('aria-busy',String(s.busy));$('input-preview').hidden=!preview||state?.capabilityPolicy?.features?.['inputs.live']?.available===true;
   for(const m of['live','draft'])$('input-mode-'+m).setAttribute('aria-pressed',String(s.mode===m));
   $('input-source').disabled=s.busy||s.opening||s.connectionLost;
@@ -83,10 +83,10 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
   $('input-apply').hidden=!d?.dirtyCount||s.mode!=='draft'&&!d?.heldDraft;$('input-apply').disabled=!s.active||s.busy||!d?.canApply||!decision('inputs-apply')?.available;
   text('input-apply','Apply changes'+(d?.dirtyCount?' · '+d.dirtyCount:''));$('input-discard').disabled=s.busy||!d?.dirtyCount;
   $('input-read').disabled=!s.active||s.busy||!decision('inputs-read')?.available;$('input-undo').disabled=!s.active||s.busy||!e?.canUndo||!decision('inputs-undo')?.available;$('input-baseline').disabled=!s.active||s.busy||!e?.canRestoreBaseline||!decision('inputs-baseline')?.available;
-  text('input-note',selecting?'Finish or cancel element selection before opening inputs.':s.connectionLost?'Reopen the inspector, then inspect again; old drafts do not restore authority.':heldClosed?'A local draft from the closed investigation is kept read-only. Discard it to open another target.':d?.heldDraft?'Draft kept. Apply or discard to resume Live.':s.mode==='draft'?'Draft stays local until Apply.':s.active?'Live sends valid text/number edits after 250 ms; Enter or blur sends now.':'Choose a source, then open supported inputs.');
-  text('input-kind',e?(e.sourceKind==='dom-control'?'PAGE FIELDS':'RESPONSE FIELDS'):'');text('input-columns',e?.sourceKind==='json-response'?'Rule → New value':'Current → New value');
+  text('input-note',selecting?'Finish or cancel element selection before opening inputs.':s.connectionLost?'Reopen the inspector, then inspect again; old drafts do not restore authority.':heldClosed?'A local draft from the closed investigation is kept read-only. Discard it to open another target.':d?.heldDraft?'Draft kept. Apply or discard to resume Live.':s.mode==='draft'?'Draft stays local until Apply.':s.active?'Live sends valid text/number edits after 250 ms; Enter or blur sends now.':'Open page fields to try a change.');
+  text('input-kind',e?(e.sourceKind==='dom-control'?'PAGE FIELDS':'RESPONSE FIELDS'):'');text('input-columns',e?.sourceKind==='json-response'?'Next matching response':s.mode==='live'&&!d?.heldDraft?'Applies as you type':'Apply when ready');
   const ids=new Set();for(const entry of d?.entries||[]){ids.add(entry.id);const resource=fieldResource(entry);let row=rows.get(entry.id);if(!row||row.key!==rowKey(resource)){const old=row;row=makeRow(entry);rows.set(entry.id,row);if(old)old.el.replaceWith(row.el);else $('input-fields').append(row.el);}const disabled=!s.active||entry.missing||!decision('inputs-apply')?.available;
-   row.el.setAttribute('data-dirty',String(entry.dirty));row.observed.textContent=short(entry.resource.value);row.observed.title=short(entry.resource.value);row.reset.hidden=!entry.dirty;row.reset.disabled=s.busy;
+   row.el.setAttribute('data-dirty',String(entry.dirty));row.observed.textContent='Last read: '+short(entry.resource.value);row.observed.title=short(entry.resource.value);row.reset.hidden=!entry.dirty;row.reset.disabled=s.busy;
    const message=entry.conflict?'Field changed elsewhere. Discard this draft.':entry.error?explanation(entry.error,entry.error):null;row.error.hidden=!message;row.error.textContent=message||'';
    if(row.buttons)row.buttons.forEach((b,i)=>{b.disabled=disabled;b.setAttribute('aria-pressed',String(entry.raw===(i===0)));b.setAttribute('aria-invalid',String(!entry.valid||entry.conflict));});
    else{const field=row.input;field.disabled=disabled;field.setAttribute('aria-invalid',String(!entry.valid||entry.conflict));if(field.tagName==='SELECT'){
