@@ -3046,7 +3046,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "A02: bound one ordinary producer-to-selected-value lineage path and its wrong-writer/refetch/alias counterexamples from existing evidence; identify the concrete mechanism gap before implementation, no whole audit or closed native retry.",
+      "next_bounded_step": "A02 source-only: establish bounded title-writer/alias admission and exact missing Item parameter/read/commit edge for282; finite implementation decision or stopping point, no old native retry.",
       "prior_stopping_point": {
         "invoked": true,
         "reason": "Ordinary pinned vendor derivative now acquires exact native reducer/state ancestors without fixture oracle. Product19 integration and exact state-row/prop/parameter/destructure/selected-property transfer plus writer exclusions remain missing. Do not build general ownership infrastructure this cycle.",
@@ -3425,7 +3425,16 @@
       },
       "historical_next_bounded_step_before_night_checkpoint": "ONE final bounded source review; I01 separate host scope pending, no oldnative repeats.",
       "historical_next_bounded_step_before_I02_current82": "FullA02open: bounded field/writer/parameter/selected-producer prerequisites remain.51–53 source closed,50native budget exhausted; no guessed cause or blind retry. Next independent I01 is separately authorized and in progress; current native Capture regression remains.",
-      "historical_next_bounded_step_before_overhead_acceptance": "FullA02 field/writer/parameter/selected-producer mechanism remains open. Source54/55 packaged10, no native weak-dispatch/50cause proof or old50retry. Current independent step V02.33changed87original performance gate."
+      "historical_next_bounded_step_before_overhead_acceptance": "FullA02 field/writer/parameter/selected-producer mechanism remains open. Source54/55 packaged10, no native weak-dispatch/50cause proof or old50retry. Current independent step V02.33changed87original performance gate.",
+      "first_release_scenario": {
+        "record": "282-a02-first-release-scenario.md",
+        "status": "specified-not-implemented-or-accepted",
+        "authority": "maintainer delegated scenario formulation; exact choices by executor",
+        "pattern": "observed immutable reducer title write through state/props/parameter/read to selected committed label",
+        "positive_scope": "ordinary supported local-state pattern; no new HTTP/query-origin claim",
+        "ownership_gate": "unresolved; explicit writer/alias exclusion required",
+        "whole_A02_complete": false
+      }
     },
     {
       "id": "A03",
@@ -13411,11 +13420,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Exact90 official intake already complete within280 scope. Recorded overhead is no longer blocking; A02/L02 product gaps and remaining final acceptance/distribution stay mandatory.",
+    "current_activity_note": "Bounded first-release A02 scenario specified in282 under delegated choice; not implemented or qualified. Overhead acceptance281 and all other release requirements unchanged.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "cccc90f",
     "current_record_date": "2026-10-28",
-    "next_bounded_step": "A02: bound one ordinary producer-to-selected-value lineage path and its wrong-writer/refetch/alias counterexamples from existing evidence; identify the concrete mechanism gap before implementation, no whole audit or closed native retry.",
+    "next_bounded_step": "A02 source-only: establish bounded title-writer/alias admission and exact missing Item parameter/read/commit edge for282; finite implementation decision or stopping point, no old native retry.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
