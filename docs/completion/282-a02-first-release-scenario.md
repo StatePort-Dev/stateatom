@@ -3,6 +3,8 @@
 28 October 2026. The maintainer delegated formulation of a sufficient bounded
 first-release scenario. The choices below are the executor's specification under
 that instruction, not earlier approved implementation details or completed evidence.
+**Approved:** the maintainer subsequently instructed “Вот, фиксируй это и выполняй все оставшееся до релиза самостоятельно”. Scenario and autonomous execution are now approved; implementation/evidence are still pending.
+
 A02 remains open. This selects one ordinary **state** pattern permitted by A02;
 it does not waive ownership, repeated-update, identity or counterexample criteria.
 

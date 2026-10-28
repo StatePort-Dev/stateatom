@@ -23,3 +23,28 @@ test('tree and semantic-event capacity refuse rather than returning a truncated 
 test('hook and total ancestor capacities are explicit boundaries',async()=>{for(const layout of[[65],[33,33]]){const f=await fixture();let parent=f.rootFiber;for(const n of layout){const fiber={tag:0};f.tap('fiber',fiber);parent.child=fiber;parent=fiber;let first=null,prev=null;for(let i=0;i<n;i++){const state={},queue={dispatch(){}},hook={queue,memoizedState:state,next:null};if(prev)prev.next=hook;else first=hook;prev=hook;f.tap('state-result',[state,queue.dispatch],hook,fiber);}fiber.memoizedState=first;}parent.child=f.first;assert.equal(f.api.snapshot(f.dom1).status,'Unknown/Unsupported');}});
 test('returned JSON mutation cannot mutate private native identity records',async()=>{const f=await fixture(),a=f.api.snapshot(f.dom1);a.ancestors[0].resultId='forged';assert.notEqual(f.api.snapshot(f.dom1).ancestors[0].resultId,'forged');});
 test('applied input and reducer function identities survive as opaque IDs without becoming property lineage',async()=>{const state={},f=await fixture({state}),initial=f.api.snapshot(f.dom1);assert.equal(initial.ancestors[0].inputId,null);assert.equal(initial.ancestors[0].reducerId,null);assert.equal(typeof initial.ancestors[0].dispatchId,'string');f.apply({});const after=f.api.snapshot(f.dom1).ancestors[0];assert.equal(after.inputId,initial.ancestors[0].resultId);assert.equal(after.inputIdentityStatus,'Observed');assert.equal(typeof after.reducerId,'string');assert.equal(after.dispatchId,initial.ancestors[0].dispatchId);assert.equal(f.api.snapshot(f.dom1).selectedPropertyOrigin,'Unknown/Unsupported');});
+
+test('same-value alias write is invisible to native ancestor identities and must not become title provenance',async()=>{
+ const row={id:'one',title:'SAME'},other={id:'two',title:'SAME'},state=[row,other],f=await fixture();
+ f.apply(state);const before=f.api.snapshot(f.dom1),alias=row,events=f.api.retention().events;
+ assert.equal(before.ancestors[0].updateOriginStatus,'Observed');
+ alias.title='SAME';
+ const after=f.api.snapshot(f.dom1);
+ assert.deepEqual(after,before);assert.equal(f.api.retention().events,events);
+ assert.equal(after.fieldOwnership,'Unknown/Unsupported');assert.equal(after.selectedPropertyOrigin,'Unknown/Unsupported');assert.equal(after.fullPath,false);
+ const second=f.api.snapshot(f.dom2);assert.notEqual(second.nodeId,after.nodeId);assert.equal(second.ancestors[0].resultId,after.ancestors[0].resultId);assert.equal(second.selectedPropertyOrigin,'Unknown/Unsupported');
+});
+test('changed then restored alias write cannot be excluded by equal final title or unchanged state reference',async()=>{
+ const row={title:'SAME'},state=[row],f=await fixture();f.apply(state);const before=f.api.snapshot(f.dom1);
+ const alias=row;alias.title='OTHER';assert.equal(state[0].title,'OTHER');alias.title='SAME';
+ assert.equal(state[0],row);assert.deepEqual(f.api.snapshot(f.dom1),before);assert.equal(before.fullPath,false);
+});
+test('observed immutable same-title replacement advances the update while retained row still has no field producer',async()=>{
+ const first={id:'one',title:'SAME'},second={id:'two',title:'SAME'},old=[first,second],f=await fixture();f.apply(old);
+ const before=f.api.snapshot(f.dom1),replacement={...first,title:'SAME'},next=[replacement,second];f.apply(next);
+ const after=f.api.snapshot(f.dom1),untouched=f.api.snapshot(f.dom2);
+ assert.notEqual(next[0],old[0]);assert.equal(next[1],old[1]);assert.equal(next[0].title,old[0].title);
+ for(const key of ['resultId','revisionId','updateId'])assert.notEqual(after.ancestors[0][key],before.ancestors[0][key]);
+ assert.equal(after.ancestors[0].inputId,before.ancestors[0].resultId);
+ for(const result of [after,untouched]){assert.equal(result.status,'Observed');assert.equal(result.fieldOwnership,'Unknown/Unsupported');assert.equal(result.selectedPropertyOrigin,'Unknown/Unsupported');assert.equal(result.fullPath,false);}
+});

@@ -1,5 +1,7 @@
 # Project status
 
+**Current autonomous execution:** A02 scenario282 approved. [Writer-admission check283](completion/283-a02-title-writer-admission.md):35 source checks PASS; required alias-writer exclusion and selected parameter/read/commit mechanism still missing. Bounded writer/escape-path admission remains to assess; stopping rule not reached. Independent U04 invalid-selector correction next; full21/29 unchanged.
+
 **A02 scenario selected, 28 October:** [edited list-item title](completion/282-a02-first-release-scenario.md), ordinary React local state through props to selected label. Same-value/wrong-row/alias and real packaged UI evidence required; writer ownership remains an unresolved mechanism gate. Specification only, A02 open/21of29 unchanged. Next ONE source-only writer/parameter/commit feasibility item.
 
 **Current release decision, 28 October:** the maintainer accepts Active overhead
