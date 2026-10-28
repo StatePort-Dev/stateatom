@@ -5,7 +5,9 @@ complete (72.41%). Real model initialization and bounded warm cancel/stale/fresh
 controls passed; experimental v2quality fails4scoped/6reject. Original87Active
 overhead27.22/27.36% still misses10%. Latest worker-only diagnostic269 identifies
 sampled publication/storage code paths, not the full overhead cause or speedup.
-NextONE V02.35 bounded source-only follow-up coalescing; no publication/SDK.
+Reviewed sourcee6bd00d now coalesces dirty follow-ups;77affected/full6020PASS/ONE
+review0C0I0M. Source differs1of270 from immutable88; no new native effect claimed.
+NextONE V02.36 exact local89pack; no publication/SDK.
 
 The scoped increments below retain their original artifact/revision boundaries.
 
@@ -3335,3 +3337,9 @@ ONE worker-only diagnostic10profiles/200GET,1619samples/1539idle/41workerSelf/
 62workerInclusive;18source/ONEreader2025stable/ONEreview0C0I0M. Storage publisher
 path sampled, no native call-count/CPU%/27%cause or10%target acceptance. No old
 matrix/gate/TLS/model rerun. NextONE V02.35 source coalescing controls, source-only.
+
+[V02.35 source closed](completion/270-v02-publication-follow-up-coalescing.md), e6bd00d:
+same16ms scheduler for dirty follow-ups, exact promises/errors/current-state and
+terminal semantics. RED59/6→77affected/full6020PASS; sourcefixture actual storage
+3→2 with4records/gaps0, epoch scenario6 preserved. ONEreview0C0I0M/2036protected
+bindings with4declared paths. Official88oldbytes unchanged; nextONE exact89package.

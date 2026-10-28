@@ -298,3 +298,8 @@ performance acceptance. Source-linked storage publication path supports one next
 source-only scheduling test, not a27%cause or speedup claim. Distinguish actual
 storage epoch retries from publisher invocations. Original87MISS10%/budgets and
 full21/29 remain; nextONE V02.35. Current88/official assets unchanged.
+
+V02.35sourcee6bd00d closed: one publisher source/unchanged16ms value, dirty follow-up
+coalescing;77affected/full6020PASS/ONEreview0C0I0M. Fixed synthetic-native runtime
+storage3→2, allrecords/gaps/terminal epoch scenario preserved. No native speedup or
+10%acceptance. Source now differs1of270/2of327 from immutable88; nextONE V02.36local89.
