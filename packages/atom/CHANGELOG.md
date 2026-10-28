@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.0-candidate.20261028.90
 
 - Complete tab-list refresh status in the resulting selection context when the
   previously selected tab has disappeared. Keep the empty selection and existing
