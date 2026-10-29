@@ -2,7 +2,7 @@
   "schema": "stateatom.grounded-product-case/1",
   "maximumAttemptsPerHost": 1,
   "maxUIInitiationsPerHost": 5,
-  "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product/2026-10-29",
+  "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product-ready/2026-10-29",
   "project": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product/2026-10-29/project",
   "profileCase": "docs/testing/official-comparison-pilot-case.json",
   "plugin": {
@@ -92,7 +92,7 @@
     }
   },
   "inputs": {
-    "tests/integration/grounded-product.mjs": "1525f408429e2e8a8e790f38ce899c5e0c2b0b2f1bfaac2b95628ef106b2a121",
+    "tests/integration/grounded-product.mjs": "7f07eefe3744e2e31d8b78b5157612f93a38affc8a7ce167ca7db6ec86c610ff",
     "tests/helpers/grounded-product-server.mjs": "37b56a73700e57c55bbad326c348a58f6d07a4a2a95604fca9ec83edd76c572b",
     "scripts/native-browser.mjs": "ddb6b665824e6c200b16b52108657baf7d23ad0fcdea9ce5b9c2ea6a5fa5f3a2",
     "scripts/harness.mjs": "4237bf6218e06d0042968316356e8ac90e30ac5ac54c67cc821d6157ded98874",
@@ -123,5 +123,11 @@
     "Original first-download266 remains historical; cached model clone only",
     "Human visual review not implied",
     "Case329 corpus quality unchanged, not rerun"
-  ]
+  ],
+  "previousAttempt": {
+    "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product/2026-10-29",
+    "caseSha256": "d77fdaa2124155ce1de2c791a3109f1f023a9b7125088551f077c18984dbca73",
+    "resultSha256": "6997ec656ea5a848e0cf117080c063db843bac60421c9c6d3ccafefb5a1fa139",
+    "reason": "Driver raced asynchronous tab list refresh, before model requests; all cleanup and frozen inputs passed."
+  }
 }

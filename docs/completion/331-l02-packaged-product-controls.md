@@ -27,3 +27,11 @@ The31-response factual/usefulness result329 and historical first download266 are
 retained separately. This campaign does not rerun the corpus or overwrite earlier
 failures. L02 remains open until actual controls, missing-device fallback, cleanup,
 visual comparison and the required final whole-item review are satisfied.
+
+First official attempt at8d57fb2 stopped before any model request: the native driver
+selected the tab immediately after asynchronous Refresh, before its option rendered.
+Raw `.artifacts/l02/grounded-product/2026-10-29/official/results.json` is retained,
+all7 cleanup checks and frozen inputs passed. Correct the driver to await the actual
+tab option (existing product state, no fixed sleep), register a new output directory
+`grounded-product-ready`; original attempt/driver/case remain immutable. This is a
+concrete driver correction, not a model retry or altered acceptance criterion.
