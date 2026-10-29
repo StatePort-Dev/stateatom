@@ -3,12 +3,17 @@ import {build} from 'esbuild';import {execFileSync} from 'node:child_process';
 import {mkdir,copyFile,readFile,writeFile} from 'node:fs/promises';import {createHash} from 'node:crypto';
 import {root} from './vite-config.mjs';
 import {assertImmutableArtifact} from './atom-package-receipt.mjs';
+import {packListToolchain} from './pack-list-toolchain.mjs';
 const pluginOnly=process.argv.includes('--plugin-only'),helperOnly=process.argv.includes('--helper-only');
 if(pluginOnly&&helperOnly)throw Error('Choose one development artifact mode');
 if(process.argv.slice(2).some(arg=>!['--plugin-only','--helper-only'].includes(arg)))throw Error('Unknown development packaging option');
 const tag=new Date().toISOString().replace(/[:.]/g,'-'),out=root+'/.artifacts/development/'+tag,pkg=root+'/packages/vite-plugin';await mkdir(out,{recursive:true});await mkdir(pkg+'/dist/engine',{recursive:true});await mkdir(pkg+'/dist/first-read',{recursive:true});
 const inputs={};let pack;
 if(!helperOnly){
+const selected=await build({entryPoints:[root+'/src/engine/list-install.mjs'],bundle:true,packages:'external',format:'esm',platform:'node',metafile:true,outfile:pkg+'/dist/selected-list/plugin.mjs'});
+const toolchain=await packListToolchain(root,pkg+'/dist/selected-list/runtime.json.gz');
+for(const [file,entry]of Object.entries(selected.metafile.inputs))inputs[file]=createHash('sha256').update(await readFile(file)).digest('hex');
+for(const record of toolchain.files)inputs['selected-list/'+record.file]=record.sha256;
 const bundle=await build({entryPoints:[root+'/src/engine/vite-install.mjs'],bundle:true,packages:'external',format:'esm',platform:'node',metafile:true,outfile:pkg+'/dist/engine/plugin.mjs'});
 for(const name of ['observer','react-state','query-handoff','query-calls','action-observer','react19-acquisition','reducer-write-receipts','private-collections','component-field-receipts','list-data-receipts'])await copyFile(root+'/src/engine/'+name+'.mjs',pkg+'/dist/engine/'+name+'.mjs');await copyFile(root+'/src/first-read/query-ledger.mjs',pkg+'/dist/first-read/query-ledger.mjs');
 await mkdir(pkg+'/core',{recursive:true});await copyFile(root+'/core/action-observation.mjs',pkg+'/core/action-observation.mjs');

@@ -74,7 +74,7 @@ async function nativeFacts(s){
  },info.targetId);
  if(installed?.id!==s.extensionId||installed.url!==s.workerURL||canonical(installed.manifest)!==canonical(s.output.manifest))throw Error('Installed output identity unavailable');
  if(installed.app?.targetId!==info.targetId||!Number.isSafeInteger(installed.app.tabId)||installed.tab?.id!==installed.app.tabId||installed.tab.openerTabId!==undefined)throw Error('Native app tab join unavailable');
- const output=await outputIdentity(s.root);if(output.identity!==s.output.identity)throw Error('Built output changed');
+ const output=await outputIdentity(s.extensionRoot||s.root);if(output.identity!==s.output.identity)throw Error('Built output changed');
  return {targetId:info.targetId,browserVersion:version.product,frameId:frame.id,url:info.url};
 }
 async function boundedFacts(s){
@@ -202,8 +202,8 @@ export async function controlledBrowserView(value){
  }catch{stopTransport(s);return null;}
 }
 
-export async function launchControlledFirstReadBrowser({projectRoot=process.cwd(),headed=true,appProfile='first-read'}={}){
- if(appProfile==='selected-list')return launchNativeListBrowser({projectRoot,headed});
+export async function launchControlledFirstReadBrowser({projectRoot=process.cwd(),headed=true,appProfile='first-read',extensionRoot=projectRoot,browserExecutable}={}){
+ if(appProfile==='selected-list')return launchNativeListBrowser({projectRoot,headed,extensionRoot,browserExecutable});
  let s,browser,cdp,panelCDP,closing;
  async function close(){
   if(closing)return closing;
@@ -314,7 +314,7 @@ export async function launchControlledFirstReadBrowser({projectRoot=process.cwd(
 
 // Current list route: the native driver does not claim the app debugger before
 // Atom's real admission. The extra code observer is armed only after that lease.
-async function launchNativeListBrowser({projectRoot,headed}){
+async function launchNativeListBrowser({projectRoot,headed,extensionRoot,browserExecutable}){
  let browser,s,rootCDP,guardianSession,closing;
  async function close(){if(closing)return closing;if(s){s.closed=true;clearTimeout(s.expiryTimer);s.targetHistory?.close();for(const[event,fn]of s.targetHandlers||[])rootCDP.off(event,fn);}
   closing=(async()=>{const errors=[];if(s?.cdp){try{await closeTransport(s);}catch(e){errors.push(e)}try{if(!s.cdpDetached)await s.cdp.detach();}catch(e){errors.push(e)}}if(guardianSession)try{await guardianSession.detach();}catch(e){errors.push(e)}if(browser)try{await browser.context.close();}catch(e){errors.push(e)}if(errors.length)throw Error('Controlled native list cleanup failed');})();return closing;
@@ -323,14 +323,14 @@ async function launchNativeListBrowser({projectRoot,headed}){
   if(typeof projectRoot!=='string'||typeof headed!=='boolean')throw Error('Launch options denied');
   const root=path.resolve(projectRoot);if(await realpath(root)!==root)throw Error('Workspace denied');
   const rootStat=await lstat(root);if(!rootStat.isDirectory()||!owned(rootStat))throw Error('Workspace denied');
-  const output=await outputIdentity(root),workerText=await readFile(path.join(output.base,'worker.js'),'utf8');if(digest(workerText)!==output.workerDigest)throw Error('Built worker changed');
-  const parser=await import(pathToFileURL(createRequire(path.join(root,'package.json')).resolve('@babel/parser')).href),ast=parser.parse(workerText,{sourceType:'module'}),helpers=ast.program.body.filter(n=>n.type==='FunctionDeclaration'&&n.id?.name==='installFetchPolicy');
+  extensionRoot=path.resolve(extensionRoot);const output=await outputIdentity(extensionRoot),workerText=await readFile(path.join(output.base,'worker.js'),'utf8');if(digest(workerText)!==output.workerDigest)throw Error('Built worker changed');
+  const parser=await import(pathToFileURL(createRequire(path.join(extensionRoot,'package.json')).resolve('@babel/parser')).href),ast=parser.parse(workerText,{sourceType:'module'}),helpers=ast.program.body.filter(n=>n.type==='FunctionDeclaration'&&n.id?.name==='installFetchPolicy');
   if(helpers.length!==1||helpers[0].end-helpers[0].start>32768)throw Error('Built policy declaration unavailable');
   const declaration=workerText.slice(helpers[0].start,helpers[0].end),policySources=new Set([declaration,'('+declaration+')','('+declaration+'\n)']),policyLengths=new Set([...policySources].map(v=>v.length));
   let dir=root;for(const name of['.runtime','first-read-sessions']){dir=path.join(dir,name);try{await mkdir(dir,{mode:0o700});}catch(e){if(e.code!=='EEXIST')throw e}await safeDirectory(dir,{privateMode:name==='first-read-sessions'});}
   const runtime=path.join(dir,randomUUID());await mkdir(runtime,{mode:0o700});await safeDirectory(runtime,{privateMode:true});const profile=path.join(runtime,'browser');
   const nativeURL=new URL('../../scripts/native-browser.mjs',import.meta.url).href,{startNativeBrowser}=await import(nativeURL);
-  browser=await startNativeBrowser(runtime,'browser',true,headed,['--enable-automation','--disable-component-extensions-with-background-pages'],{extensionPath:output.base,headless:!headed});rootCDP=browser.native;
+  browser=await startNativeBrowser(runtime,'browser',true,headed,['--enable-automation','--disable-component-extensions-with-background-pages'],{extensionPath:output.base,headless:!headed,executablePath:browserExecutable});rootCDP=browser.native;
   browser.worker={url:()=>browser.extensionWorker.url,evaluate:async(fn,arg)=>{const session=await browser.extensionWorkerSession();try{const reply=await session.send('Runtime.evaluate',{expression:'('+fn.toString()+')('+JSON.stringify(arg)+')',awaitPromise:true,returnByValue:true});if(reply.exceptionDetails)throw Error('Native extension metadata unavailable');return reply.result.value;}finally{await session.detach();}}};
   const extensionId=browser.id,workerURL=browser.worker.url(),panelURL='chrome-extension://'+extensionId+'/panel.html';if(!/^[a-p]{32}$/.test(extensionId)||workerURL!=='chrome-extension://'+extensionId+'/'+output.manifest.background.service_worker)throw Error('Extension identity unavailable');
   const original=(await rootCDP.send('Target.getTargets')).targetInfos.filter(t=>t.type==='page');if(original.length!==1||original[0].url!=='about:blank')throw Error('Fresh app target unavailable');
@@ -347,7 +347,7 @@ async function launchNativeListBrowser({projectRoot,headed}){
   const inventory=(await rootCDP.send('Target.getTargets')).targetInfos,panels=inventory.filter(t=>t.type==='page'&&t.url===panelURL),workers=inventory.filter(t=>t.type==='service_worker'&&t.url===workerURL);
   if(panels.length!==1||workers.length!==1||!inventory.some(t=>t.targetId===targetId&&t.url===setupURL&&!t.openerId&&!t.canAccessOpener))throw Object.assign(Error('Native setup identity unavailable'),{nativeTargets:inventory.map(({targetId,type,url,openerId,canAccessOpener})=>({targetId,type,url,openerId,canAccessOpener}))});
   const{createTargetHistory}=await import('./target-history.mjs');
-  s={root,output,profile,runtime,browser,cdp:null,extensionId,workerURL,witnessId:randomUUID(),startedAt:Date.now(),closed:false,invalid:false,revision:0,context:null,mainFrameId:null,targetId,gate:null,paused:new Map(),transportTasks:new Set(),sourceRequests:0,scriptRequests:0,policySources,policyLengths,transportStopped:false,transportStop:null,cdpDetached:false,targetHandlers:[]};
+  s={root,extensionRoot,output,profile,runtime,browser,cdp:null,extensionId,workerURL,witnessId:randomUUID(),startedAt:Date.now(),closed:false,invalid:false,revision:0,context:null,mainFrameId:null,targetId,gate:null,paused:new Map(),transportTasks:new Set(),sourceRequests:0,scriptRequests:0,policySources,policyLengths,transportStopped:false,transportStop:null,cdpDetached:false,targetHandlers:[]};
   s.targetHistory=createTargetHistory({appId:targetId,panelId:panels[0].targetId,workerId:workers[0].targetId,panelURL,workerURL,initial:inventory,guardian,profile:'selected-list'});
   const revoke=()=>{s.invalid=true;if(s.cdp)stopTransport(s);};
   for(const[event,kind]of[['Target.targetCreated','created'],['Target.targetInfoChanged','changed'],['Target.targetDestroyed','destroyed'],['Target.targetCrashed','crashed']]){const fn=e=>{if(!s.closed&&!s.targetHistory.observe(kind,e?.targetInfo??e)){s.discoveryError??={event,info:e?.targetInfo??e};revoke();}};rootCDP.on(event,fn);s.targetHandlers.push([event,fn]);}

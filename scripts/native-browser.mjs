@@ -5,9 +5,8 @@ import {spawn} from 'node:child_process';
 import path from 'node:path';
 import {mkdir,readFile,readdir,open} from 'node:fs/promises';
 import {existsSync} from 'node:fs';
-import {chromium} from 'playwright';
-import {root} from './vite-config.mjs';
-import {waitFor} from './harness.mjs';
+const root=path.resolve(import.meta.dirname,'..');
+async function waitFor(fn,ms=20000){const start=Date.now();let error;while(Date.now()-start<ms){try{const r=await fn();if(r)return r;error=null;}catch(e){error=e;}await new Promise(r=>setTimeout(r,100));}throw error||Error('Wait timeout');}
 class NativeCDP {
  constructor(socket){this.socket=socket;this.next=0;this.pending=new Map();this.listeners=new Map();socket.addEventListener('message',event=>{const m=JSON.parse(String(event.data));if(m.id){const p=this.pending.get(m.id);if(p){this.pending.delete(m.id);clearTimeout(p.timer);m.error?p.reject(Error(m.error.message)):p.resolve(m.result);}}else{for(const fn of this.listeners.get((m.sessionId||'')+':'+m.method)||[])fn(m.params);}});socket.addEventListener('close',()=>{for(const p of this.pending.values()){clearTimeout(p.timer);p.reject(Error('Native CDP closed'));}this.pending.clear();});}
  send(method,params={},sessionId){const id=++this.next;return new Promise((resolve,reject)=>{const timer=setTimeout(()=>{this.pending.delete(id);reject(Error('Native CDP timeout: '+method));},20000);this.pending.set(id,{resolve,reject,timer});this.socket.send(JSON.stringify({id,method,params,...(sessionId?{sessionId}:{})}));});}
@@ -15,9 +14,9 @@ class NativeCDP {
  off(sessionId,event,fn){const key=(sessionId||'')+':'+event,list=this.listeners.get(key);if(list){const i=list.indexOf(fn);if(i>=0)list.splice(i,1);if(!list.length)this.listeners.delete(key);}}
  async session(targetId){const {sessionId}=await this.send('Target.attachToTarget',{targetId,flatten:true});return{send:(method,params)=>this.send(method,params,sessionId),on:(event,fn)=>this.on(sessionId,event,fn),off:(event,fn)=>this.off(sessionId,event,fn),detach:()=>this.send('Target.detachFromTarget',{sessionId})};}
 }
-export async function startNativeBrowser(runtime,name,_withExtension,_headed,extra=[],{extensionPath,headless=true,display,beforeExtensionLoad}={}){
+export async function startNativeBrowser(runtime,name,_withExtension,_headed,extra=[],{extensionPath,headless=true,display,beforeExtensionLoad,executablePath}={}){
  if(beforeExtensionLoad!==undefined&&(typeof beforeExtensionLoad!=='function'||headless||extra.some(a=>/^--(?:load-extension|disable-extensions(?:-except)?)(?:=|$)/.test(a))))throw Error('Guide installation requires headful owned UI setup without extension CLI flags');
- const profile=runtime+'/'+name;await mkdir(profile,{recursive:true});let executable=chromium.executablePath();if(existsSync(root+'/.browsers')){const dir=(await readdir(root+'/.browsers')).find(n=>/^chromium-/.test(n));if(dir)executable=root+'/.browsers/'+dir+'/chrome-linux64/chrome';}
+ const profile=runtime+'/'+name;await mkdir(profile,{recursive:true});let executable=executablePath;if(executable!==undefined&&(typeof executable!=='string'||!path.isAbsolute(executable)))throw Error('Absolute browser executable required');if(!executable&&existsSync(root+'/.browsers')){const dir=(await readdir(root+'/.browsers')).find(n=>/^chromium-/.test(n));if(dir)executable=root+'/.browsers/'+dir+'/chrome-linux64/chrome';}if(!executable)executable=(await import('playwright')).chromium.executablePath();
  const args=[...(headless?['--headless=new']:[]),'--remote-debugging-port=0','--user-data-dir='+profile,...(beforeExtensionLoad?[]:['--disable-extensions-except='+extensionPath,'--load-extension='+extensionPath]),'--no-first-run','--no-default-browser-check','--disable-dev-shm-usage',...extra,'about:blank'];
  const launchEnvironment={...process.env,...(display?{DISPLAY:display}:{}),...(!headless&&display?{DBUS_SESSION_BUS_ADDRESS:'unix:path='+path.resolve(profile,'no-shared-session-bus'),GTK_USE_PORTAL:'0'}:{})};
  const log=await open(profile+'/chrome.log','a');

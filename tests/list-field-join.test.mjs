@@ -27,3 +27,14 @@ for(const [name,mutate]of[
  ['no native DOM identity',i=>delete i.selection.domIdentity]
 ])test(name+' denies the conditional selected list join',async()=>{const i=structuredClone(await input());mutate(i);const r=(await load()).joinListFieldObservations(i);assert.equal(r.status,'Unknown/Unsupported');assert.equal(r.fullPath,false)});
 test('changing displayed text alone does not select a different writer or create field authority',async()=>{const i=await input(),{joinListFieldObservations}=await load(),before=joinListFieldObservations(i);i.selection.value=i.selection.domIdentity.value='a different spelling';const after=joinListFieldObservations(i);assert.equal(after.status,'Conditional selected list join');assert.deepEqual(after.joins,before.joins);assert.equal(after.fullPath,false)});
+
+test('root application source mapping joins the same original sites after workspace relocation',async()=>{
+ const i=structuredClone(await input()),prefix=i.manifest.program.appRoot+'/';
+ i.manifest.program.appRoot='.';
+ for(const source of i.manifest.inputs)if(source.file.startsWith(prefix))source.file=source.file.slice(prefix.length);
+ const r=(await load()).joinListFieldObservations(i);
+ assert.equal(r.status,'Conditional selected list join');
+ assert(r.chain.some(step=>step.source?.file==='src/todo/reducer.js'));
+ i.manifest.program.appRoot='../outside';
+ assert.equal((await load()).joinListFieldObservations(i).status,'Unknown/Unsupported');
+});

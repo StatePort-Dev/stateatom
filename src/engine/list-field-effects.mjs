@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 // Finite reviewed effects, bound to acquired source bytes. This is not an
 // ownership analyzer, a runtime witness, or a selected-row resolver.
-import {createHash} from 'node:crypto';
+import {createHash} from 'node:crypto';import path from 'node:path';
 import reviewed from './list-field-reviewed-inputs.json' with {type:'json'};
 import {validateOwnedListFieldCompilation} from './list-field-compilation.mjs';
 const issued=new WeakMap(),sha=s=>createHash('sha256').update(s).digest('hex');
@@ -20,8 +20,22 @@ const requiredRuntimePremises=freeze(['fresh-owned-single-root-browser','complet
 const unknown=reason=>freeze({status:'Unknown/Unsupported',reason,fullPath:false,currentOwnership:'Unknown/Unsupported'});
 export function reviewedListInputBinding(manifest){
  if(manifest?.schema!=='stateatom.list-field-compilation/1'||manifest.compiler?.externalImports!==0||!Number.isSafeInteger(manifest.bundle?.bytes)||manifest.bundle.bytes<1||manifest.bundle.bytes>2*1024*1024||!Array.isArray(manifest.inputs)||manifest.inputs.length!==reviewed.inputs.length)return unknown('Complete bounded reviewed compilation inputs unavailable');
- const actual=new Map(manifest.inputs.map(i=>[i?.file,i]));
- if(actual.size!==reviewed.inputs.length||reviewed.inputs.some(i=>{const a=actual.get(i.file);return !a||a.sourceDigest!==i.sourceDigest||a.transform!==i.transform}))return unknown('Source graph differs from the finite reviewed effect account');
+ // Relocate only the declared application directory. Module paths inside the
+ // app and tool namespace, every source digest and every transform stay exact.
+ const historicalRoot='.runtime/todomvc/examples/react',appRoot=manifest.program?.appRoot;
+ const validRoot=typeof appRoot==='string'&&(appRoot==='.'||appRoot.split('/').every(p=>p&&p!=='.'&&p!=='..')&&!path.isAbsolute(appRoot)&&!appRoot.includes('\\'));
+ if(!validRoot)return unknown('Application source root unavailable');
+ function key(input,root,historical=false){
+  const file=input?.file;if(typeof file!=='string')return null;
+  if(file==='stateatom-owned-list:runtime.mjs'&&input.transform==='owned-bootstrap')return 'virtual:runtime';
+  if(file===path.posix.join(root,'stateatom-owned-list-entry.mjs')&&input.transform==='owned-bootstrap')return 'virtual:entry';
+  const prefix=root==='.'?'':root+'/';
+  if((historical&&file.startsWith(prefix)||!historical&&input.realm==='application')&&file.startsWith(prefix))return 'app:'+file.slice(prefix.length);
+  if(historical||input.realm==='tool')return 'tool:'+file;
+  return null;
+ }
+ const actual=new Map(manifest.inputs.map(i=>[key(i,appRoot),i]));
+ if(actual.has(null)||actual.size!==reviewed.inputs.length||reviewed.inputs.some(i=>{const a=actual.get(key(i,historicalRoot,true));return !a||a.sourceDigest!==i.sourceDigest||a.transform!==i.transform}))return unknown('Source graph differs from the finite reviewed effect account');
  return freeze({status:'Conditional reviewed input binding',profile:listFieldDerivation.version,proofDigest:sha(JSON.stringify({derivation:listFieldDerivation,inputs:reviewed.inputs})),fullPath:false,currentOwnership:'Unknown/Unsupported',requiredRuntimePremises});
 }
 export async function establishListFieldEffects(compilation){

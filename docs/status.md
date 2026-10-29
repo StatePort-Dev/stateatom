@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 installed route:** [plugin312](completion/312-a02-installed-plugin-result.md): npm-installed plugin11, ordinary Vite configuration in a separate app workspace, packaged inspector and installed helper passed7actual native checks. Full6407cases covered across sandbox6342PASS and authorized failed-file710PASS; original65sandbox failures retained. Current next: held-out graph/full282/official and final review. Whole21/29 unchanged.
+
 **Latest A02 installed helper:** [checkpoint310](completion/310-a02-installed-helper-source-navigation.md): actual isolated VSIX matches package bytes; current Atom source link opens original reducer50:84 in real VS Code.8native checks PASS with owned cleanup. Normal packaged selected-list plugin launch, official host, held-out/full282 remain open; whole21/29 unchanged.
 
 **Latest A02 helper transport:** [checkpoint308](completion/308-a02-private-helper-channel-result.md): real separate helper reaches the owned verifier through a private workspace channel.19affectedPASS +7native checks PASS; Origin/key/Host/close refusals retained. Installed VSIX/IDE and normal packaged plugin launch remain open; whole21/29 unchanged.

@@ -2,12 +2,13 @@
 // Helper-owned actual source/stage/output acquisition. No effect proof or browser
 // witness is issued by compiling, and serialized manifests are not capabilities.
 import path from 'node:path';import {createHash} from 'node:crypto';
+import {open,lstat,realpath} from 'node:fs/promises';import {constants} from 'node:fs';
 import {acquireOwnedCompilationTools} from '../first-read/build-profile.mjs';
 import {prepareListFieldProgram,bindListFieldModule} from './list-field-program.mjs';
 import {transformPinnedFieldVendor} from './react19-field-vendor.mjs';
 const sha=s=>createHash('sha256').update(s).digest('hex'),issued=new WeakMap(),workspaces=new WeakMap(),LIMIT=2*1024*1024;
 const runtimeId='stateatom:owned-list-runtime';
-const LIST_BUILDER_PIN = 'b4ff8c76f8b98cd5a3581c160950e1ddfff7ac292a2515f8b4cbbd582578df6e';
+const LIST_BUILDER_PIN = 'c727804189b8c3a403d23815d224256c705910c5ab2f3d332c55a3ddbd8fb9b7';
 const LIST_RECIPE_PINS={
  "src/engine/react19-devtools-checks.mjs": "7bbe515a78d1313e75d8538a5909c6ac0684851fe447dad90dfdffe30ef39894",
  "src/engine/list-field-program.mjs": "89025f8d8f634e803979911744455441e45156c5540220c31d43c9c1853d738f",
@@ -27,13 +28,26 @@ const relative=s=>typeof s==='string'&&s.length>0&&s.length<4096&&!s.includes('\
 export const isOwnedListFieldCompilation=value=>value!==null&&typeof value==='object'&&issued.has(value);
 export const listFieldCompilationWorkspace=value=>issued.has(value)?workspaces.get(value):null;
 export async function validateOwnedListFieldCompilation(value){const check=issued.get(value);if(!check)return false;try{await check();return true;}catch{issued.delete(value);return false;}}
-export async function buildListFieldCompilation({projectRoot=process.cwd(),appRoot,entry,root,field,sources}={}){
- if(!relative(appRoot)||!relative(entry)||!relative(root?.file)||typeof root.export!=='string'||!Array.isArray(sources)||sources.length<1||sources.length>32||sources.some(s=>!relative(s))||new Set(sources).size!==sources.length||!sources.includes(root.file))throw Error('Bounded original source configuration required');
- const tools=await acquireOwnedCompilationTools({projectRoot}),app=path.join(tools.root,appRoot),records=new Map(),inputs=new Map();let sourceBytes=0,stageBytes=0;
- async function read(file){const local=path.relative(tools.root,file).split(path.sep).join('/'),bytes=await tools.read(local);const record={file:local,digest:sha(bytes),bytes:bytes.length};if(records.has(local)&&JSON.stringify(records.get(local))!==JSON.stringify(record))throw Error('Source revision changed');records.set(local,record);return bytes.toString('utf8');}
- const recipeRecords=[];const self=await read(path.join(tools.root,'src/engine/list-field-compilation.mjs'));if(sha(self.replace(/const LIST_BUILDER_PIN = '[a-f0-9]+';/,"const LIST_BUILDER_PIN = 'BUILDER_HASH';"))!==LIST_BUILDER_PIN)throw Error('Owned list compiler differs');recipeRecords.push(records.get('src/engine/list-field-compilation.mjs'));
- for(const [file,pin]of Object.entries(LIST_RECIPE_PINS)){const source=await read(path.join(tools.root,file));if(sha(source)!==pin)throw Error('Owned list compiler recipe differs: '+file);recipeRecords.push(records.get(file));}
- const originals=[];for(const file of sources)originals.push({file,text:await read(path.join(app,file))});
+export async function buildListFieldCompilation({projectRoot=process.cwd(),toolRoot=projectRoot,appRoot,entry,root,field,sources}={}){
+ if(!(appRoot==='.'||relative(appRoot))||!relative(entry)||!relative(root?.file)||typeof root.export!=='string'||!Array.isArray(sources)||sources.length<1||sources.length>32||sources.some(s=>!relative(s))||new Set(sources).size!==sources.length||!sources.includes(root.file))throw Error('Bounded original source configuration required');
+ const workspace=path.resolve(projectRoot),tools=await acquireOwnedCompilationTools({projectRoot:toolRoot}),app=path.resolve(workspace,appRoot),records=new Map(),appRecords=new Map(),inputs=new Map(),loadedPaths=new Set();let sourceBytes=0,stageBytes=0;
+ if(await realpath(workspace)!==workspace||!(await lstat(workspace)).isDirectory()||await realpath(app)!==app||!(await lstat(app)).isDirectory())throw Error('Real application workspace required');
+ const within=(base,file)=>{const r=path.relative(base,file);return r!==''&&!r.startsWith('..'+path.sep)&&r!=='..'&&!path.isAbsolute(r);};
+ async function readApp(file){
+  if(!within(app,file))throw Error('Application input outside workspace');
+  let current=app;for(const part of path.relative(app,file).split(path.sep)){current=path.join(current,part);if((await lstat(current)).isSymbolicLink())throw Error('Application input symlink denied');}
+  const handle=await open(file,constants.O_RDONLY|constants.O_NOFOLLOW);
+  try{const before=await handle.stat();if(!before.isFile()||before.size>LIMIT)throw Error('Application input budget exceeded');const bytes=await handle.readFile(),after=await handle.stat();
+   const identity=st=>JSON.stringify([st.dev,st.ino,st.size,st.mtimeMs,st.ctimeMs]);
+   if(bytes.length!==after.size||identity(before)!==identity(after))throw Error('Application input changed');
+   const record={identity:identity(after),digest:sha(bytes)};if(appRecords.has(file)&&JSON.stringify(appRecords.get(file))!==JSON.stringify(record))throw Error('Application input changed');appRecords.set(file,record);return bytes.toString('utf8');
+  }finally{await handle.close();}
+ }
+ async function readTool(file){const local=path.relative(tools.root,file).split(path.sep).join('/'),bytes=await tools.read(local);const record={file:local,digest:sha(bytes),bytes:bytes.length};if(records.has(local)&&JSON.stringify(records.get(local))!==JSON.stringify(record))throw Error('Tool revision changed');records.set(local,record);return bytes.toString('utf8');}
+ async function confirm(){await tools.confirm([...records.values()]);for(const file of appRecords.keys())await readApp(file);}
+ const recipeRecords=[];const self=await readTool(path.join(tools.root,'src/engine/list-field-compilation.mjs'));if(sha(self.replace(/const LIST_BUILDER_PIN = '[a-f0-9]+';/,"const LIST_BUILDER_PIN = 'BUILDER_HASH';"))!==LIST_BUILDER_PIN)throw Error('Owned list compiler differs');recipeRecords.push(records.get('src/engine/list-field-compilation.mjs'));
+ for(const [file,pin]of Object.entries(LIST_RECIPE_PINS)){const source=await readTool(path.join(tools.root,file));if(sha(source)!==pin)throw Error('Owned list compiler recipe differs: '+file);recipeRecords.push(records.get(file));}
+ const originals=[];for(const file of sources)originals.push({file,text:await readApp(path.join(app,file))});
  const program=prepareListFieldProgram(originals,{root,field});if(program.status!=='Code-linked list program')throw Error('Original list source program unavailable');
  const modules=new Map(program.modules.map(m=>[path.join(app,m.file),m]));
  const runtime=`import {createListFieldRuntime} from ${JSON.stringify('./src/engine/list-field-runtime.mjs')};const binding=createListFieldRuntime({page:${JSON.stringify('list-'+program.digest)}});export const api=binding.api;Object.defineProperty(window,'__STATEATOM__',{value:binding.runtime});`;
@@ -44,20 +58,20 @@ export async function buildListFieldCompilation({projectRoot=process.cwd(),appRo
   b.onResolve({filter:/^stateatom:owned-list-runtime$/},()=>({path:'runtime.mjs',namespace:'stateatom-owned-list'}));
   b.onLoad({filter:/.*/,namespace:'stateatom-owned-list'},()=>{recordStage('stateatom-owned-list:runtime.mjs',runtime,runtime,'owned-bootstrap');return{contents:runtime,loader:'js',resolveDir:tools.root};});
   b.onLoad({filter:/\.[cm]?[jt]sx?$|\.css$/},async({path:file})=>{
-   const source=await read(file),relativeFile=path.relative(tools.root,file).split(path.sep).join('/'),vendor=path.relative(path.join(app,'node_modules'),file).split(path.sep).join('/');let code=source,transform='identity';
+   const application=within(app,file),source=application?await readApp(file):await readTool(file),relativeFile=path.relative(application?workspace:tools.root,file).split(path.sep).join('/'),vendor=path.relative(path.join(app,'node_modules'),file).split(path.sep).join('/');let code=source,transform='identity';
    if(modules.has(file)){const module=modules.get(file);if(sha(source)!==module.sourceDigest)throw Error('Original program changed');code=bindListFieldModule(module,runtimeId);transform='list-source';}
    else if(nativeFiles.has(vendor)){code=transformPinnedFieldVendor(source,vendor).code;transform='react19-field-native';}
-   recordStage(relativeFile,source,code,transform);return{contents:code,loader:file.endsWith('.css')?'css':/\.[cm]?tsx?$/.test(file)?'tsx':'jsx',resolveDir:path.dirname(file)};
+   recordStage(relativeFile,source,code,transform);inputs.get(relativeFile).realm=application?'application':'tool';loadedPaths.add(file);return{contents:code,loader:file.endsWith('.css')?'css':/\.[cm]?tsx?$/.test(file)?'tsx':'jsx',resolveDir:path.dirname(file)};
   });
  }};
  const result=await tools.build({...options,absWorkingDir:tools.root,stdin:{contents:bootstrap,resolveDir:app,sourcefile:'stateatom-owned-list-entry.mjs'},outdir:path.join(tools.root,'.runtime/list-compiler-output'),plugins:[loader],logLevel:'silent'});
  const bootstrapKey=path.posix.join(appRoot,'stateatom-owned-list-entry.mjs');recordStage(bootstrapKey,bootstrap,bootstrap,'owned-bootstrap');
- for(const input of Object.keys(result.metafile.inputs))if(!inputs.has(input.replaceAll('\\','/')))throw Error('Unrecorded compiled input: '+input);
+ for(const input of Object.keys(result.metafile.inputs))if(input!=='stateatom-owned-list:runtime.mjs'&&input!==path.posix.join(path.relative(tools.root,app).split(path.sep).join('/'),'stateatom-owned-list-entry.mjs')&&!loadedPaths.has(path.resolve(tools.root,input)))throw Error('Unrecorded compiled input: '+input);
  const cssReferences=[];for(const [output,metadata]of Object.entries(result.metafile.outputs))for(const item of metadata.imports)if(item.external){if(!output.endsWith('.css')||item.kind!=='url-token'||!item.path.startsWith('data:image/svg+xml;')||item.path.length>4096)throw Error('Closed compilation has external code or resource imports');cssReferences.push({kind:'css-inline-image',digest:sha(item.path),bytes:Buffer.byteLength(item.path)});}
  const js=result.outputFiles.filter(f=>f.path.endsWith('.js'));if(js.length!==1||js[0].contents.length>LIMIT)throw Error('One bounded closed JavaScript bundle required');
  const code=js[0].text,assets=result.outputFiles.filter(f=>!f.path.endsWith('.js')).map(f=>{if(!f.path.endsWith('.css')||f.contents.length>LIMIT)throw Error('Unsupported compiled asset');return{kind:'css',name:path.basename(f.path),code:f.text,digest:sha(f.contents),bytes:f.contents.length}});
- await tools.confirm([...records.values()]);
+ await confirm();
  const manifest={schema:'stateatom.list-field-compilation/1',programDigest:program.digest,program:{digest:program.digest,appRoot,root,field,modules:program.modules.map(({code,observers,...module})=>module)},bundle:{digest:sha(code),bytes:Buffer.byteLength(code)},assets:assets.map(({code,...meta})=>meta),cssReferences,compiler:{name:'esbuild',version:tools.version,options,...tools.compiler,externalImports:0},trust:{recipe:{builder:LIST_BUILDER_PIN,transforms:LIST_RECIPE_PINS},files:[...tools.files,...recipeRecords]},inputs:[...inputs.values()].sort((a,b)=>a.file.localeCompare(b.file)),scope:'Helper-owned compiled bytes only; source/native effects, complete browser journal and selected occurrence remain separate'};
  manifest.digest=sha(JSON.stringify(manifest));if(Buffer.byteLength(JSON.stringify(manifest))>256*1024)throw Error('Compilation metadata budget exceeded');
- const value=freeze({code,assets,manifest,fieldOwnership:'Unknown/Unsupported',fullPath:false,publicProduct:false});issued.set(value,()=>tools.confirm([...records.values()]));workspaces.set(value,tools.root);return value;
+ const value=freeze({code,assets,manifest,fieldOwnership:'Unknown/Unsupported',fullPath:false,publicProduct:false});issued.set(value,confirm);workspaces.set(value,workspace);return value;
 }

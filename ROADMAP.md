@@ -1,5 +1,7 @@
 # Roadmap
 
+Latest29October A02: [installed plugin312](docs/completion/312-a02-installed-plugin-result.md) qualifies normal Vite/package/helper launch for the finite reviewed graph. Continue held-out/full282/official acceptance; whole21/29 remains unchanged. Accepted Active overhead281 and deferred macOS287 are not release blockers.
+
 ## Active completion scope — 2026-10-19
 
 The approved [completion contract](docs/completion/02-release-scope.md), revision

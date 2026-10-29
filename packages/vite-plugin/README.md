@@ -189,3 +189,50 @@ explicit mode `npm run pack:development -- --plugin-only`. Its separate
 `plugin-handoff.json` uses schema `stateatom.development-plugin-artifact/1`, includes
 no helper artifact and does not rebuild/reissue an unchanged helper VSIX. The default
 combined command retains its existing receipt format. Neither mode publishes.
+
+## Selected list title (local candidate 11)
+
+The separate opt-in `@stateport/vite-plugin/selected-list` export runs the bounded
+React 19.2.5 immutable-list title scenario. Its closed source/effect account admits
+the reviewed TodoMVC source graph only; changed application code is refused until
+separately admitted. It is not arbitrary React or query provenance. Linux x64,
+Node 24 and the supplied Chrome 153 executable are the current tooling scope.
+The default plugin and production build stay unchanged.
+
+```js
+import {defineConfig} from 'vite';
+import {stateatomSelectedList} from '@stateport/vite-plugin/selected-list';
+export default defineConfig({
+  plugins: [stateatomSelectedList({
+    enabled: true,
+    browserExecutable: '/absolute/path/to/chrome',
+    source: {
+      appRoot: '.', entry: 'src/index.js',
+      root: {file: 'src/todo/app.jsx', export: 'App'}, field: 'title',
+      sources: ['src/todo/app.jsx', 'src/todo/reducer.js',
+        'src/todo/components/main.jsx', 'src/todo/components/item.jsx',
+        'src/todo/components/footer.jsx']
+    }
+  })]
+});
+```
+
+Start the app's existing Vite development command. Atom opens a separate temporary
+browser profile containing the packaged inspector. This profile serves the closed
+application at `http://127.0.0.1:4173/list/`; the ordinary Vite page has no complete
+selected-list claim. Port 4173 must be free; there is no automatic port substitution.
+In the installed helper, open this application workspace, set the app origin to
+`http://127.0.0.1:4173` and source folder to `.`. Copy its private receipt and connect
+it in Atom's Source settings. Choose the setup tab, approve development inspection,
+and attach. Wait for Vite's `ready-to-open` message before following the setup
+page's application link. Create/edit a title, select its label and inspect Text.
+
+The session expires after 15 minutes. Stop Vite to close its browser, private
+verifier and source server. Source edits invalidate its evidence; restart for a
+new supported revision. It does not apply HMR to a retained proof. The installed
+archive carries its pinned compiler files and licenses, extracted to a private
+temporary directory and deleted on normal close. Browser profiles/logs remain in
+the app's `.runtime/first-read-sessions` for diagnosis; no personal browser profile,
+account, certificate or system trust is changed. Installation/runtime qualification
+is recorded separately in the completion ledger; these instructions alone do not
+establish whole A02 acceptance or official StatePort host support.

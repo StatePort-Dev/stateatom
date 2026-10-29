@@ -16,3 +16,25 @@ test('new list compiler recipes are pinned before compilation and input drift re
   const value=await buildListFieldCompilation({...options,projectRoot:temp});assert(await validateOwnedListFieldCompilation(value));assert.equal(await validateOwnedListFieldCompilation(JSON.parse(JSON.stringify(value))),false);await appendFile(path.join(temp,options.appRoot,options.root.file),'\n// changed source\n');assert.equal(await validateOwnedListFieldCompilation(value),false);assert.equal(isOwnedListFieldCompilation(value),false);
  }finally{await rm(temp,{recursive:true,force:true})}
 });
+
+test('installed tooling compiles an independent ordinary workspace and revokes changed app inputs',async()=>{
+ const {buildListFieldCompilation,validateOwnedListFieldCompilation,listFieldCompilationWorkspace}=await load();
+ const {mkdtemp,cp,appendFile,rm,symlink}=await import('node:fs/promises');
+ const {establishListFieldEffects,listFieldEffectsView}=await import('../src/engine/list-field-effects.mjs');
+ const app=await mkdtemp('/tmp/stateatom-independent-list-');
+ try{
+  await cp(options.appRoot,app,{recursive:true});
+  const result=await buildListFieldCompilation({...options,projectRoot:app,toolRoot:process.cwd(),appRoot:'.'});
+  assert.equal(listFieldCompilationWorkspace(result),app);
+  assert.equal(result.manifest.program.appRoot,'.');
+  assert.equal(listFieldEffectsView(await establishListFieldEffects(result)).status,'Code-linked');
+  assert(await validateOwnedListFieldCompilation(result));
+  await appendFile(app+'/src/todo/components/header.jsx','\n// app drift\n');
+  assert.equal(await validateOwnedListFieldCompilation(result),false);
+  const changed=await buildListFieldCompilation({...options,projectRoot:app,toolRoot:process.cwd(),appRoot:'.'});
+  assert.equal(listFieldEffectsView(await establishListFieldEffects(changed)).status,'Unknown/Unsupported');
+  await rm(app+'/src/todo/components/header.jsx');
+  await symlink(process.cwd()+'/'+options.appRoot+'/src/todo/components/header.jsx',app+'/src/todo/components/header.jsx');
+  await assert.rejects(buildListFieldCompilation({...options,projectRoot:app,toolRoot:process.cwd(),appRoot:'.'}),/symlink/i);
+ }finally{await rm(app,{recursive:true,force:true});}
+});

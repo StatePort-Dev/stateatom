@@ -9,7 +9,7 @@ const unknown=reason=>({status:'Unknown/Unsupported',reason,fullPath:false,field
 export function joinListFieldObservations({manifest,trace,selection}={}){
  try{
   const require=(ok,reason)=>{if(!ok)throw Error(reason)},p=manifest?.program,f=trace?.listFieldObservations,page=f?.page;
-  require(manifest?.schema==='stateatom.list-field-compilation/1'&&p?.digest===manifest.programDigest&&hash(p.digest)&&relative(p.appRoot)&&bounded(p.field)&&Array.isArray(p.modules)&&p.modules.length>0&&p.modules.length<=32&&Array.isArray(manifest.inputs),'Compiler source catalogue unavailable');
+  require(manifest?.schema==='stateatom.list-field-compilation/1'&&p?.digest===manifest.programDigest&&hash(p.digest)&&(p.appRoot==='.'||relative(p.appRoot))&&bounded(p.field)&&Array.isArray(p.modules)&&p.modules.length>0&&p.modules.length<=32&&Array.isArray(manifest.inputs),'Compiler source catalogue unavailable');
   require(bounded(page)&&page.startsWith('list-'+p.digest+':')&&/^[-a-f0-9]{36}$/.test(page.slice(70))&&trace.page===page&&selection?.page===page,'Original profile page identity does not join');
   const id=v=>bounded(v)&&v.startsWith(page+':');
   const observed=(v,schema)=>v?.schema===schema&&v.page===page&&v.status==='Observed';
