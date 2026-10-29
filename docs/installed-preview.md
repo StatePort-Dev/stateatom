@@ -22,9 +22,16 @@ not folders to select in Chrome. Basic needs no IDE, account, model or app plugi
 The receipt's component versions and hashes identify the kit. Chrome's displayed
 extension version alone does not identify the Atom candidate. Never mix files from
 kits. Use the matching reader; old readers may reject newer detailed reports.
-Historical70 installation records125/126 do not certify a new kit. Current normal
-installation/update acceptance is still being completed. macOS installation is
+Historical70 installation records125/126 do not certify a new kit. Current95
+normal folder installation and update/rollback are recorded in completion344/345;
+the whole independent-application and guide matrix remains open. macOS installation is
 explicitly deferred to a later maintainer check; it is not a verified platform.
+
+In the official workspace, use the toolbar **About this build** button and expand
+its disclosure. It shows the exact Atom source/package, shared UI, extension and
+bridge versions and links the local complete build receipt. Qualified Desktop,
+plugin and helper versions describe the supplied kit, not detected installations.
+This window works before connecting a page and does not grant editing permission.
 
 For optional development-source access, obtain the helper VSIX and the separate
 Vite plugin tarball with their own compatibility record. A helper installation

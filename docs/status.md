@@ -1,5 +1,7 @@
 # Project status
 
+**I03 complete for the local Linux directory kit:** [347](completion/347-i03-local-component-distribution.md), matching Atom95/UI2 in official extension and optional Desktop resources, actual packaged Capture/Save + cold read, native About6, archive528 files verified. **26/29 (89.66%)**. Next U04 screen/control acceptance; V03 independent-app/full-guide and V04 remain. No public release or ordinary OS-installed Desktop claim.
+
 **V02 complete:** [346](completion/346-v02-final-evidence-reconciliation.md), one bounded review0/0/0, full6514 and affected95 native controls; Basic343/Active281 exceptions explicit. **25/29 (86.21%)**. Actual component update/rollback preserves real Capture/diagnostic data [345](completion/345-i03-native-update-and-capture-shell.md). Remaining I03 coordinated Desktop inventory, U04/V03/V04; no release claim.
 
 **Basic latency accepted for the first release:** [343](completion/343-basic-latency-maintainer-acceptance.md), p95 1065.7 ms standalone / 1232.2 ms official. Original1s MISS retained; no optimization prerequisite for this deviation. Full source95:6514PASS; affected picker/native and remaining acceptance continue.
