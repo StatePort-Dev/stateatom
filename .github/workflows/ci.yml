@@ -63,6 +63,19 @@ jobs:
         run: npm run verify:atom-package -- "$ATOM_HANDOFF"
       - name: Install locked Chromium and system dependencies
         run: npx playwright install --with-deps chromium
+      - name: Permit the locked Chromium sandbox on the ephemeral Ubuntu runner
+        shell: bash
+        run: |
+          if [[ ! -r /proc/sys/kernel/apparmor_restrict_unprivileged_userns ]] ||
+             [[ $(cat /proc/sys/kernel/apparmor_restrict_unprivileged_userns) != 1 ]]; then
+            echo 'No AppArmor user-namespace exception needed'
+            exit 0
+          fi
+          chromium_path=$(node --input-type=module -e "import {chromium} from 'playwright'; import {realpathSync} from 'node:fs'; console.log(realpathSync(chromium.executablePath()))")
+          # A literal executable path, without AppArmor glob or policy syntax.
+          [[ "$chromium_path" =~ ^/[a-zA-Z0-9_./-]+/chrome$ ]]
+          printf 'abi <abi/4.0>,\ninclude <tunables/global>\nprofile stateatom-ci-chromium "%s" flags=(unconfined) {\n  userns,\n}\n' "$chromium_path" | sudo tee /etc/apparmor.d/stateatom-ci-chromium
+          sudo apparmor_parser -r /etc/apparmor.d/stateatom-ci-chromium
       - name: Verify native browser candidate sequentially
         env:
           ATOM_HANDOFF: ${{ steps.candidate.outputs.handoff }}
