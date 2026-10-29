@@ -1,5 +1,7 @@
 # Project status
 
+**Current96 independent input path passes in both hosts:** [351](completion/351-v03-original-checkout-input.md), original checkout firstName;8 checks/10 phases/seven actual transactions per host, Live/Draft Undo/baseline and native writer retirement. Original minPrice FAIL remains distinct. Whole **27/29**; current Vue guide/warning decision then V04 remain.
+
 **Exact96 local kit/install prepared:** [350](completion/350-current96-kit-and-v03-boundaries.md), archive528 files verified, actual normal Chrome folder installation passes in both fresh Linux profiles. **27/29**; remaining V03 restoration/strict-console/full-guide acceptance is explicit, V04 readiness depends on it. No scope waiver or publication.
 
 **U04 complete on exact96:** [349](completion/349-u04-current96-acceptance.md), corrected concurrent property refresh; standalone15 and official reporter12 + fresh recipient4 PASS. **27/29 (93.10%)**. Remaining V03 independent-app complete guide and V04 final coordinated96 kit/ledger. Historical95 kit and failed attempts remain exact; no full release/publication claim.

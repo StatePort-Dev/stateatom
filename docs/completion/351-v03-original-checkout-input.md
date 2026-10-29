@@ -88,3 +88,40 @@ is shown active. Wait for that exact existing terminal state before asserting it
 and reading native-world inactivity. No timeout extension or relaxed state allowed.
 This concrete observed transition justifies the affected final host qualification;
 earlier raw overall FAIL and positive subchecks are not rewritten.
+
+## Final both-host current96 result
+
+Both final runs at clean sourcecc51fdc PASS all8 checks and10 phases, with seven
+actual acknowledged transactions. Official raw:
+`.artifacts/v03/current96-checkout-guide/2026-10-29T14-29-49-313Z/results.json`,
+SHA256 `6b01835e52d5b644a02107963555e41c8a1cb01cb42c5cbf09788b83e8d65207`.
+Standalone raw:
+`.artifacts/v03/current96-checkout-guide/2026-10-29T14-31-11-805Z/results.json`,
+SHA256 `57c229af0b83cebed1dcb377af7c44f6c3efad8ae797e291582965ace01ed387`.
+
+Draft holds: official1105ms/9samples, standalone1111ms/9samples; every sample retains original empty
+field/cart1/history2 until Apply. Both Live and Draft Undo restore empty; later
+Live Ada→Bea plus Restore original returns empty, not previous Ada. All other named
+fields remain empty; cart1 remains, no form submit and all owned API traffic is GET.
+No app source/lock change, force-write, revision-ignore or authority broadening.
+
+After explicit Stop editing, both runs wait for the actual terminal UI invalidation:
+closed receipt, seven historical transactions, disabled editor, no current selection
+and Stale target. Direct isolated native-world query reports writer inactive in
+each host. This is exact current input-owner retirement, not only a DTO promise.
+Both original65-file inventories, registered inputs and exact host bytes remain
+stable; attached app/inspector logs/errors are empty and all owned cleanup flags
+pass. No payment/backend/React Hook Form consumption/Redux causality proof.
+
+The standalone prior9-phase result was also validated separately offline using its
+byte-identical frozen positive guard plus8 corrupt-and-reject controls:
+`.artifacts/v03/current96-checkout-posthoc/result.json`. Its original overall FAIL
+and missing native query remain recorded. The new complete final runs supply fresh
+positive qualification; no historical result or criterion was rewritten.
+
+This closes the bounded additional independent native-input path. Whole V03 remains
+open for the complete current independent source/guide join and strict Vue/IDE
+warning decision350. Original minPrice restoration remains an explicit unsupported
+revision case; it is not renamed firstName or counted as passed. Whole27/29 remains.
+Next single step: current independent Vue installed-source/guide qualification,
+preserving the original warning records and the pending maintainer decision.

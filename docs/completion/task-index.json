@@ -9397,24 +9397,12 @@
         "L02"
       ],
       "optional": false,
-      "execution_record": "276-v03-development-module-native.md",
+      "execution_record": "351-v03-original-checkout-input.md",
       "active_slice": {
-        "id": "V03.34",
-        "record": "276-v03-development-module-native.md",
-        "status": "closed-incomplete-original6-off-setup-only",
-        "registered_inputs": 372,
-        "source_controls": 2,
-        "native_runs": 1,
-        "maximum_native_runs": 1,
-        "explicit_development": true,
-        "readonly_qualification": false,
-        "whole_V03_complete": false,
-        "remaining_native_runs": 0,
-        "native_checks": 6,
-        "on_visited": false,
-        "parity_visited": false,
-        "positive_weak_dispatch_qualified": false,
-        "raw_sha256": "f49f0e4fd83e588c940fa40d8e7802ec6253599a4f234d2acda3bde042eb8e7d"
+        "id": "V03.36-current-vue-guide",
+        "status": "pending-current-qualified-source-guide-and-warning-decision",
+        "record": "350-current96-kit-and-v03-boundaries.md",
+        "whole_V03_complete": false
       },
       "completed_slices": [
         {
@@ -10529,6 +10517,37 @@
           "posthoc_changed_controls": 31,
           "offline_source_tests": 4,
           "project_source_changed_in_fix_pass": false
+        },
+        {
+          "id": "V03.35-current96-original-checkout",
+          "record": "351-v03-original-checkout-input.md",
+          "status": "complete-both-hosts-independent-native-input-not-whole-V03",
+          "results": [
+            {
+              "host": "official",
+              "file": ".artifacts/v03/current96-checkout-guide/2026-10-29T14-29-49-313Z/results.json",
+              "sha256": "6b01835e52d5b644a02107963555e41c8a1cb01cb42c5cbf09788b83e8d65207",
+              "checks": 8,
+              "phases": 10,
+              "transactions": 7,
+              "draftHoldMs": 1105,
+              "draftSamples": 9,
+              "scope": "Original independent firstName actual native UI, Live/Draft/Undo/baseline/Close; no whole V03 or old minPrice waiver"
+            },
+            {
+              "host": "standalone",
+              "file": ".artifacts/v03/current96-checkout-guide/2026-10-29T14-31-11-805Z/results.json",
+              "sha256": "57c229af0b83cebed1dcb377af7c44f6c3efad8ae797e291582965ace01ed387",
+              "checks": 8,
+              "phases": 10,
+              "transactions": 7,
+              "draftHoldMs": 1111,
+              "draftSamples": 9,
+              "scope": "Original independent firstName actual native UI, Live/Draft/Undo/baseline/Close; no whole V03 or old minPrice waiver"
+            }
+          ],
+          "original_minPrice_failure_waived": false,
+          "whole_V03": false
         }
       ],
       "current_checkpoint": {
@@ -10730,7 +10749,7 @@
         "offline_source_tests": 4,
         "project_source_changed_in_fix_pass": false
       },
-      "next_bounded_step": "Resolve the remaining independent guide acceptance in350; do not repeat unchanged native revision or Vue warning campaigns.",
+      "next_bounded_step": "Current independent Vue installed-source/guide qualification; preserve original24 app warnings and separate IDE warning pending explicit maintainer decision. Original minPrice failure unchanged; additional firstName route351 passes both hosts.",
       "historical_next_bounded_step_before_overhead_acceptance": "FullV03normal-setup/independent-app gates open;32native INCOMPLETE stays, current87backend13 is private-wire/no field widgets. Current independent V02.33original performance gate, no oldcase retry.",
       "current_installation": {
         "record": "350-current96-kit-and-v03-boundaries.md",
@@ -10738,6 +10757,24 @@
         "raw": ".artifacts/v03/current96-kit-install/2026-10-29T14-06-04-910Z/results.json",
         "sha256": "38f7734fa3cd438eea8b8a87bae0381c30105090fb90bea4cf43844c16e42ca9",
         "whole_V03": false
+      },
+      "historical_active_slice_before_current96_checkout": {
+        "id": "V03.34",
+        "record": "276-v03-development-module-native.md",
+        "status": "closed-incomplete-original6-off-setup-only",
+        "registered_inputs": 372,
+        "source_controls": 2,
+        "native_runs": 1,
+        "maximum_native_runs": 1,
+        "explicit_development": true,
+        "readonly_qualification": false,
+        "whole_V03_complete": false,
+        "remaining_native_runs": 0,
+        "native_checks": 6,
+        "on_visited": false,
+        "parity_visited": false,
+        "positive_weak_dispatch_qualified": false,
+        "raw_sha256": "f49f0e4fd83e588c940fa40d8e7802ec6253599a4f234d2acda3bde042eb8e7d"
       }
     },
     {
@@ -10970,30 +11007,36 @@
     "document": "281-active-overhead-maintainer-acceptance.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-28",
-    "current_increment": "I03 complete347: exact local component distribution, packaged Capture/cold read and About; no publication.",
+    "current_increment": "Current96 independent checkout351: both-host native Live/Draft/Undo/baseline/Close pass; kit/install350 and U04 completion349 preserved. Whole27/29, V03 Vue guide and V04 remain.",
     "next_item": "V03",
     "new_full_task_acceptances": [
       "F01",
       "F02",
       "F03",
       "F04",
-      "U05",
+      "F05",
       "U01",
       "U02",
-      "U06",
-      "F05",
       "U03",
+      "U04",
+      "U05",
+      "U06",
       "A01",
+      "A02",
       "A03",
       "A04",
       "A05",
-      "L01",
       "P01",
       "P02",
       "P03",
       "P04",
+      "L01",
+      "L02",
+      "I01",
+      "I02",
+      "I03",
       "V01",
-      "I01"
+      "V02"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
     "active_item": "V03",
@@ -13996,11 +14039,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "U04 complete349; exact96 Linux kit archive528 and both-host normal install350 pass. Whole27/29; full independent guide V03 and dependent V04 remain. No new scope waiver/publication.",
+    "current_activity_note": "Current96 both-host independent checkout351 passes8 checks/10phases/7transactions each, including Live/Draft Undo/baseline and direct native writer retirement. Kit/install350 and U04 complete349. Whole27/29; Vue guide/warning decision and V04 remain.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "164a89e38319b6b4a9802d2cddedf84603873212",
     "current_record_date": "2026-10-29",
-    "next_bounded_step": "Resolve the remaining independent guide acceptance in350; do not repeat unchanged native revision or Vue warning campaigns.",
+    "next_bounded_step": "Current independent Vue installed-source/guide qualification; preserve original24 app warnings and separate IDE warning pending explicit maintainer decision. Original minPrice failure unchanged; additional firstName route351 passes both hosts.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -14010,9 +14053,9 @@
       },
       "note": "Historical stale pointer: actual V03.21 and V03.22 closeout retained in records144/145. Latest A02.9 closes4dd7c13."
     },
-    "current_source_revision_kind": "Immutable Atom95 packed source; later docs/tests and host-only shell changes recorded separately.",
-    "current_source_checkpoint": ".artifacts/i02/tab-refresh-status-source/2026-10-28/checkpoint.json",
-    "current_source_checkpoint_kind": "Current source RED/76affected/full6031 and scoped exact source/pair/host/plugin/raw preservation, native0",
+    "current_source_revision_kind": "Immutable Atom96 packed source164a89e; later verification-only cases/docs and host intake7b591518 are recorded separately.",
+    "current_source_checkpoint": ".artifacts/u04/property-refresh96/source-checkpoint.json",
+    "current_source_checkpoint_kind": "Current96 source RED/55affected/full6518; immutable package, both-host handoff349 and independent input351 evidence separately recorded.",
     "historical_active_pointer_before_V02_18": {
       "current_increment": "A02.10-one-review-I1-fixed62-qualification-pending",
       "active_item": {
@@ -14046,7 +14089,7 @@
       "reviewedRevision": "99d20d86f5d00229cbb431fc0d82b8c63e60a01a",
       "minor": "M16 review-time stale pointer, deferred historical metadata"
     },
-    "current_release_assessment": "281-active-overhead-maintainer-acceptance.md",
+    "current_release_assessment": "350-current96-kit-and-v03-boundaries.md",
     "release_checkpoint": {
       "record": "224-night-release-checkpoint.md",
       "artifact": ".artifacts/release/2026-10-27-night-checkpoint/snapshot.json",
@@ -14369,7 +14412,38 @@
       },
       "current_source_revision": "6fc9198d6590ee26dfc6f13350c65325fda2a058",
       "next_bounded_step": "Finish current96 full checks/package and qualify the same original independent-app picker/refinement-to-handoff route; no old benchmark/model/install campaign."
-    }
+    },
+    "historical_current_pointers_before_checkpoint351": {
+      "current_increment": "I03 complete347: exact local component distribution, packaged Capture/cold read and About; no publication.",
+      "current_source_revision_kind": "Immutable Atom95 packed source; later docs/tests and host-only shell changes recorded separately.",
+      "current_source_checkpoint": ".artifacts/i02/tab-refresh-status-source/2026-10-28/checkpoint.json",
+      "current_source_checkpoint_kind": "Current source RED/76affected/full6031 and scoped exact source/pair/host/plugin/raw preservation, native0",
+      "current_release_assessment": "281-active-overhead-maintainer-acceptance.md",
+      "new_full_task_acceptances": [
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "U05",
+        "U01",
+        "U02",
+        "U06",
+        "F05",
+        "U03",
+        "A01",
+        "A03",
+        "A04",
+        "A05",
+        "L01",
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "V01",
+        "I01"
+      ]
+    },
+    "current_candidate_ledger": "candidate96-ledger.json"
   },
   "next_task": "V03"
 }
