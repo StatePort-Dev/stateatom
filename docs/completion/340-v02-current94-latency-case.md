@@ -30,3 +30,5 @@ Commands, sequentially, with handoff
 Only completed raw data with unchanged registered inputs and exact artifacts can
 qualify. Preparation is not V02 completion or release readiness. Reconcile existing
 lifecycle/privacy evidence and the maintainer exceptions separately.
+
+After each Basic host cohort, separately check the known284 malformed-selector recovery through real MV3, a fresh successful selection,440/390px no-overflow and minimum13px root font, and keyboard Actions→Source navigation. These are U04 controls after timing; no latency sample is discarded or repeated. Screenshots remain agent candidates.

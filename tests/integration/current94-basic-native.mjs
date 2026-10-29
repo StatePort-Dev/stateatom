@@ -73,7 +73,12 @@ try{
    result.samples.push(row);delete result.currentTrial;await appendFile(out+'/samples.jsonl',JSON.stringify(row)+'\n');console.log('SAMPLE',host,trial.ordinal,row.basicLatencyMs);
   }
   const rows=result.samples.filter(r=>r.host===host);assert.equal(rows.length,33);for(let i=0;i<33;i++)for(const[k,v]of Object.entries(order[i]))assert.equal(rows[i][k],v);
-  const values=rows.filter(r=>!r.warmup).map(r=>r.basicLatencyMs).sort((a,b)=>a-b);assert(values.every(x=>Number.isFinite(x)&&x>0));c.latency={n:values.length,min:values[0],p50:(values[14]+values[15])/2,p95:values[28],max:values[29]};c.targetPass=c.latency.p95<=1000;c.environmentAfter=environment();assert.deepEqual(await fileManifest(hostSpecs[host].path),hostSpecs[host].files);await closeBrowser();
+  const values=rows.filter(r=>!r.warmup).map(r=>r.basicLatencyMs).sort((a,b)=>a-b);assert(values.every(x=>Number.isFinite(x)&&x>0));c.latency={n:values.length,min:values[0],p50:(values[14]+values[15])/2,p95:values[28],max:values[29]};c.targetPass=c.latency.p95<=1000;c.environmentAfter=environment();
+  // Separate post-timing U04 recovery: no sample is replaced or excluded.
+  await d.fill('selector','[');await d.click('inspect-selector');await waitFor(async()=>/^Error: Could not use this CSS selector\./.test(await d.text('status')));c.selectorError=await d.text('status');assert.doesNotMatch(c.selectorError,/TypeError|null|undefined/);await selectTarget(false);assert.match(await d.text('selected'),/#run.*Run workload/);c.selectorRecovery=true;
+  await d.click('selector-details',{summary:true});c.views=[];for(const width of [440,390]){const file=out+'/'+host+'-'+width+'-candidate.png',geometry=await d.screenshot(file,{width});assert.equal(geometry.overflow,false);assert(Number.parseFloat(geometry.rootFont)>=13);c.views.push({file,...geometry});}
+  await d.click('actions-nav');await d.key('ArrowRight','ArrowRight',39);c.keyboard=await panel.evaluate(()=>({active:document.activeElement?.dataset.atomId,selected:document.querySelector('[data-atom-id="source-nav"]').getAttribute('aria-selected')}));assert.equal(c.keyboard.active,'source-nav');assert.equal(c.keyboard.selected,'true');
+  assert.deepEqual(await fileManifest(hostSpecs[host].path),hostSpecs[host].files);await closeBrowser();
  }
  assert.equal(result.samples.length,66);assert.equal(result.errors.length,0);assert.equal(result.console.length,0);result.targetsMet=result.cases.every(c=>c.targetPass);result.status='COMPLETE_BASIC_ONLY';
 }catch(error){result.status='INCOMPLETE';result.error=error.stack;process.exitCode=1;console.error(error);if(panel)await panel.screenshot({path:out+'/failure-candidate.png'}).catch(()=>{});}
