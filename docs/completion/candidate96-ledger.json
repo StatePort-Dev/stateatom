@@ -1,0 +1,268 @@
+{
+  "schema": "stateatom.candidate-ledger/1",
+  "scopeRevision": "scope-review-1",
+  "releaseKind": "local-candidate-full-baseline-incomplete",
+  "requiredRequirements": [
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C09",
+    "C10",
+    "C11",
+    "O01",
+    "O02"
+  ],
+  "unmetRequirements": [
+    {
+      "task": "V03",
+      "scope": "Complete independent-application guide acceptance",
+      "details": [
+        "Original independent React native-control guide Undo/baseline remains FAIL; later safe-refusal controls and current handoff are not successful restoration",
+        "Independent Vue installed source/open evidence has positive subchecks but its strict console criterion remains FAIL; original app warnings and separate IDE proposal warning retained",
+        "Current supported feature matrices and original app slices are not a completed current normal-guide join"
+      ]
+    },
+    {
+      "task": "V04",
+      "scope": "Final baseline acceptance depends on V03; local packaging and ledger preparation are complete, no publication authorized"
+    }
+  ],
+  "sourceRevision": "164a89e38319b6b4a9802d2cddedf84603873212",
+  "sourceDirty": false,
+  "recordedAt": "2026-10-29",
+  "artifacts": {
+    "atom": {
+      "name": "@stateport/atom",
+      "version": "0.1.0-candidate.20261029.96",
+      "file": "/home/roman/projects/stateatom/.artifacts/atom/2026-10-29T13-39-10-369Z/stateport-atom-0.1.0-candidate.20261029.96.tgz",
+      "sha256": "001180071d71e89d1bc5b95d7cf166b7ec2dc9a03ef9d8861566447ce899f98e",
+      "exports": {
+        "./runtime": {
+          "types": "./dist/runtime.d.ts",
+          "default": "./dist/runtime.mjs"
+        },
+        "./ui": {
+          "types": "./dist/ui.d.ts",
+          "default": "./dist/ui.mjs"
+        },
+        "./platform": {
+          "types": "./dist/platform.d.ts",
+          "default": "./dist/platform.mjs"
+        },
+        "./transport": {
+          "types": "./dist/transport.d.ts",
+          "default": "./dist/transport.mjs"
+        },
+        "./atom.css": "./dist/atom.css",
+        "./content.js": "./dist/content.js",
+        "./reader.js": "./dist/reader.js",
+        "./reader.html": "./dist/reader.html",
+        "./reader.css": "./dist/reader.css",
+        "./contract.json": "./contract.json",
+        "./guardian.html": "./dist/atom-guardian.html",
+        "./guardian.js": "./dist/atom-guardian.js",
+        "./guardian-worker.js": "./dist/atom-guardian-worker.js",
+        "./source-analysis-worker.js": "./dist/source-analysis-worker.js",
+        "./source-parse-worker.js": "./dist/source-parse-worker.js"
+      }
+    },
+    "ui": {
+      "file": "/home/roman/projects/stateatom/.artifacts/atom/2026-10-29T13-39-10-369Z/stateport-extension-ui-0.2.0-candidate.20261018.2.tgz",
+      "sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+      "owner": "Host imports tokens.css, optional local fonts.css plus its relative asset, components.css once, then atom.css",
+      "name": "@stateport/extension-ui",
+      "version": "0.2.0-candidate.20261018.2",
+      "uiContractVersion": "2.1.0",
+      "exports": {
+        "./tokens.css": "./dist/tokens.css",
+        "./components.css": "./dist/components.css",
+        "./contract.json": "./contract.json",
+        "./assets/stateport-mark.svg": "./assets/stateport-mark.svg",
+        "./fonts.css": "./dist/fonts.css",
+        "./assets/fonts/InterVariable.woff2": "./dist/assets/fonts/InterVariable.woff2"
+      }
+    },
+    "linuxComponentKit": {
+      "file": ".artifacts/release/current96/stateatom-linux-component-kit96.tar.gz",
+      "sha256": "f0926bf5f37982be0acb65fd07f185a31cea02fefb6c282213ca51a5d0ee3c3f",
+      "bytes": 381212372
+    },
+    "kitReceipt": {
+      "file": ".artifacts/release/current96/receipt.json",
+      "sha256": "0d10f1f1395c2af001f2493601f26364279aff7016db4b356459d0a79b1e817c",
+      "scope": "Exact component identities/file manifests; retained Desktop executable/helper, updated extension resources"
+    },
+    "officialHostRevision": "7b591518"
+  },
+  "contracts": {
+    "apiVersion": 1,
+    "wireVersion": 1,
+    "uiContract": "2.1.0",
+    "uiPackage": "0.2.0-candidate.20261018.2",
+    "storageNamespace": "stateport.atom.v1.",
+    "capabilities": [
+      "read",
+      "inject",
+      "reload",
+      "cache",
+      "override",
+      "replay"
+    ],
+    "origins": [
+      "http://localhost:<port>",
+      "http://127.0.0.1:<port>",
+      "http://[::1]:<port>"
+    ],
+    "capabilityVersion": 1,
+    "features": [
+      "capability-policy-v1",
+      "native-picker-v1",
+      "live-debugger-guardian-v1",
+      "source-analysis-worker-v1",
+      "source-parser-worker-v1"
+    ],
+    "featureDiscovery": {
+      "operation": "capabilities",
+      "requiredVersion": 1,
+      "notEvidence": "Admission and observation availability are separate from source/execution claims"
+    },
+    "sitePolicy": {
+      "scope": "exact scheme, host and port",
+      "default": "read-only",
+      "development": "explicit session connection with individual actions",
+      "production": "read-only by default; separate two-stage production input permission",
+      "helper": "canonical http://127.0.0.1:<port>, separate browser access",
+      "artifacts": "separate exact-origin browser permission"
+    },
+    "guardian": {
+      "protocolVersion": 1,
+      "authority": "live-memory-only",
+      "offscreenReason": "WORKERS",
+      "assets": [
+        "guardian.html",
+        "guardian.js",
+        "guardian-worker.js"
+      ],
+      "scope": "Resource admission and cleanup; not input or execution evidence"
+    },
+    "sourceAnalysis": {
+      "protocolVersion": 1,
+      "assets": [
+        "source-analysis-worker.js"
+      ],
+      "scope": "Explicit transient lexical source context only; no runtime values or execution",
+      "timeBudgetMs": 1500,
+      "resultBytes": 65536
+    },
+    "sourceParser": {
+      "protocolVersion": 1,
+      "assets": [
+        "source-parse-worker.js"
+      ],
+      "scope": "Private session-only artifact parsing in the owned offscreen document; no source execution or public validated-map input",
+      "mapTimeBudgetMs": 1500,
+      "archiveTimeBudgetMs": 2000,
+      "maxConcurrentJobs": 2,
+      "transportBytes": 33554432
+    }
+  },
+  "checks": [
+    {
+      "file": ".artifacts/u04/current-handoff/2026-10-29T13-39-53-573Z/results.json",
+      "sha256": "3405169eac17f23aceb0221afb7fab4141ec6e5b69a8067344dd1682032dcc89",
+      "scope": "Standalone96 15 PASS; independent Basic/report/fresh recipient, explicit preload assistance"
+    },
+    {
+      "file": ".artifacts/u04/current-handoff/2026-10-29T13-45-55-931Z/results.json",
+      "sha256": "701efc4a6a52e7be08cc8635a828eac8dfc5f61ed3937a8d01e168363c427737",
+      "scope": "Official96 reporter12 PASS; original overall FAIL preserved, wrong standalone-storage expectation"
+    },
+    {
+      "file": ".artifacts/u04/current96-official-recipient/2026-10-29T13-49-37-201Z/results.json",
+      "sha256": "68fccb3a64bcdfce85dcd853921db17ab6ece14a0286933ea75d9390b32cae7f",
+      "scope": "Fresh official96 recipient4 PASS joined to exact prior download"
+    },
+    {
+      "file": ".artifacts/v03/current96-kit-install/2026-10-29T14-06-04-910Z/results.json",
+      "sha256": "38f7734fa3cd438eea8b8a87bae0381c30105090fb90bea4cf43844c16e42ca9",
+      "scope": "Normal Linux Chrome153 folder install of both exact96 distributions; no app workflow or toolbar claim"
+    },
+    {
+      "file": ".artifacts/release/current96/archive-verification.json",
+      "sha256": "95f18a1f1ba52c149d96490e227e2e542720e41905936a4cb019b13ed9e376ee",
+      "scope": "Compressed archive readback:528 payload files plus exact receipt/executable modes"
+    }
+  ],
+  "sourceChecks": {
+    "full": {
+      "command": "npm test",
+      "passed": 6518,
+      "failed": 0,
+      "skipped": 0,
+      "log": "/tmp/stateatom96-full.log"
+    },
+    "affected": {
+      "passed": 55,
+      "log": "/tmp/stateatom96-refresh-controls2.log"
+    },
+    "package": {
+      "passed": 9,
+      "typeConsumers": 2
+    },
+    "official": {
+      "types": "PASS",
+      "build": "PASS",
+      "packageChecks": 9,
+      "log": "/tmp/stateatom96-host-package2.log"
+    }
+  },
+  "operatorKind": "agent-operated-native-UI-and-harness; no independent human acceptance",
+  "performanceDeviations": [
+    {
+      "record": "343-basic-latency-maintainer-acceptance.md",
+      "accepted": true,
+      "originalTargetMs": 1000,
+      "basicP95Ms": {
+        "standalone": 1065.7,
+        "official": 1232.2
+      },
+      "originalResult": "MISS; accepted for first release; not remeasured96"
+    },
+    {
+      "record": "281-active-overhead-maintainer-acceptance.md",
+      "accepted": true,
+      "originalTargetPercent": 10,
+      "recordedMedianPercent": {
+        "standalone": 10.71737255,
+        "official": 27.31871841
+      },
+      "originalResult": "MISS; accepted; not remeasured96"
+    }
+  ],
+  "knownLimitations": [
+    "macOS install unverified/deferred by explicit287; Windows not verified",
+    "Bounded A02 selected-list scope282; no universal React/Redux causality",
+    "English grounded-v4 local AI usefulness scoped334; unsupported-device fallback remains normal",
+    "Native field revision changes can prevent Undo; no implicit rebase or server rollback",
+    "Vue original startup warning groups remain in historical Off/On records; not a zero-console PASS",
+    "Local kit contains private StatePort Desktop; public Atom license does not authorize its redistribution",
+    "Packaged Desktop Capture/Save/cold proof remains95; exact Desktop/helper unchanged, extension96 changed-area proof separately recorded",
+    "No Store installation, ordinary OS installer, human adoption, publication or SDK claim"
+  ],
+  "distributionStatus": {
+    "localKit": "prepared-and-archive-verified",
+    "normalLinuxExtensionInstall": "both96-hosts-pass",
+    "published": false,
+    "publicationAuthorized": false,
+    "readyForFullScopeRelease": false
+  },
+  "wholeTaskCount": {
+    "complete": 27,
+    "total": 29
+  }
+}

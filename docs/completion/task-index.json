@@ -10730,8 +10730,15 @@
         "offline_source_tests": 4,
         "project_source_changed_in_fix_pass": false
       },
-      "next_bounded_step": "Complete normal-setup/independent-app journeys once relevant inputs stabilize; preserve closed incomplete32/34 cases without unchanged retry. Recorded Active overhead accepted281.",
-      "historical_next_bounded_step_before_overhead_acceptance": "FullV03normal-setup/independent-app gates open;32native INCOMPLETE stays, current87backend13 is private-wire/no field widgets. Current independent V02.33original performance gate, no oldcase retry."
+      "next_bounded_step": "Resolve the remaining independent guide acceptance in350; do not repeat unchanged native revision or Vue warning campaigns.",
+      "historical_next_bounded_step_before_overhead_acceptance": "FullV03normal-setup/independent-app gates open;32native INCOMPLETE stays, current87backend13 is private-wire/no field widgets. Current independent V02.33original performance gate, no oldcase retry.",
+      "current_installation": {
+        "record": "350-current96-kit-and-v03-boundaries.md",
+        "status": "both-current96-normal-linux-folder-install-pass",
+        "raw": ".artifacts/v03/current96-kit-install/2026-10-29T14-06-04-910Z/results.json",
+        "sha256": "38f7734fa3cd438eea8b8a87bae0381c30105090fb90bea4cf43844c16e42ca9",
+        "whole_V03": false
+      }
     },
     {
       "id": "V04",
@@ -10779,12 +10786,13 @@
       "preparation_record": "205-release-date-decision.md",
       "historical_status_before_night_checkpoint": "planned",
       "current_preparation": {
-        "record": "224-night-release-checkpoint.md",
-        "status": "partial-saved-evidence-ledger",
-        "new_feature_acceptances": [],
-        "ready_for_full_scope_release": false
+        "record": "350-current96-kit-and-v03-boundaries.md",
+        "ledger": "candidate96-ledger.json",
+        "status": "exact96-local-kit-and-ledger-prepared-V03-open",
+        "ready_for_full_scope_release": false,
+        "archive_sha256": "f0926bf5f37982be0acb65fd07f185a31cea02fefb6c282213ca51a5d0ee3c3f"
       },
-      "next_bounded_step": "Assemble final ledger after remaining feature/host/UI/lifecycle/distribution/installed criteria; carry accepted overhead deviation281, not a numerical PASS or whole-V02 completion.",
+      "next_bounded_step": "Finalize readiness only after V03 passes or a concrete narrower release scope is explicitly accepted; publication remains separate.",
       "historical_next_bounded_step_before_overhead_acceptance": "Final ledger only after actual remaining feature/performance/host/native criteria; partial snapshot is not readiness."
     }
   ],
@@ -13988,11 +13996,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "U04 complete349; actual96 independent picker/refinement and handoff qualify both hosts. Whole27/29; V03 complete independent guide and V04 final coordinated96 kit/ledger remain.",
+    "current_activity_note": "U04 complete349; exact96 Linux kit archive528 and both-host normal install350 pass. Whole27/29; full independent guide V03 and dependent V04 remain. No new scope waiver/publication.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "164a89e38319b6b4a9802d2cddedf84603873212",
     "current_record_date": "2026-10-29",
-    "next_bounded_step": "V03 reconcile exact remaining independent-app input/source/production criteria; use current96 changes and retained results without repeating closed old campaigns.",
+    "next_bounded_step": "Resolve the remaining independent guide acceptance in350; do not repeat unchanged native revision or Vue warning campaigns.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
