@@ -1355,6 +1355,11 @@
         "whole_U04": false,
         "native_record": "344-current95-package-native-install.md",
         "native_status": "both-hosts-pass"
+      },
+      "capture_shell_recovery": {
+        "record": "345-i03-native-update-and-capture-shell.md",
+        "source_checks": 12,
+        "native_updated_and_restored_shell": true
       }
     },
     {
@@ -7418,8 +7423,16 @@
       ],
       "existing_commands": [],
       "deliverable": "One accepted distribution with component identity/update record",
-      "status": "planned",
-      "optional": false
+      "status": "in_progress",
+      "optional": false,
+      "local_update_evidence": {
+        "record": "345-i03-native-update-and-capture-shell.md",
+        "native_checks": 8,
+        "normal_linux_extension_install": true,
+        "same_capture_card_and_diagnostic_after_update_rollback": true,
+        "desktop_installer_final_pair_verified": false,
+        "remaining": "Coordinate final Desktop distribution inventory; observed existing linux-unpacked beta107 embeds Atom90, not current95."
+      }
     },
     {
       "id": "V01",

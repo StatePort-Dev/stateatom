@@ -174,3 +174,17 @@ retain that fallback. The bounded real-device validation is [recorded separately
 Report the candidate receipt identity, browser/OS, exact step, displayed outcome
 and missing evidence when something fails. Review the report before sharing; the
 guide does not automatically contact a maintainer or upload application data.
+
+## Update or roll back a supplied local extension kit
+
+Finish or cancel active Capture, save any needed review, and close editing first.
+Keep the previous complete kit. Replace the files in the same extension folder
+with the matching supplied kit, open `chrome://extensions`, and choose the
+extension's **Reload** control. Use the same steps with the retained folder
+contents to roll back. Do not remove the browser profile or Desktop data.
+Check the supplied component receipt after each change; the displayed Chrome
+version can remain unchanged. Reconnect explicitly: an update must not resume
+recording or editing automatically. Current Linux94→95→94→95 verification retains
+a real saved Capture Card and historical Atom diagnostic ([345](completion/345-i03-native-update-and-capture-shell.md)).
+This local component procedure does not certify a separately supplied Desktop
+installer: its bundled extension must match the same release receipt.
