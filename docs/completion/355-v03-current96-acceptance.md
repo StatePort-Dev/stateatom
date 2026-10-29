@@ -1,7 +1,7 @@
 # V03 current96 acceptance — evidence composition
 
-29 October2026. All remaining positive paths have factual receipts. Final bounded
-review is pending; whole27/29 and V04 remain open until its disposition is recorded.
+29 October2026. **V03 complete** after one bounded final review:0Critical/0Important/0Minor,
+no declined in-scope behavior. Whole **28/29 (96.55%)**; V04 remains open.
 This is a join of actual checks on declared versions, not a claim that every old
 experiment was repeated on96 or that all features were exercised in one session.
 
@@ -73,3 +73,11 @@ historical scope; no new96 execution is invented. V04 must carry this distinctio
   capability, not novice discoverability or human time savings.
 - Review this mapping and current receipts once, not the whole implementation
   history. Publication, SDK and private host redistribution remain separate.
+
+## Final review disposition
+
+One read-only reviewer `/root/v03_current96_final_review` verified current receipts,
+all282 product/223helper inputs, installed-byte join and exact warning boundaries.
+No findings requiring changes. Report `.artifacts/v03/final96/review.md`, SHA256 `c16c8f8e5febb7dafdd41217bca314211eae9c703020f0dca318e967e2c48ffb`.
+The declared setup assistance and original FAILs remain; no fresh native repeat.
+Next dependency-valid item: V04 exact final ledger and coordinated local kit notes.

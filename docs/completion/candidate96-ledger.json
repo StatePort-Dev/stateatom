@@ -19,17 +19,8 @@
   ],
   "unmetRequirements": [
     {
-      "task": "V03",
-      "scope": "Complete independent-application guide acceptance",
-      "details": [
-        "Original independent minPrice restoration remains FAIL and is not waived. Additional original firstName current96 native input path351 now passes both hosts:10 phases/seven transactions/actual writer retirement.",
-        "Known original IT-Tools background warnings and the reported workbench Copilot mismatch are accepted352; exact current Vue source/guide qualification and rejection of unknown/new errors remain required.",
-        "Current supported feature matrices and original app slices are not a completed current normal-guide join"
-      ]
-    },
-    {
       "task": "V04",
-      "scope": "Final baseline acceptance depends on V03; local packaging and ledger preparation are complete, no publication authorized"
+      "scope": "V03 accepted355; final V04 local artifact/guide/ledger reconciliation remains, no publication authorized"
     }
   ],
   "sourceRevision": "164a89e38319b6b4a9802d2cddedf84603873212",
@@ -218,6 +209,11 @@
       "draftHoldMs": 1111,
       "draftSamples": 9,
       "scope": "Original independent firstName actual native UI, Live/Draft/Undo/baseline/Close; no whole V03 or old minPrice waiver"
+    },
+    {
+      "scope": "Current original Vue8PASS; exact helper installation continuation, source156:9-174:11, approved24+2 warnings, no errors; V03 completed355",
+      "file": ".artifacts/v03/current96-vue-guide/2026-10-29T15-29-52-327Z/results.json",
+      "sha256": "171e14c51d656ad119d3c23e24a94d92c9d81b6cc9ed0fa122febc1ecc3464b7"
     }
   ],
   "sourceChecks": {
@@ -285,13 +281,22 @@
     "readyForFullScopeRelease": false
   },
   "wholeTaskCount": {
-    "complete": 27,
+    "complete": 28,
     "total": 29
   },
   "backgroundWarningDeviation": {
     "record": "352-background-warnings-maintainer-acceptance.md",
     "accepted": true,
     "policy": "../testing/release-background-warning-policy.json",
-    "rawFailuresPreserved": true
+    "rawFailuresPreserved": true,
+    "currentIDE": {
+      "record": "354-current-code-background-diagnostics.md",
+      "policy": "../testing/current96-vue-warning-policy.json",
+      "accepted": true
+    }
+  },
+  "v03Review": {
+    "file": ".artifacts/v03/final96/review.md",
+    "sha256": "c16c8f8e5febb7dafdd41217bca314211eae9c703020f0dca318e967e2c48ffb"
   }
 }
