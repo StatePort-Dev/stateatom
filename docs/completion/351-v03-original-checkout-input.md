@@ -46,3 +46,11 @@ Disabled without a selected element; current UI correctly restores default Text
 when no selected target exists. Current driver now picks first, then changes the
 property, matching current UI. Same disabled=false target and editor assertions;
 no product change or input success claimed. Exact second failure retained in case.
+
+Third runbce408b selects the exact original firstName with native picker, then
+retains Text because the legacy property selector is in the hidden Source section.
+The earlier default-restoration interpretation was incomplete: current template68
+places this selector under Source → Advanced response experiments. Native focus
+cannot select a hidden control. Correct the driver by navigating Source before
+choosing Disabled; no DOM unhide/backend property injection, no experiment execution.
+The third raw/visible inspector screenshot and all no-edit results remain retained.
