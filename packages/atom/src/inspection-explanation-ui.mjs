@@ -11,7 +11,7 @@ export function createInspectionExplanationUI({document,$,onNext=()=>{}}){
  let key;const local=createPropertyLocalExplanationUI({document,$});
  return{render(state,{fallbackPresented=false}={}){
   const facts=inspectionExplanationFacts(state||{}),visible=!!state?.selection||!!state?.stale,nextKey=visible?explanationIdentity(facts):null;
-  local.render(facts,visible);
+  local.render(facts,visible&&!state?.elementInspection);
   $('property-explanation-block').hidden=!visible||fallbackPresented&&facts.status==='Unavailable';$('explanation-details').hidden=!visible;
   if(key===nextKey)return facts;key=nextKey;$('explanation-details').open=false;
   $('property-explanation').textContent=visible?facts.summaries[0]:'';

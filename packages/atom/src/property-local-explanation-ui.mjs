@@ -2,6 +2,20 @@
 import {ChromeGroundedAnnotation} from '../../../core/derived-model-provider.mjs';
 import {projectGroundedAnnotation} from '../../../core/grounded-annotations.mjs';
 import {explanationIdentity} from '../../../core/inspection-explanations.mjs';
+export function createPropertyLocalExplanationCard({document,facts,property}){
+ const nodes=new Map(),prefix='property-'+property+'-';
+ const el=(tag,text,key)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(key){nodes.set(key,e);e.setAttribute('data-atom-id',prefix+key.replace('property-',''));}return e;};
+ const tools=el('details',undefined,'property-local-tools');tools.className='sp-disclosure';tools.open=false;
+ tools.append(el('summary','Explain this result'));
+ const answer=el('p',facts.summaries[0]);answer.setAttribute('data-atom-id',prefix+'recorded-answer');tools.append(answer);
+ const scope=el('p','Computation snapshot. DOM producer and HTTP origin remain unverified.');scope.className='sp-atom-hint';tools.append(scope);
+ const label=el('label'),enabled=el('input',undefined,'property-local-enabled');enabled.type='checkbox';enabled.checked=false;label.append(enabled,el('span',' Use Chrome on-device model (English)'));tools.append(label);
+ const hint=el('p','Optional local note. Explain may download a model and use local disk, CPU/GPU and battery. No account or API key. The recorded answer above stays available.');hint.className='sp-atom-hint';tools.append(hint);
+ const toolbar=el('div');toolbar.className='sp-toolbar';const run=el('button','Explain locally','property-local-run'),cancel=el('button','Cancel','property-local-cancel');run.type=cancel.type='button';run.disabled=true;cancel.hidden=true;toolbar.append(run,cancel);tools.append(toolbar);
+ for(const key of ['property-local-note','property-local-status']){const p=el('p','',key);p.setAttribute('role','status');if(key.endsWith('status'))p.className='sp-atom-hint';tools.append(p);}
+ const ui=createPropertyLocalExplanationUI({document,$:id=>nodes.get(id)});ui.render(facts,true);
+ return{element:tools,dispose:()=>ui.dispose()};
+}
 export function createPropertyLocalExplanationUI({document,$}){
  const model=document.defaultView?.location?.protocol==='chrome-extension:'?document.defaultView.LanguageModel:null,provider=ChromeGroundedAnnotation(model);
  const tools=$('property-local-tools'),enabled=$('property-local-enabled'),run=$('property-local-run'),cancelButton=$('property-local-cancel'),note=$('property-local-note'),status=$('property-local-status');

@@ -3,8 +3,11 @@ import {inspectionView} from '../../../browser-extension/inspection-view.mjs';
 import {inspectionExplanationFacts,inspectionDependencies} from '../../../core/inspection-explanations.mjs';
 import {dependencyResponseBinding} from './dependency-editing.mjs';
 import {renderExplanationDetails} from './inspection-explanation-ui.mjs';
+import {createPropertyLocalExplanationCard} from './property-local-explanation-ui.mjs';
+import {projectGroundedAnnotation} from '../../../core/grounded-annotations.mjs';
 export function createElementPropertiesUI({document,$,openSource,connectProject,refresh=()=>{},onValues=()=>{}}){
- let key,openDecision;
+ let key,openDecision,localCards=[];
+ const disposeLocal=()=>{for(const card of localCards)card.dispose();localCards=[];};
  const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
  function sourceRows(container,view){for(const source of view.sources){const b=el('button',source.file.split('/').at(-1)+':'+source.line,'sp-button-subtle');b.type='button';b.title='Code-linked · '+source.file+':'+source.line+':'+source.column;b.setAttribute('aria-label','Open in IDE: '+source.file+':'+source.line+':'+source.column);b.disabled=!openDecision?.available;if(b.disabled)b.title=openDecision?.reason||'Source opening unavailable';b.onclick=()=>{if(!b.disabled)openSource(source);};const line=el('div',undefined,'sp-section-row');line.append(b,el('span','Code-linked','sp-status'));container.append(line);if(source.expressions?.length)container.append(el('pre',source.expressions.join('\n'),'sp-code'));}}
  function sourceLink(label,source,className='sp-atom-dependency-link'){
@@ -16,9 +19,10 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
  function render(state){
   const bundle=state?.elementInspection,visible=!!bundle&&(!!state.selection||!!state.stale)&&!['starting','picking','resolving'].includes(state.picker?.status);
   for(const id of ['element-properties','element-property-evidence','element-property-sources'])$(id).hidden=!visible;
-  if(!visible){key=null;onValues([]);return false;}
+  if(!visible){key=null;disposeLocal();onValues([]);return false;}
   const globalStale=state.stale||state.analysis?.actionsInvalidated===true||state.analysis?.stateatom?.runtime?.status==='Stale';
   openDecision=state.capabilityPolicy?.operations?.open;const next=JSON.stringify([bundle,globalStale,openDecision,state.run,state.sourceGeneration,state.inspectionGeneration,state.analysis?.capabilities,state.stale,state.selection,state.attached]);if(key===next)return true;key=next;
+  disposeLocal();
   const valueSlots=[],inputs=[],evidence=[],sources=[],sourceGroups=new Map();let staleCount=0,selectedListSupported=false;
   for(const row of bundle.properties){
    const name=row.property==='text'?'Text':'Disabled attribute',stale=row.status==='Stale'||!!globalStale;
@@ -42,6 +46,7 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
      list.append(group);
     }card.append(list);}
     else card.append(el('p','No scalar inputs were recorded for this expression.','sp-atom-hint'));
+    if(!stale&&projectGroundedAnnotation(facts)){const local=createPropertyLocalExplanationCard({document,facts,property:row.property});localCards.push(local);card.append(local.element);}
     inputs.push(card);
    }
    const group=el('details',undefined,'sp-disclosure');group.append(el('summary',name+' · '+(stale?'Stale':row.status)));const body=el('div');
@@ -64,5 +69,5 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
   const focused=document.activeElement,caret=focused?.selectionStart!=null?[focused.selectionStart,focused.selectionEnd,focused.selectionDirection]:null;
   $('element-properties').replaceChildren(...inputs);onValues(valueSlots);if(focused?.isConnected&&document.activeElement!==focused){focused.focus?.({preventScroll:true});if(caret)focused.setSelectionRange?.(...caret);}$('element-properties').hidden=!inputs.length;$('element-property-evidence').replaceChildren(...evidence);$('element-property-sources').replaceChildren(...sources);return true;
  }
- return {render};
+ return {render,dispose:disposeLocal};
 }

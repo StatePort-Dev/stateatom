@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Put the optional local note inside each supported property’s “Explain this result” disclosure. Keep copied inputs first and the recorded answer beside the note. Cancel pending work when its card is replaced, hidden by picking, or disposed; hidden legacy controls cannot run. Uses existing shared controls and typography.
+
 - Add an optional on-device property explanation disclosure using existing shared controls. Keep the deterministic answer and limits alongside a separately labelled model-selected local note; Actions uses the same bounded claim selection. Default off, explicit Explain/download, cancel and exact snapshot invalidation. No shared token or contract change.
 
 - Preserve a local fetch-policy declaration marker through identifier minification so the opt-in closed selected-list launcher can acquire the exact official worker helper bytes. Unknown or changed helpers still revoke the finite proof; no browser permission is added.
