@@ -79,3 +79,12 @@ receipt/no live selection plus direct native writer-inactive observation. This
 corrects a driver expectation, not product state or a live-evidence criterion.
 The standalone editing workflow is not repeated; a separate posthoc reader will
 validate the saved facts and explicitly retain that missing standalone native query.
+
+Official run8268690 also completes all seven transactions/nine editing phases.
+Its first post-Close read retains the earlier selection while input observation is
+already Stale; its next saved read has null selection plus the expected stale reason.
+The terminal-state assertion raced the existing UI invalidation; no product writer
+is shown active. Wait for that exact existing terminal state before asserting it
+and reading native-world inactivity. No timeout extension or relaxed state allowed.
+This concrete observed transition justifies the affected final host qualification;
+earlier raw overall FAIL and positive subchecks are not rewritten.

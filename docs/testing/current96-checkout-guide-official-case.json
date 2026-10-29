@@ -397,7 +397,7 @@
   },
   "helperInputs": {},
   "inputHashes": {
-    "tests/integration/current96-checkout-guide-native.mjs": "76f4fd9ac366ccca5d763f234b4d600b20e2cedf519ba87801e5b34ce60aa40c",
+    "tests/integration/current96-checkout-guide-native.mjs": "a9d962e07797d6fe13b641cfab18178ed353f9e066845eae38b95fe6cb31c14c",
     "tests/helpers/native-inspector-ui.mjs": "2a82f3a643bbbacd9a6f8ed7e798f77b1416f110f1828ac23fd97b24bc8109b9",
     "tests/helpers/source-access-native-desktop.mjs": "786011664d68f658bd1d5e7c002963642a50a16661d7f67b2413ac8aef182f57",
     "scripts/native-browser.mjs": "ddb6b665824e6c200b16b52108657baf7d23ad0fcdea9ce5b9c2ea6a5fa5f3a2",
@@ -454,5 +454,11 @@
     "sha256": "9108fa2be6b664f0b983a546697b182e37286ba5e13a5a2f0e859ae3b23e74c8",
     "status": "FAIL inherited closed-selection assertion, nine positive phases/seven writes",
     "closedPredicate": "Closed receipt and Stale historical target, no current selection, field disabled; exact native writer inactive must be freshly checked in official path"
+  },
+  "retainedClosedTransitionFailure": {
+    "file": ".artifacts/v03/current96-checkout-guide/2026-10-29T14-25-38-355Z/results.json",
+    "sha256": "27bb11b15fc03bf7f6053a69ce9a323fd1f25c3b1293322620dfa6c625ea9ae2",
+    "scope": "All nine editing phases/seven writes positive; state immediately after Close still has old snapshot, next saved read clears it and marks Stale",
+    "correction": "Wait for completed existing close + UI reinspection invalidation before asserting its exact terminal state; no delay/timeout increase, product mutation or criterion waiver"
   }
 }
