@@ -61,3 +61,21 @@ and UI both say Inspect again; add that actual Refresh inspection step before
 asserting a new target. Both previous Text/Disabled records stay Stale until read.
 No native input writer has opened in any of these four setup failures. All originals
 remain exact; this is migration of the old harness, not product restoration proof.
+
+## Standalone native editing is positive; close assertion is stale
+
+Run4f1e315 in current96-checkout-guide/2026-10-29T14-22-30-566Z has six checks and
+nine completed phases: all seven Live/Undo/Draft/Apply/baseline transactions passed
+with the exact original native field values and strict draft hold. Close actually
+returns closed:true, seven retained historical transactions, field disabled, empty
+native baseline, no current selection and Stale observation. The old harness tried
+to read current selection.property after Close and failed. Overall FAIL is retained.
+No native inactive-control-world query executed after that assertion; do not infer it.
+Zero observed app/inspector console errors; original inputs stable; owned cleanup done.
+
+One corresponding official-host case is registered separately with the same seven
+transactions. Its closed-state predicate now requires the actual documented Stale
+receipt/no live selection plus direct native writer-inactive observation. This
+corrects a driver expectation, not product state or a live-evidence criterion.
+The standalone editing workflow is not repeated; a separate posthoc reader will
+validate the saved facts and explicitly retain that missing standalone native query.
