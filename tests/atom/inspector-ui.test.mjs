@@ -368,3 +368,18 @@ for(const trigger of ['load','pick','inspect-selector'])test('unsent edits remai
   assert.equal(f.field().value,'20');assert.equal(f.field().disabled,false);assert.equal(f.$('selected').textContent,selected);assert.equal(f.$('input-close').hidden,false);assert.match(f.$('input-status').textContent,/Apply or discard/);assert.equal(f.plans.length,0);
  }finally{await f.dispose();}
 });
+
+test('late tab cleanup cannot supersede the read started by a newer tab choice',async()=>{
+ const cleanup=deferred(),latest=deferred(),calls=[];let closing=false,reading=false,f;
+ f=fixture(m=>{calls.push(m);if(m.op==='production-close'&&closing)return cleanup.promise;if(m.op==='state'&&reading)return latest.promise;});
+ try{
+  await f.view.ready;closing=true;reading=true;calls.length=0;
+  f.$('tabs').value='2';const old=f.$('tabs').onchange();await tick();
+  f.$('tabs').value='1';const current=f.$('tabs').onchange();await tick();
+  assert.equal(calls.filter(m=>m.op==='state').length,1);
+  cleanup.resolve({});await tick();
+  assert.equal(calls.filter(m=>m.op==='state').length,1,'Obsolete cleanup must not start a competing deep refresh');
+  latest.resolve(f.state(1));await Promise.all([old,current]);
+  assert.match(f.$('selected').textContent,/#target-1/);assert.equal(f.$('connection-label').textContent,'Attached · this tab');assert.equal(f.$('status').textContent,'OK');
+ }finally{cleanup.resolve({});latest.resolve(f.state(1));await f.view.dispose();}
+});
