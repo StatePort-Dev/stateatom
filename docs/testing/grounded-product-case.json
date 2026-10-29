@@ -2,13 +2,13 @@
   "schema": "stateatom.grounded-product-case/1",
   "maximumAttemptsPerHost": 1,
   "maxUIInitiationsPerHost": 5,
-  "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product-ready/2026-10-29",
-  "project": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product/2026-10-29/project",
+  "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29",
+  "project": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project",
   "profileCase": "docs/testing/official-comparison-pilot-case.json",
   "plugin": {
-    "file": "/home/roman/projects/stateatom/.artifacts/development/2026-10-29T09-12-42-886Z/stateport-vite-plugin-0.1.0-candidate.20261029.16.tgz",
-    "sha256": "67b11688c2521019a4af2b3cac1518b2cb8fb7a7788c1efa04a37d4ab312371a",
-    "version": "0.1.0-candidate.20261029.16"
+    "file": "/home/roman/projects/stateatom/.artifacts/development/2026-10-29T09-35-41-351Z/stateport-vite-plugin-0.1.0-candidate.20261029.17.tgz",
+    "sha256": "81dfcf43952b3a833f8ef535d04f07917dad52692fa0e40934eaebd077253e6c",
+    "version": "0.1.0-candidate.20261029.17"
   },
   "vsix": {
     "file": "/home/roman/projects/stateatom/.artifacts/development/2026-10-29T09-05-13-000Z/stateatom-dev-helper-0.1.3.vsix",
@@ -16,7 +16,7 @@
   },
   "hosts": {
     "standalone": {
-      "path": "/home/roman/projects/stateatom/.artifacts/atom/2026-10-29T09-04-23-130Z/standalone",
+      "path": "/home/roman/projects/stateatom/.artifacts/atom/2026-10-29T09-35-02-016Z/standalone",
       "page": "panel.html",
       "files": {
         "LICENSES/Apache-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
@@ -39,7 +39,7 @@
         "manifest.json": "fdbaf7782fe48090ebce4da63a23ff80cdd7a5b977d0a3f58a4abaa5949c18bc",
         "panel.css": "0791eb7803d269a4ccfaebbc90fb6671e1f0b89785b9aa7311135c441b6e40f0",
         "panel.html": "8dcad55cb2467a8493950b49c0d815746d82b099029d40dbfd041803230110f5",
-        "panel.js": "efb286f6b49ce5ddc6c824db78744a3a6ab81f2590b8ecb5a78bd1e6e2385062",
+        "panel.js": "56904bcb41652cb4b3e1b361331113281091828e67ec1d714604fd388fd21ae0",
         "reader.css": "0577d319ba62955eeed9bc84725e994c1612d42ecbb8b2a18e2c13254bcc1f38",
         "reader.html": "9fdeb1fd1b4b2792dedbdd4485017199075c3bdf718077755ece8e66f600e4ec",
         "reader.js": "358b524955c74a206e6bc0d45c5448c5504b5759f5e144737c35584a1576b9e1",
@@ -52,7 +52,7 @@
       "path": "/home/roman/projects/scenariodeck/apps/chrome-extension/dist",
       "page": "atom.html",
       "files": {
-        "BUILD-INFO.json": "f839f8318d94be2b5330d245f3f421d19e9cbc543796996639175309e468d362",
+        "BUILD-INFO.json": "112d454e5e0f0f3c2cd387fd84cbb6f72dc3d4b5d1efdf2d45a0fa0c66903c10",
         "atom/LICENSE": "7839a054cc205ef0dc12a6b79f82254fe63852e8a1d827ec7e4e48ec0e1362b9",
         "atom/LICENSES/Apache-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
         "atom/NOTICE": "9ef4cf51373f5e1977ca89a0fd9adaa896b5a2fde652973c9d7faecac3d5a2d3",
@@ -67,7 +67,7 @@
         "atom-guardian.html": "70b71a19f37ae176c10eaa955e06298d9b67ee2a677b67bef6f742ed082e36c1",
         "atom-guardian.js": "d0ba0092ccc3d152766eb87f0c47bc149dd6d30d16eb2e013cff842de2bcf68a",
         "atom-host.css": "f91ddc0da0432164861aa9f3a9d2e3cec3252d0354411e6a3b4421e3e4a8ba2b",
-        "atom-page.js": "03cfd67ad8a7c6da0f889b4c95c55697c5e738e2668b0ef1f7d9516e310d52f0",
+        "atom-page.js": "26fb3b3cb3196668464e0a271b4527468d6cc4107500cc74819c8080f888d865",
         "atom.html": "d4635daee3a52d087733fcf38438bbffa269e4babbdeb1ea5755feb34d402e81",
         "extension-ui/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
         "extension-ui/NOTICE": "d1546935ddf0131576c017b5b35d59978514e06fe73274a446c74a0552b7185a",
@@ -92,24 +92,24 @@
     }
   },
   "inputs": {
-    "tests/integration/grounded-product.mjs": "7f07eefe3744e2e31d8b78b5157612f93a38affc8a7ce167ca7db6ec86c610ff",
+    "tests/integration/grounded-product.mjs": "c39a2f6f700acb55bdfc810cbee77e16d0b4218614a48cbffcb8b53c8ec43d80",
     "tests/helpers/grounded-product-server.mjs": "37b56a73700e57c55bbad326c348a58f6d07a4a2a95604fca9ec83edd76c572b",
     "scripts/native-browser.mjs": "ddb6b665824e6c200b16b52108657baf7d23ad0fcdea9ce5b9c2ea6a5fa5f3a2",
     "scripts/harness.mjs": "4237bf6218e06d0042968316356e8ac90e30ac5ac54c67cc821d6157ded98874",
     "tests/helpers/native-inspector-ui.mjs": "2a82f3a643bbbacd9a6f8ed7e798f77b1416f110f1828ac23fd97b24bc8109b9",
     "tests/helpers/source-access-native-desktop.mjs": "786011664d68f658bd1d5e7c002963642a50a16661d7f67b2413ac8aef182f57",
     "docs/testing/official-comparison-pilot-case.json": "0921c441e4bee7e45610d599967e72be83998bdc764b1628a22a9f1471b32c5e",
-    "/home/roman/projects/stateatom/.artifacts/development/2026-10-29T09-12-42-886Z/stateport-vite-plugin-0.1.0-candidate.20261029.16.tgz": "67b11688c2521019a4af2b3cac1518b2cb8fb7a7788c1efa04a37d4ab312371a",
+    "/home/roman/projects/stateatom/.artifacts/development/2026-10-29T09-35-41-351Z/stateport-vite-plugin-0.1.0-candidate.20261029.17.tgz": "81dfcf43952b3a833f8ef535d04f07917dad52692fa0e40934eaebd077253e6c",
     "/home/roman/projects/stateatom/.artifacts/development/2026-10-29T09-05-13-000Z/stateatom-dev-helper-0.1.3.vsix": "49b887e3cfccf56f4431aba4fa9a7f68c9ef8a0dcebfd3e6cd1619d2fb356fb9",
-    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product/2026-10-29/project/package-lock.json": "2b327ce4089ed23e9d00fd76bff83cb60f83a2b7175c547625e41f0304eef5c1",
-    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product/2026-10-29/project/package.json": "5a8834bf8c360105ea9de75b88612049dbfd39b7bcf6c0b2eb21c554a3e3286e",
-    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product/2026-10-29/project/index.html": "3dcdd42bba12dd20d6d15dec899f4b91ef9691d355f3c5829b52fc51843f2dce",
-    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product/2026-10-29/project/control-src/App.jsx": "d0f2ece1e62b45fbc260cc545c588c995f76e383ab1596d6e7ecde31d2a2d14d",
-    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product/2026-10-29/project/control-src/Label.jsx": "da4bbce2a17411beb16939aa487bdd86fd36d7dc6278329622c9ff087053163b",
-    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product/2026-10-29/project/control-src/Forward.jsx": "c7d1f10033612aeb7e91dd872b390fedf693e88d02dd136777fd33155baf555d"
+    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project/package-lock.json": "1c7242b550928b312604fe409f94aa2f796b15713bf87ae7275bcb00198a9968",
+    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project/package.json": "67764d4f5f71850c7d09e8bd446f2eebba370cda5a83da9aae17eac4f2a4b12b",
+    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project/index.html": "3dcdd42bba12dd20d6d15dec899f4b91ef9691d355f3c5829b52fc51843f2dce",
+    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project/control-src/App.jsx": "d0f2ece1e62b45fbc260cc545c588c995f76e383ab1596d6e7ecde31d2a2d14d",
+    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project/control-src/Label.jsx": "da4bbce2a17411beb16939aa487bdd86fd36d7dc6278329622c9ff087053163b",
+    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project/control-src/Forward.jsx": "c7d1f10033612aeb7e91dd872b390fedf693e88d02dd136777fd33155baf555d"
   },
   "acceptance": [
-    "real recorded property through installed plugin and VSIX",
+    "real native picker and recorded property in actual multi-property cards through installed plugin/VSIX",
     "default off; opt-in metadata; explicit model request; retained template",
     "cancel during generating; same-value different target invalidation; no late publication",
     "actual offline extension-document fetch refusal and successful local recovery",
@@ -124,10 +124,19 @@
     "Human visual review not implied",
     "Case329 corpus quality unchanged, not rerun"
   ],
-  "previousAttempt": {
-    "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product/2026-10-29",
-    "caseSha256": "d77fdaa2124155ce1de2c791a3109f1f023a9b7125088551f077c18984dbca73",
-    "resultSha256": "6997ec656ea5a848e0cf117080c063db843bac60421c9c6d3ccafefb5a1fa139",
-    "reason": "Driver raced asynchronous tab list refresh, before model requests; all cleanup and frozen inputs passed."
-  }
+  "previousAttempts": [
+    {
+      "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product/2026-10-29",
+      "caseSha256": "d77fdaa2124155ce1de2c791a3109f1f023a9b7125088551f077c18984dbca73",
+      "resultSha256": "6997ec656ea5a848e0cf117080c063db843bac60421c9c6d3ccafefb5a1fa139",
+      "reason": "Driver raced asynchronous tab list refresh, before model requests; all cleanup and frozen inputs passed."
+    },
+    {
+      "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product-ready/2026-10-29",
+      "caseSha256": "ec28cdea7d5c44919fe36d0dc67bfaa6ea9891ac68a29ef7d243f3bc7b7358f3",
+      "resultSha256": "29cdfdf5e9a0e76e96e3c027cb49813da64f771b07c1137712faccbb91f7b79f",
+      "reason": "Source fields were on hidden Source tab; 0 model requests, all cleanup and frozen inputs passed. Real multi-property hidden-note defect then reproduced in source and corrected."
+    }
+  ],
+  "hostRevision": "23fbccc0"
 }

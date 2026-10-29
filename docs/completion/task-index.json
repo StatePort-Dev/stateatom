@@ -5918,9 +5918,9 @@
       "status": "in-progress",
       "optional": false,
       "active_slice": {
-        "id": "L02.40",
-        "record": "331-l02-packaged-product-controls.md",
-        "status": "prepared-native-product-controls",
+        "id": "L02.41",
+        "record": "332-l02-visible-property-notes.md",
+        "status": "source-fixed-native-acceptance-pending",
         "whole_L02_complete": false
       },
       "implementation_plan": "328-l02-grounded-selection-design.md",
@@ -5931,7 +5931,7 @@
         "ONE whole-L02 review only after full item acceptance"
       ],
       "execution_record": "329-l02-grounded-quality-result.md",
-      "current_checkpoint": "331-l02-packaged-product-controls.md",
+      "current_checkpoint": "332-l02-visible-property-notes.md",
       "completed_slices": [
         {
           "id": "L02.37",
@@ -6985,6 +6985,12 @@
         "useful_main": 6,
         "useful_separate": 0,
         "raw_sha256": "7104e12723df79bc4d0a48bbf25d3d7cd86d67e3fbd2408d2f6ac4a3441eb526"
+      },
+      "previous_slice_before_L02_41": {
+        "id": "L02.40",
+        "record": "331-l02-packaged-product-controls.md",
+        "status": "prepared-native-product-controls",
+        "whole_L02_complete": false
       }
     },
     {
@@ -7301,7 +7307,7 @@
         "meaning": "Existing source integration/old-pair native evidence credited; current exact pair update/acceptance remains open"
       },
       "execution_record": "277-i02-tab-refresh-status.md",
-      "next_bounded_step": "Official90 intake and affected UI complete280. Reuse this exact candidate while inputs stay identical; full official coexistence matrix remains scoped by final substantive A02/L02/V02 acceptance. Do not repeat closed89cases or repackage unchanged inputs.",
+      "next_bounded_step": "Exact official93/UI2 intake23fbccc0; real property-card model acceptance next332. Retain all historical Capture/lifecycle proofs and name changed UI. No closed old case retry or unchanged performance run.",
       "completed_slices": [
         {
           "id": "I02.38",

@@ -27,3 +27,15 @@ Issue fresh Atom93/plugin17; retain92/16 bytes and results. UI2 unchanged. Whole
 source checks, exact packaging and real native/visual acceptance follow. L02 and
 other release items remain open until their actual criteria pass; no documents-only
 completion, repeat corpus, performance retuning, new trust, SDK or publication.
+
+Exact new Atom93 archive ca4ae44fa7749162eaea1ee8536055653f1d7f03f3751ca015dbbeb13b1c74de,
+plugin17 archive81dfcf43952b3a833f8ef535d04f07917dad52692fa0e40934eaebd077253e6c;
+producer33fc43d, UI2 and exact new VSIX from330 retained. Package9/types2 PASS.
+Official intake23fbccc0: frozen install/build/types/package9/affected22 PASS;
+only BUILD-INFO.json/atom-page.js differ92,34files identical. Prior92 preserved.
+New copied consumer installed offline; new case directory `grounded-product93`.
+
+First full-suite invocation used restricted sandbox:6439PASS/65FAIL,245201ms;
+multiple process and CLI assertions fail with spawnSync/proc EPERM (including mkfifo).
+This is not a passing suite. Preserve `/tmp/stateatom-multi-local-full.log` and run
+unchanged suite in the established ordinary local environment before final claims.
