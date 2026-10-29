@@ -4,11 +4,16 @@
 const MAX_TARGETS=128,MAX_EVENTS=4096;
 const text=(v,max=256)=>typeof v==='string'&&v.length>0&&v.length<=max&&!/[\x00-\x1f\x7f]/.test(v);
 const APP_URLS=new Set(['about:blank','http://127.0.0.1:4173/__stateatom/first-read-start','http://127.0.0.1:4173/react/']);
+// The finite reviewed list uses HashRouter for these three filters. No other
+// same-document navigation acquires authority merely by retaining its origin.
+const LIST_URLS=new Set(['about:blank','http://127.0.0.1:4173/__stateatom/list-start',
+ 'http://127.0.0.1:4173/list/','http://127.0.0.1:4173/list/#/',
+ 'http://127.0.0.1:4173/list/#/active','http://127.0.0.1:4173/list/#/completed']);
 // Exact native browser UI documents from the retained Chromium diagnostic.
 const UI_URLS=new Set(['chrome://webui-toolbar.top-chrome/','chrome://omnibox-popup.top-chrome/','chrome://omnibox-popup.top-chrome/omnibox_popup_aim.html']);
 
 export function createTargetHistory({appId,panelId,workerId,panelURL,workerURL,initial,guardian=null,profile='first-read'}){
- const appURLs=profile==='first-read'?APP_URLS:profile==='selected-list'?new Set(['about:blank','http://127.0.0.1:4173/__stateatom/list-start','http://127.0.0.1:4173/list/']):null;
+ const appURLs=profile==='first-read'?APP_URLS:profile==='selected-list'?LIST_URLS:null;
  if(!appURLs)throw Error('Target profile denied');
  if(guardian&&(![guardian.documentId,guardian.workerId].every(id=>text(id))||new Set([appId,panelId,workerId,guardian.documentId,guardian.workerId]).size!==5||guardian.documentURL!==panelURL.replace('panel.html','atom-guardian.html')||guardian.workerURL!==panelURL.replace('panel.html','atom-guardian-worker.js')||guardian.workerTargetURL!==undefined&&![guardian.workerURL,''].includes(guardian.workerTargetURL)))throw Error('Guardian target identity denied');
  const records=new Map(),seen=new Set(),retiredUI=new Set();let denied=false,closed=false,events=0,lastInventoryCount=null;

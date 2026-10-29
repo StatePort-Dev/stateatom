@@ -63,6 +63,19 @@ const guardianURL=panelURL.replace('panel.html','atom-guardian.html'),guardianWo
 const guardian={documentId:'GUARDIAN',workerId:'GUARDIAN_WORKER',documentURL:guardianURL,workerURL:guardianWorkerURL};
 const currentInitial=()=>[...initial(),target('GUARDIAN','background_page',guardianURL),target('GUARDIAN_WORKER','worker',guardianWorkerURL,{parentId:'GUARDIAN',parentFrameId:'GUARDIAN'})];
 const currentHistory=(list=currentInitial())=>createTargetHistory({appId:'APP',panelId:'PANEL',workerId:'WORKER',panelURL,workerURL,initial:list,guardian,profile:'selected-list'});
+test('selected-list admits only reviewed same-document filter routes and keeps denials terminal',()=>{
+ const list=currentInitial(),h=currentHistory(list);replay(h,list);
+ for(const hash of ['#/active','#/completed','#/','']){
+  list[0].url='http://127.0.0.1:4173/list/'+hash;
+  assert.equal(h.observe('changed',list[0]),true);assert.equal(h.consistent(list),true);
+ }
+ for(const url of ['http://127.0.0.1:4173/list/#/other','http://127.0.0.1:4173/list/?x#/active','http://127.0.0.1:4173/other/#/active','http://localhost:4173/list/#/active','http://127.0.0.1:4173/list/#/active?x']){
+  const denied=currentHistory();replay(denied,currentInitial());
+  assert.equal(denied.observe('changed',target('APP','page',url)),false);
+  assert.equal(denied.observe('changed',target('APP','page','http://127.0.0.1:4173/list/#/')),false);
+ }
+ const firstRead=make();replay(firstRead);assert.equal(firstRead.observe('changed',target('APP','page','http://127.0.0.1:4173/list/#/active')),false);
+});
 test('pre-acquired exact guardian IDs and parent relation permit current list route only',()=>{const list=currentInitial(),h=currentHistory(list);replay(h,list);for(const url of['http://127.0.0.1:4173/__stateatom/list-start','http://127.0.0.1:4173/list/']){list[0].url=url;assert(h.observe('changed',list[0]));assert(h.consistent(list));}list[0].url='http://127.0.0.1:4173/react/';assert.equal(h.observe('changed',list[0]),false);});
 test('guardian allowance never admits foreign, replaced, extra, wrong-parent or URL-less workers',()=>{for(const changed of[target('FOREIGN','worker',guardianWorkerURL,{parentId:'GUARDIAN',parentFrameId:'GUARDIAN'}),target('GUARDIAN_WORKER','worker',guardianWorkerURL,{parentId:'APP',parentFrameId:'APP'}),target('GUARDIAN_WORKER','worker','',{parentId:'GUARDIAN',parentFrameId:'GUARDIAN'}),target('GUARDIAN','background_page',guardianURL+'?changed')]){const h=currentHistory();replay(h,currentInitial());assert.equal(h.observe('created',changed),false);}for(const kind of['destroyed','crashed']){const h=currentHistory();replay(h,currentInitial());assert.equal(h.observe(kind,{targetId:'GUARDIAN_WORKER'}),false);}});
 

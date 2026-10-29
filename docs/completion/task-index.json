@@ -3061,7 +3061,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "Remaining282 current lifecycle/refusal controls, matching official host/package, then one whole-integration review.320 qualifies exact whole-workflow function counts and per-action outputs; earlier per-action counter protocols stay incomplete.",
+      "next_bounded_step": "Matching current official package/host, remaining282 control reconciliation, then one whole-integration review.322 qualifies current installed lifecycle refusals; whole A02 remains open.",
       "reducer_field_write_sites": {
         "record": "285-a02-reducer-field-write-sites.md",
         "status": "complete-source-prerequisite-not-integrated",
@@ -3128,12 +3128,12 @@
         {
           "record": "173-a02-main-input-native.md",
           "status": "complete-bounded-native-main-input-qualification",
-          "next_bounded_step": "ONE bounded source handoff state-array→already-bound App todos→Main props/parameter; no generalownershipkernel/state/selectedDOM/product claim from Main-local success."
+          "next_bounded_step": "ONE bounded source handoff state-array\u2192already-bound App todos\u2192Main props/parameter; no generalownershipkernel/state/selectedDOM/product claim from Main-local success."
         },
         {
           "record": "174-a02-app-hook-binding.md",
           "status": "complete-bounded-App-source-binding",
-          "next_bounded_step": "ONE Appboundvalue→freshMainJSXconfig/nativeprops→sameMainargument sourceassociation; native/index/state/ownership remainsUnknown, no genericownershipframework."
+          "next_bounded_step": "ONE Appboundvalue\u2192freshMainJSXconfig/nativeprops\u2192sameMainargument sourceassociation; native/index/state/ownership remainsUnknown, no genericownershipframework."
         },
         {
           "record": "175-a02-app-main-props.md",
@@ -3184,7 +3184,7 @@
         {
           "record": "192-a02-committed-props.md",
           "status": "closed-bounded-source-only",
-          "next_bounded_step": "ONE native JSX-element→returned-fiber source admission with semantic controls; no props-only identity inference, oldnative/retention/install/model/cert campaign or package/UI change."
+          "next_bounded_step": "ONE native JSX-element\u2192returned-fiber source admission with semantic controls; no props-only identity inference, oldnative/retention/install/model/cert campaign or package/UI change."
         },
         {
           "record": "193-a02-native-element-fiber.md",
@@ -3312,16 +3312,16 @@
       },
       "active_slice": {
         "id": "A02.release-selected-list-integration",
-        "record": "320-a02-current-semantic-result.md",
-        "status": "in-progress-task4-lifecycle-and-official-host",
-        "affected_pass": 8,
+        "record": "322-a02-installed-lifecycle-result.md",
+        "status": "in-progress-task4-official-host-and-final-review",
+        "affected_pass": 45,
         "native_runs": 13,
         "new_native_runs": 2,
         "public_plugin_integrated": true,
         "runtime_premises_discharged": false,
         "full_A02": false,
         "review_pending": "one final whole-integration review",
-        "current_full_verification": "315 product source full6416PASS retained;320 semantic six phases PASS (54output snapshots,17exact native function counts per phase), counter mapper2PASS. Unfinished source/official/lifecycle matrix remains.",
+        "current_full_verification": "315 full6416PASS retained;322 affected45PASS and native12+7PASS. Inspector bytes12; official and remaining282 review pending.",
         "compiled_inputs": 39,
         "bundle_sha256": "43e02fd7f51d42c25fe7b56f86ab7260a568e00eb4622ec5774314a854ca51f1",
         "held_out_effect_binding": true,
@@ -3339,8 +3339,8 @@
         "actual_ide_source_navigation_qualified": true,
         "installed_helper_sha256": "c87714e736983c3e34f81977e2842c8bdfe8b8983bdf8da717865894d0cdbe45",
         "actual_normal_installed_plugin_qualified": true,
-        "plugin_version": "0.1.0-candidate.20261029.12",
-        "plugin_sha256": "834279a54c86c3d6907c74d2163bb42dba6dab95a17b481a3f5e8f75a87c25b5",
+        "plugin_version": "0.1.0-candidate.20261029.13",
+        "plugin_sha256": "87f72f053fe2140502461c4128fa4c0926b084a2d5d8f8940674b6d4a7ec6881",
         "actual_held_out_native_qualified": true,
         "actual_picker_overlay_qualified": true,
         "actual_current_semantic_parity_qualified": true,
@@ -3353,6 +3353,20 @@
           "counter_interval": "whole-workflow",
           "native_counters": "all exact direct ranges, no inferred zeros",
           "per_action_counter_parity": false,
+          "full_A02": false
+        },
+        "lifecycle_qualification": {
+          "record": "322-a02-installed-lifecycle-result.md",
+          "raw": [
+            ".artifacts/a02/selected-list-route/2026-10-29T07-27-39-623Z/results.json",
+            ".artifacts/a02/selected-list-route/2026-10-29T07-28-22-093Z/results.json"
+          ],
+          "checks": [
+            12,
+            7
+          ],
+          "source_restore_revives_authority": false,
+          "reload_recovery": "restart closed development session",
           "full_A02": false
         }
       },
@@ -3491,7 +3505,7 @@
         "current_checkpoint": "220-a02-selected-source-isolation.md"
       },
       "historical_next_bounded_step_before_night_checkpoint": "ONE final bounded source review; I01 separate host scope pending, no oldnative repeats.",
-      "historical_next_bounded_step_before_I02_current82": "FullA02open: bounded field/writer/parameter/selected-producer prerequisites remain.51–53 source closed,50native budget exhausted; no guessed cause or blind retry. Next independent I01 is separately authorized and in progress; current native Capture regression remains.",
+      "historical_next_bounded_step_before_I02_current82": "FullA02open: bounded field/writer/parameter/selected-producer prerequisites remain.51\u201353 source closed,50native budget exhausted; no guessed cause or blind retry. Next independent I01 is separately authorized and in progress; current native Capture regression remains.",
       "historical_next_bounded_step_before_overhead_acceptance": "FullA02 field/writer/parameter/selected-producer mechanism remains open. Source54/55 packaged10, no native weak-dispatch/50cause proof or old50retry. Current independent step V02.33changed87original performance gate.",
       "first_release_scenario": {
         "record": "282-a02-first-release-scenario.md",
@@ -4171,7 +4185,7 @@
           "type_consumers": 2,
           "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
           "standalone_read_inject_native_checks": 3,
-          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
           "runtime_race_checks": 14,
           "isolated_bug_mutations_rejected": 6,
           "native_checks": 29,
@@ -5853,7 +5867,7 @@
       "implementation_plan": "../superpowers/plans/2026-10-28-l02-official-warm-lifecycle.md",
       "remaining_acceptance": [
         "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
-        "Final candidate actual factual/concision/usefulness comparison preserving historical20–30 and>=25/5incomplete/5untrusted criteria",
+        "Final candidate actual factual/concision/usefulness comparison preserving historical20\u201330 and>=25/5incomplete/5untrusted criteria",
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
@@ -7051,7 +7065,7 @@
           "accepted_positive": false
         },
         "full_I02_accepted": false,
-        "next_bounded_step": "I02.36 exact local unpacked85↔86 component reload/rollback: saved diagnostic/no resumed waiting writer/picker on existing app; initial exact85dist restoration before native, no model/CA/Store/Capture campaign.",
+        "next_bounded_step": "I02.36 exact local unpacked85\u219486 component reload/rollback: saved diagnostic/no resumed waiting writer/picker on existing app; initial exact85dist restoration before native, no model/CA/Store/Capture campaign.",
         "native_devtools": {
           "record": "233-i02-native-devtools-control.md",
           "host_commit": "3f567f79",
@@ -9124,7 +9138,7 @@
         "further_optimization_required_for_this_deviation": false,
         "new_measurement": false,
         "whole_V02_complete": false,
-        "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278–280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
+        "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278\u2013280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
       },
       "historical_readiness_note_before_overhead_acceptance": {
         "record": "224-night-release-checkpoint.md",
@@ -10619,7 +10633,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK — separate StatePort project",
+      "title": "Production SDK \u2014 separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",
@@ -10693,7 +10707,7 @@
           "further_optimization_required_for_this_deviation": false,
           "new_measurement": false,
           "whole_V02_complete": false,
-          "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278–280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
+          "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278\u2013280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
         }
       ]
     },
@@ -11469,7 +11483,7 @@
         "type_consumers": 2,
         "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
         "standalone_read_inject_native_checks": 3,
-        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
         "runtime_race_checks": 14,
         "isolated_bug_mutations_rejected": 6,
         "native_checks": 29,
@@ -13987,7 +14001,7 @@
         "native_qualified": false,
         "official_host_still": "0.1.0-candidate.20261028.88"
       },
-      "current_increment": "I02.41 source fixcccc90f: exact tab-refresh Working→OK RED/76affected/full6031PASS, source270deltaUI1/build327deltaUI+CH2; immutable89pair44/official36/plugin15/raws stable. Unpackaged/native0.",
+      "current_increment": "I02.41 source fixcccc90f: exact tab-refresh Working\u2192OK RED/76affected/full6031PASS, source270deltaUI1/build327deltaUI+CH2; immutable89pair44/official36/plugin15/raws stable. Unpackaged/native0.",
       "current_activity_note": "Source status fix complete; current official host remains89/711968a4. New dev276wholeINCOMPLETE6, Off/On/parity unvisited, budget0. Next ONE exactlocal90package preparation.",
       "next_bounded_step": "ONE V02.38 exact local90package eligibility/preparation from reviewedcccc90f/full6031: preserve all2040previous registry bindings/role history, reconcile current89host versus historical88dist and generated aliases before metadata/ONEpack/type2/admission9. No native/model/performance retry/SDK/publication.",
       "current_release_assessment": "205-release-date-decision.md",
@@ -14021,7 +14035,7 @@
       "further_optimization_required_for_this_deviation": false,
       "new_measurement": false,
       "whole_V02_complete": false,
-      "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278–280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
+      "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278\u2013280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
     }
   },
   "next_task": "A02"

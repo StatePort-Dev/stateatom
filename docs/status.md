@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 lifecycle:** [322](completion/322-a02-installed-lifecycle-result.md): plugin13 native12+7PASS for filter/delete/source revocation/detach/reload,45affected source checks. Exact filter routes corrected; inspector bytes remain12. Next matching official package/host, remaining282 controls and whole review. Whole21/29 unchanged.
+
 **Latest A02 semantics:** [320](completion/320-a02-current-semantic-result.md): current original/held-out installed On bytes match; six Original/Off/On phases have identical9action outputs and17whole-workflow native function counts, no errors. Earlier acquisition/UI-driver failures remain incomplete; no per-action counter claim. Next current lifecycle/refusal/official and final review; whole21/29 unchanged.
 
 **Latest A02 held-out route:** [315](completion/315-a02-held-out-result.md): installed plugin12 on renamed/relocated caption/record graph plus local row alias passed8native checks, including actual completed picker and installed source navigation. First313 driver race retained/withdrawn; corrected314 uses terminal selection. Source effects6/barrier2/full6416PASS; concurrent UI work separate. Next remaining282 semantic/lifecycle/official and whole review. Whole21/29 unchanged.
