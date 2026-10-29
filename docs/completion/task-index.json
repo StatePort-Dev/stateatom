@@ -1360,7 +1360,16 @@
         "record": "345-i03-native-update-and-capture-shell.md",
         "source_checks": 12,
         "native_updated_and_restored_shell": true
-      }
+      },
+      "concurrent_property_refresh": {
+        "record": "348-u04-concurrent-element-refresh.md",
+        "status": "source-red-green-native96-pending",
+        "actual95_failure": ".artifacts/u04/current95-handoff/2026-10-29T13-23-22-369Z/results.json",
+        "affected_checks": 55,
+        "full_U04": false,
+        "full_source_checks": 6518
+      },
+      "control_inventory": "../testing/u04-current-control-map.md"
     },
     {
       "id": "U05",
@@ -13969,11 +13978,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "26/29 complete. I03 local directory kit528files and receipt verified; final About6, packaged Capture3+cold2, normal install/update344/345. U04/V03/V04 remain.",
+    "current_activity_note": "U04 current95 independent shop reproduces overlapping property refresh defect; deterministic runtime RED and55 affected GREEN. Full6518 PASS; candidate96 package/native qualification pending; completed I03 kit95 retained. Whole26/29; no full release claim.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "6fc9198d6590ee26dfc6f13350c65325fda2a058",
     "current_record_date": "2026-10-29",
-    "next_bounded_step": "U04 final screen/control reference join using current93/95 native evidence; only rerun a concrete uncovered or changed path. V03 independent apps/full guide remains mandatory.",
+    "next_bounded_step": "Finish current96 full checks/package and qualify the same original independent-app picker/refinement-to-handoff route; no old benchmark/model/install campaign.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {

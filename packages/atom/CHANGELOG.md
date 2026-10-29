@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Preserve the selected element when overlapping property refreshes complete; a superseded read cannot replace a newer result. Real context changes and native read failures still reject.
+
 - Retire previous picker ancestors and refinement controls before a manual selection; refuse the new selection if native picker cleanup fails.
 
 - Keep rapid tab switching from leaving an empty inspector: obsolete connection cleanup cannot start a competing read of the newly selected tab.

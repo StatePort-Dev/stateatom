@@ -124,3 +124,11 @@ test('a disabled experiment outcome does not block ordinary inspection of a para
 test('reconnect inspection refuses a same-selector replacement and accepts the original native node',async t=>{
  const f=fixture();t.after(()=>f.runtime.shutdown());await f.request({op:'attach'});await f.request({op:'inspect-selector',selector:'#confirm',elementProperties:true});const old=(await f.request({op:'state'})).selection.domIdentity,expectedIdentity={document:old.document,node:old.node};await f.request({op:'inspect-selector',selector:'#confirm',elementProperties:true,expectedIdentity});f.setNode(777);await assert.rejects(f.request({op:'inspect-selector',selector:'#confirm',elementProperties:true,expectedIdentity}),{code:'SELECTION_EXPIRED'});assert.equal((await f.request({op:'state'})).selection,null);
 });
+
+test('overlapping current element refreshes retain a valid selection instead of rejecting each other',async t=>{
+ const f=fixture();t.after(()=>f.runtime.shutdown());await f.request({op:'attach'});await f.request({op:'inspect-selector',selector:'#confirm',elementProperties:true});
+ const before=await f.request({op:'state'});
+ const replies=await Promise.all([f.request({op:'state',refreshIdentity:true}),f.request({op:'state',refreshIdentity:true})]);
+ for(const reply of replies){assert.deepEqual(reply.selection,before.selection);assert(reply.elementInspection.properties.every(r=>r.status==='Observed'));}
+ const current=await f.request({op:'state'});assert.deepEqual(current.selection,before.selection);assert.equal(current.inspectionGeneration,before.inspectionGeneration);
+});

@@ -1,5 +1,7 @@
 # Project status
 
+**Current U04 correction:** [348](completion/348-u04-concurrent-element-refresh.md), actual95 independent shop exposed a competing property-read failure on parent refinement. Runtime RED reproduced;55 affected checks PASS after the narrow fix. Candidate96 full6518 PASS; package/native qualification is pending; U04 remains open, whole26/29 unchanged. I03 kit95 below retains its exact earlier scope.
+
 **I03 complete for the local Linux directory kit:** [347](completion/347-i03-local-component-distribution.md), matching Atom95/UI2 in official extension and optional Desktop resources, actual packaged Capture/Save + cold read, native About6, archive528 files verified. **26/29 (89.66%)**. Next U04 screen/control acceptance; V03 independent-app/full-guide and V04 remain. No public release or ordinary OS-installed Desktop claim.
 
 **V02 complete:** [346](completion/346-v02-final-evidence-reconciliation.md), one bounded review0/0/0, full6514 and affected95 native controls; Basic343/Active281 exceptions explicit. **25/29 (86.21%)**. Actual component update/rollback preserves real Capture/diagnostic data [345](completion/345-i03-native-update-and-capture-shell.md). Remaining I03 coordinated Desktop inventory, U04/V03/V04; no release claim.

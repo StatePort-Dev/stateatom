@@ -31,14 +31,14 @@ export async function refreshElementProperties(bundle,identify,isCurrent,{record
  if(!bundle)return null;const rows=[];
  for(const row of bundle.properties){
   if(!row.selection||row.status!=='Observed'&&!recordLatest){rows.push(row);continue;}
-  const current=await identify(row.property);if(!isCurrent())throw Error('Element changed during property refresh');
+  const current=await identify(row.property);if(!isCurrent())throw Object.assign(Error('Element changed during property refresh'),{code:'STALE_ELEMENT_REFRESH'});
   if(current&&!sameNode(row.selection.domIdentity,current))return staleElementProperties(bundle,'Selected element was replaced; inspect again.');
   const {latestObservation:previous,...original}=row;
   const refreshed=same(row.selection.domIdentity,current)?original:{property:row.property,status:'Stale',selection:row.selection,reason:'This value changed or became unavailable; inspect again.'};
   // A separate native read, never a refreshed source explanation or render occurrence.
   rows.push({...refreshed,...(recordLatest&&current?{latestObservation:{value:current.value,observedAt:now(),document:current.document,node:current.node}}:{})});
  }
- if(recordLatest){const anchor=rows.find(row=>row.latestObservation);if(anchor){const current=await identify(anchor.property);if(!isCurrent())throw Error('Element changed during property refresh');if(!sameNode(anchor.selection.domIdentity,current))return staleElementProperties(bundle,'Selected element was replaced; inspect again.');}}
+ if(recordLatest){const anchor=rows.find(row=>row.latestObservation);if(anchor){const current=await identify(anchor.property);if(!isCurrent())throw Object.assign(Error('Element changed during property refresh'),{code:'STALE_ELEMENT_REFRESH'});if(!sameNode(anchor.selection.domIdentity,current))return staleElementProperties(bundle,'Selected element was replaced; inspect again.');}}
  return {...bundle,properties:rows};
 }
 export function projectElementProperties(state){
@@ -46,4 +46,18 @@ export function projectElementProperties(state){
  const changed=state.inputEditedInspection===state.inspectionGeneration&&state.inspectionGeneration!==undefined||state.observationStaleInspection===state.inspectionGeneration&&state.inspectionGeneration!==undefined||bundle.sourceGeneration!==undefined&&bundle.sourceGeneration!==(state.sourceGeneration||0);
  if(!state.selection||state.stale||changed)return staleElementProperties(bundle,changed?'Inputs, observation or source changed; inspect again.':state.stale?.reason||'Historical observation; inspect again.',{preserveLatest:!!state.selection&&!state.stale});
  return bundle;
+}
+
+// Commit a refresh only into its original bundle. A concurrent reader may have
+// already committed a newer result for the same context; retain that result.
+export async function refreshElementSnapshot(state,identify,isStateCurrent,{recordLatest=false}={}){
+ const bundle=state.elementInspection,selection=state.selection,generation=state.inspectionGeneration,run=state.run,sourceGeneration=state.sourceGeneration||0;
+ const current=()=>isStateCurrent()&&state.selection===selection&&state.inspectionGeneration===generation&&state.run===run&&(state.sourceGeneration||0)===sourceGeneration;
+ try{
+  const refreshed=await refreshElementProperties(bundle,p=>identify(selection.selector,p),()=>current()&&state.elementInspection===bundle,{recordLatest});
+  if(!current())throw Object.assign(Error('Element changed during property refresh'),{code:'STALE_ELEMENT_REFRESH'});
+  if(state.elementInspection===bundle)state.elementInspection=refreshed;
+ }catch(error){
+  if(error.code!=='STALE_ELEMENT_REFRESH'||!current()||state.elementInspection===bundle)throw error;
+ }
 }
