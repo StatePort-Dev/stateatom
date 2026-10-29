@@ -5919,11 +5919,20 @@
       "optional": false,
       "active_slice": {
         "id": "L02.37",
-        "record": "326-l02-current-native-driver.md",
-        "status": "current-driver-prepared-native-pending",
+        "record": "327-l02-focused-quality-result.md",
+        "status": "closed-collection-pass-quality-fail",
         "maximum_native_attempts": 1,
-        "model_calls": 0,
-        "whole_L02_complete": false
+        "model_calls": 31,
+        "whole_L02_complete": false,
+        "native_runs": 1,
+        "remaining_budget": 0,
+        "main_model_responses": 27,
+        "template_only": 3,
+        "incorrect_claims": 1,
+        "unknown_omissions": 2,
+        "ambiguous_claims": 1,
+        "useful_responses": 0,
+        "raw_sha256": "7d83aa82a77333fd28f98c4757818afaf5a619f25e454739d7096dff73054c6f"
       },
       "implementation_plan": "325-l02-focused-annotation-design.md",
       "remaining_acceptance": [
@@ -5932,8 +5941,8 @@
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
-      "execution_record": "326-l02-current-native-driver.md",
-      "current_checkpoint": "326-l02-current-native-driver.md",
+      "execution_record": "327-l02-focused-quality-result.md",
+      "current_checkpoint": "327-l02-focused-quality-result.md",
       "completed_slices": [
         {
           "id": "L02.36",
@@ -6587,7 +6596,7 @@
       "historical_execution_records": [
         "189-l02-current-path-comparison.md"
       ],
-      "next_bounded_step": "Useful bounded derived local explanation and fixed-corpus quality/offline acceptance remain mandatory; no further overhead diagnostic prerequisite. Preserve closed model pilots and template-equivalent results.",
+      "next_bounded_step": "Typed grounded-claim selection with local rendering and unchanged usefulness/corpus gate; free-prose v3 closed quality FAIL, no retry.",
       "historical_checkpoint_before_L02_16": {
         "record": "189-l02-current-path-comparison.md",
         "status": "closed-bounded-native-incomplete-source-complete",

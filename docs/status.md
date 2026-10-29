@@ -1,6 +1,6 @@
 # Project status
 
-**Current bounded item L02.37:** [326](completion/326-l02-current-native-driver.md), direct current native driver after325stopped at obsolete test adapter before browser/model. Focused-v3 source/controller70PASS retained; original corpus/prompt/criteria unchanged. Real model quality pending; whole22/29 unchanged.
+**L02.37 actual result:** [327](completion/327-l02-focused-quality-result.md),31real model responses/3fallbacks, exact references/lifecycle PASS; quality FAIL (unsupported concurrency inference, omitted unknowns, no useful improvement). v3 remains unselected. Next typed grounded-claim selection, not a repeat of free-prose prompts. Whole22/29 unchanged.
 
 **A02 complete in approved282 scope:** [324](completion/324-a02-selected-list-completion.md): current installed standalone11/official12PASS, exact Atom91/plugin14/VSIX310, full6449sourcePASS and one whole review with no open findings. Official shell defect reproduced/fixed; old inner-only run remains scoped. Full plan22/29 (75.86%); next mandatory L02, then final integration/distribution/acceptance. No release readiness claim.
 
