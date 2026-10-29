@@ -17,10 +17,11 @@ async function main(){
  if(args[1]!==caseName)throw Error('OFFICIAL_COLD_CASE_PATH');
  if(!/^[a-f0-9]{64}$/.test(args[3])||!/^[a-f0-9]{40}$/.test(args[5]))throw Error('OFFICIAL_COLD_REVISION_OR_HASH');
  const bytes=await readFile(join(root,caseName));assert.equal(sha(bytes),args[3],'OFFICIAL_COLD_CASE_HASH');const c=JSON.parse(bytes);
+ assert.equal(git('rev-parse','HEAD'),args[5],'OFFICIAL_COLD_REVISION');
  assert.equal(c.schema,'stateatom.i02-current88-cold-regression/1');assert.equal(c.nativeAttemptBudget,1);assert.equal(c.modelEnabledExplainMaximum,1);assert.equal(c.productWarmAndInferenceTimeoutMs,120000);assert.equal(c.productColdInitializationTimeoutMs,300000);assert.equal(c.maximumUIObservationMs,545000);
  assert.equal(c.out,baseName+'/native');assert.equal(c.attemptFile,baseName+'/native-attempt.json');
  assert.equal(c.profileSource,join(root,'.artifacts/l02/official-google-readiness/2026-10-28/native/profiles/official87-metadata'));
- assert.equal(git('rev-parse','HEAD'),args[5],'OFFICIAL_COLD_REVISION');assert.equal(git('status','--porcelain'),'','OFFICIAL_COLD_SOURCE_DIRTY');assert.equal(sha(execFileSync('git',['show','HEAD:'+caseName],{cwd:root})),args[3]);
+ assert.equal(git('status','--porcelain'),'','OFFICIAL_COLD_SOURCE_DIRTY');assert.equal(sha(execFileSync('git',['show','HEAD:'+caseName],{cwd:root})),args[3]);
  const {fileManifest}=await import(pathToFileURL(join(root,'scripts/atom-package-receipt.mjs')));
  const verifyInputs=async()=>{
   for(const [file,h]of Object.entries(c.inputHashes))assert.equal(sha(await readFile(resolve(root,file))),h,file);

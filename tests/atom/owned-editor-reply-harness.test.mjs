@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
+import {retainedTest} from '../helpers/retained-evidence-test.mjs';
 // Synthetic acceptance facts only; no native evidence or manufactured receipts.
 import test from'node:test';import assert from'node:assert/strict';import{spawnSync}from'node:child_process';import{readFile}from'node:fs/promises';import{inputOrderSites}from'../helpers/inspector-input-order.mjs';
 const driver=new URL('../integration/owned-editor-reply-native.mjs',import.meta.url);
@@ -24,5 +25,5 @@ for(const[name,mutate,actual,expected]of semanticNegatives)test('semantic refusa
  const{guardOwnedEditorReplyAcceptance}=await import(driver),r=acceptanceFixture();mutate(r);r.stoppedTrace=structuredClone(r.trace);
  assert.throws(()=>guardOwnedEditorReplyAcceptance(r),{code:'ERR_ASSERTION',actual,expected});
 });
-test('the exact emitted77 bundle resolves all six plan-aware sites on its own bytes',async()=>{const h=JSON.parse(await readFile('.artifacts/atom/2026-10-24T12-38-57-201Z/atom-handoff.json'));assert.equal(h.package.version,'0.1.0-candidate.20261021.77');const source=await readFile(h.hosts.standalone+'/panel.js','utf8'),sites=inputOrderSites(source,'packed77');assert.equal(sites.length,6);assert.equal(new Set(sites.map(s=>s.phase)).size,6);});
+retainedTest('the exact emitted77 bundle resolves all six plan-aware sites on its own bytes',async()=>{const h=JSON.parse(await readFile('.artifacts/atom/2026-10-24T12-38-57-201Z/atom-handoff.json'));assert.equal(h.package.version,'0.1.0-candidate.20261021.77');const source=await readFile(h.hosts.standalone+'/panel.js','utf8'),sites=inputOrderSites(source,'packed77');assert.equal(sites.length,6);assert.equal(new Set(sites.map(s=>s.phase)).size,6);});
 test('unknown correction driver options refuse before preparation read or native resources',()=>{const r=spawnSync(process.execPath,[driver.pathname,'/tmp/no-such-owned-editor-case.json','--skip-freeze'],{encoding:'utf8'});assert.equal(r.status,1);assert.match(r.stderr,/Unexpected owned-editor option/);assert.doesNotMatch(r.stderr,/ENOENT/);});

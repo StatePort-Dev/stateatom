@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "build:extensions": "node scripts/build.mjs --extensions-only",
+    "test:with-retained": "STATEATOM_RETAINED_EVIDENCE=1 npm test",
     "test": "node --test --test-isolation=none tests/*.test.mjs tests/engine/*.test.mjs tests/browser/*.test.mjs tests/vue/*.test.mjs tests/atom/*.test.mjs",
     "dev": "node scripts/serve-phase2.mjs",
     "dev:react-host": "node scripts/serve-phase2.mjs --react-host-props",

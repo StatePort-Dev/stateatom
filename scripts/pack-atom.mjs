@@ -36,7 +36,8 @@ await mkdir(consumer+'/tarballs');for(const packed of [atom,ui])await copyFile(o
 const metadata=JSON.parse(await readFile(consumer+'/package.json','utf8'));
 metadata.dependencies={'@stateport/atom':'file:./tarballs/'+atom.filename,'@stateport/extension-ui':'file:./tarballs/'+ui.filename};
 await writeFile(consumer+'/package.json',JSON.stringify(metadata,null,2));
-npm(['install','--offline','--ignore-scripts','--no-audit','--no-fund'],consumer);
+// Fresh consumers need registry metadata even when npm ci cached tarballs.
+npm(['install','--prefer-offline','--ignore-scripts','--no-audit','--no-fund'],consumer);
 const contract=JSON.parse(await readFile(root+'/packages/atom/contract.json','utf8'));
 const accepted={atomVersion:atom.version,uiVersion:ui.version,apiVersion:contract.apiVersion,wireVersion:contract.wireVersion,uiContract:contract.uiContract};
 const installedPair=await inspectInstalledPair(consumer,accepted);

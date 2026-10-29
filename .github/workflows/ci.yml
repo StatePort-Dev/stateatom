@@ -16,8 +16,10 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - run: npm test
+      - name: Prepare pinned test applications
+        run: npm run prepare:short-loop
       - run: npm run build
+      - run: npm test
       - run: npm run check:ui
   packed-contracts:
     runs-on: ubuntu-latest
@@ -31,7 +33,9 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci --no-audit --no-fund
-      - name: Build immutable Atom and UI pair
+      - name: Build immutable Atom and UI pair with a cold consumer cache
+        env:
+          npm_config_cache: ${{ runner.temp }}/atom-consumer-${{ github.run_id }}-${{ github.run_attempt }}
         run: npm run pack:atom
       - name: Select this job's immutable candidate
         id: candidate

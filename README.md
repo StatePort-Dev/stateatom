@@ -56,13 +56,25 @@ Current source locations are documented in the [repository layout](docs/reposito
 ## Develop locally
 
 Use Node **24.19.0** (`.nvmrc`) and npm **11.17.0**. The verified host is Linux.
-Install pinned public dependencies, run the unit suite, then build:
+Install pinned public dependencies and test applications, build, then run the unit suite:
 
 ```sh
 npm ci --no-audit --no-fund
-npm test
+npm run prepare:short-loop
 npm run build
+npm test
 ```
+
+The source suite requires the pinned TodoMVC sources/dependencies and built
+extension assets above. `prepare:short-loop` is a one-time step per checkout;
+it refuses to overwrite an existing `.runtime/todomvc` directory.
+
+Tests labelled `[retained evidence]` inspect original local experiment archives
+or historical Git blobs. The portable `npm test` reports these as **SKIP**, not
+PASS. On the original evidence-bearing checkout, `npm run test:with-retained`
+runs the full suite including those assertions and fails if evidence is missing.
+It does not launch the old native experiments. Synthetic guard fixtures in the
+portable suite do not replace archived receipts or prove native acceptance.
 
 `npm run build` produces `dist/browser/`, `dist/ide/`, `dist/reader/`, and minified
 synthetic fixtures in `dist-fixtures/`. `npm run build:extensions` builds just the

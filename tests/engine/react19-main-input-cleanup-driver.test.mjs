@@ -10,8 +10,9 @@ import {fileURLToPath,pathToFileURL} from 'node:url';
 import {parseMainInputArgs,guardMainInputSourceCase,prepareMainInputSourceCase,preflightMainInputSourceCase,runMainInputSourceCase,verifyMainInputInputs} from '../../experiments/react19-reducer/main-input-cleanup-source-run.mjs';
 const root=process.cwd(),fixed='docs/testing/main-input-cleanup-source-case.json',old='docs/testing/main-input-source-case.json',driver=fileURLToPath(new URL('../../experiments/react19-reducer/main-input-cleanup-source-run.mjs',import.meta.url)),hash=s=>createHash('sha256').update(s).digest('hex');
 const oldCase=JSON.parse(await readFile(old,'utf8'));
+// Synthetic guard fixture: rebase paths without changing the archived case.
 function ownedCase(){
- const s=structuredClone(oldCase);s.schema='stateatom.main-input-cleanup-source-case/1';s.out=path.resolve('.artifacts/a02/main-input-cleanup-bridge/owned-guard');s.registrationFile=path.resolve('.artifacts/a02/main-input-cleanup-source/2026-10-25/registration.json');s.inputHashes[s.registrationFile]=s.registrationSha256;s.sourceCounts.priorResearch=93;
+ const s=structuredClone(oldCase);for(const v of [s.main,s.core,s.jsx]){v.file=path.resolve('.runtime/todomvc/'+v.file.split('/.runtime/todomvc/')[1]);s.inputHashes[v.file]=v.sha256;}s.schema='stateatom.main-input-cleanup-source-case/1';s.out=path.resolve('.artifacts/a02/main-input-cleanup-bridge/owned-guard');s.registrationFile=path.resolve('.artifacts/a02/main-input-cleanup-source/2026-10-25/registration.json');s.inputHashes[s.registrationFile]=s.registrationSha256;s.sourceCounts.priorResearch=93;
  for(const [name,v]of Object.entries(s.outputs)){v.file=s.out+'/'+name;s.inputHashes[v.file]=v.sha256;}
  for(const p of ['docs/superpowers/specs/2026-10-25-a02-cleanup-main-source-design.md','docs/superpowers/plans/2026-10-25-a02-cleanup-main-source.md'])s.inputHashes[path.resolve(p)]='e'.repeat(64);
  return s;
