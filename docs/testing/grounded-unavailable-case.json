@@ -2,7 +2,7 @@
   "schema": "stateatom.grounded-product-case/1",
   "maximumAttemptsPerHost": 1,
   "maxUIInitiationsPerHost": 2,
-  "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-unavailable-metadata93/2026-10-29",
+  "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-user-disabled93/2026-10-29",
   "project": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project",
   "profileCase": "docs/testing/official-comparison-pilot-case.json",
   "plugin": {
@@ -92,7 +92,7 @@
     }
   },
   "inputs": {
-    "tests/integration/grounded-product.mjs": "cfaae97aafec4783f77a9fa19e6530cd2cb0fa0af3835c52bb28940f51dd5361",
+    "tests/integration/grounded-product.mjs": "4b878c44ae54d315b961d90151cc5333a3dc67a15f38c0f6b1f432e2bd350d4c",
     "tests/helpers/grounded-product-server.mjs": "37b56a73700e57c55bbad326c348a58f6d07a4a2a95604fca9ec83edd76c572b",
     "scripts/native-browser.mjs": "ddb6b665824e6c200b16b52108657baf7d23ad0fcdea9ce5b9c2ea6a5fa5f3a2",
     "scripts/harness.mjs": "4237bf6218e06d0042968316356e8ac90e30ac5ac54c67cc821d6157ded98874",
@@ -109,7 +109,7 @@
     "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project/control-src/Forward.jsx": "c7d1f10033612aeb7e91dd872b390fedf693e88d02dd136777fd33155baf555d"
   },
   "acceptance": [
-    "Fresh actual Chromium profile; actual availability unavailable (including missing API), no model overrides or feature flags",
+    "Fresh actual Google Chrome profile; normal On-device AI setting disabled by native Settings click; actual availability must be unavailable, no API replacement or feature flags",
     "Same current Atom93/plugin17/VSIX real picker and recorded property",
     "Explicit local action leaves template intact on unavailable device",
     "Actions fallback and no application getter execution",
@@ -118,20 +118,26 @@
   "limits": [
     "No positive inference claimed on unavailable device",
     "Test-only loadUnpacked is not normal installation",
-    "No model-cache profile cloned; no downloads"
+    "No model-cache profile cloned; no downloads",
+    "User-disabled model is unavailable-browser coverage, not physically incapable hardware"
   ],
   "hostRevision": "23fbccc0",
   "profileCloneExclusions": [
     "Default/Service Worker/"
   ],
   "unavailableBrowser": {
-    "executablePath": "/home/roman/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome",
-    "sha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e"
+    "executablePath": "/usr/bin/google-chrome",
+    "sha256": "95dc9473b4f904cb3ab0800fc7206081fcae12abc094a088bd741a13f1747b72"
   },
   "previousAttempt": {
     "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-unavailable93/2026-10-29",
     "caseSha256": "af0e65dd436d16025a4248026fed8b3c46c0471ee93481153dd09dc5c50da129",
     "resultSha256": "18cd212299ff8f17a1517616a9d9a038811581067dd42f5707a3aad8626aec14",
     "reason": "Driver incorrectly equated unavailable device with absent global API. Real Chrome153 exports function; stopped before metadata/inference,0 model UI requests."
+  },
+  "previousMetadataAttempt": {
+    "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-unavailable-metadata93/2026-10-29",
+    "resultSha256": "df3300a8b97370b1f94f580402af5ce2c5f9c212311aa9a4f96af06ae84f88c0",
+    "reason": "Native availability stayed Pending; CDP wait expired. Not unavailable proof; no model UI requests."
   }
 }

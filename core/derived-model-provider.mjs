@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-// Experimental, separately versioned annotation provider. Not selected by product UI.
+// Separately versioned providers: product UI selects grounded v4; earlier variants remain experimental.
 import {TemplateExplanation} from './action-explanations.mjs';
 import {inspectionExplanationFacts,isLocalExplanationFacts} from './inspection-explanations.mjs';
 import {projectDerivedAnnotation,isCurrentDerivedProjection,buildDerivedAnnotationPrompt,derivedAnnotationResponseConstraint,derivedAnnotationSessionOptions,validateDerivedAnnotationStructure} from './derived-annotations.mjs';
