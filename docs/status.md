@@ -1,5 +1,7 @@
 # Project status
 
+**Basic latency accepted for the first release:** [343](completion/343-basic-latency-maintainer-acceptance.md), p95 1065.7 ms standalone / 1232.2 ms official. Original1s MISS retained; no optimization prerequisite for this deviation. Full source95:6514PASS; affected picker/native and remaining acceptance continue.
+
 **I02 complete on exact93:** [337](completion/337-i02-current93-completion.md), real Capture38/40, Settings/Live/Draft21 across both hosts, official Action Trace9; local-model334 retained. **24/29 (82.76%)**. Next V02 final candidate acceptance; U04/I03/V03/V04 also remain. No installation/publication claim. Earlier checkpoints retain history.
 
 **L02 complete:** [334](completion/334-l02-completion.md), bounded English grounded-v4 notes, current93 supported and unavailable-model UI routes in both hosts, one whole review resolved. **23/29 (79.31%)**. Next I02 final current93 integration; six final integration/distribution/acceptance items remain. Earlier checkpoints retain historical scope.

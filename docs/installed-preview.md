@@ -8,26 +8,23 @@ this guide does not establish that it passed.
 
 ## What to obtain
 
-Ask for the prepared **standalone extension folder** and its candidate receipt.
-The folder contains `manifest.json`, `panel.html`, `reader.html`, scripts, assets
-and license notices. Keep the whole folder together. The Atom/UI npm tarballs are
-library dependencies for a host builder; they are not folders to select in Chrome.
-Basic inspection needs the prepared browser folder and reader. It requires no IDE,
-Desktop, account, model or application plugin.
+Obtain one prepared extension folder and its candidate receipt:
 
-The receipt identifies the actual Atom/UI candidates and supplied files. Chrome's
-extension version currently displays `0.1.0`; that alone does not identify which
-candidate you received. Do not combine files from different kits. A current local
-checkpoint is Atom `0.1.0-candidate.20261021.70` with UI
-`0.2.0-candidate.20261018.2`; this is an identity reference, not a download link.
-Use its matching reader: newly supported larger detailed reports can exceed the
-older65 reader's structure limit. This is not a general old-reader compatibility
-promise. [The scoped qualification](completion/117-v03-packed-detailed-report.md)
-records the earlier66 report route. [Current70 browser installation](completion/125-v03-guide-browser-install.md)
-records actual Developer mode/Load unpacked and assisted Basic/report transfer;
-[Actual toolbar and native report entry](completion/126-v03-native-entry.md)
-are separately observed on copied installed state. These scoped checks do not
-establish full guide/source/platform acceptance.
+- The official **StatePort — Atom & Capture** folder contains `manifest.json`,
+  `atom.html`, Capture assets, scripts, fonts and notices. Atom Basic works without
+  Desktop; Capture requires its separately compatible Desktop/native bridge.
+- The independent **StateAtom** folder contains `manifest.json`, `panel.html`,
+  the reader and notices. It exposes Atom without StatePort Capture.
+
+Choose the folder for your intended route; do not load both for the same task.
+Keep the whole folder together. Atom/UI npm tarballs are host-builder dependencies,
+not folders to select in Chrome. Basic needs no IDE, account, model or app plugin.
+The receipt's component versions and hashes identify the kit. Chrome's displayed
+extension version alone does not identify the Atom candidate. Never mix files from
+kits. Use the matching reader; old readers may reject newer detailed reports.
+Historical70 installation records125/126 do not certify a new kit. Current normal
+installation/update acceptance is still being completed. macOS installation is
+explicitly deferred to a later maintainer check; it is not a verified platform.
 
 For optional development-source access, obtain the helper VSIX and the separate
 Vite plugin tarball with their own compatibility record. A helper installation
@@ -42,21 +39,26 @@ alone does not instrument the application. Their installation steps are below.
    development command; this guide does not require an Atom fixture or special port.
    Ordinary loopback HTTP supports Basic read-only inspection. Other HTTP/HTTPS
    sites need their explicit supported site-access flow.
-3. Open StateAtom from Chrome's Extensions menu or its toolbar icon. Open connection
-   settings, expand **Browser connection**, refresh the tab list and choose the exact
-   application tab. Keep **Read-only** for inspection. If this exact site needs a
-   connection record, use **Save exact site permissions** and its explicit access
-   prompt before attachment. Choose **Attach** (the initial
-   static label may read **Attach debugger**). A site-access prompt, when needed,
-   is separate from permission to change application inputs.
-4. Choose **Text** or **Disabled** under **Property**. Choose **Select page element**,
-   return to the application and use the primary mouse button to select the target.
-   Back in the inspector, **Select parent** advances to its actual DOM parent when
-   available. **Element details** contains the longer DOM identity and boundaries.
-5. Check the chosen property and value. **Basic** gives a DOM snapshot; it does not
-   establish source execution or where a value came from. Missing, skipped,
-   unsupported and stale evidence remain labelled. After an application update,
-   use **Inspect again** to obtain a new occurrence.
+3. Open the installed extension from Chrome's Extensions menu or its toolbar icon.
+   Official StatePort opens a side panel; select **Atom**. Use the chain icon
+   (**Open connection settings**) when Page connection is hidden. Refresh the tab
+   list, choose the exact app under **Page to inspect**, then **Connect to page**.
+   A site requiring browser access shows **Allow site and connect**. That permission
+   is separate from permission to change app values.
+4. For an explicitly read-only local connection, expand **Page connection →
+   Advanced connection options**, select **Read-only**, then **Save connection
+   options**. HTTPS sites start read-only automatically. Local development otherwise
+   exposes eligible editing; connection or selection alone does not change values.
+5. Use the selection icon beside Atom (**Select page element**), then click the
+   target on the page. The inspector shows supported property cards, including
+   Text and Disabled where applicable. **Select parent** uses the actual picked
+   DOM ancestor; **Element details** contains technical identity and the advanced
+   **Select by CSS selector** lookup. After a failed lookup, use the picker again.
+6. **Dependencies** shows supported expressions/inputs or an explicit missing
+   source explanation. **Actions**, **Source**, and **Details** provide the other
+   views. Basic observes the DOM; it does not establish execution or complete value
+   ancestry. Missing, skipped, unsupported and stale evidence remain labelled.
+   Use **Refresh inspection** after changing the app.
 
 Use **Cancel element selection** in the inspector to cancel a pending pick without
 sending a key to the application. Escape can also cancel but may reach application
@@ -70,7 +72,7 @@ certificate trust. For HTTPS, use an application with a normally trusted certifi
 
 ## Save a snapshot or prepare an issue
 
-Open **Save and export a diagnostic**. **Save locally** stores a historical snapshot;
+Open **Details**, then the diagnostic/save controls. **Save locally** stores a historical snapshot;
 it does not send anything. Local diagnostic history is limited to **8 reports,
 2 MiB and 7 days**. Download a reviewed file to keep it beyond that history.
 **Review / export selected** opens the selected diagnostic
@@ -105,8 +107,8 @@ The installed [Vite plugin recipe](../packages/vite-plugin/README.md) is a limit
 React18/classic-JSX development profile, with its tested Node/Vite/React versions
 and conflicts documented there. The separate React19 contributor recipe is not
 an installed React19 support promise. Obtain a compatibility-qualified kit before
-relying on a plugin/helper/browser combination: the old plugin acceptance and the
-current Atom65/helper-only protocol check do not establish a fresh combined UI run.
+relying on a plugin/helper/browser combination: current combined runs and their limits are recorded in
+[the acceptance record](completion/337-i02-current93-completion.md); older helper-only checks do not certify a newer kit.
 
 1. In VS Code, open **Extensions: Install from VSIX** from the Command Palette and
    select the supplied helper file. Open only the intended workspace. If it opens
@@ -121,12 +123,11 @@ current Atom65/helper-only protocol check do not establish a fresh combined UI r
    `stateatom.sourceFolder` to the intended relative source root. `.` authorizes
    the opened workspace. If needed choose `stateatom.helperPort` explicitly.
 4. Run **StateAtom: Copy connection receipt**, choosing the intended workspace if
-   asked. Paste its private JSON in **Source connection and setup** and select
-   **Connect receipt**. Keep this session secret out of URLs, application code,
+   asked. Open **Source → Connect project**, expand **Connect your project**,
+   paste its private JSON into **Private connection receipt** and choose **Connect project**. Keep this session secret out of URLs, application code,
    screenshots and shared reports.
-5. In **Browser connection**, separately choose development mode and approve only
-   the displayed actions you intend to use for that exact origin. **Save exact site
-   permissions**, attach and reload when the supported recipe calls for collection
+5. In **Page connection → Advanced connection options**, choose development mode and approve only
+   the displayed actions you intend to use for that exact origin. **Save connection options**, connect and reload when the supported recipe calls for collection
    from startup. Reinspect the selected property. Available **Open in IDE** links
    should select the actual source range; a source link alone is not execution proof.
 
@@ -137,11 +138,11 @@ message. Do not select a nearby component or equal value as a replacement proof.
 ## Supported input editing and other optional tools
 
 Input editing requires separately admitted permissions and eligible controls or
-response fields. Choose a source and **Open inputs** only on an app you intend to
+response fields. Under **Source**, choose the appropriate editing source and **Show editable fields** only on an app you intend to
 change. **Live** sends valid edits according to the timing shown in the inspector;
-**Draft** keeps local edits until **Apply draft**. An acknowledgement does not by
+**Draft** keeps local edits until **Apply changes**. An acknowledgement does not by
 itself establish application consumption or causality. Unsupported fields stay
-unavailable. Review **Undo last** and **Restore baseline** outcomes explicitly: refusal is not
+unavailable. Review **Undo last change** and **Restore original values** outcomes explicitly: refusal is not
 restoration. Closing editing does not automatically restore app state or reverse
 server effects.
 
@@ -152,9 +153,11 @@ Reopening an inspector or importing a report does not restore old editing author
 
 **Actions**, source-map exploration and local explanations have separate supported
 boundaries. A registered handler is not necessarily an invoked handler, and a
-matching source artifact is not the selected property's producer. Local-model
-usefulness remains an unfinished delivery gate; a deterministic fallback or a
-model-shaped answer is not proof that useful model inference passed.
+matching source artifact is not the selected property's producer. The optional English local note is available inside a supported property’s
+**Explain this result** disclosure, with the recorded answer and limitations still
+visible. Opt in, then **Explain locally**; an initial request may download a model.
+Cancel or leave it off to use ordinary inspection. Unsupported browsers/devices
+retain that fallback. The bounded real-device validation is [recorded separately](completion/334-l02-completion.md); it does not promise arbitrary AI analysis.
 
 ## Disconnect, remove or recover
 
@@ -165,7 +168,7 @@ model-shaped answer is not proof that useful model inference passed.
 - To remove the development plugin, follow its recipe's removal/cache instructions
   and restart/reload the app. Keep application edits you intentionally made.
 - Remove the helper from VS Code's installed extensions and remove the unpacked
-  StateAtom entry from `chrome://extensions` when finished. Preserve any reviewed
+  extension entry from `chrome://extensions` when finished. Preserve any reviewed
   files you want to keep outside the profile before discarding the test profile.
 
 Report the candidate receipt identity, browser/OS, exact step, displayed outcome

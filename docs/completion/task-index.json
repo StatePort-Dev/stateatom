@@ -9295,8 +9295,9 @@
           "official": 1232.2
         },
         "basic_targets_met": false,
-        "basic_maintainer_exception": "pending-question",
-        "whole_V02_complete": false
+        "basic_maintainer_exception": "accepted-for-first-release",
+        "whole_V02_complete": false,
+        "basic_exception_record": "343-basic-latency-maintainer-acceptance.md"
       }
     },
     {

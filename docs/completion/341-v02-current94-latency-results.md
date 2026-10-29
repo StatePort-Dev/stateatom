@@ -39,10 +39,9 @@ verified. This does not relabel the interrupted original run as complete.
 HTTP Basic-only route and priming a different picker target are explicit340.
 No equivalent HTTPS/off/active workload comparison or picker latency claim.
 Every actual app action makes20requests/20480bytes. No observer window or grant.
-No sample exclusions, new overhead measurement, target waiver or V02 completion.
-A separate maintainer question asks whether to accept this small latency deviation;
-the prior Active exception does not answer that question. Until answered, preserve
-these misses and keep V02 open.
+No sample exclusions or new overhead measurement. The subsequent explicit
+maintainer answer accepts this deviation for the first release: [343](343-basic-latency-maintainer-acceptance.md).
+The original misses remain; this exception alone does not complete V02.
 
 Fresh post-timing recovery passes both hosts: real malformed-selector error,
 return through visible picker, valid manual inspection,440/390 no horizontal

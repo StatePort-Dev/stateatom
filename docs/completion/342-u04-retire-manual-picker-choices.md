@@ -19,4 +19,7 @@ Logs `/tmp/stateatom-manual-picker-{red,green}.log`.
 
 Issue immutable95, preserving94/93; no UI token/layout change, SDK or publication.
 Actual corrected native manual/reselection and final checks follow; source tests
-alone do not close U04. Basic94 latency exception remains unanswered, not waived.
+alone do not close U04. Basic94 latency is subsequently accepted by the maintainer343.
+
+Full source verification on16351af: `npm test`, **6514PASS,0FAIL/skip**;
+`/tmp/stateatom95-full.log`. This is source evidence, before the immutable95 native run.
