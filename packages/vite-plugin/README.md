@@ -236,3 +236,21 @@ the app's `.runtime/first-read-sessions` for diagnosis; no personal browser prof
 account, certificate or system trust is changed. Installation/runtime qualification
 is recorded separately in the completion ledger; these instructions alone do not
 establish whole A02 acceptance or official StatePort host support.
+
+### Exact official host in the closed development session
+
+Candidate14 can explicitly use a verified official StatePort development build
+instead of the bundled standalone inspector. Add
+`officialExtension: {directory: '/absolute/path/to/official/dist', sha256: '<tree SHA-256>'}`
+to the selected-list options. This is trusted local Vite configuration, never
+page-provided identity. The pin is SHA-256 of JSON.stringify of the depth-first,
+lexically sorted `[relative POSIX file path, exact file SHA-256]` array of the
+whole extension directory. Symlinks, missing assets, wrong layout or changed bytes
+are refused before launch and rechecked during proof acquisition. Use the
+qualified build's recorded pin, not a guess or an unrelated extension directory.
+
+The official `atom.html`, service worker, shared guardian and existing Capture
+broker remain in use. No second inspector runtime/extension or private Capture
+owner is added. The same 15-minute closed source/session rules apply. Actual
+official-host qualification is recorded separately; this option alone does not
+prove Capture coexistence or a Store/installed-user release.

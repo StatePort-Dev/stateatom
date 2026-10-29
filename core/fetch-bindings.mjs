@@ -45,4 +45,4 @@ export function bindFetchTrace(trace,s,{mainFrameId,run}={}){
 // Deliberately conservative: even permissive/report-only CSP stays unsupported.
 export function allowsFetchGeneration(headers){return !!headers&&typeof headers==='object'&&!Object.keys(headers).some(k=>k.toLowerCase()==='content-security-policy'||k.toLowerCase()==='content-security-policy-report-only');}
 // Constant extension operation, never imported data or arbitrary page evaluation.
-export function installFetchPolicy(allowed,url){if(location.href.split('#')[0]!==url.split('#')[0])return false;Object.defineProperty(window,'__STATEATOM_FETCH_POLICY__',{value:allowed===true,configurable:true});return true;}
+export function installFetchPolicy(allowed,url){"stateatom:fetch-policy-helper/1";if(location.href.split('#')[0]!==url.split('#')[0])return false;Object.defineProperty(window,'__STATEATOM_FETCH_POLICY__',{value:allowed===true,configurable:true});return true;}

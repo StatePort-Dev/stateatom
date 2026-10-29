@@ -7,13 +7,13 @@ import {startListFieldServer} from './list-field-server.mjs';
 import {createListFieldCodeContext,listFieldCodeContextView} from './list-field-code.mjs';
 import {launchControlledFirstReadBrowser} from '../first-read/controlled-session.mjs';
 import {startListFieldChannel} from '../../core/list-field-channel.mjs';
-export async function launchSelectedList({workspace,toolRoot,source,browserExecutable,headed=true}={}){
+export async function launchSelectedList({workspace,toolRoot,source,browserExecutable,headed=true,officialExtension}={}){
  let sourceServer,browser,channel,closed=false,closing,expiry;
  const close=()=>closing??=(async()=>{closed=true;clearTimeout(expiry);const failures=[];for(const resource of[channel,browser,sourceServer])if(resource)try{await resource.close();}catch(error){failures.push(error);}if(failures.length)throw new AggregateError(failures,'Selected-list cleanup failed');})();
  try{
   const compilation=await buildListFieldCompilation({...source,projectRoot:workspace,toolRoot});
   sourceServer=await startListFieldServer({compilation});
-  browser=await launchControlledFirstReadBrowser({projectRoot:workspace,extensionRoot:toolRoot,browserExecutable,headed,appProfile:'selected-list'});
+  browser=await launchControlledFirstReadBrowser({projectRoot:workspace,extensionRoot:toolRoot,browserExecutable,headed,officialExtension,appProfile:'selected-list'});
   let phase='waiting-for-attach';
   const ready=(async()=>{
    while(!closed){const targets=await browser.browser.worker.evaluate(async()=>chrome.debugger.getTargets()),target=targets.find(t=>t.id===browser.targetId);if(target?.attached===true)break;await new Promise(r=>setTimeout(r,100));}

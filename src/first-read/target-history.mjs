@@ -12,13 +12,16 @@ const LIST_URLS=new Set(['about:blank','http://127.0.0.1:4173/__stateatom/list-s
 // Exact native browser UI documents from the retained Chromium diagnostic.
 const UI_URLS=new Set(['chrome://webui-toolbar.top-chrome/','chrome://omnibox-popup.top-chrome/','chrome://omnibox-popup.top-chrome/omnibox_popup_aim.html']);
 
-export function createTargetHistory({appId,panelId,workerId,panelURL,workerURL,initial,guardian=null,profile='first-read'}){
+export function createTargetHistory({appId,panelId,workerId,panelURL,workerURL,initial,guardian=null,profile='first-read',host='standalone'}){
  const appURLs=profile==='first-read'?APP_URLS:profile==='selected-list'?LIST_URLS:null;
- if(!appURLs)throw Error('Target profile denied');
- if(guardian&&(![guardian.documentId,guardian.workerId].every(id=>text(id))||new Set([appId,panelId,workerId,guardian.documentId,guardian.workerId]).size!==5||guardian.documentURL!==panelURL.replace('panel.html','atom-guardian.html')||guardian.workerURL!==panelURL.replace('panel.html','atom-guardian-worker.js')||guardian.workerTargetURL!==undefined&&![guardian.workerURL,''].includes(guardian.workerTargetURL)))throw Error('Guardian target identity denied');
+ if(!appURLs||!['standalone','stateport'].includes(host)||host==='stateport'&&profile!=='selected-list')throw Error('Target profile denied');
+ const panelName=host==='stateport'?'atom.html':'panel.html',workerName=host==='stateport'?'service-worker.js':'worker.js';
+ const extensionBase=typeof panelURL==='string'&&/^chrome-extension:\/\/[a-p]{32}\/(?:panel|atom)\.html$/.test(panelURL)&&panelURL.endsWith('/'+panelName)?panelURL.slice(0,-panelName.length):null;
+ if(!extensionBase||workerURL!==extensionBase+workerName)throw Error('Target history identity denied');
+ if(guardian&&(![guardian.documentId,guardian.workerId].every(id=>text(id))||new Set([appId,panelId,workerId,guardian.documentId,guardian.workerId]).size!==5||guardian.documentURL!==extensionBase+'atom-guardian.html'||guardian.workerURL!==extensionBase+'atom-guardian-worker.js'||guardian.workerTargetURL!==undefined&&![guardian.workerURL,''].includes(guardian.workerTargetURL)))throw Error('Guardian target identity denied');
  const records=new Map(),seen=new Set(),retiredUI=new Set();let denied=false,closed=false,events=0,lastInventoryCount=null;
  const deny=()=>{denied=true;return false;};
- if(![appId,panelId,workerId].every(id=>text(id))||new Set([appId,panelId,workerId]).size!==3||!/^chrome-extension:\/\/[a-p]{32}\/panel\.html$/.test(panelURL)||workerURL!==panelURL.replace(/panel\.html$/,'worker.js'))throw Error('Target history identity denied');
+ if(![appId,panelId,workerId].every(id=>text(id))||new Set([appId,panelId,workerId]).size!==3)throw Error('Target history identity denied');
  function record(info){
   if(!info||!text(info.targetId)||!text(info.type,40)||!(text(info.url,512)||guardian&&info.targetId===guardian.workerId&&guardian.workerTargetURL===''&&info.url==='')||typeof info.title!=='string'||info.title.length>4096||typeof info.attached!=='boolean'||typeof info.canAccessOpener!=='boolean'||info.subtype!==undefined||info.embedderData!==undefined)return null;
   for(const key of ['openerId','openerFrameId','browserContextId'])if(info[key]!==undefined&&!text(info[key]))return null;

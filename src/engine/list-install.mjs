@@ -14,7 +14,7 @@ export function stateatomSelectedList(options={}){
    try{
     tools=await materializeListToolchain(await readFile(new URL('./runtime.json.gz',import.meta.url)),tmpdir());
     const {launchSelectedList}=await import(pathToFileURL(tools.root+'/src/engine/list-launch.mjs'));
-    session=await launchSelectedList({workspace,toolRoot:tools.root,source:options.source,browserExecutable:options.browserExecutable});
+    session=await launchSelectedList({workspace,toolRoot:tools.root,source:options.source,browserExecutable:options.browserExecutable,officialExtension:options.officialExtension});
     server.httpServer?.once('close',()=>void close().catch(error=>server.config?.logger?.error(error.message)));
     server.config?.logger?.info('StateAtom selected-list: connect the installed IDE helper to http://127.0.0.1:4173, authorize and attach the setup tab. Wait for “ready-to-open”, then open its application link. The session expires after 15 minutes.');
     let announced=false;const timer=setInterval(()=>{if(session.phase==='ready-to-open'&&!announced){announced=true;server.config?.logger?.info('StateAtom selected-list: ready-to-open.');}if(['closed','verifying','unavailable'].includes(session.phase))clearInterval(timer);},100);timer.unref?.();

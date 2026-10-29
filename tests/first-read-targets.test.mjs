@@ -63,6 +63,14 @@ const guardianURL=panelURL.replace('panel.html','atom-guardian.html'),guardianWo
 const guardian={documentId:'GUARDIAN',workerId:'GUARDIAN_WORKER',documentURL:guardianURL,workerURL:guardianWorkerURL};
 const currentInitial=()=>[...initial(),target('GUARDIAN','background_page',guardianURL),target('GUARDIAN_WORKER','worker',guardianWorkerURL,{parentId:'GUARDIAN',parentFrameId:'GUARDIAN'})];
 const currentHistory=(list=currentInitial())=>createTargetHistory({appId:'APP',panelId:'PANEL',workerId:'WORKER',panelURL,workerURL,initial:list,guardian,profile:'selected-list'});
+test('official list history binds exact atom page, sole service worker and original guardian',()=>{
+ const officialPanel=panelURL.replace('panel.html','atom.html'),officialWorker=workerURL.replace('worker.js','service-worker.js');
+ const list=currentInitial().map(t=>t.targetId==='PANEL'?{...t,url:officialPanel}:t.targetId==='WORKER'?{...t,url:officialWorker}:t);
+ const options={appId:'APP',panelId:'PANEL',workerId:'WORKER',panelURL:officialPanel,workerURL:officialWorker,initial:list,guardian,profile:'selected-list',host:'stateport'};
+ const h=createTargetHistory(options);replay(h,list);assert(h.consistent(list));
+ assert.equal(h.observe('created',target('FOREIGN','page',officialPanel)),false);
+ for(const bad of [{host:'unknown'},{host:'standalone'},{profile:'first-read'},{panelURL:officialPanel+'?x'},{workerURL}])assert.throws(()=>createTargetHistory({...options,...bad}));
+});
 test('selected-list admits only reviewed same-document filter routes and keeps denials terminal',()=>{
  const list=currentInitial(),h=currentHistory(list);replay(h,list);
  for(const hash of ['#/active','#/completed','#/','']){
