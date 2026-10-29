@@ -4,7 +4,7 @@ import assert from 'node:assert/strict';
 import {readFile,writeFile,realpath} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {waitFor} from '../../scripts/harness.mjs';
-export async function installGuideExtension({send,session,command},{folder,desktop,out,role,expectedBrowser,expectedExecutableSha256}){
+export async function installGuideExtension({send,session,command},{folder,desktop,out,role,expectedBrowser,expectedExecutableSha256,expectedName='StateAtom'}){
  const record={schema:'stateatom.guide-extension-install/1',role,status:'RUNNING',startedAt:new Date().toISOString(),command,folder,steps:[],screens:[]};
  let page,inspect;
  const shot=name=>{const file=out+'/'+role+'-'+name+'.png';desktop.shot(file);record.screens.push(file);return file;};
@@ -24,7 +24,7 @@ export async function installGuideExtension({send,session,command},{folder,deskt
   });
   const stable=async key=>{let previous,count=0;return waitFor(async()=>{const c=(await inspect())[key];if(!c?.visible||c.disabled||!c.hittable){count=0;previous=null;return null;}if(previous&&Math.abs(c.x-previous.x)<0.1&&Math.abs(c.y-previous.y)<0.1)count++;else count=0;previous=c;return count>=3?c:null;});};
   const click=async control=>{assert(control?.visible&&!control.disabled&&control.hittable,'Expected visible enabled hittable Chrome control');for(const type of ['mouseMoved','mousePressed','mouseReleased'])await page.send('Input.dispatchMouseEvent',{type,x:control.x,y:control.y,...(type==='mouseMoved'?{}:{button:'left',clickCount:1})});};
-  const initial=await waitFor(async()=>{const s=await inspect();return s.ready==='complete'&&s.dev?s:null;});record.initial=initial;assert(!initial.cards.some(c=>c.name==='StateAtom'),'Fresh UI profile cannot already contain StateAtom');shot('extensions-empty');record.steps.push({action:'observed fresh extensions page without StateAtom',at:new Date().toISOString()});
+  const initial=await waitFor(async()=>{const s=await inspect();return s.ready==='complete'&&s.dev?s:null;});record.initial=initial;assert(!initial.cards.some(c=>c.name===expectedName),'Fresh UI profile cannot already contain '+expectedName);shot('extensions-empty');record.steps.push({action:'observed fresh extensions page without '+expectedName,at:new Date().toISOString()});
   if(initial.dev.checked!==true&&initial.dev.checked!=='true')await click(await stable('dev'));
   const enabled=await waitFor(async()=>{const s=await inspect();return(s.dev.checked===true||s.dev.checked==='true')&&s.load?.visible?s:null;});record.developerMode=enabled;shot('developer-mode');
   const windows=()=>desktop.native(['search','--onlyvisible','--name','.']).split('\n').filter(Boolean);
@@ -33,7 +33,7 @@ export async function installGuideExtension({send,session,command},{folder,deskt
   desktop.native(['key','--clearmodifiers','ctrl+l']);desktop.native(['type','--clearmodifiers','--delay','1',folder]);shot('folder-entered');
   const geometry=Object.fromEntries(desktop.native(['getwindowgeometry','--shell',chooser.id]).split('\n').map(s=>s.split('=')));assert(Number(geometry.WIDTH)>500&&Number(geometry.HEIGHT)>300);record.chooser.geometry=geometry;
   desktop.native(['mousemove',String(Number(geometry.X)+Number(geometry.WIDTH)-49),String(Number(geometry.Y)+Number(geometry.HEIGHT)-22),'click','1']);record.steps.push({action:'native folder chooser confirmation',at:new Date().toISOString()});
-  const installed=await waitFor(async()=>{const s=await inspect();return s.cards.some(c=>c.name==='StateAtom')?s:null;},30000);record.installed=installed;shot('extension-installed');record.steps.push({action:'rendered StateAtom card after folder selection',at:new Date().toISOString()});record.status='PASS_RENDERED_UI_AND_NATIVE_CHOOSER_NOT_TOOLBAR_USABILITY';
+  const installed=await waitFor(async()=>{const s=await inspect();return s.cards.some(c=>c.name===expectedName)?s:null;},30000);record.installed=installed;shot('extension-installed');record.steps.push({action:'rendered '+expectedName+' card after folder selection',at:new Date().toISOString()});record.status='PASS_RENDERED_UI_AND_NATIVE_CHOOSER_NOT_TOOLBAR_USABILITY';
  }catch(e){record.status='FAIL';record.error=e.stack;try{record.failureState=await inspect?.();}catch(f){record.failureStateError=f.message;}try{shot('install-failure');}catch(f){record.failureScreenshotError=f.message;}throw e;}
  finally{await page?.detach().catch(()=>{});record.finishedAt=new Date().toISOString();await writeFile(out+'/'+role+'-installation.json',JSON.stringify(record,null,2),{flag:'wx'});}
  return record;

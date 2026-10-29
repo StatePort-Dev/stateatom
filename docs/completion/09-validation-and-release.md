@@ -5,6 +5,8 @@
 
 **Current Active-overhead exception (28 October):** [maintainer acceptance](281-active-overhead-maintainer-acceptance.md) removes the recorded89 Active/off deviation from release blockers. Preserve the original 10% protocol/MISS and all remaining V02/V03 criteria; carry the exception in V04.
 
+**Current Basic-latency exception (29 October):** [maintainer acceptance343](343-basic-latency-maintainer-acceptance.md) accepts measured94 p95 1065.7/1232.2ms for the first release. Original1second target/MISS retained; unrelated regressions are not pre-accepted.
+
 **Goal:** verify every required outcome against the actual candidate, through declared supported environments and the real user interface.
 
 **Architecture:** retain the unit/native harnesses, group checks by changed capability and join evidence on an immutable candidate. Do not replace the test framework or historical evaluation model.

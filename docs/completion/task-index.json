@@ -1352,7 +1352,9 @@
         "record": "342-u04-retire-manual-picker-choices.md",
         "status": "source-fix-verified-native-pending",
         "affected_checks": 120,
-        "whole_U04": false
+        "whole_U04": false,
+        "native_record": "344-current95-package-native-install.md",
+        "native_status": "both-hosts-pass"
       }
     },
     {
@@ -9175,7 +9177,7 @@
         "measurement_budget_remaining": 0,
         "first_reader_budget_remaining": 0
       },
-      "next_bounded_step": "Resolve final94 Basic latency miss without inferring the Active281 exception; preserve completed warm and Basic cohorts. Correct concrete U04 manual-picker mismatch342 and qualify new95.",
+      "next_bounded_step": "Reconcile retained lifecycle/privacy evidence and current95 changed picker verification344; Basic deviation explicitly accepted343. Then I03 actual update/rollback. No unchanged benchmark retry.",
       "historical_active_before_V02_31": {
         "id": "V02.30",
         "record": "239-v02-debugger-lifetime-feasibility.md",
