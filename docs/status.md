@@ -1,5 +1,7 @@
 # Project status
 
+**I02 complete on exact93:** [337](completion/337-i02-current93-completion.md), real Capture38/40, Settings/Live/Draft21 across both hosts, official Action Trace9; local-model334 retained. **24/29 (82.76%)**. Next V02 final candidate acceptance; U04/I03/V03/V04 also remain. No installation/publication claim. Earlier checkpoints retain history.
+
 **L02 complete:** [334](completion/334-l02-completion.md), bounded English grounded-v4 notes, current93 supported and unavailable-model UI routes in both hosts, one whole review resolved. **23/29 (79.31%)**. Next I02 final current93 integration; six final integration/distribution/acceptance items remain. Earlier checkpoints retain historical scope.
 
 **L02 current93 product path:** [332](completion/332-l02-visible-property-notes.md), actual standalone8/official8 checks PASS, including model notes in visible property cards, cancellation, stale selection, offline inference and Actions. Full6510 source PASS. Corpus329 retains scoped usefulness6/27main,0/4supplement and0incorrect claims. One whole review: no critical defect; unavailable-browser acceptance remains open. Normal Chrome user-disabled model case333 is next; not release ready, whole22/29 unchanged.

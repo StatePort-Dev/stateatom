@@ -1,5 +1,7 @@
 # Roadmap
 
+**I02 complete on exact93:** [337](docs/completion/337-i02-current93-completion.md), real Capture38/40, Settings/Live/Draft21 across both hosts, official Action Trace9; local-model334 retained. **24/29 (82.76%)**. Next V02 final candidate acceptance; U04/I03/V03/V04 also remain. No installation/publication claim. Earlier checkpoints retain history.
+
 **L02 complete:** [334](docs/completion/334-l02-completion.md), bounded English grounded-v4 notes, current93 supported and unavailable-model UI routes in both hosts, one whole review resolved. **23/29 (79.31%)**. Next I02 final current93 integration; six final integration/distribution/acceptance items remain. Earlier checkpoints retain historical scope.
 
 A02 **complete within approved282**: [324](docs/completion/324-a02-selected-list-completion.md), actual current standalone11/official12 and final review. Whole22/29 (75.86%); next mandatory L02. All earlier checkpoints below retain historical scope.
