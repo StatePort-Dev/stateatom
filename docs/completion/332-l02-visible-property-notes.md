@@ -83,3 +83,13 @@ limits stay beside both explanations. No replacement tokens/layout. Screenshots
 remain agent candidates, not human approval. Actual unavailable-device acceptance
 is separately frozen in `docs/testing/grounded-unavailable-case.json`; then ONE
 whole-L02 review, not repeated corpus or a documents-only completion claim.
+
+Unavailable-device first run: actual Chrome153 exports LanguageModel as a function.
+The test had incorrectly required absent global API, so it stopped before availability
+metadata or model UI requests (0). All cleanup passed. Original L02 criterion is a
+real unavailable device, including API unavailable, not specifically an undefined
+JavaScript global. Correct only this driver predicate to collect actual availability
+with original English text options and require `unavailable` before any Explain;
+no API/feature override, no forced download or weakened product criterion. Preserve
+first result and new output `grounded-unavailable-metadata93`. A downloadable or
+available device still fails this unavailable-device control.
