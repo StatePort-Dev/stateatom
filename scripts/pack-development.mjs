@@ -7,6 +7,9 @@ import {packListToolchain} from './pack-list-toolchain.mjs';
 const pluginOnly=process.argv.includes('--plugin-only'),helperOnly=process.argv.includes('--helper-only');
 if(pluginOnly&&helperOnly)throw Error('Choose one development artifact mode');
 if(process.argv.slice(2).some(arg=>!['--plugin-only','--helper-only'].includes(arg)))throw Error('Unknown development packaging option');
+// The selected-list package includes an executable standalone inspector. Never
+// inherit a prior dist/browser after product source changes.
+if(!helperOnly)execFileSync(process.execPath,[root+'/scripts/build.mjs','--extensions-only'],{cwd:root,stdio:'inherit'});
 const tag=new Date().toISOString().replace(/[:.]/g,'-'),out=root+'/.artifacts/development/'+tag,pkg=root+'/packages/vite-plugin';await mkdir(out,{recursive:true});await mkdir(pkg+'/dist/engine',{recursive:true});await mkdir(pkg+'/dist/first-read',{recursive:true});
 const inputs={};let pack;
 if(!helperOnly){

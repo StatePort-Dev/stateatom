@@ -36,3 +36,15 @@ fixture update for the new schema), then `npm test`:6506PASS/0FAIL/0cancel/0skip
 cold/default/warm/cancel limits and test every UI cancellation/metadata boundary.
 No browser/model/visual proof yet for this changed UI. Prepare Atom92/plugin15 to
 avoid rebuilding issued91/14 under the same versions; VSIX310 and UI2 unchanged.
+
+
+Packaging inspection caught a separate concrete stale-output path: `pack:atom`
+builds the consumer Atom UI, while `pack:development` previously copied whatever
+`dist/browser` existed into the selected-list runtime. Initial plugin15 therefore
+contains earlier standalone UI (no `property-local-tools`), despite correct Atom92.
+Do not qualify15 as final UI or overwrite it. Fix the development packer to execute
+existing `build.mjs --extensions-only` before collecting its browser toolchain;
+issue plugin16 after that clean packaging-source commit. Verify actual tarball
+runtime against current built browser and the new UI marker. No criterion is waived,
+no old91/14/15 archive is replaced. Original source6506PASS predates this packaging
+command fix, whose direct verification is the new package build/extracted payload.
