@@ -39,3 +39,18 @@ First full-suite invocation used restricted sandbox:6439PASS/65FAIL,245201ms;
 multiple process and CLI assertions fail with spawnSync/proc EPERM (including mkfifo).
 This is not a passing suite. Preserve `/tmp/stateatom-multi-local-full.log` and run
 unchanged suite in the established ordinary local environment before final claims.
+
+Ordinary local full suite:6510PASS/0FAIL/0cancel/0skip,291624.732594ms;
+`/tmp/stateatom-multi-local-full-native-env.log`. No source change between runs.
+
+First93 native still made0model requests: copied model profile retained historical88
+Service Worker/ScriptCache bytes (SHA20d0f7122a4070cb8a1c9440e666f0e77cdeb09a82cc25ddfac57a770161757b,
+987915bytes), exactly matching the preserved source profile and lacking multi-property
+runtime. Current official service-worker.js is1001972bytes, SHAcf162ab5988d933d319ef05db5949961617d998b084ed9a03632f97c8b6c82c6,
+and contains the actual current code. This attempt cannot certify93 execution.
+The new copy excludes only `Default/Service Worker/`; original profile/raw untouched,
+model weights retained. Before any product check, require actual compiled worker AND
+UI script hashes to equal the frozen installed host bytes. New separate directory
+`grounded-product93-fresh-worker`; no model corpus rerun, cache clearing in personal
+profiles or product security bypass. This also informs the separate update acceptance:
+loading a same-version unpacked folder alone did not prove current worker execution.

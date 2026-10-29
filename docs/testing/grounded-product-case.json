@@ -2,7 +2,7 @@
   "schema": "stateatom.grounded-product-case/1",
   "maximumAttemptsPerHost": 1,
   "maxUIInitiationsPerHost": 5,
-  "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29",
+  "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93-fresh-worker/2026-10-29",
   "project": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project",
   "profileCase": "docs/testing/official-comparison-pilot-case.json",
   "plugin": {
@@ -92,7 +92,7 @@
     }
   },
   "inputs": {
-    "tests/integration/grounded-product.mjs": "c39a2f6f700acb55bdfc810cbee77e16d0b4218614a48cbffcb8b53c8ec43d80",
+    "tests/integration/grounded-product.mjs": "3808d5b2f3cee0278497a7d60519f110a0dbe09ba891c93e730d6f26283d0778",
     "tests/helpers/grounded-product-server.mjs": "37b56a73700e57c55bbad326c348a58f6d07a4a2a95604fca9ec83edd76c572b",
     "scripts/native-browser.mjs": "ddb6b665824e6c200b16b52108657baf7d23ad0fcdea9ce5b9c2ea6a5fa5f3a2",
     "scripts/harness.mjs": "4237bf6218e06d0042968316356e8ac90e30ac5ac54c67cc821d6157ded98874",
@@ -136,7 +136,16 @@
       "caseSha256": "ec28cdea7d5c44919fe36d0dc67bfaa6ea9891ac68a29ef7d243f3bc7b7358f3",
       "resultSha256": "29cdfdf5e9a0e76e96e3c027cb49813da64f771b07c1137712faccbb91f7b79f",
       "reason": "Source fields were on hidden Source tab; 0 model requests, all cleanup and frozen inputs passed. Real multi-property hidden-note defect then reproduced in source and corrected."
+    },
+    {
+      "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29",
+      "caseSha256": "f006424893c9b4e210be3d0e6765959a89ee0d403182de05f798696d02bc6a79",
+      "resultSha256": "39922b4a88069e44fd5a81313985868c38fb98727e27ad36204d22ab431c40c9",
+      "reason": "Copied Chrome model profile retained byte-identical historical88 service-worker script cache; current picker bundle absent; 0 model requests. No current93 native claim."
     }
   ],
-  "hostRevision": "23fbccc0"
+  "hostRevision": "23fbccc0",
+  "profileCloneExclusions": [
+    "Default/Service Worker/"
+  ]
 }
