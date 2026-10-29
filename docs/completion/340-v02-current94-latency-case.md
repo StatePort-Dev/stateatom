@@ -32,3 +32,5 @@ qualify. Preparation is not V02 completion or release readiness. Reconcile exist
 lifecycle/privacy evidence and the maintainer exceptions separately.
 
 After each Basic host cohort, separately check the known284 malformed-selector recovery through real MV3, a fresh successful selection,440/390px no-overflow and minimum13px root font, and keyboard Actions→Source navigation. These are U04 controls after timing; no latency sample is discarded or repeated. Screenshots remain agent candidates.
+
+Basic first attempt11:40:10 stopped before any measured gesture: the current UI intentionally hides advanced manual lookup until an element is selected. Correct setup uses the actual picker on a different `#counter` element after each fresh attach, then times the original `#run` manual lookup. The timed target is not primed. Keep action/request counts and the pointerdown/paint criterion unchanged; this is not picker latency or a claim of identical old setup. Original failure remains.

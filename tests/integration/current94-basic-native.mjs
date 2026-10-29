@@ -24,6 +24,14 @@ await writeFile(out+'/preregistration.json',JSON.stringify(preregistration,null,
 const result={schema:preregistration.schema,status:'RUNNING',out,preregistrationSha256:sha256(await readFile(out+'/preregistration.json')),cases:[],samples:[],errors:[],console:[]};
 let server,desktop,browser,panel,d;const traffic=[];
 async function fixture(tabId){return panel.evaluate(async id=>(await chrome.scripting.executeScript({target:{tabId:id,frameIds:[0]},world:'ISOLATED',func:()=>({ready:document.readyState==='complete',value:JSON.parse(document.getElementById('result').textContent),counter:document.getElementById('counter').textContent,disabled:document.getElementById('run').disabled})}))[0].result,tabId);}
+async function primeVisibleSelector(tabId){
+ // Current UI reveals advanced lookup only after a real element is selected.
+ // Select a DIFFERENT element so the measured #run read is not the primed target.
+ await d.click('inputs-nav');await d.click('pick');await waitFor(async()=>(await rpc(panel,{op:'state',tabId,refreshDeep:false})).picker?.status==='picking');
+ const point=await panel.evaluate(async id=>{await chrome.tabs.update(id,{active:true});return(await chrome.scripting.executeScript({target:{tabId:id},world:'ISOLATED',func:()=>{const e=document.getElementById('counter');e.scrollIntoView({block:'center'});const r=e.getBoundingClientRect();return{x:r.x+r.width/2,y:r.y+r.height/2};}}))[0].result;},tabId);
+ for(const type of ['mouseMoved','mousePressed','mouseReleased'])await panel.evaluate(({id,type,point})=>chrome.debugger.sendCommand({tabId:id},'Input.dispatchMouseEvent',{type,...point,...(type==='mouseMoved'?{}:{button:'left',clickCount:1})}),{id:tabId,type,point});
+ await waitFor(async()=>{const state=await rpc(panel,{op:'state',tabId,refreshDeep:false});return state.picker?.status==='selected'&&state.selection?.selector==='#counter';});await d.waitOK();
+}
 async function selectTarget(measure){
  await d.fill('selector','#run');
  if(measure)await panel.evaluate(()=>{
@@ -65,7 +73,7 @@ try{
   for(const trial of order){
    if((await rpc(panel,{op:'state',tabId,refreshDeep:false})).attached){await d.click('detach');await d.waitOK();}
    const row={...trial,host,startedAt:new Date().toISOString()};result.currentTrial=row;await appendFile(out+'/attempts.jsonl',JSON.stringify(row)+'\n');
-   await d.click('attach');await d.waitOK();const timing=await selectTarget(true);row.basicLatencyMs=timing.durationMs;row.basicLatency=timing;
+   await d.click('attach');await d.waitOK();await primeVisibleSelector(tabId);const timing=await selectTarget(true);row.basicLatencyMs=timing.durationMs;row.basicLatency=timing;
    const state=await rpc(panel,{op:'state',tabId,refreshDeep:false});assert.equal(state.attached,true);assert.equal(state.readOnly,true);assert.equal(state.selection.selector,'#run');assert.equal(state.selection.value,'Run workload');assert.equal(state.productionChange.active,false);assert.notEqual(state.productionObservation?.status,'recording');
    const before=await fixture(tabId);assert.equal(before.value?.id??0,lastAction);assert.equal(before.disabled,false);const trafficBefore=traffic.filter(x=>x.route==='/sample').length,start=performance.now();
    await appClick(tabId);const final=await waitFor(async()=>{const f=await fixture(tabId);return f.value?.id===lastAction+1&&!f.disabled?f:null;},30000);
