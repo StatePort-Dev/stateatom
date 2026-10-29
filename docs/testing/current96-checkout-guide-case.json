@@ -397,7 +397,7 @@
   },
   "helperInputs": {},
   "inputHashes": {
-    "tests/integration/current96-checkout-guide-native.mjs": "c7a98051462dacdedd5a8aa9261c3380c0e3539592b9da766244353df23c24f2",
+    "tests/integration/current96-checkout-guide-native.mjs": "1c81b14acfe367eb5e17367ac9235f5feef90fed5ad7e72595de7f798b1e1cb7",
     "tests/helpers/native-inspector-ui.mjs": "2a82f3a643bbbacd9a6f8ed7e798f77b1416f110f1828ac23fd97b24bc8109b9",
     "tests/helpers/source-access-native-desktop.mjs": "786011664d68f658bd1d5e7c002963642a50a16661d7f67b2413ac8aef182f57",
     "scripts/native-browser.mjs": "ddb6b665824e6c200b16b52108657baf7d23ad0fcdea9ce5b9c2ea6a5fa5f3a2",
@@ -439,5 +439,11 @@
     "sha256": "e0c39ece9e2f1d1f39b32a83db734146612bf853af5d9545d0f992f25b1a41f6",
     "boundary": "Native original firstName picker selected; no editor/writes",
     "correction": "Current template puts property select in Source/Advanced response experiments. Navigate Source before native property selection; do not unhide product DOM or inject backend property."
+  },
+  "retainedReinspectionSetupFailure": {
+    "file": ".artifacts/v03/current96-checkout-guide/2026-10-29T14-20-53-095Z/results.json",
+    "sha256": "3ab1a87333587661d1d206f810682ecab2173ef443ae34f4a00571598ffebd9e",
+    "boundary": "Real property change succeeded; runtime explicitly marks prior target Stale until Refresh inspection",
+    "correction": "Click actual Refresh inspection after property change, preserving all field guards"
   }
 }

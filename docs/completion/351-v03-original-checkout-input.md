@@ -54,3 +54,10 @@ places this selector under Source → Advanced response experiments. Native focu
 cannot select a hidden control. Correct the driver by navigating Source before
 choosing Disabled; no DOM unhide/backend property injection, no experiment execution.
 The third raw/visible inspector screenshot and all no-edit results remain retained.
+
+Fourth rune98aa1d changes the property through visible Source but stops because
+property change intentionally invalidates the prior selected occurrence. Runtime659
+and UI both say Inspect again; add that actual Refresh inspection step before
+asserting a new target. Both previous Text/Disabled records stay Stale until read.
+No native input writer has opened in any of these four setup failures. All originals
+remain exact; this is migration of the old harness, not product restoration proof.
