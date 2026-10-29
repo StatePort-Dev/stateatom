@@ -397,7 +397,7 @@
   },
   "helperInputs": {},
   "inputHashes": {
-    "tests/integration/current96-checkout-guide-native.mjs": "f3380697729b2c26b04d2838cbf9b3efd6e014228e266def145e1359c32c44a3",
+    "tests/integration/current96-checkout-guide-native.mjs": "0ed75132247955d01a8b676be1fb535068250d44d575f36b90be2f577ad2dc48",
     "tests/helpers/native-inspector-ui.mjs": "2a82f3a643bbbacd9a6f8ed7e798f77b1416f110f1828ac23fd97b24bc8109b9",
     "tests/helpers/source-access-native-desktop.mjs": "786011664d68f658bd1d5e7c002963642a50a16661d7f67b2413ac8aef182f57",
     "scripts/native-browser.mjs": "ddb6b665824e6c200b16b52108657baf7d23ad0fcdea9ce5b9c2ea6a5fa5f3a2",
@@ -421,5 +421,11 @@
     "No new source/plugin/IDE/model/production/installation acceptance; current96 normal installation is separate350",
     "Current native UI selectors/source navigation; preload is declared assistance",
     "Original minPrice successful restoration FAIL remains unwaived; new supported-field positive is additional only"
-  ]
+  ],
+  "retainedSetupFailure": {
+    "file": ".artifacts/v03/current96-checkout-guide/2026-10-29T14-15-01-942Z/results.json",
+    "sha256": "c31165c85a1c2d62ee552a56054dbf387cb846c673661e1bef590966f5053cdb",
+    "state": "original cart, no selected input, no editing performed",
+    "correction": "Original CSS has scroll-behavior:smooth; use instant geometry preparation and require stable hit-test before native click; no app state mutation or changed acceptance"
+  }
 }

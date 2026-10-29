@@ -27,3 +27,15 @@ Case: `docs/testing/current96-checkout-guide-case.json`. Driver:
 `tests/integration/current96-checkout-guide-native.mjs`. Original73 guide/80ABA
 campaigns remain closed and immutable. Run once; diagnose any concrete new setup or
 product failure before further action. Current status is preparation, not PASS.
+
+## Setup-only first failure
+
+The first registered run91069a1 reached Cart but timed out before Checkout/input
+selection. One archive/source check PASS, no edit/restore credit. Original app
+index.css83 sets scroll-behavior:smooth; driver geometry was read immediately after
+scrollIntoView and did not check hit-testing. The retained failure proves the
+missing navigation, not its exact transient click coordinates. New driver prepares
+instant scroll and requires three stable native hit-test points, logs each point,
+and preserves all field/history/console/source predicates. No product/app change.
+Owned browser/Vite/API/display/ports closed, both source manifests stable. The
+first raw remains in current96-checkout-guide/2026-10-29T14-15-01-942Z/results.json.
