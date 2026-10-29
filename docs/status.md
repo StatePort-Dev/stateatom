@@ -1,6 +1,6 @@
 # Project status
 
-**L02.37 actual result:** [327](completion/327-l02-focused-quality-result.md),31real model responses/3fallbacks, exact references/lifecycle PASS; quality FAIL (unsupported concurrency inference, omitted unknowns, no useful improvement). v3 remains unselected. Next typed grounded-claim selection, not a repeat of free-prose prompts. Whole22/29 unchanged.
+**L02.38 corpus:** [329](completion/329-l02-grounded-quality-result.md),31real model selections/3fallbacks;0incorrect claims, limited useful improvement6/27main and0/4supplement. Local clauses, not model prose. Next optional property UI alongside template and final product lifecycle/offline acceptance. Earlier327free-prose FAIL retained; whole22/29 unchanged.
 
 **A02 complete in approved282 scope:** [324](completion/324-a02-selected-list-completion.md): current installed standalone11/official12PASS, exact Atom91/plugin14/VSIX310, full6449sourcePASS and one whole review with no open findings. Official shell defect reproduced/fixed; old inner-only run remains scoped. Full plan22/29 (75.86%); next mandatory L02, then final integration/distribution/acceptance. No release readiness claim.
 
