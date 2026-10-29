@@ -1,5 +1,7 @@
 # Scope approval record
 
+**29October background-warning decision:** [352](352-background-warnings-maintainer-acceptance.md) accepts only the listed original IT-Tools warning headers and historical Copilot API mismatch for the first release. Raw FAILs remain; unexpected/new errors and all other acceptance requirements are unchanged.
+
 **28 October macOS decision:** the maintainer removed mandatory pre-release macOS installation validation and will check it manually later. Record macOS installation as unverified/deferred, non-blocking; Linux and other release gates remain. [Decision287](287-macos-install-check-deferred.md).
 
 

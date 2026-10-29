@@ -1,5 +1,7 @@
 # Roadmap
 
+**Known background warnings accepted for first release:** [352](docs/completion/352-background-warnings-maintainer-acceptance.md); only listed IT-Tools/Copilot conditions, original FAIL unchanged. Whole27/29; current Vue guide qualification and V04 remain.
+
 **Current96 independent input path passes in both hosts:** [351](docs/completion/351-v03-original-checkout-input.md), original checkout firstName;8 checks/10 phases/seven actual transactions per host, Live/Draft Undo/baseline and native writer retirement. Original minPrice FAIL remains distinct. Whole **27/29**; current Vue guide/warning decision then V04 remain.
 
 **Exact96 local kit/install prepared:** [350](docs/completion/350-current96-kit-and-v03-boundaries.md), archive528 files verified, actual normal Chrome folder installation passes in both fresh Linux profiles. **27/29**; remaining V03 restoration/strict-console/full-guide acceptance is explicit, V04 readiness depends on it. No scope waiver or publication.

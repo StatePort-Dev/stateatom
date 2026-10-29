@@ -9400,7 +9400,7 @@
       "execution_record": "351-v03-original-checkout-input.md",
       "active_slice": {
         "id": "V03.36-current-vue-guide",
-        "status": "pending-current-qualified-source-guide-and-warning-decision",
+        "status": "current-vue-guide-preparation-known-background-warning-exception-accepted",
         "record": "350-current96-kit-and-v03-boundaries.md",
         "whole_V03_complete": false
       },
@@ -10749,7 +10749,7 @@
         "offline_source_tests": 4,
         "project_source_changed_in_fix_pass": false
       },
-      "next_bounded_step": "Current independent Vue installed-source/guide qualification; preserve original24 app warnings and separate IDE warning pending explicit maintainer decision. Original minPrice failure unchanged; additional firstName route351 passes both hosts.",
+      "next_bounded_step": "Current independent Vue installed-source/guide qualification under exact exception352; retain unknown/new error failures and original raw results.",
       "historical_next_bounded_step_before_overhead_acceptance": "FullV03normal-setup/independent-app gates open;32native INCOMPLETE stays, current87backend13 is private-wire/no field widgets. Current independent V02.33original performance gate, no oldcase retry.",
       "current_installation": {
         "record": "350-current96-kit-and-v03-boundaries.md",
@@ -10775,6 +10775,13 @@
         "parity_visited": false,
         "positive_weak_dispatch_qualified": false,
         "raw_sha256": "f49f0e4fd83e588c940fa40d8e7802ec6253599a4f234d2acda3bde042eb8e7d"
+      },
+      "background_warning_release_decision": {
+        "record": "352-background-warnings-maintainer-acceptance.md",
+        "accepted": true,
+        "policy": "../testing/release-background-warning-policy.json",
+        "historical_failures_preserved": true,
+        "whole_V03": false
       }
     },
     {
@@ -14039,11 +14046,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "Current96 both-host independent checkout351 passes8 checks/10phases/7transactions each, including Live/Draft Undo/baseline and direct native writer retirement. Kit/install350 and U04 complete349. Whole27/29; Vue guide/warning decision and V04 remain.",
+    "current_activity_note": "Maintainer accepts only listed background warnings352. Current96 form351, kit350 and U04 remain credited; no new native acceptance. Whole27/29; current Vue guide then V04.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "164a89e38319b6b4a9802d2cddedf84603873212",
     "current_record_date": "2026-10-29",
-    "next_bounded_step": "Current independent Vue installed-source/guide qualification; preserve original24 app warnings and separate IDE warning pending explicit maintainer decision. Original minPrice failure unchanged; additional firstName route351 passes both hosts.",
+    "next_bounded_step": "Current independent Vue installed-source/guide qualification under exact exception352; retain unknown/new error failures and original raw results.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
