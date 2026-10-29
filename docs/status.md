@@ -1,5 +1,7 @@
 # Project status
 
+**Current bounded item L02.36:** [325](completion/325-l02-focused-annotation-design.md), separately versioned focused annotation v3;70source checks PASS. Original30main+4separate corpus retained;27main+4separate model-eligible,3main fallbacks. Not selected or packaged; real model quality remains pending. Whole22/29 unchanged.
+
 **A02 complete in approved282 scope:** [324](completion/324-a02-selected-list-completion.md): current installed standalone11/official12PASS, exact Atom91/plugin14/VSIX310, full6449sourcePASS and one whole review with no open findings. Official shell defect reproduced/fixed; old inner-only run remains scoped. Full plan22/29 (75.86%); next mandatory L02, then final integration/distribution/acceptance. No release readiness claim.
 
 **Latest A02 lifecycle:** [322](completion/322-a02-installed-lifecycle-result.md): plugin13 native12+7PASS for filter/delete/source revocation/detach/reload,45affected source checks. Exact filter routes corrected; inspector bytes remain12. Next matching official package/host, remaining282 controls and whole review. Whole21/29 unchanged.
