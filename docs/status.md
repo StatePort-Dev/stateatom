@@ -1,5 +1,7 @@
 # Project status
 
+**V02 complete:** [346](completion/346-v02-final-evidence-reconciliation.md), one bounded review0/0/0, full6514 and affected95 native controls; Basic343/Active281 exceptions explicit. **25/29 (86.21%)**. Actual component update/rollback preserves real Capture/diagnostic data [345](completion/345-i03-native-update-and-capture-shell.md). Remaining I03 coordinated Desktop inventory, U04/V03/V04; no release claim.
+
 **Basic latency accepted for the first release:** [343](completion/343-basic-latency-maintainer-acceptance.md), p95 1065.7 ms standalone / 1232.2 ms official. Original1s MISS retained; no optimization prerequisite for this deviation. Full source95:6514PASS; affected picker/native and remaining acceptance continue.
 
 **I02 complete on exact93:** [337](completion/337-i02-current93-completion.md), real Capture38/40, Settings/Live/Draft21 across both hosts, official Action Trace9; local-model334 retained. **24/29 (82.76%)**. Next V02 final candidate acceptance; U04/I03/V03/V04 also remain. No installation/publication claim. Earlier checkpoints retain history.
