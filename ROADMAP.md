@@ -1,5 +1,7 @@
 # Roadmap
 
+A02 **complete within approved282**: [324](docs/completion/324-a02-selected-list-completion.md), actual current standalone11/official12 and final review. Whole22/29 (75.86%); next mandatory L02. All earlier checkpoints below retain historical scope.
+
 A02 [installed lifecycle322](docs/completion/322-a02-installed-lifecycle-result.md): native12+7PASS and45affected source checks; continue matching official host/package and final review. Whole21/29 unchanged.
 
 A02 [current semantics320](docs/completion/320-a02-current-semantic-result.md): six Original/Off/On phases, exact output and whole-workflow call-count parity. Continue current lifecycle/refusal and official-host acceptance; whole21/29 unchanged.

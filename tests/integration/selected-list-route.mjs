@@ -48,6 +48,7 @@ try{
  else{bridge=startBridge({root,port:0,token:randomBytes(32).toString('hex'),onOpen:async()=>({opened:false,reason:'Source-helper diagnostic, no installed IDE'}),onDefinitions:async()=>[],onReferences:async()=>[]});await bridge.ready;bridge.cfg.port=bridge.server.address().port;}
  if(!session)session=await launchControlledFirstReadBrowser({projectRoot:root,headed:true,appProfile:'selected-list'});const {panel}=session,ui=await nativeInspectorUI(panel,session.browser);
  await ui.click('source-nav');await ui.fill('connection-receipt',JSON.stringify({schemaVersion:1,helper:bridge.helper,workspace:bridge.workspace,url:'http://127.0.0.1:'+bridge.cfg.port,origin:'http://127.0.0.1:4173',token:bridge.cfg.token,sourceRoot}));await ui.click('connect-receipt');await ui.waitOK();
+ if(officialExtension)await check('official workspace shell mounts Atom, Capture navigation and layout without an error',async()=>{await waitFor(()=>panel.evaluate(()=>!!document.querySelector('#workspace-capture')));const shell=await panel.evaluate(()=>({notice:document.querySelector('#workspace-notice').textContent,noticeHidden:document.querySelector('#workspace-notice').hidden,atom:document.querySelectorAll('#workspace-atom').length,capture:document.querySelectorAll('#workspace-capture').length,layout:document.querySelectorAll('#workspace-layout').length}));assert.equal(shell.noticeHidden,true,JSON.stringify(shell));assert.equal(shell.atom,1);assert.equal(shell.capture,1);assert.equal(shell.layout,1);result.officialShell=shell;});
  const tabId=await nativeChooseTab(panel,session.setupURL);await nativeApproveDevelopment(panel,tabId);await rpc(panel,{op:'attach',tabId});
  if(installedSession)await waitFor(()=>installedSession.phase==='ready-to-open');
  const app=installedSession?await session.browser.native.session(session.targetId):await session.arm();appSession=app;app.on('Runtime.exceptionThrown',e=>result.errors.push(e.exceptionDetails.text));
@@ -92,7 +93,10 @@ try{
   await writeFile(out+'/held-out-picker-state.json',JSON.stringify(state,null,2));assert.equal(state.analysis.stateatom.selectedListProfile.field,'caption');assert.equal(state.analysis.stateatom.selectedListProfile.occurrence.joins.revisionId,same.occurrence.joins.revisionId);
  });
  if(presentation){
-  await ui.click('refresh-tabs');await waitFor(()=>panel.evaluate(id=>[...document.querySelector('[data-atom-id="tabs"]').options].some(o=>o.value===String(id)),tabId));await ui.select('tabs',String(tabId));await ui.click('load');await ui.waitOK();await ui.click('inputs-nav');
+  // Installed source-navigation already chose the tab and closes connection setup.
+  // Use the visible Refresh control instead of clicking its now-hidden tab list.
+  if(!installedVsix){await ui.click('refresh-tabs');await waitFor(()=>panel.evaluate(id=>[...document.querySelector('[data-atom-id="tabs"]').options].some(o=>o.value===String(id)),tabId));await ui.select('tabs',String(tabId));}
+  await ui.click('load');await ui.waitOK();await ui.click('inputs-nav');
   await check('mounted current text origin has three readable links and nine folded steps',async()=>{
    const v=await panel.evaluate(()=>{const e=document.querySelector('[data-atom-id="selected-list-origin"]');return{hidden:e.hidden,text:e.innerText,links:e.querySelectorAll(':scope > div button').length,steps:e.querySelectorAll('details button').length,folded:!e.querySelector('details').open,empty:document.querySelector('[data-atom-id="element-properties"]').innerText};});
    assert.equal(v.hidden,false);assert.equal(v.links,3);assert.equal(v.steps,9);assert.equal(v.folded,true);assert.doesNotMatch(v.text,/react19:|data:\d|revision:/);assert.doesNotMatch(v.empty,/Dependencies not found/);result.presentation=v;

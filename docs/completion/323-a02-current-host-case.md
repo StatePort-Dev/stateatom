@@ -32,3 +32,20 @@ bytes instead of rerunning everything. This case does not close I02's full Captu
 matrix, I03 distribution, L02 usefulness or the release merely by packaging. Finish
 the remaining282 control reconciliation and one whole-integration review before
 marking A02 complete. Whole21/29 remains unchanged until then.
+
+Pre-official driver correction: standalone collection07:50:21 was INCOMPLETE
+after five valid named checks (plus launcher), at presentation's redundant hidden
+Refresh-tabs control. Installed source navigation had already chosen the tab and
+closed connection setup; first combining these two existing modes exposed this
+driver assumption. Use the visible Refresh action for that already-selected tab.
+No forced hidden click or product change; retain raw and cleanup. This is the
+only correction selected before the next collection; all assertions remain.
+
+Official07:53:16 passed11 inner Atom assertions, but executor screenshot inspection
+found an outer shell error. That raw remains valid only for its exercised inner
+steps; whole official UI acceptance is withdrawn. Current91 moved toolbar from
+brandbar into productbar; StatePort adapter's old selector fails. Reproduce with
+the actual installed package mounted in its host, correct that selector, and add
+a native shell check (Atom/Capture/layout present, no notice) before further
+inspection. Retain old host/raw/digest; same Atom/plugin/VSIX bytes. One corrected
+official collection is justified by this actual host defect.

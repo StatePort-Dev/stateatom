@@ -1,5 +1,7 @@
 # Project status
 
+**A02 complete in approved282 scope:** [324](completion/324-a02-selected-list-completion.md): current installed standalone11/official12PASS, exact Atom91/plugin14/VSIX310, full6449sourcePASS and one whole review with no open findings. Official shell defect reproduced/fixed; old inner-only run remains scoped. Full plan22/29 (75.86%); next mandatory L02, then final integration/distribution/acceptance. No release readiness claim.
+
 **Latest A02 lifecycle:** [322](completion/322-a02-installed-lifecycle-result.md): plugin13 native12+7PASS for filter/delete/source revocation/detach/reload,45affected source checks. Exact filter routes corrected; inspector bytes remain12. Next matching official package/host, remaining282 controls and whole review. Whole21/29 unchanged.
 
 **Latest A02 semantics:** [320](completion/320-a02-current-semantic-result.md): current original/held-out installed On bytes match; six Original/Off/On phases have identical9action outputs and17whole-workflow native function counts, no errors. Earlier acquisition/UI-driver failures remain incomplete; no per-action counter claim. Next current lifecycle/refusal/official and final review; whole21/29 unchanged.

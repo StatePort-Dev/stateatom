@@ -18,14 +18,14 @@
 - [x] Connect App state/props and Main original native-array row callbacks to Item parameter. Both repeated changed and same-value edits must produce a fresh exact chain; preserved/wrong row must not inherit it.
 
 ## Task3 — complete bounded admission and product route
-- [ ] Discharge ordinary row/field and native-array construction/method premises from original creation/callback operations; no arbitrary app-object reflection/getter replay.
-- [ ] Bind actual loaded source/compiled bodies and complete armed code journal with an owned compiler capability. Review native retention and all participating source effects; no transplant of old first-read proof, page boolean authority, unknown global Fiber/DevTools escape, or generic ownership framework.
-- [ ] Wire the declared open development route and current public UI/export. Preserve source/observation distinctions; no fullPath until every edge/gate is actually established. Unsupported shapes remain Unknown.
+- [x] Discharge ordinary row/field and native-array construction/method premises from original creation/callback operations; no arbitrary app-object reflection/getter replay.
+- [x] Bind actual loaded source/compiled bodies and complete armed code journal with an owned compiler capability. Review native retention and all participating source effects; no transplant of old first-read proof, page boolean authority, unknown global Fiber/DevTools escape, or generic ownership framework.
+- [x] Wire the declared open development route and current public UI/export. Preserve source/observation distinctions; no fullPath until every edge/gate is actually established. Unsupported shapes remain Unknown.
 
 ## Task4 — actual qualification and final review
-- [ ] Freeze a new changed-mechanism original/Off/On case and held-out control before native collection. Use new artifact/profile paths; no closed native209/276/benchmark89 retry. Preserve original corpus source and no extra app getters/callback/reducer execution.
-- [ ] Complete approved282 matrix on actual selected rows, public standalone/export and matching official package. Include same-value/alias/unknown code/HMR/Stop/weak loss/unsupported query/masked condition boundaries. Agent-operated UI is not human acceptance.
-- [ ] One fresh read-only final review of this whole integration range, necessary single TDD correction pass, local commits and honest release/task ledger. No publication/push/SDK/account changes.
+- [x] Freeze a new changed-mechanism original/Off/On case and held-out control before native collection. Use new artifact/profile paths; no closed native209/276/benchmark89 retry. Preserve original corpus source and no extra app getters/callback/reducer execution.
+- [x] Complete approved282 matrix on actual selected rows, public standalone/export and matching official package. Include same-value/alias/unknown code/HMR/Stop/weak loss/unsupported query/masked condition boundaries. Agent-operated UI is not human acceptance.
+- [x] One fresh read-only final review of this whole integration range, necessary single TDD correction pass, local commits and honest release/task ledger. No publication/push/SDK/account changes.
 
 ## Review focus
 Exact native revision and selected-host props identity, original evaluation/exception semantics, alias/no-write interval premises, aborted/concurrent/memo retained histories, source/module identity under HMR/unknown code, private telemetry prototype effects and weak retention. Do not promote partial facts or source tests into installed full lineage.
@@ -74,3 +74,5 @@ Task4 held-out315: fixed AST-renamed/relocated original graph with non-writing r
 Task4 semantics320: six Original/Off/On phases on both exact installed graphs PASS,9per-action outputs and17exact whole-workflow native counters each. All browsers/server/tools closed.316/318 per-action counter acquisition stays incomplete;317 diagnostic only;319 hidden Delete driver omission corrected by normal hover. No threshold/count/role removal. Counter mapper2PASS, product6416PASS retained. Next current lifecycle/refusal/official and final review.
 
 Task4 lifecycle322: installed13 native12+7PASS,45affectedsourcePASS. Corrected exact HashRouter filter admission; changed source/restore/detach/reload and hidden/deleted node refusals qualified. Inspector remains12; no unrelated UI credit. Next matching official package/host, remaining282 controls and whole review; whole21/29 unchanged.
+
+Completion324: all282 criteria reconciled by scoped source/native evidence; exact current standalone11/official12PASS, full6449PASS. Official shell Important corrected with actual installed-package RED→GREEN and native guard. One whole review0open findings; bounded A02 complete22/29. Next L02. Other release tasks and unsupported arbitrary graphs are not granted acceptance.
