@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add an optional on-device property explanation disclosure using existing shared controls. Keep the deterministic answer and limits alongside a separately labelled model-selected local note; Actions uses the same bounded claim selection. Default off, explicit Explain/download, cancel and exact snapshot invalidation. No shared token or contract change.
+
 - Preserve a local fetch-policy declaration marker through identifier minification so the opt-in closed selected-list launcher can acquire the exact official worker helper bytes. Unknown or changed helpers still revoke the finite proof; no browser permission is added.
 
 - Keep a supported response dependency's value and editor in the same row, with one owned draft, inline errors and Undo. Associate only an exact current finite-trace read with its captured native request and editor resource; names, equal values and URL matches do not grant editing. Keep unrelated page/response fields under Source. Preserve the owned field when its recorded explanation goes stale, without claiming a fresh dependency observation. No new arbitrary React-state writer is introduced.

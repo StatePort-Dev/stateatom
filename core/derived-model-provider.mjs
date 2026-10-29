@@ -26,7 +26,7 @@ function createAnnotationProvider(model,comparison,focused=false,grounded=false)
   try{if(!model)return 'unavailable';const state=await model.availability(OPTIONS);return ['available','downloadable','downloading','unavailable'].includes(state)?state:'unknown';}
   catch{return 'unknown';}
  }
- async function explain(facts,{userActivation=false,allowDownload=false,signal,onProgress,onPhase,timeoutMs=30000,getCurrentFacts=()=>facts}={}){
+ async function explain(facts,{userActivation=false,allowDownload=false,signal,onProgress,onPhase,timeoutMs=30000,coldInitializationTimeoutMs,getCurrentFacts=()=>facts}={}){
   let current=isLocalExplanationFacts(facts)?facts:inspectionExplanationFacts({});
   const fallback=reason=>{
    const template=TemplateExplanation(current);
@@ -43,6 +43,8 @@ function createAnnotationProvider(model,comparison,focused=false,grounded=false)
   if(!readCurrent())return changed();
   const controller=new AbortController(),abort=()=>controller.abort(),destroyed=new WeakSet();
   let active=true,creating=false,session,timer;
+  const workBudget=Number.isFinite(timeoutMs)?Math.min(120000,Math.max(1,timeoutMs)):30000,coldBudget=grounded&&Number.isFinite(coldInitializationTimeoutMs)&&coldInitializationTimeoutMs>0?Math.min(600000,coldInitializationTimeoutMs):null;
+  const arm=ms=>{clearTimeout(timer);timer=setTimeout(abort,ms);};
   function destroy(owned){
    if(!owned||!['object','function'].includes(typeof owned)||destroyed.has(owned))return;
    destroyed.add(owned);try{owned.destroy();}catch{/* Session may already be destroyed by native abort. */}
@@ -50,7 +52,7 @@ function createAnnotationProvider(model,comparison,focused=false,grounded=false)
   signal?.addEventListener('abort',abort,{once:true});
   const stopped=new Promise((_,reject)=>{
    controller.signal.addEventListener('abort',()=>reject(Error('Cancelled')),{once:true});
-   timer=setTimeout(abort,Number.isFinite(timeoutMs)?Math.min(120000,Math.max(1,timeoutMs)):30000);
+   arm(workBudget);
   });
   void stopped.catch(()=>{});
   if(signal?.aborted)abort();
@@ -62,6 +64,7 @@ function createAnnotationProvider(model,comparison,focused=false,grounded=false)
    if(state==='unavailable')return fallback('Local model unavailable.');
    if(state==='unknown')return fallback('Local annotation status unknown; showing the template.');
    if(state!=='available'&&allowDownload!==true)return fallback('Model download requires explicit initiation.');
+   const separateCold=state!=='available'&&allowDownload===true&&coldBudget!==null;if(separateCold)arm(coldBudget);
    notify(onPhase,state==='available'?'initializing':'downloading');ensureLive();
    if(!readCurrent())return changed();
    creating=true;
@@ -71,7 +74,7 @@ function createAnnotationProvider(model,comparison,focused=false,grounded=false)
     });
    }}));
    void creation.then(owned=>{if(!active||controller.signal.aborted)destroy(owned);},()=>{});
-   session=await Promise.race([creation,stopped]);creating=false;
+   session=await Promise.race([creation,stopped]);creating=false;if(separateCold)arm(workBudget);
    if(!readCurrent())return changed();
    notify(onPhase,'generating');ensureLive();
    if(!readCurrent())return changed();

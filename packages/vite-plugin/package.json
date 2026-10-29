@@ -1,6 +1,6 @@
 {
   "name": "@stateport/vite-plugin",
-  "version": "0.1.0-candidate.20261029.14",
+  "version": "0.1.0-candidate.20261029.15",
   "description": "Open opt-in development instrumentation for the StateAtom inspector",
   "type": "module",
   "license": "(MIT AND Apache-2.0)",

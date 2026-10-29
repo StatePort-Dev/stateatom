@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
-import {TemplateExplanation,ChromeBuiltInExplanation} from '../../../core/action-explanations.mjs';
+import {TemplateExplanation} from '../../../core/action-explanations.mjs';
+import {ChromeGroundedAnnotation} from '../../../core/derived-model-provider.mjs';
 import {supportsCapabilityPolicy} from './transport.mjs';
 import {createActionTraceUI} from './action-trace-ui.mjs';
 import {inspectionExplanationFacts,explanationIdentity} from '../../../core/inspection-explanations.mjs';
@@ -11,8 +12,8 @@ export function createActionUI({document,$,rpc,cleanupRpc,tab,action,nativeSourc
  const selectionKey=s=>JSON.stringify([s?.tabId??tab(),s?.run,s?.analysis?.actionContext,s?.selection?.domIdentity,s?.selection?.observedAt,s?.selection?.page,s?.selection?.instance,s?.selection?.property,s?.selection?.value]);
  const renderKey=(s,f,permission)=>JSON.stringify([selectionKey(s),explanationIdentity(f),s?.analysis?.actionBindings,s?.stale,permission,s?.sourceMaps,s?.capabilityPolicy?.operations?.['source-map-anchor']]);
  const model=document.defaultView?.location?.protocol==='chrome-extension:'?document.defaultView.LanguageModel:null;
- const provider=ChromeBuiltInExplanation(model),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;};
- function cancel(){if(availabilityNotice){clearTimeout(availabilityNotice.timer);availabilityNotice=null;}controller?.abort();controller=null;}
+ const provider=ChromeGroundedAnnotation(model),node=(tag,text,cls)=>{const n=document.createElement(tag);if(text)n.textContent=text;if(cls)n.className=cls;return n;};
+ function cancel(){$('action-local-note').textContent='';if(availabilityNotice){clearTimeout(availabilityNotice.timer);availabilityNotice=null;}controller?.abort();controller=null;}
  function render(state){
   traceUI.render(state);
   const stale=!!state?.stale||(state?.analysis?.actionBindings||[]).some(b=>b.freshness==='Stale');
@@ -63,8 +64,8 @@ export function createActionUI({document,$,rpc,cleanupRpc,tab,action,nativeSourc
     if(!$('action-local-enabled').checked)return;
     if(facts.evidenceIds.length>24){$('action-local-status').textContent='Too many references for the experimental model; showing the template.';return;}
     $('action-local-status').textContent='Checking local model availability…';
-    const r=await provider.explain(facts,{userActivation:document.defaultView?.navigator.userActivation?.isActive===true,allowDownload:true,signal,timeoutMs:120000,coldInitializationTimeoutMs:300000,onPhase:phase=>{if(current())$('action-local-status').textContent={checking:'Checking local model availability…',initializing:'Initializing local model…',downloading:'Downloading local model…',generating:'Generating local explanation…'}[phase];},onProgress:p=>{if(current())$('action-local-status').textContent='Downloading local model: '+Math.round(p*100)+'%';}});
-    if(!current())return;$('action-explanation').textContent=r.summary;$('action-local-status').textContent=r.provider==='chrome-built-in'?'Experimental local model · grounded sentence selection · not evidence':r.reason;
+    const r=await provider.explain(facts,{userActivation:document.defaultView?.navigator.userActivation?.isActive===true,allowDownload:true,signal,timeoutMs:120000,coldInitializationTimeoutMs:300000,getCurrentFacts:()=>facts,onPhase:phase=>{if(current())$('action-local-status').textContent={checking:'Checking local model availability…',initializing:'Initializing local model…',downloading:'Downloading local model…',generating:'Generating local explanation…'}[phase];},onProgress:p=>{if(current())$('action-local-status').textContent='Downloading local model: '+Math.round(p*100)+'%';}});
+    if(!current())return;$('action-explanation').textContent=r.summary;$('action-local-note').textContent=r.annotation?.text??'';$('action-local-status').textContent=r.annotation?'Model-selected recorded facts · derived note, not evidence.':r.reason;
    }catch{if(current())$('action-local-status').textContent='Stored evidence refresh unavailable · showing the displayed snapshot template.';}
    finally{if(current()){$('action-explain').disabled=false;$('action-cancel').hidden=true;}}
   };

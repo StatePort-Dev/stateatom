@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
+import {createPropertyLocalExplanationUI} from './property-local-explanation-ui.mjs';
 import{inspectionExplanationFacts,explanationIdentity}from'../../../core/inspection-explanations.mjs';
 export function renderExplanationDetails(document,container,facts){
  const lines=facts.details.map(d=>d.status+' · '+(d.expression||d.kind)+(Object.hasOwn(d,'value')?' = '+JSON.stringify(d.value):'')+(d.scope?' · '+d.scope:'')+(d.source?' · '+d.source.file+':'+d.source.line+':'+d.source.column:'')+(d.evidenceIds.length?'\nEvidence: '+d.evidenceIds.join(', '):''));
@@ -7,9 +8,10 @@ export function renderExplanationDetails(document,container,facts){
  container.replaceChildren(...lines.map(line=>{const p=document.createElement('pre');p.textContent=line;return p;}));
 }
 export function createInspectionExplanationUI({document,$,onNext=()=>{}}){
- let key;
+ let key;const local=createPropertyLocalExplanationUI({document,$});
  return{render(state,{fallbackPresented=false}={}){
   const facts=inspectionExplanationFacts(state||{}),visible=!!state?.selection||!!state?.stale,nextKey=visible?explanationIdentity(facts):null;
+  local.render(facts,visible);
   $('property-explanation-block').hidden=!visible||fallbackPresented&&facts.status==='Unavailable';$('explanation-details').hidden=!visible;
   if(key===nextKey)return facts;key=nextKey;$('explanation-details').open=false;
   $('property-explanation').textContent=visible?facts.summaries[0]:'';
@@ -18,5 +20,5 @@ export function createInspectionExplanationUI({document,$,onNext=()=>{}}){
   if(visible)renderExplanationDetails(document,$('explanation-data'),facts);else $('explanation-data').replaceChildren();
   $('explanation-next').onclick=()=>{if(!visible)return;if(facts.nextAction.id==='view-evidence'){$('explanation-details').open=true;$('explanation-details').querySelector?.('summary')?.focus();}else onNext(facts.nextAction.id);};
   return facts;
- }};
+ },dispose(){local.dispose();}};
 }
