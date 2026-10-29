@@ -1,0 +1,131 @@
+{
+  "schema": "stateatom.grounded-product-case/1",
+  "maximumAttemptsPerHost": 1,
+  "maxUIInitiationsPerHost": 2,
+  "out": "/home/roman/projects/stateatom/.artifacts/l02/grounded-unavailable93/2026-10-29",
+  "project": "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project",
+  "profileCase": "docs/testing/official-comparison-pilot-case.json",
+  "plugin": {
+    "file": "/home/roman/projects/stateatom/.artifacts/development/2026-10-29T09-35-41-351Z/stateport-vite-plugin-0.1.0-candidate.20261029.17.tgz",
+    "sha256": "81dfcf43952b3a833f8ef535d04f07917dad52692fa0e40934eaebd077253e6c",
+    "version": "0.1.0-candidate.20261029.17"
+  },
+  "vsix": {
+    "file": "/home/roman/projects/stateatom/.artifacts/development/2026-10-29T09-05-13-000Z/stateatom-dev-helper-0.1.3.vsix",
+    "sha256": "49b887e3cfccf56f4431aba4fa9a7f68c9ef8a0dcebfd3e6cd1619d2fb356fb9"
+  },
+  "hosts": {
+    "standalone": {
+      "path": "/home/roman/projects/stateatom/.artifacts/atom/2026-10-29T09-35-02-016Z/standalone",
+      "page": "panel.html",
+      "files": {
+        "LICENSES/Apache-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "assets/fonts/InterVariable.woff2": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3",
+        "atom-guardian-worker.js": "db43b3101a08c3a6fa78467349372a622c1fded453a00c0f14003b7461163882",
+        "atom-guardian.html": "70b71a19f37ae176c10eaa955e06298d9b67ee2a677b67bef6f742ed082e36c1",
+        "atom-guardian.js": "d0ba0092ccc3d152766eb87f0c47bc149dd6d30d16eb2e013cff842de2bcf68a",
+        "atom-licenses/LICENSE": "7839a054cc205ef0dc12a6b79f82254fe63852e8a1d827ec7e4e48ec0e1362b9",
+        "atom-licenses/NOTICE": "9ef4cf51373f5e1977ca89a0fd9adaa896b5a2fde652973c9d7faecac3d5a2d3",
+        "atom-licenses/THIRD_PARTY_LICENSES.md": "76fe11294253f8d16558fa06ffcec9e46fc6d8f50a645527e729d73407513690",
+        "atom.css": "4c78b163b2936a69cd2cb2bbaf622210c5345aec6683cd27dfd512213cdf24ca",
+        "content.js": "023b0acb36e21679b053c304d5956dd172faf4288ebc40adc5b58cb6727ac838",
+        "extension-ui-components.css": "15cac0fbacb288be7e4483a1b177a1890d0235a3b6709aa6d0e5885b72db8282",
+        "extension-ui-contract.json": "34e32d44e35b0b26764037c07e024f8ec9ee6b3c569098739c8ac6b791a33880",
+        "extension-ui-fonts.css": "5fffedd14436a23ab7ab2521a259ba8580034367467542f6887ccaf46c137ef0",
+        "extension-ui-licenses/Inter-LICENSE.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "extension-ui-licenses/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "extension-ui-licenses/NOTICE": "d1546935ddf0131576c017b5b35d59978514e06fe73274a446c74a0552b7185a",
+        "extension-ui-tokens.css": "4403b8a6da0e17ab23442397b20297bcaed1140be317ed93777d537a5c2986ac",
+        "manifest.json": "fdbaf7782fe48090ebce4da63a23ff80cdd7a5b977d0a3f58a4abaa5949c18bc",
+        "panel.css": "0791eb7803d269a4ccfaebbc90fb6671e1f0b89785b9aa7311135c441b6e40f0",
+        "panel.html": "8dcad55cb2467a8493950b49c0d815746d82b099029d40dbfd041803230110f5",
+        "panel.js": "56904bcb41652cb4b3e1b361331113281091828e67ec1d714604fd388fd21ae0",
+        "reader.css": "0577d319ba62955eeed9bc84725e994c1612d42ecbb8b2a18e2c13254bcc1f38",
+        "reader.html": "9fdeb1fd1b4b2792dedbdd4485017199075c3bdf718077755ece8e66f600e4ec",
+        "reader.js": "358b524955c74a206e6bc0d45c5448c5504b5759f5e144737c35584a1576b9e1",
+        "source-analysis-worker.js": "1dfaffc2dffce72b935e646436166ae19d8ff87e1103d5b4d9d2e16467db7920",
+        "source-parse-worker.js": "0f28111193035035bb7988a2d9c9659a093a93643385e22e0a377ad5031ce5a8",
+        "worker.js": "ea48b9f6978388ea470b60e1c80392ba700907a5829792721abca82c806c2521"
+      }
+    },
+    "official": {
+      "path": "/home/roman/projects/scenariodeck/apps/chrome-extension/dist",
+      "page": "atom.html",
+      "files": {
+        "BUILD-INFO.json": "112d454e5e0f0f3c2cd387fd84cbb6f72dc3d4b5d1efdf2d45a0fa0c66903c10",
+        "atom/LICENSE": "7839a054cc205ef0dc12a6b79f82254fe63852e8a1d827ec7e4e48ec0e1362b9",
+        "atom/LICENSES/Apache-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "atom/NOTICE": "9ef4cf51373f5e1977ca89a0fd9adaa896b5a2fde652973c9d7faecac3d5a2d3",
+        "atom/THIRD_PARTY_LICENSES.md": "76fe11294253f8d16558fa06ffcec9e46fc6d8f50a645527e729d73407513690",
+        "atom/atom.css": "4c78b163b2936a69cd2cb2bbaf622210c5345aec6683cd27dfd512213cdf24ca",
+        "atom/content.js": "023b0acb36e21679b053c304d5956dd172faf4288ebc40adc5b58cb6727ac838",
+        "atom/contract.json": "ccfdac93efaf006eb3bf01e6e559c7ee8520bdd9c696fbbb9a486fb5a58d88fa",
+        "atom/reader.css": "0577d319ba62955eeed9bc84725e994c1612d42ecbb8b2a18e2c13254bcc1f38",
+        "atom/reader.html": "4a5883529dd53c2d1cbbe7c229b3573979f98a8d7bb6cbcd028abffbcc4a80b5",
+        "atom/reader.js": "358b524955c74a206e6bc0d45c5448c5504b5759f5e144737c35584a1576b9e1",
+        "atom-guardian-worker.js": "db43b3101a08c3a6fa78467349372a622c1fded453a00c0f14003b7461163882",
+        "atom-guardian.html": "70b71a19f37ae176c10eaa955e06298d9b67ee2a677b67bef6f742ed082e36c1",
+        "atom-guardian.js": "d0ba0092ccc3d152766eb87f0c47bc149dd6d30d16eb2e013cff842de2bcf68a",
+        "atom-host.css": "f91ddc0da0432164861aa9f3a9d2e3cec3252d0354411e6a3b4421e3e4a8ba2b",
+        "atom-page.js": "26fb3b3cb3196668464e0a271b4527468d6cc4107500cc74819c8080f888d865",
+        "atom.html": "d4635daee3a52d087733fcf38438bbffa269e4babbdeb1ea5755feb34d402e81",
+        "extension-ui/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "extension-ui/NOTICE": "d1546935ddf0131576c017b5b35d59978514e06fe73274a446c74a0552b7185a",
+        "extension-ui/assets/fonts/Inter-LICENSE.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "extension-ui/assets/fonts/InterVariable.woff2": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3",
+        "extension-ui/components.css": "15cac0fbacb288be7e4483a1b177a1890d0235a3b6709aa6d0e5885b72db8282",
+        "extension-ui/contract.json": "34e32d44e35b0b26764037c07e024f8ec9ee6b3c569098739c8ac6b791a33880",
+        "extension-ui/fonts.css": "5fffedd14436a23ab7ab2521a259ba8580034367467542f6887ccaf46c137ef0",
+        "extension-ui/tokens.css": "4403b8a6da0e17ab23442397b20297bcaed1140be317ed93777d537a5c2986ac",
+        "icons/128.png": "5f59b966364c4e989f49472f1e03be734f7135062b98f58c054595a00ee440a8",
+        "icons/16.png": "f37e9f93cbe1600c9623e5476fa33867aa1420c9255b7e59e7479abb1758871a",
+        "icons/32.png": "b2477ed34eb96df60a0eb1c2916deb9c03a1bb56853a093207da79aeaae0d640",
+        "icons/48.png": "156484b67b641d072affd9d2fb99baa6507ede2f88ffed2bfd749fb86f2e434c",
+        "manifest.json": "33d756eb67a88e8fb5636e761e209d39cb5c8f186bf59fbee246bc77ff4f86f7",
+        "popup.css": "a6c2f96ed1cc4c6a28ac4a31451679383089e8e17af95e558e26a57e422b558c",
+        "popup.html": "36af9b2f4b0bef974084d6e8bc09fe24a885c1876e98bfea9010cd924ce16c49",
+        "popup.js": "2996bb1c10904c77f7341164630e00397314684075f221e7bcffc5b2a1c5f110",
+        "service-worker.js": "cf162ab5988d933d319ef05db5949961617d998b084ed9a03632f97c8b6c82c6",
+        "source-analysis-worker.js": "1dfaffc2dffce72b935e646436166ae19d8ff87e1103d5b4d9d2e16467db7920",
+        "source-parse-worker.js": "0f28111193035035bb7988a2d9c9659a093a93643385e22e0a377ad5031ce5a8"
+      }
+    }
+  },
+  "inputs": {
+    "tests/integration/grounded-product.mjs": "8d4171755d7aaf3dd4b16ee254b7bdcb23b1bfc5fe6cd454cfa28e771ed6f027",
+    "tests/helpers/grounded-product-server.mjs": "37b56a73700e57c55bbad326c348a58f6d07a4a2a95604fca9ec83edd76c572b",
+    "scripts/native-browser.mjs": "ddb6b665824e6c200b16b52108657baf7d23ad0fcdea9ce5b9c2ea6a5fa5f3a2",
+    "scripts/harness.mjs": "4237bf6218e06d0042968316356e8ac90e30ac5ac54c67cc821d6157ded98874",
+    "tests/helpers/native-inspector-ui.mjs": "2a82f3a643bbbacd9a6f8ed7e798f77b1416f110f1828ac23fd97b24bc8109b9",
+    "tests/helpers/source-access-native-desktop.mjs": "786011664d68f658bd1d5e7c002963642a50a16661d7f67b2413ac8aef182f57",
+    "docs/testing/official-comparison-pilot-case.json": "0921c441e4bee7e45610d599967e72be83998bdc764b1628a22a9f1471b32c5e",
+    "/home/roman/projects/stateatom/.artifacts/development/2026-10-29T09-35-41-351Z/stateport-vite-plugin-0.1.0-candidate.20261029.17.tgz": "81dfcf43952b3a833f8ef535d04f07917dad52692fa0e40934eaebd077253e6c",
+    "/home/roman/projects/stateatom/.artifacts/development/2026-10-29T09-05-13-000Z/stateatom-dev-helper-0.1.3.vsix": "49b887e3cfccf56f4431aba4fa9a7f68c9ef8a0dcebfd3e6cd1619d2fb356fb9",
+    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project/package-lock.json": "1c7242b550928b312604fe409f94aa2f796b15713bf87ae7275bcb00198a9968",
+    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project/package.json": "67764d4f5f71850c7d09e8bd446f2eebba370cda5a83da9aae17eac4f2a4b12b",
+    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project/index.html": "3dcdd42bba12dd20d6d15dec899f4b91ef9691d355f3c5829b52fc51843f2dce",
+    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project/control-src/App.jsx": "d0f2ece1e62b45fbc260cc545c588c995f76e383ab1596d6e7ecde31d2a2d14d",
+    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project/control-src/Label.jsx": "da4bbce2a17411beb16939aa487bdd86fd36d7dc6278329622c9ff087053163b",
+    "/home/roman/projects/stateatom/.artifacts/l02/grounded-product93/2026-10-29/project/control-src/Forward.jsx": "c7d1f10033612aeb7e91dd872b390fedf693e88d02dd136777fd33155baf555d"
+  },
+  "acceptance": [
+    "Fresh actual Chromium profile, real API absence, no model overrides",
+    "Same current Atom93/plugin17/VSIX real picker and recorded property",
+    "Explicit local action leaves template intact on unavailable device",
+    "Actions fallback and no application getter execution",
+    "Compiled worker/UI equal actual package; owned cleanup"
+  ],
+  "limits": [
+    "No positive inference claimed on unavailable device",
+    "Test-only loadUnpacked is not normal installation",
+    "No model-cache profile cloned; no downloads"
+  ],
+  "hostRevision": "23fbccc0",
+  "profileCloneExclusions": [
+    "Default/Service Worker/"
+  ],
+  "unavailableBrowser": {
+    "executablePath": "/home/roman/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome",
+    "sha256": "8c599d43aec53f2460a31ae2f4af6bd863f8258b34ff519564bc5d4726bfaa1e"
+  }
+}

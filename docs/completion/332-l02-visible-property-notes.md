@@ -54,3 +54,32 @@ UI script hashes to equal the frozen installed host bytes. New separate director
 `grounded-product93-fresh-worker`; no model corpus rerun, cache clearing in personal
 profiles or product security bypass. This also informs the separate update acceptance:
 loading a same-version unpacked folder alone did not prove current worker execution.
+
+## Actual product result on final93
+
+Both exact official and standalone runs from cleane4d8465 passed8checks each, five
+trusted model UI requests per host. Actual compiled worker AND UI match frozen
+installed files; no model API override/facts injection. Real installed17 plugin and
+new0.1.3 VSIX, native picker, condition operand/getter controls, opt-in/result,
+generation cancel, equal-value target replacement, offline extension-document
+fetch refusal plus successful fresh inference, opt-out, Actions,390/440 keyboard
+and actual200% zoom all passed. All7cleanup guards/profile/input preservation pass.
+Original profile/cache unchanged. Native API create/prompt/destroy counts Unknown.
+
+Raw official SHA79f93e931f5ef8a27738620fa7dae8b7db70865ac63baef2e7fd2b4cc8a6b042;
+standalone SHA6e03a904781a32be1595e58937ea6ec3cc4ca9ffda35b29d582ac38beb71ec82,
+under `.artifacts/l02/grounded-product93-fresh-worker/2026-10-29/{official,standalone}`.
+Official first UI request8133ms, offline fresh request2457ms, not pure inference/p95.
+Both outputs preserve known true, copied hypothetical result, unavailable input
+boundary, and no inference of DOM producer/HTTP lineage. Getter events stayed empty.
+
+Executor viewed both390px product screenshots: matching13px shared typography,
+consistent header/tab alignment, primary expression/copied value first; optional
+closed-by-default disclosure uses existing rows/buttons. Expanded note and original
+answer fit the owned scroller, no horizontal overflow. Reference03.1/05.7 uses
+on-request explanation and opt-in derived facts. Bounded adaptation is the per-
+property disclosure (rather than prototype's simulated global settings); original
+limits stay beside both explanations. No replacement tokens/layout. Screenshots
+remain agent candidates, not human approval. Actual unavailable-device acceptance
+is separately frozen in `docs/testing/grounded-unavailable-case.json`; then ONE
+whole-L02 review, not repeated corpus or a documents-only completion claim.
