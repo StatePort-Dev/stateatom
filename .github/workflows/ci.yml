@@ -67,6 +67,22 @@ jobs:
         env:
           ATOM_HANDOFF: ${{ steps.candidate.outputs.handoff }}
         run: node scripts/verify-native-candidate.mjs "$ATOM_HANDOFF"
+      - name: Report synthetic browser startup diagnostics
+        if: ${{ failure() }}
+        run: |
+          node --input-type=module <<'JS'
+          import {readFile, readdir} from 'node:fs/promises';
+          for (const base of ['.artifacts/v01/basic-reader', '.artifacts/l01/maps-native']) {
+            const runs = await readdir(base).catch(error => { if (error.code === 'ENOENT') return []; throw error; });
+            for (const run of runs.filter(name => /^[0-9TZ-]+$/.test(name))) {
+              for (const host of ['standalone', 'embedding', 'standalone-fresh-reader', 'embedding-fresh-reader']) {
+                const file = base + '/' + run + '/profiles/' + host + '/chrome.log';
+                const log = await readFile(file, 'utf8').catch(error => { if (error.code === 'ENOENT') return null; throw error; });
+                if (log !== null) console.log(file + '\n' + log.slice(-12000));
+              }
+            }
+          }
+          JS
       - name: Retain allowlisted synthetic native results
         if: ${{ always() }}
         uses: actions/upload-artifact@v7.0.1
