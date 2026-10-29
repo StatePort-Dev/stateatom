@@ -15,17 +15,20 @@ import {nativeInspectorUI} from '../helpers/native-inspector-ui.mjs';
 import {nativeApproveDevelopment,nativeChooseTab} from '../../scripts/native-browser.mjs';
 const installedPluginWorkspace=process.argv.find(a=>a.startsWith('--installed-plugin-workspace='))?.slice('--installed-plugin-workspace='.length);
 const installedVsix=process.argv.find(a=>a.startsWith('--installed-vsix='))?.slice('--installed-vsix='.length);
+const heldOutCorrected=process.argv.includes('--held-out-picker-settled');
+const heldOut=heldOutCorrected||process.argv.includes('--held-out');
 const presentation=process.argv.includes('--presentation'),domControls=process.argv.includes('--dom-controls'),privateChannel=!!installedVsix||process.argv.includes('--private-channel');
 const root=process.cwd(),out=root+'/.artifacts/a02/selected-list-route/'+new Date().toISOString().replace(/[:.]/g,'-'),sha=s=>createHash('sha256').update(s).digest('hex');await mkdir(out,{recursive:true});
 const workspace=installedPluginWorkspace||root,sourceRoot=installedPluginWorkspace?'app':'.runtime/todomvc/examples/react',options={projectRoot:root,appRoot:sourceRoot,entry:'src/index.js',root:{file:'src/todo/app.jsx',export:'App'},field:'title',sources:['src/todo/app.jsx','src/todo/reducer.js','src/todo/components/main.jsx','src/todo/components/item.jsx','src/todo/components/footer.jsx']};
-const result={schema:'stateatom.selected-list-route-diagnostic/1',case:installedPluginWorkspace?'docs/completion/311-a02-installed-plugin-case.md':installedVsix?'docs/completion/309-a02-installed-helper-case.md':privateChannel?'docs/completion/307-a02-private-helper-channel-case.md':domControls?'docs/completion/305-a02-native-dom-interval-case.md':presentation?'docs/completion/303-a02-selected-list-presentation-case.md':'docs/completion/301-a02-list-helper-native-case.md',out,startedAt:new Date().toISOString(),checks:[],errors:[],fullA02:false,installedIDE:false,publicPresentation:false,officialHost:false};let source,bridge,session,appSession,channel,installedSession,ideVerified=false;
+const result={schema:'stateatom.selected-list-route-diagnostic/1',case:heldOutCorrected?'docs/completion/314-a02-held-out-picker-barrier.md':heldOut?'docs/completion/313-a02-held-out-case.md':installedPluginWorkspace?'docs/completion/311-a02-installed-plugin-case.md':installedVsix?'docs/completion/309-a02-installed-helper-case.md':privateChannel?'docs/completion/307-a02-private-helper-channel-case.md':domControls?'docs/completion/305-a02-native-dom-interval-case.md':presentation?'docs/completion/303-a02-selected-list-presentation-case.md':'docs/completion/301-a02-list-helper-native-case.md',out,startedAt:new Date().toISOString(),checks:[],errors:[],fullA02:false,installedIDE:false,publicPresentation:false,officialHost:false};let source,bridge,session,appSession,channel,installedSession,ideVerified=false;
 async function check(name,fn){await fn();result.checks.push({name,status:'PASS'});console.log('PASS',name);}
 try{
  let compilation;
  if(installedPluginWorkspace){
   const {pathToFileURL}=await import('node:url');const {createServer}=await import(pathToFileURL(workspace+'/node_modules/vite/dist/node/index.js'));
   const browserExecutable=(await import('playwright')).chromium.executablePath();
-  const config=`import {stateatomSelectedList} from '@stateport/vite-plugin/selected-list';export default {plugins:[stateatomSelectedList(${JSON.stringify({enabled:true,browserExecutable,source:{appRoot:'app',entry:options.entry,root:options.root,field:options.field,sources:options.sources}})})],server:{host:'127.0.0.1',port:0}};`;
+  const installedSource=heldOut?(await import('../helpers/selected-list-held-out.mjs')).heldOutSource:{appRoot:'app',entry:options.entry,root:options.root,field:options.field,sources:options.sources};
+  const config=`import {stateatomSelectedList} from '@stateport/vite-plugin/selected-list';export default {plugins:[stateatomSelectedList(${JSON.stringify({enabled:true,browserExecutable,source:installedSource})})],server:{host:'127.0.0.1',port:0}};`;
   await writeFile(workspace+'/vite.config.mjs',config);const vite=await createServer({root:workspace,configFile:workspace+'/vite.config.mjs'});source={close:()=>vite.close()};await vite.listen();
   installedSession=vite.config.plugins.find(p=>p.name==='stateatom-selected-list').selectedListSession;assert(installedSession);session=installedSession.browser;compilation=installedSession.compilation;
   result.installedPlugin=JSON.parse(await readFile(workspace+'/node_modules/@stateport/vite-plugin/package.json'));await writeFile(out+'/installed-vite-config.mjs',config);
@@ -62,16 +65,26 @@ try{
   const state=await rpc(panel,{op:'state',tabId});await writeFile(out+'/'+name+'-state.json',JSON.stringify(state,null,2));
   await writeFile(out+'/'+name+'-analysis.json',JSON.stringify(reply,null,2));return state.analysis?.stateatom?.selectedListProfile;
  }
- const labels='[data-testid="todo-item-label"]';for(let i=0;i<2;i++){await fill('[aria-label="New Todo Input"]','same');await key('Enter','Enter',13);await waitFor(async()=>(await nodes(labels)).length===i+1);}
+ const labels='[data-testid="todo-item-label"]';for(let i=0;i<2;i++){await fill('[aria-label="New Todo Input"]',heldOut?'separate caption':'same');await key('Enter','Enter',13);await waitFor(async()=>(await nodes(labels)).length===i+1);}
  const second='[data-testid="todo-item"]:nth-child(2) [data-testid="todo-item-label"]',first='[data-testid="todo-item"]:nth-child(1) [data-testid="todo-item-label"]';
  const created=await inspect('created',second);await check('real created row joins acquired source, native code and selected field',()=>{assert.equal(created?.status,'Supported finite trace',JSON.stringify(created));assert.equal(created.fullPath,true);assert(created.chain.every(step=>step.source?.file));});
  async function edit(value){const nodeId=await node(first);await app.send('DOM.scrollIntoViewIfNeeded',{nodeId});const{model}=await app.send('DOM.getBoxModel',{nodeId}),q=model.content,x=(q[0]+q[2])/2,y=(q[1]+q[5])/2;for(const count of[1,2])for(const type of['mousePressed','mouseReleased'])await app.send('Input.dispatchMouseEvent',{type,x,y,button:'left',clickCount:count});await fill('[aria-label="Edit todo"]',value);await key('Enter','Enter',13);await waitFor(async()=>!await node('[aria-label="Edit todo"]'));}
- await edit('changed');const changed=await inspect('changed',first);await check('real changed title has supported exact field chain',()=>assert.equal(changed?.fullPath,true,JSON.stringify(changed)));
- await edit('changed');const same=await inspect('same-value',first);await check('same-value edit has a new exact applied revision',()=>{assert.equal(same?.fullPath,true,JSON.stringify(same));assert.notEqual(changed.occurrence.joins.revisionId,same.occurrence.joins.revisionId);});
+ await edit(heldOut?'renamed caption':'changed');const changed=await inspect('changed',first);await check('real changed title has supported exact field chain',()=>assert.equal(changed?.fullPath,true,JSON.stringify(changed)));
+ await edit(heldOut?'renamed caption':'changed');const same=await inspect('same-value',first);await check('same-value edit has a new exact applied revision',()=>{assert.equal(same?.fullPath,true,JSON.stringify(same));assert.notEqual(changed.occurrence.joins.revisionId,same.occurrence.joins.revisionId);});
  if(installedVsix)await check('current source link opens its exact range in the actual installed IDE helper',async()=>{
   await ui.click('refresh-tabs');await waitFor(()=>panel.evaluate(id=>[...document.querySelector('[data-atom-id="tabs"]').options].some(o=>o.value===String(id)),tabId));await ui.select('tabs',String(tabId));await ui.click('load');await ui.waitOK();await ui.click('inputs-nav');
   await panel.evaluate(()=>{const b=document.querySelector('[data-atom-id="selected-list-origin"] > div button');if(!b||b.disabled)throw Error('Current source action unavailable');b.focus();});await ui.key('Enter','Enter',13);await ui.waitOK();
   const expected=same.chain[0].source;const opened=await waitFor(async()=>{const rows=String(await readFile(bridge.runtime+'/ide-audit.jsonl')).trim().split('\n').map(JSON.parse);return rows.find(r=>r.file===workspace+'/'+expected.file&&r.line===expected.line&&r.column===expected.column);});await writeFile(out+'/selected-source-open.json',JSON.stringify(opened,null,2));ideVerified=true;result.installedIDE=true;
+ });
+ if(heldOut)await check('actual picker overlay preserves the selected renamed field interval',async()=>{
+  const beforePick=await rpc(panel,{op:'state',tabId});const {completedListPicker}=await import('../helpers/selected-list-picker-wait.mjs');
+  await ui.click('pick');const picking=await waitFor(async()=>{const state=await rpc(panel,{op:'state',tabId});return state.picker?.status==='picking'?state:null;});
+  await app.send('Page.bringToFront');const nodeId=await node(first);await app.send('DOM.scrollIntoViewIfNeeded',{nodeId});const{model}=await app.send('DOM.getBoxModel',{nodeId}),q=model.content,x=(q[0]+q[2])/2,y=(q[1]+q[5])/2;
+  await app.send('Input.dispatchMouseEvent',{type:'mouseMoved',x,y});
+  const hovered=await app.send('Page.captureScreenshot',{format:'png'});await writeFile(out+'/held-out-picker-hover-candidate.png',Buffer.from(hovered.data,'base64'));
+  for(const type of ['mousePressed','mouseReleased'])await app.send('Input.dispatchMouseEvent',{type,x,y,button:'left',clickCount:1});
+  const state=await waitFor(async()=>{const value=await rpc(panel,{op:'state',tabId});return completedListPicker(value,{pickerId:picking.picker.id,observedAt:beforePick.selection.observedAt,revisionId:same.occurrence.joins.revisionId})?value:null;});
+  await writeFile(out+'/held-out-picker-state.json',JSON.stringify(state,null,2));assert.equal(state.analysis.stateatom.selectedListProfile.field,'caption');assert.equal(state.analysis.stateatom.selectedListProfile.occurrence.joins.revisionId,same.occurrence.joins.revisionId);
  });
  if(presentation){
   await ui.click('refresh-tabs');await waitFor(()=>panel.evaluate(id=>[...document.querySelector('[data-atom-id="tabs"]').options].some(o=>o.value===String(id)),tabId));await ui.select('tabs',String(tabId));await ui.click('load');await ui.waitOK();await ui.click('inputs-nav');

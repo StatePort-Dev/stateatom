@@ -3,6 +3,7 @@
 // ownership analyzer, a runtime witness, or a selected-row resolver.
 import {createHash} from 'node:crypto';import path from 'node:path';
 import reviewed from './list-field-reviewed-inputs.json' with {type:'json'};
+import heldOut from './list-field-held-out-inputs.json' with {type:'json'};
 import {validateOwnedListFieldCompilation} from './list-field-compilation.mjs';
 const issued=new WeakMap(),sha=s=>createHash('sha256').update(s).digest('hex');
 const freeze=o=>{if(o&&typeof o==='object'){for(const v of Object.values(o))freeze(v);Object.freeze(o)}return o};
@@ -18,11 +19,11 @@ export const listFieldDerivation=freeze({
 });
 const requiredRuntimePremises=freeze(['fresh-owned-single-root-browser','complete-armed-code-interval','original-native-devtools-checks','ordinary-row-and-native-array-receipts','exact-selected-write-transfer-read-commit','selected-text-unmodified-since-native-commit','current-source-and-code-generation','no-stopped-capped-lost-or-ambiguous-reference']);
 const unknown=reason=>freeze({status:'Unknown/Unsupported',reason,fullPath:false,currentOwnership:'Unknown/Unsupported'});
-export function reviewedListInputBinding(manifest){
- if(manifest?.schema!=='stateatom.list-field-compilation/1'||manifest.compiler?.externalImports!==0||!Number.isSafeInteger(manifest.bundle?.bytes)||manifest.bundle.bytes<1||manifest.bundle.bytes>2*1024*1024||!Array.isArray(manifest.inputs)||manifest.inputs.length!==reviewed.inputs.length)return unknown('Complete bounded reviewed compilation inputs unavailable');
+function bindAccount(manifest,account){
+ if(manifest?.schema!=='stateatom.list-field-compilation/1'||manifest.compiler?.externalImports!==0||!Number.isSafeInteger(manifest.bundle?.bytes)||manifest.bundle.bytes<1||manifest.bundle.bytes>2*1024*1024||!Array.isArray(manifest.inputs)||manifest.inputs.length!==account.inputs.length)return unknown('Complete bounded reviewed compilation inputs unavailable');
  // Relocate only the declared application directory. Module paths inside the
  // app and tool namespace, every source digest and every transform stay exact.
- const historicalRoot='.runtime/todomvc/examples/react',appRoot=manifest.program?.appRoot;
+ const historicalRoot=account.appRoot||'.runtime/todomvc/examples/react',appRoot=manifest.program?.appRoot;
  const validRoot=typeof appRoot==='string'&&(appRoot==='.'||appRoot.split('/').every(p=>p&&p!=='.'&&p!=='..')&&!path.isAbsolute(appRoot)&&!appRoot.includes('\\'));
  if(!validRoot)return unknown('Application source root unavailable');
  function key(input,root,historical=false){
@@ -35,8 +36,12 @@ export function reviewedListInputBinding(manifest){
   return null;
  }
  const actual=new Map(manifest.inputs.map(i=>[key(i,appRoot),i]));
- if(actual.has(null)||actual.size!==reviewed.inputs.length||reviewed.inputs.some(i=>{const a=actual.get(key(i,historicalRoot,true));return !a||a.sourceDigest!==i.sourceDigest||a.transform!==i.transform}))return unknown('Source graph differs from the finite reviewed effect account');
- return freeze({status:'Conditional reviewed input binding',profile:listFieldDerivation.version,proofDigest:sha(JSON.stringify({derivation:listFieldDerivation,inputs:reviewed.inputs})),fullPath:false,currentOwnership:'Unknown/Unsupported',requiredRuntimePremises});
+ if(actual.has(null)||actual.size!==account.inputs.length||account.inputs.some(i=>{const a=actual.get(key(i,historicalRoot,true));return !a||a.sourceDigest!==i.sourceDigest||a.transform!==i.transform}))return unknown('Source graph differs from the finite reviewed effect account');
+ return freeze({status:'Conditional reviewed input binding',profile:account.profile,proofDigest:sha(JSON.stringify({derivation:listFieldDerivation,account:account.profile,scope:account.scope,inputs:account.inputs})),fullPath:false,currentOwnership:'Unknown/Unsupported',requiredRuntimePremises});
+}
+export function reviewedListInputBinding(manifest){
+ for(const account of [reviewed,heldOut]){const result=bindAccount(manifest,account);if(result.status==='Conditional reviewed input binding')return result;}
+ return unknown('Source graph differs from the finite reviewed effect accounts');
 }
 export async function establishListFieldEffects(compilation){
  if(!await validateOwnedListFieldCompilation(compilation))return unknown('Current owned compilation capability unavailable');

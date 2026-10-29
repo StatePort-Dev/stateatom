@@ -1,5 +1,7 @@
 # Project status
 
+**Latest A02 held-out route:** [315](completion/315-a02-held-out-result.md): installed plugin12 on renamed/relocated caption/record graph plus local row alias passed8native checks, including actual completed picker and installed source navigation. First313 driver race retained/withdrawn; corrected314 uses terminal selection. Source effects6/barrier2/full6416PASS; concurrent UI work separate. Next remaining282 semantic/lifecycle/official and whole review. Whole21/29 unchanged.
+
 **Latest A02 installed route:** [plugin312](completion/312-a02-installed-plugin-result.md): npm-installed plugin11, ordinary Vite configuration in a separate app workspace, packaged inspector and installed helper passed7actual native checks. Full6407cases covered across sandbox6342PASS and authorized failed-file710PASS; original65sandbox failures retained. Current next: held-out graph/full282/official and final review. Whole21/29 unchanged.
 
 **Latest A02 installed helper:** [checkpoint310](completion/310-a02-installed-helper-source-navigation.md): actual isolated VSIX matches package bytes; current Atom source link opens original reducer50:84 in real VS Code.8native checks PASS with owned cleanup. Normal packaged selected-list plugin launch, official host, held-out/full282 remain open; whole21/29 unchanged.

@@ -1,5 +1,7 @@
 # Roadmap
 
+A02 held-out checkpoint [315](docs/completion/315-a02-held-out-result.md): installed plugin12 native8PASS and actual picker; continue remaining282 semantic/lifecycle/official controls and one whole review. Whole21/29 unchanged.
+
 Latest29October A02: [installed plugin312](docs/completion/312-a02-installed-plugin-result.md) qualifies normal Vite/package/helper launch for the finite reviewed graph. Continue held-out/full282/official acceptance; whole21/29 remains unchanged. Accepted Active overhead281 and deferred macOS287 are not release blockers.
 
 ## Active completion scope — 2026-10-19

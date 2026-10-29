@@ -1,0 +1,203 @@
+{
+  "schema": "stateatom.reviewed-list-inputs/1",
+  "profile": "react19-ordinary-list-caption/1",
+  "appRoot": "app",
+  "scope": "Fixed313 AST alpha-renaming, module relocation and non-writing local row alias of the reviewed original graph; no altered original calls or dependency effects",
+  "inputs": [
+    {
+      "file": "app/node_modules/classnames/index.js",
+      "sourceDigest": "c15dcff094566d7119b447bc7484a93e09256b8309282b0d629d756de87fa948",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/cookie/dist/index.js",
+      "sourceDigest": "b67c70355a2b0dbd2e78b479b94107f34d5340e54f1479dc0974224a2a5d69dd",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/react-dom/cjs/react-dom-client.development.js",
+      "sourceDigest": "806b25cf84808a5ae0104e81633caabb1aa11fce71e72ef7afe4c1f8d2ebec08",
+      "transform": "react19-field-native"
+    },
+    {
+      "file": "app/node_modules/react-dom/cjs/react-dom.development.js",
+      "sourceDigest": "6fd03ac5f1f081b08a3f8c3a469bd026b7773759a8ed46f07c03fde7080c122e",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/react-dom/client.js",
+      "sourceDigest": "00e348ab3d6bc2eef908345d0bc4e008c95bcfecec060dfda5c4967953761396",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/react-dom/index.js",
+      "sourceDigest": "ba1a3e33489f868371561777607e3ee5091df0f7ea3f1a10f789d6b86e4c1505",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/react-router-dom/dist/index.mjs",
+      "sourceDigest": "32c79a7052570ab9fec1572d7cf8ef76433cd322762f690467ed366591cadd91",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/react-router/dist/development/chunk-EVOBXE3Y.mjs",
+      "sourceDigest": "2ea0075b5f767003b78ad187ea37361ac59318033bddb61d66d55f7e21f818c5",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/react-router/dist/development/chunk-YQSHRJWW.mjs",
+      "sourceDigest": "02f17152c5f814aba8981932a276e3e6766e35307b10035d35ace4a4d026059a",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/react-router/dist/development/dom-export.mjs",
+      "sourceDigest": "6250d58a38f3a3f36593b34f49964110dc3c9c6ad16fa635d4f9ad31285e2bcb",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/react-router/dist/development/index.mjs",
+      "sourceDigest": "a3d0024b95907b31cd9afa3bff4e2aa1793e6f9ced7b0bda4143b7393ebb423e",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/react/cjs/react-jsx-dev-runtime.development.js",
+      "sourceDigest": "5a36d0fbb3554be840e6367736f88ebafdb1873a4f40c13f499c3969fa918dd6",
+      "transform": "react19-field-native"
+    },
+    {
+      "file": "app/node_modules/react/cjs/react.development.js",
+      "sourceDigest": "4325e6263375459503858c0982d50bbc25bc33e66676954698c67221d2ee8b72",
+      "transform": "react19-field-native"
+    },
+    {
+      "file": "app/node_modules/react/index.js",
+      "sourceDigest": "60caffdecbdc5db3bc4ec4e83df9488345ccb271d07533b9210bf5750918d97e",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/react/jsx-dev-runtime.js",
+      "sourceDigest": "486589120a962721c8281b5acec2f6d49e60ce5f9d908cc814ddfe71c6163ace",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/scheduler/cjs/scheduler.development.js",
+      "sourceDigest": "646eb671c8585382baff16daf92fe16a4cdd10dcf1a363c58b2ae1f6bf3a2b8d",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/scheduler/index.js",
+      "sourceDigest": "145965504d60007bc25486ab930b0367867dcd5d579ccd343c148d69349a7cfb",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/set-cookie-parser/lib/set-cookie.js",
+      "sourceDigest": "610b576bca244b789f23a1f361e8ab89b31c2a4588b3388b4bc71ad4986700f9",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/todomvc-app-css/index.css",
+      "sourceDigest": "c7dd5d13d38d0c85b746c0859b837f212754486779e0a9076d092396dfae7746",
+      "transform": "identity"
+    },
+    {
+      "file": "app/node_modules/todomvc-common/base.css",
+      "sourceDigest": "5c67ddc771b558bc07b58695c9c4b7f663d2ba813edb4810341799c47ba0822d",
+      "transform": "identity"
+    },
+    {
+      "file": "app/src/features/tasks/constants.js",
+      "sourceDigest": "9ed0dc00e202fc727747beea153a68863f72bf399c2974132300303dad6d7325",
+      "transform": "identity"
+    },
+    {
+      "file": "app/src/features/tasks/logic.js",
+      "sourceDigest": "5d0c4b8dadd24257dfcd36cca94320fa9a9e8c82f5e17f6c0bc135d214c4c898",
+      "transform": "list-source"
+    },
+    {
+      "file": "app/src/features/tasks/scene.css",
+      "sourceDigest": "3f75fd17df69bdbec69f014ea7f81daec632d8215876ed53f43ab16172ad0c4d",
+      "transform": "identity"
+    },
+    {
+      "file": "app/src/features/tasks/scene.jsx",
+      "sourceDigest": "c0a45d62df7a8fbf9bae8466c1e4a85b602eea0fcac5b4ac3a309298543ddd70",
+      "transform": "list-source"
+    },
+    {
+      "file": "app/src/features/tasks/views/board.jsx",
+      "sourceDigest": "234a7ec4a0fdae193bc3aaa85489d4daab79ca7f6e5d68d5bf5d3f4f2f2eb48a",
+      "transform": "list-source"
+    },
+    {
+      "file": "app/src/features/tasks/views/header.jsx",
+      "sourceDigest": "21226cabe39c48a9287fcae902a1dd13fc9e9832dd9d938b771a45892e8376eb",
+      "transform": "identity"
+    },
+    {
+      "file": "app/src/features/tasks/views/input.jsx",
+      "sourceDigest": "c42ba54264c92b2db6a3c79f967fecdd0b76b30efdd6cd6e52a210e2c18f04cf",
+      "transform": "identity"
+    },
+    {
+      "file": "app/src/features/tasks/views/row.jsx",
+      "sourceDigest": "8982eef75045e8933b1f5ebe8d98d341f006a08211815eda4cfe1124b894e82f",
+      "transform": "list-source"
+    },
+    {
+      "file": "app/src/features/tasks/views/summary.jsx",
+      "sourceDigest": "511551d3abb4cddb76d088142b77802b0083578c457e7fc0bef7a5304a9fece9",
+      "transform": "list-source"
+    },
+    {
+      "file": "app/src/index.js",
+      "sourceDigest": "480a294c770245d9552d645cb5cbfb47d435878148fc801d4f31f1f9852eb2da",
+      "transform": "identity"
+    },
+    {
+      "file": "app/stateatom-owned-list-entry.mjs",
+      "sourceDigest": "d9dbbe1a0a08671a3f6a0256970e45ffe973ff34efb9f62ab329c5397e2f6431",
+      "transform": "owned-bootstrap"
+    },
+    {
+      "file": "src/engine/component-field-receipts.mjs",
+      "sourceDigest": "ba71ee297732b34c1b1fc9f910f2fc360620454f63c4738ec43fc6324330261b",
+      "transform": "identity"
+    },
+    {
+      "file": "src/engine/list-data-receipts.mjs",
+      "sourceDigest": "91676088ad8d88e64a04b1299e01b355edfca86405407a0bf63e5d56eaaf7f21",
+      "transform": "identity"
+    },
+    {
+      "file": "src/engine/list-dom-history.mjs",
+      "sourceDigest": "bbbfc718bef32ee3dc7583af6a9be1e2cff7482478afe00c36dd8c4f03e7e967",
+      "transform": "identity"
+    },
+    {
+      "file": "src/engine/list-field-runtime.mjs",
+      "sourceDigest": "873b9d492103df66e113f64efb4ef8ecb34f0b702ca8ef568375f5ddf4e74269",
+      "transform": "identity"
+    },
+    {
+      "file": "src/engine/private-collections.mjs",
+      "sourceDigest": "cae4ca7d51fbc9d2cb01d894139a1d5c8d689175e5823479d9c7420ccd55a869",
+      "transform": "identity"
+    },
+    {
+      "file": "src/engine/react19-acquisition.mjs",
+      "sourceDigest": "e132be55074fcd77b1b0a22f5976e7e2e466eedbf209fd8c85ed2564d03ad3b5",
+      "transform": "identity"
+    },
+    {
+      "file": "src/engine/reducer-write-receipts.mjs",
+      "sourceDigest": "351af04dc42e58fa1894e25a3f0c2769d82e8bc1300ac6ba674ba024cca308b2",
+      "transform": "identity"
+    },
+    {
+      "file": "stateatom-owned-list:runtime.mjs",
+      "sourceDigest": "fc78113b2277c00f29dbb01234585cae1e765a12f23b4ad32732d42d1c1f4178",
+      "transform": "owned-bootstrap"
+    }
+  ]
+}
