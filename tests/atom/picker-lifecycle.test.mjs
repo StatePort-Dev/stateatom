@@ -32,3 +32,26 @@ test('explicit background refresh while picking retains native snapshot IDs cloc
  const started=await f.request({op:'pick',pickerId:'retain-native-history'});assert.equal(started.status,'picking');const selecting=await f.request({op:'state',refreshDeep:true});assert.deepEqual(selecting.analysis,before.analysis);assert.equal(f.calls.filter(c=>c.m==='DOMDebugger.getEventListeners').length,reads);
  await f.request({op:'cancel-pick',pickerId:started.id});const cancelled=await f.request({op:'state',refreshDeep:false});assert.deepEqual(cancelled.selection,before.selection);assert.deepEqual(cancelled.analysis,before.analysis);
 });
+
+test('manual inspection retires the prior picker choices and refinement authority',async t=>{
+ const button={nodeId:3,backendNodeId:103,nodeType:1,nodeName:'BUTTON',localName:'button',attributes:['id','confirm','disabled','']};
+ const root={nodeId:1,backendNodeId:101,nodeType:9,children:[{nodeId:2,backendNodeId:102,nodeType:1,nodeName:'BODY',localName:'body',attributes:[],children:[button]}]};
+ const f=inputCaptureRuntimeFixture({send:async(m)=>m==='DOM.getDocument'?{root}:m==='DOM.pushNodesByBackendIdsToFrontend'?{nodeIds:[3]}:undefined});t.after(()=>f.runtime.shutdown());await f.inspect();
+ const pick=await f.request({op:'pick',pickerId:'prior-element'});await f.emit('Overlay.inspectNodeRequested',{backendNodeId:103});
+ let before;for(let i=0;i<50;i++){before=await f.request({op:'state'});if(before.picker.status==='selected')break;await new Promise(r=>setTimeout(r,0));}
+ assert.equal(before.picker.status,'selected');assert(before.picker.choices.length>1);
+ await f.request({op:'inspect-selector',selector:'#confirm'});const after=await f.request({op:'state'});
+ assert.equal(after.picker.status,'cancelled');assert.deepEqual(after.picker.choices,[]);assert.equal(after.selection.selector,'#confirm');assert(after.analysis);
+ await assert.rejects(f.request({op:'refine-pick',pickerId:pick.id,index:1}),/expired|select again/i);
+});
+
+test('manual selection cancels picking before inspection and late picker events cannot replace it',async t=>{
+ const f=inputCaptureRuntimeFixture();t.after(()=>f.runtime.shutdown());await f.inspect();await f.request({op:'pick',pickerId:'pending-manual'});
+ await f.request({op:'inspect-selector',selector:'#confirm'});const before=await f.request({op:'state'});assert.equal(before.picker.status,'cancelled');
+ await f.emit('Overlay.inspectNodeRequested',{backendNodeId:103});const after=await f.request({op:'state'});assert.deepEqual(after.selection,before.selection);assert.equal(after.inspectionGeneration,before.inspectionGeneration);assert.deepEqual(after.picker.choices,[]);
+});
+
+test('failed picker cleanup refuses a new manual inspection instead of keeping two selection authorities',async t=>{
+ let refuse=false;const f=inputCaptureRuntimeFixture({send:async m=>{if(refuse&&m==='Overlay.hideHighlight')throw Error('cleanup unavailable');}});t.after(async()=>{refuse=false;await f.runtime.shutdown();});await f.inspect();await f.request({op:'pick',pickerId:'cleanup-fails'});const before=await f.request({op:'state'}),scripts=f.calls.filter(c=>c.m==='SCRIPT').length;refuse=true;
+ await assert.rejects(f.request({op:'inspect-selector',selector:'#confirm'}),/cleanup unavailable/);assert.equal(f.calls.filter(c=>c.m==='SCRIPT').length,scripts);const after=await f.request({op:'state'});assert.equal(after.inspectionGeneration,before.inspectionGeneration);assert.deepEqual(after.picker.choices,[]);assert.equal(after.picker.status,'unsupported');
+});

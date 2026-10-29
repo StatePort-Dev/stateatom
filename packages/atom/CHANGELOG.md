@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Retire previous picker ancestors and refinement controls before a manual selection; refuse the new selection if native picker cleanup fails.
+
 - Keep rapid tab switching from leaving an empty inspector: obsolete connection cleanup cannot start a competing read of the newly selected tab.
 
 - Put the optional local note inside each supported property’s “Explain this result” disclosure. Keep copied inputs first and the recorded answer beside the note. Cancel pending work when its card is replaced, hidden by picking, or disposed; hidden legacy controls cannot run. Uses existing shared controls and typography.
