@@ -5918,17 +5918,11 @@
       "status": "in-progress",
       "optional": false,
       "active_slice": {
-        "id": "L02.36",
-        "record": "325-l02-focused-annotation-design.md",
-        "status": "source-complete-native-pending",
-        "source_checks": 70,
+        "id": "L02.37",
+        "record": "326-l02-current-native-driver.md",
+        "status": "current-driver-prepared-native-pending",
         "maximum_native_attempts": 1,
-        "native_runs": 0,
         "model_calls": 0,
-        "main_cases": 30,
-        "main_eligible": 27,
-        "separate_body_cases": 4,
-        "product_provider_selected": false,
         "whole_L02_complete": false
       },
       "implementation_plan": "325-l02-focused-annotation-design.md",
@@ -5938,9 +5932,25 @@
         "Preserve exact product lifecycle/fallback controls on final changed candidate",
         "ONE whole-L02 review only after full item acceptance"
       ],
-      "execution_record": "325-l02-focused-annotation-design.md",
-      "current_checkpoint": "325-l02-focused-annotation-design.md",
+      "execution_record": "326-l02-current-native-driver.md",
+      "current_checkpoint": "326-l02-current-native-driver.md",
       "completed_slices": [
+        {
+          "id": "L02.36",
+          "record": "325-l02-focused-annotation-design.md",
+          "status": "closed-incomplete-test-adapter-before-browser",
+          "source_checks": 70,
+          "maximum_native_attempts": 1,
+          "native_runs": 1,
+          "model_calls": 0,
+          "main_cases": 30,
+          "main_eligible": 27,
+          "separate_body_cases": 4,
+          "product_provider_selected": false,
+          "whole_L02_complete": false,
+          "remaining_budget": 0,
+          "raw_sha256": "56cf1a3a0aef855b83a2e50b22aa930c6fd9eca63ba137afd5376497aa113670"
+        },
         {
           "id": "L02.33",
           "record": "265-l02-current88-local-package.md",
