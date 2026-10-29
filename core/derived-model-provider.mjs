@@ -5,6 +5,8 @@ import {inspectionExplanationFacts,isLocalExplanationFacts} from './inspection-e
 import {projectDerivedAnnotation,isCurrentDerivedProjection,buildDerivedAnnotationPrompt,derivedAnnotationResponseConstraint,derivedAnnotationSessionOptions,validateDerivedAnnotationStructure} from './derived-annotations.mjs';
 import {projectDerivedComparison,isCurrentDerivedComparison,buildDerivedComparisonPrompt,derivedComparisonResponseConstraint,validateDerivedComparisonStructure} from './derived-comparisons.mjs';
 
+import {projectGroundedAnnotation,isCurrentGroundedAnnotation,buildGroundedPrompt,groundedResponseConstraint,validateGroundedAnnotation,groundedAnnotationSessionOptions} from './grounded-annotations.mjs';
+
 import {projectFocusedAnnotation,isCurrentFocusedAnnotation,buildFocusedPrompt,focusedResponseConstraint,validateFocusedAnnotation,focusedAnnotationSessionOptions} from './focused-annotations.mjs';
 
 const textEn=Object.freeze([Object.freeze({type:'text',languages:Object.freeze(['en'])})]);
@@ -16,8 +18,9 @@ export function comparisonAnnotationSessionOptions(){return COMPARISON_SESSION_O
 export function ChromeDerivedAnnotation(model=globalThis.LanguageModel){return createAnnotationProvider(model,false);}
 export function ChromeComparisonAnnotation(model=globalThis.LanguageModel){return createAnnotationProvider(model,true);}
 export function ChromeFocusedAnnotation(model=globalThis.LanguageModel){return createAnnotationProvider(model,false,true);}
-function createAnnotationProvider(model,comparison,focused=false){
- const project=focused?projectFocusedAnnotation:comparison?projectDerivedComparison:projectDerivedAnnotation,isCurrent=focused?isCurrentFocusedAnnotation:comparison?isCurrentDerivedComparison:isCurrentDerivedProjection,buildPrompt=focused?buildFocusedPrompt:comparison?buildDerivedComparisonPrompt:buildDerivedAnnotationPrompt,responseConstraint=focused?focusedResponseConstraint:comparison?derivedComparisonResponseConstraint:derivedAnnotationResponseConstraint,validate=focused?validateFocusedAnnotation:comparison?validateDerivedComparisonStructure:validateDerivedAnnotationStructure,sessionOptions=focused?focusedAnnotationSessionOptions:comparison?()=>COMPARISON_SESSION_OPTIONS:derivedAnnotationSessionOptions;
+export function ChromeGroundedAnnotation(model=globalThis.LanguageModel){return createAnnotationProvider(model,false,false,true);}
+function createAnnotationProvider(model,comparison,focused=false,grounded=false){
+ const project=grounded?projectGroundedAnnotation:focused?projectFocusedAnnotation:comparison?projectDerivedComparison:projectDerivedAnnotation,isCurrent=grounded?isCurrentGroundedAnnotation:focused?isCurrentFocusedAnnotation:comparison?isCurrentDerivedComparison:isCurrentDerivedProjection,buildPrompt=grounded?buildGroundedPrompt:focused?buildFocusedPrompt:comparison?buildDerivedComparisonPrompt:buildDerivedAnnotationPrompt,responseConstraint=grounded?groundedResponseConstraint:focused?focusedResponseConstraint:comparison?derivedComparisonResponseConstraint:derivedAnnotationResponseConstraint,validate=grounded?validateGroundedAnnotation:focused?validateFocusedAnnotation:comparison?validateDerivedComparisonStructure:validateDerivedAnnotationStructure,sessionOptions=grounded?groundedAnnotationSessionOptions:focused?focusedAnnotationSessionOptions:comparison?()=>COMPARISON_SESSION_OPTIONS:derivedAnnotationSessionOptions;
 
  async function availability(){
   try{if(!model)return 'unavailable';const state=await model.availability(OPTIONS);return ['available','downloadable','downloading','unavailable'].includes(state)?state:'unknown';}
@@ -75,7 +78,7 @@ function createAnnotationProvider(model,comparison,focused=false){
    const raw=await Promise.race([session.prompt(buildPrompt(projection),{signal:controller.signal,responseConstraint:responseConstraint(projection)}),stopped]);
    ensureLive();if(!readCurrent())return changed();
    const annotation=validate(raw,projection,current),template=TemplateExplanation(current);
-   return Object.freeze({...template,evidenceIds:annotation.evidenceIds,limitations:annotation.limitations,provider:focused?'chrome-built-in-focused':comparison?'chrome-built-in-derived-comparison':'chrome-built-in-derived',annotation,reason:focused?'Experimental focused annotation; factual entailment is not verified.':comparison?'Experimental derived comparison; factual entailment is not verified.':'Experimental derived annotation; factual entailment is not verified.'});
+   return Object.freeze({...template,evidenceIds:annotation.evidenceIds,limitations:annotation.limitations,provider:grounded?'chrome-built-in-grounded':focused?'chrome-built-in-focused':comparison?'chrome-built-in-derived-comparison':'chrome-built-in-derived',annotation,reason:grounded?'Model-selected local claims; derived explanation, not evidence.':focused?'Experimental focused annotation; factual entailment is not verified.':comparison?'Experimental derived comparison; factual entailment is not verified.':'Experimental derived annotation; factual entailment is not verified.'});
   }catch{const same=readCurrent();if(!same&&!controller.signal.aborted)return changed();return fallback(controller.signal.aborted?'Local annotation cancelled or timed out.':'Local annotation unavailable or rejected; showing the template.');}
   finally{active=false;creating=false;clearTimeout(timer);signal?.removeEventListener('abort',abort);destroy(session);}
  }
