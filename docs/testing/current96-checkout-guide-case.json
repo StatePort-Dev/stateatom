@@ -397,7 +397,7 @@
   },
   "helperInputs": {},
   "inputHashes": {
-    "tests/integration/current96-checkout-guide-native.mjs": "0ed75132247955d01a8b676be1fb535068250d44d575f36b90be2f577ad2dc48",
+    "tests/integration/current96-checkout-guide-native.mjs": "b20045fa54dc4338f25241ef24afc1795ba33d4e6a4ff60208f554db6a355a31",
     "tests/helpers/native-inspector-ui.mjs": "2a82f3a643bbbacd9a6f8ed7e798f77b1416f110f1828ac23fd97b24bc8109b9",
     "tests/helpers/source-access-native-desktop.mjs": "786011664d68f658bd1d5e7c002963642a50a16661d7f67b2413ac8aef182f57",
     "scripts/native-browser.mjs": "ddb6b665824e6c200b16b52108657baf7d23ad0fcdea9ce5b9c2ea6a5fa5f3a2",
@@ -427,5 +427,11 @@
     "sha256": "c31165c85a1c2d62ee552a56054dbf387cb846c673661e1bef590966f5053cdb",
     "state": "original cart, no selected input, no editing performed",
     "correction": "Original CSS has scroll-behavior:smooth; use instant geometry preparation and require stable hit-test before native click; no app state mutation or changed acceptance"
+  },
+  "retainedPropertySetupFailure": {
+    "file": ".artifacts/v03/current96-checkout-guide/2026-10-29T14-17-16-667Z/results.json",
+    "sha256": "e2b329fee3df9bc21d98bdee120eb703f8b0f58d5e281d9315ac9b3b59c5a9f7",
+    "boundary": "Native three-click Checkout navigation completed; no input selection/edit yet",
+    "correction": "Current property onchange restores text when no selection exists; use actual picker first, then choose disabled. Same exact final property and no product change."
   }
 }

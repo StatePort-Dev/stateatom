@@ -39,3 +39,10 @@ instant scroll and requires three stable native hit-test points, logs each point
 and preserves all field/history/console/source predicates. No product/app change.
 Owned browser/Vite/API/display/ports closed, both source manifests stable. The
 first raw remains in current96-checkout-guide/2026-10-29T14-15-01-942Z/results.json.
+
+Second setup run2b1d3d7 completes all three stable native clicks and reaches the
+original empty firstName form. It stops before picker when the old driver chooses
+Disabled without a selected element; current UI correctly restores default Text
+when no selected target exists. Current driver now picks first, then changes the
+property, matching current UI. Same disabled=false target and editor assertions;
+no product change or input success claimed. Exact second failure retained in case.
