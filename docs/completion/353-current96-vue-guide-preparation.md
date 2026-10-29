@@ -35,3 +35,16 @@ only352's exact limits are admitted. Unknown messages/errors still fail.
 
 Prerequisites: syntax check and eleven warning-policy controls pass. Native run
 remains pending. Whole27/29 unchanged; do not rewrite137 or any historical FAIL.
+
+First native attempt15:22:43 completed exact-input and workspace-Trust checks and
+installed the VSIX through the native chooser. Its verifier failed because vsce
+readZip lowercases archive names; actual Linux files preserve LICENSE.txt case.
+The original FAIL is retained. Corrected case uses original ZIP names/hashes and
+compares every installed payload entry, preserving package metadata handling.
+
+Current Code1.143.1 also logs a new GitHub PR proposed-API warning and a changed
+Copilot proposal list. Neither is admitted by352's exact policy. Next fresh
+isolated Code launch disables only those two unrelated extensions using documented
+--disable-extension options; StateAtom stays enabled. This configuration narrows
+IDE acceptance environment, does not suppress logs or expand the exception.
+Corrected preregistration: `current96-vue-guide-install-case.json`.
