@@ -1,5 +1,7 @@
 # Roadmap
 
+**L02 complete:** [334](docs/completion/334-l02-completion.md), bounded English grounded-v4 notes, current93 supported and unavailable-model UI routes in both hosts, one whole review resolved. **23/29 (79.31%)**. Next I02 final current93 integration; six final integration/distribution/acceptance items remain. Earlier checkpoints retain historical scope.
+
 A02 **complete within approved282**: [324](docs/completion/324-a02-selected-list-completion.md), actual current standalone11/official12 and final review. Whole22/29 (75.86%); next mandatory L02. All earlier checkpoints below retain historical scope.
 
 A02 [installed lifecycle322](docs/completion/322-a02-installed-lifecycle-result.md): native12+7PASS and45affected source checks; continue matching official host/package and final review. Whole21/29 unchanged.

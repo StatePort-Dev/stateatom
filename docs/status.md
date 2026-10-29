@@ -1,5 +1,7 @@
 # Project status
 
+**L02 complete:** [334](completion/334-l02-completion.md), bounded English grounded-v4 notes, current93 supported and unavailable-model UI routes in both hosts, one whole review resolved. **23/29 (79.31%)**. Next I02 final current93 integration; six final integration/distribution/acceptance items remain. Earlier checkpoints retain historical scope.
+
 **L02 current93 product path:** [332](completion/332-l02-visible-property-notes.md), actual standalone8/official8 checks PASS, including model notes in visible property cards, cancellation, stale selection, offline inference and Actions. Full6510 source PASS. Corpus329 retains scoped usefulness6/27main,0/4supplement and0incorrect claims. One whole review: no critical defect; unavailable-browser acceptance remains open. Normal Chrome user-disabled model case333 is next; not release ready, whole22/29 unchanged.
 
 **A02 complete in approved282 scope:** [324](completion/324-a02-selected-list-completion.md): current installed standalone11/official12PASS, exact Atom91/plugin14/VSIX310, full6449sourcePASS and one whole review with no open findings. Official shell defect reproduced/fixed; old inner-only run remains scoped. Full plan22/29 (75.86%); next mandatory L02, then final integration/distribution/acceptance. No release readiness claim.
