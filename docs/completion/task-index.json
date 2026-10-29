@@ -3061,7 +3061,7 @@
           "experiment_native_executed": false
         }
       ],
-      "next_bounded_step": "Remaining282 semantic parity and lifecycle/refusal controls on final installed candidate, then matching official host and one whole-integration review. Held-out/picker now qualified315; preserve incomplete313 and corrected314.",
+      "next_bounded_step": "Remaining282 current lifecycle/refusal controls, matching official host/package, then one whole-integration review.320 qualifies exact whole-workflow function counts and per-action outputs; earlier per-action counter protocols stay incomplete.",
       "reducer_field_write_sites": {
         "record": "285-a02-reducer-field-write-sites.md",
         "status": "complete-source-prerequisite-not-integrated",
@@ -3312,8 +3312,8 @@
       },
       "active_slice": {
         "id": "A02.release-selected-list-integration",
-        "record": "315-a02-held-out-result.md",
-        "status": "in-progress-task4-semantic-and-lifecycle-matrix",
+        "record": "320-a02-current-semantic-result.md",
+        "status": "in-progress-task4-lifecycle-and-official-host",
         "affected_pass": 8,
         "native_runs": 13,
         "new_native_runs": 2,
@@ -3321,7 +3321,7 @@
         "runtime_premises_discharged": false,
         "full_A02": false,
         "review_pending": "one final whole-integration review",
-        "current_full_verification": "315 held-out native8PASS after retained driver-race incomplete313; source effects6 and barrier2PASS; full6416PASS on shared checkout (concurrent UI work separate).",
+        "current_full_verification": "315 product source full6416PASS retained;320 semantic six phases PASS (54output snapshots,17exact native function counts per phase), counter mapper2PASS. Unfinished source/official/lifecycle matrix remains.",
         "compiled_inputs": 39,
         "bundle_sha256": "43e02fd7f51d42c25fe7b56f86ab7260a568e00eb4622ec5774314a854ca51f1",
         "held_out_effect_binding": true,
@@ -3342,7 +3342,19 @@
         "plugin_version": "0.1.0-candidate.20261029.12",
         "plugin_sha256": "834279a54c86c3d6907c74d2163bb42dba6dab95a17b481a3f5e8f75a87c25b5",
         "actual_held_out_native_qualified": true,
-        "actual_picker_overlay_qualified": true
+        "actual_picker_overlay_qualified": true,
+        "actual_current_semantic_parity_qualified": true,
+        "semantic_qualification": {
+          "record": "320-a02-current-semantic-result.md",
+          "raw": ".artifacts/a02/selected-list-semantics/2026-10-29T07-08-49-186Z/results.json",
+          "phases": 6,
+          "outputs_per_phase": 9,
+          "original_function_roles": 17,
+          "counter_interval": "whole-workflow",
+          "native_counters": "all exact direct ranges, no inferred zeros",
+          "per_action_counter_parity": false,
+          "full_A02": false
+        }
       },
       "historical_checkpoint_before_A02_51": {
         "active_slice": {
