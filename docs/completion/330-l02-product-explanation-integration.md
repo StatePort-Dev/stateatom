@@ -35,7 +35,10 @@ fixture update for the new schema), then `npm test`:6506PASS/0FAIL/0cancel/0skip
 271741.23489ms, `/tmp/stateatom-grounded-full.log`. New source tests preserve original
 cold/default/warm/cancel limits and test every UI cancellation/metadata boundary.
 No browser/model/visual proof yet for this changed UI. Prepare Atom92/plugin15 to
-avoid rebuilding issued91/14 under the same versions; VSIX310 and UI2 unchanged.
+avoid rebuilding issued91/14 under the same versions; UI2 unchanged. Packaging
+subsequently showed the new helper is not byte-identical to VSIX310: use the exact
+new0.1.3 VSIX (SHA49b887e3cfccf56f4431aba4fa9a7f68c9ef8a0dcebfd3e6cd1619d2fb356fb9)
+in product acceptance; do not claim the old helper was unchanged.
 
 
 Packaging inspection caught a separate concrete stale-output path: `pack:atom`

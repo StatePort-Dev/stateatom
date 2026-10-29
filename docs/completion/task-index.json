@@ -5918,21 +5918,10 @@
       "status": "in-progress",
       "optional": false,
       "active_slice": {
-        "id": "L02.38",
-        "record": "329-l02-grounded-quality-result.md",
-        "status": "closed-bounded-corpus-pass-product-pending",
-        "source_checks": 79,
-        "maximum_native_attempts": 1,
-        "model_calls": 31,
-        "whole_L02_complete": false,
-        "native_runs": 1,
-        "remaining_budget": 0,
-        "main_model_responses": 27,
-        "template_only": 3,
-        "incorrect_claims": 0,
-        "useful_main": 6,
-        "useful_separate": 0,
-        "raw_sha256": "7104e12723df79bc4d0a48bbf25d3d7cd86d67e3fbd2408d2f6ac4a3441eb526"
+        "id": "L02.40",
+        "record": "331-l02-packaged-product-controls.md",
+        "status": "prepared-native-product-controls",
+        "whole_L02_complete": false
       },
       "implementation_plan": "328-l02-grounded-selection-design.md",
       "remaining_acceptance": [
@@ -5942,7 +5931,7 @@
         "ONE whole-L02 review only after full item acceptance"
       ],
       "execution_record": "329-l02-grounded-quality-result.md",
-      "current_checkpoint": "329-l02-grounded-quality-result.md",
+      "current_checkpoint": "331-l02-packaged-product-controls.md",
       "completed_slices": [
         {
           "id": "L02.37",
@@ -6979,7 +6968,24 @@
         "usefulness_qualified": false,
         "whole_L02": false
       },
-      "historical_next_bounded_step_before_overhead_acceptance": "ONE V02.34 bounded current-runtime active-overhead diagnostic: establish eligible owned profiling mechanism, freeze exact inputs, max1diagnostic collection. Original87gate MISS10%/closed1measurement1FIRSTreader untouched; no guessed cause/speedup/retune/CA/model/SDK/publication."
+      "historical_next_bounded_step_before_overhead_acceptance": "ONE V02.34 bounded current-runtime active-overhead diagnostic: establish eligible owned profiling mechanism, freeze exact inputs, max1diagnostic collection. Original87gate MISS10%/closed1measurement1FIRSTreader untouched; no guessed cause/speedup/retune/CA/model/SDK/publication.",
+      "previous_slice_before_L02_40": {
+        "id": "L02.38",
+        "record": "329-l02-grounded-quality-result.md",
+        "status": "closed-bounded-corpus-pass-product-pending",
+        "source_checks": 79,
+        "maximum_native_attempts": 1,
+        "model_calls": 31,
+        "whole_L02_complete": false,
+        "native_runs": 1,
+        "remaining_budget": 0,
+        "main_model_responses": 27,
+        "template_only": 3,
+        "incorrect_claims": 0,
+        "useful_main": 6,
+        "useful_separate": 0,
+        "raw_sha256": "7104e12723df79bc4d0a48bbf25d3d7cd86d67e3fbd2408d2f6ac4a3441eb526"
+      }
     },
     {
       "id": "I01",
