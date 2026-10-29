@@ -60,3 +60,12 @@ once against that new artifact before any claim that the user-visible defect is 
 
 The current source/reference inventory is `docs/testing/u04-current-control-map.md`;
 it explicitly retains the pending handoff/refinement join and is not acceptance.
+
+## Subsequent native qualification
+
+[349](349-u04-current96-acceptance.md) records exact96 packing and both-host native
+qualification: standalone15, official reporter12 plus separate fresh recipient4.
+The original95 failure no longer occurs on the actual unchanged shop. The earlier
+pending checkpoint above remains historical; official driver-storage FAIL is
+preserved separately, with no original result rewrite. U04 completes through the
+full scoped control inventory and retained unchanged-area evidence, not tests alone.

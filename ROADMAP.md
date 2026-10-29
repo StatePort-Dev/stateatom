@@ -1,5 +1,7 @@
 # Roadmap
 
+**U04 complete on exact96:** [349](docs/completion/349-u04-current96-acceptance.md), corrected concurrent property refresh; standalone15 and official reporter12 + fresh recipient4 PASS. **27/29 (93.10%)**. Remaining V03 independent-app complete guide and V04 final coordinated96 kit/ledger. Historical95 kit and failed attempts remain exact; no full release/publication claim.
+
 **I02 complete on exact93:** [337](docs/completion/337-i02-current93-completion.md), real Capture38/40, Settings/Live/Draft21 across both hosts, official Action Trace9; local-model334 retained. **24/29 (82.76%)**. Next V02 final candidate acceptance; U04/I03/V03/V04 also remain. No installation/publication claim. Earlier checkpoints retain history.
 
 **L02 complete:** [334](docs/completion/334-l02-completion.md), bounded English grounded-v4 notes, current93 supported and unavailable-model UI routes in both hosts, one whole review resolved. **23/29 (79.31%)**. Next I02 final current93 integration; six final integration/distribution/acceptance items remain. Earlier checkpoints retain historical scope.

@@ -5,8 +5,9 @@ new design or a claim that prototype simulation shipped. It uses the unchanged
 `packages/extension-ui/design/{README_RU.md,docs/HANDOFF_RU.md,design/SCREEN_INDEX.md}`
 and current Atom source. I02 current93, affected95 picker/Capture/About, and their
 exact raw identities are recorded in completion332/334/337/344/345/347. Candidate96
-changes only the property-refresh guard348; its native qualification is pending.
-**This map is not yet whole-U04 acceptance.**
+changes only the property-refresh guard348; both-host native qualification and
+whole-U04 evidence composition are recorded in completion349. This map alone is
+not proof; its actual result records are required.
 
 ## Reference states and enabled operations
 
@@ -42,11 +43,11 @@ changes only the property-refresh guard348; its native qualification is pending.
 
 | Family | Current entry/operation | Refusal/interruption behavior |
 | --- | --- | --- |
-| Picker | Select page element → `pick`; Cancel → `cancel-pick`; parent/ancestor → `refine-pick`; advanced CSS → `inspect-selector` | Busy, replaced node, invalid CSS, cleanup failure; final95 manual selection retires old ancestors344. New independent SVG-parent failure348 remains open until96 native proof |
+| Picker | Select page element → `pick`; Cancel → `cancel-pick`; parent/ancestor → `refine-pick`; advanced CSS → `inspect-selector` | Busy, replaced node, invalid CSS, cleanup failure; final95 manual selection retires old ancestors344. Independent SVG-parent failure348 is corrected and qualified96 in349 |
 | Live | As I type,250ms valid text/number coalescing; Enter/blur commit; native choice change; held draft requires Apply/Discard | Invalid intermediates stay local; stale/external revision rejects; unknown ack never shows success. Timings are the implemented U02 policy, not inferred from the scope interview |
 | Production | Settings two steps → begin/advance/confirm, visible10-minute tab/page grant and revoke | First step/cancel/close gives no authority; navigation, issuer close, timeout and browser denial revoke/refuse. Original actual expiry retained, not rerun336 |
 | Historical diagnostics | Details → Save report → `save-diagnostic`; library open/delete; reviewed export/omit/download; passive reader | Retention8/2MiB/7days, explicit omission and malformed/unsupported import; no resumed collection |
-| QA/PM report | Prepare current/saved issue; reporter words/categories → Review → `save-handoff` or reviewed download; separate recipient reader | Pending review disabled; edits invalidate prepared bytes; explicit simple fallback does not pass detailed acceptance; current95 changed-path failure and pending96 are348 |
+| QA/PM report | Prepare current/saved issue; reporter words/categories → Review → `save-handoff` or reviewed download; separate recipient reader | Pending review disabled; edits invalidate prepared bytes; explicit simple fallback does not pass detailed acceptance; current95 failure348 retained; current96 reporter/recipient qualification349 |
 | Observation window | Start/read/stop/clear owned production observation; review observations and omissions | Window bounds, stale owner/context, no inferred event causality or editing grant; completed P04 controls retained |
 | Legacy controlled trials | Advanced bounded JSON variants, `experiment`/`deep-experiment`/`restore` only under actual capability policy | Unsupported/Busy/permission refusal and stale restoration; no arbitrary code or source causality claim |
 | Navigation/recovery | Dependencies/Actions/Source/Details, actual section focus; Refresh, Reopen inspector, source repair | Pending drafts preserved; unavailable source/model affects its own feature. Tab cleanup94 and manual-picker95 regressions retain exact native evidence |
@@ -77,5 +78,7 @@ base;95 adds invalid-selector/manual-selection and Capture switching, plus About
 keyboard/Escape/receipt link. Screens are agent-reviewed candidates; no human or
 live-Figma approval is claimed. No reference file/token/primitive was changed.
 
-Current report/reader first viewport, keyboard and actual navigation are the
-remaining changed-path join in348. Do not close U04 from this inventory alone.
+Current96 navigation/report/reader join is qualified349. Reader390 and inspector
+viewports were agent-viewed; review image is a scrolled lower viewport, not a
+top-of-dialog claim. Unchanged earlier handoff keyboard proof retains its scope.
+Whole acceptance uses the recorded evidence composition349, not this inventory alone.

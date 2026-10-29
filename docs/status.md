@@ -1,5 +1,7 @@
 # Project status
 
+**U04 complete on exact96:** [349](completion/349-u04-current96-acceptance.md), corrected concurrent property refresh; standalone15 and official reporter12 + fresh recipient4 PASS. **27/29 (93.10%)**. Remaining V03 independent-app complete guide and V04 final coordinated96 kit/ledger. Historical95 kit and failed attempts remain exact; no full release/publication claim.
+
 **Current U04 correction:** [348](completion/348-u04-concurrent-element-refresh.md), actual95 independent shop exposed a competing property-read failure on parent refinement. Runtime RED reproduced;55 affected checks PASS after the narrow fix. Candidate96 full6518 PASS; package/native qualification is pending; U04 remains open, whole26/29 unchanged. I03 kit95 below retains its exact earlier scope.
 
 **I03 complete for the local Linux directory kit:** [347](completion/347-i03-local-component-distribution.md), matching Atom95/UI2 in official extension and optional Desktop resources, actual packaged Capture/Save + cold read, native About6, archive528 files verified. **26/29 (89.66%)**. Next U04 screen/control acceptance; V03 independent-app/full-guide and V04 remain. No public release or ordinary OS-installed Desktop claim.

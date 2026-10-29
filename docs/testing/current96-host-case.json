@@ -1,0 +1,101 @@
+{
+  "schema": "stateatom.current96-official-host/1",
+  "handoff": ".artifacts/atom/2026-10-29T13-39-10-369Z/atom-handoff.json",
+  "package": {
+    "name": "@stateport/atom",
+    "version": "0.1.0-candidate.20261029.96",
+    "file": "/home/roman/projects/stateatom/.artifacts/atom/2026-10-29T13-39-10-369Z/stateport-atom-0.1.0-candidate.20261029.96.tgz",
+    "sha256": "001180071d71e89d1bc5b95d7cf166b7ec2dc9a03ef9d8861566447ce899f98e",
+    "exports": {
+      "./runtime": {
+        "types": "./dist/runtime.d.ts",
+        "default": "./dist/runtime.mjs"
+      },
+      "./ui": {
+        "types": "./dist/ui.d.ts",
+        "default": "./dist/ui.mjs"
+      },
+      "./platform": {
+        "types": "./dist/platform.d.ts",
+        "default": "./dist/platform.mjs"
+      },
+      "./transport": {
+        "types": "./dist/transport.d.ts",
+        "default": "./dist/transport.mjs"
+      },
+      "./atom.css": "./dist/atom.css",
+      "./content.js": "./dist/content.js",
+      "./reader.js": "./dist/reader.js",
+      "./reader.html": "./dist/reader.html",
+      "./reader.css": "./dist/reader.css",
+      "./contract.json": "./contract.json",
+      "./guardian.html": "./dist/atom-guardian.html",
+      "./guardian.js": "./dist/atom-guardian.js",
+      "./guardian-worker.js": "./dist/atom-guardian-worker.js",
+      "./source-analysis-worker.js": "./dist/source-analysis-worker.js",
+      "./source-parse-worker.js": "./dist/source-parse-worker.js"
+    }
+  },
+  "ui": {
+    "file": "/home/roman/projects/stateatom/.artifacts/atom/2026-10-29T13-39-10-369Z/stateport-extension-ui-0.2.0-candidate.20261018.2.tgz",
+    "sha256": "2bfc8229a45e02f775bb563f27d9a803d51dd977145f46843c45a884e07289e5",
+    "owner": "Host imports tokens.css, optional local fonts.css plus its relative asset, components.css once, then atom.css",
+    "name": "@stateport/extension-ui",
+    "version": "0.2.0-candidate.20261018.2",
+    "uiContractVersion": "2.1.0",
+    "exports": {
+      "./tokens.css": "./dist/tokens.css",
+      "./components.css": "./dist/components.css",
+      "./contract.json": "./contract.json",
+      "./assets/stateport-mark.svg": "./assets/stateport-mark.svg",
+      "./fonts.css": "./dist/fonts.css",
+      "./assets/fonts/InterVariable.woff2": "./dist/assets/fonts/InterVariable.woff2"
+    }
+  },
+  "source": "/home/roman/projects/scenariodeck/apps/chrome-extension/dist",
+  "hosts": {
+    "official": {
+      "path": "/home/roman/projects/stateatom/.artifacts/u04/property-refresh96/official",
+      "page": "atom.html",
+      "reader": "atom/reader.html",
+      "files": {
+        "BUILD-INFO.json": "23a03c9a31ea0c50868d61d922956e1d1750e7644bbd237b4e35997d70a59e3f",
+        "atom/LICENSE": "7839a054cc205ef0dc12a6b79f82254fe63852e8a1d827ec7e4e48ec0e1362b9",
+        "atom/LICENSES/Apache-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "atom/NOTICE": "9ef4cf51373f5e1977ca89a0fd9adaa896b5a2fde652973c9d7faecac3d5a2d3",
+        "atom/THIRD_PARTY_LICENSES.md": "76fe11294253f8d16558fa06ffcec9e46fc6d8f50a645527e729d73407513690",
+        "atom/atom.css": "4c78b163b2936a69cd2cb2bbaf622210c5345aec6683cd27dfd512213cdf24ca",
+        "atom/content.js": "023b0acb36e21679b053c304d5956dd172faf4288ebc40adc5b58cb6727ac838",
+        "atom/contract.json": "ccfdac93efaf006eb3bf01e6e559c7ee8520bdd9c696fbbb9a486fb5a58d88fa",
+        "atom/reader.css": "0577d319ba62955eeed9bc84725e994c1612d42ecbb8b2a18e2c13254bcc1f38",
+        "atom/reader.html": "4a5883529dd53c2d1cbbe7c229b3573979f98a8d7bb6cbcd028abffbcc4a80b5",
+        "atom/reader.js": "358b524955c74a206e6bc0d45c5448c5504b5759f5e144737c35584a1576b9e1",
+        "atom-guardian-worker.js": "db43b3101a08c3a6fa78467349372a622c1fded453a00c0f14003b7461163882",
+        "atom-guardian.html": "70b71a19f37ae176c10eaa955e06298d9b67ee2a677b67bef6f742ed082e36c1",
+        "atom-guardian.js": "d0ba0092ccc3d152766eb87f0c47bc149dd6d30d16eb2e013cff842de2bcf68a",
+        "atom-host.css": "f91ddc0da0432164861aa9f3a9d2e3cec3252d0354411e6a3b4421e3e4a8ba2b",
+        "atom-page.js": "a040e7e974d0265dc1d469a0d30a35b00c15995c932891e4f27c923271d92577",
+        "atom.html": "d4635daee3a52d087733fcf38438bbffa269e4babbdeb1ea5755feb34d402e81",
+        "extension-ui/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "extension-ui/NOTICE": "d1546935ddf0131576c017b5b35d59978514e06fe73274a446c74a0552b7185a",
+        "extension-ui/assets/fonts/Inter-LICENSE.txt": "262481e844521b326f5ecd053e59b98c8b2da78c8ee1bdbb6e8174305e54935a",
+        "extension-ui/assets/fonts/InterVariable.woff2": "693b77d4f32ee9b8bfc995589b5fad5e99adf2832738661f5402f9978429a8e3",
+        "extension-ui/components.css": "15cac0fbacb288be7e4483a1b177a1890d0235a3b6709aa6d0e5885b72db8282",
+        "extension-ui/contract.json": "34e32d44e35b0b26764037c07e024f8ec9ee6b3c569098739c8ac6b791a33880",
+        "extension-ui/fonts.css": "5fffedd14436a23ab7ab2521a259ba8580034367467542f6887ccaf46c137ef0",
+        "extension-ui/tokens.css": "4403b8a6da0e17ab23442397b20297bcaed1140be317ed93777d537a5c2986ac",
+        "icons/128.png": "5f59b966364c4e989f49472f1e03be734f7135062b98f58c054595a00ee440a8",
+        "icons/16.png": "f37e9f93cbe1600c9623e5476fa33867aa1420c9255b7e59e7479abb1758871a",
+        "icons/32.png": "b2477ed34eb96df60a0eb1c2916deb9c03a1bb56853a093207da79aeaae0d640",
+        "icons/48.png": "156484b67b641d072affd9d2fb99baa6507ede2f88ffed2bfd749fb86f2e434c",
+        "manifest.json": "33d756eb67a88e8fb5636e761e209d39cb5c8f186bf59fbee246bc77ff4f86f7",
+        "popup.css": "a6c2f96ed1cc4c6a28ac4a31451679383089e8e17af95e558e26a57e422b558c",
+        "popup.html": "36af9b2f4b0bef974084d6e8bc09fe24a885c1876e98bfea9010cd924ce16c49",
+        "popup.js": "2996bb1c10904c77f7341164630e00397314684075f221e7bcffc5b2a1c5f110",
+        "service-worker.js": "6cbce380e7b72fa0d616d1608a76f758d8e7b9fa4e70f34cae0fbd1eaa752d2a",
+        "source-analysis-worker.js": "1dfaffc2dffce72b935e646436166ae19d8ff87e1103d5b4d9d2e16467db7920",
+        "source-parse-worker.js": "0f28111193035035bb7988a2d9c9659a093a93643385e22e0a377ad5031ce5a8"
+      }
+    }
+  }
+}

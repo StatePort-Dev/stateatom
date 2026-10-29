@@ -1331,7 +1331,7 @@
         "npm run verify:embedding"
       ],
       "deliverable": "Reference and approved new interactions tied to actual runtime states, checked in both hosts without a mandatory second person",
-      "status": "in-progress",
+      "status": "complete",
       "optional": false,
       "selector_recovery": {
         "record": "284-u04-selector-error-recovery.md",
@@ -1363,13 +1363,23 @@
       },
       "concurrent_property_refresh": {
         "record": "348-u04-concurrent-element-refresh.md",
-        "status": "source-red-green-native96-pending",
+        "status": "both-hosts-native96-qualified",
         "actual95_failure": ".artifacts/u04/current95-handoff/2026-10-29T13-23-22-369Z/results.json",
         "affected_checks": 55,
         "full_U04": false,
-        "full_source_checks": 6518
+        "full_source_checks": 6518,
+        "native_record": "349-u04-current96-acceptance.md"
       },
-      "control_inventory": "../testing/u04-current-control-map.md"
+      "control_inventory": "../testing/u04-current-control-map.md",
+      "completion_evidence": {
+        "record": "349-u04-current96-acceptance.md",
+        "standalone_checks": 15,
+        "official_retained_reporter_checks": 12,
+        "official_fresh_recipient_checks": 4,
+        "human_visual_approval": false,
+        "whole_V03": false,
+        "scope": "Current control inventory, unchanged-area native records, changed96 route and explicit assistance/limitations"
+      }
     },
     {
       "id": "U05",
@@ -3145,12 +3155,12 @@
         {
           "record": "173-a02-main-input-native.md",
           "status": "complete-bounded-native-main-input-qualification",
-          "next_bounded_step": "ONE bounded source handoff state-array→already-bound App todos→Main props/parameter; no generalownershipkernel/state/selectedDOM/product claim from Main-local success."
+          "next_bounded_step": "ONE bounded source handoff state-array\u2192already-bound App todos\u2192Main props/parameter; no generalownershipkernel/state/selectedDOM/product claim from Main-local success."
         },
         {
           "record": "174-a02-app-hook-binding.md",
           "status": "complete-bounded-App-source-binding",
-          "next_bounded_step": "ONE Appboundvalue→freshMainJSXconfig/nativeprops→sameMainargument sourceassociation; native/index/state/ownership remainsUnknown, no genericownershipframework."
+          "next_bounded_step": "ONE Appboundvalue\u2192freshMainJSXconfig/nativeprops\u2192sameMainargument sourceassociation; native/index/state/ownership remainsUnknown, no genericownershipframework."
         },
         {
           "record": "175-a02-app-main-props.md",
@@ -3201,7 +3211,7 @@
         {
           "record": "192-a02-committed-props.md",
           "status": "closed-bounded-source-only",
-          "next_bounded_step": "ONE native JSX-element→returned-fiber source admission with semantic controls; no props-only identity inference, oldnative/retention/install/model/cert campaign or package/UI change."
+          "next_bounded_step": "ONE native JSX-element\u2192returned-fiber source admission with semantic controls; no props-only identity inference, oldnative/retention/install/model/cert campaign or package/UI change."
         },
         {
           "record": "193-a02-native-element-fiber.md",
@@ -3530,7 +3540,7 @@
         "current_checkpoint": "220-a02-selected-source-isolation.md"
       },
       "historical_next_bounded_step_before_night_checkpoint": "ONE final bounded source review; I01 separate host scope pending, no oldnative repeats.",
-      "historical_next_bounded_step_before_I02_current82": "FullA02open: bounded field/writer/parameter/selected-producer prerequisites remain.51–53 source closed,50native budget exhausted; no guessed cause or blind retry. Next independent I01 is separately authorized and in progress; current native Capture regression remains.",
+      "historical_next_bounded_step_before_I02_current82": "FullA02open: bounded field/writer/parameter/selected-producer prerequisites remain.51\u201353 source closed,50native budget exhausted; no guessed cause or blind retry. Next independent I01 is separately authorized and in progress; current native Capture regression remains.",
       "historical_next_bounded_step_before_overhead_acceptance": "FullA02 field/writer/parameter/selected-producer mechanism remains open. Source54/55 packaged10, no native weak-dispatch/50cause proof or old50retry. Current independent step V02.33changed87original performance gate.",
       "first_release_scenario": {
         "record": "282-a02-first-release-scenario.md",
@@ -4287,7 +4297,7 @@
           "type_consumers": 2,
           "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
           "standalone_read_inject_native_checks": 3,
-          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+          "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
           "runtime_race_checks": 14,
           "isolated_bug_mutations_rejected": 6,
           "native_checks": 29,
@@ -7010,7 +7020,7 @@
         },
         "remaining_acceptance": [
           "Separately versioned useful derived annotation over reviewed bounded non-sensitive facts",
-          "Final candidate actual factual/concision/usefulness comparison preserving historical20–30 and>=25/5incomplete/5untrusted criteria",
+          "Final candidate actual factual/concision/usefulness comparison preserving historical20\u201330 and>=25/5incomplete/5untrusted criteria",
           "Preserve exact product lifecycle/fallback controls on final changed candidate",
           "ONE whole-L02 review only after full item acceptance"
         ],
@@ -7212,7 +7222,7 @@
           "accepted_positive": false
         },
         "full_I02_accepted": false,
-        "next_bounded_step": "I02.36 exact local unpacked85↔86 component reload/rollback: saved diagnostic/no resumed waiting writer/picker on existing app; initial exact85dist restoration before native, no model/CA/Store/Capture campaign.",
+        "next_bounded_step": "I02.36 exact local unpacked85\u219486 component reload/rollback: saved diagnostic/no resumed waiting writer/picker on existing app; initial exact85dist restoration before native, no model/CA/Store/Capture campaign.",
         "native_devtools": {
           "record": "233-i02-native-devtools-control.md",
           "host_commit": "3f567f79",
@@ -9307,7 +9317,7 @@
         "further_optimization_required_for_this_deviation": false,
         "new_measurement": false,
         "whole_V02_complete": false,
-        "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278–280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
+        "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278\u2013280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
       },
       "historical_readiness_note_before_overhead_acceptance": {
         "record": "224-night-release-checkpoint.md",
@@ -10819,7 +10829,7 @@
   "external_work_items": [
     {
       "id": "S01",
-      "title": "Production SDK — separate StatePort project",
+      "title": "Production SDK \u2014 separate StatePort project",
       "document": "10-later-sdk-and-extension-points.md",
       "depends_on": [],
       "owner": "StatePort",
@@ -10893,7 +10903,7 @@
           "further_optimization_required_for_this_deviation": false,
           "new_measurement": false,
           "whole_V02_complete": false,
-          "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278–280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
+          "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278\u2013280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
         }
       ]
     },
@@ -10910,12 +10920,12 @@
   },
   "reconciliation": {
     "current_full_plan": {
-      "accepted_whole_tasks": 26,
+      "accepted_whole_tasks": 27,
       "total_whole_tasks": 29,
-      "unweighted_percent": 89.66,
+      "unweighted_percent": 93.1,
       "ready_for_full_scope_release": false,
       "scope_reduced": false,
-      "record": "347-i03-local-component-distribution.md"
+      "record": "349-u04-current96-acceptance.md"
     },
     "current_development_plugin_checkpoint": {
       "record": "347-i03-local-component-distribution.md",
@@ -10924,12 +10934,12 @@
       "scope": "Qualified kit17; inherited I02/L02 and bounded A02 evidence retain their exact versions and scope; no new instrumented-app run"
     },
     "current_host_checkpoint": {
-      "revision": "ac733e03",
-      "record": "347-i03-local-component-distribution.md",
-      "package": "0.1.0-candidate.20261029.95",
-      "package_sha256": "33850e1cf3016e0608808ec626b26e4a97528eb5329ce76096c9c897e1d43f7a",
-      "host_case": "docs/testing/current95-about-host-case.json",
-      "scope": "Exact final About shell/native6 and reconciled packaged Capture/cold read; no full V03"
+      "revision": "7b591518",
+      "record": "349-u04-current96-acceptance.md",
+      "package": "0.1.0-candidate.20261029.96",
+      "package_sha256": "001180071d71e89d1bc5b95d7cf166b7ec2dc9a03ef9d8861566447ce899f98e",
+      "host_case": "docs/testing/current96-host-case.json",
+      "scope": "Current96 native handoff12+4; prior95 local kit remains historical, not full V03"
     },
     "historical_active_pointer_before_I02_current82": {
       "document": "144-v03-owned-editor-reply.md",
@@ -10953,7 +10963,7 @@
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-28",
     "current_increment": "I03 complete347: exact local component distribution, packaged Capture/cold read and About; no publication.",
-    "next_item": "U04",
+    "next_item": "V03",
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -10978,7 +10988,7 @@
       "I01"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "U04",
+    "active_item": "V03",
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -11649,7 +11659,7 @@
         "type_consumers": 2,
         "historical_two_host_session_checkpoint": "41-a05-session-runtime-ui.md",
         "standalone_read_inject_native_checks": 3,
-        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED→GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
+        "boundary": "Exact .16 two native hosts each14 preregistered session cases; same-owner late IDE/Cancel and retired/local clear fixed with source/native RED\u2192GREEN. Synthetic runtime14/UI5/mutations6 separate from native29. Not whole A05; reports/production/performance remain open.",
         "runtime_race_checks": 14,
         "isolated_bug_mutations_rejected": 6,
         "native_checks": 29,
@@ -13978,11 +13988,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "U04 current95 independent shop reproduces overlapping property refresh defect; deterministic runtime RED and55 affected GREEN. Full6518 PASS; candidate96 package/native qualification pending; completed I03 kit95 retained. Whole26/29; no full release claim.",
+    "current_activity_note": "U04 complete349; actual96 independent picker/refinement and handoff qualify both hosts. Whole27/29; V03 complete independent guide and V04 final coordinated96 kit/ledger remain.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
-    "current_source_revision": "6fc9198d6590ee26dfc6f13350c65325fda2a058",
+    "current_source_revision": "164a89e38319b6b4a9802d2cddedf84603873212",
     "current_record_date": "2026-10-29",
-    "next_bounded_step": "Finish current96 full checks/package and qualify the same original independent-app picker/refinement-to-handoff route; no old benchmark/model/install campaign.",
+    "next_bounded_step": "V03 reconcile exact remaining independent-app input/source/production criteria; use current96 changes and retained results without repeating closed old campaigns.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -14119,11 +14129,11 @@
       "performance_accepted": false
     },
     "current_local_package_checkpoint": {
-      "record": "347-i03-local-component-distribution.md",
-      "handoff": ".artifacts/atom/2026-10-29T12-02-10-161Z/atom-handoff.json",
-      "package": "0.1.0-candidate.20261029.95",
-      "sha256": "33850e1cf3016e0608808ec626b26e4a97528eb5329ce76096c9c897e1d43f7a",
-      "source_revision": "6fc9198d6590ee26dfc6f13350c65325fda2a058",
+      "record": "349-u04-current96-acceptance.md",
+      "handoff": ".artifacts/atom/2026-10-29T13-39-10-369Z/atom-handoff.json",
+      "package": "0.1.0-candidate.20261029.96",
+      "sha256": "001180071d71e89d1bc5b95d7cf166b7ec2dc9a03ef9d8861566447ce899f98e",
+      "source_revision": "164a89e38319b6b4a9802d2cddedf84603873212",
       "source_dirty": false
     },
     "historical_host_checkpoint_before_I02_39": {
@@ -14165,7 +14175,7 @@
         "native_qualified": false,
         "official_host_still": "0.1.0-candidate.20261028.88"
       },
-      "current_increment": "I02.41 source fixcccc90f: exact tab-refresh Working→OK RED/76affected/full6031PASS, source270deltaUI1/build327deltaUI+CH2; immutable89pair44/official36/plugin15/raws stable. Unpackaged/native0.",
+      "current_increment": "I02.41 source fixcccc90f: exact tab-refresh Working\u2192OK RED/76affected/full6031PASS, source270deltaUI1/build327deltaUI+CH2; immutable89pair44/official36/plugin15/raws stable. Unpackaged/native0.",
       "current_activity_note": "Source status fix complete; current official host remains89/711968a4. New dev276wholeINCOMPLETE6, Off/On/parity unvisited, budget0. Next ONE exactlocal90package preparation.",
       "next_bounded_step": "ONE V02.38 exact local90package eligibility/preparation from reviewedcccc90f/full6031: preserve all2040previous registry bindings/role history, reconcile current89host versus historical88dist and generated aliases before metadata/ONEpack/type2/admission9. No native/model/performance retry/SDK/publication.",
       "current_release_assessment": "205-release-date-decision.md",
@@ -14199,7 +14209,7 @@
       "further_optimization_required_for_this_deviation": false,
       "new_measurement": false,
       "whole_V02_complete": false,
-      "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278–280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
+      "scope": "Recorded89 deviation accepted for current release plan; current90 runtime/worker unchanged per278\u2013280. Not a fresh90/full-StatePort/installed-idle measurement or acceptance of unrelated regressions."
     },
     "historical_before_selected_list_completion": {
       "current_full_plan": {
@@ -14320,7 +14330,38 @@
       "current_source_revision": "cccc90f",
       "current_source_revision_kind": "Reviewed source-only current-context tab refresh UI fix, one product source and changelog; source full6031 actual, not packed/installed proof.",
       "current_record_date": "2026-10-28"
+    },
+    "historical_plan_before_U04_completion349": {
+      "current_full_plan": {
+        "accepted_whole_tasks": 26,
+        "total_whole_tasks": 29,
+        "unweighted_percent": 89.66,
+        "ready_for_full_scope_release": false,
+        "scope_reduced": false,
+        "record": "347-i03-local-component-distribution.md"
+      },
+      "active_item": "U04",
+      "next_item": "U04",
+      "current_activity_note": "U04 current95 independent shop reproduces overlapping property refresh defect; deterministic runtime RED and55 affected GREEN. Full6518 PASS; candidate96 package/native qualification pending; completed I03 kit95 retained. Whole26/29; no full release claim.",
+      "current_local_package_checkpoint": {
+        "record": "347-i03-local-component-distribution.md",
+        "handoff": ".artifacts/atom/2026-10-29T12-02-10-161Z/atom-handoff.json",
+        "package": "0.1.0-candidate.20261029.95",
+        "sha256": "33850e1cf3016e0608808ec626b26e4a97528eb5329ce76096c9c897e1d43f7a",
+        "source_revision": "6fc9198d6590ee26dfc6f13350c65325fda2a058",
+        "source_dirty": false
+      },
+      "current_host_checkpoint": {
+        "revision": "ac733e03",
+        "record": "347-i03-local-component-distribution.md",
+        "package": "0.1.0-candidate.20261029.95",
+        "package_sha256": "33850e1cf3016e0608808ec626b26e4a97528eb5329ce76096c9c897e1d43f7a",
+        "host_case": "docs/testing/current95-about-host-case.json",
+        "scope": "Exact final About shell/native6 and reconciled packaged Capture/cold read; no full V03"
+      },
+      "current_source_revision": "6fc9198d6590ee26dfc6f13350c65325fda2a058",
+      "next_bounded_step": "Finish current96 full checks/package and qualify the same original independent-app picker/refinement-to-handoff route; no old benchmark/model/install campaign."
     }
   },
-  "next_task": "U04"
+  "next_task": "V03"
 }
