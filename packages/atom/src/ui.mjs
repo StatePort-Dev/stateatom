@@ -32,7 +32,8 @@ export function mountAtom(rootElement,client,options={}){
  for(const e of root.querySelectorAll('[aria-labelledby]'))e.setAttribute('aria-labelledby',e.getAttribute('aria-labelledby').split(' ').map(id=>prefix+id).join(' '));
  rootElement.append(root);mounted.set(rootElement,root);
  const $=id=>root.querySelector('[data-atom-id="'+id+'"]');
- const navigation=createSectionNavigation({$});
+ let inputUI;
+ const navigation=createSectionNavigation({$,onShow:()=>inputUI?.refreshPlacement()});
  $('reader-link').href=options.readerURL||'reader.html';
  let disposed=false,connectionLost=false;const controller=new AbortController(),urls=new Set(),timers=new Set();
  const later=(fn,ms)=>{const timer=setTimeout(()=>{timers.delete(timer);if(!disposed)fn();},ms);timers.add(timer);};
@@ -76,10 +77,10 @@ async function load(options={}){
 const sourceAnalysis=createSourceAnalysisClient({url:options.sourceAnalysisWorkerURL,baseURL:document.location?.href,Worker:document.defaultView?.Worker});
 const sourceMapUI=createSourceMapUI({document,$,rpc,tab,load,action,requestPermission:options.requestOriginPermission,sourceAnalysis,onReveal:()=>reveal('source-map-details')});
 const actionsUI=createActionUI({document,$,rpc,cleanupRpc:m=>client.request(m),tab,action,nativeSource:sourceMapUI});
-const inputUI=createInputUI({document,$,client,preview:options.inputEditorPreview===true});
+inputUI=createInputUI({document,$,client,preview:options.inputEditorPreview===true,onPermission:()=>$('input-permissions').click()});
 let handoffUI;const observation=createObservationController({client,onChange:s=>handoffUI?.updateObservation(s)}),observationOwnerId=observation.snapshot().ownerId;
 const observationHistoryUI=createObservationHistoryUI({$,client});
-const propertyUI=createElementPropertiesUI({document,$,refresh:()=>$('load').click(),connectProject:()=>reveal('source-connection'),openSource:source=>action(async()=>{await rpc({op:'open',tabId:tab(),source});})});
+const propertyUI=createElementPropertiesUI({document,$,onValues:slots=>inputUI.setValueSlots(slots),refresh:()=>$('load').click(),connectProject:()=>reveal('source-connection'),openSource:source=>action(async()=>{await rpc({op:'open',tabId:tab(),source});})});
 const explanationUI=createInspectionExplanationUI({document,$,onNext:id=>{if(id==='connect-project')reveal('source-connection');else if(id==='inspect-again')$('load').click();}});
 const productionUI=createProductionUI({$,client,onRefresh:load,prepareEnable:selectedRecovery,onEnabled:async recovery=>{if(await reconnectSelection(recovery,{readOnly:true})){reveal('input-editing-details');await inputUI.open();}},onAttach:async()=>{await rpc({op:'attach',tabId:tab(),readOnly:true});await load();},onConnection:()=>reveal('browser-connection')});
 function lostConnection(){if(disposed)return;connectionLost=true;ownedPicker?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);inputUI.update(null);$('status').textContent='Inspector connection lost. Reopen this inspector to continue.';}

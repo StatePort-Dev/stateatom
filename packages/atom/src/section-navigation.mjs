@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Apache-2.0
 // Presentation only: panels remain mounted; switching never changes inspection ownership.
-export function createSectionNavigation({$}) {
+export function createSectionNavigation({$,onShow=()=>{}}) {
  const names=['inputs','actions','source','evidence'],positions=new Map();
  let current,context;
  function show(name,{focus=false}={}) {
@@ -16,6 +16,7 @@ export function createSectionNavigation({$}) {
    }
    $('scroll').scrollTop=positions.get(name)||0;
   }
+  onShow(name);
   if(focus)$(name+'-nav').focus({preventScroll:true});
   return true;
  }

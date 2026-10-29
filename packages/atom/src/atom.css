@@ -273,6 +273,14 @@
 [data-sp-ui][data-atom-root] .sp-atom-dependencies-empty .sp-help { margin:12px 0 16px; }
 
 [data-sp-ui][data-atom-root] .sp-atom-dependency-name { font:12px/1.6 var(--sp-font-mono); overflow-wrap:anywhere; }
+[data-sp-ui][data-atom-root] .sp-atom-dependency-value { min-width:0; max-width:220px; text-align:right; }
+[data-sp-ui][data-atom-root] .sp-atom-edit-value { min-width:64px; max-width:100%; font:12px/1.6 var(--sp-font-mono); color:var(--sp-color-primary); white-space:pre-wrap; overflow-wrap:anywhere; }
+[data-sp-ui][data-atom-root] .sp-atom-dependency-value .sp-atom-input-row { padding:0; border:0; text-align:left; }
+[data-sp-ui][data-atom-root] .sp-atom-dependency-value .sp-atom-input-row-top { display:block; }
+[data-sp-ui][data-atom-root] .sp-atom-input-row[data-inline="true"] [hidden] { display:none !important; }
+[data-sp-ui][data-atom-root] [data-atom-id="input-inline-actions"] [hidden] { display:none !important; }
+[data-sp-ui][data-atom-root] .sp-atom-dependency-value .sp-atom-input-control { width:140px; max-width:100%; }
+[data-sp-ui][data-atom-root] .sp-atom-dependency-value .sp-error { max-width:180px; }
 [data-sp-ui][data-atom-root] .sp-atom-dependency-origin { padding-left:12px; border-left:2px solid var(--sp-color-border); border-bottom:0; margin:0 0 10px; }
 [data-sp-ui][data-atom-root] .sp-atom-dependency-origin > summary { padding:4px 0; }
 

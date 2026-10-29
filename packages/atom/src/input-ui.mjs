@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
+import{dependencyEditorEntry}from'./dependency-editing.mjs';
 import{createInputController}from'./input-controller.mjs';import{supportsCapabilityPolicy}from'./transport.mjs';
 export const inputEditorTemplate=`
 <section id="input-editor" data-atom-id="input-editor" class="sp-atom-input-editor" aria-label="Edit page values" hidden>
@@ -6,7 +7,7 @@ export const inputEditorTemplate=`
  <button id="input-open" data-atom-id="input-open" class="sp-button-primary">Show editable fields</button><button id="input-reconnect" data-atom-id="input-reconnect" hidden>Reopen inspector</button>
  <div id="input-column-headings" data-atom-id="input-column-headings" class="sp-section-row sp-atom-input-columns"><span id="input-kind" data-atom-id="input-kind"></span><span id="input-columns" data-atom-id="input-columns">Applies as you type</span></div>
  <div id="input-fields" data-atom-id="input-fields"></div>
- <div class="sp-atom-input-actions sp-atom-edit-commit"><p id="input-status" data-atom-id="input-status" class="sp-atom-input-status" tabindex="-1" role="status" aria-live="polite"></p><button id="input-apply" data-atom-id="input-apply" class="sp-button-primary" hidden>Apply changes</button><button id="input-discard" data-atom-id="input-discard" class="sp-button-subtle" hidden>Discard edits</button><button id="input-undo" data-atom-id="input-undo" class="sp-button-subtle" hidden>Undo last change</button></div>
+ <div id="input-actions-home" data-atom-id="input-actions-home"><div id="input-edit-actions" data-atom-id="input-edit-actions" class="sp-atom-input-actions sp-atom-edit-commit"><p id="input-status" data-atom-id="input-status" class="sp-atom-input-status" tabindex="-1" role="status" aria-live="polite"></p><button id="input-apply" data-atom-id="input-apply" class="sp-button-primary" hidden>Apply changes</button><button id="input-discard" data-atom-id="input-discard" class="sp-button-subtle" hidden>Discard edits</button><button id="input-undo" data-atom-id="input-undo" class="sp-button-subtle" hidden>Undo last change</button></div></div>
  <details id="input-options" data-atom-id="input-options" class="sp-disclosure"><summary>Editing options</summary>
  <div class="sp-atom-input-toolbar"><label>Fields from <select id="input-source" data-atom-id="input-source"><option value="dom-control">Page fields</option><option value="json-response">Network responses</option></select></label><div id="input-modes" data-atom-id="input-modes" class="sp-atom-input-modes" role="group" aria-label="When to apply changes"><button id="input-mode-draft" data-atom-id="input-mode-draft" aria-pressed="false">On Apply</button><button id="input-mode-live" data-atom-id="input-mode-live" aria-pressed="true">As I type</button></div></div>
  <p id="input-note" data-atom-id="input-note" class="sp-atom-hint"></p>
@@ -28,8 +29,8 @@ function explanation(code,message){return({
  'Text exceeds the 4096-byte field limit':'Shorten this value; it exceeds the field size limit. This edit has not been applied.',
  'Choose an observed enabled option':'Choose one of the available options. This edit has not been applied.',
 DRAFT_PENDING:'Apply or discard the local draft first.',INVALID_CONTROL_VALUE:'Not an allowed value for this control.',STALE_CONTROL:'This control changed. Discard the stale draft.',STALE_RESOURCE:'This field changed. Discard the stale draft.',EXTERNAL_REVISION:'A newer external value cannot be overwritten by undo.',INSPECTOR_DISCONNECTED:'Inspector connection lost. Reopen this inspector.',BUSY:'This input editor is busy or belongs to another view.',OBSERVATION_REQUIRED:'Inspect a current target before opening inputs.',ACK_UNCONFIRMED:'The edit may have had effects; acknowledgement is unavailable.'})[code]||message||code;}
-export function createInputUI({document,$,client,preview=false,onReconnect}={}){
- const rows=new Map();let state=null,caps=null,capKey=null,capEpoch=0,visible=false,disposed=false,localError=null,disclosureKey=null,disclosureState=null;
+export function createInputUI({document,$,client,preview=false,onReconnect,onPermission=()=>{}}={}){
+ const rows=new Map(),linked=new Map();let slots=[],requestedBinding=null,state=null,caps=null,capKey=null,capEpoch=0,visible=false,disposed=false,localError=null,disclosureKey=null,disclosureState=null;
  const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
  const text=(id,value)=>{const el=$(id);if(el.textContent!==value)el.textContent=value;};
  const controller=createInputController({client,onChange:render,initialMode:'live'});
@@ -61,7 +62,56 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
   values.append(control);top.append(title,values);el.append(top);
   const meta=node('div',undefined,'sp-atom-input-meta'),hint=node('span',r.kind==='dom-control'?'Native '+r.locator.control:'Observed response'),reset=node('button','Discard edit','sp-button-subtle');reset.type='button';reset.onclick=()=>run(()=>controller.discard(entry.id));meta.append(reset);el.append(error,meta);
   const details=node('details'),summary=node('summary','Source / scope'),location=node('code');location.textContent=r.kind==='dom-control'?r.locator.selector:r.locator.method+' '+r.locator.url+' #'+r.locator.pointer;details.append(summary,hint,location,observed,node('p','Consumption and selected-property dependency remain unknown.','sp-atom-hint'));el.append(details);
-  return{el,input,buttons,observed,error,reset,location,options:null,key:rowKey(r)};
+  return{el,name,title,top,details,input,buttons,observed,error,reset,location,options:null,key:rowKey(r)};
+ }
+ function placeValues(snapshot){
+  const focused=document.activeElement,caret=focused?.selectionStart!=null?[focused.selectionStart,focused.selectionEnd,focused.selectionDirection]:null;
+  const used=new Set();let inlineCount=0;
+  for(const slot of slots){
+   const binding=slot.binding,entry=dependencyEditorEntry(binding,snapshot),row=entry&&rows.get(entry.id);
+   if(row&&!used.has(entry.id)){
+    if(row.inlineLabel?.parentElement===row.top)row.inlineLabel.remove();row.inlineLabel=null;
+    used.add(entry.id);linked.set(entry.id,{binding,label:slot.label});row.title.hidden=true;row.details.hidden=true;row.el.setAttribute('data-inline','true');
+    for(const field of row.input?[row.input]:row.buttons||[])field.setAttribute('aria-label',binding.name+(row.buttons?': '+field.textContent:''));
+    if(row.el.parentElement!==slot.container)slot.container.replaceChildren(row.el);inlineCount++;
+   }else{
+    if(binding&&!slot.edit){slot.edit=node('button',short(binding.value),'sp-atom-edit-value');slot.edit.type='button';slot.edit.title='Edit the response value';slot.edit.setAttribute('aria-label','Edit '+binding.name);slot.edit.onclick=()=>{
+      requestedBinding=binding;
+      if(state?.readOnly&&!state?.productionChange?.active){$('input-source').value='json-response';onPermission();return;}
+      $('input-source').value='json-response';void openEditor({focus:true});
+     };}
+    const value=binding?slot.edit:slot.fallback;if(value&&value.parentElement!==slot.container)slot.container.replaceChildren(value);
+    if(binding&&requestedBinding===binding&&!snapshot.opening&&!snapshot.busy&&!entry&&(localError||snapshot.error||snapshot.active&&snapshot.sourceKind==='json-response')){
+     slot.notice ||= node('p',undefined,'sp-error');slot.notice.textContent=localError||snapshot.error?.message||'This recorded response is no longer editable. Inspect again.';slot.container.append(slot.notice);
+    }
+    if(slot.edit){const blockedDraft=!!snapshot.draft?.dirtyCount&&(!snapshot.active||snapshot.sourceKind!=='json-response');slot.edit.disabled=snapshot.opening||snapshot.busy||snapshot.connectionLost||blockedDraft;slot.edit.title=blockedDraft?'Apply or discard the draft in Source before editing this value.':'Edit the response value';}
+   }
+  }
+  for(const[id,row]of rows){
+   if(used.has(id))continue;
+   const previous=linked.get(id),entry=previous&&dependencyEditorEntry(previous.binding,snapshot);
+   // Keep the owned editable row reachable when the recorded explanation becomes
+   // stale. Its value is the editor's value, not a new dependency observation.
+   const sameSelection=state?.selection?.domIdentity&&previous&&state.selection.domIdentity.document===previous.binding.document&&state.selection.domIdentity.node===previous.binding.node&&state.run===previous.binding.run;
+   if(entry&&sameSelection){
+    row.title.hidden=true;row.details.hidden=true;row.el.setAttribute('data-inline','true');
+    if(previous.label.parentElement!==row.top)row.top.prepend(previous.label);row.inlineLabel=previous.label;previous.label.disabled=true;previous.label.title='Recorded source is out of date. Refresh the inspection to open its code.';
+    if(row.el.parentElement!==$('input-linked-values'))$('input-linked-values').append(row.el);inlineCount++;
+   }else{
+    if(previous){previous.label.remove?.();linked.delete(id);}
+    row.title.hidden=false;row.details.hidden=false;row.el.setAttribute('data-inline','false');
+    for(const field of row.input?[row.input]:row.buttons||[])field.setAttribute('aria-label',row.name+(row.buttons?': '+field.textContent:''));
+    if(row.el.parentElement!==$('input-fields'))$('input-fields').append(row.el);
+   }
+  }
+  const destination=inlineCount&&$('source-section')?.hidden!==false?$('input-inline-actions'):$('input-actions-home'),actions=$('input-edit-actions');
+  if(destination&&actions&&actions.parentElement!==destination)destination.append(actions);
+  if($('input-column-headings'))$('input-column-headings').hidden=!snapshot.active||![...rows].some(([id])=>!used.has(id)&&!linked.has(id));
+  // Moving the one owned field between its current and retained slots must not
+  // end typing. Do not restore focus into a hidden screen or a disabled field.
+  if(focused?.isConnected&&!focused.disabled&&focused.getClientRects?.().length&&document.activeElement!==focused&&(!document.activeElement||document.activeElement===document.body)){
+   focused.focus?.({preventScroll:true});if(caret)focused.setSelectionRange?.(...caret);
+  }
  }
  function render(){
   if(disposed)return;const s=controller.snapshot(),d=s.draft,e=s.editor;const region=$('input-editor');region.hidden=!visible||state?.readOnly===true&&!state?.productionChange?.active&&!s.active&&!d?.dirtyCount;if(!visible)return;
@@ -97,7 +147,7 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
      const choices=resource.locator.options||[],key=JSON.stringify([choices,entry.raw]);if(row.options!==key){row.options=key;const values=choices.map(value=>{const option=node('option',value);option.value=value;return option;});if(!choices.includes(entry.raw)){const option=node('option',String(entry.raw)+' (unavailable)');option.value=entry.raw;option.disabled=true;values.unshift(option);}field.replaceChildren(...values);}
     }if(field.value!==String(entry.raw))field.value=String(entry.raw);}
   }
-  for(const[id,row]of rows)if(!ids.has(id)){row.el.remove();rows.delete(id);}
+  for(const[id,row]of rows)if(!ids.has(id)){row.el.remove();rows.delete(id);linked.delete(id);}
   {
    const latest=e?.history?.at(-1),phase=latest?.phase,errors=d?.entries.filter(r=>r.error||r.conflict).length||0;
    text('input-status',localError||s.error&&explanation(s.error.code,s.error.message)||s.connectionLost&&'Inspector connection lost.'||s.opening&&'Opening eligible inputs…'||s.busy&&'Sending / reading…'||!s.active&&e&&(e.closed?'Editor closed. App state is not automatically restored.':'Closing input editing…')||s.active&&!decision('inputs-apply')?.available&&explanation(decision('inputs-apply')?.code,decision('inputs-apply')?.reason)||s.active&&e&&!d?.entries.length&&(e.sourceKind==='dom-control'?'No supported form fields found. Network response fields may be available in Editing options.':'No response fields recorded yet. Use the page to load data, then refresh these fields.')||errors&&('Review '+errors+' field '+(errors===1?'error.':'errors.'))||d?.dirtyCount&&(d.dirtyCount+' local '+(d.dirtyCount===1?'edit':'edits')+(s.mode==='live'&&!d.heldDraft?' pending.':'.'))||phase==='waiting'&&'Waiting for a matching response. Use the page to request this data again.'||phase==='delivered'&&'Replacement delivered to the browser. Its effect on the page is not confirmed.'||phase==='applied'&&(latest.kind==='undo'?'Last field change undone.':latest.kind==='baseline'?'Original field values restored.':'Changes applied.')||phase&&('Outcome: '+phase)||!e&&!openDecision?.available&&explanation(openDecision?.code,openDecision?.reason)||'');
@@ -106,6 +156,7 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
   $('input-undo').hidden=!e?.canUndo;
   text('input-observation',e?.observation?'Observed '+e.target.property+' = '+short(e.observation.value)+' · '+e.observation.status+' · dependency unknown.':'');
   const unavailable=e?.unsupported||[];$('input-unavailable').hidden=!unavailable.length;text('input-unavailable-title',unavailable.length+' unavailable '+(unavailable.length===1?'input':'inputs'));$('input-unavailable-list').replaceChildren(...unavailable.map(r=>node('li',(r.selector||'Input')+' · '+r.reason)));
+  placeValues(s);
  }
  function stateReplyReceiver(){
   const admit=controller.stateReplyGuard();
@@ -116,17 +167,18 @@ export function createInputUI({document,$,client,preview=false,onReconnect}={}){
   const key=capabilityKey(next);if(key!==capKey){capKey=key;if(visible)ask();else{caps=null;++capEpoch;}}render();
  }
  $('input-source').value='dom-control';$('input-source').onchange=()=>{const s=controller.snapshot();if(s.active&&s.draft?.dirtyCount){$('input-source').value=s.sourceKind;localError='Apply or discard the current draft before changing sources.';render();return;}ask();if(s.active)void run(()=>controller.open({tabId:state.tabId,sourceKind:$('input-source').value}));};
- $('input-open').onclick=()=>{const from=document.activeElement;return run(async()=>{
+ function openEditor({focus=true}={}){const from=document.activeElement;return run(async()=>{
   await controller.open({tabId:state.tabId,sourceKind:$('input-source').value});await ask();
   // Only an explicit open moves focus. Async replies must not take it back from
   // a user who has already moved to another screen or control.
   const active=document.activeElement,region=$('input-editor');
-  if(disposed||!controller.snapshot().active||!region.getClientRects?.().length||active&&active!==from&&active!==document.body&&active!==$('input-open'))return;
-  const first=[...rows.values()].flatMap(row=>row.input?[row.input]:row.buttons||[]).find(field=>!field.disabled);
+  if(!focus||disposed||!controller.snapshot().active||(!region.getClientRects?.().length&&!$('input-inline-actions')?.getClientRects?.().length)||active&&active!==from&&active!==document.body&&active!==$('input-open'))return;
+  const first=[...rows.values()].flatMap(row=>row.input?[row.input]:row.buttons||[]).find(field=>!field.disabled&&(!field.getClientRects||field.getClientRects().length));
   const destination=first||(!$('input-status').hidden?$('input-status'):null);destination?.scrollIntoView?.({block:'nearest'});destination?.focus?.({preventScroll:true});
- });};
+ });}
+ $('input-open').onclick=()=>openEditor();
  for(const m of['live','draft'])$('input-mode-'+m).onclick=()=>run(()=>controller.setMode(m));
  for(const[id,fn]of[['input-apply',()=>controller.apply()],['input-discard',()=>controller.discard()],['input-read',()=>controller.refresh()],['input-undo',()=>controller.undo()],['input-baseline',()=>controller.baseline()],['input-close',()=>controller.close()]])$(id).onclick=()=>run(fn);
  $('input-reconnect').onclick=()=>run(()=>onReconnect?.());
- return Object.freeze({update,stateReplyReceiver,explainPendingDraft(){localError='Apply or discard your edits before refreshing or selecting another element.';render();$('input-status').scrollIntoView?.({block:'nearest'});$('input-status').focus?.({preventScroll:true});},open:()=>$('input-open').onclick(),capture:options=>controller.capture(options),captureObservation:options=>controller.captureObservation(options),close:reason=>controller.close(reason),dispose(){if(disposed)return;disposed=true;++capEpoch;return controller.dispose();},snapshot:controller.snapshot});
+ return Object.freeze({update,stateReplyReceiver,refreshPlacement:()=>placeValues(controller.snapshot()),setValueSlots(next){slots=next;placeValues(controller.snapshot());},explainPendingDraft(){localError='Apply or discard your edits before refreshing or selecting another element.';render();$('input-status').scrollIntoView?.({block:'nearest'});$('input-status').focus?.({preventScroll:true});},open:()=>$('input-open').onclick(),capture:options=>controller.capture(options),captureObservation:options=>controller.captureObservation(options),close:reason=>controller.close(reason),dispose(){if(disposed)return;disposed=true;++capEpoch;return controller.dispose();},snapshot:controller.snapshot});
 }

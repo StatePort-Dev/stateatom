@@ -2,10 +2,11 @@
 // Controlled DOM/client models; no browser/native acceptance credit.
 import test from'node:test';import assert from'node:assert/strict';import{createInputUI}from'../../packages/atom/src/input-ui.mjs';import{describeCapabilities}from'../../packages/atom/src/transport.mjs';import{createResponseLedger}from'../../core/response-ledger.mjs';
 import{createControlLedger}from'../../core/control-ledger.mjs';import{prepareExperimentPlan}from'../../core/experiment-plan.mjs';
-function node(tag='div'){return{tagName:tag.toUpperCase(),children:[],attributes:{},value:'',textContent:'',append(...v){for(const n of v){n.remove?.();n.parent=this;this.children.push(n);}},remove(){if(this.parent)this.parent.children=this.parent.children.filter(n=>n!==this);this.parent=null;},replaceWith(next){const p=this.parent,i=p?.children.indexOf(this);if(i>=0){next.remove();p.children[i]=next;next.parent=p;this.parent=null;}},replaceChildren(...v){for(const n of this.children)n.parent=null;this.children=[];this.append(...v);},setAttribute(k,v){this.attributes[k]=v;}};}
+function node(tag='div'){return{get parentElement(){return this.parent;},prepend(...v){for(const n of [...v].reverse()){n.remove?.();n.parent=this;this.children.unshift(n);}},tagName:tag.toUpperCase(),children:[],attributes:{},value:'',textContent:'',append(...v){for(const n of v){n.remove?.();n.parent=this;this.children.push(n);}},remove(){if(this.parent)this.parent.children=this.parent.children.filter(n=>n!==this);this.parent=null;},replaceWith(next){const p=this.parent,i=p?.children.indexOf(this);if(i>=0){next.remove();p.children[i]=next;next.parent=p;this.parent=null;}},replaceChildren(...v){for(const n of this.children)n.parent=null;this.children=[];this.append(...v);},setAttribute(k,v){this.attributes[k]=v;}};}
 const target={tabId:1,origin:'http://127.0.0.1:4173',run:'r',document:'d',node:'n',selector:'#confirm',property:'disabled',value:true,observedAt:1,build:null};
 const cap=describeCapabilities({url:target.origin+'/',permission:true,grants:['read','inject','cache','reload','override','replay'],lease:'owned',attached:true,hasSelection:true,hasAnalysis:true,nativeInputOwner:true,workerIndependent:true,inputSourceKind:'json-response',hasInputEditor:true});
 const find=(el,tag)=>el.tagName===tag?el:el.children.map(n=>find(n,tag)).find(Boolean);
+const inlineBinding={kind:'json-response',name:'quota',value:5,...target,requestId:'q1',requestOrdinal:1,url:target.origin+'/api',method:'GET',pointer:'/value'};
 async function fixture({initialInputAbsent=false,initialValue=true}={}){
  const elements=new Map(),$=id=>{if(!elements.has(id))elements.set(id,node());return elements.get(id);},ledger=createResponseLedger({investigationId:'i',target});let ordinal=0,opened=false,currentPolicy=cap;
  const snap=()=>({...ledger.snapshot(),sourceKind:'json-response',cleanup:'inactive',observation:{status:'Observed',value:true,dependency:'unknown'}}),observe=value=>ledger.observeResponse({url:target.origin+'/api',method:'GET',requestId:'q'+(++ordinal),requestOrdinal:ordinal,document:'d',body:JSON.stringify({value})});observe(initialValue);
@@ -14,6 +15,23 @@ async function fixture({initialInputAbsent=false,initialValue=true}={}){
  const view=createInputUI({document:{createElement:node},$,client});$('input-source').value='json-response';view.update(state());await new Promise(r=>setTimeout(r,0));await $('input-open').onclick();return{$,view,calls,state,setPolicy:value=>{currentPolicy=value;},change:value=>{observe(value);view.update(state());},row:()=>$('input-fields').children[0]};
 }
 test('same response id refresh changes a boolean row into a usable numerical field',async()=>{const f=await fixture();try{assert.equal(find(f.row(),'INPUT'),undefined);f.change(5);const input=find(f.row(),'INPUT');assert(input,'numeric resource must have a text input');assert.equal(input.inputMode,'decimal');assert.equal(input.value,'5');await f.$('input-mode-draft').onclick();input.value='6';input.oninput();assert.equal(f.view.snapshot().draft.canApply,true);assert.equal(f.view.snapshot().draft.entries[0].value,6);}finally{await f.view.dispose();}});
+
+test('a linked value uses the same editor node once, retains drafts and sends no mutation on binding',async()=>{
+ const f=await fixture({initialValue:5});try{
+  const row=f.row(),field=find(row,'INPUT'),container=node(),fallback=node('code'),label=node('button'),calls=f.calls.length;
+  f.view.setValueSlots([{container,fallback,label,binding:inlineBinding}]);
+  assert.equal(container.children[0],row);assert.equal(f.$('input-fields').children.length,0);assert.equal(find(container,'INPUT'),field);assert.equal(field.attributes['aria-label'],'quota');assert.equal(f.calls.length,calls);
+  await f.$('input-mode-draft').onclick();field.value='-';field.oninput();assert.equal(find(container,'INPUT').value,'-');assert.equal(f.view.snapshot().draft.dirtyCount,1);
+  f.view.setValueSlots([]);assert.equal(f.$('input-linked-values').children[0],row);assert.equal(find(row,'INPUT'),field);assert.equal(field.value,'-');assert.equal(f.calls.filter(c=>c.op==='inputs-apply').length,0);
+  const next=node();f.view.setValueSlots([{container:next,fallback,label:node('button'),binding:inlineBinding}]);assert.equal(next.children[0],row);assert.equal(f.$('input-linked-values').children.length,0);assert.equal(field.value,'-');
+ }finally{await f.view.dispose();}
+});
+test('a new response occurrence removes the old inline association without merging equal named fields',async()=>{
+ const f=await fixture({initialValue:5});try{
+  const container=node();f.view.setValueSlots([{container,fallback:node('code'),label:node('button'),binding:inlineBinding}]);assert(find(container,'INPUT'));
+  f.change(5);assert.equal(find(container,'INPUT'),undefined);assert(find(f.row(),'INPUT'));assert.equal(f.view.snapshot().draft.dirtyCount,0);
+ }finally{await f.view.dispose();}
+});
 test('conflicting invalid numerical text remains visible across a type change until explicit discard',async()=>{const f=await fixture();try{f.change(5);await f.$('input-mode-draft').onclick();let input=find(f.row(),'INPUT');assert(input);input.value='-';input.oninput();f.change(false);assert.equal(find(f.row(),'INPUT').value,'-');assert.equal(f.view.snapshot().draft.entries[0].conflict,true);assert.equal(f.view.snapshot().draft.canApply,false);await f.$('input-discard').onclick();assert.equal(find(f.row(),'INPUT'),undefined);const buttons=[];const visit=n=>{if(n.tagName==='BUTTON')buttons.push(n);n.children.forEach(visit);};visit(f.row());assert(buttons.some(n=>n.textContent==='false'&&n.attributes['aria-pressed']==='true'));assert.equal(f.calls.filter(p=>p.op==='inputs-apply').length,0);}finally{await f.view.dispose();}});
 
 test('opening inputs is unavailable while another element is being picked even if old capability metadata allows it',async()=>{
