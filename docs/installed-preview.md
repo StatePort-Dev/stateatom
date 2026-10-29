@@ -3,8 +3,10 @@
 This guide is for a local candidate kit supplied by a maintainer, on Linux with
 a Chromium browser that allows unpacked extensions. There is no public download
 or Store release. See [current support](status.md) for tested capability boundaries.
-The full clean-installation/user-workflow matrix is still in progress; writing
-this guide does not establish that it passed.
+The declared Linux installation and workflow routes are accepted in
+[the V03 evidence record](completion/355-v03-current96-acceptance.md). Exact final
+artifacts and limitations are in [release readiness](completion/356-v04-current96-release-readiness.md).
+These are agent-operated results with recorded setup assistance, not human usability evidence.
 
 ## What to obtain
 
@@ -22,10 +24,12 @@ not folders to select in Chrome. Basic needs no IDE, account, model or app plugi
 The receipt's component versions and hashes identify the kit. Chrome's displayed
 extension version alone does not identify the Atom candidate. Never mix files from
 kits. Use the matching reader; old readers may reject newer detailed reports.
-Historical70 installation records125/126 do not certify a new kit. Current95
-normal folder installation and update/rollback are recorded in completion344/345;
-the whole independent-application and guide matrix remains open. macOS installation is
-explicitly deferred to a later maintainer check; it is not a verified platform.
+Historical70 installation records125/126 do not certify a new kit. Exact96 normal
+folder installation is recorded in completion350; actual95 update/rollback345 and
+packaged Desktop Capture347 retain their historical scope. Current96 independent
+editing and installed Vue/source guide are recorded in completion351/355.
+macOS installation is explicitly deferred to a later maintainer check; it is not
+a verified platform. Windows installation is not verified.
 
 In the official workspace, use the toolbar **About this build** button and expand
 its disclosure. It shows the exact Atom source/package, shared UI, extension and
@@ -195,3 +199,21 @@ recording or editing automatically. Current Linux94→95→94→95 verification 
 a real saved Capture Card and historical Atom diagnostic ([345](completion/345-i03-native-update-and-capture-shell.md)).
 This local component procedure does not certify a separately supplied Desktop
 installer: its bundled extension must match the same release receipt.
+
+## First-release accepted limitations
+
+The accepted Linux route retains the original measured performance misses:
+Basic94 p95 was1065.7ms standalone and1232.2ms in the official host; Active89
+overhead was10.71737255% and27.31871841% on the recorded workloads. The maintainer
+accepted these deviations for the first release; they are not new general limits.
+
+IT-Tools emits24 known startup warnings with and without Atom. The tested
+VS Code1.143.1 also emits the two recorded GitHub PR/Copilot API-proposal messages
+before Atom helper installation. These exact background conditions are accepted;
+new Atom/app errors are not. See decisions352/354 and the evidence ledger.
+
+Undo can refuse after the application changes the target revision. The accepted
+original checkout firstName flow returns to baseline; the older minPrice control
+did not, and is not relabelled supported. A code link or matching DOM value does
+not establish complete data ancestry. Local model notes have the bounded English
+usefulness described in completion334; unavailable devices retain Basic features.

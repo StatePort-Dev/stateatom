@@ -6,15 +6,23 @@ The intended workflow is to select a property, inspect the available dependencie
 
 ## Project status
 
-Current completion checkpoint (2026-10-27): **21/29 whole tasks** in approved
-`scope-review-1`. The [official local86/UI2 integration](docs/completion/249-i02-current86-host-refresh.md)
-has affected free-template UI proof; its byte-identical runtime/Capture assets retain
-the separately scoped85 [handoff/window/history](docs/completion/246-i02-official-observation-history.md) and Capture evidence.
-86 corrects availability-error Unknown; no real-model qualification follows. Mandatory L02 usefulness,
-ordinary A02 lineage and original V02 overhead remain open; no full release or SDK
-is established. An independent human is optional evidence, not a release blocker.
-Use [current status](docs/status.md) and the [task index](docs/completion/task-index.json)
-for the active bounded item; dated observations below retain their original scope.
+Current candidate: **Atom96/UI2**, plugin17 and helper0.1.3, with local Linux
+installation and agent-operated acceptance. All mandatory feature and workflow
+items are accepted; the final artifact/ledger decision is recorded in
+[release readiness](docs/completion/356-v04-current96-release-readiness.md).
+The [candidate ledger](docs/completion/candidate96-ledger.json) records exact
+versions, scoped evidence and maintainer-accepted deviations. There is no public
+release or download; publication requires a separate explicit instruction.
+
+Supported scope is bounded: React development with the open plugin/helper,
+partial Vue template inspection, and the approved selected-list title scenario.
+Unknown, skipped, stale and unsupported results stay explicit. Local AI has
+scoped English support and an unavailable-device fallback. macOS installation
+is deferred and unverified; Windows installation is not claimed. The production
+SDK is outside Atom. Independent human participation is optional evidence.
+Use the [installed-user guide](docs/installed-preview.md), [current status](docs/status.md)
+and [task index](docs/completion/task-index.json). Dated reports retain their original
+versions and failures; acceptance does not turn them into fresh passing runs.
 
 The working local developer preview includes the React inspection loop: select a
 property, inspect its code-linked expression and available observed values, open

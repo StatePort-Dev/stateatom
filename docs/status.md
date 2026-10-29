@@ -1,5 +1,7 @@
 # Project status
 
+**Approved plan complete:29/29 (100%).** [Final96 release readiness](completion/356-v04-current96-release-readiness.md) binds actual acceptance, exact local kit and explicit first-release limitations. **Not published.** Linux directory route; macOS deferred/unverified. Earlier checkpoints below retain their dated scope.
+
 **V03 complete on the declared Linux route:** [355](completion/355-v03-current96-acceptance.md), original checkout editing in both hosts and installed Vue source guide; one final review0/0/0. **28/29 (96.55%)**. V04 final ledger/kit notes remain; no publication.
 
 **Known background warnings accepted for first release:** [352](completion/352-background-warnings-maintainer-acceptance.md); only listed IT-Tools/Copilot conditions, original FAIL unchanged. Whole27/29; current Vue guide qualification and V04 remain.

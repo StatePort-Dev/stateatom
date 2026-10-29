@@ -10851,19 +10851,20 @@
         "npm run pack:atom"
       ],
       "deliverable": "Full approved-scope acceptance ledger or an explicitly narrower preview; no silent requirement waivers",
-      "status": "in-progress",
+      "status": "complete",
       "optional": false,
       "preparation_record": "205-release-date-decision.md",
       "historical_status_before_night_checkpoint": "planned",
       "current_preparation": {
-        "record": "350-current96-kit-and-v03-boundaries.md",
+        "record": "356-v04-current96-release-readiness.md",
         "ledger": "candidate96-ledger.json",
-        "status": "exact96-local-kit-and-ledger-prepared-V03-open",
-        "ready_for_full_scope_release": false,
-        "archive_sha256": "f0926bf5f37982be0acb65fd07f185a31cea02fefb6c282213ca51a5d0ee3c3f"
+        "status": "final-qualified-local-kit-and-ledger",
+        "ready_for_full_scope_release": true,
+        "archive_sha256": "d87063ed96180e86bde9d581a140d6cae272896869851d7ea70471191093ef7e"
       },
-      "next_bounded_step": "Finalize readiness only after V03 passes or a concrete narrower release scope is explicitly accepted; publication remains separate.",
-      "historical_next_bounded_step_before_overhead_acceptance": "Final ledger only after actual remaining feature/performance/host/native criteria; partial snapshot is not readiness."
+      "next_bounded_step": "No unfinished approved-plan item. Publication only after an explicit artifact/destination instruction; no push authorized.",
+      "historical_next_bounded_step_before_overhead_acceptance": "Final ledger only after actual remaining feature/performance/host/native criteria; partial snapshot is not readiness.",
+      "execution_record": "356-v04-current96-release-readiness.md"
     }
   ],
   "starting_sequence": [
@@ -10998,18 +10999,18 @@
   },
   "reconciliation": {
     "current_full_plan": {
-      "accepted_whole_tasks": 28,
+      "accepted_whole_tasks": 29,
       "total_whole_tasks": 29,
-      "unweighted_percent": 96.55,
-      "ready_for_full_scope_release": false,
+      "unweighted_percent": 100,
+      "ready_for_full_scope_release": true,
       "scope_reduced": false,
-      "record": "355-v03-current96-acceptance.md"
+      "record": "356-v04-current96-release-readiness.md"
     },
     "current_development_plugin_checkpoint": {
-      "record": "347-i03-local-component-distribution.md",
+      "record": "355-v03-current96-acceptance.md",
       "package": "0.1.0-candidate.20261029.17",
       "sha256": "81dfcf43952b3a833f8ef535d04f07917dad52692fa0e40934eaebd077253e6c",
-      "scope": "Qualified kit17; inherited I02/L02 and bounded A02 evidence retain their exact versions and scope; no new instrumented-app run"
+      "scope": "Exact17 current independent Vue native source guide plus retained accepted A02/I02/L02 boundaries"
     },
     "current_host_checkpoint": {
       "revision": "7b591518",
@@ -11017,7 +11018,7 @@
       "package": "0.1.0-candidate.20261029.96",
       "package_sha256": "001180071d71e89d1bc5b95d7cf166b7ec2dc9a03ef9d8861566447ce899f98e",
       "host_case": "docs/testing/current96-host-case.json",
-      "scope": "Current96 native handoff12+4; prior95 local kit remains historical, not full V03"
+      "scope": "Exact96 handoff/current independent checkout and normal folder install accepted; current approved baseline complete with retained historical Capture95 boundary"
     },
     "historical_active_pointer_before_I02_current82": {
       "document": "144-v03-owned-editor-reply.md",
@@ -11040,8 +11041,8 @@
     "document": "281-active-overhead-maintainer-acceptance.md",
     "source_revision": "f3a7a7e1ba43bea4e39954eaf49b95266822692b",
     "date": "2026-10-28",
-    "current_increment": "V03 complete355: current96 original React editing and Vue installed source guide; bounded final review0/0/0. Whole28/29.",
-    "next_item": "V04",
+    "current_increment": "V04 final exact96 local ledger/kit complete;29/29 approved baseline within recorded scope and deviations, not published.",
+    "next_item": null,
     "new_full_task_acceptances": [
       "F01",
       "F02",
@@ -11072,7 +11073,7 @@
       "V02"
     ],
     "status_semantics": "complete means the named item met its own brief on the recorded candidate, not the whole baseline. partially-implemented credits inherited code/evidence; remaining acceptance and dependencies still apply. planned does not mean reusable code is absent.",
-    "active_item": "V04",
+    "active_item": null,
     "completed_increments": [
       {
         "id": "production-source-mapping-source-exploration",
@@ -14072,11 +14073,11 @@
       }
     ],
     "scope_adoption_record": "13-scope-reconciliation.md",
-    "current_activity_note": "V03 accepted; final coordinated kit/ledger preparation remains. No publication.",
+    "current_activity_note": "V04 final exact96 local ledger/kit complete;29/29 approved baseline within recorded scope and deviations, not published.",
     "historical_reconciliation_document": "19-u05-picker-presentation.md",
     "current_source_revision": "164a89e38319b6b4a9802d2cddedf84603873212",
     "current_record_date": "2026-10-29",
-    "next_bounded_step": "V04 exact final ledger and local distribution notes; no native repeats or publication.",
+    "next_bounded_step": "No unfinished approved-plan item. Publication only after an explicit artifact/destination instruction; no push authorized.",
     "historical_active_pointer_before_V03_23": {
       "current_increment": "V03.21-native77-pass-final-review-pending",
       "active_item": {
@@ -14122,7 +14123,7 @@
       "reviewedRevision": "99d20d86f5d00229cbb431fc0d82b8c63e60a01a",
       "minor": "M16 review-time stale pointer, deferred historical metadata"
     },
-    "current_release_assessment": "355-v03-current96-acceptance.md",
+    "current_release_assessment": "356-v04-current96-release-readiness.md",
     "release_checkpoint": {
       "record": "224-night-release-checkpoint.md",
       "artifact": ".artifacts/release/2026-10-27-night-checkpoint/snapshot.json",
@@ -14213,12 +14214,17 @@
       "performance_accepted": false
     },
     "current_local_package_checkpoint": {
-      "record": "349-u04-current96-acceptance.md",
+      "record": "356-v04-current96-release-readiness.md",
       "handoff": ".artifacts/atom/2026-10-29T13-39-10-369Z/atom-handoff.json",
       "package": "0.1.0-candidate.20261029.96",
       "sha256": "001180071d71e89d1bc5b95d7cf166b7ec2dc9a03ef9d8861566447ce899f98e",
       "source_revision": "164a89e38319b6b4a9802d2cddedf84603873212",
-      "source_dirty": false
+      "source_dirty": false,
+      "qualified_kit": {
+        "file": "/home/roman/projects/stateatom/.artifacts/release/current96-final/stateatom-linux-component-kit96-qualified.tar.gz",
+        "bytes": 381597098,
+        "sha256": "d87063ed96180e86bde9d581a140d6cae272896869851d7ea70471191093ef7e"
+      }
     },
     "historical_host_checkpoint_before_I02_39": {
       "revision": "b9b6e23d",
@@ -14490,7 +14496,21 @@
       "active_item": "V03",
       "next_item": "V03",
       "next_bounded_step": "Current independent Vue installed-source/guide qualification under exact exception352; retain unknown/new error failures and original raw results."
+    },
+    "historical_plan_before_V04_completion356": {
+      "current_full_plan": {
+        "accepted_whole_tasks": 28,
+        "total_whole_tasks": 29,
+        "unweighted_percent": 96.55,
+        "ready_for_full_scope_release": false,
+        "scope_reduced": false,
+        "record": "355-v03-current96-acceptance.md"
+      },
+      "current_increment": "V03 complete355: current96 original React editing and Vue installed source guide; bounded final review0/0/0. Whole28/29.",
+      "active_item": "V04",
+      "next_item": "V04",
+      "next_bounded_step": "V04 exact final ledger and local distribution notes; no native repeats or publication."
     }
   },
-  "next_task": "V04"
+  "next_task": null
 }

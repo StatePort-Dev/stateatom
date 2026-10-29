@@ -1,7 +1,7 @@
 {
   "schema": "stateatom.candidate-ledger/1",
   "scopeRevision": "scope-review-1",
-  "releaseKind": "local-candidate-full-baseline-incomplete",
+  "releaseKind": "completed-approved-baseline-local-linux",
   "requiredRequirements": [
     "C01",
     "C02",
@@ -17,12 +17,7 @@
     "O01",
     "O02"
   ],
-  "unmetRequirements": [
-    {
-      "task": "V04",
-      "scope": "V03 accepted355; final V04 local artifact/guide/ledger reconciliation remains, no publication authorized"
-    }
-  ],
+  "unmetRequirements": [],
   "sourceRevision": "164a89e38319b6b4a9802d2cddedf84603873212",
   "sourceDirty": false,
   "recordedAt": "2026-10-29",
@@ -79,16 +74,38 @@
       }
     },
     "linuxComponentKit": {
-      "file": ".artifacts/release/current96/stateatom-linux-component-kit96.tar.gz",
-      "sha256": "f0926bf5f37982be0acb65fd07f185a31cea02fefb6c282213ca51a5d0ee3c3f",
-      "bytes": 381212372
+      "file": "/home/roman/projects/stateatom/.artifacts/release/current96-final/stateatom-linux-component-kit96-qualified.tar.gz",
+      "bytes": 381597098,
+      "sha256": "d87063ed96180e86bde9d581a140d6cae272896869851d7ea70471191093ef7e"
     },
     "kitReceipt": {
-      "file": ".artifacts/release/current96/receipt.json",
-      "sha256": "0d10f1f1395c2af001f2493601f26364279aff7016db4b356459d0a79b1e817c",
-      "scope": "Exact component identities/file manifests; retained Desktop executable/helper, updated extension resources"
+      "file": ".artifacts/release/current96-final/receipt.json",
+      "sha256": "40eb893117f225e69f757bb7d197554688ce7d1538d3e5cf2b1d64bc7f7006ec",
+      "scope": "Exact final delivery notes and529 payload files; all executable bytes unchanged from qualified96; private combined local kit"
     },
-    "officialHostRevision": "7b591518"
+    "officialHostRevision": "7b591518",
+    "historicalPrior96Kit": {
+      "archive": {
+        "file": ".artifacts/release/current96/stateatom-linux-component-kit96.tar.gz",
+        "sha256": "f0926bf5f37982be0acb65fd07f185a31cea02fefb6c282213ca51a5d0ee3c3f",
+        "bytes": 381212372
+      },
+      "receipt": {
+        "file": ".artifacts/release/current96/receipt.json",
+        "sha256": "0d10f1f1395c2af001f2493601f26364279aff7016db4b356459d0a79b1e817c",
+        "scope": "Exact component identities/file manifests; retained Desktop executable/helper, updated extension resources"
+      }
+    },
+    "developmentPlugin": {
+      "file": "/home/roman/projects/stateatom/.artifacts/development/2026-10-29T09-35-41-351Z/stateport-vite-plugin-0.1.0-candidate.20261029.17.tgz",
+      "sha256": "81dfcf43952b3a833f8ef535d04f07917dad52692fa0e40934eaebd077253e6c",
+      "version": "0.1.0-candidate.20261029.17"
+    },
+    "developmentHelper": {
+      "file": ".artifacts/development/2026-10-29T09-05-13-000Z/stateatom-dev-helper-0.1.3.vsix",
+      "sha256": "49b887e3cfccf56f4431aba4fa9a7f68c9ef8a0dcebfd3e6cd1619d2fb356fb9",
+      "version": "0.1.3"
+    }
   },
   "contracts": {
     "apiVersion": 1,
@@ -214,6 +231,64 @@
       "scope": "Current original Vue8PASS; exact helper installation continuation, source156:9-174:11, approved24+2 warnings, no errors; V03 completed355",
       "file": ".artifacts/v03/current96-vue-guide/2026-10-29T15-29-52-327Z/results.json",
       "sha256": "171e14c51d656ad119d3c23e24a94d92c9d81b6cc9ed0fa122febc1ecc3464b7"
+    },
+    {
+      "scope": "Final qualified96 archive529 payload files plus receipt; executable modes and unchanged runtime inventory",
+      "file": ".artifacts/release/current96-final/archive-verification.json",
+      "sha256": "ee82a644093409a6b9728fd03ae8eba87ca0386bacbd6e406f282c27f2e57e60"
+    },
+    {
+      "file": ".artifacts/v02/basic-observer-current89/2026-10-28T04-13-44-785Z/results.json",
+      "sha256": "a31b7c29fc3c041bbfe2956b777ebf770110ec471239e2f78f54b817e177c78f",
+      "scope": "Retained overhead89 at its exact historical revision; no96 rerun",
+      "literalStatus": "COMPLETE"
+    },
+    {
+      "file": ".artifacts/v02/current94-warm-source/2026-10-29T11-38-19-645Z/results.json",
+      "sha256": "a85e6ec5f0a12efe11fc0c455dbccd2cfad0276f6d2205f029ef8d35a43f4948",
+      "scope": "Retained warm94 at its exact historical revision; no96 rerun",
+      "literalStatus": "COMPLETE_CURRENT94_WARM_ONLY"
+    },
+    {
+      "file": ".artifacts/v02/current94-basic/2026-10-29T11-45-54-183Z/results.json",
+      "sha256": "5b8889a283e0f3772f0bdf8a0fc7563b72a6260b81ced614582da14d6364ab94",
+      "scope": "Retained basic94 at its exact historical revision; no96 rerun",
+      "literalStatus": "COMPLETE_BASIC_ONLY"
+    },
+    {
+      "file": "/home/roman/projects/scenariodeck/artifacts/atom-host/i02-current93/settings-native/2026-10-29T10-41-31-440Z/results.json",
+      "sha256": "6c5798382a6fbc46f708db8173308285ce71a71bf905b12124144b602de3857b",
+      "scope": "Retained settings93 at its exact historical revision; no96 rerun",
+      "literalStatus": "PASS_CURRENT93_SETTINGS_INPUTS_BOTH_HOSTS"
+    },
+    {
+      "file": "/home/roman/projects/scenariodeck/artifacts/atom-host/i02-current93/actions-native/2026-10-29T10-47-40-774Z/results.json",
+      "sha256": "8f698aeaeeb270d4b0a1c93aeda27cb5b7b29fd49867a81b4425256e07f89f87",
+      "scope": "Retained action93 at its exact historical revision; no96 rerun",
+      "literalStatus": "PASS_SCOPED_SESSION_ACTION_TRACE_UI_NOT_WHOLE_A05"
+    },
+    {
+      "file": "/home/roman/projects/scenariodeck/artifacts/atom-host/i02-current93/full-native-chromium-2026-10-29T10-35-48-830Z/results.json",
+      "sha256": "357a8f04dfd7cec8b924dcd4a5d543e8a82abb7386ad9498f9d71428680788a7",
+      "scope": "Retained capture93 at its exact historical revision; no96 rerun",
+      "literalStatus": "PASS_I01_NATIVE_CAPTURE_REVIEW_SAVE"
+    },
+    {
+      "file": ".artifacts/u04/current95-picker/2026-10-29T12-05-34-781Z/results.json",
+      "sha256": "b3ce65117423ff282258faef86f56ed19c548d5927d74edc60ae350f9b74216f",
+      "scope": "Retained picker95 at its exact historical revision; no96 rerun",
+      "literalStatus": "PASS_INSTALL_AND_MANUAL_PICKER_CONTROLS"
+    },
+    {
+      "file": ".artifacts/i03/current95-update/2026-10-29T12-15-51-479Z/results.json",
+      "sha256": "7bd07e6aa73a5fb74282590156a59750840187b05667d2c5663493b6d8f9aecd",
+      "scope": "Retained update95 at its exact historical revision; no96 rerun",
+      "literalStatus": "PASS_LOCAL_EXTENSION_UPDATE_ROLLBACK_CAPTURE_DATA"
+    },
+    {
+      "file": ".artifacts/i03/packaged95/native-2026-10-29-cold/results.json",
+      "sha256": "acb4c7abf07097a5512b4fa803992f1a8b9bb57c2920c521eb5c369ebcf0f854",
+      "scope": "Historical actual95 packaged Desktop Capture/Review/Save and cold read; executable/native helper unchanged in96 kit"
     }
   ],
   "sourceChecks": {
@@ -222,7 +297,9 @@
       "passed": 6518,
       "failed": 0,
       "skipped": 0,
-      "log": "/tmp/stateatom96-full.log"
+      "log": ".artifacts/release/current96-final/logs/full-source6518.log",
+      "historicalLog": "/tmp/stateatom96-full.log",
+      "sha256": "7ece55c84c835e7727887fbb8d9681ba7b8655c058eb98b29250ee5eedc213d3"
     },
     "affected": {
       "passed": 55,
@@ -237,6 +314,14 @@
       "build": "PASS",
       "packageChecks": 9,
       "log": "/tmp/stateatom96-host-package2.log"
+    },
+    "finalFocused": {
+      "command": "node --test --test-isolation=none tests/atom/release-background-warnings.test.mjs tests/atom/guide-source-open.test.mjs tests/atom/guide-source-connection-harness.test.mjs",
+      "passed": 43,
+      "failed": 0,
+      "skipped": 0,
+      "log": ".artifacts/release/current96-final/logs/focused43.log",
+      "sha256": "b2e6311a41a3d181e33a7d0dacb5389e59c72760030888d314fb65a44f85e04f"
     }
   },
   "operatorKind": "agent-operated-native-UI-and-harness; no independent human acceptance",
@@ -271,17 +356,21 @@
     "Local kit contains private StatePort Desktop; public Atom license does not authorize its redistribution",
     "Packaged Desktop Capture/Save/cold proof remains95; exact Desktop/helper unchanged, extension96 changed-area proof separately recorded",
     "No Store installation, ordinary OS installer, human adoption, publication or SDK claim",
-    "Additional firstName route351 qualifies current independent native editing; internal form-library consumption and the old minPrice path remain outside this positive claim."
+    "Additional firstName route351 qualifies current independent native editing; internal form-library consumption and the old minPrice path remain outside this positive claim.",
+    "Exact current Code1.143.1 startup GitHub PR/Copilot descriptors accepted354; all raw messages retained",
+    "Current normal VSIX installation and copied installed-byte source activation are complementary receipts; transient toast-wait FAIL remains",
+    "Final delivery notes changed only; all extension/Desktop/plugin/helper code identical to prior qualified96 kit"
   ],
   "distributionStatus": {
-    "localKit": "prepared-and-archive-verified",
+    "localKit": "final-qualified-archive-verified",
     "normalLinuxExtensionInstall": "both96-hosts-pass",
     "published": false,
     "publicationAuthorized": false,
-    "readyForFullScopeRelease": false
+    "readyForFullScopeRelease": true,
+    "completionRecord": "356-v04-current96-release-readiness.md"
   },
   "wholeTaskCount": {
-    "complete": 28,
+    "complete": 29,
     "total": 29
   },
   "backgroundWarningDeviation": {
@@ -298,5 +387,138 @@
   "v03Review": {
     "file": ".artifacts/v03/final96/review.md",
     "sha256": "c16c8f8e5febb7dafdd41217bca314211eae9c703020f0dca318e967e2c48ffb"
-  }
+  },
+  "environmentScope": {
+    "qualifiedInstallation": "Linux directory kit and normal Chrome153 unpacked extension; Code1.143.1 helper",
+    "primaryInstalledProfile": "Node24/Vite7.3.7/React18.3.1 classic JSX; bounded selected-list profile282",
+    "independentVueProfile": "Node18.18.2/Vite4.4.9/Vue3.3.4/@vitejs/plugin-vue4.3.2 partial",
+    "macOS": "unverified/deferred by287",
+    "windows": "unverified",
+    "humanStudy": "not performed/not required"
+  },
+  "requiredTaskAcceptance": {
+    "F01": {
+      "status": "complete",
+      "record": "14-f01-capability-contracts.md"
+    },
+    "F02": {
+      "status": "complete",
+      "record": "15-f02-origin-connections.md"
+    },
+    "F03": {
+      "status": "complete",
+      "record": "16-f03-installed-project-setup.md"
+    },
+    "F04": {
+      "status": "complete",
+      "record": "17-f04-immutable-package-pair.md"
+    },
+    "F05": {
+      "status": "complete",
+      "record": "22-overnight-f05-progress.md"
+    },
+    "U01": {
+      "status": "complete",
+      "record": "20-u01-selected-workspace.md"
+    },
+    "U02": {
+      "status": "complete",
+      "record": "21-overnight-u02-progress.md"
+    },
+    "U03": {
+      "status": "complete",
+      "record": "24-u03-handoff-progress.md"
+    },
+    "U04": {
+      "status": "complete",
+      "record": "11-design-acceptance-map.md"
+    },
+    "U05": {
+      "status": "complete",
+      "record": "18-u05-visual-picker.md"
+    },
+    "U06": {
+      "status": "complete",
+      "record": "23-u06-handoff-journey.md"
+    },
+    "A01": {
+      "status": "complete",
+      "record": "29-a01-whole-review.md"
+    },
+    "A02": {
+      "status": "complete",
+      "record": "324-a02-selected-list-completion.md"
+    },
+    "A03": {
+      "status": "complete",
+      "record": "34-a03-whole-item-review.md"
+    },
+    "A04": {
+      "status": "complete",
+      "record": "37-a04-whole-item-review.md"
+    },
+    "A05": {
+      "status": "complete",
+      "record": "53-a05-whole-item-review.md"
+    },
+    "P01": {
+      "status": "complete",
+      "record": "75-p01-whole-item-review.md"
+    },
+    "P02": {
+      "status": "complete",
+      "record": "82-p02-whole-item-review.md"
+    },
+    "P03": {
+      "status": "complete",
+      "record": "85-p03-trusted-https-workflow.md"
+    },
+    "P04": {
+      "status": "complete",
+      "record": "100-p04-whole-item-review.md"
+    },
+    "L01": {
+      "status": "complete",
+      "record": "56-l01-whole-item-review.md"
+    },
+    "L02": {
+      "status": "complete",
+      "record": "334-l02-completion.md"
+    },
+    "I01": {
+      "status": "complete",
+      "record": "226-i01-current82-official-host.md"
+    },
+    "I02": {
+      "status": "complete",
+      "record": "337-i02-current93-completion.md"
+    },
+    "I03": {
+      "status": "complete",
+      "record": "08-stateport-integration.md"
+    },
+    "V01": {
+      "status": "complete",
+      "record": "112-v01-whole-review-and-owned-ide.md"
+    },
+    "V02": {
+      "status": "complete",
+      "record": "346-v02-final-evidence-reconciliation.md"
+    },
+    "V03": {
+      "status": "complete",
+      "record": "355-v03-current96-acceptance.md"
+    },
+    "V04": {
+      "status": "complete",
+      "record": "356-v04-current96-release-readiness.md"
+    }
+  },
+  "evidenceComposition": [
+    "346-v02-final-evidence-reconciliation.md",
+    "348-u04-concurrent-element-refresh.md",
+    "349-u04-current96-acceptance.md",
+    "351-v03-original-checkout-input.md",
+    "355-v03-current96-acceptance.md"
+  ]
 }

@@ -1,5 +1,7 @@
 # Validation and release — implementation plan
 
+**Final local baseline acceptance (29 October):** [356](356-v04-current96-release-readiness.md),29/29 required tasks; no publication. Separate explicit decision[354](354-current-code-background-diagnostics.md) also accepts the two exact Code1.143.1 startup descriptors. The earlier352 decision and original failures below remain unchanged.
+
 **29October background-warning decision:** [352](352-background-warnings-maintainer-acceptance.md) accepts only the listed original IT-Tools warning headers and historical Copilot API mismatch for the first release. Raw FAILs remain; unexpected/new errors and all other acceptance requirements are unchanged.
 
 **28 October macOS decision:** the maintainer removed mandatory pre-release macOS installation validation and will check it manually later. Record macOS installation as unverified/deferred, non-blocking; Linux and other release gates remain. [Decision287](287-macos-install-check-deferred.md).
