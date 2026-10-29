@@ -1,0 +1,114 @@
+{
+  "schema": "stateatom.release-background-warning-policy/1",
+  "decision": "354-current-code-background-diagnostics.md",
+  "authority": "Explicit maintainer acceptance on2026-10-29",
+  "historicalRecord": {
+    "file": ".artifacts/v03/guide-source-connection/2026-10-24T04-59-46-554Z/results.json",
+    "sha256": "488e19e546f0b3bd3173419327f98ebf2f7096e3051be84acce8f890c43a2d81",
+    "statusRetained": "FAIL"
+  },
+  "application": {
+    "repository": "CorentinTh/it-tools",
+    "revision": "d505845f918e946ec300af7b36efc107e2f66e9e",
+    "method": "Runtime.consoleAPICalled",
+    "type": "warning",
+    "headers": [
+      {
+        "message": "[intlify] Not found 'tools.xml-to-json.title' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.xml-to-json.description' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.json-to-xml.title' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.json-to-xml.description' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.markdown-to-html.title' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.markdown-to-html.description' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.safelink-decoder.title' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.safelink-decoder.description' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.email-normalizer.title' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.email-normalizer.description' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.regex-tester.title' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.regex-tester.description' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.regex-memo.title' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.regex-memo.description' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.ascii-text-drawer.title' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[intlify] Not found 'tools.ascii-text-drawer.description' key in 'en' locale messages.",
+        "maximumCount": 1
+      },
+      {
+        "message": "[Vue warn]: Invalid prop: type check failed for prop \"component\". Expected Object, got Function ",
+        "maximumCount": 8
+      }
+    ]
+  },
+  "workbench": {
+    "descriptors": [
+      {
+        "surface": "workbench",
+        "type": "warning",
+        "message": "%c WARN color: #993 Via 'product.json#extensionEnabledApiProposals' extension 'github.vscode-pull-request-github' wants API proposal 'agentsWindowActivation' but that proposal DOES NOT EXIST. Likely, the proposal has been finalized (check 'vscode.d.ts') or was abandoned.",
+        "maximumCount": 1
+      },
+      {
+        "surface": "workbench",
+        "type": "error",
+        "message": "%c  ERR color: #f33 Extension 'github.copilot-chat' appears in product.json but enables LESS API proposals than the extension wants.\npackage.json (LOSES): agentSessionsWorkspace\nspeech\nagentsWindowConfiguration\nchatDebug\nchatHooks\nenvIsConnectionMetered\nextensionsAny\nnewSymbolNamesProvider\ninteractive\ncodeActionAI\nactiveComment\ncommentReveal\ncontribCommentThreadAdditionalMenu\ncontribCommentsViewThreadMenus\ncontribChatEditorInlineGutterMenu\ndocumentFiltersExclusive\nembeddings\nfindTextInFiles\nfindTextInFiles2\nlanguageModelToolSupportsModel\nfindFiles2\ntextSearchProvider\nterminalDataWriteEvent\nterminalExecuteCommandEvent\nterminalSelection\nterminalQuickFixProvider\nmappedEditsProvider\naiRelatedInformation\naiSettingsSearch\nchatParticipantAdditions\ndefaultChatParticipant\ncontribSourceControlInputBoxMenu\nauthLearnMore\nauthIssuers\ntestObserver\naiTextSearchProvider\nchatParticipantPrivate\nchatProvider\ncontribDebugCreateConfiguration\nchatReferenceDiagnostic\ntextSearchProvider2\nchatReferenceBinaryDa",
+        "maximumCount": 1
+      }
+    ]
+  },
+  "limits": [
+    "Keep every raw event and classify separately; do not suppress browser logging",
+    "Original raw FAIL remains immutable; this decision is not a new native pass",
+    "Unexpected header/surface/type/count and all execution exceptions remain unaccepted",
+    "Console descriptor fields are observations, not proof of the identity of the emitting code"
+  ],
+  "currentIDE": {
+    "version": "1.143.1",
+    "sha256": "cf8508cc7ddde30cfccc70caeda877a9a99119953c4476dcb30a3eb1a2c415e9",
+    "source": ".artifacts/v03/current96-vue-guide/2026-10-29T15-24-46-121Z/results.json",
+    "sourceSha256": "8344b0b2cf50afdeaf5224fcc88c7b2c863409bef01ae2c6f4e418d6dcfccd79"
+  }
+}

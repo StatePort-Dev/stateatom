@@ -11,10 +11,13 @@ export function classifyReleaseConsole({appConsole=[],console=[],errors=[]},poli
   if(count>limits.get(header.value)){rejected.push({surface:'application',index,reason:'known-header-count-exceeded'});continue;}
   accepted.push({surface:'application',index,header:header.value,decision:policy.decision});
  }
- let workbenchCount=0;
+ const descriptors=policy.workbench?.descriptors||[policy.workbench],workbenchCounts=new Map();
+ for(const d of descriptors)if(!d||typeof d.surface!=='string'||typeof d.type!=='string'||typeof d.message!=='string'||!Number.isSafeInteger(d.maximumCount)||d.maximumCount<1)throw Error('Invalid workbench policy');
  for(const[index,event]of console.entries()){
-  if(event?.surface!==policy.workbench.surface||event?.type!==policy.workbench.type||event?.message!==policy.workbench.message){rejected.push({surface:event?.surface||'unknown',index,reason:'unrecognized-console-descriptor'});continue;}
-  if(++workbenchCount>policy.workbench.maximumCount){rejected.push({surface:'workbench',index,reason:'known-descriptor-count-exceeded'});continue;}
+  const at=descriptors.findIndex(d=>event?.surface===d.surface&&event?.type===d.type&&event?.message===d.message);
+  if(at<0){rejected.push({surface:event?.surface||'unknown',index,reason:'unrecognized-console-descriptor'});continue;}
+  const count=(workbenchCounts.get(at)||0)+1;workbenchCounts.set(at,count);
+  if(count>descriptors[at].maximumCount){rejected.push({surface:'workbench',index,reason:'known-descriptor-count-exceeded'});continue;}
   accepted.push({surface:'workbench',index,decision:policy.decision});
  }
  for(const[index]of errors.entries())rejected.push({surface:'execution-error',index,reason:'never-exempt'});

@@ -48,3 +48,15 @@ isolated Code launch disables only those two unrelated extensions using document
 --disable-extension options; StateAtom stays enabled. This configuration narrows
 IDE acceptance environment, does not suppress logs or expand the exception.
 Corrected preregistration: `current96-vue-guide-install-case.json`.
+
+Second run15:24:46 verified all seven actual installed payload files, including
+case-preserved names, then timed out waiting for a transient success toast. This
+is a driver observation limitation; raw overall FAIL stays. The retained installed
+payload/VSIX/result hashes are bound in current-helper-installation.json. Continue
+in a fresh owned profile with exact copied installed bytes, as the older137 guide
+join did, and require actual public receipt activation plus installed callback.
+No third installation run or new-installation claim is needed; two complementary
+receipts will establish the route if activation/source navigation pass.
+Continuation case: `docs/testing/current96-vue-guide-source-case.json`.
+Separate354 explicitly accepts the two current Code startup descriptors;14 exact
+policy controls pass, original352/historical results remain unchanged.
