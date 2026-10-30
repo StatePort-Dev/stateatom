@@ -110,6 +110,27 @@ extension also offers explicitly permitted HTTPS sites in a separate read-only
 inspection mode.
 Use disposable synthetic applications: interventions reload the page and clear app storage/cache.
 
+## Update the local browser extension
+
+Use one installation directory: **`dist/browser/`** in this checkout. Run:
+
+```sh
+npm run update:extension
+```
+
+Load that directory once in Chrome. For later changes run the same command, then
+press Reload on that existing extension and reopen Atom from the application tab.
+Do not remove/re-add the extension or choose a timestamped `.artifacts/atom/`
+directory for ordinary development. If an archive was installed earlier, switch
+to `dist/browser/` once; issued archives remain unchanged.
+
+The command prepares a complete replacement before updating the stable directory.
+Compilation failure keeps the previous browser output. Concurrent updates are
+refused. `local-build.json` identifies the actual emitted files and Chrome's
+version label includes the local build time. This is a development installation,
+not a published or accepted release. Browser reload remains an explicit user
+action; no background reload interrupts an inspection or input editor.
+
 ## Load the browser and connect the IDE
 
 1. In a Chromium browser with local extension loading, open `chrome://extensions`, enable
@@ -120,9 +141,10 @@ Use disposable synthetic applications: interventions reload the page and clear a
 3. Run **X-Ray: Show local pairing token** from the Command Palette (the existing command ID is
    retained). Enter the displayed local URL/token in the panel. Keep the token private.
    Set app origin to `http://127.0.0.1:4173`, source folder to `tests/fixtures/inspection`, and Pair.
-4. Refresh tabs, choose the React fixture, Attach debugger, then reload the app so collection
-   starts before the API responses. Choose **Disabled**, click **Select page element**, and select
-   **Confirm combined**. The main block shows the snapshot, code-linked expressions and
+4. Open Atom from the React fixture and click **Select page element**. Atom prepares
+   the tab and brings it forward. Select **Confirm combined** to return to the result.
+   For a fresh network capture, reload the app after preparation and select again.
+   Choose the supported **Disabled** property. The main block shows the snapshot, code-linked expressions and
    available observed values; **Open in IDE** opens the corresponding source range.
    After editing or interacting with the app, click **Inspect again**. The displayed values
    are a labelled snapshot, not live values. A skipped branch stays unavailable.

@@ -1,5 +1,7 @@
 # Project status
 
+**2026-10-30 picker follow-up:** [360](completion/360-picker-recovery-and-stable-local-update.md) fixes rejection caused by unrelated long inline styles, adds a visible empty-state selection button and keeps updates in `dist/browser`. 252 scoped checks and HTTP visual/keyboard checks pass; installed-extension retry remains pending. Earlier release evidence below describes its recorded kit.
+
 **Approved plan complete:29/29 (100%).** [Final96 release readiness](completion/356-v04-current96-release-readiness.md) binds actual acceptance, exact local kit and explicit first-release limitations. **Not published.** Linux directory route; macOS deferred/unverified. Earlier checkpoints below retain their dated scope.
 
 **V03 complete on the declared Linux route:** [355](completion/355-v03-current96-acceptance.md), original checkout editing in both hosts and installed Vue source guide; one final review0/0/0. **28/29 (96.55%)**. V04 final ledger/kit notes remain; no publication.

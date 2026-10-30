@@ -337,3 +337,10 @@
 [data-sp-ui][data-atom-root] .sp-atom-handler-link{padding-inline:0;text-align:left;font-family:var(--sp-font-mono);overflow-wrap:anywhere;min-width:0}
 
 [data-sp-ui][data-atom-root] .sp-atom-selection[data-empty="true"] .sp-atom-selection-meta:has([data-atom-id="element-details"][hidden]){display:none}
+
+/* Entry action reuses the supplied picker icon and primary control. No pulse or tooltip hunt. */
+[data-sp-ui][data-atom-root] .sp-atom-welcome { padding:32px 0 28px; text-align:center; }
+[data-sp-ui][data-atom-root] .sp-atom-welcome h2 { font-size:24px; margin:0 0 10px; }
+[data-sp-ui][data-atom-root] .sp-atom-welcome p { max-width:270px; margin:0 auto 24px; font-size:14px; line-height:1.6; }
+[data-sp-ui][data-atom-root] .sp-atom-pick-start { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:48px; max-width:100%; padding:12px 20px; font-size:15px; }
+[data-sp-ui][data-atom-root] .sp-atom-pick-start .sp-icon { width:22px; height:22px; flex-shrink:0; }

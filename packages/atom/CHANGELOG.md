@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- Replace empty-state instructions with a prominent primary selection button using the existing toolbar icon, shared admission/preparation/cancellation and keyboard behavior. Preserve the toolbar for repeat selection. Use a short recovery message for failures and retain the exact diagnostic in a collapsed disclosure. Reuses shared tokens; empty-state composition intentionally differs from the populated reference screens.
+- Do not reject native selection because an unrelated sibling has a long style or other unused attribute. Retain only a bounded optional ID and verify structural fallback against the exact native node. Count distinct indexed nodes, preserve the first failure, and retain node/depth/selector limits.
+
+- Complete the standalone tab picker journey: after native picker readiness, show the application tab; return to the inspector on the matching selected/cancelled/unsupported result. Aborted, foreign or obsolete requests and user focus changes do not take over another tab. Embedded hosts retain their own navigation.
+- Keep local browser updates at `dist/browser` through `npm run update:extension`. Prepare output before replacement; failed/concurrent builds preserve the existing installation. Local build identity is separate from immutable candidate archives; browser reload remains explicit.
+
 - Start element selection from the Atom icon without a separate Connect button or Page connection section. Prepare the inspected tab automatically on that gesture; keep permission denial, debugger ownership and tab-switch guards. Move tab/session permissions into the existing Settings dialog, also available on local pages. Keep the two production change confirmations. Uses existing shared controls and typography; no shared contract change.
 
 - Preserve the selected element when overlapping property refreshes complete; a superseded read cannot replace a newer result. Real context changes and native read failures still reject.

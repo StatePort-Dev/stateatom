@@ -95,7 +95,11 @@ function pickerAdmission(){
  if(known&&options.requestOriginPermission&&p.features['basic.request-site-access'].available)return p.features['basic.request-site-access'];
  return $('source-map-readonly').checked&&known?p.features['basic.attach-read-only']:admission('attach');
 }
-function pickerAvailability(){gate('pick',pickerAdmission(),pickerPreparing);}
+function pickerAvailability(){
+ const picking=['starting','picking','resolving'].includes(selectedState?.picker?.status);
+ for(const id of ['pick','pick-start'])gate(id,picking?admission('cancel-pick'):pickerAdmission(),pickerPreparing||connectionLost);
+ $('pick-start-label').textContent=pickerPreparing?'Preparing…':picking?'Cancel selection':'Select an element';
+}
 function hasSelectedRecord(state){return !!(state.selection||state.stale?.target);}
 function renderInspection(){
  observationHistoryUI.update(selectedState);
@@ -116,14 +120,14 @@ function renderInspection(){
  $('connection-label').textContent=selectedState?.attached?(selectedState.readOnly?'Inspecting · read-only':'Inspecting this tab'):'Not inspecting';
  if(view.observedAt)renderedAt=view.observedAt;
  const hasTarget=!!displayState.selection;
- $('getting-started').hidden=!!selectedState?.attached||hasTarget;
- $('getting-started-title').textContent='Select an element';
- $('getting-started-help').textContent=Number.isSafeInteger(tab())&&tab()>0?'Use the selection icon beside Atom, then click an element on your page.':'Open Atom from the page you want to inspect.';
- $('selection-header').hidden=!selectedState?.attached&&!hasTarget&&!displayState.stale?.target;
+ $('getting-started').hidden=hasTarget||view.stale;
+ $('getting-started-title').textContent='Explore your page';
+ $('getting-started-help').textContent=Number.isSafeInteger(tab())&&tab()>0?'Click anything on your page to take a closer look.':'Open Atom from the page you want to inspect.';
+ $('selection-header').hidden=!hasTarget&&!displayState.stale?.target;
  $('selection-context').hidden=!selectedState?.attached&&!hasTarget&&!view.stale;
  $('selection-tools').hidden=!selectedState?.attached;
- $('inputs-empty').hidden=hasTarget||!selectedState?.attached;
- $('inputs-empty').textContent=view.stale?'This snapshot is out of date. Inspect again to see current values.':'Use the selection icon beside Atom, then click an element on your page.';
+ $('inputs-empty').hidden=!view.stale;
+ $('inputs-empty').textContent=view.stale?'This snapshot is out of date. Inspect again to see current values.':'Click anything on your page to take a closer look.';
  const editing=inputUI.snapshot();
  const editableFeature=supportsCapabilityPolicy(selectedState?.capabilityPolicy)&&['inputs.live','inputs.draft-apply'].some(id=>selectedState.capabilityPolicy.features[id]?.code!=='NOT_IMPLEMENTED');
  $('input-editing-details').hidden=(!editableFeature&&$('input-editor').hidden)||(!hasTarget&&!editing.active&&!editing.opening&&!editing.draft?.dirtyCount);
@@ -172,10 +176,11 @@ function renderInspection(){
  handoffUI.updateCurrent({tabId:tab(),observationSupported:supportsCapabilityPolicy(selectedState?.capabilityPolicy)&&selectedState.capabilityPolicy.features['production.observations']?.code!=='NOT_IMPLEMENTED',observationPolicy:selectedState?.observationPolicy,available:!!(displayState.selection||displayState.stale?.target)&&supportsCapabilityPolicy(selectedState?.capabilityPolicy)&&!connectionLost,contextKey:JSON.stringify([tab(),tabGeneration,selectionGeneration,selectedState?.run,displayState.selection?.domIdentity,displayState.selection?.observedAt,displayState.stale?.at,selectedState?.property,connectionLost,selectedState?.picker?.status,selectedState?.picker?.id])});
  gate('load',admission('inspect-selector'),!displayState.selection?.selector&&!displayState.stale?.target?.selector);
  const picker=selectedState?.picker,picking=['starting','picking','resolving'].includes(picker?.status);
- gate('pick',picking?admission('cancel-pick'):pickerAdmission(),pickerPreparing);$('pick').setAttribute('aria-label',picking?'Cancel element selection':'Select page element');$('pick').setAttribute('aria-pressed',String(picking));$('pick').title=picking?'Cancel selection; Escape also cancels on the page':$('pick').disabled?$('pick').title:'Select page element';
- $('picker-status').hidden=!picking&&picker?.status!=='unsupported';$('picker-status').textContent=picker?.status==='starting'?'Preparing selection…':picking?'Click an element. Cancel here, or Escape (may reach the page).':picker?.reason||'';
+ pickerAvailability();$('pick-start').hidden=!Number.isSafeInteger(tab())||tab()<=0;$('pick-start').setAttribute('aria-pressed',String(picking));$('pick').setAttribute('aria-label',picking?'Cancel element selection':'Select page element');$('pick').setAttribute('aria-pressed',String(picking));$('pick').title=picking?'Cancel selection; Escape also cancels on the page':$('pick').disabled?$('pick').title:'Select page element';
+ $('picker-status').hidden=!picking&&picker?.status!=='unsupported';$('picker-status').textContent=picker?.status==='starting'?'Preparing selection…':picking?'Click an element on your page.':picker?.status==='unsupported'?'Couldn’t select this element. Please try again.':'';
+ $('picker-error-details').hidden=picker?.status!=='unsupported';$('picker-diagnostic').textContent=picker?.status==='unsupported'?picker.reason||'Selection unavailable':'';
  $('element-details').hidden=!target&&!picking&&picker?.status!=='unsupported';
- $('picker-limits').textContent='Escape cancels but may reach page key handlers; Cancel in the inspector avoids page keys. Frame and closed-root internals are unsupported. DOM selection does not establish a source association.'+(picker?.reason?' '+picker.reason:'');
+ $('picker-limits').textContent='Escape cancels but may reach page key handlers; Cancel in the inspector avoids page keys. Frame and closed-root internals are unsupported. DOM selection does not establish a source association.';
  $('picker-parent').hidden=presentation.parentIndex===null;
  $('picker-parent').disabled=!admission('refine-pick')?.available;
  $('picker-parent').onclick=()=>action(async()=>{if(presentation.parentIndex===null)return;const signal=ownPickerRequest(tab(),picker.id);await rpc({op:'refine-pick',tabId:tab(),pickerId:picker.id,index:presentation.parentIndex},signal);await load();});
@@ -287,7 +292,7 @@ $('refresh-tabs').onclick=()=>action(async()=>{await tabs();await action(()=>loa
  await rpc({op:cancelling?'cancel-pick':'pick',tabId:id,pickerId},signal);
  if(!current())return;if(cancelling)ownedPicker=null;
  await load({refreshDeep:!cancelling});
-});$('inspect-selector').onclick=()=>action(()=>inspectSelection($('selector').value,'Manual selection changed'));$('load').onclick=()=>action(inspectAgain);$('detach').onclick=()=>action(async()=>{await rpc({op:'detach',tabId:tab()});await load();});
+});$('pick-start').onclick=()=>{if(!$('pick').disabled)return $('pick').onclick();};$('inspect-selector').onclick=()=>action(()=>inspectSelection($('selector').value,'Manual selection changed'));$('load').onclick=()=>action(inspectAgain);$('detach').onclick=()=>action(async()=>{await rpc({op:'detach',tabId:tab()});await load();});
 $('experiment').onclick=()=>action(async()=>{const id=tab(),generation=selectionGeneration;const field=fields[Number($('fields').value)];$('experiment-result').textContent='Running…';const result=await rpc({op:'experiment',tabId:tab(),field,value:JSON.parse($('value').value),controlPath:$('control').value,actions:JSON.parse($('actions').value)});if(id!==tab()||generation!==selectionGeneration)return;$('experiment-result').textContent=result.status+': '+result.reason;$('evidence').textContent=JSON.stringify(result,null,2);});
 const unsubscribe=client.subscribe(m=>{if(disposed)return;if(['selection','state-invalidated'].includes(m.event)&&m.tabId===tab()){const observer=observation.snapshot();if(m.event==='state-invalidated'&&m.scope==='input-history'&&observer.tabId===m.tabId&&observer.window?.status==='recording'&&m.windowId===observer.window.windowId&&selectedState?.observationAccess==='owned'&&selectedState.productionObservation?.windowId===observer.window.windowId&&!observer.connectionLost){
  if(m.inspectionChanged===true){analysis=null;selectedState={...selectedState,analysis:null};renderInspection();}

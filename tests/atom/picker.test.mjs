@@ -43,3 +43,34 @@ test('abort of an older refinement cannot cancel its newer successor',async t=>{
  const waits=[];let count=0;const f=nativeFixture({onSelect:async()=>{if(count++>0)await new Promise(r=>waits.push(r));}});t.after(()=>f.controller.dispose());await f.controller.start(7,'r');await f.controller.event(7,'Overlay.inspectNodeRequested',{backendNodeId:104});const id=f.controller.snapshot(7).id,abort=new AbortController();
  const a=f.controller.refine(7,id,1,{signal:abort.signal}).catch(e=>e);while(waits.length<1)await new Promise(r=>setTimeout(r,0));const b=f.controller.refine(7,id,0);while(waits.length<2)await new Promise(r=>setTimeout(r,0));abort.abort();assert.equal(f.selected.at(-1).context.current(),true);waits[0]();await a;waits[1]();await b;
 });
+
+test('repeated native child metadata counts distinct nodes rather than event deliveries',()=>{
+ const tree=picker.createPickerIndex({maxNodes:4});tree.root({nodeId:1,backendNodeId:101,nodeType:9,children:[element(2,'body')]});
+ for(let i=0;i<10;i++)tree.children(2,[{...element(3,'button'),children:[element(4,'span')]}]);
+ assert.equal(tree.path(4)[0].node.backendNodeId,104);
+ assert.throws(()=>tree.children(2,[element(5,'button')]),/budget/);
+});
+test('an unrelated long inline style cannot poison a small native selection path',()=>{
+ const tree=picker.createPickerIndex();tree.root({nodeId:1,backendNodeId:101,nodeType:9,children:[element(2,'body')]});
+ tree.children(2,[element(3,'output',['id','text-result']),element(4,'div',['style','x'.repeat(7237)])]);
+ assert.equal(tree.path(3)[0].selector,'#text-result');
+});
+test('oversized ID or attribute lists use a structural path without retaining unrelated values',()=>{
+ const tree=picker.createPickerIndex();tree.root({nodeId:1,backendNodeId:101,nodeType:9,children:[element(2,'body')]});
+ tree.children(2,[element(3,'button',['id','x'.repeat(7237)]),element(4,'button',Array.from({length:130},(_,i)=>i%2?'x':'data-test-'+i))]);
+ assert.equal(tree.path(3)[0].selector,'body:nth-of-type(1) > button:nth-of-type(1)');
+ assert.equal(tree.path(4)[0].selector,'body:nth-of-type(1) > button:nth-of-type(2)');
+});
+test('a rejected DOM event retains its original failure when the pending path read completes',async t=>{
+ let controller;
+ const f=nativeFixture({send:async(id,m,p,root)=>{
+  if(m==='DOM.getDocument')return{root};
+  if(m==='DOM.pushNodesByBackendIdsToFrontend'){
+   await controller.event(id,'DOM.setChildNodes',{parentId:2,nodes:[{nodeId:0,backendNodeId:0,nodeType:1}]});
+   return{nodeIds:[999]};
+  }
+  return{};
+ }});controller=f.controller;t.after(()=>controller.dispose());
+ await controller.start(7,'r');await controller.event(7,'Overlay.inspectNodeRequested',{backendNodeId:104});
+ assert.equal(controller.snapshot(7).status,'unsupported');assert.equal(controller.snapshot(7).reason,'Native picker node unavailable');assert.equal(f.selected.length,0);
+});

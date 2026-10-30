@@ -7,10 +7,15 @@ const escaped=id=>/^[A-Za-z_][\w-]*$/.test(id)?id:[...id].map(c=>'\\'+c.codePoin
 export function createPickerIndex({maxNodes=4096,maxDepth=48}={}){
  let nodes=new Map(),documentId,count=0,broken=false;
  function ingest(raw,parent=null,depth=0){
-  if(++count>maxNodes||depth>maxDepth){broken=true;fail('Native picker path budget exceeded');}
+  if((!nodes.has(raw?.nodeId)&&++count>maxNodes)||depth>maxDepth){broken=true;fail('Native picker path budget exceeded');}
   if(!positive(raw?.nodeId)||!positive(raw.backendNodeId))fail('Native picker node unavailable');
-  const attrs=raw.attributes||[];if(attrs.length>128||attrs.some(x=>typeof x!=='string'||x.length>2048)){broken=true;fail('Native picker attribute budget exceeded');}
-  const at=attrs.findIndex((value,index)=>index%2===0&&value==='id'),id=at>=0&&at%2===0?attrs[at+1]:null;
+  // Only an optional short ID is useful here. Inline styles, data URLs and
+  // other attributes on unrelated siblings are not path metadata. Keep the
+  // scan/storage bounded and fall back to exact-checked structural selectors.
+  const attrs=raw.attributes||[];let id=null;
+  if(attrs.length<=128)for(let i=0;i<attrs.length;i+=2){
+   if(attrs[i]==='id'){const value=attrs[i+1];if(typeof value==='string'&&value.length<=160&&!value.includes('\0'))id=value;break;}
+  }
   const n={nodeId:raw.nodeId,backendNodeId:raw.backendNodeId,nodeType:raw.nodeType,localName:raw.localName,parent,shadowRootType:raw.shadowRootType,id,children:[],roots:[]};nodes.set(n.nodeId,n);
   for(const child of raw.children||[]){n.children.push(child.nodeId);ingest(child,n.nodeId,depth+1);}
   for(const root of raw.shadowRoots||[]){n.roots.push(root.nodeId);ingest(root,n.nodeId,depth+1);}
@@ -119,7 +124,7 @@ export function createNativePicker({send,current,onSelect,onChange=()=>{},now=Da
     if(method!=='Overlay.inspectNodeRequested'||!['starting','picking'].includes(s.status))return;
     s.status='resolving';await stop(id);await readDOM(id,async()=>{if(!live(id,s))fail('Picker session changed');const {root}=await send(id,'DOM.getDocument',{depth:1,pierce:true});if(root.backendNodeId!==s.document)fail('Picker document changed');s.index.root(root);
     const {nodeIds}=await send(id,'DOM.pushNodesByBackendIdsToFrontend',{backendNodeIds:[p.backendNodeId]});await Promise.resolve();s.choices=s.index.path(nodeIds?.[0]);s.index=null;});await select(id,s,0);
-   }catch(e){if(s.status==='cancelled'||sessions.get(id)!==s)return;s.status='unsupported';s.reason=e.message;s.controller?.abort();clearTimeout(s.timer);changed(id);}
+   }catch(e){if(s.status==='cancelled'||sessions.get(id)!==s)return;if(s.status!=='unsupported'){s.status='unsupported';s.reason=e.message;}s.controller?.abort();clearTimeout(s.timer);changed(id);}
   },
   async dispose(){await Promise.allSettled([...sessions.keys()].map(id=>cancel(id,'Picker disposed')));sessions.clear();}
  };
