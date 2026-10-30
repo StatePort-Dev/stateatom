@@ -1,5 +1,7 @@
 # Project status
 
+**2026-10-30 inspector entry simplified:** [362](completion/362-simple-inspector-entry.md) removes IDE connection from the toolbar and first Basic result. Source access is an optional contextual action; the existing handshake remains. 141 affected checks and 360/440px rendering/keyboard checks pass. Browser build updated in the same `dist/browser`; installed IDE confirmation remains separately unverified.
+
 **2026-10-30 optional IDE connection:** [361](completion/361-source-connection-flow.md) implements the approved Atom button → IDE confirmation flow and a useful Basic next action. Browser/IDE builds and scoped helper/UI checks pass; installed confirmation and source-result acceptance remain pending. No manual receipt transfer is needed on the normal route. This follow-up does not requalify or publish the historical release kit.
 
 **2026-10-30 picker follow-up:** [360](completion/360-picker-recovery-and-stable-local-update.md) fixes rejection caused by unrelated long inline styles, adds a visible empty-state selection button and keeps updates in `dist/browser`. 252 scoped checks and HTTP visual/keyboard checks pass; installed-extension retry remains pending. Earlier release evidence below describes its recorded kit.

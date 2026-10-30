@@ -23,7 +23,7 @@ function fixture(request,options={}){
  let onEvent;const connectionListeners=new Set();const client={request:async(m,o)=>request?.(m,o)??(m.op==='tabs'?list:m.op==='list-diagnostics'?[]:m.op==='list-handoffs'?{entries:[],expired:[]}:m.op==='state'?state(m.tabId):{}),subscribeConnection:fn=>{connectionListeners.add(fn);return()=>connectionListeners.delete(fn);},subscribe:fn=>{onEvent=fn;return()=>{};}};
  return {$,state,list,emit:m=>onEvent(m),disconnect:()=>{for(const fn of connectionListeners)fn({state:'closed',code:'INSPECTOR_DISCONNECTED'});},view:mountAtom(host,client,{idPrefix:'',...options})};
 }
-test('mounted Basic reuses its existing summary/action while keeping evidence details available',async()=>{const f=fixture();await f.view.ready;assert.match(f.$('inspection-summary').textContent,/DOM snapshot/);assert.equal(f.$('inspection-next').textContent,'Connect IDE');assert.equal(f.$('property-explanation-block').hidden,true);assert.equal(f.$('explanation-details').hidden,false);await f.view.dispose();});
+test('mounted Basic reuses its existing summary/action while keeping evidence details available',async()=>{const f=fixture();await f.view.ready;assert.match(f.$('inspection-summary').textContent,/DOM snapshot/);assert.equal(f.$('inspection-next').textContent,'View element details');assert.equal(f.$('property-explanation-block').hidden,true);assert.equal(f.$('explanation-details').hidden,false);await f.view.dispose();});
 test('ordinary HTTP attach requires read and inject but no cache permission',async()=>{
  const {describeCapabilities}=await import('../../packages/atom/src/capabilities.mjs');
  for(const cache of[false,true]){
@@ -452,4 +452,12 @@ test('edits drafted during an IDE confirmation are retained before pairing can c
  const pending=deferred();t.mock.method(globalThis,'fetch',()=>pending.promise);const f=await pendingOwnedEditorFixture();try{
   f.$('bridge').value=directReceipt.url;const connecting=f.$('source-connect').onclick();await tick();await f.$('input-mode-draft').onclick();f.field().value='20';f.field().oninput();pending.resolve(new Response(JSON.stringify({ok:true,result:directReceipt})));await connecting;assert.equal(f.field().value,'20');assert.equal(f.field().disabled,false);assert.match(f.$('source-connect-status').textContent,/Apply or discard/);assert.equal(f.plans.length,0);
  }finally{await f.dispose();}
+});
+
+test('first-result details action opens recorded evidence without initiating IDE pairing',async t=>{
+ const calls=[];t.mock.method(globalThis,'fetch',()=>{throw Error('Basic must not contact the IDE');});const f=fixture(m=>{calls.push(m.op);});try{await f.view.ready;f.$('evidence-section').closest=()=>({dataset:{atomScreen:'evidence'}});assert.equal(f.$('inspection-next').textContent,'View element details');await f.$('inspection-next').onclick();assert.equal(f.$('evidence-section').hidden,false);assert.equal(f.$('inputs-section').hidden,true);assert.equal(calls.includes('pair'),false);assert.equal(f.$('source-project').hidden,true);}finally{await f.view.dispose();}
+});
+test('source connection and its feedback belong to Source; first-screen toolbar only offers picking and Settings',async()=>{
+ const {template}=await import('../../packages/atom/src/template.mjs');const toolbar=template.match(/aria-label="Atom tools">([\s\S]*?)<\/div>/)[1];assert.match(toolbar,/data-atom-id="pick"/);assert.match(toolbar,/data-atom-id="settings-toggle"/);assert.doesNotMatch(toolbar,/Connect IDE|source-connect/);
+ const source=template.indexOf('id="source-section"'),details=template.indexOf('id="evidence-section"');for(const id of ['source-connect','source-connect-status']){const position=template.indexOf('id="'+id+'"');assert(position>source&&position<details);assert.equal(template.split('data-atom-id="'+id+'"').length-1,1);}
 });

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Keep the inspector entry focused on selecting an element and reading its result. Move Connect IDE and its status out of the toolbar into Source; retain the contextual action under dependency details. Basic single-property results open recorded Details instead of initiating pairing. Preserve the existing one-confirmation flow, draft/cancellation guards and native selection identity. Shared tokens and primitives are unchanged; this supersedes the toolbar placement below.
+
 - Add optional Connect IDE in the Atom toolbar: one explicit gesture requests a scoped source-access confirmation in the trusted VS Code workspace. Reuse authenticated pairing; keep manual receipts collapsed under advanced options. Cancellation, context changes and pending page drafts cannot silently complete the connection. No IDE request is made before the gesture.
 - Replace the missing-dependencies dead end with page fields where implemented, or recorded element details. Keep code-dependency limits in a disclosure and keep page fields separate from traced inputs. Uses shared controls, spacing and typography; the toolbar action and Basic empty state are documented deviations from the populated prototype, with no shared token or contract change.
 

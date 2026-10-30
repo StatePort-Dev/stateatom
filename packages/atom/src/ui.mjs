@@ -84,8 +84,8 @@ const actionsUI=createActionUI({document,$,rpc,cleanupRpc:m=>client.request(m),t
 inputUI=createInputUI({document,$,client,preview:options.inputEditorPreview===true,onPermission:()=>$('input-permissions').click()});
 let handoffUI;const observation=createObservationController({client,onChange:s=>handoffUI?.updateObservation(s)}),observationOwnerId=observation.snapshot().ownerId;
 const observationHistoryUI=createObservationHistoryUI({$,client});
-const propertyUI=createElementPropertiesUI({document,$,onValues:slots=>inputUI.setValueSlots(slots),refresh:()=>$('load').click(),connectProject:()=>$('source-connect').click(),reviewProject:()=>reveal('source-connection'),viewPageFields:()=>{reveal('input-editing-details');if(!inputUI.snapshot().active&&!$('input-editor').hidden&&!$('input-open').disabled)return inputUI.open();},viewDetails:()=>reveal('element-property-evidence'),openSource:source=>action(async()=>{await rpc({op:'open',tabId:tab(),source});})});
-const explanationUI=createInspectionExplanationUI({document,$,onNext:id=>{if(id==='connect-project')$('source-connect').click();else if(id==='inspect-again')$('load').click();}});
+const propertyUI=createElementPropertiesUI({document,$,onValues:slots=>inputUI.setValueSlots(slots),refresh:()=>$('load').click(),connectProject:connectSourceProject,reviewProject:()=>reveal('source-connection'),viewPageFields:()=>{reveal('input-editing-details');if(!inputUI.snapshot().active&&!$('input-editor').hidden&&!$('input-open').disabled)return inputUI.open();},viewDetails:()=>reveal('element-property-evidence'),openSource:source=>action(async()=>{await rpc({op:'open',tabId:tab(),source});})});
+const explanationUI=createInspectionExplanationUI({document,$,onNext:id=>{if(id==='connect-project')connectSourceProject();else if(id==='inspect-again')$('load').click();}});
 const productionUI=createProductionUI({$,client,onRefresh:load,prepareEnable:selectedRecovery,onEnabled:async recovery=>{if(await reconnectSelection(recovery,{readOnly:true})){reveal('input-editing-details');await inputUI.open();}},onAttach:async()=>{await rpc({op:'attach',tabId:tab(),readOnly:true});await load();}});
 function lostConnection(){if(disposed)return;cancelSourceConnection();connectionLost=true;ownedPicker?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);inputUI.update(null);$('status').textContent='Inspector connection lost. Reopen this inspector to continue.';}
 const offConnection=client.subscribeConnection?.(lostConnection)||(()=>{});
@@ -152,10 +152,10 @@ function renderInspection(){
  $('detach').hidden=!selectedState?.attached;
  $('load').hidden=connectionLost||!view.target&&!view.stale;
  const pendingPicker=['starting','picking','resolving'].includes(selectedState?.picker?.status);
- const next={attach:['Select page element',()=>$('pick').click()],'select-element':[pendingPicker?'Cancel element selection':'Select page element',()=>$('pick').click()],'inspect-again':['Inspect again',()=>$('load').click()],'connect-project':['Connect IDE',()=>$('source-connect').click()],'start-observation':['Set up input observation',()=>reveal('source-connection')],unsupported:['View supported boundaries',()=>reveal('evidence-scope-details')]};
+ const next={attach:['Select page element',()=>$('pick').click()],'select-element':[pendingPicker?'Cancel element selection':'Select page element',()=>$('pick').click()],'inspect-again':['Inspect again',()=>$('load').click()],'connect-project':['View element details',()=>reveal('evidence-section')],'start-observation':['Set up input observation',()=>reveal('source-connection')],unsupported:['View supported boundaries',()=>reveal('evidence-scope-details')]};
  const [nextLabel,nextAction]=next[view.nextStep];$('inspection-next').textContent=nextLabel;$('inspection-next').onclick=nextAction;
  $('inspection-next').disabled=view.nextStep==='inspect-again'&&(!admission('inspect-selector')?.available||!selectedState?.selection&&!selectedState?.stale?.target)||view.nextStep==='select-element'&&!admission(pendingPicker?'cancel-pick':'pick')?.available;
- $('source-project').textContent=view.mode==='Basic'?'Connect IDE':'Connection options';
+ $('source-project').textContent='Connection options';$('source-project').hidden=view.mode==='Basic';
  $('source-overview').textContent=view.stale?'Source links expired with this snapshot. Inspect again.':view.sources.length?view.sources.length+' code-linked source location'+(view.sources.length===1?'':'s')+'. A code link alone does not establish execution or data ancestry.':'No selected-property source association. Connect the project for supported source links, or explore this release’s sources separately.';
  const target=selection||displayState.stale?.target;
  const trial=selectedState?.diagnosticExperiment;
@@ -237,10 +237,11 @@ function renderInspection(){
  $('experiment-eligibility').textContent=!eligible?(admission('deep-experiment')?.reason||'Capability unavailable'):selection?.property==='text'&&candidates.length?'Text response experiment available for a recorded JSON leaf. Response presence alone is not dependency. Trials reset storage/cache and reload; server writes are not undone.':'Controlled property trials require explicit response variants below. The simpler response-field experiment supports text only. Trials reset storage/cache and reload; server writes are not undone.';
  $('evidence').textContent=selectedState?JSON.stringify({analysis:displayAnalysis,events:selectedState.events,bufferBytes:selectedState.bufferBytes,...(matchingTrial?{experiment:trial}:{})},null,2):'';
 }
+function connectSourceProject(){reveal('source-connect');return $('source-connect').click();}
 function reveal(id){const e=$(id),scroller=$('scroll');navigation.reveal(e);for(let parent=e;parent&&parent!==root;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;scroller.scrollTop+=e.getBoundingClientRect().top-scroller.getBoundingClientRect().top-16;(e.tagName==='DETAILS'?e.querySelector('summary'):e).focus({preventScroll:true});}
  $('diagnostic-toggle').onclick=()=>reveal('diagnostics-details');
  $('action-source-setup').onclick=()=>reveal('source-section');
- $('source-project').onclick=()=>{if(selectedState?.analysis?.capabilities?.sourceResolver==='open-ide')reveal('source-connection');else $('source-connect').click();};$('source-import').onclick=()=>reveal('source-map-details');
+ $('source-project').onclick=()=>{if(selectedState?.analysis?.capabilities?.sourceResolver==='open-ide')reveal('source-connection');else connectSourceProject();};$('source-import').onclick=()=>reveal('source-map-details');
  for(const d of root.querySelectorAll('.sp-atom-tools > details, .sp-atom-inspection > details'))d.classList.add('sp-disclosure');
 let fields=[];
 function clearInspection(keepTarget=true,{preserveViewport=false,preserveIntent=false}={}){if(!preserveIntent){++selectionIntent;void observation.contextChanged();}if(!preserveViewport)renderedAt=null;++selectionGeneration;const property=$('property').value;++loadGeneration;selectedState=keepTarget&&selectedState?{...selectedState,selection:null,analysis:null,stale:null}:null;analysis=null;renderInspection();if(keepTarget)$('property').value=property;}
