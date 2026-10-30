@@ -10,6 +10,7 @@ export function createHandoffLibrary({$,document,rpc,onContext,openReport,openLe
   if(disposed)return;const entry=selected();
   $('export-report').disabled=$('delete-report').disabled=!entry||!!work;
   $('report-refresh').disabled=!!work;
+  $('report-select').disabled=!entries.length;
   onContext({available:entry?.version===1&&!work,contextKey:entry?.id??null});
  }
  function current(token){return !disposed&&work===token&&!token.signal.aborted;}
@@ -29,6 +30,7 @@ export function createHandoffLibrary({$,document,rpc,onContext,openReport,openLe
    const label=e.version===2?e.title||'Issue report':e.property?'Saved '+e.property+' snapshot':'Saved snapshot';
    option.textContent=label+' · '+new Date(e.createdAt).toLocaleString();return option;
   }));
+  if(!entries.length){const option=document.createElement('option');option.value='';option.textContent='No saved reports yet';$('report-select').replaceChildren(option);}
   $('report-select').value=entries.some(e=>e.id===chosen)?chosen:entries.at(-1)?.id||'';
   if(previous!==$('report-select').value)selectionEpoch++;
   render();

@@ -72,3 +72,9 @@ test('unknown nested input format gives useful import refusal and preserves exac
  const future=JSON.parse(raw);future.inputEvidence.schema='stateatom.input-evidence/99';const canonical=x=>JSON.stringify(function sort(v){return Array.isArray(v)?v.map(sort):v&&typeof v==='object'?Object.fromEntries(Object.keys(v).sort().map(k=>[k,sort(v[k])])):v;}(x));future.inputEvidenceDigest=await handoffArtifactDigest(canonical({inputEvidence:future.inputEvidence,inputPrivacy:future.inputPrivacy}));
  for(const incoming of[canonical(future),raw.replace('"profile":"input-evidence/1"','"profile":"input-evidence/99"')]){await f.import(incoming);assert.match(f.$('diagnostic-status').textContent,/not supported.*compatible export/i);assert.doesNotMatch(f.$('diagnostic-status').textContent,/UNSUPPORTED_INPUT_EVIDENCE/);assert.equal((await f.store.open(record.id)).raw,raw);assert.equal((await f.store.list()).entries.length,before);assert.equal(f.calls.filter(x=>x.op==='save-handoff').length,saves);assert.equal(f.$('report-import').value,'');}f.library.dispose();
 });
+
+
+test('empty report library explains the empty selector and enables it after saving',async()=>{
+ const f=await fixture();await f.library.refresh();assert.equal(f.$('report-select').disabled,true);assert.equal(f.$('report-select').children[0].textContent,'No saved reports yet');
+ await f.store.save(v1());await f.library.refresh();assert.equal(f.$('report-select').disabled,false);assert(f.$('report-select').value);f.library.dispose();
+});

@@ -39,3 +39,12 @@ test('Basic offers page fields without inventing dependencies or automatically o
 test('Basic falls back to observed details when page editing is not implemented and updates on admission changes',()=>{
  const f=fixture(),s=basicState();s.capabilityPolicy.features={'inputs.live':{available:false,code:'NOT_IMPLEMENTED'}};f.ui.render(s);let nodes=allNodes(f.$('element-properties'));assert(!nodes.some(n=>n.textContent==='View page fields'));nodes.find(n=>n.textContent==='View element details').onclick();assert.deepEqual(f.actions,['details']);s.capabilityPolicy.features['inputs.live']={available:true};f.ui.render(s);nodes=allNodes(f.$('element-properties'));assert(nodes.some(n=>n.textContent==='View page fields'));
 });
+
+
+test('ordinary Details shows property readings while raw records stay in technical details',()=>{
+ const f=fixture();f.ui.render(state());
+ assert.match(text(f.$('element-property-evidence')),/Confirm/);
+ assert.doesNotMatch(text(f.$('element-property-evidence')),/Scoped property records|Evidence and limits/);
+ assert.match(text(f.$('element-property-technical')),/Scoped property records|Evidence and limits/);
+ f.ui.render({...state(),picker:{status:'picking'}});assert.equal(f.$('element-property-technical').hidden,true);
+});

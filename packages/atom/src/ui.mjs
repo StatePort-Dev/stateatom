@@ -40,7 +40,7 @@ export function mountAtom(rootElement,client,options={}){
  const later=(fn,ms)=>{const timer=setTimeout(()=>{timers.delete(timer);if(!disposed)fn();},ms);timers.add(timer);};
 let ownedPicker,pickerPreparing=false,sourceConnectionRequest=null;
 function cancelSourceConnection(){sourceConnectionRequest?.abort();sourceConnectionRequest=null;}
-function sourceConnectionControls(){const origin=$('tabs').selectedOptions?.[0]?.dataset.origin;$('source-connect').disabled=connectionLost||!origin||!origin.startsWith('http:');$('source-connect').textContent=sourceConnectionRequest?'Cancel connection':'Connect IDE';$('source-connect').title=sourceConnectionRequest?'Cancel the pending IDE request':'Optional: connect source code with one confirmation in VS Code';}
+function sourceConnectionControls(){$('source-connect-help').hidden=selectedState?.analysis?.capabilities?.sourceResolver==='open-ide';const origin=$('tabs').selectedOptions?.[0]?.dataset.origin;$('source-connect').disabled=connectionLost||!origin||!origin.startsWith('http:');$('source-connect').textContent=sourceConnectionRequest?'Cancel connection':'Connect IDE';$('source-connect').title=sourceConnectionRequest?'Cancel the pending IDE request':'Optional: connect source code with one confirmation in VS Code';}
 function ownPickerRequest(tabId,id){ownedPicker?.controller?.abort();const own={tabId,id,controller:new AbortController()};ownedPicker=own;return AbortSignal.any([controller.signal,own.controller.signal]);}
 
 let analysis,selectedState,loadGeneration=0,selectionGeneration=0,tabGeneration=0,tabsGeneration=0,tabsInitialized=false,renderedAt,restorationNotice,selectionIntent=0;
@@ -84,7 +84,7 @@ const actionsUI=createActionUI({document,$,rpc,cleanupRpc:m=>client.request(m),t
 inputUI=createInputUI({document,$,client,preview:options.inputEditorPreview===true,onPermission:()=>$('input-permissions').click()});
 let handoffUI;const observation=createObservationController({client,onChange:s=>handoffUI?.updateObservation(s)}),observationOwnerId=observation.snapshot().ownerId;
 const observationHistoryUI=createObservationHistoryUI({$,client});
-const propertyUI=createElementPropertiesUI({document,$,onValues:slots=>inputUI.setValueSlots(slots),refresh:()=>$('load').click(),connectProject:connectSourceProject,reviewProject:()=>reveal('source-connection'),viewPageFields:()=>{reveal('input-editing-details');if(!inputUI.snapshot().active&&!$('input-editor').hidden&&!$('input-open').disabled)return inputUI.open();},viewDetails:()=>reveal('element-property-evidence'),openSource:source=>action(async()=>{await rpc({op:'open',tabId:tab(),source});})});
+const propertyUI=createElementPropertiesUI({document,$,onValues:slots=>inputUI.setValueSlots(slots),refresh:()=>$('load').click(),connectProject:connectSourceProject,reviewProject:()=>reveal('source-connection'),viewPageFields:()=>{reveal('input-editing-details');if(!inputUI.snapshot().active&&!$('input-editor').hidden)return inputUI.open();},viewDetails:()=>reveal('element-property-evidence'),openSource:source=>action(async()=>{await rpc({op:'open',tabId:tab(),source});})});
 const explanationUI=createInspectionExplanationUI({document,$,onNext:id=>{if(id==='connect-project')connectSourceProject();else if(id==='inspect-again')$('load').click();}});
 const productionUI=createProductionUI({$,client,onRefresh:load,prepareEnable:selectedRecovery,onEnabled:async recovery=>{if(await reconnectSelection(recovery,{readOnly:true})){reveal('input-editing-details');await inputUI.open();}},onAttach:async()=>{await rpc({op:'attach',tabId:tab(),readOnly:true});await load();}});
 function lostConnection(){if(disposed)return;cancelSourceConnection();connectionLost=true;ownedPicker?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);inputUI.update(null);$('status').textContent='Inspector connection lost. Reopen this inspector to continue.';}
@@ -102,6 +102,9 @@ function pickerAvailability(){
  const picking=['starting','picking','resolving'].includes(selectedState?.picker?.status);
  for(const id of ['pick','pick-start'])gate(id,picking?admission('cancel-pick'):pickerAdmission(),pickerPreparing||connectionLost);
  $('pick-start-label').textContent=pickerPreparing?'Preparing…':picking?'Cancel selection':'Select an element';
+ $('pick-start').className='sp-atom-pick-start '+(picking?'sp-button-subtle':'sp-button-primary');
+ $('getting-started-title').textContent=pickerPreparing?'Opening your page…':picking?'Choose an element':'Explore your page';
+ $('getting-started-help').textContent=picking?'On your page, hover to preview and click to inspect. Press Esc to cancel.':Number.isSafeInteger(tab())&&tab()>0?'Click anything on your page to take a closer look.':'Open Atom from the page you want to inspect.';
 }
 function hasSelectedRecord(state){return !!(state.selection||state.stale?.target);}
 function renderInspection(){
@@ -125,8 +128,6 @@ function renderInspection(){
  if(view.observedAt)renderedAt=view.observedAt;
  const hasTarget=!!displayState.selection;
  $('getting-started').hidden=hasTarget||view.stale;
- $('getting-started-title').textContent='Explore your page';
- $('getting-started-help').textContent=Number.isSafeInteger(tab())&&tab()>0?'Click anything on your page to take a closer look.':'Open Atom from the page you want to inspect.';
  $('selection-header').hidden=!hasTarget&&!displayState.stale?.target;
  $('selection-context').hidden=!selectedState?.attached&&!hasTarget&&!view.stale;
  $('selection-tools').hidden=!selectedState?.attached;
@@ -167,7 +168,7 @@ function renderInspection(){
  const presentation=selectionPresentation(headerSelection&&latestText?{...headerSelection,text:latestText.value}:selection||headerSelection,{stale:!headerSelection&&view.stale,picker:selectedState?.picker});
  $('selection-title').textContent=presentation.title;$('selection-title').title=selection?.text||presentation.title;
  $('selection-value').textContent=presentation.value;$('selection-value').hidden=!!displayState.elementInspection||!hasTarget;
- $('selection-kind').textContent=presentation.kind;$('selection-header').setAttribute('data-empty',String(!target));
+ $('selection-kind').textContent=presentation.kind;$('selection-kind').hidden=presentation.kind===presentation.title;$('selection-header').setAttribute('data-empty',String(!target));
  $('commit-summary').textContent=view.commit.status+' · '+view.commit.reason;
  $('native-state-summary').hidden=!view.nativeStateAncestors;
  $('native-state-summary').textContent=view.nativeStateAncestors?.summary||'';
@@ -181,7 +182,7 @@ function renderInspection(){
  gate('load',admission('inspect-selector'),!displayState.selection?.selector&&!displayState.stale?.target?.selector);
  const picker=selectedState?.picker,picking=['starting','picking','resolving'].includes(picker?.status);
  pickerAvailability();$('pick-start').hidden=!Number.isSafeInteger(tab())||tab()<=0;$('pick-start').setAttribute('aria-pressed',String(picking));$('pick').setAttribute('aria-label',picking?'Cancel element selection':'Select page element');$('pick').setAttribute('aria-pressed',String(picking));$('pick').title=picking?'Cancel selection; Escape also cancels on the page':$('pick').disabled?$('pick').title:'Select page element';
- $('picker-status').hidden=!picking&&picker?.status!=='unsupported';$('picker-status').textContent=picker?.status==='starting'?'Preparing selection…':picking?'Click an element on your page.':picker?.status==='unsupported'?'Couldn’t select this element. Please try again.':'';
+ $('picker-status').hidden=picker?.status!=='unsupported'&&(!picking||!$('getting-started').hidden);$('picker-status').textContent=picker?.status==='starting'?'Preparing selection…':picking?'Click an element on your page.':picker?.status==='unsupported'?'Couldn’t select this element. Please try again.':'';
  $('picker-error-details').hidden=picker?.status!=='unsupported';$('picker-diagnostic').textContent=picker?.status==='unsupported'?picker.reason||'Selection unavailable':'';
  $('element-details').hidden=!target&&!picking&&picker?.status!=='unsupported';
  $('picker-limits').textContent='Escape cancels but may reach page key handlers; Cancel in the inspector avoids page keys. Frame and closed-root internals are unsupported. DOM selection does not establish a source association.';

@@ -97,8 +97,8 @@ test('product warm model never arms cold300s budget and still expires at120s',as
  finally{f.$('action-cancel').onclick();await pending;}
  assert.equal(destroy,1);
 });
-test('empty and stale Actions hide explanation setup; unknown current binding offers source exploration',async t=>{const f=setup(async()=>({}),undefined,t);f.ui.render({});assert.equal(f.$('action-explanation-tools').hidden,true);assert.equal(f.$('action-source-setup').hidden,true);const s=explanationFixture();f.ui.render(s);assert.equal(f.$('action-explanation-tools').hidden,false);assert.equal(f.$('action-source-setup').hidden,false);assert.equal(f.$('action-evidence-kind').textContent,'Not established');f.ui.render({...s,stale:{reason:'Navigation'}});assert.equal(f.$('action-explanation-tools').hidden,true);assert.equal(f.$('action-source-setup').hidden,true);assert.equal(f.$('action-evidence-kind').textContent,'Stale snapshot');});
-test('source handlers use a scoped code-linked heading rather than a global execution claim',async t=>{const f=setup(async()=>({}),undefined,t);f.ui.render(sourceState());assert.equal(f.$('action-evidence-kind').textContent,'Code-linked');assert.equal(f.$('action-source-setup').hidden,true);});
+test('empty and stale Actions hide explanation setup; unknown current binding offers source exploration',async t=>{const f=setup(async()=>({}),undefined,t);f.ui.render({});assert.equal(f.$('action-explanation-tools').hidden,true);assert.equal(f.$('action-source-setup').hidden,true);const s=explanationFixture();f.ui.render(s);assert.equal(f.$('action-explanation-tools').hidden,true);assert.equal(f.$('action-source-setup').hidden,false);assert.equal(f.$('action-evidence-kind').textContent,'Not linked');assert.match(f.$('action-summary').textContent,/may still respond/);f.ui.render(sourceState());assert.equal(f.$('action-explanation-tools').hidden,false);f.ui.render({...s,stale:{reason:'Navigation'}});assert.equal(f.$('action-explanation-tools').hidden,true);assert.equal(f.$('action-source-setup').hidden,true);assert.equal(f.$('action-evidence-kind').textContent,'Stale snapshot');});
+test('source handlers use a scoped code-linked heading rather than a global execution claim',async t=>{const f=setup(async()=>({}),undefined,t);f.ui.render(sourceState());assert.equal(f.$('action-evidence-kind').textContent,'Code-linked');assert.match(f.$('action-summary').textContent,/execution not observed/);assert.equal(f.$('action-source-setup').hidden,false);});
 
 
 test('handler card avoids a duplicate bare symbol while retaining a distinct binding expression',t=>{
@@ -108,3 +108,10 @@ test('handler card avoids a duplicate bare symbol while retaining a distinct bin
 });
 
 test('a current model selection renders a separate note and preserves the deterministic action answer',async t=>{const s=sourceState();let destroyed=0;const f=setup(async()=>s,{availability:async()=> 'available',create:async()=>({prompt:async()=>JSON.stringify({schema:'stateatom.local-derived-annotation/4',claimIds:['action-finding','binding-boundary']}),destroy(){destroyed++;}})},t);f.ui.render(s);await f.$('action-explain').onclick();const template=f.$('action-explanation').textContent;f.$('action-local-enabled').checked=true;await f.$('action-explain').onclick();assert.equal(f.$('action-explanation').textContent,template);assert.match(f.$('action-local-note').textContent,/does not establish invocation/);assert.equal(destroyed,1);f.$('action-local-enabled').checked=false;f.$('action-local-enabled').onchange();assert.equal(f.$('action-local-note').textContent,'');assert.equal(f.$('action-explanation').textContent,template);});
+
+
+test('recorded action with unavailable IDE retains a route to source options',t=>{
+ const f=setup(async()=>({}),undefined,t),s=sourceState();f.ui.render(s);
+ assert.equal(f.$('action-source-setup').hidden,false);assert.equal(f.$('action-explanation-tools').hidden,false);
+ assert.match(f.$('action-summary').textContent,/execution not observed/);
+});

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Complete ten bounded UX passes on inspector entry, fields, Details, picker feedback, Live, Draft/Apply, error recovery, undo/reopen, optional IDE, Actions and settings/report navigation. Explain the empty saved-report list and label Settings return correctly. Page fields open on entry in Dependencies; technical records share one disclosure in Details. Keep edit modes visible, prevent busy-frame shifts, keep Apply reachable in narrow views, explain discarded drafts and restore focus after Stop editing. Simplify empty Actions and preserve readable source records when IDE access is unavailable. Shared tokens/primitives and evidence contracts remain unchanged. These are Atom layout deviations from the populated UX prototype, checked in the real mounted UI with an inert adapter; installed extension/IDE acceptance is separate. See `docs/tasks/ux-main-flows-review.md` for each pass and limitations.
+
 - Keep the inspector entry focused on selecting an element and reading its result. Move Connect IDE and its status out of the toolbar into Source; retain the contextual action under dependency details. Basic single-property results open recorded Details instead of initiating pairing. Preserve the existing one-confirmation flow, draft/cancellation guards and native selection identity. Shared tokens and primitives are unchanged; this supersedes the toolbar placement below.
 
 - Add optional Connect IDE in the Atom toolbar: one explicit gesture requests a scoped source-access confirmation in the trusted VS Code workspace. Reuse authenticated pairing; keep manual receipts collapsed under advanced options. Cancellation, context changes and pending page drafts cannot silently complete the connection. No IDE request is made before the gesture.

@@ -18,12 +18,12 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
  }
  function render(state){
   const bundle=state?.elementInspection,visible=!!bundle&&(!!state.selection||!!state.stale)&&!['starting','picking','resolving'].includes(state.picker?.status);
-  for(const id of ['element-properties','element-property-evidence','element-property-sources'])$(id).hidden=!visible;
+  for(const id of ['element-properties','element-property-evidence','element-property-technical','element-property-sources'])$(id).hidden=!visible;
   if(!visible){key=null;disposeLocal();onValues([]);return false;}
   const globalStale=state.stale||state.analysis?.actionsInvalidated===true||state.analysis?.stateatom?.runtime?.status==='Stale';
   openDecision=state.capabilityPolicy?.operations?.open;const next=JSON.stringify([bundle,globalStale,openDecision,state.run,state.sourceGeneration,state.inspectionGeneration,state.analysis?.capabilities,state.stale,state.selection,state.attached,state.capabilityPolicy?.features?.['inputs.live'],state.capabilityPolicy?.features?.['inputs.draft-apply']]);if(key===next)return true;key=next;
   disposeLocal();
-  const valueSlots=[],inputs=[],evidence=[],sources=[],sourceGroups=new Map();let staleCount=0,selectedListSupported=false;
+  const valueSlots=[],inputs=[],evidence=[],technical=[],sources=[],sourceGroups=new Map();let staleCount=0,selectedListSupported=false;
   for(const row of bundle.properties){
    const name=row.property==='text'?'Text':'Disabled attribute',stale=row.status==='Stale'||!!globalStale;
    const scoped={...state,selection:row.selection,analysis:stale?null:row.analysis,stale:stale?{target:row.selection,reason:row.reason||state.stale?.reason||'Inspection changed; inspect again.'}:null};
@@ -49,14 +49,13 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
     if(!stale&&projectGroundedAnnotation(facts)){const local=createPropertyLocalExplanationCard({document,facts,property:row.property});localCards.push(local);card.append(local.element);}
     inputs.push(card);
    }
-   const group=el('details',undefined,'sp-disclosure');group.append(el('summary',name+' · '+(stale?'Stale':row.status)));const body=el('div');
+   const group=el('section',undefined,'sp-atom-property-card');const heading=el('div',undefined,'sp-section-row');heading.append(el('h3',name,'sp-section-title'),el('span',stale?'Stale':row.status,'sp-status'));group.append(heading);const body=el('div'),records=el('details',undefined,'sp-disclosure');records.append(el('summary',name+' · '+(stale?'Stale':row.status)));
    if(row.selection)body.append(el('p','Recorded '+new Date(row.selection.observedAt).toLocaleTimeString()+' · '+row.property+' = '+JSON.stringify(row.selection.value),'sp-atom-hint'));
    if(row.latestObservation)body.append(el('p','Separately checked '+new Date(row.latestObservation.observedAt).toLocaleTimeString()+' · '+row.property+' = '+JSON.stringify(row.latestObservation.value)+'. Code explanation has not been refreshed.','sp-atom-hint'));
    if(row.property==='disabled')body.append(el('p','Native disabled attribute only; this does not establish whether the element can be clicked.'));
-   if(row.reason)body.append(el('p',row.reason));const explanation=el('div');renderExplanationDetails(document,explanation,facts);body.append(explanation);
-   body.append(el('p',view.commit.status+' · '+view.commit.reason,'sp-atom-hint'));
-   if(row.analysis){const raw=el('details');raw.append(el('summary','Scoped property records'),el('pre',JSON.stringify({sources:row.analysis.sources,stateatom:row.analysis.stateatom},null,2)));body.append(raw);}
-   group.append(body);evidence.push(group);
+   if(row.reason)body.append(el('p',row.reason));const explanation=el('details');explanation.append(el('summary','Evidence and limits'));renderExplanationDetails(document,explanation,facts);explanation.append(el('p',view.commit.status+' · '+view.commit.reason,'sp-atom-hint'));records.append(explanation);
+   if(row.analysis){const raw=el('details');raw.append(el('summary','Scoped property records'),el('pre',JSON.stringify({sources:row.analysis.sources,stateatom:row.analysis.stateatom},null,2)));records.append(raw);}
+   group.append(body);evidence.push(group);technical.push(records);
    for(const source of view.sources){const id=JSON.stringify(source),group=sourceGroups.get(id)||{source,names:[]};if(!group.names.includes(name))group.names.push(name);sourceGroups.set(id,group);}
   }
   for(const {source,names} of sourceGroups.values()){const locations=el('section',undefined,'sp-atom-property-card');locations.append(el('h4',names.join(' · '),'sp-section-title'));sourceRows(locations,{sources:[source]});sources.push(locations);}
@@ -73,7 +72,7 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
    const source=el('button',connected?'Review source setup':'Connect IDE','sp-button-subtle');source.type='button';source.onclick=connected?reviewProject:connectProject;setup.append(source);empty.append(setup);inputs.push(empty);
   }else if(staleCount){const update=el('button','Refresh changed dependencies','sp-button-subtle');update.type='button';update.onclick=refresh;inputs.push(update);}
   const focused=document.activeElement,caret=focused?.selectionStart!=null?[focused.selectionStart,focused.selectionEnd,focused.selectionDirection]:null;
-  $('element-properties').replaceChildren(...inputs);onValues(valueSlots);if(focused?.isConnected&&document.activeElement!==focused){focused.focus?.({preventScroll:true});if(caret)focused.setSelectionRange?.(...caret);}$('element-properties').hidden=!inputs.length;$('element-property-evidence').replaceChildren(...evidence);$('element-property-sources').replaceChildren(...sources);return true;
+  $('element-properties').replaceChildren(...inputs);onValues(valueSlots);if(focused?.isConnected&&document.activeElement!==focused){focused.focus?.({preventScroll:true});if(caret)focused.setSelectionRange?.(...caret);}$('element-properties').hidden=!inputs.length;$('element-property-evidence').replaceChildren(...evidence);$('element-property-technical').replaceChildren(...technical);$('element-property-sources').replaceChildren(...sources);return true;
  }
  return {render,dispose:disposeLocal};
 }

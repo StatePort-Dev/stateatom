@@ -99,3 +99,31 @@ test('empty fields hide value headings and do not mask a later permission error'
   assert.doesNotMatch(f.$('input-status').textContent,/No response fields/);
  }finally{await f.view.dispose();}
 });
+
+test('one requested field open waits for capabilities and never opens a different selection',async()=>{
+ for(const changeTarget of [false,true]){
+  let resolve,opens=0;const capabilities=new Promise(r=>resolve=r),elements=new Map(),$=id=>{if(!elements.has(id))elements.set(id,node());return elements.get(id);};
+  const state={tabId:1,run:target.run,property:target.property,capabilityPolicy:cap,selection:{domIdentity:{document:target.document,node:target.node,property:target.property}}};
+  const client={request:async p=>{if(p.op==='capabilities')return capabilities;if(p.op==='inputs-open'){opens++;return{investigationId:'open-after-capability',sourceKind:'dom-control',target,revision:0,closed:false,resources:[],history:[],unsupported:[]};}if(p.op==='inputs-close')return{};throw Error(p.op);}},view=createInputUI({document:{createElement:node},$,client});
+  try{view.update(state);const opening=view.open();assert.equal(opens,0);if(changeTarget)view.update({...state,selection:{domIdentity:{...state.selection.domIdentity,node:'different'}}});resolve(cap);await opening;assert.equal(opens,changeTarget?0:1);}finally{await view.dispose();}
+ }
+});
+
+
+test('discard describes the local cancellation instead of resurfacing an earlier successful write',async()=>{
+ const f=await fixture({initialValue:5});try{
+  const state=f.state();state.inputs.revision++;state.inputs.history=[{kind:'apply',phase:'applied'}];f.view.update(state);
+  await f.$('input-mode-draft').onclick();const field=find(f.row(),'INPUT');field.value='-';field.oninput();await f.$('input-discard').onclick();
+  assert.equal(f.$('input-status').textContent,'Draft discarded. No page change was sent.');
+  assert.equal(f.calls.filter(p=>p.op==='inputs-apply').length,0);
+ }finally{await f.view.dispose();}
+});
+
+
+test('opening the fields disclosure loads once on the explicit gesture, not on mount',async()=>{
+ let opens=0;const elements=new Map(),$=id=>{if(!elements.has(id))elements.set(id,node());return elements.get(id);};
+ const summary=node('summary');$('input-editing-details').querySelector=()=>summary;
+ const state={tabId:1,run:target.run,property:target.property,capabilityPolicy:cap,selection:{domIdentity:{document:target.document,node:target.node,property:target.property}}};
+ const client={request:async p=>{if(p.op==='capabilities')return cap;if(p.op==='inputs-open'){opens++;return{investigationId:'explicit-fields',sourceKind:'dom-control',target,revision:0,closed:false,resources:[],history:[],unsupported:[]};}if(p.op==='inputs-close')return{};throw Error(p.op);}},view=createInputUI({document:{createElement:node},$,client});
+ try{view.update(state);await new Promise(setImmediate);assert.equal(opens,0);assert.equal($('input-open').hidden,true);await summary.onclick();assert.equal(opens,1);await summary.onclick();assert.equal(opens,1);}finally{await view.dispose();}
+});

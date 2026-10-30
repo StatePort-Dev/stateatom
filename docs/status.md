@@ -1,5 +1,7 @@
 # Project status
 
+**2026-10-30 ten UX passes completed:** [scenario review](tasks/ux-main-flows-review.md) records the findings, fixes and rechecks. Fields open directly in Dependencies, Details hides technical records behind one disclosure, editing modes and Apply stay reachable, recovery and optional IDE guidance are clearer. Atom checks: 1643 pass / 0 fail / 5 skips; final presentation follow-up: 129 pass. Stable `dist/browser` updated. Rendered checks used the real UI with an inert adapter; installed picker, native writes and IDE acceptance are not established by this work.
+
 **2026-10-30 inspector entry simplified:** [362](completion/362-simple-inspector-entry.md) removes IDE connection from the toolbar and first Basic result. Source access is an optional contextual action; the existing handshake remains. 141 affected checks and 360/440px rendering/keyboard checks pass. Browser build updated in the same `dist/browser`; installed IDE confirmation remains separately unverified.
 
 **2026-10-30 optional IDE connection:** [361](completion/361-source-connection-flow.md) implements the approved Atom button → IDE confirmation flow and a useful Basic next action. Browser/IDE builds and scoped helper/UI checks pass; installed confirmation and source-result acceptance remain pending. No manual receipt transfer is needed on the normal route. This follow-up does not requalify or publish the historical release kit.

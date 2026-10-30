@@ -346,3 +346,17 @@
 [data-sp-ui][data-atom-root] .sp-atom-pick-start .sp-icon { width:22px; height:22px; flex-shrink:0; }
 
 [data-sp-ui][data-atom-root] .sp-atom-source-connect-status { overflow-wrap:anywhere; }
+
+/* Busy state must not add the browser's default 3px border to the editor.
+   Keep aria-busy and the live status without changing field geometry. */
+[data-sp-ui][data-atom-root] .sp-atom-input-editor[aria-busy="true"] { border:0; }
+[data-sp-ui][data-atom-root] .sp-atom-input-control :is(input,textarea,select)[aria-invalid="true"] { border-style:solid; }
+[data-sp-ui][data-atom-root] [data-atom-id="inputs-section"]:has([data-atom-id="input-editing-details"][open]) .sp-atom-dependencies-empty { display:none; }
+[data-sp-ui][data-atom-root] .sp-atom-scroll:has([data-atom-id="inputs-section"][hidden]) [data-atom-id="getting-started"] { display:none; }
+/* Let the one owned action bar stick within the editor, not a bar-sized wrapper. */
+[data-sp-ui][data-atom-root] [data-atom-id="input-actions-home"] { display:contents; }
+
+/* A recorded handler remains readable when opening its source is unavailable. */
+[data-sp-ui][data-atom-root] .sp-atom-handler-link:disabled { opacity:1; color:var(--sp-color-muted); cursor:default; }
+
+[data-sp-ui][data-atom-root] .sp-atom-dependency-link:disabled { opacity:1; color:var(--sp-color-text); cursor:default; }
