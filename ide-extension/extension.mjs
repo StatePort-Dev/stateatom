@@ -9,7 +9,14 @@ export async function activate(context){
   const root=folder.uri.fsPath,allowed=()=>vscode.workspace.isTrusted&&folders().some(f=>f.uri.fsPath===root);
   const cfg=vscode.workspace.getConfiguration('stateatom',folder.uri);
   const resolve=async(full,source,command)=>{if(!allowed())throw Error('Workspace trust changed');const uri=vscode.Uri.file(full);await vscode.workspace.openTextDocument(uri);return vscode.commands.executeCommand(command,uri,new vscode.Position(source.line-1,source.column-1));};
-  try{await session.start({root,port:cfg.get('helperPort',47731),isAllowed:allowed,onOpen:async(full,source)=>{
+  try{await session.start({root,port:cfg.get('helperPort',47731),isAllowed:allowed,onConnectionRequest:async({origin,signal})=>{
+   const sourceRoot=vscode.workspace.getConfiguration('stateatom',folder.uri).get('sourceFolder','.');
+   const before=await session.receipt({origin,sourceRoot});if(signal.aborted||!allowed())return null;
+   const choice=await vscode.window.showInformationMessage('Allow Atom to inspect source code for '+origin+'?',{modal:true,detail:'Project: '+folder.name+'\nSource folder: '+root+(sourceRoot==='.'?'':'/'+sourceRoot)+'\nAccess lasts for this helper session. You can stop it with StateAtom: Disconnect source helper. No files are changed.'},'Allow source access');
+   if(choice!=='Allow source access'||signal.aborted||!allowed())return null;
+   if(vscode.workspace.getConfiguration('stateatom',folder.uri).get('sourceFolder','.')!==sourceRoot)return null;
+   const after=await session.receipt({origin,sourceRoot});return before.helper.session===after.helper.session?{sourceRoot}:null;
+  },onOpen:async(full,source)=>{
    if(!allowed())throw Error('Workspace trust changed');
    const document=await vscode.workspace.openTextDocument(vscode.Uri.file(full)),start=new vscode.Position(source.line-1,source.column-1),end=new vscode.Position(Math.max(source.line-1,(source.endLine||source.line)-1),Math.max(0,(source.endColumn||source.column)-1));
    if(!allowed())throw Error('Workspace trust changed');const editor=await vscode.window.showTextDocument(document,{preview:false,selection:new vscode.Range(start,end)});editor.revealRange(editor.selection);

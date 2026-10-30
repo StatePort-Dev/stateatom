@@ -44,3 +44,14 @@ test('review: Disconnect wins over pending startup; competing starts leave only 
  const first=api.start({root:'/one',port:53029,isAllowed:()=>true}).then(()=>true,e=>e.message);await begun;const stopping=api.stop();delayed=false;resolvePath('/one');await first;await stopping;assert.equal(api.connection,null);assert.equal(created,closed);
  const a=api.start({root:'/one',port:53029,isAllowed:()=>true}).catch(()=>null),b=api.start({root:'/two',port:53029,isAllowed:()=>true});await Promise.all([a,b]);assert.equal(api.connection.root,'/two');await api.stop();assert.equal(created,closed);
 });
+
+test('IDE confirmation names exact origin/folder; denial, cancellation and changed trust/configuration never approve',async()=>{
+ const {readFile}=await import('node:fs/promises'),{runInNewContext}=await import('node:vm');
+ const src=(await readFile(new URL('../ide-extension/extension.mjs',import.meta.url),'utf8')).replace(/^import .*;\n/gm,'').replaceAll('export async function','async function').replaceAll('export function','function');
+ for(const outcome of['allow','deny','cancel','trust','folder','session']){
+  let callback,trusted=true,sourceRoot='app',generation=receipt.helper.session,prompt;const controller=new AbortController(),folder={name:'Demo',uri:{scheme:'file',fsPath:'/demo'}};
+  const session={connection:null,start:async o=>{callback=o.onConnectionRequest;session.connection={root:o.root};},stop:async()=>{},receipt:async()=>({...receipt,helper:{...receipt.helper,session:generation}})};
+  const vscode={workspace:{get isTrusted(){return trusted;},workspaceFolders:[folder],getConfiguration:()=>({get:(key,d)=>key==='sourceFolder'?sourceRoot:d}),onDidGrantWorkspaceTrust:()=>({}),onDidChangeWorkspaceFolders:()=>({})},commands:{registerCommand:()=>({})},window:{showInformationMessage:async(...args)=>{prompt=args;if(outcome==='cancel')controller.abort();if(outcome==='trust')trusted=false;if(outcome==='folder')sourceRoot='other';if(outcome==='session')generation='new-session';return outcome==='deny'?undefined:'Allow source access';},showErrorMessage(){}}};
+  await runInNewContext(src+'\nactivate({subscriptions:[]})',{vscode,createHelperSession:()=>session});const result=await callback({origin:receipt.origin,signal:controller.signal});assert.match(prompt[0],/http:\/\/localhost:5173/);assert.equal(prompt[1].modal,true);assert.match(prompt[1].detail,/\/demo\/app/);assert.doesNotMatch(JSON.stringify(prompt),new RegExp(receipt.token));assert.equal(result?.sourceRoot,outcome==='allow'?'app':undefined);
+ }
+});

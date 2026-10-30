@@ -5,7 +5,7 @@ import {dependencyResponseBinding} from './dependency-editing.mjs';
 import {renderExplanationDetails} from './inspection-explanation-ui.mjs';
 import {createPropertyLocalExplanationCard} from './property-local-explanation-ui.mjs';
 import {projectGroundedAnnotation} from '../../../core/grounded-annotations.mjs';
-export function createElementPropertiesUI({document,$,openSource,connectProject,refresh=()=>{},onValues=()=>{}}){
+export function createElementPropertiesUI({document,$,openSource,connectProject,reviewProject=connectProject,viewPageFields=()=>{},viewDetails=()=>{},refresh=()=>{},onValues=()=>{}}){
  let key,openDecision,localCards=[];
  const disposeLocal=()=>{for(const card of localCards)card.dispose();localCards=[];};
  const el=(tag,text,className)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(className)n.className=className;return n;};
@@ -21,7 +21,7 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
   for(const id of ['element-properties','element-property-evidence','element-property-sources'])$(id).hidden=!visible;
   if(!visible){key=null;disposeLocal();onValues([]);return false;}
   const globalStale=state.stale||state.analysis?.actionsInvalidated===true||state.analysis?.stateatom?.runtime?.status==='Stale';
-  openDecision=state.capabilityPolicy?.operations?.open;const next=JSON.stringify([bundle,globalStale,openDecision,state.run,state.sourceGeneration,state.inspectionGeneration,state.analysis?.capabilities,state.stale,state.selection,state.attached]);if(key===next)return true;key=next;
+  openDecision=state.capabilityPolicy?.operations?.open;const next=JSON.stringify([bundle,globalStale,openDecision,state.run,state.sourceGeneration,state.inspectionGeneration,state.analysis?.capabilities,state.stale,state.selection,state.attached,state.capabilityPolicy?.features?.['inputs.live'],state.capabilityPolicy?.features?.['inputs.draft-apply']]);if(key===next)return true;key=next;
   disposeLocal();
   const valueSlots=[],inputs=[],evidence=[],sources=[],sourceGroups=new Map();let staleCount=0,selectedListSupported=false;
   for(const row of bundle.properties){
@@ -63,8 +63,14 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
   if(!sources.length)sources.push(el('p',staleCount?'Source links are out of date. Refresh the inspection.':'No source locations linked to this element.','sp-help'));
   if(!inputs.length&&staleCount){inputs.push(el('p','Refresh dependencies after changing page values.','sp-help'));}
   else if(!inputs.length&&!selectedListSupported){
-   const empty=el('section',undefined,'sp-atom-dependencies-empty');empty.append(el('h3',staleCount?'Refresh dependencies':'Dependencies not found','sp-title'),el('p',staleCount?'The page changed. Inspect this element again to update its expression and inputs.':'Atom can see the element, but has not linked it to the code that produces it.','sp-help'));
-   const connected=state.analysis?.capabilities?.sourceResolver==='open-ide';const action=el('button',staleCount?'Inspect again':connected?'Set up runtime inspection':'Connect project','sp-button-primary');action.type='button';action.onclick=staleCount?refresh:connectProject;empty.append(action);inputs.push(empty);
+   const empty=el('section',undefined,'sp-atom-dependencies-empty');
+   const fields=['inputs.live','inputs.draft-apply'].some(id=>{const feature=state.capabilityPolicy?.features?.[id];return feature&&(feature.available||feature.code&&feature.code!=='NOT_IMPLEMENTED');});
+   empty.append(el('h3','Element selected','sp-title'),el('p',fields?'You can explore this page’s fields and try supported changes.':'The element’s recorded properties are available in Details.','sp-help'));
+   const action=el('button',fields?'View page fields':'View element details','sp-button-primary');action.type='button';action.onclick=fields?viewPageFields:viewDetails;empty.append(action);
+   const setup=el('details',undefined,'sp-disclosure');setup.append(el('summary','About code dependencies'),el('p','Code dependencies haven’t been recorded for this element. Page fields are separate; they are not a traced dependency list.','sp-help'));
+   const connected=state.analysis?.capabilities?.sourceResolver==='open-ide';
+   setup.append(el('p',connected?'This project is connected. The selected computation may need supported development instrumentation; some paths remain unsupported.':'To trace supported computations, connect this project’s source code. Basic page inspection does not require this.','sp-help'));
+   const source=el('button',connected?'Review source setup':'Connect IDE','sp-button-subtle');source.type='button';source.onclick=connected?reviewProject:connectProject;setup.append(source);empty.append(setup);inputs.push(empty);
   }else if(staleCount){const update=el('button','Refresh changed dependencies','sp-button-subtle');update.type='button';update.onclick=refresh;inputs.push(update);}
   const focused=document.activeElement,caret=focused?.selectionStart!=null?[focused.selectionStart,focused.selectionEnd,focused.selectionDirection]:null;
   $('element-properties').replaceChildren(...inputs);onValues(valueSlots);if(focused?.isConnected&&document.activeElement!==focused){focused.focus?.({preventScroll:true});if(caret)focused.setSelectionRange?.(...caret);}$('element-properties').hidden=!inputs.length;$('element-property-evidence').replaceChildren(...evidence);$('element-property-sources').replaceChildren(...sources);return true;

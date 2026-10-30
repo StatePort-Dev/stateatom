@@ -344,3 +344,6 @@
 [data-sp-ui][data-atom-root] .sp-atom-welcome p { max-width:270px; margin:0 auto 24px; font-size:14px; line-height:1.6; }
 [data-sp-ui][data-atom-root] .sp-atom-pick-start { display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:48px; max-width:100%; padding:12px 20px; font-size:15px; }
 [data-sp-ui][data-atom-root] .sp-atom-pick-start .sp-icon { width:22px; height:22px; flex-shrink:0; }
+
+[data-sp-ui][data-atom-root] .sp-atom-source-connect-status { flex:none; margin:0; padding:10px 16px; border-bottom:1px solid var(--sp-color-border); font-size:12px; overflow-wrap:anywhere; }
+[data-sp-ui][data-atom-root] [data-atom-id="source-connect"] { font-size:12px; white-space:nowrap; }

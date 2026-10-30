@@ -1,0 +1,8 @@
+{
+  "folders": [{"name": "StateAtom demo", "path": "../../tests/fixtures/inspection"}],
+  "settings": {
+    "stateatom.appOrigin": "http://127.0.0.1:4173",
+    "stateatom.sourceFolder": ".",
+    "stateatom.helperPort": 47731
+  }
+}

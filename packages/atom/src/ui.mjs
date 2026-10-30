@@ -1,3 +1,4 @@
+import {requestProjectConnection} from './project-connect.mjs';
 import {renderSelectedList} from './selected-list-ui.mjs';
 import {createElementPropertiesUI} from './element-properties-ui.mjs';
 import {createObservationHistoryUI} from './observation-history-ui.mjs';
@@ -37,7 +38,9 @@ export function mountAtom(rootElement,client,options={}){
  $('reader-link').href=options.readerURL||'reader.html';
  let disposed=false,connectionLost=false;const controller=new AbortController(),urls=new Set(),timers=new Set();
  const later=(fn,ms)=>{const timer=setTimeout(()=>{timers.delete(timer);if(!disposed)fn();},ms);timers.add(timer);};
-let ownedPicker,pickerPreparing=false;
+let ownedPicker,pickerPreparing=false,sourceConnectionRequest=null;
+function cancelSourceConnection(){sourceConnectionRequest?.abort();sourceConnectionRequest=null;}
+function sourceConnectionControls(){const origin=$('tabs').selectedOptions?.[0]?.dataset.origin;$('source-connect').disabled=connectionLost||!origin||!origin.startsWith('http:');$('source-connect').textContent=sourceConnectionRequest?'Cancel connection':'Connect IDE';$('source-connect').title=sourceConnectionRequest?'Cancel the pending IDE request':'Optional: connect source code with one confirmation in VS Code';}
 function ownPickerRequest(tabId,id){ownedPicker?.controller?.abort();const own={tabId,id,controller:new AbortController()};ownedPicker=own;return AbortSignal.any([controller.signal,own.controller.signal]);}
 
 let analysis,selectedState,loadGeneration=0,selectionGeneration=0,tabGeneration=0,tabsGeneration=0,tabsInitialized=false,renderedAt,restorationNotice,selectionIntent=0;
@@ -81,10 +84,10 @@ const actionsUI=createActionUI({document,$,rpc,cleanupRpc:m=>client.request(m),t
 inputUI=createInputUI({document,$,client,preview:options.inputEditorPreview===true,onPermission:()=>$('input-permissions').click()});
 let handoffUI;const observation=createObservationController({client,onChange:s=>handoffUI?.updateObservation(s)}),observationOwnerId=observation.snapshot().ownerId;
 const observationHistoryUI=createObservationHistoryUI({$,client});
-const propertyUI=createElementPropertiesUI({document,$,onValues:slots=>inputUI.setValueSlots(slots),refresh:()=>$('load').click(),connectProject:()=>reveal('source-connection'),openSource:source=>action(async()=>{await rpc({op:'open',tabId:tab(),source});})});
-const explanationUI=createInspectionExplanationUI({document,$,onNext:id=>{if(id==='connect-project')reveal('source-connection');else if(id==='inspect-again')$('load').click();}});
+const propertyUI=createElementPropertiesUI({document,$,onValues:slots=>inputUI.setValueSlots(slots),refresh:()=>$('load').click(),connectProject:()=>$('source-connect').click(),reviewProject:()=>reveal('source-connection'),viewPageFields:()=>{reveal('input-editing-details');if(!inputUI.snapshot().active&&!$('input-editor').hidden&&!$('input-open').disabled)return inputUI.open();},viewDetails:()=>reveal('element-property-evidence'),openSource:source=>action(async()=>{await rpc({op:'open',tabId:tab(),source});})});
+const explanationUI=createInspectionExplanationUI({document,$,onNext:id=>{if(id==='connect-project')$('source-connect').click();else if(id==='inspect-again')$('load').click();}});
 const productionUI=createProductionUI({$,client,onRefresh:load,prepareEnable:selectedRecovery,onEnabled:async recovery=>{if(await reconnectSelection(recovery,{readOnly:true})){reveal('input-editing-details');await inputUI.open();}},onAttach:async()=>{await rpc({op:'attach',tabId:tab(),readOnly:true});await load();}});
-function lostConnection(){if(disposed)return;connectionLost=true;ownedPicker?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);inputUI.update(null);$('status').textContent='Inspector connection lost. Reopen this inspector to continue.';}
+function lostConnection(){if(disposed)return;cancelSourceConnection();connectionLost=true;ownedPicker?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);inputUI.update(null);$('status').textContent='Inspector connection lost. Reopen this inspector to continue.';}
 const offConnection=client.subscribeConnection?.(lostConnection)||(()=>{});
 $('inspector-reconnect').onclick=()=>{if(typeof options.onReconnect==='function')void options.onReconnect();};
 function admission(op){const p=selectedState?.capabilityPolicy;return supportsCapabilityPolicy(p)?p.operations?.[op]:{available:false,reason:'Host does not advertise capability policy v1; update the Atom host'};}
@@ -102,6 +105,7 @@ function pickerAvailability(){
 }
 function hasSelectedRecord(state){return !!(state.selection||state.stale?.target);}
 function renderInspection(){
+ sourceConnectionControls();
  observationHistoryUI.update(selectedState);
  productionUI.update(selectedState);
  $('load').hidden=connectionLost;$('inspector-reconnect').hidden=!connectionLost||typeof options.onReconnect!=='function';
@@ -148,10 +152,10 @@ function renderInspection(){
  $('detach').hidden=!selectedState?.attached;
  $('load').hidden=connectionLost||!view.target&&!view.stale;
  const pendingPicker=['starting','picking','resolving'].includes(selectedState?.picker?.status);
- const next={attach:['Select page element',()=>$('pick').click()],'select-element':[pendingPicker?'Cancel element selection':'Select page element',()=>$('pick').click()],'inspect-again':['Inspect again',()=>$('load').click()],'connect-project':['Connect project for source',()=>reveal('source-connection')],'start-observation':['Set up input observation',()=>reveal('source-connection')],unsupported:['View supported boundaries',()=>reveal('evidence-scope-details')]};
+ const next={attach:['Select page element',()=>$('pick').click()],'select-element':[pendingPicker?'Cancel element selection':'Select page element',()=>$('pick').click()],'inspect-again':['Inspect again',()=>$('load').click()],'connect-project':['Connect IDE',()=>$('source-connect').click()],'start-observation':['Set up input observation',()=>reveal('source-connection')],unsupported:['View supported boundaries',()=>reveal('evidence-scope-details')]};
  const [nextLabel,nextAction]=next[view.nextStep];$('inspection-next').textContent=nextLabel;$('inspection-next').onclick=nextAction;
  $('inspection-next').disabled=view.nextStep==='inspect-again'&&(!admission('inspect-selector')?.available||!selectedState?.selection&&!selectedState?.stale?.target)||view.nextStep==='select-element'&&!admission(pendingPicker?'cancel-pick':'pick')?.available;
- $('source-project').textContent=view.mode==='Basic'?'Connect project':'Project connection';
+ $('source-project').textContent=view.mode==='Basic'?'Connect IDE':'Connection options';
  $('source-overview').textContent=view.stale?'Source links expired with this snapshot. Inspect again.':view.sources.length?view.sources.length+' code-linked source location'+(view.sources.length===1?'':'s')+'. A code link alone does not establish execution or data ancestry.':'No selected-property source association. Connect the project for supported source links, or explore this release’s sources separately.';
  const target=selection||displayState.stale?.target;
  const trial=selectedState?.diagnosticExperiment;
@@ -236,11 +240,11 @@ function renderInspection(){
 function reveal(id){const e=$(id),scroller=$('scroll');navigation.reveal(e);for(let parent=e;parent&&parent!==root;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;scroller.scrollTop+=e.getBoundingClientRect().top-scroller.getBoundingClientRect().top-16;(e.tagName==='DETAILS'?e.querySelector('summary'):e).focus({preventScroll:true});}
  $('diagnostic-toggle').onclick=()=>reveal('diagnostics-details');
  $('action-source-setup').onclick=()=>reveal('source-section');
- $('source-project').onclick=()=>reveal('source-connection');$('source-import').onclick=()=>reveal('source-map-details');
+ $('source-project').onclick=()=>{if(selectedState?.analysis?.capabilities?.sourceResolver==='open-ide')reveal('source-connection');else $('source-connect').click();};$('source-import').onclick=()=>reveal('source-map-details');
  for(const d of root.querySelectorAll('.sp-atom-tools > details, .sp-atom-inspection > details'))d.classList.add('sp-disclosure');
 let fields=[];
 function clearInspection(keepTarget=true,{preserveViewport=false,preserveIntent=false}={}){if(!preserveIntent){++selectionIntent;void observation.contextChanged();}if(!preserveViewport)renderedAt=null;++selectionGeneration;const property=$('property').value;++loadGeneration;selectedState=keepTarget&&selectedState?{...selectedState,selection:null,analysis:null,stale:null}:null;analysis=null;renderInspection();if(keepTarget)$('property').value=property;}
-async function changeContext(){const productionCleanup=productionUI.contextChanged(),observationCleanup=observation.contextChanged('tab-switch'),inputCleanup=inputUI.close('Selected tab changed'),owned=ownedPicker;owned?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);if(owned)await client.request({op:'cancel-pick',tabId:owned.tabId,pickerId:owned.id}).catch(()=>{});await Promise.all([inputCleanup,productionCleanup,observationCleanup]);}
+async function changeContext(){cancelSourceConnection();$('source-connect-status').hidden=true;const productionCleanup=productionUI.contextChanged(),observationCleanup=observation.contextChanged('tab-switch'),inputCleanup=inputUI.close('Selected tab changed'),owned=ownedPicker;owned?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);if(owned)await client.request({op:'cancel-pick',tabId:owned.tabId,pickerId:owned.id}).catch(()=>{});await Promise.all([inputCleanup,productionCleanup,observationCleanup]);}
 function retainPendingEdits(){if(!inputUI.snapshot().draft?.dirtyCount)return false;reveal('input-editing-details');inputUI.explainPendingDraft();return true;}
 async function inspectSelection(selector,reason,expectedIdentity){
  if(retainPendingEdits())return;
@@ -255,6 +259,23 @@ async function inspectAgain(){
  return inspectSelection(selector,'Inspect again');
 }
 function flatten(v,p='',out=[]){if(v!==null&&typeof v==='object')for(const[k,x]of Object.entries(v))flatten(x,p?p+'.'+k:k,out);else out.push({path:p,value:v});return out;}
+$('source-connect').onclick=()=>{
+ if(sourceConnectionRequest){cancelSourceConnection();sourceConnectionControls();$('source-connect-status').textContent='Connection cancelled. Page inspection is still available.';return;}
+ if(retainPendingEdits())return;
+ const own=new AbortController(),signal=AbortSignal.any([controller.signal,own.signal,AbortSignal.timeout(60000)]),id=tab(),epoch=tabGeneration,intent=selectionIntent,recovery=selectedRecovery(),url=$('bridge').value;
+ const origin=$('tabs').selectedOptions?.[0]?.dataset.origin,current=()=>!disposed&&!signal.aborted&&id===tab()&&epoch===tabGeneration&&sourceConnectionRequest===own&&(!selectedState?.origin||selectedState.origin===origin);
+ sourceConnectionRequest=own;sourceConnectionControls();$('source-connect-status').hidden=false;$('source-connect-status').textContent='Confirm source access in VS Code…';
+ return action(async()=>{try{
+  if(options.requestOriginPermission&&!await options.requestOriginPermission(url))throw Error('Access to the local IDE helper was not granted.');
+  if(!current())return;
+  const receipt=await requestProjectConnection({url,origin,signal});if(!current())return;
+  if(retainPendingEdits()){$('source-connect-status').textContent='Apply or discard your page edits, then connect the IDE again.';return;}
+  await rpc({op:'pair',url:receipt.url,token:receipt.token,origin:receipt.origin,sourceRoot:receipt.sourceRoot,receipt},signal);if(!current())return;
+  if(intent===selectionIntent&&recovery.selector&&recovery.expectedIdentity)await inspectSelection(recovery.selector,'Source connected',recovery.expectedIdentity);else await load();
+  if(current())$('source-connect-status').textContent='Source connected: '+receipt.workspace.name+'.';
+ }catch(error){if(sourceConnectionRequest===own&&!disposed&&id===tab()&&epoch===tabGeneration)$('source-connect-status').textContent=signal.aborted?'Connection cancelled or expired. Page inspection is still available.':error.message;}
+ finally{if(sourceConnectionRequest===own){sourceConnectionRequest=null;if(!disposed)sourceConnectionControls();}}});
+};
 $('connect-receipt').onclick=()=>action(async()=>{try{const r=parseConnectionReceipt($('connection-receipt').value);if(options.requestOriginPermission&&!await options.requestOriginPermission(r.url))throw Error('Helper origin permission denied');await rpc({op:'pair',url:r.url,token:r.token,origin:r.origin,sourceRoot:r.sourceRoot,receipt:r});await load();}finally{$('connection-receipt').value='';}});
 $('pair').onclick=()=>action(async()=>{const url=$('bridge').value,origin=$('origin').value;if(!helperURL(url)||!appOrigin(origin,{exact:true}))throw Error('Enter canonical origins without paths');if(options.requestOriginPermission&&!await options.requestOriginPermission(url))throw Error('Helper origin permission denied');await rpc({op:'pair',url,token:$('token').value,origin,sourceRoot:$('source-root').value});await load();});
 function selectedRecovery(){const selection=selectedState?.selection;return{tabId:tab(),epoch:tabGeneration,origin:selectedState?.origin||selectedState?.connection?.origin||$('tabs').selectedOptions?.[0]?.dataset.origin,...(selection?.domIdentity?{selector:selection.selector,expectedIdentity:{document:selection.domIdentity.document,node:selection.domIdentity.node}}:{})};}

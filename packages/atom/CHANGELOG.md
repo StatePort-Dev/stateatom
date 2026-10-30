@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add optional Connect IDE in the Atom toolbar: one explicit gesture requests a scoped source-access confirmation in the trusted VS Code workspace. Reuse authenticated pairing; keep manual receipts collapsed under advanced options. Cancellation, context changes and pending page drafts cannot silently complete the connection. No IDE request is made before the gesture.
+- Replace the missing-dependencies dead end with page fields where implemented, or recorded element details. Keep code-dependency limits in a disclosure and keep page fields separate from traced inputs. Uses shared controls, spacing and typography; the toolbar action and Basic empty state are documented deviations from the populated prototype, with no shared token or contract change.
+
 - Replace empty-state instructions with a prominent primary selection button using the existing toolbar icon, shared admission/preparation/cancellation and keyboard behavior. Preserve the toolbar for repeat selection. Use a short recovery message for failures and retain the exact diagnostic in a collapsed disclosure. Reuses shared tokens; empty-state composition intentionally differs from the populated reference screens.
 - Do not reject native selection because an unrelated sibling has a long style or other unused attribute. Retain only a bounded optional ID and verify structural fallback against the exact native node. Count distinct indexed nodes, preserve the first failure, and retain node/depth/selector limits.
 

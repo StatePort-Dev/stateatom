@@ -23,7 +23,7 @@ function fixture(request,options={}){
  let onEvent;const connectionListeners=new Set();const client={request:async(m,o)=>request?.(m,o)??(m.op==='tabs'?list:m.op==='list-diagnostics'?[]:m.op==='list-handoffs'?{entries:[],expired:[]}:m.op==='state'?state(m.tabId):{}),subscribeConnection:fn=>{connectionListeners.add(fn);return()=>connectionListeners.delete(fn);},subscribe:fn=>{onEvent=fn;return()=>{};}};
  return {$,state,list,emit:m=>onEvent(m),disconnect:()=>{for(const fn of connectionListeners)fn({state:'closed',code:'INSPECTOR_DISCONNECTED'});},view:mountAtom(host,client,{idPrefix:'',...options})};
 }
-test('mounted Basic reuses its existing summary/action while keeping evidence details available',async()=>{const f=fixture();await f.view.ready;assert.match(f.$('inspection-summary').textContent,/DOM snapshot/);assert.equal(f.$('inspection-next').textContent,'Connect project for source');assert.equal(f.$('property-explanation-block').hidden,true);assert.equal(f.$('explanation-details').hidden,false);await f.view.dispose();});
+test('mounted Basic reuses its existing summary/action while keeping evidence details available',async()=>{const f=fixture();await f.view.ready;assert.match(f.$('inspection-summary').textContent,/DOM snapshot/);assert.equal(f.$('inspection-next').textContent,'Connect IDE');assert.equal(f.$('property-explanation-block').hidden,true);assert.equal(f.$('explanation-details').hidden,false);await f.view.dispose();});
 test('ordinary HTTP attach requires read and inject but no cache permission',async()=>{
  const {describeCapabilities}=await import('../../packages/atom/src/capabilities.mjs');
  for(const cache of[false,true]){
@@ -351,7 +351,7 @@ test('property bundle keeps a stale warning in the Details overview',async()=>{
 });
 
 
-for(const trigger of ['load','pick','inspect-selector'])test('unsent edits remain editable when '+trigger+' would replace their selected target',async()=>{
+for(const trigger of ['load','pick','inspect-selector','source-connect'])test('unsent edits remain editable when '+trigger+' would replace their selected target',async()=>{
  const f=await pendingOwnedEditorFixture();try{
   await f.$('input-mode-draft').onclick();f.field().value='20';f.field().oninput();const selected=f.$('selected').textContent;f.$('selector').value='#new-target';await f.$(trigger).onclick();
   assert.equal(f.field().value,'20');assert.equal(f.field().disabled,false);assert.equal(f.$('selected').textContent,selected);assert.equal(f.$('input-close').hidden,false);assert.match(f.$('input-status').textContent,/Apply or discard/);assert.equal(f.plans.length,0);
@@ -429,3 +429,27 @@ test('site permission errors stay readable inside the modal Settings window',asy
  try{await f.view.ready;assert.equal(f.$('pick-start').disabled,false);const pending=f.$('pick-start').onclick();await tick();assert.equal(f.$('pick-start').disabled,true);assert.equal(f.$('pick').disabled,true);attachedWait.resolve();await pending;assert.equal(calls.filter(x=>x==='pick').length,1);assert.equal(f.$('pick-start-label').textContent,'Cancel selection');await f.$('pick-start').onclick();assert(calls.includes('cancel-pick'));assert.equal(f.$('pick-start-label').textContent,'Select an element');}finally{attachedWait.resolve();await f.view.dispose();}
  });
  test('picker failures show a recovery message and retain the technical reason only in details',async()=>{let f;f=fixture(m=>m.op==='state'?{...f.state(1),selection:null,analysis:null,picker:{status:'unsupported',reason:'Native picker path budget exceeded'}}:undefined);try{await f.view.ready;assert.doesNotMatch(f.$('picker-status').textContent,/budget/i);assert.match(f.$('picker-status').textContent,/try again/i);assert.match(f.$('picker-diagnostic').textContent,/budget/);assert.doesNotMatch(f.$('picker-limits').textContent,/budget/);}finally{await f.view.dispose();}});
+
+const directReceipt={schemaVersion:1,helper:{id:'local-research.stateatom-dev-helper',version:'0.1.3',protocol:1,session:'12345678-1234-4234-8234-123456789abc'},workspace:{id:'a'.repeat(64),name:'Demo'},url:'http://127.0.0.1:47731',token:'b'.repeat(64),origin:'http://127.0.0.1:4173',sourceRoot:'.'};
+test('IDE is opt-in; one click approves then pairs and reinspects only the same native element',async t=>{
+ const calls=[],fetches=[];let f;f=fixture(m=>{calls.push(m);if(m.op==='state'){const s=f.state(m.tabId);s.selection.domIdentity={document:'doc1',node:'node1'};return s;}});
+ t.mock.method(globalThis,'fetch',async(url,options)=>{fetches.push({url,options});return new Response(JSON.stringify({ok:true,result:directReceipt}));});
+ try{await f.view.ready;f.$('bridge').value=directReceipt.url;assert.equal(fetches.length,0);assert.equal(calls.some(m=>m.op==='pair'),false);await f.$('source-connect').onclick();assert.equal(fetches.length,1);assert.equal(calls.filter(m=>m.op==='pair').length,1);assert.deepEqual(calls.find(m=>m.op==='inspect-selector').expectedIdentity,{document:'doc1',node:'node1'});assert.match(f.$('source-connect-status').textContent,/Source connected: Demo/);assert.equal(f.$('source-connect').textContent,'Connect IDE');}finally{await f.view.dispose();}
+});
+for(const outcome of['cancel','tab','dispose','disconnect'])test('late IDE approval after '+outcome+' never pairs',async t=>{
+ const pending=deferred(),calls=[];t.mock.method(globalThis,'fetch',()=>pending.promise);const f=fixture(m=>{calls.push(m);});await f.view.ready;f.$('bridge').value=directReceipt.url;const connecting=f.$('source-connect').onclick();await tick();assert.equal(f.$('source-connect').textContent,'Cancel connection');
+ if(outcome==='cancel')f.$('source-connect').onclick();else if(outcome==='tab'){f.$('tabs').value='2';await f.$('tabs').onchange();}else if(outcome==='dispose')await f.view.dispose();else f.disconnect();
+ pending.resolve(new Response(JSON.stringify({ok:true,result:directReceipt})));await connecting;assert.equal(calls.some(m=>m.op==='pair'),false);await f.view.dispose();
+});
+test('denied IDE approval leaves the current Basic selection usable',async t=>{
+ t.mock.method(globalThis,'fetch',async()=>new Response(JSON.stringify({ok:false,error:'Source access was not approved.'}),{status:403}));const calls=[],f=fixture(m=>{calls.push(m);});try{await f.view.ready;const pickerDisabled=f.$('pick').disabled;f.$('bridge').value=directReceipt.url;await f.$('source-connect').onclick();assert.equal(calls.some(m=>m.op==='pair'),false);assert.match(f.$('source-connect-status').textContent,/not approved/);assert.match(f.$('selected').textContent,/#target-1/);assert.equal(f.$('pick').disabled,pickerDisabled);}finally{await f.view.dispose();}
+});
+test('approval does not restore an old target when the user selects another element while waiting',async t=>{
+ const pending=deferred(),calls=[];let changed=false,f;t.mock.method(globalThis,'fetch',()=>pending.promise);f=fixture(m=>{calls.push(m);if(m.op==='state'){const s=f.state(m.tabId);s.selection.selector=changed?'#new':'#old';s.selection.domIdentity={document:'doc1',node:changed?'new':'old'};return s;}});
+ try{await f.view.ready;f.$('bridge').value=directReceipt.url;const connecting=f.$('source-connect').onclick();await tick();changed=true;f.emit({event:'selection',tabId:1});await tick();pending.resolve(new Response(JSON.stringify({ok:true,result:directReceipt})));await connecting;assert.equal(calls.filter(m=>m.op==='pair').length,1);assert.equal(calls.some(m=>m.op==='inspect-selector'),false);assert.match(f.$('selected').textContent,/#new/);}finally{await f.view.dispose();}
+});
+test('edits drafted during an IDE confirmation are retained before pairing can close the editor',async t=>{
+ const pending=deferred();t.mock.method(globalThis,'fetch',()=>pending.promise);const f=await pendingOwnedEditorFixture();try{
+  f.$('bridge').value=directReceipt.url;const connecting=f.$('source-connect').onclick();await tick();await f.$('input-mode-draft').onclick();f.field().value='20';f.field().oninput();pending.resolve(new Response(JSON.stringify({ok:true,result:directReceipt})));await connecting;assert.equal(f.field().value,'20');assert.equal(f.field().disabled,false);assert.match(f.$('source-connect-status').textContent,/Apply or discard/);assert.equal(f.plans.length,0);
+ }finally{await f.dispose();}
+});

@@ -11,7 +11,7 @@ export function parseConnectionReceipt(input){
 }
 export function assessProjectSetup({paired,selection,analysis,sourceMaps}={}){
  if(sourceMaps?.scripts?.some(s=>s.map?.hasContent===false))return {code:'MAP_SOURCES_MISSING',reason:'Map has positions without source content. Import an artifact containing sourcesContent or original source files; positions alone cannot show source text.'};
- if(!paired)return {code:'HELPER_DISCONNECTED',reason:'Basic remains available. Install the matching helper, trust and choose the workspace, then copy/paste a fresh connection receipt.'};
+ if(!paired)return {code:'HELPER_DISCONNECTED',reason:'Page inspection works without an IDE. For source code, open your trusted project with the StateAtom helper, click Connect IDE in Atom and approve access in VS Code.'};
  if(!selection)return {code:'INSPECTION_REQUIRED',reason:'Attach the app and inspect a property to check source/plugin setup.'};
  if(!selection.marker)return {code:'PLUGIN_MISSING',reason:'No supported development marker observed. Install/configure the open Vite plugin, restart Vite and reload; Basic stays available. A marker alone is not execution evidence.'};
  if(!analysis?.boundFiles?.length)return {code:'SOURCE_MISMATCH',reason:'No matching workspace source revision. Choose the correct workspace/source folder, save files and reload/reinspect after HMR; do not reuse old observations.'};

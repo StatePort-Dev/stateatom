@@ -1,3 +1,4 @@
+import {createSourceApproval} from './source-approval.mjs';
 import {verifyRemoteListField} from './list-field-channel.mjs';
 import {HELPER_ID,HELPER_VERSION,HELPER_PROTOCOL} from './project-connection.mjs';
 import {appOrigin} from '../packages/atom/src/origin-policy.mjs';
@@ -30,24 +31,43 @@ function sourceHints(selection,trace){
  return [...hints];
 }
 export function instrumentedSources(files,marker){const [file,,hash]=String(marker).split(':');return files.filter(f=>f.file===file&&digest(f.text).slice(0,12)===hash);}
-export function startBridge({root,port=47731,token,onOpen,onDefinitions,onReferences,isAllowed=()=>true}){
+export function startBridge({root,port=47731,token,onOpen,onDefinitions,onReferences,onConnectionRequest,isAllowed=()=>true}){
  let listFieldContext=null;
  const bindListFieldContext=capability=>{if(listFieldCodeContextView(capability).status!=='Owned list code context')throw Error('Owned list context required');listFieldContext=capability;};
  const cfg={port,token,extension:null},bindings=new Map(),helper={id:HELPER_ID,version:HELPER_VERSION,protocol:HELPER_PROTOCOL,session:randomUUID()},workspace={id:createHash('sha256').update(path.resolve(root)).digest('hex'),name:path.basename(root)};
+ const approval=createSourceApproval({approve:onConnectionRequest,isAllowed});
  const server=http.createServer(async(req,res)=>{
   const origin=req.headers.origin;res.setHeader('Vary','Origin');
   if(/^chrome-extension:\/\/[a-p]{32}$/.test(origin||'')&&(!cfg.extension||origin.endsWith(cfg.extension)))res.setHeader('Access-Control-Allow-Origin',origin);
   res.setHeader('Access-Control-Allow-Headers','authorization,content-type');res.setHeader('Access-Control-Allow-Methods','POST,OPTIONS');
   if(req.method==='OPTIONS'){res.writeHead(204);res.end();return;}
   try{
-   if(!isAllowed())throw Error('Workspace trust or selection changed; reconnect in the IDE');const op=req.url?.slice(1);validateRequest(req.headers,cfg,op);if(req.method!=='POST')throw Error('POST only');
+   if(!isAllowed())throw Error('Workspace trust or selection changed; reconnect in the IDE');const op=req.url?.slice(1);if(req.method!=='POST')throw Error('POST only');
+   if(op==='connect'){
+    const extensionId=/^chrome-extension:\/\/([a-p]{32})$/.exec(origin||'')?.[1];
+    if(req.headers.host!=='127.0.0.1:'+cfg.port||!extensionId||cfg.extension&&cfg.extension!==extensionId)throw Error('Connection origin denied');
+    let raw='';for await(const c of req){raw+=c;if(Buffer.byteLength(raw)>1024)throw Error('Connection request too large');}
+    const body=JSON.parse(raw||'{}');if(Object.keys(body).join()!=='origin')throw Error('Invalid connection request');
+    const controller=new AbortController(),abort=()=>{if(!res.writableEnded)controller.abort();};res.on('close',abort);
+    try{
+     const grant=await approval.request({origin:body.origin,extensionId,signal:controller.signal});
+     if(!isAllowed()||controller.signal.aborted||cfg.extension&&cfg.extension!==extensionId)throw Error('Source connection changed');
+     const folder=await safePath(root,grant.sourceRoot);if(!(await stat(folder)).isDirectory())throw Error('Source folder required');
+     if(!isAllowed()||controller.signal.aborted)throw Error('Source connection cancelled');
+     res.setHeader('Content-Type','application/json');res.setHeader('Cache-Control','no-store');res.end(JSON.stringify({ok:true,result:{schemaVersion:1,helper,workspace,url:'http://127.0.0.1:'+cfg.port,token:grant.token,origin:grant.origin,sourceRoot:grant.sourceRoot}}));return;
+    }finally{res.off('close',abort);}
+   }
+   if(cfg.extension&&origin!=='chrome-extension://'+cfg.extension)throw Error('Origin denied');
+   const scoped=approval.credential((req.headers.authorization||'').replace(/^Bearer /,''));
+   validateRequest(req.headers,scoped?{...cfg,token:scoped.token,extension:scoped.extensionId}:cfg,op);
    let data='';for await(const c of req){data+=c;if(Buffer.byteLength(data)>1500000)throw Error('Payload limit');}const body=JSON.parse(data||'{}');let result;
    if(!isAllowed())throw Error('Workspace trust revoked');
+   if(scoped&&(body.origin!==scoped.origin||op==='pair'&&body.sourceRoot!==scoped.sourceRoot||op!=='pair'&&bindings.get(body.origin)!==scoped.sourceRoot))throw Error('Outside approved source scope');
    if(op==='pair'){
     if(body.clientProtocol!==undefined&&body.clientProtocol!==HELPER_PROTOCOL)throw Error('Helper protocol mismatch; install matching components');
     if(body.connection&&(body.connection.schemaVersion!==1||body.connection.helper?.id!==helper.id||body.connection.helper?.version!==helper.version||body.connection.helper?.protocol!==helper.protocol||body.connection.helper?.session!==helper.session||body.connection.workspace?.id!==workspace.id))throw Error('Stale or wrong-workspace receipt; copy a fresh receipt from this helper');
     if(!appOrigin(body.origin,{exact:true})||new URL(body.origin).protocol!=='http:')throw Error('App origin denied');
-    await safePath(root,body.sourceRoot);cfg.extension=origin.split('://')[1];bindings.set(body.origin,body.sourceRoot);result={paired:true,workspace:path.basename(root),origin:body.origin,sourceRoot:body.sourceRoot,helper,workspaceIdentity:workspace};
+    await safePath(root,body.sourceRoot);if(scoped)approval.paired(scoped.token);cfg.extension=origin.split('://')[1];bindings.set(body.origin,body.sourceRoot);result={paired:true,workspace:path.basename(root),origin:body.origin,sourceRoot:body.sourceRoot,helper,workspaceIdentity:workspace};
    }else{
     const sourceRoot=bindings.get(body.origin);if(!sourceRoot)throw Error('Origin not mapped');
     if(op==='analyze'){
@@ -75,5 +95,5 @@ export function startBridge({root,port=47731,token,onOpen,onDefinitions,onRefere
    if(!isAllowed())throw Error('Workspace trust revoked');res.setHeader('Content-Type','application/json');res.end(JSON.stringify({ok:true,result}));
   }catch(e){res.writeHead(403,{'Content-Type':'application/json'});res.end(JSON.stringify({ok:false,error:e.message}));}
  });
- return {server,cfg,helper,workspace,bindListFieldContext,ready:new Promise((resolve,reject)=>server.once('error',reject).listen(port,'127.0.0.1',resolve)),close:()=>{listFieldContext=null;return new Promise(r=>server.close(r));}};
+ return {server,cfg,helper,workspace,bindListFieldContext,ready:new Promise((resolve,reject)=>server.once('error',reject).listen(port,'127.0.0.1',resolve)),close:()=>{approval.close();listFieldContext=null;return new Promise(r=>server.close(r));}};
 }

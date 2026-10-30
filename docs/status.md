@@ -1,5 +1,7 @@
 # Project status
 
+**2026-10-30 optional IDE connection:** [361](completion/361-source-connection-flow.md) implements the approved Atom button → IDE confirmation flow and a useful Basic next action. Browser/IDE builds and scoped helper/UI checks pass; installed confirmation and source-result acceptance remain pending. No manual receipt transfer is needed on the normal route. This follow-up does not requalify or publish the historical release kit.
+
 **2026-10-30 picker follow-up:** [360](completion/360-picker-recovery-and-stable-local-update.md) fixes rejection caused by unrelated long inline styles, adds a visible empty-state selection button and keeps updates in `dist/browser`. 252 scoped checks and HTTP visual/keyboard checks pass; installed-extension retry remains pending. Earlier release evidence below describes its recorded kit.
 
 **Approved plan complete:29/29 (100%).** [Final96 release readiness](completion/356-v04-current96-release-readiness.md) binds actual acceptance, exact local kit and explicit first-release limitations. **Not published.** Linux directory route; macOS deferred/unverified. Earlier checkpoints below retain their dated scope.
