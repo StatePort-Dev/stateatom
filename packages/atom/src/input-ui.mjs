@@ -6,6 +6,7 @@ export const inputEditorTemplate=`
  <span id="input-preview" data-atom-id="input-preview" class="sp-status" hidden>Preview</span>
  <button id="input-open" data-atom-id="input-open" class="sp-button-primary" hidden>Try again</button><button id="input-reconnect" data-atom-id="input-reconnect" hidden>Reopen inspector</button>
  <div id="input-modes" data-atom-id="input-modes" class="sp-atom-input-modes" role="group" aria-label="When to apply changes"><button id="input-mode-draft" data-atom-id="input-mode-draft" aria-pressed="false">On Apply</button><button id="input-mode-live" data-atom-id="input-mode-live" aria-pressed="true">As I type</button></div>
+ <p id="input-mode-status" data-atom-id="input-mode-status" class="sp-help" role="status" hidden></p>
  <div id="input-column-headings" data-atom-id="input-column-headings" class="sp-section-row sp-atom-input-columns"><span id="input-kind" data-atom-id="input-kind"></span><span id="input-columns" data-atom-id="input-columns">Applies as you type</span></div>
  <div id="input-fields" data-atom-id="input-fields"></div>
  <div id="input-actions-home" data-atom-id="input-actions-home"><div id="input-edit-actions" data-atom-id="input-edit-actions" class="sp-atom-input-actions sp-atom-edit-commit"><p id="input-status" data-atom-id="input-status" class="sp-atom-input-status" tabindex="-1" role="status" aria-live="polite"></p><button id="input-apply" data-atom-id="input-apply" class="sp-button-primary" hidden>Apply changes</button><button id="input-discard" data-atom-id="input-discard" class="sp-button-subtle" hidden>Discard edits</button><button id="input-undo" data-atom-id="input-undo" class="sp-button-subtle" hidden>Undo last change</button></div></div>
@@ -31,12 +32,12 @@ function explanation(code,message){return({
  'Choose an observed enabled option':'Choose one of the available options. This edit has not been applied.',
 DRAFT_PENDING:'Apply or discard the local draft first.',INVALID_CONTROL_VALUE:'Not an allowed value for this control.',STALE_CONTROL:'This control changed. Discard the stale draft.',STALE_RESOURCE:'This field changed. Discard the stale draft.',EXTERNAL_REVISION:'A newer external value cannot be overwritten by undo.',INSPECTOR_DISCONNECTED:'Inspector connection lost. Reopen this inspector.',BUSY:'This input editor is busy or belongs to another view.',OBSERVATION_REQUIRED:'Inspect a current target before opening inputs.',ACK_UNCONFIRMED:'The edit may have had effects; acknowledgement is unavailable.'})[code]||message||code;}
 export function createInputUI({document,$,client,preview=false,onReconnect,onPermission=()=>{}}={}){
- const rows=new Map(),linked=new Map();let slots=[],requestedBinding=null,state=null,caps=null,capKey=null,capEpoch=0,visible=false,disposed=false,localError=null,localNotice=null,disclosureKey=null,disclosureState=null;
+ const rows=new Map(),linked=new Map();let slots=[],requestedBinding=null,state=null,caps=null,capKey=null,capEpoch=0,visible=false,disposed=false,localError=null,localNotice=null,autoKey=null,disclosureKey=null,disclosureState=null;
  const node=(tag,text,cls)=>{const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;};
  const text=(id,value)=>{const el=$(id);if(el.textContent!==value)el.textContent=value;};
  const controller=createInputController({client,onChange:render,initialMode:'live'});
  function run(fn){localError=null;localNotice=null;return Promise.resolve().then(fn).catch(e=>{localError=explanation(e.code,e.message);render();});}
- function discard(id){controller.discard(id);localNotice='Draft discarded. No page change was sent.';render();}
+ function discard(id){controller.discard(id);localNotice=(id?'Field reset.':'Draft discarded.')+' No page change was sent.';render();}
  function decision(op){return caps?.operations?.[op];}
  function capabilityKey(next,ownedPolicy=null){
   const own=controller.snapshot(),input=ownedPolicy&&own.active?own.editor:next?.inputs,policy=ownedPolicy||next?.capabilityPolicy;
@@ -62,7 +63,7 @@ export function createInputUI({document,$,client,preview=false,onReconnect,onPer
   }
   if(input){input.id=uid;title.htmlFor=uid;}else title.setAttribute('id',uid+'-label');
   values.append(control);top.append(title,values);el.append(top);
-  const meta=node('div',undefined,'sp-atom-input-meta'),hint=node('span',r.kind==='dom-control'?'Native '+r.locator.control:'Observed response'),reset=node('button','Discard edit','sp-button-subtle');reset.type='button';reset.onclick=()=>run(()=>discard(entry.id));meta.append(reset);el.append(error,meta);
+  const meta=node('div',undefined,'sp-atom-input-meta'),hint=node('span',r.kind==='dom-control'?'Native '+r.locator.control:'Observed response'),reset=node('button','Reset field','sp-button-subtle');reset.type='button';reset.onclick=()=>run(()=>{discard(entry.id);const row=rows.get(entry.id),field=row?.input||row?.buttons?.find(b=>b.getAttribute?.('aria-pressed')==='true');if(field&&!field.disabled)field.focus?.({preventScroll:true});});meta.append(reset);el.append(error,meta);
   const details=node('details'),summary=node('summary','Source / scope'),location=node('code');location.textContent=r.kind==='dom-control'?r.locator.selector:r.locator.method+' '+r.locator.url+' #'+r.locator.pointer;details.append(summary,hint,location,observed,node('p','Consumption and selected-property dependency remain unknown.','sp-atom-hint'));el.append(details);
   return{el,name,title,top,details,input,buttons,observed,error,reset,location,options:null,key:rowKey(r)};
  }
@@ -108,7 +109,7 @@ export function createInputUI({document,$,client,preview=false,onReconnect,onPer
   }
   const destination=inlineCount&&$('source-section')?.hidden!==false?$('input-inline-actions'):$('input-actions-home'),actions=$('input-edit-actions');
   if(destination&&actions&&actions.parentElement!==destination)destination.append(actions);
-  if($('input-column-headings'))$('input-column-headings').hidden=!snapshot.active||![...rows].some(([id])=>!used.has(id)&&!linked.has(id));
+  if($('input-column-headings'))$('input-column-headings').hidden=snapshot.sourceKind==='dom-control'||!snapshot.active||![...rows].some(([id])=>!used.has(id)&&!linked.has(id));
   // Moving the one owned field between its current and retained slots must not
   // end typing. Do not restore focus into a hidden screen or a disabled field.
   if(focused?.isConnected&&!focused.disabled&&focused.getClientRects?.().length&&document.activeElement!==focused&&(!document.activeElement||document.activeElement===document.body)){
@@ -117,11 +118,12 @@ export function createInputUI({document,$,client,preview=false,onReconnect,onPer
  }
  function render(){
   if(disposed)return;const s=controller.snapshot(),d=s.draft,e=s.editor;const region=$('input-editor');region.hidden=!visible||state?.readOnly===true&&!state?.productionChange?.active&&!s.active&&!d?.dirtyCount;if(!visible)return;
-  if(s.active)$('input-editing-help').textContent=(e?.sourceKind==='json-response'?'Response fields':'Page fields')+' · relation to this element not established.';
+  if(s.active)$('input-editing-help').textContent=e?.sourceKind==='json-response'?'Recorded response fields. Their connection to this element is unknown.':'Fields on this page. Their connection to this element is unknown.';
   region.setAttribute('aria-busy',String(s.busy));$('input-preview').hidden=!preview||state?.capabilityPolicy?.features?.['inputs.live']?.available===true;
   for(const m of['live','draft'])$('input-mode-'+m).setAttribute('aria-pressed',String(s.mode===m));
   $('input-source').disabled=s.busy||s.opening||s.connectionLost;
   const retained=s.active||!!d?.dirtyCount;
+  $('input-mode-status').hidden=!d?.heldDraft; text('input-mode-status',d?.heldDraft?'Your draft is still local. Apply or discard it to resume automatic changes.':'');
   $('input-modes').hidden=!retained;$('input-column-headings').hidden=!retained||!d?.entries.length;
   for(const id of ['input-read','input-undo','input-baseline'])$(id).hidden=!s.active;
   $('input-discard').hidden=!d?.dirtyCount;
@@ -134,16 +136,17 @@ export function createInputUI({document,$,client,preview=false,onReconnect,onPer
   $('input-open').disabled=selecting||s.opening||s.busy||s.connectionLost||heldClosed||!openDecision?.available;
   $('input-open').title=selecting?'Finish or cancel element selection before opening inputs.':heldClosed?'Discard the closed draft before opening another investigation.':openDecision?.reason||'Current capability policy is unavailable';
   $('input-open').textContent='Try again';$('input-open').hidden=s.active||s.opening||!s.error&&!localError;
+  $('input-session-notice').hidden=!e?.closed||!!d?.dirtyCount; text('input-session-notice',e?.closed?'Editing stopped. The page keeps its current values. Open Page fields to continue.':'');
   $('input-close').hidden=!s.active&&!s.opening;$('input-close').disabled=!s.active&&!s.opening;
   $('input-reconnect').hidden=!s.connectionLost||typeof onReconnect!=='function';
   $('input-apply').hidden=!d?.dirtyCount||s.mode!=='draft'&&!d?.heldDraft;$('input-apply').disabled=!s.active||s.busy||!d?.canApply||!decision('inputs-apply')?.available;
-  text('input-apply','Apply changes'+(d?.dirtyCount?' · '+d.dirtyCount:''));text('input-discard',d?.dirtyCount===1?'Discard edit':'Discard all edits');$('input-discard').disabled=s.busy||!d?.dirtyCount;
+  text('input-apply','Apply changes'+(d?.dirtyCount?' · '+d.dirtyCount:''));text('input-discard','Discard draft');$('input-discard').disabled=s.busy||!d?.dirtyCount;
   $('input-read').disabled=!s.active||s.busy||!decision('inputs-read')?.available;$('input-undo').disabled=!s.active||s.busy||!e?.canUndo||!decision('inputs-undo')?.available;$('input-baseline').disabled=!s.active||s.busy||!e?.canRestoreBaseline||!decision('inputs-baseline')?.available;
   text('input-note',selecting?'Finish or cancel element selection before opening inputs.':s.connectionLost?'Reopen the inspector, then inspect again; old drafts do not restore authority.':heldClosed?'A local draft from the closed investigation is kept read-only. Discard it to open another target.':d?.heldDraft?'Draft kept. Apply or discard to resume Live.':s.mode==='draft'?'Draft stays local until Apply.':s.active?'Live sends valid text/number edits after 250 ms; Enter or blur sends now.':'Open page fields to try a change.');
   text('input-kind',e?(e.sourceKind==='dom-control'?'PAGE FIELDS':'RESPONSE FIELDS'):'');text('input-columns',e?.sourceKind==='json-response'?'Next matching response':s.mode==='live'&&!d?.heldDraft?'Applies as you type':'Apply when ready');
   const ids=new Set();for(const entry of d?.entries||[]){ids.add(entry.id);const resource=fieldResource(entry);let row=rows.get(entry.id);if(!row||row.key!==rowKey(resource)){const old=row;row=makeRow(entry);rows.set(entry.id,row);if(old)old.el.replaceWith(row.el);else $('input-fields').append(row.el);}const disabled=!s.active||entry.missing||!decision('inputs-apply')?.available;
    row.el.setAttribute('data-dirty',String(entry.dirty));row.el.setAttribute('data-long-value',String(typeof entry.raw==='string'&&entry.raw.length>32||resource.locator.control==='textarea'));row.observed.textContent='Last read: '+short(entry.resource.value);row.observed.title=short(entry.resource.value);row.reset.hidden=!entry.dirty||s.mode==='live'&&!d?.heldDraft&&!entry.error&&!entry.conflict;row.reset.disabled=s.busy;
-   const message=entry.conflict?'Field changed elsewhere. Discard this draft.':entry.error?explanation(entry.error,entry.error):null;row.error.hidden=!message;row.error.textContent=message||'';row.error.title=entry.error||'';
+   const message=entry.conflict?'This field changed on the page. Reset it to use the latest value.':entry.error?explanation(entry.error,entry.error):null;row.error.hidden=!message;row.error.textContent=message?message+' Last read: '+short(entry.resource.value).slice(0,80)+(short(entry.resource.value).length>80?'…':'')+'.':'';row.error.title=entry.error||'';
    if(row.buttons)row.buttons.forEach((b,i)=>{b.disabled=disabled;b.setAttribute('aria-pressed',String(entry.raw===(i===0)));b.setAttribute('aria-invalid',String(!entry.valid||entry.conflict));});
    else{const field=row.input;field.disabled=disabled;field.setAttribute('aria-invalid',String(!entry.valid||entry.conflict));if(field.tagName==='SELECT'){
      const choices=resource.locator.options||[],key=JSON.stringify([choices,entry.raw]);if(row.options!==key){row.options=key;const values=choices.map(value=>{const option=node('option',value);option.value=value;return option;});if(!choices.includes(entry.raw)){const option=node('option',String(entry.raw)+' (unavailable)');option.value=entry.raw;option.disabled=true;values.unshift(option);}field.replaceChildren(...values);}
@@ -165,7 +168,7 @@ export function createInputUI({document,$,client,preview=false,onReconnect,onPer
   return next=>{if(disposed||!admit(next))return false;update(next);return true;};
  }
  function update(next){
-  if(state?.run!==next?.run||!equal(state?.selection?.domIdentity,next?.selection?.domIdentity))localNotice=null;
+  if(state?.tabId!==next?.tabId||state?.run!==next?.run||!equal(state?.selection?.domIdentity,next?.selection?.domIdentity)){localNotice=null;if(controller.snapshot().opening)void controller.close('Selected context changed');}
   state=next;controller.update(next||{});visible=preview||supportsCapabilityPolicy(next?.capabilityPolicy)&&['inputs.live','inputs.draft-apply'].some(id=>next.capabilityPolicy.features[id].code!=='NOT_IMPLEMENTED')||visible&&!!controller.snapshot().draft?.dirtyCount;
   const key=capabilityKey(next);if(key!==capKey){capKey=key;if(visible)ask();else{caps=null;++capEpoch;}}render();
  }
@@ -179,12 +182,20 @@ export function createInputUI({document,$,client,preview=false,onReconnect,onPer
   const first=[...rows.values()].flatMap(row=>row.input?[row.input]:row.buttons||[]).find(field=>!field.disabled&&(!field.getClientRects||field.getClientRects().length));
   const destination=first||(!$('input-status').hidden?$('input-status'):null);destination?.scrollIntoView?.({block:'nearest'});destination?.focus?.({preventScroll:true});
  });}
- async function requestOpen(){
+ async function requestOpen({focus=true}={}){
   const target=JSON.stringify([state?.tabId,state?.run,state?.selection?.domIdentity,state?.property]);
   if(!caps)await ask();
   if(disposed||target!==JSON.stringify([state?.tabId,state?.run,state?.selection?.domIdentity,state?.property])||$('input-editor').hidden)return;
   if($('input-open').disabled){localError=decision('inputs-open')?.reason||'Fields are unavailable for this selection.';render();return;}
-  return openEditor();
+  return openEditor({focus});
+ }
+ // Selected Basic inspection reads fields once. It never edits or grants access.
+ function showForSelection(){
+  const current=controller.snapshot(),key=JSON.stringify([state?.tabId,state?.run,state?.selection?.domIdentity,state?.property]);
+  if(!state?.selection||state.stale||autoKey===key||current.active||current.opening||current.busy||current.draft?.dirtyCount||current.connectionLost||disposed)return;
+  autoKey=key;$('input-editing-details').open=true;
+  if(state.readOnly&&!state.productionChange?.active)return;
+  return requestOpen({focus:false});
  }
  const fieldSummary=$('input-editing-details')?.querySelector?.('summary');
  if(fieldSummary)fieldSummary.onclick=()=>{if(!$('input-editing-details').open&&!controller.snapshot().active)return requestOpen();};
@@ -192,5 +203,5 @@ export function createInputUI({document,$,client,preview=false,onReconnect,onPer
  for(const m of['live','draft'])$('input-mode-'+m).onclick=()=>run(()=>controller.setMode(m));
  for(const[id,fn]of[['input-apply',()=>controller.apply()],['input-discard',()=>discard()],['input-read',()=>controller.refresh()],['input-undo',()=>controller.undo()],['input-baseline',()=>controller.baseline()],['input-close',async()=>{await controller.close();if(!controller.snapshot().draft?.dirtyCount){$('input-editing-details').open=false;fieldSummary?.focus?.();}}]])$(id).onclick=()=>run(fn);
  $('input-reconnect').onclick=()=>run(()=>onReconnect?.());
- return Object.freeze({update,stateReplyReceiver,refreshPlacement:()=>placeValues(controller.snapshot()),setValueSlots(next){slots=next;placeValues(controller.snapshot());},explainPendingDraft(){localError='Apply or discard your edits before refreshing or selecting another element.';render();$('input-status').scrollIntoView?.({block:'nearest'});$('input-status').focus?.({preventScroll:true});},open:requestOpen,capture:options=>controller.capture(options),captureObservation:options=>controller.captureObservation(options),close:reason=>controller.close(reason),dispose(){if(disposed)return;disposed=true;++capEpoch;return controller.dispose();},snapshot:controller.snapshot});
+ return Object.freeze({update,showForSelection,stateReplyReceiver,refreshPlacement:()=>placeValues(controller.snapshot()),setValueSlots(next){slots=next;placeValues(controller.snapshot());},explainPendingDraft(){localError='Apply or discard your edits before refreshing or selecting another element.';render();$('input-status').scrollIntoView?.({block:'nearest'});$('input-status').focus?.({preventScroll:true});},open:requestOpen,capture:options=>controller.capture(options),captureObservation:options=>controller.captureObservation(options),close:reason=>controller.close(reason),dispose(){if(disposed)return;disposed=true;++capEpoch;return controller.dispose();},snapshot:controller.snapshot});
 }

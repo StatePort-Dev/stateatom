@@ -268,9 +268,9 @@
 [data-sp-ui][data-atom-root] .sp-atom-dependency-link { min-width:0; border:0; padding:3px 0; background:transparent; color:var(--sp-color-primary); font:12px/1.6 var(--sp-font-mono); text-align:left; justify-content:flex-start; overflow-wrap:anywhere; }
 [data-sp-ui][data-atom-root] .sp-atom-dependency-link:hover { background:transparent; text-decoration:underline; }
 [data-sp-ui][data-atom-root] .sp-atom-dependency .sp-value { max-width:180px; white-space:pre-wrap; overflow-wrap:anywhere; text-align:right; }
-[data-sp-ui][data-atom-root] .sp-atom-dependencies-empty { padding:12px 0 24px; }
-[data-sp-ui][data-atom-root] .sp-atom-dependencies-empty .sp-title { font-size:16px; }
-[data-sp-ui][data-atom-root] .sp-atom-dependencies-empty .sp-help { margin:12px 0 16px; }
+[data-sp-ui][data-atom-root] :is(.sp-atom-dependencies-empty,.sp-atom-result-notice) { padding:12px 0 24px; }
+[data-sp-ui][data-atom-root] :is(.sp-atom-dependencies-empty,.sp-atom-result-notice) .sp-title { font-size:16px; }
+[data-sp-ui][data-atom-root] :is(.sp-atom-dependencies-empty,.sp-atom-result-notice) .sp-help { margin:12px 0 16px; }
 
 [data-sp-ui][data-atom-root] .sp-atom-dependency-name { font:12px/1.6 var(--sp-font-mono); overflow-wrap:anywhere; }
 [data-sp-ui][data-atom-root] .sp-atom-dependency-value { min-width:0; max-width:220px; text-align:right; }
@@ -352,7 +352,8 @@
 [data-sp-ui][data-atom-root] .sp-atom-input-editor[aria-busy="true"] { border:0; }
 [data-sp-ui][data-atom-root] .sp-atom-input-control :is(input,textarea,select)[aria-invalid="true"] { border-style:solid; }
 [data-sp-ui][data-atom-root] [data-atom-id="inputs-section"]:has([data-atom-id="input-editing-details"][open]) .sp-atom-dependencies-empty { display:none; }
-[data-sp-ui][data-atom-root] .sp-atom-scroll:has([data-atom-id="inputs-section"][hidden]) [data-atom-id="getting-started"] { display:none; }
+[data-sp-ui][data-atom-root] .sp-atom-scroll:has(:is([data-atom-id="source-section"],[data-atom-id="evidence-section"]):not([hidden])) [data-atom-id="getting-started"] { display:none; }
+[data-sp-ui][data-atom-root] .sp-atom-scroll:has([data-atom-id="getting-started"]:not([hidden])) [data-atom-id="actions-section"] { display:none; }
 /* Let the one owned action bar stick within the editor, not a bar-sized wrapper. */
 [data-sp-ui][data-atom-root] [data-atom-id="input-actions-home"] { display:contents; }
 
@@ -360,3 +361,11 @@
 [data-sp-ui][data-atom-root] .sp-atom-handler-link:disabled { opacity:1; color:var(--sp-color-muted); cursor:default; }
 
 [data-sp-ui][data-atom-root] .sp-atom-dependency-link:disabled { opacity:1; color:var(--sp-color-text); cursor:default; }
+
+/* Basic fields are the result itself; avoid a second divider above their title. */
+[data-sp-ui][data-atom-root] [data-atom-id="inputs-section"]:has(> [data-atom-id="element-properties"][hidden]) .sp-atom-editing-entry { margin-top:0; padding-top:0; border-top:0; }
+
+/* The report retains its title/exit while the description and review scroll. */
+[data-sp-ui][data-atom-root] .sp-atom-handoff > .sp-atom-settings-head{position:sticky;top:-24px;z-index:1;background:var(--sp-color-surface);padding:12px 0;border-bottom:1px solid var(--sp-color-border)}
+[data-sp-ui][data-atom-root] .sp-atom-handoff-preview{scroll-margin-top:112px}
+@media(max-width:420px){[data-sp-ui][data-atom-root] .sp-atom-handoff > .sp-atom-settings-head{top:-20px}}

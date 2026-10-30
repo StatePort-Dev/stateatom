@@ -50,26 +50,26 @@ export function createElementPropertiesUI({document,$,openSource,connectProject,
     inputs.push(card);
    }
    const group=el('section',undefined,'sp-atom-property-card');const heading=el('div',undefined,'sp-section-row');heading.append(el('h3',name,'sp-section-title'),el('span',stale?'Stale':row.status,'sp-status'));group.append(heading);const body=el('div'),records=el('details',undefined,'sp-disclosure');records.append(el('summary',name+' · '+(stale?'Stale':row.status)));
-   if(row.selection)body.append(el('p','Recorded '+new Date(row.selection.observedAt).toLocaleTimeString()+' · '+row.property+' = '+JSON.stringify(row.selection.value),'sp-atom-hint'));
+   if(row.selection){const value=el('div',undefined,'sp-section-row'),raw=JSON.stringify(row.selection.value),display=row.property==='disabled'&&typeof row.selection.value==='boolean'?(row.selection.value?'Present (true)':'Absent (false)'):raw??'Not recorded';value.append(el('span','Recorded value'),el('code',display,'sp-value'));body.append(value,el('p','Read at '+new Date(row.selection.observedAt).toLocaleTimeString(),'sp-atom-hint'));}
    if(row.latestObservation)body.append(el('p','Separately checked '+new Date(row.latestObservation.observedAt).toLocaleTimeString()+' · '+row.property+' = '+JSON.stringify(row.latestObservation.value)+'. Code explanation has not been refreshed.','sp-atom-hint'));
-   if(row.property==='disabled')body.append(el('p','Native disabled attribute only; this does not establish whether the element can be clicked.'));
-   if(row.reason)body.append(el('p',row.reason));const explanation=el('details');explanation.append(el('summary','Evidence and limits'));renderExplanationDetails(document,explanation,facts);explanation.append(el('p',view.commit.status+' · '+view.commit.reason,'sp-atom-hint'));records.append(explanation);
+   if(row.property==='disabled')body.append(el('p','This attribute alone does not tell whether clicks will work.'));
+   if(row.reason)body.append(el('p',row.reason));const explanation=el('details'),explanationBody=el('div');explanation.append(el('summary','Evidence and limits'),explanationBody);renderExplanationDetails(document,explanationBody,facts);explanation.append(el('p',view.commit.status+' · '+view.commit.reason,'sp-atom-hint'));records.append(explanation);
    if(row.analysis){const raw=el('details');raw.append(el('summary','Scoped property records'),el('pre',JSON.stringify({sources:row.analysis.sources,stateatom:row.analysis.stateatom},null,2)));records.append(raw);}
    group.append(body);evidence.push(group);technical.push(records);
    for(const source of view.sources){const id=JSON.stringify(source),group=sourceGroups.get(id)||{source,names:[]};if(!group.names.includes(name))group.names.push(name);sourceGroups.set(id,group);}
   }
   for(const {source,names} of sourceGroups.values()){const locations=el('section',undefined,'sp-atom-property-card');locations.append(el('h4',names.join(' · '),'sp-section-title'));sourceRows(locations,{sources:[source]});sources.push(locations);}
   if(!sources.length)sources.push(el('p',staleCount?'Source links are out of date. Refresh the inspection.':'No source locations linked to this element.','sp-help'));
-  if(!inputs.length&&staleCount){inputs.push(el('p','Refresh dependencies after changing page values.','sp-help'));}
+  if(!inputs.length&&staleCount){const notice=el('section',undefined,'sp-atom-result-notice');notice.append(el('h3','This result is out of date','sp-title'),el('p','Refresh dependencies to read the selected element again. Previous records remain in Details.','sp-help'));const update=el('button','Refresh result','sp-button-primary');update.type='button';update.onclick=refresh;notice.append(update);inputs.push(notice);}
   else if(!inputs.length&&!selectedListSupported){
    const empty=el('section',undefined,'sp-atom-dependencies-empty');
    const fields=['inputs.live','inputs.draft-apply'].some(id=>{const feature=state.capabilityPolicy?.features?.[id];return feature&&(feature.available||feature.code&&feature.code!=='NOT_IMPLEMENTED');});
-   empty.append(el('h3','Element selected','sp-title'),el('p',fields?'You can explore this page’s fields and try supported changes.':'The element’s recorded properties are available in Details.','sp-help'));
-   const action=el('button',fields?'View page fields':'View element details','sp-button-primary');action.type='button';action.onclick=fields?viewPageFields:viewDetails;empty.append(action);
+   if(!fields){empty.append(el('h3','Element selected','sp-title'),el('p','The element’s recorded properties are available in Details.','sp-help'));
+   const action=el('button','View element details','sp-button-primary');action.type='button';action.onclick=viewDetails;empty.append(action);
    const setup=el('details',undefined,'sp-disclosure');setup.append(el('summary','About code dependencies'),el('p','Code dependencies haven’t been recorded for this element. Page fields are separate; they are not a traced dependency list.','sp-help'));
    const connected=state.analysis?.capabilities?.sourceResolver==='open-ide';
    setup.append(el('p',connected?'This project is connected. The selected computation may need supported development instrumentation; some paths remain unsupported.':'To trace supported computations, connect this project’s source code. Basic page inspection does not require this.','sp-help'));
-   const source=el('button',connected?'Review source setup':'Connect IDE','sp-button-subtle');source.type='button';source.onclick=connected?reviewProject:connectProject;setup.append(source);empty.append(setup);inputs.push(empty);
+   const source=el('button',connected?'Review source setup':'Connect IDE','sp-button-subtle');source.type='button';source.onclick=connected?reviewProject:connectProject;setup.append(source);empty.append(setup);inputs.push(empty);}
   }else if(staleCount){const update=el('button','Refresh changed dependencies','sp-button-subtle');update.type='button';update.onclick=refresh;inputs.push(update);}
   const focused=document.activeElement,caret=focused?.selectionStart!=null?[focused.selectionStart,focused.selectionEnd,focused.selectionDirection]:null;
   $('element-properties').replaceChildren(...inputs);onValues(valueSlots);if(focused?.isConnected&&document.activeElement!==focused){focused.focus?.({preventScroll:true});if(caret)focused.setSelectionRange?.(...caret);}$('element-properties').hidden=!inputs.length;$('element-property-evidence').replaceChildren(...evidence);$('element-property-technical').replaceChildren(...technical);$('element-property-sources').replaceChildren(...sources);return true;

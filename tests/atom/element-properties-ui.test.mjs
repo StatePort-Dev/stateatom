@@ -32,12 +32,12 @@ for(const boundary of ['picker','changed selection','dispose'])test('multi-prope
 
 const allNodes=n=>[n,...n.children.flatMap(allNodes)];
 function basicState(){const s=state();s.analysis.capabilities={};s.elementInspection.properties.forEach(r=>r.analysis={sources:[],stateatom:{runtime:{status:'Unknown/Unsupported'}}});return s;}
-test('Basic offers page fields without inventing dependencies or automatically opening a writer',()=>{
+test('Basic has no extra page-fields entry button and does not invent dependencies',()=>{
  const f=fixture(),s=basicState();s.capabilityPolicy.features={'inputs.live':{available:true}};f.ui.render(s);
- const nodes=allNodes(f.$('element-properties')),action=nodes.find(n=>n.textContent==='View page fields');assert(action);assert.deepEqual(f.actions,[]);action.onclick();assert.deepEqual(f.actions,['fields']);assert(nodes.some(n=>n.textContent==='About code dependencies'));assert.equal(nodes.find(n=>n.textContent==='Connect IDE').className,'sp-button-subtle');assert.doesNotMatch(text(f.$('element-properties')),/Dependencies not found/);
+ const nodes=allNodes(f.$('element-properties'));assert(!nodes.some(n=>n.textContent==='View page fields'));assert.deepEqual(f.actions,[]);assert.equal(f.$('element-properties').hidden,true);
 });
 test('Basic falls back to observed details when page editing is not implemented and updates on admission changes',()=>{
- const f=fixture(),s=basicState();s.capabilityPolicy.features={'inputs.live':{available:false,code:'NOT_IMPLEMENTED'}};f.ui.render(s);let nodes=allNodes(f.$('element-properties'));assert(!nodes.some(n=>n.textContent==='View page fields'));nodes.find(n=>n.textContent==='View element details').onclick();assert.deepEqual(f.actions,['details']);s.capabilityPolicy.features['inputs.live']={available:true};f.ui.render(s);nodes=allNodes(f.$('element-properties'));assert(nodes.some(n=>n.textContent==='View page fields'));
+ const f=fixture(),s=basicState();s.capabilityPolicy.features={'inputs.live':{available:false,code:'NOT_IMPLEMENTED'}};f.ui.render(s);let nodes=allNodes(f.$('element-properties'));assert(!nodes.some(n=>n.textContent==='View page fields'));nodes.find(n=>n.textContent==='View element details').onclick();assert.deepEqual(f.actions,['details']);s.capabilityPolicy.features['inputs.live']={available:true};f.ui.render(s);nodes=allNodes(f.$('element-properties'));assert(!nodes.some(n=>n.textContent==='View page fields'));assert.equal(f.$('element-properties').hidden,true);
 });
 
 

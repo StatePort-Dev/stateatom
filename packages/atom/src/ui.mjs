@@ -140,7 +140,7 @@ function renderInspection(){
  $('input-permissions').hidden=!readOnly||!editableFeature||editing.active||!!editing.draft?.dirtyCount;
  $('input-permissions').textContent=https?'Enable editing on this live site':'Switch to editing';
  $('input-permissions').onclick=()=>{if(https)return productionUI.requestEditing();return action(async()=>{const recovery=selectedRecovery();await rpc({op:'connect-site',tabId:tab(),connection:{origin:selectedState.origin||selectedState.connection.origin,mode:'development',actions:['override','replay']}});if(await reconnectSelection(recovery)){reveal('input-editing-details');await inputUI.open();}});};
- $('input-editing-help').textContent=readOnly?(https?'This live site is read-only. Enable editing temporarily to try a change.':'Read-only mode is enabled for this page.'):(editing.editor?.sourceKind==='json-response'?'Response fields':'Page fields')+' · relation to this element not established.';
+ $('input-editing-help').textContent=readOnly?(https?'This live site is read-only. Enable editing temporarily to try a change.':'Read-only mode is enabled for this page.'):editing.editor?.sourceKind==='json-response'?'Recorded response fields. Their connection to this element is unknown.':'Fields on this page. Their connection to this element is unknown.';
  $('actions-intro').hidden=hasTarget;
  $('actions-intro').textContent=hasTarget?'Explore handlers linked to this element. A source path is not proof that a handler ran.':'Select an element to explore its click handlers and supported interactions.';
  $('inspection-summary').textContent=view.summary;
@@ -226,12 +226,14 @@ function renderInspection(){
  candidates.forEach((field,i)=>{const option=document.createElement('option');option.value=i;option.textContent=field.status+' '+field.url+' #'+field.path+' = '+JSON.stringify(field.value);$('fields').append(option);});
  const multi=propertyUI.render(displayState);
  if(multi){
+  $('inputs-empty').hidden=true;
   for(const id of ['computation-result','property-explanation-block','explanation-details','inspection-summary','inspection-next','source-overview'])$(id).hidden=true;
   $('selection-value').textContent=displayState.elementInspection.properties.some(r=>r.status==='Stale')?'Snapshot needs refresh':'Element snapshot';
   $('evidence-overview').textContent=(view.stale||displayState.elementInspection.properties.some(r=>r.status==='Stale')?'Some records are out of date. Refresh the inspection before using them. ': '')+(displayState.elementInspection.properties.length>1?'Properties were read separately, not in one render snapshot.':'Observation and supporting records for this property.');
   $('primary-evidence-label').textContent='Additional '+(selectedState.property||'text')+' records · editor and experiment context';
  }
  $('primary-evidence-label').hidden=!multi;
+ if(multi&&hasTarget&&!view.stale&&view.mode==='Basic'&&editableFeature)void inputUI.showForSelection();
  const eligible=admission('deep-experiment')?.available===true;
  gate('atom-run',admission('deep-experiment'),!selection||!analysis||view.stale);gate('atom-restore',admission('restore'));
  gate('experiment',admission('experiment'),!selection||!candidates.length);
@@ -240,7 +242,7 @@ function renderInspection(){
 }
 function connectSourceProject(){reveal('source-connect');return $('source-connect').click();}
 function reveal(id){const e=$(id),scroller=$('scroll');navigation.reveal(e);for(let parent=e;parent&&parent!==root;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;scroller.scrollTop+=e.getBoundingClientRect().top-scroller.getBoundingClientRect().top-16;(e.tagName==='DETAILS'?e.querySelector('summary'):e).focus({preventScroll:true});}
- $('diagnostic-toggle').onclick=()=>reveal('diagnostics-details');
+ $('diagnostic-toggle').onclick=()=>{if(!$('handoff-current').disabled)return $('handoff-current').click();reveal('diagnostics-details');};
  $('action-source-setup').onclick=()=>reveal('source-section');
  $('source-project').onclick=()=>{if(selectedState?.analysis?.capabilities?.sourceResolver==='open-ide')reveal('source-connection');else connectSourceProject();};$('source-import').onclick=()=>reveal('source-map-details');
  for(const d of root.querySelectorAll('.sp-atom-tools > details, .sp-atom-inspection > details'))d.classList.add('sp-disclosure');
