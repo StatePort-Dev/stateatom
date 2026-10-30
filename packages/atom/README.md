@@ -233,9 +233,15 @@ Unknown/Stale evidence and exact native document/node checks are unchanged.
 A host may pass `initialTabId` (a positive integer) to `mountAtom` to retain its
 selected application context. Atom selects it only if the runtime admits that tab.
 If that tab is missing or unsupported, the application selection stays empty; the
-user must choose a tab explicitly. The examples use Chrome's `openerTabId` while
+user can choose a tab in Settings. The examples use Chrome's `openerTabId` while
 keeping the exact trusted inspector URL unchanged.
 
+
+The selection icon automatically prepares the chosen tab and starts element
+selection; there is no separate Page connection section or Connect button.
+Opening the inspector alone does not attach. Settings contains tab/session
+permissions. Site access may still require Chrome's permission prompt, and live
+page changes still require the two separate production confirmations.
 
 ### Optional live resource guardian (candidate .18)
 

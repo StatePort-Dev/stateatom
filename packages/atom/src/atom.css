@@ -206,7 +206,7 @@
 [data-sp-ui][data-atom-root] .sp-atom-welcome .sp-atom-eyebrow { font-size:11px; margin:0 0 8px; }
 [data-sp-ui][data-atom-root] [data-atom-id="browser-connection"] { margin:0 0 16px; }
 [data-sp-ui][data-atom-root] [data-atom-id="browser-connection"] > summary { font-size:13px; }
-[data-sp-ui][data-atom-root] [data-atom-id="browser-connection"] .sp-atom-toolbar { align-items:end; }
+[data-sp-ui][data-atom-root] [data-atom-id="site-settings"] .sp-atom-toolbar { align-items:end; }
 [data-sp-ui][data-atom-root] [data-atom-id="inspection-next"] { margin:4px 0 16px; }
 [data-sp-ui][data-atom-root] [data-atom-id="inspection-summary"],
 [data-sp-ui][data-atom-root] [data-atom-id="input-editing-help"],

@@ -260,3 +260,25 @@ and no selected-header disappearance during edits. HTTPS synthetic-host evidence
 is `/tmp/stateatom-polish/production-1793206656331/result.json`; two confirmations
 still precede editing. The controlled DOM/ledger UI run exercised eight cases in
 `.artifacts/u02/input-fields-ui/2026-10-28T16-50-42-828Z`.
+
+### 2026-10-30: selection entry and Settings
+
+User review explicitly removes the Page connection section and separate Connect
+button. The Atom selection icon prepares the host-selected tab and starts the
+existing picker in one gesture. Technical attachment happens during preparation
+because the native picker requires the debugger lease; selection still requires
+the user's click on the page. Merely opening the inspector does not attach.
+
+Tab selection, refresh, stop inspection and exact-origin session permissions now
+live in the existing Settings dialog. Settings is available on HTTP as well as
+HTTPS and remains reachable if the selected tab disappears. Local settings errors
+are shown inside the dialog. Production editing retains both confirmation steps;
+opening Settings or starting the picker does not grant mutation capabilities.
+
+This uses the supplied 01.1 Atom / Inputs and 05.1 Settings / Domains composition
+and existing shared controls. The runtime-specific tab selector and advanced
+permissions are an explicit adaptation, not capabilities inferred from the
+prototype. No shared tokens, typography or contract version change. Rendered
+narrow-view/keyboard comparison is still pending: the connected browser became
+unavailable during this change. Source and harness checks are not visual fidelity
+or installed-host acceptance.

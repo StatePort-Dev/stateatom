@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Start element selection from the Atom icon without a separate Connect button or Page connection section. Prepare the inspected tab automatically on that gesture; keep permission denial, debugger ownership and tab-switch guards. Move tab/session permissions into the existing Settings dialog, also available on local pages. Keep the two production change confirmations. Uses existing shared controls and typography; no shared contract change.
+
 - Preserve the selected element when overlapping property refreshes complete; a superseded read cannot replace a newer result. Real context changes and native read failures still reject.
 
 - Retire previous picker ancestors and refinement controls before a manual selection; refuse the new selection if native picker cleanup fails.

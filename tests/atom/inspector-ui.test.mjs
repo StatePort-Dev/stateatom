@@ -29,7 +29,7 @@ test('ordinary HTTP attach requires read and inject but no cache permission',asy
  for(const cache of[false,true]){
   const grants=['read','inject',...(cache?['cache']:[])],policy=describeCapabilities({url:'http://127.0.0.1:5173/',permission:true,lease:'none',attached:false,readOnly:false,grants});
   let f;f=fixture(m=>m.op==='state'?{...f.state(m.tabId),attached:false,readOnly:false,connection:{origin:'http://127.0.0.1:5173',mode:'development',actions:cache?['cache']:[]},capabilityPolicy:policy}:undefined);
-  try{await f.view.ready;assert.equal(f.$('source-map-readonly').checked||false,false);assert.equal(f.$('site-cache').checked,cache);assert.equal(f.$('attach').disabled,false);assert.equal(f.$('attach').title,'');assert.deepEqual(policy.operations.attach.requiredGrants,['read','inject']);}
+  try{await f.view.ready;assert.equal(f.$('source-map-readonly').checked||false,false);assert.equal(f.$('site-cache').checked,cache);assert.equal(f.$('pick').disabled,false);assert.equal(f.$('pick').title,'Select page element');assert.deepEqual(policy.operations.attach.requiredGrants,['read','inject']);}
   finally{await f.view.dispose();}
  }
 });
@@ -300,19 +300,11 @@ test('late manual selector error cannot replace a different tab status or select
 
 test('attached empty view uses the toolbar picker without a duplicate large selection CTA',async()=>{let f;f=fixture(m=>m.op==='state'?{...f.state(m.tabId),selection:null,analysis:null}:undefined);await f.view.ready;assert.equal(f.$('getting-started').hidden,true);assert.equal(f.$('inspection-next').hidden,true);assert.equal(f.$('inspection-summary').hidden,true);assert.match(f.$('inputs-empty').textContent,/selection icon beside Atom/);assert.equal(f.$('selection-context').hidden,false);assert.equal(f.$('selection-title').textContent,'Select an element');assert.equal(f.$('selection-value').hidden,true);assert.equal(f.$('selection-tools').hidden,false);await f.view.dispose();});
 
-test('connected page settings stay hidden until requested and can close without disconnecting',async()=>{
- const calls=[];const f=fixture(m=>{calls.push(m.op);});await f.view.ready;
- const settings=f.$('browser-connection');settings.tagName='DETAILS';settings.querySelector=()=>({focus(){}});
- assert.equal(settings.hidden,true);assert.equal(calls.includes('attach'),false);
- f.$('setup-toggle').onclick();assert.equal(settings.hidden,false);assert.equal(settings.open,true);
- await f.$('load').onclick();assert.equal(settings.hidden,false);
- settings.open=false;settings.ontoggle();assert.equal(settings.hidden,true);
- await f.$('refresh-tabs').onclick();assert.equal(settings.hidden,true);assert.equal(calls.includes('detach'),false);
- await f.view.dispose();
+test('Settings opens on demand and closes without stopping inspection',async()=>{
+ const calls=[],f=fixture(m=>{calls.push(m.op);});try{await f.view.ready;const settings=f.$('production-dialog');assert.equal(settings.open,false);f.$('settings-toggle').onclick();assert.equal(settings.open,true);await f.$('production-back').onclick();assert.equal(settings.open,false);assert(!calls.includes('attach'));assert(!calls.includes('detach'));}finally{await f.view.dispose();}
 });
-test('a page that still needs connection exposes setup without silently attaching',async()=>{
- const calls=[];let f;f=fixture(m=>{calls.push(m.op);return m.op==='state'?{...f.state(m.tabId),attached:false,selection:null,analysis:null}:undefined;});await f.view.ready;
- assert.equal(f.$('browser-connection').hidden,false);assert.equal(f.$('browser-connection').open,true);assert.equal(calls.includes('attach'),false);await f.view.dispose();
+test('an unattached page explains selection without silently attaching',async()=>{
+ const calls=[];let f;f=fixture(m=>{calls.push(m.op);return m.op==='state'?{...f.state(m.tabId),attached:false,selection:null,analysis:null}:undefined;});try{await f.view.ready;assert.equal(f.$('getting-started').hidden,false);assert.match(f.$('getting-started-help').textContent,/selection icon/);assert.equal(f.$('production-dialog').open,false);assert.equal(calls.includes('attach'),false);}finally{await f.view.dispose();}
 });
 
 test('supported computation is visible without opening evidence and stale records leave that surface',async()=>{
@@ -333,16 +325,13 @@ test('real read-only Basic offers bounded permission guidance without inactive e
  }
 });
 test('new selected node resets contextual scroll but a newer snapshot of the same node keeps it',async()=>{let nodeId='one',at=100,f;f=fixture(m=>m.op==='state'?{...f.state(m.tabId),selection:{...f.state(m.tabId).selection,domIdentity:{document:'doc',node:nodeId},observedAt:at}}:undefined);try{await f.view.ready;f.$('actions-nav').onclick();f.$('scroll').scrollTop=120;at++;await f.$('load').onclick();assert.equal(f.$('scroll').scrollTop,120);nodeId='two';await f.$('load').onclick();assert.equal(f.$('scroll').scrollTop,0);assert.equal(f.$('actions-section').hidden,false);}finally{await f.view.dispose();}});
-test('connection icon toggles its own panel without a runtime operation',async()=>{const calls=[],f=fixture(m=>{calls.push(m.op);});try{await f.view.ready;const panel=f.$('browser-connection');panel.tagName='DETAILS';panel.querySelector=()=>({focus(){}});const count=calls.length;f.$('setup-toggle').onclick();assert.equal(panel.hidden,false);f.$('setup-toggle').onclick();assert.equal(panel.hidden,true);assert.equal(panel.open,false);assert.equal(calls.length,count);}finally{await f.view.dispose();}});
 test('picker icon tooltip reflects selection and cancellation instead of staying empty',async()=>{const {describeCapabilities}=await import('../../packages/atom/src/capabilities.mjs');const policy=describeCapabilities({url:'http://127.0.0.1:4173/',permission:true,grants:['read','inject'],lease:'owned',attached:true,readOnly:true,hasSelection:true,hasAnalysis:true});let picking=false,f;f=fixture(m=>m.op==='state'?{...f.state(m.tabId),capabilityPolicy:policy,picker:{id:'p',status:picking?'picking':'cancelled'}}:undefined);try{await f.view.ready;assert.equal(f.$('pick').disabled,false);assert.equal(f.$('pick').title,'Select page element');picking=true;await f.$('refresh-tabs').onclick();assert.match(f.$('pick').title,/Cancel selection/);picking=false;await f.$('refresh-tabs').onclick();assert.equal(f.$('pick').title,'Select page element');}finally{await f.view.dispose();}});
-test('successful connection moves focus to picker only when focus was in the closed connection panel',async()=>{const {describeCapabilities}=await import('../../packages/atom/src/capabilities.mjs'),policy=describeCapabilities({url:'http://127.0.0.1:4173/',permission:true,grants:['read','inject'],lease:'owned',attached:true,readOnly:true});let f;f=fixture(m=>m.op==='state'?{...f.state(m.tabId),capabilityPolicy:policy}:undefined);try{await f.view.ready;const doc=f.$('attach').ownerDocument;doc.activeElement=f.$('attach');f.$('browser-connection').contains=e=>e===f.$('attach');let focused=0;f.$('pick').focus=()=>{focused++;doc.activeElement=f.$('pick');};await f.$('attach').onclick();assert.equal(focused,1);f.$('browser-connection').ontoggle();assert.equal(doc.activeElement,f.$('pick'));}finally{await f.view.dispose();}});
 
-test('connection disclosure and icon announce the same expanded state on first open',async()=>{let f;f=fixture(m=>m.op==='state'?{...f.state(m.tabId),attached:false,selection:null,analysis:null}:undefined);try{await f.view.ready;assert.equal(f.$('browser-connection').open,true);assert.equal(f.$('setup-toggle').attributes['aria-expanded'],'true');f.$('browser-connection').open=false;f.$('browser-connection').ontoggle();assert.equal(f.$('setup-toggle').attributes['aria-expanded'],'false');}finally{await f.view.dispose();}});
 test('saving connection options reconnects and refreshes the exact selected element without opening setup',async()=>{
  const {describeCapabilities}=await import('../../packages/atom/src/capabilities.mjs');let attached=true,selected=true,run='before',f;const calls=[],origin='http://127.0.0.1:4173';
  const policy=()=>describeCapabilities({url:origin+'/',permission:true,grants:['read','inject','replay','override'],lease:attached?'owned':'none',attached,hasSelection:selected,hasAnalysis:selected,nativeInputOwner:true,workerIndependent:true});
  f=fixture(m=>{calls.push(m);if(m.op==='capabilities')return policy();if(m.op==='state')return{...f.state(1),origin,run,attached,readOnly:false,selection:selected?{...f.state(1).selection,domIdentity:{document:'d',node:'n'}}:null,analysis:selected?f.state(1).analysis:null,capabilityPolicy:policy()};if(m.op==='connect-site'){attached=false;selected=false;run='after';return{};}if(m.op==='attach'){attached=true;return{};}if(m.op==='inspect-selector'){assert.deepEqual(m.expectedIdentity,{document:'d',node:'n'});selected=true;return{};}});
- try{await f.view.ready;f.$('site-mode').value='development';f.$('site-replay').checked=true;f.$('site-override').checked=true;await f.$('save-site').onclick();assert.equal(f.$('status').textContent,'OK');assert.match(f.$('selected').textContent,/#target-1/);assert.equal(f.$('browser-connection').hidden,true);assert.equal(f.$('browser-connection').open,false);assert.equal(calls.filter(m=>m.op==='attach').length,1);assert.equal(calls.filter(m=>m.op==='inspect-selector').length,1);}finally{await f.view.dispose();}
+ try{await f.view.ready;f.$('site-mode').value='development';f.$('site-replay').checked=true;f.$('site-override').checked=true;await f.$('save-site').onclick();assert.equal(f.$('status').textContent,'OK');assert.match(f.$('selected').textContent,/#target-1/);assert.equal(f.$('production-dialog').open,false);assert.equal(calls.filter(m=>m.op==='attach').length,1);assert.equal(calls.filter(m=>m.op==='inspect-selector').length,1);}finally{await f.view.dispose();}
 });
 test('tab changes during connection save never attach or inspect the newly selected tab',async()=>{const gate=deferred(),calls=[];let f;f=fixture(m=>{calls.push(m);if(m.op==='connect-site')return gate.promise;if(m.op==='state')return{...f.state(m.tabId),origin:'http://127.0.0.1:4173',selection:{...f.state(m.tabId).selection,domIdentity:{document:'d',node:'n'}}};});try{await f.view.ready;const saved=f.$('save-site').onclick();await tick();f.$('tabs').value='2';await f.$('tabs').onchange();gate.resolve({});await saved;assert(!calls.some(m=>m.op==='attach'||m.op==='inspect-selector'));assert.match(f.$('selected').textContent,/#target-2/);}finally{await f.view.dispose();}});
 test('Switch to editing keeps its tab scope even when the previous element is stale',async()=>{
@@ -380,6 +369,55 @@ test('late tab cleanup cannot supersede the read started by a newer tab choice',
   cleanup.resolve({});await tick();
   assert.equal(calls.filter(m=>m.op==='state').length,1,'Obsolete cleanup must not start a competing deep refresh');
   latest.resolve(f.state(1));await Promise.all([old,current]);
-  assert.match(f.$('selected').textContent,/#target-1/);assert.equal(f.$('connection-label').textContent,'Attached · this tab');assert.equal(f.$('status').textContent,'OK');
+  assert.match(f.$('selected').textContent,/#target-1/);assert.equal(f.$('connection-label').textContent,'Inspecting this tab');assert.equal(f.$('status').textContent,'OK');
  }finally{cleanup.resolve({});latest.resolve(f.state(1));await f.view.dispose();}
+});
+
+test('picker starts an unattached page in one gesture without granting mutation capabilities',async()=>{
+ const {describeCapabilities}=await import('../../packages/atom/src/capabilities.mjs');
+ for(const origin of ['http://127.0.0.1:4173','https://example.test']){
+  const calls=[];let attached=false,f;
+  f=fixture(m=>{calls.push(m);if(m.op==='state')return{...f.state(m.tabId),origin,attached,selection:null,analysis:null,capabilityPolicy:describeCapabilities({url:origin+'/',permission:true,readOnlySites:true,grants:['read','inject'],lease:attached?'owned':'none',attached})};if(m.op==='attach'){attached=true;return{};}});
+  try{await f.view.ready;assert.equal(calls.some(m=>m.op==='attach'),false);assert.equal(f.$('pick').disabled,false);await f.$('pick').onclick();assert.deepEqual(calls.filter(m=>['attach','pick','connect-site','production-begin','production-confirm'].includes(m.op)).map(m=>m.op),['attach','pick']);assert.equal(calls.find(m=>m.op==='attach').tabId,1);assert.equal(f.$('status').textContent,'OK');}finally{await f.view.dispose();}
+ }
+});
+test('a delayed automatic attach cannot start picking in a different tab',async()=>{
+ const pending=deferred(),calls=[];let f;
+ f=fixture(m=>{calls.push(m);if(m.op==='attach')return pending.promise;if(m.op==='state')return{...f.state(m.tabId),attached:false,selection:null,analysis:null};});
+ try{await f.view.ready;const picking=f.$('pick').onclick();await tick();assert.equal(calls.filter(m=>m.op==='attach').length,1);f.$('tabs').value='2';await f.$('tabs').onchange();pending.resolve({});await picking;assert.equal(calls.some(m=>m.op==='pick'),false);}finally{pending.resolve({});await f.view.dispose();}
+});
+test('the single Settings window is available on local pages without starting inspection',async()=>{
+ const calls=[];let f;f=fixture(m=>{calls.push(m);if(m.op==='state')return{...f.state(m.tabId),origin:'http://127.0.0.1:4173',attached:false,selection:null,analysis:null};});
+ try{await f.view.ready;assert.equal(f.$('settings-toggle').hidden,false);f.$('settings-toggle').onclick();assert.equal(f.$('production-dialog').open,true);assert.equal(f.$('site-settings').hidden,false);assert.equal(f.$('production-overview').hidden,true);assert.equal(calls.some(m=>m.op==='attach'||m.op==='connect-site'),false);}finally{await f.view.dispose();}
+});
+
+test('page permissions are inside Settings and no separate connection gate exists',async()=>{
+ const {template}=await import('../../packages/atom/src/template.mjs');
+ assert.doesNotMatch(template,/Page connection|Connect to page|id="attach"|id="setup-toggle"|id="browser-connection"/);
+ const start=template.indexOf('<dialog id="production-dialog"'),end=template.indexOf('</dialog>',start);
+ for(const id of ['tabs','site-mode','save-site','forget-site','detach'])assert(template.indexOf('id="'+id+'"')>start&&template.indexOf('id="'+id+'"')<end);
+});
+test('denied site access never attaches or starts a picker',async()=>{
+ const {describeCapabilities}=await import('../../packages/atom/src/capabilities.mjs'),calls=[],origins=[];let f;
+ f=fixture(m=>{calls.push(m);if(m.op==='state')return{...f.state(1),attached:false,selection:null,analysis:null,capabilityPolicy:describeCapabilities({url:'https://example.test/',permission:false,readOnlySites:true,grants:['read','inject'],lease:'none',attached:false})};},{requestOriginPermission:async origin=>{origins.push(origin);return false;}});
+ try{await f.view.ready;f.$('tabs').selectedOptions=[{dataset:{origin:'https://example.test'}}];assert.equal(f.$('pick').disabled,false);await f.$('pick').onclick();assert.deepEqual(origins,['https://example.test']);assert(!calls.some(m=>['attach','pick','connect-site'].includes(m.op)));assert.equal(f.$('status').textContent,'Error: Site origin permission denied');assert.equal(f.$('pick').disabled,false);}finally{await f.view.dispose();}
+});
+test('foreign debugger ownership keeps the selection icon unavailable',async()=>{
+ const {describeCapabilities}=await import('../../packages/atom/src/capabilities.mjs'),calls=[];let f;
+ f=fixture(m=>{calls.push(m);if(m.op==='state')return{...f.state(1),attached:false,selection:null,analysis:null,capabilityPolicy:describeCapabilities({url:'http://127.0.0.1:4173/',permission:true,grants:['read','inject'],lease:'foreign',attached:false})};});
+ try{await f.view.ready;assert.equal(f.$('pick').disabled,true);assert.match(f.$('pick').title,/busy/);assert(!calls.some(m=>['attach','pick'].includes(m.op)));}finally{await f.view.dispose();}
+});
+test('repeated selection gestures share preparation and an attach failure never starts picking',async()=>{
+ const pending=deferred(),calls=[];let f;
+ f=fixture(m=>{calls.push(m);if(m.op==='attach')return pending.promise;if(m.op==='state')return{...f.state(1),attached:false,selection:null,analysis:null};});
+ try{await f.view.ready;const first=f.$('pick').onclick();await tick();await f.$('pick').onclick();assert.equal(calls.filter(m=>m.op==='attach').length,1);pending.resolve(Promise.reject(Error('Debugger resource busy')));await first;assert.equal(calls.some(m=>m.op==='pick'),false);assert.equal(f.$('status').textContent,'Error: Debugger resource busy');}finally{pending.resolve({});await f.view.dispose();}
+});
+
+test('Settings remains reachable after the selected page closes so another page can be chosen',async()=>{
+ let removed=false;const f=fixture(m=>m.op==='tabs'&&removed?[]:undefined);
+ try{await f.view.ready;removed=true;await f.$('refresh-tabs').onclick();assert.equal(f.$('tabs').value,'');assert.equal(f.$('settings-toggle').disabled,false);f.$('settings-toggle').onclick();assert.equal(f.$('production-dialog').open,true);}finally{await f.view.dispose();}
+});
+test('site permission errors stay readable inside the modal Settings window',async()=>{
+ const f=fixture(m=>{if(m.op==='connect-site')throw Error('Development mode requires HTTP');});
+ try{await f.view.ready;f.$('settings-toggle').onclick();await f.$('save-site').onclick();assert.equal(f.$('production-dialog').open,true);assert.equal(f.$('site-status').textContent,'Error: Development mode requires HTTP');}finally{await f.view.dispose();}
 });

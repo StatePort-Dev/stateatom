@@ -37,18 +37,19 @@ export function mountAtom(rootElement,client,options={}){
  $('reader-link').href=options.readerURL||'reader.html';
  let disposed=false,connectionLost=false;const controller=new AbortController(),urls=new Set(),timers=new Set();
  const later=(fn,ms)=>{const timer=setTimeout(()=>{timers.delete(timer);if(!disposed)fn();},ms);timers.add(timer);};
-let ownedPicker,connectionSettingsOpen=false;
+let ownedPicker,pickerPreparing=false;
 function ownPickerRequest(tabId,id){ownedPicker?.controller?.abort();const own={tabId,id,controller:new AbortController()};ownedPicker=own;return AbortSignal.any([controller.signal,own.controller.signal]);}
 
 let analysis,selectedState,loadGeneration=0,selectionGeneration=0,tabGeneration=0,tabsGeneration=0,tabsInitialized=false,renderedAt,restorationNotice,selectionIntent=0;
 const tab=()=>Number($('tabs').value);
 async function rpc(message,signal=controller.signal){const r=await client.request(['inspect-selector','pick','refine-pick'].includes(message.op)?{...message,elementProperties:true}:message,{signal});if(disposed)throw atomError('DISPOSED');return r;}
 const pendingActions=new Map(),pendingProperties=new Map(),pendingInspections=new Map();
+function actionStatus(text){$('status').textContent=text;if($('production-dialog').open)$('site-status').textContent=text;}
 async function action(fn){
  const id=tab(),epoch=tabGeneration,key=epoch+':'+id,batch=pendingActions.get(key)||{count:0,error:null};pendingActions.set(key,batch);++batch.count;
- try{$('status').textContent='Working…';return await fn();}
+ try{actionStatus('Working…');return await fn();}
  catch(e){batch.error=e.message;}
- finally{if(!--batch.count){pendingActions.delete(key);if(!disposed&&id===tab()&&epoch===tabGeneration)$('status').textContent=batch.error?'Error: '+batch.error:pendingProperties.has(id)?'Working…':'OK';}}
+ finally{if(!--batch.count){pendingActions.delete(key);if(!disposed&&id===tab()&&epoch===tabGeneration)actionStatus(batch.error?'Error: '+batch.error:pendingProperties.has(id)?'Working…':'OK');}}
 }
 async function tabs(){
  const generation=++tabsGeneration,ts=await rpc({op:'tabs'});if(generation!==tabsGeneration)return;
@@ -82,13 +83,19 @@ let handoffUI;const observation=createObservationController({client,onChange:s=>
 const observationHistoryUI=createObservationHistoryUI({$,client});
 const propertyUI=createElementPropertiesUI({document,$,onValues:slots=>inputUI.setValueSlots(slots),refresh:()=>$('load').click(),connectProject:()=>reveal('source-connection'),openSource:source=>action(async()=>{await rpc({op:'open',tabId:tab(),source});})});
 const explanationUI=createInspectionExplanationUI({document,$,onNext:id=>{if(id==='connect-project')reveal('source-connection');else if(id==='inspect-again')$('load').click();}});
-const productionUI=createProductionUI({$,client,onRefresh:load,prepareEnable:selectedRecovery,onEnabled:async recovery=>{if(await reconnectSelection(recovery,{readOnly:true})){reveal('input-editing-details');await inputUI.open();}},onAttach:async()=>{await rpc({op:'attach',tabId:tab(),readOnly:true});await load();},onConnection:()=>reveal('browser-connection')});
+const productionUI=createProductionUI({$,client,onRefresh:load,prepareEnable:selectedRecovery,onEnabled:async recovery=>{if(await reconnectSelection(recovery,{readOnly:true})){reveal('input-editing-details');await inputUI.open();}},onAttach:async()=>{await rpc({op:'attach',tabId:tab(),readOnly:true});await load();}});
 function lostConnection(){if(disposed)return;connectionLost=true;ownedPicker?.controller?.abort();ownedPicker=null;++tabGeneration;clearInspection(false);inputUI.update(null);$('status').textContent='Inspector connection lost. Reopen this inspector to continue.';}
 const offConnection=client.subscribeConnection?.(lostConnection)||(()=>{});
 $('inspector-reconnect').onclick=()=>{if(typeof options.onReconnect==='function')void options.onReconnect();};
 function admission(op){const p=selectedState?.capabilityPolicy;return supportsCapabilityPolicy(p)?p.operations?.[op]:{available:false,reason:'Host does not advertise capability policy v1; update the Atom host'};}
 function gate(id,decision,otherwise=false){$(id).disabled=otherwise||!decision?.available;$(id).title=decision?.available?'':decision?.reason||'Capability unavailable';}
-function attachAvailability(){const p=selectedState?.capabilityPolicy,known=supportsCapabilityPolicy(p),requestAccess=known&&!!options.requestOriginPermission&&p.features['basic.request-site-access'].available;gate('attach',requestAccess?p.features['basic.request-site-access']:$('source-map-readonly').checked&&known?p.features['basic.attach-read-only']:admission('attach'));$('attach').textContent=requestAccess?'Allow site and connect':'Connect to page';}
+function pickerAdmission(){
+ const p=selectedState?.capabilityPolicy,known=supportsCapabilityPolicy(p);
+ if(selectedState?.attached)return admission('pick');
+ if(known&&options.requestOriginPermission&&p.features['basic.request-site-access'].available)return p.features['basic.request-site-access'];
+ return $('source-map-readonly').checked&&known?p.features['basic.attach-read-only']:admission('attach');
+}
+function pickerAvailability(){gate('pick',pickerAdmission(),pickerPreparing);}
 function hasSelectedRecord(state){return !!(state.selection||state.stale?.target);}
 function renderInspection(){
  observationHistoryUI.update(selectedState);
@@ -106,14 +113,12 @@ function renderInspection(){
  $('site-origin').textContent=$('tabs').selectedOptions?.[0]?.dataset.origin||'No application selected';
  for(const name of ['cache','reload','override','replay'])$('site-'+name).checked=selectedState?.connection?.actions?.includes(name)===true;
  $('site-mode').value=selectedState?.connection?.mode||'read-only';
- $('browser-connection').hidden=selectedState?.attached===true&&!connectionSettingsOpen;
- $('setup-toggle').setAttribute('aria-controls',$('browser-connection').id);
- $('connection-label').textContent=selectedState?.attached?(selectedState.readOnly?'Attached · read-only':'Attached · this tab'):'Not attached';
+ $('connection-label').textContent=selectedState?.attached?(selectedState.readOnly?'Inspecting · read-only':'Inspecting this tab'):'Not inspecting';
  if(view.observedAt)renderedAt=view.observedAt;
  const hasTarget=!!displayState.selection;
  $('getting-started').hidden=!!selectedState?.attached||hasTarget;
- $('getting-started-title').textContent=selectedState?.attached?'Choose something on the page':'Start with a page';
- $('getting-started-help').textContent=selectedState?.attached?'Click Select page element, then click a button, label or field in your application. Come back here to see what Atom could observe.':'Choose the browser tab you want to understand and connect it below. You can start without an account, IDE or AI model.';
+ $('getting-started-title').textContent='Select an element';
+ $('getting-started-help').textContent=Number.isSafeInteger(tab())&&tab()>0?'Use the selection icon beside Atom, then click an element on your page.':'Open Atom from the page you want to inspect.';
  $('selection-header').hidden=!selectedState?.attached&&!hasTarget&&!displayState.stale?.target;
  $('selection-context').hidden=!selectedState?.attached&&!hasTarget&&!view.stale;
  $('selection-tools').hidden=!selectedState?.attached;
@@ -139,7 +144,7 @@ function renderInspection(){
  $('detach').hidden=!selectedState?.attached;
  $('load').hidden=connectionLost||!view.target&&!view.stale;
  const pendingPicker=['starting','picking','resolving'].includes(selectedState?.picker?.status);
- const next={attach:['Choose tab and attach',()=>reveal('browser-connection')],'select-element':[pendingPicker?'Cancel element selection':'Select page element',()=>$('pick').click()],'inspect-again':['Inspect again',()=>$('load').click()],'connect-project':['Connect project for source',()=>reveal('source-connection')],'start-observation':['Set up input observation',()=>reveal('source-connection')],unsupported:['View supported boundaries',()=>reveal('evidence-scope-details')]};
+ const next={attach:['Select page element',()=>$('pick').click()],'select-element':[pendingPicker?'Cancel element selection':'Select page element',()=>$('pick').click()],'inspect-again':['Inspect again',()=>$('load').click()],'connect-project':['Connect project for source',()=>reveal('source-connection')],'start-observation':['Set up input observation',()=>reveal('source-connection')],unsupported:['View supported boundaries',()=>reveal('evidence-scope-details')]};
  const [nextLabel,nextAction]=next[view.nextStep];$('inspection-next').textContent=nextLabel;$('inspection-next').onclick=nextAction;
  $('inspection-next').disabled=view.nextStep==='inspect-again'&&(!admission('inspect-selector')?.available||!selectedState?.selection&&!selectedState?.stale?.target)||view.nextStep==='select-element'&&!admission(pendingPicker?'cancel-pick':'pick')?.available;
  $('source-project').textContent=view.mode==='Basic'?'Connect project':'Project connection';
@@ -155,8 +160,6 @@ function renderInspection(){
  $('selection-title').textContent=presentation.title;$('selection-title').title=selection?.text||presentation.title;
  $('selection-value').textContent=presentation.value;$('selection-value').hidden=!!displayState.elementInspection||!hasTarget;
  $('selection-kind').textContent=presentation.kind;$('selection-header').setAttribute('data-empty',String(!target));
- if((selectedState&&!selectedState.attached&&!target)||!Number.isSafeInteger(tab())||tab()<=0)$('browser-connection').open=true;
- $('setup-toggle').setAttribute('aria-expanded',String(!$('browser-connection').hidden&&$('browser-connection').open));
  $('commit-summary').textContent=view.commit.status+' · '+view.commit.reason;
  $('native-state-summary').hidden=!view.nativeStateAncestors;
  $('native-state-summary').textContent=view.nativeStateAncestors?.summary||'';
@@ -169,7 +172,7 @@ function renderInspection(){
  handoffUI.updateCurrent({tabId:tab(),observationSupported:supportsCapabilityPolicy(selectedState?.capabilityPolicy)&&selectedState.capabilityPolicy.features['production.observations']?.code!=='NOT_IMPLEMENTED',observationPolicy:selectedState?.observationPolicy,available:!!(displayState.selection||displayState.stale?.target)&&supportsCapabilityPolicy(selectedState?.capabilityPolicy)&&!connectionLost,contextKey:JSON.stringify([tab(),tabGeneration,selectionGeneration,selectedState?.run,displayState.selection?.domIdentity,displayState.selection?.observedAt,displayState.stale?.at,selectedState?.property,connectionLost,selectedState?.picker?.status,selectedState?.picker?.id])});
  gate('load',admission('inspect-selector'),!displayState.selection?.selector&&!displayState.stale?.target?.selector);
  const picker=selectedState?.picker,picking=['starting','picking','resolving'].includes(picker?.status);
- gate('pick',admission(picking?'cancel-pick':'pick'));$('pick').setAttribute('aria-label',picking?'Cancel element selection':'Select page element');$('pick').setAttribute('aria-pressed',String(picking));$('pick').title=picking?'Cancel selection; Escape also cancels on the page':$('pick').disabled?$('pick').title:'Select page element';
+ gate('pick',picking?admission('cancel-pick'):pickerAdmission(),pickerPreparing);$('pick').setAttribute('aria-label',picking?'Cancel element selection':'Select page element');$('pick').setAttribute('aria-pressed',String(picking));$('pick').title=picking?'Cancel selection; Escape also cancels on the page':$('pick').disabled?$('pick').title:'Select page element';
  $('picker-status').hidden=!picking&&picker?.status!=='unsupported';$('picker-status').textContent=picker?.status==='starting'?'Preparing selection…':picking?'Click an element. Cancel here, or Escape (may reach the page).':picker?.reason||'';
  $('element-details').hidden=!target&&!picking&&picker?.status!=='unsupported';
  $('picker-limits').textContent='Escape cancels but may reach page key handlers; Cancel in the inspector avoids page keys. Frame and closed-root internals are unsupported. DOM selection does not establish a source association.'+(picker?.reason?' '+picker.reason:'');
@@ -178,7 +181,7 @@ function renderInspection(){
  $('picker-parent').onclick=()=>action(async()=>{if(presentation.parentIndex===null)return;const signal=ownPickerRequest(tab(),picker.id);await rpc({op:'refine-pick',tabId:tab(),pickerId:picker.id,index:presentation.parentIndex},signal);await load();});
  const focusedChoice=$('picker-choices').contains(document.activeElement)?document.activeElement.dataset.pickerChoice:null;
  $('picker-choices').replaceChildren(...(picker?.choices||[]).map(choice=>{const button=document.createElement('button');button.type='button';button.dataset.pickerChoice=picker.id+':'+choice.index;button.textContent=choice.label;button.disabled=!admission('refine-pick').available;button.onclick=()=>action(async()=>{const signal=ownPickerRequest(tab(),picker.id);await rpc({op:'refine-pick',tabId:tab(),pickerId:picker.id,index:choice.index},signal);await load();});return button;}));$('picker-choices').hidden=!(picker?.choices?.length);if(focusedChoice){const button=[...$('picker-choices').children].find(b=>b.dataset.pickerChoice===focusedChoice&&!b.disabled);button?.focus({preventScroll:true});}
- gate('inspect-selector',admission('inspect-selector'));attachAvailability();
+ gate('inspect-selector',admission('inspect-selector'));
  $('selected').textContent=selection?selection.selector+' · '+selection.property+' = '+JSON.stringify(selection.value):view.stale?'Previous observation is stale. Select an element or inspect again.':'Select an element on the attached page.';
  $('freshness').textContent=latestText?'Page values checked. Refresh to update the explanation.':view.stale?'Stale · '+view.reason:view.observedAt?'Snapshot at '+new Date(view.observedAt).toLocaleTimeString(undefined,{hour:'2-digit',minute:'2-digit',second:'2-digit',fractionalSecondDigits:3})+'. Not live.':'No observation yet.';
  $('freshness').title='Recorded snapshot. Inspect again after changing the app.';
@@ -225,9 +228,7 @@ function renderInspection(){
  $('experiment-eligibility').textContent=!eligible?(admission('deep-experiment')?.reason||'Capability unavailable'):selection?.property==='text'&&candidates.length?'Text response experiment available for a recorded JSON leaf. Response presence alone is not dependency. Trials reset storage/cache and reload; server writes are not undone.':'Controlled property trials require explicit response variants below. The simpler response-field experiment supports text only. Trials reset storage/cache and reload; server writes are not undone.';
  $('evidence').textContent=selectedState?JSON.stringify({analysis:displayAnalysis,events:selectedState.events,bufferBytes:selectedState.bufferBytes,...(matchingTrial?{experiment:trial}:{})},null,2):'';
 }
-function reveal(id){const e=$(id),scroller=$('scroll');if(id==='browser-connection'){connectionSettingsOpen=true;e.hidden=false;$('setup-toggle').setAttribute('aria-expanded','true');}navigation.reveal(e);for(let parent=e;parent&&parent!==root;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;scroller.scrollTop+=e.getBoundingClientRect().top-scroller.getBoundingClientRect().top-16;(e.tagName==='DETAILS'?e.querySelector('summary'):e).focus({preventScroll:true});}
- $('setup-toggle').onclick=()=>{const panel=$('browser-connection');if(panel.open&&!panel.hidden){connectionSettingsOpen=false;panel.open=false;panel.hidden=selectedState?.attached===true;$('setup-toggle').setAttribute('aria-expanded','false');}else reveal('browser-connection');};
- $('browser-connection').ontoggle=()=>{const panel=$('browser-connection');if(!panel.open&&selectedState?.attached){const returnFocus=panel.contains(document.activeElement);connectionSettingsOpen=false;panel.hidden=true;if(returnFocus)$('setup-toggle').focus({preventScroll:true});}$('setup-toggle').setAttribute('aria-expanded',String(!panel.hidden&&panel.open));};
+function reveal(id){const e=$(id),scroller=$('scroll');navigation.reveal(e);for(let parent=e;parent&&parent!==root;parent=parent.parentElement)if(parent.tagName==='DETAILS')parent.open=true;scroller.scrollTop+=e.getBoundingClientRect().top-scroller.getBoundingClientRect().top-16;(e.tagName==='DETAILS'?e.querySelector('summary'):e).focus({preventScroll:true});}
  $('diagnostic-toggle').onclick=()=>reveal('diagnostics-details');
  $('action-source-setup').onclick=()=>reveal('source-section');
  $('source-project').onclick=()=>reveal('source-connection');$('source-import').onclick=()=>reveal('source-map-details');
@@ -256,13 +257,37 @@ async function reconnectSelection(recovery,{readOnly=false}={}){
  const id=tab(),epoch=tabGeneration;if(recovery&&(recovery.tabId!==id||recovery.epoch!==epoch))return;
  const current=()=>!disposed&&id===tab()&&epoch===tabGeneration&&(!recovery?.origin||$('tabs').selectedOptions?.[0]?.dataset.origin===recovery.origin);
  if(!current())return;await rpc({op:'attach',tabId:id,readOnly});if(!current())return;
- connectionSettingsOpen=false;$('browser-connection').open=false;$('site-permissions-details').open=false;
  if(recovery?.selector&&recovery.expectedIdentity)await inspectSelection(recovery.selector,'Connection updated',recovery.expectedIdentity);else await load({refreshDeep:false});
  if(!current())return;navigation.show('inputs');$('scroll').scrollTop=0;return !!selectedState?.selection;
 }
 $('save-site').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration,recovery=selectedRecovery(),wasAttached=selectedState?.attached,origin=$('tabs').selectedOptions?.[0]?.dataset.origin,mode=$('site-mode').value,actions=mode==='development'?['cache','reload','override','replay'].filter(n=>$('site-'+n).checked):[];if(!appOrigin(origin,{exact:true}))throw Error('Select an exact application origin');if(selectedState?.capabilityPolicy?.features?.['basic.request-site-access']?.available&&options.requestOriginPermission&&!await options.requestOriginPermission(origin))throw Error('Site origin permission denied');if(id!==tab()||epoch!==tabGeneration)return;await rpc({op:'connect-site',tabId:id,connection:{origin,mode,actions}});if(id!==tab()||epoch!==tabGeneration)return;if(wasAttached)await reconnectSelection(recovery,{readOnly:mode==='read-only'});else await load({refreshDeep:false});});
 $('forget-site').onclick=()=>action(async()=>{await rpc({op:'forget-site',tabId:tab()});await load();});
-$('refresh-tabs').onclick=()=>action(async()=>{await tabs();await action(()=>load());});$('tabs').onchange=()=>{const cleanup=changeContext(),id=tab(),epoch=tabGeneration;return action(async()=>{await cleanup;if(disposed||id!==tab()||epoch!==tabGeneration)return;await load();});};$('attach').onclick=()=>action(async()=>{const id=tab(),epoch=tabGeneration,origin=$('tabs').selectedOptions?.[0]?.dataset.origin;if(selectedState?.capabilityPolicy?.features?.['basic.request-site-access']?.available&&(!options.requestOriginPermission||!await options.requestOriginPermission(origin)))throw Error('Site origin permission denied');await rpc({op:'attach',tabId:id,readOnly:$('source-map-readonly').checked});if(disposed||id!==tab()||epoch!==tabGeneration)return;await load();if(disposed||id!==tab()||epoch!==tabGeneration)return;if(selectedState?.attached&&!$('pick').disabled&&$('browser-connection').contains(document.activeElement))$('pick').focus({preventScroll:true});connectionSettingsOpen=false;$('browser-connection').open=false;$('browser-connection').hidden=selectedState?.attached===true;$('setup-toggle').setAttribute('aria-expanded','false');$('source-connection').open=false;$('scroll').scrollTop=0;});$('pick').onclick=()=>action(async()=>{if(!['starting','picking','resolving'].includes(selectedState?.picker?.status)&&retainPendingEdits())return;await inputUI.close('Element selection changed');const cancelling=['starting','picking','resolving'].includes(selectedState?.picker?.status),pickerId=cancelling?selectedState.picker.id:crypto.randomUUID();const signal=cancelling?controller.signal:ownPickerRequest(tab(),pickerId);if(cancelling)ownedPicker?.controller?.abort();await rpc({op:cancelling?'cancel-pick':'pick',tabId:tab(),pickerId},signal);if(cancelling)ownedPicker=null;await load({refreshDeep:!cancelling});});$('inspect-selector').onclick=()=>action(()=>inspectSelection($('selector').value,'Manual selection changed'));$('load').onclick=()=>action(inspectAgain);$('detach').onclick=()=>action(async()=>{await rpc({op:'detach',tabId:tab()});await load();});
+$('refresh-tabs').onclick=()=>action(async()=>{await tabs();await action(()=>load());});$('tabs').onchange=()=>{const cleanup=changeContext(),id=tab(),epoch=tabGeneration;return action(async()=>{await cleanup;if(disposed||id!==tab()||epoch!==tabGeneration)return;await load();});};$('pick').onclick=()=>action(async()=>{
+ if(pickerPreparing)return;
+ const id=tab(),epoch=tabGeneration,current=()=>!disposed&&!connectionLost&&id===tab()&&epoch===tabGeneration;
+ const cancelling=['starting','picking','resolving'].includes(selectedState?.picker?.status);
+ if(!cancelling&&retainPendingEdits())return;
+ const pickerId=cancelling?selectedState.picker.id:crypto.randomUUID();
+ if(!cancelling){
+  pickerPreparing=true;pickerAvailability();
+  try{
+   // Request optional origin access from the user's gesture, before other work.
+   if(!selectedState?.attached&&selectedState?.capabilityPolicy?.features?.['basic.request-site-access']?.available){
+    const origin=$('tabs').selectedOptions?.[0]?.dataset.origin;
+    if(!options.requestOriginPermission||!await options.requestOriginPermission(origin))throw Error('Site origin permission denied');
+   }
+   if(!current())return;
+   await inputUI.close('Element selection changed');if(!current())return;
+   if(!selectedState?.attached){await rpc({op:'attach',tabId:id,readOnly:$('source-map-readonly').checked});if(!current())return;}
+  }finally{pickerPreparing=false;if(!disposed)pickerAvailability();}
+ }
+ if(!current())return;
+ const signal=cancelling?controller.signal:ownPickerRequest(id,pickerId);
+ if(cancelling)ownedPicker?.controller?.abort();
+ await rpc({op:cancelling?'cancel-pick':'pick',tabId:id,pickerId},signal);
+ if(!current())return;if(cancelling)ownedPicker=null;
+ await load({refreshDeep:!cancelling});
+});$('inspect-selector').onclick=()=>action(()=>inspectSelection($('selector').value,'Manual selection changed'));$('load').onclick=()=>action(inspectAgain);$('detach').onclick=()=>action(async()=>{await rpc({op:'detach',tabId:tab()});await load();});
 $('experiment').onclick=()=>action(async()=>{const id=tab(),generation=selectionGeneration;const field=fields[Number($('fields').value)];$('experiment-result').textContent='Running…';const result=await rpc({op:'experiment',tabId:tab(),field,value:JSON.parse($('value').value),controlPath:$('control').value,actions:JSON.parse($('actions').value)});if(id!==tab()||generation!==selectionGeneration)return;$('experiment-result').textContent=result.status+': '+result.reason;$('evidence').textContent=JSON.stringify(result,null,2);});
 const unsubscribe=client.subscribe(m=>{if(disposed)return;if(['selection','state-invalidated'].includes(m.event)&&m.tabId===tab()){const observer=observation.snapshot();if(m.event==='state-invalidated'&&m.scope==='input-history'&&observer.tabId===m.tabId&&observer.window?.status==='recording'&&m.windowId===observer.window.windowId&&selectedState?.observationAccess==='owned'&&selectedState.productionObservation?.windowId===observer.window.windowId&&!observer.connectionLost){
  if(m.inspectionChanged===true){analysis=null;selectedState={...selectedState,analysis:null};renderInspection();}
@@ -277,7 +302,7 @@ const unsubscribe=client.subscribe(m=>{if(disposed)return;if(['selection','state
    actionBindings:selectedState.analysis.actionBindings?.map(binding=>({...binding,freshness:'Stale'}))}:null;selectedState={...selectedState,analysis};renderInspection();}
   void action(()=>load());return;
  }
- const pickerHistory=['starting','picking','resolving','cancelled'].includes(selectedState?.picker?.status);clearInspection(true,{preserveViewport:m.event==='state-invalidated',preserveIntent:m.event==='state-invalidated'});void action(()=>load({refreshDeep:!pickerHistory}));}});const ready=tabs().then(load).then(()=>{if(!disposed&&$('status').textContent==='Choose a local app and attach.')$('status').textContent=selectedState?.attached?'Ready':'Connect a page to begin';}).catch(e=>{if(disposed)return;if(e.code==='INSPECTOR_DISCONNECTED')lostConnection();else $('status').textContent='Error: '+e.message;});
+ const pickerHistory=['starting','picking','resolving','cancelled'].includes(selectedState?.picker?.status);clearInspection(true,{preserveViewport:m.event==='state-invalidated',preserveIntent:m.event==='state-invalidated'});void action(()=>load({refreshDeep:!pickerHistory}));}});const ready=tabs().then(load).catch(e=>{if(disposed)return;if(e.code==='INSPECTOR_DISCONNECTED')lostConnection();else $('status').textContent='Error: '+e.message;});
 
 function renderAtom(atom,finiteTraceSupported=false,displayState=selectedState){$('atom-chain').replaceChildren();$('atom-independent').textContent='';if(!atom){$('atom-summary').textContent=displayState?.stale?'Stale · '+displayState.stale.reason+' · inspect again':'Unknown/Unsupported: no inspection';return;}const r=atom.runtime;$('atom-summary').textContent=(r.status||'Unknown/Unsupported')+' · '+atom.target.property+' = '+JSON.stringify(atom.target.value)+' · '+(r.status==='Observed'?'selected computation snapshot':r.reason||'');
  for(const n of (r.nodes||[])){const d=document.createElement('details'),s=document.createElement('summary');s.textContent=n.status+' · '+n.kind+' · '+n.expression+(n.kind==='potential-property-write'?' · potential access; completion unknown':' = '+JSON.stringify(n.value))+(n.origin?' · parsed object/field '+n.origin.url+' #'+n.origin.pointer+(finiteTraceSupported?' · independent fragment value origin ':' · current value origin ')+(n.valueOrigin||'Unknown/Unsupported')+(finiteTraceSupported?' · This parsed-identity fragment alone does not establish ancestry; see the separately scoped finite trace for the original selected read.':''):'')+(n.boundary?' · '+n.boundary:'');const p=document.createElement('pre');p.textContent=JSON.stringify(n,null,2);d.append(s,p);$('atom-chain').append(d);}
@@ -288,7 +313,7 @@ $('property').onchange=()=>action(async()=>{
  try{await inputCleanup;await rpc({op:'property',tabId:id,property});}
  finally{pendingProperties.delete(id);if(!disposed&&id===tab())await action(load);}
 });
-$('source-map-readonly').onchange=attachAvailability;
+$('source-map-readonly').onchange=pickerAvailability;
 $('atom-run').onclick=()=>action(async()=>{restorationNotice=null;const id=tab(),generation=selectionGeneration;$('atom-result').textContent='Running controlled trials…';const r=await rpc({op:'deep-experiment',tabId:tab(),variants:JSON.parse($('atom-variants').value)});if(id!==tab()||generation!==selectionGeneration)return;$('atom-result').textContent=r.status+' · baseline '+JSON.stringify(r.baseline)+' · '+r.scope;$('evidence').textContent=JSON.stringify(r,null,2);});
 $('atom-restore').onclick=()=>action(async()=>{const id=tab(),intent=selectionIntent,epoch=tabGeneration,experimentId=selectedState?.deepExperiment?.id,target=selectedState?.selection||selectedState?.stale?.target,origin=selectedState?.origin;const r=await rpc({op:'restore',tabId:id});if(id!==tab()||epoch!==tabGeneration||intent!==selectionIntent)return;restorationNotice={id:experimentId,tab:id,epoch,intent,origin,selector:target?.selector,property:target?.property,text:'Restored by reload + cache/storage reset · '+JSON.stringify(r.value)};await load();});
 
